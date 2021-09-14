@@ -1,29 +1,16 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This repository contains the source code for JEAF Generator. JEAF Generator can be used for code generation based on UML models. Besides the code of the generator itself the repository also contains lot's of test projects that are used to ensure quality. 
 
-### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+## Links ##
+For further information please refer to our documentation
 
-### How do I get set up? ###
+* [JEAF Generator](https://anaptecs.atlassian.net/l/c/N7r5x11X)
+* [JEAF Modelling Guide](https://anaptecs.atlassian.net/l/c/1B2ci31g)
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+## How do I get set up? ##
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* To run JEAF Generator please create a clone of this repository on your local machine.
+* You will find a top level Maven project and lot's of sub projects. Each of them shows the specific output for one topic as it will be created by JEAF Generator 
+* Build the project simply execute Maven on the top level project `maven clean install`
