@@ -1,0 +1,106 @@
+/*
+ * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
+ * 
+ * Copyright 2004 - 2019. All rights reserved.
+ */
+package com.anaptecs.jeaf.junit.pojo;
+
+import com.anaptecs.jeaf.core.api.MessageConstants;
+import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.checks.Check;
+
+/**
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
+public abstract class AdvancedPOJOBase {
+  /**
+   * Initialize object using the passed builder.
+   * 
+   * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
+   */
+  protected AdvancedPOJOBase( BuilderBase pBuilder ) {
+    // Ensure that builder is not null.
+    Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+  }
+
+  /**
+   * Class implements builder to create a new instance of class AdvancedPOJO. As the class has readonly attributes or
+   * associations instances can not be created directly. Instead this builder class has to be used.
+   */
+  public static abstract class BuilderBase {
+    /**
+     * Use {@link AdvancedPOJO.Builder#newBuilder()} instead of protected constructor to create new builder.
+     */
+    protected BuilderBase( ) {
+    }
+
+    /**
+     * Use {@link AdvancedPOJO.Builder#newBuilder(AdvancedPOJO)} instead of protected constructor to create new builder.
+     */
+    protected BuilderBase( AdvancedPOJOBase pObject ) {
+      if (pObject != null) {
+        // Read attribute values from passed object.
+      }
+    }
+
+    /**
+     * Method creates a new instance of class AdvancedPOJO. The object will be initialized with the values of the
+     * builder.
+     * 
+     * @return AdvancedPOJO Created object. The method never returns null.
+     */
+    public AdvancedPOJO build( ) {
+      return new AdvancedPOJO(this);
+    }
+
+    /**
+     * Method creates a new instance of class AdvancedPOJO. The object will be initialized with the values of the
+     * builder.
+     * 
+     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
+     * @return AdvancedPOJO Created object. The method never returns null.
+     */
+    public AdvancedPOJO build( boolean pValidate ) {
+      AdvancedPOJO lPOJO = this.build();
+      if (pValidate == true) {
+        Tools.getValidationTools().validateObject(lPOJO);
+      }
+      return lPOJO;
+    }
+  }
+
+  /**
+   * 
+   * @param pName
+   * @return {@link Boolean}
+   */
+  public abstract boolean doSomething( String pName );
+
+  /**
+   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * StringBuilder also takes care about attributes of super classes.
+   *
+   * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
+   */
+  protected StringBuilder toStringBuilder( ) {
+    StringBuilder lBuilder = new StringBuilder(256);
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append('\n');
+    return lBuilder;
+  }
+
+  /**
+   * Method creates a new String with the values of all attributes of this class. All references to other objects will
+   * be ignored.
+   * 
+   * @return {@link String} String representation of this object. The method never returns null.
+   */
+  @Override
+  public String toString( ) {
+    return this.toStringBuilder().toString();
+  }
+}

@@ -1,0 +1,60 @@
+/*
+ * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
+ * 
+ * Copyright 2004 - 2019. All rights reserved.
+ */
+package com.anaptecs.jeaf.junit.core;
+
+import com.anaptecs.jeaf.core.api.LoadStrategy;
+
+/**
+	 * 
+	 */
+public final class TestLoadStrategy implements LoadStrategy {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant load strategy object to load all associations.
+   */
+  public static final TestLoadStrategy LOAD_ALL = new TestLoadStrategy(true, true);
+
+  /**
+   * Constant load strategy object to load none of the associations.
+   */
+  public static final TestLoadStrategy LOAD_NONE = new TestLoadStrategy(false, false);
+
+  /**
+   * Initialize object.
+   */
+  public TestLoadStrategy( boolean pLoadInternalData, boolean pLoadPublicData ) {
+    loadInternalData = pLoadInternalData;
+    loadPublicData = pLoadPublicData;
+  }
+
+  /**
+   * 
+   */
+  private final boolean loadInternalData;
+
+  /**
+   * 
+   */
+  private final boolean loadPublicData;
+
+  /**
+   * 
+   */
+  public boolean loadInternalData( ) {
+    return loadInternalData;
+  }
+
+  /**
+   * 
+   */
+  public boolean loadPublicData( ) {
+    return loadPublicData;
+  }
+}

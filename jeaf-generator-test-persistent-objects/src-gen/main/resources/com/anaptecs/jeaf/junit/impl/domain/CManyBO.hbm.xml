@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping for class com.anaptecs.jeaf.junit.impl.domain.CManyBO -->
+<hibernate-mapping package="com.anaptecs.jeaf.junit.impl.domain">
+    <class name="CManyBO" table="C_MANY" discriminator-value="1009">
+        <id column="OID" name="objectID" length="15" />
+        <discriminator column="CLASS_ID" type="integer" />
+        <version column="VERSION" name="versionLabel" />
+
+        <!-- Attribute mapping for attribute "Integer cNumber" -->
+        <property name="cNumber" access="field" unique="false" not-null="false">
+            <column name="CNUMBER" unique="false" not-null="false" />
+        </property>
+
+        <!-- Association mapping for role "aOne (0..1)" -->
+        <!-- Association CManyBO - AOneBO -->
+        <many-to-one name="aOne" class="com.anaptecs.jeaf.junit.impl.domain.AOneBO" column="AONE_OID" access="field" cascade="none" />
+    </class>
+</hibernate-mapping>

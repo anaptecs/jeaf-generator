@@ -1,0 +1,105 @@
+«EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
+
+«IMPORT uml»
+«IMPORT JMM»
+
+«DEFINE RESTResourceClass FOR RESTResource»
+«FILE packagePath()+"/"+name+"Resource.java" GenBase»
+«getFileHeader()»
+package «packageName()»;
+
+«this.getJavadoc()»
+«IF path.length > 0»@javax.ws.rs.Path("«path»")«ENDIF»
+«IF consumes.size > 0»@javax.ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
+«IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
+public class «name»Resource {
+	«EXPAND RESTOperationImpl FOREACH ownedOperation.typeSelect(RESTOperation)»
+}
+«ENDFILE»
+«ENDDEFINE»
+
+
+«DEFINE RESTOperationImpl FOR RESTOperation»
+	«IF async == false»
+		«EXPAND SyncRESTOperationImpl FOR this»
+	«ELSE»
+		«EXPAND AsyncRESTOperationImpl FOR this»
+	«ENDIF»	
+«ENDDEFINE»
+
+«DEFINE SyncRESTOperationImpl FOR RESTOperation»
+	/**
+	 * {@link «this.getOwningClass().fqn()»#«name»()}
+	 */
+	«IF path.length > 0»@javax.ws.rs.Path("«path»")«ENDIF»
+	«EXPAND HTTPMethods»
+	«IF consumes.size > 0»@javax.ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
+	«IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
+	public javax.ws.rs.core.Response  «name» («EXPAND JEAFOperation::ParameterSignature FOR this»)«getThrownExceptionsAsString()»{
+	  «this.getOwningClass().fqn()» lService = com.anaptecs.jeaf.core.api.JEAF.getService(«this.getOwningClass().fqn()».class);
+	  «IF getReturnTypeName() != "void"»
+	  «getReturnTypeName()» lResult = lService.«this.name»(«this.asParameterListNames()»);
+	  return javax.ws.rs.core.Response.status(«EXPAND StatusCode»).entity(lResult).build();
+	  «ELSE»
+	  lService.«this.name»(«this.asParameterListNames()»);
+	  return javax.ws.rs.core.Response.status(«EXPAND StatusCode»).build();
+	  «ENDIF»
+	}
+«ENDDEFINE»
+
+«DEFINE AsyncRESTOperationImpl FOR RESTOperation»
+	/**
+	 * {@link «this.getOwningClass().fqn()»#«name»()}
+	 */
+	«IF path.length > 0»@javax.ws.rs.Path("«path»")«ENDIF»
+	«EXPAND HTTPMethods»
+	«IF consumes.size > 0»@javax.ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
+	«IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
+	public void  «name» (@javax.ws.rs.container.Suspended javax.ws.rs.container.AsyncResponse pAsyncResponse, @javax.ws.rs.core.Context javax.servlet.http.HttpServletRequest pRequest «IF ownedParameter.size > 0»,«ENDIF» «EXPAND JEAFOperation::ParameterSignature FOR this»)«getThrownExceptionsAsString()»{
+	    // Lookup workload manager that takes care that the system will have an optimal throughput.
+	    com.anaptecs.jeaf.workload.api.WorkloadManager lWorkloadManager = com.anaptecs.jeaf.workload.api.Workload.getWorkloadManager();
+	
+	    // Prepare meta information about the request.
+	    String lEndpointURL = pRequest.getServletPath() + pRequest.getPathInfo();
+	    com.anaptecs.jeaf.workload.api.rest.RESTRequestType lRequestInfo = new com.anaptecs.jeaf.workload.api.rest.RESTRequestType(lEndpointURL, pRequest.getMethod());
+	    // Hand over current request to workload manager. Depending on its strategy and the current workload the request will be either be directly executed, first queued or rejected.
+	    lWorkloadManager.execute(lRequestInfo, new com.anaptecs.jeaf.workload.api.rest.RESTWorkloadErrorHandler(pAsyncResponse), new Runnable() {
+			@Override
+			public void run( ) {
+			    try {
+				    // As soon as the request is executed the service call will be performed.
+					«this.getOwningClass().fqn()» lService = com.anaptecs.jeaf.core.api.JEAF.getService(«this.getOwningClass().fqn()».class);
+				
+					«IF getReturnTypeName() != "void"»
+					«getReturnTypeName()» lResult = lService.«this.name»(«this.asParameterListNames()»);
+					javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response.status(«EXPAND StatusCode»).entity(lResult).build();
+					«ELSE»
+					lService.«this.name»(«this.asParameterListNames()»);
+					javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response.ok().status(«EXPAND StatusCode»).build();
+					«ENDIF»
+			
+					// Due to the asynchronous processing of the requests, the response can not be returned as return value. Therefore we make use of the defined JAX-RS mechanisms.
+					pAsyncResponse.resume(lResponseObject);
+			    }
+				// All kinds of exceptions have to be reported to the client. Due to the asynchronous processing we have to
+				// catch them here and return them to the client via class AsyncResponse.
+				catch (RuntimeException e) {
+					pAsyncResponse.resume(e);
+				}
+			}
+		});
+	}
+«ENDDEFINE»
+
+«DEFINE StatusCode FOR RESTOperation»
+	«IF statusCode != null»
+		javax.ws.rs.core.Response.Status.«statusCode.name»
+	«ELSE»
+		javax.ws.rs.core.Response.Status.OK»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE HTTPMethods FOR RESTOperation»
+	«FOREACH httpMethods AS method»@javax.ws.rs.«method»«ENDFOREACH»
+«ENDDEFINE»

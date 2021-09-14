@@ -1,0 +1,28 @@
+import uml;
+import JMM;
+import Persistence;
+
+List[PersistentObject] entity (Class dao) : dao.clientDependency.supplier.typeSelect(PersistentObject);
+
+boolean hasEntities (Class dao) : !dao.entity().isEmpty;
+
+boolean isUnnamed (NamedElement elem) : elem.name.length == 0;
+
+List[Property] attribute (Class c) : c.ownedAttribute.select(a|PrimitiveType.isInstance(a.type));
+
+List[Property] attribute (Type c) : "should take the function with class";
+
+List[Comment] comment (Class c) : c.ownedAttribute.select(a|Comment.isInstance(a.type));
+
+List[Property] associationEnd (Class c) : c.ownedAttribute.select(a|Class.isInstance(a.type));
+
+String getCommentBody(Comment c) : c.body;
+
+boolean hasInitValue(Property p) : !p.ownedElement.isEmpty;
+
+String initValue(Property p) : p.defaultValue.integerValue();
+
+List getSubclasses(Class e) :
+   JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getSubclasses(org.eclipse.uml2.uml.Class);
+
+

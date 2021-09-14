@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping for class com.anaptecs.jeaf.junit.impl.domain.ClassB_BO -->
+<hibernate-mapping package="com.anaptecs.jeaf.junit.impl.domain">
+    <class name="ClassB_BO" table="CLASSB_BO" discriminator-value="1013">
+        <id column="MY_OID" name="objectID" length="15" />
+        <discriminator column="CLASS_ID" type="integer" />
+        <version column="MY_VERSION_LABEL" name="versionLabel" />
+
+        <!-- Attribute mapping for attribute "Integer intValue" -->
+        <property name="intValue" access="field" unique="false" not-null="false">
+            <column name="INTVALUE" unique="false" not-null="false" />
+        </property>
+
+        <!-- Association mapping for role "classAs (0..*)" -->
+        <!-- Association ClassB_BO - ClassA_BO -->
+        <set name="classAs" access="field" inverse="true" cascade="none">
+            <key column="CLASS_B_FK" />
+            <one-to-many class="com.anaptecs.jeaf.junit.impl.domain.ClassA_BO" />
+        </set>
+    </class>
+</hibernate-mapping>

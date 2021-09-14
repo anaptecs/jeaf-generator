@@ -1,0 +1,32 @@
+«IMPORT uml»
+«IMPORT JMM»
+«EXTENSION java::Naming»
+
+
+//Property mapping.
+
+
+// generic property, it is used for example for public static final properties
+// this properties don't have to be mapped to hibernate, so nothing happens here
+«DEFINE PropertyMapping FOR Property»«ENDDEFINE»
+«DEFINE PropertyMapping FOR Element»«ENDDEFINE»
+
+//Field mapping
+//properties are mapped to database columns
+«DEFINE PropertyMapping FOR Field»
+    <!-- Attribute mapping for attribute "«this.type.name» «this.asInstanceVar()»" -->
+	<property name="«asInstanceVar()»" access="field" unique="«unique»" not-null="«notNull»" «IF index.length > 0»index="«index»"«ENDIF» «IF charLength > 0»length="«charLength»"«ENDIF»«IF precision > 0»precision="«precision»"«ENDIF» «IF scale > 0»scale="«scale»"«ENDIF»>	
+  «IF this.type.getAppliedStereotype("JMM::UserType") == null-»
+      <column name="«IF rowName.length > 0»«rowName»«ELSE»«asInstanceVar().toUpperCase()»«ENDIF»" unique="«unique»" not-null="«notNull»" «IF charLength > 0»length="«charLength»"«ENDIF»«IF precision > 0»precision="«precision»"«ENDIF» «IF scale > 0»scale="«scale»"«ENDIF» «IF sqlType.length > 0»sql-type="«sqlType»"«ENDIF»/>
+  «ELSE-»
+      <!-- Using userType "«((JMM::UserType) this.type).typeClass»" as defined in UML model -->
+      «FOREACH ((StructuredClassifier) type).ownedAttribute AS attribute»
+      «IF attribute.getAppliedStereotype("JMM::Field") != null-»
+        <column name="«IF ((JMM::Field) attribute).rowName.length > 0»«((JMM::Field) attribute).rowName»«ELSE»«attribute.asInstanceVar().toUpperCase()»«ENDIF»" unique="«((JMM::Field) attribute).unique»" not-null="«((JMM::Field) attribute).notNull»" «IF ((JMM::Field) attribute).charLength > 0»length="«((JMM::Field) attribute).charLength»"«ENDIF»«IF ((JMM::Field) attribute).precision > 0»precision="«((JMM::Field) attribute).precision»"«ENDIF» «IF ((JMM::Field) attribute).scale > 0»scale="«((JMM::Field) attribute).scale»"«ENDIF» «IF ((JMM::Field) attribute).sqlType.length > 0»sql-type="«((JMM::Field) attribute).sqlType»"«ENDIF»/>
+      «ELSE-»
+        <column name="«attribute.asInstanceVar().toUpperCase()»" />
+      «ENDIF-»
+      «ENDFOREACH-»
+      <type name="«((JMM::UserType) this.type).typeClass»"/>  
+  «ENDIF-»</property>  
+«ENDDEFINE»

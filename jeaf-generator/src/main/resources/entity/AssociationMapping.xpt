@@ -1,0 +1,102 @@
+«EXTENSION java::Naming»
+«EXTENSION entity::ModelProperties»
+«IMPORT uml»
+«IMPORT JMM»
+«IMPORT java»
+
+
+// Association mapping
+// This template maps association ends to the database
+
+// Do nothing for everything except of Role
+«DEFINE AssociationMapping FOR Element»«ENDDEFINE»
+
+// The only type of assocations that can not be handled by the current implementation are directed m:n associations
+// which do not make any sense. This is limitation is not caused by the template itself but by the eclipse uml model 
+// which does not allow navigation on directed associations in the not navigable direction.
+//
+// The template supports:
+// - Directed one-to-one, many-to-one associations and one-to-many associations
+// - Bidirectional one-to-many,  many-to-many, many-to-one and one-to-one associations
+«DEFINE AssociationMapping FOR Role»
+	«IF isNavigable()-»
+		«IF isComposite-»
+			«EXPAND CompositeMapping-»
+		«ELSE-»
+		    <!-- Association mapping for role "«name» («this.lower»..«IF this.upper > 0»«this.upper»«ELSE»*«ENDIF»)"«IF association.name.length > 0» in association "«association.name»"«ENDIF» -->
+		    <!-- Association «this.class.name» - «type.name» -->
+            «IF opposite == null -»
+               «IF isMultivalued() -»
+                   «EXPAND UnidirectionalToMany -»
+               «ELSE-»
+                   «EXPAND UnidirectionalToOne -»
+               «ENDIF -»
+            «ELSE -»
+	            «IF isMultivalued() -»
+	                «IF !opposite.isMultivalued() -»
+	                    «EXPAND BidirectionalOneToManyMapping -»
+	                «ELSE-»
+	                    «EXPAND BidirectionalManyToManyMapping -»
+	                «ENDIF-»
+	            «ELSE-»
+	                «IF opposite.isMultivalued() -»
+	                    «EXPAND BidirectionalManyToOne -»
+	                «ELSE-»
+	                    «EXPAND BidirectionalOneToOneMapping -»
+	                «ENDIF -»
+	            «ENDIF -»
+            «ENDIF -»
+		«ENDIF -»
+	«ENDIF -»
+«ENDDEFINE»
+
+// Unidirectional one-to-one or many-to-one association
+«DEFINE UnidirectionalToOne FOR Role -»
+    <many-to-one name="«asInstanceVar()»" class="«type.fqn()»" column="«getForeignKeyName()»" access="field" «IF lower == 1  && this.class.superClass.size == 0» not-null="true"«ENDIF» «IF notlazy»lazy="false"«ENDIF» cascade="«cascade.getCascadeTypeNames()»" «IF fetchType.name != "none"»fetch="«fetchType.name»"«ENDIF»/>
+«ENDDEFINE»
+
+// Unidirectional one-to-many association
+«DEFINE UnidirectionalToMany FOR Role -»
+    <set name="«asInstanceVar()»" access="field" «IF notlazy»lazy="false"«ENDIF» cascade="«cascade.getCascadeTypeNames()»" «IF batchSize > 0»batch-size="«batchSize»"«ENDIF» «IF fetchType.name != "none"»fetch="«fetchType.name»"«ENDIF»>
+        <key column="«this.getOppositeEndType().getForeignKeyName()»"/>
+        <one-to-many class="«type.fqn()»"/>
+    </set>    
+«ENDDEFINE»
+
+// Bidirectional many-to-one association
+«DEFINE BidirectionalManyToOne FOR Role -»
+	<many-to-one name="«asInstanceVar()»" class="«type.fqn()»" column="«getForeignKeyName()»" access="field" «IF lower == 1 && this.class.superClass.size == 0» not-null="true"«ENDIF» «IF notlazy»lazy="false"«ENDIF» cascade="«cascade.getCascadeTypeNames()»" «IF fetchType.name != "none"»fetch="«fetchType.name»"«ENDIF»/>	
+«ENDDEFINE»
+
+// Bidirectional one-to-many association
+«DEFINE BidirectionalOneToManyMapping FOR Role -»
+	<set name="«name»" access="field" «IF notlazy»lazy="false"«ENDIF» inverse="true" cascade="«cascade.getCascadeTypeNames()»" «IF batchSize > 0»batch-size="«batchSize»"«ENDIF» «IF fetchType.name != "none"»fetch="«fetchType.name»"«ENDIF»>
+	    <key column="«getForeignKeyName(opposite)»"/>
+        <one-to-many class="«opposite.class.fqn()»"/>
+    </set>
+«ENDDEFINE»
+
+// Bidirectional many-to-many association
+«DEFINE BidirectionalManyToManyMapping FOR Role -»
+	<set name="«name»" table="«getLinkTable()»" access="field" «IF notlazy»lazy="false"«ENDIF» «IF this.linkTable.length > 0»inverse="true"«ENDIF» cascade="«cascade.getCascadeTypeNames()»" «IF batchSize > 0»batch-size="«batchSize»"«ENDIF»>
+		<key column="«getForeignKeyName(class)»"/>
+		<many-to-many class="«opposite.class.fqn()»" column="«getForeignKeyName(opposite.class)»"/>
+	</set>
+«ENDDEFINE»
+
+// Bidirectional one-to-one association
+«DEFINE BidirectionalOneToOneMapping FOR Role -»
+         «IF foreignKeyOwner -»
+           <many-to-one name="«asInstanceVar()»" class="«type.fqn()»" column="«getForeignKeyName()»" access="field" «IF lower == 1 && ((uml::Class) this.owner).superClass == null» not-null="true"«ENDIF» unique="true" «IF notlazy»lazy="false"«ENDIF» cascade="«cascade.getCascadeTypeNames()»"/>
+         «ELSE-»
+           <one-to-one name="«asInstanceVar()»" class="«opposite.class.fqn()»" access="field" «IF notlazy»lazy="false"«ENDIF» cascade="«cascade.getCascadeTypeNames()»" property-ref="«opposite.asInstanceVar()»"/>
+         «ENDIF-»
+«ENDDEFINE»
+
+// Composite mapping
+«DEFINE CompositeMapping FOR Role -»
+    <component name="«name»" class="«type.fqn() -»">
+        «EXPAND PropertyMapping::PropertyMapping FOREACH type.attribute()»
+    </component>
+«ENDDEFINE»
+

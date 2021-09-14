@@ -1,0 +1,12 @@
+List getInputParameters(uml::Activity activity):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ActivityHelper.getInputParameters(org.eclipse.uml2.uml.Activity);
+
+uml::Parameter getReturnParameter(uml::Activity activity):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ActivityHelper.getReturnParameter(org.eclipse.uml2.uml.Activity);
+    
+boolean hasReturnParameter(uml::Activity activity):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ActivityHelper.hasReturnParameter(org.eclipse.uml2.uml.Activity);
+    
+int getReturnParameterCount(uml::Activity activity):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ActivityHelper.getReturnParameterCount(org.eclipse.uml2.uml.Activity);
+    

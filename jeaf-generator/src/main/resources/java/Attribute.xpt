@@ -1,0 +1,329 @@
+«IMPORT uml»
+«IMPORT JMM»
+«IMPORT jeaf»
+
+
+«EXTENSION java::GeneratorCommons»
+«EXTENSION java::Naming»
+«EXTENSION entity::ModelProperties»
+
+// this properties should be processed
+// for now all properties should be processed
+«DEFINE PropertyDeclaration FOR Property»
+    «IF this.association == null»
+        «EXPAND DoPropertyDeclaration»
+    «ELSE»
+        «EXPAND DoAssociationPropertyDeclaration»
+    «ENDIF»
+«ENDDEFINE»
+
+
+«DEFINE PropertyAccessors FOR Property»
+    «IF this.association == null»
+		«IF !isStatic»
+			«EXPAND Getter»
+			«IF isReadOnly == false»
+			«EXPAND Setter»
+			«ENDIF»
+		«ENDIF»
+    «ELSE»
+        «EXPAND DoAssociationAccessors»
+    «ENDIF»
+«ENDDEFINE»
+
+// processing the properties
+«DEFINE DoPropertyDeclaration FOR Property»
+	/**
+	 * «this.getComment()»
+	 */
+	«EXPAND Validation::ValidationAnnotation»
+	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly»final «ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «this.initValue()»«ENDIF»;
+«ENDDEFINE»
+
+// processing the association properties
+«DEFINE DoAssociationPropertyDeclaration FOR Property»
+	/**
+ 	 * «this.getComment()»
+	 */
+	«IF isNavigable()»
+		«EXPAND Validation::ValidationAnnotation»
+		«IF isMultivalued()»
+			«visibility» «IF isReadOnly»final «ENDIF»«this.fqn()» «asInstanceVar()» = new «this.getCollectionImplType()»<«type.fqn()»>();
+		«ELSE»
+			«visibility» «IF isReadOnly»final «ENDIF» «type.fqn()» «asInstanceVar()»;
+		«ENDIF»
+	«ENDIF»
+«ENDDEFINE»
+
+
+«DEFINE DoAssociationAccessors FOR Property»
+	«IF isNavigable()»
+		«IF isMultivalued()»
+			«EXPAND ToManyAccessorMethods»
+		«ELSE»
+			«EXPAND ToOneAccessorMethods»
+		«ENDIF»
+	«ENDIF»
+«ENDDEFINE»
+
+// TODO Get and set method should be final for service objects. 
+«DEFINE Getter FOR Property»
+	/**
+	 * Method returns the attribute "«asInstanceVar()»".
+	 * «this.getComment()»
+	 * 
+	 * @return «type.name» Value to which the attribute "«asInstanceVar()»" is set.
+	 */
+	public «this.fqn()»«IF isMultivalued()»[]«ENDIF» «asGetter()»() {
+	    «IF this.isMultivalued() == false»return «asInstanceVar()»;«ELSE»«this.fqn()»[] lReturnValue;
+	    if(«asInstanceVar()» != null) {
+	      lReturnValue = new «this.fqn()»[«asInstanceVar()».length];
+	      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
+	    }
+	    else {
+	      lReturnValue = null;
+	    }
+	    return lReturnValue;
+		«ENDIF»
+    }
+«ENDDEFINE»
+
+«DEFINE Setter FOR Property»
+	/**
+	 * Method sets the attribute "«asInstanceVar()»".
+	 * «this.getComment()»
+	 * 
+	 * @param «asParameter()» Value to which the attribute "«asInstanceVar()»" should be set.
+	 */
+	public void «asSetter()»(«this.fqn()»«IF isMultivalued()»[]«ENDIF» «asParameter()») {
+		// Assign value to attribute
+		«IF this.isMultivalued() == false»
+			«asInstanceVar()»=«asParameter()»;
+		«ELSE»
+			if(«asParameter()» != null) {
+		      «asInstanceVar()» = new «this.fqn()»[«asParameter()».length];
+		      System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
+		    }
+		    else {
+		      «asInstanceVar()» = null;
+		    }
+		«ENDIF»
+	}
+«ENDDEFINE»
+
+«DEFINE ToOneAccessorMethods FOR Property»
+    /**
+     * Method returns the association "«asInstanceVar()»".     
+     * «this.getComment()»
+     *
+     * @return «type.name» «this.type.name» to which the association "«asInstanceVar()»" is set.
+     */
+	public «type.fqn()» «asGetter()» () {
+    «IF ((NamedElement)this.owner).isPersistentObject()»
+    «asInstanceVar()» = this.unproxy(«asInstanceVar()»);«ENDIF»
+		return «asInstanceVar()»;
+	}
+	
+    «IF isReadOnly == false»
+    /**
+     * Method sets the association "«asInstanceVar()»".     
+     * «this.getComment()»
+     * 
+     * @param «asParameter()» «this.type.name» to which the association "«asInstanceVar()»" should be set.
+     */
+	public void «asSetter()» («type.fqn()» «asParameter()») {
+		«IF generateNullChecksForToOneAssociationsOfServiceObjects()»
+		// «asParameter()» must not be null. To unset an association the unset method has to be called.
+		com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
+		«ENDIF»
+
+		«IF opposite != null && opposite.isNavigable() == true»
+			// Release already referenced object before setting a new association.
+			if(«asInstanceVar()» != null) {
+			«IF opposite.isMultivalued() == true»
+				«asInstanceVar()».removeFrom«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
+			«ELSE»
+				«asInstanceVar()».«opposite.asUnset()»();
+			«ENDIF»
+			}
+		«ENDIF»
+
+		«asInstanceVar()» = «asParameter()»;
+	    «EXPAND GenerateInitOpposite»
+	}
+	
+    /**
+     * Method unsets the association "«asInstanceVar()»".     
+     * «this.getComment()»
+     */
+    public final void «asUnset()» () {
+        «EXPAND GenerateRemoveOpposite»
+        «IF opposite == null || opposite.isNavigable() == false»
+          «asInstanceVar()» = null;
+        «ENDIF»
+    }
+    «ENDIF»
+«ENDDEFINE»
+
+// Setter for associations
+«DEFINE ToManyAccessorMethods FOR Property»
+    /**
+     * Method returns the association "«asInstanceVar()»".     
+     * «this.getComment()»
+     *
+     * @return Collection All «this.type.name» objects that belong to the association "«asInstanceVar()»". 
+     * The method never returns null and the returned collection is unmodifiable.
+     */
+	public «this.fqn()» «asGetter()» () {
+	    // Return all «this.type.name» objects as unmodifiable collection.
+		return java.util.Collections.unmodifiable«this.getCollectionType()»(«asInstanceVar()»);
+	}
+	
+    «IF isReadOnly == false»
+    /**
+     * Method sets the association "«asInstanceVar()»" to the passed collection. All objects that formerly were part of the association will be removed from it.
+     * «this.getComment()»
+     * 
+     * @param «asParameter()» Collection with objects to which the association should be set. The parameter must not be null.
+     */
+    «IF generatePublicSettersForAssociations()»public«ENDIF» void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
+        // Check of parameter is not required.
+        
+        // Remove all objects from association "«asInstanceVar()»".
+        this.clear«name.toFirstUpper()»();
+        
+        // If the association is null, removing all entries is sufficient.
+        if(«asParameter()» != null) {
+          «asInstanceVar()» = new «this.getCollectionImplType()»<«type.fqn()»>(«asParameter()»);
+        }
+    }
+
+    /**
+     * Method adds the passed «this.type.name» object to the association "«asInstanceVar()»".     
+     * «this.getComment()»
+     * 
+     * @param «asParameter()» Object that should be added to the association "«asInstanceVar()»". The parameter must not be null.
+     */
+	public void addTo«name.toFirstUpper()» («this.type.fqn()» «asParameter()») {
+        // Check parameter "«asParameter()»" for invalid value null.
+        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
+        
+	    «IF opposite != null && opposite.isNavigable() == true»
+	        «IF opposite.isMultivalued() == false»
+	            // Since this is not a many-to-many association the association to which the passed object belongs, has to 
+	            // be released.
+	            «asParameter()».«opposite.asUnset()»();
+	        «ENDIF»
+	    «ENDIF»
+	    
+		// Add passed object to collection of associated «this.type.name» objects.
+		«asInstanceVar()».add(«asParameter()»);
+		
+        «EXPAND GenerateInitOpposite»
+	}
+	
+    /**
+     * Method adds all passed objects to the association "«asInstanceVar()»".     
+     * «this.getComment()»
+     * 
+     * @param «asParameter()» Collection with all objects that should be added to the association "«asInstanceVar()»". The parameter must not be null.
+     */
+  public void addTo«name.toFirstUpper()» (java.util.Collection<«this.type.fqn()»> «asParameter()») {
+        // Check parameter "«asParameter()»" for invalid value null.
+        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
+        
+        // Add all passed objects.
+        for («this.type.fqn()» lNextObject : «asParameter()») {
+          this.addTo«name.toFirstUpper()»(lNextObject);
+        }
+        
+  }
+  
+    /**
+     * Method removes the passed «this.type.name» object from the association "«asInstanceVar()»".     
+     * «this.getComment()»
+     * 
+     * @param «asParameter()» Object that should be removed from the association "«asInstanceVar()»". The parameter must not be null.
+     */
+	public void removeFrom«name.toFirstUpper()» («type.fqn()» «asParameter()») {
+        // Check parameter for invalid value null.
+        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
+
+        // Remove passed object from collection of associated «this.type.name» objects.
+		«asInstanceVar()».remove(«asParameter()»);
+		
+		«EXPAND GenerateRemoveOpposite»
+	}
+	
+    /**
+     * Method removes all objects from the association "«asInstanceVar()»".
+     * «this.getComment()»
+     */
+    public void clear«name.toFirstUpper()» () {
+      // Remove all objects from association "«asInstanceVar()»".
+      java.util.Collection<«type.fqn()»> «asLocalVar()» = new java.util.HashSet<«type.fqn()»>(«asInstanceVar()»);
+      java.util.Iterator<«type.fqn()»> lIterator = «asLocalVar()».iterator();
+      while(lIterator.hasNext()) {
+          this.removeFrom«name.toFirstUpper()»(lIterator.next());
+      }
+    }
+    «ENDIF»
+    
+«ENDDEFINE»
+
+// Template generates the code that will be generated if the association is bidirectional.
+«DEFINE GenerateInitOpposite FOR Property»
+    «IF opposite != null && opposite.isNavigable() == true»
+        «IF opposite.isMultivalued() == true»
+	        // The association is set in both directions because within the UML model it is defined to be bidirectional.
+	        // In case that one side will be removed from the association the other side will also be removed.
+            if («IF generateNullChecksForToOneAssociationsOfServiceObjects() == false» «asParameter()» != null && «ENDIF»«asParameter()».get«opposite.name.toFirstUpper()»().contains(this) == false ) {
+                «asParameter()».addTo«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
+            }
+        «ELSE»
+	        // The association is set in both directions because within the UML model it is defined to be bidirectional.
+	        // In case that one side will be removed from the association the other side will also be removed.
+            if(«IF generateNullChecksForToOneAssociationsOfServiceObjects() == false» «asParameter()» != null && «ENDIF»this.equals(«asParameter()».get«opposite.name.toFirstUpper()»()) == false) {
+                «asParameter()».«opposite.asSetter()»( («opposite.type.fqn()») this);
+            }
+        «ENDIF»
+    «ENDIF»     
+«ENDDEFINE»
+
+«DEFINE GenerateRemoveOpposite FOR Property»
+    «IF opposite != null && opposite.isNavigable() == true»
+        // The association is set in both directions because within the UML model it is defined to be bidirectional.
+        // In case that one side will be removed from the association the other side will also be removed.
+        «IF isMultivalued() == true»
+            «IF opposite.isMultivalued() == true»
+                if («asParameter()».get«opposite.name.toFirstUpper()»().contains(this) == true ) {
+                    «asParameter()».removeFrom«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
+                }
+            «ELSE»
+                if(this.equals(«asParameter()».get«opposite.name.toFirstUpper()»()) == true) {
+                    «asParameter()».«opposite.asUnset()»();
+                }
+            «ENDIF»
+        «ELSE»
+	        «IF opposite != null && opposite.isNavigable() == true && this.isMultivalued() == false»
+	            «type.fqn()» «type.asLocalVar()» = «asInstanceVar()»;
+	        «ENDIF»
+	        «asInstanceVar()» = null;
+        
+            «IF opposite.isMultivalued() == true»
+                if («type.asLocalVar()» != null && «type.asLocalVar()».get«opposite.name.toFirstUpper()»().contains(this) == true ) {
+                    «type.asLocalVar()».removeFrom«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
+                }
+            «ELSE»
+                if(«type.asLocalVar()» != null && this.equals(«type.asLocalVar()».get«opposite.name.toFirstUpper()»()) == true) {
+                    «type.asLocalVar()».«opposite.asUnset()»();
+                }
+            «ENDIF»
+        «ENDIF»
+    «ENDIF»     
+«ENDDEFINE»
+
+
+//copies the attributes from the businessobject to the transferobject
+«DEFINE CopyAttributeToTransfer FOR Property»«IF !isReadOnly»lTransferObject.«asSetter()»(this.«asGetter()»());«ENDIF»«ENDDEFINE»
+«DEFINE CopyAttributeToBusiness FOR Property»«IF !isReadOnly»lPersistentObject.«asSetter()»(this.«asGetter()»());«ENDIF»«ENDDEFINE»

@@ -1,0 +1,65 @@
+«IMPORT uml»
+«IMPORT JMM»
+«EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION java::ActivityHelper»
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+«DEFINE GenerateActivityInterface FOR JEAFActivity»
+	«FILE packagePath()+"/"+name+".java" GenBase»
+	«getFileHeader()»
+	package «packageName()»;
+	
+	import com.anaptecs.jeaf.core.api.Activity;
+	
+	/**
+	 * Interface of activity «name».
+	 *
+	 * «this.getComment()»
+	 */
+    public interface «name» extends Activity {
+		/**
+		 * «this.getComment()»
+		 * «FOREACH this.getInputParameters().typeSelect(Parameter) AS param»
+		 @param «param.name» «param.getComment()»«ENDFOREACH»
+		 «IF hasReturnParameter()»* @return «this.getReturnParameter().getTypeName()» «this.getReturnParameter().getComment()»«ENDIF-»
+		 */
+        «IF hasReturnParameter()»«this.getReturnParameter().getTypeName()»«ELSE»void«ENDIF» execute( «FOREACH this.getInputParameters().typeSelect(Parameter) AS param SEPARATOR ', '»«param.getTypeName()» «param.name»«ENDFOREACH»);
+    }
+	«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE GenerateActivityImplClass FOR JEAFActivity»
+	«FILE packagePath()+"/"+name+"Impl.java" GenOnce»
+	«getFileHeader()»
+	package «packageName()»;
+	
+	import com.anaptecs.jeaf.core.annotations.JEAFActivityImpl;
+	
+	/**
+	 * Implementation of activity «name».
+	 * «this.getComment()»	 
+	 */
+	@JEAFActivityImpl(activityInterface = «name».class)
+    public class «name»Impl implements  «name» {
+		/**
+		 * Create new instance of activity. 
+		 */
+		«name»Impl(  ) {
+		}
+		
+		/**
+		 * «this.getComment()» 
+		 * «FOREACH this.getInputParameters().typeSelect(Parameter) AS param»
+		 @param «param.name» «param.getComment()»«ENDFOREACH»
+		 «IF hasReturnParameter()»* @return «this.getReturnParameter().getTypeName()» «this.getReturnParameter().getComment()»«ENDIF-»
+		 */
+		@Override
+		public «IF hasReturnParameter()»«this.getReturnParameter().getTypeName()»«ELSE»void«ENDIF» execute( «FOREACH this.getInputParameters().typeSelect(Parameter) AS param SEPARATOR ', '»«param.getTypeName()» «param.name»«ENDFOREACH») {
+		  // TODO: Implement business logic
+		  «IF hasReturnParameter() && this.getReturnParameter().getTypeName() != "void"»return null;«ENDIF»
+		}
+    }
+    «ENDFILE»
+«ENDDEFINE»
+

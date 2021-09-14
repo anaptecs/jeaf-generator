@@ -1,0 +1,8 @@
+import uml;
+import JMM;
+
+extension java::GeneratorCommons;
+extension java::ObjectMapper;
+
+
+context ObjectMapping if runChecks() == true ERROR "<ObjectMapping> between '" + ((uml::Class) this.client.get(0).owner).name  + "."+this.client.get(0).name + "' and '" + ((uml::Class) this.supplier.get(0).owner).name + "." + this.supplier.get(0).name + "' is invalid. "+ isValidObjectMapping() : isValidObjectMapping() == null;

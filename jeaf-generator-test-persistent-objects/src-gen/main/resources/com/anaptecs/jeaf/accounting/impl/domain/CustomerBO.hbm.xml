@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping for class com.anaptecs.jeaf.accounting.impl.domain.CustomerBO -->
+<!-- and its subclasses CompanyBO, IndividualBO -->
+<hibernate-mapping package="com.anaptecs.jeaf.accounting.impl.domain">
+    <class name="CustomerBO" table="CUSTOMERBO" discriminator-value="1104">
+        <id column="OID" name="objectID" length="15" />
+        <discriminator column="CLASS_ID" type="integer" />
+        <version column="VERSION" name="versionLabel" />
+
+        <!-- Attribute mapping for attribute "Boolean active" -->
+        <property name="active" access="field" unique="false" not-null="false">
+            <column name="ACTIVE" unique="false" not-null="false" />
+        </property>
+
+        <!-- Association mapping for role "accounts (0..*)" -->
+        <!-- Association CustomerBO - AccountBO -->
+        <set name="accounts" access="field" inverse="true" cascade="">
+            <key column="CUSTOMER_OID" />
+            <one-to-many class="com.anaptecs.jeaf.accounting.impl.domain.AccountBO" />
+        </set>
+
+        <!-- Association mapping for role "attendingEmployees (1..*)" -->
+        <!-- Association CustomerBO - EmployeeBO -->
+        <set name="attendingEmployees" table="EMPLOYEE_CUSTOMER_LINK" access="field" cascade="" batch-size="9">
+            <key column="CUSTOMERBO_OID" />
+            <many-to-many class="com.anaptecs.jeaf.accounting.impl.domain.EmployeeBO" column="EMPLOYEEBO_OID" />
+        </set>
+
+        <!-- Association mapping for role "adress (0..1)" -->
+        <!-- Association CustomerBO - MyAddressBO -->
+        <many-to-one name="adress" class="com.anaptecs.jeaf.accounting.impl.domain.MyAddressBO" column="ADRESS_OID" access="field" cascade="none" />
+
+        <!-- Subclass mapping for class "com.anaptecs.jeaf.accounting.impl.domain.CompanyBO" -->
+        <subclass discriminator-value="1106" name="com.anaptecs.jeaf.accounting.impl.domain.CompanyBO">
+
+            <!-- Attribute mapping for attribute "String name" -->
+            <property name="name" access="field" unique="false" not-null="false" index="COMPANY_NAME">
+                <column name="NAME" unique="false" not-null="false" />
+            </property>
+
+            <!-- Attribute mapping for attribute "Long registrationNumber" -->
+            <property name="registrationNumber" access="field" unique="false" not-null="false">
+                <column name="REGISTRATIONNUMBER" unique="false" not-null="false" />
+            </property>
+
+            <!-- Attribute mapping for attribute "Long taxNumber" -->
+            <property name="taxNumber" access="field" unique="false" not-null="false">
+                <column name="TAXNUMBER" unique="false" not-null="false" />
+            </property>
+        </subclass>
+
+        <!-- Subclass mapping for class "com.anaptecs.jeaf.accounting.impl.domain.IndividualBO" -->
+        <subclass discriminator-value="1105" name="com.anaptecs.jeaf.accounting.impl.domain.IndividualBO">
+
+            <!-- Association mapping for role "person (1..1)" -->
+            <!-- Association IndividualBO - MyPersonBO -->
+            <many-to-one name="person" class="com.anaptecs.jeaf.accounting.impl.domain.MyPersonBO" column="PERSON_OID" access="field" unique="true" cascade="" />
+        </subclass>
+    </class>
+</hibernate-mapping>

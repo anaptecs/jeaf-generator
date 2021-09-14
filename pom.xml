@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Parent POM contains all general settings for building and releasing of all JEAF projects. -->
+	<parent>
+		<groupId>com.anaptecs.jeaf</groupId>
+		<artifactId>jeaf-plugin-project-parent</artifactId>
+		<version>1.0.21</version>
+	</parent>
+
+	<groupId>com.anaptecs.jeaf.generator</groupId>
+	<artifactId>jeaf-generator-project</artifactId>
+	<version>1.6.6-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>JEAF Generator Project</name>
+	<description>JEAF Generator can be used to generate different kinds of classes from UML Models and thus speed up and professionalize software development.</description>
+	<url>https://github.com/anaptecs/jeaf</url>
+
+	<scm>
+		<connection>scm:git:https://bitbucket.org/anaptecs/jeaf-generator.git</connection>
+		<developerConnection>scm:git:https://bitbucket.org/anaptecs/jeaf-generator.git</developerConnection>
+		<url>https://bitbucket.org/anaptecs/jeaf-generator</url>
+	</scm>
+	
+	<properties>
+		<jeaf.x-fun.api.version>1.6.0</jeaf.x-fun.api.version>
+		<jeaf.x-fun.impl.version>1.6.0</jeaf.x-fun.impl.version>
+		<jeaf.tools.api.version>1.6.0</jeaf.tools.api.version>
+		<jeaf.core.api.version>1.6.0</jeaf.core.api.version>
+		<jeaf.core.impl.version>1.6.0</jeaf.core.impl.version>
+		<jeaf.persistence.api.version>1.6.0</jeaf.persistence.api.version>
+		<jeaf.junit.extensions.version>1.6.0</jeaf.junit.extensions.version>
+		<jeaf.workload.api.version>1.6.0</jeaf.workload.api.version>
+		<jeaf.test.model.version>1.0.11</jeaf.test.model.version>
+	</properties>
+
+	<modules>
+		<module>jeaf-generator-code-styles</module>
+		<module>jeaf-message-constants-generator</module>
+		<module>jeaf-generator</module>
+		<module>jeaf-generator-maven-plugin</module>
+
+		<!-- The following modules are required to test JEAF Generator output -->
+		<module>jeaf-generator-test-message-constants</module>
+		<module>jeaf-generator-test-model</module>
+		<module>jeaf-generator-test-service-objects</module>
+		<module>jeaf-generator-test-pojos</module>
+		<module>jeaf-generator-test-services-api</module>
+		<module>jeaf-generator-test-rest</module>
+		<module>jeaf-generator-test-services-api-runtime</module>
+		<module>jeaf-generator-test-activities-api</module>
+		<module>jeaf-generator-test-activities-impl</module>
+		<module>jeaf-generator-test-service-providers-api</module>
+		<module>jeaf-generator-test-service-providers-impl</module>
+		<module>jeaf-generator-test-domain-objects</module>
+		<module>jeaf-generator-test-persistent-objects</module>
+		<module>jeaf-generator-test-object-mappers</module>
+		<module>jeaf-generator-test-services-impl</module>
+		<module>jeaf-generator-test-services-impl-runtime</module>
+		<module>jeaf-generator-test-junit-testcases</module>
+	</modules>
+
+</project>

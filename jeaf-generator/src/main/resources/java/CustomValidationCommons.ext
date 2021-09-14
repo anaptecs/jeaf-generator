@@ -1,0 +1,9 @@
+
+// Function checks whether the passed package is part of the package white list for generation.
+//Void registerCustomValidation(uml::Stereotype customValidation, String javaImplClass):
+Void registerCustomValidation(String customValidation, String javaImplClass):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.CustomValidationHelper.registerCustomValidation(java.lang.String, java.lang.String);
+    
+String getJavaAnnotatinClassForCustomValidation( String pCustomValidationClassname ):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.CustomValidationHelper.getJavaAnnotatinClassForCustomValidation(java.lang.String);
+    

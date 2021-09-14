@@ -1,0 +1,174 @@
+«EXTENSION java::Naming»
+«EXTENSION java::ObjectMapper»
+«EXTENSION java::GeneratorCommons»
+
+«IMPORT JMM»
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Generate domain object for business object 
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+«DEFINE DomainClass FOR DomainObject»
+	«IF generateDomainObjects() == true»
+	«IF this.ownedOperation.size == 0»
+	«FILE packagePath() + "/" + name +".java" GenBase»
+	«getFileHeader()»
+	package «this.packageName()»;
+  
+	import com.anaptecs.jeaf.core.api.MessageConstants;
+	import com.anaptecs.jeaf.xfun.api.XFun;
+	   
+	«this.getJavadoc()»
+	public «IF isAbstract»abstract«ENDIF» class «name» extends «IF !superClass.isEmpty»«superClass.get(0).fqn()»«ELSE»com.anaptecs.jeaf.core.api.DomainObject«ENDIF»«IF needsToImplementIdentifiable()==true» implements com.anaptecs.jeaf.core.api.Identifiable<«this.getObjectIDClassName()»>«ENDIF» {
+		/**
+		 * Default serial version uid.
+		 */
+		private static final long serialVersionUID = 1L;
+    
+		«REM»Generate constants for all real attributes«ENDREM»
+		«FOREACH this.ownedAttribute AS attr»
+		«IF attr.isStatic == false»          
+		/**
+		 * Constant for the name of attribute "«attr.name»".
+		 */
+		public static final String «attr.asInstanceVar().toUpperCase()» = "«attr.asInstanceVar()»";
+		«ENDIF»
+		«ENDFOREACH»
+  
+		«IF needsToImplementIdentifiable() == true»
+		«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())»
+		«ENDIF»
+		
+    «EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
+
+      /**
+       * Initialize object. Nothing special to do.
+       */
+      public «name»() {
+	      «IF needsToImplementIdentifiable() == true»
+	      objectID = null;
+	      «ELSE»
+	      // Nothing to do.
+	      «ENDIF»	      
+      }
+      
+      /**
+       * Initialize object. Therefore its domain object id has to be passed.
+       * 
+       * @param pDomainObjectID Id of this domain object. The parameter must not be null.
+       */
+      public «name»(com.anaptecs.jeaf.core.api.DomainObjectID pDomainObjectID) {
+        super(pDomainObjectID);
+	      «IF needsToImplementIdentifiable() == true»
+	      objectID = null;
+	      «ENDIF»
+      }
+      
+		«IF needsToImplementIdentifiable() == true»
+		«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())»
+		«ENDIF»
+
+    «EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
+    «EXPAND java::Helper::GenerateToStringMethod»
+  }
+  «ENDFILE»
+  «ELSE»
+      «FILE packagePath() + "/" + name +"Base.java" GenBase»
+      «getFileHeader()»
+      package «this.packageName()»;
+      
+      import com.anaptecs.jeaf.core.api.MessageConstants;
+      import com.anaptecs.jeaf.xfun.api.XFun;        
+      
+      «this.getJavadoc()»
+      public abstract class «name»Base extends «IF !superClass.isEmpty»«superClass.get(0).fqn()»«ELSE»com.anaptecs.jeaf.core.api.DomainObject«ENDIF»«IF needsToImplementIdentifiable()==true» implements com.anaptecs.jeaf.core.api.Identifiable<«this.getObjectIDClassName()»>«ENDIF» {
+        /**
+         * Default serial version uid.
+         */
+        private static final long serialVersionUID = 1L;
+        
+          «REM»Generate constants for all attributes«ENDREM»
+          «FOREACH this.ownedAttribute AS attr»
+          «IF attr.isMultivalued() == false»          
+          /**
+           * Constant for the name of attribute "«attr.name»".
+           */
+          public static final String «attr.asInstanceVar().toUpperCase()» = "«attr.asInstanceVar()»";
+          «ENDIF»«ENDFOREACH»
+          
+		«IF needsToImplementIdentifiable() == true»
+		«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())»
+		«ENDIF»
+		
+        «EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
+
+          /**
+           * Initialize object. Nothing special to do.
+           */
+          public «name»Base() {
+		      «IF needsToImplementIdentifiable() == true»
+		      objectID = null;
+		      «ELSE»
+		      // Nothing to do.
+		      «ENDIF»	      
+          }
+          
+          /**
+           * Initialize object. Therefore its domain object id has to be passed.
+           * 
+           * @param pDomainObjectID Id of this domain object. The parameter must not be null.
+           */
+          public «name»Base(com.anaptecs.jeaf.core.api.DomainObjectID pDomainObjectID) {
+            super(pDomainObjectID);
+		      «IF needsToImplementIdentifiable() == true»
+		      objectID = null;
+		      «ENDIF»
+          }
+      
+		«IF needsToImplementIdentifiable() == true»
+		«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())»
+		«ENDIF»
+
+        «EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
+        «EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
+        «EXPAND java::Helper::GenerateToStringMethod»
+      }
+      «ENDFILE»
+
+      «FILE packagePath() + "/" + name +".java" GenOnce»
+      «getFileHeader()»
+      package «this.packageName()»;
+      
+      «this.getJavadoc()»
+      public «IF isAbstract»abstract«ENDIF» class «name» extends «name»Base {
+        /**
+         * Default serial version uid.
+         */
+        private static final long serialVersionUID = 1L;
+        
+          /**
+           * Initialize object. Nothing special to do.
+           */
+          public «name»() {
+            // Nothing to do.
+          }
+          
+          /**
+           * Initialize object. Therefore its domain object id has to be passed.
+           * 
+           * @param pDomainObjectID Id of this domain object. The parameter must not be null.
+           */
+          public «name»(com.anaptecs.jeaf.core.api.DomainObjectID pDomainObjectID) {
+            super(pDomainObjectID);
+          }
+      
+        «EXPAND jeaf::JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperation»
+      }
+      «ENDFILE»
+  «ENDIF»
+«ENDIF»
+
+	«REM»Generate Object Mappers for POJO«ENDREM»
+	«EXPAND java::ObjectMapper::GenerateObjectMappers»
+«ENDDEFINE»

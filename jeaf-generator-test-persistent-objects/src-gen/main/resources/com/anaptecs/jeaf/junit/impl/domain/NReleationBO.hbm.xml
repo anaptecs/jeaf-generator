@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping for class com.anaptecs.jeaf.junit.impl.domain.NReleationBO -->
+<!-- and its subclasses NRelationSubOneBO, NRelationSubTwoBO -->
+<hibernate-mapping package="com.anaptecs.jeaf.junit.impl.domain">
+    <class name="NReleationBO" table="N_RELATION" discriminator-value="1002">
+        <id column="OID" name="objectID" length="15" />
+        <discriminator column="CLASS_ID" type="integer" />
+        <version column="VERSION" name="versionLabel" />
+
+        <!-- Attribute mapping for attribute "String myString" -->
+        <property name="myString" access="field" unique="false" not-null="false">
+            <column name="MYSTRING" unique="false" not-null="false" />
+        </property>
+
+        <!-- Association mapping for role "ms (1..*)" -->
+        <!-- Association NReleationBO - MReleationBO -->
+        <set name="ms" table="M_N_LINK" access="field" cascade="none">
+            <key column="NRELEATIONBO_OID" />
+            <many-to-many class="com.anaptecs.jeaf.junit.impl.domain.MReleationBO" column="MRELEATIONBO_OID" />
+        </set>
+
+        <!-- Subclass mapping for class "com.anaptecs.jeaf.junit.impl.domain.NRelationSubOneBO" -->
+        <subclass discriminator-value="1004" name="com.anaptecs.jeaf.junit.impl.domain.NRelationSubOneBO">
+
+            <!-- Attribute mapping for attribute "String fieldOne" -->
+            <property name="fieldOne" access="field" unique="false" not-null="false">
+                <column name="FIELDONE" unique="false" not-null="false" />
+            </property>
+        </subclass>
+
+        <!-- Subclass mapping for class "com.anaptecs.jeaf.junit.impl.domain.NRelationSubTwoBO" -->
+        <subclass discriminator-value="1005" name="com.anaptecs.jeaf.junit.impl.domain.NRelationSubTwoBO">
+
+            <!-- Attribute mapping for attribute "String fieldTwo" -->
+            <property name="fieldTwo" access="field" unique="false" not-null="false">
+                <column name="WEIRED_ROW_NAME" unique="false" not-null="false" />
+            </property>
+        </subclass>
+    </class>
+</hibernate-mapping>

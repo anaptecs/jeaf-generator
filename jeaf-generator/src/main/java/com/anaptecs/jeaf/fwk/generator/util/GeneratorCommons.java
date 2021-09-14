@@ -1,0 +1,830 @@
+/*
+ * anaptecs GmbH, Burgstr. 96, 72764 Reutlingen, Germany
+ * 
+ * Copyright 2004 - 2013 All rights reserved.
+ */
+package com.anaptecs.jeaf.fwk.generator.util;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Enumeration;
+import org.eclipse.uml2.uml.Generalization;
+import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.Port;
+import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.ValueSpecification;
+
+import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.checks.Assert;
+import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.anaptecs.jeaf.xfun.api.config.Configuration;
+
+public class GeneratorCommons {
+  /**
+   * Constant defines the name of the system property which contains the package white list of the generator.
+   */
+  public static final String GENERATOR_WHITELIST_PROPERTY = "list.pkgs.whitelist";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of public parts from the model.
+   */
+  public static final String CUSTOM_CONSTRAINTS_PROPERTY = "switch.gen.custom.constraints";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of service interfaces from the model.
+   */
+  public static final String SERVICES_PROPERTY = "switch.gen.services";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of service proxies from the model.
+   */
+  public static final String SERVICE_PROXIES_PROPERTY = "switch.gen.service.proxies";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of service provider interfaces from
+   * the model.
+   */
+  public static final String SERVICE_PROVIDER_INTERFACES_PROPERTY = "switch.gen.service.provider.interfaces";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of service provider impls from the
+   * model.
+   */
+  public static final String SERVICE_PROVIDER_IMPLS_PROPERTY = "switch.gen.service.provider.impls";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of service provider impls from the
+   * model.
+   */
+  public static final String REST_RESOURCES_PROPERTY = "switch.gen.rest.resources";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of service interfaces from the model.
+   */
+  public static final String ACTIVITY_INTERFACES_PROPERTY = "switch.gen.activity.interfaces";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of service interfaces from the model.
+   */
+  public static final String ACTIVITY_IMPLS_PROPERTY = "switch.gen.activity.impls";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of service objects from the model.
+   */
+  public static final String SERVICE_OBJECTS_PROPERTY = "switch.gen.service.objects";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of service objects from the model.
+   */
+  public static final String POJO_PROPERTY = "switch.gen.pojos";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of exception classes from the model.
+   */
+  public static final String EXCEPTION_CLASSES_PROPERTY = "switch.gen.exception.classes";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of service objects from the model.
+   */
+  public static final String DOMAIN_OBJECTS_PROPERTY = "switch.gen.domain.objects";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of persistent objects from the model.
+   */
+  public static final String PERSISTENT_OBJECTS_PROPERTY = "switch.gen.persistent.objects";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of object mappers from the model.
+   */
+  public static final String OBJECT_MAPPERS_PROPERTY = "switch.gen.object.mappers";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of component runtime classes from the
+   * model.
+   */
+  public static final String COMPONENT_RUNTIME_PROPERTY = "switch.gen.component.runtime.classes";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of component runtime classes from the
+   * model.
+   */
+  public static final String COMPONENT_IMPLS_PROPERTY = "switch.gen.component.impls";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of global parts from the model.
+   */
+  public static final String GLOBAL_PARTS_PROPERTY = "switch.gen.global.parts";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of public setters for to many
+   * associations.
+   */
+  public static final String GENERATE_PUBLIC_SETTERS = "switch.gen.public.setters.for.associations";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of null checks for setters fo to one
+   * associations of service objects.
+   */
+  public static final String GENERATE_NULL_CHECKS_FOR_TO_ONE_ASSOCIATIONS_OF_SERVICE_OBJECTS =
+      "switch.gen.null.checks.for.to.one.associations.of.service.objects";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of JUnit tests for services.
+   */
+  public static final String JUNIT_PROPERTY = "switch.gen.junits";
+
+  public static final String LINE_SEPARATOR = "\n";
+
+  public static final String CLASS_INDENTATION = "";
+
+  public static final String INTERFACE_INDENTATION = "";
+
+  public static final String ATTRIBUTE_INDENTATION = "  ";
+
+  public static final String METHOD_INDENTATION = "  ";
+
+  public static final String VERSION_PROPERTY = "info.version";
+
+  public static final String COMPANY_INFO_PROPERTY = "info.company";
+
+  public static final String COPYRIGHT_PROPERTY = "info.copyright";
+
+  public static final String AUTHOR_PROPERTY = "info.author";
+
+  public static final Set<String> NUMERIC_ANNOTATION_CLASSES;
+
+  public static final Set<String> DATE_ANNOTATION_CLASSES;
+
+  public static final Set<String> BOOLEAN_ANNOTATION_CLASSES;
+  static {
+    BOOLEAN_ANNOTATION_CLASSES = new HashSet<String>();
+    BOOLEAN_ANNOTATION_CLASSES.add(boolean.class.getName());
+    BOOLEAN_ANNOTATION_CLASSES.add(Boolean.class.getName());
+
+    NUMERIC_ANNOTATION_CLASSES = new HashSet<String>();
+    NUMERIC_ANNOTATION_CLASSES.add(BigDecimal.class.getName());
+    NUMERIC_ANNOTATION_CLASSES.add(BigInteger.class.getName());
+    NUMERIC_ANNOTATION_CLASSES.add(byte.class.getName());
+    NUMERIC_ANNOTATION_CLASSES.add(short.class.getName());
+    NUMERIC_ANNOTATION_CLASSES.add(int.class.getName());
+    NUMERIC_ANNOTATION_CLASSES.add(long.class.getName());
+    NUMERIC_ANNOTATION_CLASSES.add(Byte.class.getName());
+    NUMERIC_ANNOTATION_CLASSES.add(Short.class.getName());
+    NUMERIC_ANNOTATION_CLASSES.add(Integer.class.getName());
+    NUMERIC_ANNOTATION_CLASSES.add(Long.class.getName());
+
+    DATE_ANNOTATION_CLASSES = new HashSet<String>();
+    DATE_ANNOTATION_CLASSES.add(java.util.Date.class.getName());
+    DATE_ANNOTATION_CLASSES.add(java.util.Calendar.class.getName());
+    DATE_ANNOTATION_CLASSES.add("java.time.Instant");
+    DATE_ANNOTATION_CLASSES.add("java.time.LocalDate");
+    DATE_ANNOTATION_CLASSES.add("java.time.LocalDateTime");
+    DATE_ANNOTATION_CLASSES.add("java.time.LocalTime");
+    DATE_ANNOTATION_CLASSES.add("java.time.MonthDay");
+    DATE_ANNOTATION_CLASSES.add("java.time.OffsetDateTime");
+    DATE_ANNOTATION_CLASSES.add("java.time.OffsetTime");
+    DATE_ANNOTATION_CLASSES.add("java.time.Year");
+    DATE_ANNOTATION_CLASSES.add("java.time.YearMonth");
+    DATE_ANNOTATION_CLASSES.add("java.time.ZonedDateTime");
+    DATE_ANNOTATION_CLASSES.add("java.time.chrono.HijrahDate");
+    DATE_ANNOTATION_CLASSES.add("java.time.chrono.JapaneseDate");
+    DATE_ANNOTATION_CLASSES.add("java.time.chrono.MinguoDate");
+    DATE_ANNOTATION_CLASSES.add("java.time.chrono.ThaiBuddhistDate");
+  }
+
+  /**
+   * Method recursively resolves all attributes of the passed class from the whole inheritance hierarchy.
+   * 
+   * @param pClass UML Class object whose attributes should be resolved. The parameter must not be null.
+   * @return List All attributes of the passed class. The method never returns null.
+   */
+  public static List<Property> getAllAttributes( org.eclipse.uml2.uml.Class pClass ) {
+    // Check parameter
+    Assert.assertNotNull(pClass, "pClass");
+
+    List<Property> lAttributeSet = new ArrayList<Property>();
+    lAttributeSet.addAll(pClass.getOwnedAttributes());
+
+    // Traverse through class hierarchy to all super classes.
+    final Iterator<org.eclipse.uml2.uml.Class> lIterator = pClass.getSuperClasses().iterator();
+    while (lIterator.hasNext()) {
+      // Get super class and resolve all attributes.
+      org.eclipse.uml2.uml.Class lSuperClass = lIterator.next();
+      lAttributeSet.addAll(GeneratorCommons.getAllAttributes(lSuperClass));
+    }
+
+    // Return result.
+    return lAttributeSet;
+  }
+
+  /**
+   * Method checks whether the passed child class is assignable to the passed class.
+   * 
+   * @param pChild Child class for which the check will be performed. The parameter must not be null.
+   * @param pClass Class to check against. The parameter must not be null.
+   * @return boolean The method returns true if pChild is assignable to references of type pClass and false in all other
+   * cases.
+   */
+  public static boolean isAssignable( org.eclipse.uml2.uml.Class pChild, org.eclipse.uml2.uml.Class pClass ) {
+    // Parameter are both the same class and thus are assignable
+    boolean lResult;
+    if (pChild.equals(pClass)) {
+      lResult = true;
+    }
+    // Check class hierarchy of pChild and see if it contains pClass.
+    else {
+      lResult = false;
+      final List<Class> lSuperClasses = pChild.getSuperClasses();
+      final Iterator<Class> lIterator = lSuperClasses.iterator();
+      while (lIterator.hasNext()) {
+        Class lNextSuperClass = lIterator.next();
+        lResult = GeneratorCommons.isAssignable(lNextSuperClass, pClass);
+      }
+    }
+    // Return result.
+    return lResult;
+  }
+
+  /**
+   * Method checks whether the passed property can be used as a valid init value.
+   * 
+   * @param pProperty Property that should be checked if it has a real init value. The parameter must not be null.
+   * @return
+   */
+  public static boolean isRealInitValue( Property pProperty ) {
+    // Check parameter
+    Check.checkInvalidParameterNull(pProperty, "pProperty");
+
+    // Get default value from UML model and check if it is really set.
+    final ValueSpecification lDefaultValue = pProperty.getDefaultValue();
+    final boolean lIsRealInitValue;
+
+    // Default value is set.
+    if (lDefaultValue != null) {
+
+      // Check if it consists of at least one real character.
+      final String lStringValue = lDefaultValue.stringValue().trim();
+      if (lStringValue.length() > 0) {
+        lIsRealInitValue = true;
+      }
+      else {
+        lIsRealInitValue = false;
+      }
+    }
+    // No default value is set.
+    else {
+      lIsRealInitValue = false;
+    }
+    // Return result.
+    return lIsRealInitValue;
+  }
+
+  /**
+   * Method checks whether the passed package is part of the package white list for generation.
+   * 
+   * @param pPackage Package for which should be checked if it is part of the white list. The parameter must not be
+   * null.
+   * @return boolean The method returns true if the passed package belongs to the package white list and false in all
+   * other cases.
+   */
+  public static boolean isMayBeInPackageWhitelist( Package pPackage ) {
+    // Check parameter for null.
+    Check.checkInvalidParameterNull(pPackage, "pPackage");
+
+    // Check if system property is defined.
+    // TODO Move this check to class ResourceAccessProvider.
+    String lPropertyTest = System.getProperty(GENERATOR_WHITELIST_PROPERTY);
+    boolean lIsInWhitelist;
+
+    // Get white list as it is defined as system property
+    if (lPropertyTest != null) {
+      Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+      List<String> lPackageNames =
+          lConfiguration.getConfigurationValueList(GENERATOR_WHITELIST_PROPERTY, false, String.class);
+
+      // Check if white list is empty. This means that all packages should be generated.
+      if (lPackageNames.size() > 0) {
+        lIsInWhitelist = false;
+
+        // Get fully qualified name of the passed package.
+        String lPackageName = ClassUtil.getPackageName(pPackage);
+
+        for (String lNextWhitelistEntry : lPackageNames) {
+          // Get next white list entry and check if it matches with the passed package
+          if (lPackageName.startsWith(lNextWhitelistEntry) == true
+              || lNextWhitelistEntry.startsWith(lPackageName) == true) {
+            // White list entry and package match.
+            lIsInWhitelist = true;
+            break;
+          }
+        }
+      }
+      // No entries in white list defined and thus all packages will be accepted.
+      else {
+        lIsInWhitelist = true;
+      }
+    }
+    // System property is not defined and thus all packages will be accepted.
+    else {
+      lIsInWhitelist = true;
+    }
+
+    // Return result of white list check.
+    return lIsInWhitelist;
+  }
+
+  /**
+   * Method checks whether the passed package is part of the package white list for generation.
+   * 
+   * @param pNamedElement Package for which should be checked if it is part of the white list. The parameter must not be
+   * null.
+   * @return boolean The method returns true if the passed package belongs to the package white list and false in all
+   * other cases.
+   */
+  public static boolean isInGeneratorWhitelist( NamedElement pNamedElement ) {
+    // Check parameter for null.
+    Check.checkInvalidParameterNull(pNamedElement, "pNamedElement");
+
+    // Check if system property is defined.
+    // TODO Move this check to class ResourceAccessProvider.
+    String lPropertyTest = System.getProperty(GENERATOR_WHITELIST_PROPERTY);
+    boolean lIsInWhitelist;
+
+    // Get white list as it is defined as system property
+    if (lPropertyTest != null) {
+      Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+      List<String> lPackageNames =
+          lConfiguration.getConfigurationValueList(GENERATOR_WHITELIST_PROPERTY, false, String.class);
+
+      // Check if white list is empty. This means that all packages should be generated.
+      if (lPackageNames.size() > 0) {
+        lIsInWhitelist = false;
+
+        // Get fully qualified name of the passed package.
+        String lPackageName = ClassUtil.getPackageName(pNamedElement.getNearestPackage());
+
+        for (String lNextWhitelistEntry : lPackageNames) {
+          // Get next white list entry and check if it matches with the passed package
+          if (lPackageName.startsWith(lNextWhitelistEntry) == true) {
+            // White list entry and package match.
+            lIsInWhitelist = true;
+            break;
+          }
+        }
+      }
+      // No entries in white list defined and thus all packages will be accepted.
+      else {
+        lIsInWhitelist = true;
+      }
+    }
+    // System property is not defined and thus all packages will be accepted.
+    else {
+      lIsInWhitelist = true;
+    }
+
+    // Return result of white list check.
+    return lIsInWhitelist;
+  }
+
+  /**
+   * Method checks whether the custom constraint for Java validation from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if custom validations should be generated from the model and false in all other
+   * cases.
+   */
+  public static boolean generateCustomConstraints( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(CUSTOM_CONSTRAINTS_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether services from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if public parts should be generated from the model and false in all other
+   * cases.
+   */
+  public static boolean generateServices( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(SERVICES_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether service proxies from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if public parts should be generated from the model and false in all other
+   * cases.
+   */
+  public static boolean generateServiceProxies( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(SERVICE_PROXIES_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether service provider interfaces from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if service provider interfaces should be generated from the model and false in
+   * all other cases.
+   */
+  public static boolean generateServiceProviderInterfaces( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(SERVICE_PROVIDER_INTERFACES_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether service provider interfaces from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if service provider interfaces should be generated from the model and false in
+   * all other cases.
+   */
+  public static boolean generateServiceProviderImpls( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(SERVICE_PROVIDER_IMPLS_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether service provider interfaces from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if service provider interfaces should be generated from the model and false in
+   * all other cases.
+   */
+  public static boolean generateRESTResources( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(REST_RESOURCES_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether activity interfaces from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if activity interfaces should be generated from the model and false in all
+   * other cases.
+   */
+  public static boolean generateActivityInterfaces( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(ACTIVITY_INTERFACES_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether activity implementations from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if activity implementations should be generated from the model and false in all
+   * other cases.
+   */
+  public static boolean generateActivityImpls( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(ACTIVITY_IMPLS_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether service objects from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if public parts should be generated from the model and false in all other
+   * cases.
+   */
+  public static boolean generateServiceObjects( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(SERVICE_OBJECTS_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether POJOs from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if POJOs should be generated from the model and false in all other cases.
+   */
+  public static boolean generatePOJOs( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(POJO_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether exception classes from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if exception classes should be generated from the model and false in all other
+   * cases.
+   */
+  public static boolean generateExceptionClasses( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(EXCEPTION_CLASSES_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether service objects from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if public parts should be generated from the model and false in all other
+   * cases.
+   */
+  public static boolean generateDomainObjects( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(DOMAIN_OBJECTS_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether object mappers from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if object mappers should be generated from the model and false in all other
+   * cases.
+   */
+  public static boolean generateObjectMappers( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(OBJECT_MAPPERS_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether component implementation classes from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if component implementation classes should be generated from the model and
+   * false in all other cases.
+   */
+  public static boolean generateComponentImplClasses( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(COMPONENT_IMPLS_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether component runtime classes from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if component runtime classes should be generated from the model and false in
+   * all other cases.
+   */
+  public static boolean generateComponentRuntimeClasses( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(COMPONENT_RUNTIME_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether service objects from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if public parts should be generated from the model and false in all other
+   * cases.
+   */
+  public static boolean generatePersistentObjects( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(PERSISTENT_OBJECTS_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether the global parts from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if gloabal parts should be generated from the model and false in all other
+   * cases.
+   */
+  public static boolean generateGlobalParts( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GLOBAL_PARTS_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether JUnit test should be generated for every service or not.
+   * 
+   * @return boolean Method returns true if JUnit tests should be generated from the model and false in all other cases.
+   */
+  public static boolean generateJUnitTests( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(JUNIT_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean generatePublicSettersForAssociations( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_PUBLIC_SETTERS, Boolean.FALSE, Boolean.class);
+  }
+
+  public static boolean generateNullChecksForToOneAssociationsOfServiceObjects( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_NULL_CHECKS_FOR_TO_ONE_ASSOCIATIONS_OF_SERVICE_OBJECTS,
+        Boolean.TRUE, Boolean.class);
+  }
+
+  public static String getVersion( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(VERSION_PROPERTY, true, String.class);
+  }
+
+  public static String getCompanyInfo( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(COMPANY_INFO_PROPERTY, true, String.class);
+  }
+
+  public static String getAuthor( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(AUTHOR_PROPERTY, true, String.class);
+  }
+
+  public static String getCopyrightTag( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(COPYRIGHT_PROPERTY, true, String.class);
+  }
+
+  public static String getFileHeader( ) {
+    String lFileHeader = CLASS_INDENTATION + "/*";
+    lFileHeader = lFileHeader + LINE_SEPARATOR + "* " + GeneratorCommons.getCompanyInfo();
+    lFileHeader = lFileHeader + LINE_SEPARATOR + "* ";
+    lFileHeader = lFileHeader + LINE_SEPARATOR + "* " + GeneratorCommons.getCopyrightTag();
+    lFileHeader = lFileHeader + LINE_SEPARATOR + "*/";
+    return lFileHeader;
+  }
+
+  public static String getJavadoc( Class pClass ) {
+    String lFormattedComment = GeneratorCommons.getFormattedComment(pClass, CLASS_INDENTATION);
+    String lJavadoc = CLASS_INDENTATION + "/**";
+    lJavadoc = lJavadoc + lFormattedComment;
+    lJavadoc = lJavadoc + LINE_SEPARATOR + CLASS_INDENTATION + " * @author " + GeneratorCommons.getAuthor();
+    lJavadoc = lJavadoc + LINE_SEPARATOR + CLASS_INDENTATION + " * @version " + GeneratorCommons.getVersion();
+    lJavadoc = lJavadoc + LINE_SEPARATOR + CLASS_INDENTATION + " */" + LINE_SEPARATOR;
+
+    return lJavadoc;
+  }
+
+  public static String getJavadoc( Interface pInterface ) {
+    String lFormattedComment = GeneratorCommons.getFormattedComment(pInterface, INTERFACE_INDENTATION);
+    String lJavadoc = INTERFACE_INDENTATION + "/**";
+    lJavadoc = lJavadoc + lFormattedComment;
+    lJavadoc = lJavadoc + LINE_SEPARATOR + INTERFACE_INDENTATION + " * @author " + GeneratorCommons.getAuthor();
+    lJavadoc = lJavadoc + LINE_SEPARATOR + INTERFACE_INDENTATION + " * @version " + GeneratorCommons.getVersion();
+    lJavadoc = lJavadoc + LINE_SEPARATOR + INTERFACE_INDENTATION + " */" + LINE_SEPARATOR;
+
+    return lJavadoc;
+  }
+
+  public static String getJavadoc( Operation pOperation ) {
+    final String lIndentation = METHOD_INDENTATION;
+    final String lNewLine = LINE_SEPARATOR + lIndentation + " * ";
+
+    // Create Javadoc for method.
+    String lJavadoc = lIndentation + "/**";
+
+    // Get comment of method
+    String lFormattedComment = GeneratorCommons.getFormattedComment(pOperation, lIndentation);
+    lJavadoc = lJavadoc + lFormattedComment;
+    lJavadoc = lJavadoc + lNewLine;
+
+    final Parameter lReturnType = pOperation.getReturnResult();
+    // Create comment for all parameters
+    final Iterator<Parameter> lIterator = pOperation.getOwnedParameters().iterator();
+    while (lIterator.hasNext()) {
+      final Parameter lParameter = lIterator.next();
+      if (lParameter != lReturnType) {
+        String lComment = GeneratorCommons.getFormattedComment(lParameter, lIndentation);
+        lJavadoc = lJavadoc + lNewLine + "@param " + lParameter.getName() + lComment;
+      }
+    }
+
+    // Create comment for return type.
+    if (lReturnType != null && "void".equals(lReturnType.getType().getName()) == false) {
+      String lComment = GeneratorCommons.getFormattedComment(lReturnType, lIndentation);
+      lJavadoc = lJavadoc + lNewLine + "@return {@link " + lReturnType.getType().getName() + "} " + lComment;
+    }
+
+    final Iterator<Type> lExceptionIterator = pOperation.getRaisedExceptions().iterator();
+    while (lExceptionIterator.hasNext()) {
+      final Type lNextException = lExceptionIterator.next();
+      lJavadoc = lJavadoc + lNewLine + "@throws {@link " + lNextException.getName() + "}";
+    }
+
+    lJavadoc = lJavadoc + LINE_SEPARATOR + lIndentation + " */";
+    return lJavadoc;
+  }
+
+  public static String getFormattedComment( Element pElement, String pIndentation ) {
+    String lFormattedComment = "";
+    final String lNewLine = LINE_SEPARATOR + pIndentation + " * ";
+    for (Comment lNextComment : pElement.getOwnedComments()) {
+      String lBody = lNextComment.getBody();
+      if (lBody != null && lBody.length() > 0) {
+        lFormattedComment = lFormattedComment + lNewLine + lBody.trim().replaceAll(LINE_SEPARATOR, lNewLine);
+        // Add line for every comment
+        lFormattedComment = lFormattedComment + lNewLine;
+      }
+    }
+    return lFormattedComment;
+  }
+
+  public static String getAllExtendedInterfaces( Interface pInterface ) {
+    final Iterator<Generalization> lIterator = pInterface.getGeneralizations().iterator();
+    StringBuffer lBuffer = new StringBuffer();
+    while (lIterator.hasNext()) {
+      final Generalization lNextGeneralization = lIterator.next();
+      lBuffer.append(Naming.getFullyQualifiedName(lNextGeneralization.getGeneral()));
+      if (lIterator.hasNext()) {
+        lBuffer.append(", ");
+      }
+    }
+    return lBuffer.toString();
+  }
+
+  public static boolean isPort( Property pProperty ) {
+    boolean lIsPort = pProperty instanceof Port;
+    return lIsPort;
+  }
+
+  public static boolean runChecks( NamedElement pElement ) {
+    boolean lRunChecks = false;
+
+    Package lPackage = pElement.getNearestPackage();
+    NamedElement lOwner = (NamedElement) pElement.getOwner();
+
+    if (GeneratorCommons.isInGeneratorWhitelist(lPackage) == true) {
+      String lOwnerName = Naming.getFullyQualifiedName(lOwner);
+      String lElementName = pElement.getName();
+      String lFQN;
+      if (lElementName != null && lElementName.isEmpty() == false) {
+        if (lOwnerName != null && lOwnerName.isEmpty() == false) {
+          lFQN = lOwnerName + "." + lElementName;
+        }
+        else {
+          lFQN = lElementName;
+        }
+      }
+      else {
+        lFQN = pElement.toString();
+      }
+      // Check for stereotypes
+      if (lOwner instanceof Behavior) {
+        XFun.getTrace().debug("Not handling behaviour " + lFQN);
+      }
+      else if (lOwner instanceof Class || lOwner instanceof Interface || lOwner instanceof Component
+          || lOwner instanceof Enumeration || lOwner instanceof Activity || pElement instanceof Dependency) {
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_ACTIVITY);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_APPLICATION_EXCEPTION);
+        // lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_COMPONENT);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_DOMAIN_OBJECT);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_JEAF_ENUMERATION);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_JEAF_SERVICE);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_LOAD_STRATEGY);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_PERSISTENT_OBJECT);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_POJO);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_QUERY_OBJECT);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_SERVICE_OBJECT);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_SERVICE_PROVIDER);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_SERVICE_PROVIDER_IMPL);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_SYSTEM_EXCEPTION);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_SYSTEM_EXCEPTION);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_PERSISTENCE_UNIT);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_OBJECT_MAPPING);
+
+        if (lRunChecks == false) {
+          XFun.getTrace().debug("Ignoring " + lFQN);
+        }
+        else {
+          XFun.getTrace().debug("Checking " + lFQN);
+        }
+      }
+      else {
+        XFun.getTrace().debug("Ignoring " + lFQN + " due to not known stereotype.");
+      }
+    }
+    // Nothing to do as element is not included in white list.
+    else {
+    }
+    return lRunChecks;
+  }
+
+  public static boolean isCharSequence( Type pTypedElement ) {
+    boolean lIsCharSequence;
+    String lFullyQualifiedName = Naming.getFullyQualifiedName(pTypedElement);
+    if ("String".equals(lFullyQualifiedName) == true) {
+      lIsCharSequence = true;
+    }
+    else {
+      try {
+        java.lang.Class<?> lClass = java.lang.Class.forName(lFullyQualifiedName);
+        lIsCharSequence = CharSequence.class.isAssignableFrom(lClass);
+      }
+      catch (ClassNotFoundException e) {
+        lIsCharSequence = false;
+      }
+    }
+    return lIsCharSequence;
+  }
+
+  public static boolean isNumericForAnnotation( Type pTypedElement ) {
+    String lFullyQualifiedName = Naming.getFullyQualifiedName(pTypedElement);
+    return NUMERIC_ANNOTATION_CLASSES.contains(lFullyQualifiedName);
+  }
+
+  public static boolean isDateForAnnotation( Type pTypedElement ) {
+    String lFullyQualifiedName = Naming.getFullyQualifiedName(pTypedElement);
+    return DATE_ANNOTATION_CLASSES.contains(lFullyQualifiedName);
+  }
+
+  public static boolean isBooleanForAnnotation( Type pTypedElement ) {
+    String lFullyQualifiedName = Naming.getFullyQualifiedName(pTypedElement);
+    return BOOLEAN_ANNOTATION_CLASSES.contains(lFullyQualifiedName);
+  }
+}

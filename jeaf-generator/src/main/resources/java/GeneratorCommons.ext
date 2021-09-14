@@ -1,0 +1,152 @@
+
+// Function checks whether the passed package is part of the package white list for generation. 
+cached String isMayBeInPackageWhitelist(uml::Package package) : 
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isMayBeInPackageWhitelist(org.eclipse.uml2.uml.Package);
+    
+cached String isInGeneratorWhitelist(uml::NamedElement namedElement) : 
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isInGeneratorWhitelist(org.eclipse.uml2.uml.NamedElement);
+    
+cached List getAuthorizationTypeNames(uml::Interface service) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getAuthorizationTypeNames(org.eclipse.uml2.uml.Interface);
+    
+cached boolean isStereotypeApplied(uml::Element element, String stereotype) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isStereotypeApplied(org.eclipse.uml2.uml.Element, java.lang.String);
+    
+cached List getAllAuthorizationTypes(uml::Model model) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getAllAuthorizationTypes(org.eclipse.uml2.uml.Model);
+   
+cached List getAllJEAFActors(uml::Model model) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getAllJEAFActors(org.eclipse.uml2.uml.Model);
+cached List getAllUseCases(uml::Model model) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getAllUseCases(org.eclipse.uml2.uml.Model);
+
+cached List getReferencedAuthorizationTypeNames(uml::Actor actor) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getReferencedAuthorizationTypeNames(org.eclipse.uml2.uml.Actor);
+
+cached List getAssociatedUseCases(uml::Actor actor) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getAssociatedUseCases(org.eclipse.uml2.uml.Actor);
+
+cached boolean generateServiceObjects() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateServiceObjects();
+    
+cached boolean generatePOJOs() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generatePOJOs();    
+    
+cached boolean generateExceptionClasses() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateExceptionClasses();
+    
+cached boolean generateServices() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateServices();
+    
+cached boolean generateServiceProxies() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateServiceProxies();
+    
+cached boolean generateServiceProviderInterfaces() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateServiceProviderInterfaces();
+    
+cached boolean generateServiceProviderImpls() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateServiceProviderImpls();
+    
+cached boolean generateRESTResources() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateRESTResources();
+    
+cached boolean generateActivityInterfaces() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateActivityInterfaces();
+    
+cached boolean generateActivityImpls() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateActivityImpls();
+    
+cached boolean generateDomainObjects() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateDomainObjects();
+    
+cached boolean generatePersistentObjects() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generatePersistentObjects();
+    
+cached boolean generateObjectMappers() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateObjectMappers();
+    
+cached boolean generateComponentImplClasses() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateComponentImplClasses();
+    
+cached boolean generateComponentRuntimeClasses() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateComponentRuntimeClasses();
+    
+cached boolean generateGlobalParts() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateGlobalParts();
+    
+cached boolean generateCustomConstraints() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateCustomConstraints();
+    
+cached boolean generateJUnitTests() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateJUnitTests();
+    
+cached String getFileHeader() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getFileHeader();        
+    
+cached String getOIDRowName(uml::Class class) :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getOIDRowName(org.eclipse.uml2.uml.Class);
+    
+cached String getVersionLabelRowName(uml::Class class) :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getVersionLabelRowName(org.eclipse.uml2.uml.Class);
+    
+cached boolean generatePublicSettersForAssociations() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generatePublicSettersForAssociations();
+    
+cached boolean generateNullChecksForToOneAssociationsOfServiceObjects() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateNullChecksForToOneAssociationsOfServiceObjects();
+            
+cached boolean isPort(uml::Property property):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isPort(org.eclipse.uml2.uml.Property);
+    
+cached boolean runChecks(uml::NamedElement element):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.runChecks(org.eclipse.uml2.uml.NamedElement);
+
+cached boolean isCharSequence(uml::Type type):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isCharSequence(org.eclipse.uml2.uml.Type);
+
+cached boolean isNumericForAnnotation(uml::Type type):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isNumericForAnnotation(org.eclipse.uml2.uml.Type);
+
+cached boolean isDateForAnnotation(uml::Type type):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isDateForAnnotation(org.eclipse.uml2.uml.Type);
+
+cached boolean isBooleanForAnnotation(uml::Type type):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isBooleanForAnnotation(org.eclipse.uml2.uml.Type);
+
+cached boolean hasReadOnlyProperties(uml::Class class):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.hasReadOnlyProperties(org.eclipse.uml2.uml.Class);
+    
+cached boolean needsToImplementIdentifiable(uml::Class class):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.needsToImplementIdentifiable(org.eclipse.uml2.uml.Class);
+    
+cached boolean implementsIdentifiable(uml::Class class):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.implementsIdentifiable(org.eclipse.uml2.uml.Class);
+    
+cached boolean isPOJO(uml::Class class):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isPOJO(org.eclipse.uml2.uml.Class);
+    
+cached boolean isServiceObject(uml::Class class):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isServiceObject(org.eclipse.uml2.uml.Class);
+    
+cached boolean isDomainObject(uml::Class class):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isDomainObject(org.eclipse.uml2.uml.Class);
+    
+cached boolean isPersistentObject(uml::Class class):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isPersistentObject(org.eclipse.uml2.uml.Class);
+    
+cached boolean hasPersistentClasses(uml::Package package):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.hasPersistentClasses(org.eclipse.uml2.uml.Package);
+    
+List getPersistentClassNames(uml::Package package):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getPersistentClassNames(org.eclipse.uml2.uml.Package);
+	
+List getPersistentClassesMappingFileNames(uml::Package package):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getPersistentClassesMappingFileNames(org.eclipse.uml2.uml.Package);
+	
+String getObjectIDClassName(JMM::ServiceObject serviceObject): 'com.anaptecs.jeaf.core.api.ServiceObjectID';
+
+String getObjectIDClassName(JMM::POJO pojo): 'com.anaptecs.jeaf.core.api.ObjectID';
+
+String getObjectIDClassName(JMM::DomainObject domainObject): 'com.anaptecs.jeaf.core.api.DomainObjectID';
+
+uml::Class getOwningClass(uml::Operation operation): (uml::Class) operation.owner;

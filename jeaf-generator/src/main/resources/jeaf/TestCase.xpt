@@ -1,0 +1,143 @@
+«EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION entity::ModelProperties»
+«IMPORT uml»
+«IMPORT JMM»
+«IMPORT java»
+
+
+«DEFINE JEAFTestCaseTemplate FOR JEAFService»
+  «EXPAND TestCaseBaseClass»
+  «EXPAND TestCaseClass»
+«ENDDEFINE»
+
+«DEFINE TestCaseBaseClass FOR JEAFService»
+«FILE packagePath() + "/test/" + this.getTestCaseBaseName() + ".java" GenBase»
+«getFileHeader()»
+package «packageName()».test;
+
+import com.anaptecs.jeaf.junit.JEAFTestCase;
+
+/**
+ * This is the base class of the test suite of service «name».
+ * 
+ * @version $LastChangedRevision: 931 $
+ */
+public abstract class «this.getTestCaseBaseName()» extends JEAFTestCase {
+
+  /**
+   * Service that should be tested by this test case.
+   */
+  @com.anaptecs.jeaf.core.annotations.JEAFService
+  protected «this.fqn()» «name.toFirstLower()»;
+
+  /**
+   * Initialize test case. Therefore the name of the test that should be executed must be provided.
+   * 
+   * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
+   */
+  public «this.getTestCaseBaseName()»( String pName ) {
+    super(pName);
+  }
+
+  /**
+   * Initialize test case. Therefore the name of the test that should be executed must be provided. The userId and the
+   * password of a specific user can be given to this Constructor so this specific user can be logged in.
+   * 
+   * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
+   * @param pUserId UserId of the User who should be logged in for this Test.
+   * @param pPassword Password of the User who should be logged in for this Test.
+   */
+  public «this.getTestCaseBaseName()»( String pName, String pUserId, String pPassword ) {
+    super(pName, pUserId, pPassword);
+  }
+
+  «FOREACH this.getOperationNames().typeSelect(String) AS method»
+  /**
+   * Method test the implementation of service method «method»(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void test«method.toFirstUpper()»() throws Exception;
+  «ENDFOREACH»
+}
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE TestCaseClass FOR JEAFService»
+«FILE packagePath() + "/test/" + this.getTestCaseName() + ".java" GenOnce»
+«getFileHeader()»
+package «packageName()».test;
+
+import junit.framework.TestSuite;
+
+/**
+ * This class implements the test suite for service «name».
+ */
+public class «this.getTestCaseName()» extends «this.getTestCaseBaseName()» {
+  /**
+   * Method creates a test suite contain all tests of this class.
+   * 
+   * @return {@link TestSuite} Test suite with all tests of this class.
+   */
+  public static TestSuite suite( ) {
+    // Create new test suite.
+    TestSuite lSuite = new TestSuite("«this.getTestCaseName()»");
+
+    // Add all test of this class.
+    «FOREACH this.getOperationNames().typeSelect(String) AS name»
+    lSuite.addTest(new «this.getTestCaseName()»("test«name.toFirstUpper()»"));«ENDFOREACH»
+
+    // Return created test suite.
+    return lSuite;
+  }
+
+  /**
+   * Initialize test case. Therefore the name of the test that should be executed must be provided.
+   * 
+   * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
+   */
+  public «this.getTestCaseName()»( String pName ) {
+    super(pName);
+  }
+
+  /**
+   * Initialize test case. Therefore the name of the test that should be executed must be provided. The userId and the
+   * password of a specific user can be given to this Constructor so this specific user can be logged in.
+   * 
+   * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
+   * @param pUserId UserId of the User who should be logged in for this Test.
+   * @param pPassword Password of the User who should be logged in for this Test.
+   */
+  public «this.getTestCaseName()»( String pName, String pUserId, String pPassword ) {
+    super(pName, pUserId, pPassword);
+  }
+
+  /**
+   * Method performs test case specific initialization routines. If a test case implementation requires some special
+   * operations at startup this method can be overridden.
+   * 
+   * @throws Exception if an error occurs during initialization.
+   */
+  @Override
+  protected void init( ) throws Exception {
+    super.init();
+
+    // TODO Add additional initializations if required.
+  }
+
+	«FOREACH this.getOperationNames().typeSelect(String) AS name»
+  /**
+   * Method test the implementation of service method «name»
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void test«name.toFirstUpper()»( ) throws Exception {
+    // TODO Implement test for service method «name»(...)
+  }
+  «ENDFOREACH»
+}
+«ENDFILE»
+«ENDDEFINE»
+

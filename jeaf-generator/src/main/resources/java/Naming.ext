@@ -1,0 +1,288 @@
+// Function returns the name of the parameter for a java method accoring to the anaptecs code styleguide. For the 
+// element "name" the function will return "pName".
+cached String asParameter (uml::NamedElement element) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.asParameterName( org.eclipse.uml2.uml.NamedElement );
+    
+
+// Function returns the name of the java set method for this named element. For the element "name" the function will 
+// return "setName".
+String asSetter (uml::NamedElement element) :
+    "set" + element.name.toFirstUpper();
+
+// Function returns the name of the java get method for this named element. For the element "name" the function will 
+// return "getName".
+String asGetter (uml::NamedElement element) :
+    "get" + element.name.toFirstUpper();
+
+// Function returns the name of the java unset method for this named element. For the element "name" the function will 
+// return "unsetName".
+String asUnset (uml::NamedElement element) :
+    "unset" + element.name.toFirstUpper();
+
+cached String asInstanceVar (uml::NamedElement elem) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.asInstanceName( org.eclipse.uml2.uml.NamedElement );
+    
+cached String asLocalVar (uml::NamedElement elem) :
+    "l" + elem.name.toFirstUpper();
+    
+String asIdField (uml::NamedElement elem) : 
+    elem.asField()+"_OID";
+
+String getForeignKeyName (uml::NamedElement elem) : 
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getForeignKeyName(org.eclipse.uml2.uml.NamedElement );
+
+String asField (uml::NamedElement elem) : 
+    elem.name.toUpperCase();
+
+// Liefert den Package-Namen einer Klasse
+String packageName (uml::NamedElement cls) : 
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getPackageName(org.eclipse.uml2.uml.NamedElement);
+    
+// Liefert das Package einer Klasse als Pfad
+String packagePath (uml::NamedElement cls) : 
+    packageName(cls).replaceAll("\\.", "/");
+    
+String packagePath (uml::Package package) : 
+    packageName(package).replaceAll("\\.", "/");
+    
+// Liefert das Package einer Klasse als Pfad
+String packagePath (String path) : 
+    path.replaceAll("\\.", "/");
+    
+        
+// Function returns the name of the business object base class for the passed class. The functions result will be cached 
+// since it will be called for the same object many times during the generation process.
+cached String getBOBaseName (uml::Class cls) :
+    cls.name + "Base";
+    
+// Function returns the name of the business object class for the passed class. The functions result will be cached 
+// since it will be called for the same object many times during the generation process.
+cached String getBOName (uml::Type type) :
+    type.name;
+    
+// Method returns the name for the JEAF Command class or the passed method object. The returned name will be created
+// from the name of the method and the type of each parameter.
+cached String getCommandClassName(uml::Operation operation) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.getCommandClassName( org.eclipse.uml2.uml.Operation);
+    
+// Function returns the name of the service object mapper for the paased class.
+cached String getObjectMapperName(uml::Type type) :
+    type.name + "Converter";
+    
+
+// Function returns the name of the service object mapper for the paased class.
+cached String getObjectMapperName(String sourceName, String targetName) :
+    sourceName+ "To" + targetName + "Converter";
+
+// Function returns the name of the service provider factory for the passed class.    
+cached String getServiceProviderFactoryName(uml::Class class) :
+    class.name + "Factory";
+    
+// Function returns the name of the test case base class.    
+cached String getTestCaseBaseName(uml::NamedElement element) :
+    element.name + "TestBase";
+    
+// Function returns the name of the test case class.    
+cached String getTestCaseName(uml::NamedElement element) :
+    element.name + "Test";
+    
+// For "normale" Typen wird einfach der Name als qualifizierter Name geliefert
+// Blob wird von OAW nicht als Klasse anerkannt, deswegen muss sie hier behandelt werden.
+cached String fqn (uml::NamedElement element) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.getFullyQualifiedName( org.eclipse.uml2.uml.NamedElement);
+
+// For "normale" Typen wird einfach der Name als qualifizierter Name geliefert
+// Blob wird von OAW nicht als Klasse anerkannt, deswegen muss sie hier behandelt werden.
+cached String fqnForXML (uml::NamedElement element) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.getFullyQualifiedNameForXML( org.eclipse.uml2.uml.NamedElement);
+
+// *** HILFSFUNKTIONEN ***
+// mit private gekennzeichnete Extensions sind nicht au�erhalb des Extension Files sichtbar
+// Diese Funktion ermittelt rekursiv den qualifizierten Packagenamen eines Packages.
+private cached String packageName (uml::Package pck) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getPackageName(org.eclipse.uml2.uml.Package);
+
+// Funktionen f�r den Kommentar von Klassen, Attributen und Methoden
+// zur Zeit wird er lediglich fuer die Klassen und Mehtoden Kommentare eingesetzt    
+String getComment(uml::Element element):
+    getComment(element.ownedComment);
+    
+String getFormattedComment(uml::Element element, String indentation):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getFormattedComment(org.eclipse.uml2.uml.Element, java.lang.String);
+    
+String getComment(List commentList):
+    commentList.size > 0 ? getComment(commentList.get(0)) : "";
+                  
+String getComment(uml::Comment comment):
+    comment.body;
+    //JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getFormattedComment(org.eclipse.uml2.uml.Comment, "");
+    
+String getComment(Object this): "";
+
+String getJavadoc(uml::Interface interface):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavadoc(org.eclipse.uml2.uml.Interface);
+    
+String getJavadoc(uml::Class class):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavadoc(org.eclipse.uml2.uml.Class);
+    
+String getJavadoc(uml::Operation operation):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavadoc(org.eclipse.uml2.uml.Operation);
+    
+    
+// Konvertiert einen Parameter zu einer Instanzvariable
+String fromParameterToInstance(uml::NamedElement elem) : 
+    JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.fromParameterToInstance(org.eclipse.uml2.uml.NamedElement);
+
+// Returns the parameter names as list, comma separated
+cached String asParameterListNames(uml::Operation operation) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getParameterListNames(org.eclipse.uml2.uml.Operation);
+    
+cached String getParameterTypeNames(uml::Operation operation) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getParameterTypeNames(org.eclipse.uml2.uml.Operation);
+
+// Returns the parameters as Java Doc for a operation
+String asParameterJavaDoc(uml::Operation operation) : 
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getParameterJavaDoc(org.eclipse.uml2.uml.Operation);
+
+// Returns the paramters names as list, coma separated, cuts off the first letter (should always be "p")
+String asParameterListInstanceNames(uml::Operation operation) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getParameterListInstanceNames(org.eclipse.uml2.uml.Operation);
+    
+String asParameterDefinitionList(List parameters):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.asParameterDefinitionList(java.util.List);
+    
+cached boolean isInputParameter(uml::Parameter parameter):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isInputParameter(org.eclipse.uml2.uml.Parameter);
+                
+// Returns the name of the parameter's type, adds a "[]" at the end if the parameter is multivalued
+String getTypeName(uml::Parameter parameter) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getTypeName(org.eclipse.uml2.uml.TypedElement);
+    
+//  Returns the name of the return parameter, adds a "[]" at the end if the parameter is multivalued    
+String getReturnTypeName(uml::Operation operation) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getReturnType(org.eclipse.uml2.uml.Operation);
+    
+boolean returnsPrimitiveType(uml::Operation operation) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.returnsPrimitiveType(org.eclipse.uml2.uml.Operation);
+    
+
+boolean isSupportedReturnType(uml::Operation operation) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isSupportedReturnType(org.eclipse.uml2.uml.Operation);
+
+boolean hasReturnType(uml::Operation operation) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.hasReturnType(org.eclipse.uml2.uml.Operation);
+
+boolean hasOnlySupportedParamaterTypes(uml::Operation operation) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.hasOnlySupportedParamaterTypes(org.eclipse.uml2.uml.Operation);
+
+boolean isPrimitiveType(uml::Type type) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isPrimitive(org.eclipse.uml2.uml.Type);
+                
+// Returns the thrown Exceptions of a method, exceptions come separated by a ","
+String getThrownExceptionsAsString(uml::Operation operation) : 
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getThrownExceptionsAsString(org.eclipse.uml2.uml.Operation);
+                
+// Returns the thrown Exceptions of a method, exceptions come separated by a ","
+List getThrownExceptionsAsList(uml::Operation operation) : 
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getThrownExceptionsAsList(org.eclipse.uml2.uml.Operation);
+
+// Verifies whether this operation throws a ApplicationException or a subclass of it.
+boolean throwsApplicationException(uml::Operation operation) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.throwsApplicationException(org.eclipse.uml2.uml.Operation);
+// Returns the name of the subclass of the Exception which this operation raises.
+// Supported are ApplicationException and SystemException.  
+String getExceptionName(uml::Operation operation, String type) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getExceptionName(org.eclipse.uml2.uml.Operation, java.lang.String);
+
+// Returns the number of the contained JEAF services.               
+int countJeafServices(uml::Component component) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.countJeafServices(org.eclipse.uml2.uml.Component);
+
+// Returns the Jeaf services. The result is a list with uml::Interface objects.
+List getJeafServices(uml::Component component) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getJeafServices(org.eclipse.uml2.uml.Component);
+    
+// Returns the Jeaf services. The result is a list with uml::Interface objects.
+List getJEAFServices(uml::Port port) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getJEAFServices(org.eclipse.uml2.uml.Port);
+    
+// Returns the Jeaf services. The result is a list with uml::Interface objects.
+List getAllProvidedJEAFServices(uml::Component component) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getAllProvidedJEAFServices(org.eclipse.uml2.uml.Component);
+    
+cached JMM::PersistenceUnit getPersistenceUnit(uml::Component component) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getPersistenceUnit(org.eclipse.uml2.uml.Component);
+
+boolean hasPersistenceUnit(uml::Component component) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.hasPersistenceUnit(org.eclipse.uml2.uml.Component);
+
+// Returns the Jeaf services. The result is a list with uml::Interface objects.
+List getInterceptors(uml::Component component) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getInterceptors(org.eclipse.uml2.uml.Component);
+    
+String getImplementedInterfaceNames(uml::Class class) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getImplementedInterfaces(org.eclipse.uml2.uml.Class);
+    
+    
+
+List getRequiredServicesSorted(uml::Component component) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getRequiredServicesSorted(org.eclipse.uml2.uml.Component);
+    
+List getRequiredServicesSorted(uml::Port port) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getRequiredServicesSorted(org.eclipse.uml2.uml.Port);
+    
+List getAllRequiredJEAFServices(uml::Component component) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getAllRequiredJEAFServices(org.eclipse.uml2.uml.Component);
+    
+// Checks class ids of all entities and service entities. Ensures that no class id is used twice in two direfent
+// classes. Returns a list with all used class ids with their class names.          
+List getClassIDs(uml::Package package) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getClassIDs(org.eclipse.uml2.uml.Package);
+            
+// Checks property if its tagged value tabel is valid   
+Boolean isTableValid(uml::Property property) :  
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isTableValid(org.eclipse.uml2.uml.Property);
+                
+// Gets the link table of this many to many association
+String getLinkTable(uml::Property property) :  
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getLinkTable(org.eclipse.uml2.uml.Property);
+    
+uml::Class getOppositeEndType(uml::Property role) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getOppositeEndType(org.eclipse.uml2.uml.Property);
+
+// Function returns the name of the passed cascade type. The name of the cascade type will be converted to lower case 
+// characters.
+cached String getCascadeTypeNames(Collection cascadeTypes) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getEnumerationLiteralsAsString(java.util.Collection);
+    
+cached String getTransactionBehavior(JMM::TransactionBehavior transactionBehavior) :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getEnumerationLiteralName(org.eclipse.uml2.uml.EnumerationLiteral);
+    
+cached String getLayer(JMM::Layer layer) :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getEnumerationLiteralName(org.eclipse.uml2.uml.EnumerationLiteral);
+    
+boolean isRealInitValue(uml::Property property) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isRealInitValue(org.eclipse.uml2.uml.Property);
+        
+cached boolean isPersistentObject(uml::NamedElement namedElement) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.isPersistentObject(org.eclipse.uml2.uml.NamedElement);
+    
+cached String getCollectionType(uml::MultiplicityElement multiplicityElement) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getCollectionType(org.eclipse.uml2.uml.MultiplicityElement);
+    
+cached String getCollectionImplType(uml::MultiplicityElement multiplicityElement) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getCollectionImplType(org.eclipse.uml2.uml.MultiplicityElement);
+    
+cached String getAllExtendedInterfaces(uml::Interface interface) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getAllExtendedInterfaces(org.eclipse.uml2.uml.Interface);
+    
+cached List getAllRealProperties(uml::Component component) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getAllRealProperties(org.eclipse.uml2.uml.Component);
+    
+cached Set getOperationNames(uml::Interface interface):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.getOperationNames(org.eclipse.uml2.uml.Interface);
+
+cached boolean hasMultivaluedAssociation(uml::Class class) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.hasMultivaluedAssociation(org.eclipse.uml2.uml.Class);
+    
+cached boolean isValidationStereotype(uml::Stereotype stereotype) : !stereotype.allParents().select(e|e.name == "Validation").isEmpty;

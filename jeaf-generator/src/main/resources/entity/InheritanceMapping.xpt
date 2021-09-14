@@ -1,0 +1,20 @@
+«EXTENSION java::Naming»
+«EXTENSION entity::ModelProperties»
+«IMPORT uml»
+«IMPORT JMM»
+«IMPORT java»
+
+
+//Inheritance mapping 
+#only table per inheritance hierarchy is supported
+
+//Subclass mapping
+#all subclasses are mapped here
+«DEFINE SubclassMapping FOR PersistentObject»
+    <!-- Subclass mapping for class "«this.fqn()»" -->
+	<subclass discriminator-value="«classID»" name="«this.fqn()»">
+	«EXPAND PropertyMapping::PropertyMapping FOREACH ownedAttribute -»
+    «EXPAND AssociationMapping::AssociationMapping FOREACH ownedElement -»
+    «EXPAND SubclassMapping FOREACH this.getSubclasses().typeSelect(PersistentObject) -»
+    </subclass>
+«ENDDEFINE»

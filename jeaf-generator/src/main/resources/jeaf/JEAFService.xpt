@@ -1,0 +1,239 @@
+«EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION entity::ModelProperties»
+«IMPORT uml»
+«IMPORT JMM»
+«IMPORT java»
+«IMPORT entity»
+
+«DEFINE JEAFServiceTemplate FOR JEAFService»
+«ENDDEFINE»
+//*********************************************************\\
+//*********************************************************\\
+//********** the interface ********************************\\
+//*********************************************************\\
+//*********************************************************\\
+«DEFINE JEAFServiceInterface FOR JEAFService»
+«FILE packagePath()+"/"+name+".java" GenBase»
+«getFileHeader()»
+package «packageName()»;
+
+«this.getJavadoc()»
+public interface «name» «IF generalization.size > 0»extends «this.getAllExtendedInterfaces()» «ELSE»extends com.anaptecs.jeaf.core.api.Service«ENDIF» {
+  «EXPAND JEAFOperation::InterfaceOperation FOREACH ownedOperation»
+}
+«ENDFILE»
+«ENDDEFINE»
+//*********************************************************\\
+//*********************************************************\\
+//********** the service proxy ****************************\\
+//*********************************************************\\
+//*********************************************************\\
+«DEFINE JEAFServiceProxy FOR JEAFService»
+«IF this.isAbstract == false»
+«FILE packagePath()+"/"+name+"Proxy.java" GenBase»
+«getFileHeader()»
+package «packageName()»;
+
+import com.anaptecs.jeaf.core.servicechannel.api.ServiceProxy;
+«IF this.getAllOperations().size > 0»
+import java.lang.reflect.Method;
+import java.io.Serializable;
+
+import com.anaptecs.jeaf.core.servicechannel.api.Command;
+import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
+import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
+import com.anaptecs.jeaf.core.api.MessageConstants;
+import com.anaptecs.jeaf.core.api.Service;
+import com.anaptecs.jeaf.xfun.api.trace.Trace;
+import com.anaptecs.jeaf.xfun.api.XFun;
+«ENDIF»
+
+/**
+ * ServiceProxy class for JEAF service «name». 
+ */
+ 
+public final class «name»Proxy extends ServiceProxy implements «name» «IF generalization.size > 0», «this.getAllExtendedInterfaces()»«ENDIF» {
+  /**
+   * Serial version uid for the proxy class.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Initialize object.
+   *
+   * @param pTransactionBehavior Definition of transactional behavior. The Parameter must not be null.
+   */
+  public «name»Proxy(com.anaptecs.jeaf.core.spi.TransactionBehavior pTransactionBehavior) {
+    super(«name».class, pTransactionBehavior);
+  }
+
+«EXPAND CommandOperation FOREACH this.getAllOperations()»
+
+}
+«EXPAND CommandClass ( this ) FOREACH this.getAllOperations()»
+
+«ENDFILE»
+«ENDIF»
+«ENDDEFINE»
+
+//command methods are returned
+«DEFINE CommandOperation FOR Operation»
+    /**
+     * Generated proxy implementation for method "«name»".
+     *  
+     * «getComment()»
+     */
+    «IF this.returnResult().isMultivalued().first() == true»@SuppressWarnings("unchecked")«ENDIF» 
+    «visibility» «getReturnTypeName()» «name» («EXPAND JEAFOperation::ParameterSignature») «getThrownExceptionsAsString()» {
+        try {
+            Command lCommand = new «this.getCommandClassName()»(«asParameterListNames()»);
+            «IF getReturnTypeName() != "void"»
+            return («this.getReturnTypeName()») this.executeCommand(lCommand);
+            «ELSE»
+            this.executeCommand(lCommand);
+            «ENDIF»
+        }«IF this.getThrownExceptionsAsList() != null»
+            «FOREACH getThrownExceptionsAsList().typeSelect(String) AS exception»
+                catch («exception» e) {         
+                throw e;
+            }
+            «ENDFOREACH»
+        «ENDIF»
+        catch (com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException e) {
+            throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+        }
+    }
+«ENDDEFINE»
+
+
+//Class for stereotype OperationS with tagged value ThrowsExceptions
+«DEFINE CommandClass ( JMM::JEAFService  targetService) FOR Operation»
+/**
+ * Generated command class for service method "«name»".
+ */
+ 
+«REM»final class «name.toFirstUpper()»_«interface.name»_Command extends Command {«ENDREM»
+final class «this.getCommandClassName()» extends Command {
+    /**
+     * Default serial version uid.
+     */
+    private static final long serialVersionUID = 1L;
+    
+    /**
+     * Constant for factor to convert nano seconds to milliseconds.
+     */
+    private static final int MILLISECONDS = 1000 * 1000;
+    
+    /**
+     * Constant describes the service method that is called by this proxy class.
+     */
+    private static final Method SERVICE_METHOD;
+    
+    /**
+     * Object array with all parameters that are passed to the service.
+     */
+    private final Object[] parameters;
+    
+
+    /**
+     * Initializer is used to get the method object describing the called service method only once.
+     */
+    static {
+      try {
+        SERVICE_METHOD = «targetService.name».class.getMethod("«this.name»"«IF this.ownedParameter.size > 1», «this.getParameterTypeNames()»«ENDIF»);
+      }
+      catch (NoSuchMethodException e) {
+        throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, «targetService.name».class.getName(), "«this.name»(«this.getParameterTypeNames()»)");
+      }
+    }
+
+    «FOREACH ownedParameter AS param»
+    «IF param.isInputParameter()»
+        /**
+         * Attribute transports the method parameter "«param.name»" to the service implementation via the service 
+         * channel.
+         */
+        private final «param.getTypeName()» «param.fromParameterToInstance()»;
+    «ENDIF»
+    «ENDFOREACH»
+
+  /**
+   * Initialize object. All parameters from method "«name»" have to be passed as parameters to this command object.
+   * 
+   «asParameterJavaDoc()»
+   */    
+  «this.getCommandClassName()»(«EXPAND JEAFOperation::ParameterSignature») {
+    super(«targetService.name».class);
+        «FOREACH ownedParameter AS param»
+            «IF param.isInputParameter()»
+                «param.fromParameterToInstance()» = «param.name»;«ENDIF»
+        «ENDFOREACH»
+        parameters = new Object[]{«asParameterListInstanceNames()»};
+  }
+  
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   * 
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be 
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  «visibility» Serializable execute(Service pTargetService)«getThrownExceptionsAsString()» {
+    // Execute service call.
+     «targetService.name» lService = («targetService.name») pTargetService;
+     
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod() );
+    
+    «IF getReturnTypeName() != "void"»
+    long lStartTime = System.nanoTime();
+    Serializable lResult = (Serializable) lService.«name»(«asParameterListInstanceNames()»);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    
+    return lResult;
+    «ELSE»
+    long lStartTime = System.nanoTime();
+    lService.«name»(«asParameterListInstanceNames()»);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    
+    // Method has no return type thus the method returns null.
+    return null;
+    «ENDIF»
+  }
+  
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   * 
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod() {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   * 
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+«ENDDEFINE»

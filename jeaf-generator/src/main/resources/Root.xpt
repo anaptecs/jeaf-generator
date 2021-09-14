@@ -1,0 +1,181 @@
+«IMPORT uml»
+«IMPORT JMM»
+«EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION java::CustomValidationCommons»
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+
+«DEFINE Root FOR Model»
+	«FOREACH this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion) AS version»
+		«info ("Using JEAF Meta Model (JMM) revision " + version.revision)»
+	«ENDFOREACH»
+	
+    «IF generateGlobalParts() == true»
+		«EXPAND jeaf::JeafClassId::ClassId»
+		«EXPAND jeaf::AuthorizationData::AuthorizationTypes»
+    «ENDIF»
+    
+	«IF generateCustomConstraints() == true»
+		«EXPAND GenerateCustomConstraints»
+	«ENDIF»
+	«EXPAND Root FOREACH ownedElement»
+«ENDDEFINE» 
+
+«DEFINE Root FOR Package»
+    «REM» Apply package white list as defined.«ENDREM»
+    «IF this.isMayBeInPackageWhitelist() == true»
+	  «EXPAND Root FOREACH ownedElement»	  
+	«ENDIF»
+	
+    «IF generatePersistentObjects() == true && this.isInGeneratorWhitelist() == true»
+	  «EXPAND entity::Entity::GenerateManagedClassesAnnotation»	  
+	«ENDIF»
+«ENDDEFINE» 
+
+«DEFINE Root FOR JEAFComponent»
+    «IF generateComponentImplClasses() == true && this.isInGeneratorWhitelist() == true»
+	     «info("Processing <<JEAFComponent>> " + this.name + " (" + (this.fqn()) + ")")»
+    	«EXPAND jeaf::JEAFComponent::JEAFComponentImplClasses»
+	«ENDIF»
+    «IF generateComponentRuntimeClasses() == true»
+	     «info("Processing <<JEAFComponent>> " + this.name + " (" + (this.fqn()) + ")")»
+    	«EXPAND jeaf::JEAFComponent::JEAFComponentRuntimeClasses»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR PersistentObject»
+    «IF generatePersistentObjects() == true && this.isInGeneratorWhitelist() == true»
+		«info("Processing <<PersistentObject>> " + this.name + " (" + (this.fqn()) + ")")»
+		«EXPAND entity::Entity::PersistentClass»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR PersistenceUnit»
+    «IF generatePersistentObjects() == true && this.isInGeneratorWhitelist() == true»
+		«info("Processing <<PersistenceUnit>> " + this.name + " (" + (this.fqn()) + ")")»
+		«EXPAND entity::Entity::GeneratePersistenceUnit»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR ServiceObject»
+	«IF (generateServiceObjects() == true || generateObjectMappers() == true) && this.isInGeneratorWhitelist() == true»
+		«info("Processing <<ServiceObject>> " + this.name + " (" + (this.fqn()) + ")")»
+		«EXPAND java::ServiceObject::ServiceObjectClass»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR DomainObject»
+	«IF (generateDomainObjects() == true || generateObjectMappers() == true) && this.isInGeneratorWhitelist() == true»
+		«info("Processing <<DomainObject>> " + this.name + " (" + (this.fqn()) + ")")»
+		«EXPAND java::DomainObject::DomainClass»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR QueryObject»
+	«IF generateServiceObjects() == true && this.isInGeneratorWhitelist() == true»
+		«info("Processing <<QueryObject>> " + this.name + " (" + (this.fqn()) + ")")»
+		«EXPAND java::QueryObject::QueryClass»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR POJO»
+	«IF (generatePOJOs() == true || generateObjectMappers() == true) && this.isInGeneratorWhitelist() == true»
+		«info("Processing <<POJO>> " + this.name + " (" + (this.fqn()) + ")")»
+		«EXPAND java::POJO::POJOClass»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR Interface»
+	«REM»Handle stereotype JEAFService«ENDREM»
+	«IF this.isStereotypeApplied("JEAFService")»
+	    «IF generateServices() == true && this.isInGeneratorWhitelist() == true»
+			«info("Processing <<JEAFService>> " + this.name + " (" + (this.fqn()) + ")")»
+	    	«EXPAND jeaf::JEAFService::JEAFServiceInterface FOR (JEAFService) this»
+	    «ENDIF»
+	    «IF generateServiceProxies() == true && this.isInGeneratorWhitelist() == true»
+			«info("Processing <<JEAFService>> " + this.name + " (" + (this.fqn()) + ")")»
+	    	«EXPAND jeaf::JEAFService::JEAFServiceProxy FOR (JEAFService) this»
+	    «ENDIF»
+	    «IF generateJUnitTests() == true && this.isInGeneratorWhitelist() == true»
+			«info("Processing <<JEAFService>> " + this.name + " (" + (this.fqn()) + ")")»
+	      «EXPAND jeaf::TestCase::JEAFTestCaseTemplate FOR (JEAFService) this»
+	    «ENDIF»
+	«ENDIF»
+	
+	«REM»Handle stereotype RESTResource«ENDREM»
+	«IF this.isStereotypeApplied("RESTResource")»
+		«IF generateRESTResources() == true && this.isInGeneratorWhitelist() == true»
+			«info("Processing <<RESTResource>> " + this.name + " (" + (this.fqn()) + ")")»
+			«EXPAND jeaf::RESTResource::RESTResourceClass FOR (RESTResource) this»
+		«ENDIF»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR ApplicationException»
+    «IF generateExceptionClasses() == true && this.isInGeneratorWhitelist() == true»
+     «info("Processing <<ApplicationException>> " + this.name + " (" + (this.fqn()) + ")")»
+	   «EXPAND jeaf::JEAFException::ApplicationException»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR SystemException»
+    «IF generateExceptionClasses() == true && this.isInGeneratorWhitelist() == true»
+     «info("Processing <<SystemException>> " + this.name + " (" + (this.fqn()) + ")")»
+	   «EXPAND jeaf::JEAFException::SystemException»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR JEAFEnumeration»
+    «IF (generateServiceObjects() == true || generateDomainObjects() == true) && this.isInGeneratorWhitelist() == true»
+		«info("Processing <<JEAFEnumeration>> " + this.name + " (" + (this.fqn()) + ")")»
+		«EXPAND jeaf::Enumeration::JEAFEnumTemplate»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR JEAFServiceProvider»
+    «IF generateServiceProviderInterfaces() == true && this.isInGeneratorWhitelist() == true»
+		«info("Processing <<JEAFServiceProvider>> " + this.name + " (" + (this.fqn()) + ")")»
+        «EXPAND jeaf::ServiceProvider::JEAFServiceProviderTemplate»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR JEAFServiceProviderImpl»
+    «IF generateServiceProviderImpls() == true && this.isInGeneratorWhitelist() == true»
+		«info("Processing <<JEAFServiceProviderImpl>> " + this.name + " (" + (this.fqn()) + ")")»
+		«EXPAND jeaf::ServiceProvider::JEAFServiceProviderImplTemplate»
+    «ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR LoadStrategy»
+    «IF generateServiceObjects() == true && this.isInGeneratorWhitelist() == true»
+		«info("Processing <<LoadStrategy>> " + this.name + " (" + (this.fqn()) + ")")»
+        «EXPAND java::LoadStrategy::LoadStrategyTemplate»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR JEAFActivity»
+    «IF generateActivityInterfaces() == true && this.isInGeneratorWhitelist() == true»
+		«info("Processing <<JEAFActivity>> " + this.name + " (" + (this.fqn()) + ")")»
+    	«EXPAND jeaf::JEAFActivity::GenerateActivityInterface»
+    «ENDIF»
+    «IF generateActivityImpls() == true»
+		«info("Processing <<JEAFActivity>> " + this.name + " (" + (this.fqn()) + ")")»
+    	«EXPAND jeaf::JEAFActivity::GenerateActivityImplClass»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR Object»
+«ENDDEFINE»
+
+«DEFINE GenerateCustomConstraints FOR Model»
+	«FOREACH this.getAllAppliedProfiles().allOwnedElements().typeSelect(CustomConstraint) AS stereotype»
+	«registerCustomValidation(stereotype.fqn(), stereotype.className)»
+	«IF stereotype.package.isMayBeInPackageWhitelist() == true»
+		«EXPAND java::Validation::GenerateCustomValidation FOR stereotype»	
+	«ENDIF»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+«ENDDEFINE»
+

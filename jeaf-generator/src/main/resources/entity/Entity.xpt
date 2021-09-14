@@ -1,0 +1,214 @@
+«EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION entity::ModelProperties»
+«IMPORT uml»
+«IMPORT JMM»
+«IMPORT java»
+«IMPORT entity»
+«IMPORT jeaf»
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+«DEFINE PersistentClass FOR PersistentObject»
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Generate base class for every business object class (*BOBase.java). Existing java code will be overwritten on 
+// every generator run. 
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	«FILE packagePath() + "/" + this.getBOBaseName() +".java" GenBase»
+	
+		package «packageName()»;
+		
+	  «IF this.hasMultivaluedAssociation()»
+	  «ENDIF»
+		import java.util.List;
+		
+        «IF superClass.isEmpty»import com.anaptecs.jeaf.spi.persistence.PersistentObject; «ENDIF»
+        import com.anaptecs.jeaf.spi.persistence.ClassID;
+        
+			«this.getJavadoc()»
+			public abstract class «this.getBOBaseName()» «IF !superClass.isEmpty»extends «superClass.get(0).fqn()» «ELSE»extends PersistentObject«ENDIF» {
+			
+			/**
+			 * The class id is a unique id within the domain model of an application for every business object class.
+			 */
+			public static final ClassID CLASS_ID = ClassID.createClassID(«classID», «this.getBOName()».class);
+			
+            «IF superClass.isEmpty»
+            /**
+             * Name of the database table that is used to store the data of objects of this class. 
+             */
+            public static final String TABLE_NAME = "«IF table.length > 0»«table»«ELSE»«name.toUpperCase()»«ENDIF»";
+            «ENDIF»
+            
+            «REM»Generate constants for all attributes«ENDREM»
+            «FOREACH this.ownedAttribute AS attr»
+              «IF attr.isStereotypeApplied("Field") == true»
+              /**
+               * Constant for the name of the row that is used to store the values of attribute "«attr.name»".
+               */
+              public static final String «attr.asInstanceVar().toUpperCase()»_ROW = "«attr.asInstanceVar().toUpperCase()»";
+              
+              /**
+               * Constant for the name of attribute "«attr.name»".
+               */
+              public static final String «attr.asInstanceVar().toUpperCase()»_ATTRIBUTE = "«attr.asInstanceVar()»";
+              «ENDIF»
+            «ENDFOREACH»
+            
+            «REM»Generate constants for all attributes«ENDREM»
+            «FOREACH this.ownedAttribute AS attr»
+              «IF attr.isStereotypeApplied("Role") == true»
+              /**
+               * Constant for the name of role "«attr.name»".
+               */
+              public static final String «attr.asInstanceVar().toUpperCase()»_ROLE = "«attr.asInstanceVar()»";
+              «ENDIF»
+            «ENDFOREACH»
+            
+		«EXPAND java::Attribute::PropertyDeclaration FOREACH this.ownedAttribute»
+
+		    /**
+		     * Initialize object. The constructor of the class has visibility protected in order to avoid creating 
+		     * business objects not through JEAFs persistence service provider.
+		     */
+		    protected «this.getBOBaseName()»( ) {
+              // Nothing to do.
+		    }
+			
+			  /**
+			   * Method returns all instance of this class including potential subclasses.
+			   * 
+			   * @return {@link List} List with all objects of this class. The method never returns null.
+			   */
+			  public static List<«this.getBOName()»> findAll«this.getBOName()»s( ) {
+			    return com.anaptecs.jeaf.spi.persistence.PersistentObject.getPersistenceServiceProvider().findAll(«this.getBOName()».class);
+			  }
+
+		«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
+		«EXPAND JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
+		
+	    /**
+	     * Method returns the class id of this business object class.
+	     * 
+	     * @return {@link ClassID} Class ID of this business object. The method never returns null.
+	     */
+	    public ClassID getClassID() { 
+	        return CLASS_ID;
+	    }
+	} 
+	«ENDFILE»
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Generate business object class itself. Since this class contains the part of the business logic that can not be 
+// generated this class will only be generated if it does not exist yet.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	«FILE packagePath() + "/" + this.getBOName() + ".java" GenOnce»
+	
+		package «packageName()»;
+		
+		«this.getJavadoc()»
+		public «IF this.isAbstract»abstract«ENDIF» class «this.getBOName()» extends «this.getBOBaseName()» {
+            /**
+             * Initialize object. The constructor of the class has visibility protected in order to avoid creating 
+             * business objects not through JEAFs persistence service provider.
+             */
+            protected «this.getBOName()»( ) {
+              // Nothing to do.
+            }
+            
+	      «EXPAND JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperation»
+		}
+		
+		 
+	«ENDFILE»
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Generate hibernate mapping. The mapping for subclasses comes as <subclass> tag into the superclass. For all other 
+// classes a seperate mapping file will be created.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	«IF superClass.isEmpty»
+	
+		«FILE packagePath() + "/" + this.getBOName() + ".hbm.xml" GenRes-»
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+		<!-- Hibernate mapping for class «this.fqn()» -->«IF this.getSubclasses().typeSelect(PersistentObject).size > 0 -»
+		<!-- and its subclasses «FOREACH this.getSubclasses().typeSelect(PersistentObject) AS subclass SEPARATOR ", "»«subclass.name»«ENDFOREACH» -->«ENDIF»    
+		<hibernate-mapping package="«this.packageName()»">
+		    <class name="«this.name»" table="«IF table.length > 0»«table»«ELSE»«name.toUpperCase()»«ENDIF»" discriminator-value="«classID»">
+		    	<id column="«getOIDRowName()»" name="objectID" length="15"/>
+		    	<discriminator column="CLASS_ID" type="integer"/>
+	    		<version column="«getVersionLabelRowName()»" name="versionLabel"/>	    		
+                «EXPAND PropertyMapping::PropertyMapping FOREACH ownedElement-»
+                «EXPAND AssociationMapping::AssociationMapping FOREACH ownedElement-»
+                «EXPAND InheritanceMapping::SubclassMapping FOREACH this.getSubclasses().typeSelect(PersistentObject) -»                
+		    </class>
+		</hibernate-mapping> 
+		«ENDFILE»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE GenerateManagedClassesAnnotation FOR Package»
+	«IF this.hasPersistentClasses()»
+		«FILE packagePath() + "/" + "Mappings.java" GenBase»
+		package «packageName()»;
+
+		import com.anaptecs.jeaf.spi.persistence.annotations.MappingFiles;
+		
+		@MappingFiles(mappingFiles = { «FOREACH this.getPersistentClassesMappingFileNames() AS fileName SEPARATOR ", "»"«fileName»"«ENDFOREACH» })
+		public interface Mappings {
+		}
+		«ENDFILE»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE GeneratePersistenceUnit FOR PersistenceUnit»
+	«IF this.clientDependency.supplier.typeSelect(Package).size > 0»
+	«ELSE»
+		«error("Warning: PersistenceUnit " + this.name + " does not refernece any package with persistent objects. Class will not be generated.")»
+	«ENDIF»
+	«FILE packagePath() + "/" + name+ ".java" GenBase»
+	package «packageName()»;
+	
+	/**
+	 * Persistence unit contains persistent classes of the following packages: 
+	 * <ul>«FOREACH this.clientDependency.supplier.typeSelect(Package) AS package SEPARATOR ""»
+	 * <li>«package.packageName()»</li>«ENDFOREACH»
+	 * </ul>
+	 */
+	@com.anaptecs.jeaf.spi.persistence.annotations.PersistenceUnit(
+		name="«name»", 
+		mappingFilesDefinition = {«FOREACH this.clientDependency.supplier.typeSelect(Package) AS package SEPARATOR ", "»«package.packageName()».Mappings.class «ENDFOREACH»},
+		showSQL= «EXPAND GenerationMode(this, "showSQL") FOR this.showSQL»,
+		formatSQL = «EXPAND GenerationMode(this, "formatSQL") FOR this.showSQL»)
+	public interface «name» {
+	}
+	«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE GenerationMode(PersistenceUnit pu, String propertyName) FOR ConfigurationMode-»
+	«IF name == "TRUE"»"true"«ELSE»
+		«IF name == "FALSE"-»"false"
+		«ELSE-»
+			«IF name == "GLOBAL_PROPERTY"-»
+			"{jeaf.persistence.«propertyName»}"
+			«ELSE-»
+				«IF name == "INDIVIDUAL_PROPERTY"»
+				"{jeaf.persistence.«pu.name».«propertyName»}"
+				«ELSE-»
+					«ERROR "Internal Error in JEAF Generator: Unexpected literal " + name +" for enumeration ConfigurationMode found"-»
+				«ENDIF-»
+			«ENDIF-»
+		«ENDIF-»
+	«ENDIF-»
+«ENDDEFINE»

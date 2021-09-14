@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping for class com.anaptecs.jeaf.junit.impl.domain.PublicClassBO -->
+<hibernate-mapping package="com.anaptecs.jeaf.junit.impl.domain">
+    <class name="PublicClassBO" table="PUBLICCLASSBO" discriminator-value="1006">
+        <id column="OID" name="objectID" length="15" />
+        <discriminator column="CLASS_ID" type="integer" />
+        <version column="VERSION" name="versionLabel" />
+
+        <!-- Attribute mapping for attribute "Period period" -->
+        <property name="period" access="field" unique="false" not-null="false">
+            <!-- Using userType "com.anaptecs.jeaf.serviceproviders.persistence.hibernate.types.PeriodType" as defined in UML model -->
+
+            <column name="START" unique="false" not-null="false" />
+
+            <column name="END" unique="false" not-null="false" />
+            <type name="com.anaptecs.jeaf.serviceproviders.persistence.hibernate.types.PeriodType" />
+        </property>
+
+        <!-- Attribute mapping for attribute "Gender gender" -->
+        <property name="gender" access="field" unique="false" not-null="false">
+            <!-- Using userType "com.anaptecs.jeaf.serviceproviders.persistence.hibernate.types.GenderType" as defined in UML model -->
+
+            <column name="GENDERNAME" unique="false" not-null="false" length="15" />
+            <type name="com.anaptecs.jeaf.serviceproviders.persistence.hibernate.types.GenderType" />
+        </property>
+
+        <!-- Attribute mapping for attribute "EncryptedString encryptedString" -->
+        <property name="encryptedString" access="field" unique="false" not-null="false">
+            <!-- Using userType "com.anaptecs.jeaf.serviceproviders.persistence.hibernate.types.EncryptedStringType" as defined in UML model -->
+
+            <column name="VALUE" unique="false" not-null="false" />
+            <type name="com.anaptecs.jeaf.serviceproviders.persistence.hibernate.types.EncryptedStringType" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,63 @@
+«EXTENSION java::Naming»
+«EXTENSION java::ObjectMapper»
+«EXTENSION java::GeneratorCommons»
+«IMPORT JMM»
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Generate Query Object 
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+«DEFINE LoadStrategyTemplate FOR LoadStrategy»
+	«FILE packagePath() + "/" + name +".java" GenBase»
+	«getFileHeader()»
+	package «this.packageName()»;
+	
+	/**
+	 * «getComment()»
+	 */
+	public final class «name» implements com.anaptecs.jeaf.core.api.LoadStrategy {
+		/**
+		 * Default serial version uid.
+		 */
+		private static final long serialVersionUID = 1L;
+		
+    /**
+     * Constant load strategy object to load all associations.
+     */
+    public static final «name» LOAD_ALL = new «name»(«FOREACH this.attribute AS nextAttribute SEPARATOR ','» true«ENDFOREACH»);
+    
+    /**
+     * Constant load strategy object to load none of the associations.
+     */
+    public static final «name» LOAD_NONE = new «name»(«FOREACH this.attribute AS nextAttribute SEPARATOR ','» false«ENDFOREACH»);
+    
+    /**
+     * Initialize object.
+     */
+    public «name»(«FOREACH this.attribute AS nextAttribute SEPARATOR ','» boolean «nextAttribute.asParameter()» «ENDFOREACH») {
+    «FOREACH this.attribute AS nextAttribute»
+      «nextAttribute.asInstanceVar()» = «nextAttribute.asParameter()»;«ENDFOREACH»
+    }
+   
+    «FOREACH this.attribute AS nextAttribute»
+   
+    /**
+     * «nextAttribute.getComment()»
+     */
+    private final boolean «nextAttribute.asInstanceVar()»;
+    «ENDFOREACH»
+    
+    «FOREACH this.attribute AS nextAttribute»
+   
+    /**
+     * «nextAttribute.getComment()»
+     */
+    public boolean «nextAttribute.asInstanceVar()»() {
+      return «nextAttribute.asInstanceVar()»;
+    }
+    «ENDFOREACH»
+    
+	}
+	«ENDFILE»
+«ENDDEFINE»

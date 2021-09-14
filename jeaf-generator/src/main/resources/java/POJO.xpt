@@ -1,0 +1,211 @@
+«EXTENSION java::Naming»
+«EXTENSION java::ObjectMapper»
+«EXTENSION java::GeneratorCommons»
+
+«IMPORT JMM»
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Generate POJO class 
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+«DEFINE POJOClass FOR POJO»
+	«IF generatePOJOs() == true»
+		«IF this.ownedOperation.size == 0»
+			«FILE packagePath() + "/" + name +".java" GenBase»
+				«getFileHeader()»
+				package «this.packageName()»;
+				
+				import com.anaptecs.jeaf.core.api.MessageConstants;
+				import com.anaptecs.jeaf.xfun.api.XFun;
+				 
+				«this.getJavadoc()»
+				public «IF isAbstract»abstract«ENDIF» class «name» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
+					«REM»Generate constants for all real attributes«ENDREM»
+					«FOREACH this.ownedAttribute AS attr»
+						«IF attr.isStatic == false»        
+						/**
+						 * Constant for the name of attribute "«attr.name»".
+						 */
+						public static final String «attr.asInstanceVar().toUpperCase()» = "«attr.asInstanceVar()»";
+						«ENDIF»
+					«ENDFOREACH»
+					  
+					«IF needsToImplementIdentifiable() == true»
+						«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())»
+					«ENDIF»
+					
+					«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
+					
+					/**
+					 * Initialize object using the passed builder.
+					 * 
+					 * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
+					 */
+					protected «name»(Builder pBuilder) {
+						«IF superClass.isEmpty == false»        
+						// Call constructor of super class.
+						super(pBuilder);
+						«ELSE»
+						// Ensure that builder is not null.
+						com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+						«ENDIF»
+						«IF needsToImplementIdentifiable() == true»
+						// Read object ID.
+						com.anaptecs.jeaf.core.api.AbstractObjectID<?> lObjectID = pBuilder.objectID;
+						if (lObjectID != null) {
+							objectID = new «this.getObjectIDClassName()»(pBuilder.objectID);
+					    }
+					    else {
+					      objectID = null;
+					    }
+						«ENDIF»
+						«IF this.ownedAttribute.size > 0»
+						// Read attribute values from builder.
+						«ENDIF»
+						«FOREACH this.ownedAttribute AS attr»
+						  «IF attr.association == null»
+						  	«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»
+						  «ELSE»
+						  	«IF attr.isMultivalued()»
+					        	«IF attr.isStatic == false»
+					        	if(pBuilder.«attr.name» != null) {
+					        	    «attr.name».addAll(pBuilder.«attr.name»);
+					        	}
+					        	«ENDIF»
+						  	«ELSE»
+								«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»			  	
+						  	«ENDIF»
+						  «ENDIF»			  
+						«ENDFOREACH»
+					}
+					  
+					«REM»Generate builder«ENDREM»
+					«EXPAND java::Builder::GenerateBuilder (this.getObjectIDClassName())»
+					
+					«IF needsToImplementIdentifiable() == true»
+					«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())»
+					«ENDIF»
+					
+					«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
+					«EXPAND java::Helper::GenerateToStringMethod»
+				}
+			«ENDFILE»
+			  
+		«REM»POJO has own methods«ENDREM»
+		«ELSE»
+			«REM»Generate base class«ENDREM»
+			«FILE packagePath() + "/" + name +"Base.java" GenBase»
+				«getFileHeader()»
+				package «this.packageName()»;
+				  
+				import com.anaptecs.jeaf.core.api.MessageConstants;
+				import com.anaptecs.jeaf.xfun.api.XFun;        
+				  
+				«this.getJavadoc()»
+				public abstract class «name»Base «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
+					«REM»Generate constants for all attributes«ENDREM»
+					«FOREACH this.ownedAttribute AS attr»
+					«IF attr.isMultivalued() == false»          
+					/**
+					 * Constant for the name of attribute "«attr.name»".
+					 */
+					public static final String «attr.asInstanceVar().toUpperCase()» = "«attr.asInstanceVar()»";
+					«ENDIF»«ENDFOREACH»
+					  
+					«IF needsToImplementIdentifiable() == true»
+						«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())»
+					«ENDIF»
+					
+					«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
+					
+					/**
+					 * Initialize object using the passed builder.
+					 * 
+					 * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
+					 */
+					protected «name»Base(BuilderBase pBuilder) {
+					«IF superClass.isEmpty == false»        
+					// Call constructor of super class.
+					super(pBuilder);
+					«ELSE»
+					// Ensure that builder is not null.
+					com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+					«ENDIF»
+					«IF needsToImplementIdentifiable() == true»
+					// Read object ID.
+					com.anaptecs.jeaf.core.api.AbstractObjectID<?> lObjectID = pBuilder.objectID;
+					if (lObjectID != null) {
+						objectID = new «this.getObjectIDClassName()»(pBuilder.objectID);
+				    }
+				    else {
+				      objectID = null;
+				    }
+					«ENDIF»
+					«IF this.ownedAttribute.size > 0»
+					// Read attribute values from builder.
+					«ENDIF»
+					«FOREACH this.ownedAttribute AS attr»
+					  «IF attr.association == null»
+					  	«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»
+					  «ELSE»
+					  	«IF attr.isMultivalued()»
+				        	«IF attr.isStatic == false»
+				        	if(pBuilder.«attr.name» != null) {
+				        	    «attr.name».addAll(pBuilder.«attr.name»);
+				        	}
+				        	«ENDIF»
+					  	«ELSE»
+							«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»			  	
+					  	«ENDIF»
+					  «ENDIF»			  
+					«ENDFOREACH»
+					}
+					
+					«REM»Generate builder«ENDREM»
+					«EXPAND java::Builder::GenerateBuilderBase (this.getObjectIDClassName())»
+					
+					«IF needsToImplementIdentifiable() == true»
+						«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())»
+					«ENDIF»
+					
+					«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
+					«EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
+					«EXPAND java::Helper::GenerateToStringMethod»
+				}
+			«ENDFILE»
+				
+			«REM»Generate class with parts that can / need be implemented by developers«ENDREM»
+			«FILE packagePath() + "/" + name +".java" GenOnce»
+				«getFileHeader()»
+				package «this.packageName()»;
+				  
+				«this.getJavadoc()»
+				public «IF isAbstract»abstract«ENDIF» class «name» extends «name»Base {
+					/**
+					 * Initialize object. Nothing special to do.
+					 */
+					protected «name»( «name».BuilderBase pBuilder ) {
+					  super(pBuilder);
+					}
+					  
+					«EXPAND java::Builder::GenerateBuilderImpl»
+					
+					«EXPAND jeaf::JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperation»
+				}
+			«ENDFILE»
+		«ENDIF»
+	«ENDIF»
+	
+	«REM»Generate Object Mappers for POJO«ENDREM»
+	«EXPAND java::ObjectMapper::GenerateObjectMappers»
+«ENDDEFINE»
+
+«DEFINE SuperClassDeclaration FOR POJO»
+	«IF !superClass.isEmpty» extends «superClass.get(0).fqn()»«ENDIF»
+«ENDDEFINE»
+
+«DEFINE InterfaceDeclarations FOR POJO»
+	«IF needsToImplementIdentifiable()==true» implements com.anaptecs.jeaf.core.api.Identifiable<«this.getObjectIDClassName()»>«ENDIF»
+«ENDDEFINE»
+

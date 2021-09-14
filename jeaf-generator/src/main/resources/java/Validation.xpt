@@ -1,0 +1,292 @@
+«IMPORT uml»
+«IMPORT JMM»
+«EXTENSION java::Naming»
+«EXTENSION java::CustomValidationCommons»
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+«DEFINE GenerateCustomValidation FOR CustomConstraint»
+	«info("Processing <<CustomConstraint>> " + this.name + " (" + (this.fqn()) + ")")»
+	«LET className.split("\\.").last() AS validationClass»
+	«LET className.replaceFirst("\\."+validationClass, "") AS packageName»
+	«info("Validation Class: " + validationClass)»
+	«FILE className.packagePath() + ".java" GenBase»
+package «packageName»;
+
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.ElementType.TYPE_USE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+import javax.validation.Constraint;
+import javax.validation.Payload;
+
+
+@Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, TYPE_USE })
+@Retention(RUNTIME)
+@Constraint(validatedBy = {«FOREACH validatedBy AS validatorClass SEPARATOR ', '»«validatorClass».class «ENDFOREACH»})
+public @interface «validationClass» {
+    «FOREACH this.ownedAttribute AS attribute»
+	    «IF attribute.name.startsWith("base_") == false»
+			«attribute.type.fqn()»«IF attribute.isMultivalued()»[]«ENDIF» «attribute.name»() 
+			«IF attribute.defaultValue.isNull() == false-»
+				default
+			    «REM»Annotation supports either primitive types or enums.«ENDREM»
+			    «IF attribute.isMultivalued()»{«ENDIF-»
+			    «IF attribute.type.isPrimitiveType()-»
+			    	«attribute.defaultValue.stringValue()-»
+			    «ELSE-»
+			    	«attribute.type.fqn()».«attribute.defaultValue.stringValue()-»
+			    «ENDIF-»
+			    «IF attribute.isMultivalued()»}«ENDIF-»
+			«ENDIF-»;
+	    «ENDIF-»
+    «ENDFOREACH-»
+	String message() default "{«className».message}";
+
+	Class<?>[] groups() default { };
+
+	Class<? extends Payload>[] payload() default { };
+}
+	«ENDFILE»
+	«ENDLET»«ENDLET»	
+«ENDDEFINE»
+
+«DEFINE ValidationAnnotation FOR NamedElement»
+    «FOREACH this.getAppliedStereotypes() AS stereotype»
+	    «REM»
+        // stereotype.attribute: «FOREACH stereotype.attribute AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
+        // stereotype.ownedAttribute: «FOREACH stereotype.ownedAttribute AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
+        // stereotype.getAllAttributes(): «FOREACH stereotype.getAllAttributes() AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
+        // stereotype.metaType.allProperties: «FOREACH stereotype.metaType.allProperties AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
+        // stereotype.parents().attribute: «FOREACH stereotype.parents().attribute AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
+        // stereotype.parents().parents().attribute: «FOREACH stereotype.parents().parents().attribute AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
+	    «ENDREM»
+	    «IF stereotype.isValidationStereotype()»
+		    «REM»
+	        // «stereotype.name»
+		    // «FOREACH stereotype.attribute.select(e|e.name.startsWith("base_") == false) AS attribute SEPARATOR ", "»
+		    // «attribute.name»
+		    // «IF attribute.type.name == "String"»
+		    // «attribute.name» = "«this.getValue(stereotype, attribute.name)»"
+		    // «ELSEIF attribute.type.isPrimitiveType()»
+		    // «attribute.name» = «this.getValue(stereotype, attribute.name)»
+		    // «ELSEIF attribute.type.metaType.name == "uml::Enumeration"»
+		    // Enumeration: 
+		    // «IF attribute.isMultivalued() == false»
+		    // «attribute.name» = «attribute.type.fqn()».«((EnumerationLiteral)this.getValue(stereotype, attribute.name)).name»
+		    // «ELSE»
+		    // «FOREACH ((Collection)this.getValue(stereotype, attribute.name)) AS literal SEPARATOR ", "»«attribute.type.fqn()».«((EnumerationLiteral)literal)»«ENDFOREACH»
+		    // «ENDIF»
+		    // «ELSE»
+		    //   
+		    // «ENDIF»
+		    // «ENDFOREACH»
+		    «ENDREM»
+			«IF stereotype.name == "DecimalMin"»
+			  «EXPAND DecimalMinAnnotation FOR ((DecimalMin)this)»	
+	
+			«ELSEIF stereotype.name == "DecimalMax"»
+			  «EXPAND DecimalMaxAnnotation FOR ((DecimalMax)this)»	
+	
+			«ELSEIF stereotype.name == "Min"»
+			  «EXPAND MinAnnotation FOR ((Min)this)»	
+			
+			«ELSEIF stereotype.name == "Max"»
+			  «EXPAND MaxAnnotation FOR ((Max)this)»	
+	
+			«ELSEIF stereotype.name == "Digits"»
+			  «EXPAND DigitsAnnotation FOR ((Digits) this)»
+	
+			«ELSEIF stereotype.name == "Negative"»
+			  «EXPAND NegativeAnnotation FOR ((Negative) this)»
+	
+			«ELSEIF stereotype.name == "NegativeOrZero"»
+			  «EXPAND NegativeOrZeroAnnotation FOR ((NegativeOrZero) this)»
+	
+			«ELSEIF stereotype.name == "PositiveOrZero"»
+			  «EXPAND PositiveOrZeroAnnotation FOR ((PositiveOrZero) this)»
+	
+			«ELSEIF stereotype.name == "Positive"»
+			  «EXPAND PositiveAnnotation FOR ((Positive) this)»
+	
+			«ELSEIF stereotype.name == "Size"»
+			  «EXPAND SizeAnnotation FOR ((Size) this)»
+	
+			«ELSEIF stereotype.name == "Pattern"»
+			  «EXPAND PatternAnnotation FOR ((Pattern) this)»
+	
+			«ELSEIF stereotype.name == "Email"»
+			  «EXPAND EmailAnnotation FOR ((Email) this)»
+	
+			«ELSEIF stereotype.name == "NotEmpty"»
+			  «EXPAND NotEmptyAnnotation FOR ((NotEmpty) this)»
+	
+			«ELSEIF stereotype.name == "Null"»
+			  «EXPAND NullAnnotation FOR ((Null) this)»
+	
+			«ELSEIF stereotype.name == "NotNull"»
+			  «EXPAND NotNullAnnotation FOR ((NotNull) this)»
+	
+			«ELSEIF stereotype.name == "AssertTrue"»
+			  «EXPAND AssertTrueAnnotation FOR ((AssertTrue) this)»
+	
+			«ELSEIF stereotype.name == "AssertFalse"»
+			  «EXPAND AssertFalseAnnotation FOR ((AssertFalse) this)»
+	
+			«ELSEIF stereotype.name == "NotBlank"»
+			  «EXPAND NotBlankAnnotation FOR ((NotBlank) this)»
+	
+			«ELSEIF stereotype.name == "Past"»
+			  «EXPAND PastAnnotation FOR ((Past) this)»
+	
+			«ELSEIF stereotype.name == "PastOrPresent"»
+			  «EXPAND PastOrPresentAnnotation FOR ((PastOrPresent) this)»
+	
+			«ELSEIF stereotype.name == "FutureOrPresent"»
+			  «EXPAND FutureOrPresentAnnotation FOR ((FutureOrPresent) this)»
+	
+			«ELSEIF stereotype.name == "Future"»
+			  «EXPAND FutureAnnotation FOR ((Future) this)»
+	
+			«ELSEIF stereotype.name == "Valid" -»
+			  «EXPAND ValidAnnotation FOR ((Valid) this) -»
+			
+			«ELSE»
+			  «EXPAND CustomValidationAnnotation (stereotype)»
+			«ENDIF»
+	    «ENDIF»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+
+«DEFINE DecimalMinAnnotation FOR DecimalMin»
+   @javax.validation.constraints.DecimalMin(value = "«this.value»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
+«ENDDEFINE»
+
+«DEFINE DecimalMaxAnnotation FOR DecimalMax»
+   @javax.validation.constraints.DecimalMax(value = "«this.value»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
+«ENDDEFINE»
+
+«DEFINE MinAnnotation FOR Min»
+   @javax.validation.constraints.Min(value = «this.value» «EXPAND ValidationAnnotationBasics»)
+«ENDDEFINE»
+
+«DEFINE MaxAnnotation FOR Max»
+   @javax.validation.constraints.Max(value = «this.value» «EXPAND ValidationAnnotationBasics»)
+«ENDDEFINE»
+
+«DEFINE DigitsAnnotation FOR Digits»
+   @javax.validation.constraints.Digits(integer = «integer», fraction = «fraction» «EXPAND ValidationAnnotationBasics»)
+«ENDDEFINE»
+
+«DEFINE NegativeAnnotation FOR Negative»
+   @javax.validation.constraints.Negative(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«ENDDEFINE»
+
+«DEFINE NegativeOrZeroAnnotation FOR NegativeOrZero»
+   @javax.validation.constraints.NegativeOrZero(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«ENDDEFINE»
+
+«DEFINE PositiveOrZeroAnnotation FOR PositiveOrZero»
+   @javax.validation.constraints.PositiveOrZero(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«ENDDEFINE»
+
+«DEFINE PositiveAnnotation FOR Positive»
+   @javax.validation.constraints.Positive(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«ENDDEFINE»
+
+«DEFINE SizeAnnotation FOR Size»
+   @javax.validation.constraints.Size(min = «min», max = «max» «EXPAND ValidationAnnotationBasics»)
+«ENDDEFINE»
+
+«DEFINE PatternAnnotation FOR Pattern»
+   @javax.validation.constraints.Pattern(«IF regexp.length > 0»regexp = "«regexp»"«ENDIF»«IF regexp.length > 0 && flags.size > 0», «ENDIF»«IF flags.size > 0»flags = {javax.validation.constraints.Pattern.Flag.«flags.toString(", javax.validation.constraints.Pattern.Flag.")»}«ENDIF» «EXPAND ValidationAnnotationBasics»)
+«ENDDEFINE»
+
+«DEFINE EmailAnnotation FOR Email»
+   @javax.validation.constraints.Email(«IF regexp.length > 0»regexp = "«regexp»"«ENDIF»«IF regexp.length > 0 && flags.size > 0», «ENDIF»«IF flags.size > 0»flags = {javax.validation.constraints.Pattern.Flag.«flags.toString(", javax.validation.constraints.Pattern.Flag.")»}«ENDIF» «EXPAND ValidationAnnotationBasics»)
+«ENDDEFINE»
+
+«DEFINE NotEmptyAnnotation FOR NotEmpty»
+   @javax.validation.constraints.NotEmpty(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«ENDDEFINE»
+
+«DEFINE NullAnnotation FOR Null»
+   @javax.validation.constraints.Null(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«ENDDEFINE»
+
+«DEFINE NotNullAnnotation FOR NotNull»
+   @javax.validation.constraints.NotNull(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«ENDDEFINE»
+
+«DEFINE AssertTrueAnnotation FOR AssertTrue»
+   @javax.validation.constraints.AssertTrue(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«ENDDEFINE»
+
+«DEFINE AssertFalseAnnotation FOR AssertFalse»
+   @javax.validation.constraints.AssertFalse(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«ENDDEFINE»
+
+«DEFINE NotBlankAnnotation FOR NotBlank»
+   @javax.validation.constraints.NotBlank(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«ENDDEFINE»
+
+«DEFINE PastAnnotation FOR Past»
+   @javax.validation.constraints.Past(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«ENDDEFINE»
+
+«DEFINE PastOrPresentAnnotation FOR PastOrPresent»
+   @javax.validation.constraints.PastOrPresent(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«ENDDEFINE»
+
+«DEFINE FutureOrPresentAnnotation FOR FutureOrPresent»
+   @javax.validation.constraints.FutureOrPresent(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«ENDDEFINE»
+
+«DEFINE FutureAnnotation FOR Future»
+   @javax.validation.constraints.Future(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«ENDDEFINE»
+
+«DEFINE ValidAnnotation FOR Valid -»
+   @javax.validation.Valid(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«ENDDEFINE»
+
+«DEFINE CustomValidationAnnotation(Stereotype stereotype) FOR Element»
+    @«getJavaAnnotatinClassForCustomValidation(stereotype.fqn())-»(
+    «FOREACH stereotype.attribute.select(e|e.name.startsWith("base_") == false) AS attribute SEPARATOR ", "-»
+	    «IF attribute.type.name == "String"-»
+		    «attribute.name» = "«this.getValue(stereotype, attribute.name)-»"
+	    «ELSEIF attribute.type.isPrimitiveType()-»
+		    «attribute.name» = «this.getValue(stereotype, attribute.name)-»
+	    «ELSEIF attribute.type.metaType.name == "uml::Enumeration" || attribute.type.metaType.name == "JMM::JEAFEnumeration"-»
+	        «attribute.name» = 
+		    «IF attribute.isMultivalued() == false-»
+			    «attribute.type.fqn()».«((EnumerationLiteral)this.getValue(stereotype, attribute.name)).name-»
+		    «ELSE-»
+			    {«FOREACH ((Collection)this.getValue(stereotype, attribute.name)) AS literal SEPARATOR ", "»«attribute.type.fqn()».«((EnumerationLiteral)literal)»«ENDFOREACH-»}
+		    «ENDIF-»
+	    «ELSE-»
+		    «attribute.name» = «this.getValue(stereotype, attribute.name)-»
+	    «ENDIF-»
+    «ENDFOREACH-»
+    «LET this.getValue(stereotype, "errorCode") AS errorCode-»
+    «LET (EnumerationLiteral)this.getValue(stereotype, "severity") AS severity-»
+	«IF errorCode > 0», message = "«errorCode»"«ENDIF» «IF severity.name != "NotUsed"», payload = com.anaptecs.jeaf.tools.api.validation.Severity.«severity.name».class«ENDIF»    
+    «ENDLET-»    
+    «ENDLET-»
+    )
+«ENDDEFINE»
+
+«DEFINE ValidationAnnotationBasics FOR Validation»
+«IF errorCode > 0», message = "«errorCode»"«ENDIF» «IF severity.name != "NotUsed"», payload = com.anaptecs.jeaf.tools.api.validation.Severity.«severity.name».class«ENDIF»
+«ENDDEFINE»
+
+«DEFINE ValidationAnnotationBasicsEmptyValidation FOR Validation -»
+«IF errorCode > 0»message = "«errorCode»"«ENDIF» «IF errorCode > 0 && severity.name != "NotUsed"», «ENDIF» «IF severity.name != "NotUsed"»payload = com.anaptecs.jeaf.tools.api.validation.Severity.«severity.name».class«ENDIF -»
+«ENDDEFINE»
+

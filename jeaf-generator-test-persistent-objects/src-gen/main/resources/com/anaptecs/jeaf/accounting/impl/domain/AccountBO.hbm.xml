@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping for class com.anaptecs.jeaf.accounting.impl.domain.AccountBO -->
+<hibernate-mapping package="com.anaptecs.jeaf.accounting.impl.domain">
+    <class name="AccountBO" table="ACCOUNT" discriminator-value="1111">
+        <id column="OID" name="objectID" length="15" />
+        <discriminator column="CLASS_ID" type="integer" />
+        <version column="VERSION" name="versionLabel" />
+
+        <!-- Attribute mapping for attribute "Long number" -->
+        <property name="number" access="field" unique="true" not-null="true">
+            <column name="NUMBER" unique="true" not-null="true" />
+        </property>
+
+        <!-- Attribute mapping for attribute "Float interestRate" -->
+        <property name="interestRate" access="field" unique="false" not-null="false" precision="10" scale="3">
+            <column name="INTERESTRATE" unique="false" not-null="false" precision="10" scale="3" />
+        </property>
+
+        <!-- Association mapping for role "bank (1..1)" -->
+        <!-- Association AccountBO - BankBO -->
+        <many-to-one name="bank" class="com.anaptecs.jeaf.accounting.impl.domain.BankBO" column="BANK_OID" access="field" not-null="true" cascade="" />
+
+        <!-- Association mapping for role "customer (1..1)" -->
+        <!-- Association AccountBO - CustomerBO -->
+        <many-to-one name="customer" class="com.anaptecs.jeaf.accounting.impl.domain.CustomerBO" column="CUSTOMER_OID" access="field" not-null="true" cascade="" />
+
+        <!-- Association mapping for role "bookings (0..*)" -->
+        <!-- Association AccountBO - BookingBO -->
+        <set name="bookings" access="field" inverse="true" cascade="" batch-size="13">
+            <key column="ACCOUNT_OID" />
+            <one-to-many class="com.anaptecs.jeaf.accounting.impl.domain.BookingBO" />
+        </set>
+
+        <!-- Association mapping for role "authorizedPersons (1..*)" -->
+        <!-- Association AccountBO - MyPersonBO -->
+        <set name="authorizedPersons" table="ACCOUNT_PERSON_LINK" access="field" inverse="true" cascade="" batch-size="5">
+            <key column="ACCOUNTBO_OID" />
+            <many-to-many class="com.anaptecs.jeaf.accounting.impl.domain.MyPersonBO" column="MYPERSONBO_OID" />
+        </set>
+    </class>
+</hibernate-mapping>

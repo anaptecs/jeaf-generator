@@ -1,0 +1,123 @@
+package com.anaptecs.jeaf.junit.impl.domain;
+
+import java.util.List;
+
+import com.anaptecs.jeaf.spi.persistence.ClassID;
+import com.anaptecs.jeaf.spi.persistence.PersistentObject;
+
+/**
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
+public abstract class FlushTestSlaveBOBase extends PersistentObject {
+  /**
+   * The class id is a unique id within the domain model of an application for every business object class.
+   */
+  public static final ClassID CLASS_ID = ClassID.createClassID(1016, FlushTestSlaveBO.class);
+
+  /**
+   * Name of the database table that is used to store the data of objects of this class.
+   */
+  public static final String TABLE_NAME = "FLUSHTESTSLAVEBO";
+
+  /**
+   * Constant for the name of the row that is used to store the values of attribute "optionalField".
+   */
+  public static final String OPTIONALFIELD_ROW = "OPTIONALFIELD";
+
+  /**
+   * Constant for the name of attribute "optionalField".
+   */
+  public static final String OPTIONALFIELD_ATTRIBUTE = "optionalField";
+
+  /**
+   * Constant for the name of role "masterObject".
+   */
+  public static final String MASTEROBJECT_ROLE = "masterObject";
+
+  /**
+   * 
+   */
+  private FlushTestMasterBO masterObject;
+
+  /**
+   * 
+   */
+  private String optionalField;
+
+  /**
+   * Initialize object. The constructor of the class has visibility protected in order to avoid creating business
+   * objects not through JEAFs persistence service provider.
+   */
+  protected FlushTestSlaveBOBase( ) {
+    // Nothing to do.
+  }
+
+  /**
+   * Method returns all instance of this class including potential subclasses.
+   * 
+   * @return {@link List} List with all objects of this class. The method never returns null.
+   */
+  public static List<FlushTestSlaveBO> findAllFlushTestSlaveBOs( ) {
+    return PersistentObject.getPersistenceServiceProvider().findAll(FlushTestSlaveBO.class);
+  }
+
+  /**
+   * Method returns the association "masterObject".
+   * 
+   *
+   * @return FlushTestMasterBO FlushTestMasterBO to which the association "masterObject" is set.
+   */
+  public FlushTestMasterBO getMasterObject( ) {
+    masterObject = this.unproxy(masterObject);
+    return masterObject;
+  }
+
+  /**
+   * Method sets the association "masterObject".
+   * 
+   * 
+   * @param pMasterObject FlushTestMasterBO to which the association "masterObject" should be set.
+   */
+  public void setMasterObject( FlushTestMasterBO pMasterObject ) {
+    masterObject = pMasterObject;
+  }
+
+  /**
+   * Method unsets the association "masterObject".
+   * 
+   */
+  public final void unsetMasterObject( ) {
+    masterObject = null;
+  }
+
+  /**
+   * Method returns the attribute "optionalField".
+   * 
+   * 
+   * @return String Value to which the attribute "optionalField" is set.
+   */
+  public String getOptionalField( ) {
+    return optionalField;
+  }
+
+  /**
+   * Method sets the attribute "optionalField".
+   * 
+   * 
+   * @param pOptionalField Value to which the attribute "optionalField" should be set.
+   */
+  public void setOptionalField( String pOptionalField ) {
+    // Assign value to attribute
+    optionalField = pOptionalField;
+  }
+
+  /**
+   * Method returns the class id of this business object class.
+   * 
+   * @return {@link ClassID} Class ID of this business object. The method never returns null.
+   */
+  public ClassID getClassID( ) {
+    return CLASS_ID;
+  }
+}

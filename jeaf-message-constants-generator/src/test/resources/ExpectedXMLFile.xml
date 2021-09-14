@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Root>
+	<ClassInfo author="JEAF Test Team" className="MyMessages" description="Class contains constants to test JEAF X-Fun localization mechanism" package="com.jeaf.sample.yourapp" version="1.5.x" />
+	<MessageFolder name="Service-Messages">
+		<Message defaultText="Your bank account has an insufficent balance. Transfers are currently not possible" description="Info message that a bank account has an insufficent balance."
+			messageID="20000" name="BANK_BALANCE_NOT_SUFFICIENT" traceLevel="ERROR" type="ERROR" deprecated="TRUE">
+			<LocalizedMessage country="" language="de" localizedText="The following rows can be used to localize this message. The language is defined by the language code of the column."
+				variant="" />
+			<LocalizedMessage country="CH" language="de" localizedText="If you need further languages to be supported just add an additional column" variant="" />
+		</Message>
+		<Message defaultText="Money transfer not possible. The source bank account ''{0}'' is locked." messageID="20001" name="SOURCE_BANK_ACCOUNT_LOCKED" traceLevel="ERROR" type="ERROR" deprecated="FALSE"/>
+		<Message defaultText="IBAN of target account is invalid" messageID="20002" name="INVALID_TARGET_BANK_ACCOUNT" traceLevel="ERROR" type="ERROR" />
+		<Message defaultText="Message with level TRACE." messageID="20003" name="TRACE_MESSAGE" traceLevel="TRACE" type="INFO">
+			<LocalizedMessage country="" language="de" localizedText="Meldung mit Trace-Level TRACE." variant="" />
+		</Message>
+		<Message defaultText="Message with level DEBUG." messageID="20004" name="DEBUG_MESSAGE" traceLevel="DEBUG" type="INFO">
+			<LocalizedMessage country="" language="de" localizedText="Meldung mit Trace-Level DEBUG." variant="" />
+		</Message>
+		<Message defaultText="Message with level INFO." messageID="20005" name="INFO_MESSAGE" traceLevel="INFO" type="INFO">
+			<LocalizedMessage country="" language="de" localizedText="Meldung mit Trace-Level INFO." variant="" />
+		</Message>
+		<Message defaultText="Message with level WARN." messageID="20006" name="WARN_MESSAGE" traceLevel="WARN" type="INFO">
+			<LocalizedMessage country="" language="de" localizedText="Meldung mit Trace-Level WARN." variant="" />
+		</Message>
+		<Message defaultText="Message with level ERROR." messageID="20007" name="ERROR_MESSAGE" traceLevel="ERROR" type="INFO">
+			<LocalizedMessage country="" language="de" localizedText="Meldung mit Trace-Level ERROR." variant="" />
+		</Message>
+		<Message defaultText="Message with level FATAL." messageID="20008" name="FATAL_MESSAGE" traceLevel="FATAL" type="INFO">
+			<LocalizedMessage country="" language="de" localizedText="Meldung mit Trace-Level FATAL." variant="" />
+		</Message>
+	</MessageFolder>
+	<MessageFolder name="Screen Texts">
+		<Message defaultText="Welcome {0}" description="Constant for label &quot;Welcome&quot;." messageID="30000" name="WELCOME_LABEL" traceLevel="INFO" type="LOCALIZED_STRING">
+			<LocalizedMessage country="" language="de" localizedText="Willkommen" variant="" />
+			<LocalizedMessage country="CH" language="de" localizedText="Grüezi" variant="" />
+		</Message>
+		<Message defaultText="IBAN" description="Constant for label &quot;IBAN&quot;." messageID="30001" name="IBAN_LABEL" traceLevel="INFO" type="LOCALIZED_STRING" />
+		<Message defaultText="Best regards" description="Constant for label at end of mail" messageID="30002" name="BEST_REGARDS" traceLevel="INFO" type="LOCALIZED_STRING">
+			<LocalizedMessage country="" language="de" localizedText="Freundliche Grüße" variant="" />
+			<LocalizedMessage country="CH" language="de" localizedText="Freundliche Grüsse" variant="" />
+			<LocalizedMessage country="DE" language="de" localizedText="Tschüssle" variant="BW" />
+		</Message>
+	</MessageFolder>
+</Root>

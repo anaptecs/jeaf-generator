@@ -1,0 +1,65 @@
+«EXTENSION java::Naming»
+«EXTENSION entity::ModelProperties»
+«IMPORT uml»
+«IMPORT JMM»
+«IMPORT java»
+«IMPORT entity»
+
+//Operations for JEAF services are created here
+//OperationS is a stereotype which caries the Exception information
+
+
+//interface methods are returned
+«DEFINE InterfaceOperation FOR Operation»
+    «this.getJavadoc()»
+    «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
+	«getReturnTypeName()»  «name» («EXPAND ParameterSignature»)«getThrownExceptionsAsString()»;
+«ENDDEFINE»
+
+//interfaceImpl methods are returned
+«DEFINE PersistentObjectOperationImpl FOR Operation»
+    «this.getJavadoc()» 
+    @Override
+	«visibility» «getReturnTypeName()» «name» («EXPAND ParameterSignature»)«getThrownExceptionsAsString()» {
+	    // TODO: Implement business logic for method.
+		«IF getReturnTypeName() != "void"»«IF getReturnTypeName() != "boolean"» return null; «ELSE» return false;«ENDIF»«ENDIF»
+	}
+«ENDDEFINE»
+
+«DEFINE ServiceOperationImpl FOR Operation»
+    «this.getJavadoc()» 
+    @Override
+	«visibility» «getReturnTypeName()» «name» («EXPAND ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
+		«IF getReturnTypeName() != "void"»
+			// TODO Implement method and return real result
+			«IF returnsPrimitiveType()»
+				«IF getReturnTypeName() != "boolean"» return 0; «ELSE» return false;«ENDIF»
+			«ELSE»
+			return null;
+			«ENDIF»
+		«ENDIF»
+	}
+«ENDDEFINE»
+
+//abstract methods are returned
+«DEFINE PersistentObjectOperation FOR Operation»
+    «this.getJavadoc()» 
+    «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
+	«visibility» abstract «getReturnTypeName()»  «name» («EXPAND ParameterSignature»)«getThrownExceptionsAsString()»;
+«ENDDEFINE»
+
+«DEFINE ParameterSignature FOR Operation»
+  «EXPAND ParameterDefinition FOREACH ownedParameter.select(e| e.isInputParameter()) SEPARATOR ", "» 
+«ENDDEFINE»
+
+«DEFINE ParameterDefinition FOR Parameter»
+  «EXPAND Validation::ValidationAnnotation» «this.getTypeName()» «this.name»
+«ENDDEFINE»
+
+«DEFINE ParameterSignatureNoValidationAnnotation FOR Operation»
+  «EXPAND ParameterDefinitionNoValidationAnnotation FOREACH ownedParameter.select(e| e.isInputParameter()) SEPARATOR ", "» 
+«ENDDEFINE»
+
+«DEFINE ParameterDefinitionNoValidationAnnotation FOR Parameter»
+  «this.getTypeName()» «this.name»
+«ENDDEFINE»

@@ -1,0 +1,58 @@
+    
+cached Set getAllObjectMappingDependentClasses(uml::Class class) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.getAllObjectMappingDependentClasses( org.eclipse.uml2.uml.Class );
+
+cached Set getDirectObjectMappingDependentClasses(uml::Class class) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.getDirectObjectMappingDependentClasses( org.eclipse.uml2.uml.Class );
+    
+cached Set getDirectObjectMappingDependencies(uml::Class class) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.getDirectObjectMappingDependencies( org.eclipse.uml2.uml.Class );
+    
+cached boolean hasUpdateObjectMapping(uml::Class class) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.hasUpdateObjectMapping( org.eclipse.uml2.uml.Class );
+
+cached List getConstructorParams(uml::Class class) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.getConstructorParams( org.eclipse.uml2.uml.Class );
+    
+cached List getSuperConstructorParams( uml::Class class ) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.getSuperConstructorParamClasses( org.eclipse.uml2.uml.Class );
+    
+cached String getMapperSuperCallParameterList( uml::Class pClass ) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.getMapperSuperCallParameterList( org.eclipse.uml2.uml.Class );
+
+String getMapperConstructorParamList(uml::Class pClass) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.getMapperConstructorParamList( org.eclipse.uml2.uml.Class );
+    
+String getMapperCallParameterList(uml::Class pClass) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.getMapperCallParameterList( org.eclipse.uml2.uml.Class );
+    
+cached String getMapperPackage( uml::Class pTargetClass ) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.getMapperPackage( org.eclipse.uml2.uml.Class );
+    
+cached String getMapperPackagePath( uml::Class pTargetClass ) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.getMapperPackagePath( org.eclipse.uml2.uml.Class );
+
+cached boolean hasObjectMapping( uml::Class pClass ) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.hasObjectMapping( org.eclipse.uml2.uml.Class );
+
+cached boolean hasObjectMappingToPersistentObject( uml::Class pClass ) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.hasObjectMappingToPersistentObject( org.eclipse.uml2.uml.Class );
+
+cached boolean hasObjectMappingToDomainObject( uml::Class pClass ) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.hasObjectMappingToDomainObject( org.eclipse.uml2.uml.Class );
+    
+cached List getParentTargetClasses(uml::Class pSource, uml::Class pTarget) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.getParentTargetClasses( org.eclipse.uml2.uml.Class, org.eclipse.uml2.uml.Class );
+    
+cached String getClassNameForDatatypeConverter(String pClassName):
+    pClassName == "java.lang.Class<?>" || pClassName == "Class<?>" ? "java.lang.Class" : pClassName;  
+    
+cached boolean isDatatypeConverterRequired(uml::NamedElement pSupplier, uml::NamedElement pClient):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.isDatatypeConverterRequired(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.NamedElement);
+
+cached boolean autoBoxingToolsRequired(uml::NamedElement pSupplier, uml::NamedElement pClient):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.autoBoxingToolsRequired(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.NamedElement);
+	
+cached String isValidObjectMapping(uml::Dependency dependency):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.isValidObjectMapping(org.eclipse.uml2.uml.Dependency);
+   

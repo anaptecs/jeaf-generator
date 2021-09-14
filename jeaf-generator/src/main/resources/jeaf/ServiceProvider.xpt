@@ -1,0 +1,201 @@
+«EXTENSION java::Naming»
+«EXTENSION entity::ModelProperties»
+«EXTENSION java::GeneratorCommons»
+«IMPORT uml»
+«IMPORT JMM»
+«IMPORT java»
+«IMPORT entity»
+
+«DEFINE JEAFServiceProviderTemplate FOR JEAFServiceProvider»
+
+«FILE packagePath()+"/"+name+".java" GenBase»
+«getFileHeader()»
+package «packageName()»;
+
+/**
+ * «getComment()»
+ */
+public interface «name» extends «IF generalization.size > 0» «this.getAllExtendedInterfaces()» «ELSE»com.anaptecs.jeaf.core.api.ServiceProvider«ENDIF» {
+
+«EXPAND JEAFOperation::InterfaceOperation FOREACH this.ownedOperation»
+}
+«ENDFILE»
+
+«ENDDEFINE»
+
+
+«DEFINE JEAFServiceProviderImplTemplate FOR JEAFServiceProviderImpl»
+
+«EXPAND CreateServiceProviderProperties»
+
+«FILE packagePath()+"/"+name+"Base.java" GenBase»
+«getFileHeader()»
+package «packageName()»;
+
+import com.anaptecs.jeaf.xfun.api.common.ComponentID;
+
+/**
+ * «getComment()»
+ */
+abstract class «name»Base implements com.anaptecs.jeaf.core.spi.ServiceProviderImplementation, «this.getImplementedInterfaceNames()» {
+	«IF this.ownedAttribute.size > 0»
+	/**
+	 * Reference to the object that identifies this component. The reference is never null.
+	 */
+	private static final ComponentID COMPONENT_ID;
+	    
+	/**
+	 * Resource access provider enables access to the properties of the service provider.
+	 */
+	private final com.anaptecs.jeaf.xfun.api.config.Configuration configuration;
+
+	/**
+	 * Static initializer is used to create the components ComponentID object and its trace object.
+	 */
+	static {
+		// Create Component ID and trace object.
+		Package lBasePackage = «this.name».class.getPackage();
+		COMPONENT_ID = new ComponentID("«this.name»", lBasePackage.getName());
+	}
+	«ENDIF»
+
+  /**
+   * Constructor has reduced visibility in order to ensure that all service provider implementations are created through the factory.
+   */
+  «this.name»Base() {
+      «IF this.ownedAttribute.size > 0»// Create resource access provider for properties of the component.
+      configuration = com.anaptecs.jeaf.xfun.api.XFun.getConfigurationProvider().getComponentConfiguration(COMPONENT_ID);«ENDIF»
+  }
+  
+	«FOREACH this.ownedAttribute AS property»
+	/**
+	 * Method returns the value of the property "«property.name»".
+	 * 
+	 * @return {@link «property.type.name»} Value of the property "«property.name»". The method returns null if no value for the
+	 * property is defined.
+	 */
+	public «property.fqn()» «property.asGetter()»() {
+	  return configuration.getConfigurationValue("«property.name»", «property.type.name».class);
+	}
+	«ENDFOREACH»
+}
+«ENDFILE»
+
+«FILE packagePath()+"/"+name+".java" GenOnce»
+«getFileHeader()»
+package «packageName()»;
+
+/**
+ * This class is the base class of the service provider implementation «this.name».
+ *
+ * «getComment()»
+ */
+
+final class «name» extends «name»Base {
+  /**
+   * Constructor has reduced visibility in order to ensure that all service provider implementations are created through the factory.
+   */
+  «this.name»() {
+    // Nothing to do.
+  }
+  
+  /**
+   * This method will be called at startup by JEAF and enables the service provider to perform its specific
+   * initialization routines.
+   * 
+   * @throws SystemException Service provider specific exception in order to show that the initialization was not
+   * successful.
+   */
+  @Override
+  public void initialize( ) throws com.anaptecs.jeaf.xfun.api.errorhandling.SystemException {
+  }
+
+  /**
+   * Method checks the current state of the service provider. Therefore JEAF defines three different check levels: 
+   * internal Checks, infrastructure checks and external checks. For further details about the check levels 
+   * {@see CheckLevel}.
+   * 
+   * @param pLevel Check level on which the check should be performed. The parameter is never null.
+   * @return {@link CheckResult} Object describing the result of the check. The method may return null. This means that
+   * the service does not implement any checks. In order to use as less memory as possible the method should use the
+   * constant CheckResult.CHECK_OK if no errors or warnings occurred during the check.
+   * 
+   * @see CheckResult#CHECK_OK
+   */
+  @Override
+  public com.anaptecs.jeaf.core.spi.CheckResult check( com.anaptecs.jeaf.core.spi.CheckLevel pLevel ) {
+    // TODO Implement checks for this service provider
+    return null;
+  }
+
+	«FOREACH this.getAllImplementedInterfaces() AS interface»
+	  «EXPAND JEAFOperation::ServiceOperationImpl FOREACH interface.ownedOperation»
+	«ENDFOREACH»
+}
+«ENDFILE»
+
+«FILE packagePath()+"/"+this.getServiceProviderFactoryName()+".java" GenBase»
+«getFileHeader()»
+package «packageName()»;
+
+import com.anaptecs.jeaf.core.api.ServiceProvider;
+import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
+import com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory;
+
+/**
+ * This class is the factory class the service provider implementation «this.name».
+ * 
+ * «getComment()»
+ */
+@com.anaptecs.jeaf.core.annotations.ServiceProviderFactory
+public final class «this.getServiceProviderFactoryName()» extends ServiceProviderFactory {
+  /**
+   * Initialize object. No actions have to be performed.
+   */
+  public «this.getServiceProviderFactoryName()»( ) {
+    // Nothing to do.
+  }
+
+  /**
+   * Method creates a new instance of the service provider.
+   * 
+   * @return {@link ServiceProviderImplementation} Instance of service provider. The method never returns null.
+   * 
+   * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#createServiceProviderImplementation()
+   */
+  public ServiceProviderImplementation createServiceProviderImplementation( ) {
+    return new «this.name»();
+  }
+
+  /**
+   * Method returns the interface of the service provider created by this factory.
+   * 
+   * @return Class Class object of interface that belongs to the service provider that is created by this factory. The
+   * method never returns null.
+   * 
+   * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#getServiceProviderInterface()
+   */
+  public Class<? extends ServiceProvider> getServiceProviderInterface( ) {
+    return «this.getAllImplementedInterfaces().get(0).fqn()».class;
+  }
+}
+«ENDFILE»
+
+«ENDDEFINE»
+
+«DEFINE CreateServiceProviderProperties FOR JEAFServiceProviderImpl»
+    «FILE name+".properties" Res»
+«FOREACH this.ownedAttribute AS property»
+«property.name»=«ENDFOREACH»
+    «ENDFILE»
+    «FILE name+".xml" GenRes»<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Root>
+  <ComponentInfo name="«this.name»" basePackage="«this.packageName()»" cacheTTL="0" >
+«FOREACH this.ownedAttribute  AS property»    <Property name="«property.name»" type="«property.type.fqn()»" defaultValue="«property.defaultValue.stringValue()»" comment="" />
+«ENDFOREACH»  </ComponentInfo>
+</Root>
+«ENDFILE»
+«ENDDEFINE»
+
+
+

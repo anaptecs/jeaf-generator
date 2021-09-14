@@ -1,0 +1,555 @@
+/*
+ * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
+ * 
+ * Copyright 2004 - 2019. All rights reserved.
+ */
+package com.anaptecs.jeaf.junit.core;
+
+import com.anaptecs.jeaf.core.api.MessageConstants;
+import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.checks.Check;
+
+/**
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
+public class WrapperDatatypeServiceObject implements ServiceObject {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for the name of attribute "myBoolean".
+   */
+  public static final String MYBOOLEAN = "myBoolean";
+
+  /**
+   * Constant for the name of attribute "myByte".
+   */
+  public static final String MYBYTE = "myByte";
+
+  /**
+   * Constant for the name of attribute "myCharacter".
+   */
+  public static final String MYCHARACTER = "myCharacter";
+
+  /**
+   * Constant for the name of attribute "myDouble".
+   */
+  public static final String MYDOUBLE = "myDouble";
+
+  /**
+   * Constant for the name of attribute "myFloat".
+   */
+  public static final String MYFLOAT = "myFloat";
+
+  /**
+   * Constant for the name of attribute "myLong".
+   */
+  public static final String MYLONG = "myLong";
+
+  /**
+   * Constant for the name of attribute "myShort".
+   */
+  public static final String MYSHORT = "myShort";
+
+  /**
+   * Constant for the name of attribute "myByteArray".
+   */
+  public static final String MYBYTEARRAY = "myByteArray";
+
+  /**
+   * 
+   */
+  private Boolean myBoolean;
+
+  /**
+   * 
+   */
+  private Byte myByte;
+
+  /**
+   * 
+   */
+  private Character myCharacter;
+
+  /**
+   * 
+   */
+  private Double myDouble;
+
+  /**
+   * 
+   */
+  private Float myFloat;
+
+  /**
+   * 
+   */
+  private Long myLong;
+
+  /**
+   * 
+   */
+  private Short myShort;
+
+  /**
+   * 
+   */
+  private byte[] myByteArray;
+
+  /**
+   * Initialize object using the passed builder.
+   * 
+   * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
+   */
+  protected WrapperDatatypeServiceObject( Builder pBuilder ) {
+    // Ensure that builder is not null.
+    Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+    // Read attribute values from builder.
+    myBoolean = pBuilder.myBoolean;
+    myByte = pBuilder.myByte;
+    myCharacter = pBuilder.myCharacter;
+    myDouble = pBuilder.myDouble;
+    myFloat = pBuilder.myFloat;
+    myLong = pBuilder.myLong;
+    myShort = pBuilder.myShort;
+    myByteArray = pBuilder.myByteArray;
+  }
+
+  /**
+   * Class implements builder to create a new instance of class WrapperDatatypeServiceObject. As the class has readonly
+   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   */
+  public static class Builder {
+    /**
+     * 
+     */
+    private Boolean myBoolean;
+
+    /**
+     * 
+     */
+    private Byte myByte;
+
+    /**
+     * 
+     */
+    private Character myCharacter;
+
+    /**
+     * 
+     */
+    private Double myDouble;
+
+    /**
+     * 
+     */
+    private Float myFloat;
+
+    /**
+     * 
+     */
+    private Long myLong;
+
+    /**
+     * 
+     */
+    private Short myShort;
+
+    /**
+     * 
+     */
+    private byte[] myByteArray;
+
+    /**
+     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     */
+    protected Builder( ) {
+    }
+
+    /**
+     * Use {@link #newBuilder(WrapperDatatypeServiceObject)} instead of private constructor to create new builder.
+     */
+    protected Builder( WrapperDatatypeServiceObject pObject ) {
+      if (pObject != null) {
+        // Read attribute values from passed object.
+        myBoolean = pObject.myBoolean;
+        myByte = pObject.myByte;
+        myCharacter = pObject.myCharacter;
+        myDouble = pObject.myDouble;
+        myFloat = pObject.myFloat;
+        myLong = pObject.myLong;
+        myShort = pObject.myShort;
+        myByteArray = pObject.myByteArray;
+      }
+    }
+
+    /**
+     * Method returns a new builder.
+     * 
+     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     * 
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new WrapperDatatypeServiceObject objects. The
+     * method never returns null.
+     */
+    public static Builder newBuilder( WrapperDatatypeServiceObject pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
+     * Method sets the attribute "myBoolean".
+     * 
+     * @param pMyBoolean Value to which the attribute "myBoolean" should be set.
+     */
+    public Builder setMyBoolean( Boolean pMyBoolean ) {
+      // Assign value to attribute
+      myBoolean = pMyBoolean;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "myByte".
+     * 
+     * @param pMyByte Value to which the attribute "myByte" should be set.
+     */
+    public Builder setMyByte( Byte pMyByte ) {
+      // Assign value to attribute
+      myByte = pMyByte;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "myCharacter".
+     * 
+     * @param pMyCharacter Value to which the attribute "myCharacter" should be set.
+     */
+    public Builder setMyCharacter( Character pMyCharacter ) {
+      // Assign value to attribute
+      myCharacter = pMyCharacter;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "myDouble".
+     * 
+     * @param pMyDouble Value to which the attribute "myDouble" should be set.
+     */
+    public Builder setMyDouble( Double pMyDouble ) {
+      // Assign value to attribute
+      myDouble = pMyDouble;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "myFloat".
+     * 
+     * @param pMyFloat Value to which the attribute "myFloat" should be set.
+     */
+    public Builder setMyFloat( Float pMyFloat ) {
+      // Assign value to attribute
+      myFloat = pMyFloat;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "myLong".
+     * 
+     * @param pMyLong Value to which the attribute "myLong" should be set.
+     */
+    public Builder setMyLong( Long pMyLong ) {
+      // Assign value to attribute
+      myLong = pMyLong;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "myShort".
+     * 
+     * @param pMyShort Value to which the attribute "myShort" should be set.
+     */
+    public Builder setMyShort( Short pMyShort ) {
+      // Assign value to attribute
+      myShort = pMyShort;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "myByteArray".
+     * 
+     * @param pMyByteArray Value to which the attribute "myByteArray" should be set.
+     */
+    public Builder setMyByteArray( byte[] pMyByteArray ) {
+      // Assign value to attribute
+      if (pMyByteArray != null) {
+        myByteArray = new byte[pMyByteArray.length];
+        System.arraycopy(pMyByteArray, 0, myByteArray, 0, pMyByteArray.length);
+      }
+      else {
+        myByteArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method creates a new instance of class WrapperDatatypeServiceObject. The object will be initialized with the
+     * values of the builder.
+     * 
+     * @return WrapperDatatypeServiceObject Created object. The method never returns null.
+     */
+    public WrapperDatatypeServiceObject build( ) {
+      return new WrapperDatatypeServiceObject(this);
+    }
+
+    /**
+     * Method creates a new instance of class WrapperDatatypeServiceObject. The object will be initialized with the
+     * values of the builder.
+     * 
+     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
+     * @return WrapperDatatypeServiceObject Created object. The method never returns null.
+     */
+    public WrapperDatatypeServiceObject build( boolean pValidate ) {
+      WrapperDatatypeServiceObject lPOJO = this.build();
+      if (pValidate == true) {
+        Tools.getValidationTools().validateObject(lPOJO);
+      }
+      return lPOJO;
+    }
+  }
+
+  /**
+   * Method returns the attribute "myBoolean".
+   * 
+   * 
+   * @return Boolean Value to which the attribute "myBoolean" is set.
+   */
+  public Boolean getMyBoolean( ) {
+    return myBoolean;
+  }
+
+  /**
+   * Method sets the attribute "myBoolean".
+   * 
+   * 
+   * @param pMyBoolean Value to which the attribute "myBoolean" should be set.
+   */
+  public void setMyBoolean( Boolean pMyBoolean ) {
+    // Assign value to attribute
+    myBoolean = pMyBoolean;
+  }
+
+  /**
+   * Method returns the attribute "myByte".
+   * 
+   * 
+   * @return Byte Value to which the attribute "myByte" is set.
+   */
+  public Byte getMyByte( ) {
+    return myByte;
+  }
+
+  /**
+   * Method sets the attribute "myByte".
+   * 
+   * 
+   * @param pMyByte Value to which the attribute "myByte" should be set.
+   */
+  public void setMyByte( Byte pMyByte ) {
+    // Assign value to attribute
+    myByte = pMyByte;
+  }
+
+  /**
+   * Method returns the attribute "myCharacter".
+   * 
+   * 
+   * @return Character Value to which the attribute "myCharacter" is set.
+   */
+  public Character getMyCharacter( ) {
+    return myCharacter;
+  }
+
+  /**
+   * Method sets the attribute "myCharacter".
+   * 
+   * 
+   * @param pMyCharacter Value to which the attribute "myCharacter" should be set.
+   */
+  public void setMyCharacter( Character pMyCharacter ) {
+    // Assign value to attribute
+    myCharacter = pMyCharacter;
+  }
+
+  /**
+   * Method returns the attribute "myDouble".
+   * 
+   * 
+   * @return Double Value to which the attribute "myDouble" is set.
+   */
+  public Double getMyDouble( ) {
+    return myDouble;
+  }
+
+  /**
+   * Method sets the attribute "myDouble".
+   * 
+   * 
+   * @param pMyDouble Value to which the attribute "myDouble" should be set.
+   */
+  public void setMyDouble( Double pMyDouble ) {
+    // Assign value to attribute
+    myDouble = pMyDouble;
+  }
+
+  /**
+   * Method returns the attribute "myFloat".
+   * 
+   * 
+   * @return Float Value to which the attribute "myFloat" is set.
+   */
+  public Float getMyFloat( ) {
+    return myFloat;
+  }
+
+  /**
+   * Method sets the attribute "myFloat".
+   * 
+   * 
+   * @param pMyFloat Value to which the attribute "myFloat" should be set.
+   */
+  public void setMyFloat( Float pMyFloat ) {
+    // Assign value to attribute
+    myFloat = pMyFloat;
+  }
+
+  /**
+   * Method returns the attribute "myLong".
+   * 
+   * 
+   * @return Long Value to which the attribute "myLong" is set.
+   */
+  public Long getMyLong( ) {
+    return myLong;
+  }
+
+  /**
+   * Method sets the attribute "myLong".
+   * 
+   * 
+   * @param pMyLong Value to which the attribute "myLong" should be set.
+   */
+  public void setMyLong( Long pMyLong ) {
+    // Assign value to attribute
+    myLong = pMyLong;
+  }
+
+  /**
+   * Method returns the attribute "myShort".
+   * 
+   * 
+   * @return Short Value to which the attribute "myShort" is set.
+   */
+  public Short getMyShort( ) {
+    return myShort;
+  }
+
+  /**
+   * Method sets the attribute "myShort".
+   * 
+   * 
+   * @param pMyShort Value to which the attribute "myShort" should be set.
+   */
+  public void setMyShort( Short pMyShort ) {
+    // Assign value to attribute
+    myShort = pMyShort;
+  }
+
+  /**
+   * Method returns the attribute "myByteArray".
+   * 
+   * 
+   * @return byte Value to which the attribute "myByteArray" is set.
+   */
+  public byte[] getMyByteArray( ) {
+    byte[] lReturnValue;
+    if (myByteArray != null) {
+      lReturnValue = new byte[myByteArray.length];
+      System.arraycopy(myByteArray, 0, lReturnValue, 0, myByteArray.length);
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
+  }
+
+  /**
+   * Method sets the attribute "myByteArray".
+   * 
+   * 
+   * @param pMyByteArray Value to which the attribute "myByteArray" should be set.
+   */
+  public void setMyByteArray( byte[] pMyByteArray ) {
+    // Assign value to attribute
+    if (pMyByteArray != null) {
+      myByteArray = new byte[pMyByteArray.length];
+      System.arraycopy(pMyByteArray, 0, myByteArray, 0, pMyByteArray.length);
+    }
+    else {
+      myByteArray = null;
+    }
+  }
+
+  /**
+   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * StringBuilder also takes care about attributes of super classes.
+   *
+   * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
+   */
+  protected StringBuilder toStringBuilder( ) {
+    StringBuilder lBuilder = new StringBuilder(256);
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append('\n');
+    lBuilder
+        .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "myBoolean", "" + myBoolean));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "myByte", "" + myByte));
+    lBuilder.append('\n');
+    lBuilder.append(
+        XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "myCharacter", "" + myCharacter));
+    lBuilder.append('\n');
+    lBuilder
+        .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "myDouble", "" + myDouble));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "myFloat", "" + myFloat));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "myLong", "" + myLong));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "myShort", "" + myShort));
+    lBuilder.append('\n');
+    return lBuilder;
+  }
+
+  /**
+   * Method creates a new String with the values of all attributes of this class. All references to other objects will
+   * be ignored.
+   * 
+   * @return {@link String} String representation of this object. The method never returns null.
+   */
+  @Override
+  public String toString( ) {
+    return this.toStringBuilder().toString();
+  }
+}

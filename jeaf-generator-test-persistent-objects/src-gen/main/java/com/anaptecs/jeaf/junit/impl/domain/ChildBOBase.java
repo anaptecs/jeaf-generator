@@ -1,0 +1,115 @@
+package com.anaptecs.jeaf.junit.impl.domain;
+
+import java.util.List;
+
+import com.anaptecs.jeaf.spi.persistence.ClassID;
+import com.anaptecs.jeaf.spi.persistence.PersistentObject;
+
+/**
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
+public abstract class ChildBOBase extends BaseClassBO {
+  /**
+   * The class id is a unique id within the domain model of an application for every business object class.
+   */
+  public static final ClassID CLASS_ID = ClassID.createClassID(1001, ChildBO.class);
+
+  /**
+   * Constant for the name of the row that is used to store the values of attribute "childName".
+   */
+  public static final String CHILDNAME_ROW = "CHILDNAME";
+
+  /**
+   * Constant for the name of attribute "childName".
+   */
+  public static final String CHILDNAME_ATTRIBUTE = "childName";
+
+  /**
+   * Constant for the name of the row that is used to store the values of attribute "childNumber".
+   */
+  public static final String CHILDNUMBER_ROW = "CHILDNUMBER";
+
+  /**
+   * Constant for the name of attribute "childNumber".
+   */
+  public static final String CHILDNUMBER_ATTRIBUTE = "childNumber";
+
+  /**
+   * 
+   */
+  private String childName;
+
+  /**
+   * 
+   */
+  private Integer childNumber;
+
+  /**
+   * Initialize object. The constructor of the class has visibility protected in order to avoid creating business
+   * objects not through JEAFs persistence service provider.
+   */
+  protected ChildBOBase( ) {
+    // Nothing to do.
+  }
+
+  /**
+   * Method returns all instance of this class including potential subclasses.
+   * 
+   * @return {@link List} List with all objects of this class. The method never returns null.
+   */
+  public static List<ChildBO> findAllChildBOs( ) {
+    return PersistentObject.getPersistenceServiceProvider().findAll(ChildBO.class);
+  }
+
+  /**
+   * Method returns the attribute "childName".
+   * 
+   * 
+   * @return String Value to which the attribute "childName" is set.
+   */
+  public String getChildName( ) {
+    return childName;
+  }
+
+  /**
+   * Method sets the attribute "childName".
+   * 
+   * 
+   * @param pChildName Value to which the attribute "childName" should be set.
+   */
+  public void setChildName( String pChildName ) {
+    // Assign value to attribute
+    childName = pChildName;
+  }
+
+  /**
+   * Method returns the attribute "childNumber".
+   * 
+   * 
+   * @return Integer Value to which the attribute "childNumber" is set.
+   */
+  public Integer getChildNumber( ) {
+    return childNumber;
+  }
+
+  /**
+   * Method sets the attribute "childNumber".
+   * 
+   * 
+   * @param pChildNumber Value to which the attribute "childNumber" should be set.
+   */
+  public void setChildNumber( Integer pChildNumber ) {
+    // Assign value to attribute
+    childNumber = pChildNumber;
+  }
+
+  /**
+   * Method returns the class id of this business object class.
+   * 
+   * @return {@link ClassID} Class ID of this business object. The method never returns null.
+   */
+  public ClassID getClassID( ) {
+    return CLASS_ID;
+  }
+}

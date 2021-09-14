@@ -1,0 +1,20 @@
+«IMPORT uml»
+«IMPORT JMM»
+«EXTENSION java::GeneratorCommons»
+
+«DEFINE AuthorizationTypes FOR Model»
+  «FILE "AuthorizationData.xml" GenRes»<?xml version='1.0' encoding='UTF-8' standalone="yes"?>
+  <Root>
+    «FOREACH this.getAllAuthorizationTypes() AS authType»<AuthorizationType name="«authType»"/>«ENDFOREACH»
+    
+    «FOREACH  this.getAllUseCases().typeSelect(UseCase) AS useCase»<UseCaseDefinition  id="ID_«useCase.name.replaceAll(" ", "")»" name="«useCase.name»"/>«ENDFOREACH»
+    
+    «FOREACH this.getAllJEAFActors().typeSelect(Actor) AS actor»<RoleDefinition name="«actor.name»">
+        «FOREACH actor.getReferencedAuthorizationTypeNames() AS refs»<AuthorizationTypeRef authRef="«refs»"/>«ENDFOREACH -»
+        «FOREACH actor.getAssociatedUseCases().typeSelect(UseCase) AS useCase»<UseCaseDefinitionRef ucRef="ID_«useCase.name.replaceAll(" ", "")»"/>«ENDFOREACH -»
+    </RoleDefinition>
+       
+    «ENDFOREACH -»
+  </Root>  
+  «ENDFILE»
+«ENDDEFINE»

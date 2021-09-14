@@ -1,0 +1,34 @@
+«EXTENSION java::Naming»
+«IMPORT uml»
+«IMPORT java»
+«IMPORT JMM»
+
+
+«DEFINE JEAFEnumTemplate FOR JEAFEnumeration»
+«FILE packagePath()+"/"+name+".java" GenBase»
+package «packageName()»;
+
+/**
+ * «getComment()»
+ */
+public enum «name» {
+«FOREACH this.ownedLiteral AS literal»
+  /**
+   * «literal.getComment()»
+   */
+  «literal.name»«IF literal != this.ownedLiteral.last()»,«ELSE»;«ENDIF»
+«ENDFOREACH»
+
+/**
+ * Initialize object.
+ */
+private «this.name»(«this.ownedAttribute.asParameterDefinitionList()») {
+  «FOREACH this.ownedAttribute AS attr»
+  «attr.name» = «attr.asParameter()»;
+  «ENDFOREACH»
+}
+«EXPAND Attribute::DoPropertyDeclaration FOREACH this.ownedAttribute»
+«EXPAND Attribute::Getter FOREACH this.ownedAttribute»
+}
+«ENDFILE»
+«ENDDEFINE»

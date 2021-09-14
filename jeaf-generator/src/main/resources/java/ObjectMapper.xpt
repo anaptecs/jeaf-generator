@@ -1,0 +1,518 @@
+«EXTENSION java::Naming»
+«EXTENSION java::ObjectMapper»
+«EXTENSION java::GeneratorCommons»
+
+«DEFINE GenerateObjectMappers FOR uml::Class»
+	«IF generateObjectMappers() == true && this.hasObjectMapping()»	
+		«FOREACH this.getDirectObjectMappingDependentClasses().typeSelect(uml::Class) AS targetClass»
+			«EXPAND GenerateObjectMapper(targetClass) FOR this»
+		«ENDFOREACH»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE GenerateObjectMapper(uml::Class target) FOR uml::Class»
+    «LET this AS lSourceClass»
+    «LET target AS lTargetClass»
+    «LET lSourceClass.fqn() AS lSourceClassName»
+    «LET lSourceClass.name AS lSourceClassShortName»
+    «LET lTargetClass.fqn() AS lTargetClassName»
+    «LET lTargetClass.name AS lTargetClassShortName»
+    «LET lSourceClass.superClass.isEmpty == false && lSourceClass.superClass.get(0).hasObjectMapping() == true ? true : false AS lNeedsParentClassMapper»
+    «LET getObjectMapperName(lSourceClassShortName, lTargetClassShortName) AS lMapperName»
+    
+    «REM»Create new mapper class file.«ENDREM»
+    «FILE getMapperPackagePath(lTargetClass) + "/" + lMapperName + ".java" GenBase»
+    «getFileHeader()»
+    package «getMapperPackage(lTargetClass)»;
+
+	/**
+	 * Class implements an bidirectional object mapper between classes {@link «lSourceClassName»} as source and {@link «lTargetClassName»} as target.
+	 */
+	public class «lMapperName» implements com.anaptecs.jeaf.core.api.ObjectMapper<«lSourceClassName», «lTargetClassName»> {
+		/**
+		 * Only instance of this class. We can avoid to create multiple instances as object mapper implementations are
+		 * stateless and thread safe.
+		 */
+		private static final «lMapperName» INSTANCE = new «lMapperName»();
+		
+		/**
+		 * Constructor is private. In order to avoid that unnecessary instances are created.
+		 */
+		private «lMapperName»( ) {
+		}
+		
+		/**
+		 * Method returns an instance of this object mapper.
+		 * 
+		 * @return {@link ObjectMapper} Instance an object mapper that is capable to map between «lSourceClassName» and «lTargetClassName». The
+		 * method never returns null.
+		 */
+		public static «lMapperName» getConverter( ) {
+			return INSTANCE;
+		}
+
+		«IF lTargetClass.isAbstract == false»
+		/**
+		 * Method creates a new «lTargetClassShortName» object from the passed «lSourceClassShortName» object and applies the defined mappings of type
+		 * {@link MappingType#CREATE} from the UML model.
+		 * 
+		 * @param pSource «lSourceClassShortName» object that should be used to create a new «lTargetClassShortName» object. The parameter must not be
+		 * null.
+		 * @return {@link «lTargetClassName»} Created «lTargetClassShortName» object. The method never returns null.
+		 */
+		public static «lTargetClassName» createNewTargetObject( «lSourceClassName» pSource ) {
+			// Check parameter
+			com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pSource, "pSource");
+			  
+			// Create new target object.
+			«IF lTargetClass.isPOJO() || lTargetClass.isServiceObject() »
+			«lTargetClassName» lTarget = «lTargetClassName».Builder.newBuilder().build();
+			«ELSE»«IF lTargetClass.isDomainObject()»
+			«lTargetClassName» lTarget = new «lTargetClassName»();
+			«ELSE»«IF lTargetClass.isPersistentObject()»
+			com.anaptecs.jeaf.spi.persistence.PersistenceServiceProvider lPersistenceServiceProvider = com.anaptecs.jeaf.core.api.JEAF.getServiceProvider(com.anaptecs.jeaf.spi.persistence.PersistenceServiceProvider.class);
+			«lTargetClassName» lTarget = lPersistenceServiceProvider.createPersistentObject(«lTargetClassName».class);
+			«ENDIF»«ENDIF»«ENDIF»
+			
+			«lMapperName» lObjectMapper = «lMapperName».getConverter();
+			«IF lNeedsParentClassMapper == true»
+			// As class «lSourceClassShortName» also has a super class we have to retrieve a mapper for its super class as well. The delegate is responsible for applying all mappings of the super classes.
+			lObjectMapper.applyParentMappings(pSource, lTarget, MappingType.CREATE);
+			«ENDIF»
+			
+			// Take value(s) from source, map them to target and return the created target object.
+			lObjectMapper.applyMappings(pSource, lTarget, MappingType.CREATE);
+			return lTarget;
+		}
+		
+		/**
+		 * Method creates new «lTargetClassShortName» objects based on the passed «lSourceClassShortName» objects. For every «lSourceClassShortName» object a new
+		 * «lTargetClassShortName» object will be returned. The mappings for case {@link MappingType#CREATE} will be applied.
+		 * 
+		 * @param pSourceObjects All «lSourceClassShortName» objects that should be used to create «lTargetClassShortName» objects. The parameter must
+		 * not be null.
+		 * @return {@link java.util.List} List with all «lTargetClassShortName» objects that were created. The method never returns null.
+		 */
+		public static java.util.List<«lTargetClassName»> createNewTargetObjects( java.util.Collection<«lSourceClassName»> pSourceObjects ) {
+			// Check parameter
+			com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pSourceObjects, "pSourceObjects");
+			
+			// Create new target object for every passed source object
+			java.util.List<«lTargetClassName»> lTargetObjects = new java.util.ArrayList<«lTargetClassName»>(pSourceObjects.size());
+			for («lSourceClassName» lNext : pSourceObjects) {
+			«lTargetClassName» lNewTargetObject = «lMapperName».createNewTargetObject(lNext);
+			lTargetObjects.add(lNewTargetObject);
+			}
+			// Return all created target objects.
+			return lTargetObjects;
+		}
+		«ENDIF»		
+
+
+		«IF lTargetClass.isPersistentObject() && (lSourceClass.implementsIdentifiable() || lSourceClass.isDomainObject())»
+		/**
+		 * Method updates an already existing persistent target object with the data of the passed source object according to
+		 * the mapping defined in the UML model.
+		 * 
+		 * @param pSource «lSourceClassName» object that should be used to update an existing «lTargetClassShortName» object. The parameter must not be null.
+		 * @return {@link «lTargetClassName»} Updated «lTargetClassShortName» object. The method never returns null.
+		 */
+		public static «lTargetClassName» updatePersistentTarget( «lSourceClassName» pSource ) {
+		  // Check parameter
+		  com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pSource, "pSource");
+		
+		  // Load persistent object by ID of source object.
+		  com.anaptecs.jeaf.spi.persistence.PersistenceServiceProvider lPersistenceServiceProvider = com.anaptecs.jeaf.core.api.JEAF.getServiceProvider(com.anaptecs.jeaf.spi.persistence.PersistenceServiceProvider.class);
+		  «IF lSourceClass.isPOJO() && lSourceClass.implementsIdentifiable()»
+		  «lTargetClassName» lTargetObject = lPersistenceServiceProvider.getPersistentObject(pSource.getID(), «lTargetClassName».class);
+		  «ENDIF»
+		  «IF lSourceClass.isServiceObject() && lSourceClass.implementsIdentifiable()»
+		  «lTargetClassName» lTargetObject = lPersistenceServiceProvider.getPersistentObject(pSource.getID(), «lTargetClassName».class);
+		  «ENDIF»
+		  «IF lSourceClass.isDomainObject()»
+		  «lTargetClassName» lTargetObject = lPersistenceServiceProvider.getPersistentObject(pSource.getDomainObjectID(), «lTargetClassName».class);
+		  «ENDIF»
+		  
+		  «lMapperName» lObjectMapper = «lMapperName».getConverter();
+		  lObjectMapper.applyMappings(pSource, lTargetObject, MappingType.UPDATE);
+		  return lTargetObject;
+		}
+		«ENDIF»
+
+		/**
+		 * Method applies the mappings according to the passed mapping type on the passed source and target object.
+		 * 
+		 * @param pSource Source object which should be used. The parameter must not be null. The effective type and direction
+		 * of the object mapping depends on parameter <code>pMappingType</code>.
+		 * @param pTarget Target object which should be used. The parameter must not be null. The effective type and direction
+		 * of the object mapping depends on parameter <code>pMappingType</code>.
+		 * @param pMappingType Parameter defines which type of mapping should be applied.
+		 */
+		@Override
+		public void applyMappings( «lSourceClassName» pSource, «lTargetClassName» pTarget, com.anaptecs.jeaf.core.api.ObjectMapper.MappingType pMappingType ) {
+			// Check parameters
+			com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pSource, "pSource");
+			com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pTarget, "pTarget");
+			
+			«IF lNeedsParentClassMapper == true»
+			// Apply mapping of super classes.
+			this.applyParentMappings(pSource, pTarget, pMappingType);
+			«ENDIF»
+			
+			// Select the type of mapping that should be executed.
+			switch (pMappingType) {
+				// Mappings for creation of target object.
+				case CREATE:
+					this.setTargetObject(pSource, pTarget);
+					break;
+				
+				// Mapping for update of target object
+				case UPDATE:
+					this.updateTargetObject(pSource, pTarget);
+					break;
+				
+				// Mapping for reading from target object.
+				case READ:
+					this.setSourceObject(pSource, pTarget);
+					break;
+				
+				// Invalid mapping type. Most likely this is because of an outdated version of JEAF Generator that does not match to the used version of JEAF Core.
+				default:
+					com.anaptecs.jeaf.xfun.api.checks.Assert.internalError("Unexpected object mapping type '" + pMappingType.name() + ". Please regenerate code with the latest version of JEAF Generator.");
+			}
+		}
+
+		/**
+		 * Method applies the mappings according to the passed mapping type on the passed source and target objects. The
+		 * entries in the list of source and target objects are matched according to their index. This also means that both
+		 * list must have the same amount of entries.
+		 * 
+		 * @param pSources Source objects which should be used. The parameter must not be null. The effective type and
+		 * direction of the object mapping depends on parameter <code>pMappingType</code>.
+		 * @param pTargets Target objects which should be used. The parameter must not be null. The effective type and
+		 * direction of the object mapping depends on parameter <code>pMappingType</code>.
+		 * @param pMappingType Parameter defines which type of mapping should be applied.
+		 */
+		@Override
+		public void applyMappings( java.util.List<«lSourceClassName»> pSources, java.util.List<«lTargetClassName»> pTargets, com.anaptecs.jeaf.core.api.ObjectMapper.MappingType pMappingType ) {
+			// Check parameters
+			com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pSources, "pSources");
+			com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pTargets, "pTargets");
+			
+			// Resolve iterators for sources and targets.
+			java.util.Iterator<«lSourceClassName»> lSourceIterator = pSources.iterator();
+			java.util.Iterator<«lTargetClassName»> lTargetIterator = pTargets.iterator();
+			// Apply mappings for each pair of source and target.
+			while (lSourceIterator.hasNext()) {
+				this.applyMappings(lSourceIterator.next(), lTargetIterator.next(), pMappingType);
+			}
+		}
+
+		«IF lSourceClass.isAbstract == false»
+		/**
+		 * Method creates a new «lSourceClassShortName» object and applies the defined mappings of type {@link MappingType#READ} from the
+		 * UML model.
+		 * 
+		 * @param pTarget «lTargetClassShortName» object that should be used to create a new «lSourceClassShortName» object. The parameter must not be
+		 * null.
+		 * @return {@link «lSourceClassShortName»} Created «lSourceClassShortName» object. The method never returns null.
+		 */
+		public static «lSourceClassName» createNewSourceObject( «lTargetClassName» pTarget ) {
+			// Check parameter
+			com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pTarget, "pTarget");
+			
+			// Create new source object, apply mappings and return created object.
+			«REM»Handling POJO as source object«ENDREM»
+			«IF lSourceClass.isPOJO()»
+				«IF lSourceClass.implementsIdentifiable() && lTargetClass.implementsIdentifiable()»
+					«lSourceClassName».Builder lBuilder = «lSourceClassName».Builder.newBuilder();
+					lBuilder.setID(pTarget.getID());
+					«lSourceClassName» lNewSourceObject = lBuilder.build();
+				«ELSE»	
+					«lSourceClassName» lNewSourceObject = «lSourceClassName».Builder.newBuilder().build();
+				«ENDIF»
+
+			«REM»Handling ServiceObject as source object«ENDREM»
+			«ELSE»«IF lSourceClass.isServiceObject()»
+				«IF lTargetClass.isServiceObject()»
+					«IF lSourceClass.implementsIdentifiable() && lTargetClass.implementsIdentifiable()»
+						«lSourceClassName» lNewSourceObject;
+						com.anaptecs.jeaf.core.api.ServiceObjectID lServiceObjectID = pTarget.getID();
+						if (lServiceObjectID != null) {
+							«lSourceClassName».Builder lBuilder = «lSourceClassName».Builder.newBuilder();
+							lBuilder.setID(lServiceObjectID);
+							lNewSourceObject = lBuilder.build();
+						}
+						else {
+							lNewSourceObject = «lSourceClassName».Builder.newBuilder().build();
+						}
+					«ELSE»
+						«lSourceClassName» lNewSourceObject = «lSourceClassName».Builder.newBuilder().build();
+					«ENDIF»
+				«ELSE»«IF lTargetClass.isDomainObject()»
+					«IF lSourceClass.implementsIdentifiable() == true»
+					«lSourceClassName» lNewSourceObject;
+					com.anaptecs.jeaf.core.api.DomainObjectID lDomainObjectID = pTarget.getDomainObjectID();
+					if (lDomainObjectID != null) {
+						«lSourceClassName».Builder lBuilder = «lSourceClassName».Builder.newBuilder();
+						lBuilder.setID(lDomainObjectID);
+						lNewSourceObject = lBuilder.build();
+					}
+					else {
+						lNewSourceObject = «lSourceClassName».Builder.newBuilder().build();
+					}
+					«ELSE»
+						«lSourceClassName» lNewSourceObject = «lSourceClassName».Builder.newBuilder().build();
+					«ENDIF»
+				«ELSE»«IF lTargetClass.isPersistentObject()»
+					«IF lSourceClass.implementsIdentifiable() == true»
+						«lSourceClassName».Builder lBuilder = «lSourceClassName».Builder.newBuilder();
+						lBuilder.setID(pTarget.getID());
+						«lSourceClassName» lNewSourceObject = lBuilder.build();
+					«ELSE»
+						«lSourceClassName» lNewSourceObject = «lSourceClassName».Builder.newBuilder().build();
+					«ENDIF»
+				«ELSE»
+					// ERROR: Target class is not a service or domain or persistent object.
+				«ENDIF»«ENDIF»«ENDIF»
+
+			«REM»Handling DomainObject as source object«ENDREM»
+			«ELSE»«IF lSourceClass.isDomainObject()»
+				«IF lTargetClass.isDomainObject()»
+					«lSourceClassName» lNewSourceObject;
+					com.anaptecs.jeaf.core.api.DomainObjectID lDomainObjectID = pTarget.getDomainObjectID();
+					if (lDomainObjectID != null) {
+						lNewSourceObject = new «lSourceClassName»(lDomainObjectID);
+					}
+					else {
+						lNewSourceObject = new «lSourceClassName»();
+					}
+				«ELSE»«IF lTargetClass.isPersistentObject()»
+					«lSourceClassName» lNewSourceObject = new «lSourceClassName» (pTarget.getID().transformToDomainObjectID());
+				«ELSE»
+					// ERROR: Target class is not a domain or persistent object.
+				«ENDIF»«ENDIF»
+			«ENDIF»«ENDIF»«ENDIF»
+			  
+			«lMapperName» lObjectMapper = «lMapperName».getConverter();
+			lObjectMapper.applyMappings(lNewSourceObject, pTarget, MappingType.READ);
+			return lNewSourceObject;
+		}
+
+		/**
+		 * Method creates new «lSourceClassShortName» objects based on the passed «lTargetClassShortName» objects. For every «lTargetClassShortName» object a new
+		 * «lSourceClassShortName» object will be returned. The mappings for case {@link MappingType#READ} will be applied.
+		 * 
+		 * @param pTargetObjects All target objects that should be used to create source objects. The parameter must not be
+		 * null.
+		 * @return {@link java.util.List} List with all source objects that were created. The method never returns null.
+		 */
+		public static java.util.List<«lSourceClassName»> createNewSourceObjects( java.util.Collection<«lTargetClassName»> pTargetObjects ) {
+			// Check parameter
+			com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pTargetObjects, "pTargetObjects");
+			
+			// Create new source object for every passed target object.
+			java.util.List<«lSourceClassName»> lNewObjects = new java.util.ArrayList<«lSourceClassName»>(pTargetObjects.size());
+			for («lTargetClassName» lNext : pTargetObjects) {
+				«lSourceClassName» lNewSourceObject = «lMapperName».createNewSourceObject(lNext);
+				lNewObjects.add(lNewSourceObject);
+			}
+			return lNewObjects;
+		}
+		«ENDIF»
+
+		/**
+		 * Method maps all attributes from «lSourceClassShortName» to «lTargetClassShortName». Mappings are applied only for case
+		 * {@link MappingType#READ}.
+		 * 
+		 * @param pSource Source object for the mapping. The parameter must not be null.
+		 * @param pTarget Target object for the mapping. The parameter must not be null.
+		 */
+        private void setTargetObject(«lSourceClassName» pSource, «lTargetClassName» pTarget) {
+			«FOREACH lSourceClass.getDirectObjectMappingDependencies().typeSelect(JMM::ObjectMapping) AS dependency»
+				«IF dependency.onCreate == true»
+					«LET dependency.supplier.get(0) AS supplier»
+					«LET dependency.client.get(0) AS client»
+					  
+					«REM»We only have to take care about the dependencies of the current target class.«ENDREM»
+					«IF lTargetClass == supplier.owner»
+						«IF isDatatypeConverterRequired(supplier, client) == false»
+							«IF autoBoxingToolsRequired(supplier, client) == true»
+								pTarget.«supplier.asSetter()»(com.anaptecs.jeaf.tools.api.Tools.getAutoBoxingTools().autoBox(pSource.«client.asGetter()»()));
+							«ELSE»
+								pTarget.«supplier.asSetter()»(pSource.«client.asGetter()»());
+							«ENDIF»
+						«ELSE»
+							«LET supplier.asLocalVar() + "Converter" AS converter»
+							«LET getClassNameForDatatypeConverter(client.fqn()) AS lClientFQN»
+							«LET getClassNameForDatatypeConverter(supplier.fqn()) AS lSupplierFQN»
+							// Datatype of source and target objects are not the same. Thus we are trying to find an appropriate converter.
+							«IF lClientFQN == "java.lang.Class" || lSupplierFQN == "java.lang.Class"»
+							@SuppressWarnings("rawtypes")
+							«ENDIF»
+							com.anaptecs.jeaf.xfun.api.datatypeconverter.DatatypeConverter<«lClientFQN», «lSupplierFQN»> «converter»; 
+							«converter» = com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«lClientFQN».class, «lSupplierFQN».class);
+							pTarget.«supplier.asSetter()»(«converter».convert(pSource.«client.asGetter()»()));
+							«ENDLET»«ENDLET»«ENDLET»
+						«ENDIF»
+					«ENDIF»
+					«ENDLET»
+					«ENDLET»
+				«ENDIF»
+			«ENDFOREACH»
+        }
+        
+		/**
+		 * Method maps all attributes from «lSourceClassShortName» to «lTargetClassShortName». Mappings are applied only for case
+		 * {@link MappingType#UPDATE}.
+		 * 
+		 * @param pSource Source object for the mapping. The parameter must not be null.
+		 * @param pTarget Target object for the mapping. The parameter must not be null.
+		 */
+        private void updateTargetObject(«lSourceClassName» pSource, «lTargetClassName» pTarget) {
+			«IF lSourceClass.hasUpdateObjectMapping()»
+				«LET lTargetClass.isPersistentObject() && (lSourceClass.implementsIdentifiable() || lSourceClass.isDomainObject()) AS lOptimisticLockCheckRequired»
+				«IF lOptimisticLockCheckRequired»
+					// In order to avoid dirty writes on persistent objects, we first check for optimistic lock conflicts. Therefore we have to compare version labels of source and target.
+					«IF lSourceClass.implementsIdentifiable()»
+					Integer lSourceVersionLabel = pSource.getID().getVersionLabel();
+					«ELSE»«IF lSourceClass.isServiceObject()»
+					Integer lSourceVersionLabel = pSource.getServiceObjectID().getVersionLabel();
+					«ELSE»«IF lSourceClass.isDomainObject()»
+					Integer lSourceVersionLabel = pSource.getDomainObjectID().getVersionLabel();
+					«ENDIF»«ENDIF»«ENDIF»
+					int lTargetVersionLabel = pTarget.getVersionLabel();
+					
+					// Optimistic lock conflict detected
+					if (lSourceVersionLabel != null && lSourceVersionLabel.intValue() != lTargetVersionLabel) {
+					  String[] lParams = new String[] { pTarget.getClass().getName(), pTarget.getID().getObjectID(),
+					    lSourceVersionLabel.toString(), Integer.toString(pTarget.getVersionLabel()) };
+					  throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.spi.persistence.PersistenceServiceProviderMessages.OPTIMISTIC_LOCK_CONFLICT, lParams);
+					}
+					else {
+				«ENDIF»
+					// Update target object
+				«FOREACH lSourceClass.getDirectObjectMappingDependencies().typeSelect(JMM::ObjectMapping) AS dependency»
+					«IF dependency.onUpdate == true»
+						«LET dependency.supplier.get(0) AS supplier»
+						«LET dependency.client.get(0) AS client»
+						  
+						«REM»We only have to take care about the dependencies of the current target class.«ENDREM»
+						«IF lTargetClass == supplier.owner»
+							«IF isDatatypeConverterRequired(supplier, client) == false»
+								«IF autoBoxingToolsRequired(supplier, client) == true»
+									pTarget.«supplier.asSetter()»(com.anaptecs.jeaf.tools.api.Tools.getAutoBoxingTools().autoBox(pSource.«client.asGetter()»()));
+								«ELSE»
+									pTarget.«supplier.asSetter()»(pSource.«client.asGetter()»());
+								«ENDIF»
+							«ELSE»
+								«LET supplier.asLocalVar() + "Converter" AS converter»
+								«LET getClassNameForDatatypeConverter(client.fqn()) AS lClientFQN»
+								«LET getClassNameForDatatypeConverter(supplier.fqn()) AS lSupplierFQN»
+								// Datatype of source and target objects are not the same. Thus we are trying to find an appropriate converter.
+								«IF lClientFQN == "java.lang.Class" || lSupplierFQN == "java.lang.Class"»
+								@SuppressWarnings("rawtypes")
+								«ENDIF»
+								com.anaptecs.jeaf.xfun.api.datatypeconverter.DatatypeConverter<«lClientFQN», «lSupplierFQN»> «converter»; 
+								«converter» = com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«lClientFQN».class, «lSupplierFQN».class);
+								pTarget.«supplier.asSetter()»(«converter».convert(pSource.«client.asGetter()»()));
+								«ENDLET»«ENDLET»«ENDLET»
+							«ENDIF»
+						«ENDIF»
+						«ENDLET»
+						«ENDLET»
+					«ENDIF»
+				«ENDFOREACH»
+				«IF lOptimisticLockCheckRequired»
+				}
+				«ENDIF»
+				«ENDLET»
+			«ELSE»
+				// Implementation is empty as no object mappings are defined in UML model in case of update (ObjectMapping.onUpdate).
+			«ENDIF»
+		}
+
+		/**
+		 * Method maps all attributes from «lTargetClassShortName» to «lSourceClassShortName». Mappings are applied only for case
+		 * {@link MappingType#READ}.
+		 * 
+		 * @param pSource Source object for the mapping. The parameter must not be null.
+		 * @param pTarget Target object for the mapping. The parameter must not be null.
+		 */
+        private void setSourceObject(«lSourceClassName» pSource, «lTargetClassName» pTarget) {
+			«FOREACH lSourceClass.getDirectObjectMappingDependencies().typeSelect(JMM::ObjectMapping) AS dependency»
+				«IF dependency.onRead == true»
+					«LET dependency.supplier.get(0) AS supplier»
+					«LET dependency.client.get(0) AS client»
+					  
+					«REM»We only have to take care about the dependencies of the current target class.«ENDREM»
+					«IF lTargetClass == supplier.owner»
+						«IF isDatatypeConverterRequired(supplier, client) == false»
+							«IF autoBoxingToolsRequired(supplier, client) == true»
+								pSource.«client.asSetter()»(com.anaptecs.jeaf.tools.api.Tools.getAutoBoxingTools().autoBox(pTarget.«supplier.asGetter()»()));
+							«ELSE»
+								pSource.«client.asSetter()»(pTarget.«supplier.asGetter()»());
+							«ENDIF»
+						«ELSE»«IF uml::Operation.isInstance(supplier)»
+							pSource.«client.asSetter()»(pTarget.«EXPAND Read FOR dependency.supplier.get(0)»());
+						«ELSE»
+							«LET supplier.asLocalVar() + "Converter" AS converter»
+							«LET getClassNameForDatatypeConverter(client.fqn()) AS lClientFQN»
+							«LET getClassNameForDatatypeConverter(supplier.fqn()) AS lSupplierFQN»
+							// Datatype of source and target objects are not the same. Thus we are trying to find an appropriate converter.
+							«IF lClientFQN == "java.lang.Class" || lSupplierFQN == "java.lang.Class"»
+							@SuppressWarnings("rawtypes")
+							«ENDIF»
+							com.anaptecs.jeaf.xfun.api.datatypeconverter.DatatypeConverter<«lSupplierFQN», «lClientFQN»> «converter»; 
+							«converter» = com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«lSupplierFQN».class, «lClientFQN».class);
+							pSource.«client.asSetter()»(«converter».convert(pTarget.«supplier.asGetter()»()));
+							«ENDLET»«ENDLET»«ENDLET»
+						«ENDIF»«ENDIF»
+					«ENDIF»
+					«ENDLET»
+					«ENDLET»
+				«ENDIF»
+			«ENDFOREACH»
+		}
+
+		«IF lNeedsParentClassMapper == true»
+		«LET this.superClass.get(0) AS lParentClass»
+		
+		/**
+		 * Method applies the object mappings for all combinations of the source's parent class with the target class and all
+		 * of its super classes.
+		 * 
+		 * @param pSource Source object for the mapping. The parameter must not be null.
+		 * @param pTarget Target object for the mapping. The parameter must not be null.
+		 * @param pMappingType Parameter defines which type of mapping should be applied.
+		 */
+		private void applyParentMappings( «lSourceClassName» pSource, «lTargetClassName» pTarget, com.anaptecs.jeaf.core.api.ObjectMapper.MappingType pMappingType ) {
+		    «FOREACH lParentClass.getParentTargetClasses(lTargetClass).typeSelect(uml::Class) AS lMapperTarget»
+		    «getMapperPackage(lMapperTarget)».«getObjectMapperName(lParentClass.name, lMapperTarget.name)».getConverter().applyMappings(pSource, pTarget, pMappingType);
+		    «ENDFOREACH»
+		}
+		«ENDLET»
+		«ENDIF»
+	} 
+    «ENDFILE»
+    «ENDLET»
+    «ENDLET»
+    «ENDLET»
+    «ENDLET»
+    «ENDLET»
+    «ENDLET»
+    «ENDLET»
+    «ENDLET»
+«ENDDEFINE»
+
+«DEFINE Read FOR uml::Operation»
+	«this.name»
+«ENDDEFINE»
+
+«DEFINE Read FOR uml::Property»
+	«this.asGetter()»
+«ENDDEFINE»
+
+«DEFINE Read FOR uml::NamedElement»
+	ERROR
+«ENDDEFINE»

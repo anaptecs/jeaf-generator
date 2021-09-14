@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow>
+    <bean class="oaw.uml2.Setup" standardUML2Setup="true"/>
+    
+    <component class="org.openarchitectureware.emf.XmiReader">
+        <modelFile value="${model.file}"/>
+        <outputSlot value="${output.slot}"/>
+    </component>
+    
+    <!-- Execute checks -->    
+    <component class="org.openarchitectureware.check.CheckComponent">
+        <metaModel id="${profile.name}" class="oaw.uml2.profile.ProfileMetaModel">
+            <profile value="${profile.file}"/>
+        </metaModel>
+        <metaModel id="UmlMM" class="oaw.uml2.UML2MetaModel"/>
+        
+        <checkFile value="jeaf::JEAFChecks"/>
+        <checkFile value="entity::EntityChecks"/>
+        <checkFile value="java::AssociationChecks"/>
+        <checkFile value="java::ObjectMapperChecks"/>
+        <checkFile value="jeaf::ValidationChecks"/>
+        <expression value="${output.slot}.eAllContents.union({${output.slot}})"/>
+    </component>
+    
+    <!-- Run Generator -->
+    <component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
+		<metaModel idRef="${profile.name}"/>
+		<metaModel idRef="UmlMM"/>
+
+		<fileEncoding value="ISO-8859-1"/>
+		<!-- Fuer jedes 'model' im slot model rufe Define 'Root' im template 'Root' auf -->
+		<expand value="${template.root} FOR ${output.slot}"/>
+		
+		<outlet name="GenBase" path="${path.src.gen}/" overwrite="true"/>
+		<outlet name="GenOnce" path="${path.src}/" overwrite="false"/>
+		<outlet name="GenRes"  path="${path.res.gen}/" overwrite="true"/>
+		<outlet name="Res"  path="${path.res}/" overwrite="false"/>
+		<outlet path="error" />
+    </component>
+    
+</workflow>

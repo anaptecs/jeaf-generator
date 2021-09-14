@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- =========================================================================================== -->
+<!--  ANT script can be used to run the JEAF Generator                                           -->
+<!-- =========================================================================================== -->
+<project default="RunGenerator" name="JEAF Generator" basedir=".">
+	<!-- =========================================================================================================== -->
+	<!-- Properties containing the values of environment variables                                                   -->
+	<!-- =========================================================================================================== -->
+	<property environment="env" />
+	<property name="development.home" value="${env.DEVELOPMENT_HOME}" />
+	<property name="jeaf.generator.version" value="1.3.0.36" />
+
+	<path id="jeaf.generator.classpath">
+		<fileset dir="${development.home}/anaptecs/JEAF_Generator/${jeaf.generator.version}/jeaf" includes="*.jar">
+		</fileset>
+		<fileset dir="${development.home}/anaptecs/JEAF_Generator/${jeaf.generator.version}/lib" includes="*.jar">
+		</fileset>
+	</path>
+
+	<target name="ShowInfo" >
+		<echo message="--------------------------------------------------------------------------------------" />
+		<echo message="Starting JEAF Generator ${jeaf.generator.version}" />
+		<echo message="--------------------------------------------------------------------------------------" />
+		<echo message="Company: ${info.company}" />
+		<echo message="Author: ${info.author}" />
+		<echo message="Copyright Info: ${info.copyright}" />
+		<echo message="Version: ${info.version}" />
+		<echo message="Model File: ${path.model.file}" />
+		<echo message="Profile File: JMM.profile.uml2" />
+		<echo message="Workdir: ${basedir}" />
+		<echo message="XMI Path: ${path.xmi}" />
+		<echo message="src: ${path.src}" />
+		<echo message="src-gen: ${path.src.gen}" />
+		<echo message="res: ${path.res}" />
+		<echo message="res-gen: ${path.res.gen}" />
+		<echo message="Message Res: ${path.message.res}" />
+		<echo message="Code-Style: ${path.code.style}" />
+		<echo message="Packages: ${list.pkgs.whitelist}" />
+		<echo message="Generate Public Parts: ${switch.gen.public.parts}" />
+		<echo message="Generate Service Interfaces: ${switch.gen.services}" />
+		<echo message="Generate Service Objects: ${switch.gen.service.objects}" />
+		<echo message="Generate Domain Objects: ${switch.gen.domain.objects}" />
+		<echo message="Generate GWT Service Proxies: ${switch.gen.gwt.proxies}" />
+		<echo message="Generate Global Parts: ${switch.gen.global.parts}" />
+		<echo message="Generate Internal Parts: ${switch.gen.internal.parts}" />
+		<echo message="Generate JUnit Test Cases: ${switch.gen.junits}" />
+		<echo message="Generate Public Setters For Associations: ${switch.gen.public.setters.for.associations}" />
+		<echo message="Generate Null Checks For Setters Of To One Associations Of Service Objects: ${switch.gen.null.checks.for.to.one.associations.of.service.objects}" />
+		<echo message="OID Row Name: ${name.oid.row}" />
+		<echo message="Version Label Row Name: ${name.version.label.row}" />
+		<echo message=" " />
+	</target>
+	
+	<!-- ========================================================================================= -->
+	<!--  Delete all existing generated files that are not meant for manual editing.               -->
+	<!-- ========================================================================================= -->
+	<target name="Cleanup" depends="ShowInfo">
+		<echo message="Delete all existing generated files that are not meant for manual editing." />
+		<delete>
+			<fileset dir="${path.src.gen}">
+				<include name="**/*" />
+				<exclude name=".svn" />
+			</fileset>
+			<fileset dir="${path.res.gen}">
+				<include name="**/*" />
+				<exclude name=".svn" />
+			</fileset>
+		</delete>
+	</target>
+
+
+	<!-- ========================================================================================= -->
+	<!--  Target runs the JEAF generator.                                                          -->
+	<!-- ========================================================================================= -->
+	<target name="RunOAWGenerator" depends="Cleanup">
+		<java classname="org.openarchitectureware.workflow.WorkflowRunner" classpathref="jeaf.generator.classpath" failonerror="true" fork="true">
+			<jvmarg value="-Xms128m" />
+			<jvmarg value="-Xmx512m" />
+			<jvmarg value="-Djeaf.properties=jeaf_generator" />
+			<jvmarg value="-Dlog4j.configuration=Log4J.properties" />
+			<jvmarg value="-Dinfo.version=${info.version}" />
+			<jvmarg value="-Dinfo.company=${info.company}" />
+			<jvmarg value="-Dinfo.copyright=${info.copyright}" />
+			<jvmarg value="-Dinfo.author=${info.author}" />
+			<jvmarg value="-Dlist.pkgs.whitelist=${list.pkgs.whitelist}" />
+			<jvmarg value="-Dswitch.gen.public.parts=${switch.gen.public.parts}" />
+			<jvmarg value="-Dswitch.gen.global.parts=${switch.gen.global.parts}" />
+			<jvmarg value="-Dswitch.gen.internal.parts=${switch.gen.internal.parts}" />
+			<jvmarg value="-Dswitch.gen.services=${switch.gen.services}" />
+			<jvmarg value="-Dswitch.gen.service.objects=${switch.gen.service.objects}" />
+			<jvmarg value="-Dswitch.gen.domain.objects=${switch.gen.domain.objects}" />
+			<jvmarg value="-Dswitch.gen.gwt.proxies=${switch.gen.gwt.proxies}" />
+			<jvmarg value="-Dswitch.gen.junits=${switch.gen.junits}" />
+			<jvmarg value="-Dswitch.gen.public.setters.for.associations=${switch.gen.public.setters.for.associations}" />
+			<jvmarg value="-Dswitch.gen.null.checks.for.to.one.associations.of.service.objects=${switch.gen.null.checks.for.to.one.associations.of.service.objects}" />
+			<jvmarg value="-Dname.oid.row=${name.oid.row}" />
+			<jvmarg value="-Dname.version.label.row=${name.version.label.row}" />
+			<arg value="workflow.oaw" />
+			<arg value="-ptemplate.root=Root::Root" />
+			<arg value="-poutput.slot=model" />
+			<arg value="-pmodel.file=${path.xmi}/${path.model.file}" />
+			<arg value="-pprofile.file=${path.xmi}/JMM.profile.uml2" />
+			<arg value="-pprofile.name=JMM" />
+			<arg value="-ppath.src.gen=${path.src.gen}" />
+			<arg value="-ppath.src=${path.src}" />
+			<arg value="-ppath.res.gen=${path.res.gen}" />
+			<arg value="-ppath.res=${path.res}" />
+			<arg value="-ppath.code.style=${path.code.style}" />
+		</java>
+	</target>
+
+	<!-- ========================================================================================= -->
+	<!--  Target runs the Message Constants Generator.                                             -->
+	<!-- ========================================================================================= -->
+	<target name="RunMessageGenerator">
+		<echo message="--------------------------------------------------------------------------------------" />
+		<echo message="Starting JEAF Message Constants Generator" />
+		<echo message="--------------------------------------------------------------------------------------" />
+		<echo message="res-gen: ${path.res.gen}" />
+		<echo message="Message Res: ${path.message.res}" />
+		<echo message="Excluded Files: ${list.excluded.files}" />
+
+		<java classname="com.anaptecs.jeaf.fwk.tools.message.generator.MessageConstantsGenerator" classpathref="jeaf.generator.classpath" failonerror="true" fork="true">
+			<jvmarg value="-Djeaf.properties=jeaf_generator" />
+			<arg value="${path.message.res}" />
+			<arg value="${path.src.gen}" />
+			<arg value="${list.excluded.files}" />
+		</java>
+	</target>
+
+	<target name="FormatGeneratedSource" depends="beautify-taskdef">
+		<echo message="Formatting generated source code." />
+		<beautify format="true" organizeimport="true" debugmode="false" conventionFilePath="${development.home}/anaptecs/JEAF_Generator/${jeaf.generator.version}/anaptecs-convention.xml">
+			<fileset dir="${path.src.gen}">
+				<include name="**/*.java" />
+			</fileset>
+		</beautify>
+	</target>
+
+	<target name="beautify-taskdef">
+		<typedef name="beautify" classname="org.hybridlabs.source.formatter.ant.JavaImportBeautifierAntTask">
+			<classpath>
+				<fileset dir="${development.home}/anaptecs/JEAF_Generator/${jeaf.generator.version}/hybridlabs" includes="*.jar">
+				</fileset>
+			</classpath>
+		</typedef>
+	</target>
+
+	<target name="RunGenerator" depends="RunOAWGenerator, RunMessageGenerator, FormatGeneratedSource">
+	</target>
+</project>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping for class com.anaptecs.jeaf.junit.impl.domain.FlushTestMasterBO -->
+<hibernate-mapping package="com.anaptecs.jeaf.junit.impl.domain">
+    <class name="FlushTestMasterBO" table="FLUSHTESTMASTERBO" discriminator-value="1015">
+        <id column="OID" name="objectID" length="15" />
+        <discriminator column="CLASS_ID" type="integer" />
+        <version column="VERSION" name="versionLabel" />
+
+        <!-- Attribute mapping for attribute "String requiredField" -->
+        <property name="requiredField" access="field" unique="false" not-null="true" length="32">
+            <column name="REQUIREDFIELD" unique="false" not-null="true" length="32" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,415 @@
+/*
+ * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
+ * 
+ * Copyright 2004 - 2019. All rights reserved.
+ */
+package com.anaptecs.jeaf.junit.product.domain;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Currency;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+import com.anaptecs.jeaf.core.api.DomainObject;
+import com.anaptecs.jeaf.core.api.DomainObjectID;
+import com.anaptecs.jeaf.core.api.MessageConstants;
+import com.anaptecs.jeaf.junit.product.ProductCategory;
+import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.checks.Check;
+
+/**
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
+public abstract class ProductDOBase extends DomainObject {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for the name of attribute "name".
+   */
+  public static final String NAME = "name";
+
+  /**
+   * Constant for the name of attribute "description".
+   */
+  public static final String DESCRIPTION = "description";
+
+  /**
+   * Constant for the name of attribute "vat".
+   */
+  public static final String VAT = "vat";
+
+  /**
+   * Constant for the name of attribute "productCategory".
+   */
+  public static final String PRODUCTCATEGORY = "productCategory";
+
+  /**
+   * 
+   */
+  private Set<AssortmentDO> assortments = new HashSet<AssortmentDO>();
+
+  /**
+   * 
+   */
+  private Set<PriceDO> pricesPerCurrency = new HashSet<PriceDO>();
+
+  /**
+   * 
+   */
+  private String name;
+
+  /**
+   * 
+   */
+  private String description;
+
+  /**
+   * 
+   */
+  private VatDO vat;
+
+  /**
+   * 
+   */
+  private ProductCategory productCategory;
+
+  /**
+   * Initialize object. Nothing special to do.
+   */
+  public ProductDOBase( ) {
+    // Nothing to do.
+  }
+
+  /**
+   * Initialize object. Therefore its domain object id has to be passed.
+   * 
+   * @param pDomainObjectID Id of this domain object. The parameter must not be null.
+   */
+  public ProductDOBase( DomainObjectID pDomainObjectID ) {
+    super(pDomainObjectID);
+  }
+
+  /**
+   * Method returns the association "assortments".
+   * 
+   *
+   * @return Collection All AssortmentDO objects that belong to the association "assortments". The method never returns
+   * null and the returned collection is unmodifiable.
+   */
+  public Set<AssortmentDO> getAssortments( ) {
+    // Return all AssortmentDO objects as unmodifiable collection.
+    return Collections.unmodifiableSet(assortments);
+  }
+
+  /**
+   * Method sets the association "assortments" to the passed collection. All objects that formerly were part of the
+   * association will be removed from it.
+   * 
+   * 
+   * @param pAssortments Collection with objects to which the association should be set. The parameter must not be null.
+   */
+  void setAssortments( Set<AssortmentDO> pAssortments ) {
+    // Check of parameter is not required.
+    // Remove all objects from association "assortments".
+    this.clearAssortments();
+    // If the association is null, removing all entries is sufficient.
+    if (pAssortments != null) {
+      assortments = new HashSet<AssortmentDO>(pAssortments);
+    }
+  }
+
+  /**
+   * Method adds the passed AssortmentDO object to the association "assortments".
+   * 
+   * 
+   * @param pAssortments Object that should be added to the association "assortments". The parameter must not be null.
+   */
+  public void addToAssortments( AssortmentDO pAssortments ) {
+    // Check parameter "pAssortments" for invalid value null.
+    Check.checkInvalidParameterNull(pAssortments, "pAssortments");
+    // Add passed object to collection of associated AssortmentDO objects.
+    assortments.add(pAssortments);
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (pAssortments != null && pAssortments.getProducts().contains(this) == false) {
+      pAssortments.addToProducts((ProductDO) this);
+    }
+  }
+
+  /**
+   * Method adds all passed objects to the association "assortments".
+   * 
+   * 
+   * @param pAssortments Collection with all objects that should be added to the association "assortments". The
+   * parameter must not be null.
+   */
+  public void addToAssortments( Collection<AssortmentDO> pAssortments ) {
+    // Check parameter "pAssortments" for invalid value null.
+    Check.checkInvalidParameterNull(pAssortments, "pAssortments");
+    // Add all passed objects.
+    for (AssortmentDO lNextObject : pAssortments) {
+      this.addToAssortments(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed AssortmentDO object from the association "assortments".
+   * 
+   * 
+   * @param pAssortments Object that should be removed from the association "assortments". The parameter must not be
+   * null.
+   */
+  public void removeFromAssortments( AssortmentDO pAssortments ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pAssortments, "pAssortments");
+    // Remove passed object from collection of associated AssortmentDO objects.
+    assortments.remove(pAssortments);
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (pAssortments.getProducts().contains(this) == true) {
+      pAssortments.removeFromProducts((ProductDO) this);
+    }
+  }
+
+  /**
+   * Method removes all objects from the association "assortments".
+   * 
+   */
+  public void clearAssortments( ) {
+    // Remove all objects from association "assortments".
+    Collection<AssortmentDO> lAssortments = new HashSet<AssortmentDO>(assortments);
+    Iterator<AssortmentDO> lIterator = lAssortments.iterator();
+    while (lIterator.hasNext()) {
+      this.removeFromAssortments(lIterator.next());
+    }
+  }
+
+  /**
+   * Method returns the association "pricesPerCurrency".
+   * 
+   *
+   * @return Collection All PriceDO objects that belong to the association "pricesPerCurrency". The method never returns
+   * null and the returned collection is unmodifiable.
+   */
+  public Set<PriceDO> getPricesPerCurrency( ) {
+    // Return all PriceDO objects as unmodifiable collection.
+    return Collections.unmodifiableSet(pricesPerCurrency);
+  }
+
+  /**
+   * Method sets the association "pricesPerCurrency" to the passed collection. All objects that formerly were part of
+   * the association will be removed from it.
+   * 
+   * 
+   * @param pPricesPerCurrency Collection with objects to which the association should be set. The parameter must not be
+   * null.
+   */
+  void setPricesPerCurrency( Set<PriceDO> pPricesPerCurrency ) {
+    // Check of parameter is not required.
+    // Remove all objects from association "pricesPerCurrency".
+    this.clearPricesPerCurrency();
+    // If the association is null, removing all entries is sufficient.
+    if (pPricesPerCurrency != null) {
+      pricesPerCurrency = new HashSet<PriceDO>(pPricesPerCurrency);
+    }
+  }
+
+  /**
+   * Method adds the passed PriceDO object to the association "pricesPerCurrency".
+   * 
+   * 
+   * @param pPricesPerCurrency Object that should be added to the association "pricesPerCurrency". The parameter must
+   * not be null.
+   */
+  public void addToPricesPerCurrency( PriceDO pPricesPerCurrency ) {
+    // Check parameter "pPricesPerCurrency" for invalid value null.
+    Check.checkInvalidParameterNull(pPricesPerCurrency, "pPricesPerCurrency");
+    // Add passed object to collection of associated PriceDO objects.
+    pricesPerCurrency.add(pPricesPerCurrency);
+  }
+
+  /**
+   * Method adds all passed objects to the association "pricesPerCurrency".
+   * 
+   * 
+   * @param pPricesPerCurrency Collection with all objects that should be added to the association "pricesPerCurrency".
+   * The parameter must not be null.
+   */
+  public void addToPricesPerCurrency( Collection<PriceDO> pPricesPerCurrency ) {
+    // Check parameter "pPricesPerCurrency" for invalid value null.
+    Check.checkInvalidParameterNull(pPricesPerCurrency, "pPricesPerCurrency");
+    // Add all passed objects.
+    for (PriceDO lNextObject : pPricesPerCurrency) {
+      this.addToPricesPerCurrency(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed PriceDO object from the association "pricesPerCurrency".
+   * 
+   * 
+   * @param pPricesPerCurrency Object that should be removed from the association "pricesPerCurrency". The parameter
+   * must not be null.
+   */
+  public void removeFromPricesPerCurrency( PriceDO pPricesPerCurrency ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pPricesPerCurrency, "pPricesPerCurrency");
+    // Remove passed object from collection of associated PriceDO objects.
+    pricesPerCurrency.remove(pPricesPerCurrency);
+  }
+
+  /**
+   * Method removes all objects from the association "pricesPerCurrency".
+   * 
+   */
+  public void clearPricesPerCurrency( ) {
+    // Remove all objects from association "pricesPerCurrency".
+    Collection<PriceDO> lPricesPerCurrency = new HashSet<PriceDO>(pricesPerCurrency);
+    Iterator<PriceDO> lIterator = lPricesPerCurrency.iterator();
+    while (lIterator.hasNext()) {
+      this.removeFromPricesPerCurrency(lIterator.next());
+    }
+  }
+
+  /**
+   * Method returns the attribute "name".
+   * 
+   * 
+   * @return String Value to which the attribute "name" is set.
+   */
+  public String getName( ) {
+    return name;
+  }
+
+  /**
+   * Method sets the attribute "name".
+   * 
+   * 
+   * @param pName Value to which the attribute "name" should be set.
+   */
+  public void setName( String pName ) {
+    // Assign value to attribute
+    name = pName;
+  }
+
+  /**
+   * Method returns the attribute "description".
+   * 
+   * 
+   * @return String Value to which the attribute "description" is set.
+   */
+  public String getDescription( ) {
+    return description;
+  }
+
+  /**
+   * Method sets the attribute "description".
+   * 
+   * 
+   * @param pDescription Value to which the attribute "description" should be set.
+   */
+  public void setDescription( String pDescription ) {
+    // Assign value to attribute
+    description = pDescription;
+  }
+
+  /**
+   * Method returns the association "vat".
+   * 
+   *
+   * @return VatDO VatDO to which the association "vat" is set.
+   */
+  public VatDO getVat( ) {
+    return vat;
+  }
+
+  /**
+   * Method sets the association "vat".
+   * 
+   * 
+   * @param pVat VatDO to which the association "vat" should be set.
+   */
+  public void setVat( VatDO pVat ) {
+    vat = pVat;
+  }
+
+  /**
+   * Method unsets the association "vat".
+   * 
+   */
+  public final void unsetVat( ) {
+    vat = null;
+  }
+
+  /**
+   * Method returns the association "productCategory".
+   * 
+   *
+   * @return ProductCategory ProductCategory to which the association "productCategory" is set.
+   */
+  public ProductCategory getProductCategory( ) {
+    return productCategory;
+  }
+
+  /**
+   * Method sets the association "productCategory".
+   * 
+   * 
+   * @param pProductCategory ProductCategory to which the association "productCategory" should be set.
+   */
+  public void setProductCategory( ProductCategory pProductCategory ) {
+    productCategory = pProductCategory;
+  }
+
+  /**
+   * Method unsets the association "productCategory".
+   * 
+   */
+  public final void unsetProductCategory( ) {
+    productCategory = null;
+  }
+
+  /**
+   * 
+   * @param pCurrency
+   * @return {@link PriceDO}
+   */
+  public abstract PriceDO getPrice( Currency pCurrency );
+
+  /**
+   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * StringBuilder also takes care about attributes of super classes.
+   *
+   * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
+   */
+  protected StringBuilder toStringBuilder( ) {
+    StringBuilder lBuilder = new StringBuilder(256);
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "name", "" + name));
+    lBuilder.append('\n');
+    lBuilder.append(
+        XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "description", "" + description));
+    lBuilder.append('\n');
+    return lBuilder;
+  }
+
+  /**
+   * Method creates a new String with the values of all attributes of this class. All references to other objects will
+   * be ignored.
+   * 
+   * @return {@link String} String representation of this object. The method never returns null.
+   */
+  @Override
+  public String toString( ) {
+    return this.toStringBuilder().toString();
+  }
+}

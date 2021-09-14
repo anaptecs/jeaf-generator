@@ -1,0 +1,12 @@
+import uml;
+import JMM;
+
+extension java::Naming;
+extension entity::ModelProperties; 
+extension java::GeneratorCommons;
+
+context PersistentObject if runChecks() WARNING "Warning: Persistent Object " + name+ " (" + fqn() + ") should have a documentation": ownedComment.size  > 0;
+
+context PersistentObject if runChecks() ERROR "Error: Class " + name+ " (" + fqn() + ") must have a class id > 0. Current class id: " + classID.toString() : classID > 0;
+
+context Role if runChecks() ERROR "Error: Both ends of an assocation must have stereotype 'Role' "  + opposite.toString() : opposite.getAppliedStereotype("Role") == null;
