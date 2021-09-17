@@ -173,111 +173,111 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateCustomConstraints;
 
   /**
-   * Switch defines whether service interfaces should be generated.
+   * Switch defines whether service interfaces should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateServiceInterfaces;
 
   /**
-   * Switch defines whether service proxies should be generated.
+   * Switch defines whether service proxies should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateServiceProxies;
 
   /**
-   * Switch defines whether service provider interfaces should be generated.
+   * Switch defines whether service provider interfaces should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateServiceProviderInterfaces;
 
   /**
-   * Switch defines whether service provider implementations should be generated.
+   * Switch defines whether service provider implementations should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateServiceProviderImpls;
 
   /**
-   * Switch defines whether REST resources should be generated.
+   * Switch defines whether REST resources should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateRESTResources;
 
   /**
-   * Switch defines whether activity interfaces should be generated.
+   * Switch defines whether activity interfaces should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateActivityInterfaces;
 
   /**
-   * Switch defines whether activity implementations should be generated.
+   * Switch defines whether activity implementations should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateActivityImpls;
 
   /**
-   * Switch defines whether service objects should be generated.
+   * Switch defines whether service objects should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateServiceObjects;
 
   /**
-   * Switch defines whether exception classes should be generated.
+   * Switch defines whether exception classes should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateExceptionClasses;
 
   /**
-   * Switch defines whether persistent objects should be generated.
+   * Switch defines whether persistent objects should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generatePersistentObjects;
 
   /**
-   * Switch defines whether POJO's should be generated.
+   * Switch defines whether POJO's should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generatePOJOs;
 
   /**
-   * Switch defines whether domain objects should be generated.
+   * Switch defines whether domain objects should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateDomainObjects;
 
   /**
-   * Switch defines whether object mappers should be generated.
+   * Switch defines whether object mappers should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateObjectMappers;
 
   /**
-   * Switch defines whether component implementation classes should be generated e.g. service and port implementations
-   * and their bases classes.
+   * Switch defines whether component implementation classes should be generated or not e.g. service and port
+   * implementations and their bases classes.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateComponentImpls;
 
   /**
-   * Switch defines whether component runtime classes should be generated e.g. components, component configurations,
-   * component factories and service factories.
+   * Switch defines whether component runtime classes should be generated or not e.g. components, component
+   * configurations, component factories and service factories.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateComponentRuntimeClasses;
 
   /**
-   * Switch defines whether global parts should be generated.
+   * Switch defines whether global parts should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateGlobalParts;
 
   /**
-   * Switch defines whether a JUnit test case for every service should be generated.
+   * Switch defines whether a JUnit test case for every service should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateJUnitTests;
 
   /**
-   * Switch defines whether a message constants should be generated from resource files.
+   * Switch defines whether a message constants should be generated from resource files or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateMessageConstants;
@@ -289,8 +289,7 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generatePublicSettersForAssociations;
 
   /**
-   * Switch defines whether the generated set methods for to-one associations contains checks for null values as
-   * parameter.
+   * Switch defines whether the generated set methods for to-one associations has checks for null values of parameters.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateNullChecksForToOneAssociations;
@@ -303,8 +302,8 @@ public class GeneratorMojo extends AbstractMojo {
   private String peristentObjectsOIDRowName;
 
   /**
-   * Name of the row within which the info.version label of the object will be stored. The info.version label is used to
-   * determine optimistic lock conflicts. If the property is not set "VERSION" will be used as default.
+   * Name of the row within which the version label of the object will be stored. The version label is used to determine
+   * optimistic lock conflicts. If the property is not set "VERSION" will be used as default.
    */
   @Parameter(required = false, defaultValue = "VERSION")
   private String peristentObjectsVersionLabelRowName;
@@ -352,15 +351,15 @@ public class GeneratorMojo extends AbstractMojo {
   private boolean disableResourceFormatting;
 
   /**
-   * Reference to the file that contains the code-style definition. If it is not defined then the default codestyle will
-   * be used.
+   * Reference to the file that contains the code style definition for Java code. If it is not defined then the default
+   * code style will be used.
    */
   @Parameter(required = false, defaultValue = "anaptecs_code_guideline.xml")
   private String javaFormatterStyleFile;
 
   /**
-   * Reference to the file that contains the code-style definition. If it is not defined then the default codestyle will
-   * be used.
+   * Reference to the file that contains the code style definition for XML. If it is not defined then the default code
+   * style will be used.
    */
   @Parameter(required = false, defaultValue = "anaptecs_xml_style.properties")
   private String xmlFormatterStyleFile;
