@@ -745,7 +745,7 @@ public class GeneratorMojo extends AbstractMojo {
           // In order top avoid problems during generation we have to ignore temporary Excel files that also endup
           // with *.xlsx.
           XFun.getTrace().info("Processing resource " + lFileName + ":" + lBaseName);
-          if (lBaseName != null && lBaseName.startsWith("~$") == false) {
+          if (lBaseName.startsWith("~$") == false) {
             try {
               String lOutputFileName = resourceGenDirectory + "/" + lBaseName + ".xml";
               Trace lTrace = XFun.getTrace();
@@ -861,29 +861,36 @@ public class GeneratorMojo extends AbstractMojo {
     // Get all XML files from the directory.
     List<String> lResourceFiles;
     File lMessageResourceLocation = new File(pResourceLocationPath);
-    if (lMessageResourceLocation.isDirectory() == true) {
-      // Create FileFilter and determine resource files that should be used.
-      List<String> lExtensions = new ArrayList<String>();
-      lExtensions.add(pFileExtension);
-      FilenameFilter lFileFilter = Tools.getFileTools().createExtensionFilenameFilter(lExtensions, pExclusionList);
-      File[] lFiles = lMessageResourceLocation.listFiles(lFileFilter);
+    if (lMessageResourceLocation.exists() == true) {
+      if (lMessageResourceLocation.isDirectory() == true) {
+        // Create FileFilter and determine resource files that should be used.
+        List<String> lExtensions = new ArrayList<String>();
+        lExtensions.add(pFileExtension);
+        FilenameFilter lFileFilter = Tools.getFileTools().createExtensionFilenameFilter(lExtensions, pExclusionList);
+        File[] lFiles = lMessageResourceLocation.listFiles(lFileFilter);
 
-      if (lFiles != null) {
-        lResourceFiles = new ArrayList<String>(lFiles.length);
+        if (lFiles != null) {
+          lResourceFiles = new ArrayList<String>(lFiles.length);
 
-        // Add absolute location of files to Collection with resource files.
-        for (int i = 0; i < lFiles.length; i++) {
-          lResourceFiles.add(lFiles[i].getAbsolutePath());
+          // Add absolute location of files to Collection with resource files.
+          for (int i = 0; i < lFiles.length; i++) {
+            lResourceFiles.add(lFiles[i].getAbsolutePath());
+          }
+        }
+        else {
+          lResourceFiles = Collections.emptyList();
         }
       }
+      // Only single resource file was provided.
       else {
-        lResourceFiles = Collections.emptyList();
+        lResourceFiles = new ArrayList<String>(1);
+        lResourceFiles.add(pResourceLocationPath);
       }
     }
-    // Only single resource file was provided.
+    // Resource directory does not exist. This might happen e.g. in case of Git where empty directories are not checked
+    // in.
     else {
-      lResourceFiles = new ArrayList<String>(1);
-      lResourceFiles.add(pResourceLocationPath);
+      lResourceFiles = Collections.emptyList();
     }
     return lResourceFiles;
   }
