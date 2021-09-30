@@ -745,7 +745,7 @@ public class GeneratorMojo extends AbstractMojo {
           // In order top avoid problems during generation we have to ignore temporary Excel files that also endup
           // with *.xlsx.
           XFun.getTrace().info("Processing resource " + lFileName + ":" + lBaseName);
-          if (lBaseName.startsWith("~$") == false) {
+          if (lBaseName != null && lBaseName.startsWith("~$") == false) {
             try {
               String lOutputFileName = resourceGenDirectory + "/" + lBaseName + ".xml";
               Trace lTrace = XFun.getTrace();
