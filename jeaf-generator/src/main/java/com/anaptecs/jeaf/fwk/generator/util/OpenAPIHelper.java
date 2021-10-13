@@ -26,6 +26,7 @@ public class OpenAPIHelper {
     basicTypes.put("double", "number");
     basicTypes.put(Double.class.getName(), "number");
     basicTypes.put(BigDecimal.class.getName(), "number");
+    basicTypes.put(String.class.getName(), "string");
 
     // We also also treat many JDK standard types as simple types in Open API as they can be mapped to a single type
     // mostly string.

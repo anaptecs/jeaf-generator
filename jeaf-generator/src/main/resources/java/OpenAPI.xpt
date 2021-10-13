@@ -90,7 +90,14 @@ components:
           format: «attribute.type.getOpenAPIFormat()»
           «ENDIF-»
           «ELSE-»
+          «IF attribute.isMultivalued() == false-»
           $ref: «attribute.type.getOpenAPIType()»
+          «ELSE-»
+          type: array
+          items:
+            $ref: «attribute.type.getOpenAPIType()»
+          minItems: «attribute.getLower()»
+          «ENDIF-»
           «ENDIF-»
         «ENDFOREACH-»
       «ENDIF-»
@@ -99,9 +106,10 @@ components:
 «DEFINE GenerateOpenAPIEnum FOR OpenAPIEnumeration»
     # «this.fqn()»
     «this.name»:
-      «IF this.hasComment()»description: >-
-        «this.getCommentForOpenAPIDescription("        ")»«ENDIF»
-        
+      «IF this.hasComment()-»
+      description: >-
+        «this.getCommentForOpenAPIDescription("        ")»
+      «ENDIF-»        
       type: string
       enum:
         «FOREACH this.ownedLiteral AS literal-»        

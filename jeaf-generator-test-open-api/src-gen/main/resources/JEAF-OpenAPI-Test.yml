@@ -65,6 +65,62 @@ components:
         currency: 
           type: string
 
+    # com.anaptecs.jeaf.junit.openapi.ChannelCode
+    ChannelCode:
+        
+      type: object
+      properties:
+        code: 
+          type: string
+
+    # com.anaptecs.jeaf.junit.openapi.Channel
+    Channel:
+        
+      type: object
+      properties:
+        channelType: 
+          $ref: '#/components/schemas/ChannelType'
+        channelCode: 
+          $ref: '#/components/schemas/ChannelCode'
+
+    # com.anaptecs.jeaf.junit.openapi.Reseller
+    Reseller:
+        
+      type: object
+      properties:
+        channels: 
+          type: array
+          items:
+            $ref: '#/components/schemas/Channel'
+          minItems: 1
+        products: 
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+          minItems: 1
+
+    # com.anaptecs.jeaf.junit.openapi.Product
+    Product:
+        
+      type: object
+      properties:
+        resellers: 
+          type: array
+          items:
+            $ref: '#/components/schemas/Reseller'
+          minItems: 0
+
+    # com.anaptecs.jeaf.junit.openapi.Sortiment
+    Sortiment:
+        
+      type: object
+      properties:
+        products: 
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+          minItems: 0
+
     
     # com.anaptecs.jeaf.junit.openapi.TimeUnit
     TimeUnit:
@@ -73,7 +129,6 @@ components:
              
         NOVA 14 Mapping
         * nova-base.xsd.ZeitEinheit
-        
       type: string
       enum:
         # Literal represents time unit "minutes".
@@ -85,4 +140,14 @@ components:
         - WEEK
         - MONTH
         - YEAR
+
+    # com.anaptecs.jeaf.junit.openapi.ChannelType
+    ChannelType:
+      type: string
+      enum:
+        - COUNTER
+        - CALL_CENTER
+        - MOBILE
+        - TVM
+        - WEB
 
