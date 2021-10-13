@@ -1399,6 +1399,41 @@ public class ClassUtil {
   }
 
   /**
+   * Method returns all direct subclasses of the passed class.
+   * 
+   * @param pBaseClass Class whose subclasses should be returned. The parameter must not be null.
+   * @return {@link List} All subclasses of the passed class. The method never returns null.
+   */
+  public static List<NamedElement> getAllSubclasses( Class pBaseClass ) {
+    // Check parameter
+    Check.checkInvalidParameterNull(pBaseClass, "pBaseClass");
+
+    final EList<Relationship> lRelationships = pBaseClass.getRelationships();
+    final Iterator<Relationship> lIterator = lRelationships.iterator();
+    List<NamedElement> lSubclasses = new ArrayList<NamedElement>(lRelationships.size());
+
+    // Filter generalizations from all relationships and check if the base class is the base class.
+    while (lIterator.hasNext()) {
+      final Relationship lNextRelationship = lIterator.next();
+      if (lNextRelationship instanceof Generalization) {
+        Generalization lGeneralization = (Generalization) lNextRelationship;
+        final Classifier lGeneral = lGeneralization.getGeneral();
+        if (pBaseClass.equals(lGeneral) == true) {
+          Classifier lSubclass = lGeneralization.getSpecific();
+          lSubclasses.add(lSubclass);
+
+          // Now it's time tom go one level deeper and again find all subclasses
+          lSubclasses.addAll(getAllSubclasses((Class) lSubclass));
+        }
+      }
+    }
+    // Sort subclasses by name
+    Collections.sort(lSubclasses, new NamedElementComparator());
+    // Return list of all subclasses.
+    return lSubclasses;
+  }
+
+  /**
    * @param pComponent
    * @return
    */

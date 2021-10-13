@@ -38,7 +38,6 @@ components:
          
         NOVA 14 Mapping
         * nova-base.xsd.Dauer
-        
       type: object
       properties:
         value: 
@@ -54,7 +53,6 @@ components:
                
         NOVA 14 Mapping
         * nova-base.xsd.GeldBetrag
-        
       type: object
       properties:
         amount: 
@@ -67,7 +65,6 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.ChannelCode
     ChannelCode:
-        
       type: object
       properties:
         code: 
@@ -75,7 +72,6 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.Channel
     Channel:
-        
       type: object
       properties:
         channelType: 
@@ -85,7 +81,6 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.Reseller
     Reseller:
-        
       type: object
       properties:
         channels: 
@@ -103,7 +98,6 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.Product
     Product:
-        
       type: object
       properties:
         resellers: 
@@ -123,7 +117,6 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.Sortiment
     Sortiment:
-        
       type: object
       properties:
         products: 
@@ -134,7 +127,6 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.DateObject
     DateObject:
-        
       type: object
       properties:
         localTime: 
@@ -158,7 +150,6 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.PrimitiveObject
     PrimitiveObject:
-        
       type: object
       properties:
         aBoolean: 
@@ -223,7 +214,6 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.PrimitiveArraysObject
     PrimitiveArraysObject:
-        
       type: object
       properties:
         aBooleanArray: 
@@ -329,6 +319,70 @@ components:
           type: array
           items:
             type: string
+
+    # com.anaptecs.jeaf.junit.openapi.ParentClass
+    ParentClass:
+      discriminator:
+        propertyName: objectType
+        mapping:
+          ParentClass: '#/components/schemas/ParentClass'
+          ChildA: '#/components/schemas/ChildA'
+          ChildAA: '#/components/schemas/ChildAA'
+          ChildB: '#/components/schemas/ChildB'
+          ChildBB: '#/components/schemas/ChildBB'
+      type: object
+      properties:
+        objectType:
+          description: Attribute is used as discriminator for inheritance between data types.
+          type: string
+        parentAttribute: 
+          type: string
+      required:
+        - objectType
+
+    # com.anaptecs.jeaf.junit.openapi.ChildA
+    ChildA:
+      allOf:
+        - $ref: '#/components/schemas/ParentClass'
+      type: object
+      properties:
+        childAAttribute: 
+          type: integer
+          format: int32
+
+    # com.anaptecs.jeaf.junit.openapi.ChildB
+    ChildB:
+      allOf:
+        - $ref: '#/components/schemas/ParentClass'
+      type: object
+      properties:
+        childBAttribute: 
+          type: boolean
+        composition: 
+          type: array
+          items:
+            $ref: '#/components/schemas/ParentClass'
+          minItems: 0
+
+    # com.anaptecs.jeaf.junit.openapi.ChildAA
+    ChildAA:
+      allOf:
+        - $ref: '#/components/schemas/ChildA'
+      type: object
+      properties:
+        childAAAttribute: 
+          type: integer
+          format: int32
+
+    # com.anaptecs.jeaf.junit.openapi.ChildBB
+    ChildBB:
+      allOf:
+        - $ref: '#/components/schemas/ChildB'
+      type: object
+      properties:
+        childBBAttribute: 
+          type: integer
+          format: int64
 
     
     # com.anaptecs.jeaf.junit.openapi.TimeUnit

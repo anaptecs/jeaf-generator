@@ -36,4 +36,10 @@ boolean isBasicOpenAPIType(uml::Type type):
     
 boolean registerLocalType(uml::NamedElement localClass):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.registerLocalType(org.eclipse.uml2.uml.NamedElement);
+    
+List[uml::Class] getAllSubclasses(uml::Class class) :
+   JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getAllSubclasses(org.eclipse.uml2.uml.Class);
+   
+boolean isTopOfClassHierarchy(uml::Class class) :
+   class.superClass.isEmpty == true && getAllSubclasses(class).size > 0;
 	
