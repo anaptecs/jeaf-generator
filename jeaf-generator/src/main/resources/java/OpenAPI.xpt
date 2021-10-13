@@ -85,9 +85,18 @@ components:
             «attribute.getCommentForOpenAPIDescription("            ")»
           «ENDIF-»
           «IF attribute.type.isBasicOpenAPIType() == true-»
+          «IF attribute.isMultivalued() == false-»
           type: «attribute.type.getOpenAPIType()»
           «IF attribute.type.hasOpenAPIFormat()-»
           format: «attribute.type.getOpenAPIFormat()»
+          «ENDIF-»
+          «ELSE-»
+          type: array
+          items:
+            type: «attribute.type.getOpenAPIType()»
+            «IF attribute.type.hasOpenAPIFormat()-»
+            format: «attribute.type.getOpenAPIFormat()»
+            «ENDIF-»
           «ENDIF-»
           «ELSE-»
           «IF attribute.isMultivalued() == false-»

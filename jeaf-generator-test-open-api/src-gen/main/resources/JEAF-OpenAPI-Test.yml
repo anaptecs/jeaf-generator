@@ -112,8 +112,10 @@ components:
             $ref: '#/components/schemas/Reseller'
           minItems: 0
         image: 
-          type: integer
-          format: int32
+          type: array
+          items:
+            type: integer
+            format: int32
         link: 
           type: string
         productID: 
@@ -218,6 +220,115 @@ components:
           type: string
         bString: 
           type: string
+
+    # com.anaptecs.jeaf.junit.openapi.PrimitiveArraysObject
+    PrimitiveArraysObject:
+        
+      type: object
+      properties:
+        aBooleanArray: 
+          type: array
+          items:
+            type: boolean
+        bBooleanArray: 
+          type: array
+          items:
+            type: boolean
+        cBooleanArray: 
+          type: array
+          items:
+            type: boolean
+        aByteArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        bByteArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        aShortArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        bShortArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        aIntegerArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        bIntegerArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        cIntegerArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        aLongArray: 
+          type: array
+          items:
+            type: integer
+            format: int64
+        bLongArray: 
+          type: array
+          items:
+            type: integer
+            format: int64
+        aBigIntegerArray: 
+          type: array
+          items:
+            type: integer
+            format: int64
+        aCharacterArray: 
+          type: array
+          items:
+            type: string
+        bCharacterArray: 
+          type: array
+          items:
+            type: string
+        aFloatArray: 
+          type: array
+          items:
+            type: number
+            format: float
+        bFloatArray: 
+          type: array
+          items:
+            type: number
+            format: float
+        aDoubleArray: 
+          type: array
+          items:
+            type: number
+            format: double
+        bDoubleArray: 
+          type: array
+          items:
+            type: number
+            format: double
+        aBigDecimalArray: 
+          type: array
+          items:
+            type: number
+            format: double
+        aStringArray: 
+          type: array
+          items:
+            type: string
+        bStringArray: 
+          type: array
+          items:
+            type: string
 
     
     # com.anaptecs.jeaf.junit.openapi.TimeUnit
