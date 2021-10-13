@@ -112,10 +112,8 @@ components:
             $ref: '#/components/schemas/Reseller'
           minItems: 0
         image: 
-          type: array
-          items:
-            $ref: unknown type: byte
-          minItems: 0
+          type: integer
+          format: int32
         link: 
           type: string
         productID: 
@@ -163,6 +161,63 @@ components:
       properties:
         aBoolean: 
           type: boolean
+        bBoolean: 
+          type: boolean
+        cBoolean: 
+          type: boolean
+        aByte: 
+          type: integer
+          format: int32
+        bByte: 
+          type: integer
+          format: int32
+        aShort: 
+          type: integer
+          format: int32
+        bShort: 
+          type: integer
+          format: int32
+        aInteger: 
+          type: integer
+          format: int32
+        bInteger: 
+          type: integer
+          format: int32
+        cInteger: 
+          type: integer
+          format: int32
+        aLong: 
+          type: integer
+          format: int64
+        bLong: 
+          type: integer
+          format: int64
+        aBigInteger: 
+          type: integer
+          format: int64
+        aCharacter: 
+          type: string
+        bCharacter: 
+          type: string
+        aFloat: 
+          type: number
+          format: float
+        bFloat: 
+          type: number
+          format: float
+        aDouble: 
+          type: number
+          format: double
+        bDouble: 
+          type: number
+          format: double
+        aBigDecimal: 
+          type: number
+          format: double
+        aString: 
+          type: string
+        bString: 
+          type: string
 
     
     # com.anaptecs.jeaf.junit.openapi.TimeUnit
