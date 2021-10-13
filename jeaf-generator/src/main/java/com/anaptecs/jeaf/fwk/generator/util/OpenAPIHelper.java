@@ -1,11 +1,15 @@
 package com.anaptecs.jeaf.fwk.generator.util;
 
 import java.math.BigDecimal;
+import java.net.URL;
+import java.util.Calendar;
 import java.util.Currency;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import com.anaptecs.jeaf.xfun.api.XFun;
 
@@ -17,6 +21,9 @@ public class OpenAPIHelper {
   public static final Set<String> localTypes = new HashSet<String>();
 
   static {
+    basicTypes.put("boolean", "boolean");
+    basicTypes.put("Boolean", "boolean");
+    basicTypes.put(Boolean.class.getName(), "boolean");
     basicTypes.put("int", "integer");
     basicTypes.put(Integer.class.getName(), "integer");
     basicTypes.put("long", "integer");
@@ -31,6 +38,15 @@ public class OpenAPIHelper {
     // We also also treat many JDK standard types as simple types in Open API as they can be mapped to a single type
     // mostly string.
     basicTypes.put(Currency.class.getName(), "string");
+    basicTypes.put(URL.class.getName(), "string");
+    basicTypes.put(UUID.class.getName(), "string");
+    basicTypes.put(Locale.class.getName(), "string");
+    basicTypes.put(java.sql.Date.class.getName(), "string");
+    basicTypes.put(java.util.Date.class.getName(), "string");
+    basicTypes.put(Calendar.class.getName(), "string");
+    basicTypes.put("java.time.LocalTime", "string");
+    basicTypes.put("java.time.LocalDate", "string");
+    basicTypes.put("java.time.LocalDateTime", "string");
 
     formatMapping.put("int", "int32");
     formatMapping.put(Integer.class.getName(), "int32");
@@ -41,6 +57,13 @@ public class OpenAPIHelper {
     formatMapping.put("double", "double");
     formatMapping.put(Double.class.getName(), "double");
     formatMapping.put(BigDecimal.class.getName(), "double");
+
+    formatMapping.put(java.sql.Date.class.getName(), "date-time");
+    formatMapping.put(java.util.Date.class.getName(), "date-time");
+    formatMapping.put(Calendar.class.getName(), "date-time");
+    formatMapping.put("java.time.LocalTime", "time");
+    formatMapping.put("java.time.LocalDate", "date");
+    formatMapping.put("java.time.LocalDateTime", "date-time");
   }
 
   public static String getOpenAPIType( org.eclipse.uml2.uml.Type pClass ) {
@@ -54,7 +77,7 @@ public class OpenAPIHelper {
       lTypeName = "'#/components/schemas/" + pClass.getName() + "'";
     }
     else {
-      lTypeName = "unknown type";
+      lTypeName = "unknown type: " + lFQN;
     }
 
     return lTypeName;

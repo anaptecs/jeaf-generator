@@ -98,6 +98,8 @@ components:
           items:
             $ref: '#/components/schemas/Product'
           minItems: 1
+        language: 
+          type: string
 
     # com.anaptecs.jeaf.junit.openapi.Product
     Product:
@@ -109,6 +111,15 @@ components:
           items:
             $ref: '#/components/schemas/Reseller'
           minItems: 0
+        image: 
+          type: array
+          items:
+            $ref: unknown type: byte
+          minItems: 0
+        link: 
+          type: string
+        productID: 
+          type: string
 
     # com.anaptecs.jeaf.junit.openapi.Sortiment
     Sortiment:
@@ -120,6 +131,38 @@ components:
           items:
             $ref: '#/components/schemas/Product'
           minItems: 0
+
+    # com.anaptecs.jeaf.junit.openapi.DateObject
+    DateObject:
+        
+      type: object
+      properties:
+        localTime: 
+          type: string
+          format: time
+        localDate: 
+          type: string
+          format: date
+        localDateTime: 
+          type: string
+          format: date-time
+        calendar: 
+          type: string
+          format: date-time
+        sqlDate: 
+          type: string
+          format: date-time
+        utilDate: 
+          type: string
+          format: date-time
+
+    # com.anaptecs.jeaf.junit.openapi.PrimitiveObject
+    PrimitiveObject:
+        
+      type: object
+      properties:
+        aBoolean: 
+          type: boolean
 
     
     # com.anaptecs.jeaf.junit.openapi.TimeUnit
