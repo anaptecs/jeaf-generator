@@ -117,6 +117,9 @@ String getComment(uml::Comment comment):
     comment.body;
     //JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getFormattedComment(org.eclipse.uml2.uml.Comment, "");
     
+boolean hasComment(uml::Element element):
+    getComment(element).length > 0;
+
 String getComment(Object this): "";
 
 String getJavadoc(uml::Interface interface):

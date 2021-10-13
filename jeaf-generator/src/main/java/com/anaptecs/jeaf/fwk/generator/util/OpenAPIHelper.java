@@ -1,6 +1,7 @@
 package com.anaptecs.jeaf.fwk.generator.util;
 
 import java.math.BigDecimal;
+import java.util.Currency;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -25,6 +26,10 @@ public class OpenAPIHelper {
     basicTypes.put("double", "number");
     basicTypes.put(Double.class.getName(), "number");
     basicTypes.put(BigDecimal.class.getName(), "number");
+
+    // We also also treat many JDK standard types as simple types in Open API as they can be mapped to a single type
+    // mostly string.
+    basicTypes.put(Currency.class.getName(), "string");
 
     formatMapping.put("int", "int32");
     formatMapping.put(Integer.class.getName(), "int32");

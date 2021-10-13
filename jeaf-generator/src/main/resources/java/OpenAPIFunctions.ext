@@ -28,9 +28,11 @@ String getOpenAPIType(uml::Type type):
 String getOpenAPIFormat(uml::Type type):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIFormat(org.eclipse.uml2.uml.Type);
     
+boolean hasOpenAPIFormat(uml::Type type):
+    getOpenAPIFormat(type) != null;
+    
 boolean isBasicOpenAPIType(uml::Type type):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.isBasicOpenAPIType(org.eclipse.uml2.uml.Type);
-
     
 boolean registerLocalType(uml::NamedElement localClass):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.registerLocalType(org.eclipse.uml2.uml.NamedElement);
