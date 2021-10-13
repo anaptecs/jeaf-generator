@@ -1,0 +1,105 @@
+openapi: 3.0.0
+
+servers:
+  - description: Accounting PROD
+    url: https://accounting.jeaf.de
+  - description: Accounting TEST
+    url: http://localhost:8080/test
+
+info:
+  title: Accounting OpenAPI Interface
+  version: 0.0.1
+  description: |
+    This component represents the Open API interface of the accounting service.
+  contact:
+    name: JEAF Development Team
+    url: 'https://www.anaptecs.de/jeaf'
+    email: jeaf@anaptecs.de
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+
+paths:
+  # Open API standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
+  # So we define NOP operation here as workaround.
+  /nop:
+    get:
+      responses:
+        '200':
+          description: Nothing is the result of nop ;-)
+
+components:
+  schemas:
+    
+    # com.anaptecs.jeaf.junit.openapi.Duration
+    Duration:
+      description: >-
+        Type represents a duration.
+         
+        NOVA 14 Mapping
+        * nova-base.xsd.Dauer
+        
+      type: object
+      
+      properties:
+        value: 
+          
+          type: integer
+          format: int32
+         
+        timeUnit: 
+          
+          $ref: '#/components/schemas/TimeUnit'
+         
+        
+      
+
+    # com.anaptecs.jeaf.junit.openapi.MoneyAmount
+    MoneyAmount:
+      description: >-
+        Type represents an amount of money.
+               
+        NOVA 14 Mapping
+        * nova-base.xsd.GeldBetrag
+        
+      type: object
+      
+      properties:
+        amount: 
+          description: >-
+            The amount of money. Attribute is always set.
+          type: number
+          format: double
+         
+        currency: 
+          
+          $ref: unknown type
+         
+        
+      
+
+    
+    # com.anaptecs.jeaf.junit.openapi.TimeUnit
+    TimeUnit:
+      description: >-
+        Enumeration represents time units.
+             
+        NOVA 14 Mapping
+        * nova-base.xsd.ZeitEinheit
+        
+      type: string
+      enum:
+        # Literal represents time unit "minutes".
+        - MINUTE
+        
+        - HOUR
+        
+        - DAY
+        # Literal represents time unit "weeks".
+        # This is the comments second line ;-)
+        - WEEK
+        
+        - MONTH
+        
+        - YEAR
+
