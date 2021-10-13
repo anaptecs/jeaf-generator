@@ -70,24 +70,30 @@ components:
 «DEFINE GenerateOpenAPIType FOR OpenAPIType»
     # «this.fqn()»
     «this.name»:
-      «IF this.hasComment()»description: >-
-        «this.getCommentForOpenAPIDescription("        ")»«ENDIF»
+      «IF this.hasComment()-»
+      description: >-
+        «this.getCommentForOpenAPIDescription("        ")»
+      «ENDIF-»
         
       type: object
-      «IF this.ownedAttribute.size > 0»
+      «IF this.ownedAttribute.size > 0-»
       properties:
         «FOREACH this.ownedAttribute AS attribute-»
         «attribute.name»: 
-          «IF attribute.hasComment()»description: >-
-            «attribute.getCommentForOpenAPIDescription("            ")»«ENDIF»
-            «IF attribute.type.isBasicOpenAPIType() == true-»
+          «IF attribute.hasComment()-»
+          description: >-
+            «attribute.getCommentForOpenAPIDescription("            ")»
+          «ENDIF-»
+          «IF attribute.type.isBasicOpenAPIType() == true-»
           type: «attribute.type.getOpenAPIType()»
+          «IF attribute.type.hasOpenAPIFormat()-»
           format: «attribute.type.getOpenAPIFormat()»
-         «ELSE-»
+          «ENDIF-»
+          «ELSE-»
           $ref: «attribute.type.getOpenAPIType()»
-         «ENDIF»
-        «ENDFOREACH»
-      «ENDIF»
+          «ENDIF-»
+        «ENDFOREACH-»
+      «ENDIF-»
 «ENDDEFINE»
 
 «DEFINE GenerateOpenAPIEnum FOR OpenAPIEnumeration»
@@ -99,7 +105,9 @@ components:
       type: string
       enum:
         «FOREACH this.ownedLiteral AS literal-»        
-        «IF literal.hasComment()»# «literal.getYAMLStyleComment("        ")-»«ENDIF»
+        «IF literal.hasComment()-»
+        # «literal.getYAMLStyleComment("        ")»
+        «ENDIF-»
         - «literal.name»
         «ENDFOREACH-»
 «ENDDEFINE»

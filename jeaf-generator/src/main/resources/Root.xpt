@@ -165,6 +165,13 @@
 	«ENDIF»
 «ENDDEFINE»
 
+«DEFINE Root FOR OpenAPI3Specification»
+    «IF generateOpenAPISpec() == true && this.isInGeneratorWhitelist() == true»
+		«info("Processing <<OpenAPI3Specification>> " + this.name + " (" + (this.fqn()) + ")")»
+    	«EXPAND java::OpenAPI::GenerateOpenAPI»
+    «ENDIF»
+«ENDDEFINE»
+
 «DEFINE Root FOR Object»
 «ENDDEFINE»
 

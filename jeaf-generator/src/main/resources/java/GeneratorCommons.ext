@@ -80,6 +80,9 @@ cached boolean generateCustomConstraints() :
 cached boolean generateJUnitTests() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateJUnitTests();
     
+cached boolean generateOpenAPISpec() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateOpenAPISpec();
+    
 cached String getFileHeader() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getFileHeader();        
     
