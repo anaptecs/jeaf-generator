@@ -168,9 +168,10 @@ public final class AccountingServiceProxy extends ServiceProxy implements Accoun
    * @param pCustomerID ID of the customer that should be returned. The parameter must not be null.
    * @return {@link Customer} Customer object with the passed id or null if the object does not exist.
    */
-  public Customer getCustomer( ServiceObjectID pCustomerID ) {
+  public Customer getCustomer( ServiceObjectID pCustomerID, CustomerLoadStrategy pLoadStrategy ) {
     try {
-      Command lCommand = new GetCustomer_ServiceObjectID_AccountingService_Command(pCustomerID);
+      Command lCommand =
+          new GetCustomer_ServiceObjectID_CustomerLoadStrategy_AccountingService_Command(pCustomerID, pLoadStrategy);
       return (Customer) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -849,7 +850,7 @@ final class CreateCustomer_Customer_ServiceObjectID_AccountingService_Command ex
 /**
  * Generated command class for service method "getCustomer".
  */
-final class GetCustomer_ServiceObjectID_AccountingService_Command extends Command {
+final class GetCustomer_ServiceObjectID_CustomerLoadStrategy_AccountingService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -874,11 +875,12 @@ final class GetCustomer_ServiceObjectID_AccountingService_Command extends Comman
    */
   static {
     try {
-      SERVICE_METHOD = AccountingService.class.getMethod("getCustomer", ServiceObjectID.class);
+      SERVICE_METHOD =
+          AccountingService.class.getMethod("getCustomer", ServiceObjectID.class, CustomerLoadStrategy.class);
     }
     catch (NoSuchMethodException e) {
       throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          AccountingService.class.getName(), "getCustomer(ServiceObjectID.class)");
+          AccountingService.class.getName(), "getCustomer(ServiceObjectID.class, CustomerLoadStrategy.class)");
     }
   }
 
@@ -888,14 +890,22 @@ final class GetCustomer_ServiceObjectID_AccountingService_Command extends Comman
   private final ServiceObjectID customerID;
 
   /**
+   * Attribute transports the method parameter "pLoadStrategy" to the service implementation via the service channel.
+   */
+  private final CustomerLoadStrategy loadStrategy;
+
+  /**
    * Initialize object. All parameters from method "getCustomer" have to be passed as parameters to this command object.
    * 
    * @param pCustomerID ServiceObjectID
+   * @param pLoadStrategy CustomerLoadStrategy
    */
-  GetCustomer_ServiceObjectID_AccountingService_Command( ServiceObjectID pCustomerID ) {
+  GetCustomer_ServiceObjectID_CustomerLoadStrategy_AccountingService_Command( ServiceObjectID pCustomerID,
+      CustomerLoadStrategy pLoadStrategy ) {
     super(AccountingService.class);
     customerID = pCustomerID;
-    parameters = new Object[] { customerID };
+    loadStrategy = pLoadStrategy;
+    parameters = new Object[] { customerID, loadStrategy };
   }
 
   /**
@@ -916,7 +926,7 @@ final class GetCustomer_ServiceObjectID_AccountingService_Command extends Comman
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
     long lStartTime = System.nanoTime();
-    Serializable lResult = (Serializable) lService.getCustomer(customerID);
+    Serializable lResult = (Serializable) lService.getCustomer(customerID, loadStrategy);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
     // Trace result of service call.

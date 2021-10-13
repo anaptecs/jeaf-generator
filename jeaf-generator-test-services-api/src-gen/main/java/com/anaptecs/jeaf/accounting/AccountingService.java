@@ -106,9 +106,10 @@ public interface AccountingService extends Service {
    * 
    * 
    * @param pCustomerID
+   * @param pLoadStrategy
    * @return {@link Customer}
    */
-  Customer getCustomer( ServiceObjectID pCustomerID );
+  Customer getCustomer( ServiceObjectID pCustomerID, CustomerLoadStrategy pLoadStrategy );
 
   /**
    * Method creates a new Person object with the data of the passed service object.

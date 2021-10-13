@@ -10,6 +10,7 @@ import java.util.Set;
 import com.anaptecs.jeaf.accounting.Account;
 import com.anaptecs.jeaf.accounting.Booking;
 import com.anaptecs.jeaf.accounting.Customer;
+import com.anaptecs.jeaf.accounting.CustomerLoadStrategy;
 import com.anaptecs.jeaf.accounting.CustomerQuery;
 import com.anaptecs.jeaf.accounting.Person;
 import com.anaptecs.jeaf.accounting.SecurityToken;
@@ -149,10 +150,11 @@ final class AccountingServiceImpl extends AccountingServiceImplBase {
    * 
    * 
    * @param pCustomerID
+   * @param pLoadStrategy
    * @return {@link Customer}
    */
   @Override
-  public Customer getCustomer( ServiceObjectID pCustomerID ) {
+  public Customer getCustomer( ServiceObjectID pCustomerID, CustomerLoadStrategy pLoadStrategy ) {
     // TODO Implement method and return real result
     return null;
   }
