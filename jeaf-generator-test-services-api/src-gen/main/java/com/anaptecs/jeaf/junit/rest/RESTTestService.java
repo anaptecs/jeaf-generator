@@ -48,7 +48,8 @@ public interface RESTTestService extends Service {
    * @param pID
    * @param pToken
    * @param pQueryParam1
+   * @param pCookieParam
    * @return {@link Boolean}
    */
-  boolean yetAnotherRESTOperation( String pID, String pToken, String pQueryParam1 );
+  boolean yetAnotherRESTOperation( String pID, String pToken, String pQueryParam1, String pCookieParam );
 }

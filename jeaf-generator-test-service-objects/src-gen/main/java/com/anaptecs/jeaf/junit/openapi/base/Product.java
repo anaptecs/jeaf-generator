@@ -3,7 +3,7 @@
  * 
  * Copyright 2004 - 2019. All rights reserved.
  */
-package com.anaptecs.jeaf.junit.openapi;
+package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.net.URL;
 import java.util.Collection;

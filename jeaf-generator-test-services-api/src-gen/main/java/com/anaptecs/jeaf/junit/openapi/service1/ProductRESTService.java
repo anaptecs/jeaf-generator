@@ -3,11 +3,12 @@
  * 
  * Copyright 2004 - 2019. All rights reserved.
  */
-package com.anaptecs.jeaf.junit.openapi;
+package com.anaptecs.jeaf.junit.openapi.service1;
 
 import java.util.List;
 
 import com.anaptecs.jeaf.core.api.Service;
+import com.anaptecs.jeaf.junit.openapi.base.Product;
 
 /**
  * @author JEAF Generator
@@ -15,6 +16,8 @@ import com.anaptecs.jeaf.core.api.Service;
  */
 public interface ProductRESTService extends Service {
   /**
+   * Operation returns all available product.
+   * 
    * 
    * @return {@link Product}
    */
@@ -26,4 +29,11 @@ public interface ProductRESTService extends Service {
    * @return {@link Product}
    */
   Product getProduct( String pProductID );
+
+  /**
+   * 
+   * @param pProduct
+   * @return {@link Boolean}
+   */
+  boolean createProduct( Product pProduct );
 }

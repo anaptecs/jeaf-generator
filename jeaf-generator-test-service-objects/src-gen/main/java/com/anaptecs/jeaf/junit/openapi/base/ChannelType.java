@@ -1,4 +1,4 @@
-package com.anaptecs.jeaf.junit.openapi;
+package com.anaptecs.jeaf.junit.openapi.base;
 
 /**
  * 

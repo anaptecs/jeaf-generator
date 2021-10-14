@@ -39,6 +39,26 @@ info:
 paths:
 «IF this.referencesRESTResources()-»
   # TODO: Generate operations for all referenced REST Resources.
+  «FOREACH this.getRESTResources() AS service-»
+  # «service.name»
+  «FOREACH service.getPaths() AS path-»
+  «IF service.path.length > 0»«service.path»«ELSE»/«ENDIF»«IF path.length > 0»/«path»«ENDIF»
+    «FOREACH service.getRESTOperations(path) AS operation-»
+    «FOREACH operation.httpMethods AS httpMethod-»
+    «httpMethod.toString().toLowerCase()»:
+      «IF operation.hasComment()-»
+      description: >-
+        «operation.getCommentForOpenAPIDescription("        ")»
+      «ENDIF-»
+      content:  
+        «FOREACH service.produces AS contentType-»
+        «contentType.toOpenAPIContentType()»:
+        «ENDFOREACH-»  
+    «ENDFOREACH-»
+    «ENDFOREACH»
+  «ENDFOREACH-»
+  «ENDFOREACH-»
+  # «this.getRESTResources().get(0).getRESTOperations(null)»
 «ELSE-»
   # Open API standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
   # So we define NOP operation here as workaround.

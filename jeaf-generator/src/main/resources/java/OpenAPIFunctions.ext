@@ -16,6 +16,13 @@ boolean referencesRESTResources(JMM::OpenAPI3Specification spec):
 List[JMM::RESTResource] getRESTResources(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(JMM::RESTResource);
 	
+List[JMM::RESTOperation] getRESTOperations(JMM::RESTResource service, String pPath):
+   service.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.path == pPath);
+   
+Set[String] getPaths(JMM::RESTResource service):
+   service.ownedOperation.typeSelect(JMM::RESTOperation).path.toSet();
+   
+	
 String getYAMLStyleComment(uml::Element element, String indentation):
     element.ownedComment.get(0).body.replaceAll("\n", "\n" + indentation + "# ");
 
@@ -43,3 +50,8 @@ List[uml::Class] getAllSubclasses(uml::Class class) :
 boolean isTopOfClassHierarchy(uml::Class class) :
    class.superClass.isEmpty == true && getAllSubclasses(class).size > 0;
 	
+String toOpenAPIContentType(JMM::MediaType mediaType) :
+   toOpenAPIContentType(mediaType.toString());
+
+String toOpenAPIContentType(String mediaType) :
+   JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.toOpenAPIContentType(java.lang.String);

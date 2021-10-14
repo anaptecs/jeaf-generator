@@ -3,7 +3,7 @@
  * 
  * Copyright 2004 - 2019. All rights reserved.
  */
-package com.anaptecs.jeaf.junit.openapi.test;
+package com.anaptecs.jeaf.junit.openapi.service1.test;
 
 import junit.framework.TestSuite;
 
@@ -21,6 +21,7 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
     TestSuite lSuite = new TestSuite("ProductRESTServiceTest");
     // Add all test of this class.
     lSuite.addTest(new ProductRESTServiceTest("testGetProduct"));
+    lSuite.addTest(new ProductRESTServiceTest("testCreateProduct"));
     lSuite.addTest(new ProductRESTServiceTest("testGetProducts"));
     // Return created test suite.
     return lSuite;
@@ -67,6 +68,16 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
   @Override
   public void testGetProduct( ) throws Exception {
     // TODO Implement test for service method getProduct(...)
+  }
+
+  /**
+   * Method test the implementation of service method createProduct
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testCreateProduct( ) throws Exception {
+    // TODO Implement test for service method createProduct(...)
   }
 
   /**

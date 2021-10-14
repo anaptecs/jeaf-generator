@@ -118,6 +118,9 @@ public class «name»Resource {
   «IF this.isStereotypeApplied("QueryParam") -»
   @javax.ws.rs.QueryParam("«((QueryParam) this).value-»")
   «ENDIF-»
+  «IF this.isStereotypeApplied("CookieParam") -»
+  @javax.ws.rs.CookieParam("«((CookieParam) this).value-»")
+  «ENDIF-»
   «this.getTypeName()» «this.name»
 «ENDDEFINE»
 

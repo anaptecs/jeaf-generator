@@ -3,11 +3,11 @@
  * 
  * Copyright 2004 - 2019. All rights reserved.
  */
-package com.anaptecs.jeaf.junit.openapi.test;
+package com.anaptecs.jeaf.junit.openapi.service1.test;
 
 import com.anaptecs.jeaf.core.annotations.JEAFService;
 import com.anaptecs.jeaf.junit.JEAFTestCase;
-import com.anaptecs.jeaf.junit.openapi.ProductRESTService;
+import com.anaptecs.jeaf.junit.openapi.service1.ProductRESTService;
 
 /**
  * This is the base class of the test suite of service ProductRESTService.
@@ -48,6 +48,13 @@ public abstract class ProductRESTServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testGetProduct( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method createProduct(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testCreateProduct( ) throws Exception;
 
   /**
    * Method test the implementation of service method getProducts(...)

@@ -19,6 +19,8 @@ public class OpenAPIHelper {
 
   public static final Map<String, String> formatMapping = new HashMap<String, String>();
 
+  public static final Map<String, String> contentTypeMapping = new HashMap<String, String>();
+
   public static final Set<String> localTypes = new HashSet<String>();
 
   static {
@@ -116,6 +118,12 @@ public class OpenAPIHelper {
     formatMapping.put("java.time.LocalTime", "time");
     formatMapping.put("java.time.LocalDate", "date");
     formatMapping.put("java.time.LocalDateTime", "date-time");
+
+    // Content type mapping
+    contentTypeMapping.put("APPLICATION_XML", "application/xml");
+    contentTypeMapping.put("APPLICATION_JSON", "application/json");
+    contentTypeMapping.put("APPLICATION_OCTET_STREAM", "application/octet-stream");
+    contentTypeMapping.put("TEXT_PLAIN", "text/plain");
   }
 
   public static String getOpenAPIType( org.eclipse.uml2.uml.Type pClass ) {
@@ -147,5 +155,9 @@ public class OpenAPIHelper {
 
   public static boolean isBasicOpenAPIType( org.eclipse.uml2.uml.Type pType ) {
     return basicTypes.containsKey(Naming.getFullyQualifiedName(pType));
+  }
+
+  public static String toOpenAPIContentType( String pContentTypeID ) {
+    return contentTypeMapping.get(pContentTypeID);
   }
 }

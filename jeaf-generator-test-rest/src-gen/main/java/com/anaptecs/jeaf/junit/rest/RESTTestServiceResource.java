@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.rest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.CookieParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
@@ -99,9 +100,9 @@ public class RESTTestServiceResource {
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   public Response yetAnotherRESTOperation( @PathParam("id") String pID, @HeaderParam("token") String pToken,
-      @QueryParam("filter") String pQueryParam1 ) {
+      @QueryParam("filter") String pQueryParam1, @CookieParam("cookieEntry") String pCookieParam ) {
     RESTTestService lService = JEAF.getService(RESTTestService.class);
-    boolean lResult = lService.yetAnotherRESTOperation(pID, pToken, pQueryParam1);
+    boolean lResult = lService.yetAnotherRESTOperation(pID, pToken, pQueryParam1, pCookieParam);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 }
