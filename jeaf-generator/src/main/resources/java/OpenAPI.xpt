@@ -1,0 +1,151 @@
+«EXTENSION java::Naming»
+«EXTENSION java::OpenAPIFunctions»
+
+«IMPORT uml»
+«IMPORT JMM»
+«IMPORT java»
+«IMPORT entity»
+«IMPORT jeaf»
+
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+«DEFINE GenerateOpenAPI FOR OpenAPI3Specification»
+	«REM»Register local Open API types as well as referenced ones.«ENDREM»
+	«EXPAND RegisterLocalType FOREACH this.getOpenAPITypes()»
+	«EXPAND RegisterLocalType FOREACH this.getOpenAPIEnums()»
+
+	«FILE resourceName GenRes-»
+openapi: «openAPIVersion»
+«IF this.clientDependency.supplier.typeSelect(OpenAPIServer).size > 0»
+servers:
+  «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIServer) AS server-»
+  - description: «IF server.getComment().length > 0»«server.getComment()»«ELSE»«server.name»«ENDIF»
+    url: «server.url»
+  «ENDFOREACH-»
+«ENDIF»
+info:
+  title: «name»
+  version: «apiVersion»
+  description: |
+    «this.getComment()»
+  contact:
+    name: «contactName»
+    url: '«contactURL»'
+    email: «contactEmail»
+  license:
+    name: «licenseName»
+    url: '«licenseURL»'
+
+paths:
+«IF this.referencesRESTResources()-»
+  # TODO: Generate operations for all referenced REST Resources.
+«ELSE-»
+  # Open API standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
+  # So we define NOP operation here as workaround.
+  /nop:
+    get:
+      responses:
+        '200':
+          description: Nothing is the result of nop ;-)
+«ENDIF»
+components:
+«IF this.hasOpenAPITypes() || this.hasOpenAPIEnums()-»
+  schemas:
+    «EXPAND GenerateOpenAPIType FOREACH this.getOpenAPITypes()»
+    «EXPAND GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums()»
+«ENDIF-»
+«ENDFILE-»
+«ENDDEFINE»
+
+
+«DEFINE RegisterLocalType FOR OpenAPIType»
+«this.registerLocalType()»
+«ENDDEFINE»
+
+«DEFINE RegisterLocalType FOR OpenAPIEnumeration»
+«this.registerLocalType()»
+«ENDDEFINE»
+
+
+«DEFINE GenerateOpenAPIType FOR OpenAPIType»
+    # «this.fqn()»
+    «this.name»:
+      «IF this.hasComment()-»
+      description: >-
+        «this.getCommentForOpenAPIDescription("        ")»
+      «ENDIF-»
+      «IF this.isTopOfClassHierarchy()-»
+      discriminator:
+        propertyName: objectType
+        mapping:
+          «name»: «this.getOpenAPIType()»
+          «FOREACH this.getAllSubclasses() AS subclass-»
+          «subclass.name»: «subclass.getOpenAPIType()»
+          «ENDFOREACH-»
+      «ENDIF-»
+      «IF superClass.isEmpty == false -»
+      allOf:
+        - $ref: «superClass.get(0).getOpenAPIType()»
+      «ENDIF-»
+      type: object
+      «IF this.ownedAttribute.size > 0 || this.isTopOfClassHierarchy() -»
+      properties:
+        «IF this.isTopOfClassHierarchy() -»
+        objectType:
+          description: Attribute is used as discriminator for inheritance between data types.
+          type: string
+        «ENDIF-»
+        «FOREACH this.ownedAttribute AS attribute-»
+        «attribute.name»: 
+          «IF attribute.hasComment()-»
+          description: >-
+            «attribute.getCommentForOpenAPIDescription("            ")»
+          «ENDIF-»
+          «IF attribute.type.isBasicOpenAPIType() == true-»
+          «IF attribute.isMultivalued() == false-»
+          type: «attribute.type.getOpenAPIType()»
+          «IF attribute.type.hasOpenAPIFormat()-»
+          format: «attribute.type.getOpenAPIFormat()»
+          «ENDIF-»
+          «ELSE-»
+          type: array
+          items:
+            type: «attribute.type.getOpenAPIType()»
+            «IF attribute.type.hasOpenAPIFormat()-»
+            format: «attribute.type.getOpenAPIFormat()»
+            «ENDIF-»
+          «ENDIF-»
+          «ELSE-»
+          «IF attribute.isMultivalued() == false-»
+          $ref: «attribute.type.getOpenAPIType()»
+          «ELSE-»
+          type: array
+          items:
+            $ref: «attribute.type.getOpenAPIType()»
+          minItems: «attribute.getLower()»
+          «ENDIF-»
+          «ENDIF-»
+        «ENDFOREACH-»
+      «IF this.isTopOfClassHierarchy() -»
+      required:
+        - objectType
+      «ENDIF-»
+      «ENDIF-»
+«ENDDEFINE»
+
+«DEFINE GenerateOpenAPIEnum FOR OpenAPIEnumeration»
+    # «this.fqn()»
+    «this.name»:
+      «IF this.hasComment()-»
+      description: >-
+        «this.getCommentForOpenAPIDescription("        ")»
+      «ENDIF-»        
+      type: string
+      enum:
+        «FOREACH this.ownedLiteral AS literal-»        
+        «IF literal.hasComment()-»
+        # «literal.getYAMLStyleComment("        ")»
+        «ENDIF-»
+        - «literal.name»
+        «ENDFOREACH-»
+«ENDDEFINE»

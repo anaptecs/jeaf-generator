@@ -151,6 +151,11 @@ public class GeneratorCommons {
    */
   public static final String JUNIT_PROPERTY = "switch.gen.junits";
 
+  /**
+   * Constant defines the name of the system property which enables the generation of Open API specifications.
+   */
+  public static final String OPEN_API_SPEC_PROPERTY = "switch.gen.openapispec";
+
   public static final String LINE_SEPARATOR = "\n";
 
   public static final String CLASS_INDENTATION = "";
@@ -598,6 +603,16 @@ public class GeneratorCommons {
   public static boolean generateJUnitTests( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(JUNIT_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether JUnit test should be generated for every service or not.
+   * 
+   * @return boolean Method returns true if JUnit tests should be generated from the model and false in all other cases.
+   */
+  public static boolean generateOpenAPISpec( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(OPEN_API_SPEC_PROPERTY, Boolean.TRUE, Boolean.class);
   }
 
   public static boolean generatePublicSettersForAssociations( ) {

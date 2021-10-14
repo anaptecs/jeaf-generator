@@ -1,0 +1,416 @@
+openapi: 3.0.0
+
+servers:
+  - description: Accounting TEST
+    url: http://localhost:8080/test
+  - description: Accounting PROD
+    url: https://accounting.jeaf.de
+
+info:
+  title: Accounting OpenAPI Interface
+  version: 0.0.1
+  description: |
+    This component represents the Open API interface of the accounting service.
+  contact:
+    name: JEAF Development Team
+    url: 'https://www.anaptecs.de/jeaf'
+    email: jeaf@anaptecs.de
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+
+paths:
+  # Open API standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
+  # So we define NOP operation here as workaround.
+  /nop:
+    get:
+      responses:
+        '200':
+          description: Nothing is the result of nop ;-)
+
+components:
+  schemas:
+    
+    # com.anaptecs.jeaf.junit.openapi.Duration
+    Duration:
+      description: >-
+        Type represents a duration.
+         
+        NOVA 14 Mapping
+        * nova-base.xsd.Dauer
+      type: object
+      properties:
+        value: 
+          type: integer
+          format: int32
+        timeUnit: 
+          $ref: '#/components/schemas/TimeUnit'
+
+    # com.anaptecs.jeaf.junit.openapi.MoneyAmount
+    MoneyAmount:
+      description: >-
+        Type represents an amount of money.
+               
+        NOVA 14 Mapping
+        * nova-base.xsd.GeldBetrag
+      type: object
+      properties:
+        amount: 
+          description: >-
+            The amount of money. Attribute is always set.
+          type: number
+          format: double
+        currency: 
+          type: string
+
+    # com.anaptecs.jeaf.junit.openapi.ChannelCode
+    ChannelCode:
+      type: object
+      properties:
+        code: 
+          type: string
+
+    # com.anaptecs.jeaf.junit.openapi.Channel
+    Channel:
+      type: object
+      properties:
+        channelType: 
+          $ref: '#/components/schemas/ChannelType'
+        channelCode: 
+          $ref: '#/components/schemas/ChannelCode'
+
+    # com.anaptecs.jeaf.junit.openapi.Reseller
+    Reseller:
+      type: object
+      properties:
+        channels: 
+          type: array
+          items:
+            $ref: '#/components/schemas/Channel'
+          minItems: 1
+        products: 
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+          minItems: 1
+        language: 
+          type: string
+
+    # com.anaptecs.jeaf.junit.openapi.Product
+    Product:
+      type: object
+      properties:
+        resellers: 
+          type: array
+          items:
+            $ref: '#/components/schemas/Reseller'
+          minItems: 0
+        image: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        link: 
+          type: string
+        productID: 
+          type: string
+
+    # com.anaptecs.jeaf.junit.openapi.Sortiment
+    Sortiment:
+      type: object
+      properties:
+        products: 
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+          minItems: 0
+
+    # com.anaptecs.jeaf.junit.openapi.DateObject
+    DateObject:
+      type: object
+      properties:
+        localTime: 
+          type: string
+          format: time
+        localDate: 
+          type: string
+          format: date
+        localDateTime: 
+          type: string
+          format: date-time
+        calendar: 
+          type: string
+          format: date-time
+        sqlDate: 
+          type: string
+          format: date-time
+        utilDate: 
+          type: string
+          format: date-time
+
+    # com.anaptecs.jeaf.junit.openapi.PrimitiveObject
+    PrimitiveObject:
+      type: object
+      properties:
+        aBoolean: 
+          type: boolean
+        bBoolean: 
+          type: boolean
+        cBoolean: 
+          type: boolean
+        aByte: 
+          type: integer
+          format: int32
+        bByte: 
+          type: integer
+          format: int32
+        aShort: 
+          type: integer
+          format: int32
+        bShort: 
+          type: integer
+          format: int32
+        aInteger: 
+          type: integer
+          format: int32
+        bInteger: 
+          type: integer
+          format: int32
+        cInteger: 
+          type: integer
+          format: int32
+        aLong: 
+          type: integer
+          format: int64
+        bLong: 
+          type: integer
+          format: int64
+        aBigInteger: 
+          type: integer
+          format: int64
+        aCharacter: 
+          type: string
+        bCharacter: 
+          type: string
+        aFloat: 
+          type: number
+          format: float
+        bFloat: 
+          type: number
+          format: float
+        aDouble: 
+          type: number
+          format: double
+        bDouble: 
+          type: number
+          format: double
+        aBigDecimal: 
+          type: number
+          format: double
+        aString: 
+          type: string
+        bString: 
+          type: string
+
+    # com.anaptecs.jeaf.junit.openapi.PrimitiveArraysObject
+    PrimitiveArraysObject:
+      type: object
+      properties:
+        aBooleanArray: 
+          type: array
+          items:
+            type: boolean
+        bBooleanArray: 
+          type: array
+          items:
+            type: boolean
+        cBooleanArray: 
+          type: array
+          items:
+            type: boolean
+        aByteArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        bByteArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        aShortArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        bShortArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        aIntegerArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        bIntegerArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        cIntegerArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        aLongArray: 
+          type: array
+          items:
+            type: integer
+            format: int64
+        bLongArray: 
+          type: array
+          items:
+            type: integer
+            format: int64
+        aBigIntegerArray: 
+          type: array
+          items:
+            type: integer
+            format: int64
+        aCharacterArray: 
+          type: array
+          items:
+            type: string
+        bCharacterArray: 
+          type: array
+          items:
+            type: string
+        aFloatArray: 
+          type: array
+          items:
+            type: number
+            format: float
+        bFloatArray: 
+          type: array
+          items:
+            type: number
+            format: float
+        aDoubleArray: 
+          type: array
+          items:
+            type: number
+            format: double
+        bDoubleArray: 
+          type: array
+          items:
+            type: number
+            format: double
+        aBigDecimalArray: 
+          type: array
+          items:
+            type: number
+            format: double
+        aStringArray: 
+          type: array
+          items:
+            type: string
+        bStringArray: 
+          type: array
+          items:
+            type: string
+
+    # com.anaptecs.jeaf.junit.openapi.ParentClass
+    ParentClass:
+      discriminator:
+        propertyName: objectType
+        mapping:
+          ParentClass: '#/components/schemas/ParentClass'
+          ChildA: '#/components/schemas/ChildA'
+          ChildAA: '#/components/schemas/ChildAA'
+          ChildB: '#/components/schemas/ChildB'
+          ChildBB: '#/components/schemas/ChildBB'
+      type: object
+      properties:
+        objectType:
+          description: Attribute is used as discriminator for inheritance between data types.
+          type: string
+        parentAttribute: 
+          type: string
+      required:
+        - objectType
+
+    # com.anaptecs.jeaf.junit.openapi.ChildA
+    ChildA:
+      allOf:
+        - $ref: '#/components/schemas/ParentClass'
+      type: object
+      properties:
+        childAAttribute: 
+          type: integer
+          format: int32
+
+    # com.anaptecs.jeaf.junit.openapi.ChildB
+    ChildB:
+      allOf:
+        - $ref: '#/components/schemas/ParentClass'
+      type: object
+      properties:
+        childBAttribute: 
+          type: boolean
+        composition: 
+          type: array
+          items:
+            $ref: '#/components/schemas/ParentClass'
+          minItems: 0
+
+    # com.anaptecs.jeaf.junit.openapi.ChildAA
+    ChildAA:
+      allOf:
+        - $ref: '#/components/schemas/ChildA'
+      type: object
+      properties:
+        childAAAttribute: 
+          type: integer
+          format: int32
+
+    # com.anaptecs.jeaf.junit.openapi.ChildBB
+    ChildBB:
+      allOf:
+        - $ref: '#/components/schemas/ChildB'
+      type: object
+      properties:
+        childBBAttribute: 
+          type: integer
+          format: int64
+
+    
+    # com.anaptecs.jeaf.junit.openapi.TimeUnit
+    TimeUnit:
+      description: >-
+        Enumeration represents time units.
+             
+        NOVA 14 Mapping
+        * nova-base.xsd.ZeitEinheit
+      type: string
+      enum:
+        # Literal represents time unit "minutes".
+        - MINUTE
+        - HOUR
+        - DAY
+        # Literal represents time unit "weeks".
+        # This is the comments second line ;-)
+        - WEEK
+        - MONTH
+        - YEAR
+
+    # com.anaptecs.jeaf.junit.openapi.ChannelType
+    ChannelType:
+      type: string
+      enum:
+        - COUNTER
+        - CALL_CENTER
+        - MOBILE
+        - TVM
+        - WEB
+

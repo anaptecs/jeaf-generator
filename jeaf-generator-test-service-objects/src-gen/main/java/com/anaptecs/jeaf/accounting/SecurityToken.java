@@ -34,7 +34,7 @@ public class SecurityToken implements ServiceObject {
   /**
    * The attribute contains the session key of the security token that was used when the booking was executed.
    */
-  private byte[] sessionKey;
+  private final byte[] sessionKey;
 
   /**
    * 
@@ -176,23 +176,6 @@ public class SecurityToken implements ServiceObject {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets the attribute "sessionKey". The attribute contains the session key of the security token that was used
-   * when the booking was executed.
-   * 
-   * @param pSessionKey Value to which the attribute "sessionKey" should be set.
-   */
-  public void setSessionKey( byte[] pSessionKey ) {
-    // Assign value to attribute
-    if (pSessionKey != null) {
-      sessionKey = new byte[pSessionKey.length];
-      System.arraycopy(pSessionKey, 0, sessionKey, 0, pSessionKey.length);
-    }
-    else {
-      sessionKey = null;
-    }
   }
 
   /**
