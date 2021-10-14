@@ -42,4 +42,13 @@ public interface RESTTestService extends Service {
   * 
   */
   void doSomethingRESTy( );
+
+  /**
+   * 
+   * @param pID
+   * @param pToken
+   * @param pQueryParam1
+   * @return {@link Boolean}
+   */
+  boolean yetAnotherRESTOperation( String pID, String pToken, String pQueryParam1 );
 }

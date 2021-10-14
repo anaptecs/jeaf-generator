@@ -25,6 +25,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
     lSuite.addTest(new RESTTestServiceTest("testUpdateTestServiceObject"));
     lSuite.addTest(new RESTTestServiceTest("testDoSomeNotRESTThing"));
     lSuite.addTest(new RESTTestServiceTest("testDoSomethingRESTy"));
+    lSuite.addTest(new RESTTestServiceTest("testYetAnotherRESTOperation"));
     // Return created test suite.
     return lSuite;
   }
@@ -110,5 +111,15 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
   @Override
   public void testDoSomethingRESTy( ) throws Exception {
     // TODO Implement test for service method doSomethingRESTy(...)
+  }
+
+  /**
+   * Method test the implementation of service method yetAnotherRESTOperation
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testYetAnotherRESTOperation( ) throws Exception {
+    // TODO Implement test for service method yetAnotherRESTOperation(...)
   }
 }

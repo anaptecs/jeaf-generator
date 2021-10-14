@@ -36,7 +36,7 @@ public class «name»Resource {
 	«EXPAND HTTPMethods»
 	«IF consumes.size > 0»@javax.ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
 	«IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
-	public javax.ws.rs.core.Response  «name» («EXPAND JEAFOperation::ParameterSignature FOR this»)«getThrownExceptionsAsString()»{
+	public javax.ws.rs.core.Response  «name» («EXPAND RESTParameterSignature FOR this»)«getThrownExceptionsAsString()»{
 	  «this.getOwningClass().fqn()» lService = com.anaptecs.jeaf.core.api.JEAF.getService(«this.getOwningClass().fqn()».class);
 	  «IF getReturnTypeName() != "void"»
 	  «getReturnTypeName()» lResult = lService.«this.name»(«this.asParameterListNames()»);
@@ -103,3 +103,21 @@ public class «name»Resource {
 «DEFINE HTTPMethods FOR RESTOperation»
 	«FOREACH httpMethods AS method»@javax.ws.rs.«method»«ENDFOREACH»
 «ENDDEFINE»
+
+«DEFINE RESTParameterSignature FOR Operation»
+  «EXPAND RESTParameterDefinition FOREACH ownedParameter.select(e| e.isInputParameter()) SEPARATOR ", "» 
+«ENDDEFINE»
+
+«DEFINE RESTParameterDefinition FOR Parameter»
+  «IF this.isStereotypeApplied("PathParam") -»
+  @javax.ws.rs.PathParam("«((PathParam) this).value-»")
+  «ENDIF-»
+  «IF this.isStereotypeApplied("HeaderParam") -»
+  @javax.ws.rs.HeaderParam("«((HeaderParam) this).value-»")
+  «ENDIF-»
+  «IF this.isStereotypeApplied("QueryParam") -»
+  @javax.ws.rs.QueryParam("«((QueryParam) this).value-»")
+  «ENDIF-»
+  «this.getTypeName()» «this.name»
+«ENDDEFINE»
+

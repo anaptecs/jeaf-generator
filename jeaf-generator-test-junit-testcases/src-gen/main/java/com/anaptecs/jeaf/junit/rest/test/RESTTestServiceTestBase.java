@@ -76,4 +76,11 @@ public abstract class RESTTestServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testDoSomethingRESTy( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method yetAnotherRESTOperation(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testYetAnotherRESTOperation( ) throws Exception;
 }

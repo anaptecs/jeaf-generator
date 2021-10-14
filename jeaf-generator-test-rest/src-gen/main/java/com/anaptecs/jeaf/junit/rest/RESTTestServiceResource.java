@@ -8,10 +8,13 @@ package com.anaptecs.jeaf.junit.rest;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.Context;
@@ -87,5 +90,18 @@ public class RESTTestServiceResource {
     RESTTestService lService = JEAF.getService(RESTTestService.class);
     lService.doSomethingRESTy();
     return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link RESTTestService#yetAnotherRESTOperation()}
+   */
+  @Path("something/{id}")
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  public Response yetAnotherRESTOperation( @PathParam("id") String pID, @HeaderParam("token") String pToken,
+      @QueryParam("filter") String pQueryParam1 ) {
+    RESTTestService lService = JEAF.getService(RESTTestService.class);
+    boolean lResult = lService.yetAnotherRESTOperation(pID, pToken, pQueryParam1);
+    return Response.status(Response.Status.OK).entity(lResult).build();
   }
 }
