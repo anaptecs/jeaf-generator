@@ -64,6 +64,13 @@ public abstract class RESTTestServiceTestBase extends JEAFTestCase {
   public abstract void testUpdateTestServiceObject( ) throws Exception;
 
   /**
+   * Method test the implementation of service method handleBeanParam1(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testHandleBeanParam1( ) throws Exception;
+
+  /**
    * Method test the implementation of service method doSomeNotRESTThing(...)
    * 
    * @throws Exception if the test fails.

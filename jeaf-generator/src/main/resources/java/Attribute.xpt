@@ -36,6 +36,7 @@
 	/**
 	 * «this.getComment()»
 	 */
+	«EXPAND RESTParamAnnotation»
 	«EXPAND Validation::ValidationAnnotation»
 	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly»final «ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «this.initValue()»«ENDIF»;
 «ENDDEFINE»
@@ -327,3 +328,24 @@
 //copies the attributes from the businessobject to the transferobject
 «DEFINE CopyAttributeToTransfer FOR Property»«IF !isReadOnly»lTransferObject.«asSetter()»(this.«asGetter()»());«ENDIF»«ENDDEFINE»
 «DEFINE CopyAttributeToBusiness FOR Property»«IF !isReadOnly»lPersistentObject.«asSetter()»(this.«asGetter()»());«ENDIF»«ENDDEFINE»
+
+«DEFINE RESTParamAnnotation FOR Property»
+  «IF this.isStereotypeApplied("PathParam") -»
+  @javax.ws.rs.PathParam("«((PathParam) this).value-»")
+  «ENDIF-»
+  «IF this.isStereotypeApplied("HeaderParam") -»
+  @javax.ws.rs.HeaderParam("«((HeaderParam) this).value-»")
+  «ENDIF-»
+  «IF this.isStereotypeApplied("QueryParam") -»
+  @javax.ws.rs.QueryParam("«((QueryParam) this).value-»")
+  «ENDIF-»
+  «IF this.isStereotypeApplied("CookieParam") -»
+  @javax.ws.rs.CookieParam("«((CookieParam) this).value-»")
+  «ENDIF-»
+  «IF this.isStereotypeApplied("BeanParam") -»
+  @javax.ws.rs.BeanParam 
+  «ENDIF-»
+  «IF this.type.isStereotypeApplied("BeanParam") -»
+  @javax.ws.rs.BeanParam
+  «ENDIF-»
+«ENDDEFINE»

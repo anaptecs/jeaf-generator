@@ -7,6 +7,8 @@ package com.anaptecs.jeaf.junit.rest;
 
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.junit.core.TestServiceObject;
+import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
+import com.anaptecs.jeaf.junit.openapi.base.Context;
 
 /**
  * @author JEAF Generator
@@ -52,4 +54,16 @@ public interface RESTTestService extends Service {
    * @return {@link Boolean}
    */
   boolean yetAnotherRESTOperation( String pID, String pToken, String pQueryParam1, String pCookieParam );
+
+  /**
+   * 
+   * @param pContext
+   */
+  void handleBeanParam1( Context pContext );
+
+  /**
+   * 
+   * @param pBeanParam
+   */
+  void handleBeanParam1( BeanParameter pBeanParam );
 }

@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.rest;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.CookieParam;
 import javax.ws.rs.GET;
@@ -18,12 +19,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.anaptecs.jeaf.core.api.JEAF;
 import com.anaptecs.jeaf.junit.core.TestServiceObject;
+import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
+import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.workload.api.Workload;
 import com.anaptecs.jeaf.workload.api.WorkloadManager;
 import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;
@@ -51,8 +53,8 @@ public class RESTTestServiceResource {
    * {@link RESTTestService#updateTestServiceObject()}
    */
   @POST
-  public void updateTestServiceObject( @Suspended AsyncResponse pAsyncResponse, @Context HttpServletRequest pRequest,
-      TestServiceObject pObject ) {
+  public void updateTestServiceObject( @Suspended AsyncResponse pAsyncResponse,
+      @javax.ws.rs.core.Context HttpServletRequest pRequest, TestServiceObject pObject ) {
     // Lookup workload manager that takes care that the system will have an optimal throughput.
     WorkloadManager lWorkloadManager = Workload.getWorkloadManager();
     // Prepare meta information about the request.
@@ -104,5 +106,27 @@ public class RESTTestServiceResource {
     RESTTestService lService = JEAF.getService(RESTTestService.class);
     boolean lResult = lService.yetAnotherRESTOperation(pID, pToken, pQueryParam1, pCookieParam);
     return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTTestService#handleBeanParam1()}
+   */
+  @Path("beanParam1")
+  @GET
+  public Response handleBeanParam1( @BeanParam Context pContext ) {
+    RESTTestService lService = JEAF.getService(RESTTestService.class);
+    lService.handleBeanParam1(pContext);
+    return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link RESTTestService#handleBeanParam1()}
+   */
+  @Path("beanParam2")
+  @POST
+  public Response handleBeanParam1( @BeanParam BeanParameter pBeanParam ) {
+    RESTTestService lService = JEAF.getService(RESTTestService.class);
+    lService.handleBeanParam1(pBeanParam);
+    return Response.status(Response.Status.OK).build();
   }
 }

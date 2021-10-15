@@ -23,6 +23,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
     lSuite.addTest(new RESTTestServiceTest("testGetTestServiceObject"));
     lSuite.addTest(new RESTTestServiceTest("testGetResource"));
     lSuite.addTest(new RESTTestServiceTest("testUpdateTestServiceObject"));
+    lSuite.addTest(new RESTTestServiceTest("testHandleBeanParam1"));
     lSuite.addTest(new RESTTestServiceTest("testDoSomeNotRESTThing"));
     lSuite.addTest(new RESTTestServiceTest("testDoSomethingRESTy"));
     lSuite.addTest(new RESTTestServiceTest("testYetAnotherRESTOperation"));
@@ -91,6 +92,16 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
   @Override
   public void testUpdateTestServiceObject( ) throws Exception {
     // TODO Implement test for service method updateTestServiceObject(...)
+  }
+
+  /**
+   * Method test the implementation of service method handleBeanParam1
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testHandleBeanParam1( ) throws Exception {
+    // TODO Implement test for service method handleBeanParam1(...)
   }
 
   /**

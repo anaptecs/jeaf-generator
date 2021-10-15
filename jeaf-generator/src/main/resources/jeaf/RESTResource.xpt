@@ -121,6 +121,12 @@ public class «name»Resource {
   «IF this.isStereotypeApplied("CookieParam") -»
   @javax.ws.rs.CookieParam("«((CookieParam) this).value-»")
   «ENDIF-»
+  «IF this.isStereotypeApplied("BeanParam") -»
+  @javax.ws.rs.BeanParam 
+  «ENDIF-»
+  «IF this.type.isStereotypeApplied("BeanParam") -»
+  @javax.ws.rs.BeanParam
+  «ENDIF-»
   «this.getTypeName()» «this.name»
 «ENDDEFINE»
 

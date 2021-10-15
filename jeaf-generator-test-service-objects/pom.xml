@@ -18,6 +18,14 @@
 			<version>${jeaf.core.api.version}</version>
 		</dependency>
 
+		<!-- Dependency is required for REST annotations. -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
 		<dependency>
 			<groupId>com.anaptecs.jeaf.uml</groupId>
 			<artifactId>jeaf-uml-test-model</artifactId>

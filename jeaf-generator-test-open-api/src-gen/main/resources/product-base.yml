@@ -1,13 +1,13 @@
 openapi: 3.0.0
 
 servers:
-  - description: Accounting TEST
-    url: http://localhost:8080/test
   - description: Accounting PROD
     url: https://accounting.jeaf.de
+  - description: Accounting TEST
+    url: http://localhost:8080/test
 
 info:
-  title: Accounting OpenAPI Interface
+  title: Product Base Definitions
   version: 0.0.1
   description: |
     This component represents the Open API interface of the accounting service.
@@ -31,7 +31,7 @@ paths:
 components:
   schemas:
     
-    # com.anaptecs.jeaf.junit.openapi.Duration
+    # com.anaptecs.jeaf.junit.openapi.base.Duration
     Duration:
       description: >-
         Type represents a duration.
@@ -46,7 +46,7 @@ components:
         timeUnit: 
           $ref: '#/components/schemas/TimeUnit'
 
-    # com.anaptecs.jeaf.junit.openapi.MoneyAmount
+    # com.anaptecs.jeaf.junit.openapi.base.MoneyAmount
     MoneyAmount:
       description: >-
         Type represents an amount of money.
@@ -63,14 +63,14 @@ components:
         currency: 
           type: string
 
-    # com.anaptecs.jeaf.junit.openapi.ChannelCode
+    # com.anaptecs.jeaf.junit.openapi.base.ChannelCode
     ChannelCode:
       type: object
       properties:
         code: 
           type: string
 
-    # com.anaptecs.jeaf.junit.openapi.Channel
+    # com.anaptecs.jeaf.junit.openapi.base.Channel
     Channel:
       type: object
       properties:
@@ -79,7 +79,7 @@ components:
         channelCode: 
           $ref: '#/components/schemas/ChannelCode'
 
-    # com.anaptecs.jeaf.junit.openapi.Reseller
+    # com.anaptecs.jeaf.junit.openapi.base.Reseller
     Reseller:
       type: object
       properties:
@@ -96,7 +96,7 @@ components:
         language: 
           type: string
 
-    # com.anaptecs.jeaf.junit.openapi.Product
+    # com.anaptecs.jeaf.junit.openapi.base.Product
     Product:
       type: object
       properties:
@@ -115,7 +115,7 @@ components:
         productID: 
           type: string
 
-    # com.anaptecs.jeaf.junit.openapi.Sortiment
+    # com.anaptecs.jeaf.junit.openapi.base.Sortiment
     Sortiment:
       type: object
       properties:
@@ -125,7 +125,7 @@ components:
             $ref: '#/components/schemas/Product'
           minItems: 0
 
-    # com.anaptecs.jeaf.junit.openapi.DateObject
+    # com.anaptecs.jeaf.junit.openapi.base.DateObject
     DateObject:
       type: object
       properties:
@@ -148,7 +148,7 @@ components:
           type: string
           format: date-time
 
-    # com.anaptecs.jeaf.junit.openapi.PrimitiveObject
+    # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObject
     PrimitiveObject:
       type: object
       properties:
@@ -212,7 +212,7 @@ components:
         bString: 
           type: string
 
-    # com.anaptecs.jeaf.junit.openapi.PrimitiveArraysObject
+    # com.anaptecs.jeaf.junit.openapi.base.PrimitiveArraysObject
     PrimitiveArraysObject:
       type: object
       properties:
@@ -320,7 +320,7 @@ components:
           items:
             type: string
 
-    # com.anaptecs.jeaf.junit.openapi.ParentClass
+    # com.anaptecs.jeaf.junit.openapi.base.ParentClass
     ParentClass:
       discriminator:
         propertyName: objectType
@@ -340,7 +340,7 @@ components:
       required:
         - objectType
 
-    # com.anaptecs.jeaf.junit.openapi.ChildA
+    # com.anaptecs.jeaf.junit.openapi.base.ChildA
     ChildA:
       allOf:
         - $ref: '#/components/schemas/ParentClass'
@@ -350,7 +350,7 @@ components:
           type: integer
           format: int32
 
-    # com.anaptecs.jeaf.junit.openapi.ChildB
+    # com.anaptecs.jeaf.junit.openapi.base.ChildB
     ChildB:
       allOf:
         - $ref: '#/components/schemas/ParentClass'
@@ -364,7 +364,7 @@ components:
             $ref: '#/components/schemas/ParentClass'
           minItems: 0
 
-    # com.anaptecs.jeaf.junit.openapi.ChildAA
+    # com.anaptecs.jeaf.junit.openapi.base.ChildAA
     ChildAA:
       allOf:
         - $ref: '#/components/schemas/ChildA'
@@ -374,7 +374,7 @@ components:
           type: integer
           format: int32
 
-    # com.anaptecs.jeaf.junit.openapi.ChildBB
+    # com.anaptecs.jeaf.junit.openapi.base.ChildBB
     ChildBB:
       allOf:
         - $ref: '#/components/schemas/ChildB'
@@ -385,7 +385,7 @@ components:
           format: int64
 
     
-    # com.anaptecs.jeaf.junit.openapi.TimeUnit
+    # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
     TimeUnit:
       description: >-
         Enumeration represents time units.
@@ -404,7 +404,7 @@ components:
         - MONTH
         - YEAR
 
-    # com.anaptecs.jeaf.junit.openapi.ChannelType
+    # com.anaptecs.jeaf.junit.openapi.base.ChannelType
     ChannelType:
       type: string
       enum:

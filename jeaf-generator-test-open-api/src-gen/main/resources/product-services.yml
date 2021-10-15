@@ -1,0 +1,42 @@
+openapi: 3.0.0
+
+servers:
+  - description: Accounting TEST
+    url: http://localhost:8080/test
+  - description: Accounting PROD
+    url: https://accounting.jeaf.de
+
+info:
+  title: Product Services
+  version: 0.0.1
+  description: |
+    This component represents the Open API interface of the accounting service.
+  contact:
+    name: JEAF Development Team
+    url: 'https://www.anaptecs.de/jeaf'
+    email: jeaf@anaptecs.de
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+
+paths:
+  # TODO: Generate operations for all referenced REST Resources.
+  # ProductRESTService
+  /products
+    get:
+      description: >-
+        Operation returns all available product.
+      content:  
+        application/json:
+    post:
+      content:  
+        application/json:
+    
+  /products/{id}
+    get:
+      content:  
+        application/json:
+    
+  # [org.eclipse.uml2.uml.internal.impl.OperationImpl@233cd539 (name: getProducts, visibility: public) (isLeaf: false, isStatic: false, isAbstract: false, concurrency: sequential) (isQuery: false), org.eclipse.uml2.uml.internal.impl.OperationImpl@5f6d6294 (name: createProduct, visibility: public) (isLeaf: false, isStatic: false, isAbstract: false, concurrency: sequential) (isQuery: false)]
+
+components:
