@@ -202,9 +202,12 @@ components:
           «ENDIF-»
           «ENDIF-»
         «ENDFOREACH-»
-      «IF this.isTopOfClassHierarchy() -»
+      «IF this.isTopOfClassHierarchy() || this.hasRequiredProperties() -»
       required:
         - objectType
+        «FOREACH this.getRequiredProperties() AS property-»
+        - «property.name»
+        «ENDFOREACH-»
       «ENDIF-»
       «ENDIF-»
 «ENDDEFINE»

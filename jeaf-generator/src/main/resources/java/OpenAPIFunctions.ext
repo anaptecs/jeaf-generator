@@ -93,3 +93,8 @@ boolean isRequired(uml::TypedElement type):
 
 // boolean isRequiredAttribute(uml::Property property):   
 //   isRequired(property) || property.lower > 0;
+List[uml::Property] getRequiredProperties(uml::Class class):
+    class.ownedAttribute.select(e|e.isRequired());
+    
+boolean hasRequiredProperties(uml::Class class):
+    getRequiredProperties(class).size > 0;

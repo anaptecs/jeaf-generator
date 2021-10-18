@@ -45,6 +45,9 @@ components:
           format: int32
         timeUnit: 
           $ref: '#/components/schemas/TimeUnit'
+      required:
+        - objectType
+        - value
 
     # com.anaptecs.jeaf.junit.openapi.base.MoneyAmount
     MoneyAmount:
@@ -62,6 +65,10 @@ components:
           format: double
         currency: 
           type: string
+      required:
+        - objectType
+        - amount
+        - currency
 
     # com.anaptecs.jeaf.junit.openapi.base.ChannelCode
     ChannelCode:
@@ -114,6 +121,9 @@ components:
           type: string
         productID: 
           type: string
+      required:
+        - objectType
+        - image
 
     # com.anaptecs.jeaf.junit.openapi.base.Sortiment
     Sortiment:
@@ -211,6 +221,17 @@ components:
           type: string
         bString: 
           type: string
+      required:
+        - objectType
+        - aBoolean
+        - cBoolean
+        - aByte
+        - aShort
+        - aInteger
+        - aLong
+        - aCharacter
+        - aFloat
+        - aDouble
 
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveArraysObject
     PrimitiveArraysObject:
@@ -319,6 +340,17 @@ components:
           type: array
           items:
             type: string
+      required:
+        - objectType
+        - aBooleanArray
+        - cBooleanArray
+        - aByteArray
+        - aShortArray
+        - aIntegerArray
+        - aLongArray
+        - aCharacterArray
+        - aFloatArray
+        - aDoubleArray
 
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
     ParentClass:
@@ -349,6 +381,9 @@ components:
         childAAttribute: 
           type: integer
           format: int32
+      required:
+        - objectType
+        - childAAttribute
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildB
     ChildB:
@@ -363,6 +398,9 @@ components:
           items:
             $ref: '#/components/schemas/ParentClass'
           minItems: 0
+      required:
+        - objectType
+        - childBAttribute
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildAA
     ChildAA:
@@ -373,6 +411,9 @@ components:
         childAAAttribute: 
           type: integer
           format: int32
+      required:
+        - objectType
+        - childAAAttribute
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildBB
     ChildBB:
