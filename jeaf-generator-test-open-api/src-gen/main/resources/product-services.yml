@@ -1,10 +1,10 @@
 openapi: 3.0.0
 
 servers:
-  - description: Accounting TEST
-    url: http://localhost:8080/test
   - description: Accounting PROD
     url: https://accounting.jeaf.de
+  - description: Accounting TEST
+    url: http://localhost:8080/test
 
 info:
   title: Product Services
@@ -22,21 +22,83 @@ info:
 paths:
   # TODO: Generate operations for all referenced REST Resources.
   # ProductRESTService
-  /products
+  /products:
     get:
       description: >-
         Operation returns all available product.
-      content:  
-        application/json:
+      responses:
+        '200':
+          content:  
+            application/json:
+            
     post:
-      content:  
-        application/json:
+      responses:
+        '200':
+          content:  
+            application/json:
+            
     
-  /products/{id}
+  /products/{id}:
     get:
-      content:  
-        application/json:
+      parameters:
+        - name: id
+          in: path
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:  
+            application/json:
+            
     
-  # [org.eclipse.uml2.uml.internal.impl.OperationImpl@233cd539 (name: getProducts, visibility: public) (isLeaf: false, isStatic: false, isAbstract: false, concurrency: sequential) (isQuery: false), org.eclipse.uml2.uml.internal.impl.OperationImpl@5f6d6294 (name: createProduct, visibility: public) (isLeaf: false, isStatic: false, isAbstract: false, concurrency: sequential) (isQuery: false)]
+  /products/sortiment:
+    get:
+      parameters:
+        - name: accessToken
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+        - name: language
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+        - name: resellerID
+          in: cookie
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: pathParam
+          in: path
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: queryParam
+          in: query
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          content:  
+            application/json:
+            
+    
 
 components:

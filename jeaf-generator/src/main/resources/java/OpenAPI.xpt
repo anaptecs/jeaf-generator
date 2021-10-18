@@ -1,4 +1,5 @@
 «EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
 «EXTENSION java::OpenAPIFunctions»
 
 «IMPORT uml»
@@ -42,7 +43,7 @@ paths:
   «FOREACH this.getRESTResources() AS service-»
   # «service.name»
   «FOREACH service.getPaths() AS path-»
-  «IF service.path.length > 0»«service.path»«ELSE»/«ENDIF»«IF path.length > 0»/«path»«ENDIF»
+  «IF service.path.length > 0»«service.path»«ELSE»/«ENDIF»«IF path.length > 0»/«path»«ENDIF»:
     «FOREACH service.getRESTOperations(path) AS operation-»
     «FOREACH operation.httpMethods AS httpMethod-»
     «httpMethod.toString().toLowerCase()»:
@@ -50,15 +51,70 @@ paths:
       description: >-
         «operation.getCommentForOpenAPIDescription("        ")»
       «ENDIF-»
-      content:  
-        «FOREACH service.produces AS contentType-»
-        «contentType.toOpenAPIContentType()»:
-        «ENDFOREACH-»  
+      «IF operation.hasOpenAPIInputParameters() || operation.hasBeanParameters()-»
+      parameters:
+        «FOREACH operation.getOpenAPIInputParameters() AS param-»
+        - name: «EXPAND RESTParamName FOR param»
+          in: «param.getOpenAPIParameterType()»
+          description: >- 
+            «IF param.hasComment()»»«param.getComment()»«ELSE»TODO Please add comment«ENDIF»
+          required: «param.isRequired()»
+          schema:
+            «REM»Only basic types are supported as parameters«ENDREM-»
+            «IF param.type.isBasicOpenAPIType() == true-»
+            	«IF param.isMultivalued() == false-»
+            type: «param.type.getOpenAPIType()»
+            		«IF param.type.hasOpenAPIFormat()-»
+            format: «param.type.getOpenAPIFormat()»
+            		«ENDIF-»
+            	«ELSE-»
+            type: array
+            items:
+              type: «param.type.getOpenAPIType()»
+              		«IF param.type.hasOpenAPIFormat()-»
+              format: «param.type.getOpenAPIFormat()»
+              		«ENDIF-»
+            	«ENDIF-»
+            «ENDIF-»
+        «ENDFOREACH-»
+        «FOREACH operation.getBeanParams() AS param-»
+        «FOREACH param.type.getOpenAPIProperties() AS property-»
+        - name: «property.name»
+          in: «property.getOpenAPIParameterType()»
+          description: >- 
+            «IF property.hasComment()»»«property.getComment()»«ELSE»TODO Please add comment«ENDIF»
+          required: «property.isRequired()»
+          schema:
+            «REM»Only basic types are supported as parameters«ENDREM-»
+            «IF property.type.isBasicOpenAPIType() == true-»
+            	«IF property.isMultivalued() == false-»
+            type: «property.type.getOpenAPIType()»
+            		«IF property.type.hasOpenAPIFormat()-»
+            format: «property.type.getOpenAPIFormat()»
+            		«ENDIF-»
+            	«ELSE-»
+            type: array
+            items:
+              type: «property.type.getOpenAPIType()»
+              		«IF property.type.hasOpenAPIFormat()-»
+              format: «property.type.getOpenAPIFormat()»
+              		«ENDIF-»
+            	«ENDIF-»
+            «ENDIF-»
+        «ENDFOREACH-»
+        «ENDFOREACH-»
+      «ENDIF-»
+      responses:
+        '200':
+          content:  
+            «FOREACH service.produces AS contentType-»
+            «contentType.toOpenAPIContentType()»:
+            «ENDFOREACH-»
+            
     «ENDFOREACH-»
     «ENDFOREACH»
   «ENDFOREACH-»
   «ENDFOREACH-»
-  # «this.getRESTResources().get(0).getRESTOperations(null)»
 «ELSE-»
   # Open API standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
   # So we define NOP operation here as workaround.
@@ -168,4 +224,34 @@ components:
         «ENDIF-»
         - «literal.name»
         «ENDFOREACH-»
+«ENDDEFINE»
+
+«DEFINE RESTParamName FOR Parameter-»
+«IF this.isStereotypeApplied("PathParam")»«((PathParam) this).value»«ENDIF-»
+«IF this.isStereotypeApplied("HeaderParam")»«((HeaderParam) this).value-»«ENDIF-»
+«IF this.isStereotypeApplied("QueryParam")»«((QueryParam) this).value-»«ENDIF-»
+«IF this.isStereotypeApplied("CookieParam")»«((CookieParam) this).value-»«ENDIF-»
+«ENDDEFINE»
+
+
+«DEFINE RESTParameterDefinition FOR Parameter»
+  «IF this.isStereotypeApplied("PathParam") -»
+  @javax.ws.rs.PathParam("«((PathParam) this).value-»")
+  «ENDIF-»
+  «IF this.isStereotypeApplied("HeaderParam") -»
+  @javax.ws.rs.HeaderParam("«((HeaderParam) this).value-»")
+  «ENDIF-»
+  «IF this.isStereotypeApplied("QueryParam") -»
+  @javax.ws.rs.QueryParam("«((QueryParam) this).value-»")
+  «ENDIF-»
+  «IF this.isStereotypeApplied("CookieParam") -»
+  @javax.ws.rs.CookieParam("«((CookieParam) this).value-»")
+  «ENDIF-»
+  «IF this.isStereotypeApplied("BeanParam") -»
+  @javax.ws.rs.BeanParam 
+  «ENDIF-»
+  «IF this.type.isStereotypeApplied("BeanParam") -»
+  @javax.ws.rs.BeanParam
+  «ENDIF-»
+  «this.getTypeName()» «this.name»
 «ENDDEFINE»

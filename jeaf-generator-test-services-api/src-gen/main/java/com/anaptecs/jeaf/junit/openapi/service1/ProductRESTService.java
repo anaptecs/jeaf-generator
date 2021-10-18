@@ -8,7 +8,9 @@ package com.anaptecs.jeaf.junit.openapi.service1;
 import java.util.List;
 
 import com.anaptecs.jeaf.core.api.Service;
+import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
+import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 
 /**
  * @author JEAF Generator
@@ -36,4 +38,11 @@ public interface ProductRESTService extends Service {
    * @return {@link Boolean}
    */
   boolean createProduct( Product pProduct );
+
+  /**
+   * 
+   * @param pContext
+   * @return {@link Sortiment}
+   */
+  Sortiment getSortiment( Context pContext );
 }

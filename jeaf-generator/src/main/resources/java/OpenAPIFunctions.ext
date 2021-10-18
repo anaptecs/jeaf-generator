@@ -1,3 +1,6 @@
+extension java::Naming;
+extension java::GeneratorCommons;
+
 boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 	getOpenAPITypes(spec).size > 0;
 	
@@ -21,7 +24,6 @@ List[JMM::RESTOperation] getRESTOperations(JMM::RESTResource service, String pPa
    
 Set[String] getPaths(JMM::RESTResource service):
    service.ownedOperation.typeSelect(JMM::RESTOperation).path.toSet();
-   
 	
 String getYAMLStyleComment(uml::Element element, String indentation):
     element.ownedComment.get(0).body.replaceAll("\n", "\n" + indentation + "# ");
@@ -52,6 +54,37 @@ boolean isTopOfClassHierarchy(uml::Class class) :
 	
 String toOpenAPIContentType(JMM::MediaType mediaType) :
    toOpenAPIContentType(mediaType.toString());
-
+   
 String toOpenAPIContentType(String mediaType) :
    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.toOpenAPIContentType(java.lang.String);
+   
+boolean isOpenAPIParameterType(uml::Element element):
+   getOpenAPIParameterType(element) != null;
+
+String getOpenAPIParameterType(uml::Element param):
+   JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIParameterType(org.eclipse.uml2.uml.Element);
+   
+List[uml::Parameter] getOpenAPIInputParameters(uml::Operation operation):   
+   operation.ownedParameter.select(p| p.isInputParameter() && p.isOpenAPIParameterType());   
+
+boolean hasOpenAPIInputParameters(uml::Operation operation):
+   getOpenAPIInputParameters(operation).size > 0;
+   
+boolean isBeanParamater(uml::Parameter param):
+   param.isStereotypeApplied("BeanParam") || param.type.isStereotypeApplied("BeanParam");
+   
+List[uml::Parameter] getBeanParams(uml::Operation operation):
+   operation.ownedParameter.select(e|e.isBeanParamater());
+   
+boolean hasBeanParameters(uml::Operation operation):
+   getBeanParams(operation).size > 0;
+   
+boolean hasOpenAPIProperties(uml::Class pClass):
+   getOpenAPIProperties(pClass).size > 0;
+   
+List[uml::Property] getOpenAPIProperties(uml::Element class):
+   class.ownedElement.select(e|e.isOpenAPIParameterType());
+   
+boolean isRequired(uml::TypedElement param):
+   param.isStereotypeApplied("NotNull") || param.isStereotypeApplied("NotEmpty") || param.isStereotypeApplied("NotBlank") || param.type.isPrimitiveType();  
+   

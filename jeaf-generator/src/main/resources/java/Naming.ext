@@ -156,6 +156,13 @@ String asParameterDefinitionList(List parameters):
     
 cached boolean isInputParameter(uml::Parameter parameter):
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isInputParameter(org.eclipse.uml2.uml.Parameter);
+    
+List[uml::Parameter] getInputParameters(uml::Operation operation):
+   operation.ownedParameter.select(p| p.isInputParameter());
+   
+boolean hasInputParameters(uml::Operation operation):
+   getInputParameters(operation).size > 0;
+
                 
 // Returns the name of the parameter's type, adds a "[]" at the end if the parameter is multivalued
 String getTypeName(uml::Parameter parameter) :

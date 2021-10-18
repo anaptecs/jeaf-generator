@@ -50,6 +50,13 @@ public abstract class ProductRESTServiceTestBase extends JEAFTestCase {
   public abstract void testGetProduct( ) throws Exception;
 
   /**
+   * Method test the implementation of service method getSortiment(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testGetSortiment( ) throws Exception;
+
+  /**
    * Method test the implementation of service method createProduct(...)
    * 
    * @throws Exception if the test fails.

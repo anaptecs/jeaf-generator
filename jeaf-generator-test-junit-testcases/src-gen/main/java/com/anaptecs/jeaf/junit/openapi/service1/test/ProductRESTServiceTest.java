@@ -21,6 +21,7 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
     TestSuite lSuite = new TestSuite("ProductRESTServiceTest");
     // Add all test of this class.
     lSuite.addTest(new ProductRESTServiceTest("testGetProduct"));
+    lSuite.addTest(new ProductRESTServiceTest("testGetSortiment"));
     lSuite.addTest(new ProductRESTServiceTest("testCreateProduct"));
     lSuite.addTest(new ProductRESTServiceTest("testGetProducts"));
     // Return created test suite.
@@ -68,6 +69,16 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
   @Override
   public void testGetProduct( ) throws Exception {
     // TODO Implement test for service method getProduct(...)
+  }
+
+  /**
+   * Method test the implementation of service method getSortiment
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testGetSortiment( ) throws Exception {
+    // TODO Implement test for service method getSortiment(...)
   }
 
   /**

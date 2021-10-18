@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.service1;
 
 import java.util.List;
 
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -17,7 +18,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.anaptecs.jeaf.core.api.JEAF;
+import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
+import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 
 /**
  * @author JEAF Generator
@@ -55,6 +58,17 @@ public class ProductRESTServiceResource {
   public Response createProduct( Product pProduct ) {
     ProductRESTService lService = JEAF.getService(ProductRESTService.class);
     boolean lResult = lService.createProduct(pProduct);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductRESTService#getSortiment()}
+   */
+  @Path("sortiment")
+  @GET
+  public Response getSortiment( @BeanParam Context pContext ) {
+    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    Sortiment lResult = lService.getSortiment(pContext);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 }

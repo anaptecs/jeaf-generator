@@ -12,6 +12,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import org.eclipse.uml2.uml.Element;
+
 import com.anaptecs.jeaf.xfun.api.XFun;
 
 public class OpenAPIHelper {
@@ -159,5 +161,25 @@ public class OpenAPIHelper {
 
   public static String toOpenAPIContentType( String pContentTypeID ) {
     return contentTypeMapping.get(pContentTypeID);
+  }
+
+  public static String getOpenAPIParameterType( Element pType ) {
+    String lOpenAPIType;
+    if (ClassUtil.isStereotypeApplied(pType, "PathParam")) {
+      lOpenAPIType = "path";
+    }
+    else if (ClassUtil.isStereotypeApplied(pType, "HeaderParam")) {
+      lOpenAPIType = "header";
+    }
+    else if (ClassUtil.isStereotypeApplied(pType, "QueryParam")) {
+      lOpenAPIType = "query";
+    }
+    else if (ClassUtil.isStereotypeApplied(pType, "CookieParam")) {
+      lOpenAPIType = "cookie";
+    }
+    else {
+      lOpenAPIType = null;
+    }
+    return lOpenAPIType;
   }
 }
