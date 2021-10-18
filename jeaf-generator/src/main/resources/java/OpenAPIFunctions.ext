@@ -85,6 +85,11 @@ boolean hasOpenAPIProperties(uml::Class pClass):
 List[uml::Property] getOpenAPIProperties(uml::Element class):
    class.ownedElement.select(e|e.isOpenAPIParameterType());
    
-boolean isRequired(uml::TypedElement param):
-   param.isStereotypeApplied("NotNull") || param.isStereotypeApplied("NotEmpty") || param.isStereotypeApplied("NotBlank") || param.type.isPrimitiveType();  
+boolean isRequired(uml::TypedElement type):
+   type.isStereotypeApplied("NotNull") || type.isStereotypeApplied("NotEmpty") || type.isStereotypeApplied("NotBlank") || type.type.isPrimitiveType();
    
+// boolean isRequiredParam(uml::Parameter param):   
+//   isRequired(param) || param.lower > 0;
+
+// boolean isRequiredAttribute(uml::Property property):   
+//   isRequired(property) || property.lower > 0;
