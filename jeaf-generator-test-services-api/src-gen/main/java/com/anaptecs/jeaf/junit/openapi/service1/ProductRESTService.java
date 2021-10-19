@@ -7,6 +7,8 @@ package com.anaptecs.jeaf.junit.openapi.service1;
 
 import java.util.List;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
@@ -30,7 +32,7 @@ public interface ProductRESTService extends Service {
    * @param pProductID
    * @return {@link Product}
    */
-  Product getProduct( String pProductID );
+  Product getProduct( @NotEmpty() String pProductID );
 
   /**
    * 

@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Locale;
 
+import javax.validation.constraints.NotEmpty;
 import javax.ws.rs.CookieParam;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.PathParam;
@@ -57,6 +58,7 @@ public class Context implements ServiceObject {
    * 
    */
   @HeaderParam("token")
+  @NotEmpty()
   private String accessToken;
 
   /**
@@ -107,6 +109,7 @@ public class Context implements ServiceObject {
     /**
      * 
      */
+    @NotEmpty()
     private String accessToken;
 
     /**

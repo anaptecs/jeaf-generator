@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.List;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.core.servicechannel.api.Command;
@@ -61,7 +63,7 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
    * 
    * 
    */
-  public Product getProduct( String pProductID ) {
+  public Product getProduct( @NotEmpty() String pProductID ) {
     try {
       Command lCommand = new GetProduct_String_ProductRESTService_Command(pProductID);
       return (Product) this.executeCommand(lCommand);
@@ -242,7 +244,7 @@ final class GetProduct_String_ProductRESTService_Command extends Command {
    * 
    * @param pProductID String
    */
-  GetProduct_String_ProductRESTService_Command( String pProductID ) {
+  GetProduct_String_ProductRESTService_Command( @NotEmpty() String pProductID ) {
     super(ProductRESTService.class);
     productID = pProductID;
     parameters = new Object[] { productID };
