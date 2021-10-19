@@ -39,6 +39,35 @@ info:
 
 paths:
 «IF this.referencesRESTResources()-»
+  «EXPAND GeneratePaths»
+«ELSE-»
+  # Open API standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
+  # So we define NOP operation here as workaround.
+  /nop:
+    get:
+      responses:
+        '200':
+          description: Nothing is the result of nop ;-)
+«ENDIF»
+«IF this.hasOpenAPITypes() || this.hasOpenAPIEnums()-»
+components:
+  schemas:
+    «EXPAND GenerateOpenAPIType FOREACH this.getOpenAPITypes()»
+    «EXPAND GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums()»
+«ENDIF-»
+«ENDFILE-»
+«ENDDEFINE»
+
+
+«DEFINE RegisterLocalType FOR OpenAPIType»
+«this.registerLocalType()»
+«ENDDEFINE»
+
+«DEFINE RegisterLocalType FOR OpenAPIEnumeration»
+«this.registerLocalType()»
+«ENDDEFINE»
+
+«DEFINE GeneratePaths FOR OpenAPI3Specification -»
   # TODO: Generate operations for all referenced REST Resources.
   «FOREACH this.getRESTResources() AS service-»
   # «service.name»
@@ -112,36 +141,10 @@ paths:
             «ENDFOREACH-»
             
     «ENDFOREACH-»
-    «ENDFOREACH»
+    «ENDFOREACH-»
   «ENDFOREACH-»
   «ENDFOREACH-»
-«ELSE-»
-  # Open API standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
-  # So we define NOP operation here as workaround.
-  /nop:
-    get:
-      responses:
-        '200':
-          description: Nothing is the result of nop ;-)
-«ENDIF»
-components:
-«IF this.hasOpenAPITypes() || this.hasOpenAPIEnums()-»
-  schemas:
-    «EXPAND GenerateOpenAPIType FOREACH this.getOpenAPITypes()»
-    «EXPAND GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums()»
-«ENDIF-»
-«ENDFILE-»
 «ENDDEFINE»
-
-
-«DEFINE RegisterLocalType FOR OpenAPIType»
-«this.registerLocalType()»
-«ENDDEFINE»
-
-«DEFINE RegisterLocalType FOR OpenAPIEnumeration»
-«this.registerLocalType()»
-«ENDDEFINE»
-
 
 «DEFINE GenerateOpenAPIType FOR OpenAPIType»
     # «this.fqn()»
