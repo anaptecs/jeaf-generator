@@ -32,6 +32,14 @@ paths:
             application/json:
             
     post:
+      requestBody:
+        description: >- 
+          TODO Please add comment
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
       responses:
         '200':
           content:  
@@ -92,6 +100,24 @@ paths:
           required: false
           schema:
             type: string
+      responses:
+        '200':
+          content:  
+            application/json:
+            
+  /products/ChannelCode:
+    post:
+      requestBody:
+        description: >- 
+          TODO Please add comment
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+          application/xml:
+            schema:
+              type: string
       responses:
         '200':
           content:  

@@ -88,8 +88,8 @@ components:
           description: >- 
             «IF param.hasComment()»»«param.getComment()»«ELSE»TODO Please add comment«ENDIF»
           required: «param.isRequired()»
+          «REM»Only basic types are supported as parameters«ENDREM -»
           schema:
-            «REM»Only basic types are supported as parameters«ENDREM-»
             «IF param.type.isBasicOpenAPIType() == true-»
             	«IF param.isMultivalued() == false-»
             type: «param.type.getOpenAPIType()»
@@ -113,10 +113,10 @@ components:
           description: >- 
             «IF property.hasComment()»»«property.getComment()»«ELSE»TODO Please add comment«ENDIF»
           required: «property.isRequired()»
+          «REM»Only basic types are supported as parameters«ENDREM -»
           schema:
-            «REM»Only basic types are supported as parameters«ENDREM-»
-            «IF property.type.isBasicOpenAPIType() == true-»
-            	«IF property.isMultivalued() == false-»
+            «IF property.type.isBasicOpenAPIType() == true -»
+            	«IF property.isMultivalued() == false -»
             type: «property.type.getOpenAPIType()»
             		«IF property.type.hasOpenAPIFormat()-»
             format: «property.type.getOpenAPIFormat()»
@@ -132,6 +132,44 @@ components:
             «ENDIF-»
         «ENDFOREACH-»
         «ENDFOREACH-»
+      «ENDIF-»
+      «REM»Generate request body«ENDREM -»
+      «IF operation.hasRequestBody(httpMethod) -»
+      requestBody:
+      «FOREACH operation.getRequestBodyParameters() AS param-»
+        description: >- 
+          «IF param.hasComment()»»«param.getComment()»«ELSE»TODO Please add comment«ENDIF»
+        required: «param.isRequired()»
+        content:
+          «FOREACH getAllMediaTypes(service.consumes, operation.consumes) AS mediaType-»
+          «mediaType.toOpenAPIContentType()»:
+            schema:
+              «IF param.type.isBasicOpenAPIType() == true-»
+              «IF param.isMultivalued() == false-»
+              type: «param.type.getOpenAPIType()»
+              «IF param.type.hasOpenAPIFormat()-»
+              format: «param.type.getOpenAPIFormat()»
+              «ENDIF-»
+              «ELSE-»
+              type: array
+              items:
+                type: «param.type.getOpenAPIType()»
+                «IF param.type.hasOpenAPIFormat()-»
+                format: «param.type.getOpenAPIFormat()»
+                «ENDIF-»
+              «ENDIF-»
+              «ELSE-»
+              «IF param.isMultivalued() == false-»
+              $ref: «param.type.getOpenAPIType()»
+              «ELSE-»
+              type: array
+              items:
+                $ref: «param.type.getOpenAPIType()»
+              minItems: «param.getLower()»
+              «ENDIF-»
+              «ENDIF-»
+          «ENDFOREACH-»
+      «ENDFOREACH-»
       «ENDIF-»
       responses:
         '200':

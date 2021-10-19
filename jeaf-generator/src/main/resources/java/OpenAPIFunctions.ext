@@ -64,8 +64,11 @@ boolean isOpenAPIParameterType(uml::Element element):
 String getOpenAPIParameterType(uml::Element param):
    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIParameterType(org.eclipse.uml2.uml.Element);
    
+boolean isOpenAPIInputParameter(uml::Parameter param):
+   param.isInputParameter() && param.isOpenAPIParameterType();
+
 List[uml::Parameter] getOpenAPIInputParameters(uml::Operation operation):   
-   operation.ownedParameter.select(p| p.isInputParameter() && p.isOpenAPIParameterType());   
+   operation.ownedParameter.select(p| p.isOpenAPIInputParameter());   
 
 boolean hasOpenAPIInputParameters(uml::Operation operation):
    getOpenAPIInputParameters(operation).size > 0;
@@ -88,13 +91,21 @@ List[uml::Property] getOpenAPIProperties(uml::Element class):
 boolean isRequired(uml::TypedElement type):
    type.isStereotypeApplied("NotNull") || type.isStereotypeApplied("NotEmpty") || type.isStereotypeApplied("NotBlank") || type.type.isPrimitiveType();
    
-// boolean isRequiredParam(uml::Parameter param):   
-//   isRequired(param) || param.lower > 0;
-
-// boolean isRequiredAttribute(uml::Property property):   
-//   isRequired(property) || property.lower > 0;
 List[uml::Property] getRequiredProperties(uml::Class class):
     class.ownedAttribute.select(e|e.isRequired());
     
 boolean hasRequiredProperties(uml::Class class):
     getRequiredProperties(class).size > 0;
+    
+boolean supportsRequestBody(JMM::HTTPMethod httpMethod):
+  httpMethod.toString().toLowerCase() == "post" || httpMethod.toString().toLowerCase() == "put" || httpMethod.toString().toLowerCase() == "patch";
+
+boolean hasRequestBody(uml::Operation operation, JMM::HTTPMethod httpMethod):
+  getRequestBodyParameters(operation).size == 1  && httpMethod.supportsRequestBody() == true;
+  
+List[uml::Parameter] getRequestBodyParameters(uml::Operation operation):
+  operation.ownedParameter.select(e|e.isInputParameter() && e.isOpenAPIInputParameter() == false);
+  
+Set[JMM::MediaType] getAllMediaTypes(Collection[JMM::MediaType] serviceMediaTypes, Collection[JMM::MediaType] operationMediaType):
+  serviceMediaTypes.addAll(operationMediaType).toSet();
+  
