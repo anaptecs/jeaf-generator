@@ -20,7 +20,6 @@ info:
     url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
 
 paths:
-  # TODO: Generate operations for all referenced REST Resources.
   # ProductRESTService
   /products:
     get:
@@ -28,9 +27,16 @@ paths:
         Operation returns all available product.
       responses:
         '200':
+          description: >- 
+            TODO Please add comment
           content:  
             application/json:
-            
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+                minItems: 0
+          
     post:
       requestBody:
         description: >- 
@@ -42,9 +48,18 @@ paths:
               $ref: '#/components/schemas/Product'
       responses:
         '200':
+          description: >- 
+            TODO Please add comment
           content:  
             application/json:
-            
+              schema:
+                type: boolean
+          
+    head:
+      responses:
+        '200':
+          description: Operation does not return any content.
+          
   /products/{id}:
     get:
       parameters:
@@ -57,9 +72,13 @@ paths:
             type: string
       responses:
         '200':
+          description: >- 
+            TODO Please add comment
           content:  
             application/json:
-            
+              schema:
+                $ref: '#/components/schemas/Product'
+          
   /products/sortiment:
     get:
       parameters:
@@ -102,9 +121,13 @@ paths:
             type: string
       responses:
         '200':
+          description: >- 
+            TODO Please add comment
           content:  
             application/json:
-            
+              schema:
+                $ref: '#/components/schemas/Sortiment'
+          
   /products/ChannelCode:
     post:
       requestBody:
@@ -120,8 +143,12 @@ paths:
               type: string
       responses:
         '200':
+          description: >- 
+            TODO Please add comment
           content:  
             application/json:
-            
+              schema:
+                $ref: '#/components/schemas/ChannelCode'
+          
 
 

@@ -109,3 +109,9 @@ List[uml::Parameter] getRequestBodyParameters(uml::Operation operation):
 Set[JMM::MediaType] getAllMediaTypes(Collection[JMM::MediaType] serviceMediaTypes, Collection[JMM::MediaType] operationMediaType):
   serviceMediaTypes.addAll(operationMediaType).toSet();
   
+boolean hasReturnTypeVoid(uml::Operation operation):
+  getReturnTypeName(operation) == "void";
+  
+uml::Parameter getReturnParameter(uml::Operation operation):
+  operation.getReturnResult();
+

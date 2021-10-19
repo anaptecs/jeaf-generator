@@ -68,7 +68,6 @@ components:
 «ENDDEFINE»
 
 «DEFINE GeneratePaths FOR OpenAPI3Specification -»
-  # TODO: Generate operations for all referenced REST Resources.
   «FOREACH this.getRESTResources() AS service-»
   # «service.name»
   «FOREACH service.getPaths() AS path-»
@@ -88,7 +87,6 @@ components:
           description: >- 
             «IF param.hasComment()»»«param.getComment()»«ELSE»TODO Please add comment«ENDIF»
           required: «param.isRequired()»
-          «REM»Only basic types are supported as parameters«ENDREM -»
           schema:
             «IF param.type.isBasicOpenAPIType() == true-»
             	«IF param.isMultivalued() == false-»
@@ -133,7 +131,6 @@ components:
         «ENDFOREACH-»
         «ENDFOREACH-»
       «ENDIF-»
-      «REM»Generate request body«ENDREM -»
       «IF operation.hasRequestBody(httpMethod) -»
       requestBody:
       «FOREACH operation.getRequestBodyParameters() AS param-»
@@ -173,11 +170,44 @@ components:
       «ENDIF-»
       responses:
         '200':
+          «IF operation.hasReturnTypeVoid() == false-»
+          «LET operation.getReturnResult() AS returnParam-»
+          description: >- 
+            «IF operation.getReturnResult().hasComment()»»«operation.getReturnResult().getComment()»«ELSE»TODO Please add comment«ENDIF»
           content:  
             «FOREACH service.produces AS contentType-»
             «contentType.toOpenAPIContentType()»:
+              schema:
+                «IF returnParam.type.isBasicOpenAPIType() == true-»
+                «IF returnParam.isMultivalued() == false-»
+                type: «returnParam.type.getOpenAPIType()»
+                «IF returnParam.type.hasOpenAPIFormat()-»
+                format: «returnParam.type.getOpenAPIFormat()»
+                «ENDIF-»
+                «ELSE-»
+                type: array
+                items:
+                  type: «returnParam.type.getOpenAPIType()»
+                  «IF returnParam.type.hasOpenAPIFormat()-»
+                  format: «returnParam.type.getOpenAPIFormat()»
+                  «ENDIF-»
+                «ENDIF-»
+                «ELSE-»
+                «IF returnParam.isMultivalued() == false-»
+                $ref: «returnParam.type.getOpenAPIType()»
+                «ELSE-»
+                type: array
+                items:
+                  $ref: «returnParam.type.getOpenAPIType()»
+                minItems: «returnParam.getLower()»
+                «ENDIF-»
+                «ENDIF-»
             «ENDFOREACH-»
-            
+          «ENDLET-»
+          «ELSE-»
+          description: Operation does not return any content.
+          «ENDIF-»
+          
     «ENDFOREACH-»
     «ENDFOREACH-»
   «ENDFOREACH-»
