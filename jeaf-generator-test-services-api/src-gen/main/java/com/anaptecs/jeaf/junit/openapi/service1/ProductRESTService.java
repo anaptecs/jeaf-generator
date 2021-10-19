@@ -56,4 +56,9 @@ public interface ProductRESTService extends Service {
    * @return {@link ChannelCode}
    */
   ChannelCode createChannelCode( @NotBlank() String pChannelCode );
+
+  /**
+  * 
+  */
+  void ping( );
 }

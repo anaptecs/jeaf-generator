@@ -22,6 +22,7 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
     // Add all test of this class.
     lSuite.addTest(new ProductRESTServiceTest("testGetProduct"));
     lSuite.addTest(new ProductRESTServiceTest("testGetSortiment"));
+    lSuite.addTest(new ProductRESTServiceTest("testPing"));
     lSuite.addTest(new ProductRESTServiceTest("testCreateProduct"));
     lSuite.addTest(new ProductRESTServiceTest("testCreateChannelCode"));
     lSuite.addTest(new ProductRESTServiceTest("testGetProducts"));
@@ -80,6 +81,16 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
   @Override
   public void testGetSortiment( ) throws Exception {
     // TODO Implement test for service method getSortiment(...)
+  }
+
+  /**
+   * Method test the implementation of service method ping
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testPing( ) throws Exception {
+    // TODO Implement test for service method ping(...)
   }
 
   /**

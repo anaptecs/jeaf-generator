@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.HEAD;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -84,5 +85,15 @@ public class ProductRESTServiceResource {
     ProductRESTService lService = JEAF.getService(ProductRESTService.class);
     ChannelCode lResult = lService.createChannelCode(pChannelCode);
     return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductRESTService#ping()}
+   */
+  @HEAD
+  public Response ping( ) {
+    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    lService.ping();
+    return Response.status(Response.Status.OK).build();
   }
 }
