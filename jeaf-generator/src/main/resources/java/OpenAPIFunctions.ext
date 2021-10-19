@@ -10,6 +10,9 @@ List[JMM::OpenAPIType] getOpenAPITypes(JMM::OpenAPI3Specification spec):
 List[JMM::OpenAPI3Specification] getDependentSpecs(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(JMM::OpenAPI3Specification);
 	
+Void registerSpecDependency( uml::Component pSource, uml::Component pTarget, String pReference ):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.registerSpecDependency( org.eclipse.uml2.uml.Component, org.eclipse.uml2.uml.Component, java.lang.String );
+	
 boolean hasOpenAPIEnums(JMM::OpenAPI3Specification spec):
 	getOpenAPIEnums(spec).size > 0;
 	
@@ -34,8 +37,8 @@ String getYAMLStyleComment(uml::Element element, String indentation):
 String getCommentForOpenAPIDescription(uml::Element element, String indentation):
     element.ownedComment.get(0).body.replaceAll("\n", "\n" + indentation);
     
-String getOpenAPIType(uml::Type type):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIType(org.eclipse.uml2.uml.Type);
+String getOpenAPIType(uml::Type type, JMM::OpenAPI3Specification spec):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);
     
 String getOpenAPIFormat(uml::Type type):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIFormat(org.eclipse.uml2.uml.Type);

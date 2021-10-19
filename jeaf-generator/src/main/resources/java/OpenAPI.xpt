@@ -50,7 +50,7 @@ paths:
 «IF this.hasOpenAPITypes() || this.hasOpenAPIEnums()-»
 components:
   schemas:
-    «EXPAND GenerateOpenAPIType FOREACH this.getOpenAPITypes()»
+    «EXPAND GenerateOpenAPIType(this) FOREACH this.getOpenAPITypes()»
     «EXPAND GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums()»
 «ENDIF-»
 «ENDFILE-»
@@ -58,10 +58,18 @@ components:
 
 «DEFINE RegisterLocalTypes FOR OpenAPI3Specification»
 	«REM»Register local Open API types as well as referenced ones.«ENDREM»
-	«info("Loading types for Open API Specification '" +this.name + "'")»
 	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPITypes()»
 	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPIEnums()»
 	
+	«FOREACH this.clientDependency.typeSelect(OpenAPISpecReference) AS dependency»
+	  «FOREACH dependency.supplier.typeSelect(OpenAPI3Specification) AS dependentSpec»
+	    «IF dependency.location > 0»
+	    «registerSpecDependency(this, dependentSpec, dependency.location)»
+	    «ELSE»
+	    «registerSpecDependency(this, dependentSpec, dependentSpec.resourceName)»
+	    «ENDIF»
+	  «ENDFOREACH»
+	«ENDFOREACH»
 	«EXPAND RegisterLocalTypes FOREACH this.getDependentSpecs()»
 
 «ENDDEFINE»
@@ -96,14 +104,14 @@ components:
           schema:
             «IF param.type.isBasicOpenAPIType() == true-»
             	«IF param.isMultivalued() == false-»
-            type: «param.type.getOpenAPIType()»
+            type: «param.type.getOpenAPIType(this)»
             		«IF param.type.hasOpenAPIFormat()-»
             format: «param.type.getOpenAPIFormat()»
             		«ENDIF-»
             	«ELSE-»
             type: array
             items:
-              type: «param.type.getOpenAPIType()»
+              type: «param.type.getOpenAPIType(this)»
               		«IF param.type.hasOpenAPIFormat()-»
               format: «param.type.getOpenAPIFormat()»
               		«ENDIF-»
@@ -121,14 +129,14 @@ components:
           schema:
             «IF property.type.isBasicOpenAPIType() == true -»
             	«IF property.isMultivalued() == false -»
-            type: «property.type.getOpenAPIType()»
+            type: «property.type.getOpenAPIType(this)»
             		«IF property.type.hasOpenAPIFormat()-»
             format: «property.type.getOpenAPIFormat()»
             		«ENDIF-»
             	«ELSE-»
             type: array
             items:
-              type: «property.type.getOpenAPIType()»
+              type: «property.type.getOpenAPIType(this)»
               		«IF property.type.hasOpenAPIFormat()-»
               format: «property.type.getOpenAPIFormat()»
               		«ENDIF-»
@@ -149,25 +157,25 @@ components:
             schema:
               «IF param.type.isBasicOpenAPIType() == true-»
               «IF param.isMultivalued() == false-»
-              type: «param.type.getOpenAPIType()»
+              type: «param.type.getOpenAPIType(this)»
               «IF param.type.hasOpenAPIFormat()-»
               format: «param.type.getOpenAPIFormat()»
               «ENDIF-»
               «ELSE-»
               type: array
               items:
-                type: «param.type.getOpenAPIType()»
+                type: «param.type.getOpenAPIType(this)»
                 «IF param.type.hasOpenAPIFormat()-»
                 format: «param.type.getOpenAPIFormat()»
                 «ENDIF-»
               «ENDIF-»
               «ELSE-»
               «IF param.isMultivalued() == false-»
-              $ref: «param.type.getOpenAPIType()»
+              $ref: «param.type.getOpenAPIType(this)»
               «ELSE-»
               type: array
               items:
-                $ref: «param.type.getOpenAPIType()»
+                $ref: «param.type.getOpenAPIType(this)»
               minItems: «param.getLower()»
               «ENDIF-»
               «ENDIF-»
@@ -186,25 +194,25 @@ components:
               schema:
                 «IF returnParam.type.isBasicOpenAPIType() == true-»
                 «IF returnParam.isMultivalued() == false-»
-                type: «returnParam.type.getOpenAPIType()»
+                type: «returnParam.type.getOpenAPIType(this)»
                 «IF returnParam.type.hasOpenAPIFormat()-»
                 format: «returnParam.type.getOpenAPIFormat()»
                 «ENDIF-»
                 «ELSE-»
                 type: array
                 items:
-                  type: «returnParam.type.getOpenAPIType()»
+                  type: «returnParam.type.getOpenAPIType(this)»
                   «IF returnParam.type.hasOpenAPIFormat()-»
                   format: «returnParam.type.getOpenAPIFormat()»
                   «ENDIF-»
                 «ENDIF-»
                 «ELSE-»
                 «IF returnParam.isMultivalued() == false-»
-                $ref: «returnParam.type.getOpenAPIType()»
+                $ref: «returnParam.type.getOpenAPIType(this)»
                 «ELSE-»
                 type: array
                 items:
-                  $ref: «returnParam.type.getOpenAPIType()»
+                  $ref: «returnParam.type.getOpenAPIType(this)»
                 minItems: «returnParam.getLower()»
                 «ENDIF-»
                 «ENDIF-»
@@ -220,7 +228,7 @@ components:
   «ENDFOREACH-»
 «ENDDEFINE»
 
-«DEFINE GenerateOpenAPIType FOR OpenAPIType»
+«DEFINE GenerateOpenAPIType(OpenAPI3Specification spec) FOR OpenAPIType»
     # «this.fqn()»
     «this.name»:
       «IF this.hasComment()-»
@@ -231,14 +239,14 @@ components:
       discriminator:
         propertyName: objectType
         mapping:
-          «name»: «this.getOpenAPIType()»
+          «name»: «this.getOpenAPIType(spec)»
           «FOREACH this.getAllSubclasses() AS subclass-»
-          «subclass.name»: «subclass.getOpenAPIType()»
+          «subclass.name»: «subclass.getOpenAPIType(spec)»
           «ENDFOREACH-»
       «ENDIF-»
       «IF superClass.isEmpty == false -»
       allOf:
-        - $ref: «superClass.get(0).getOpenAPIType()»
+        - $ref: «superClass.get(0).getOpenAPIType(spec)»
       «ENDIF-»
       type: object
       «IF this.ownedAttribute.size > 0 || this.isTopOfClassHierarchy() -»
@@ -256,25 +264,25 @@ components:
           «ENDIF-»
           «IF attribute.type.isBasicOpenAPIType() == true-»
           «IF attribute.isMultivalued() == false-»
-          type: «attribute.type.getOpenAPIType()»
+          type: «attribute.type.getOpenAPIType(spec)»
           «IF attribute.type.hasOpenAPIFormat()-»
           format: «attribute.type.getOpenAPIFormat()»
           «ENDIF-»
           «ELSE-»
           type: array
           items:
-            type: «attribute.type.getOpenAPIType()»
+            type: «attribute.type.getOpenAPIType(spec)»
             «IF attribute.type.hasOpenAPIFormat()-»
             format: «attribute.type.getOpenAPIFormat()»
             «ENDIF-»
           «ENDIF-»
           «ELSE-»
           «IF attribute.isMultivalued() == false-»
-          $ref: «attribute.type.getOpenAPIType()»
+          $ref: «attribute.type.getOpenAPIType(spec)»
           «ELSE-»
           type: array
           items:
-            $ref: «attribute.type.getOpenAPIType()»
+            $ref: «attribute.type.getOpenAPIType(spec)»
           minItems: «attribute.getLower()»
           «ENDIF-»
           «ENDIF-»

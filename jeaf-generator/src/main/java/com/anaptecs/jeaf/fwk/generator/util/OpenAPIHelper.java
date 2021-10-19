@@ -13,6 +13,8 @@ import java.util.UUID;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Element;
 
+import com.anaptecs.jeaf.xfun.api.XFun;
+
 public class OpenAPIHelper {
   public static final Map<String, String> basicTypes = new HashMap<String, String>();
 
@@ -20,7 +22,9 @@ public class OpenAPIHelper {
 
   public static final Map<String, String> contentTypeMapping = new HashMap<String, String>();
 
-  public static final Map<String, OpenAPIType> localTypes = new HashMap<String, OpenAPIType>();
+  public static final Map<String, OpenAPIType> complexTypes = new HashMap<String, OpenAPIType>();
+
+  public static final Map<String, String> specDependencies = new HashMap<String, String>();
 
   static {
     // boolean
@@ -125,15 +129,29 @@ public class OpenAPIHelper {
     contentTypeMapping.put("TEXT_PLAIN", "text/plain");
   }
 
-  public static String getOpenAPIType( org.eclipse.uml2.uml.Type pClass ) {
+  public static String getOpenAPIType( org.eclipse.uml2.uml.Type pClass, Component pSpec ) {
     String lFQN = Naming.getFullyQualifiedName(pClass);
-
     String lTypeName;
     if (basicTypes.containsKey(lFQN) == true) {
       lTypeName = basicTypes.get(lFQN);
     }
-    else if (localTypes.containsKey(lFQN) == true) {
-      lTypeName = "'#/components/schemas/" + pClass.getName() + "'";
+    else if (complexTypes.containsKey(lFQN) == true) {
+      OpenAPIType lOpenAPIType = complexTypes.get(lFQN);
+      // Local reference needed.
+      if (lOpenAPIType.spec == pSpec) {
+        lTypeName = "'#/components/schemas/" + pClass.getName() + "'";
+      }
+      else {
+        String lKey = createSpecDependencyKey(pSpec, lOpenAPIType.spec);
+        String lLocation = specDependencies.get(lKey);
+        if (lLocation != null) {
+          lTypeName = "'" + lLocation + "#/" + pClass.getName() + "'";
+        }
+        else {
+          XFun.getTrace().error("Dependency " + lKey + " not found.");
+          lTypeName = "unknown type: " + lFQN;
+        }
+      }
     }
     else {
       lTypeName = "unknown type: " + lFQN;
@@ -146,9 +164,18 @@ public class OpenAPIHelper {
     return formatMapping.get(Naming.getFullyQualifiedName(pClass));
   }
 
+  public static void registerSpecDependency( Component pSource, Component pTarget, String pReference ) {
+    String lKey = createSpecDependencyKey(pSource, pTarget);
+    specDependencies.put(lKey, pReference);
+  }
+
+  private static String createSpecDependencyKey( Component pSource, Component pTarget ) {
+    return Naming.getFullyQualifiedName(pSource) + "::" + Naming.getFullyQualifiedName(pTarget);
+  }
+
   public static void registerLocalType( org.eclipse.uml2.uml.NamedElement pClass, Component pSpec ) {
     String lFQN = Naming.getFullyQualifiedName(pClass);
-    localTypes.put(lFQN, new OpenAPIType(pClass, pSpec, lFQN));
+    complexTypes.put(lFQN, new OpenAPIType(pClass, pSpec, lFQN));
   }
 
   public static boolean isBasicOpenAPIType( org.eclipse.uml2.uml.Type pType ) {

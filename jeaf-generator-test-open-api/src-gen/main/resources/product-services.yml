@@ -34,7 +34,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Product'
+                  $ref: 'product-base.yml#/Product'
                 minItems: 0
           
     post:
@@ -45,7 +45,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Product'
+              $ref: 'product-base.yml#/Product'
       responses:
         '200':
           description: >- 
@@ -77,7 +77,7 @@ paths:
           content:  
             application/json:
               schema:
-                $ref: '#/components/schemas/Product'
+                $ref: 'product-base.yml#/Product'
           
   /products/sortiment:
     get:
@@ -126,7 +126,7 @@ paths:
           content:  
             application/json:
               schema:
-                $ref: '#/components/schemas/Sortiment'
+                $ref: 'product-base.yml#/Sortiment'
           
   /products/ChannelCode:
     post:
@@ -148,7 +148,7 @@ paths:
           content:  
             application/json:
               schema:
-                $ref: '#/components/schemas/ChannelCode'
+                $ref: 'product-base.yml#/ChannelCode'
           
 
 
