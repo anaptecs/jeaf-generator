@@ -11,9 +11,7 @@
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE GenerateOpenAPI FOR OpenAPI3Specification»
-	«REM»Register local Open API types as well as referenced ones.«ENDREM»
-	«EXPAND RegisterLocalType FOREACH this.getOpenAPITypes()»
-	«EXPAND RegisterLocalType FOREACH this.getOpenAPIEnums()»
+    «EXPAND RegisterLocalTypes»
 
 	«FILE resourceName GenRes-»
 openapi: «openAPIVersion»
@@ -58,13 +56,21 @@ components:
 «ENDFILE-»
 «ENDDEFINE»
 
+«DEFINE RegisterLocalTypes FOR OpenAPI3Specification»
+	«REM»Register local Open API types as well as referenced ones.«ENDREM»
+	«info("Loading types for Open API Specification '" +this.name + "'")»
+	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPITypes()»
+	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPIEnums()»
+	
+	«EXPAND RegisterLocalTypes FOREACH this.getDependentSpecs()»
 
-«DEFINE RegisterLocalType FOR OpenAPIType»
-«this.registerLocalType()»
+«ENDDEFINE»
+«DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPIType»
+«this.registerLocalType(spec)»
 «ENDDEFINE»
 
-«DEFINE RegisterLocalType FOR OpenAPIEnumeration»
-«this.registerLocalType()»
+«DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPIEnumeration»
+«this.registerLocalType(spec)»
 «ENDDEFINE»
 
 «DEFINE GeneratePaths FOR OpenAPI3Specification -»

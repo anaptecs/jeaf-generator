@@ -7,6 +7,9 @@ boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 List[JMM::OpenAPIType] getOpenAPITypes(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIType);
 	
+List[JMM::OpenAPI3Specification] getDependentSpecs(JMM::OpenAPI3Specification spec):
+	spec.clientDependency.supplier.typeSelect(JMM::OpenAPI3Specification);
+	
 boolean hasOpenAPIEnums(JMM::OpenAPI3Specification spec):
 	getOpenAPIEnums(spec).size > 0;
 	
@@ -43,8 +46,8 @@ boolean hasOpenAPIFormat(uml::Type type):
 boolean isBasicOpenAPIType(uml::Type type):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.isBasicOpenAPIType(org.eclipse.uml2.uml.Type);
     
-boolean registerLocalType(uml::NamedElement localClass):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.registerLocalType(org.eclipse.uml2.uml.NamedElement);
+Void registerLocalType(uml::NamedElement localClass, JMM::OpenAPI3Specification spec):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.registerLocalType(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.Component);
     
 List[uml::Class] getAllSubclasses(uml::Class class) :
    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getAllSubclasses(org.eclipse.uml2.uml.Class);

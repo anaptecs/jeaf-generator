@@ -6,12 +6,11 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.Currency;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
+import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Element;
 
 public class OpenAPIHelper {
@@ -21,7 +20,7 @@ public class OpenAPIHelper {
 
   public static final Map<String, String> contentTypeMapping = new HashMap<String, String>();
 
-  public static final Set<String> localTypes = new HashSet<String>();
+  public static final Map<String, OpenAPIType> localTypes = new HashMap<String, OpenAPIType>();
 
   static {
     // boolean
@@ -133,7 +132,7 @@ public class OpenAPIHelper {
     if (basicTypes.containsKey(lFQN) == true) {
       lTypeName = basicTypes.get(lFQN);
     }
-    else if (localTypes.contains(lFQN) == true) {
+    else if (localTypes.containsKey(lFQN) == true) {
       lTypeName = "'#/components/schemas/" + pClass.getName() + "'";
     }
     else {
@@ -147,9 +146,9 @@ public class OpenAPIHelper {
     return formatMapping.get(Naming.getFullyQualifiedName(pClass));
   }
 
-  public static boolean registerLocalType( org.eclipse.uml2.uml.NamedElement pClass ) {
+  public static void registerLocalType( org.eclipse.uml2.uml.NamedElement pClass, Component pSpec ) {
     String lFQN = Naming.getFullyQualifiedName(pClass);
-    return localTypes.add(lFQN);
+    localTypes.put(lFQN, new OpenAPIType(pClass, pSpec, lFQN));
   }
 
   public static boolean isBasicOpenAPIType( org.eclipse.uml2.uml.Type pType ) {
