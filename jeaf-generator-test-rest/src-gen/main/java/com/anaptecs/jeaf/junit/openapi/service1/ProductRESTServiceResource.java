@@ -18,6 +18,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.anaptecs.jeaf.core.api.JEAF;
+import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
@@ -69,6 +70,19 @@ public class ProductRESTServiceResource {
   public Response getSortiment( @BeanParam Context pContext ) {
     ProductRESTService lService = JEAF.getService(ProductRESTService.class);
     Sortiment lResult = lService.getSortiment(pContext);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductRESTService#createChannelCode()}
+   */
+  @Path("ChannelCode")
+  @POST
+  @Consumes(MediaType.APPLICATION_XML)
+  @Produces(MediaType.APPLICATION_XML)
+  public Response createChannelCode( String pChannelCode ) {
+    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    ChannelCode lResult = lService.createChannelCode(pChannelCode);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 }

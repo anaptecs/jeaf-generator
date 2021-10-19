@@ -64,6 +64,13 @@ public abstract class ProductRESTServiceTestBase extends JEAFTestCase {
   public abstract void testCreateProduct( ) throws Exception;
 
   /**
+   * Method test the implementation of service method createChannelCode(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testCreateChannelCode( ) throws Exception;
+
+  /**
    * Method test the implementation of service method getProducts(...)
    * 
    * @throws Exception if the test fails.

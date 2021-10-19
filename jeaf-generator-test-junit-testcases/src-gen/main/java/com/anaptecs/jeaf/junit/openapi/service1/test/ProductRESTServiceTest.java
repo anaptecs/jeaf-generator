@@ -23,6 +23,7 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
     lSuite.addTest(new ProductRESTServiceTest("testGetProduct"));
     lSuite.addTest(new ProductRESTServiceTest("testGetSortiment"));
     lSuite.addTest(new ProductRESTServiceTest("testCreateProduct"));
+    lSuite.addTest(new ProductRESTServiceTest("testCreateChannelCode"));
     lSuite.addTest(new ProductRESTServiceTest("testGetProducts"));
     // Return created test suite.
     return lSuite;
@@ -89,6 +90,16 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
   @Override
   public void testCreateProduct( ) throws Exception {
     // TODO Implement test for service method createProduct(...)
+  }
+
+  /**
+   * Method test the implementation of service method createChannelCode
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testCreateChannelCode( ) throws Exception {
+    // TODO Implement test for service method createChannelCode(...)
   }
 
   /**

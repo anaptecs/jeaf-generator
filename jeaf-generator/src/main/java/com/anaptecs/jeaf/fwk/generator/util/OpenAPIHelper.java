@@ -14,8 +14,6 @@ import java.util.UUID;
 
 import org.eclipse.uml2.uml.Element;
 
-import com.anaptecs.jeaf.xfun.api.XFun;
-
 public class OpenAPIHelper {
   public static final Map<String, String> basicTypes = new HashMap<String, String>();
 
@@ -151,7 +149,6 @@ public class OpenAPIHelper {
 
   public static boolean registerLocalType( org.eclipse.uml2.uml.NamedElement pClass ) {
     String lFQN = Naming.getFullyQualifiedName(pClass);
-    XFun.getTrace().info("Registed local Open API Type: " + lFQN);
     return localTypes.add(lFQN);
   }
 

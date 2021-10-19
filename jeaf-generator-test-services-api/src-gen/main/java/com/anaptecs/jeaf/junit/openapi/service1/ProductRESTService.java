@@ -7,9 +7,11 @@ package com.anaptecs.jeaf.junit.openapi.service1;
 
 import java.util.List;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 import com.anaptecs.jeaf.core.api.Service;
+import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
@@ -47,4 +49,11 @@ public interface ProductRESTService extends Service {
    * @return {@link Sortiment}
    */
   Sortiment getSortiment( Context pContext );
+
+  /**
+   * 
+   * @param pChannelCode
+   * @return {@link ChannelCode}
+   */
+  ChannelCode createChannelCode( @NotBlank() String pChannelCode );
 }
