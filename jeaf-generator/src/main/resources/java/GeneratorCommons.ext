@@ -153,3 +153,6 @@ String getObjectIDClassName(JMM::POJO pojo): 'com.anaptecs.jeaf.core.api.ObjectI
 String getObjectIDClassName(JMM::DomainObject domainObject): 'com.anaptecs.jeaf.core.api.DomainObjectID';
 
 uml::Class getOwningClass(uml::Operation operation): (uml::Class) operation.owner;
+
+boolean isDeprecated(uml::NamedElement element) :
+  isStereotypeApplied(element, "Deprecated");

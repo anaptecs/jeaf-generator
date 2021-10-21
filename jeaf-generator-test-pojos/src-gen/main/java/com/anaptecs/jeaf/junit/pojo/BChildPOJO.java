@@ -13,6 +13,7 @@ import com.anaptecs.jeaf.xfun.api.XFun;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@Deprecated
 public class BChildPOJO extends BParentPOJO {
   /**
    * Constant for the name of attribute "weirdAttribute".

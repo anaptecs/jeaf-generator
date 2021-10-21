@@ -17,6 +17,7 @@
 	 *
 	 * «this.getComment()»
 	 */
+	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public interface «name» extends Activity {
 		/**
 		 * «this.getComment()»
@@ -41,6 +42,7 @@
 	 * «this.getComment()»	 
 	 */
 	@JEAFActivityImpl(activityInterface = «name».class)
+	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public class «name»Impl implements  «name» {
 		/**
 		 * Create new instance of activity. 
