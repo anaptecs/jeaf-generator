@@ -116,6 +116,11 @@ components:
               format: «param.type.getOpenAPIFormat()»
               		«ENDIF-»
             	«ENDIF-»
+                «IF param.hasExample()-»
+                  «IF ((OpenAPIExample) param).exampleValue.length > 0-»
+            example: '«((OpenAPIExample) param).exampleValue»'
+                  «ENDIF-»
+                «ENDIF-»
             «ENDIF-»
         «ENDFOREACH-»
         «FOREACH operation.getBeanParams() AS param-»
@@ -141,6 +146,11 @@ components:
               format: «property.type.getOpenAPIFormat()»
               		«ENDIF-»
             	«ENDIF-»
+                «IF property.hasExample()-»
+                  «IF ((OpenAPIExample) property).exampleValue.length > 0-»
+            example: '«((OpenAPIExample) property).exampleValue»'
+                  «ENDIF-»
+                «ENDIF-»
             «ENDIF-»
         «ENDFOREACH-»
         «ENDFOREACH-»
@@ -170,8 +180,8 @@ components:
                   «ENDIF-»
                 «ENDIF-»
                 «IF param.hasExample()-»
-                  «IF ((OpenAPIExample) param).value.length > 0-»
-              example: '«((OpenAPIExample) param).value»'
+                  «IF ((OpenAPIExample) param).exampleValue.length > 0-»
+              example: '«((OpenAPIExample) param).exampleValue»'
                   «ENDIF-»
                 «ENDIF-»
               «ELSE-»
@@ -212,8 +222,8 @@ components:
                     «ENDIF-»
                   «ENDIF-»
                   «IF returnParam.hasExample()-»
-                    «IF ((OpenAPIExample) returnParam).value.length > 0-»
-                example: '«((OpenAPIExample) returnParam).value»'
+                    «IF ((OpenAPIExample) returnParam).exampleValue.length > 0-»
+                example: '«((OpenAPIExample) returnParam).exampleValue»'
                     «ENDIF-»
                 «ENDIF-»
                 «ELSE-»
@@ -287,8 +297,8 @@ components:
               «ENDIF-»
             «ENDIF-»
             «IF attribute.hasExample()-»
-              «IF ((OpenAPIExample) attribute).value.length > 0-»
-          example: '«((OpenAPIExample) attribute).value»'
+              «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
+          example: '«((OpenAPIExample) attribute).exampleValue»'
               «ENDIF-»
             «ENDIF-»
           «ELSE-»
