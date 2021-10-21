@@ -1,10 +1,10 @@
 openapi: 3.0.0
 
 servers:
-  - description: Accounting TEST
-    url: http://localhost:8080/test
   - description: Accounting PROD
     url: https://accounting.jeaf.de
+  - description: Accounting TEST
+    url: http://localhost:8080/test
 
 info:
   title: Product Base Definitions
@@ -73,6 +73,7 @@ components:
       properties:
         code: 
           type: string
+          example: 'MOBILE_APP'
     # com.anaptecs.jeaf.junit.openapi.base.Channel
     Channel:
       type: object
@@ -113,6 +114,7 @@ components:
             format: int32
         link: 
           type: string
+          example: 'https://www.company.com/products/1345-345'
         productID: 
           type: string
       required:
@@ -134,6 +136,7 @@ components:
         localTime: 
           type: string
           format: time
+          example: '12:07'
         localDate: 
           type: string
           format: date
@@ -409,6 +412,7 @@ components:
         childBBAttribute: 
           type: integer
           format: int64
+
     
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
     TimeUnit:
@@ -438,3 +442,4 @@ components:
         - MOBILE
         - TVM
         - WEB
+

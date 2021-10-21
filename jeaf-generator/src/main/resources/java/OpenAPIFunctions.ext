@@ -120,4 +120,8 @@ boolean hasReturnTypeVoid(uml::Operation operation):
   
 uml::Parameter getReturnParameter(uml::Operation operation):
   operation.getReturnResult();
+  
+boolean hasExample(uml::NamedElement element):
+  element.isStereotypeApplied("OpenAPIExample");
+  
 

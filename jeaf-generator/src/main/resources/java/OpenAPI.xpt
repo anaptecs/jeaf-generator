@@ -228,7 +228,7 @@ components:
   «ENDFOREACH-»
 «ENDDEFINE»
 
-«DEFINE GenerateOpenAPIType(OpenAPI3Specification spec) FOR OpenAPIType»
+«DEFINE GenerateOpenAPIType(OpenAPI3Specification spec) FOR OpenAPIType -»
     # «this.fqn()»
     «this.name»:
       «IF this.hasComment()-»
@@ -263,28 +263,33 @@ components:
             «attribute.getCommentForOpenAPIDescription("            ")»
           «ENDIF-»
           «IF attribute.type.isBasicOpenAPIType() == true-»
-          «IF attribute.isMultivalued() == false-»
+            «IF attribute.isMultivalued() == false-»
           type: «attribute.type.getOpenAPIType(spec)»
-          «IF attribute.type.hasOpenAPIFormat()-»
+              «IF attribute.type.hasOpenAPIFormat()-»
           format: «attribute.type.getOpenAPIFormat()»
-          «ENDIF-»
-          «ELSE-»
+              «ENDIF-»
+            «ELSE-»
           type: array
           items:
             type: «attribute.type.getOpenAPIType(spec)»
-            «IF attribute.type.hasOpenAPIFormat()-»
+              «IF attribute.type.hasOpenAPIFormat()-»
             format: «attribute.type.getOpenAPIFormat()»
+              «ENDIF-»
             «ENDIF-»
-          «ENDIF-»
+            «IF attribute.hasExample()-»
+              «IF ((OpenAPIExample) attribute).value.length > 0-»
+          example: '«((OpenAPIExample) attribute).value»'
+              «ENDIF-»
+            «ENDIF-»
           «ELSE-»
-          «IF attribute.isMultivalued() == false-»
+            «IF attribute.isMultivalued() == false-»
           $ref: «attribute.type.getOpenAPIType(spec)»
-          «ELSE-»
+            «ELSE-»
           type: array
           items:
             $ref: «attribute.type.getOpenAPIType(spec)»
           minItems: «attribute.getLower()»
-          «ENDIF-»
+            «ENDIF-»
           «ENDIF-»
         «ENDFOREACH-»
       «IF this.isTopOfClassHierarchy() || this.hasRequiredProperties() -»
