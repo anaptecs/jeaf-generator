@@ -30,7 +30,6 @@ paths:
 
 components:
   schemas:
-    
     # com.anaptecs.jeaf.junit.openapi.base.Duration
     Duration:
       description: >-
@@ -48,7 +47,6 @@ components:
       required:
         - objectType
         - value
-
     # com.anaptecs.jeaf.junit.openapi.base.MoneyAmount
     MoneyAmount:
       description: >-
@@ -69,14 +67,12 @@ components:
         - objectType
         - amount
         - currency
-
     # com.anaptecs.jeaf.junit.openapi.base.ChannelCode
     ChannelCode:
       type: object
       properties:
         code: 
           type: string
-
     # com.anaptecs.jeaf.junit.openapi.base.Channel
     Channel:
       type: object
@@ -85,7 +81,6 @@ components:
           $ref: '#/components/schemas/ChannelType'
         channelCode: 
           $ref: '#/components/schemas/ChannelCode'
-
     # com.anaptecs.jeaf.junit.openapi.base.Reseller
     Reseller:
       type: object
@@ -102,7 +97,6 @@ components:
           minItems: 1
         language: 
           type: string
-
     # com.anaptecs.jeaf.junit.openapi.base.Product
     Product:
       type: object
@@ -124,7 +118,6 @@ components:
       required:
         - objectType
         - image
-
     # com.anaptecs.jeaf.junit.openapi.base.Sortiment
     Sortiment:
       type: object
@@ -134,7 +127,6 @@ components:
           items:
             $ref: '#/components/schemas/Product'
           minItems: 0
-
     # com.anaptecs.jeaf.junit.openapi.base.DateObject
     DateObject:
       type: object
@@ -157,7 +149,6 @@ components:
         utilDate: 
           type: string
           format: date-time
-
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObject
     PrimitiveObject:
       type: object
@@ -232,7 +223,6 @@ components:
         - aCharacter
         - aFloat
         - aDouble
-
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveArraysObject
     PrimitiveArraysObject:
       type: object
@@ -351,7 +341,6 @@ components:
         - aCharacterArray
         - aFloatArray
         - aDoubleArray
-
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
     ParentClass:
       discriminator:
@@ -371,7 +360,6 @@ components:
           type: string
       required:
         - objectType
-
     # com.anaptecs.jeaf.junit.openapi.base.ChildA
     ChildA:
       allOf:
@@ -384,7 +372,6 @@ components:
       required:
         - objectType
         - childAAttribute
-
     # com.anaptecs.jeaf.junit.openapi.base.ChildB
     ChildB:
       allOf:
@@ -401,7 +388,6 @@ components:
       required:
         - objectType
         - childBAttribute
-
     # com.anaptecs.jeaf.junit.openapi.base.ChildAA
     ChildAA:
       allOf:
@@ -414,7 +400,6 @@ components:
       required:
         - objectType
         - childAAAttribute
-
     # com.anaptecs.jeaf.junit.openapi.base.ChildBB
     ChildBB:
       allOf:
@@ -424,7 +409,6 @@ components:
         childBBAttribute: 
           type: integer
           format: int64
-
     
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
     TimeUnit:
@@ -454,4 +438,3 @@ components:
         - MOBILE
         - TVM
         - WEB
-
