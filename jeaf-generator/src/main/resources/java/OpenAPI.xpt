@@ -156,28 +156,33 @@ components:
           «mediaType.toOpenAPIContentType()»:
             schema:
               «IF param.type.isBasicOpenAPIType() == true-»
-              «IF param.isMultivalued() == false-»
+                «IF param.isMultivalued() == false-»
               type: «param.type.getOpenAPIType(this)»
-              «IF param.type.hasOpenAPIFormat()-»
+                  «IF param.type.hasOpenAPIFormat()-»
               format: «param.type.getOpenAPIFormat()»
-              «ENDIF-»
-              «ELSE-»
+                  «ENDIF-»
+                «ELSE-»
               type: array
               items:
                 type: «param.type.getOpenAPIType(this)»
-                «IF param.type.hasOpenAPIFormat()-»
+                  «IF param.type.hasOpenAPIFormat()-»
                 format: «param.type.getOpenAPIFormat()»
+                  «ENDIF-»
                 «ENDIF-»
-              «ENDIF-»
+                «IF param.hasExample()-»
+                  «IF ((OpenAPIExample) param).value.length > 0-»
+              example: '«((OpenAPIExample) param).value»'
+                  «ENDIF-»
+                «ENDIF-»
               «ELSE-»
-              «IF param.isMultivalued() == false-»
+                «IF param.isMultivalued() == false-»
               $ref: «param.type.getOpenAPIType(this)»
-              «ELSE-»
+                «ELSE-»
               type: array
               items:
                 $ref: «param.type.getOpenAPIType(this)»
               minItems: «param.getLower()»
-              «ENDIF-»
+                «ENDIF-»
               «ENDIF-»
           «ENDFOREACH-»
       «ENDFOREACH-»
@@ -193,28 +198,33 @@ components:
             «contentType.toOpenAPIContentType()»:
               schema:
                 «IF returnParam.type.isBasicOpenAPIType() == true-»
-                «IF returnParam.isMultivalued() == false-»
+                  «IF returnParam.isMultivalued() == false-»
                 type: «returnParam.type.getOpenAPIType(this)»
-                «IF returnParam.type.hasOpenAPIFormat()-»
+                    «IF returnParam.type.hasOpenAPIFormat()-»
                 format: «returnParam.type.getOpenAPIFormat()»
-                «ENDIF-»
-                «ELSE-»
+                    «ENDIF-»
+                  «ELSE-»
                 type: array
                 items:
                   type: «returnParam.type.getOpenAPIType(this)»
-                  «IF returnParam.type.hasOpenAPIFormat()-»
+                    «IF returnParam.type.hasOpenAPIFormat()-»
                   format: «returnParam.type.getOpenAPIFormat()»
+                    «ENDIF-»
                   «ENDIF-»
+                  «IF returnParam.hasExample()-»
+                    «IF ((OpenAPIExample) returnParam).value.length > 0-»
+                example: '«((OpenAPIExample) returnParam).value»'
+                    «ENDIF-»
                 «ENDIF-»
                 «ELSE-»
-                «IF returnParam.isMultivalued() == false-»
+                  «IF returnParam.isMultivalued() == false-»
                 $ref: «returnParam.type.getOpenAPIType(this)»
-                «ELSE-»
+                  «ELSE-»
                 type: array
                 items:
                   $ref: «returnParam.type.getOpenAPIType(this)»
                 minItems: «returnParam.getLower()»
-                «ENDIF-»
+                  «ENDIF-»
                 «ENDIF-»
             «ENDFOREACH-»
           «ENDLET-»

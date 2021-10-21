@@ -54,6 +54,7 @@ paths:
             application/json:
               schema:
                 type: boolean
+                example: 'true'
           
     head:
       responses:
@@ -138,9 +139,11 @@ paths:
           application/json:
             schema:
               type: string
+              example: 'MOBILE_APP'
           application/xml:
             schema:
               type: string
+              example: 'MOBILE_APP'
       responses:
         '200':
           description: >- 
