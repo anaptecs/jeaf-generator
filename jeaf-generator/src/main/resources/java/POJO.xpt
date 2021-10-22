@@ -28,6 +28,7 @@
 						/**
 						 * Constant for the name of attribute "«attr.name»".
 						 */
+						«EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr-»
 						public static final String «attr.asInstanceVar().toUpperCase()» = "«attr.asInstanceVar()»";
 						«ENDIF»
 					«ENDFOREACH»

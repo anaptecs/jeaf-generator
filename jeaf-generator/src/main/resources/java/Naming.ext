@@ -265,12 +265,6 @@ uml::Class getOppositeEndType(uml::Property role) :
 cached String getCascadeTypeNames(Collection cascadeTypes) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getEnumerationLiteralsAsString(java.util.Collection);
     
-cached String getTransactionBehavior(JMM::TransactionBehavior transactionBehavior) :    
-    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getEnumerationLiteralName(org.eclipse.uml2.uml.EnumerationLiteral);
-    
-cached String getLayer(JMM::Layer layer) :    
-    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getEnumerationLiteralName(org.eclipse.uml2.uml.EnumerationLiteral);
-    
 boolean isRealInitValue(uml::Property property) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isRealInitValue(org.eclipse.uml2.uml.Property);
         

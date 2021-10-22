@@ -19,6 +19,7 @@
 //interfaceImpl methods are returned
 «DEFINE PersistentObjectOperationImpl FOR Operation»
     «this.getJavadoc()» 
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     @Override
 	«visibility» «getReturnTypeName()» «name» («EXPAND ParameterSignature»)«getThrownExceptionsAsString()» {
 	    // TODO: Implement business logic for method.
@@ -44,6 +45,7 @@
 //abstract methods are returned
 «DEFINE PersistentObjectOperation FOR Operation»
     «this.getJavadoc()» 
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
 	«visibility» abstract «getReturnTypeName()»  «name» («EXPAND ParameterSignature»)«getThrownExceptionsAsString()»;
 «ENDDEFINE»

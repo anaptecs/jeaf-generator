@@ -13,6 +13,6 @@ import com.anaptecs.jeaf.spi.persistence.annotations.PersistenceUnit;
     name = "JUnitPersistenceUnit",
     mappingFilesDefinition = { Mappings.class },
     showSQL = "{jeaf.persistence.showSQL}",
-    formatSQL = "{jeaf.persistence.formatSQL}")
+    formatSQL = "false")
 public interface JUnitPersistenceUnit {
 }

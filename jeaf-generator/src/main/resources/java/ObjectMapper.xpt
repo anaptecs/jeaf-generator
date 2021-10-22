@@ -1,6 +1,7 @@
 «EXTENSION java::Naming»
 «EXTENSION java::ObjectMapper»
 «EXTENSION java::GeneratorCommons»
+«EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE GenerateObjectMappers FOR uml::Class»
 	«IF generateObjectMappers() == true && this.hasObjectMapping()»	

@@ -36,6 +36,7 @@
 	/**
 	 * «this.getComment()»
 	 */
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND RESTParamAnnotation»
 	«EXPAND Validation::ValidationAnnotation»
 	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly»final «ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «this.initValue()»«ENDIF»;
@@ -46,6 +47,7 @@
 	/**
  	 * «this.getComment()»
 	 */
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«IF isNavigable()»
 		«EXPAND Validation::ValidationAnnotation»
 		«IF isMultivalued()»
@@ -75,6 +77,7 @@
 	 * 
 	 * @return «type.name» Value to which the attribute "«asInstanceVar()»" is set.
 	 */
+	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «this.fqn()»«IF isMultivalued()»[]«ENDIF» «asGetter()»() {
 	    «IF this.isMultivalued() == false»return «asInstanceVar()»;«ELSE»«this.fqn()»[] lReturnValue;
 	    if(«asInstanceVar()» != null) {
@@ -96,6 +99,7 @@
 	 * 
 	 * @param «asParameter()» Value to which the attribute "«asInstanceVar()»" should be set.
 	 */
+	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public void «asSetter()»(«this.fqn()»«IF isMultivalued()»[]«ENDIF» «asParameter()») {
 		// Assign value to attribute
 		«IF this.isMultivalued() == false»
@@ -119,6 +123,7 @@
      *
      * @return «type.name» «this.type.name» to which the association "«asInstanceVar()»" is set.
      */
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «type.fqn()» «asGetter()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»
     «asInstanceVar()» = this.unproxy(«asInstanceVar()»);«ENDIF»
@@ -132,6 +137,7 @@
      * 
      * @param «asParameter()» «this.type.name» to which the association "«asInstanceVar()»" should be set.
      */
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public void «asSetter()» («type.fqn()» «asParameter()») {
 		«IF generateNullChecksForToOneAssociationsOfServiceObjects()»
 		// «asParameter()» must not be null. To unset an association the unset method has to be called.
@@ -157,6 +163,7 @@
      * Method unsets the association "«asInstanceVar()»".     
      * «this.getComment()»
      */
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public final void «asUnset()» () {
         «EXPAND GenerateRemoveOpposite»
         «IF opposite == null || opposite.isNavigable() == false»
@@ -175,6 +182,7 @@
      * @return Collection All «this.type.name» objects that belong to the association "«asInstanceVar()»". 
      * The method never returns null and the returned collection is unmodifiable.
      */
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «this.fqn()» «asGetter()» () {
 	    // Return all «this.type.name» objects as unmodifiable collection.
 		return java.util.Collections.unmodifiable«this.getCollectionType()»(«asInstanceVar()»);
@@ -187,6 +195,7 @@
      * 
      * @param «asParameter()» Collection with objects to which the association should be set. The parameter must not be null.
      */
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «IF generatePublicSettersForAssociations()»public«ENDIF» void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
         // Check of parameter is not required.
         
@@ -205,6 +214,7 @@
      * 
      * @param «asParameter()» Object that should be added to the association "«asInstanceVar()»". The parameter must not be null.
      */
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public void addTo«name.toFirstUpper()» («this.type.fqn()» «asParameter()») {
         // Check parameter "«asParameter()»" for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
@@ -229,6 +239,7 @@
      * 
      * @param «asParameter()» Collection with all objects that should be added to the association "«asInstanceVar()»". The parameter must not be null.
      */
+  «EXPAND java::Helper::GenerateDeprecationAnnotation-»
   public void addTo«name.toFirstUpper()» (java.util.Collection<«this.type.fqn()»> «asParameter()») {
         // Check parameter "«asParameter()»" for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
@@ -246,6 +257,7 @@
      * 
      * @param «asParameter()» Object that should be removed from the association "«asInstanceVar()»". The parameter must not be null.
      */
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public void removeFrom«name.toFirstUpper()» («type.fqn()» «asParameter()») {
         // Check parameter for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
@@ -260,6 +272,7 @@
      * Method removes all objects from the association "«asInstanceVar()»".
      * «this.getComment()»
      */
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void clear«name.toFirstUpper()» () {
       // Remove all objects from association "«asInstanceVar()»".
       java.util.Collection<«type.fqn()»> «asLocalVar()» = new java.util.HashSet<«type.fqn()»>(«asInstanceVar()»);

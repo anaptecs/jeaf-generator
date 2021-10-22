@@ -9,10 +9,10 @@
     
     <!-- Execute checks -->    
     <component class="org.openarchitectureware.check.CheckComponent">
+        <metaModel id="UmlMM" class="oaw.uml2.UML2MetaModel"/>
         <metaModel id="${profile.name}" class="oaw.uml2.profile.ProfileMetaModel">
             <profile value="${profile.file}"/>
         </metaModel>
-        <metaModel id="UmlMM" class="oaw.uml2.UML2MetaModel"/>
         
         <checkFile value="jeaf::JEAFChecks"/>
         <checkFile value="entity::EntityChecks"/>
@@ -24,8 +24,8 @@
     
     <!-- Run Generator -->
     <component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
-		<metaModel idRef="${profile.name}"/>
 		<metaModel idRef="UmlMM"/>
+		<metaModel idRef="${profile.name}"/>
 
 		<fileEncoding value="ISO-8859-1"/>
 		<!-- Fuer jedes 'model' im slot model rufe Define 'Root' im template 'Root' auf -->

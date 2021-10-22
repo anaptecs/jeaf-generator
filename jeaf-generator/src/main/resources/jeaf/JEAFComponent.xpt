@@ -207,8 +207,8 @@
         «ENDIF»
         
         // Define transactional behavior and communication protocol.
-        transactionBehavior = TransactionBehavior.«this.transactionBehavior.getTransactionBehavior()»;
-        layer = Layer.«this.layer.getLayer()»;
+        transactionBehavior = TransactionBehavior.«this.transactionBehavior.name»;
+        layer = Layer.«this.layer.name»;
         communicationProtocol = CommunicationProtocol.LOCAL_EJB;
         
         // Define security mechanism.

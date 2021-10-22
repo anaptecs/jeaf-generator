@@ -23,6 +23,7 @@ public class ParentPOJO {
   /**
    * Constant for the name of attribute "weirdAttribute".
    */
+  @Deprecated
   public static final String WEIRDATTRIBUTE = "weirdAttribute";
 
   /**
@@ -38,6 +39,7 @@ public class ParentPOJO {
   /**
    * 
    */
+  @Deprecated
   private byte weirdAttribute;
 
   /**
@@ -201,6 +203,7 @@ public class ParentPOJO {
    * 
    * @return byte Value to which the attribute "weirdAttribute" is set.
    */
+  @Deprecated
   public byte getWeirdAttribute( ) {
     return weirdAttribute;
   }
@@ -211,6 +214,7 @@ public class ParentPOJO {
    * 
    * @param pWeirdAttribute Value to which the attribute "weirdAttribute" should be set.
    */
+  @Deprecated
   public void setWeirdAttribute( byte pWeirdAttribute ) {
     // Assign value to attribute
     weirdAttribute = pWeirdAttribute;
