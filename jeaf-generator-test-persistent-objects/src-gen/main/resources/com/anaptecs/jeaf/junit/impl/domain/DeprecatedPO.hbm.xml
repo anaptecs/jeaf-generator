@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping for class com.anaptecs.jeaf.junit.impl.domain.DeprecatedPO -->
+<hibernate-mapping package="com.anaptecs.jeaf.junit.impl.domain">
+    <class name="DeprecatedPO" table="DEPRECATEDPO" discriminator-value="1017">
+        <id column="OID" name="objectID" length="15" />
+        <discriminator column="CLASS_ID" type="integer" />
+        <version column="VERSION" name="versionLabel" />
+
+        <!-- Attribute mapping for attribute "int deprecated" -->
+        <property name="deprecated" access="field" unique="false" not-null="false">
+            <column name="DEPRECATED" unique="false" not-null="false" />
+        </property>
+
+        <!-- Association mapping for role "publicClass (0..1)" -->
+        <!-- Association DeprecatedPO - PublicClassBO -->
+        <many-to-one name="publicClass" class="com.anaptecs.jeaf.junit.impl.domain.PublicClassBO" column="PUBLICCLASS_OID" access="field" cascade="none" />
+
+        <!-- Association mapping for role "baseClasses (0..*)" -->
+        <!-- Association DeprecatedPO - BaseClassBO -->
+        <set name="baseClasses" access="field" inverse="true" cascade="none">
+            <key column="DEPRECATEDPO_OID" />
+            <one-to-many class="com.anaptecs.jeaf.junit.impl.domain.BaseClassBO" />
+        </set>
+    </class>
+</hibernate-mapping>

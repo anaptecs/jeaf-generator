@@ -41,6 +41,11 @@ public abstract class BaseClassBOBase extends PersistentObject {
   public static final String NUMBER_ATTRIBUTE = "number";
 
   /**
+   * Constant for the name of role "deprecatedPO".
+   */
+  public static final String DEPRECATEDPO_ROLE = "deprecatedPO";
+
+  /**
    * 
    */
   private String name;
@@ -49,6 +54,11 @@ public abstract class BaseClassBOBase extends PersistentObject {
    * 
    */
   private Integer number;
+
+  /**
+   * 
+   */
+  private DeprecatedPO deprecatedPO;
 
   /**
    * Initialize object. The constructor of the class has visibility protected in order to avoid creating business
@@ -107,6 +117,50 @@ public abstract class BaseClassBOBase extends PersistentObject {
   public void setNumber( Integer pNumber ) {
     // Assign value to attribute
     number = pNumber;
+  }
+
+  /**
+   * Method returns the association "deprecatedPO".
+   * 
+   *
+   * @return DeprecatedPO DeprecatedPO to which the association "deprecatedPO" is set.
+   */
+  public DeprecatedPO getDeprecatedPO( ) {
+    deprecatedPO = this.unproxy(deprecatedPO);
+    return deprecatedPO;
+  }
+
+  /**
+   * Method sets the association "deprecatedPO".
+   * 
+   * 
+   * @param pDeprecatedPO DeprecatedPO to which the association "deprecatedPO" should be set.
+   */
+  public void setDeprecatedPO( DeprecatedPO pDeprecatedPO ) {
+    // Release already referenced object before setting a new association.
+    if (deprecatedPO != null) {
+      deprecatedPO.removeFromBaseClasses((BaseClassBO) this);
+    }
+    deprecatedPO = pDeprecatedPO;
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (pDeprecatedPO != null && pDeprecatedPO.getBaseClasses().contains(this) == false) {
+      pDeprecatedPO.addToBaseClasses((BaseClassBO) this);
+    }
+  }
+
+  /**
+   * Method unsets the association "deprecatedPO".
+   * 
+   */
+  public final void unsetDeprecatedPO( ) {
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    DeprecatedPO lDeprecatedPO = deprecatedPO;
+    deprecatedPO = null;
+    if (lDeprecatedPO != null && lDeprecatedPO.getBaseClasses().contains(this) == true) {
+      lDeprecatedPO.removeFromBaseClasses((BaseClassBO) this);
+    }
   }
 
   /**

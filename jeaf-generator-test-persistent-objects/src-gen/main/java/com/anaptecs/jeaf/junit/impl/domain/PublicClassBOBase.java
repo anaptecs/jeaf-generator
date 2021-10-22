@@ -12,6 +12,7 @@ import com.anaptecs.jeaf.xfun.types.Period;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@Deprecated
 public abstract class PublicClassBOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.

@@ -19,6 +19,10 @@
             <column name="NUMBER" unique="false" not-null="false" />
         </property>
 
+        <!-- Association mapping for role "deprecatedPO (0..1)" -->
+        <!-- Association BaseClassBO - DeprecatedPO -->
+        <many-to-one name="deprecatedPO" class="com.anaptecs.jeaf.junit.impl.domain.DeprecatedPO" column="DEPRECATEDPO_OID" access="field" cascade="none" />
+
         <!-- Subclass mapping for class "com.anaptecs.jeaf.junit.impl.domain.ChildBO" -->
         <subclass discriminator-value="1001" name="com.anaptecs.jeaf.junit.impl.domain.ChildBO">
 
