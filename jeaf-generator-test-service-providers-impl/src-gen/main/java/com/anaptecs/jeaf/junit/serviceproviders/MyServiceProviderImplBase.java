@@ -57,6 +57,7 @@ abstract class MyServiceProviderImplBase implements ServiceProviderImplementatio
    * @return {@link Boolean} Value of the property "deprecated". The method returns null if no value for the property is
    * defined.
    */
+  @Deprecated
   public boolean getDeprecated( ) {
     return configuration.getConfigurationValue("deprecated", Boolean.class);
   }

@@ -20,5 +20,6 @@ public interface MyServiceProvider extends ServiceProvider {
   /**
   * 
   */
+  @Deprecated
   void doSomethingDeprecated( );
 }

@@ -65,6 +65,7 @@ final class MyServiceProviderImpl extends MyServiceProviderImplBase {
   /**
   * 
   */
+  @Deprecated
   @Override
   public void doSomethingDeprecated( ) {
   }

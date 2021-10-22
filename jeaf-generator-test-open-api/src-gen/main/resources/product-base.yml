@@ -1,10 +1,10 @@
 openapi: 3.0.0
 
 servers:
-  - description: Accounting PROD
-    url: https://accounting.jeaf.de
   - description: Accounting TEST
     url: http://localhost:8080/test
+  - description: Accounting PROD
+    url: https://accounting.jeaf.de
 
 info:
   title: Product Base Definitions

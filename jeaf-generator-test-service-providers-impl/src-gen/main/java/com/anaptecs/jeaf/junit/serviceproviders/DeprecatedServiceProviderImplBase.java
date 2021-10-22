@@ -10,6 +10,7 @@ import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
 /**
  * 
  */
+@Deprecated
 abstract class DeprecatedServiceProviderImplBase implements ServiceProviderImplementation, DeprecatedServiceProvider {
   /**
    * Constructor has reduced visibility in order to ensure that all service provider implementations are created through
