@@ -61,4 +61,11 @@ final class MyServiceProviderImpl extends MyServiceProviderImplBase {
     // TODO Implement method and return real result
     return false;
   }
+
+  /**
+  * 
+  */
+  @Override
+  public void doSomethingDeprecated( ) {
+  }
 }

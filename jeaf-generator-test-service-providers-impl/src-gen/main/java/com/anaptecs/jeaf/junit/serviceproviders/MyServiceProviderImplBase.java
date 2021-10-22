@@ -50,4 +50,14 @@ abstract class MyServiceProviderImplBase implements ServiceProviderImplementatio
   public String getMyProperty( ) {
     return configuration.getConfigurationValue("myProperty", String.class);
   }
+
+  /**
+   * Method returns the value of the property "deprecated".
+   * 
+   * @return {@link Boolean} Value of the property "deprecated". The method returns null if no value for the property is
+   * defined.
+   */
+  public boolean getDeprecated( ) {
+    return configuration.getConfigurationValue("deprecated", Boolean.class);
+  }
 }

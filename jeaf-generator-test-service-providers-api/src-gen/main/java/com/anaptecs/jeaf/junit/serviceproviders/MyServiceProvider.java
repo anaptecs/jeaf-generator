@@ -16,4 +16,9 @@ public interface MyServiceProvider extends ServiceProvider {
    * @return {@link Boolean}
    */
   boolean doSomething( );
+
+  /**
+  * 
+  */
+  void doSomethingDeprecated( );
 }
