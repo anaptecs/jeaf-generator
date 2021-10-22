@@ -17,7 +17,7 @@
 openapi: «openAPIVersion»
 «IF this.clientDependency.supplier.typeSelect(OpenAPIServer).size > 0»
 servers:
-  «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIServer) AS server-»
+  «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIServer).sortBy(e|e.url) AS server-»
   - description: «IF server.getComment().length > 0»«server.getComment()»«ELSE»«server.name»«ENDIF»
     url: «server.url»
   «ENDFOREACH-»
