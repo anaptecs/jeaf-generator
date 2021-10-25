@@ -120,11 +120,13 @@ public class ImmutableAssociationPOJO {
     /**
      * 
      */
+    @Deprecated
     private Set<ImmutableChildPOJO> deprecatedRefs;
 
     /**
      * 
      */
+    @Deprecated
     private ChildPOJO deprecatedRef;
 
     /**
@@ -209,6 +211,7 @@ public class ImmutableAssociationPOJO {
      * 
      * @param pDeprecatedRefs Collection with objects to which the association should be set.
      */
+    @Deprecated
     public Builder setDeprecatedRefs( Set<ImmutableChildPOJO> pDeprecatedRefs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDeprecatedRefs != null) {

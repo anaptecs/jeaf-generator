@@ -74,6 +74,7 @@ public class ParentPOJO {
     /**
      * 
      */
+    @Deprecated
     private byte weirdAttribute;
 
     /**
@@ -135,6 +136,7 @@ public class ParentPOJO {
      * 
      * @param pWeirdAttribute Value to which the attribute "weirdAttribute" should be set.
      */
+    @Deprecated
     public Builder setWeirdAttribute( byte pWeirdAttribute ) {
       // Assign value to attribute
       weirdAttribute = pWeirdAttribute;
