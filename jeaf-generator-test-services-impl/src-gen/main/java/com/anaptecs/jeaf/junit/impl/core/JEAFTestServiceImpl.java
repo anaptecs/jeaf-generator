@@ -52,6 +52,7 @@ final class JEAFTestServiceImpl extends JEAFTestServiceImplBase {
    * 
    * 
    */
+  @Deprecated
   @Override
   public void checkRequiredService_2( ) {
   }

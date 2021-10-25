@@ -24,6 +24,7 @@ public interface JEAFTestService extends Service {
    * 
    * 
    */
+  @Deprecated
   void checkRequiredService_2( );
 
   /**
