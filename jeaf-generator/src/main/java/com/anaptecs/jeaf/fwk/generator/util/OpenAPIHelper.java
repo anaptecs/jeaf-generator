@@ -145,7 +145,7 @@ public class OpenAPIHelper {
         String lKey = createSpecDependencyKey(pSpec, lOpenAPIType.spec);
         String lLocation = specDependencies.get(lKey);
         if (lLocation != null) {
-          lTypeName = "'" + lLocation + "#/" + pClass.getName() + "'";
+          lTypeName = "'" + lLocation + "#/components/schemas/" + pClass.getName() + "'";
         }
         else {
           XFun.getTrace().error("Dependency " + lKey + " not found.");
