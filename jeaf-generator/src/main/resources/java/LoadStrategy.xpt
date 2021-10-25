@@ -16,6 +16,7 @@
 	/**
 	 * «getComment()»
 	 */
+	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public final class «name» implements com.anaptecs.jeaf.core.api.LoadStrategy {
 		/**
 		 * Default serial version uid.
@@ -45,6 +46,7 @@
     /**
      * «nextAttribute.getComment()»
      */
+    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR nextAttribute -»
     private final boolean «nextAttribute.asInstanceVar()»;
     «ENDFOREACH»
     
@@ -53,6 +55,7 @@
     /**
      * «nextAttribute.getComment()»
      */
+    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR nextAttribute -»
     public boolean «nextAttribute.asInstanceVar()»() {
       return «nextAttribute.asInstanceVar()»;
     }
