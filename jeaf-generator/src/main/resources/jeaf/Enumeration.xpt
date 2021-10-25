@@ -11,11 +11,13 @@ package «packageName()»;
 /**
  * «getComment()»
  */
+«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 public enum «name» {
 «FOREACH this.ownedLiteral AS literal»
   /**
    * «literal.getComment()»
    */
+  «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
   «literal.name»«IF literal != this.ownedLiteral.last()»,«ELSE»;«ENDIF»
 «ENDFOREACH»
 
