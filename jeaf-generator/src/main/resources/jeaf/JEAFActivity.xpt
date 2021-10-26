@@ -25,7 +25,8 @@
 		 @param «param.name» «param.getComment()»«ENDFOREACH»
 		 «IF hasReturnParameter()»* @return «this.getReturnParameter().getTypeName()» «this.getReturnParameter().getComment()»«ENDIF-»
 		 */
-        «IF hasReturnParameter()»«this.getReturnParameter().getTypeName()»«ELSE»void«ENDIF» execute( «FOREACH this.getInputParameters().typeSelect(Parameter) AS param SEPARATOR ', '»«param.getTypeName()» «param.name»«ENDFOREACH»);
+	    «IF hasReturnParameter()»«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnParameter()»«ENDIF»
+        «IF hasReturnParameter()»«this.getReturnParameter().getTypeName()»«ELSE»void«ENDIF» execute( «FOREACH this.getInputParameters().typeSelect(Parameter) AS param SEPARATOR ', '»«EXPAND java::Helper::GenerateDeprecationAnnotation FOR param» «param.getTypeName()» «param.name»«ENDFOREACH»);
     }
 	«ENDFILE»
 «ENDDEFINE»
@@ -56,8 +57,9 @@
 		 @param «param.name» «param.getComment()»«ENDFOREACH»
 		 «IF hasReturnParameter()»* @return «this.getReturnParameter().getTypeName()» «this.getReturnParameter().getComment()»«ENDIF-»
 		 */
+		«IF hasReturnParameter()»«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnParameter()»«ENDIF»
 		@Override
-		public «IF hasReturnParameter()»«this.getReturnParameter().getTypeName()»«ELSE»void«ENDIF» execute( «FOREACH this.getInputParameters().typeSelect(Parameter) AS param SEPARATOR ', '»«param.getTypeName()» «param.name»«ENDFOREACH») {
+		public «IF hasReturnParameter()»«this.getReturnParameter().getTypeName()»«ELSE»void«ENDIF» execute( «FOREACH this.getInputParameters().typeSelect(Parameter) AS param SEPARATOR ', '»«EXPAND java::Helper::GenerateDeprecationAnnotation FOR param» «param.getTypeName()» «param.name»«ENDFOREACH») {
 		  // TODO: Implement business logic
 		  «IF hasReturnParameter() && this.getReturnParameter().getTypeName() != "void"»return null;«ENDIF»
 		}
