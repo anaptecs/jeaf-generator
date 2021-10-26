@@ -78,12 +78,13 @@ public interface RESTTestService extends Service {
    * @param pParam1
    * @param pParam2
    */
-  void deprecatedParameter( int pParam1, int pParam2 );
+  void deprecatedParameter( int pParam1, @Deprecated int pParam2 );
 
   /**
    * 
    * @param pParam1
    * @return {@link int}
    */
+  @Deprecated
   int deprectaedReturnValue( int pParam1 );
 }

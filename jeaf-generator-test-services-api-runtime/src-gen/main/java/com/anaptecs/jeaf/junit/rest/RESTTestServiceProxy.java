@@ -181,7 +181,7 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
    * 
    * 
    */
-  public void deprecatedParameter( int pParam1, int pParam2 ) {
+  public void deprecatedParameter( int pParam1, @Deprecated int pParam2 ) {
     try {
       Command lCommand = new DeprecatedParameter_int_int_RESTTestService_Command(pParam1, pParam2);
       this.executeCommand(lCommand);
@@ -196,6 +196,7 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
    * 
    * 
    */
+  @Deprecated
   public int deprectaedReturnValue( int pParam1 ) {
     try {
       Command lCommand = new DeprectaedReturnValue_int_RESTTestService_Command(pParam1);
@@ -1172,7 +1173,7 @@ final class DeprecatedParameter_int_int_RESTTestService_Command extends Command 
    * @param pParam1 int
    * @param pParam2 int
    */
-  DeprecatedParameter_int_int_RESTTestService_Command( int pParam1, int pParam2 ) {
+  DeprecatedParameter_int_int_RESTTestService_Command( int pParam1, @Deprecated int pParam2 ) {
     super(RESTTestService.class);
     param1 = pParam1;
     param2 = pParam2;

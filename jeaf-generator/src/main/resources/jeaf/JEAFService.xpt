@@ -87,6 +87,7 @@ public final class «name»Proxy extends ServiceProxy implements «name» «IF genera
      */
     «IF this.returnResult().isMultivalued().first() == true»@SuppressWarnings("unchecked")«ENDIF» 
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
     «visibility» «getReturnTypeName()» «name» («EXPAND JEAFOperation::ParameterSignature») «getThrownExceptionsAsString()» {
         try {
             Command lCommand = new «this.getCommandClassName()»(«asParameterListNames()»);

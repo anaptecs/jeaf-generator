@@ -13,6 +13,7 @@
 «DEFINE InterfaceOperation FOR Operation»
     «this.getJavadoc()»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»    
     «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
 	«getReturnTypeName()»  «name» («EXPAND ParameterSignature»)«getThrownExceptionsAsString()»;
 «ENDDEFINE»
@@ -31,6 +32,7 @@
 «DEFINE ServiceOperationImpl FOR Operation»
     «this.getJavadoc()» 
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
     @Override
 	«visibility» «getReturnTypeName()» «name» («EXPAND ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
 		«IF getReturnTypeName() != "void"»
@@ -48,6 +50,7 @@
 «DEFINE PersistentObjectOperation FOR Operation»
     «this.getJavadoc()» 
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
     «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
 	«visibility» abstract «getReturnTypeName()»  «name» («EXPAND ParameterSignature»)«getThrownExceptionsAsString()»;
 «ENDDEFINE»
@@ -57,6 +60,7 @@
 «ENDDEFINE»
 
 «DEFINE ParameterDefinition FOR Parameter»
+  «EXPAND java::Helper::GenerateDeprecationAnnotation-»
   «EXPAND Validation::ValidationAnnotation» «this.getTypeName()» «this.name»
 «ENDDEFINE»
 
@@ -65,5 +69,6 @@
 «ENDDEFINE»
 
 «DEFINE ParameterDefinitionNoValidationAnnotation FOR Parameter»
+  «EXPAND java::Helper::GenerateDeprecationAnnotation-»
   «this.getTypeName()» «this.name»
 «ENDDEFINE»
