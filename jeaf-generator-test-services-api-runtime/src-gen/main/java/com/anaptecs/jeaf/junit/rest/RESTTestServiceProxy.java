@@ -159,6 +159,52 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
       throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
     }
   }
+
+  /**
+   * Generated proxy implementation for method "deprecatedOperation".
+   * 
+   * 
+   */
+  @Deprecated
+  public void deprecatedOperation( ) {
+    try {
+      Command lCommand = new DeprecatedOperation_RESTTestService_Command();
+      this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
+
+  /**
+   * Generated proxy implementation for method "deprecatedParameter".
+   * 
+   * 
+   */
+  public void deprecatedParameter( int pParam1, int pParam2 ) {
+    try {
+      Command lCommand = new DeprecatedParameter_int_int_RESTTestService_Command(pParam1, pParam2);
+      this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
+
+  /**
+   * Generated proxy implementation for method "deprectaedReturnValue".
+   * 
+   * 
+   */
+  public int deprectaedReturnValue( int pParam1 ) {
+    try {
+      Command lCommand = new DeprectaedReturnValue_int_RESTTestService_Command(pParam1);
+      return (int) this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
 }
 
 /**
@@ -953,6 +999,312 @@ final class HandleBeanParam1_BeanParameter_RESTTestService_Command extends Comma
     lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
     // Method has no return type thus the method returns null.
     return null;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   * 
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   * 
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "deprecatedOperation".
+ */
+final class DeprecatedOperation_RESTTestService_Command extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD = RESTTestService.class.getMethod("deprecatedOperation");
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, RESTTestService.class.getName(),
+          "deprecatedOperation(null)");
+    }
+  }
+
+  /**
+   * Initialize object. All parameters from method "deprecatedOperation" have to be passed as parameters to this command
+   * object.
+   * 
+   * 
+   */
+  DeprecatedOperation_RESTTestService_Command( ) {
+    super(RESTTestService.class);
+    parameters = new Object[] {};
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   * 
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    RESTTestService lService = (RESTTestService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    lService.deprecatedOperation();
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    // Method has no return type thus the method returns null.
+    return null;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   * 
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   * 
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "deprecatedParameter".
+ */
+final class DeprecatedParameter_int_int_RESTTestService_Command extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD = RESTTestService.class.getMethod("deprecatedParameter", int.class, int.class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, RESTTestService.class.getName(),
+          "deprecatedParameter(int.class, int.class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pParam1" to the service implementation via the service channel.
+   */
+  private final int param1;
+
+  /**
+   * Attribute transports the method parameter "pParam2" to the service implementation via the service channel.
+   */
+  private final int param2;
+
+  /**
+   * Initialize object. All parameters from method "deprecatedParameter" have to be passed as parameters to this command
+   * object.
+   * 
+   * @param pParam1 int
+   * @param pParam2 int
+   */
+  DeprecatedParameter_int_int_RESTTestService_Command( int pParam1, int pParam2 ) {
+    super(RESTTestService.class);
+    param1 = pParam1;
+    param2 = pParam2;
+    parameters = new Object[] { param1, param2 };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   * 
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    RESTTestService lService = (RESTTestService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    lService.deprecatedParameter(param1, param2);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    // Method has no return type thus the method returns null.
+    return null;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   * 
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   * 
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "deprectaedReturnValue".
+ */
+final class DeprectaedReturnValue_int_RESTTestService_Command extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD = RESTTestService.class.getMethod("deprectaedReturnValue", int.class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, RESTTestService.class.getName(),
+          "deprectaedReturnValue(int.class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pParam1" to the service implementation via the service channel.
+   */
+  private final int param1;
+
+  /**
+   * Initialize object. All parameters from method "deprectaedReturnValue" have to be passed as parameters to this
+   * command object.
+   * 
+   * @param pParam1 int
+   */
+  DeprectaedReturnValue_int_RESTTestService_Command( int pParam1 ) {
+    super(RESTTestService.class);
+    param1 = pParam1;
+    parameters = new Object[] { param1 };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   * 
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    RESTTestService lService = (RESTTestService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    Serializable lResult = (Serializable) lService.deprectaedReturnValue(param1);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    return lResult;
   }
 
   /**

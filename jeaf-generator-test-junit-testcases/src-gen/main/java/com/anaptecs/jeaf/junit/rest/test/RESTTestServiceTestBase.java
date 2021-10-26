@@ -43,6 +43,13 @@ public abstract class RESTTestServiceTestBase extends JEAFTestCase {
   }
 
   /**
+   * Method test the implementation of service method deprecatedOperation(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprecatedOperation( ) throws Exception;
+
+  /**
    * Method test the implementation of service method getTestServiceObject(...)
    * 
    * @throws Exception if the test fails.
@@ -78,6 +85,13 @@ public abstract class RESTTestServiceTestBase extends JEAFTestCase {
   public abstract void testDoSomeNotRESTThing( ) throws Exception;
 
   /**
+   * Method test the implementation of service method deprectaedReturnValue(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprectaedReturnValue( ) throws Exception;
+
+  /**
    * Method test the implementation of service method doSomethingRESTy(...)
    * 
    * @throws Exception if the test fails.
@@ -90,4 +104,11 @@ public abstract class RESTTestServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testYetAnotherRESTOperation( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method deprecatedParameter(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprecatedParameter( ) throws Exception;
 }

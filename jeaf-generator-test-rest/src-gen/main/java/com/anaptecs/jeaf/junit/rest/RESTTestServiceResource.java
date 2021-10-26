@@ -129,4 +129,37 @@ public class RESTTestServiceResource {
     lService.handleBeanParam1(pBeanParam);
     return Response.status(Response.Status.OK).build();
   }
+
+  /**
+   * {@link RESTTestService#deprecatedOperation()}
+   */
+  @Path("deprcation/dep1")
+  @GET
+  public Response deprecatedOperation( ) {
+    RESTTestService lService = JEAF.getService(RESTTestService.class);
+    lService.deprecatedOperation();
+    return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link RESTTestService#deprecatedParameter()}
+   */
+  @Path("deprecation/dep2")
+  @GET
+  public Response deprecatedParameter( int pParam1, int pParam2 ) {
+    RESTTestService lService = JEAF.getService(RESTTestService.class);
+    lService.deprecatedParameter(pParam1, pParam2);
+    return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link RESTTestService#deprectaedReturnValue()}
+   */
+  @Path("deprecation/dep3")
+  @GET
+  public Response deprectaedReturnValue( int pParam1 ) {
+    RESTTestService lService = JEAF.getService(RESTTestService.class);
+    int lResult = lService.deprectaedReturnValue(pParam1);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
 }
