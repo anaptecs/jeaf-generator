@@ -70,4 +70,17 @@ public class PartiallyDeprecatedServiceObject extends PartiallyDeprecatedService
   public void doSomethingDeprecated( ) {
     // TODO: Implement business logic for method.
   }
+
+  /**
+   * 
+   * @param pParam1
+   * @param pParam2
+   * @return {@link String}
+   */
+  @Deprecated
+  @Override
+  public String doSomething( int pParam1, @Deprecated int pParam2 ) {
+    // TODO: Implement business logic for method.
+    return null;
+  }
 }
