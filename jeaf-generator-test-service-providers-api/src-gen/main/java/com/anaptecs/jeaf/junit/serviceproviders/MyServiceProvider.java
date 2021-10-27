@@ -22,4 +22,13 @@ public interface MyServiceProvider extends ServiceProvider {
   */
   @Deprecated
   void doSomethingDeprecated( );
+
+  /**
+   * 
+   * @param pParam1
+   * @param pParam2
+   * @return {@link String}
+   */
+  @Deprecated
+  String doSomething( int pParam1, @Deprecated int pParam2 );
 }
