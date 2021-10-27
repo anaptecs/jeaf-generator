@@ -251,6 +251,15 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   public abstract void doSomethingDeprecated( );
 
   /**
+   * 
+   * @param pParam1
+   * @param pParam2
+   * @return {@link String}
+   */
+  @Deprecated
+  public abstract String doSomething( int pParam1, @Deprecated int pParam2 );
+
+  /**
    * Method returns the class id of this business object class.
    * 
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
