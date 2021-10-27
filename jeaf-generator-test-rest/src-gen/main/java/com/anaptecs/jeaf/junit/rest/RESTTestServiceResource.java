@@ -135,6 +135,7 @@ public class RESTTestServiceResource {
    */
   @Path("deprcation/dep1")
   @GET
+  @Deprecated
   public Response deprecatedOperation( ) {
     RESTTestService lService = JEAF.getService(RESTTestService.class);
     lService.deprecatedOperation();
@@ -146,7 +147,7 @@ public class RESTTestServiceResource {
    */
   @Path("deprecation/dep2")
   @GET
-  public Response deprecatedParameter( int pParam1, int pParam2 ) {
+  public Response deprecatedParameter( int pParam1, @Deprecated int pParam2 ) {
     RESTTestService lService = JEAF.getService(RESTTestService.class);
     lService.deprecatedParameter(pParam1, pParam2);
     return Response.status(Response.Status.OK).build();
@@ -157,9 +158,82 @@ public class RESTTestServiceResource {
    */
   @Path("deprecation/dep3")
   @GET
+  @Deprecated
   public Response deprectaedReturnValue( int pParam1 ) {
     RESTTestService lService = JEAF.getService(RESTTestService.class);
     int lResult = lService.deprectaedReturnValue(pParam1);
     return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTTestService#deprecatedAsyncParam()}
+   */
+  @Path("dep/async")
+  @POST
+  @Deprecated
+  public void deprecatedAsyncParam( @Suspended AsyncResponse pAsyncResponse,
+      @javax.ws.rs.core.Context HttpServletRequest pRequest, @Deprecated int pParam1, int pParam2 ) {
+    // Lookup workload manager that takes care that the system will have an optimal throughput.
+    WorkloadManager lWorkloadManager = Workload.getWorkloadManager();
+    // Prepare meta information about the request.
+    String lEndpointURL = pRequest.getServletPath() + pRequest.getPathInfo();
+    RESTRequestType lRequestInfo = new RESTRequestType(lEndpointURL, pRequest.getMethod());
+    // Hand over current request to workload manager. Depending on its strategy and the current workload the request
+    // will be either be directly executed, first queued or rejected.
+    lWorkloadManager.execute(lRequestInfo, new RESTWorkloadErrorHandler(pAsyncResponse), new Runnable() {
+      @Override
+      public void run( ) {
+        try {
+          // As soon as the request is executed the service call will be performed.
+          RESTTestService lService = JEAF.getService(RESTTestService.class);
+          String lResult = lService.deprecatedAsyncParam(pParam1, pParam2);
+          Response lResponseObject = Response.status(Response.Status.OK).entity(lResult).build();
+          // Due to the asynchronous processing of the requests, the response can not be returned as return value.
+          // Therefore we make use of the defined JAX-RS mechanisms.
+          pAsyncResponse.resume(lResponseObject);
+        }
+        // All kinds of exceptions have to be reported to the client. Due to the asynchronous processing we have to
+        // catch them here and return them to the client via class AsyncResponse.
+        catch (RuntimeException e) {
+          pAsyncResponse.resume(e);
+        }
+      }
+    });
+  }
+
+  /**
+   * {@link RESTTestService#deprecatedAsync()}
+   */
+  @Path("dep/async")
+  @POST
+  @Deprecated
+  public void deprecatedAsync( @Suspended AsyncResponse pAsyncResponse,
+      @javax.ws.rs.core.Context HttpServletRequest pRequest, int pParam1, int pParam2 ) {
+    // Lookup workload manager that takes care that the system will have an optimal throughput.
+    WorkloadManager lWorkloadManager = Workload.getWorkloadManager();
+    // Prepare meta information about the request.
+    String lEndpointURL = pRequest.getServletPath() + pRequest.getPathInfo();
+    RESTRequestType lRequestInfo = new RESTRequestType(lEndpointURL, pRequest.getMethod());
+    // Hand over current request to workload manager. Depending on its strategy and the current workload the request
+    // will be either be directly executed, first queued or rejected.
+    lWorkloadManager.execute(lRequestInfo, new RESTWorkloadErrorHandler(pAsyncResponse), new Runnable() {
+      @Override
+      public void run( ) {
+        try {
+          // As soon as the request is executed the service call will be performed.
+          RESTTestService lService = JEAF.getService(RESTTestService.class);
+          String lResult = lService.deprecatedAsync(pParam1, pParam2);
+          Response lResponseObject = Response.status(Response.Status.OK).entity(lResult).build();
+          // Due to the asynchronous processing of the requests, the response can not be returned as return value.
+          // Therefore we make use of the defined JAX-RS mechanisms.
+          pAsyncResponse.resume(lResponseObject);
+        }
+        // All kinds of exceptions have to be reported to the client. Due to the asynchronous processing we have to
+        // catch them here and return them to the client via class AsyncResponse.
+        catch (RuntimeException e) {
+          pAsyncResponse.resume(e);
+        }
+      }
+    });
   }
 }

@@ -64,6 +64,13 @@ public abstract class RESTTestServiceTestBase extends JEAFTestCase {
   public abstract void testGetResource( ) throws Exception;
 
   /**
+   * Method test the implementation of service method deprecatedAsyncParam(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprecatedAsyncParam( ) throws Exception;
+
+  /**
    * Method test the implementation of service method updateTestServiceObject(...)
    * 
    * @throws Exception if the test fails.
@@ -76,6 +83,13 @@ public abstract class RESTTestServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testHandleBeanParam1( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method deprecatedAsync(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprecatedAsync( ) throws Exception;
 
   /**
    * Method test the implementation of service method doSomeNotRESTThing(...)

@@ -345,26 +345,3 @@ components:
 «IF this.isStereotypeApplied("QueryParam")»«((QueryParam) this).value-»«ENDIF-»
 «IF this.isStereotypeApplied("CookieParam")»«((CookieParam) this).value-»«ENDIF-»
 «ENDDEFINE»
-
-
-«DEFINE RESTParameterDefinition FOR Parameter»
-  «IF this.isStereotypeApplied("PathParam") -»
-  @javax.ws.rs.PathParam("«((PathParam) this).value-»")
-  «ENDIF-»
-  «IF this.isStereotypeApplied("HeaderParam") -»
-  @javax.ws.rs.HeaderParam("«((HeaderParam) this).value-»")
-  «ENDIF-»
-  «IF this.isStereotypeApplied("QueryParam") -»
-  @javax.ws.rs.QueryParam("«((QueryParam) this).value-»")
-  «ENDIF-»
-  «IF this.isStereotypeApplied("CookieParam") -»
-  @javax.ws.rs.CookieParam("«((CookieParam) this).value-»")
-  «ENDIF-»
-  «IF this.isStereotypeApplied("BeanParam") -»
-  @javax.ws.rs.BeanParam 
-  «ENDIF-»
-  «IF this.type.isStereotypeApplied("BeanParam") -»
-  @javax.ws.rs.BeanParam
-  «ENDIF-»
-  «this.getTypeName()» «this.name»
-«ENDDEFINE»
