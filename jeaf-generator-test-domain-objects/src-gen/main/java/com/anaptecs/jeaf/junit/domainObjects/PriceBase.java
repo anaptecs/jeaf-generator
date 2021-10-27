@@ -225,6 +225,15 @@ public abstract class PriceBase extends DomainObject {
   public abstract void recalculatePrice( );
 
   /**
+   * 
+   * @param pParam1
+   * @param pParam2
+   * @return {@link String}
+   */
+  @Deprecated
+  public abstract String doSomething( int pParam1, @Deprecated int pParam2 );
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
    * StringBuilder also takes care about attributes of super classes.
    *

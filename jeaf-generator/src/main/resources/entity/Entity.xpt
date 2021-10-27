@@ -187,13 +187,13 @@
 	
 	/**
 	 * Persistence unit contains persistent classes of the following packages: 
-	 * <ul>«FOREACH this.clientDependency.supplier.typeSelect(Package) AS package SEPARATOR ""»
+	 * <ul>«FOREACH this.clientDependency.supplier.typeSelect(Package).sortBy(e|e.fqn()) AS package SEPARATOR ""»
 	 * <li>«package.packageName()»</li>«ENDFOREACH»
 	 * </ul>
 	 */
 	@com.anaptecs.jeaf.spi.persistence.annotations.PersistenceUnit(
 		name="«name»", 
-		mappingFilesDefinition = {«FOREACH this.clientDependency.supplier.typeSelect(Package) AS package SEPARATOR ", "»«package.packageName()».Mappings.class «ENDFOREACH»},
+		mappingFilesDefinition = {«FOREACH this.clientDependency.supplier.typeSelect(Package).sortBy(e|e.fqn()) AS package SEPARATOR ", "»«package.packageName()».Mappings.class «ENDFOREACH»},
 		showSQL= «EXPAND GenerationMode(this.showSQL.name, "showSQL") FOR this»,
 		formatSQL = «EXPAND GenerationMode(this.formatSQL.name, "formatSQL") FOR this»)
 	public interface «name» {

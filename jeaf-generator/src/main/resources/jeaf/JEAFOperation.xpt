@@ -22,6 +22,7 @@
 «DEFINE PersistentObjectOperationImpl FOR Operation»
     «this.getJavadoc()» 
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()»
     @Override
 	«visibility» «getReturnTypeName()» «name» («EXPAND ParameterSignature»)«getThrownExceptionsAsString()» {
 	    // TODO: Implement business logic for method.
