@@ -20,12 +20,16 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
     // Create new test suite.
     TestSuite lSuite = new TestSuite("ProductRESTServiceTest");
     // Add all test of this class.
+    lSuite.addTest(new ProductRESTServiceTest("testDeprecatedOperation"));
     lSuite.addTest(new ProductRESTServiceTest("testGetProduct"));
     lSuite.addTest(new ProductRESTServiceTest("testGetSortiment"));
+    lSuite.addTest(new ProductRESTServiceTest("testDeprecatedBeanParam"));
     lSuite.addTest(new ProductRESTServiceTest("testPing"));
+    lSuite.addTest(new ProductRESTServiceTest("testDeprecatedParams"));
     lSuite.addTest(new ProductRESTServiceTest("testCreateProduct"));
     lSuite.addTest(new ProductRESTServiceTest("testCreateChannelCode"));
     lSuite.addTest(new ProductRESTServiceTest("testGetProducts"));
+    lSuite.addTest(new ProductRESTServiceTest("testDeprecatedContext"));
     // Return created test suite.
     return lSuite;
   }
@@ -64,6 +68,16 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
   }
 
   /**
+   * Method test the implementation of service method deprecatedOperation
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprecatedOperation( ) throws Exception {
+    // TODO Implement test for service method deprecatedOperation(...)
+  }
+
+  /**
    * Method test the implementation of service method getProduct
    * 
    * @throws Exception if a test fails.
@@ -84,6 +98,16 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
   }
 
   /**
+   * Method test the implementation of service method deprecatedBeanParam
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprecatedBeanParam( ) throws Exception {
+    // TODO Implement test for service method deprecatedBeanParam(...)
+  }
+
+  /**
    * Method test the implementation of service method ping
    * 
    * @throws Exception if a test fails.
@@ -91,6 +115,16 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
   @Override
   public void testPing( ) throws Exception {
     // TODO Implement test for service method ping(...)
+  }
+
+  /**
+   * Method test the implementation of service method deprecatedParams
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprecatedParams( ) throws Exception {
+    // TODO Implement test for service method deprecatedParams(...)
   }
 
   /**
@@ -121,5 +155,15 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
   @Override
   public void testGetProducts( ) throws Exception {
     // TODO Implement test for service method getProducts(...)
+  }
+
+  /**
+   * Method test the implementation of service method deprecatedContext
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprecatedContext( ) throws Exception {
+    // TODO Implement test for service method deprecatedContext(...)
   }
 }

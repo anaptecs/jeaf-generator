@@ -155,5 +155,105 @@ paths:
               schema:
                 $ref: 'product-base.yml#/components/schemas/ChannelCode'
           
+  /products/deprecated/1:
+    get:
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+          content:  
+            application/json:
+              schema:
+                type: string
+          
+  /products/deprecated/2:
+    post:
+      parameters:
+        - name: accessToken
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: string
+        - name: language
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+            example: 'en'
+        - name: resellerID
+          in: cookie
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: pathParam
+          in: path
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: queryParam
+          in: query
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: >- 
+          TODO Please add comment
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: unknown type: com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext
+          application/xml:
+            schema:
+              $ref: unknown type: com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+          content:  
+            application/json:
+              schema:
+                type: string
+          
+  /products/deprecated/3:
+    post:
+      requestBody:
+        description: >- 
+          TODO Please add comment
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: unknown type: com.anaptecs.jeaf.junit.openapi.base.BeanParameter
+          application/xml:
+            schema:
+              $ref: unknown type: com.anaptecs.jeaf.junit.openapi.base.BeanParameter
+      responses:
+        '200':
+          description: Operation does not return any content.
+          
+  /products/deprecated/4:
+    post:
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+          content:  
+            application/json:
+              schema:
+                type: string
+          
 
 

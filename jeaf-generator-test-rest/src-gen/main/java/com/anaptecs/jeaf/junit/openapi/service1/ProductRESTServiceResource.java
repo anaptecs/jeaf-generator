@@ -19,8 +19,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.anaptecs.jeaf.core.api.JEAF;
+import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
+import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 
@@ -95,5 +97,51 @@ public class ProductRESTServiceResource {
     ProductRESTService lService = JEAF.getService(ProductRESTService.class);
     lService.ping();
     return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link ProductRESTService#deprecatedOperation()}
+   */
+  @Path("deprecated/1")
+  @GET
+  @Deprecated
+  public Response deprecatedOperation( ) {
+    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    String lResult = lService.deprecatedOperation();
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductRESTService#deprecatedContext()}
+   */
+  @Path("deprecated/2")
+  @POST
+  public Response deprecatedContext( @BeanParam DeprecatedContext pContext ) {
+    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    String lResult = lService.deprecatedContext(pContext);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductRESTService#deprecatedBeanParam()}
+   */
+  @Path("deprecated/3")
+  @POST
+  public Response deprecatedBeanParam( BeanParameter pBeanParam ) {
+    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    lService.deprecatedBeanParam(pBeanParam);
+    return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link ProductRESTService#deprecatedParams()}
+   */
+  @Path("deprecated/4")
+  @POST
+  @Deprecated
+  public Response deprecatedParams( @Deprecated int pParam1, int pParam2 ) {
+    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    String lResult = lService.deprecatedParams(pParam1, pParam2);
+    return Response.status(Response.Status.OK).entity(lResult).build();
   }
 }

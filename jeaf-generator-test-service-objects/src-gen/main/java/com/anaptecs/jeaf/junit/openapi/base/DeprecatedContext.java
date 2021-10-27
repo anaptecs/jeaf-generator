@@ -7,7 +7,10 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Locale;
 
+import javax.validation.constraints.NotEmpty;
+import javax.ws.rs.CookieParam;
 import javax.ws.rs.HeaderParam;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
 import com.anaptecs.jeaf.core.api.MessageConstants;
@@ -20,7 +23,8 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-public class BeanParameter implements ServiceObject {
+@Deprecated
+public class DeprecatedContext implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -37,15 +41,25 @@ public class BeanParameter implements ServiceObject {
   public static final String LANGUAGE = "language";
 
   /**
-   * Constant for the name of attribute "oldStyle".
+   * Constant for the name of attribute "resellerID".
    */
-  @Deprecated
-  public static final String OLDSTYLE = "oldStyle";
+  public static final String RESELLERID = "resellerID";
+
+  /**
+   * Constant for the name of attribute "pathParam".
+   */
+  public static final String PATHPARAM = "pathParam";
+
+  /**
+   * Constant for the name of attribute "queryParam".
+   */
+  public static final String QUERYPARAM = "queryParam";
 
   /**
    * 
    */
   @HeaderParam("token")
+  @NotEmpty()
   private String accessToken;
 
   /**
@@ -57,32 +71,47 @@ public class BeanParameter implements ServiceObject {
   /**
    * 
    */
-  @Deprecated
-  @QueryParam("q2")
-  private String oldStyle;
+  @CookieParam("reseller")
+  private long resellerID;
+
+  /**
+   * 
+   */
+  @PathParam("id")
+  private long pathParam;
+
+  /**
+   * 
+   */
+  @QueryParam("q1")
+  private String queryParam;
 
   /**
    * Initialize object using the passed builder.
    * 
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected BeanParameter( Builder pBuilder ) {
+  protected DeprecatedContext( Builder pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     accessToken = pBuilder.accessToken;
     language = pBuilder.language;
-    oldStyle = pBuilder.oldStyle;
+    resellerID = pBuilder.resellerID;
+    pathParam = pBuilder.pathParam;
+    queryParam = pBuilder.queryParam;
   }
 
   /**
-   * Class implements builder to create a new instance of class BeanParameter. As the class has readonly attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class DeprecatedContext. As the class has readonly attributes
+   * or associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @Deprecated
   public static class Builder {
     /**
      * 
      */
+    @NotEmpty()
     private String accessToken;
 
     /**
@@ -93,8 +122,17 @@ public class BeanParameter implements ServiceObject {
     /**
      * 
      */
-    @Deprecated
-    private String oldStyle;
+    private long resellerID;
+
+    /**
+     * 
+     */
+    private long pathParam;
+
+    /**
+     * 
+     */
+    private String queryParam;
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
@@ -103,14 +141,16 @@ public class BeanParameter implements ServiceObject {
     }
 
     /**
-     * Use {@link #newBuilder(BeanParameter)} instead of private constructor to create new builder.
+     * Use {@link #newBuilder(DeprecatedContext)} instead of private constructor to create new builder.
      */
-    protected Builder( BeanParameter pObject ) {
+    protected Builder( DeprecatedContext pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         accessToken = pObject.accessToken;
         language = pObject.language;
-        oldStyle = pObject.oldStyle;
+        resellerID = pObject.resellerID;
+        pathParam = pObject.pathParam;
+        queryParam = pObject.queryParam;
       }
     }
 
@@ -127,10 +167,10 @@ public class BeanParameter implements ServiceObject {
      * Method creates a new builder and initialize it with the data from the passed object.
      * 
      * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new BeanParameter objects. The method never
+     * @return {@link Builder} New builder that can be used to create new DeprecatedContext objects. The method never
      * returns null.
      */
-    public static Builder newBuilder( BeanParameter pObject ) {
+    public static Builder newBuilder( DeprecatedContext pObject ) {
       return new Builder(pObject);
     }
 
@@ -157,36 +197,57 @@ public class BeanParameter implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "oldStyle".
+     * Method sets the attribute "resellerID".
      * 
-     * @param pOldStyle Value to which the attribute "oldStyle" should be set.
+     * @param pResellerID Value to which the attribute "resellerID" should be set.
      */
-    @Deprecated
-    public Builder setOldStyle( String pOldStyle ) {
+    public Builder setResellerID( long pResellerID ) {
       // Assign value to attribute
-      oldStyle = pOldStyle;
+      resellerID = pResellerID;
       return this;
     }
 
     /**
-     * Method creates a new instance of class BeanParameter. The object will be initialized with the values of the
-     * builder.
+     * Method sets the attribute "pathParam".
      * 
-     * @return BeanParameter Created object. The method never returns null.
+     * @param pPathParam Value to which the attribute "pathParam" should be set.
      */
-    public BeanParameter build( ) {
-      return new BeanParameter(this);
+    public Builder setPathParam( long pPathParam ) {
+      // Assign value to attribute
+      pathParam = pPathParam;
+      return this;
     }
 
     /**
-     * Method creates a new instance of class BeanParameter. The object will be initialized with the values of the
+     * Method sets the attribute "queryParam".
+     * 
+     * @param pQueryParam Value to which the attribute "queryParam" should be set.
+     */
+    public Builder setQueryParam( String pQueryParam ) {
+      // Assign value to attribute
+      queryParam = pQueryParam;
+      return this;
+    }
+
+    /**
+     * Method creates a new instance of class DeprecatedContext. The object will be initialized with the values of the
+     * builder.
+     * 
+     * @return DeprecatedContext Created object. The method never returns null.
+     */
+    public DeprecatedContext build( ) {
+      return new DeprecatedContext(this);
+    }
+
+    /**
+     * Method creates a new instance of class DeprecatedContext. The object will be initialized with the values of the
      * builder.
      * 
      * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return BeanParameter Created object. The method never returns null.
+     * @return DeprecatedContext Created object. The method never returns null.
      */
-    public BeanParameter build( boolean pValidate ) {
-      BeanParameter lPOJO = this.build();
+    public DeprecatedContext build( boolean pValidate ) {
+      DeprecatedContext lPOJO = this.build();
       if (pValidate == true) {
         Tools.getValidationTools().validateObject(lPOJO);
       }
@@ -237,26 +298,66 @@ public class BeanParameter implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "oldStyle".
+   * Method returns the attribute "resellerID".
    * 
    * 
-   * @return String Value to which the attribute "oldStyle" is set.
+   * @return long Value to which the attribute "resellerID" is set.
    */
-  @Deprecated
-  public String getOldStyle( ) {
-    return oldStyle;
+  public long getResellerID( ) {
+    return resellerID;
   }
 
   /**
-   * Method sets the attribute "oldStyle".
+   * Method sets the attribute "resellerID".
    * 
    * 
-   * @param pOldStyle Value to which the attribute "oldStyle" should be set.
+   * @param pResellerID Value to which the attribute "resellerID" should be set.
    */
-  @Deprecated
-  public void setOldStyle( String pOldStyle ) {
+  public void setResellerID( long pResellerID ) {
     // Assign value to attribute
-    oldStyle = pOldStyle;
+    resellerID = pResellerID;
+  }
+
+  /**
+   * Method returns the attribute "pathParam".
+   * 
+   * 
+   * @return long Value to which the attribute "pathParam" is set.
+   */
+  public long getPathParam( ) {
+    return pathParam;
+  }
+
+  /**
+   * Method sets the attribute "pathParam".
+   * 
+   * 
+   * @param pPathParam Value to which the attribute "pathParam" should be set.
+   */
+  public void setPathParam( long pPathParam ) {
+    // Assign value to attribute
+    pathParam = pPathParam;
+  }
+
+  /**
+   * Method returns the attribute "queryParam".
+   * 
+   * 
+   * @return String Value to which the attribute "queryParam" is set.
+   */
+  public String getQueryParam( ) {
+    return queryParam;
+  }
+
+  /**
+   * Method sets the attribute "queryParam".
+   * 
+   * 
+   * @param pQueryParam Value to which the attribute "queryParam" should be set.
+   */
+  public void setQueryParam( String pQueryParam ) {
+    // Assign value to attribute
+    queryParam = pQueryParam;
   }
 
   /**
@@ -277,8 +378,14 @@ public class BeanParameter implements ServiceObject {
     lBuilder
         .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "language", "" + language));
     lBuilder.append('\n');
+    lBuilder.append(
+        XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "resellerID", "" + resellerID));
+    lBuilder.append('\n');
     lBuilder
-        .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "oldStyle", "" + oldStyle));
+        .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "pathParam", "" + pathParam));
+    lBuilder.append('\n');
+    lBuilder.append(
+        XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "queryParam", "" + queryParam));
     lBuilder.append('\n');
     return lBuilder;
   }

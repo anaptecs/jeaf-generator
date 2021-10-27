@@ -412,6 +412,19 @@ components:
         childBBAttribute: 
           type: integer
           format: int64
+        deprecatedAttribute: 
+          type: integer
+          format: int32
+        deprecatedBs: 
+          type: array
+          items:
+            $ref: '#/components/schemas/ChildB'
+          minItems: 0
+        deprecatedParent: 
+          $ref: '#/components/schemas/ParentClass'
+      required:
+        - objectType
+        - deprecatedAttribute
 
     
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
@@ -442,4 +455,5 @@ components:
         - MOBILE
         - TVM
         - WEB
+        - LEGACY_POS
 
