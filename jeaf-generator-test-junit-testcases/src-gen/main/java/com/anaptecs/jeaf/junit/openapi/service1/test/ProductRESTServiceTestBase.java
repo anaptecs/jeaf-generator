@@ -50,6 +50,13 @@ public abstract class ProductRESTServiceTestBase extends JEAFTestCase {
   public abstract void testDeprecatedOperation( ) throws Exception;
 
   /**
+   * Method test the implementation of service method deprecatedBody(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprecatedBody( ) throws Exception;
+
+  /**
    * Method test the implementation of service method getProduct(...)
    * 
    * @throws Exception if the test fails.
@@ -62,6 +69,13 @@ public abstract class ProductRESTServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testGetSortiment( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method deprectedComplexRequestBody(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprectedComplexRequestBody( ) throws Exception;
 
   /**
    * Method test the implementation of service method deprecatedBeanParam(...)

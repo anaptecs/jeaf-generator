@@ -93,14 +93,22 @@ components:
       description: >-
         «operation.getCommentForOpenAPIDescription("        ")»
       «ENDIF-»
+      «IF operation.isDeprecated() -»
+      deprecated: true
+      «ENDIF-»
+      «REM»Process REST request paramaters«ENDREM-»
       «IF operation.hasOpenAPIInputParameters() || operation.hasBeanParameters()-»
       parameters:
+        «REM»Process normal paramaters«ENDREM-»
         «FOREACH operation.getOpenAPIInputParameters() AS param-»
         - name: «EXPAND RESTParamName FOR param»
           in: «param.getOpenAPIParameterType()»
           description: >- 
             «IF param.hasComment()»»«param.getComment()»«ELSE»TODO Please add comment«ENDIF»
           required: «param.isRequired()»
+          «IF param.isDeprecated() -»
+          deprecated: true
+          «ENDIF-»
           schema:
             «IF param.type.isBasicOpenAPIType() == true-»
             	«IF param.isMultivalued() == false-»
@@ -123,6 +131,7 @@ components:
                 «ENDIF-»
             «ENDIF-»
         «ENDFOREACH-»
+        «REM»Process bean paramaters«ENDREM-»
         «FOREACH operation.getBeanParams() AS param-»
         «FOREACH param.type.getOpenAPIProperties() AS property-»
         - name: «property.name»
@@ -130,6 +139,9 @@ components:
           description: >- 
             «IF property.hasComment()»»«property.getComment()»«ELSE»TODO Please add comment«ENDIF»
           required: «property.isRequired()»
+          «IF property.isDeprecated() -»
+          deprecated: true
+          «ENDIF-»
           «REM»Only basic types are supported as parameters«ENDREM -»
           schema:
             «IF property.type.isBasicOpenAPIType() == true -»
@@ -155,11 +167,15 @@ components:
         «ENDFOREACH-»
         «ENDFOREACH-»
       «ENDIF-»
+      «REM»Process request body«ENDREM-»
       «IF operation.hasRequestBody(httpMethod) -»
       requestBody:
       «FOREACH operation.getRequestBodyParameters() AS param-»
         description: >- 
           «IF param.hasComment()»»«param.getComment()»«ELSE»TODO Please add comment«ENDIF»
+          «IF param.isDeprecated() && param.type.isBasicOpenAPIType() == false-»
+          Operation has deprected body parameter. Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
+          «ENDIF-»
         required: «param.isRequired()»
         content:
           «FOREACH getAllMediaTypes(service.consumes, operation.consumes) AS mediaType-»
@@ -171,6 +187,9 @@ components:
                   «IF param.type.hasOpenAPIFormat()-»
               format: «param.type.getOpenAPIFormat()»
                   «ENDIF-»
+                  «IF param.isDeprecated() -»
+              deprecated: true
+                  «ENDIF-»                
                 «ELSE-»
               type: array
               items:
@@ -178,6 +197,9 @@ components:
                   «IF param.type.hasOpenAPIFormat()-»
                 format: «param.type.getOpenAPIFormat()»
                   «ENDIF-»
+                  «IF param.isDeprecated() -»
+                deprecated: true
+                  «ENDIF-»                
                 «ENDIF-»
                 «IF param.hasExample()-»
                   «IF ((OpenAPIExample) param).exampleValue.length > 0-»

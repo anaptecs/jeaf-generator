@@ -110,7 +110,7 @@ boolean hasRequestBody(uml::Operation operation, JMM::HTTPMethod httpMethod):
   getRequestBodyParameters(operation).size == 1  && httpMethod.supportsRequestBody() == true;
   
 List[uml::Parameter] getRequestBodyParameters(uml::Operation operation):
-  operation.ownedParameter.select(e|e.isInputParameter() && e.isOpenAPIInputParameter() == false);
+  operation.ownedParameter.select(e|e.isInputParameter() && e.isOpenAPIInputParameter() == false && e.isBeanParamater() == false);
   
 Set[JMM::MediaType] getAllMediaTypes(Collection[JMM::MediaType] serviceMediaTypes, Collection[JMM::MediaType] operationMediaType):
   serviceMediaTypes.addAll(operationMediaType).toSet();

@@ -11,6 +11,7 @@ import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.HEAD;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -102,7 +103,7 @@ public class ProductRESTServiceResource {
   /**
    * {@link ProductRESTService#deprecatedOperation()}
    */
-  @Path("deprecated/1")
+  @Path("deprecated/operation")
   @GET
   @Deprecated
   public Response deprecatedOperation( ) {
@@ -114,7 +115,7 @@ public class ProductRESTServiceResource {
   /**
    * {@link ProductRESTService#deprecatedContext()}
    */
-  @Path("deprecated/2")
+  @Path("deprecated/context")
   @POST
   public Response deprecatedContext( @BeanParam DeprecatedContext pContext ) {
     ProductRESTService lService = JEAF.getService(ProductRESTService.class);
@@ -125,9 +126,9 @@ public class ProductRESTServiceResource {
   /**
    * {@link ProductRESTService#deprecatedBeanParam()}
    */
-  @Path("deprecated/3")
+  @Path("deprecated/beanParams")
   @POST
-  public Response deprecatedBeanParam( BeanParameter pBeanParam ) {
+  public Response deprecatedBeanParam( @BeanParam BeanParameter pBeanParam ) {
     ProductRESTService lService = JEAF.getService(ProductRESTService.class);
     lService.deprecatedBeanParam(pBeanParam);
     return Response.status(Response.Status.OK).build();
@@ -136,12 +137,34 @@ public class ProductRESTServiceResource {
   /**
    * {@link ProductRESTService#deprecatedParams()}
    */
-  @Path("deprecated/4")
+  @Path("deprecated/params")
   @POST
   @Deprecated
-  public Response deprecatedParams( @Deprecated int pParam1, int pParam2 ) {
+  public Response deprecatedParams( @HeaderParam("param1") @Deprecated int pParam1 ) {
     ProductRESTService lService = JEAF.getService(ProductRESTService.class);
-    String lResult = lService.deprecatedParams(pParam1, pParam2);
+    String lResult = lService.deprecatedParams(pParam1);
     return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductRESTService#deprecatedBody()}
+   */
+  @Path("deprecated/body")
+  @POST
+  public Response deprecatedBody( @Deprecated String pBody ) {
+    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    String lResult = lService.deprecatedBody(pBody);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductRESTService#deprectedComplexRequestBody()}
+   */
+  @Path("deprecated/complexBody")
+  @POST
+  public Response deprectedComplexRequestBody( @Deprecated Product pProduct ) {
+    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    lService.deprectedComplexRequestBody(pProduct);
+    return Response.status(Response.Status.OK).build();
   }
 }

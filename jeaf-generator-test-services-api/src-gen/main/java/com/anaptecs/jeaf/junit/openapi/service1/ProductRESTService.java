@@ -87,9 +87,24 @@ public interface ProductRESTService extends Service {
   /**
    * 
    * @param pParam1
-   * @param pParam2
    * @return {@link String}
    */
   @Deprecated
-  String deprecatedParams( @Deprecated int pParam1, int pParam2 );
+  String deprecatedParams( @Deprecated int pParam1 );
+
+  /**
+   * 
+   * @param pBody
+   * @return {@link String}
+   */
+  String deprecatedBody( @Deprecated String pBody );
+
+  /**
+   * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
+   * to deprecated.
+   * 
+   * 
+   * @param pProduct
+   */
+  void deprectedComplexRequestBody( @Deprecated Product pProduct );
 }

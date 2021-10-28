@@ -155,8 +155,9 @@ paths:
               schema:
                 $ref: 'product-base.yml#/components/schemas/ChannelCode'
           
-  /products/deprecated/1:
+  /products/deprecated/operation:
     get:
+      deprecated: true
       responses:
         '200':
           description: >- 
@@ -166,7 +167,7 @@ paths:
               schema:
                 type: string
           
-  /products/deprecated/2:
+  /products/deprecated/context:
     post:
       parameters:
         - name: accessToken
@@ -192,14 +193,6 @@ paths:
           schema:
             type: integer
             format: int64
-        - name: pathParam
-          in: path
-          description: >- 
-            TODO Please add comment
-          required: true
-          schema:
-            type: integer
-            format: int64
         - name: queryParam
           in: query
           description: >- 
@@ -207,17 +200,6 @@ paths:
           required: false
           schema:
             type: string
-      requestBody:
-        description: >- 
-          TODO Please add comment
-        required: false
-        content:
-          application/json:
-            schema:
-              $ref: unknown type: com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext
-          application/xml:
-            schema:
-              $ref: unknown type: com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext
       responses:
         '200':
           description: >- 
@@ -227,25 +209,47 @@ paths:
               schema:
                 type: string
           
-  /products/deprecated/3:
+  /products/deprecated/beanParams:
     post:
-      requestBody:
-        description: >- 
-          TODO Please add comment
-        required: false
-        content:
-          application/json:
-            schema:
-              $ref: unknown type: com.anaptecs.jeaf.junit.openapi.base.BeanParameter
-          application/xml:
-            schema:
-              $ref: unknown type: com.anaptecs.jeaf.junit.openapi.base.BeanParameter
+      parameters:
+        - name: accessToken
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+        - name: language
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+        - name: oldStyle
+          in: query
+          description: >- 
+            TODO Please add comment
+          required: false
+          deprecated: true
+          schema:
+            type: string
       responses:
         '200':
           description: Operation does not return any content.
           
-  /products/deprecated/4:
+  /products/deprecated/params:
     post:
+      parameters:
+        - name: param1
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: true
+          deprecated: true
+          schema:
+            type: integer
+            format: int32
       responses:
         '200':
           description: >- 
@@ -254,6 +258,50 @@ paths:
             application/json:
               schema:
                 type: string
+          
+  /products/deprecated/body:
+    post:
+      requestBody:
+        description: >- 
+          TODO Please add comment
+        required: false
+        content:
+          application/json:
+            schema:
+              type: string
+              deprecated: true
+          application/xml:
+            schema:
+              type: string
+              deprecated: true
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+          content:  
+            application/json:
+              schema:
+                type: string
+          
+  /products/deprecated/complexBody:
+    post:
+      description: >-
+        Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
+      requestBody:
+        description: >- 
+          TODO Please add comment
+          Operation has deprected body parameter. Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: 'product-base.yml#/components/schemas/Product'
+          application/xml:
+            schema:
+              $ref: 'product-base.yml#/components/schemas/Product'
+      responses:
+        '200':
+          description: Operation does not return any content.
           
 
 

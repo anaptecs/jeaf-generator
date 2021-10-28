@@ -10,7 +10,6 @@ import java.util.Locale;
 import javax.validation.constraints.NotEmpty;
 import javax.ws.rs.CookieParam;
 import javax.ws.rs.HeaderParam;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
 import com.anaptecs.jeaf.core.api.MessageConstants;
@@ -46,11 +45,6 @@ public class DeprecatedContext implements ServiceObject {
   public static final String RESELLERID = "resellerID";
 
   /**
-   * Constant for the name of attribute "pathParam".
-   */
-  public static final String PATHPARAM = "pathParam";
-
-  /**
    * Constant for the name of attribute "queryParam".
    */
   public static final String QUERYPARAM = "queryParam";
@@ -77,12 +71,6 @@ public class DeprecatedContext implements ServiceObject {
   /**
    * 
    */
-  @PathParam("id")
-  private long pathParam;
-
-  /**
-   * 
-   */
   @QueryParam("q1")
   private String queryParam;
 
@@ -98,7 +86,6 @@ public class DeprecatedContext implements ServiceObject {
     accessToken = pBuilder.accessToken;
     language = pBuilder.language;
     resellerID = pBuilder.resellerID;
-    pathParam = pBuilder.pathParam;
     queryParam = pBuilder.queryParam;
   }
 
@@ -127,11 +114,6 @@ public class DeprecatedContext implements ServiceObject {
     /**
      * 
      */
-    private long pathParam;
-
-    /**
-     * 
-     */
     private String queryParam;
 
     /**
@@ -149,7 +131,6 @@ public class DeprecatedContext implements ServiceObject {
         accessToken = pObject.accessToken;
         language = pObject.language;
         resellerID = pObject.resellerID;
-        pathParam = pObject.pathParam;
         queryParam = pObject.queryParam;
       }
     }
@@ -204,17 +185,6 @@ public class DeprecatedContext implements ServiceObject {
     public Builder setResellerID( long pResellerID ) {
       // Assign value to attribute
       resellerID = pResellerID;
-      return this;
-    }
-
-    /**
-     * Method sets the attribute "pathParam".
-     * 
-     * @param pPathParam Value to which the attribute "pathParam" should be set.
-     */
-    public Builder setPathParam( long pPathParam ) {
-      // Assign value to attribute
-      pathParam = pPathParam;
       return this;
     }
 
@@ -319,27 +289,6 @@ public class DeprecatedContext implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "pathParam".
-   * 
-   * 
-   * @return long Value to which the attribute "pathParam" is set.
-   */
-  public long getPathParam( ) {
-    return pathParam;
-  }
-
-  /**
-   * Method sets the attribute "pathParam".
-   * 
-   * 
-   * @param pPathParam Value to which the attribute "pathParam" should be set.
-   */
-  public void setPathParam( long pPathParam ) {
-    // Assign value to attribute
-    pathParam = pPathParam;
-  }
-
-  /**
    * Method returns the attribute "queryParam".
    * 
    * 
@@ -380,9 +329,6 @@ public class DeprecatedContext implements ServiceObject {
     lBuilder.append('\n');
     lBuilder.append(
         XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "resellerID", "" + resellerID));
-    lBuilder.append('\n');
-    lBuilder
-        .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "pathParam", "" + pathParam));
     lBuilder.append('\n');
     lBuilder.append(
         XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "queryParam", "" + queryParam));
