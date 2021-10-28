@@ -127,6 +127,13 @@ public abstract class BusinessObjectTestServiceTestBase extends JEAFTestCase {
   public abstract void testTestAttributeAccess( ) throws Exception;
 
   /**
+   * Method test the implementation of service method deprectedOperation(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprectedOperation( ) throws Exception;
+
+  /**
    * Method test the implementation of service method updateClassA(...)
    * 
    * @throws Exception if the test fails.

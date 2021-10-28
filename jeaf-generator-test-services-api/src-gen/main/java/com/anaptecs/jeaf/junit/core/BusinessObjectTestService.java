@@ -210,4 +210,10 @@ public interface BusinessObjectTestService extends Service {
   * 
   */
   void testFlush( );
+
+  /**
+  * 
+  */
+  @Deprecated
+  void deprectedOperation( );
 }

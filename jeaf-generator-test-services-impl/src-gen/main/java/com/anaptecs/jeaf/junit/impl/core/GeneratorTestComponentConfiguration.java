@@ -37,4 +37,15 @@ public final class GeneratorTestComponentConfiguration {
   public Integer getTestProperty( ) {
     return configuration.getConfigurationValue("testProperty", Integer.class);
   }
+
+  /**
+   * Method returns the value of the property "deprecatedAttribute".
+   * 
+   * @return {@link Double} Value of the property "deprecatedAttribute". The method returns null if no value for the
+   * property is defined.
+   */
+  @Deprecated
+  public Double getDeprecatedAttribute( ) {
+    return configuration.getConfigurationValue("deprecatedAttribute", Double.class);
+  }
 }

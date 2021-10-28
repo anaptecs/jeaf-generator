@@ -307,4 +307,12 @@ final class BusinessObjectTestServiceImpl extends BusinessObjectTestServiceImplB
   @Override
   public void testFlush( ) {
   }
+
+  /**
+  * 
+  */
+  @Deprecated
+  @Override
+  public void deprectedOperation( ) {
+  }
 }
