@@ -372,10 +372,16 @@ components:
         «this.getCommentForOpenAPIDescription("        ")»
       «ENDIF-»        
       type: string
+      «IF this.isDeprecated() -»
+      deprecated: true
+      «ENDIF-»
       enum:
         «FOREACH this.ownedLiteral AS literal-»        
         «IF literal.hasComment()-»
         # «literal.getYAMLStyleComment("        ")»
+        «ENDIF-»
+        «IF literal.isDeprecated() -»
+        # Literal "«literal.name»" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
         «ENDIF-»
         - «literal.name»
         «ENDFOREACH-»

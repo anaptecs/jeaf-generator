@@ -457,5 +457,15 @@ components:
         - MOBILE
         - TVM
         - WEB
+        # Literal "LEGACY_POS" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
         - LEGACY_POS
+
+    # com.anaptecs.jeaf.junit.openapi.base.DeprecatedEnum
+    DeprecatedEnum:
+      type: string
+      deprecated: true
+      enum:
+        - ONE
+        - TWO
+        - THREE
 
