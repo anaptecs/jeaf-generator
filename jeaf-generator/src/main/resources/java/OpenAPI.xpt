@@ -296,6 +296,9 @@ components:
       allOf:
         - $ref: «superClass.get(0).getOpenAPIType(spec)»
       «ENDIF-»
+      «IF this.isDeprecated() -»
+      deprecated: true
+      «ENDIF -»
       type: object
       «IF this.ownedAttribute.size > 0 || this.isTopOfClassHierarchy() -»
       properties:
@@ -316,12 +319,18 @@ components:
               «IF attribute.type.hasOpenAPIFormat()-»
           format: «attribute.type.getOpenAPIFormat()»
               «ENDIF-»
+              «IF attribute.isDeprecated() -»
+          deprecated: true
+              «ENDIF-»
             «ELSE-»
           type: array
           items:
             type: «attribute.type.getOpenAPIType(spec)»
               «IF attribute.type.hasOpenAPIFormat()-»
             format: «attribute.type.getOpenAPIFormat()»
+              «ENDIF-»
+              «IF attribute.isDeprecated() -»
+            deprecated: true
               «ENDIF-»
             «ENDIF-»
             «IF attribute.hasExample()-»
@@ -330,6 +339,9 @@ components:
               «ENDIF-»
             «ENDIF-»
           «ELSE-»
+            «IF attribute.isDeprecated() -»
+          # Attribute "«attribute.name»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+            «ENDIF-»
             «IF attribute.isMultivalued() == false-»
           $ref: «attribute.type.getOpenAPIType(spec)»
             «ELSE-»
@@ -342,7 +354,9 @@ components:
         «ENDFOREACH-»
       «IF this.isTopOfClassHierarchy() || this.hasRequiredProperties() -»
       required:
+        «IF this.isTopOfClassHierarchy() -»
         - objectType
+        «ENDIF-»
         «FOREACH this.getRequiredProperties() AS property-»
         - «property.name»
         «ENDFOREACH-»
