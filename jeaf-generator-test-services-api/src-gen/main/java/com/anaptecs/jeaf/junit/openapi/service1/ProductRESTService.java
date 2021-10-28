@@ -107,4 +107,11 @@ public interface ProductRESTService extends Service {
    * @param pProduct
    */
   void deprectedComplexRequestBody( @Deprecated Product pProduct );
+
+  /**
+   * 
+   * @return {@link Product}
+   */
+  @Deprecated
+  Product deprecatedComplexReturn( );
 }

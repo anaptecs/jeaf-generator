@@ -258,6 +258,7 @@ paths:
             application/json:
               schema:
                 type: string
+                deprecated: true
           
   /products/deprecated/body:
     post:
@@ -302,6 +303,18 @@ paths:
       responses:
         '200':
           description: Operation does not return any content.
+          
+  /products/deprecated/complexReturn:
+    get:
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+            Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
+          content:  
+            application/json:
+              schema:
+                $ref: 'product-base.yml#/components/schemas/Product'
           
 
 

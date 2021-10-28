@@ -167,4 +167,16 @@ public class ProductRESTServiceResource {
     lService.deprectedComplexRequestBody(pProduct);
     return Response.status(Response.Status.OK).build();
   }
+
+  /**
+   * {@link ProductRESTService#deprecatedComplexReturn()}
+   */
+  @Path("deprecated/complexReturn")
+  @GET
+  @Deprecated
+  public Response deprecatedComplexReturn( ) {
+    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    Product lResult = lService.deprecatedComplexReturn();
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
 }

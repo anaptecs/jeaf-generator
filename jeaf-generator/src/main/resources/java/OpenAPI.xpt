@@ -225,6 +225,9 @@ components:
           «LET operation.getReturnResult() AS returnParam-»
           description: >- 
             «IF operation.getReturnResult().hasComment()»»«operation.getReturnResult().getComment()»«ELSE»TODO Please add comment«ENDIF»
+            «IF returnParam.isDeprecated() && returnParam.type.isBasicOpenAPIType() == false-»
+            Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
+            «ENDIF-»
           content:  
             «FOREACH service.produces AS contentType-»
             «contentType.toOpenAPIContentType()»:
@@ -234,6 +237,9 @@ components:
                 type: «returnParam.type.getOpenAPIType(this)»
                     «IF returnParam.type.hasOpenAPIFormat()-»
                 format: «returnParam.type.getOpenAPIFormat()»
+                    «ENDIF-»
+                    «IF returnParam.isDeprecated() -»
+                deprecated: true
                     «ENDIF-»
                   «ELSE-»
                 type: array

@@ -23,15 +23,16 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
     lSuite.addTest(new ProductRESTServiceTest("testDeprecatedOperation"));
     lSuite.addTest(new ProductRESTServiceTest("testDeprecatedBody"));
     lSuite.addTest(new ProductRESTServiceTest("testGetProduct"));
-    lSuite.addTest(new ProductRESTServiceTest("testGetSortiment"));
-    lSuite.addTest(new ProductRESTServiceTest("testDeprectedComplexRequestBody"));
     lSuite.addTest(new ProductRESTServiceTest("testDeprecatedBeanParam"));
     lSuite.addTest(new ProductRESTServiceTest("testPing"));
     lSuite.addTest(new ProductRESTServiceTest("testDeprecatedParams"));
     lSuite.addTest(new ProductRESTServiceTest("testCreateProduct"));
+    lSuite.addTest(new ProductRESTServiceTest("testGetSortiment"));
+    lSuite.addTest(new ProductRESTServiceTest("testDeprectedComplexRequestBody"));
     lSuite.addTest(new ProductRESTServiceTest("testCreateChannelCode"));
     lSuite.addTest(new ProductRESTServiceTest("testGetProducts"));
     lSuite.addTest(new ProductRESTServiceTest("testDeprecatedContext"));
+    lSuite.addTest(new ProductRESTServiceTest("testDeprecatedComplexReturn"));
     // Return created test suite.
     return lSuite;
   }
@@ -100,26 +101,6 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
   }
 
   /**
-   * Method test the implementation of service method getSortiment
-   * 
-   * @throws Exception if a test fails.
-   */
-  @Override
-  public void testGetSortiment( ) throws Exception {
-    // TODO Implement test for service method getSortiment(...)
-  }
-
-  /**
-   * Method test the implementation of service method deprectedComplexRequestBody
-   * 
-   * @throws Exception if a test fails.
-   */
-  @Override
-  public void testDeprectedComplexRequestBody( ) throws Exception {
-    // TODO Implement test for service method deprectedComplexRequestBody(...)
-  }
-
-  /**
    * Method test the implementation of service method deprecatedBeanParam
    * 
    * @throws Exception if a test fails.
@@ -160,6 +141,26 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
   }
 
   /**
+   * Method test the implementation of service method getSortiment
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testGetSortiment( ) throws Exception {
+    // TODO Implement test for service method getSortiment(...)
+  }
+
+  /**
+   * Method test the implementation of service method deprectedComplexRequestBody
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprectedComplexRequestBody( ) throws Exception {
+    // TODO Implement test for service method deprectedComplexRequestBody(...)
+  }
+
+  /**
    * Method test the implementation of service method createChannelCode
    * 
    * @throws Exception if a test fails.
@@ -187,5 +188,15 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
   @Override
   public void testDeprecatedContext( ) throws Exception {
     // TODO Implement test for service method deprecatedContext(...)
+  }
+
+  /**
+   * Method test the implementation of service method deprecatedComplexReturn
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprecatedComplexReturn( ) throws Exception {
+    // TODO Implement test for service method deprecatedComplexReturn(...)
   }
 }
