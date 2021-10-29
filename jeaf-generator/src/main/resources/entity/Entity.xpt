@@ -187,7 +187,7 @@
 	
 	/**
 	 * Persistence unit contains persistent classes of the following packages: 
-	 * <ul>«FOREACH this.clientDependency.supplier.typeSelect(Package).sortBy(e|e.fqn()) AS package SEPARATOR ""»
+	 * <ul>«FOREACH this.clientDependency.supplier.typeSelect(Package).sortBy(e|e.packageName()) AS package SEPARATOR ""»
 	 * <li>«package.packageName()»</li>«ENDFOREACH»
 	 * </ul>
 	 */
