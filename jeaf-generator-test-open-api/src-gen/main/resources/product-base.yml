@@ -60,8 +60,12 @@ components:
             The amount of money. Attribute is always set.
           type: number
           format: double
+          nullable: false
+          readOnly: true
         currency: 
           type: string
+          nullable: false
+          readOnly: true
       required:
         - amount
         - currency

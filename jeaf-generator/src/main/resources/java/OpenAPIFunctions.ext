@@ -125,10 +125,19 @@ boolean hasExample(uml::NamedElement element):
   element.isStereotypeApplied("OpenAPIExample");
   
 boolean isNullable(uml::Property property):
-  if property.isStereotypeApplied("OpenAPIProperty") then ((JMM::OpenAPIProperty) property).nullable else true;
+  if property.isStereotypeApplied("OpenAPIProperty") 
+  then ((JMM::OpenAPIProperty) property).nullable 
+  else
+    if property.isStereotypeApplied("NotNull")
+    then false
+    else true;
+  
   
 boolean isReadOnly(uml::Property property):
-  if property.isStereotypeApplied("OpenAPIProperty") then ((JMM::OpenAPIProperty) property).accessType.name == "READ_ONLY" else false;
+  if property.isStereotypeApplied("OpenAPIProperty") 
+  then ((JMM::OpenAPIProperty) property).accessType.name == "READ_ONLY" 
+  else 
+    property.isReadOnly;
   
 boolean isWriteOnly(uml::Property property):
   if property.isStereotypeApplied("OpenAPIProperty") then ((JMM::OpenAPIProperty) property).accessType.name == "WRITE_ONLY" else false;
