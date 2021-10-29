@@ -124,4 +124,16 @@ uml::Parameter getReturnParameter(uml::Operation operation):
 boolean hasExample(uml::NamedElement element):
   element.isStereotypeApplied("OpenAPIExample");
   
+boolean isNullable(uml::Property property):
+  if property.isStereotypeApplied("OpenAPIProperty") then ((JMM::OpenAPIProperty) property).nullable else true;
+  
+boolean isReadOnly(uml::Property property):
+  if property.isStereotypeApplied("OpenAPIProperty") then ((JMM::OpenAPIProperty) property).accessType.name == "READ_ONLY" else false;
+  
+boolean isWriteOnly(uml::Property property):
+  if property.isStereotypeApplied("OpenAPIProperty") then ((JMM::OpenAPIProperty) property).accessType.name == "WRITE_ONLY" else false;
+  
+  
+
+  
 

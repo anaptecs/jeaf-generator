@@ -333,6 +333,15 @@ components:
             deprecated: true
               «ENDIF-»
             «ENDIF-»
+          «IF attribute.isNullable() == false -»
+          nullable: «attribute.isNullable()»
+          «ENDIF-»  
+          «IF attribute.isReadOnly()  -»
+          readOnly: «attribute.isReadOnly()»
+          «ENDIF-»  
+          «IF attribute.isWriteOnly() -»
+          writeOnly: «attribute.isWriteOnly()»
+          «ENDIF-»  
             «IF attribute.hasExample()-»
               «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
           example: '«((OpenAPIExample) attribute).exampleValue»'

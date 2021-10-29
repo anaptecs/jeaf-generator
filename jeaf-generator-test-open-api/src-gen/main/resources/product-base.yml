@@ -427,6 +427,47 @@ components:
       required:
         - deprecatedAttribute
         - deprecatedArray
+    # com.anaptecs.jeaf.junit.openapi.base.OpenAPITestObject
+    OpenAPITestObject:
+      type: object
+      properties:
+        readOnlyAttribute: 
+          type: string
+          readOnly: true
+        readWriteAttribute: 
+          type: string
+        writeOnlyAttribute: 
+          type: integer
+          format: int32
+          writeOnly: true
+        nullableAttribute: 
+          type: boolean
+        notNullableAttribute: 
+          type: number
+          format: double
+          nullable: false
+        readOnlyArray: 
+          type: string
+          readOnly: true
+        readWriteArray: 
+          type: string
+        writeOnlyArray: 
+          type: integer
+          format: int32
+          writeOnly: true
+        nullableArray: 
+          type: number
+          format: double
+        notNullableArray: 
+          type: number
+          format: double
+          nullable: false
+      required:
+        - writeOnlyAttribute
+        - notNullableAttribute
+        - writeOnlyArray
+        - nullableArray
+        - notNullableArray
 
     
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
