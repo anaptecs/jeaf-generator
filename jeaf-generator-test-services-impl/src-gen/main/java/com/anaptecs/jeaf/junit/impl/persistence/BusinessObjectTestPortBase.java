@@ -219,6 +219,7 @@ abstract class BusinessObjectTestPortBase implements ServiceImplementation {
    * @return {@link Calendar} Value of the property "calendarProperty". The method returns null if no value for the
    * property is defined.
    */
+  @Deprecated
   public Calendar getCalendarProperty( ) {
     return configuration.getCalendarProperty();
   }
@@ -231,5 +232,16 @@ abstract class BusinessObjectTestPortBase implements ServiceImplementation {
    */
   public Locale getLocaleProperty( ) {
     return configuration.getLocaleProperty();
+  }
+
+  /**
+   * Method returns the value of the property "deprectedAttribute".
+   * 
+   * @return {@link String} Value of the property "deprectedAttribute". The method returns null if no value for the
+   * property is defined.
+   */
+  @Deprecated
+  public String getDeprectedAttribute( ) {
+    return configuration.getDeprectedAttribute();
   }
 }

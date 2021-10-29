@@ -15,6 +15,7 @@ package «packageName()»;
 /**
  * «getComment()»
  */
+«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 public interface «name» extends «IF generalization.size > 0» «this.getAllExtendedInterfaces()» «ELSE»com.anaptecs.jeaf.core.api.ServiceProvider«ENDIF» {
 
 «EXPAND JEAFOperation::InterfaceOperation FOREACH this.ownedOperation»
@@ -37,6 +38,7 @@ import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 /**
  * «getComment()»
  */
+«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 abstract class «name»Base implements com.anaptecs.jeaf.core.spi.ServiceProviderImplementation, «this.getImplementedInterfaceNames()» {
 	«IF this.ownedAttribute.size > 0»
 	/**
@@ -74,6 +76,7 @@ abstract class «name»Base implements com.anaptecs.jeaf.core.spi.ServiceProviderI
 	 * @return {@link «property.type.name»} Value of the property "«property.name»". The method returns null if no value for the
 	 * property is defined.
 	 */
+	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR property-»
 	public «property.fqn()» «property.asGetter()»() {
 	  return configuration.getConfigurationValue("«property.name»", «property.type.name».class);
 	}

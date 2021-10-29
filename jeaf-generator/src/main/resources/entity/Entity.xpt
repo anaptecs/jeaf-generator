@@ -29,6 +29,7 @@
         import com.anaptecs.jeaf.spi.persistence.ClassID;
         
 			«this.getJavadoc()»
+			«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 			public abstract class «this.getBOBaseName()» «IF !superClass.isEmpty»extends «superClass.get(0).fqn()» «ELSE»extends PersistentObject«ENDIF» {
 			
 			/**
@@ -49,11 +50,13 @@
               /**
                * Constant for the name of the row that is used to store the values of attribute "«attr.name»".
                */
+              «EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr -»
               public static final String «attr.asInstanceVar().toUpperCase()»_ROW = "«attr.asInstanceVar().toUpperCase()»";
               
               /**
                * Constant for the name of attribute "«attr.name»".
                */
+              «EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr -»
               public static final String «attr.asInstanceVar().toUpperCase()»_ATTRIBUTE = "«attr.asInstanceVar()»";
               «ENDIF»
             «ENDFOREACH»
@@ -64,6 +67,7 @@
               /**
                * Constant for the name of role "«attr.name»".
                */
+              «EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr -»
               public static final String «attr.asInstanceVar().toUpperCase()»_ROLE = "«attr.asInstanceVar()»";
               «ENDIF»
             «ENDFOREACH»
@@ -113,6 +117,7 @@
 		package «packageName()»;
 		
 		«this.getJavadoc()»
+		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 		public «IF this.isAbstract»abstract«ENDIF» class «this.getBOName()» extends «this.getBOBaseName()» {
             /**
              * Initialize object. The constructor of the class has visibility protected in order to avoid creating 
@@ -182,31 +187,31 @@
 	
 	/**
 	 * Persistence unit contains persistent classes of the following packages: 
-	 * <ul>«FOREACH this.clientDependency.supplier.typeSelect(Package) AS package SEPARATOR ""»
+	 * <ul>«FOREACH this.clientDependency.supplier.typeSelect(Package).sortBy(e|e.fqn()) AS package SEPARATOR ""»
 	 * <li>«package.packageName()»</li>«ENDFOREACH»
 	 * </ul>
 	 */
 	@com.anaptecs.jeaf.spi.persistence.annotations.PersistenceUnit(
 		name="«name»", 
-		mappingFilesDefinition = {«FOREACH this.clientDependency.supplier.typeSelect(Package) AS package SEPARATOR ", "»«package.packageName()».Mappings.class «ENDFOREACH»},
-		showSQL= «EXPAND GenerationMode(this, "showSQL") FOR this.showSQL»,
-		formatSQL = «EXPAND GenerationMode(this, "formatSQL") FOR this.showSQL»)
+		mappingFilesDefinition = {«FOREACH this.clientDependency.supplier.typeSelect(Package).sortBy(e|e.fqn()) AS package SEPARATOR ", "»«package.packageName()».Mappings.class «ENDFOREACH»},
+		showSQL= «EXPAND GenerationMode(this.showSQL.name, "showSQL") FOR this»,
+		formatSQL = «EXPAND GenerationMode(this.formatSQL.name, "formatSQL") FOR this»)
 	public interface «name» {
 	}
 	«ENDFILE»
 «ENDDEFINE»
 
-«DEFINE GenerationMode(PersistenceUnit pu, String propertyName) FOR ConfigurationMode-»
-	«IF name == "TRUE"»"true"«ELSE»
-		«IF name == "FALSE"-»"false"
+«DEFINE GenerationMode(String configMode, String propertyName) FOR PersistenceUnit-»
+	«IF configMode == "TRUE"»"true"«ELSE»
+		«IF configMode == "FALSE"-»"false"
 		«ELSE-»
-			«IF name == "GLOBAL_PROPERTY"-»
+			«IF configMode == "GLOBAL_PROPERTY"-»
 			"{jeaf.persistence.«propertyName»}"
 			«ELSE-»
-				«IF name == "INDIVIDUAL_PROPERTY"»
-				"{jeaf.persistence.«pu.name».«propertyName»}"
+				«IF configMode == "INDIVIDUAL_PROPERTY"»
+				"{jeaf.persistence.«this.name».«propertyName»}"
 				«ELSE-»
-					«ERROR "Internal Error in JEAF Generator: Unexpected literal " + name +" for enumeration ConfigurationMode found"-»
+					«ERROR "Internal Error in JEAF Generator: Unexpected literal " + configMode +" for enumeration ConfigurationMode found"-»
 				«ENDIF-»
 			«ENDIF-»
 		«ENDIF-»

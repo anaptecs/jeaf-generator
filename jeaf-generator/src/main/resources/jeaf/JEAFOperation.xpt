@@ -12,6 +12,8 @@
 //interface methods are returned
 «DEFINE InterfaceOperation FOR Operation»
     «this.getJavadoc()»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»    
     «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
 	«getReturnTypeName()»  «name» («EXPAND ParameterSignature»)«getThrownExceptionsAsString()»;
 «ENDDEFINE»
@@ -19,6 +21,8 @@
 //interfaceImpl methods are returned
 «DEFINE PersistentObjectOperationImpl FOR Operation»
     «this.getJavadoc()» 
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()»
     @Override
 	«visibility» «getReturnTypeName()» «name» («EXPAND ParameterSignature»)«getThrownExceptionsAsString()» {
 	    // TODO: Implement business logic for method.
@@ -28,6 +32,8 @@
 
 «DEFINE ServiceOperationImpl FOR Operation»
     «this.getJavadoc()» 
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
     @Override
 	«visibility» «getReturnTypeName()» «name» («EXPAND ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
 		«IF getReturnTypeName() != "void"»
@@ -44,6 +50,8 @@
 //abstract methods are returned
 «DEFINE PersistentObjectOperation FOR Operation»
     «this.getJavadoc()» 
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
     «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
 	«visibility» abstract «getReturnTypeName()»  «name» («EXPAND ParameterSignature»)«getThrownExceptionsAsString()»;
 «ENDDEFINE»
@@ -53,6 +61,7 @@
 «ENDDEFINE»
 
 «DEFINE ParameterDefinition FOR Parameter»
+  «EXPAND java::Helper::GenerateDeprecationAnnotation-»
   «EXPAND Validation::ValidationAnnotation» «this.getTypeName()» «this.name»
 «ENDDEFINE»
 
@@ -61,5 +70,6 @@
 «ENDDEFINE»
 
 «DEFINE ParameterDefinitionNoValidationAnnotation FOR Parameter»
+  «EXPAND java::Helper::GenerateDeprecationAnnotation-»
   «this.getTypeName()» «this.name»
 «ENDDEFINE»

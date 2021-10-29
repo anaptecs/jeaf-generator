@@ -12,6 +12,7 @@ import com.anaptecs.jeaf.core.annotations.JEAFActivityImpl;
  * 
  */
 @JEAFActivityImpl(activityInterface = DoNothingActivity.class)
+@Deprecated
 public class DoNothingActivityImpl implements DoNothingActivity {
   /**
    * Create new instance of activity.

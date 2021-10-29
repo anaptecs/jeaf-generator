@@ -19,19 +19,20 @@ public final class TestLoadStrategy implements LoadStrategy {
   /**
    * Constant load strategy object to load all associations.
    */
-  public static final TestLoadStrategy LOAD_ALL = new TestLoadStrategy(true, true);
+  public static final TestLoadStrategy LOAD_ALL = new TestLoadStrategy(true, true, true);
 
   /**
    * Constant load strategy object to load none of the associations.
    */
-  public static final TestLoadStrategy LOAD_NONE = new TestLoadStrategy(false, false);
+  public static final TestLoadStrategy LOAD_NONE = new TestLoadStrategy(false, false, false);
 
   /**
    * Initialize object.
    */
-  public TestLoadStrategy( boolean pLoadInternalData, boolean pLoadPublicData ) {
+  public TestLoadStrategy( boolean pLoadInternalData, boolean pLoadPublicData, boolean pLoadDeprecatedData ) {
     loadInternalData = pLoadInternalData;
     loadPublicData = pLoadPublicData;
+    loadDeprecatedData = pLoadDeprecatedData;
   }
 
   /**
@@ -47,6 +48,12 @@ public final class TestLoadStrategy implements LoadStrategy {
   /**
    * 
    */
+  @Deprecated
+  private final boolean loadDeprecatedData;
+
+  /**
+   * 
+   */
   public boolean loadInternalData( ) {
     return loadInternalData;
   }
@@ -56,5 +63,13 @@ public final class TestLoadStrategy implements LoadStrategy {
    */
   public boolean loadPublicData( ) {
     return loadPublicData;
+  }
+
+  /**
+   * 
+   */
+  @Deprecated
+  public boolean loadDeprecatedData( ) {
+    return loadDeprecatedData;
   }
 }

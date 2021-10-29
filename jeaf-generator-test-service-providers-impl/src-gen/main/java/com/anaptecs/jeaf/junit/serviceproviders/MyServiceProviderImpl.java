@@ -61,4 +61,25 @@ final class MyServiceProviderImpl extends MyServiceProviderImplBase {
     // TODO Implement method and return real result
     return false;
   }
+
+  /**
+  * 
+  */
+  @Deprecated
+  @Override
+  public void doSomethingDeprecated( ) {
+  }
+
+  /**
+   * 
+   * @param pParam1
+   * @param pParam2
+   * @return {@link String}
+   */
+  @Deprecated
+  @Override
+  public String doSomething( int pParam1, @Deprecated int pParam2 ) {
+    // TODO Implement method and return real result
+    return null;
+  }
 }

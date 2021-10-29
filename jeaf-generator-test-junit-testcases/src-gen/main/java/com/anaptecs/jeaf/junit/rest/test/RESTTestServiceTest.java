@@ -20,13 +20,18 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
     // Create new test suite.
     TestSuite lSuite = new TestSuite("RESTTestServiceTest");
     // Add all test of this class.
+    lSuite.addTest(new RESTTestServiceTest("testDeprecatedOperation"));
     lSuite.addTest(new RESTTestServiceTest("testGetTestServiceObject"));
     lSuite.addTest(new RESTTestServiceTest("testGetResource"));
+    lSuite.addTest(new RESTTestServiceTest("testDeprecatedAsyncParam"));
     lSuite.addTest(new RESTTestServiceTest("testUpdateTestServiceObject"));
     lSuite.addTest(new RESTTestServiceTest("testHandleBeanParam1"));
+    lSuite.addTest(new RESTTestServiceTest("testDeprecatedAsync"));
     lSuite.addTest(new RESTTestServiceTest("testDoSomeNotRESTThing"));
+    lSuite.addTest(new RESTTestServiceTest("testDeprectaedReturnValue"));
     lSuite.addTest(new RESTTestServiceTest("testDoSomethingRESTy"));
     lSuite.addTest(new RESTTestServiceTest("testYetAnotherRESTOperation"));
+    lSuite.addTest(new RESTTestServiceTest("testDeprecatedParameter"));
     // Return created test suite.
     return lSuite;
   }
@@ -65,6 +70,16 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
   }
 
   /**
+   * Method test the implementation of service method deprecatedOperation
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprecatedOperation( ) throws Exception {
+    // TODO Implement test for service method deprecatedOperation(...)
+  }
+
+  /**
    * Method test the implementation of service method getTestServiceObject
    * 
    * @throws Exception if a test fails.
@@ -82,6 +97,16 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
   @Override
   public void testGetResource( ) throws Exception {
     // TODO Implement test for service method getResource(...)
+  }
+
+  /**
+   * Method test the implementation of service method deprecatedAsyncParam
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprecatedAsyncParam( ) throws Exception {
+    // TODO Implement test for service method deprecatedAsyncParam(...)
   }
 
   /**
@@ -105,6 +130,16 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
   }
 
   /**
+   * Method test the implementation of service method deprecatedAsync
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprecatedAsync( ) throws Exception {
+    // TODO Implement test for service method deprecatedAsync(...)
+  }
+
+  /**
    * Method test the implementation of service method doSomeNotRESTThing
    * 
    * @throws Exception if a test fails.
@@ -112,6 +147,16 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
   @Override
   public void testDoSomeNotRESTThing( ) throws Exception {
     // TODO Implement test for service method doSomeNotRESTThing(...)
+  }
+
+  /**
+   * Method test the implementation of service method deprectaedReturnValue
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprectaedReturnValue( ) throws Exception {
+    // TODO Implement test for service method deprectaedReturnValue(...)
   }
 
   /**
@@ -132,5 +177,15 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
   @Override
   public void testYetAnotherRESTOperation( ) throws Exception {
     // TODO Implement test for service method yetAnotherRESTOperation(...)
+  }
+
+  /**
+   * Method test the implementation of service method deprecatedParameter
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprecatedParameter( ) throws Exception {
+    // TODO Implement test for service method deprecatedParameter(...)
   }
 }

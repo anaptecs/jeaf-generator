@@ -10,6 +10,7 @@
 /**
  * Class implements builder to create a new instance of class «this.name». As the class has readonly attributes or associations instances can not be created directly. Instead this builder class has to be used.
  */
+«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF superClass.isEmpty == false»extends «superClass.get(0).fqn()».Builder«ENDIF» {
 	«REM»Generate instance variables for each property«ENDREM»
 	«IF needsToImplementIdentifiable() == true»
@@ -243,11 +244,13 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false && supe
 // processing the properties
 «DEFINE DoBuilderPropertyDeclaration FOR Property»
 	«EXPAND Validation::ValidationAnnotation»
+	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	private «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «this.initValue()»«ENDIF»;
 «ENDDEFINE»
 
 «DEFINE DoBuilderAssociationPropertyDeclaration FOR Property»
 	«IF isNavigable()»
+		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 		«IF isMultivalued()»
 			private «this.fqn()» «asInstanceVar()»;
 		«ELSE»
@@ -272,6 +275,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false && supe
 	 * 
 	 * @param «asParameter()» Value to which the attribute "«asInstanceVar()»" should be set.
 	 */
+	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «builderClassName» «asSetter()»(«this.fqn()»«IF isMultivalued()»[]«ENDIF» «asParameter()») {
 		// Assign value to attribute
 		«IF this.isMultivalued() == false»
@@ -297,6 +301,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false && supe
 			 * 
 			 * @param «asParameter()» Collection with objects to which the association should be set.
 			 */
+			«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 			public «builderClassName» set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
 			    // To ensure immutability we have to copy the content of the passed collection.
 			    if(«asParameter()» != null) {

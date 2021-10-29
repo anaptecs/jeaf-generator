@@ -22,6 +22,7 @@
 	
 	«this.getJavadoc()»
 	«EXPAND java::Validation::ValidationAnnotation»
+	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «IF isAbstract»abstract«ENDIF» class «name» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
 		/**
 		 * Default serial version uid.
@@ -34,6 +35,7 @@
           /**
            * Constant for the name of attribute "«attr.name»".
            */
+          «EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr -»
           public static final String «attr.asInstanceVar().toUpperCase()» = "«attr.asInstanceVar()»";
         «ENDIF»«ENDFOREACH»
 
@@ -108,6 +110,7 @@
       
       «this.getJavadoc()»
       «EXPAND java::Validation::ValidationAnnotation -»      
+      «EXPAND java::Helper::GenerateDeprecationAnnotation-»
       public abstract class «name»Base «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
         /**
          * Default serial version uid.
@@ -120,6 +123,7 @@
           /**
            * Constant for the name of attribute "«attr.name»".
            */
+          «EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr -»
           public static final String «attr.asInstanceVar().toUpperCase()» = "«attr.asInstanceVar()»";
         «ENDIF»«ENDFOREACH»
         

@@ -66,4 +66,43 @@ public interface RESTTestService extends Service {
    * @param pBeanParam
    */
   void handleBeanParam1( BeanParameter pBeanParam );
+
+  /**
+  * 
+  */
+  @Deprecated
+  void deprecatedOperation( );
+
+  /**
+   * 
+   * @param pParam1
+   * @param pParam2
+   */
+  void deprecatedParameter( int pParam1, @Deprecated int pParam2 );
+
+  /**
+   * 
+   * @param pParam1
+   * @return {@link int}
+   */
+  @Deprecated
+  int deprectaedReturnValue( int pParam1 );
+
+  /**
+   * 
+   * @param pParam1
+   * @param pParam2
+   * @return {@link String}
+   */
+  @Deprecated
+  String deprecatedAsyncParam( @Deprecated int pParam1, int pParam2 );
+
+  /**
+   * 
+   * @param pParam1
+   * @param pParam2
+   * @return {@link String}
+   */
+  @Deprecated
+  String deprecatedAsync( int pParam1, int pParam2 );
 }

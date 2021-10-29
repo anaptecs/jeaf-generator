@@ -56,6 +56,7 @@ public final class JEAFTestServiceProxy extends ServiceProxy implements JEAFTest
    * 
    * Method tests JEAF dependency injection mechanism for the dependency on RequiredService1.
    */
+  @Deprecated
   public void checkRequiredService_2( ) {
     try {
       Command lCommand = new CheckRequiredService_2_JEAFTestService_Command();

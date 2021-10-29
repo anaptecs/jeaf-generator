@@ -11,8 +11,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 import com.anaptecs.jeaf.core.api.Service;
+import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
+import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 
@@ -61,4 +63,55 @@ public interface ProductRESTService extends Service {
   * 
   */
   void ping( );
+
+  /**
+   * 
+   * @return {@link String}
+   */
+  @Deprecated
+  String deprecatedOperation( );
+
+  /**
+   * 
+   * @param pContext
+   * @return {@link String}
+   */
+  String deprecatedContext( DeprecatedContext pContext );
+
+  /**
+   * 
+   * @param pBeanParam
+   */
+  void deprecatedBeanParam( BeanParameter pBeanParam );
+
+  /**
+   * 
+   * @param pParam1
+   * @return {@link String}
+   */
+  @Deprecated
+  String deprecatedParams( @Deprecated int pParam1 );
+
+  /**
+   * 
+   * @param pBody
+   * @return {@link String}
+   */
+  String deprecatedBody( @Deprecated String pBody );
+
+  /**
+   * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
+   * to deprecated.
+   * 
+   * 
+   * @param pProduct
+   */
+  void deprectedComplexRequestBody( @Deprecated Product pProduct );
+
+  /**
+   * 
+   * @return {@link Product}
+   */
+  @Deprecated
+  Product deprecatedComplexReturn( );
 }

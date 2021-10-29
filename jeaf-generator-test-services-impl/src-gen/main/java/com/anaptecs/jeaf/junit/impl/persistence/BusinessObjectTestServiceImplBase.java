@@ -33,6 +33,9 @@ abstract class BusinessObjectTestServiceImplBase extends BusinessObjectTestPort 
   public static final String DELETEBUSINESSOBJECT_AUTH_TYPE =
       "deleteBusinessObject.com.anaptecs.jeaf.junit.core.BusinessObjectTestService";
 
+  public static final String DEPRECTEDOPERATION_AUTH_TYPE =
+      "deprectedOperation.com.anaptecs.jeaf.junit.core.BusinessObjectTestService";
+
   public static final String GETCLASSA_AUTH_TYPE = "getClassA.com.anaptecs.jeaf.junit.core.BusinessObjectTestService";
 
   public static final String GETCMANYS_AUTH_TYPE = "getCManys.com.anaptecs.jeaf.junit.core.BusinessObjectTestService";

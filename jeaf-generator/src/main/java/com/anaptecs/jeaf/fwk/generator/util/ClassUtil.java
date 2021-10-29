@@ -1295,21 +1295,6 @@ public class ClassUtil {
   }
 
   /**
-   * Method returns the name of the passed enumeration literal as lower case characters.
-   * 
-   * @param pEnumerationLiteral Enumeration literal object for the name of the literal should be returned. The parameter
-   * must not be null.
-   * @return String Name of the passed literal as all lower case characters. The method never returns null.
-   */
-  public static String getEnumerationLiteralName( org.eclipse.uml2.uml.EnumerationLiteral pEnumerationLiteral ) {
-    // Check parameter for null.
-    Check.checkInvalidParameterNull(pEnumerationLiteral, "pEnumerationLiteral");
-
-    // Return name in lower case.
-    return pEnumerationLiteral.getName();
-  }
-
-  /**
    * Method returns the names of the passed enumeration literals as lower case characters.
    * 
    * @param pEnumerationLiteral Enumeration literal object for the name of the literal should be returned. The parameter

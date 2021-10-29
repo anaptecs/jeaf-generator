@@ -207,8 +207,8 @@
         «ENDIF»
         
         // Define transactional behavior and communication protocol.
-        transactionBehavior = TransactionBehavior.«this.transactionBehavior.getTransactionBehavior()»;
-        layer = Layer.«this.layer.getLayer()»;
+        transactionBehavior = TransactionBehavior.«this.transactionBehavior.name»;
+        layer = Layer.«this.layer.name»;
         communicationProtocol = CommunicationProtocol.LOCAL_EJB;
         
         // Define security mechanism.
@@ -506,6 +506,9 @@
 	       * @return {@link «property.type.name»} Value of the property "«property.name»". The method returns null if no value for the
 	       * property is defined.
 	       */
+	      «IF property.isDeprecated()-»
+          @Deprecated
+          «ENDIF-» 
 	      public «property.fqn()» «property.asGetter()»() {
 	        return configuration.«property.asGetter()»();
 	      }
@@ -665,6 +668,9 @@
            * @return {@link «property.type.name»} Value of the property "«property.name»". The method returns null if no value for the
            * property is defined.
            */
+          «IF property.isDeprecated()-»
+          @Deprecated
+          «ENDIF-» 
           public «property.fqn()» «property.asGetter()»() {
             return configuration.«property.asGetter()»();
           }
@@ -968,6 +974,9 @@
 	   * @return {@link «property.type.name»} Value of the property "«property.name»". The method returns null if no value for the
 	   * property is defined.
 	   */
+	  «IF property.isDeprecated()-»
+      @Deprecated
+      «ENDIF-»
       public «property.fqn()» «property.asGetter()»() {
         return configuration.getConfigurationValue("«property.name»", «property.type.name».class);
       }

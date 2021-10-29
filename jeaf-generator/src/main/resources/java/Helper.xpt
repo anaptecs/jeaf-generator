@@ -1,3 +1,4 @@
+«EXTENSION java::GeneratorCommons»
 
 «DEFINE GenerateToStringMethod FOR uml::Class»
   /**
@@ -34,5 +35,12 @@
     return this.toStringBuilder().toString();
   }
   
+«ENDDEFINE»
+
+
+«DEFINE GenerateDeprecationAnnotation FOR uml::NamedElement»
+	«IF this.isDeprecated()-»
+	@Deprecated
+	«ENDIF-»
 «ENDDEFINE»
 

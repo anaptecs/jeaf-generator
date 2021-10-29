@@ -43,6 +43,13 @@ public abstract class RESTTestServiceTestBase extends JEAFTestCase {
   }
 
   /**
+   * Method test the implementation of service method deprecatedOperation(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprecatedOperation( ) throws Exception;
+
+  /**
    * Method test the implementation of service method getTestServiceObject(...)
    * 
    * @throws Exception if the test fails.
@@ -55,6 +62,13 @@ public abstract class RESTTestServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testGetResource( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method deprecatedAsyncParam(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprecatedAsyncParam( ) throws Exception;
 
   /**
    * Method test the implementation of service method updateTestServiceObject(...)
@@ -71,11 +85,25 @@ public abstract class RESTTestServiceTestBase extends JEAFTestCase {
   public abstract void testHandleBeanParam1( ) throws Exception;
 
   /**
+   * Method test the implementation of service method deprecatedAsync(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprecatedAsync( ) throws Exception;
+
+  /**
    * Method test the implementation of service method doSomeNotRESTThing(...)
    * 
    * @throws Exception if the test fails.
    */
   public abstract void testDoSomeNotRESTThing( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method deprectaedReturnValue(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprectaedReturnValue( ) throws Exception;
 
   /**
    * Method test the implementation of service method doSomethingRESTy(...)
@@ -90,4 +118,11 @@ public abstract class RESTTestServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testYetAnotherRESTOperation( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method deprecatedParameter(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprecatedParameter( ) throws Exception;
 }

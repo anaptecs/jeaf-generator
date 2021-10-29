@@ -22,6 +22,7 @@
 	/**
 	 * «getComment()»
 	 */
+	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «IF isAbstract»abstract«ENDIF» class «name» extends «IF !superClass.isEmpty»«superClass.get(0).fqn()»«ELSE»com.anaptecs.jeaf.core.api.QueryObject«ENDIF» {
 		/**
 		 * Default serial version uid.

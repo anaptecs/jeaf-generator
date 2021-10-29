@@ -13,6 +13,7 @@ import com.anaptecs.jeaf.xfun.api.XFun;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@Deprecated
 public class BChildPOJO extends BParentPOJO {
   /**
    * Constant for the name of attribute "weirdAttribute".
@@ -51,6 +52,7 @@ public class BChildPOJO extends BParentPOJO {
    * Class implements builder to create a new instance of class BChildPOJO. As the class has readonly attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @Deprecated
   public static class Builder extends BParentPOJO.Builder {
     /**
      * 

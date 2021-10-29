@@ -12,6 +12,7 @@ import com.anaptecs.jeaf.core.api.Activity;
  *
  * 
  */
+@Deprecated
 public interface DoNothingActivity extends Activity {
   /**
    * 

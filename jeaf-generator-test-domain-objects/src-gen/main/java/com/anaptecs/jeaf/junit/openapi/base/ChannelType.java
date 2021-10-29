@@ -23,7 +23,12 @@ public enum ChannelType {
   /**
    * 
    */
-  WEB;
+  WEB,
+  /**
+   * 
+   */
+  @Deprecated
+  LEGACY_POS;
 
   /**
    * Initialize object.

@@ -19,6 +19,7 @@
 package «packageName()»;
 
 «this.getJavadoc()»
+«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 public interface «name» «IF generalization.size > 0»extends «this.getAllExtendedInterfaces()» «ELSE»extends com.anaptecs.jeaf.core.api.Service«ENDIF» {
   «EXPAND JEAFOperation::InterfaceOperation FOREACH ownedOperation»
 }
@@ -52,7 +53,7 @@ import com.anaptecs.jeaf.xfun.api.XFun;
 /**
  * ServiceProxy class for JEAF service «name». 
  */
- 
+«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 public final class «name»Proxy extends ServiceProxy implements «name» «IF generalization.size > 0», «this.getAllExtendedInterfaces()»«ENDIF» {
   /**
    * Serial version uid for the proxy class.
@@ -85,6 +86,8 @@ public final class «name»Proxy extends ServiceProxy implements «name» «IF genera
      * «getComment()»
      */
     «IF this.returnResult().isMultivalued().first() == true»@SuppressWarnings("unchecked")«ENDIF» 
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
     «visibility» «getReturnTypeName()» «name» («EXPAND JEAFOperation::ParameterSignature») «getThrownExceptionsAsString()» {
         try {
             Command lCommand = new «this.getCommandClassName()»(«asParameterListNames()»);

@@ -32,6 +32,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
     lSuite.addTest(new BusinessObjectTestServiceTest("testTestAOneToBOne"));
     lSuite.addTest(new BusinessObjectTestServiceTest("testRemoveCMany"));
     lSuite.addTest(new BusinessObjectTestServiceTest("testTestAttributeAccess"));
+    lSuite.addTest(new BusinessObjectTestServiceTest("testDeprectedOperation"));
     lSuite.addTest(new BusinessObjectTestServiceTest("testUpdateClassA"));
     lSuite.addTest(new BusinessObjectTestServiceTest("testClearCMany"));
     lSuite.addTest(new BusinessObjectTestServiceTest("testCreateClassA"));
@@ -207,6 +208,16 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
   @Override
   public void testTestAttributeAccess( ) throws Exception {
     // TODO Implement test for service method testAttributeAccess(...)
+  }
+
+  /**
+   * Method test the implementation of service method deprectedOperation
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprectedOperation( ) throws Exception {
+    // TODO Implement test for service method deprectedOperation(...)
   }
 
   /**

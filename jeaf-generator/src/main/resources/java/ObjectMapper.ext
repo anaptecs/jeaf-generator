@@ -5,7 +5,7 @@ cached Set getAllObjectMappingDependentClasses(uml::Class class) :
 cached Set getDirectObjectMappingDependentClasses(uml::Class class) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.getDirectObjectMappingDependentClasses( org.eclipse.uml2.uml.Class );
     
-cached Set getDirectObjectMappingDependencies(uml::Class class) :
+cached Set[uml::Dependency] getDirectObjectMappingDependencies(uml::Class class) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ObjectMapper.getDirectObjectMappingDependencies( org.eclipse.uml2.uml.Class );
     
 cached boolean hasUpdateObjectMapping(uml::Class class) :

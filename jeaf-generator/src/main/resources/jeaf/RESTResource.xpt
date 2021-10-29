@@ -13,6 +13,7 @@ package «packageName()»;
 «IF path.length > 0»@javax.ws.rs.Path("«path»")«ENDIF»
 «IF consumes.size > 0»@javax.ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
 «IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
+«EXPAND java::Helper::GenerateDeprecationAnnotation -»
 public class «name»Resource {
 	«EXPAND RESTOperationImpl FOREACH ownedOperation.typeSelect(RESTOperation)»
 }
@@ -36,6 +37,8 @@ public class «name»Resource {
 	«EXPAND HTTPMethods»
 	«IF consumes.size > 0»@javax.ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
 	«IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
+	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
 	public javax.ws.rs.core.Response  «name» («EXPAND RESTParameterSignature FOR this»)«getThrownExceptionsAsString()»{
 	  «this.getOwningClass().fqn()» lService = com.anaptecs.jeaf.core.api.JEAF.getService(«this.getOwningClass().fqn()».class);
 	  «IF getReturnTypeName() != "void"»
@@ -56,6 +59,8 @@ public class «name»Resource {
 	«EXPAND HTTPMethods»
 	«IF consumes.size > 0»@javax.ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
 	«IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
+	«EXPAND java::Helper::GenerateDeprecationAnnotation -»
+	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
 	public void  «name» (@javax.ws.rs.container.Suspended javax.ws.rs.container.AsyncResponse pAsyncResponse, @javax.ws.rs.core.Context javax.servlet.http.HttpServletRequest pRequest «IF ownedParameter.size > 0»,«ENDIF» «EXPAND JEAFOperation::ParameterSignature FOR this»)«getThrownExceptionsAsString()»{
 	    // Lookup workload manager that takes care that the system will have an optimal throughput.
 	    com.anaptecs.jeaf.workload.api.WorkloadManager lWorkloadManager = com.anaptecs.jeaf.workload.api.Workload.getWorkloadManager();
@@ -127,6 +132,8 @@ public class «name»Resource {
   «IF this.type.isStereotypeApplied("BeanParam") -»
   @javax.ws.rs.BeanParam
   «ENDIF-»
+
+  «EXPAND java::Helper::GenerateDeprecationAnnotation»
   «this.getTypeName()» «this.name»
 «ENDDEFINE»
 

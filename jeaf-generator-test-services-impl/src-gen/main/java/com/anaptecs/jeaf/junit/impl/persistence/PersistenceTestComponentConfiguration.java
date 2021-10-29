@@ -137,6 +137,7 @@ public final class PersistenceTestComponentConfiguration {
    * @return {@link Calendar} Value of the property "calendarProperty". The method returns null if no value for the
    * property is defined.
    */
+  @Deprecated
   public Calendar getCalendarProperty( ) {
     return configuration.getConfigurationValue("calendarProperty", Calendar.class);
   }
@@ -149,5 +150,16 @@ public final class PersistenceTestComponentConfiguration {
    */
   public Locale getLocaleProperty( ) {
     return configuration.getConfigurationValue("localeProperty", Locale.class);
+  }
+
+  /**
+   * Method returns the value of the property "deprectedAttribute".
+   * 
+   * @return {@link String} Value of the property "deprectedAttribute". The method returns null if no value for the
+   * property is defined.
+   */
+  @Deprecated
+  public String getDeprectedAttribute( ) {
+    return configuration.getConfigurationValue("deprectedAttribute", String.class);
   }
 }

@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.Locale;
 
 import javax.ws.rs.HeaderParam;
+import javax.ws.rs.QueryParam;
 
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -36,6 +37,12 @@ public class BeanParameter implements ServiceObject {
   public static final String LANGUAGE = "language";
 
   /**
+   * Constant for the name of attribute "oldStyle".
+   */
+  @Deprecated
+  public static final String OLDSTYLE = "oldStyle";
+
+  /**
    * 
    */
   @HeaderParam("token")
@@ -48,6 +55,13 @@ public class BeanParameter implements ServiceObject {
   private Locale language;
 
   /**
+   * 
+   */
+  @Deprecated
+  @QueryParam("q2")
+  private String oldStyle;
+
+  /**
    * Initialize object using the passed builder.
    * 
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -58,6 +72,7 @@ public class BeanParameter implements ServiceObject {
     // Read attribute values from builder.
     accessToken = pBuilder.accessToken;
     language = pBuilder.language;
+    oldStyle = pBuilder.oldStyle;
   }
 
   /**
@@ -76,6 +91,12 @@ public class BeanParameter implements ServiceObject {
     private Locale language;
 
     /**
+     * 
+     */
+    @Deprecated
+    private String oldStyle;
+
+    /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -89,6 +110,7 @@ public class BeanParameter implements ServiceObject {
         // Read attribute values from passed object.
         accessToken = pObject.accessToken;
         language = pObject.language;
+        oldStyle = pObject.oldStyle;
       }
     }
 
@@ -131,6 +153,18 @@ public class BeanParameter implements ServiceObject {
     public Builder setLanguage( Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "oldStyle".
+     * 
+     * @param pOldStyle Value to which the attribute "oldStyle" should be set.
+     */
+    @Deprecated
+    public Builder setOldStyle( String pOldStyle ) {
+      // Assign value to attribute
+      oldStyle = pOldStyle;
       return this;
     }
 
@@ -203,6 +237,29 @@ public class BeanParameter implements ServiceObject {
   }
 
   /**
+   * Method returns the attribute "oldStyle".
+   * 
+   * 
+   * @return String Value to which the attribute "oldStyle" is set.
+   */
+  @Deprecated
+  public String getOldStyle( ) {
+    return oldStyle;
+  }
+
+  /**
+   * Method sets the attribute "oldStyle".
+   * 
+   * 
+   * @param pOldStyle Value to which the attribute "oldStyle" should be set.
+   */
+  @Deprecated
+  public void setOldStyle( String pOldStyle ) {
+    // Assign value to attribute
+    oldStyle = pOldStyle;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -219,6 +276,9 @@ public class BeanParameter implements ServiceObject {
     lBuilder.append('\n');
     lBuilder
         .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "language", "" + language));
+    lBuilder.append('\n');
+    lBuilder
+        .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "oldStyle", "" + oldStyle));
     lBuilder.append('\n');
     return lBuilder;
   }

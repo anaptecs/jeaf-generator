@@ -1,10 +1,10 @@
 openapi: 3.0.0
 
 servers:
-  - description: Accounting PROD
-    url: https://accounting.jeaf.de
   - description: Accounting TEST
     url: http://localhost:8080/test
+  - description: Accounting PROD
+    url: https://accounting.jeaf.de
 
 info:
   title: Product Base Definitions
@@ -45,7 +45,6 @@ components:
         timeUnit: 
           $ref: '#/components/schemas/TimeUnit'
       required:
-        - objectType
         - value
     # com.anaptecs.jeaf.junit.openapi.base.MoneyAmount
     MoneyAmount:
@@ -64,7 +63,6 @@ components:
         currency: 
           type: string
       required:
-        - objectType
         - amount
         - currency
     # com.anaptecs.jeaf.junit.openapi.base.ChannelCode
@@ -118,7 +116,6 @@ components:
         productID: 
           type: string
       required:
-        - objectType
         - image
     # com.anaptecs.jeaf.junit.openapi.base.Sortiment
     Sortiment:
@@ -216,7 +213,6 @@ components:
         bString: 
           type: string
       required:
-        - objectType
         - aBoolean
         - cBoolean
         - aByte
@@ -334,7 +330,6 @@ components:
           items:
             type: string
       required:
-        - objectType
         - aBooleanArray
         - cBooleanArray
         - aByteArray
@@ -373,7 +368,6 @@ components:
           type: integer
           format: int32
       required:
-        - objectType
         - childAAttribute
     # com.anaptecs.jeaf.junit.openapi.base.ChildB
     ChildB:
@@ -389,19 +383,18 @@ components:
             $ref: '#/components/schemas/ParentClass'
           minItems: 0
       required:
-        - objectType
         - childBAttribute
     # com.anaptecs.jeaf.junit.openapi.base.ChildAA
     ChildAA:
       allOf:
         - $ref: '#/components/schemas/ChildA'
+      deprecated: true
       type: object
       properties:
         childAAAttribute: 
           type: integer
           format: int32
       required:
-        - objectType
         - childAAAttribute
     # com.anaptecs.jeaf.junit.openapi.base.ChildBB
     ChildBB:
@@ -412,6 +405,28 @@ components:
         childBBAttribute: 
           type: integer
           format: int64
+        deprecatedAttribute: 
+          type: integer
+          format: int32
+          deprecated: true
+        deprecatedBs: 
+          # Attribute "deprecatedBs" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+          type: array
+          items:
+            $ref: '#/components/schemas/ChildB'
+          minItems: 0
+        deprecatedParent: 
+          # Attribute "deprecatedParent" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+          $ref: '#/components/schemas/ParentClass'
+        deprecatedArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+            deprecated: true
+      required:
+        - deprecatedAttribute
+        - deprecatedArray
 
     
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
@@ -442,4 +457,15 @@ components:
         - MOBILE
         - TVM
         - WEB
+        # Literal "LEGACY_POS" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
+        - LEGACY_POS
+
+    # com.anaptecs.jeaf.junit.openapi.base.DeprecatedEnum
+    DeprecatedEnum:
+      type: string
+      deprecated: true
+      enum:
+        - ONE
+        - TWO
+        - THREE
 
