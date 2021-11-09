@@ -19,6 +19,20 @@
 			<type>zip</type>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations -->
+		<dependency>
+		    <groupId>io.swagger.core.v3</groupId>
+		    <artifactId>swagger-annotations</artifactId>
+		    <version>2.1.11</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>2.13.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -71,6 +85,41 @@
 					<!-- <conventionFile>anaptecs_code_guideline.xml</conventionFile> -->
 				</configuration>
 			</plugin>
+
+			<plugin>
+			    <groupId>io.swagger.codegen.v3</groupId>
+			    <artifactId>swagger-codegen-maven-plugin</artifactId>
+			    <version>3.0.29</version>
+			    <executions>
+			        <execution>
+			            <goals>
+			                <goal>generate</goal>
+			            </goals>
+			            <configuration>
+			                <inputSpec>${project.basedir}/src-gen/main/resources/product-base.yml</inputSpec>
+			                <language>java</language>
+			                
+			                <generateApis>false</generateApis>
+			                <generateModelTests>false</generateModelTests>
+			                <generateModelDocumentation>false</generateModelDocumentation>
+			                <generateApiDocumentation>false</generateApiDocumentation>
+			                <generateSupportingFiles>false</generateSupportingFiles>
+			                <output>${project.basedir}</output>
+			                
+			                <modelPackage>com.anaptecs.jeaf.openapi</modelPackage>
+			                <configOptions>
+			                   <sourceFolder>src-gen/main/java</sourceFolder>
+			                   <dateLibrary>java8</dateLibrary>
+			                   <java8>true</java8>
+			                   <hideGenerationTimestamp>true</hideGenerationTimestamp>
+			                </configOptions>
+			                <configHelp>false</configHelp>
+			                <library>jersey2</library>
+			                
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
@@ -93,6 +142,19 @@
 									</pluginExecutionFilter>
 									<action>
 										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>io.swagger.codegen.v3</groupId>
+										<artifactId>swagger-codegen-maven-plugin</artifactId>
+										<versionRange>[3.0.29,)</versionRange>
+										<goals>
+											<goal>generate</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
