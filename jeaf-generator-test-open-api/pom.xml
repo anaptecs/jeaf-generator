@@ -97,16 +97,20 @@
 			            </goals>
 			            <configuration>
 			                <inputSpec>${project.basedir}/src-gen/main/resources/product-base.yml</inputSpec>
+			                <output>${project.basedir}</output>
+
 			                <language>java</language>
 			                
+			                <generateModels>true</generateModels>
 			                <generateApis>false</generateApis>
+			                <generateApiTests>false</generateApiTests>
 			                <generateModelTests>false</generateModelTests>
 			                <generateModelDocumentation>false</generateModelDocumentation>
 			                <generateApiDocumentation>false</generateApiDocumentation>
 			                <generateSupportingFiles>false</generateSupportingFiles>
-			                <output>${project.basedir}</output>
 			                
 			                <modelPackage>com.anaptecs.jeaf.openapi</modelPackage>
+			                <apiPackage>com.anaptecs.jeaf.openapi.service</apiPackage>
 			                <configOptions>
 			                   <sourceFolder>src-gen/main/java</sourceFolder>
 			                   <dateLibrary>java8</dateLibrary>

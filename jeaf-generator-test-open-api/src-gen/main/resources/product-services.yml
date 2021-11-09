@@ -25,6 +25,7 @@ paths:
     get:
       description: >-
         Operation returns all available product.
+      operationId: getProducts
       responses:
         '200':
           description: >- 
@@ -38,6 +39,7 @@ paths:
                 minItems: 0
           
     post:
+      operationId: createProduct
       requestBody:
         description: >- 
           TODO Please add comment
@@ -57,12 +59,14 @@ paths:
                 example: 'true'
           
     head:
+      operationId: ping
       responses:
         '200':
           description: Operation does not return any content.
           
   /products/{id}:
     get:
+      operationId: getProduct
       parameters:
         - name: id
           in: path
@@ -83,6 +87,7 @@ paths:
           
   /products/sortiment:
     get:
+      operationId: getSortiment
       parameters:
         - name: accessToken
           in: header
@@ -133,6 +138,7 @@ paths:
           
   /products/ChannelCode:
     post:
+      operationId: createChannelCode
       requestBody:
         description: >- 
           TODO Please add comment
@@ -157,6 +163,7 @@ paths:
           
   /products/deprecated/operation:
     get:
+      operationId: deprecatedOperation
       deprecated: true
       responses:
         '200':
@@ -169,6 +176,7 @@ paths:
           
   /products/deprecated/context:
     post:
+      operationId: deprecatedContext
       parameters:
         - name: accessToken
           in: header
@@ -211,6 +219,7 @@ paths:
           
   /products/deprecated/beanParams:
     post:
+      operationId: deprecatedBeanParam
       parameters:
         - name: accessToken
           in: header
@@ -240,6 +249,7 @@ paths:
           
   /products/deprecated/params:
     post:
+      operationId: deprecatedParams
       parameters:
         - name: param1
           in: header
@@ -262,6 +272,7 @@ paths:
           
   /products/deprecated/body:
     post:
+      operationId: deprecatedBody
       requestBody:
         description: >- 
           TODO Please add comment
@@ -288,6 +299,7 @@ paths:
     post:
       description: >-
         Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
+      operationId: deprectedComplexRequestBody
       requestBody:
         description: >- 
           TODO Please add comment
@@ -306,6 +318,7 @@ paths:
           
   /products/deprecated/complexReturn:
     get:
+      operationId: deprecatedComplexReturn
       responses:
         '200':
           description: >- 

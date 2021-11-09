@@ -43,6 +43,7 @@ paths:
   # So we define NOP operation here as workaround.
   /nop:
     get:
+      operationId: noOperation
       responses:
         '200':
           description: Nothing is the result of nop ;-)
@@ -93,6 +94,7 @@ components:
       description: >-
         «operation.getCommentForOpenAPIDescription("        ")»
       «ENDIF-»
+      operationId: «operation.getOperationID(service)»
       «IF operation.isDeprecated() -»
       deprecated: true
       «ENDIF-»

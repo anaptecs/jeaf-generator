@@ -142,6 +142,9 @@ boolean isReadOnly(uml::Property property):
 boolean isWriteOnly(uml::Property property):
   if property.isStereotypeApplied("OpenAPIProperty") then ((JMM::OpenAPIProperty) property).accessType.name == "WRITE_ONLY" else false;
   
+String getOperationID(uml::Operation operation, uml::Interface service):
+   operation.name;
+  
   
 
   
