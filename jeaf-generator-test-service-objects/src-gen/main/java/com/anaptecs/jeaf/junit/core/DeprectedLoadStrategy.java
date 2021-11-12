@@ -8,8 +8,9 @@ package com.anaptecs.jeaf.junit.core;
 import com.anaptecs.jeaf.core.api.LoadStrategy;
 
 /**
-	 * 
-	 */
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
 @Deprecated
 public final class DeprectedLoadStrategy implements LoadStrategy {
   /**

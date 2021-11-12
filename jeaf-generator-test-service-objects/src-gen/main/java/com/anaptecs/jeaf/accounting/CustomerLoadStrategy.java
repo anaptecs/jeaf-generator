@@ -8,8 +8,9 @@ package com.anaptecs.jeaf.accounting;
 import com.anaptecs.jeaf.core.api.LoadStrategy;
 
 /**
-	 * 
-	 */
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
 public final class CustomerLoadStrategy implements LoadStrategy {
   /**
    * Default serial version uid.

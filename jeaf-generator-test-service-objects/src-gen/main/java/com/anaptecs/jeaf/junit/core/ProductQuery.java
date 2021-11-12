@@ -10,8 +10,9 @@ import com.anaptecs.jeaf.core.api.QueryObject;
 import com.anaptecs.jeaf.xfun.api.XFun;
 
 /**
-	 * 
-	 */
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
 public class ProductQuery extends QueryObject {
   /**
    * Default serial version uid.

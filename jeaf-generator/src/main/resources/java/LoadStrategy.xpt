@@ -13,9 +13,7 @@
 	«getFileHeader()»
 	package «this.packageName()»;
 	
-	/**
-	 * «getComment()»
-	 */
+	«this.getJavadoc()»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public final class «name» implements com.anaptecs.jeaf.core.api.LoadStrategy {
 		/**
