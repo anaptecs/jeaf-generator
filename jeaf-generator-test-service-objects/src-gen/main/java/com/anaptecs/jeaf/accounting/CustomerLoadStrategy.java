@@ -28,14 +28,6 @@ public final class CustomerLoadStrategy implements LoadStrategy {
   public static final CustomerLoadStrategy LOAD_NONE = new CustomerLoadStrategy(false, false);
 
   /**
-   * Initialize object.
-   */
-  public CustomerLoadStrategy( boolean pLoadAccount, boolean pLoadBookings ) {
-    loadAccount = pLoadAccount;
-    loadBookings = pLoadBookings;
-  }
-
-  /**
    * 
    */
   private final boolean loadAccount;
@@ -44,6 +36,14 @@ public final class CustomerLoadStrategy implements LoadStrategy {
    * 
    */
   private final boolean loadBookings;
+
+  /**
+   * Initialize object.
+   */
+  public CustomerLoadStrategy( boolean pLoadAccount, boolean pLoadBookings ) {
+    loadAccount = pLoadAccount;
+    loadBookings = pLoadBookings;
+  }
 
   /**
    * 

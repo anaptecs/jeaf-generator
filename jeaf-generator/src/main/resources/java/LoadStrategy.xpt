@@ -31,14 +31,6 @@
      */
     public static final «name» LOAD_NONE = new «name»(«FOREACH this.attribute AS nextAttribute SEPARATOR ','» false«ENDFOREACH»);
     
-    /**
-     * Initialize object.
-     */
-    public «name»(«FOREACH this.attribute AS nextAttribute SEPARATOR ','» boolean «nextAttribute.asParameter()» «ENDFOREACH») {
-    «FOREACH this.attribute AS nextAttribute»
-      «nextAttribute.asInstanceVar()» = «nextAttribute.asParameter()»;«ENDFOREACH»
-    }
-   
     «FOREACH this.attribute AS nextAttribute»
    
     /**
@@ -48,6 +40,14 @@
     private final boolean «nextAttribute.asInstanceVar()»;
     «ENDFOREACH»
     
+    /**
+     * Initialize object.
+     */
+    public «name»(«FOREACH this.attribute AS nextAttribute SEPARATOR ','» boolean «nextAttribute.asParameter()» «ENDFOREACH») {
+    «FOREACH this.attribute AS nextAttribute»
+      «nextAttribute.asInstanceVar()» = «nextAttribute.asParameter()»;«ENDFOREACH»
+    }
+   
     «FOREACH this.attribute AS nextAttribute»
    
     /**

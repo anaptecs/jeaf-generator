@@ -28,15 +28,6 @@ public final class TestLoadStrategy implements LoadStrategy {
   public static final TestLoadStrategy LOAD_NONE = new TestLoadStrategy(false, false, false);
 
   /**
-   * Initialize object.
-   */
-  public TestLoadStrategy( boolean pLoadInternalData, boolean pLoadPublicData, boolean pLoadDeprecatedData ) {
-    loadInternalData = pLoadInternalData;
-    loadPublicData = pLoadPublicData;
-    loadDeprecatedData = pLoadDeprecatedData;
-  }
-
-  /**
    * 
    */
   private final boolean loadInternalData;
@@ -51,6 +42,15 @@ public final class TestLoadStrategy implements LoadStrategy {
    */
   @Deprecated
   private final boolean loadDeprecatedData;
+
+  /**
+   * Initialize object.
+   */
+  public TestLoadStrategy( boolean pLoadInternalData, boolean pLoadPublicData, boolean pLoadDeprecatedData ) {
+    loadInternalData = pLoadInternalData;
+    loadPublicData = pLoadPublicData;
+    loadDeprecatedData = pLoadDeprecatedData;
+  }
 
   /**
    * 
