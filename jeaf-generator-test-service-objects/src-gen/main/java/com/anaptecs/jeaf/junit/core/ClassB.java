@@ -9,7 +9,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import com.anaptecs.jeaf.core.api.AbstractObjectID;
 import com.anaptecs.jeaf.core.api.Identifiable;
@@ -48,7 +49,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
-  private Set<ClassA> manyAs = new HashSet<ClassA>();
+  private SortedSet<ClassA> manyAs = new TreeSet<ClassA>();
 
   /**
    * 
@@ -91,7 +92,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
     /**
      * 
      */
-    private Set<ClassA> manyAs;
+    private SortedSet<ClassA> manyAs;
 
     /**
      * 
@@ -149,10 +150,10 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
      * 
      * @param pManyAs Collection with objects to which the association should be set.
      */
-    public Builder setManyAs( Set<ClassA> pManyAs ) {
+    public Builder setManyAs( SortedSet<ClassA> pManyAs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pManyAs != null) {
-        manyAs = new HashSet<ClassA>(pManyAs);
+        manyAs = new TreeSet<ClassA>(pManyAs);
       }
       else {
         manyAs = null;
@@ -231,9 +232,9 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
    * @return Collection All ClassA objects that belong to the association "manyAs". The method never returns null and
    * the returned collection is unmodifiable.
    */
-  public Set<ClassA> getManyAs( ) {
+  public SortedSet<ClassA> getManyAs( ) {
     // Return all ClassA objects as unmodifiable collection.
-    return Collections.unmodifiableSet(manyAs);
+    return Collections.unmodifiableSortedSet(manyAs);
   }
 
   /**
@@ -243,13 +244,13 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
    * 
    * @param pManyAs Collection with objects to which the association should be set. The parameter must not be null.
    */
-  void setManyAs( Set<ClassA> pManyAs ) {
+  void setManyAs( SortedSet<ClassA> pManyAs ) {
     // Check of parameter is not required.
     // Remove all objects from association "manyAs".
     this.clearManyAs();
     // If the association is null, removing all entries is sufficient.
     if (pManyAs != null) {
-      manyAs = new HashSet<ClassA>(pManyAs);
+      manyAs = new TreeSet<ClassA>(pManyAs);
     }
   }
 
