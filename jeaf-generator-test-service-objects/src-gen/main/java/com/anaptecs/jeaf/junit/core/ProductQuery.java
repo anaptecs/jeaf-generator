@@ -20,6 +20,32 @@ public class ProductQuery extends QueryObject {
   private static final long serialVersionUID = 1L;
 
   /**
+   * Constant for the name of attribute "name".
+   */
+  public static final String NAME = "name";
+
+  /**
+   * Constant for the name of attribute "minAvailability".
+   */
+  @Deprecated
+  public static final String MINAVAILABILITY = "minAvailability";
+
+  /**
+   * Constant for the name of attribute "minPrice".
+   */
+  public static final String MINPRICE = "minPrice";
+
+  /**
+   * Constant for the name of attribute "maxPrice".
+   */
+  public static final String MAXPRICE = "maxPrice";
+
+  /**
+   * Constant for the name of attribute "manufacturer".
+   */
+  public static final String MANUFACTURER = "manufacturer";
+
+  /**
    * 
    */
   private String name;
