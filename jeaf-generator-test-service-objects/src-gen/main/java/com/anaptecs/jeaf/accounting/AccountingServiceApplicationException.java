@@ -73,6 +73,24 @@ public final class AccountingServiceApplicationException extends ApplicationExce
   }
 
   /**
+   * Constructor initializes this application exception with the passed error code and Throwable object that caused this
+   * exception.
+   * 
+   * @param pErrorCode Error code identifying the occurred problem. Among other things the error code is used to
+   * determine the corresponding error message. The parameter must not be null.
+   * @param pTechnicalDetails Technical details about an exception. They might be helpful to solve the issue / root
+   * cause. This information is not intended to be shown to users but will be added to log files for example.
+   * @param pCause Throwable object that caused this exception. The parameter may be null.
+   * @param pMessageParameters String array contains all values that are used to create a parameterized error message.
+   * The message parameters usually describe the concrete context in which the exception occurred. The parameter may be
+   * null.
+   */
+  public AccountingServiceApplicationException( ErrorCode pErrorCode, String pTechnicalDetails, Throwable pCause,
+      String... pMessageParameters ) {
+    super(pErrorCode, pTechnicalDetails, pCause, pMessageParameters);
+  }
+
+  /**
    * Method resolves the version the JEAF framework.
    * 
    * @return VersionInfo Information about the used JEAF version. The method never returns null.
