@@ -331,3 +331,14 @@ paths:
           
 
 
+components:
+  schemas:
+    # com.anaptecs.jeaf.junit.openapi.service1.Sale
+    Sale:
+      type: object
+      properties:
+        transactionAmount: 
+          type: number
+          format: double
+
+    

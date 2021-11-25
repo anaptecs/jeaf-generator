@@ -89,9 +89,10 @@
 			<plugin>
 			    <groupId>io.swagger.codegen.v3</groupId>
 			    <artifactId>swagger-codegen-maven-plugin</artifactId>
-			    <version>3.0.29</version>
+			    <version>3.0.30</version>
 			    <executions>
 			        <execution>
+			            <id>Generate Base Model</id>
 			            <goals>
 			                <goal>generate</goal>
 			            </goals>
@@ -108,6 +109,39 @@
 			                <generateModelDocumentation>false</generateModelDocumentation>
 			                <generateApiDocumentation>false</generateApiDocumentation>
 			                <generateSupportingFiles>false</generateSupportingFiles>
+			                
+			                <modelPackage>com.anaptecs.jeaf.openapi</modelPackage>
+			                <apiPackage>com.anaptecs.jeaf.openapi.service</apiPackage>
+			                <configOptions>
+			                   <sourceFolder>src-gen/main/java</sourceFolder>
+			                   <dateLibrary>java8</dateLibrary>
+			                   <java8>true</java8>
+			                   <hideGenerationTimestamp>true</hideGenerationTimestamp>
+			                </configOptions>
+			                <configHelp>false</configHelp>
+			                <library>jersey2</library>
+			                
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>Generate Service Model</id>
+			            <goals>
+			                <goal>generate</goal>
+			            </goals>
+			            <configuration>
+			                <inputSpec>${project.basedir}/src-gen/main/resources/product-services.yml</inputSpec>
+			                <output>${project.basedir}</output>
+
+			                <language>java</language>
+			                
+			                <generateModels>true</generateModels>
+			                <generateApis>false</generateApis>
+			                <generateApiTests>false</generateApiTests>
+			                <generateModelTests>false</generateModelTests>
+			                <generateModelDocumentation>false</generateModelDocumentation>
+			                <generateApiDocumentation>false</generateApiDocumentation>
+			                <generateSupportingFiles>false</generateSupportingFiles>
+			                <skipOverwrite>true</skipOverwrite>
 			                
 			                <modelPackage>com.anaptecs.jeaf.openapi</modelPackage>
 			                <apiPackage>com.anaptecs.jeaf.openapi.service</apiPackage>

@@ -42,9 +42,9 @@ public enum DeprecatedEnum {
   }
 
   @JsonCreator
-  public static DeprecatedEnum fromValue(String text) {
+  public static DeprecatedEnum fromValue(String input) {
     for (DeprecatedEnum b : DeprecatedEnum.values()) {
-      if (String.valueOf(b.value).equals(text)) {
+      if (b.value.equals(input)) {
         return b;
       }
     }

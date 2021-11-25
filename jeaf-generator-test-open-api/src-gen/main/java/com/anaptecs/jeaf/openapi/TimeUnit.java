@@ -46,9 +46,9 @@ public enum TimeUnit {
   }
 
   @JsonCreator
-  public static TimeUnit fromValue(String text) {
+  public static TimeUnit fromValue(String input) {
     for (TimeUnit b : TimeUnit.values()) {
-      if (String.valueOf(b.value).equals(text)) {
+      if (b.value.equals(input)) {
         return b;
       }
     }
