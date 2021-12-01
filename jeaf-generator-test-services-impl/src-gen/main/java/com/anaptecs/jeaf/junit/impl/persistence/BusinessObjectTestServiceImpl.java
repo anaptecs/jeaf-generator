@@ -9,9 +9,9 @@ import java.util.Set;
 
 import com.anaptecs.jeaf.core.api.Component;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
-import com.anaptecs.jeaf.core.api.health.CheckLevel;
-import com.anaptecs.jeaf.core.api.health.HealthCheckResult;
 import com.anaptecs.jeaf.junit.core.ClassA;
+import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
+import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 
 /**
  * Implementation of BusinessObjectTestService.

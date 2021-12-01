@@ -124,7 +124,7 @@ final class «name» extends «name»Base {
    * constant {@link HealthCheckResult#CHECK_OK} if no errors or warnings occurred during the check.
    */
   @Override
-  public com.anaptecs.jeaf.core.api.health.HealthCheckResult check( com.anaptecs.jeaf.core.api.health.CheckLevel pLevel ) {
+  public com.anaptecs.jeaf.xfun.api.health.HealthCheckResult check( com.anaptecs.jeaf.xfun.api.health.CheckLevel pLevel ) {
     // TODO Implement checks for this service provider
     return null;
   }

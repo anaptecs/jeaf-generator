@@ -6,8 +6,8 @@
 package com.anaptecs.jeaf.junit.impl.core;
 
 import com.anaptecs.jeaf.core.api.Component;
-import com.anaptecs.jeaf.core.api.health.CheckLevel;
-import com.anaptecs.jeaf.core.api.health.HealthCheckResult;
+import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
+import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 
 /**
  * Implementation of MailTestService.

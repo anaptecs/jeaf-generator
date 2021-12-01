@@ -8,12 +8,12 @@ package com.anaptecs.jeaf.junit.impl.core;
 import java.util.Set;
 
 import com.anaptecs.jeaf.core.api.Component;
-import com.anaptecs.jeaf.core.api.health.CheckLevel;
-import com.anaptecs.jeaf.core.api.health.HealthCheckResult;
 import com.anaptecs.jeaf.junit.core.SimpleDatatypeServiceObject;
 import com.anaptecs.jeaf.junit.core.WrapperDatatypeServiceObject;
 import com.anaptecs.jeaf.junit.otherpackage.Input;
 import com.anaptecs.jeaf.junit.otherpackage.Output;
+import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
+import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 
 /**
  * Implementation of GeneratorTestService.

@@ -5,9 +5,9 @@
  */
 package com.anaptecs.jeaf.accounting.messaging.impl;
 
-import com.anaptecs.jeaf.core.api.health.CheckLevel;
-import com.anaptecs.jeaf.core.api.health.HealthCheckResult;
 import com.anaptecs.jeaf.xfun.api.errorhandling.SystemException;
+import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
+import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 
 /**
  * This class is the base class of the service provider implementation MessagingServiceProviderImpl.
