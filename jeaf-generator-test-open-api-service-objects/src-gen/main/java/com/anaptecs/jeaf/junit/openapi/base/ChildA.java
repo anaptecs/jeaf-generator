@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -48,6 +49,7 @@ public abstract class ChildA extends ParentClass {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   @JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
+  @JsonIgnoreProperties(value = "objectType")
   public static abstract class Builder extends ParentClass.Builder {
     /**
      * 

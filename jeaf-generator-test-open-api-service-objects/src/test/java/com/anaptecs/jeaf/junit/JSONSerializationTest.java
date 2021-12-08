@@ -16,6 +16,8 @@ import org.junit.jupiter.api.Test;
 import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelType;
+import com.anaptecs.jeaf.junit.openapi.base.ChildBB;
+import com.anaptecs.jeaf.junit.openapi.base.ParentClass;
 import com.anaptecs.jeaf.junit.openapi.base.Reseller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -64,7 +66,24 @@ public class JSONSerializationTest {
   }
 
   @Test
-  public void testInheritanceSerialization( ) {
+  public void testInheritanceSerialization( ) throws JsonProcessingException {
+    ParentClass lParentClass = ParentClass.Builder.newBuilder().setParentAttribute("parent").build();
+    ObjectMapper lObjectMapper = new ObjectMapper();
+    String lValue = lObjectMapper.writeValueAsString(lParentClass);
+    assertEquals("{\"objectType\":\"ParentClass\",\"parentAttribute\":\"parent\"}", lValue);
+
+    ParentClass lDeserializedParent = lObjectMapper.readValue(lValue, ParentClass.class);
+    assertEquals("parent", lParentClass.getParentAttribute());
+
+    ChildBB lChildBB = ChildBB.Builder.newBuilder().setChildBBAttribute(123456789l).build();
+    lValue = lObjectMapper.writeValueAsString(lChildBB);
+    assertEquals(
+        "{\"objectType\":\"ChildBB\",\"parentAttribute\":null,\"childBAttribute\":false,\"composition\":[],\"childBBAttribute\":123456789,\"deprecatedAttribute\":0,\"deprecatedBs\":[],\"deprecatedParent\":null,\"deprecatedArray\":null}",
+        lValue);
+
+    lDeserializedParent = lObjectMapper.readValue(lValue, ParentClass.class);
+    assert (lDeserializedParent instanceof ChildBB);
+
     // fail("Not yet implemented.");
   }
 }

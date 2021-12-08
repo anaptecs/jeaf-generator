@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -51,6 +52,7 @@ public class ChildAA extends ChildA {
    */
   @Deprecated
   @JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
+  @JsonIgnoreProperties(value = "objectType")
   public static class Builder extends ChildA.Builder {
     /**
      * 
