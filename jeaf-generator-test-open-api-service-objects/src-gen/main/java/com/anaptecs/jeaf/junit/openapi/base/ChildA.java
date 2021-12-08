@@ -7,11 +7,14 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@JsonDeserialize(builder = ChildA.Builder.class)
 public abstract class ChildA extends ParentClass {
   /**
    * Default serial version uid.
@@ -44,6 +47,7 @@ public abstract class ChildA extends ParentClass {
    * Class implements builder to create a new instance of class ChildA. As the class has readonly attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
   public static abstract class Builder extends ParentClass.Builder {
     /**
      * 

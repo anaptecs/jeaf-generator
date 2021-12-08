@@ -15,11 +15,14 @@ import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@JsonDeserialize(builder = ChildB.Builder.class)
 public class ChildB extends ParentClass {
   /**
    * Default serial version uid.
@@ -65,6 +68,7 @@ public class ChildB extends ParentClass {
    * Class implements builder to create a new instance of class ChildB. As the class has readonly attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
   public static class Builder extends ParentClass.Builder {
     /**
      * 

@@ -5,10 +5,12 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
@@ -17,11 +19,14 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@JsonDeserialize(builder = Reseller.Builder.class)
 public class Reseller implements ServiceObject {
   /**
    * Default serial version uid.
@@ -46,7 +51,7 @@ public class Reseller implements ServiceObject {
   /**
    * 
    */
-  private Set<Channel> channels = new HashSet<Channel>();
+  private List<Channel> channels = new ArrayList<Channel>();
 
   /**
    * 
@@ -80,11 +85,12 @@ public class Reseller implements ServiceObject {
    * Class implements builder to create a new instance of class Reseller. As the class has readonly attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
   public static class Builder {
     /**
      * 
      */
-    private Set<Channel> channels;
+    private List<Channel> channels;
 
     /**
      * 
@@ -139,10 +145,10 @@ public class Reseller implements ServiceObject {
      * 
      * @param pChannels Collection with objects to which the association should be set.
      */
-    public Builder setChannels( Set<Channel> pChannels ) {
+    public Builder setChannels( List<Channel> pChannels ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pChannels != null) {
-        channels = new HashSet<Channel>(pChannels);
+        channels = new ArrayList<Channel>(pChannels);
       }
       else {
         channels = null;
@@ -208,9 +214,9 @@ public class Reseller implements ServiceObject {
    * @return Collection All Channel objects that belong to the association "channels". The method never returns null and
    * the returned collection is unmodifiable.
    */
-  public Set<Channel> getChannels( ) {
+  public List<Channel> getChannels( ) {
     // Return all Channel objects as unmodifiable collection.
-    return Collections.unmodifiableSet(channels);
+    return Collections.unmodifiableList(channels);
   }
 
   /**
@@ -220,13 +226,13 @@ public class Reseller implements ServiceObject {
    * 
    * @param pChannels Collection with objects to which the association should be set. The parameter must not be null.
    */
-  void setChannels( Set<Channel> pChannels ) {
+  void setChannels( List<Channel> pChannels ) {
     // Check of parameter is not required.
     // Remove all objects from association "channels".
     this.clearChannels();
     // If the association is null, removing all entries is sufficient.
     if (pChannels != null) {
-      channels = new HashSet<Channel>(pChannels);
+      channels = new ArrayList<Channel>(pChannels);
     }
   }
 
