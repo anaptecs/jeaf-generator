@@ -89,6 +89,9 @@ cached boolean generateJAXRSAnnotations() :
 cached boolean generateJacksonAnnotations() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateJacksonAnnotations();
     
+cached boolean enableSemVerForJSON() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.enableSemVerForJSON();
+    
 cached String getFileHeader() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getFileHeader();        
     

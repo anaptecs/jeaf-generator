@@ -295,6 +295,12 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateJacksonAnnotations;
 
   /**
+   * Parameter defines if generated code for JSON serialization should be SemVer compliant or not.
+   */
+  @Parameter(required = false, defaultValue = "true")
+  private Boolean enableSemVerForJSON;
+
+  /**
    * Switch defines whether a message constants should be generated from resource files or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -548,13 +554,16 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate JUnit Test Cases:                " + generateJUnitTests);
     }
     if (generateOpenAPISpec) {
-      lLog.info("Generate Open API Specification           " + generateOpenAPISpec);
+      lLog.info("Generate Open API Specification:          " + generateOpenAPISpec);
     }
     if (generateJAXRSAnnotations) {
-      lLog.info("Generate JAX-RS annotations               " + generateJAXRSAnnotations);
+      lLog.info("Generate JAX-RS annotations:              " + generateJAXRSAnnotations);
     }
     if (generateJacksonAnnotations) {
-      lLog.info("Generate Jackson annotations              " + generateJacksonAnnotations);
+      lLog.info("Generate Jackson annotations:             " + generateJacksonAnnotations);
+    }
+    if (enableSemVerForJSON) {
+      lLog.info("Enable SemVer for JSON serialization:     " + generateJacksonAnnotations);
     }
     if (generateMessageConstants) {
       lLog.info("Generate Message Constants:               " + generateMessageConstants);
@@ -630,6 +639,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.openapispec", generateOpenAPISpec.toString());
       System.setProperty("switch.gen.jaxrs.annotations", generateJAXRSAnnotations.toString());
       System.setProperty("switch.gen.jackson.annotations", generateJacksonAnnotations.toString());
+      System.setProperty("switch.gen.enable.json.semver", enableSemVerForJSON.toString());
       System.setProperty("switch.gen.public.setters.for.associations", generatePublicSettersForAssociations.toString());
       System.setProperty("switch.gen.null.checks.for.to.one.associations.of.service.objects",
           generateNullChecksForToOneAssociations.toString());

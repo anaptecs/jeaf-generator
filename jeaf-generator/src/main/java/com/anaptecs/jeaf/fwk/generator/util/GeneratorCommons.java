@@ -167,6 +167,11 @@ public class GeneratorCommons {
    */
   public static final String JACKSON_ANNOTATIONS_PROPERTY = "switch.gen.jackson.annotations";
 
+  /**
+   * Constant defines the name of the system property which enables SemVer support for generated JSON serialization.
+   */
+  public static final String ENABLE_SEMVER_FOR_JSON = "switch.gen.enable.json.semver";
+
   public static final String LINE_SEPARATOR = "\n";
 
   public static final String CLASS_INDENTATION = "";
@@ -630,8 +635,8 @@ public class GeneratorCommons {
   /**
    * Method checks whether JAX-RS Annotations for should be generated.
    * 
-   * @return boolean Method returns true if JAX-RS Annotations should be generated from the model and false in all
-   * other cases.
+   * @return boolean Method returns true if JAX-RS Annotations should be generated from the model and false in all other
+   * cases.
    */
   public static boolean generateJAXRSAnnotations( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
@@ -647,6 +652,11 @@ public class GeneratorCommons {
   public static boolean generateJacksonAnnotations( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(JACKSON_ANNOTATIONS_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean enableSemVerForJSON( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(ENABLE_SEMVER_FOR_JSON, Boolean.TRUE, Boolean.class);
   }
 
   public static boolean generatePublicSettersForAssociations( ) {

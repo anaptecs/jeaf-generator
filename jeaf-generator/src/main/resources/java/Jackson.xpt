@@ -32,8 +32,11 @@
 «DEFINE JacksonBuilderAnnotations FOR Class»
 	«IF generateJacksonAnnotations()»
 		@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
-		«IF this.parents().size > 0 || this.getSubclasses().size > 0»
+		«IF enableSemVerForJSON() == true»
+		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+		«ELSE»«IF this.parents().size > 0 || this.getSubclasses().size > 0»
 		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(value = "objectType")
+		«ENDIF»
 		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»
