@@ -8,8 +8,9 @@
 «IMPORT JMM»
 
 
-«DEFINE JacksonAnnotation FOR Class»
+«DEFINE JacksonClassAnnotations FOR Class»
 	«IF generateJacksonAnnotations()»
+		@com.fasterxml.jackson.databind.annotation.JsonDeserialize(builder = «this.name».Builder.class)
 		«IF this.superClass.size == 0 && this.getSubclasses().size > 0 »
 		@com.fasterxml.jackson.annotation.JsonTypeInfo(use = com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME, include = com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 		@com.fasterxml.jackson.annotation.JsonSubTypes({
@@ -18,5 +19,11 @@
 		  «ENDFOREACH»
 		 })
 		«ENDIF»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE JacksonBuilderAnnotations FOR Class»
+	«IF generateJacksonAnnotations()»
+		@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
 	«ENDIF»
 «ENDDEFINE»

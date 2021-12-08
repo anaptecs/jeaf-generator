@@ -61,6 +61,10 @@ public class JSONSerializationTest {
     assertEquals(ChannelType.MOBILE, lDeserializedReseller.getChannels().get(1).getChannelType());
     assertEquals("MOBILE_APP", lDeserializedReseller.getChannels().get(1).getChannelCode().getCode());
     assertEquals(2, lDeserializedReseller.getChannels().size());
+  }
 
+  @Test
+  public void testInheritanceSerialization( ) {
+    // fail("Not yet implemented.");
   }
 }
