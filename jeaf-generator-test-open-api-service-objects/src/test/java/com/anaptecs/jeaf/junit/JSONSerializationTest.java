@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelType;
+import com.anaptecs.jeaf.junit.openapi.base.ChildAA;
 import com.anaptecs.jeaf.junit.openapi.base.ChildBB;
 import com.anaptecs.jeaf.junit.openapi.base.ParentClass;
 import com.anaptecs.jeaf.junit.openapi.base.Reseller;
@@ -84,6 +86,21 @@ public class JSONSerializationTest {
     lDeserializedParent = lObjectMapper.readValue(lValue, ParentClass.class);
     assert (lDeserializedParent instanceof ChildBB);
 
-    // fail("Not yet implemented.");
+    ChildAA lChildAA = ChildAA.Builder.newBuilder().setChildAAttribute(4711).build();
+    lChildBB.addToComposition(lChildAA);
+    lValue = lObjectMapper.writeValueAsString(lChildBB);
+    assertEquals(
+        "{\"objectType\":\"ChildBB\",\"parentAttribute\":null,\"childBAttribute\":false,\"composition\":[{\"objectType\":\"ChildAA\",\"parentAttribute\":null,\"childAAttribute\":4711,\"childAAAttribute\":0}],\"childBBAttribute\":123456789,\"deprecatedAttribute\":0,\"deprecatedBs\":[],\"deprecatedParent\":null,\"deprecatedArray\":null}",
+        lValue);
+
+    lDeserializedParent = lObjectMapper.readValue(lValue, ParentClass.class);
+    assert (lDeserializedParent instanceof ChildBB);
+    ChildBB lDesserializedBB = (ChildBB) lDeserializedParent;
+
+    assertEquals(1, lDesserializedBB.getComposition().size());
+    ParentClass lNext = lDesserializedBB.getComposition().iterator().next();
+    assertTrue(lNext instanceof ChildAA);
+    assertEquals(4711, ((ChildAA) lNext).getChildAAttribute());
+
   }
 }
