@@ -14,16 +14,26 @@
 		«IF this.superClass.size == 0 && this.getSubclasses().size > 0 »
 		@com.fasterxml.jackson.annotation.JsonTypeInfo(use = com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME, include = com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 		@com.fasterxml.jackson.annotation.JsonSubTypes({
-		  «FOREACH this.getSubclasses().typeSelect(Class) AS subclass SEPARATOR "," »
-		  @com.fasterxml.jackson.annotation.JsonSubTypes.Type(value = «subclass.fqn()».class, name = "«subclass.name»")
-		  «ENDFOREACH»
+		«EXPAND SubtypesAnnotation -»
 		 })
 		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»
 
+«DEFINE SubtypesAnnotation FOR Class»
+		  «FOREACH this.getSubclasses().typeSelect(Class) AS subclass SEPARATOR "," »
+		  @com.fasterxml.jackson.annotation.JsonSubTypes.Type(value = «subclass.fqn()».class, name = "«subclass.name»")
+		  «IF subclass.getSubclasses().size >0»,
+		  «EXPAND SubtypesAnnotation FOR subclass»
+		  «ENDIF»
+		  «ENDFOREACH»
+«ENDDEFINE»
+
 «DEFINE JacksonBuilderAnnotations FOR Class»
 	«IF generateJacksonAnnotations()»
 		@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
+		«IF this.parents().size > 0 || this.getSubclasses().size > 0»
+		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(value = "objectType")
+		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»
