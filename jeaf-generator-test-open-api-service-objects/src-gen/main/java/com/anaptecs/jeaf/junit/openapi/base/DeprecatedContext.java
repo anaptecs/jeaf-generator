@@ -8,6 +8,9 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.Locale;
 
 import javax.validation.constraints.NotEmpty;
+import javax.ws.rs.CookieParam;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.QueryParam;
 
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -49,22 +52,26 @@ public class DeprecatedContext implements ServiceObject {
   /**
    * 
    */
+  @HeaderParam("token")
   @NotEmpty()
   private String accessToken;
 
   /**
    * 
    */
+  @HeaderParam("lang")
   private Locale language;
 
   /**
    * 
    */
+  @CookieParam("reseller")
   private long resellerID;
 
   /**
    * 
    */
+  @QueryParam("q1")
   private String queryParam;
 
   /**

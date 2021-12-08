@@ -86,7 +86,8 @@
 
 					<!-- Define what should be generated. By default nothing is generated. -->
 					<generateServiceObjects>true</generateServiceObjects>
-					<generateCustomConstraints>false</generateCustomConstraints>
+					<generateJAXRSAnnotations>true</generateJAXRSAnnotations>
+					<generateJacksonAnnotations>true</generateJacksonAnnotations>
 
 					<!-- Define information that are written to file headers -->
 					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>

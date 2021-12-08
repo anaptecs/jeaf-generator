@@ -283,6 +283,18 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateOpenAPISpec;
 
   /**
+   * Switch defines whether JAX-RS annotations should be generated or not.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateJAXRSAnnotations;
+
+  /**
+   * Switch defines whether Jackson annotations for JSON serialization should be generated or not.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateJacksonAnnotations;
+
+  /**
    * Switch defines whether a message constants should be generated from resource files or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -538,6 +550,12 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateOpenAPISpec) {
       lLog.info("Generate Open API Specification           " + generateOpenAPISpec);
     }
+    if (generateJAXRSAnnotations) {
+      lLog.info("Generate JAX-RS annotations               " + generateJAXRSAnnotations);
+    }
+    if (generateJacksonAnnotations) {
+      lLog.info("Generate Jackson annotations              " + generateJacksonAnnotations);
+    }
     if (generateMessageConstants) {
       lLog.info("Generate Message Constants:               " + generateMessageConstants);
     }
@@ -610,6 +628,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.domain.objects", generateDomainObjects.toString());
       System.setProperty("switch.gen.junits", generateJUnitTests.toString());
       System.setProperty("switch.gen.openapispec", generateOpenAPISpec.toString());
+      System.setProperty("switch.gen.jaxrs.annotations", generateJAXRSAnnotations.toString());
+      System.setProperty("switch.gen.jackson.annotations", generateJacksonAnnotations.toString());
       System.setProperty("switch.gen.public.setters.for.associations", generatePublicSettersForAssociations.toString());
       System.setProperty("switch.gen.null.checks.for.to.one.associations.of.service.objects",
           generateNullChecksForToOneAssociations.toString());

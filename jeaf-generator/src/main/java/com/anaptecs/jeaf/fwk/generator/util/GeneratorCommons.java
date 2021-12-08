@@ -635,7 +635,7 @@ public class GeneratorCommons {
    */
   public static boolean generateJAXRSAnnotations( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(JAX_RS_ANNOTATIONS_PROPERTY, Boolean.FALSE, Boolean.class);
+    return lConfiguration.getConfigurationValue(JAX_RS_ANNOTATIONS_PROPERTY, Boolean.TRUE, Boolean.class);
   }
 
   /**
@@ -646,7 +646,7 @@ public class GeneratorCommons {
    */
   public static boolean generateJacksonAnnotations( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(JACKSON_ANNOTATIONS_PROPERTY, Boolean.FALSE, Boolean.class);
+    return lConfiguration.getConfigurationValue(JACKSON_ANNOTATIONS_PROPERTY, Boolean.TRUE, Boolean.class);
   }
 
   public static boolean generatePublicSettersForAssociations( ) {

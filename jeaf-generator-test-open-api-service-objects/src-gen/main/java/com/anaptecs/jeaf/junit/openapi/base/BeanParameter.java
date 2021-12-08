@@ -7,6 +7,9 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Locale;
 
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.QueryParam;
+
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -42,17 +45,20 @@ public class BeanParameter implements ServiceObject {
   /**
    * 
    */
+  @HeaderParam("token")
   private String accessToken;
 
   /**
    * 
    */
+  @HeaderParam("lang")
   private Locale language;
 
   /**
    * 
    */
   @Deprecated
+  @QueryParam("q2")
   private String oldStyle;
 
   /**
