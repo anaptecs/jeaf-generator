@@ -1,7 +1,7 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
  * 
- * Copyright 2004 - 2019. All rights reserved.
+ * Copyright 2004 - 2021. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
@@ -15,7 +15,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
  * @author JEAF Generator
- * @version JEAF Release 1.4.x
+ * @version JEAF Release 1.6.x
  */
 public class BeanParameter implements ServiceObject {
   /**

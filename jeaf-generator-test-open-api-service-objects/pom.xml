@@ -7,8 +7,8 @@
 		<version>1.6.14-SNAPSHOT</version>
 	</parent>
 
-	<name>JEAF Generator Test Service Objects</name>
-	<artifactId>jeaf-generator-test-service-objects</artifactId>
+	<name>JEAF Generator Test Open API Service Objects</name>
+	<artifactId>jeaf-generator-test-open-api-service-objects</artifactId>
 	<packaging>jar</packaging>
 
 	<dependencies>
@@ -19,12 +19,34 @@
 		</dependency>
 
 		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations -->
+		<dependency>
+		    <groupId>io.swagger.core.v3</groupId>
+		    <artifactId>swagger-annotations</artifactId>
+		    <version>2.1.11</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>2.13.0</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.anaptecs.jeaf.uml</groupId>
 			<artifactId>jeaf-uml-test-model</artifactId>
 			<version>${jeaf.test.model.version}</version>
 			<type>zip</type>
 			<scope>provided</scope>
 		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -59,21 +81,18 @@
 
 					<!-- Define whitelist of package in UML model generator should take care when generating code. -->
 					<packages>
-						<package>com.anaptecs.jeaf.accounting</package>
-						<package>com.anaptecs.jeaf.junit</package>
-						<package>TestProfile</package>
+						<package>com.anaptecs.jeaf.junit.openapi</package>
 					</packages>
 
 					<!-- Define what should be generated. By default nothing is generated. -->
 					<generateServiceObjects>true</generateServiceObjects>
-					<generateExceptionClasses>true</generateExceptionClasses>
-					<generateCustomConstraints>true</generateCustomConstraints>
+					<generateCustomConstraints>false</generateCustomConstraints>
 
 					<!-- Define information that are written to file headers -->
 					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>
 					<fileHeaderAuthor>JEAF Generator</fileHeaderAuthor>
-					<fileHeaderCopyright>Copyright 2004 - 2019. All rights reserved.</fileHeaderCopyright>
-					<fileHeaderVersion>JEAF Release 1.4.x</fileHeaderVersion>
+					<fileHeaderCopyright>Copyright 2004 - 2021. All rights reserved.</fileHeaderCopyright>
+					<fileHeaderVersion>JEAF Release 1.6.x</fileHeaderVersion>
 
 					<!-- Define code formatting style -->
 					<!-- <conventionFile>anaptecs_code_guideline.xml</conventionFile> -->
@@ -97,6 +116,19 @@
 										<versionRange>[1.5.1,)</versionRange>
 										<goals>
 											<goal>Generator</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>io.swagger.codegen.v3</groupId>
+										<artifactId>swagger-codegen-maven-plugin</artifactId>
+										<versionRange>[3.0.29,)</versionRange>
+										<goals>
+											<goal>generate</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>

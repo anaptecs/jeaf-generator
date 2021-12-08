@@ -156,6 +156,17 @@ public class GeneratorCommons {
    */
   public static final String OPEN_API_SPEC_PROPERTY = "switch.gen.openapispec";
 
+  /**
+   * Constant defines the name of the system property which enables the generation of JAX-RS annotations.
+   */
+  public static final String JAX_RS_ANNOTATIONS_PROPERTY = "switch.gen.jaxrs.annotations";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of Jackson annotations (required for
+   * proper JSON serialization).
+   */
+  public static final String JACKSON_ANNOTATIONS_PROPERTY = "switch.gen.jackson.annotations";
+
   public static final String LINE_SEPARATOR = "\n";
 
   public static final String CLASS_INDENTATION = "";
@@ -606,13 +617,36 @@ public class GeneratorCommons {
   }
 
   /**
-   * Method checks whether JUnit test should be generated for every service or not.
+   * Method checks whether OpenAPI specification should be generated for every service or not.
    * 
-   * @return boolean Method returns true if JUnit tests should be generated from the model and false in all other cases.
+   * @return boolean Method returns true if OpenAPI spec should be generated from the model and false in all other
+   * cases.
    */
   public static boolean generateOpenAPISpec( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(OPEN_API_SPEC_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether JAX-RS Annotations for should be generated.
+   * 
+   * @return boolean Method returns true if JAX-RS Annotations should be generated from the model and false in all
+   * other cases.
+   */
+  public static boolean generateJAXRSAnnotations( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(JAX_RS_ANNOTATIONS_PROPERTY, Boolean.FALSE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether Jackson Annotations for (JSON serialization) should be generated.
+   * 
+   * @return boolean Method returns true if Jackson Annotations should be generated from the model and false in all
+   * other cases.
+   */
+  public static boolean generateJacksonAnnotations( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(JACKSON_ANNOTATIONS_PROPERTY, Boolean.FALSE, Boolean.class);
   }
 
   public static boolean generatePublicSettersForAssociations( ) {
