@@ -1,0 +1,42 @@
+«EXTENSION java::Naming»
+«EXTENSION java::ObjectMapper»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+«EXTENSION entity::ModelProperties»
+
+«IMPORT uml»
+«IMPORT JMM»
+
+
+«DEFINE JacksonClassAnnotations FOR Class»
+	«IF generateJacksonAnnotations()»
+		@com.fasterxml.jackson.databind.annotation.JsonDeserialize(builder = «this.name».Builder.class)
+		«IF this.superClass.size == 0 && this.getSubclasses().size > 0 »
+		@com.fasterxml.jackson.annotation.JsonTypeInfo(use = com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME, include = com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
+		@com.fasterxml.jackson.annotation.JsonSubTypes({
+		«EXPAND SubtypesAnnotation -»
+		 })
+		«ENDIF»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE SubtypesAnnotation FOR Class»
+		  «FOREACH this.getSubclasses().typeSelect(Class) AS subclass SEPARATOR "," »
+		  @com.fasterxml.jackson.annotation.JsonSubTypes.Type(value = «subclass.fqn()».class, name = "«subclass.name»")
+		  «IF subclass.getSubclasses().size >0»,
+		  «EXPAND SubtypesAnnotation FOR subclass»
+		  «ENDIF»
+		  «ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE JacksonBuilderAnnotations FOR Class»
+	«IF generateJacksonAnnotations()»
+		@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
+		«IF enableSemVerForJSON() == true»
+		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+		«ELSE»«IF this.parents().size > 0 || this.getSubclasses().size > 0»
+		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(value = "objectType")
+		«ENDIF»
+		«ENDIF»
+	«ENDIF»
+«ENDDEFINE»

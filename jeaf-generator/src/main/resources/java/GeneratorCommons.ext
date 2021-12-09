@@ -83,6 +83,15 @@ cached boolean generateJUnitTests() :
 cached boolean generateOpenAPISpec() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateOpenAPISpec();
     
+cached boolean generateJAXRSAnnotations() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateJAXRSAnnotations();
+    
+cached boolean generateJacksonAnnotations() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateJacksonAnnotations();
+    
+cached boolean enableSemVerForJSON() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.enableSemVerForJSON();
+    
 cached String getFileHeader() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getFileHeader();        
     

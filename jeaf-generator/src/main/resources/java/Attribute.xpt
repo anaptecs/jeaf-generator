@@ -343,6 +343,7 @@
 «DEFINE CopyAttributeToBusiness FOR Property»«IF !isReadOnly»lPersistentObject.«asSetter()»(this.«asGetter()»());«ENDIF»«ENDDEFINE»
 
 «DEFINE RESTParamAnnotation FOR Property»
+  «IF generateJAXRSAnnotations() == true -»
   «IF this.isStereotypeApplied("PathParam") -»
   @javax.ws.rs.PathParam("«((PathParam) this).value-»")
   «ENDIF-»
@@ -360,5 +361,6 @@
   «ENDIF-»
   «IF this.type.isStereotypeApplied("BeanParam") -»
   @javax.ws.rs.BeanParam
+  «ENDIF-»
   «ENDIF-»
 «ENDDEFINE»

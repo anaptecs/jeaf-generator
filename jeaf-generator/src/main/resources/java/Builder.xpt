@@ -11,6 +11,7 @@
  * Class implements builder to create a new instance of class «this.name». As the class has readonly attributes or associations instances can not be created directly. Instead this builder class has to be used.
  */
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+«EXPAND java::Jackson::JacksonBuilderAnnotations -»
 public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF superClass.isEmpty == false»extends «superClass.get(0).fqn()».Builder«ENDIF» {
 	«REM»Generate instance variables for each property«ENDREM»
 	«IF needsToImplementIdentifiable() == true»

@@ -33,7 +33,9 @@
 		<jeaf.persistence.api.version>1.6.0</jeaf.persistence.api.version>
 		<jeaf.junit.extensions.version>1.6.0</jeaf.junit.extensions.version>
 		<jeaf.workload.api.version>1.6.0</jeaf.workload.api.version>
-		<jeaf.test.model.version>1.0.14</jeaf.test.model.version>
+		<jeaf.test.model.version>1.0.15-SNAPSHOT</jeaf.test.model.version>
+		
+		<jackson.version>2.13.0</jackson.version>
 	</properties>
 
 	<modules>
@@ -61,6 +63,7 @@
 		<module>jeaf-generator-test-services-impl-runtime</module>
 		<module>jeaf-generator-test-junit-testcases</module>
 		<module>jeaf-generator-test-open-api</module>
+		<module>jeaf-generator-test-open-api-service-objects</module>
 	</modules>
 
 </project>
