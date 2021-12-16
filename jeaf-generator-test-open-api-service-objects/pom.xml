@@ -93,6 +93,8 @@
 
 					<!-- Define what should be generated. By default nothing is generated. -->
 					<generateServiceObjects>true</generateServiceObjects>
+					<generateServiceInterfaces>true</generateServiceInterfaces>
+					<generateRESTResources>true</generateRESTResources>
 					<generateJAXRSAnnotations>true</generateJAXRSAnnotations>
 					<generateJacksonAnnotations>true</generateJacksonAnnotations>
 					<enableSemVerForJSON>false</enableSemVerForJSON>

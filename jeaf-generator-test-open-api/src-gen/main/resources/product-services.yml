@@ -85,18 +85,18 @@ paths:
               schema:
                 $ref: 'product-base.yml#/components/schemas/Product'
           
-  /products/sortiment:
+  /products/sortiment/{id}:
     get:
       operationId: getSortiment
       parameters:
-        - name: accessToken
+        - name: token
           in: header
           description: >- 
             TODO Please add comment
           required: true
           schema:
             type: string
-        - name: language
+        - name: lang
           in: header
           description: >- 
             TODO Please add comment
@@ -104,7 +104,7 @@ paths:
           schema:
             type: string
             example: 'en'
-        - name: resellerID
+        - name: reseller
           in: cookie
           description: >- 
             TODO Please add comment
@@ -112,7 +112,7 @@ paths:
           schema:
             type: integer
             format: int64
-        - name: pathParam
+        - name: id
           in: path
           description: >- 
             TODO Please add comment
@@ -120,7 +120,7 @@ paths:
           schema:
             type: integer
             format: int64
-        - name: queryParam
+        - name: q1
           in: query
           description: >- 
             TODO Please add comment
@@ -178,14 +178,14 @@ paths:
     post:
       operationId: deprecatedContext
       parameters:
-        - name: accessToken
+        - name: token
           in: header
           description: >- 
             TODO Please add comment
           required: true
           schema:
             type: string
-        - name: language
+        - name: lang
           in: header
           description: >- 
             TODO Please add comment
@@ -193,7 +193,7 @@ paths:
           schema:
             type: string
             example: 'en'
-        - name: resellerID
+        - name: reseller
           in: cookie
           description: >- 
             TODO Please add comment
@@ -201,7 +201,7 @@ paths:
           schema:
             type: integer
             format: int64
-        - name: queryParam
+        - name: q1
           in: query
           description: >- 
             TODO Please add comment
@@ -221,21 +221,21 @@ paths:
     post:
       operationId: deprecatedBeanParam
       parameters:
-        - name: accessToken
+        - name: token
           in: header
           description: >- 
             TODO Please add comment
           required: false
           schema:
             type: string
-        - name: language
+        - name: lang
           in: header
           description: >- 
             TODO Please add comment
           required: false
           schema:
             type: string
-        - name: oldStyle
+        - name: q2
           in: query
           description: >- 
             TODO Please add comment
