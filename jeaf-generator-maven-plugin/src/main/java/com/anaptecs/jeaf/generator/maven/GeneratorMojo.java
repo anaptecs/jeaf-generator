@@ -526,6 +526,9 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateServiceProviderImpls) {
       lLog.info("Generate Service Provider Impls:          " + generateServiceProviderImpls);
     }
+    if (generateRESTResources) {
+      lLog.info("Generate REST Resources:                  " + generateRESTResources);
+    }
     if (generateActivityInterfaces) {
       lLog.info("Generate Activity Interfaces:             " + generateActivityInterfaces);
     }
@@ -563,7 +566,7 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate Jackson annotations:             " + generateJacksonAnnotations);
     }
     if (enableSemVerForJSON) {
-      lLog.info("Enable SemVer for JSON serialization:     " + generateJacksonAnnotations);
+      lLog.info("Enable SemVer for JSON serialization:     " + enableSemVerForJSON);
     }
     if (generateMessageConstants) {
       lLog.info("Generate Message Constants:               " + generateMessageConstants);
