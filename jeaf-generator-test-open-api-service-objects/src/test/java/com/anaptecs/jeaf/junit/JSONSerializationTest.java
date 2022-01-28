@@ -104,4 +104,5 @@ public class JSONSerializationTest {
     assertEquals(4711, ((ChildAA) lNext).getChildAAttribute());
 
   }
+
 }

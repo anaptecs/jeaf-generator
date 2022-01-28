@@ -24,7 +24,7 @@
 		<dependency>
 		    <groupId>io.swagger.core.v3</groupId>
 		    <artifactId>swagger-annotations</artifactId>
-		    <version>2.1.11</version>
+		    <version>${swagger.annotations.version}</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
@@ -93,7 +93,7 @@
 			<plugin>
 			    <groupId>io.swagger.codegen.v3</groupId>
 			    <artifactId>swagger-codegen-maven-plugin</artifactId>
-			    <version>3.0.31</version>
+			    <version>${swagger.codegen.plugin.version}</version>
 			    <executions>
 			        <execution>
 			            <id>Generate Base Model</id>
