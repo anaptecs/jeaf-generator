@@ -7,26 +7,26 @@ package com.anaptecs.jeaf.junit.openapi.service1.test;
 
 import com.anaptecs.jeaf.core.annotations.JEAFService;
 import com.anaptecs.jeaf.junit.JEAFTestCase;
-import com.anaptecs.jeaf.junit.openapi.service1.ProductRESTService;
+import com.anaptecs.jeaf.junit.openapi.service1.ProductService;
 
 /**
- * This is the base class of the test suite of service ProductRESTService.
+ * This is the base class of the test suite of service ProductService.
  * 
  * @version $LastChangedRevision: 931 $
  */
-public abstract class ProductRESTServiceTestBase extends JEAFTestCase {
+public abstract class ProductServiceTestBase extends JEAFTestCase {
   /**
    * Service that should be tested by this test case.
    */
   @JEAFService
-  protected ProductRESTService productRESTService;
+  protected ProductService productService;
 
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided.
    * 
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    */
-  public ProductRESTServiceTestBase( String pName ) {
+  public ProductServiceTestBase( String pName ) {
     super(pName);
   }
 
@@ -38,7 +38,7 @@ public abstract class ProductRESTServiceTestBase extends JEAFTestCase {
    * @param pUserId UserId of the User who should be logged in for this Test.
    * @param pPassword Password of the User who should be logged in for this Test.
    */
-  public ProductRESTServiceTestBase( String pName, String pUserId, String pPassword ) {
+  public ProductServiceTestBase( String pName, String pUserId, String pPassword ) {
     super(pName, pUserId, pPassword);
   }
 

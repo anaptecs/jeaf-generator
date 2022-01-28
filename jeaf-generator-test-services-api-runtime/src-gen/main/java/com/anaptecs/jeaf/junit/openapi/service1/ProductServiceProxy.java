@@ -29,9 +29,9 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * ServiceProxy class for JEAF service ProductRESTService.
+ * ServiceProxy class for JEAF service ProductService.
  */
-public final class ProductRESTServiceProxy extends ServiceProxy implements ProductRESTService {
+public final class ProductServiceProxy extends ServiceProxy implements ProductService {
   /**
    * Serial version uid for the proxy class.
    */
@@ -42,8 +42,8 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
    *
    * @param pTransactionBehavior Definition of transactional behavior. The Parameter must not be null.
    */
-  public ProductRESTServiceProxy( TransactionBehavior pTransactionBehavior ) {
-    super(ProductRESTService.class, pTransactionBehavior);
+  public ProductServiceProxy( TransactionBehavior pTransactionBehavior ) {
+    super(ProductService.class, pTransactionBehavior);
   }
 
   /**
@@ -54,7 +54,7 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
   @SuppressWarnings("unchecked")
   public List<Product> getProducts( ) {
     try {
-      Command lCommand = new GetProducts_ProductRESTService_Command();
+      Command lCommand = new GetProducts_ProductService_Command();
       return (List<Product>) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -69,7 +69,7 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
    */
   public Product getProduct( @NotEmpty() String pProductID ) {
     try {
-      Command lCommand = new GetProduct_String_ProductRESTService_Command(pProductID);
+      Command lCommand = new GetProduct_String_ProductService_Command(pProductID);
       return (Product) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -84,7 +84,7 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
    */
   public boolean createProduct( Product pProduct ) {
     try {
-      Command lCommand = new CreateProduct_Product_ProductRESTService_Command(pProduct);
+      Command lCommand = new CreateProduct_Product_ProductService_Command(pProduct);
       return (boolean) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -99,7 +99,7 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
    */
   public Sortiment getSortiment( Context pContext ) {
     try {
-      Command lCommand = new GetSortiment_Context_ProductRESTService_Command(pContext);
+      Command lCommand = new GetSortiment_Context_ProductService_Command(pContext);
       return (Sortiment) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -114,7 +114,7 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
    */
   public ChannelCode createChannelCode( @NotBlank() String pChannelCode ) {
     try {
-      Command lCommand = new CreateChannelCode_String_ProductRESTService_Command(pChannelCode);
+      Command lCommand = new CreateChannelCode_String_ProductService_Command(pChannelCode);
       return (ChannelCode) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -129,7 +129,7 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
    */
   public void ping( ) {
     try {
-      Command lCommand = new Ping_ProductRESTService_Command();
+      Command lCommand = new Ping_ProductService_Command();
       this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -145,7 +145,7 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
   @Deprecated
   public String deprecatedOperation( ) {
     try {
-      Command lCommand = new DeprecatedOperation_ProductRESTService_Command();
+      Command lCommand = new DeprecatedOperation_ProductService_Command();
       return (String) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -160,7 +160,7 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
    */
   public String deprecatedContext( DeprecatedContext pContext ) {
     try {
-      Command lCommand = new DeprecatedContext_DeprecatedContext_ProductRESTService_Command(pContext);
+      Command lCommand = new DeprecatedContext_DeprecatedContext_ProductService_Command(pContext);
       return (String) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -175,7 +175,7 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
    */
   public void deprecatedBeanParam( BeanParameter pBeanParam ) {
     try {
-      Command lCommand = new DeprecatedBeanParam_BeanParameter_ProductRESTService_Command(pBeanParam);
+      Command lCommand = new DeprecatedBeanParam_BeanParameter_ProductService_Command(pBeanParam);
       this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -191,7 +191,7 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
   @Deprecated
   public String deprecatedParams( @Deprecated int pParam1 ) {
     try {
-      Command lCommand = new DeprecatedParams_int_ProductRESTService_Command(pParam1);
+      Command lCommand = new DeprecatedParams_int_ProductService_Command(pParam1);
       return (String) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -206,7 +206,7 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
    */
   public String deprecatedBody( @Deprecated String pBody ) {
     try {
-      Command lCommand = new DeprecatedBody_String_ProductRESTService_Command(pBody);
+      Command lCommand = new DeprecatedBody_String_ProductService_Command(pBody);
       return (String) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -222,7 +222,7 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
    */
   public void deprectedComplexRequestBody( @Deprecated Product pProduct ) {
     try {
-      Command lCommand = new DeprectedComplexRequestBody_Product_ProductRESTService_Command(pProduct);
+      Command lCommand = new DeprectedComplexRequestBody_Product_ProductService_Command(pProduct);
       this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -238,7 +238,7 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
   @Deprecated
   public Product deprecatedComplexReturn( ) {
     try {
-      Command lCommand = new DeprecatedComplexReturn_ProductRESTService_Command();
+      Command lCommand = new DeprecatedComplexReturn_ProductService_Command();
       return (Product) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -250,7 +250,7 @@ public final class ProductRESTServiceProxy extends ServiceProxy implements Produ
 /**
  * Generated command class for service method "getProducts".
  */
-final class GetProducts_ProductRESTService_Command extends Command {
+final class GetProducts_ProductService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -275,11 +275,11 @@ final class GetProducts_ProductRESTService_Command extends Command {
    */
   static {
     try {
-      SERVICE_METHOD = ProductRESTService.class.getMethod("getProducts");
+      SERVICE_METHOD = ProductService.class.getMethod("getProducts");
     }
     catch (NoSuchMethodException e) {
-      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          ProductRESTService.class.getName(), "getProducts(null)");
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "getProducts(null)");
     }
   }
 
@@ -288,8 +288,8 @@ final class GetProducts_ProductRESTService_Command extends Command {
    * 
    * 
    */
-  GetProducts_ProductRESTService_Command( ) {
-    super(ProductRESTService.class);
+  GetProducts_ProductService_Command( ) {
+    super(ProductService.class);
     parameters = new Object[] {};
   }
 
@@ -306,7 +306,7 @@ final class GetProducts_ProductRESTService_Command extends Command {
   @Override
   public Serializable execute( Service pTargetService ) {
     // Execute service call.
-    ProductRESTService lService = (ProductRESTService) pTargetService;
+    ProductService lService = (ProductService) pTargetService;
     // Trace service call.
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
@@ -344,7 +344,7 @@ final class GetProducts_ProductRESTService_Command extends Command {
 /**
  * Generated command class for service method "getProduct".
  */
-final class GetProduct_String_ProductRESTService_Command extends Command {
+final class GetProduct_String_ProductService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -369,11 +369,11 @@ final class GetProduct_String_ProductRESTService_Command extends Command {
    */
   static {
     try {
-      SERVICE_METHOD = ProductRESTService.class.getMethod("getProduct", String.class);
+      SERVICE_METHOD = ProductService.class.getMethod("getProduct", String.class);
     }
     catch (NoSuchMethodException e) {
-      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          ProductRESTService.class.getName(), "getProduct(String.class)");
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "getProduct(String.class)");
     }
   }
 
@@ -387,8 +387,8 @@ final class GetProduct_String_ProductRESTService_Command extends Command {
    * 
    * @param pProductID String
    */
-  GetProduct_String_ProductRESTService_Command( @NotEmpty() String pProductID ) {
-    super(ProductRESTService.class);
+  GetProduct_String_ProductService_Command( @NotEmpty() String pProductID ) {
+    super(ProductService.class);
     productID = pProductID;
     parameters = new Object[] { productID };
   }
@@ -406,7 +406,7 @@ final class GetProduct_String_ProductRESTService_Command extends Command {
   @Override
   public Serializable execute( Service pTargetService ) {
     // Execute service call.
-    ProductRESTService lService = (ProductRESTService) pTargetService;
+    ProductService lService = (ProductService) pTargetService;
     // Trace service call.
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
@@ -444,7 +444,7 @@ final class GetProduct_String_ProductRESTService_Command extends Command {
 /**
  * Generated command class for service method "createProduct".
  */
-final class CreateProduct_Product_ProductRESTService_Command extends Command {
+final class CreateProduct_Product_ProductService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -469,11 +469,11 @@ final class CreateProduct_Product_ProductRESTService_Command extends Command {
    */
   static {
     try {
-      SERVICE_METHOD = ProductRESTService.class.getMethod("createProduct", Product.class);
+      SERVICE_METHOD = ProductService.class.getMethod("createProduct", Product.class);
     }
     catch (NoSuchMethodException e) {
-      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          ProductRESTService.class.getName(), "createProduct(Product.class)");
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "createProduct(Product.class)");
     }
   }
 
@@ -488,8 +488,8 @@ final class CreateProduct_Product_ProductRESTService_Command extends Command {
    * 
    * @param pProduct Product
    */
-  CreateProduct_Product_ProductRESTService_Command( Product pProduct ) {
-    super(ProductRESTService.class);
+  CreateProduct_Product_ProductService_Command( Product pProduct ) {
+    super(ProductService.class);
     product = pProduct;
     parameters = new Object[] { product };
   }
@@ -507,7 +507,7 @@ final class CreateProduct_Product_ProductRESTService_Command extends Command {
   @Override
   public Serializable execute( Service pTargetService ) {
     // Execute service call.
-    ProductRESTService lService = (ProductRESTService) pTargetService;
+    ProductService lService = (ProductService) pTargetService;
     // Trace service call.
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
@@ -545,7 +545,7 @@ final class CreateProduct_Product_ProductRESTService_Command extends Command {
 /**
  * Generated command class for service method "getSortiment".
  */
-final class GetSortiment_Context_ProductRESTService_Command extends Command {
+final class GetSortiment_Context_ProductService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -570,11 +570,11 @@ final class GetSortiment_Context_ProductRESTService_Command extends Command {
    */
   static {
     try {
-      SERVICE_METHOD = ProductRESTService.class.getMethod("getSortiment", Context.class);
+      SERVICE_METHOD = ProductService.class.getMethod("getSortiment", Context.class);
     }
     catch (NoSuchMethodException e) {
-      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          ProductRESTService.class.getName(), "getSortiment(Context.class)");
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "getSortiment(Context.class)");
     }
   }
 
@@ -589,8 +589,8 @@ final class GetSortiment_Context_ProductRESTService_Command extends Command {
    * 
    * @param pContext Context
    */
-  GetSortiment_Context_ProductRESTService_Command( Context pContext ) {
-    super(ProductRESTService.class);
+  GetSortiment_Context_ProductService_Command( Context pContext ) {
+    super(ProductService.class);
     context = pContext;
     parameters = new Object[] { context };
   }
@@ -608,7 +608,7 @@ final class GetSortiment_Context_ProductRESTService_Command extends Command {
   @Override
   public Serializable execute( Service pTargetService ) {
     // Execute service call.
-    ProductRESTService lService = (ProductRESTService) pTargetService;
+    ProductService lService = (ProductService) pTargetService;
     // Trace service call.
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
@@ -646,7 +646,7 @@ final class GetSortiment_Context_ProductRESTService_Command extends Command {
 /**
  * Generated command class for service method "createChannelCode".
  */
-final class CreateChannelCode_String_ProductRESTService_Command extends Command {
+final class CreateChannelCode_String_ProductService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -671,11 +671,11 @@ final class CreateChannelCode_String_ProductRESTService_Command extends Command 
    */
   static {
     try {
-      SERVICE_METHOD = ProductRESTService.class.getMethod("createChannelCode", String.class);
+      SERVICE_METHOD = ProductService.class.getMethod("createChannelCode", String.class);
     }
     catch (NoSuchMethodException e) {
-      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          ProductRESTService.class.getName(), "createChannelCode(String.class)");
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "createChannelCode(String.class)");
     }
   }
 
@@ -690,8 +690,8 @@ final class CreateChannelCode_String_ProductRESTService_Command extends Command 
    * 
    * @param pChannelCode String
    */
-  CreateChannelCode_String_ProductRESTService_Command( @NotBlank() String pChannelCode ) {
-    super(ProductRESTService.class);
+  CreateChannelCode_String_ProductService_Command( @NotBlank() String pChannelCode ) {
+    super(ProductService.class);
     channelCode = pChannelCode;
     parameters = new Object[] { channelCode };
   }
@@ -709,7 +709,7 @@ final class CreateChannelCode_String_ProductRESTService_Command extends Command 
   @Override
   public Serializable execute( Service pTargetService ) {
     // Execute service call.
-    ProductRESTService lService = (ProductRESTService) pTargetService;
+    ProductService lService = (ProductService) pTargetService;
     // Trace service call.
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
@@ -747,7 +747,7 @@ final class CreateChannelCode_String_ProductRESTService_Command extends Command 
 /**
  * Generated command class for service method "ping".
  */
-final class Ping_ProductRESTService_Command extends Command {
+final class Ping_ProductService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -772,11 +772,11 @@ final class Ping_ProductRESTService_Command extends Command {
    */
   static {
     try {
-      SERVICE_METHOD = ProductRESTService.class.getMethod("ping");
+      SERVICE_METHOD = ProductService.class.getMethod("ping");
     }
     catch (NoSuchMethodException e) {
-      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          ProductRESTService.class.getName(), "ping(null)");
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "ping(null)");
     }
   }
 
@@ -785,8 +785,8 @@ final class Ping_ProductRESTService_Command extends Command {
    * 
    * 
    */
-  Ping_ProductRESTService_Command( ) {
-    super(ProductRESTService.class);
+  Ping_ProductService_Command( ) {
+    super(ProductService.class);
     parameters = new Object[] {};
   }
 
@@ -803,7 +803,7 @@ final class Ping_ProductRESTService_Command extends Command {
   @Override
   public Serializable execute( Service pTargetService ) {
     // Execute service call.
-    ProductRESTService lService = (ProductRESTService) pTargetService;
+    ProductService lService = (ProductService) pTargetService;
     // Trace service call.
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
@@ -842,7 +842,7 @@ final class Ping_ProductRESTService_Command extends Command {
 /**
  * Generated command class for service method "deprecatedOperation".
  */
-final class DeprecatedOperation_ProductRESTService_Command extends Command {
+final class DeprecatedOperation_ProductService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -867,11 +867,11 @@ final class DeprecatedOperation_ProductRESTService_Command extends Command {
    */
   static {
     try {
-      SERVICE_METHOD = ProductRESTService.class.getMethod("deprecatedOperation");
+      SERVICE_METHOD = ProductService.class.getMethod("deprecatedOperation");
     }
     catch (NoSuchMethodException e) {
-      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          ProductRESTService.class.getName(), "deprecatedOperation(null)");
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "deprecatedOperation(null)");
     }
   }
 
@@ -881,8 +881,8 @@ final class DeprecatedOperation_ProductRESTService_Command extends Command {
    * 
    * 
    */
-  DeprecatedOperation_ProductRESTService_Command( ) {
-    super(ProductRESTService.class);
+  DeprecatedOperation_ProductService_Command( ) {
+    super(ProductService.class);
     parameters = new Object[] {};
   }
 
@@ -899,7 +899,7 @@ final class DeprecatedOperation_ProductRESTService_Command extends Command {
   @Override
   public Serializable execute( Service pTargetService ) {
     // Execute service call.
-    ProductRESTService lService = (ProductRESTService) pTargetService;
+    ProductService lService = (ProductService) pTargetService;
     // Trace service call.
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
@@ -937,7 +937,7 @@ final class DeprecatedOperation_ProductRESTService_Command extends Command {
 /**
  * Generated command class for service method "deprecatedContext".
  */
-final class DeprecatedContext_DeprecatedContext_ProductRESTService_Command extends Command {
+final class DeprecatedContext_DeprecatedContext_ProductService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -962,11 +962,11 @@ final class DeprecatedContext_DeprecatedContext_ProductRESTService_Command exten
    */
   static {
     try {
-      SERVICE_METHOD = ProductRESTService.class.getMethod("deprecatedContext", DeprecatedContext.class);
+      SERVICE_METHOD = ProductService.class.getMethod("deprecatedContext", DeprecatedContext.class);
     }
     catch (NoSuchMethodException e) {
-      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          ProductRESTService.class.getName(), "deprecatedContext(DeprecatedContext.class)");
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "deprecatedContext(DeprecatedContext.class)");
     }
   }
 
@@ -981,8 +981,8 @@ final class DeprecatedContext_DeprecatedContext_ProductRESTService_Command exten
    * 
    * @param pContext DeprecatedContext
    */
-  DeprecatedContext_DeprecatedContext_ProductRESTService_Command( DeprecatedContext pContext ) {
-    super(ProductRESTService.class);
+  DeprecatedContext_DeprecatedContext_ProductService_Command( DeprecatedContext pContext ) {
+    super(ProductService.class);
     context = pContext;
     parameters = new Object[] { context };
   }
@@ -1000,7 +1000,7 @@ final class DeprecatedContext_DeprecatedContext_ProductRESTService_Command exten
   @Override
   public Serializable execute( Service pTargetService ) {
     // Execute service call.
-    ProductRESTService lService = (ProductRESTService) pTargetService;
+    ProductService lService = (ProductService) pTargetService;
     // Trace service call.
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
@@ -1038,7 +1038,7 @@ final class DeprecatedContext_DeprecatedContext_ProductRESTService_Command exten
 /**
  * Generated command class for service method "deprecatedBeanParam".
  */
-final class DeprecatedBeanParam_BeanParameter_ProductRESTService_Command extends Command {
+final class DeprecatedBeanParam_BeanParameter_ProductService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -1063,11 +1063,11 @@ final class DeprecatedBeanParam_BeanParameter_ProductRESTService_Command extends
    */
   static {
     try {
-      SERVICE_METHOD = ProductRESTService.class.getMethod("deprecatedBeanParam", BeanParameter.class);
+      SERVICE_METHOD = ProductService.class.getMethod("deprecatedBeanParam", BeanParameter.class);
     }
     catch (NoSuchMethodException e) {
-      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          ProductRESTService.class.getName(), "deprecatedBeanParam(BeanParameter.class)");
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "deprecatedBeanParam(BeanParameter.class)");
     }
   }
 
@@ -1082,8 +1082,8 @@ final class DeprecatedBeanParam_BeanParameter_ProductRESTService_Command extends
    * 
    * @param pBeanParam BeanParameter
    */
-  DeprecatedBeanParam_BeanParameter_ProductRESTService_Command( BeanParameter pBeanParam ) {
-    super(ProductRESTService.class);
+  DeprecatedBeanParam_BeanParameter_ProductService_Command( BeanParameter pBeanParam ) {
+    super(ProductService.class);
     beanParam = pBeanParam;
     parameters = new Object[] { beanParam };
   }
@@ -1101,7 +1101,7 @@ final class DeprecatedBeanParam_BeanParameter_ProductRESTService_Command extends
   @Override
   public Serializable execute( Service pTargetService ) {
     // Execute service call.
-    ProductRESTService lService = (ProductRESTService) pTargetService;
+    ProductService lService = (ProductService) pTargetService;
     // Trace service call.
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
@@ -1140,7 +1140,7 @@ final class DeprecatedBeanParam_BeanParameter_ProductRESTService_Command extends
 /**
  * Generated command class for service method "deprecatedParams".
  */
-final class DeprecatedParams_int_ProductRESTService_Command extends Command {
+final class DeprecatedParams_int_ProductService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -1165,11 +1165,11 @@ final class DeprecatedParams_int_ProductRESTService_Command extends Command {
    */
   static {
     try {
-      SERVICE_METHOD = ProductRESTService.class.getMethod("deprecatedParams", int.class);
+      SERVICE_METHOD = ProductService.class.getMethod("deprecatedParams", int.class);
     }
     catch (NoSuchMethodException e) {
-      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          ProductRESTService.class.getName(), "deprecatedParams(int.class)");
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "deprecatedParams(int.class)");
     }
   }
 
@@ -1184,8 +1184,8 @@ final class DeprecatedParams_int_ProductRESTService_Command extends Command {
    * 
    * @param pParam1 int
    */
-  DeprecatedParams_int_ProductRESTService_Command( @Deprecated int pParam1 ) {
-    super(ProductRESTService.class);
+  DeprecatedParams_int_ProductService_Command( @Deprecated int pParam1 ) {
+    super(ProductService.class);
     param1 = pParam1;
     parameters = new Object[] { param1 };
   }
@@ -1203,7 +1203,7 @@ final class DeprecatedParams_int_ProductRESTService_Command extends Command {
   @Override
   public Serializable execute( Service pTargetService ) {
     // Execute service call.
-    ProductRESTService lService = (ProductRESTService) pTargetService;
+    ProductService lService = (ProductService) pTargetService;
     // Trace service call.
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
@@ -1241,7 +1241,7 @@ final class DeprecatedParams_int_ProductRESTService_Command extends Command {
 /**
  * Generated command class for service method "deprecatedBody".
  */
-final class DeprecatedBody_String_ProductRESTService_Command extends Command {
+final class DeprecatedBody_String_ProductService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -1266,11 +1266,11 @@ final class DeprecatedBody_String_ProductRESTService_Command extends Command {
    */
   static {
     try {
-      SERVICE_METHOD = ProductRESTService.class.getMethod("deprecatedBody", String.class);
+      SERVICE_METHOD = ProductService.class.getMethod("deprecatedBody", String.class);
     }
     catch (NoSuchMethodException e) {
-      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          ProductRESTService.class.getName(), "deprecatedBody(String.class)");
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "deprecatedBody(String.class)");
     }
   }
 
@@ -1285,8 +1285,8 @@ final class DeprecatedBody_String_ProductRESTService_Command extends Command {
    * 
    * @param pBody String
    */
-  DeprecatedBody_String_ProductRESTService_Command( @Deprecated String pBody ) {
-    super(ProductRESTService.class);
+  DeprecatedBody_String_ProductService_Command( @Deprecated String pBody ) {
+    super(ProductService.class);
     body = pBody;
     parameters = new Object[] { body };
   }
@@ -1304,7 +1304,7 @@ final class DeprecatedBody_String_ProductRESTService_Command extends Command {
   @Override
   public Serializable execute( Service pTargetService ) {
     // Execute service call.
-    ProductRESTService lService = (ProductRESTService) pTargetService;
+    ProductService lService = (ProductService) pTargetService;
     // Trace service call.
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
@@ -1342,7 +1342,7 @@ final class DeprecatedBody_String_ProductRESTService_Command extends Command {
 /**
  * Generated command class for service method "deprectedComplexRequestBody".
  */
-final class DeprectedComplexRequestBody_Product_ProductRESTService_Command extends Command {
+final class DeprectedComplexRequestBody_Product_ProductService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -1367,11 +1367,11 @@ final class DeprectedComplexRequestBody_Product_ProductRESTService_Command exten
    */
   static {
     try {
-      SERVICE_METHOD = ProductRESTService.class.getMethod("deprectedComplexRequestBody", Product.class);
+      SERVICE_METHOD = ProductService.class.getMethod("deprectedComplexRequestBody", Product.class);
     }
     catch (NoSuchMethodException e) {
-      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          ProductRESTService.class.getName(), "deprectedComplexRequestBody(Product.class)");
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "deprectedComplexRequestBody(Product.class)");
     }
   }
 
@@ -1386,8 +1386,8 @@ final class DeprectedComplexRequestBody_Product_ProductRESTService_Command exten
    * 
    * @param pProduct Product
    */
-  DeprectedComplexRequestBody_Product_ProductRESTService_Command( @Deprecated Product pProduct ) {
-    super(ProductRESTService.class);
+  DeprectedComplexRequestBody_Product_ProductService_Command( @Deprecated Product pProduct ) {
+    super(ProductService.class);
     product = pProduct;
     parameters = new Object[] { product };
   }
@@ -1405,7 +1405,7 @@ final class DeprectedComplexRequestBody_Product_ProductRESTService_Command exten
   @Override
   public Serializable execute( Service pTargetService ) {
     // Execute service call.
-    ProductRESTService lService = (ProductRESTService) pTargetService;
+    ProductService lService = (ProductService) pTargetService;
     // Trace service call.
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
@@ -1444,7 +1444,7 @@ final class DeprectedComplexRequestBody_Product_ProductRESTService_Command exten
 /**
  * Generated command class for service method "deprecatedComplexReturn".
  */
-final class DeprecatedComplexReturn_ProductRESTService_Command extends Command {
+final class DeprecatedComplexReturn_ProductService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -1469,11 +1469,11 @@ final class DeprecatedComplexReturn_ProductRESTService_Command extends Command {
    */
   static {
     try {
-      SERVICE_METHOD = ProductRESTService.class.getMethod("deprecatedComplexReturn");
+      SERVICE_METHOD = ProductService.class.getMethod("deprecatedComplexReturn");
     }
     catch (NoSuchMethodException e) {
-      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          ProductRESTService.class.getName(), "deprecatedComplexReturn(null)");
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "deprecatedComplexReturn(null)");
     }
   }
 
@@ -1483,8 +1483,8 @@ final class DeprecatedComplexReturn_ProductRESTService_Command extends Command {
    * 
    * 
    */
-  DeprecatedComplexReturn_ProductRESTService_Command( ) {
-    super(ProductRESTService.class);
+  DeprecatedComplexReturn_ProductService_Command( ) {
+    super(ProductService.class);
     parameters = new Object[] {};
   }
 
@@ -1501,7 +1501,7 @@ final class DeprecatedComplexReturn_ProductRESTService_Command extends Command {
   @Override
   public Serializable execute( Service pTargetService ) {
     // Execute service call.
-    ProductRESTService lService = (ProductRESTService) pTargetService;
+    ProductService lService = (ProductService) pTargetService;
     // Trace service call.
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());

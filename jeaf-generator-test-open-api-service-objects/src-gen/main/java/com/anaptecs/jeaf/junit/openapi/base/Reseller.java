@@ -14,8 +14,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+import com.anaptecs.jeaf.core.api.AbstractObjectID;
+import com.anaptecs.jeaf.core.api.Identifiable;
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -27,7 +30,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
  * @version JEAF Release 1.6.x
  */
 @JsonDeserialize(builder = Reseller.Builder.class)
-public class Reseller implements ServiceObject {
+public class Reseller implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
    */
@@ -47,6 +50,11 @@ public class Reseller implements ServiceObject {
    * Constant for the name of attribute "language".
    */
   public static final String LANGUAGE = "language";
+
+  /**
+   * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
+   */
+  private final ServiceObjectID objectID;
 
   /**
    * 
@@ -71,6 +79,14 @@ public class Reseller implements ServiceObject {
   protected Reseller( Builder pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+    // Read object ID.
+    AbstractObjectID<?> lObjectID = pBuilder.objectID;
+    if (lObjectID != null) {
+      objectID = new ServiceObjectID(pBuilder.objectID);
+    }
+    else {
+      objectID = null;
+    }
     // Read attribute values from builder.
     if (pBuilder.channels != null) {
       channels.addAll(pBuilder.channels);
@@ -87,6 +103,11 @@ public class Reseller implements ServiceObject {
    */
   @JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
   public static class Builder {
+    /**
+     * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
+     */
+    private AbstractObjectID<?> objectID;
+
     /**
      * 
      */
@@ -114,6 +135,7 @@ public class Reseller implements ServiceObject {
     protected Builder( Reseller pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
+        objectID = pObject.objectID;
         channels = pObject.channels;
         products = pObject.products;
         language = pObject.language;
@@ -138,6 +160,15 @@ public class Reseller implements ServiceObject {
      */
     public static Builder newBuilder( Reseller pObject ) {
       return new Builder(pObject);
+    }
+
+    /**
+     * Method sets the identifier for the object created using the builder. The reference may be null since an id is not
+     * mandatory.
+     */
+    public Builder setID( AbstractObjectID<?> pObjectID ) {
+      objectID = pObjectID;
+      return this;
     }
 
     /**
@@ -205,6 +236,35 @@ public class Reseller implements ServiceObject {
       }
       return lPOJO;
     }
+  }
+
+  /**
+   * Method returns the id of this object.
+   * 
+   * @return {@link ServiceObjectID} ID of this object. Since an object must not have an id the method may also return
+   * null.
+   */
+  @Override
+  public final ServiceObjectID getID( ) {
+    return objectID;
+  }
+
+  /**
+   * Method returns the unversioned object id of this object.
+   * 
+   * @return {@link ServiceObjectID} ID of this object. Since an object must not have an id the method may also return
+   * null.
+   */
+  @Override
+  public final ServiceObjectID getUnversionedID( ) {
+    ServiceObjectID lUnversionedID;
+    if (objectID != null) {
+      lUnversionedID = objectID.getUnversionedObjectID();
+    }
+    else {
+      lUnversionedID = null;
+    }
+    return lUnversionedID;
   }
 
   /**

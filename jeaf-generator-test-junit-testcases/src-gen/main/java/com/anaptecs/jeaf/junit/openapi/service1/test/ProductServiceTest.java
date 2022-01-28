@@ -8,9 +8,9 @@ package com.anaptecs.jeaf.junit.openapi.service1.test;
 import junit.framework.TestSuite;
 
 /**
- * This class implements the test suite for service ProductRESTService.
+ * This class implements the test suite for service ProductService.
  */
-public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
+public class ProductServiceTest extends ProductServiceTestBase {
   /**
    * Method creates a test suite contain all tests of this class.
    * 
@@ -18,21 +18,21 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
    */
   public static TestSuite suite( ) {
     // Create new test suite.
-    TestSuite lSuite = new TestSuite("ProductRESTServiceTest");
+    TestSuite lSuite = new TestSuite("ProductServiceTest");
     // Add all test of this class.
-    lSuite.addTest(new ProductRESTServiceTest("testDeprecatedOperation"));
-    lSuite.addTest(new ProductRESTServiceTest("testDeprecatedBody"));
-    lSuite.addTest(new ProductRESTServiceTest("testGetProduct"));
-    lSuite.addTest(new ProductRESTServiceTest("testDeprecatedBeanParam"));
-    lSuite.addTest(new ProductRESTServiceTest("testPing"));
-    lSuite.addTest(new ProductRESTServiceTest("testDeprecatedParams"));
-    lSuite.addTest(new ProductRESTServiceTest("testCreateProduct"));
-    lSuite.addTest(new ProductRESTServiceTest("testGetSortiment"));
-    lSuite.addTest(new ProductRESTServiceTest("testDeprectedComplexRequestBody"));
-    lSuite.addTest(new ProductRESTServiceTest("testCreateChannelCode"));
-    lSuite.addTest(new ProductRESTServiceTest("testGetProducts"));
-    lSuite.addTest(new ProductRESTServiceTest("testDeprecatedContext"));
-    lSuite.addTest(new ProductRESTServiceTest("testDeprecatedComplexReturn"));
+    lSuite.addTest(new ProductServiceTest("testDeprecatedOperation"));
+    lSuite.addTest(new ProductServiceTest("testDeprecatedBody"));
+    lSuite.addTest(new ProductServiceTest("testGetProduct"));
+    lSuite.addTest(new ProductServiceTest("testDeprecatedBeanParam"));
+    lSuite.addTest(new ProductServiceTest("testPing"));
+    lSuite.addTest(new ProductServiceTest("testDeprecatedParams"));
+    lSuite.addTest(new ProductServiceTest("testCreateProduct"));
+    lSuite.addTest(new ProductServiceTest("testGetSortiment"));
+    lSuite.addTest(new ProductServiceTest("testDeprectedComplexRequestBody"));
+    lSuite.addTest(new ProductServiceTest("testCreateChannelCode"));
+    lSuite.addTest(new ProductServiceTest("testGetProducts"));
+    lSuite.addTest(new ProductServiceTest("testDeprecatedContext"));
+    lSuite.addTest(new ProductServiceTest("testDeprecatedComplexReturn"));
     // Return created test suite.
     return lSuite;
   }
@@ -42,7 +42,7 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
    * 
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    */
-  public ProductRESTServiceTest( String pName ) {
+  public ProductServiceTest( String pName ) {
     super(pName);
   }
 
@@ -54,7 +54,7 @@ public class ProductRESTServiceTest extends ProductRESTServiceTestBase {
    * @param pUserId UserId of the User who should be logged in for this Test.
    * @param pPassword Password of the User who should be logged in for this Test.
    */
-  public ProductRESTServiceTest( String pName, String pUserId, String pPassword ) {
+  public ProductServiceTest( String pName, String pUserId, String pPassword ) {
     super(pName, pUserId, pPassword);
   }
 

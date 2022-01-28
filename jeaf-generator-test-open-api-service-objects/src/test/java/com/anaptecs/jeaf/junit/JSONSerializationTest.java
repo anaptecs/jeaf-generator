@@ -56,7 +56,7 @@ public class JSONSerializationTest {
     Reseller lReseller = Reseller.Builder.newBuilder().setLanguage(Locale.GERMAN).setChannels(lChannels).build();
     lJSONString = lTools.writeObjectToString(lReseller);
     assertEquals(
-        "{\"channels\":[{\"channelType\":\"COUNTER\",\"channelCode\":{\"code\":\"POS\"}},{\"channelType\":\"MOBILE\",\"channelCode\":{\"code\":\"MOBILE_APP\"}}],\"products\":[],\"language\":\"de\"}",
+        "{\"objectID\":null,\"channels\":[{\"channelType\":\"COUNTER\",\"channelCode\":{\"code\":\"POS\"}},{\"channelType\":\"MOBILE\",\"channelCode\":{\"code\":\"MOBILE_APP\"}}],\"products\":[],\"language\":\"de\"}",
         lJSONString);
 
     // Test deserialization

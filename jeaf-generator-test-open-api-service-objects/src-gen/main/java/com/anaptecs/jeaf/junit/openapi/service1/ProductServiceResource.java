@@ -34,148 +34,148 @@ import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 @Path("/products")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class ProductRESTServiceResource {
+public class ProductServiceResource {
   /**
-   * {@link ProductRESTService#getProducts()}
+   * {@link ProductService#getProducts()}
    */
   @GET
   public Response getProducts( ) {
-    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    ProductService lService = JEAF.getService(ProductService.class);
     List<Product> lResult = lService.getProducts();
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
   /**
-   * {@link ProductRESTService#getProduct()}
+   * {@link ProductService#getProduct()}
    */
   @Path("{id}")
   @GET
   public Response getProduct( @PathParam("id") String pProductID ) {
-    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    ProductService lService = JEAF.getService(ProductService.class);
     Product lResult = lService.getProduct(pProductID);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
   /**
-   * {@link ProductRESTService#createProduct()}
+   * {@link ProductService#createProduct()}
    */
   @POST
   public Response createProduct( Product pProduct ) {
-    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    ProductService lService = JEAF.getService(ProductService.class);
     boolean lResult = lService.createProduct(pProduct);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
   /**
-   * {@link ProductRESTService#getSortiment()}
+   * {@link ProductService#getSortiment()}
    */
   @Path("sortiment/{id}")
   @GET
   public Response getSortiment( @BeanParam Context pContext ) {
-    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    ProductService lService = JEAF.getService(ProductService.class);
     Sortiment lResult = lService.getSortiment(pContext);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
   /**
-   * {@link ProductRESTService#createChannelCode()}
+   * {@link ProductService#createChannelCode()}
    */
   @Path("ChannelCode")
   @POST
   @Consumes(MediaType.APPLICATION_XML)
   @Produces(MediaType.APPLICATION_XML)
   public Response createChannelCode( String pChannelCode ) {
-    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    ProductService lService = JEAF.getService(ProductService.class);
     ChannelCode lResult = lService.createChannelCode(pChannelCode);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
   /**
-   * {@link ProductRESTService#ping()}
+   * {@link ProductService#ping()}
    */
   @HEAD
   public Response ping( ) {
-    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    ProductService lService = JEAF.getService(ProductService.class);
     lService.ping();
     return Response.status(Response.Status.OK).build();
   }
 
   /**
-   * {@link ProductRESTService#deprecatedOperation()}
+   * {@link ProductService#deprecatedOperation()}
    */
   @Path("deprecated/operation")
   @GET
   @Deprecated
   public Response deprecatedOperation( ) {
-    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    ProductService lService = JEAF.getService(ProductService.class);
     String lResult = lService.deprecatedOperation();
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
   /**
-   * {@link ProductRESTService#deprecatedContext()}
+   * {@link ProductService#deprecatedContext()}
    */
   @Path("deprecated/context")
   @POST
   public Response deprecatedContext( @BeanParam DeprecatedContext pContext ) {
-    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    ProductService lService = JEAF.getService(ProductService.class);
     String lResult = lService.deprecatedContext(pContext);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
   /**
-   * {@link ProductRESTService#deprecatedBeanParam()}
+   * {@link ProductService#deprecatedBeanParam()}
    */
   @Path("deprecated/beanParams")
   @POST
   public Response deprecatedBeanParam( @BeanParam BeanParameter pBeanParam ) {
-    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    ProductService lService = JEAF.getService(ProductService.class);
     lService.deprecatedBeanParam(pBeanParam);
     return Response.status(Response.Status.OK).build();
   }
 
   /**
-   * {@link ProductRESTService#deprecatedParams()}
+   * {@link ProductService#deprecatedParams()}
    */
   @Path("deprecated/params")
   @POST
   @Deprecated
   public Response deprecatedParams( @HeaderParam("param1") @Deprecated int pParam1 ) {
-    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    ProductService lService = JEAF.getService(ProductService.class);
     String lResult = lService.deprecatedParams(pParam1);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
   /**
-   * {@link ProductRESTService#deprecatedBody()}
+   * {@link ProductService#deprecatedBody()}
    */
   @Path("deprecated/body")
   @POST
   public Response deprecatedBody( @Deprecated String pBody ) {
-    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    ProductService lService = JEAF.getService(ProductService.class);
     String lResult = lService.deprecatedBody(pBody);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
   /**
-   * {@link ProductRESTService#deprectedComplexRequestBody()}
+   * {@link ProductService#deprectedComplexRequestBody()}
    */
   @Path("deprecated/complexBody")
   @POST
   public Response deprectedComplexRequestBody( @Deprecated Product pProduct ) {
-    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    ProductService lService = JEAF.getService(ProductService.class);
     lService.deprectedComplexRequestBody(pProduct);
     return Response.status(Response.Status.OK).build();
   }
 
   /**
-   * {@link ProductRESTService#deprecatedComplexReturn()}
+   * {@link ProductService#deprecatedComplexReturn()}
    */
   @Path("deprecated/complexReturn")
   @GET
   @Deprecated
   public Response deprecatedComplexReturn( ) {
-    ProductRESTService lService = JEAF.getService(ProductRESTService.class);
+    ProductService lService = JEAF.getService(ProductService.class);
     Product lResult = lService.deprecatedComplexReturn();
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
