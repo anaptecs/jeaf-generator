@@ -44,6 +44,11 @@ public class Reseller implements ServiceObject, Identifiable<ServiceObjectID> {
   public static final String PRODUCTS = "products";
 
   /**
+   * Constant for the name of attribute "name".
+   */
+  public static final String NAME = "name";
+
+  /**
    * Constant for the name of attribute "language".
    */
   public static final String LANGUAGE = "language";
@@ -62,6 +67,11 @@ public class Reseller implements ServiceObject, Identifiable<ServiceObjectID> {
    * 
    */
   private Set<Product> products = new HashSet<Product>();
+
+  /**
+   * 
+   */
+  private String name;
 
   /**
    * 
@@ -91,6 +101,7 @@ public class Reseller implements ServiceObject, Identifiable<ServiceObjectID> {
     if (pBuilder.products != null) {
       products.addAll(pBuilder.products);
     }
+    name = pBuilder.name;
     language = pBuilder.language;
   }
 
@@ -117,6 +128,11 @@ public class Reseller implements ServiceObject, Identifiable<ServiceObjectID> {
     /**
      * 
      */
+    private String name;
+
+    /**
+     * 
+     */
     private Locale language;
 
     /**
@@ -134,6 +150,7 @@ public class Reseller implements ServiceObject, Identifiable<ServiceObjectID> {
         objectID = pObject.objectID;
         channels = pObject.channels;
         products = pObject.products;
+        name = pObject.name;
         language = pObject.language;
       }
     }
@@ -196,6 +213,17 @@ public class Reseller implements ServiceObject, Identifiable<ServiceObjectID> {
       else {
         products = null;
       }
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "name".
+     * 
+     * @param pName Value to which the attribute "name" should be set.
+     */
+    public Builder setName( String pName ) {
+      // Assign value to attribute
+      name = pName;
       return this;
     }
 
@@ -442,6 +470,27 @@ public class Reseller implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
+   * Method returns the attribute "name".
+   * 
+   * 
+   * @return String Value to which the attribute "name" is set.
+   */
+  public String getName( ) {
+    return name;
+  }
+
+  /**
+   * Method sets the attribute "name".
+   * 
+   * 
+   * @param pName Value to which the attribute "name" should be set.
+   */
+  public void setName( String pName ) {
+    // Assign value to attribute
+    name = pName;
+  }
+
+  /**
    * Method returns the attribute "language".
    * 
    * 
@@ -473,6 +522,8 @@ public class Reseller implements ServiceObject, Identifiable<ServiceObjectID> {
     lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "name", "" + name));
     lBuilder.append('\n');
     lBuilder
         .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "language", "" + language));

@@ -21,6 +21,8 @@ import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -29,6 +31,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
  * @version JEAF Release 1.6.x
  */
 @JsonDeserialize(builder = Product.Builder.class)
+@JsonIdentityInfo(property = "objectID", generator = ObjectIdGenerators.PropertyGenerator.class)
 public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
@@ -39,6 +42,11 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * Constant for the name of attribute "resellers".
    */
   public static final String RESELLERS = "resellers";
+
+  /**
+   * Constant for the name of attribute "name".
+   */
+  public static final String NAME = "name";
 
   /**
    * Constant for the name of attribute "image".
@@ -64,6 +72,11 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * 
    */
   private Set<Reseller> resellers = new HashSet<Reseller>();
+
+  /**
+   * 
+   */
+  private String name;
 
   /**
    * 
@@ -100,6 +113,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     if (pBuilder.resellers != null) {
       resellers.addAll(pBuilder.resellers);
     }
+    name = pBuilder.name;
     image = pBuilder.image;
     link = pBuilder.link;
     productID = pBuilder.productID;
@@ -120,6 +134,11 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
      * 
      */
     private Set<Reseller> resellers;
+
+    /**
+     * 
+     */
+    private String name;
 
     /**
      * 
@@ -150,6 +169,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
         // Read attribute values from passed object.
         objectID = pObject.objectID;
         resellers = pObject.resellers;
+        name = pObject.name;
         image = pObject.image;
         link = pObject.link;
         productID = pObject.productID;
@@ -198,6 +218,17 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
       else {
         resellers = null;
       }
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "name".
+     * 
+     * @param pName Value to which the attribute "name" should be set.
+     */
+    public Builder setName( String pName ) {
+      // Assign value to attribute
+      name = pName;
       return this;
     }
 
@@ -388,6 +419,27 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
+   * Method returns the attribute "name".
+   * 
+   * 
+   * @return String Value to which the attribute "name" is set.
+   */
+  public String getName( ) {
+    return name;
+  }
+
+  /**
+   * Method sets the attribute "name".
+   * 
+   * 
+   * @param pName Value to which the attribute "name" should be set.
+   */
+  public void setName( String pName ) {
+    // Assign value to attribute
+    name = pName;
+  }
+
+  /**
    * Method returns the attribute "image".
    * 
    * 
@@ -475,6 +527,8 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "name", "" + name));
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "link", "" + link));
     lBuilder.append('\n');
