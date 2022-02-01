@@ -97,7 +97,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
-  private Set<Account> accounts = new HashSet<Account>();
+  private transient Set<Account> accounts = new HashSet<Account>();
 
   /**
    * 

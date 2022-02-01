@@ -32,6 +32,11 @@ public class SecurityToken implements ServiceObject {
   public static final String BOOKING = "booking";
 
   /**
+   * Constant for the name of attribute "value".
+   */
+  public static final String VALUE = "value";
+
+  /**
    * The attribute contains the session key of the security token that was used when the booking was executed.
    */
   private final byte[] sessionKey;
@@ -40,6 +45,11 @@ public class SecurityToken implements ServiceObject {
    * 
    */
   private Booking booking;
+
+  /**
+   * 
+   */
+  private transient Integer value;
 
   /**
    * Initialize object using the passed builder.
@@ -52,6 +62,7 @@ public class SecurityToken implements ServiceObject {
     // Read attribute values from builder.
     sessionKey = pBuilder.sessionKey;
     booking = pBuilder.booking;
+    value = pBuilder.value;
   }
 
   /**
@@ -70,6 +81,11 @@ public class SecurityToken implements ServiceObject {
     private Booking booking;
 
     /**
+     * 
+     */
+    private Integer value;
+
+    /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -83,6 +99,7 @@ public class SecurityToken implements ServiceObject {
         // Read attribute values from passed object.
         sessionKey = pObject.sessionKey;
         booking = pObject.booking;
+        value = pObject.value;
       }
     }
 
@@ -131,6 +148,17 @@ public class SecurityToken implements ServiceObject {
      */
     public Builder setBooking( Booking pBooking ) {
       booking = pBooking;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "value".
+     * 
+     * @param pValue Value to which the attribute "value" should be set.
+     */
+    public Builder setValue( Integer pValue ) {
+      // Assign value to attribute
+      value = pValue;
       return this;
     }
 
@@ -222,6 +250,27 @@ public class SecurityToken implements ServiceObject {
   }
 
   /**
+   * Method returns the attribute "value".
+   * 
+   * 
+   * @return Integer Value to which the attribute "value" is set.
+   */
+  public Integer getValue( ) {
+    return value;
+  }
+
+  /**
+   * Method sets the attribute "value".
+   * 
+   * 
+   * @param pValue Value to which the attribute "value" should be set.
+   */
+  public void setValue( Integer pValue ) {
+    // Assign value to attribute
+    value = pValue;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -232,6 +281,8 @@ public class SecurityToken implements ServiceObject {
     lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "value", "" + value));
     lBuilder.append('\n');
     return lBuilder;
   }

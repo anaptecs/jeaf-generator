@@ -39,7 +39,7 @@
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND RESTParamAnnotation»
 	«EXPAND Validation::ValidationAnnotation»
-	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly»final «ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «this.initValue()»«ENDIF»;
+	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «this.initValue()»«ENDIF»;
 «ENDDEFINE»
 
 // processing the association properties
@@ -51,9 +51,9 @@
 	«IF isNavigable()»
 		«EXPAND Validation::ValidationAnnotation»
 		«IF isMultivalued()»
-			«visibility» «IF isReadOnly»final «ENDIF»«this.fqn()» «asInstanceVar()» = new «this.getCollectionImplType()»<«type.fqn()»>();
+			«visibility» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()» «asInstanceVar()» = new «this.getCollectionImplType()»<«type.fqn()»>();
 		«ELSE»
-			«visibility» «IF isReadOnly»final «ENDIF» «type.fqn()» «asInstanceVar()»;
+			«visibility» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «type.fqn()» «asInstanceVar()»;
 		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»

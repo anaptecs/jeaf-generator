@@ -66,7 +66,7 @@ public class Reseller implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
-  private Set<Product> products = new HashSet<Product>();
+  private transient Set<Product> products = new HashSet<Product>();
 
   /**
    * 

@@ -90,7 +90,7 @@ public class Booking implements ServiceObject {
   /**
    * 
    */
-  private Account account;
+  private transient Account account;
 
   /**
    * Initialize object using the passed builder.

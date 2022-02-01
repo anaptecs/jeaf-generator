@@ -165,3 +165,6 @@ uml::Class getOwningClass(uml::Operation operation): (uml::Class) operation.owne
 
 boolean isDeprecated(uml::NamedElement element) :
   isStereotypeApplied(element, "Deprecated") || isStereotypeApplied(element, "deprecated");
+  
+boolean isTransient(uml::Property property):
+  isStereotypeApplied(property, "Transient");
