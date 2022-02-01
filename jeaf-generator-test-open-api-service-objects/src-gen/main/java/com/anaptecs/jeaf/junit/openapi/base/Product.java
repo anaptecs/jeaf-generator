@@ -23,14 +23,11 @@ import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-@JsonDeserialize(builder = Product.Builder.class)
 @JsonIdentityInfo(property = "objectID", generator = ObjectIdGenerators.PropertyGenerator.class)
 public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
@@ -94,6 +91,14 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   private UUID productID;
 
   /**
+   * Private default constructor is required for deserialization by many frameworks.
+   */
+  @SuppressWarnings("unused")
+  private Product( ) {
+    objectID = null;
+  }
+
+  /**
    * Initialize object using the passed builder.
    * 
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -123,7 +128,6 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * Class implements builder to create a new instance of class Product. As the class has readonly attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
-  @JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
   public static class Builder {
     /**
      * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
