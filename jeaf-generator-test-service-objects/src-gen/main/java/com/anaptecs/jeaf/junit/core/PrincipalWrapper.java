@@ -34,6 +34,13 @@ public class PrincipalWrapper implements ServiceObject {
   private Principal lPrincipal;
 
   /**
+   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * object creation builder should be used instead.
+   */
+  protected PrincipalWrapper( ) {
+  }
+
+  /**
    * Initialize object using the passed builder.
    * 
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.

@@ -85,7 +85,16 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
-  private UUID productID;
+  private final UUID productID;
+
+  /**
+   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * object creation builder should be used instead.
+   */
+  protected Product( ) {
+    objectID = null;
+    productID = null;
+  }
 
   /**
    * Initialize object using the passed builder.
@@ -496,17 +505,6 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   public UUID getProductID( ) {
     return productID;
-  }
-
-  /**
-   * Method sets the attribute "productID".
-   * 
-   * 
-   * @param pProductID Value to which the attribute "productID" should be set.
-   */
-  public void setProductID( UUID pProductID ) {
-    // Assign value to attribute
-    productID = pProductID;
   }
 
   /**

@@ -34,6 +34,9 @@ public class Reseller {
   @JsonProperty("products")
   private List<Product> products = null;
 
+  @JsonProperty("name")
+  private String name = null;
+
   @JsonProperty("language")
   private String language = null;
 
@@ -89,6 +92,24 @@ public class Reseller {
     this.products = products;
   }
 
+  public Reseller name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @Schema(description = "")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
   public Reseller language(String language) {
     this.language = language;
     return this;
@@ -119,12 +140,13 @@ public class Reseller {
     Reseller reseller = (Reseller) o;
     return Objects.equals(this.channels, reseller.channels) &&
         Objects.equals(this.products, reseller.products) &&
+        Objects.equals(this.name, reseller.name) &&
         Objects.equals(this.language, reseller.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(channels, products, language);
+    return Objects.hash(channels, products, name, language);
   }
 
 
@@ -135,6 +157,7 @@ public class Reseller {
     
     sb.append("    channels: ").append(toIndentedString(channels)).append("\n");
     sb.append("    products: ").append(toIndentedString(products)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();

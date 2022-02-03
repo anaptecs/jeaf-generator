@@ -16,6 +16,13 @@ public class IdentifiableServiceObjectWithMethod extends IdentifiableServiceObje
   private static final long serialVersionUID = 1L;
 
   /**
+   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * object creation builder should be used instead.
+   */
+  protected IdentifiableServiceObjectWithMethod( ) {
+  }
+
+  /**
    * Initialize object. Nothing special to do.
    */
   protected IdentifiableServiceObjectWithMethod( IdentifiableServiceObjectWithMethod.BuilderBase pBuilder ) {

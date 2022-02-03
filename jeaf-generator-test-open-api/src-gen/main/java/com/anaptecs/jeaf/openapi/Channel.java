@@ -32,6 +32,12 @@ public class Channel {
   @JsonProperty("channelCode")
   private ChannelCode channelCode = null;
 
+  @JsonProperty("code")
+  private Integer code = null;
+
+  @JsonProperty("selfServiceChannel")
+  private Boolean selfServiceChannel = null;
+
   public Channel channelType(ChannelType channelType) {
     this.channelType = channelType;
     return this;
@@ -68,6 +74,24 @@ public class Channel {
     this.channelCode = channelCode;
   }
 
+   /**
+   * Get code
+   * @return code
+  **/
+  @Schema(required = true, description = "")
+  public Integer getCode() {
+    return code;
+  }
+
+   /**
+   * Get selfServiceChannel
+   * @return selfServiceChannel
+  **/
+  @Schema(required = true, description = "")
+  public Boolean isSelfServiceChannel() {
+    return selfServiceChannel;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -79,12 +103,14 @@ public class Channel {
     }
     Channel channel = (Channel) o;
     return Objects.equals(this.channelType, channel.channelType) &&
-        Objects.equals(this.channelCode, channel.channelCode);
+        Objects.equals(this.channelCode, channel.channelCode) &&
+        Objects.equals(this.code, channel.code) &&
+        Objects.equals(this.selfServiceChannel, channel.selfServiceChannel);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(channelType, channelCode);
+    return Objects.hash(channelType, channelCode, code, selfServiceChannel);
   }
 
 
@@ -95,6 +121,8 @@ public class Channel {
     
     sb.append("    channelType: ").append(toIndentedString(channelType)).append("\n");
     sb.append("    channelCode: ").append(toIndentedString(channelCode)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    selfServiceChannel: ").append(toIndentedString(selfServiceChannel)).append("\n");
     sb.append("}");
     return sb.toString();
   }

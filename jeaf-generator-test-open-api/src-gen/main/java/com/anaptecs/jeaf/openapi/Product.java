@@ -30,6 +30,9 @@ public class Product {
   @JsonProperty("resellers")
   private List<Reseller> resellers = null;
 
+  @JsonProperty("name")
+  private String name = null;
+
   @JsonProperty("image")
   private List<Integer> image = new ArrayList<>();
 
@@ -63,6 +66,24 @@ public class Product {
 
   public void setResellers(List<Reseller> resellers) {
     this.resellers = resellers;
+  }
+
+  public Product name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @Schema(description = "")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public Product image(List<Integer> image) {
@@ -106,11 +127,6 @@ public class Product {
     this.link = link;
   }
 
-  public Product productID(String productID) {
-    this.productID = productID;
-    return this;
-  }
-
    /**
    * Get productID
    * @return productID
@@ -118,10 +134,6 @@ public class Product {
   @Schema(description = "")
   public String getProductID() {
     return productID;
-  }
-
-  public void setProductID(String productID) {
-    this.productID = productID;
   }
 
 
@@ -135,6 +147,7 @@ public class Product {
     }
     Product product = (Product) o;
     return Objects.equals(this.resellers, product.resellers) &&
+        Objects.equals(this.name, product.name) &&
         Objects.equals(this.image, product.image) &&
         Objects.equals(this.link, product.link) &&
         Objects.equals(this.productID, product.productID);
@@ -142,7 +155,7 @@ public class Product {
 
   @Override
   public int hashCode() {
-    return Objects.hash(resellers, image, link, productID);
+    return Objects.hash(resellers, name, image, link, productID);
   }
 
 
@@ -152,6 +165,7 @@ public class Product {
     sb.append("class Product {\n");
     
     sb.append("    resellers: ").append(toIndentedString(resellers)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    productID: ").append(toIndentedString(productID)).append("\n");

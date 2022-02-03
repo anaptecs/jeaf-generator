@@ -85,6 +85,16 @@ components:
           $ref: '#/components/schemas/ChannelType'
         channelCode: 
           $ref: '#/components/schemas/ChannelCode'
+        code: 
+          type: integer
+          format: int32
+          readOnly: true
+        selfServiceChannel: 
+          type: boolean
+          readOnly: true
+      required:
+        - code
+        - selfServiceChannel
     # com.anaptecs.jeaf.junit.openapi.base.Reseller
     Reseller:
       type: object
@@ -99,6 +109,8 @@ components:
           items:
             $ref: '#/components/schemas/Product'
           minItems: 1
+        name: 
+          type: string
         language: 
           type: string
     # com.anaptecs.jeaf.junit.openapi.base.Product
@@ -110,6 +122,8 @@ components:
           items:
             $ref: '#/components/schemas/Reseller'
           minItems: 0
+        name: 
+          type: string
         image: 
           type: array
           items:
@@ -120,6 +134,7 @@ components:
           example: 'https://www.company.com/products/1345-345'
         productID: 
           type: string
+          readOnly: true
       required:
         - image
     # com.anaptecs.jeaf.junit.openapi.base.Sortiment
