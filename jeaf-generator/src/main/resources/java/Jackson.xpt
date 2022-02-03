@@ -10,12 +10,20 @@
 
 «DEFINE JacksonClassAnnotations FOR Class»
 	«IF generateJacksonAnnotations()»
-		@com.fasterxml.jackson.databind.annotation.JsonDeserialize(builder = «this.name».Builder.class)
+		«IF enableSemVerForJSON() == true»
+		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+		«ENDIF»
 		«IF this.superClass.size == 0 && this.getSubclasses().size > 0 »
+		«IF enableSemVerForJSON() == false»
+		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(value = "objectType")
+		«ENDIF»
 		@com.fasterxml.jackson.annotation.JsonTypeInfo(use = com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME, include = com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 		@com.fasterxml.jackson.annotation.JsonSubTypes({
 		«EXPAND SubtypesAnnotation -»
 		 })
+		«ENDIF»
+		«IF needsToImplementIdentifiable() == true»
+		@com.fasterxml.jackson.annotation.JsonIdentityInfo(property = "objectID", generator = com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator.class)
 		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»
@@ -27,16 +35,4 @@
 		  «EXPAND SubtypesAnnotation FOR subclass»
 		  «ENDIF»
 		  «ENDFOREACH»
-«ENDDEFINE»
-
-«DEFINE JacksonBuilderAnnotations FOR Class»
-	«IF generateJacksonAnnotations()»
-		@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
-		«IF enableSemVerForJSON() == true»
-		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
-		«ELSE»«IF this.parents().size > 0 || this.getSubclasses().size > 0»
-		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(value = "objectType")
-		«ENDIF»
-		«ENDIF»
-	«ENDIF»
 «ENDDEFINE»

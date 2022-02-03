@@ -23,15 +23,13 @@ import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-// @JsonDeserialize(builder = Reseller.Builder.class)
-@JsonIdentityInfo(property = "objectID", generator = ObjectIdGenerators.PropertyGenerator.class)
+@JsonIdentityInfo(property = "objectID", generator = PropertyGenerator.class)
 public class Reseller implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
@@ -84,10 +82,10 @@ public class Reseller implements ServiceObject, Identifiable<ServiceObjectID> {
   private Locale language;
 
   /**
-   * Private default constructor is required for deserialization by many frameworks.
+   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * object creation builder should be used instead.
    */
-  @SuppressWarnings("unused")
-  private Reseller( ) {
+  protected Reseller( ) {
     objectID = null;
   }
 
@@ -122,7 +120,6 @@ public class Reseller implements ServiceObject, Identifiable<ServiceObjectID> {
    * Class implements builder to create a new instance of class Reseller. As the class has readonly attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
-  @JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
   public static class Builder {
     /**
      * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
@@ -195,15 +192,6 @@ public class Reseller implements ServiceObject, Identifiable<ServiceObjectID> {
      */
     public Builder setID( AbstractObjectID<?> pObjectID ) {
       objectID = pObjectID;
-      return this;
-    }
-
-    /**
-     * Method sets the identifier for the object created using the builder. The reference may be null since an id is not
-     * mandatory.
-     */
-    public Builder setID( int pObjectID ) {
-      objectID = new ServiceObjectID(String.valueOf(pObjectID), null);
       return this;
     }
 

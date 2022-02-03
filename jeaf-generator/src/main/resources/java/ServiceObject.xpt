@@ -47,6 +47,25 @@
 		«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
 	    
 		/**
+		 * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal" object creation builder should be used instead.
+		 */
+		protected «name»( ) {
+		  «IF needsToImplementIdentifiable() == true»
+		  objectID = null;
+		  «ENDIF»
+		  «FOREACH this.ownedAttribute AS attr»
+		  «IF attr.isReadOnly == true»
+		  «IF attr.type.isPrimitiveType() == true»
+		  «attr.name» = «attr.getPrimitiveDefaultValue()»;
+		  «ELSE»«IF attr.isMultivalued() == false»
+		  «attr.name» = null;
+		  «ENDIF»
+		  «ENDIF»
+		  «ENDIF»
+		  «ENDFOREACH»
+		}
+
+		/**
 		 * Initialize object using the passed builder.
 		 * 
 		 * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.

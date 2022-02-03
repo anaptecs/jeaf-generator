@@ -13,14 +13,12 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-@JsonDeserialize(builder = ParentClass.Builder.class)
+@JsonIgnoreProperties(value = "objectType")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = ChildA.class, name = "ChildA"),
   @JsonSubTypes.Type(value = ChildAA.class, name = "ChildAA"),
@@ -43,6 +41,13 @@ public class ParentClass implements ServiceObject {
   private String parentAttribute;
 
   /**
+   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * object creation builder should be used instead.
+   */
+  protected ParentClass( ) {
+  }
+
+  /**
    * Initialize object using the passed builder.
    * 
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -58,8 +63,6 @@ public class ParentClass implements ServiceObject {
    * Class implements builder to create a new instance of class ParentClass. As the class has readonly attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
-  @JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
-  @JsonIgnoreProperties(value = "objectType")
   public static class Builder {
     /**
      * 

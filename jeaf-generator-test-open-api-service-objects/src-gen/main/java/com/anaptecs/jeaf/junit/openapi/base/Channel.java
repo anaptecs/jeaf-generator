@@ -10,14 +10,11 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-@JsonDeserialize(builder = Channel.Builder.class)
 public class Channel implements ServiceObject {
   /**
    * Default serial version uid.
@@ -35,6 +32,16 @@ public class Channel implements ServiceObject {
   public static final String CHANNELCODE = "channelCode";
 
   /**
+   * Constant for the name of attribute "code".
+   */
+  public static final String CODE = "code";
+
+  /**
+   * Constant for the name of attribute "selfServiceChannel".
+   */
+  public static final String SELFSERVICECHANNEL = "selfServiceChannel";
+
+  /**
    * 
    */
   private ChannelType channelType;
@@ -43,6 +50,25 @@ public class Channel implements ServiceObject {
    * 
    */
   private ChannelCode channelCode;
+
+  /**
+   * 
+   */
+  private final int code;
+
+  /**
+   * 
+   */
+  private final boolean selfServiceChannel;
+
+  /**
+   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * object creation builder should be used instead.
+   */
+  protected Channel( ) {
+    code = 0;
+    selfServiceChannel = false;
+  }
 
   /**
    * Initialize object using the passed builder.
@@ -55,13 +81,14 @@ public class Channel implements ServiceObject {
     // Read attribute values from builder.
     channelType = pBuilder.channelType;
     channelCode = pBuilder.channelCode;
+    code = pBuilder.code;
+    selfServiceChannel = pBuilder.selfServiceChannel;
   }
 
   /**
    * Class implements builder to create a new instance of class Channel. As the class has readonly attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
-  @JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
   public static class Builder {
     /**
      * 
@@ -72,6 +99,16 @@ public class Channel implements ServiceObject {
      * 
      */
     private ChannelCode channelCode;
+
+    /**
+     * 
+     */
+    private int code;
+
+    /**
+     * 
+     */
+    private boolean selfServiceChannel;
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
@@ -87,6 +124,8 @@ public class Channel implements ServiceObject {
         // Read attribute values from passed object.
         channelType = pObject.channelType;
         channelCode = pObject.channelCode;
+        code = pObject.code;
+        selfServiceChannel = pObject.selfServiceChannel;
       }
     }
 
@@ -127,6 +166,28 @@ public class Channel implements ServiceObject {
      */
     public Builder setChannelCode( ChannelCode pChannelCode ) {
       channelCode = pChannelCode;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "code".
+     * 
+     * @param pCode Value to which the attribute "code" should be set.
+     */
+    public Builder setCode( int pCode ) {
+      // Assign value to attribute
+      code = pCode;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "selfServiceChannel".
+     * 
+     * @param pSelfServiceChannel Value to which the attribute "selfServiceChannel" should be set.
+     */
+    public Builder setSelfServiceChannel( boolean pSelfServiceChannel ) {
+      // Assign value to attribute
+      selfServiceChannel = pSelfServiceChannel;
       return this;
     }
 
@@ -211,6 +272,26 @@ public class Channel implements ServiceObject {
   }
 
   /**
+   * Method returns the attribute "code".
+   * 
+   * 
+   * @return int Value to which the attribute "code" is set.
+   */
+  public int getCode( ) {
+    return code;
+  }
+
+  /**
+   * Method returns the attribute "selfServiceChannel".
+   * 
+   * 
+   * @return Boolean Value to which the attribute "selfServiceChannel" is set.
+   */
+  public boolean getSelfServiceChannel( ) {
+    return selfServiceChannel;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -221,6 +302,11 @@ public class Channel implements ServiceObject {
     lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "code", "" + code));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "selfServiceChannel",
+        "" + selfServiceChannel));
     lBuilder.append('\n');
     return lBuilder;
   }

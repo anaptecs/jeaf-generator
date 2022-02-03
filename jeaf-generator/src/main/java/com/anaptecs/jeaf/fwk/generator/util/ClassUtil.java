@@ -605,6 +605,18 @@ public class ClassUtil {
     return lIsPrimitive;
   }
 
+  public static String getPrimitiveDefaultValue( Property pProperty ) {
+    String lTypeName = Naming.getFullyQualifiedName(pProperty);
+    String lDefaultValue;
+    if ("boolean".equals(lTypeName)) {
+      lDefaultValue = "false";
+    }
+    else {
+      lDefaultValue = "0";
+    }
+    return lDefaultValue;
+  }
+
   public static boolean isBasicType( Type pType ) {
     boolean lIsWrapperType;
 

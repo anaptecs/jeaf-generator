@@ -22,13 +22,13 @@ import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-@JsonIdentityInfo(property = "objectID", generator = ObjectIdGenerators.PropertyGenerator.class)
+@JsonIdentityInfo(property = "objectID", generator = PropertyGenerator.class)
 public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
@@ -88,14 +88,15 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
-  private UUID productID;
+  private final UUID productID;
 
   /**
-   * Private default constructor is required for deserialization by many frameworks.
+   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * object creation builder should be used instead.
    */
-  @SuppressWarnings("unused")
-  private Product( ) {
+  protected Product( ) {
     objectID = null;
+    productID = null;
   }
 
   /**
@@ -507,17 +508,6 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   public UUID getProductID( ) {
     return productID;
-  }
-
-  /**
-   * Method sets the attribute "productID".
-   * 
-   * 
-   * @param pProductID Value to which the attribute "productID" should be set.
-   */
-  public void setProductID( UUID pProductID ) {
-    // Assign value to attribute
-    productID = pProductID;
   }
 
   /**

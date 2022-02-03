@@ -7,15 +7,11 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.xfun.api.XFun;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-@JsonDeserialize(builder = ChildA.Builder.class)
 public abstract class ChildA extends ParentClass {
   /**
    * Default serial version uid.
@@ -33,6 +29,13 @@ public abstract class ChildA extends ParentClass {
   private int childAAttribute;
 
   /**
+   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * object creation builder should be used instead.
+   */
+  protected ChildA( ) {
+  }
+
+  /**
    * Initialize object using the passed builder.
    * 
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -48,8 +51,6 @@ public abstract class ChildA extends ParentClass {
    * Class implements builder to create a new instance of class ChildA. As the class has readonly attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
-  @JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
-  @JsonIgnoreProperties(value = "objectType")
   public static abstract class Builder extends ParentClass.Builder {
     /**
      * 

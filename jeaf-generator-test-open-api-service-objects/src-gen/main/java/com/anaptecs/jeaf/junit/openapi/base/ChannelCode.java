@@ -10,14 +10,11 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-@JsonDeserialize(builder = ChannelCode.Builder.class)
 public class ChannelCode implements ServiceObject {
   /**
    * Default serial version uid.
@@ -35,6 +32,13 @@ public class ChannelCode implements ServiceObject {
   private String code;
 
   /**
+   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * object creation builder should be used instead.
+   */
+  protected ChannelCode( ) {
+  }
+
+  /**
    * Initialize object using the passed builder.
    * 
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -50,7 +54,6 @@ public class ChannelCode implements ServiceObject {
    * Class implements builder to create a new instance of class ChannelCode. As the class has readonly attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
-  @JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
   public static class Builder {
     /**
      * 
