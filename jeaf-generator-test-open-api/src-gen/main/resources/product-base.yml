@@ -488,6 +488,68 @@ components:
         - writeOnlyArray
         - nullableArray
         - notNullableArray
+    # com.anaptecs.jeaf.junit.openapi.base.Partner
+    Partner:
+      discriminator:
+        propertyName: objectType
+        mapping:
+          Partner: '#/components/schemas/Partner'
+          Company: '#/components/schemas/Company'
+          Person: '#/components/schemas/Person'
+      type: object
+      properties:
+        objectType:
+          description: Attribute is used as discriminator for inheritance between data types.
+          type: string
+        postalAddresses: 
+          type: array
+          items:
+            $ref: '#/components/schemas/PostalAddress'
+          minItems: 0
+      required:
+        - objectType
+    # com.anaptecs.jeaf.junit.openapi.base.PostalAddress
+    PostalAddress:
+      type: object
+      properties:
+        street: 
+          type: string
+        houseNumber: 
+          type: string
+        city: 
+          type: string
+        postalCode: 
+          type: integer
+          format: int32
+      required:
+        - postalCode
+    # com.anaptecs.jeaf.junit.openapi.base.Company
+    Company:
+      allOf:
+        - $ref: '#/components/schemas/Partner'
+      type: object
+      properties:
+        name: 
+          type: string
+    # com.anaptecs.jeaf.junit.openapi.base.Person
+    Person:
+      allOf:
+        - $ref: '#/components/schemas/Partner'
+      type: object
+      properties:
+        surname: 
+          type: string
+        firstName: 
+          type: string
+    # com.anaptecs.jeaf.junit.openapi.base.PartnerContainer
+    PartnerContainer:
+      type: object
+      properties:
+        partners: 
+          type: array
+          items:
+            $ref: '#/components/schemas/Partner'
+          minItems: 0
 
     
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
