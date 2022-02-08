@@ -33,8 +33,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
 @JsonIgnoreProperties(value = "objectType")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = Company.class, name = "Company"),
-  @JsonSubTypes.Type(value = Person.class, name = "Person"),
-  @JsonSubTypes.Type(value = Partner.class, name = "Partner") })
+  @JsonSubTypes.Type(value = Person.class, name = "Person") })
 @JsonIdentityInfo(property = "objectID", generator = PropertyGenerator.class)
 public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
