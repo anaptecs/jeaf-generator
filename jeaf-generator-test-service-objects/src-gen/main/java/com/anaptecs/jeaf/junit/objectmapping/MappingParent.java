@@ -36,6 +36,7 @@ public class MappingParent implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected MappingParent( ) {
+    // Nothing to do.
   }
 
   /**

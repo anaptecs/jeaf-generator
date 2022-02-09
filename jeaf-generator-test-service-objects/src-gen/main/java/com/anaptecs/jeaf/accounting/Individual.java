@@ -33,6 +33,7 @@ public class Individual extends Customer {
    * object creation builder should be used instead.
    */
   protected Individual( ) {
+    // Nothing to do.
   }
 
   /**

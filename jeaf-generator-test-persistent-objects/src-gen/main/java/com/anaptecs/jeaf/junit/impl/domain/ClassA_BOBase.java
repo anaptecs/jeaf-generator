@@ -31,6 +31,16 @@ public abstract class ClassA_BOBase extends PersistentObject {
   public static final String NAME_ATTRIBUTE = "name";
 
   /**
+   * Constant for the name of the row that is used to store the values of attribute "readonlyDefault".
+   */
+  public static final String READONLYDEFAULT_ROW = "READONLYDEFAULT";
+
+  /**
+   * Constant for the name of attribute "readonlyDefault".
+   */
+  public static final String READONLYDEFAULT_ATTRIBUTE = "readonlyDefault";
+
+  /**
    * Constant for the name of role "classB".
    */
   public static final String CLASSB_ROLE = "classB";
@@ -46,11 +56,16 @@ public abstract class ClassA_BOBase extends PersistentObject {
   private String name;
 
   /**
+   * 
+   */
+  private final int readonlyDefault;
+
+  /**
    * Initialize object. The constructor of the class has visibility protected in order to avoid creating business
    * objects not through JEAFs persistence service provider.
    */
   protected ClassA_BOBase( ) {
-    // Nothing to do.
+    readonlyDefault = 4711;
   }
 
   /**
@@ -125,6 +140,16 @@ public abstract class ClassA_BOBase extends PersistentObject {
   public void setName( String pName ) {
     // Assign value to attribute
     name = pName;
+  }
+
+  /**
+   * Method returns the attribute "readonlyDefault".
+   * 
+   * 
+   * @return int Value to which the attribute "readonlyDefault" is set.
+   */
+  public int getReadonlyDefault( ) {
+    return readonlyDefault;
   }
 
   /**

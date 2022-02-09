@@ -42,6 +42,7 @@ public class SwiftAccount extends Account {
    * object creation builder should be used instead.
    */
   protected SwiftAccount( ) {
+    // Nothing to do.
   }
 
   /**

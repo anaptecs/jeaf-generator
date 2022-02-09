@@ -42,6 +42,7 @@ public class Sortiment implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected Sortiment( ) {
+    // Nothing to do.
   }
 
   /**

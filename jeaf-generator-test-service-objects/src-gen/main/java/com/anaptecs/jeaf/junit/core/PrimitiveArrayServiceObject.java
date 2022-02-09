@@ -36,6 +36,7 @@ public class PrimitiveArrayServiceObject implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected PrimitiveArrayServiceObject( ) {
+    // Nothing to do.
   }
 
   /**

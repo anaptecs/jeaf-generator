@@ -35,6 +35,7 @@ public class SubclassWithoutID extends IdentifiableServiceObject {
    * object creation builder should be used instead.
    */
   protected SubclassWithoutID( ) {
+    // Nothing to do.
   }
 
   /**

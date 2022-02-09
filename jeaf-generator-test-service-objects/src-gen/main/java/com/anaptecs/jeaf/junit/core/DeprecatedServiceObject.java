@@ -37,6 +37,7 @@ public class DeprecatedServiceObject implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected DeprecatedServiceObject( ) {
+    // Nothing to do.
   }
 
   /**

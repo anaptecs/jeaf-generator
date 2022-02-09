@@ -58,6 +58,7 @@ public class SchufaRequest implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected SchufaRequest( ) {
+    // Nothing to do.
   }
 
   /**

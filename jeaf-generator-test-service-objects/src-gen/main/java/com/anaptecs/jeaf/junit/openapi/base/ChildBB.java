@@ -89,6 +89,7 @@ public class ChildBB extends ChildB {
    * object creation builder should be used instead.
    */
   protected ChildBB( ) {
+    // Nothing to do.
   }
 
   /**

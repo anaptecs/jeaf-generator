@@ -82,6 +82,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected PrimitiveReferenceServiceObject( ) {
+    // Nothing to do.
   }
 
   /**

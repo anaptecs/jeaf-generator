@@ -36,6 +36,7 @@ public class ParentClass implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected ParentClass( ) {
+    // Nothing to do.
   }
 
   /**

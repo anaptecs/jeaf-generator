@@ -1,6 +1,7 @@
 «EXTENSION java::Naming»
 «EXTENSION java::ObjectMapper»
 «EXTENSION java::GeneratorCommons»
+«EXTENSION entity::ModelProperties»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «IMPORT JMM»
@@ -52,12 +53,19 @@
 		protected «name»( ) {
 		  «IF needsToImplementIdentifiable() == true»
 		  objectID = null;
+		  «ELSE»«IF this.requiresAttributeInitValue() == false»
+		  // Nothing to do.
+		  «ENDIF»
 		  «ENDIF»
 		  «FOREACH this.ownedAttribute AS attr»
 		  «IF attr.isReadOnly == true && attr.isStatic == false»
 		  «IF attr.type.isPrimitiveType() == true»
 		  «IF attr.isMultivalued() == false»
+		  «IF attr.isRealInitValue()»
+		  «attr.name» = «attr.initValue()»;
+		  «ELSE»
 		  «attr.name» = «attr.getPrimitiveDefaultValue()»;
+		  «ENDIF»
 		  «ELSE»
 		  «attr.name» = null;
 		  «ENDIF»
@@ -163,12 +171,19 @@
 		protected «name»Base( ) {
 		  «IF needsToImplementIdentifiable() == true»
 		  objectID = null;
+		  «ELSE»«IF this.requiresAttributeInitValue() == false»
+		  // Nothing to do.
+		  «ENDIF»
 		  «ENDIF»
 		  «FOREACH this.ownedAttribute AS attr»
 		  «IF attr.isReadOnly == true && attr.isStatic == false»
 		  «IF attr.type.isPrimitiveType() == true»
 		  «IF attr.isMultivalued() == false»
+		  «IF attr.isRealInitValue()»
+		  «attr.name» = «attr.initValue()»;
+		  «ELSE»
 		  «attr.name» = «attr.getPrimitiveDefaultValue()»;
+		  «ENDIF»
 		  «ELSE»
 		  «attr.name» = null;
 		  «ENDIF»

@@ -55,6 +55,7 @@ public class ValidationTestObject implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected ValidationTestObject( ) {
+    // Nothing to do.
   }
 
   /**

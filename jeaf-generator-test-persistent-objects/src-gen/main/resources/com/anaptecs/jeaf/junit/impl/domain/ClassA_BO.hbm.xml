@@ -13,6 +13,11 @@
             <column name="ROW_NAME" unique="false" not-null="false" />
         </property>
 
+        <!-- Attribute mapping for attribute "int readonlyDefault" -->
+        <property name="readonlyDefault" access="field" unique="false" not-null="false">
+            <column name="READONLYDEFAULT" unique="false" not-null="false" />
+        </property>
+
         <!-- Association mapping for role "classB (0..1)" -->
         <!-- Association ClassA_BO - ClassB_BO -->
         <many-to-one name="classB" class="com.anaptecs.jeaf.junit.impl.domain.ClassB_BO" column="CLASS_B_FK" access="field" cascade="none" />

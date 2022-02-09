@@ -14,28 +14,27 @@ import com.anaptecs.jeaf.xfun.api.XFun;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@Deprecated
-public abstract class DeprecatedDomainObjectBase extends DomainObject {
+public class ReadonlyDO extends DomainObject {
   /**
    * Default serial version uid.
    */
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "readonlyDefault".
+   * Constant for the name of attribute "readonly".
    */
-  public static final String READONLYDEFAULT = "readonlyDefault";
+  public static final String READONLY = "readonly";
 
   /**
    * 
    */
-  private final int readonlyDefault;
+  private final int readonly;
 
   /**
    * Initialize object. Nothing special to do.
    */
-  public DeprecatedDomainObjectBase( ) {
-    readonlyDefault = 4711;
+  public ReadonlyDO( ) {
+    readonly = 4711;
   }
 
   /**
@@ -43,25 +42,20 @@ public abstract class DeprecatedDomainObjectBase extends DomainObject {
    * 
    * @param pDomainObjectID Id of this domain object. The parameter must not be null.
    */
-  public DeprecatedDomainObjectBase( DomainObjectID pDomainObjectID ) {
+  public ReadonlyDO( DomainObjectID pDomainObjectID ) {
     super(pDomainObjectID);
-    readonlyDefault = 4711;
+    readonly = 4711;
   }
 
   /**
-   * Method returns the attribute "readonlyDefault".
+   * Method returns the attribute "readonly".
    * 
    * 
-   * @return int Value to which the attribute "readonlyDefault" is set.
+   * @return int Value to which the attribute "readonly" is set.
    */
-  public int getReadonlyDefault( ) {
-    return readonlyDefault;
+  public int getReadonly( ) {
+    return readonly;
   }
-
-  /**
-  * 
-  */
-  public abstract void doSomething( );
 
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
@@ -75,8 +69,8 @@ public abstract class DeprecatedDomainObjectBase extends DomainObject {
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "readonlyDefault",
-        "" + readonlyDefault));
+    lBuilder
+        .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "readonly", "" + readonly));
     lBuilder.append('\n');
     return lBuilder;
   }

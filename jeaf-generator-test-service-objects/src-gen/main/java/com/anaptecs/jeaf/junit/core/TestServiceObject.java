@@ -88,6 +88,7 @@ public class TestServiceObject implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected TestServiceObject( ) {
+    // Nothing to do.
   }
 
   /**

@@ -26,6 +26,7 @@ public class Input implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected Input( ) {
+    // Nothing to do.
   }
 
   /**

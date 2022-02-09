@@ -39,7 +39,7 @@
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND RESTParamAnnotation»
 	«EXPAND Validation::ValidationAnnotation»
-	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «this.initValue()»«ENDIF»;
+	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false && this.isStatic == true» = «this.initValue()»«ENDIF»;
 «ENDDEFINE»
 
 // processing the association properties

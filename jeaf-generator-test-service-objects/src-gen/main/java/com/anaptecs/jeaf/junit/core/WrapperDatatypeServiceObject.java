@@ -106,6 +106,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected WrapperDatatypeServiceObject( ) {
+    // Nothing to do.
   }
 
   /**

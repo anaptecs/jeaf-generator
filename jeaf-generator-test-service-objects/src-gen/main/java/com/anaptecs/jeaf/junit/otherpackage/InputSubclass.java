@@ -22,6 +22,7 @@ public class InputSubclass extends Input {
    * object creation builder should be used instead.
    */
   protected InputSubclass( ) {
+    // Nothing to do.
   }
 
   /**

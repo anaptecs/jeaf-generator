@@ -43,6 +43,7 @@ public class PartnerContainer implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected PartnerContainer( ) {
+    // Nothing to do.
   }
 
   /**

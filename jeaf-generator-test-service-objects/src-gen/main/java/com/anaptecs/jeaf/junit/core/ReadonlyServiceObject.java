@@ -27,9 +27,19 @@ public class ReadonlyServiceObject implements ServiceObject {
   public static final String READONLY = "readonly";
 
   /**
+   * Constant for the name of attribute "readonlyDefault".
+   */
+  public static final String READONLYDEFAULT = "readonlyDefault";
+
+  /**
    * 
    */
   private final String readonly;
+
+  /**
+   * 
+   */
+  private final int readonlyDefault;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -37,6 +47,7 @@ public class ReadonlyServiceObject implements ServiceObject {
    */
   protected ReadonlyServiceObject( ) {
     readonly = null;
+    readonlyDefault = 4711;
   }
 
   /**
@@ -49,6 +60,7 @@ public class ReadonlyServiceObject implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     readonly = pBuilder.readonly;
+    readonlyDefault = pBuilder.readonlyDefault;
   }
 
   /**
@@ -60,6 +72,11 @@ public class ReadonlyServiceObject implements ServiceObject {
      * 
      */
     private String readonly;
+
+    /**
+     * 
+     */
+    private int readonlyDefault = 4711;
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
@@ -74,6 +91,7 @@ public class ReadonlyServiceObject implements ServiceObject {
       if (pObject != null) {
         // Read attribute values from passed object.
         readonly = pObject.readonly;
+        readonlyDefault = pObject.readonlyDefault;
       }
     }
 
@@ -105,6 +123,17 @@ public class ReadonlyServiceObject implements ServiceObject {
     public Builder setReadonly( String pReadonly ) {
       // Assign value to attribute
       readonly = pReadonly;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "readonlyDefault".
+     * 
+     * @param pReadonlyDefault Value to which the attribute "readonlyDefault" should be set.
+     */
+    public Builder setReadonlyDefault( int pReadonlyDefault ) {
+      // Assign value to attribute
+      readonlyDefault = pReadonlyDefault;
       return this;
     }
 
@@ -145,6 +174,16 @@ public class ReadonlyServiceObject implements ServiceObject {
   }
 
   /**
+   * Method returns the attribute "readonlyDefault".
+   * 
+   * 
+   * @return int Value to which the attribute "readonlyDefault" is set.
+   */
+  public int getReadonlyDefault( ) {
+    return readonlyDefault;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -158,6 +197,9 @@ public class ReadonlyServiceObject implements ServiceObject {
     lBuilder.append('\n');
     lBuilder
         .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "readonly", "" + readonly));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "readonlyDefault",
+        "" + readonlyDefault));
     lBuilder.append('\n');
     return lBuilder;
   }

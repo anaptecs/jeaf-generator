@@ -16,6 +16,16 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  */
 public abstract class AdvancedPOJOBase {
   /**
+   * Constant for the name of attribute "readonlyDefault".
+   */
+  public static final String READONLYDEFAULT = "readonlyDefault";
+
+  /**
+   * 
+   */
+  private final int readonlyDefault;
+
+  /**
    * Initialize object using the passed builder.
    * 
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -23,6 +33,8 @@ public abstract class AdvancedPOJOBase {
   protected AdvancedPOJOBase( BuilderBase pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+    // Read attribute values from builder.
+    readonlyDefault = pBuilder.readonlyDefault;
   }
 
   /**
@@ -30,6 +42,11 @@ public abstract class AdvancedPOJOBase {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
+    /**
+     * 
+     */
+    private int readonlyDefault = 4711;
+
     /**
      * Use {@link AdvancedPOJO.Builder#newBuilder()} instead of protected constructor to create new builder.
      */
@@ -42,7 +59,19 @@ public abstract class AdvancedPOJOBase {
     protected BuilderBase( AdvancedPOJOBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
+        readonlyDefault = pObject.readonlyDefault;
       }
+    }
+
+    /**
+     * Method sets the attribute "readonlyDefault".
+     * 
+     * @param pReadonlyDefault Value to which the attribute "readonlyDefault" should be set.
+     */
+    public BuilderBase setReadonlyDefault( int pReadonlyDefault ) {
+      // Assign value to attribute
+      readonlyDefault = pReadonlyDefault;
+      return this;
     }
 
     /**
@@ -72,6 +101,16 @@ public abstract class AdvancedPOJOBase {
   }
 
   /**
+   * Method returns the attribute "readonlyDefault".
+   * 
+   * 
+   * @return int Value to which the attribute "readonlyDefault" is set.
+   */
+  public int getReadonlyDefault( ) {
+    return readonlyDefault;
+  }
+
+  /**
    * 
    * @param pName
    * @return {@link Boolean}
@@ -89,6 +128,9 @@ public abstract class AdvancedPOJOBase {
     lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "readonlyDefault",
+        "" + readonlyDefault));
     lBuilder.append('\n');
     return lBuilder;
   }

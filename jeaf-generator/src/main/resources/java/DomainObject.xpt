@@ -1,6 +1,7 @@
 «EXTENSION java::Naming»
 «EXTENSION java::ObjectMapper»
 «EXTENSION java::GeneratorCommons»
+«EXTENSION entity::ModelProperties»
 
 «IMPORT JMM»
 
@@ -47,11 +48,32 @@
        * Initialize object. Nothing special to do.
        */
       public «name»() {
-	      «IF needsToImplementIdentifiable() == true»
-	      objectID = null;
-	      «ELSE»
-	      // Nothing to do.
-	      «ENDIF»	      
+		  «IF needsToImplementIdentifiable() == true»
+			  objectID = null;
+		  «ELSE»
+			  «IF this.requiresAttributeInitValue() == false»
+			  // Nothing to do.
+			  «ENDIF»
+		  «ENDIF»
+		  «FOREACH this.ownedAttribute AS attr»
+			  «IF attr.isReadOnly == true && attr.isStatic == false»
+				  «IF attr.type.isPrimitiveType() == true»
+					  «IF attr.isMultivalued() == false»
+						  «IF attr.isRealInitValue()»
+						  «attr.name» = «attr.initValue()»;
+						  «ELSE»
+						  «attr.name» = «attr.getPrimitiveDefaultValue()»;
+						  «ENDIF»
+					  «ELSE»
+						  «attr.name» = null;
+					  «ENDIF»
+				  «ELSE»
+					  «IF attr.isMultivalued() == false»
+					  «attr.name» = null;
+					  «ENDIF»
+				  «ENDIF»
+			  «ENDIF»
+		  «ENDFOREACH»
       }
       
       /**
@@ -61,9 +83,28 @@
        */
       public «name»(com.anaptecs.jeaf.core.api.DomainObjectID pDomainObjectID) {
         super(pDomainObjectID);
-	      «IF needsToImplementIdentifiable() == true»
-	      objectID = null;
-	      «ENDIF»
+		  «IF needsToImplementIdentifiable() == true»
+			  objectID = null;
+		  «ENDIF»
+		  «FOREACH this.ownedAttribute AS attr»
+			  «IF attr.isReadOnly == true && attr.isStatic == false»
+				  «IF attr.type.isPrimitiveType() == true»
+					  «IF attr.isMultivalued() == false»
+						  «IF attr.isRealInitValue()»
+						  «attr.name» = «attr.initValue()»;
+						  «ELSE»
+						  «attr.name» = «attr.getPrimitiveDefaultValue()»;
+						  «ENDIF»
+					  «ELSE»
+						  «attr.name» = null;
+					  «ENDIF»
+				  «ELSE»
+					  «IF attr.isMultivalued() == false»
+					  «attr.name» = null;
+					  «ENDIF»
+				  «ENDIF»
+			  «ENDIF»
+		  «ENDFOREACH»
       }
       
 		«IF needsToImplementIdentifiable() == true»
@@ -109,11 +150,32 @@
            * Initialize object. Nothing special to do.
            */
           public «name»Base() {
-		      «IF needsToImplementIdentifiable() == true»
-		      objectID = null;
-		      «ELSE»
-		      // Nothing to do.
-		      «ENDIF»	      
+			  «IF needsToImplementIdentifiable() == true»
+				  objectID = null;
+			  «ELSE»
+				  «IF this.requiresAttributeInitValue() == false»
+				  // Nothing to do.
+				  «ENDIF»
+			  «ENDIF»
+			  «FOREACH this.ownedAttribute AS attr»
+				  «IF attr.isReadOnly == true && attr.isStatic == false»
+					  «IF attr.type.isPrimitiveType() == true»
+						  «IF attr.isMultivalued() == false»
+							  «IF attr.isRealInitValue()»
+							  «attr.name» = «attr.initValue()»;
+							  «ELSE»
+							  «attr.name» = «attr.getPrimitiveDefaultValue()»;
+							  «ENDIF»
+						  «ELSE»
+							  «attr.name» = null;
+						  «ENDIF»
+					  «ELSE»
+						  «IF attr.isMultivalued() == false»
+						  «attr.name» = null;
+						  «ENDIF»
+					  «ENDIF»
+				  «ENDIF»
+			  «ENDFOREACH»
           }
           
           /**
@@ -123,9 +185,28 @@
            */
           public «name»Base(com.anaptecs.jeaf.core.api.DomainObjectID pDomainObjectID) {
             super(pDomainObjectID);
-		      «IF needsToImplementIdentifiable() == true»
-		      objectID = null;
-		      «ENDIF»
+			  «IF needsToImplementIdentifiable() == true»
+				  objectID = null;
+			  «ENDIF»
+			  «FOREACH this.ownedAttribute AS attr»
+				  «IF attr.isReadOnly == true && attr.isStatic == false»
+					  «IF attr.type.isPrimitiveType() == true»
+						  «IF attr.isMultivalued() == false»
+							  «IF attr.isRealInitValue()»
+							  «attr.name» = «attr.initValue()»;
+							  «ELSE»
+							  «attr.name» = «attr.getPrimitiveDefaultValue()»;
+							  «ENDIF»
+						  «ELSE»
+							  «attr.name» = null;
+						  «ENDIF»
+					  «ELSE»
+						  «IF attr.isMultivalued() == false»
+						  «attr.name» = null;
+						  «ENDIF»
+					  «ENDIF»
+				  «ENDIF»
+			  «ENDFOREACH»
           }
       
 		«IF needsToImplementIdentifiable() == true»

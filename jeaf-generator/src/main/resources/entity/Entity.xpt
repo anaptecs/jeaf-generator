@@ -79,7 +79,28 @@
 		     * business objects not through JEAFs persistence service provider.
 		     */
 		    protected «this.getBOBaseName()»( ) {
-              // Nothing to do.
+			  «IF this.requiresAttributeInitValue() == false»
+			  // Nothing to do.
+		  	  «ENDIF»
+			  «FOREACH this.ownedAttribute AS attr»
+				  «IF attr.isReadOnly == true && attr.isStatic == false»
+					  «IF attr.type.isPrimitiveType() == true»
+						  «IF attr.isMultivalued() == false»
+							  «IF attr.isRealInitValue()»
+							  «attr.name» = «attr.initValue()»;
+							  «ELSE»
+							  «attr.name» = «attr.getPrimitiveDefaultValue()»;
+							  «ENDIF»
+						  «ELSE»
+						  	  «attr.name» = null;
+						  «ENDIF»
+					  «ELSE»
+						  «IF attr.isMultivalued() == false»
+						  «attr.name» = null;
+						  «ENDIF»
+					  «ENDIF»
+				  «ENDIF»
+			  «ENDFOREACH»
 		    }
 			
 			  /**

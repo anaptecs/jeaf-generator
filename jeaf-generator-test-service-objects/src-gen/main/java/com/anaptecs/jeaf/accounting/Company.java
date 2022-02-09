@@ -65,6 +65,7 @@ public class Company extends Customer {
    * object creation builder should be used instead.
    */
   protected Company( ) {
+    // Nothing to do.
   }
 
   /**

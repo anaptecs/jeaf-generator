@@ -293,3 +293,9 @@ cached boolean hasMultivaluedAssociation(uml::Class class) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.hasMultivaluedAssociation(org.eclipse.uml2.uml.Class);
     
 cached boolean isValidationStereotype(uml::Stereotype stereotype) : !stereotype.allParents().select(e|e.name == "Validation").isEmpty;
+
+cached boolean requiresInitValue(uml::Property property):
+     property.isReadOnly == true && property.isStatic == false;
+     
+cached boolean requiresAttributeInitValue(uml::Class class):
+     !class.ownedAttribute.select(p|p.requiresInitValue()).isEmpty;

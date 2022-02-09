@@ -46,6 +46,7 @@ public class OtherMappingObject implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected OtherMappingObject( ) {
+    // Nothing to do.
   }
 
   /**

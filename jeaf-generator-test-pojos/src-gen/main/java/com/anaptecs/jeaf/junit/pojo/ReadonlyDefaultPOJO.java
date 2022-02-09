@@ -3,10 +3,9 @@
  * 
  * Copyright 2004 - 2019. All rights reserved.
  */
-package com.anaptecs.jeaf.junit.otherpackage;
+package com.anaptecs.jeaf.junit.pojo;
 
 import com.anaptecs.jeaf.core.api.MessageConstants;
-import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -15,35 +14,39 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-public class Output implements ServiceObject {
+public class ReadonlyDefaultPOJO {
   /**
-   * Default serial version uid.
+   * Constant for the name of attribute "readonlyDefault".
    */
-  private static final long serialVersionUID = 1L;
+  public static final String READONLYDEFAULT = "readonlyDefault";
 
   /**
-   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
-   * object creation builder should be used instead.
+   * 
    */
-  protected Output( ) {
-    // Nothing to do.
-  }
+  private final int readonlyDefault;
 
   /**
    * Initialize object using the passed builder.
    * 
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Output( Builder pBuilder ) {
+  protected ReadonlyDefaultPOJO( Builder pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+    // Read attribute values from builder.
+    readonlyDefault = pBuilder.readonlyDefault;
   }
 
   /**
-   * Class implements builder to create a new instance of class Output. As the class has readonly attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class ReadonlyDefaultPOJO. As the class has readonly
+   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
+    /**
+     * 
+     */
+    private int readonlyDefault = 4711;
+
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
      */
@@ -51,11 +54,12 @@ public class Output implements ServiceObject {
     }
 
     /**
-     * Use {@link #newBuilder(Output)} instead of private constructor to create new builder.
+     * Use {@link #newBuilder(ReadonlyDefaultPOJO)} instead of private constructor to create new builder.
      */
-    protected Builder( Output pObject ) {
+    protected Builder( ReadonlyDefaultPOJO pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
+        readonlyDefault = pObject.readonlyDefault;
       }
     }
 
@@ -72,34 +76,58 @@ public class Output implements ServiceObject {
      * Method creates a new builder and initialize it with the data from the passed object.
      * 
      * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Output objects. The method never returns null.
+     * @return {@link Builder} New builder that can be used to create new ReadonlyDefaultPOJO objects. The method never
+     * returns null.
      */
-    public static Builder newBuilder( Output pObject ) {
+    public static Builder newBuilder( ReadonlyDefaultPOJO pObject ) {
       return new Builder(pObject);
     }
 
     /**
-     * Method creates a new instance of class Output. The object will be initialized with the values of the builder.
+     * Method sets the attribute "readonlyDefault".
      * 
-     * @return Output Created object. The method never returns null.
+     * @param pReadonlyDefault Value to which the attribute "readonlyDefault" should be set.
      */
-    public Output build( ) {
-      return new Output(this);
+    public Builder setReadonlyDefault( int pReadonlyDefault ) {
+      // Assign value to attribute
+      readonlyDefault = pReadonlyDefault;
+      return this;
     }
 
     /**
-     * Method creates a new instance of class Output. The object will be initialized with the values of the builder.
+     * Method creates a new instance of class ReadonlyDefaultPOJO. The object will be initialized with the values of the
+     * builder.
+     * 
+     * @return ReadonlyDefaultPOJO Created object. The method never returns null.
+     */
+    public ReadonlyDefaultPOJO build( ) {
+      return new ReadonlyDefaultPOJO(this);
+    }
+
+    /**
+     * Method creates a new instance of class ReadonlyDefaultPOJO. The object will be initialized with the values of the
+     * builder.
      * 
      * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return Output Created object. The method never returns null.
+     * @return ReadonlyDefaultPOJO Created object. The method never returns null.
      */
-    public Output build( boolean pValidate ) {
-      Output lPOJO = this.build();
+    public ReadonlyDefaultPOJO build( boolean pValidate ) {
+      ReadonlyDefaultPOJO lPOJO = this.build();
       if (pValidate == true) {
         Tools.getValidationTools().validateObject(lPOJO);
       }
       return lPOJO;
     }
+  }
+
+  /**
+   * Method returns the attribute "readonlyDefault".
+   * 
+   * 
+   * @return int Value to which the attribute "readonlyDefault" is set.
+   */
+  public int getReadonlyDefault( ) {
+    return readonlyDefault;
   }
 
   /**
@@ -113,6 +141,9 @@ public class Output implements ServiceObject {
     lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "readonlyDefault",
+        "" + readonlyDefault));
     lBuilder.append('\n');
     return lBuilder;
   }

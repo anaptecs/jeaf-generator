@@ -97,6 +97,7 @@ public class Booking implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected Booking( ) {
+    // Nothing to do.
   }
 
   /**

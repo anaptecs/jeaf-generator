@@ -36,6 +36,7 @@ public class WrapperArrayServiceObject implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected WrapperArrayServiceObject( ) {
+    // Nothing to do.
   }
 
   /**

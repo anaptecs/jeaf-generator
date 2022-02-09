@@ -106,6 +106,7 @@ public class PrimitiveServiceObject implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected PrimitiveServiceObject( ) {
+    // Nothing to do.
   }
 
   /**

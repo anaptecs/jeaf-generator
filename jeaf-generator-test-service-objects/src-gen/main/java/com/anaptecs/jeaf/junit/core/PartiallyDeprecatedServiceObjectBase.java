@@ -51,6 +51,11 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   public static final String DEPRECATEDREFS = "deprecatedRefs";
 
   /**
+   * Constant for the name of attribute "readonlyDefault".
+   */
+  public static final String READONLYDEFAULT = "readonlyDefault";
+
+  /**
    * 
    */
   private String name;
@@ -74,10 +79,16 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   private Set<ValidationTestObject> deprecatedRefs = new HashSet<ValidationTestObject>();
 
   /**
+   * 
+   */
+  private final int readonlyDefault;
+
+  /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected PartiallyDeprecatedServiceObjectBase( ) {
+    readonlyDefault = 4711;
   }
 
   /**
@@ -95,6 +106,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     if (pBuilder.deprecatedRefs != null) {
       deprecatedRefs.addAll(pBuilder.deprecatedRefs);
     }
+    readonlyDefault = pBuilder.readonlyDefault;
   }
 
   /**
@@ -127,6 +139,11 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     private Set<ValidationTestObject> deprecatedRefs;
 
     /**
+     * 
+     */
+    private int readonlyDefault = 4711;
+
+    /**
      * Use {@link PartiallyDeprecatedServiceObject.Builder#newBuilder()} instead of protected constructor to create new
      * builder.
      */
@@ -144,6 +161,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
         outdated = pObject.outdated;
         deprecatedRef = pObject.deprecatedRef;
         deprecatedRefs = pObject.deprecatedRefs;
+        readonlyDefault = pObject.readonlyDefault;
       }
     }
 
@@ -194,6 +212,17 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
       else {
         deprecatedRefs = null;
       }
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "readonlyDefault".
+     * 
+     * @param pReadonlyDefault Value to which the attribute "readonlyDefault" should be set.
+     */
+    public BuilderBase setReadonlyDefault( int pReadonlyDefault ) {
+      // Assign value to attribute
+      readonlyDefault = pReadonlyDefault;
       return this;
     }
 
@@ -392,6 +421,16 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
+   * Method returns the attribute "readonlyDefault".
+   * 
+   * 
+   * @return int Value to which the attribute "readonlyDefault" is set.
+   */
+  public int getReadonlyDefault( ) {
+    return readonlyDefault;
+  }
+
+  /**
   * 
   */
   @Deprecated
@@ -422,6 +461,9 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     lBuilder.append('\n');
     lBuilder
         .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "outdated", "" + outdated));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "readonlyDefault",
+        "" + readonlyDefault));
     lBuilder.append('\n');
     return lBuilder;
   }

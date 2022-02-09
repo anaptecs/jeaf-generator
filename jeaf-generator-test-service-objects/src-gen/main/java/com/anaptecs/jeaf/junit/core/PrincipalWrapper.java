@@ -38,6 +38,7 @@ public class PrincipalWrapper implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected PrincipalWrapper( ) {
+    // Nothing to do.
   }
 
   /**

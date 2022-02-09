@@ -46,6 +46,7 @@ public class SessionContextValues implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected SessionContextValues( ) {
+    // Nothing to do.
   }
 
   /**

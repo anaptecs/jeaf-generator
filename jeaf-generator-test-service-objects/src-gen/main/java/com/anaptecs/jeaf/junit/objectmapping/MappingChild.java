@@ -34,6 +34,7 @@ public class MappingChild extends MappingParent {
    * object creation builder should be used instead.
    */
   protected MappingChild( ) {
+    // Nothing to do.
   }
 
   /**
