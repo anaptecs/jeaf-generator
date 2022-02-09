@@ -90,6 +90,7 @@ public class Context implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected Context( ) {
+    // Nothing to do.
   }
 
   /**

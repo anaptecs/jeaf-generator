@@ -51,6 +51,7 @@ public class ChildB extends ParentClass {
    * object creation builder should be used instead.
    */
   protected ChildB( ) {
+    // Nothing to do.
   }
 
   /**

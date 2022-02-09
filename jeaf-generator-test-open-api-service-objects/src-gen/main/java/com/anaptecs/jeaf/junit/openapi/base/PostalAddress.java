@@ -66,6 +66,7 @@ public class PostalAddress implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected PostalAddress( ) {
+    // Nothing to do.
   }
 
   /**

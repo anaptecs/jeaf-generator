@@ -38,6 +38,7 @@ public class Sale implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected Sale( ) {
+    // Nothing to do.
   }
 
   /**

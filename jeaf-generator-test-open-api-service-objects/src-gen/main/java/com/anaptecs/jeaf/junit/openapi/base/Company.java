@@ -37,6 +37,7 @@ public class Company extends Partner {
    * object creation builder should be used instead.
    */
   protected Company( ) {
+    // Nothing to do.
   }
 
   /**

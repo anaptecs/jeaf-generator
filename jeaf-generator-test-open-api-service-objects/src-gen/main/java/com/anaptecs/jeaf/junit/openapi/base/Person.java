@@ -47,6 +47,7 @@ public class Person extends Partner {
    * object creation builder should be used instead.
    */
   protected Person( ) {
+    // Nothing to do.
   }
 
   /**

@@ -79,6 +79,7 @@ public class DeprecatedContext implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected DeprecatedContext( ) {
+    // Nothing to do.
   }
 
   /**

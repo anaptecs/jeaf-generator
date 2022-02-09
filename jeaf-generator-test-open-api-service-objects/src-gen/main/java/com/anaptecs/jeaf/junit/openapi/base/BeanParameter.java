@@ -66,6 +66,7 @@ public class BeanParameter implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected BeanParameter( ) {
+    // Nothing to do.
   }
 
   /**

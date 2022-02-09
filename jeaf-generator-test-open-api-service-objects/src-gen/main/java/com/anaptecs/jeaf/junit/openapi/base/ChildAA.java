@@ -35,6 +35,7 @@ public class ChildAA extends ChildA {
    * object creation builder should be used instead.
    */
   protected ChildAA( ) {
+    // Nothing to do.
   }
 
   /**
