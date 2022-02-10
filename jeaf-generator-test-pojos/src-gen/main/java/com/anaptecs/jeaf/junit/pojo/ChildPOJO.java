@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
@@ -22,6 +24,7 @@ public class ChildPOJO extends ParentPOJO {
   /**
    * 
    */
+  @NotNull()
   private Integer childAttribute;
 
   /**
@@ -44,6 +47,7 @@ public class ChildPOJO extends ParentPOJO {
     /**
      * 
      */
+    @NotNull()
     private Integer childAttribute;
 
     /**

@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import javax.validation.constraints.PositiveOrZero;
+
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
@@ -33,6 +35,7 @@ public abstract class PlainPOJOBase {
   /**
    * 
    */
+  @PositiveOrZero()
   private Integer world;
 
   /**
@@ -61,6 +64,7 @@ public abstract class PlainPOJOBase {
     /**
      * 
      */
+    @PositiveOrZero()
     private Integer world;
 
     /**

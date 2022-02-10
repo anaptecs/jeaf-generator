@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+import javax.validation.Valid;
+
 import com.anaptecs.jeaf.core.api.AbstractObjectID;
 import com.anaptecs.jeaf.core.api.Identifiable;
 import com.anaptecs.jeaf.core.api.MessageConstants;
@@ -27,6 +29,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@Valid()
 public abstract class ResellerBase implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.

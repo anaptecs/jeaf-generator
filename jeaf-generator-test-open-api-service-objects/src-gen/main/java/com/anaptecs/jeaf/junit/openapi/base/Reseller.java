@@ -5,10 +5,17 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import javax.validation.Valid;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@Valid()
+@JsonIdentityInfo(property = "objectID", generator = PropertyGenerator.class)
 public class Reseller extends ResellerBase {
   /**
    * Default serial version uid.
