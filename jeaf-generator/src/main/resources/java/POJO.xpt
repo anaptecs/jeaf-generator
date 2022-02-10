@@ -20,6 +20,7 @@
 				import com.anaptecs.jeaf.xfun.api.XFun;
 				 
 				«this.getJavadoc()»
+				«EXPAND java::Validation::ValidationAnnotation»
 				«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 				public «IF isAbstract»abstract«ENDIF» class «name» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
 					«REM»Generate constants for all real attributes«ENDREM»
@@ -105,6 +106,8 @@
 				import com.anaptecs.jeaf.xfun.api.XFun;        
 				  
 				«this.getJavadoc()»
+		        «EXPAND java::Validation::ValidationAnnotation -»      
+			    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 				public abstract class «name»Base «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
 					«REM»Generate constants for all attributes«ENDREM»
 					«FOREACH this.ownedAttribute AS attr»
@@ -183,6 +186,8 @@
 				package «this.packageName()»;
 				  
 				«this.getJavadoc()»
+				«EXPAND java::Validation::ValidationAnnotation»
+				«EXPAND java::Helper::GenerateDeprecationAnnotation -»
 				public «IF isAbstract»abstract«ENDIF» class «name» extends «name»Base {
 					/**
 					 * Initialize object. Nothing special to do.
