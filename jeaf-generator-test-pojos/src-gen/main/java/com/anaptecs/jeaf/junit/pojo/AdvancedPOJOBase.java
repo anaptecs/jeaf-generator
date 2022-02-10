@@ -121,6 +121,12 @@ public abstract class AdvancedPOJOBase {
   public abstract boolean doSomething( String pName );
 
   /**
+   * 
+   * @return {@link int}
+   */
+  public abstract int returnPrimitive( );
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
    * StringBuilder also takes care about attributes of super classes.
    *

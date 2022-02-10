@@ -190,6 +190,12 @@ public abstract class MReleationBOBase extends PersistentObject {
   public abstract NReleationBO getMySpecialN( );
 
   /**
+   * 
+   * @return {@link char}
+   */
+  public abstract char returnPrimitive( );
+
+  /**
    * Method returns the class id of this business object class.
    * 
    * @return {@link ClassID} Class ID of this business object. The method never returns null.

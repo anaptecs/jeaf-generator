@@ -41,4 +41,14 @@ public class DeprecatedDomainObject extends DeprecatedDomainObjectBase {
   public void doSomething( ) {
     // TODO: Implement business logic for method.
   }
+
+  /**
+   * 
+   * @return {@link byte}
+   */
+  @Override
+  public byte returnPrimitive( ) {
+    // TODO: Implement business logic for method.
+    return 0;
+  }
 }

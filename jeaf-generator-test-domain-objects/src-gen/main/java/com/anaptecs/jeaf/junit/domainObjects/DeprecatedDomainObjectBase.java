@@ -64,6 +64,12 @@ public abstract class DeprecatedDomainObjectBase extends DomainObject {
   public abstract void doSomething( );
 
   /**
+   * 
+   * @return {@link byte}
+   */
+  public abstract byte returnPrimitive( );
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
    * StringBuilder also takes care about attributes of super classes.
    *

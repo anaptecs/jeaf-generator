@@ -84,4 +84,14 @@ public class Reseller extends ResellerBase {
     // TODO: Implement business logic for method.
     return null;
   }
+
+  /**
+   * 
+   * @return {@link double}
+   */
+  @Override
+  public double returnPrimitive( ) {
+    // TODO: Implement business logic for method.
+    return 0;
+  }
 }

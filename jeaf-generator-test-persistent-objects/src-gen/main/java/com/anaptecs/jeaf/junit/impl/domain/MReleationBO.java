@@ -22,4 +22,14 @@ public class MReleationBO extends MReleationBOBase {
     // TODO: Implement business logic for method.
     return null;
   }
+
+  /**
+   * 
+   * @return {@link char}
+   */
+  @Override
+  public char returnPrimitive( ) {
+    // TODO: Implement business logic for method.
+    return 0;
+  }
 }

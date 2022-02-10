@@ -509,6 +509,12 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   public abstract Integer doSomething( );
 
   /**
+   * 
+   * @return {@link double}
+   */
+  public abstract double returnPrimitive( );
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
    * StringBuilder also takes care about attributes of super classes.
    *

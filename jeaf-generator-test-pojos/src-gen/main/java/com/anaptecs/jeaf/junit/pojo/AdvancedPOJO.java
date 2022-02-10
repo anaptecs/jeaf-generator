@@ -69,4 +69,14 @@ public class AdvancedPOJO extends AdvancedPOJOBase {
     // TODO: Implement business logic for method.
     return false;
   }
+
+  /**
+   * 
+   * @return {@link int}
+   */
+  @Override
+  public int returnPrimitive( ) {
+    // TODO: Implement business logic for method.
+    return 0;
+  }
 }

@@ -26,7 +26,17 @@
     @Override
 	«visibility» «getReturnTypeName()» «name» («EXPAND ParameterSignature»)«getThrownExceptionsAsString()» {
 	    // TODO: Implement business logic for method.
-		«IF getReturnTypeName() != "void"»«IF getReturnTypeName() != "boolean"» return null; «ELSE» return false;«ENDIF»«ENDIF»
+		«IF getReturnTypeName() != "void"»
+			«IF getReturnTypeName() != "boolean"»
+				«IF this.returnsPrimitiveType()»
+				return 0;
+				«ELSE»
+				return null; 
+				«ENDIF»
+			«ELSE»
+				return false;
+			«ENDIF»
+		«ENDIF»
 	}
 «ENDDEFINE»
 
