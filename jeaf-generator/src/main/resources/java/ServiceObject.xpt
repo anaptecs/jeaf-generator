@@ -259,6 +259,9 @@
 	  
 	  
 	  «this.getJavadoc()»
+	  «EXPAND java::Validation::ValidationAnnotation»
+	  «EXPAND java::Helper::GenerateDeprecationAnnotation -»
+	  «EXPAND java::Jackson::JacksonClassAnnotations -»
 	  public «IF isAbstract»abstract«ENDIF» class «name» extends «name»Base {
 	    /**
 	     * Default serial version uid.
