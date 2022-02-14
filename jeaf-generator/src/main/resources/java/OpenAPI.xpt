@@ -64,8 +64,8 @@ components:
 	
 	«FOREACH this.clientDependency.typeSelect(OpenAPISpecReference) AS dependency»
 	  «FOREACH dependency.supplier.typeSelect(OpenAPI3Specification) AS dependentSpec»
-	    «IF dependency.location > 0»
-	    «registerSpecDependency(this, dependentSpec, dependency.location)»
+	    «IF dependency.location.length > 0»
+	    «registerSpecDependency(this, dependentSpec, dependency.location + dependentSpec.resourceName)»
 	    «ELSE»
 	    «registerSpecDependency(this, dependentSpec, dependentSpec.resourceName)»
 	    «ENDIF»
