@@ -1,15 +1,13 @@
 openapi: 3.0.0
 
 servers:
-  - description: Accounting TEST
-    url: http://localhost:8080/test
-  - description: Accounting PROD
-    url: https://accounting.jeaf.de
+  - url: http://localhost:8080/test
+  - url: https://accounting.jeaf.de
 
 info:
   title: Product Base Definitions
   version: 0.0.1
-  description: |
+  description: >-
     This component represents the Open API interface of the accounting service.
   contact:
     name: JEAF Development Team
@@ -20,7 +18,7 @@ info:
     url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
 
 paths:
-  # Open API standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
+  # OpenAPI standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
   # So we define NOP operation here as workaround.
   /nop:
     get:

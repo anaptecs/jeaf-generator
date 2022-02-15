@@ -1,6 +1,6 @@
 /*
  * Product Services
- * This component represents the Open API interface of the accounting service. 
+ * This component represents the OpenAPI interface of the accounting service. Dear Developers, please be aware that multi line comments can also be used.
  *
  * OpenAPI spec version: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -14,6 +14,7 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.anaptecs.jeaf.openapi.Channel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -26,6 +27,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public class Sale {
   @JsonProperty("transactionAmount")
   private Double transactionAmount = null;
+
+  @JsonProperty("sale")
+  private Channel sale = null;
 
   public Sale transactionAmount(Double transactionAmount) {
     this.transactionAmount = transactionAmount;
@@ -45,6 +49,24 @@ public class Sale {
     this.transactionAmount = transactionAmount;
   }
 
+  public Sale sale(Channel sale) {
+    this.sale = sale;
+    return this;
+  }
+
+   /**
+   * Get sale
+   * @return sale
+  **/
+  @Schema(description = "")
+  public Channel getSale() {
+    return sale;
+  }
+
+  public void setSale(Channel sale) {
+    this.sale = sale;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -55,12 +77,13 @@ public class Sale {
       return false;
     }
     Sale sale = (Sale) o;
-    return Objects.equals(this.transactionAmount, sale.transactionAmount);
+    return Objects.equals(this.transactionAmount, sale.transactionAmount) &&
+        Objects.equals(this.sale, sale.sale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionAmount);
+    return Objects.hash(transactionAmount, sale);
   }
 
 
@@ -70,6 +93,7 @@ public class Sale {
     sb.append("class Sale {\n");
     
     sb.append("    transactionAmount: ").append(toIndentedString(transactionAmount)).append("\n");
+    sb.append("    sale: ").append(toIndentedString(sale)).append("\n");
     sb.append("}");
     return sb.toString();
   }

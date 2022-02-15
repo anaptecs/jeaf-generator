@@ -18,15 +18,20 @@ openapi: «openAPIVersion»
 «IF this.clientDependency.supplier.typeSelect(OpenAPIServer).size > 0»
 servers:
   «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIServer).sortBy(e|e.url) AS server-»
-  - description: «IF server.getComment().length > 0»«server.getComment()»«ELSE»«server.name»«ENDIF»
-    url: «server.url»
+  - url: «server.url»
+    «IF server.hasComment() -»
+    description: >- 
+      «server.getCommentForOpenAPIDescription("      ")»
+    «ENDIF-»    
   «ENDFOREACH-»
 «ENDIF»
 info:
   title: «name»
   version: «apiVersion»
-  description: |
-    «this.getComment()»
+  «IF this.hasComment() -»
+  description: >-
+    «this.getCommentForOpenAPIDescription("    ")»
+  «ENDIF-»
   contact:
     name: «contactName»
     url: '«contactURL»'
