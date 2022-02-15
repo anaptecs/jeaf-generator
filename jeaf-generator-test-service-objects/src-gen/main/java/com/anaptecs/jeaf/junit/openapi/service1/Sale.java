@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -29,9 +30,19 @@ public class Sale implements ServiceObject {
   public static final String TRANSACTIONAMOUNT = "transactionAmount";
 
   /**
+   * Constant for the name of attribute "sale".
+   */
+  public static final String SALE = "sale";
+
+  /**
    * 
    */
   private BigDecimal transactionAmount;
+
+  /**
+   * 
+   */
+  private Channel sale;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -51,6 +62,7 @@ public class Sale implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     transactionAmount = pBuilder.transactionAmount;
+    sale = pBuilder.sale;
   }
 
   /**
@@ -62,6 +74,11 @@ public class Sale implements ServiceObject {
      * 
      */
     private BigDecimal transactionAmount;
+
+    /**
+     * 
+     */
+    private Channel sale;
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
@@ -76,6 +93,7 @@ public class Sale implements ServiceObject {
       if (pObject != null) {
         // Read attribute values from passed object.
         transactionAmount = pObject.transactionAmount;
+        sale = pObject.sale;
       }
     }
 
@@ -106,6 +124,16 @@ public class Sale implements ServiceObject {
     public Builder setTransactionAmount( BigDecimal pTransactionAmount ) {
       // Assign value to attribute
       transactionAmount = pTransactionAmount;
+      return this;
+    }
+
+    /**
+     * Method sets the association "sale".
+     * 
+     * @param pSale Channel to which the association "sale" should be set.
+     */
+    public Builder setSale( Channel pSale ) {
+      sale = pSale;
       return this;
     }
 
@@ -152,6 +180,34 @@ public class Sale implements ServiceObject {
   public void setTransactionAmount( BigDecimal pTransactionAmount ) {
     // Assign value to attribute
     transactionAmount = pTransactionAmount;
+  }
+
+  /**
+   * Method returns the association "sale".
+   * 
+   *
+   * @return Channel Channel to which the association "sale" is set.
+   */
+  public Channel getSale( ) {
+    return sale;
+  }
+
+  /**
+   * Method sets the association "sale".
+   * 
+   * 
+   * @param pSale Channel to which the association "sale" should be set.
+   */
+  public void setSale( Channel pSale ) {
+    sale = pSale;
+  }
+
+  /**
+   * Method unsets the association "sale".
+   * 
+   */
+  public final void unsetSale( ) {
+    sale = null;
   }
 
   /**
