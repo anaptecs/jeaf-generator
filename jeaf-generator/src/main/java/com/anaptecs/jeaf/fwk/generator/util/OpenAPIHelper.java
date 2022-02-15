@@ -71,7 +71,7 @@ public class OpenAPIHelper {
     basicTypes.put(String.class.getName(), "string");
     basicTypes.put("String", "string");
 
-    // We also also treat many JDK standard types as simple types in Open API as they can be mapped to a single type
+    // We also also treat many JDK standard types as simple types in OpenAPI as they can be mapped to a single type
     // mostly string.
     basicTypes.put(Currency.class.getName(), "string");
     basicTypes.put(URL.class.getName(), "string");

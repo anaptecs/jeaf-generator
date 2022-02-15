@@ -17,8 +17,8 @@ context ServiceObject if runChecks() ERROR "Error: Service Object " + name + " h
 context POJO if runChecks() ERROR "Error: POJO " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
 context POJO if runChecks() ERROR "Error: POJO " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
 
-context OpenAPIType if runChecks() ERROR "Error: Open API Type " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context OpenAPIType if runChecks() ERROR "Error: Open API Type " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
+context OpenAPIType if runChecks() ERROR "Error: OpenAPI Type " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
+context OpenAPIType if runChecks() ERROR "Error: OpenAPI Type " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
 
 context DomainObject if runChecks() ERROR "Error: Domain Object " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
 context DomainObject if runChecks() ERROR "Error: Domain Object " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);

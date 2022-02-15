@@ -152,7 +152,7 @@ public class GeneratorCommons {
   public static final String JUNIT_PROPERTY = "switch.gen.junits";
 
   /**
-   * Constant defines the name of the system property which enables the generation of Open API specifications.
+   * Constant defines the name of the system property which enables the generation of OpenAPI specifications.
    */
   public static final String OPEN_API_SPEC_PROPERTY = "switch.gen.openapispec";
 

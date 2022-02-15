@@ -39,7 +39,7 @@ paths:
 «IF this.referencesRESTResources()-»
   «EXPAND GeneratePaths»
 «ELSE-»
-  # Open API standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
+  # OpenAPI standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
   # So we define NOP operation here as workaround.
   /nop:
     get:
@@ -58,7 +58,7 @@ components:
 «ENDDEFINE»
 
 «DEFINE RegisterLocalTypes FOR OpenAPI3Specification»
-	«REM»Register local Open API types as well as referenced ones.«ENDREM»
+	«REM»Register local OpenAPI types as well as referenced ones.«ENDREM»
 	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPITypes()»
 	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPIEnums()»
 	
