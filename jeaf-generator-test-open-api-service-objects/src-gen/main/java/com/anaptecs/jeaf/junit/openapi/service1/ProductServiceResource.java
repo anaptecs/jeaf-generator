@@ -12,6 +12,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.HEAD;
 import javax.ws.rs.HeaderParam;
+import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -26,6 +27,7 @@ import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
+import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
 
 /**
  * @author JEAF Generator
@@ -178,5 +180,16 @@ public class ProductServiceResource {
     ProductService lService = JEAF.getService(ProductService.class);
     Product lResult = lService.deprecatedComplexReturn();
     return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#loadSpecificThings()}
+   */
+  @Path("specific/{id}")
+  @PATCH
+  public Response loadSpecificThings( @BeanParam SpecialContext pContext ) {
+    ProductService lService = JEAF.getService(ProductService.class);
+    lService.loadSpecificThings(pContext);
+    return Response.status(Response.Status.OK).build();
   }
 }

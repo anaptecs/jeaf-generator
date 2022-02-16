@@ -14,6 +14,7 @@ import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
+import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 
@@ -178,5 +179,13 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   public Product deprecatedComplexReturn( ) {
     // TODO Implement method and return real result
     return null;
+  }
+
+  /**
+   * 
+   * @param pContext
+   */
+  @Override
+  public void loadSpecificThings( SpecialContext pContext ) {
   }
 }

@@ -336,6 +336,59 @@ paths:
               schema:
                 $ref: '../base/product-base.yml#/components/schemas/Product'
           
+  /products/specific/{id}:
+    patch:
+      operationId: loadSpecificThings
+      parameters:
+        - name: specificHeader
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+        - name: token
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: string
+        - name: lang
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+            example: 'en'
+        - name: reseller
+          in: cookie
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: id
+          in: path
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: q1
+          in: query
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Operation does not return any content.
+          
 
 
 components:

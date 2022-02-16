@@ -17,6 +17,7 @@ import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
+import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
 
 /**
  * @author JEAF Generator
@@ -114,4 +115,10 @@ public interface ProductService extends Service {
    */
   @Deprecated
   Product deprecatedComplexReturn( );
+
+  /**
+   * 
+   * @param pContext
+   */
+  void loadSpecificThings( SpecialContext pContext );
 }

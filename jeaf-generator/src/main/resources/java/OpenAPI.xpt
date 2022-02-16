@@ -404,15 +404,15 @@ components:
 «ENDDEFINE»
 
 «DEFINE RESTParamName FOR Parameter-»
-«IF this.isStereotypeApplied("PathParam")»«((PathParam) this).value»«ENDIF-»
-«IF this.isStereotypeApplied("HeaderParam")»«((HeaderParam) this).value-»«ENDIF-»
-«IF this.isStereotypeApplied("QueryParam")»«((QueryParam) this).value-»«ENDIF-»
-«IF this.isStereotypeApplied("CookieParam")»«((CookieParam) this).value-»«ENDIF-»
+«IF this.isStereotypeApplied("PathParam")»«IF ((PathParam) this).value.length > 0»«((PathParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
+«IF this.isStereotypeApplied("HeaderParam")»«IF ((HeaderParam) this).value.length > 0»«((HeaderParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
+«IF this.isStereotypeApplied("QueryParam")»«IF ((QueryParam) this).value.length > 0»«((QueryParam) this).value  -»«ELSE»«this.name»«ENDIF»«ENDIF-»
+«IF this.isStereotypeApplied("CookieParam")»«IF ((CookieParam) this).value.length > 0»«((CookieParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
 «ENDDEFINE»
 
 «DEFINE RESTParamName FOR Property-»
-«IF this.isStereotypeApplied("PathParam")»«((PathParam) this).value»«ENDIF-»
-«IF this.isStereotypeApplied("HeaderParam")»«((HeaderParam) this).value-»«ENDIF-»
-«IF this.isStereotypeApplied("QueryParam")»«((QueryParam) this).value-»«ENDIF-»
-«IF this.isStereotypeApplied("CookieParam")»«((CookieParam) this).value-»«ENDIF-»
+«IF this.isStereotypeApplied("PathParam")»«IF ((PathParam) this).value.length > 0 -»«((PathParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
+«IF this.isStereotypeApplied("HeaderParam")»«IF ((HeaderParam) this).value.length > 0 -»«((HeaderParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
+«IF this.isStereotypeApplied("QueryParam")»«IF ((QueryParam) this).value.length > 0 -»«((QueryParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
+«IF this.isStereotypeApplied("CookieParam")»«IF ((CookieParam) this).value.length > 0 -»«((CookieParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
 «ENDDEFINE»

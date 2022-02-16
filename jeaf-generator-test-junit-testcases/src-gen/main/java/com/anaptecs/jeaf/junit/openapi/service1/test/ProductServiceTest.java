@@ -24,6 +24,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testDeprecatedBody"));
     lSuite.addTest(new ProductServiceTest("testGetProduct"));
     lSuite.addTest(new ProductServiceTest("testDeprecatedBeanParam"));
+    lSuite.addTest(new ProductServiceTest("testLoadSpecificThings"));
     lSuite.addTest(new ProductServiceTest("testPing"));
     lSuite.addTest(new ProductServiceTest("testDeprecatedParams"));
     lSuite.addTest(new ProductServiceTest("testCreateProduct"));
@@ -108,6 +109,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testDeprecatedBeanParam( ) throws Exception {
     // TODO Implement test for service method deprecatedBeanParam(...)
+  }
+
+  /**
+   * Method test the implementation of service method loadSpecificThings
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testLoadSpecificThings( ) throws Exception {
+    // TODO Implement test for service method loadSpecificThings(...)
   }
 
   /**

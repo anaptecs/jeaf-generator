@@ -71,6 +71,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testDeprecatedBeanParam( ) throws Exception;
 
   /**
+   * Method test the implementation of service method loadSpecificThings(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testLoadSpecificThings( ) throws Exception;
+
+  /**
    * Method test the implementation of service method ping(...)
    * 
    * @throws Exception if the test fails.

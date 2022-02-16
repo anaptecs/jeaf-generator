@@ -3,15 +3,20 @@ package com.anaptecs.jeaf.fwk.generator.util;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Currency;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Property;
 
 import com.anaptecs.jeaf.xfun.api.XFun;
 
@@ -204,5 +209,20 @@ public class OpenAPIHelper {
       lOpenAPIType = null;
     }
     return lOpenAPIType;
+  }
+
+  public static List<Element> getAllAttributesFromHierarchy( Element pElement ) {
+    Class lClass = (Class) pElement;
+    EList<Property> lOwnedAttributes = lClass.getOwnedAttributes();
+    List<Element> lElements = new ArrayList<Element>();
+    for (int i = 0; i < lOwnedAttributes.size(); i++) {
+      lElements.add(lOwnedAttributes.get(i));
+    }
+
+    if (lClass.parents().size() > 0) {
+      List<Element> lParentAttributes = getAllAttributesFromHierarchy(lClass.parents().get(0));
+      lElements.addAll(lParentAttributes);
+    }
+    return lElements;
   }
 }
