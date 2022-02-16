@@ -7,7 +7,7 @@ extension java::ActivityHelper;
 extension java::GeneratorCommons;
 
 
-context Model if this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).size > 0 ERROR "Error: JEAF Generator expects JEAF Meta Model (JMM) revision 59 or higher. Please update your UML project to a newer version of JMM. Your current revision is: " + this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision: this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision >= 59;
+context Model if this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).size > 0 ERROR "Error: JEAF Generator expects JEAF Meta Model (JMM) revision 61 or higher. Please update your UML project to a newer version of JMM. Your current revision is: " + this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision: this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision >= 61;
 
 context JEAFComponent if runChecks() ERROR "Error: No layer defined for JEAF Component " + this.name : layer != null;
 
