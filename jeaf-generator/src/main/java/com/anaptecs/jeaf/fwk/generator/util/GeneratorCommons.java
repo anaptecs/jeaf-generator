@@ -182,6 +182,8 @@ public class GeneratorCommons {
 
   public static final String METHOD_INDENTATION = "  ";
 
+  public static final String MAVEN_VERSION_PROPERTY = "maven.version";
+
   public static final String VERSION_PROPERTY = "info.version";
 
   public static final String COMPANY_INFO_PROPERTY = "info.company";
@@ -668,6 +670,11 @@ public class GeneratorCommons {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(GENERATE_NULL_CHECKS_FOR_TO_ONE_ASSOCIATIONS_OF_SERVICE_OBJECTS,
         Boolean.TRUE, Boolean.class);
+  }
+
+  public static String getMavenVersion( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(MAVEN_VERSION_PROPERTY, true, String.class);
   }
 
   public static String getVersion( ) {

@@ -616,6 +616,7 @@ public class GeneratorMojo extends AbstractMojo {
     boolean lSuccessful;
     if (this.isUMLGenerationRequested()) {
       // Configure all system properties for UML Generator.
+      System.setProperty("maven.version", mavenProject.getVersion());
       System.setProperty("info.version", fileHeaderVersion);
       System.setProperty("info.company", fileHeaderCompany);
       System.setProperty("info.copyright", fileHeaderCopyright);

@@ -92,6 +92,9 @@ cached boolean generateJacksonAnnotations() :
 cached boolean enableSemVerForJSON() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.enableSemVerForJSON();
     
+cached String getMavenVersion() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getMavenVersion();        
+
 cached String getFileHeader() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getFileHeader();        
     

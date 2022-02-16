@@ -27,7 +27,7 @@ servers:
 «ENDIF»
 info:
   title: «name»
-  version: «apiVersion»
+  version: «IF apiVersion.length > 0»«apiVersion»«ELSE»«getMavenVersion()»«ENDIF»
   «IF this.hasComment() -»
   description: >-
     «this.getCommentForOpenAPIDescription("    ")»
