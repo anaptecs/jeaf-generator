@@ -3,20 +3,12 @@ openapi: 3.0.0
 servers:
   - url: http://localhost:8080/test
   - url: https://accounting.jeaf.de
-  - url: https://jeaf.anaptecs.de
-    description: >- 
-      This is our lovely production environment
-      
-      It can stand any load, until it crashes ;-)
-  - url: https://test-jeaf.anaptecs.de
 
 info:
   title: Product Services
   version: 0.0.1
   description: >-
-    This component represents the OpenAPI interface of the accounting service.
-    
-    Dear Developers, please be aware that multi line comments can also be used.
+    This component represents the Open API interface of the accounting service.
   contact:
     name: JEAF Development Team
     url: 'https://www.anaptecs.de/jeaf'
@@ -346,7 +338,5 @@ components:
         transactionAmount: 
           type: number
           format: double
-        sale: 
-          $ref: '../base/product-base.yml#/components/schemas/Channel'
 
     
