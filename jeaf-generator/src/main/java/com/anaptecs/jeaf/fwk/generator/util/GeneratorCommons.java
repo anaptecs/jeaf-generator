@@ -825,28 +825,35 @@ public class GeneratorCommons {
         lFQN = pElement.toString();
       }
       // Check for stereotypes
-      if (lOwner instanceof Behavior) {
+      if (pElement instanceof Behavior) {
         XFun.getTrace().debug("Not handling behaviour " + lFQN);
       }
-      else if (lOwner instanceof Class || lOwner instanceof Interface || lOwner instanceof Component
-          || lOwner instanceof Enumeration || lOwner instanceof Activity || pElement instanceof Dependency) {
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_ACTIVITY);
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_APPLICATION_EXCEPTION);
+      else if (pElement instanceof Class || pElement instanceof Interface || pElement instanceof Component
+          || pElement instanceof Enumeration || pElement instanceof Activity || pElement instanceof Dependency) {
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_ACTIVITY);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_APPLICATION_EXCEPTION);
         // lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_COMPONENT);
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_DOMAIN_OBJECT);
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_JEAF_ENUMERATION);
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_JEAF_SERVICE);
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_LOAD_STRATEGY);
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_PERSISTENT_OBJECT);
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_POJO);
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_QUERY_OBJECT);
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_SERVICE_OBJECT);
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_SERVICE_PROVIDER);
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_SERVICE_PROVIDER_IMPL);
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_SYSTEM_EXCEPTION);
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_SYSTEM_EXCEPTION);
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_PERSISTENCE_UNIT);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_DOMAIN_OBJECT);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_JEAF_ENUMERATION);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_JEAF_SERVICE);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_LOAD_STRATEGY);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_PERSISTENT_OBJECT);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_POJO);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_QUERY_OBJECT);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_SERVICE_OBJECT);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_SERVICE_PROVIDER);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_SERVICE_PROVIDER_IMPL);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_SYSTEM_EXCEPTION);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_SYSTEM_EXCEPTION);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_PERSISTENCE_UNIT);
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_OBJECT_MAPPING);
+
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_SERVICE_OBJECT);
+        // lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, "ServiceObject");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "ServiceObject");
+        // lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, "DomainObject");
+        // lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, "OpenAPIType");
+
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Size");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "DecimalMin");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "DecimalMax");

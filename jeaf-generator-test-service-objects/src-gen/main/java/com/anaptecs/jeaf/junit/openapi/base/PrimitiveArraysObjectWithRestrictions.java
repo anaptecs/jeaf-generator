@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -154,6 +155,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
+  @Size(min = 0, max = 32768)
   private byte[] aByteArray;
 
   /**
@@ -225,6 +227,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
+  @Size(min = 4, max = 12)
   private double[] aDoubleArray;
 
   /**
@@ -312,6 +315,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
+    @Size(min = 0, max = 32768)
     private byte[] aByteArray;
 
     /**
@@ -383,6 +387,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
+    @Size(min = 4, max = 12)
     private double[] aDoubleArray;
 
     /**
