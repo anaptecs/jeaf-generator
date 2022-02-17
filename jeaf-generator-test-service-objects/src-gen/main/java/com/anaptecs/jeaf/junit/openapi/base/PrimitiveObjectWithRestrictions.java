@@ -8,6 +8,17 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Negative;
+import javax.validation.constraints.NegativeOrZero;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
+
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -152,11 +163,13 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
+  @Negative()
   private byte aByte;
 
   /**
    * 
    */
+  @NegativeOrZero()
   private Byte bByte;
 
   /**
@@ -167,21 +180,26 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
+  @Positive()
   private Short bShort;
 
   /**
    * 
    */
+  @PositiveOrZero()
   private int aInteger;
 
   /**
    * 
    */
+  @Min(value = 4711)
   private Integer bInteger;
 
   /**
    * 
    */
+  @Min(value = 100)
+  @Max(value = 1000)
   private Integer cInteger;
 
   /**
@@ -212,11 +230,14 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
+  @DecimalMax(value = "3.14159265359", inclusive = true)
+  @DecimalMin(value = "-3.14159265359", inclusive = true)
   private float aFloat;
 
   /**
    * 
    */
+  @DecimalMax(value = "299792458.0", inclusive = false)
   private Float bFloat;
 
   /**
@@ -227,21 +248,26 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
+  @Min(value = -237)
   private Double bDouble;
 
   /**
    * 
    */
+  @DecimalMin(value = "4711.0815", inclusive = true)
   private BigDecimal aBigDecimal;
 
   /**
    * 
    */
+  @Size(min = 16, max = 32)
   private String aString;
 
   /**
    * 
    */
+  @NotEmpty()
+  @Size(min = 0, max = 128)
   private String bString;
 
   /**
@@ -309,11 +335,13 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
+    @Negative()
     private byte aByte;
 
     /**
      * 
      */
+    @NegativeOrZero()
     private Byte bByte;
 
     /**
@@ -324,21 +352,26 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
+    @Positive()
     private Short bShort;
 
     /**
      * 
      */
+    @PositiveOrZero()
     private int aInteger;
 
     /**
      * 
      */
+    @Min(value = 4711)
     private Integer bInteger;
 
     /**
      * 
      */
+    @Min(value = 100)
+    @Max(value = 1000)
     private Integer cInteger;
 
     /**
@@ -369,11 +402,14 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
+    @DecimalMax(value = "3.14159265359", inclusive = true)
+    @DecimalMin(value = "-3.14159265359", inclusive = true)
     private float aFloat;
 
     /**
      * 
      */
+    @DecimalMax(value = "299792458.0", inclusive = false)
     private Float bFloat;
 
     /**
@@ -384,21 +420,26 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
+    @Min(value = -237)
     private Double bDouble;
 
     /**
      * 
      */
+    @DecimalMin(value = "4711.0815", inclusive = true)
     private BigDecimal aBigDecimal;
 
     /**
      * 
      */
+    @Size(min = 16, max = 32)
     private String aString;
 
     /**
      * 
      */
+    @NotEmpty()
+    @Size(min = 0, max = 128)
     private String bString;
 
     /**
