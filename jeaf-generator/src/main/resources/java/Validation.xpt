@@ -137,19 +137,19 @@ public @interface «validationClass» {
 
 
 «DEFINE DecimalMinAnnotation FOR DecimalMin»
-   @javax.validation.constraints.DecimalMin(value = "«this.value»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
+   @javax.validation.constraints.DecimalMin(value = "«this.minValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
 «ENDDEFINE»
 
 «DEFINE DecimalMaxAnnotation FOR DecimalMax»
-   @javax.validation.constraints.DecimalMax(value = "«this.value»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
+   @javax.validation.constraints.DecimalMax(value = "«this.maxValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
 «ENDDEFINE»
 
 «DEFINE MinAnnotation FOR Min»
-   @javax.validation.constraints.Min(value = «this.value» «EXPAND ValidationAnnotationBasics»)
+   @javax.validation.constraints.Min(value = «this.minValue» «EXPAND ValidationAnnotationBasics»)
 «ENDDEFINE»
 
 «DEFINE MaxAnnotation FOR Max»
-   @javax.validation.constraints.Max(value = «this.value» «EXPAND ValidationAnnotationBasics»)
+   @javax.validation.constraints.Max(value = «this.maxValue» «EXPAND ValidationAnnotationBasics»)
 «ENDDEFINE»
 
 «DEFINE DigitsAnnotation FOR Digits»
@@ -173,7 +173,7 @@ public @interface «validationClass» {
 «ENDDEFINE»
 
 «DEFINE SizeAnnotation FOR Size»
-   @javax.validation.constraints.Size(min = «min», max = «max» «EXPAND ValidationAnnotationBasics»)
+   @javax.validation.constraints.Size(min = «IF min != -1»«min»«ELSE»0«ENDIF», max = «IF max != -1»«max»«ELSE»Integer.MAX_VALUE«ENDIF»«EXPAND ValidationAnnotationBasics»)
 «ENDDEFINE»
 
 «DEFINE PatternAnnotation FOR Pattern»
