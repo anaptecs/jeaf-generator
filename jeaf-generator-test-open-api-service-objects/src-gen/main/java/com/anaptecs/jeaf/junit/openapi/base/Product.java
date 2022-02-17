@@ -13,6 +13,8 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.validation.constraints.Min;
+
 import com.anaptecs.jeaf.core.api.AbstractObjectID;
 import com.anaptecs.jeaf.core.api.Identifiable;
 import com.anaptecs.jeaf.core.api.MessageConstants;
@@ -73,6 +75,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
+  @Min(value = 17)
   private String name;
 
   /**
@@ -143,6 +146,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     /**
      * 
      */
+    @Min(value = 17)
     private String name;
 
     /**

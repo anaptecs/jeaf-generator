@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.fwk.generator.util;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -106,15 +108,28 @@ public class ClassUtil {
 
   static {
     BASIC_TYPES = new HashMap<String, java.lang.Class<?>>();
+    BASIC_TYPES.put(Boolean.class.getName(), Boolean.class);
     BASIC_TYPES.put(Boolean.class.getSimpleName(), Boolean.class);
+    BASIC_TYPES.put(Byte.class.getName(), Byte.class);
     BASIC_TYPES.put(Byte.class.getSimpleName(), Byte.class);
+    BASIC_TYPES.put(Short.class.getName(), Short.class);
     BASIC_TYPES.put(Short.class.getSimpleName(), Short.class);
+    BASIC_TYPES.put(Integer.class.getName(), Integer.class);
     BASIC_TYPES.put(Integer.class.getSimpleName(), Integer.class);
+    BASIC_TYPES.put(Long.class.getName(), Long.class);
     BASIC_TYPES.put(Long.class.getSimpleName(), Long.class);
+    BASIC_TYPES.put(Float.class.getName(), Float.class);
     BASIC_TYPES.put(Float.class.getSimpleName(), Float.class);
+    BASIC_TYPES.put(Double.class.getName(), Double.class);
     BASIC_TYPES.put(Double.class.getSimpleName(), Double.class);
+    BASIC_TYPES.put(Character.class.getName(), Character.class);
     BASIC_TYPES.put(Character.class.getSimpleName(), Character.class);
+    BASIC_TYPES.put(String.class.getName(), String.class);
     BASIC_TYPES.put(String.class.getSimpleName(), String.class);
+    BASIC_TYPES.put(BigDecimal.class.getName(), BigDecimal.class);
+    BASIC_TYPES.put(BigDecimal.class.getSimpleName(), BigDecimal.class);
+    BASIC_TYPES.put(BigInteger.class.getName(), BigInteger.class);
+    BASIC_TYPES.put(BigInteger.class.getSimpleName(), BigInteger.class);
   }
 
   public static String shortenParamList( String pParamList ) {
@@ -228,7 +243,7 @@ public class ClassUtil {
         lReturnValue = lTypeName.toLowerCase();
       }
       else if (ClassUtil.isBasicType(pTypedElement.getType())) {
-        lReturnValue = lTypeName;
+        lReturnValue = lFQN;
       }
       // Handle return type void.
       else if ("MagicDraw Profile.datatypes.void".equals(lFQN)) {
@@ -596,7 +611,7 @@ public class ClassUtil {
       }
     }
     else if (lTypePackage.endsWith("JavaPrimitiveTypes") || lTypePackage.endsWith("UMLPrimitiveTypes")
-        || lTypePackage.endsWith("PrimitiveType")) {
+        || lTypePackage.endsWith("PrimitiveTypes")) {
       lIsPrimitive = true;
     }
     else {
@@ -618,16 +633,15 @@ public class ClassUtil {
   }
 
   public static boolean isBasicType( Type pType ) {
-    boolean lIsWrapperType;
-
     String lPackageName = getPackageName(pType);
-    if (lPackageName != null && lPackageName.isEmpty() == false) {
-      lIsWrapperType = BASIC_TYPES.containsKey(pType.getName());
+    String lFQN;
+    if (lPackageName != null && lPackageName.length() > 0) {
+      lFQN = lPackageName + "." + pType.getName();
     }
     else {
-      lIsWrapperType = false;
+      lFQN = pType.getName();
     }
-    return lIsWrapperType;
+    return BASIC_TYPES.containsKey(lFQN);
   }
 
   public static String getCollectionType( MultiplicityElement pMultiplicityElement ) {
