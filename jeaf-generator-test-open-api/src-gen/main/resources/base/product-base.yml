@@ -1,8 +1,8 @@
 openapi: 3.0.0
 
 servers:
-  - url: https://accounting.jeaf.de
   - url: http://localhost:8080/test
+  - url: https://accounting.jeaf.de
 
 info:
   title: Product Base Definitions
@@ -111,6 +111,8 @@ components:
           type: string
         language: 
           type: string
+      required:
+        - name
     # com.anaptecs.jeaf.junit.openapi.base.Product
     Product:
       type: object
