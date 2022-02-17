@@ -175,6 +175,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
+  @Min(value = -237)
   private short aShort;
 
   /**
@@ -210,11 +211,14 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
+  @DecimalMax(value = "299792458", inclusive = false)
   private Long bLong;
 
   /**
    * 
    */
+  @DecimalMax(value = "3.14159265359", inclusive = true)
+  @DecimalMin(value = "-3.14159265359", inclusive = true)
   private BigInteger aBigInteger;
 
   /**
@@ -230,14 +234,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
-  @DecimalMax(value = "3.14159265359", inclusive = true)
-  @DecimalMin(value = "-3.14159265359", inclusive = true)
   private float aFloat;
 
   /**
    * 
    */
-  @DecimalMax(value = "299792458.0", inclusive = false)
   private Float bFloat;
 
   /**
@@ -248,7 +249,6 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
-  @Min(value = -237)
   private Double bDouble;
 
   /**
@@ -347,6 +347,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
+    @Min(value = -237)
     private short aShort;
 
     /**
@@ -382,11 +383,14 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
+    @DecimalMax(value = "299792458", inclusive = false)
     private Long bLong;
 
     /**
      * 
      */
+    @DecimalMax(value = "3.14159265359", inclusive = true)
+    @DecimalMin(value = "-3.14159265359", inclusive = true)
     private BigInteger aBigInteger;
 
     /**
@@ -402,14 +406,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
-    @DecimalMax(value = "3.14159265359", inclusive = true)
-    @DecimalMin(value = "-3.14159265359", inclusive = true)
     private float aFloat;
 
     /**
      * 
      */
-    @DecimalMax(value = "299792458.0", inclusive = false)
     private Float bFloat;
 
     /**
@@ -420,7 +421,6 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
-    @Min(value = -237)
     private Double bDouble;
 
     /**

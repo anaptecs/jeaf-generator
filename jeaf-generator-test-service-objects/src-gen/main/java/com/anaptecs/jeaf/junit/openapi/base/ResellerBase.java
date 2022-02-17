@@ -77,7 +77,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    * 
    */
   @NotBlank()
-  @Size(min = 0, max = Integer.MAX_VALUE)
+  @Size(min = 0, max = 32)
   private String name;
 
   /**
@@ -144,7 +144,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
      * 
      */
     @NotBlank()
-    @Size(min = 0, max = Integer.MAX_VALUE)
+    @Size(min = 0, max = 32)
     private String name;
 
     /**
