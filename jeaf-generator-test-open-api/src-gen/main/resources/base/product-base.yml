@@ -1,8 +1,8 @@
 openapi: 3.0.0
 
 servers:
-  - url: https://accounting.jeaf.de
   - url: http://localhost:8080/test
+  - url: https://accounting.jeaf.de
 
 info:
   title: Product Base Definitions
@@ -109,8 +109,13 @@ components:
           minItems: 1
         name: 
           type: string
+          maxLength: 64
+          minLength: 1
+
         language: 
           type: string
+      required:
+        - name
     # com.anaptecs.jeaf.junit.openapi.base.Product
     Product:
       type: object
@@ -122,6 +127,7 @@ components:
           minItems: 0
         name: 
           type: string
+          minLength: 17
         image: 
           type: array
           items:
