@@ -25,10 +25,6 @@
 			  «EXPAND PositiveAnnotation FOR ((Positive) this)»
 			«ELSEIF stereotype.name == "Size" -»
 			  «EXPAND SizeAnnotation FOR ((Size) this)»
-			«ELSEIF stereotype.name == "Pattern" -»
-			  «EXPAND PatternAnnotation FOR ((Pattern) this)»
-			«ELSEIF stereotype.name == "Email" -»
-			  «EXPAND EmailAnnotation FOR ((Email) this)»
 			«ELSEIF stereotype.name == "NotEmpty" -»
 			  «IF this.isMultivalued() == false -»
 			  «EXPAND NotEmptyStringAnnotation FOR ((NotEmpty) this) -»
@@ -84,14 +80,6 @@
           minLength: «min»«ELSE -»
                   «IF max != -1 -»
           maxLength: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
-
-«DEFINE PatternAnnotation FOR Pattern -»
-   @javax.validation.constraints.Pattern(«IF regexp.length > 0»regexp = "«regexp»"«ENDIF»«IF regexp.length > 0 && flags.size > 0», «ENDIF»«IF flags.size > 0»flags = {javax.validation.constraints.Pattern.Flag.«flags.toString(", javax.validation.constraints.Pattern.Flag.")»}«ENDIF» «EXPAND ValidationAnnotationBasics»)
-«ENDDEFINE»
-
-«DEFINE EmailAnnotation FOR Email -»
-   @javax.validation.constraints.Email(«IF regexp.length > 0»regexp = "«regexp»"«ENDIF»«IF regexp.length > 0 && flags.size > 0», «ENDIF»«IF flags.size > 0»flags = {javax.validation.constraints.Pattern.Flag.«flags.toString(", javax.validation.constraints.Pattern.Flag.")»}«ENDIF» «EXPAND ValidationAnnotationBasics»)
-«ENDDEFINE»
 
 «DEFINE NotEmptyStringAnnotation FOR NotEmpty -»
           minLength: 1
