@@ -111,7 +111,7 @@ components:
           type: string
           minLength: 1
 
-
+          maxLength: 32
         language: 
           type: string
       required:
@@ -576,6 +576,7 @@ components:
         aShort: 
           type: integer
           format: int32
+          minimum: -237
         bShort: 
           type: integer
           format: int32
@@ -600,9 +601,15 @@ components:
         bLong: 
           type: integer
           format: int64
+          maximum: 299792458
+          exclusiveMaximum: false
         aBigInteger: 
           type: integer
           format: int64
+          maximum: 3.14159265359
+          exclusiveMaximum: true
+          minimum: -3.14159265359
+          exclusiveMinimum: true
         aCharacter: 
           type: string
         bCharacter: 
@@ -610,22 +617,15 @@ components:
         aFloat: 
           type: number
           format: float
-          maximum: 3.14159265359
-          exclusiveMaximum: true
-          minimum: -3.14159265359
-          exclusiveMinimum: true
         bFloat: 
           type: number
           format: float
-          maximum: 299792458.0
-          exclusiveMaximum: false
         aDouble: 
           type: number
           format: double
         bDouble: 
           type: number
           format: double
-          minimum: -237
         aBigDecimal: 
           type: number
           format: double

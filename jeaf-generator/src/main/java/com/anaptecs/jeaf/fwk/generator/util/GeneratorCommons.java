@@ -213,6 +213,10 @@ public class GeneratorCommons {
     NUMERIC_ANNOTATION_CLASSES.add(Short.class.getName());
     NUMERIC_ANNOTATION_CLASSES.add(Integer.class.getName());
     NUMERIC_ANNOTATION_CLASSES.add(Long.class.getName());
+    NUMERIC_ANNOTATION_CLASSES.add("Byte");
+    NUMERIC_ANNOTATION_CLASSES.add("Short");
+    NUMERIC_ANNOTATION_CLASSES.add("Integer");
+    NUMERIC_ANNOTATION_CLASSES.add("Long");
 
     DATE_ANNOTATION_CLASSES = new HashSet<String>();
     DATE_ANNOTATION_CLASSES.add(java.util.Date.class.getName());
@@ -843,6 +847,26 @@ public class GeneratorCommons {
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_SYSTEM_EXCEPTION);
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_PERSISTENCE_UNIT);
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_OBJECT_MAPPING);
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Size");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "DecimalMin");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "DecimalMax");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Min");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Max");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Digits");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Negative");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "NegativeOrZero");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "PositiveOrZero");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Positive");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Pattern");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Email");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "NotEmpty");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "AssertTrue");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "AssertFalse");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "NotBlank");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Past");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "PastOrPresent");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "FutureOrPresent");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Future");
 
         if (lRunChecks == false) {
           XFun.getTrace().debug("Ignoring " + lFQN);

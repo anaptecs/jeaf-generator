@@ -13,12 +13,10 @@ context DecimalMax if runChecks() ERROR "Error: " + ((NamedElement)this.owner).n
 context DecimalMax if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'DecimalMax'. CharcterSequence or number is expected.": type.isCharSequence() || type.isNumericForAnnotation();
 
 // Checks for annotation Min
-context Min if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Minimum value for Java Bean Validation 'Min' missing.": minValue > 0;
-context Min if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Min'. CharcterSequence or number is expected.": type.isCharSequence() || type.isNumericForAnnotation();
+context Min if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Min'. Number is expected.": type.isNumericForAnnotation();
 
 // Checks for annotation Max
-context Max if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Minimum value for Java Bean Validation 'Max' missing.": maxValue > 0;
-context Max if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Max'. CharcterSequence or number is expected.": type.isCharSequence() || type.isNumericForAnnotation();
+context Max if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Max'. Number is expected.": type.isNumericForAnnotation();
 
 // Checks for annotation Digits
 context Digits if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Maximum number of integral digits for Java Bean Validation 'Digits' must be zero or greater (integer = " + integer + ").": integer >= 0;
@@ -38,9 +36,10 @@ context PositiveOrZero if runChecks() ERROR "Error: " + ((NamedElement)this.owne
 context Positive if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Positive'. Number is expected.": type.isNumericForAnnotation();
 
 // Checks for annotation Size
-context Size if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Minimum size for Java Bean Validation 'Size' must be zero or greater (min = " + min + ").": min >= 0;
-context Size if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Maximum size for Java Bean Validation 'Size' must be zero or greater.(max = " + max + ").": max >= 0;
-context Size if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Maximum size for Java Bean Validation 'Size' must be greater or equal as minimum size (min = " + min + " max = " + max +").": max >= min;
+context Size if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Minimum size for Java Bean Validation 'Size' must be zero or greater (min = " + min + ").": min >= -1;
+context Size if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Maximum size for Java Bean Validation 'Size' must be zero or greater.(max = " + max + ").": max >= -1;
+context Size if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Maximum size for Java Bean Validation 'Size' must be greater or equal as minimum size (min = " + min + " max = " + max +").": max >= min || max == -1;
+context Size if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Either maximum or minimum size of Java Bean Validation 'Size' must be set": !(max == -1 && min == -1);
 context Size if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Size'. CharcterSequence, Collection or Map is expected.": type.isCharSequence() || this.isMultivalued();
 
 // Checks for annotation Pattern
