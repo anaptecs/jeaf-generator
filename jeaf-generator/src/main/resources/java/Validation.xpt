@@ -58,35 +58,7 @@ public @interface «validationClass» {
 
 «DEFINE ValidationAnnotation FOR NamedElement»
     «FOREACH this.getAppliedStereotypes() AS stereotype»
-	    «REM»
-        // stereotype.attribute: «FOREACH stereotype.attribute AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
-        // stereotype.ownedAttribute: «FOREACH stereotype.ownedAttribute AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
-        // stereotype.getAllAttributes(): «FOREACH stereotype.getAllAttributes() AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
-        // stereotype.metaType.allProperties: «FOREACH stereotype.metaType.allProperties AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
-        // stereotype.parents().attribute: «FOREACH stereotype.parents().attribute AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
-        // stereotype.parents().parents().attribute: «FOREACH stereotype.parents().parents().attribute AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
-	    «ENDREM»
 	    «IF stereotype.isValidationStereotype()»
-		    «REM»
-	        // «stereotype.name»
-		    // «FOREACH stereotype.attribute.select(e|e.name.startsWith("base_") == false) AS attribute SEPARATOR ", "»
-		    // «attribute.name»
-		    // «IF attribute.type.name == "String"»
-		    // «attribute.name» = "«this.getValue(stereotype, attribute.name)»"
-		    // «ELSEIF attribute.type.isPrimitiveType()»
-		    // «attribute.name» = «this.getValue(stereotype, attribute.name)»
-		    // «ELSEIF attribute.type.metaType.name == "uml::Enumeration"»
-		    // Enumeration: 
-		    // «IF attribute.isMultivalued() == false»
-		    // «attribute.name» = «attribute.type.fqn()».«((EnumerationLiteral)this.getValue(stereotype, attribute.name)).name»
-		    // «ELSE»
-		    // «FOREACH ((Collection)this.getValue(stereotype, attribute.name)) AS literal SEPARATOR ", "»«attribute.type.fqn()».«((EnumerationLiteral)literal)»«ENDFOREACH»
-		    // «ENDIF»
-		    // «ELSE»
-		    //   
-		    // «ENDIF»
-		    // «ENDFOREACH»
-		    «ENDREM»
 			«IF stereotype.name == "DecimalMin"»
 			  «EXPAND DecimalMinAnnotation FOR ((DecimalMin)this)»	
 	
