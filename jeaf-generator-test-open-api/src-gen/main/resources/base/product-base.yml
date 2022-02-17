@@ -671,6 +671,7 @@ components:
           items:
             type: integer
             format: int32
+          maxLength: 32768
         bByteArray: 
           type: array
           items:
@@ -740,6 +741,8 @@ components:
           items:
             type: number
             format: double
+          minLength: 4
+          maxLength: 12
         bDoubleArray: 
           type: array
           items:
