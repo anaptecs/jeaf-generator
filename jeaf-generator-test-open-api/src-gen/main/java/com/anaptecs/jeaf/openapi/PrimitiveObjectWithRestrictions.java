@@ -241,6 +241,7 @@ public class PrimitiveObjectWithRestrictions {
 
    /**
    * Get bInteger
+   * minimum: 4711
    * @return bInteger
   **/
   @Schema(description = "")
@@ -259,6 +260,8 @@ public class PrimitiveObjectWithRestrictions {
 
    /**
    * Get cInteger
+   * minimum: 100
+   * maximum: 1000
    * @return cInteger
   **/
   @Schema(description = "")
@@ -421,6 +424,7 @@ public class PrimitiveObjectWithRestrictions {
 
    /**
    * Get bDouble
+   * minimum: -237
    * @return bDouble
   **/
   @Schema(description = "")
@@ -477,7 +481,7 @@ public class PrimitiveObjectWithRestrictions {
    * Get bString
    * @return bString
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getBString() {
     return bString;
   }

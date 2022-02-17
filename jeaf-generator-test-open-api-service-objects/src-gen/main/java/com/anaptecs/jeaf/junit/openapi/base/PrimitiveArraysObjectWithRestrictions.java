@@ -8,6 +8,8 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -187,6 +189,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
+  @NotEmpty()
   private long[] aLongArray;
 
   /**
@@ -344,6 +347,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
+    @NotEmpty()
     private long[] aLongArray;
 
     /**

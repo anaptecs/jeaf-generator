@@ -4,7 +4,7 @@
 «EXTENSION java::CustomValidationCommons»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
-«DEFINE OpenAPIRestrictions FOR NamedElement -»
+«DEFINE OpenAPIRestrictions FOR Property -»
     «FOREACH this.getAppliedStereotypes() AS stereotype -»
 	    «IF stereotype.isValidationStereotype() -»
 			«IF stereotype.name == "DecimalMin" -»
@@ -12,17 +12,9 @@
 			«ELSEIF stereotype.name == "DecimalMax" -»
 			  «EXPAND DecimalMaxAnnotation FOR ((DecimalMax)this)»
 			«ELSEIF stereotype.name == "Min" -»
-			  «IF this.fqn() == "String" -»
-			  «EXPAND MinLengthAnnotation FOR ((Min)this)»
-			  «ELSE -»
 			  «EXPAND MinValueAnnotation FOR ((Min)this)»
-			  «ENDIF -»
 			«ELSEIF stereotype.name == "Max" -»
-			  «IF this.fqn() == "String" -»
-			  «EXPAND MaxLengthAnnotation FOR ((Max)this)»
-			  «ELSE -»
 			  «EXPAND MaxValueAnnotation FOR ((Max)this)»
-			  «ENDIF -»
 			«ELSEIF stereotype.name == "Digits" -»
 			  «EXPAND DigitsAnnotation FOR ((Digits) this)»
 			«ELSEIF stereotype.name == "Negative" -»
@@ -40,7 +32,11 @@
 			«ELSEIF stereotype.name == "Email" -»
 			  «EXPAND EmailAnnotation FOR ((Email) this)»
 			«ELSEIF stereotype.name == "NotEmpty" -»
-			  «EXPAND NotEmptyAnnotation FOR ((NotEmpty) this)»
+			  «IF this.isMultivalued() == false -»
+			  «EXPAND NotEmptyStringAnnotation FOR ((NotEmpty) this) -»
+			  «ELSE -»
+			  «EXPAND NotEmptyArrayAnnotation FOR ((NotEmpty) this) -»
+			  «ENDIF -»
 			«ELSEIF stereotype.name == "Null" -»
 			  «EXPAND NullAnnotation FOR ((Null) this)»
 			«ELSEIF stereotype.name == "AssertTrue" -»
@@ -65,27 +61,19 @@
 
 
 «DEFINE DecimalMinAnnotation FOR DecimalMin -»
-   @javax.validation.constraints.DecimalMin(value = "«this.value»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
+   @javax.validation.constraints.DecimalMin(value = "«this.minValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
 «ENDDEFINE»
 
 «DEFINE DecimalMaxAnnotation FOR DecimalMax -»
-   @javax.validation.constraints.DecimalMax(value = "«this.value»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
+   @javax.validation.constraints.DecimalMax(value = "«this.maxValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
 «ENDDEFINE»
 
 «DEFINE MinValueAnnotation FOR Min-»
-          minimum: «this.value -»
-«ENDDEFINE»
-
-«DEFINE MinLengthAnnotation FOR Min-»
-          minLength: «this.value -»
+          minimum: «this.minValue -»
 «ENDDEFINE»
 
 «DEFINE MaxValueAnnotation FOR Max -»
-          maximum: «this.value -»
-«ENDDEFINE»
-
-«DEFINE MaxLengthAnnotation FOR Max -»
-          maxLength: «this.value -»
+          maximum: «this.maxValue -»
 «ENDDEFINE»
 
 «DEFINE DigitsAnnotation FOR Digits -»
@@ -109,7 +97,13 @@
 «ENDDEFINE»
 
 «DEFINE SizeAnnotation FOR Size -»
-   @javax.validation.constraints.Size(min = «min», max = «max» «EXPAND ValidationAnnotationBasics»)
+          «IF min != -1 && max != -1 -»
+          minLength: «min»
+          maxLength: «max»«ELSE-»
+              «IF min != -1-»
+          minLength: «min»«ELSE -»
+                  «IF max != -1 -»
+          maxLength: «max»«ENDIF -»«ENDIF-»«ENDIF-»
 «ENDDEFINE»
 
 «DEFINE PatternAnnotation FOR Pattern -»
@@ -120,8 +114,12 @@
    @javax.validation.constraints.Email(«IF regexp.length > 0»regexp = "«regexp»"«ENDIF»«IF regexp.length > 0 && flags.size > 0», «ENDIF»«IF flags.size > 0»flags = {javax.validation.constraints.Pattern.Flag.«flags.toString(", javax.validation.constraints.Pattern.Flag.")»}«ENDIF» «EXPAND ValidationAnnotationBasics»)
 «ENDDEFINE»
 
-«DEFINE NotEmptyAnnotation FOR NotEmpty -»
-   @javax.validation.constraints.NotEmpty(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+«DEFINE NotEmptyStringAnnotation FOR NotEmpty -»
+          minLength: 1
+«ENDDEFINE»
+
+«DEFINE NotEmptyArrayAnnotation FOR NotEmpty -»
+          minItems: 1
 «ENDDEFINE»
 
 «DEFINE NullAnnotation FOR Null -»

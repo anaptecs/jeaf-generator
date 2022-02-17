@@ -109,8 +109,8 @@ components:
           minItems: 1
         name: 
           type: string
-          maximum: 64
           minLength: 1
+
 
         language: 
           type: string
@@ -127,7 +127,7 @@ components:
           minItems: 0
         name: 
           type: string
-          minimum: 17
+          minLength: 12
         image: 
           type: array
           items:
@@ -582,9 +582,12 @@ components:
         bInteger: 
           type: integer
           format: int32
+          minimum: 4711
         cInteger: 
           type: integer
           format: int32
+          minimum: 100
+          maximum: 1000
         aLong: 
           type: integer
           format: int64
@@ -610,13 +613,18 @@ components:
         bDouble: 
           type: number
           format: double
+          minimum: -237
         aBigDecimal: 
           type: number
           format: double
         aString: 
           type: string
+          minLength: 16
+          maxLength: 32
         bString: 
           type: string
+          minLength: 1
+          maxLength: 128
       required:
         - aBoolean
         - cBoolean
@@ -627,6 +635,7 @@ components:
         - aCharacter
         - aFloat
         - aDouble
+        - bString
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveArraysObjectWithRestrictions
     PrimitiveArraysObjectWithRestrictions:
       type: object
@@ -683,6 +692,7 @@ components:
           items:
             type: integer
             format: int64
+          minItems: 1
         bLongArray: 
           type: array
           items:
