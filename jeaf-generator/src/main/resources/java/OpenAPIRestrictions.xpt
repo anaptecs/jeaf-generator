@@ -15,8 +15,6 @@
 			  «EXPAND MinValueAnnotation FOR ((Min)this)»
 			«ELSEIF stereotype.name == "Max" -»
 			  «EXPAND MaxValueAnnotation FOR ((Max)this)»
-			«ELSEIF stereotype.name == "Digits" -»
-			  «EXPAND DigitsAnnotation FOR ((Digits) this)»
 			«ELSEIF stereotype.name == "Negative" -»
 			  «EXPAND NegativeAnnotation FOR ((Negative) this)»
 			«ELSEIF stereotype.name == "NegativeOrZero" -»
@@ -62,10 +60,6 @@
 
 «DEFINE MaxValueAnnotation FOR Max -»
           maximum: «this.maxValue -»
-«ENDDEFINE»
-
-«DEFINE DigitsAnnotation FOR Digits -»
-   @javax.validation.constraints.Digits(integer = «integer», fraction = «fraction» «EXPAND ValidationAnnotationBasics»)
 «ENDDEFINE»
 
 «DEFINE NegativeAnnotation FOR Negative -»
