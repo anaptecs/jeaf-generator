@@ -567,18 +567,24 @@ components:
         aByte: 
           type: integer
           format: int32
+          maximum: 0
+          exclusiveMaximum: true
         bByte: 
           type: integer
           format: int32
+          maximum: 0
         aShort: 
           type: integer
           format: int32
         bShort: 
           type: integer
           format: int32
+          minimum: 0
+          exclusiveMinimum: true
         aInteger: 
           type: integer
           format: int32
+          minimum: 0
         bInteger: 
           type: integer
           format: int32
@@ -604,9 +610,15 @@ components:
         aFloat: 
           type: number
           format: float
+          maximum: 3.14159265359
+          exclusiveMaximum: true
+          minimum: -3.14159265359
+          exclusiveMinimum: true
         bFloat: 
           type: number
           format: float
+          maximum: 299792458.0
+          exclusiveMaximum: false
         aDouble: 
           type: number
           format: double
@@ -617,6 +629,8 @@ components:
         aBigDecimal: 
           type: number
           format: double
+          minimum: 4711.0815
+          exclusiveMinimum: true
         aString: 
           type: string
           minLength: 16

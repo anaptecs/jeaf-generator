@@ -151,6 +151,7 @@ public class PrimitiveObjectWithRestrictions {
 
    /**
    * Get aByte
+   * maximum: 0
    * @return aByte
   **/
   @Schema(required = true, description = "")
@@ -169,6 +170,7 @@ public class PrimitiveObjectWithRestrictions {
 
    /**
    * Get bByte
+   * maximum: 0
    * @return bByte
   **/
   @Schema(description = "")
@@ -205,6 +207,7 @@ public class PrimitiveObjectWithRestrictions {
 
    /**
    * Get bShort
+   * minimum: 0
    * @return bShort
   **/
   @Schema(description = "")
@@ -223,6 +226,7 @@ public class PrimitiveObjectWithRestrictions {
 
    /**
    * Get aInteger
+   * minimum: 0
    * @return aInteger
   **/
   @Schema(required = true, description = "")
@@ -370,6 +374,8 @@ public class PrimitiveObjectWithRestrictions {
 
    /**
    * Get aFloat
+   * minimum: -3
+   * maximum: 3
    * @return aFloat
   **/
   @Schema(required = true, description = "")
@@ -388,6 +394,7 @@ public class PrimitiveObjectWithRestrictions {
 
    /**
    * Get bFloat
+   * maximum: 299792458
    * @return bFloat
   **/
   @Schema(description = "")
@@ -443,6 +450,7 @@ public class PrimitiveObjectWithRestrictions {
 
    /**
    * Get aBigDecimal
+   * minimum: 4711
    * @return aBigDecimal
   **/
   @Schema(description = "")

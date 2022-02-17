@@ -37,22 +37,8 @@
 			  «ELSE -»
 			  «EXPAND NotEmptyArrayAnnotation FOR ((NotEmpty) this) -»
 			  «ENDIF -»
-			«ELSEIF stereotype.name == "Null" -»
-			  «EXPAND NullAnnotation FOR ((Null) this)»
-			«ELSEIF stereotype.name == "AssertTrue" -»
-			  «EXPAND AssertTrueAnnotation FOR ((AssertTrue) this)»
-			«ELSEIF stereotype.name == "AssertFalse" -»
-			  «EXPAND AssertFalseAnnotation FOR ((AssertFalse) this)»
 			«ELSEIF stereotype.name == "NotBlank" -»
 			  «EXPAND NotBlankAnnotation FOR ((NotBlank) this)»
-			«ELSEIF stereotype.name == "Past" -»
-			  «EXPAND PastAnnotation FOR ((Past) this)»
-			«ELSEIF stereotype.name == "PastOrPresent" -»
-			  «EXPAND PastOrPresentAnnotation FOR ((PastOrPresent) this)»
-			«ELSEIF stereotype.name == "FutureOrPresent" -»
-			  «EXPAND FutureOrPresentAnnotation FOR ((FutureOrPresent) this)»
-			«ELSEIF stereotype.name == "Future" -»
-			  «EXPAND FutureAnnotation FOR ((Future) this)»
 			«ELSE -»
 			«ENDIF -»
 	    «ENDIF -»
@@ -61,11 +47,13 @@
 
 
 «DEFINE DecimalMinAnnotation FOR DecimalMin -»
-   @javax.validation.constraints.DecimalMin(value = "«this.minValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
+          minimum: «this.minValue»
+          exclusiveMinimum: «this.inclusive -»
 «ENDDEFINE»
 
 «DEFINE DecimalMaxAnnotation FOR DecimalMax -»
-   @javax.validation.constraints.DecimalMax(value = "«this.maxValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
+          maximum: «this.maxValue»
+          exclusiveMaximum: «this.inclusive -»
 «ENDDEFINE»
 
 «DEFINE MinValueAnnotation FOR Min-»
@@ -81,20 +69,18 @@
 «ENDDEFINE»
 
 «DEFINE NegativeAnnotation FOR Negative -»
-   @javax.validation.constraints.Negative(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+          maximum: 0
+          exclusiveMaximum: true«ENDDEFINE»
 
 «DEFINE NegativeOrZeroAnnotation FOR NegativeOrZero -»
-   @javax.validation.constraints.NegativeOrZero(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+          maximum: 0«ENDDEFINE»
 
 «DEFINE PositiveOrZeroAnnotation FOR PositiveOrZero -»
-   @javax.validation.constraints.PositiveOrZero(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+          minimum: 0«ENDDEFINE»
 
 «DEFINE PositiveAnnotation FOR Positive -»
-   @javax.validation.constraints.Positive(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+          minimum: 0
+          exclusiveMinimum: true«ENDDEFINE»
 
 «DEFINE SizeAnnotation FOR Size -»
           «IF min != -1 && max != -1 -»
@@ -103,8 +89,7 @@
               «IF min != -1-»
           minLength: «min»«ELSE -»
                   «IF max != -1 -»
-          maxLength: «max»«ENDIF -»«ENDIF-»«ENDIF-»
-«ENDDEFINE»
+          maxLength: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
 
 «DEFINE PatternAnnotation FOR Pattern -»
    @javax.validation.constraints.Pattern(«IF regexp.length > 0»regexp = "«regexp»"«ENDIF»«IF regexp.length > 0 && flags.size > 0», «ENDIF»«IF flags.size > 0»flags = {javax.validation.constraints.Pattern.Flag.«flags.toString(", javax.validation.constraints.Pattern.Flag.")»}«ENDIF» «EXPAND ValidationAnnotationBasics»)
@@ -122,40 +107,8 @@
           minItems: 1
 «ENDDEFINE»
 
-«DEFINE NullAnnotation FOR Null -»
-   @javax.validation.constraints.Null(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
-
-«DEFINE NotNullAnnotation FOR NotNull -»
-   @javax.validation.constraints.NotNull(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
-
-«DEFINE AssertTrueAnnotation FOR AssertTrue -»
-   @javax.validation.constraints.AssertTrue(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
-
-«DEFINE AssertFalseAnnotation FOR AssertFalse -»
-   @javax.validation.constraints.AssertFalse(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
-
 «DEFINE NotBlankAnnotation FOR NotBlank -»
           minLength: 1
-«ENDDEFINE»
-
-«DEFINE PastAnnotation FOR Past -»
-   @javax.validation.constraints.Past(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
-
-«DEFINE PastOrPresentAnnotation FOR PastOrPresent -»
-   @javax.validation.constraints.PastOrPresent(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
-
-«DEFINE FutureOrPresentAnnotation FOR FutureOrPresent -»
-   @javax.validation.constraints.FutureOrPresent(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
-
-«DEFINE FutureAnnotation FOR Future -»
-   @javax.validation.constraints.Future(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
 «ENDDEFINE»
 
 «DEFINE ValidationAnnotationBasics FOR Validation»
