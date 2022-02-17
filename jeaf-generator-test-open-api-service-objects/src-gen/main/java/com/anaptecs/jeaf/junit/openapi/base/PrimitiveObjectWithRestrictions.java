@@ -10,6 +10,8 @@ import java.math.BigInteger;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Negative;
+import javax.validation.constraints.NegativeOrZero;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -157,11 +159,13 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
+  @Negative()
   private byte aByte;
 
   /**
    * 
    */
+  @NegativeOrZero()
   private Byte bByte;
 
   /**
@@ -321,11 +325,13 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
+    @Negative()
     private byte aByte;
 
     /**
      * 
      */
+    @NegativeOrZero()
     private Byte bByte;
 
     /**
