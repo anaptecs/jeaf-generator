@@ -5,19 +5,19 @@ extension java::GeneratorCommons;
 
 
 // Checks for annotation DecimalMin
-context DecimalMin if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Maximum value for Java Bean Validation 'DecimalMin' missing.": value.length > 0;
+context DecimalMin if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Maximum value for Java Bean Validation 'DecimalMin' missing.": minValue.length > 0;
 context DecimalMin if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'DecimalMin'. CharcterSequence or number is expected.": type.isCharSequence() || type.isNumericForAnnotation();
 
 // Checks for annotation DecimalMax
-context DecimalMax if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Maximum value for Java Bean Validation 'DecimalMax' missing.": value.length > 0;
+context DecimalMax if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Maximum value for Java Bean Validation 'DecimalMax' missing.": maxValue.length > 0;
 context DecimalMax if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'DecimalMax'. CharcterSequence or number is expected.": type.isCharSequence() || type.isNumericForAnnotation();
 
 // Checks for annotation Min
-context Min if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Minimum value for Java Bean Validation 'Min' missing.": value > 0;
+context Min if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Minimum value for Java Bean Validation 'Min' missing.": minValue > 0;
 context Min if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Min'. CharcterSequence or number is expected.": type.isCharSequence() || type.isNumericForAnnotation();
 
 // Checks for annotation Max
-context Max if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Minimum value for Java Bean Validation 'Max' missing.": value > 0;
+context Max if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Minimum value for Java Bean Validation 'Max' missing.": maxValue > 0;
 context Max if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Max'. CharcterSequence or number is expected.": type.isCharSequence() || type.isNumericForAnnotation();
 
 // Checks for annotation Digits
