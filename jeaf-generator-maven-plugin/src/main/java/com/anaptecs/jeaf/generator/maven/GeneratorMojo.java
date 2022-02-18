@@ -116,6 +116,12 @@ public class GeneratorMojo extends AbstractMojo {
   private String umlProfileFile;
 
   /**
+   * Name of the root template for customer specific extensions
+   */
+  @Parameter(required = false, defaultValue = "CustomRoot::Root")
+  private String customRootTemplate;
+
+  /**
    * Directory where all files that belong to the "src" directory will be written to.
    */
   @Parameter(required = false)
@@ -673,6 +679,7 @@ public class GeneratorMojo extends AbstractMojo {
         // Build arguments for generator
         HashMap<String, String> lParams = new HashMap<>();
         lParams.put("template.root", "Root::Root");
+        lParams.put("custom.root.template", customRootTemplate);
         lParams.put("output.slot", "model");
         lParams.put("model.file", lModelFilePath);
         lParams.put("profile.file", lProfileFilePath);

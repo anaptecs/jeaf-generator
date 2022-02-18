@@ -19,6 +19,15 @@
         <checkFile value="java::AssociationChecks"/>
         <checkFile value="java::ObjectMapperChecks"/>
         <checkFile value="jeaf::ValidationChecks"/>
+        
+        <expression value="${output.slot}.eAllContents.union({${output.slot}})"/>
+    </component>
+    
+    <!-- Execute custom checks -->
+    <component class="com.anaptecs.jeaf.fwk.generator.workflow.CustomChecksWorkflow">
+		<metaModel idRef="UmlMM"/>
+		<metaModel idRef="${profile.name}"/>
+		
         <expression value="${output.slot}.eAllContents.union({${output.slot}})"/>
     </component>
     
@@ -30,6 +39,36 @@
 		<fileEncoding value="ISO-8859-1"/>
 		<!-- Fuer jedes 'model' im slot model rufe Define 'Root' im template 'Root' auf -->
 		<expand value="${template.root} FOR ${output.slot}"/>
+		
+		<outlet name="GenBase" path="${path.src.gen}/" overwrite="true"/>
+		<outlet name="GenOnce" path="${path.src}/" overwrite="false"/>
+		<outlet name="GenRes"  path="${path.res.gen}/" overwrite="true"/>
+		<outlet name="Res"  path="${path.res}/" overwrite="false"/>
+		<outlet path="error" />
+    </component>
+    
+    <!-- Write log message to console -->
+    <component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
+		<metaModel idRef="UmlMM"/>
+		<metaModel idRef="${profile.name}"/>
+
+		<fileEncoding value="ISO-8859-1"/>
+		<expand value="CustomRoot::InfoMessage FOR ${output.slot}"/>
+		
+		<outlet name="GenBase" path="${path.src.gen}/" overwrite="true"/>
+		<outlet name="GenOnce" path="${path.src}/" overwrite="false"/>
+		<outlet name="GenRes"  path="${path.res.gen}/" overwrite="true"/>
+		<outlet name="Res"  path="${path.res}/" overwrite="false"/>
+		<outlet path="error" />
+    </component>
+
+    <!-- Run custom templates -->
+    <component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
+		<metaModel idRef="UmlMM"/>
+		<metaModel idRef="${profile.name}"/>
+
+		<fileEncoding value="ISO-8859-1"/>
+		<expand value="${custom.root.template} FOR ${output.slot}"/>
 		
 		<outlet name="GenBase" path="${path.src.gen}/" overwrite="true"/>
 		<outlet name="GenOnce" path="${path.src}/" overwrite="false"/>
