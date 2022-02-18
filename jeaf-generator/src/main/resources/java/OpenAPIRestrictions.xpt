@@ -1,0 +1,103 @@
+«IMPORT uml»
+«IMPORT JMM»
+«EXTENSION java::Naming»
+«EXTENSION java::CustomValidationCommons»
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+«DEFINE OpenAPIRestrictions FOR Property -»
+    «FOREACH this.getAppliedStereotypes() AS stereotype -»
+	    «IF stereotype.isValidationStereotype() -»
+			«IF stereotype.name == "DecimalMin" -»
+			  «EXPAND DecimalMinAnnotation FOR ((DecimalMin)this)»
+			«ELSEIF stereotype.name == "DecimalMax" -»
+			  «EXPAND DecimalMaxAnnotation FOR ((DecimalMax)this)»
+			«ELSEIF stereotype.name == "Min" -»
+			  «EXPAND MinValueAnnotation FOR ((Min)this)»
+			«ELSEIF stereotype.name == "Max" -»
+			  «EXPAND MaxValueAnnotation FOR ((Max)this)»
+			«ELSEIF stereotype.name == "Negative" -»
+			  «EXPAND NegativeAnnotation FOR ((Negative) this)»
+			«ELSEIF stereotype.name == "NegativeOrZero" -»
+			  «EXPAND NegativeOrZeroAnnotation FOR ((NegativeOrZero) this)»
+			«ELSEIF stereotype.name == "PositiveOrZero" -»
+			  «EXPAND PositiveOrZeroAnnotation FOR ((PositiveOrZero) this)»
+			«ELSEIF stereotype.name == "Positive" -»
+			  «EXPAND PositiveAnnotation FOR ((Positive) this)»
+			«ELSEIF stereotype.name == "Size" -»
+			  «EXPAND SizeAnnotation FOR ((Size) this)»
+			«ELSEIF stereotype.name == "NotEmpty" -»
+			  «IF this.isMultivalued() == false -»
+			  «EXPAND NotEmptyStringAnnotation FOR ((NotEmpty) this) -»
+			  «ELSE -»
+			  «EXPAND NotEmptyArrayAnnotation FOR ((NotEmpty) this) -»
+			  «ENDIF -»
+			«ELSEIF stereotype.name == "NotBlank" -»
+			  «EXPAND NotBlankAnnotation FOR ((NotBlank) this)»
+			«ELSE -»
+			«ENDIF -»
+	    «ENDIF -»
+	«ENDFOREACH -»
+«ENDDEFINE»
+
+
+«DEFINE DecimalMinAnnotation FOR DecimalMin -»
+          minimum: «this.minValue»
+          exclusiveMinimum: «this.inclusive -»
+«ENDDEFINE»
+
+«DEFINE DecimalMaxAnnotation FOR DecimalMax -»
+          maximum: «this.maxValue»
+          exclusiveMaximum: «this.inclusive -»
+«ENDDEFINE»
+
+«DEFINE MinValueAnnotation FOR Min-»
+          minimum: «this.minValue -»
+«ENDDEFINE»
+
+«DEFINE MaxValueAnnotation FOR Max -»
+          maximum: «this.maxValue -»
+«ENDDEFINE»
+
+«DEFINE NegativeAnnotation FOR Negative -»
+          maximum: 0
+          exclusiveMaximum: true«ENDDEFINE»
+
+«DEFINE NegativeOrZeroAnnotation FOR NegativeOrZero -»
+          maximum: 0«ENDDEFINE»
+
+«DEFINE PositiveOrZeroAnnotation FOR PositiveOrZero -»
+          minimum: 0«ENDDEFINE»
+
+«DEFINE PositiveAnnotation FOR Positive -»
+          minimum: 0
+          exclusiveMinimum: true«ENDDEFINE»
+
+«DEFINE SizeAnnotation FOR Size -»
+          «IF min != -1 && max != -1 -»
+          minLength: «min»
+          maxLength: «max»«ELSE-»
+              «IF min != -1-»
+          minLength: «min»«ELSE -»
+                  «IF max != -1 -»
+          maxLength: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
+
+«DEFINE NotEmptyStringAnnotation FOR NotEmpty -»
+          minLength: 1
+«ENDDEFINE»
+
+«DEFINE NotEmptyArrayAnnotation FOR NotEmpty -»
+          minItems: 1
+«ENDDEFINE»
+
+«DEFINE NotBlankAnnotation FOR NotBlank -»
+          minLength: 1
+«ENDDEFINE»
+
+«DEFINE ValidationAnnotationBasics FOR Validation»
+«IF errorCode > 0», message = "«errorCode»"«ENDIF» «IF severity.name != "NotUsed"», payload = com.anaptecs.jeaf.tools.api.validation.Severity.«severity.name».class«ENDIF»
+«ENDDEFINE»
+
+«DEFINE ValidationAnnotationBasicsEmptyValidation FOR Validation -»
+«IF errorCode > 0»message = "«errorCode»"«ENDIF» «IF errorCode > 0 && severity.name != "NotUsed"», «ENDIF» «IF severity.name != "NotUsed"»payload = com.anaptecs.jeaf.tools.api.validation.Severity.«severity.name».class«ENDIF -»
+«ENDDEFINE»
+

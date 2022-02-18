@@ -326,6 +326,7 @@ components:
               «IF attribute.type.hasOpenAPIFormat()-»
           format: «attribute.type.getOpenAPIFormat()»
               «ENDIF-»
+          «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions FOR attribute-»    
               «IF attribute.isDeprecated() -»
           deprecated: true
               «ENDIF-»
@@ -336,6 +337,7 @@ components:
               «IF attribute.type.hasOpenAPIFormat()-»
             format: «attribute.type.getOpenAPIFormat()»
               «ENDIF-»
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions FOR attribute-»              
               «IF attribute.isDeprecated() -»
             deprecated: true
               «ENDIF-»

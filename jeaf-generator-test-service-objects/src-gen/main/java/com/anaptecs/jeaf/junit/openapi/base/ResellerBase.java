@@ -15,6 +15,8 @@ import java.util.Locale;
 import java.util.Set;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.AbstractObjectID;
 import com.anaptecs.jeaf.core.api.Identifiable;
@@ -74,6 +76,8 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   /**
    * 
    */
+  @NotBlank()
+  @Size(min = 0, max = 32)
   private String name;
 
   /**
@@ -139,6 +143,8 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     /**
      * 
      */
+    @NotBlank()
+    @Size(min = 0, max = 32)
     private String name;
 
     /**

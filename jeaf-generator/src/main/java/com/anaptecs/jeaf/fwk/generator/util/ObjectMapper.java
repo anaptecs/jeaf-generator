@@ -436,7 +436,7 @@ public class ObjectMapper {
   }
 
   public static boolean isDatatypeConverterRequired( NamedElement pSupplier, NamedElement pClient ) {
-    // A datatype converter is required if supplier and client are not of the same tye and Java`s auto boxing is not
+    // A datatype converter is required if supplier and client are not of the same tpye and Java`s auto boxing is not
     // able to do the conversion.
     boolean lDatatypeConverterRequired;
     // Types are the same, so we need no converter.
@@ -467,7 +467,14 @@ public class ObjectMapper {
       }
       // At least of the types is not a primitive so we need a datatype converter for sure.
       else {
-        lDatatypeConverterRequired = true;
+        // In UML model there also is a separate type for string (not java.lang.String)
+        if ((lSupplierFQN.equals(String.class.getName()) && lClientFQN.equals(String.class.getSimpleName()))
+            || (lSupplierFQN.equals(String.class.getSimpleName()) && lClientFQN.equals(String.class.getName()))) {
+          lDatatypeConverterRequired = false;
+        }
+        else {
+          lDatatypeConverterRequired = true;
+        }
       }
     }
     return lDatatypeConverterRequired;

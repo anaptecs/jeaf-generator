@@ -58,35 +58,7 @@ public @interface «validationClass» {
 
 «DEFINE ValidationAnnotation FOR NamedElement»
     «FOREACH this.getAppliedStereotypes() AS stereotype»
-	    «REM»
-        // stereotype.attribute: «FOREACH stereotype.attribute AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
-        // stereotype.ownedAttribute: «FOREACH stereotype.ownedAttribute AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
-        // stereotype.getAllAttributes(): «FOREACH stereotype.getAllAttributes() AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
-        // stereotype.metaType.allProperties: «FOREACH stereotype.metaType.allProperties AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
-        // stereotype.parents().attribute: «FOREACH stereotype.parents().attribute AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
-        // stereotype.parents().parents().attribute: «FOREACH stereotype.parents().parents().attribute AS attribute SEPARATOR ", "»«attribute.name»«ENDFOREACH»
-	    «ENDREM»
 	    «IF stereotype.isValidationStereotype()»
-		    «REM»
-	        // «stereotype.name»
-		    // «FOREACH stereotype.attribute.select(e|e.name.startsWith("base_") == false) AS attribute SEPARATOR ", "»
-		    // «attribute.name»
-		    // «IF attribute.type.name == "String"»
-		    // «attribute.name» = "«this.getValue(stereotype, attribute.name)»"
-		    // «ELSEIF attribute.type.isPrimitiveType()»
-		    // «attribute.name» = «this.getValue(stereotype, attribute.name)»
-		    // «ELSEIF attribute.type.metaType.name == "uml::Enumeration"»
-		    // Enumeration: 
-		    // «IF attribute.isMultivalued() == false»
-		    // «attribute.name» = «attribute.type.fqn()».«((EnumerationLiteral)this.getValue(stereotype, attribute.name)).name»
-		    // «ELSE»
-		    // «FOREACH ((Collection)this.getValue(stereotype, attribute.name)) AS literal SEPARATOR ", "»«attribute.type.fqn()».«((EnumerationLiteral)literal)»«ENDFOREACH»
-		    // «ENDIF»
-		    // «ELSE»
-		    //   
-		    // «ENDIF»
-		    // «ENDFOREACH»
-		    «ENDREM»
 			«IF stereotype.name == "DecimalMin"»
 			  «EXPAND DecimalMinAnnotation FOR ((DecimalMin)this)»	
 	
@@ -165,19 +137,19 @@ public @interface «validationClass» {
 
 
 «DEFINE DecimalMinAnnotation FOR DecimalMin»
-   @javax.validation.constraints.DecimalMin(value = "«this.value»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
+   @javax.validation.constraints.DecimalMin(value = "«this.minValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
 «ENDDEFINE»
 
 «DEFINE DecimalMaxAnnotation FOR DecimalMax»
-   @javax.validation.constraints.DecimalMax(value = "«this.value»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
+   @javax.validation.constraints.DecimalMax(value = "«this.maxValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
 «ENDDEFINE»
 
 «DEFINE MinAnnotation FOR Min»
-   @javax.validation.constraints.Min(value = «this.value» «EXPAND ValidationAnnotationBasics»)
+   @javax.validation.constraints.Min(value = «this.minValue» «EXPAND ValidationAnnotationBasics»)
 «ENDDEFINE»
 
 «DEFINE MaxAnnotation FOR Max»
-   @javax.validation.constraints.Max(value = «this.value» «EXPAND ValidationAnnotationBasics»)
+   @javax.validation.constraints.Max(value = «this.maxValue» «EXPAND ValidationAnnotationBasics»)
 «ENDDEFINE»
 
 «DEFINE DigitsAnnotation FOR Digits»
@@ -201,7 +173,7 @@ public @interface «validationClass» {
 «ENDDEFINE»
 
 «DEFINE SizeAnnotation FOR Size»
-   @javax.validation.constraints.Size(min = «min», max = «max» «EXPAND ValidationAnnotationBasics»)
+   @javax.validation.constraints.Size(min = «IF min != -1»«min»«ELSE»0«ENDIF», max = «IF max != -1»«max»«ELSE»Integer.MAX_VALUE«ENDIF»«EXPAND ValidationAnnotationBasics»)
 «ENDDEFINE»
 
 «DEFINE PatternAnnotation FOR Pattern»

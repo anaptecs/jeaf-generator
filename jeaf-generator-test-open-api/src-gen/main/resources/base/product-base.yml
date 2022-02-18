@@ -109,6 +109,9 @@ components:
           minItems: 1
         name: 
           type: string
+          minLength: 1
+
+          maxLength: 32
         language: 
           type: string
       required:
@@ -124,6 +127,7 @@ components:
           minItems: 0
         name: 
           type: string
+          minLength: 12
         image: 
           type: array
           items:
@@ -550,6 +554,223 @@ components:
           items:
             $ref: '#/components/schemas/Partner'
           minItems: 0
+    # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObjectWithRestrictions
+    PrimitiveObjectWithRestrictions:
+      type: object
+      properties:
+        aBoolean: 
+          type: boolean
+        bBoolean: 
+          type: boolean
+        cBoolean: 
+          type: boolean
+        aByte: 
+          type: integer
+          format: int32
+          maximum: 0
+          exclusiveMaximum: true
+        bByte: 
+          type: integer
+          format: int32
+          maximum: 0
+        aShort: 
+          type: integer
+          format: int32
+          minimum: -237
+        bShort: 
+          type: integer
+          format: int32
+          minimum: 0
+          exclusiveMinimum: true
+        aInteger: 
+          type: integer
+          format: int32
+          minimum: 0
+        bInteger: 
+          type: integer
+          format: int32
+          minimum: 4711
+        cInteger: 
+          type: integer
+          format: int32
+          minimum: 100
+          maximum: 1000
+        aLong: 
+          type: integer
+          format: int64
+        bLong: 
+          type: integer
+          format: int64
+          maximum: 299792458
+          exclusiveMaximum: false
+        aBigInteger: 
+          type: integer
+          format: int64
+          maximum: 3.14159265359
+          exclusiveMaximum: true
+          minimum: -3.14159265359
+          exclusiveMinimum: true
+        aCharacter: 
+          type: string
+        bCharacter: 
+          type: string
+        aFloat: 
+          type: number
+          format: float
+        bFloat: 
+          type: number
+          format: float
+        aDouble: 
+          type: number
+          format: double
+        bDouble: 
+          type: number
+          format: double
+        aBigDecimal: 
+          type: number
+          format: double
+          minimum: 4711.0815
+          exclusiveMinimum: true
+        aString: 
+          type: string
+          minLength: 16
+          maxLength: 32
+        bString: 
+          type: string
+          minLength: 1
+          maxLength: 128
+      required:
+        - aBoolean
+        - cBoolean
+        - aByte
+        - aShort
+        - aInteger
+        - aLong
+        - aCharacter
+        - aFloat
+        - aDouble
+        - bString
+    # com.anaptecs.jeaf.junit.openapi.base.PrimitiveArraysObjectWithRestrictions
+    PrimitiveArraysObjectWithRestrictions:
+      type: object
+      properties:
+        aBooleanArray: 
+          type: array
+          items:
+            type: boolean
+        bBooleanArray: 
+          type: array
+          items:
+            type: boolean
+        cBooleanArray: 
+          type: array
+          items:
+            type: boolean
+        aByteArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+          maxLength: 32768
+        bByteArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        aShortArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        bShortArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        aIntegerArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        bIntegerArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        cIntegerArray: 
+          type: array
+          items:
+            type: integer
+            format: int32
+        aLongArray: 
+          type: array
+          items:
+            type: integer
+            format: int64
+          minItems: 1
+        bLongArray: 
+          type: array
+          items:
+            type: integer
+            format: int64
+        aBigIntegerArray: 
+          type: array
+          items:
+            type: integer
+            format: int64
+        aCharacterArray: 
+          type: array
+          items:
+            type: string
+        bCharacterArray: 
+          type: array
+          items:
+            type: string
+        aFloatArray: 
+          type: array
+          items:
+            type: number
+            format: float
+        bFloatArray: 
+          type: array
+          items:
+            type: number
+            format: float
+        aDoubleArray: 
+          type: array
+          items:
+            type: number
+            format: double
+          minLength: 4
+          maxLength: 12
+        bDoubleArray: 
+          type: array
+          items:
+            type: number
+            format: double
+        aBigDecimalArray: 
+          type: array
+          items:
+            type: number
+            format: double
+        aStringArray: 
+          type: array
+          items:
+            type: string
+        bStringArray: 
+          type: array
+          items:
+            type: string
+      required:
+        - aBooleanArray
+        - cBooleanArray
+        - aByteArray
+        - aShortArray
+        - aIntegerArray
+        - aLongArray
+        - aCharacterArray
+        - aFloatArray
+        - aDoubleArray
 
     
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
