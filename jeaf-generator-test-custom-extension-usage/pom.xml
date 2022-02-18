@@ -87,49 +87,6 @@
 					<!-- <conventionFile>anaptecs_code_guideline.xml</conventionFile> -->
 				</configuration>
 			</plugin>
-
-			<!-- JEAF Maven Plugin will generate JEAF configuration files. Besides executing the plugin during build no specific configurations are required to use JEAF X-Fun. -->
-			<plugin>
-				<groupId>com.anaptecs.jeaf.maven</groupId>
-				<artifactId>jeaf-maven-plugin</artifactId>
-				<version>${maven.jeaf-plugin.version}</version>
-				<executions>
-					<!-- Cleanup run. All existing generated files will be deleted before they will be generated again. -->
-					<execution>
-						<id>Clean</id>
-						<goals>
-							<goal>GenerateJEAFConfig</goal>
-						</goals>
-						<phase>clean</phase>
-						<configuration>
-							<resourceGenDirectory>${basedir}/src-gen/test/resources</resourceGenDirectory>
-							<cleanMetaInfDirectory>true</cleanMetaInfDirectory>
-							<cleanOnly>true</cleanOnly>
-						</configuration>
-					</execution>
-
-					<!-- Generate configuration files. -->
-					<execution>
-						<id>GenerateConfigs</id>
-						<goals>
-							<goal>GenerateJEAFConfig</goal>
-						</goals>
-						<configuration>
-							<testResourceGenDirectory>${basedir}/src-gen/test/resources</testResourceGenDirectory>
-							<testTargetDirectory>${basedir}/target/test-classes</testTargetDirectory>
-
-							<!-- As we are only working with JEAF X-Fun we also limit configuration detection to X-Fun -->
-							<explicitConfigurationDetection>
-								<detectXFunConfigs>true</detectXFunConfigs>
-								<detectToolsConfigs>true</detectToolsConfigs>
-								<detectJSONConfigs>true</detectJSONConfigs>
-							</explicitConfigurationDetection>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-
 		</plugins>
 		<pluginManagement>
 			<plugins>

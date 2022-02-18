@@ -6,4 +6,12 @@
     «REM» Empty template in case that no custom templates schould be executed.«ENDREM»
     «info("Hello JEAF Generator")»
     «info("")»
+    «FILE  "HelloJEAFGenerator.txt" GenRes»
+Hello JEAF Generator,
+this is my first extension template
+
+Looking forward to try out more.
+
+Your JEAF Development Team
+    «ENDFILE»
 «ENDDEFINE» 
