@@ -49,7 +49,6 @@
 					<modelArtifactGroupID>com.anaptecs.jeaf.uml</modelArtifactGroupID>
 					<modelArtifactArtifactID>jeaf-uml-test-model</modelArtifactArtifactID>
 					<modelArtifactXMIPath>xmi</modelArtifactXMIPath>
-					<customRootTemplate>MyCustomRoot::Root</customRootTemplate>
 
 					<umlModelFile>JEAF_Test.uml</umlModelFile>
 					<sourceDirectory>${project.basedir}/src-gen/main/java</sourceDirectory>
@@ -61,6 +60,15 @@
 					<cleanSourceGen>true</cleanSourceGen>
 					<cleanResourceGen>true</cleanResourceGen>
 
+					<!-- Add configuration for customer specific templates and checks -->
+					<customRootTemplate>MyCustomRoot::Root</customRootTemplate>
+					<customCheckFiles>
+						<customCheckFile>CustomChecks</customCheckFile>
+						<customCheckFile>openapi::OpenAPIChecks</customCheckFile>
+					</customCheckFiles>
+					
+					
+					<customRootTemplate>MyCustomRoot::Root</customRootTemplate>
 					<!-- Define whitelist of package in UML model generator should take care when generating code. -->
 					<packages>
 						<package>com.anaptecs.jeaf.junit.openapi</package>

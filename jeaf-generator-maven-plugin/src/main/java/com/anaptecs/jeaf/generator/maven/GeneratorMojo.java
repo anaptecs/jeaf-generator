@@ -122,6 +122,12 @@ public class GeneratorMojo extends AbstractMojo {
   private String customRootTemplate;
 
   /**
+   * List of custom check files that will be used to run customer specific checks of the UML model.
+   */
+  @Parameter(required = false, defaultValue = " ")
+  private List<String> customCheckFiles;
+
+  /**
    * Directory where all files that belong to the "src" directory will be written to.
    */
   @Parameter(required = false)
@@ -474,6 +480,10 @@ public class GeneratorMojo extends AbstractMojo {
     return packages.stream().collect(Collectors.joining("; "));
   }
 
+  private String getCustomCheckFiles( ) {
+    return customCheckFiles.stream().collect(Collectors.joining("; "));
+  }
+
   private void showStartupInfo( ) {
     Log lLog = this.getLog();
     lLog.info("--------------------------------------------------------------------------------------");
@@ -627,6 +637,9 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("info.company", fileHeaderCompany);
       System.setProperty("info.copyright", fileHeaderCopyright);
       System.setProperty("info.author", fileHeaderAuthor);
+
+      System.setProperty("list.custom.checkfiles", this.getCustomCheckFiles());
+
       System.setProperty("list.pkgs.whitelist", this.getPackageWhitelist());
       System.setProperty("switch.gen.custom.constraints", generateCustomConstraints.toString());
       System.setProperty("switch.gen.global.parts", generateGlobalParts.toString());
