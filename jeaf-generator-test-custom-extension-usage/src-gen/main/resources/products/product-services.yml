@@ -1,0 +1,406 @@
+openapi: 3.0.0
+
+servers:
+  - url: http://localhost:8080/test
+  - url: https://accounting.jeaf.de
+  - url: https://demo-jeaf.anaptecs.de
+  - url: https://test-jeaf.anaptecs.de
+  - url: https://jeaf.anaptecs.de
+    description: >- 
+      This is our lovely production environment
+      
+      It can stand any load, until it crashes ;-)
+
+info:
+  title: Product Services
+  version: 1.6.18-SNAPSHOT
+  description: >-
+    This component represents the OpenAPI interface of the accounting service.
+    
+    Dear Developers, please be aware that multi line comments can also be used.
+  contact:
+    name: JEAF Development Team
+    url: 'https://www.anaptecs.de/jeaf'
+    email: jeaf@anaptecs.de
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+
+paths:
+  # ProductService
+  /products:
+    get:
+      description: >-
+        Operation returns all available product.
+      operationId: getProducts
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+          content:  
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../base/product-base.yml#/components/schemas/Product'
+                minItems: 0
+          
+    post:
+      operationId: createProduct
+      requestBody:
+        description: >- 
+          TODO Please add comment
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '../base/product-base.yml#/components/schemas/Product'
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+          content:  
+            application/json:
+              schema:
+                type: boolean
+                example: 'true'
+          
+    head:
+      operationId: ping
+      responses:
+        '200':
+          description: Operation does not return any content.
+          
+  /products/{id}:
+    get:
+      operationId: getProduct
+      parameters:
+        - name: id
+          in: path
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: string
+            example: '1234-345'
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+          content:  
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/Product'
+          
+  /products/sortiment/{id}:
+    get:
+      operationId: getSortiment
+      parameters:
+        - name: token
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: string
+        - name: lang
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+            example: 'en'
+        - name: reseller
+          in: cookie
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: id
+          in: path
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: q1
+          in: query
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+          content:  
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/Sortiment'
+          
+  /products/ChannelCode:
+    post:
+      operationId: createChannelCode
+      requestBody:
+        description: >- 
+          TODO Please add comment
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example: 'MOBILE_APP'
+          application/xml:
+            schema:
+              type: string
+              example: 'MOBILE_APP'
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+          content:  
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/ChannelCode'
+          
+  /products/deprecated/operation:
+    get:
+      operationId: deprecatedOperation
+      deprecated: true
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+          content:  
+            application/json:
+              schema:
+                type: string
+          
+  /products/deprecated/context:
+    post:
+      operationId: deprecatedContext
+      parameters:
+        - name: token
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: string
+        - name: lang
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+            example: 'en'
+        - name: reseller
+          in: cookie
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: q1
+          in: query
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+          content:  
+            application/json:
+              schema:
+                type: string
+          
+  /products/deprecated/beanParams:
+    post:
+      operationId: deprecatedBeanParam
+      parameters:
+        - name: token
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+        - name: lang
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+        - name: q2
+          in: query
+          description: >- 
+            TODO Please add comment
+          required: false
+          deprecated: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Operation does not return any content.
+          
+  /products/deprecated/params:
+    post:
+      operationId: deprecatedParams
+      parameters:
+        - name: param1
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: true
+          deprecated: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+          content:  
+            application/json:
+              schema:
+                type: string
+                deprecated: true
+          
+  /products/deprecated/body:
+    post:
+      operationId: deprecatedBody
+      requestBody:
+        description: >- 
+          TODO Please add comment
+        required: false
+        content:
+          application/json:
+            schema:
+              type: string
+              deprecated: true
+          application/xml:
+            schema:
+              type: string
+              deprecated: true
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+          content:  
+            application/json:
+              schema:
+                type: string
+          
+  /products/deprecated/complexBody:
+    post:
+      description: >-
+        Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
+      operationId: deprectedComplexRequestBody
+      requestBody:
+        description: >- 
+          TODO Please add comment
+          Operation has deprected body parameter. Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '../base/product-base.yml#/components/schemas/Product'
+          application/xml:
+            schema:
+              $ref: '../base/product-base.yml#/components/schemas/Product'
+      responses:
+        '200':
+          description: Operation does not return any content.
+          
+  /products/deprecated/complexReturn:
+    get:
+      operationId: deprecatedComplexReturn
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+            Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
+          content:  
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/Product'
+          
+  /products/specific/{id}:
+    patch:
+      operationId: loadSpecificThings
+      parameters:
+        - name: specificHeader
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+        - name: token
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: string
+        - name: lang
+          in: header
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+            example: 'en'
+        - name: reseller
+          in: cookie
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: id
+          in: path
+          description: >- 
+            TODO Please add comment
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: q1
+          in: query
+          description: >- 
+            TODO Please add comment
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Operation does not return any content.
+          
+
+
+components:
+  schemas:
+    # com.anaptecs.jeaf.junit.openapi.service1.Sale
+    Sale:
+      type: object
+      properties:
+        transactionAmount: 
+          type: number
+          format: double
+        sale: 
+          $ref: '../base/product-base.yml#/components/schemas/Channel'
+
+    
