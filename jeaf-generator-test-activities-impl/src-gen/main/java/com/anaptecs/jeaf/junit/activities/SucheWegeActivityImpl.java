@@ -31,7 +31,7 @@ public class SucheWegeActivityImpl implements SucheWegeActivity {
    */
   @Override
   public List<Strecke> execute( WegsucheAnfrage pWegsucheAnfrage ) {
-    // TODO: Implement business logic
+    // TODO: Implement business logic for activity.
     return null;
   }
 }

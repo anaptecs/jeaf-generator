@@ -31,7 +31,7 @@ public class CreateCustomerActivityImpl implements CreateCustomerActivity {
    */
   @Override
   public Customer execute( Customer pNewCustomer, ServiceObjectID pAttendingEmployee ) {
-    // TODO: Implement business logic
+    // TODO: Implement business logic for activity.
     return null;
   }
 }

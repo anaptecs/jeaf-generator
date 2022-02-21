@@ -28,7 +28,7 @@ public class ExecuteSWIFTMoneyTransferImpl implements ExecuteSWIFTMoneyTransfer 
    */
   @Override
   public String execute( Booking pBooking ) {
-    // TODO: Implement business logic
+    // TODO: Implement business logic for activity.
     return null;
   }
 }

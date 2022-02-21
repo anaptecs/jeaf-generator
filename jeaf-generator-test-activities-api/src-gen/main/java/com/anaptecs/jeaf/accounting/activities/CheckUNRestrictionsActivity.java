@@ -18,6 +18,7 @@ public interface CheckUNRestrictionsActivity extends Activity {
    * 
    * 
    * @param account
+   * @return boolean
    */
-  void execute( Account account );
+  boolean execute( Account account );
 }

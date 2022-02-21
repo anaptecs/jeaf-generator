@@ -301,7 +301,7 @@ public class OpenAPIHelper {
   public static String getJAXRSStatusCodeName( String pJMMStatusCode ) {
     String lStatusCode = httpStatusCodeMapping.get(pJMMStatusCode);
     if (lStatusCode == null) {
-      XFun.getTrace().warn("No mapping foudn for status code: " + pJMMStatusCode);
+      XFun.getTrace().debug("No mapping foudn for status code: " + pJMMStatusCode);
     }
     return lStatusCode;
   }

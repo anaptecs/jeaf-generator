@@ -26,9 +26,10 @@ public class PerformBookingActivityImpl implements PerformBookingActivity {
    * 
    * @param pBooking
    * @param pSecurityToken
+   * @return void
    */
   @Override
   public void execute( Booking pBooking, SecurityToken pSecurityToken ) {
-    // TODO: Implement business logic
+    // TODO: Implement business logic for activity.
   }
 }

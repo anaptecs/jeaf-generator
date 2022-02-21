@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.uml2.uml.Activity;
-import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Component;
@@ -825,11 +824,9 @@ public class GeneratorCommons {
         lFQN = pElement.toString();
       }
       // Check for stereotypes
-      if (pElement instanceof Behavior) {
-        XFun.getTrace().debug("Not handling behaviour " + lFQN);
-      }
-      else if (pElement instanceof Class || pElement instanceof Interface || pElement instanceof Component
-          || pElement instanceof Enumeration || pElement instanceof Activity || pElement instanceof Dependency) {
+      if (pElement instanceof Class || pElement instanceof Interface || pElement instanceof Component
+          || pElement instanceof Enumeration || pElement instanceof Activity || pElement instanceof Dependency
+          || pElement instanceof Operation) {
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_ACTIVITY);
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_APPLICATION_EXCEPTION);
         // lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_COMPONENT);
@@ -849,10 +846,9 @@ public class GeneratorCommons {
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_OBJECT_MAPPING);
 
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_SERVICE_OBJECT);
-        // lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, "ServiceObject");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "ServiceObject");
-        // lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, "DomainObject");
-        // lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, "OpenAPIType");
+
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "RESTOperation");
 
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Size");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "DecimalMin");
@@ -883,7 +879,7 @@ public class GeneratorCommons {
         }
       }
       else {
-        XFun.getTrace().debug("Ignoring " + lFQN + " due to not known stereotype.");
+        XFun.getTrace().debug("Ignoring " + lFQN + " due to not supported type.");
       }
     }
     // Nothing to do as element is not included in white list.

@@ -31,7 +31,7 @@ public class WegsucheDurchfuehrenActivityImpl implements WegsucheDurchfuehrenAct
    */
   @Override
   public List<InfoPLUSConnection> execute( WegsucheAnfrage in ) {
-    // TODO: Implement business logic
+    // TODO: Implement business logic for activity.
     return null;
   }
 }

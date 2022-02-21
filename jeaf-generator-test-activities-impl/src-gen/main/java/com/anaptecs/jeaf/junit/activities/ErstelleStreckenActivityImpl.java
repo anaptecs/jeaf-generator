@@ -32,7 +32,7 @@ public class ErstelleStreckenActivityImpl implements ErstelleStreckenActivity {
    */
   @Override
   public List<Strecke> execute( List<InfoPLUSConnection> pConnections, Integer pValue ) {
-    // TODO: Implement business logic
+    // TODO: Implement business logic for activity.
     return null;
   }
 }

@@ -27,6 +27,6 @@ public class DoNothingActivityImpl implements DoNothingActivity {
    */
   @Override
   public void execute( ) {
-    // TODO: Implement business logic
+    // TODO: Implement business logic for activity.
   }
 }

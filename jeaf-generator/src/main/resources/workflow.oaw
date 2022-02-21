@@ -19,6 +19,7 @@
         <checkFile value="java::AssociationChecks"/>
         <checkFile value="java::ObjectMapperChecks"/>
         <checkFile value="jeaf::ValidationChecks"/>
+        <checkFile value="jeaf::OpenAPIChecks"/>
         
         <expression value="${output.slot}.eAllContents.union({${output.slot}})"/>
     </component>

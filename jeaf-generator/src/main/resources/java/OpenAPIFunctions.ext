@@ -149,9 +149,10 @@ boolean isWriteOnly(uml::Property property):
 String getOperationID(uml::Operation operation, uml::Interface service):
    operation.name;
    
-String getJAXRSStatusCodeName(String pJMMStatusCode):
+cached String getJAXRSStatusCodeName(String pJMMStatusCode):
   JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getJAXRSStatusCodeName(java.lang.String);  
   
-
+boolean isJAXRSStatusCode(String pJMMStatusCode):
+   getJAXRSStatusCodeName(pJMMStatusCode) != null;
   
 

@@ -20,6 +20,7 @@ public interface PerformBookingActivity extends Activity {
    * 
    * @param pBooking
    * @param pSecurityToken
+   * @return void
    */
   void execute( Booking pBooking, SecurityToken pSecurityToken );
 }

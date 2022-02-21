@@ -60,8 +60,19 @@
 		«IF hasReturnParameter()»«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnParameter()»«ENDIF»
 		@Override
 		public «IF hasReturnParameter()»«this.getReturnParameter().getTypeName()»«ELSE»void«ENDIF» execute( «FOREACH this.getInputParameters().typeSelect(Parameter) AS param SEPARATOR ', '»«EXPAND java::Helper::GenerateDeprecationAnnotation FOR param» «param.getTypeName()» «param.name»«ENDFOREACH») {
-		  // TODO: Implement business logic
-		  «IF hasReturnParameter() && this.getReturnParameter().getTypeName() != "void"»return null;«ENDIF»
+		  // TODO: Implement business logic for activity.
+		  «IF this.getReturnParameter().getTypeName() != "void"»
+			  «IF this.getReturnParameter().getTypeName() != "boolean"»
+				  «IF this.getReturnParameter().type.isPrimitiveType()»
+				  return 0;
+				  «ELSE»
+				  return null; 
+				  «ENDIF»
+			  «ELSE»
+				  return false;
+			«ENDIF»
+			«ENDIF»
+		  
 		}
     }
     «ENDFILE»

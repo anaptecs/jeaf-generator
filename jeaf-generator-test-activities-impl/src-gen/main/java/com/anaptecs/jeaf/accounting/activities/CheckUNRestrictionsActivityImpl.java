@@ -24,9 +24,11 @@ public class CheckUNRestrictionsActivityImpl implements CheckUNRestrictionsActiv
    * 
    * 
    * @param account
+   * @return boolean
    */
   @Override
-  public void execute( Account account ) {
-    // TODO: Implement business logic
+  public boolean execute( Account account ) {
+    // TODO: Implement business logic for activity.
+    return false;
   }
 }

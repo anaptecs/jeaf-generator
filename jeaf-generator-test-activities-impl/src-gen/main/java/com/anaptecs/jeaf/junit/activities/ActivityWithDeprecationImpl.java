@@ -29,7 +29,7 @@ public class ActivityWithDeprecationImpl implements ActivityWithDeprecation {
   @Deprecated
   @Override
   public String execute( int pParam1, @Deprecated int pParam2 ) {
-    // TODO: Implement business logic
+    // TODO: Implement business logic for activity.
     return null;
   }
 }
