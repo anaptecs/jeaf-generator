@@ -29,6 +29,8 @@ public class OpenAPIHelper {
 
   public static final Map<String, OpenAPIType> complexTypes = new HashMap<String, OpenAPIType>();
 
+  public static final Map<String, String> httpStatusCodeMapping = new HashMap<String, String>();
+
   public static final Map<String, String> specDependencies = new HashMap<String, String>();
 
   static {
@@ -131,7 +133,77 @@ public class OpenAPIHelper {
     contentTypeMapping.put("APPLICATION_XML", "application/xml");
     contentTypeMapping.put("APPLICATION_JSON", "application/json");
     contentTypeMapping.put("APPLICATION_OCTET_STREAM", "application/octet-stream");
+    contentTypeMapping.put("APPLICATION_PROBLEM_JSON", "application/problem+json");
     contentTypeMapping.put("TEXT_PLAIN", "text/plain");
+
+    // HTTP Status Code Mapping
+
+    httpStatusCodeMapping.put("100_CONTINUE", null);
+    httpStatusCodeMapping.put("101_SWITCHING_PROTOCOLS", null);
+    httpStatusCodeMapping.put("102_PROCESSING", null);
+    httpStatusCodeMapping.put("103_EARLY_HINTS", null);
+
+    httpStatusCodeMapping.put("200_OK", "OK");
+    httpStatusCodeMapping.put("201_CREATED", "CREATED");
+    httpStatusCodeMapping.put("202_ACCEPTED", "ACCEPTED");
+    httpStatusCodeMapping.put("203_NON_AUTHORITATIVE_INFORMATION", null);
+    httpStatusCodeMapping.put("204_NO_CONTENT", "NO_CONTENT");
+    httpStatusCodeMapping.put("205_RESET_CONTENT", "RESET_CONTENT");
+    httpStatusCodeMapping.put("206_PARTIAL_CONTENT", "PARTIAL_CONTENT");
+    httpStatusCodeMapping.put("208_ALREADY_REPORTED", null);
+    httpStatusCodeMapping.put("226_IM_USED", null);
+
+    httpStatusCodeMapping.put("300_MULTIPLE_CHOICES", null);
+    httpStatusCodeMapping.put("301_MOVED_PERMANENTLY", "MOVED_PERMANENTLY");
+    httpStatusCodeMapping.put("302_FOUND", "FOUND");
+    httpStatusCodeMapping.put("303_SEE_OTHER", "SEE_OTHER");
+    httpStatusCodeMapping.put("304_NOT_MODIFIED", "NOT_MODIFIED");
+    httpStatusCodeMapping.put("305_USE_PROXY", "USE_PROXY");
+    httpStatusCodeMapping.put("306_RESERVED", null);
+    httpStatusCodeMapping.put("307_TEMPORARY_REDIRECT", "TEMPORARY_REDIRECT");
+    httpStatusCodeMapping.put("308_PERMANENT_REDIRECT", null);
+
+    httpStatusCodeMapping.put("400_BAD_REQUEST", "BAD_REQUEST");
+    httpStatusCodeMapping.put("401_UNAUTHORIZED", "UNAUTHORIZED");
+    httpStatusCodeMapping.put("402_PAYMENT_REQUIRED", "PAYMENT_REQUIRED");
+    httpStatusCodeMapping.put("403_FORBIDDEN", "FORBIDDEN");
+    httpStatusCodeMapping.put("404_NOT_FOUND", "NOT_FOUND");
+    httpStatusCodeMapping.put("405_METHOD_NOT_ALLOWED", "METHOD_NOT_ALLOWED");
+    httpStatusCodeMapping.put("406_NOT_ACCEPTABLE", "NOT_ACCEPTABLE");
+    httpStatusCodeMapping.put("407_PROXY_AUTHENTICATION_REQUIRED", "PROXY_AUTHENTICATION_REQUIRED");
+    httpStatusCodeMapping.put("408_REQUEST_TIMEOUT", "REQUEST_TIMEOUT");
+    httpStatusCodeMapping.put("409_CONFLICT", "CONFLICT");
+    httpStatusCodeMapping.put("410_GONE", "GONE");
+    httpStatusCodeMapping.put("411_LENGTH_REQUIRED", "LENGTH_REQUIRED");
+    httpStatusCodeMapping.put("412_PRECONDITION_FAILED", "PRECONDITION_FAILED");
+    httpStatusCodeMapping.put("413_PAYLOAD_TOO_LARGE", "REQUEST_ENTITY_TOO_LARGE");
+    httpStatusCodeMapping.put("414_URI_TOO_LONG", "REQUEST_URI_TOO_LONG");
+    httpStatusCodeMapping.put("415_UNSUPPORTED_MEDIA_TYPE", "UNSUPPORTED_MEDIA_TYPE");
+    httpStatusCodeMapping.put("416_RANGE_NOT_SATISFIABLE", "REQUESTED_RANGE_NOT_SATISFIABLE");
+    httpStatusCodeMapping.put("417_EXPECTATION_FAILED", "EXPECTATION_FAILED");
+    httpStatusCodeMapping.put("418_TEAPOT", null);
+    httpStatusCodeMapping.put("421_MISDIRECTED_REQUEST", null);
+    httpStatusCodeMapping.put("422_UNPROCESSABLE_ENTITY", null);
+    httpStatusCodeMapping.put("423_LOCKED", null);
+    httpStatusCodeMapping.put("424_FAILED_DEPENDENCY", null);
+    httpStatusCodeMapping.put("425_TOO_EARLY", null);
+    httpStatusCodeMapping.put("426_UPGRADE_REQUIRED", null);
+    httpStatusCodeMapping.put("428_PRECONDITION_REQUIRED", "PRECONDITION_REQUIRED");
+    httpStatusCodeMapping.put("429_TOO_MANY_REQUESTS", "TOO_MANY_REQUESTS");
+    httpStatusCodeMapping.put("431_REQUEST_HEADER_FIELDS_TOO_LARGE", "REQUEST_HEADER_FIELDS_TOO_LARGE");
+    httpStatusCodeMapping.put("451_UNAVAILABLE_FOR_LEGAL_REASONS", null);
+
+    httpStatusCodeMapping.put("500_INTERNAL_SERVER_ERROR", "INTERNAL_SERVER_ERROR");
+    httpStatusCodeMapping.put("501_NOT_IMPLEMENTED", "NOT_IMPLEMENTED");
+    httpStatusCodeMapping.put("502_BAD_GATEWAY", "BAD_GATEWAY");
+    httpStatusCodeMapping.put("503_SERVICE_UNAVAILABLE", "SERVICE_UNAVAILABLE");
+    httpStatusCodeMapping.put("504_GATEWAY_TIMEOUT", "GATEWAY_TIMEOUT");
+    httpStatusCodeMapping.put("505_HTTP_VERSION_NOT_SUPPORTED", "HTTP_VERSION_NOT_SUPPORTED");
+    httpStatusCodeMapping.put("506_VARIANT_ALSO_NEGOTIATES", null);
+    httpStatusCodeMapping.put("507_INSUFFICIENT_STORAGE", null);
+    httpStatusCodeMapping.put("508_LOOP_DETECTED", null);
+    httpStatusCodeMapping.put("510_NOT_EXTENDED", null);
+    httpStatusCodeMapping.put("511_NETWORK_AUTHENTICATION_REQUIRED", "NETWORK_AUTHENTICATION_REQUIRED");
   }
 
   public static String getOpenAPIType( org.eclipse.uml2.uml.Type pClass, Component pSpec ) {
@@ -224,5 +296,13 @@ public class OpenAPIHelper {
       lElements.addAll(lParentAttributes);
     }
     return lElements;
+  }
+
+  public static String getJAXRSStatusCodeName( String pJMMStatusCode ) {
+    String lStatusCode = httpStatusCodeMapping.get(pJMMStatusCode);
+    if (lStatusCode == null) {
+      XFun.getTrace().warn("No mapping foudn for status code: " + pJMMStatusCode);
+    }
+    return lStatusCode;
   }
 }
