@@ -12,4 +12,6 @@ context RESTOperation if runChecks() ERROR "Error: REST-Operation uses http stat
 context Model if runChecks() WARNING "Warning: OpenAPI Specification should define a global default error response": this.hasExactlyOneGlobalDefaultErrorResponse() == true;
 context Model if runChecks() ERROR "Error: OpenAPI Specification more than one global default error response": this.hasValidOneGlobalDefaultErrorResponse() == false;
 
-context ErrorResponse if runChecks() ERROR "Error: <<ErrorResponse>> " + this.name + " needs to define exactly one reference to <<OpenAPIType>> that is used as response type.": this.getErrorResponseTypes().size == 1;  
+context ErrorResponse if runChecks() ERROR "Error: <<ErrorResponse>> " + this.name + " needs to define exactly one reference to <<OpenAPIType>> that is used as response type.": this.getErrorResponseTypes().size == 1;
+
+context OpenAPI3Specification if runChecks() ERROR "Error: <<OpenAPI3Specification>> " + this.name + " has " + this.getCustomErrorResponses().size + " error responses.": this.getCustomErrorResponses().size < 2;  
