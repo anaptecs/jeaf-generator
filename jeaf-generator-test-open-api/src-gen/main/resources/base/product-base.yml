@@ -28,6 +28,17 @@ paths:
           description: Nothing is the result of nop ;-)
 
 components:
+  responses:
+    # com.anaptecs.jeaf.junit.openapi.base.ErrorResponse
+    ErrorResponse:
+      description: >-
+        Generic error response type that is used in all cases.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+
+
   schemas:
     # com.anaptecs.jeaf.junit.openapi.base.Duration
     Duration:
@@ -771,6 +782,33 @@ components:
         - aCharacterArray
         - aFloatArray
         - aDoubleArray
+    # com.anaptecs.jeaf.junit.openapi.base.Problem
+    Problem:
+      type: object
+      properties:
+        title: 
+          type: string
+          nullable: false
+          readOnly: true
+        status: 
+          type: integer
+          format: int32
+          nullable: false
+          readOnly: true
+        type: 
+          type: string
+          nullable: false
+          readOnly: true
+        detail: 
+          type: string
+          readOnly: true
+        instance: 
+          type: string
+          readOnly: true
+      required:
+        - title
+        - status
+        - type
 
     
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit

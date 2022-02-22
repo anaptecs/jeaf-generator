@@ -55,9 +55,16 @@ paths:
 «ENDIF»
 «IF this.hasOpenAPITypes() || this.hasOpenAPIEnums()-»
 components:
+  «IF this.getErrorResponses().size > 0-»
+  responses:
+    «EXPAND GenerateErrorResponse(this) FOREACH this.getErrorResponses()»
+  «ENDIF -»
+
+  «IF this.getOpenAPITypes().size > 0 || this.getOpenAPIEnums().size > 0 -»
   schemas:
     «EXPAND GenerateOpenAPIType(this) FOREACH this.getOpenAPITypes()»
     «EXPAND GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums()»
+  «ENDIF -»
 «ENDIF-»
 «ENDFILE-»
 «ENDDEFINE»
@@ -66,6 +73,7 @@ components:
 	«REM»Register local OpenAPI types as well as referenced ones.«ENDREM»
 	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPITypes()»
 	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPIEnums()»
+	«EXPAND RegisterLocalType(this) FOREACH this.getErrorResponses()»
 	
 	«FOREACH this.clientDependency.typeSelect(OpenAPISpecReference) AS dependency»
 	  «FOREACH dependency.supplier.typeSelect(OpenAPI3Specification) AS dependentSpec»
@@ -79,6 +87,11 @@ components:
 	«EXPAND RegisterLocalTypes FOREACH this.getDependentSpecs()»
 
 «ENDDEFINE»
+
+«DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR ErrorResponse»
+«this.registerLocalType(spec)»
+«ENDDEFINE»
+
 «DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPIType»
 «this.registerLocalType(spec)»
 «ENDDEFINE»
@@ -276,11 +289,26 @@ components:
           «ELSE-»
           description: Operation does not return any content.
           «ENDIF-»
-          
+        «EXPAND java::OpenAPIResponse::ErrorResponses(this) FOR operation-»
     «ENDFOREACH-»
     «ENDFOREACH-»
   «ENDFOREACH-»
   «ENDFOREACH-»
+«ENDDEFINE»
+
+«DEFINE GenerateErrorResponse(OpenAPI3Specification spec) FOR ErrorResponse -»
+    # «this.fqn()»
+    «this.name»:
+      «IF this.hasComment()-»
+      description: >-
+        «this.getCommentForOpenAPIDescription("        ")»
+      «ELSE -»
+      description: TODO Please add comment to error response type
+      «ENDIF-»
+      content:
+        «this.contentType.name.toOpenAPIContentType()»:
+          schema:
+            $ref: «this.getErrorResponseType().getOpenAPIType(spec)»
 «ENDDEFINE»
 
 «DEFINE GenerateOpenAPIType(OpenAPI3Specification spec) FOR OpenAPIType -»

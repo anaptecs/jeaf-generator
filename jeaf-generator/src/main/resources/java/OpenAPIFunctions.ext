@@ -7,6 +7,9 @@ boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 List[JMM::OpenAPIType] getOpenAPITypes(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIType);
 	
+List[JMM::ErrorResponse] getErrorResponses(JMM::OpenAPI3Specification spec):
+	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::ErrorResponse);
+
 List[JMM::OpenAPI3Specification] getDependentSpecs(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(JMM::OpenAPI3Specification);
 	
@@ -40,6 +43,10 @@ String getCommentForOpenAPIDescription(uml::Element element, String indentation)
 String getOpenAPIType(uml::Type type, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);
     
+String getResponseType(uml::Type type, JMM::OpenAPI3Specification spec):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getResponseType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);
+    
+
 String getOpenAPIFormat(uml::Type type):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIFormat(org.eclipse.uml2.uml.Type);
     
@@ -154,5 +161,25 @@ cached String getJAXRSStatusCodeName(String pJMMStatusCode):
   
 boolean isJAXRSStatusCode(String pJMMStatusCode):
    getJAXRSStatusCodeName(pJMMStatusCode) != null;
-  
+   
 
+cached List[JMM::ErrorResponse] getGlobalDefaultErrorResponses(uml::Model model):
+   model.allOwnedElements().typeSelect(JMM::ErrorResponse).select(e|e.globalDefaultErrorResponse ==true);
+  
+cached JMM::ErrorResponse getGlobalDefaultErrorResponse(uml::Model model):
+   getGlobalDefaultErrorResponses(model).first();
+
+boolean hasExactlyOneGlobalDefaultErrorResponse(uml::Model model):
+   getGlobalDefaultErrorResponses(model).size==1;
+   
+boolean hasValidOneGlobalDefaultErrorResponse(uml::Model model):
+   getGlobalDefaultErrorResponses(model).size<=1;
+   
+cached List[JMM::OpenAPIType] getErrorResponseTypes(JMM::ErrorResponse errorResponse):
+   errorResponse.clientDependency.supplier.typeSelect(JMM::OpenAPIType);
+   
+JMM::OpenAPIType getErrorResponseType(JMM::ErrorResponse errorResponse):
+   getErrorResponseTypes(errorResponse).first();
+   
+cached String getErrorCode(JMM::HTTPStatusCode status):
+   status.toString().subString(0, 3);

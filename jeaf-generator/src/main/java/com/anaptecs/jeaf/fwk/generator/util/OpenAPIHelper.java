@@ -233,7 +233,36 @@ public class OpenAPIHelper {
     else {
       lTypeName = "unknown type: " + lFQN;
     }
+    return lTypeName;
+  }
 
+  public static String getResponseType( org.eclipse.uml2.uml.Type pClass, Component pSpec ) {
+    String lFQN = Naming.getFullyQualifiedName(pClass);
+    String lTypeName;
+    if (basicTypes.containsKey(lFQN) == true) {
+      lTypeName = basicTypes.get(lFQN);
+    }
+    else if (complexTypes.containsKey(lFQN) == true) {
+      OpenAPIType lOpenAPIType = complexTypes.get(lFQN);
+      // Local reference needed.
+      if (lOpenAPIType.spec == pSpec) {
+        lTypeName = "'#/components/responses/" + pClass.getName() + "'";
+      }
+      else {
+        String lKey = createSpecDependencyKey(pSpec, lOpenAPIType.spec);
+        String lLocation = specDependencies.get(lKey);
+        if (lLocation != null) {
+          lTypeName = "'" + lLocation + "#/components/responses/" + pClass.getName() + "'";
+        }
+        else {
+          XFun.getTrace().error("Dependency " + lKey + " not found.");
+          lTypeName = "unknown type: " + lFQN;
+        }
+      }
+    }
+    else {
+      lTypeName = "unknown type: " + lFQN;
+    }
     return lTypeName;
   }
 

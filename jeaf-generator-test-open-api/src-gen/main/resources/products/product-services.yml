@@ -44,7 +44,18 @@ paths:
                 items:
                   $ref: '../base/product-base.yml#/components/schemas/Product'
                 minItems: 0
-          
+        
+        
+        '400':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '403':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '500':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        
     post:
       operationId: createProduct
       requestBody:
@@ -64,13 +75,35 @@ paths:
               schema:
                 type: boolean
                 example: 'true'
-          
+        
+        
+        '400':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '403':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '500':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        
     head:
       operationId: ping
       responses:
         '200':
           description: Operation does not return any content.
-          
+        
+        
+        '400':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '403':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '500':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        
   /products/{id}:
     get:
       operationId: getProduct
@@ -91,7 +124,18 @@ paths:
             application/json:
               schema:
                 $ref: '../base/product-base.yml#/components/schemas/Product'
-          
+        
+        
+        '400':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '403':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '500':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        
   /products/sortiment/{id}:
     get:
       operationId: getSortiment
@@ -142,7 +186,18 @@ paths:
             application/json:
               schema:
                 $ref: '../base/product-base.yml#/components/schemas/Sortiment'
-          
+        
+        
+        '400':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '403':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '500':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        
   /products/ChannelCode:
     post:
       operationId: createChannelCode
@@ -167,7 +222,18 @@ paths:
             application/json:
               schema:
                 $ref: '../base/product-base.yml#/components/schemas/ChannelCode'
-          
+        
+        
+        '400':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '403':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '500':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        
   /products/deprecated/operation:
     get:
       operationId: deprecatedOperation
@@ -180,7 +246,18 @@ paths:
             application/json:
               schema:
                 type: string
-          
+        
+        
+        '400':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '403':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '500':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        
   /products/deprecated/context:
     post:
       operationId: deprecatedContext
@@ -223,7 +300,18 @@ paths:
             application/json:
               schema:
                 type: string
-          
+        
+        
+        '400':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '403':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '500':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        
   /products/deprecated/beanParams:
     post:
       operationId: deprecatedBeanParam
@@ -253,7 +341,18 @@ paths:
       responses:
         '200':
           description: Operation does not return any content.
-          
+        
+        
+        '400':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '403':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '500':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        
   /products/deprecated/params:
     post:
       operationId: deprecatedParams
@@ -276,7 +375,18 @@ paths:
               schema:
                 type: string
                 deprecated: true
-          
+        
+        
+        '400':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '403':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '500':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        
   /products/deprecated/body:
     post:
       operationId: deprecatedBody
@@ -301,7 +411,18 @@ paths:
             application/json:
               schema:
                 type: string
-          
+        
+        
+        '400':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '403':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '500':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        
   /products/deprecated/complexBody:
     post:
       description: >-
@@ -322,7 +443,18 @@ paths:
       responses:
         '200':
           description: Operation does not return any content.
-          
+        
+        
+        '400':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '403':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '500':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        
   /products/deprecated/complexReturn:
     get:
       operationId: deprecatedComplexReturn
@@ -335,7 +467,18 @@ paths:
             application/json:
               schema:
                 $ref: '../base/product-base.yml#/components/schemas/Product'
-          
+        
+        
+        '400':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '403':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '500':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        
   /products/specific/{id}:
     patch:
       operationId: loadSpecificThings
@@ -388,10 +531,22 @@ paths:
       responses:
         '200':
           description: Operation does not return any content.
-          
+        
+        
+        '400':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '403':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        '500':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
+        
+        
 
 
 components:
+
   schemas:
     # com.anaptecs.jeaf.junit.openapi.service1.Sale
     Sale:

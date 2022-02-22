@@ -1,0 +1,14 @@
+«IMPORT uml»
+«IMPORT JMM»
+«EXTENSION java::OpenAPIFunctions»
+
+«DEFINE ErrorResponses(OpenAPI3Specification spec) FOR RESTOperation -»
+    «IF hasExactlyOneGlobalDefaultErrorResponse(spec.getModel()) == true -»
+        «LET getGlobalDefaultErrorResponse(spec.getModel()) AS defaultErrorResponse»
+        «FOREACH defaultErrorResponse.statusCodes AS errorCode»
+        '«errorCode.getErrorCode()»':
+          $ref: «defaultErrorResponse.getResponseType(spec)»
+        «ENDFOREACH»
+        «ENDLET»
+    «ENDIF -»
+«ENDDEFINE»

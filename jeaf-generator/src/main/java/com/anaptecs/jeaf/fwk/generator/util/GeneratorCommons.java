@@ -847,6 +847,8 @@ public class GeneratorCommons {
 
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_SERVICE_OBJECT);
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "ServiceObject");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPIType");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "ErrorResponse");
 
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "RESTOperation");
 

@@ -6,6 +6,10 @@ extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
 
 
-// context Model if this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).size > 0 ERROR "Error: Custom check failed." : this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision >= 99;
 context RESTOperation if runChecks() ERROR "Error: <<RESTOperation>> " + this.getOwningClass().fqn() + "." + name + "(...) must define at least one HTTP-Method. Please correct your UML model.": httpMethods.size > 0;
-context RESTOperation if runChecks() ERROR "Error: REST-Operation uses http status code " + this.statusCode.name + " which is not caomptible with JAX-RS": isJAXRSStatusCode(this.statusCode.name) == true;
+context RESTOperation if runChecks() ERROR "Error: REST-Operation uses http status code " + this.statusCode.name + " which is not compatible with JAX-RS": isJAXRSStatusCode(this.statusCode.name) == true;
+
+context Model if runChecks() WARNING "Warning: OpenAPI Specification should define a global default error response": this.hasExactlyOneGlobalDefaultErrorResponse() == true;
+context Model if runChecks() ERROR "Error: OpenAPI Specification more than one global default error response": this.hasValidOneGlobalDefaultErrorResponse() == false;
+
+context ErrorResponse if runChecks() ERROR "Error: <<ErrorResponse>> " + this.name + " needs to define exactly one reference to <<OpenAPIType>> that is used as response type.": this.getErrorResponseTypes().size == 1;  
