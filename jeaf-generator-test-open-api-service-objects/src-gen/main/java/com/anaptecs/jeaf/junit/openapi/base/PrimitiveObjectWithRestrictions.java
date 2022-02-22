@@ -260,7 +260,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
-  @Size(min = 16, max = 32)
+  @Size(min = 8, max = 32)
   private String aString;
 
   /**
@@ -320,7 +320,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
-    private boolean aBoolean;
+    private boolean aBoolean = true;
 
     /**
      * 
@@ -416,7 +416,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
-    private double aDouble;
+    private double aDouble = 42.0;
 
     /**
      * 
@@ -432,8 +432,8 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
-    @Size(min = 16, max = 32)
-    private String aString;
+    @Size(min = 8, max = 32)
+    private String aString = "Hello OpenAPI";
 
     /**
      * 
