@@ -55,6 +55,8 @@ paths:
         '500':
           $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
+        'default':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
     post:
       operationId: createProduct
@@ -86,6 +88,8 @@ paths:
         '500':
           $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
+        'default':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
     head:
       operationId: ping
@@ -103,6 +107,8 @@ paths:
         '500':
           $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
+        'default':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
   /products/{id}:
     get:
@@ -135,6 +141,8 @@ paths:
         '500':
           $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
+        'default':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
   /products/sortiment/{id}:
     get:
@@ -197,6 +205,8 @@ paths:
         '500':
           $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
+        'default':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
   /products/ChannelCode:
     post:
@@ -233,6 +243,8 @@ paths:
         '500':
           $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
+        'default':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
   /products/deprecated/operation:
     get:
@@ -257,6 +269,8 @@ paths:
         '500':
           $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
+        'default':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
   /products/deprecated/context:
     post:
@@ -311,6 +325,8 @@ paths:
         '500':
           $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
+        'default':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
   /products/deprecated/beanParams:
     post:
@@ -352,6 +368,8 @@ paths:
         '500':
           $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
+        'default':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
   /products/deprecated/params:
     post:
@@ -386,6 +404,8 @@ paths:
         '500':
           $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
+        'default':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
   /products/deprecated/body:
     post:
@@ -422,6 +442,8 @@ paths:
         '500':
           $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
+        'default':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
   /products/deprecated/complexBody:
     post:
@@ -454,6 +476,8 @@ paths:
         '500':
           $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
+        'default':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
   /products/deprecated/complexReturn:
     get:
@@ -478,6 +502,8 @@ paths:
         '500':
           $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
+        'default':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
   /products/specific/{id}:
     patch:
@@ -542,6 +568,8 @@ paths:
         '500':
           $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
+        'default':
+          $ref: '../base/product-base.yml#/components/responses/ErrorResponse'
         
 
 

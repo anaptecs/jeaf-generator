@@ -9,6 +9,10 @@
         '«errorCode.getErrorCode()»':
           $ref: «defaultErrorResponse.getResponseType(spec)»
         «ENDFOREACH»
+        «IF defaultErrorResponse.unexpectedErrorResponse == true-»
+        'default':
+          $ref: «defaultErrorResponse.getResponseType(spec)»
+        «ENDIF -»
         «ENDLET»
     «ENDIF -»
 «ENDDEFINE»
