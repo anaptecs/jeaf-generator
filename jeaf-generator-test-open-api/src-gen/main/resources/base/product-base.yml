@@ -571,6 +571,7 @@ components:
       properties:
         aBoolean: 
           type: boolean
+          default: true
         bBoolean: 
           type: boolean
         cBoolean: 
@@ -634,6 +635,7 @@ components:
         aDouble: 
           type: number
           format: double
+          default: 42.0
         bDouble: 
           type: number
           format: double
@@ -646,6 +648,7 @@ components:
           type: string
           minLength: 8
           maxLength: 32
+          default: "Hello OpenAPI"
         bString: 
           type: string
           minLength: 1

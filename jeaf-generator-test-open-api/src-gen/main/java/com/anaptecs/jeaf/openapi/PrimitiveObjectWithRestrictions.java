@@ -25,7 +25,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 public class PrimitiveObjectWithRestrictions {
   @JsonProperty("aBoolean")
-  private Boolean aBoolean = null;
+  private Boolean aBoolean = true;
 
   @JsonProperty("bBoolean")
   private Boolean bBoolean = null;
@@ -76,7 +76,7 @@ public class PrimitiveObjectWithRestrictions {
   private Float bFloat = null;
 
   @JsonProperty("aDouble")
-  private Double aDouble = null;
+  private Double aDouble = 42.0d;
 
   @JsonProperty("bDouble")
   private Double bDouble = null;
@@ -85,7 +85,7 @@ public class PrimitiveObjectWithRestrictions {
   private Double aBigDecimal = null;
 
   @JsonProperty("aString")
-  private String aString = null;
+  private String aString = "Hello OpenAPI";
 
   @JsonProperty("bString")
   private String bString = null;

@@ -379,6 +379,9 @@ components:
           «IF attribute.isWriteOnly() -»
           writeOnly: «attribute.isWriteOnly()»
           «ENDIF-»  
+          «IF attribute.defaultValue != null -»
+          default: «attribute.defaultValue.stringValue()»
+          «ENDIF-»
             «IF attribute.hasExample()-»
               «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
           example: '«((OpenAPIExample) attribute).exampleValue»'
