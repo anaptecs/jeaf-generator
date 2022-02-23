@@ -293,7 +293,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
 
   /**
    * Class implements builder to create a new instance of class PrimitiveArraysObjectWithRestrictions. As the class has
-   * readonly attributes or associations instances can not be created directly. Instead this builder class has to be
+   * read only attributes or associations instances can not be created directly. Instead this builder class has to be
    * used.
    */
   public static class Builder {

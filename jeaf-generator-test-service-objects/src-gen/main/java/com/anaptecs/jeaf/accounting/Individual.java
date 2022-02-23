@@ -49,7 +49,7 @@ public class Individual extends Customer {
   }
 
   /**
-   * Class implements builder to create a new instance of class Individual. As the class has readonly attributes or
+   * Class implements builder to create a new instance of class Individual. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends Customer.Builder {

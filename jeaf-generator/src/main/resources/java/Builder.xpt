@@ -8,7 +8,7 @@
 
 «DEFINE GenerateBuilder(String idImpl) FOR uml::Class»
 /**
- * Class implements builder to create a new instance of class «this.name». As the class has readonly attributes or associations instances can not be created directly. Instead this builder class has to be used.
+ * Class implements builder to create a new instance of class «this.name». As the class has read only attributes or associations instances can not be created directly. Instead this builder class has to be used.
  */
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF superClass.isEmpty == false»extends «superClass.get(0).fqn()».Builder«ENDIF» {
@@ -130,7 +130,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF superCla
 
 «DEFINE GenerateBuilderBase(String idImpl) FOR uml::Class»
 /**
- * Class implements builder to create a new instance of class «this.name». As the class has readonly attributes or associations instances can not be created directly. Instead this builder class has to be used.
+ * Class implements builder to create a new instance of class «this.name». As the class has read only attributes or associations instances can not be created directly. Instead this builder class has to be used.
  */
 public static abstract class BuilderBase «IF superClass.isEmpty == false && superClass.get(0).hasReadOnlyProperties()== true»extends «superClass.get(0).fqn()».Builder«ENDIF» {
 	«REM»Generate instance variables for each property«ENDREM»

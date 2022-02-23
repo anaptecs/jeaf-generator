@@ -127,7 +127,7 @@
 «ENDDEFINE»
 
 «DEFINE Root FOR JEAFEnumeration»
-    «IF (generateServiceObjects() == true || generateDomainObjects() == true) && this.isInGeneratorWhitelist() == true»
+    «IF (generateServiceObjects() == true || generateDomainObjects() == true || generatePOJOs() == true) && this.isInGeneratorWhitelist() == true»
 		«info("Processing <<JEAFEnumeration>> " + this.name + " (" + (this.fqn()) + ")")»
 		«EXPAND jeaf::Enumeration::JEAFEnumTemplate»
 	«ENDIF»

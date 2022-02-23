@@ -109,7 +109,7 @@ public class TestServiceObject implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class TestServiceObject. As the class has readonly attributes
+   * Class implements builder to create a new instance of class TestServiceObject. As the class has read only attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {

@@ -79,7 +79,7 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
   }
 
   /**
-   * Class implements builder to create a new instance of class ClassA. As the class has readonly attributes or
+   * Class implements builder to create a new instance of class ClassA. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {

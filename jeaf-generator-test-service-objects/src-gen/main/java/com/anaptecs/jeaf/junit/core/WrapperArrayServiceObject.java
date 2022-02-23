@@ -52,7 +52,7 @@ public class WrapperArrayServiceObject implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class WrapperArrayServiceObject. As the class has readonly
+   * Class implements builder to create a new instance of class WrapperArrayServiceObject. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
