@@ -11,8 +11,6 @@
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE GenerateOpenAPI FOR OpenAPI3Specification»
-    «EXPAND RegisterLocalTypes»
-
 	«FILE resourceName GenRes-»
 openapi: «openAPIVersion»
 «IF this.clientDependency.supplier.typeSelect(OpenAPIServer).size > 0»
@@ -79,8 +77,12 @@ components:
 	  «FOREACH dependency.supplier.typeSelect(OpenAPI3Specification) AS dependentSpec»
 	    «IF dependency.location.length > 0»
 	    «registerSpecDependency(this, dependentSpec, dependency.location + dependentSpec.resourceName)»
+	    «REM» Also create spec dependency in opposite direction «ENDREM» 
+	    «registerSpecDependency(dependentSpec, this, dependency.location + this.resourceName)»
 	    «ELSE»
 	    «registerSpecDependency(this, dependentSpec, dependentSpec.resourceName)»
+	    «REM» Also create spec dependency in opposite direction «ENDREM» 
+	    «registerSpecDependency(dependentSpec, this, this.resourceName)»	    
 	    «ENDIF»
 	  «ENDFOREACH»
 	«ENDFOREACH»
@@ -101,7 +103,7 @@ components:
 «ENDDEFINE»
 
 «DEFINE GeneratePaths FOR OpenAPI3Specification -»
-  «FOREACH this.getRESTResources() AS service-»
+  «FOREACH this.getRESTResources() AS service -»
   # «service.name»
   «FOREACH service.getPaths() AS path-»
   «IF service.path.length > 0»«service.path»«ELSE»/«ENDIF»«IF path.length > 0»/«path»«ENDIF»:
@@ -323,7 +325,7 @@ components:
         propertyName: objectType
         mapping:
           «name»: «this.getOpenAPIType(spec)»
-          «FOREACH this.getAllSubclasses() AS subclass-»
+          «FOREACH this.getAllSubclasses().typeSelect(OpenAPIType) AS subclass-»
           «subclass.name»: «subclass.getOpenAPIType(spec)»
           «ENDFOREACH-»
       «ENDIF-»

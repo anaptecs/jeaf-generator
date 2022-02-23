@@ -273,6 +273,10 @@ public class OpenAPIHelper {
   public static void registerSpecDependency( Component pSource, Component pTarget, String pReference ) {
     String lKey = createSpecDependencyKey(pSource, pTarget);
     specDependencies.put(lKey, pReference);
+
+    // Also create spec dependency in opposite direction
+    // String lOppositeKey = createSpecDependencyKey(pTarget, pSource);
+    // specDependencies.put(lOppositeKey, pReference);
   }
 
   private static String createSpecDependencyKey( Component pSource, Component pTarget ) {
@@ -281,6 +285,7 @@ public class OpenAPIHelper {
 
   public static void registerLocalType( org.eclipse.uml2.uml.NamedElement pClass, Component pSpec ) {
     String lFQN = Naming.getFullyQualifiedName(pClass);
+    XFun.getTrace().info("Registering local type " + lFQN + " with " + pSpec.getName() + ":" + pClass.getName());
     complexTypes.put(lFQN, new OpenAPIType(pClass, pSpec, lFQN));
   }
 

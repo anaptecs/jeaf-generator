@@ -19,6 +19,10 @@
 	«IF generateCustomConstraints() == true»
 		«EXPAND GenerateCustomConstraints»
 	«ENDIF»
+	
+	«IF generateOpenAPISpec() == true»
+		«EXPAND java::OpenAPI::RegisterLocalTypes FOREACH this.allOwnedElements().typeSelect(OpenAPI3Specification)»
+	«ENDIF»
 	«EXPAND Root FOREACH ownedElement»
 «ENDDEFINE» 
 

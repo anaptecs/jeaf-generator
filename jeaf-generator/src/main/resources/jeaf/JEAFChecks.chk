@@ -42,9 +42,12 @@ context PersistentObject if runChecks() ERROR "Error: Persistent Object " + name
 context Operation if runChecks() ERROR "Error: Method " + name + "has parameter(s) without type.": hasOnlySupportedParamaterTypes() == true;
 context Operation if runChecks() ERROR "Error: Method " + name + "(...) of class " + ((NamedElement)this.owner).fqn() + " does not have a valid return type": hasReturnType() == true;
 
-context ServiceObject if runChecks() WARNING "Warning: Service Object " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context DomainObject if runChecks() WARNING "Warning: Domain Object " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context QueryObject if runChecks() WARNING "Warning: Query Object " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context JEAFService if runChecks() WARNING "Warning: Service " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context ServiceObject if runChecks() WARNING "Warning: <<ServiceObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context POJO if runChecks() WARNING "Warning: <<POJO>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context JEAFEnumeration if runChecks() WARNING "Warning: <<JEAFEnumeration>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context DomainObject if runChecks() WARNING "Warning: <<DomainObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context QueryObject if runChecks() WARNING "Warning: <<QueryObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context JEAFService if runChecks() WARNING "Warning: <<JEAFService>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context OpenAPIType if runChecks() WARNING "Warning: <<OpenAPIType>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
 
 context JEAFActivity if runChecks() ERROR "Error: <<JEAFActivity>> must define exactly one return parameter " + name + " (" + fqn() + "). Activity has " + this.getReturnParameterCount()+ " return parameters.": this.getReturnParameterCount()  == 1;
