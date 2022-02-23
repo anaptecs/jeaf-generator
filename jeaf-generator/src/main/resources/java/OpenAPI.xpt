@@ -124,7 +124,7 @@ components:
         - name: «EXPAND RESTParamName FOR param»
           in: «param.getOpenAPIParameterType()»
           description: >- 
-            «IF param.hasComment()»»«param.getComment()»«ELSE»TODO Please add comment«ENDIF»
+            «IF param.hasComment()»«param.getCommentForOpenAPIDescription("            ")»«ELSE»TODO Please add comment«ENDIF»
           required: «param.isRequired()»
           «IF param.isDeprecated() -»
           deprecated: true
@@ -157,7 +157,7 @@ components:
         - name: «EXPAND RESTParamName FOR property»
           in: «property.getOpenAPIParameterType()»
           description: >- 
-            «IF property.hasComment()»»«property.getComment()»«ELSE»TODO Please add comment«ENDIF»
+            «IF property.hasComment()»«property.getCommentForOpenAPIDescription("            ")»«ELSE»TODO Please add comment«ENDIF»
           required: «property.isRequired()»
           «IF property.isDeprecated() -»
           deprecated: true
@@ -192,7 +192,7 @@ components:
       requestBody:
       «FOREACH operation.getRequestBodyParameters() AS param-»
         description: >- 
-          «IF param.hasComment()»»«param.getComment()»«ELSE»TODO Please add comment«ENDIF»
+          «IF param.hasComment()»«param.getCommentForOpenAPIDescription("          ")»«ELSE»TODO Please add comment«ENDIF»
           «IF param.isDeprecated() && param.type.isBasicOpenAPIType() == false-»
           Operation has deprected body parameter. Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
           «ENDIF-»
@@ -244,7 +244,7 @@ components:
           «IF operation.hasReturnTypeVoid() == false-»
           «LET operation.getReturnResult() AS returnParam-»
           description: >- 
-            «IF operation.getReturnResult().hasComment()»»«operation.getReturnResult().getComment()»«ELSE»TODO Please add comment«ENDIF»
+            «IF operation.getReturnResult().hasComment()»«operation.getReturnResult().getCommentForOpenAPIDescription("            ")»«ELSE»TODO Please add comment«ENDIF»
             «IF returnParam.isDeprecated() && returnParam.type.isBasicOpenAPIType() == false-»
             Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
             «ENDIF-»
