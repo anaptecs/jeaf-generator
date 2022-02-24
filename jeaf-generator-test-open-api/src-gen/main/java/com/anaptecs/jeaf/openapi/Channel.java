@@ -14,7 +14,6 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.anaptecs.jeaf.openapi.ChannelCode;
 import com.anaptecs.jeaf.openapi.ChannelType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -30,7 +29,7 @@ public class Channel {
   private ChannelType channelType = null;
 
   @JsonProperty("channelCode")
-  private ChannelCode channelCode = null;
+  private String channelCode = null;
 
   @JsonProperty("code")
   private Integer code = null;
@@ -56,7 +55,7 @@ public class Channel {
     this.channelType = channelType;
   }
 
-  public Channel channelCode(ChannelCode channelCode) {
+  public Channel channelCode(String channelCode) {
     this.channelCode = channelCode;
     return this;
   }
@@ -65,12 +64,12 @@ public class Channel {
    * Get channelCode
    * @return channelCode
   **/
-  @Schema(description = "")
-  public ChannelCode getChannelCode() {
+  @Schema(example = "MOBILE_APP", description = "")
+  public String getChannelCode() {
     return channelCode;
   }
 
-  public void setChannelCode(ChannelCode channelCode) {
+  public void setChannelCode(String channelCode) {
     this.channelCode = channelCode;
   }
 

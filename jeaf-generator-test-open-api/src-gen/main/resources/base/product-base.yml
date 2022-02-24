@@ -1,8 +1,8 @@
 openapi: 3.0.0
 
 servers:
-  - url: https://accounting.jeaf.de
   - url: http://localhost:8080/test
+  - url: https://accounting.jeaf.de
 
 info:
   title: Product Base Definitions
@@ -79,13 +79,6 @@ components:
       required:
         - amount
         - currency
-    # com.anaptecs.jeaf.junit.openapi.base.ChannelCode
-    ChannelCode:
-      type: object
-      properties:
-        code: 
-          type: string
-          example: 'MOBILE_APP'
     # com.anaptecs.jeaf.junit.openapi.base.Channel
     Channel:
       type: object
@@ -93,7 +86,9 @@ components:
         channelType: 
           $ref: '#/components/schemas/ChannelType'
         channelCode: 
-          $ref: '#/components/schemas/ChannelCode'
+          type: string
+          nullable: false
+          example: 'MOBILE_APP'
         code: 
           type: integer
           format: int32
