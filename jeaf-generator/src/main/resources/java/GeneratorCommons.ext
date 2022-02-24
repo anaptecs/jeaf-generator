@@ -143,6 +143,9 @@ cached boolean isPOJO(uml::Class class):
 cached boolean isServiceObject(uml::Class class):
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isServiceObject(org.eclipse.uml2.uml.Class);
     
+boolean isJEAFEnumeration(uml::Property property) : 
+    isStereotypeApplied(property.type, "JEAFEnumeration");    
+    
 cached boolean isDomainObject(uml::Class class):
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isDomainObject(org.eclipse.uml2.uml.Class);
     

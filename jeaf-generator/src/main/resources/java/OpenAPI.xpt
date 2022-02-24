@@ -179,12 +179,14 @@ components:
               		«IF property.type.hasOpenAPIFormat()-»
               format: «property.type.getOpenAPIFormat()»
               		«ENDIF-»
-            	«ENDIF-»
+            	«ENDIF -»
                 «IF property.hasExample()-»
                   «IF ((OpenAPIExample) property).exampleValue.length > 0-»
             example: '«((OpenAPIExample) property).exampleValue»'
                   «ENDIF-»
                 «ENDIF-»
+            «ELSE -»
+            type: string
             «ENDIF-»
         «ENDFOREACH-»
         «ENDFOREACH-»

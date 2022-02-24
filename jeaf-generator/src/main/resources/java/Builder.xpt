@@ -245,7 +245,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false && supe
 «DEFINE DoBuilderPropertyDeclaration FOR Property»
 	«EXPAND Validation::ValidationAnnotation»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	private «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «this.initValue()»«ENDIF»;
+	private «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumeration()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
 «ENDDEFINE»
 
 «DEFINE DoBuilderAssociationPropertyDeclaration FOR Property»
