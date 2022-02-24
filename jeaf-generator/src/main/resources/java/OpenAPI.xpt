@@ -256,6 +256,9 @@ components:
             «FOREACH service.produces AS contentType-»
             «contentType.toOpenAPIContentType()»:
               schema:
+                «IF returnParam.type.isOpenAPIDataType() -»
+                «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForResponse(this) FOR (OpenAPIDataType) returnParam.type -»
+                «ELSE -»
                 «IF returnParam.type.isBasicOpenAPIType() == true-»
                   «IF returnParam.isMultivalued() == false-»
                 type: «returnParam.type.getOpenAPIType(this)»
@@ -287,6 +290,7 @@ components:
                   $ref: «returnParam.type.getOpenAPIType(this)»
                 minItems: «returnParam.getLower()»
                   «ENDIF-»
+                «ENDIF-»
                 «ENDIF-»
             «ENDFOREACH-»
           «ENDLET-»
@@ -348,6 +352,9 @@ components:
         «ENDIF-»
         «FOREACH this.ownedAttribute AS attribute-»
         «attribute.name»: 
+          «IF attribute.type.isOpenAPIDataType() -»
+          «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec) FOR (OpenAPIDataType) attribute.type -»
+          «ELSE -»
           «IF attribute.hasComment()-»
           description: >-
             «attribute.getCommentForOpenAPIDescription("            ")»
@@ -403,6 +410,7 @@ components:
             $ref: «attribute.type.getOpenAPIType(spec)»
           minItems: «attribute.getLower()»
             «ENDIF-»
+          «ENDIF-»
           «ENDIF-»
         «ENDFOREACH-»
       «IF this.isTopOfClassHierarchy() || this.hasRequiredProperties() -»

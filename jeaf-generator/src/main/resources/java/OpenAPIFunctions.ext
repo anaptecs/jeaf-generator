@@ -56,6 +56,9 @@ boolean hasOpenAPIFormat(uml::Type type):
 boolean isBasicOpenAPIType(uml::Type type):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.isBasicOpenAPIType(org.eclipse.uml2.uml.Type);
     
+boolean isOpenAPIDataType(uml::Type type):
+   isStereotypeApplied(type, "OpenAPIDataType");
+    
 Void registerLocalType(uml::NamedElement localClass, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.registerLocalType(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.Component);
     

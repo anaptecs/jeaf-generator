@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -29,6 +31,7 @@ public class ChannelCode implements ServiceObject {
   /**
    * 
    */
+  @NotNull()
   private String code;
 
   /**
@@ -59,6 +62,7 @@ public class ChannelCode implements ServiceObject {
     /**
      * 
      */
+    @NotNull()
     private String code;
 
     /**

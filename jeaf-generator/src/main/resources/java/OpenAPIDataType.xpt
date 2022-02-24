@@ -1,0 +1,128 @@
+«EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION java::OpenAPIFunctions»
+
+«IMPORT uml»
+«IMPORT JMM»
+
+«DEFINE GenerateOpenAPIDataType(OpenAPI3Specification spec) FOR OpenAPIDataType -»
+          «LET this.ownedAttribute.get(0) AS attribute -»
+          «IF attribute.hasComment()-»
+          description: >-
+            «attribute.getCommentForOpenAPIDescription("            ")»
+          «ENDIF-»
+          «IF attribute.type.isBasicOpenAPIType() == true-»
+            «IF attribute.isMultivalued() == false-»
+          type: «attribute.type.getOpenAPIType(spec)»
+              «IF attribute.type.hasOpenAPIFormat()-»
+          format: «attribute.type.getOpenAPIFormat()»
+              «ENDIF-»
+          «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions FOR attribute-»    
+              «IF attribute.isDeprecated() -»
+          deprecated: true
+              «ENDIF-»
+            «ELSE-»
+          type: array
+          items:
+            type: «attribute.type.getOpenAPIType(spec)»
+              «IF attribute.type.hasOpenAPIFormat()-»
+            format: «attribute.type.getOpenAPIFormat()»
+              «ENDIF-»
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions FOR attribute-»              
+              «IF attribute.isDeprecated() -»
+            deprecated: true
+              «ENDIF-»
+            «ENDIF-»
+          «IF attribute.isNullable() == false -»
+          nullable: «attribute.isNullable()»
+          «ENDIF-»  
+          «IF attribute.isReadOnly()  -»
+          readOnly: «attribute.isReadOnly()»
+          «ENDIF-»  
+          «IF attribute.isWriteOnly() -»
+          writeOnly: «attribute.isWriteOnly()»
+          «ENDIF-»  
+          «IF attribute.defaultValue != null -»
+          default: «attribute.defaultValue.stringValue()»
+          «ENDIF-»
+            «IF attribute.hasExample()-»
+              «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
+          example: '«((OpenAPIExample) attribute).exampleValue»'
+              «ENDIF-»
+            «ENDIF-»
+          «ELSE-»
+            «IF attribute.isDeprecated() -»
+          # Attribute "«attribute.name»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+            «ENDIF-»
+            «IF attribute.isMultivalued() == false-»
+          $ref: «attribute.type.getOpenAPIType(spec)»
+            «ELSE-»
+          type: array
+          items:
+            $ref: «attribute.type.getOpenAPIType(spec)»
+          minItems: «attribute.getLower()»
+            «ENDIF-»
+          «ENDIF-»
+          «ENDLET -»
+«ENDDEFINE»
+
+«DEFINE GenerateOpenAPIDataTypeForResponse(OpenAPI3Specification spec) FOR OpenAPIDataType -»
+                «LET this.ownedAttribute.get(0) AS attribute -»
+                «IF attribute.hasComment()-»
+                description: >-
+                «attribute.getCommentForOpenAPIDescription("            ")»
+                «ENDIF-»
+                «IF attribute.type.isBasicOpenAPIType() == true-»
+                «IF attribute.isMultivalued() == false-»
+                type: «attribute.type.getOpenAPIType(spec)»
+                «IF attribute.type.hasOpenAPIFormat()-»
+                format: «attribute.type.getOpenAPIFormat()»
+                «ENDIF-»
+                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions FOR attribute-»    
+                «IF attribute.isDeprecated() -»
+                deprecated: true
+                «ENDIF-»
+                «ELSE-»
+                type: array
+                items:
+                type: «attribute.type.getOpenAPIType(spec)»
+                «IF attribute.type.hasOpenAPIFormat()-»
+                format: «attribute.type.getOpenAPIFormat()»
+                «ENDIF-»
+                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions FOR attribute-»              
+                «IF attribute.isDeprecated() -»
+                deprecated: true
+                «ENDIF-»
+                «ENDIF-»
+                «IF attribute.isNullable() == false -»
+                nullable: «attribute.isNullable()»
+                «ENDIF-»  
+                «IF attribute.isReadOnly()  -»
+                readOnly: «attribute.isReadOnly()»
+                «ENDIF-»  
+                «IF attribute.isWriteOnly() -»
+                writeOnly: «attribute.isWriteOnly()»
+                «ENDIF-»  
+                «IF attribute.defaultValue != null -»
+                default: «attribute.defaultValue.stringValue()»
+                «ENDIF-»
+                «IF attribute.hasExample()-»
+                «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
+                example: '«((OpenAPIExample) attribute).exampleValue»'
+                «ENDIF-»
+                «ENDIF-»
+                «ELSE-»
+                «IF attribute.isDeprecated() -»
+                # Attribute "«attribute.name»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+                «ENDIF-»
+                «IF attribute.isMultivalued() == false-»
+                $ref: «attribute.type.getOpenAPIType(spec)»
+                «ELSE-»
+                type: array
+                items:
+                $ref: «attribute.type.getOpenAPIType(spec)»
+                minItems: «attribute.getLower()»
+                «ENDIF-»
+                «ENDIF-»
+                «ENDLET -»
+«ENDDEFINE»

@@ -181,7 +181,9 @@ paths:
           content:  
             application/json:
               schema:
-                $ref: '../base/product-base.yml#/components/schemas/ChannelCode'
+                type: string
+                nullable: false
+                example: 'MOBILE_APP'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
