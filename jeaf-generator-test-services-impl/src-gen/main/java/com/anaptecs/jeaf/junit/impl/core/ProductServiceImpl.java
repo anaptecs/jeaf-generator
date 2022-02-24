@@ -188,4 +188,16 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   @Override
   public void loadSpecificThings( SpecialContext pContext ) {
   }
+
+  /**
+   * 
+   * @param pChannelCode
+   * @return {@link ChannelCode} Created channel code
+   * 
+   */
+  @Override
+  public ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode ) {
+    // TODO Implement method and return real result
+    return null;
+  }
 }

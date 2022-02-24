@@ -433,6 +433,38 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+  /products/ChannelCodeObject:
+    post:
+      operationId: createChannelCodeFromObject
+      requestBody:
+        description: >- 
+          TODO Please add comment
+        required: false
+        content:
+          application/json:
+            schema:
+                type: string
+                nullable: false
+                example: 'MOBILE_APP'
+          application/xml:
+            schema:
+                type: string
+                nullable: false
+                example: 'MOBILE_APP'
+      responses:
+        '200':
+          description: >- 
+            Created channel code
+          content:  
+            application/json:
+              schema:
+                type: string
+                nullable: false
+                example: 'MOBILE_APP'
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
 
 
 components:

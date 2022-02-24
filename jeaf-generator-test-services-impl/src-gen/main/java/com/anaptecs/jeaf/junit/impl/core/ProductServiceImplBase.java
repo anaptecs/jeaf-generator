@@ -21,6 +21,9 @@ abstract class ProductServiceImplBase implements ProductService, ServiceImplemen
   /*
    * The following constants define the names of all authorization types of the service.
    */
+  public static final String CREATECHANNELCODEFROMOBJECT_AUTH_TYPE =
+      "createChannelCodeFromObject.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
   public static final String CREATECHANNELCODE_AUTH_TYPE =
       "createChannelCode.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 

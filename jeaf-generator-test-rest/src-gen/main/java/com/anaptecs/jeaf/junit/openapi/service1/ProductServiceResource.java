@@ -192,4 +192,15 @@ public class ProductServiceResource {
     lService.loadSpecificThings(pContext);
     return Response.status(Response.Status.OK).build();
   }
+
+  /**
+   * {@link ProductService#createChannelCodeFromObject()}
+   */
+  @Path("ChannelCodeObject")
+  @POST
+  public Response createChannelCodeFromObject( ChannelCode pChannelCode ) {
+    ProductService lService = JEAF.getService(ProductService.class);
+    ChannelCode lResult = lService.createChannelCodeFromObject(pChannelCode);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
 }

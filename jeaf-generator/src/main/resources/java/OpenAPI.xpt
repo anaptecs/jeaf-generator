@@ -205,6 +205,9 @@ components:
           «FOREACH getAllMediaTypes(service.consumes, operation.consumes) AS mediaType-»
           «mediaType.toOpenAPIContentType()»:
             schema:
+              «IF param.type.isOpenAPIDataType() -»
+              «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForResponse(this) FOR (OpenAPIDataType) param.type -»
+              «ELSE -»
               «IF param.type.isBasicOpenAPIType() == true-»
                 «IF param.isMultivalued() == false-»
               type: «param.type.getOpenAPIType(this)»
@@ -239,6 +242,7 @@ components:
                 $ref: «param.type.getOpenAPIType(this)»
               minItems: «param.getLower()»
                 «ENDIF-»
+              «ENDIF-»
               «ENDIF-»
           «ENDFOREACH-»
       «ENDFOREACH-»

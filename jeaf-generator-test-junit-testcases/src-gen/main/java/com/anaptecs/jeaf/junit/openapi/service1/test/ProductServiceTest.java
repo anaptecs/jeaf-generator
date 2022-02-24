@@ -28,6 +28,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testPing"));
     lSuite.addTest(new ProductServiceTest("testDeprecatedParams"));
     lSuite.addTest(new ProductServiceTest("testCreateProduct"));
+    lSuite.addTest(new ProductServiceTest("testCreateChannelCodeFromObject"));
     lSuite.addTest(new ProductServiceTest("testGetSortiment"));
     lSuite.addTest(new ProductServiceTest("testDeprectedComplexRequestBody"));
     lSuite.addTest(new ProductServiceTest("testCreateChannelCode"));
@@ -149,6 +150,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testCreateProduct( ) throws Exception {
     // TODO Implement test for service method createProduct(...)
+  }
+
+  /**
+   * Method test the implementation of service method createChannelCodeFromObject
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testCreateChannelCodeFromObject( ) throws Exception {
+    // TODO Implement test for service method createChannelCodeFromObject(...)
   }
 
   /**

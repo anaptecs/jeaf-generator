@@ -121,4 +121,12 @@ public interface ProductService extends Service {
    * @param pContext
    */
   void loadSpecificThings( SpecialContext pContext );
+
+  /**
+   * 
+   * @param pChannelCode
+   * @return {@link ChannelCode} Created channel code
+   * 
+   */
+  ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode );
 }
