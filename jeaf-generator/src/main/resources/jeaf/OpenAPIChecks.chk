@@ -14,4 +14,8 @@ context Model if runChecks() ERROR "Error: OpenAPI Specification more than one g
 
 context ErrorResponse if runChecks() ERROR "Error: <<ErrorResponse>> " + this.name + " needs to define exactly one reference to <<OpenAPIType>> that is used as response type.": this.getErrorResponseTypes().size == 1;
 
-context OpenAPI3Specification if runChecks() ERROR "Error: <<OpenAPI3Specification>> " + this.name + " has " + this.getCustomErrorResponses().size + " error responses.": this.getCustomErrorResponses().size < 2;  
+context OpenAPI3Specification if runChecks() ERROR "Error: <<OpenAPI3Specification>> " + this.name + " has " + this.getCustomErrorResponses().size + " error responses.": this.getCustomErrorResponses().size < 2;
+
+context OpenAPIDataType if runChecks() ERROR "Error: <<OpenAPIDataType>> " + this.name + " must have excatly one property." : this.ownedAttribute.size == 1;
+context OpenAPIDataType if runChecks() ERROR "Error: <<OpenAPIDataType>> " + this.name + " must have only properties with primitive types.": this.ownedAttribute.get(0).type.isBasicOpenAPIType() == true;
+context OpenAPIDataType if runChecks() ERROR "Error: <<OpenAPIDataType>> " + this.name + " must not have multivalued properties.": this.ownedAttribute.get(0).isMultivalued() == false;

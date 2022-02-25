@@ -72,13 +72,16 @@ components:
           format: double
           nullable: false
           readOnly: true
-        currency: 
+        currencyCode: 
+          description: >-
+            ISO 4217 currency code.
           type: string
-          nullable: false
-          readOnly: true
+          minLength: 3
+          maxLength: 3
+          example: 'CHF'
       required:
         - amount
-        - currency
+        - currencyCode
     # com.anaptecs.jeaf.junit.openapi.base.Channel
     Channel:
       type: object

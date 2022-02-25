@@ -27,8 +27,8 @@ public class MoneyAmount {
   @JsonProperty("amount")
   private Double amount = null;
 
-  @JsonProperty("currency")
-  private String currency = null;
+  @JsonProperty("currencyCode")
+  private String currencyCode = null;
 
    /**
    * The amount of money. Attribute is always set.
@@ -39,13 +39,22 @@ public class MoneyAmount {
     return amount;
   }
 
+  public MoneyAmount currencyCode(String currencyCode) {
+    this.currencyCode = currencyCode;
+    return this;
+  }
+
    /**
-   * Get currency
-   * @return currency
+   * ISO 4217 currency code.
+   * @return currencyCode
   **/
-  @Schema(required = true, description = "")
-  public String getCurrency() {
-    return currency;
+  @Schema(example = "CHF", required = true, description = "ISO 4217 currency code.")
+  public String getCurrencyCode() {
+    return currencyCode;
+  }
+
+  public void setCurrencyCode(String currencyCode) {
+    this.currencyCode = currencyCode;
   }
 
 
@@ -59,12 +68,12 @@ public class MoneyAmount {
     }
     MoneyAmount moneyAmount = (MoneyAmount) o;
     return Objects.equals(this.amount, moneyAmount.amount) &&
-        Objects.equals(this.currency, moneyAmount.currency);
+        Objects.equals(this.currencyCode, moneyAmount.currencyCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, currency);
+    return Objects.hash(amount, currencyCode);
   }
 
 
@@ -74,7 +83,7 @@ public class MoneyAmount {
     sb.append("class MoneyAmount {\n");
     
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    currencyCode: ").append(toIndentedString(currencyCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

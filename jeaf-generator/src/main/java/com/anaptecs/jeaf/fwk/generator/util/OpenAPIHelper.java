@@ -5,7 +5,6 @@ import java.math.BigInteger;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Currency;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -80,7 +79,6 @@ public class OpenAPIHelper {
 
     // We also also treat many JDK standard types as simple types in OpenAPI as they can be mapped to a single type
     // mostly string.
-    basicTypes.put(Currency.class.getName(), "string");
     basicTypes.put(URL.class.getName(), "string");
     basicTypes.put(UUID.class.getName(), "string");
     basicTypes.put(Locale.class.getName(), "string");
