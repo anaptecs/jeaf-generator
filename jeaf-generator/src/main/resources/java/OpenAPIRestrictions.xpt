@@ -42,7 +42,7 @@
 	    «ENDIF -»
 	«ENDFOREACH -»
     «IF this.isMultivalued() == true && this.lower > 0 && this.getAppliedStereotypes().select(e|e.name== "Size").size == 0 -»
-          minItems: «this.lower -»
+          minItems: «this.lower»
     «ENDIF -»
 «ENDDEFINE»
 

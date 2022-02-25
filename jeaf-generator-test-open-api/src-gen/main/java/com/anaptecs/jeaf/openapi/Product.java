@@ -45,6 +45,9 @@ public class Product {
   @JsonProperty("supportedCurrencies")
   private List<String> supportedCurrencies = null;
 
+  @JsonProperty("productCodes")
+  private List<Integer> productCodes = null;
+
   public Product resellers(List<Reseller> resellers) {
     this.resellers = resellers;
     return this;
@@ -165,6 +168,32 @@ public class Product {
     this.supportedCurrencies = supportedCurrencies;
   }
 
+  public Product productCodes(List<Integer> productCodes) {
+    this.productCodes = productCodes;
+    return this;
+  }
+
+  public Product addProductCodesItem(Integer productCodesItem) {
+    if (this.productCodes == null) {
+      this.productCodes = new ArrayList<>();
+    }
+    this.productCodes.add(productCodesItem);
+    return this;
+  }
+
+   /**
+   * Get productCodes
+   * @return productCodes
+  **/
+  @Schema(description = "")
+  public List<Integer> getProductCodes() {
+    return productCodes;
+  }
+
+  public void setProductCodes(List<Integer> productCodes) {
+    this.productCodes = productCodes;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -180,12 +209,13 @@ public class Product {
         Objects.equals(this.image, product.image) &&
         Objects.equals(this.link, product.link) &&
         Objects.equals(this.productID, product.productID) &&
-        Objects.equals(this.supportedCurrencies, product.supportedCurrencies);
+        Objects.equals(this.supportedCurrencies, product.supportedCurrencies) &&
+        Objects.equals(this.productCodes, product.productCodes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(resellers, name, image, link, productID, supportedCurrencies);
+    return Objects.hash(resellers, name, image, link, productID, supportedCurrencies, productCodes);
   }
 
 
@@ -200,6 +230,7 @@ public class Product {
     sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    productID: ").append(toIndentedString(productID)).append("\n");
     sb.append("    supportedCurrencies: ").append(toIndentedString(supportedCurrencies)).append("\n");
+    sb.append("    productCodes: ").append(toIndentedString(productCodes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -157,6 +157,12 @@ components:
           minItems: 7
           maxItems: 42
           example: 'CHF'
+        productCodes: 
+          type: array
+          items:
+            type: integer
+            format: int32
+          minItems: 1
       required:
         - image
     # com.anaptecs.jeaf.junit.openapi.base.Sortiment
