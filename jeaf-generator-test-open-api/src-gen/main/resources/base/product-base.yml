@@ -148,6 +148,15 @@ components:
         productID: 
           type: string
           readOnly: true
+        supportedCurrencies: 
+          description: >-
+            ISO 4217 currency code.
+          type: array
+          items:
+            type: string
+          minItems: 7
+          maxItems: 42
+          example: 'CHF'
       required:
         - image
     # com.anaptecs.jeaf.junit.openapi.base.Sortiment
@@ -683,7 +692,7 @@ components:
           items:
             type: integer
             format: int32
-          maxLength: 32768
+          maxItems: 32768
         bByteArray: 
           type: array
           items:
@@ -753,8 +762,8 @@ components:
           items:
             type: number
             format: double
-          minLength: 4
-          maxLength: 12
+          minItems: 4
+          maxItems: 12
         bDoubleArray: 
           type: array
           items:
