@@ -24,7 +24,11 @@
 			«ELSEIF stereotype.name == "Positive" -»
 			  «EXPAND PositiveAnnotation FOR ((Positive) this)»
 			«ELSEIF stereotype.name == "Size" -»
+			  «IF this.isMultivalued() == false -»
 			  «EXPAND SizeAnnotation FOR ((Size) this)»
+			  «ELSE -»
+			  «EXPAND SizeAnnotationForArray FOR ((Size) this)»
+			  «ENDIF -»
 			«ELSEIF stereotype.name == "NotEmpty" -»
 			  «IF this.isMultivalued() == false -»
 			  «EXPAND NotEmptyStringAnnotation FOR ((NotEmpty) this) -»
@@ -37,6 +41,9 @@
 			«ENDIF -»
 	    «ENDIF -»
 	«ENDFOREACH -»
+    «IF this.isMultivalued() == true && this.lower > 0 && this.getAppliedStereotypes().select(e|e.name== "Size").size == 0 -»
+          minItems: «this.lower -»
+    «ENDIF -»
 «ENDDEFINE»
 
 
@@ -80,6 +87,15 @@
           minLength: «min»«ELSE -»
                   «IF max != -1 -»
           maxLength: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
+
+«DEFINE SizeAnnotationForArray FOR Size -»
+          «IF min != -1 && max != -1 -»
+          minItems: «min»
+          maxItems: «max»«ELSE-»
+              «IF min != -1-»
+          minItems: «min»«ELSE -»
+                  «IF max != -1 -»
+          maxItems: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
 
 «DEFINE NotEmptyStringAnnotation FOR NotEmpty -»
           minLength: 1

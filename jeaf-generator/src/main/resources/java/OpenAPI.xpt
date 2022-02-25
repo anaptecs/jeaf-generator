@@ -206,7 +206,7 @@ components:
           «mediaType.toOpenAPIContentType()»:
             schema:
               «IF param.type.isOpenAPIDataType() -»
-              «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForResponse(this) FOR (OpenAPIDataType) param.type -»
+              «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForPath(this) FOR (OpenAPIDataType) param.type -»
               «ELSE -»
               «IF param.type.isBasicOpenAPIType() == true-»
                 «IF param.isMultivalued() == false-»
@@ -261,7 +261,7 @@ components:
             «contentType.toOpenAPIContentType()»:
               schema:
                 «IF returnParam.type.isOpenAPIDataType() -»
-                «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForResponse(this) FOR (OpenAPIDataType) returnParam.type -»
+                «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForPath(this) FOR (OpenAPIDataType) returnParam.type -»
                 «ELSE -»
                 «IF returnParam.type.isBasicOpenAPIType() == true-»
                   «IF returnParam.isMultivalued() == false-»
@@ -357,7 +357,7 @@ components:
         «FOREACH this.ownedAttribute AS attribute-»
         «attribute.name»: 
           «IF attribute.type.isOpenAPIDataType() -»
-          «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec) FOR (OpenAPIDataType) attribute.type -»
+          «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute) FOR (OpenAPIDataType) attribute.type -»
           «ELSE -»
           «IF attribute.hasComment()-»
           description: >-
