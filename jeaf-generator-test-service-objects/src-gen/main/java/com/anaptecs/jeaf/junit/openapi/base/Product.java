@@ -60,6 +60,16 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   public static final String PRODUCTID = "productID";
 
   /**
+   * Constant for the name of attribute "supportedCurrencies".
+   */
+  public static final String SUPPORTEDCURRENCIES = "supportedCurrencies";
+
+  /**
+   * Constant for the name of attribute "productCodes".
+   */
+  public static final String PRODUCTCODES = "productCodes";
+
+  /**
    * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
    */
   private final ServiceObjectID objectID;
@@ -89,6 +99,17 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * 
    */
   private final UUID productID;
+
+  /**
+   * 
+   */
+  @Size(min = 7, max = 42)
+  private Set<CurrencyCode> supportedCurrencies = new HashSet<CurrencyCode>();
+
+  /**
+   * 
+   */
+  private Set<ProductCode> productCodes = new HashSet<ProductCode>();
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -123,6 +144,12 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     image = pBuilder.image;
     link = pBuilder.link;
     productID = pBuilder.productID;
+    if (pBuilder.supportedCurrencies != null) {
+      supportedCurrencies.addAll(pBuilder.supportedCurrencies);
+    }
+    if (pBuilder.productCodes != null) {
+      productCodes.addAll(pBuilder.productCodes);
+    }
   }
 
   /**
@@ -162,6 +189,16 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     private UUID productID;
 
     /**
+     * 
+     */
+    private Set<CurrencyCode> supportedCurrencies;
+
+    /**
+     * 
+     */
+    private Set<ProductCode> productCodes;
+
+    /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -179,6 +216,8 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
         image = pObject.image;
         link = pObject.link;
         productID = pObject.productID;
+        supportedCurrencies = pObject.supportedCurrencies;
+        productCodes = pObject.productCodes;
       }
     }
 
@@ -274,6 +313,38 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     public Builder setProductID( UUID pProductID ) {
       // Assign value to attribute
       productID = pProductID;
+      return this;
+    }
+
+    /**
+     * Method sets the association "supportedCurrencies".
+     * 
+     * @param pSupportedCurrencies Collection with objects to which the association should be set.
+     */
+    public Builder setSupportedCurrencies( Set<CurrencyCode> pSupportedCurrencies ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pSupportedCurrencies != null) {
+        supportedCurrencies = new HashSet<CurrencyCode>(pSupportedCurrencies);
+      }
+      else {
+        supportedCurrencies = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets the association "productCodes".
+     * 
+     * @param pProductCodes Collection with objects to which the association should be set.
+     */
+    public Builder setProductCodes( Set<ProductCode> pProductCodes ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pProductCodes != null) {
+        productCodes = new HashSet<ProductCode>(pProductCodes);
+      }
+      else {
+        productCodes = null;
+      }
       return this;
     }
 
@@ -509,6 +580,179 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   public UUID getProductID( ) {
     return productID;
+  }
+
+  /**
+   * Method returns the association "supportedCurrencies".
+   * 
+   *
+   * @return Collection All CurrencyCode objects that belong to the association "supportedCurrencies". The method never
+   * returns null and the returned collection is unmodifiable.
+   */
+  public Set<CurrencyCode> getSupportedCurrencies( ) {
+    // Return all CurrencyCode objects as unmodifiable collection.
+    return Collections.unmodifiableSet(supportedCurrencies);
+  }
+
+  /**
+   * Method sets the association "supportedCurrencies" to the passed collection. All objects that formerly were part of
+   * the association will be removed from it.
+   * 
+   * 
+   * @param pSupportedCurrencies Collection with objects to which the association should be set. The parameter must not
+   * be null.
+   */
+  void setSupportedCurrencies( Set<CurrencyCode> pSupportedCurrencies ) {
+    // Check of parameter is not required.
+    // Remove all objects from association "supportedCurrencies".
+    this.clearSupportedCurrencies();
+    // If the association is null, removing all entries is sufficient.
+    if (pSupportedCurrencies != null) {
+      supportedCurrencies = new HashSet<CurrencyCode>(pSupportedCurrencies);
+    }
+  }
+
+  /**
+   * Method adds the passed CurrencyCode object to the association "supportedCurrencies".
+   * 
+   * 
+   * @param pSupportedCurrencies Object that should be added to the association "supportedCurrencies". The parameter
+   * must not be null.
+   */
+  public void addToSupportedCurrencies( CurrencyCode pSupportedCurrencies ) {
+    // Check parameter "pSupportedCurrencies" for invalid value null.
+    Check.checkInvalidParameterNull(pSupportedCurrencies, "pSupportedCurrencies");
+    // Add passed object to collection of associated CurrencyCode objects.
+    supportedCurrencies.add(pSupportedCurrencies);
+  }
+
+  /**
+   * Method adds all passed objects to the association "supportedCurrencies".
+   * 
+   * 
+   * @param pSupportedCurrencies Collection with all objects that should be added to the association
+   * "supportedCurrencies". The parameter must not be null.
+   */
+  public void addToSupportedCurrencies( Collection<CurrencyCode> pSupportedCurrencies ) {
+    // Check parameter "pSupportedCurrencies" for invalid value null.
+    Check.checkInvalidParameterNull(pSupportedCurrencies, "pSupportedCurrencies");
+    // Add all passed objects.
+    for (CurrencyCode lNextObject : pSupportedCurrencies) {
+      this.addToSupportedCurrencies(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed CurrencyCode object from the association "supportedCurrencies".
+   * 
+   * 
+   * @param pSupportedCurrencies Object that should be removed from the association "supportedCurrencies". The parameter
+   * must not be null.
+   */
+  public void removeFromSupportedCurrencies( CurrencyCode pSupportedCurrencies ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pSupportedCurrencies, "pSupportedCurrencies");
+    // Remove passed object from collection of associated CurrencyCode objects.
+    supportedCurrencies.remove(pSupportedCurrencies);
+  }
+
+  /**
+   * Method removes all objects from the association "supportedCurrencies".
+   * 
+   */
+  public void clearSupportedCurrencies( ) {
+    // Remove all objects from association "supportedCurrencies".
+    Collection<CurrencyCode> lSupportedCurrencies = new HashSet<CurrencyCode>(supportedCurrencies);
+    Iterator<CurrencyCode> lIterator = lSupportedCurrencies.iterator();
+    while (lIterator.hasNext()) {
+      this.removeFromSupportedCurrencies(lIterator.next());
+    }
+  }
+
+  /**
+   * Method returns the association "productCodes".
+   * 
+   *
+   * @return Collection All ProductCode objects that belong to the association "productCodes". The method never returns
+   * null and the returned collection is unmodifiable.
+   */
+  public Set<ProductCode> getProductCodes( ) {
+    // Return all ProductCode objects as unmodifiable collection.
+    return Collections.unmodifiableSet(productCodes);
+  }
+
+  /**
+   * Method sets the association "productCodes" to the passed collection. All objects that formerly were part of the
+   * association will be removed from it.
+   * 
+   * 
+   * @param pProductCodes Collection with objects to which the association should be set. The parameter must not be
+   * null.
+   */
+  void setProductCodes( Set<ProductCode> pProductCodes ) {
+    // Check of parameter is not required.
+    // Remove all objects from association "productCodes".
+    this.clearProductCodes();
+    // If the association is null, removing all entries is sufficient.
+    if (pProductCodes != null) {
+      productCodes = new HashSet<ProductCode>(pProductCodes);
+    }
+  }
+
+  /**
+   * Method adds the passed ProductCode object to the association "productCodes".
+   * 
+   * 
+   * @param pProductCodes Object that should be added to the association "productCodes". The parameter must not be null.
+   */
+  public void addToProductCodes( ProductCode pProductCodes ) {
+    // Check parameter "pProductCodes" for invalid value null.
+    Check.checkInvalidParameterNull(pProductCodes, "pProductCodes");
+    // Add passed object to collection of associated ProductCode objects.
+    productCodes.add(pProductCodes);
+  }
+
+  /**
+   * Method adds all passed objects to the association "productCodes".
+   * 
+   * 
+   * @param pProductCodes Collection with all objects that should be added to the association "productCodes". The
+   * parameter must not be null.
+   */
+  public void addToProductCodes( Collection<ProductCode> pProductCodes ) {
+    // Check parameter "pProductCodes" for invalid value null.
+    Check.checkInvalidParameterNull(pProductCodes, "pProductCodes");
+    // Add all passed objects.
+    for (ProductCode lNextObject : pProductCodes) {
+      this.addToProductCodes(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed ProductCode object from the association "productCodes".
+   * 
+   * 
+   * @param pProductCodes Object that should be removed from the association "productCodes". The parameter must not be
+   * null.
+   */
+  public void removeFromProductCodes( ProductCode pProductCodes ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pProductCodes, "pProductCodes");
+    // Remove passed object from collection of associated ProductCode objects.
+    productCodes.remove(pProductCodes);
+  }
+
+  /**
+   * Method removes all objects from the association "productCodes".
+   * 
+   */
+  public void clearProductCodes( ) {
+    // Remove all objects from association "productCodes".
+    Collection<ProductCode> lProductCodes = new HashSet<ProductCode>(productCodes);
+    Iterator<ProductCode> lIterator = lProductCodes.iterator();
+    while (lIterator.hasNext()) {
+      this.removeFromProductCodes(lIterator.next());
+    }
   }
 
   /**
