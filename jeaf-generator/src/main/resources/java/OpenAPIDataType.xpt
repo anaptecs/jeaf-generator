@@ -16,7 +16,7 @@
               «IF attribute.type.hasOpenAPIFormat()-»
           format: «attribute.type.getOpenAPIFormat()»
               «ENDIF-»
-          «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions FOR attribute-»    
+          «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR attribute-»    
               «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
           deprecated: true
               «ENDIF-»
@@ -27,7 +27,8 @@
               «IF attribute.type.hasOpenAPIFormat()-»
             format: «attribute.type.getOpenAPIFormat()»
               «ENDIF-»
-            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions FOR ownerAttribute-»              
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("  ") FOR attribute-»
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR ownerAttribute-»
               «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
             deprecated: true
               «ENDIF-»
@@ -64,7 +65,7 @@
                 «IF attribute.type.hasOpenAPIFormat()-»
                 format: «attribute.type.getOpenAPIFormat()»
                 «ENDIF-»
-                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions FOR attribute-»    
+                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR attribute-»    
                 «IF attribute.isDeprecated() -»
                 deprecated: true
                 «ENDIF-»
@@ -75,7 +76,7 @@
                 «IF attribute.type.hasOpenAPIFormat()-»
                 format: «attribute.type.getOpenAPIFormat()»
                 «ENDIF-»
-                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions FOR attribute-»              
+                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR attribute-»              
                 «IF attribute.isDeprecated() -»
                 deprecated: true
                 «ENDIF-»

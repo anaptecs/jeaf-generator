@@ -4,39 +4,39 @@
 «EXTENSION java::CustomValidationCommons»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
-«DEFINE OpenAPIRestrictions FOR Property -»
+«DEFINE OpenAPIRestrictions(String indent) FOR Property -»
     «FOREACH this.getAppliedStereotypes() AS stereotype -»
 	    «IF stereotype.isValidationStereotype() -»
 			«IF stereotype.name == "DecimalMin" -»
-			  «EXPAND DecimalMinAnnotation FOR ((DecimalMin)this)»
+			  «EXPAND DecimalMinAnnotation(indent) FOR ((DecimalMin)this)»
 			«ELSEIF stereotype.name == "DecimalMax" -»
-			  «EXPAND DecimalMaxAnnotation FOR ((DecimalMax)this)»
+			  «EXPAND DecimalMaxAnnotation(indent) FOR ((DecimalMax)this)»
 			«ELSEIF stereotype.name == "Min" -»
-			  «EXPAND MinValueAnnotation FOR ((Min)this)»
+			  «EXPAND MinValueAnnotation(indent) FOR ((Min)this)»
 			«ELSEIF stereotype.name == "Max" -»
-			  «EXPAND MaxValueAnnotation FOR ((Max)this)»
+			  «EXPAND MaxValueAnnotation(indent) FOR ((Max)this)»
 			«ELSEIF stereotype.name == "Negative" -»
-			  «EXPAND NegativeAnnotation FOR ((Negative) this)»
+			  «EXPAND NegativeAnnotation(indent) FOR ((Negative) this)»
 			«ELSEIF stereotype.name == "NegativeOrZero" -»
-			  «EXPAND NegativeOrZeroAnnotation FOR ((NegativeOrZero) this)»
+			  «EXPAND NegativeOrZeroAnnotation(indent) FOR ((NegativeOrZero) this)»
 			«ELSEIF stereotype.name == "PositiveOrZero" -»
-			  «EXPAND PositiveOrZeroAnnotation FOR ((PositiveOrZero) this)»
+			  «EXPAND PositiveOrZeroAnnotation(indent) FOR ((PositiveOrZero) this)»
 			«ELSEIF stereotype.name == "Positive" -»
-			  «EXPAND PositiveAnnotation FOR ((Positive) this)»
+			  «EXPAND PositiveAnnotation(indent) FOR ((Positive) this)»
 			«ELSEIF stereotype.name == "Size" -»
 			  «IF this.isMultivalued() == false -»
-			  «EXPAND SizeAnnotation FOR ((Size) this)»
+			  «EXPAND SizeAnnotation(indent) FOR ((Size) this)»
 			  «ELSE -»
-			  «EXPAND SizeAnnotationForArray FOR ((Size) this)»
+			  «EXPAND SizeAnnotationForArray(indent) FOR ((Size) this)»
 			  «ENDIF -»
 			«ELSEIF stereotype.name == "NotEmpty" -»
 			  «IF this.isMultivalued() == false -»
-			  «EXPAND NotEmptyStringAnnotation FOR ((NotEmpty) this) -»
+			  «EXPAND NotEmptyStringAnnotation(indent) FOR ((NotEmpty) this) -»
 			  «ELSE -»
-			  «EXPAND NotEmptyArrayAnnotation FOR ((NotEmpty) this) -»
+			  «EXPAND NotEmptyArrayAnnotation(indent) FOR ((NotEmpty) this) -»
 			  «ENDIF -»
 			«ELSEIF stereotype.name == "NotBlank" -»
-			  «EXPAND NotBlankAnnotation FOR ((NotBlank) this)»
+			  «EXPAND NotBlankAnnotation(indent) FOR ((NotBlank) this)»
 			«ELSE -»
 			«ENDIF -»
 	    «ENDIF -»
@@ -47,73 +47,64 @@
 «ENDDEFINE»
 
 
-«DEFINE DecimalMinAnnotation FOR DecimalMin -»
-          minimum: «this.minValue»
-          exclusiveMinimum: «this.inclusive -»
+«DEFINE DecimalMinAnnotation(String indent) FOR DecimalMin -»
+«indent»          minimum: «this.minValue»
+«indent»          exclusiveMinimum: «this.inclusive -»
 «ENDDEFINE»
 
-«DEFINE DecimalMaxAnnotation FOR DecimalMax -»
-          maximum: «this.maxValue»
-          exclusiveMaximum: «this.inclusive -»
+«DEFINE DecimalMaxAnnotation(String indent) FOR DecimalMax -»
+«indent»          maximum: «this.maxValue»
+«indent»          exclusiveMaximum: «this.inclusive -»
 «ENDDEFINE»
 
-«DEFINE MinValueAnnotation FOR Min-»
-          minimum: «this.minValue -»
+«DEFINE MinValueAnnotation(String indent) FOR Min-»
+«indent»          minimum: «this.minValue -»
 «ENDDEFINE»
 
-«DEFINE MaxValueAnnotation FOR Max -»
-          maximum: «this.maxValue -»
+«DEFINE MaxValueAnnotation(String indent) FOR Max -»
+«indent»          maximum: «this.maxValue -»
 «ENDDEFINE»
 
-«DEFINE NegativeAnnotation FOR Negative -»
-          maximum: 0
-          exclusiveMaximum: true«ENDDEFINE»
+«DEFINE NegativeAnnotation(String indent) FOR Negative -»
+«indent»          maximum: 0
+«indent»          exclusiveMaximum: true«ENDDEFINE»
 
-«DEFINE NegativeOrZeroAnnotation FOR NegativeOrZero -»
-          maximum: 0«ENDDEFINE»
+«DEFINE NegativeOrZeroAnnotation(String indent) FOR NegativeOrZero -»
+«indent»          maximum: 0«ENDDEFINE»
 
-«DEFINE PositiveOrZeroAnnotation FOR PositiveOrZero -»
-          minimum: 0«ENDDEFINE»
+«DEFINE PositiveOrZeroAnnotation(String indent) FOR PositiveOrZero -»
+«indent»          minimum: 0«ENDDEFINE»
 
-«DEFINE PositiveAnnotation FOR Positive -»
-          minimum: 0
-          exclusiveMinimum: true«ENDDEFINE»
+«DEFINE PositiveAnnotation(String indent) FOR Positive -»
+«indent»          minimum: 0
+«indent»          exclusiveMinimum: true«ENDDEFINE»
 
-«DEFINE SizeAnnotation FOR Size -»
+«DEFINE SizeAnnotation(String indent) FOR Size -»
           «IF min != -1 && max != -1 -»
-          minLength: «min»
-          maxLength: «max»«ELSE-»
+«indent»          minLength: «min»
+«indent»          maxLength: «max»«ELSE-»
               «IF min != -1-»
-          minLength: «min»«ELSE -»
+«indent»          minLength: «min»«ELSE -»
                   «IF max != -1 -»
-          maxLength: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
+«indent»          maxLength: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
 
-«DEFINE SizeAnnotationForArray FOR Size -»
+«DEFINE SizeAnnotationForArray(String indent) FOR Size -»
           «IF min != -1 && max != -1 -»
-          minItems: «min»
-          maxItems: «max»«ELSE-»
+«indent»          minItems: «min»
+«indent»          maxItems: «max»«ELSE-»
               «IF min != -1-»
-          minItems: «min»«ELSE -»
+«indent»          minItems: «min»«ELSE -»
                   «IF max != -1 -»
-          maxItems: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
+«indent»          maxItems: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
 
-«DEFINE NotEmptyStringAnnotation FOR NotEmpty -»
-          minLength: 1
+«DEFINE NotEmptyStringAnnotation(String indent) FOR NotEmpty -»
+«indent»          minLength: 1
 «ENDDEFINE»
 
-«DEFINE NotEmptyArrayAnnotation FOR NotEmpty -»
-          minItems: 1
+«DEFINE NotEmptyArrayAnnotation(String indent) FOR NotEmpty -»
+«indent»          minItems: 1
 «ENDDEFINE»
 
-«DEFINE NotBlankAnnotation FOR NotBlank -»
-          minLength: 1
+«DEFINE NotBlankAnnotation(String indent) FOR NotBlank -»
+«indent»          minLength: 1
 «ENDDEFINE»
-
-«DEFINE ValidationAnnotationBasics FOR Validation»
-«IF errorCode > 0», message = "«errorCode»"«ENDIF» «IF severity.name != "NotUsed"», payload = com.anaptecs.jeaf.tools.api.validation.Severity.«severity.name».class«ENDIF»
-«ENDDEFINE»
-
-«DEFINE ValidationAnnotationBasicsEmptyValidation FOR Validation -»
-«IF errorCode > 0»message = "«errorCode»"«ENDIF» «IF errorCode > 0 && severity.name != "NotUsed"», «ENDIF» «IF severity.name != "NotUsed"»payload = com.anaptecs.jeaf.tools.api.validation.Severity.«severity.name».class«ENDIF -»
-«ENDDEFINE»
-
