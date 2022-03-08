@@ -24,6 +24,7 @@ import com.anaptecs.jeaf.core.api.JEAF;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
+import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
@@ -201,6 +202,28 @@ public class ProductServiceResource {
   public Response createChannelCodeFromObject( ChannelCode pChannelCode ) {
     ProductService lService = JEAF.getService(ProductService.class);
     ChannelCode lResult = lService.createChannelCodeFromObject(pChannelCode);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#addCurrencies()}
+   */
+  @Path("currencies")
+  @POST
+  public Response addCurrencies( List<CurrencyCode> pCurrencies ) {
+    ProductService lService = JEAF.getService(ProductService.class);
+    List<CurrencyCode> lResult = lService.addCurrencies(pCurrencies);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#isCurrencySupported()}
+   */
+  @Path("currencies/valid")
+  @POST
+  public Response isCurrencySupported( CurrencyCode pCurrency ) {
+    ProductService lService = JEAF.getService(ProductService.class);
+    CurrencyCode lResult = lService.isCurrencySupported(pCurrency);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 }

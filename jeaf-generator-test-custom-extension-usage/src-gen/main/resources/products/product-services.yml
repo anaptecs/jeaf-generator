@@ -1,8 +1,8 @@
 openapi: 3.0.0
 
 servers:
-  - url: https://accounting.jeaf.de
   - url: http://localhost:8080/test
+  - url: https://accounting.jeaf.de
   - url: https://demo-jeaf.anaptecs.de
   - url: https://test-jeaf.anaptecs.de
   - url: https://jeaf.anaptecs.de
@@ -182,8 +182,8 @@ paths:
             application/json:
               schema:
                 type: string
-                nullable: false
                 example: 'MOBILE_APP'
+                nullable: false
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -438,19 +438,19 @@ paths:
       operationId: createChannelCodeFromObject
       requestBody:
         description: >- 
-          TODO Please add comment
+          Channel Code that should be created.
         required: false
         content:
           application/json:
             schema:
                 type: string
-                nullable: false
                 example: 'MOBILE_APP'
+                nullable: false
           application/xml:
             schema:
                 type: string
-                nullable: false
                 example: 'MOBILE_APP'
+                nullable: false
       responses:
         '200':
           description: >- 
@@ -459,8 +459,101 @@ paths:
             application/json:
               schema:
                 type: string
-                nullable: false
                 example: 'MOBILE_APP'
+                nullable: false
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/currencies:
+    post:
+      operationId: addCurrencies
+      requestBody:
+        description: >- 
+          TODO Please add comment
+        required: false
+        content:
+          application/json:
+            schema:
+                description: >-
+                  ISO 4217 currency code.
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 3
+                  example: 'CHF'
+                minItems: 1
+                example: '["CHF", "EUR", "USD"]'
+          application/xml:
+            schema:
+                description: >-
+                  ISO 4217 currency code.
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 3
+                  example: 'CHF'
+                minItems: 1
+                example: '["CHF", "EUR", "USD"]'
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+          content:  
+            application/json:
+              schema:
+                description: >-
+                  ISO 4217 currency code.
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 3
+                  example: 'CHF'
+                minItems: 1
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/currencies/valid:
+    post:
+      operationId: isCurrencySupported
+      requestBody:
+        description: >- 
+          TODO Please add comment
+        required: false
+        content:
+          application/json:
+            schema:
+                description: >-
+                  ISO 4217 currency code.
+                type: string
+                minLength: 3
+                maxLength: 3
+                example: 'CHF'
+          application/xml:
+            schema:
+                description: >-
+                  ISO 4217 currency code.
+                type: string
+                minLength: 3
+                maxLength: 3
+                example: 'CHF'
+      responses:
+        '200':
+          description: >- 
+            TODO Please add comment
+          content:  
+            application/json:
+              schema:
+                description: >-
+                  ISO 4217 currency code.
+                type: string
+                minLength: 3
+                maxLength: 3
+                example: 'CHF'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':

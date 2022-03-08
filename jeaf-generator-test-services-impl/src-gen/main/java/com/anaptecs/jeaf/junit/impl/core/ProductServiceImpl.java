@@ -11,6 +11,7 @@ import com.anaptecs.jeaf.core.api.Component;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
+import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
@@ -191,12 +192,35 @@ final class ProductServiceImpl extends ProductServiceImplBase {
 
   /**
    * 
-   * @param pChannelCode
+   * @param pChannelCode Channel Code that should be created.
+   * 
    * @return {@link ChannelCode} Created channel code
    * 
    */
   @Override
   public ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode ) {
+    // TODO Implement method and return real result
+    return null;
+  }
+
+  /**
+   * 
+   * @param pCurrencies
+   * @return {@link CurrencyCode}
+   */
+  @Override
+  public List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies ) {
+    // TODO Implement method and return real result
+    return null;
+  }
+
+  /**
+   * 
+   * @param pCurrency
+   * @return {@link CurrencyCode}
+   */
+  @Override
+  public CurrencyCode isCurrencySupported( CurrencyCode pCurrency ) {
     // TODO Implement method and return real result
     return null;
   }

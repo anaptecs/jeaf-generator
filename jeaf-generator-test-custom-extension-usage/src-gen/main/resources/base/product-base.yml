@@ -90,8 +90,8 @@ components:
           $ref: '#/components/schemas/ChannelType'
         channelCode: 
           type: string
-          nullable: false
           example: 'MOBILE_APP'
+          nullable: false
         code: 
           type: integer
           format: int32
@@ -156,9 +156,9 @@ components:
             type: string
             minLength: 3
             maxLength: 3
+            example: 'CHF'
           minItems: 7
           maxItems: 42
-          example: 'CHF'
         productCodes: 
           type: array
           items:

@@ -21,6 +21,9 @@ abstract class ProductServiceImplBase implements ProductService, ServiceImplemen
   /*
    * The following constants define the names of all authorization types of the service.
    */
+  public static final String ADDCURRENCIES_AUTH_TYPE =
+      "addCurrencies.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
   public static final String CREATECHANNELCODEFROMOBJECT_AUTH_TYPE =
       "createChannelCodeFromObject.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 
@@ -59,6 +62,9 @@ abstract class ProductServiceImplBase implements ProductService, ServiceImplemen
 
   public static final String GETSORTIMENT_AUTH_TYPE =
       "getSortiment.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
+  public static final String ISCURRENCYSUPPORTED_AUTH_TYPE =
+      "isCurrencySupported.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 
   public static final String LOADSPECIFICTHINGS_AUTH_TYPE =
       "loadSpecificThings.com.anaptecs.jeaf.junit.openapi.service1.ProductService";

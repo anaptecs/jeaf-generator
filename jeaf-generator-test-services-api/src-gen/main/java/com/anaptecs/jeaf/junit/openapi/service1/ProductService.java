@@ -14,6 +14,7 @@ import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
+import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
@@ -124,9 +125,24 @@ public interface ProductService extends Service {
 
   /**
    * 
-   * @param pChannelCode
+   * @param pChannelCode Channel Code that should be created.
+   * 
    * @return {@link ChannelCode} Created channel code
    * 
    */
   ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode );
+
+  /**
+   * 
+   * @param pCurrencies
+   * @return {@link CurrencyCode}
+   */
+  List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies );
+
+  /**
+   * 
+   * @param pCurrency
+   * @return {@link CurrencyCode}
+   */
+  CurrencyCode isCurrencySupported( CurrencyCode pCurrency );
 }

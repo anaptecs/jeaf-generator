@@ -92,6 +92,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testDeprecatedParams( ) throws Exception;
 
   /**
+   * Method test the implementation of service method isCurrencySupported(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testIsCurrencySupported( ) throws Exception;
+
+  /**
    * Method test the implementation of service method createProduct(...)
    * 
    * @throws Exception if the test fails.
@@ -104,6 +111,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testCreateChannelCodeFromObject( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method addCurrencies(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testAddCurrencies( ) throws Exception;
 
   /**
    * Method test the implementation of service method getSortiment(...)
