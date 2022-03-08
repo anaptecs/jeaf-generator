@@ -184,6 +184,11 @@ paths:
                 type: string
                 example: 'MOBILE_APP'
                 nullable: false
+            application/xml:
+              schema:
+                type: string
+                example: 'MOBILE_APP'
+                nullable: false
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':

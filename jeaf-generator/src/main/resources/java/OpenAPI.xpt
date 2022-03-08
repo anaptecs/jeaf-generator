@@ -257,7 +257,7 @@ components:
             Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
             «ENDIF-»
           content:  
-            «FOREACH service.produces AS contentType-»
+            «FOREACH service.produces.unifyMediaTypes(operation.produces) AS contentType-»
             «contentType.toOpenAPIContentType()»:
               schema:
                 «IF returnParam.type.isOpenAPIDataType() -»

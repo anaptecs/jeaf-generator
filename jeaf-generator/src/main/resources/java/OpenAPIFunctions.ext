@@ -71,6 +71,9 @@ boolean isTopOfClassHierarchy(uml::Class class) :
 String toOpenAPIContentType(JMM::MediaType mediaType) :
    toOpenAPIContentType(mediaType.toString());
    
+Set[JMM::MediaType] unifyMediaTypes(Collection[JMM::MediaType] mediaTypes1, Collection[JMM::MediaType] mediaTypes2):
+   mediaTypes1.toSet().addAll(mediaTypes2);
+   
 String toOpenAPIContentType(String mediaType) :
    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.toOpenAPIContentType(java.lang.String);
    
