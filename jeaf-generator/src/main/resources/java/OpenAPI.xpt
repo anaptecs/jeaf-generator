@@ -202,7 +202,7 @@ components:
           «ENDIF-»
         required: «param.isRequired()»
         content:
-          «FOREACH getAllMediaTypes(service.consumes, operation.consumes) AS mediaType-»
+          «FOREACH unifyMediaTypes(service.consumes, operation.consumes) AS mediaType-»
           «mediaType.toOpenAPIContentType()»:
             schema:
               «IF param.type.isOpenAPIDataType() -»
@@ -257,7 +257,7 @@ components:
             Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
             «ENDIF-»
           content:  
-            «FOREACH service.produces.unifyMediaTypes(operation.produces) AS contentType-»
+            «FOREACH unifyMediaTypes(service.produces, operation.produces) AS contentType-»
             «contentType.toOpenAPIContentType()»:
               schema:
                 «IF returnParam.type.isOpenAPIDataType() -»

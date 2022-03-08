@@ -326,10 +326,6 @@ paths:
             schema:
               type: string
               deprecated: true
-          application/xml:
-            schema:
-              type: string
-              deprecated: true
       responses:
         '200':
           description: >- 
@@ -354,9 +350,6 @@ paths:
         required: false
         content:
           application/json:
-            schema:
-              $ref: '../base/product-base.yml#/components/schemas/Product'
-          application/xml:
             schema:
               $ref: '../base/product-base.yml#/components/schemas/Product'
       responses:
@@ -451,11 +444,6 @@ paths:
                 type: string
                 example: 'MOBILE_APP'
                 nullable: false
-          application/xml:
-            schema:
-                type: string
-                example: 'MOBILE_APP'
-                nullable: false
       responses:
         '200':
           description: >- 
@@ -479,18 +467,6 @@ paths:
         required: false
         content:
           application/json:
-            schema:
-                description: >-
-                  ISO 4217 currency code.
-                type: array
-                items:
-                  type: string
-                  minLength: 3
-                  maxLength: 3
-                  example: 'CHF'
-                minItems: 1
-                example: '["CHF", "EUR", "USD"]'
-          application/xml:
             schema:
                 description: >-
                   ISO 4217 currency code.
@@ -531,14 +507,6 @@ paths:
         required: false
         content:
           application/json:
-            schema:
-                description: >-
-                  ISO 4217 currency code.
-                type: string
-                minLength: 3
-                maxLength: 3
-                example: 'CHF'
-          application/xml:
             schema:
                 description: >-
                   ISO 4217 currency code.

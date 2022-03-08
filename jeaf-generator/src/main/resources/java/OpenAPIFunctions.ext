@@ -44,8 +44,7 @@ String getOpenAPIType(uml::Type type, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);
     
 String getResponseType(uml::Type type, JMM::OpenAPI3Specification spec):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getResponseType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);
-    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getResponseType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);    
 
 String getOpenAPIFormat(uml::Type type):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIFormat(org.eclipse.uml2.uml.Type);
@@ -128,9 +127,6 @@ boolean hasRequestBody(uml::Operation operation, JMM::HTTPMethod httpMethod):
   
 List[uml::Parameter] getRequestBodyParameters(uml::Operation operation):
   operation.ownedParameter.select(e|e.isInputParameter() && e.isOpenAPIInputParameter() == false && e.isBeanParamater() == false);
-  
-Set[JMM::MediaType] getAllMediaTypes(Collection[JMM::MediaType] serviceMediaTypes, Collection[JMM::MediaType] operationMediaType):
-  serviceMediaTypes.addAll(operationMediaType).toSet();
   
 boolean hasReturnTypeVoid(uml::Operation operation):
   getReturnTypeName(operation) == "void";
