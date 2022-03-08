@@ -5,10 +5,10 @@
  */
 package com.anaptecs.jeaf.junit.core;
 
-import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
@@ -450,18 +450,17 @@ public class TestServiceObject implements ServiceObject {
    */
   protected StringBuilder toStringBuilder( ) {
     StringBuilder lBuilder = new StringBuilder(256);
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "key", "" + key));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "key", "" + key));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "info", "" + info));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "info", "" + info));
     lBuilder.append('\n');
-    lBuilder
-        .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "someTest", "" + someTest));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "someTest", "" + someTest));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "dummy1", "" + dummy1));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "dummy1", "" + dummy1));
     lBuilder.append('\n');
     return lBuilder;
   }

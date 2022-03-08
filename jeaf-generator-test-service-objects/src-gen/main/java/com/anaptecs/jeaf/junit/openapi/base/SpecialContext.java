@@ -7,9 +7,9 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Locale;
 
-import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
 /**
  * @author JEAF Generator
@@ -225,8 +225,8 @@ public class SpecialContext extends Context {
    */
   protected StringBuilder toStringBuilder( ) {
     StringBuilder lBuilder = super.toStringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "specificHeader",
-        "" + specificHeader));
+    lBuilder.append(
+        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "specificHeader", "" + specificHeader));
     lBuilder.append('\n');
     return lBuilder;
   }

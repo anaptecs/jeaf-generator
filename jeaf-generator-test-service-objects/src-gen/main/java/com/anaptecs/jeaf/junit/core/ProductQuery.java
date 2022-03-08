@@ -5,9 +5,9 @@
  */
 package com.anaptecs.jeaf.junit.core;
 
-import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.QueryObject;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
 /**
  * @author JEAF Generator
@@ -193,23 +193,21 @@ public class ProductQuery extends QueryObject {
    */
   protected StringBuilder toStringBuilder( ) {
     StringBuilder lBuilder = new StringBuilder(256);
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "name", "" + name));
-    lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "minAvailability",
-        "" + minAvailability));
-    lBuilder.append('\n');
-    lBuilder
-        .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "minPrice", "" + minPrice));
-    lBuilder.append('\n');
-    lBuilder
-        .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "maxPrice", "" + maxPrice));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "name", "" + name));
     lBuilder.append('\n');
     lBuilder.append(
-        XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "manufacturer", "" + manufacturer));
+        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "minAvailability", "" + minAvailability));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "minPrice", "" + minPrice));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "maxPrice", "" + maxPrice));
+    lBuilder.append('\n');
+    lBuilder.append(
+        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "manufacturer", "" + manufacturer));
     lBuilder.append('\n');
     return lBuilder;
   }

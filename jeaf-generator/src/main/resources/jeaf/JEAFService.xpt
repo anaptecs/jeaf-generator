@@ -44,7 +44,7 @@ import java.io.Serializable;
 import com.anaptecs.jeaf.core.servicechannel.api.Command;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
-import com.anaptecs.jeaf.core.api.MessageConstants;
+import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 import com.anaptecs.jeaf.xfun.api.XFun;
@@ -147,7 +147,7 @@ final class «this.getCommandClassName()» extends Command {
         SERVICE_METHOD = «targetService.name».class.getMethod("«this.name»"«IF this.ownedParameter.size > 1», «this.getParameterTypeNames()»«ENDIF»);
       }
       catch (NoSuchMethodException e) {
-        throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, «targetService.name».class.getName(), "«this.name»(«this.getParameterTypeNames()»)");
+        throw new JEAFSystemException(com.anaptecs.jeaf.core.api.MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, «targetService.name».class.getName(), "«this.name»(«this.getParameterTypeNames()»)");
       }
     }
 
@@ -192,7 +192,7 @@ final class «this.getCommandClassName()» extends Command {
      
     // Trace service call.
     Trace lTrace = XFun.getTrace();
-    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod() );
+    lTrace.write(com.anaptecs.jeaf.core.api.MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod() );
     
     «IF getReturnTypeName() != "void"»
     long lStartTime = System.nanoTime();
@@ -201,7 +201,7 @@ final class «this.getCommandClassName()» extends Command {
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
 
     // Trace result of service call.
-    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    lTrace.write(com.anaptecs.jeaf.core.api.MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
     
     return lResult;
     «ELSE»
@@ -211,7 +211,7 @@ final class «this.getCommandClassName()» extends Command {
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
 
     // Trace result of service call.
-    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    lTrace.write(com.anaptecs.jeaf.core.api.MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
     
     // Method has no return type thus the method returns null.
     return null;

@@ -11,9 +11,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
@@ -514,10 +514,10 @@ public class ChildBB extends ChildB {
    */
   protected StringBuilder toStringBuilder( ) {
     StringBuilder lBuilder = super.toStringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "childBBAttribute",
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "childBBAttribute",
         "" + childBBAttribute));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "deprecatedAttribute",
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "deprecatedAttribute",
         "" + deprecatedAttribute));
     lBuilder.append('\n');
     return lBuilder;

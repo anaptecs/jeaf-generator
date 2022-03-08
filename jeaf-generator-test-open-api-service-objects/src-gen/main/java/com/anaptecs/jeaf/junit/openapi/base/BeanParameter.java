@@ -10,10 +10,10 @@ import java.util.Locale;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.QueryParam;
 
-import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
@@ -275,18 +275,16 @@ public class BeanParameter implements ServiceObject {
    */
   protected StringBuilder toStringBuilder( ) {
     StringBuilder lBuilder = new StringBuilder(256);
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
-    lBuilder.append('\n');
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "accessToken", "" + accessToken));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
     lBuilder.append('\n');
     lBuilder
-        .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "language", "" + language));
+        .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "accessToken", "" + accessToken));
     lBuilder.append('\n');
-    lBuilder
-        .append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "oldStyle", "" + oldStyle));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "language", "" + language));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "oldStyle", "" + oldStyle));
     lBuilder.append('\n');
     return lBuilder;
   }

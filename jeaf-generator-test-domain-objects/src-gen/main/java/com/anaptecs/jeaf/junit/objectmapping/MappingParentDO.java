@@ -7,8 +7,8 @@ package com.anaptecs.jeaf.junit.objectmapping;
 
 import com.anaptecs.jeaf.core.api.DomainObject;
 import com.anaptecs.jeaf.core.api.DomainObjectID;
-import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
 /**
  * @author JEAF Generator
@@ -75,11 +75,11 @@ public class MappingParentDO extends DomainObject {
    */
   protected StringBuilder toStringBuilder( ) {
     StringBuilder lBuilder = new StringBuilder(256);
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "name", "" + name));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "name", "" + name));
     lBuilder.append('\n');
     return lBuilder;
   }

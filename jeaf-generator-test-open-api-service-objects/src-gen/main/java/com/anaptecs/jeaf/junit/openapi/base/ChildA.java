@@ -5,8 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
 /**
  * @author JEAF Generator
@@ -129,8 +129,8 @@ public abstract class ChildA extends ParentClass {
    */
   protected StringBuilder toStringBuilder( ) {
     StringBuilder lBuilder = super.toStringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "childAAttribute",
-        "" + childAAttribute));
+    lBuilder.append(
+        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "childAAttribute", "" + childAAttribute));
     lBuilder.append('\n');
     return lBuilder;
   }

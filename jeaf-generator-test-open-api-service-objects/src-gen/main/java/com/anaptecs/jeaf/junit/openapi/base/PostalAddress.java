@@ -5,10 +5,10 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
@@ -310,19 +310,19 @@ public class PostalAddress implements ServiceObject {
    */
   protected StringBuilder toStringBuilder( ) {
     StringBuilder lBuilder = new StringBuilder(256);
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "street", "" + street));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "street", "" + street));
     lBuilder.append('\n');
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "houseNumber", "" + houseNumber));
+    lBuilder
+        .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "houseNumber", "" + houseNumber));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "city", "" + city));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "city", "" + city));
     lBuilder.append('\n');
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "postalCode", "" + postalCode));
+    lBuilder
+        .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "postalCode", "" + postalCode));
     lBuilder.append('\n');
     return lBuilder;
   }

@@ -11,10 +11,10 @@ import java.util.Set;
 import javax.validation.constraints.Pattern;
 
 import com.anaptecs.jeaf.core.api.AbstractObjectID;
-import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
 /**
  * @author JEAF Generator
@@ -242,7 +242,7 @@ public class SwiftAccount extends Account {
    */
   protected StringBuilder toStringBuilder( ) {
     StringBuilder lBuilder = super.toStringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "bic", "" + bic));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "bic", "" + bic));
     lBuilder.append('\n');
     return lBuilder;
   }

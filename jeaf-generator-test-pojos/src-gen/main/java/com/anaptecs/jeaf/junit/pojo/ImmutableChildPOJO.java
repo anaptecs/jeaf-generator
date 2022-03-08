@@ -5,9 +5,9 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
-import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
 /**
  * @author JEAF Generator
@@ -212,10 +212,10 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
    */
   protected StringBuilder toStringBuilder( ) {
     StringBuilder lBuilder = super.toStringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "childAttribute",
-        "" + childAttribute));
+    lBuilder.append(
+        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "childAttribute", "" + childAttribute));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "anotherChildAttribute",
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "anotherChildAttribute",
         "" + anotherChildAttribute));
     lBuilder.append('\n');
     return lBuilder;

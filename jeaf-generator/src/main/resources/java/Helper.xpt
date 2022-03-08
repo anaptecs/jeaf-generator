@@ -9,16 +9,16 @@
   protected StringBuilder toStringBuilder( ) {
     «IF this.superClass.isEmpty == true»
     StringBuilder lBuilder = new StringBuilder(256);
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
     lBuilder.append('\n');
     «ELSE»
     StringBuilder lBuilder = super.toStringBuilder();
     «ENDIF»
     «FOREACH this.ownedAttribute AS attribute»
     «IF attribute.association == null && attribute.isMultivalued() == false»
-    lBuilder.append(XFun.getMessageRepository().getMessage(MessageConstants.OBJECT_ATTRIBUTE, "«attribute.name»", "" + «attribute.name»));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "«attribute.name»", "" + «attribute.name»));
     lBuilder.append('\n');
     «ENDIF»
     «ENDFOREACH»
