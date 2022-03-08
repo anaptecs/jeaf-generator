@@ -9,11 +9,17 @@ import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
+@JsonSubTypes({ @JsonSubTypes.Type(value = BChildPOJO.class, name = "BChildPOJO") })
 public class BParentPOJO {
   /**
    * Constant for the name of attribute "parentAttribute".

@@ -17,6 +17,13 @@
 			<artifactId>jeaf-core-api</artifactId>
 			<version>${jeaf.core.api.version}</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -54,6 +61,8 @@
 
 					<!-- Define what should be generated. By default nothing is generated. -->
 					<generatePOJOs>true</generatePOJOs>
+					<generateJacksonAnnotations>true</generateJacksonAnnotations>
+					<enableSemVerForJSON>true</enableSemVerForJSON>
 
 					<!-- Define information that are written to file headers -->
 					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>

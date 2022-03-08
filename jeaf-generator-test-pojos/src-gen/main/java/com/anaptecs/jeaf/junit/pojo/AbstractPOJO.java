@@ -8,11 +8,19 @@ package com.anaptecs.jeaf.junit.pojo;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
+@JsonSubTypes({ @JsonSubTypes.Type(value = ImmutablePOJOParent.class, name = "ImmutablePOJOParent"),
+  @JsonSubTypes.Type(value = ImmutableChildPOJO.class, name = "ImmutableChildPOJO"),
+  @JsonSubTypes.Type(value = MutableChildPOJO.class, name = "MutableChildPOJO") })
 public abstract class AbstractPOJO {
   /**
    * Constant for the name of attribute "abtractAttr".

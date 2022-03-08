@@ -12,11 +12,16 @@ import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIdentityInfo(property = "objectID", generator = PropertyGenerator.class)
 public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
   /**
    * Constant for the name of attribute "attr".

@@ -9,7 +9,7 @@
 
 
 «DEFINE JacksonClassAnnotations FOR Class»
-	«IF generateJacksonAnnotations()»
+	«IF generateJacksonAnnotations() && this.isStereotypeApplied("BeanParam") == false»
 		«IF enableSemVerForJSON() == true»
 		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
 		«ENDIF»

@@ -11,11 +11,13 @@ import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class PlainPOJOBase {
   /**
    * Constant for the name of attribute "hello".
