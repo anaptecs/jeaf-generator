@@ -580,8 +580,6 @@ public class GeneratorMojo extends AbstractMojo {
     }
     if (generateJacksonAnnotations) {
       lLog.info("Generate Jackson annotations:             " + generateJacksonAnnotations);
-    }
-    if (enableSemVerForJSON) {
       lLog.info("Enable SemVer for JSON serialization:     " + enableSemVerForJSON);
     }
     if (generateMessageConstants) {
