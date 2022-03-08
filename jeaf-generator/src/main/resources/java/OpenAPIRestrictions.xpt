@@ -4,7 +4,7 @@
 «EXTENSION java::CustomValidationCommons»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
-«DEFINE OpenAPIRestrictions(String indent) FOR Property -»
+«DEFINE OpenAPIRestrictions(String indent) FOR MultiplicityElement -»
     «FOREACH this.getAppliedStereotypes() AS stereotype -»
 	    «IF stereotype.isValidationStereotype() -»
 			«IF stereotype.name == "DecimalMin" -»
@@ -42,7 +42,7 @@
 	    «ENDIF -»
 	«ENDFOREACH -»
     «IF this.isMultivalued() == true && this.lower > 0 && this.getAppliedStereotypes().select(e|e.name== "Size").size == 0 -»
-          minItems: «this.lower»
+«indent»          minItems: «this.lower»
     «ENDIF -»
 «ENDDEFINE»
 

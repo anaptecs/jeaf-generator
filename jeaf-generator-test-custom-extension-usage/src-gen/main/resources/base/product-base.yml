@@ -154,6 +154,8 @@ components:
           type: array
           items:
             type: string
+            minLength: 3
+            maxLength: 3
           minItems: 7
           maxItems: 42
           example: 'CHF'
@@ -162,6 +164,8 @@ components:
           items:
             type: integer
             format: int32
+            minimum: 0
+            exclusiveMinimum: true
           minItems: 1
       required:
         - image

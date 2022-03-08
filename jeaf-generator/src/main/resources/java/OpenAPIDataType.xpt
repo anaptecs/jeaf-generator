@@ -20,6 +20,11 @@
               «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
           deprecated: true
               «ENDIF-»
+              «IF attribute.hasExample()-»
+                «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
+          example: '«((OpenAPIExample) attribute).exampleValue»'
+                «ENDIF-»
+              «ENDIF-»
             «ELSE-»
           type: array
           items:
@@ -28,6 +33,11 @@
             format: «attribute.type.getOpenAPIFormat()»
               «ENDIF-»
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("  ") FOR attribute-»
+            «IF attribute.hasExample()-»
+              «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
+            example: '«((OpenAPIExample) attribute).exampleValue»'
+              «ENDIF-»
+            «ENDIF-»
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR ownerAttribute-»
               «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
             deprecated: true
@@ -45,41 +55,51 @@
           «IF attribute.defaultValue != null -»
           default: «attribute.defaultValue.stringValue()»
           «ENDIF-»
-            «IF attribute.hasExample()-»
-              «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
-          example: '«((OpenAPIExample) attribute).exampleValue»'
+            «IF ownerAttribute.hasExample()-»
+              «IF ((OpenAPIExample) ownerAttribute).exampleValue.length > 0-»
+          example: '«((OpenAPIExample) ownerAttribute).exampleValue»'
               «ENDIF-»
             «ENDIF-»
           «ENDLET -»
 «ENDDEFINE»
 
-«DEFINE GenerateOpenAPIDataTypeForPath(OpenAPI3Specification spec) FOR OpenAPIDataType -»
+«DEFINE GenerateOpenAPIDataTypeForPath(OpenAPI3Specification spec, Parameter param) FOR OpenAPIDataType -»
                 «LET this.ownedAttribute.get(0) AS attribute -»
                 «IF attribute.hasComment()-»
                 description: >-
-                «attribute.getCommentForOpenAPIDescription("            ")»
+                  «attribute.getCommentForOpenAPIDescription("                  ")»
                 «ENDIF-»
-                «IF attribute.type.isBasicOpenAPIType() == true-»
-                «IF attribute.isMultivalued() == false-»
+                «IF param.isMultivalued() == false-»
                 type: «attribute.type.getOpenAPIType(spec)»
-                «IF attribute.type.hasOpenAPIFormat()-»
+                  «IF attribute.type.hasOpenAPIFormat()-»
                 format: «attribute.type.getOpenAPIFormat()»
-                «ENDIF-»
-                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR attribute-»    
-                «IF attribute.isDeprecated() -»
+                  «ENDIF-»
+                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR attribute-»    
+                  «IF attribute.isDeprecated() || param.isDeprecated() -»
                 deprecated: true
-                «ENDIF-»
+                  «ENDIF-»
+                  «IF attribute.hasExample()-»
+                    «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
+                example: '«((OpenAPIExample) attribute).exampleValue»'
+                    «ENDIF-»
+                  «ENDIF-»
                 «ELSE-»
                 type: array
                 items:
-                type: «attribute.type.getOpenAPIType(spec)»
-                «IF attribute.type.hasOpenAPIFormat()-»
-                format: «attribute.type.getOpenAPIFormat()»
-                «ENDIF-»
-                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR attribute-»              
-                «IF attribute.isDeprecated() -»
+                  type: «attribute.type.getOpenAPIType(spec)»
+                  «IF attribute.type.hasOpenAPIFormat()-»
+                  format: «attribute.type.getOpenAPIFormat()»
+                  «ENDIF-»
+                  «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR attribute-»
+                  «IF attribute.hasExample()-»
+                  «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
+                  example: '«((OpenAPIExample) attribute).exampleValue»'
+                  «ENDIF-»
+                  «ENDIF-»
+                  «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
+                  «IF attribute.isDeprecated() || param.isDeprecated() -»
                 deprecated: true
-                «ENDIF-»
+                  «ENDIF-»
                 «ENDIF-»
                 «IF attribute.isNullable() == false -»
                 nullable: «attribute.isNullable()»
@@ -93,22 +113,9 @@
                 «IF attribute.defaultValue != null -»
                 default: «attribute.defaultValue.stringValue()»
                 «ENDIF-»
-                «IF attribute.hasExample()-»
-                «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
-                example: '«((OpenAPIExample) attribute).exampleValue»'
-                «ENDIF-»
-                «ENDIF-»
-                «ELSE-»
-                «IF attribute.isDeprecated() -»
-                # Attribute "«attribute.name»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
-                «ENDIF-»
-                «IF attribute.isMultivalued() == false-»
-                $ref: «attribute.type.getOpenAPIType(spec)»
-                «ELSE-»
-                type: array
-                items:
-                $ref: «attribute.type.getOpenAPIType(spec)»
-                minItems: «attribute.getLower()»
+                «IF param.hasExample()-»
+                «IF ((OpenAPIExample) param).exampleValue.length > 0-»
+                example: '«((OpenAPIExample) param).exampleValue»'
                 «ENDIF-»
                 «ENDIF-»
                 «ENDLET -»
