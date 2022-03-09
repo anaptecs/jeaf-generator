@@ -63,7 +63,7 @@ public class CurrencyCode implements ServiceObject {
      * ISO 4217 currency code.
      */
     @Size(min = 3, max = 3)
-    private String code;
+    private String code = "CHF";
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.

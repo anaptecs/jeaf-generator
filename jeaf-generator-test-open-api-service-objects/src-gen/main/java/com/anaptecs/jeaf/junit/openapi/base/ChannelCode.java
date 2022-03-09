@@ -63,7 +63,7 @@ public class ChannelCode implements ServiceObject {
      * 
      */
     @NotNull()
-    private String code;
+    private String code = "WEBSHOP";
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.

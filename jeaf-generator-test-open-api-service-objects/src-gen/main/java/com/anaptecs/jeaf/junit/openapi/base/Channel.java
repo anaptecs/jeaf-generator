@@ -67,7 +67,7 @@ public class Channel implements ServiceObject {
    */
   protected Channel( ) {
     code = 0;
-    selfServiceChannel = false;
+    selfServiceChannel = true;
   }
 
   /**
@@ -108,7 +108,7 @@ public class Channel implements ServiceObject {
     /**
      * 
      */
-    private boolean selfServiceChannel;
+    private boolean selfServiceChannel = true;
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
