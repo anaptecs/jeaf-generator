@@ -36,7 +36,7 @@
 			  «EXPAND NotEmptyArrayAnnotation(indent) FOR ((NotEmpty) this) -»
 			  «ENDIF -»
 			«ELSEIF stereotype.name == "NotBlank" -»
-			  «EXPAND NotBlankAnnotation(indent) FOR ((NotBlank) this)»
+			  «EXPAND NotBlankAnnotation(indent) FOR ((NotBlank) this) -»
 			«ELSE -»
 			«ENDIF -»
 	    «ENDIF -»
