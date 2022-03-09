@@ -283,7 +283,7 @@ public class OpenAPIHelper {
 
   public static void registerLocalType( org.eclipse.uml2.uml.NamedElement pClass, Component pSpec ) {
     String lFQN = Naming.getFullyQualifiedName(pClass);
-    XFun.getTrace().info("Registering local type " + lFQN + " with " + pSpec.getName() + ":" + pClass.getName());
+    XFun.getTrace().debug("Registering local type " + lFQN + " with " + pSpec.getName() + ":" + pClass.getName());
     complexTypes.put(lFQN, new OpenAPIType(pClass, pSpec, lFQN));
   }
 
