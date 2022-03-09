@@ -172,6 +172,9 @@ components:
             		«IF property.type.hasOpenAPIFormat()-»
             format: «property.type.getOpenAPIFormat()»
             		«ENDIF-»
+                    «IF property.defaultValue != null -»
+            default: «property.defaultValue.stringValue()»
+                    «ENDIF-»
             	«ELSE-»
             type: array
             items:
@@ -187,6 +190,9 @@ components:
                 «ENDIF-»
             «ELSE -»
             type: string
+                «IF property.defaultValue != null -»
+            default: '«property.defaultValue.stringValue()»'
+                «ENDIF-»
             «ENDIF-»
         «ENDFOREACH-»
         «ENDFOREACH-»

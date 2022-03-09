@@ -16,6 +16,9 @@
               «IF attribute.type.hasOpenAPIFormat()-»
           format: «attribute.type.getOpenAPIFormat()»
               «ENDIF-»
+          «IF attribute.defaultValue != null -»
+          default: «attribute.defaultValue.stringValue()»
+          «ENDIF-»
           «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR attribute-»    
               «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
           deprecated: true
@@ -31,6 +34,9 @@
             type: «attribute.type.getOpenAPIType(spec)»
               «IF attribute.type.hasOpenAPIFormat()-»
             format: «attribute.type.getOpenAPIFormat()»
+              «ENDIF-»
+              «IF attribute.defaultValue != null -»
+            default: «attribute.defaultValue.stringValue()»
               «ENDIF-»
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("  ") FOR attribute-»
             «IF attribute.hasExample()-»
@@ -52,9 +58,6 @@
           «IF attribute.isWriteOnly() -»
           writeOnly: «attribute.isWriteOnly()»
           «ENDIF-»  
-          «IF attribute.defaultValue != null -»
-          default: «attribute.defaultValue.stringValue()»
-          «ENDIF-»
             «IF ownerAttribute.hasExample()-»
               «IF ((OpenAPIExample) ownerAttribute).exampleValue.length > 0-»
           example: '«((OpenAPIExample) ownerAttribute).exampleValue»'
@@ -73,6 +76,9 @@
                 type: «attribute.type.getOpenAPIType(spec)»
                   «IF attribute.type.hasOpenAPIFormat()-»
                 format: «attribute.type.getOpenAPIFormat()»
+                  «ENDIF-»
+                  «IF attribute.defaultValue != null -»
+                default: «attribute.defaultValue.stringValue()»
                   «ENDIF-»
                 «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR attribute-»    
                   «IF attribute.isDeprecated() || param.isDeprecated() -»
@@ -110,9 +116,6 @@
                 «IF attribute.isWriteOnly() -»
                 writeOnly: «attribute.isWriteOnly()»
                 «ENDIF-»  
-                «IF attribute.defaultValue != null -»
-                default: «attribute.defaultValue.stringValue()»
-                «ENDIF-»
                 «IF param.hasExample()-»
                 «IF ((OpenAPIExample) param).exampleValue.length > 0-»
                 example: '«((OpenAPIExample) param).exampleValue»'

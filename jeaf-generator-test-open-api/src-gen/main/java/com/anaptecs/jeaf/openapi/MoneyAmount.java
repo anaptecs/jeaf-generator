@@ -28,7 +28,7 @@ public class MoneyAmount {
   private Double amount = null;
 
   @JsonProperty("currencyCode")
-  private String currencyCode = null;
+  private String currencyCode = "CHF";
 
    /**
    * The amount of money. Attribute is always set.

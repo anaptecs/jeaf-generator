@@ -1,8 +1,8 @@
 openapi: 3.0.0
 
 servers:
-  - url: http://localhost:8080/test
   - url: https://accounting.jeaf.de
+  - url: http://localhost:8080/test
 
 info:
   title: Product Base Definitions
@@ -76,6 +76,7 @@ components:
           description: >-
             ISO 4217 currency code.
           type: string
+          default: "CHF"
           minLength: 3
           maxLength: 3
           example: 'CHF'
@@ -90,6 +91,7 @@ components:
           $ref: '#/components/schemas/ChannelType'
         channelCode: 
           type: string
+          default: "WEBSHOP"
           example: 'MOBILE_APP'
           nullable: false
         code: 
@@ -99,6 +101,7 @@ components:
         selfServiceChannel: 
           type: boolean
           readOnly: true
+          default: true
       required:
         - code
         - selfServiceChannel
@@ -154,6 +157,7 @@ components:
           type: array
           items:
             type: string
+            default: "CHF"
             minLength: 3
             maxLength: 3
             example: 'CHF'

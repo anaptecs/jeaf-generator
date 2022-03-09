@@ -29,13 +29,13 @@ public class Channel {
   private ChannelType channelType = null;
 
   @JsonProperty("channelCode")
-  private String channelCode = null;
+  private String channelCode = "WEBSHOP";
 
   @JsonProperty("code")
   private Integer code = null;
 
   @JsonProperty("selfServiceChannel")
-  private Boolean selfServiceChannel = null;
+  private Boolean selfServiceChannel = true;
 
   public Channel channelType(ChannelType channelType) {
     this.channelType = channelType;
