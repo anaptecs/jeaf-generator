@@ -24,8 +24,8 @@
           deprecated: true
               «ENDIF-»
               «IF attribute.hasExample()-»
-                «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
-          example: '«((OpenAPIExample) attribute).exampleValue»'
+                «IF ((Example) attribute).exampleValue.length > 0-»
+          example: '«((Example) attribute).exampleValue»'
                 «ENDIF-»
               «ENDIF-»
             «ELSE-»
@@ -40,8 +40,8 @@
               «ENDIF-»
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("  ") FOR attribute-»
             «IF attribute.hasExample()-»
-              «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
-            example: '«((OpenAPIExample) attribute).exampleValue»'
+              «IF ((Example) attribute).exampleValue.length > 0-»
+            example: '«((Example) attribute).exampleValue»'
               «ENDIF-»
             «ENDIF-»
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR ownerAttribute-»
@@ -59,8 +59,8 @@
           writeOnly: «attribute.isWriteOnly()»
           «ENDIF-»  
             «IF ownerAttribute.hasExample()-»
-              «IF ((OpenAPIExample) ownerAttribute).exampleValue.length > 0-»
-          example: '«((OpenAPIExample) ownerAttribute).exampleValue»'
+              «IF ((Example) ownerAttribute).exampleValue.length > 0-»
+          example: '«((Example) ownerAttribute).exampleValue»'
               «ENDIF-»
             «ENDIF-»
           «ENDLET -»
@@ -85,8 +85,8 @@
                 deprecated: true
                   «ENDIF-»
                   «IF attribute.hasExample()-»
-                    «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
-                example: '«((OpenAPIExample) attribute).exampleValue»'
+                    «IF ((Example) attribute).exampleValue.length > 0-»
+                example: '«((Example) attribute).exampleValue»'
                     «ENDIF-»
                   «ENDIF-»
                 «ELSE-»
@@ -98,8 +98,8 @@
                   «ENDIF-»
                   «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR attribute-»
                   «IF attribute.hasExample()-»
-                  «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
-                  example: '«((OpenAPIExample) attribute).exampleValue»'
+                  «IF ((Example) attribute).exampleValue.length > 0-»
+                  example: '«((Example) attribute).exampleValue»'
                   «ENDIF-»
                   «ENDIF-»
                   «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
@@ -117,8 +117,8 @@
                 writeOnly: «attribute.isWriteOnly()»
                 «ENDIF-»  
                 «IF param.hasExample()-»
-                «IF ((OpenAPIExample) param).exampleValue.length > 0-»
-                example: '«((OpenAPIExample) param).exampleValue»'
+                «IF ((Example) param).exampleValue.length > 0-»
+                example: '«((Example) param).exampleValue»'
                 «ENDIF-»
                 «ENDIF-»
                 «ENDLET -»

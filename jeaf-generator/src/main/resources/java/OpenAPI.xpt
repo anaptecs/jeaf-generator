@@ -147,8 +147,8 @@ components:
               		«ENDIF-»
             	«ENDIF-»
                 «IF param.hasExample()-»
-                  «IF ((OpenAPIExample) param).exampleValue.length > 0-»
-            example: '«((OpenAPIExample) param).exampleValue»'
+                  «IF ((Example) param).exampleValue.length > 0-»
+            example: '«((Example) param).exampleValue»'
                   «ENDIF-»
                 «ENDIF-»
             «ENDIF-»
@@ -184,8 +184,8 @@ components:
               		«ENDIF-»
             	«ENDIF -»
                 «IF property.hasExample()-»
-                  «IF ((OpenAPIExample) property).exampleValue.length > 0-»
-            example: '«((OpenAPIExample) property).exampleValue»'
+                  «IF ((Example) property).exampleValue.length > 0-»
+            example: '«((Example) property).exampleValue»'
                   «ENDIF-»
                 «ENDIF-»
             «ELSE -»
@@ -235,8 +235,8 @@ components:
                   «ENDIF-»                
                 «ENDIF-»
                 «IF param.hasExample()-»
-                  «IF ((OpenAPIExample) param).exampleValue.length > 0-»
-              example: '«((OpenAPIExample) param).exampleValue»'
+                  «IF ((Example) param).exampleValue.length > 0-»
+              example: '«((Example) param).exampleValue»'
                   «ENDIF-»
                 «ENDIF-»
               «ELSE-»
@@ -287,8 +287,8 @@ components:
                     «ENDIF-»
                   «ENDIF-»
                   «IF returnParam.hasExample()-»
-                    «IF ((OpenAPIExample) returnParam).exampleValue.length > 0-»
-                example: '«((OpenAPIExample) returnParam).exampleValue»'
+                    «IF ((Example) returnParam).exampleValue.length > 0-»
+                example: '«((Example) returnParam).exampleValue»'
                     «ENDIF-»
                 «ENDIF-»
                 «ELSE-»
@@ -404,8 +404,8 @@ components:
           default: «attribute.defaultValue.stringValue()»
           «ENDIF-»
             «IF attribute.hasExample()-»
-              «IF ((OpenAPIExample) attribute).exampleValue.length > 0-»
-          example: '«((OpenAPIExample) attribute).exampleValue»'
+              «IF ((Example) attribute).exampleValue.length > 0-»
+          example: '«((Example) attribute).exampleValue»'
               «ENDIF-»
             «ENDIF-»
           «ELSE-»

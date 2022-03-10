@@ -135,7 +135,7 @@ uml::Parameter getReturnParameter(uml::Operation operation):
   operation.getReturnResult();
   
 boolean hasExample(uml::NamedElement element):
-  element.isStereotypeApplied("OpenAPIExample");
+  element.isStereotypeApplied("Example");
   
 boolean isNullable(uml::Property property):
   if property.isStereotypeApplied("OpenAPIProperty") 
