@@ -56,7 +56,8 @@ public abstract class ClassA_BOBase extends PersistentObject {
   private String name;
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>4711</code>
    */
   private final int readonlyDefault;
 

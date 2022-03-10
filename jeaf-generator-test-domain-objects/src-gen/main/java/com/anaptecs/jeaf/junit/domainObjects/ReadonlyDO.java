@@ -26,7 +26,8 @@ public class ReadonlyDO extends DomainObject {
   public static final String READONLY = "readonly";
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>4711</code>
    */
   private final int readonly;
 

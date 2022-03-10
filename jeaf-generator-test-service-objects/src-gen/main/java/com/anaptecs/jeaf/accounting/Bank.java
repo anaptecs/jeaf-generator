@@ -49,12 +49,14 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
   private final ServiceObjectID objectID;
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>1</code>
    */
   public static final short MUTUAL_SAVINGS = 1;
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>2</code>
    */
   public static final short PRIVATE_BANK = 2;
 

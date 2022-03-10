@@ -26,7 +26,8 @@ public class ReadonlyDefaultPOJO {
   public static final String READONLYDEFAULT = "readonlyDefault";
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>4711</code>
    */
   private final int readonlyDefault;
 

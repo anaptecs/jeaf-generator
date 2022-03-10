@@ -67,12 +67,14 @@ public abstract class BankBOBase extends PersistentObject {
   public static final String ACCOUNTS_ROLE = "accounts";
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>1</code>
    */
   public static short MUTUAL_SAVINGS = 1;
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>2</code>
    */
   public static short PRIVATE_BANK = 2;
 

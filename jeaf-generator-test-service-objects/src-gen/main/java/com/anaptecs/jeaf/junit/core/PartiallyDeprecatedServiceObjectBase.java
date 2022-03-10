@@ -79,7 +79,8 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   private Set<ValidationTestObject> deprecatedRefs = new HashSet<ValidationTestObject>();
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>4711</code>
    */
   private final int readonlyDefault;
 

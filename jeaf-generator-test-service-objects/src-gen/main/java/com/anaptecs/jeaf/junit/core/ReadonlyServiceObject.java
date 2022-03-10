@@ -37,7 +37,8 @@ public class ReadonlyServiceObject implements ServiceObject {
   private final String readonly;
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>4711</code>
    */
   private final int readonlyDefault;
 

@@ -146,7 +146,8 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   public static final String BSTRING = "bString";
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>true</code>
    */
   private boolean aBoolean;
 
@@ -242,7 +243,8 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   private Float bFloat;
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>42.0</code>
    */
   private double aDouble;
 
@@ -258,7 +260,8 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   private BigDecimal aBigDecimal;
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>"Hello OpenAPI"</code>
    */
   @Size(min = 8, max = 32)
   private String aString;

@@ -57,7 +57,8 @@ public class Channel implements ServiceObject {
   private final int code;
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>true</code>
    */
   private final boolean selfServiceChannel;
 

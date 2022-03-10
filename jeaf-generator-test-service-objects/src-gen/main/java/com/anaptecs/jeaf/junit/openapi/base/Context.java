@@ -57,7 +57,8 @@ public class Context implements ServiceObject {
   private String accessToken;
 
   /**
-   * 
+   * <br/>
+   * <b>Example:</b> <code>en</code>
    */
   private Locale language;
 
