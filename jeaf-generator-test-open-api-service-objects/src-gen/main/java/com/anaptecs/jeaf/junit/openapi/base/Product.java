@@ -94,7 +94,8 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   private byte[] image;
 
   /**
-   * 
+   * <br/>
+   * <b>Example:</b> <code>https://www.company.com/products/1345-345</code>
    */
   private URL link;
 

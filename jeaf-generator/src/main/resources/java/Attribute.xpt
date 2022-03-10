@@ -34,7 +34,7 @@
 // processing the properties
 «DEFINE DoPropertyDeclaration FOR Property»
 	/**
-	 * «this.getComment()»
+	 * «this.getComment()»«IF this.defaultValue != null-» <br/><b>Default Value:</b> <code>«this.initValue()»</code>«ENDIF»«IF this.hasExample()-»«IF ((Example) this).exampleValue.length > 0-» <br/><b>Example:</b> <code>«((Example) this).exampleValue»</code>«ENDIF»«ENDIF»
 	 */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND RESTParamAnnotation»

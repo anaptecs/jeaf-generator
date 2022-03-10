@@ -134,9 +134,6 @@ boolean hasReturnTypeVoid(uml::Operation operation):
 uml::Parameter getReturnParameter(uml::Operation operation):
   operation.getReturnResult();
   
-boolean hasExample(uml::NamedElement element):
-  element.isStereotypeApplied("Example");
-  
 boolean isNullable(uml::Property property):
   if property.isStereotypeApplied("OpenAPIProperty") 
   then ((JMM::OpenAPIProperty) property).nullable 

@@ -174,3 +174,8 @@ boolean isDeprecated(uml::NamedElement element) :
   
 boolean isTransient(uml::Property property):
   isStereotypeApplied(property, "Transient");
+  
+boolean hasExample(uml::NamedElement element):
+  element.isStereotypeApplied("Example");
+  
+

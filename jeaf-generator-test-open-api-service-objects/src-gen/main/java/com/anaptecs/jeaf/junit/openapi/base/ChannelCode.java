@@ -29,7 +29,9 @@ public class ChannelCode implements ServiceObject {
   public static final String CODE = "code";
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>"WEBSHOP"</code> <br/>
+   * <b>Example:</b> <code>MOBILE_APP</code>
    */
   @NotNull()
   private String code;
