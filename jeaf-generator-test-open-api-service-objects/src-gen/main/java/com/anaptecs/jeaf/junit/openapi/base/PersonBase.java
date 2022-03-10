@@ -9,10 +9,10 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.anaptecs.jeaf.core.api.AbstractObjectID;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
+import com.anaptecs.jeaf.xfun.api.common.AbstractObjectID;
 
 /**
  * @author JEAF Generator

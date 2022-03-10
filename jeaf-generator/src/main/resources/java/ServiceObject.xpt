@@ -92,7 +92,7 @@
 			«ENDIF»
 			«IF needsToImplementIdentifiable() == true»
 			// Read object ID.
-			com.anaptecs.jeaf.core.api.AbstractObjectID<?> lObjectID = pBuilder.objectID;
+			com.anaptecs.jeaf.xfun.api.common.AbstractObjectID<?> lObjectID = pBuilder.objectID;
 			if (lObjectID != null) {
 				objectID = new «this.getObjectIDClassName()»(pBuilder.objectID);
 		    }
@@ -210,7 +210,7 @@
 		«ENDIF»
 		«IF needsToImplementIdentifiable() == true»
 		// Read object ID.
-		com.anaptecs.jeaf.core.api.AbstractObjectID<?> lObjectID = pBuilder.objectID;
+		com.anaptecs.jeaf.xfun.api.common.AbstractObjectID<?> lObjectID = pBuilder.objectID;
 		if (lObjectID != null) {
 			objectID = new «this.getObjectIDClassName()»(pBuilder.objectID);
 	    }
@@ -300,9 +300,9 @@
 «DEFINE InterfaceDeclarations FOR ServiceObject»
 	«IF superClass.isEmpty»
 		implements com.anaptecs.jeaf.core.api.ServiceObject
-		«IF needsToImplementIdentifiable()==true», com.anaptecs.jeaf.core.api.Identifiable<«this.getObjectIDClassName()»>«ENDIF»
+		«IF needsToImplementIdentifiable()==true», com.anaptecs.jeaf.xfun.api.common.Identifiable<«this.getObjectIDClassName()»>«ENDIF»
 	«ELSE»
-		«IF needsToImplementIdentifiable()==true»implements com.anaptecs.jeaf.core.api.Identifiable<«this.getObjectIDClassName()»>«ENDIF»
+		«IF needsToImplementIdentifiable()==true»implements com.anaptecs.jeaf.xfun.api.common.Identifiable<«this.getObjectIDClassName()»>«ENDIF»
 	«ENDIF»
 «ENDDEFINE»
 

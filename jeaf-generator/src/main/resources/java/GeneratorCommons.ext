@@ -163,7 +163,7 @@ List getPersistentClassesMappingFileNames(uml::Package package):
 	
 String getObjectIDClassName(JMM::ServiceObject serviceObject): 'com.anaptecs.jeaf.core.api.ServiceObjectID';
 
-String getObjectIDClassName(JMM::POJO pojo): 'com.anaptecs.jeaf.core.api.ObjectID';
+String getObjectIDClassName(JMM::POJO pojo): 'com.anaptecs.jeaf.xfun.api.common.ObjectID';
 
 String getObjectIDClassName(JMM::DomainObject domainObject): 'com.anaptecs.jeaf.core.api.DomainObjectID';
 

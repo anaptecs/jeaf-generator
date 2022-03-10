@@ -22,7 +22,7 @@
 	   
 	«this.getJavadoc()»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public «IF isAbstract»abstract«ENDIF» class «name» extends «IF !superClass.isEmpty»«superClass.get(0).fqn()»«ELSE»com.anaptecs.jeaf.core.api.DomainObject«ENDIF»«IF needsToImplementIdentifiable()==true» implements com.anaptecs.jeaf.core.api.Identifiable<«this.getObjectIDClassName()»>«ENDIF» {
+	public «IF isAbstract»abstract«ENDIF» class «name» extends «IF !superClass.isEmpty»«superClass.get(0).fqn()»«ELSE»com.anaptecs.jeaf.core.api.DomainObject«ENDIF»«IF needsToImplementIdentifiable()==true» implements com.anaptecs.jeaf.xfun.api.common.Identifiable<«this.getObjectIDClassName()»>«ENDIF» {
 		/**
 		 * Default serial version uid.
 		 */
@@ -125,7 +125,7 @@
       
       «this.getJavadoc()»
       «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-      public abstract class «name»Base extends «IF !superClass.isEmpty»«superClass.get(0).fqn()»«ELSE»com.anaptecs.jeaf.core.api.DomainObject«ENDIF»«IF needsToImplementIdentifiable()==true» implements com.anaptecs.jeaf.core.api.Identifiable<«this.getObjectIDClassName()»>«ENDIF» {
+      public abstract class «name»Base extends «IF !superClass.isEmpty»«superClass.get(0).fqn()»«ELSE»com.anaptecs.jeaf.core.api.DomainObject«ENDIF»«IF needsToImplementIdentifiable()==true» implements com.anaptecs.jeaf.xfun.api.common.Identifiable<«this.getObjectIDClassName()»>«ENDIF» {
         /**
          * Default serial version uid.
          */

@@ -10,11 +10,11 @@ import java.util.Set;
 
 import javax.validation.constraints.Pattern;
 
-import com.anaptecs.jeaf.core.api.AbstractObjectID;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
+import com.anaptecs.jeaf.xfun.api.common.AbstractObjectID;
 
 /**
  * @author JEAF Generator

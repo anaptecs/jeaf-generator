@@ -5,8 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
-import com.anaptecs.jeaf.core.api.ObjectID;
 import com.anaptecs.jeaf.junit.pojo.POJOWithIDnMethod.Builder;
+import com.anaptecs.jeaf.xfun.api.common.ObjectID;
 
 public class BuilderTest {
   public void testBuilder( ) {

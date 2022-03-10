@@ -17,7 +17,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF superCla
 	/**
 	 * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
 	 */
-	private com.anaptecs.jeaf.core.api.AbstractObjectID<?> objectID;
+	private com.anaptecs.jeaf.xfun.api.common.AbstractObjectID<?> objectID;
 	«ENDIF»
 	«FOREACH this.ownedAttribute AS attr»
 	«EXPAND BuilderPropertyDeclaration FOR attr»
@@ -72,7 +72,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF superCla
 	/**
 	 * Method sets the identifier for the object created using the builder. The reference may be null since an id is not mandatory.
 	 */
-	public Builder setID(com.anaptecs.jeaf.core.api.AbstractObjectID<?> pObjectID){
+	public Builder setID(com.anaptecs.jeaf.xfun.api.common.AbstractObjectID<?> pObjectID){
 		objectID = pObjectID;
 		return this;
 	}	
@@ -81,7 +81,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF superCla
 	 * Method sets the identifier for the object created using the builder. The reference may be null since an id is not mandatory.
 	 */
 	@Override
-	public Builder setID(com.anaptecs.jeaf.core.api.AbstractObjectID<?> pObjectID){
+	public Builder setID(com.anaptecs.jeaf.xfun.api.common.AbstractObjectID<?> pObjectID){
 		super.setID(pObjectID);
 		return this;
 	}
@@ -138,7 +138,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false && supe
 	/**
 	 * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
 	 */
-	private com.anaptecs.jeaf.core.api.AbstractObjectID<?> objectID;
+	private com.anaptecs.jeaf.xfun.api.common.AbstractObjectID<?> objectID;
 	«ENDIF»
 	«FOREACH this.ownedAttribute AS attr»
 	«EXPAND BuilderPropertyDeclaration FOR attr»
@@ -171,7 +171,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false && supe
 	/**
 	 * Method sets the identifier for the object created using the builder. The reference may be null since an id is not mandatory.
 	 */
-	public BuilderBase setID(com.anaptecs.jeaf.core.api.AbstractObjectID<?> pObjectID){
+	public BuilderBase setID(com.anaptecs.jeaf.xfun.api.common.AbstractObjectID<?> pObjectID){
 		objectID = pObjectID;
 		return this;
 	}
@@ -180,7 +180,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false && supe
 	 * Method sets the identifier for the object created using the builder. The reference may be null since an id is not mandatory.
 	 */
 	@Override 
-	public BuilderBase setID(com.anaptecs.jeaf.core.api.AbstractObjectID<?> pObjectID){
+	public BuilderBase setID(com.anaptecs.jeaf.xfun.api.common.AbstractObjectID<?> pObjectID){
 		super.setID(pObjectID);
 		return this;
 	}

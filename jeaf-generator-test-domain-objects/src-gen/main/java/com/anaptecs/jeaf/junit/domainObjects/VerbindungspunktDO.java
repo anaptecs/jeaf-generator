@@ -14,10 +14,10 @@ import java.util.TreeSet;
 
 import com.anaptecs.jeaf.core.api.DomainObject;
 import com.anaptecs.jeaf.core.api.DomainObjectID;
-import com.anaptecs.jeaf.core.api.Identifiable;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 
 /**
  * @author JEAF Generator
