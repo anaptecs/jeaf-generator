@@ -11,7 +11,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 «DEFINE POJOClass FOR POJO»
 	«IF generatePOJOs() == true»
-		«IF this.ownedOperation.size == 0»
+		«IF this.ownedOperation.size == 0 && this.hasCustomImplementation == false»
 			«FILE packagePath() + "/" + name +".java" GenBase»
 				«getFileHeader()»
 				package «this.packageName()»;
