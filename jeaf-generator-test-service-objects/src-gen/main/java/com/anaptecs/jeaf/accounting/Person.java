@@ -23,8 +23,8 @@ import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
-import com.anaptecs.jeaf.xfun.api.common.AbstractObjectID;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
+import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
 /**
  * @author JEAF Generator
@@ -134,7 +134,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read object ID.
-    AbstractObjectID<?> lObjectID = pBuilder.objectID;
+    ObjectIdentity<?> lObjectID = pBuilder.objectID;
     if (lObjectID != null) {
       objectID = new ServiceObjectID(pBuilder.objectID);
     }
@@ -161,7 +161,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     /**
      * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
      */
-    private AbstractObjectID<?> objectID;
+    private ObjectIdentity<?> objectID;
 
     /**
      * 
@@ -249,7 +249,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
      * Method sets the identifier for the object created using the builder. The reference may be null since an id is not
      * mandatory.
      */
-    public Builder setID( AbstractObjectID<?> pObjectID ) {
+    public Builder setID( ObjectIdentity<?> pObjectID ) {
       objectID = pObjectID;
       return this;
     }

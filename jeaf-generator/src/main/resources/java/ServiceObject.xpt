@@ -92,7 +92,7 @@
 			«ENDIF»
 			«IF needsToImplementIdentifiable() == true»
 			// Read object ID.
-			com.anaptecs.jeaf.xfun.api.common.AbstractObjectID<?> lObjectID = pBuilder.objectID;
+			com.anaptecs.jeaf.xfun.api.common.ObjectIdentity<?> lObjectID = pBuilder.objectID;
 			if (lObjectID != null) {
 				objectID = new «this.getObjectIDClassName()»(pBuilder.objectID);
 		    }
@@ -210,7 +210,7 @@
 		«ENDIF»
 		«IF needsToImplementIdentifiable() == true»
 		// Read object ID.
-		com.anaptecs.jeaf.xfun.api.common.AbstractObjectID<?> lObjectID = pBuilder.objectID;
+		com.anaptecs.jeaf.xfun.api.common.ObjectIdentity<?> lObjectID = pBuilder.objectID;
 		if (lObjectID != null) {
 			objectID = new «this.getObjectIDClassName()»(pBuilder.objectID);
 	    }

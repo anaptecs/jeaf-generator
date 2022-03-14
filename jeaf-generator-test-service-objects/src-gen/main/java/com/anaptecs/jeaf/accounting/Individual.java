@@ -6,7 +6,7 @@
 package com.anaptecs.jeaf.accounting;
 
 import com.anaptecs.jeaf.tools.api.Tools;
-import com.anaptecs.jeaf.xfun.api.common.AbstractObjectID;
+import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
 /**
  * @author JEAF Generator
@@ -101,7 +101,7 @@ public class Individual extends Customer {
      * mandatory.
      */
     @Override
-    public Builder setID( AbstractObjectID<?> pObjectID ) {
+    public Builder setID( ObjectIdentity<?> pObjectID ) {
       super.setID(pObjectID);
       return this;
     }

@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
-import com.anaptecs.jeaf.xfun.api.common.AbstractObjectID;
+import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
 /**
  * @author JEAF Generator
@@ -105,7 +105,7 @@ public abstract class PersonBase extends Partner {
      * mandatory.
      */
     @Override
-    public BuilderBase setID( AbstractObjectID<?> pObjectID ) {
+    public BuilderBase setID( ObjectIdentity<?> pObjectID ) {
       super.setID(pObjectID);
       return this;
     }
