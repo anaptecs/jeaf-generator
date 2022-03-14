@@ -11,9 +11,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.messages.MessageRepository;
 
@@ -141,9 +141,9 @@ public class SchedulingInfo implements ServiceObject {
   public String toString( ) {
     StringBuffer lBuffer = new StringBuffer(256);
     MessageRepository lRepo = XFun.getMessageRepository();
-    lBuffer.append(lRepo.getMessage(MessageConstants.OBJECT_INFO, this.getClass().getName()));
+    lBuffer.append(lRepo.getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
     lBuffer.append('\n');
-    lBuffer.append(lRepo.getMessage(MessageConstants.OBJECT_ATTRIBUTES_SECTION));
+    lBuffer.append(lRepo.getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
     lBuffer.append('\n');
     return lBuffer.toString();
   }
