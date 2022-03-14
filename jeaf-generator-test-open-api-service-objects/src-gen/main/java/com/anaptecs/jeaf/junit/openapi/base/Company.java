@@ -10,7 +10,7 @@ import java.util.List;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
-import com.anaptecs.jeaf.xfun.api.common.AbstractObjectID;
+import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
 /**
  * @author JEAF Generator
@@ -105,7 +105,7 @@ public class Company extends Partner {
      * mandatory.
      */
     @Override
-    public Builder setID( AbstractObjectID<?> pObjectID ) {
+    public Builder setID( ObjectIdentity<?> pObjectID ) {
       super.setID(pObjectID);
       return this;
     }
