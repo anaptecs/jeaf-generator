@@ -29,11 +29,6 @@ public class PartnerContainer implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "partners".
-   */
-  public static final String PARTNERS = "partners";
-
-  /**
    * 
    */
   private List<Partner> partners = new ArrayList<Partner>();

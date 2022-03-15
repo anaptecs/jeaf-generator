@@ -19,11 +19,6 @@ public abstract class ChildA extends ParentClass {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "childAAttribute".
-   */
-  public static final String CHILDAATTRIBUTE = "childAAttribute";
-
-  /**
    * 
    */
   private int childAAttribute;

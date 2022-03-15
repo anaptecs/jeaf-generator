@@ -42,11 +42,6 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "postalAddresses".
-   */
-  public static final String POSTALADDRESSES = "postalAddresses";
-
-  /**
    * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
    */
   private final ServiceObjectID objectID;

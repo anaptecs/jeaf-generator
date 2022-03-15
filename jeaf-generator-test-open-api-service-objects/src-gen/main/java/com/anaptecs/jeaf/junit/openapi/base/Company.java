@@ -23,11 +23,6 @@ public class Company extends Partner {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "name".
-   */
-  public static final String NAME = "name";
-
-  /**
    * 
    */
   private String name;

@@ -27,22 +27,6 @@ public class BeanParameter implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "accessToken".
-   */
-  public static final String ACCESSTOKEN = "accessToken";
-
-  /**
-   * Constant for the name of attribute "language".
-   */
-  public static final String LANGUAGE = "language";
-
-  /**
-   * Constant for the name of attribute "oldStyle".
-   */
-  @Deprecated
-  public static final String OLDSTYLE = "oldStyle";
-
-  /**
    * 
    */
   @HeaderParam("token")

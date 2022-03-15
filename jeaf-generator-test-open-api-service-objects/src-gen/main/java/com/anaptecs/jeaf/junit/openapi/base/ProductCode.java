@@ -24,11 +24,6 @@ public class ProductCode implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "code".
-   */
-  public static final String CODE = "code";
-
-  /**
    * 
    */
   @Positive()

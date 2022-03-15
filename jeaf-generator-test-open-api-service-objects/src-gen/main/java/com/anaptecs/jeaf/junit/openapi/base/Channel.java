@@ -22,26 +22,6 @@ public class Channel implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "channelType".
-   */
-  public static final String CHANNELTYPE = "channelType";
-
-  /**
-   * Constant for the name of attribute "channelCode".
-   */
-  public static final String CHANNELCODE = "channelCode";
-
-  /**
-   * Constant for the name of attribute "code".
-   */
-  public static final String CODE = "code";
-
-  /**
-   * Constant for the name of attribute "selfServiceChannel".
-   */
-  public static final String SELFSERVICECHANNEL = "selfServiceChannel";
-
-  /**
    * 
    */
   private ChannelType channelType;

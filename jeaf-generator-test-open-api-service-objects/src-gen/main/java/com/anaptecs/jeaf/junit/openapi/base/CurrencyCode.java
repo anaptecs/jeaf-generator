@@ -24,11 +24,6 @@ public class CurrencyCode implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "code".
-   */
-  public static final String CODE = "code";
-
-  /**
    * ISO 4217 currency code. <br/>
    * <b>Default Value:</b> <code>"CHF"</code> <br/>
    * <b>Example:</b> <code>CHF</code>

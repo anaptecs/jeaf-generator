@@ -38,41 +38,6 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "resellers".
-   */
-  public static final String RESELLERS = "resellers";
-
-  /**
-   * Constant for the name of attribute "name".
-   */
-  public static final String NAME = "name";
-
-  /**
-   * Constant for the name of attribute "image".
-   */
-  public static final String IMAGE = "image";
-
-  /**
-   * Constant for the name of attribute "link".
-   */
-  public static final String LINK = "link";
-
-  /**
-   * Constant for the name of attribute "productID".
-   */
-  public static final String PRODUCTID = "productID";
-
-  /**
-   * Constant for the name of attribute "supportedCurrencies".
-   */
-  public static final String SUPPORTEDCURRENCIES = "supportedCurrencies";
-
-  /**
-   * Constant for the name of attribute "productCodes".
-   */
-  public static final String PRODUCTCODES = "productCodes";
-
-  /**
    * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
    */
   private final ServiceObjectID objectID;

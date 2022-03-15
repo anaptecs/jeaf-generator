@@ -24,11 +24,6 @@ public class ChannelCode implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "code".
-   */
-  public static final String CODE = "code";
-
-  /**
    * <br/>
    * <b>Default Value:</b> <code>"WEBSHOP"</code> <br/>
    * <b>Example:</b> <code>MOBILE_APP</code>

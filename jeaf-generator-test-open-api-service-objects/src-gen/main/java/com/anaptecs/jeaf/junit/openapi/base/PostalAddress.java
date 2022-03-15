@@ -22,26 +22,6 @@ public class PostalAddress implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "street".
-   */
-  public static final String STREET = "street";
-
-  /**
-   * Constant for the name of attribute "houseNumber".
-   */
-  public static final String HOUSENUMBER = "houseNumber";
-
-  /**
-   * Constant for the name of attribute "city".
-   */
-  public static final String CITY = "city";
-
-  /**
-   * Constant for the name of attribute "postalCode".
-   */
-  public static final String POSTALCODE = "postalCode";
-
-  /**
    * 
    */
   private String street;

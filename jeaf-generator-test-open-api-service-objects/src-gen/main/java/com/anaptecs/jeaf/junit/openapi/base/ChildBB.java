@@ -27,35 +27,6 @@ public class ChildBB extends ChildB {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "childBBAttribute".
-   */
-  public static final String CHILDBBATTRIBUTE = "childBBAttribute";
-
-  /**
-   * Constant for the name of attribute "deprecatedAttribute".
-   */
-  @Deprecated
-  public static final String DEPRECATEDATTRIBUTE = "deprecatedAttribute";
-
-  /**
-   * Constant for the name of attribute "deprecatedBs".
-   */
-  @Deprecated
-  public static final String DEPRECATEDBS = "deprecatedBs";
-
-  /**
-   * Constant for the name of attribute "deprecatedParent".
-   */
-  @Deprecated
-  public static final String DEPRECATEDPARENT = "deprecatedParent";
-
-  /**
-   * Constant for the name of attribute "deprecatedArray".
-   */
-  @Deprecated
-  public static final String DEPRECATEDARRAY = "deprecatedArray";
-
-  /**
    * 
    */
   private Long childBBAttribute;

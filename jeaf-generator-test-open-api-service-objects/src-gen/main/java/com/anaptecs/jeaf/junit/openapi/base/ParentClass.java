@@ -31,11 +31,6 @@ public class ParentClass implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "parentAttribute".
-   */
-  public static final String PARENTATTRIBUTE = "parentAttribute";
-
-  /**
    * 
    */
   private String parentAttribute;

@@ -25,16 +25,6 @@ public class Sale implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "transactionAmount".
-   */
-  public static final String TRANSACTIONAMOUNT = "transactionAmount";
-
-  /**
-   * Constant for the name of attribute "sale".
-   */
-  public static final String SALE = "sale";
-
-  /**
    * 
    */
   private BigDecimal transactionAmount;

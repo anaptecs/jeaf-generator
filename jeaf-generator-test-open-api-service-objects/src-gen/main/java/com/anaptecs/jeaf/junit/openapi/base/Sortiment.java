@@ -28,11 +28,6 @@ public class Sortiment implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "products".
-   */
-  public static final String PRODUCTS = "products";
-
-  /**
    * 
    */
   private Set<Product> products = new HashSet<Product>();

@@ -30,31 +30,6 @@ public class Context implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "accessToken".
-   */
-  public static final String ACCESSTOKEN = "accessToken";
-
-  /**
-   * Constant for the name of attribute "language".
-   */
-  public static final String LANGUAGE = "language";
-
-  /**
-   * Constant for the name of attribute "resellerID".
-   */
-  public static final String RESELLERID = "resellerID";
-
-  /**
-   * Constant for the name of attribute "pathParam".
-   */
-  public static final String PATHPARAM = "pathParam";
-
-  /**
-   * Constant for the name of attribute "queryParam".
-   */
-  public static final String QUERYPARAM = "queryParam";
-
-  /**
    * 
    */
   @HeaderParam("token")

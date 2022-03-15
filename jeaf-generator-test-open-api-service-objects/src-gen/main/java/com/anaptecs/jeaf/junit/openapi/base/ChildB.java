@@ -27,16 +27,6 @@ public class ChildB extends ParentClass {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "childBAttribute".
-   */
-  public static final String CHILDBATTRIBUTE = "childBAttribute";
-
-  /**
-   * Constant for the name of attribute "composition".
-   */
-  public static final String COMPOSITION = "composition";
-
-  /**
    * 
    */
   private boolean childBAttribute;
