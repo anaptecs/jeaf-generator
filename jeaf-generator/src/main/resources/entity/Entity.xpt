@@ -45,6 +45,7 @@
             «ENDIF»
             
             «REM»Generate constants for all attributes«ENDREM»
+            «IF generateConstantsForAttributeNames() == true»
             «FOREACH this.ownedAttribute AS attr»
               «IF attr.isStereotypeApplied("Field") == true»
               /**
@@ -61,7 +62,6 @@
               «ENDIF»
             «ENDFOREACH»
             
-            «IF generateConstantsForAttributeNames() == true»
             «REM»Generate constants for all attributes«ENDREM»
             «FOREACH this.ownedAttribute AS attr»
               «IF attr.isStereotypeApplied("Role") == true»

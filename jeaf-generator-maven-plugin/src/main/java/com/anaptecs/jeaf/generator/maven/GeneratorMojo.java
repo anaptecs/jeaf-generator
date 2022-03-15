@@ -313,8 +313,8 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean enableSemVerForJSON;
 
   /**
-   * Parameter defines if constants for the name of attributes of POJOs, Service Objects, Domain Objects or Persistent
-   * Objects should be generated or not..
+   * Parameter defines if constants for the name of attributes of POJOs, Service Objects, Query Objects, Domain Objects
+   * or Persistent Objects should be generated or not..
    */
   @Parameter(required = false, defaultValue = "true")
   private Boolean generateConstantsForAttributeNames;
