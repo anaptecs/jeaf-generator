@@ -171,6 +171,8 @@ public class GeneratorCommons {
    */
   public static final String ENABLE_SEMVER_FOR_JSON = "switch.gen.enable.json.semver";
 
+  public static final String NAME_CONSTANTS_FOR_ATTRIBUTES = "switch.gen.enable.name.constants";
+
   public static final String LINE_SEPARATOR = "\n";
 
   public static final String CLASS_INDENTATION = "";
@@ -662,6 +664,11 @@ public class GeneratorCommons {
   public static boolean enableSemVerForJSON( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(ENABLE_SEMVER_FOR_JSON, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean generateConstantsForAttributeNames( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(NAME_CONSTANTS_FOR_ATTRIBUTES, Boolean.TRUE, Boolean.class);
   }
 
   public static boolean generatePublicSettersForAssociations( ) {

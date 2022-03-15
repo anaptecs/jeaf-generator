@@ -61,6 +61,7 @@
               «ENDIF»
             «ENDFOREACH»
             
+            «IF generateConstantsForAttributeNames() == true»
             «REM»Generate constants for all attributes«ENDREM»
             «FOREACH this.ownedAttribute AS attr»
               «IF attr.isStereotypeApplied("Role") == true»
@@ -71,6 +72,7 @@
               public static final String «attr.asInstanceVar().toUpperCase()»_ROLE = "«attr.asInstanceVar()»";
               «ENDIF»
             «ENDFOREACH»
+            «ENDIF»
             
 		«EXPAND java::Attribute::PropertyDeclaration FOREACH this.ownedAttribute»
 

@@ -313,6 +313,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean enableSemVerForJSON;
 
   /**
+   * Parameter defines if constants for the name of attributes of POJOs, Service Objects, Domain Objects or Persistent
+   * Objects should be generated or not..
+   */
+  @Parameter(required = false, defaultValue = "true")
+  private Boolean generateConstantsForAttributeNames;
+
+  /**
    * Switch defines whether a message constants should be generated from resource files or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -526,6 +533,7 @@ public class GeneratorMojo extends AbstractMojo {
     }
     if (generateServiceObjects) {
       lLog.info("Generate Service Objects:                 " + generateServiceObjects);
+      lLog.info("Generate Constants for Attribute Names:   " + generateConstantsForAttributeNames);
     }
     if (generateExceptionClasses) {
       lLog.info("Generate Exception Classes:               " + generateExceptionClasses);
@@ -553,9 +561,11 @@ public class GeneratorMojo extends AbstractMojo {
     }
     if (generatePOJOs) {
       lLog.info("Generate POJO's:                          " + generatePOJOs);
+      lLog.info("Generate Constants for Attribute Names:   " + generateConstantsForAttributeNames);
     }
     if (generateDomainObjects) {
       lLog.info("Generate Domain Objects:                  " + generateDomainObjects);
+      lLog.info("Generate Constants for Attribute Names:   " + generateConstantsForAttributeNames);
     }
     if (generateObjectMappers) {
       lLog.info("Generate Object Mappers:                  " + generateObjectMappers);
@@ -588,6 +598,7 @@ public class GeneratorMojo extends AbstractMojo {
     if (generatePersistentObjects) {
       lLog.info("Generate Persistent Objects:              " + generatePersistentObjects);
       lLog.info(" ");
+      lLog.info("Generate Constants for Attribute Names:   " + generateConstantsForAttributeNames);
       lLog.info("OID Row Name:                             " + peristentObjectsOIDRowName);
       lLog.info("Version Label Row Name:                   " + peristentObjectsVersionLabelRowName);
     }
@@ -661,6 +672,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.jaxrs.annotations", generateJAXRSAnnotations.toString());
       System.setProperty("switch.gen.jackson.annotations", generateJacksonAnnotations.toString());
       System.setProperty("switch.gen.enable.json.semver", enableSemVerForJSON.toString());
+      System.setProperty("switch.gen.enable.name.constants", generateConstantsForAttributeNames.toString());
       System.setProperty("switch.gen.public.setters.for.associations", generatePublicSettersForAssociations.toString());
       System.setProperty("switch.gen.null.checks.for.to.one.associations.of.service.objects",
           generateNullChecksForToOneAssociations.toString());

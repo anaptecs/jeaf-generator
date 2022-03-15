@@ -31,6 +31,7 @@
 		 */
 		private static final long serialVersionUID = 1L;
 		
+        «IF generateConstantsForAttributeNames() == true»
         «REM»Generate constants for all real attributes«ENDREM»
         «FOREACH this.ownedAttribute AS attr»
         «IF attr.isStatic == false»          
@@ -40,6 +41,7 @@
           «EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr -»
           public static final String «attr.asInstanceVar().toUpperCase()» = "«attr.asInstanceVar()»";
         «ENDIF»«ENDFOREACH»
+        «ENDIF»
 
 		«IF needsToImplementIdentifiable() == true»
 		«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())»

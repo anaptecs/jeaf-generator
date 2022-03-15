@@ -24,6 +24,7 @@
 				«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 				«EXPAND java::Jackson::JacksonClassAnnotations -»				
 				public «IF isAbstract»abstract«ENDIF» class «name» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
+					«IF generateConstantsForAttributeNames() == true»
 					«REM»Generate constants for all real attributes«ENDREM»
 					«FOREACH this.ownedAttribute AS attr»
 						«IF attr.isStatic == false»        
@@ -34,6 +35,7 @@
 						public static final String «attr.asInstanceVar().toUpperCase()» = "«attr.asInstanceVar()»";
 						«ENDIF»
 					«ENDFOREACH»
+					«ENDIF»
 					  
 					«IF needsToImplementIdentifiable() == true»
 						«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())»
