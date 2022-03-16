@@ -13,6 +13,13 @@ import java.math.BigDecimal;
  */
 public class Account extends AccountBase {
   /**
+   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * object creation builder should be used instead.
+   */
+  protected Account( ) {
+  }
+
+  /**
    * Initialize object. Nothing special to do.
    */
   protected Account( Account.BuilderBase pBuilder ) {

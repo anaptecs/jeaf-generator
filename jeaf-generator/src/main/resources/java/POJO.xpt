@@ -263,6 +263,12 @@
 				«EXPAND java::Helper::GenerateDeprecationAnnotation -»
 				public «IF isAbstract»abstract«ENDIF» class «name» extends «name»Base {
 					/**
+					 * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal" object creation builder should be used instead.
+					 */
+					protected «name»( ) {
+					}
+		
+					/**
 					 * Initialize object. Nothing special to do.
 					 */
 					protected «name»( «name».BuilderBase pBuilder ) {

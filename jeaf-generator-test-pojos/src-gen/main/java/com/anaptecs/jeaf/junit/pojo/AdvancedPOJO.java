@@ -14,6 +14,13 @@ import javax.validation.Valid;
 @Valid()
 public class AdvancedPOJO extends AdvancedPOJOBase {
   /**
+   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * object creation builder should be used instead.
+   */
+  protected AdvancedPOJO( ) {
+  }
+
+  /**
    * Initialize object. Nothing special to do.
    */
   protected AdvancedPOJO( AdvancedPOJO.BuilderBase pBuilder ) {

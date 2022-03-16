@@ -11,6 +11,13 @@ package com.anaptecs.jeaf.accounting.impl.pojo;
  */
 public class Customer extends CustomerBase {
   /**
+   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * object creation builder should be used instead.
+   */
+  protected Customer( ) {
+  }
+
+  /**
    * Initialize object. Nothing special to do.
    */
   protected Customer( Customer.BuilderBase pBuilder ) {
