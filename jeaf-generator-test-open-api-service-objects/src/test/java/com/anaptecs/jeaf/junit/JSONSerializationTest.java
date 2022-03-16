@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -19,6 +20,8 @@ import org.junit.jupiter.api.Test;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.json.api.JSONTools;
+import com.anaptecs.jeaf.junit.openapi.base.BidirectA;
+import com.anaptecs.jeaf.junit.openapi.base.BidirectB;
 import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelType;
@@ -281,6 +284,37 @@ public class JSONSerializationTest {
     Reseller lDeserializedReseller = lDeserializedProduct.getResellers().iterator().next();
     assertEquals(lReseller.getName(), lDeserializedReseller.getName());
     assertEquals(lProduct1.getName(), lDeserializedReseller.getProducts().iterator().next().getName());
+  }
+
+  @Test
+  void testBidirectionalAssociationsforServiceObjects( ) {
+    BidirectA lBidirectA = BidirectA.Builder.newBuilder().build();
+    BidirectA lChild = BidirectA.Builder.newBuilder().build();
+    BidirectB lBidirectB = BidirectB.Builder.newBuilder().build();
+
+    lBidirectA.addToTransientBs(lBidirectB);
+    lBidirectA.setTransientChild(lChild);
+
+    assertEquals(lBidirectA, lChild.getParent());
+    JSONTools lTools = JSON.getJSONTools();
+    String lJSON = lTools.writeObjectToString(lBidirectA);
+    assertEquals("{\"parent\":null}", lJSON);
+    lJSON = lTools.writeObjectToString(lChild);
+    assertEquals("{\"parent\":{\"parent\":null}}", lJSON);
+
+    BidirectA lDeserializedA = lTools.read(lJSON, BidirectA.class);
+    BidirectA lParent = lDeserializedA.getParent();
+    assertNotNull(lParent);
+    assertEquals(lDeserializedA, lParent.getTransientChild());
+
+    lJSON = lTools.writeObjectToString(lBidirectB);
+    assertEquals("{\"a\":{\"parent\":null}}", lJSON);
+
+    BidirectB lDeserializedB = lTools.read(lJSON, BidirectB.class);
+    BidirectA lA = lDeserializedB.getA();
+    assertNotNull(lA);
+    assertEquals(lDeserializedB, lA.getTransientBs().iterator().next());
+
   }
 
 }

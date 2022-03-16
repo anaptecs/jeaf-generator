@@ -135,6 +135,17 @@
 	public «type.fqn()» «asGetter()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»
     «asInstanceVar()» = this.unproxy(«asInstanceVar()»);«ENDIF»
+	    «IF this.isTransientBidirectionalBackReference()»
+	    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling after an object was deserialized.
+	    if («this.asInstanceVar()»BackReferenceInitialized == false) {
+	      «this.asInstanceVar()»BackReferenceInitialized = true;
+	        «IF opposite.isMultivalued() == true»
+	        «this.asInstanceVar()».addTo«opposite.name.toFirstUpper()»((«opposite.type.name»)this);
+	        «ELSE»
+		    «this.asInstanceVar()».«opposite.asSetter()»((«opposite.type.name»)this);
+		    «ENDIF»
+	    }
+	    «ENDIF»
 		return «asInstanceVar()»;
 	}
 	
