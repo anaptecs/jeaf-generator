@@ -1,6 +1,7 @@
 «EXTENSION java::Naming»
 «EXTENSION java::ObjectMapper»
 «EXTENSION java::GeneratorCommons»
+«EXTENSION entity::ModelProperties»
 
 «IMPORT JMM»
 
@@ -33,6 +34,41 @@
 					
 					«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
 					
+					/**
+					 * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal" object creation builder should be used instead.
+					 */
+					protected «name»( ) {
+					  «IF needsToImplementIdentifiable() == true»
+					  objectID = null;
+					  «ELSE»«IF this.requiresAttributeInitValue() == false»
+					  // Nothing to do.
+					  «ENDIF»
+					  «ENDIF»
+					  «FOREACH this.ownedAttribute AS attr»
+						  «IF attr.isReadOnly == true && attr.isStatic == false»
+						  	«IF attr.type.isPrimitiveType() == true»
+							  «IF attr.isMultivalued() == false»
+							  	«IF attr.isRealInitValue()»
+							  		«attr.name» = «attr.initValue()»;
+							  	«ELSE»
+							  		«attr.name» = «attr.getPrimitiveDefaultValue()»;
+							  	«ENDIF»
+							  «ELSE»
+							  	«attr.name» = null;
+							  «ENDIF»
+						    «ELSE»
+								«IF attr.isMultivalued() == false»
+								«attr.name» = null;
+								«ENDIF»
+							«ENDIF»
+						  «ENDIF»
+						  «IF attr.isTransientBidirectionalBackReference()»
+						    // Bidirectional back reference is not yet set up correctly
+						    «attr.asInstanceVar()»BackReferenceInitialized = false;
+						  «ENDIF»
+					  «ENDFOREACH»
+					}
+
 					/**
 					 * Initialize object using the passed builder.
 					 * 
@@ -122,6 +158,41 @@
 					
 					«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
 					
+					/**
+					 * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal" object creation builder should be used instead.
+					 */
+					protected «name»Base( ) {
+					  «IF needsToImplementIdentifiable() == true»
+					  objectID = null;
+					  «ELSE»«IF this.requiresAttributeInitValue() == false»
+					  // Nothing to do.
+					  «ENDIF»
+					  «ENDIF»
+					  «FOREACH this.ownedAttribute AS attr»
+						  «IF attr.isReadOnly == true && attr.isStatic == false»
+							  «IF attr.type.isPrimitiveType() == true»
+								  «IF attr.isMultivalued() == false»
+								  	«IF attr.isRealInitValue()»
+								  		«attr.name» = «attr.initValue()»;
+								  	«ELSE»
+								  		«attr.name» = «attr.getPrimitiveDefaultValue()»;
+								  	«ENDIF»
+								  «ELSE»
+								  	«attr.name» = null;
+								  «ENDIF»
+							  «ELSE»
+								  «IF attr.isMultivalued() == false»
+								  	«attr.name» = null;
+								  «ENDIF»
+							  «ENDIF»
+						  «ENDIF»
+						  «IF attr.isTransientBidirectionalBackReference()»
+						    // Bidirectional back reference is not yet set up correctly
+						    «attr.asInstanceVar()»BackReferenceInitialized = false;
+						  «ENDIF»
+					  «ENDFOREACH»
+					}
+
 					/**
 					 * Initialize object using the passed builder.
 					 * 
