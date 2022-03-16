@@ -241,4 +241,46 @@ public class JSONSerializationTest {
         lJSON);
   }
 
+  @Test
+  void testBiDirectionalAssociations( ) {
+    ServiceObjectID lProductID1 = new ServiceObjectID("12", 0);
+    ServiceObjectID lProductID2 = new ServiceObjectID("4", 1);
+    ServiceObjectID lResellerID = new ServiceObjectID("1234", 5);
+    Reseller lReseller =
+        Reseller.Builder.newBuilder().setID(lResellerID).setName("Good Guys Inc.").setLanguage(Locale.GERMAN).build();
+
+    // Create 1st product
+    Builder lProductBuilder = Product.Builder.newBuilder();
+    lProductBuilder.setID(lProductID1);
+    lProductBuilder.setName("Fancy Thing");
+    lProductBuilder.setProductID(UUID.fromString("c513b71f-433d-4118-be8b-7190226eb155"));
+    Product lProduct1 = lProductBuilder.build();
+    lProduct1.addToResellers(lReseller);
+
+    lProductBuilder = Product.Builder.newBuilder();
+    lProductBuilder.setID(lProductID2);
+    lProductBuilder.setName("Standard Thing");
+    lProductBuilder.setProductID(UUID.fromString("c513b71f-433d-4118-be8b-7190226eb123"));
+    Product lProduct2 = lProductBuilder.build();
+    lProduct2.addToResellers(lReseller);
+
+    assertEquals(lReseller.getName(), lProduct1.getResellers().iterator().next().getName());
+
+    JSONTools lTools = JSON.getJSONTools();
+    String lJSON = lTools.writeObjectToString(lReseller);
+    assertEquals("{\"objectID\":\"1234|5\",\"channels\":[],\"name\":\"Good Guys Inc.\",\"language\":\"de\"}", lJSON);
+
+    lJSON = lTools.writeObjectToString(lProduct1);
+    String lProductJSON =
+        "{\"objectID\":\"12|0\",\"resellers\":[{\"objectID\":\"1234|5\",\"channels\":[],\"name\":\"Good Guys Inc.\",\"language\":\"de\"}],\"name\":\"Fancy Thing\",\"image\":null,\"link\":null,\"productID\":\"c513b71f-433d-4118-be8b-7190226eb155\",\"supportedCurrencies\":[],\"productCodes\":[],\"description\":null}";
+    assertEquals(lProductJSON, lJSON);
+
+    Product lDeserializedProduct = lTools.read(lProductJSON, Product.class);
+    assertEquals(lProduct1.getName(), lDeserializedProduct.getName());
+    assertEquals(lProduct1.getID(), lDeserializedProduct.getID());
+    Reseller lDeserializedReseller = lDeserializedProduct.getResellers().iterator().next();
+    assertEquals(lReseller.getName(), lDeserializedReseller.getName());
+    assertEquals(lProduct1.getName(), lDeserializedReseller.getProducts().iterator().next().getName());
+  }
+
 }

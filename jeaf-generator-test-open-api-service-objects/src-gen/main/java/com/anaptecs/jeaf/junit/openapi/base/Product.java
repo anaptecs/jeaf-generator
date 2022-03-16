@@ -49,6 +49,8 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   private Set<Reseller> resellers = new HashSet<Reseller>();
 
+  private transient boolean resellersBackReferenceInitialized;
+
   /**
    * 
    */
@@ -95,6 +97,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   protected Product( ) {
     objectID = null;
     productID = null;
+    resellersBackReferenceInitialized = false;
   }
 
   /**
@@ -117,6 +120,9 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     if (pBuilder.resellers != null) {
       resellers.addAll(pBuilder.resellers);
     }
+    // Attribute i required for correct handling of bi-directional associations in case of JSON deserialization
+    resellersBackReferenceInitialized = true;
+
     name = pBuilder.name;
     image = pBuilder.image;
     link = pBuilder.link;
@@ -406,6 +412,14 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * and the returned collection is unmodifiable.
    */
   public Set<Reseller> getResellers( ) {
+    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
+    // after an object was deserialized from JSON.
+    if (resellersBackReferenceInitialized == false) {
+      resellersBackReferenceInitialized = true;
+      for (Reseller lReseller : resellers) {
+        lReseller.addToProducts(this);
+      }
+    }
     // Return all Reseller objects as unmodifiable collection.
     return Collections.unmodifiableSet(resellers);
   }
