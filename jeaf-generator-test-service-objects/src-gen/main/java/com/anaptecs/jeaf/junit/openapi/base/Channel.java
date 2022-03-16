@@ -42,6 +42,11 @@ public class Channel implements ServiceObject {
   public static final String SELFSERVICECHANNEL = "selfServiceChannel";
 
   /**
+   * Constant for the name of attribute "reseller".
+   */
+  public static final String RESELLER = "reseller";
+
+  /**
    * 
    */
   private ChannelType channelType;
@@ -61,6 +66,11 @@ public class Channel implements ServiceObject {
    * <b>Default Value:</b> <code>true</code>
    */
   private final boolean selfServiceChannel;
+
+  /**
+   * 
+   */
+  private transient Reseller reseller;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -84,6 +94,7 @@ public class Channel implements ServiceObject {
     channelCode = pBuilder.channelCode;
     code = pBuilder.code;
     selfServiceChannel = pBuilder.selfServiceChannel;
+    reseller = pBuilder.reseller;
   }
 
   /**
@@ -112,6 +123,11 @@ public class Channel implements ServiceObject {
     private boolean selfServiceChannel = true;
 
     /**
+     * 
+     */
+    private Reseller reseller;
+
+    /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -127,6 +143,7 @@ public class Channel implements ServiceObject {
         channelCode = pObject.channelCode;
         code = pObject.code;
         selfServiceChannel = pObject.selfServiceChannel;
+        reseller = pObject.reseller;
       }
     }
 
@@ -189,6 +206,16 @@ public class Channel implements ServiceObject {
     public Builder setSelfServiceChannel( boolean pSelfServiceChannel ) {
       // Assign value to attribute
       selfServiceChannel = pSelfServiceChannel;
+      return this;
+    }
+
+    /**
+     * Method sets the association "reseller".
+     * 
+     * @param pReseller Reseller to which the association "reseller" should be set.
+     */
+    public Builder setReseller( Reseller pReseller ) {
+      reseller = pReseller;
       return this;
     }
 
@@ -290,6 +317,49 @@ public class Channel implements ServiceObject {
    */
   public boolean getSelfServiceChannel( ) {
     return selfServiceChannel;
+  }
+
+  /**
+   * Method returns the association "reseller".
+   * 
+   *
+   * @return Reseller Reseller to which the association "reseller" is set.
+   */
+  public Reseller getReseller( ) {
+    return reseller;
+  }
+
+  /**
+   * Method sets the association "reseller".
+   * 
+   * 
+   * @param pReseller Reseller to which the association "reseller" should be set.
+   */
+  public void setReseller( Reseller pReseller ) {
+    // Release already referenced object before setting a new association.
+    if (reseller != null) {
+      reseller.removeFromChannels((Channel) this);
+    }
+    reseller = pReseller;
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (pReseller != null && pReseller.getChannels().contains(this) == false) {
+      pReseller.addToChannels((Channel) this);
+    }
+  }
+
+  /**
+   * Method unsets the association "reseller".
+   * 
+   */
+  public final void unsetReseller( ) {
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    Reseller lReseller = reseller;
+    reseller = null;
+    if (lReseller != null && lReseller.getChannels().contains(this) == true) {
+      lReseller.removeFromChannels((Channel) this);
+    }
   }
 
   /**

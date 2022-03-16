@@ -78,6 +78,11 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   public static final String DESCRIPTION = "description";
 
   /**
+   * Constant for the name of attribute "sortiments".
+   */
+  public static final String SORTIMENTS = "sortiments";
+
+  /**
    * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
    */
   private final ServiceObjectID objectID;
@@ -86,6 +91,11 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * 
    */
   private Set<Reseller> resellers = new HashSet<Reseller>();
+
+  /**
+   * Attribute is required for correct handling of bidirectional associations in case of deserialization.
+   */
+  private transient boolean resellersBackReferenceInitialized;
 
   /**
    * 
@@ -127,11 +137,18 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   private String description;
 
   /**
+   * 
+   */
+  private transient Set<Sortiment> sortiments = new HashSet<Sortiment>();
+
+  /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected Product( ) {
     objectID = null;
+    // Bidirectional back reference is not yet set up correctly
+    resellersBackReferenceInitialized = false;
     productID = null;
   }
 
@@ -155,6 +172,8 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     if (pBuilder.resellers != null) {
       resellers.addAll(pBuilder.resellers);
     }
+    // Bidirectional back reference is set up correctly as a builder is used.
+    resellersBackReferenceInitialized = true;
     name = pBuilder.name;
     image = pBuilder.image;
     link = pBuilder.link;
@@ -166,6 +185,9 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
       productCodes.addAll(pBuilder.productCodes);
     }
     description = pBuilder.description;
+    if (pBuilder.sortiments != null) {
+      sortiments.addAll(pBuilder.sortiments);
+    }
   }
 
   /**
@@ -221,6 +243,11 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     private String description;
 
     /**
+     * 
+     */
+    private Set<Sortiment> sortiments;
+
+    /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -241,6 +268,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
         supportedCurrencies = pObject.supportedCurrencies;
         productCodes = pObject.productCodes;
         description = pObject.description;
+        sortiments = pObject.sortiments;
       }
     }
 
@@ -384,6 +412,22 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
+     * Method sets the association "sortiments".
+     * 
+     * @param pSortiments Collection with objects to which the association should be set.
+     */
+    public Builder setSortiments( Set<Sortiment> pSortiments ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pSortiments != null) {
+        sortiments = new HashSet<Sortiment>(pSortiments);
+      }
+      else {
+        sortiments = null;
+      }
+      return this;
+    }
+
+    /**
      * Method creates a new instance of class Product. The object will be initialized with the values of the builder.
      * 
      * @return Product Created object. The method never returns null.
@@ -444,6 +488,14 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * and the returned collection is unmodifiable.
    */
   public Set<Reseller> getResellers( ) {
+    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
+    // after an object was deserialized.
+    if (resellersBackReferenceInitialized == false) {
+      resellersBackReferenceInitialized = true;
+      for (Reseller lNext : resellers) {
+        lNext.addToProducts((Product) this);
+      }
+    }
     // Return all Reseller objects as unmodifiable collection.
     return Collections.unmodifiableSet(resellers);
   }
@@ -809,6 +861,100 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   public void setDescription( String pDescription ) {
     // Assign value to attribute
     description = pDescription;
+  }
+
+  /**
+   * Method returns the association "sortiments".
+   * 
+   *
+   * @return Collection All Sortiment objects that belong to the association "sortiments". The method never returns null
+   * and the returned collection is unmodifiable.
+   */
+  public Set<Sortiment> getSortiments( ) {
+    // Return all Sortiment objects as unmodifiable collection.
+    return Collections.unmodifiableSet(sortiments);
+  }
+
+  /**
+   * Method sets the association "sortiments" to the passed collection. All objects that formerly were part of the
+   * association will be removed from it.
+   * 
+   * 
+   * @param pSortiments Collection with objects to which the association should be set. The parameter must not be null.
+   */
+  void setSortiments( Set<Sortiment> pSortiments ) {
+    // Check of parameter is not required.
+    // Remove all objects from association "sortiments".
+    this.clearSortiments();
+    // If the association is null, removing all entries is sufficient.
+    if (pSortiments != null) {
+      sortiments = new HashSet<Sortiment>(pSortiments);
+    }
+  }
+
+  /**
+   * Method adds the passed Sortiment object to the association "sortiments".
+   * 
+   * 
+   * @param pSortiments Object that should be added to the association "sortiments". The parameter must not be null.
+   */
+  public void addToSortiments( Sortiment pSortiments ) {
+    // Check parameter "pSortiments" for invalid value null.
+    Check.checkInvalidParameterNull(pSortiments, "pSortiments");
+    // Add passed object to collection of associated Sortiment objects.
+    sortiments.add(pSortiments);
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (pSortiments != null && pSortiments.getProducts().contains(this) == false) {
+      pSortiments.addToProducts((Product) this);
+    }
+  }
+
+  /**
+   * Method adds all passed objects to the association "sortiments".
+   * 
+   * 
+   * @param pSortiments Collection with all objects that should be added to the association "sortiments". The parameter
+   * must not be null.
+   */
+  public void addToSortiments( Collection<Sortiment> pSortiments ) {
+    // Check parameter "pSortiments" for invalid value null.
+    Check.checkInvalidParameterNull(pSortiments, "pSortiments");
+    // Add all passed objects.
+    for (Sortiment lNextObject : pSortiments) {
+      this.addToSortiments(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed Sortiment object from the association "sortiments".
+   * 
+   * 
+   * @param pSortiments Object that should be removed from the association "sortiments". The parameter must not be null.
+   */
+  public void removeFromSortiments( Sortiment pSortiments ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pSortiments, "pSortiments");
+    // Remove passed object from collection of associated Sortiment objects.
+    sortiments.remove(pSortiments);
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (pSortiments.getProducts().contains(this) == true) {
+      pSortiments.removeFromProducts((Product) this);
+    }
+  }
+
+  /**
+   * Method removes all objects from the association "sortiments".
+   * 
+   */
+  public void clearSortiments( ) {
+    // Remove all objects from association "sortiments".
+    Collection<Sortiment> lSortiments = new HashSet<Sortiment>(sortiments);
+    Iterator<Sortiment> lIterator = lSortiments.iterator();
+    while (lIterator.hasNext()) {
+      this.removeFromSortiments(lIterator.next());
+    }
   }
 
   /**

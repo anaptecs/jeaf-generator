@@ -154,7 +154,7 @@ public class JSONSerializationTest {
     JSONTools lTools = JSON.getJSONTools();
     String lJSON = lTools.writeObjectToString(lProducts);
     String lExpected =
-        "[{\"objectID\":\"12|0\",\"resellers\":[{\"objectID\":\"1234|5\",\"channels\":[],\"name\":\"Good Guys Inc.\",\"language\":\"de\"}],\"name\":\"Fancy Thing\",\"image\":null,\"link\":null,\"productID\":\"c513b71f-433d-4118-be8b-7190226eb155\",\"supportedCurrencies\":[],\"productCodes\":[]},{\"objectID\":\"4|1\",\"resellers\":[\"1234|5\"],\"name\":\"Standard Thing\",\"image\":null,\"link\":null,\"productID\":\"c513b71f-433d-4118-be8b-7190226eb123\",\"supportedCurrencies\":[],\"productCodes\":[]}]";
+        "[{\"objectID\":\"12|0\",\"resellers\":[{\"objectID\":\"1234|5\",\"channels\":[],\"name\":\"Good Guys Inc.\",\"language\":\"de\"}],\"name\":\"Fancy Thing\",\"image\":null,\"link\":null,\"productID\":\"c513b71f-433d-4118-be8b-7190226eb155\",\"supportedCurrencies\":[],\"productCodes\":[],\"description\":null},{\"objectID\":\"4|1\",\"resellers\":[\"1234|5\"],\"name\":\"Standard Thing\",\"image\":null,\"link\":null,\"productID\":\"c513b71f-433d-4118-be8b-7190226eb123\",\"supportedCurrencies\":[],\"productCodes\":[],\"description\":null}]";
     assertEquals(lExpected, lJSON);
   }
 

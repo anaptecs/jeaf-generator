@@ -38,11 +38,18 @@ public class Sortiment implements ServiceObject {
   private Set<Product> products = new HashSet<Product>();
 
   /**
+   * Attribute is required for correct handling of bidirectional associations in case of deserialization.
+   */
+  private transient boolean productsBackReferenceInitialized;
+
+  /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected Sortiment( ) {
     // Nothing to do.
+    // Bidirectional back reference is not yet set up correctly
+    productsBackReferenceInitialized = false;
   }
 
   /**
@@ -57,6 +64,8 @@ public class Sortiment implements ServiceObject {
     if (pBuilder.products != null) {
       products.addAll(pBuilder.products);
     }
+    // Bidirectional back reference is set up correctly as a builder is used.
+    productsBackReferenceInitialized = true;
   }
 
   /**
@@ -153,6 +162,14 @@ public class Sortiment implements ServiceObject {
    * the returned collection is unmodifiable.
    */
   public Set<Product> getProducts( ) {
+    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
+    // after an object was deserialized.
+    if (productsBackReferenceInitialized == false) {
+      productsBackReferenceInitialized = true;
+      for (Product lNext : products) {
+        lNext.addToSortiments((Sortiment) this);
+      }
+    }
     // Return all Product objects as unmodifiable collection.
     return Collections.unmodifiableSet(products);
   }
@@ -185,6 +202,11 @@ public class Sortiment implements ServiceObject {
     Check.checkInvalidParameterNull(pProducts, "pProducts");
     // Add passed object to collection of associated Product objects.
     products.add(pProducts);
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (pProducts != null && pProducts.getSortiments().contains(this) == false) {
+      pProducts.addToSortiments((Sortiment) this);
+    }
   }
 
   /**
@@ -214,6 +236,11 @@ public class Sortiment implements ServiceObject {
     Check.checkInvalidParameterNull(pProducts, "pProducts");
     // Remove passed object from collection of associated Product objects.
     products.remove(pProducts);
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (pProducts.getSortiments().contains(this) == true) {
+      pProducts.removeFromSortiments((Sortiment) this);
+    }
   }
 
   /**

@@ -102,6 +102,8 @@ components:
           type: boolean
           readOnly: true
           default: true
+        reseller: 
+          $ref: '#/components/schemas/Reseller'
       required:
         - code
         - selfServiceChannel
@@ -177,6 +179,11 @@ components:
         description: 
           type: string
           deprecated: true
+        sortiments: 
+          type: array
+          items:
+            $ref: '#/components/schemas/Sortiment'
+          minItems: 0
       required:
         - image
     # com.anaptecs.jeaf.junit.openapi.base.Sortiment

@@ -89,11 +89,21 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   private Set<Person> authorizedPersons = new HashSet<Person>();
 
   /**
+   * Attribute is required for correct handling of bidirectional associations in case of deserialization.
+   */
+  private transient boolean authorizedPersonsBackReferenceInitialized;
+
+  /**
    * 
    */
   @Valid()
   @Size(min = 0, max = 100)
   private Set<Booking> bookings = new HashSet<Booking>();
+
+  /**
+   * Attribute is required for correct handling of bidirectional associations in case of deserialization.
+   */
+  private transient boolean bookingsBackReferenceInitialized;
 
   /**
    * 
@@ -106,6 +116,10 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
    */
   protected AccountBase( ) {
     objectID = null;
+    // Bidirectional back reference is not yet set up correctly
+    authorizedPersonsBackReferenceInitialized = false;
+    // Bidirectional back reference is not yet set up correctly
+    bookingsBackReferenceInitialized = false;
   }
 
   /**
@@ -130,9 +144,13 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
     if (pBuilder.authorizedPersons != null) {
       authorizedPersons.addAll(pBuilder.authorizedPersons);
     }
+    // Bidirectional back reference is set up correctly as a builder is used.
+    authorizedPersonsBackReferenceInitialized = true;
     if (pBuilder.bookings != null) {
       bookings.addAll(pBuilder.bookings);
     }
+    // Bidirectional back reference is set up correctly as a builder is used.
+    bookingsBackReferenceInitialized = true;
     bankID = pBuilder.bankID;
   }
 
@@ -372,6 +390,14 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
    * null and the returned collection is unmodifiable.
    */
   public Set<Person> getAuthorizedPersons( ) {
+    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
+    // after an object was deserialized.
+    if (authorizedPersonsBackReferenceInitialized == false) {
+      authorizedPersonsBackReferenceInitialized = true;
+      for (Person lNext : authorizedPersons) {
+        lNext.addToAccounts((Account) this);
+      }
+    }
     // Return all Person objects as unmodifiable collection.
     return Collections.unmodifiableSet(authorizedPersons);
   }
@@ -469,6 +495,14 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
    * the returned collection is unmodifiable.
    */
   public Set<Booking> getBookings( ) {
+    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
+    // after an object was deserialized.
+    if (bookingsBackReferenceInitialized == false) {
+      bookingsBackReferenceInitialized = true;
+      for (Booking lNext : bookings) {
+        lNext.setAccount((Account) this);
+      }
+    }
     // Return all Booking objects as unmodifiable collection.
     return Collections.unmodifiableSet(bookings);
   }
