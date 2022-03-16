@@ -22,9 +22,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * Product
+ * Data type represents a product definition
  */
-
+@Schema(description = "Data type represents a product definition")
 
 public class Product {
   @JsonProperty("resellers")
@@ -47,6 +47,9 @@ public class Product {
 
   @JsonProperty("productCodes")
   private List<Integer> productCodes = null;
+
+  @JsonProperty("description")
+  private String description = null;
 
   public Product resellers(List<Reseller> resellers) {
     this.resellers = resellers;
@@ -103,10 +106,10 @@ public class Product {
   }
 
    /**
-   * Get image
+   * Image describing the product.
    * @return image
   **/
-  @Schema(required = true, description = "")
+  @Schema(required = true, description = "Image describing the product.")
   public List<Integer> getImage() {
     return image;
   }
@@ -194,6 +197,24 @@ public class Product {
     this.productCodes = productCodes;
   }
 
+  public Product description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Get description
+   * @return description
+  **/
+  @Schema(description = "")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -210,12 +231,13 @@ public class Product {
         Objects.equals(this.link, product.link) &&
         Objects.equals(this.productID, product.productID) &&
         Objects.equals(this.supportedCurrencies, product.supportedCurrencies) &&
-        Objects.equals(this.productCodes, product.productCodes);
+        Objects.equals(this.productCodes, product.productCodes) &&
+        Objects.equals(this.description, product.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(resellers, name, image, link, productID, supportedCurrencies, productCodes);
+    return Objects.hash(resellers, name, image, link, productID, supportedCurrencies, productCodes, description);
   }
 
 
@@ -231,6 +253,7 @@ public class Product {
     sb.append("    productID: ").append(toIndentedString(productID)).append("\n");
     sb.append("    supportedCurrencies: ").append(toIndentedString(supportedCurrencies)).append("\n");
     sb.append("    productCodes: ").append(toIndentedString(productCodes)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }

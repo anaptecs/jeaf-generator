@@ -129,6 +129,8 @@ components:
         - name
     # com.anaptecs.jeaf.junit.openapi.base.Product
     Product:
+      description: >-
+        Data type represents a product definition
       type: object
       properties:
         resellers: 
@@ -140,6 +142,8 @@ components:
           type: string
           minLength: 12
         image: 
+          description: >-
+            Image describing the product.
           type: array
           items:
             type: integer
@@ -170,6 +174,9 @@ components:
             minimum: 0
             exclusiveMinimum: true
           minItems: 1
+        description: 
+          type: string
+          deprecated: true
       required:
         - image
     # com.anaptecs.jeaf.junit.openapi.base.Sortiment

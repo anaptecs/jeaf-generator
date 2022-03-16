@@ -25,6 +25,8 @@ import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
 /**
+ * Data type represents a product definition
+ * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
@@ -70,6 +72,12 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   public static final String PRODUCTCODES = "productCodes";
 
   /**
+   * Constant for the name of attribute "description".
+   */
+  @Deprecated
+  public static final String DESCRIPTION = "description";
+
+  /**
    * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
    */
   private final ServiceObjectID objectID;
@@ -86,7 +94,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   private String name;
 
   /**
-   * 
+   * Image describing the product.
    */
   private byte[] image;
 
@@ -111,6 +119,12 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * 
    */
   private Set<ProductCode> productCodes = new HashSet<ProductCode>();
+
+  /**
+   * 
+   */
+  @Deprecated
+  private String description;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -151,6 +165,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     if (pBuilder.productCodes != null) {
       productCodes.addAll(pBuilder.productCodes);
     }
+    description = pBuilder.description;
   }
 
   /**
@@ -175,7 +190,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     private String name;
 
     /**
-     * 
+     * Image describing the product.
      */
     private byte[] image;
 
@@ -200,6 +215,12 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     private Set<ProductCode> productCodes;
 
     /**
+     * 
+     */
+    @Deprecated
+    private String description;
+
+    /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -219,6 +240,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
         productID = pObject.productID;
         supportedCurrencies = pObject.supportedCurrencies;
         productCodes = pObject.productCodes;
+        description = pObject.description;
       }
     }
 
@@ -279,7 +301,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "image".
+     * Method sets the attribute "image". Image describing the product.
      * 
      * @param pImage Value to which the attribute "image" should be set.
      */
@@ -346,6 +368,18 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
       else {
         productCodes = null;
       }
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "description".
+     * 
+     * @param pDescription Value to which the attribute "description" should be set.
+     */
+    @Deprecated
+    public Builder setDescription( String pDescription ) {
+      // Assign value to attribute
+      description = pDescription;
       return this;
     }
 
@@ -518,8 +552,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "image".
-   * 
+   * Method returns the attribute "image". Image describing the product.
    * 
    * @return byte Value to which the attribute "image" is set.
    */
@@ -536,8 +569,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method sets the attribute "image".
-   * 
+   * Method sets the attribute "image". Image describing the product.
    * 
    * @param pImage Value to which the attribute "image" should be set.
    */
@@ -757,6 +789,29 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
+   * Method returns the attribute "description".
+   * 
+   * 
+   * @return String Value to which the attribute "description" is set.
+   */
+  @Deprecated
+  public String getDescription( ) {
+    return description;
+  }
+
+  /**
+   * Method sets the attribute "description".
+   * 
+   * 
+   * @param pDescription Value to which the attribute "description" should be set.
+   */
+  @Deprecated
+  public void setDescription( String pDescription ) {
+    // Assign value to attribute
+    description = pDescription;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -773,6 +828,9 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "link", "" + link));
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "productID", "" + productID));
+    lBuilder.append('\n');
+    lBuilder
+        .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "description", "" + description));
     lBuilder.append('\n');
     return lBuilder;
   }
