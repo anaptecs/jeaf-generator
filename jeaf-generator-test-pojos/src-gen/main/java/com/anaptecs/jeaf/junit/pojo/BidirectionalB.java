@@ -5,11 +5,12 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
@@ -36,7 +37,7 @@ public class BidirectionalB {
   /**
    * 
    */
-  private Set<BidirectionalA> as = new HashSet<BidirectionalA>();
+  private List<BidirectionalA> as = new ArrayList<BidirectionalA>();
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -46,12 +47,24 @@ public class BidirectionalB {
   /**
    * 
    */
-  private Set<BidirectionalA> theAs = new HashSet<BidirectionalA>();
+  private List<BidirectionalA> theAs = new ArrayList<BidirectionalA>();
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
    */
   private transient boolean theAsBackReferenceInitialized;
+
+  /**
+   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * object creation builder should be used instead.
+   */
+  protected BidirectionalB( ) {
+    // Nothing to do.
+    // Bidirectional back reference is not yet set up correctly
+    asBackReferenceInitialized = false;
+    // Bidirectional back reference is not yet set up correctly
+    theAsBackReferenceInitialized = false;
+  }
 
   /**
    * Initialize object using the passed builder.
@@ -82,12 +95,12 @@ public class BidirectionalB {
     /**
      * 
      */
-    private Set<BidirectionalA> as;
+    private List<BidirectionalA> as;
 
     /**
      * 
      */
-    private Set<BidirectionalA> theAs;
+    private List<BidirectionalA> theAs;
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
@@ -131,10 +144,10 @@ public class BidirectionalB {
      * 
      * @param pAs Collection with objects to which the association should be set.
      */
-    public Builder setAs( Set<BidirectionalA> pAs ) {
+    public Builder setAs( List<BidirectionalA> pAs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pAs != null) {
-        as = new HashSet<BidirectionalA>(pAs);
+        as = new ArrayList<BidirectionalA>(pAs);
       }
       else {
         as = null;
@@ -147,10 +160,10 @@ public class BidirectionalB {
      * 
      * @param pTheAs Collection with objects to which the association should be set.
      */
-    public Builder setTheAs( Set<BidirectionalA> pTheAs ) {
+    public Builder setTheAs( List<BidirectionalA> pTheAs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTheAs != null) {
-        theAs = new HashSet<BidirectionalA>(pTheAs);
+        theAs = new ArrayList<BidirectionalA>(pTheAs);
       }
       else {
         theAs = null;
@@ -191,7 +204,7 @@ public class BidirectionalB {
    * @return Collection All BidirectionalA objects that belong to the association "as". The method never returns null
    * and the returned collection is unmodifiable.
    */
-  public Set<BidirectionalA> getAs( ) {
+  public List<BidirectionalA> getAs( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
     if (asBackReferenceInitialized == false) {
@@ -201,7 +214,7 @@ public class BidirectionalB {
       }
     }
     // Return all BidirectionalA objects as unmodifiable collection.
-    return Collections.unmodifiableSet(as);
+    return Collections.unmodifiableList(as);
   }
 
   /**
@@ -211,13 +224,13 @@ public class BidirectionalB {
    * 
    * @param pAs Collection with objects to which the association should be set. The parameter must not be null.
    */
-  void setAs( Set<BidirectionalA> pAs ) {
+  void setAs( List<BidirectionalA> pAs ) {
     // Check of parameter is not required.
     // Remove all objects from association "as".
     this.clearAs();
     // If the association is null, removing all entries is sufficient.
     if (pAs != null) {
-      as = new HashSet<BidirectionalA>(pAs);
+      as = new ArrayList<BidirectionalA>(pAs);
     }
   }
 
@@ -296,7 +309,7 @@ public class BidirectionalB {
    * @return Collection All BidirectionalA objects that belong to the association "theAs". The method never returns null
    * and the returned collection is unmodifiable.
    */
-  public Set<BidirectionalA> getTheAs( ) {
+  public List<BidirectionalA> getTheAs( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
     if (theAsBackReferenceInitialized == false) {
@@ -306,7 +319,7 @@ public class BidirectionalB {
       }
     }
     // Return all BidirectionalA objects as unmodifiable collection.
-    return Collections.unmodifiableSet(theAs);
+    return Collections.unmodifiableList(theAs);
   }
 
   /**
@@ -316,13 +329,13 @@ public class BidirectionalB {
    * 
    * @param pTheAs Collection with objects to which the association should be set. The parameter must not be null.
    */
-  void setTheAs( Set<BidirectionalA> pTheAs ) {
+  void setTheAs( List<BidirectionalA> pTheAs ) {
     // Check of parameter is not required.
     // Remove all objects from association "theAs".
     this.clearTheAs();
     // If the association is null, removing all entries is sufficient.
     if (pTheAs != null) {
-      theAs = new HashSet<BidirectionalA>(pTheAs);
+      theAs = new ArrayList<BidirectionalA>(pTheAs);
     }
   }
 

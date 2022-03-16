@@ -32,6 +32,14 @@ public abstract class AdvancedPOJOBase {
   private final int readonlyDefault;
 
   /**
+   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * object creation builder should be used instead.
+   */
+  protected AdvancedPOJOBase( ) {
+    readonlyDefault = 4711;
+  }
+
+  /**
    * Initialize object using the passed builder.
    * 
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
