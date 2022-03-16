@@ -181,4 +181,7 @@ boolean isTransient(uml::Property property):
 boolean hasExample(uml::NamedElement element):
   element.isStereotypeApplied("Example");
   
+cached boolean isTransientBidirectionalBackReference(uml::Property property) :
+  property.opposite != null && property.opposite.isNavigable() && property.opposite.isTransient();
+  
 

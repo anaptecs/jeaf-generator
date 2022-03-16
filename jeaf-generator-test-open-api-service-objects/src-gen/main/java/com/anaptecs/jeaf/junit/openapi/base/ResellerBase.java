@@ -69,6 +69,11 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   private List<Channel> channels = new ArrayList<Channel>();
 
   /**
+   * Attribute is required for correct handling of bidirectional associations in case of deserialization.
+   */
+  private transient boolean channelsBackReferenceInitialized;
+
+  /**
    * 
    */
   private transient Set<Product> products = new HashSet<Product>();
@@ -91,6 +96,8 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    */
   protected ResellerBase( ) {
     objectID = null;
+    // Bidirectional back reference is not yet set up correctly
+    channelsBackReferenceInitialized = false;
   }
 
   /**
@@ -113,6 +120,8 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     if (pBuilder.channels != null) {
       channels.addAll(pBuilder.channels);
     }
+    // Bidirectional back reference is set up correctly as a builder is used.
+    channelsBackReferenceInitialized = true;
     if (pBuilder.products != null) {
       products.addAll(pBuilder.products);
     }
@@ -296,6 +305,14 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    * the returned collection is unmodifiable.
    */
   public List<Channel> getChannels( ) {
+    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
+    // after an object was deserialized.
+    if (channelsBackReferenceInitialized == false) {
+      channelsBackReferenceInitialized = true;
+      for (Channel lNext : channels) {
+        lNext.setReseller((Reseller) this);
+      }
+    }
     // Return all Channel objects as unmodifiable collection.
     return Collections.unmodifiableList(channels);
   }
@@ -326,8 +343,16 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   public void addToChannels( Channel pChannels ) {
     // Check parameter "pChannels" for invalid value null.
     Check.checkInvalidParameterNull(pChannels, "pChannels");
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to
+    // be released.
+    pChannels.unsetReseller();
     // Add passed object to collection of associated Channel objects.
     channels.add(pChannels);
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (pChannels != null && this.equals(pChannels.getReseller()) == false) {
+      pChannels.setReseller((Reseller) this);
+    }
   }
 
   /**
@@ -357,6 +382,11 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     Check.checkInvalidParameterNull(pChannels, "pChannels");
     // Remove passed object from collection of associated Channel objects.
     channels.remove(pChannels);
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (this.equals(pChannels.getReseller()) == true) {
+      pChannels.unsetReseller();
+    }
   }
 
   /**

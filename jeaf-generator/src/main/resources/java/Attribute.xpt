@@ -55,6 +55,14 @@
 		«ELSE»
 			«visibility» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «type.fqn()» «asInstanceVar()»;
 		«ENDIF»
+		
+		«REM» Special handling for bi-directional associations with one transient association end«ENDREM»
+		«IF this.isTransientBidirectionalBackReference()»
+		/**
+		 * Attribute is required for correct handling of bidirectional associations in case of deserialization.
+		 */
+		private transient boolean «asInstanceVar()»BackReferenceInitialized;
+		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»
 
@@ -184,6 +192,19 @@
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «this.fqn()» «asGetter()» () {
+	    «IF this.isTransientBidirectionalBackReference()»
+	    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling after an object was deserialized.
+	    if («this.asInstanceVar()»BackReferenceInitialized == false) {
+	      «this.asInstanceVar()»BackReferenceInitialized = true;
+	      for («this.type.fqn()» lNext : «this.asInstanceVar()») {
+	        «IF opposite.isMultivalued() == true»
+	        lNext.addTo«opposite.name.toFirstUpper()»((«opposite.type.name»)this);
+	        «ELSE»
+		    lNext.«opposite.asSetter()»((«opposite.type.name»)this);
+		    «ENDIF»
+	      }
+	    }
+	    «ENDIF»
 	    // Return all «this.type.name» objects as unmodifiable collection.
 		return java.util.Collections.unmodifiable«this.getCollectionType()»(«asInstanceVar()»);
 	}

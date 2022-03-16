@@ -51,22 +51,27 @@
 		  «ENDIF»
 		  «ENDIF»
 		  «FOREACH this.ownedAttribute AS attr»
-		  «IF attr.isReadOnly == true && attr.isStatic == false»
-		  «IF attr.type.isPrimitiveType() == true»
-		  «IF attr.isMultivalued() == false»
-		  «IF attr.isRealInitValue()»
-		  «attr.name» = «attr.initValue()»;
-		  «ELSE»
-		  «attr.name» = «attr.getPrimitiveDefaultValue()»;
-		  «ENDIF»
-		  «ELSE»
-		  «attr.name» = null;
-		  «ENDIF»
-		  «ELSE»«IF attr.isMultivalued() == false»
-		  «attr.name» = null;
-		  «ENDIF»
-		  «ENDIF»
-		  «ENDIF»
+			  «IF attr.isReadOnly == true && attr.isStatic == false»
+			  	«IF attr.type.isPrimitiveType() == true»
+				  «IF attr.isMultivalued() == false»
+				  	«IF attr.isRealInitValue()»
+				  		«attr.name» = «attr.initValue()»;
+				  	«ELSE»
+				  		«attr.name» = «attr.getPrimitiveDefaultValue()»;
+				  	«ENDIF»
+				  «ELSE»
+				  	«attr.name» = null;
+				  «ENDIF»
+			    «ELSE»
+					«IF attr.isMultivalued() == false»
+					«attr.name» = null;
+					«ENDIF»
+				«ENDIF»
+			  «ENDIF»
+			  «IF attr.isTransientBidirectionalBackReference()»
+			    // Bidirectional back reference is not yet set up correctly
+			    «attr.asInstanceVar()»BackReferenceInitialized = false;
+			  «ENDIF»
 		  «ENDFOREACH»
 		}
 
@@ -111,6 +116,10 @@
 					«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»			  	
 			  	«ENDIF»
 			  «ENDIF»			  
+			  «IF attr.isTransientBidirectionalBackReference()»
+				// Bidirectional back reference is set up correctly as a builder is used.
+				«attr.asInstanceVar()»BackReferenceInitialized = true;
+			  «ENDIF»
 			«ENDFOREACH»
 		}
 		  
@@ -169,22 +178,27 @@
 		  «ENDIF»
 		  «ENDIF»
 		  «FOREACH this.ownedAttribute AS attr»
-		  «IF attr.isReadOnly == true && attr.isStatic == false»
-		  «IF attr.type.isPrimitiveType() == true»
-		  «IF attr.isMultivalued() == false»
-		  «IF attr.isRealInitValue()»
-		  «attr.name» = «attr.initValue()»;
-		  «ELSE»
-		  «attr.name» = «attr.getPrimitiveDefaultValue()»;
-		  «ENDIF»
-		  «ELSE»
-		  «attr.name» = null;
-		  «ENDIF»
-		  «ELSE»«IF attr.isMultivalued() == false»
-		  «attr.name» = null;
-		  «ENDIF»
-		  «ENDIF»
-		  «ENDIF»
+			  «IF attr.isReadOnly == true && attr.isStatic == false»
+				  «IF attr.type.isPrimitiveType() == true»
+					  «IF attr.isMultivalued() == false»
+					  	«IF attr.isRealInitValue()»
+					  		«attr.name» = «attr.initValue()»;
+					  	«ELSE»
+					  		«attr.name» = «attr.getPrimitiveDefaultValue()»;
+					  	«ENDIF»
+					  «ELSE»
+					  	«attr.name» = null;
+					  «ENDIF»
+				  «ELSE»
+					  «IF attr.isMultivalued() == false»
+					  	«attr.name» = null;
+					  «ENDIF»
+				  «ENDIF»
+			  «ENDIF»
+			  «IF attr.isTransientBidirectionalBackReference()»
+			    // Bidirectional back reference is not yet set up correctly
+			    «attr.asInstanceVar()»BackReferenceInitialized = false;
+			  «ENDIF»
 		  «ENDFOREACH»
 		}
 
@@ -229,6 +243,10 @@
 				«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»			  	
 		  	«ENDIF»
 		  «ENDIF»			  
+		  «IF attr.isTransientBidirectionalBackReference()»
+			// Bidirectional back reference is set up correctly as a builder is used.
+			«attr.asInstanceVar()»BackReferenceInitialized = true;
+		  «ENDIF»
 		«ENDFOREACH»
 		}
 		

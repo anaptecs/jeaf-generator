@@ -242,7 +242,7 @@ public class JSONSerializationTest {
   }
 
   @Test
-  void testBiDirectionalAssociations( ) {
+  void testBidirectionalAssociations( ) {
     ServiceObjectID lProductID1 = new ServiceObjectID("12", 0);
     ServiceObjectID lProductID2 = new ServiceObjectID("4", 1);
     ServiceObjectID lResellerID = new ServiceObjectID("1234", 5);
