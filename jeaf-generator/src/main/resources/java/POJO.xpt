@@ -73,6 +73,10 @@
 								«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»			  	
 						  	«ENDIF»
 						  «ENDIF»			  
+						  «IF attr.isTransientBidirectionalBackReference()»
+							// Bidirectional back reference is set up correctly as a builder is used.
+							«attr.asInstanceVar()»BackReferenceInitialized = true;
+						  «ENDIF»
 						«ENDFOREACH»
 					}
 					  
@@ -158,6 +162,10 @@
 							«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»			  	
 					  	«ENDIF»
 					  «ENDIF»			  
+					  «IF attr.isTransientBidirectionalBackReference()»
+						// Bidirectional back reference is set up correctly as a builder is used.
+						«attr.asInstanceVar()»BackReferenceInitialized = true;
+					  «ENDIF»
 					«ENDFOREACH»
 					}
 					
