@@ -1,3 +1,4 @@
+extension java::Naming;
 
 // Function checks whether the passed package is part of the package white list for generation. 
 cached String isMayBeInPackageWhitelist(uml::Package package) : 
@@ -92,6 +93,9 @@ cached boolean generateJacksonAnnotations() :
 cached boolean enableSemVerForJSON() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.enableSemVerForJSON();
     
+cached boolean generateJSONSerializers() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateJSONSerializers();
+    
 cached boolean generateConstantsForAttributeNames() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateConstantsForAttributeNames();
         
@@ -184,4 +188,29 @@ boolean hasExample(uml::NamedElement element):
 cached boolean isTransientBidirectionalBackReference(uml::Property property) :
   property.opposite != null && property.opposite.isNavigable() && property.opposite.isTransient();
   
+cached boolean isBooleanType(uml::Type type) :
+  type.fqn() == "java.lang.Boolean" || type.fqn() == "boolean"; 
 
+cached boolean isStringType(uml::Type type) :
+  type.fqn() == "java.lang.String" || type.fqn() == "String"; 
+
+cached boolean isByteType(uml::Type type) :
+  type.fqn() == "java.lang.Byte" || type.fqn() == "byte"; 
+
+cached boolean isShortType(uml::Type type) :
+  type.fqn() == "java.lang.Short" || type.fqn() == "short"; 
+
+cached boolean isIntegerType(uml::Type type) :
+  type.fqn() == "java.lang.Integer" || type.fqn() == "int"; 
+
+cached boolean isLongType(uml::Type type) :
+  type.fqn() == "java.lang.Long" || type.fqn() == "long"; 
+
+cached boolean isFloatType(uml::Type type) :
+  type.fqn() == "java.lang.Float" || type.fqn() == "float"; 
+
+cached boolean isDoubleType(uml::Type type) :
+  type.fqn() == "java.lang.Double" || type.fqn() == "double"; 
+
+
+  

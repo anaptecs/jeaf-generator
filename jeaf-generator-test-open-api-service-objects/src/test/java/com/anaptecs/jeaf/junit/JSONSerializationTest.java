@@ -47,7 +47,7 @@ public class JSONSerializationTest {
     ChannelCode lChannelCode = ChannelCode.Builder.newBuilder().setCode("POS").build();
     JSONTools lTools = JSON.getJSONTools();
     String lJSONString = lTools.writeObjectToString(lChannelCode);
-    assertEquals("{\"code\":\"POS\"}", lJSONString);
+    assertEquals("\"POS\"", lJSONString);
 
     ChannelCode lDeserializedChannelCode = lTools.read(lJSONString, ChannelCode.class);
     assertEquals("POS", lDeserializedChannelCode.getCode());
@@ -56,8 +56,7 @@ public class JSONSerializationTest {
         .setCode(47).setSelfServiceChannel(false).build();
 
     lJSONString = lTools.writeObjectToString(lChannel);
-    assertEquals(
-        "{\"channelType\":\"COUNTER\",\"channelCode\":{\"code\":\"POS\"},\"code\":47,\"selfServiceChannel\":false}",
+    assertEquals("{\"channelType\":\"COUNTER\",\"channelCode\":\"POS\",\"code\":47,\"selfServiceChannel\":false}",
         lJSONString);
 
     Channel lDeserilaizedChannel = lTools.read(lJSONString, Channel.class);
@@ -74,7 +73,7 @@ public class JSONSerializationTest {
         Reseller.Builder.newBuilder().setName("Reseller 1").setLanguage(Locale.GERMAN).setChannels(lChannels).build();
     lJSONString = lTools.writeObjectToString(lReseller);
     assertEquals(
-        "{\"objectID\":null,\"channels\":[{\"channelType\":\"COUNTER\",\"channelCode\":{\"code\":\"POS\"},\"code\":47,\"selfServiceChannel\":false},{\"channelType\":\"MOBILE\",\"channelCode\":{\"code\":\"MOBILE_APP\"},\"code\":42,\"selfServiceChannel\":true}],\"name\":\"Reseller 1\",\"language\":\"de\"}",
+        "{\"objectID\":null,\"channels\":[{\"channelType\":\"COUNTER\",\"channelCode\":\"POS\",\"code\":47,\"selfServiceChannel\":false},{\"channelType\":\"MOBILE\",\"channelCode\":\"MOBILE_APP\",\"code\":42,\"selfServiceChannel\":true}],\"name\":\"Reseller 1\",\"language\":\"de\"}",
         lJSONString);
 
     // Test deserialization

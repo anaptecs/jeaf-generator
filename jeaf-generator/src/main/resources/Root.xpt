@@ -23,6 +23,17 @@
 	«IF generateOpenAPISpec() == true»
 		«EXPAND java::OpenAPI::RegisterLocalTypes FOREACH this.allOwnedElements().typeSelect(OpenAPI3Specification)»
 	«ENDIF»
+
+    «IF generateJSONSerializers() == true»
+	    «FOREACH this.allOwnedElements().typeSelect(OpenAPIDataType) AS dataType»
+		    «IF dataType.isInGeneratorWhitelist() == true»
+				«info("Processing <<OpenAPIDataType>> " + dataType.name + " (" + (dataType.fqn()) + ")")»
+		    	«EXPAND java::OpenAPIDataType::GenerateDataTypeSerializer FOR dataType»
+		    	«EXPAND java::OpenAPIDataType::GenerateDataTypeDeserializer FOR dataType»
+		    «ENDIF»
+	    «ENDFOREACH»
+    «ENDIF»
+    
 	«EXPAND Root FOREACH ownedElement»
 «ENDDEFINE» 
 
@@ -174,7 +185,17 @@
 		«info("Processing <<OpenAPI3Specification>> " + this.name + " (" + (this.fqn()) + ")")»
     	«EXPAND java::OpenAPI::GenerateOpenAPI»
     «ENDIF»
+    
+    // TODO Generate ModuleFactory for OpenAPI Spec
 «ENDDEFINE»
+
+«DEFINE Root FOR ModuleFactory»
+    «IF generateJSONSerializers() == true && this.isInGeneratorWhitelist() == true»
+		«info("Processing <<ModuleFactory>> " + this.name + " (" + (this.fqn()) + ")")»
+    	«EXPAND java::OpenAPIDataType::GenerateModuleFactory»
+    «ENDIF»
+«ENDDEFINE»
+
 
 «DEFINE Root FOR Object»
 «ENDDEFINE»

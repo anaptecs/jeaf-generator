@@ -171,6 +171,11 @@ public class GeneratorCommons {
    */
   public static final String ENABLE_SEMVER_FOR_JSON = "switch.gen.enable.json.semver";
 
+  /**
+   * Constant defines the name of the system property which enables code generation for JSON serializers.
+   */
+  public static final String JSON_SERIALIZERS = "switch.gen.json.serializers";
+
   public static final String NAME_CONSTANTS_FOR_ATTRIBUTES = "switch.gen.enable.name.constants";
 
   public static final String LINE_SEPARATOR = "\n";
@@ -664,6 +669,11 @@ public class GeneratorCommons {
   public static boolean enableSemVerForJSON( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(ENABLE_SEMVER_FOR_JSON, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean generateJSONSerializers( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(JSON_SERIALIZERS, Boolean.TRUE, Boolean.class);
   }
 
   public static boolean generateConstantsForAttributeNames( ) {

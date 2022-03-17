@@ -123,3 +123,118 @@
                 «ENDIF-»
                 «ENDLET -»
 «ENDDEFINE»
+
+«DEFINE GenerateDataTypeSerializer FOR OpenAPIDataType -»
+	«FILE packagePath() + "/serializers/" + name +"Serializer.java" GenBase»
+		«getFileHeader()»
+		package «this.packageName()».serializers;
+		
+		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		/**
+		 * Class implements a JSON / Jackson serializer for class «name».
+		 */
+		public class «name»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<«name»> {
+		  @Override
+		  public void serialize( «this.fqn()» pObject, com.fasterxml.jackson.core.JsonGenerator pGenerator, com.fasterxml.jackson.databind.SerializerProvider pSerializers )
+		    throws java.io.IOException {
+		    
+		  «LET this.ownedAttribute.get(0) AS attr»
+		    // Write value directly to JSON and avoid nesting object structures
+		    «IF attr.type.isStringType()»
+		    pGenerator.writeString(pObject.«attr.asGetter()»());
+		    «ELSE»
+		    pGenerator.writeNumber(pObject.«attr.asGetter()»());
+		    «ENDIF»
+		  «ENDLET»
+		  }
+		}
+	«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE GenerateDataTypeDeserializer FOR OpenAPIDataType -»
+	«FILE packagePath() + "/serializers/" + name +"Deserializer.java" GenBase»
+		«getFileHeader()»
+		package «this.packageName()».serializers;
+		
+		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		/**
+		 * Class implements a JSON / Jackson deserializer for class «name».
+		 */
+		public class «name»Deserializer extends com.fasterxml.jackson.databind.JsonDeserializer<«this.fqn()»> {
+
+		@Override
+		public «this.fqn()» deserialize( com.fasterxml.jackson.core.JsonParser pParser, com.fasterxml.jackson.databind.DeserializationContext pContext ) throws java.io.IOException, com.fasterxml.jackson.core.JacksonException {
+			// Parse JSON content.
+			com.fasterxml.jackson.databind.JsonNode lNode = pParser.getCodec().readTree(pParser);
+		
+		    // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
+		    «LET this.ownedAttribute.get(0) AS attr»
+			    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
+			    «IF attr.type.isBooleanType()»
+		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»(lNode.asBoolean()).build();
+		        «ENDIF»
+			    «IF attr.type.isStringType()»
+		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»(lNode.asText()).build();
+		        «ENDIF»
+		        «IF attr.type.isByteType()»
+		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»((byte)lNode.asInt()).build();
+		        «ENDIF»
+		        «IF attr.type.isShortType()»
+		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»((short)lNode.asInt()).build();
+		        «ENDIF»
+		        «IF attr.type.isIntegerType()»
+		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»(lNode.asInt()).build();
+		        «ENDIF»
+		        «IF attr.type.isLongType()»
+		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»(lNode.asLong()).build();
+		        «ENDIF»
+		        «IF attr.type.isFloatType()»
+		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»((float)lNode.asDouble()).build();
+		        «ENDIF»
+		        «IF attr.type.isDoubleType()»
+		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»(lNode.asDouble()).build();
+		        «ENDIF»
+		    }
+		    // Node is not a TextNode
+		    else {
+		      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.json.api.JSONMessages.UNEXPECTED_NODE_TYPE_FOR_OBJECT_ID_DESERIAL, lNode.toString(), lNode.getClass().getName());
+		    }
+		    «ENDLET»
+		}
+	}
+	«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE GenerateModuleFactory FOR ModuleFactory -»
+	«FILE packagePath() + "/" + name + ".java" GenBase»
+		«getFileHeader()»
+		package «this.packageName()»;
+		
+		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		/**
+		 * Factory assembles all configured serializers / deserializers into a module.
+		 */
+		@com.anaptecs.jeaf.json.annotations.ModuleFactory
+		public class «name» implements com.anaptecs.jeaf.json.api.ObjectMapperModuleFactory {
+			/**
+			 * Method creates a module that consists of all serializers / deserializers of the current package.
+			 */
+			@Override
+			public com.fasterxml.jackson.databind.Module createModule( ) {
+				// Create module for serializers / deserializers that are located in this package
+				com.fasterxml.jackson.databind.module.SimpleModule lModule = new com.fasterxml.jackson.databind.module.SimpleModule(this.getClass().getName());
+				
+				// Add serializers and deserializers
+				
+				«FOREACH this.clientDependency.supplier.typeSelect(uml::Package).allOwnedElements().typeSelect(OpenAPIDataType) AS datatype»
+				lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer());
+				lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer());
+				«ENDFOREACH»
+				
+				// Return created module.
+				return lModule;
+			}
+		}
+	«ENDFILE»
+«ENDDEFINE»
+

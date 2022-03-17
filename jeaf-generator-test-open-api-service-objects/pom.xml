@@ -19,6 +19,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.anaptecs.jeaf.json</groupId>
+			<artifactId>jeaf-json-api</artifactId>
+		    <version>${jeaf.json.api.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
 			<version>${javaee-api.version}</version>
@@ -44,6 +50,14 @@
 			<artifactId>jeaf-json-impl-runtime</artifactId>
 		    <version>${jeaf.json.impl.version}</version>
 		    <type>pom</type>
+		    <scope>test</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.json</groupId>
+			<artifactId>jeaf-json-impl</artifactId>
+		    <version>${jeaf.json.impl.version}</version>
 		    <scope>test</scope>
 		</dependency>
 
