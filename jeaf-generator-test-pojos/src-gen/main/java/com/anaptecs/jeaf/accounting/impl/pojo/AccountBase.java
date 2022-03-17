@@ -41,6 +41,11 @@ public abstract class AccountBase {
   public static final String CURRENCY = "currency";
 
   /**
+   * Constant for the name of attribute "allBookings".
+   */
+  public static final String ALLBOOKINGS = "allBookings";
+
+  /**
    * 
    */
   private int iban;

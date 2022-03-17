@@ -26,16 +26,6 @@ public abstract class PersonBase extends Partner {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "surname".
-   */
-  public static final String SURNAME = "surname";
-
-  /**
-   * Constant for the name of attribute "firstName".
-   */
-  public static final String FIRSTNAME = "firstName";
-
-  /**
    * 
    */
   private String surname;

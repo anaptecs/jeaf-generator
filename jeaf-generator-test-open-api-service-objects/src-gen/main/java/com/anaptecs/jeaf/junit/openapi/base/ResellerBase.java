@@ -39,26 +39,6 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "channels".
-   */
-  public static final String CHANNELS = "channels";
-
-  /**
-   * Constant for the name of attribute "products".
-   */
-  public static final String PRODUCTS = "products";
-
-  /**
-   * Constant for the name of attribute "name".
-   */
-  public static final String NAME = "name";
-
-  /**
-   * Constant for the name of attribute "language".
-   */
-  public static final String LANGUAGE = "language";
-
-  /**
    * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
    */
   private final ServiceObjectID objectID;

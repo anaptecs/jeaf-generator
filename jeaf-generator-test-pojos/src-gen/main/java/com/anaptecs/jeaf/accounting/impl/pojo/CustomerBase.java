@@ -42,6 +42,11 @@ public abstract class CustomerBase {
   public static final String EMAIL = "email";
 
   /**
+   * Constant for the name of attribute "accounts".
+   */
+  public static final String ACCOUNTS = "accounts";
+
+  /**
    * 
    */
   @NotBlank()

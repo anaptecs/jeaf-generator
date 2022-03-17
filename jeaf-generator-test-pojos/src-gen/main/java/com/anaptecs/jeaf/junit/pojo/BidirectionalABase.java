@@ -39,6 +39,11 @@ public abstract class BidirectionalABase {
   public static final String CHILD = "child";
 
   /**
+   * Constant for the name of attribute "transientBs".
+   */
+  public static final String TRANSIENTBS = "transientBs";
+
+  /**
    * 
    */
   private transient BidirectionalB transientB;

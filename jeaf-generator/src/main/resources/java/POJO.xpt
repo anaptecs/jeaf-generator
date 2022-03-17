@@ -143,14 +143,8 @@
 			    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 			    «EXPAND java::Jackson::JacksonClassAnnotations -»
 				public abstract class «name»Base «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
-					«REM»Generate constants for all attributes«ENDREM»
-					«FOREACH this.ownedAttribute AS attr»
-					«IF attr.isMultivalued() == false»          
-					/**
-					 * Constant for the name of attribute "«attr.name»".
-					 */
-					public static final String «attr.asInstanceVar().toUpperCase()» = "«attr.asInstanceVar()»";
-					«ENDIF»«ENDFOREACH»
+					«REM»Generate constants for all real attributes«ENDREM»
+					«EXPAND java::Helper::GenerateConstantsForAttributeNames FOR ((uml::Class) this)»
 					  
 					«IF needsToImplementIdentifiable() == true»
 						«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())»
