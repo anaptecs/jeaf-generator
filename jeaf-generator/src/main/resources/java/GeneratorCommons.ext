@@ -189,28 +189,28 @@ cached boolean isTransientBidirectionalBackReference(uml::Property property) :
   property.opposite != null && property.opposite.isNavigable() && property.opposite.isTransient();
   
 cached boolean isBooleanType(uml::Type type) :
-  type.fqn() == "java.lang.Boolean" || type.fqn() == "boolean"; 
+  type.fqn() == "java.lang.Boolean" || type.fqn() == "Boolean" ||type.fqn() == "boolean"; 
 
 cached boolean isStringType(uml::Type type) :
   type.fqn() == "java.lang.String" || type.fqn() == "String"; 
 
 cached boolean isByteType(uml::Type type) :
-  type.fqn() == "java.lang.Byte" || type.fqn() == "byte"; 
+  type.fqn() == "java.lang.Byte" || type.fqn() == "Byte" || type.fqn() == "byte"; 
 
 cached boolean isShortType(uml::Type type) :
-  type.fqn() == "java.lang.Short" || type.fqn() == "short"; 
+  type.fqn() == "java.lang.Short" || type.fqn() == "Short" || type.fqn() == "short"; 
 
 cached boolean isIntegerType(uml::Type type) :
-  type.fqn() == "java.lang.Integer" || type.fqn() == "int"; 
+  type.fqn() == "java.lang.Integer" || type.fqn() == "Integer" || type.fqn() == "int"; 
 
 cached boolean isLongType(uml::Type type) :
-  type.fqn() == "java.lang.Long" || type.fqn() == "long"; 
+  type.fqn() == "java.lang.Long" || type.fqn() == "Long" || type.fqn() == "long"; 
 
 cached boolean isFloatType(uml::Type type) :
-  type.fqn() == "java.lang.Float" || type.fqn() == "float"; 
+  type.fqn() == "java.lang.Float" || type.fqn() == "Float" || type.fqn() == "float"; 
 
 cached boolean isDoubleType(uml::Type type) :
-  type.fqn() == "java.lang.Double" || type.fqn() == "double"; 
+  type.fqn() == "java.lang.Double" || type.fqn() == "Double" || type.fqn() == "double"; 
 
 
   

@@ -142,8 +142,11 @@
 		    // Write value directly to JSON and avoid nesting object structures
 		    «IF attr.type.isStringType()»
 		    pGenerator.writeString(pObject.«attr.asGetter()»());
+		    «ELSE»«IF attr.type.isBooleanType()»
+		    pGenerator.writeBoolean(pObject.«attr.asGetter()»());
 		    «ELSE»
 		    pGenerator.writeNumber(pObject.«attr.asGetter()»());
+		    «ENDIF»		    
 		    «ENDIF»
 		  «ENDLET»
 		  }
