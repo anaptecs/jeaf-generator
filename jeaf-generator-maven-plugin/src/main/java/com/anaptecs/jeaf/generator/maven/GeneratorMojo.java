@@ -313,6 +313,12 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean enableSemVerForJSON;
 
   /**
+   * Parameter defines if JSON serializers should be generated.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateJSONSerializers;
+
+  /**
    * Parameter defines if constants for the name of attributes of POJOs, Service Objects, Query Objects, Domain Objects
    * or Persistent Objects should be generated or not..
    */
@@ -592,6 +598,11 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate Jackson annotations:             " + generateJacksonAnnotations);
       lLog.info("Enable SemVer for JSON serialization:     " + enableSemVerForJSON);
     }
+
+    if (generateJSONSerializers) {
+      lLog.info("Generate JSON serializers:                " + generateJSONSerializers);
+    }
+
     if (generateMessageConstants) {
       lLog.info("Generate Message Constants:               " + generateMessageConstants);
     }
@@ -672,6 +683,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.jaxrs.annotations", generateJAXRSAnnotations.toString());
       System.setProperty("switch.gen.jackson.annotations", generateJacksonAnnotations.toString());
       System.setProperty("switch.gen.enable.json.semver", enableSemVerForJSON.toString());
+      System.setProperty("switch.gen.json.serializers", generateJSONSerializers.toString());
+
       System.setProperty("switch.gen.enable.name.constants", generateConstantsForAttributeNames.toString());
       System.setProperty("switch.gen.public.setters.for.associations", generatePublicSettersForAssociations.toString());
       System.setProperty("switch.gen.null.checks.for.to.one.associations.of.service.objects",
