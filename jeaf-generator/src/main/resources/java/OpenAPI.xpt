@@ -398,7 +398,7 @@ components:
             deprecated: true
               «ENDIF-»
             «ENDIF-»
-           «ENDIF»
+           «ENDIF-»
           «IF attribute.isNullable() == false -»
           nullable: «attribute.isNullable()»
           «ENDIF-»  

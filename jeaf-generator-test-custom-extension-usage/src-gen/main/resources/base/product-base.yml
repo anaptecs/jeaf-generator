@@ -146,10 +146,8 @@ components:
         image: 
           description: >-
             Image describing the product.
-          type: array
-          items:
-            type: integer
-            format: int32
+          type: string
+          format: byte
         link: 
           type: string
           example: 'https://www.company.com/products/1345-345'
@@ -308,15 +306,11 @@ components:
           items:
             type: boolean
         aByteArray: 
-          type: array
-          items:
-            type: integer
-            format: int32
+          type: string
+          format: byte
         bByteArray: 
-          type: array
-          items:
-            type: integer
-            format: int32
+          type: string
+          format: byte
         aShortArray: 
           type: array
           items:
@@ -488,11 +482,8 @@ components:
           # Attribute "deprecatedParent" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
           $ref: '#/components/schemas/ParentClass'
         deprecatedArray: 
-          type: array
-          items:
-            type: integer
-            format: int32
-            deprecated: true
+          type: string
+          format: byte
       required:
         - deprecatedAttribute
         - deprecatedArray
@@ -715,16 +706,11 @@ components:
           items:
             type: boolean
         aByteArray: 
-          type: array
-          items:
-            type: integer
-            format: int32
-          maxItems: 32768
+          type: string
+          format: byte
         bByteArray: 
-          type: array
-          items:
-            type: integer
-            format: int32
+          type: string
+          format: byte
         aShortArray: 
           type: array
           items:
