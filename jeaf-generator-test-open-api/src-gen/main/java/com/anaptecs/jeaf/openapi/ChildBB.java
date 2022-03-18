@@ -41,7 +41,7 @@ public class ChildBB extends ChildB {
   private ParentClass deprecatedParent = null;
 
   @JsonProperty("deprecatedArray")
-  private List<Integer> deprecatedArray = new ArrayList<>();
+  private byte[] deprecatedArray = null;
 
   public ChildBB childBBAttribute(Long childBBAttribute) {
     this.childBBAttribute = childBBAttribute;
@@ -123,13 +123,8 @@ public class ChildBB extends ChildB {
     this.deprecatedParent = deprecatedParent;
   }
 
-  public ChildBB deprecatedArray(List<Integer> deprecatedArray) {
+  public ChildBB deprecatedArray(byte[] deprecatedArray) {
     this.deprecatedArray = deprecatedArray;
-    return this;
-  }
-
-  public ChildBB addDeprecatedArrayItem(Integer deprecatedArrayItem) {
-    this.deprecatedArray.add(deprecatedArrayItem);
     return this;
   }
 
@@ -138,11 +133,11 @@ public class ChildBB extends ChildB {
    * @return deprecatedArray
   **/
   @Schema(required = true, description = "")
-  public List<Integer> getDeprecatedArray() {
+  public byte[] getDeprecatedArray() {
     return deprecatedArray;
   }
 
-  public void setDeprecatedArray(List<Integer> deprecatedArray) {
+  public void setDeprecatedArray(byte[] deprecatedArray) {
     this.deprecatedArray = deprecatedArray;
   }
 
@@ -160,13 +155,13 @@ public class ChildBB extends ChildB {
         Objects.equals(this.deprecatedAttribute, childBB.deprecatedAttribute) &&
         Objects.equals(this.deprecatedBs, childBB.deprecatedBs) &&
         Objects.equals(this.deprecatedParent, childBB.deprecatedParent) &&
-        Objects.equals(this.deprecatedArray, childBB.deprecatedArray) &&
+        Arrays.equals(this.deprecatedArray, childBB.deprecatedArray) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(childBBAttribute, deprecatedAttribute, deprecatedBs, deprecatedParent, deprecatedArray, super.hashCode());
+    return Objects.hash(childBBAttribute, deprecatedAttribute, deprecatedBs, deprecatedParent, Arrays.hashCode(deprecatedArray), super.hashCode());
   }
 
 

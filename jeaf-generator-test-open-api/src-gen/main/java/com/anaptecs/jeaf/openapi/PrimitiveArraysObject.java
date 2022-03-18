@@ -36,10 +36,10 @@ public class PrimitiveArraysObject {
   private List<Boolean> cBooleanArray = new ArrayList<>();
 
   @JsonProperty("aByteArray")
-  private List<Integer> aByteArray = new ArrayList<>();
+  private byte[] aByteArray = null;
 
   @JsonProperty("bByteArray")
-  private List<Integer> bByteArray = null;
+  private byte[] bByteArray = null;
 
   @JsonProperty("aShortArray")
   private List<Integer> aShortArray = new ArrayList<>();
@@ -164,13 +164,8 @@ public class PrimitiveArraysObject {
     this.cBooleanArray = cBooleanArray;
   }
 
-  public PrimitiveArraysObject aByteArray(List<Integer> aByteArray) {
+  public PrimitiveArraysObject aByteArray(byte[] aByteArray) {
     this.aByteArray = aByteArray;
-    return this;
-  }
-
-  public PrimitiveArraysObject addAByteArrayItem(Integer aByteArrayItem) {
-    this.aByteArray.add(aByteArrayItem);
     return this;
   }
 
@@ -179,24 +174,16 @@ public class PrimitiveArraysObject {
    * @return aByteArray
   **/
   @Schema(required = true, description = "")
-  public List<Integer> getAByteArray() {
+  public byte[] getAByteArray() {
     return aByteArray;
   }
 
-  public void setAByteArray(List<Integer> aByteArray) {
+  public void setAByteArray(byte[] aByteArray) {
     this.aByteArray = aByteArray;
   }
 
-  public PrimitiveArraysObject bByteArray(List<Integer> bByteArray) {
+  public PrimitiveArraysObject bByteArray(byte[] bByteArray) {
     this.bByteArray = bByteArray;
-    return this;
-  }
-
-  public PrimitiveArraysObject addBByteArrayItem(Integer bByteArrayItem) {
-    if (this.bByteArray == null) {
-      this.bByteArray = new ArrayList<>();
-    }
-    this.bByteArray.add(bByteArrayItem);
     return this;
   }
 
@@ -205,11 +192,11 @@ public class PrimitiveArraysObject {
    * @return bByteArray
   **/
   @Schema(description = "")
-  public List<Integer> getBByteArray() {
+  public byte[] getBByteArray() {
     return bByteArray;
   }
 
-  public void setBByteArray(List<Integer> bByteArray) {
+  public void setBByteArray(byte[] bByteArray) {
     this.bByteArray = bByteArray;
   }
 
@@ -650,8 +637,8 @@ public class PrimitiveArraysObject {
     return Objects.equals(this.aBooleanArray, primitiveArraysObject.aBooleanArray) &&
         Objects.equals(this.bBooleanArray, primitiveArraysObject.bBooleanArray) &&
         Objects.equals(this.cBooleanArray, primitiveArraysObject.cBooleanArray) &&
-        Objects.equals(this.aByteArray, primitiveArraysObject.aByteArray) &&
-        Objects.equals(this.bByteArray, primitiveArraysObject.bByteArray) &&
+        Arrays.equals(this.aByteArray, primitiveArraysObject.aByteArray) &&
+        Arrays.equals(this.bByteArray, primitiveArraysObject.bByteArray) &&
         Objects.equals(this.aShortArray, primitiveArraysObject.aShortArray) &&
         Objects.equals(this.bShortArray, primitiveArraysObject.bShortArray) &&
         Objects.equals(this.aIntegerArray, primitiveArraysObject.aIntegerArray) &&
@@ -673,7 +660,7 @@ public class PrimitiveArraysObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aBooleanArray, bBooleanArray, cBooleanArray, aByteArray, bByteArray, aShortArray, bShortArray, aIntegerArray, bIntegerArray, cIntegerArray, aLongArray, bLongArray, aBigIntegerArray, aCharacterArray, bCharacterArray, aFloatArray, bFloatArray, aDoubleArray, bDoubleArray, aBigDecimalArray, aStringArray, bStringArray);
+    return Objects.hash(aBooleanArray, bBooleanArray, cBooleanArray, Arrays.hashCode(aByteArray), Arrays.hashCode(bByteArray), aShortArray, bShortArray, aIntegerArray, bIntegerArray, cIntegerArray, aLongArray, bLongArray, aBigIntegerArray, aCharacterArray, bCharacterArray, aFloatArray, bFloatArray, aDoubleArray, bDoubleArray, aBigDecimalArray, aStringArray, bStringArray);
   }
 
 

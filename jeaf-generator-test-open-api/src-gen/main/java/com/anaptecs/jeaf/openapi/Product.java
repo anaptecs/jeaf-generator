@@ -35,7 +35,7 @@ public class Product {
   private String name = null;
 
   @JsonProperty("image")
-  private List<Integer> image = new ArrayList<>();
+  private byte[] image = null;
 
   @JsonProperty("link")
   private String link = null;
@@ -99,13 +99,8 @@ public class Product {
     this.name = name;
   }
 
-  public Product image(List<Integer> image) {
+  public Product image(byte[] image) {
     this.image = image;
-    return this;
-  }
-
-  public Product addImageItem(Integer imageItem) {
-    this.image.add(imageItem);
     return this;
   }
 
@@ -114,11 +109,11 @@ public class Product {
    * @return image
   **/
   @Schema(required = true, description = "Image describing the product.")
-  public List<Integer> getImage() {
+  public byte[] getImage() {
     return image;
   }
 
-  public void setImage(List<Integer> image) {
+  public void setImage(byte[] image) {
     this.image = image;
   }
 
@@ -257,7 +252,7 @@ public class Product {
     Product product = (Product) o;
     return Objects.equals(this.resellers, product.resellers) &&
         Objects.equals(this.name, product.name) &&
-        Objects.equals(this.image, product.image) &&
+        Arrays.equals(this.image, product.image) &&
         Objects.equals(this.link, product.link) &&
         Objects.equals(this.productID, product.productID) &&
         Objects.equals(this.supportedCurrencies, product.supportedCurrencies) &&
@@ -268,7 +263,7 @@ public class Product {
 
   @Override
   public int hashCode() {
-    return Objects.hash(resellers, name, image, link, productID, supportedCurrencies, productCodes, description, sortiments);
+    return Objects.hash(resellers, name, Arrays.hashCode(image), link, productID, supportedCurrencies, productCodes, description, sortiments);
   }
 
 

@@ -383,6 +383,10 @@ components:
           deprecated: true
               «ENDIF-»
             «ELSE-»
+              «IF attribute.type.isByteType() -»
+          type: string
+          format: byte
+              «ELSE -»
           type: array
           items:
             type: «attribute.type.getOpenAPIType(spec)»
@@ -394,6 +398,7 @@ components:
             deprecated: true
               «ENDIF-»
             «ENDIF-»
+           «ENDIF»
           «IF attribute.isNullable() == false -»
           nullable: «attribute.isNullable()»
           «ENDIF-»  

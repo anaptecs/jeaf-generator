@@ -36,10 +36,10 @@ public class PrimitiveArraysObjectWithRestrictions {
   private List<Boolean> cBooleanArray = new ArrayList<>();
 
   @JsonProperty("aByteArray")
-  private List<Integer> aByteArray = new ArrayList<>();
+  private byte[] aByteArray = null;
 
   @JsonProperty("bByteArray")
-  private List<Integer> bByteArray = null;
+  private byte[] bByteArray = null;
 
   @JsonProperty("aShortArray")
   private List<Integer> aShortArray = new ArrayList<>();
@@ -164,13 +164,8 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.cBooleanArray = cBooleanArray;
   }
 
-  public PrimitiveArraysObjectWithRestrictions aByteArray(List<Integer> aByteArray) {
+  public PrimitiveArraysObjectWithRestrictions aByteArray(byte[] aByteArray) {
     this.aByteArray = aByteArray;
-    return this;
-  }
-
-  public PrimitiveArraysObjectWithRestrictions addAByteArrayItem(Integer aByteArrayItem) {
-    this.aByteArray.add(aByteArrayItem);
     return this;
   }
 
@@ -179,24 +174,16 @@ public class PrimitiveArraysObjectWithRestrictions {
    * @return aByteArray
   **/
   @Schema(required = true, description = "")
-  public List<Integer> getAByteArray() {
+  public byte[] getAByteArray() {
     return aByteArray;
   }
 
-  public void setAByteArray(List<Integer> aByteArray) {
+  public void setAByteArray(byte[] aByteArray) {
     this.aByteArray = aByteArray;
   }
 
-  public PrimitiveArraysObjectWithRestrictions bByteArray(List<Integer> bByteArray) {
+  public PrimitiveArraysObjectWithRestrictions bByteArray(byte[] bByteArray) {
     this.bByteArray = bByteArray;
-    return this;
-  }
-
-  public PrimitiveArraysObjectWithRestrictions addBByteArrayItem(Integer bByteArrayItem) {
-    if (this.bByteArray == null) {
-      this.bByteArray = new ArrayList<>();
-    }
-    this.bByteArray.add(bByteArrayItem);
     return this;
   }
 
@@ -205,11 +192,11 @@ public class PrimitiveArraysObjectWithRestrictions {
    * @return bByteArray
   **/
   @Schema(description = "")
-  public List<Integer> getBByteArray() {
+  public byte[] getBByteArray() {
     return bByteArray;
   }
 
-  public void setBByteArray(List<Integer> bByteArray) {
+  public void setBByteArray(byte[] bByteArray) {
     this.bByteArray = bByteArray;
   }
 
@@ -650,8 +637,8 @@ public class PrimitiveArraysObjectWithRestrictions {
     return Objects.equals(this.aBooleanArray, primitiveArraysObjectWithRestrictions.aBooleanArray) &&
         Objects.equals(this.bBooleanArray, primitiveArraysObjectWithRestrictions.bBooleanArray) &&
         Objects.equals(this.cBooleanArray, primitiveArraysObjectWithRestrictions.cBooleanArray) &&
-        Objects.equals(this.aByteArray, primitiveArraysObjectWithRestrictions.aByteArray) &&
-        Objects.equals(this.bByteArray, primitiveArraysObjectWithRestrictions.bByteArray) &&
+        Arrays.equals(this.aByteArray, primitiveArraysObjectWithRestrictions.aByteArray) &&
+        Arrays.equals(this.bByteArray, primitiveArraysObjectWithRestrictions.bByteArray) &&
         Objects.equals(this.aShortArray, primitiveArraysObjectWithRestrictions.aShortArray) &&
         Objects.equals(this.bShortArray, primitiveArraysObjectWithRestrictions.bShortArray) &&
         Objects.equals(this.aIntegerArray, primitiveArraysObjectWithRestrictions.aIntegerArray) &&
@@ -673,7 +660,7 @@ public class PrimitiveArraysObjectWithRestrictions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aBooleanArray, bBooleanArray, cBooleanArray, aByteArray, bByteArray, aShortArray, bShortArray, aIntegerArray, bIntegerArray, cIntegerArray, aLongArray, bLongArray, aBigIntegerArray, aCharacterArray, bCharacterArray, aFloatArray, bFloatArray, aDoubleArray, bDoubleArray, aBigDecimalArray, aStringArray, bStringArray);
+    return Objects.hash(aBooleanArray, bBooleanArray, cBooleanArray, Arrays.hashCode(aByteArray), Arrays.hashCode(bByteArray), aShortArray, bShortArray, aIntegerArray, bIntegerArray, cIntegerArray, aLongArray, bLongArray, aBigIntegerArray, aCharacterArray, bCharacterArray, aFloatArray, bFloatArray, aDoubleArray, bDoubleArray, aBigDecimalArray, aStringArray, bStringArray);
   }
 
 

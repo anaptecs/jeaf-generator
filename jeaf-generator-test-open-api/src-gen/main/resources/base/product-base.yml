@@ -52,6 +52,7 @@ components:
         value: 
           type: integer
           format: int32
+            
         timeUnit: 
           $ref: '#/components/schemas/TimeUnit'
       required:
@@ -70,6 +71,7 @@ components:
             The amount of money. Attribute is always set.
           type: number
           format: double
+            
           nullable: false
           readOnly: true
         currencyCode: 
@@ -97,9 +99,11 @@ components:
         code: 
           type: integer
           format: int32
+            
           readOnly: true
         selfServiceChannel: 
           type: boolean
+            
           readOnly: true
           default: true
         reseller: 
@@ -125,8 +129,10 @@ components:
           type: string
           minLength: 1
           maxLength: 32
+            
         language: 
           type: string
+            
       required:
         - name
     # com.anaptecs.jeaf.junit.openapi.base.Product
@@ -143,18 +149,20 @@ components:
         name: 
           type: string
           minLength: 12
+            
         image: 
           description: >-
             Image describing the product.
-          type: array
-          items:
-            type: integer
-            format: int32
+          type: string
+          format: byte
+           
         link: 
           type: string
+            
           example: 'https://www.company.com/products/1345-345'
         productID: 
           type: string
+            
           readOnly: true
         supportedCurrencies: 
           description: >-
@@ -179,6 +187,7 @@ components:
         description: 
           type: string
           deprecated: true
+            
         sortiments: 
           type: array
           items:
@@ -202,85 +211,113 @@ components:
         localTime: 
           type: string
           format: time
+            
           example: '12:07'
         localDate: 
           type: string
           format: date
+            
         localDateTime: 
           type: string
           format: date-time
+            
         calendar: 
           type: string
           format: date-time
+            
         sqlDate: 
           type: string
           format: date-time
+            
         utilDate: 
           type: string
           format: date-time
+            
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObject
     PrimitiveObject:
       type: object
       properties:
         aBoolean: 
           type: boolean
+            
         bBoolean: 
           type: boolean
+            
         cBoolean: 
           type: boolean
+            
         aByte: 
           type: integer
           format: int32
+            
         bByte: 
           type: integer
           format: int32
+            
         aShort: 
           type: integer
           format: int32
+            
         bShort: 
           type: integer
           format: int32
+            
         aInteger: 
           type: integer
           format: int32
+            
         bInteger: 
           type: integer
           format: int32
+            
         cInteger: 
           type: integer
           format: int32
+            
         aLong: 
           type: integer
           format: int64
+            
         bLong: 
           type: integer
           format: int64
+            
         aBigInteger: 
           type: integer
           format: int64
+            
         aCharacter: 
           type: string
+            
         bCharacter: 
           type: string
+            
         aFloat: 
           type: number
           format: float
+            
         bFloat: 
           type: number
           format: float
+            
         aDouble: 
           type: number
           format: double
+            
         bDouble: 
           type: number
           format: double
+            
         aBigDecimal: 
           type: number
           format: double
+            
         aString: 
           type: string
+            
         bString: 
           type: string
+            
       required:
         - aBoolean
         - cBoolean
@@ -299,105 +336,123 @@ components:
           type: array
           items:
             type: boolean
+           
         bBooleanArray: 
           type: array
           items:
             type: boolean
+           
         cBooleanArray: 
           type: array
           items:
             type: boolean
+           
         aByteArray: 
-          type: array
-          items:
-            type: integer
-            format: int32
+          type: string
+          format: byte
+           
         bByteArray: 
-          type: array
-          items:
-            type: integer
-            format: int32
+          type: string
+          format: byte
+           
         aShortArray: 
           type: array
           items:
             type: integer
             format: int32
+           
         bShortArray: 
           type: array
           items:
             type: integer
             format: int32
+           
         aIntegerArray: 
           type: array
           items:
             type: integer
             format: int32
+           
         bIntegerArray: 
           type: array
           items:
             type: integer
             format: int32
+           
         cIntegerArray: 
           type: array
           items:
             type: integer
             format: int32
+           
         aLongArray: 
           type: array
           items:
             type: integer
             format: int64
+           
         bLongArray: 
           type: array
           items:
             type: integer
             format: int64
+           
         aBigIntegerArray: 
           type: array
           items:
             type: integer
             format: int64
+           
         aCharacterArray: 
           type: array
           items:
             type: string
+           
         bCharacterArray: 
           type: array
           items:
             type: string
+           
         aFloatArray: 
           type: array
           items:
             type: number
             format: float
+           
         bFloatArray: 
           type: array
           items:
             type: number
             format: float
+           
         aDoubleArray: 
           type: array
           items:
             type: number
             format: double
+           
         bDoubleArray: 
           type: array
           items:
             type: number
             format: double
+           
         aBigDecimalArray: 
           type: array
           items:
             type: number
             format: double
+           
         aStringArray: 
           type: array
           items:
             type: string
+           
         bStringArray: 
           type: array
           items:
             type: string
+           
       required:
         - aBooleanArray
         - cBooleanArray
@@ -425,6 +480,7 @@ components:
           type: string
         parentAttribute: 
           type: string
+            
       required:
         - objectType
     # com.anaptecs.jeaf.junit.openapi.base.ChildA
@@ -436,6 +492,7 @@ components:
         childAAttribute: 
           type: integer
           format: int32
+            
       required:
         - childAAttribute
     # com.anaptecs.jeaf.junit.openapi.base.ChildB
@@ -446,6 +503,7 @@ components:
       properties:
         childBAttribute: 
           type: boolean
+            
         composition: 
           type: array
           items:
@@ -463,6 +521,7 @@ components:
         childAAAttribute: 
           type: integer
           format: int32
+            
       required:
         - childAAAttribute
     # com.anaptecs.jeaf.junit.openapi.base.ChildBB
@@ -474,10 +533,12 @@ components:
         childBBAttribute: 
           type: integer
           format: int64
+            
         deprecatedAttribute: 
           type: integer
           format: int32
           deprecated: true
+            
         deprecatedBs: 
           # Attribute "deprecatedBs" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
           type: array
@@ -488,11 +549,9 @@ components:
           # Attribute "deprecatedParent" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
           $ref: '#/components/schemas/ParentClass'
         deprecatedArray: 
-          type: array
-          items:
-            type: integer
-            format: int32
-            deprecated: true
+          type: string
+          format: byte
+           
       required:
         - deprecatedAttribute
         - deprecatedArray
@@ -502,34 +561,44 @@ components:
       properties:
         readOnlyAttribute: 
           type: string
+            
           readOnly: true
         readWriteAttribute: 
           type: string
+            
         writeOnlyAttribute: 
           type: integer
           format: int32
+            
           writeOnly: true
         nullableAttribute: 
           type: boolean
+            
         notNullableAttribute: 
           type: number
           format: double
+            
           nullable: false
         readOnlyArray: 
           type: string
+            
           readOnly: true
         readWriteArray: 
           type: string
+            
         writeOnlyArray: 
           type: integer
           format: int32
+            
           writeOnly: true
         nullableArray: 
           type: number
           format: double
+            
         notNullableArray: 
           type: number
           format: double
+            
           nullable: false
       required:
         - writeOnlyAttribute
@@ -563,13 +632,17 @@ components:
       properties:
         street: 
           type: string
+            
         houseNumber: 
           type: string
+            
         city: 
           type: string
+            
         postalCode: 
           type: integer
           format: int32
+            
       required:
         - postalCode
     # com.anaptecs.jeaf.junit.openapi.base.Company
@@ -580,6 +653,7 @@ components:
       properties:
         name: 
           type: string
+            
     # com.anaptecs.jeaf.junit.openapi.base.Person
     Person:
       allOf:
@@ -588,8 +662,10 @@ components:
       properties:
         surname: 
           type: string
+            
         firstName: 
           type: string
+            
     # com.anaptecs.jeaf.junit.openapi.base.PartnerContainer
     PartnerContainer:
       type: object
@@ -605,50 +681,62 @@ components:
       properties:
         aBoolean: 
           type: boolean
+            
           default: true
         bBoolean: 
           type: boolean
+            
         cBoolean: 
           type: boolean
+            
         aByte: 
           type: integer
           format: int32
           maximum: 0
           exclusiveMaximum: true
+            
         bByte: 
           type: integer
           format: int32
           maximum: 0
+            
         aShort: 
           type: integer
           format: int32
           minimum: -237
+            
         bShort: 
           type: integer
           format: int32
           minimum: 0
           exclusiveMinimum: true
+            
         aInteger: 
           type: integer
           format: int32
           minimum: 0
+            
         bInteger: 
           type: integer
           format: int32
           minimum: 4711
+            
         cInteger: 
           type: integer
           format: int32
           minimum: 100
           maximum: 1000
+            
         aLong: 
           type: integer
           format: int64
+            
         bLong: 
           type: integer
           format: int64
           maximum: 299792458
           exclusiveMaximum: false
+            
         aBigInteger: 
           type: integer
           format: int64
@@ -656,37 +744,47 @@ components:
           exclusiveMaximum: true
           minimum: -3.14159265359
           exclusiveMinimum: true
+            
         aCharacter: 
           type: string
+            
         bCharacter: 
           type: string
+            
         aFloat: 
           type: number
           format: float
+            
         bFloat: 
           type: number
           format: float
+            
         aDouble: 
           type: number
           format: double
+            
           default: 42.0
         bDouble: 
           type: number
           format: double
+            
         aBigDecimal: 
           type: number
           format: double
           minimum: 4711.0815
           exclusiveMinimum: true
+            
         aString: 
           type: string
           minLength: 8
           maxLength: 32
+            
           default: "Hello OpenAPI"
         bString: 
           type: string
           minLength: 1
           maxLength: 128
+            
       required:
         - aBoolean
         - cBoolean
@@ -706,84 +804,96 @@ components:
           type: array
           items:
             type: boolean
+           
         bBooleanArray: 
           type: array
           items:
             type: boolean
+           
         cBooleanArray: 
           type: array
           items:
             type: boolean
+           
         aByteArray: 
-          type: array
-          items:
-            type: integer
-            format: int32
-          maxItems: 32768
+          type: string
+          format: byte
+           
         bByteArray: 
-          type: array
-          items:
-            type: integer
-            format: int32
+          type: string
+          format: byte
+           
         aShortArray: 
           type: array
           items:
             type: integer
             format: int32
+           
         bShortArray: 
           type: array
           items:
             type: integer
             format: int32
+           
         aIntegerArray: 
           type: array
           items:
             type: integer
             format: int32
+           
         bIntegerArray: 
           type: array
           items:
             type: integer
             format: int32
+           
         cIntegerArray: 
           type: array
           items:
             type: integer
             format: int32
+           
         aLongArray: 
           type: array
           items:
             type: integer
             format: int64
           minItems: 1
+           
         bLongArray: 
           type: array
           items:
             type: integer
             format: int64
+           
         aBigIntegerArray: 
           type: array
           items:
             type: integer
             format: int64
+           
         aCharacterArray: 
           type: array
           items:
             type: string
+           
         bCharacterArray: 
           type: array
           items:
             type: string
+           
         aFloatArray: 
           type: array
           items:
             type: number
             format: float
+           
         bFloatArray: 
           type: array
           items:
             type: number
             format: float
+           
         aDoubleArray: 
           type: array
           items:
@@ -791,24 +901,29 @@ components:
             format: double
           minItems: 4
           maxItems: 12
+           
         bDoubleArray: 
           type: array
           items:
             type: number
             format: double
+           
         aBigDecimalArray: 
           type: array
           items:
             type: number
             format: double
+           
         aStringArray: 
           type: array
           items:
             type: string
+           
         bStringArray: 
           type: array
           items:
             type: string
+           
       required:
         - aBooleanArray
         - cBooleanArray
@@ -825,22 +940,27 @@ components:
       properties:
         title: 
           type: string
+            
           nullable: false
           readOnly: true
         status: 
           type: integer
           format: int32
+            
           nullable: false
           readOnly: true
         type: 
           type: string
+            
           nullable: false
           readOnly: true
         detail: 
           type: string
+            
           readOnly: true
         instance: 
           type: string
+            
           readOnly: true
       required:
         - title
