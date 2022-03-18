@@ -30,6 +30,9 @@ info:
   description: >-
     «this.getCommentForOpenAPIDescription("    ")»
   «ENDIF-»
+  «IF termsOfUseURL.length > 0 -»
+  termsOfService: «termsOfUseURL»
+  «ENDIF -»
   contact:
     name: «contactName»
     url: '«contactURL»'
