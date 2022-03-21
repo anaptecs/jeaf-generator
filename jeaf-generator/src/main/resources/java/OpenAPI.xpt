@@ -40,7 +40,11 @@ info:
   license:
     name: «licenseName»
     url: '«licenseURL»'
-
+    
+«IF this.clientDependency.supplier.typeSelect(OpenAPITag).size > 0 -»
+tags:
+«EXPAND GenerateTags FOREACH this.clientDependency.supplier.typeSelect(OpenAPITag).sortBy(e|e.name)»
+«ENDIF-»
 paths:
 «IF this.referencesRESTResources()-»
   «EXPAND GeneratePaths»
@@ -118,6 +122,16 @@ components:
         «operation.getCommentForOpenAPIDescription("        ")»
       «ENDIF-»
       operationId: «operation.getOperationID(service)»
+      «IF operation.getTargetDirectedRelationships().source.size > 0 -»
+      tags:
+      «FOREACH operation.getTargetDirectedRelationships().source.typeSelect(OpenAPITag).sortBy(e|e.name) AS tag -»
+        - «tag.name»
+      «ENDFOREACH-»
+      «ENDIF-»
+      «IF operation.externalDocsURL.length > 0 -»
+      externalDocs:
+        url: «operation.externalDocsURL»
+      «ENDIF-»
       «IF operation.isDeprecated() -»
       deprecated: true
       «ENDIF-»
@@ -478,4 +492,15 @@ components:
 «IF this.isStereotypeApplied("HeaderParam")»«IF ((HeaderParam) this).value.length > 0 -»«((HeaderParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
 «IF this.isStereotypeApplied("QueryParam")»«IF ((QueryParam) this).value.length > 0 -»«((QueryParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
 «IF this.isStereotypeApplied("CookieParam")»«IF ((CookieParam) this).value.length > 0 -»«((CookieParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
+«ENDDEFINE»
+
+«DEFINE GenerateTags FOR OpenAPITag -»
+  - name: «this.name»
+    «IF this.hasComment()-»
+    description: >-
+      «this.getCommentForOpenAPIDescription("      ")»
+    «ENDIF»    
+    «IF this.externalDocsURL.length > 0 -»
+      url: «this.externalDocsURL»
+    «ENDIF -»
 «ENDDEFINE»

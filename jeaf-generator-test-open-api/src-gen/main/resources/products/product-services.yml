@@ -1,8 +1,8 @@
 openapi: 3.0.0
 
 servers:
-  - url: https://accounting.jeaf.de
   - url: http://localhost:8080/test
+  - url: https://accounting.jeaf.de
   - url: https://demo-jeaf.anaptecs.de
   - url: https://test-jeaf.anaptecs.de
   - url: https://jeaf.anaptecs.de
@@ -26,6 +26,17 @@ info:
   license:
     name: Apache 2.0
     url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+    
+tags:
+  - name: MasterData
+    description: >-
+      Tag marks all operations that are connected with Master Data.
+        
+  - name: Products
+    description: >-
+      Tag groups all product related operations together.
+        
+      url: https//jeaf.anaptecs.de/link1
 
 paths:
   # ProductService
@@ -34,6 +45,11 @@ paths:
       description: >-
         Operation returns all available product.
       operationId: getProducts
+      tags:
+        - MasterData
+        - Products
+      externalDocs:
+        url: https://jeaf.anaptecs.de/link2
       responses:
         '200':
           description: >- 
@@ -51,6 +67,8 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
     post:
       operationId: createProduct
+      tags:
+        - Products
       requestBody:
         description: >- 
           TODO Please add comment
@@ -84,6 +102,9 @@ paths:
   /products/{id}:
     get:
       operationId: getProduct
+      tags:
+        - MasterData
+        - Products
       parameters:
         - name: id
           in: path
@@ -108,6 +129,9 @@ paths:
   /products/sortiment/{id}:
     get:
       operationId: getSortiment
+      tags:
+        - MasterData
+        - Products
       parameters:
         - name: token
           in: header
