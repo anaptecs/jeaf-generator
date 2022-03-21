@@ -1,8 +1,8 @@
 openapi: 3.0.0
 
 servers:
-  - url: http://localhost:8080/test
   - url: https://accounting.jeaf.de
+  - url: http://localhost:8080/test
   - url: https://demo-jeaf.anaptecs.de
   - url: https://test-jeaf.anaptecs.de
   - url: https://jeaf.anaptecs.de
@@ -28,15 +28,15 @@ info:
     url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
     
 tags:
-  - name: MasterData
-    description: >-
-      Tag marks all operations that are connected with Master Data.
-        
   - name: Products
     description: >-
       Tag groups all product related operations together.
-        
       url: https//jeaf.anaptecs.de/link1
+  - name: MasterData
+    description: >-
+      Tag marks all operations that are connected with Master Data.
+  - name: Another Tag
+  - name: B Tag
 
 paths:
   # ProductService
@@ -490,6 +490,8 @@ paths:
   /products/currencies:
     post:
       operationId: addCurrencies
+      tags:
+        - B Tag
       requestBody:
         description: >- 
           TODO Please add comment
@@ -530,6 +532,8 @@ paths:
   /products/currencies/valid:
     post:
       operationId: isCurrencySupported
+      tags:
+        - Another Tag
       requestBody:
         description: >- 
           TODO Please add comment
