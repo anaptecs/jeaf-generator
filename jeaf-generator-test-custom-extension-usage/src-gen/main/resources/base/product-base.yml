@@ -1,8 +1,8 @@
 openapi: 3.0.0
 
 servers:
-  - url: http://localhost:8080/test
   - url: https://accounting.jeaf.de
+  - url: http://localhost:8080/test
 
 info:
   title: Product Base Definitions
@@ -16,7 +16,7 @@ info:
   license:
     name: Apache 2.0
     url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
-
+    
 paths:
   # OpenAPI standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
   # So we define NOP operation here as workaround.
