@@ -15,7 +15,7 @@
 openapi: «openAPIVersion»
 «IF this.clientDependency.supplier.typeSelect(OpenAPIServer).size > 0»
 servers:
-  «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIServer).sortBy(e|e.order) AS server-»
+  «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIServer).sortBy(e|e.name).sortBy(e|e.order) AS server-»
   - url: «server.url»
     «IF server.hasComment() -»
     description: >- 
@@ -43,7 +43,7 @@ info:
     
 «IF this.clientDependency.supplier.typeSelect(OpenAPITag).size > 0 -»
 tags:
-«EXPAND GenerateTags FOREACH this.clientDependency.supplier.typeSelect(OpenAPITag).sortBy(e|e.name)»
+«EXPAND GenerateTags FOREACH this.clientDependency.supplier.typeSelect(OpenAPITag).sortBy(e|e.name).sortBy(e|e.order)»
 «ENDIF-»
 paths:
 «IF this.referencesRESTResources()-»
@@ -122,7 +122,7 @@ components:
         «operation.getCommentForOpenAPIDescription("        ")»
       «ENDIF-»
       operationId: «operation.getOperationID(service)»
-      «IF operation.getTargetDirectedRelationships().source.size > 0 -»
+      «IF operation.getTargetDirectedRelationships().source.typeSelect(OpenAPITag).size > 0 -»
       tags:
       «FOREACH operation.getTargetDirectedRelationships().source.typeSelect(OpenAPITag).sortBy(e|e.name) AS tag -»
         - «tag.name»
@@ -499,7 +499,7 @@ components:
     «IF this.hasComment()-»
     description: >-
       «this.getCommentForOpenAPIDescription("      ")»
-    «ENDIF»    
+    «ENDIF-»    
     «IF this.externalDocsURL.length > 0 -»
       url: «this.externalDocsURL»
     «ENDIF -»
