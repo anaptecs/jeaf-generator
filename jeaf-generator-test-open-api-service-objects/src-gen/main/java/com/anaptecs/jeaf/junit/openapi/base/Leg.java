@@ -5,11 +5,12 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -40,7 +41,7 @@ public class Leg implements ServiceObject {
   /**
    * 
    */
-  private Set<PlaceRef> stopovers = new HashSet<PlaceRef>();
+  private List<PlaceRef> stopovers = new ArrayList<PlaceRef>();
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -84,7 +85,7 @@ public class Leg implements ServiceObject {
     /**
      * 
      */
-    private Set<PlaceRef> stopovers;
+    private List<PlaceRef> stopovers;
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
@@ -148,10 +149,10 @@ public class Leg implements ServiceObject {
      * 
      * @param pStopovers Collection with objects to which the association should be set.
      */
-    public Builder setStopovers( Set<PlaceRef> pStopovers ) {
+    public Builder setStopovers( List<PlaceRef> pStopovers ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pStopovers != null) {
-        stopovers = new HashSet<PlaceRef>(pStopovers);
+        stopovers = new ArrayList<PlaceRef>(pStopovers);
       }
       else {
         stopovers = null;
@@ -246,9 +247,9 @@ public class Leg implements ServiceObject {
    * @return Collection All PlaceRef objects that belong to the association "stopovers". The method never returns null
    * and the returned collection is unmodifiable.
    */
-  public Set<PlaceRef> getStopovers( ) {
+  public List<PlaceRef> getStopovers( ) {
     // Return all PlaceRef objects as unmodifiable collection.
-    return Collections.unmodifiableSet(stopovers);
+    return Collections.unmodifiableList(stopovers);
   }
 
   /**
@@ -258,13 +259,13 @@ public class Leg implements ServiceObject {
    * 
    * @param pStopovers Collection with objects to which the association should be set. The parameter must not be null.
    */
-  void setStopovers( Set<PlaceRef> pStopovers ) {
+  void setStopovers( List<PlaceRef> pStopovers ) {
     // Check of parameter is not required.
     // Remove all objects from association "stopovers".
     this.clearStopovers();
     // If the association is null, removing all entries is sufficient.
     if (pStopovers != null) {
-      stopovers = new HashSet<PlaceRef>(pStopovers);
+      stopovers = new ArrayList<PlaceRef>(pStopovers);
     }
   }
 

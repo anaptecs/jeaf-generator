@@ -22,19 +22,26 @@ import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.json.api.JSONTools;
 import com.anaptecs.jeaf.junit.openapi.base.BidirectA;
 import com.anaptecs.jeaf.junit.openapi.base.BidirectB;
+import com.anaptecs.jeaf.junit.openapi.base.CHStopPlace;
 import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelType;
 import com.anaptecs.jeaf.junit.openapi.base.ChildAA;
 import com.anaptecs.jeaf.junit.openapi.base.ChildBB;
 import com.anaptecs.jeaf.junit.openapi.base.Company;
+import com.anaptecs.jeaf.junit.openapi.base.GeoPosition;
+import com.anaptecs.jeaf.junit.openapi.base.Leg;
 import com.anaptecs.jeaf.junit.openapi.base.ParentClass;
 import com.anaptecs.jeaf.junit.openapi.base.Partner;
 import com.anaptecs.jeaf.junit.openapi.base.PartnerContainer;
 import com.anaptecs.jeaf.junit.openapi.base.Person;
+import com.anaptecs.jeaf.junit.openapi.base.PlaceRef;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Product.Builder;
 import com.anaptecs.jeaf.junit.openapi.base.Reseller;
+import com.anaptecs.jeaf.junit.openapi.base.SwissGeoPosition;
+import com.anaptecs.jeaf.junit.openapi.base.TopoRef;
+import com.anaptecs.jeaf.junit.openapi.base.UICStopPlace;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -316,4 +323,55 @@ public class JSONSerializationTest {
 
   }
 
+  @Test
+  void testPolymorphAssociations( ) {
+    UICStopPlace.Builder lStartBuilder = UICStopPlace.Builder.newBuilder();
+    lStartBuilder.setName("Bern");
+    UICStopPlace lBern = lStartBuilder.build();
+
+    CHStopPlace.Builder lStopBuilder = CHStopPlace.Builder.newBuilder();
+    lStopBuilder.setName("Zürich");
+    CHStopPlace lZurich = lStopBuilder.build();
+
+    SwissGeoPosition.Builder lSwissGeoPositionBuilder = SwissGeoPosition.Builder.newBuilder();
+    lSwissGeoPositionBuilder.setLongitude(0).setLatitude(0).setName("Uni Bern");
+    SwissGeoPosition lUniBern = lSwissGeoPositionBuilder.build();
+
+    TopoRef.Builder lTopRefBuilder = TopoRef.Builder.newBuilder();
+    lTopRefBuilder.setName("Olten");
+    TopoRef lOlten = lTopRefBuilder.build();
+
+    GeoPosition.Builder lGeoPositionBuilder = GeoPosition.Builder.newBuilder();
+    lGeoPositionBuilder.setLongitude(47).setLatitude(11).setName("What do I know ;-)");
+    GeoPosition lSomewhere = lGeoPositionBuilder.build();
+
+    Leg lLeg = Leg.Builder.newBuilder().build();
+    lLeg.setStart(lBern);
+    lLeg.setStop(lZurich);
+
+    lLeg.addToStopovers(lUniBern);
+    lLeg.addToStopovers(lOlten);
+    lLeg.addToStopovers(lSomewhere);
+
+    JSONTools lTools = JSON.getJSONTools();
+    String lJSON = lTools.writeObjectToString(lLeg);
+    assertEquals(
+        "{\"start\":{\"objectType\":\"UICStopPlace\",\"name\":\"Bern\"},\"stop\":{\"objectType\":\"CHStopPlace\",\"name\":\"Zürich\"},\"stopovers\":[{\"objectType\":\"SwissGeoPosition\",\"name\":\"Uni Bern\",\"longitude\":0,\"latitude\":0},{\"objectType\":\"TopoRef\",\"name\":\"Olten\"},{\"objectType\":\"GeoPosition\",\"name\":\"What do I know ;-)\",\"longitude\":47,\"latitude\":11}]}",
+        lJSON);
+
+    Leg lDeserializedLeg = lTools.read(lJSON, Leg.class);
+    assertEquals(UICStopPlace.class, lDeserializedLeg.getStart().getClass());
+    assertEquals("Bern", lDeserializedLeg.getStart().getName());
+    assertEquals(CHStopPlace.class, lDeserializedLeg.getStop().getClass());
+    assertEquals("Zürich", lDeserializedLeg.getStop().getName());
+
+    List<PlaceRef> lStopovers = lDeserializedLeg.getStopovers();
+    assertEquals(SwissGeoPosition.class, lStopovers.get(0).getClass());
+    assertEquals("Uni Bern", lStopovers.get(0).getName());
+    assertEquals(TopoRef.class, lStopovers.get(1).getClass());
+    assertEquals("Olten", lStopovers.get(1).getName());
+    assertEquals(GeoPosition.class, lStopovers.get(2).getClass());
+    assertEquals("What do I know ;-)", lStopovers.get(2).getName());
+    assertEquals(3, lStopovers.size());
+  }
 }
