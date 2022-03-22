@@ -5,13 +5,11 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-import com.anaptecs.jeaf.tools.api.Tools;
-
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-public class StopPlaceRef extends PlaceRef {
+public abstract class StopPlaceRef extends PlaceRef {
   /**
    * Default serial version uid.
    */
@@ -39,7 +37,7 @@ public class StopPlaceRef extends PlaceRef {
    * Class implements builder to create a new instance of class StopPlaceRef. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
-  public static class Builder extends PlaceRef.Builder {
+  public static abstract class Builder extends PlaceRef.Builder {
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
      */
@@ -58,26 +56,6 @@ public class StopPlaceRef extends PlaceRef {
     }
 
     /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new StopPlaceRef objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( StopPlaceRef pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets the attribute "name".
      * 
      * @param pName Value to which the attribute "name" should be set.
@@ -87,31 +65,6 @@ public class StopPlaceRef extends PlaceRef {
       // Call super class implementation.
       super.setName(pName);
       return this;
-    }
-
-    /**
-     * Method creates a new instance of class StopPlaceRef. The object will be initialized with the values of the
-     * builder.
-     * 
-     * @return StopPlaceRef Created object. The method never returns null.
-     */
-    public StopPlaceRef build( ) {
-      return new StopPlaceRef(this);
-    }
-
-    /**
-     * Method creates a new instance of class StopPlaceRef. The object will be initialized with the values of the
-     * builder.
-     * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return StopPlaceRef Created object. The method never returns null.
-     */
-    public StopPlaceRef build( boolean pValidate ) {
-      StopPlaceRef lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
-      return lPOJO;
     }
   }
 
