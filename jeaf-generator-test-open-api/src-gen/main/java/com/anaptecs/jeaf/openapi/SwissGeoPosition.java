@@ -14,40 +14,13 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.anaptecs.jeaf.openapi.Partner;
-import com.anaptecs.jeaf.openapi.PostalAddress;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.v3.oas.annotations.media.Schema;
-import java.util.List;
+import com.anaptecs.jeaf.openapi.GeoPosition;
 /**
- * Company
+ * SwissGeoPosition
  */
 
 
-public class Company extends Partner implements AnyOfPartnerContainerPartnersItems {
-  @JsonProperty("name")
-  private String name = null;
-
-  public Company name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @Schema(description = "")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
+public class SwissGeoPosition extends GeoPosition implements OneOfLegStart, OneOfLegStop, AnyOfLegStopoversItems {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -57,23 +30,20 @@ public class Company extends Partner implements AnyOfPartnerContainerPartnersIte
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Company company = (Company) o;
-    return Objects.equals(this.name, company.name) &&
-        super.equals(o);
+    return super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, super.hashCode());
+    return Objects.hash(super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Company {\n");
+    sb.append("class SwissGeoPosition {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

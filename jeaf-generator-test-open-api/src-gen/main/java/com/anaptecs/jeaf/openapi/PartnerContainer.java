@@ -14,7 +14,6 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.anaptecs.jeaf.openapi.Partner;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,14 +27,14 @@ import java.util.List;
 
 public class PartnerContainer {
   @JsonProperty("partners")
-  private List<Partner> partners = null;
+  private List<AnyOfPartnerContainerPartnersItems> partners = null;
 
-  public PartnerContainer partners(List<Partner> partners) {
+  public PartnerContainer partners(List<AnyOfPartnerContainerPartnersItems> partners) {
     this.partners = partners;
     return this;
   }
 
-  public PartnerContainer addPartnersItem(Partner partnersItem) {
+  public PartnerContainer addPartnersItem(AnyOfPartnerContainerPartnersItems partnersItem) {
     if (this.partners == null) {
       this.partners = new ArrayList<>();
     }
@@ -48,11 +47,11 @@ public class PartnerContainer {
    * @return partners
   **/
   @Schema(description = "")
-  public List<Partner> getPartners() {
+  public List<AnyOfPartnerContainerPartnersItems> getPartners() {
     return partners;
   }
 
-  public void setPartners(List<Partner> partners) {
+  public void setPartners(List<AnyOfPartnerContainerPartnersItems> partners) {
     this.partners = partners;
   }
 

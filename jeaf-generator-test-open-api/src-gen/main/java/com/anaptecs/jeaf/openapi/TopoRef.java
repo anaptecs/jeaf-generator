@@ -20,7 +20,7 @@ import com.anaptecs.jeaf.openapi.PlaceRef;
  */
 
 
-public class TopoRef extends PlaceRef {
+public class TopoRef extends PlaceRef implements OneOfLegStart, OneOfLegStop, AnyOfLegStopoversItems {
 
   @Override
   public boolean equals(java.lang.Object o) {

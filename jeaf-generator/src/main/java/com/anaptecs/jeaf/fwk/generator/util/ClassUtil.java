@@ -1415,7 +1415,7 @@ public class ClassUtil {
    * @param pBaseClass Class whose subclasses should be returned. The parameter must not be null.
    * @return {@link List} All subclasses of the passed class. The method never returns null.
    */
-  public static List<NamedElement> getAllSubclasses( Class pBaseClass ) {
+  public static List<NamedElement> getAllSubclasses( Type pBaseClass ) {
     // Check parameter
     Check.checkInvalidParameterNull(pBaseClass, "pBaseClass");
 

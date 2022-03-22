@@ -26,12 +26,12 @@ import java.util.List;
  */
 
 
-public class ChildB extends ParentClass {
+public class ChildB extends ParentClass implements AnyOfChildBCompositionItems, AnyOfChildBBDeprecatedBsItems, OneOfChildBBDeprecatedParent {
   @JsonProperty("childBAttribute")
   private Boolean childBAttribute = null;
 
   @JsonProperty("composition")
-  private List<ParentClass> composition = null;
+  private List<AnyOfChildBCompositionItems> composition = null;
 
   public ChildB childBAttribute(Boolean childBAttribute) {
     this.childBAttribute = childBAttribute;
@@ -51,12 +51,12 @@ public class ChildB extends ParentClass {
     this.childBAttribute = childBAttribute;
   }
 
-  public ChildB composition(List<ParentClass> composition) {
+  public ChildB composition(List<AnyOfChildBCompositionItems> composition) {
     this.composition = composition;
     return this;
   }
 
-  public ChildB addCompositionItem(ParentClass compositionItem) {
+  public ChildB addCompositionItem(AnyOfChildBCompositionItems compositionItem) {
     if (this.composition == null) {
       this.composition = new ArrayList<>();
     }
@@ -69,11 +69,11 @@ public class ChildB extends ParentClass {
    * @return composition
   **/
   @Schema(description = "")
-  public List<ParentClass> getComposition() {
+  public List<AnyOfChildBCompositionItems> getComposition() {
     return composition;
   }
 
-  public void setComposition(List<ParentClass> composition) {
+  public void setComposition(List<AnyOfChildBCompositionItems> composition) {
     this.composition = composition;
   }
 

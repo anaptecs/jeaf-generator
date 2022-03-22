@@ -14,7 +14,6 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.anaptecs.jeaf.openapi.PlaceRef;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,15 +27,15 @@ import java.util.List;
 
 public class Leg {
   @JsonProperty("start")
-  private PlaceRef start = null;
+  private OneOfLegStart start = null;
 
   @JsonProperty("stop")
-  private PlaceRef stop = null;
+  private OneOfLegStop stop = null;
 
   @JsonProperty("stopovers")
-  private List<PlaceRef> stopovers = null;
+  private List<AnyOfLegStopoversItems> stopovers = null;
 
-  public Leg start(PlaceRef start) {
+  public Leg start(OneOfLegStart start) {
     this.start = start;
     return this;
   }
@@ -46,15 +45,15 @@ public class Leg {
    * @return start
   **/
   @Schema(description = "")
-  public PlaceRef getStart() {
+  public OneOfLegStart getStart() {
     return start;
   }
 
-  public void setStart(PlaceRef start) {
+  public void setStart(OneOfLegStart start) {
     this.start = start;
   }
 
-  public Leg stop(PlaceRef stop) {
+  public Leg stop(OneOfLegStop stop) {
     this.stop = stop;
     return this;
   }
@@ -64,20 +63,20 @@ public class Leg {
    * @return stop
   **/
   @Schema(description = "")
-  public PlaceRef getStop() {
+  public OneOfLegStop getStop() {
     return stop;
   }
 
-  public void setStop(PlaceRef stop) {
+  public void setStop(OneOfLegStop stop) {
     this.stop = stop;
   }
 
-  public Leg stopovers(List<PlaceRef> stopovers) {
+  public Leg stopovers(List<AnyOfLegStopoversItems> stopovers) {
     this.stopovers = stopovers;
     return this;
   }
 
-  public Leg addStopoversItem(PlaceRef stopoversItem) {
+  public Leg addStopoversItem(AnyOfLegStopoversItems stopoversItem) {
     if (this.stopovers == null) {
       this.stopovers = new ArrayList<>();
     }
@@ -90,11 +89,11 @@ public class Leg {
    * @return stopovers
   **/
   @Schema(description = "")
-  public List<PlaceRef> getStopovers() {
+  public List<AnyOfLegStopoversItems> getStopovers() {
     return stopovers;
   }
 
-  public void setStopovers(List<PlaceRef> stopovers) {
+  public void setStopovers(List<AnyOfLegStopoversItems> stopovers) {
     this.stopovers = stopovers;
   }
 

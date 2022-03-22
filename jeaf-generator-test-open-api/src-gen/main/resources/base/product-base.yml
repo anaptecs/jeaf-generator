@@ -443,7 +443,11 @@ components:
         composition: 
           type: array
           items:
-            $ref: '#/components/schemas/ParentClass'
+            anyOf:
+              - $ref: '#/components/schemas/ParentClass'
+              - $ref: '#/components/schemas/ChildAA'
+              - $ref: '#/components/schemas/ChildB'
+              - $ref: '#/components/schemas/ChildBB'
           minItems: 0
       required:
         - childBAttribute
@@ -476,11 +480,17 @@ components:
           # Attribute "deprecatedBs" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
           type: array
           items:
-            $ref: '#/components/schemas/ChildB'
+            anyOf:
+              - $ref: '#/components/schemas/ChildB'
+              - $ref: '#/components/schemas/ChildBB'
           minItems: 0
         deprecatedParent: 
           # Attribute "deprecatedParent" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
-          $ref: '#/components/schemas/ParentClass'
+          oneOf:
+            - $ref: '#/components/schemas/ParentClass'
+            - $ref: '#/components/schemas/ChildAA'
+            - $ref: '#/components/schemas/ChildB'
+            - $ref: '#/components/schemas/ChildBB'
         deprecatedArray: 
           type: string
           format: byte
@@ -588,7 +598,10 @@ components:
         partners: 
           type: array
           items:
-            $ref: '#/components/schemas/Partner'
+            anyOf:
+              - $ref: '#/components/schemas/Partner'
+              - $ref: '#/components/schemas/Company'
+              - $ref: '#/components/schemas/Person'
           minItems: 0
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObjectWithRestrictions
     PrimitiveObjectWithRestrictions:
@@ -838,9 +851,12 @@ components:
         propertyName: objectType
         mapping:
           PlaceRef: '#/components/schemas/PlaceRef'
+          CHStopPlace: '#/components/schemas/CHStopPlace'
           GeoPosition: '#/components/schemas/GeoPosition'
           StopPlaceRef: '#/components/schemas/StopPlaceRef'
+          SwissGeoPosition: '#/components/schemas/SwissGeoPosition'
           TopoRef: '#/components/schemas/TopoRef'
+          UICStopPlace: '#/components/schemas/UICStopPlace'
       type: object
       properties:
         objectType:
@@ -879,25 +895,45 @@ components:
     Leg:
       type: object
       properties:
-        start:
+        start: 
           oneOf:
-            - $ref: '#/components/schemas/StopPlaceRef'
-            - $ref: '#/components/schemas/TopoRef'
+            - $ref: '#/components/schemas/CHStopPlace'
             - $ref: '#/components/schemas/GeoPosition'
+            - $ref: '#/components/schemas/SwissGeoPosition'
+            - $ref: '#/components/schemas/TopoRef'
+            - $ref: '#/components/schemas/UICStopPlace'
         stop: 
           oneOf:
-            - $ref: '#/components/schemas/StopPlaceRef'
-            - $ref: '#/components/schemas/TopoRef'
+            - $ref: '#/components/schemas/CHStopPlace'
             - $ref: '#/components/schemas/GeoPosition'
+            - $ref: '#/components/schemas/SwissGeoPosition'
+            - $ref: '#/components/schemas/TopoRef'
+            - $ref: '#/components/schemas/UICStopPlace'
         stopovers: 
           type: array
           items:
-            oneOf:
-              - $ref: '#/components/schemas/StopPlaceRef'
-              - $ref: '#/components/schemas/TopoRef'
+            anyOf:
+              - $ref: '#/components/schemas/CHStopPlace'
               - $ref: '#/components/schemas/GeoPosition'
-              
+              - $ref: '#/components/schemas/SwissGeoPosition'
+              - $ref: '#/components/schemas/TopoRef'
+              - $ref: '#/components/schemas/UICStopPlace'
           minItems: 0
+    # com.anaptecs.jeaf.junit.openapi.base.SwissGeoPosition
+    SwissGeoPosition:
+      allOf:
+        - $ref: '#/components/schemas/GeoPosition'
+      type: object
+    # com.anaptecs.jeaf.junit.openapi.base.CHStopPlace
+    CHStopPlace:
+      allOf:
+        - $ref: '#/components/schemas/StopPlaceRef'
+      type: object
+    # com.anaptecs.jeaf.junit.openapi.base.UICStopPlace
+    UICStopPlace:
+      allOf:
+        - $ref: '#/components/schemas/StopPlaceRef'
+      type: object
 
     
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit

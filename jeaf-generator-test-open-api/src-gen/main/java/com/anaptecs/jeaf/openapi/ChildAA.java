@@ -24,7 +24,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 
 
-public class ChildAA extends ChildA {
+public class ChildAA extends ChildA implements AnyOfChildBCompositionItems, OneOfChildBBDeprecatedParent {
   @JsonProperty("childAAAttribute")
   private Integer childAAAttribute = null;
 
