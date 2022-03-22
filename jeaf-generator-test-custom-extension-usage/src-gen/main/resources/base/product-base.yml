@@ -832,6 +832,62 @@ components:
         - title
         - status
         - type
+    # com.anaptecs.jeaf.junit.openapi.base.PlaceRef
+    PlaceRef:
+      discriminator:
+        propertyName: objectType
+        mapping:
+          PlaceRef: '#/components/schemas/PlaceRef'
+          GeoPosition: '#/components/schemas/GeoPosition'
+          StopPlaceRef: '#/components/schemas/StopPlaceRef'
+          TopoRef: '#/components/schemas/TopoRef'
+      type: object
+      properties:
+        objectType:
+          description: Attribute is used as discriminator for inheritance between data types.
+          type: string
+        name: 
+          type: string
+      required:
+        - objectType
+    # com.anaptecs.jeaf.junit.openapi.base.StopPlaceRef
+    StopPlaceRef:
+      allOf:
+        - $ref: '#/components/schemas/PlaceRef'
+      type: object
+    # com.anaptecs.jeaf.junit.openapi.base.TopoRef
+    TopoRef:
+      allOf:
+        - $ref: '#/components/schemas/PlaceRef'
+      type: object
+    # com.anaptecs.jeaf.junit.openapi.base.GeoPosition
+    GeoPosition:
+      allOf:
+        - $ref: '#/components/schemas/PlaceRef'
+      type: object
+      properties:
+        longitude: 
+          type: integer
+          format: int32
+        latitude: 
+          type: integer
+          format: int32
+      required:
+        - longitude
+        - latitude
+    # com.anaptecs.jeaf.junit.openapi.base.Leg
+    Leg:
+      type: object
+      properties:
+        start: 
+          $ref: '#/components/schemas/PlaceRef'
+        stop: 
+          $ref: '#/components/schemas/PlaceRef'
+        stopovers: 
+          type: array
+          items:
+            $ref: '#/components/schemas/PlaceRef'
+          minItems: 0
 
     
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
