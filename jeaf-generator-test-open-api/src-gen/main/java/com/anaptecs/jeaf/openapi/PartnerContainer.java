@@ -27,14 +27,14 @@ import java.util.List;
 
 public class PartnerContainer {
   @JsonProperty("partners")
-  private List<AnyOfPartnerContainerPartnersItems> partners = null;
+  private List<OneOfPartnerContainerPartnersItems> partners = null;
 
-  public PartnerContainer partners(List<AnyOfPartnerContainerPartnersItems> partners) {
+  public PartnerContainer partners(List<OneOfPartnerContainerPartnersItems> partners) {
     this.partners = partners;
     return this;
   }
 
-  public PartnerContainer addPartnersItem(AnyOfPartnerContainerPartnersItems partnersItem) {
+  public PartnerContainer addPartnersItem(OneOfPartnerContainerPartnersItems partnersItem) {
     if (this.partners == null) {
       this.partners = new ArrayList<>();
     }
@@ -47,11 +47,11 @@ public class PartnerContainer {
    * @return partners
   **/
   @Schema(description = "")
-  public List<AnyOfPartnerContainerPartnersItems> getPartners() {
+  public List<OneOfPartnerContainerPartnersItems> getPartners() {
     return partners;
   }
 
-  public void setPartners(List<AnyOfPartnerContainerPartnersItems> partners) {
+  public void setPartners(List<OneOfPartnerContainerPartnersItems> partners) {
     this.partners = partners;
   }
 

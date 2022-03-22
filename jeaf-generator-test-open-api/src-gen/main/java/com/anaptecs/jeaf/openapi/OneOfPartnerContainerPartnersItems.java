@@ -15,18 +15,17 @@ package com.anaptecs.jeaf.openapi;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 /**
-* AnyOfChildBCompositionItems
+* OneOfPartnerContainerPartnersItems
 */
 @JsonTypeInfo(
   use = JsonTypeInfo.Id.NAME,
   include = JsonTypeInfo.As.PROPERTY,
   property = "type")
 @JsonSubTypes({
-  @JsonSubTypes.Type(value = ParentClass.class, name = "ParentClass"),
-  @JsonSubTypes.Type(value = ChildAA.class, name = "ChildAA"),
-  @JsonSubTypes.Type(value = ChildB.class, name = "ChildB"),
-  @JsonSubTypes.Type(value = ChildBB.class, name = "ChildBB")
+  @JsonSubTypes.Type(value = Partner.class, name = "Partner"),
+  @JsonSubTypes.Type(value = Company.class, name = "Company"),
+  @JsonSubTypes.Type(value = Person.class, name = "Person")
 })
-public interface AnyOfChildBCompositionItems {
+public interface OneOfPartnerContainerPartnersItems {
 
 }

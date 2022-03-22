@@ -15,19 +15,16 @@ package com.anaptecs.jeaf.openapi;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 /**
-* AnyOfLegStopoversItems
+* OneOfChildBBDeprecatedBsItems
 */
 @JsonTypeInfo(
   use = JsonTypeInfo.Id.NAME,
   include = JsonTypeInfo.As.PROPERTY,
   property = "type")
 @JsonSubTypes({
-  @JsonSubTypes.Type(value = CHStopPlace.class, name = "CHStopPlace"),
-  @JsonSubTypes.Type(value = GeoPosition.class, name = "GeoPosition"),
-  @JsonSubTypes.Type(value = SwissGeoPosition.class, name = "SwissGeoPosition"),
-  @JsonSubTypes.Type(value = TopoRef.class, name = "TopoRef"),
-  @JsonSubTypes.Type(value = UICStopPlace.class, name = "UICStopPlace")
+  @JsonSubTypes.Type(value = ChildB.class, name = "ChildB"),
+  @JsonSubTypes.Type(value = ChildBB.class, name = "ChildBB")
 })
-public interface AnyOfLegStopoversItems {
+public interface OneOfChildBBDeprecatedBsItems {
 
 }

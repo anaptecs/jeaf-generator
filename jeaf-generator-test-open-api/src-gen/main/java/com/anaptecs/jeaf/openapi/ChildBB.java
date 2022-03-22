@@ -26,7 +26,7 @@ import java.util.List;
  */
 
 
-public class ChildBB extends ChildB implements AnyOfChildBCompositionItems, AnyOfChildBBDeprecatedBsItems, OneOfChildBBDeprecatedParent {
+public class ChildBB extends ChildB implements OneOfChildBCompositionItems, OneOfChildBBDeprecatedBsItems, OneOfChildBBDeprecatedParent {
   @JsonProperty("childBBAttribute")
   private Long childBBAttribute = null;
 
@@ -34,7 +34,7 @@ public class ChildBB extends ChildB implements AnyOfChildBCompositionItems, AnyO
   private Integer deprecatedAttribute = null;
 
   @JsonProperty("deprecatedBs")
-  private List<AnyOfChildBBDeprecatedBsItems> deprecatedBs = null;
+  private List<OneOfChildBBDeprecatedBsItems> deprecatedBs = null;
 
   @JsonProperty("deprecatedParent")
   private OneOfChildBBDeprecatedParent deprecatedParent = null;
@@ -78,12 +78,12 @@ public class ChildBB extends ChildB implements AnyOfChildBCompositionItems, AnyO
     this.deprecatedAttribute = deprecatedAttribute;
   }
 
-  public ChildBB deprecatedBs(List<AnyOfChildBBDeprecatedBsItems> deprecatedBs) {
+  public ChildBB deprecatedBs(List<OneOfChildBBDeprecatedBsItems> deprecatedBs) {
     this.deprecatedBs = deprecatedBs;
     return this;
   }
 
-  public ChildBB addDeprecatedBsItem(AnyOfChildBBDeprecatedBsItems deprecatedBsItem) {
+  public ChildBB addDeprecatedBsItem(OneOfChildBBDeprecatedBsItems deprecatedBsItem) {
     if (this.deprecatedBs == null) {
       this.deprecatedBs = new ArrayList<>();
     }
@@ -96,11 +96,11 @@ public class ChildBB extends ChildB implements AnyOfChildBCompositionItems, AnyO
    * @return deprecatedBs
   **/
   @Schema(description = "")
-  public List<AnyOfChildBBDeprecatedBsItems> getDeprecatedBs() {
+  public List<OneOfChildBBDeprecatedBsItems> getDeprecatedBs() {
     return deprecatedBs;
   }
 
-  public void setDeprecatedBs(List<AnyOfChildBBDeprecatedBsItems> deprecatedBs) {
+  public void setDeprecatedBs(List<OneOfChildBBDeprecatedBsItems> deprecatedBs) {
     this.deprecatedBs = deprecatedBs;
   }
 

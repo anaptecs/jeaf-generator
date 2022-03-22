@@ -15,16 +15,18 @@ package com.anaptecs.jeaf.openapi;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 /**
-* AnyOfChildBBDeprecatedBsItems
+* OneOfChildBCompositionItems
 */
 @JsonTypeInfo(
   use = JsonTypeInfo.Id.NAME,
   include = JsonTypeInfo.As.PROPERTY,
   property = "type")
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = ParentClass.class, name = "ParentClass"),
+  @JsonSubTypes.Type(value = ChildAA.class, name = "ChildAA"),
   @JsonSubTypes.Type(value = ChildB.class, name = "ChildB"),
   @JsonSubTypes.Type(value = ChildBB.class, name = "ChildBB")
 })
-public interface AnyOfChildBBDeprecatedBsItems {
+public interface OneOfChildBCompositionItems {
 
 }

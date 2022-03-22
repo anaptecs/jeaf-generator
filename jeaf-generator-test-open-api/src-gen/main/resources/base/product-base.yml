@@ -443,7 +443,7 @@ components:
         composition: 
           type: array
           items:
-            anyOf:
+            oneOf:
               - $ref: '#/components/schemas/ParentClass'
               - $ref: '#/components/schemas/ChildAA'
               - $ref: '#/components/schemas/ChildB'
@@ -480,7 +480,7 @@ components:
           # Attribute "deprecatedBs" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
           type: array
           items:
-            anyOf:
+            oneOf:
               - $ref: '#/components/schemas/ChildB'
               - $ref: '#/components/schemas/ChildBB'
           minItems: 0
@@ -598,7 +598,7 @@ components:
         partners: 
           type: array
           items:
-            anyOf:
+            oneOf:
               - $ref: '#/components/schemas/Partner'
               - $ref: '#/components/schemas/Company'
               - $ref: '#/components/schemas/Person'
@@ -912,7 +912,7 @@ components:
         stopovers: 
           type: array
           items:
-            anyOf:
+            oneOf:
               - $ref: '#/components/schemas/CHStopPlace'
               - $ref: '#/components/schemas/GeoPosition'
               - $ref: '#/components/schemas/SwissGeoPosition'

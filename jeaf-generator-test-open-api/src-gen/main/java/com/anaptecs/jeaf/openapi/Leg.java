@@ -33,7 +33,7 @@ public class Leg {
   private OneOfLegStop stop = null;
 
   @JsonProperty("stopovers")
-  private List<AnyOfLegStopoversItems> stopovers = null;
+  private List<OneOfLegStopoversItems> stopovers = null;
 
   public Leg start(OneOfLegStart start) {
     this.start = start;
@@ -71,12 +71,12 @@ public class Leg {
     this.stop = stop;
   }
 
-  public Leg stopovers(List<AnyOfLegStopoversItems> stopovers) {
+  public Leg stopovers(List<OneOfLegStopoversItems> stopovers) {
     this.stopovers = stopovers;
     return this;
   }
 
-  public Leg addStopoversItem(AnyOfLegStopoversItems stopoversItem) {
+  public Leg addStopoversItem(OneOfLegStopoversItems stopoversItem) {
     if (this.stopovers == null) {
       this.stopovers = new ArrayList<>();
     }
@@ -89,11 +89,11 @@ public class Leg {
    * @return stopovers
   **/
   @Schema(description = "")
-  public List<AnyOfLegStopoversItems> getStopovers() {
+  public List<OneOfLegStopoversItems> getStopovers() {
     return stopovers;
   }
 
-  public void setStopovers(List<AnyOfLegStopoversItems> stopovers) {
+  public void setStopovers(List<OneOfLegStopoversItems> stopovers) {
     this.stopovers = stopovers;
   }
 
