@@ -450,7 +450,7 @@ components:
           type: array
           items:
               «IF attribute.type.getAllConcreteSubclasses().size > 0 -»
-            anyOf:
+            oneOf:
                 «IF ((Class)attribute.type).isAbstract == false -»
               - $ref: «attribute.type.getOpenAPIType(spec)»
                 «ENDIF-»
