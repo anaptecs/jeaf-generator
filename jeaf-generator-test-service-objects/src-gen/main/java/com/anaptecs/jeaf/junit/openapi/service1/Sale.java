@@ -7,6 +7,8 @@ package com.anaptecs.jeaf.junit.openapi.service1;
 
 import java.math.BigDecimal;
 
+import javax.validation.ConstraintViolationException;
+
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -147,16 +149,15 @@ public class Sale implements ServiceObject {
     }
 
     /**
-     * Method creates a new instance of class Sale. The object will be initialized with the values of the builder.
+     * Method creates a new validated instance of class Sale. The object will be initialized with the values of the
+     * builder and validated afterwards.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return Sale Created object. The method never returns null.
+     * @return Sale Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public Sale build( boolean pValidate ) {
+    public Sale buildValidated( ) throws ConstraintViolationException {
       Sale lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

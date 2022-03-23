@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.core;
 
 import java.util.Calendar;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -159,17 +160,15 @@ public class ValidationTestObject implements ServiceObject {
     }
 
     /**
-     * Method creates a new instance of class ValidationTestObject. The object will be initialized with the values of
-     * the builder.
+     * Method creates a new validated instance of class ValidationTestObject. The object will be initialized with the
+     * values of the builder and validated afterwards.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return ValidationTestObject Created object. The method never returns null.
+     * @return ValidationTestObject Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public ValidationTestObject build( boolean pValidate ) {
+    public ValidationTestObject buildValidated( ) throws ConstraintViolationException {
       ValidationTestObject lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

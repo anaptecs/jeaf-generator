@@ -11,6 +11,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import javax.validation.ConstraintViolationException;
+
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
@@ -263,17 +265,15 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     }
 
     /**
-     * Method creates a new instance of class PrimitiveReferenceServiceObject. The object will be initialized with the
-     * values of the builder.
+     * Method creates a new validated instance of class PrimitiveReferenceServiceObject. The object will be initialized
+     * with the values of the builder and validated afterwards.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return PrimitiveReferenceServiceObject Created object. The method never returns null.
+     * @return PrimitiveReferenceServiceObject Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public PrimitiveReferenceServiceObject build( boolean pValidate ) {
+    public PrimitiveReferenceServiceObject buildValidated( ) throws ConstraintViolationException {
       PrimitiveReferenceServiceObject lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -273,16 +274,15 @@ public class Booking implements ServiceObject {
     }
 
     /**
-     * Method creates a new instance of class Booking. The object will be initialized with the values of the builder.
+     * Method creates a new validated instance of class Booking. The object will be initialized with the values of the
+     * builder and validated afterwards.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return Booking Created object. The method never returns null.
+     * @return Booking Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public Booking build( boolean pValidate ) {
+    public Booking buildValidated( ) throws ConstraintViolationException {
       Booking lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

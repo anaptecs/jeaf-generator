@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.objectmapping;
 
+import javax.validation.ConstraintViolationException;
+
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
@@ -119,17 +121,15 @@ public class MappingParent implements ServiceObject {
     }
 
     /**
-     * Method creates a new instance of class MappingParent. The object will be initialized with the values of the
-     * builder.
+     * Method creates a new validated instance of class MappingParent. The object will be initialized with the values of
+     * the builder and validated afterwards.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return MappingParent Created object. The method never returns null.
+     * @return MappingParent Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public MappingParent build( boolean pValidate ) {
+    public MappingParent buildValidated( ) throws ConstraintViolationException {
       MappingParent lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

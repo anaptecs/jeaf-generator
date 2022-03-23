@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -437,16 +438,15 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method creates a new instance of class Product. The object will be initialized with the values of the builder.
+     * Method creates a new validated instance of class Product. The object will be initialized with the values of the
+     * builder and validated afterwards.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return Product Created object. The method never returns null.
+     * @return Product Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public Product build( boolean pValidate ) {
+    public Product buildValidated( ) throws ConstraintViolationException {
       Product lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

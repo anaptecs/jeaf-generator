@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PastOrPresent;
@@ -345,16 +346,15 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method creates a new instance of class Person. The object will be initialized with the values of the builder.
+     * Method creates a new validated instance of class Person. The object will be initialized with the values of the
+     * builder and validated afterwards.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return Person Created object. The method never returns null.
+     * @return Person Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public Person build( boolean pValidate ) {
+    public Person buildValidated( ) throws ConstraintViolationException {
       Person lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

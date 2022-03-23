@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import javax.validation.ConstraintViolationException;
+
 import com.anaptecs.jeaf.tools.api.Tools;
 
 /**
@@ -88,17 +90,15 @@ public class CHStopPlace extends StopPlaceRef {
     }
 
     /**
-     * Method creates a new instance of class CHStopPlace. The object will be initialized with the values of the
-     * builder.
+     * Method creates a new validated instance of class CHStopPlace. The object will be initialized with the values of
+     * the builder and validated afterwards.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return CHStopPlace Created object. The method never returns null.
+     * @return CHStopPlace Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public CHStopPlace build( boolean pValidate ) {
+    public CHStopPlace buildValidated( ) throws ConstraintViolationException {
       CHStopPlace lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

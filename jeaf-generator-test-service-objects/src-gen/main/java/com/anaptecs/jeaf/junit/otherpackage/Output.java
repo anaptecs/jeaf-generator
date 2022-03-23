@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.otherpackage;
 
+import javax.validation.ConstraintViolationException;
+
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
@@ -88,16 +90,15 @@ public class Output implements ServiceObject {
     }
 
     /**
-     * Method creates a new instance of class Output. The object will be initialized with the values of the builder.
+     * Method creates a new validated instance of class Output. The object will be initialized with the values of the
+     * builder and validated afterwards.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return Output Created object. The method never returns null.
+     * @return Output Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public Output build( boolean pValidate ) {
+    public Output buildValidated( ) throws ConstraintViolationException {
       Output lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

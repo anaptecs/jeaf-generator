@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.accounting;
 import java.math.BigDecimal;
 import java.util.Set;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Pattern;
 
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
@@ -198,17 +199,15 @@ public class SwiftAccount extends Account {
     }
 
     /**
-     * Method creates a new instance of class SwiftAccount. The object will be initialized with the values of the
-     * builder.
+     * Method creates a new validated instance of class SwiftAccount. The object will be initialized with the values of
+     * the builder and validated afterwards.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return SwiftAccount Created object. The method never returns null.
+     * @return SwiftAccount Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public SwiftAccount build( boolean pValidate ) {
+    public SwiftAccount buildValidated( ) throws ConstraintViolationException {
       SwiftAccount lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

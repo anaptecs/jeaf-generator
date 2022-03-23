@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import javax.validation.ConstraintViolationException;
+
 import com.anaptecs.jeaf.tools.api.Tools;
 
 /**
@@ -88,17 +90,15 @@ public class UICStopPlace extends StopPlaceRef {
     }
 
     /**
-     * Method creates a new instance of class UICStopPlace. The object will be initialized with the values of the
-     * builder.
+     * Method creates a new validated instance of class UICStopPlace. The object will be initialized with the values of
+     * the builder and validated afterwards.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return UICStopPlace Created object. The method never returns null.
+     * @return UICStopPlace Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public UICStopPlace build( boolean pValidate ) {
+    public UICStopPlace buildValidated( ) throws ConstraintViolationException {
       UICStopPlace lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }
