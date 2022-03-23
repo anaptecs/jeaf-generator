@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.List;
 
 import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.validation.ValidationResult;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
@@ -138,17 +139,15 @@ public class Company extends Partner {
     }
 
     /**
-     * Method creates a new instance of class Company. The object will be initialized with the values of the builder.
+     * Method creates a validated new instance of class Company. The object will be initialized with the values of the
+     * builder.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return Company Created object. The method never returns null.
+     * @return {@link ValidationResult} Validation result contains the created object
+     * ({@link ValidationResult#getValidatedObject()}) as well as the result of the validation. The method never returns
+     * null.
      */
-    public Company build( boolean pValidate ) {
-      Company lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
-      return lPOJO;
+    public ValidationResult<Company> buildValidated( ) {
+      return Tools.getValidationTools().validate(this.build());
     }
   }
 
