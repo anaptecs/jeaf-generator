@@ -7,8 +7,9 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.List;
 
+import javax.validation.ConstraintViolationException;
+
 import com.anaptecs.jeaf.tools.api.Tools;
-import com.anaptecs.jeaf.tools.api.validation.ValidationResult;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
@@ -139,13 +140,16 @@ public class Company extends Partner {
     }
 
     /**
-     * Method creates a new instance of class Company. The object will be initialized with the values of the builder.
+     * Method creates a new validated instance of class Company. The object will be initialized with the values of the
+     * builder and validated afterwards.
      * 
-     * @return {@link ValidationResult} Validation result that contains the created object as well as the result of the
-     * validation ({@link ValidationResult#getValidatedObject()}) . The method never returns null.
+     * @return Company Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public ValidationResult<Company> buildValidated( ) {
-      return Tools.getValidationTools().validate(this.build());
+    public Company buildValidated( ) throws ConstraintViolationException {
+      Company lPOJO = this.build();
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
+      return lPOJO;
     }
   }
 

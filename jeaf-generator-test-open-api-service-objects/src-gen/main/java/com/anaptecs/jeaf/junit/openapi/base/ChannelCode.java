@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -120,17 +121,15 @@ public class ChannelCode implements ServiceObject {
     }
 
     /**
-     * Method creates a new instance of class ChannelCode. The object will be initialized with the values of the
-     * builder.
+     * Method creates a new validated instance of class ChannelCode. The object will be initialized with the values of
+     * the builder and validated afterwards.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return ChannelCode Created object. The method never returns null.
+     * @return ChannelCode Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public ChannelCode build( boolean pValidate ) {
+    public ChannelCode buildValidated( ) throws ConstraintViolationException {
       ChannelCode lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Locale;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.NotEmpty;
 import javax.ws.rs.CookieParam;
 import javax.ws.rs.HeaderParam;
@@ -199,17 +200,15 @@ public class DeprecatedContext implements ServiceObject {
     }
 
     /**
-     * Method creates a new instance of class DeprecatedContext. The object will be initialized with the values of the
-     * builder.
+     * Method creates a new validated instance of class DeprecatedContext. The object will be initialized with the
+     * values of the builder and validated afterwards.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return DeprecatedContext Created object. The method never returns null.
+     * @return DeprecatedContext Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public DeprecatedContext build( boolean pValidate ) {
+    public DeprecatedContext buildValidated( ) throws ConstraintViolationException {
       DeprecatedContext lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }
