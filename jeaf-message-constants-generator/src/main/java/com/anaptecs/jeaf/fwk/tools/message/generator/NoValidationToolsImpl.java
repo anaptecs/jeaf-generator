@@ -16,6 +16,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
+import com.anaptecs.jeaf.tools.api.validation.ValidationResult;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 public class NoValidationToolsImpl implements ValidationTools {
@@ -51,8 +52,12 @@ public class NoValidationToolsImpl implements ValidationTools {
   }
 
   @Override
+  public <T> ValidationResult<T> validate( T pObject ) {
+    return null;
+  }
+
+  @Override
   public <T> Set<ConstraintViolation<T>> validateObject( T pObject ) {
-    // TODO Auto-generated method stub
     return null;
   }
 
