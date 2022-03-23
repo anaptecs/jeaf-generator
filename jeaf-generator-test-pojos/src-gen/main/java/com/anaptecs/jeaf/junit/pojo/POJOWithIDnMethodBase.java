@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import javax.validation.ConstraintViolationException;
+
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
@@ -130,17 +132,15 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
     }
 
     /**
-     * Method creates a new instance of class POJOWithIDnMethod. The object will be initialized with the values of the
-     * builder.
+     * Method creates a new validated instance of class POJOWithIDnMethod. The object will be initialized with the
+     * values of the builder and validated afterwards.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return POJOWithIDnMethod Created object. The method never returns null.
+     * @return POJOWithIDnMethod Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public POJOWithIDnMethod build( boolean pValidate ) {
+    public POJOWithIDnMethod buildValidated( ) throws ConstraintViolationException {
       POJOWithIDnMethod lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

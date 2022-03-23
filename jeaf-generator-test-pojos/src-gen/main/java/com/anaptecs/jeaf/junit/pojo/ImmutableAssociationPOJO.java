@@ -13,6 +13,8 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import javax.validation.ConstraintViolationException;
+
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
@@ -255,17 +257,15 @@ public class ImmutableAssociationPOJO {
     }
 
     /**
-     * Method creates a new instance of class ImmutableAssociationPOJO. The object will be initialized with the values
-     * of the builder.
+     * Method creates a new validated instance of class ImmutableAssociationPOJO. The object will be initialized with
+     * the values of the builder and validated afterwards.
      * 
-     * @param pValidate Parameter defines if the created POJO should be validated using Java Validation.
-     * @return ImmutableAssociationPOJO Created object. The method never returns null.
+     * @return ImmutableAssociationPOJO Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public ImmutableAssociationPOJO build( boolean pValidate ) {
+    public ImmutableAssociationPOJO buildValidated( ) throws ConstraintViolationException {
       ImmutableAssociationPOJO lPOJO = this.build();
-      if (pValidate == true) {
-        Tools.getValidationTools().validateObject(lPOJO);
-      }
+      Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

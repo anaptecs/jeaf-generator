@@ -61,6 +61,10 @@ public class NoValidationToolsImpl implements ValidationTools {
     return null;
   }
 
+  @Override
+  public void enforceObjectValidation( Object pObject ) throws ConstraintViolationException {
+  }
+
   @SuppressWarnings("unchecked")
   @Override
   public Set<ConstraintViolation<?>> validateObjects( Object[] pObjects ) {

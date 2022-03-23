@@ -12,7 +12,7 @@ public class BuilderTest {
   public void testBuilder( ) {
     ImmutablePOJO.Builder lBuilder = ImmutablePOJO.Builder.newBuilder();
     ImmutablePOJO lPOJO = lBuilder.setName("Hello").setSomething(4711).build();
-    lPOJO = lBuilder.setName("Hello").setSomething(4711).build(true);
+    lPOJO = lBuilder.setName("Hello").setSomething(4711).buildValidated();
 
     lBuilder = ImmutablePOJO.Builder.newBuilder(lPOJO);
 
