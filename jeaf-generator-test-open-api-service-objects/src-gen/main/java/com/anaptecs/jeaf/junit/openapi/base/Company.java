@@ -139,12 +139,10 @@ public class Company extends Partner {
     }
 
     /**
-     * Method creates a validated new instance of class Company. The object will be initialized with the values of the
-     * builder.
+     * Method creates a new instance of class Company. The object will be initialized with the values of the builder.
      * 
-     * @return {@link ValidationResult} Validation result contains the created object
-     * ({@link ValidationResult#getValidatedObject()}) as well as the result of the validation. The method never returns
-     * null.
+     * @return {@link ValidationResult} Validation result that contains the created object as well as the result of the
+     * validation ({@link ValidationResult#getValidatedObject()}) . The method never returns null.
      */
     public ValidationResult<Company> buildValidated( ) {
       return Tools.getValidationTools().validate(this.build());
