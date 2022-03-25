@@ -33,14 +33,27 @@ info:
   «IF termsOfUseURL.length > 0 -»
   termsOfService: «termsOfUseURL»
   «ENDIF -»
+  «IF contactName.length > 0 || contactURL.length > 0 || contactEmail.length > 0 -»
   contact:
+    «IF contactName.length >0 -»
     name: «contactName»
+    «ENDIF-»
+    «IF contactURL.length > 0 -»
     url: '«contactURL»'
+    «ENDIF-»
+    «IF contactEmail.length > 0 -»
     email: «contactEmail»
+    «ENDIF-»
+  «ENDIF»
+  «IF licenseName.length > 0 || licenseURL.length > 0-»
   license:
+    «IF licenseName.length > 0 -»
     name: «licenseName»
+    «ENDIF-»
+    «IF licenseURL.length > 0 -»
     url: '«licenseURL»'
-    
+    «ENDIF-»
+  «ENDIF»    
 «IF this.clientDependency.supplier.typeSelect(OpenAPITag).size > 0 -»
 tags:
 «EXPAND GenerateTags FOREACH this.clientDependency.supplier.typeSelect(OpenAPITag).sortBy(e|e.name).sortBy(e|e.order)»
