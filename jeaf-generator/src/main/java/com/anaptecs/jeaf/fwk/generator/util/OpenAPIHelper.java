@@ -88,6 +88,7 @@ public class OpenAPIHelper {
     basicTypes.put("java.time.LocalTime", "string");
     basicTypes.put("java.time.LocalDate", "string");
     basicTypes.put("java.time.LocalDateTime", "string");
+    basicTypes.put("java.time.OffsetDateTime", "string");
 
     // Format mappings for byte
     formatMapping.put("byte", "int32");
@@ -126,6 +127,7 @@ public class OpenAPIHelper {
     formatMapping.put("java.time.LocalTime", "time");
     formatMapping.put("java.time.LocalDate", "date");
     formatMapping.put("java.time.LocalDateTime", "date-time");
+    formatMapping.put("java.time.OffsetDateTime", "date-time");
 
     // Content type mapping
     contentTypeMapping.put("APPLICATION_XML", "application/xml");
