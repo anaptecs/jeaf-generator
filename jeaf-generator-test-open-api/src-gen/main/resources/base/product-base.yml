@@ -980,7 +980,7 @@ components:
     # com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum
     ExtensibleEnum:
       type: string
-      enum:
+      x-extensible-enum:
         - RED
         - GREEN
         - BLUE

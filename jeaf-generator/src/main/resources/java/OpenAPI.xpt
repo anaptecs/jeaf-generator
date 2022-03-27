@@ -504,7 +504,11 @@ components:
       «IF this.isDeprecated() -»
       deprecated: true
       «ENDIF-»
+      «IF this.extensibleEnum == true-»
+      x-extensible-enum:
+      «ELSE-»
       enum:
+      «ENDIF-»
         «FOREACH this.ownedLiteral AS literal-»        
         «IF literal.hasComment()-»
         # «literal.getYAMLStyleComment("        ")»
