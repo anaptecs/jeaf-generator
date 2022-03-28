@@ -17,6 +17,8 @@ import com.anaptecs.jeaf.junit.openapi.base.serializers.CurrencyCodeDeserializer
 import com.anaptecs.jeaf.junit.openapi.base.serializers.CurrencyCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeSerializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.ExtensibleEnumDeserializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.ExtensibleEnumSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.FloatCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.FloatCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.IntegerCodeDeserializer;
@@ -67,6 +69,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addDeserializer(FloatCode.class, new FloatCodeDeserializer());
     lModule.addSerializer(DoubleCode.class, new DoubleCodeSerializer());
     lModule.addDeserializer(DoubleCode.class, new DoubleCodeDeserializer());
+    lModule.addSerializer(ExtensibleEnum.class, new ExtensibleEnumSerializer());
+    lModule.addDeserializer(ExtensibleEnum.class, new ExtensibleEnumDeserializer());
     // Return created module.
     return lModule;
   }

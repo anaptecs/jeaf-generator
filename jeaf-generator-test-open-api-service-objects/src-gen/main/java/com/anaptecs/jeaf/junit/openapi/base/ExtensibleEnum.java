@@ -173,7 +173,15 @@ public class ExtensibleEnum {
         ExtensibleEnum lEnum = (ExtensibleEnum) pObject;
         // Compare if unknown literal is the same
         if (this.isUnknownLiteral() && lEnum.isUnknownLiteral()) {
-          lEquals = this.unknownLiteralName.equals(lEnum.unknownLiteralName);
+          if (this.unknownLiteralName != null) {
+            lEquals = this.unknownLiteralName.equals(lEnum.unknownLiteralName);
+          }
+          else if (this.unknownLiteralName == null && lEnum.unknownLiteralName == null) {
+            lEquals = this.literal == lEnum.literal;
+          }
+          else {
+            lEquals = false;
+          }
         }
         // Compare based on literals
         else {

@@ -12,6 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 
+import com.anaptecs.jeaf.json.api.JSON;
+import com.anaptecs.jeaf.json.api.JSONTools;
 import com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum;
 import com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum.ExtensibleEnumType;
 
@@ -76,6 +78,34 @@ public class ExtensibleEnumTest {
     assertEquals(ExtensibleEnumType.UNKNOWN, lEnum.getLiteral());
     assertEquals(true, lEnum.isUnknownLiteral());
     assertEquals("PINK", lEnum.getUnknownLiteralName());
+  }
+
+  @Test
+  void testSerialization( ) {
+    JSONTools lTools = JSON.getJSONTools();
+    String lJSON = lTools.writeObjectToString(ExtensibleEnum.BLUE);
+    assertEquals("\"BLUE\"", lJSON);
+
+    ExtensibleEnum lReadEnum = lTools.read(lJSON, ExtensibleEnum.class);
+    assertEquals(ExtensibleEnum.BLUE, lReadEnum);
+    assertTrue(ExtensibleEnum.BLUE == lReadEnum);
+
+    ExtensibleEnum lPink = ExtensibleEnum.valueOf("PINK");
+    lJSON = lTools.writeObjectToString(lPink);
+    assertEquals("\"PINK\"", lJSON);
+
+    lReadEnum = lTools.read(lJSON, ExtensibleEnum.class);
+    assertEquals(lPink, lReadEnum);
+    assertFalse(lPink == lReadEnum);
+
+    ExtensibleEnum lUnknown = new ExtensibleEnum(ExtensibleEnumType.UNKNOWN);
+    lJSON = lTools.writeObjectToString(lUnknown);
+    assertEquals("\"UNKNOWN\"", lJSON);
+
+    lReadEnum = lTools.read(lJSON, ExtensibleEnum.class);
+    assertEquals(lUnknown, lReadEnum);
+    assertFalse(lUnknown == lReadEnum);
+
   }
 
 }
