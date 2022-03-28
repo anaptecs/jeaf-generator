@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -40,7 +42,40 @@ public class ExtensibleEnumTest {
     assertEquals(lPink, lPink2);
     assertNotEquals(lPink2, lGrey);
     assertNotEquals(lPink, null);
+  }
 
+  @Test
+  void testValueOf( ) {
+    ExtensibleEnum lEnum = ExtensibleEnum.valueOf("BLUE");
+    assertEquals(ExtensibleEnum.BLUE, lEnum);
+    assertTrue(ExtensibleEnum.BLUE == lEnum);
+    assertEquals(ExtensibleEnumType.BLUE, lEnum.getLiteral());
+    assertFalse(lEnum.isUnknownLiteral());
+    assertEquals(null, lEnum.getUnknownLiteralName());
+
+    lEnum = ExtensibleEnum.valueOf("RED");
+    assertEquals(ExtensibleEnum.RED, lEnum);
+    assertTrue(ExtensibleEnum.RED == lEnum);
+    assertEquals(ExtensibleEnumType.RED, lEnum.getLiteral());
+    assertFalse(lEnum.isUnknownLiteral());
+    assertEquals(null, lEnum.getUnknownLiteralName());
+
+    lEnum = ExtensibleEnum.valueOf("GREEN");
+    assertEquals(ExtensibleEnum.GREEN, lEnum);
+    assertTrue(ExtensibleEnum.GREEN == lEnum);
+    assertEquals(ExtensibleEnumType.GREEN, lEnum.getLiteral());
+    assertFalse(lEnum.isUnknownLiteral());
+    assertEquals(null, lEnum.getUnknownLiteralName());
+
+    lEnum = ExtensibleEnum.valueOf("UNKNOWN");
+    assertEquals(ExtensibleEnumType.UNKNOWN, lEnum.getLiteral());
+    assertTrue(lEnum.isUnknownLiteral());
+    assertEquals(null, lEnum.getUnknownLiteralName());
+
+    lEnum = ExtensibleEnum.valueOf("PINK");
+    assertEquals(ExtensibleEnumType.UNKNOWN, lEnum.getLiteral());
+    assertEquals(true, lEnum.isUnknownLiteral());
+    assertEquals("PINK", lEnum.getUnknownLiteralName());
   }
 
 }
