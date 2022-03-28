@@ -113,11 +113,14 @@ List[uml::Property] getAllAttributesFromHierarchy(uml::Element class):
   JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getAllAttributesFromHierarchy(org.eclipse.uml2.uml.Element);
    
    
-boolean isRequired(uml::TypedElement type):
-   type.isStereotypeApplied("NotNull") || type.isStereotypeApplied("NotEmpty") || type.isStereotypeApplied("NotBlank") || type.type.isPrimitiveType();
+boolean isRequired(uml::Parameter param):
+   param.isStereotypeApplied("NotNull") || param.isStereotypeApplied("NotEmpty") || param.isStereotypeApplied("NotBlank") || param.type.isPrimitiveType()|| param.lower > 0;
+
+boolean isRequiredProperty(uml::Property property):
+   property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank") || property.type.isPrimitiveType() || (property.association != null && property.lower > 0);
    
 List[uml::Property] getRequiredProperties(uml::Class class):
-    class.ownedAttribute.select(e|e.isRequired());
+    class.ownedAttribute.select(e|e.isRequiredProperty() && e.isTransient() == false);
     
 boolean hasRequiredProperties(uml::Class class):
     getRequiredProperties(class).size > 0;

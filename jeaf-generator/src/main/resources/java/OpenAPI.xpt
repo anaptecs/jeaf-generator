@@ -190,7 +190,7 @@ components:
           in: «property.getOpenAPIParameterType()»
           description: >- 
             «IF property.hasComment()»«property.getCommentForOpenAPIDescription("            ")»«ELSE»TODO Please add comment«ENDIF»
-          required: «property.isRequired()»
+          required: «property.isRequiredProperty()»
           «IF property.isDeprecated() -»
           deprecated: true
           «ENDIF-»
@@ -390,7 +390,7 @@ components:
           description: Attribute is used as discriminator for inheritance between data types.
           type: string
         «ENDIF-»
-        «FOREACH this.ownedAttribute AS attribute-»
+        «FOREACH this.ownedAttribute.select(e | e.isTransient() == false) AS attribute-»
         «attribute.name»: 
           «IF attribute.type.isOpenAPIDataType() -»
           «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute) FOR (OpenAPIDataType) attribute.type -»
