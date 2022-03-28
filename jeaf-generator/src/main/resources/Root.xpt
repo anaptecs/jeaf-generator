@@ -32,6 +32,13 @@
 		    	«EXPAND java::OpenAPIDataType::GenerateDataTypeDeserializer FOR dataType»
 		    «ENDIF»
 	    «ENDFOREACH»
+	    
+	    «FOREACH this.allOwnedElements().typeSelect(JEAFEnumeration).select(e|e.extensibleEnum) AS enum»
+	    	«IF enum.isInGeneratorWhitelist() == true»
+	    		«EXPAND jeaf::Enumeration::GenerateExtensibleEnumSerializer FOR enum»
+	    		«EXPAND jeaf::Enumeration::GenerateExtensibleEnumDeserializer FOR enum»
+	    	«ENDIF»
+	    «ENDFOREACH»	    
     «ENDIF»
     
 	«EXPAND Root FOREACH ownedElement»
@@ -185,8 +192,6 @@
 		«info("Processing <<OpenAPI3Specification>> " + this.name + " (" + (this.fqn()) + ")")»
     	«EXPAND java::OpenAPI::GenerateOpenAPI»
     «ENDIF»
-    
-    // TODO Generate ModuleFactory for OpenAPI Spec
 «ENDDEFINE»
 
 «DEFINE Root FOR ModuleFactory»

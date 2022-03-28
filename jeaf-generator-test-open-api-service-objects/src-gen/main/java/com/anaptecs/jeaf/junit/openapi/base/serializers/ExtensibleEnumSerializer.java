@@ -13,13 +13,12 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
 /**
- * Class implements a JSON / Jackson serializer for class BooleanCode.
+ * Class implements a JSON / Jackson serializer for class ExtensibleEnum.
  */
 public class ExtensibleEnumSerializer extends JsonSerializer<ExtensibleEnum> {
   @Override
   public void serialize( ExtensibleEnum pObject, JsonGenerator pGenerator, SerializerProvider pSerializers )
     throws IOException {
-
     // Resolve name of enum literal
     String lLiteralName;
     if (pObject.isUnknownLiteral() == false) {

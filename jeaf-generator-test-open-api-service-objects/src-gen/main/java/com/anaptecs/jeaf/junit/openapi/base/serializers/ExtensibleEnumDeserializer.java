@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 
 /**
- * Class implements a JSON / Jackson deserializer for class BooleanCode.
+ * Class implements a JSON / Jackson deserializer for class ExtensibleEnum.
  */
 public class ExtensibleEnumDeserializer extends JsonDeserializer<ExtensibleEnum> {
   @Override

@@ -1,4 +1,5 @@
 «EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
 «IMPORT uml»
 «IMPORT java»
 «IMPORT JMM»
@@ -212,4 +213,70 @@ public class «name» {
 «ENDIF»
 }
 «ENDFILE»
+«ENDDEFINE»
+
+«DEFINE GenerateExtensibleEnumSerializer FOR JEAFEnumeration -»
+	«FILE packagePath() + "/serializers/" + name +"Serializer.java" GenBase»
+		«getFileHeader()»
+		package «this.packageName()».serializers;
+		
+		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		/**
+		 * Class implements a JSON / Jackson serializer for class «name».
+		 */
+		public class «name»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<«name»> {
+		  @Override
+		  public void serialize( «this.fqn()» pObject, com.fasterxml.jackson.core.JsonGenerator pGenerator, com.fasterxml.jackson.databind.SerializerProvider pSerializers )
+		    throws java.io.IOException {
+
+		    // Resolve name of enum literal
+		    String lLiteralName;
+		    if (pObject.isUnknownLiteral() == false) {
+		      lLiteralName = pObject.getLiteral().name();
+		    }
+		    // Object represent unknown literal.
+		    else {
+		      String lUnknownLiteralName = pObject.getUnknownLiteralName();
+		      if (lUnknownLiteralName != null) {
+		        lLiteralName = lUnknownLiteralName;
+		      }
+		      else {
+		        lLiteralName = pObject.getLiteral().name();
+		      }
+		    }
+		    // Write value directly to JSON and avoid nesting object structures
+		    pGenerator.writeString(lLiteralName);
+		  }		    
+		}
+	«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE GenerateExtensibleEnumDeserializer FOR JEAFEnumeration -»
+	«FILE packagePath() + "/serializers/" + name +"Deserializer.java" GenBase»
+		«getFileHeader()»
+		package «this.packageName()».serializers;
+		
+		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		/**
+		 * Class implements a JSON / Jackson deserializer for class «name».
+		 */
+		public class «name»Deserializer extends com.fasterxml.jackson.databind.JsonDeserializer<«this.fqn()»> {
+
+		@Override
+		public «this.fqn()» deserialize( com.fasterxml.jackson.core.JsonParser pParser, com.fasterxml.jackson.databind.DeserializationContext pContext ) throws java.io.IOException, com.fasterxml.jackson.core.JacksonException {
+			// Parse JSON content.
+			com.fasterxml.jackson.databind.JsonNode lNode = pParser.getCodec().readTree(pParser);
+		
+		    // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
+		    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
+		      String lLiteralName = lNode.asText();
+		      return «this.fqn()».valueOf(lLiteralName);
+		    }
+		    // Node is not a TextNode
+		    else {
+		      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.json.api.JSONMessages.UNEXPECTED_NODE_TYPE_FOR_OBJECT_ID_DESERIAL, lNode.toString(), lNode.getClass().getName());
+		    }
+		}
+	}
+	«ENDFILE»
 «ENDDEFINE»

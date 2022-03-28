@@ -233,6 +233,10 @@
 				lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer());
 				lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer());
 				«ENDFOREACH»
+				«FOREACH this.clientDependency.supplier.typeSelect(uml::Package).allOwnedElements().typeSelect(JEAFEnumeration).select(e|e.extensibleEnum) AS enum»
+				lModule.addSerializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Serializer());
+				lModule.addDeserializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Deserializer());
+				«ENDFOREACH»
 				
 				// Return created module.
 				return lModule;
