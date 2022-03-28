@@ -104,7 +104,7 @@ public class Product {
    * Image describing the product.
    * @return image
   **/
-  @Schema(required = true, description = "Image describing the product.")
+  @Schema(description = "Image describing the product.")
   public byte[] getImage() {
     return image;
   }

@@ -131,7 +131,7 @@ public class ChildBB extends ChildB implements OneOfChildBCompositionItems, OneO
    * Get deprecatedArray
    * @return deprecatedArray
   **/
-  @Schema(required = true, description = "")
+  @Schema(description = "")
   public byte[] getDeprecatedArray() {
     return deprecatedArray;
   }

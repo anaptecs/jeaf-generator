@@ -27,13 +27,13 @@ import java.util.List;
 
 public class PrimitiveArraysObjectWithRestrictions {
   @JsonProperty("aBooleanArray")
-  private List<Boolean> aBooleanArray = new ArrayList<>();
+  private List<Boolean> aBooleanArray = null;
 
   @JsonProperty("bBooleanArray")
   private List<Boolean> bBooleanArray = null;
 
   @JsonProperty("cBooleanArray")
-  private List<Boolean> cBooleanArray = new ArrayList<>();
+  private List<Boolean> cBooleanArray = null;
 
   @JsonProperty("aByteArray")
   private byte[] aByteArray = null;
@@ -42,13 +42,13 @@ public class PrimitiveArraysObjectWithRestrictions {
   private byte[] bByteArray = null;
 
   @JsonProperty("aShortArray")
-  private List<Integer> aShortArray = new ArrayList<>();
+  private List<Integer> aShortArray = null;
 
   @JsonProperty("bShortArray")
   private List<Integer> bShortArray = null;
 
   @JsonProperty("aIntegerArray")
-  private List<Integer> aIntegerArray = new ArrayList<>();
+  private List<Integer> aIntegerArray = null;
 
   @JsonProperty("bIntegerArray")
   private List<Integer> bIntegerArray = null;
@@ -66,19 +66,19 @@ public class PrimitiveArraysObjectWithRestrictions {
   private List<Long> aBigIntegerArray = null;
 
   @JsonProperty("aCharacterArray")
-  private List<String> aCharacterArray = new ArrayList<>();
+  private List<String> aCharacterArray = null;
 
   @JsonProperty("bCharacterArray")
   private List<String> bCharacterArray = null;
 
   @JsonProperty("aFloatArray")
-  private List<Float> aFloatArray = new ArrayList<>();
+  private List<Float> aFloatArray = null;
 
   @JsonProperty("bFloatArray")
   private List<Float> bFloatArray = null;
 
   @JsonProperty("aDoubleArray")
-  private List<Double> aDoubleArray = new ArrayList<>();
+  private List<Double> aDoubleArray = null;
 
   @JsonProperty("bDoubleArray")
   private List<Double> bDoubleArray = null;
@@ -98,6 +98,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addABooleanArrayItem(Boolean aBooleanArrayItem) {
+    if (this.aBooleanArray == null) {
+      this.aBooleanArray = new ArrayList<>();
+    }
     this.aBooleanArray.add(aBooleanArrayItem);
     return this;
   }
@@ -106,7 +109,7 @@ public class PrimitiveArraysObjectWithRestrictions {
    * Get aBooleanArray
    * @return aBooleanArray
   **/
-  @Schema(required = true, description = "")
+  @Schema(description = "")
   public List<Boolean> getABooleanArray() {
     return aBooleanArray;
   }
@@ -147,6 +150,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addCBooleanArrayItem(Boolean cBooleanArrayItem) {
+    if (this.cBooleanArray == null) {
+      this.cBooleanArray = new ArrayList<>();
+    }
     this.cBooleanArray.add(cBooleanArrayItem);
     return this;
   }
@@ -155,7 +161,7 @@ public class PrimitiveArraysObjectWithRestrictions {
    * Get cBooleanArray
    * @return cBooleanArray
   **/
-  @Schema(required = true, description = "")
+  @Schema(description = "")
   public List<Boolean> getCBooleanArray() {
     return cBooleanArray;
   }
@@ -173,7 +179,7 @@ public class PrimitiveArraysObjectWithRestrictions {
    * Get aByteArray
    * @return aByteArray
   **/
-  @Schema(required = true, description = "")
+  @Schema(description = "")
   public byte[] getAByteArray() {
     return aByteArray;
   }
@@ -206,6 +212,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addAShortArrayItem(Integer aShortArrayItem) {
+    if (this.aShortArray == null) {
+      this.aShortArray = new ArrayList<>();
+    }
     this.aShortArray.add(aShortArrayItem);
     return this;
   }
@@ -214,7 +223,7 @@ public class PrimitiveArraysObjectWithRestrictions {
    * Get aShortArray
    * @return aShortArray
   **/
-  @Schema(required = true, description = "")
+  @Schema(description = "")
   public List<Integer> getAShortArray() {
     return aShortArray;
   }
@@ -255,6 +264,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addAIntegerArrayItem(Integer aIntegerArrayItem) {
+    if (this.aIntegerArray == null) {
+      this.aIntegerArray = new ArrayList<>();
+    }
     this.aIntegerArray.add(aIntegerArrayItem);
     return this;
   }
@@ -263,7 +275,7 @@ public class PrimitiveArraysObjectWithRestrictions {
    * Get aIntegerArray
    * @return aIntegerArray
   **/
-  @Schema(required = true, description = "")
+  @Schema(description = "")
   public List<Integer> getAIntegerArray() {
     return aIntegerArray;
   }
@@ -405,6 +417,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addACharacterArrayItem(String aCharacterArrayItem) {
+    if (this.aCharacterArray == null) {
+      this.aCharacterArray = new ArrayList<>();
+    }
     this.aCharacterArray.add(aCharacterArrayItem);
     return this;
   }
@@ -413,7 +428,7 @@ public class PrimitiveArraysObjectWithRestrictions {
    * Get aCharacterArray
    * @return aCharacterArray
   **/
-  @Schema(required = true, description = "")
+  @Schema(description = "")
   public List<String> getACharacterArray() {
     return aCharacterArray;
   }
@@ -454,6 +469,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addAFloatArrayItem(Float aFloatArrayItem) {
+    if (this.aFloatArray == null) {
+      this.aFloatArray = new ArrayList<>();
+    }
     this.aFloatArray.add(aFloatArrayItem);
     return this;
   }
@@ -462,7 +480,7 @@ public class PrimitiveArraysObjectWithRestrictions {
    * Get aFloatArray
    * @return aFloatArray
   **/
-  @Schema(required = true, description = "")
+  @Schema(description = "")
   public List<Float> getAFloatArray() {
     return aFloatArray;
   }
@@ -503,6 +521,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addADoubleArrayItem(Double aDoubleArrayItem) {
+    if (this.aDoubleArray == null) {
+      this.aDoubleArray = new ArrayList<>();
+    }
     this.aDoubleArray.add(aDoubleArrayItem);
     return this;
   }
@@ -511,7 +532,7 @@ public class PrimitiveArraysObjectWithRestrictions {
    * Get aDoubleArray
    * @return aDoubleArray
   **/
-  @Schema(required = true, description = "")
+  @Schema(description = "")
   public List<Double> getADoubleArray() {
     return aDoubleArray;
   }
