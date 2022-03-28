@@ -86,11 +86,11 @@ public class «name» {
           break;
         «ENDFOREACH»
         default:
-          lEnum = new ExtensibleEnum(lEnumValue);
+          lEnum = new «name»(lEnumValue);
       }
     }
     catch (IllegalArgumentException e) {
-      lEnum = new ExtensibleEnum(pLiteralName);
+      lEnum = new «name»(pLiteralName);
     }
     return lEnum;
   }
