@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.json.api.JSONTools;
+import com.anaptecs.jeaf.junit.openapi.base.EnumTest;
 import com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum;
 import com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum.ExtensibleEnumType;
 
@@ -105,5 +106,13 @@ public class ExtensibleEnumTest {
     lReadEnum = lTools.read(lJSON, ExtensibleEnum.class);
     assertEquals(lUnknown, lReadEnum);
     assertFalse(lUnknown == lReadEnum);
+
+    EnumTest lEnumTest = EnumTest.Builder.newBuilder().setEnumRef(lPink).build();
+    lJSON = lTools.writeObjectToString(lEnumTest);
+    assertEquals("{\"property\":\"GREEN\",\"enumRef\":\"PINK\"}", lJSON);
+
+    EnumTest lRead = lTools.read(lJSON, EnumTest.class);
+    assertEquals(ExtensibleEnum.GREEN, lRead.getProperty());
+    assertEquals(lPink, lRead.getEnumRef());
   }
 }
