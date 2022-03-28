@@ -15,7 +15,6 @@ package com.anaptecs.jeaf.openapi;
 import java.util.Objects;
 import java.util.Arrays;
 import com.anaptecs.jeaf.openapi.Reseller;
-import com.anaptecs.jeaf.openapi.Sortiment;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -44,16 +43,13 @@ public class Product {
   private String productID = null;
 
   @JsonProperty("supportedCurrencies")
-  private List<String> supportedCurrencies = null;
+  private List<String> supportedCurrencies = new ArrayList<>();
 
   @JsonProperty("productCodes")
-  private List<Integer> productCodes = null;
+  private List<Integer> productCodes = new ArrayList<>();
 
   @JsonProperty("description")
   private String description = null;
-
-  @JsonProperty("sortiments")
-  private List<Sortiment> sortiments = null;
 
   public Product resellers(List<Reseller> resellers) {
     this.resellers = resellers;
@@ -150,9 +146,6 @@ public class Product {
   }
 
   public Product addSupportedCurrenciesItem(String supportedCurrenciesItem) {
-    if (this.supportedCurrencies == null) {
-      this.supportedCurrencies = new ArrayList<>();
-    }
     this.supportedCurrencies.add(supportedCurrenciesItem);
     return this;
   }
@@ -161,7 +154,7 @@ public class Product {
    * ISO 4217 currency code.
    * @return supportedCurrencies
   **/
-  @Schema(description = "ISO 4217 currency code.")
+  @Schema(required = true, description = "ISO 4217 currency code.")
   public List<String> getSupportedCurrencies() {
     return supportedCurrencies;
   }
@@ -176,9 +169,6 @@ public class Product {
   }
 
   public Product addProductCodesItem(Integer productCodesItem) {
-    if (this.productCodes == null) {
-      this.productCodes = new ArrayList<>();
-    }
     this.productCodes.add(productCodesItem);
     return this;
   }
@@ -187,7 +177,7 @@ public class Product {
    * Get productCodes
    * @return productCodes
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public List<Integer> getProductCodes() {
     return productCodes;
   }
@@ -214,32 +204,6 @@ public class Product {
     this.description = description;
   }
 
-  public Product sortiments(List<Sortiment> sortiments) {
-    this.sortiments = sortiments;
-    return this;
-  }
-
-  public Product addSortimentsItem(Sortiment sortimentsItem) {
-    if (this.sortiments == null) {
-      this.sortiments = new ArrayList<>();
-    }
-    this.sortiments.add(sortimentsItem);
-    return this;
-  }
-
-   /**
-   * Get sortiments
-   * @return sortiments
-  **/
-  @Schema(description = "")
-  public List<Sortiment> getSortiments() {
-    return sortiments;
-  }
-
-  public void setSortiments(List<Sortiment> sortiments) {
-    this.sortiments = sortiments;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -257,13 +221,12 @@ public class Product {
         Objects.equals(this.productID, product.productID) &&
         Objects.equals(this.supportedCurrencies, product.supportedCurrencies) &&
         Objects.equals(this.productCodes, product.productCodes) &&
-        Objects.equals(this.description, product.description) &&
-        Objects.equals(this.sortiments, product.sortiments);
+        Objects.equals(this.description, product.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(resellers, name, Arrays.hashCode(image), link, productID, supportedCurrencies, productCodes, description, sortiments);
+    return Objects.hash(resellers, name, Arrays.hashCode(image), link, productID, supportedCurrencies, productCodes, description);
   }
 
 
@@ -280,7 +243,6 @@ public class Product {
     sb.append("    supportedCurrencies: ").append(toIndentedString(supportedCurrencies)).append("\n");
     sb.append("    productCodes: ").append(toIndentedString(productCodes)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    sortiments: ").append(toIndentedString(sortiments)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -15,7 +15,6 @@ package com.anaptecs.jeaf.openapi;
 import java.util.Objects;
 import java.util.Arrays;
 import com.anaptecs.jeaf.openapi.Channel;
-import com.anaptecs.jeaf.openapi.Product;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -29,10 +28,7 @@ import java.util.List;
 
 public class Reseller {
   @JsonProperty("channels")
-  private List<Channel> channels = null;
-
-  @JsonProperty("products")
-  private List<Product> products = null;
+  private List<Channel> channels = new ArrayList<>();
 
   @JsonProperty("name")
   private String name = null;
@@ -46,9 +42,6 @@ public class Reseller {
   }
 
   public Reseller addChannelsItem(Channel channelsItem) {
-    if (this.channels == null) {
-      this.channels = new ArrayList<>();
-    }
     this.channels.add(channelsItem);
     return this;
   }
@@ -57,39 +50,13 @@ public class Reseller {
    * Get channels
    * @return channels
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public List<Channel> getChannels() {
     return channels;
   }
 
   public void setChannels(List<Channel> channels) {
     this.channels = channels;
-  }
-
-  public Reseller products(List<Product> products) {
-    this.products = products;
-    return this;
-  }
-
-  public Reseller addProductsItem(Product productsItem) {
-    if (this.products == null) {
-      this.products = new ArrayList<>();
-    }
-    this.products.add(productsItem);
-    return this;
-  }
-
-   /**
-   * Get products
-   * @return products
-  **/
-  @Schema(description = "")
-  public List<Product> getProducts() {
-    return products;
-  }
-
-  public void setProducts(List<Product> products) {
-    this.products = products;
   }
 
   public Reseller name(String name) {
@@ -139,14 +106,13 @@ public class Reseller {
     }
     Reseller reseller = (Reseller) o;
     return Objects.equals(this.channels, reseller.channels) &&
-        Objects.equals(this.products, reseller.products) &&
         Objects.equals(this.name, reseller.name) &&
         Objects.equals(this.language, reseller.language);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(channels, products, name, language);
+    return Objects.hash(channels, name, language);
   }
 
 
@@ -156,7 +122,6 @@ public class Reseller {
     sb.append("class Reseller {\n");
     
     sb.append("    channels: ").append(toIndentedString(channels)).append("\n");
-    sb.append("    products: ").append(toIndentedString(products)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");

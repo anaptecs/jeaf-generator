@@ -103,9 +103,9 @@ components:
           type: boolean
           readOnly: true
           default: true
-        reseller: 
-          $ref: '#/components/schemas/Reseller'
       required:
+        - channelType
+        - channelCode
         - code
         - selfServiceChannel
     # com.anaptecs.jeaf.junit.openapi.base.Reseller
@@ -117,11 +117,6 @@ components:
           items:
             $ref: '#/components/schemas/Channel'
           minItems: 1
-        products: 
-          type: array
-          items:
-            $ref: '#/components/schemas/Product'
-          minItems: 1
         name: 
           type: string
           minLength: 1
@@ -129,6 +124,7 @@ components:
         language: 
           type: string
       required:
+        - channels
         - name
     # com.anaptecs.jeaf.junit.openapi.base.Product
     Product:
@@ -178,13 +174,10 @@ components:
         description: 
           type: string
           deprecated: true
-        sortiments: 
-          type: array
-          items:
-            $ref: '#/components/schemas/Sortiment'
-          minItems: 0
       required:
         - image
+        - supportedCurrencies
+        - productCodes
     # com.anaptecs.jeaf.junit.openapi.base.Sortiment
     Sortiment:
       type: object
@@ -846,6 +839,22 @@ components:
         - title
         - status
         - type
+    # com.anaptecs.jeaf.junit.openapi.base.BidirectA
+    BidirectA:
+      type: object
+      properties:
+        parent: 
+          $ref: '#/components/schemas/BidirectA'
+      required:
+        - parent
+    # com.anaptecs.jeaf.junit.openapi.base.BidirectB
+    BidirectB:
+      type: object
+      properties:
+        a: 
+          $ref: '#/components/schemas/BidirectA'
+      required:
+        - a
     # com.anaptecs.jeaf.junit.openapi.base.PlaceRef
     PlaceRef:
       discriminator:
@@ -920,6 +929,9 @@ components:
               - $ref: '#/components/schemas/TopoRef'
               - $ref: '#/components/schemas/UICStopPlace'
           minItems: 0
+      required:
+        - start
+        - stop
     # com.anaptecs.jeaf.junit.openapi.base.SwissGeoPosition
     SwissGeoPosition:
       allOf:

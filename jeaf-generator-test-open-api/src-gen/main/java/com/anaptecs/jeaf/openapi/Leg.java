@@ -44,7 +44,7 @@ public class Leg {
    * Get start
    * @return start
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public OneOfLegStart getStart() {
     return start;
   }
@@ -62,7 +62,7 @@ public class Leg {
    * Get stop
    * @return stop
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public OneOfLegStop getStop() {
     return stop;
   }

@@ -15,7 +15,6 @@ package com.anaptecs.jeaf.openapi;
 import java.util.Objects;
 import java.util.Arrays;
 import com.anaptecs.jeaf.openapi.ChannelType;
-import com.anaptecs.jeaf.openapi.Reseller;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -38,9 +37,6 @@ public class Channel {
   @JsonProperty("selfServiceChannel")
   private Boolean selfServiceChannel = true;
 
-  @JsonProperty("reseller")
-  private Reseller reseller = null;
-
   public Channel channelType(ChannelType channelType) {
     this.channelType = channelType;
     return this;
@@ -50,7 +46,7 @@ public class Channel {
    * Get channelType
    * @return channelType
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public ChannelType getChannelType() {
     return channelType;
   }
@@ -68,7 +64,7 @@ public class Channel {
    * Get channelCode
    * @return channelCode
   **/
-  @Schema(example = "MOBILE_APP", description = "")
+  @Schema(example = "MOBILE_APP", required = true, description = "")
   public String getChannelCode() {
     return channelCode;
   }
@@ -95,24 +91,6 @@ public class Channel {
     return selfServiceChannel;
   }
 
-  public Channel reseller(Reseller reseller) {
-    this.reseller = reseller;
-    return this;
-  }
-
-   /**
-   * Get reseller
-   * @return reseller
-  **/
-  @Schema(description = "")
-  public Reseller getReseller() {
-    return reseller;
-  }
-
-  public void setReseller(Reseller reseller) {
-    this.reseller = reseller;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -126,13 +104,12 @@ public class Channel {
     return Objects.equals(this.channelType, channel.channelType) &&
         Objects.equals(this.channelCode, channel.channelCode) &&
         Objects.equals(this.code, channel.code) &&
-        Objects.equals(this.selfServiceChannel, channel.selfServiceChannel) &&
-        Objects.equals(this.reseller, channel.reseller);
+        Objects.equals(this.selfServiceChannel, channel.selfServiceChannel);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(channelType, channelCode, code, selfServiceChannel, reseller);
+    return Objects.hash(channelType, channelCode, code, selfServiceChannel);
   }
 
 
@@ -145,7 +122,6 @@ public class Channel {
     sb.append("    channelCode: ").append(toIndentedString(channelCode)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    selfServiceChannel: ").append(toIndentedString(selfServiceChannel)).append("\n");
-    sb.append("    reseller: ").append(toIndentedString(reseller)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -53,6 +53,38 @@ public class ExtensibleEnum {
   private String unknownLiteralName;
 
   /**
+   * Method returns extensible enumeration based on the passed name. If the literal name is unknown then an instance
+   * representing "unknown" will be returned.
+   * 
+   * @param pLiteral Enumeration literal that should be used to initialize the extensible enumeration. The parameter
+   * must not be null.
+   * @return
+   */
+  public static ExtensibleEnum valueOf( String pLiteralName ) {
+    ExtensibleEnum lEnum;
+    try {
+      ExtensibleEnumType lEnumValue = Enum.valueOf(ExtensibleEnumType.class, pLiteralName);
+      switch (lEnumValue) {
+        case RED:
+          lEnum = RED;
+          break;
+        case GREEN:
+          lEnum = GREEN;
+          break;
+        case BLUE:
+          lEnum = BLUE;
+          break;
+        default:
+          lEnum = new ExtensibleEnum(lEnumValue);
+      }
+    }
+    catch (IllegalArgumentException e) {
+      lEnum = new ExtensibleEnum(pLiteralName);
+    }
+    return lEnum;
+  }
+
+  /**
    * Initialize object from real enumeration literal
    * 
    * @param pLiteral Enumeration literal that should be used to initialize the extensible enumeration. The parameter
