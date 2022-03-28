@@ -105,7 +105,5 @@ public class ExtensibleEnumTest {
     lReadEnum = lTools.read(lJSON, ExtensibleEnum.class);
     assertEquals(lUnknown, lReadEnum);
     assertFalse(lUnknown == lReadEnum);
-
   }
-
 }
