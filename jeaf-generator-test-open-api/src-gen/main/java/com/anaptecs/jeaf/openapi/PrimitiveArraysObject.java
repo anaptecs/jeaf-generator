@@ -92,6 +92,9 @@ public class PrimitiveArraysObject {
   @JsonProperty("bStringArray")
   private List<String> bStringArray = null;
 
+  @JsonProperty("cStringArray")
+  private List<String> cStringArray = new ArrayList<>();
+
   public PrimitiveArraysObject aBooleanArray(List<Boolean> aBooleanArray) {
     this.aBooleanArray = aBooleanArray;
     return this;
@@ -624,6 +627,29 @@ public class PrimitiveArraysObject {
     this.bStringArray = bStringArray;
   }
 
+  public PrimitiveArraysObject cStringArray(List<String> cStringArray) {
+    this.cStringArray = cStringArray;
+    return this;
+  }
+
+  public PrimitiveArraysObject addCStringArrayItem(String cStringArrayItem) {
+    this.cStringArray.add(cStringArrayItem);
+    return this;
+  }
+
+   /**
+   * Get cStringArray
+   * @return cStringArray
+  **/
+  @Schema(required = true, description = "")
+  public List<String> getCStringArray() {
+    return cStringArray;
+  }
+
+  public void setCStringArray(List<String> cStringArray) {
+    this.cStringArray = cStringArray;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -655,12 +681,13 @@ public class PrimitiveArraysObject {
         Objects.equals(this.bDoubleArray, primitiveArraysObject.bDoubleArray) &&
         Objects.equals(this.aBigDecimalArray, primitiveArraysObject.aBigDecimalArray) &&
         Objects.equals(this.aStringArray, primitiveArraysObject.aStringArray) &&
-        Objects.equals(this.bStringArray, primitiveArraysObject.bStringArray);
+        Objects.equals(this.bStringArray, primitiveArraysObject.bStringArray) &&
+        Objects.equals(this.cStringArray, primitiveArraysObject.cStringArray);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aBooleanArray, bBooleanArray, cBooleanArray, Arrays.hashCode(aByteArray), Arrays.hashCode(bByteArray), aShortArray, bShortArray, aIntegerArray, bIntegerArray, cIntegerArray, aLongArray, bLongArray, aBigIntegerArray, aCharacterArray, bCharacterArray, aFloatArray, bFloatArray, aDoubleArray, bDoubleArray, aBigDecimalArray, aStringArray, bStringArray);
+    return Objects.hash(aBooleanArray, bBooleanArray, cBooleanArray, Arrays.hashCode(aByteArray), Arrays.hashCode(bByteArray), aShortArray, bShortArray, aIntegerArray, bIntegerArray, cIntegerArray, aLongArray, bLongArray, aBigIntegerArray, aCharacterArray, bCharacterArray, aFloatArray, bFloatArray, aDoubleArray, bDoubleArray, aBigDecimalArray, aStringArray, bStringArray, cStringArray);
   }
 
 
@@ -691,6 +718,7 @@ public class PrimitiveArraysObject {
     sb.append("    aBigDecimalArray: ").append(toIndentedString(aBigDecimalArray)).append("\n");
     sb.append("    aStringArray: ").append(toIndentedString(aStringArray)).append("\n");
     sb.append("    bStringArray: ").append(toIndentedString(bStringArray)).append("\n");
+    sb.append("    cStringArray: ").append(toIndentedString(cStringArray)).append("\n");
     sb.append("}");
     return sb.toString();
   }

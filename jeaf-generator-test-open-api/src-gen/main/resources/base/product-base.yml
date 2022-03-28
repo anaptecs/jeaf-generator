@@ -386,6 +386,11 @@ components:
           type: array
           items:
             type: string
+        cStringArray: 
+          type: array
+          items:
+            type: string
+          minItems: 1
       required:
         - aBooleanArray
         - cBooleanArray
@@ -396,6 +401,7 @@ components:
         - aCharacterArray
         - aFloatArray
         - aDoubleArray
+        - cStringArray
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
     ParentClass:
       discriminator:
