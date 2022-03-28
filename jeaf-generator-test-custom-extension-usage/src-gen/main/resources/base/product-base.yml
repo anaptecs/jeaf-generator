@@ -208,6 +208,16 @@ components:
           $ref: '#/components/schemas/TimeUnit'
       required:
         - value
+    # com.anaptecs.jeaf.junit.openapi.base.EnumTest
+    EnumTest:
+      type: object
+      properties:
+        property: 
+          $ref: '#/components/schemas/ExtensibleEnum'
+        enumRef: 
+          $ref: '#/components/schemas/ExtensibleEnum'
+      required:
+        - enumRef
     # com.anaptecs.jeaf.junit.openapi.base.GeoPosition
     GeoPosition:
       allOf:
