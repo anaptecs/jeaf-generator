@@ -79,6 +79,17 @@ public class ExtensibleEnumTest {
     assertEquals(ExtensibleEnumType.UNKNOWN, lEnum.getLiteral());
     assertEquals(true, lEnum.isUnknownLiteral());
     assertEquals("PINK", lEnum.getUnknownLiteralName());
+
+    ExtensibleEnum lUnknown = new ExtensibleEnum(ExtensibleEnumType.UNKNOWN);
+    assertNotEquals(lUnknown, lEnum);
+    assertNotEquals(lEnum, lUnknown);
+    ExtensibleEnum lUnknown2 = new ExtensibleEnum(ExtensibleEnumType.UNKNOWN);
+    assertEquals(lUnknown, lUnknown2);
+
+    ExtensibleEnum lPink = ExtensibleEnum.valueOf("PINK");
+    ExtensibleEnum lGrey = ExtensibleEnum.valueOf("GREY");
+    assertNotEquals(lPink, lGrey);
+
   }
 
   @Test
