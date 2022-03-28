@@ -175,7 +175,6 @@ components:
           type: string
           deprecated: true
       required:
-        - image
         - supportedCurrencies
         - productCodes
     # com.anaptecs.jeaf.junit.openapi.base.Sortiment
@@ -392,15 +391,6 @@ components:
             type: string
           minItems: 1
       required:
-        - aBooleanArray
-        - cBooleanArray
-        - aByteArray
-        - aShortArray
-        - aIntegerArray
-        - aLongArray
-        - aCharacterArray
-        - aFloatArray
-        - aDoubleArray
         - cStringArray
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
     ParentClass:
@@ -496,7 +486,6 @@ components:
           format: byte
       required:
         - deprecatedAttribute
-        - deprecatedArray
     # com.anaptecs.jeaf.junit.openapi.base.OpenAPITestObject
     OpenAPITestObject:
       type: object
@@ -809,15 +798,7 @@ components:
           items:
             type: string
       required:
-        - aBooleanArray
-        - cBooleanArray
-        - aByteArray
-        - aShortArray
-        - aIntegerArray
         - aLongArray
-        - aCharacterArray
-        - aFloatArray
-        - aDoubleArray
     # com.anaptecs.jeaf.junit.openapi.base.Problem
     Problem:
       type: object
