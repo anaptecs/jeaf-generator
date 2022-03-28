@@ -34,7 +34,7 @@ private «this.name»(«this.ownedAttribute.asParameterDefinitionList()») {
 «EXPAND Attribute::Getter FOREACH this.ownedAttribute»
 «ELSE»
 public class «name» {
-  static enum «name»Type {
+  public static enum «name»Type {
 	«FOREACH this.ownedLiteral AS literal»
 	  /**
 	   * «literal.getComment()»

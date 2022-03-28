@@ -6,7 +6,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * 
  */
 public class ExtensibleEnum {
-  static enum ExtensibleEnumType {
+  public static enum ExtensibleEnumType {
     /**
      * 
      */
