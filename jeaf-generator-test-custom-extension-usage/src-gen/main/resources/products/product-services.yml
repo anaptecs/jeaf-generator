@@ -73,7 +73,7 @@ paths:
       requestBody:
         description: >- 
           TODO Please add comment
-        required: false
+        required: true
         content:
           application/json:
             schema:
@@ -348,7 +348,7 @@ paths:
       requestBody:
         description: >- 
           TODO Please add comment
-        required: false
+        required: true
         content:
           application/json:
             schema:
@@ -375,7 +375,7 @@ paths:
         description: >- 
           TODO Please add comment
           Operation has deprected body parameter. Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
-        required: false
+        required: true
         content:
           application/json:
             schema:
@@ -465,7 +465,7 @@ paths:
       requestBody:
         description: >- 
           Channel Code that should be created.
-        required: false
+        required: true
         content:
           application/json:
             schema:
@@ -496,7 +496,7 @@ paths:
       requestBody:
         description: >- 
           TODO Please add comment
-        required: false
+        required: true
         content:
           application/json:
             schema:
@@ -538,7 +538,7 @@ paths:
       requestBody:
         description: >- 
           TODO Please add comment
-        required: false
+        required: true
         content:
           application/json:
             schema:
