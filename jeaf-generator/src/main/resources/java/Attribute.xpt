@@ -39,6 +39,8 @@
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND RESTParamAnnotation»
 	«EXPAND Validation::ValidationAnnotation»
+     «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isMultivalued() == true && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»
+     «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isMultivalued() == false && type.isPrimitiveType() == false && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
 	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false && this.isStatic == true» = «this.initValue()»«ENDIF»;
 «ENDDEFINE»
 
@@ -51,10 +53,13 @@
 	«IF isNavigable()»
 		«EXPAND Validation::ValidationAnnotation»
 		«IF isMultivalued()»
+			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»
 			«visibility» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()» «asInstanceVar()» = new «this.getCollectionImplType()»<«type.fqn()»>();
 		«ELSE»
+			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
 			«visibility» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «type.fqn()» «asInstanceVar()»;
 		«ENDIF»
+		
 		
 		«REM» Special handling for bi-directional associations with one transient association end«ENDREM»
 		«IF this.isTransientBidirectionalBackReference()»

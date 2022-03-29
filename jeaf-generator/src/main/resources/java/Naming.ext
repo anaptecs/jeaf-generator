@@ -294,6 +294,9 @@ cached boolean hasMultivaluedAssociation(uml::Class class) :
     
 cached boolean isValidationStereotype(uml::Stereotype stereotype) : !stereotype.allParents().select(e|e.name == "Validation").isEmpty;
 
+cached boolean hasValidationStereotype(uml::NamedElement element) :
+  element.getAppliedStereotypes().selectFirst(e|e.isValidationStereotype()) != null;
+
 cached boolean requiresInitValue(uml::Property property):
      property.isReadOnly == true && property.isStatic == false;
      

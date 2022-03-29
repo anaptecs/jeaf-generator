@@ -99,6 +99,12 @@ cached boolean generateJSONSerializers() :
 cached boolean generateConstantsForAttributeNames() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateConstantsForAttributeNames();
         
+cached boolean generateValidationAnnotationsForAttributesFromMultiplicity() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateValidationAnnotationsForAttributesFromMultiplicity();
+    
+cached boolean generateValidationAnnotationsForAssociationsFromMultiplicity() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateValidationAnnotationsForAssociationsFromMultiplicity();
+    
 cached String getMavenVersion() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getMavenVersion();        
 

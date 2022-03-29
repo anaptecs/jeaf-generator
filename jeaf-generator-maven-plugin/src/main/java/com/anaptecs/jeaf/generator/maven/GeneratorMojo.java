@@ -307,6 +307,20 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateJacksonAnnotations;
 
   /**
+   * Switch defines whether Java Validation Annotations should not only be generated for explicitly modeled annotations
+   * but also from multiplicity of modeled attributes.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateValidationAnnotationsForAttributesFromMultiplicity;
+
+  /**
+   * Switch defines whether Java Validation Annotations should not only be generated for explicitly modeled annotations
+   * but also from multiplicity of modeled associations.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateValidationAnnotationsForAssociationsFromMultiplicity;
+
+  /**
    * Parameter defines if generated code for JSON serialization should be SemVer compliant or not.
    */
   @Parameter(required = false, defaultValue = "true")
@@ -506,124 +520,130 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("UML Model File:                           " + umlModelFile);
       lLog.info("UML Profile File:                         " + umlProfileFile);
       if (xmiDirectory != null) {
-        lLog.info("XMI Path:                                 " + xmiDirectory);
+        lLog.info("XMI Path:                                       " + xmiDirectory);
       }
       if (modelArtifactGroupID != null) {
-        lLog.info("Model Artifact Group-ID:                  " + modelArtifactGroupID);
+        lLog.info("Model Artifact Group-ID:                        " + modelArtifactGroupID);
       }
       if (modelArtifactArtifactID != null) {
-        lLog.info("Model Artifact-ID:                        " + modelArtifactArtifactID);
+        lLog.info("Model Artifact-ID:                              " + modelArtifactArtifactID);
       }
       if (modelArtifactXMIPath != null) {
-        lLog.info("Model Artifact XMI Path:                  " + modelArtifactXMIPath);
+        lLog.info("Model Artifact XMI Path:                        " + modelArtifactXMIPath);
       }
       lLog.info(" ");
     }
 
-    lLog.info("src:                                      " + sourceDirectory);
-    lLog.info("src-gen:                                  " + sourceGenDirectory);
-    lLog.info("res:                                      " + resourceDirectory);
-    lLog.info("res-gen:                                  " + resourceGenDirectory);
+    lLog.info("src:                                              " + sourceDirectory);
+    lLog.info("src-gen:                                          " + sourceGenDirectory);
+    lLog.info("res:                                              " + resourceDirectory);
+    lLog.info("res-gen:                                          " + resourceGenDirectory);
     lLog.info(" ");
-    lLog.info("Code-Style:                               " + xmlFormatterStyleFile);
-    lLog.info("Package Whitelist:                        " + this.getPackageWhitelist());
+    lLog.info("Code-Style:                                       " + xmlFormatterStyleFile);
+    lLog.info("Package Whitelist:                                " + this.getPackageWhitelist());
     String lIgnoredResources = Tools.getCollectionTools().toString(ignoredResourceFiles, ", ");
     if (lIgnoredResources.trim().isEmpty()) {
       lIgnoredResources = "none";
     }
-    lLog.info("Ignored resource files:                   " + lIgnoredResources);
+    lLog.info("Ignored resource files:                           " + lIgnoredResources);
     lLog.info(" ");
 
     if (generateCustomConstraints) {
-      lLog.info("Generate Custmom Constraints:             " + generateCustomConstraints);
+      lLog.info("Generate Custmom Constraints:                     " + generateCustomConstraints);
     }
     if (generateServiceObjects) {
-      lLog.info("Generate Service Objects:                 " + generateServiceObjects);
-      lLog.info("Generate Constants for Attribute Names:   " + generateConstantsForAttributeNames);
+      lLog.info("Generate Service Objects:                         " + generateServiceObjects);
+      lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
     }
     if (generateExceptionClasses) {
-      lLog.info("Generate Exception Classes:               " + generateExceptionClasses);
+      lLog.info("Generate Exception Classes:                       " + generateExceptionClasses);
     }
     if (generateServiceInterfaces) {
-      lLog.info("Generate Service Interfaces:              " + generateServiceInterfaces);
+      lLog.info("Generate Service Interfaces:                      " + generateServiceInterfaces);
     }
     if (generateServiceProxies) {
-      lLog.info("Generate Service Proxies:                 " + generateServiceProxies);
+      lLog.info("Generate Service Proxies:                         " + generateServiceProxies);
     }
     if (generateServiceProviderInterfaces) {
-      lLog.info("Generate Service Provider Interfaces:     " + generateServiceProviderInterfaces);
+      lLog.info("Generate Service Provider Interfaces:             " + generateServiceProviderInterfaces);
     }
     if (generateServiceProviderImpls) {
-      lLog.info("Generate Service Provider Impls:          " + generateServiceProviderImpls);
+      lLog.info("Generate Service Provider Impls:                  " + generateServiceProviderImpls);
     }
     if (generateRESTResources) {
-      lLog.info("Generate REST Resources:                  " + generateRESTResources);
+      lLog.info("Generate REST Resources:                          " + generateRESTResources);
     }
     if (generateActivityInterfaces) {
-      lLog.info("Generate Activity Interfaces:             " + generateActivityInterfaces);
+      lLog.info("Generate Activity Interfaces:                     " + generateActivityInterfaces);
     }
     if (generateActivityImpls) {
-      lLog.info("Generate Activity Impls:                  " + generateActivityImpls);
+      lLog.info("Generate Activity Impls:                          " + generateActivityImpls);
     }
     if (generatePOJOs) {
-      lLog.info("Generate POJO's:                          " + generatePOJOs);
-      lLog.info("Generate Constants for Attribute Names:   " + generateConstantsForAttributeNames);
+      lLog.info("Generate POJO's:                                  " + generatePOJOs);
+      lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
     }
     if (generateDomainObjects) {
-      lLog.info("Generate Domain Objects:                  " + generateDomainObjects);
-      lLog.info("Generate Constants for Attribute Names:   " + generateConstantsForAttributeNames);
+      lLog.info("Generate Domain Objects:                          " + generateDomainObjects);
+      lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
     }
     if (generateObjectMappers) {
-      lLog.info("Generate Object Mappers:                  " + generateObjectMappers);
+      lLog.info("Generate Object Mappers:                          " + generateObjectMappers);
     }
     if (generateComponentImpls) {
-      lLog.info("Generate Component Impls:                 " + generateComponentImpls);
+      lLog.info("Generate Component Impls:                         " + generateComponentImpls);
     }
     if (generateComponentRuntimeClasses) {
-      lLog.info("Generate Component Runtime Classe:        " + generateComponentRuntimeClasses);
+      lLog.info("Generate Component Runtime Classe:                " + generateComponentRuntimeClasses);
     }
     if (generateGlobalParts) {
-      lLog.info("Generate Global Parts:                    " + generateGlobalParts);
+      lLog.info("Generate Global Parts:                            " + generateGlobalParts);
     }
     if (generateJUnitTests) {
-      lLog.info("Generate JUnit Test Cases:                " + generateJUnitTests);
+      lLog.info("Generate JUnit Test Cases:                        " + generateJUnitTests);
     }
     if (generateOpenAPISpec) {
-      lLog.info("Generate Open API Specification:          " + generateOpenAPISpec);
+      lLog.info("Generate Open API Specification:                  " + generateOpenAPISpec);
     }
     if (generateJAXRSAnnotations) {
-      lLog.info("Generate JAX-RS annotations:              " + generateJAXRSAnnotations);
+      lLog.info("Generate JAX-RS annotations:                      " + generateJAXRSAnnotations);
     }
     if (generateJacksonAnnotations) {
-      lLog.info("Generate Jackson annotations:             " + generateJacksonAnnotations);
-      lLog.info("Enable SemVer for JSON serialization:     " + enableSemVerForJSON);
+      lLog.info("Generate Jackson annotations:                     " + generateJacksonAnnotations);
+      lLog.info("Enable SemVer for JSON serialization:             " + enableSemVerForJSON);
     }
 
     if (generateJSONSerializers) {
-      lLog.info("Generate JSON serializers:                " + generateJSONSerializers);
+      lLog.info("Generate JSON serializers:                        " + generateJSONSerializers);
     }
 
     if (generateMessageConstants) {
-      lLog.info("Generate Message Constants:               " + generateMessageConstants);
+      lLog.info("Generate Message Constants:                       " + generateMessageConstants);
+    }
+    if (generateValidationAnnotationsForAttributesFromMultiplicity) {
+      lLog.info("Generate Validation Annotations for Attributes:   " + generateMessageConstants);
+    }
+    if (generateValidationAnnotationsForAssociationsFromMultiplicity) {
+      lLog.info("Generate Validation Annotations for Associations: " + generateMessageConstants);
     }
     if (generatePersistentObjects) {
-      lLog.info("Generate Persistent Objects:              " + generatePersistentObjects);
+      lLog.info("Generate Persistent Objects:                      " + generatePersistentObjects);
       lLog.info(" ");
-      lLog.info("Generate Constants for Attribute Names:   " + generateConstantsForAttributeNames);
-      lLog.info("OID Row Name:                             " + peristentObjectsOIDRowName);
-      lLog.info("Version Label Row Name:                   " + peristentObjectsVersionLabelRowName);
+      lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
+      lLog.info("OID Row Name:                                     " + peristentObjectsOIDRowName);
+      lLog.info("Version Label Row Name:                           " + peristentObjectsVersionLabelRowName);
     }
     if (generatePublicSettersForAssociations) {
-      lLog.info("Generate public setters for associations: " + generatePublicSettersForAssociations);
+      lLog.info("Generate public setters for associations:         " + generatePublicSettersForAssociations);
     }
     if (generateNullChecksForToOneAssociations) {
-      lLog.info("NULL checks for to one associations:      " + generateNullChecksForToOneAssociations);
+      lLog.info("NULL checks for to one associations:              " + generateNullChecksForToOneAssociations);
     }
     lLog.info(" ");
-    lLog.info("Javadoc Company Tag:                      " + fileHeaderCompany);
-    lLog.info("Javadoc Author Tag:                       " + fileHeaderAuthor);
-    lLog.info("Javadoc Copyright Tag:                    " + fileHeaderCopyright);
-    lLog.info("Javadoc Version Tag:                      " + fileHeaderVersion);
+    lLog.info("Javadoc Company Tag:                              " + fileHeaderCompany);
+    lLog.info("Javadoc Author Tag:                               " + fileHeaderAuthor);
+    lLog.info("Javadoc Copyright Tag:                            " + fileHeaderCopyright);
+    lLog.info("Javadoc Version Tag:                              " + fileHeaderVersion);
     lLog.info(" ");
 
   }
@@ -684,8 +704,13 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.jackson.annotations", generateJacksonAnnotations.toString());
       System.setProperty("switch.gen.enable.json.semver", enableSemVerForJSON.toString());
       System.setProperty("switch.gen.json.serializers", generateJSONSerializers.toString());
-
       System.setProperty("switch.gen.enable.name.constants", generateConstantsForAttributeNames.toString());
+
+      System.setProperty("switch.gen.enable.validation.annotation.attributes",
+          generateValidationAnnotationsForAttributesFromMultiplicity.toString());
+      System.setProperty("switch.gen.enable.validation.annotation.associations",
+          generateValidationAnnotationsForAssociationsFromMultiplicity.toString());
+
       System.setProperty("switch.gen.public.setters.for.associations", generatePublicSettersForAssociations.toString());
       System.setProperty("switch.gen.null.checks.for.to.one.associations.of.service.objects",
           generateNullChecksForToOneAssociations.toString());

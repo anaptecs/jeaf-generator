@@ -178,6 +178,12 @@ public class GeneratorCommons {
 
   public static final String NAME_CONSTANTS_FOR_ATTRIBUTES = "switch.gen.enable.name.constants";
 
+  public static final String VALIDATION_ANNOTATION_FOR_ATTRIBUTES =
+      "switch.gen.enable.validation.annotation.attributes";
+
+  public static final String VALIDATION_ANNOTATION_FOR_ASSOCIATIONS =
+      "switch.gen.enable.validation.annotation.associations";
+
   public static final String LINE_SEPARATOR = "\n";
 
   public static final String CLASS_INDENTATION = "";
@@ -679,6 +685,16 @@ public class GeneratorCommons {
   public static boolean generateConstantsForAttributeNames( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(NAME_CONSTANTS_FOR_ATTRIBUTES, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean generateValidationAnnotationsForAttributesFromMultiplicity( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(VALIDATION_ANNOTATION_FOR_ATTRIBUTES, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean generateValidationAnnotationsForAssociationsFromMultiplicity( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(VALIDATION_ANNOTATION_FOR_ASSOCIATIONS, Boolean.TRUE, Boolean.class);
   }
 
   public static boolean generatePublicSettersForAssociations( ) {
