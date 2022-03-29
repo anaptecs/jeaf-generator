@@ -9,6 +9,7 @@ import java.util.Locale;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.CookieParam;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.QueryParam;
@@ -42,6 +43,7 @@ public class DeprecatedContext implements ServiceObject {
    * <b>Example:</b> <code>en</code>
    */
   @HeaderParam("lang")
+  @NotNull
   private Locale language;
 
   /**
@@ -54,6 +56,7 @@ public class DeprecatedContext implements ServiceObject {
    * 
    */
   @QueryParam("q1")
+  @NotNull
   private String queryParam;
 
   /**

@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.Locale;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.HeaderParam;
 
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -28,6 +29,7 @@ public class SpecialContext extends Context {
    * 
    */
   @HeaderParam("")
+  @NotNull
   private String specificHeader;
 
   /**

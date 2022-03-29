@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -35,6 +36,7 @@ public class ParentClass implements ServiceObject {
   /**
    * 
    */
+  @NotNull
   private String parentAttribute;
 
   /**

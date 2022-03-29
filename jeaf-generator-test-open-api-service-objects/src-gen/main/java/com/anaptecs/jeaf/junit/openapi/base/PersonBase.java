@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
@@ -29,11 +30,13 @@ public abstract class PersonBase extends Partner {
   /**
    * 
    */
+  @NotNull
   private String surname;
 
   /**
    * 
    */
+  @NotNull
   private String firstName;
 
   /**

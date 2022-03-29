@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.Locale;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.QueryParam;
 
@@ -31,12 +32,14 @@ public class BeanParameter implements ServiceObject {
    * 
    */
   @HeaderParam("token")
+  @NotNull
   private String accessToken;
 
   /**
    * 
    */
   @HeaderParam("lang")
+  @NotNull
   private Locale language;
 
   /**
@@ -44,6 +47,7 @@ public class BeanParameter implements ServiceObject {
    */
   @Deprecated
   @QueryParam("q2")
+  @NotNull
   private String oldStyle;
 
   /**

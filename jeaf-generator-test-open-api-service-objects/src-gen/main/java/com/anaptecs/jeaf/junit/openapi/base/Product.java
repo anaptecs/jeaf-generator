@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -70,11 +71,13 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * <br/>
    * <b>Example:</b> <code>https://www.company.com/products/1345-345</code>
    */
+  @NotNull
   private URL link;
 
   /**
    * 
    */
+  @NotNull
   private final UUID productID;
 
   /**
@@ -93,6 +96,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * 
    */
   @Deprecated
+  @NotNull
   private String description;
 
   /**

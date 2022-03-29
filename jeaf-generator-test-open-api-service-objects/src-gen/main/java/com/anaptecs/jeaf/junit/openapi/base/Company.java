@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
@@ -27,6 +28,7 @@ public class Company extends Partner {
   /**
    * 
    */
+  @NotNull
   private String name;
 
   /**

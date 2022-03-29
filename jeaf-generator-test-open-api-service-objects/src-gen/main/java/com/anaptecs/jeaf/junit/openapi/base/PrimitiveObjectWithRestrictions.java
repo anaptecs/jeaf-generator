@@ -16,6 +16,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Negative;
 import javax.validation.constraints.NegativeOrZero;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
@@ -45,6 +46,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
+  @NotNull
   private Boolean bBoolean;
 
   /**
@@ -121,6 +123,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
+  @NotNull
   private Character bCharacter;
 
   /**
@@ -131,6 +134,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
+  @NotNull
   private Float bFloat;
 
   /**
@@ -142,6 +146,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
+  @NotNull
   private Double bDouble;
 
   /**

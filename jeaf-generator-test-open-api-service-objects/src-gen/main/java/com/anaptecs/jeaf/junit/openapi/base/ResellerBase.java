@@ -17,6 +17,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -70,6 +71,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   /**
    * 
    */
+  @NotNull
   private Locale language;
 
   /**

@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.service1;
 import java.math.BigDecimal;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.openapi.base.Channel;
@@ -29,6 +30,7 @@ public class Sale implements ServiceObject {
   /**
    * 
    */
+  @NotNull
   private BigDecimal transactionAmount;
 
   /**
