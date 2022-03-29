@@ -73,6 +73,9 @@ cached List[uml::Class] getAllSubclasses(uml::Type class) :
 cached List[uml::Class] getAllConcreteSubclasses(uml::Type class) :
    class.getAllSubclasses().select(e|e.isAbstract == false);
    
+boolean isOneOfForClassHierachieEnabled():
+  false;
+   
 boolean isTopOfClassHierarchy(uml::Class class) :
    class.superClass.isEmpty == true && getAllSubclasses(class).size > 0;
 	
