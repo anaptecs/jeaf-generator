@@ -86,6 +86,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
+  @Size(min = 1)
   private Set<ProductCode> productCodes = new HashSet<ProductCode>();
 
   /**

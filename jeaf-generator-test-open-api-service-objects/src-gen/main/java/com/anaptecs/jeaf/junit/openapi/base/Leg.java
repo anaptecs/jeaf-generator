@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -33,11 +34,13 @@ public class Leg implements ServiceObject {
   /**
    * 
    */
+  @NotNull
   private PlaceRef start;
 
   /**
    * 
    */
+  @NotNull
   private PlaceRef stop;
 
   /**
