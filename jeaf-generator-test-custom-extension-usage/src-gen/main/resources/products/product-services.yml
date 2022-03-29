@@ -569,7 +569,32 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
 
 
+security:
+  - {}
+  - MyOAuthSecuritySchema: [read:pets,write:pets]  
+  
 components:
+  securitySchemes:
+    MyOAuthSecuritySchema:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: 'https://example.com/api/oauth/dialog'
+          tokenUrl: 'https://example.com/api/oauth/dialog'
+          refreshUrl: 'https://example.com/api/oauth/dialog'
+          scopes: 
+            write:pets: Modify pets
+            read:pets: Read pets data
+            
+        implicit:
+          authorizationUrl: 'https://example.com/api/oauth/dialog'
+          tokenUrl: 'TODO Please add required token URL'
+          refreshUrl: 'https://example.com/api/oauth/dialog'
+          scopes: 
+            read:pets: Read pets data
+            write:pets: Modify pets
+            
+
   responses:
     # com.anaptecs.jeaf.junit.openapi.service1.CustomErrorResponse
     CustomErrorResponse:

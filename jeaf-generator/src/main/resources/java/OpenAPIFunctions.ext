@@ -7,6 +7,12 @@ boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 List[JMM::OpenAPIType] getOpenAPITypes(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIType);
 	
+boolean hasOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
+    getOpenAPISecuritySchemes(spec).size > 0;
+    
+List[JMM::OpenAPISecurityScheme] getOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
+    spec.getModel().allOwnedElements().typeSelect(JMM::OpenAPISecurityScheme).select(e|e.isInGeneratorWhitelist() == true).sortBy(e|e.name);
+
 List[JMM::ErrorResponse] getErrorResponses(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::ErrorResponse);
 
@@ -197,5 +203,6 @@ JMM::ErrorResponse getCustomErrorResponse(JMM::OpenAPI3Specification spec):
 
 boolean hasCustomErrorResponse(JMM::OpenAPI3Specification spec):
   getCustomErrorResponses(spec).size == 1;
-   
-   
+  
+Set[JMM::OAuthScope] getOAuthScopes(JMM::OpenAPISecurityScheme scheme):
+  scheme.clientDependency.supplier.typeSelect(JMM::OAuthFlow).clientDependency.supplier.typeSelect(JMM::OAuthScope).toSet().sortBy(e|e.name);

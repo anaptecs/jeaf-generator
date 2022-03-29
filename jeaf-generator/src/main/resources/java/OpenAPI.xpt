@@ -71,8 +71,22 @@ paths:
         '200':
           description: Nothing is the result of nop ;-)
 «ENDIF»
-«IF this.hasOpenAPITypes() || this.hasOpenAPIEnums()-»
+«IF this.clientDependency.supplier.typeSelect(JMM::OpenAPISecurityScheme).size > 0-»
+security:
+  «IF this.securityOptional == true-»
+  - {}
+  «ENDIF-»
+  «FOREACH this.clientDependency.supplier.typeSelect(JMM::OpenAPISecurityScheme).sortBy(e|e.name) AS security-»
+  - «security.name»: «IF security.type.name == "oauth2" || security.type.name == "openIdConnect"»[«FOREACH security.getOAuthScopes() AS scope SEPARATOR ","»«scope.name»«ENDFOREACH»]«ELSE»[]«ENDIF»  
+  «ENDFOREACH-»
+  
+«ENDIF-»
+«IF this.hasOpenAPITypes() || this.hasOpenAPIEnums() || this.hasOpenAPISecuritySchemes()-»
 components:
+  «IF this.hasOpenAPISecuritySchemes() -»
+  securitySchemes:
+    «EXPAND java::OpenAPISecurity::GenerateOpenAPISecurityScheme FOREACH this.getOpenAPISecuritySchemes()»
+  «ENDIF-»
   «IF this.getErrorResponses().size > 0-»
   responses:
     «EXPAND GenerateErrorResponse(this) FOREACH this.getErrorResponses()»

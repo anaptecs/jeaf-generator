@@ -1,0 +1,34 @@
+«EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION java::OpenAPIFunctions»
+
+«IMPORT uml»
+«IMPORT JMM»
+
+«DEFINE GenerateOpenAPISecurityScheme FOR OpenAPISecurityScheme -»
+    «this.name»:
+      type: «this.type.name»
+      «IF this.hasComment()-»
+      description: >-
+        «this.getCommentForOpenAPIDescription("        ")»
+      «ENDIF-»
+      flows:
+      «FOREACH this.clientDependency.supplier.typeSelect(OAuthFlow) AS flow -»
+        «flow.flowType.name»:
+          «IF this.type.name == "oauth2" || this.type.name == "implicit" || this.type.name == "authorizationCode" -»
+          authorizationUrl: '«IF flow.authorizationURL.length > 0»«flow.authorizationURL»«ELSE»TODO Please add required authorizationURL«ENDIF»'
+          «ENDIF-»
+          «IF this.type.name == "oauth2" || this.type.name == "implicit" || this.type.name == "authorizationCode" || this.type.name == "clientCredentials" -»
+          tokenUrl: '«IF flow.tokenURL.length > 0»«flow.tokenURL»«ELSE»TODO Please add required token URL«ENDIF»'
+          «ENDIF-»
+          «IF this.type.name == "oauth2" -»
+          refreshUrl: '«IF flow.refreshURL.length > 0»«flow.refreshURL»«ELSE»TODO Please add required refresh URL«ENDIF»'
+          «ENDIF-»
+          «IF this.type.name == "oauth2" -»
+          scopes: «IF flow.clientDependency.supplier.typeSelect(OAuthScope).size == 0»{}«ENDIF»
+            «FOREACH flow.clientDependency.supplier.typeSelect(OAuthScope) AS scope -»
+            «scope.name»: «scope.description»
+            «ENDFOREACH»
+          «ENDIF-»
+      «ENDFOREACH-»
+«ENDDEFINE»
