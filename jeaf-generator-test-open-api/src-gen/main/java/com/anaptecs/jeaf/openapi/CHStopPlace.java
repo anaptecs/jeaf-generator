@@ -20,7 +20,7 @@ import com.anaptecs.jeaf.openapi.StopPlaceRef;
  */
 
 
-public class CHStopPlace extends StopPlaceRef implements OneOfLegStart, OneOfLegStop, OneOfLegStopoversItems {
+public class CHStopPlace extends StopPlaceRef {
 
   @Override
   public boolean equals(java.lang.Object o) {

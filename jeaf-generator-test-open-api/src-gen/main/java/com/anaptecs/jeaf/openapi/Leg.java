@@ -14,6 +14,7 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.anaptecs.jeaf.openapi.PlaceRef;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -27,15 +28,15 @@ import java.util.List;
 
 public class Leg {
   @JsonProperty("start")
-  private OneOfLegStart start = null;
+  private PlaceRef start = null;
 
   @JsonProperty("stop")
-  private OneOfLegStop stop = null;
+  private PlaceRef stop = null;
 
   @JsonProperty("stopovers")
-  private List<OneOfLegStopoversItems> stopovers = null;
+  private List<PlaceRef> stopovers = null;
 
-  public Leg start(OneOfLegStart start) {
+  public Leg start(PlaceRef start) {
     this.start = start;
     return this;
   }
@@ -45,15 +46,15 @@ public class Leg {
    * @return start
   **/
   @Schema(required = true, description = "")
-  public OneOfLegStart getStart() {
+  public PlaceRef getStart() {
     return start;
   }
 
-  public void setStart(OneOfLegStart start) {
+  public void setStart(PlaceRef start) {
     this.start = start;
   }
 
-  public Leg stop(OneOfLegStop stop) {
+  public Leg stop(PlaceRef stop) {
     this.stop = stop;
     return this;
   }
@@ -63,20 +64,20 @@ public class Leg {
    * @return stop
   **/
   @Schema(required = true, description = "")
-  public OneOfLegStop getStop() {
+  public PlaceRef getStop() {
     return stop;
   }
 
-  public void setStop(OneOfLegStop stop) {
+  public void setStop(PlaceRef stop) {
     this.stop = stop;
   }
 
-  public Leg stopovers(List<OneOfLegStopoversItems> stopovers) {
+  public Leg stopovers(List<PlaceRef> stopovers) {
     this.stopovers = stopovers;
     return this;
   }
 
-  public Leg addStopoversItem(OneOfLegStopoversItems stopoversItem) {
+  public Leg addStopoversItem(PlaceRef stopoversItem) {
     if (this.stopovers == null) {
       this.stopovers = new ArrayList<>();
     }
@@ -89,11 +90,11 @@ public class Leg {
    * @return stopovers
   **/
   @Schema(description = "")
-  public List<OneOfLegStopoversItems> getStopovers() {
+  public List<PlaceRef> getStopovers() {
     return stopovers;
   }
 
-  public void setStopovers(List<OneOfLegStopoversItems> stopovers) {
+  public void setStopovers(List<PlaceRef> stopovers) {
     this.stopovers = stopovers;
   }
 

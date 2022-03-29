@@ -24,7 +24,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 
 
-public class GeoPosition extends PlaceRef implements OneOfLegStart, OneOfLegStop, OneOfLegStopoversItems {
+public class GeoPosition extends PlaceRef {
   @JsonProperty("longitude")
   private Integer longitude = null;
 

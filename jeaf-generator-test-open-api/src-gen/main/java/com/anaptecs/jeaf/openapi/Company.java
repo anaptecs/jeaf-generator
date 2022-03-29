@@ -26,7 +26,7 @@ import java.util.List;
  */
 
 
-public class Company extends Partner implements OneOfPartnerContainerPartnersItems {
+public class Company extends Partner {
   @JsonProperty("name")
   private String name = null;
 

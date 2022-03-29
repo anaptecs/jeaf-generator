@@ -20,7 +20,7 @@ import com.anaptecs.jeaf.openapi.GeoPosition;
  */
 
 
-public class SwissGeoPosition extends GeoPosition implements OneOfLegStart, OneOfLegStop, OneOfLegStopoversItems {
+public class SwissGeoPosition extends GeoPosition {
 
   @Override
   public boolean equals(java.lang.Object o) {

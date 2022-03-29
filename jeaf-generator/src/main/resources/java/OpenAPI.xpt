@@ -465,7 +465,7 @@ components:
           # Attribute "«attribute.name»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
             «ENDIF-»
             «IF attribute.isMultivalued() == false-»
-              «IF attribute.type.getAllConcreteSubclasses().size > 0 -»
+              «IF isOneOfForClassHierachieEnabled() && attribute.type.getAllConcreteSubclasses().size > 0 -»
           oneOf:
                 «IF ((Class)attribute.type).isAbstract == false -»
             - $ref: «attribute.type.getOpenAPIType(spec)»
@@ -479,7 +479,7 @@ components:
             «ELSE-»
           type: array
           items:
-              «IF attribute.type.getAllConcreteSubclasses().size > 0 -»
+              «IF isOneOfForClassHierachieEnabled() && attribute.type.getAllConcreteSubclasses().size > 0 -»
             oneOf:
                 «IF ((Class)attribute.type).isAbstract == false -»
               - $ref: «attribute.type.getOpenAPIType(spec)»

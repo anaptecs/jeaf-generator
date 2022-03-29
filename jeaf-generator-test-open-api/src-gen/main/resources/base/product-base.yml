@@ -141,11 +141,7 @@ components:
         composition: 
           type: array
           items:
-            oneOf:
-              - $ref: '#/components/schemas/ParentClass'
-              - $ref: '#/components/schemas/ChildAA'
-              - $ref: '#/components/schemas/ChildB'
-              - $ref: '#/components/schemas/ChildBB'
+            $ref: '#/components/schemas/ParentClass'
           minItems: 0
       required:
         - childBAttribute
@@ -166,17 +162,11 @@ components:
           # Attribute "deprecatedBs" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
           type: array
           items:
-            oneOf:
-              - $ref: '#/components/schemas/ChildB'
-              - $ref: '#/components/schemas/ChildBB'
+            $ref: '#/components/schemas/ChildB'
           minItems: 0
         deprecatedParent: 
           # Attribute "deprecatedParent" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
-          oneOf:
-            - $ref: '#/components/schemas/ParentClass'
-            - $ref: '#/components/schemas/ChildAA'
-            - $ref: '#/components/schemas/ChildB'
-            - $ref: '#/components/schemas/ChildBB'
+          $ref: '#/components/schemas/ParentClass'
         deprecatedArray: 
           type: string
           format: byte
@@ -271,28 +261,13 @@ components:
       type: object
       properties:
         start: 
-          oneOf:
-            - $ref: '#/components/schemas/CHStopPlace'
-            - $ref: '#/components/schemas/GeoPosition'
-            - $ref: '#/components/schemas/SwissGeoPosition'
-            - $ref: '#/components/schemas/TopoRef'
-            - $ref: '#/components/schemas/UICStopPlace'
+          $ref: '#/components/schemas/PlaceRef'
         stop: 
-          oneOf:
-            - $ref: '#/components/schemas/CHStopPlace'
-            - $ref: '#/components/schemas/GeoPosition'
-            - $ref: '#/components/schemas/SwissGeoPosition'
-            - $ref: '#/components/schemas/TopoRef'
-            - $ref: '#/components/schemas/UICStopPlace'
+          $ref: '#/components/schemas/PlaceRef'
         stopovers: 
           type: array
           items:
-            oneOf:
-              - $ref: '#/components/schemas/CHStopPlace'
-              - $ref: '#/components/schemas/GeoPosition'
-              - $ref: '#/components/schemas/SwissGeoPosition'
-              - $ref: '#/components/schemas/TopoRef'
-              - $ref: '#/components/schemas/UICStopPlace'
+            $ref: '#/components/schemas/PlaceRef'
           minItems: 0
       required:
         - start
@@ -417,10 +392,7 @@ components:
         partners: 
           type: array
           items:
-            oneOf:
-              - $ref: '#/components/schemas/Partner'
-              - $ref: '#/components/schemas/Company'
-              - $ref: '#/components/schemas/Person'
+            $ref: '#/components/schemas/Partner'
           minItems: 0
     # com.anaptecs.jeaf.junit.openapi.base.Person
     Person:

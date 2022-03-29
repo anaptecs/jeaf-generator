@@ -34,7 +34,7 @@ import java.util.List;
   @JsonSubTypes.Type(value = Person.class, name = "Person"),
 })
 
-public class Partner implements OneOfPartnerContainerPartnersItems {
+public class Partner {
   @JsonTypeId
   private String objectType = null;
 

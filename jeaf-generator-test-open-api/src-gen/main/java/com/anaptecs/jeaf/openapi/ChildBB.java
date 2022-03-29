@@ -15,6 +15,7 @@ package com.anaptecs.jeaf.openapi;
 import java.util.Objects;
 import java.util.Arrays;
 import com.anaptecs.jeaf.openapi.ChildB;
+import com.anaptecs.jeaf.openapi.ParentClass;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -26,7 +27,7 @@ import java.util.List;
  */
 
 
-public class ChildBB extends ChildB implements OneOfChildBCompositionItems, OneOfChildBBDeprecatedBsItems, OneOfChildBBDeprecatedParent {
+public class ChildBB extends ChildB {
   @JsonProperty("childBBAttribute")
   private Long childBBAttribute = null;
 
@@ -34,10 +35,10 @@ public class ChildBB extends ChildB implements OneOfChildBCompositionItems, OneO
   private Integer deprecatedAttribute = null;
 
   @JsonProperty("deprecatedBs")
-  private List<OneOfChildBBDeprecatedBsItems> deprecatedBs = null;
+  private List<ChildB> deprecatedBs = null;
 
   @JsonProperty("deprecatedParent")
-  private OneOfChildBBDeprecatedParent deprecatedParent = null;
+  private ParentClass deprecatedParent = null;
 
   @JsonProperty("deprecatedArray")
   private byte[] deprecatedArray = null;
@@ -78,12 +79,12 @@ public class ChildBB extends ChildB implements OneOfChildBCompositionItems, OneO
     this.deprecatedAttribute = deprecatedAttribute;
   }
 
-  public ChildBB deprecatedBs(List<OneOfChildBBDeprecatedBsItems> deprecatedBs) {
+  public ChildBB deprecatedBs(List<ChildB> deprecatedBs) {
     this.deprecatedBs = deprecatedBs;
     return this;
   }
 
-  public ChildBB addDeprecatedBsItem(OneOfChildBBDeprecatedBsItems deprecatedBsItem) {
+  public ChildBB addDeprecatedBsItem(ChildB deprecatedBsItem) {
     if (this.deprecatedBs == null) {
       this.deprecatedBs = new ArrayList<>();
     }
@@ -96,15 +97,15 @@ public class ChildBB extends ChildB implements OneOfChildBCompositionItems, OneO
    * @return deprecatedBs
   **/
   @Schema(description = "")
-  public List<OneOfChildBBDeprecatedBsItems> getDeprecatedBs() {
+  public List<ChildB> getDeprecatedBs() {
     return deprecatedBs;
   }
 
-  public void setDeprecatedBs(List<OneOfChildBBDeprecatedBsItems> deprecatedBs) {
+  public void setDeprecatedBs(List<ChildB> deprecatedBs) {
     this.deprecatedBs = deprecatedBs;
   }
 
-  public ChildBB deprecatedParent(OneOfChildBBDeprecatedParent deprecatedParent) {
+  public ChildBB deprecatedParent(ParentClass deprecatedParent) {
     this.deprecatedParent = deprecatedParent;
     return this;
   }
@@ -114,11 +115,11 @@ public class ChildBB extends ChildB implements OneOfChildBCompositionItems, OneO
    * @return deprecatedParent
   **/
   @Schema(description = "")
-  public OneOfChildBBDeprecatedParent getDeprecatedParent() {
+  public ParentClass getDeprecatedParent() {
     return deprecatedParent;
   }
 
-  public void setDeprecatedParent(OneOfChildBBDeprecatedParent deprecatedParent) {
+  public void setDeprecatedParent(ParentClass deprecatedParent) {
     this.deprecatedParent = deprecatedParent;
   }
 

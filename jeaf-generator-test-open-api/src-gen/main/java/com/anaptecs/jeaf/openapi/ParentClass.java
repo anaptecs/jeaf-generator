@@ -33,7 +33,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   @JsonSubTypes.Type(value = ChildA.class, name = "ChildA"),
 })
 
-public class ParentClass implements OneOfChildBCompositionItems, OneOfChildBBDeprecatedParent {
+public class ParentClass {
   @JsonTypeId
   private String objectType = null;
 
