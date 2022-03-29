@@ -46,29 +46,30 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
   public Module createModule( ) {
     // Create module for serializers / deserializers that are located in this package
     SimpleModule lModule = new SimpleModule(this.getClass().getName());
-    // Add serializers and deserializers
-    lModule.addSerializer(ChannelCode.class, new ChannelCodeSerializer());
-    lModule.addDeserializer(ChannelCode.class, new ChannelCodeDeserializer());
-    lModule.addSerializer(ProductCode.class, new ProductCodeSerializer());
-    lModule.addDeserializer(ProductCode.class, new ProductCodeDeserializer());
-    lModule.addSerializer(CurrencyCode.class, new CurrencyCodeSerializer());
-    lModule.addDeserializer(CurrencyCode.class, new CurrencyCodeDeserializer());
+    // Add serializers and deserializers for datatypes
     lModule.addSerializer(BooleanCode.class, new BooleanCodeSerializer());
     lModule.addDeserializer(BooleanCode.class, new BooleanCodeDeserializer());
-    lModule.addSerializer(StringCode.class, new StringCodeSerializer());
-    lModule.addDeserializer(StringCode.class, new StringCodeDeserializer());
     lModule.addSerializer(ByteCode.class, new ByteCodeSerializer());
     lModule.addDeserializer(ByteCode.class, new ByteCodeDeserializer());
-    lModule.addSerializer(ShortCode.class, new ShortCodeSerializer());
-    lModule.addDeserializer(ShortCode.class, new ShortCodeDeserializer());
+    lModule.addSerializer(ChannelCode.class, new ChannelCodeSerializer());
+    lModule.addDeserializer(ChannelCode.class, new ChannelCodeDeserializer());
+    lModule.addSerializer(CurrencyCode.class, new CurrencyCodeSerializer());
+    lModule.addDeserializer(CurrencyCode.class, new CurrencyCodeDeserializer());
+    lModule.addSerializer(DoubleCode.class, new DoubleCodeSerializer());
+    lModule.addDeserializer(DoubleCode.class, new DoubleCodeDeserializer());
+    lModule.addSerializer(FloatCode.class, new FloatCodeSerializer());
+    lModule.addDeserializer(FloatCode.class, new FloatCodeDeserializer());
     lModule.addSerializer(IntegerCode.class, new IntegerCodeSerializer());
     lModule.addDeserializer(IntegerCode.class, new IntegerCodeDeserializer());
     lModule.addSerializer(LongCode.class, new LongCodeSerializer());
     lModule.addDeserializer(LongCode.class, new LongCodeDeserializer());
-    lModule.addSerializer(FloatCode.class, new FloatCodeSerializer());
-    lModule.addDeserializer(FloatCode.class, new FloatCodeDeserializer());
-    lModule.addSerializer(DoubleCode.class, new DoubleCodeSerializer());
-    lModule.addDeserializer(DoubleCode.class, new DoubleCodeDeserializer());
+    lModule.addSerializer(ProductCode.class, new ProductCodeSerializer());
+    lModule.addDeserializer(ProductCode.class, new ProductCodeDeserializer());
+    lModule.addSerializer(ShortCode.class, new ShortCodeSerializer());
+    lModule.addDeserializer(ShortCode.class, new ShortCodeDeserializer());
+    lModule.addSerializer(StringCode.class, new StringCodeSerializer());
+    lModule.addDeserializer(StringCode.class, new StringCodeDeserializer());
+    // Add serializers and deserializers for enumerations
     lModule.addSerializer(ExtensibleEnum.class, new ExtensibleEnumSerializer());
     lModule.addDeserializer(ExtensibleEnum.class, new ExtensibleEnumDeserializer());
     // Return created module.

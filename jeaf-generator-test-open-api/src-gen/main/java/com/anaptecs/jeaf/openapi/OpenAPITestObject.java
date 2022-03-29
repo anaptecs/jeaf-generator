@@ -58,7 +58,7 @@ public class OpenAPITestObject {
    * Get readOnlyAttribute
    * @return readOnlyAttribute
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getReadOnlyAttribute() {
     return readOnlyAttribute;
   }
@@ -72,7 +72,7 @@ public class OpenAPITestObject {
    * Get readWriteAttribute
    * @return readWriteAttribute
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getReadWriteAttribute() {
     return readWriteAttribute;
   }
@@ -108,7 +108,7 @@ public class OpenAPITestObject {
    * Get nullableAttribute
    * @return nullableAttribute
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Boolean isNullableAttribute() {
     return nullableAttribute;
   }
@@ -139,7 +139,7 @@ public class OpenAPITestObject {
    * Get readOnlyArray
    * @return readOnlyArray
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getReadOnlyArray() {
     return readOnlyArray;
   }
@@ -153,7 +153,7 @@ public class OpenAPITestObject {
    * Get readWriteArray
    * @return readWriteArray
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getReadWriteArray() {
     return readWriteArray;
   }

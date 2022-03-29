@@ -39,7 +39,7 @@ public class Company extends Partner implements OneOfPartnerContainerPartnersIte
    * Get name
    * @return name
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getName() {
     return name;
   }

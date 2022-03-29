@@ -39,7 +39,7 @@ public class EnumTest {
    * Get property
    * @return property
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getProperty() {
     return property;
   }

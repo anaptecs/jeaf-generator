@@ -176,8 +176,8 @@ public class ExtensibleEnum {
           if (this.unknownLiteralName != null) {
             lEquals = this.unknownLiteralName.equals(lEnum.unknownLiteralName);
           }
-          else if (this.unknownLiteralName == null && lEnum.unknownLiteralName == null) {
-            lEquals = this.literal == lEnum.literal;
+          else if (lEnum.unknownLiteralName == null) {
+            lEquals = true;
           }
           else {
             lEquals = false;

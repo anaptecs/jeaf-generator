@@ -145,7 +145,7 @@ paths:
           in: header
           description: >- 
             TODO Please add comment
-          required: false
+          required: true
           schema:
             type: string
             example: 'en'
@@ -169,7 +169,7 @@ paths:
           in: query
           description: >- 
             TODO Please add comment
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -252,7 +252,7 @@ paths:
           in: header
           description: >- 
             TODO Please add comment
-          required: false
+          required: true
           schema:
             type: string
             example: 'en'
@@ -268,7 +268,7 @@ paths:
           in: query
           description: >- 
             TODO Please add comment
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -291,21 +291,21 @@ paths:
           in: header
           description: >- 
             TODO Please add comment
-          required: false
+          required: true
           schema:
             type: string
         - name: lang
           in: header
           description: >- 
             TODO Please add comment
-          required: false
+          required: true
           schema:
             type: string
         - name: q2
           in: query
           description: >- 
             TODO Please add comment
-          required: false
+          required: true
           deprecated: true
           schema:
             type: string
@@ -411,7 +411,7 @@ paths:
           in: header
           description: >- 
             TODO Please add comment
-          required: false
+          required: true
           schema:
             type: string
         - name: token
@@ -425,7 +425,7 @@ paths:
           in: header
           description: >- 
             TODO Please add comment
-          required: false
+          required: true
           schema:
             type: string
             example: 'en'
@@ -449,7 +449,7 @@ paths:
           in: query
           description: >- 
             TODO Please add comment
-          required: false
+          required: true
           schema:
             type: string
       responses:
@@ -590,5 +590,7 @@ components:
           format: double
         sale: 
           $ref: '../base/product-base.yml#/components/schemas/Channel'
+      required:
+        - transactionAmount
 
     

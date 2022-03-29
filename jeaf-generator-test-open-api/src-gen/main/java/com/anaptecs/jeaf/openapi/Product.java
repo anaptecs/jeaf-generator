@@ -86,7 +86,7 @@ public class Product {
    * Get name
    * @return name
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getName() {
     return name;
   }
@@ -122,7 +122,7 @@ public class Product {
    * Get link
    * @return link
   **/
-  @Schema(example = "https://www.company.com/products/1345-345", description = "")
+  @Schema(example = "https://www.company.com/products/1345-345", required = true, description = "")
   public String getLink() {
     return link;
   }
@@ -135,7 +135,7 @@ public class Product {
    * Get productID
    * @return productID
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getProductID() {
     return productID;
   }
@@ -195,7 +195,7 @@ public class Product {
    * Get description
    * @return description
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getDescription() {
     return description;
   }

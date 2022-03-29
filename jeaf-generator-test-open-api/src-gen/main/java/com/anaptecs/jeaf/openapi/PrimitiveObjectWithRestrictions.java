@@ -117,7 +117,7 @@ public class PrimitiveObjectWithRestrictions {
    * Get bBoolean
    * @return bBoolean
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Boolean isBBoolean() {
     return bBoolean;
   }
@@ -173,7 +173,7 @@ public class PrimitiveObjectWithRestrictions {
    * maximum: 0
    * @return bByte
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Integer getBByte() {
     return bByte;
   }
@@ -211,7 +211,7 @@ public class PrimitiveObjectWithRestrictions {
    * minimum: 0
    * @return bShort
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Integer getBShort() {
     return bShort;
   }
@@ -249,7 +249,7 @@ public class PrimitiveObjectWithRestrictions {
    * minimum: 4711
    * @return bInteger
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Integer getBInteger() {
     return bInteger;
   }
@@ -269,7 +269,7 @@ public class PrimitiveObjectWithRestrictions {
    * maximum: 1000
    * @return cInteger
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Integer getCInteger() {
     return cInteger;
   }
@@ -306,7 +306,7 @@ public class PrimitiveObjectWithRestrictions {
    * maximum: 299792458
    * @return bLong
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Long getBLong() {
     return bLong;
   }
@@ -326,7 +326,7 @@ public class PrimitiveObjectWithRestrictions {
    * maximum: 3
    * @return aBigInteger
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Long getABigInteger() {
     return aBigInteger;
   }
@@ -362,7 +362,7 @@ public class PrimitiveObjectWithRestrictions {
    * Get bCharacter
    * @return bCharacter
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getBCharacter() {
     return bCharacter;
   }
@@ -398,7 +398,7 @@ public class PrimitiveObjectWithRestrictions {
    * Get bFloat
    * @return bFloat
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Float getBFloat() {
     return bFloat;
   }
@@ -434,7 +434,7 @@ public class PrimitiveObjectWithRestrictions {
    * Get bDouble
    * @return bDouble
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Double getBDouble() {
     return bDouble;
   }
@@ -453,7 +453,7 @@ public class PrimitiveObjectWithRestrictions {
    * minimum: 4711
    * @return aBigDecimal
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Double getABigDecimal() {
     return aBigDecimal;
   }
@@ -471,7 +471,7 @@ public class PrimitiveObjectWithRestrictions {
    * Get aString
    * @return aString
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getAString() {
     return aString;
   }

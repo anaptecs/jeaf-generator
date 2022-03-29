@@ -70,7 +70,7 @@ public class Problem {
    * Get detail
    * @return detail
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getDetail() {
     return detail;
   }
@@ -79,7 +79,7 @@ public class Problem {
    * Get instance
    * @return instance
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getInstance() {
     return instance;
   }

@@ -117,7 +117,7 @@ public class PrimitiveObject {
    * Get bBoolean
    * @return bBoolean
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Boolean isBBoolean() {
     return bBoolean;
   }
@@ -171,7 +171,7 @@ public class PrimitiveObject {
    * Get bByte
    * @return bByte
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Integer getBByte() {
     return bByte;
   }
@@ -207,7 +207,7 @@ public class PrimitiveObject {
    * Get bShort
    * @return bShort
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Integer getBShort() {
     return bShort;
   }
@@ -243,7 +243,7 @@ public class PrimitiveObject {
    * Get bInteger
    * @return bInteger
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Integer getBInteger() {
     return bInteger;
   }
@@ -261,7 +261,7 @@ public class PrimitiveObject {
    * Get cInteger
    * @return cInteger
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Integer getCInteger() {
     return cInteger;
   }
@@ -297,7 +297,7 @@ public class PrimitiveObject {
    * Get bLong
    * @return bLong
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Long getBLong() {
     return bLong;
   }
@@ -315,7 +315,7 @@ public class PrimitiveObject {
    * Get aBigInteger
    * @return aBigInteger
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Long getABigInteger() {
     return aBigInteger;
   }
@@ -351,7 +351,7 @@ public class PrimitiveObject {
    * Get bCharacter
    * @return bCharacter
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getBCharacter() {
     return bCharacter;
   }
@@ -387,7 +387,7 @@ public class PrimitiveObject {
    * Get bFloat
    * @return bFloat
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Float getBFloat() {
     return bFloat;
   }
@@ -423,7 +423,7 @@ public class PrimitiveObject {
    * Get bDouble
    * @return bDouble
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Double getBDouble() {
     return bDouble;
   }
@@ -441,7 +441,7 @@ public class PrimitiveObject {
    * Get aBigDecimal
    * @return aBigDecimal
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Double getABigDecimal() {
     return aBigDecimal;
   }
@@ -459,7 +459,7 @@ public class PrimitiveObject {
    * Get aString
    * @return aString
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getAString() {
     return aString;
   }
@@ -477,7 +477,7 @@ public class PrimitiveObject {
    * Get bString
    * @return bString
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getBString() {
     return bString;
   }

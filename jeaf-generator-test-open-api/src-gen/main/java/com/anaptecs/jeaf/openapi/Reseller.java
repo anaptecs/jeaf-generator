@@ -86,7 +86,7 @@ public class Reseller {
    * Get language
    * @return language
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getLanguage() {
     return language;
   }

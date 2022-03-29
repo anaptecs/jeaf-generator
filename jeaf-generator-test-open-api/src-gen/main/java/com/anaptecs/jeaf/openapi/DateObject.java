@@ -53,7 +53,7 @@ public class DateObject {
    * Get localTime
    * @return localTime
   **/
-  @Schema(example = "12:07", description = "")
+  @Schema(example = "12:07", required = true, description = "")
   public String getLocalTime() {
     return localTime;
   }
@@ -71,7 +71,7 @@ public class DateObject {
    * Get localDate
    * @return localDate
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public LocalDate getLocalDate() {
     return localDate;
   }
@@ -89,7 +89,7 @@ public class DateObject {
    * Get localDateTime
    * @return localDateTime
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public OffsetDateTime getLocalDateTime() {
     return localDateTime;
   }
@@ -107,7 +107,7 @@ public class DateObject {
    * Get calendar
    * @return calendar
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public OffsetDateTime getCalendar() {
     return calendar;
   }
@@ -125,7 +125,7 @@ public class DateObject {
    * Get sqlDate
    * @return sqlDate
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public OffsetDateTime getSqlDate() {
     return sqlDate;
   }
@@ -143,7 +143,7 @@ public class DateObject {
    * Get utilDate
    * @return utilDate
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public OffsetDateTime getUtilDate() {
     return utilDate;
   }

@@ -117,7 +117,7 @@ boolean isRequired(uml::Parameter param):
    param.isStereotypeApplied("NotNull") || param.isStereotypeApplied("NotEmpty") || param.isStereotypeApplied("NotBlank") || param.type.isPrimitiveType()|| param.lower > 0;
 
 boolean isRequiredProperty(uml::Property property):
-   property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank") || (property.type.isPrimitiveType() && property.lower > 0) || (property.association != null && property.lower > 0) || (property.isMultivalued() && property.lower > 0);
+   property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank") || (property.lower > 0) || (property.association != null && property.lower > 0) || (property.isMultivalued() && property.lower > 0);
    
 List[uml::Property] getRequiredProperties(uml::Class class):
     class.ownedAttribute.select(e|e.isRequiredProperty() && e.isTransient() == false);

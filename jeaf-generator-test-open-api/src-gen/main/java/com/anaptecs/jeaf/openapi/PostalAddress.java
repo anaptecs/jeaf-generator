@@ -45,7 +45,7 @@ public class PostalAddress {
    * Get street
    * @return street
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getStreet() {
     return street;
   }
@@ -63,7 +63,7 @@ public class PostalAddress {
    * Get houseNumber
    * @return houseNumber
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getHouseNumber() {
     return houseNumber;
   }
@@ -81,7 +81,7 @@ public class PostalAddress {
    * Get city
    * @return city
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getCity() {
     return city;
   }

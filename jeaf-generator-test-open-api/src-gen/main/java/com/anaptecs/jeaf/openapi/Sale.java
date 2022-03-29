@@ -40,7 +40,7 @@ public class Sale {
    * Get transactionAmount
    * @return transactionAmount
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Double getTransactionAmount() {
     return transactionAmount;
   }

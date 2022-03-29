@@ -160,6 +160,7 @@ components:
           type: string
           format: byte
       required:
+        - childBBAttribute
         - deprecatedAttribute
     # com.anaptecs.jeaf.junit.openapi.base.Company
     Company:
@@ -169,6 +170,8 @@ components:
       properties:
         name: 
           type: string
+      required:
+        - name
     # com.anaptecs.jeaf.junit.openapi.base.DateObject
     DateObject:
       type: object
@@ -192,6 +195,13 @@ components:
         utilDate: 
           type: string
           format: date-time
+      required:
+        - localTime
+        - localDate
+        - localDateTime
+        - calendar
+        - sqlDate
+        - utilDate
     # com.anaptecs.jeaf.junit.openapi.base.Duration
     Duration:
       description: >-
@@ -208,6 +218,7 @@ components:
           $ref: '#/components/schemas/TimeUnit'
       required:
         - value
+        - timeUnit
     # com.anaptecs.jeaf.junit.openapi.base.EnumTest
     EnumTest:
       type: object
@@ -217,6 +228,7 @@ components:
         enumRef: 
           $ref: '#/components/schemas/ExtensibleEnum'
       required:
+        - property
         - enumRef
     # com.anaptecs.jeaf.junit.openapi.base.GeoPosition
     GeoPosition:
@@ -327,8 +339,13 @@ components:
           format: double
           nullable: false
       required:
+        - readOnlyAttribute
+        - readWriteAttribute
         - writeOnlyAttribute
+        - nullableAttribute
         - notNullableAttribute
+        - readOnlyArray
+        - readWriteArray
         - writeOnlyArray
         - nullableArray
         - notNullableArray
@@ -351,6 +368,7 @@ components:
           type: string
       required:
         - objectType
+        - parentAttribute
     # com.anaptecs.jeaf.junit.openapi.base.Partner
     Partner:
       discriminator:
@@ -393,6 +411,9 @@ components:
           type: string
         firstName: 
           type: string
+      required:
+        - surname
+        - firstName
     # com.anaptecs.jeaf.junit.openapi.base.PlaceRef
     PlaceRef:
       discriminator:
@@ -414,6 +435,7 @@ components:
           type: string
       required:
         - objectType
+        - name
     # com.anaptecs.jeaf.junit.openapi.base.PostalAddress
     PostalAddress:
       type: object
@@ -428,6 +450,9 @@ components:
           type: integer
           format: int32
       required:
+        - street
+        - houseNumber
+        - city
         - postalCode
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveArraysObject
     PrimitiveArraysObject:
@@ -712,14 +737,27 @@ components:
           type: string
       required:
         - aBoolean
+        - bBoolean
         - cBoolean
         - aByte
+        - bByte
         - aShort
+        - bShort
         - aInteger
+        - bInteger
+        - cInteger
         - aLong
+        - bLong
+        - aBigInteger
         - aCharacter
+        - bCharacter
         - aFloat
+        - bFloat
         - aDouble
+        - bDouble
+        - aBigDecimal
+        - aString
+        - bString
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObjectWithRestrictions
     PrimitiveObjectWithRestrictions:
       type: object
@@ -810,14 +848,26 @@ components:
           maxLength: 128
       required:
         - aBoolean
+        - bBoolean
         - cBoolean
         - aByte
+        - bByte
         - aShort
+        - bShort
         - aInteger
+        - bInteger
+        - cInteger
         - aLong
+        - bLong
+        - aBigInteger
         - aCharacter
+        - bCharacter
         - aFloat
+        - bFloat
         - aDouble
+        - bDouble
+        - aBigDecimal
+        - aString
         - bString
     # com.anaptecs.jeaf.junit.openapi.base.Problem
     Problem:
@@ -846,6 +896,8 @@ components:
         - title
         - status
         - type
+        - detail
+        - instance
     # com.anaptecs.jeaf.junit.openapi.base.Product
     Product:
       description: >-
@@ -895,8 +947,12 @@ components:
           type: string
           deprecated: true
       required:
+        - name
+        - link
+        - productID
         - supportedCurrencies
         - productCodes
+        - description
     # com.anaptecs.jeaf.junit.openapi.base.Reseller
     Reseller:
       type: object
@@ -915,6 +971,7 @@ components:
       required:
         - channels
         - name
+        - language
     # com.anaptecs.jeaf.junit.openapi.base.Sortiment
     Sortiment:
       type: object

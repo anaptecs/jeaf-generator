@@ -67,7 +67,7 @@ public class ParentClass implements OneOfChildBCompositionItems, OneOfChildBBDep
    * Get parentAttribute
    * @return parentAttribute
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getParentAttribute() {
     return parentAttribute;
   }

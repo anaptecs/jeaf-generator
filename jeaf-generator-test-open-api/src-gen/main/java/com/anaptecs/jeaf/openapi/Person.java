@@ -42,7 +42,7 @@ public class Person extends Partner implements OneOfPartnerContainerPartnersItem
    * Get surname
    * @return surname
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getSurname() {
     return surname;
   }
@@ -60,7 +60,7 @@ public class Person extends Partner implements OneOfPartnerContainerPartnersItem
    * Get firstName
    * @return firstName
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getFirstName() {
     return firstName;
   }

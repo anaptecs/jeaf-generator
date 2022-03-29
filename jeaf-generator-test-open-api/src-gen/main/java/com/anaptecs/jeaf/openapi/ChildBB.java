@@ -51,7 +51,7 @@ public class ChildBB extends ChildB implements OneOfChildBCompositionItems, OneO
    * Get childBBAttribute
    * @return childBBAttribute
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public Long getChildBBAttribute() {
     return childBBAttribute;
   }

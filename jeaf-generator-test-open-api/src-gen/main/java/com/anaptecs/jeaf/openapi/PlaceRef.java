@@ -69,7 +69,7 @@ public class PlaceRef {
    * Get name
    * @return name
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public String getName() {
     return name;
   }

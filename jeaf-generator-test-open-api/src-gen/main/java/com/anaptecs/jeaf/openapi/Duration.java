@@ -58,7 +58,7 @@ public class Duration {
    * Get timeUnit
    * @return timeUnit
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public TimeUnit getTimeUnit() {
     return timeUnit;
   }
