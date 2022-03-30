@@ -609,6 +609,7 @@ components:
     # com.anaptecs.jeaf.junit.openapi.service1.Sale
     Sale:
       type: object
+      additionalProperties: false
       properties:
         transactionAmount: 
           type: number
