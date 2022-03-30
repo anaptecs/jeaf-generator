@@ -410,7 +410,7 @@ components:
         «ENDIF-»
         «FOREACH this.ownedAttribute.select(e | e.isTransient() == false) AS attribute-»
         «attribute.name»: 
-          «IF attribute.type.isOpenAPIDataType() -»
+          «IF attribute.type.isOpenAPIDataType() && ((OpenAPIDataType) attribute.type).inline == true -»
           «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute) FOR (OpenAPIDataType) attribute.type -»
           «ELSE -»
           «IF attribute.hasComment() -»

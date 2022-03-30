@@ -38,8 +38,8 @@ components:
           tokenUrl: 'https://example.com/api/oauth/dialog'
           refreshUrl: 'https://example.com/api/oauth/dialog'
           scopes: 
-            write:pets: Modify pets
             read:pets: Read pets data
+            write:pets: Modify pets
             
         implicit:
           authorizationUrl: 'https://example.com/api/oauth/dialog'

@@ -8,7 +8,7 @@ extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
 
 
-context Model if this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).size > 0 ERROR "Error: JEAF Generator expects JEAF Meta Model (JMM) revision 68 or higher. Please update your UML project to a newer version of JMM. Your current revision is: " + this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision: this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision >= 68;
+context Model if this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).size > 0 ERROR "Error: JEAF Generator expects JEAF Meta Model (JMM) revision 69 or higher. Please update your UML project to a newer version of JMM. Your current revision is: " + this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision: this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision >= 69;
 
 context JEAFComponent if runChecks() ERROR "Error: No layer defined for JEAF Component " + this.name : layer != null;
 
