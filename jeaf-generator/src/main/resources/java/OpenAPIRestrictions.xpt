@@ -42,69 +42,69 @@
 	    «ENDIF -»
 	«ENDFOREACH -»
     «IF this.isMultivalued() == true && this.lower > 0 && this.getAppliedStereotypes().select(e|e.name== "Size").size == 0 -»
-«indent»          minItems: «this.lower»
+«indent»      minItems: «this.lower»
     «ENDIF -»
 «ENDDEFINE»
 
 
 «DEFINE DecimalMinAnnotation(String indent) FOR DecimalMin -»
-«indent»          minimum: «this.minValue»
-«indent»          exclusiveMinimum: «this.inclusive -»
+«indent»      minimum: «this.minValue»
+«indent»      exclusiveMinimum: «this.inclusive -»
 «ENDDEFINE»
 
 «DEFINE DecimalMaxAnnotation(String indent) FOR DecimalMax -»
-«indent»          maximum: «this.maxValue»
-«indent»          exclusiveMaximum: «this.inclusive -»
+«indent»      maximum: «this.maxValue»
+«indent»      exclusiveMaximum: «this.inclusive -»
 «ENDDEFINE»
 
 «DEFINE MinValueAnnotation(String indent) FOR Min-»
-«indent»          minimum: «this.minValue -»
+«indent»      minimum: «this.minValue -»
 «ENDDEFINE»
 
 «DEFINE MaxValueAnnotation(String indent) FOR Max -»
-«indent»          maximum: «this.maxValue -»
+«indent»      maximum: «this.maxValue -»
 «ENDDEFINE»
 
 «DEFINE NegativeAnnotation(String indent) FOR Negative -»
-«indent»          maximum: 0
-«indent»          exclusiveMaximum: true«ENDDEFINE»
+«indent»      maximum: 0
+«indent»      exclusiveMaximum: true«ENDDEFINE»
 
 «DEFINE NegativeOrZeroAnnotation(String indent) FOR NegativeOrZero -»
-«indent»          maximum: 0«ENDDEFINE»
+«indent»      maximum: 0«ENDDEFINE»
 
 «DEFINE PositiveOrZeroAnnotation(String indent) FOR PositiveOrZero -»
-«indent»          minimum: 0«ENDDEFINE»
+«indent»      minimum: 0«ENDDEFINE»
 
 «DEFINE PositiveAnnotation(String indent) FOR Positive -»
-«indent»          minimum: 0
-«indent»          exclusiveMinimum: true«ENDDEFINE»
+«indent»      minimum: 0
+«indent»      exclusiveMinimum: true«ENDDEFINE»
 
 «DEFINE SizeAnnotation(String indent) FOR Size -»
           «IF min != -1 && max != -1 -»
-«indent»          minLength: «min»
-«indent»          maxLength: «max»«ELSE-»
+«indent»      minLength: «min»
+«indent»      maxLength: «max»«ELSE-»
               «IF min != -1-»
-«indent»          minLength: «min»«ELSE -»
+«indent»      minLength: «min»«ELSE -»
                   «IF max != -1 -»
-«indent»          maxLength: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
+«indent»      maxLength: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
 
 «DEFINE SizeAnnotationForArray(String indent) FOR Size -»
           «IF min != -1 && max != -1 -»
-«indent»          minItems: «min»
-«indent»          maxItems: «max»«ELSE-»
+«indent»      minItems: «min»
+«indent»      maxItems: «max»«ELSE-»
               «IF min != -1-»
-«indent»          minItems: «min»«ELSE -»
+«indent»      minItems: «min»«ELSE -»
                   «IF max != -1 -»
-«indent»          maxItems: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
+«indent»      maxItems: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
 
 «DEFINE NotEmptyStringAnnotation(String indent) FOR NotEmpty -»
-«indent»          minLength: 1
+«indent»      minLength: 1
 «ENDDEFINE»
 
 «DEFINE NotEmptyArrayAnnotation(String indent) FOR NotEmpty -»
-«indent»          minItems: 1
+«indent»      minItems: 1
 «ENDDEFINE»
 
 «DEFINE NotBlankAnnotation(String indent) FOR NotBlank -»
-«indent»          minLength: 1
+«indent»      minLength: 1
 «ENDDEFINE»

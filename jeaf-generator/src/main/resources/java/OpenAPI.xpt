@@ -96,6 +96,7 @@ components:
   schemas:
     «EXPAND GenerateOpenAPIType(this) FOREACH this.getOpenAPITypes().sortBy(e|e.name)»
     «EXPAND GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums().sortBy(e|e.name)»
+    «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null) FOREACH this.getOpenAPIDataTypes().select(e|e.inline == false).sortBy(e|e.name)»
   «ENDIF -»
 «ENDIF-»
 «ENDFILE-»
@@ -436,7 +437,7 @@ components:
               «IF attribute.type.hasOpenAPIFormat()-»
           format: «attribute.type.getOpenAPIFormat()»
               «ENDIF-»
-          «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR attribute-»    
+          «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»    
               «IF attribute.isDeprecated() -»
           deprecated: true
               «ENDIF-»
@@ -451,7 +452,7 @@ components:
               «IF attribute.type.hasOpenAPIFormat()-»
             format: «attribute.type.getOpenAPIFormat()»
               «ENDIF-»
-            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR attribute-»              
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»              
               «IF attribute.isDeprecated() -»
             deprecated: true
               «ENDIF-»

@@ -6,7 +6,8 @@
 «IMPORT JMM»
 
 «DEFINE GenerateOpenAPIDataType(OpenAPI3Specification spec, Property ownerAttribute) FOR OpenAPIDataType -»
-          «LET this.ownedAttribute.get(0) AS attribute -»
+  «LET this.ownedAttribute.get(0) AS attribute -»
+    «IF this.inline == true -»
           «IF attribute.hasComment()-»
           description: >-
             «attribute.getCommentForOpenAPIDescription("            ")»
@@ -19,7 +20,7 @@
           «IF attribute.defaultValue != null -»
           default: «attribute.defaultValue.stringValue()»
           «ENDIF-»
-          «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR attribute-»    
+          «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»    
               «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
           deprecated: true
               «ENDIF-»
@@ -38,13 +39,13 @@
               «IF attribute.defaultValue != null -»
             default: «attribute.defaultValue.stringValue()»
               «ENDIF-»
-            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("  ") FOR attribute-»
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR attribute-»
             «IF attribute.hasExample()-»
               «IF ((Example) attribute).exampleValue.length > 0-»
             example: '«((Example) attribute).exampleValue»'
               «ENDIF-»
             «ENDIF-»
-            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR ownerAttribute-»
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR ownerAttribute-»
               «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
             deprecated: true
               «ENDIF-»
@@ -63,7 +64,40 @@
           example: '«((Example) ownerAttribute).exampleValue»'
               «ENDIF-»
             «ENDIF-»
-          «ENDLET -»
+    «ELSE-»
+    # «this.fqn()»
+    «this.name»:
+      type: «attribute.type.getOpenAPIType(spec)»
+        «IF attribute.type.hasOpenAPIFormat()-»
+      format: «attribute.type.getOpenAPIFormat()»
+        «ENDIF-»
+        «IF attribute.hasComment()-»
+      description: >-
+        «attribute.getCommentForOpenAPIDescription("        ")»
+        «ENDIF-»
+        «IF attribute.defaultValue != null -»
+      default: «attribute.defaultValue.stringValue()»
+        «ENDIF-»
+        «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR attribute-»    
+        «IF attribute.isDeprecated() -»
+      deprecated: true
+        «ENDIF-»
+        «IF attribute.hasExample()-»
+          «IF ((Example) attribute).exampleValue.length > 0-»
+      example: '«((Example) attribute).exampleValue»'
+          «ENDIF-»
+        «ENDIF-»
+      «IF attribute.isNullable() == false -»
+      nullable: «attribute.isNullable()»
+      «ENDIF-»  
+      «IF attribute.isReadOnly()  -»
+      readOnly: «attribute.isReadOnly()»
+      «ENDIF-»  
+      «IF attribute.isWriteOnly() -»
+      writeOnly: «attribute.isWriteOnly()»
+      «ENDIF-»  
+    «ENDIF-»         
+  «ENDLET -»
 «ENDDEFINE»
 
 «DEFINE GenerateOpenAPIDataTypeForPath(OpenAPI3Specification spec, Parameter param) FOR OpenAPIDataType -»
@@ -80,7 +114,7 @@
                   «IF attribute.defaultValue != null -»
                 default: «attribute.defaultValue.stringValue()»
                   «ENDIF-»
-                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR attribute-»    
+                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR attribute-»    
                   «IF attribute.isDeprecated() || param.isDeprecated() -»
                 deprecated: true
                   «ENDIF-»
@@ -96,13 +130,13 @@
                   «IF attribute.type.hasOpenAPIFormat()-»
                   format: «attribute.type.getOpenAPIFormat()»
                   «ENDIF-»
-                  «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR attribute-»
+                  «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("            ") FOR attribute-»
                   «IF attribute.hasExample()-»
                   «IF ((Example) attribute).exampleValue.length > 0-»
                   example: '«((Example) attribute).exampleValue»'
                   «ENDIF-»
                   «ENDIF-»
-                  «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
+                  «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR param-»
                   «IF attribute.isDeprecated() || param.isDeprecated() -»
                 deprecated: true
                   «ENDIF-»

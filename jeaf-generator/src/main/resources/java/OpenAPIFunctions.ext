@@ -7,7 +7,7 @@ boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 List[JMM::OpenAPIType] getOpenAPITypes(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIType);
 	
-List[JMM::OpenAPIType] getOpenAPIDataTypes(JMM::OpenAPI3Specification spec):
+List[JMM::OpenAPIDataType] getOpenAPIDataTypes(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIDataType);
 	
 boolean hasOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
@@ -44,7 +44,7 @@ Set[String] getPaths(JMM::RESTResource service):
    service.ownedOperation.typeSelect(JMM::RESTOperation).path.toSet();
 	
 String getYAMLStyleComment(uml::Element element, String indentation):
-    element.ownedComment.get(0).body.replaceAll("\n", "\n" + indentation + "# ");
+    element.ownedComment.get(0).body.replaceAll("\n", "\r\n" + indentation + "# ");
 
 String getCommentForOpenAPIDescription(uml::Element element, String indentation):
     element.ownedComment.get(0).body.replaceAll("\n", "\r\n" + indentation);

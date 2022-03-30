@@ -966,10 +966,7 @@ components:
         productCodes: 
           type: array
           items:
-            type: integer
-            format: int32
-            minimum: 0
-            exclusiveMinimum: true
+            $ref: '#/components/schemas/ProductCode'
           minItems: 1
         description: 
           type: string
@@ -1077,4 +1074,11 @@ components:
         - WEEK
         - MONTH
         - YEAR
+
+    # com.anaptecs.jeaf.junit.openapi.base.ProductCode
+    ProductCode:
+      type: integer
+      format: int32
+      minimum: 0
+      exclusiveMinimum: true
 
