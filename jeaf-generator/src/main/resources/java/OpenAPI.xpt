@@ -259,7 +259,7 @@ components:
           «FOREACH unifyMediaTypes(service.consumes, operation.consumes) AS mediaType-»
           «mediaType.toOpenAPIContentType()»:
             schema:
-              «IF param.type.isOpenAPIDataType() -»
+              «IF param.type.isOpenAPIDataType() && ((OpenAPIDataType) param.type).inline == true -»
               «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForPath(this, param) FOR (OpenAPIDataType) param.type -»
               «ELSE -»
               «IF param.type.isBasicOpenAPIType() == true-»
@@ -314,7 +314,7 @@ components:
             «FOREACH unifyMediaTypes(service.produces, operation.produces) AS contentType-»
             «contentType.toOpenAPIContentType()»:
               schema:
-                «IF returnParam.type.isOpenAPIDataType() -»
+                «IF returnParam.type.isOpenAPIDataType() && ((OpenAPIDataType) returnParam.type).inline == true -»
                 «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForPath(this, returnParam) FOR (OpenAPIDataType) returnParam.type -»
                 «ELSE -»
                 «IF returnParam.type.isBasicOpenAPIType() == true-»
