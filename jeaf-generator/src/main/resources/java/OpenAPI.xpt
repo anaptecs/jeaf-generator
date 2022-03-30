@@ -92,11 +92,25 @@ components:
     «EXPAND GenerateErrorResponse(this) FOREACH this.getErrorResponses()»
   «ENDIF -»
 
-  «IF this.getOpenAPITypes().size > 0 || this.getOpenAPIEnums().size > 0 -»
+  «IF this.getOpenAPITypes().size > 0 || this.getOpenAPIEnums().size > 0 || this.getOpenAPIDataTypes().size > 0 -»
   schemas:
-    «EXPAND GenerateOpenAPIType(this) FOREACH this.getOpenAPITypes().sortBy(e|e.name)»
-    «EXPAND GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums().sortBy(e|e.name)»
-    «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null) FOREACH this.getOpenAPIDataTypes().select(e|e.inline == false).sortBy(e|e.name)»
+    «IF this.explicityTypeOrdering == true -»
+      «FOREACH this.getOrderedSchemaElements() AS element -»
+        «IF element.isStereotypeApplied("OpenAPIType") -»
+          «EXPAND GenerateOpenAPIType(this) FOR ((OpenAPIType) element) -»
+        «ELSE-»
+          «IF element.isStereotypeApplied("OpenAPIDataType") -»
+            «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null) FOR ((OpenAPIDataType) element) -»
+          «ELSE-»
+            «EXPAND GenerateOpenAPIEnum FOR ((OpenAPIEnumeration) element)»
+          «ENDIF-»
+        «ENDIF-»
+      «ENDFOREACH-»
+    «ELSE-»
+      «EXPAND GenerateOpenAPIType(this) FOREACH this.getOpenAPITypes().sortBy(e|e.name)»
+      «EXPAND GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums().sortBy(e|e.name)»
+      «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null) FOREACH this.getOpenAPIDataTypes().select(e|e.inline == false).sortBy(e|e.name)»
+    «ENDIF-»
   «ENDIF -»
 «ENDIF-»
 «ENDFILE-»

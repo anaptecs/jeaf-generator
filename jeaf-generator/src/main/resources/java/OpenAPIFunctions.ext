@@ -212,3 +212,15 @@ boolean hasCustomErrorResponse(JMM::OpenAPI3Specification spec):
   
 Set[JMM::OAuthScope] getOAuthScopes(JMM::OpenAPISecurityScheme scheme):
   scheme.clientDependency.supplier.typeSelect(JMM::OAuthFlow).clientDependency.supplier.typeSelect(JMM::OAuthScope).toSet().sortBy(e|e.name);
+
+boolean isOrdered(uml::Element element) :
+    isStereotypeApplied(element, "Ordered"); 
+    
+String getOrderNumber(uml::Element element) :
+    if element.isOrdered() == true
+    then ((JMM::Ordered) element).order.toString()
+    else "9999";  
+    
+List[uml::Element] getOrderedSchemaElements(JMM::OpenAPI3Specification spec) :
+    spec.getOpenAPITypes().addAll(spec.getOpenAPIDataTypes().select(e|e.inline == false)).addAll(spec.getOpenAPIEnums()).toList().sortBy(e|e.name).sortBy(e|e.getOrderNumber());
+    

@@ -62,6 +62,66 @@ components:
 
 
   schemas:
+            
+    # com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum
+    ExtensibleEnum:
+      type: string
+      x-extensible-enum:
+        - RED
+        - GREEN
+        - BLUE
+
+    # com.anaptecs.jeaf.junit.openapi.base.EnumTest
+    EnumTest:
+      type: object
+      additionalProperties: false
+      required:
+        - property
+        - enumRef
+      properties:
+        property: 
+          $ref: '#/components/schemas/ExtensibleEnum'
+        enumRef: 
+          $ref: '#/components/schemas/ExtensibleEnum'
+      
+    # com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType
+    BooleanCodeType:
+      type: boolean
+        
+    # com.anaptecs.jeaf.junit.openapi.base.StringCodeType
+    StringCodeType:
+      type: string
+        
+    # com.anaptecs.jeaf.junit.openapi.base.ByteCodeType
+    ByteCodeType:
+      type: integer
+      format: int32
+        
+    # com.anaptecs.jeaf.junit.openapi.base.ShortCodeType
+    ShortCodeType:
+      type: integer
+      format: int32
+        
+    # com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType
+    IntegerCodeType:
+      type: integer
+      format: int32
+        
+    # com.anaptecs.jeaf.junit.openapi.base.LongCodeType
+    LongCodeType:
+      type: integer
+      format: int64
+        
+    # com.anaptecs.jeaf.junit.openapi.base.FloatCodeType
+    FloatCodeType:
+      type: number
+      format: float
+        
+    # com.anaptecs.jeaf.junit.openapi.base.DoubleCodeType
+    DoubleCodeType:
+      type: number
+      format: double
+        
     # com.anaptecs.jeaf.junit.openapi.base.BidirectA
     BidirectA:
       type: object
@@ -115,6 +175,19 @@ components:
           readOnly: true
           default: true
       
+            
+    # com.anaptecs.jeaf.junit.openapi.base.ChannelType
+    ChannelType:
+      type: string
+      enum:
+        - COUNTER
+        - CALL_CENTER
+        - MOBILE
+        - TVM
+        - WEB
+        # Literal "LEGACY_POS" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
+        - LEGACY_POS
+
     # com.anaptecs.jeaf.junit.openapi.base.ChildA
     ChildA:
       type: object
@@ -257,6 +330,16 @@ components:
           type: string
           format: date-time
       
+            
+    # com.anaptecs.jeaf.junit.openapi.base.DeprecatedEnum
+    DeprecatedEnum:
+      type: string
+      deprecated: true
+      enum:
+        - ONE
+        - TWO
+        - THREE
+
     # com.anaptecs.jeaf.junit.openapi.base.Duration
     Duration:
       type: object
@@ -275,19 +358,6 @@ components:
           format: int32
         timeUnit: 
           $ref: '#/components/schemas/TimeUnit'
-      
-    # com.anaptecs.jeaf.junit.openapi.base.EnumTest
-    EnumTest:
-      type: object
-      additionalProperties: false
-      required:
-        - property
-        - enumRef
-      properties:
-        property: 
-          $ref: '#/components/schemas/ExtensibleEnum'
-        enumRef: 
-          $ref: '#/components/schemas/ExtensibleEnum'
       
     # com.anaptecs.jeaf.junit.openapi.base.GeoPosition
     GeoPosition:
@@ -1023,6 +1093,13 @@ components:
           type: string
           deprecated: true
       
+    # com.anaptecs.jeaf.junit.openapi.base.ProductCode
+    ProductCode:
+      type: integer
+      format: int32
+      minimum: 0
+      exclusiveMinimum: true
+        
     # com.anaptecs.jeaf.junit.openapi.base.Reseller
     Reseller:
       type: object
@@ -1069,51 +1146,7 @@ components:
       allOf:
         - $ref: '#/components/schemas/GeoPosition'
       
-    # com.anaptecs.jeaf.junit.openapi.base.TopoRef
-    TopoRef:
-      type: object
-      additionalProperties: false
-      allOf:
-        - $ref: '#/components/schemas/PlaceRef'
-      
-    # com.anaptecs.jeaf.junit.openapi.base.UICStopPlace
-    UICStopPlace:
-      type: object
-      additionalProperties: false
-      allOf:
-        - $ref: '#/components/schemas/StopPlaceRef'
-      
-
-    
-    # com.anaptecs.jeaf.junit.openapi.base.ChannelType
-    ChannelType:
-      type: string
-      enum:
-        - COUNTER
-        - CALL_CENTER
-        - MOBILE
-        - TVM
-        - WEB
-        # Literal "LEGACY_POS" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
-        - LEGACY_POS
-
-    # com.anaptecs.jeaf.junit.openapi.base.DeprecatedEnum
-    DeprecatedEnum:
-      type: string
-      deprecated: true
-      enum:
-        - ONE
-        - TWO
-        - THREE
-
-    # com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum
-    ExtensibleEnum:
-      type: string
-      x-extensible-enum:
-        - RED
-        - GREEN
-        - BLUE
-
+            
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
     TimeUnit:
       description: >-
@@ -1133,49 +1166,17 @@ components:
         - MONTH
         - YEAR
 
-    # com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType
-    BooleanCodeType:
-      type: boolean
-        
-    # com.anaptecs.jeaf.junit.openapi.base.ByteCodeType
-    ByteCodeType:
-      type: integer
-      format: int32
-        
-    # com.anaptecs.jeaf.junit.openapi.base.DoubleCodeType
-    DoubleCodeType:
-      type: number
-      format: double
-        
-    # com.anaptecs.jeaf.junit.openapi.base.FloatCodeType
-    FloatCodeType:
-      type: number
-      format: float
-        
-    # com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType
-    IntegerCodeType:
-      type: integer
-      format: int32
-        
-    # com.anaptecs.jeaf.junit.openapi.base.LongCodeType
-    LongCodeType:
-      type: integer
-      format: int64
-        
-    # com.anaptecs.jeaf.junit.openapi.base.ProductCode
-    ProductCode:
-      type: integer
-      format: int32
-      minimum: 0
-      exclusiveMinimum: true
-        
-    # com.anaptecs.jeaf.junit.openapi.base.ShortCodeType
-    ShortCodeType:
-      type: integer
-      format: int32
-        
-    # com.anaptecs.jeaf.junit.openapi.base.StringCodeType
-    StringCodeType:
-      type: string
-        
-
+    # com.anaptecs.jeaf.junit.openapi.base.TopoRef
+    TopoRef:
+      type: object
+      additionalProperties: false
+      allOf:
+        - $ref: '#/components/schemas/PlaceRef'
+      
+    # com.anaptecs.jeaf.junit.openapi.base.UICStopPlace
+    UICStopPlace:
+      type: object
+      additionalProperties: false
+      allOf:
+        - $ref: '#/components/schemas/StopPlaceRef'
+      
