@@ -105,6 +105,9 @@ cached boolean generateValidationAnnotationsForAttributesFromMultiplicity() :
 cached boolean generateValidationAnnotationsForAssociationsFromMultiplicity() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateValidationAnnotationsForAssociationsFromMultiplicity();
     
+cached boolean suppressClassNameCommentInOpenAPISpec() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.suppressClassNameCommentInOpenAPISpec();
+
 cached String getMavenVersion() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getMavenVersion();        
 

@@ -333,6 +333,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateJSONSerializers;
 
   /**
+   * Parameter can be used to suppress link to model element in generated OpenAPI specification. By default fully
+   * qualified name of the type is added as comment above the type definition.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean suppressClassNameCommentInOpenAPISpec;
+
+  /**
    * Parameter defines if constants for the name of attributes of POJOs, Service Objects, Query Objects, Domain Objects
    * or Persistent Objects should be generated or not..
    */
@@ -705,6 +712,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.enable.json.semver", enableSemVerForJSON.toString());
       System.setProperty("switch.gen.json.serializers", generateJSONSerializers.toString());
       System.setProperty("switch.gen.enable.name.constants", generateConstantsForAttributeNames.toString());
+      System.setProperty("switch.gen.suppress.classname.openapi", suppressClassNameCommentInOpenAPISpec.toString());
 
       System.setProperty("switch.gen.enable.validation.annotation.attributes",
           generateValidationAnnotationsForAttributesFromMultiplicity.toString());

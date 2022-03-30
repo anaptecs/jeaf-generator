@@ -65,7 +65,9 @@
               «ENDIF-»
             «ENDIF-»
     «ELSE-»
+    «IF suppressClassNameCommentInOpenAPISpec() == false -»
     # «this.fqn()»
+    «ENDIF-»
     «this.name»:
       type: «attribute.type.getOpenAPIType(spec)»
         «IF attribute.type.hasOpenAPIFormat()-»
