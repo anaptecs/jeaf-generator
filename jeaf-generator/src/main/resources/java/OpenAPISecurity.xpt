@@ -13,7 +13,7 @@
         «this.getCommentForOpenAPIDescription("        ")»
       «ENDIF-»
       flows:
-      «FOREACH this.clientDependency.supplier.typeSelect(OAuthFlow) AS flow -»
+      «FOREACH this.clientDependency.supplier.typeSelect(OAuthFlow).sortBy(e|e.flowType.name) AS flow -»
         «flow.flowType.name»:
           «IF this.type.name == "oauth2" || this.type.name == "implicit" || this.type.name == "authorizationCode" -»
           authorizationUrl: '«IF flow.authorizationURL.length > 0»«flow.authorizationURL»«ELSE»TODO Please add required authorizationURL«ENDIF»'
@@ -26,7 +26,7 @@
           «ENDIF-»
           «IF this.type.name == "oauth2" -»
           scopes: «IF flow.clientDependency.supplier.typeSelect(OAuthScope).size == 0»{}«ENDIF»
-            «FOREACH flow.clientDependency.supplier.typeSelect(OAuthScope) AS scope -»
+            «FOREACH flow.clientDependency.supplier.typeSelect(OAuthScope).sortBy(e|e.name) AS scope -»
             «scope.name»: «scope.description»
             «ENDFOREACH»
           «ENDIF-»
