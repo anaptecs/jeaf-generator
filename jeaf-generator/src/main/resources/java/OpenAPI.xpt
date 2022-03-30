@@ -106,6 +106,7 @@ components:
 	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPITypes()»
 	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPIEnums()»
 	«EXPAND RegisterLocalType(this) FOREACH this.getErrorResponses()»
+	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPIDataTypes()»
 	
 	«FOREACH this.clientDependency.typeSelect(OpenAPISpecReference) AS dependency»
 	  «FOREACH dependency.supplier.typeSelect(OpenAPI3Specification) AS dependentSpec»
@@ -121,7 +122,6 @@ components:
 	  «ENDFOREACH»
 	«ENDFOREACH»
 	«EXPAND RegisterLocalTypes FOREACH this.getDependentSpecs()»
-
 «ENDDEFINE»
 
 «DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR ErrorResponse»
@@ -133,6 +133,10 @@ components:
 «ENDDEFINE»
 
 «DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPIEnumeration»
+«this.registerLocalType(spec)»
+«ENDDEFINE»
+
+«DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPIDataType»
 «this.registerLocalType(spec)»
 «ENDDEFINE»
 
