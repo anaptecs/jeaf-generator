@@ -49,12 +49,12 @@ public class Channel implements ServiceObject {
   public static final String RESELLER = "reseller";
 
   /**
-   * 
+   * Type of the channel
    */
   private ChannelType channelType;
 
   /**
-   * 
+   * The business code of the channel
    */
   private ChannelCode channelCode;
 
@@ -105,12 +105,12 @@ public class Channel implements ServiceObject {
    */
   public static class Builder {
     /**
-     * 
+     * Type of the channel
      */
     private ChannelType channelType;
 
     /**
-     * 
+     * The business code of the channel
      */
     private ChannelCode channelCode;
 
@@ -170,7 +170,7 @@ public class Channel implements ServiceObject {
     }
 
     /**
-     * Method sets the association "channelType".
+     * Method sets the association "channelType". Type of the channel
      * 
      * @param pChannelType ChannelType to which the association "channelType" should be set.
      */
@@ -180,7 +180,7 @@ public class Channel implements ServiceObject {
     }
 
     /**
-     * Method sets the association "channelCode".
+     * Method sets the association "channelCode". The business code of the channel
      * 
      * @param pChannelCode ChannelCode to which the association "channelCode" should be set.
      */
@@ -245,8 +245,7 @@ public class Channel implements ServiceObject {
   }
 
   /**
-   * Method returns the association "channelType".
-   * 
+   * Method returns the association "channelType". Type of the channel
    *
    * @return ChannelType ChannelType to which the association "channelType" is set.
    */
@@ -255,8 +254,7 @@ public class Channel implements ServiceObject {
   }
 
   /**
-   * Method sets the association "channelType".
-   * 
+   * Method sets the association "channelType". Type of the channel
    * 
    * @param pChannelType ChannelType to which the association "channelType" should be set.
    */
@@ -265,16 +263,14 @@ public class Channel implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "channelType".
-   * 
+   * Method unsets the association "channelType". Type of the channel
    */
   public final void unsetChannelType( ) {
     channelType = null;
   }
 
   /**
-   * Method returns the association "channelCode".
-   * 
+   * Method returns the association "channelCode". The business code of the channel
    *
    * @return ChannelCode ChannelCode to which the association "channelCode" is set.
    */
@@ -283,8 +279,7 @@ public class Channel implements ServiceObject {
   }
 
   /**
-   * Method sets the association "channelCode".
-   * 
+   * Method sets the association "channelCode". The business code of the channel
    * 
    * @param pChannelCode ChannelCode to which the association "channelCode" should be set.
    */
@@ -293,8 +288,7 @@ public class Channel implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "channelCode".
-   * 
+   * Method unsets the association "channelCode". The business code of the channel
    */
   public final void unsetChannelCode( ) {
     channelCode = null;

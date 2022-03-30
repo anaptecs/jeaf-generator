@@ -340,6 +340,18 @@ components:
         - TWO
         - THREE
 
+    # com.anaptecs.jeaf.junit.openapi.base.DirectedEdge
+    DirectedEdge:
+      type: object
+      additionalProperties: false
+      required:
+        - end
+      properties:
+        start: 
+          $ref: '#/components/schemas/Stop'
+        end: 
+          $ref: '#/components/schemas/Stop'
+      
     # com.anaptecs.jeaf.junit.openapi.base.Duration
     Duration:
       type: object
@@ -470,6 +482,18 @@ components:
           type: number
           format: double
           nullable: false
+      
+    # com.anaptecs.jeaf.junit.openapi.base.POI
+    POI:
+      type: object
+      additionalProperties: false
+      allOf:
+        - $ref: '#/components/schemas/Stop'
+      required:
+        - description
+      properties:
+        description: 
+          type: string
       
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
     ParentClass:
@@ -1132,6 +1156,26 @@ components:
             $ref: '#/components/schemas/Product'
           minItems: 0
       
+    # com.anaptecs.jeaf.junit.openapi.base.Stop
+    Stop:
+      type: object
+      additionalProperties: false
+      discriminator:
+        propertyName: objectType
+        mapping:
+          Stop: '#/components/schemas/Stop'
+          POI: '#/components/schemas/POI'
+          UICStop: '#/components/schemas/UICStop'
+      required:
+        - objectType
+        - name
+      properties:
+        objectType:
+          description: Attribute is used as discriminator for inheritance between data types.
+          type: string
+        name: 
+          type: string
+      
     # com.anaptecs.jeaf.junit.openapi.base.StopPlaceRef
     StopPlaceRef:
       type: object
@@ -1172,6 +1216,18 @@ components:
       additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/PlaceRef'
+      
+    # com.anaptecs.jeaf.junit.openapi.base.UICStop
+    UICStop:
+      type: object
+      additionalProperties: false
+      allOf:
+        - $ref: '#/components/schemas/Stop'
+      required:
+        - uicCode
+      properties:
+        uicCode: 
+          type: string
       
     # com.anaptecs.jeaf.junit.openapi.base.UICStopPlace
     UICStopPlace:

@@ -1,30 +1,22 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
  * 
- * Copyright 2004 - 2021. All rights reserved.
+ * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.ConstraintViolationException;
-import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * @author JEAF Generator
- * @version JEAF Release 1.6.x
+ * @version JEAF Release 1.4.x
  */
-@JsonIgnoreProperties(value = "objectType")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({ @JsonSubTypes.Type(value = POI.class, name = "POI"),
-  @JsonSubTypes.Type(value = UICStop.class, name = "UICStop") })
 public class Stop implements ServiceObject {
   /**
    * Default serial version uid.
@@ -32,9 +24,13 @@ public class Stop implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
+   * Constant for the name of attribute "name".
+   */
+  public static final String NAME = "name";
+
+  /**
    * 
    */
-  @NotNull
   private String name;
 
   /**

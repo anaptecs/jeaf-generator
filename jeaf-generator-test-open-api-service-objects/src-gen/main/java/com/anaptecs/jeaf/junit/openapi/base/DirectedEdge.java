@@ -30,7 +30,7 @@ public class DirectedEdge implements ServiceObject {
   private Stop start;
 
   /**
-   * 
+   * The end
    */
   @NotNull
   private Stop end;
@@ -67,7 +67,7 @@ public class DirectedEdge implements ServiceObject {
     private Stop start;
 
     /**
-     * 
+     * The end
      */
     private Stop end;
 
@@ -119,7 +119,7 @@ public class DirectedEdge implements ServiceObject {
     }
 
     /**
-     * Method sets the association "end".
+     * Method sets the association "end". The end
      * 
      * @param pEnd Stop to which the association "end" should be set.
      */
@@ -178,8 +178,7 @@ public class DirectedEdge implements ServiceObject {
   }
 
   /**
-   * Method returns the association "end".
-   * 
+   * Method returns the association "end". The end
    *
    * @return Stop Stop to which the association "end" is set.
    */
@@ -188,8 +187,7 @@ public class DirectedEdge implements ServiceObject {
   }
 
   /**
-   * Method sets the association "end".
-   * 
+   * Method sets the association "end". The end
    * 
    * @param pEnd Stop to which the association "end" should be set.
    */
@@ -198,8 +196,7 @@ public class DirectedEdge implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "end".
-   * 
+   * Method unsets the association "end". The end
    */
   public final void unsetEnd( ) {
     end = null;

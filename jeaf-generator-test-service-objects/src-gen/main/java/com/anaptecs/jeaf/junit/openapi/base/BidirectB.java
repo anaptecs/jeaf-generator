@@ -29,7 +29,7 @@ public class BidirectB implements ServiceObject {
   public static final String A = "a";
 
   /**
-   * 
+   * the A
    */
   private BidirectA a;
 
@@ -68,7 +68,7 @@ public class BidirectB implements ServiceObject {
    */
   public static class Builder {
     /**
-     * 
+     * the A
      */
     private BidirectA a;
 
@@ -109,7 +109,7 @@ public class BidirectB implements ServiceObject {
     }
 
     /**
-     * Method sets the association "a".
+     * Method sets the association "a". the A
      * 
      * @param pA BidirectA to which the association "a" should be set.
      */
@@ -142,8 +142,7 @@ public class BidirectB implements ServiceObject {
   }
 
   /**
-   * Method returns the association "a".
-   * 
+   * Method returns the association "a". the A
    *
    * @return BidirectA BidirectA to which the association "a" is set.
    */
@@ -158,8 +157,7 @@ public class BidirectB implements ServiceObject {
   }
 
   /**
-   * Method sets the association "a".
-   * 
+   * Method sets the association "a". the A
    * 
    * @param pA BidirectA to which the association "a" should be set.
    */
@@ -177,8 +175,7 @@ public class BidirectB implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "a".
-   * 
+   * Method unsets the association "a". the A
    */
   public final void unsetA( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

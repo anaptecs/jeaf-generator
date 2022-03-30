@@ -1,47 +1,53 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
  * 
- * Copyright 2004 - 2021. All rights reserved.
+ * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.ConstraintViolationException;
-import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * @author JEAF Generator
- * @version JEAF Release 1.6.x
+ * @version JEAF Release 1.4.x
  */
-@JsonIgnoreProperties(value = "objectType")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({ @JsonSubTypes.Type(value = POI.class, name = "POI"),
-  @JsonSubTypes.Type(value = UICStop.class, name = "UICStop") })
-public class Stop implements ServiceObject {
+public class DirectedEdge implements ServiceObject {
   /**
    * Default serial version uid.
    */
   private static final long serialVersionUID = 1L;
 
   /**
-   * 
+   * Constant for the name of attribute "start".
    */
-  @NotNull
-  private String name;
+  public static final String START = "start";
+
+  /**
+   * Constant for the name of attribute "end".
+   */
+  public static final String END = "end";
+
+  /**
+   * The start
+   */
+  private Stop start;
+
+  /**
+   * The end
+   */
+  private Stop end;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
-  protected Stop( ) {
+  protected DirectedEdge( ) {
     // Nothing to do.
   }
 
@@ -50,22 +56,28 @@ public class Stop implements ServiceObject {
    * 
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Stop( Builder pBuilder ) {
+  protected DirectedEdge( Builder pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    name = pBuilder.name;
+    start = pBuilder.start;
+    end = pBuilder.end;
   }
 
   /**
-   * Class implements builder to create a new instance of class Stop. As the class has read only attributes or
+   * Class implements builder to create a new instance of class DirectedEdge. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
     /**
-     * 
+     * The start
      */
-    private String name;
+    private Stop start;
+
+    /**
+     * The end
+     */
+    private Stop end;
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
@@ -74,12 +86,13 @@ public class Stop implements ServiceObject {
     }
 
     /**
-     * Use {@link #newBuilder(Stop)} instead of private constructor to create new builder.
+     * Use {@link #newBuilder(DirectedEdge)} instead of private constructor to create new builder.
      */
-    protected Builder( Stop pObject ) {
+    protected Builder( DirectedEdge pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        name = pObject.name;
+        start = pObject.start;
+        end = pObject.end;
       }
     }
 
@@ -96,65 +109,105 @@ public class Stop implements ServiceObject {
      * Method creates a new builder and initialize it with the data from the passed object.
      * 
      * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Stop objects. The method never returns null.
+     * @return {@link Builder} New builder that can be used to create new DirectedEdge objects. The method never returns
+     * null.
      */
-    public static Builder newBuilder( Stop pObject ) {
+    public static Builder newBuilder( DirectedEdge pObject ) {
       return new Builder(pObject);
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets the association "start". The start
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pStart Stop to which the association "start" should be set.
      */
-    public Builder setName( String pName ) {
-      // Assign value to attribute
-      name = pName;
+    public Builder setStart( Stop pStart ) {
+      start = pStart;
       return this;
     }
 
     /**
-     * Method creates a new instance of class Stop. The object will be initialized with the values of the builder.
+     * Method sets the association "end". The end
      * 
-     * @return Stop Created object. The method never returns null.
+     * @param pEnd Stop to which the association "end" should be set.
      */
-    public Stop build( ) {
-      return new Stop(this);
+    public Builder setEnd( Stop pEnd ) {
+      end = pEnd;
+      return this;
     }
 
     /**
-     * Method creates a new validated instance of class Stop. The object will be initialized with the values of the
-     * builder and validated afterwards.
+     * Method creates a new instance of class DirectedEdge. The object will be initialized with the values of the
+     * builder.
      * 
-     * @return Stop Created and validated object. The method never returns null.
+     * @return DirectedEdge Created object. The method never returns null.
+     */
+    public DirectedEdge build( ) {
+      return new DirectedEdge(this);
+    }
+
+    /**
+     * Method creates a new validated instance of class DirectedEdge. The object will be initialized with the values of
+     * the builder and validated afterwards.
+     * 
+     * @return DirectedEdge Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public Stop buildValidated( ) throws ConstraintViolationException {
-      Stop lPOJO = this.build();
+    public DirectedEdge buildValidated( ) throws ConstraintViolationException {
+      DirectedEdge lPOJO = this.build();
       Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * Method returns the association "start". The start
+   *
+   * @return Stop Stop to which the association "start" is set.
    */
-  public String getName( ) {
-    return name;
+  public Stop getStart( ) {
+    return start;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets the association "start". The start
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pStart Stop to which the association "start" should be set.
    */
-  public void setName( String pName ) {
-    // Assign value to attribute
-    name = pName;
+  public void setStart( Stop pStart ) {
+    start = pStart;
+  }
+
+  /**
+   * Method unsets the association "start". The start
+   */
+  public final void unsetStart( ) {
+    start = null;
+  }
+
+  /**
+   * Method returns the association "end". The end
+   *
+   * @return Stop Stop to which the association "end" is set.
+   */
+  public Stop getEnd( ) {
+    return end;
+  }
+
+  /**
+   * Method sets the association "end". The end
+   * 
+   * @param pEnd Stop to which the association "end" should be set.
+   */
+  public void setEnd( Stop pEnd ) {
+    end = pEnd;
+  }
+
+  /**
+   * Method unsets the association "end". The end
+   */
+  public final void unsetEnd( ) {
+    end = null;
   }
 
   /**
@@ -168,8 +221,6 @@ public class Stop implements ServiceObject {
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
-    lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "name", "" + name));
     lBuilder.append('\n');
     return lBuilder;
   }
