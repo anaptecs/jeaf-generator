@@ -26,9 +26,11 @@ import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
+import com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
+import com.anaptecs.jeaf.junit.openapi.base.StringCodeType;
 
 /**
  * @author JEAF Generator
@@ -224,6 +226,17 @@ public class ProductServiceResource {
   public Response isCurrencySupported( CurrencyCode pCurrency ) {
     ProductService lService = JEAF.getService(ProductService.class);
     CurrencyCode lResult = lService.isCurrencySupported(pCurrency);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#testCodeTypeUsage()}
+   */
+  @Path("codeTypeUsages")
+  @POST
+  public Response testCodeTypeUsage( StringCodeType pStringCode ) {
+    ProductService lService = JEAF.getService(ProductService.class);
+    IntegerCodeType lResult = lService.testCodeTypeUsage(pStringCode);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 }

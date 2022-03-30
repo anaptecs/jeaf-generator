@@ -71,6 +71,9 @@ abstract class ProductServiceImplBase implements ProductService, ServiceImplemen
 
   public static final String PING_AUTH_TYPE = "ping.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 
+  public static final String TESTCODETYPEUSAGE_AUTH_TYPE =
+      "testCodeTypeUsage.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
   /**
    * Reference to the component that provides this service implementation. The reference is never null.
    */

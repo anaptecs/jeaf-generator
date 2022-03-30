@@ -30,6 +30,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testIsCurrencySupported"));
     lSuite.addTest(new ProductServiceTest("testCreateProduct"));
     lSuite.addTest(new ProductServiceTest("testCreateChannelCodeFromObject"));
+    lSuite.addTest(new ProductServiceTest("testTestCodeTypeUsage"));
     lSuite.addTest(new ProductServiceTest("testAddCurrencies"));
     lSuite.addTest(new ProductServiceTest("testGetSortiment"));
     lSuite.addTest(new ProductServiceTest("testDeprectedComplexRequestBody"));
@@ -172,6 +173,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testCreateChannelCodeFromObject( ) throws Exception {
     // TODO Implement test for service method createChannelCodeFromObject(...)
+  }
+
+  /**
+   * Method test the implementation of service method testCodeTypeUsage
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestCodeTypeUsage( ) throws Exception {
+    // TODO Implement test for service method testCodeTypeUsage(...)
   }
 
   /**

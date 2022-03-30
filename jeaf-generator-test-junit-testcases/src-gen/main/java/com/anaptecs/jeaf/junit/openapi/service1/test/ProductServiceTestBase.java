@@ -113,6 +113,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testCreateChannelCodeFromObject( ) throws Exception;
 
   /**
+   * Method test the implementation of service method testCodeTypeUsage(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestCodeTypeUsage( ) throws Exception;
+
+  /**
    * Method test the implementation of service method addCurrencies(...)
    * 
    * @throws Exception if the test fails.

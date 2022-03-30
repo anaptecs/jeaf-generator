@@ -13,9 +13,11 @@ import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
+import com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
+import com.anaptecs.jeaf.junit.openapi.base.StringCodeType;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 
@@ -221,6 +223,17 @@ final class ProductServiceImpl extends ProductServiceImplBase {
    */
   @Override
   public CurrencyCode isCurrencySupported( CurrencyCode pCurrency ) {
+    // TODO Implement method and return real result
+    return null;
+  }
+
+  /**
+   * 
+   * @param pStringCode
+   * @return {@link IntegerCodeType}
+   */
+  @Override
+  public IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode ) {
     // TODO Implement method and return real result
     return null;
   }

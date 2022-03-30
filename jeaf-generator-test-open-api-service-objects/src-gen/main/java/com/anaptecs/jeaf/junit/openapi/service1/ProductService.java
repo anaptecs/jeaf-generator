@@ -16,9 +16,11 @@ import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
+import com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
+import com.anaptecs.jeaf.junit.openapi.base.StringCodeType;
 
 /**
  * @author JEAF Generator
@@ -145,4 +147,11 @@ public interface ProductService extends Service {
    * @return {@link CurrencyCode}
    */
   CurrencyCode isCurrencySupported( CurrencyCode pCurrency );
+
+  /**
+   * 
+   * @param pStringCode
+   * @return {@link IntegerCodeType}
+   */
+  IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode );
 }
