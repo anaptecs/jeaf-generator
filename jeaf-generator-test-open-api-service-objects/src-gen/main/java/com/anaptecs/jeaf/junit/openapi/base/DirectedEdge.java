@@ -18,31 +18,29 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-public class BidirectB implements ServiceObject {
+public class DirectedEdge implements ServiceObject {
   /**
    * Default serial version uid.
    */
   private static final long serialVersionUID = 1L;
 
   /**
-   * the A
+   * The start
    */
-  @NotNull
-  private BidirectA a;
+  private Stop start;
 
   /**
-   * Attribute is required for correct handling of bidirectional associations in case of deserialization.
+   * 
    */
-  private transient boolean aBackReferenceInitialized;
+  @NotNull
+  private Stop end;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
-  protected BidirectB( ) {
+  protected DirectedEdge( ) {
     // Nothing to do.
-    // Bidirectional back reference is not yet set up correctly
-    aBackReferenceInitialized = false;
   }
 
   /**
@@ -50,24 +48,28 @@ public class BidirectB implements ServiceObject {
    * 
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected BidirectB( Builder pBuilder ) {
+  protected DirectedEdge( Builder pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    a = pBuilder.a;
-    // Bidirectional back reference is set up correctly as a builder is used.
-    aBackReferenceInitialized = true;
+    start = pBuilder.start;
+    end = pBuilder.end;
   }
 
   /**
-   * Class implements builder to create a new instance of class BidirectB. As the class has read only attributes or
+   * Class implements builder to create a new instance of class DirectedEdge. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
     /**
-     * the A
+     * The start
      */
-    private BidirectA a;
+    private Stop start;
+
+    /**
+     * 
+     */
+    private Stop end;
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
@@ -76,12 +78,13 @@ public class BidirectB implements ServiceObject {
     }
 
     /**
-     * Use {@link #newBuilder(BidirectB)} instead of private constructor to create new builder.
+     * Use {@link #newBuilder(DirectedEdge)} instead of private constructor to create new builder.
      */
-    protected Builder( BidirectB pObject ) {
+    protected Builder( DirectedEdge pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        a = pObject.a;
+        start = pObject.start;
+        end = pObject.end;
       }
     }
 
@@ -98,90 +101,108 @@ public class BidirectB implements ServiceObject {
      * Method creates a new builder and initialize it with the data from the passed object.
      * 
      * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new BidirectB objects. The method never returns
+     * @return {@link Builder} New builder that can be used to create new DirectedEdge objects. The method never returns
      * null.
      */
-    public static Builder newBuilder( BidirectB pObject ) {
+    public static Builder newBuilder( DirectedEdge pObject ) {
       return new Builder(pObject);
     }
 
     /**
-     * Method sets the association "a". the A
+     * Method sets the association "start". The start
      * 
-     * @param pA BidirectA to which the association "a" should be set.
+     * @param pStart Stop to which the association "start" should be set.
      */
-    public Builder setA( BidirectA pA ) {
-      a = pA;
+    public Builder setStart( Stop pStart ) {
+      start = pStart;
       return this;
     }
 
     /**
-     * Method creates a new instance of class BidirectB. The object will be initialized with the values of the builder.
+     * Method sets the association "end".
      * 
-     * @return BidirectB Created object. The method never returns null.
+     * @param pEnd Stop to which the association "end" should be set.
      */
-    public BidirectB build( ) {
-      return new BidirectB(this);
+    public Builder setEnd( Stop pEnd ) {
+      end = pEnd;
+      return this;
     }
 
     /**
-     * Method creates a new validated instance of class BidirectB. The object will be initialized with the values of the
-     * builder and validated afterwards.
+     * Method creates a new instance of class DirectedEdge. The object will be initialized with the values of the
+     * builder.
      * 
-     * @return BidirectB Created and validated object. The method never returns null.
+     * @return DirectedEdge Created object. The method never returns null.
+     */
+    public DirectedEdge build( ) {
+      return new DirectedEdge(this);
+    }
+
+    /**
+     * Method creates a new validated instance of class DirectedEdge. The object will be initialized with the values of
+     * the builder and validated afterwards.
+     * 
+     * @return DirectedEdge Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public BidirectB buildValidated( ) throws ConstraintViolationException {
-      BidirectB lPOJO = this.build();
+    public DirectedEdge buildValidated( ) throws ConstraintViolationException {
+      DirectedEdge lPOJO = this.build();
       Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }
 
   /**
-   * Method returns the association "a". the A
+   * Method returns the association "start". The start
    *
-   * @return BidirectA BidirectA to which the association "a" is set.
+   * @return Stop Stop to which the association "start" is set.
    */
-  public BidirectA getA( ) {
-    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
-    // after an object was deserialized.
-    if (aBackReferenceInitialized == false) {
-      aBackReferenceInitialized = true;
-      a.addToTransientBs((BidirectB) this);
-    }
-    return a;
+  public Stop getStart( ) {
+    return start;
   }
 
   /**
-   * Method sets the association "a". the A
+   * Method sets the association "start". The start
    * 
-   * @param pA BidirectA to which the association "a" should be set.
+   * @param pStart Stop to which the association "start" should be set.
    */
-  public void setA( BidirectA pA ) {
-    // Release already referenced object before setting a new association.
-    if (a != null) {
-      a.removeFromTransientBs((BidirectB) this);
-    }
-    a = pA;
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pA != null && pA.getTransientBs().contains(this) == false) {
-      pA.addToTransientBs((BidirectB) this);
-    }
+  public void setStart( Stop pStart ) {
+    start = pStart;
   }
 
   /**
-   * Method unsets the association "a". the A
+   * Method unsets the association "start". The start
    */
-  public final void unsetA( ) {
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    BidirectA lBidirectA = a;
-    a = null;
-    if (lBidirectA != null && lBidirectA.getTransientBs().contains(this) == true) {
-      lBidirectA.removeFromTransientBs((BidirectB) this);
-    }
+  public final void unsetStart( ) {
+    start = null;
+  }
+
+  /**
+   * Method returns the association "end".
+   * 
+   *
+   * @return Stop Stop to which the association "end" is set.
+   */
+  public Stop getEnd( ) {
+    return end;
+  }
+
+  /**
+   * Method sets the association "end".
+   * 
+   * 
+   * @param pEnd Stop to which the association "end" should be set.
+   */
+  public void setEnd( Stop pEnd ) {
+    end = pEnd;
+  }
+
+  /**
+   * Method unsets the association "end".
+   * 
+   */
+  public final void unsetEnd( ) {
+    end = null;
   }
 
   /**

@@ -22,27 +22,23 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 /**
- * PlaceRef
+ * Stop
  */
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true )
 @JsonSubTypes({
-  @JsonSubTypes.Type(value = UICStopPlace.class, name = "UICStopPlace"),
-  @JsonSubTypes.Type(value = CHStopPlace.class, name = "CHStopPlace"),
-  @JsonSubTypes.Type(value = TopoRef.class, name = "TopoRef"),
-  @JsonSubTypes.Type(value = SwissGeoPosition.class, name = "SwissGeoPosition"),
-  @JsonSubTypes.Type(value = StopPlaceRef.class, name = "StopPlaceRef"),
-  @JsonSubTypes.Type(value = GeoPosition.class, name = "GeoPosition"),
+  @JsonSubTypes.Type(value = UICStop.class, name = "UICStop"),
+  @JsonSubTypes.Type(value = POI.class, name = "POI"),
 })
 
-public class PlaceRef {
+public class Stop {
   @JsonTypeId
   private String objectType = null;
 
   @JsonProperty("name")
   private String name = null;
 
-  public PlaceRef objectType(String objectType) {
+  public Stop objectType(String objectType) {
     this.objectType = objectType;
     return this;
   }
@@ -60,7 +56,7 @@ public class PlaceRef {
     this.objectType = objectType;
   }
 
-  public PlaceRef name(String name) {
+  public Stop name(String name) {
     this.name = name;
     return this;
   }
@@ -87,9 +83,9 @@ public class PlaceRef {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PlaceRef placeRef = (PlaceRef) o;
-    return Objects.equals(this.objectType, placeRef.objectType) &&
-        Objects.equals(this.name, placeRef.name);
+    Stop stop = (Stop) o;
+    return Objects.equals(this.objectType, stop.objectType) &&
+        Objects.equals(this.name, stop.name);
   }
 
   @Override
@@ -101,7 +97,7 @@ public class PlaceRef {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PlaceRef {\n");
+    sb.append("class Stop {\n");
     
     sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");

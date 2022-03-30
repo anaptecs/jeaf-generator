@@ -18,31 +18,24 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-public class BidirectB implements ServiceObject {
+public class Stop implements ServiceObject {
   /**
    * Default serial version uid.
    */
   private static final long serialVersionUID = 1L;
 
   /**
-   * the A
+   * 
    */
   @NotNull
-  private BidirectA a;
-
-  /**
-   * Attribute is required for correct handling of bidirectional associations in case of deserialization.
-   */
-  private transient boolean aBackReferenceInitialized;
+  private String name;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
-  protected BidirectB( ) {
+  protected Stop( ) {
     // Nothing to do.
-    // Bidirectional back reference is not yet set up correctly
-    aBackReferenceInitialized = false;
   }
 
   /**
@@ -50,24 +43,22 @@ public class BidirectB implements ServiceObject {
    * 
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected BidirectB( Builder pBuilder ) {
+  protected Stop( Builder pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    a = pBuilder.a;
-    // Bidirectional back reference is set up correctly as a builder is used.
-    aBackReferenceInitialized = true;
+    name = pBuilder.name;
   }
 
   /**
-   * Class implements builder to create a new instance of class BidirectB. As the class has read only attributes or
+   * Class implements builder to create a new instance of class Stop. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
     /**
-     * the A
+     * 
      */
-    private BidirectA a;
+    private String name;
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
@@ -76,12 +67,12 @@ public class BidirectB implements ServiceObject {
     }
 
     /**
-     * Use {@link #newBuilder(BidirectB)} instead of private constructor to create new builder.
+     * Use {@link #newBuilder(Stop)} instead of private constructor to create new builder.
      */
-    protected Builder( BidirectB pObject ) {
+    protected Builder( Stop pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        a = pObject.a;
+        name = pObject.name;
       }
     }
 
@@ -98,90 +89,65 @@ public class BidirectB implements ServiceObject {
      * Method creates a new builder and initialize it with the data from the passed object.
      * 
      * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new BidirectB objects. The method never returns
-     * null.
+     * @return {@link Builder} New builder that can be used to create new Stop objects. The method never returns null.
      */
-    public static Builder newBuilder( BidirectB pObject ) {
+    public static Builder newBuilder( Stop pObject ) {
       return new Builder(pObject);
     }
 
     /**
-     * Method sets the association "a". the A
+     * Method sets the attribute "name".
      * 
-     * @param pA BidirectA to which the association "a" should be set.
+     * @param pName Value to which the attribute "name" should be set.
      */
-    public Builder setA( BidirectA pA ) {
-      a = pA;
+    public Builder setName( String pName ) {
+      // Assign value to attribute
+      name = pName;
       return this;
     }
 
     /**
-     * Method creates a new instance of class BidirectB. The object will be initialized with the values of the builder.
+     * Method creates a new instance of class Stop. The object will be initialized with the values of the builder.
      * 
-     * @return BidirectB Created object. The method never returns null.
+     * @return Stop Created object. The method never returns null.
      */
-    public BidirectB build( ) {
-      return new BidirectB(this);
+    public Stop build( ) {
+      return new Stop(this);
     }
 
     /**
-     * Method creates a new validated instance of class BidirectB. The object will be initialized with the values of the
+     * Method creates a new validated instance of class Stop. The object will be initialized with the values of the
      * builder and validated afterwards.
      * 
-     * @return BidirectB Created and validated object. The method never returns null.
+     * @return Stop Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
-    public BidirectB buildValidated( ) throws ConstraintViolationException {
-      BidirectB lPOJO = this.build();
+    public Stop buildValidated( ) throws ConstraintViolationException {
+      Stop lPOJO = this.build();
       Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }
 
   /**
-   * Method returns the association "a". the A
-   *
-   * @return BidirectA BidirectA to which the association "a" is set.
-   */
-  public BidirectA getA( ) {
-    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
-    // after an object was deserialized.
-    if (aBackReferenceInitialized == false) {
-      aBackReferenceInitialized = true;
-      a.addToTransientBs((BidirectB) this);
-    }
-    return a;
-  }
-
-  /**
-   * Method sets the association "a". the A
+   * Method returns the attribute "name".
    * 
-   * @param pA BidirectA to which the association "a" should be set.
+   * 
+   * @return String Value to which the attribute "name" is set.
    */
-  public void setA( BidirectA pA ) {
-    // Release already referenced object before setting a new association.
-    if (a != null) {
-      a.removeFromTransientBs((BidirectB) this);
-    }
-    a = pA;
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pA != null && pA.getTransientBs().contains(this) == false) {
-      pA.addToTransientBs((BidirectB) this);
-    }
+  public String getName( ) {
+    return name;
   }
 
   /**
-   * Method unsets the association "a". the A
+   * Method sets the attribute "name".
+   * 
+   * 
+   * @param pName Value to which the attribute "name" should be set.
    */
-  public final void unsetA( ) {
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    BidirectA lBidirectA = a;
-    a = null;
-    if (lBidirectA != null && lBidirectA.getTransientBs().contains(this) == true) {
-      lBidirectA.removeFromTransientBs((BidirectB) this);
-    }
+  public void setName( String pName ) {
+    // Assign value to attribute
+    name = pName;
   }
 
   /**
@@ -195,6 +161,8 @@ public class BidirectB implements ServiceObject {
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "name", "" + name));
     lBuilder.append('\n');
     return lBuilder;
   }

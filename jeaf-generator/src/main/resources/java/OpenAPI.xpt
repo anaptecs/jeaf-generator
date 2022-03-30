@@ -441,7 +441,7 @@ components:
           «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute) FOR (OpenAPIDataType) attribute.type -»
           «ELSE -»
           «IF attribute.hasComment() -»
-            «IF attribute.type.isBasicOpenAPIType() == false && attribute.type.getAllConcreteSubclasses().size == 0 && attribute.isMultivalued() == false-»
+            «IF attribute.type.isBasicOpenAPIType() == false && attribute.isMultivalued() == false-»
             «ELSE-» 
           description: >-
             «attribute.getCommentForOpenAPIDescription("            ")»
