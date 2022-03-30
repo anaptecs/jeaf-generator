@@ -73,9 +73,9 @@
         «IF attribute.type.hasOpenAPIFormat()-»
       format: «attribute.type.getOpenAPIFormat()»
         «ENDIF-»
-        «IF attribute.hasComment()-»
+        «IF this.hasComment()-»
       description: >-
-        «attribute.getCommentForOpenAPIDescription("        ")»
+        «this.getCommentForOpenAPIDescription("        ")»
         «ENDIF-»
         «IF attribute.defaultValue != null -»
       default: «attribute.defaultValue.stringValue()»
