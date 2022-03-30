@@ -380,6 +380,8 @@ components:
 «DEFINE GenerateOpenAPIType(OpenAPI3Specification spec) FOR OpenAPIType -»
     # «this.fqn()»
     «this.name»:
+      type: object
+      additionalProperties: false
       «IF this.hasComment()-»
       description: >-
         «this.getCommentForOpenAPIDescription("        ")»
@@ -400,7 +402,6 @@ components:
       «IF this.isDeprecated() -»
       deprecated: true
       «ENDIF -»
-      type: object
       «IF this.ownedAttribute.size > 0 || this.isTopOfClassHierarchy() -»
       properties:
         «IF this.isTopOfClassHierarchy() -»
