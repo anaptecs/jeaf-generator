@@ -18,7 +18,8 @@ cached List getAllAuthorizationTypes(uml::Model model) :
    
 cached List getAllJEAFActors(uml::Model model) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getAllJEAFActors(org.eclipse.uml2.uml.Model);
-cached List getAllUseCases(uml::Model model) :
+
+cached List getAllUseCases(uml::Model model) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getAllUseCases(org.eclipse.uml2.uml.Model);
 
 cached List getReferencedAuthorizationTypeNames(uml::Actor actor) :
