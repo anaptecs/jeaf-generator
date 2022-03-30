@@ -181,6 +181,29 @@ components:
         deprecatedArray: 
           type: string
           format: byte
+    # com.anaptecs.jeaf.junit.openapi.base.CodeTypeUsageTest
+    CodeTypeUsageTest:
+      type: object
+      additionalProperties: false
+      required:
+        - booleanCode
+        - shortCodeTypeAssociation
+        - stringCode
+      properties:
+        booleanCode: 
+          $ref: '#/components/schemas/BooleanCodeType'
+        booleanCodeAssociation: 
+          type: array
+          items:
+            $ref: '#/components/schemas/BooleanCodeType'
+          minItems: 0
+        shortCodeTypeAssociation: 
+          type: array
+          items:
+            $ref: '#/components/schemas/ShortCodeType'
+          minItems: 1
+        stringCode: 
+          $ref: '#/components/schemas/StringCodeType'
     # com.anaptecs.jeaf.junit.openapi.base.Company
     Company:
       type: object
@@ -1075,10 +1098,49 @@ components:
         - MONTH
         - YEAR
 
+    # com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType
+    BooleanCodeType:
+      type: boolean
+        
+    # com.anaptecs.jeaf.junit.openapi.base.ByteCodeType
+    ByteCodeType:
+      type: integer
+      format: int32
+        
+    # com.anaptecs.jeaf.junit.openapi.base.DoubleCodeType
+    DoubleCodeType:
+      type: number
+      format: double
+        
+    # com.anaptecs.jeaf.junit.openapi.base.FloatCodeType
+    FloatCodeType:
+      type: number
+      format: float
+        
+    # com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType
+    IntegerCodeType:
+      type: integer
+      format: int32
+        
+    # com.anaptecs.jeaf.junit.openapi.base.LongCodeType
+    LongCodeType:
+      type: integer
+      format: int64
+        
     # com.anaptecs.jeaf.junit.openapi.base.ProductCode
     ProductCode:
       type: integer
       format: int32
       minimum: 0
       exclusiveMinimum: true
+        
+    # com.anaptecs.jeaf.junit.openapi.base.ShortCodeType
+    ShortCodeType:
+      type: integer
+      format: int32
+        
+    # com.anaptecs.jeaf.junit.openapi.base.StringCodeType
+    StringCodeType:
+      type: string
+        
 

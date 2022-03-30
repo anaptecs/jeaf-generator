@@ -95,7 +95,8 @@
       «ENDIF-»  
       «IF attribute.isWriteOnly() -»
       writeOnly: «attribute.isWriteOnly()»
-      «ENDIF-»  
+      «ENDIF-»
+        
     «ENDIF-»         
   «ENDLET -»
 «ENDDEFINE»
