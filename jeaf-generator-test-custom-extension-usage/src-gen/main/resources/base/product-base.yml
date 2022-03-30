@@ -66,20 +66,20 @@ components:
     BidirectA:
       type: object
       additionalProperties: false
+      required:
+        - parent
       properties:
         parent: 
           $ref: '#/components/schemas/BidirectA'
-      required:
-        - parent
     # com.anaptecs.jeaf.junit.openapi.base.BidirectB
     BidirectB:
       type: object
       additionalProperties: false
+      required:
+        - a
       properties:
         a: 
           $ref: '#/components/schemas/BidirectA'
-      required:
-        - a
     # com.anaptecs.jeaf.junit.openapi.base.CHStopPlace
     CHStopPlace:
       type: object
@@ -90,6 +90,11 @@ components:
     Channel:
       type: object
       additionalProperties: false
+      required:
+        - channelType
+        - channelCode
+        - code
+        - selfServiceChannel
       properties:
         channelType: 
           $ref: '#/components/schemas/ChannelType'
@@ -106,23 +111,18 @@ components:
           type: boolean
           readOnly: true
           default: true
-      required:
-        - channelType
-        - channelCode
-        - code
-        - selfServiceChannel
     # com.anaptecs.jeaf.junit.openapi.base.ChildA
     ChildA:
       type: object
       additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/ParentClass'
+      required:
+        - childAAttribute
       properties:
         childAAttribute: 
           type: integer
           format: int32
-      required:
-        - childAAttribute
     # com.anaptecs.jeaf.junit.openapi.base.ChildAA
     ChildAA:
       type: object
@@ -130,18 +130,20 @@ components:
       allOf:
         - $ref: '#/components/schemas/ChildA'
       deprecated: true
+      required:
+        - childAAAttribute
       properties:
         childAAAttribute: 
           type: integer
           format: int32
-      required:
-        - childAAAttribute
     # com.anaptecs.jeaf.junit.openapi.base.ChildB
     ChildB:
       type: object
       additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/ParentClass'
+      required:
+        - childBAttribute
       properties:
         childBAttribute: 
           type: boolean
@@ -150,14 +152,15 @@ components:
           items:
             $ref: '#/components/schemas/ParentClass'
           minItems: 0
-      required:
-        - childBAttribute
     # com.anaptecs.jeaf.junit.openapi.base.ChildBB
     ChildBB:
       type: object
       additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/ChildB'
+      required:
+        - childBBAttribute
+        - deprecatedAttribute
       properties:
         childBBAttribute: 
           type: integer
@@ -178,24 +181,28 @@ components:
         deprecatedArray: 
           type: string
           format: byte
-      required:
-        - childBBAttribute
-        - deprecatedAttribute
     # com.anaptecs.jeaf.junit.openapi.base.Company
     Company:
       type: object
       additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/Partner'
+      required:
+        - name
       properties:
         name: 
           type: string
-      required:
-        - name
     # com.anaptecs.jeaf.junit.openapi.base.DateObject
     DateObject:
       type: object
       additionalProperties: false
+      required:
+        - localTime
+        - localDate
+        - localDateTime
+        - calendar
+        - sqlDate
+        - utilDate
       properties:
         localTime: 
           type: string
@@ -216,13 +223,6 @@ components:
         utilDate: 
           type: string
           format: date-time
-      required:
-        - localTime
-        - localDate
-        - localDateTime
-        - calendar
-        - sqlDate
-        - utilDate
     # com.anaptecs.jeaf.junit.openapi.base.Duration
     Duration:
       type: object
@@ -232,33 +232,36 @@ components:
          
         NOVA 14 Mapping
         * nova-base.xsd.Dauer
+      required:
+        - value
+        - timeUnit
       properties:
         value: 
           type: integer
           format: int32
         timeUnit: 
           $ref: '#/components/schemas/TimeUnit'
-      required:
-        - value
-        - timeUnit
     # com.anaptecs.jeaf.junit.openapi.base.EnumTest
     EnumTest:
       type: object
       additionalProperties: false
+      required:
+        - property
+        - enumRef
       properties:
         property: 
           $ref: '#/components/schemas/ExtensibleEnum'
         enumRef: 
           $ref: '#/components/schemas/ExtensibleEnum'
-      required:
-        - property
-        - enumRef
     # com.anaptecs.jeaf.junit.openapi.base.GeoPosition
     GeoPosition:
       type: object
       additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/PlaceRef'
+      required:
+        - longitude
+        - latitude
       properties:
         longitude: 
           type: integer
@@ -266,13 +269,13 @@ components:
         latitude: 
           type: integer
           format: int32
-      required:
-        - longitude
-        - latitude
     # com.anaptecs.jeaf.junit.openapi.base.Leg
     Leg:
       type: object
       additionalProperties: false
+      required:
+        - start
+        - stop
       properties:
         start: 
           $ref: '#/components/schemas/PlaceRef'
@@ -283,9 +286,6 @@ components:
           items:
             $ref: '#/components/schemas/PlaceRef'
           minItems: 0
-      required:
-        - start
-        - stop
     # com.anaptecs.jeaf.junit.openapi.base.MoneyAmount
     MoneyAmount:
       type: object
@@ -295,6 +295,9 @@ components:
                
         NOVA 14 Mapping
         * nova-base.xsd.GeldBetrag
+      required:
+        - amount
+        - currencyCode
       properties:
         amount: 
           description: >-
@@ -311,13 +314,21 @@ components:
           minLength: 3
           maxLength: 3
           example: 'CHF'
-      required:
-        - amount
-        - currencyCode
     # com.anaptecs.jeaf.junit.openapi.base.OpenAPITestObject
     OpenAPITestObject:
       type: object
       additionalProperties: false
+      required:
+        - readOnlyAttribute
+        - readWriteAttribute
+        - writeOnlyAttribute
+        - nullableAttribute
+        - notNullableAttribute
+        - readOnlyArray
+        - readWriteArray
+        - writeOnlyArray
+        - nullableArray
+        - notNullableArray
       properties:
         readOnlyAttribute: 
           type: string
@@ -350,17 +361,6 @@ components:
           type: number
           format: double
           nullable: false
-      required:
-        - readOnlyAttribute
-        - readWriteAttribute
-        - writeOnlyAttribute
-        - nullableAttribute
-        - notNullableAttribute
-        - readOnlyArray
-        - readWriteArray
-        - writeOnlyArray
-        - nullableArray
-        - notNullableArray
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
     ParentClass:
       type: object
@@ -373,15 +373,15 @@ components:
           ChildAA: '#/components/schemas/ChildAA'
           ChildB: '#/components/schemas/ChildB'
           ChildBB: '#/components/schemas/ChildBB'
+      required:
+        - objectType
+        - parentAttribute
       properties:
         objectType:
           description: Attribute is used as discriminator for inheritance between data types.
           type: string
         parentAttribute: 
           type: string
-      required:
-        - objectType
-        - parentAttribute
     # com.anaptecs.jeaf.junit.openapi.base.Partner
     Partner:
       type: object
@@ -392,6 +392,8 @@ components:
           Partner: '#/components/schemas/Partner'
           Company: '#/components/schemas/Company'
           Person: '#/components/schemas/Person'
+      required:
+        - objectType
       properties:
         objectType:
           description: Attribute is used as discriminator for inheritance between data types.
@@ -401,8 +403,6 @@ components:
           items:
             $ref: '#/components/schemas/PostalAddress'
           minItems: 0
-      required:
-        - objectType
     # com.anaptecs.jeaf.junit.openapi.base.PartnerContainer
     PartnerContainer:
       type: object
@@ -419,14 +419,14 @@ components:
       additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/Partner'
+      required:
+        - surname
+        - firstName
       properties:
         surname: 
           type: string
         firstName: 
           type: string
-      required:
-        - surname
-        - firstName
     # com.anaptecs.jeaf.junit.openapi.base.PlaceRef
     PlaceRef:
       type: object
@@ -441,19 +441,24 @@ components:
           SwissGeoPosition: '#/components/schemas/SwissGeoPosition'
           TopoRef: '#/components/schemas/TopoRef'
           UICStopPlace: '#/components/schemas/UICStopPlace'
+      required:
+        - objectType
+        - name
       properties:
         objectType:
           description: Attribute is used as discriminator for inheritance between data types.
           type: string
         name: 
           type: string
-      required:
-        - objectType
-        - name
     # com.anaptecs.jeaf.junit.openapi.base.PostalAddress
     PostalAddress:
       type: object
       additionalProperties: false
+      required:
+        - street
+        - houseNumber
+        - city
+        - postalCode
       properties:
         street: 
           type: string
@@ -464,15 +469,12 @@ components:
         postalCode: 
           type: integer
           format: int32
-      required:
-        - street
-        - houseNumber
-        - city
-        - postalCode
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveArraysObject
     PrimitiveArraysObject:
       type: object
       additionalProperties: false
+      required:
+        - cStringArray
       properties:
         aBooleanArray: 
           type: array
@@ -578,12 +580,12 @@ components:
           items:
             type: string
           minItems: 1
-      required:
-        - cStringArray
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveArraysObjectWithRestrictions
     PrimitiveArraysObjectWithRestrictions:
       type: object
       additionalProperties: false
+      required:
+        - aLongArray
       properties:
         aBooleanArray: 
           type: array
@@ -687,12 +689,33 @@ components:
           type: array
           items:
             type: string
-      required:
-        - aLongArray
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObject
     PrimitiveObject:
       type: object
       additionalProperties: false
+      required:
+        - aBoolean
+        - bBoolean
+        - cBoolean
+        - aByte
+        - bByte
+        - aShort
+        - bShort
+        - aInteger
+        - bInteger
+        - cInteger
+        - aLong
+        - bLong
+        - aBigInteger
+        - aCharacter
+        - bCharacter
+        - aFloat
+        - bFloat
+        - aDouble
+        - bDouble
+        - aBigDecimal
+        - aString
+        - bString
       properties:
         aBoolean: 
           type: boolean
@@ -753,6 +776,10 @@ components:
           type: string
         bString: 
           type: string
+    # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObjectWithRestrictions
+    PrimitiveObjectWithRestrictions:
+      type: object
+      additionalProperties: false
       required:
         - aBoolean
         - bBoolean
@@ -776,10 +803,6 @@ components:
         - aBigDecimal
         - aString
         - bString
-    # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObjectWithRestrictions
-    PrimitiveObjectWithRestrictions:
-      type: object
-      additionalProperties: false
       properties:
         aBoolean: 
           type: boolean
@@ -865,33 +888,16 @@ components:
           type: string
           minLength: 1
           maxLength: 128
-      required:
-        - aBoolean
-        - bBoolean
-        - cBoolean
-        - aByte
-        - bByte
-        - aShort
-        - bShort
-        - aInteger
-        - bInteger
-        - cInteger
-        - aLong
-        - bLong
-        - aBigInteger
-        - aCharacter
-        - bCharacter
-        - aFloat
-        - bFloat
-        - aDouble
-        - bDouble
-        - aBigDecimal
-        - aString
-        - bString
     # com.anaptecs.jeaf.junit.openapi.base.Problem
     Problem:
       type: object
       additionalProperties: false
+      required:
+        - title
+        - status
+        - type
+        - detail
+        - instance
       properties:
         title: 
           type: string
@@ -912,18 +918,19 @@ components:
         instance: 
           type: string
           readOnly: true
-      required:
-        - title
-        - status
-        - type
-        - detail
-        - instance
     # com.anaptecs.jeaf.junit.openapi.base.Product
     Product:
       type: object
       additionalProperties: false
       description: >-
         Data type represents a product definition
+      required:
+        - name
+        - link
+        - productID
+        - supportedCurrencies
+        - productCodes
+        - description
       properties:
         resellers: 
           type: array
@@ -967,17 +974,14 @@ components:
         description: 
           type: string
           deprecated: true
-      required:
-        - name
-        - link
-        - productID
-        - supportedCurrencies
-        - productCodes
-        - description
     # com.anaptecs.jeaf.junit.openapi.base.Reseller
     Reseller:
       type: object
       additionalProperties: false
+      required:
+        - channels
+        - name
+        - language
       properties:
         channels: 
           type: array
@@ -990,10 +994,6 @@ components:
           maxLength: 32
         language: 
           type: string
-      required:
-        - channels
-        - name
-        - language
     # com.anaptecs.jeaf.junit.openapi.base.Sortiment
     Sortiment:
       type: object

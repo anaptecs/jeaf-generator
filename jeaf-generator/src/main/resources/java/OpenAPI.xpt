@@ -402,6 +402,15 @@ components:
       «IF this.isDeprecated() -»
       deprecated: true
       «ENDIF -»
+      «IF this.isTopOfClassHierarchy() || this.hasRequiredProperties() -»
+      required:
+        «IF this.isTopOfClassHierarchy() -»
+        - objectType
+        «ENDIF-»
+        «FOREACH this.getRequiredProperties() AS property-»
+        - «property.name»
+        «ENDFOREACH-»
+      «ENDIF-»
       «IF this.ownedAttribute.size > 0 || this.isTopOfClassHierarchy() -»
       properties:
         «IF this.isTopOfClassHierarchy() -»
@@ -500,15 +509,6 @@ components:
           «ENDIF-»
           «ENDIF-»
         «ENDFOREACH-»
-      «IF this.isTopOfClassHierarchy() || this.hasRequiredProperties() -»
-      required:
-        «IF this.isTopOfClassHierarchy() -»
-        - objectType
-        «ENDIF-»
-        «FOREACH this.getRequiredProperties() AS property-»
-        - «property.name»
-        «ENDFOREACH-»
-      «ENDIF-»
       «ENDIF-»
 «ENDDEFINE»
 

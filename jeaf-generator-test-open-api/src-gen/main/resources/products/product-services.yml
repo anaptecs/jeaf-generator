@@ -610,13 +610,13 @@ components:
     Sale:
       type: object
       additionalProperties: false
+      required:
+        - transactionAmount
       properties:
         transactionAmount: 
           type: number
           format: double
         sale: 
           $ref: '../base/product-base.yml#/components/schemas/Channel'
-      required:
-        - transactionAmount
 
     
