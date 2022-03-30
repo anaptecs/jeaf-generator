@@ -524,19 +524,19 @@ public class GeneratorMojo extends AbstractMojo {
     lLog.info("Starting JEAF Generator " + XFun.getVersionInfo().getVersionString());
     lLog.info("--------------------------------------------------------------------------------------");
     if (this.isUMLGenerationRequested() == true) {
-      lLog.info("UML Model File:                           " + umlModelFile);
-      lLog.info("UML Profile File:                         " + umlProfileFile);
+      lLog.info("UML Model File:                                   " + umlModelFile);
+      lLog.info("UML Profile File:                                 " + umlProfileFile);
       if (xmiDirectory != null) {
-        lLog.info("XMI Path:                                       " + xmiDirectory);
+        lLog.info("XMI Path:                                         " + xmiDirectory);
       }
       if (modelArtifactGroupID != null) {
-        lLog.info("Model Artifact Group-ID:                        " + modelArtifactGroupID);
+        lLog.info("Model Artifact Group-ID:                          " + modelArtifactGroupID);
       }
       if (modelArtifactArtifactID != null) {
-        lLog.info("Model Artifact-ID:                              " + modelArtifactArtifactID);
+        lLog.info("Model Artifact-ID:                                " + modelArtifactArtifactID);
       }
       if (modelArtifactXMIPath != null) {
-        lLog.info("Model Artifact XMI Path:                        " + modelArtifactXMIPath);
+        lLog.info("Model Artifact XMI Path:                          " + modelArtifactXMIPath);
       }
       lLog.info(" ");
     }
