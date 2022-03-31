@@ -78,7 +78,7 @@
         «this.getCommentForOpenAPIDescription("        ")»
       «ENDIF-»
       «IF attribute.defaultValue != null -»
-      default: «attribute.defaultValue.stringValue().replaceAll("\"", "")»
+      default: '«attribute.defaultValue.stringValue().replaceAll("\"", "")»'
       «ENDIF-»
       «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR attribute-»    
       «IF attribute.isDeprecated() -»

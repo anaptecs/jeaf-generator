@@ -86,40 +86,48 @@ components:
     # com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType
     BooleanCodeType:
       type: boolean
+      nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.StringCodeType
     StringCodeType:
       type: string
+      nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.ByteCodeType
     ByteCodeType:
       type: integer
       format: int32
+      nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.ShortCodeType
     ShortCodeType:
       type: integer
       format: int32
+      nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType
     IntegerCodeType:
       type: integer
       format: int32
+      nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.LongCodeType
     LongCodeType:
       type: integer
       format: int64
+      nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.FloatCodeType
     FloatCodeType:
       type: number
       format: float
+      nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.DoubleCodeType
     DoubleCodeType:
       type: number
       format: double
+      nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.BidirectA
     BidirectA:
@@ -168,9 +176,11 @@ components:
         code:
           type: integer
           format: int32
+          nullable: false
           readOnly: true
         selfServiceChannel:
           type: boolean
+          nullable: false
           readOnly: true
           default: true
 
@@ -199,6 +209,7 @@ components:
         childAAttribute:
           type: integer
           format: int32
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildAA
     ChildAA:
@@ -213,6 +224,7 @@ components:
         childAAAttribute:
           type: integer
           format: int32
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildB
     ChildB:
@@ -225,6 +237,7 @@ components:
       properties:
         childBAttribute:
           type: boolean
+          nullable: false
         composition:
           type: array
           items:
@@ -244,10 +257,12 @@ components:
         childBBAttribute:
           type: integer
           format: int64
+          nullable: false
         deprecatedAttribute:
           type: integer
           format: int32
           deprecated: true
+          nullable: false
         deprecatedBs:
           # Attribute "deprecatedBs" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
           type: array
@@ -296,6 +311,7 @@ components:
       properties:
         name:
           type: string
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.DateObject
     DateObject:
@@ -312,22 +328,28 @@ components:
         localTime:
           type: string
           format: time
+          nullable: false
           example: '12:07'
         localDate:
           type: string
           format: date
+          nullable: false
         localDateTime:
           type: string
           format: date-time
+          nullable: false
         calendar:
           type: string
           format: date-time
+          nullable: false
         sqlDate:
           type: string
           format: date-time
+          nullable: false
         utilDate:
           type: string
           format: date-time
+          nullable: false
 
             
     # com.anaptecs.jeaf.junit.openapi.base.DeprecatedEnum
@@ -367,6 +389,7 @@ components:
         value:
           type: integer
           format: int32
+          nullable: false
         timeUnit:
           $ref: '#/components/schemas/TimeUnit'
 
@@ -383,9 +406,11 @@ components:
         longitude:
           type: integer
           format: int32
+          nullable: false
         latitude:
           type: integer
           format: int32
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.Leg
     Leg:
@@ -433,6 +458,7 @@ components:
           minLength: 3
           maxLength: 3
           example: 'CHF'
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.OpenAPITestObject
     OpenAPITestObject:
@@ -493,6 +519,7 @@ components:
       properties:
         description:
           type: string
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
     ParentClass:
@@ -515,6 +542,7 @@ components:
           type: string
         parentAttribute:
           type: string
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.Partner
     Partner:
@@ -561,8 +589,10 @@ components:
       properties:
         surname:
           type: string
+          nullable: false
         firstName:
           type: string
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.PlaceRef
     PlaceRef:
@@ -587,6 +617,7 @@ components:
           type: string
         name:
           type: string
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.PostalAddress
     PostalAddress:
@@ -600,13 +631,17 @@ components:
       properties:
         street:
           type: string
+          nullable: false
         houseNumber:
           type: string
+          nullable: false
         city:
           type: string
+          nullable: false
         postalCode:
           type: integer
           format: int32
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveArraysObject
     PrimitiveArraysObject:
@@ -719,6 +754,7 @@ components:
           items:
             type: string
           minItems: 1
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveArraysObjectWithRestrictions
     PrimitiveArraysObjectWithRestrictions:
@@ -860,63 +896,85 @@ components:
       properties:
         aBoolean:
           type: boolean
+          nullable: false
         bBoolean:
           type: boolean
+          nullable: false
         cBoolean:
           type: boolean
+          nullable: false
         aByte:
           type: integer
           format: int32
+          nullable: false
         bByte:
           type: integer
           format: int32
+          nullable: false
         aShort:
           type: integer
           format: int32
+          nullable: false
         bShort:
           type: integer
           format: int32
+          nullable: false
         aInteger:
           type: integer
           format: int32
+          nullable: false
         bInteger:
           type: integer
           format: int32
+          nullable: false
         cInteger:
           type: integer
           format: int32
+          nullable: false
         aLong:
           type: integer
           format: int64
+          nullable: false
         bLong:
           type: integer
           format: int64
+          nullable: false
         aBigInteger:
           type: integer
           format: int64
+          nullable: false
         aCharacter:
           type: string
+          nullable: false
         bCharacter:
           type: string
+          nullable: false
         aFloat:
           type: number
           format: float
+          nullable: false
         bFloat:
           type: number
           format: float
+          nullable: false
         aDouble:
           type: number
           format: double
+          nullable: false
         bDouble:
           type: number
           format: double
+          nullable: false
         aBigDecimal:
           type: number
           format: double
+          nullable: false
         aString:
           type: string
+          nullable: false
         bString:
           type: string
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObjectWithRestrictions
     PrimitiveObjectWithRestrictions:
@@ -948,50 +1006,62 @@ components:
       properties:
         aBoolean:
           type: boolean
+          nullable: false
           default: true
         bBoolean:
           type: boolean
+          nullable: false
         cBoolean:
           type: boolean
+          nullable: false
         aByte:
           type: integer
           format: int32
           maximum: 0
           exclusiveMaximum: true
+          nullable: false
         bByte:
           type: integer
           format: int32
           maximum: 0
+          nullable: false
         aShort:
           type: integer
           format: int32
           minimum: -237
+          nullable: false
         bShort:
           type: integer
           format: int32
           minimum: 0
           exclusiveMinimum: true
+          nullable: false
         aInteger:
           type: integer
           format: int32
           minimum: 0
+          nullable: false
         bInteger:
           type: integer
           format: int32
           minimum: 4711
+          nullable: false
         cInteger:
           type: integer
           format: int32
           minimum: 100
           maximum: 1000
+          nullable: false
         aLong:
           type: integer
           format: int64
+          nullable: false
         bLong:
           type: integer
           format: int64
           maximum: 299792458
           exclusiveMaximum: false
+          nullable: false
         aBigInteger:
           type: integer
           format: int64
@@ -999,37 +1069,47 @@ components:
           exclusiveMaximum: true
           minimum: -3.14159265359
           exclusiveMinimum: true
+          nullable: false
         aCharacter:
           type: string
+          nullable: false
         bCharacter:
           type: string
+          nullable: false
         aFloat:
           type: number
           format: float
+          nullable: false
         bFloat:
           type: number
           format: float
+          nullable: false
         aDouble:
           type: number
           format: double
+          nullable: false
           default: 42.0
         bDouble:
           type: number
           format: double
+          nullable: false
         aBigDecimal:
           type: number
           format: double
           minimum: 4711.0815
           exclusiveMinimum: true
+          nullable: false
         aString:
           type: string
           minLength: 8
           maxLength: 32
+          nullable: false
           default: "Hello OpenAPI"
         bString:
           type: string
           minLength: 1
           maxLength: 128
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.Problem
     Problem:
@@ -1057,9 +1137,11 @@ components:
           readOnly: true
         detail:
           type: string
+          nullable: false
           readOnly: true
         instance:
           type: string
+          nullable: false
           readOnly: true
 
     # com.anaptecs.jeaf.junit.openapi.base.Product
@@ -1084,6 +1166,7 @@ components:
         name:
           type: string
           minLength: 12
+          nullable: false
         image:
           description: >-
             Image describing the product.
@@ -1091,9 +1174,11 @@ components:
           format: byte
         link:
           type: string
+          nullable: false
           example: 'https://www.company.com/products/1345-345'
         productID:
           type: string
+          nullable: false
           readOnly: true
         supportedCurrencies:
           description: >-
@@ -1107,6 +1192,7 @@ components:
             example: 'CHF'
           minItems: 7
           maxItems: 42
+          nullable: false
         productCodes:
           type: array
           items:
@@ -1115,6 +1201,7 @@ components:
         description:
           type: string
           deprecated: true
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.ProductCode
     ProductCode:
@@ -1122,6 +1209,7 @@ components:
       format: int32
       minimum: 0
       exclusiveMinimum: true
+      nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.Reseller
     Reseller:
@@ -1141,8 +1229,10 @@ components:
           type: string
           minLength: 1
           maxLength: 32
+          nullable: false
         language:
           type: string
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.Sortiment
     Sortiment:
@@ -1174,6 +1264,7 @@ components:
           type: string
         name:
           type: string
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.StopPlaceRef
     StopPlaceRef:
@@ -1227,6 +1318,7 @@ components:
       properties:
         uicCode:
           type: string
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.UICStopPlace
     UICStopPlace:

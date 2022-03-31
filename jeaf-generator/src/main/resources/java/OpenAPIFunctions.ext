@@ -167,7 +167,10 @@ boolean isNullable(uml::Property property):
   else
     if property.isStereotypeApplied("NotNull")
     then false
-    else true;
+    else 
+      if property.lower > 0
+      then false
+      else true;
   
   
 boolean isReadOnly(uml::Property property):

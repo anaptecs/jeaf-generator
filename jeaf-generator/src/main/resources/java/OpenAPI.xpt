@@ -45,7 +45,8 @@ info:
     url: '«licenseURL»'
     «ENDIF-»
   «ENDIF-»    
-«IF this.clientDependency.supplier.typeSelect(OpenAPIServer).size > 0»
+«IF this.clientDependency.supplier.typeSelect(OpenAPIServer).size > 0-»
+
 servers:
   «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIServer).sortBy(e|e.name).sortBy(e|e.order) AS server-»
   - url: «server.url»
@@ -54,7 +55,8 @@ servers:
       «server.getCommentForOpenAPIDescription("      ")»
     «ENDIF-»    
   «ENDFOREACH-»
-«ENDIF»
+
+«ENDIF-»
 «IF this.clientDependency.supplier.typeSelect(OpenAPITag).size > 0 -»
 tags:
 «EXPAND GenerateTags FOREACH this.clientDependency.supplier.typeSelect(OpenAPITag).sortBy(e|e.name).sortBy(e|e.order)»
@@ -78,9 +80,9 @@ security:
   - {}
   «ENDIF-»
   «FOREACH this.clientDependency.supplier.typeSelect(JMM::OpenAPISecurityScheme).sortBy(e|e.name) AS security-»
-  - «security.name»: «IF security.type.name == "oauth2" || security.type.name == "openIdConnect"»[«FOREACH security.getOAuthScopes() AS scope SEPARATOR ","»«scope.name»«ENDFOREACH»]«ELSE»[]«ENDIF»  
+  - «security.name»: «IF security.type.name == "oauth2" || security.type.name == "openIdConnect"»[«FOREACH security.getOAuthScopes() AS scope SEPARATOR ","»«scope.name»«ENDFOREACH»]«ELSE»[]«ENDIF»
   «ENDFOREACH-»
-  
+
 «ENDIF-»
 «IF this.hasOpenAPITypes() || this.hasOpenAPIEnums() || this.hasOpenAPISecuritySchemes()-»
 components:
@@ -336,18 +338,18 @@ components:
             «ENDIF-»
           «IF operation.hasResponseHeaderFields() -»
           headers:
-              «FOREACH operation.getHeaderFields().sortBy(e|e.name) AS headerField -»
-              «headerField.name»:
-                schema:
-                  type: «headerField.type.getOpenAPIType(this)»
-                  «IF headerField.defaultValue != null-»
-                  default: '«headerField.defaultValue.stringValue().replaceAll("\"", "")»'
-                  «ENDIF-»
-                  «IF headerField.hasComment()-»
-                  description: >-
-                    «headerField.getCommentForOpenAPIDescription("                    ")»
-                  «ENDIF-»
-              «ENDFOREACH-»
+            «FOREACH operation.getHeaderFields().sortBy(e|e.name) AS headerField -»
+            «headerField.name»:
+              schema:
+                type: «headerField.type.getOpenAPIType(this)»
+                «IF headerField.defaultValue != null-»
+                default: '«headerField.defaultValue.stringValue().replaceAll("\"", "")»'
+                «ENDIF-»
+                «IF headerField.hasComment()-»
+                description: >-
+                  «headerField.getCommentForOpenAPIDescription("                    ")»
+                «ENDIF-»
+            «ENDFOREACH-»
           «ENDIF-»
           content:
             «FOREACH unifyMediaTypes(service.produces, operation.produces) AS contentType-»
