@@ -296,8 +296,8 @@ public class OpenAPIHelper {
 
   public static void registerLocalParameter( org.eclipse.uml2.uml.Property pProperty, Component pSpec ) {
     String lFQN = Naming.getFullyQualifiedName(pProperty.getClass_()) + "." + pProperty.getName();
-    XFun.getTrace()
-        .info("Registering local parameter " + lFQN + " with " + pSpec.getName() + ":" + pProperty.getName());
+    XFun.getTrace().debug(
+        "Registering local parameter " + lFQN + " with " + pSpec.getName() + ":" + pProperty.getName());
     parameterTypes.put(lFQN, new OpenAPIType(pProperty, pSpec, lFQN));
   }
 

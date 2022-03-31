@@ -39,7 +39,7 @@ components:
           scopes: 
             read:pets: Read pets data
             write:pets: Modify pets
-            
+
         implicit:
           authorizationUrl: 'https://example.com/api/oauth/dialog'
           tokenUrl: 'TODO Please add required token URL'
@@ -47,24 +47,24 @@ components:
           scopes: 
             read:pets: Read pets data
             write:pets: Modify pets
-            
+
   parameters:
     # com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType.novaKey
     novaKey:
       name: novaKey
       in: header
-      required: true
       schema:
         type: string
-      
+      required: true
+
     # com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType.tkID
     tkID:
       name: tkID
       in: header
-      required: true
       schema:
         type: string
-      
+      required: true
+
   responses:
     # com.anaptecs.jeaf.junit.openapi.base.ErrorResponse
     ErrorResponse:
@@ -76,7 +76,7 @@ components:
             $ref: '#/components/schemas/Problem'
 
   schemas:
-            
+
     # com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum
     ExtensibleEnum:
       type: string
@@ -199,7 +199,7 @@ components:
           readOnly: true
           default: true
 
-            
+
     # com.anaptecs.jeaf.junit.openapi.base.ChannelType
     ChannelType:
       type: string
@@ -366,7 +366,7 @@ components:
           format: date-time
           nullable: false
 
-            
+
     # com.anaptecs.jeaf.junit.openapi.base.DeprecatedEnum
     DeprecatedEnum:
       type: string
@@ -1295,7 +1295,7 @@ components:
       allOf:
         - $ref: '#/components/schemas/GeoPosition'
 
-            
+
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
     TimeUnit:
       description: >-

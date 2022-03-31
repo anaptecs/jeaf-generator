@@ -28,7 +28,8 @@
           scopes: «IF flow.clientDependency.supplier.typeSelect(OAuthScope).size == 0»{}«ENDIF»
             «FOREACH flow.clientDependency.supplier.typeSelect(OAuthScope).sortBy(e|e.name) AS scope -»
             «scope.name»: «scope.description»
-            «ENDFOREACH»
+            «ENDFOREACH-»
           «ENDIF-»
+
       «ENDFOREACH-»
 «ENDDEFINE»

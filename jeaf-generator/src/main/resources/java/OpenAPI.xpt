@@ -103,10 +103,6 @@ components:
       description: >-
         «parameter.getCommentForOpenAPIDescription("        ")»
       «ENDIF-»
-      required: «parameter.isRequiredProperty()»
-      «IF parameter.isDeprecated() -»
-      deprecated: true
-      «ENDIF-»
       schema:
       «IF parameter.type.isBasicOpenAPIType() == true-»
         «IF parameter.isMultivalued() == false-»
@@ -128,7 +124,11 @@ components:
           «ENDIF-»
         «ENDIF-»
       «ENDIF-»
-      
+      required: «parameter.isRequiredProperty()»
+      «IF parameter.isDeprecated() -»
+      deprecated: true
+      «ENDIF-»
+
     «ENDFOREACH-»
   «ENDIF-»
   «IF this.getErrorResponses().size > 0-»
@@ -145,7 +145,7 @@ components:
           «IF element.isStereotypeApplied("OpenAPIDataType") -»
             «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null) FOR ((OpenAPIDataType) element)»
           «ELSE-»
-            «EXPAND GenerateOpenAPIEnum FOR ((OpenAPIEnumeration) element)»
+«EXPAND GenerateOpenAPIEnum FOR ((OpenAPIEnumeration) element)»
           «ENDIF-»
         «ENDIF-»
       «ENDFOREACH-»
