@@ -83,45 +83,45 @@ components:
           $ref: '#/components/schemas/ExtensibleEnum'
         enumRef:
           $ref: '#/components/schemas/ExtensibleEnum'
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType
     BooleanCodeType:
       type: boolean
-        
+
     # com.anaptecs.jeaf.junit.openapi.base.StringCodeType
     StringCodeType:
       type: string
-        
+
     # com.anaptecs.jeaf.junit.openapi.base.ByteCodeType
     ByteCodeType:
       type: integer
       format: int32
-        
+
     # com.anaptecs.jeaf.junit.openapi.base.ShortCodeType
     ShortCodeType:
       type: integer
       format: int32
-        
+
     # com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType
     IntegerCodeType:
       type: integer
       format: int32
-        
+
     # com.anaptecs.jeaf.junit.openapi.base.LongCodeType
     LongCodeType:
       type: integer
       format: int64
-        
+
     # com.anaptecs.jeaf.junit.openapi.base.FloatCodeType
     FloatCodeType:
       type: number
       format: float
-        
+
     # com.anaptecs.jeaf.junit.openapi.base.DoubleCodeType
     DoubleCodeType:
       type: number
       format: double
-        
+
     # com.anaptecs.jeaf.junit.openapi.base.BidirectA
     BidirectA:
       type: object
@@ -131,7 +131,7 @@ components:
       properties:
         parent:
           $ref: '#/components/schemas/BidirectA'
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.BidirectB
     BidirectB:
       type: object
@@ -141,14 +141,14 @@ components:
       properties:
         a:
           $ref: '#/components/schemas/BidirectA'
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.CHStopPlace
     CHStopPlace:
       type: object
       additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/StopPlaceRef'
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.Channel
     Channel:
       type: object
@@ -174,7 +174,7 @@ components:
           type: boolean
           readOnly: true
           default: true
-      
+
             
     # com.anaptecs.jeaf.junit.openapi.base.ChannelType
     ChannelType:
@@ -200,7 +200,7 @@ components:
         childAAttribute:
           type: integer
           format: int32
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.ChildAA
     ChildAA:
       type: object
@@ -214,7 +214,7 @@ components:
         childAAAttribute:
           type: integer
           format: int32
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.ChildB
     ChildB:
       type: object
@@ -231,7 +231,7 @@ components:
           items:
             $ref: '#/components/schemas/ParentClass'
           minItems: 0
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.ChildBB
     ChildBB:
       type: object
@@ -261,7 +261,7 @@ components:
         deprecatedArray:
           type: string
           format: byte
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.CodeTypeUsageTest
     CodeTypeUsageTest:
       type: object
@@ -285,7 +285,7 @@ components:
           minItems: 1
         stringCode:
           $ref: '#/components/schemas/StringCodeType'
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.Company
     Company:
       type: object
@@ -297,7 +297,7 @@ components:
       properties:
         name:
           type: string
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.DateObject
     DateObject:
       type: object
@@ -329,7 +329,7 @@ components:
         utilDate:
           type: string
           format: date-time
-      
+
             
     # com.anaptecs.jeaf.junit.openapi.base.DeprecatedEnum
     DeprecatedEnum:
@@ -351,7 +351,7 @@ components:
           $ref: '#/components/schemas/Stop'
         end:
           $ref: '#/components/schemas/Stop'
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.Duration
     Duration:
       type: object
@@ -370,7 +370,7 @@ components:
           format: int32
         timeUnit:
           $ref: '#/components/schemas/TimeUnit'
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.GeoPosition
     GeoPosition:
       type: object
@@ -387,7 +387,7 @@ components:
         latitude:
           type: integer
           format: int32
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.Leg
     Leg:
       type: object
@@ -405,7 +405,7 @@ components:
           items:
             $ref: '#/components/schemas/PlaceRef'
           minItems: 0
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.MoneyAmount
     MoneyAmount:
       type: object
@@ -434,7 +434,7 @@ components:
           minLength: 3
           maxLength: 3
           example: 'CHF'
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.OpenAPITestObject
     OpenAPITestObject:
       type: object
@@ -482,7 +482,7 @@ components:
           type: number
           format: double
           nullable: false
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.POI
     POI:
       type: object
@@ -494,7 +494,7 @@ components:
       properties:
         description:
           type: string
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
     ParentClass:
       type: object
@@ -516,7 +516,7 @@ components:
           type: string
         parentAttribute:
           type: string
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.Partner
     Partner:
       type: object
@@ -538,7 +538,7 @@ components:
           items:
             $ref: '#/components/schemas/PostalAddress'
           minItems: 0
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.PartnerContainer
     PartnerContainer:
       type: object
@@ -549,7 +549,7 @@ components:
           items:
             $ref: '#/components/schemas/Partner'
           minItems: 0
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.Person
     Person:
       type: object
@@ -564,7 +564,7 @@ components:
           type: string
         firstName:
           type: string
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.PlaceRef
     PlaceRef:
       type: object
@@ -588,7 +588,7 @@ components:
           type: string
         name:
           type: string
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.PostalAddress
     PostalAddress:
       type: object
@@ -608,7 +608,7 @@ components:
         postalCode:
           type: integer
           format: int32
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveArraysObject
     PrimitiveArraysObject:
       type: object
@@ -720,7 +720,7 @@ components:
           items:
             type: string
           minItems: 1
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveArraysObjectWithRestrictions
     PrimitiveArraysObjectWithRestrictions:
       type: object
@@ -830,7 +830,7 @@ components:
           type: array
           items:
             type: string
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObject
     PrimitiveObject:
       type: object
@@ -918,7 +918,7 @@ components:
           type: string
         bString:
           type: string
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObjectWithRestrictions
     PrimitiveObjectWithRestrictions:
       type: object
@@ -1031,7 +1031,7 @@ components:
           type: string
           minLength: 1
           maxLength: 128
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.Problem
     Problem:
       type: object
@@ -1062,7 +1062,7 @@ components:
         instance:
           type: string
           readOnly: true
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.Product
     Product:
       type: object
@@ -1116,14 +1116,14 @@ components:
         description:
           type: string
           deprecated: true
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.ProductCode
     ProductCode:
       type: integer
       format: int32
       minimum: 0
       exclusiveMinimum: true
-        
+
     # com.anaptecs.jeaf.junit.openapi.base.Reseller
     Reseller:
       type: object
@@ -1144,7 +1144,7 @@ components:
           maxLength: 32
         language:
           type: string
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.Sortiment
     Sortiment:
       type: object
@@ -1155,7 +1155,7 @@ components:
           items:
             $ref: '#/components/schemas/Product'
           minItems: 0
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.Stop
     Stop:
       type: object
@@ -1175,21 +1175,21 @@ components:
           type: string
         name:
           type: string
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.StopPlaceRef
     StopPlaceRef:
       type: object
       additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/PlaceRef'
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.SwissGeoPosition
     SwissGeoPosition:
       type: object
       additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/GeoPosition'
-      
+
             
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
     TimeUnit:
@@ -1216,7 +1216,7 @@ components:
       additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/PlaceRef'
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.UICStop
     UICStop:
       type: object
@@ -1228,11 +1228,11 @@ components:
       properties:
         uicCode:
           type: string
-      
+
     # com.anaptecs.jeaf.junit.openapi.base.UICStopPlace
     UICStopPlace:
       type: object
       additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/StopPlaceRef'
-      
+
