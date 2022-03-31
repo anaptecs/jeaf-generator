@@ -116,6 +116,11 @@ boolean isBeanParamater(uml::Parameter param):
 List[uml::Parameter] getBeanParams(uml::Operation operation):
    operation.ownedParameter.select(e|e.isBeanParamater());
    
+boolean inlineBeanParam(uml::Parameter param) :
+   if param.type.isStereotypeApplied("BeanParam")
+   then ((JMM::BeanParam) param.type).inline
+   else true;
+   
 boolean hasBeanParameters(uml::Operation operation):
    getBeanParams(operation).size > 0;
    
@@ -210,6 +215,12 @@ List[JMM::ErrorResponse] getCustomErrorResponses(JMM::OpenAPI3Specification spec
    
 JMM::ErrorResponse getCustomErrorResponse(JMM::OpenAPI3Specification spec):
   getCustomErrorResponses(spec).first();
+  
+cached List[uml::Class] getResponseHeaderGroups(uml::Operation operation) :
+  operation.clientDependency.supplier.typeSelect(JMM::ResponseHeaderGroup);
+  
+cached boolean hasResponseHeaderFields(uml::Operation operation) :
+  operation.getResponseHeaderGroups().size > 0; 
 
 boolean hasCustomErrorResponse(JMM::OpenAPI3Specification spec):
   getCustomErrorResponses(spec).size == 1;
