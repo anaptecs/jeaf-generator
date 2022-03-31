@@ -336,8 +336,7 @@ components:
             «ENDIF-»
           «IF operation.hasResponseHeaderFields() -»
           headers:
-            «FOREACH operation.getResponseHeaderGroups() AS headerGroup-»
-              «FOREACH headerGroup.ownedAttribute AS headerField -»
+              «FOREACH operation.getHeaderFields().sortBy(e|e.name) AS headerField -»
               «headerField.name»:
                 schema:
                   type: «headerField.type.getOpenAPIType(this)»
@@ -349,7 +348,6 @@ components:
                     «headerField.getCommentForOpenAPIDescription("                    ")»
                   «ENDIF-»
               «ENDFOREACH-»
-            «ENDFOREACH-»
           «ENDIF-»
           content:
             «FOREACH unifyMediaTypes(service.produces, operation.produces) AS contentType-»

@@ -217,7 +217,10 @@ JMM::ErrorResponse getCustomErrorResponse(JMM::OpenAPI3Specification spec):
   getCustomErrorResponses(spec).first();
   
 cached List[uml::Class] getResponseHeaderGroups(uml::Operation operation) :
-  operation.clientDependency.supplier.typeSelect(JMM::ResponseHeaderGroup);
+  operation.clientDependency.supplier.typeSelect(JMM::ResponseHeaderGroup).addAll(operation.interface.clientDependency.supplier.typeSelect(JMM::ResponseHeaderGroup)).toSet();
+  
+cached List[uml::Property] getHeaderFields(uml::Operation operation) :
+   operation.getResponseHeaderGroups().ownedAttribute;
   
 cached boolean hasResponseHeaderFields(uml::Operation operation) :
   operation.getResponseHeaderGroups().size > 0; 
