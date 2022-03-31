@@ -14,10 +14,13 @@ import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType;
+import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
 import com.anaptecs.jeaf.junit.openapi.base.StringCodeType;
+import com.anaptecs.jeaf.junit.openapi.service1.ChildBeanParameterType;
+import com.anaptecs.jeaf.junit.openapi.service1.LocalBeanParamType;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 
@@ -234,6 +237,39 @@ final class ProductServiceImpl extends ProductServiceImplBase {
    */
   @Override
   public IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode ) {
+    // TODO Implement method and return real result
+    return null;
+  }
+
+  /**
+   * 
+   * @param pBeanParam
+   * @return {@link String}
+   */
+  @Override
+  public String testLocalBeanParamType( LocalBeanParamType pBeanParam ) {
+    // TODO Implement method and return real result
+    return null;
+  }
+
+  /**
+   * 
+   * @param pParent
+   * @return {@link String}
+   */
+  @Override
+  public String testExternalBeanParameterType( ParentBeanParamType pParent ) {
+    // TODO Implement method and return real result
+    return null;
+  }
+
+  /**
+   * 
+   * @param pChild
+   * @return {@link String}
+   */
+  @Override
+  public String testChildBeanParameter( ChildBeanParameterType pChild ) {
     // TODO Implement method and return real result
     return null;
   }

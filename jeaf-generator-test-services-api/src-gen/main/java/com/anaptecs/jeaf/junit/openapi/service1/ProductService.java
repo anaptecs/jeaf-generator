@@ -17,6 +17,7 @@ import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType;
+import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
@@ -154,4 +155,25 @@ public interface ProductService extends Service {
    * @return {@link IntegerCodeType}
    */
   IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode );
+
+  /**
+   * 
+   * @param pBeanParam
+   * @return {@link String}
+   */
+  String testLocalBeanParamType( LocalBeanParamType pBeanParam );
+
+  /**
+   * 
+   * @param pParent
+   * @return {@link String}
+   */
+  String testExternalBeanParameterType( ParentBeanParamType pParent );
+
+  /**
+   * 
+   * @param pChild
+   * @return {@link String}
+   */
+  String testChildBeanParameter( ChildBeanParameterType pChild );
 }

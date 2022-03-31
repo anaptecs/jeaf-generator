@@ -28,7 +28,7 @@ public class SpecialContext extends Context {
   /**
    * 
    */
-  @HeaderParam("")
+  @HeaderParam("specificHeader")
   @NotNull
   private String specificHeader;
 

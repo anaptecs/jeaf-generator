@@ -29,6 +29,8 @@ public class OpenAPIHelper {
 
   public static final Map<String, OpenAPIType> complexTypes = new HashMap<String, OpenAPIType>();
 
+  public static final Map<String, OpenAPIType> parameterTypes = new HashMap<String, OpenAPIType>();
+
   public static final Map<String, String> httpStatusCodeMapping = new HashMap<String, String>();
 
   public static final Map<String, String> specDependencies = new HashMap<String, String>();
@@ -290,6 +292,40 @@ public class OpenAPIHelper {
     String lFQN = Naming.getFullyQualifiedName(pClass);
     XFun.getTrace().debug("Registering local type " + lFQN + " with " + pSpec.getName() + ":" + pClass.getName());
     complexTypes.put(lFQN, new OpenAPIType(pClass, pSpec, lFQN));
+  }
+
+  public static void registerLocalParameter( org.eclipse.uml2.uml.Property pProperty, Component pSpec ) {
+    String lFQN = Naming.getFullyQualifiedName(pProperty.getClass_()) + "." + pProperty.getName();
+    XFun.getTrace()
+        .info("Registering local parameter " + lFQN + " with " + pSpec.getName() + ":" + pProperty.getName());
+    parameterTypes.put(lFQN, new OpenAPIType(pProperty, pSpec, lFQN));
+  }
+
+  public static String getOpenAPIParameter( org.eclipse.uml2.uml.Property pProperty, Component pSpec ) {
+    String lFQN = Naming.getFullyQualifiedName(pProperty.getClass_()) + "." + pProperty.getName();
+    String lTypeName;
+    if (parameterTypes.containsKey(lFQN) == true) {
+      OpenAPIType lOpenAPIType = parameterTypes.get(lFQN);
+      // Local reference needed.
+      if (lOpenAPIType.spec == pSpec) {
+        lTypeName = "'#/components/parameters/" + pProperty.getName() + "'";
+      }
+      else {
+        String lKey = createSpecDependencyKey(pSpec, lOpenAPIType.spec);
+        String lLocation = specDependencies.get(lKey);
+        if (lLocation != null) {
+          lTypeName = "'" + lLocation + "#/components/parameters/" + pProperty.getName() + "'";
+        }
+        else {
+          XFun.getTrace().error("Dependency " + lKey + " not found.");
+          lTypeName = "unknown parameter: " + lFQN;
+        }
+      }
+    }
+    else {
+      lTypeName = "unknown parameter: " + lFQN;
+    }
+    return lTypeName;
   }
 
   public static boolean isBasicOpenAPIType( org.eclipse.uml2.uml.Type pType ) {

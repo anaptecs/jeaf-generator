@@ -88,13 +88,53 @@ security:
 components:
   «IF this.hasOpenAPISecuritySchemes() -»
   securitySchemes:
-    «EXPAND java::OpenAPISecurity::GenerateOpenAPISecurityScheme FOREACH this.getOpenAPISecuritySchemes()»
+    «EXPAND java::OpenAPISecurity::GenerateOpenAPISecurityScheme FOREACH this.getOpenAPISecuritySchemes()-»
+  «ENDIF-»
+  «IF this.hasOpenAPIParameters()-»
+  parameters:
+    «FOREACH this.getOpenAPIParameters() AS parameter-»
+    «IF suppressClassNameCommentInOpenAPISpec() == false-»
+    # «parameter.class.fqn()».«parameter.name»
+    «ENDIF-»
+    «parameter.name»:
+      name: «EXPAND RESTParamName FOR parameter»
+      in: «parameter.getOpenAPIParameterType()»
+      «IF parameter.hasComment()-»
+      description: >-
+        «parameter.getCommentForOpenAPIDescription("        ")»
+      «ENDIF-»
+      required: «parameter.isRequiredProperty()»
+      «IF parameter.isDeprecated() -»
+      deprecated: true
+      «ENDIF-»
+      schema:
+      «IF parameter.type.isBasicOpenAPIType() == true-»
+        «IF parameter.isMultivalued() == false-»
+        type: «parameter.type.getOpenAPIType(this)»
+          «IF parameter.type.hasOpenAPIFormat()-»
+        format: «parameter.type.getOpenAPIFormat()»
+          «ENDIF-»
+        «ELSE-»
+        type: array
+          items:
+            type: «parameter.type.getOpenAPIType(this)»
+          «IF parameter.type.hasOpenAPIFormat()-»
+            format: «parameter.type.getOpenAPIFormat()»
+          «ENDIF-»
+        «ENDIF-»
+        «IF parameter.hasExample()-»
+          «IF ((Example) parameter).exampleValue.length > 0-»
+          example: '«((Example) parameter).exampleValue»'
+          «ENDIF-»
+        «ENDIF-»
+      «ENDIF-»
+      
+    «ENDFOREACH-»
   «ENDIF-»
   «IF this.getErrorResponses().size > 0-»
   responses:
     «EXPAND GenerateErrorResponse(this) FOREACH this.getErrorResponses()»
   «ENDIF -»
-
   «IF this.getOpenAPITypes().size > 0 || this.getOpenAPIEnums().size > 0 || this.getOpenAPIDataTypes().size > 0 -»
   schemas:
     «IF this.explicityTypeOrdering == true -»
@@ -125,6 +165,7 @@ components:
 	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPIEnums()»
 	«EXPAND RegisterLocalType(this) FOREACH this.getErrorResponses()»
 	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPIDataTypes()»
+	«EXPAND RegisterLocalParameter(this) FOREACH this.getOpenAPIParameters()»
 	
 	«FOREACH this.clientDependency.typeSelect(OpenAPISpecReference) AS dependency»
 	  «FOREACH dependency.supplier.typeSelect(OpenAPI3Specification) AS dependentSpec»
@@ -156,6 +197,10 @@ components:
 
 «DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPIDataType»
 «this.registerLocalType(spec)»
+«ENDDEFINE»
+
+«DEFINE RegisterLocalParameter(OpenAPI3Specification spec) FOR Property»
+    «this.registerLocalParameter(spec)»
 «ENDDEFINE»
 
 «DEFINE GeneratePaths FOR OpenAPI3Specification -»
@@ -226,8 +271,8 @@ components:
         «ENDFOREACH-»
         «REM»Process bean paramaters«ENDREM-»
         «FOREACH operation.getBeanParams() AS param-»
+        «FOREACH param.type.getOpenAPIProperties().sortBy(e|e.name) AS property-»
         «IF param.inlineBeanParam()-»
-        «FOREACH param.type.getOpenAPIProperties() AS property-»
         - name: «EXPAND RESTParamName FOR property»
           in: «property.getOpenAPIParameterType()»
           description: >-
@@ -266,9 +311,10 @@ components:
             default: '«property.defaultValue.stringValue()»'
                 «ENDIF-»
             «ENDIF-»
-        «ENDFOREACH-»
         «ELSE-»
+        - $ref: «property.getOpenAPIParameter(this)»
         «ENDIF-»
+        «ENDFOREACH-»
         «ENDFOREACH-»
       «ENDIF-»
       «REM»Process request body«ENDREM-»

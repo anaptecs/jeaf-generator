@@ -50,6 +50,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testDeprecatedOperation( ) throws Exception;
 
   /**
+   * Method test the implementation of service method testExternalBeanParameterType(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestExternalBeanParameterType( ) throws Exception;
+
+  /**
    * Method test the implementation of service method deprecatedBody(...)
    * 
    * @throws Exception if the test fails.
@@ -139,6 +146,20 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testDeprectedComplexRequestBody( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method testLocalBeanParamType(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestLocalBeanParamType( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method testChildBeanParameter(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestChildBeanParameter( ) throws Exception;
 
   /**
    * Method test the implementation of service method createChannelCode(...)

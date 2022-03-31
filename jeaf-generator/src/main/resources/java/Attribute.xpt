@@ -382,16 +382,16 @@
 «DEFINE RESTParamAnnotation FOR Property»
   «IF generateJAXRSAnnotations() == true -»
   «IF this.isStereotypeApplied("PathParam") -»
-  @javax.ws.rs.PathParam("«((PathParam) this).value-»")
+  @javax.ws.rs.PathParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
   «ENDIF-»
   «IF this.isStereotypeApplied("HeaderParam") -»
-  @javax.ws.rs.HeaderParam("«((HeaderParam) this).value-»")
+  @javax.ws.rs.HeaderParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
   «ENDIF-»
   «IF this.isStereotypeApplied("QueryParam") -»
-  @javax.ws.rs.QueryParam("«((QueryParam) this).value-»")
+  @javax.ws.rs.QueryParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
   «ENDIF-»
   «IF this.isStereotypeApplied("CookieParam") -»
-  @javax.ws.rs.CookieParam("«((CookieParam) this).value-»")
+  @javax.ws.rs.CookieParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
   «ENDIF-»
   «IF this.isStereotypeApplied("BeanParam") -»
   @javax.ws.rs.BeanParam 

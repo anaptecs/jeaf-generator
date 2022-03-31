@@ -13,6 +13,12 @@ List[JMM::OpenAPIDataType] getOpenAPIDataTypes(JMM::OpenAPI3Specification spec):
 boolean hasOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
     getOpenAPISecuritySchemes(spec).size > 0;
     
+List[uml::Property] getOpenAPIParameters(JMM::OpenAPI3Specification spec):
+	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::BeanParam).select(e|e.inline==false).typeSelect(uml::Class).ownedAttribute.sortBy(e|e.name);
+    
+boolean hasOpenAPIParameters(JMM::OpenAPI3Specification spec):
+    spec.getOpenAPIParameters().size > 0;
+
 List[JMM::OpenAPISecurityScheme] getOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
     spec.getModel().allOwnedElements().typeSelect(JMM::OpenAPISecurityScheme).select(e|e.isInGeneratorWhitelist() == true).sortBy(e|e.name);
 
@@ -56,6 +62,9 @@ boolean hasMultiLineComment(uml::Element element) :
 String getOpenAPIType(uml::Type type, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);
     
+String getOpenAPIParameter(uml::Property property, JMM::OpenAPI3Specification spec):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIParameter(org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Component);
+    
 String getResponseType(uml::Type type, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getResponseType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);    
 
@@ -73,6 +82,9 @@ boolean isOpenAPIDataType(uml::Type type):
    
 Void registerLocalType(uml::NamedElement localClass, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.registerLocalType(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.Component);
+    
+Void registerLocalParameter(uml::Property localParam, JMM::OpenAPI3Specification spec):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.registerLocalParameter(org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Component);
     
 cached List[uml::Class] getAllSubclasses(uml::Type class) :
    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getAllSubclasses(org.eclipse.uml2.uml.Type);

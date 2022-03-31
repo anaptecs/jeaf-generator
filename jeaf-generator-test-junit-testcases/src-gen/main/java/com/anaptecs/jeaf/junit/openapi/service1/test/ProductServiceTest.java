@@ -21,6 +21,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     TestSuite lSuite = new TestSuite("ProductServiceTest");
     // Add all test of this class.
     lSuite.addTest(new ProductServiceTest("testDeprecatedOperation"));
+    lSuite.addTest(new ProductServiceTest("testTestExternalBeanParameterType"));
     lSuite.addTest(new ProductServiceTest("testDeprecatedBody"));
     lSuite.addTest(new ProductServiceTest("testGetProduct"));
     lSuite.addTest(new ProductServiceTest("testDeprecatedBeanParam"));
@@ -34,6 +35,8 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testAddCurrencies"));
     lSuite.addTest(new ProductServiceTest("testGetSortiment"));
     lSuite.addTest(new ProductServiceTest("testDeprectedComplexRequestBody"));
+    lSuite.addTest(new ProductServiceTest("testTestLocalBeanParamType"));
+    lSuite.addTest(new ProductServiceTest("testTestChildBeanParameter"));
     lSuite.addTest(new ProductServiceTest("testCreateChannelCode"));
     lSuite.addTest(new ProductServiceTest("testGetProducts"));
     lSuite.addTest(new ProductServiceTest("testDeprecatedContext"));
@@ -83,6 +86,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testDeprecatedOperation( ) throws Exception {
     // TODO Implement test for service method deprecatedOperation(...)
+  }
+
+  /**
+   * Method test the implementation of service method testExternalBeanParameterType
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestExternalBeanParameterType( ) throws Exception {
+    // TODO Implement test for service method testExternalBeanParameterType(...)
   }
 
   /**
@@ -213,6 +226,26 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testDeprectedComplexRequestBody( ) throws Exception {
     // TODO Implement test for service method deprectedComplexRequestBody(...)
+  }
+
+  /**
+   * Method test the implementation of service method testLocalBeanParamType
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestLocalBeanParamType( ) throws Exception {
+    // TODO Implement test for service method testLocalBeanParamType(...)
+  }
+
+  /**
+   * Method test the implementation of service method testChildBeanParameter
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestChildBeanParameter( ) throws Exception {
+    // TODO Implement test for service method testChildBeanParameter(...)
   }
 
   /**

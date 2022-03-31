@@ -48,7 +48,23 @@ components:
             read:pets: Read pets data
             write:pets: Modify pets
             
-
+  parameters:
+    # com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType.novaKey
+    novaKey:
+      name: novaKey
+      in: header
+      required: true
+      schema:
+        type: string
+      
+    # com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType.tkID
+    tkID:
+      name: tkID
+      in: header
+      required: true
+      schema:
+        type: string
+      
   responses:
     # com.anaptecs.jeaf.junit.openapi.base.ErrorResponse
     ErrorResponse:
@@ -58,7 +74,6 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/Problem'
-
 
   schemas:
             

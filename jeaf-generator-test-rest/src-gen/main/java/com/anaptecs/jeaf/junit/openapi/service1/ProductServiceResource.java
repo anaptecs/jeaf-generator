@@ -27,6 +27,7 @@ import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType;
+import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
@@ -237,6 +238,39 @@ public class ProductServiceResource {
   public Response testCodeTypeUsage( StringCodeType pStringCode ) {
     ProductService lService = JEAF.getService(ProductService.class);
     IntegerCodeType lResult = lService.testCodeTypeUsage(pStringCode);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#testLocalBeanParamType()}
+   */
+  @Path("/LocalBeanParam")
+  @GET
+  public Response testLocalBeanParamType( @BeanParam LocalBeanParamType pBeanParam ) {
+    ProductService lService = JEAF.getService(ProductService.class);
+    String lResult = lService.testLocalBeanParamType(pBeanParam);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#testExternalBeanParameterType()}
+   */
+  @Path("/ExternalBeanParam")
+  @GET
+  public Response testExternalBeanParameterType( @BeanParam ParentBeanParamType pParent ) {
+    ProductService lService = JEAF.getService(ProductService.class);
+    String lResult = lService.testExternalBeanParameterType(pParent);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#testChildBeanParameter()}
+   */
+  @Path("/ChildBeanParam")
+  @GET
+  public Response testChildBeanParameter( @BeanParam ChildBeanParameterType pChild ) {
+    ProductService lService = JEAF.getService(ProductService.class);
+    String lResult = lService.testChildBeanParameter(pChild);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 }
