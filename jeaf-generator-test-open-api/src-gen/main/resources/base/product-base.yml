@@ -79,9 +79,9 @@ components:
         - property
         - enumRef
       properties:
-        property: 
+        property:
           $ref: '#/components/schemas/ExtensibleEnum'
-        enumRef: 
+        enumRef:
           $ref: '#/components/schemas/ExtensibleEnum'
       
     # com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType
@@ -129,7 +129,7 @@ components:
       required:
         - parent
       properties:
-        parent: 
+        parent:
           $ref: '#/components/schemas/BidirectA'
       
     # com.anaptecs.jeaf.junit.openapi.base.BidirectB
@@ -139,7 +139,7 @@ components:
       required:
         - a
       properties:
-        a: 
+        a:
           $ref: '#/components/schemas/BidirectA'
       
     # com.anaptecs.jeaf.junit.openapi.base.CHStopPlace
@@ -159,18 +159,18 @@ components:
         - code
         - selfServiceChannel
       properties:
-        channelType: 
+        channelType:
           $ref: '#/components/schemas/ChannelType'
-        channelCode: 
+        channelCode:
           type: string
           default: "WEBSHOP"
           example: 'MOBILE_APP'
           nullable: false
-        code: 
+        code:
           type: integer
           format: int32
           readOnly: true
-        selfServiceChannel: 
+        selfServiceChannel:
           type: boolean
           readOnly: true
           default: true
@@ -197,7 +197,7 @@ components:
       required:
         - childAAttribute
       properties:
-        childAAttribute: 
+        childAAttribute:
           type: integer
           format: int32
       
@@ -211,7 +211,7 @@ components:
       required:
         - childAAAttribute
       properties:
-        childAAAttribute: 
+        childAAAttribute:
           type: integer
           format: int32
       
@@ -224,9 +224,9 @@ components:
       required:
         - childBAttribute
       properties:
-        childBAttribute: 
+        childBAttribute:
           type: boolean
-        composition: 
+        composition:
           type: array
           items:
             $ref: '#/components/schemas/ParentClass'
@@ -242,23 +242,23 @@ components:
         - childBBAttribute
         - deprecatedAttribute
       properties:
-        childBBAttribute: 
+        childBBAttribute:
           type: integer
           format: int64
-        deprecatedAttribute: 
+        deprecatedAttribute:
           type: integer
           format: int32
           deprecated: true
-        deprecatedBs: 
+        deprecatedBs:
           # Attribute "deprecatedBs" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
           type: array
           items:
             $ref: '#/components/schemas/ChildB'
           minItems: 0
-        deprecatedParent: 
+        deprecatedParent:
           # Attribute "deprecatedParent" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
           $ref: '#/components/schemas/ParentClass'
-        deprecatedArray: 
+        deprecatedArray:
           type: string
           format: byte
       
@@ -271,19 +271,19 @@ components:
         - shortCodeTypeAssociation
         - stringCode
       properties:
-        booleanCode: 
+        booleanCode:
           $ref: '#/components/schemas/BooleanCodeType'
-        booleanCodeAssociation: 
+        booleanCodeAssociation:
           type: array
           items:
             $ref: '#/components/schemas/BooleanCodeType'
           minItems: 0
-        shortCodeTypeAssociation: 
+        shortCodeTypeAssociation:
           type: array
           items:
             $ref: '#/components/schemas/ShortCodeType'
           minItems: 1
-        stringCode: 
+        stringCode:
           $ref: '#/components/schemas/StringCodeType'
       
     # com.anaptecs.jeaf.junit.openapi.base.Company
@@ -295,7 +295,7 @@ components:
       required:
         - name
       properties:
-        name: 
+        name:
           type: string
       
     # com.anaptecs.jeaf.junit.openapi.base.DateObject
@@ -310,23 +310,23 @@ components:
         - sqlDate
         - utilDate
       properties:
-        localTime: 
+        localTime:
           type: string
           format: time
           example: '12:07'
-        localDate: 
+        localDate:
           type: string
           format: date
-        localDateTime: 
+        localDateTime:
           type: string
           format: date-time
-        calendar: 
+        calendar:
           type: string
           format: date-time
-        sqlDate: 
+        sqlDate:
           type: string
           format: date-time
-        utilDate: 
+        utilDate:
           type: string
           format: date-time
       
@@ -347,9 +347,9 @@ components:
       required:
         - end
       properties:
-        start: 
+        start:
           $ref: '#/components/schemas/Stop'
-        end: 
+        end:
           $ref: '#/components/schemas/Stop'
       
     # com.anaptecs.jeaf.junit.openapi.base.Duration
@@ -365,10 +365,10 @@ components:
         - value
         - timeUnit
       properties:
-        value: 
+        value:
           type: integer
           format: int32
-        timeUnit: 
+        timeUnit:
           $ref: '#/components/schemas/TimeUnit'
       
     # com.anaptecs.jeaf.junit.openapi.base.GeoPosition
@@ -381,10 +381,10 @@ components:
         - longitude
         - latitude
       properties:
-        longitude: 
+        longitude:
           type: integer
           format: int32
-        latitude: 
+        latitude:
           type: integer
           format: int32
       
@@ -396,11 +396,11 @@ components:
         - start
         - stop
       properties:
-        start: 
+        start:
           $ref: '#/components/schemas/PlaceRef'
-        stop: 
+        stop:
           $ref: '#/components/schemas/PlaceRef'
-        stopovers: 
+        stopovers:
           type: array
           items:
             $ref: '#/components/schemas/PlaceRef'
@@ -419,14 +419,14 @@ components:
         - amount
         - currencyCode
       properties:
-        amount: 
+        amount:
           description: >-
             The amount of money. Attribute is always set.
           type: number
           format: double
           nullable: false
           readOnly: true
-        currencyCode: 
+        currencyCode:
           description: >-
             ISO 4217 currency code.
           type: string
@@ -451,34 +451,34 @@ components:
         - nullableArray
         - notNullableArray
       properties:
-        readOnlyAttribute: 
+        readOnlyAttribute:
           type: string
           readOnly: true
-        readWriteAttribute: 
+        readWriteAttribute:
           type: string
-        writeOnlyAttribute: 
+        writeOnlyAttribute:
           type: integer
           format: int32
           writeOnly: true
-        nullableAttribute: 
+        nullableAttribute:
           type: boolean
-        notNullableAttribute: 
+        notNullableAttribute:
           type: number
           format: double
           nullable: false
-        readOnlyArray: 
+        readOnlyArray:
           type: string
           readOnly: true
-        readWriteArray: 
+        readWriteArray:
           type: string
-        writeOnlyArray: 
+        writeOnlyArray:
           type: integer
           format: int32
           writeOnly: true
-        nullableArray: 
+        nullableArray:
           type: number
           format: double
-        notNullableArray: 
+        notNullableArray:
           type: number
           format: double
           nullable: false
@@ -492,7 +492,7 @@ components:
       required:
         - description
       properties:
-        description: 
+        description:
           type: string
       
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
@@ -514,7 +514,7 @@ components:
         objectType:
           description: Attribute is used as discriminator for inheritance between data types.
           type: string
-        parentAttribute: 
+        parentAttribute:
           type: string
       
     # com.anaptecs.jeaf.junit.openapi.base.Partner
@@ -533,7 +533,7 @@ components:
         objectType:
           description: Attribute is used as discriminator for inheritance between data types.
           type: string
-        postalAddresses: 
+        postalAddresses:
           type: array
           items:
             $ref: '#/components/schemas/PostalAddress'
@@ -544,7 +544,7 @@ components:
       type: object
       additionalProperties: false
       properties:
-        partners: 
+        partners:
           type: array
           items:
             $ref: '#/components/schemas/Partner'
@@ -560,9 +560,9 @@ components:
         - surname
         - firstName
       properties:
-        surname: 
+        surname:
           type: string
-        firstName: 
+        firstName:
           type: string
       
     # com.anaptecs.jeaf.junit.openapi.base.PlaceRef
@@ -586,7 +586,7 @@ components:
         objectType:
           description: Attribute is used as discriminator for inheritance between data types.
           type: string
-        name: 
+        name:
           type: string
       
     # com.anaptecs.jeaf.junit.openapi.base.PostalAddress
@@ -599,13 +599,13 @@ components:
         - city
         - postalCode
       properties:
-        street: 
+        street:
           type: string
-        houseNumber: 
+        houseNumber:
           type: string
-        city: 
+        city:
           type: string
-        postalCode: 
+        postalCode:
           type: integer
           format: int32
       
@@ -616,106 +616,106 @@ components:
       required:
         - cStringArray
       properties:
-        aBooleanArray: 
+        aBooleanArray:
           type: array
           items:
             type: boolean
-        bBooleanArray: 
+        bBooleanArray:
           type: array
           items:
             type: boolean
-        cBooleanArray: 
+        cBooleanArray:
           type: array
           items:
             type: boolean
-        aByteArray: 
+        aByteArray:
           type: string
           format: byte
-        bByteArray: 
+        bByteArray:
           type: string
           format: byte
-        aShortArray: 
+        aShortArray:
           type: array
           items:
             type: integer
             format: int32
-        bShortArray: 
+        bShortArray:
           type: array
           items:
             type: integer
             format: int32
-        aIntegerArray: 
+        aIntegerArray:
           type: array
           items:
             type: integer
             format: int32
-        bIntegerArray: 
+        bIntegerArray:
           type: array
           items:
             type: integer
             format: int32
-        cIntegerArray: 
+        cIntegerArray:
           type: array
           items:
             type: integer
             format: int32
-        aLongArray: 
+        aLongArray:
           type: array
           items:
             type: integer
             format: int64
-        bLongArray: 
+        bLongArray:
           type: array
           items:
             type: integer
             format: int64
-        aBigIntegerArray: 
+        aBigIntegerArray:
           type: array
           items:
             type: integer
             format: int64
-        aCharacterArray: 
+        aCharacterArray:
           type: array
           items:
             type: string
-        bCharacterArray: 
+        bCharacterArray:
           type: array
           items:
             type: string
-        aFloatArray: 
+        aFloatArray:
           type: array
           items:
             type: number
             format: float
-        bFloatArray: 
+        bFloatArray:
           type: array
           items:
             type: number
             format: float
-        aDoubleArray: 
+        aDoubleArray:
           type: array
           items:
             type: number
             format: double
-        bDoubleArray: 
+        bDoubleArray:
           type: array
           items:
             type: number
             format: double
-        aBigDecimalArray: 
+        aBigDecimalArray:
           type: array
           items:
             type: number
             format: double
-        aStringArray: 
+        aStringArray:
           type: array
           items:
             type: string
-        bStringArray: 
+        bStringArray:
           type: array
           items:
             type: string
-        cStringArray: 
+        cStringArray:
           type: array
           items:
             type: string
@@ -728,105 +728,105 @@ components:
       required:
         - aLongArray
       properties:
-        aBooleanArray: 
+        aBooleanArray:
           type: array
           items:
             type: boolean
-        bBooleanArray: 
+        bBooleanArray:
           type: array
           items:
             type: boolean
-        cBooleanArray: 
+        cBooleanArray:
           type: array
           items:
             type: boolean
-        aByteArray: 
+        aByteArray:
           type: string
           format: byte
-        bByteArray: 
+        bByteArray:
           type: string
           format: byte
-        aShortArray: 
+        aShortArray:
           type: array
           items:
             type: integer
             format: int32
-        bShortArray: 
+        bShortArray:
           type: array
           items:
             type: integer
             format: int32
-        aIntegerArray: 
+        aIntegerArray:
           type: array
           items:
             type: integer
             format: int32
-        bIntegerArray: 
+        bIntegerArray:
           type: array
           items:
             type: integer
             format: int32
-        cIntegerArray: 
+        cIntegerArray:
           type: array
           items:
             type: integer
             format: int32
-        aLongArray: 
+        aLongArray:
           type: array
           items:
             type: integer
             format: int64
           minItems: 1
-        bLongArray: 
+        bLongArray:
           type: array
           items:
             type: integer
             format: int64
-        aBigIntegerArray: 
+        aBigIntegerArray:
           type: array
           items:
             type: integer
             format: int64
-        aCharacterArray: 
+        aCharacterArray:
           type: array
           items:
             type: string
-        bCharacterArray: 
+        bCharacterArray:
           type: array
           items:
             type: string
-        aFloatArray: 
+        aFloatArray:
           type: array
           items:
             type: number
             format: float
-        bFloatArray: 
+        bFloatArray:
           type: array
           items:
             type: number
             format: float
-        aDoubleArray: 
+        aDoubleArray:
           type: array
           items:
             type: number
             format: double
           minItems: 4
           maxItems: 12
-        bDoubleArray: 
+        bDoubleArray:
           type: array
           items:
             type: number
             format: double
-        aBigDecimalArray: 
+        aBigDecimalArray:
           type: array
           items:
             type: number
             format: double
-        aStringArray: 
+        aStringArray:
           type: array
           items:
             type: string
-        bStringArray: 
+        bStringArray:
           type: array
           items:
             type: string
@@ -859,64 +859,64 @@ components:
         - aString
         - bString
       properties:
-        aBoolean: 
+        aBoolean:
           type: boolean
-        bBoolean: 
+        bBoolean:
           type: boolean
-        cBoolean: 
+        cBoolean:
           type: boolean
-        aByte: 
+        aByte:
           type: integer
           format: int32
-        bByte: 
+        bByte:
           type: integer
           format: int32
-        aShort: 
+        aShort:
           type: integer
           format: int32
-        bShort: 
+        bShort:
           type: integer
           format: int32
-        aInteger: 
+        aInteger:
           type: integer
           format: int32
-        bInteger: 
+        bInteger:
           type: integer
           format: int32
-        cInteger: 
+        cInteger:
           type: integer
           format: int32
-        aLong: 
+        aLong:
           type: integer
           format: int64
-        bLong: 
+        bLong:
           type: integer
           format: int64
-        aBigInteger: 
+        aBigInteger:
           type: integer
           format: int64
-        aCharacter: 
+        aCharacter:
           type: string
-        bCharacter: 
+        bCharacter:
           type: string
-        aFloat: 
+        aFloat:
           type: number
           format: float
-        bFloat: 
+        bFloat:
           type: number
           format: float
-        aDouble: 
+        aDouble:
           type: number
           format: double
-        bDouble: 
+        bDouble:
           type: number
           format: double
-        aBigDecimal: 
+        aBigDecimal:
           type: number
           format: double
-        aString: 
+        aString:
           type: string
-        bString: 
+        bString:
           type: string
       
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObjectWithRestrictions
@@ -947,87 +947,87 @@ components:
         - aString
         - bString
       properties:
-        aBoolean: 
+        aBoolean:
           type: boolean
           default: true
-        bBoolean: 
+        bBoolean:
           type: boolean
-        cBoolean: 
+        cBoolean:
           type: boolean
-        aByte: 
+        aByte:
           type: integer
           format: int32
           maximum: 0
           exclusiveMaximum: true
-        bByte: 
+        bByte:
           type: integer
           format: int32
           maximum: 0
-        aShort: 
+        aShort:
           type: integer
           format: int32
           minimum: -237
-        bShort: 
+        bShort:
           type: integer
           format: int32
           minimum: 0
           exclusiveMinimum: true
-        aInteger: 
+        aInteger:
           type: integer
           format: int32
           minimum: 0
-        bInteger: 
+        bInteger:
           type: integer
           format: int32
           minimum: 4711
-        cInteger: 
+        cInteger:
           type: integer
           format: int32
           minimum: 100
           maximum: 1000
-        aLong: 
+        aLong:
           type: integer
           format: int64
-        bLong: 
+        bLong:
           type: integer
           format: int64
           maximum: 299792458
           exclusiveMaximum: false
-        aBigInteger: 
+        aBigInteger:
           type: integer
           format: int64
           maximum: 3.14159265359
           exclusiveMaximum: true
           minimum: -3.14159265359
           exclusiveMinimum: true
-        aCharacter: 
+        aCharacter:
           type: string
-        bCharacter: 
+        bCharacter:
           type: string
-        aFloat: 
+        aFloat:
           type: number
           format: float
-        bFloat: 
+        bFloat:
           type: number
           format: float
-        aDouble: 
+        aDouble:
           type: number
           format: double
           default: 42.0
-        bDouble: 
+        bDouble:
           type: number
           format: double
-        aBigDecimal: 
+        aBigDecimal:
           type: number
           format: double
           minimum: 4711.0815
           exclusiveMinimum: true
-        aString: 
+        aString:
           type: string
           minLength: 8
           maxLength: 32
           default: "Hello OpenAPI"
-        bString: 
+        bString:
           type: string
           minLength: 1
           maxLength: 128
@@ -1043,23 +1043,23 @@ components:
         - detail
         - instance
       properties:
-        title: 
+        title:
           type: string
           nullable: false
           readOnly: true
-        status: 
+        status:
           type: integer
           format: int32
           nullable: false
           readOnly: true
-        type: 
+        type:
           type: string
           nullable: false
           readOnly: true
-        detail: 
+        detail:
           type: string
           readOnly: true
-        instance: 
+        instance:
           type: string
           readOnly: true
       
@@ -1077,26 +1077,26 @@ components:
         - productCodes
         - description
       properties:
-        resellers: 
+        resellers:
           type: array
           items:
             $ref: '#/components/schemas/Reseller'
           minItems: 0
-        name: 
+        name:
           type: string
           minLength: 12
-        image: 
+        image:
           description: >-
             Image describing the product.
           type: string
           format: byte
-        link: 
+        link:
           type: string
           example: 'https://www.company.com/products/1345-345'
-        productID: 
+        productID:
           type: string
           readOnly: true
-        supportedCurrencies: 
+        supportedCurrencies:
           description: >-
             ISO 4217 currency code.
           type: array
@@ -1108,12 +1108,12 @@ components:
             example: 'CHF'
           minItems: 7
           maxItems: 42
-        productCodes: 
+        productCodes:
           type: array
           items:
             $ref: '#/components/schemas/ProductCode'
           minItems: 1
-        description: 
+        description:
           type: string
           deprecated: true
       
@@ -1133,16 +1133,16 @@ components:
         - name
         - language
       properties:
-        channels: 
+        channels:
           type: array
           items:
             $ref: '#/components/schemas/Channel'
           minItems: 1
-        name: 
+        name:
           type: string
           minLength: 1
           maxLength: 32
-        language: 
+        language:
           type: string
       
     # com.anaptecs.jeaf.junit.openapi.base.Sortiment
@@ -1150,7 +1150,7 @@ components:
       type: object
       additionalProperties: false
       properties:
-        products: 
+        products:
           type: array
           items:
             $ref: '#/components/schemas/Product'
@@ -1173,7 +1173,7 @@ components:
         objectType:
           description: Attribute is used as discriminator for inheritance between data types.
           type: string
-        name: 
+        name:
           type: string
       
     # com.anaptecs.jeaf.junit.openapi.base.StopPlaceRef
@@ -1226,7 +1226,7 @@ components:
       required:
         - uicCode
       properties:
-        uicCode: 
+        uicCode:
           type: string
       
     # com.anaptecs.jeaf.junit.openapi.base.UICStopPlace

@@ -49,6 +49,10 @@ String getYAMLStyleComment(uml::Element element, String indentation):
 String getCommentForOpenAPIDescription(uml::Element element, String indentation):
     element.ownedComment.get(0).body.replaceAll("\n", "\r\n" + indentation);
     
+boolean hasMultiLineComment(uml::Element element) :
+    //element.ownedComment.get(0).body.contains("\n");
+    true;
+    
 String getOpenAPIType(uml::Type type, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);
     

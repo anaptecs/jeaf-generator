@@ -97,10 +97,10 @@ components:
     «IF this.explicityTypeOrdering == true -»
       «FOREACH this.getOrderedSchemaElements() AS element -»
         «IF element.isStereotypeApplied("OpenAPIType") -»
-          «EXPAND GenerateOpenAPIType(this) FOR ((OpenAPIType) element) -»
+          «EXPAND GenerateOpenAPIType(this) FOR ((OpenAPIType) element)»
         «ELSE-»
           «IF element.isStereotypeApplied("OpenAPIDataType") -»
-            «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null) FOR ((OpenAPIDataType) element) -»
+            «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null) FOR ((OpenAPIDataType) element)»
           «ELSE-»
             «EXPAND GenerateOpenAPIEnum FOR ((OpenAPIEnumeration) element)»
           «ENDIF-»
@@ -157,23 +157,28 @@ components:
 
 «DEFINE GeneratePaths FOR OpenAPI3Specification -»
   «FOREACH this.getRESTResources() AS service -»
+  «IF suppressClassNameCommentInOpenAPISpec() == false-»
   # «service.name»
+  «ENDIF-»
   «FOREACH service.getPaths() AS path-»
   «IF service.path.length > 0»«service.path»«ELSE»/«ENDIF»«IF path.length > 0»/«path»«ENDIF»:
     «FOREACH service.getRESTOperations(path) AS operation-»
     «FOREACH operation.httpMethods AS httpMethod-»
     «httpMethod.toString().toLowerCase()»:
-      «IF operation.hasComment()-»
-      description: >-
-        «operation.getCommentForOpenAPIDescription("        ")»
-      «ENDIF-»
-      operationId: «operation.getOperationID(service)»
       «IF operation.getTargetDirectedRelationships().source.typeSelect(OpenAPITag).size > 0 -»
       tags:
       «FOREACH operation.getTargetDirectedRelationships().source.typeSelect(OpenAPITag).sortBy(e|e.name) AS tag -»
         - «tag.name»
       «ENDFOREACH-»
       «ENDIF-»
+      «IF operation.summary.length > 0-»
+      summary: «operation.summary»
+      «ENDIF-»
+      «IF operation.hasComment()-»
+      description: >-
+        «operation.getCommentForOpenAPIDescription("        ")»
+      «ENDIF-»
+      operationId: «IF operation.operationID.length > 0»«operation.operationID»«ELSE»«operation.getOperationID(service)»«ENDIF»
       «IF operation.externalDocsURL.length > 0 -»
       externalDocs:
         url: «operation.externalDocsURL»
@@ -236,7 +241,7 @@ components:
             format: «property.type.getOpenAPIFormat()»
             		«ENDIF-»
                     «IF property.defaultValue != null -»
-            default: «property.defaultValue.stringValue()»
+            default: '«property.defaultValue.stringValue()»'
                     «ENDIF-»
             	«ELSE-»
             type: array
@@ -400,8 +405,12 @@ components:
       type: object
       additionalProperties: false
       «IF this.hasComment()-»
+        «IF this.hasMultiLineComment()-»
       description: >-
         «this.getCommentForOpenAPIDescription("        ")»
+        «ELSE-»
+      description: «this.getCommentForOpenAPIDescription("            ")»
+        «ENDIF-»
       «ENDIF-»
       «IF this.isTopOfClassHierarchy()-»
       discriminator:
@@ -436,15 +445,19 @@ components:
           type: string
         «ENDIF-»
         «FOREACH this.ownedAttribute.select(e | e.isTransient() == false) AS attribute-»
-        «attribute.name»: 
+        «attribute.name»:
           «IF attribute.type.isOpenAPIDataType() && ((OpenAPIDataType) attribute.type).inline == true -»
           «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute) FOR (OpenAPIDataType) attribute.type -»
           «ELSE -»
           «IF attribute.hasComment() -»
             «IF attribute.type.isBasicOpenAPIType() == false && attribute.isMultivalued() == false-»
-            «ELSE-» 
+            «ELSE-»
+              «IF attribute.hasMultiLineComment()-»
           description: >-
             «attribute.getCommentForOpenAPIDescription("            ")»
+              «ELSE-»
+          description: «attribute.getCommentForOpenAPIDescription("            ")»
+              «ENDIF-»
             «ENDIF-»
           «ENDIF-»
           «IF attribute.type.isBasicOpenAPIType() == true-»
@@ -527,7 +540,6 @@ components:
           «ENDIF-»
         «ENDFOREACH-»
       «ENDIF-»
-      
 «ENDDEFINE»
 
 «DEFINE GenerateOpenAPIEnum FOR OpenAPIEnumeration»

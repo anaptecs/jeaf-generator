@@ -43,12 +43,13 @@ paths:
   # ProductService
   /products:
     get:
-      description: >-
-        Operation returns all available product.
-      operationId: getProducts
       tags:
         - MasterData
         - Products
+      
+      description: >-
+        Operation returns all available product.
+      operationId: getProducts
       externalDocs:
         url: https://jeaf.anaptecs.de/link2
       responses:
@@ -67,9 +68,10 @@ paths:
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     post:
-      operationId: createProduct
       tags:
         - Products
+      
+      operationId: createProduct
       requestBody:
         description: >- 
           TODO Please add comment
@@ -92,6 +94,7 @@ paths:
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     head:
+      
       operationId: ping
       responses:
         '200':
@@ -102,10 +105,11 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
   /products/{id}:
     get:
-      operationId: getProduct
       tags:
         - MasterData
         - Products
+      
+      operationId: getProduct
       parameters:
         - name: id
           in: path
@@ -129,10 +133,11 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
   /products/sortiment/{id}:
     get:
-      operationId: getSortiment
       tags:
         - MasterData
         - Products
+      
+      operationId: getSortiment
       parameters:
         - name: token
           in: header
@@ -186,6 +191,7 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
   /products/ChannelCode:
     post:
+      
       operationId: createChannelCode
       requestBody:
         description: >- 
@@ -223,6 +229,7 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
   /products/deprecated/operation:
     get:
+      
       operationId: deprecatedOperation
       deprecated: true
       responses:
@@ -239,6 +246,7 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
   /products/deprecated/context:
     post:
+      
       operationId: deprecatedContext
       parameters:
         - name: token
@@ -285,6 +293,7 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
   /products/deprecated/beanParams:
     post:
+      
       operationId: deprecatedBeanParam
       parameters:
         - name: token
@@ -318,6 +327,7 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
   /products/deprecated/params:
     post:
+      
       operationId: deprecatedParams
       parameters:
         - name: param1
@@ -344,6 +354,7 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
   /products/deprecated/body:
     post:
+      
       operationId: deprecatedBody
       requestBody:
         description: >- 
@@ -368,6 +379,7 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
   /products/deprecated/complexBody:
     post:
+      
       description: >-
         Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
       operationId: deprectedComplexRequestBody
@@ -389,6 +401,7 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
   /products/deprecated/complexReturn:
     get:
+      
       operationId: deprecatedComplexReturn
       responses:
         '200':
@@ -405,6 +418,7 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
   /products/specific/{id}:
     patch:
+      
       operationId: loadSpecificThings
       parameters:
         - name: specificHeader
@@ -461,6 +475,7 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
   /products/ChannelCodeObject:
     post:
+      
       operationId: createChannelCodeFromObject
       requestBody:
         description: >- 
@@ -490,9 +505,10 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
   /products/currencies:
     post:
-      operationId: addCurrencies
       tags:
         - B Tag
+      
+      operationId: addCurrencies
       requestBody:
         description: >- 
           TODO Please add comment
@@ -532,9 +548,10 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
   /products/currencies/valid:
     post:
-      operationId: isCurrencySupported
       tags:
         - Another Tag
+      
+      operationId: isCurrencySupported
       requestBody:
         description: >- 
           TODO Please add comment
@@ -569,6 +586,7 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
   /products/codeTypeUsages:
     post:
+      
       operationId: testCodeTypeUsage
       requestBody:
         description: >- 
@@ -636,10 +654,10 @@ components:
       required:
         - transactionAmount
       properties:
-        transactionAmount: 
+        transactionAmount:
           type: number
           format: double
-        sale: 
+        sale:
           $ref: '../base/product-base.yml#/components/schemas/Channel'
       
 
