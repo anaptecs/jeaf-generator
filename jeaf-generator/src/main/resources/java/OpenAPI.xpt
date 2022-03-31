@@ -13,16 +13,7 @@
 «DEFINE GenerateOpenAPI FOR OpenAPI3Specification»
 	«FILE resourceName GenRes-»
 openapi: «openAPIVersion»
-«IF this.clientDependency.supplier.typeSelect(OpenAPIServer).size > 0»
-servers:
-  «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIServer).sortBy(e|e.name).sortBy(e|e.order) AS server-»
-  - url: «server.url»
-    «IF server.hasComment() -»
-    description: >- 
-      «server.getCommentForOpenAPIDescription("      ")»
-    «ENDIF-»    
-  «ENDFOREACH-»
-«ENDIF»
+
 info:
   title: «name»
   version: «IF apiVersion.length > 0»«apiVersion»«ELSE»«getMavenVersion()»«ENDIF»
@@ -44,7 +35,7 @@ info:
     «IF contactEmail.length > 0 -»
     email: «contactEmail»
     «ENDIF-»
-  «ENDIF»
+  «ENDIF-»
   «IF licenseName.length > 0 || licenseURL.length > 0-»
   license:
     «IF licenseName.length > 0 -»
@@ -53,7 +44,17 @@ info:
     «IF licenseURL.length > 0 -»
     url: '«licenseURL»'
     «ENDIF-»
-  «ENDIF»    
+  «ENDIF-»    
+«IF this.clientDependency.supplier.typeSelect(OpenAPIServer).size > 0»
+servers:
+  «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIServer).sortBy(e|e.name).sortBy(e|e.order) AS server-»
+  - url: «server.url»
+    «IF server.hasComment() -»
+    description: >-
+      «server.getCommentForOpenAPIDescription("      ")»
+    «ENDIF-»    
+  «ENDFOREACH-»
+«ENDIF»
 «IF this.clientDependency.supplier.typeSelect(OpenAPITag).size > 0 -»
 tags:
 «EXPAND GenerateTags FOREACH this.clientDependency.supplier.typeSelect(OpenAPITag).sortBy(e|e.name).sortBy(e|e.order)»
@@ -193,7 +194,7 @@ components:
         «FOREACH operation.getOpenAPIInputParameters() AS param-»
         - name: «EXPAND RESTParamName FOR param»
           in: «param.getOpenAPIParameterType()»
-          description: >- 
+          description: >-
             «IF param.hasComment()»«param.getCommentForOpenAPIDescription("            ")»«ELSE»TODO Please add comment«ENDIF»
           required: «param.isRequired()»
           «IF param.isDeprecated() -»
@@ -226,7 +227,7 @@ components:
         «FOREACH param.type.getOpenAPIProperties() AS property-»
         - name: «EXPAND RESTParamName FOR property»
           in: «property.getOpenAPIParameterType()»
-          description: >- 
+          description: >-
             «IF property.hasComment()»«property.getCommentForOpenAPIDescription("            ")»«ELSE»TODO Please add comment«ENDIF»
           required: «property.isRequiredProperty()»
           «IF property.isDeprecated() -»
@@ -269,7 +270,7 @@ components:
       «IF operation.hasRequestBody(httpMethod) -»
       requestBody:
       «FOREACH operation.getRequestBodyParameters() AS param-»
-        description: >- 
+        description: >-
           «IF param.hasComment()»«param.getCommentForOpenAPIDescription("          ")»«ELSE»TODO Please add comment«ENDIF»
           «IF param.isDeprecated() && param.type.isBasicOpenAPIType() == false-»
           Operation has deprected body parameter. Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
@@ -383,7 +384,9 @@ components:
 «ENDDEFINE»
 
 «DEFINE GenerateErrorResponse(OpenAPI3Specification spec) FOR ErrorResponse -»
+    «IF suppressClassNameCommentInOpenAPISpec() == false-»
     # «this.fqn()»
+    «ENDIF-»
     «this.name»:
       «IF this.hasComment()-»
       description: >-

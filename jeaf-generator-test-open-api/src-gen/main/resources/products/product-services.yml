@@ -1,16 +1,5 @@
 openapi: 3.0.0
 
-servers:
-  - url: https://accounting.jeaf.de
-  - url: http://localhost:8080/test
-  - url: https://demo-jeaf.anaptecs.de
-  - url: https://test-jeaf.anaptecs.de
-  - url: https://jeaf.anaptecs.de
-    description: >- 
-      This is our lovely production environment
-      
-      It can stand any load, until it crashes ;-)
-
 info:
   title: Product Services
   version: 1.6.32-SNAPSHOT
@@ -23,11 +12,21 @@ info:
     name: JEAF Development Team
     url: 'https://www.anaptecs.de/jeaf'
     email: jeaf@anaptecs.de
-  
   license:
     name: Apache 2.0
     url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+
+servers:
+  - url: https://accounting.jeaf.de
+  - url: http://localhost:8080/test
+  - url: https://demo-jeaf.anaptecs.de
+  - url: https://test-jeaf.anaptecs.de
+  - url: https://jeaf.anaptecs.de
+    description: >-
+      This is our lovely production environment
       
+      It can stand any load, until it crashes ;-)
+
 tags:
   - name: Products
     description: >-
@@ -71,7 +70,7 @@ paths:
         - Products
       operationId: createProduct
       requestBody:
-        description: >- 
+        description: >-
           TODO Please add comment
         required: true
         content:
@@ -109,7 +108,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
@@ -136,14 +135,14 @@ paths:
       parameters:
         - name: token
           in: header
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
             type: string
         - name: lang
           in: header
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
@@ -151,7 +150,7 @@ paths:
             example: 'en'
         - name: reseller
           in: cookie
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
@@ -159,7 +158,7 @@ paths:
             format: int64
         - name: id
           in: path
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
@@ -167,7 +166,7 @@ paths:
             format: int64
         - name: q1
           in: query
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
@@ -188,7 +187,7 @@ paths:
     post:
       operationId: createChannelCode
       requestBody:
-        description: >- 
+        description: >-
           TODO Please add comment
         required: true
         content:
@@ -243,14 +242,14 @@ paths:
       parameters:
         - name: token
           in: header
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
             type: string
         - name: lang
           in: header
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
@@ -258,7 +257,7 @@ paths:
             example: 'en'
         - name: reseller
           in: cookie
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
@@ -266,7 +265,7 @@ paths:
             format: int64
         - name: q1
           in: query
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
@@ -289,21 +288,21 @@ paths:
       parameters:
         - name: token
           in: header
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
             type: string
         - name: lang
           in: header
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
             type: string
         - name: q2
           in: query
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           deprecated: true
@@ -322,7 +321,7 @@ paths:
       parameters:
         - name: param1
           in: header
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           deprecated: true
@@ -346,7 +345,7 @@ paths:
     post:
       operationId: deprecatedBody
       requestBody:
-        description: >- 
+        description: >-
           TODO Please add comment
         required: true
         content:
@@ -372,7 +371,7 @@ paths:
         Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
       operationId: deprectedComplexRequestBody
       requestBody:
-        description: >- 
+        description: >-
           TODO Please add comment
           Operation has deprected body parameter. Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
         required: true
@@ -409,21 +408,21 @@ paths:
       parameters:
         - name: specificHeader
           in: header
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
             type: string
         - name: token
           in: header
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
             type: string
         - name: lang
           in: header
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
@@ -431,7 +430,7 @@ paths:
             example: 'en'
         - name: reseller
           in: cookie
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
@@ -439,7 +438,7 @@ paths:
             format: int64
         - name: id
           in: path
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
@@ -447,7 +446,7 @@ paths:
             format: int64
         - name: q1
           in: query
-          description: >- 
+          description: >-
             TODO Please add comment
           required: true
           schema:
@@ -463,7 +462,7 @@ paths:
     post:
       operationId: createChannelCodeFromObject
       requestBody:
-        description: >- 
+        description: >-
           Channel Code that should be created.
         required: true
         content:
@@ -494,7 +493,7 @@ paths:
         - B Tag
       operationId: addCurrencies
       requestBody:
-        description: >- 
+        description: >-
           TODO Please add comment
         required: true
         content:
@@ -536,7 +535,7 @@ paths:
         - Another Tag
       operationId: isCurrencySupported
       requestBody:
-        description: >- 
+        description: >-
           TODO Please add comment
         required: true
         content:
@@ -571,7 +570,7 @@ paths:
     post:
       operationId: testCodeTypeUsage
       requestBody:
-        description: >- 
+        description: >-
           TODO Please add comment
         required: true
         content:
