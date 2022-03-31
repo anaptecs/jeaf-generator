@@ -55,22 +55,22 @@ paths:
           description: >-
             TODO Please add comment
           headers:
-              Cache-Control:
-                schema:
-                  type: string
-                  default: 'public, max-age=10000'
-                  description: >-
-                    Results for this call are cacheable for the duration as it is defined in this header field
-              Max-TTL:
-                schema:
-                  type: integer
-              X-Global-Response-Header:
-                schema:
-                  type: string
-                  default: 'Hello World'
-              Yet-Another-Header:
-                schema:
-                  type: boolean
+            Cache-Control:
+              schema:
+                type: string
+                default: 'public, max-age=10000'
+                description: >-
+                  Results for this call are cacheable for the duration as it is defined in this header field
+            Max-TTL:
+              schema:
+                type: integer
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+            Yet-Another-Header:
+              schema:
+                type: boolean
           content:
             application/json:
               schema:
@@ -99,10 +99,10 @@ paths:
           description: >-
             TODO Please add comment
           headers:
-              X-Global-Response-Header:
-                schema:
-                  type: string
-                  default: 'Hello World'
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -141,10 +141,10 @@ paths:
           description: >-
             TODO Please add comment
           headers:
-              X-Global-Response-Header:
-                schema:
-                  type: string
-                  default: 'Hello World'
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -203,10 +203,10 @@ paths:
           description: >-
             TODO Please add comment
           headers:
-              X-Global-Response-Header:
-                schema:
-                  type: string
-                  default: 'Hello World'
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -236,10 +236,10 @@ paths:
           description: >-
             TODO Please add comment
           headers:
-              X-Global-Response-Header:
-                schema:
-                  type: string
-                  default: 'Hello World'
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -266,10 +266,10 @@ paths:
           description: >-
             TODO Please add comment
           headers:
-              X-Global-Response-Header:
-                schema:
-                  type: string
-                  default: 'Hello World'
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -317,10 +317,10 @@ paths:
           description: >-
             TODO Please add comment
           headers:
-              X-Global-Response-Header:
-                schema:
-                  type: string
-                  default: 'Hello World'
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -380,10 +380,10 @@ paths:
           description: >-
             TODO Please add comment
           headers:
-              X-Global-Response-Header:
-                schema:
-                  type: string
-                  default: 'Hello World'
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -410,10 +410,10 @@ paths:
           description: >-
             TODO Please add comment
           headers:
-              X-Global-Response-Header:
-                schema:
-                  type: string
-                  default: 'Hello World'
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -452,10 +452,10 @@ paths:
             TODO Please add comment
             Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
           headers:
-              X-Global-Response-Header:
-                schema:
-                  type: string
-                  default: 'Hello World'
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -539,10 +539,10 @@ paths:
           description: >-
             Created channel code
           headers:
-              X-Global-Response-Header:
-                schema:
-                  type: string
-                  default: 'Hello World'
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -575,16 +575,17 @@ paths:
                   maxLength: 3
                   example: 'CHF'
                 minItems: 1
+                nullable: false
                 example: '["CHF", "EUR", "USD"]'
       responses:
         '200':
           description: >-
             TODO Please add comment
           headers:
-              X-Global-Response-Header:
-                schema:
-                  type: string
-                  default: 'Hello World'
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -597,6 +598,7 @@ paths:
                   maxLength: 3
                   example: 'CHF'
                 minItems: 1
+                nullable: false
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -620,15 +622,16 @@ paths:
                 minLength: 3
                 maxLength: 3
                 example: 'CHF'
+                nullable: false
       responses:
         '200':
           description: >-
             TODO Please add comment
           headers:
-              X-Global-Response-Header:
-                schema:
-                  type: string
-                  default: 'Hello World'
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -639,6 +642,7 @@ paths:
                 minLength: 3
                 maxLength: 3
                 example: 'CHF'
+                nullable: false
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -659,10 +663,10 @@ paths:
           description: >-
             TODO Please add comment
           headers:
-              X-Global-Response-Header:
-                schema:
-                  type: string
-                  default: 'Hello World'
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -675,8 +679,8 @@ paths:
 
 security:
   - {}
-  - MyOAuthSecuritySchema: [read:pets,write:pets]  
-  
+  - MyOAuthSecuritySchema: [read:pets,write:pets]
+
 components:
   securitySchemes:
     MyOAuthSecuritySchema:
@@ -720,6 +724,7 @@ components:
         transactionAmount:
           type: number
           format: double
+          nullable: false
         sale:
           $ref: '../base/product-base.yml#/components/schemas/Channel'
 
