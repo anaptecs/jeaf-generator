@@ -15,10 +15,10 @@
       flows:
       «FOREACH this.clientDependency.supplier.typeSelect(OAuthFlow).sortBy(e|e.flowType.name) AS flow -»
         «flow.flowType.name»:
-          «IF this.type.name == "oauth2" || this.type.name == "implicit" || this.type.name == "authorizationCode" -»
+          «IF this.type.name == "oauth2" && (flow.flowType.name == "implicit" || flow.flowType.name == "authorizationCode") -»
           authorizationUrl: '«IF flow.authorizationURL.length > 0»«flow.authorizationURL»«ELSE»TODO Please add required authorizationURL«ENDIF»'
           «ENDIF-»
-          «IF this.type.name == "oauth2" || this.type.name == "implicit" || this.type.name == "authorizationCode" || this.type.name == "clientCredentials" -»
+          «IF this.type.name == "oauth2" && ( flow.flowType.name == "implicit" || flow.flowType.name == "authorizationCode" || flow.flowType.name == "clientCredentials") -»
           tokenUrl: '«IF flow.tokenURL.length > 0»«flow.tokenURL»«ELSE»TODO Please add required token URL«ENDIF»'
           «ENDIF-»
           «IF this.type.name == "oauth2" -»
