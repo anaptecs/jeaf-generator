@@ -23,7 +23,7 @@ List[JMM::OpenAPISecurityScheme] getOpenAPISecuritySchemes(JMM::OpenAPI3Specific
     spec.getModel().allOwnedElements().typeSelect(JMM::OpenAPISecurityScheme).select(e|e.isInGeneratorWhitelist() == true).sortBy(e|e.name);
 
 List[JMM::ErrorResponse] getErrorResponses(JMM::OpenAPI3Specification spec):
-	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::ErrorResponse);
+	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::ErrorResponse).sortBy(e|e.name);
 
 List[JMM::OpenAPI3Specification] getDependentSpecs(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(JMM::OpenAPI3Specification);
@@ -202,17 +202,10 @@ cached String getJAXRSStatusCodeName(String pJMMStatusCode):
   
 boolean isJAXRSStatusCode(String pJMMStatusCode):
    getJAXRSStatusCodeName(pJMMStatusCode) != null;
-   
 
 cached List[JMM::ErrorResponse] getGlobalDefaultErrorResponses(uml::Model model):
-   model.allOwnedElements().typeSelect(JMM::ErrorResponse).select(e|e.globalDefaultErrorResponse ==true);
+   model.allOwnedElements().typeSelect(JMM::ErrorResponse).select(e|e.globalDefaultErrorResponse ==true).sortBy(e|e.statusCodes);
   
-cached JMM::ErrorResponse getGlobalDefaultErrorResponse(uml::Model model):
-   getGlobalDefaultErrorResponses(model).first();
-
-boolean hasExactlyOneGlobalDefaultErrorResponse(uml::Model model):
-   getGlobalDefaultErrorResponses(model).size==1;
-   
 boolean hasValidOneGlobalDefaultErrorResponse(uml::Model model):
    getGlobalDefaultErrorResponses(model).size<=1;
    
@@ -228,9 +221,6 @@ cached String getErrorCode(JMM::HTTPStatusCode status):
 List[JMM::ErrorResponse] getCustomErrorResponses(JMM::OpenAPI3Specification spec):
    spec.clientDependency.supplier.typeSelect(JMM::ErrorResponse);
    
-JMM::ErrorResponse getCustomErrorResponse(JMM::OpenAPI3Specification spec):
-  getCustomErrorResponses(spec).first();
-  
 cached List[uml::Class] getResponseHeaderGroups(uml::Operation operation) :
   operation.clientDependency.supplier.typeSelect(JMM::ResponseHeaderGroup).addAll(operation.interface.clientDependency.supplier.typeSelect(JMM::ResponseHeaderGroup)).toSet();
   
@@ -241,7 +231,7 @@ cached boolean hasResponseHeaderFields(uml::Operation operation) :
   operation.getResponseHeaderGroups().size > 0; 
 
 boolean hasCustomErrorResponse(JMM::OpenAPI3Specification spec):
-  getCustomErrorResponses(spec).size == 1;
+  getCustomErrorResponses(spec).size > 0;
   
 Set[JMM::OAuthScope] getOAuthScopes(JMM::OpenAPISecurityScheme scheme):
   scheme.clientDependency.supplier.typeSelect(JMM::OAuthFlow).clientDependency.supplier.typeSelect(JMM::OAuthScope).toSet().sortBy(e|e.name);

@@ -1,19 +1,18 @@
 «IMPORT uml»
 «IMPORT JMM»
 «EXTENSION java::OpenAPIFunctions»
+«EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE ErrorResponses(OpenAPI3Specification spec) FOR RESTOperation -»
     «IF hasCustomErrorResponse(spec) == true -»
-        «EXPAND ErrorResponses(spec) FOR getCustomErrorResponse(spec) -» 
+        «EXPAND ErrorResponses(spec) FOREACH getCustomErrorResponses(spec) -» 
     «ELSE -»
-    	«IF hasExactlyOneGlobalDefaultErrorResponse(spec.getModel()) == true -»
-            «EXPAND ErrorResponses(spec) FOR getGlobalDefaultErrorResponse(spec.getModel()) -» 
-	    «ENDIF -»
+        «EXPAND ErrorResponses(spec) FOREACH getGlobalDefaultErrorResponses(spec.getModel()) -» 
     «ENDIF -»
 «ENDDEFINE»
 
 «DEFINE ErrorResponses(OpenAPI3Specification spec) FOR ErrorResponse -»
-	«FOREACH this.statusCodes AS errorCode-»
+	«FOREACH this.statusCodes.sortBy(e|e) AS errorCode-»
         '«errorCode.getErrorCode()»':
           $ref: «this.getResponseType(spec)»
 	«ENDFOREACH-»
