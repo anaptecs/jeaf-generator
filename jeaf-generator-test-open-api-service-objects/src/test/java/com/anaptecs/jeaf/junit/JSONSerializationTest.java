@@ -325,13 +325,28 @@ public class JSONSerializationTest {
 
   @Test
   void testPolymorphAssociations( ) {
+    JSONTools lTools = JSON.getJSONTools();
+
     UICStopPlace.Builder lStartBuilder = UICStopPlace.Builder.newBuilder();
     lStartBuilder.setName("Bern");
     UICStopPlace lBern = lStartBuilder.build();
 
+    String lJSON = lTools.writeObjectToString(lBern);
+    assertEquals("{\"objectType\":\"UICStopPlace\",\"name\":\"Bern\"}", lJSON);
+    PlaceRef lReadPlaceRef = lTools.read(lJSON, PlaceRef.class);
+    assertEquals(UICStopPlace.class, lReadPlaceRef.getClass());
+    UICStopPlace lUICStopPlace = (UICStopPlace) lReadPlaceRef;
+    assertEquals("Bern", lUICStopPlace.getName());
+
     CHStopPlace.Builder lStopBuilder = CHStopPlace.Builder.newBuilder();
     lStopBuilder.setName("Zürich");
     CHStopPlace lZurich = lStopBuilder.build();
+    lJSON = lTools.writeObjectToString(lZurich);
+    assertEquals("{\"objectType\":\"CHStopPlace\",\"name\":\"Zürich\"}", lJSON);
+    lReadPlaceRef = lTools.read(lJSON, PlaceRef.class);
+    assertEquals(CHStopPlace.class, lReadPlaceRef.getClass());
+    CHStopPlace lCHStopPlace = (CHStopPlace) lReadPlaceRef;
+    assertEquals("Zürich", lCHStopPlace.getName());
 
     SwissGeoPosition.Builder lSwissGeoPositionBuilder = SwissGeoPosition.Builder.newBuilder();
     lSwissGeoPositionBuilder.setLongitude(0).setLatitude(0).setName("Uni Bern");
@@ -345,6 +360,22 @@ public class JSONSerializationTest {
     lGeoPositionBuilder.setLongitude(47).setLatitude(11).setName("What do I know ;-)");
     GeoPosition lSomewhere = lGeoPositionBuilder.build();
 
+    List<PlaceRef> lStops = new ArrayList<>();
+    lStops.add(lBern);
+    lStops.add(lUniBern);
+    lStops.add(lOlten);
+    lStops.add(lZurich);
+
+    lJSON = lTools.writeObjectsToString(lStops, PlaceRef.class);
+    assertEquals(
+        "[{\"objectType\":\"UICStopPlace\",\"name\":\"Bern\"},{\"objectType\":\"SwissGeoPosition\",\"name\":\"Uni Bern\",\"longitude\":0,\"latitude\":0},{\"objectType\":\"TopoRef\",\"name\":\"Olten\"},{\"objectType\":\"CHStopPlace\",\"name\":\"Zürich\"}]",
+        lJSON);
+
+    lJSON = lTools.writeObjectToString(lStops);
+    assertEquals(
+        "[{\"name\":\"Bern\"},{\"name\":\"Uni Bern\",\"longitude\":0,\"latitude\":0},{\"name\":\"Olten\"},{\"name\":\"Zürich\"}]",
+        lJSON);
+
     Leg lLeg = Leg.Builder.newBuilder().build();
     lLeg.setStart(lBern);
     lLeg.setStop(lZurich);
@@ -353,8 +384,7 @@ public class JSONSerializationTest {
     lLeg.addToStopovers(lOlten);
     lLeg.addToStopovers(lSomewhere);
 
-    JSONTools lTools = JSON.getJSONTools();
-    String lJSON = lTools.writeObjectToString(lLeg);
+    lJSON = lTools.writeObjectToString(lLeg);
     assertEquals(
         "{\"start\":{\"objectType\":\"UICStopPlace\",\"name\":\"Bern\"},\"stop\":{\"objectType\":\"CHStopPlace\",\"name\":\"Zürich\"},\"stopovers\":[{\"objectType\":\"SwissGeoPosition\",\"name\":\"Uni Bern\",\"longitude\":0,\"latitude\":0},{\"objectType\":\"TopoRef\",\"name\":\"Olten\"},{\"objectType\":\"GeoPosition\",\"name\":\"What do I know ;-)\",\"longitude\":47,\"latitude\":11}]}",
         lJSON);
