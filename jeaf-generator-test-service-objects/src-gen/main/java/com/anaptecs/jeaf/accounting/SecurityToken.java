@@ -285,7 +285,7 @@ public class SecurityToken implements ServiceObject {
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
   protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = new StringBuilder(256);
+    StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
