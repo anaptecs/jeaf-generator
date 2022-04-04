@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.json.api.JSON;
@@ -23,14 +22,14 @@ import com.anaptecs.jeaf.openapi.SwissGeoPosition;
 import com.anaptecs.jeaf.openapi.TopoRef;
 import com.anaptecs.jeaf.openapi.UICStopPlace;
 
-public class JSONSerializationTest {
+public class SwaggerPluginSerializationTest {
   @Test
-  @Disabled
   void testPolymorphAssociations( ) {
     JSONTools lTools = JSON.getJSONTools();
 
     UICStopPlace lBern = new UICStopPlace();
     lBern.setName("Bern");
+    lBern.setObjectType("UICStopPlace");
 
     String lJSON = lTools.writeObjectToString(lBern);
     assertEquals("{\"objectType\":\"UICStopPlace\",\"name\":\"Bern\"}", lJSON);
@@ -41,6 +40,7 @@ public class JSONSerializationTest {
 
     CHStopPlace lZurich = new CHStopPlace();
     lZurich.setName("Zürich");
+    lZurich.setObjectType("CHStopPlace");
 
     lJSON = lTools.writeObjectToString(lZurich);
     assertEquals("{\"objectType\":\"CHStopPlace\",\"name\":\"Zürich\"}", lJSON);
@@ -53,14 +53,17 @@ public class JSONSerializationTest {
     lUniBern.setLongitude(0);
     lUniBern.setLatitude(0);
     lUniBern.setName("Uni Bern");
+    lUniBern.setObjectType("SwissGeoPosition");
 
     TopoRef lOlten = new TopoRef();
     lOlten.setName("Olten");
+    lOlten.setObjectType("TopoRef");
 
     GeoPosition lSomewhere = new GeoPosition();
     lSomewhere.setLongitude(47);
     lSomewhere.setLatitude(11);
     lSomewhere.setName("What do I know ;-)");
+    lSomewhere.setObjectType("GeoPosition");
 
     List<PlaceRef> lStops = new ArrayList<>();
     lStops.add(lBern);

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.anaptecs.jeaf.generator</groupId>
@@ -19,25 +20,46 @@
 			<type>zip</type>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations -->
 		<dependency>
-		    <groupId>io.swagger.core.v3</groupId>
-		    <artifactId>swagger-annotations</artifactId>
-		    <version>${swagger.annotations.version}</version>
+			<groupId>io.swagger.core.v3</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>${swagger.annotations.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.swagger/swagger-annotations -->
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>1.6.5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.openapitools/jackson-databind-nullable -->
+		<dependency>
+			<groupId>org.openapitools</groupId>
+			<artifactId>jackson-databind-nullable</artifactId>
+			<version>0.2.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-annotations</artifactId>
-		    <version>${jackson.version}</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.anaptecs.jeaf.json</groupId>
 			<artifactId>jeaf-json-api</artifactId>
-		    <version>${jeaf.json.api.version}</version>
+			<version>${jeaf.json.api.version}</version>
 		</dependency>
 
 		<dependency>
@@ -48,9 +70,9 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>${jackson.version}</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 
 		<dependency>
@@ -64,17 +86,17 @@
 		<dependency>
 			<groupId>com.anaptecs.jeaf.json</groupId>
 			<artifactId>jeaf-json-impl-runtime</artifactId>
-		    <version>${jeaf.json.impl.version}</version>
-		    <type>pom</type>
-		    <scope>test</scope>
+			<version>${jeaf.json.impl.version}</version>
+			<type>pom</type>
+			<scope>test</scope>
 		</dependency>
 
 
 		<dependency>
 			<groupId>com.anaptecs.jeaf.json</groupId>
 			<artifactId>jeaf-json-impl</artifactId>
-		    <version>${jeaf.json.impl.version}</version>
-		    <scope>test</scope>
+			<version>${jeaf.json.impl.version}</version>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
@@ -85,8 +107,6 @@
 				<groupId>com.anaptecs.jeaf.generator</groupId>
 				<artifactId>jeaf-generator-maven-plugin</artifactId>
 				<version>${project.version}</version>
-				<!--  
-				-->
 				<executions>
 					<execution>
 						<goals>
@@ -120,10 +140,7 @@
 
 					<!-- Define what should be generated. By default nothing is generated. -->
 					<generateOpenAPISpec>true</generateOpenAPISpec>
-					<!--  
-					<generateServiceObjects>true</generateServiceObjects>
-					<generateCustomConstraints>true</generateCustomConstraints>
-					-->
+					<!-- <generateServiceObjects>true</generateServiceObjects> <generateCustomConstraints>true</generateCustomConstraints> -->
 
 					<!-- Define information that are written to file headers -->
 					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>
@@ -137,83 +154,126 @@
 			</plugin>
 
 			<plugin>
-			    <groupId>io.swagger.codegen.v3</groupId>
-			    <artifactId>swagger-codegen-maven-plugin</artifactId>
-			    <version>${swagger.codegen.plugin.version}</version>
-			    <executions>
-			        <execution>
-			            <id>Generate Base Model</id>
-			            <goals>
-			                <goal>generate</goal>
-			            </goals>
-			            <configuration>
-			                <inputSpec>${project.basedir}/src-gen/main/resources/base/product-base.yml</inputSpec>
-			                <output>${project.basedir}</output>
+				<groupId>io.swagger.codegen.v3</groupId>
+				<artifactId>swagger-codegen-maven-plugin</artifactId>
+				<version>${swagger.codegen.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>Generate Base Model</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src-gen/main/resources/base/product-base.yml</inputSpec>
+							<output>${project.basedir}</output>
 
-			                <language>java</language>
-			                
-			                <generateModels>true</generateModels>
-			                <generateApis>false</generateApis>
-			                <generateApiTests>false</generateApiTests>
-			                <generateModelTests>false</generateModelTests>
-			                <generateModelDocumentation>false</generateModelDocumentation>
-			                <generateApiDocumentation>false</generateApiDocumentation>
-			                <generateSupportingFiles>false</generateSupportingFiles>
-			                
-			                <modelPackage>com.anaptecs.jeaf.openapi</modelPackage>
-			                <apiPackage>com.anaptecs.jeaf.openapi.service</apiPackage>
-			                <configOptions>
-			                   <sourceFolder>src-gen/main/java</sourceFolder>
-			                   <dateLibrary>java8</dateLibrary>
-			                   <java8>true</java8>
-			                   <hideGenerationTimestamp>true</hideGenerationTimestamp>
-			                   <useTags>true</useTags>
-			                   <interfaceOnly>true</interfaceOnly>
-			                </configOptions>
-			                <configHelp>false</configHelp>
-			                <library>jersey2</library>
-			                
-			            </configuration>
-			        </execution>
-			        <execution>
-			            <id>Generate Service Model</id>
-			            <goals>
-			                <goal>generate</goal>
-			            </goals>
-			            <configuration>
-			                <inputSpec>${project.basedir}/src-gen/main/resources/products/product-services.yml</inputSpec>
-			                <output>${project.basedir}</output>
+							<language>java</language>
 
-			                <language>java</language>
-			                
-			                <generateModels>true</generateModels>
-			                <generateApis>false</generateApis>
-			                <generateApiTests>false</generateApiTests>
-			                <generateModelTests>false</generateModelTests>
-			                <generateModelDocumentation>false</generateModelDocumentation>
-			                <generateApiDocumentation>false</generateApiDocumentation>
-			                <generateSupportingFiles>false</generateSupportingFiles>
-			                <skipOverwrite>true</skipOverwrite>
-			                
-			                <modelPackage>com.anaptecs.jeaf.openapi</modelPackage>
-			                <apiPackage>com.anaptecs.jeaf.openapi.service</apiPackage>
-			                <configOptions>
-			                   <sourceFolder>src-gen/main/java</sourceFolder>
-			                   <dateLibrary>java8</dateLibrary>
-			                   <java8>true</java8>
-			                   <hideGenerationTimestamp>true</hideGenerationTimestamp>
-			                </configOptions>
-			                <configHelp>false</configHelp>
-			                <library>jersey2</library>
-			                
-			            </configuration>
-			        </execution>
-			    </executions>
+							<generateModels>true</generateModels>
+							<generateApis>false</generateApis>
+							<generateApiTests>false</generateApiTests>
+							<generateModelTests>false</generateModelTests>
+							<generateModelDocumentation>false</generateModelDocumentation>
+							<generateApiDocumentation>false</generateApiDocumentation>
+							<generateSupportingFiles>false</generateSupportingFiles>
+
+							<modelPackage>com.anaptecs.jeaf.openapi</modelPackage>
+							<apiPackage>com.anaptecs.jeaf.openapi.service</apiPackage>
+							<configOptions>
+								<sourceFolder>src-gen/main/java</sourceFolder>
+								<dateLibrary>java8</dateLibrary>
+								<java8>true</java8>
+								<hideGenerationTimestamp>true</hideGenerationTimestamp>
+								<useTags>true</useTags>
+								<interfaceOnly>true</interfaceOnly>
+							</configOptions>
+							<configHelp>false</configHelp>
+							<library>jersey2</library>
+
+						</configuration>
+					</execution>
+					<execution>
+						<id>Generate Service Model</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src-gen/main/resources/products/product-services.yml</inputSpec>
+							<output>${project.basedir}</output>
+
+							<language>java</language>
+
+							<generateModels>true</generateModels>
+							<generateApis>false</generateApis>
+							<generateApiTests>false</generateApiTests>
+							<generateModelTests>false</generateModelTests>
+							<generateModelDocumentation>false</generateModelDocumentation>
+							<generateApiDocumentation>false</generateApiDocumentation>
+							<generateSupportingFiles>false</generateSupportingFiles>
+							<skipOverwrite>true</skipOverwrite>
+
+							<modelPackage>com.anaptecs.jeaf.openapi</modelPackage>
+							<apiPackage>com.anaptecs.jeaf.openapi.service</apiPackage>
+							<configOptions>
+								<sourceFolder>src-gen/main/java</sourceFolder>
+								<dateLibrary>java8</dateLibrary>
+								<java8>true</java8>
+								<hideGenerationTimestamp>true</hideGenerationTimestamp>
+							</configOptions>
+							<configHelp>false</configHelp>
+							<library>jersey2</library>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.openapitools</groupId>
+				<artifactId>openapi-generator-maven-plugin</artifactId>
+				<!-- RELEASE_VERSION -->
+				<version>5.4.0</version>
+				<!-- /RELEASE_VERSION -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+
+						<configuration>
+							<inputSpec>${project.basedir}/src-gen/main/resources/base/product-base.yml</inputSpec>
+							<generatorName>java</generatorName>
+
+							<modelPackage>openapitools.model</modelPackage>
+							<output>${project.basedir}</output>
+							<library>jersey2</library>
+
+							<strictSpec>true</strictSpec>
+							
+							
+							
+							<generateModels>true</generateModels>
+							<generateApis>false</generateApis>
+							<generateApiTests>false</generateApiTests>
+							<generateModelTests>false</generateModelTests>
+							<generateModelDocumentation>false</generateModelDocumentation>
+							<generateApiDocumentation>false</generateApiDocumentation>
+							<generateSupportingFiles>false</generateSupportingFiles>
+
+							<configOptions>
+								<sourceFolder>src-gen/main/java</sourceFolder>
+								<dateLibrary>java8</dateLibrary>
+								<java8>true</java8>
+								<hideGenerationTimestamp>true</hideGenerationTimestamp>
+								
+							</configOptions>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
