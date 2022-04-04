@@ -5,7 +5,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 /**
  * 
  */
-public class ExtensibleEnum {
+public final class ExtensibleEnum {
   public static enum ExtensibleEnumType {
     /**
      * 
@@ -169,7 +169,7 @@ public class ExtensibleEnum {
         lEquals = true;
       }
       // Passed object is of same type
-      else if (pObject instanceof ExtensibleEnum) {
+      else if (this.getClass() == pObject.getClass()) {
         ExtensibleEnum lEnum = (ExtensibleEnum) pObject;
         // Compare if unknown literal is the same
         if (this.isUnknownLiteral() && lEnum.isUnknownLiteral()) {

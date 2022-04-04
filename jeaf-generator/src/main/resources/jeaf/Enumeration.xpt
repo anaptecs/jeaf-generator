@@ -34,7 +34,7 @@ private «this.name»(«this.ownedAttribute.asParameterDefinitionList()») {
 «EXPAND Attribute::DoPropertyDeclaration FOREACH this.ownedAttribute»
 «EXPAND Attribute::Getter FOREACH this.ownedAttribute»
 «ELSE»
-public class «name» {
+public final class «name» {
   public static enum «name»Type {
 	«FOREACH this.ownedLiteral AS literal»
 	  /**
@@ -179,7 +179,7 @@ public class «name» {
         lEquals = true;
       }
       // Passed object is of same type
-      else if (pObject instanceof «name») {
+      else if (this.getClass() == pObject.getClass()) {
         «name» lEnum = («name») pObject;
 
         // Compare if unknown literal is the same
