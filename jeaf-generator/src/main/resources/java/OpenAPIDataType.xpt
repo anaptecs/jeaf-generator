@@ -202,7 +202,7 @@
 		public class «name»Deserializer extends com.fasterxml.jackson.databind.JsonDeserializer<«this.fqn()»> {
 
 		@Override
-		public «this.fqn()» deserialize( com.fasterxml.jackson.core.JsonParser pParser, com.fasterxml.jackson.databind.DeserializationContext pContext ) throws java.io.IOException, com.fasterxml.jackson.core.JacksonException {
+		public «this.fqn()» deserialize( com.fasterxml.jackson.core.JsonParser pParser, com.fasterxml.jackson.databind.DeserializationContext pContext ) throws java.io.IOException {
 			// Parse JSON content.
 			com.fasterxml.jackson.databind.JsonNode lNode = pParser.getCodec().readTree(pParser);
 		
