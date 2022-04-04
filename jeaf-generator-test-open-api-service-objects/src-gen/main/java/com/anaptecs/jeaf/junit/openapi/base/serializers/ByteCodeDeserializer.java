@@ -10,7 +10,6 @@ import java.io.IOException;
 import com.anaptecs.jeaf.json.api.JSONMessages;
 import com.anaptecs.jeaf.junit.openapi.base.ByteCode;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
-import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -22,8 +21,7 @@ import com.fasterxml.jackson.databind.node.TextNode;
  */
 public class ByteCodeDeserializer extends JsonDeserializer<ByteCode> {
   @Override
-  public ByteCode deserialize( JsonParser pParser, DeserializationContext pContext )
-    throws IOException, JacksonException {
+  public ByteCode deserialize( JsonParser pParser, DeserializationContext pContext ) throws IOException {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
