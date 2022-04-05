@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import openapitools.model.POI;
+import openapitools.model.POIAllOf;
 import openapitools.model.Stop;
 import openapitools.model.UICStop;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;

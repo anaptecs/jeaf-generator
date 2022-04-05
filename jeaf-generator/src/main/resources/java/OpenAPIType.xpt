@@ -9,7 +9,7 @@
 «IMPORT jeaf»
 
 «DEFINE GenerateOpenAPIType(OpenAPI3Specification spec) FOR OpenAPIType -»
-    «IF superClass.isEmpty == false -»
+    «IF superClass.isEmpty == true -»
         «EXPAND GenerateOpenAPIBaseType(spec) FOR this-»
     «ELSE-»
         «EXPAND GenerateOpenAPISubType(spec) FOR this-»
@@ -166,50 +166,31 @@
     # «this.fqn()»
     «ENDIF-»
     «this.name»:
-      type: object
-      additionalProperties: false
-      «IF this.hasComment()-»
-        «IF this.hasMultiLineComment()-»
-      description: >-
-        «this.getCommentForOpenAPIDescription("        ")»
-        «ELSE-»
-      description: «this.getCommentForOpenAPIDescription("            ")»
-        «ENDIF-»
-      «ENDIF-»
-      «IF this.isTopOfClassHierarchy()-»
-      discriminator:
-        propertyName: objectType
-        mapping:
-          «name»: «this.getOpenAPIType(spec)»
-          «FOREACH this.getAllSubclasses().typeSelect(OpenAPIType) AS subclass-»
-          «subclass.name»: «subclass.getOpenAPIType(spec)»
-          «ENDFOREACH-»
-      «ENDIF-»
-      «IF superClass.isEmpty == false -»
       allOf:
         - $ref: «superClass.get(0).getOpenAPIType(spec)»
+        - type: object
+          additionalProperties: false
+      «IF this.hasComment()-»
+        «IF this.hasMultiLineComment()-»
+          description: >-
+            «this.getCommentForOpenAPIDescription("            ")»
+        «ELSE-»
+          description: «this.getCommentForOpenAPIDescription("            ")»
+        «ENDIF-»
       «ENDIF-»
       «IF this.isDeprecated() -»
-      deprecated: true
+          deprecated: true
       «ENDIF -»
-      «IF this.isTopOfClassHierarchy() || this.hasRequiredProperties() -»
-      required:
-        «IF this.isTopOfClassHierarchy() -»
-        - objectType
-        «ENDIF-»
+      «IF this.hasRequiredProperties() -»
+          required:
         «FOREACH this.getRequiredProperties() AS property-»
-        - «property.name»
+            - «property.name»
         «ENDFOREACH-»
       «ENDIF-»
-      «IF this.ownedAttribute.size > 0 || this.isTopOfClassHierarchy() -»
-      properties:
-        «IF this.isTopOfClassHierarchy() -»
-        objectType:
-          description: Attribute is used as discriminator for inheritance between data types.
-          type: string
-        «ENDIF-»
+      «IF this.ownedAttribute.size > 0 -»
+          properties:
         «FOREACH this.ownedAttribute.select(e | e.isTransient() == false) AS attribute-»
-        «attribute.name»:
+            «attribute.name»:
           «IF attribute.type.isOpenAPIDataType() && ((OpenAPIDataType) attribute.type).inline == true -»
           «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute) FOR (OpenAPIDataType) attribute.type -»
           «ELSE -»
@@ -217,88 +198,96 @@
             «IF attribute.type.isBasicOpenAPIType() == false && attribute.isMultivalued() == false-»
             «ELSE-»
               «IF attribute.hasMultiLineComment()-»
-          description: >-
-            «attribute.getCommentForOpenAPIDescription("            ")»
+              description: >-
+                «attribute.getCommentForOpenAPIDescription("                ")»
               «ELSE-»
-          description: «attribute.getCommentForOpenAPIDescription("            ")»
+              description: «attribute.getCommentForOpenAPIDescription("                ")»
               «ENDIF-»
             «ENDIF-»
           «ENDIF-»
           «IF attribute.type.isBasicOpenAPIType() == true-»
             «IF attribute.isMultivalued() == false-»
-          type: «attribute.type.getOpenAPIType(spec)»
+              type: «attribute.type.getOpenAPIType(spec)»
               «IF attribute.type.hasOpenAPIFormat()-»
-          format: «attribute.type.getOpenAPIFormat()»
+              format: «attribute.type.getOpenAPIFormat()»
               «ENDIF-»
-          «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»    
+              «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR attribute-»    
               «IF attribute.isDeprecated() -»
-          deprecated: true
+              deprecated: true
               «ENDIF-»
             «ELSE-»
               «IF attribute.type.isByteType() -»
-          type: string
-          format: byte
-              «ELSE -»
-          type: array
-          items:
-            type: «attribute.type.getOpenAPIType(spec)»
-              «IF attribute.type.hasOpenAPIFormat()-»
-            format: «attribute.type.getOpenAPIFormat()»
+              type: string
+              format: byte
+              «IF attribute.isStereotypeApplied("Size") -»
+                «IF ((Size) attribute).min != -1-»
+              minLength: «((Size) attribute).min»
+                «ENDIF-»
+                «IF ((Size) attribute).max != -1-»
+              maxLength: «((Size) attribute).max»
+                «ENDIF-»
               «ENDIF-»
-            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»              
+              «ELSE -»
+              type: array
+              items:
+                type: «attribute.type.getOpenAPIType(spec)»
+              «IF attribute.type.hasOpenAPIFormat()-»
+                format: «attribute.type.getOpenAPIFormat()»
+              «ENDIF-»
+              «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR attribute-»              
               «IF attribute.isDeprecated() -»
-            deprecated: true
+                deprecated: true
               «ENDIF-»
             «ENDIF-»
            «ENDIF-»
           «IF attribute.isNullable() == false -»
-          nullable: «attribute.isNullable()»
+              nullable: «attribute.isNullable()»
           «ENDIF-»  
           «IF attribute.isReadOnly()  -»
-          readOnly: «attribute.isReadOnly()»
+              readOnly: «attribute.isReadOnly()»
           «ENDIF-»  
           «IF attribute.isWriteOnly() -»
-          writeOnly: «attribute.isWriteOnly()»
+              writeOnly: «attribute.isWriteOnly()»
           «ENDIF-»  
           «IF attribute.defaultValue != null -»
-          default: «attribute.defaultValue.stringValue()»
+              default: «attribute.defaultValue.stringValue()»
           «ENDIF-»
             «IF attribute.hasExample()-»
               «IF ((Example) attribute).exampleValue.length > 0-»
-          example: '«((Example) attribute).exampleValue»'
+              example: '«((Example) attribute).exampleValue»'
               «ENDIF-»
             «ENDIF-»
           «ELSE-»
             «IF attribute.isDeprecated() -»
-          # Attribute "«attribute.name»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+              # Attribute "«attribute.name»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
             «ENDIF-»
             «IF attribute.isMultivalued() == false-»
               «IF isOneOfForClassHierachieEnabled() && attribute.type.getAllConcreteSubclasses().size > 0 -»
-          oneOf:
+              oneOf:
                 «IF ((Class)attribute.type).isAbstract == false -»
-            - $ref: «attribute.type.getOpenAPIType(spec)»
+                - $ref: «attribute.type.getOpenAPIType(spec)»
                 «ENDIF-»
                 «FOREACH attribute.type.getAllConcreteSubclasses() AS subclass -»
-            - $ref: «subclass.getOpenAPIType(spec)»
+                - $ref: «subclass.getOpenAPIType(spec)»
                 «ENDFOREACH-»
               «ELSE-»
-          $ref: «attribute.type.getOpenAPIType(spec)»
+              $ref: «attribute.type.getOpenAPIType(spec)»
               «ENDIF-»
             «ELSE-»
-          type: array
-          items:
+              type: array
+              items:
               «IF isOneOfForClassHierachieEnabled() && attribute.type.getAllConcreteSubclasses().size > 0 -»
-            oneOf:
+                oneOf:
                 «IF ((Class)attribute.type).isAbstract == false -»
-              - $ref: «attribute.type.getOpenAPIType(spec)»
+                  - $ref: «attribute.type.getOpenAPIType(spec)»
                 «ENDIF-»
                 «FOREACH attribute.type.getAllConcreteSubclasses() AS subclass -»
-              - $ref: «subclass.getOpenAPIType(spec)»
+                  - $ref: «subclass.getOpenAPIType(spec)»
                 «ENDFOREACH-»
               «ELSE-»
-            $ref: «attribute.type.getOpenAPIType(spec)»
+                $ref: «attribute.type.getOpenAPIType(spec)»
               «ENDIF-»
-          minItems: «attribute.getLower()»
+              minItems: «attribute.getLower()»
             «ENDIF-»
           «ENDIF-»
           «ENDIF-»

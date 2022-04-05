@@ -20,52 +20,37 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import openapitools.model.ChildA;
-import openapitools.model.ChildAA;
-import openapitools.model.ChildB;
-import openapitools.model.ChildBAllOf;
-import openapitools.model.ChildBB;
 import openapitools.model.ParentClass;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
 
 /**
- * ChildB
+ * Multi line class comment
  */
+@ApiModel(description = "Multi line class comment")
 @JsonPropertyOrder({
-  ChildB.JSON_PROPERTY_CHILD_B_ATTRIBUTE,
-  ChildB.JSON_PROPERTY_COMPOSITION
+  ChildBAllOf.JSON_PROPERTY_CHILD_B_ATTRIBUTE,
+  ChildBAllOf.JSON_PROPERTY_COMPOSITION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = ChildA.class, name = "ChildA"),
-  @JsonSubTypes.Type(value = ChildAA.class, name = "ChildAA"),
-  @JsonSubTypes.Type(value = ChildB.class, name = "ChildB"),
-  @JsonSubTypes.Type(value = ChildBB.class, name = "ChildBB"),
-  @JsonSubTypes.Type(value = ParentClass.class, name = "ParentClass"),
-})
-
-public class ChildB extends ParentClass {
+public class ChildBAllOf {
   public static final String JSON_PROPERTY_CHILD_B_ATTRIBUTE = "childBAttribute";
   private Boolean childBAttribute;
 
   public static final String JSON_PROPERTY_COMPOSITION = "composition";
   private List<ParentClass> composition = null;
 
-  public ChildB() { 
+  public ChildBAllOf() { 
   }
 
-  public ChildB childBAttribute(Boolean childBAttribute) {
+  public ChildBAllOf childBAttribute(Boolean childBAttribute) {
     this.childBAttribute = childBAttribute;
     return this;
   }
@@ -91,12 +76,12 @@ public class ChildB extends ParentClass {
   }
 
 
-  public ChildB composition(List<ParentClass> composition) {
+  public ChildBAllOf composition(List<ParentClass> composition) {
     this.composition = composition;
     return this;
   }
 
-  public ChildB addCompositionItem(ParentClass compositionItem) {
+  public ChildBAllOf addCompositionItem(ParentClass compositionItem) {
     if (this.composition == null) {
       this.composition = new ArrayList<>();
     }
@@ -126,7 +111,7 @@ public class ChildB extends ParentClass {
 
 
   /**
-   * Return true if this ChildB object is equal to o.
+   * Return true if this ChildB_allOf object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -136,22 +121,20 @@ public class ChildB extends ParentClass {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ChildB childB = (ChildB) o;
-    return Objects.equals(this.childBAttribute, childB.childBAttribute) &&
-        Objects.equals(this.composition, childB.composition) &&
-        super.equals(o);
+    ChildBAllOf childBAllOf = (ChildBAllOf) o;
+    return Objects.equals(this.childBAttribute, childBAllOf.childBAttribute) &&
+        Objects.equals(this.composition, childBAllOf.composition);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(childBAttribute, composition, super.hashCode());
+    return Objects.hash(childBAttribute, composition);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ChildB {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("class ChildBAllOf {\n");
     sb.append("    childBAttribute: ").append(toIndentedString(childBAttribute)).append("\n");
     sb.append("    composition: ").append(toIndentedString(composition)).append("\n");
     sb.append("}");
@@ -169,16 +152,5 @@ public class ChildB extends ParentClass {
     return o.toString().replace("\n", "\n    ");
   }
 
-static {
-  // Initialize and register the discriminator mappings.
-  Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("ChildA", ChildA.class);
-  mappings.put("ChildAA", ChildAA.class);
-  mappings.put("ChildB", ChildB.class);
-  mappings.put("ChildBB", ChildBB.class);
-  mappings.put("ParentClass", ParentClass.class);
-  mappings.put("ChildB", ChildB.class);
-  JSON.registerDiscriminator(ChildB.class, "objectType", mappings);
-}
 }
 

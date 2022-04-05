@@ -20,54 +20,33 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import openapitools.model.CHStopPlace;
-import openapitools.model.GeoPosition;
-import openapitools.model.GeoPositionAllOf;
-import openapitools.model.PlaceRef;
-import openapitools.model.StopPlaceRef;
-import openapitools.model.SwissGeoPosition;
-import openapitools.model.TopoRef;
-import openapitools.model.UICStopPlace;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
 
 /**
- * GeoPosition
+ * GeoPositionAllOf
  */
 @JsonPropertyOrder({
-  GeoPosition.JSON_PROPERTY_LONGITUDE,
-  GeoPosition.JSON_PROPERTY_LATITUDE
+  GeoPositionAllOf.JSON_PROPERTY_LONGITUDE,
+  GeoPositionAllOf.JSON_PROPERTY_LATITUDE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = CHStopPlace.class, name = "CHStopPlace"),
-  @JsonSubTypes.Type(value = GeoPosition.class, name = "GeoPosition"),
-  @JsonSubTypes.Type(value = PlaceRef.class, name = "PlaceRef"),
-  @JsonSubTypes.Type(value = StopPlaceRef.class, name = "StopPlaceRef"),
-  @JsonSubTypes.Type(value = SwissGeoPosition.class, name = "SwissGeoPosition"),
-  @JsonSubTypes.Type(value = TopoRef.class, name = "TopoRef"),
-  @JsonSubTypes.Type(value = UICStopPlace.class, name = "UICStopPlace"),
-})
-
-public class GeoPosition extends PlaceRef {
+public class GeoPositionAllOf {
   public static final String JSON_PROPERTY_LONGITUDE = "longitude";
   private Integer longitude;
 
   public static final String JSON_PROPERTY_LATITUDE = "latitude";
   private Integer latitude;
 
-  public GeoPosition() { 
+  public GeoPositionAllOf() { 
   }
 
-  public GeoPosition longitude(Integer longitude) {
+  public GeoPositionAllOf longitude(Integer longitude) {
     this.longitude = longitude;
     return this;
   }
@@ -93,7 +72,7 @@ public class GeoPosition extends PlaceRef {
   }
 
 
-  public GeoPosition latitude(Integer latitude) {
+  public GeoPositionAllOf latitude(Integer latitude) {
     this.latitude = latitude;
     return this;
   }
@@ -120,7 +99,7 @@ public class GeoPosition extends PlaceRef {
 
 
   /**
-   * Return true if this GeoPosition object is equal to o.
+   * Return true if this GeoPosition_allOf object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -130,22 +109,20 @@ public class GeoPosition extends PlaceRef {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GeoPosition geoPosition = (GeoPosition) o;
-    return Objects.equals(this.longitude, geoPosition.longitude) &&
-        Objects.equals(this.latitude, geoPosition.latitude) &&
-        super.equals(o);
+    GeoPositionAllOf geoPositionAllOf = (GeoPositionAllOf) o;
+    return Objects.equals(this.longitude, geoPositionAllOf.longitude) &&
+        Objects.equals(this.latitude, geoPositionAllOf.latitude);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(longitude, latitude, super.hashCode());
+    return Objects.hash(longitude, latitude);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GeoPosition {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("class GeoPositionAllOf {\n");
     sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
     sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
     sb.append("}");
@@ -163,18 +140,5 @@ public class GeoPosition extends PlaceRef {
     return o.toString().replace("\n", "\n    ");
   }
 
-static {
-  // Initialize and register the discriminator mappings.
-  Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("CHStopPlace", CHStopPlace.class);
-  mappings.put("GeoPosition", GeoPosition.class);
-  mappings.put("PlaceRef", PlaceRef.class);
-  mappings.put("StopPlaceRef", StopPlaceRef.class);
-  mappings.put("SwissGeoPosition", SwissGeoPosition.class);
-  mappings.put("TopoRef", TopoRef.class);
-  mappings.put("UICStopPlace", UICStopPlace.class);
-  mappings.put("GeoPosition", GeoPosition.class);
-  JSON.registerDiscriminator(GeoPosition.class, "objectType", mappings);
-}
 }
 

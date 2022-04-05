@@ -19,6 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * ChildAA
  */
@@ -28,22 +30,69 @@ public class ChildAA extends ChildA {
   @JsonProperty("childAAAttribute")
   private Integer childAAAttribute = null;
 
+  @JsonProperty("sizedArray")
+  private Integer sizedArray = null;
+
+  @JsonProperty("requiredArray")
+  private List<String> requiredArray = new ArrayList<>();
+
   public ChildAA childAAAttribute(Integer childAAAttribute) {
     this.childAAAttribute = childAAAttribute;
     return this;
   }
 
    /**
-   * Get childAAAttribute
+   * Multi line docs
    * @return childAAAttribute
   **/
-  @Schema(required = true, description = "")
+  @Schema(required = true, description = "Multi line docs")
   public Integer getChildAAAttribute() {
     return childAAAttribute;
   }
 
   public void setChildAAAttribute(Integer childAAAttribute) {
     this.childAAAttribute = childAAAttribute;
+  }
+
+  public ChildAA sizedArray(Integer sizedArray) {
+    this.sizedArray = sizedArray;
+    return this;
+  }
+
+   /**
+   * Get sizedArray
+   * @return sizedArray
+  **/
+  @Schema(required = true, description = "")
+  public Integer getSizedArray() {
+    return sizedArray;
+  }
+
+  public void setSizedArray(Integer sizedArray) {
+    this.sizedArray = sizedArray;
+  }
+
+  public ChildAA requiredArray(List<String> requiredArray) {
+    this.requiredArray = requiredArray;
+    return this;
+  }
+
+  public ChildAA addRequiredArrayItem(String requiredArrayItem) {
+    this.requiredArray.add(requiredArrayItem);
+    return this;
+  }
+
+   /**
+   * Get requiredArray
+   * @return requiredArray
+  **/
+  @Schema(required = true, description = "")
+  public List<String> getRequiredArray() {
+    return requiredArray;
+  }
+
+  public void setRequiredArray(List<String> requiredArray) {
+    this.requiredArray = requiredArray;
   }
 
 
@@ -57,12 +106,14 @@ public class ChildAA extends ChildA {
     }
     ChildAA childAA = (ChildAA) o;
     return Objects.equals(this.childAAAttribute, childAA.childAAAttribute) &&
+        Objects.equals(this.sizedArray, childAA.sizedArray) &&
+        Objects.equals(this.requiredArray, childAA.requiredArray) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(childAAAttribute, super.hashCode());
+    return Objects.hash(childAAAttribute, sizedArray, requiredArray, super.hashCode());
   }
 
 
@@ -72,6 +123,8 @@ public class ChildAA extends ChildA {
     sb.append("class ChildAA {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    childAAAttribute: ").append(toIndentedString(childAAAttribute)).append("\n");
+    sb.append("    sizedArray: ").append(toIndentedString(sizedArray)).append("\n");
+    sb.append("    requiredArray: ").append(toIndentedString(requiredArray)).append("\n");
     sb.append("}");
     return sb.toString();
   }

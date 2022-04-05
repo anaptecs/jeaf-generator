@@ -28,6 +28,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import openapitools.model.ChildA;
 import openapitools.model.ChildAA;
+import openapitools.model.ChildAAllOf;
 import openapitools.model.ChildB;
 import openapitools.model.ChildBB;
 import openapitools.model.ParentClass;

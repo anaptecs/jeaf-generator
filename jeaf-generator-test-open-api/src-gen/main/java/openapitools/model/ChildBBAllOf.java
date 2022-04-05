@@ -20,45 +20,30 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import openapitools.model.ChildA;
-import openapitools.model.ChildAA;
 import openapitools.model.ChildB;
-import openapitools.model.ChildBB;
-import openapitools.model.ChildBBAllOf;
 import openapitools.model.ParentClass;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
 
 /**
- * ChildBB
+ * ChildBBAllOf
  */
 @JsonPropertyOrder({
-  ChildBB.JSON_PROPERTY_CHILD_B_B_ATTRIBUTE,
-  ChildBB.JSON_PROPERTY_DEPRECATED_ATTRIBUTE,
-  ChildBB.JSON_PROPERTY_DEPRECATED_BS,
-  ChildBB.JSON_PROPERTY_DEPRECATED_PARENT,
-  ChildBB.JSON_PROPERTY_DEPRECATED_ARRAY
+  ChildBBAllOf.JSON_PROPERTY_CHILD_B_B_ATTRIBUTE,
+  ChildBBAllOf.JSON_PROPERTY_DEPRECATED_ATTRIBUTE,
+  ChildBBAllOf.JSON_PROPERTY_DEPRECATED_BS,
+  ChildBBAllOf.JSON_PROPERTY_DEPRECATED_PARENT,
+  ChildBBAllOf.JSON_PROPERTY_DEPRECATED_ARRAY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = ChildA.class, name = "ChildA"),
-  @JsonSubTypes.Type(value = ChildAA.class, name = "ChildAA"),
-  @JsonSubTypes.Type(value = ChildB.class, name = "ChildB"),
-  @JsonSubTypes.Type(value = ChildBB.class, name = "ChildBB"),
-  @JsonSubTypes.Type(value = ParentClass.class, name = "ParentClass"),
-})
-
-public class ChildBB extends ChildB {
+public class ChildBBAllOf {
   public static final String JSON_PROPERTY_CHILD_B_B_ATTRIBUTE = "childBBAttribute";
   private Long childBBAttribute;
 
@@ -74,10 +59,10 @@ public class ChildBB extends ChildB {
   public static final String JSON_PROPERTY_DEPRECATED_ARRAY = "deprecatedArray";
   private byte[] deprecatedArray;
 
-  public ChildBB() { 
+  public ChildBBAllOf() { 
   }
 
-  public ChildBB childBBAttribute(Long childBBAttribute) {
+  public ChildBBAllOf childBBAttribute(Long childBBAttribute) {
     this.childBBAttribute = childBBAttribute;
     return this;
   }
@@ -103,7 +88,7 @@ public class ChildBB extends ChildB {
   }
 
 
-  public ChildBB deprecatedAttribute(Integer deprecatedAttribute) {
+  public ChildBBAllOf deprecatedAttribute(Integer deprecatedAttribute) {
     this.deprecatedAttribute = deprecatedAttribute;
     return this;
   }
@@ -131,12 +116,12 @@ public class ChildBB extends ChildB {
   }
 
 
-  public ChildBB deprecatedBs(List<ChildB> deprecatedBs) {
+  public ChildBBAllOf deprecatedBs(List<ChildB> deprecatedBs) {
     this.deprecatedBs = deprecatedBs;
     return this;
   }
 
-  public ChildBB addDeprecatedBsItem(ChildB deprecatedBsItem) {
+  public ChildBBAllOf addDeprecatedBsItem(ChildB deprecatedBsItem) {
     if (this.deprecatedBs == null) {
       this.deprecatedBs = new ArrayList<>();
     }
@@ -165,7 +150,7 @@ public class ChildBB extends ChildB {
   }
 
 
-  public ChildBB deprecatedParent(ParentClass deprecatedParent) {
+  public ChildBBAllOf deprecatedParent(ParentClass deprecatedParent) {
     this.deprecatedParent = deprecatedParent;
     return this;
   }
@@ -191,7 +176,7 @@ public class ChildBB extends ChildB {
   }
 
 
-  public ChildBB deprecatedArray(byte[] deprecatedArray) {
+  public ChildBBAllOf deprecatedArray(byte[] deprecatedArray) {
     this.deprecatedArray = deprecatedArray;
     return this;
   }
@@ -218,7 +203,7 @@ public class ChildBB extends ChildB {
 
 
   /**
-   * Return true if this ChildBB object is equal to o.
+   * Return true if this ChildBB_allOf object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -228,25 +213,23 @@ public class ChildBB extends ChildB {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ChildBB childBB = (ChildBB) o;
-    return Objects.equals(this.childBBAttribute, childBB.childBBAttribute) &&
-        Objects.equals(this.deprecatedAttribute, childBB.deprecatedAttribute) &&
-        Objects.equals(this.deprecatedBs, childBB.deprecatedBs) &&
-        Objects.equals(this.deprecatedParent, childBB.deprecatedParent) &&
-        Arrays.equals(this.deprecatedArray, childBB.deprecatedArray) &&
-        super.equals(o);
+    ChildBBAllOf childBBAllOf = (ChildBBAllOf) o;
+    return Objects.equals(this.childBBAttribute, childBBAllOf.childBBAttribute) &&
+        Objects.equals(this.deprecatedAttribute, childBBAllOf.deprecatedAttribute) &&
+        Objects.equals(this.deprecatedBs, childBBAllOf.deprecatedBs) &&
+        Objects.equals(this.deprecatedParent, childBBAllOf.deprecatedParent) &&
+        Arrays.equals(this.deprecatedArray, childBBAllOf.deprecatedArray);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(childBBAttribute, deprecatedAttribute, deprecatedBs, deprecatedParent, Arrays.hashCode(deprecatedArray), super.hashCode());
+    return Objects.hash(childBBAttribute, deprecatedAttribute, deprecatedBs, deprecatedParent, Arrays.hashCode(deprecatedArray));
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ChildBB {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("class ChildBBAllOf {\n");
     sb.append("    childBBAttribute: ").append(toIndentedString(childBBAttribute)).append("\n");
     sb.append("    deprecatedAttribute: ").append(toIndentedString(deprecatedAttribute)).append("\n");
     sb.append("    deprecatedBs: ").append(toIndentedString(deprecatedBs)).append("\n");
@@ -267,16 +250,5 @@ public class ChildBB extends ChildB {
     return o.toString().replace("\n", "\n    ");
   }
 
-static {
-  // Initialize and register the discriminator mappings.
-  Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("ChildA", ChildA.class);
-  mappings.put("ChildAA", ChildAA.class);
-  mappings.put("ChildB", ChildB.class);
-  mappings.put("ChildBB", ChildBB.class);
-  mappings.put("ParentClass", ParentClass.class);
-  mappings.put("ChildBB", ChildBB.class);
-  JSON.registerDiscriminator(ChildBB.class, "objectType", mappings);
-}
 }
 

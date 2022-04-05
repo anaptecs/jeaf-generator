@@ -31,6 +31,7 @@ import java.util.List;
 import openapitools.model.Company;
 import openapitools.model.Partner;
 import openapitools.model.Person;
+import openapitools.model.PersonAllOf;
 import openapitools.model.PostalAddress;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;

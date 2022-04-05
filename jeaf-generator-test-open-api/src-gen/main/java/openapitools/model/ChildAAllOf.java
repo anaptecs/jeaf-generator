@@ -20,69 +20,57 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import openapitools.model.POI;
-import openapitools.model.Stop;
-import openapitools.model.UICStop;
-import openapitools.model.UICStopAllOf;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
 
 /**
- * UICStop
+ * single line class comment
  */
+@ApiModel(description = "single line class comment")
 @JsonPropertyOrder({
-  UICStop.JSON_PROPERTY_UIC_CODE
+  ChildAAllOf.JSON_PROPERTY_CHILD_A_ATTRIBUTE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = POI.class, name = "POI"),
-  @JsonSubTypes.Type(value = Stop.class, name = "Stop"),
-  @JsonSubTypes.Type(value = UICStop.class, name = "UICStop"),
-})
+public class ChildAAllOf {
+  public static final String JSON_PROPERTY_CHILD_A_ATTRIBUTE = "childAAttribute";
+  private Integer childAAttribute;
 
-public class UICStop extends Stop {
-  public static final String JSON_PROPERTY_UIC_CODE = "uicCode";
-  private String uicCode;
-
-  public UICStop() { 
+  public ChildAAllOf() { 
   }
 
-  public UICStop uicCode(String uicCode) {
-    this.uicCode = uicCode;
+  public ChildAAllOf childAAttribute(Integer childAAttribute) {
+    this.childAAttribute = childAAttribute;
     return this;
   }
 
    /**
-   * Get uicCode
-   * @return uicCode
+   * Get childAAttribute
+   * @return childAAttribute
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty(JSON_PROPERTY_UIC_CODE)
+  @JsonProperty(JSON_PROPERTY_CHILD_A_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getUicCode() {
-    return uicCode;
+  public Integer getChildAAttribute() {
+    return childAAttribute;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_UIC_CODE)
+  @JsonProperty(JSON_PROPERTY_CHILD_A_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUicCode(String uicCode) {
-    this.uicCode = uicCode;
+  public void setChildAAttribute(Integer childAAttribute) {
+    this.childAAttribute = childAAttribute;
   }
 
 
   /**
-   * Return true if this UICStop object is equal to o.
+   * Return true if this ChildA_allOf object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -92,22 +80,20 @@ public class UICStop extends Stop {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UICStop uiCStop = (UICStop) o;
-    return Objects.equals(this.uicCode, uiCStop.uicCode) &&
-        super.equals(o);
+    ChildAAllOf childAAllOf = (ChildAAllOf) o;
+    return Objects.equals(this.childAAttribute, childAAllOf.childAAttribute);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(uicCode, super.hashCode());
+    return Objects.hash(childAAttribute);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UICStop {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    uicCode: ").append(toIndentedString(uicCode)).append("\n");
+    sb.append("class ChildAAllOf {\n");
+    sb.append("    childAAttribute: ").append(toIndentedString(childAAttribute)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -123,14 +109,5 @@ public class UICStop extends Stop {
     return o.toString().replace("\n", "\n    ");
   }
 
-static {
-  // Initialize and register the discriminator mappings.
-  Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("POI", POI.class);
-  mappings.put("Stop", Stop.class);
-  mappings.put("UICStop", UICStop.class);
-  mappings.put("UICStop", UICStop.class);
-  JSON.registerDiscriminator(UICStop.class, "objectType", mappings);
-}
 }
 

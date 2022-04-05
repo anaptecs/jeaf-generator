@@ -29,6 +29,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import openapitools.model.Company;
+import openapitools.model.CompanyAllOf;
 import openapitools.model.Partner;
 import openapitools.model.Person;
 import openapitools.model.PostalAddress;

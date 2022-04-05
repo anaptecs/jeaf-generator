@@ -20,43 +20,28 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import openapitools.model.ChildA;
-import openapitools.model.ChildAA;
-import openapitools.model.ChildAAAllOf;
-import openapitools.model.ChildB;
-import openapitools.model.ChildBB;
-import openapitools.model.ParentClass;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
 
 /**
- * ChildAA
+ * ChildAAAllOf
+ * @deprecated
  */
+@Deprecated
 @JsonPropertyOrder({
-  ChildAA.JSON_PROPERTY_CHILD_A_A_ATTRIBUTE,
-  ChildAA.JSON_PROPERTY_SIZED_ARRAY,
-  ChildAA.JSON_PROPERTY_REQUIRED_ARRAY
+  ChildAAAllOf.JSON_PROPERTY_CHILD_A_A_ATTRIBUTE,
+  ChildAAAllOf.JSON_PROPERTY_SIZED_ARRAY,
+  ChildAAAllOf.JSON_PROPERTY_REQUIRED_ARRAY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = ChildA.class, name = "ChildA"),
-  @JsonSubTypes.Type(value = ChildAA.class, name = "ChildAA"),
-  @JsonSubTypes.Type(value = ChildB.class, name = "ChildB"),
-  @JsonSubTypes.Type(value = ChildBB.class, name = "ChildBB"),
-  @JsonSubTypes.Type(value = ParentClass.class, name = "ParentClass"),
-})
-
-public class ChildAA extends ChildA {
+public class ChildAAAllOf {
   public static final String JSON_PROPERTY_CHILD_A_A_ATTRIBUTE = "childAAAttribute";
   private Integer childAAAttribute;
 
@@ -66,10 +51,10 @@ public class ChildAA extends ChildA {
   public static final String JSON_PROPERTY_REQUIRED_ARRAY = "requiredArray";
   private List<String> requiredArray = new ArrayList<>();
 
-  public ChildAA() { 
+  public ChildAAAllOf() { 
   }
 
-  public ChildAA childAAAttribute(Integer childAAAttribute) {
+  public ChildAAAllOf childAAAttribute(Integer childAAAttribute) {
     this.childAAAttribute = childAAAttribute;
     return this;
   }
@@ -95,7 +80,7 @@ public class ChildAA extends ChildA {
   }
 
 
-  public ChildAA sizedArray(Integer sizedArray) {
+  public ChildAAAllOf sizedArray(Integer sizedArray) {
     this.sizedArray = sizedArray;
     return this;
   }
@@ -121,12 +106,12 @@ public class ChildAA extends ChildA {
   }
 
 
-  public ChildAA requiredArray(List<String> requiredArray) {
+  public ChildAAAllOf requiredArray(List<String> requiredArray) {
     this.requiredArray = requiredArray;
     return this;
   }
 
-  public ChildAA addRequiredArrayItem(String requiredArrayItem) {
+  public ChildAAAllOf addRequiredArrayItem(String requiredArrayItem) {
     this.requiredArray.add(requiredArrayItem);
     return this;
   }
@@ -153,7 +138,7 @@ public class ChildAA extends ChildA {
 
 
   /**
-   * Return true if this ChildAA object is equal to o.
+   * Return true if this ChildAA_allOf object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -163,23 +148,21 @@ public class ChildAA extends ChildA {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ChildAA childAA = (ChildAA) o;
-    return Objects.equals(this.childAAAttribute, childAA.childAAAttribute) &&
-        Objects.equals(this.sizedArray, childAA.sizedArray) &&
-        Objects.equals(this.requiredArray, childAA.requiredArray) &&
-        super.equals(o);
+    ChildAAAllOf childAAAllOf = (ChildAAAllOf) o;
+    return Objects.equals(this.childAAAttribute, childAAAllOf.childAAAttribute) &&
+        Objects.equals(this.sizedArray, childAAAllOf.sizedArray) &&
+        Objects.equals(this.requiredArray, childAAAllOf.requiredArray);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(childAAAttribute, sizedArray, requiredArray, super.hashCode());
+    return Objects.hash(childAAAttribute, sizedArray, requiredArray);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ChildAA {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("class ChildAAAllOf {\n");
     sb.append("    childAAAttribute: ").append(toIndentedString(childAAAttribute)).append("\n");
     sb.append("    sizedArray: ").append(toIndentedString(sizedArray)).append("\n");
     sb.append("    requiredArray: ").append(toIndentedString(requiredArray)).append("\n");
@@ -198,16 +181,5 @@ public class ChildAA extends ChildA {
     return o.toString().replace("\n", "\n    ");
   }
 
-static {
-  // Initialize and register the discriminator mappings.
-  Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("ChildA", ChildA.class);
-  mappings.put("ChildAA", ChildAA.class);
-  mappings.put("ChildB", ChildB.class);
-  mappings.put("ChildBB", ChildBB.class);
-  mappings.put("ParentClass", ParentClass.class);
-  mappings.put("ChildAA", ChildAA.class);
-  JSON.registerDiscriminator(ChildAA.class, "objectType", mappings);
-}
 }
 

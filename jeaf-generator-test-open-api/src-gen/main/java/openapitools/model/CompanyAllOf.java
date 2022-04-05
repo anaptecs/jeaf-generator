@@ -20,69 +20,56 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import openapitools.model.POI;
-import openapitools.model.Stop;
-import openapitools.model.UICStop;
-import openapitools.model.UICStopAllOf;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
 
 /**
- * UICStop
+ * CompanyAllOf
  */
 @JsonPropertyOrder({
-  UICStop.JSON_PROPERTY_UIC_CODE
+  CompanyAllOf.JSON_PROPERTY_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = POI.class, name = "POI"),
-  @JsonSubTypes.Type(value = Stop.class, name = "Stop"),
-  @JsonSubTypes.Type(value = UICStop.class, name = "UICStop"),
-})
+public class CompanyAllOf {
+  public static final String JSON_PROPERTY_NAME = "name";
+  private String name;
 
-public class UICStop extends Stop {
-  public static final String JSON_PROPERTY_UIC_CODE = "uicCode";
-  private String uicCode;
-
-  public UICStop() { 
+  public CompanyAllOf() { 
   }
 
-  public UICStop uicCode(String uicCode) {
-    this.uicCode = uicCode;
+  public CompanyAllOf name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * Get uicCode
-   * @return uicCode
+   * Get name
+   * @return name
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty(JSON_PROPERTY_UIC_CODE)
+  @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getUicCode() {
-    return uicCode;
+  public String getName() {
+    return name;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_UIC_CODE)
+  @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUicCode(String uicCode) {
-    this.uicCode = uicCode;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
   /**
-   * Return true if this UICStop object is equal to o.
+   * Return true if this Company_allOf object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -92,22 +79,20 @@ public class UICStop extends Stop {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UICStop uiCStop = (UICStop) o;
-    return Objects.equals(this.uicCode, uiCStop.uicCode) &&
-        super.equals(o);
+    CompanyAllOf companyAllOf = (CompanyAllOf) o;
+    return Objects.equals(this.name, companyAllOf.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(uicCode, super.hashCode());
+    return Objects.hash(name);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UICStop {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    uicCode: ").append(toIndentedString(uicCode)).append("\n");
+    sb.append("class CompanyAllOf {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -123,14 +108,5 @@ public class UICStop extends Stop {
     return o.toString().replace("\n", "\n    ");
   }
 
-static {
-  // Initialize and register the discriminator mappings.
-  Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("POI", POI.class);
-  mappings.put("Stop", Stop.class);
-  mappings.put("UICStop", UICStop.class);
-  mappings.put("UICStop", UICStop.class);
-  JSON.registerDiscriminator(UICStop.class, "objectType", mappings);
-}
 }
 

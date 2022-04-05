@@ -39,10 +39,10 @@ public class ChildB extends ParentClass {
   }
 
    /**
-   * Get childBAttribute
+   * A child attribute
    * @return childBAttribute
   **/
-  @Schema(required = true, description = "")
+  @Schema(required = true, description = "A child attribute")
   public Boolean isChildBAttribute() {
     return childBAttribute;
   }
@@ -65,10 +65,10 @@ public class ChildB extends ParentClass {
   }
 
    /**
-   * Get composition
+   * the composition
    * @return composition
   **/
-  @Schema(description = "")
+  @Schema(description = "the composition")
   public List<ParentClass> getComposition() {
     return composition;
   }
