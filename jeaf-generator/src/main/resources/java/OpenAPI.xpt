@@ -494,6 +494,9 @@ components:
         «ENDIF-»
         - «literal.name»
         «ENDFOREACH-»
+      «IF this.hasDefaultLiteral()-»
+      default: «this.getDefaultLiteral().name»
+      «ENDIF-»
 «ENDDEFINE»
 
 «DEFINE RESTParamName FOR Parameter-»

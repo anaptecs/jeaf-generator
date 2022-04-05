@@ -250,3 +250,10 @@ String getOrderNumber(uml::Element element) :
 List[uml::Element] getOrderedSchemaElements(JMM::OpenAPI3Specification spec) :
     spec.getOpenAPITypes().addAll(spec.getOpenAPIDataTypes().select(e|e.inline == false)).addAll(spec.getOpenAPIEnums()).toList().sortBy(e|e.name).sortBy(e|e.getOrderNumber());
     
+uml::EnumerationLiteral getDefaultLiteral(JMM::OpenAPIEnumeration enum) :
+    enum.ownedLiteral.select(e|e.isStereotypeApplied("DefaultLiteral")).first();
+
+boolean hasDefaultLiteral(JMM::OpenAPIEnumeration enum) :
+    getDefaultLiteral(enum) != null;
+
+    

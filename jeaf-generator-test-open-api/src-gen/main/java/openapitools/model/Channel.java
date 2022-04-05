@@ -41,7 +41,7 @@ import openapitools.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Channel {
   public static final String JSON_PROPERTY_CHANNEL_TYPE = "channelType";
-  private ChannelType channelType;
+  private ChannelType channelType = ChannelType.MOBILE;
 
   public static final String JSON_PROPERTY_CHANNEL_CODE = "channelCode";
   private String channelCode = "WEBSHOP";
