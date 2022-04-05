@@ -215,12 +215,12 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildA
     ChildA:
+      description: >-
+        single line class comment
       allOf:
         - $ref: '#/components/schemas/ParentClass'
         - type: object
           additionalProperties: false
-          description: >-
-            single line class comment
           required:
             - childAAttribute
           properties:
@@ -231,11 +231,11 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildAA
     ChildAA:
+      deprecated: true
       allOf:
         - $ref: '#/components/schemas/ChildA'
         - type: object
           additionalProperties: false
-          deprecated: true
           required:
             - childAAAttribute
             - sizedArray
@@ -264,15 +264,15 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildB
     ChildB:
+      description: >-
+        Multi
+        line
+        class
+        comment
       allOf:
         - $ref: '#/components/schemas/ParentClass'
         - type: object
           additionalProperties: false
-          description: >-
-            Multi
-            line
-            class
-            comment
           required:
             - childBAttribute
           properties:
