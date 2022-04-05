@@ -34,8 +34,9 @@ import openapitools.JSON;
 
 
 /**
- * ChildA
+ * single line class comment
  */
+@ApiModel(description = "single line class comment")
 @JsonPropertyOrder({
   ChildA.JSON_PROPERTY_CHILD_A_ATTRIBUTE
 })

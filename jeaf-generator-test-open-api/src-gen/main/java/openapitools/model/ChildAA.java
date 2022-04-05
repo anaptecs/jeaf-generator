@@ -36,7 +36,9 @@ import openapitools.JSON;
 
 /**
  * ChildAA
+ * @deprecated
  */
+@Deprecated
 @JsonPropertyOrder({
   ChildAA.JSON_PROPERTY_CHILD_A_A_ATTRIBUTE,
   ChildAA.JSON_PROPERTY_SIZED_ARRAY,

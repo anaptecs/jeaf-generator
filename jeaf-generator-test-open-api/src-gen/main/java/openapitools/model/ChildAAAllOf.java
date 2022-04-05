@@ -32,9 +32,7 @@ import openapitools.JSON;
 
 /**
  * ChildAAAllOf
- * @deprecated
  */
-@Deprecated
 @JsonPropertyOrder({
   ChildAAAllOf.JSON_PROPERTY_CHILD_A_A_ATTRIBUTE,
   ChildAAAllOf.JSON_PROPERTY_SIZED_ARRAY,

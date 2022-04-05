@@ -168,21 +168,21 @@
     # «this.fqn()»
     «ENDIF-»
     «this.name»:
+      «IF this.hasComment()-»
+        «IF this.hasMultiLineComment()-»
+      description: >-
+        «this.getCommentForOpenAPIDescription("        ")»
+        «ELSE-»
+      description: «this.getCommentForOpenAPIDescription("        ")»
+        «ENDIF-»
+      «ENDIF-»
+      «IF this.isDeprecated() -»
+      deprecated: true
+      «ENDIF -»
       allOf:
         - $ref: «superClass.get(0).getOpenAPIType(spec)»
         - type: object
           additionalProperties: false
-      «IF this.hasComment()-»
-        «IF this.hasMultiLineComment()-»
-          description: >-
-            «this.getCommentForOpenAPIDescription("            ")»
-        «ELSE-»
-          description: «this.getCommentForOpenAPIDescription("            ")»
-        «ENDIF-»
-      «ENDIF-»
-      «IF this.isDeprecated() -»
-          deprecated: true
-      «ENDIF -»
       «IF this.hasRequiredProperties() -»
           required:
         «FOREACH this.getRequiredProperties() AS property-»

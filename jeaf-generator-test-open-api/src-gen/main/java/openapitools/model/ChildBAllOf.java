@@ -32,9 +32,8 @@ import openapitools.JSON;
 
 
 /**
- * Multi line class comment
+ * ChildBAllOf
  */
-@ApiModel(description = "Multi line class comment")
 @JsonPropertyOrder({
   ChildBAllOf.JSON_PROPERTY_CHILD_B_ATTRIBUTE,
   ChildBAllOf.JSON_PROPERTY_COMPOSITION

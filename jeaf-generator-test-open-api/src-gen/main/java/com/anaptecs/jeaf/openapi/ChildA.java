@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 /**
- * ChildA
+ * single line class comment
  */
-
+@Schema(description = "single line class comment")
 
 public class ChildA extends ParentClass {
   @JsonProperty("childAAttribute")
