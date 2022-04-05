@@ -29,7 +29,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import openapitools.model.Company;
-import openapitools.model.Partner;
 import openapitools.model.Person;
 import openapitools.model.PostalAddress;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -47,7 +46,6 @@ import openapitools.JSON;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = Company.class, name = "Company"),
-  @JsonSubTypes.Type(value = Partner.class, name = "Partner"),
   @JsonSubTypes.Type(value = Person.class, name = "Person"),
 })
 
@@ -167,7 +165,6 @@ static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
   mappings.put("Company", Company.class);
-  mappings.put("Partner", Partner.class);
   mappings.put("Person", Person.class);
   mappings.put("Partner", Partner.class);
   JSON.registerDiscriminator(Partner.class, "objectType", mappings);

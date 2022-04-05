@@ -28,10 +28,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import openapitools.model.ChildA;
-import openapitools.model.ChildAA;
 import openapitools.model.ChildB;
-import openapitools.model.ChildBB;
 import openapitools.model.ChildBBAllOf;
 import openapitools.model.ParentClass;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -50,13 +47,6 @@ import openapitools.JSON;
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = ChildA.class, name = "ChildA"),
-  @JsonSubTypes.Type(value = ChildAA.class, name = "ChildAA"),
-  @JsonSubTypes.Type(value = ChildB.class, name = "ChildB"),
-  @JsonSubTypes.Type(value = ChildBB.class, name = "ChildBB"),
-  @JsonSubTypes.Type(value = ParentClass.class, name = "ParentClass"),
-})
 
 public class ChildBB extends ChildB {
   public static final String JSON_PROPERTY_CHILD_B_B_ATTRIBUTE = "childBBAttribute";
@@ -270,11 +260,6 @@ public class ChildBB extends ChildB {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("ChildA", ChildA.class);
-  mappings.put("ChildAA", ChildAA.class);
-  mappings.put("ChildB", ChildB.class);
-  mappings.put("ChildBB", ChildBB.class);
-  mappings.put("ParentClass", ParentClass.class);
   mappings.put("ChildBB", ChildBB.class);
   JSON.registerDiscriminator(ChildBB.class, "objectType", mappings);
 }

@@ -26,13 +26,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import openapitools.model.CHStopPlace;
-import openapitools.model.GeoPosition;
-import openapitools.model.PlaceRef;
 import openapitools.model.StopPlaceRef;
-import openapitools.model.SwissGeoPosition;
-import openapitools.model.TopoRef;
-import openapitools.model.UICStopPlace;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -44,15 +38,6 @@ import openapitools.JSON;
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = CHStopPlace.class, name = "CHStopPlace"),
-  @JsonSubTypes.Type(value = GeoPosition.class, name = "GeoPosition"),
-  @JsonSubTypes.Type(value = PlaceRef.class, name = "PlaceRef"),
-  @JsonSubTypes.Type(value = StopPlaceRef.class, name = "StopPlaceRef"),
-  @JsonSubTypes.Type(value = SwissGeoPosition.class, name = "SwissGeoPosition"),
-  @JsonSubTypes.Type(value = TopoRef.class, name = "TopoRef"),
-  @JsonSubTypes.Type(value = UICStopPlace.class, name = "UICStopPlace"),
-})
 
 public class UICStopPlace extends StopPlaceRef {
   public UICStopPlace() { 
@@ -100,13 +85,6 @@ public class UICStopPlace extends StopPlaceRef {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("CHStopPlace", CHStopPlace.class);
-  mappings.put("GeoPosition", GeoPosition.class);
-  mappings.put("PlaceRef", PlaceRef.class);
-  mappings.put("StopPlaceRef", StopPlaceRef.class);
-  mappings.put("SwissGeoPosition", SwissGeoPosition.class);
-  mappings.put("TopoRef", TopoRef.class);
-  mappings.put("UICStopPlace", UICStopPlace.class);
   mappings.put("UICStopPlace", UICStopPlace.class);
   JSON.registerDiscriminator(UICStopPlace.class, "objectType", mappings);
 }

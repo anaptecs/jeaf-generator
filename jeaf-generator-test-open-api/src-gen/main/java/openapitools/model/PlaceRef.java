@@ -28,7 +28,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import openapitools.model.CHStopPlace;
 import openapitools.model.GeoPosition;
-import openapitools.model.PlaceRef;
 import openapitools.model.StopPlaceRef;
 import openapitools.model.SwissGeoPosition;
 import openapitools.model.TopoRef;
@@ -49,7 +48,6 @@ import openapitools.JSON;
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CHStopPlace.class, name = "CHStopPlace"),
   @JsonSubTypes.Type(value = GeoPosition.class, name = "GeoPosition"),
-  @JsonSubTypes.Type(value = PlaceRef.class, name = "PlaceRef"),
   @JsonSubTypes.Type(value = StopPlaceRef.class, name = "StopPlaceRef"),
   @JsonSubTypes.Type(value = SwissGeoPosition.class, name = "SwissGeoPosition"),
   @JsonSubTypes.Type(value = TopoRef.class, name = "TopoRef"),
@@ -165,7 +163,6 @@ static {
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
   mappings.put("CHStopPlace", CHStopPlace.class);
   mappings.put("GeoPosition", GeoPosition.class);
-  mappings.put("PlaceRef", PlaceRef.class);
   mappings.put("StopPlaceRef", StopPlaceRef.class);
   mappings.put("SwissGeoPosition", SwissGeoPosition.class);
   mappings.put("TopoRef", TopoRef.class);

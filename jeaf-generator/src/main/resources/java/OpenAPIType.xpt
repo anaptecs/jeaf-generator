@@ -34,11 +34,13 @@
       «IF this.isTopOfClassHierarchy()-»
       discriminator:
         propertyName: objectType
+        «IF generateDefaultClassMapping() == true-»
         mapping:
           «name»: «this.getOpenAPIType(spec)»
           «FOREACH this.getAllSubclasses().typeSelect(OpenAPIType) AS subclass-»
           «subclass.name»: «subclass.getOpenAPIType(spec)»
           «ENDFOREACH-»
+        «ENDIF-»  
       «ENDIF-»
       «IF superClass.isEmpty == false -»
       allOf:

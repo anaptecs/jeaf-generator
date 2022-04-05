@@ -574,12 +574,6 @@ components:
       additionalProperties: false
       discriminator:
         propertyName: objectType
-        mapping:
-          ParentClass: '#/components/schemas/ParentClass'
-          ChildA: '#/components/schemas/ChildA'
-          ChildAA: '#/components/schemas/ChildAA'
-          ChildB: '#/components/schemas/ChildB'
-          ChildBB: '#/components/schemas/ChildBB'
       required:
         - objectType
         - parentAttribute
@@ -597,10 +591,6 @@ components:
       additionalProperties: false
       discriminator:
         propertyName: objectType
-        mapping:
-          Partner: '#/components/schemas/Partner'
-          Company: '#/components/schemas/Company'
-          Person: '#/components/schemas/Person'
       required:
         - objectType
       properties:
@@ -647,14 +637,6 @@ components:
       additionalProperties: false
       discriminator:
         propertyName: objectType
-        mapping:
-          PlaceRef: '#/components/schemas/PlaceRef'
-          CHStopPlace: '#/components/schemas/CHStopPlace'
-          GeoPosition: '#/components/schemas/GeoPosition'
-          StopPlaceRef: '#/components/schemas/StopPlaceRef'
-          SwissGeoPosition: '#/components/schemas/SwissGeoPosition'
-          TopoRef: '#/components/schemas/TopoRef'
-          UICStopPlace: '#/components/schemas/UICStopPlace'
       required:
         - objectType
         - name
@@ -1298,10 +1280,6 @@ components:
       additionalProperties: false
       discriminator:
         propertyName: objectType
-        mapping:
-          Stop: '#/components/schemas/Stop'
-          POI: '#/components/schemas/POI'
-          UICStop: '#/components/schemas/UICStop'
       required:
         - objectType
         - name

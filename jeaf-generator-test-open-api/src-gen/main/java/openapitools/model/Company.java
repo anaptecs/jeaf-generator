@@ -28,10 +28,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import openapitools.model.Company;
 import openapitools.model.CompanyAllOf;
 import openapitools.model.Partner;
-import openapitools.model.Person;
 import openapitools.model.PostalAddress;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
@@ -45,11 +43,6 @@ import openapitools.JSON;
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = Company.class, name = "Company"),
-  @JsonSubTypes.Type(value = Partner.class, name = "Partner"),
-  @JsonSubTypes.Type(value = Person.class, name = "Person"),
-})
 
 public class Company extends Partner {
   public static final String JSON_PROPERTY_NAME = "name";
@@ -129,9 +122,6 @@ public class Company extends Partner {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("Company", Company.class);
-  mappings.put("Partner", Partner.class);
-  mappings.put("Person", Person.class);
   mappings.put("Company", Company.class);
   JSON.registerDiscriminator(Company.class, "objectType", mappings);
 }

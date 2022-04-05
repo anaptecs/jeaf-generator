@@ -59,6 +59,9 @@ boolean hasMultiLineComment(uml::Element element) :
     //element.ownedComment.get(0).body.contains("\n");
     true;
     
+boolean generateDefaultClassMapping() :
+    false;
+    
 String getOpenAPIType(uml::Type type, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);
     

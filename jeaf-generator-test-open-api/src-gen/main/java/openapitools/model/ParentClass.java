@@ -30,7 +30,6 @@ import openapitools.model.ChildA;
 import openapitools.model.ChildAA;
 import openapitools.model.ChildB;
 import openapitools.model.ChildBB;
-import openapitools.model.ParentClass;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -49,7 +48,6 @@ import openapitools.JSON;
   @JsonSubTypes.Type(value = ChildAA.class, name = "ChildAA"),
   @JsonSubTypes.Type(value = ChildB.class, name = "ChildB"),
   @JsonSubTypes.Type(value = ChildBB.class, name = "ChildBB"),
-  @JsonSubTypes.Type(value = ParentClass.class, name = "ParentClass"),
 })
 
 public class ParentClass {
@@ -163,7 +161,6 @@ static {
   mappings.put("ChildAA", ChildAA.class);
   mappings.put("ChildB", ChildB.class);
   mappings.put("ChildBB", ChildBB.class);
-  mappings.put("ParentClass", ParentClass.class);
   mappings.put("ParentClass", ParentClass.class);
   JSON.registerDiscriminator(ParentClass.class, "objectType", mappings);
 }

@@ -26,10 +26,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import openapitools.model.POI;
 import openapitools.model.POIAllOf;
 import openapitools.model.Stop;
-import openapitools.model.UICStop;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -42,11 +40,6 @@ import openapitools.JSON;
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = POI.class, name = "POI"),
-  @JsonSubTypes.Type(value = Stop.class, name = "Stop"),
-  @JsonSubTypes.Type(value = UICStop.class, name = "UICStop"),
-})
 
 public class POI extends Stop {
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
@@ -126,9 +119,6 @@ public class POI extends Stop {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("POI", POI.class);
-  mappings.put("Stop", Stop.class);
-  mappings.put("UICStop", UICStop.class);
   mappings.put("POI", POI.class);
   JSON.registerDiscriminator(POI.class, "objectType", mappings);
 }
