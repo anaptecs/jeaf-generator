@@ -42,7 +42,7 @@ public class CurrencyCode implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected CurrencyCode( ) {
-    // Nothing to do.
+    code = "CHF";
   }
 
   /**

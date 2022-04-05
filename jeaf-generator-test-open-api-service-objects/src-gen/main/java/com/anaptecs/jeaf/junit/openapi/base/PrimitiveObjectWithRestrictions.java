@@ -174,7 +174,9 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected PrimitiveObjectWithRestrictions( ) {
-    // Nothing to do.
+    aBoolean = true;
+    aDouble = 42.0;
+    aString = "Hello OpenAPI";
   }
 
   /**

@@ -298,7 +298,7 @@ cached boolean hasValidationStereotype(uml::NamedElement element) :
   element.getAppliedStereotypes().selectFirst(e|e.isValidationStereotype()) != null;
 
 cached boolean requiresInitValue(uml::Property property):
-     property.isReadOnly == true && property.isStatic == false;
+     (property.isReadOnly == true && property.isStatic == false) || (property.isRealInitValue() == true && property.isStatic == false);
      
 cached boolean requiresAttributeInitValue(uml::Class class):
      !class.ownedAttribute.select(p|p.requiresInitValue()).isEmpty;

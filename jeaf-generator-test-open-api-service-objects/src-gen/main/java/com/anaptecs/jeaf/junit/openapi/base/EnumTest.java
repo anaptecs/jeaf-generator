@@ -42,7 +42,8 @@ public class EnumTest implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected EnumTest( ) {
-    // Nothing to do.
+    property = ExtensibleEnum.GREEN;
+    enumRef = ExtensibleEnum.RED;
   }
 
   /**
@@ -71,7 +72,7 @@ public class EnumTest implements ServiceObject {
     /**
      * 
      */
-    private ExtensibleEnum enumRef;
+    private ExtensibleEnum enumRef = ExtensibleEnum.RED;
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.

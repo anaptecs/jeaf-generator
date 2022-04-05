@@ -162,6 +162,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     // Bidirectional back reference is not yet set up correctly
     resellersBackReferenceInitialized = false;
     productID = null;
+    uri = "https://products.anaptecs.de/123456789";
   }
 
   /**

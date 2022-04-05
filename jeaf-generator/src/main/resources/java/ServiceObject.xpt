@@ -67,6 +67,10 @@
 					«attr.name» = null;
 					«ENDIF»
 				«ENDIF»
+			  «ELSE»
+				  «IF attr.isRealInitValue() && attr.isStatic == false »
+                      «attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
+				  «ENDIF»
 			  «ENDIF»
 			  «IF attr.isTransientBidirectionalBackReference()»
 			    // Bidirectional back reference is not yet set up correctly
@@ -186,6 +190,10 @@
 					  «IF attr.isMultivalued() == false»
 					  	«attr.name» = null;
 					  «ENDIF»
+				  «ENDIF»
+			  «ELSE»
+				  «IF attr.isRealInitValue() && attr.isStatic == false »
+                      «attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
 				  «ENDIF»
 			  «ENDIF»
 			  «IF attr.isTransientBidirectionalBackReference()»

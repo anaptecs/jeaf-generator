@@ -250,7 +250,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false && supe
 		«IF isMultivalued()»
 			private «this.fqn()» «asInstanceVar()»;
 		«ELSE»
-			private «type.fqn()» «asInstanceVar()»;
+			private «type.fqn()» «asInstanceVar()»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumeration()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
 		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»

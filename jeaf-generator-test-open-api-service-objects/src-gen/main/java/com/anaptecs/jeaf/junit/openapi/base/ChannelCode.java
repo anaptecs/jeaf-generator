@@ -37,7 +37,7 @@ public class ChannelCode implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected ChannelCode( ) {
-    // Nothing to do.
+    code = "WEBSHOP";
   }
 
   /**
