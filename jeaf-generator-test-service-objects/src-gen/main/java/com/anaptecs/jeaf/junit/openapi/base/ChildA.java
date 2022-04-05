@@ -9,6 +9,8 @@ import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
 /**
+ * single line class comment
+ * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */

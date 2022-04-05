@@ -12,7 +12,7 @@ import com.anaptecs.jeaf.spi.persistence.annotations.PersistenceUnit;
  */
 @PersistenceUnit(
     name = "AccountingPersistenceUnit",
-    mappingFilesDefinition = { com.anaptecs.jeaf.accounting.impl.swift.impl.domain.Mappings.class, Mappings.class },
+    mappingFilesDefinition = { Mappings.class, com.anaptecs.jeaf.accounting.impl.swift.impl.domain.Mappings.class },
     showSQL = "true",
     formatSQL = "true")
 public interface AccountingPersistenceUnit {

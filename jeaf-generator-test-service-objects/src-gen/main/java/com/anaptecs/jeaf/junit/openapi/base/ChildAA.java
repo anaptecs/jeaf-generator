@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
@@ -28,9 +29,30 @@ public class ChildAA extends ChildA {
   public static final String CHILDAAATTRIBUTE = "childAAAttribute";
 
   /**
-   * 
+   * Constant for the name of attribute "sizedArray".
+   */
+  public static final String SIZEDARRAY = "sizedArray";
+
+  /**
+   * Constant for the name of attribute "requiredArray".
+   */
+  public static final String REQUIREDARRAY = "requiredArray";
+
+  /**
+   * Multi line docs
    */
   private byte childAAAttribute;
+
+  /**
+   * 
+   */
+  @Size(min = 10, max = 100)
+  private int sizedArray;
+
+  /**
+   * 
+   */
+  private String[] requiredArray;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -50,6 +72,8 @@ public class ChildAA extends ChildA {
     super(pBuilder);
     // Read attribute values from builder.
     childAAAttribute = pBuilder.childAAAttribute;
+    sizedArray = pBuilder.sizedArray;
+    requiredArray = pBuilder.requiredArray;
   }
 
   /**
@@ -59,9 +83,20 @@ public class ChildAA extends ChildA {
   @Deprecated
   public static class Builder extends ChildA.Builder {
     /**
-     * 
+     * Multi line docs
      */
     private byte childAAAttribute;
+
+    /**
+     * 
+     */
+    @Size(min = 10, max = 100)
+    private int sizedArray;
+
+    /**
+     * 
+     */
+    private String[] requiredArray;
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
@@ -78,6 +113,8 @@ public class ChildAA extends ChildA {
       if (pObject != null) {
         // Read attribute values from passed object.
         childAAAttribute = pObject.childAAAttribute;
+        sizedArray = pObject.sizedArray;
+        requiredArray = pObject.requiredArray;
       }
     }
 
@@ -114,13 +151,41 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "childAAAttribute".
+     * Method sets the attribute "childAAAttribute". Multi line docs
      * 
      * @param pChildAAAttribute Value to which the attribute "childAAAttribute" should be set.
      */
     public Builder setChildAAAttribute( byte pChildAAAttribute ) {
       // Assign value to attribute
       childAAAttribute = pChildAAAttribute;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "sizedArray".
+     * 
+     * @param pSizedArray Value to which the attribute "sizedArray" should be set.
+     */
+    public Builder setSizedArray( int pSizedArray ) {
+      // Assign value to attribute
+      sizedArray = pSizedArray;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "requiredArray".
+     * 
+     * @param pRequiredArray Value to which the attribute "requiredArray" should be set.
+     */
+    public Builder setRequiredArray( String[] pRequiredArray ) {
+      // Assign value to attribute
+      if (pRequiredArray != null) {
+        requiredArray = new String[pRequiredArray.length];
+        System.arraycopy(pRequiredArray, 0, requiredArray, 0, pRequiredArray.length);
+      }
+      else {
+        requiredArray = null;
+      }
       return this;
     }
 
@@ -148,8 +213,7 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns the attribute "childAAAttribute".
-   * 
+   * Method returns the attribute "childAAAttribute". Multi line docs
    * 
    * @return byte Value to which the attribute "childAAAttribute" is set.
    */
@@ -158,14 +222,69 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method sets the attribute "childAAAttribute".
-   * 
+   * Method sets the attribute "childAAAttribute". Multi line docs
    * 
    * @param pChildAAAttribute Value to which the attribute "childAAAttribute" should be set.
    */
   public void setChildAAAttribute( byte pChildAAAttribute ) {
     // Assign value to attribute
     childAAAttribute = pChildAAAttribute;
+  }
+
+  /**
+   * Method returns the attribute "sizedArray".
+   * 
+   * 
+   * @return int Value to which the attribute "sizedArray" is set.
+   */
+  public int getSizedArray( ) {
+    return sizedArray;
+  }
+
+  /**
+   * Method sets the attribute "sizedArray".
+   * 
+   * 
+   * @param pSizedArray Value to which the attribute "sizedArray" should be set.
+   */
+  public void setSizedArray( int pSizedArray ) {
+    // Assign value to attribute
+    sizedArray = pSizedArray;
+  }
+
+  /**
+   * Method returns the attribute "requiredArray".
+   * 
+   * 
+   * @return String Value to which the attribute "requiredArray" is set.
+   */
+  public String[] getRequiredArray( ) {
+    String[] lReturnValue;
+    if (requiredArray != null) {
+      lReturnValue = new String[requiredArray.length];
+      System.arraycopy(requiredArray, 0, lReturnValue, 0, requiredArray.length);
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
+  }
+
+  /**
+   * Method sets the attribute "requiredArray".
+   * 
+   * 
+   * @param pRequiredArray Value to which the attribute "requiredArray" should be set.
+   */
+  public void setRequiredArray( String[] pRequiredArray ) {
+    // Assign value to attribute
+    if (pRequiredArray != null) {
+      requiredArray = new String[pRequiredArray.length];
+      System.arraycopy(pRequiredArray, 0, requiredArray, 0, pRequiredArray.length);
+    }
+    else {
+      requiredArray = null;
+    }
   }
 
   /**
@@ -178,6 +297,9 @@ public class ChildAA extends ChildA {
     StringBuilder lBuilder = super.toStringBuilder();
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "childAAAttribute",
         "" + childAAAttribute));
+    lBuilder.append('\n');
+    lBuilder
+        .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "sizedArray", "" + sizedArray));
     lBuilder.append('\n');
     return lBuilder;
   }

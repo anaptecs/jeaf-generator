@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
@@ -19,6 +20,8 @@ import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
+ * Multi line class comment
+ * 
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
@@ -29,12 +32,13 @@ public class ChildB extends ParentClass {
   private static final long serialVersionUID = 1L;
 
   /**
-   * 
+   * A child attribute
    */
+  @Size(min = 11, max = 42)
   private boolean childBAttribute;
 
   /**
-   * 
+   * the composition
    */
   private Set<ParentClass> composition = new HashSet<ParentClass>();
 
@@ -67,12 +71,13 @@ public class ChildB extends ParentClass {
    */
   public static class Builder extends ParentClass.Builder {
     /**
-     * 
+     * A child attribute
      */
+    @Size(min = 11, max = 42)
     private boolean childBAttribute;
 
     /**
-     * 
+     * the composition
      */
     private Set<ParentClass> composition;
 
@@ -127,7 +132,7 @@ public class ChildB extends ParentClass {
     }
 
     /**
-     * Method sets the attribute "childBAttribute".
+     * Method sets the attribute "childBAttribute". A child attribute
      * 
      * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
      */
@@ -138,7 +143,7 @@ public class ChildB extends ParentClass {
     }
 
     /**
-     * Method sets the association "composition".
+     * Method sets the association "composition". the composition
      * 
      * @param pComposition Collection with objects to which the association should be set.
      */
@@ -177,8 +182,7 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method returns the attribute "childBAttribute".
-   * 
+   * Method returns the attribute "childBAttribute". A child attribute
    * 
    * @return Boolean Value to which the attribute "childBAttribute" is set.
    */
@@ -187,8 +191,7 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method sets the attribute "childBAttribute".
-   * 
+   * Method sets the attribute "childBAttribute". A child attribute
    * 
    * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
    */
@@ -198,8 +201,7 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method returns the association "composition".
-   * 
+   * Method returns the association "composition". the composition
    *
    * @return Collection All ParentClass objects that belong to the association "composition". The method never returns
    * null and the returned collection is unmodifiable.
@@ -211,8 +213,7 @@ public class ChildB extends ParentClass {
 
   /**
    * Method sets the association "composition" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
+   * association will be removed from it. the composition
    * 
    * @param pComposition Collection with objects to which the association should be set. The parameter must not be null.
    */
@@ -227,8 +228,7 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method adds the passed ParentClass object to the association "composition".
-   * 
+   * Method adds the passed ParentClass object to the association "composition". the composition
    * 
    * @param pComposition Object that should be added to the association "composition". The parameter must not be null.
    */
@@ -240,8 +240,7 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method adds all passed objects to the association "composition".
-   * 
+   * Method adds all passed objects to the association "composition". the composition
    * 
    * @param pComposition Collection with all objects that should be added to the association "composition". The
    * parameter must not be null.
@@ -256,8 +255,7 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method removes the passed ParentClass object from the association "composition".
-   * 
+   * Method removes the passed ParentClass object from the association "composition". the composition
    * 
    * @param pComposition Object that should be removed from the association "composition". The parameter must not be
    * null.
@@ -270,8 +268,7 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method removes all objects from the association "composition".
-   * 
+   * Method removes all objects from the association "composition". the composition
    */
   public void clearComposition( ) {
     // Remove all objects from association "composition".

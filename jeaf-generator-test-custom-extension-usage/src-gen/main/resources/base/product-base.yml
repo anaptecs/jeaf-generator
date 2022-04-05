@@ -166,10 +166,10 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.CHStopPlace
     CHStopPlace:
-      type: object
-      additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/StopPlaceRef'
+        - type: object
+          additionalProperties: false
 
     # com.anaptecs.jeaf.junit.openapi.base.Channel
     Channel:
@@ -214,82 +214,114 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildA
     ChildA:
-      type: object
-      additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/ParentClass'
-      required:
-        - childAAttribute
-      properties:
-        childAAttribute:
-          type: integer
-          format: int32
-          nullable: false
+        - type: object
+          additionalProperties: false
+          description: >-
+            single line class comment
+          required:
+            - childAAttribute
+          properties:
+            childAAttribute:
+              type: integer
+              format: int32
+              nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildAA
     ChildAA:
-      type: object
-      additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/ChildA'
-      deprecated: true
-      required:
-        - childAAAttribute
-      properties:
-        childAAAttribute:
-          type: integer
-          format: int32
-          nullable: false
+        - type: object
+          additionalProperties: false
+          deprecated: true
+          required:
+            - childAAAttribute
+            - sizedArray
+            - requiredArray
+          properties:
+            childAAAttribute:
+              description: >-
+                Multi
+                line
+                docs
+              type: integer
+              format: int32
+              nullable: false
+            sizedArray:
+              type: integer
+              format: int32
+              minLength: 10
+              maxLength: 100
+              nullable: false
+            requiredArray:
+              type: array
+              items:
+                type: string
+              minItems: 1
+              nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildB
     ChildB:
-      type: object
-      additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/ParentClass'
-      required:
-        - childBAttribute
-      properties:
-        childBAttribute:
-          type: boolean
-          nullable: false
-        composition:
-          type: array
-          items:
-            $ref: '#/components/schemas/ParentClass'
-          minItems: 0
+        - type: object
+          additionalProperties: false
+          description: >-
+            Multi
+            line
+            class
+            comment
+          required:
+            - childBAttribute
+          properties:
+            childBAttribute:
+              description: >-
+                A child attribute
+              type: boolean
+              minLength: 11
+              maxLength: 42
+              nullable: false
+            composition:
+              description: >-
+                the composition
+              type: array
+              items:
+                $ref: '#/components/schemas/ParentClass'
+              minItems: 0
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildBB
     ChildBB:
-      type: object
-      additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/ChildB'
-      required:
-        - childBBAttribute
-        - deprecatedAttribute
-      properties:
-        childBBAttribute:
-          type: integer
-          format: int64
-          nullable: false
-        deprecatedAttribute:
-          type: integer
-          format: int32
-          deprecated: true
-          nullable: false
-        deprecatedBs:
-          # Attribute "deprecatedBs" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
-          type: array
-          items:
-            $ref: '#/components/schemas/ChildB'
-          minItems: 0
-        deprecatedParent:
-          # Attribute "deprecatedParent" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
-          $ref: '#/components/schemas/ParentClass'
-        deprecatedArray:
-          type: string
-          format: byte
+        - type: object
+          additionalProperties: false
+          required:
+            - childBBAttribute
+            - deprecatedAttribute
+          properties:
+            childBBAttribute:
+              type: integer
+              format: int64
+              nullable: false
+            deprecatedAttribute:
+              type: integer
+              format: int32
+              deprecated: true
+              nullable: false
+            deprecatedBs:
+              # Attribute "deprecatedBs" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+              type: array
+              items:
+                $ref: '#/components/schemas/ChildB'
+              minItems: 0
+            deprecatedParent:
+              # Attribute "deprecatedParent" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+              $ref: '#/components/schemas/ParentClass'
+            deprecatedArray:
+              type: string
+              format: byte
+              maxLength: 4711
 
     # com.anaptecs.jeaf.junit.openapi.base.CodeTypeUsageTest
     CodeTypeUsageTest:
@@ -317,16 +349,16 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.Company
     Company:
-      type: object
-      additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/Partner'
-      required:
-        - name
-      properties:
-        name:
-          type: string
-          nullable: false
+        - type: object
+          additionalProperties: false
+          required:
+            - name
+          properties:
+            name:
+              type: string
+              nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.DateObject
     DateObject:
@@ -410,22 +442,22 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.GeoPosition
     GeoPosition:
-      type: object
-      additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/PlaceRef'
-      required:
-        - longitude
-        - latitude
-      properties:
-        longitude:
-          type: integer
-          format: int32
-          nullable: false
-        latitude:
-          type: integer
-          format: int32
-          nullable: false
+        - type: object
+          additionalProperties: false
+          required:
+            - longitude
+            - latitude
+          properties:
+            longitude:
+              type: integer
+              format: int32
+              nullable: false
+            latitude:
+              type: integer
+              format: int32
+              nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.Leg
     Leg:
@@ -525,16 +557,16 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.POI
     POI:
-      type: object
-      additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/Stop'
-      required:
-        - description
-      properties:
-        description:
-          type: string
-          nullable: false
+        - type: object
+          additionalProperties: false
+          required:
+            - description
+          properties:
+            description:
+              type: string
+              nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
     ParentClass:
@@ -594,20 +626,20 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.Person
     Person:
-      type: object
-      additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/Partner'
-      required:
-        - surname
-        - firstName
-      properties:
-        surname:
-          type: string
-          nullable: false
-        firstName:
-          type: string
-          nullable: false
+        - type: object
+          additionalProperties: false
+          required:
+            - surname
+            - firstName
+          properties:
+            surname:
+              type: string
+              nullable: false
+            firstName:
+              type: string
+              nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.PlaceRef
     PlaceRef:
@@ -1283,17 +1315,17 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.StopPlaceRef
     StopPlaceRef:
-      type: object
-      additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/PlaceRef'
+        - type: object
+          additionalProperties: false
 
     # com.anaptecs.jeaf.junit.openapi.base.SwissGeoPosition
     SwissGeoPosition:
-      type: object
-      additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/GeoPosition'
+        - type: object
+          additionalProperties: false
 
 
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
@@ -1317,28 +1349,28 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.TopoRef
     TopoRef:
-      type: object
-      additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/PlaceRef'
+        - type: object
+          additionalProperties: false
 
     # com.anaptecs.jeaf.junit.openapi.base.UICStop
     UICStop:
-      type: object
-      additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/Stop'
-      required:
-        - uicCode
-      properties:
-        uicCode:
-          type: string
-          nullable: false
+        - type: object
+          additionalProperties: false
+          required:
+            - uicCode
+          properties:
+            uicCode:
+              type: string
+              nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.UICStopPlace
     UICStopPlace:
-      type: object
-      additionalProperties: false
       allOf:
         - $ref: '#/components/schemas/StopPlaceRef'
+        - type: object
+          additionalProperties: false
 

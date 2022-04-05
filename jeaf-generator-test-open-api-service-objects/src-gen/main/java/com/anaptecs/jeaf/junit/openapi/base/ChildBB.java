@@ -13,6 +13,7 @@ import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
@@ -57,6 +58,7 @@ public class ChildBB extends ChildB {
    * 
    */
   @Deprecated
+  @Size(min = 0, max = 4711)
   private byte[] deprecatedArray;
 
   /**
@@ -116,6 +118,7 @@ public class ChildBB extends ChildB {
     /**
      * 
      */
+    @Size(min = 0, max = 4711)
     @Deprecated
     private byte[] deprecatedArray;
 
@@ -162,7 +165,7 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the attribute "childBAttribute".
+     * Method sets the attribute "childBAttribute". A child attribute
      * 
      * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
      */
@@ -174,7 +177,7 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the association "composition".
+     * Method sets the association "composition". the composition
      * 
      * @param pComposition Collection with objects to which the association should be set.
      */
