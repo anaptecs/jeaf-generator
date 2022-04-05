@@ -1187,6 +1187,7 @@ components:
         - supportedCurrencies
         - productCodes
         - description
+        - uri
       properties:
         resellers:
           type: array
@@ -1232,6 +1233,11 @@ components:
           type: string
           deprecated: true
           nullable: false
+        uri:
+          type: string
+          format: uri
+          nullable: false
+          default: "https://products.anaptecs.de/123456789"
 
     # com.anaptecs.jeaf.junit.openapi.base.ProductCode
     ProductCode:

@@ -107,15 +107,15 @@ components:
       «IF parameter.type.isBasicOpenAPIType() == true-»
         «IF parameter.isMultivalued() == false-»
         type: «parameter.type.getOpenAPIType(this)»
-          «IF parameter.type.hasOpenAPIFormat()-»
-        format: «parameter.type.getOpenAPIFormat()»
+          «IF parameter.hasOpenAPIFormatForProperty()-»
+        format: «parameter.getOpenAPIFormatForProperty()»
           «ENDIF-»
         «ELSE-»
         type: array
           items:
             type: «parameter.type.getOpenAPIType(this)»
-          «IF parameter.type.hasOpenAPIFormat()-»
-            format: «parameter.type.getOpenAPIFormat()»
+          «IF parameter.hasOpenAPIFormatForProperty()-»
+            format: «parameter.getOpenAPIFormatForProperty()»
           «ENDIF-»
         «ENDIF-»
         «IF parameter.hasExample()-»
@@ -251,15 +251,15 @@ components:
             «IF param.type.isBasicOpenAPIType() == true-»
             	«IF param.isMultivalued() == false-»
             type: «param.type.getOpenAPIType(this)»
-            		«IF param.type.hasOpenAPIFormat()-»
-            format: «param.type.getOpenAPIFormat()»
+            		«IF param.hasOpenAPIFormatForParam()-»
+            format: «param.getOpenAPIFormatForParam()»
             		«ENDIF-»
             	«ELSE-»
             type: array
             items:
               type: «param.type.getOpenAPIType(this)»
-              		«IF param.type.hasOpenAPIFormat()-»
-              format: «param.type.getOpenAPIFormat()»
+              		«IF param.hasOpenAPIFormatForParam()-»
+              format: «param.getOpenAPIFormatForParam()»
               		«ENDIF-»
             	«ENDIF-»
                 «IF param.hasExample()-»
@@ -286,8 +286,8 @@ components:
             «IF property.type.isBasicOpenAPIType() == true -»
             	«IF property.isMultivalued() == false -»
             type: «property.type.getOpenAPIType(this)»
-            		«IF property.type.hasOpenAPIFormat()-»
-            format: «property.type.getOpenAPIFormat()»
+            		«IF property.hasOpenAPIFormatForProperty()-»
+            format: «property.getOpenAPIFormatForProperty()»
             		«ENDIF-»
                     «IF property.defaultValue != null -»
             default: '«property.defaultValue.stringValue()»'
@@ -296,8 +296,8 @@ components:
             type: array
             items:
               type: «property.type.getOpenAPIType(this)»
-              		«IF property.type.hasOpenAPIFormat()-»
-              format: «property.type.getOpenAPIFormat()»
+              		«IF property.hasOpenAPIFormatForProperty()-»
+              format: «property.getOpenAPIFormatForProperty()»
               		«ENDIF-»
             	«ENDIF -»
                 «IF property.hasExample()-»
@@ -337,8 +337,8 @@ components:
               «IF param.type.isBasicOpenAPIType() == true-»
                 «IF param.isMultivalued() == false-»
               type: «param.type.getOpenAPIType(this)»
-                  «IF param.type.hasOpenAPIFormat()-»
-              format: «param.type.getOpenAPIFormat()»
+                  «IF param.hasOpenAPIFormatForParam()-»
+              format: «param.getOpenAPIFormatForParam()»
                   «ENDIF-»
                   «IF param.isDeprecated() -»
               deprecated: true
@@ -347,8 +347,8 @@ components:
               type: array
               items:
                 type: «param.type.getOpenAPIType(this)»
-                  «IF param.type.hasOpenAPIFormat()-»
-                format: «param.type.getOpenAPIFormat()»
+                  «IF param.hasOpenAPIFormatForParam()-»
+                format: «param.getOpenAPIFormatForParam()»
                   «ENDIF-»
                   «IF param.isDeprecated() -»
                 deprecated: true
@@ -407,8 +407,8 @@ components:
                 «IF returnParam.type.isBasicOpenAPIType() == true-»
                   «IF returnParam.isMultivalued() == false-»
                 type: «returnParam.type.getOpenAPIType(this)»
-                    «IF returnParam.type.hasOpenAPIFormat()-»
-                format: «returnParam.type.getOpenAPIFormat()»
+                    «IF returnParam.hasOpenAPIFormatForParam()-»
+                format: «returnParam.getOpenAPIFormatForParam()»
                     «ENDIF-»
                     «IF returnParam.isDeprecated() -»
                 deprecated: true
@@ -417,8 +417,8 @@ components:
                 type: array
                 items:
                   type: «returnParam.type.getOpenAPIType(this)»
-                    «IF returnParam.type.hasOpenAPIFormat()-»
-                  format: «returnParam.type.getOpenAPIFormat()»
+                    «IF returnParam.hasOpenAPIFormatForParam()-»
+                  format: «returnParam.getOpenAPIFormatForParam()»
                     «ENDIF-»
                   «ENDIF-»
                   «IF returnParam.hasExample()-»

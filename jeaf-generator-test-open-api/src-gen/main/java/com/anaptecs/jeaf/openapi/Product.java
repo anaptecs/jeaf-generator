@@ -51,6 +51,9 @@ public class Product {
   @JsonProperty("description")
   private String description = null;
 
+  @JsonProperty("uri")
+  private String uri = "https://products.anaptecs.de/123456789";
+
   public Product resellers(List<Reseller> resellers) {
     this.resellers = resellers;
     return this;
@@ -204,6 +207,24 @@ public class Product {
     this.description = description;
   }
 
+  public Product uri(String uri) {
+    this.uri = uri;
+    return this;
+  }
+
+   /**
+   * Get uri
+   * @return uri
+  **/
+  @Schema(required = true, description = "")
+  public String getUri() {
+    return uri;
+  }
+
+  public void setUri(String uri) {
+    this.uri = uri;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -221,12 +242,13 @@ public class Product {
         Objects.equals(this.productID, product.productID) &&
         Objects.equals(this.supportedCurrencies, product.supportedCurrencies) &&
         Objects.equals(this.productCodes, product.productCodes) &&
-        Objects.equals(this.description, product.description);
+        Objects.equals(this.description, product.description) &&
+        Objects.equals(this.uri, product.uri);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(resellers, name, Arrays.hashCode(image), link, productID, supportedCurrencies, productCodes, description);
+    return Objects.hash(resellers, name, Arrays.hashCode(image), link, productID, supportedCurrencies, productCodes, description, uri);
   }
 
 
@@ -243,6 +265,7 @@ public class Product {
     sb.append("    supportedCurrencies: ").append(toIndentedString(supportedCurrencies)).append("\n");
     sb.append("    productCodes: ").append(toIndentedString(productCodes)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
     sb.append("}");
     return sb.toString();
   }

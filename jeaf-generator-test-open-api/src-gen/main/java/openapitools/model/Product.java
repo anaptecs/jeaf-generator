@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import openapitools.model.Reseller;
@@ -43,7 +44,8 @@ import openapitools.JSON;
   Product.JSON_PROPERTY_PRODUCT_I_D,
   Product.JSON_PROPERTY_SUPPORTED_CURRENCIES,
   Product.JSON_PROPERTY_PRODUCT_CODES,
-  Product.JSON_PROPERTY_DESCRIPTION
+  Product.JSON_PROPERTY_DESCRIPTION,
+  Product.JSON_PROPERTY_URI
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Product {
@@ -70,6 +72,9 @@ public class Product {
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
+
+  public static final String JSON_PROPERTY_URI = "uri";
+  private URI uri = URI.create("https://products.anaptecs.de/123456789");
 
   public Product() { 
   }
@@ -300,6 +305,32 @@ public class Product {
   }
 
 
+  public Product uri(URI uri) {
+    this.uri = uri;
+    return this;
+  }
+
+   /**
+   * Get uri
+   * @return uri
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_URI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public URI getUri() {
+    return uri;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_URI)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUri(URI uri) {
+    this.uri = uri;
+  }
+
+
   /**
    * Return true if this Product object is equal to o.
    */
@@ -319,12 +350,13 @@ public class Product {
         Objects.equals(this.productID, product.productID) &&
         Objects.equals(this.supportedCurrencies, product.supportedCurrencies) &&
         Objects.equals(this.productCodes, product.productCodes) &&
-        Objects.equals(this.description, product.description);
+        Objects.equals(this.description, product.description) &&
+        Objects.equals(this.uri, product.uri);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(resellers, name, Arrays.hashCode(image), link, productID, supportedCurrencies, productCodes, description);
+    return Objects.hash(resellers, name, Arrays.hashCode(image), link, productID, supportedCurrencies, productCodes, description, uri);
   }
 
   @Override
@@ -339,6 +371,7 @@ public class Product {
     sb.append("    supportedCurrencies: ").append(toIndentedString(supportedCurrencies)).append("\n");
     sb.append("    productCodes: ").append(toIndentedString(productCodes)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -84,6 +84,11 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   public static final String SORTIMENTS = "sortiments";
 
   /**
+   * Constant for the name of attribute "uri".
+   */
+  public static final String URI = "uri";
+
+  /**
    * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
    */
   private final ServiceObjectID objectID;
@@ -143,6 +148,12 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   private transient Set<Sortiment> sortiments = new HashSet<Sortiment>();
 
   /**
+   * <br/>
+   * <b>Default Value:</b> <code>"https://products.anaptecs.de/123456789"</code>
+   */
+  private String uri;
+
+  /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
@@ -189,6 +200,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     if (pBuilder.sortiments != null) {
       sortiments.addAll(pBuilder.sortiments);
     }
+    uri = pBuilder.uri;
   }
 
   /**
@@ -249,6 +261,11 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     private Set<Sortiment> sortiments;
 
     /**
+     * 
+     */
+    private String uri = "https://products.anaptecs.de/123456789";
+
+    /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -270,6 +287,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
         productCodes = pObject.productCodes;
         description = pObject.description;
         sortiments = pObject.sortiments;
+        uri = pObject.uri;
       }
     }
 
@@ -425,6 +443,17 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
       else {
         sortiments = null;
       }
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "uri".
+     * 
+     * @param pUri Value to which the attribute "uri" should be set.
+     */
+    public Builder setUri( String pUri ) {
+      // Assign value to attribute
+      uri = pUri;
       return this;
     }
 
@@ -958,6 +987,27 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
+   * Method returns the attribute "uri".
+   * 
+   * 
+   * @return String Value to which the attribute "uri" is set.
+   */
+  public String getUri( ) {
+    return uri;
+  }
+
+  /**
+   * Method sets the attribute "uri".
+   * 
+   * 
+   * @param pUri Value to which the attribute "uri" should be set.
+   */
+  public void setUri( String pUri ) {
+    // Assign value to attribute
+    uri = pUri;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -977,6 +1027,8 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     lBuilder.append('\n');
     lBuilder
         .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "description", "" + description));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "uri", "" + uri));
     lBuilder.append('\n');
     return lBuilder;
   }

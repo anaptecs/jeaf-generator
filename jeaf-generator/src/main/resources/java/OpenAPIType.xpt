@@ -84,8 +84,8 @@
           «IF attribute.type.isBasicOpenAPIType() == true-»
             «IF attribute.isMultivalued() == false-»
           type: «attribute.type.getOpenAPIType(spec)»
-              «IF attribute.type.hasOpenAPIFormat()-»
-          format: «attribute.type.getOpenAPIFormat()»
+              «IF attribute.hasOpenAPIFormatForProperty()-»
+          format: «attribute.getOpenAPIFormatForProperty()»
               «ENDIF-»
           «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»    
               «IF attribute.isDeprecated() -»
@@ -99,8 +99,8 @@
           type: array
           items:
             type: «attribute.type.getOpenAPIType(spec)»
-              «IF attribute.type.hasOpenAPIFormat()-»
-            format: «attribute.type.getOpenAPIFormat()»
+              «IF attribute.hasOpenAPIFormatForProperty()-»
+            format: «attribute.getOpenAPIFormatForProperty()»
               «ENDIF-»
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»              
               «IF attribute.isDeprecated() -»
@@ -210,8 +210,8 @@
           «IF attribute.type.isBasicOpenAPIType() == true-»
             «IF attribute.isMultivalued() == false-»
               type: «attribute.type.getOpenAPIType(spec)»
-              «IF attribute.type.hasOpenAPIFormat()-»
-              format: «attribute.type.getOpenAPIFormat()»
+              «IF attribute.hasOpenAPIFormatForProperty()-»
+              format: «attribute.getOpenAPIFormatForProperty()»
               «ENDIF-»
               «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR attribute-»    
               «IF attribute.isDeprecated() -»
@@ -233,8 +233,8 @@
               type: array
               items:
                 type: «attribute.type.getOpenAPIType(spec)»
-              «IF attribute.type.hasOpenAPIFormat()-»
-                format: «attribute.type.getOpenAPIFormat()»
+              «IF attribute.hasOpenAPIFormatForProperty()-»
+                format: «attribute.getOpenAPIFormatForProperty()»
               «ENDIF-»
               «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR attribute-»              
               «IF attribute.isDeprecated() -»

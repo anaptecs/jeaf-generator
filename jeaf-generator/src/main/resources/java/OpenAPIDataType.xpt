@@ -14,8 +14,8 @@
           «ENDIF-»
             «IF ownerAttribute.isMultivalued() == false-»
           type: «attribute.type.getOpenAPIType(spec)»
-              «IF attribute.type.hasOpenAPIFormat()-»
-          format: «attribute.type.getOpenAPIFormat()»
+              «IF attribute.hasOpenAPIFormatForProperty()-»
+          format: «attribute.getOpenAPIFormatForProperty()»
               «ENDIF-»
           «IF attribute.defaultValue != null -»
           default: «attribute.defaultValue.stringValue()»
@@ -33,8 +33,8 @@
           type: array
           items:
             type: «attribute.type.getOpenAPIType(spec)»
-              «IF attribute.type.hasOpenAPIFormat()-»
-            format: «attribute.type.getOpenAPIFormat()»
+              «IF attribute.hasOpenAPIFormatForProperty()-»
+            format: «attribute.getOpenAPIFormatForProperty()»
               «ENDIF-»
               «IF attribute.defaultValue != null -»
             default: «attribute.defaultValue.stringValue()»
@@ -70,8 +70,8 @@
     «ENDIF-»
     «this.name»:
       type: «attribute.type.getOpenAPIType(spec)»
-      «IF attribute.type.hasOpenAPIFormat()-»
-      format: «attribute.type.getOpenAPIFormat()»
+      «IF attribute.hasOpenAPIFormatForProperty()-»
+      format: «attribute.getOpenAPIFormatForProperty()»
       «ENDIF-»
       «IF this.hasComment()-»
       description: >-
@@ -110,8 +110,8 @@
                 «ENDIF-»
                 «IF param.isMultivalued() == false-»
                 type: «attribute.type.getOpenAPIType(spec)»
-                  «IF attribute.type.hasOpenAPIFormat()-»
-                format: «attribute.type.getOpenAPIFormat()»
+                  «IF attribute.hasOpenAPIFormatForProperty()-»
+                format: «attribute.getOpenAPIFormatForProperty()»
                   «ENDIF-»
                   «IF attribute.defaultValue != null -»
                 default: «attribute.defaultValue.stringValue()»
@@ -129,8 +129,8 @@
                 type: array
                 items:
                   type: «attribute.type.getOpenAPIType(spec)»
-                  «IF attribute.type.hasOpenAPIFormat()-»
-                  format: «attribute.type.getOpenAPIFormat()»
+                  «IF attribute.hasOpenAPIFormatForProperty()-»
+                  format: «attribute.getOpenAPIFormatForProperty()»
                   «ENDIF-»
                   «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("            ") FOR attribute-»
                   «IF attribute.hasExample()-»

@@ -71,11 +71,24 @@ String getOpenAPIParameter(uml::Property property, JMM::OpenAPI3Specification sp
 String getResponseType(uml::Type type, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getResponseType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);    
 
-String getOpenAPIFormat(uml::Type type):
+String getOpenAPIFormatInternal(uml::Type type):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIFormat(org.eclipse.uml2.uml.Type);
     
-boolean hasOpenAPIFormat(uml::Type type):
-    getOpenAPIFormat(type) != null;
+String getOpenAPIFormatForProperty(uml::Property property):
+    if property.isStereotypeApplied("OpenAPIFormat")
+    then ((JMM::OpenAPIFormat) property).format
+    else property.type.getOpenAPIFormatInternal();
+    
+boolean hasOpenAPIFormatForProperty(uml::Property property):
+    getOpenAPIFormatForProperty(property) != null;
+    
+String getOpenAPIFormatForParam(uml::Parameter parameter):
+    if parameter.isStereotypeApplied("OpenAPIFormat")
+    then ((JMM::OpenAPIFormat) parameter).format
+    else parameter.type.getOpenAPIFormatInternal();
+    
+boolean hasOpenAPIFormatForParam(uml::Parameter parameter):
+    getOpenAPIFormatForParam(parameter) != null;
     
 boolean isBasicOpenAPIType(uml::Type type):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.isBasicOpenAPIType(org.eclipse.uml2.uml.Type);
