@@ -20,6 +20,8 @@
     import com.anaptecs.jeaf.xfun.api.XFun;
 	
 	«this.getJavadoc()»
+	«EXPAND java::Helper::GenerateGeneratedAnnotation»
+	«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «IF isAbstract»abstract«ENDIF» class «name» extends «IF !superClass.isEmpty»«superClass.get(0).fqn()»«ELSE»com.anaptecs.jeaf.core.api.QueryObject«ENDIF» {
 		/**

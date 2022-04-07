@@ -29,6 +29,8 @@
 	/**
 	 * Class implements an bidirectional object mapper between classes {@link «lSourceClassName»} as source and {@link «lTargetClassName»} as target.
 	 */
+	«EXPAND java::Helper::GenerateGeneratedAnnotation»
+	«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
 	public class «lMapperName» implements com.anaptecs.jeaf.core.api.ObjectMapper<«lSourceClassName», «lTargetClassName»> {
 		/**
 		 * Only instance of this class. We can avoid to create multiple instances as object mapper implementations are
