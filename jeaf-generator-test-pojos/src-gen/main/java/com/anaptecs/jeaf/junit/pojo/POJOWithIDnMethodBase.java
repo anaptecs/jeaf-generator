@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -22,6 +23,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
+@SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonIdentityInfo(property = "objectID", generator = PropertyGenerator.class)
 public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {

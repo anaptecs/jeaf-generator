@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.fwk.generator.util;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -31,6 +32,8 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.ValueSpecification;
 
+import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.date.DateTools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Assert;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -177,6 +180,16 @@ public class GeneratorCommons {
   public static final String JSON_SERIALIZERS = "switch.gen.json.serializers";
 
   public static final String NAME_CONSTANTS_FOR_ATTRIBUTES = "switch.gen.enable.name.constants";
+
+  public static final String SUPPRESS_WARNINGS_LIST = "switch.gen.suppress.warnings";
+
+  public static final String SUPPRESS_ALL_WARNINGS = "switch.gen.suppress.all.warnings";
+
+  public static final String ADD_GENERATED_ANNOTATION = "switch.gen.add.generated.annotation";
+
+  public static final String ADD_GENERATION_TIMESTAMP = "switch.gen.add.generation.timestamp";
+
+  public static final String GENERATION_COMMENT = "switch.gen.generation.comment";
 
   public static final String VALIDATION_ANNOTATION_FOR_ATTRIBUTES =
       "switch.gen.enable.validation.annotation.attributes";
@@ -687,6 +700,61 @@ public class GeneratorCommons {
   public static boolean generateConstantsForAttributeNames( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(NAME_CONSTANTS_FOR_ATTRIBUTES, Boolean.TRUE, Boolean.class);
+  }
+
+  public static List<String> getSuppressedWarnings( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValueList(SUPPRESS_WARNINGS_LIST, String.class);
+  }
+
+  public static boolean suppressAllWarnings( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(SUPPRESS_ALL_WARNINGS, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean addGeneratedAnnotation( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(ADD_GENERATED_ANNOTATION, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean addGenerationTimestamp( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(ADD_GENERATION_TIMESTAMP, Boolean.TRUE, Boolean.class);
+  }
+
+  public static String getGenerationComment( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATION_COMMENT, "", String.class);
+  }
+
+  public static String getGeneratedAnnotation( ) {
+    StringBuilder lBuilder = new StringBuilder();
+    if (addGenerationTimestamp() || getGenerationComment().isEmpty() == false) {
+      lBuilder.append("value = \"com.anaptecs.jeaf.generator.JEAFGenerator\", ");
+
+      if (addGenerationTimestamp()) {
+        DateTools lDateTools = Tools.getDateTools();
+        Calendar lTimestamp = lDateTools.newCalendar();
+        lBuilder.append("date = \"");
+        lBuilder.append(lDateTools.toTimestampString(lTimestamp));
+        lBuilder.append("\"");
+
+        if (getGenerationComment().isEmpty() == false) {
+          lBuilder.append(", comments = \"");
+          lBuilder.append(getGenerationComment());
+          lBuilder.append("\"");
+        }
+      }
+      else {
+        lBuilder.append("comments = \"");
+        lBuilder.append(getGenerationComment());
+        lBuilder.append("\"");
+      }
+    }
+    else {
+      lBuilder.append("\"com.anaptecs.jeaf.generator.JEAFGenerator\"");
+    }
+    return lBuilder.toString();
   }
 
   public static boolean generateValidationAnnotationsForAttributesFromMultiplicity( ) {

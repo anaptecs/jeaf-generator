@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Currency;
 
+import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -21,6 +22,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
+@SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Booking {
   /**

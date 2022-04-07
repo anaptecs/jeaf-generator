@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -19,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
+@SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = BChildPOJO.class, name = "BChildPOJO") })

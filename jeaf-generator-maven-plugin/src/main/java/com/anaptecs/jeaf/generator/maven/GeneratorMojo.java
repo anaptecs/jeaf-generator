@@ -347,6 +347,40 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateConstantsForAttributeNames;
 
   /**
+   * Parameter can be used to define a list of warning that should be suppressed in the generated code. This will lead
+   * to annotation @SuppressWarnings for the defined warnings
+   */
+  @Parameter(required = false)
+  private List<String> suppressWarnings = new ArrayList<>();
+
+  /**
+   * Parameter can be used to suppress all warnings in generated code (@SuppressWarnings("all")). It's strongly
+   * recommended to not use this feature ;-)
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean suppressAllWarnings;
+
+  /**
+   * Parameter can be used to add @Generated annotation to generated code.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean addGeneratedAnnotation;
+
+  /**
+   * Parameter can be used to also add timestamp of code generation to the @Generated annotation. Parameter is only
+   * relevant if <code>addGeneratorAnnotation</code> is set to <code>true</code>.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean addGenerationTimestamp;
+
+  /**
+   * Parameter can be used to also add the defined comment of code generation to the @Generated annotation. Parameter is
+   * only relevant if <code>addGeneratorAnnotation</code> is set to <code>true</code>.
+   */
+  @Parameter(required = false)
+  private String generationComment = "";
+
+  /**
    * Switch defines whether a message constants should be generated from resource files or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -624,6 +658,21 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate JSON serializers:                        " + generateJSONSerializers);
     }
 
+    if (suppressAllWarnings) {
+      lLog.info("Suppress all warnings:                            " + suppressAllWarnings);
+    }
+
+    if (suppressWarnings.isEmpty() == false) {
+      lLog.info("Suppress all warnings:                            "
+          + suppressWarnings.stream().collect(Collectors.joining("; ")));
+    }
+
+    if (addGeneratedAnnotation) {
+      lLog.info("Generate @Generated annotation:                   " + addGeneratedAnnotation);
+      lLog.info("Add generation timestamp:                         " + addGenerationTimestamp);
+      lLog.info("Add generation comment:                           " + generationComment);
+    }
+
     if (generateMessageConstants) {
       lLog.info("Generate Message Constants:                       " + generateMessageConstants);
     }
@@ -712,6 +761,13 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.enable.json.semver", enableSemVerForJSON.toString());
       System.setProperty("switch.gen.json.serializers", generateJSONSerializers.toString());
       System.setProperty("switch.gen.enable.name.constants", generateConstantsForAttributeNames.toString());
+
+      System.setProperty("switch.gen.suppress.warnings", suppressWarnings.stream().collect(Collectors.joining("; ")));
+      System.setProperty("switch.gen.suppress.all.warnings", suppressAllWarnings.toString());
+      System.setProperty("switch.gen.add.generated.annotation", addGeneratedAnnotation.toString());
+      System.setProperty("switch.gen.add.generation.timestamp", addGenerationTimestamp.toString());
+      System.setProperty("switch.gen.generation.comment", generationComment.toString());
+
       System.setProperty("switch.gen.suppress.classname.openapi", suppressClassNameCommentInOpenAPISpec.toString());
 
       System.setProperty("switch.gen.enable.validation.annotation.attributes",

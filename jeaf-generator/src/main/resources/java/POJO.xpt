@@ -21,6 +21,8 @@
 				import com.anaptecs.jeaf.xfun.api.XFun;
 				 
 				«this.getJavadoc()»
+				«EXPAND java::Helper::GenerateGeneratedAnnotation»
+				«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
 				«EXPAND java::Validation::ValidationAnnotation»
 				«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 				«EXPAND java::Jackson::JacksonClassAnnotations -»				
@@ -143,6 +145,8 @@
 				import com.anaptecs.jeaf.xfun.api.XFun;        
 				  
 				«this.getJavadoc()»
+				«EXPAND java::Helper::GenerateGeneratedAnnotation»
+				«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
 		        «EXPAND java::Validation::ValidationAnnotation -»      
 			    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 			    «EXPAND java::Jackson::JacksonClassAnnotations -»

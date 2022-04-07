@@ -100,6 +100,18 @@ cached boolean generateJSONSerializers() :
 cached boolean generateConstantsForAttributeNames() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateConstantsForAttributeNames();
         
+cached List[String] getSuppressedWarnings( ):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getSuppressedWarnings();
+
+cached boolean suppressAllWarnings( ):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.suppressAllWarnings();
+
+cached boolean addGeneratedAnnotation( ):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.addGeneratedAnnotation();
+
+cached String getGeneratedAnnotation():
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getGeneratedAnnotation();
+
 cached boolean generateValidationAnnotationsForAttributesFromMultiplicity() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateValidationAnnotationsForAttributesFromMultiplicity();
     

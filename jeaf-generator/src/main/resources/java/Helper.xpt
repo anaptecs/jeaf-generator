@@ -58,3 +58,19 @@
 		«ENDFOREACH»
 	«ENDIF»
 «ENDDEFINE»
+
+«DEFINE GenerateGeneratedAnnotation FOR uml::NamedElement»
+  «IF addGeneratedAnnotation()»
+     @javax.annotation.Generated(«getGeneratedAnnotation()»)
+  «ENDIF»
+«ENDDEFINE»
+
+«DEFINE GenerateSuppressWarningsAnnotation FOR uml::NamedElement»
+  «IF suppressAllWarnings()»
+     @java.lang.SuppressWarnings("all")
+  «ENDIF»
+  «IF getSuppressedWarnings().isEmpty == false»
+  @java.lang.SuppressWarnings(«FOREACH getSuppressedWarnings() AS warning SEPARATOR ", "»"«warning»"«ENDFOREACH»)
+  «ENDIF»
+«ENDDEFINE»
+
