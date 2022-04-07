@@ -271,7 +271,7 @@ components:
         «ENDFOREACH-»
         «REM»Process bean paramaters«ENDREM-»
         «FOREACH operation.getBeanParams() AS param-»
-        «FOREACH param.type.getOpenAPIProperties().sortBy(e|e.name) AS property-»
+        «FOREACH param.type.getOpenAPIProperties() AS property-»
         «IF param.inlineBeanParam()-»
         - name: «EXPAND RESTParamName FOR property»
           in: «property.getOpenAPIParameterType()»

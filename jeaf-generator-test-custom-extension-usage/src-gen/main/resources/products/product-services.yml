@@ -175,6 +175,14 @@ paths:
           schema:
             type: string
             example: 'en'
+        - name: reseller
+          in: cookie
+          description: >-
+            TODO Please add comment
+          required: true
+          schema:
+            type: integer
+            format: int64
         - name: id
           in: path
           description: >-
@@ -190,14 +198,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: reseller
-          in: cookie
-          description: >-
-            TODO Please add comment
-          required: true
-          schema:
-            type: integer
-            format: int64
       responses:
         '200':
           description: >-
@@ -297,13 +297,6 @@ paths:
           schema:
             type: string
             example: 'en'
-        - name: q1
-          in: query
-          description: >-
-            TODO Please add comment
-          required: true
-          schema:
-            type: string
         - name: reseller
           in: cookie
           description: >-
@@ -312,6 +305,13 @@ paths:
           schema:
             type: integer
             format: int64
+        - name: q1
+          in: query
+          description: >-
+            TODO Please add comment
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: >-
@@ -468,6 +468,13 @@ paths:
     patch:
       operationId: loadSpecificThings
       parameters:
+        - name: specificHeader
+          in: header
+          description: >-
+            TODO Please add comment
+          required: true
+          schema:
+            type: string
         - name: token
           in: header
           description: >-
@@ -483,6 +490,14 @@ paths:
           schema:
             type: string
             example: 'en'
+        - name: reseller
+          in: cookie
+          description: >-
+            TODO Please add comment
+          required: true
+          schema:
+            type: integer
+            format: int64
         - name: id
           in: path
           description: >-
@@ -493,21 +508,6 @@ paths:
             format: int64
         - name: q1
           in: query
-          description: >-
-            TODO Please add comment
-          required: true
-          schema:
-            type: string
-        - name: reseller
-          in: cookie
-          description: >-
-            TODO Please add comment
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: specificHeader
-          in: header
           description: >-
             TODO Please add comment
           required: true
@@ -679,8 +679,8 @@ paths:
     get:
       operationId: testLocalBeanParamType
       parameters:
-        - $ref: '#/components/parameters/localID'
         - $ref: '#/components/parameters/localKey'
+        - $ref: '#/components/parameters/localID'
       responses:
         '200':
           description: >-
