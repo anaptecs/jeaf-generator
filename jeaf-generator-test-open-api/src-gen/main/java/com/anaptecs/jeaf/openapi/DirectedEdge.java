@@ -31,6 +31,9 @@ public class DirectedEdge {
   @JsonProperty("end")
   private Stop end = null;
 
+  @JsonProperty("link")
+  private String link = null;
+
   public DirectedEdge start(Stop start) {
     this.start = start;
     return this;
@@ -67,6 +70,24 @@ public class DirectedEdge {
     this.end = end;
   }
 
+  public DirectedEdge link(String link) {
+    this.link = link;
+    return this;
+  }
+
+   /**
+   * Get link
+   * @return link
+  **/
+  @Schema(required = true, description = "")
+  public String getLink() {
+    return link;
+  }
+
+  public void setLink(String link) {
+    this.link = link;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -78,12 +99,13 @@ public class DirectedEdge {
     }
     DirectedEdge directedEdge = (DirectedEdge) o;
     return Objects.equals(this.start, directedEdge.start) &&
-        Objects.equals(this.end, directedEdge.end);
+        Objects.equals(this.end, directedEdge.end) &&
+        Objects.equals(this.link, directedEdge.link);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(start, end);
+    return Objects.hash(start, end, link);
   }
 
 
@@ -94,6 +116,7 @@ public class DirectedEdge {
     
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -415,11 +415,15 @@ components:
       additionalProperties: false
       required:
         - end
+        - link
       properties:
         start:
           $ref: '#/components/schemas/Stop'
         end:
           $ref: '#/components/schemas/Stop'
+        link:
+          type: string
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.Duration
     Duration:
@@ -477,6 +481,17 @@ components:
           items:
             $ref: '#/components/schemas/PlaceRef'
           minItems: 0
+
+    # com.anaptecs.jeaf.junit.openapi.base.LinkObject
+    LinkObject:
+      type: object
+      additionalProperties: false
+      required:
+        - href
+      properties:
+        href:
+          type: string
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.MoneyAmount
     MoneyAmount:
@@ -1297,6 +1312,11 @@ components:
         name:
           type: string
           nullable: false
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/LinkObject'
+          minItems: 0
 
     # com.anaptecs.jeaf.junit.openapi.base.StopPlaceRef
     StopPlaceRef:

@@ -34,6 +34,11 @@ public class DirectedEdge implements ServiceObject {
   public static final String END = "end";
 
   /**
+   * Constant for the name of attribute "link".
+   */
+  public static final String LINK = "link";
+
+  /**
    * The start
    */
   private Stop start;
@@ -42,6 +47,11 @@ public class DirectedEdge implements ServiceObject {
    * The end
    */
   private Stop end;
+
+  /**
+   * 
+   */
+  private String link;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -62,6 +72,7 @@ public class DirectedEdge implements ServiceObject {
     // Read attribute values from builder.
     start = pBuilder.start;
     end = pBuilder.end;
+    link = pBuilder.link;
   }
 
   /**
@@ -80,6 +91,11 @@ public class DirectedEdge implements ServiceObject {
     private Stop end;
 
     /**
+     * 
+     */
+    private String link;
+
+    /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -93,6 +109,7 @@ public class DirectedEdge implements ServiceObject {
         // Read attribute values from passed object.
         start = pObject.start;
         end = pObject.end;
+        link = pObject.link;
       }
     }
 
@@ -133,6 +150,17 @@ public class DirectedEdge implements ServiceObject {
      */
     public Builder setEnd( Stop pEnd ) {
       end = pEnd;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "link".
+     * 
+     * @param pLink Value to which the attribute "link" should be set.
+     */
+    public Builder setLink( String pLink ) {
+      // Assign value to attribute
+      link = pLink;
       return this;
     }
 
@@ -211,6 +239,27 @@ public class DirectedEdge implements ServiceObject {
   }
 
   /**
+   * Method returns the attribute "link".
+   * 
+   * 
+   * @return String Value to which the attribute "link" is set.
+   */
+  public String getLink( ) {
+    return link;
+  }
+
+  /**
+   * Method sets the attribute "link".
+   * 
+   * 
+   * @param pLink Value to which the attribute "link" should be set.
+   */
+  public void setLink( String pLink ) {
+    // Assign value to attribute
+    link = pLink;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -221,6 +270,8 @@ public class DirectedEdge implements ServiceObject {
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append('\n');
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "link", "" + link));
     lBuilder.append('\n');
     return lBuilder;
   }

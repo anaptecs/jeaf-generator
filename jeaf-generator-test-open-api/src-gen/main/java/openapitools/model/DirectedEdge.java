@@ -34,7 +34,8 @@ import openapitools.JSON;
  */
 @JsonPropertyOrder({
   DirectedEdge.JSON_PROPERTY_START,
-  DirectedEdge.JSON_PROPERTY_END
+  DirectedEdge.JSON_PROPERTY_END,
+  DirectedEdge.JSON_PROPERTY_LINK
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DirectedEdge {
@@ -43,6 +44,9 @@ public class DirectedEdge {
 
   public static final String JSON_PROPERTY_END = "end";
   private Stop end;
+
+  public static final String JSON_PROPERTY_LINK = "link";
+  private String link;
 
   public DirectedEdge() { 
   }
@@ -99,6 +103,32 @@ public class DirectedEdge {
   }
 
 
+  public DirectedEdge link(String link) {
+    this.link = link;
+    return this;
+  }
+
+   /**
+   * Get link
+   * @return link
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_LINK)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getLink() {
+    return link;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LINK)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setLink(String link) {
+    this.link = link;
+  }
+
+
   /**
    * Return true if this DirectedEdge object is equal to o.
    */
@@ -112,12 +142,13 @@ public class DirectedEdge {
     }
     DirectedEdge directedEdge = (DirectedEdge) o;
     return Objects.equals(this.start, directedEdge.start) &&
-        Objects.equals(this.end, directedEdge.end);
+        Objects.equals(this.end, directedEdge.end) &&
+        Objects.equals(this.link, directedEdge.link);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(start, end);
+    return Objects.hash(start, end, link);
   }
 
   @Override
@@ -126,6 +157,7 @@ public class DirectedEdge {
     sb.append("class DirectedEdge {\n");
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("}");
     return sb.toString();
   }

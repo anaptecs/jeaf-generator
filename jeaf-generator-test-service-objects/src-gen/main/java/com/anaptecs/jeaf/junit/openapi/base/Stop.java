@@ -5,6 +5,13 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -29,9 +36,19 @@ public class Stop implements ServiceObject {
   public static final String NAME = "name";
 
   /**
+   * Constant for the name of attribute "links".
+   */
+  public static final String LINKS = "links";
+
+  /**
    * 
    */
   private String name;
+
+  /**
+   * 
+   */
+  private List<LinkObject> links = new ArrayList<LinkObject>();
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -51,6 +68,9 @@ public class Stop implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
+    if (pBuilder.links != null) {
+      links.addAll(pBuilder.links);
+    }
   }
 
   /**
@@ -62,6 +82,11 @@ public class Stop implements ServiceObject {
      * 
      */
     private String name;
+
+    /**
+     * 
+     */
+    private List<LinkObject> links;
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
@@ -76,6 +101,7 @@ public class Stop implements ServiceObject {
       if (pObject != null) {
         // Read attribute values from passed object.
         name = pObject.name;
+        links = pObject.links;
       }
     }
 
@@ -106,6 +132,22 @@ public class Stop implements ServiceObject {
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
+      return this;
+    }
+
+    /**
+     * Method sets the association "links".
+     * 
+     * @param pLinks Collection with objects to which the association should be set.
+     */
+    public Builder setLinks( List<LinkObject> pLinks ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pLinks != null) {
+        links = new ArrayList<LinkObject>(pLinks);
+      }
+      else {
+        links = null;
+      }
       return this;
     }
 
@@ -151,6 +193,90 @@ public class Stop implements ServiceObject {
   public void setName( String pName ) {
     // Assign value to attribute
     name = pName;
+  }
+
+  /**
+   * Method returns the association "links".
+   * 
+   *
+   * @return Collection All LinkObject objects that belong to the association "links". The method never returns null and
+   * the returned collection is unmodifiable.
+   */
+  public List<LinkObject> getLinks( ) {
+    // Return all LinkObject objects as unmodifiable collection.
+    return Collections.unmodifiableList(links);
+  }
+
+  /**
+   * Method sets the association "links" to the passed collection. All objects that formerly were part of the
+   * association will be removed from it.
+   * 
+   * 
+   * @param pLinks Collection with objects to which the association should be set. The parameter must not be null.
+   */
+  void setLinks( List<LinkObject> pLinks ) {
+    // Check of parameter is not required.
+    // Remove all objects from association "links".
+    this.clearLinks();
+    // If the association is null, removing all entries is sufficient.
+    if (pLinks != null) {
+      links = new ArrayList<LinkObject>(pLinks);
+    }
+  }
+
+  /**
+   * Method adds the passed LinkObject object to the association "links".
+   * 
+   * 
+   * @param pLinks Object that should be added to the association "links". The parameter must not be null.
+   */
+  public void addToLinks( LinkObject pLinks ) {
+    // Check parameter "pLinks" for invalid value null.
+    Check.checkInvalidParameterNull(pLinks, "pLinks");
+    // Add passed object to collection of associated LinkObject objects.
+    links.add(pLinks);
+  }
+
+  /**
+   * Method adds all passed objects to the association "links".
+   * 
+   * 
+   * @param pLinks Collection with all objects that should be added to the association "links". The parameter must not
+   * be null.
+   */
+  public void addToLinks( Collection<LinkObject> pLinks ) {
+    // Check parameter "pLinks" for invalid value null.
+    Check.checkInvalidParameterNull(pLinks, "pLinks");
+    // Add all passed objects.
+    for (LinkObject lNextObject : pLinks) {
+      this.addToLinks(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed LinkObject object from the association "links".
+   * 
+   * 
+   * @param pLinks Object that should be removed from the association "links". The parameter must not be null.
+   */
+  public void removeFromLinks( LinkObject pLinks ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pLinks, "pLinks");
+    // Remove passed object from collection of associated LinkObject objects.
+    links.remove(pLinks);
+  }
+
+  /**
+   * Method removes all objects from the association "links".
+   * 
+   */
+  public void clearLinks( ) {
+    // Remove all objects from association "links".
+    Collection<LinkObject> lLinks = new HashSet<LinkObject>(links);
+    Iterator<LinkObject> lIterator = lLinks.iterator();
+    while (lIterator.hasNext()) {
+      this.removeFromLinks(lIterator.next());
+    }
   }
 
   /**

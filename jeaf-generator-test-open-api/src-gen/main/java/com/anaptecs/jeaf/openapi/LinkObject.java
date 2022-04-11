@@ -14,38 +14,35 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.anaptecs.jeaf.openapi.LinkObject;
-import com.anaptecs.jeaf.openapi.Stop;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.util.List;
 /**
- * UICStop
+ * LinkObject
  */
 
 
-public class UICStop extends Stop {
-  @JsonProperty("uicCode")
-  private String uicCode = null;
+public class LinkObject {
+  @JsonProperty("href")
+  private String href = null;
 
-  public UICStop uicCode(String uicCode) {
-    this.uicCode = uicCode;
+  public LinkObject href(String href) {
+    this.href = href;
     return this;
   }
 
    /**
-   * Get uicCode
-   * @return uicCode
+   * Get href
+   * @return href
   **/
   @Schema(required = true, description = "")
-  public String getUicCode() {
-    return uicCode;
+  public String getHref() {
+    return href;
   }
 
-  public void setUicCode(String uicCode) {
-    this.uicCode = uicCode;
+  public void setHref(String href) {
+    this.href = href;
   }
 
 
@@ -57,23 +54,22 @@ public class UICStop extends Stop {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UICStop uiCStop = (UICStop) o;
-    return Objects.equals(this.uicCode, uiCStop.uicCode) &&
-        super.equals(o);
+    LinkObject linkObject = (LinkObject) o;
+    return Objects.equals(this.href, linkObject.href);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(uicCode, super.hashCode());
+    return Objects.hash(href);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UICStop {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    uicCode: ").append(toIndentedString(uicCode)).append("\n");
+    sb.append("class LinkObject {\n");
+    
+    sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("}");
     return sb.toString();
   }

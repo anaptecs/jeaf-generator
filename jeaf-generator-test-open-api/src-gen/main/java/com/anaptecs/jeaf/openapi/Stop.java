@@ -14,6 +14,7 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.anaptecs.jeaf.openapi.LinkObject;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -21,6 +22,8 @@ import com.fasterxml.jackson.annotation.JsonTypeId;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * Stop
  */
@@ -37,6 +40,9 @@ public class Stop {
 
   @JsonProperty("name")
   private String name = null;
+
+  @JsonProperty("links")
+  private List<LinkObject> links = null;
 
   public Stop objectType(String objectType) {
     this.objectType = objectType;
@@ -74,6 +80,32 @@ public class Stop {
     this.name = name;
   }
 
+  public Stop links(List<LinkObject> links) {
+    this.links = links;
+    return this;
+  }
+
+  public Stop addLinksItem(LinkObject linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
+    }
+    this.links.add(linksItem);
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @Schema(description = "")
+  public List<LinkObject> getLinks() {
+    return links;
+  }
+
+  public void setLinks(List<LinkObject> links) {
+    this.links = links;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -85,12 +117,13 @@ public class Stop {
     }
     Stop stop = (Stop) o;
     return Objects.equals(this.objectType, stop.objectType) &&
-        Objects.equals(this.name, stop.name);
+        Objects.equals(this.name, stop.name) &&
+        Objects.equals(this.links, stop.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectType, name);
+    return Objects.hash(objectType, name, links);
   }
 
 
@@ -101,6 +134,7 @@ public class Stop {
     
     sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }

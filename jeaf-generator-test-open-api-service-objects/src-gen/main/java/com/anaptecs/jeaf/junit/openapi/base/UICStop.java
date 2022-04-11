@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.List;
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.NotNull;
 
@@ -105,6 +107,18 @@ public class UICStop extends Stop {
     public Builder setName( String pName ) {
       // Call super class implementation.
       super.setName(pName);
+      return this;
+    }
+
+    /**
+     * Method sets the association "links".
+     * 
+     * @param pLinks Collection with objects to which the association should be set.
+     */
+    @Override
+    public Builder setLinks( List<LinkObject> pLinks ) {
+      // Call super class implementation.
+      super.setLinks(pLinks);
       return this;
     }
 

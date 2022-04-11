@@ -26,6 +26,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
+import openapitools.model.LinkObject;
 import openapitools.model.POI;
 import openapitools.model.UICStop;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -37,7 +40,8 @@ import openapitools.JSON;
  */
 @JsonPropertyOrder({
   Stop.JSON_PROPERTY_OBJECT_TYPE,
-  Stop.JSON_PROPERTY_NAME
+  Stop.JSON_PROPERTY_NAME,
+  Stop.JSON_PROPERTY_LINKS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
@@ -52,6 +56,9 @@ public class Stop {
 
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
+
+  public static final String JSON_PROPERTY_LINKS = "links";
+  private List<LinkObject> links = null;
 
   public Stop() { 
   }
@@ -108,6 +115,40 @@ public class Stop {
   }
 
 
+  public Stop links(List<LinkObject> links) {
+    this.links = links;
+    return this;
+  }
+
+  public Stop addLinksItem(LinkObject linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
+    }
+    this.links.add(linksItem);
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<LinkObject> getLinks() {
+    return links;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLinks(List<LinkObject> links) {
+    this.links = links;
+  }
+
+
   /**
    * Return true if this Stop object is equal to o.
    */
@@ -121,12 +162,13 @@ public class Stop {
     }
     Stop stop = (Stop) o;
     return Objects.equals(this.objectType, stop.objectType) &&
-        Objects.equals(this.name, stop.name);
+        Objects.equals(this.name, stop.name) &&
+        Objects.equals(this.links, stop.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectType, name);
+    return Objects.hash(objectType, name, links);
   }
 
   @Override
@@ -135,6 +177,7 @@ public class Stop {
     sb.append("class Stop {\n");
     sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }
