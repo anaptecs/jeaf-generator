@@ -38,6 +38,7 @@
 	 */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND RESTParamAnnotation»
+	«EXPAND java::Jackson::JSONAlias»
 	«EXPAND Validation::ValidationAnnotation»
      «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == true && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»
      «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == false && type.isPrimitiveType() == false && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
@@ -51,6 +52,7 @@
 	 */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«IF isNavigable()»
+		«EXPAND java::Jackson::JSONAlias»
 		«EXPAND Validation::ValidationAnnotation»
 		«IF isMultivalued()»
 			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»

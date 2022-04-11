@@ -268,5 +268,8 @@ uml::EnumerationLiteral getDefaultLiteral(JMM::OpenAPIEnumeration enum) :
 
 boolean hasDefaultLiteral(JMM::OpenAPIEnumeration enum) :
     getDefaultLiteral(enum) != null;
+    
+JMM::OpenAPIAliasName asAlias(uml::Property property):
+  (JMM::OpenAPIAliasName) property;
 
     

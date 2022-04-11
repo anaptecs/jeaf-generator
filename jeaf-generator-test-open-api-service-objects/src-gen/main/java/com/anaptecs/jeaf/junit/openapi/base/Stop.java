@@ -21,6 +21,7 @@ import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
@@ -47,6 +48,7 @@ public class Stop implements ServiceObject {
   /**
    * 
    */
+  @JsonProperty("_links")
   private List<LinkObject> links = new ArrayList<LinkObject>();
 
   /**

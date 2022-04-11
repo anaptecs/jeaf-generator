@@ -3,6 +3,7 @@
 «EXTENSION java::GeneratorCommons»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 «EXTENSION entity::ModelProperties»
+«EXTENSION java::OpenAPIFunctions»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -29,10 +30,16 @@
 «ENDDEFINE»
 
 «DEFINE SubtypesAnnotation FOR Class»
-		  «FOREACH this.getSubclasses().typeSelect(Class) AS subclass SEPARATOR "," »
-		  @com.fasterxml.jackson.annotation.JsonSubTypes.Type(value = «subclass.fqn()».class, name = "«subclass.name»")
-		  «IF subclass.getSubclasses().size >0»,
-		  «EXPAND SubtypesAnnotation FOR subclass»
-		  «ENDIF»
-		  «ENDFOREACH»
+	«FOREACH this.getSubclasses().typeSelect(Class) AS subclass SEPARATOR "," »
+	@com.fasterxml.jackson.annotation.JsonSubTypes.Type(value = «subclass.fqn()».class, name = "«subclass.name»")
+		«IF subclass.getSubclasses().size >0»,
+			«EXPAND SubtypesAnnotation FOR subclass»
+		«ENDIF»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE JSONAlias FOR Property»
+	«IF generateJacksonAnnotations() && this.isStereotypeApplied("OpenAPIAliasName") == true»
+		@com.fasterxml.jackson.annotation.JsonProperty("«((OpenAPIAliasName)this).openAPIPropertyName»")
+	«ENDIF»
 «ENDDEFINE»

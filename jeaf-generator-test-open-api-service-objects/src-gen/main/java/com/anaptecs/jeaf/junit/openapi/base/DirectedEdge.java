@@ -13,6 +13,7 @@ import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author JEAF Generator
@@ -38,6 +39,7 @@ public class DirectedEdge implements ServiceObject {
   /**
    * 
    */
+  @JsonProperty("previousName")
   @NotNull
   private String link;
 
