@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:JMM="http://JMM/_11_5_1ab00d4_1164055757453_405595_1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://JMM/_11_5_1ab00d4_1164055757453_405595_1 JMM.profile.uml#_tYGTrrlyEey7MYJrfWSM7g">
+  <uml:Model xmi:id="_3m_DALonEeybs4PMPpjxXQ" name="Model">
+    <packagedElement xmi:type="uml:Package" xmi:id="_4Gxg4LooEeybs4PMPpjxXQ" name="com">
+      <packagedElement xmi:type="uml:Package" xmi:id="_5iAIwLooEeybs4PMPpjxXQ" name="anaptecs">
+        <packagedElement xmi:type="uml:Package" xmi:id="_6w16cLooEeybs4PMPpjxXQ" name="jeaf">
+          <packagedElement xmi:type="uml:Package" xmi:id="_8TEiMLooEeybs4PMPpjxXQ" name="generator">
+            <packagedElement xmi:type="uml:Package" xmi:id="_-xiIsLooEeybs4PMPpjxXQ" name="model">
+              <packagedElement xmi:type="uml:Class" xmi:id="_BO_CkLopEeybs4PMPpjxXQ" name="PapyrusPOJO" visibility="public">
+                <ownedAttribute xmi:type="uml:Property" xmi:id="_37jS4LopEeybs4PMPpjxXQ" name="name">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                </ownedAttribute>
+              </packagedElement>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_639rkLonEeybs4PMPpjxXQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_639rkbonEeybs4PMPpjxXQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="JMM.profile.uml#_tYGTrrlyEey7MYJrfWSM7g"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="JMM.profile.uml#_11_5_1ab00d4_1164055757453_405595_1"/>
+    </profileApplication>
+  </uml:Model>
+  <JMM:POJO xmi:id="_GnkQ0LopEeybs4PMPpjxXQ" base_Class="_BO_CkLopEeybs4PMPpjxXQ"/>
+  <JMM:Example xmi:id="_H_9xsLoqEeybs4PMPpjxXQ" base_Property="_37jS4LopEeybs4PMPpjxXQ" exampleValue="Hello"/>
+  <JMM:OpenAPIDataType xmi:id="_McLeULoqEeybs4PMPpjxXQ" base_Class="_BO_CkLopEeybs4PMPpjxXQ"/>
+  <JMM:Min xmi:id="_XGsG8LovEeybs4PMPpjxXQ" base_Property="_37jS4LopEeybs4PMPpjxXQ" minValue="42"/>
+</xmi:XMI>
