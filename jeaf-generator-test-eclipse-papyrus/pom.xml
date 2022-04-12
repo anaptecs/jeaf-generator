@@ -13,22 +13,21 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.anaptecs.jeaf.tools</groupId>
+			<artifactId>jeaf-tools-api</artifactId>
+			<version>${jeaf.tools.api.version}</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>com.anaptecs.jeaf.json</groupId>
 			<artifactId>jeaf-json-api</artifactId>
 			<version>${jeaf.json.api.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>${javaee-api.version}</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${jackson.version}</version>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${jackson.version}</version>
 		</dependency>
 
 		<dependency>
@@ -42,17 +41,16 @@
 		<dependency>
 			<groupId>com.anaptecs.jeaf.json</groupId>
 			<artifactId>jeaf-json-impl-runtime</artifactId>
-			<version>${jeaf.json.impl.version}</version>
-			<type>pom</type>
-			<scope>test</scope>
+		    <version>${jeaf.json.impl.version}</version>
+		    <type>pom</type>
+		    <scope>test</scope>
 		</dependency>
 
-
 		<dependency>
-			<groupId>com.anaptecs.jeaf.json</groupId>
-			<artifactId>jeaf-json-impl</artifactId>
-			<version>${jeaf.json.impl.version}</version>
-			<scope>test</scope>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee-api.version}</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
@@ -84,13 +82,16 @@
 
 					<!-- Define whitelist of package in UML model generator should take care when generating code. -->
 					<packages>
-						<package>com.anaptecs.jeaf.accounting</package>
-						<package>com.anaptecs.jeaf.junit</package>
+						<package>com.anaptecs.jeaf.</package>
+						<package>com.anaptecs.jeaf.</package>
+						<package>ch.</package>
 						<package>TestProfile</package>
 					</packages>
 
 					<!-- Define what should be generated. By default nothing is generated. -->
 					<generateOpenAPISpec>true</generateOpenAPISpec>
+					<generatePOJOs>true</generatePOJOs>
+					<generateServiceObjects>true</generateServiceObjects>
 					<!-- <generateServiceObjects>true</generateServiceObjects> <generateCustomConstraints>true</generateCustomConstraints> -->
 
 					<!-- Define information that are written to file headers -->

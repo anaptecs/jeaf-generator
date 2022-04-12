@@ -1,0 +1,1266 @@
+openapi: 3.0.3
+
+info:
+  title: NOVA Inventory Booking API
+  version: 1.6.38-SNAPSHOT
+  description: >-
+    NOVA Inventory API to book places in a inventory.
+  contact:
+    name: Andreas Schlapbach
+    email: andreas.schlapbach@sbb.ch
+
+servers:
+  - url: https://developers.sbb.ch/nova-inventory-booking
+    description: >-
+      NOVA Inventory Booking API
+
+tags:
+  - name: place availabilities
+    description: >-
+      place availability of vehicle
+
+paths:
+  # InventoryBookingService
+  /place-availabilities:
+    post:
+      tags:
+        - place availabilities
+      summary: returns place availability of a vehicle
+      description: >-
+        Returns availability of places. The availability can be filtered using place properties or service levels.
+      operationId: getAvailabilities
+      parameters:
+        - $ref: '#/components/parameters/acceptLanguage'
+        - $ref: '#/components/parameters/traceParent'
+        - $ref: '#/components/parameters/traceState'
+      requestBody:
+        description: >-
+          request for availability
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlaceAvailabilityRequest'
+      responses:
+        '200':
+          description: >-
+            the requested place
+          headers:
+            Cache-Control:
+              schema:
+                type: string
+                default: 'public, max-age=10000'
+                description: >-
+                  A places resource is fairly persistent and has a medium time to live to allow short-term caching.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlaceAvailabilityResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedResponse'
+        '403':
+          $ref: '#/components/responses/ForbiddenResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+        '406':
+          $ref: '#/components/responses/NotAcceptableResponse'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaTypeResponse'
+        '500':
+          $ref: '#/components/responses/InternalServerErrorResponse'
+        '501':
+          $ref: '#/components/responses/NotImplementedResponse'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailableResponse'
+        'default':
+          $ref: '#/components/responses/DefaultErrorResponse'
+
+
+security:
+  - oAuth2ClientCredentials: []
+
+components:
+  securitySchemes:
+    oAuth2ClientCredentials:
+      type: oauth2
+      description: >-
+        See https://swagger.io/docs/specification/authentication/oauth2/
+      flows:
+        clientCredentials:
+          tokenUrl: 'https://login.microsoftonline.com/tbd'
+          refreshUrl: 'TODO Please add required refresh URL'
+          scopes: {}
+
+  parameters:
+    # ch.voev.nova.inventory.api.booking.InventoryBookingContext.acceptLanguage
+    acceptLanguage:
+      name: Accept-Language
+      in: header
+      description: >-
+        Describes the set of natural languages that are preferred for localized text in the response
+        to the request (see RFC2616-sec14.4). Supporting English (en) is a must.
+      schema:
+        type: string
+      required: false
+
+    # ch.voev.nova.inventory.api.booking.InventoryBookingContext.traceParent
+    traceParent:
+      name: traceparent
+      in: header
+      description: >-
+        The traceparent header describes the position of the incoming request in its trace graph in a portable,
+        fixed-length format. Its design focuses on fast parsing. Every tracing tool MUST properly set
+        traceparent even when it only relies on vendor-specific information in tracestate (see W3C Trace Context).
+      schema:
+        type: string
+      required: false
+
+    # ch.voev.nova.inventory.api.booking.InventoryBookingContext.traceState
+    traceState:
+      name: tracestate
+      in: header
+      description: >-
+        The tracestate extends traceparent with vendor-specific data represented by a set of name/value pairs.
+        Storing information in tracestate is optional (see W3C Trace Context).
+      schema:
+        type: string
+      required: false
+
+  responses:
+    # ch.voev.nova.inventory.api.booking.BadRequestResponse
+    BadRequestResponse:
+      description: >-
+        Bad Request (400)
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    # ch.voev.nova.inventory.api.booking.DefaultErrorResponse
+    DefaultErrorResponse:
+      description: >-
+        Default error reponse
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    # ch.voev.nova.inventory.api.booking.ForbiddenResponse
+    ForbiddenResponse:
+      description: >-
+        Forbidden (403)
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    # ch.voev.nova.inventory.api.booking.InternalServerErrorResponse
+    InternalServerErrorResponse:
+      description: >-
+        Internal Server Error (500)
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    # ch.voev.nova.inventory.api.booking.NotAcceptableResponse
+    NotAcceptableResponse:
+      description: >-
+        Not Acceptable (406)
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    # ch.voev.nova.inventory.api.booking.NotFoundResponse
+    NotFoundResponse:
+      description: >-
+        Not Found (404)
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    # ch.voev.nova.inventory.api.booking.NotImplementedResponse
+    NotImplementedResponse:
+      description: >-
+        Not Implemented (501)
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    # ch.voev.nova.inventory.api.booking.ServiceUnavailableResponse
+    ServiceUnavailableResponse:
+      description: >-
+        Service Unavailable (503)
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    # ch.voev.nova.inventory.api.booking.UnauthorizedResponse
+    UnauthorizedResponse:
+      description: >-
+        Unauthorized (401)
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    # ch.voev.nova.inventory.api.booking.UnsupportedMediaTypeResponse
+    UnsupportedMediaTypeResponse:
+      description: >-
+        Unsupported Media Type (415)
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+
+  schemas:
+    # ch.voev.nova.inventory.api.booking.PlaceAvailabilityRequest
+    PlaceAvailabilityRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - tripSpecifications
+        - passengerSpecifications
+      properties:
+        tripSpecifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/TripSpecification'
+          minItems: 1
+        passengerSpecifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/PassengerSpecification'
+          minItems: 1
+        embeddedParts:
+          $ref: '#/components/schemas/EmbeddedParts'
+
+    # ch.voev.nova.inventory.api.booking.PlaceAvailabilityResponse
+    PlaceAvailabilityResponse:
+      type: object
+      additionalProperties: false
+      required:
+        - tripAvailabilities
+      properties:
+        warnings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Warning'
+          minItems: 0
+        tripAvailabilities:
+          type: array
+          items:
+            $ref: '#/components/schemas/TripAvailability'
+          minItems: 0
+
+    # ch.voev.nova.inventory.api.booking.TripAvailability
+    TripAvailability:
+      type: object
+      additionalProperties: false
+      description: >-
+        Availability per leg for a given trip.
+      required:
+        - tripId
+      properties:
+        tripId:
+          type: string
+          nullable: false
+        placeAvailabilities:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlaceAvailability'
+          minItems: 0
+        reservationOffers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReservationOffer'
+          minItems: 0
+
+    # ch.voev.nova.inventory.api.booking.ReservationOffer
+    ReservationOffer:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - productCode
+        - price
+        - placeAvailabilityId
+      properties:
+        id:
+          type: string
+          nullable: false
+        productCode:
+          description: >-
+            The product code expressed in the provider system (could be a
+            mapping from an even lower-level provider).
+          type: string
+          nullable: false
+          example: 'Reservierungsentgelt'
+        price:
+          $ref: '#/components/schemas/Price'
+        availableFulfillmentTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/FulfillmentType'
+          minItems: 0
+        placeAvailabilityId:
+          type: string
+          nullable: false
+
+    # ch.voev.nova.inventory.api.booking.PlaceAvailability
+    PlaceAvailability:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - legId
+        - passengerIds
+        - inventory
+        - accommodationType
+        - accommodationSubType
+      properties:
+        id:
+          type: string
+          nullable: false
+          example: 'id-1'
+        legId:
+          type: string
+          nullable: false
+          example: 'leg-1'
+        passengerIds:
+          type: array
+          items:
+            type: string
+          minItems: 1
+          nullable: false
+          example: 'passenger-1'
+        inventory:
+          $ref: '#/components/schemas/Inventory'
+        comfortClass:
+          $ref: '#/components/schemas/ComfortClass'
+        accommodationType:
+          $ref: '#/components/schemas/AccommodationType'
+        accommodationSubType:
+          $ref: '#/components/schemas/AccommodationSubType'
+        numericAvailability:
+          description: >-
+            number of places
+          type: integer
+          format: int32
+          example: '22'
+        availablePlaceProperties:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlaceProperty'
+          minItems: 0
+
+
+    # ch.voev.nova.inventory.api.booking.Inventory
+    Inventory:
+      type: string
+      x-extensible-enum:
+        - CAPRE
+        - RESSYS
+
+    # ch.voev.nova.inventory.api.booking.TripSpecification
+    TripSpecification:
+      type: object
+      additionalProperties: false
+      description: >-
+        A minimal trip specification from origin to destination.
+      required:
+        - externalRef
+        - legs
+      properties:
+        externalRef:
+          description: >-
+            External reference of this trip for referencing purposes. Unique within a trip specification.
+          type: string
+          nullable: false
+        legs:
+          type: array
+          items:
+            $ref: '#/components/schemas/TripLegSpecification'
+          minItems: 1
+
+    # ch.voev.nova.inventory.api.booking.TripLegSpecification
+    TripLegSpecification:
+      type: object
+      additionalProperties: false
+      description: >-
+        A minimal trip leg specification.
+      required:
+        - externalRef
+      properties:
+        externalRef:
+          description: >-
+            External reference of this trip leg. Unique within trip result.
+          type: string
+          nullable: false
+        timedLeg:
+          $ref: '#/components/schemas/TimedLegSpecification'
+        transferLeg:
+          $ref: '#/components/schemas/TransferLeg'
+
+    # ch.voev.nova.inventory.api.booking.TimedLegSpecification
+    TimedLegSpecification:
+      type: object
+      additionalProperties: false
+      description: >-
+        A minimal timed leg specification.
+      required:
+        - start
+        - end
+        - service
+      properties:
+        start:
+          $ref: '#/components/schemas/BoardSpecification'
+        intermediates:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntermediateSpecification'
+          minItems: 0
+        end:
+          $ref: '#/components/schemas/AlightSpecification'
+        service:
+          $ref: '#/components/schemas/DatedJourney'
+
+    # ch.voev.nova.inventory.api.booking.TransferLeg
+    TransferLeg:
+      type: object
+      additionalProperties: false
+      description: >-
+        A leg which links other legs of a trip where a transfer between different places is required. 
+        Provided by OJP.
+      required:
+        - transferMode
+        - start
+        - end
+      properties:
+        continuousMode:
+          $ref: '#/components/schemas/ContinuousMode'
+        transferMode:
+          $ref: '#/components/schemas/TransferMode'
+        start:
+          $ref: '#/components/schemas/PlaceRef'
+        end:
+          $ref: '#/components/schemas/PlaceRef'
+        timeWindowStart:
+          description: >-
+            Time at which window begins.
+          type: string
+          format: date-time
+        timeWindowEnd:
+          description: >-
+            Time at which window ends.
+          type: string
+          format: date-time
+        duration:
+          description: >-
+            Overall duration of this interchange.
+          type: string
+          format: duration
+          example: 'PT20M'
+        situationFullRefs:
+          type: array
+          items:
+            $ref: '#/components/schemas/SituationFullRef'
+          minItems: 0
+
+    # ch.voev.nova.inventory.api.booking.BoardSpecification
+    BoardSpecification:
+      type: object
+      additionalProperties: false
+      description: >-
+        Minimal leg board specification.
+      required:
+        - stopPlaceRef
+        - serviceDeparture
+      properties:
+        stopPlaceRef:
+          $ref: '#/components/schemas/StopPlaceRef'
+        serviceDeparture:
+          $ref: '#/components/schemas/ServiceTime'
+
+    # ch.voev.nova.inventory.api.booking.IntermediateSpecification
+    IntermediateSpecification:
+      type: object
+      additionalProperties: false
+      description: >-
+        Minimal leg intermediate specification.
+      required:
+        - stopPlaceRef
+        - serviceArrival
+        - serviceDeparture
+      properties:
+        stopPlaceRef:
+          $ref: '#/components/schemas/StopPlaceRef'
+        serviceArrival:
+          $ref: '#/components/schemas/ServiceTime'
+        serviceDeparture:
+          $ref: '#/components/schemas/ServiceTime'
+
+    # ch.voev.nova.inventory.api.booking.AlightSpecification
+    AlightSpecification:
+      type: object
+      additionalProperties: false
+      description: >-
+        Minimal leg alight specification
+      required:
+        - stopPlaceRef
+        - serviceArrival
+      properties:
+        stopPlaceRef:
+          $ref: '#/components/schemas/StopPlaceRef'
+        serviceArrival:
+          $ref: '#/components/schemas/ServiceTime'
+
+    # ch.voev.nova.inventory.api.booking.ServiceTime
+    ServiceTime:
+      type: object
+      additionalProperties: false
+      description: >-
+        Contains at least scheduled time, but can contain real time and estimated times. Provided by OJP.
+      required:
+        - timetabledTime
+      properties:
+        timetabledTime:
+          type: string
+          format: date-time
+          nullable: false
+        estimatedTime:
+          type: string
+          format: date-time
+        observedTime:
+          type: string
+          format: date-time
+
+    # ch.voev.nova.inventory.api.booking.DatedJourney
+    DatedJourney:
+      type: object
+      additionalProperties: false
+      description: >-
+        Vehicle journey that runs at a specific date. Provided by OJP.
+      required:
+        - operatorRefs
+      properties:
+        mode:
+          $ref: '#/components/schemas/Mode'
+        productCategory:
+          $ref: '#/components/schemas/ProductCategory'
+        publishedServiceName:
+          description: >-
+            Line name or service description as known to the public, f.e. "512", "S8"
+            or "Circle Line" or "ICE 488".
+          type: string
+          example: 'S1'
+        vehicleNumbers:
+          description: >-
+            The vehicle number(s) of the vehicle(s) that runs this timed leg.
+            On some legs a vehicle has multiple vehicles, e.g. if it is split into two
+            trains at a intermediate stop.
+            
+            For backwards compatibility with Hermes/Hosa the length of the string must be restricted
+            to 5 characters. If's longer, it is not possible to use the H2O converter.
+          type: array
+          items:
+            type: string
+          example: '9218, 9340, 15'
+        lineNumbers:
+          description: >-
+            List of line numbers that are part of this journey.
+            Especially on regional traffic, a vehicle is defined by a line number only.
+          type: array
+          items:
+            type: string
+          example: '52, 19'
+        operatorRefs:
+          description: >-
+            Reference to transport operators.
+            For UIC see: https://unioninternationalcheminsdefer.github.io/OSDM/spec/catalog-of-code-lists/
+            
+            As a leg can be operated by more than operator we model it as an array here.
+          type: array
+          items:
+            type: string
+          minItems: 1
+          nullable: false
+          example: 'urn:uic:rics:1185:000011'
+        serviceStatus:
+          $ref: '#/components/schemas/ServiceStatus'
+        situationFullRefs:
+          type: array
+          items:
+            $ref: '#/components/schemas/SituationFullRef'
+          minItems: 0
+        operatingDayRef:
+          $ref: '#/components/schemas/OperationDayRef'
+
+    # ch.voev.nova.inventory.api.booking.Mode
+    Mode:
+      type: object
+      additionalProperties: false
+      description: >-
+        A method of transportation such as bus, rail, etc. Provided by OJP.
+      required:
+        - ptMode
+      properties:
+        name:
+          description: >-
+            Name of the mode
+          type: string
+          example: 'rail'
+        shortName:
+          description: >-
+            Short name or acronym of the mode
+          type: string
+          example: 'S'
+        description:
+          description: >-
+            Additional text that further describes the mode
+          type: string
+        ptMode:
+          $ref: '#/components/schemas/PTMode'
+
+    # ch.voev.nova.inventory.api.booking.ProductCategory
+    ProductCategory:
+      type: object
+      additionalProperties: false
+      description: >-
+        Product category based on NeTEx/SIRI. A product category is a classification for vehicle journeys
+        to express some common properties of journeys for marketing and fare products. Provided by OJP.
+      required:
+        - name
+        - shortName
+        - productCategoryRef
+      properties:
+        name:
+          description: >-
+            Full name of this product category, e.g. "TGV Lyria" in Switzerland and France.
+            UIC: Long name of Service Brand
+          type: string
+          nullable: false
+          example: 'TGV Lyria'
+        shortName:
+          description: >-
+            Short name or acronym of the product category, likely to be published, e.g. "TGV"
+            UIC: Abbreviation of Service Brand
+          type: string
+          nullable: false
+          example: 'TGV'
+        productCategoryRef:
+          $ref: '#/components/schemas/ProductCategoryRef'
+
+    # ch.voev.nova.inventory.api.booking.ServiceStatus
+    ServiceStatus:
+      type: object
+      additionalProperties: false
+      description: >-
+        Parameters which describe the current status of a dated vehicle journey.
+        Provided by OJP.
+      properties:
+        unplanned:
+          description: >-
+            Whether this trip is an additional one that has not been planned.
+          type: boolean
+          default: false
+        cancelled:
+          description: >-
+            Whether this trip is cancelled and will not be run.
+          type: boolean
+          default: false
+        deviation:
+          description: >-
+            Whether this trip deviates from the planned service pattern.
+          type: boolean
+          default: false
+        occupancy:
+          description: >-
+            Passenger load status on vehicle. If omitted, not known. 
+            Equivalent to siri:OccupancyEnumeration which describes three values: 
+            "full", "seatingAvailable" and "standingAvailable".
+          type: string
+
+
+    # ch.voev.nova.inventory.api.booking.ContinuousMode
+    ContinuousMode:
+      description: >-
+        Types of modes that run at any time without a timetable. Provided by OJP.
+      type: string
+      x-extensible-enum:
+        - WALK
+        - DEMAND_RESPONSIVE
+        - REPLACEMENT_SERVICE
+
+
+    # ch.voev.nova.inventory.api.booking.TransferMode
+    TransferMode:
+      description: >-
+        Modes dedicated to perform transfers. Provided by OJP.
+      type: string
+      x-extensible-enum:
+        - WALK
+        - PARK_AND_RIDE
+        - BIKE_AND_RIDE
+        - CAR_HIRE
+        - BIKE_HIRE
+        - PROTECTED_CONNECTION
+        - GUARANTEED_CONNECTION
+        - REMAIN_IN_VEHICLE
+        - CHANGE_WITHIN_VEHICLE
+        - CHECK_IN
+        - CHECK_OUT
+
+    # ch.voev.nova.inventory.api.booking.PlaceRef
+    PlaceRef:
+      type: object
+      additionalProperties: false
+      discriminator:
+        propertyName: objectType
+      required:
+        - objectType
+      properties:
+        objectType:
+          description: Attribute is used as discriminator for inheritance between data types.
+          type: string
+
+    # ch.voev.nova.inventory.api.booking.StopPlaceRef
+    StopPlaceRef:
+      description: >-
+        Reference to a Stop Place using URNs to define code.
+        For UIC see UIC MERITS/TAP-TSI station codes. Provided by OJP.
+      allOf:
+        - $ref: '#/components/schemas/PlaceRef'
+        - type: object
+          additionalProperties: false
+          required:
+            - stopPlaceRef
+          properties:
+            stopPlaceRef:
+              type: string
+              nullable: false
+              example: 'urn:uic:stn:8503000'
+            name:
+              type: string
+              example: 'Luzern'
+
+    # ch.voev.nova.inventory.api.booking.PointOfInterestRef
+    PointOfInterestRef:
+      description: >-
+        Reference to a Point of Interest. Provided by OJP.
+      allOf:
+        - $ref: '#/components/schemas/PlaceRef'
+        - type: object
+          additionalProperties: false
+          required:
+            - pointOfInterestRef
+          properties:
+            pointOfInterestRef:
+              type: string
+              nullable: false
+            name:
+              type: string
+
+    # ch.voev.nova.inventory.api.booking.AddressRef
+    AddressRef:
+      description: >-
+        Reference to an Address.
+      allOf:
+        - $ref: '#/components/schemas/PlaceRef'
+        - type: object
+          additionalProperties: false
+          required:
+            - addressRef
+          properties:
+            addressRef:
+              type: string
+              nullable: false
+            name:
+              type: string
+
+    # ch.voev.nova.inventory.api.booking.FareConnectionPointRef
+    FareConnectionPointRef:
+      description: >-
+        Reference to a Fare Connection Point.
+      allOf:
+        - $ref: '#/components/schemas/PlaceRef'
+        - type: object
+          additionalProperties: false
+          required:
+            - fareConnectionPoint
+          properties:
+            fareConnectionPoint:
+              $ref: '#/components/schemas/FareConnectionPoint'
+            name:
+              type: string
+
+    # ch.voev.nova.inventory.api.booking.SituationFullRef
+    SituationFullRef:
+      type: string
+      description: >-
+        Reference to situation message. Message details might be found in response 
+        context or through other communication channels. Provided by OJP.
+      nullable: false
+
+    # ch.voev.nova.inventory.api.booking.ProductCategoryRef
+    ProductCategoryRef:
+      type: string
+      description: >-
+        Reference to a product category. Product categories should be defined once and used
+        uniformly in all channels (e.g. NeTEx, SIRI, OJP). Provided by OJP.
+      nullable: false
+      example: 'urn:uic:sbc:76'
+
+    # ch.voev.nova.inventory.api.booking.OperationDayRef
+    OperationDayRef:
+      type: string
+      description: >-
+        Reference to an operating day. Provided by OJP.
+      nullable: false
+      example: 'OperatingDay:12345'
+
+    # ch.voev.nova.inventory.api.booking.PassengerSpecification
+    PassengerSpecification:
+      type: object
+      additionalProperties: false
+      description: >-
+        Minimal specification of a passenger to request offers.
+      required:
+        - externalRef
+        - type
+      properties:
+        externalRef:
+          description: >-
+            A stable reference to a passenger from other elements, or from caller system.
+            When received in input of a trip-offers-collection request, it must be echoed back in the
+            response.
+          type: string
+          nullable: false
+          example: 'TK-id-12345'
+        type:
+          $ref: '#/components/schemas/PassengerType'
+        dateOfBirth:
+          description: >-
+            Date of birth of the passenger. Only needed for passengers of type persons, family child, PRMS
+            and wheelchair.
+          type: string
+          format: date
+        cards:
+          description: >-
+            reduction or loyalty cards owned by the passenger
+          type: array
+          items:
+            $ref: '#/components/schemas/CardReference'
+          minItems: 0
+        prmNeeds:
+          description: >-
+            For the persons with reduced mobility (PRMs) its specific needs for support are expressed.
+          type: array
+          items:
+            $ref: '#/components/schemas/PRMNeedType'
+          minItems: 0
+
+
+    # ch.voev.nova.inventory.api.booking.PassengerType
+    PassengerType:
+      description: >-
+        Passenger type according to UIC passenger, i.e. passenger type list.
+        See https://unioninternationalcheminsdefer.github.io/OSDM/spec/catalog-of-code-lists/
+      type: string
+      x-extensible-enum:
+        - DOG
+        - PET
+        - LUGGAGE
+        - PRM
+        - BICYCLE
+        - PRAM
+        - ACCOMP_DOG
+        - CAR
+        - PERSON
+        - MOTOCYCLE
+        - TRAILER
+        - FAMILY_CHILD
+        - WHEELCHAR
+
+    # ch.voev.nova.inventory.api.booking.CardReference
+    CardReference:
+      type: object
+      additionalProperties: false
+      required:
+        - types
+        - code
+      properties:
+        types:
+          description: >-
+            Types of card. One card can have multiple roles, such as loyalty and reduction
+          type: array
+          items:
+            $ref: '#/components/schemas/CardType'
+          minItems: 1
+        code:
+          description: >-
+            Code of the card type according to issuer.
+          type: string
+          nullable: false
+        name:
+          description: >-
+            Card name for printing on fulfillments.
+          type: string
+        number:
+          description: >-
+            Unique number identifying the card.
+          type: string
+        issuer:
+          $ref: '#/components/schemas/Company'
+
+
+    # ch.voev.nova.inventory.api.booking.PRMNeedType
+    PRMNeedType:
+      type: string
+      x-extensible-enum:
+        - NEED_PRM_SUPPORT
+        - WHEELCHAIR
+        - ACCOMPANYING_DOG
+        - COMPANION_SEAT
+        - COMPANION
+
+
+    # ch.voev.nova.inventory.api.booking.CardType
+    CardType:
+      type: string
+      x-extensible-enum:
+        - REDUCTION_CARD
+        - LOYALTY_CARD
+        - CHIP_CARD
+        - PASS
+
+    # ch.voev.nova.inventory.api.booking.Company
+    Company:
+      type: string
+      description: >-
+        RICS company code or compatible ERA company code for rail.
+      nullable: false
+      example: 'urn:uic:rics:1185'
+
+    # ch.voev.nova.inventory.api.booking.PlaceProperty
+    PlaceProperty:
+      type: string
+      description: >-
+        see code list
+      nullable: false
+      example: 'Power Connection'
+
+    # ch.voev.nova.inventory.api.booking.AccommodationType
+    AccommodationType:
+      type: string
+      description: >-
+        Accommodation type definition out of the Accommodation Type Code List
+      default: 'SEAT'
+      nullable: false
+
+    # ch.voev.nova.inventory.api.booking.AccommodationSubType
+    AccommodationSubType:
+      type: string
+      description: >-
+        Accommodation type definition out of the Accommodation Sub Type Code List
+      nullable: false
+
+
+    # ch.voev.nova.inventory.api.booking.ComfortClass
+    ComfortClass:
+      description: >-
+        Generic class classification, mostly used to harmonize choice and
+        representation across multiple carriers.
+      type: string
+      x-extensible-enum:
+        - FIRST
+        - SECOND
+
+    # ch.voev.nova.inventory.api.booking.Price
+    Price:
+      type: object
+      additionalProperties: false
+      required:
+        - currency
+        - amount
+      properties:
+        currency:
+          $ref: '#/components/schemas/Currency'
+        amount:
+          description: >-
+            amount in cents
+          type: integer
+          format: int32
+          nullable: false
+        scale:
+          description: >-
+            scale of the amount - the number of positions after the comma
+          type: integer
+          format: int32
+          default: 2
+        vats:
+          type: array
+          items:
+            $ref: '#/components/schemas/VAT'
+          minItems: 0
+
+    # ch.voev.nova.inventory.api.booking.Currency
+    Currency:
+      type: string
+      description: >-
+        ISO 4217 currency codes
+      nullable: false
+      example: 'CHF, EUR, SEK'
+
+    # ch.voev.nova.inventory.api.booking.VAT
+    VAT:
+      type: object
+      additionalProperties: false
+      required:
+        - countryCode
+        - amount
+      properties:
+        countryCode:
+          $ref: '#/components/schemas/CountryCode'
+        amount:
+          description: >-
+            amount in cents
+          type: integer
+          format: int32
+          nullable: false
+          example: '5'
+        scale:
+          description: >-
+            scale of the amount - the number of positions after the comma
+          type: integer
+          format: int32
+          default: 2
+        percentage:
+          type: number
+          format: float
+        taxId:
+          type: string
+        scope:
+          $ref: '#/components/schemas/VatScope'
+
+
+    # ch.voev.nova.inventory.api.booking.VatScope
+    VatScope:
+      description: >-
+        scope where the VAT applies
+      type: string
+      x-extensible-enum:
+        - INTERNATIONAL
+        - NATIONAL
+        - SHORT_DISTANCE
+        - LONG_DISTANCE
+
+
+    # ch.voev.nova.inventory.api.booking.FulfillmentType
+    FulfillmentType:
+      type: string
+      x-extensible-enum:
+        - ETICKET
+        - CIT_PAPER
+        - PASS_CHIP
+        - PASS_REFERENCE
+
+    # ch.voev.nova.inventory.api.booking.CountryCode
+    CountryCode:
+      type: string
+      description: >-
+        ISO country code (2 alpha), relative URNs with base urn:iso:std:iso:3166 are recommended
+      nullable: false
+      example: 'DE'
+
+    # ch.voev.nova.inventory.api.booking.FareConnectionPoint
+    FareConnectionPoint:
+      type: object
+      additionalProperties: false
+      description: >-
+        Connection point connecting two fare regimes. The connection is possible between stations of the two provided station sets.
+        A legacy border point code (id) might be provided as an additional code within the stations (code list BORDER_POINT provided in URN).
+        In case the connection point is a real station this station is indicated.
+        In case the connection point is between stations for each side of the border real stations must be provided.
+        Multiple sets of station can be provided in the rare case that the connection point connects more than two station (A-B and A-C).
+        Multiple stations within a set at one side of the border might be provided in case of changes (new stations build near the border). 
+        
+        Providing the UIC code for the station is mandatory.
+      required:
+        - stationSets
+      properties:
+        name:
+          type: string
+        stationSets:
+          type: array
+          items:
+            $ref: '#/components/schemas/StationSet'
+          minItems: 1
+
+    # ch.voev.nova.inventory.api.booking.StationSet
+    StationSet:
+      type: object
+      additionalProperties: false
+      required:
+        - stations
+      properties:
+        stations:
+          type: array
+          items:
+            $ref: '#/components/schemas/StopPlaceRef'
+          minItems: 1
+
+    # ch.voev.nova.inventory.api.booking.GeoPosition
+    GeoPosition:
+      description: >-
+        WGS84 coordinates position.
+        Provided by OJP.
+      allOf:
+        - $ref: '#/components/schemas/PlaceRef'
+        - type: object
+          additionalProperties: false
+          required:
+            - longitude
+            - latitude
+          properties:
+            longitude:
+              $ref: '#/components/schemas/Longitude'
+            latitude:
+              $ref: '#/components/schemas/Latitude'
+
+    # ch.voev.nova.inventory.api.booking.Longitude
+    Longitude:
+      type: number
+      format: float
+      description: >-
+        Longitude from Greenwich Meridian. -180 (West) to +180 (East). Decimal degrees. eg 2.356.
+      minimum: -180
+      maximum: 180
+      nullable: false
+      example: '8.54021'
+
+    # ch.voev.nova.inventory.api.booking.Latitude
+    Latitude:
+      type: number
+      format: float
+      description: >-
+        Latitude from equator. -90 (South) to +90 (North). Decimal degrees. e.g. 56.356.
+      minimum: -90
+      maximum: 90
+      nullable: false
+      example: '47.37818'
+
+    # ch.voev.nova.inventory.api.booking.Warning
+    Warning:
+      type: object
+      additionalProperties: false
+      description: >-
+        This element can be used to pass non-blocking information or events,
+        such as a price difference with the initially offered price at booking time.
+        It is inspired on the JSon problem structure.
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          nullable: false
+        type:
+          description: >-
+            An absolute URI that identifies the warning type. When dereferenced,
+            it SHOULD provide human-readable documentation for the problem type
+            (e.g., using HTML).
+          type: string
+          format: uri
+          default: "about:blank"
+          example: 'https://example.com/warns/price-updated'
+        detail:
+          description: >-
+            A human readable explanation specific to this occurrence of the
+            warning.
+          type: string
+          example: 'The price of the given offer part has been updated during the booking operation'
+        instance:
+          description: >-
+            An absolute URI that identifies the specific occurrence of the warning.
+          type: string
+          format: uri
+          example: 'offers/offer1234'
+
+    # ch.voev.nova.inventory.api.booking.Problem
+    Problem:
+      type: object
+      additionalProperties: false
+      description: >-
+        Problem Details for HTTP APIs (RFC 7807) defines a "problem detail" as a way
+        to carry machine-readable details of errors in a HTTP response to avoid
+        the need to define new error response formats for HTTP APIs.
+        See: https://tools.ietf.org/html/rfc7807
+      required:
+        - status
+      properties:
+        type:
+          description: >-
+            An absolute URI that identifies the problem type. When dereferenced,
+            it SHOULD provide human-readable documentation for the problem type
+            (e.g., using HTML).
+          type: string
+          format: uri
+          default: "about:blank"
+          example: 'https://example.com/probs/passenger-too-young'
+        title:
+          description: >-
+            A short, summary of the problem type. Written in English and readable 
+            for engineers (usually not suited for non technical stakeholders and
+            not localized)
+          type: string
+          example: 'Service Unavailable'
+        status:
+          description: >-
+            The HTTP status code generated by the origin server for this occurrence
+            of the problem.
+          type: integer
+          format: int32
+          maximum: 600
+          exclusiveMaximum: true
+          minimum: 100
+          nullable: false
+          example: '503'
+        detail:
+          description: >-
+            A human readable explanation specific to this occurrence
+            of the problem.
+          type: string
+          example: 'Connection to database timed out'
+        instance:
+          description: >-
+            An absolute URI that identifies the specific occurrence of the problem.
+          type: string
+          format: uri
+
+
+    # ch.voev.nova.inventory.api.booking.EmbeddedParts
+    EmbeddedParts:
+      type: string
+      enum:
+        - PLACE_AVAILABILITIES
+        - ALL
+
+
+    # ch.voev.nova.inventory.api.booking.PTMode
+    PTMode:
+      type: string
+      x-extensible-enum:
+        - HIGH_SPEED_TRAIN
+        - HISTORIC_TRAIN
+        - INTERCITY
+        - REGIONAL
+        - INTERREGIONAL
+        - URBAN
+        - TRAM
+        - UNDERGROUND
+        - NIGHT_TRAIN
+        - SHARED_TAXI
+        - MOTOR_RAIL
+        - MOUNTAIN_TRAIN
+        - PLANE
+        - COACH_GROUP
+        - SHIP
+        - BUS
+

@@ -760,6 +760,11 @@ public class ClassUtil {
   public static String getPackageName( Package pPackage ) {
     String lResult = new String();
     String lName = pPackage.getName();
+
+    if ("Java SE 8".equals(lName)) {
+      XFun.getTrace().info(
+          lName + ": " + isModelLibrary(pPackage) + " Stereotypes: " + pPackage.getAppliedStereotypes());
+    }
     if (pPackage.getNestingPackage() != null && !(pPackage.getNestingPackage() instanceof Model)) {
       String lRecursiveResult = getPackageName(pPackage.getNestingPackage());
       if (!"".equals(lRecursiveResult)) {
@@ -784,8 +789,8 @@ public class ClassUtil {
     Assert.assertNotNull(pPackage, "pPackage");
 
     boolean lIsLibrary;
-    if (ClassUtil.getAppliedStereotype(pPackage, "ModelLibrary") != null
-        || ClassUtil.getAppliedStereotype(pPackage, "modelLibrary") != null) {
+    if (ClassUtil.isStereotypeApplied(pPackage, "ModelLibrary")
+        || ClassUtil.isStereotypeApplied(pPackage, "modelLibrary")) {
       lIsLibrary = true;
     }
     else {

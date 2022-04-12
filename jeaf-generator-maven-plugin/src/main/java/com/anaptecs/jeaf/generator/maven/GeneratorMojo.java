@@ -855,6 +855,10 @@ public class GeneratorMojo extends AbstractMojo {
         List<String> lReplacement =
             lLines.map(line -> line.replaceAll("xmlns:uml=\"http://www.eclipse.org/uml2/5.0.0/UML\"",
                 "xmlns:uml=\"http://www.eclipse.org/uml2/2.0.0/UML\"")).collect(Collectors.toList());
+        lReplacement = lReplacement.stream()
+            .map(line -> line.replaceAll("xmlns:standard=\"http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard\"",
+                "xmlns:standard=\"http://www.eclipse.org/uml2/schemas/Standard/1\""))
+            .collect(Collectors.toList());
         Files.write(lNextFile, lReplacement);
         lLines.close();
       }
