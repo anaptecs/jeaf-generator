@@ -16,11 +16,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.execution.MavenSession;
@@ -48,6 +52,8 @@ import com.anaptecs.jeaf.fwk.tools.message.generator.ExcelToMessageResourceConve
 import com.anaptecs.jeaf.fwk.tools.message.generator.MessageConstantsGenerator;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.file.FileTools;
+import com.anaptecs.jeaf.tools.api.performance.Stopwatch;
+import com.anaptecs.jeaf.tools.api.performance.TimePrecision;
 import com.anaptecs.jeaf.tools.api.string.StringTools;
 import com.anaptecs.jeaf.tools.api.xml.DocumentProperties;
 import com.anaptecs.jeaf.tools.api.xml.DocumentProperties.Builder;
@@ -727,6 +733,9 @@ public class GeneratorMojo extends AbstractMojo {
     // Check if UML generation should be executed.
     boolean lSuccessful;
     if (this.isUMLGenerationRequested()) {
+      // Prepare XMI file
+      this.prepareXMIFiles();
+
       // Configure all system properties for UML Generator.
       System.setProperty("maven.version", mavenProject.getVersion());
       System.setProperty("info.version", fileHeaderVersion);
@@ -824,6 +833,37 @@ public class GeneratorMojo extends AbstractMojo {
       lSuccessful = true;
     }
     return lSuccessful;
+  }
+
+  private void prepareXMIFiles( ) throws MojoFailureException {
+    Stopwatch lStopwatch = Tools.getPerformanceTools().createStopwatch("XMI file preparation", TimePrecision.MILLIS);
+    lStopwatch.start();
+    // Resolve all UML files in XMI directory
+    FileTools lFileTools = Tools.getFileTools();
+    List<String> lExtensions = new ArrayList<>();
+    lExtensions.add("*.uml");
+    List<String> lUMLFiles =
+        lFileTools.listFiles(this.getXMIDirectory(), lFileTools.createExtensionFilenameFilter(lExtensions));
+
+    // Fix all XMI files
+    String lCurrentFile = null;
+    try {
+      for (String lNextFileName : lUMLFiles) {
+        lCurrentFile = lNextFileName;
+        Path lNextFile = Paths.get(lNextFileName);
+        Stream<String> lLines = Files.lines(lNextFile);
+        List<String> lReplacement =
+            lLines.map(line -> line.replaceAll("xmlns:uml=\"http://www.eclipse.org/uml2/5.0.0/UML\"",
+                "xmlns:uml=\"http://www.eclipse.org/uml2/2.0.0/UML\"")).collect(Collectors.toList());
+        Files.write(lNextFile, lReplacement);
+        lLines.close();
+      }
+    }
+    catch (IOException e) {
+      throw new MojoFailureException("Unable to process XMI file" + lCurrentFile, e);
+    }
+    lStopwatch.stop();
+    this.getLog().info("XMI file preparation took " + lStopwatch.getResult().getDuration() + "ms");
   }
 
   /**
