@@ -790,7 +790,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("name.oid.row", peristentObjectsOIDRowName);
       System.setProperty("name.version.label.row", peristentObjectsVersionLabelRowName);
 
-      String lXMIDirectory = this.getXMIDirectory();
+      String lXMIDirectory = this.getXMIDirectoryLocation();
 
       // Check if UML model file and profile file exist
       String lModelFilePath = lXMIDirectory + "/" + umlModelFile;
@@ -838,12 +838,15 @@ public class GeneratorMojo extends AbstractMojo {
   private void prepareXMIFiles( ) throws MojoFailureException {
     Stopwatch lStopwatch = Tools.getPerformanceTools().createStopwatch("XMI file preparation", TimePrecision.MILLIS);
     lStopwatch.start();
+
+    // Copy XMI files to working directory.
+    String lXMIFiles = this.copyXMIFiles();
+
     // Resolve all UML files in XMI directory
     FileTools lFileTools = Tools.getFileTools();
     List<String> lExtensions = new ArrayList<>();
     lExtensions.add("*.uml");
-    List<String> lUMLFiles =
-        lFileTools.listFiles(this.getXMIDirectory(), lFileTools.createExtensionFilenameFilter(lExtensions));
+    List<String> lUMLFiles = lFileTools.listFiles(lXMIFiles, lFileTools.createExtensionFilenameFilter(lExtensions));
 
     // Fix all XMI files
     String lCurrentFile = null;
@@ -877,12 +880,68 @@ public class GeneratorMojo extends AbstractMojo {
    * @return
    * @throws MojoFailureException
    */
-  private String getXMIDirectory( ) throws MojoFailureException {
+  private String getXMIDirectoryLocation( ) throws MojoFailureException {
+    // XMI directory is defined directly.
+    String lExtractDirectory = project.getBuild().getDirectory() + "/uml-model";
+    String lXMIDirectory;
+    StringTools lTools = Tools.getStringTools();
+    if (lTools.isRealString(xmiDirectory)) {
+      lXMIDirectory = lExtractDirectory;
+    }
+    // Try to find XMI files inside artifact
+    else if (lTools.isRealString(modelArtifactGroupID) && lTools.isRealString(modelArtifactArtifactID)) {
+      if (lTools.isRealString(modelArtifactXMIPath)) {
+        lXMIDirectory = lExtractDirectory + "/" + modelArtifactXMIPath;
+      }
+      else {
+        lXMIDirectory = lExtractDirectory;
+      }
+    }
+    // Neither XMI directory is defined directly nor through Maven artifact.
+    else {
+      throw new MojoFailureException(
+          "Path to UML model (XMI) is neither defined as direct directory (config parameter 'xmiDirectory') nor through a Maven artifact (config parameters 'modelArtifactXXX'.");
+    }
+    this.getLog().info(lXMIDirectory);
+    return lXMIDirectory;
+  }
+
+  /**
+   * Method resolves the XMI directory from the Mojo configuration. This XMI directory can either be defined directly or
+   * by naming an artifact that contains all required xmi files.
+   * 
+   * @return
+   * @throws MojoFailureException
+   */
+  private String copyXMIFiles( ) throws MojoFailureException {
     // XMI directory is defined directly.
     StringTools lTools = Tools.getStringTools();
-    String lXMIDirectory;
+    String lXMIDirectoryPath;
+
     if (lTools.isRealString(xmiDirectory)) {
-      lXMIDirectory = xmiDirectory;
+      // Delete may be existing directory with XMI files.
+      lXMIDirectoryPath = this.getXMIDirectoryLocation();
+      FileTools lFileTools = Tools.getFileTools();
+      lFileTools.tryDeleteRecursive(lXMIDirectoryPath, true);
+
+      File lXMIDirectory = new File(lXMIDirectoryPath);
+      lFileTools.createDirectory(lXMIDirectory);
+
+      List<String> lExtensions = new ArrayList<>();
+      lExtensions.add("*.uml");
+      List<String> lUMLFiles =
+          lFileTools.listFiles(xmiDirectory, lFileTools.createExtensionFilenameFilter(lExtensions));
+
+      try {
+        for (String lFile : lUMLFiles) {
+          File lSourceFile = new File(lFile);
+          lFileTools.copyFile(lSourceFile, new File(lXMIDirectoryPath, lSourceFile.getName()));
+        }
+      }
+      catch (IOException e) {
+        throw new MojoFailureException("Unable to copy XMI files to working directory.", e);
+      }
+
     }
     // Try to find XMI files inside artifact
     else if (lTools.isRealString(modelArtifactGroupID) && lTools.isRealString(modelArtifactArtifactID)) {
@@ -898,10 +957,10 @@ public class GeneratorMojo extends AbstractMojo {
               + lExtractDirectory + ".");
           Tools.getFileTools().extractZipFile(lFilePath, lExtractDirectory, Long.MAX_VALUE);
           if (lTools.isRealString(modelArtifactXMIPath)) {
-            lXMIDirectory = lExtractDirectory + "/" + modelArtifactXMIPath;
+            lXMIDirectoryPath = lExtractDirectory + "/" + modelArtifactXMIPath;
           }
           else {
-            lXMIDirectory = lExtractDirectory;
+            lXMIDirectoryPath = lExtractDirectory;
           }
         }
         // Lookup for Maven dependency failed.
@@ -919,7 +978,7 @@ public class GeneratorMojo extends AbstractMojo {
       throw new MojoFailureException(
           "Path to UML model (XMI) is neither defined as direct directory (config parameter 'xmiDirectory') nor through a Maven artifact (config parameters 'modelArtifactXXX'.");
     }
-    return lXMIDirectory;
+    return lXMIDirectoryPath;
   }
 
   private boolean isUMLGenerationRequested( ) {
