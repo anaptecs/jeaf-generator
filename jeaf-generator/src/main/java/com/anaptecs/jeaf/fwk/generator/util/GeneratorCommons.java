@@ -912,7 +912,6 @@ public class GeneratorCommons {
 
   public static boolean runChecks( NamedElement pElement ) {
     boolean lRunChecks = false;
-
     Package lPackage = pElement.getNearestPackage();
     NamedElement lOwner = (NamedElement) pElement.getOwner();
 
@@ -931,6 +930,7 @@ public class GeneratorCommons {
       else {
         lFQN = pElement.toString();
       }
+
       // Check for stereotypes
       if (pElement instanceof Class || pElement instanceof Interface || pElement instanceof Component
           || pElement instanceof Enumeration || pElement instanceof Activity || pElement instanceof Dependency
