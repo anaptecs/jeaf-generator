@@ -761,12 +761,9 @@ public class ClassUtil {
     String lResult = new String();
     String lName = pPackage.getName();
 
-    if ("Java SE 8".equals(lName)) {
-      XFun.getTrace().info(
-          lName + ": " + isModelLibrary(pPackage) + " Stereotypes: " + pPackage.getAppliedStereotypes());
-    }
-    if (pPackage.getNestingPackage() != null && !(pPackage.getNestingPackage() instanceof Model)) {
-      String lRecursiveResult = getPackageName(pPackage.getNestingPackage());
+    Package lNestingPackage = pPackage.getNestingPackage();
+    if (lNestingPackage != null && lNestingPackage instanceof Model == false) {
+      String lRecursiveResult = getPackageName(lNestingPackage);
       if (!"".equals(lRecursiveResult)) {
         lResult = lRecursiveResult + "." + lName;
       }
