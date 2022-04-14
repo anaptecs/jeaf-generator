@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.uml2.uml.Class;
-import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.PrimitiveType;
@@ -38,26 +38,15 @@ public class Naming {
 
   public static String getFullyQualifiedName( org.eclipse.uml2.uml.NamedElement pNamedElement ) {
     // Check parameter.
-
     String lQualifiedName;
     if (pNamedElement != null) {
       // Is primitive type
       if (pNamedElement instanceof PrimitiveType) {
         lQualifiedName = pNamedElement.getName();
       }
-      // Is association
-
-      // Get path of Stereotype
-      // else if (pNamedElement instanceof Stereotype) {
-      // Stereotype lStereotype = (Stereotype) pNamedElement;
-      // System.out.println("Stereotype-Package: " + lStereotype.getQualifiedName());
-      // lQualifiedName = lStereotype.getQualifiedName();
-      // }
-      // Is regular class or interface or enum
       else if (pNamedElement instanceof Class || pNamedElement instanceof Interface
           || pNamedElement instanceof Enumeration) {
-        Classifier lClassifier = (Classifier) pNamedElement;
-        String lPackageName = ClassUtil.getPackageName(lClassifier.getPackage());
+        String lPackageName = Naming.getFullyQualifiedName((NamedElement) pNamedElement.getOwner());
         if (lPackageName != null && lPackageName.length() > 0) {
           lQualifiedName = lPackageName + '.' + pNamedElement.getName();
         }
@@ -86,6 +75,9 @@ public class Naming {
         Element lOwner = pNamedElement.getOwner();
         String lOwnerName = getFullyQualifiedName((NamedElement) lOwner);
         lQualifiedName = lOwnerName + "." + pNamedElement.getName();
+      }
+      else if (pNamedElement instanceof Package) {
+        lQualifiedName = ClassUtil.getPackageName(pNamedElement);
       }
       else {
         lQualifiedName = pNamedElement.getName();
