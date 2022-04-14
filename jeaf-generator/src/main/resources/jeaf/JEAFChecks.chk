@@ -39,8 +39,8 @@ context DomainObject if runChecks() ERROR "Error: Domain Object " + name + " has
 context PersistentObject if runChecks() ERROR "Error: Persistent Object " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
 context PersistentObject if runChecks() ERROR "Error: Persistent Object " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
 
-context Operation if runChecks() ERROR "Error: Method " + name + "has parameter(s) without type.": hasOnlySupportedParamaterTypes() == true;
-context Operation if runChecks() ERROR "Error: Method " + name + "(...) of class " + ((NamedElement)this.owner).fqn() + " does not have a valid return type": hasReturnType() == true;
+context Operation if runChecks() ERROR "Error: Method " + name + " has parameter(s) without type.": hasOnlySupportedParamaterTypes() == true;
+context Operation if runChecks() ERROR "Error: Method " + name + " (...) of class " + ((NamedElement)this.owner).fqn() + " does not have a valid return type": hasReturnType() == true;
 
 context ServiceObject if runChecks() WARNING "Warning: <<ServiceObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
 context POJO if runChecks() WARNING "Warning: <<POJO>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
