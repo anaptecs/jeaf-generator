@@ -7,7 +7,7 @@
 		<version>1.6.38-SNAPSHOT</version>
 	</parent>
 
-	<name>JEAF Generator Test Eclipse Papayrus</name>
+	<name>JEAF Generator Test Eclipse Papyrus</name>
 	<artifactId>jeaf-generator-test-eclipse-papyrus</artifactId>
 	<packaging>jar</packaging>
 
@@ -75,7 +75,7 @@
 					<sourceGenDirectory>${project.basedir}/src-gen/main/java</sourceGenDirectory>
 					<resourceDirectory>${project.basedir}/src-gen/main/resources</resourceDirectory>
 					<resourceGenDirectory>${project.basedir}/src-gen/main/resources</resourceGenDirectory>
-
+					
 					<!-- Configure behavior concerning existing files in src-gen and res-gen directory. It is strongly recommended to clean directories before generating new files. -->
 					<cleanSourceGen>true</cleanSourceGen>
 					<cleanResourceGen>true</cleanResourceGen>
@@ -85,6 +85,7 @@
 						<package>com.anaptecs.jeaf.</package>
 						<package>com.anaptecs.jeaf.</package>
 						<package>ch.</package>
+						<package>org.uic.</package>
 						<package>TestProfile</package>
 					</packages>
 
