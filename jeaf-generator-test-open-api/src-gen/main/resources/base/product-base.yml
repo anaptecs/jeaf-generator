@@ -289,7 +289,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/ParentClass'
-              minItems: 0
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildBB
     ChildBB:
@@ -315,7 +314,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/ChildB'
-              minItems: 0
             deprecatedParent:
               # Attribute "deprecatedParent" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
               $ref: '#/components/schemas/ParentClass'
@@ -339,7 +337,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BooleanCodeType'
-          minItems: 0
         shortCodeTypeAssociation:
           type: array
           items:
@@ -480,7 +477,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PlaceRef'
-          minItems: 0
 
     # com.anaptecs.jeaf.junit.openapi.base.LinkObject
     LinkObject:
@@ -617,7 +613,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PostalAddress'
-          minItems: 0
 
     # com.anaptecs.jeaf.junit.openapi.base.PartnerContainer
     PartnerContainer:
@@ -628,7 +623,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Partner'
-          minItems: 0
 
     # com.anaptecs.jeaf.junit.openapi.base.Person
     Person:
@@ -1208,7 +1202,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Reseller'
-          minItems: 0
         name:
           type: string
           minLength: 12
@@ -1294,7 +1287,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Product'
-          minItems: 0
 
     # com.anaptecs.jeaf.junit.openapi.base.Stop
     Stop:
@@ -1316,7 +1308,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkObject'
-          minItems: 0
 
     # com.anaptecs.jeaf.junit.openapi.base.StopPlaceRef
     StopPlaceRef:

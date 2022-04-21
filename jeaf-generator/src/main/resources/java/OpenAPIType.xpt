@@ -155,7 +155,7 @@
               «ELSE-»
             $ref: «attribute.type.getOpenAPIType(spec)»
               «ENDIF-»
-          minItems: «attribute.getLower()»
+          «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»
             «ENDIF-»
           «ENDIF-»
           «ENDIF-»
@@ -289,7 +289,7 @@
               «ELSE-»
                 $ref: «attribute.type.getOpenAPIType(spec)»
               «ENDIF-»
-              minItems: «attribute.getLower()»
+              «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR attribute-»
             «ENDIF-»
           «ENDIF-»
           «ENDIF-»

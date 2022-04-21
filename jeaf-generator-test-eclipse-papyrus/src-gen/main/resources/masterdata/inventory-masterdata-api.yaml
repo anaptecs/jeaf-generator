@@ -175,12 +175,10 @@ components:
           type: array
           items:
             $ref: '../inventory-booking-api.yaml#/components/schemas/Warning'
-          minItems: 0
         vehicles:
           type: array
           items:
             $ref: '#/components/schemas/Vehicle'
-          minItems: 0
 
     # ch.voev.nova.inventory.api.masterdata.Vehicle
     Vehicle:
@@ -243,12 +241,10 @@ components:
           type: array
           items:
             $ref: '../inventory-booking-api.yaml#/components/schemas/Warning'
-          minItems: 0
         productDefinitions:
           type: array
           items:
             $ref: '#/components/schemas/ProductDefinition'
-          minItems: 0
 
     # ch.voev.nova.inventory.api.masterdata.ProductDefinition
     ProductDefinition:
@@ -360,7 +356,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FulfillmentMediaType'
-          minItems: 0
 
     # ch.voev.nova.inventory.api.masterdata.Condition
     Condition:
@@ -453,7 +448,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Translation'
-          minItems: 0
         text:
           type: string
           nullable: false

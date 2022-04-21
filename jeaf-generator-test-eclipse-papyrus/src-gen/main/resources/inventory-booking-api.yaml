@@ -243,12 +243,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Warning'
-          minItems: 0
         tripAvailabilities:
           type: array
           items:
             $ref: '#/components/schemas/TripAvailability'
-          minItems: 0
 
     # ch.voev.nova.inventory.api.booking.TripAvailability
     TripAvailability:
@@ -266,12 +264,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PlaceAvailability'
-          minItems: 0
         reservationOffers:
           type: array
           items:
             $ref: '#/components/schemas/ReservationOffer'
-          minItems: 0
 
     # ch.voev.nova.inventory.api.booking.ReservationOffer
     ReservationOffer:
@@ -299,7 +295,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FulfillmentType'
-          minItems: 0
         placeAvailabilityId:
           type: string
           nullable: false
@@ -349,7 +344,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PlaceProperty'
-          minItems: 0
 
 
     # ch.voev.nova.inventory.api.booking.Inventory
@@ -416,7 +410,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/IntermediateSpecification'
-          minItems: 0
         end:
           $ref: '#/components/schemas/AlightSpecification'
         service:
@@ -462,7 +455,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SituationFullRef'
-          minItems: 0
 
     # ch.voev.nova.inventory.api.booking.BoardSpecification
     BoardSpecification:
@@ -589,7 +581,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SituationFullRef'
-          minItems: 0
         operatingDayRef:
           $ref: '#/components/schemas/OperationDayRef'
 
@@ -848,14 +839,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CardReference'
-          minItems: 0
         prmNeeds:
           description: >-
             For the persons with reduced mobility (PRMs) its specific needs for support are expressed.
           type: array
           items:
             $ref: '#/components/schemas/PRMNeedType'
-          minItems: 0
 
 
     # ch.voev.nova.inventory.api.booking.PassengerType
@@ -999,7 +988,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VAT'
-          minItems: 0
 
     # ch.voev.nova.inventory.api.booking.Currency
     Currency:
