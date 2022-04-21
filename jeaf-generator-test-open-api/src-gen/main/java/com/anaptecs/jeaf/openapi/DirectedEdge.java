@@ -31,8 +31,8 @@ public class DirectedEdge {
   @JsonProperty("end")
   private Stop end = null;
 
-  @JsonProperty("link")
-  private String link = null;
+  @JsonProperty("previousName")
+  private String previousName = null;
 
   public DirectedEdge start(Stop start) {
     this.start = start;
@@ -70,22 +70,22 @@ public class DirectedEdge {
     this.end = end;
   }
 
-  public DirectedEdge link(String link) {
-    this.link = link;
+  public DirectedEdge previousName(String previousName) {
+    this.previousName = previousName;
     return this;
   }
 
    /**
-   * Get link
-   * @return link
+   * Get previousName
+   * @return previousName
   **/
   @Schema(required = true, description = "")
-  public String getLink() {
-    return link;
+  public String getPreviousName() {
+    return previousName;
   }
 
-  public void setLink(String link) {
-    this.link = link;
+  public void setPreviousName(String previousName) {
+    this.previousName = previousName;
   }
 
 
@@ -100,12 +100,12 @@ public class DirectedEdge {
     DirectedEdge directedEdge = (DirectedEdge) o;
     return Objects.equals(this.start, directedEdge.start) &&
         Objects.equals(this.end, directedEdge.end) &&
-        Objects.equals(this.link, directedEdge.link);
+        Objects.equals(this.previousName, directedEdge.previousName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(start, end, link);
+    return Objects.hash(start, end, previousName);
   }
 
 
@@ -116,7 +116,7 @@ public class DirectedEdge {
     
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    previousName: ").append(toIndentedString(previousName)).append("\n");
     sb.append("}");
     return sb.toString();
   }

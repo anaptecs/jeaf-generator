@@ -57,7 +57,7 @@ public class Stop {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
-  public static final String JSON_PROPERTY_LINKS = "links";
+  public static final String JSON_PROPERTY_LINKS = "_links";
   private List<LinkObject> links = null;
 
   public Stop() { 

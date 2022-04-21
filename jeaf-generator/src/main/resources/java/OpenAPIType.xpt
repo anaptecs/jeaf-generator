@@ -55,7 +55,7 @@
         - objectType
         «ENDIF-»
         «FOREACH this.getRequiredProperties() AS property-»
-        - «property.name»
+        - «property.getAttributeName()»
         «ENDFOREACH-»
       «ENDIF-»
       «IF this.ownedAttribute.size > 0 || this.isTopOfClassHierarchy() -»
@@ -66,7 +66,7 @@
           type: string
         «ENDIF-»
         «FOREACH this.ownedAttribute.select(e | e.isTransient() == false) AS attribute-»
-        «attribute.name»:
+        «attribute.getAttributeName()»:
           «IF attribute.type.isOpenAPIDataType() && ((OpenAPIDataType) attribute.type).inline == true -»
           «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute) FOR (OpenAPIDataType) attribute.type -»
           «ELSE -»
@@ -127,7 +127,7 @@
             «ENDIF-»
           «ELSE-»
             «IF attribute.isDeprecated() -»
-          # Attribute "«attribute.name»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+          # Attribute "«attribute.getAttributeName()»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
             «ENDIF-»
             «IF attribute.isMultivalued() == false-»
               «IF isOneOfForClassHierachieEnabled() && attribute.type.getAllConcreteSubclasses().size > 0 -»
@@ -186,13 +186,13 @@
       «IF this.hasRequiredProperties() -»
           required:
         «FOREACH this.getRequiredProperties() AS property-»
-            - «property.name»
+            - «property.getAttributeName()»
         «ENDFOREACH-»
       «ENDIF-»
       «IF this.ownedAttribute.size > 0 -»
           properties:
         «FOREACH this.ownedAttribute.select(e | e.isTransient() == false) AS attribute-»
-            «attribute.name»:
+            «attribute.getAttributeName()»:
           «IF attribute.type.isOpenAPIDataType() && ((OpenAPIDataType) attribute.type).inline == true -»
           «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute) FOR (OpenAPIDataType) attribute.type -»
           «ELSE -»
@@ -261,7 +261,7 @@
             «ENDIF-»
           «ELSE-»
             «IF attribute.isDeprecated() -»
-              # Attribute "«attribute.name»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+              # Attribute "«attribute.getAttributeName()»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
             «ENDIF-»
             «IF attribute.isMultivalued() == false-»
               «IF isOneOfForClassHierachieEnabled() && attribute.type.getAllConcreteSubclasses().size > 0 -»

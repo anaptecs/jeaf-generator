@@ -415,13 +415,13 @@ components:
       additionalProperties: false
       required:
         - end
-        - link
+        - previousName
       properties:
         start:
           $ref: '#/components/schemas/Stop'
         end:
           $ref: '#/components/schemas/Stop'
-        link:
+        previousName:
           type: string
           nullable: false
 
@@ -1312,7 +1312,7 @@ components:
         name:
           type: string
           nullable: false
-        links:
+        _links:
           type: array
           items:
             $ref: '#/components/schemas/LinkObject'

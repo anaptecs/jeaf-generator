@@ -23,7 +23,7 @@ List[JMM::OpenAPISecurityScheme] getOpenAPISecuritySchemes(JMM::OpenAPI3Specific
     spec.getModel().allOwnedElements().typeSelect(JMM::OpenAPISecurityScheme).select(e|e.isInGeneratorWhitelist() == true).sortBy(e|e.name);
 
 List[JMM::ErrorResponse] getErrorResponses(JMM::OpenAPI3Specification spec):
-	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::ErrorResponse).sortBy(e|e.name);
+	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::ErrorResponse).sortBy(e|e.name).sortBy(e|e.getOrderNumber());
 
 List[JMM::OpenAPI3Specification] getDependentSpecs(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(JMM::OpenAPI3Specification);
@@ -263,6 +263,9 @@ String getOrderNumber(uml::Element element) :
 List[uml::Element] getOrderedSchemaElements(JMM::OpenAPI3Specification spec) :
     spec.getOpenAPITypes().addAll(spec.getOpenAPIDataTypes().select(e|e.inline == false)).addAll(spec.getOpenAPIEnums()).toList().sortBy(e|e.name).sortBy(e|e.getOrderNumber());
     
+List[JMM::OpenAPITag] getOrderedOpenAPITags(JMM::OpenAPI3Specification spec) :
+    spec.clientDependency.supplier.typeSelect(JMM::OpenAPITag).toList().sortBy(e|e.name).sortBy(e|e.getOrderNumber());
+    
 uml::EnumerationLiteral getDefaultLiteral(JMM::OpenAPIEnumeration enum) :
     enum.ownedLiteral.select(e|e.isStereotypeApplied("DefaultLiteral")).first();
 
@@ -271,5 +274,15 @@ boolean hasDefaultLiteral(JMM::OpenAPIEnumeration enum) :
     
 JMM::OpenAPIAliasName asAlias(uml::Property property):
   (JMM::OpenAPIAliasName) property;
+  
+boolean hasAliasAttributeName(uml::Property property) :
+   isStereotypeApplied(property, "OpenAPIAliasName");
+
+String getAttributeName(uml::Property property) :
+   if property.hasAliasAttributeName() == true
+   then ((JMM::OpenAPIAliasName) property).openAPIPropertyName
+   else property.name;
+
+  
 
     

@@ -59,7 +59,7 @@ servers:
 «ENDIF-»
 «IF this.clientDependency.supplier.typeSelect(OpenAPITag).size > 0 -»
 tags:
-«EXPAND GenerateTags FOREACH this.clientDependency.supplier.typeSelect(OpenAPITag).sortBy(e|e.name).sortBy(e|e.order)»
+«EXPAND GenerateTags FOREACH this.getOrderedOpenAPITags()»
 «ENDIF-»
 paths:
 «IF this.referencesRESTResources()-»

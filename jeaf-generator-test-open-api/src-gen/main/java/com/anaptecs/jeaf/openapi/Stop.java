@@ -41,8 +41,8 @@ public class Stop {
   @JsonProperty("name")
   private String name = null;
 
-  @JsonProperty("links")
-  private List<LinkObject> links = null;
+  @JsonProperty("_links")
+  private List<LinkObject> _links = null;
 
   public Stop objectType(String objectType) {
     this.objectType = objectType;
@@ -80,30 +80,30 @@ public class Stop {
     this.name = name;
   }
 
-  public Stop links(List<LinkObject> links) {
-    this.links = links;
+  public Stop _links(List<LinkObject> _links) {
+    this._links = _links;
     return this;
   }
 
-  public Stop addLinksItem(LinkObject linksItem) {
-    if (this.links == null) {
-      this.links = new ArrayList<>();
+  public Stop addLinksItem(LinkObject _linksItem) {
+    if (this._links == null) {
+      this._links = new ArrayList<>();
     }
-    this.links.add(linksItem);
+    this._links.add(_linksItem);
     return this;
   }
 
    /**
-   * Get links
-   * @return links
+   * Get _links
+   * @return _links
   **/
   @Schema(description = "")
   public List<LinkObject> getLinks() {
-    return links;
+    return _links;
   }
 
-  public void setLinks(List<LinkObject> links) {
-    this.links = links;
+  public void setLinks(List<LinkObject> _links) {
+    this._links = _links;
   }
 
 
@@ -118,12 +118,12 @@ public class Stop {
     Stop stop = (Stop) o;
     return Objects.equals(this.objectType, stop.objectType) &&
         Objects.equals(this.name, stop.name) &&
-        Objects.equals(this.links, stop.links);
+        Objects.equals(this._links, stop._links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectType, name, links);
+    return Objects.hash(objectType, name, _links);
   }
 
 
@@ -134,7 +134,7 @@ public class Stop {
     
     sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
     sb.append("}");
     return sb.toString();
   }

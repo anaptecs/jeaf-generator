@@ -35,7 +35,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   DirectedEdge.JSON_PROPERTY_START,
   DirectedEdge.JSON_PROPERTY_END,
-  DirectedEdge.JSON_PROPERTY_LINK
+  DirectedEdge.JSON_PROPERTY_PREVIOUS_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DirectedEdge {
@@ -45,8 +45,8 @@ public class DirectedEdge {
   public static final String JSON_PROPERTY_END = "end";
   private Stop end;
 
-  public static final String JSON_PROPERTY_LINK = "link";
-  private String link;
+  public static final String JSON_PROPERTY_PREVIOUS_NAME = "previousName";
+  private String previousName;
 
   public DirectedEdge() { 
   }
@@ -103,29 +103,29 @@ public class DirectedEdge {
   }
 
 
-  public DirectedEdge link(String link) {
-    this.link = link;
+  public DirectedEdge previousName(String previousName) {
+    this.previousName = previousName;
     return this;
   }
 
    /**
-   * Get link
-   * @return link
+   * Get previousName
+   * @return previousName
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty(JSON_PROPERTY_LINK)
+  @JsonProperty(JSON_PROPERTY_PREVIOUS_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getLink() {
-    return link;
+  public String getPreviousName() {
+    return previousName;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LINK)
+  @JsonProperty(JSON_PROPERTY_PREVIOUS_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLink(String link) {
-    this.link = link;
+  public void setPreviousName(String previousName) {
+    this.previousName = previousName;
   }
 
 
@@ -143,12 +143,12 @@ public class DirectedEdge {
     DirectedEdge directedEdge = (DirectedEdge) o;
     return Objects.equals(this.start, directedEdge.start) &&
         Objects.equals(this.end, directedEdge.end) &&
-        Objects.equals(this.link, directedEdge.link);
+        Objects.equals(this.previousName, directedEdge.previousName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(start, end, link);
+    return Objects.hash(start, end, previousName);
   }
 
   @Override
@@ -157,7 +157,7 @@ public class DirectedEdge {
     sb.append("class DirectedEdge {\n");
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
+    sb.append("    previousName: ").append(toIndentedString(previousName)).append("\n");
     sb.append("}");
     return sb.toString();
   }

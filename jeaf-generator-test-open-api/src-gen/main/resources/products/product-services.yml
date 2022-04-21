@@ -28,15 +28,15 @@ servers:
       It can stand any load, until it crashes ;-)
 
 tags:
+  - name: Another Tag
+  - name: B Tag
+  - name: MasterData
+    description: >-
+      Tag marks all operations that are connected with Master Data.
   - name: Products
     description: >-
       Tag groups all product related operations together.
       url: https//jeaf.anaptecs.de/link1
-  - name: MasterData
-    description: >-
-      Tag marks all operations that are connected with Master Data.
-  - name: Another Tag
-  - name: B Tag
 
 paths:
   # ProductService
