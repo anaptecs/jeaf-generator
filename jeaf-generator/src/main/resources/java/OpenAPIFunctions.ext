@@ -264,7 +264,7 @@ List[uml::Element] getOrderedSchemaElements(JMM::OpenAPI3Specification spec) :
     spec.getOpenAPITypes().addAll(spec.getOpenAPIDataTypes().select(e|e.inline == false)).addAll(spec.getOpenAPIEnums()).toList().sortBy(e|e.name).sortBy(e|e.getOrderNumber());
     
 List[JMM::OpenAPITag] getOrderedOpenAPITags(JMM::OpenAPI3Specification spec) :
-    spec.clientDependency.supplier.typeSelect(JMM::OpenAPITag).toList().sortBy(e|e.name).sortBy(e|e.getOrderNumber());
+    spec.clientDependency.supplier.typeSelect(JMM::OpenAPITag).toList().sortBy(e|e.order);
     
 uml::EnumerationLiteral getDefaultLiteral(JMM::OpenAPIEnumeration enum) :
     enum.ownedLiteral.select(e|e.isStereotypeApplied("DefaultLiteral")).first();
