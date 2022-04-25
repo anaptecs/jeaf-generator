@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Set;
+
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
@@ -87,6 +89,18 @@ public abstract class ChildA extends ParentClass {
     public Builder setParentAttribute( String pParentAttribute ) {
       // Call super class implementation.
       super.setParentAttribute(pParentAttribute);
+      return this;
+    }
+
+    /**
+     * Method sets the association "ibans".
+     * 
+     * @param pIbans Collection with objects to which the association should be set.
+     */
+    @Override
+    public Builder setIbans( Set<IBAN> pIbans ) {
+      // Call super class implementation.
+      super.setIbans(pIbans);
       return this;
     }
 

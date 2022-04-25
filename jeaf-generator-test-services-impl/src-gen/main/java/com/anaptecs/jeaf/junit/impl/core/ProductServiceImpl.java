@@ -273,4 +273,15 @@ final class ProductServiceImpl extends ProductServiceImplBase {
     // TODO Implement method and return real result
     return null;
   }
+
+  /**
+   * 
+   * @param pIBAN
+   * @return {@link Boolean}
+   */
+  @Override
+  public boolean checkIBAN( String pIBAN ) {
+    // TODO Implement method and return real result
+    return false;
+  }
 }

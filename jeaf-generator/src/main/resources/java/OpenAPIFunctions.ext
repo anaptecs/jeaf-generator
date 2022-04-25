@@ -90,6 +90,22 @@ String getOpenAPIFormatForParam(uml::Parameter parameter):
 boolean hasOpenAPIFormatForParam(uml::Parameter parameter):
     getOpenAPIFormatForParam(parameter) != null;
     
+String getPatternForProperty(uml::Property property):
+  if property.isStereotypeApplied("OpenAPIPattern")
+  then ((JMM::OpenAPIPattern) property).pattern
+  else "";
+
+boolean hasPatternForProperty(uml::Property property):
+  property.isStereotypeApplied("OpenAPIPattern");
+    
+String getPatternForParam(uml::Parameter parameter):
+  if parameter.isStereotypeApplied("OpenAPIPattern")
+  then ((JMM::OpenAPIPattern) parameter).pattern
+  else "";
+
+boolean hasPatternForParam(uml::Parameter parameter):
+  parameter.isStereotypeApplied("OpenAPIPattern");
+    
 boolean isBasicOpenAPIType(uml::Type type):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.isBasicOpenAPIType(org.eclipse.uml2.uml.Type);
     

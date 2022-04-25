@@ -144,6 +144,18 @@ components:
       format: double
       nullable: false
 
+    # com.anaptecs.jeaf.junit.openapi.base.BankAccount
+    BankAccount:
+      type: object
+      additionalProperties: false
+      required:
+        - iban
+      properties:
+        iban:
+          type: string
+          pattern: '[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}'
+          nullable: false
+
     # com.anaptecs.jeaf.junit.openapi.base.BidirectA
     BidirectA:
       type: object
@@ -595,6 +607,12 @@ components:
           type: string
         parentAttribute:
           type: string
+          nullable: false
+        ibans:
+          type: array
+          items:
+            type: string
+            pattern: '^DE\d{2}\s?([0-9a-zA-Z]{4}\s?){4}[0-9a-zA-Z]{2}$'
           nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.Partner

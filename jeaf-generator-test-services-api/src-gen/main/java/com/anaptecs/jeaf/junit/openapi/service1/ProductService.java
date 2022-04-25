@@ -176,4 +176,11 @@ public interface ProductService extends Service {
    * @return {@link String}
    */
   String testChildBeanParameter( ChildBeanParameterType pChild );
+
+  /**
+   * 
+   * @param pIBAN
+   * @return {@link Boolean}
+   */
+  boolean checkIBAN( String pIBAN );
 }

@@ -148,6 +148,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testDeprectedComplexRequestBody( ) throws Exception;
 
   /**
+   * Method test the implementation of service method checkIBAN(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testCheckIBAN( ) throws Exception;
+
+  /**
    * Method test the implementation of service method testLocalBeanParamType(...)
    * 
    * @throws Exception if the test fails.

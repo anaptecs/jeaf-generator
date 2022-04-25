@@ -29,6 +29,8 @@ import com.anaptecs.jeaf.junit.openapi.base.serializers.FloatCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.FloatCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.FloatCodeTypeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.FloatCodeTypeSerializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.IBANDeserializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.IBANSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.IntegerCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.IntegerCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.IntegerCodeTypeDeserializer;
@@ -83,6 +85,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addDeserializer(FloatCode.class, new FloatCodeDeserializer());
     lModule.addSerializer(FloatCodeType.class, new FloatCodeTypeSerializer());
     lModule.addDeserializer(FloatCodeType.class, new FloatCodeTypeDeserializer());
+    lModule.addSerializer(IBAN.class, new IBANSerializer());
+    lModule.addDeserializer(IBAN.class, new IBANDeserializer());
     lModule.addSerializer(IntegerCode.class, new IntegerCodeSerializer());
     lModule.addDeserializer(IntegerCode.class, new IntegerCodeDeserializer());
     lModule.addSerializer(IntegerCodeType.class, new IntegerCodeTypeSerializer());

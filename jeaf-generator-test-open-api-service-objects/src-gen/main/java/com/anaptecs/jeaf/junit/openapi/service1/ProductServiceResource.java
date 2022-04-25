@@ -273,4 +273,15 @@ public class ProductServiceResource {
     String lResult = lService.testChildBeanParameter(pChild);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
+
+  /**
+   * {@link ProductService#checkIBAN()}
+   */
+  @Path("IBAN")
+  @POST
+  public Response checkIBAN( String pIBAN ) {
+    ProductService lService = JEAF.getService(ProductService.class);
+    boolean lResult = lService.checkIBAN(pIBAN);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
 }

@@ -17,6 +17,9 @@
               «IF attribute.hasOpenAPIFormatForProperty()-»
           format: «attribute.getOpenAPIFormatForProperty()»
               «ENDIF-»
+              «IF attribute.hasPatternForProperty() -»
+          pattern: '«attribute.getPatternForProperty()»'
+              «ENDIF-»
           «IF attribute.defaultValue != null -»
           default: «attribute.defaultValue.stringValue()»
           «ENDIF-»
@@ -35,6 +38,9 @@
             type: «attribute.type.getOpenAPIType(spec)»
               «IF attribute.hasOpenAPIFormatForProperty()-»
             format: «attribute.getOpenAPIFormatForProperty()»
+              «ENDIF-»
+              «IF attribute.hasPatternForProperty() -»
+            pattern: '«attribute.getPatternForProperty()»'
               «ENDIF-»
               «IF attribute.defaultValue != null -»
             default: «attribute.defaultValue.stringValue()»
@@ -72,6 +78,9 @@
       type: «attribute.type.getOpenAPIType(spec)»
       «IF attribute.hasOpenAPIFormatForProperty()-»
       format: «attribute.getOpenAPIFormatForProperty()»
+      «ENDIF-»
+      «IF attribute.hasPatternForProperty() -»
+      pattern: '«attribute.getPatternForProperty()»'
       «ENDIF-»
       «IF this.hasComment()-»
       description: >-
@@ -113,6 +122,9 @@
                   «IF attribute.hasOpenAPIFormatForProperty()-»
                 format: «attribute.getOpenAPIFormatForProperty()»
                   «ENDIF-»
+                  «IF attribute.hasPatternForProperty() -»
+                pattern: '«attribute.getPatternForProperty()»'
+                  «ENDIF-»
                   «IF attribute.defaultValue != null -»
                 default: «attribute.defaultValue.stringValue()»
                   «ENDIF-»
@@ -131,6 +143,9 @@
                   type: «attribute.type.getOpenAPIType(spec)»
                   «IF attribute.hasOpenAPIFormatForProperty()-»
                   format: «attribute.getOpenAPIFormatForProperty()»
+                  «ENDIF-»
+                  «IF attribute.hasPatternForProperty() -»
+                  pattern: '«attribute.getPatternForProperty()»'
                   «ENDIF-»
                   «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("            ") FOR attribute-»
                   «IF attribute.hasExample()-»

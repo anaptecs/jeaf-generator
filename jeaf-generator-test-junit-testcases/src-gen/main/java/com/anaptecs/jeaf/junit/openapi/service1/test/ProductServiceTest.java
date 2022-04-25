@@ -35,6 +35,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testAddCurrencies"));
     lSuite.addTest(new ProductServiceTest("testGetSortiment"));
     lSuite.addTest(new ProductServiceTest("testDeprectedComplexRequestBody"));
+    lSuite.addTest(new ProductServiceTest("testCheckIBAN"));
     lSuite.addTest(new ProductServiceTest("testTestLocalBeanParamType"));
     lSuite.addTest(new ProductServiceTest("testTestChildBeanParameter"));
     lSuite.addTest(new ProductServiceTest("testCreateChannelCode"));
@@ -226,6 +227,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testDeprectedComplexRequestBody( ) throws Exception {
     // TODO Implement test for service method deprectedComplexRequestBody(...)
+  }
+
+  /**
+   * Method test the implementation of service method checkIBAN
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testCheckIBAN( ) throws Exception {
+    // TODO Implement test for service method checkIBAN(...)
   }
 
   /**

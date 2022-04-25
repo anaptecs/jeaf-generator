@@ -97,7 +97,7 @@ public class JSONSerializationTest {
     ParentClass lParentClass = ParentClass.Builder.newBuilder().setParentAttribute("parent").build();
     JSONTools lTools = JSON.getJSONTools();
     String lValue = lTools.writeObjectToString(lParentClass);
-    assertEquals("{\"objectType\":\"ParentClass\",\"parentAttribute\":\"parent\"}", lValue);
+    assertEquals("{\"objectType\":\"ParentClass\",\"parentAttribute\":\"parent\",\"ibans\":[]}", lValue);
 
     ParentClass lDeserializedParent = lTools.read(lValue, ParentClass.class);
     assertEquals("parent", lParentClass.getParentAttribute());
@@ -105,7 +105,7 @@ public class JSONSerializationTest {
     ChildBB lChildBB = ChildBB.Builder.newBuilder().setChildBBAttribute(123456789l).build();
     lValue = lTools.writeObjectToString(lChildBB);
     assertEquals(
-        "{\"objectType\":\"ChildBB\",\"parentAttribute\":null,\"childBAttribute\":false,\"composition\":[],\"childBBAttribute\":123456789,\"deprecatedAttribute\":0,\"deprecatedBs\":[],\"deprecatedParent\":null,\"deprecatedArray\":null}",
+        "{\"objectType\":\"ChildBB\",\"parentAttribute\":null,\"ibans\":[],\"childBAttribute\":false,\"composition\":[],\"childBBAttribute\":123456789,\"deprecatedAttribute\":0,\"deprecatedBs\":[],\"deprecatedParent\":null,\"deprecatedArray\":null}",
         lValue);
 
     lDeserializedParent = lTools.read(lValue, ParentClass.class);
@@ -115,7 +115,7 @@ public class JSONSerializationTest {
     lChildBB.addToComposition(lChildAA);
     lValue = lTools.writeObjectToString(lChildBB);
     assertEquals(
-        "{\"objectType\":\"ChildBB\",\"parentAttribute\":null,\"childBAttribute\":false,\"composition\":[{\"objectType\":\"ChildAA\",\"parentAttribute\":null,\"childAAttribute\":4711,\"childAAAttribute\":0,\"sizedArray\":0,\"requiredArray\":null}],\"childBBAttribute\":123456789,\"deprecatedAttribute\":0,\"deprecatedBs\":[],\"deprecatedParent\":null,\"deprecatedArray\":null}",
+        "{\"objectType\":\"ChildBB\",\"parentAttribute\":null,\"ibans\":[],\"childBAttribute\":false,\"composition\":[{\"objectType\":\"ChildAA\",\"parentAttribute\":null,\"ibans\":[],\"childAAttribute\":4711,\"childAAAttribute\":0,\"sizedArray\":0,\"requiredArray\":null}],\"childBBAttribute\":123456789,\"deprecatedAttribute\":0,\"deprecatedBs\":[],\"deprecatedParent\":null,\"deprecatedArray\":null}",
         lValue);
 
     lDeserializedParent = lTools.read(lValue, ParentClass.class);

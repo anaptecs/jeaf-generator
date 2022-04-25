@@ -110,12 +110,18 @@ components:
           «IF parameter.hasOpenAPIFormatForProperty()-»
         format: «parameter.getOpenAPIFormatForProperty()»
           «ENDIF-»
+          «IF parameter.hasPatternForProperty() -»
+        pattern: '«parameter.getPatternForProperty()»'
+          «ENDIF-»
         «ELSE-»
         type: array
           items:
             type: «parameter.type.getOpenAPIType(this)»
           «IF parameter.hasOpenAPIFormatForProperty()-»
             format: «parameter.getOpenAPIFormatForProperty()»
+          «ENDIF-»
+          «IF parameter.hasPatternForProperty() -»
+            pattern: '«parameter.getPatternForProperty()»'
           «ENDIF-»
         «ENDIF-»
         «IF parameter.hasExample()-»
@@ -254,6 +260,9 @@ components:
             		«IF param.hasOpenAPIFormatForParam()-»
             format: «param.getOpenAPIFormatForParam()»
             		«ENDIF-»
+                    «IF param.hasPatternForParam() -»
+            pattern: '«param.getOpenAPIFormatForParam()»'
+                    «ENDIF-»
             	«ELSE-»
             type: array
             items:
@@ -261,6 +270,9 @@ components:
               		«IF param.hasOpenAPIFormatForParam()-»
               format: «param.getOpenAPIFormatForParam()»
               		«ENDIF-»
+                    «IF param.hasPatternForParam() -»
+              pattern: '«param.getPatternForParam()»'
+                    «ENDIF-»
             	«ENDIF-»
                 «IF param.hasExample()-»
                   «IF ((Example) param).exampleValue.length > 0-»
@@ -289,6 +301,9 @@ components:
             		«IF property.hasOpenAPIFormatForProperty()-»
             format: «property.getOpenAPIFormatForProperty()»
             		«ENDIF-»
+                    «IF property.hasPatternForProperty() -»
+            pattern: '«property.getPatternForProperty()»'
+                    «ENDIF-»
                     «IF property.defaultValue != null -»
             default: '«property.defaultValue.stringValue()»'
                     «ENDIF-»
@@ -299,6 +314,9 @@ components:
               		«IF property.hasOpenAPIFormatForProperty()-»
               format: «property.getOpenAPIFormatForProperty()»
               		«ENDIF-»
+                    «IF property.hasPatternForProperty() -»
+              pattern: '«property.getPatternForProperty()»'
+                    «ENDIF-»
             	«ENDIF -»
                 «IF property.hasExample()-»
                   «IF ((Example) property).exampleValue.length > 0-»
@@ -340,6 +358,9 @@ components:
                   «IF param.hasOpenAPIFormatForParam()-»
               format: «param.getOpenAPIFormatForParam()»
                   «ENDIF-»
+                    «IF param.hasPatternForParam() -»
+              pattern: '«param.getPatternForParam()»'
+                    «ENDIF-»
                   «IF param.isDeprecated() -»
               deprecated: true
                   «ENDIF-»                
@@ -350,6 +371,9 @@ components:
                   «IF param.hasOpenAPIFormatForParam()-»
                 format: «param.getOpenAPIFormatForParam()»
                   «ENDIF-»
+                    «IF param.hasPatternForParam() -»
+                pattern: '«param.getPatternForParam()»'
+                    «ENDIF-»
                   «IF param.isDeprecated() -»
                 deprecated: true
                   «ENDIF-»                
@@ -410,6 +434,9 @@ components:
                     «IF returnParam.hasOpenAPIFormatForParam()-»
                 format: «returnParam.getOpenAPIFormatForParam()»
                     «ENDIF-»
+                    «IF returnParam.hasPatternForParam() -»
+                pattern: '«returnParam.getPatternForParam()»'
+                    «ENDIF-»
                     «IF returnParam.isDeprecated() -»
                 deprecated: true
                     «ENDIF-»
@@ -419,6 +446,9 @@ components:
                   type: «returnParam.type.getOpenAPIType(this)»
                     «IF returnParam.hasOpenAPIFormatForParam()-»
                   format: «returnParam.getOpenAPIFormatForParam()»
+                    «ENDIF-»
+                    «IF returnParam.hasPatternForParam() -»
+                  pattern: '«returnParam.getPatternForParam()»'
                     «ENDIF-»
                   «ENDIF-»
                   «IF returnParam.hasExample()-»

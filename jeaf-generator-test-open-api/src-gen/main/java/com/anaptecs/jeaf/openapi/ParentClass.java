@@ -21,6 +21,8 @@ import com.fasterxml.jackson.annotation.JsonTypeId;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * ParentClass
  */
@@ -39,6 +41,9 @@ public class ParentClass {
 
   @JsonProperty("parentAttribute")
   private String parentAttribute = null;
+
+  @JsonProperty("ibans")
+  private List<String> ibans = null;
 
   public ParentClass objectType(String objectType) {
     this.objectType = objectType;
@@ -76,6 +81,32 @@ public class ParentClass {
     this.parentAttribute = parentAttribute;
   }
 
+  public ParentClass ibans(List<String> ibans) {
+    this.ibans = ibans;
+    return this;
+  }
+
+  public ParentClass addIbansItem(String ibansItem) {
+    if (this.ibans == null) {
+      this.ibans = new ArrayList<>();
+    }
+    this.ibans.add(ibansItem);
+    return this;
+  }
+
+   /**
+   * Get ibans
+   * @return ibans
+  **/
+  @Schema(description = "")
+  public List<String> getIbans() {
+    return ibans;
+  }
+
+  public void setIbans(List<String> ibans) {
+    this.ibans = ibans;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -87,12 +118,13 @@ public class ParentClass {
     }
     ParentClass parentClass = (ParentClass) o;
     return Objects.equals(this.objectType, parentClass.objectType) &&
-        Objects.equals(this.parentAttribute, parentClass.parentAttribute);
+        Objects.equals(this.parentAttribute, parentClass.parentAttribute) &&
+        Objects.equals(this.ibans, parentClass.ibans);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectType, parentAttribute);
+    return Objects.hash(objectType, parentAttribute, ibans);
   }
 
 
@@ -103,6 +135,7 @@ public class ParentClass {
     
     sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
     sb.append("    parentAttribute: ").append(toIndentedString(parentAttribute)).append("\n");
+    sb.append("    ibans: ").append(toIndentedString(ibans)).append("\n");
     sb.append("}");
     return sb.toString();
   }

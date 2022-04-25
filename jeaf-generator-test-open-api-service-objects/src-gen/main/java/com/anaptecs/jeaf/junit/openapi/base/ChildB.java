@@ -132,6 +132,18 @@ public class ChildB extends ParentClass {
     }
 
     /**
+     * Method sets the association "ibans".
+     * 
+     * @param pIbans Collection with objects to which the association should be set.
+     */
+    @Override
+    public Builder setIbans( Set<IBAN> pIbans ) {
+      // Call super class implementation.
+      super.setIbans(pIbans);
+      return this;
+    }
+
+    /**
      * Method sets the attribute "childBAttribute". A child attribute
      * 
      * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.

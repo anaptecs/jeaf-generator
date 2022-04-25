@@ -14,37 +14,35 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.anaptecs.jeaf.openapi.ParentClass;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.util.List;
 /**
- * single line class comment
+ * BankAccount
  */
-@Schema(description = "single line class comment")
 
-public class ChildA extends ParentClass {
-  @JsonProperty("childAAttribute")
-  private Integer childAAttribute = null;
 
-  public ChildA childAAttribute(Integer childAAttribute) {
-    this.childAAttribute = childAAttribute;
+public class BankAccount {
+  @JsonProperty("iban")
+  private String iban = null;
+
+  public BankAccount iban(String iban) {
+    this.iban = iban;
     return this;
   }
 
    /**
-   * Get childAAttribute
-   * @return childAAttribute
+   * Get iban
+   * @return iban
   **/
   @Schema(required = true, description = "")
-  public Integer getChildAAttribute() {
-    return childAAttribute;
+  public String getIban() {
+    return iban;
   }
 
-  public void setChildAAttribute(Integer childAAttribute) {
-    this.childAAttribute = childAAttribute;
+  public void setIban(String iban) {
+    this.iban = iban;
   }
 
 
@@ -56,23 +54,22 @@ public class ChildA extends ParentClass {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ChildA childA = (ChildA) o;
-    return Objects.equals(this.childAAttribute, childA.childAAttribute) &&
-        super.equals(o);
+    BankAccount bankAccount = (BankAccount) o;
+    return Objects.equals(this.iban, bankAccount.iban);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(childAAttribute, super.hashCode());
+    return Objects.hash(iban);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ChildA {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    childAAttribute: ").append(toIndentedString(childAAttribute)).append("\n");
+    sb.append("class BankAccount {\n");
+    
+    sb.append("    iban: ").append(toIndentedString(iban)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -24,6 +24,8 @@ abstract class ProductServiceImplBase implements ProductService, ServiceImplemen
   public static final String ADDCURRENCIES_AUTH_TYPE =
       "addCurrencies.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 
+  public static final String CHECKIBAN_AUTH_TYPE = "checkIBAN.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
   public static final String CREATECHANNELCODEFROMOBJECT_AUTH_TYPE =
       "createChannelCodeFromObject.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 

@@ -87,6 +87,9 @@
               «IF attribute.hasOpenAPIFormatForProperty()-»
           format: «attribute.getOpenAPIFormatForProperty()»
               «ENDIF-»
+              «IF attribute.hasPatternForProperty() -»
+          pattern: '«attribute.getPatternForProperty()»'
+              «ENDIF-»
           «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»    
               «IF attribute.isDeprecated() -»
           deprecated: true
@@ -101,6 +104,9 @@
             type: «attribute.type.getOpenAPIType(spec)»
               «IF attribute.hasOpenAPIFormatForProperty()-»
             format: «attribute.getOpenAPIFormatForProperty()»
+              «ENDIF-»
+              «IF attribute.hasPatternForProperty() -»
+            pattern: '«attribute.getPatternForProperty()»'
               «ENDIF-»
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»              
               «IF attribute.isDeprecated() -»
@@ -213,6 +219,9 @@
               «IF attribute.hasOpenAPIFormatForProperty()-»
               format: «attribute.getOpenAPIFormatForProperty()»
               «ENDIF-»
+              «IF attribute.hasPatternForProperty() -»
+              pattern: '«attribute.getPatternForProperty()»'
+              «ENDIF-»
               «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR attribute-»    
               «IF attribute.isDeprecated() -»
               deprecated: true
@@ -235,6 +244,9 @@
                 type: «attribute.type.getOpenAPIType(spec)»
               «IF attribute.hasOpenAPIFormatForProperty()-»
                 format: «attribute.getOpenAPIFormatForProperty()»
+              «ENDIF-»
+              «IF attribute.hasPatternForProperty() -»
+                pattern: '«attribute.getPatternForProperty()»'
               «ENDIF-»
               «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR attribute-»              
               «IF attribute.isDeprecated() -»

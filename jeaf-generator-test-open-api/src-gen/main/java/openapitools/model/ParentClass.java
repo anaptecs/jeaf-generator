@@ -26,6 +26,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 import openapitools.model.ChildA;
 import openapitools.model.ChildAA;
 import openapitools.model.ChildB;
@@ -39,7 +41,8 @@ import openapitools.JSON;
  */
 @JsonPropertyOrder({
   ParentClass.JSON_PROPERTY_OBJECT_TYPE,
-  ParentClass.JSON_PROPERTY_PARENT_ATTRIBUTE
+  ParentClass.JSON_PROPERTY_PARENT_ATTRIBUTE,
+  ParentClass.JSON_PROPERTY_IBANS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
@@ -56,6 +59,9 @@ public class ParentClass {
 
   public static final String JSON_PROPERTY_PARENT_ATTRIBUTE = "parentAttribute";
   private String parentAttribute;
+
+  public static final String JSON_PROPERTY_IBANS = "ibans";
+  private List<String> ibans = null;
 
   public ParentClass() { 
   }
@@ -112,6 +118,40 @@ public class ParentClass {
   }
 
 
+  public ParentClass ibans(List<String> ibans) {
+    this.ibans = ibans;
+    return this;
+  }
+
+  public ParentClass addIbansItem(String ibansItem) {
+    if (this.ibans == null) {
+      this.ibans = new ArrayList<>();
+    }
+    this.ibans.add(ibansItem);
+    return this;
+  }
+
+   /**
+   * Get ibans
+   * @return ibans
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_IBANS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getIbans() {
+    return ibans;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IBANS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIbans(List<String> ibans) {
+    this.ibans = ibans;
+  }
+
+
   /**
    * Return true if this ParentClass object is equal to o.
    */
@@ -125,12 +165,13 @@ public class ParentClass {
     }
     ParentClass parentClass = (ParentClass) o;
     return Objects.equals(this.objectType, parentClass.objectType) &&
-        Objects.equals(this.parentAttribute, parentClass.parentAttribute);
+        Objects.equals(this.parentAttribute, parentClass.parentAttribute) &&
+        Objects.equals(this.ibans, parentClass.ibans);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectType, parentAttribute);
+    return Objects.hash(objectType, parentAttribute, ibans);
   }
 
   @Override
@@ -139,6 +180,7 @@ public class ParentClass {
     sb.append("class ParentClass {\n");
     sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
     sb.append("    parentAttribute: ").append(toIndentedString(parentAttribute)).append("\n");
+    sb.append("    ibans: ").append(toIndentedString(ibans)).append("\n");
     sb.append("}");
     return sb.toString();
   }
