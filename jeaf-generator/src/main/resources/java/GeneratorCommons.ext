@@ -143,8 +143,11 @@ cached boolean isPort(uml::Property property):
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isPort(org.eclipse.uml2.uml.Property);
     
 cached boolean runChecks(uml::NamedElement element):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.runChecks(org.eclipse.uml2.uml.NamedElement);
+    runChecks(element, "");
 
+cached boolean runChecks(uml::NamedElement element, String stereotype):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.runChecks(org.eclipse.uml2.uml.NamedElement, java.lang.String);
+    
 cached boolean isCharSequence(uml::Type type):
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isCharSequence(org.eclipse.uml2.uml.Type);
 

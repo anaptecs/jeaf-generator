@@ -912,12 +912,13 @@ public class GeneratorCommons {
     return lIsPort;
   }
 
-  public static boolean runChecks( NamedElement pElement ) {
+  public static boolean runChecks( NamedElement pElement, String pStereotype ) {
     boolean lRunChecks = false;
     Package lPackage = pElement.getNearestPackage();
     NamedElement lOwner = (NamedElement) pElement.getOwner();
 
-    if (GeneratorCommons.isInGeneratorWhitelist(lPackage) == true) {
+    if (GeneratorCommons.shouldStereotypeBeChecked(pStereotype) == true
+        && GeneratorCommons.isInGeneratorWhitelist(lPackage) == true) {
       String lOwnerName = Naming.getFullyQualifiedName(lOwner);
       String lElementName = pElement.getName();
       String lFQN;
@@ -957,6 +958,7 @@ public class GeneratorCommons {
 
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "ServiceObject");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "POJO");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPI3Specification");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPIType");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPIDataType");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPISecurityScheme");
@@ -999,6 +1001,54 @@ public class GeneratorCommons {
     // Nothing to do as element is not included in white list.
     else {
     }
+    return lRunChecks;
+  }
+
+  public static boolean shouldStereotypeBeChecked( String pStereotype ) {
+    boolean lRunChecks;
+    if ("POJO".equals(pStereotype)) {
+      lRunChecks = generatePOJOs();
+    }
+    else if ("OpenAPIType".equals(pStereotype) || "OpenAPIDataType".equals(pStereotype)
+        || "OpenAPI3Specification".equals(pStereotype) || "ErrorResponse".equals(pStereotype)) {
+      lRunChecks = generateOpenAPISpec();
+    }
+    // JEAFEnumeration
+    else if ("JEAFEnumeration".equals(pStereotype)) {
+      lRunChecks = generateServiceObjects() | generatePOJOs() | generateDomainObjects();
+    }
+    // JEAFComponent
+    else if ("JEAFComponent".equals(pStereotype)) {
+      lRunChecks = generateComponentImplClasses() | generateComponentRuntimeClasses();
+    }
+    // DomainObject
+    else if ("DomainObject".equals(pStereotype)) {
+      lRunChecks = generateDomainObjects();
+    }
+    // PersistentObject
+    else if ("PersistentObject".equals(pStereotype)) {
+      lRunChecks = generatePersistentObjects();
+    }
+    // ServiceObject, QueryObject
+    else if ("ServiceObject".equals(pStereotype) || "QueryObject".equals(pStereotype)) {
+      lRunChecks = generateServiceObjects();
+    }
+    // JEAFService
+    else if ("JEAFService".equals(pStereotype)) {
+      lRunChecks = generateServices() || generateServiceProxies();
+    }
+    // JEAFActivity
+    else if ("JEAFActivity".equals(pStereotype)) {
+      lRunChecks = generateActivityInterfaces() | generateActivityImpls();
+    }
+    // RESTOperation
+    else if ("RESTOperation".equals(pStereotype)) {
+      lRunChecks = generateRESTResources() | generateOpenAPISpec();
+    }
+    else {
+      lRunChecks = true;
+    }
+
     return lRunChecks;
   }
 

@@ -10,44 +10,46 @@ extension java::OpenAPIFunctions;
 
 context Model if this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).size > 0 ERROR "Error: JEAF Generator expects JEAF Meta Model (JMM) revision 71 or higher. Please update your UML project to a newer version of JMM. Your current revision is: " + this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision: this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision >= 71;
 
-context JEAFComponent if runChecks() ERROR "Error: No layer defined for JEAF Component " + this.name : layer != null;
+context JEAFComponent if runChecks("JEAFComponent") ERROR "Error: No layer defined for JEAF Component " + this.name : layer != null;
 
-context ServiceObject if runChecks() ERROR "Error: Service Object " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context ServiceObject if runChecks() ERROR "Error: Service Object " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
+context ServiceObject if runChecks("ServiceObject") ERROR "Error: Service Object " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
+context ServiceObject if runChecks("ServiceObject") ERROR "Error: Service Object " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
 
-context POJO if runChecks() ERROR "Error: POJO " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context POJO if runChecks() ERROR "Error: POJO " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
+context POJO if runChecks("POJO") ERROR "Error: POJO " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
+context POJO if runChecks("POJO") ERROR "Error: POJO " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
 
-context OpenAPIType if runChecks() ERROR "Error: OpenAPI Type " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context OpenAPIType if runChecks() ERROR "Error: OpenAPI Type " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
+context OpenAPIType if runChecks("OpenAPIType") ERROR "Error: OpenAPI Type " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
+context OpenAPIType if runChecks("OpenAPIType") ERROR "Error: OpenAPI Type " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
 
-context DomainObject if runChecks() ERROR "Error: Domain Object " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context DomainObject if runChecks() ERROR "Error: Domain Object " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
+context OpenAPIDataType if runChecks("OpenDataAPIType") ERROR "Error: OpenAPI Data Type " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
 
-context PersistentObject if runChecks() ERROR "Error: Persistent Object " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context PersistentObject if runChecks() ERROR "Error: Persistent Object " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
+context DomainObject if runChecks("DomainObject") ERROR "Error: Domain Object " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
+context DomainObject if runChecks("DomainObject") ERROR "Error: Domain Object " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
 
-context JEAFService if runChecks() ERROR "Error: Service " + name+ " has method with unsupported return type. Please ensure that all methods have a real return type and that no arrays of primitive types returned (" + fqn() + ")": ownedOperation.forAll( e | e.isSupportedReturnType() == true);
+context PersistentObject if runChecks("PersistentObject") ERROR "Error: Persistent Object " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
+context PersistentObject if runChecks("PersistentObject") ERROR "Error: Persistent Object " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
 
-context ServiceObject if runChecks() ERROR "Error: Service Object " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
-context ServiceObject if runChecks() ERROR "Error: Service Object " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
+context JEAFService if runChecks("JEAFService") ERROR "Error: Service " + name+ " has method with unsupported return type. Please ensure that all methods have a real return type and that no arrays of primitive types returned (" + fqn() + ")": ownedOperation.forAll( e | e.isSupportedReturnType() == true);
+
+context ServiceObject if runChecks("ServiceObject") ERROR "Error: Service Object " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
+context ServiceObject if runChecks("ServiceObject") ERROR "Error: Service Object " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
 
 
-context DomainObject if runChecks() ERROR "Error: Domain Object " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
-context DomainObject if runChecks() ERROR "Error: Domain Object " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
+context DomainObject if runChecks("DomainObject") ERROR "Error: Domain Object " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
+context DomainObject if runChecks("DomainObject") ERROR "Error: Domain Object " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
 
-context PersistentObject if runChecks() ERROR "Error: Persistent Object " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
-context PersistentObject if runChecks() ERROR "Error: Persistent Object " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
+context PersistentObject if runChecks("PersistentObject") ERROR "Error: Persistent Object " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
+context PersistentObject if runChecks("PersistentObject") ERROR "Error: Persistent Object " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
 
 context Operation if runChecks() ERROR "Error: Method " + name + " has parameter(s) without type.": hasOnlySupportedParamaterTypes() == true;
 context Operation if runChecks() ERROR "Error: Method " + name + " (...) of class " + ((NamedElement)this.owner).fqn() + " does not have a valid return type": hasReturnType() == true;
 
-context ServiceObject if runChecks() WARNING "Warning: <<ServiceObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context POJO if runChecks() WARNING "Warning: <<POJO>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context JEAFEnumeration if runChecks() WARNING "Warning: <<JEAFEnumeration>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context DomainObject if runChecks() WARNING "Warning: <<DomainObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context QueryObject if runChecks() WARNING "Warning: <<QueryObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context JEAFService if runChecks() WARNING "Warning: <<JEAFService>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context OpenAPIType if runChecks() WARNING "Warning: <<OpenAPIType>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context ServiceObject if runChecks("ServiceObject") WARNING "Warning: <<ServiceObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context POJO if runChecks("POJO") WARNING "Warning: <<POJO>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context JEAFEnumeration if runChecks("JEAFEnumeration") WARNING "Warning: <<JEAFEnumeration>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context DomainObject if runChecks("DomainObject") WARNING "Warning: <<DomainObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context QueryObject if runChecks("QueryObject") WARNING "Warning: <<QueryObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context JEAFService if runChecks("JEAFService") WARNING "Warning: <<JEAFService>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context OpenAPIType if runChecks("OpenAPIType") WARNING "Warning: <<OpenAPIType>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
 
-context JEAFActivity if runChecks() ERROR "Error: <<JEAFActivity>> must define exactly one return parameter " + name + " (" + fqn() + "). Activity has " + this.getReturnParameterCount()+ " return parameters.": this.getReturnParameterCount()  == 1;
+context JEAFActivity if runChecks("JEAFActivity") ERROR "Error: <<JEAFActivity>> must define exactly one return parameter " + name + " (" + fqn() + "). Activity has " + this.getReturnParameterCount()+ " return parameters.": this.getReturnParameterCount()  == 1;
