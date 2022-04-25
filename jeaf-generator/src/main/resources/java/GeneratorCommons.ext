@@ -235,4 +235,9 @@ cached boolean isDoubleType(uml::Type type) :
   type.fqn() == "java.lang.Double" || type.fqn() == "Double" || type.fqn() == "double"; 
 
 
+cached boolean isTargetRuntimeJEAF():
+  JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isTargetRuntimeJEAF();
+  
+cached boolean isTargetRuntimeSpring():
+  JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isTargetRuntimeSpring();
   

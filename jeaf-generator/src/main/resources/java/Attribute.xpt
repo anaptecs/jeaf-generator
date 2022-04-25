@@ -255,8 +255,10 @@
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public void addTo«name.toFirstUpper()» («this.type.fqn()» «asParameter()») {
+        «IF isTargetRuntimeJEAF()»
         // Check parameter "«asParameter()»" for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
+        «ENDIF»
         
 	    «IF opposite != null && opposite.isNavigable() == true»
 	        «IF opposite.isMultivalued() == false»
@@ -280,8 +282,10 @@
      */
   «EXPAND java::Helper::GenerateDeprecationAnnotation-»
   public void addTo«name.toFirstUpper()» (java.util.Collection<«this.type.fqn()»> «asParameter()») {
+        «IF isTargetRuntimeJEAF()»
         // Check parameter "«asParameter()»" for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
+        «ENDIF»
         
         // Add all passed objects.
         for («this.type.fqn()» lNextObject : «asParameter()») {
@@ -298,8 +302,10 @@
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public void removeFrom«name.toFirstUpper()» («type.fqn()» «asParameter()») {
+        «IF isTargetRuntimeJEAF()»
         // Check parameter for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
+        «ENDIF»
 
         // Remove passed object from collection of associated «this.type.name» objects.
 		«asInstanceVar()».remove(«asParameter()»);

@@ -47,6 +47,7 @@ import org.twdata.maven.mojoexecutor.MojoExecutor;
 import org.twdata.maven.mojoexecutor.MojoExecutor.Element;
 import org.twdata.maven.mojoexecutor.MojoExecutor.ExecutionEnvironment;
 
+import com.anaptecs.jeaf.fwk.generator.util.TargetRuntime;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ConversionResult;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ExcelToMessageResourceConverter;
 import com.anaptecs.jeaf.fwk.tools.message.generator.MessageConstantsGenerator;
@@ -387,6 +388,13 @@ public class GeneratorMojo extends AbstractMojo {
   private String generationComment = "";
 
   /**
+   * Parameter can be used to define the target runtime environment for which code should be generated. Currently JEAF
+   * and Spring are supported. Valid values are (case-sensitive): "JEAF", "SPRING"
+   */
+  @Parameter(required = false, defaultValue = "JEAF")
+  private TargetRuntime targetRuntime;
+
+  /**
    * Switch defines whether a message constants should be generated from resource files or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -586,6 +594,8 @@ public class GeneratorMojo extends AbstractMojo {
     lLog.info("res:                                              " + resourceDirectory);
     lLog.info("res-gen:                                          " + resourceGenDirectory);
     lLog.info(" ");
+    lLog.info("Target Runtime:                                   " + targetRuntime.name());
+    lLog.info(" ");
     lLog.info("Code-Style:                                       " + xmlFormatterStyleFile);
     lLog.info("Package Whitelist:                                " + this.getPackageWhitelist());
     String lIgnoredResources = Tools.getCollectionTools().toString(ignoredResourceFiles, ", ");
@@ -770,6 +780,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.enable.json.semver", enableSemVerForJSON.toString());
       System.setProperty("switch.gen.json.serializers", generateJSONSerializers.toString());
       System.setProperty("switch.gen.enable.name.constants", generateConstantsForAttributeNames.toString());
+      System.setProperty("switch.gen.target.runtime", targetRuntime.name());
 
       System.setProperty("switch.gen.suppress.warnings", suppressWarnings.stream().collect(Collectors.joining("; ")));
       System.setProperty("switch.gen.suppress.all.warnings", suppressAllWarnings.toString());

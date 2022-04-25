@@ -20,7 +20,7 @@ package «packageName()»;
 
 «this.getJavadoc()»
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-public interface «name» «IF generalization.size > 0»extends «this.getAllExtendedInterfaces()» «ELSE»extends com.anaptecs.jeaf.core.api.Service«ENDIF» {
+public interface «name» «IF generalization.size > 0»extends «this.getAllExtendedInterfaces()» «ELSE»«IF isTargetRuntimeJEAF()»extends com.anaptecs.jeaf.core.api.Service«ENDIF»«ENDIF» {
   «EXPAND JEAFOperation::InterfaceOperation FOREACH ownedOperation»
 }
 «ENDFILE»

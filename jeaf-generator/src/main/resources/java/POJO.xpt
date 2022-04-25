@@ -85,8 +85,10 @@
 						// Call constructor of super class.
 						super(pBuilder);
 						«ELSE»
+						«IF isTargetRuntimeJEAF()»
 						// Ensure that builder is not null.
 						com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+						«ENDIF»
 						«ENDIF»
 						«IF needsToImplementIdentifiable() == true»
 						// Read object ID.
@@ -209,8 +211,10 @@
 					// Call constructor of super class.
 					super(pBuilder);
 					«ELSE»
+					«IF isTargetRuntimeJEAF()»
 					// Ensure that builder is not null.
 					com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+					«ENDIF»
 					«ENDIF»
 					«IF needsToImplementIdentifiable() == true»
 					// Read object ID.

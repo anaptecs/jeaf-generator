@@ -189,6 +189,8 @@ public class GeneratorCommons {
 
   public static final String ADD_GENERATION_TIMESTAMP = "switch.gen.add.generation.timestamp";
 
+  public static final String TARGET_RUNTIME = "switch.gen.target.runtime";
+
   public static final String GENERATION_COMMENT = "switch.gen.generation.comment";
 
   public static final String VALIDATION_ANNOTATION_FOR_ATTRIBUTES =
@@ -1032,4 +1034,27 @@ public class GeneratorCommons {
     String lFullyQualifiedName = Naming.getFullyQualifiedName(pTypedElement);
     return BOOLEAN_ANNOTATION_CLASSES.contains(lFullyQualifiedName);
   }
+
+  public static TargetRuntime getTargetRuntime( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    String lValue = lConfiguration.getConfigurationValue(TARGET_RUNTIME, false, String.class);
+    TargetRuntime lTargetRuntime;
+    if (lValue != null) {
+      lTargetRuntime = TargetRuntime.valueOf(lValue.toUpperCase());
+    }
+    else {
+      lTargetRuntime = TargetRuntime.JEAF;
+    }
+
+    return lTargetRuntime;
+  }
+
+  public static boolean isTargetRuntimeJEAF( ) {
+    return getTargetRuntime() == TargetRuntime.JEAF;
+  }
+
+  public static boolean isTargetRuntimeSpring( ) {
+    return getTargetRuntime() == TargetRuntime.SPRING;
+  }
+
 }

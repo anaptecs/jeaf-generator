@@ -110,6 +110,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF superCla
 	  return new «this.name»(this);
 	}
 
+	«IF isTargetRuntimeJEAF()»
 	/**
 	 * Method creates a new validated instance of class «this.name». The object will be initialized with the values of the
 	 * builder and validated afterwards.
@@ -123,6 +124,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF superCla
       return lPOJO;
 	}
 	«ENDIF»
+	«ENDIF»
 }
 «ENDDEFINE»
 
@@ -130,7 +132,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF superCla
 /**
  * Class implements builder to create a new instance of class «this.name». As the class has read only attributes or associations instances can not be created directly. Instead this builder class has to be used.
  */
-public static abstract class BuilderBase «IF superClass.isEmpty == false && superClass.get(0).hasReadOnlyProperties()== true»extends «superClass.get(0).fqn()».Builder«ENDIF» {
+public static abstract class BuilderBase «IF superClass.isEmpty == false»extends «superClass.get(0).fqn()».Builder«ENDIF» {
 	«REM»Generate instance variables for each property«ENDREM»
 	«IF needsToImplementIdentifiable() == true»
 	/**
@@ -207,6 +209,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false && supe
 	  return new «this.name»(this);
 	}
 
+	«IF isTargetRuntimeJEAF()»
 	/**
 	 * Method creates a new validated instance of class «this.name». The object will be initialized with the values of the
 	 * builder and validated afterwards.
@@ -219,6 +222,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false && supe
       com.anaptecs.jeaf.tools.api.Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
 	}
+	«ENDIF»
 	«ENDIF»
 }
 «ENDDEFINE»
