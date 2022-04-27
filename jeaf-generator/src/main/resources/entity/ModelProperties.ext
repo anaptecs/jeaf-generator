@@ -24,5 +24,18 @@ String initValue(Property p) : p.defaultValue.stringValue();
 
 List getSubclasses(Class e) :
    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getSubclasses(org.eclipse.uml2.uml.Class);
+   
+
+InstanceValue getDefaultValueForEnum(Parameter param):
+  param.ownedElement.typeSelect(InstanceValue).first().stringValue();
+
+boolean hasDefaultValueForEnum(Parameter param):
+  !param.ownedElement.typeSelect(InstanceValue).isEmpty;
 
 
+InstanceValue getDefaultValueForBasicType(Parameter param):
+  param.ownedElement.typeSelect(LiteralSpecification).first().stringValue();
+
+boolean hasDefaultValueForBasicType(Parameter param):
+  !param.ownedElement.typeSelect(LiteralSpecification).isEmpty;
+  

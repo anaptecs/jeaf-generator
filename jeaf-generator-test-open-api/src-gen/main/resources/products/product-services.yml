@@ -135,6 +135,7 @@ paths:
           required: true
           schema:
             type: string
+            minLength: 1
             example: '1234-345'
       responses:
         '200':

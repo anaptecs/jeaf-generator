@@ -1,6 +1,7 @@
 «EXTENSION java::Naming»
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::OpenAPIFunctions»
+«EXTENSION entity::ModelProperties»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -215,7 +216,7 @@ components:
   # «service.name»
   «ENDIF-»
   «FOREACH service.getPaths() AS path-»
-  «IF service.path.length > 0»«service.path»«ELSE»/«ENDIF»«IF path.length > 0»/«path»«ENDIF»:
+  «IF service.path.length > 0»«service.path»«ENDIF»«IF path.length > 0»/«path»«ENDIF»:
     «FOREACH service.getRESTOperations(path) AS operation-»
     «FOREACH operation.httpMethods AS httpMethod-»
     «httpMethod.toString().toLowerCase()»:
@@ -243,44 +244,6 @@ components:
       «REM»Process REST request paramaters«ENDREM-»
       «IF operation.hasOpenAPIInputParameters() || operation.hasBeanParameters()-»
       parameters:
-        «REM»Process normal paramaters«ENDREM-»
-        «FOREACH operation.getOpenAPIInputParameters() AS param-»
-        - name: «EXPAND RESTParamName FOR param»
-          in: «param.getOpenAPIParameterType()»
-          description: >-
-            «IF param.hasComment()»«param.getCommentForOpenAPIDescription("            ")»«ELSE»TODO Please add comment«ENDIF»
-          required: «param.isRequired()»
-          «IF param.isDeprecated() -»
-          deprecated: true
-          «ENDIF-»
-          schema:
-            «IF param.type.isBasicOpenAPIType() == true-»
-            	«IF param.isMultivalued() == false-»
-            type: «param.type.getOpenAPIType(this)»
-            		«IF param.hasOpenAPIFormatForParam()-»
-            format: «param.getOpenAPIFormatForParam()»
-            		«ENDIF-»
-                    «IF param.hasPatternForParam() -»
-            pattern: '«param.getOpenAPIFormatForParam()»'
-                    «ENDIF-»
-            	«ELSE-»
-            type: array
-            items:
-              type: «param.type.getOpenAPIType(this)»
-              		«IF param.hasOpenAPIFormatForParam()-»
-              format: «param.getOpenAPIFormatForParam()»
-              		«ENDIF-»
-                    «IF param.hasPatternForParam() -»
-              pattern: '«param.getPatternForParam()»'
-                    «ENDIF-»
-            	«ENDIF-»
-                «IF param.hasExample()-»
-                  «IF ((Example) param).exampleValue.length > 0-»
-            example: '«((Example) param).exampleValue»'
-                  «ENDIF-»
-                «ENDIF-»
-            «ENDIF-»
-        «ENDFOREACH-»
         «REM»Process bean paramaters«ENDREM-»
         «FOREACH operation.getBeanParams() AS param-»
         «FOREACH param.type.getOpenAPIProperties() AS property-»
@@ -333,6 +296,98 @@ components:
         - $ref: «property.getOpenAPIParameter(this)»
         «ENDIF-»
         «ENDFOREACH-»
+        «ENDFOREACH-»
+        «REM»Process normal paramaters«ENDREM-»
+        «FOREACH operation.getOpenAPIInputParameters() AS param-»
+        - name: «EXPAND RESTParamName FOR param»
+          in: «param.getOpenAPIParameterType()»
+          description: >-
+            «IF param.hasComment()»«param.getCommentForOpenAPIDescription("            ")»«ELSE»TODO Please add comment«ENDIF»
+          required: «param.isRequired()»
+          «IF param.isDeprecated() -»
+          deprecated: true
+          «ENDIF-»
+          schema:
+            «IF param.type.isBasicOpenAPIType() == true-»
+            	«IF param.isMultivalued() == false-»
+            type: «param.type.getOpenAPIType(this)»
+            		«IF param.hasOpenAPIFormatForParam()-»
+            format: «param.getOpenAPIFormatForParam()»
+            		«ENDIF-»
+                    «IF param.hasPatternForParam() -»
+            pattern: '«param.getOpenAPIFormatForParam()»'
+                    «ENDIF-»
+			«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
+                  «IF param.hasDefaultValueForBasicType() -»
+            default: «param.getDefaultValueForBasicType()»
+                  «ENDIF-»
+            	«ELSE-»
+            type: array
+            items:
+              type: «param.type.getOpenAPIType(this)»
+              		«IF param.hasOpenAPIFormatForParam()-»
+              format: «param.getOpenAPIFormatForParam()»
+              		«ENDIF-»
+                    «IF param.hasPatternForParam() -»
+              pattern: '«param.getPatternForParam()»'
+                    «ENDIF-»
+              «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR param-»
+            	«ENDIF-»
+                «IF param.hasExample()-»
+                  «IF ((Example) param).exampleValue.length > 0-»
+            example: '«((Example) param).exampleValue»'
+                  «ENDIF-»
+                «ENDIF-»
+            «ELSE-»
+              «IF param.isOpenAPIEnum()-»
+                «LET ((JMM::OpenAPIEnumeration) param.type) AS enum -» 
+                «IF param.isMultivalued() == false -»
+            type: string
+                  «IF param.hasDefaultValueForEnum() -»
+            default: «param.getDefaultValueForEnum()»
+                  «ENDIF-»
+                  «IF enum.extensibleEnum == true-»
+            x-extensible-enum:
+                  «ELSE-»
+            enum:
+                  «ENDIF-»
+                  «FOREACH enum.ownedLiteral AS literal-»        
+                  «IF literal.hasComment()-»
+              # «literal.getYAMLStyleComment("        ")»
+                  «ENDIF-»
+                  «IF literal.isDeprecated() -»
+              # Literal "«literal.name»" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
+                  «ENDIF-»
+              - «literal.name»
+                  «ENDFOREACH-»
+                «ELSE-»
+            type: array
+                  «IF param.hasDefaultValueForEnum() -»
+            default: [«param.getDefaultValueForEnum()»]
+                  «ENDIF-»
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
+            items:
+              type: string
+                  «IF enum.extensibleEnum == true-»
+              x-extensible-enum:
+                  «ELSE-»
+              enum:
+                  «ENDIF-»
+                  «FOREACH enum.ownedLiteral AS literal-»        
+                  «IF literal.hasComment()-»
+                # «literal.getYAMLStyleComment("        ")»
+                  «ENDIF-»
+                  «IF literal.isDeprecated() -»
+                # Literal "«literal.name»" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
+                  «ENDIF-»
+                - «literal.name»
+                  «ENDFOREACH-»
+                «ENDIF-»
+                «ENDLET-»
+              «ELSE-»
+            # Complex type are not supported as inline parameters
+              «ENDIF-»              
+            «ENDIF-»
         «ENDFOREACH-»
       «ENDIF-»
       «REM»Process request body«ENDREM-»
