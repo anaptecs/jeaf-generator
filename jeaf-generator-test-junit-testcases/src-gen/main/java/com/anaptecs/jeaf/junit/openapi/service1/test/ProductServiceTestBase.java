@@ -127,6 +127,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testTestCodeTypeUsage( ) throws Exception;
 
   /**
+   * Method test the implementation of service method getDefaultChannel(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testGetDefaultChannel( ) throws Exception;
+
+  /**
    * Method test the implementation of service method addCurrencies(...)
    * 
    * @throws Exception if the test fails.
@@ -160,6 +167,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testTestLocalBeanParamType( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method getChannels(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testGetChannels( ) throws Exception;
 
   /**
    * Method test the implementation of service method testChildBeanParameter(...)

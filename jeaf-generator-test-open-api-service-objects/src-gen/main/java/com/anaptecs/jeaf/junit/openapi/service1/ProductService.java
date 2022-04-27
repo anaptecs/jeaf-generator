@@ -12,7 +12,9 @@ import javax.validation.constraints.NotEmpty;
 
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
+import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
+import com.anaptecs.jeaf.junit.openapi.base.ChannelType;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
@@ -183,4 +185,18 @@ public interface ProductService extends Service {
    * @return {@link Boolean}
    */
   boolean checkIBAN( String pIBAN );
+
+  /**
+   * 
+   * @param pChannelTypes
+   * @return {@link Channel}
+   */
+  List<Channel> getChannels( List<ChannelType> pChannelTypes );
+
+  /**
+   * 
+   * @param pChannelType
+   * @return {@link Channel}
+   */
+  Channel getDefaultChannel( ChannelType pChannelType );
 }

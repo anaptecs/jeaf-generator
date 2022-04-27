@@ -1,6 +1,7 @@
 «EXTENSION java::Naming»
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::OpenAPIFunctions»
+«EXTENSION entity::ModelProperties»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -133,6 +134,12 @@ public class «name»Resource {
   «IF this.type.isStereotypeApplied("BeanParam") -»
   @javax.ws.rs.BeanParam
   «ENDIF-»
+  «IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()»
+  @javax.ws.rs.DefaultValue("«this.getDefaultValueForEnum()»")
+  «ENDIF»
+  «IF this.type.isBasicType() && this.hasDefaultValueForBasicType()»
+  @javax.ws.rs.DefaultValue("«this.getDefaultValueForBasicType()»")
+  «ENDIF»
 
   «EXPAND java::Helper::GenerateDeprecationAnnotation»
   «this.getTypeName()» «this.name»

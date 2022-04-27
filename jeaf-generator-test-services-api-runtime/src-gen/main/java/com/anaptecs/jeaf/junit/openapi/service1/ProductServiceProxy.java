@@ -18,7 +18,9 @@ import com.anaptecs.jeaf.core.servicechannel.api.Command;
 import com.anaptecs.jeaf.core.servicechannel.api.ServiceProxy;
 import com.anaptecs.jeaf.core.spi.TransactionBehavior;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
+import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
+import com.anaptecs.jeaf.junit.openapi.base.ChannelType;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
@@ -381,6 +383,37 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
     try {
       Command lCommand = new CheckIBAN_String_ProductService_Command(pIBAN);
       return (boolean) this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
+
+  /**
+   * Generated proxy implementation for method "getChannels".
+   * 
+   * 
+   */
+  @SuppressWarnings("unchecked")
+  public List<Channel> getChannels( List<ChannelType> pChannelTypes ) {
+    try {
+      Command lCommand = new GetChannels_ChannelType_ProductService_Command(pChannelTypes);
+      return (List<Channel>) this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
+
+  /**
+   * Generated proxy implementation for method "getDefaultChannel".
+   * 
+   * 
+   */
+  public Channel getDefaultChannel( ChannelType pChannelType ) {
+    try {
+      Command lCommand = new GetDefaultChannel_ChannelType_ProductService_Command(pChannelType);
+      return (Channel) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
       throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
@@ -2557,6 +2590,207 @@ final class CheckIBAN_String_ProductService_Command extends Command {
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
     long lStartTime = System.nanoTime();
     Serializable lResult = (Serializable) lService.checkIBAN(iBAN);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    return lResult;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   * 
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   * 
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "getChannels".
+ */
+final class GetChannels_ChannelType_ProductService_Command extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD = ProductService.class.getMethod("getChannels", List.class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "getChannels(List.class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pChannelTypes" to the service implementation via the service channel.
+   */
+  private final List<ChannelType> channelTypes;
+
+  /**
+   * Initialize object. All parameters from method "getChannels" have to be passed as parameters to this command object.
+   * 
+   * @param pChannelTypes List<ChannelType>
+   */
+  GetChannels_ChannelType_ProductService_Command( List<ChannelType> pChannelTypes ) {
+    super(ProductService.class);
+    channelTypes = pChannelTypes;
+    parameters = new Object[] { channelTypes };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   * 
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    ProductService lService = (ProductService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    Serializable lResult = (Serializable) lService.getChannels(channelTypes);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    return lResult;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   * 
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   * 
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "getDefaultChannel".
+ */
+final class GetDefaultChannel_ChannelType_ProductService_Command extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD = ProductService.class.getMethod("getDefaultChannel", ChannelType.class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "getDefaultChannel(ChannelType.class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pChannelType" to the service implementation via the service channel.
+   */
+  private final ChannelType channelType;
+
+  /**
+   * Initialize object. All parameters from method "getDefaultChannel" have to be passed as parameters to this command
+   * object.
+   * 
+   * @param pChannelType ChannelType
+   */
+  GetDefaultChannel_ChannelType_ProductService_Command( ChannelType pChannelType ) {
+    super(ProductService.class);
+    channelType = pChannelType;
+    parameters = new Object[] { channelType };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   * 
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    ProductService lService = (ProductService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    Serializable lResult = (Serializable) lService.getDefaultChannel(channelType);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
     // Trace result of service call.

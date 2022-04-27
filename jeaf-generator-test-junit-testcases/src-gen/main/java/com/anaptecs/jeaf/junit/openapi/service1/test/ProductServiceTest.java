@@ -32,11 +32,13 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testCreateProduct"));
     lSuite.addTest(new ProductServiceTest("testCreateChannelCodeFromObject"));
     lSuite.addTest(new ProductServiceTest("testTestCodeTypeUsage"));
+    lSuite.addTest(new ProductServiceTest("testGetDefaultChannel"));
     lSuite.addTest(new ProductServiceTest("testAddCurrencies"));
     lSuite.addTest(new ProductServiceTest("testGetSortiment"));
     lSuite.addTest(new ProductServiceTest("testDeprectedComplexRequestBody"));
     lSuite.addTest(new ProductServiceTest("testCheckIBAN"));
     lSuite.addTest(new ProductServiceTest("testTestLocalBeanParamType"));
+    lSuite.addTest(new ProductServiceTest("testGetChannels"));
     lSuite.addTest(new ProductServiceTest("testTestChildBeanParameter"));
     lSuite.addTest(new ProductServiceTest("testCreateChannelCode"));
     lSuite.addTest(new ProductServiceTest("testGetProducts"));
@@ -200,6 +202,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   }
 
   /**
+   * Method test the implementation of service method getDefaultChannel
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testGetDefaultChannel( ) throws Exception {
+    // TODO Implement test for service method getDefaultChannel(...)
+  }
+
+  /**
    * Method test the implementation of service method addCurrencies
    * 
    * @throws Exception if a test fails.
@@ -247,6 +259,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testTestLocalBeanParamType( ) throws Exception {
     // TODO Implement test for service method testLocalBeanParamType(...)
+  }
+
+  /**
+   * Method test the implementation of service method getChannels
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testGetChannels( ) throws Exception {
+    // TODO Implement test for service method getChannels(...)
   }
 
   /**

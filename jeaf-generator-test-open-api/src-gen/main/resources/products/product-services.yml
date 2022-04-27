@@ -136,6 +136,7 @@ paths:
           schema:
             type: string
             minLength: 1
+            default: 4711
             example: '1234-345'
       responses:
         '200':
@@ -771,6 +772,85 @@ paths:
             application/json:
               schema:
                 type: boolean
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/channels:
+    get:
+      operationId: getChannels
+      parameters:
+        - name: channelTypes
+          in: query
+          description: >-
+            TODO Please add comment
+          required: false
+          schema:
+            type: array
+            default: [MOBILE]
+            items:
+              type: string
+              enum:
+                - COUNTER
+                - CALL_CENTER
+                - MOBILE
+                - TVM
+                - WEB
+                # Literal "LEGACY_POS" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
+                - LEGACY_POS
+      responses:
+        '200':
+          description: >-
+            TODO Please add comment
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../base/product-base.yml#/components/schemas/Channel'
+                minItems: 0
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/DefaultChannel:
+    get:
+      operationId: getDefaultChannel
+      parameters:
+        - name: channelType
+          in: query
+          description: >-
+            TODO Please add comment
+          required: true
+          schema:
+            type: string
+            default: COUNTER
+            enum:
+              - COUNTER
+              - CALL_CENTER
+              - MOBILE
+              - TVM
+              - WEB
+              # Literal "LEGACY_POS" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
+              - LEGACY_POS
+      responses:
+        '200':
+          description: >-
+            TODO Please add comment
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+          content:
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/Channel'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':

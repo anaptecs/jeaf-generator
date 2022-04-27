@@ -56,6 +56,12 @@ abstract class ProductServiceImplBase implements ProductService, ServiceImplemen
   public static final String DEPRECTEDCOMPLEXREQUESTBODY_AUTH_TYPE =
       "deprectedComplexRequestBody.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 
+  public static final String GETCHANNELS_AUTH_TYPE =
+      "getChannels.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
+  public static final String GETDEFAULTCHANNEL_AUTH_TYPE =
+      "getDefaultChannel.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
   public static final String GETPRODUCTS_AUTH_TYPE =
       "getProducts.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 

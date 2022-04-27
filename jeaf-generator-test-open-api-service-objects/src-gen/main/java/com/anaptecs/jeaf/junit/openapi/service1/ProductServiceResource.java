@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.HEAD;
 import javax.ws.rs.HeaderParam;
@@ -17,12 +18,15 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.anaptecs.jeaf.core.api.JEAF;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
+import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
+import com.anaptecs.jeaf.junit.openapi.base.ChannelType;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
@@ -56,7 +60,7 @@ public class ProductServiceResource {
    */
   @Path("{id}")
   @GET
-  public Response getProduct( @PathParam("id") String pProductID ) {
+  public Response getProduct( @PathParam("id") @DefaultValue("4711") String pProductID ) {
     ProductService lService = JEAF.getService(ProductService.class);
     Product lResult = lService.getProduct(pProductID);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -157,7 +161,7 @@ public class ProductServiceResource {
    */
   @Path("deprecated/body")
   @POST
-  public Response deprecatedBody( @Deprecated String pBody ) {
+  public Response deprecatedBody( @DefaultValue("Hello World!") @Deprecated String pBody ) {
     ProductService lService = JEAF.getService(ProductService.class);
     String lResult = lService.deprecatedBody(pBody);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -282,6 +286,28 @@ public class ProductServiceResource {
   public Response checkIBAN( String pIBAN ) {
     ProductService lService = JEAF.getService(ProductService.class);
     boolean lResult = lService.checkIBAN(pIBAN);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#getChannels()}
+   */
+  @Path("channels")
+  @GET
+  public Response getChannels( @QueryParam("channelTypes") @DefaultValue("MOBILE") List<ChannelType> pChannelTypes ) {
+    ProductService lService = JEAF.getService(ProductService.class);
+    List<Channel> lResult = lService.getChannels(pChannelTypes);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#getDefaultChannel()}
+   */
+  @Path("DefaultChannel")
+  @GET
+  public Response getDefaultChannel( @QueryParam("channelType") @DefaultValue("COUNTER") ChannelType pChannelType ) {
+    ProductService lService = JEAF.getService(ProductService.class);
+    Channel lResult = lService.getDefaultChannel(pChannelType);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 }

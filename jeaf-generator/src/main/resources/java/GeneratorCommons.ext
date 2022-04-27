@@ -178,6 +178,9 @@ cached boolean isServiceObject(uml::Class class):
 boolean isJEAFEnumeration(uml::Property property) : 
     isStereotypeApplied(property.type, "JEAFEnumeration");   
     
+boolean isParamJEAFEnumeration(uml::Parameter parameter) : 
+    parameter.type.isStereotypeApplied("JEAFEnumeration");   
+    
 cached boolean isDomainObject(uml::Class class):
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isDomainObject(org.eclipse.uml2.uml.Class);
     

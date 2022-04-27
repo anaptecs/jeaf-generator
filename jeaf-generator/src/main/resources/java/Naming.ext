@@ -190,6 +190,10 @@ boolean isPrimitiveType(uml::Type type) :
     
 String getPrimitiveDefaultValue(uml::Property type):
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getPrimitiveDefaultValue(org.eclipse.uml2.uml.Property);
+    
+boolean isBasicType(uml::Type type):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isBasicType(org.eclipse.uml2.uml.Type);
+
                 
 // Returns the thrown Exceptions of a method, exceptions come separated by a ","
 String getThrownExceptionsAsString(uml::Operation operation) : 

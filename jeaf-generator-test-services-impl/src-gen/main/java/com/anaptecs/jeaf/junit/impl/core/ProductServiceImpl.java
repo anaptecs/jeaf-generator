@@ -9,7 +9,9 @@ import java.util.List;
 
 import com.anaptecs.jeaf.core.api.Component;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
+import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
+import com.anaptecs.jeaf.junit.openapi.base.ChannelType;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
@@ -283,5 +285,27 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   public boolean checkIBAN( String pIBAN ) {
     // TODO Implement method and return real result
     return false;
+  }
+
+  /**
+   * 
+   * @param pChannelTypes
+   * @return {@link Channel}
+   */
+  @Override
+  public List<Channel> getChannels( List<ChannelType> pChannelTypes ) {
+    // TODO Implement method and return real result
+    return null;
+  }
+
+  /**
+   * 
+   * @param pChannelType
+   * @return {@link Channel}
+   */
+  @Override
+  public Channel getDefaultChannel( ChannelType pChannelType ) {
+    // TODO Implement method and return real result
+    return null;
   }
 }
