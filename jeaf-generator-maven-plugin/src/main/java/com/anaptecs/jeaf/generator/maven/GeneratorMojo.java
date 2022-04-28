@@ -389,7 +389,7 @@ public class GeneratorMojo extends AbstractMojo {
 
   /**
    * Parameter can be used to define the target runtime environment for which code should be generated. Currently JEAF
-   * and Spring are supported. Valid values are (case-sensitive): "JEAF", "SPRING"
+   * and Spring are supported. Valid values are (case-sensitive): "JEAF", "JAVA" and "SPRING"
    */
   @Parameter(required = false, defaultValue = "JEAF")
   private TargetRuntime targetRuntime;

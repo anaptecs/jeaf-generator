@@ -1116,4 +1116,8 @@ public class GeneratorCommons {
     return getTargetRuntime() == TargetRuntime.SPRING;
   }
 
+  public static boolean isTargetRuntimeJava( ) {
+    return getTargetRuntime() == TargetRuntime.JAVA;
+  }
+
 }

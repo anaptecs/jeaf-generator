@@ -244,6 +244,9 @@ cached boolean isDoubleType(uml::Type type) :
 cached boolean isTargetRuntimeJEAF():
   JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isTargetRuntimeJEAF();
   
+cached boolean isTargetRuntimeJava():
+  JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isTargetRuntimeJava();
+  
 cached boolean isTargetRuntimeSpring():
   JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isTargetRuntimeSpring();
   
