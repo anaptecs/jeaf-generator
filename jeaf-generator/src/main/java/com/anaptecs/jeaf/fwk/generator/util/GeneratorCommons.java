@@ -915,7 +915,11 @@ public class GeneratorCommons {
   public static boolean runChecks( NamedElement pElement, String pStereotype ) {
     boolean lRunChecks = false;
     Package lPackage = pElement.getNearestPackage();
+
     NamedElement lOwner = (NamedElement) pElement.getOwner();
+
+    // XFun.getTrace().info(
+    // "Analyzing element " + pElement.getName() + " in package " + ClassUtil.getPackageName(lPackage));
 
     if (GeneratorCommons.shouldStereotypeBeChecked(pStereotype) == true
         && GeneratorCommons.isInGeneratorWhitelist(lPackage) == true) {
@@ -937,7 +941,7 @@ public class GeneratorCommons {
       // Check for stereotypes
       if (pElement instanceof Class || pElement instanceof Interface || pElement instanceof Component
           || pElement instanceof Enumeration || pElement instanceof Activity || pElement instanceof Dependency
-          || pElement instanceof Operation) {
+          || pElement instanceof Operation || pElement instanceof Parameter) {
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_ACTIVITY);
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_APPLICATION_EXCEPTION);
         // lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_COMPONENT);
@@ -965,6 +969,10 @@ public class GeneratorCommons {
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "ErrorResponse");
 
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "RESTOperation");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "PathParam");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "HeaderParam");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "QueryParam");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "CookieParam");
 
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Size");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "DecimalMin");
@@ -1041,8 +1049,9 @@ public class GeneratorCommons {
     else if ("JEAFActivity".equals(pStereotype)) {
       lRunChecks = generateActivityInterfaces() | generateActivityImpls();
     }
-    // RESTOperation
-    else if ("RESTOperation".equals(pStereotype)) {
+    // RESTOperation or REST params
+    else if ("RESTOperation".equals(pStereotype) || "PathParam".equals(pStereotype) || "QueryParam".equals(pStereotype)
+        || "HeaderParam".equals(pStereotype) || "CookieParam".equals(pStereotype)) {
       lRunChecks = generateRESTResources() | generateOpenAPISpec();
     }
     else {

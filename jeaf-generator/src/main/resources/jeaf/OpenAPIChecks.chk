@@ -20,3 +20,6 @@ context OpenAPI3Specification if runChecks("OpenAPI3Specification") ERROR "Error
 context OpenAPIDataType if runChecks("OpenAPIDataType") ERROR "Error: <<OpenAPIDataType>> " + this.name + " must have excatly one property." : this.ownedAttribute.size == 1;
 context OpenAPIDataType if runChecks("OpenAPIDataType") ERROR "Error: <<OpenAPIDataType>> " + this.name + " must have only properties with primitive types.": this.ownedAttribute.get(0).type.isBasicOpenAPIType() == true;
 context OpenAPIDataType if runChecks("OpenAPIDataType") ERROR "Error: <<OpenAPIDataType>> " + this.name + " must not have multivalued properties.": this.ownedAttribute.get(0).isMultivalued() == false;
+
+context PathParam if runChecks("PathParam") ERROR "Error: <<PathParam>> " + this.fqn() + " must be required.": this.lower == 1;
+context PathParam if runChecks("PathParam") ERROR "Error: <<PathParam>> " + this.fqn() + " must not be multivalued.": this.isMultivalued() == false;
