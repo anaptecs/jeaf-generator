@@ -41,7 +41,7 @@ boolean referencesRESTResources(JMM::OpenAPI3Specification spec):
 	getRESTResources(spec).size > 0;
 	
 List[JMM::RESTResource] getRESTResources(JMM::OpenAPI3Specification spec):
-	spec.clientDependency.supplier.typeSelect(JMM::RESTResource);
+	spec.clientDependency.supplier.typeSelect(JMM::RESTResource).sortBy(e|e.getOrderNumber());
 	
 List[JMM::RESTOperation] getRESTOperations(JMM::RESTResource service, String pPath):
    service.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.path == pPath);
