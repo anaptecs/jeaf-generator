@@ -131,7 +131,9 @@ components:
           «ENDIF-»
         «ENDIF-»
       «ENDIF-»
+      «IF parameter.isRequiredProperty() -»
       required: «parameter.isRequiredProperty()»
+      «ENDIF-»
       «IF parameter.isDeprecated() -»
       deprecated: true
       «ENDIF-»
@@ -252,7 +254,9 @@ components:
           in: «property.getOpenAPIParameterType()»
           description: >-
             «IF property.hasComment()»«property.getCommentForOpenAPIDescription("            ")»«ELSE»TODO Please add comment«ENDIF»
+          «IF property.isRequiredProperty() -»
           required: «property.isRequiredProperty()»
+          «ENDIF-»
           «IF property.isDeprecated() -»
           deprecated: true
           «ENDIF-»
@@ -303,7 +307,9 @@ components:
           in: «param.getOpenAPIParameterType()»
           description: >-
             «IF param.hasComment()»«param.getCommentForOpenAPIDescription("            ")»«ELSE»TODO Please add comment«ENDIF»
+          «IF param.isRequired() -»
           required: «param.isRequired()»
+          «ENDIF-»
           «IF param.isDeprecated() -»
           deprecated: true
           «ENDIF-»
@@ -399,7 +405,9 @@ components:
           «IF param.isDeprecated() && param.type.isBasicOpenAPIType() == false-»
           Operation has deprected body parameter. Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
           «ENDIF-»
+        «IF param.isRequired() -»
         required: «param.isRequired()»
+        «ENDIF-»
         content:
           «FOREACH unifyMediaTypes(service.consumes, operation.consumes) AS mediaType-»
           «mediaType.toOpenAPIContentType()»:
@@ -530,6 +538,7 @@ components:
         «EXPAND java::OpenAPIResponse::ErrorResponses(this) FOR operation-»
     «ENDFOREACH-»
     «ENDFOREACH-»
+
   «ENDFOREACH-»
   «ENDFOREACH-»
 «ENDDEFINE»

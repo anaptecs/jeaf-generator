@@ -78,6 +78,7 @@ paths:
           $ref: '#/components/responses/DefaultErrorResponse'
 
 
+
 security:
   - oAuth2ClientCredentials: []
 
@@ -103,7 +104,6 @@ components:
         to the request (see RFC2616-sec14.4). Supporting English (en) is a must.
       schema:
         type: string
-      required: false
 
     # ch.voev.nova.inventory.api.booking.InventoryBookingContext.traceParent
     traceParent:
@@ -115,7 +115,6 @@ components:
         traceparent even when it only relies on vendor-specific information in tracestate (see W3C Trace Context).
       schema:
         type: string
-      required: false
 
     # ch.voev.nova.inventory.api.booking.InventoryBookingContext.traceState
     traceState:
@@ -126,7 +125,6 @@ components:
         Storing information in tracestate is optional (see W3C Trace Context).
       schema:
         type: string
-      required: false
 
   responses:
     # ch.voev.nova.inventory.api.booking.BadRequestResponse

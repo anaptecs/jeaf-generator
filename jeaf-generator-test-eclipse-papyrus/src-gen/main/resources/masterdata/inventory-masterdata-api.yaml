@@ -36,7 +36,6 @@ paths:
           in: query
           description: >-
             If not set, all vehicles of all operators are returned
-          required: false
           schema:
             type: string
             example: '11'
@@ -44,7 +43,6 @@ paths:
           in: query
           description: >-
             TODO Please add comment
-          required: false
           schema:
             type: string
             example: '85'
@@ -52,7 +50,6 @@ paths:
           in: query
           description: >-
             TODO Please add comment
-          required: false
           schema:
             type: string
             format: date-time
@@ -86,6 +83,7 @@ paths:
           $ref: '../inventory-booking-api.yaml#/components/responses/ServiceUnavailableResponse'
         'default':
           $ref: '../inventory-booking-api.yaml#/components/responses/DefaultErrorResponse'
+
   /inventory/productDefinitions:
     get:
       tags:
@@ -100,7 +98,6 @@ paths:
           in: query
           description: >-
             If not set, all vehicles of all operators are returned
-          required: false
           schema:
             type: string
             example: '11'
@@ -108,7 +105,6 @@ paths:
           in: query
           description: >-
             TODO Please add comment
-          required: false
           schema:
             type: string
             example: '85'
@@ -116,7 +112,6 @@ paths:
           in: query
           description: >-
             TODO Please add comment
-          required: false
           schema:
             type: string
             format: date-time
@@ -148,6 +143,7 @@ paths:
           $ref: '../inventory-booking-api.yaml#/components/responses/ServiceUnavailableResponse'
         'default':
           $ref: '../inventory-booking-api.yaml#/components/responses/DefaultErrorResponse'
+
 
 
 security:
