@@ -45,6 +45,10 @@ paths:
         '200':
           description: >-
             the requested place
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlaceAvailabilityResponse'
           headers:
             Cache-Control:
               schema:
@@ -52,10 +56,6 @@ paths:
                 default: 'public, max-age=10000'
                 description: >-
                   A places resource is fairly persistent and has a medium time to live to allow short-term caching.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PlaceAvailabilityResponse'
         '400':
           $ref: '#/components/responses/BadRequestResponse'
         '401':

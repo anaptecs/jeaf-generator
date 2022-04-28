@@ -391,7 +391,15 @@ components:
                 «ENDIF-»
                 «ENDLET-»
               «ELSE-»
-            # Complex type are not supported as inline parameters
+                «IF param.isMultivalued() == false -»
+            $ref: «param.type.getOpenAPIType(this)» 
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
+                «ELSE-»
+            type: array
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
+            items:
+              $ref: «param.type.getOpenAPIType(this)»
+                «ENDIF-»
               «ENDIF-»              
             «ENDIF-»
         «ENDFOREACH-»
@@ -469,21 +477,6 @@ components:
             «IF returnParam.isDeprecated() && returnParam.type.isBasicOpenAPIType() == false-»
             Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
             «ENDIF-»
-          «IF operation.hasResponseHeaderFields() -»
-          headers:
-            «FOREACH operation.getHeaderFields().sortBy(e|e.name) AS headerField -»
-            «headerField.name»:
-              schema:
-                type: «headerField.type.getOpenAPIType(this)»
-                «IF headerField.defaultValue != null-»
-                default: '«headerField.defaultValue.stringValue().replaceAll("\"", "")»'
-                «ENDIF-»
-                «IF headerField.hasComment()-»
-                description: >-
-                  «headerField.getCommentForOpenAPIDescription("                    ")»
-                «ENDIF-»
-            «ENDFOREACH-»
-          «ENDIF-»
           content:
             «FOREACH unifyMediaTypes(service.produces, operation.produces) AS contentType-»
             «contentType.toOpenAPIContentType()»:
@@ -531,6 +524,21 @@ components:
                 «ENDIF-»
                 «ENDIF-»
             «ENDFOREACH-»
+          «IF operation.hasResponseHeaderFields() -»
+          headers:
+            «FOREACH operation.getHeaderFields().sortBy(e|e.name) AS headerField -»
+            «headerField.name»:
+              schema:
+                type: «headerField.type.getOpenAPIType(this)»
+                «IF headerField.defaultValue != null-»
+                default: '«headerField.defaultValue.stringValue().replaceAll("\"", "")»'
+                «ENDIF-»
+                «IF headerField.hasComment()-»
+                description: >-
+                  «headerField.getCommentForOpenAPIDescription("                    ")»
+                «ENDIF-»
+            «ENDFOREACH-»
+          «ENDIF-»
           «ENDLET-»
           «ELSE-»
           description: Operation does not return any content.

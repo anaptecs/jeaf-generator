@@ -54,6 +54,13 @@ paths:
         '200':
           description: >-
             TODO Please add comment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../base/product-base.yml#/components/schemas/Product'
+                minItems: 0
           headers:
             Cache-Control:
               schema:
@@ -71,13 +78,6 @@ paths:
             Yet-Another-Header:
               schema:
                 type: boolean
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '../base/product-base.yml#/components/schemas/Product'
-                minItems: 0
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -98,16 +98,16 @@ paths:
         '200':
           description: >-
             TODO Please add comment
-          headers:
-            X-Global-Response-Header:
-              schema:
-                type: string
-                default: 'Hello World'
           content:
             application/json:
               schema:
                 type: boolean
                 example: 'true'
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -143,15 +143,15 @@ paths:
         '200':
           description: >-
             TODO Please add comment
+          content:
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/Product'
           headers:
             X-Global-Response-Header:
               schema:
                 type: string
                 default: 'Hello World'
-          content:
-            application/json:
-              schema:
-                $ref: '../base/product-base.yml#/components/schemas/Product'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -206,15 +206,15 @@ paths:
         '200':
           description: >-
             TODO Please add comment
+          content:
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/Sortiment'
           headers:
             X-Global-Response-Header:
               schema:
                 type: string
                 default: 'Hello World'
-          content:
-            application/json:
-              schema:
-                $ref: '../base/product-base.yml#/components/schemas/Sortiment'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -240,11 +240,6 @@ paths:
         '200':
           description: >-
             TODO Please add comment
-          headers:
-            X-Global-Response-Header:
-              schema:
-                type: string
-                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -258,6 +253,11 @@ paths:
                 default: "WEBSHOP"
                 example: 'MOBILE_APP'
                 nullable: false
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -271,15 +271,15 @@ paths:
         '200':
           description: >-
             TODO Please add comment
+          content:
+            application/json:
+              schema:
+                type: string
           headers:
             X-Global-Response-Header:
               schema:
                 type: string
                 default: 'Hello World'
-          content:
-            application/json:
-              schema:
-                type: string
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -323,15 +323,15 @@ paths:
         '200':
           description: >-
             TODO Please add comment
+          content:
+            application/json:
+              schema:
+                type: string
           headers:
             X-Global-Response-Header:
               schema:
                 type: string
                 default: 'Hello World'
-          content:
-            application/json:
-              schema:
-                type: string
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -388,16 +388,16 @@ paths:
         '200':
           description: >-
             TODO Please add comment
-          headers:
-            X-Global-Response-Header:
-              schema:
-                type: string
-                default: 'Hello World'
           content:
             application/json:
               schema:
                 type: string
                 deprecated: true
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -419,15 +419,15 @@ paths:
         '200':
           description: >-
             TODO Please add comment
+          content:
+            application/json:
+              schema:
+                type: string
           headers:
             X-Global-Response-Header:
               schema:
                 type: string
                 default: 'Hello World'
-          content:
-            application/json:
-              schema:
-                type: string
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -463,15 +463,15 @@ paths:
           description: >-
             TODO Please add comment
             Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
+          content:
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/Product'
           headers:
             X-Global-Response-Header:
               schema:
                 type: string
                 default: 'Hello World'
-          content:
-            application/json:
-              schema:
-                $ref: '../base/product-base.yml#/components/schemas/Product'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -552,11 +552,6 @@ paths:
         '200':
           description: >-
             Created channel code
-          headers:
-            X-Global-Response-Header:
-              schema:
-                type: string
-                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -564,6 +559,11 @@ paths:
                 default: "WEBSHOP"
                 example: 'MOBILE_APP'
                 nullable: false
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -596,11 +596,6 @@ paths:
         '200':
           description: >-
             TODO Please add comment
-          headers:
-            X-Global-Response-Header:
-              schema:
-                type: string
-                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -614,6 +609,11 @@ paths:
                   example: 'CHF'
                 minItems: 1
                 nullable: false
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -643,11 +643,6 @@ paths:
         '200':
           description: >-
             TODO Please add comment
-          headers:
-            X-Global-Response-Header:
-              schema:
-                type: string
-                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -659,6 +654,11 @@ paths:
                 maxLength: 3
                 example: 'CHF'
                 nullable: false
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -679,15 +679,15 @@ paths:
         '200':
           description: >-
             TODO Please add comment
+          content:
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/IntegerCodeType'
           headers:
             X-Global-Response-Header:
               schema:
                 type: string
                 default: 'Hello World'
-          content:
-            application/json:
-              schema:
-                $ref: '../base/product-base.yml#/components/schemas/IntegerCodeType'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -703,15 +703,15 @@ paths:
         '200':
           description: >-
             TODO Please add comment
+          content:
+            application/json:
+              schema:
+                type: string
           headers:
             X-Global-Response-Header:
               schema:
                 type: string
                 default: 'Hello World'
-          content:
-            application/json:
-              schema:
-                type: string
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -727,15 +727,15 @@ paths:
         '200':
           description: >-
             TODO Please add comment
+          content:
+            application/json:
+              schema:
+                type: string
           headers:
             X-Global-Response-Header:
               schema:
                 type: string
                 default: 'Hello World'
-          content:
-            application/json:
-              schema:
-                type: string
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -752,15 +752,15 @@ paths:
         '200':
           description: >-
             TODO Please add comment
+          content:
+            application/json:
+              schema:
+                type: string
           headers:
             X-Global-Response-Header:
               schema:
                 type: string
                 default: 'Hello World'
-          content:
-            application/json:
-              schema:
-                type: string
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -782,15 +782,15 @@ paths:
         '200':
           description: >-
             TODO Please add comment
+          content:
+            application/json:
+              schema:
+                type: boolean
           headers:
             X-Global-Response-Header:
               schema:
                 type: string
                 default: 'Hello World'
-          content:
-            application/json:
-              schema:
-                type: boolean
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -821,11 +821,6 @@ paths:
         '200':
           description: >-
             TODO Please add comment
-          headers:
-            X-Global-Response-Header:
-              schema:
-                type: string
-                default: 'Hello World'
           content:
             application/json:
               schema:
@@ -833,6 +828,11 @@ paths:
                 items:
                   $ref: '../base/product-base.yml#/components/schemas/Channel'
                 minItems: 0
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -862,15 +862,15 @@ paths:
         '200':
           description: >-
             TODO Please add comment
+          content:
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/Channel'
           headers:
             X-Global-Response-Header:
               schema:
                 type: string
                 default: 'Hello World'
-          content:
-            application/json:
-              schema:
-                $ref: '../base/product-base.yml#/components/schemas/Channel'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
