@@ -82,6 +82,7 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+
     post:
       tags:
         - Products
@@ -112,6 +113,7 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+
     head:
       operationId: ping
       responses:

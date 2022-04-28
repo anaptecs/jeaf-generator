@@ -544,9 +544,9 @@ components:
           description: Operation does not return any content.
           «ENDIF-»
         «EXPAND java::OpenAPIResponse::ErrorResponses(this) FOR operation-»
-    «ENDFOREACH-»
-    «ENDFOREACH-»
 
+    «ENDFOREACH-»
+    «ENDFOREACH-»
   «ENDFOREACH-»
   «ENDFOREACH-»
 «ENDDEFINE»
