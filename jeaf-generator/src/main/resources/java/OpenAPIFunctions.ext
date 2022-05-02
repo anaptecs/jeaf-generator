@@ -253,7 +253,7 @@ cached String getErrorCode(JMM::HTTPStatusCode status):
 cached String getHTTPStatusCode(JMM::RESTOperation operation):
    operation.statusCode.name.subString(0, 3);
    
-List[JMM::OpenAPIResponse] getCustomErrorResponses(JMM::OpenAPI3Specification spec):
+List[JMM::OpenAPIResponse] getCustomResponses(JMM::OpenAPI3Specification spec):
    spec.clientDependency.supplier.typeSelect(JMM::OpenAPIResponse);
    
 cached List[uml::Class] getResponseHeaderGroups(uml::Operation operation) :
@@ -265,8 +265,8 @@ cached List[uml::Property] getHeaderFields(uml::Operation operation) :
 cached boolean hasResponseHeaderFields(uml::Operation operation) :
   operation.getResponseHeaderGroups().size > 0; 
 
-boolean hasCustomErrorResponse(JMM::OpenAPI3Specification spec):
-  getCustomErrorResponses(spec).size > 0;
+boolean hasCustomResponse(JMM::OpenAPI3Specification spec):
+  getCustomResponses(spec).size > 0;
   
 Set[JMM::OAuthScope] getOAuthScopes(JMM::OpenAPISecurityScheme scheme):
   scheme.clientDependency.supplier.typeSelect(JMM::OAuthFlow).clientDependency.supplier.typeSelect(JMM::OAuthScope).toSet().sortBy(e|e.name);

@@ -5,16 +5,16 @@
 
 «DEFINE Responses(OpenAPI3Specification spec) FOR RESTOperation -»
     «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIResponse) AS response -»
-      «EXPAND ErrorResponses(spec) FOR response -»
+      «EXPAND Responses(spec) FOR response -»
     «ENDFOREACH -»
-    «IF hasCustomErrorResponse(spec) == true -»
-        «EXPAND ErrorResponses(spec) FOREACH getCustomErrorResponses(spec) -» 
+    «IF hasCustomResponse(spec) == true -»
+        «EXPAND Responses(spec) FOREACH getCustomResponses(spec) -» 
     «ELSE -»
-        «EXPAND ErrorResponses(spec) FOREACH getGlobalDefaultErrorResponses(spec.getModel()) -» 
+        «EXPAND Responses(spec) FOREACH getGlobalDefaultErrorResponses(spec.getModel()) -» 
     «ENDIF -»
 «ENDDEFINE»
 
-«DEFINE ErrorResponses(OpenAPI3Specification spec) FOR OpenAPIResponse -»
+«DEFINE Responses(OpenAPI3Specification spec) FOR OpenAPIResponse -»
 	«FOREACH this.statusCodes.sortBy(e|e) AS errorCode-»
         '«errorCode.getErrorCode()»':
           $ref: «this.getResponseType(spec)»
