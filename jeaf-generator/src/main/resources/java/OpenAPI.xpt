@@ -252,8 +252,9 @@ components:
         «IF param.inlineBeanParam()-»
         - name: «EXPAND RESTParamName FOR property»
           in: «property.getOpenAPIParameterType()»
+          «IF property.hasComment()-»
           description: >-
-            «IF property.hasComment()»«property.getCommentForOpenAPIDescription("            ")»«ENDIF»
+            «property.getCommentForOpenAPIDescription("            ")»«ENDIF-»
           «IF property.isRequiredProperty() -»
           required: «property.isRequiredProperty()»
           «ENDIF-»
@@ -305,8 +306,9 @@ components:
         «FOREACH operation.getOpenAPIInputParameters() AS param-»
         - name: «EXPAND RESTParamName FOR param»
           in: «param.getOpenAPIParameterType()»
+          «IF param.hasComment()-»
           description: >-
-            «IF param.hasComment()»«param.getCommentForOpenAPIDescription("            ")»«ENDIF»
+            «param.getCommentForOpenAPIDescription("            ")»«ENDIF-»
           «IF param.isRequired() -»
           required: «param.isRequired()»
           «ENDIF-»
@@ -475,7 +477,7 @@ components:
         '200':
           «LET operation.getReturnResult() AS returnParam-»
           description: >-
-            «IF operation.getReturnResult().hasComment()»«operation.getReturnResult().getCommentForOpenAPIDescription("            ")»«ENDIF»
+            «IF returnParam.hasComment()»«returnParam.getCommentForOpenAPIDescription("            ")»«ELSE»TODO: Please add comment for response«ENDIF»
             «IF returnParam.isDeprecated() && returnParam.type.isBasicOpenAPIType() == false-»
             Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
             «ENDIF-»

@@ -35,21 +35,16 @@ paths:
         - name: operatorRef
           in: query
           description: >-
-            If not set, all vehicles of all operators are returned
-          schema:
+            If not set, all vehicles of all operators are returned                                        schema:
             type: string
             example: '11'
         - name: uicCountryCode
           in: query
-          description: >-
-            TODO Please add comment
           schema:
             type: string
             example: '85'
         - name: lastModified
           in: query
-          description: >-
-            TODO Please add comment
           schema:
             type: string
             format: date-time
@@ -97,28 +92,23 @@ paths:
         - name: operatorRef
           in: query
           description: >-
-            If not set, all vehicles of all operators are returned
-          schema:
+            If not set, all vehicles of all operators are returned                                        schema:
             type: string
             example: '11'
         - name: uicCountryCode
           in: query
-          description: >-
-            TODO Please add comment
           schema:
             type: string
             example: '85'
         - name: lastModified
           in: query
-          description: >-
-            TODO Please add comment
           schema:
             type: string
             format: date-time
       responses:
         '200':
           description: >-
-            TODO Please add comment
+            TODO: Please add comment for response
           content:
             application/json:
               schema:
