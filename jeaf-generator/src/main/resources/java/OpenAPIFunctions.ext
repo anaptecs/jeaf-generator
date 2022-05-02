@@ -22,7 +22,7 @@ boolean hasOpenAPIParameters(JMM::OpenAPI3Specification spec):
 List[JMM::OpenAPISecurityScheme] getOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
     spec.getModel().allOwnedElements().typeSelect(JMM::OpenAPISecurityScheme).select(e|e.isInGeneratorWhitelist() == true).sortBy(e|e.name);
 
-List[JMM::OpenAPIResponse] getErrorResponses(JMM::OpenAPI3Specification spec):
+cached List[JMM::OpenAPIResponse] getResponses(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIResponse).sortBy(e|e.name).sortBy(e|e.getOrderNumber());
 
 List[JMM::OpenAPI3Specification] getDependentSpecs(JMM::OpenAPI3Specification spec):

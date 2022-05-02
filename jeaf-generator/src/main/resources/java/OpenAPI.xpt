@@ -140,9 +140,9 @@ components:
 
     «ENDFOREACH-»
   «ENDIF-»
-  «IF this.getErrorResponses().size > 0-»
+  «IF this.getResponses().size > 0-»
   responses:
-    «EXPAND GenerateResponse(this) FOREACH this.getErrorResponses()»
+    «EXPAND GenerateResponse(this) FOREACH this.getResponses()»
   «ENDIF -»
   «IF this.getOpenAPITypes().size > 0 || this.getOpenAPIEnums().size > 0 || this.getOpenAPIDataTypes().size > 0 -»
   schemas:
@@ -172,7 +172,7 @@ components:
 	«REM»Register local OpenAPI types as well as referenced ones.«ENDREM»
 	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPITypes()»
 	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPIEnums()»
-	«EXPAND RegisterLocalType(this) FOREACH this.getErrorResponses()»
+	«EXPAND RegisterLocalType(this) FOREACH this.getResponses()»
 	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPIDataTypes()»
 	«EXPAND RegisterLocalParameter(this) FOREACH this.getOpenAPIParameters()»
 	
@@ -254,7 +254,8 @@ components:
           in: «property.getOpenAPIParameterType()»
           «IF property.hasComment()-»
           description: >-
-            «property.getCommentForOpenAPIDescription("            ")»«ENDIF-»
+            «property.getCommentForOpenAPIDescription("            ")»
+          «ENDIF-»
           «IF property.isRequiredProperty() -»
           required: «property.isRequiredProperty()»
           «ENDIF-»
@@ -308,7 +309,8 @@ components:
           in: «param.getOpenAPIParameterType()»
           «IF param.hasComment()-»
           description: >-
-            «param.getCommentForOpenAPIDescription("            ")»«ENDIF-»
+            «param.getCommentForOpenAPIDescription("            ")»
+          «ENDIF-»
           «IF param.isRequired() -»
           required: «param.isRequired()»
           «ENDIF-»

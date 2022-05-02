@@ -35,7 +35,8 @@ paths:
         - name: operatorRef
           in: query
           description: >-
-            If not set, all vehicles of all operators are returned                                        schema:
+            If not set, all vehicles of all operators are returned
+          schema:
             type: string
             example: '11'
         - name: uicCountryCode
@@ -92,7 +93,8 @@ paths:
         - name: operatorRef
           in: query
           description: >-
-            If not set, all vehicles of all operators are returned                                        schema:
+            If not set, all vehicles of all operators are returned
+          schema:
             type: string
             example: '11'
         - name: uicCountryCode
