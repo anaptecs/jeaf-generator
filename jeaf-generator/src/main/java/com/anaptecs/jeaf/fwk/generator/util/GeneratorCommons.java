@@ -966,7 +966,7 @@ public class GeneratorCommons {
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPIType");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPIDataType");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPISecurityScheme");
-        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "ErrorResponse");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPIResponse");
 
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "RESTOperation");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "PathParam");
@@ -1018,7 +1018,7 @@ public class GeneratorCommons {
       lRunChecks = generatePOJOs();
     }
     else if ("OpenAPIType".equals(pStereotype) || "OpenAPIDataType".equals(pStereotype)
-        || "OpenAPI3Specification".equals(pStereotype) || "ErrorResponse".equals(pStereotype)) {
+        || "OpenAPI3Specification".equals(pStereotype) || "OpenAPIResponse".equals(pStereotype)) {
       lRunChecks = generateOpenAPISpec();
     }
     // JEAFEnumeration
