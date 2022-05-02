@@ -142,7 +142,7 @@ components:
   «ENDIF-»
   «IF this.getErrorResponses().size > 0-»
   responses:
-    «EXPAND GenerateErrorResponse(this) FOREACH this.getErrorResponses()»
+    «EXPAND GenerateResponse(this) FOREACH this.getErrorResponses()»
   «ENDIF -»
   «IF this.getOpenAPITypes().size > 0 || this.getOpenAPIEnums().size > 0 || this.getOpenAPIDataTypes().size > 0 -»
   schemas:
@@ -545,7 +545,7 @@ components:
           «ENDIF-»
           «ENDLET-»
           «ENDIF-»
-        «EXPAND java::OpenAPIResponse::ErrorResponses(this) FOR operation-»
+        «EXPAND java::OpenAPIResponse::Responses(this) FOR operation-»
 
     «ENDFOREACH-»
     «ENDFOREACH-»
@@ -553,7 +553,7 @@ components:
   «ENDFOREACH-»
 «ENDDEFINE»
 
-«DEFINE GenerateErrorResponse(OpenAPI3Specification spec) FOR OpenAPIResponse -»
+«DEFINE GenerateResponse(OpenAPI3Specification spec) FOR OpenAPIResponse -»
     «IF suppressClassNameCommentInOpenAPISpec() == false-»
     # «this.fqn()»
     «ENDIF-»
@@ -567,7 +567,7 @@ components:
       content:
         «this.contentType.name.toOpenAPIContentType()»:
           schema:
-            $ref: «this.getErrorResponseType().getOpenAPIType(spec)»
+            $ref: «this.getResponseType().getOpenAPIType(spec)»
 «ENDDEFINE»
 
 

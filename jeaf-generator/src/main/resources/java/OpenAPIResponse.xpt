@@ -3,7 +3,7 @@
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
-«DEFINE ErrorResponses(OpenAPI3Specification spec) FOR RESTOperation -»
+«DEFINE Responses(OpenAPI3Specification spec) FOR RESTOperation -»
     «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIResponse) AS response -»
       «EXPAND ErrorResponses(spec) FOR response -»
     «ENDFOREACH -»

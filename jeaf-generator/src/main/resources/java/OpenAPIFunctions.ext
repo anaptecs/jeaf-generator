@@ -241,11 +241,11 @@ cached List[JMM::OpenAPIResponse] getGlobalDefaultErrorResponses(uml::Model mode
 boolean hasValidOneGlobalDefaultErrorResponse(uml::Model model):
    getGlobalDefaultErrorResponses(model).size<=1;
    
-cached List[JMM::OpenAPIType] getErrorResponseTypes(JMM::OpenAPIResponse errorResponse):
-   errorResponse.clientDependency.supplier.typeSelect(JMM::OpenAPIType);
+cached List[JMM::OpenAPIType] getResponseTypes(JMM::OpenAPIResponse response):
+   response.clientDependency.supplier.typeSelect(JMM::OpenAPIType);
    
-JMM::OpenAPIType getErrorResponseType(JMM::OpenAPIResponse errorResponse):
-   getErrorResponseTypes(errorResponse).first();
+JMM::OpenAPIType getResponseType(JMM::OpenAPIResponse response):
+   getResponseTypes(response).first();
    
 cached String getErrorCode(JMM::HTTPStatusCode status):
    status.toString().subString(0, 3);
