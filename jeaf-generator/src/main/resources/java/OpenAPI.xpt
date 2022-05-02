@@ -474,11 +474,13 @@ components:
           «IF operation.hasReturnTypeVoid() == false-»
         '200':
           «LET operation.getReturnResult() AS returnParam-»
+          «IF returnParam.hasComment() || (returnParam.isDeprecated() && returnParam.type.isBasicOpenAPIType() == false) -»
           description: >-
-            «IF operation.getReturnResult().hasComment()»«operation.getReturnResult().getCommentForOpenAPIDescription("            ")»«ENDIF»
+            «IF returnParam.hasComment()»«returnParam.getCommentForOpenAPIDescription("            ")»«ENDIF»
             «IF returnParam.isDeprecated() && returnParam.type.isBasicOpenAPIType() == false-»
             Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
             «ENDIF-»
+          «ENDIF-»
           content:
             «FOREACH unifyMediaTypes(service.produces, operation.produces) AS contentType-»
             «contentType.toOpenAPIContentType()»:
