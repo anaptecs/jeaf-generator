@@ -74,7 +74,8 @@ paths:
       responses:
         '200':
           description: Nothing is the result of nop ;-)
-«ENDIF»
+
+«ENDIF-»
 «IF this.clientDependency.supplier.typeSelect(JMM::OpenAPISecurityScheme).size > 0-»
 security:
   «IF this.securityOptional == true-»
@@ -570,6 +571,7 @@ components:
         «this.contentType.name.toOpenAPIContentType()»:
           schema:
             $ref: «this.getResponseType().getOpenAPIType(spec)»
+
 «ENDDEFINE»
 
 

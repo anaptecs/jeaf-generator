@@ -78,7 +78,6 @@ paths:
           $ref: '#/components/responses/DefaultErrorResponse'
 
 
-
 security:
   - oAuth2ClientCredentials: []
 
@@ -135,6 +134,7 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/Problem'
+
     # ch.voev.nova.inventory.api.booking.DefaultErrorResponse
     DefaultErrorResponse:
       description: >-
@@ -143,6 +143,7 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/Problem'
+
     # ch.voev.nova.inventory.api.booking.ForbiddenResponse
     ForbiddenResponse:
       description: >-
@@ -151,6 +152,7 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/Problem'
+
     # ch.voev.nova.inventory.api.booking.InternalServerErrorResponse
     InternalServerErrorResponse:
       description: >-
@@ -159,6 +161,7 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/Problem'
+
     # ch.voev.nova.inventory.api.booking.NotAcceptableResponse
     NotAcceptableResponse:
       description: >-
@@ -167,6 +170,7 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/Problem'
+
     # ch.voev.nova.inventory.api.booking.NotFoundResponse
     NotFoundResponse:
       description: >-
@@ -175,6 +179,7 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/Problem'
+
     # ch.voev.nova.inventory.api.booking.NotImplementedResponse
     NotImplementedResponse:
       description: >-
@@ -183,6 +188,7 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/Problem'
+
     # ch.voev.nova.inventory.api.booking.ServiceUnavailableResponse
     ServiceUnavailableResponse:
       description: >-
@@ -191,6 +197,7 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/Problem'
+
     # ch.voev.nova.inventory.api.booking.UnauthorizedResponse
     UnauthorizedResponse:
       description: >-
@@ -199,6 +206,7 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/Problem'
+
     # ch.voev.nova.inventory.api.booking.UnsupportedMediaTypeResponse
     UnsupportedMediaTypeResponse:
       description: >-
@@ -207,6 +215,7 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/Problem'
+
 
   schemas:
     # ch.voev.nova.inventory.api.booking.PlaceAvailabilityRequest

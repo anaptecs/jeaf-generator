@@ -815,7 +815,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
 
 
-
 security:
   - {}
   - MyOAuthSecuritySchema: [read:pets,write:pets]
@@ -874,6 +873,7 @@ components:
         text/plain:
           schema:
             $ref: '../base/product-base.yml#/components/schemas/Problem'
+
     # com.anaptecs.jeaf.junit.openapi.service1.NoContentResponse
     NoContentResponse:
       description: TODO Please add comment to error response type
@@ -881,6 +881,7 @@ components:
         application/json:
           schema:
             $ref: '../base/product-base.yml#/components/schemas/Problem'
+
 
   schemas:
     # com.anaptecs.jeaf.junit.openapi.service1.Sale
