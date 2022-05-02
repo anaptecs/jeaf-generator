@@ -22,8 +22,8 @@ boolean hasOpenAPIParameters(JMM::OpenAPI3Specification spec):
 List[JMM::OpenAPISecurityScheme] getOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
     spec.getModel().allOwnedElements().typeSelect(JMM::OpenAPISecurityScheme).select(e|e.isInGeneratorWhitelist() == true).sortBy(e|e.name);
 
-List[JMM::ErrorResponse] getErrorResponses(JMM::OpenAPI3Specification spec):
-	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::ErrorResponse).sortBy(e|e.name).sortBy(e|e.getOrderNumber());
+List[JMM::OpenAPIResponse] getErrorResponses(JMM::OpenAPI3Specification spec):
+	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIResponse).sortBy(e|e.name).sortBy(e|e.getOrderNumber());
 
 List[JMM::OpenAPI3Specification] getDependentSpecs(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(JMM::OpenAPI3Specification);
@@ -235,16 +235,16 @@ cached String getJAXRSStatusCodeName(String pJMMStatusCode):
 boolean isJAXRSStatusCode(String pJMMStatusCode):
    getJAXRSStatusCodeName(pJMMStatusCode) != null;
 
-cached List[JMM::ErrorResponse] getGlobalDefaultErrorResponses(uml::Model model):
-   model.allOwnedElements().typeSelect(JMM::ErrorResponse).select(e|e.globalDefaultErrorResponse ==true).sortBy(e|e.statusCodes);
+cached List[JMM::OpenAPIResponse] getGlobalDefaultErrorResponses(uml::Model model):
+   model.allOwnedElements().typeSelect(JMM::OpenAPIResponse).select(e|e.globalDefaultErrorResponse ==true).sortBy(e|e.statusCodes);
   
 boolean hasValidOneGlobalDefaultErrorResponse(uml::Model model):
    getGlobalDefaultErrorResponses(model).size<=1;
    
-cached List[JMM::OpenAPIType] getErrorResponseTypes(JMM::ErrorResponse errorResponse):
+cached List[JMM::OpenAPIType] getErrorResponseTypes(JMM::OpenAPIResponse errorResponse):
    errorResponse.clientDependency.supplier.typeSelect(JMM::OpenAPIType);
    
-JMM::OpenAPIType getErrorResponseType(JMM::ErrorResponse errorResponse):
+JMM::OpenAPIType getErrorResponseType(JMM::OpenAPIResponse errorResponse):
    getErrorResponseTypes(errorResponse).first();
    
 cached String getErrorCode(JMM::HTTPStatusCode status):
@@ -253,8 +253,8 @@ cached String getErrorCode(JMM::HTTPStatusCode status):
 cached String getHTTPStatusCode(JMM::RESTOperation operation):
    operation.statusCode.name.subString(0, 3);
    
-List[JMM::ErrorResponse] getCustomErrorResponses(JMM::OpenAPI3Specification spec):
-   spec.clientDependency.supplier.typeSelect(JMM::ErrorResponse);
+List[JMM::OpenAPIResponse] getCustomErrorResponses(JMM::OpenAPI3Specification spec):
+   spec.clientDependency.supplier.typeSelect(JMM::OpenAPIResponse);
    
 cached List[uml::Class] getResponseHeaderGroups(uml::Operation operation) :
   operation.clientDependency.supplier.typeSelect(JMM::ResponseHeaderGroup).addAll(operation.interface.clientDependency.supplier.typeSelect(JMM::ResponseHeaderGroup)).toSet();

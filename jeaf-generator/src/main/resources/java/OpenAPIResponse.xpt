@@ -4,7 +4,7 @@
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE ErrorResponses(OpenAPI3Specification spec) FOR RESTOperation -»
-    «FOREACH this.clientDependency.supplier.typeSelect(ErrorResponse) AS response -»
+    «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIResponse) AS response -»
       «EXPAND ErrorResponses(spec) FOR response -»
     «ENDFOREACH -»
     «IF hasCustomErrorResponse(spec) == true -»
@@ -14,7 +14,7 @@
     «ENDIF -»
 «ENDDEFINE»
 
-«DEFINE ErrorResponses(OpenAPI3Specification spec) FOR ErrorResponse -»
+«DEFINE ErrorResponses(OpenAPI3Specification spec) FOR OpenAPIResponse -»
 	«FOREACH this.statusCodes.sortBy(e|e) AS errorCode-»
         '«errorCode.getErrorCode()»':
           $ref: «this.getResponseType(spec)»

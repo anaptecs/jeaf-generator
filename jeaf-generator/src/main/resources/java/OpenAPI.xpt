@@ -192,7 +192,7 @@ components:
 	«EXPAND RegisterLocalTypes FOREACH this.getDependentSpecs()»
 «ENDDEFINE»
 
-«DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR ErrorResponse»
+«DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPIResponse»
 «this.registerLocalType(spec)»
 «ENDDEFINE»
 
@@ -553,7 +553,7 @@ components:
   «ENDFOREACH-»
 «ENDDEFINE»
 
-«DEFINE GenerateErrorResponse(OpenAPI3Specification spec) FOR ErrorResponse -»
+«DEFINE GenerateErrorResponse(OpenAPI3Specification spec) FOR OpenAPIResponse -»
     «IF suppressClassNameCommentInOpenAPISpec() == false-»
     # «this.fqn()»
     «ENDIF-»

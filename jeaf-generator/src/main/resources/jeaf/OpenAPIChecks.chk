@@ -13,7 +13,7 @@ context RESTOperation if runChecks("RESTOperation") ERROR "Either REST resource 
 
 context Model if runChecks() ERROR "Error: OpenAPI Specification more than one global default error response": this.hasValidOneGlobalDefaultErrorResponse() == false;
 
-context ErrorResponse if runChecks("ErrorResponse") ERROR "Error: <<ErrorResponse>> " + this.name + " needs to define exactly one reference to <<OpenAPIType>> that is used as response type.": this.getErrorResponseTypes().size == 1;
+context OpenAPIResponse if runChecks("OpenAPIResponse") ERROR "Error: <<OpenAPIResponse>> " + this.name + " needs to define exactly one reference to <<OpenAPIType>> that is used as response type.": this.getErrorResponseTypes().size == 1;
 
 context OpenAPI3Specification if runChecks("OpenAPI3Specification") ERROR "Error: <<OpenAPI3Specification>> " + this.name + " has " + this.getCustomErrorResponses().size + " error responses.": this.getCustomErrorResponses().size < 2;
 
