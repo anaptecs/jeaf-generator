@@ -474,7 +474,7 @@ components:
       «ENDIF-»
       responses:
           «IF operation.hasReturnTypeVoid() == false-»
-        '200':
+        '«operation.getHTTPStatusCode()»':
           «LET operation.getReturnResult() AS returnParam-»
           description: >-
             «IF returnParam.hasComment()»«returnParam.getCommentForOpenAPIDescription("            ")»«ELSE»TODO: Please add comment for response«ENDIF»

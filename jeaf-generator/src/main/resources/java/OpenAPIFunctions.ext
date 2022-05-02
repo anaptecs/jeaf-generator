@@ -250,6 +250,9 @@ JMM::OpenAPIType getErrorResponseType(JMM::ErrorResponse errorResponse):
 cached String getErrorCode(JMM::HTTPStatusCode status):
    status.toString().subString(0, 3);
    
+cached String getHTTPStatusCode(JMM::RESTOperation operation):
+   operation.statusCode.name.subString(0, 3);
+   
 List[JMM::ErrorResponse] getCustomErrorResponses(JMM::OpenAPI3Specification spec):
    spec.clientDependency.supplier.typeSelect(JMM::ErrorResponse);
    
