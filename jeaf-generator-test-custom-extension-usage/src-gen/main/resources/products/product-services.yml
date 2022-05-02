@@ -115,6 +115,8 @@ paths:
     head:
       operationId: ping
       responses:
+        '204':
+          $ref: '#/components/responses/NoContentResponse'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -870,6 +872,13 @@ components:
       description: TODO Please add comment to error response type
       content:
         text/plain:
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/Problem'
+    # com.anaptecs.jeaf.junit.openapi.service1.NoContentResponse
+    NoContentResponse:
+      description: TODO Please add comment to error response type
+      content:
+        application/json:
           schema:
             $ref: '../base/product-base.yml#/components/schemas/Problem'
 

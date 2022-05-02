@@ -242,7 +242,7 @@ public class ProductServiceResource {
   public Response testCodeTypeUsage( StringCodeType pStringCode ) {
     ProductService lService = JEAF.getService(ProductService.class);
     IntegerCodeType lResult = lService.testCodeTypeUsage(pStringCode);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return Response.status(Response.Status.ACCEPTED).entity(lResult).build();
   }
 
   /**
