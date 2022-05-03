@@ -230,13 +230,13 @@ paths:
             application/json:
               schema:
                 type: string
-                default: "WEBSHOP"
+                default: 'WEBSHOP'
                 example: 'MOBILE_APP'
                 nullable: false
             application/xml:
               schema:
                 type: string
-                default: "WEBSHOP"
+                default: 'WEBSHOP'
                 example: 'MOBILE_APP'
                 nullable: false
           headers:
@@ -495,7 +495,7 @@ paths:
           application/json:
             schema:
                 type: string
-                default: "WEBSHOP"
+                default: 'WEBSHOP'
                 example: 'MOBILE_APP'
                 nullable: false
       responses:
@@ -506,7 +506,7 @@ paths:
             application/json:
               schema:
                 type: string
-                default: "WEBSHOP"
+                default: 'WEBSHOP'
                 example: 'MOBILE_APP'
                 nullable: false
           headers:
@@ -580,7 +580,7 @@ paths:
                 description: >-
                   ISO 4217 currency code.
                 type: string
-                default: "CHF"
+                default: 'CHF'
                 minLength: 3
                 maxLength: 3
                 example: 'CHF'
@@ -595,7 +595,7 @@ paths:
                 description: >-
                   ISO 4217 currency code.
                 type: string
-                default: "CHF"
+                default: 'CHF'
                 minLength: 3
                 maxLength: 3
                 example: 'CHF'

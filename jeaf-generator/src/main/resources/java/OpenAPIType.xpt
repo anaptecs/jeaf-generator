@@ -124,7 +124,7 @@
           writeOnly: «attribute.isWriteOnly()»
           «ENDIF-»  
           «IF attribute.defaultValue != null -»
-          default: «attribute.defaultValue.stringValue()»
+          default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
           «ENDIF-»
             «IF attribute.hasExample()-»
               «IF ((Example) attribute).exampleValue.length > 0-»
@@ -264,7 +264,7 @@
               writeOnly: «attribute.isWriteOnly()»
           «ENDIF-»  
           «IF attribute.defaultValue != null -»
-              default: «attribute.defaultValue.stringValue()»
+              default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
           «ENDIF-»
             «IF attribute.hasExample()-»
               «IF ((Example) attribute).exampleValue.length > 0-»

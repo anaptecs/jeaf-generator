@@ -198,7 +198,7 @@ components:
           $ref: '#/components/schemas/ChannelType'
         channelCode:
           type: string
-          default: "WEBSHOP"
+          default: 'WEBSHOP'
           example: 'MOBILE_APP'
           nullable: false
         code:
@@ -526,7 +526,7 @@ components:
           description: >-
             ISO 4217 currency code.
           type: string
-          default: "CHF"
+          default: 'CHF'
           minLength: 3
           maxLength: 3
           example: 'CHF'
@@ -1162,7 +1162,7 @@ components:
           minLength: 8
           maxLength: 32
           nullable: false
-          default: "Hello OpenAPI"
+          default: 'Hello OpenAPI'
         bString:
           type: string
           minLength: 1
@@ -1244,7 +1244,7 @@ components:
           type: array
           items:
             type: string
-            default: "CHF"
+            default: 'CHF'
             minLength: 3
             maxLength: 3
             example: 'CHF'
@@ -1264,7 +1264,7 @@ components:
           type: string
           format: uri
           nullable: false
-          default: "https://products.anaptecs.de/123456789"
+          default: 'https://products.anaptecs.de/123456789'
 
     # com.anaptecs.jeaf.junit.openapi.base.ProductCode
     ProductCode:
