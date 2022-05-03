@@ -59,26 +59,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VehicleResponse'
-        '400':
-          $ref: '../inventory-booking-api.yaml#/components/responses/BadRequestResponse'
-        '401':
-          $ref: '../inventory-booking-api.yaml#/components/responses/UnauthorizedResponse'
-        '403':
-          $ref: '../inventory-booking-api.yaml#/components/responses/ForbiddenResponse'
-        '404':
-          $ref: '../inventory-booking-api.yaml#/components/responses/NotFoundResponse'
-        '406':
-          $ref: '../inventory-booking-api.yaml#/components/responses/NotAcceptableResponse'
-        '415':
-          $ref: '../inventory-booking-api.yaml#/components/responses/UnsupportedMediaTypeResponse'
-        '500':
-          $ref: '../inventory-booking-api.yaml#/components/responses/InternalServerErrorResponse'
-        '501':
-          $ref: '../inventory-booking-api.yaml#/components/responses/NotImplementedResponse'
-        '503':
-          $ref: '../inventory-booking-api.yaml#/components/responses/ServiceUnavailableResponse'
-        'default':
-          $ref: '../inventory-booking-api.yaml#/components/responses/DefaultErrorResponse'
 
   /inventory/productDefinitions:
     get:
@@ -115,26 +95,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProductDefinitionResponse'
-        '400':
-          $ref: '../inventory-booking-api.yaml#/components/responses/BadRequestResponse'
-        '401':
-          $ref: '../inventory-booking-api.yaml#/components/responses/UnauthorizedResponse'
-        '403':
-          $ref: '../inventory-booking-api.yaml#/components/responses/ForbiddenResponse'
-        '404':
-          $ref: '../inventory-booking-api.yaml#/components/responses/NotFoundResponse'
-        '406':
-          $ref: '../inventory-booking-api.yaml#/components/responses/NotAcceptableResponse'
-        '415':
-          $ref: '../inventory-booking-api.yaml#/components/responses/UnsupportedMediaTypeResponse'
-        '500':
-          $ref: '../inventory-booking-api.yaml#/components/responses/InternalServerErrorResponse'
-        '501':
-          $ref: '../inventory-booking-api.yaml#/components/responses/NotImplementedResponse'
-        '503':
-          $ref: '../inventory-booking-api.yaml#/components/responses/ServiceUnavailableResponse'
-        'default':
-          $ref: '../inventory-booking-api.yaml#/components/responses/DefaultErrorResponse'
 
 
 security:
