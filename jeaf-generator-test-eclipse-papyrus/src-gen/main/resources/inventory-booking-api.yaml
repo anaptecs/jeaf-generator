@@ -240,7 +240,6 @@ components:
           items:
             $ref: '#/components/schemas/PlaceProperty'
 
-
     # ch.voev.nova.inventory.api.booking.Inventory
     Inventory:
       type: string
@@ -564,7 +563,6 @@ components:
             "full", "seatingAvailable" and "standingAvailable".
           type: string
 
-
     # ch.voev.nova.inventory.api.booking.ContinuousMode
     ContinuousMode:
       description: >-
@@ -574,7 +572,6 @@ components:
         - WALK
         - DEMAND_RESPONSIVE
         - REPLACEMENT_SERVICE
-
 
     # ch.voev.nova.inventory.api.booking.TransferMode
     TransferMode:
@@ -741,7 +738,6 @@ components:
           items:
             $ref: '#/components/schemas/PRMNeedType'
 
-
     # ch.voev.nova.inventory.api.booking.PassengerType
     PassengerType:
       description: >-
@@ -794,7 +790,6 @@ components:
         issuer:
           $ref: '#/components/schemas/Company'
 
-
     # ch.voev.nova.inventory.api.booking.PRMNeedType
     PRMNeedType:
       type: string
@@ -804,7 +799,6 @@ components:
         - ACCOMPANYING_DOG
         - COMPANION_SEAT
         - COMPANION
-
 
     # ch.voev.nova.inventory.api.booking.CardType
     CardType:
@@ -845,7 +839,6 @@ components:
       description: >-
         Accommodation type definition out of the Accommodation Sub Type Code List
       nullable: false
-
 
     # ch.voev.nova.inventory.api.booking.ComfortClass
     ComfortClass:
@@ -923,7 +916,6 @@ components:
         scope:
           $ref: '#/components/schemas/VatScope'
 
-
     # ch.voev.nova.inventory.api.booking.VatScope
     VatScope:
       description: >-
@@ -934,7 +926,6 @@ components:
         - NATIONAL
         - SHORT_DISTANCE
         - LONG_DISTANCE
-
 
     # ch.voev.nova.inventory.api.booking.FulfillmentType
     FulfillmentType:
@@ -1117,14 +1108,12 @@ components:
           type: string
           format: uri
 
-
     # ch.voev.nova.inventory.api.booking.EmbeddedParts
     EmbeddedParts:
       type: string
       enum:
         - PLACE_AVAILABILITIES
         - ALL
-
 
     # ch.voev.nova.inventory.api.booking.PTMode
     PTMode:
