@@ -12,10 +12,4 @@ public enum ProductCategory {
    * 
    */
   NON_FOOD;
-
-  /**
-   * Initialize object.
-   */
-  private ProductCategory( ) {
-  }
 }

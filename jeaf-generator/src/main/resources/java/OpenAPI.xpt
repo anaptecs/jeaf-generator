@@ -575,7 +575,7 @@ components:
 «ENDDEFINE»
 
 
-«DEFINE GenerateOpenAPIEnum FOR OpenAPIEnumeration»
+«DEFINE GenerateOpenAPIEnum FOR OpenAPIEnumeration -»
     «IF suppressClassNameCommentInOpenAPISpec() == false -»
     # «this.fqn()»
     «ENDIF-»

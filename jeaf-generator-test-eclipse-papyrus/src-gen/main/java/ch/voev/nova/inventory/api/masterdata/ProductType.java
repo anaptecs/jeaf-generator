@@ -20,10 +20,4 @@ public enum ProductType {
    * 
    */
   FEE;
-
-  /**
-   * Initialize object.
-   */
-  private ProductType( ) {
-  }
 }

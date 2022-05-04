@@ -12,10 +12,4 @@ public enum EmbeddedParts {
    * 
    */
   ALL;
-
-  /**
-   * Initialize object.
-   */
-  private EmbeddedParts( ) {
-  }
 }

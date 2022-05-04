@@ -12,10 +12,4 @@ public enum CustomEnum {
    * 
    */
   STAY_HERE;
-
-  /**
-   * Initialize object.
-   */
-  private CustomEnum( ) {
-  }
 }

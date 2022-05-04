@@ -17,10 +17,4 @@ public enum Farbe {
    * 
    */
   BLAU;
-
-  /**
-   * Initialize object.
-   */
-  private Farbe( ) {
-  }
 }

@@ -30,10 +30,4 @@ public enum TimeUnit {
    * 
    */
   YEAR;
-
-  /**
-   * Initialize object.
-   */
-  private TimeUnit( ) {
-  }
 }

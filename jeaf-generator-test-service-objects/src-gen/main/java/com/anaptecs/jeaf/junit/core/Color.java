@@ -25,10 +25,4 @@ public enum Color {
    * 
    */
   LIGHT_GREEN;
-
-  /**
-   * Initialize object.
-   */
-  private Color( ) {
-  }
 }

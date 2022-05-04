@@ -24,10 +24,4 @@ public enum VerkehrsmittelTyp {
    * 
    */
   Seilbahn;
-
-  /**
-   * Initialize object.
-   */
-  private VerkehrsmittelTyp( ) {
-  }
 }

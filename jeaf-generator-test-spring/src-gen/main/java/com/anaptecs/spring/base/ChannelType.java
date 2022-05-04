@@ -29,10 +29,4 @@ public enum ChannelType {
    */
   @Deprecated
   LEGACY_POS;
-
-  /**
-   * Initialize object.
-   */
-  private ChannelType( ) {
-  }
 }

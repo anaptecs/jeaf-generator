@@ -77,7 +77,6 @@ components:
 
 
   schemas:
-
     # com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum
     ExtensibleEnum:
       type: string
@@ -211,7 +210,6 @@ components:
           nullable: false
           readOnly: true
           default: true
-
 
     # com.anaptecs.jeaf.junit.openapi.base.ChannelType
     ChannelType:
@@ -408,7 +406,6 @@ components:
           type: string
           format: date-time
           nullable: false
-
 
     # com.anaptecs.jeaf.junit.openapi.base.DeprecatedEnum
     DeprecatedEnum:
@@ -1341,7 +1338,6 @@ components:
         - $ref: '#/components/schemas/GeoPosition'
         - type: object
           additionalProperties: false
-
 
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
     TimeUnit:
