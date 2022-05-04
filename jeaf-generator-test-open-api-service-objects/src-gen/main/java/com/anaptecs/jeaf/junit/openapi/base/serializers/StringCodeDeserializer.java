@@ -30,8 +30,8 @@ public class StringCodeDeserializer extends JsonDeserializer<StringCode> {
     }
     // Node is not a TextNode
     else {
-      throw new JEAFSystemException(JSONMessages.UNEXPECTED_NODE_TYPE_FOR_OBJECT_ID_DESERIAL, lNode.toString(),
-          lNode.getClass().getName());
+      throw new JEAFSystemException(JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION, StringCode.class.getName(),
+          lNode.toString(), lNode.getClass().getName());
     }
   }
 }

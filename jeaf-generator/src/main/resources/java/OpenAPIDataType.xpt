@@ -251,7 +251,11 @@
 		    }
 		    // Node is not a TextNode
 		    else {
-		      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.json.api.JSONMessages.UNEXPECTED_NODE_TYPE_FOR_OBJECT_ID_DESERIAL, lNode.toString(), lNode.getClass().getName());
+		      «IF isTargetRuntimeJEAF()»
+		      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.json.api.JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION, «this.fqn()».class.getName(), lNode.toString(), lNode.getClass().getName());
+		      «ELSE»
+		      throw new java.io.IOException("Unable to deserialize object of type «this.fqn()». Expected text node but received other type of JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+ lNode.getClass().getName() + "''.");
+		      «ENDIF»
 		    }
 		    «ENDLET»
 		}
