@@ -567,6 +567,10 @@ components:
     ContinuousMode:
       description: >-
         Types of modes that run at any time without a timetable. Provided by OJP.
+        Known Values:
+        - WALK
+        - DEMAND_RESPONSIVE
+        - REPLACEMENT_SERVICE
       type: string
       x-extensible-enum:
         - WALK
@@ -577,6 +581,18 @@ components:
     TransferMode:
       description: >-
         Modes dedicated to perform transfers. Provided by OJP.
+        Known Values:
+        - WALK
+        - PARK_AND_RIDE
+        - BIKE_AND_RIDE
+        - CAR_HIRE
+        - BIKE_HIRE
+        - PROTECTED_CONNECTION
+        - GUARANTEED_CONNECTION
+        - REMAIN_IN_VEHICLE
+        - CHANGE_WITHIN_VEHICLE
+        - CHECK_IN
+        - CHECK_OUT
       type: string
       x-extensible-enum:
         - WALK
@@ -743,6 +759,20 @@ components:
       description: >-
         Passenger type according to UIC passenger, i.e. passenger type list.
         See https://unioninternationalcheminsdefer.github.io/OSDM/spec/catalog-of-code-lists/
+        Known Values:
+        - DOG
+        - PET
+        - LUGGAGE
+        - PRM
+        - BICYCLE
+        - PRAM
+        - ACCOMP_DOG
+        - CAR
+        - PERSON
+        - MOTOCYCLE
+        - TRAILER
+        - FAMILY_CHILD
+        - WHEELCHAR
       type: string
       x-extensible-enum:
         - DOG
@@ -845,6 +875,9 @@ components:
       description: >-
         Generic class classification, mostly used to harmonize choice and
         representation across multiple carriers.
+        Known Values:
+        - FIRST
+        - SECOND
       type: string
       x-extensible-enum:
         - FIRST
@@ -920,6 +953,11 @@ components:
     VatScope:
       description: >-
         scope where the VAT applies
+        Known Values:
+        - INTERNATIONAL
+        - NATIONAL
+        - SHORT_DISTANCE
+        - LONG_DISTANCE
       type: string
       x-extensible-enum:
         - INTERNATIONAL

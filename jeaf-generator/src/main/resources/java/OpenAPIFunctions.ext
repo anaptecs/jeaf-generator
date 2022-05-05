@@ -310,3 +310,10 @@ cached isResponseApplicable(JMM::OpenAPIResponse response, JMM::RESTOperation op
   then response.httpMethods.intersect(operation.httpMethods).size > 1
   else true;
   
+cached hasOpenAPIComment(JMM::OpenAPIEnumeration enum):
+  if enum.hasComment()
+  then true
+  else 
+    if enum.ownedLiteral.select(e|e.hasComment()).isEmpty == false
+    then true
+    else enum.ownedLiteral.select(e|e.isDeprecated()).isEmpty == false;

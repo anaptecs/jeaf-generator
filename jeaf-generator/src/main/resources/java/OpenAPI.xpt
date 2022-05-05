@@ -580,9 +580,19 @@ components:
     # «this.fqn()»
     «ENDIF-»
     «this.name»:
-      «IF this.hasComment()-»
+      «IF this.hasOpenAPIComment()-»
       description: >-
+        «IF this.hasComment() -»
         «this.getCommentForOpenAPIDescription("        ")»
+        «ENDIF-»
+        «IF this.extensibleEnum == true-»
+        Known Values:
+        «ELSE-»
+        Valid Values:
+        «ENDIF-»
+        «FOREACH this.ownedLiteral AS literal-»
+        - «IF literal.isDeprecated() -»@Deprecated «ENDIF»«literal.name»«IF literal.hasComment()»: «literal.getCommentForOpenAPIDescription("            ")»«ENDIF»
+        «ENDFOREACH-»
       «ENDIF-»        
       type: string
       «IF this.isDeprecated() -»
@@ -594,12 +604,6 @@ components:
       enum:
       «ENDIF-»
         «FOREACH this.ownedLiteral AS literal-»        
-        «IF literal.hasComment()-»
-        # «literal.getYAMLStyleComment("        ")»
-        «ENDIF-»
-        «IF literal.isDeprecated() -»
-        # Literal "«literal.name»" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
-        «ENDIF-»
         - «literal.name»
         «ENDFOREACH-»
       «IF this.hasDefaultLiteral()-»

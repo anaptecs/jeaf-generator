@@ -220,7 +220,6 @@ components:
         - MOBILE
         - TVM
         - WEB
-        # Literal "LEGACY_POS" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
         - LEGACY_POS
       default: MOBILE
 
@@ -1346,14 +1345,19 @@ components:
              
         NOVA 14 Mapping
         * nova-base.xsd.ZeitEinheit
+        Valid Values:
+        - MINUTE: Literal represents time unit "minutes".
+        - HOUR
+        - DAY
+        - WEEK: Literal represents time unit "weeks".
+        # This is the comments second line ;-)
+        - MONTH
+        - YEAR
       type: string
       enum:
-        # Literal represents time unit "minutes".
         - MINUTE
         - HOUR
         - DAY
-        # Literal represents time unit "weeks".
-        # This is the comments second line ;-)
         - WEEK
         - MONTH
         - YEAR
