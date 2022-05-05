@@ -1241,7 +1241,7 @@ public class GeneratorMojo extends AbstractMojo {
       // Execute Maven plugin to format sources.
       List<Dependency> lDependencies = MojoExecutor.dependencies(MojoExecutor.dependency("com.anaptecs.jeaf.generator",
           "jeaf-generator-code-styles", XFun.getVersionInfo().getVersionString()));
-      Plugin lFormatterPlugin = plugin("net.revelc.code.formatter", "formatter-maven-plugin", "2.13.0", lDependencies);
+      Plugin lFormatterPlugin = plugin("net.revelc.code.formatter", "formatter-maven-plugin", "2.16.0", lDependencies);
       String lFormatterGoal = goal("format");
       Xpp3Dom lFormatterConfiguration = configuration(element("configFile", javaFormatterStyleFile),
           element("configXmlFile", xmlFormatterStyleFile), this.createDirectoryElementConfiguration());
