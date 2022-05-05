@@ -1,35 +1,35 @@
-«EXTENSION java::Naming»
-«EXTENSION java::GeneratorCommons»
-«EXTENSION java::OpenAPIFunctions»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION java::OpenAPIFunctionsÂ»
 
-«IMPORT uml»
-«IMPORT JMM»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
 
-«DEFINE GenerateOpenAPISecurityScheme FOR OpenAPISecurityScheme -»
-    «this.name»:
-      type: «this.type.name»
-      «IF this.hasComment()-»
+Â«DEFINE GenerateOpenAPISecurityScheme FOR OpenAPISecurityScheme -Â»
+    Â«this.nameÂ»:
+      type: Â«this.type.nameÂ»
+      Â«IF this.hasComment()-Â»
       description: >-
-        «this.getCommentForOpenAPIDescription("        ")»
-      «ENDIF-»
+        Â«this.getCommentForOpenAPIDescription("        ")Â»
+      Â«ENDIF-Â»
       flows:
-      «FOREACH this.clientDependency.supplier.typeSelect(OAuthFlow).sortBy(e|e.flowType.name) AS flow -»
-        «flow.flowType.name»:
-          «IF this.type.name == "oauth2" && (flow.flowType.name == "implicit" || flow.flowType.name == "authorizationCode") -»
-          authorizationUrl: '«IF flow.authorizationURL.length > 0»«flow.authorizationURL»«ELSE»TODO Please add required authorizationURL«ENDIF»'
-          «ENDIF-»
-          «IF this.type.name == "oauth2" && ( flow.flowType.name == "implicit" || flow.flowType.name == "authorizationCode" || flow.flowType.name == "clientCredentials") -»
-          tokenUrl: '«IF flow.tokenURL.length > 0»«flow.tokenURL»«ELSE»TODO Please add required token URL«ENDIF»'
-          «ENDIF-»
-          «IF this.type.name == "oauth2" -»
-          refreshUrl: '«IF flow.refreshURL.length > 0»«flow.refreshURL»«ELSE»TODO Please add required refresh URL«ENDIF»'
-          «ENDIF-»
-          «IF this.type.name == "oauth2" -»
-          scopes: «IF flow.clientDependency.supplier.typeSelect(OAuthScope).size == 0»{}«ENDIF»
-            «FOREACH flow.clientDependency.supplier.typeSelect(OAuthScope).sortBy(e|e.name) AS scope -»
-            «scope.name»: «scope.description»
-            «ENDFOREACH-»
-          «ENDIF-»
+      Â«FOREACH this.clientDependency.supplier.typeSelect(OAuthFlow).sortBy(e|e.flowType.name) AS flow -Â»
+        Â«flow.flowType.nameÂ»:
+          Â«IF this.type.name == "oauth2" && (flow.flowType.name == "implicit" || flow.flowType.name == "authorizationCode") -Â»
+          authorizationUrl: 'Â«IF flow.authorizationURL.length > 0Â»Â«flow.authorizationURLÂ»Â«ELSEÂ»TODO Please add required authorizationURLÂ«ENDIFÂ»'
+          Â«ENDIF-Â»
+          Â«IF this.type.name == "oauth2" && ( flow.flowType.name == "implicit" || flow.flowType.name == "authorizationCode" || flow.flowType.name == "clientCredentials") -Â»
+          tokenUrl: 'Â«IF flow.tokenURL.length > 0Â»Â«flow.tokenURLÂ»Â«ELSEÂ»TODO Please add required token URLÂ«ENDIFÂ»'
+          Â«ENDIF-Â»
+          Â«IF this.type.name == "oauth2" -Â»
+          refreshUrl: 'Â«IF flow.refreshURL.length > 0Â»Â«flow.refreshURLÂ»Â«ELSEÂ»TODO Please add required refresh URLÂ«ENDIFÂ»'
+          Â«ENDIF-Â»
+          Â«IF this.type.name == "oauth2" -Â»
+          scopes: Â«IF flow.clientDependency.supplier.typeSelect(OAuthScope).size == 0Â»{}Â«ENDIFÂ»
+            Â«FOREACH flow.clientDependency.supplier.typeSelect(OAuthScope).sortBy(e|e.name) AS scope -Â»
+            Â«scope.nameÂ»: Â«scope.descriptionÂ»
+            Â«ENDFOREACH-Â»
+          Â«ENDIF-Â»
 
-      «ENDFOREACH-»
-«ENDDEFINE»
+      Â«ENDFOREACH-Â»
+Â«ENDDEFINEÂ»

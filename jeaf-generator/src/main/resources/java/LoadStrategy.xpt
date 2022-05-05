@@ -1,21 +1,21 @@
-«EXTENSION java::Naming»
-«EXTENSION java::ObjectMapper»
-«EXTENSION java::GeneratorCommons»
-«IMPORT JMM»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::ObjectMapperÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«IMPORT JMMÂ»
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Generate Query Object 
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-«DEFINE LoadStrategyTemplate FOR LoadStrategy»
-	«FILE packagePath() + "/" + name +".java" GenBase»
-	«getFileHeader()»
-	package «this.packageName()»;
+Â«DEFINE LoadStrategyTemplate FOR LoadStrategyÂ»
+	Â«FILE packagePath() + "/" + name +".java" GenBaseÂ»
+	Â«getFileHeader()Â»
+	package Â«this.packageName()Â»;
 	
-	«this.getJavadoc()»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public final class «name» implements com.anaptecs.jeaf.core.api.LoadStrategy {
+	Â«this.getJavadoc()Â»
+	Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+	public final class Â«nameÂ» implements com.anaptecs.jeaf.core.api.LoadStrategy {
 		/**
 		 * Default serial version uid.
 		 */
@@ -24,41 +24,41 @@
     /**
      * Constant load strategy object to load all associations.
      */
-    public static final «name» LOAD_ALL = new «name»(«FOREACH this.attribute AS nextAttribute SEPARATOR ','» true«ENDFOREACH»);
+    public static final Â«nameÂ» LOAD_ALL = new Â«nameÂ»(Â«FOREACH this.attribute AS nextAttribute SEPARATOR ','Â» trueÂ«ENDFOREACHÂ»);
     
     /**
      * Constant load strategy object to load none of the associations.
      */
-    public static final «name» LOAD_NONE = new «name»(«FOREACH this.attribute AS nextAttribute SEPARATOR ','» false«ENDFOREACH»);
+    public static final Â«nameÂ» LOAD_NONE = new Â«nameÂ»(Â«FOREACH this.attribute AS nextAttribute SEPARATOR ','Â» falseÂ«ENDFOREACHÂ»);
     
-    «FOREACH this.attribute AS nextAttribute»
+    Â«FOREACH this.attribute AS nextAttributeÂ»
    
     /**
-     * «nextAttribute.getComment()»
+     * Â«nextAttribute.getComment()Â»
      */
-    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR nextAttribute -»
-    private final boolean «nextAttribute.asInstanceVar()»;
-    «ENDFOREACH»
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR nextAttribute -Â»
+    private final boolean Â«nextAttribute.asInstanceVar()Â»;
+    Â«ENDFOREACHÂ»
     
     /**
      * Initialize object.
      */
-    public «name»(«FOREACH this.attribute AS nextAttribute SEPARATOR ','» boolean «nextAttribute.asParameter()» «ENDFOREACH») {
-    «FOREACH this.attribute AS nextAttribute»
-      «nextAttribute.asInstanceVar()» = «nextAttribute.asParameter()»;«ENDFOREACH»
+    public Â«nameÂ»(Â«FOREACH this.attribute AS nextAttribute SEPARATOR ','Â» boolean Â«nextAttribute.asParameter()Â» Â«ENDFOREACHÂ») {
+    Â«FOREACH this.attribute AS nextAttributeÂ»
+      Â«nextAttribute.asInstanceVar()Â» = Â«nextAttribute.asParameter()Â»;Â«ENDFOREACHÂ»
     }
    
-    «FOREACH this.attribute AS nextAttribute»
+    Â«FOREACH this.attribute AS nextAttributeÂ»
    
     /**
-     * «nextAttribute.getComment()»
+     * Â«nextAttribute.getComment()Â»
      */
-    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR nextAttribute -»
-    public boolean «nextAttribute.asInstanceVar()»() {
-      return «nextAttribute.asInstanceVar()»;
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR nextAttribute -Â»
+    public boolean Â«nextAttribute.asInstanceVar()Â»() {
+      return Â«nextAttribute.asInstanceVar()Â»;
     }
-    «ENDFOREACH»
+    Â«ENDFOREACHÂ»
     
 	}
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»

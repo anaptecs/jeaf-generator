@@ -17,6 +17,8 @@ import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
+ * Chännel € Ö
+ * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */

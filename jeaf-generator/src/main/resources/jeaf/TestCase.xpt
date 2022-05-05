@@ -1,42 +1,42 @@
-«EXTENSION java::Naming»
-«EXTENSION java::GeneratorCommons»
-«EXTENSION entity::ModelProperties»
-«IMPORT uml»
-«IMPORT JMM»
-«IMPORT java»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION entity::ModelPropertiesÂ»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
+Â«IMPORT javaÂ»
 
 
-«DEFINE JEAFTestCaseTemplate FOR JEAFService»
-  «EXPAND TestCaseBaseClass»
-  «EXPAND TestCaseClass»
-«ENDDEFINE»
+Â«DEFINE JEAFTestCaseTemplate FOR JEAFServiceÂ»
+  Â«EXPAND TestCaseBaseClassÂ»
+  Â«EXPAND TestCaseClassÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE TestCaseBaseClass FOR JEAFService»
-«FILE packagePath() + "/test/" + this.getTestCaseBaseName() + ".java" GenBase»
-«getFileHeader()»
-package «packageName()».test;
+Â«DEFINE TestCaseBaseClass FOR JEAFServiceÂ»
+Â«FILE packagePath() + "/test/" + this.getTestCaseBaseName() + ".java" GenBaseÂ»
+Â«getFileHeader()Â»
+package Â«packageName()Â».test;
 
 import com.anaptecs.jeaf.junit.JEAFTestCase;
 
 /**
- * This is the base class of the test suite of service «name».
+ * This is the base class of the test suite of service Â«nameÂ».
  * 
  * @version $LastChangedRevision: 931 $
  */
-public abstract class «this.getTestCaseBaseName()» extends JEAFTestCase {
+public abstract class Â«this.getTestCaseBaseName()Â» extends JEAFTestCase {
 
   /**
    * Service that should be tested by this test case.
    */
   @com.anaptecs.jeaf.core.annotations.JEAFService
-  protected «this.fqn()» «name.toFirstLower()»;
+  protected Â«this.fqn()Â» Â«name.toFirstLower()Â»;
 
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided.
    * 
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    */
-  public «this.getTestCaseBaseName()»( String pName ) {
+  public Â«this.getTestCaseBaseName()Â»( String pName ) {
     super(pName);
   }
 
@@ -48,33 +48,33 @@ public abstract class «this.getTestCaseBaseName()» extends JEAFTestCase {
    * @param pUserId UserId of the User who should be logged in for this Test.
    * @param pPassword Password of the User who should be logged in for this Test.
    */
-  public «this.getTestCaseBaseName()»( String pName, String pUserId, String pPassword ) {
+  public Â«this.getTestCaseBaseName()Â»( String pName, String pUserId, String pPassword ) {
     super(pName, pUserId, pPassword);
   }
 
-  «FOREACH this.getOperationNames().typeSelect(String) AS method»
+  Â«FOREACH this.getOperationNames().typeSelect(String) AS methodÂ»
   /**
-   * Method test the implementation of service method «method»(...)
+   * Method test the implementation of service method Â«methodÂ»(...)
    * 
    * @throws Exception if the test fails.
    */
-  public abstract void test«method.toFirstUpper()»() throws Exception;
-  «ENDFOREACH»
+  public abstract void testÂ«method.toFirstUpper()Â»() throws Exception;
+  Â«ENDFOREACHÂ»
 }
-«ENDFILE»
-«ENDDEFINE»
+Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE TestCaseClass FOR JEAFService»
-«FILE packagePath() + "/test/" + this.getTestCaseName() + ".java" GenOnce»
-«getFileHeader()»
-package «packageName()».test;
+Â«DEFINE TestCaseClass FOR JEAFServiceÂ»
+Â«FILE packagePath() + "/test/" + this.getTestCaseName() + ".java" GenOnceÂ»
+Â«getFileHeader()Â»
+package Â«packageName()Â».test;
 
 import junit.framework.TestSuite;
 
 /**
- * This class implements the test suite for service «name».
+ * This class implements the test suite for service Â«nameÂ».
  */
-public class «this.getTestCaseName()» extends «this.getTestCaseBaseName()» {
+public class Â«this.getTestCaseName()Â» extends Â«this.getTestCaseBaseName()Â» {
   /**
    * Method creates a test suite contain all tests of this class.
    * 
@@ -82,11 +82,11 @@ public class «this.getTestCaseName()» extends «this.getTestCaseBaseName()» {
    */
   public static TestSuite suite( ) {
     // Create new test suite.
-    TestSuite lSuite = new TestSuite("«this.getTestCaseName()»");
+    TestSuite lSuite = new TestSuite("Â«this.getTestCaseName()Â»");
 
     // Add all test of this class.
-    «FOREACH this.getOperationNames().typeSelect(String) AS name»
-    lSuite.addTest(new «this.getTestCaseName()»("test«name.toFirstUpper()»"));«ENDFOREACH»
+    Â«FOREACH this.getOperationNames().typeSelect(String) AS nameÂ»
+    lSuite.addTest(new Â«this.getTestCaseName()Â»("testÂ«name.toFirstUpper()Â»"));Â«ENDFOREACHÂ»
 
     // Return created test suite.
     return lSuite;
@@ -97,7 +97,7 @@ public class «this.getTestCaseName()» extends «this.getTestCaseBaseName()» {
    * 
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    */
-  public «this.getTestCaseName()»( String pName ) {
+  public Â«this.getTestCaseName()Â»( String pName ) {
     super(pName);
   }
 
@@ -109,7 +109,7 @@ public class «this.getTestCaseName()» extends «this.getTestCaseBaseName()» {
    * @param pUserId UserId of the User who should be logged in for this Test.
    * @param pPassword Password of the User who should be logged in for this Test.
    */
-  public «this.getTestCaseName()»( String pName, String pUserId, String pPassword ) {
+  public Â«this.getTestCaseName()Â»( String pName, String pUserId, String pPassword ) {
     super(pName, pUserId, pPassword);
   }
 
@@ -126,18 +126,18 @@ public class «this.getTestCaseName()» extends «this.getTestCaseBaseName()» {
     // TODO Add additional initializations if required.
   }
 
-	«FOREACH this.getOperationNames().typeSelect(String) AS name»
+	Â«FOREACH this.getOperationNames().typeSelect(String) AS nameÂ»
   /**
-   * Method test the implementation of service method «name»
+   * Method test the implementation of service method Â«nameÂ»
    * 
    * @throws Exception if a test fails.
    */
   @Override
-  public void test«name.toFirstUpper()»( ) throws Exception {
-    // TODO Implement test for service method «name»(...)
+  public void testÂ«name.toFirstUpper()Â»( ) throws Exception {
+    // TODO Implement test for service method Â«nameÂ»(...)
   }
-  «ENDFOREACH»
+  Â«ENDFOREACHÂ»
 }
-«ENDFILE»
-«ENDDEFINE»
+Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 

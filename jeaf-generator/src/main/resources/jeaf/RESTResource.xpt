@@ -1,69 +1,69 @@
-«EXTENSION java::Naming»
-«EXTENSION java::GeneratorCommons»
-«EXTENSION java::OpenAPIFunctions»
-«EXTENSION entity::ModelProperties»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION java::OpenAPIFunctionsÂ»
+Â«EXTENSION entity::ModelPropertiesÂ»
 
-«IMPORT uml»
-«IMPORT JMM»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
 
-«DEFINE RESTResourceClass FOR RESTResource»
-«FILE packagePath()+"/"+name+"Resource.java" GenBase»
-«getFileHeader()»
-package «packageName()»;
+Â«DEFINE RESTResourceClass FOR RESTResourceÂ»
+Â«FILE packagePath()+"/"+name+"Resource.java" GenBaseÂ»
+Â«getFileHeader()Â»
+package Â«packageName()Â»;
 
-«this.getJavadoc()»
-«IF path.length > 0»@javax.ws.rs.Path("«path»")«ENDIF»
-«IF consumes.size > 0»@javax.ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
-«IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
-«EXPAND java::Helper::GenerateDeprecationAnnotation -»
-public class «name»Resource {
-	«EXPAND RESTOperationImpl FOREACH ownedOperation.typeSelect(RESTOperation)»
+Â«this.getJavadoc()Â»
+Â«IF path.length > 0Â»@javax.ws.rs.Path("Â«pathÂ»")Â«ENDIFÂ»
+Â«IF consumes.size > 0Â»@javax.ws.rs.Consumes(Â«IF consumes.size > 1Â»{Â«ENDIFÂ»Â«FOREACH consumes AS mediaType SEPARATOR ","Â»javax.ws.rs.core.MediaType.Â«mediaTypeÂ»Â«ENDFOREACHÂ»Â«IF consumes.size > 1Â»}Â«ENDIFÂ»)Â«ENDIFÂ»
+Â«IF produces.size > 0Â»@javax.ws.rs.Produces(Â«IF produces.size > 1Â»{Â«ENDIFÂ»Â«FOREACH produces AS mediaType SEPARATOR ","Â»javax.ws.rs.core.MediaType.Â«mediaTypeÂ»Â«ENDFOREACHÂ»Â«IF produces.size > 1Â»}Â«ENDIFÂ»)Â«ENDIFÂ»
+Â«EXPAND java::Helper::GenerateDeprecationAnnotation -Â»
+public class Â«nameÂ»Resource {
+	Â«EXPAND RESTOperationImpl FOREACH ownedOperation.typeSelect(RESTOperation)Â»
 }
-«ENDFILE»
-«ENDDEFINE»
+Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
 
-«DEFINE RESTOperationImpl FOR RESTOperation»
-	«IF async == false»
-		«EXPAND SyncRESTOperationImpl FOR this»
-	«ELSE»
-		«EXPAND AsyncRESTOperationImpl FOR this»
-	«ENDIF»	
-«ENDDEFINE»
+Â«DEFINE RESTOperationImpl FOR RESTOperationÂ»
+	Â«IF async == falseÂ»
+		Â«EXPAND SyncRESTOperationImpl FOR thisÂ»
+	Â«ELSEÂ»
+		Â«EXPAND AsyncRESTOperationImpl FOR thisÂ»
+	Â«ENDIFÂ»	
+Â«ENDDEFINEÂ»
 
-«DEFINE SyncRESTOperationImpl FOR RESTOperation»
+Â«DEFINE SyncRESTOperationImpl FOR RESTOperationÂ»
 	/**
-	 * {@link «this.getOwningClass().fqn()»#«name»()}
+	 * {@link Â«this.getOwningClass().fqn()Â»#Â«nameÂ»()}
 	 */
-	«IF path.length > 0»@javax.ws.rs.Path("«path»")«ENDIF»
-	«EXPAND HTTPMethods»
-	«IF consumes.size > 0»@javax.ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
-	«IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
-	public javax.ws.rs.core.Response  «name» («EXPAND RESTParameterSignature FOR this»)«getThrownExceptionsAsString()»{
-	  «this.getOwningClass().fqn()» lService = com.anaptecs.jeaf.core.api.JEAF.getService(«this.getOwningClass().fqn()».class);
-	  «IF getReturnTypeName() != "void"»
-	  «getReturnTypeName()» lResult = lService.«this.name»(«this.asParameterListNames()»);
-	  return javax.ws.rs.core.Response.status(«EXPAND StatusCode»).entity(lResult).build();
-	  «ELSE»
-	  lService.«this.name»(«this.asParameterListNames()»);
-	  return javax.ws.rs.core.Response.status(«EXPAND StatusCode»).build();
-	  «ENDIF»
+	Â«IF path.length > 0Â»@javax.ws.rs.Path("Â«pathÂ»")Â«ENDIFÂ»
+	Â«EXPAND HTTPMethodsÂ»
+	Â«IF consumes.size > 0Â»@javax.ws.rs.Consumes(Â«IF consumes.size > 1Â»{Â«ENDIFÂ»Â«FOREACH consumes AS mediaType SEPARATOR ","Â»javax.ws.rs.core.MediaType.Â«mediaTypeÂ»Â«ENDFOREACHÂ»Â«IF consumes.size > 1Â»}Â«ENDIFÂ»)Â«ENDIFÂ»
+	Â«IF produces.size > 0Â»@javax.ws.rs.Produces(Â«IF produces.size > 1Â»{Â«ENDIFÂ»Â«FOREACH produces AS mediaType SEPARATOR ","Â»javax.ws.rs.core.MediaType.Â«mediaTypeÂ»Â«ENDFOREACHÂ»Â«IF produces.size > 1Â»}Â«ENDIFÂ»)Â«ENDIFÂ»
+	Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+	Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-Â»
+	public javax.ws.rs.core.Response  Â«nameÂ» (Â«EXPAND RESTParameterSignature FOR thisÂ»)Â«getThrownExceptionsAsString()Â»{
+	  Â«this.getOwningClass().fqn()Â» lService = com.anaptecs.jeaf.core.api.JEAF.getService(Â«this.getOwningClass().fqn()Â».class);
+	  Â«IF getReturnTypeName() != "void"Â»
+	  Â«getReturnTypeName()Â» lResult = lService.Â«this.nameÂ»(Â«this.asParameterListNames()Â»);
+	  return javax.ws.rs.core.Response.status(Â«EXPAND StatusCodeÂ»).entity(lResult).build();
+	  Â«ELSEÂ»
+	  lService.Â«this.nameÂ»(Â«this.asParameterListNames()Â»);
+	  return javax.ws.rs.core.Response.status(Â«EXPAND StatusCodeÂ»).build();
+	  Â«ENDIFÂ»
 	}
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«DEFINE AsyncRESTOperationImpl FOR RESTOperation»
+Â«DEFINE AsyncRESTOperationImpl FOR RESTOperationÂ»
 	/**
-	 * {@link «this.getOwningClass().fqn()»#«name»()}
+	 * {@link Â«this.getOwningClass().fqn()Â»#Â«nameÂ»()}
 	 */
-	«IF path.length > 0»@javax.ws.rs.Path("«path»")«ENDIF»
-	«EXPAND HTTPMethods»
-	«IF consumes.size > 0»@javax.ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
-	«IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation -»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
-	public void  «name» (@javax.ws.rs.container.Suspended javax.ws.rs.container.AsyncResponse pAsyncResponse, @javax.ws.rs.core.Context javax.servlet.http.HttpServletRequest pRequest «IF ownedParameter.size > 0»,«ENDIF» «EXPAND JEAFOperation::ParameterSignature FOR this»)«getThrownExceptionsAsString()»{
+	Â«IF path.length > 0Â»@javax.ws.rs.Path("Â«pathÂ»")Â«ENDIFÂ»
+	Â«EXPAND HTTPMethodsÂ»
+	Â«IF consumes.size > 0Â»@javax.ws.rs.Consumes(Â«IF consumes.size > 1Â»{Â«ENDIFÂ»Â«FOREACH consumes AS mediaType SEPARATOR ","Â»javax.ws.rs.core.MediaType.Â«mediaTypeÂ»Â«ENDFOREACHÂ»Â«IF consumes.size > 1Â»}Â«ENDIFÂ»)Â«ENDIFÂ»
+	Â«IF produces.size > 0Â»@javax.ws.rs.Produces(Â«IF produces.size > 1Â»{Â«ENDIFÂ»Â«FOREACH produces AS mediaType SEPARATOR ","Â»javax.ws.rs.core.MediaType.Â«mediaTypeÂ»Â«ENDFOREACHÂ»Â«IF produces.size > 1Â»}Â«ENDIFÂ»)Â«ENDIFÂ»
+	Â«EXPAND java::Helper::GenerateDeprecationAnnotation -Â»
+	Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-Â»
+	public void  Â«nameÂ» (@javax.ws.rs.container.Suspended javax.ws.rs.container.AsyncResponse pAsyncResponse, @javax.ws.rs.core.Context javax.servlet.http.HttpServletRequest pRequest Â«IF ownedParameter.size > 0Â»,Â«ENDIFÂ» Â«EXPAND JEAFOperation::ParameterSignature FOR thisÂ»)Â«getThrownExceptionsAsString()Â»{
 	    // Lookup workload manager that takes care that the system will have an optimal throughput.
 	    com.anaptecs.jeaf.workload.api.WorkloadManager lWorkloadManager = com.anaptecs.jeaf.workload.api.Workload.getWorkloadManager();
 	
@@ -76,15 +76,15 @@ public class «name»Resource {
 			public void run( ) {
 			    try {
 				    // As soon as the request is executed the service call will be performed.
-					«this.getOwningClass().fqn()» lService = com.anaptecs.jeaf.core.api.JEAF.getService(«this.getOwningClass().fqn()».class);
+					Â«this.getOwningClass().fqn()Â» lService = com.anaptecs.jeaf.core.api.JEAF.getService(Â«this.getOwningClass().fqn()Â».class);
 				
-					«IF getReturnTypeName() != "void"»
-					«getReturnTypeName()» lResult = lService.«this.name»(«this.asParameterListNames()»);
-					javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response.status(«EXPAND StatusCode»).entity(lResult).build();
-					«ELSE»
-					lService.«this.name»(«this.asParameterListNames()»);
-					javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response.ok().status(«EXPAND StatusCode»).build();
-					«ENDIF»
+					Â«IF getReturnTypeName() != "void"Â»
+					Â«getReturnTypeName()Â» lResult = lService.Â«this.nameÂ»(Â«this.asParameterListNames()Â»);
+					javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response.status(Â«EXPAND StatusCodeÂ»).entity(lResult).build();
+					Â«ELSEÂ»
+					lService.Â«this.nameÂ»(Â«this.asParameterListNames()Â»);
+					javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response.ok().status(Â«EXPAND StatusCodeÂ»).build();
+					Â«ENDIFÂ»
 			
 					// Due to the asynchronous processing of the requests, the response can not be returned as return value. Therefore we make use of the defined JAX-RS mechanisms.
 					pAsyncResponse.resume(lResponseObject);
@@ -97,51 +97,51 @@ public class «name»Resource {
 			}
 		});
 	}
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«DEFINE StatusCode FOR RESTOperation»
-	«IF statusCode != null && statusCode.name.length > 0»
-		javax.ws.rs.core.Response.Status.«getJAXRSStatusCodeName(statusCode.name)»
-	«ELSE»
-		javax.ws.rs.core.Response.Status.OK»
-	«ENDIF»
-«ENDDEFINE»
+Â«DEFINE StatusCode FOR RESTOperationÂ»
+	Â«IF statusCode != null && statusCode.name.length > 0Â»
+		javax.ws.rs.core.Response.Status.Â«getJAXRSStatusCodeName(statusCode.name)Â»
+	Â«ELSEÂ»
+		javax.ws.rs.core.Response.Status.OKÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE HTTPMethods FOR RESTOperation»
-	«FOREACH httpMethods AS method»@javax.ws.rs.«method»«ENDFOREACH»
-«ENDDEFINE»
+Â«DEFINE HTTPMethods FOR RESTOperationÂ»
+	Â«FOREACH httpMethods AS methodÂ»@javax.ws.rs.Â«methodÂ»Â«ENDFOREACHÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE RESTParameterSignature FOR Operation»
-  «EXPAND RESTParameterDefinition FOREACH ownedParameter.select(e| e.isInputParameter()) SEPARATOR ", "» 
-«ENDDEFINE»
+Â«DEFINE RESTParameterSignature FOR OperationÂ»
+  Â«EXPAND RESTParameterDefinition FOREACH ownedParameter.select(e| e.isInputParameter()) SEPARATOR ", "Â» 
+Â«ENDDEFINEÂ»
 
-«DEFINE RESTParameterDefinition FOR Parameter»
-  «IF this.isStereotypeApplied("PathParam") -»
-  @javax.ws.rs.PathParam("«((PathParam) this).value-»")
-  «ENDIF-»
-  «IF this.isStereotypeApplied("HeaderParam") -»
-  @javax.ws.rs.HeaderParam("«((HeaderParam) this).value-»")
-  «ENDIF-»
-  «IF this.isStereotypeApplied("QueryParam") -»
-  @javax.ws.rs.QueryParam("«((QueryParam) this).value-»")
-  «ENDIF-»
-  «IF this.isStereotypeApplied("CookieParam") -»
-  @javax.ws.rs.CookieParam("«((CookieParam) this).value-»")
-  «ENDIF-»
-  «IF this.isStereotypeApplied("BeanParam") -»
+Â«DEFINE RESTParameterDefinition FOR ParameterÂ»
+  Â«IF this.isStereotypeApplied("PathParam") -Â»
+  @javax.ws.rs.PathParam("Â«((PathParam) this).value-Â»")
+  Â«ENDIF-Â»
+  Â«IF this.isStereotypeApplied("HeaderParam") -Â»
+  @javax.ws.rs.HeaderParam("Â«((HeaderParam) this).value-Â»")
+  Â«ENDIF-Â»
+  Â«IF this.isStereotypeApplied("QueryParam") -Â»
+  @javax.ws.rs.QueryParam("Â«((QueryParam) this).value-Â»")
+  Â«ENDIF-Â»
+  Â«IF this.isStereotypeApplied("CookieParam") -Â»
+  @javax.ws.rs.CookieParam("Â«((CookieParam) this).value-Â»")
+  Â«ENDIF-Â»
+  Â«IF this.isStereotypeApplied("BeanParam") -Â»
   @javax.ws.rs.BeanParam 
-  «ENDIF-»
-  «IF this.type.isStereotypeApplied("BeanParam") -»
+  Â«ENDIF-Â»
+  Â«IF this.type.isStereotypeApplied("BeanParam") -Â»
   @javax.ws.rs.BeanParam
-  «ENDIF-»
-  «IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()»
-  @javax.ws.rs.DefaultValue("«this.getDefaultValueForEnum()»")
-  «ENDIF»
-  «IF this.type.isBasicType() && this.hasDefaultValueForBasicType()»
-  @javax.ws.rs.DefaultValue("«this.getDefaultValueForBasicType()»")
-  «ENDIF»
+  Â«ENDIF-Â»
+  Â«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()Â»
+  @javax.ws.rs.DefaultValue("Â«this.getDefaultValueForEnum()Â»")
+  Â«ENDIFÂ»
+  Â«IF this.type.isBasicType() && this.hasDefaultValueForBasicType()Â»
+  @javax.ws.rs.DefaultValue("Â«this.getDefaultValueForBasicType()Â»")
+  Â«ENDIFÂ»
 
-  «EXPAND java::Helper::GenerateDeprecationAnnotation»
-  «this.getTypeName()» «this.name»
-«ENDDEFINE»
+  Â«EXPAND java::Helper::GenerateDeprecationAnnotationÂ»
+  Â«this.getTypeName()Â» Â«this.nameÂ»
+Â«ENDDEFINEÂ»
 

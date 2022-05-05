@@ -1,69 +1,69 @@
-«EXTENSION java::Naming»
-«EXTENSION java::GeneratorCommons»
-«IMPORT uml»
-«IMPORT java»
-«IMPORT JMM»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«IMPORT umlÂ»
+Â«IMPORT javaÂ»
+Â«IMPORT JMMÂ»
 
 
-«DEFINE JEAFEnumTemplate FOR JEAFEnumeration»
-«FILE packagePath()+"/"+name+".java" GenBase»
-package «packageName()»;
+Â«DEFINE JEAFEnumTemplate FOR JEAFEnumerationÂ»
+Â«FILE packagePath()+"/"+name+".java" GenBaseÂ»
+package Â«packageName()Â»;
 
 /**
- * «getComment()»
+ * Â«getComment()Â»
  */
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-«IF this.extensibleEnum == false»
-	public enum «name» {
-	«FOREACH this.ownedLiteral AS literal»
+Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+Â«IF this.extensibleEnum == falseÂ»
+	public enum Â«nameÂ» {
+	Â«FOREACH this.ownedLiteral AS literalÂ»
 	  /**
-	   * «literal.getComment()»
+	   * Â«literal.getComment()Â»
 	   */
-	  «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
-	  «literal.name»«IF literal != this.ownedLiteral.last()»,«ELSE»;«ENDIF»
-	«ENDFOREACH»
+	  Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -Â»  
+	  Â«literal.nameÂ»Â«IF literal != this.ownedLiteral.last()Â»,Â«ELSEÂ»;Â«ENDIFÂ»
+	Â«ENDFOREACHÂ»
 	
-	«IF this.ownedAttribute.size > 0»
+	Â«IF this.ownedAttribute.size > 0Â»
 		/**
 		 * Initialize object.
 		 */
-		private «this.name»(«this.ownedAttribute.asParameterDefinitionList()») {
-		  «FOREACH this.ownedAttribute AS attr»
-		  «attr.name» = «attr.asParameter()»;
-		  «ENDFOREACH»
+		private Â«this.nameÂ»(Â«this.ownedAttribute.asParameterDefinitionList()Â») {
+		  Â«FOREACH this.ownedAttribute AS attrÂ»
+		  Â«attr.nameÂ» = Â«attr.asParameter()Â»;
+		  Â«ENDFOREACHÂ»
 		}
-		«EXPAND Attribute::DoPropertyDeclaration FOREACH this.ownedAttribute»
-		«EXPAND Attribute::Getter FOREACH this.ownedAttribute»
-	«ENDIF»
-«ELSE»
-public final class «name» {
-  public static enum «name»Type {
-	«FOREACH this.ownedLiteral AS literal»
+		Â«EXPAND Attribute::DoPropertyDeclaration FOREACH this.ownedAttributeÂ»
+		Â«EXPAND Attribute::Getter FOREACH this.ownedAttributeÂ»
+	Â«ENDIFÂ»
+Â«ELSEÂ»
+public final class Â«nameÂ» {
+  public static enum Â«nameÂ»Type {
+	Â«FOREACH this.ownedLiteral AS literalÂ»
 	  /**
-	   * «literal.getComment()»
+	   * Â«literal.getComment()Â»
 	   */
-	  «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
-	  «literal.name»,
-	«ENDFOREACH»
+	  Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -Â»  
+	  Â«literal.nameÂ»,
+	Â«ENDFOREACHÂ»
 	  /**
 	   * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external interface. 
 	   */
 	  UNKNOWN;
   }
 
-  «FOREACH this.ownedLiteral AS literal»
+  Â«FOREACH this.ownedLiteral AS literalÂ»
   /**
-   * «literal.getComment()»
+   * Â«literal.getComment()Â»
    */
-  «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
-  public static final «name» «literal.name» = new «name»(«name»Type.«literal.name»);
-  «ENDFOREACH»
+  Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -Â»  
+  public static final Â«nameÂ» Â«literal.nameÂ» = new Â«nameÂ»(Â«nameÂ»Type.Â«literal.nameÂ»);
+  Â«ENDFOREACHÂ»
 	
 	
   /**
    * Literal of the enumeration that is represented by this instance.
    */
-  private «name»Type literal;
+  private Â«nameÂ»Type literal;
 	
   /**
    * In case that the literal is unknown then also it's actual name is still available as <code>unknownLiteralName</code>
@@ -78,22 +78,22 @@ public final class «name» {
    * must not be null.
    * @return
    */
-  public static «name» valueOf( String pLiteralName ) {
-    «name» lEnum;
+  public static Â«nameÂ» valueOf( String pLiteralName ) {
+    Â«nameÂ» lEnum;
     try {
-      «name»Type lEnumValue = Enum.valueOf(«name»Type.class, pLiteralName);
+      Â«nameÂ»Type lEnumValue = Enum.valueOf(Â«nameÂ»Type.class, pLiteralName);
       switch (lEnumValue) {
-        «FOREACH this.ownedLiteral AS literal»
-        case «literal.name»:
-          lEnum = «literal.name»;
+        Â«FOREACH this.ownedLiteral AS literalÂ»
+        case Â«literal.nameÂ»:
+          lEnum = Â«literal.nameÂ»;
           break;
-        «ENDFOREACH»
+        Â«ENDFOREACHÂ»
         default:
-          lEnum = new «name»(lEnumValue);
+          lEnum = new Â«nameÂ»(lEnumValue);
       }
     }
     catch (IllegalArgumentException e) {
-      lEnum = new «name»(pLiteralName);
+      lEnum = new Â«nameÂ»(pLiteralName);
     }
     return lEnum;
   }
@@ -103,10 +103,10 @@ public final class «name» {
    * 
    * @param pLiteral Enumeration literal that should be used to initialize the extensible enumeration. The parameter must not be null.
    */
-  public «name»( «name»Type pLiteral ) {
-    «IF isTargetRuntimeJEAF()»
+  public Â«nameÂ»( Â«nameÂ»Type pLiteral ) {
+    Â«IF isTargetRuntimeJEAF()Â»
     com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pLiteral, "pLiteral");
-    «ENDIF»
+    Â«ENDIFÂ»
     literal = pLiteral;
     unknownLiteralName = null;
   }
@@ -116,16 +116,16 @@ public final class «name» {
    * 
    * @param pLiteralName Literal name that should be used to initialize the extensible enumeration. If the parameter is null or has an unknown literal name then a "unknown" version will be created.
    * 
-   * @see «name»#isUnknownLiteral()
+   * @see Â«nameÂ»#isUnknownLiteral()
    */
-  public «name»( String pLiteralName ) {
+  public Â«nameÂ»( String pLiteralName ) {
     try {
-      literal = Enum.valueOf(«name»Type.class, pLiteralName);
+      literal = Enum.valueOf(Â«nameÂ»Type.class, pLiteralName);
       unknownLiteralName = null;
     }
     // Literal is unknown
     catch (IllegalArgumentException e) {
-      literal = «name»Type.UNKNOWN;
+      literal = Â«nameÂ»Type.UNKNOWN;
       unknownLiteralName = pLiteralName;
     }
   }
@@ -133,9 +133,9 @@ public final class «name» {
   /**
    * Method returns the literal that is represented by this object.
    * 
-   * @return {@link «name»} Literal that is represented by this object. The method never returns null.
+   * @return {@link Â«nameÂ»} Literal that is represented by this object. The method never returns null.
    */
-  public «name»Type getLiteral( ) {
+  public Â«nameÂ»Type getLiteral( ) {
     return literal;
   }
 
@@ -145,7 +145,7 @@ public final class «name» {
    * @return boolean Method returns true if this object represents an unknown literal.
    */
   public boolean isUnknownLiteral( ) {
-    return literal == «name»Type.UNKNOWN;
+    return literal == Â«nameÂ»Type.UNKNOWN;
   }
 
   /**
@@ -184,7 +184,7 @@ public final class «name» {
       }
       // Passed object is of same type
       else if (this.getClass() == pObject.getClass()) {
-        «name» lEnum = («name») pObject;
+        Â«nameÂ» lEnum = (Â«nameÂ») pObject;
 
         // Compare if unknown literal is the same
         if (this.isUnknownLiteral() && lEnum.isUnknownLiteral()) {
@@ -214,23 +214,23 @@ public final class «name» {
     }
     return lEquals;
   }
-«ENDIF»
+Â«ENDIFÂ»
 }
-«ENDFILE»
-«ENDDEFINE»
+Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateExtensibleEnumSerializer FOR JEAFEnumeration -»
-	«FILE packagePath() + "/serializers/" + name +"Serializer.java" GenBase»
-		«getFileHeader()»
-		package «this.packageName()».serializers;
+Â«DEFINE GenerateExtensibleEnumSerializer FOR JEAFEnumeration -Â»
+	Â«FILE packagePath() + "/serializers/" + name +"Serializer.java" GenBaseÂ»
+		Â«getFileHeader()Â»
+		package Â«this.packageName()Â».serializers;
 		
-		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
 		/**
-		 * Class implements a JSON / Jackson serializer for class «name».
+		 * Class implements a JSON / Jackson serializer for class Â«nameÂ».
 		 */
-		public class «name»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<«name»> {
+		public class Â«nameÂ»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<Â«nameÂ»> {
 		  @Override
-		  public void serialize( «this.fqn()» pObject, com.fasterxml.jackson.core.JsonGenerator pGenerator, com.fasterxml.jackson.databind.SerializerProvider pSerializers )
+		  public void serialize( Â«this.fqn()Â» pObject, com.fasterxml.jackson.core.JsonGenerator pGenerator, com.fasterxml.jackson.databind.SerializerProvider pSerializers )
 		    throws java.io.IOException {
 
 		    // Resolve name of enum literal
@@ -252,29 +252,29 @@ public final class «name» {
 		    pGenerator.writeString(lLiteralName);
 		  }		    
 		}
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateExtensibleEnumDeserializer FOR JEAFEnumeration -»
-	«FILE packagePath() + "/serializers/" + name +"Deserializer.java" GenBase»
-		«getFileHeader()»
-		package «this.packageName()».serializers;
+Â«DEFINE GenerateExtensibleEnumDeserializer FOR JEAFEnumeration -Â»
+	Â«FILE packagePath() + "/serializers/" + name +"Deserializer.java" GenBaseÂ»
+		Â«getFileHeader()Â»
+		package Â«this.packageName()Â».serializers;
 		
-		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
 		/**
-		 * Class implements a JSON / Jackson deserializer for class «name».
+		 * Class implements a JSON / Jackson deserializer for class Â«nameÂ».
 		 */
-		public class «name»Deserializer extends com.fasterxml.jackson.databind.JsonDeserializer<«this.fqn()»> {
+		public class Â«nameÂ»Deserializer extends com.fasterxml.jackson.databind.JsonDeserializer<Â«this.fqn()Â»> {
 
 		@Override
-		public «this.fqn()» deserialize( com.fasterxml.jackson.core.JsonParser pParser, com.fasterxml.jackson.databind.DeserializationContext pContext ) throws java.io.IOException {
+		public Â«this.fqn()Â» deserialize( com.fasterxml.jackson.core.JsonParser pParser, com.fasterxml.jackson.databind.DeserializationContext pContext ) throws java.io.IOException {
 			// Parse JSON content.
 			com.fasterxml.jackson.databind.JsonNode lNode = pParser.getCodec().readTree(pParser);
 		
 		    // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
 		    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
 		      String lLiteralName = lNode.asText();
-		      return «this.fqn()».valueOf(lLiteralName);
+		      return Â«this.fqn()Â».valueOf(lLiteralName);
 		    }
 		    // Node is not a TextNode
 		    else {
@@ -282,5 +282,5 @@ public final class «name» {
 		    }
 		}
 	}
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»

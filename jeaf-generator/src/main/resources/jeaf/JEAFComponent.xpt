@@ -1,69 +1,69 @@
-«EXTENSION java::Naming»
-«EXTENSION java::GeneratorCommons»
-«EXTENSION entity::ModelProperties»
-«IMPORT uml»
-«IMPORT JMM»
-«IMPORT java»
-«IMPORT entity»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION entity::ModelPropertiesÂ»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
+Â«IMPORT javaÂ»
+Â«IMPORT entityÂ»
 
-«DEFINE JEAFComponentImplClasses FOR JEAFComponent»	
-	«REM» Create component configuration class «ENDREM»
-	«EXPAND CreateComponentConfigurationClass FOR this»
+Â«DEFINE JEAFComponentImplClasses FOR JEAFComponentÂ»	
+	Â«REMÂ» Create component configuration class Â«ENDREMÂ»
+	Â«EXPAND CreateComponentConfigurationClass FOR thisÂ»
 	
-	«REM» Handle all direct services of the current component «ENDREM»
-	«FOREACH this.getJeafServices().typeSelect(JEAFService) AS jeafService»
-		«REM» Create service impl base class for component «ENDREM»
-		«EXPAND CreateServiceImplBaseForComponent(this) FOR jeafService»
+	Â«REMÂ» Handle all direct services of the current component Â«ENDREMÂ»
+	Â«FOREACH this.getJeafServices().typeSelect(JEAFService) AS jeafServiceÂ»
+		Â«REMÂ» Create service impl base class for component Â«ENDREMÂ»
+		Â«EXPAND CreateServiceImplBaseForComponent(this) FOR jeafServiceÂ»
 		
-        «REM» Create service implementation. «ENDREM»
-		«EXPAND CreateServiceImpl(this, jeafService.name+"ImplBase") FOR jeafService»
-    «ENDFOREACH»
+        Â«REMÂ» Create service implementation. Â«ENDREMÂ»
+		Â«EXPAND CreateServiceImpl(this, jeafService.name+"ImplBase") FOR jeafServiceÂ»
+    Â«ENDFOREACHÂ»
     
-    «REM» Handle all port of the current component «ENDREM»
-    «FOREACH this.ownedPort AS port»
-        «REM» Create port base class. «ENDREM»
-        «EXPAND CreatePortBaseClass((Component) port.owner) FOR port»
+    Â«REMÂ» Handle all port of the current component Â«ENDREMÂ»
+    Â«FOREACH this.ownedPort AS portÂ»
+        Â«REMÂ» Create port base class. Â«ENDREMÂ»
+        Â«EXPAND CreatePortBaseClass((Component) port.owner) FOR portÂ»
         
-        «REM» Create port implementation. «ENDREM»
-        «EXPAND CreatePort FOR port»
+        Â«REMÂ» Create port implementation. Â«ENDREMÂ»
+        Â«EXPAND CreatePort FOR portÂ»
         
-        «FOREACH port.getJEAFServices().typeSelect(JEAFService) AS jeafService»
-            «REM» Create port service impl base class that is specific to the usage of ports. «ENDREM»
-            «EXPAND CreateServiceImplBaseForPort(port) FOR jeafService»
+        Â«FOREACH port.getJEAFServices().typeSelect(JEAFService) AS jeafServiceÂ»
+            Â«REMÂ» Create port service impl base class that is specific to the usage of ports. Â«ENDREMÂ»
+            Â«EXPAND CreateServiceImplBaseForPort(port) FOR jeafServiceÂ»
             
-			«EXPAND CreateServiceImpl(port.type, jeafService.name+"ImplBase") FOR jeafService»
-        «ENDFOREACH»
-    «ENDFOREACH»
-«ENDDEFINE»
+			Â«EXPAND CreateServiceImpl(port.type, jeafService.name+"ImplBase") FOR jeafServiceÂ»
+        Â«ENDFOREACHÂ»
+    Â«ENDFOREACHÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE JEAFComponentRuntimeClasses FOR JEAFComponent»	
-	«REM» Create component class «ENDREM»
-	«EXPAND CreateComponentClass FOR this»
+Â«DEFINE JEAFComponentRuntimeClasses FOR JEAFComponentÂ»	
+	Â«REMÂ» Create component class Â«ENDREMÂ»
+	Â«EXPAND CreateComponentClass FOR thisÂ»
 	
-	«REM» Create component factory class «ENDREM»
-	«EXPAND CreateComponentFactory FOR this»
+	Â«REMÂ» Create component factory class Â«ENDREMÂ»
+	Â«EXPAND CreateComponentFactory FOR thisÂ»
 	
-  «REM» Create component factory class «ENDREM»
-  «EXPAND CreateComponentProperties FOR this»
+  Â«REMÂ» Create component factory class Â«ENDREMÂ»
+  Â«EXPAND CreateComponentProperties FOR thisÂ»
   
-  «REM» Handle all direct services of the current component «ENDREM»
-	«FOREACH this.getJeafServices().typeSelect(JEAFService) AS jeafService»
-		«REM» Create service factory for current service. «ENDREM»
-		«EXPAND CreateServiceFactory(this) FOR jeafService»
-    «ENDFOREACH»
+  Â«REMÂ» Handle all direct services of the current component Â«ENDREMÂ»
+	Â«FOREACH this.getJeafServices().typeSelect(JEAFService) AS jeafServiceÂ»
+		Â«REMÂ» Create service factory for current service. Â«ENDREMÂ»
+		Â«EXPAND CreateServiceFactory(this) FOR jeafServiceÂ»
+    Â«ENDFOREACHÂ»
     
-    «REM» Handle all port of the current component «ENDREM»
-    «FOREACH this.ownedPort AS port»
-        «FOREACH port.getJEAFServices().typeSelect(JEAFService) AS jeafService»
-			«EXPAND CreateServiceFactory(port.type) FOR jeafService»
-        «ENDFOREACH»
-    «ENDFOREACH»
-«ENDDEFINE»
+    Â«REMÂ» Handle all port of the current component Â«ENDREMÂ»
+    Â«FOREACH this.ownedPort AS portÂ»
+        Â«FOREACH port.getJEAFServices().typeSelect(JEAFService) AS jeafServiceÂ»
+			Â«EXPAND CreateServiceFactory(port.type) FOR jeafServiceÂ»
+        Â«ENDFOREACHÂ»
+    Â«ENDFOREACHÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE CreateComponentClass FOR JEAFComponent»
-    «FILE packagePath()+"/"+name+"Component.java" GenBase»
-    «getFileHeader()»
-    package «packageName()»;
+Â«DEFINE CreateComponentClass FOR JEAFComponentÂ»
+    Â«FILE packagePath()+"/"+name+"Component.java" GenBaseÂ»
+    Â«getFileHeader()Â»
+    package Â«packageName()Â»;
     
     import java.util.ArrayList;
     import java.util.Collection;
@@ -80,30 +80,30 @@
     import com.anaptecs.jeaf.core.spi.Layer;
     
     /**
-     * Class represents the «this.name» component.
+     * Class represents the Â«this.nameÂ» component.
      *
-     * «this.getComment()»
+     * Â«this.getComment()Â»
      */     
-    public final class «name»Component implements ComponentImplementation {      
+    public final class Â«nameÂ»Component implements ComponentImplementation {      
       /**
        * Constant for the name of the component.
        */
-      private static final String COMPONENT_NAME = "«name»";
+      private static final String COMPONENT_NAME = "Â«nameÂ»";
     
       /**
        * Constant for the description of the component.
        */
-      public static final String COMPONENT_DESCRIPTION = "«this.getComment()»";
+      public static final String COMPONENT_DESCRIPTION = "Â«this.getComment()Â»";
     
       /**
        * Constant defines the name of the JPA persistence unit that is used by the component implementation.
        */
-      public static final String PERSISTENCE_UNIT_NAME = "«this.getPersistenceUnit().name»";
+      public static final String PERSISTENCE_UNIT_NAME = "Â«this.getPersistenceUnit().nameÂ»";
             
       /**
        * Constant defines the JNDI name to which the entity manager of the component implementation is bound.
        */
-      public static final String ENTITY_MANAGER_JNDI = "«this.getPersistenceUnit().entityManagerJNDI»";
+      public static final String ENTITY_MANAGER_JNDI = "Â«this.getPersistenceUnit().entityManagerJNDIÂ»";
 
       /**
        * Reference to the object that identifies this component. The reference is never null.
@@ -176,14 +176,14 @@
       /**
        * Reference to configuration of this component.
        */
-      private final «name»ComponentConfiguration configuration;
+      private final Â«nameÂ»ComponentConfiguration configuration;
       
 	  /**
 	   * Static initializer is used to create the components ComponentID object and its trace object.
 	   */
 	  static {
 	    // Create Component ID and trace object.
-	    Package lBasePackage = «this.name»Component.class.getPackage();
+	    Package lBasePackage = Â«this.nameÂ»Component.class.getPackage();
 	    COMPONENT_ID = new ComponentID(COMPONENT_NAME, lBasePackage.getName());
 	    TRACE = com.anaptecs.jeaf.xfun.api.XFun.getTraceProvider().getTrace(COMPONENT_ID);
 	  }
@@ -191,7 +191,7 @@
       /**
        * In order to avoid direct instantiation of this class the constructor is set to package visibility.
        */
-      «name»Component() {
+      Â«nameÂ»Component() {
 	    // Set component information.
 	    name = COMPONENT_NAME;
 	    description = COMPONENT_DESCRIPTION;
@@ -199,50 +199,50 @@
         TRACE.write(com.anaptecs.jeaf.core.api.MessageConstants.INITIALIZED_TRACING, new String[] { name });
         
         // Define persistence settings.
-        usesPersistenceUnit = «this.hasPersistenceUnit().toString()»;
-        «IF this.hasPersistenceUnit() == true»
+        usesPersistenceUnit = Â«this.hasPersistenceUnit().toString()Â»;
+        Â«IF this.hasPersistenceUnit() == trueÂ»
         persistenceUnitName = PERSISTENCE_UNIT_NAME;
-        «ELSE»
+        Â«ELSEÂ»
         persistenceUnitName = null;
-        «ENDIF»
+        Â«ENDIFÂ»
         
         // Define transactional behavior and communication protocol.
-        transactionBehavior = TransactionBehavior.«this.transactionBehavior.name»;
-        layer = Layer.«this.layer.name»;
+        transactionBehavior = TransactionBehavior.Â«this.transactionBehavior.nameÂ»;
+        layer = Layer.Â«this.layer.nameÂ»;
         communicationProtocol = CommunicationProtocol.LOCAL_EJB;
         
         // Define security mechanism.
-        usesJEAFSecurity = «this.useJEAFSecurity»;
+        usesJEAFSecurity = Â«this.useJEAFSecurityÂ»;
         
         // Create new collection with the class objects of all provided services.
         Collection <Class<?extends Service>> lProvidedServices = new ArrayList<Class<?extends Service>>();
-        «FOREACH this.getAllProvidedJEAFServices().typeSelect(Interface) AS jeafService»lProvidedServices.add(«jeafService.fqn()».class);«ENDFOREACH»
+        Â«FOREACH this.getAllProvidedJEAFServices().typeSelect(Interface) AS jeafServiceÂ»lProvidedServices.add(Â«jeafService.fqn()Â».class);Â«ENDFOREACHÂ»
         providedServices = java.util.Collections.unmodifiableCollection(lProvidedServices);
 
         // Create new collection with the class objects of all required services.
         Collection <Class<?extends Service>> lRequiredServices = new ArrayList<Class<?extends Service>>();
-        «FOREACH this.getAllRequiredJEAFServices().typeSelect(Interface) AS jeafService»lRequiredServices.add(«jeafService.fqn()».class);«ENDFOREACH»
+        Â«FOREACH this.getAllRequiredJEAFServices().typeSelect(Interface) AS jeafServiceÂ»lRequiredServices.add(Â«jeafService.fqn()Â».class);Â«ENDFOREACHÂ»
         requiredServices = java.util.Collections.unmodifiableCollection(lRequiredServices);
 
         // Create interceptors.
         Set<ServiceChannelInterceptor> lInterceptors = new java.util.HashSet<ServiceChannelInterceptor>();
         
-        «IF this.useJEAFSecurity == true»
+        Â«IF this.useJEAFSecurity == trueÂ»
         // Create security service channel interceptor, since the UML defines that the component uses JEAFs security 
         // mechanism.
 	    com.anaptecs.jeaf.core.servicechannel.base.SecurityConfiguration lConfiguration = com.anaptecs.jeaf.core.servicechannel.base.SecurityConfiguration.getInstance();
 	    if (lConfiguration.isJEAFSecurityEnabled() == true) {
 	      lInterceptors.add(lConfiguration.getSecurityInterceptor());
 	    }
-        «ENDIF»
+        Â«ENDIFÂ»
         // Create all service channel interceptors that are specific to this component.
-        «FOREACH this.getInterceptors().typeSelect(String) AS interceptorClassName»
-        lInterceptors.add(new «interceptorClassName»());
-        «ENDFOREACH»
+        Â«FOREACH this.getInterceptors().typeSelect(String) AS interceptorClassNameÂ»
+        lInterceptors.add(new Â«interceptorClassNameÂ»());
+        Â«ENDFOREACHÂ»
         interceptors = java.util.Collections.unmodifiableSet(lInterceptors);
         
         // Create object to access configuration of this component.
-        configuration = new «name»ComponentConfiguration(COMPONENT_ID); 
+        configuration = new Â«nameÂ»ComponentConfiguration(COMPONENT_ID); 
       }
     
       /**
@@ -409,20 +409,20 @@
       /**
        * Method returns the configuration of this component.
        * 
-       * @return {@link «name»ComponentConfiguration} Object providing access to the configuration of this component. The method never returns null.
+       * @return {@link Â«nameÂ»ComponentConfiguration} Object providing access to the configuration of this component. The method never returns null.
        */
-      public «name»ComponentConfiguration getConfiguration() {
+      public Â«nameÂ»ComponentConfiguration getConfiguration() {
         return configuration;
       }
 }
-    «ENDFILE»
-«ENDDEFINE»
+    Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
 
-«DEFINE CreatePortBaseClass(Component component) FOR Port»
-      «FILE this.type.packagePath()+"/" + this.type.name + "Base.java" GenBase»
-        «getFileHeader()»
-        package «this.type.packageName()»;
+Â«DEFINE CreatePortBaseClass(Component component) FOR PortÂ»
+      Â«FILE this.type.packagePath()+"/" + this.type.name + "Base.java" GenBaseÂ»
+        Â«getFileHeader()Â»
+        package Â«this.type.packageName()Â»;
         
         import com.anaptecs.jeaf.core.api.Component;
         import com.anaptecs.jeaf.core.spi.ServiceImplementation;
@@ -430,20 +430,20 @@
         import com.anaptecs.jeaf.xfun.api.trace.Trace;
         
         /**
-         * Implementation of port «this.type.name».
+         * Implementation of port Â«this.type.nameÂ».
          */
-        abstract class «this.type.name»Base implements ServiceImplementation {
+        abstract class Â«this.type.nameÂ»Base implements ServiceImplementation {
           /**
            * Reference to the component that provides this service implementation. The reference is never null.
            */  
           private final Component component;
           
-          «IF component.getAllRealProperties().size > 0»
+          Â«IF component.getAllRealProperties().size > 0Â»
           /**
            * Reference to configuration of the component.
            */
-          private final «component.name»ComponentConfiguration configuration;
-          «ENDIF»
+          private final Â«component.nameÂ»ComponentConfiguration configuration;
+          Â«ENDIFÂ»
           
           /**
            * Reference to to trace object of the component to which this service instance belongs to. The reference is never
@@ -452,29 +452,29 @@
            */
           final Trace trace;
         
-          «IF component.hasPersistenceUnit()»
+          Â«IF component.hasPersistenceUnit()Â»
           /**
            * Reference to persistence service provider. The class contains this dependency due to the fact that its components
            * defines a dependency to a persistence unit.
            */
           @com.anaptecs.jeaf.core.annotations.JEAFServiceProvider 
           private com.anaptecs.jeaf.spi.persistence.PersistenceServiceProvider persistenceServiceProvider;
-          «ENDIF»
+          Â«ENDIFÂ»
 
           /**
            * Initialize object.
            */
-          «this.type.name»Base(Component pComponent) {
+          Â«this.type.nameÂ»Base(Component pComponent) {
               // Check parameter
               com.anaptecs.jeaf.xfun.api.checks.Assert.assertNotNull(pComponent, "pComponent");
               component = pComponent;
               trace = component.getTrace();
               
-              «IF component.getAllRealProperties().size > 0»
-              configuration = new «component.name»ComponentConfiguration(component.getComponentID());
-              «ENDIF»
+              Â«IF component.getAllRealProperties().size > 0Â»
+              configuration = new Â«component.nameÂ»ComponentConfiguration(component.getComponentID());
+              Â«ENDIFÂ»
           }
-          «IF component.hasPersistenceUnit()»
+          Â«IF component.hasPersistenceUnit()Â»
           /**
            * Method returns reference to the persistence service provider that can be used to access the database.
            * 
@@ -484,10 +484,10 @@
           protected final com.anaptecs.jeaf.spi.persistence.PersistenceServiceProvider getPersistenceServiceProvider( ) {          
             return persistenceServiceProvider;
           }
-          «ENDIF»
-          «FOREACH component.getRequiredServicesSorted().typeSelect(JEAFService) AS jeafService»
-              «EXPAND RequiredServices FOR jeafService»
-          «ENDFOREACH»
+          Â«ENDIFÂ»
+          Â«FOREACH component.getRequiredServicesSorted().typeSelect(JEAFService) AS jeafServiceÂ»
+              Â«EXPAND RequiredServices FOR jeafServiceÂ»
+          Â«ENDFOREACHÂ»
         
           /**
            * Method returns the service invocation context for the current service call.
@@ -499,39 +499,39 @@
             return com.anaptecs.jeaf.core.api.JEAF.getContext().getServiceInvocationContext();
           }
 
-	      «FOREACH component.getAllRealProperties().typeSelect(Property) AS property»
+	      Â«FOREACH component.getAllRealProperties().typeSelect(Property) AS propertyÂ»
 	      /**
-	       * Method returns the value of the property "«property.name»".
+	       * Method returns the value of the property "Â«property.nameÂ»".
 	       * 
-	       * @return {@link «property.type.name»} Value of the property "«property.name»". The method returns null if no value for the
+	       * @return {@link Â«property.type.nameÂ»} Value of the property "Â«property.nameÂ»". The method returns null if no value for the
 	       * property is defined.
 	       */
-	      «IF property.isDeprecated()-»
+	      Â«IF property.isDeprecated()-Â»
           @Deprecated
-          «ENDIF-» 
-	      public «property.fqn()» «property.asGetter()»() {
-	        return configuration.«property.asGetter()»();
+          Â«ENDIF-Â» 
+	      public Â«property.fqn()Â» Â«property.asGetter()Â»() {
+	        return configuration.Â«property.asGetter()Â»();
 	      }
-	      «ENDFOREACH»
+	      Â«ENDFOREACHÂ»
         }
-      «ENDFILE»
-«ENDDEFINE»
+      Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE CreatePort FOR Port»
-        «FILE this.type.packagePath()+"/"+this.type.name+".java" GenOnce»
+Â«DEFINE CreatePort FOR PortÂ»
+        Â«FILE this.type.packagePath()+"/"+this.type.name+".java" GenOnceÂ»
         /*
          * Copyright 2004 - 2011 anaptecs GmbH Burgstr. 96, 72764 Reutlingen, Germany All rights reserved.
          */
-        package «this.type.packageName()»;
+        package Â«this.type.packageName()Â»;
         
         /**
-         * Implementation of port «this.type.name».
+         * Implementation of port Â«this.type.nameÂ».
          */
-        abstract class «this.type.name» extends «this.type.name»Base {
+        abstract class Â«this.type.nameÂ» extends Â«this.type.nameÂ»Base {
           /**
            * Initialize object.
            */
-          «this.type.name»(com.anaptecs.jeaf.core.api.Component pComponent) {
+          Â«this.type.nameÂ»(com.anaptecs.jeaf.core.api.Component pComponent) {
             super(pComponent);
           }
           
@@ -543,15 +543,15 @@
           //********************************************************************************************************************
           
         }
-        «ENDFILE»       
-«ENDDEFINE»
+        Â«ENDFILEÂ»       
+Â«ENDDEFINEÂ»
 
-«DEFINE CreateServiceImplBaseForComponent(Component component) FOR JEAFService»
-        «FILE component.packagePath()+"/"+this.name+"ImplBase.java" GenBase»
-        «getFileHeader()»
-        package «component.packageName()»;
+Â«DEFINE CreateServiceImplBaseForComponent(Component component) FOR JEAFServiceÂ»
+        Â«FILE component.packagePath()+"/"+this.name+"ImplBase.java" GenBaseÂ»
+        Â«getFileHeader()Â»
+        package Â«component.packageName()Â»;
         
-        import «this.packageName()».«this.name»;
+        import Â«this.packageName()Â».Â«this.nameÂ»;
         import com.anaptecs.jeaf.core.api.Component;
         import com.anaptecs.jeaf.core.api.Service;
         import com.anaptecs.jeaf.core.spi.ServiceImplementation;
@@ -559,27 +559,27 @@
         import com.anaptecs.jeaf.xfun.api.trace.Trace;
         
         /**
-         * Implementation of «this.name».
+         * Implementation of Â«this.nameÂ».
          */
-        abstract class «this.name»ImplBase implements «this.name», ServiceImplementation {
+        abstract class Â«this.nameÂ»ImplBase implements Â«this.nameÂ», ServiceImplementation {
 		  /*
 		   * The following constants define the names of all authorization types of the service. 
 		   */
-		  «FOREACH this.getAuthorizationTypeNames().typeSelect(String) AS authorizationTypeName»
-		  «authorizationTypeName» 
-		  «ENDFOREACH»
+		  Â«FOREACH this.getAuthorizationTypeNames().typeSelect(String) AS authorizationTypeNameÂ»
+		  Â«authorizationTypeNameÂ» 
+		  Â«ENDFOREACHÂ»
   
           /**
            * Reference to the component that provides this service implementation. The reference is never null.
            */  
           private final Component component;
           
-          «IF component.getAllRealProperties().size > 0»
+          Â«IF component.getAllRealProperties().size > 0Â»
           /**
            * Reference to configuration of the component.
            */
-          private final «component.name»ComponentConfiguration configuration;
-          «ENDIF»
+          private final Â«component.nameÂ»ComponentConfiguration configuration;
+          Â«ENDIFÂ»
           
           /**
            * Reference to to trace object of the component to which this service instance belongs to. The reference is never
@@ -588,28 +588,28 @@
            */
           final Trace trace;
         
-          «IF component.hasPersistenceUnit()»
+          Â«IF component.hasPersistenceUnit()Â»
           /**
            * Reference to persistence service provider. The class contains this dependency due to the fact that its components
            * defines a dependency to a persistence unit.
            */
           @com.anaptecs.jeaf.core.annotations.JEAFServiceProvider
           private com.anaptecs.jeaf.spi.persistence.PersistenceServiceProvider persistenceServiceProvider;
-          «ENDIF»
+          Â«ENDIFÂ»
           /**
            * Initialize object.
            */
-          «this.name»ImplBase(Component pComponent) {
+          Â«this.nameÂ»ImplBase(Component pComponent) {
               // Check parameter
               com.anaptecs.jeaf.xfun.api.checks.Assert.assertNotNull(pComponent, "pComponent");
               component = pComponent;
               trace = component.getTrace();
               
-              «IF component.getAllRealProperties().size > 0»
-              configuration = new «component.name»ComponentConfiguration(component.getComponentID());
-              «ENDIF»
+              Â«IF component.getAllRealProperties().size > 0Â»
+              configuration = new Â«component.nameÂ»ComponentConfiguration(component.getComponentID());
+              Â«ENDIFÂ»
           }
-          «IF component.hasPersistenceUnit()»
+          Â«IF component.hasPersistenceUnit()Â»
           /**
            * Method returns reference to the persistence service provider that can be used to access the database.
            * 
@@ -619,25 +619,25 @@
           protected final com.anaptecs.jeaf.spi.persistence.PersistenceServiceProvider getPersistenceServiceProvider( ) {
             return persistenceServiceProvider;
           }
-          «ENDIF»
-          «FOREACH component.getRequiredServicesSorted().typeSelect(Interface) AS interface»
+          Â«ENDIFÂ»
+          Â«FOREACH component.getRequiredServicesSorted().typeSelect(Interface) AS interfaceÂ»
               /**
-               * The used service «interface.name».
+               * The used service Â«interface.nameÂ».
                */
               @com.anaptecs.jeaf.core.annotations.JEAFService 
-              private «interface.packageName()».«interface.name» «interface.name.toFirstLower()»;
+              private Â«interface.packageName()Â».Â«interface.nameÂ» Â«interface.name.toFirstLower()Â»;
             
                 /**
-                 * Method returns the «interface.name» from which this service depends.
+                 * Method returns the Â«interface.nameÂ» from which this service depends.
                  * 
-                 * @return «interface.name» Reference to the «interface.name». The method never returns null after the service has been initialized. 
+                 * @return Â«interface.nameÂ» Reference to the Â«interface.nameÂ». The method never returns null after the service has been initialized. 
                  * 
                  */
-                protected final «interface.packageName()».«interface.name» get«interface.name»( ) {
-                    return this.«interface.name.toFirstLower()»;
+                protected final Â«interface.packageName()Â».Â«interface.nameÂ» getÂ«interface.nameÂ»( ) {
+                    return this.Â«interface.name.toFirstLower()Â»;
             
                 }
-            «ENDFOREACH»
+            Â«ENDFOREACHÂ»
         
           /**
            * Method returns the class object of the service that is implemented by this service instance.
@@ -648,7 +648,7 @@
            * @see ServiceImplementation#getServiceType()
            */
           public final Class<? extends Service> getServiceType() {
-            return «this.name».class;
+            return Â«this.nameÂ».class;
           }
           
           /**
@@ -661,51 +661,51 @@
             return com.anaptecs.jeaf.core.api.JEAF.getContext().getServiceInvocationContext();
           }
 
-          «FOREACH component.getAllRealProperties().typeSelect(Property) AS property»
+          Â«FOREACH component.getAllRealProperties().typeSelect(Property) AS propertyÂ»
           /**
-           * Method returns the value of the property "«property.name»".
+           * Method returns the value of the property "Â«property.nameÂ»".
            * 
-           * @return {@link «property.type.name»} Value of the property "«property.name»". The method returns null if no value for the
+           * @return {@link Â«property.type.nameÂ»} Value of the property "Â«property.nameÂ»". The method returns null if no value for the
            * property is defined.
            */
-          «IF property.isDeprecated()-»
+          Â«IF property.isDeprecated()-Â»
           @Deprecated
-          «ENDIF-» 
-          public «property.fqn()» «property.asGetter()»() {
-            return configuration.«property.asGetter()»();
+          Â«ENDIF-Â» 
+          public Â«property.fqn()Â» Â«property.asGetter()Â»() {
+            return configuration.Â«property.asGetter()Â»();
           }
-          «ENDFOREACH»
+          Â«ENDFOREACHÂ»
         }
-        «ENDFILE»
-«ENDDEFINE»
+        Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE CreateServiceImplBaseForPort(Port port) FOR JEAFService»
-    «FILE port.type.packagePath()+"/"+this.name+"ImplBase.java" GenBase»
+Â«DEFINE CreateServiceImplBaseForPort(Port port) FOR JEAFServiceÂ»
+    Â«FILE port.type.packagePath()+"/"+this.name+"ImplBase.java" GenBaseÂ»
     /*
      * Copyright 2004 - 2011 anaptecs GmbH Burgstr. 96, 72764 Reutlingen, Germany All rights reserved.
      */
-    package «port.type.packageName()»;
+    package Â«port.type.packageName()Â»;
     
-    import «this.packageName()».«this.name»;
+    import Â«this.packageName()Â».Â«this.nameÂ»;
     import com.anaptecs.jeaf.core.api.Component;
     import com.anaptecs.jeaf.core.api.Service;
     import com.anaptecs.jeaf.core.spi.ServiceImplementation;
     
     /**
-     * Implementation of «this.name».
+     * Implementation of Â«this.nameÂ».
      */
-    abstract class «this.name»ImplBase extends «port.type.name» implements «this.name» {
+    abstract class Â«this.nameÂ»ImplBase extends Â«port.type.nameÂ» implements Â«this.nameÂ» {
       /*
        * The following constants define the names of all authorization types of the service. 
        */
-      «FOREACH this.getAuthorizationTypeNames().typeSelect(String) AS authorizationTypeName»
-      «authorizationTypeName» 
-      «ENDFOREACH»
+      Â«FOREACH this.getAuthorizationTypeNames().typeSelect(String) AS authorizationTypeNameÂ»
+      Â«authorizationTypeNameÂ» 
+      Â«ENDFOREACHÂ»
   
       /**
        * Initialize object.
        */
-      «this.name»ImplBase(Component pComponent) {
+      Â«this.nameÂ»ImplBase(Component pComponent) {
           super(pComponent);  
       }
     
@@ -718,26 +718,26 @@
        * @see ServiceImplementation#getServiceType()
        */
       public final Class<? extends Service> getServiceType() {
-        return «this.name».class;
+        return Â«this.nameÂ».class;
       }
     }
-    «ENDFILE»
-«ENDDEFINE»
+    Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
 
-«DEFINE CreateServiceImpl(Type owner, String parentClass) FOR JEAFService»
-        «FILE owner.packagePath()+"/"+this.name+"Impl.java" GenOnce»
-        «getFileHeader()»
-        package «owner.packageName()»;
+Â«DEFINE CreateServiceImpl(Type owner, String parentClass) FOR JEAFServiceÂ»
+        Â«FILE owner.packagePath()+"/"+this.name+"Impl.java" GenOnceÂ»
+        Â«getFileHeader()Â»
+        package Â«owner.packageName()Â»;
         
         /**
-         * Implementation of «this.name».
+         * Implementation of Â«this.nameÂ».
          */
-        final class «this.name»Impl extends «parentClass» {
+        final class Â«this.nameÂ»Impl extends Â«parentClassÂ» {
           /**
            * Initialize object.
            */
-          «this.name»Impl(com.anaptecs.jeaf.core.api.Component pComponent) {
+          Â«this.nameÂ»Impl(com.anaptecs.jeaf.core.api.Component pComponent) {
             super(pComponent);
           }
           
@@ -755,25 +755,25 @@
 		    return null;
 		  }
 
-          «EXPAND JEAFOperation::ServiceOperationImpl FOREACH this.getAllOperations()»
+          Â«EXPAND JEAFOperation::ServiceOperationImpl FOREACH this.getAllOperations()Â»
         
         }
-        «ENDFILE»
-«ENDDEFINE»
+        Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE CreateComponentFactory FOR JEAFComponent»
-    «FILE packagePath()+"/"+name+"ComponentFactory.java" GenBase»
-    «getFileHeader()»
-    package «packageName()»;
+Â«DEFINE CreateComponentFactory FOR JEAFComponentÂ»
+    Â«FILE packagePath()+"/"+name+"ComponentFactory.java" GenBaseÂ»
+    Â«getFileHeader()Â»
+    package Â«packageName()Â»;
     
     import com.anaptecs.jeaf.core.spi.ComponentImplementation;
     import com.anaptecs.jeaf.core.servicechannel.api.ComponentFactory;
     
     /**
-     * Class is factory class to create new instances of the component «name»Component.
+     * Class is factory class to create new instances of the component Â«nameÂ»Component.
      */
     @com.anaptecs.jeaf.core.annotations.ComponentFactory 
-    public final class «name»ComponentFactory implements ComponentFactory {
+    public final class Â«nameÂ»ComponentFactory implements ComponentFactory {
 	  /**
 	   * Reference to component.
 	   */
@@ -788,23 +788,23 @@
        * Initialize object. As defined by interface ComponentFactory the implementing class has to define a parameterless
        * public constructor.
        */
-      public «name»ComponentFactory() {
+      public Â«nameÂ»ComponentFactory() {
 	    // Create new component.
-	    component = new «name»Component();
+	    component = new Â«nameÂ»Component();
 
         // Create new collection for all service factories.
         java.util.Collection<com.anaptecs.jeaf.core.servicechannel.api.ServiceFactory> lServiceFactories = new java.util.ArrayList<com.anaptecs.jeaf.core.servicechannel.api.ServiceFactory>();
-        «FOREACH getJeafServices().typeSelect(Interface) AS jeafService»lServiceFactories.add(new «jeafService.name»Factory(component));«ENDFOREACH»    
-		«FOREACH this.ownedPort AS port»«FOREACH port.getJEAFServices().typeSelect(JEAFService) AS jeafService»lServiceFactories.add(new «jeafService.name»Factory(component));«ENDFOREACH»
-	    «ENDFOREACH»
+        Â«FOREACH getJeafServices().typeSelect(Interface) AS jeafServiceÂ»lServiceFactories.add(new Â«jeafService.nameÂ»Factory(component));Â«ENDFOREACHÂ»    
+		Â«FOREACH this.ownedPort AS portÂ»Â«FOREACH port.getJEAFServices().typeSelect(JEAFService) AS jeafServiceÂ»lServiceFactories.add(new Â«jeafService.nameÂ»Factory(component));Â«ENDFOREACHÂ»
+	    Â«ENDFOREACHÂ»
         // Make sure that collection of service factories is unmodifiable. 
         serviceFactories =  java.util.Collections.unmodifiableCollection(lServiceFactories);
       }
     
       /**
-       * Method creates a new instance of component «name»Component.
+       * Method creates a new instance of component Â«nameÂ»Component.
        * 
-       * @return Component Created «name»Component. The method never returns null.
+       * @return Component Created Â«nameÂ»Component. The method never returns null.
        * 
        * @see ComponentFactory#createComponent()
        */
@@ -827,34 +827,34 @@
         return serviceFactories;
       }
     }
-    «ENDFILE»
-«ENDDEFINE»
+    Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
 
-«DEFINE CreateComponentProperties FOR JEAFComponent»
+Â«DEFINE CreateComponentProperties FOR JEAFComponentÂ»
     // Create property file
-    «FILE name+".properties" Res»
-«FOREACH this.getAllRealProperties().typeSelect(Property) AS property»
-«property.name»=«ENDFOREACH»
-    «ENDFILE»
+    Â«FILE name+".properties" ResÂ»
+Â«FOREACH this.getAllRealProperties().typeSelect(Property) AS propertyÂ»
+Â«property.nameÂ»=Â«ENDFOREACHÂ»
+    Â«ENDFILEÂ»
     
     // Create xml file for import tool.
-    «FILE name+".xml" GenRes»<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    Â«FILE name+".xml" GenResÂ»<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root>
-  <ComponentInfo name="«this.name»" basePackage="«this.packageName()»" cacheTTL="600" >
-«FOREACH this.getAllRealProperties().typeSelect(Property) AS property»    <Property name="«property.name»" type="«property.type.fqnForXML()»" defaultValue="«property.defaultValue.stringValue()»" comment="" />
-«ENDFOREACH»  </ComponentInfo>
+  <ComponentInfo name="Â«this.nameÂ»" basePackage="Â«this.packageName()Â»" cacheTTL="600" >
+Â«FOREACH this.getAllRealProperties().typeSelect(Property) AS propertyÂ»    <Property name="Â«property.nameÂ»" type="Â«property.type.fqnForXML()Â»" defaultValue="Â«property.defaultValue.stringValue()Â»" comment="" />
+Â«ENDFOREACHÂ»  </ComponentInfo>
 </Root>
-«ENDFILE»
-«ENDDEFINE»
+Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
 
-«DEFINE CreateServiceFactory(Type owner) FOR JEAFService»
-        «FILE owner.packagePath()+"/"+this.name+"Factory.java" GenBase»
-        «getFileHeader()»
-        package «owner.packageName()»;
+Â«DEFINE CreateServiceFactory(Type owner) FOR JEAFServiceÂ»
+        Â«FILE owner.packagePath()+"/"+this.name+"Factory.java" GenBaseÂ»
+        Â«getFileHeader()Â»
+        package Â«owner.packageName()Â»;
         
-        import «this.packageName()».«this.name»;
+        import Â«this.packageName()Â».Â«this.nameÂ»;
         
         import com.anaptecs.jeaf.core.spi.ComponentImplementation;
         import com.anaptecs.jeaf.core.api.Service;
@@ -864,16 +864,16 @@
         
         
         /**
-         * Factory class for service «this.name».
+         * Factory class for service Â«this.nameÂ».
          */
-        final class «this.name»Factory extends ServiceFactory {
+        final class Â«this.nameÂ»Factory extends ServiceFactory {
         
          /**
           * Initialize object. Therefore the component to which this service factory belongs has to be passed.
           * 
           * @param pComponent Component to which this service factory belongs. The parameter must not be null.
           */
-          public «this.name»Factory( ComponentImplementation pComponent) {
+          public Â«this.nameÂ»Factory( ComponentImplementation pComponent) {
             super(pComponent);
           }
     
@@ -885,7 +885,7 @@
            * @see ServiceFactory#getServiceInterfaceClass()
            */
           public Class<? extends Service> getServiceInterfaceClass() {
-            return «this.name».class;
+            return Â«this.nameÂ».class;
           }
         
           /**
@@ -897,7 +897,7 @@
            * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceFactory#createServiceInstance()
            */
           public ServiceImplementation createServiceInstance() {
-            return new «this.name»Impl(this.getComponent());
+            return new Â«this.nameÂ»Impl(this.getComponent());
           }
         
           /**
@@ -910,75 +910,75 @@
            */
           public ServiceProxy createServiceProxy() {
             // Create new service proxy and return it.
-            return new «this.packageName()».«this.name»Proxy(this.getComponent().getTransactionBehavior());
+            return new Â«this.packageName()Â».Â«this.nameÂ»Proxy(this.getComponent().getTransactionBehavior());
           }
         }
-        «ENDFILE»
-«ENDDEFINE»
+        Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE RequiredServices FOR JEAFService»
+Â«DEFINE RequiredServices FOR JEAFServiceÂ»
 	/**
-	 * The used service «this.name».
+	 * The used service Â«this.nameÂ».
 	 */
 	@com.anaptecs.jeaf.core.annotations.JEAFService 
-	private «this.packageName()».«this.name» «this.name.toFirstLower()»;
+	private Â«this.packageName()Â».Â«this.nameÂ» Â«this.name.toFirstLower()Â»;
 
 	/**
-	 * Method returns the «this.name» from which this service depends.
+	 * Method returns the Â«this.nameÂ» from which this service depends.
 	 * 
-	 * @return «this.name» Reference to the «this.name». The method never returns null after the service has been initialized. 
+	 * @return Â«this.nameÂ» Reference to the Â«this.nameÂ». The method never returns null after the service has been initialized. 
 	 * 
 	 */
-	protected final «this.packageName()».«this.name» get«this.name»( ) {
-	    return this.«this.name.toFirstLower()»;
+	protected final Â«this.packageName()Â».Â«this.nameÂ» getÂ«this.nameÂ»( ) {
+	    return this.Â«this.name.toFirstLower()Â»;
 	}
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«DEFINE CreateComponentConfigurationClass FOR JEAFComponent»
+Â«DEFINE CreateComponentConfigurationClass FOR JEAFComponentÂ»
 
-    «FILE packagePath()+"/"+name+"ComponentConfiguration.java" GenBase»
-    «getFileHeader()»
-    package «packageName()»;
+    Â«FILE packagePath()+"/"+name+"ComponentConfiguration.java" GenBaseÂ»
+    Â«getFileHeader()Â»
+    package Â«packageName()Â»;
     
     /**
-     * Class represents the «this.name» component.
+     * Class represents the Â«this.nameÂ» component.
      *
-     * «this.getComment()»
+     * Â«this.getComment()Â»
      */     
-    public final class «name»ComponentConfiguration {      
-	  «IF this.getAllRealProperties().size > 0»
+    public final class Â«nameÂ»ComponentConfiguration {      
+	  Â«IF this.getAllRealProperties().size > 0Â»
 	  /**
 	   * Resource access provider enables access to the properties of the component.
 	   */
 	  private final com.anaptecs.jeaf.xfun.api.config.Configuration configuration;
-	  «ENDIF»
+	  Â«ENDIFÂ»
 
       /**
        * In order to avoid direct instantiation of this class the constructor is set to package visibility.
        */
-      «name»ComponentConfiguration(com.anaptecs.jeaf.xfun.api.common.ComponentID pComponentID) {
-	    «IF this.getAllRealProperties().size > 0»
+      Â«nameÂ»ComponentConfiguration(com.anaptecs.jeaf.xfun.api.common.ComponentID pComponentID) {
+	    Â«IF this.getAllRealProperties().size > 0Â»
 	    // Create resource access provider for properties of the component.
 	    configuration = com.anaptecs.jeaf.xfun.api.XFun.getConfigurationProvider().getComponentConfiguration(pComponentID);
-	    «ENDIF»
+	    Â«ENDIFÂ»
       }
     
-      «FOREACH this.getAllRealProperties().typeSelect(Property) AS property»
+      Â«FOREACH this.getAllRealProperties().typeSelect(Property) AS propertyÂ»
 
       /**
-	   * Method returns the value of the property "«property.name»".
+	   * Method returns the value of the property "Â«property.nameÂ»".
 	   * 
-	   * @return {@link «property.type.name»} Value of the property "«property.name»". The method returns null if no value for the
+	   * @return {@link Â«property.type.nameÂ»} Value of the property "Â«property.nameÂ»". The method returns null if no value for the
 	   * property is defined.
 	   */
-	  «IF property.isDeprecated()-»
+	  Â«IF property.isDeprecated()-Â»
       @Deprecated
-      «ENDIF-»
-      public «property.fqn()» «property.asGetter()»() {
-        return configuration.getConfigurationValue("«property.name»", «property.type.name».class);
+      Â«ENDIF-Â»
+      public Â«property.fqn()Â» Â«property.asGetter()Â»() {
+        return configuration.getConfigurationValue("Â«property.nameÂ»", Â«property.type.nameÂ».class);
       }
-      «ENDFOREACH»
+      Â«ENDFOREACHÂ»
 }
-    «ENDFILE»
+    Â«ENDFILEÂ»
 
-«ENDDEFINE»
+Â«ENDDEFINEÂ»

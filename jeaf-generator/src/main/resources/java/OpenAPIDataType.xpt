@@ -1,279 +1,279 @@
-«EXTENSION java::Naming»
-«EXTENSION java::GeneratorCommons»
-«EXTENSION java::OpenAPIFunctions»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION java::OpenAPIFunctionsÂ»
 
-«IMPORT uml»
-«IMPORT JMM»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
 
-«DEFINE GenerateOpenAPIDataType(OpenAPI3Specification spec, Property ownerAttribute) FOR OpenAPIDataType -»
-  «LET this.ownedAttribute.get(0) AS attribute -»
-    «IF this.inline == true -»
-          «IF attribute.hasComment()-»
+Â«DEFINE GenerateOpenAPIDataType(OpenAPI3Specification spec, Property ownerAttribute) FOR OpenAPIDataType -Â»
+  Â«LET this.ownedAttribute.get(0) AS attribute -Â»
+    Â«IF this.inline == true -Â»
+          Â«IF attribute.hasComment()-Â»
           description: >-
-            «attribute.getCommentForOpenAPIDescription("            ")»
-          «ENDIF-»
-            «IF ownerAttribute.isMultivalued() == false-»
-          type: «attribute.type.getOpenAPIType(spec)»
-              «IF attribute.hasOpenAPIFormatForProperty()-»
-          format: «attribute.getOpenAPIFormatForProperty()»
-              «ENDIF-»
-              «IF attribute.hasPatternForProperty() -»
-          pattern: '«attribute.getPatternForProperty()»'
-              «ENDIF-»
-          «IF attribute.defaultValue != null -»
-          default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
-          «ENDIF-»
-          «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»    
-              «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
+            Â«attribute.getCommentForOpenAPIDescription("            ")Â»
+          Â«ENDIF-Â»
+            Â«IF ownerAttribute.isMultivalued() == false-Â»
+          type: Â«attribute.type.getOpenAPIType(spec)Â»
+              Â«IF attribute.hasOpenAPIFormatForProperty()-Â»
+          format: Â«attribute.getOpenAPIFormatForProperty()Â»
+              Â«ENDIF-Â»
+              Â«IF attribute.hasPatternForProperty() -Â»
+          pattern: 'Â«attribute.getPatternForProperty()Â»'
+              Â«ENDIF-Â»
+          Â«IF attribute.defaultValue != null -Â»
+          default: Â«attribute.defaultValue.stringValue().replaceAll("\"", "'")Â»
+          Â«ENDIF-Â»
+          Â«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-Â»    
+              Â«IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -Â»
           deprecated: true
-              «ENDIF-»
-              «IF attribute.hasExample()-»
-                «IF ((Example) attribute).exampleValue.length > 0-»
-          example: '«((Example) attribute).exampleValue»'
-                «ENDIF-»
-              «ENDIF-»
-            «ELSE-»
+              Â«ENDIF-Â»
+              Â«IF attribute.hasExample()-Â»
+                Â«IF ((Example) attribute).exampleValue.length > 0-Â»
+          example: 'Â«((Example) attribute).exampleValueÂ»'
+                Â«ENDIF-Â»
+              Â«ENDIF-Â»
+            Â«ELSE-Â»
           type: array
           items:
-            type: «attribute.type.getOpenAPIType(spec)»
-              «IF attribute.hasOpenAPIFormatForProperty()-»
-            format: «attribute.getOpenAPIFormatForProperty()»
-              «ENDIF-»
-              «IF attribute.hasPatternForProperty() -»
-            pattern: '«attribute.getPatternForProperty()»'
-              «ENDIF-»
-              «IF attribute.defaultValue != null -»
-            default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
-              «ENDIF-»
-            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR attribute-»
-            «IF attribute.hasExample()-»
-              «IF ((Example) attribute).exampleValue.length > 0-»
-            example: '«((Example) attribute).exampleValue»'
-              «ENDIF-»
-            «ENDIF-»
-            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR ownerAttribute-»
-              «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
+            type: Â«attribute.type.getOpenAPIType(spec)Â»
+              Â«IF attribute.hasOpenAPIFormatForProperty()-Â»
+            format: Â«attribute.getOpenAPIFormatForProperty()Â»
+              Â«ENDIF-Â»
+              Â«IF attribute.hasPatternForProperty() -Â»
+            pattern: 'Â«attribute.getPatternForProperty()Â»'
+              Â«ENDIF-Â»
+              Â«IF attribute.defaultValue != null -Â»
+            default: Â«attribute.defaultValue.stringValue().replaceAll("\"", "'")Â»
+              Â«ENDIF-Â»
+            Â«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR attribute-Â»
+            Â«IF attribute.hasExample()-Â»
+              Â«IF ((Example) attribute).exampleValue.length > 0-Â»
+            example: 'Â«((Example) attribute).exampleValueÂ»'
+              Â«ENDIF-Â»
+            Â«ENDIF-Â»
+            Â«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR ownerAttribute-Â»
+              Â«IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -Â»
             deprecated: true
-              «ENDIF-»
-            «ENDIF-»
-          «IF attribute.isNullable() == false -»
-          nullable: «attribute.isNullable()»
-          «ENDIF-»  
-          «IF attribute.isReadOnly()  -»
-          readOnly: «attribute.isReadOnly()»
-          «ENDIF-»  
-          «IF attribute.isWriteOnly() -»
-          writeOnly: «attribute.isWriteOnly()»
-          «ENDIF-»  
-            «IF ownerAttribute.hasExample()-»
-              «IF ((Example) ownerAttribute).exampleValue.length > 0-»
-          example: '«((Example) ownerAttribute).exampleValue»'
-              «ENDIF-»
-            «ENDIF-»
-    «ELSE-»
-    «IF suppressClassNameCommentInOpenAPISpec() == false -»
-    # «this.fqn()»
-    «ENDIF-»
-    «this.name»:
-      type: «attribute.type.getOpenAPIType(spec)»
-      «IF attribute.hasOpenAPIFormatForProperty()-»
-      format: «attribute.getOpenAPIFormatForProperty()»
-      «ENDIF-»
-      «IF attribute.hasPatternForProperty() -»
-      pattern: '«attribute.getPatternForProperty()»'
-      «ENDIF-»
-      «IF this.hasComment()-»
+              Â«ENDIF-Â»
+            Â«ENDIF-Â»
+          Â«IF attribute.isNullable() == false -Â»
+          nullable: Â«attribute.isNullable()Â»
+          Â«ENDIF-Â»  
+          Â«IF attribute.isReadOnly()  -Â»
+          readOnly: Â«attribute.isReadOnly()Â»
+          Â«ENDIF-Â»  
+          Â«IF attribute.isWriteOnly() -Â»
+          writeOnly: Â«attribute.isWriteOnly()Â»
+          Â«ENDIF-Â»  
+            Â«IF ownerAttribute.hasExample()-Â»
+              Â«IF ((Example) ownerAttribute).exampleValue.length > 0-Â»
+          example: 'Â«((Example) ownerAttribute).exampleValueÂ»'
+              Â«ENDIF-Â»
+            Â«ENDIF-Â»
+    Â«ELSE-Â»
+    Â«IF suppressClassNameCommentInOpenAPISpec() == false -Â»
+    # Â«this.fqn()Â»
+    Â«ENDIF-Â»
+    Â«this.nameÂ»:
+      type: Â«attribute.type.getOpenAPIType(spec)Â»
+      Â«IF attribute.hasOpenAPIFormatForProperty()-Â»
+      format: Â«attribute.getOpenAPIFormatForProperty()Â»
+      Â«ENDIF-Â»
+      Â«IF attribute.hasPatternForProperty() -Â»
+      pattern: 'Â«attribute.getPatternForProperty()Â»'
+      Â«ENDIF-Â»
+      Â«IF this.hasComment()-Â»
       description: >-
-        «this.getCommentForOpenAPIDescription("        ")»
-      «ENDIF-»
-      «IF attribute.defaultValue != null -»
-      default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
-      «ENDIF-»
-      «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR attribute-»    
-      «IF attribute.isDeprecated() -»
+        Â«this.getCommentForOpenAPIDescription("        ")Â»
+      Â«ENDIF-Â»
+      Â«IF attribute.defaultValue != null -Â»
+      default: Â«attribute.defaultValue.stringValue().replaceAll("\"", "'")Â»
+      Â«ENDIF-Â»
+      Â«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("") FOR attribute-Â»    
+      Â«IF attribute.isDeprecated() -Â»
       deprecated: true
-      «ENDIF-»
-      «IF attribute.isNullable() == false -»
-      nullable: «attribute.isNullable()»
-      «ENDIF-»  
-      «IF attribute.isReadOnly()  -»
-      readOnly: «attribute.isReadOnly()»
-      «ENDIF-»  
-      «IF attribute.isWriteOnly() -»
-      writeOnly: «attribute.isWriteOnly()»
-      «ENDIF-»
-      «IF attribute.hasExample()-»
-        «IF ((Example) attribute).exampleValue.length > 0-»
-      example: '«((Example) attribute).exampleValue»'
-        «ENDIF-»
-      «ENDIF-»
-    «ENDIF-»         
-  «ENDLET -»
-«ENDDEFINE»
+      Â«ENDIF-Â»
+      Â«IF attribute.isNullable() == false -Â»
+      nullable: Â«attribute.isNullable()Â»
+      Â«ENDIF-Â»  
+      Â«IF attribute.isReadOnly()  -Â»
+      readOnly: Â«attribute.isReadOnly()Â»
+      Â«ENDIF-Â»  
+      Â«IF attribute.isWriteOnly() -Â»
+      writeOnly: Â«attribute.isWriteOnly()Â»
+      Â«ENDIF-Â»
+      Â«IF attribute.hasExample()-Â»
+        Â«IF ((Example) attribute).exampleValue.length > 0-Â»
+      example: 'Â«((Example) attribute).exampleValueÂ»'
+        Â«ENDIF-Â»
+      Â«ENDIF-Â»
+    Â«ENDIF-Â»         
+  Â«ENDLET -Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateOpenAPIDataTypeForPath(OpenAPI3Specification spec, Parameter param) FOR OpenAPIDataType -»
-                «LET this.ownedAttribute.get(0) AS attribute -»
-                «IF attribute.hasComment()-»
+Â«DEFINE GenerateOpenAPIDataTypeForPath(OpenAPI3Specification spec, Parameter param) FOR OpenAPIDataType -Â»
+                Â«LET this.ownedAttribute.get(0) AS attribute -Â»
+                Â«IF attribute.hasComment()-Â»
                 description: >-
-                  «attribute.getCommentForOpenAPIDescription("                  ")»
-                «ENDIF-»
-                «IF param.isMultivalued() == false-»
-                type: «attribute.type.getOpenAPIType(spec)»
-                  «IF attribute.hasOpenAPIFormatForProperty()-»
-                format: «attribute.getOpenAPIFormatForProperty()»
-                  «ENDIF-»
-                  «IF attribute.hasPatternForProperty() -»
-                pattern: '«attribute.getPatternForProperty()»'
-                  «ENDIF-»
-                  «IF attribute.defaultValue != null -»
-                default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
-                  «ENDIF-»
-                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR attribute-»    
-                  «IF attribute.isDeprecated() || param.isDeprecated() -»
+                  Â«attribute.getCommentForOpenAPIDescription("                  ")Â»
+                Â«ENDIF-Â»
+                Â«IF param.isMultivalued() == false-Â»
+                type: Â«attribute.type.getOpenAPIType(spec)Â»
+                  Â«IF attribute.hasOpenAPIFormatForProperty()-Â»
+                format: Â«attribute.getOpenAPIFormatForProperty()Â»
+                  Â«ENDIF-Â»
+                  Â«IF attribute.hasPatternForProperty() -Â»
+                pattern: 'Â«attribute.getPatternForProperty()Â»'
+                  Â«ENDIF-Â»
+                  Â«IF attribute.defaultValue != null -Â»
+                default: Â«attribute.defaultValue.stringValue().replaceAll("\"", "'")Â»
+                  Â«ENDIF-Â»
+                Â«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR attribute-Â»    
+                  Â«IF attribute.isDeprecated() || param.isDeprecated() -Â»
                 deprecated: true
-                  «ENDIF-»
-                  «IF attribute.hasExample()-»
-                    «IF ((Example) attribute).exampleValue.length > 0-»
-                example: '«((Example) attribute).exampleValue»'
-                    «ENDIF-»
-                  «ENDIF-»
-                «ELSE-»
+                  Â«ENDIF-Â»
+                  Â«IF attribute.hasExample()-Â»
+                    Â«IF ((Example) attribute).exampleValue.length > 0-Â»
+                example: 'Â«((Example) attribute).exampleValueÂ»'
+                    Â«ENDIF-Â»
+                  Â«ENDIF-Â»
+                Â«ELSE-Â»
                 type: array
                 items:
-                  type: «attribute.type.getOpenAPIType(spec)»
-                  «IF attribute.hasOpenAPIFormatForProperty()-»
-                  format: «attribute.getOpenAPIFormatForProperty()»
-                  «ENDIF-»
-                  «IF attribute.hasPatternForProperty() -»
-                  pattern: '«attribute.getPatternForProperty()»'
-                  «ENDIF-»
-                  «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("            ") FOR attribute-»
-                  «IF attribute.hasExample()-»
-                  «IF ((Example) attribute).exampleValue.length > 0-»
-                  example: '«((Example) attribute).exampleValue»'
-                  «ENDIF-»
-                  «ENDIF-»
-                  «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR param-»
-                  «IF attribute.isDeprecated() || param.isDeprecated() -»
+                  type: Â«attribute.type.getOpenAPIType(spec)Â»
+                  Â«IF attribute.hasOpenAPIFormatForProperty()-Â»
+                  format: Â«attribute.getOpenAPIFormatForProperty()Â»
+                  Â«ENDIF-Â»
+                  Â«IF attribute.hasPatternForProperty() -Â»
+                  pattern: 'Â«attribute.getPatternForProperty()Â»'
+                  Â«ENDIF-Â»
+                  Â«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("            ") FOR attribute-Â»
+                  Â«IF attribute.hasExample()-Â»
+                  Â«IF ((Example) attribute).exampleValue.length > 0-Â»
+                  example: 'Â«((Example) attribute).exampleValueÂ»'
+                  Â«ENDIF-Â»
+                  Â«ENDIF-Â»
+                  Â«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR param-Â»
+                  Â«IF attribute.isDeprecated() || param.isDeprecated() -Â»
                 deprecated: true
-                  «ENDIF-»
-                «ENDIF-»
-                «IF attribute.isNullable() == false -»
-                nullable: «attribute.isNullable()»
-                «ENDIF-»  
-                «IF attribute.isReadOnly()  -»
-                readOnly: «attribute.isReadOnly()»
-                «ENDIF-»  
-                «IF attribute.isWriteOnly() -»
-                writeOnly: «attribute.isWriteOnly()»
-                «ENDIF-»  
-                «IF param.hasExample()-»
-                «IF ((Example) param).exampleValue.length > 0-»
-                example: '«((Example) param).exampleValue»'
-                «ENDIF-»
-                «ENDIF-»
-                «ENDLET -»
-«ENDDEFINE»
+                  Â«ENDIF-Â»
+                Â«ENDIF-Â»
+                Â«IF attribute.isNullable() == false -Â»
+                nullable: Â«attribute.isNullable()Â»
+                Â«ENDIF-Â»  
+                Â«IF attribute.isReadOnly()  -Â»
+                readOnly: Â«attribute.isReadOnly()Â»
+                Â«ENDIF-Â»  
+                Â«IF attribute.isWriteOnly() -Â»
+                writeOnly: Â«attribute.isWriteOnly()Â»
+                Â«ENDIF-Â»  
+                Â«IF param.hasExample()-Â»
+                Â«IF ((Example) param).exampleValue.length > 0-Â»
+                example: 'Â«((Example) param).exampleValueÂ»'
+                Â«ENDIF-Â»
+                Â«ENDIF-Â»
+                Â«ENDLET -Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateDataTypeSerializer FOR OpenAPIDataType -»
-	«FILE packagePath() + "/serializers/" + name +"Serializer.java" GenBase»
-		«getFileHeader()»
-		package «this.packageName()».serializers;
+Â«DEFINE GenerateDataTypeSerializer FOR OpenAPIDataType -Â»
+	Â«FILE packagePath() + "/serializers/" + name +"Serializer.java" GenBaseÂ»
+		Â«getFileHeader()Â»
+		package Â«this.packageName()Â».serializers;
 		
-		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
 		/**
-		 * Class implements a JSON / Jackson serializer for class «name».
+		 * Class implements a JSON / Jackson serializer for class Â«nameÂ».
 		 */
-		public class «name»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<«name»> {
+		public class Â«nameÂ»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<Â«nameÂ»> {
 		  @Override
-		  public void serialize( «this.fqn()» pObject, com.fasterxml.jackson.core.JsonGenerator pGenerator, com.fasterxml.jackson.databind.SerializerProvider pSerializers )
+		  public void serialize( Â«this.fqn()Â» pObject, com.fasterxml.jackson.core.JsonGenerator pGenerator, com.fasterxml.jackson.databind.SerializerProvider pSerializers )
 		    throws java.io.IOException {
 		    
-		  «LET this.ownedAttribute.get(0) AS attr»
+		  Â«LET this.ownedAttribute.get(0) AS attrÂ»
 		    // Write value directly to JSON and avoid nesting object structures
-		    «IF attr.type.isStringType()»
-		    pGenerator.writeString(pObject.«attr.asGetter()»());
-		    «ELSE»«IF attr.type.isBooleanType()»
-		    pGenerator.writeBoolean(pObject.«attr.asGetter()»());
-		    «ELSE»
-		    pGenerator.writeNumber(pObject.«attr.asGetter()»());
-		    «ENDIF»		    
-		    «ENDIF»
-		  «ENDLET»
+		    Â«IF attr.type.isStringType()Â»
+		    pGenerator.writeString(pObject.Â«attr.asGetter()Â»());
+		    Â«ELSEÂ»Â«IF attr.type.isBooleanType()Â»
+		    pGenerator.writeBoolean(pObject.Â«attr.asGetter()Â»());
+		    Â«ELSEÂ»
+		    pGenerator.writeNumber(pObject.Â«attr.asGetter()Â»());
+		    Â«ENDIFÂ»		    
+		    Â«ENDIFÂ»
+		  Â«ENDLETÂ»
 		  }
 		}
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateDataTypeDeserializer FOR OpenAPIDataType -»
-	«FILE packagePath() + "/serializers/" + name +"Deserializer.java" GenBase»
-		«getFileHeader()»
-		package «this.packageName()».serializers;
+Â«DEFINE GenerateDataTypeDeserializer FOR OpenAPIDataType -Â»
+	Â«FILE packagePath() + "/serializers/" + name +"Deserializer.java" GenBaseÂ»
+		Â«getFileHeader()Â»
+		package Â«this.packageName()Â».serializers;
 		
-		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
 		/**
-		 * Class implements a JSON / Jackson deserializer for class «name».
+		 * Class implements a JSON / Jackson deserializer for class Â«nameÂ».
 		 */
-		public class «name»Deserializer extends com.fasterxml.jackson.databind.JsonDeserializer<«this.fqn()»> {
+		public class Â«nameÂ»Deserializer extends com.fasterxml.jackson.databind.JsonDeserializer<Â«this.fqn()Â»> {
 
 		@Override
-		public «this.fqn()» deserialize( com.fasterxml.jackson.core.JsonParser pParser, com.fasterxml.jackson.databind.DeserializationContext pContext ) throws java.io.IOException {
+		public Â«this.fqn()Â» deserialize( com.fasterxml.jackson.core.JsonParser pParser, com.fasterxml.jackson.databind.DeserializationContext pContext ) throws java.io.IOException {
 			// Parse JSON content.
 			com.fasterxml.jackson.databind.JsonNode lNode = pParser.getCodec().readTree(pParser);
 		
 		    // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
-		    «LET this.ownedAttribute.get(0) AS attr»
+		    Â«LET this.ownedAttribute.get(0) AS attrÂ»
 			    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
-			    «IF attr.type.isBooleanType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»(lNode.asBoolean()).build();
-		        «ENDIF»
-			    «IF attr.type.isStringType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»(lNode.asText()).build();
-		        «ENDIF»
-		        «IF attr.type.isByteType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»((byte)lNode.asInt()).build();
-		        «ENDIF»
-		        «IF attr.type.isShortType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»((short)lNode.asInt()).build();
-		        «ENDIF»
-		        «IF attr.type.isIntegerType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»(lNode.asInt()).build();
-		        «ENDIF»
-		        «IF attr.type.isLongType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»(lNode.asLong()).build();
-		        «ENDIF»
-		        «IF attr.type.isFloatType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»((float)lNode.asDouble()).build();
-		        «ENDIF»
-		        «IF attr.type.isDoubleType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»(lNode.asDouble()).build();
-		        «ENDIF»
+			    Â«IF attr.type.isBooleanType()Â»
+		        return Â«this.fqn()Â».Builder.newBuilder().Â«attr.asSetter()Â»(lNode.asBoolean()).build();
+		        Â«ENDIFÂ»
+			    Â«IF attr.type.isStringType()Â»
+		        return Â«this.fqn()Â».Builder.newBuilder().Â«attr.asSetter()Â»(lNode.asText()).build();
+		        Â«ENDIFÂ»
+		        Â«IF attr.type.isByteType()Â»
+		        return Â«this.fqn()Â».Builder.newBuilder().Â«attr.asSetter()Â»((byte)lNode.asInt()).build();
+		        Â«ENDIFÂ»
+		        Â«IF attr.type.isShortType()Â»
+		        return Â«this.fqn()Â».Builder.newBuilder().Â«attr.asSetter()Â»((short)lNode.asInt()).build();
+		        Â«ENDIFÂ»
+		        Â«IF attr.type.isIntegerType()Â»
+		        return Â«this.fqn()Â».Builder.newBuilder().Â«attr.asSetter()Â»(lNode.asInt()).build();
+		        Â«ENDIFÂ»
+		        Â«IF attr.type.isLongType()Â»
+		        return Â«this.fqn()Â».Builder.newBuilder().Â«attr.asSetter()Â»(lNode.asLong()).build();
+		        Â«ENDIFÂ»
+		        Â«IF attr.type.isFloatType()Â»
+		        return Â«this.fqn()Â».Builder.newBuilder().Â«attr.asSetter()Â»((float)lNode.asDouble()).build();
+		        Â«ENDIFÂ»
+		        Â«IF attr.type.isDoubleType()Â»
+		        return Â«this.fqn()Â».Builder.newBuilder().Â«attr.asSetter()Â»(lNode.asDouble()).build();
+		        Â«ENDIFÂ»
 		    }
 		    // Node is not a TextNode
 		    else {
-		      «IF isTargetRuntimeJEAF()»
-		      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.json.api.JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION, «this.fqn()».class.getName(), lNode.toString(), lNode.getClass().getName());
-		      «ELSE»
-		      throw new java.io.IOException("Unable to deserialize object of type «this.fqn()». Expected text node but received other type of JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+ lNode.getClass().getName() + "''.");
-		      «ENDIF»
+		      Â«IF isTargetRuntimeJEAF()Â»
+		      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.json.api.JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION, Â«this.fqn()Â».class.getName(), lNode.toString(), lNode.getClass().getName());
+		      Â«ELSEÂ»
+		      throw new java.io.IOException("Unable to deserialize object of type Â«this.fqn()Â». Expected text node but received other type of JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+ lNode.getClass().getName() + "''.");
+		      Â«ENDIFÂ»
 		    }
-		    «ENDLET»
+		    Â«ENDLETÂ»
 		}
 	}
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateModuleFactory FOR ModuleFactory -»
-	«FILE packagePath() + "/" + name + ".java" GenBase»
-		«getFileHeader()»
-		package «this.packageName()»;
+Â«DEFINE GenerateModuleFactory FOR ModuleFactory -Â»
+	Â«FILE packagePath() + "/" + name + ".java" GenBaseÂ»
+		Â«getFileHeader()Â»
+		package Â«this.packageName()Â»;
 		
-		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
 		/**
 		 * Factory assembles all configured serializers / deserializers into a module.
 		 */
 		@com.anaptecs.jeaf.json.annotations.ModuleFactory
-		public class «name» implements com.anaptecs.jeaf.json.api.ObjectMapperModuleFactory {
+		public class Â«nameÂ» implements com.anaptecs.jeaf.json.api.ObjectMapperModuleFactory {
 			/**
 			 * Method creates a module that consists of all serializers / deserializers of the current package.
 			 */
@@ -283,21 +283,21 @@
 				com.fasterxml.jackson.databind.module.SimpleModule lModule = new com.fasterxml.jackson.databind.module.SimpleModule(this.getClass().getName());
 				
 				// Add serializers and deserializers for datatypes				
-				«FOREACH this.clientDependency.supplier.typeSelect(uml::Package).allOwnedElements().typeSelect(OpenAPIDataType).sortBy(e|e.name) AS datatype»
-				lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer());
-				lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer());
-				«ENDFOREACH»
+				Â«FOREACH this.clientDependency.supplier.typeSelect(uml::Package).allOwnedElements().typeSelect(OpenAPIDataType).sortBy(e|e.name) AS datatypeÂ»
+				lModule.addSerializer(Â«datatype.fqn()Â».class, new Â«datatype.packageName()Â».serializers.Â«datatype.nameÂ»Serializer());
+				lModule.addDeserializer(Â«datatype.fqn()Â».class, new Â«datatype.packageName()Â».serializers.Â«datatype.nameÂ»Deserializer());
+				Â«ENDFOREACHÂ»
 				
 				// Add serializers and deserializers for enumerations				
-				«FOREACH this.clientDependency.supplier.typeSelect(uml::Package).allOwnedElements().typeSelect(JEAFEnumeration).select(e|e.extensibleEnum).sortBy(e|e.name) AS enum»
-				lModule.addSerializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Serializer());
-				lModule.addDeserializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Deserializer());
-				«ENDFOREACH»
+				Â«FOREACH this.clientDependency.supplier.typeSelect(uml::Package).allOwnedElements().typeSelect(JEAFEnumeration).select(e|e.extensibleEnum).sortBy(e|e.name) AS enumÂ»
+				lModule.addSerializer(Â«enum.fqn()Â».class, new Â«enum.packageName()Â».serializers.Â«enum.nameÂ»Serializer());
+				lModule.addDeserializer(Â«enum.fqn()Â».class, new Â«enum.packageName()Â».serializers.Â«enum.nameÂ»Deserializer());
+				Â«ENDFOREACHÂ»
 				
 				// Return created module.
 				return lModule;
 			}
 		}
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 

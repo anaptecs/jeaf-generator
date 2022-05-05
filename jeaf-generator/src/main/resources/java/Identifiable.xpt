@@ -1,29 +1,29 @@
-«DEFINE GenerateIdentifiableDeclaration(String idImpl) FOR uml::Class»
+Â«DEFINE GenerateIdentifiableDeclaration(String idImpl) FOR uml::ClassÂ»
   /**
    * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
    */
-  private final «idImpl» objectID;
-«ENDDEFINE»
+  private final Â«idImplÂ» objectID;
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateIdentifiableGetters(String idImpl) FOR uml::Class»
+Â«DEFINE GenerateIdentifiableGetters(String idImpl) FOR uml::ClassÂ»
   /**
    * Method returns the id of this object.
    * 
-   * @return {@link «idImpl»} ID of this object. Since an object must not have an id the method may also return null.
+   * @return {@link Â«idImplÂ»} ID of this object. Since an object must not have an id the method may also return null.
    */
   @Override
-  public final «idImpl» getID( ) {
+  public final Â«idImplÂ» getID( ) {
     return objectID;
   }
 
   /**
    * Method returns the unversioned object id of this object.
    * 
-   * @return {@link «idImpl»} ID of this object. Since an object must not have an id the method may also return null.
+   * @return {@link Â«idImplÂ»} ID of this object. Since an object must not have an id the method may also return null.
    */
   @Override
-  public final «idImpl» getUnversionedID( ) {
-    «idImpl» lUnversionedID;
+  public final Â«idImplÂ» getUnversionedID( ) {
+    Â«idImplÂ» lUnversionedID;
     if(objectID != null){
       lUnversionedID = objectID.getUnversionedObjectID();
     }
@@ -32,4 +32,4 @@
     }
     return lUnversionedID;    
   }
-«ENDDEFINE»
+Â«ENDDEFINEÂ»

@@ -38,7 +38,7 @@
 		<metaModel idRef="UmlMM"/>
 		<metaModel idRef="${profile.name}"/>
 
-		<fileEncoding value="ISO-8859-1"/>
+		<fileEncoding value="UTF-8"/>
 		<!-- Fuer jedes 'model' im slot model rufe Define 'Root' im template 'Root' auf -->
 		<expand value="${template.root} FOR ${output.slot}"/>
 		
@@ -54,7 +54,7 @@
 		<metaModel idRef="UmlMM"/>
 		<metaModel idRef="${profile.name}"/>
 
-		<fileEncoding value="ISO-8859-1"/>
+		<fileEncoding value="UTF-8"/>
 		<expand value="CustomRoot::InfoMessage FOR ${output.slot}"/>
 		
 		<outlet name="GenBase" path="${path.src.gen}/" overwrite="true"/>
@@ -69,7 +69,7 @@
 		<metaModel idRef="UmlMM"/>
 		<metaModel idRef="${profile.name}"/>
 
-		<fileEncoding value="ISO-8859-1"/>
+		<fileEncoding value="UTF-8"/>
 		<expand value="${custom.root.template} FOR ${output.slot}"/>
 		
 		<outlet name="GenBase" path="${path.src.gen}/" overwrite="true"/>

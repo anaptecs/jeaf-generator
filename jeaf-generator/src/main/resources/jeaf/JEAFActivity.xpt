@@ -1,80 +1,80 @@
-«IMPORT uml»
-«IMPORT JMM»
-«EXTENSION java::Naming»
-«EXTENSION java::GeneratorCommons»
-«EXTENSION java::ActivityHelper»
-«EXTENSION org::openarchitectureware::util::stdlib::io»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION java::ActivityHelperÂ»
+Â«EXTENSION org::openarchitectureware::util::stdlib::ioÂ»
 
-«DEFINE GenerateActivityInterface FOR JEAFActivity»
-	«FILE packagePath()+"/"+name+".java" GenBase»
-	«getFileHeader()»
-	package «packageName()»;
+Â«DEFINE GenerateActivityInterface FOR JEAFActivityÂ»
+	Â«FILE packagePath()+"/"+name+".java" GenBaseÂ»
+	Â«getFileHeader()Â»
+	package Â«packageName()Â»;
 	
 	import com.anaptecs.jeaf.core.api.Activity;
 	
 	/**
-	 * Interface of activity «name».
+	 * Interface of activity Â«nameÂ».
 	 *
-	 * «this.getComment()»
+	 * Â«this.getComment()Â»
 	 */
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public interface «name» extends Activity {
+	Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+    public interface Â«nameÂ» extends Activity {
 		/**
-		 * «this.getComment()»
-		 * «FOREACH this.getInputParameters().typeSelect(Parameter) AS param»
-		 @param «param.name» «param.getComment()»«ENDFOREACH»
-		 «IF hasReturnParameter()»* @return «this.getReturnParameter().getTypeName()» «this.getReturnParameter().getComment()»«ENDIF-»
+		 * Â«this.getComment()Â»
+		 * Â«FOREACH this.getInputParameters().typeSelect(Parameter) AS paramÂ»
+		 @param Â«param.nameÂ» Â«param.getComment()Â»Â«ENDFOREACHÂ»
+		 Â«IF hasReturnParameter()Â»* @return Â«this.getReturnParameter().getTypeName()Â» Â«this.getReturnParameter().getComment()Â»Â«ENDIF-Â»
 		 */
-	    «IF hasReturnParameter()»«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnParameter()»«ENDIF»
-        «IF hasReturnParameter()»«this.getReturnParameter().getTypeName()»«ELSE»void«ENDIF» execute( «FOREACH this.getInputParameters().typeSelect(Parameter) AS param SEPARATOR ', '»«EXPAND java::Helper::GenerateDeprecationAnnotation FOR param» «param.getTypeName()» «param.name»«ENDFOREACH»);
+	    Â«IF hasReturnParameter()Â»Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnParameter()Â»Â«ENDIFÂ»
+        Â«IF hasReturnParameter()Â»Â«this.getReturnParameter().getTypeName()Â»Â«ELSEÂ»voidÂ«ENDIFÂ» execute( Â«FOREACH this.getInputParameters().typeSelect(Parameter) AS param SEPARATOR ', 'Â»Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR paramÂ» Â«param.getTypeName()Â» Â«param.nameÂ»Â«ENDFOREACHÂ»);
     }
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateActivityImplClass FOR JEAFActivity»
-	«FILE packagePath()+"/"+name+"Impl.java" GenOnce»
-	«getFileHeader()»
-	package «packageName()»;
+Â«DEFINE GenerateActivityImplClass FOR JEAFActivityÂ»
+	Â«FILE packagePath()+"/"+name+"Impl.java" GenOnceÂ»
+	Â«getFileHeader()Â»
+	package Â«packageName()Â»;
 	
 	import com.anaptecs.jeaf.core.annotations.JEAFActivityImpl;
 	
 	/**
-	 * Implementation of activity «name».
-	 * «this.getComment()»	 
+	 * Implementation of activity Â«nameÂ».
+	 * Â«this.getComment()Â»	 
 	 */
-	@JEAFActivityImpl(activityInterface = «name».class)
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public class «name»Impl implements  «name» {
+	@JEAFActivityImpl(activityInterface = Â«nameÂ».class)
+	Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+    public class Â«nameÂ»Impl implements  Â«nameÂ» {
 		/**
 		 * Create new instance of activity. 
 		 */
-		«name»Impl(  ) {
+		Â«nameÂ»Impl(  ) {
 		}
 		
 		/**
-		 * «this.getComment()» 
-		 * «FOREACH this.getInputParameters().typeSelect(Parameter) AS param»
-		 @param «param.name» «param.getComment()»«ENDFOREACH»
-		 «IF hasReturnParameter()»* @return «this.getReturnParameter().getTypeName()» «this.getReturnParameter().getComment()»«ENDIF-»
+		 * Â«this.getComment()Â» 
+		 * Â«FOREACH this.getInputParameters().typeSelect(Parameter) AS paramÂ»
+		 @param Â«param.nameÂ» Â«param.getComment()Â»Â«ENDFOREACHÂ»
+		 Â«IF hasReturnParameter()Â»* @return Â«this.getReturnParameter().getTypeName()Â» Â«this.getReturnParameter().getComment()Â»Â«ENDIF-Â»
 		 */
-		«IF hasReturnParameter()»«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnParameter()»«ENDIF»
+		Â«IF hasReturnParameter()Â»Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnParameter()Â»Â«ENDIFÂ»
 		@Override
-		public «IF hasReturnParameter()»«this.getReturnParameter().getTypeName()»«ELSE»void«ENDIF» execute( «FOREACH this.getInputParameters().typeSelect(Parameter) AS param SEPARATOR ', '»«EXPAND java::Helper::GenerateDeprecationAnnotation FOR param» «param.getTypeName()» «param.name»«ENDFOREACH») {
+		public Â«IF hasReturnParameter()Â»Â«this.getReturnParameter().getTypeName()Â»Â«ELSEÂ»voidÂ«ENDIFÂ» execute( Â«FOREACH this.getInputParameters().typeSelect(Parameter) AS param SEPARATOR ', 'Â»Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR paramÂ» Â«param.getTypeName()Â» Â«param.nameÂ»Â«ENDFOREACHÂ») {
 		  // TODO: Implement business logic for activity.
-		  «IF this.getReturnParameter().getTypeName() != "void"»
-			  «IF this.getReturnParameter().getTypeName() != "boolean"»
-				  «IF this.getReturnParameter().type.isPrimitiveType()»
+		  Â«IF this.getReturnParameter().getTypeName() != "void"Â»
+			  Â«IF this.getReturnParameter().getTypeName() != "boolean"Â»
+				  Â«IF this.getReturnParameter().type.isPrimitiveType()Â»
 				  return 0;
-				  «ELSE»
+				  Â«ELSEÂ»
 				  return null; 
-				  «ENDIF»
-			  «ELSE»
+				  Â«ENDIFÂ»
+			  Â«ELSEÂ»
 				  return false;
-			«ENDIF»
-			«ENDIF»
+			Â«ENDIFÂ»
+			Â«ENDIFÂ»
 		  
 		}
     }
-    «ENDFILE»
-«ENDDEFINE»
+    Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 

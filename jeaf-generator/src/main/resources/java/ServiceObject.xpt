@@ -1,84 +1,84 @@
-«EXTENSION java::Naming»
-«EXTENSION java::ObjectMapper»
-«EXTENSION java::GeneratorCommons»
-«EXTENSION entity::ModelProperties»
-«EXTENSION org::openarchitectureware::util::stdlib::io»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::ObjectMapperÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION entity::ModelPropertiesÂ»
+Â«EXTENSION org::openarchitectureware::util::stdlib::ioÂ»
 
-«IMPORT JMM»
+Â«IMPORT JMMÂ»
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Generate service object 
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-«DEFINE ServiceObjectClass FOR ServiceObject»
-  «IF generateServiceObjects() == true»
-  «IF this.ownedOperation.size == 0 && this.hasCustomImplementation == false»
-	«FILE packagePath() + "/" + name +".java" GenBase»
-	«getFileHeader()»
-	package «this.packageName()»;
+Â«DEFINE ServiceObjectClass FOR ServiceObjectÂ»
+  Â«IF generateServiceObjects() == trueÂ»
+  Â«IF this.ownedOperation.size == 0 && this.hasCustomImplementation == falseÂ»
+	Â«FILE packagePath() + "/" + name +".java" GenBaseÂ»
+	Â«getFileHeader()Â»
+	package Â«this.packageName()Â»;
 	
 	import com.anaptecs.jeaf.xfun.api.XFunMessages;
 	import com.anaptecs.jeaf.xfun.api.XFun;
 	
-	«this.getJavadoc()»
-	«EXPAND java::Helper::GenerateGeneratedAnnotation»
-	«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
-	«EXPAND java::Validation::ValidationAnnotation»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation -»
-	«EXPAND java::Jackson::JacksonClassAnnotations -»
-	public «IF isAbstract»abstract«ENDIF» class «name» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
+	Â«this.getJavadoc()Â»
+	Â«EXPAND java::Helper::GenerateGeneratedAnnotationÂ»
+	Â«EXPAND java::Helper::GenerateSuppressWarningsAnnotationÂ»
+	Â«EXPAND java::Validation::ValidationAnnotationÂ»
+	Â«EXPAND java::Helper::GenerateDeprecationAnnotation -Â»
+	Â«EXPAND java::Jackson::JacksonClassAnnotations -Â»
+	public Â«IF isAbstractÂ»abstractÂ«ENDIFÂ» class Â«nameÂ» Â«EXPAND SuperClassDeclarationÂ» Â«EXPAND InterfaceDeclarationsÂ» {
 		/**
 		 * Default serial version uid.
 		 */
 		private static final long serialVersionUID = 1L;
 		
-		«REM»Generate constants for all real attributes«ENDREM»
-		«EXPAND java::Helper::GenerateConstantsForAttributeNames FOR ((uml::Class) this)»
+		Â«REMÂ»Generate constants for all real attributesÂ«ENDREMÂ»
+		Â«EXPAND java::Helper::GenerateConstantsForAttributeNames FOR ((uml::Class) this)Â»
 
-		«IF needsToImplementIdentifiable() == true»
-		«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())»
-		«ENDIF»
+		Â«IF needsToImplementIdentifiable() == trueÂ»
+		Â«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())Â»
+		Â«ENDIFÂ»
 		
-		«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
+		Â«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttributeÂ»
 	    
 		/**
 		 * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal" object creation builder should be used instead.
 		 */
-		protected «name»( ) {
-		  «IF needsToImplementIdentifiable() == true»
+		protected Â«nameÂ»( ) {
+		  Â«IF needsToImplementIdentifiable() == trueÂ»
 		  objectID = null;
-		  «ELSE»«IF this.requiresAttributeInitValue() == false»
+		  Â«ELSEÂ»Â«IF this.requiresAttributeInitValue() == falseÂ»
 		  // Nothing to do.
-		  «ENDIF»
-		  «ENDIF»
-		  «FOREACH this.ownedAttribute AS attr»
-			  «IF attr.isReadOnly == true && attr.isStatic == false»
-			  	«IF attr.type.isPrimitiveType() == true»
-				  «IF attr.isMultivalued() == false»
-				  	«IF attr.isRealInitValue()»
-				  		«attr.name» = «attr.initValue()»;
-				  	«ELSE»
-				  		«attr.name» = «attr.getPrimitiveDefaultValue()»;
-				  	«ENDIF»
-				  «ELSE»
-				  	«attr.name» = null;
-				  «ENDIF»
-			    «ELSE»
-					«IF attr.isMultivalued() == false»
-					«attr.name» = null;
-					«ENDIF»
-				«ENDIF»
-			  «ELSE»
-				  «IF attr.isRealInitValue() && attr.isStatic == false »
-                      «attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
-				  «ENDIF»
-			  «ENDIF»
-			  «IF attr.isTransientBidirectionalBackReference()»
+		  Â«ENDIFÂ»
+		  Â«ENDIFÂ»
+		  Â«FOREACH this.ownedAttribute AS attrÂ»
+			  Â«IF attr.isReadOnly == true && attr.isStatic == falseÂ»
+			  	Â«IF attr.type.isPrimitiveType() == trueÂ»
+				  Â«IF attr.isMultivalued() == falseÂ»
+				  	Â«IF attr.isRealInitValue()Â»
+				  		Â«attr.nameÂ» = Â«attr.initValue()Â»;
+				  	Â«ELSEÂ»
+				  		Â«attr.nameÂ» = Â«attr.getPrimitiveDefaultValue()Â»;
+				  	Â«ENDIFÂ»
+				  Â«ELSEÂ»
+				  	Â«attr.nameÂ» = null;
+				  Â«ENDIFÂ»
+			    Â«ELSEÂ»
+					Â«IF attr.isMultivalued() == falseÂ»
+					Â«attr.nameÂ» = null;
+					Â«ENDIFÂ»
+				Â«ENDIFÂ»
+			  Â«ELSEÂ»
+				  Â«IF attr.isRealInitValue() && attr.isStatic == false Â»
+                      Â«attr.nameÂ» = Â«IF attr.isJEAFEnumeration()Â»Â«attr.type.nameÂ».Â«ENDIFÂ»Â«attr.initValue()Â»;
+				  Â«ENDIFÂ»
+			  Â«ENDIFÂ»
+			  Â«IF attr.isTransientBidirectionalBackReference()Â»
 			    // Bidirectional back reference is not yet set up correctly
-			    «attr.asInstanceVar()»BackReferenceInitialized = false;
-			  «ENDIF»
-		  «ENDFOREACH»
+			    Â«attr.asInstanceVar()Â»BackReferenceInitialized = false;
+			  Â«ENDIFÂ»
+		  Â«ENDFOREACHÂ»
 		}
 
 		/**
@@ -86,125 +86,125 @@
 		 * 
 		 * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
 		 */
-		protected «name»(Builder pBuilder) {
-			«IF superClass.isEmpty == false»        
+		protected Â«nameÂ»(Builder pBuilder) {
+			Â«IF superClass.isEmpty == falseÂ»        
 			// Call constructor of super class.
 			super(pBuilder);
-			«ELSE»
+			Â«ELSEÂ»
 			// Ensure that builder is not null.
 			com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pBuilder, "pBuilder");
-			«ENDIF»
-			«IF needsToImplementIdentifiable() == true»
+			Â«ENDIFÂ»
+			Â«IF needsToImplementIdentifiable() == trueÂ»
 			// Read object ID.
 			com.anaptecs.jeaf.xfun.api.common.ObjectIdentity<?> lObjectID = pBuilder.objectID;
 			if (lObjectID != null) {
-				objectID = new «this.getObjectIDClassName()»(pBuilder.objectID);
+				objectID = new Â«this.getObjectIDClassName()Â»(pBuilder.objectID);
 		    }
 		    else {
 		      objectID = null;
 		    }
-			«ENDIF»
-			«IF this.ownedAttribute.size > 0»
+			Â«ENDIFÂ»
+			Â«IF this.ownedAttribute.size > 0Â»
 			// Read attribute values from builder.
-			«ENDIF»
+			Â«ENDIFÂ»
 			
-			«FOREACH this.ownedAttribute AS attr»
-			  «IF attr.association == null»
-			  	«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»
-			  «ELSE»
-			  	«IF attr.isMultivalued()»
-		        	«IF attr.isStatic == false»
-		        	if(pBuilder.«attr.name» != null) {
-		        	    «attr.name».addAll(pBuilder.«attr.name»);
+			Â«FOREACH this.ownedAttribute AS attrÂ»
+			  Â«IF attr.association == nullÂ»
+			  	Â«IF attr.isStatic == falseÂ»Â«attr.nameÂ» = pBuilder.Â«attr.nameÂ»;Â«ENDIFÂ»
+			  Â«ELSEÂ»
+			  	Â«IF attr.isMultivalued()Â»
+		        	Â«IF attr.isStatic == falseÂ»
+		        	if(pBuilder.Â«attr.nameÂ» != null) {
+		        	    Â«attr.nameÂ».addAll(pBuilder.Â«attr.nameÂ»);
 		        	}
-		        	«ENDIF»
-			  	«ELSE»
-					«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»			  	
-			  	«ENDIF»
-			  «ENDIF»			  
-			  «IF attr.isTransientBidirectionalBackReference()»
+		        	Â«ENDIFÂ»
+			  	Â«ELSEÂ»
+					Â«IF attr.isStatic == falseÂ»Â«attr.nameÂ» = pBuilder.Â«attr.nameÂ»;Â«ENDIFÂ»			  	
+			  	Â«ENDIFÂ»
+			  Â«ENDIFÂ»			  
+			  Â«IF attr.isTransientBidirectionalBackReference()Â»
 				// Bidirectional back reference is set up correctly as a builder is used.
-				«attr.asInstanceVar()»BackReferenceInitialized = true;
-			  «ENDIF»
-			«ENDFOREACH»
+				Â«attr.asInstanceVar()Â»BackReferenceInitialized = true;
+			  Â«ENDIFÂ»
+			Â«ENDFOREACHÂ»
 		}
 		  
-		«REM»Generate builder«ENDREM»
-		«EXPAND java::Builder::GenerateBuilder (this.getObjectIDClassName())»
+		Â«REMÂ»Generate builderÂ«ENDREMÂ»
+		Â«EXPAND java::Builder::GenerateBuilder (this.getObjectIDClassName())Â»
 					
-        «IF needsToImplementIdentifiable() == true»
-			«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())»
-        «ENDIF»
+        Â«IF needsToImplementIdentifiable() == trueÂ»
+			Â«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())Â»
+        Â«ENDIFÂ»
 
-		«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
-		«EXPAND java::Helper::GenerateToStringMethod»
+		Â«EXPAND Attribute::PropertyAccessors FOREACH ownedAttributeÂ»
+		Â«EXPAND java::Helper::GenerateToStringMethodÂ»
 	}
-	«ENDFILE»
-	«ELSE»
-      «FILE packagePath() + "/" + name +"Base.java" GenBase»
-      «getFileHeader()»
-      package «this.packageName()»;
+	Â«ENDFILEÂ»
+	Â«ELSEÂ»
+      Â«FILE packagePath() + "/" + name +"Base.java" GenBaseÂ»
+      Â«getFileHeader()Â»
+      package Â«this.packageName()Â»;
       
       import com.anaptecs.jeaf.xfun.api.XFunMessages;
       import com.anaptecs.jeaf.xfun.api.XFun;        
       
-      «this.getJavadoc()»
-	  «EXPAND java::Helper::GenerateGeneratedAnnotation»
-	  «EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
-      «EXPAND java::Validation::ValidationAnnotation -»      
-      «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-      public abstract class «name»Base «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
+      Â«this.getJavadoc()Â»
+	  Â«EXPAND java::Helper::GenerateGeneratedAnnotationÂ»
+	  Â«EXPAND java::Helper::GenerateSuppressWarningsAnnotationÂ»
+      Â«EXPAND java::Validation::ValidationAnnotation -Â»      
+      Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+      public abstract class Â«nameÂ»Base Â«EXPAND SuperClassDeclarationÂ» Â«EXPAND InterfaceDeclarationsÂ» {
         /**
          * Default serial version uid.
          */
         private static final long serialVersionUID = 1L;
         
-		«REM»Generate constants for all real attributes«ENDREM»
-		«EXPAND java::Helper::GenerateConstantsForAttributeNames FOR ((uml::Class) this)»
+		Â«REMÂ»Generate constants for all real attributesÂ«ENDREMÂ»
+		Â«EXPAND java::Helper::GenerateConstantsForAttributeNames FOR ((uml::Class) this)Â»
         
-		«IF needsToImplementIdentifiable() == true»
-		«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())»
-		«ENDIF»
+		Â«IF needsToImplementIdentifiable() == trueÂ»
+		Â«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())Â»
+		Â«ENDIFÂ»
 		
-		«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
+		Â«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttributeÂ»
 
 		/**
 		 * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal" object creation builder should be used instead.
 		 */
-		protected «name»Base( ) {
-		  «IF needsToImplementIdentifiable() == true»
+		protected Â«nameÂ»Base( ) {
+		  Â«IF needsToImplementIdentifiable() == trueÂ»
 		  objectID = null;
-		  «ELSE»«IF this.requiresAttributeInitValue() == false»
+		  Â«ELSEÂ»Â«IF this.requiresAttributeInitValue() == falseÂ»
 		  // Nothing to do.
-		  «ENDIF»
-		  «ENDIF»
-		  «FOREACH this.ownedAttribute AS attr»
-			  «IF attr.isReadOnly == true && attr.isStatic == false»
-				  «IF attr.type.isPrimitiveType() == true»
-					  «IF attr.isMultivalued() == false»
-					  	«IF attr.isRealInitValue()»
-					  		«attr.name» = «attr.initValue()»;
-					  	«ELSE»
-					  		«attr.name» = «attr.getPrimitiveDefaultValue()»;
-					  	«ENDIF»
-					  «ELSE»
-					  	«attr.name» = null;
-					  «ENDIF»
-				  «ELSE»
-					  «IF attr.isMultivalued() == false»
-					  	«attr.name» = null;
-					  «ENDIF»
-				  «ENDIF»
-			  «ELSE»
-				  «IF attr.isRealInitValue() && attr.isStatic == false »
-                      «attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
-				  «ENDIF»
-			  «ENDIF»
-			  «IF attr.isTransientBidirectionalBackReference()»
+		  Â«ENDIFÂ»
+		  Â«ENDIFÂ»
+		  Â«FOREACH this.ownedAttribute AS attrÂ»
+			  Â«IF attr.isReadOnly == true && attr.isStatic == falseÂ»
+				  Â«IF attr.type.isPrimitiveType() == trueÂ»
+					  Â«IF attr.isMultivalued() == falseÂ»
+					  	Â«IF attr.isRealInitValue()Â»
+					  		Â«attr.nameÂ» = Â«attr.initValue()Â»;
+					  	Â«ELSEÂ»
+					  		Â«attr.nameÂ» = Â«attr.getPrimitiveDefaultValue()Â»;
+					  	Â«ENDIFÂ»
+					  Â«ELSEÂ»
+					  	Â«attr.nameÂ» = null;
+					  Â«ENDIFÂ»
+				  Â«ELSEÂ»
+					  Â«IF attr.isMultivalued() == falseÂ»
+					  	Â«attr.nameÂ» = null;
+					  Â«ENDIFÂ»
+				  Â«ENDIFÂ»
+			  Â«ELSEÂ»
+				  Â«IF attr.isRealInitValue() && attr.isStatic == false Â»
+                      Â«attr.nameÂ» = Â«IF attr.isJEAFEnumeration()Â»Â«attr.type.nameÂ».Â«ENDIFÂ»Â«attr.initValue()Â»;
+				  Â«ENDIFÂ»
+			  Â«ENDIFÂ»
+			  Â«IF attr.isTransientBidirectionalBackReference()Â»
 			    // Bidirectional back reference is not yet set up correctly
-			    «attr.asInstanceVar()»BackReferenceInitialized = false;
-			  «ENDIF»
-		  «ENDFOREACH»
+			    Â«attr.asInstanceVar()Â»BackReferenceInitialized = false;
+			  Â«ENDIFÂ»
+		  Â«ENDFOREACHÂ»
 		}
 
 		/**
@@ -212,73 +212,73 @@
 		 * 
 		 * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
 		 */
-		protected «name»Base(BuilderBase pBuilder) {
-		«IF superClass.isEmpty == false»        
+		protected Â«nameÂ»Base(BuilderBase pBuilder) {
+		Â«IF superClass.isEmpty == falseÂ»        
 		// Call constructor of super class.
 		super(pBuilder);
-		«ELSE»
+		Â«ELSEÂ»
 		// Ensure that builder is not null.
 		com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pBuilder, "pBuilder");
-		«ENDIF»
-		«IF needsToImplementIdentifiable() == true»
+		Â«ENDIFÂ»
+		Â«IF needsToImplementIdentifiable() == trueÂ»
 		// Read object ID.
 		com.anaptecs.jeaf.xfun.api.common.ObjectIdentity<?> lObjectID = pBuilder.objectID;
 		if (lObjectID != null) {
-			objectID = new «this.getObjectIDClassName()»(pBuilder.objectID);
+			objectID = new Â«this.getObjectIDClassName()Â»(pBuilder.objectID);
 	    }
 	    else {
 	      objectID = null;
 	    }
-		«ENDIF»
-		«IF this.ownedAttribute.size > 0»
+		Â«ENDIFÂ»
+		Â«IF this.ownedAttribute.size > 0Â»
 		// Read attribute values from builder.
-		«ENDIF»
+		Â«ENDIFÂ»
 
-		«FOREACH this.ownedAttribute AS attr»
-		  «IF attr.association == null»
-		  	«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»
-		  «ELSE»
-		  	«IF attr.isMultivalued()»
-	        	«IF attr.isStatic == false»
-	        	if(pBuilder.«attr.name» != null) {
-	        	    «attr.name».addAll(pBuilder.«attr.name»);
+		Â«FOREACH this.ownedAttribute AS attrÂ»
+		  Â«IF attr.association == nullÂ»
+		  	Â«IF attr.isStatic == falseÂ»Â«attr.nameÂ» = pBuilder.Â«attr.nameÂ»;Â«ENDIFÂ»
+		  Â«ELSEÂ»
+		  	Â«IF attr.isMultivalued()Â»
+	        	Â«IF attr.isStatic == falseÂ»
+	        	if(pBuilder.Â«attr.nameÂ» != null) {
+	        	    Â«attr.nameÂ».addAll(pBuilder.Â«attr.nameÂ»);
 	        	}
-	        	«ENDIF»
-		  	«ELSE»
-				«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»			  	
-		  	«ENDIF»
-		  «ENDIF»			  
-		  «IF attr.isTransientBidirectionalBackReference()»
+	        	Â«ENDIFÂ»
+		  	Â«ELSEÂ»
+				Â«IF attr.isStatic == falseÂ»Â«attr.nameÂ» = pBuilder.Â«attr.nameÂ»;Â«ENDIFÂ»			  	
+		  	Â«ENDIFÂ»
+		  Â«ENDIFÂ»			  
+		  Â«IF attr.isTransientBidirectionalBackReference()Â»
 			// Bidirectional back reference is set up correctly as a builder is used.
-			«attr.asInstanceVar()»BackReferenceInitialized = true;
-		  «ENDIF»
-		«ENDFOREACH»
+			Â«attr.asInstanceVar()Â»BackReferenceInitialized = true;
+		  Â«ENDIFÂ»
+		Â«ENDFOREACHÂ»
 		}
 		
-		«REM»Generate builder«ENDREM»
-		«EXPAND java::Builder::GenerateBuilderBase (this.getObjectIDClassName())»
+		Â«REMÂ»Generate builderÂ«ENDREMÂ»
+		Â«EXPAND java::Builder::GenerateBuilderBase (this.getObjectIDClassName())Â»
 					
-		«IF needsToImplementIdentifiable() == true»
-			«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())»
-        «ENDIF»
+		Â«IF needsToImplementIdentifiable() == trueÂ»
+			Â«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())Â»
+        Â«ENDIFÂ»
 
-		«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
+		Â«EXPAND Attribute::PropertyAccessors FOREACH ownedAttributeÂ»
       
-        «EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
-        «EXPAND java::Helper::GenerateToStringMethod»
+        Â«EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperationÂ»
+        Â«EXPAND java::Helper::GenerateToStringMethodÂ»
       }
-      «ENDFILE»
+      Â«ENDFILEÂ»
 
-	  «FILE packagePath() + "/" + name +".java" GenOnce»
-	  «getFileHeader()»
-	  package «this.packageName()»;
+	  Â«FILE packagePath() + "/" + name +".java" GenOnceÂ»
+	  Â«getFileHeader()Â»
+	  package Â«this.packageName()Â»;
 	  
 	  
-	  «this.getJavadoc()»
-	  «EXPAND java::Validation::ValidationAnnotation»
-	  «EXPAND java::Helper::GenerateDeprecationAnnotation -»
-	  «EXPAND java::Jackson::JacksonClassAnnotations -»
-	  public «IF isAbstract»abstract«ENDIF» class «name» extends «name»Base {
+	  Â«this.getJavadoc()Â»
+	  Â«EXPAND java::Validation::ValidationAnnotationÂ»
+	  Â«EXPAND java::Helper::GenerateDeprecationAnnotation -Â»
+	  Â«EXPAND java::Jackson::JacksonClassAnnotations -Â»
+	  public Â«IF isAbstractÂ»abstractÂ«ENDIFÂ» class Â«nameÂ» extends Â«nameÂ»Base {
 	    /**
 	     * Default serial version uid.
 	     */
@@ -287,38 +287,38 @@
 		/**
 		 * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal" object creation builder should be used instead.
 		 */
-		protected «name»( ) {
+		protected Â«nameÂ»( ) {
 		}
 		
 		/**
 		 * Initialize object. Nothing special to do.
 		 */
-		protected «name»( «name».BuilderBase pBuilder ) {
+		protected Â«nameÂ»( Â«nameÂ».BuilderBase pBuilder ) {
 		  super(pBuilder);
 		}
 		  
-		«EXPAND java::Builder::GenerateBuilderImpl»
+		Â«EXPAND java::Builder::GenerateBuilderImplÂ»
 
-		    «EXPAND jeaf::JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperation»
+		    Â«EXPAND jeaf::JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperationÂ»
 	  }
-	  «ENDFILE»
-	«ENDIF»
-	«ENDIF»
+	  Â«ENDFILEÂ»
+	Â«ENDIFÂ»
+	Â«ENDIFÂ»
 		
-	«REM»Generate Object Mappers for POJO«ENDREM»
-	«EXPAND java::ObjectMapper::GenerateObjectMappers»
-«ENDDEFINE»
+	Â«REMÂ»Generate Object Mappers for POJOÂ«ENDREMÂ»
+	Â«EXPAND java::ObjectMapper::GenerateObjectMappersÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE SuperClassDeclaration FOR ServiceObject»
-	«IF !superClass.isEmpty» extends «superClass.get(0).fqn()»«ENDIF»
-«ENDDEFINE»
+Â«DEFINE SuperClassDeclaration FOR ServiceObjectÂ»
+	Â«IF !superClass.isEmptyÂ» extends Â«superClass.get(0).fqn()Â»Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE InterfaceDeclarations FOR ServiceObject»
-	«IF superClass.isEmpty»
+Â«DEFINE InterfaceDeclarations FOR ServiceObjectÂ»
+	Â«IF superClass.isEmptyÂ»
 		implements com.anaptecs.jeaf.core.api.ServiceObject
-		«IF needsToImplementIdentifiable()==true», com.anaptecs.jeaf.xfun.api.common.Identifiable<«this.getObjectIDClassName()»>«ENDIF»
-	«ELSE»
-		«IF needsToImplementIdentifiable()==true»implements com.anaptecs.jeaf.xfun.api.common.Identifiable<«this.getObjectIDClassName()»>«ENDIF»
-	«ENDIF»
-«ENDDEFINE»
+		Â«IF needsToImplementIdentifiable()==trueÂ», com.anaptecs.jeaf.xfun.api.common.Identifiable<Â«this.getObjectIDClassName()Â»>Â«ENDIFÂ»
+	Â«ELSEÂ»
+		Â«IF needsToImplementIdentifiable()==trueÂ»implements com.anaptecs.jeaf.xfun.api.common.Identifiable<Â«this.getObjectIDClassName()Â»>Â«ENDIFÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 

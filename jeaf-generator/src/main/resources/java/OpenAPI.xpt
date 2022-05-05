@@ -1,71 +1,71 @@
-«EXTENSION java::Naming»
-«EXTENSION java::GeneratorCommons»
-«EXTENSION java::OpenAPIFunctions»
-«EXTENSION entity::ModelProperties»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION java::OpenAPIFunctionsÂ»
+Â«EXTENSION entity::ModelPropertiesÂ»
 
-«IMPORT uml»
-«IMPORT JMM»
-«IMPORT java»
-«IMPORT entity»
-«IMPORT jeaf»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
+Â«IMPORT javaÂ»
+Â«IMPORT entityÂ»
+Â«IMPORT jeafÂ»
 
-«EXTENSION org::openarchitectureware::util::stdlib::io»
+Â«EXTENSION org::openarchitectureware::util::stdlib::ioÂ»
 
-«DEFINE GenerateOpenAPI FOR OpenAPI3Specification»
-	«FILE resourceName GenRes-»
-openapi: «openAPIVersion»
+Â«DEFINE GenerateOpenAPI FOR OpenAPI3SpecificationÂ»
+	Â«FILE resourceName GenRes-Â»
+openapi: Â«openAPIVersionÂ»
 
 info:
-  title: «name»
-  version: «IF apiVersion.length > 0»«apiVersion»«ELSE»«getMavenVersion()»«ENDIF»
-  «IF this.hasComment() -»
+  title: Â«nameÂ»
+  version: Â«IF apiVersion.length > 0Â»Â«apiVersionÂ»Â«ELSEÂ»Â«getMavenVersion()Â»Â«ENDIFÂ»
+  Â«IF this.hasComment() -Â»
   description: >-
-    «this.getCommentForOpenAPIDescription("    ")»
-  «ENDIF-»
-  «IF termsOfUseURL.length > 0 -»
-  termsOfService: «termsOfUseURL»
-  «ENDIF -»
-  «IF contactName.length > 0 || contactURL.length > 0 || contactEmail.length > 0 -»
+    Â«this.getCommentForOpenAPIDescription("    ")Â»
+  Â«ENDIF-Â»
+  Â«IF termsOfUseURL.length > 0 -Â»
+  termsOfService: Â«termsOfUseURLÂ»
+  Â«ENDIF -Â»
+  Â«IF contactName.length > 0 || contactURL.length > 0 || contactEmail.length > 0 -Â»
   contact:
-    «IF contactName.length >0 -»
-    name: «contactName»
-    «ENDIF-»
-    «IF contactURL.length > 0 -»
-    url: '«contactURL»'
-    «ENDIF-»
-    «IF contactEmail.length > 0 -»
-    email: «contactEmail»
-    «ENDIF-»
-  «ENDIF-»
-  «IF licenseName.length > 0 || licenseURL.length > 0-»
+    Â«IF contactName.length >0 -Â»
+    name: Â«contactNameÂ»
+    Â«ENDIF-Â»
+    Â«IF contactURL.length > 0 -Â»
+    url: 'Â«contactURLÂ»'
+    Â«ENDIF-Â»
+    Â«IF contactEmail.length > 0 -Â»
+    email: Â«contactEmailÂ»
+    Â«ENDIF-Â»
+  Â«ENDIF-Â»
+  Â«IF licenseName.length > 0 || licenseURL.length > 0-Â»
   license:
-    «IF licenseName.length > 0 -»
-    name: «licenseName»
-    «ENDIF-»
-    «IF licenseURL.length > 0 -»
-    url: '«licenseURL»'
-    «ENDIF-»
-  «ENDIF-»    
-«IF this.clientDependency.supplier.typeSelect(OpenAPIServer).size > 0-»
+    Â«IF licenseName.length > 0 -Â»
+    name: Â«licenseNameÂ»
+    Â«ENDIF-Â»
+    Â«IF licenseURL.length > 0 -Â»
+    url: 'Â«licenseURLÂ»'
+    Â«ENDIF-Â»
+  Â«ENDIF-Â»    
+Â«IF this.clientDependency.supplier.typeSelect(OpenAPIServer).size > 0-Â»
 
 servers:
-  «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIServer).sortBy(e|e.name).sortBy(e|e.order) AS server-»
-  - url: «server.url»
-    «IF server.hasComment() -»
+  Â«FOREACH this.clientDependency.supplier.typeSelect(OpenAPIServer).sortBy(e|e.name).sortBy(e|e.order) AS server-Â»
+  - url: Â«server.urlÂ»
+    Â«IF server.hasComment() -Â»
     description: >-
-      «server.getCommentForOpenAPIDescription("      ")»
-    «ENDIF-»    
-  «ENDFOREACH-»
+      Â«server.getCommentForOpenAPIDescription("      ")Â»
+    Â«ENDIF-Â»    
+  Â«ENDFOREACH-Â»
 
-«ENDIF-»
-«IF this.clientDependency.supplier.typeSelect(OpenAPITag).size > 0 -»
+Â«ENDIF-Â»
+Â«IF this.clientDependency.supplier.typeSelect(OpenAPITag).size > 0 -Â»
 tags:
-«EXPAND GenerateTags FOREACH this.getOrderedOpenAPITags()»
-«ENDIF-»
+Â«EXPAND GenerateTags FOREACH this.getOrderedOpenAPITags()Â»
+Â«ENDIF-Â»
 paths:
-«IF this.referencesRESTResources()-»
-  «EXPAND GeneratePaths»
-«ELSE-»
+Â«IF this.referencesRESTResources()-Â»
+  Â«EXPAND GeneratePathsÂ»
+Â«ELSE-Â»
   # OpenAPI standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
   # So we define NOP operation here as workaround.
   /nop:
@@ -75,559 +75,559 @@ paths:
         '200':
           description: Nothing is the result of nop ;-)
 
-«ENDIF-»
-«IF this.clientDependency.supplier.typeSelect(JMM::OpenAPISecurityScheme).size > 0-»
+Â«ENDIF-Â»
+Â«IF this.clientDependency.supplier.typeSelect(JMM::OpenAPISecurityScheme).size > 0-Â»
 security:
-  «IF this.securityOptional == true-»
+  Â«IF this.securityOptional == true-Â»
   - {}
-  «ENDIF-»
-  «FOREACH this.clientDependency.supplier.typeSelect(JMM::OpenAPISecurityScheme).sortBy(e|e.name) AS security-»
-  - «security.name»: «IF security.type.name == "oauth2" || security.type.name == "openIdConnect"»[«FOREACH security.getOAuthScopes() AS scope SEPARATOR ","»«scope.name»«ENDFOREACH»]«ELSE»[]«ENDIF»
-  «ENDFOREACH-»
+  Â«ENDIF-Â»
+  Â«FOREACH this.clientDependency.supplier.typeSelect(JMM::OpenAPISecurityScheme).sortBy(e|e.name) AS security-Â»
+  - Â«security.nameÂ»: Â«IF security.type.name == "oauth2" || security.type.name == "openIdConnect"Â»[Â«FOREACH security.getOAuthScopes() AS scope SEPARATOR ","Â»Â«scope.nameÂ»Â«ENDFOREACHÂ»]Â«ELSEÂ»[]Â«ENDIFÂ»
+  Â«ENDFOREACH-Â»
 
-«ENDIF-»
-«IF this.hasOpenAPITypes() || this.hasOpenAPIEnums() || this.hasOpenAPISecuritySchemes()-»
+Â«ENDIF-Â»
+Â«IF this.hasOpenAPITypes() || this.hasOpenAPIEnums() || this.hasOpenAPISecuritySchemes()-Â»
 components:
-  «IF this.hasOpenAPISecuritySchemes() -»
+  Â«IF this.hasOpenAPISecuritySchemes() -Â»
   securitySchemes:
-    «EXPAND java::OpenAPISecurity::GenerateOpenAPISecurityScheme FOREACH this.getOpenAPISecuritySchemes()-»
-  «ENDIF-»
-  «IF this.hasOpenAPIParameters()-»
+    Â«EXPAND java::OpenAPISecurity::GenerateOpenAPISecurityScheme FOREACH this.getOpenAPISecuritySchemes()-Â»
+  Â«ENDIF-Â»
+  Â«IF this.hasOpenAPIParameters()-Â»
   parameters:
-    «FOREACH this.getOpenAPIParameters() AS parameter-»
-    «IF suppressClassNameCommentInOpenAPISpec() == false-»
-    # «parameter.class.fqn()».«parameter.name»
-    «ENDIF-»
-    «parameter.name»:
-      name: «EXPAND RESTParamName FOR parameter»
-      in: «parameter.getOpenAPIParameterType()»
-      «IF parameter.hasComment()-»
+    Â«FOREACH this.getOpenAPIParameters() AS parameter-Â»
+    Â«IF suppressClassNameCommentInOpenAPISpec() == false-Â»
+    # Â«parameter.class.fqn()Â».Â«parameter.nameÂ»
+    Â«ENDIF-Â»
+    Â«parameter.nameÂ»:
+      name: Â«EXPAND RESTParamName FOR parameterÂ»
+      in: Â«parameter.getOpenAPIParameterType()Â»
+      Â«IF parameter.hasComment()-Â»
       description: >-
-        «parameter.getCommentForOpenAPIDescription("        ")»
-      «ENDIF-»
+        Â«parameter.getCommentForOpenAPIDescription("        ")Â»
+      Â«ENDIF-Â»
       schema:
-      «IF parameter.type.isBasicOpenAPIType() == true-»
-        «IF parameter.isMultivalued() == false-»
-        type: «parameter.type.getOpenAPIType(this)»
-          «IF parameter.hasOpenAPIFormatForProperty()-»
-        format: «parameter.getOpenAPIFormatForProperty()»
-          «ENDIF-»
-          «IF parameter.hasPatternForProperty() -»
-        pattern: '«parameter.getPatternForProperty()»'
-          «ENDIF-»
-        «ELSE-»
+      Â«IF parameter.type.isBasicOpenAPIType() == true-Â»
+        Â«IF parameter.isMultivalued() == false-Â»
+        type: Â«parameter.type.getOpenAPIType(this)Â»
+          Â«IF parameter.hasOpenAPIFormatForProperty()-Â»
+        format: Â«parameter.getOpenAPIFormatForProperty()Â»
+          Â«ENDIF-Â»
+          Â«IF parameter.hasPatternForProperty() -Â»
+        pattern: 'Â«parameter.getPatternForProperty()Â»'
+          Â«ENDIF-Â»
+        Â«ELSE-Â»
         type: array
           items:
-            type: «parameter.type.getOpenAPIType(this)»
-          «IF parameter.hasOpenAPIFormatForProperty()-»
-            format: «parameter.getOpenAPIFormatForProperty()»
-          «ENDIF-»
-          «IF parameter.hasPatternForProperty() -»
-            pattern: '«parameter.getPatternForProperty()»'
-          «ENDIF-»
-        «ENDIF-»
-        «IF parameter.hasExample()-»
-          «IF ((Example) parameter).exampleValue.length > 0-»
-          example: '«((Example) parameter).exampleValue»'
-          «ENDIF-»
-        «ENDIF-»
-      «ENDIF-»
-      «IF parameter.isRequiredProperty() -»
-      required: «parameter.isRequiredProperty()»
-      «ENDIF-»
-      «IF parameter.isDeprecated() -»
+            type: Â«parameter.type.getOpenAPIType(this)Â»
+          Â«IF parameter.hasOpenAPIFormatForProperty()-Â»
+            format: Â«parameter.getOpenAPIFormatForProperty()Â»
+          Â«ENDIF-Â»
+          Â«IF parameter.hasPatternForProperty() -Â»
+            pattern: 'Â«parameter.getPatternForProperty()Â»'
+          Â«ENDIF-Â»
+        Â«ENDIF-Â»
+        Â«IF parameter.hasExample()-Â»
+          Â«IF ((Example) parameter).exampleValue.length > 0-Â»
+          example: 'Â«((Example) parameter).exampleValueÂ»'
+          Â«ENDIF-Â»
+        Â«ENDIF-Â»
+      Â«ENDIF-Â»
+      Â«IF parameter.isRequiredProperty() -Â»
+      required: Â«parameter.isRequiredProperty()Â»
+      Â«ENDIF-Â»
+      Â«IF parameter.isDeprecated() -Â»
       deprecated: true
-      «ENDIF-»
+      Â«ENDIF-Â»
 
-    «ENDFOREACH-»
-  «ENDIF-»
-  «IF this.getResponses().size > 0-»
+    Â«ENDFOREACH-Â»
+  Â«ENDIF-Â»
+  Â«IF this.getResponses().size > 0-Â»
   responses:
-    «EXPAND GenerateResponse(this) FOREACH this.getResponses()»
-  «ENDIF -»
-  «IF this.getOpenAPITypes().size > 0 || this.getOpenAPIEnums().size > 0 || this.getOpenAPIDataTypes().size > 0 -»
+    Â«EXPAND GenerateResponse(this) FOREACH this.getResponses()Â»
+  Â«ENDIF -Â»
+  Â«IF this.getOpenAPITypes().size > 0 || this.getOpenAPIEnums().size > 0 || this.getOpenAPIDataTypes().size > 0 -Â»
   schemas:
-    «IF this.explicityTypeOrdering == true -»
-      «FOREACH this.getOrderedSchemaElements() AS element -»
-        «IF element.isStereotypeApplied("OpenAPIType") -»
-          «EXPAND java::OpenAPIType::GenerateOpenAPIType(this) FOR ((OpenAPIType) element)»
-        «ELSE-»
-          «IF element.isStereotypeApplied("OpenAPIDataType") -»
-            «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null) FOR ((OpenAPIDataType) element)»
-          «ELSE-»
-«EXPAND GenerateOpenAPIEnum FOR ((OpenAPIEnumeration) element)»
-          «ENDIF-»
-        «ENDIF-»
-      «ENDFOREACH-»
-    «ELSE-»
-      «EXPAND java::OpenAPIType::GenerateOpenAPIType(this) FOREACH this.getOpenAPITypes().sortBy(e|e.name)»
-      «EXPAND GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums().sortBy(e|e.name)»
-      «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null) FOREACH this.getOpenAPIDataTypes().select(e|e.inline == false).sortBy(e|e.name)»
-    «ENDIF-»
-  «ENDIF -»
-«ENDIF-»
-«ENDFILE-»
-«ENDDEFINE»
+    Â«IF this.explicityTypeOrdering == true -Â»
+      Â«FOREACH this.getOrderedSchemaElements() AS element -Â»
+        Â«IF element.isStereotypeApplied("OpenAPIType") -Â»
+          Â«EXPAND java::OpenAPIType::GenerateOpenAPIType(this) FOR ((OpenAPIType) element)Â»
+        Â«ELSE-Â»
+          Â«IF element.isStereotypeApplied("OpenAPIDataType") -Â»
+            Â«EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null) FOR ((OpenAPIDataType) element)Â»
+          Â«ELSE-Â»
+Â«EXPAND GenerateOpenAPIEnum FOR ((OpenAPIEnumeration) element)Â»
+          Â«ENDIF-Â»
+        Â«ENDIF-Â»
+      Â«ENDFOREACH-Â»
+    Â«ELSE-Â»
+      Â«EXPAND java::OpenAPIType::GenerateOpenAPIType(this) FOREACH this.getOpenAPITypes().sortBy(e|e.name)Â»
+      Â«EXPAND GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums().sortBy(e|e.name)Â»
+      Â«EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null) FOREACH this.getOpenAPIDataTypes().select(e|e.inline == false).sortBy(e|e.name)Â»
+    Â«ENDIF-Â»
+  Â«ENDIF -Â»
+Â«ENDIF-Â»
+Â«ENDFILE-Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE RegisterLocalTypes FOR OpenAPI3Specification»
-	«REM»Register local OpenAPI types as well as referenced ones.«ENDREM»
-	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPITypes()»
-	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPIEnums()»
-	«EXPAND RegisterLocalType(this) FOREACH this.getResponses()»
-	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPIDataTypes()»
-	«EXPAND RegisterLocalParameter(this) FOREACH this.getOpenAPIParameters()»
+Â«DEFINE RegisterLocalTypes FOR OpenAPI3SpecificationÂ»
+	Â«REMÂ»Register local OpenAPI types as well as referenced ones.Â«ENDREMÂ»
+	Â«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPITypes()Â»
+	Â«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPIEnums()Â»
+	Â«EXPAND RegisterLocalType(this) FOREACH this.getResponses()Â»
+	Â«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPIDataTypes()Â»
+	Â«EXPAND RegisterLocalParameter(this) FOREACH this.getOpenAPIParameters()Â»
 	
-	«FOREACH this.clientDependency.typeSelect(OpenAPISpecReference) AS dependency»
-	  «FOREACH dependency.supplier.typeSelect(OpenAPI3Specification) AS dependentSpec»
-	    «IF dependency.location.length > 0»
-	    «registerSpecDependency(this, dependentSpec, dependency.location + dependentSpec.resourceName)»
-	    «REM» Also create spec dependency in opposite direction «ENDREM» 
-	    «registerSpecDependency(dependentSpec, this, dependency.location + this.resourceName)»
-	    «ELSE»
-	    «registerSpecDependency(this, dependentSpec, dependentSpec.resourceName)»
-	    «REM» Also create spec dependency in opposite direction «ENDREM» 
-	    «registerSpecDependency(dependentSpec, this, this.resourceName)»	    
-	    «ENDIF»
-	  «ENDFOREACH»
-	«ENDFOREACH»
-	«EXPAND RegisterLocalTypes FOREACH this.getDependentSpecs()»
-«ENDDEFINE»
+	Â«FOREACH this.clientDependency.typeSelect(OpenAPISpecReference) AS dependencyÂ»
+	  Â«FOREACH dependency.supplier.typeSelect(OpenAPI3Specification) AS dependentSpecÂ»
+	    Â«IF dependency.location.length > 0Â»
+	    Â«registerSpecDependency(this, dependentSpec, dependency.location + dependentSpec.resourceName)Â»
+	    Â«REMÂ» Also create spec dependency in opposite direction Â«ENDREMÂ» 
+	    Â«registerSpecDependency(dependentSpec, this, dependency.location + this.resourceName)Â»
+	    Â«ELSEÂ»
+	    Â«registerSpecDependency(this, dependentSpec, dependentSpec.resourceName)Â»
+	    Â«REMÂ» Also create spec dependency in opposite direction Â«ENDREMÂ» 
+	    Â«registerSpecDependency(dependentSpec, this, this.resourceName)Â»	    
+	    Â«ENDIFÂ»
+	  Â«ENDFOREACHÂ»
+	Â«ENDFOREACHÂ»
+	Â«EXPAND RegisterLocalTypes FOREACH this.getDependentSpecs()Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPIResponse»
-«this.registerLocalType(spec)»
-«ENDDEFINE»
+Â«DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPIResponseÂ»
+Â«this.registerLocalType(spec)Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPIType»
-«this.registerLocalType(spec)»
-«ENDDEFINE»
+Â«DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPITypeÂ»
+Â«this.registerLocalType(spec)Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPIEnumeration»
-«this.registerLocalType(spec)»
-«ENDDEFINE»
+Â«DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPIEnumerationÂ»
+Â«this.registerLocalType(spec)Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPIDataType»
-«this.registerLocalType(spec)»
-«ENDDEFINE»
+Â«DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPIDataTypeÂ»
+Â«this.registerLocalType(spec)Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE RegisterLocalParameter(OpenAPI3Specification spec) FOR Property»
-    «this.registerLocalParameter(spec)»
-«ENDDEFINE»
+Â«DEFINE RegisterLocalParameter(OpenAPI3Specification spec) FOR PropertyÂ»
+    Â«this.registerLocalParameter(spec)Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE GeneratePaths FOR OpenAPI3Specification -»
-  «FOREACH this.getRESTResources() AS service -»
-  «IF suppressClassNameCommentInOpenAPISpec() == false-»
-  # «service.name»
-  «ENDIF-»
-  «FOREACH service.getPaths() AS path-»
-  «IF service.path.length > 0»«service.path»«ENDIF»«IF path.length > 0»/«path»«ENDIF»:
-    «FOREACH service.getRESTOperations(path) AS operation-»
-    «FOREACH operation.httpMethods AS httpMethod-»
-    «httpMethod.toString().toLowerCase()»:
-      «IF operation.getTargetDirectedRelationships().source.typeSelect(OpenAPITag).size > 0 -»
+Â«DEFINE GeneratePaths FOR OpenAPI3Specification -Â»
+  Â«FOREACH this.getRESTResources() AS service -Â»
+  Â«IF suppressClassNameCommentInOpenAPISpec() == false-Â»
+  # Â«service.nameÂ»
+  Â«ENDIF-Â»
+  Â«FOREACH service.getPaths() AS path-Â»
+  Â«IF service.path.length > 0Â»Â«service.pathÂ»Â«ENDIFÂ»Â«IF path.length > 0Â»/Â«pathÂ»Â«ENDIFÂ»:
+    Â«FOREACH service.getRESTOperations(path) AS operation-Â»
+    Â«FOREACH operation.httpMethods AS httpMethod-Â»
+    Â«httpMethod.toString().toLowerCase()Â»:
+      Â«IF operation.getTargetDirectedRelationships().source.typeSelect(OpenAPITag).size > 0 -Â»
       tags:
-      «FOREACH operation.getTargetDirectedRelationships().source.typeSelect(OpenAPITag).sortBy(e|e.name) AS tag -»
-        - «tag.name»
-      «ENDFOREACH-»
-      «ENDIF-»
-      «IF operation.summary.length > 0-»
-      summary: «operation.summary»
-      «ENDIF-»
-      «IF operation.hasComment()-»
+      Â«FOREACH operation.getTargetDirectedRelationships().source.typeSelect(OpenAPITag).sortBy(e|e.name) AS tag -Â»
+        - Â«tag.nameÂ»
+      Â«ENDFOREACH-Â»
+      Â«ENDIF-Â»
+      Â«IF operation.summary.length > 0-Â»
+      summary: Â«operation.summaryÂ»
+      Â«ENDIF-Â»
+      Â«IF operation.hasComment()-Â»
       description: >-
-        «operation.getCommentForOpenAPIDescription("        ")»
-      «ENDIF-»
-      operationId: «IF operation.operationID.length > 0»«operation.operationID»«ELSE»«operation.getOperationID(service)»«ENDIF»
-      «IF operation.externalDocsURL.length > 0 -»
+        Â«operation.getCommentForOpenAPIDescription("        ")Â»
+      Â«ENDIF-Â»
+      operationId: Â«IF operation.operationID.length > 0Â»Â«operation.operationIDÂ»Â«ELSEÂ»Â«operation.getOperationID(service)Â»Â«ENDIFÂ»
+      Â«IF operation.externalDocsURL.length > 0 -Â»
       externalDocs:
-        url: «operation.externalDocsURL»
-      «ENDIF-»
-      «IF operation.isDeprecated() -»
+        url: Â«operation.externalDocsURLÂ»
+      Â«ENDIF-Â»
+      Â«IF operation.isDeprecated() -Â»
       deprecated: true
-      «ENDIF-»
-      «REM»Process REST request paramaters«ENDREM-»
-      «IF operation.hasOpenAPIInputParameters() || operation.hasBeanParameters()-»
+      Â«ENDIF-Â»
+      Â«REMÂ»Process REST request paramatersÂ«ENDREM-Â»
+      Â«IF operation.hasOpenAPIInputParameters() || operation.hasBeanParameters()-Â»
       parameters:
-        «REM»Process bean paramaters«ENDREM-»
-        «FOREACH operation.getBeanParams() AS param-»
-        «FOREACH param.type.getOpenAPIProperties() AS property-»
-        «IF param.inlineBeanParam()-»
-        - name: «EXPAND RESTParamName FOR property»
-          in: «property.getOpenAPIParameterType()»
-          «IF property.hasComment()-»
+        Â«REMÂ»Process bean paramatersÂ«ENDREM-Â»
+        Â«FOREACH operation.getBeanParams() AS param-Â»
+        Â«FOREACH param.type.getOpenAPIProperties() AS property-Â»
+        Â«IF param.inlineBeanParam()-Â»
+        - name: Â«EXPAND RESTParamName FOR propertyÂ»
+          in: Â«property.getOpenAPIParameterType()Â»
+          Â«IF property.hasComment()-Â»
           description: >-
-            «property.getCommentForOpenAPIDescription("            ")»
-          «ENDIF-»
-          «IF property.isRequiredProperty() -»
-          required: «property.isRequiredProperty()»
-          «ENDIF-»
-          «IF property.isDeprecated() -»
+            Â«property.getCommentForOpenAPIDescription("            ")Â»
+          Â«ENDIF-Â»
+          Â«IF property.isRequiredProperty() -Â»
+          required: Â«property.isRequiredProperty()Â»
+          Â«ENDIF-Â»
+          Â«IF property.isDeprecated() -Â»
           deprecated: true
-          «ENDIF-»
-          «REM»Only basic types are supported as parameters«ENDREM -»
+          Â«ENDIF-Â»
+          Â«REMÂ»Only basic types are supported as parametersÂ«ENDREM -Â»
           schema:
-            «IF property.type.isBasicOpenAPIType() == true -»
-            	«IF property.isMultivalued() == false -»
-            type: «property.type.getOpenAPIType(this)»
-            		«IF property.hasOpenAPIFormatForProperty()-»
-            format: «property.getOpenAPIFormatForProperty()»
-            		«ENDIF-»
-                    «IF property.hasPatternForProperty() -»
-            pattern: '«property.getPatternForProperty()»'
-                    «ENDIF-»
-                    «IF property.defaultValue != null -»
-            default: '«property.defaultValue.stringValue()»'
-                    «ENDIF-»
-            	«ELSE-»
+            Â«IF property.type.isBasicOpenAPIType() == true -Â»
+            	Â«IF property.isMultivalued() == false -Â»
+            type: Â«property.type.getOpenAPIType(this)Â»
+            		Â«IF property.hasOpenAPIFormatForProperty()-Â»
+            format: Â«property.getOpenAPIFormatForProperty()Â»
+            		Â«ENDIF-Â»
+                    Â«IF property.hasPatternForProperty() -Â»
+            pattern: 'Â«property.getPatternForProperty()Â»'
+                    Â«ENDIF-Â»
+                    Â«IF property.defaultValue != null -Â»
+            default: 'Â«property.defaultValue.stringValue()Â»'
+                    Â«ENDIF-Â»
+            	Â«ELSE-Â»
             type: array
             items:
-              type: «property.type.getOpenAPIType(this)»
-              		«IF property.hasOpenAPIFormatForProperty()-»
-              format: «property.getOpenAPIFormatForProperty()»
-              		«ENDIF-»
-                    «IF property.hasPatternForProperty() -»
-              pattern: '«property.getPatternForProperty()»'
-                    «ENDIF-»
-            	«ENDIF -»
-                «IF property.hasExample()-»
-                  «IF ((Example) property).exampleValue.length > 0-»
-            example: '«((Example) property).exampleValue»'
-                  «ENDIF-»
-                «ENDIF-»
-            «ELSE -»
+              type: Â«property.type.getOpenAPIType(this)Â»
+              		Â«IF property.hasOpenAPIFormatForProperty()-Â»
+              format: Â«property.getOpenAPIFormatForProperty()Â»
+              		Â«ENDIF-Â»
+                    Â«IF property.hasPatternForProperty() -Â»
+              pattern: 'Â«property.getPatternForProperty()Â»'
+                    Â«ENDIF-Â»
+            	Â«ENDIF -Â»
+                Â«IF property.hasExample()-Â»
+                  Â«IF ((Example) property).exampleValue.length > 0-Â»
+            example: 'Â«((Example) property).exampleValueÂ»'
+                  Â«ENDIF-Â»
+                Â«ENDIF-Â»
+            Â«ELSE -Â»
             type: string
-                «IF property.defaultValue != null -»
-            default: '«property.defaultValue.stringValue()»'
-                «ENDIF-»
-            «ENDIF-»
-        «ELSE-»
-        - $ref: «property.getOpenAPIParameter(this)»
-        «ENDIF-»
-        «ENDFOREACH-»
-        «ENDFOREACH-»
-        «REM»Process normal paramaters«ENDREM-»
-        «FOREACH operation.getOpenAPIInputParameters() AS param-»
-        - name: «EXPAND RESTParamName FOR param»
-          in: «param.getOpenAPIParameterType()»
-          «IF param.hasComment()-»
+                Â«IF property.defaultValue != null -Â»
+            default: 'Â«property.defaultValue.stringValue()Â»'
+                Â«ENDIF-Â»
+            Â«ENDIF-Â»
+        Â«ELSE-Â»
+        - $ref: Â«property.getOpenAPIParameter(this)Â»
+        Â«ENDIF-Â»
+        Â«ENDFOREACH-Â»
+        Â«ENDFOREACH-Â»
+        Â«REMÂ»Process normal paramatersÂ«ENDREM-Â»
+        Â«FOREACH operation.getOpenAPIInputParameters() AS param-Â»
+        - name: Â«EXPAND RESTParamName FOR paramÂ»
+          in: Â«param.getOpenAPIParameterType()Â»
+          Â«IF param.hasComment()-Â»
           description: >-
-            «param.getCommentForOpenAPIDescription("            ")»
-          «ENDIF-»
-          «IF param.isRequired() -»
-          required: «param.isRequired()»
-          «ENDIF-»
-          «IF param.isDeprecated() -»
+            Â«param.getCommentForOpenAPIDescription("            ")Â»
+          Â«ENDIF-Â»
+          Â«IF param.isRequired() -Â»
+          required: Â«param.isRequired()Â»
+          Â«ENDIF-Â»
+          Â«IF param.isDeprecated() -Â»
           deprecated: true
-          «ENDIF-»
+          Â«ENDIF-Â»
           schema:
-            «IF param.type.isBasicOpenAPIType() == true-»
-            	«IF param.isMultivalued() == false-»
-            type: «param.type.getOpenAPIType(this)»
-            		«IF param.hasOpenAPIFormatForParam()-»
-            format: «param.getOpenAPIFormatForParam()»
-            		«ENDIF-»
-                    «IF param.hasPatternForParam() -»
-            pattern: '«param.getOpenAPIFormatForParam()»'
-                    «ENDIF-»
-			«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
-                  «IF param.hasDefaultValueForBasicType() -»
-            default: «param.getDefaultValueForBasicType()»
-                  «ENDIF-»
-            	«ELSE-»
+            Â«IF param.type.isBasicOpenAPIType() == true-Â»
+            	Â«IF param.isMultivalued() == false-Â»
+            type: Â«param.type.getOpenAPIType(this)Â»
+            		Â«IF param.hasOpenAPIFormatForParam()-Â»
+            format: Â«param.getOpenAPIFormatForParam()Â»
+            		Â«ENDIF-Â»
+                    Â«IF param.hasPatternForParam() -Â»
+            pattern: 'Â«param.getOpenAPIFormatForParam()Â»'
+                    Â«ENDIF-Â»
+			Â«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-Â»
+                  Â«IF param.hasDefaultValueForBasicType() -Â»
+            default: Â«param.getDefaultValueForBasicType()Â»
+                  Â«ENDIF-Â»
+            	Â«ELSE-Â»
             type: array
             items:
-              type: «param.type.getOpenAPIType(this)»
-              		«IF param.hasOpenAPIFormatForParam()-»
-              format: «param.getOpenAPIFormatForParam()»
-              		«ENDIF-»
-                    «IF param.hasPatternForParam() -»
-              pattern: '«param.getPatternForParam()»'
-                    «ENDIF-»
-              «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR param-»
-            	«ENDIF-»
-                «IF param.hasExample()-»
-                  «IF ((Example) param).exampleValue.length > 0-»
-            example: '«((Example) param).exampleValue»'
-                  «ENDIF-»
-                «ENDIF-»
-            «ELSE-»
-              «IF param.isOpenAPIEnum()-»
-                «LET ((JMM::OpenAPIEnumeration) param.type) AS enum -» 
-                «IF param.isMultivalued() == false -»
+              type: Â«param.type.getOpenAPIType(this)Â»
+              		Â«IF param.hasOpenAPIFormatForParam()-Â»
+              format: Â«param.getOpenAPIFormatForParam()Â»
+              		Â«ENDIF-Â»
+                    Â«IF param.hasPatternForParam() -Â»
+              pattern: 'Â«param.getPatternForParam()Â»'
+                    Â«ENDIF-Â»
+              Â«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR param-Â»
+            	Â«ENDIF-Â»
+                Â«IF param.hasExample()-Â»
+                  Â«IF ((Example) param).exampleValue.length > 0-Â»
+            example: 'Â«((Example) param).exampleValueÂ»'
+                  Â«ENDIF-Â»
+                Â«ENDIF-Â»
+            Â«ELSE-Â»
+              Â«IF param.isOpenAPIEnum()-Â»
+                Â«LET ((JMM::OpenAPIEnumeration) param.type) AS enum -Â» 
+                Â«IF param.isMultivalued() == false -Â»
             type: string
-                  «IF param.hasDefaultValueForEnum() -»
-            default: «param.getDefaultValueForEnum()»
-                  «ENDIF-»
-                  «IF enum.extensibleEnum == true-»
+                  Â«IF param.hasDefaultValueForEnum() -Â»
+            default: Â«param.getDefaultValueForEnum()Â»
+                  Â«ENDIF-Â»
+                  Â«IF enum.extensibleEnum == true-Â»
             x-extensible-enum:
-                  «ELSE-»
+                  Â«ELSE-Â»
             enum:
-                  «ENDIF-»
-                  «FOREACH enum.ownedLiteral AS literal-»        
-                  «IF literal.hasComment()-»
-              # «literal.getYAMLStyleComment("        ")»
-                  «ENDIF-»
-                  «IF literal.isDeprecated() -»
-              # Literal "«literal.name»" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
-                  «ENDIF-»
-              - «literal.name»
-                  «ENDFOREACH-»
-                «ELSE-»
+                  Â«ENDIF-Â»
+                  Â«FOREACH enum.ownedLiteral AS literal-Â»        
+                  Â«IF literal.hasComment()-Â»
+              # Â«literal.getYAMLStyleComment("        ")Â»
+                  Â«ENDIF-Â»
+                  Â«IF literal.isDeprecated() -Â»
+              # Literal "Â«literal.nameÂ»" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
+                  Â«ENDIF-Â»
+              - Â«literal.nameÂ»
+                  Â«ENDFOREACH-Â»
+                Â«ELSE-Â»
             type: array
-                  «IF param.hasDefaultValueForEnum() -»
-            default: [«param.getDefaultValueForEnum()»]
-                  «ENDIF-»
-            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
+                  Â«IF param.hasDefaultValueForEnum() -Â»
+            default: [Â«param.getDefaultValueForEnum()Â»]
+                  Â«ENDIF-Â»
+            Â«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-Â»
             items:
               type: string
-                  «IF enum.extensibleEnum == true-»
+                  Â«IF enum.extensibleEnum == true-Â»
               x-extensible-enum:
-                  «ELSE-»
+                  Â«ELSE-Â»
               enum:
-                  «ENDIF-»
-                  «FOREACH enum.ownedLiteral AS literal-»        
-                  «IF literal.hasComment()-»
-                # «literal.getYAMLStyleComment("        ")»
-                  «ENDIF-»
-                  «IF literal.isDeprecated() -»
-                # Literal "«literal.name»" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
-                  «ENDIF-»
-                - «literal.name»
-                  «ENDFOREACH-»
-                «ENDIF-»
-                «ENDLET-»
-              «ELSE-»
-                «IF param.isMultivalued() == false -»
-            $ref: «param.type.getOpenAPIType(this)» 
-            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
-                «ELSE-»
+                  Â«ENDIF-Â»
+                  Â«FOREACH enum.ownedLiteral AS literal-Â»        
+                  Â«IF literal.hasComment()-Â»
+                # Â«literal.getYAMLStyleComment("        ")Â»
+                  Â«ENDIF-Â»
+                  Â«IF literal.isDeprecated() -Â»
+                # Literal "Â«literal.nameÂ»" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
+                  Â«ENDIF-Â»
+                - Â«literal.nameÂ»
+                  Â«ENDFOREACH-Â»
+                Â«ENDIF-Â»
+                Â«ENDLET-Â»
+              Â«ELSE-Â»
+                Â«IF param.isMultivalued() == false -Â»
+            $ref: Â«param.type.getOpenAPIType(this)Â» 
+            Â«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-Â»
+                Â«ELSE-Â»
             type: array
-            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
+            Â«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-Â»
             items:
-              $ref: «param.type.getOpenAPIType(this)»
-                «ENDIF-»
-              «ENDIF-»              
-            «ENDIF-»
-        «ENDFOREACH-»
-      «ENDIF-»
-      «REM»Process request body«ENDREM-»
-      «IF operation.hasRequestBody(httpMethod) -»
+              $ref: Â«param.type.getOpenAPIType(this)Â»
+                Â«ENDIF-Â»
+              Â«ENDIF-Â»              
+            Â«ENDIF-Â»
+        Â«ENDFOREACH-Â»
+      Â«ENDIF-Â»
+      Â«REMÂ»Process request bodyÂ«ENDREM-Â»
+      Â«IF operation.hasRequestBody(httpMethod) -Â»
       requestBody:
-      «FOREACH operation.getRequestBodyParameters() AS param-»
-        «IF param.hasComment() || (param.isDeprecated() && param.type.isBasicOpenAPIType() == false) -»
+      Â«FOREACH operation.getRequestBodyParameters() AS param-Â»
+        Â«IF param.hasComment() || (param.isDeprecated() && param.type.isBasicOpenAPIType() == false) -Â»
         description: >-
-          «IF param.hasComment()»«param.getCommentForOpenAPIDescription("          ")»«ENDIF»
-          «IF param.isDeprecated() && param.type.isBasicOpenAPIType() == false-»
+          Â«IF param.hasComment()Â»Â«param.getCommentForOpenAPIDescription("          ")Â»Â«ENDIFÂ»
+          Â«IF param.isDeprecated() && param.type.isBasicOpenAPIType() == false-Â»
           Operation has deprected body parameter. Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
-          «ENDIF-»
-        «ENDIF-»
-        «IF param.isRequired() -»
-        required: «param.isRequired()»
-        «ENDIF-»
+          Â«ENDIF-Â»
+        Â«ENDIF-Â»
+        Â«IF param.isRequired() -Â»
+        required: Â«param.isRequired()Â»
+        Â«ENDIF-Â»
         content:
-          «FOREACH unifyMediaTypes(service.consumes, operation.consumes) AS mediaType-»
-          «mediaType.toOpenAPIContentType()»:
+          Â«FOREACH unifyMediaTypes(service.consumes, operation.consumes) AS mediaType-Â»
+          Â«mediaType.toOpenAPIContentType()Â»:
             schema:
-              «IF param.type.isOpenAPIDataType() && ((OpenAPIDataType) param.type).inline == true -»
-              «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForPath(this, param) FOR (OpenAPIDataType) param.type -»
-              «ELSE -»
-              «IF param.type.isBasicOpenAPIType() == true-»
-                «IF param.isMultivalued() == false-»
-              type: «param.type.getOpenAPIType(this)»
-                  «IF param.hasOpenAPIFormatForParam()-»
-              format: «param.getOpenAPIFormatForParam()»
-                  «ENDIF-»
-                    «IF param.hasPatternForParam() -»
-              pattern: '«param.getPatternForParam()»'
-                    «ENDIF-»
-                  «IF param.isDeprecated() -»
+              Â«IF param.type.isOpenAPIDataType() && ((OpenAPIDataType) param.type).inline == true -Â»
+              Â«EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForPath(this, param) FOR (OpenAPIDataType) param.type -Â»
+              Â«ELSE -Â»
+              Â«IF param.type.isBasicOpenAPIType() == true-Â»
+                Â«IF param.isMultivalued() == false-Â»
+              type: Â«param.type.getOpenAPIType(this)Â»
+                  Â«IF param.hasOpenAPIFormatForParam()-Â»
+              format: Â«param.getOpenAPIFormatForParam()Â»
+                  Â«ENDIF-Â»
+                    Â«IF param.hasPatternForParam() -Â»
+              pattern: 'Â«param.getPatternForParam()Â»'
+                    Â«ENDIF-Â»
+                  Â«IF param.isDeprecated() -Â»
               deprecated: true
-                  «ENDIF-»                
-                «ELSE-»
+                  Â«ENDIF-Â»                
+                Â«ELSE-Â»
               type: array
               items:
-                type: «param.type.getOpenAPIType(this)»
-                  «IF param.hasOpenAPIFormatForParam()-»
-                format: «param.getOpenAPIFormatForParam()»
-                  «ENDIF-»
-                    «IF param.hasPatternForParam() -»
-                pattern: '«param.getPatternForParam()»'
-                    «ENDIF-»
-                  «IF param.isDeprecated() -»
+                type: Â«param.type.getOpenAPIType(this)Â»
+                  Â«IF param.hasOpenAPIFormatForParam()-Â»
+                format: Â«param.getOpenAPIFormatForParam()Â»
+                  Â«ENDIF-Â»
+                    Â«IF param.hasPatternForParam() -Â»
+                pattern: 'Â«param.getPatternForParam()Â»'
+                    Â«ENDIF-Â»
+                  Â«IF param.isDeprecated() -Â»
                 deprecated: true
-                  «ENDIF-»                
-                «ENDIF-»
-                «IF param.hasExample()-»
-                  «IF ((Example) param).exampleValue.length > 0-»
-              example: '«((Example) param).exampleValue»'
-                  «ENDIF-»
-                «ENDIF-»
-              «ELSE-»
-                «IF param.isMultivalued() == false-»
-              $ref: «param.type.getOpenAPIType(this)»
-                «ELSE-»
+                  Â«ENDIF-Â»                
+                Â«ENDIF-Â»
+                Â«IF param.hasExample()-Â»
+                  Â«IF ((Example) param).exampleValue.length > 0-Â»
+              example: 'Â«((Example) param).exampleValueÂ»'
+                  Â«ENDIF-Â»
+                Â«ENDIF-Â»
+              Â«ELSE-Â»
+                Â«IF param.isMultivalued() == false-Â»
+              $ref: Â«param.type.getOpenAPIType(this)Â»
+                Â«ELSE-Â»
               type: array
               items:
-                $ref: «param.type.getOpenAPIType(this)»
-              minItems: «param.getLower()»
-                «ENDIF-»
-              «ENDIF-»
-              «ENDIF-»
-          «ENDFOREACH-»
-      «ENDFOREACH-»
-      «ENDIF-»
+                $ref: Â«param.type.getOpenAPIType(this)Â»
+              minItems: Â«param.getLower()Â»
+                Â«ENDIF-Â»
+              Â«ENDIF-Â»
+              Â«ENDIF-Â»
+          Â«ENDFOREACH-Â»
+      Â«ENDFOREACH-Â»
+      Â«ENDIF-Â»
       responses:
-          «IF operation.hasReturnTypeVoid() == false-»
-        '«operation.getHTTPStatusCode()»':
-          «LET operation.getReturnResult() AS returnParam-»
+          Â«IF operation.hasReturnTypeVoid() == false-Â»
+        'Â«operation.getHTTPStatusCode()Â»':
+          Â«LET operation.getReturnResult() AS returnParam-Â»
           description: >-
-            «IF returnParam.hasComment()»«returnParam.getCommentForOpenAPIDescription("            ")»«ELSE»TODO: Please add comment for response«ENDIF»
-            «IF returnParam.isDeprecated() && returnParam.type.isBasicOpenAPIType() == false-»
+            Â«IF returnParam.hasComment()Â»Â«returnParam.getCommentForOpenAPIDescription("            ")Â»Â«ELSEÂ»TODO: Please add comment for responseÂ«ENDIFÂ»
+            Â«IF returnParam.isDeprecated() && returnParam.type.isBasicOpenAPIType() == false-Â»
             Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
-            «ENDIF-»
+            Â«ENDIF-Â»
           content:
-            «FOREACH unifyMediaTypes(service.produces, operation.produces) AS contentType-»
-            «contentType.toOpenAPIContentType()»:
+            Â«FOREACH unifyMediaTypes(service.produces, operation.produces) AS contentType-Â»
+            Â«contentType.toOpenAPIContentType()Â»:
               schema:
-                «IF returnParam.type.isOpenAPIDataType() && ((OpenAPIDataType) returnParam.type).inline == true -»
-                «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForPath(this, returnParam) FOR (OpenAPIDataType) returnParam.type -»
-                «ELSE -»
-                «IF returnParam.type.isBasicOpenAPIType() == true-»
-                  «IF returnParam.isMultivalued() == false-»
-                type: «returnParam.type.getOpenAPIType(this)»
-                    «IF returnParam.hasOpenAPIFormatForParam()-»
-                format: «returnParam.getOpenAPIFormatForParam()»
-                    «ENDIF-»
-                    «IF returnParam.hasPatternForParam() -»
-                pattern: '«returnParam.getPatternForParam()»'
-                    «ENDIF-»
-                    «IF returnParam.isDeprecated() -»
+                Â«IF returnParam.type.isOpenAPIDataType() && ((OpenAPIDataType) returnParam.type).inline == true -Â»
+                Â«EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForPath(this, returnParam) FOR (OpenAPIDataType) returnParam.type -Â»
+                Â«ELSE -Â»
+                Â«IF returnParam.type.isBasicOpenAPIType() == true-Â»
+                  Â«IF returnParam.isMultivalued() == false-Â»
+                type: Â«returnParam.type.getOpenAPIType(this)Â»
+                    Â«IF returnParam.hasOpenAPIFormatForParam()-Â»
+                format: Â«returnParam.getOpenAPIFormatForParam()Â»
+                    Â«ENDIF-Â»
+                    Â«IF returnParam.hasPatternForParam() -Â»
+                pattern: 'Â«returnParam.getPatternForParam()Â»'
+                    Â«ENDIF-Â»
+                    Â«IF returnParam.isDeprecated() -Â»
                 deprecated: true
-                    «ENDIF-»
-                  «ELSE-»
+                    Â«ENDIF-Â»
+                  Â«ELSE-Â»
                 type: array
                 items:
-                  type: «returnParam.type.getOpenAPIType(this)»
-                    «IF returnParam.hasOpenAPIFormatForParam()-»
-                  format: «returnParam.getOpenAPIFormatForParam()»
-                    «ENDIF-»
-                    «IF returnParam.hasPatternForParam() -»
-                  pattern: '«returnParam.getPatternForParam()»'
-                    «ENDIF-»
-                  «ENDIF-»
-                  «IF returnParam.hasExample()-»
-                    «IF ((Example) returnParam).exampleValue.length > 0-»
-                example: '«((Example) returnParam).exampleValue»'
-                    «ENDIF-»
-                «ENDIF-»
-                «ELSE-»
-                  «IF returnParam.isMultivalued() == false-»
-                $ref: «returnParam.type.getOpenAPIType(this)»
-                  «ELSE-»
+                  type: Â«returnParam.type.getOpenAPIType(this)Â»
+                    Â«IF returnParam.hasOpenAPIFormatForParam()-Â»
+                  format: Â«returnParam.getOpenAPIFormatForParam()Â»
+                    Â«ENDIF-Â»
+                    Â«IF returnParam.hasPatternForParam() -Â»
+                  pattern: 'Â«returnParam.getPatternForParam()Â»'
+                    Â«ENDIF-Â»
+                  Â«ENDIF-Â»
+                  Â«IF returnParam.hasExample()-Â»
+                    Â«IF ((Example) returnParam).exampleValue.length > 0-Â»
+                example: 'Â«((Example) returnParam).exampleValueÂ»'
+                    Â«ENDIF-Â»
+                Â«ENDIF-Â»
+                Â«ELSE-Â»
+                  Â«IF returnParam.isMultivalued() == false-Â»
+                $ref: Â«returnParam.type.getOpenAPIType(this)Â»
+                  Â«ELSE-Â»
                 type: array
                 items:
-                  $ref: «returnParam.type.getOpenAPIType(this)»
-                minItems: «returnParam.getLower()»
-                  «ENDIF-»
-                «ENDIF-»
-                «ENDIF-»
-            «ENDFOREACH-»
-          «IF operation.hasResponseHeaderFields() -»
+                  $ref: Â«returnParam.type.getOpenAPIType(this)Â»
+                minItems: Â«returnParam.getLower()Â»
+                  Â«ENDIF-Â»
+                Â«ENDIF-Â»
+                Â«ENDIF-Â»
+            Â«ENDFOREACH-Â»
+          Â«IF operation.hasResponseHeaderFields() -Â»
           headers:
-            «FOREACH operation.getHeaderFields().sortBy(e|e.name) AS headerField -»
-            «headerField.name»:
+            Â«FOREACH operation.getHeaderFields().sortBy(e|e.name) AS headerField -Â»
+            Â«headerField.nameÂ»:
               schema:
-                type: «headerField.type.getOpenAPIType(this)»
-                «IF headerField.defaultValue != null-»
-                default: '«headerField.defaultValue.stringValue().replaceAll("\"", "")»'
-                «ENDIF-»
-                «IF headerField.hasComment()-»
+                type: Â«headerField.type.getOpenAPIType(this)Â»
+                Â«IF headerField.defaultValue != null-Â»
+                default: 'Â«headerField.defaultValue.stringValue().replaceAll("\"", "")Â»'
+                Â«ENDIF-Â»
+                Â«IF headerField.hasComment()-Â»
                 description: >-
-                  «headerField.getCommentForOpenAPIDescription("                    ")»
-                «ENDIF-»
-            «ENDFOREACH-»
-          «ENDIF-»
-          «ENDLET-»
-          «ENDIF-»
-        «EXPAND java::OpenAPIResponse::Responses(this) FOR operation-»
+                  Â«headerField.getCommentForOpenAPIDescription("                    ")Â»
+                Â«ENDIF-Â»
+            Â«ENDFOREACH-Â»
+          Â«ENDIF-Â»
+          Â«ENDLET-Â»
+          Â«ENDIF-Â»
+        Â«EXPAND java::OpenAPIResponse::Responses(this) FOR operation-Â»
 
-    «ENDFOREACH-»
-    «ENDFOREACH-»
-  «ENDFOREACH-»
-  «ENDFOREACH-»
-«ENDDEFINE»
+    Â«ENDFOREACH-Â»
+    Â«ENDFOREACH-Â»
+  Â«ENDFOREACH-Â»
+  Â«ENDFOREACH-Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateResponse(OpenAPI3Specification spec) FOR OpenAPIResponse -»
-    «IF suppressClassNameCommentInOpenAPISpec() == false-»
-    # «this.fqn()»
-    «ENDIF-»
-    «this.name»:
-      «IF this.hasComment()-»
+Â«DEFINE GenerateResponse(OpenAPI3Specification spec) FOR OpenAPIResponse -Â»
+    Â«IF suppressClassNameCommentInOpenAPISpec() == false-Â»
+    # Â«this.fqn()Â»
+    Â«ENDIF-Â»
+    Â«this.nameÂ»:
+      Â«IF this.hasComment()-Â»
       description: >-
-        «this.getCommentForOpenAPIDescription("        ")»
-      «ELSE -»
+        Â«this.getCommentForOpenAPIDescription("        ")Â»
+      Â«ELSE -Â»
       description: TODO Please add comment to error response type
-      «ENDIF-»
+      Â«ENDIF-Â»
       content:
-        «this.contentType.name.toOpenAPIContentType()»:
+        Â«this.contentType.name.toOpenAPIContentType()Â»:
           schema:
-            $ref: «this.getResponseType().getOpenAPIType(spec)»
+            $ref: Â«this.getResponseType().getOpenAPIType(spec)Â»
 
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
 
-«DEFINE GenerateOpenAPIEnum FOR OpenAPIEnumeration -»
-    «IF suppressClassNameCommentInOpenAPISpec() == false -»
-    # «this.fqn()»
-    «ENDIF-»
-    «this.name»:
-      «IF this.hasComment()-»
+Â«DEFINE GenerateOpenAPIEnum FOR OpenAPIEnumeration -Â»
+    Â«IF suppressClassNameCommentInOpenAPISpec() == false -Â»
+    # Â«this.fqn()Â»
+    Â«ENDIF-Â»
+    Â«this.nameÂ»:
+      Â«IF this.hasComment()-Â»
       description: >-
-        «this.getCommentForOpenAPIDescription("        ")»
-      «ENDIF-»        
+        Â«this.getCommentForOpenAPIDescription("        ")Â»
+      Â«ENDIF-Â»        
       type: string
-      «IF this.isDeprecated() -»
+      Â«IF this.isDeprecated() -Â»
       deprecated: true
-      «ENDIF-»
-      «IF this.extensibleEnum == true-»
+      Â«ENDIF-Â»
+      Â«IF this.extensibleEnum == true-Â»
       x-extensible-enum:
-      «ELSE-»
+      Â«ELSE-Â»
       enum:
-      «ENDIF-»
-        «FOREACH this.ownedLiteral AS literal-»        
-        «IF literal.hasComment()-»
-        # «literal.getYAMLStyleComment("        ")»
-        «ENDIF-»
-        «IF literal.isDeprecated() -»
-        # Literal "«literal.name»" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
-        «ENDIF-»
-        - «literal.name»
-        «ENDFOREACH-»
-      «IF this.hasDefaultLiteral()-»
-      default: «this.getDefaultLiteral().name»
-      «ENDIF-»
-«ENDDEFINE»
+      Â«ENDIF-Â»
+        Â«FOREACH this.ownedLiteral AS literal-Â»        
+        Â«IF literal.hasComment()-Â»
+        # Â«literal.getYAMLStyleComment("        ")Â»
+        Â«ENDIF-Â»
+        Â«IF literal.isDeprecated() -Â»
+        # Literal "Â«literal.nameÂ»" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
+        Â«ENDIF-Â»
+        - Â«literal.nameÂ»
+        Â«ENDFOREACH-Â»
+      Â«IF this.hasDefaultLiteral()-Â»
+      default: Â«this.getDefaultLiteral().nameÂ»
+      Â«ENDIF-Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE RESTParamName FOR Parameter-»
-«IF this.isStereotypeApplied("PathParam")»«IF ((PathParam) this).value.length > 0»«((PathParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
-«IF this.isStereotypeApplied("HeaderParam")»«IF ((HeaderParam) this).value.length > 0»«((HeaderParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
-«IF this.isStereotypeApplied("QueryParam")»«IF ((QueryParam) this).value.length > 0»«((QueryParam) this).value  -»«ELSE»«this.name»«ENDIF»«ENDIF-»
-«IF this.isStereotypeApplied("CookieParam")»«IF ((CookieParam) this).value.length > 0»«((CookieParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
-«ENDDEFINE»
+Â«DEFINE RESTParamName FOR Parameter-Â»
+Â«IF this.isStereotypeApplied("PathParam")Â»Â«IF ((PathParam) this).value.length > 0Â»Â«((PathParam) this).value -Â»Â«ELSEÂ»Â«this.nameÂ»Â«ENDIFÂ»Â«ENDIF-Â»
+Â«IF this.isStereotypeApplied("HeaderParam")Â»Â«IF ((HeaderParam) this).value.length > 0Â»Â«((HeaderParam) this).value -Â»Â«ELSEÂ»Â«this.nameÂ»Â«ENDIFÂ»Â«ENDIF-Â»
+Â«IF this.isStereotypeApplied("QueryParam")Â»Â«IF ((QueryParam) this).value.length > 0Â»Â«((QueryParam) this).value  -Â»Â«ELSEÂ»Â«this.nameÂ»Â«ENDIFÂ»Â«ENDIF-Â»
+Â«IF this.isStereotypeApplied("CookieParam")Â»Â«IF ((CookieParam) this).value.length > 0Â»Â«((CookieParam) this).value -Â»Â«ELSEÂ»Â«this.nameÂ»Â«ENDIFÂ»Â«ENDIF-Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE RESTParamName FOR Property-»
-«IF this.isStereotypeApplied("PathParam")»«IF ((PathParam) this).value.length > 0 -»«((PathParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
-«IF this.isStereotypeApplied("HeaderParam")»«IF ((HeaderParam) this).value.length > 0 -»«((HeaderParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
-«IF this.isStereotypeApplied("QueryParam")»«IF ((QueryParam) this).value.length > 0 -»«((QueryParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
-«IF this.isStereotypeApplied("CookieParam")»«IF ((CookieParam) this).value.length > 0 -»«((CookieParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»
-«ENDDEFINE»
+Â«DEFINE RESTParamName FOR Property-Â»
+Â«IF this.isStereotypeApplied("PathParam")Â»Â«IF ((PathParam) this).value.length > 0 -Â»Â«((PathParam) this).value -Â»Â«ELSEÂ»Â«this.nameÂ»Â«ENDIFÂ»Â«ENDIF-Â»
+Â«IF this.isStereotypeApplied("HeaderParam")Â»Â«IF ((HeaderParam) this).value.length > 0 -Â»Â«((HeaderParam) this).value -Â»Â«ELSEÂ»Â«this.nameÂ»Â«ENDIFÂ»Â«ENDIF-Â»
+Â«IF this.isStereotypeApplied("QueryParam")Â»Â«IF ((QueryParam) this).value.length > 0 -Â»Â«((QueryParam) this).value -Â»Â«ELSEÂ»Â«this.nameÂ»Â«ENDIFÂ»Â«ENDIF-Â»
+Â«IF this.isStereotypeApplied("CookieParam")Â»Â«IF ((CookieParam) this).value.length > 0 -Â»Â«((CookieParam) this).value -Â»Â«ELSEÂ»Â«this.nameÂ»Â«ENDIFÂ»Â«ENDIF-Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateTags FOR OpenAPITag -»
-  - name: «this.name»
-    «IF this.hasComment()-»
+Â«DEFINE GenerateTags FOR OpenAPITag -Â»
+  - name: Â«this.nameÂ»
+    Â«IF this.hasComment()-Â»
     description: >-
-      «this.getCommentForOpenAPIDescription("      ")»
-    «ENDIF-»    
-    «IF this.externalDocsURL.length > 0 -»
-      url: «this.externalDocsURL»
-    «ENDIF -»
-«ENDDEFINE»
+      Â«this.getCommentForOpenAPIDescription("      ")Â»
+    Â«ENDIF-Â»    
+    Â«IF this.externalDocsURL.length > 0 -Â»
+      url: Â«this.externalDocsURLÂ»
+    Â«ENDIF -Â»
+Â«ENDDEFINEÂ»

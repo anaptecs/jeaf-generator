@@ -1,85 +1,85 @@
-«EXTENSION java::Naming»
-«EXTENSION entity::ModelProperties»
-«IMPORT uml»
-«IMPORT JMM»
-«IMPORT java»
-«IMPORT entity»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION entity::ModelPropertiesÂ»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
+Â«IMPORT javaÂ»
+Â«IMPORT entityÂ»
 
 //Operations for JEAF services are created here
 //OperationS is a stereotype which caries the Exception information
 
 
 //interface methods are returned
-«DEFINE InterfaceOperation FOR Operation»
-    «this.getJavadoc()»
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»    
-    «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
-	«getReturnTypeName()»  «name» («EXPAND ParameterSignature»)«getThrownExceptionsAsString()»;
-«ENDDEFINE»
+Â«DEFINE InterfaceOperation FOR OperationÂ»
+    Â«this.getJavadoc()Â»
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -Â»    
+    Â«EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()Â»
+	Â«getReturnTypeName()Â»  Â«nameÂ» (Â«EXPAND ParameterSignatureÂ»)Â«getThrownExceptionsAsString()Â»;
+Â«ENDDEFINEÂ»
 
 //interfaceImpl methods are returned
-«DEFINE PersistentObjectOperationImpl FOR Operation»
-    «this.getJavadoc()» 
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()»
+Â«DEFINE PersistentObjectOperationImpl FOR OperationÂ»
+    Â«this.getJavadoc()Â» 
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()Â»
     @Override
-	«visibility» «getReturnTypeName()» «name» («EXPAND ParameterSignature»)«getThrownExceptionsAsString()» {
+	Â«visibilityÂ» Â«getReturnTypeName()Â» Â«nameÂ» (Â«EXPAND ParameterSignatureÂ»)Â«getThrownExceptionsAsString()Â» {
 	    // TODO: Implement business logic for method.
-		«IF getReturnTypeName() != "void"»
-			«IF getReturnTypeName() != "boolean"»
-				«IF this.returnsPrimitiveType()»
+		Â«IF getReturnTypeName() != "void"Â»
+			Â«IF getReturnTypeName() != "boolean"Â»
+				Â«IF this.returnsPrimitiveType()Â»
 				return 0;
-				«ELSE»
+				Â«ELSEÂ»
 				return null; 
-				«ENDIF»
-			«ELSE»
+				Â«ENDIFÂ»
+			Â«ELSEÂ»
 				return false;
-			«ENDIF»
-		«ENDIF»
+			Â«ENDIFÂ»
+		Â«ENDIFÂ»
 	}
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«DEFINE ServiceOperationImpl FOR Operation»
-    «this.getJavadoc()» 
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
+Â«DEFINE ServiceOperationImpl FOR OperationÂ»
+    Â«this.getJavadoc()Â» 
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -Â»
     @Override
-	«visibility» «getReturnTypeName()» «name» («EXPAND ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
-		«IF getReturnTypeName() != "void"»
+	Â«visibilityÂ» Â«getReturnTypeName()Â» Â«nameÂ» (Â«EXPAND ParameterSignatureNoValidationAnnotationÂ»)Â«getThrownExceptionsAsString()Â» {
+		Â«IF getReturnTypeName() != "void"Â»
 			// TODO Implement method and return real result
-			«IF returnsPrimitiveType()»
-				«IF getReturnTypeName() != "boolean"» return 0; «ELSE» return false;«ENDIF»
-			«ELSE»
+			Â«IF returnsPrimitiveType()Â»
+				Â«IF getReturnTypeName() != "boolean"Â» return 0; Â«ELSEÂ» return false;Â«ENDIFÂ»
+			Â«ELSEÂ»
 			return null;
-			«ENDIF»
-		«ENDIF»
+			Â«ENDIFÂ»
+		Â«ENDIFÂ»
 	}
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
 //abstract methods are returned
-«DEFINE PersistentObjectOperation FOR Operation»
-    «this.getJavadoc()» 
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
-    «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
-	«visibility» abstract «getReturnTypeName()»  «name» («EXPAND ParameterSignature»)«getThrownExceptionsAsString()»;
-«ENDDEFINE»
+Â«DEFINE PersistentObjectOperation FOR OperationÂ»
+    Â«this.getJavadoc()Â» 
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -Â»
+    Â«EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()Â»
+	Â«visibilityÂ» abstract Â«getReturnTypeName()Â»  Â«nameÂ» (Â«EXPAND ParameterSignatureÂ»)Â«getThrownExceptionsAsString()Â»;
+Â«ENDDEFINEÂ»
 
-«DEFINE ParameterSignature FOR Operation»
-  «EXPAND ParameterDefinition FOREACH ownedParameter.select(e| e.isInputParameter()) SEPARATOR ", "» 
-«ENDDEFINE»
+Â«DEFINE ParameterSignature FOR OperationÂ»
+  Â«EXPAND ParameterDefinition FOREACH ownedParameter.select(e| e.isInputParameter()) SEPARATOR ", "Â» 
+Â«ENDDEFINEÂ»
 
-«DEFINE ParameterDefinition FOR Parameter»
-  «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-  «EXPAND Validation::ValidationAnnotation» «this.getTypeName()» «this.name»
-«ENDDEFINE»
+Â«DEFINE ParameterDefinition FOR ParameterÂ»
+  Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+  Â«EXPAND Validation::ValidationAnnotationÂ» Â«this.getTypeName()Â» Â«this.nameÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE ParameterSignatureNoValidationAnnotation FOR Operation»
-  «EXPAND ParameterDefinitionNoValidationAnnotation FOREACH ownedParameter.select(e| e.isInputParameter()) SEPARATOR ", "» 
-«ENDDEFINE»
+Â«DEFINE ParameterSignatureNoValidationAnnotation FOR OperationÂ»
+  Â«EXPAND ParameterDefinitionNoValidationAnnotation FOREACH ownedParameter.select(e| e.isInputParameter()) SEPARATOR ", "Â» 
+Â«ENDDEFINEÂ»
 
-«DEFINE ParameterDefinitionNoValidationAnnotation FOR Parameter»
-  «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-  «this.getTypeName()» «this.name»
-«ENDDEFINE»
+Â«DEFINE ParameterDefinitionNoValidationAnnotation FOR ParameterÂ»
+  Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+  Â«this.getTypeName()Â» Â«this.nameÂ»
+Â«ENDDEFINEÂ»

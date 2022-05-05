@@ -1,20 +1,20 @@
-«EXTENSION java::Naming»
-«EXTENSION entity::ModelProperties»
-«IMPORT uml»
-«IMPORT JMM»
-«IMPORT java»
-«IMPORT entity»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION entity::ModelPropertiesÂ»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
+Â«IMPORT javaÂ»
+Â«IMPORT entityÂ»
 
-«DEFINE ClassId FOR Package»
+Â«DEFINE ClassId FOR PackageÂ»
 
 	//*********************************************************\\
 	//*********************************************************\\
 	//********** the csv file with the class ids **************\\
 	//*********************************************************\\
 	//*********************************************************\\
-	«FILE "ClassIDs.csv" GenRes»Class ID;Business Object«FOREACH getClassIDs() AS classNameAndId»
-		«classNameAndId»«ENDFOREACH»«ENDFILE»
-«ENDDEFINE»
+	Â«FILE "ClassIDs.csv" GenResÂ»Class ID;Business ObjectÂ«FOREACH getClassIDs() AS classNameAndIdÂ»
+		Â«classNameAndIdÂ»Â«ENDFOREACHÂ»Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE ClassId FOR uml::Element»
-«ENDDEFINE»
+Â«DEFINE ClassId FOR uml::ElementÂ»
+Â«ENDDEFINEÂ»

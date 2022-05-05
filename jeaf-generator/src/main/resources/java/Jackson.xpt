@@ -1,45 +1,45 @@
-«EXTENSION java::Naming»
-«EXTENSION java::ObjectMapper»
-«EXTENSION java::GeneratorCommons»
-«EXTENSION org::openarchitectureware::util::stdlib::io»
-«EXTENSION entity::ModelProperties»
-«EXTENSION java::OpenAPIFunctions»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::ObjectMapperÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION org::openarchitectureware::util::stdlib::ioÂ»
+Â«EXTENSION entity::ModelPropertiesÂ»
+Â«EXTENSION java::OpenAPIFunctionsÂ»
 
-«IMPORT uml»
-«IMPORT JMM»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
 
 
-«DEFINE JacksonClassAnnotations FOR Class»
-	«IF generateJacksonAnnotations() && this.isStereotypeApplied("BeanParam") == false»
-		«IF enableSemVerForJSON() == true»
+Â«DEFINE JacksonClassAnnotations FOR ClassÂ»
+	Â«IF generateJacksonAnnotations() && this.isStereotypeApplied("BeanParam") == falseÂ»
+		Â«IF enableSemVerForJSON() == trueÂ»
 		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
-		«ENDIF»
-		«IF this.superClass.size == 0 && this.getSubclasses().size > 0 »
-		«IF enableSemVerForJSON() == false»
+		Â«ENDIFÂ»
+		Â«IF this.superClass.size == 0 && this.getSubclasses().size > 0 Â»
+		Â«IF enableSemVerForJSON() == falseÂ»
 		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(value = "objectType")
-		«ENDIF»
+		Â«ENDIFÂ»
 		@com.fasterxml.jackson.annotation.JsonTypeInfo(use = com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME, include = com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 		@com.fasterxml.jackson.annotation.JsonSubTypes({
-		«EXPAND SubtypesAnnotation -»
+		Â«EXPAND SubtypesAnnotation -Â»
 		 })
-		«ENDIF»
-		«IF needsToImplementIdentifiable() == true»
+		Â«ENDIFÂ»
+		Â«IF needsToImplementIdentifiable() == trueÂ»
 		@com.fasterxml.jackson.annotation.JsonIdentityInfo(property = "objectID", generator = com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator.class)
-		«ENDIF»
-	«ENDIF»
-«ENDDEFINE»
+		Â«ENDIFÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE SubtypesAnnotation FOR Class»
-	«FOREACH this.getSubclasses().typeSelect(Class) AS subclass SEPARATOR "," »
-	@com.fasterxml.jackson.annotation.JsonSubTypes.Type(value = «subclass.fqn()».class, name = "«subclass.name»")
-		«IF subclass.getSubclasses().size >0»,
-			«EXPAND SubtypesAnnotation FOR subclass»
-		«ENDIF»
-	«ENDFOREACH»
-«ENDDEFINE»
+Â«DEFINE SubtypesAnnotation FOR ClassÂ»
+	Â«FOREACH this.getSubclasses().typeSelect(Class) AS subclass SEPARATOR "," Â»
+	@com.fasterxml.jackson.annotation.JsonSubTypes.Type(value = Â«subclass.fqn()Â».class, name = "Â«subclass.nameÂ»")
+		Â«IF subclass.getSubclasses().size >0Â»,
+			Â«EXPAND SubtypesAnnotation FOR subclassÂ»
+		Â«ENDIFÂ»
+	Â«ENDFOREACHÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE JSONAlias FOR Property»
-	«IF generateJacksonAnnotations() && this.isStereotypeApplied("OpenAPIAliasName") == true»
-		@com.fasterxml.jackson.annotation.JsonProperty("«((OpenAPIAliasName)this).openAPIPropertyName»")
-	«ENDIF»
-«ENDDEFINE»
+Â«DEFINE JSONAlias FOR PropertyÂ»
+	Â«IF generateJacksonAnnotations() && this.isStereotypeApplied("OpenAPIAliasName") == trueÂ»
+		@com.fasterxml.jackson.annotation.JsonProperty("Â«((OpenAPIAliasName)this).openAPIPropertyNameÂ»")
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»

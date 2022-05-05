@@ -1,47 +1,47 @@
-«EXTENSION java::GeneratorCommons»
-«EXTENSION java::Naming»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION java::NamingÂ»
 
-«DEFINE GenerateToStringMethod FOR uml::Class»
+Â«DEFINE GenerateToStringMethod FOR uml::ClassÂ»
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. the returned StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
   protected StringBuilder toStringBuilder( ) {
-    «IF isTargetRuntimeJEAF()»
-	    «IF this.superClass.isEmpty == true»
+    Â«IF isTargetRuntimeJEAF()Â»
+	    Â«IF this.superClass.isEmpty == trueÂ»
             StringBuilder lBuilder = new StringBuilder();
 		    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
 		    lBuilder.append('\n');
 		    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
 		    lBuilder.append('\n');
-	    «ELSE»
+	    Â«ELSEÂ»
 		    StringBuilder lBuilder = super.toStringBuilder();
-	    «ENDIF»
-	    «FOREACH this.ownedAttribute AS attribute»
-		    «IF attribute.association == null && attribute.isMultivalued() == false»
-		    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "«attribute.name»", "" + «attribute.name»));
+	    Â«ENDIFÂ»
+	    Â«FOREACH this.ownedAttribute AS attributeÂ»
+		    Â«IF attribute.association == null && attribute.isMultivalued() == falseÂ»
+		    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "Â«attribute.nameÂ»", "" + Â«attribute.nameÂ»));
 		    lBuilder.append('\n');
-		    «ENDIF»
-	    «ENDFOREACH»
-    «ELSE»
-	    «IF this.superClass.isEmpty == true»
+		    Â«ENDIFÂ»
+	    Â«ENDFOREACHÂ»
+    Â«ELSEÂ»
+	    Â«IF this.superClass.isEmpty == trueÂ»
             StringBuilder lBuilder = new StringBuilder();
 		    lBuilder.append(this.getClass().getName());
 		    lBuilder.append('\n');
 		    lBuilder.append("Attributes:");
 		    lBuilder.append('\n');
-	    «ELSE»
+	    Â«ELSEÂ»
 		    StringBuilder lBuilder = super.toStringBuilder();
-	    «ENDIF»
-	    «FOREACH this.ownedAttribute AS attribute»
-		    «IF attribute.association == null && attribute.isMultivalued() == false»
-		    lBuilder.append("«attribute.name»: ");
-		    lBuilder.append(«attribute.name»);
+	    Â«ENDIFÂ»
+	    Â«FOREACH this.ownedAttribute AS attributeÂ»
+		    Â«IF attribute.association == null && attribute.isMultivalued() == falseÂ»
+		    lBuilder.append("Â«attribute.nameÂ»: ");
+		    lBuilder.append(Â«attribute.nameÂ»);
 		    lBuilder.append('\n');
-		    «ENDIF»
-	    «ENDFOREACH»
-    «ENDIF»
+		    Â«ENDIFÂ»
+	    Â«ENDFOREACHÂ»
+    Â«ENDIFÂ»
     return lBuilder;
   }
   
@@ -55,41 +55,41 @@
     return this.toStringBuilder().toString();
   }
   
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
 
-«DEFINE GenerateDeprecationAnnotation FOR uml::NamedElement»
-	«IF this.isDeprecated()-»
+Â«DEFINE GenerateDeprecationAnnotation FOR uml::NamedElementÂ»
+	Â«IF this.isDeprecated()-Â»
 	@Deprecated
-	«ENDIF-»
-«ENDDEFINE»
+	Â«ENDIF-Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateConstantsForAttributeNames FOR uml::Class»
-	«IF generateConstantsForAttributeNames() == true»
-		«FOREACH this.ownedAttribute AS attr»
-			«IF attr.isStatic == false»        
+Â«DEFINE GenerateConstantsForAttributeNames FOR uml::ClassÂ»
+	Â«IF generateConstantsForAttributeNames() == trueÂ»
+		Â«FOREACH this.ownedAttribute AS attrÂ»
+			Â«IF attr.isStatic == falseÂ»        
 			/**
-			 * Constant for the name of attribute "«attr.name»".
+			 * Constant for the name of attribute "Â«attr.nameÂ»".
 			 */
-			«EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr-»
-			public static final String «attr.asInstanceVar().toUpperCase()» = "«attr.asInstanceVar()»";
-			«ENDIF»
-		«ENDFOREACH»
-	«ENDIF»
-«ENDDEFINE»
+			Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr-Â»
+			public static final String Â«attr.asInstanceVar().toUpperCase()Â» = "Â«attr.asInstanceVar()Â»";
+			Â«ENDIFÂ»
+		Â«ENDFOREACHÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateGeneratedAnnotation FOR uml::NamedElement»
-  «IF addGeneratedAnnotation()»
-     @javax.annotation.Generated(«getGeneratedAnnotation()»)
-  «ENDIF»
-«ENDDEFINE»
+Â«DEFINE GenerateGeneratedAnnotation FOR uml::NamedElementÂ»
+  Â«IF addGeneratedAnnotation()Â»
+     @javax.annotation.Generated(Â«getGeneratedAnnotation()Â»)
+  Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateSuppressWarningsAnnotation FOR uml::NamedElement»
-  «IF suppressAllWarnings()»
+Â«DEFINE GenerateSuppressWarningsAnnotation FOR uml::NamedElementÂ»
+  Â«IF suppressAllWarnings()Â»
      @java.lang.SuppressWarnings("all")
-  «ENDIF»
-  «IF getSuppressedWarnings().isEmpty == false»
-  @java.lang.SuppressWarnings(«FOREACH getSuppressedWarnings() AS warning SEPARATOR ", "»"«warning»"«ENDFOREACH»)
-  «ENDIF»
-«ENDDEFINE»
+  Â«ENDIFÂ»
+  Â«IF getSuppressedWarnings().isEmpty == falseÂ»
+  @java.lang.SuppressWarnings(Â«FOREACH getSuppressedWarnings() AS warning SEPARATOR ", "Â»"Â«warningÂ»"Â«ENDFOREACHÂ»)
+  Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 

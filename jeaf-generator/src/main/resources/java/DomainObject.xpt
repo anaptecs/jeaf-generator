@@ -1,78 +1,78 @@
-«EXTENSION java::Naming»
-«EXTENSION java::ObjectMapper»
-«EXTENSION java::GeneratorCommons»
-«EXTENSION entity::ModelProperties»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::ObjectMapperÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION entity::ModelPropertiesÂ»
 
-«IMPORT JMM»
+Â«IMPORT JMMÂ»
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Generate domain object for business object 
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-«DEFINE DomainClass FOR DomainObject»
-	«IF generateDomainObjects() == true»
-	«IF this.ownedOperation.size == 0 && this.hasCustomImplementation == false»
-	«FILE packagePath() + "/" + name +".java" GenBase»
-	«getFileHeader()»
-	package «this.packageName()»;
+Â«DEFINE DomainClass FOR DomainObjectÂ»
+	Â«IF generateDomainObjects() == trueÂ»
+	Â«IF this.ownedOperation.size == 0 && this.hasCustomImplementation == falseÂ»
+	Â«FILE packagePath() + "/" + name +".java" GenBaseÂ»
+	Â«getFileHeader()Â»
+	package Â«this.packageName()Â»;
   
 	import com.anaptecs.jeaf.xfun.api.XFunMessages;
 	import com.anaptecs.jeaf.xfun.api.XFun;
 	   
-	«this.getJavadoc()»
-	«EXPAND java::Helper::GenerateGeneratedAnnotation»
-	«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public «IF isAbstract»abstract«ENDIF» class «name» extends «IF !superClass.isEmpty»«superClass.get(0).fqn()»«ELSE»com.anaptecs.jeaf.core.api.DomainObject«ENDIF»«IF needsToImplementIdentifiable()==true» implements com.anaptecs.jeaf.xfun.api.common.Identifiable<«this.getObjectIDClassName()»>«ENDIF» {
+	Â«this.getJavadoc()Â»
+	Â«EXPAND java::Helper::GenerateGeneratedAnnotationÂ»
+	Â«EXPAND java::Helper::GenerateSuppressWarningsAnnotationÂ»
+	Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+	public Â«IF isAbstractÂ»abstractÂ«ENDIFÂ» class Â«nameÂ» extends Â«IF !superClass.isEmptyÂ»Â«superClass.get(0).fqn()Â»Â«ELSEÂ»com.anaptecs.jeaf.core.api.DomainObjectÂ«ENDIFÂ»Â«IF needsToImplementIdentifiable()==trueÂ» implements com.anaptecs.jeaf.xfun.api.common.Identifiable<Â«this.getObjectIDClassName()Â»>Â«ENDIFÂ» {
 		/**
 		 * Default serial version uid.
 		 */
 		private static final long serialVersionUID = 1L;
     
-		«REM»Generate constants for all real attributes«ENDREM»
-		«EXPAND java::Helper::GenerateConstantsForAttributeNames FOR ((uml::Class) this)»
+		Â«REMÂ»Generate constants for all real attributesÂ«ENDREMÂ»
+		Â«EXPAND java::Helper::GenerateConstantsForAttributeNames FOR ((uml::Class) this)Â»
   
-		«IF needsToImplementIdentifiable() == true»
-		«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())»
-		«ENDIF»
+		Â«IF needsToImplementIdentifiable() == trueÂ»
+		Â«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())Â»
+		Â«ENDIFÂ»
 		
-    «EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
+    Â«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttributeÂ»
 
       /**
        * Initialize object. Nothing special to do.
        */
-      public «name»() {
-		  «IF needsToImplementIdentifiable() == true»
+      public Â«nameÂ»() {
+		  Â«IF needsToImplementIdentifiable() == trueÂ»
 			  objectID = null;
-		  «ELSE»
-			  «IF this.requiresAttributeInitValue() == false»
+		  Â«ELSEÂ»
+			  Â«IF this.requiresAttributeInitValue() == falseÂ»
 			  // Nothing to do.
-			  «ENDIF»
-		  «ENDIF»
-		  «FOREACH this.ownedAttribute AS attr»
-			  «IF attr.isReadOnly == true && attr.isStatic == false»
-				  «IF attr.type.isPrimitiveType() == true»
-					  «IF attr.isMultivalued() == false»
-						  «IF attr.isRealInitValue()»
-						  «attr.name» = «attr.initValue()»;
-						  «ELSE»
-						  «attr.name» = «attr.getPrimitiveDefaultValue()»;
-						  «ENDIF»
-					  «ELSE»
-						  «attr.name» = null;
-					  «ENDIF»
-				  «ELSE»
-					  «IF attr.isMultivalued() == false»
-					  «attr.name» = null;
-					  «ENDIF»
-				  «ENDIF»
-			  «ELSE»
-				  «IF attr.isRealInitValue() && attr.isStatic == false »
-                      «attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
-				  «ENDIF»
-			  «ENDIF»
-		  «ENDFOREACH»
+			  Â«ENDIFÂ»
+		  Â«ENDIFÂ»
+		  Â«FOREACH this.ownedAttribute AS attrÂ»
+			  Â«IF attr.isReadOnly == true && attr.isStatic == falseÂ»
+				  Â«IF attr.type.isPrimitiveType() == trueÂ»
+					  Â«IF attr.isMultivalued() == falseÂ»
+						  Â«IF attr.isRealInitValue()Â»
+						  Â«attr.nameÂ» = Â«attr.initValue()Â»;
+						  Â«ELSEÂ»
+						  Â«attr.nameÂ» = Â«attr.getPrimitiveDefaultValue()Â»;
+						  Â«ENDIFÂ»
+					  Â«ELSEÂ»
+						  Â«attr.nameÂ» = null;
+					  Â«ENDIFÂ»
+				  Â«ELSEÂ»
+					  Â«IF attr.isMultivalued() == falseÂ»
+					  Â«attr.nameÂ» = null;
+					  Â«ENDIFÂ»
+				  Â«ENDIFÂ»
+			  Â«ELSEÂ»
+				  Â«IF attr.isRealInitValue() && attr.isStatic == false Â»
+                      Â«attr.nameÂ» = Â«IF attr.isJEAFEnumeration()Â»Â«attr.type.nameÂ».Â«ENDIFÂ»Â«attr.initValue()Â»;
+				  Â«ENDIFÂ»
+			  Â«ENDIFÂ»
+		  Â«ENDFOREACHÂ»
       }
       
       /**
@@ -80,107 +80,107 @@
        * 
        * @param pDomainObjectID Id of this domain object. The parameter must not be null.
        */
-      public «name»(com.anaptecs.jeaf.core.api.DomainObjectID pDomainObjectID) {
+      public Â«nameÂ»(com.anaptecs.jeaf.core.api.DomainObjectID pDomainObjectID) {
         super(pDomainObjectID);
-		  «IF needsToImplementIdentifiable() == true»
+		  Â«IF needsToImplementIdentifiable() == trueÂ»
 			  objectID = null;
-		  «ENDIF»
-		  «FOREACH this.ownedAttribute AS attr»
-			  «IF attr.isReadOnly == true && attr.isStatic == false»
-				  «IF attr.type.isPrimitiveType() == true»
-					  «IF attr.isMultivalued() == false»
-						  «IF attr.isRealInitValue()»
-						  «attr.name» = «attr.initValue()»;
-						  «ELSE»
-						  «attr.name» = «attr.getPrimitiveDefaultValue()»;
-						  «ENDIF»
-					  «ELSE»
-						  «attr.name» = null;
-					  «ENDIF»
-				  «ELSE»
-					  «IF attr.isMultivalued() == false»
-					  «attr.name» = null;
-					  «ENDIF»
-				  «ENDIF»
-			  «ENDIF»
-		  «ENDFOREACH»
+		  Â«ENDIFÂ»
+		  Â«FOREACH this.ownedAttribute AS attrÂ»
+			  Â«IF attr.isReadOnly == true && attr.isStatic == falseÂ»
+				  Â«IF attr.type.isPrimitiveType() == trueÂ»
+					  Â«IF attr.isMultivalued() == falseÂ»
+						  Â«IF attr.isRealInitValue()Â»
+						  Â«attr.nameÂ» = Â«attr.initValue()Â»;
+						  Â«ELSEÂ»
+						  Â«attr.nameÂ» = Â«attr.getPrimitiveDefaultValue()Â»;
+						  Â«ENDIFÂ»
+					  Â«ELSEÂ»
+						  Â«attr.nameÂ» = null;
+					  Â«ENDIFÂ»
+				  Â«ELSEÂ»
+					  Â«IF attr.isMultivalued() == falseÂ»
+					  Â«attr.nameÂ» = null;
+					  Â«ENDIFÂ»
+				  Â«ENDIFÂ»
+			  Â«ENDIFÂ»
+		  Â«ENDFOREACHÂ»
       }
       
-		«IF needsToImplementIdentifiable() == true»
-		«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())»
-		«ENDIF»
+		Â«IF needsToImplementIdentifiable() == trueÂ»
+		Â«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())Â»
+		Â«ENDIFÂ»
 
-    «EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
-    «EXPAND java::Helper::GenerateToStringMethod»
+    Â«EXPAND Attribute::PropertyAccessors FOREACH ownedAttributeÂ»
+    Â«EXPAND java::Helper::GenerateToStringMethodÂ»
   }
-  «ENDFILE»
-  «ELSE»
-      «FILE packagePath() + "/" + name +"Base.java" GenBase»
-      «getFileHeader()»
-      package «this.packageName()»;
+  Â«ENDFILEÂ»
+  Â«ELSEÂ»
+      Â«FILE packagePath() + "/" + name +"Base.java" GenBaseÂ»
+      Â«getFileHeader()Â»
+      package Â«this.packageName()Â»;
       
       import com.anaptecs.jeaf.xfun.api.XFunMessages;
       import com.anaptecs.jeaf.xfun.api.XFun;        
       
-      «this.getJavadoc()»
-	  «EXPAND java::Helper::GenerateGeneratedAnnotation»
-	  «EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
-      «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-      public abstract class «name»Base extends «IF !superClass.isEmpty»«superClass.get(0).fqn()»«ELSE»com.anaptecs.jeaf.core.api.DomainObject«ENDIF»«IF needsToImplementIdentifiable()==true» implements com.anaptecs.jeaf.xfun.api.common.Identifiable<«this.getObjectIDClassName()»>«ENDIF» {
+      Â«this.getJavadoc()Â»
+	  Â«EXPAND java::Helper::GenerateGeneratedAnnotationÂ»
+	  Â«EXPAND java::Helper::GenerateSuppressWarningsAnnotationÂ»
+      Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+      public abstract class Â«nameÂ»Base extends Â«IF !superClass.isEmptyÂ»Â«superClass.get(0).fqn()Â»Â«ELSEÂ»com.anaptecs.jeaf.core.api.DomainObjectÂ«ENDIFÂ»Â«IF needsToImplementIdentifiable()==trueÂ» implements com.anaptecs.jeaf.xfun.api.common.Identifiable<Â«this.getObjectIDClassName()Â»>Â«ENDIFÂ» {
         /**
          * Default serial version uid.
          */
         private static final long serialVersionUID = 1L;
         
-          «REM»Generate constants for all attributes«ENDREM»
-          «FOREACH this.ownedAttribute AS attr»
-          «IF attr.isMultivalued() == false»          
+          Â«REMÂ»Generate constants for all attributesÂ«ENDREMÂ»
+          Â«FOREACH this.ownedAttribute AS attrÂ»
+          Â«IF attr.isMultivalued() == falseÂ»          
           /**
-           * Constant for the name of attribute "«attr.name»".
+           * Constant for the name of attribute "Â«attr.nameÂ»".
            */
-          public static final String «attr.asInstanceVar().toUpperCase()» = "«attr.asInstanceVar()»";
-          «ENDIF»«ENDFOREACH»
+          public static final String Â«attr.asInstanceVar().toUpperCase()Â» = "Â«attr.asInstanceVar()Â»";
+          Â«ENDIFÂ»Â«ENDFOREACHÂ»
           
-		«IF needsToImplementIdentifiable() == true»
-		«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())»
-		«ENDIF»
+		Â«IF needsToImplementIdentifiable() == trueÂ»
+		Â«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())Â»
+		Â«ENDIFÂ»
 		
-        «EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
+        Â«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttributeÂ»
 
           /**
            * Initialize object. Nothing special to do.
            */
-          public «name»Base() {
-			  «IF needsToImplementIdentifiable() == true»
+          public Â«nameÂ»Base() {
+			  Â«IF needsToImplementIdentifiable() == trueÂ»
 				  objectID = null;
-			  «ELSE»
-				  «IF this.requiresAttributeInitValue() == false»
+			  Â«ELSEÂ»
+				  Â«IF this.requiresAttributeInitValue() == falseÂ»
 				  // Nothing to do.
-				  «ENDIF»
-			  «ENDIF»
-			  «FOREACH this.ownedAttribute AS attr»
-				  «IF attr.isReadOnly == true && attr.isStatic == false»
-					  «IF attr.type.isPrimitiveType() == true»
-						  «IF attr.isMultivalued() == false»
-							  «IF attr.isRealInitValue()»
-							  «attr.name» = «attr.initValue()»;
-							  «ELSE»
-							  «attr.name» = «attr.getPrimitiveDefaultValue()»;
-							  «ENDIF»
-						  «ELSE»
-							  «attr.name» = null;
-						  «ENDIF»
-					  «ELSE»
-						  «IF attr.isMultivalued() == false»
-						  «attr.name» = null;
-						  «ENDIF»
-					  «ENDIF»
-				  «ELSE»
-					  «IF attr.isRealInitValue() && attr.isStatic == false »
-                          «attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
-					  «ENDIF»
-				  «ENDIF»
-			  «ENDFOREACH»
+				  Â«ENDIFÂ»
+			  Â«ENDIFÂ»
+			  Â«FOREACH this.ownedAttribute AS attrÂ»
+				  Â«IF attr.isReadOnly == true && attr.isStatic == falseÂ»
+					  Â«IF attr.type.isPrimitiveType() == trueÂ»
+						  Â«IF attr.isMultivalued() == falseÂ»
+							  Â«IF attr.isRealInitValue()Â»
+							  Â«attr.nameÂ» = Â«attr.initValue()Â»;
+							  Â«ELSEÂ»
+							  Â«attr.nameÂ» = Â«attr.getPrimitiveDefaultValue()Â»;
+							  Â«ENDIFÂ»
+						  Â«ELSEÂ»
+							  Â«attr.nameÂ» = null;
+						  Â«ENDIFÂ»
+					  Â«ELSEÂ»
+						  Â«IF attr.isMultivalued() == falseÂ»
+						  Â«attr.nameÂ» = null;
+						  Â«ENDIFÂ»
+					  Â«ENDIFÂ»
+				  Â«ELSEÂ»
+					  Â«IF attr.isRealInitValue() && attr.isStatic == false Â»
+                          Â«attr.nameÂ» = Â«IF attr.isJEAFEnumeration()Â»Â«attr.type.nameÂ».Â«ENDIFÂ»Â«attr.initValue()Â»;
+					  Â«ENDIFÂ»
+				  Â«ENDIFÂ»
+			  Â«ENDFOREACHÂ»
           }
           
           /**
@@ -188,49 +188,49 @@
            * 
            * @param pDomainObjectID Id of this domain object. The parameter must not be null.
            */
-          public «name»Base(com.anaptecs.jeaf.core.api.DomainObjectID pDomainObjectID) {
+          public Â«nameÂ»Base(com.anaptecs.jeaf.core.api.DomainObjectID pDomainObjectID) {
             super(pDomainObjectID);
-			  «IF needsToImplementIdentifiable() == true»
+			  Â«IF needsToImplementIdentifiable() == trueÂ»
 				  objectID = null;
-			  «ENDIF»
-			  «FOREACH this.ownedAttribute AS attr»
-				  «IF attr.isReadOnly == true && attr.isStatic == false»
-					  «IF attr.type.isPrimitiveType() == true»
-						  «IF attr.isMultivalued() == false»
-							  «IF attr.isRealInitValue()»
-							  «attr.name» = «attr.initValue()»;
-							  «ELSE»
-							  «attr.name» = «attr.getPrimitiveDefaultValue()»;
-							  «ENDIF»
-						  «ELSE»
-							  «attr.name» = null;
-						  «ENDIF»
-					  «ELSE»
-						  «IF attr.isMultivalued() == false»
-						  «attr.name» = null;
-						  «ENDIF»
-					  «ENDIF»
-				  «ENDIF»
-			  «ENDFOREACH»
+			  Â«ENDIFÂ»
+			  Â«FOREACH this.ownedAttribute AS attrÂ»
+				  Â«IF attr.isReadOnly == true && attr.isStatic == falseÂ»
+					  Â«IF attr.type.isPrimitiveType() == trueÂ»
+						  Â«IF attr.isMultivalued() == falseÂ»
+							  Â«IF attr.isRealInitValue()Â»
+							  Â«attr.nameÂ» = Â«attr.initValue()Â»;
+							  Â«ELSEÂ»
+							  Â«attr.nameÂ» = Â«attr.getPrimitiveDefaultValue()Â»;
+							  Â«ENDIFÂ»
+						  Â«ELSEÂ»
+							  Â«attr.nameÂ» = null;
+						  Â«ENDIFÂ»
+					  Â«ELSEÂ»
+						  Â«IF attr.isMultivalued() == falseÂ»
+						  Â«attr.nameÂ» = null;
+						  Â«ENDIFÂ»
+					  Â«ENDIFÂ»
+				  Â«ENDIFÂ»
+			  Â«ENDFOREACHÂ»
           }
       
-		«IF needsToImplementIdentifiable() == true»
-		«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())»
-		«ENDIF»
+		Â«IF needsToImplementIdentifiable() == trueÂ»
+		Â«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())Â»
+		Â«ENDIFÂ»
 
-        «EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
-        «EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
-        «EXPAND java::Helper::GenerateToStringMethod»
+        Â«EXPAND Attribute::PropertyAccessors FOREACH ownedAttributeÂ»
+        Â«EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperationÂ»
+        Â«EXPAND java::Helper::GenerateToStringMethodÂ»
       }
-      «ENDFILE»
+      Â«ENDFILEÂ»
 
-      «FILE packagePath() + "/" + name +".java" GenOnce»
-      «getFileHeader()»
-      package «this.packageName()»;
+      Â«FILE packagePath() + "/" + name +".java" GenOnceÂ»
+      Â«getFileHeader()Â»
+      package Â«this.packageName()Â»;
       
-      «this.getJavadoc()»
-      «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-      public «IF isAbstract»abstract«ENDIF» class «name» extends «name»Base {
+      Â«this.getJavadoc()Â»
+      Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+      public Â«IF isAbstractÂ»abstractÂ«ENDIFÂ» class Â«nameÂ» extends Â«nameÂ»Base {
         /**
          * Default serial version uid.
          */
@@ -239,7 +239,7 @@
           /**
            * Initialize object. Nothing special to do.
            */
-          public «name»() {
+          public Â«nameÂ»() {
             // Nothing to do.
           }
           
@@ -248,16 +248,16 @@
            * 
            * @param pDomainObjectID Id of this domain object. The parameter must not be null.
            */
-          public «name»(com.anaptecs.jeaf.core.api.DomainObjectID pDomainObjectID) {
+          public Â«nameÂ»(com.anaptecs.jeaf.core.api.DomainObjectID pDomainObjectID) {
             super(pDomainObjectID);
           }
       
-        «EXPAND jeaf::JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperation»
+        Â«EXPAND jeaf::JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperationÂ»
       }
-      «ENDFILE»
-  «ENDIF»
-«ENDIF»
+      Â«ENDFILEÂ»
+  Â«ENDIFÂ»
+Â«ENDIFÂ»
 
-	«REM»Generate Object Mappers for POJO«ENDREM»
-	«EXPAND java::ObjectMapper::GenerateObjectMappers»
-«ENDDEFINE»
+	Â«REMÂ»Generate Object Mappers for POJOÂ«ENDREMÂ»
+	Â«EXPAND java::ObjectMapper::GenerateObjectMappersÂ»
+Â«ENDDEFINEÂ»

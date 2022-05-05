@@ -1,19 +1,19 @@
-«EXTENSION java::Naming»
-«EXTENSION java::GeneratorCommons»
-«EXTENSION entity::ModelProperties»
-«IMPORT uml»
-«IMPORT JMM»
-«IMPORT java»
-«IMPORT entity»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION entity::ModelPropertiesÂ»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
+Â«IMPORT javaÂ»
+Â«IMPORT entityÂ»
 
-«DEFINE ApplicationException FOR ApplicationException»
+Â«DEFINE ApplicationException FOR ApplicationExceptionÂ»
 	
 	
 // Application exception.
-«FILE packagePath()+"/"+name+".java" GenBase»
+Â«FILE packagePath()+"/"+name+".java" GenBaseÂ»
 	
-«getFileHeader()»
-package «packageName()»;
+Â«getFileHeader()Â»
+package Â«packageName()Â»;
 
 import com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
@@ -25,8 +25,8 @@ import com.anaptecs.jeaf.xfun.api.XFun;
  * 
  * @see com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException
  */
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-public final class «name» extends ApplicationException {
+Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+public final class Â«nameÂ» extends ApplicationException {
 
   /**
    * Generated serial version uid for this class.
@@ -39,7 +39,7 @@ public final class «name» extends ApplicationException {
    * @param pErrorCode Error code identifying the occurred problem. Among other things the error code is used to determine
    * the corresponding error message. The parameter must not be null.
    */
-  public «name»(ErrorCode pErrorCode) {
+  public Â«nameÂ»(ErrorCode pErrorCode) {
     super(pErrorCode);
   }
 
@@ -52,7 +52,7 @@ public final class «name» extends ApplicationException {
    * The message parameters usually describe the concrete context in which the exception occurred. The parameter may be
    * null.
    */
-  public «name»(ErrorCode pErrorCode, String... pMessageParameters) {
+  public Â«nameÂ»(ErrorCode pErrorCode, String... pMessageParameters) {
     super(pErrorCode, pMessageParameters);
   }
 
@@ -64,7 +64,7 @@ public final class «name» extends ApplicationException {
    * determine the corresponding error message. The parameter must not be null.
    * @param pCause Throwable object that caused this exception. The parameter may be null.
    */
-  public «name»(ErrorCode pErrorCode, Throwable pCause) {
+  public Â«nameÂ»(ErrorCode pErrorCode, Throwable pCause) {
     super(pErrorCode, pCause);
   }
 
@@ -79,7 +79,7 @@ public final class «name» extends ApplicationException {
    * The message parameters usually describe the concrete context in which the exception occurred. The parameter may be
    * null.
    */
-  public «name»(ErrorCode pErrorCode, Throwable pCause, String... pMessageParameters ) {
+  public Â«nameÂ»(ErrorCode pErrorCode, Throwable pCause, String... pMessageParameters ) {
     // Call empty constructor of base class.
     super(pErrorCode, pCause, pMessageParameters);
   }
@@ -97,7 +97,7 @@ public final class «name» extends ApplicationException {
    * The message parameters usually describe the concrete context in which the exception occurred. The parameter may be
    * null.
    */
-  public «name»( ErrorCode pErrorCode, String pTechnicalDetails, Throwable pCause,
+  public Â«nameÂ»( ErrorCode pErrorCode, String pTechnicalDetails, Throwable pCause,
       String... pMessageParameters ) {
     super(pErrorCode, pTechnicalDetails, pCause, pMessageParameters);
   }
@@ -112,18 +112,18 @@ public final class «name» extends ApplicationException {
   }
 
 }
-«ENDFILE»
+Â«ENDFILEÂ»
 	
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
 
 
 // System exception.
-«DEFINE SystemException FOR SystemException»
+Â«DEFINE SystemException FOR SystemExceptionÂ»
 	
-«FILE packagePath()+"/"+name+".java" GenBase»
-«getFileHeader()»
-package «packageName()»;
+Â«FILE packagePath()+"/"+name+".java" GenBaseÂ»
+Â«getFileHeader()Â»
+package Â«packageName()Â»;
 
 import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
 import com.anaptecs.jeaf.xfun.api.errorhandling.SystemException;
@@ -135,8 +135,8 @@ import com.anaptecs.jeaf.xfun.api.XFun;
  * 
  * @see com.anaptecs.jeaf.xfun.api.errorhandling.SystemException
  */
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-public final class «name» extends SystemException {
+Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+public final class Â«nameÂ» extends SystemException {
   /**
    * Generated serial version uid for this class.
    */
@@ -148,7 +148,7 @@ public final class «name» extends SystemException {
    * @param pErrorCode Error code identifying the occurred problem. Among other things the error code is used to 
    * determine the corresponding error message. The parameter must not be null.
    */
-  public «name»(ErrorCode pErrorCode) {
+  public Â«nameÂ»(ErrorCode pErrorCode) {
     super(pErrorCode);
   }
 
@@ -161,7 +161,7 @@ public final class «name» extends SystemException {
    * The message parameters usually describe the concrete context in which the exception occurred. The parameter may be
    * null.
    */
-  public «name»(ErrorCode pErrorCode, String... pMessageParameters) {
+  public Â«nameÂ»(ErrorCode pErrorCode, String... pMessageParameters) {
     super(pErrorCode, pMessageParameters);
   }
 
@@ -173,7 +173,7 @@ public final class «name» extends SystemException {
    * determine the corresponding error message. The parameter must not be null.
    * @param pCause Throwable object that caused this exception. The parameter may be null.
    */
-  public «name»(ErrorCode pErrorCode, Throwable pCause) {
+  public Â«nameÂ»(ErrorCode pErrorCode, Throwable pCause) {
     super(pErrorCode, pCause);
   }
 
@@ -188,7 +188,7 @@ public final class «name» extends SystemException {
    * null.
    * @param pCause Throwable object that caused this exception. The parameter may be null.
    */
-  public «name»(ErrorCode pErrorCode, Throwable pCause, String... pMessageParameters) {
+  public Â«nameÂ»(ErrorCode pErrorCode, Throwable pCause, String... pMessageParameters) {
     // Call empty constructor of base class.
     super(pErrorCode, pCause, pMessageParameters);
   }
@@ -206,7 +206,7 @@ public final class «name» extends SystemException {
    * The message parameters usually describe the concrete context in which the exception occurred. The parameter may be
    * null.
    */
-  public «name»( ErrorCode pErrorCode, String pTechnicalDetails, Throwable pCause,
+  public Â«nameÂ»( ErrorCode pErrorCode, String pTechnicalDetails, Throwable pCause,
       String... pMessageParameters ) {
     super(pErrorCode, pTechnicalDetails, pCause, pMessageParameters);
   }
@@ -220,6 +220,6 @@ public final class «name» extends SystemException {
     return XFun.getVersionInfo();
   }
 }
-«ENDFILE»
+Â«ENDFILEÂ»
 	
-«ENDDEFINE»
+Â«ENDDEFINEÂ»

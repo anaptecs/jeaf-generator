@@ -1,16 +1,16 @@
-«IMPORT uml»
-«IMPORT JMM»
-«EXTENSION java::Naming»
-«EXTENSION java::CustomValidationCommons»
-«EXTENSION org::openarchitectureware::util::stdlib::io»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::CustomValidationCommonsÂ»
+Â«EXTENSION org::openarchitectureware::util::stdlib::ioÂ»
 
-«DEFINE GenerateCustomValidation FOR CustomConstraint»
-	«info("Processing <<CustomConstraint>> " + this.name + " (" + (this.fqn()) + ")")»
-	«LET className.split("\\.").last() AS validationClass»
-	«LET className.replaceFirst("\\."+validationClass, "") AS packageName»
-	«info("Validation Class: " + validationClass)»
-	«FILE className.packagePath() + ".java" GenBase»
-package «packageName»;
+Â«DEFINE GenerateCustomValidation FOR CustomConstraintÂ»
+	Â«info("Processing <<CustomConstraint>> " + this.name + " (" + (this.fqn()) + ")")Â»
+	Â«LET className.split("\\.").last() AS validationClassÂ»
+	Â«LET className.replaceFirst("\\."+validationClass, "") AS packageNameÂ»
+	Â«info("Validation Class: " + validationClass)Â»
+	Â«FILE className.packagePath() + ".java" GenBaseÂ»
+package Â«packageNameÂ»;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.FIELD;
@@ -28,237 +28,237 @@ import javax.validation.Payload;
 
 @Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, TYPE_USE })
 @Retention(RUNTIME)
-@Constraint(validatedBy = {«FOREACH validatedBy AS validatorClass SEPARATOR ', '»«validatorClass».class «ENDFOREACH»})
-public @interface «validationClass» {
-    «FOREACH this.ownedAttribute AS attribute»
-	    «IF attribute.name.startsWith("base_") == false»
-			«attribute.type.fqn()»«IF attribute.isMultivalued()»[]«ENDIF» «attribute.name»() 
-			«IF attribute.defaultValue.isNull() == false-»
+@Constraint(validatedBy = {Â«FOREACH validatedBy AS validatorClass SEPARATOR ', 'Â»Â«validatorClassÂ».class Â«ENDFOREACHÂ»})
+public @interface Â«validationClassÂ» {
+    Â«FOREACH this.ownedAttribute AS attributeÂ»
+	    Â«IF attribute.name.startsWith("base_") == falseÂ»
+			Â«attribute.type.fqn()Â»Â«IF attribute.isMultivalued()Â»[]Â«ENDIFÂ» Â«attribute.nameÂ»() 
+			Â«IF attribute.defaultValue.isNull() == false-Â»
 				default
-			    «REM»Annotation supports either primitive types or enums.«ENDREM»
-			    «IF attribute.isMultivalued()»{«ENDIF-»
-			    «IF attribute.type.isPrimitiveType()-»
-			    	«attribute.defaultValue.stringValue()-»
-			    «ELSE-»
-			    	«attribute.type.fqn()».«attribute.defaultValue.stringValue()-»
-			    «ENDIF-»
-			    «IF attribute.isMultivalued()»}«ENDIF-»
-			«ENDIF-»;
-	    «ENDIF-»
-    «ENDFOREACH-»
-	String message() default "{«className».message}";
+			    Â«REMÂ»Annotation supports either primitive types or enums.Â«ENDREMÂ»
+			    Â«IF attribute.isMultivalued()Â»{Â«ENDIF-Â»
+			    Â«IF attribute.type.isPrimitiveType()-Â»
+			    	Â«attribute.defaultValue.stringValue()-Â»
+			    Â«ELSE-Â»
+			    	Â«attribute.type.fqn()Â».Â«attribute.defaultValue.stringValue()-Â»
+			    Â«ENDIF-Â»
+			    Â«IF attribute.isMultivalued()Â»}Â«ENDIF-Â»
+			Â«ENDIF-Â»;
+	    Â«ENDIF-Â»
+    Â«ENDFOREACH-Â»
+	String message() default "{Â«classNameÂ».message}";
 
 	Class<?>[] groups() default { };
 
 	Class<? extends Payload>[] payload() default { };
 }
-	«ENDFILE»
-	«ENDLET»«ENDLET»	
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+	Â«ENDLETÂ»Â«ENDLETÂ»	
+Â«ENDDEFINEÂ»
 
-«DEFINE ValidationAnnotation FOR NamedElement»
-    «FOREACH this.getAppliedStereotypes() AS stereotype»
-	    «IF stereotype.isValidationStereotype()»
-			«IF stereotype.name == "DecimalMin"»
-			  «EXPAND DecimalMinAnnotation FOR ((DecimalMin)this)»	
+Â«DEFINE ValidationAnnotation FOR NamedElementÂ»
+    Â«FOREACH this.getAppliedStereotypes() AS stereotypeÂ»
+	    Â«IF stereotype.isValidationStereotype()Â»
+			Â«IF stereotype.name == "DecimalMin"Â»
+			  Â«EXPAND DecimalMinAnnotation FOR ((DecimalMin)this)Â»	
 	
-			«ELSEIF stereotype.name == "DecimalMax"»
-			  «EXPAND DecimalMaxAnnotation FOR ((DecimalMax)this)»	
+			Â«ELSEIF stereotype.name == "DecimalMax"Â»
+			  Â«EXPAND DecimalMaxAnnotation FOR ((DecimalMax)this)Â»	
 	
-			«ELSEIF stereotype.name == "Min"»
-			  «EXPAND MinAnnotation FOR ((Min)this)»	
+			Â«ELSEIF stereotype.name == "Min"Â»
+			  Â«EXPAND MinAnnotation FOR ((Min)this)Â»	
 			
-			«ELSEIF stereotype.name == "Max"»
-			  «EXPAND MaxAnnotation FOR ((Max)this)»	
+			Â«ELSEIF stereotype.name == "Max"Â»
+			  Â«EXPAND MaxAnnotation FOR ((Max)this)Â»	
 	
-			«ELSEIF stereotype.name == "Digits"»
-			  «EXPAND DigitsAnnotation FOR ((Digits) this)»
+			Â«ELSEIF stereotype.name == "Digits"Â»
+			  Â«EXPAND DigitsAnnotation FOR ((Digits) this)Â»
 	
-			«ELSEIF stereotype.name == "Negative"»
-			  «EXPAND NegativeAnnotation FOR ((Negative) this)»
+			Â«ELSEIF stereotype.name == "Negative"Â»
+			  Â«EXPAND NegativeAnnotation FOR ((Negative) this)Â»
 	
-			«ELSEIF stereotype.name == "NegativeOrZero"»
-			  «EXPAND NegativeOrZeroAnnotation FOR ((NegativeOrZero) this)»
+			Â«ELSEIF stereotype.name == "NegativeOrZero"Â»
+			  Â«EXPAND NegativeOrZeroAnnotation FOR ((NegativeOrZero) this)Â»
 	
-			«ELSEIF stereotype.name == "PositiveOrZero"»
-			  «EXPAND PositiveOrZeroAnnotation FOR ((PositiveOrZero) this)»
+			Â«ELSEIF stereotype.name == "PositiveOrZero"Â»
+			  Â«EXPAND PositiveOrZeroAnnotation FOR ((PositiveOrZero) this)Â»
 	
-			«ELSEIF stereotype.name == "Positive"»
-			  «EXPAND PositiveAnnotation FOR ((Positive) this)»
+			Â«ELSEIF stereotype.name == "Positive"Â»
+			  Â«EXPAND PositiveAnnotation FOR ((Positive) this)Â»
 	
-			«ELSEIF stereotype.name == "Size"»
-			  «EXPAND SizeAnnotation FOR ((Size) this)»
+			Â«ELSEIF stereotype.name == "Size"Â»
+			  Â«EXPAND SizeAnnotation FOR ((Size) this)Â»
 	
-			«ELSEIF stereotype.name == "Pattern"»
-			  «EXPAND PatternAnnotation FOR ((Pattern) this)»
+			Â«ELSEIF stereotype.name == "Pattern"Â»
+			  Â«EXPAND PatternAnnotation FOR ((Pattern) this)Â»
 	
-			«ELSEIF stereotype.name == "Email"»
-			  «EXPAND EmailAnnotation FOR ((Email) this)»
+			Â«ELSEIF stereotype.name == "Email"Â»
+			  Â«EXPAND EmailAnnotation FOR ((Email) this)Â»
 	
-			«ELSEIF stereotype.name == "NotEmpty"»
-			  «EXPAND NotEmptyAnnotation FOR ((NotEmpty) this)»
+			Â«ELSEIF stereotype.name == "NotEmpty"Â»
+			  Â«EXPAND NotEmptyAnnotation FOR ((NotEmpty) this)Â»
 	
-			«ELSEIF stereotype.name == "Null"»
-			  «EXPAND NullAnnotation FOR ((Null) this)»
+			Â«ELSEIF stereotype.name == "Null"Â»
+			  Â«EXPAND NullAnnotation FOR ((Null) this)Â»
 	
-			«ELSEIF stereotype.name == "NotNull"»
-			  «EXPAND NotNullAnnotation FOR ((NotNull) this)»
+			Â«ELSEIF stereotype.name == "NotNull"Â»
+			  Â«EXPAND NotNullAnnotation FOR ((NotNull) this)Â»
 	
-			«ELSEIF stereotype.name == "AssertTrue"»
-			  «EXPAND AssertTrueAnnotation FOR ((AssertTrue) this)»
+			Â«ELSEIF stereotype.name == "AssertTrue"Â»
+			  Â«EXPAND AssertTrueAnnotation FOR ((AssertTrue) this)Â»
 	
-			«ELSEIF stereotype.name == "AssertFalse"»
-			  «EXPAND AssertFalseAnnotation FOR ((AssertFalse) this)»
+			Â«ELSEIF stereotype.name == "AssertFalse"Â»
+			  Â«EXPAND AssertFalseAnnotation FOR ((AssertFalse) this)Â»
 	
-			«ELSEIF stereotype.name == "NotBlank"»
-			  «EXPAND NotBlankAnnotation FOR ((NotBlank) this)»
+			Â«ELSEIF stereotype.name == "NotBlank"Â»
+			  Â«EXPAND NotBlankAnnotation FOR ((NotBlank) this)Â»
 	
-			«ELSEIF stereotype.name == "Past"»
-			  «EXPAND PastAnnotation FOR ((Past) this)»
+			Â«ELSEIF stereotype.name == "Past"Â»
+			  Â«EXPAND PastAnnotation FOR ((Past) this)Â»
 	
-			«ELSEIF stereotype.name == "PastOrPresent"»
-			  «EXPAND PastOrPresentAnnotation FOR ((PastOrPresent) this)»
+			Â«ELSEIF stereotype.name == "PastOrPresent"Â»
+			  Â«EXPAND PastOrPresentAnnotation FOR ((PastOrPresent) this)Â»
 	
-			«ELSEIF stereotype.name == "FutureOrPresent"»
-			  «EXPAND FutureOrPresentAnnotation FOR ((FutureOrPresent) this)»
+			Â«ELSEIF stereotype.name == "FutureOrPresent"Â»
+			  Â«EXPAND FutureOrPresentAnnotation FOR ((FutureOrPresent) this)Â»
 	
-			«ELSEIF stereotype.name == "Future"»
-			  «EXPAND FutureAnnotation FOR ((Future) this)»
+			Â«ELSEIF stereotype.name == "Future"Â»
+			  Â«EXPAND FutureAnnotation FOR ((Future) this)Â»
 	
-			«ELSEIF stereotype.name == "Valid" -»
-			  «EXPAND ValidAnnotation FOR ((Valid) this) -»
+			Â«ELSEIF stereotype.name == "Valid" -Â»
+			  Â«EXPAND ValidAnnotation FOR ((Valid) this) -Â»
 			
-			«ELSE»
-			  «EXPAND CustomValidationAnnotation (stereotype)»
-			«ENDIF»
-	    «ENDIF»
-	«ENDFOREACH»
-«ENDDEFINE»
+			Â«ELSEÂ»
+			  Â«EXPAND CustomValidationAnnotation (stereotype)Â»
+			Â«ENDIFÂ»
+	    Â«ENDIFÂ»
+	Â«ENDFOREACHÂ»
+Â«ENDDEFINEÂ»
 
 
-«DEFINE DecimalMinAnnotation FOR DecimalMin»
-   @javax.validation.constraints.DecimalMin(value = "«this.minValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
-«ENDDEFINE»
+Â«DEFINE DecimalMinAnnotation FOR DecimalMinÂ»
+   @javax.validation.constraints.DecimalMin(value = "Â«this.minValueÂ»", inclusive = Â«this.inclusiveÂ» Â«EXPAND ValidationAnnotationBasicsÂ» )
+Â«ENDDEFINEÂ»
 
-«DEFINE DecimalMaxAnnotation FOR DecimalMax»
-   @javax.validation.constraints.DecimalMax(value = "«this.maxValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
-«ENDDEFINE»
+Â«DEFINE DecimalMaxAnnotation FOR DecimalMaxÂ»
+   @javax.validation.constraints.DecimalMax(value = "Â«this.maxValueÂ»", inclusive = Â«this.inclusiveÂ» Â«EXPAND ValidationAnnotationBasicsÂ» )
+Â«ENDDEFINEÂ»
 
-«DEFINE MinAnnotation FOR Min»
-   @javax.validation.constraints.Min(value = «this.minValue» «EXPAND ValidationAnnotationBasics»)
-«ENDDEFINE»
+Â«DEFINE MinAnnotation FOR MinÂ»
+   @javax.validation.constraints.Min(value = Â«this.minValueÂ» Â«EXPAND ValidationAnnotationBasicsÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE MaxAnnotation FOR Max»
-   @javax.validation.constraints.Max(value = «this.maxValue» «EXPAND ValidationAnnotationBasics»)
-«ENDDEFINE»
+Â«DEFINE MaxAnnotation FOR MaxÂ»
+   @javax.validation.constraints.Max(value = Â«this.maxValueÂ» Â«EXPAND ValidationAnnotationBasicsÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE DigitsAnnotation FOR Digits»
-   @javax.validation.constraints.Digits(integer = «integer», fraction = «fraction» «EXPAND ValidationAnnotationBasics»)
-«ENDDEFINE»
+Â«DEFINE DigitsAnnotation FOR DigitsÂ»
+   @javax.validation.constraints.Digits(integer = Â«integerÂ», fraction = Â«fractionÂ» Â«EXPAND ValidationAnnotationBasicsÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE NegativeAnnotation FOR Negative»
-   @javax.validation.constraints.Negative(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+Â«DEFINE NegativeAnnotation FOR NegativeÂ»
+   @javax.validation.constraints.Negative(Â«EXPAND ValidationAnnotationBasicsEmptyValidationÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE NegativeOrZeroAnnotation FOR NegativeOrZero»
-   @javax.validation.constraints.NegativeOrZero(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+Â«DEFINE NegativeOrZeroAnnotation FOR NegativeOrZeroÂ»
+   @javax.validation.constraints.NegativeOrZero(Â«EXPAND ValidationAnnotationBasicsEmptyValidationÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE PositiveOrZeroAnnotation FOR PositiveOrZero»
-   @javax.validation.constraints.PositiveOrZero(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+Â«DEFINE PositiveOrZeroAnnotation FOR PositiveOrZeroÂ»
+   @javax.validation.constraints.PositiveOrZero(Â«EXPAND ValidationAnnotationBasicsEmptyValidationÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE PositiveAnnotation FOR Positive»
-   @javax.validation.constraints.Positive(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+Â«DEFINE PositiveAnnotation FOR PositiveÂ»
+   @javax.validation.constraints.Positive(Â«EXPAND ValidationAnnotationBasicsEmptyValidationÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE SizeAnnotation FOR Size»
-   @javax.validation.constraints.Size(min = «IF min != -1»«min»«ELSE»0«ENDIF», max = «IF max != -1»«max»«ELSE»Integer.MAX_VALUE«ENDIF»«EXPAND ValidationAnnotationBasics»)
-«ENDDEFINE»
+Â«DEFINE SizeAnnotation FOR SizeÂ»
+   @javax.validation.constraints.Size(min = Â«IF min != -1Â»Â«minÂ»Â«ELSEÂ»0Â«ENDIFÂ», max = Â«IF max != -1Â»Â«maxÂ»Â«ELSEÂ»Integer.MAX_VALUEÂ«ENDIFÂ»Â«EXPAND ValidationAnnotationBasicsÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE PatternAnnotation FOR Pattern»
-   @javax.validation.constraints.Pattern(«IF regexp.length > 0»regexp = "«regexp»"«ENDIF»«IF regexp.length > 0 && flags.size > 0», «ENDIF»«IF flags.size > 0»flags = {javax.validation.constraints.Pattern.Flag.«flags.toString(", javax.validation.constraints.Pattern.Flag.")»}«ENDIF» «EXPAND ValidationAnnotationBasics»)
-«ENDDEFINE»
+Â«DEFINE PatternAnnotation FOR PatternÂ»
+   @javax.validation.constraints.Pattern(Â«IF regexp.length > 0Â»regexp = "Â«regexpÂ»"Â«ENDIFÂ»Â«IF regexp.length > 0 && flags.size > 0Â», Â«ENDIFÂ»Â«IF flags.size > 0Â»flags = {javax.validation.constraints.Pattern.Flag.Â«flags.toString(", javax.validation.constraints.Pattern.Flag.")Â»}Â«ENDIFÂ» Â«EXPAND ValidationAnnotationBasicsÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE EmailAnnotation FOR Email»
-   @javax.validation.constraints.Email(«IF regexp.length > 0»regexp = "«regexp»"«ENDIF»«IF regexp.length > 0 && flags.size > 0», «ENDIF»«IF flags.size > 0»flags = {javax.validation.constraints.Pattern.Flag.«flags.toString(", javax.validation.constraints.Pattern.Flag.")»}«ENDIF» «EXPAND ValidationAnnotationBasics»)
-«ENDDEFINE»
+Â«DEFINE EmailAnnotation FOR EmailÂ»
+   @javax.validation.constraints.Email(Â«IF regexp.length > 0Â»regexp = "Â«regexpÂ»"Â«ENDIFÂ»Â«IF regexp.length > 0 && flags.size > 0Â», Â«ENDIFÂ»Â«IF flags.size > 0Â»flags = {javax.validation.constraints.Pattern.Flag.Â«flags.toString(", javax.validation.constraints.Pattern.Flag.")Â»}Â«ENDIFÂ» Â«EXPAND ValidationAnnotationBasicsÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE NotEmptyAnnotation FOR NotEmpty»
-   @javax.validation.constraints.NotEmpty(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+Â«DEFINE NotEmptyAnnotation FOR NotEmptyÂ»
+   @javax.validation.constraints.NotEmpty(Â«EXPAND ValidationAnnotationBasicsEmptyValidationÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE NullAnnotation FOR Null»
-   @javax.validation.constraints.Null(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+Â«DEFINE NullAnnotation FOR NullÂ»
+   @javax.validation.constraints.Null(Â«EXPAND ValidationAnnotationBasicsEmptyValidationÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE NotNullAnnotation FOR NotNull»
-   @javax.validation.constraints.NotNull(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+Â«DEFINE NotNullAnnotation FOR NotNullÂ»
+   @javax.validation.constraints.NotNull(Â«EXPAND ValidationAnnotationBasicsEmptyValidationÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE AssertTrueAnnotation FOR AssertTrue»
-   @javax.validation.constraints.AssertTrue(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+Â«DEFINE AssertTrueAnnotation FOR AssertTrueÂ»
+   @javax.validation.constraints.AssertTrue(Â«EXPAND ValidationAnnotationBasicsEmptyValidationÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE AssertFalseAnnotation FOR AssertFalse»
-   @javax.validation.constraints.AssertFalse(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+Â«DEFINE AssertFalseAnnotation FOR AssertFalseÂ»
+   @javax.validation.constraints.AssertFalse(Â«EXPAND ValidationAnnotationBasicsEmptyValidationÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE NotBlankAnnotation FOR NotBlank»
-   @javax.validation.constraints.NotBlank(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+Â«DEFINE NotBlankAnnotation FOR NotBlankÂ»
+   @javax.validation.constraints.NotBlank(Â«EXPAND ValidationAnnotationBasicsEmptyValidationÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE PastAnnotation FOR Past»
-   @javax.validation.constraints.Past(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+Â«DEFINE PastAnnotation FOR PastÂ»
+   @javax.validation.constraints.Past(Â«EXPAND ValidationAnnotationBasicsEmptyValidationÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE PastOrPresentAnnotation FOR PastOrPresent»
-   @javax.validation.constraints.PastOrPresent(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+Â«DEFINE PastOrPresentAnnotation FOR PastOrPresentÂ»
+   @javax.validation.constraints.PastOrPresent(Â«EXPAND ValidationAnnotationBasicsEmptyValidationÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE FutureOrPresentAnnotation FOR FutureOrPresent»
-   @javax.validation.constraints.FutureOrPresent(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+Â«DEFINE FutureOrPresentAnnotation FOR FutureOrPresentÂ»
+   @javax.validation.constraints.FutureOrPresent(Â«EXPAND ValidationAnnotationBasicsEmptyValidationÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE FutureAnnotation FOR Future»
-   @javax.validation.constraints.Future(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+Â«DEFINE FutureAnnotation FOR FutureÂ»
+   @javax.validation.constraints.Future(Â«EXPAND ValidationAnnotationBasicsEmptyValidationÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE ValidAnnotation FOR Valid -»
-   @javax.validation.Valid(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
-«ENDDEFINE»
+Â«DEFINE ValidAnnotation FOR Valid -Â»
+   @javax.validation.Valid(Â«EXPAND ValidationAnnotationBasicsEmptyValidationÂ»)
+Â«ENDDEFINEÂ»
 
-«DEFINE CustomValidationAnnotation(Stereotype stereotype) FOR Element»
-    @«getJavaAnnotatinClassForCustomValidation(stereotype.fqn())-»(
-    «FOREACH stereotype.attribute.select(e|e.name.startsWith("base_") == false) AS attribute SEPARATOR ", "-»
-	    «IF attribute.type.name == "String"-»
-		    «attribute.name» = "«this.getValue(stereotype, attribute.name)-»"
-	    «ELSEIF attribute.type.isPrimitiveType()-»
-		    «attribute.name» = «this.getValue(stereotype, attribute.name)-»
-	    «ELSEIF attribute.type.metaType.name == "uml::Enumeration" || attribute.type.metaType.name == "JMM::JEAFEnumeration"-»
-	        «attribute.name» = 
-		    «IF attribute.isMultivalued() == false-»
-			    «attribute.type.fqn()».«((EnumerationLiteral)this.getValue(stereotype, attribute.name)).name-»
-		    «ELSE-»
-			    {«FOREACH ((Collection)this.getValue(stereotype, attribute.name)) AS literal SEPARATOR ", "»«attribute.type.fqn()».«((EnumerationLiteral)literal)»«ENDFOREACH-»}
-		    «ENDIF-»
-	    «ELSE-»
-		    «attribute.name» = «this.getValue(stereotype, attribute.name)-»
-	    «ENDIF-»
-    «ENDFOREACH-»
-    «LET this.getValue(stereotype, "errorCode") AS errorCode-»
-    «LET (EnumerationLiteral)this.getValue(stereotype, "severity") AS severity-»
-	«IF errorCode > 0», message = "«errorCode»"«ENDIF» «IF severity.name != "NotUsed"», payload = com.anaptecs.jeaf.tools.api.validation.Severity.«severity.name».class«ENDIF»    
-    «ENDLET-»    
-    «ENDLET-»
+Â«DEFINE CustomValidationAnnotation(Stereotype stereotype) FOR ElementÂ»
+    @Â«getJavaAnnotatinClassForCustomValidation(stereotype.fqn())-Â»(
+    Â«FOREACH stereotype.attribute.select(e|e.name.startsWith("base_") == false) AS attribute SEPARATOR ", "-Â»
+	    Â«IF attribute.type.name == "String"-Â»
+		    Â«attribute.nameÂ» = "Â«this.getValue(stereotype, attribute.name)-Â»"
+	    Â«ELSEIF attribute.type.isPrimitiveType()-Â»
+		    Â«attribute.nameÂ» = Â«this.getValue(stereotype, attribute.name)-Â»
+	    Â«ELSEIF attribute.type.metaType.name == "uml::Enumeration" || attribute.type.metaType.name == "JMM::JEAFEnumeration"-Â»
+	        Â«attribute.nameÂ» = 
+		    Â«IF attribute.isMultivalued() == false-Â»
+			    Â«attribute.type.fqn()Â».Â«((EnumerationLiteral)this.getValue(stereotype, attribute.name)).name-Â»
+		    Â«ELSE-Â»
+			    {Â«FOREACH ((Collection)this.getValue(stereotype, attribute.name)) AS literal SEPARATOR ", "Â»Â«attribute.type.fqn()Â».Â«((EnumerationLiteral)literal)Â»Â«ENDFOREACH-Â»}
+		    Â«ENDIF-Â»
+	    Â«ELSE-Â»
+		    Â«attribute.nameÂ» = Â«this.getValue(stereotype, attribute.name)-Â»
+	    Â«ENDIF-Â»
+    Â«ENDFOREACH-Â»
+    Â«LET this.getValue(stereotype, "errorCode") AS errorCode-Â»
+    Â«LET (EnumerationLiteral)this.getValue(stereotype, "severity") AS severity-Â»
+	Â«IF errorCode > 0Â», message = "Â«errorCodeÂ»"Â«ENDIFÂ» Â«IF severity.name != "NotUsed"Â», payload = com.anaptecs.jeaf.tools.api.validation.Severity.Â«severity.nameÂ».classÂ«ENDIFÂ»    
+    Â«ENDLET-Â»    
+    Â«ENDLET-Â»
     )
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«DEFINE ValidationAnnotationBasics FOR Validation»
-«IF errorCode > 0», message = "«errorCode»"«ENDIF» «IF severity.name != "NotUsed"», payload = com.anaptecs.jeaf.tools.api.validation.Severity.«severity.name».class«ENDIF»
-«ENDDEFINE»
+Â«DEFINE ValidationAnnotationBasics FOR ValidationÂ»
+Â«IF errorCode > 0Â», message = "Â«errorCodeÂ»"Â«ENDIFÂ» Â«IF severity.name != "NotUsed"Â», payload = com.anaptecs.jeaf.tools.api.validation.Severity.Â«severity.nameÂ».classÂ«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE ValidationAnnotationBasicsEmptyValidation FOR Validation -»
-«IF errorCode > 0»message = "«errorCode»"«ENDIF» «IF errorCode > 0 && severity.name != "NotUsed"», «ENDIF» «IF severity.name != "NotUsed"»payload = com.anaptecs.jeaf.tools.api.validation.Severity.«severity.name».class«ENDIF -»
-«ENDDEFINE»
+Â«DEFINE ValidationAnnotationBasicsEmptyValidation FOR Validation -Â»
+Â«IF errorCode > 0Â»message = "Â«errorCodeÂ»"Â«ENDIFÂ» Â«IF errorCode > 0 && severity.name != "NotUsed"Â», Â«ENDIFÂ» Â«IF severity.name != "NotUsed"Â»payload = com.anaptecs.jeaf.tools.api.validation.Severity.Â«severity.nameÂ».classÂ«ENDIF -Â»
+Â«ENDDEFINEÂ»
 

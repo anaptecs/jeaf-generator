@@ -1,411 +1,411 @@
-«IMPORT uml»
-«IMPORT JMM»
-«IMPORT jeaf»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
+Â«IMPORT jeafÂ»
 
 
-«EXTENSION java::GeneratorCommons»
-«EXTENSION java::Naming»
-«EXTENSION entity::ModelProperties»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION entity::ModelPropertiesÂ»
 
 // this properties should be processed
 // for now all properties should be processed
-«DEFINE PropertyDeclaration FOR Property»
-    «IF this.association == null»
-        «EXPAND DoPropertyDeclaration»
-    «ELSE»
-        «EXPAND DoAssociationPropertyDeclaration»
-    «ENDIF»
-«ENDDEFINE»
+Â«DEFINE PropertyDeclaration FOR PropertyÂ»
+    Â«IF this.association == nullÂ»
+        Â«EXPAND DoPropertyDeclarationÂ»
+    Â«ELSEÂ»
+        Â«EXPAND DoAssociationPropertyDeclarationÂ»
+    Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
 
-«DEFINE PropertyAccessors FOR Property»
-    «IF this.association == null»
-		«IF !isStatic»
-			«EXPAND Getter»
-			«IF isReadOnly == false»
-			«EXPAND Setter»
-			«ENDIF»
-		«ENDIF»
-    «ELSE»
-        «EXPAND DoAssociationAccessors»
-    «ENDIF»
-«ENDDEFINE»
+Â«DEFINE PropertyAccessors FOR PropertyÂ»
+    Â«IF this.association == nullÂ»
+		Â«IF !isStaticÂ»
+			Â«EXPAND GetterÂ»
+			Â«IF isReadOnly == falseÂ»
+			Â«EXPAND SetterÂ»
+			Â«ENDIFÂ»
+		Â«ENDIFÂ»
+    Â«ELSEÂ»
+        Â«EXPAND DoAssociationAccessorsÂ»
+    Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
 // processing the properties
-«DEFINE DoPropertyDeclaration FOR Property»
+Â«DEFINE DoPropertyDeclaration FOR PropertyÂ»
 	/**
-	 * «this.getComment()»«IF this.defaultValue != null-» <br/><b>Default Value:</b> <code>«this.initValue()»</code>«ENDIF»«IF this.hasExample()-»«IF ((Example) this).exampleValue.length > 0-» <br/><b>Example:</b> <code>«((Example) this).exampleValue»</code>«ENDIF»«ENDIF»
+	 * Â«this.getComment()Â»Â«IF this.defaultValue != null-Â» <br/><b>Default Value:</b> <code>Â«this.initValue()Â»</code>Â«ENDIFÂ»Â«IF this.hasExample()-Â»Â«IF ((Example) this).exampleValue.length > 0-Â» <br/><b>Example:</b> <code>Â«((Example) this).exampleValueÂ»</code>Â«ENDIFÂ»Â«ENDIFÂ»
 	 */
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	«EXPAND RESTParamAnnotation»
-	«EXPAND java::Jackson::JSONAlias»
-	«EXPAND Validation::ValidationAnnotation»
-     «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == true && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»
-     «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == false && type.isPrimitiveType() == false && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
-	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false && this.isStatic == true» = «this.initValue()»«ENDIF»;
-«ENDDEFINE»
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+	Â«EXPAND RESTParamAnnotationÂ»
+	Â«EXPAND java::Jackson::JSONAliasÂ»
+	Â«EXPAND Validation::ValidationAnnotationÂ»
+     Â«IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == true && this.hasValidationStereotype() == false && lower > 0Â»@javax.validation.constraints.Size(min = Â«lowerÂ»)Â«ENDIFÂ»
+     Â«IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == false && type.isPrimitiveType() == false && this.hasValidationStereotype() == false && lower > 0Â»@javax.validation.constraints.NotNullÂ«ENDIFÂ»
+	Â«visibilityÂ» Â«IF isStaticÂ» static Â«ENDIFÂ» Â«IF isReadOnlyÂ»final Â«ENDIFÂ» Â«IF isTransient()Â»transient Â«ENDIFÂ» Â«this.fqn()Â»Â«IF isMultivalued()Â»[]Â«ENDIFÂ» Â«nameÂ»Â«IF this.isRealInitValue() && this.isMultivalued()== false && this.isStatic == trueÂ» = Â«this.initValue()Â»Â«ENDIFÂ»;
+Â«ENDDEFINEÂ»
 
 // processing the association properties
-«DEFINE DoAssociationPropertyDeclaration FOR Property»
+Â«DEFINE DoAssociationPropertyDeclaration FOR PropertyÂ»
 	/**
- 	 * «this.getComment()»
+ 	 * Â«this.getComment()Â»
 	 */
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	«IF isNavigable()»
-		«EXPAND java::Jackson::JSONAlias»
-		«EXPAND Validation::ValidationAnnotation»
-		«IF isMultivalued()»
-			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»
-			«visibility» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()» «asInstanceVar()» = new «this.getCollectionImplType()»<«type.fqn()»>();
-		«ELSE»
-			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
-			«visibility» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «type.fqn()» «asInstanceVar()»;
-		«ENDIF»
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+	Â«IF isNavigable()Â»
+		Â«EXPAND java::Jackson::JSONAliasÂ»
+		Â«EXPAND Validation::ValidationAnnotationÂ»
+		Â«IF isMultivalued()Â»
+			Â«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0Â»@javax.validation.constraints.Size(min = Â«lowerÂ»)Â«ENDIFÂ»
+			Â«visibilityÂ» Â«IF isReadOnlyÂ»final Â«ENDIFÂ» Â«IF isTransient()Â»transient Â«ENDIFÂ» Â«this.fqn()Â» Â«asInstanceVar()Â» = new Â«this.getCollectionImplType()Â»<Â«type.fqn()Â»>();
+		Â«ELSEÂ»
+			Â«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0Â»@javax.validation.constraints.NotNullÂ«ENDIFÂ»
+			Â«visibilityÂ» Â«IF isReadOnlyÂ»final Â«ENDIFÂ» Â«IF isTransient()Â»transient Â«ENDIFÂ» Â«type.fqn()Â» Â«asInstanceVar()Â»;
+		Â«ENDIFÂ»
 		
 		
-		«REM» Special handling for bi-directional associations with one transient association end«ENDREM»
-		«IF this.isTransientBidirectionalBackReference()»
+		Â«REMÂ» Special handling for bi-directional associations with one transient association endÂ«ENDREMÂ»
+		Â«IF this.isTransientBidirectionalBackReference()Â»
 		/**
 		 * Attribute is required for correct handling of bidirectional associations in case of deserialization.
 		 */
-		private transient boolean «asInstanceVar()»BackReferenceInitialized;
-		«ENDIF»
-	«ENDIF»
-«ENDDEFINE»
+		private transient boolean Â«asInstanceVar()Â»BackReferenceInitialized;
+		Â«ENDIFÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
 
-«DEFINE DoAssociationAccessors FOR Property»
-	«IF isNavigable()»
-		«IF isMultivalued()»
-			«EXPAND ToManyAccessorMethods»
-		«ELSE»
-			«EXPAND ToOneAccessorMethods»
-		«ENDIF»
-	«ENDIF»
-«ENDDEFINE»
+Â«DEFINE DoAssociationAccessors FOR PropertyÂ»
+	Â«IF isNavigable()Â»
+		Â«IF isMultivalued()Â»
+			Â«EXPAND ToManyAccessorMethodsÂ»
+		Â«ELSEÂ»
+			Â«EXPAND ToOneAccessorMethodsÂ»
+		Â«ENDIFÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
 // TODO Get and set method should be final for service objects. 
-«DEFINE Getter FOR Property»
+Â«DEFINE Getter FOR PropertyÂ»
 	/**
-	 * Method returns the attribute "«asInstanceVar()»".
-	 * «this.getComment()»
+	 * Method returns the attribute "Â«asInstanceVar()Â»".
+	 * Â«this.getComment()Â»
 	 * 
-	 * @return «type.name» Value to which the attribute "«asInstanceVar()»" is set.
+	 * @return Â«type.nameÂ» Value to which the attribute "Â«asInstanceVar()Â»" is set.
 	 */
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public «this.fqn()»«IF isMultivalued()»[]«ENDIF» «asGetter()»() {
-	    «IF this.isMultivalued() == false»return «asInstanceVar()»;«ELSE»«this.fqn()»[] lReturnValue;
-	    if(«asInstanceVar()» != null) {
-	      lReturnValue = new «this.fqn()»[«asInstanceVar()».length];
-	      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
+	Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+	public Â«this.fqn()Â»Â«IF isMultivalued()Â»[]Â«ENDIFÂ» Â«asGetter()Â»() {
+	    Â«IF this.isMultivalued() == falseÂ»return Â«asInstanceVar()Â»;Â«ELSEÂ»Â«this.fqn()Â»[] lReturnValue;
+	    if(Â«asInstanceVar()Â» != null) {
+	      lReturnValue = new Â«this.fqn()Â»[Â«asInstanceVar()Â».length];
+	      System.arraycopy(Â«asInstanceVar()Â», 0, lReturnValue, 0, Â«asInstanceVar()Â».length);
 	    }
 	    else {
 	      lReturnValue = null;
 	    }
 	    return lReturnValue;
-		«ENDIF»
+		Â«ENDIFÂ»
     }
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«DEFINE Setter FOR Property»
+Â«DEFINE Setter FOR PropertyÂ»
 	/**
-	 * Method sets the attribute "«asInstanceVar()»".
-	 * «this.getComment()»
+	 * Method sets the attribute "Â«asInstanceVar()Â»".
+	 * Â«this.getComment()Â»
 	 * 
-	 * @param «asParameter()» Value to which the attribute "«asInstanceVar()»" should be set.
+	 * @param Â«asParameter()Â» Value to which the attribute "Â«asInstanceVar()Â»" should be set.
 	 */
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public void «asSetter()»(«this.fqn()»«IF isMultivalued()»[]«ENDIF» «asParameter()») {
+	Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+	public void Â«asSetter()Â»(Â«this.fqn()Â»Â«IF isMultivalued()Â»[]Â«ENDIFÂ» Â«asParameter()Â») {
 		// Assign value to attribute
-		«IF this.isMultivalued() == false»
-			«asInstanceVar()»=«asParameter()»;
-		«ELSE»
-			if(«asParameter()» != null) {
-		      «asInstanceVar()» = new «this.fqn()»[«asParameter()».length];
-		      System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
+		Â«IF this.isMultivalued() == falseÂ»
+			Â«asInstanceVar()Â»=Â«asParameter()Â»;
+		Â«ELSEÂ»
+			if(Â«asParameter()Â» != null) {
+		      Â«asInstanceVar()Â» = new Â«this.fqn()Â»[Â«asParameter()Â».length];
+		      System.arraycopy(Â«asParameter()Â», 0, Â«asInstanceVar()Â», 0, Â«asParameter()Â».length);
 		    }
 		    else {
-		      «asInstanceVar()» = null;
+		      Â«asInstanceVar()Â» = null;
 		    }
-		«ENDIF»
+		Â«ENDIFÂ»
 	}
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«DEFINE ToOneAccessorMethods FOR Property»
+Â«DEFINE ToOneAccessorMethods FOR PropertyÂ»
     /**
-     * Method returns the association "«asInstanceVar()»".     
-     * «this.getComment()»
+     * Method returns the association "Â«asInstanceVar()Â»".     
+     * Â«this.getComment()Â»
      *
-     * @return «type.name» «this.type.name» to which the association "«asInstanceVar()»" is set.
+     * @return Â«type.nameÂ» Â«this.type.nameÂ» to which the association "Â«asInstanceVar()Â»" is set.
      */
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public «type.fqn()» «asGetter()» () {
-    «IF ((NamedElement)this.owner).isPersistentObject()»
-    «asInstanceVar()» = this.unproxy(«asInstanceVar()»);«ENDIF»
-	    «IF this.isTransientBidirectionalBackReference()»
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+	public Â«type.fqn()Â» Â«asGetter()Â» () {
+    Â«IF ((NamedElement)this.owner).isPersistentObject()Â»
+    Â«asInstanceVar()Â» = this.unproxy(Â«asInstanceVar()Â»);Â«ENDIFÂ»
+	    Â«IF this.isTransientBidirectionalBackReference()Â»
 	    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling after an object was deserialized.
-	    if («this.asInstanceVar()»BackReferenceInitialized == false) {
-	      «this.asInstanceVar()»BackReferenceInitialized = true;
-	        «IF opposite.isMultivalued() == true»
-	        «this.asInstanceVar()».addTo«opposite.name.toFirstUpper()»((«opposite.type.name»)this);
-	        «ELSE»
-		    «this.asInstanceVar()».«opposite.asSetter()»((«opposite.type.name»)this);
-		    «ENDIF»
+	    if (Â«this.asInstanceVar()Â»BackReferenceInitialized == false) {
+	      Â«this.asInstanceVar()Â»BackReferenceInitialized = true;
+	        Â«IF opposite.isMultivalued() == trueÂ»
+	        Â«this.asInstanceVar()Â».addToÂ«opposite.name.toFirstUpper()Â»((Â«opposite.type.nameÂ»)this);
+	        Â«ELSEÂ»
+		    Â«this.asInstanceVar()Â».Â«opposite.asSetter()Â»((Â«opposite.type.nameÂ»)this);
+		    Â«ENDIFÂ»
 	    }
-	    «ENDIF»
-		return «asInstanceVar()»;
+	    Â«ENDIFÂ»
+		return Â«asInstanceVar()Â»;
 	}
 	
-    «IF isReadOnly == false»
+    Â«IF isReadOnly == falseÂ»
     /**
-     * Method sets the association "«asInstanceVar()»".     
-     * «this.getComment()»
+     * Method sets the association "Â«asInstanceVar()Â»".     
+     * Â«this.getComment()Â»
      * 
-     * @param «asParameter()» «this.type.name» to which the association "«asInstanceVar()»" should be set.
+     * @param Â«asParameter()Â» Â«this.type.nameÂ» to which the association "Â«asInstanceVar()Â»" should be set.
      */
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public void «asSetter()» («type.fqn()» «asParameter()») {
-		«IF generateNullChecksForToOneAssociationsOfServiceObjects()»
-		// «asParameter()» must not be null. To unset an association the unset method has to be called.
-		com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
-		«ENDIF»
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+	public void Â«asSetter()Â» (Â«type.fqn()Â» Â«asParameter()Â») {
+		Â«IF generateNullChecksForToOneAssociationsOfServiceObjects()Â»
+		// Â«asParameter()Â» must not be null. To unset an association the unset method has to be called.
+		com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(Â«asParameter()Â», "Â«asParameter()Â»");
+		Â«ENDIFÂ»
 
-		«IF opposite != null && opposite.isNavigable() == true»
+		Â«IF opposite != null && opposite.isNavigable() == trueÂ»
 			// Release already referenced object before setting a new association.
-			if(«asInstanceVar()» != null) {
-			«IF opposite.isMultivalued() == true»
-				«asInstanceVar()».removeFrom«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
-			«ELSE»
-				«asInstanceVar()».«opposite.asUnset()»();
-			«ENDIF»
+			if(Â«asInstanceVar()Â» != null) {
+			Â«IF opposite.isMultivalued() == trueÂ»
+				Â«asInstanceVar()Â».removeFromÂ«opposite.name.toFirstUpper()Â»( (Â«opposite.type.fqn()Â») this);
+			Â«ELSEÂ»
+				Â«asInstanceVar()Â».Â«opposite.asUnset()Â»();
+			Â«ENDIFÂ»
 			}
-		«ENDIF»
+		Â«ENDIFÂ»
 
-		«asInstanceVar()» = «asParameter()»;
-	    «EXPAND GenerateInitOpposite»
+		Â«asInstanceVar()Â» = Â«asParameter()Â»;
+	    Â«EXPAND GenerateInitOppositeÂ»
 	}
 	
     /**
-     * Method unsets the association "«asInstanceVar()»".     
-     * «this.getComment()»
+     * Method unsets the association "Â«asInstanceVar()Â»".     
+     * Â«this.getComment()Â»
      */
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public final void «asUnset()» () {
-        «EXPAND GenerateRemoveOpposite»
-        «IF opposite == null || opposite.isNavigable() == false»
-          «asInstanceVar()» = null;
-        «ENDIF»
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+    public final void Â«asUnset()Â» () {
+        Â«EXPAND GenerateRemoveOppositeÂ»
+        Â«IF opposite == null || opposite.isNavigable() == falseÂ»
+          Â«asInstanceVar()Â» = null;
+        Â«ENDIFÂ»
     }
-    «ENDIF»
-«ENDDEFINE»
+    Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
 // Setter for associations
-«DEFINE ToManyAccessorMethods FOR Property»
+Â«DEFINE ToManyAccessorMethods FOR PropertyÂ»
     /**
-     * Method returns the association "«asInstanceVar()»".     
-     * «this.getComment()»
+     * Method returns the association "Â«asInstanceVar()Â»".     
+     * Â«this.getComment()Â»
      *
-     * @return Collection All «this.type.name» objects that belong to the association "«asInstanceVar()»". 
+     * @return Collection All Â«this.type.nameÂ» objects that belong to the association "Â«asInstanceVar()Â»". 
      * The method never returns null and the returned collection is unmodifiable.
      */
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public «this.fqn()» «asGetter()» () {
-	    «IF this.isTransientBidirectionalBackReference()»
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+	public Â«this.fqn()Â» Â«asGetter()Â» () {
+	    Â«IF this.isTransientBidirectionalBackReference()Â»
 	    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling after an object was deserialized.
-	    if («this.asInstanceVar()»BackReferenceInitialized == false) {
-	      «this.asInstanceVar()»BackReferenceInitialized = true;
-	      for («this.type.fqn()» lNext : «this.asInstanceVar()») {
-	        «IF opposite.isMultivalued() == true»
-	        lNext.addTo«opposite.name.toFirstUpper()»((«opposite.type.name»)this);
-	        «ELSE»
-		    lNext.«opposite.asSetter()»((«opposite.type.name»)this);
-		    «ENDIF»
+	    if (Â«this.asInstanceVar()Â»BackReferenceInitialized == false) {
+	      Â«this.asInstanceVar()Â»BackReferenceInitialized = true;
+	      for (Â«this.type.fqn()Â» lNext : Â«this.asInstanceVar()Â») {
+	        Â«IF opposite.isMultivalued() == trueÂ»
+	        lNext.addToÂ«opposite.name.toFirstUpper()Â»((Â«opposite.type.nameÂ»)this);
+	        Â«ELSEÂ»
+		    lNext.Â«opposite.asSetter()Â»((Â«opposite.type.nameÂ»)this);
+		    Â«ENDIFÂ»
 	      }
 	    }
-	    «ENDIF»
-	    // Return all «this.type.name» objects as unmodifiable collection.
-		return java.util.Collections.unmodifiable«this.getCollectionType()»(«asInstanceVar()»);
+	    Â«ENDIFÂ»
+	    // Return all Â«this.type.nameÂ» objects as unmodifiable collection.
+		return java.util.Collections.unmodifiableÂ«this.getCollectionType()Â»(Â«asInstanceVar()Â»);
 	}
 	
-    «IF isReadOnly == false»
+    Â«IF isReadOnly == falseÂ»
     /**
-     * Method sets the association "«asInstanceVar()»" to the passed collection. All objects that formerly were part of the association will be removed from it.
-     * «this.getComment()»
+     * Method sets the association "Â«asInstanceVar()Â»" to the passed collection. All objects that formerly were part of the association will be removed from it.
+     * Â«this.getComment()Â»
      * 
-     * @param «asParameter()» Collection with objects to which the association should be set. The parameter must not be null.
+     * @param Â«asParameter()Â» Collection with objects to which the association should be set. The parameter must not be null.
      */
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «IF generatePublicSettersForAssociations()»public«ENDIF» void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+    Â«IF generatePublicSettersForAssociations()Â»publicÂ«ENDIFÂ» void setÂ«name.toFirstUpper()Â»(Â«this.fqn()Â» Â«asParameter()Â») {
         // Check of parameter is not required.
         
-        // Remove all objects from association "«asInstanceVar()»".
-        this.clear«name.toFirstUpper()»();
+        // Remove all objects from association "Â«asInstanceVar()Â»".
+        this.clearÂ«name.toFirstUpper()Â»();
         
         // If the association is null, removing all entries is sufficient.
-        if(«asParameter()» != null) {
-          «asInstanceVar()» = new «this.getCollectionImplType()»<«type.fqn()»>(«asParameter()»);
+        if(Â«asParameter()Â» != null) {
+          Â«asInstanceVar()Â» = new Â«this.getCollectionImplType()Â»<Â«type.fqn()Â»>(Â«asParameter()Â»);
         }
     }
 
     /**
-     * Method adds the passed «this.type.name» object to the association "«asInstanceVar()»".     
-     * «this.getComment()»
+     * Method adds the passed Â«this.type.nameÂ» object to the association "Â«asInstanceVar()Â»".     
+     * Â«this.getComment()Â»
      * 
-     * @param «asParameter()» Object that should be added to the association "«asInstanceVar()»". The parameter must not be null.
+     * @param Â«asParameter()Â» Object that should be added to the association "Â«asInstanceVar()Â»". The parameter must not be null.
      */
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public void addTo«name.toFirstUpper()» («this.type.fqn()» «asParameter()») {
-        «IF isTargetRuntimeJEAF()»
-        // Check parameter "«asParameter()»" for invalid value null.
-        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
-        «ENDIF»
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+	public void addToÂ«name.toFirstUpper()Â» (Â«this.type.fqn()Â» Â«asParameter()Â») {
+        Â«IF isTargetRuntimeJEAF()Â»
+        // Check parameter "Â«asParameter()Â»" for invalid value null.
+        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(Â«asParameter()Â», "Â«asParameter()Â»");
+        Â«ENDIFÂ»
         
-	    «IF opposite != null && opposite.isNavigable() == true»
-	        «IF opposite.isMultivalued() == false»
+	    Â«IF opposite != null && opposite.isNavigable() == trueÂ»
+	        Â«IF opposite.isMultivalued() == falseÂ»
 	            // Since this is not a many-to-many association the association to which the passed object belongs, has to 
 	            // be released.
-	            «asParameter()».«opposite.asUnset()»();
-	        «ENDIF»
-	    «ENDIF»
+	            Â«asParameter()Â».Â«opposite.asUnset()Â»();
+	        Â«ENDIFÂ»
+	    Â«ENDIFÂ»
 	    
-		// Add passed object to collection of associated «this.type.name» objects.
-		«asInstanceVar()».add(«asParameter()»);
+		// Add passed object to collection of associated Â«this.type.nameÂ» objects.
+		Â«asInstanceVar()Â».add(Â«asParameter()Â»);
 		
-        «EXPAND GenerateInitOpposite»
+        Â«EXPAND GenerateInitOppositeÂ»
 	}
 	
     /**
-     * Method adds all passed objects to the association "«asInstanceVar()»".     
-     * «this.getComment()»
+     * Method adds all passed objects to the association "Â«asInstanceVar()Â»".     
+     * Â«this.getComment()Â»
      * 
-     * @param «asParameter()» Collection with all objects that should be added to the association "«asInstanceVar()»". The parameter must not be null.
+     * @param Â«asParameter()Â» Collection with all objects that should be added to the association "Â«asInstanceVar()Â»". The parameter must not be null.
      */
-  «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-  public void addTo«name.toFirstUpper()» (java.util.Collection<«this.type.fqn()»> «asParameter()») {
-        «IF isTargetRuntimeJEAF()»
-        // Check parameter "«asParameter()»" for invalid value null.
-        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
-        «ENDIF»
+  Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+  public void addToÂ«name.toFirstUpper()Â» (java.util.Collection<Â«this.type.fqn()Â»> Â«asParameter()Â») {
+        Â«IF isTargetRuntimeJEAF()Â»
+        // Check parameter "Â«asParameter()Â»" for invalid value null.
+        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(Â«asParameter()Â», "Â«asParameter()Â»");
+        Â«ENDIFÂ»
         
         // Add all passed objects.
-        for («this.type.fqn()» lNextObject : «asParameter()») {
-          this.addTo«name.toFirstUpper()»(lNextObject);
+        for (Â«this.type.fqn()Â» lNextObject : Â«asParameter()Â») {
+          this.addToÂ«name.toFirstUpper()Â»(lNextObject);
         }
         
   }
   
     /**
-     * Method removes the passed «this.type.name» object from the association "«asInstanceVar()»".     
-     * «this.getComment()»
+     * Method removes the passed Â«this.type.nameÂ» object from the association "Â«asInstanceVar()Â»".     
+     * Â«this.getComment()Â»
      * 
-     * @param «asParameter()» Object that should be removed from the association "«asInstanceVar()»". The parameter must not be null.
+     * @param Â«asParameter()Â» Object that should be removed from the association "Â«asInstanceVar()Â»". The parameter must not be null.
      */
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public void removeFrom«name.toFirstUpper()» («type.fqn()» «asParameter()») {
-        «IF isTargetRuntimeJEAF()»
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+	public void removeFromÂ«name.toFirstUpper()Â» (Â«type.fqn()Â» Â«asParameter()Â») {
+        Â«IF isTargetRuntimeJEAF()Â»
         // Check parameter for invalid value null.
-        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
-        «ENDIF»
+        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(Â«asParameter()Â», "Â«asParameter()Â»");
+        Â«ENDIFÂ»
 
-        // Remove passed object from collection of associated «this.type.name» objects.
-		«asInstanceVar()».remove(«asParameter()»);
+        // Remove passed object from collection of associated Â«this.type.nameÂ» objects.
+		Â«asInstanceVar()Â».remove(Â«asParameter()Â»);
 		
-		«EXPAND GenerateRemoveOpposite»
+		Â«EXPAND GenerateRemoveOppositeÂ»
 	}
 	
     /**
-     * Method removes all objects from the association "«asInstanceVar()»".
-     * «this.getComment()»
+     * Method removes all objects from the association "Â«asInstanceVar()Â»".
+     * Â«this.getComment()Â»
      */
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public void clear«name.toFirstUpper()» () {
-      // Remove all objects from association "«asInstanceVar()»".
-      java.util.Collection<«type.fqn()»> «asLocalVar()» = new java.util.HashSet<«type.fqn()»>(«asInstanceVar()»);
-      java.util.Iterator<«type.fqn()»> lIterator = «asLocalVar()».iterator();
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+    public void clearÂ«name.toFirstUpper()Â» () {
+      // Remove all objects from association "Â«asInstanceVar()Â»".
+      java.util.Collection<Â«type.fqn()Â»> Â«asLocalVar()Â» = new java.util.HashSet<Â«type.fqn()Â»>(Â«asInstanceVar()Â»);
+      java.util.Iterator<Â«type.fqn()Â»> lIterator = Â«asLocalVar()Â».iterator();
       while(lIterator.hasNext()) {
-          this.removeFrom«name.toFirstUpper()»(lIterator.next());
+          this.removeFromÂ«name.toFirstUpper()Â»(lIterator.next());
       }
     }
-    «ENDIF»
+    Â«ENDIFÂ»
     
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
 // Template generates the code that will be generated if the association is bidirectional.
-«DEFINE GenerateInitOpposite FOR Property»
-    «IF opposite != null && opposite.isNavigable() == true»
-        «IF opposite.isMultivalued() == true»
+Â«DEFINE GenerateInitOpposite FOR PropertyÂ»
+    Â«IF opposite != null && opposite.isNavigable() == trueÂ»
+        Â«IF opposite.isMultivalued() == trueÂ»
 	        // The association is set in both directions because within the UML model it is defined to be bidirectional.
 	        // In case that one side will be removed from the association the other side will also be removed.
-            if («IF generateNullChecksForToOneAssociationsOfServiceObjects() == false» «asParameter()» != null && «ENDIF»«asParameter()».get«opposite.name.toFirstUpper()»().contains(this) == false ) {
-                «asParameter()».addTo«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
+            if (Â«IF generateNullChecksForToOneAssociationsOfServiceObjects() == falseÂ» Â«asParameter()Â» != null && Â«ENDIFÂ»Â«asParameter()Â».getÂ«opposite.name.toFirstUpper()Â»().contains(this) == false ) {
+                Â«asParameter()Â».addToÂ«opposite.name.toFirstUpper()Â»( (Â«opposite.type.fqn()Â») this);
             }
-        «ELSE»
+        Â«ELSEÂ»
 	        // The association is set in both directions because within the UML model it is defined to be bidirectional.
 	        // In case that one side will be removed from the association the other side will also be removed.
-            if(«IF generateNullChecksForToOneAssociationsOfServiceObjects() == false» «asParameter()» != null && «ENDIF»this.equals(«asParameter()».get«opposite.name.toFirstUpper()»()) == false) {
-                «asParameter()».«opposite.asSetter()»( («opposite.type.fqn()») this);
+            if(Â«IF generateNullChecksForToOneAssociationsOfServiceObjects() == falseÂ» Â«asParameter()Â» != null && Â«ENDIFÂ»this.equals(Â«asParameter()Â».getÂ«opposite.name.toFirstUpper()Â»()) == false) {
+                Â«asParameter()Â».Â«opposite.asSetter()Â»( (Â«opposite.type.fqn()Â») this);
             }
-        «ENDIF»
-    «ENDIF»     
-«ENDDEFINE»
+        Â«ENDIFÂ»
+    Â«ENDIFÂ»     
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateRemoveOpposite FOR Property»
-    «IF opposite != null && opposite.isNavigable() == true»
+Â«DEFINE GenerateRemoveOpposite FOR PropertyÂ»
+    Â«IF opposite != null && opposite.isNavigable() == trueÂ»
         // The association is set in both directions because within the UML model it is defined to be bidirectional.
         // In case that one side will be removed from the association the other side will also be removed.
-        «IF isMultivalued() == true»
-            «IF opposite.isMultivalued() == true»
-                if («asParameter()».get«opposite.name.toFirstUpper()»().contains(this) == true ) {
-                    «asParameter()».removeFrom«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
+        Â«IF isMultivalued() == trueÂ»
+            Â«IF opposite.isMultivalued() == trueÂ»
+                if (Â«asParameter()Â».getÂ«opposite.name.toFirstUpper()Â»().contains(this) == true ) {
+                    Â«asParameter()Â».removeFromÂ«opposite.name.toFirstUpper()Â»( (Â«opposite.type.fqn()Â») this);
                 }
-            «ELSE»
-                if(this.equals(«asParameter()».get«opposite.name.toFirstUpper()»()) == true) {
-                    «asParameter()».«opposite.asUnset()»();
+            Â«ELSEÂ»
+                if(this.equals(Â«asParameter()Â».getÂ«opposite.name.toFirstUpper()Â»()) == true) {
+                    Â«asParameter()Â».Â«opposite.asUnset()Â»();
                 }
-            «ENDIF»
-        «ELSE»
-	        «IF opposite != null && opposite.isNavigable() == true && this.isMultivalued() == false»
-	            «type.fqn()» «type.asLocalVar()» = «asInstanceVar()»;
-	        «ENDIF»
-	        «asInstanceVar()» = null;
+            Â«ENDIFÂ»
+        Â«ELSEÂ»
+	        Â«IF opposite != null && opposite.isNavigable() == true && this.isMultivalued() == falseÂ»
+	            Â«type.fqn()Â» Â«type.asLocalVar()Â» = Â«asInstanceVar()Â»;
+	        Â«ENDIFÂ»
+	        Â«asInstanceVar()Â» = null;
         
-            «IF opposite.isMultivalued() == true»
-                if («type.asLocalVar()» != null && «type.asLocalVar()».get«opposite.name.toFirstUpper()»().contains(this) == true ) {
-                    «type.asLocalVar()».removeFrom«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
+            Â«IF opposite.isMultivalued() == trueÂ»
+                if (Â«type.asLocalVar()Â» != null && Â«type.asLocalVar()Â».getÂ«opposite.name.toFirstUpper()Â»().contains(this) == true ) {
+                    Â«type.asLocalVar()Â».removeFromÂ«opposite.name.toFirstUpper()Â»( (Â«opposite.type.fqn()Â») this);
                 }
-            «ELSE»
-                if(«type.asLocalVar()» != null && this.equals(«type.asLocalVar()».get«opposite.name.toFirstUpper()»()) == true) {
-                    «type.asLocalVar()».«opposite.asUnset()»();
+            Â«ELSEÂ»
+                if(Â«type.asLocalVar()Â» != null && this.equals(Â«type.asLocalVar()Â».getÂ«opposite.name.toFirstUpper()Â»()) == true) {
+                    Â«type.asLocalVar()Â».Â«opposite.asUnset()Â»();
                 }
-            «ENDIF»
-        «ENDIF»
-    «ENDIF»     
-«ENDDEFINE»
+            Â«ENDIFÂ»
+        Â«ENDIFÂ»
+    Â«ENDIFÂ»     
+Â«ENDDEFINEÂ»
 
 
 //copies the attributes from the businessobject to the transferobject
-«DEFINE CopyAttributeToTransfer FOR Property»«IF !isReadOnly»lTransferObject.«asSetter()»(this.«asGetter()»());«ENDIF»«ENDDEFINE»
-«DEFINE CopyAttributeToBusiness FOR Property»«IF !isReadOnly»lPersistentObject.«asSetter()»(this.«asGetter()»());«ENDIF»«ENDDEFINE»
+Â«DEFINE CopyAttributeToTransfer FOR PropertyÂ»Â«IF !isReadOnlyÂ»lTransferObject.Â«asSetter()Â»(this.Â«asGetter()Â»());Â«ENDIFÂ»Â«ENDDEFINEÂ»
+Â«DEFINE CopyAttributeToBusiness FOR PropertyÂ»Â«IF !isReadOnlyÂ»lPersistentObject.Â«asSetter()Â»(this.Â«asGetter()Â»());Â«ENDIFÂ»Â«ENDDEFINEÂ»
 
-«DEFINE RESTParamAnnotation FOR Property»
-  «IF generateJAXRSAnnotations() == true -»
-  «IF this.isStereotypeApplied("PathParam") -»
-  @javax.ws.rs.PathParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
-  «ENDIF-»
-  «IF this.isStereotypeApplied("HeaderParam") -»
-  @javax.ws.rs.HeaderParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
-  «ENDIF-»
-  «IF this.isStereotypeApplied("QueryParam") -»
-  @javax.ws.rs.QueryParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
-  «ENDIF-»
-  «IF this.isStereotypeApplied("CookieParam") -»
-  @javax.ws.rs.CookieParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
-  «ENDIF-»
-  «IF this.isStereotypeApplied("BeanParam") -»
+Â«DEFINE RESTParamAnnotation FOR PropertyÂ»
+  Â«IF generateJAXRSAnnotations() == true -Â»
+  Â«IF this.isStereotypeApplied("PathParam") -Â»
+  @javax.ws.rs.PathParam("Â«EXPAND java::OpenAPI::RESTParamName FOR thisÂ»")
+  Â«ENDIF-Â»
+  Â«IF this.isStereotypeApplied("HeaderParam") -Â»
+  @javax.ws.rs.HeaderParam("Â«EXPAND java::OpenAPI::RESTParamName FOR thisÂ»")
+  Â«ENDIF-Â»
+  Â«IF this.isStereotypeApplied("QueryParam") -Â»
+  @javax.ws.rs.QueryParam("Â«EXPAND java::OpenAPI::RESTParamName FOR thisÂ»")
+  Â«ENDIF-Â»
+  Â«IF this.isStereotypeApplied("CookieParam") -Â»
+  @javax.ws.rs.CookieParam("Â«EXPAND java::OpenAPI::RESTParamName FOR thisÂ»")
+  Â«ENDIF-Â»
+  Â«IF this.isStereotypeApplied("BeanParam") -Â»
   @javax.ws.rs.BeanParam 
-  «ENDIF-»
-  «IF this.type.isStereotypeApplied("BeanParam") -»
+  Â«ENDIF-Â»
+  Â«IF this.type.isStereotypeApplied("BeanParam") -Â»
   @javax.ws.rs.BeanParam
-  «ENDIF-»
-  «ENDIF-»
-«ENDDEFINE»
+  Â«ENDIF-Â»
+  Â«ENDIF-Â»
+Â«ENDDEFINEÂ»

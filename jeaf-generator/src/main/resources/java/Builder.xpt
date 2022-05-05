@@ -1,52 +1,52 @@
-«EXTENSION java::Naming»
-«EXTENSION java::ObjectMapper»
-«EXTENSION java::GeneratorCommons»
-«EXTENSION java::Naming»
-«EXTENSION entity::ModelProperties»
-«IMPORT uml»
-«IMPORT JMM»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::ObjectMapperÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION entity::ModelPropertiesÂ»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
 
-«DEFINE GenerateBuilder(String idImpl) FOR uml::Class»
+Â«DEFINE GenerateBuilder(String idImpl) FOR uml::ClassÂ»
 /**
- * Class implements builder to create a new instance of class «this.name». As the class has read only attributes or associations instances can not be created directly. Instead this builder class has to be used.
+ * Class implements builder to create a new instance of class Â«this.nameÂ». As the class has read only attributes or associations instances can not be created directly. Instead this builder class has to be used.
  */
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF superClass.isEmpty == false»extends «superClass.get(0).fqn()».Builder«ENDIF» {
-	«REM»Generate instance variables for each property«ENDREM»
-	«IF needsToImplementIdentifiable() == true»
+Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+public static Â«IF isAbstract == trueÂ» abstract Â«ENDIFÂ»class Builder Â«IF superClass.isEmpty == falseÂ»extends Â«superClass.get(0).fqn()Â».BuilderÂ«ENDIFÂ» {
+	Â«REMÂ»Generate instance variables for each propertyÂ«ENDREMÂ»
+	Â«IF needsToImplementIdentifiable() == trueÂ»
 	/**
 	 * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
 	 */
 	private com.anaptecs.jeaf.xfun.api.common.ObjectIdentity<?> objectID;
-	«ENDIF»
-	«FOREACH this.ownedAttribute AS attr»
-	«EXPAND BuilderPropertyDeclaration FOR attr»
-	«ENDFOREACH»
+	Â«ENDIFÂ»
+	Â«FOREACH this.ownedAttribute AS attrÂ»
+	Â«EXPAND BuilderPropertyDeclaration FOR attrÂ»
+	Â«ENDFOREACHÂ»
 
     /**
      * Use {@link #newBuilder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
-      «IF superClass.isEmpty == false»super();«ENDIF»
+      Â«IF superClass.isEmpty == falseÂ»super();Â«ENDIFÂ»
     }
 
     /**
-     * Use {@link #newBuilder(«this.name»)} instead of private constructor to create new builder.
+     * Use {@link #newBuilder(Â«this.nameÂ»)} instead of private constructor to create new builder.
      */
-    protected Builder( «this.name» pObject ) {
-      «IF superClass.isEmpty == false»super(pObject);«ENDIF»
+    protected Builder( Â«this.nameÂ» pObject ) {
+      Â«IF superClass.isEmpty == falseÂ»super(pObject);Â«ENDIFÂ»
       if (pObject != null) {
         // Read attribute values from passed object.
-		«IF needsToImplementIdentifiable() == true»
+		Â«IF needsToImplementIdentifiable() == trueÂ»
 		objectID = pObject.objectID;
-		«ENDIF»
-        «FOREACH this.ownedAttribute AS attr»
-        «IF attr.isStatic == false»«attr.name» = pObject.«attr.name»;«ENDIF»
-        «ENDFOREACH»
+		Â«ENDIFÂ»
+        Â«FOREACH this.ownedAttribute AS attrÂ»
+        Â«IF attr.isStatic == falseÂ»Â«attr.nameÂ» = pObject.Â«attr.nameÂ»;Â«ENDIFÂ»
+        Â«ENDFOREACHÂ»
       }
     }
 
-   «IF isAbstract == false»
+   Â«IF isAbstract == falseÂ»
     /**
      * Method returns a new builder.
      * 
@@ -60,15 +60,15 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF superCla
      * Method creates a new builder and initialize it with the data from the passed object.
      * 
      * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new «this.name» objects. The method never
+     * @return {@link Builder} New builder that can be used to create new Â«this.nameÂ» objects. The method never
      * returns null.
      */
-    public static Builder newBuilder( «this.name» pObject ) {
+    public static Builder newBuilder( Â«this.nameÂ» pObject ) {
       return new Builder(pObject);
     }
-    «ENDIF»
+    Â«ENDIFÂ»
 
-	«IF needsToImplementIdentifiable() == true»
+	Â«IF needsToImplementIdentifiable() == trueÂ»
 	/**
 	 * Method sets the identifier for the object created using the builder. The reference may be null since an id is not mandatory.
 	 */
@@ -76,7 +76,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF superCla
 		objectID = pObjectID;
 		return this;
 	}	
-	«ELSE»«IF implementsIdentifiable() == true»
+	Â«ELSEÂ»Â«IF implementsIdentifiable() == trueÂ»
 	/**
 	 * Method sets the identifier for the object created using the builder. The reference may be null since an id is not mandatory.
 	 */
@@ -85,89 +85,89 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF superCla
 		super.setID(pObjectID);
 		return this;
 	}
-	«ENDIF»«ENDIF»	
+	Â«ENDIFÂ»Â«ENDIFÂ»	
 	
-	«REM»Overwritte setters for each property of super class with this Builder class as return type.«ENDREM»
-	«IF this.superClass.isEmpty == false»
-		«FOREACH this.superClass.getAllAttributes() AS superAttr»
-			«EXPAND OverwriteBuilderSetterFromBaseClasses("Builder") FOR superAttr»
-		«ENDFOREACH»
-	«ENDIF»
+	Â«REMÂ»Overwritte setters for each property of super class with this Builder class as return type.Â«ENDREMÂ»
+	Â«IF this.superClass.isEmpty == falseÂ»
+		Â«FOREACH this.superClass.getAllAttributes() AS superAttrÂ»
+			Â«EXPAND OverwriteBuilderSetterFromBaseClasses("Builder") FOR superAttrÂ»
+		Â«ENDFOREACHÂ»
+	Â«ENDIFÂ»
 	
-	«REM»Generate setters for each property of the builder«ENDREM»
-	«FOREACH this.ownedAttribute AS attr»
-		«EXPAND BuilderSetter("Builder") FOR attr»
-	«ENDFOREACH»
+	Â«REMÂ»Generate setters for each property of the builderÂ«ENDREMÂ»
+	Â«FOREACH this.ownedAttribute AS attrÂ»
+		Â«EXPAND BuilderSetter("Builder") FOR attrÂ»
+	Â«ENDFOREACHÂ»
 	
-	«IF this.isAbstract == false»
+	Â«IF this.isAbstract == falseÂ»
 	/**
-	 * Method creates a new instance of class «this.name». The object will be initialized with the values of the
+	 * Method creates a new instance of class Â«this.nameÂ». The object will be initialized with the values of the
 	 * builder.
 	 * 
-	 * @return «this.name» Created object. The method never returns null.
+	 * @return Â«this.nameÂ» Created object. The method never returns null.
 	 */
-	public «this.name» build( ) {
-	  return new «this.name»(this);
+	public Â«this.nameÂ» build( ) {
+	  return new Â«this.nameÂ»(this);
 	}
 
-	«IF isTargetRuntimeJEAF()»
+	Â«IF isTargetRuntimeJEAF()Â»
 	/**
-	 * Method creates a new validated instance of class «this.name». The object will be initialized with the values of the
+	 * Method creates a new validated instance of class Â«this.nameÂ». The object will be initialized with the values of the
 	 * builder and validated afterwards.
 	 * 
-	 * @return «this.name» Created and validated object. The method never returns null.
+	 * @return Â«this.nameÂ» Created and validated object. The method never returns null.
 	 * @throws ConstraintViolationException in case that one or more validations for the created object failed.
 	 */
-	public «this.name» buildValidated( ) throws javax.validation.ConstraintViolationException {
-      «this.name» lPOJO = this.build();
+	public Â«this.nameÂ» buildValidated( ) throws javax.validation.ConstraintViolationException {
+      Â«this.nameÂ» lPOJO = this.build();
       com.anaptecs.jeaf.tools.api.Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
 	}
-	«ENDIF»
-	«ENDIF»
+	Â«ENDIFÂ»
+	Â«ENDIFÂ»
 }
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateBuilderBase(String idImpl) FOR uml::Class»
+Â«DEFINE GenerateBuilderBase(String idImpl) FOR uml::ClassÂ»
 /**
- * Class implements builder to create a new instance of class «this.name». As the class has read only attributes or associations instances can not be created directly. Instead this builder class has to be used.
+ * Class implements builder to create a new instance of class Â«this.nameÂ». As the class has read only attributes or associations instances can not be created directly. Instead this builder class has to be used.
  */
-public static abstract class BuilderBase «IF superClass.isEmpty == false»extends «superClass.get(0).fqn()».Builder«ENDIF» {
-	«REM»Generate instance variables for each property«ENDREM»
-	«IF needsToImplementIdentifiable() == true»
+public static abstract class BuilderBase Â«IF superClass.isEmpty == falseÂ»extends Â«superClass.get(0).fqn()Â».BuilderÂ«ENDIFÂ» {
+	Â«REMÂ»Generate instance variables for each propertyÂ«ENDREMÂ»
+	Â«IF needsToImplementIdentifiable() == trueÂ»
 	/**
 	 * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
 	 */
 	private com.anaptecs.jeaf.xfun.api.common.ObjectIdentity<?> objectID;
-	«ENDIF»
-	«FOREACH this.ownedAttribute AS attr»
-	«EXPAND BuilderPropertyDeclaration FOR attr»
-	«ENDFOREACH»
+	Â«ENDIFÂ»
+	Â«FOREACH this.ownedAttribute AS attrÂ»
+	Â«EXPAND BuilderPropertyDeclaration FOR attrÂ»
+	Â«ENDFOREACHÂ»
 
     /**
-     * Use {@link «this.name».Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link Â«this.nameÂ».Builder#newBuilder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
-      «IF superClass.isEmpty == false && superClass.get(0).hasReadOnlyProperties()== true»super();«ENDIF»
+      Â«IF superClass.isEmpty == false && superClass.get(0).hasReadOnlyProperties()== trueÂ»super();Â«ENDIFÂ»
     }
 
     /**
-     * Use {@link «this.name».Builder#newBuilder(«this.name»)} instead of protected constructor to create new builder.
+     * Use {@link Â«this.nameÂ».Builder#newBuilder(Â«this.nameÂ»)} instead of protected constructor to create new builder.
      */
-    protected BuilderBase( «this.name»Base pObject ) {
-      «IF superClass.isEmpty == false && superClass.get(0).hasReadOnlyProperties()== true»super(pObject);«ENDIF»
+    protected BuilderBase( Â«this.nameÂ»Base pObject ) {
+      Â«IF superClass.isEmpty == false && superClass.get(0).hasReadOnlyProperties()== trueÂ»super(pObject);Â«ENDIFÂ»
       if (pObject != null) {
         // Read attribute values from passed object.
-		«IF needsToImplementIdentifiable() == true»
+		Â«IF needsToImplementIdentifiable() == trueÂ»
 		objectID = pObject.objectID;
-		«ENDIF»
-        «FOREACH this.ownedAttribute AS attr»
-        «IF attr.isStatic == false»«attr.name» = pObject.«attr.name»;«ENDIF»
-        «ENDFOREACH»
+		Â«ENDIFÂ»
+        Â«FOREACH this.ownedAttribute AS attrÂ»
+        Â«IF attr.isStatic == falseÂ»Â«attr.nameÂ» = pObject.Â«attr.nameÂ»;Â«ENDIFÂ»
+        Â«ENDFOREACHÂ»
       }
     }
 
-	«IF needsToImplementIdentifiable() == true»
+	Â«IF needsToImplementIdentifiable() == trueÂ»
 	/**
 	 * Method sets the identifier for the object created using the builder. The reference may be null since an id is not mandatory.
 	 */
@@ -175,7 +175,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»extends
 		objectID = pObjectID;
 		return this;
 	}
-	«ELSE»«IF implementsIdentifiable() == true»
+	Â«ELSEÂ»Â«IF implementsIdentifiable() == trueÂ»
 	/**
 	 * Method sets the identifier for the object created using the builder. The reference may be null since an id is not mandatory.
 	 */
@@ -184,208 +184,208 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»extends
 		super.setID(pObjectID);
 		return this;
 	}
-	«ENDIF»«ENDIF»
+	Â«ENDIFÂ»Â«ENDIFÂ»
 	
-	«REM»Overwritte setters for each property of super class with this Builder class as return type.«ENDREM»
-	«IF this.superClass.isEmpty == false»
-		«FOREACH this.superClass.getAllAttributes() AS superAttr»
-			«EXPAND OverwriteBuilderSetterFromBaseClasses("BuilderBase") FOR superAttr»
-		«ENDFOREACH»
-	«ENDIF»
+	Â«REMÂ»Overwritte setters for each property of super class with this Builder class as return type.Â«ENDREMÂ»
+	Â«IF this.superClass.isEmpty == falseÂ»
+		Â«FOREACH this.superClass.getAllAttributes() AS superAttrÂ»
+			Â«EXPAND OverwriteBuilderSetterFromBaseClasses("BuilderBase") FOR superAttrÂ»
+		Â«ENDFOREACHÂ»
+	Â«ENDIFÂ»
 	
-	«REM»Generate setters for each property of the builder«ENDREM»
-	«FOREACH this.ownedAttribute AS attr»
-	«EXPAND BuilderSetter("BuilderBase") FOR attr»
-	«ENDFOREACH»
+	Â«REMÂ»Generate setters for each property of the builderÂ«ENDREMÂ»
+	Â«FOREACH this.ownedAttribute AS attrÂ»
+	Â«EXPAND BuilderSetter("BuilderBase") FOR attrÂ»
+	Â«ENDFOREACHÂ»
 	
-	«IF this.isAbstract == false»
+	Â«IF this.isAbstract == falseÂ»
 	/**
-	 * Method creates a new instance of class «this.name». The object will be initialized with the values of the
+	 * Method creates a new instance of class Â«this.nameÂ». The object will be initialized with the values of the
 	 * builder.
 	 * 
-	 * @return «this.name» Created object. The method never returns null.
+	 * @return Â«this.nameÂ» Created object. The method never returns null.
 	 */
-	public «this.name» build( ) {
-	  return new «this.name»(this);
+	public Â«this.nameÂ» build( ) {
+	  return new Â«this.nameÂ»(this);
 	}
 
-	«IF isTargetRuntimeJEAF()»
+	Â«IF isTargetRuntimeJEAF()Â»
 	/**
-	 * Method creates a new validated instance of class «this.name». The object will be initialized with the values of the
+	 * Method creates a new validated instance of class Â«this.nameÂ». The object will be initialized with the values of the
 	 * builder and validated afterwards.
 	 * 
-	 * @return «this.name» Created and validated object. The method never returns null.
+	 * @return Â«this.nameÂ» Created and validated object. The method never returns null.
 	 * @throws ConstraintViolationException in case that one or more validations for the created object failed.
 	 */
-	public «this.name» buildValidated( ) throws javax.validation.ConstraintViolationException {
-      «this.name» lPOJO = this.build();
+	public Â«this.nameÂ» buildValidated( ) throws javax.validation.ConstraintViolationException {
+      Â«this.nameÂ» lPOJO = this.build();
       com.anaptecs.jeaf.tools.api.Tools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
 	}
-	«ENDIF»
-	«ENDIF»
+	Â«ENDIFÂ»
+	Â«ENDIFÂ»
 }
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«DEFINE BuilderPropertyDeclaration FOR Property»
-    «IF this.isStatic == false»
+Â«DEFINE BuilderPropertyDeclaration FOR PropertyÂ»
+    Â«IF this.isStatic == falseÂ»
 	    /**
-	     * «this.getComment()»
+	     * Â«this.getComment()Â»
 	     */
-	    «IF this.association == null»
-	        «EXPAND DoBuilderPropertyDeclaration»
-	    «ELSE»
-	        «EXPAND DoBuilderAssociationPropertyDeclaration»
-	    «ENDIF»
-    «ENDIF»
-«ENDDEFINE»
+	    Â«IF this.association == nullÂ»
+	        Â«EXPAND DoBuilderPropertyDeclarationÂ»
+	    Â«ELSEÂ»
+	        Â«EXPAND DoBuilderAssociationPropertyDeclarationÂ»
+	    Â«ENDIFÂ»
+    Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
 
 // processing the properties
-«DEFINE DoBuilderPropertyDeclaration FOR Property»
-	«EXPAND Validation::ValidationAnnotation»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	private «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumeration()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
-«ENDDEFINE»
+Â«DEFINE DoBuilderPropertyDeclaration FOR PropertyÂ»
+	Â«EXPAND Validation::ValidationAnnotationÂ»
+	Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+	private Â«this.fqn()Â»Â«IF isMultivalued()Â»[]Â«ENDIFÂ» Â«nameÂ»Â«IF this.isRealInitValue() && this.isMultivalued()== false Â» = Â«IF this.isJEAFEnumeration()Â»Â«this.type.nameÂ».Â«ENDIFÂ»Â«this.initValue()Â»Â«ENDIFÂ»;
+Â«ENDDEFINEÂ»
 
-«DEFINE DoBuilderAssociationPropertyDeclaration FOR Property»
-	«IF isNavigable()»
-		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-		«IF isMultivalued()»
-			private «this.fqn()» «asInstanceVar()»;
-		«ELSE»
-			private «type.fqn()» «asInstanceVar()»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumeration()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
-		«ENDIF»
-	«ENDIF»
-«ENDDEFINE»
+Â«DEFINE DoBuilderAssociationPropertyDeclaration FOR PropertyÂ»
+	Â«IF isNavigable()Â»
+		Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+		Â«IF isMultivalued()Â»
+			private Â«this.fqn()Â» Â«asInstanceVar()Â»;
+		Â«ELSEÂ»
+			private Â«type.fqn()Â» Â«asInstanceVar()Â»Â«IF this.isRealInitValue() && this.isMultivalued()== false Â» = Â«IF this.isJEAFEnumeration()Â»Â«this.type.nameÂ».Â«ENDIFÂ»Â«this.initValue()Â»Â«ENDIFÂ»;
+		Â«ENDIFÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE BuilderSetter(String builderClassName) FOR Property»
-    «IF this.isStatic == false»
-	    «IF this.association == null»
-	        «EXPAND CreateBuilderPropertySetter(builderClassName)»
-	    «ELSE»
-	        «EXPAND CreateBuilderAssociationSetter(builderClassName)»
-	    «ENDIF»
-    «ENDIF»
-«ENDDEFINE»
+Â«DEFINE BuilderSetter(String builderClassName) FOR PropertyÂ»
+    Â«IF this.isStatic == falseÂ»
+	    Â«IF this.association == nullÂ»
+	        Â«EXPAND CreateBuilderPropertySetter(builderClassName)Â»
+	    Â«ELSEÂ»
+	        Â«EXPAND CreateBuilderAssociationSetter(builderClassName)Â»
+	    Â«ENDIFÂ»
+    Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE CreateBuilderPropertySetter(String builderClassName) FOR Property»
+Â«DEFINE CreateBuilderPropertySetter(String builderClassName) FOR PropertyÂ»
 	/**
-	 * Method sets the attribute "«asInstanceVar()»". «this.getComment()»
+	 * Method sets the attribute "Â«asInstanceVar()Â»". Â«this.getComment()Â»
 	 * 
-	 * @param «asParameter()» Value to which the attribute "«asInstanceVar()»" should be set.
+	 * @param Â«asParameter()Â» Value to which the attribute "Â«asInstanceVar()Â»" should be set.
 	 */
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public «builderClassName» «asSetter()»(«this.fqn()»«IF isMultivalued()»[]«ENDIF» «asParameter()») {
+	Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+	public Â«builderClassNameÂ» Â«asSetter()Â»(Â«this.fqn()Â»Â«IF isMultivalued()Â»[]Â«ENDIFÂ» Â«asParameter()Â») {
 		// Assign value to attribute
-		«IF this.isMultivalued() == false»
-			«asInstanceVar()»=«asParameter()»;
-		«ELSE»
-			if(«asParameter()» != null) {
-			«asInstanceVar()» = new «this.fqn()»[«asParameter()».length];
-			System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
+		Â«IF this.isMultivalued() == falseÂ»
+			Â«asInstanceVar()Â»=Â«asParameter()Â»;
+		Â«ELSEÂ»
+			if(Â«asParameter()Â» != null) {
+			Â«asInstanceVar()Â» = new Â«this.fqn()Â»[Â«asParameter()Â».length];
+			System.arraycopy(Â«asParameter()Â», 0, Â«asInstanceVar()Â», 0, Â«asParameter()Â».length);
 			}
 			else {
-			«asInstanceVar()» = null;
+			Â«asInstanceVar()Â» = null;
 			}
-		«ENDIF»
+		Â«ENDIFÂ»
 		return this;
 	}
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«DEFINE CreateBuilderAssociationSetter(String builderClassName) FOR Property»
-	«IF isNavigable()»
-		«IF isMultivalued()»
+Â«DEFINE CreateBuilderAssociationSetter(String builderClassName) FOR PropertyÂ»
+	Â«IF isNavigable()Â»
+		Â«IF isMultivalued()Â»
 			/**
-			 * Method sets the association "«asInstanceVar()»". «this.getComment()»
+			 * Method sets the association "Â«asInstanceVar()Â»". Â«this.getComment()Â»
 			 * 
-			 * @param «asParameter()» Collection with objects to which the association should be set.
+			 * @param Â«asParameter()Â» Collection with objects to which the association should be set.
 			 */
-			«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-			public «builderClassName» set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
+			Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+			public Â«builderClassNameÂ» setÂ«name.toFirstUpper()Â»(Â«this.fqn()Â» Â«asParameter()Â») {
 			    // To ensure immutability we have to copy the content of the passed collection.
-			    if(«asParameter()» != null) {
-			      «asInstanceVar()» = new «this.getCollectionImplType()»<«type.fqn()»>(«asParameter()»);
+			    if(Â«asParameter()Â» != null) {
+			      Â«asInstanceVar()Â» = new Â«this.getCollectionImplType()Â»<Â«type.fqn()Â»>(Â«asParameter()Â»);
 			    }
 			    else {
-			      «asInstanceVar()» = null;
+			      Â«asInstanceVar()Â» = null;
 			    }
 			    return this;
 			}
-		«ELSE»
+		Â«ELSEÂ»
 			/**
-			 * Method sets the association "«asInstanceVar()»". «this.getComment()»
+			 * Method sets the association "Â«asInstanceVar()Â»". Â«this.getComment()Â»
 			 * 
-			 * @param «asParameter()» «this.type.name» to which the association "«asInstanceVar()»" should be set.
+			 * @param Â«asParameter()Â» Â«this.type.nameÂ» to which the association "Â«asInstanceVar()Â»" should be set.
 			 */
-			public «builderClassName» «asSetter()» («type.fqn()» «asParameter()») {
-				«asInstanceVar()» = «asParameter()»;
+			public Â«builderClassNameÂ» Â«asSetter()Â» (Â«type.fqn()Â» Â«asParameter()Â») {
+				Â«asInstanceVar()Â» = Â«asParameter()Â»;
 				return this;
 			}
-		«ENDIF»
-	«ENDIF»
-«ENDDEFINE»
+		Â«ENDIFÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE OverwriteBuilderSetterFromBaseClasses(String builderClassName) FOR Property»
-    «IF this.isStatic == false»
-	    «IF this.association == null»
-	        «EXPAND OverwriteBuilderPropertySetter(builderClassName)»
-	    «ELSE»
-	        «EXPAND OverwriteBuilderAssociationSetter(builderClassName)»
-	    «ENDIF»
-    «ENDIF»
-«ENDDEFINE»
+Â«DEFINE OverwriteBuilderSetterFromBaseClasses(String builderClassName) FOR PropertyÂ»
+    Â«IF this.isStatic == falseÂ»
+	    Â«IF this.association == nullÂ»
+	        Â«EXPAND OverwriteBuilderPropertySetter(builderClassName)Â»
+	    Â«ELSEÂ»
+	        Â«EXPAND OverwriteBuilderAssociationSetter(builderClassName)Â»
+	    Â«ENDIFÂ»
+    Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE OverwriteBuilderPropertySetter(String builderClassName) FOR Property»
+Â«DEFINE OverwriteBuilderPropertySetter(String builderClassName) FOR PropertyÂ»
 	/**
-	 * Method sets the attribute "«asInstanceVar()»". «this.getComment()»
+	 * Method sets the attribute "Â«asInstanceVar()Â»". Â«this.getComment()Â»
 	 * 
-	 * @param «asParameter()» Value to which the attribute "«asInstanceVar()»" should be set.
+	 * @param Â«asParameter()Â» Value to which the attribute "Â«asInstanceVar()Â»" should be set.
 	 */
 	@Override
-	public «builderClassName» «asSetter()»(«this.fqn()»«IF isMultivalued()»[]«ENDIF» «asParameter()») {
+	public Â«builderClassNameÂ» Â«asSetter()Â»(Â«this.fqn()Â»Â«IF isMultivalued()Â»[]Â«ENDIFÂ» Â«asParameter()Â») {
 		// Call super class implementation.
-		super.«asSetter()»(«asParameter()»);
+		super.Â«asSetter()Â»(Â«asParameter()Â»);
 		return this;
 	}
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«DEFINE OverwriteBuilderAssociationSetter(String builderClassName) FOR Property»
-	«IF isNavigable()»
-		«IF isMultivalued()»
+Â«DEFINE OverwriteBuilderAssociationSetter(String builderClassName) FOR PropertyÂ»
+	Â«IF isNavigable()Â»
+		Â«IF isMultivalued()Â»
 			/**
-			 * Method sets the association "«asInstanceVar()»". «this.getComment()»
+			 * Method sets the association "Â«asInstanceVar()Â»". Â«this.getComment()Â»
 			 * 
-			 * @param «asParameter()» Collection with objects to which the association should be set.
+			 * @param Â«asParameter()Â» Collection with objects to which the association should be set.
 			 */
 			@Override
-			public «builderClassName» set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
+			public Â«builderClassNameÂ» setÂ«name.toFirstUpper()Â»(Â«this.fqn()Â» Â«asParameter()Â») {
 				// Call super class implementation.
-				super.set«name.toFirstUpper()»(«asParameter()»);
+				super.setÂ«name.toFirstUpper()Â»(Â«asParameter()Â»);
 				return this;
 			}
-		«ELSE»
+		Â«ELSEÂ»
 			/**
-			 * Method sets the association "«asInstanceVar()»". «this.getComment()»
+			 * Method sets the association "Â«asInstanceVar()Â»". Â«this.getComment()Â»
 			 * 
-			 * @param «asParameter()» «this.type.name» to which the association "«asInstanceVar()»" should be set.
+			 * @param Â«asParameter()Â» Â«this.type.nameÂ» to which the association "Â«asInstanceVar()Â»" should be set.
 			 */
 			@Override
-			public «builderClassName» «asSetter()» («type.fqn()» «asParameter()») {
+			public Â«builderClassNameÂ» Â«asSetter()Â» (Â«type.fqn()Â» Â«asParameter()Â») {
 				// Call super class implementation.
-				super.«asSetter()»(«asParameter()»);
+				super.Â«asSetter()Â»(Â«asParameter()Â»);
 				return this;
 			}
-		«ENDIF»
-	«ENDIF»
-«ENDDEFINE»
+		Â«ENDIFÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateBuilderImpl FOR uml::Class»
+Â«DEFINE GenerateBuilderImpl FOR uml::ClassÂ»
 	/**
-	 * Class implements builder to create a new instance of class «this.name». As the class has readonly attributes
+	 * Class implements builder to create a new instance of class Â«this.nameÂ». As the class has readonly attributes
 	 * or associations instances can not be created directly. Instead this builder class has to be used.
 	 */
-	public static class Builder extends «this.name».BuilderBase {
+	public static class Builder extends Â«this.nameÂ».BuilderBase {
 	  /**
 	   * Use {@link #newBuilder()} instead of protected constructor to create new builder.
 	   */
@@ -393,9 +393,9 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»extends
 	  }
 	
 	  /**
-	   * Use {@link #newBuilder(«this.name»)} instead of protected constructor to create new builder.
+	   * Use {@link #newBuilder(Â«this.nameÂ»)} instead of protected constructor to create new builder.
 	   */
-	  protected Builder( «this.name» pObject ) {
+	  protected Builder( Â«this.nameÂ» pObject ) {
 	    super(pObject);
 	  }
 	
@@ -415,8 +415,8 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»extends
 	   * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
 	   * returns null.
 	   */
-	  public static Builder newBuilder( «this.name» pObject ) {
+	  public static Builder newBuilder( Â«this.nameÂ» pObject ) {
 	    return new Builder(pObject);
 	  }
 	}
-«ENDDEFINE»
+Â«ENDDEFINEÂ»

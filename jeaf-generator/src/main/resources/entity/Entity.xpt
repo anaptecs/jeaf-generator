@@ -1,14 +1,14 @@
-«EXTENSION java::Naming»
-«EXTENSION java::GeneratorCommons»
-«EXTENSION entity::ModelProperties»
-«IMPORT uml»
-«IMPORT JMM»
-«IMPORT java»
-«IMPORT entity»
-«IMPORT jeaf»
-«EXTENSION org::openarchitectureware::util::stdlib::io»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION entity::ModelPropertiesÂ»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
+Â«IMPORT javaÂ»
+Â«IMPORT entityÂ»
+Â«IMPORT jeafÂ»
+Â«EXTENSION org::openarchitectureware::util::stdlib::ioÂ»
 
-«DEFINE PersistentClass FOR PersistentObject»
+Â«DEFINE PersistentClass FOR PersistentObjectÂ»
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -17,96 +17,96 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	«FILE packagePath() + "/" + this.getBOBaseName() +".java" GenBase»
+	Â«FILE packagePath() + "/" + this.getBOBaseName() +".java" GenBaseÂ»
 	
-		package «packageName()»;
+		package Â«packageName()Â»;
 		
-	  «IF this.hasMultivaluedAssociation()»
-	  «ENDIF»
+	  Â«IF this.hasMultivaluedAssociation()Â»
+	  Â«ENDIFÂ»
 		import java.util.List;
 		
-        «IF superClass.isEmpty»import com.anaptecs.jeaf.spi.persistence.PersistentObject; «ENDIF»
+        Â«IF superClass.isEmptyÂ»import com.anaptecs.jeaf.spi.persistence.PersistentObject; Â«ENDIFÂ»
         import com.anaptecs.jeaf.spi.persistence.ClassID;
         
-			«this.getJavadoc()»
-			«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-			public abstract class «this.getBOBaseName()» «IF !superClass.isEmpty»extends «superClass.get(0).fqn()» «ELSE»extends PersistentObject«ENDIF» {
+			Â«this.getJavadoc()Â»
+			Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+			public abstract class Â«this.getBOBaseName()Â» Â«IF !superClass.isEmptyÂ»extends Â«superClass.get(0).fqn()Â» Â«ELSEÂ»extends PersistentObjectÂ«ENDIFÂ» {
 			
 			/**
 			 * The class id is a unique id within the domain model of an application for every business object class.
 			 */
-			public static final ClassID CLASS_ID = ClassID.createClassID(«classID», «this.getBOName()».class);
+			public static final ClassID CLASS_ID = ClassID.createClassID(Â«classIDÂ», Â«this.getBOName()Â».class);
 			
-            «IF superClass.isEmpty»
+            Â«IF superClass.isEmptyÂ»
             /**
              * Name of the database table that is used to store the data of objects of this class. 
              */
-            public static final String TABLE_NAME = "«IF table.length > 0»«table»«ELSE»«name.toUpperCase()»«ENDIF»";
-            «ENDIF»
+            public static final String TABLE_NAME = "Â«IF table.length > 0Â»Â«tableÂ»Â«ELSEÂ»Â«name.toUpperCase()Â»Â«ENDIFÂ»";
+            Â«ENDIFÂ»
             
-            «REM»Generate constants for all attributes«ENDREM»
-            «IF generateConstantsForAttributeNames() == true»
-            «FOREACH this.ownedAttribute AS attr»
-              «IF attr.isStereotypeApplied("Field") == true»
+            Â«REMÂ»Generate constants for all attributesÂ«ENDREMÂ»
+            Â«IF generateConstantsForAttributeNames() == trueÂ»
+            Â«FOREACH this.ownedAttribute AS attrÂ»
+              Â«IF attr.isStereotypeApplied("Field") == trueÂ»
               /**
-               * Constant for the name of the row that is used to store the values of attribute "«attr.name»".
+               * Constant for the name of the row that is used to store the values of attribute "Â«attr.nameÂ»".
                */
-              «EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr -»
-              public static final String «attr.asInstanceVar().toUpperCase()»_ROW = "«attr.asInstanceVar().toUpperCase()»";
+              Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr -Â»
+              public static final String Â«attr.asInstanceVar().toUpperCase()Â»_ROW = "Â«attr.asInstanceVar().toUpperCase()Â»";
               
               /**
-               * Constant for the name of attribute "«attr.name»".
+               * Constant for the name of attribute "Â«attr.nameÂ»".
                */
-              «EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr -»
-              public static final String «attr.asInstanceVar().toUpperCase()»_ATTRIBUTE = "«attr.asInstanceVar()»";
-              «ENDIF»
-            «ENDFOREACH»
+              Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr -Â»
+              public static final String Â«attr.asInstanceVar().toUpperCase()Â»_ATTRIBUTE = "Â«attr.asInstanceVar()Â»";
+              Â«ENDIFÂ»
+            Â«ENDFOREACHÂ»
             
-            «REM»Generate constants for all attributes«ENDREM»
-            «FOREACH this.ownedAttribute AS attr»
-              «IF attr.isStereotypeApplied("Role") == true»
+            Â«REMÂ»Generate constants for all attributesÂ«ENDREMÂ»
+            Â«FOREACH this.ownedAttribute AS attrÂ»
+              Â«IF attr.isStereotypeApplied("Role") == trueÂ»
               /**
-               * Constant for the name of role "«attr.name»".
+               * Constant for the name of role "Â«attr.nameÂ»".
                */
-              «EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr -»
-              public static final String «attr.asInstanceVar().toUpperCase()»_ROLE = "«attr.asInstanceVar()»";
-              «ENDIF»
-            «ENDFOREACH»
-            «ENDIF»
+              Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr -Â»
+              public static final String Â«attr.asInstanceVar().toUpperCase()Â»_ROLE = "Â«attr.asInstanceVar()Â»";
+              Â«ENDIFÂ»
+            Â«ENDFOREACHÂ»
+            Â«ENDIFÂ»
             
-		«EXPAND java::Attribute::PropertyDeclaration FOREACH this.ownedAttribute»
+		Â«EXPAND java::Attribute::PropertyDeclaration FOREACH this.ownedAttributeÂ»
 
 		    /**
 		     * Initialize object. The constructor of the class has visibility protected in order to avoid creating 
 		     * business objects not through JEAFs persistence service provider.
 		     */
-		    protected «this.getBOBaseName()»( ) {
-			  «IF this.requiresAttributeInitValue() == false»
+		    protected Â«this.getBOBaseName()Â»( ) {
+			  Â«IF this.requiresAttributeInitValue() == falseÂ»
 			  // Nothing to do.
-		  	  «ENDIF»
-			  «FOREACH this.ownedAttribute AS attr»
-				  «IF attr.isReadOnly == true && attr.isStatic == false»
-					  «IF attr.type.isPrimitiveType() == true»
-						  «IF attr.isMultivalued() == false»
-							  «IF attr.isRealInitValue()»
-							  «attr.name» = «attr.initValue()»;
-							  «ELSE»
-							  «attr.name» = «attr.getPrimitiveDefaultValue()»;
-							  «ENDIF»
-						  «ELSE»
-						  	  «attr.name» = null;
-						  «ENDIF»
-					  «ELSE»
-						  «IF attr.isMultivalued() == false»
-						  «attr.name» = null;
-						  «ENDIF»
-					  «ENDIF»
-				  «ELSE»
-					  «IF attr.isRealInitValue() && attr.isStatic == false »
-                          «attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
-					  «ENDIF»
-				  «ENDIF»
-			  «ENDFOREACH»
+		  	  Â«ENDIFÂ»
+			  Â«FOREACH this.ownedAttribute AS attrÂ»
+				  Â«IF attr.isReadOnly == true && attr.isStatic == falseÂ»
+					  Â«IF attr.type.isPrimitiveType() == trueÂ»
+						  Â«IF attr.isMultivalued() == falseÂ»
+							  Â«IF attr.isRealInitValue()Â»
+							  Â«attr.nameÂ» = Â«attr.initValue()Â»;
+							  Â«ELSEÂ»
+							  Â«attr.nameÂ» = Â«attr.getPrimitiveDefaultValue()Â»;
+							  Â«ENDIFÂ»
+						  Â«ELSEÂ»
+						  	  Â«attr.nameÂ» = null;
+						  Â«ENDIFÂ»
+					  Â«ELSEÂ»
+						  Â«IF attr.isMultivalued() == falseÂ»
+						  Â«attr.nameÂ» = null;
+						  Â«ENDIFÂ»
+					  Â«ENDIFÂ»
+				  Â«ELSEÂ»
+					  Â«IF attr.isRealInitValue() && attr.isStatic == false Â»
+                          Â«attr.nameÂ» = Â«IF attr.isJEAFEnumeration()Â»Â«attr.type.nameÂ».Â«ENDIFÂ»Â«attr.initValue()Â»;
+					  Â«ENDIFÂ»
+				  Â«ENDIFÂ»
+			  Â«ENDFOREACHÂ»
 		    }
 			
 			  /**
@@ -114,12 +114,12 @@
 			   * 
 			   * @return {@link List} List with all objects of this class. The method never returns null.
 			   */
-			  public static List<«this.getBOName()»> findAll«this.getBOName()»s( ) {
-			    return com.anaptecs.jeaf.spi.persistence.PersistentObject.getPersistenceServiceProvider().findAll(«this.getBOName()».class);
+			  public static List<Â«this.getBOName()Â»> findAllÂ«this.getBOName()Â»s( ) {
+			    return com.anaptecs.jeaf.spi.persistence.PersistentObject.getPersistenceServiceProvider().findAll(Â«this.getBOName()Â».class);
 			  }
 
-		«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
-		«EXPAND JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
+		Â«EXPAND Attribute::PropertyAccessors FOREACH ownedAttributeÂ»
+		Â«EXPAND JEAFOperation::PersistentObjectOperation FOREACH ownedOperationÂ»
 		
 	    /**
 	     * Method returns the class id of this business object class.
@@ -130,7 +130,7 @@
 	        return CLASS_ID;
 	    }
 	} 
-	«ENDFILE»
+	Â«ENDFILEÂ»
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -139,26 +139,26 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	«FILE packagePath() + "/" + this.getBOName() + ".java" GenOnce»
+	Â«FILE packagePath() + "/" + this.getBOName() + ".java" GenOnceÂ»
 	
-		package «packageName()»;
+		package Â«packageName()Â»;
 		
-		«this.getJavadoc()»
-		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-		public «IF this.isAbstract»abstract«ENDIF» class «this.getBOName()» extends «this.getBOBaseName()» {
+		Â«this.getJavadoc()Â»
+		Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+		public Â«IF this.isAbstractÂ»abstractÂ«ENDIFÂ» class Â«this.getBOName()Â» extends Â«this.getBOBaseName()Â» {
             /**
              * Initialize object. The constructor of the class has visibility protected in order to avoid creating 
              * business objects not through JEAFs persistence service provider.
              */
-            protected «this.getBOName()»( ) {
+            protected Â«this.getBOName()Â»( ) {
               // Nothing to do.
             }
             
-	      «EXPAND JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperation»
+	      Â«EXPAND JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperationÂ»
 		}
 		
 		 
-	«ENDFILE»
+	Â«ENDFILEÂ»
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -168,79 +168,79 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	«IF superClass.isEmpty»
+	Â«IF superClass.isEmptyÂ»
 	
-		«FILE packagePath() + "/" + this.getBOName() + ".hbm.xml" GenRes-»
+		Â«FILE packagePath() + "/" + this.getBOName() + ".hbm.xml" GenRes-Â»
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-		<!-- Hibernate mapping for class «this.fqn()» -->«IF this.getSubclasses().typeSelect(PersistentObject).size > 0 -»
-		<!-- and its subclasses «FOREACH this.getSubclasses().typeSelect(PersistentObject) AS subclass SEPARATOR ", "»«subclass.name»«ENDFOREACH» -->«ENDIF»    
-		<hibernate-mapping package="«this.packageName()»">
-		    <class name="«this.name»" table="«IF table.length > 0»«table»«ELSE»«name.toUpperCase()»«ENDIF»" discriminator-value="«classID»">
-		    	<id column="«getOIDRowName()»" name="objectID" length="15"/>
+		<!-- Hibernate mapping for class Â«this.fqn()Â» -->Â«IF this.getSubclasses().typeSelect(PersistentObject).size > 0 -Â»
+		<!-- and its subclasses Â«FOREACH this.getSubclasses().typeSelect(PersistentObject) AS subclass SEPARATOR ", "Â»Â«subclass.nameÂ»Â«ENDFOREACHÂ» -->Â«ENDIFÂ»    
+		<hibernate-mapping package="Â«this.packageName()Â»">
+		    <class name="Â«this.nameÂ»" table="Â«IF table.length > 0Â»Â«tableÂ»Â«ELSEÂ»Â«name.toUpperCase()Â»Â«ENDIFÂ»" discriminator-value="Â«classIDÂ»">
+		    	<id column="Â«getOIDRowName()Â»" name="objectID" length="15"/>
 		    	<discriminator column="CLASS_ID" type="integer"/>
-	    		<version column="«getVersionLabelRowName()»" name="versionLabel"/>	    		
-                «EXPAND PropertyMapping::PropertyMapping FOREACH ownedElement-»
-                «EXPAND AssociationMapping::AssociationMapping FOREACH ownedElement-»
-                «EXPAND InheritanceMapping::SubclassMapping FOREACH this.getSubclasses().typeSelect(PersistentObject) -»                
+	    		<version column="Â«getVersionLabelRowName()Â»" name="versionLabel"/>	    		
+                Â«EXPAND PropertyMapping::PropertyMapping FOREACH ownedElement-Â»
+                Â«EXPAND AssociationMapping::AssociationMapping FOREACH ownedElement-Â»
+                Â«EXPAND InheritanceMapping::SubclassMapping FOREACH this.getSubclasses().typeSelect(PersistentObject) -Â»                
 		    </class>
 		</hibernate-mapping> 
-		«ENDFILE»
-	«ENDIF»
-«ENDDEFINE»
+		Â«ENDFILEÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerateManagedClassesAnnotation FOR Package»
-	«IF this.hasPersistentClasses()»
-		«FILE packagePath() + "/" + "Mappings.java" GenBase»
-		package «packageName()»;
+Â«DEFINE GenerateManagedClassesAnnotation FOR PackageÂ»
+	Â«IF this.hasPersistentClasses()Â»
+		Â«FILE packagePath() + "/" + "Mappings.java" GenBaseÂ»
+		package Â«packageName()Â»;
 
 		import com.anaptecs.jeaf.spi.persistence.annotations.MappingFiles;
 		
-		@MappingFiles(mappingFiles = { «FOREACH this.getPersistentClassesMappingFileNames() AS fileName SEPARATOR ", "»"«fileName»"«ENDFOREACH» })
+		@MappingFiles(mappingFiles = { Â«FOREACH this.getPersistentClassesMappingFileNames() AS fileName SEPARATOR ", "Â»"Â«fileNameÂ»"Â«ENDFOREACHÂ» })
 		public interface Mappings {
 		}
-		«ENDFILE»
-	«ENDIF»
-«ENDDEFINE»
+		Â«ENDFILEÂ»
+	Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE GeneratePersistenceUnit FOR PersistenceUnit»
-	«IF this.clientDependency.supplier.typeSelect(Package).size > 0»
-	«ELSE»
-		«error("Warning: PersistenceUnit " + this.name + " does not refernece any package with persistent objects. Class will not be generated.")»
-	«ENDIF»
-	«FILE packagePath() + "/" + name+ ".java" GenBase»
-	package «packageName()»;
+Â«DEFINE GeneratePersistenceUnit FOR PersistenceUnitÂ»
+	Â«IF this.clientDependency.supplier.typeSelect(Package).size > 0Â»
+	Â«ELSEÂ»
+		Â«error("Warning: PersistenceUnit " + this.name + " does not refernece any package with persistent objects. Class will not be generated.")Â»
+	Â«ENDIFÂ»
+	Â«FILE packagePath() + "/" + name+ ".java" GenBaseÂ»
+	package Â«packageName()Â»;
 	
 	/**
 	 * Persistence unit contains persistent classes of the following packages: 
-	 * <ul>«FOREACH this.clientDependency.supplier.typeSelect(Package).sortBy(e|e.packageName()) AS package SEPARATOR ""»
-	 * <li>«package.packageName()»</li>«ENDFOREACH»
+	 * <ul>Â«FOREACH this.clientDependency.supplier.typeSelect(Package).sortBy(e|e.packageName()) AS package SEPARATOR ""Â»
+	 * <li>Â«package.packageName()Â»</li>Â«ENDFOREACHÂ»
 	 * </ul>
 	 */
 	@com.anaptecs.jeaf.spi.persistence.annotations.PersistenceUnit(
-		name="«name»", 
-		mappingFilesDefinition = {«FOREACH this.clientDependency.supplier.typeSelect(Package).sortBy(e|e.fqn()) AS package SEPARATOR ", "»«package.packageName()».Mappings.class «ENDFOREACH»},
-		showSQL= «EXPAND GenerationMode(this.showSQL.name, "showSQL") FOR this»,
-		formatSQL = «EXPAND GenerationMode(this.formatSQL.name, "formatSQL") FOR this»)
-	public interface «name» {
+		name="Â«nameÂ»", 
+		mappingFilesDefinition = {Â«FOREACH this.clientDependency.supplier.typeSelect(Package).sortBy(e|e.fqn()) AS package SEPARATOR ", "Â»Â«package.packageName()Â».Mappings.class Â«ENDFOREACHÂ»},
+		showSQL= Â«EXPAND GenerationMode(this.showSQL.name, "showSQL") FOR thisÂ»,
+		formatSQL = Â«EXPAND GenerationMode(this.formatSQL.name, "formatSQL") FOR thisÂ»)
+	public interface Â«nameÂ» {
 	}
-	«ENDFILE»
-«ENDDEFINE»
+	Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
-«DEFINE GenerationMode(String configMode, String propertyName) FOR PersistenceUnit-»
-	«IF configMode == "TRUE"»"true"«ELSE»
-		«IF configMode == "FALSE"-»"false"
-		«ELSE-»
-			«IF configMode == "GLOBAL_PROPERTY"-»
-			"{jeaf.persistence.«propertyName»}"
-			«ELSE-»
-				«IF configMode == "INDIVIDUAL_PROPERTY"»
-				"{jeaf.persistence.«this.name».«propertyName»}"
-				«ELSE-»
-					«ERROR "Internal Error in JEAF Generator: Unexpected literal " + configMode +" for enumeration ConfigurationMode found"-»
-				«ENDIF-»
-			«ENDIF-»
-		«ENDIF-»
-	«ENDIF-»
-«ENDDEFINE»
+Â«DEFINE GenerationMode(String configMode, String propertyName) FOR PersistenceUnit-Â»
+	Â«IF configMode == "TRUE"Â»"true"Â«ELSEÂ»
+		Â«IF configMode == "FALSE"-Â»"false"
+		Â«ELSE-Â»
+			Â«IF configMode == "GLOBAL_PROPERTY"-Â»
+			"{jeaf.persistence.Â«propertyNameÂ»}"
+			Â«ELSE-Â»
+				Â«IF configMode == "INDIVIDUAL_PROPERTY"Â»
+				"{jeaf.persistence.Â«this.nameÂ».Â«propertyNameÂ»}"
+				Â«ELSE-Â»
+					Â«ERROR "Internal Error in JEAF Generator: Unexpected literal " + configMode +" for enumeration ConfigurationMode found"-Â»
+				Â«ENDIF-Â»
+			Â«ENDIF-Â»
+		Â«ENDIF-Â»
+	Â«ENDIF-Â»
+Â«ENDDEFINEÂ»

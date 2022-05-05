@@ -1,28 +1,28 @@
-«IMPORT uml»
-«IMPORT JMM»
-«EXTENSION java::OpenAPIFunctions»
-«EXTENSION org::openarchitectureware::util::stdlib::io»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
+Â«EXTENSION java::OpenAPIFunctionsÂ»
+Â«EXTENSION org::openarchitectureware::util::stdlib::ioÂ»
 
-«DEFINE Responses(OpenAPI3Specification spec) FOR RESTOperation -»
-    «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIResponse) AS response -»
-      «EXPAND Responses(spec, this) FOR response -»
-    «ENDFOREACH -»
-    «IF hasCustomResponse(spec) == true -»
-        «EXPAND Responses(spec, this) FOREACH getCustomResponses(spec) -» 
-    «ELSE -»
-        «EXPAND Responses(spec, this) FOREACH getGlobalDefaultErrorResponses(spec.getModel()) -» 
-    «ENDIF -»
-«ENDDEFINE»
+Â«DEFINE Responses(OpenAPI3Specification spec) FOR RESTOperation -Â»
+    Â«FOREACH this.clientDependency.supplier.typeSelect(OpenAPIResponse) AS response -Â»
+      Â«EXPAND Responses(spec, this) FOR response -Â»
+    Â«ENDFOREACH -Â»
+    Â«IF hasCustomResponse(spec) == true -Â»
+        Â«EXPAND Responses(spec, this) FOREACH getCustomResponses(spec) -Â» 
+    Â«ELSE -Â»
+        Â«EXPAND Responses(spec, this) FOREACH getGlobalDefaultErrorResponses(spec.getModel()) -Â» 
+    Â«ENDIF -Â»
+Â«ENDDEFINEÂ»
 
-«DEFINE Responses(OpenAPI3Specification spec, RESTOperation operation) FOR OpenAPIResponse -»
-	«IF this.isResponseApplicable(operation) -»
-	«FOREACH this.statusCodes.sortBy(e|e) AS errorCode-»
-        '«errorCode.getErrorCode()»':
-          $ref: «this.getResponseType(spec)»
-	«ENDFOREACH-»
-    «IF this.unexpectedErrorResponse == true-»
+Â«DEFINE Responses(OpenAPI3Specification spec, RESTOperation operation) FOR OpenAPIResponse -Â»
+	Â«IF this.isResponseApplicable(operation) -Â»
+	Â«FOREACH this.statusCodes.sortBy(e|e) AS errorCode-Â»
+        'Â«errorCode.getErrorCode()Â»':
+          $ref: Â«this.getResponseType(spec)Â»
+	Â«ENDFOREACH-Â»
+    Â«IF this.unexpectedErrorResponse == true-Â»
         'default':
-          $ref: «this.getResponseType(spec)»
-	«ENDIF -»
-	«ENDIF-»
-«ENDDEFINE»
+          $ref: Â«this.getResponseType(spec)Â»
+	Â«ENDIF -Â»
+	Â«ENDIF-Â»
+Â«ENDDEFINEÂ»

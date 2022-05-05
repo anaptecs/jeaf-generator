@@ -1,43 +1,43 @@
-«EXTENSION java::Naming»
-«EXTENSION java::GeneratorCommons»
-«EXTENSION entity::ModelProperties»
-«IMPORT uml»
-«IMPORT JMM»
-«IMPORT java»
-«IMPORT entity»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION entity::ModelPropertiesÂ»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
+Â«IMPORT javaÂ»
+Â«IMPORT entityÂ»
 
-«DEFINE JEAFServiceTemplate FOR JEAFService»
-«ENDDEFINE»
+Â«DEFINE JEAFServiceTemplate FOR JEAFServiceÂ»
+Â«ENDDEFINEÂ»
 //*********************************************************\\
 //*********************************************************\\
 //********** the interface ********************************\\
 //*********************************************************\\
 //*********************************************************\\
-«DEFINE JEAFServiceInterface FOR JEAFService»
-«FILE packagePath()+"/"+name+".java" GenBase»
-«getFileHeader()»
-package «packageName()»;
+Â«DEFINE JEAFServiceInterface FOR JEAFServiceÂ»
+Â«FILE packagePath()+"/"+name+".java" GenBaseÂ»
+Â«getFileHeader()Â»
+package Â«packageName()Â»;
 
-«this.getJavadoc()»
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-public interface «name» «IF generalization.size > 0»extends «this.getAllExtendedInterfaces()» «ELSE»«IF isTargetRuntimeJEAF()»extends com.anaptecs.jeaf.core.api.Service«ENDIF»«ENDIF» {
-  «EXPAND JEAFOperation::InterfaceOperation FOREACH ownedOperation»
+Â«this.getJavadoc()Â»
+Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+public interface Â«nameÂ» Â«IF generalization.size > 0Â»extends Â«this.getAllExtendedInterfaces()Â» Â«ELSEÂ»Â«IF isTargetRuntimeJEAF()Â»extends com.anaptecs.jeaf.core.api.ServiceÂ«ENDIFÂ»Â«ENDIFÂ» {
+  Â«EXPAND JEAFOperation::InterfaceOperation FOREACH ownedOperationÂ»
 }
-«ENDFILE»
-«ENDDEFINE»
+Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 //*********************************************************\\
 //*********************************************************\\
 //********** the service proxy ****************************\\
 //*********************************************************\\
 //*********************************************************\\
-«DEFINE JEAFServiceProxy FOR JEAFService»
-«IF this.isAbstract == false»
-«FILE packagePath()+"/"+name+"Proxy.java" GenBase»
-«getFileHeader()»
-package «packageName()»;
+Â«DEFINE JEAFServiceProxy FOR JEAFServiceÂ»
+Â«IF this.isAbstract == falseÂ»
+Â«FILE packagePath()+"/"+name+"Proxy.java" GenBaseÂ»
+Â«getFileHeader()Â»
+package Â«packageName()Â»;
 
 import com.anaptecs.jeaf.core.servicechannel.api.ServiceProxy;
-«IF this.getAllOperations().size > 0»
+Â«IF this.getAllOperations().size > 0Â»
 import java.lang.reflect.Method;
 import java.io.Serializable;
 
@@ -48,13 +48,13 @@ import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 import com.anaptecs.jeaf.xfun.api.XFun;
-«ENDIF»
+Â«ENDIFÂ»
 
 /**
- * ServiceProxy class for JEAF service «name». 
+ * ServiceProxy class for JEAF service Â«nameÂ». 
  */
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-public final class «name»Proxy extends ServiceProxy implements «name» «IF generalization.size > 0», «this.getAllExtendedInterfaces()»«ENDIF» {
+Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+public final class Â«nameÂ»Proxy extends ServiceProxy implements Â«nameÂ» Â«IF generalization.size > 0Â», Â«this.getAllExtendedInterfaces()Â»Â«ENDIFÂ» {
   /**
    * Serial version uid for the proxy class.
    */
@@ -65,59 +65,59 @@ public final class «name»Proxy extends ServiceProxy implements «name» «IF genera
    *
    * @param pTransactionBehavior Definition of transactional behavior. The Parameter must not be null.
    */
-  public «name»Proxy(com.anaptecs.jeaf.core.spi.TransactionBehavior pTransactionBehavior) {
-    super(«name».class, pTransactionBehavior);
+  public Â«nameÂ»Proxy(com.anaptecs.jeaf.core.spi.TransactionBehavior pTransactionBehavior) {
+    super(Â«nameÂ».class, pTransactionBehavior);
   }
 
-«EXPAND CommandOperation FOREACH this.getAllOperations()»
+Â«EXPAND CommandOperation FOREACH this.getAllOperations()Â»
 
 }
-«EXPAND CommandClass ( this ) FOREACH this.getAllOperations()»
+Â«EXPAND CommandClass ( this ) FOREACH this.getAllOperations()Â»
 
-«ENDFILE»
-«ENDIF»
-«ENDDEFINE»
+Â«ENDFILEÂ»
+Â«ENDIFÂ»
+Â«ENDDEFINEÂ»
 
 //command methods are returned
-«DEFINE CommandOperation FOR Operation»
+Â«DEFINE CommandOperation FOR OperationÂ»
     /**
-     * Generated proxy implementation for method "«name»".
+     * Generated proxy implementation for method "Â«nameÂ»".
      *  
-     * «getComment()»
+     * Â«getComment()Â»
      */
-    «IF this.returnResult().isMultivalued().first() == true»@SuppressWarnings("unchecked")«ENDIF» 
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
-    «visibility» «getReturnTypeName()» «name» («EXPAND JEAFOperation::ParameterSignature») «getThrownExceptionsAsString()» {
+    Â«IF this.returnResult().isMultivalued().first() == trueÂ»@SuppressWarnings("unchecked")Â«ENDIFÂ» 
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+    Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -Â»
+    Â«visibilityÂ» Â«getReturnTypeName()Â» Â«nameÂ» (Â«EXPAND JEAFOperation::ParameterSignatureÂ») Â«getThrownExceptionsAsString()Â» {
         try {
-            Command lCommand = new «this.getCommandClassName()»(«asParameterListNames()»);
-            «IF getReturnTypeName() != "void"»
-            return («this.getReturnTypeName()») this.executeCommand(lCommand);
-            «ELSE»
+            Command lCommand = new Â«this.getCommandClassName()Â»(Â«asParameterListNames()Â»);
+            Â«IF getReturnTypeName() != "void"Â»
+            return (Â«this.getReturnTypeName()Â») this.executeCommand(lCommand);
+            Â«ELSEÂ»
             this.executeCommand(lCommand);
-            «ENDIF»
-        }«IF this.getThrownExceptionsAsList() != null»
-            «FOREACH getThrownExceptionsAsList().typeSelect(String) AS exception»
-                catch («exception» e) {         
+            Â«ENDIFÂ»
+        }Â«IF this.getThrownExceptionsAsList() != nullÂ»
+            Â«FOREACH getThrownExceptionsAsList().typeSelect(String) AS exceptionÂ»
+                catch (Â«exceptionÂ» e) {         
                 throw e;
             }
-            «ENDFOREACH»
-        «ENDIF»
+            Â«ENDFOREACHÂ»
+        Â«ENDIFÂ»
         catch (com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException e) {
             throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
         }
     }
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
 
 //Class for stereotype OperationS with tagged value ThrowsExceptions
-«DEFINE CommandClass ( JMM::JEAFService  targetService) FOR Operation»
+Â«DEFINE CommandClass ( JMM::JEAFService  targetService) FOR OperationÂ»
 /**
- * Generated command class for service method "«name»".
+ * Generated command class for service method "Â«nameÂ»".
  */
  
-«REM»final class «name.toFirstUpper()»_«interface.name»_Command extends Command {«ENDREM»
-final class «this.getCommandClassName()» extends Command {
+Â«REMÂ»final class Â«name.toFirstUpper()Â»_Â«interface.nameÂ»_Command extends Command {Â«ENDREMÂ»
+final class Â«this.getCommandClassName()Â» extends Command {
     /**
      * Default serial version uid.
      */
@@ -144,35 +144,35 @@ final class «this.getCommandClassName()» extends Command {
      */
     static {
       try {
-        SERVICE_METHOD = «targetService.name».class.getMethod("«this.name»"«IF this.ownedParameter.size > 1», «this.getParameterTypeNames()»«ENDIF»);
+        SERVICE_METHOD = Â«targetService.nameÂ».class.getMethod("Â«this.nameÂ»"Â«IF this.ownedParameter.size > 1Â», Â«this.getParameterTypeNames()Â»Â«ENDIFÂ»);
       }
       catch (NoSuchMethodException e) {
-        throw new JEAFSystemException(com.anaptecs.jeaf.core.api.MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, «targetService.name».class.getName(), "«this.name»(«this.getParameterTypeNames()»)");
+        throw new JEAFSystemException(com.anaptecs.jeaf.core.api.MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, Â«targetService.nameÂ».class.getName(), "Â«this.nameÂ»(Â«this.getParameterTypeNames()Â»)");
       }
     }
 
-    «FOREACH ownedParameter AS param»
-    «IF param.isInputParameter()»
+    Â«FOREACH ownedParameter AS paramÂ»
+    Â«IF param.isInputParameter()Â»
         /**
-         * Attribute transports the method parameter "«param.name»" to the service implementation via the service 
+         * Attribute transports the method parameter "Â«param.nameÂ»" to the service implementation via the service 
          * channel.
          */
-        private final «param.getTypeName()» «param.fromParameterToInstance()»;
-    «ENDIF»
-    «ENDFOREACH»
+        private final Â«param.getTypeName()Â» Â«param.fromParameterToInstance()Â»;
+    Â«ENDIFÂ»
+    Â«ENDFOREACHÂ»
 
   /**
-   * Initialize object. All parameters from method "«name»" have to be passed as parameters to this command object.
+   * Initialize object. All parameters from method "Â«nameÂ»" have to be passed as parameters to this command object.
    * 
-   «asParameterJavaDoc()»
+   Â«asParameterJavaDoc()Â»
    */    
-  «this.getCommandClassName()»(«EXPAND JEAFOperation::ParameterSignature») {
-    super(«targetService.name».class);
-        «FOREACH ownedParameter AS param»
-            «IF param.isInputParameter()»
-                «param.fromParameterToInstance()» = «param.name»;«ENDIF»
-        «ENDFOREACH»
-        parameters = new Object[]{«asParameterListInstanceNames()»};
+  Â«this.getCommandClassName()Â»(Â«EXPAND JEAFOperation::ParameterSignatureÂ») {
+    super(Â«targetService.nameÂ».class);
+        Â«FOREACH ownedParameter AS paramÂ»
+            Â«IF param.isInputParameter()Â»
+                Â«param.fromParameterToInstance()Â» = Â«param.nameÂ»;Â«ENDIFÂ»
+        Â«ENDFOREACHÂ»
+        parameters = new Object[]{Â«asParameterListInstanceNames()Â»};
   }
   
   /**
@@ -186,17 +186,17 @@ final class «this.getCommandClassName()» extends Command {
    * methods also may return null as return value.
    */
   @Override
-  «visibility» Serializable execute(Service pTargetService)«getThrownExceptionsAsString()» {
+  Â«visibilityÂ» Serializable execute(Service pTargetService)Â«getThrownExceptionsAsString()Â» {
     // Execute service call.
-     «targetService.name» lService = («targetService.name») pTargetService;
+     Â«targetService.nameÂ» lService = (Â«targetService.nameÂ») pTargetService;
      
     // Trace service call.
     Trace lTrace = XFun.getTrace();
     lTrace.write(com.anaptecs.jeaf.core.api.MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod() );
     
-    «IF getReturnTypeName() != "void"»
+    Â«IF getReturnTypeName() != "void"Â»
     long lStartTime = System.nanoTime();
-    Serializable lResult = (Serializable) lService.«name»(«asParameterListInstanceNames()»);
+    Serializable lResult = (Serializable) lService.Â«nameÂ»(Â«asParameterListInstanceNames()Â»);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
 
@@ -204,9 +204,9 @@ final class «this.getCommandClassName()» extends Command {
     lTrace.write(com.anaptecs.jeaf.core.api.MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
     
     return lResult;
-    «ELSE»
+    Â«ELSEÂ»
     long lStartTime = System.nanoTime();
-    lService.«name»(«asParameterListInstanceNames()»);
+    lService.Â«nameÂ»(Â«asParameterListInstanceNames()Â»);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
 
@@ -215,7 +215,7 @@ final class «this.getCommandClassName()» extends Command {
     
     // Method has no return type thus the method returns null.
     return null;
-    «ENDIF»
+    Â«ENDIFÂ»
   }
   
   /**
@@ -239,4 +239,4 @@ final class «this.getCommandClassName()» extends Command {
     return parameters;
   }
 }
-«ENDDEFINE»
+Â«ENDDEFINEÂ»

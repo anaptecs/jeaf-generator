@@ -1,20 +1,20 @@
-«IMPORT uml»
-«IMPORT JMM»
-«EXTENSION java::GeneratorCommons»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
 
-«DEFINE AuthorizationTypes FOR Model»
-  «FILE "AuthorizationData.xml" GenRes»<?xml version='1.0' encoding='UTF-8' standalone="yes"?>
+Â«DEFINE AuthorizationTypes FOR ModelÂ»
+  Â«FILE "AuthorizationData.xml" GenResÂ»<?xml version='1.0' encoding='UTF-8' standalone="yes"?>
   <Root>
-    «FOREACH this.getAllAuthorizationTypes() AS authType»<AuthorizationType name="«authType»"/>«ENDFOREACH»
+    Â«FOREACH this.getAllAuthorizationTypes() AS authTypeÂ»<AuthorizationType name="Â«authTypeÂ»"/>Â«ENDFOREACHÂ»
     
-    «FOREACH  this.getAllUseCases().typeSelect(UseCase) AS useCase»<UseCaseDefinition  id="ID_«useCase.name.replaceAll(" ", "")»" name="«useCase.name»"/>«ENDFOREACH»
+    Â«FOREACH  this.getAllUseCases().typeSelect(UseCase) AS useCaseÂ»<UseCaseDefinition  id="ID_Â«useCase.name.replaceAll(" ", "")Â»" name="Â«useCase.nameÂ»"/>Â«ENDFOREACHÂ»
     
-    «FOREACH this.getAllJEAFActors().typeSelect(Actor) AS actor»<RoleDefinition name="«actor.name»">
-        «FOREACH actor.getReferencedAuthorizationTypeNames() AS refs»<AuthorizationTypeRef authRef="«refs»"/>«ENDFOREACH -»
-        «FOREACH actor.getAssociatedUseCases().typeSelect(UseCase) AS useCase»<UseCaseDefinitionRef ucRef="ID_«useCase.name.replaceAll(" ", "")»"/>«ENDFOREACH -»
+    Â«FOREACH this.getAllJEAFActors().typeSelect(Actor) AS actorÂ»<RoleDefinition name="Â«actor.nameÂ»">
+        Â«FOREACH actor.getReferencedAuthorizationTypeNames() AS refsÂ»<AuthorizationTypeRef authRef="Â«refsÂ»"/>Â«ENDFOREACH -Â»
+        Â«FOREACH actor.getAssociatedUseCases().typeSelect(UseCase) AS useCaseÂ»<UseCaseDefinitionRef ucRef="ID_Â«useCase.name.replaceAll(" ", "")Â»"/>Â«ENDFOREACH -Â»
     </RoleDefinition>
        
-    «ENDFOREACH -»
+    Â«ENDFOREACH -Â»
   </Root>  
-  «ENDFILE»
-«ENDDEFINE»
+  Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»

@@ -1,18 +1,18 @@
-«IMPORT uml»
-«IMPORT JMM»
-«EXTENSION java::Naming»
-«EXTENSION java::GeneratorCommons»
-«EXTENSION java::CustomValidationCommons»
-«EXTENSION org::openarchitectureware::util::stdlib::io»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«EXTENSION java::CustomValidationCommonsÂ»
+Â«EXTENSION org::openarchitectureware::util::stdlib::ioÂ»
 
 
-«DEFINE InfoMessage FOR Model»
-    «info("")»
-    «info("Executing customer specific templates")»
-«ENDDEFINE» 
+Â«DEFINE InfoMessage FOR ModelÂ»
+    Â«info("")Â»
+    Â«info("Executing customer specific templates")Â»
+Â«ENDDEFINEÂ» 
 
-«DEFINE Root FOR Model»
-    «REM» Empty template in case that no custom templates schould be executed.«ENDREM»
-    «info("Nothing to do. No custom templates defined")»
-    «info("")»
-«ENDDEFINE» 
+Â«DEFINE Root FOR ModelÂ»
+    Â«REMÂ» Empty template in case that no custom templates schould be executed.Â«ENDREMÂ»
+    Â«info("Nothing to do. No custom templates defined")Â»
+    Â«info("")Â»
+Â«ENDDEFINEÂ» 

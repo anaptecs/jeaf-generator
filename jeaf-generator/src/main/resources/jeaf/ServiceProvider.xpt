@@ -1,46 +1,46 @@
-«EXTENSION java::Naming»
-«EXTENSION entity::ModelProperties»
-«EXTENSION java::GeneratorCommons»
-«IMPORT uml»
-«IMPORT JMM»
-«IMPORT java»
-«IMPORT entity»
+Â«EXTENSION java::NamingÂ»
+Â«EXTENSION entity::ModelPropertiesÂ»
+Â«EXTENSION java::GeneratorCommonsÂ»
+Â«IMPORT umlÂ»
+Â«IMPORT JMMÂ»
+Â«IMPORT javaÂ»
+Â«IMPORT entityÂ»
 
-«DEFINE JEAFServiceProviderTemplate FOR JEAFServiceProvider»
+Â«DEFINE JEAFServiceProviderTemplate FOR JEAFServiceProviderÂ»
 
-«FILE packagePath()+"/"+name+".java" GenBase»
-«getFileHeader()»
-package «packageName()»;
+Â«FILE packagePath()+"/"+name+".java" GenBaseÂ»
+Â«getFileHeader()Â»
+package Â«packageName()Â»;
 
 /**
- * «getComment()»
+ * Â«getComment()Â»
  */
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-public interface «name» extends «IF generalization.size > 0» «this.getAllExtendedInterfaces()» «ELSE»com.anaptecs.jeaf.core.api.ServiceProvider«ENDIF» {
+Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+public interface Â«nameÂ» extends Â«IF generalization.size > 0Â» Â«this.getAllExtendedInterfaces()Â» Â«ELSEÂ»com.anaptecs.jeaf.core.api.ServiceProviderÂ«ENDIFÂ» {
 
-«EXPAND JEAFOperation::InterfaceOperation FOREACH this.ownedOperation»
+Â«EXPAND JEAFOperation::InterfaceOperation FOREACH this.ownedOperationÂ»
 }
-«ENDFILE»
+Â«ENDFILEÂ»
 
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
 
-«DEFINE JEAFServiceProviderImplTemplate FOR JEAFServiceProviderImpl»
+Â«DEFINE JEAFServiceProviderImplTemplate FOR JEAFServiceProviderImplÂ»
 
-«EXPAND CreateServiceProviderProperties»
+Â«EXPAND CreateServiceProviderPropertiesÂ»
 
-«FILE packagePath()+"/"+name+"Base.java" GenBase»
-«getFileHeader()»
-package «packageName()»;
+Â«FILE packagePath()+"/"+name+"Base.java" GenBaseÂ»
+Â«getFileHeader()Â»
+package Â«packageName()Â»;
 
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 
 /**
- * «getComment()»
+ * Â«getComment()Â»
  */
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-abstract class «name»Base implements com.anaptecs.jeaf.core.spi.ServiceProviderImplementation, «this.getImplementedInterfaceNames()» {
-	«IF this.ownedAttribute.size > 0»
+Â«EXPAND java::Helper::GenerateDeprecationAnnotation-Â»
+abstract class Â«nameÂ»Base implements com.anaptecs.jeaf.core.spi.ServiceProviderImplementation, Â«this.getImplementedInterfaceNames()Â» {
+	Â«IF this.ownedAttribute.size > 0Â»
 	/**
 	 * Reference to the object that identifies this component. The reference is never null.
 	 */
@@ -56,49 +56,49 @@ abstract class «name»Base implements com.anaptecs.jeaf.core.spi.ServiceProviderI
 	 */
 	static {
 		// Create Component ID and trace object.
-		Package lBasePackage = «this.name».class.getPackage();
-		COMPONENT_ID = new ComponentID("«this.name»", lBasePackage.getName());
+		Package lBasePackage = Â«this.nameÂ».class.getPackage();
+		COMPONENT_ID = new ComponentID("Â«this.nameÂ»", lBasePackage.getName());
 	}
-	«ENDIF»
+	Â«ENDIFÂ»
 
   /**
    * Constructor has reduced visibility in order to ensure that all service provider implementations are created through the factory.
    */
-  «this.name»Base() {
-      «IF this.ownedAttribute.size > 0»// Create resource access provider for properties of the component.
-      configuration = com.anaptecs.jeaf.xfun.api.XFun.getConfigurationProvider().getComponentConfiguration(COMPONENT_ID);«ENDIF»
+  Â«this.nameÂ»Base() {
+      Â«IF this.ownedAttribute.size > 0Â»// Create resource access provider for properties of the component.
+      configuration = com.anaptecs.jeaf.xfun.api.XFun.getConfigurationProvider().getComponentConfiguration(COMPONENT_ID);Â«ENDIFÂ»
   }
   
-	«FOREACH this.ownedAttribute AS property»
+	Â«FOREACH this.ownedAttribute AS propertyÂ»
 	/**
-	 * Method returns the value of the property "«property.name»".
+	 * Method returns the value of the property "Â«property.nameÂ»".
 	 * 
-	 * @return {@link «property.type.name»} Value of the property "«property.name»". The method returns null if no value for the
+	 * @return {@link Â«property.type.nameÂ»} Value of the property "Â«property.nameÂ»". The method returns null if no value for the
 	 * property is defined.
 	 */
-	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR property-»
-	public «property.fqn()» «property.asGetter()»() {
-	  return configuration.getConfigurationValue("«property.name»", «property.type.name».class);
+	Â«EXPAND java::Helper::GenerateDeprecationAnnotation FOR property-Â»
+	public Â«property.fqn()Â» Â«property.asGetter()Â»() {
+	  return configuration.getConfigurationValue("Â«property.nameÂ»", Â«property.type.nameÂ».class);
 	}
-	«ENDFOREACH»
+	Â«ENDFOREACHÂ»
 }
-«ENDFILE»
+Â«ENDFILEÂ»
 
-«FILE packagePath()+"/"+name+".java" GenOnce»
-«getFileHeader()»
-package «packageName()»;
+Â«FILE packagePath()+"/"+name+".java" GenOnceÂ»
+Â«getFileHeader()Â»
+package Â«packageName()Â»;
 
 /**
- * This class is the base class of the service provider implementation «this.name».
+ * This class is the base class of the service provider implementation Â«this.nameÂ».
  *
- * «getComment()»
+ * Â«getComment()Â»
  */
 
-final class «name» extends «name»Base {
+final class Â«nameÂ» extends Â«nameÂ»Base {
   /**
    * Constructor has reduced visibility in order to ensure that all service provider implementations are created through the factory.
    */
-  «this.name»() {
+  Â«this.nameÂ»() {
     // Nothing to do.
   }
   
@@ -129,31 +129,31 @@ final class «name» extends «name»Base {
     return null;
   }
 
-	«FOREACH this.getAllImplementedInterfaces() AS interface»
-	  «EXPAND JEAFOperation::ServiceOperationImpl FOREACH interface.ownedOperation»
-	«ENDFOREACH»
+	Â«FOREACH this.getAllImplementedInterfaces() AS interfaceÂ»
+	  Â«EXPAND JEAFOperation::ServiceOperationImpl FOREACH interface.ownedOperationÂ»
+	Â«ENDFOREACHÂ»
 }
-«ENDFILE»
+Â«ENDFILEÂ»
 
-«FILE packagePath()+"/"+this.getServiceProviderFactoryName()+".java" GenBase»
-«getFileHeader()»
-package «packageName()»;
+Â«FILE packagePath()+"/"+this.getServiceProviderFactoryName()+".java" GenBaseÂ»
+Â«getFileHeader()Â»
+package Â«packageName()Â»;
 
 import com.anaptecs.jeaf.core.api.ServiceProvider;
 import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
 import com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory;
 
 /**
- * This class is the factory class the service provider implementation «this.name».
+ * This class is the factory class the service provider implementation Â«this.nameÂ».
  * 
- * «getComment()»
+ * Â«getComment()Â»
  */
 @com.anaptecs.jeaf.core.annotations.ServiceProviderFactory
-public final class «this.getServiceProviderFactoryName()» extends ServiceProviderFactory {
+public final class Â«this.getServiceProviderFactoryName()Â» extends ServiceProviderFactory {
   /**
    * Initialize object. No actions have to be performed.
    */
-  public «this.getServiceProviderFactoryName()»( ) {
+  public Â«this.getServiceProviderFactoryName()Â»( ) {
     // Nothing to do.
   }
 
@@ -165,7 +165,7 @@ public final class «this.getServiceProviderFactoryName()» extends ServiceProvide
    * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#createServiceProviderImplementation()
    */
   public ServiceProviderImplementation createServiceProviderImplementation( ) {
-    return new «this.name»();
+    return new Â«this.nameÂ»();
   }
 
   /**
@@ -177,26 +177,26 @@ public final class «this.getServiceProviderFactoryName()» extends ServiceProvide
    * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#getServiceProviderInterface()
    */
   public Class<? extends ServiceProvider> getServiceProviderInterface( ) {
-    return «this.getAllImplementedInterfaces().get(0).fqn()».class;
+    return Â«this.getAllImplementedInterfaces().get(0).fqn()Â».class;
   }
 }
-«ENDFILE»
+Â«ENDFILEÂ»
 
-«ENDDEFINE»
+Â«ENDDEFINEÂ»
 
-«DEFINE CreateServiceProviderProperties FOR JEAFServiceProviderImpl»
-    «FILE name+".properties" Res»
-«FOREACH this.ownedAttribute AS property»
-«property.name»=«ENDFOREACH»
-    «ENDFILE»
-    «FILE name+".xml" GenRes»<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+Â«DEFINE CreateServiceProviderProperties FOR JEAFServiceProviderImplÂ»
+    Â«FILE name+".properties" ResÂ»
+Â«FOREACH this.ownedAttribute AS propertyÂ»
+Â«property.nameÂ»=Â«ENDFOREACHÂ»
+    Â«ENDFILEÂ»
+    Â«FILE name+".xml" GenResÂ»<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root>
-  <ComponentInfo name="«this.name»" basePackage="«this.packageName()»" cacheTTL="0" >
-«FOREACH this.ownedAttribute  AS property»    <Property name="«property.name»" type="«property.type.fqn()»" defaultValue="«property.defaultValue.stringValue()»" comment="" />
-«ENDFOREACH»  </ComponentInfo>
+  <ComponentInfo name="Â«this.nameÂ»" basePackage="Â«this.packageName()Â»" cacheTTL="0" >
+Â«FOREACH this.ownedAttribute  AS propertyÂ»    <Property name="Â«property.nameÂ»" type="Â«property.type.fqn()Â»" defaultValue="Â«property.defaultValue.stringValue()Â»" comment="" />
+Â«ENDFOREACHÂ»  </ComponentInfo>
 </Root>
-«ENDFILE»
-«ENDDEFINE»
+Â«ENDFILEÂ»
+Â«ENDDEFINEÂ»
 
 
 
