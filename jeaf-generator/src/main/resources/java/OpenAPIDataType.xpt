@@ -29,7 +29,7 @@
               «ENDIF-»
               «IF attribute.hasExample()-»
                 «IF ((Example) attribute).exampleValue.length > 0-»
-          example: '«((Example) attribute).exampleValue»'
+          example: «((Example) attribute).exampleValue»
                 «ENDIF-»
               «ENDIF-»
             «ELSE-»
@@ -48,7 +48,7 @@
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR attribute-»
             «IF attribute.hasExample()-»
               «IF ((Example) attribute).exampleValue.length > 0-»
-            example: '«((Example) attribute).exampleValue»'
+            example: «((Example) attribute).exampleValue»
               «ENDIF-»
             «ENDIF-»
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR ownerAttribute-»
@@ -67,7 +67,7 @@
           «ENDIF-»  
             «IF ownerAttribute.hasExample()-»
               «IF ((Example) ownerAttribute).exampleValue.length > 0-»
-          example: '«((Example) ownerAttribute).exampleValue»'
+          example: «((Example) ownerAttribute).exampleValue»
               «ENDIF-»
             «ENDIF-»
     «ELSE-»
@@ -104,7 +104,7 @@
       «ENDIF-»
       «IF attribute.hasExample()-»
         «IF ((Example) attribute).exampleValue.length > 0-»
-      example: '«((Example) attribute).exampleValue»'
+      example: «((Example) attribute).exampleValue»
         «ENDIF-»
       «ENDIF-»
     «ENDIF-»         
@@ -134,7 +134,7 @@
                   «ENDIF-»
                   «IF attribute.hasExample()-»
                     «IF ((Example) attribute).exampleValue.length > 0-»
-                example: '«((Example) attribute).exampleValue»'
+                example: «((Example) attribute).exampleValue»
                     «ENDIF-»
                   «ENDIF-»
                 «ELSE-»
@@ -150,7 +150,7 @@
                   «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("            ") FOR attribute-»
                   «IF attribute.hasExample()-»
                   «IF ((Example) attribute).exampleValue.length > 0-»
-                  example: '«((Example) attribute).exampleValue»'
+                  example: «((Example) attribute).exampleValue»
                   «ENDIF-»
                   «ENDIF-»
                   «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR param-»
@@ -169,7 +169,7 @@
                 «ENDIF-»  
                 «IF param.hasExample()-»
                 «IF ((Example) param).exampleValue.length > 0-»
-                example: '«((Example) param).exampleValue»'
+                example: «((Example) param).exampleValue»
                 «ENDIF-»
                 «ENDIF-»
                 «ENDLET -»

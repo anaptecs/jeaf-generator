@@ -128,7 +128,7 @@ components:
         «ENDIF-»
         «IF parameter.hasExample()-»
           «IF ((Example) parameter).exampleValue.length > 0-»
-          example: '«((Example) parameter).exampleValue»'
+          example: «((Example) parameter).exampleValue»
           «ENDIF-»
         «ENDIF-»
       «ENDIF-»
@@ -290,7 +290,7 @@ components:
             	«ENDIF -»
                 «IF property.hasExample()-»
                   «IF ((Example) property).exampleValue.length > 0-»
-            example: '«((Example) property).exampleValue»'
+            example: «((Example) property).exampleValue»
                   «ENDIF-»
                 «ENDIF-»
             «ELSE -»
@@ -346,7 +346,7 @@ components:
             	«ENDIF-»
                 «IF param.hasExample()-»
                   «IF ((Example) param).exampleValue.length > 0-»
-            example: '«((Example) param).exampleValue»'
+            example: «((Example) param).exampleValue»
                   «ENDIF-»
                 «ENDIF-»
             «ELSE-»
@@ -458,7 +458,7 @@ components:
                 «ENDIF-»
                 «IF param.hasExample()-»
                   «IF ((Example) param).exampleValue.length > 0-»
-              example: '«((Example) param).exampleValue»'
+              example: «((Example) param).exampleValue»
                   «ENDIF-»
                 «ENDIF-»
               «ELSE-»
@@ -516,7 +516,7 @@ components:
                   «ENDIF-»
                   «IF returnParam.hasExample()-»
                     «IF ((Example) returnParam).exampleValue.length > 0-»
-                example: '«((Example) returnParam).exampleValue»'
+                example: «((Example) returnParam).exampleValue»
                     «ENDIF-»
                 «ENDIF-»
                 «ELSE-»

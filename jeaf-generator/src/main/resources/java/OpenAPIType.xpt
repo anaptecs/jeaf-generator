@@ -128,7 +128,7 @@
           «ENDIF-»
             «IF attribute.hasExample()-»
               «IF ((Example) attribute).exampleValue.length > 0-»
-          example: '«((Example) attribute).exampleValue»'
+          example: «((Example) attribute).exampleValue»
               «ENDIF-»
             «ENDIF-»
           «ELSE-»
@@ -268,7 +268,7 @@
           «ENDIF-»
             «IF attribute.hasExample()-»
               «IF ((Example) attribute).exampleValue.length > 0-»
-              example: '«((Example) attribute).exampleValue»'
+              example: «((Example) attribute).exampleValue»
               «ENDIF-»
             «ENDIF-»
           «ELSE-»

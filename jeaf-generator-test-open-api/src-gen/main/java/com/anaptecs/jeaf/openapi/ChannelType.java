@@ -14,11 +14,12 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
+import io.swagger.v3.oas.annotations.media.Schema;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets ChannelType
+ * Valid Values: - COUNTER - CALL_CENTER - MOBILE - TVM - WEB - @Deprecated LEGACY_POS
  */
 public enum ChannelType {
   COUNTER("COUNTER"),

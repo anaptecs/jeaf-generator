@@ -198,7 +198,7 @@ components:
         channelCode:
           type: string
           default: 'WEBSHOP'
-          example: 'MOBILE_APP'
+          example: MOBILE_APP
           nullable: false
         code:
           type: integer
@@ -213,6 +213,14 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.ChannelType
     ChannelType:
+      description: >-
+        Valid Values:
+        - COUNTER
+        - CALL_CENTER
+        - MOBILE
+        - TVM
+        - WEB
+        - @Deprecated LEGACY_POS
       type: string
       enum:
         - COUNTER
@@ -384,7 +392,7 @@ components:
           type: string
           format: time
           nullable: false
-          example: '12:07'
+          example: 12:07
         localDate:
           type: string
           format: date
@@ -525,7 +533,7 @@ components:
           default: 'CHF'
           minLength: 3
           maxLength: 3
-          example: 'CHF'
+          example: CHF
           nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.OpenAPITestObject
@@ -1229,7 +1237,7 @@ components:
         link:
           type: string
           nullable: false
-          example: 'https://www.company.com/products/1345-345'
+          example: https://www.company.com/products/1345-345
         productID:
           type: string
           nullable: false
@@ -1243,7 +1251,7 @@ components:
             default: 'CHF'
             minLength: 3
             maxLength: 3
-            example: 'CHF'
+            example: CHF
           minItems: 7
           maxItems: 42
           nullable: false
@@ -1350,7 +1358,7 @@ components:
         - HOUR
         - DAY
         - WEEK: Literal represents time unit "weeks".
-        # This is the comments second line ;-)
+            This is the comments second line ;-)
         - MONTH
         - YEAR
       type: string
