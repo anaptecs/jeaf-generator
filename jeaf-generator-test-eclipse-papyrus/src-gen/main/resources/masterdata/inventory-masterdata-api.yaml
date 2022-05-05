@@ -38,12 +38,12 @@ paths:
             If not set, all vehicles of all operators are returned
           schema:
             type: string
-            example: '11'
+            example: 11
         - name: uicCountryCode
           in: query
           schema:
             type: string
-            example: '85'
+            example: 85
         - name: lastModified
           in: query
           schema:
@@ -76,12 +76,12 @@ paths:
             If not set, all vehicles of all operators are returned
           schema:
             type: string
-            example: '11'
+            example: 11
         - name: uicCountryCode
           in: query
           schema:
             type: string
-            example: '85'
+            example: 85
         - name: lastModified
           in: query
           schema:
@@ -154,11 +154,11 @@ components:
           type: integer
           format: int32
           nullable: false
-          example: '565'
+          example: 565
         operatorRef:
           type: string
           nullable: false
-          example: 'urn:sbb:1185:11'
+          example: urn:sbb:1185:11
 
     # ch.voev.nova.inventory.api.masterdata.TemporalValidity
     TemporalValidity:
@@ -225,7 +225,7 @@ components:
             Internal product description.
           type: string
           nullable: false
-          example: 'TGV Lyria Loisir 2'
+          example: TGV Lyria Loisir 2
         family:
           description: >-
             The name of the family the product belongs to.
@@ -240,7 +240,7 @@ components:
             mapping from an even lower-level provider).
           type: string
           nullable: false
-          example: 'PT00AD'
+          example: PT00AD
         description:
           $ref: '#/components/schemas/Text'
         conditions:
@@ -427,7 +427,7 @@ components:
             language code following RFC2616-sec14.4
           type: string
           nullable: false
-          example: 'en'
+          example: en
         text:
           type: string
           nullable: false

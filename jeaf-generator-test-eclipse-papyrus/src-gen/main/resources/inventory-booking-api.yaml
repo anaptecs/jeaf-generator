@@ -183,7 +183,7 @@ components:
             mapping from an even lower-level provider).
           type: string
           nullable: false
-          example: 'Reservierungsentgelt'
+          example: Reservierungsentgelt
         price:
           $ref: '#/components/schemas/Price'
         availableFulfillmentTypes:
@@ -209,18 +209,18 @@ components:
         id:
           type: string
           nullable: false
-          example: 'id-1'
+          example: id-1
         legId:
           type: string
           nullable: false
-          example: 'leg-1'
+          example: leg-1
         passengerIds:
           type: array
           items:
             type: string
           minItems: 1
           nullable: false
-          example: 'passenger-1'
+          example: passenger-1
         inventory:
           $ref: '#/components/schemas/Inventory'
         comfortClass:
@@ -234,7 +234,7 @@ components:
             number of places
           type: integer
           format: int32
-          example: '22'
+          example: 22
         availablePlaceProperties:
           type: array
           items:
@@ -344,7 +344,7 @@ components:
             Overall duration of this interchange.
           type: string
           format: duration
-          example: 'PT20M'
+          example: PT20M
         situationFullRefs:
           type: array
           items:
@@ -436,7 +436,7 @@ components:
             Line name or service description as known to the public, f.e. "512", "S8"
             or "Circle Line" or "ICE 488".
           type: string
-          example: 'S1'
+          example: S1
         vehicleNumbers:
           description: >-
             The vehicle number(s) of the vehicle(s) that runs this timed leg.
@@ -448,7 +448,7 @@ components:
           type: array
           items:
             type: string
-          example: '9218, 9340, 15'
+          example: 9218, 9340, 15
         lineNumbers:
           description: >-
             List of line numbers that are part of this journey.
@@ -456,7 +456,7 @@ components:
           type: array
           items:
             type: string
-          example: '52, 19'
+          example: 52, 19
         operatorRefs:
           description: >-
             Reference to transport operators.
@@ -468,7 +468,7 @@ components:
             type: string
           minItems: 1
           nullable: false
-          example: 'urn:uic:rics:1185:000011'
+          example: urn:uic:rics:1185:000011
         serviceStatus:
           $ref: '#/components/schemas/ServiceStatus'
         situationFullRefs:
@@ -491,12 +491,12 @@ components:
           description: >-
             Name of the mode
           type: string
-          example: 'rail'
+          example: rail
         shortName:
           description: >-
             Short name or acronym of the mode
           type: string
-          example: 'S'
+          example: S
         description:
           description: >-
             Additional text that further describes the mode
@@ -522,14 +522,14 @@ components:
             UIC: Long name of Service Brand
           type: string
           nullable: false
-          example: 'TGV Lyria'
+          example: TGV Lyria
         shortName:
           description: >-
             Short name or acronym of the product category, likely to be published, e.g. "TGV"
             UIC: Abbreviation of Service Brand
           type: string
           nullable: false
-          example: 'TGV'
+          example: TGV
         productCategoryRef:
           $ref: '#/components/schemas/ProductCategoryRef'
 
@@ -635,10 +635,10 @@ components:
             stopPlaceRef:
               type: string
               nullable: false
-              example: 'urn:uic:stn:8503000'
+              example: urn:uic:stn:8503000
             name:
               type: string
-              example: 'Luzern'
+              example: Luzern
 
     # ch.voev.nova.inventory.api.booking.PointOfInterestRef
     PointOfInterestRef:
@@ -705,7 +705,7 @@ components:
         Reference to a product category. Product categories should be defined once and used
         uniformly in all channels (e.g. NeTEx, SIRI, OJP). Provided by OJP.
       nullable: false
-      example: 'urn:uic:sbc:76'
+      example: urn:uic:sbc:76
 
     # ch.voev.nova.inventory.api.booking.OperationDayRef
     OperationDayRef:
@@ -713,7 +713,7 @@ components:
       description: >-
         Reference to an operating day. Provided by OJP.
       nullable: false
-      example: 'OperatingDay:12345'
+      example: OperatingDay:12345
 
     # ch.voev.nova.inventory.api.booking.PassengerSpecification
     PassengerSpecification:
@@ -732,7 +732,7 @@ components:
             response.
           type: string
           nullable: false
-          example: 'TK-id-12345'
+          example: TK-id-12345
         type:
           $ref: '#/components/schemas/PassengerType'
         dateOfBirth:
@@ -845,7 +845,7 @@ components:
       description: >-
         RICS company code or compatible ERA company code for rail.
       nullable: false
-      example: 'urn:uic:rics:1185'
+      example: urn:uic:rics:1185
 
     # ch.voev.nova.inventory.api.booking.PlaceProperty
     PlaceProperty:
@@ -853,7 +853,7 @@ components:
       description: >-
         see code list
       nullable: false
-      example: 'Power Connection'
+      example: Power Connection
 
     # ch.voev.nova.inventory.api.booking.AccommodationType
     AccommodationType:
@@ -916,7 +916,7 @@ components:
       description: >-
         ISO 4217 currency codes
       nullable: false
-      example: 'CHF, EUR, SEK'
+      example: CHF, EUR, SEK
 
     # ch.voev.nova.inventory.api.booking.VAT
     VAT:
@@ -934,7 +934,7 @@ components:
           type: integer
           format: int32
           nullable: false
-          example: '5'
+          example: 5
         scale:
           description: >-
             scale of the amount - the number of positions after the comma
@@ -980,7 +980,7 @@ components:
       description: >-
         ISO country code (2 alpha), relative URNs with base urn:iso:std:iso:3166 are recommended
       nullable: false
-      example: 'DE'
+      example: DE
 
     # ch.voev.nova.inventory.api.booking.FareConnectionPoint
     FareConnectionPoint:
@@ -1046,7 +1046,7 @@ components:
       minimum: -180
       maximum: 180
       nullable: false
-      example: '8.54021'
+      example: 8.54021
 
     # ch.voev.nova.inventory.api.booking.Latitude
     Latitude:
@@ -1057,7 +1057,7 @@ components:
       minimum: -90
       maximum: 90
       nullable: false
-      example: '47.37818'
+      example: 47.37818
 
     # ch.voev.nova.inventory.api.booking.Warning
     Warning:
@@ -1081,19 +1081,19 @@ components:
           type: string
           format: uri
           default: 'about:blank'
-          example: 'https://example.com/warns/price-updated'
+          example: https://example.com/warns/price-updated
         detail:
           description: >-
             A human readable explanation specific to this occurrence of the
             warning.
           type: string
-          example: 'The price of the given offer part has been updated during the booking operation'
+          example: The price of the given offer part has been updated during the booking operation
         instance:
           description: >-
             An absolute URI that identifies the specific occurrence of the warning.
           type: string
           format: uri
-          example: 'offers/offer1234'
+          example: offers/offer1234
 
     # ch.voev.nova.inventory.api.booking.Problem
     Problem:
@@ -1115,14 +1115,14 @@ components:
           type: string
           format: uri
           default: 'about:blank'
-          example: 'https://example.com/probs/passenger-too-young'
+          example: https://example.com/probs/passenger-too-young
         title:
           description: >-
             A short, summary of the problem type. Written in English and readable 
             for engineers (usually not suited for non technical stakeholders and
             not localized)
           type: string
-          example: 'Service Unavailable'
+          example: Service Unavailable
         status:
           description: >-
             The HTTP status code generated by the origin server for this occurrence
@@ -1133,13 +1133,13 @@ components:
           exclusiveMaximum: true
           minimum: 100
           nullable: false
-          example: '503'
+          example: 503
         detail:
           description: >-
             A human readable explanation specific to this occurrence
             of the problem.
           type: string
-          example: 'Connection to database timed out'
+          example: Connection to database timed out
         instance:
           description: >-
             An absolute URI that identifies the specific occurrence of the problem.
