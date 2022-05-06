@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -19,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@Valid
 public class DirectedEdge implements ServiceObject {
   /**
    * Default serial version uid.

@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -18,6 +19,7 @@ import com.anaptecs.jeaf.xfun.api.XFunMessages;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@Valid
 public class POI extends Stop {
   /**
    * Default serial version uid.

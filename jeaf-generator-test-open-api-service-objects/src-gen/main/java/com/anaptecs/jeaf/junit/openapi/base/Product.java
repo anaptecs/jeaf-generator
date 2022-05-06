@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -34,6 +35,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@Valid
 @JsonIdentityInfo(property = "objectID", generator = PropertyGenerator.class)
 public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**

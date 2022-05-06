@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -24,6 +25,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@Valid
 public class PartnerContainer implements ServiceObject {
   /**
    * Default serial version uid.

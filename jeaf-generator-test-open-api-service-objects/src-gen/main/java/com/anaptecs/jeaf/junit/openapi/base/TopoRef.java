@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 
@@ -13,6 +14,7 @@ import com.anaptecs.jeaf.tools.api.Tools;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@Valid
 public class TopoRef extends PlaceRef {
   /**
    * Default serial version uid.

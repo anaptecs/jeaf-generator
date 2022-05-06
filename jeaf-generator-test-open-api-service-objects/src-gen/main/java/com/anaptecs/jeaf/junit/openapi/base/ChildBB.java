@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,6 +25,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@Valid
 public class ChildBB extends ChildB {
   /**
    * Default serial version uid.

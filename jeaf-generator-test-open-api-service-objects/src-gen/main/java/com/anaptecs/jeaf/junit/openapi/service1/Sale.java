@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.service1;
 import java.math.BigDecimal;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -23,6 +24,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@Valid
 public class Sale implements ServiceObject {
   /**
    * Default serial version uid.

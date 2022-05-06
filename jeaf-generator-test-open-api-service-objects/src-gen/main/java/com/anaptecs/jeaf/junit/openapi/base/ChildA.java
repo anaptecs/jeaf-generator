@@ -7,6 +7,8 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Set;
 
+import javax.validation.Valid;
+
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
@@ -16,6 +18,7 @@ import com.anaptecs.jeaf.xfun.api.XFunMessages;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@Valid
 public abstract class ChildA extends ParentClass {
   /**
    * Default serial version uid.

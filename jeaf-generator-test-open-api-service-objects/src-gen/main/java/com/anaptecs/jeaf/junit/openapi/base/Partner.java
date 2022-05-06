@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
@@ -32,6 +33,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@Valid
 @JsonIgnoreProperties(value = "objectType")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = Company.class, name = "Company"),

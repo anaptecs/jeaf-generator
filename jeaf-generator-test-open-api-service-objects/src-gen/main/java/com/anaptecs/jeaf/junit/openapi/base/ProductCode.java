@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -18,6 +19,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@Valid
 public class ProductCode implements ServiceObject {
   /**
    * Default serial version uid.

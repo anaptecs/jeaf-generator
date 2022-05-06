@@ -5,10 +5,13 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import javax.validation.Valid;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@Valid
 public abstract class StopPlaceRef extends PlaceRef {
   /**
    * Default serial version uid.
