@@ -29,7 +29,7 @@ public class Company {
    * RICS company code or compatible ERA company code for rail. <br/>
    * <b>Example:</b> <code>urn:uic:rics:1185</code>
    */
-  @NotNull()
+  @NotNull
   private String value;
 
   /**
@@ -60,7 +60,7 @@ public class Company {
     /**
      * RICS company code or compatible ERA company code for rail.
      */
-    @NotNull()
+    @NotNull
     private String value;
 
     /**

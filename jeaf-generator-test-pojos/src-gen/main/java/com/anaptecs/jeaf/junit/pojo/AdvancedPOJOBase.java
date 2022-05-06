@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@Valid()
+@Valid
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class AdvancedPOJOBase {
   /**

@@ -153,13 +153,13 @@ public class PrimitiveObjectWithRestrictions {
   /**
    * 
    */
-  @Negative()
+  @Negative
   private byte aByte;
 
   /**
    * 
    */
-  @NegativeOrZero()
+  @NegativeOrZero
   private Byte bByte;
 
   /**
@@ -171,13 +171,13 @@ public class PrimitiveObjectWithRestrictions {
   /**
    * 
    */
-  @Positive()
+  @Positive
   private Short bShort;
 
   /**
    * 
    */
-  @PositiveOrZero()
+  @PositiveOrZero
   private int aInteger;
 
   /**
@@ -258,7 +258,7 @@ public class PrimitiveObjectWithRestrictions {
   /**
    * 
    */
-  @NotEmpty()
+  @NotEmpty
   @Size(min = 0, max = 128)
   private String bString;
 
@@ -326,13 +326,13 @@ public class PrimitiveObjectWithRestrictions {
     /**
      * 
      */
-    @Negative()
+    @Negative
     private byte aByte;
 
     /**
      * 
      */
-    @NegativeOrZero()
+    @NegativeOrZero
     private Byte bByte;
 
     /**
@@ -344,13 +344,13 @@ public class PrimitiveObjectWithRestrictions {
     /**
      * 
      */
-    @Positive()
+    @Positive
     private Short bShort;
 
     /**
      * 
      */
-    @PositiveOrZero()
+    @PositiveOrZero
     private int aInteger;
 
     /**
@@ -429,7 +429,7 @@ public class PrimitiveObjectWithRestrictions {
     /**
      * 
      */
-    @NotEmpty()
+    @NotEmpty
     @Size(min = 0, max = 128)
     private String bString;
 

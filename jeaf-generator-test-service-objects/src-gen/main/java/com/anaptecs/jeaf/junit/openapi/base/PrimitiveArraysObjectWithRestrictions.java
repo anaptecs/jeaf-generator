@@ -192,7 +192,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
-  @NotEmpty()
+  @NotEmpty
   private long[] aLongArray;
 
   /**
@@ -352,7 +352,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
-    @NotEmpty()
+    @NotEmpty
     private long[] aLongArray;
 
     /**

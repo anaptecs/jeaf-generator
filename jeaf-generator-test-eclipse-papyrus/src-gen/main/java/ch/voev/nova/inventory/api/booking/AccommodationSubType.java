@@ -28,7 +28,7 @@ public class AccommodationSubType {
   /**
    * 
    */
-  @NotNull()
+  @NotNull
   private String code;
 
   /**
@@ -59,7 +59,7 @@ public class AccommodationSubType {
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private String code;
 
     /**

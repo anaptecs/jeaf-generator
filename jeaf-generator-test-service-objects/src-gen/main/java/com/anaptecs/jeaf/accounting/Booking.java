@@ -25,7 +25,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@Valid()
+@Valid
 public class Booking implements ServiceObject {
   /**
    * Default serial version uid.
@@ -65,7 +65,7 @@ public class Booking implements ServiceObject {
   /**
    * Amount of the booking. The attribute must not be null.
    */
-  @NotNull()
+  @NotNull
   private Double amount;
 
   /**
@@ -128,7 +128,7 @@ public class Booking implements ServiceObject {
     /**
      * Amount of the booking. The attribute must not be null.
      */
-    @NotNull()
+    @NotNull
     private Double amount;
 
     /**

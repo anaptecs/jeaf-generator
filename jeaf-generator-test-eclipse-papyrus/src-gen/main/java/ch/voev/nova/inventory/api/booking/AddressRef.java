@@ -32,7 +32,7 @@ public class AddressRef extends PlaceRef {
   /**
    * 
    */
-  @NotNull()
+  @NotNull
   private String addressRef;
 
   /**
@@ -69,7 +69,7 @@ public class AddressRef extends PlaceRef {
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private String addressRef;
 
     /**

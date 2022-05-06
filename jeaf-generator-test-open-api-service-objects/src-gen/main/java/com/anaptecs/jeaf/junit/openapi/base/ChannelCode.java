@@ -29,7 +29,7 @@ public class ChannelCode implements ServiceObject {
    * <b>Default Value:</b> <code>"WEBSHOP"</code> <br/>
    * <b>Example:</b> <code>MOBILE_APP</code>
    */
-  @NotNull()
+  @NotNull
   private String code;
 
   /**
@@ -60,7 +60,7 @@ public class ChannelCode implements ServiceObject {
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private String code = "WEBSHOP";
 
     /**

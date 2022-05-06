@@ -40,7 +40,7 @@ public class TripSpecification {
   /**
    * External reference of this trip for referencing purposes. Unique within a trip specification.
    */
-  @NotNull()
+  @NotNull
   private String externalRef;
 
   /**
@@ -79,7 +79,7 @@ public class TripSpecification {
     /**
      * External reference of this trip for referencing purposes. Unique within a trip specification.
      */
-    @NotNull()
+    @NotNull
     private String externalRef;
 
     /**

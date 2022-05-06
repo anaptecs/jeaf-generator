@@ -300,6 +300,9 @@ cached boolean isValidationStereotype(uml::Stereotype stereotype) : !stereotype.
 
 cached boolean hasValidationStereotype(uml::NamedElement element) :
   element.getAppliedStereotypes().selectFirst(e|e.isValidationStereotype()) != null;
+  
+cached boolean hasErrorCodeOrSeverity(JMM::Validation validation):
+  validation.errorCode > 0 || validation.severity.name != "NotUsed";
 
 cached boolean requiresInitValue(uml::Property property):
      (property.isReadOnly == true && property.isStatic == false) || (property.isRealInitValue() == true && property.isStatic == false);

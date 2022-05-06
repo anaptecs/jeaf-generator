@@ -40,19 +40,19 @@ public class Problem {
   /**
    * 
    */
-  @NotNull()
+  @NotNull
   private final String title;
 
   /**
    * 
    */
-  @NotNull()
+  @NotNull
   public final int status;
 
   /**
    * 
    */
-  @NotNull()
+  @NotNull
   private final String type;
 
   /**
@@ -99,19 +99,19 @@ public class Problem {
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private String title;
 
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private int status;
 
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private String type;
 
     /**

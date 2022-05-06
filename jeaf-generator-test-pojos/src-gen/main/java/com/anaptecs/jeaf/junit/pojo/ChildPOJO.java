@@ -30,7 +30,7 @@ public class ChildPOJO extends ParentPOJO {
   /**
    * 
    */
-  @NotNull()
+  @NotNull
   private Integer childAttribute;
 
   /**
@@ -61,7 +61,7 @@ public class ChildPOJO extends ParentPOJO {
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private Integer childAttribute;
 
     /**

@@ -11,7 +11,7 @@ import javax.validation.Valid;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@Valid()
+@Valid
 public class Reseller extends ResellerBase {
   /**
    * Default serial version uid.

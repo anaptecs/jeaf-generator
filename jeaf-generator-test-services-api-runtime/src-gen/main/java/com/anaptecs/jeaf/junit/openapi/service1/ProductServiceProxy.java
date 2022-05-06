@@ -74,7 +74,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
    * 
    * 
    */
-  public Product getProduct( @NotEmpty() String pProductID ) {
+  public Product getProduct( @NotEmpty String pProductID ) {
     try {
       Command lCommand = new GetProduct_String_ProductService_Command(pProductID);
       return (Product) this.executeCommand(lCommand);
@@ -119,7 +119,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
    * 
    * 
    */
-  public ChannelCode createChannelCode( @NotBlank() String pChannelCode ) {
+  public ChannelCode createChannelCode( @NotBlank String pChannelCode ) {
     try {
       Command lCommand = new CreateChannelCode_String_ProductService_Command(pChannelCode);
       return (ChannelCode) this.executeCommand(lCommand);
@@ -561,7 +561,7 @@ final class GetProduct_String_ProductService_Command extends Command {
    * 
    * @param pProductID String
    */
-  GetProduct_String_ProductService_Command( @NotEmpty() String pProductID ) {
+  GetProduct_String_ProductService_Command( @NotEmpty String pProductID ) {
     super(ProductService.class);
     productID = pProductID;
     parameters = new Object[] { productID };
@@ -864,7 +864,7 @@ final class CreateChannelCode_String_ProductService_Command extends Command {
    * 
    * @param pChannelCode String
    */
-  CreateChannelCode_String_ProductService_Command( @NotBlank() String pChannelCode ) {
+  CreateChannelCode_String_ProductService_Command( @NotBlank String pChannelCode ) {
     super(ProductService.class);
     channelCode = pChannelCode;
     parameters = new Object[] { channelCode };

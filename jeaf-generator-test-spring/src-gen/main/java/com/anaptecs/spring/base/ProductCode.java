@@ -20,7 +20,7 @@ public class ProductCode {
   /**
    * 
    */
-  @Positive()
+  @Positive
   private int code;
 
   /**
@@ -49,7 +49,7 @@ public class ProductCode {
     /**
      * 
      */
-    @Positive()
+    @Positive
     private int code;
 
     /**

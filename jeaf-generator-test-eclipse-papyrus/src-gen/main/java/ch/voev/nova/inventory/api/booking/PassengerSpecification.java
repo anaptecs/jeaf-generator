@@ -58,7 +58,7 @@ public class PassengerSpecification {
    * trip-offers-collection request, it must be echoed back in the response. <br/>
    * <b>Example:</b> <code>TK-id-12345</code>
    */
-  @NotNull()
+  @NotNull
   private String externalRef;
 
   /**
@@ -119,7 +119,7 @@ public class PassengerSpecification {
      * A stable reference to a passenger from other elements, or from caller system. When received in input of a
      * trip-offers-collection request, it must be echoed back in the response.
      */
-    @NotNull()
+    @NotNull
     private String externalRef;
 
     /**

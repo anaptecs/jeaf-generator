@@ -123,8 +123,8 @@ public interface AccountingService extends Service {
    * @param pPerson
    * @return {@link Person}
    */
-  @NotNull()
-  Person createPerson( @Valid() Person pPerson );
+  @NotNull
+  Person createPerson( @Valid Person pPerson );
 
   /**
    * 

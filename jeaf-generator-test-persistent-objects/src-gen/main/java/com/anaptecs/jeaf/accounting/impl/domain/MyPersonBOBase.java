@@ -376,7 +376,7 @@ public abstract class MyPersonBOBase extends PersistentObject {
    * 
    * @return {@link String}
    */
-  @NotNull()
+  @NotNull
   public abstract String getFullName( );
 
   /**

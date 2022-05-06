@@ -38,7 +38,7 @@ public class TripLegSpecification {
   /**
    * External reference of this trip leg. Unique within trip result.
    */
-  @NotNull()
+  @NotNull
   private String externalRef;
 
   /**
@@ -81,7 +81,7 @@ public class TripLegSpecification {
     /**
      * External reference of this trip leg. Unique within trip result.
      */
-    @NotNull()
+    @NotNull
     private String externalRef;
 
     /**

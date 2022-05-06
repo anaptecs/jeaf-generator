@@ -112,6 +112,9 @@ cached boolean addGeneratedAnnotation( ):
 cached String getGeneratedAnnotation():
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getGeneratedAnnotation();
 
+cached boolean generateValidAnnotationsForClasses() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateValidAnnotationsForClasses();
+    
 cached boolean generateValidationAnnotationsForAttributesFromMultiplicity() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateValidationAnnotationsForAttributesFromMultiplicity();
     

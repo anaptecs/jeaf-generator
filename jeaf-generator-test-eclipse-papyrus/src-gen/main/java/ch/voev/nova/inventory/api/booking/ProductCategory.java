@@ -41,7 +41,7 @@ public class ProductCategory {
    * <br/>
    * <b>Example:</b> <code>TGV Lyria</code>
    */
-  @NotNull()
+  @NotNull
   private String name;
 
   /**
@@ -49,7 +49,7 @@ public class ProductCategory {
    * Brand <br/>
    * <b>Example:</b> <code>TGV</code>
    */
-  @NotNull()
+  @NotNull
   private String shortName;
 
   /**
@@ -87,14 +87,14 @@ public class ProductCategory {
     /**
      * Full name of this product category, e.g. "TGV Lyria" in Switzerland and France. UIC: Long name of Service Brand
      */
-    @NotNull()
+    @NotNull
     private String name;
 
     /**
      * Short name or acronym of the product category, likely to be published, e.g. "TGV" UIC: Abbreviation of Service
      * Brand
      */
-    @NotNull()
+    @NotNull
     private String shortName;
 
     /**

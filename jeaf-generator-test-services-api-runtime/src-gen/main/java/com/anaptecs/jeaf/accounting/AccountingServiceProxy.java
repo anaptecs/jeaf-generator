@@ -190,7 +190,7 @@ public final class AccountingServiceProxy extends ServiceProxy implements Accoun
    * the passed one. The method never returns null.
    * 
    */
-  public Person createPerson( @Valid() Person pPerson ) {
+  public Person createPerson( @Valid Person pPerson ) {
     try {
       Command lCommand = new CreatePerson_Person_AccountingService_Command(pPerson);
       return (Person) this.executeCommand(lCommand);
@@ -1003,7 +1003,7 @@ final class CreatePerson_Person_AccountingService_Command extends Command {
    * 
    * @param pPerson Person
    */
-  CreatePerson_Person_AccountingService_Command( @Valid() Person pPerson ) {
+  CreatePerson_Person_AccountingService_Command( @Valid Person pPerson ) {
     super(AccountingService.class);
     person = pPerson;
     parameters = new Object[] { person };

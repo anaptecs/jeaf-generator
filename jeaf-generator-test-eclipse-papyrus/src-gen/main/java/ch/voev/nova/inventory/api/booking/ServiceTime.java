@@ -40,7 +40,7 @@ public class ServiceTime {
   /**
    * 
    */
-  @NotNull()
+  @NotNull
   private OffsetDateTime timetabledTime;
 
   /**
@@ -83,7 +83,7 @@ public class ServiceTime {
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private OffsetDateTime timetabledTime;
 
     /**

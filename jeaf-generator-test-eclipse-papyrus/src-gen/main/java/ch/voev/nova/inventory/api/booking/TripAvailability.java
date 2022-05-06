@@ -45,7 +45,7 @@ public class TripAvailability {
   /**
    * 
    */
-  @NotNull()
+  @NotNull
   private String tripId;
 
   /**
@@ -92,7 +92,7 @@ public class TripAvailability {
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private String tripId;
 
     /**

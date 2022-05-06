@@ -57,7 +57,7 @@ public class VAT {
    * amount in cents <br/>
    * <b>Example:</b> <code>5</code>
    */
-  @NotNull()
+  @NotNull
   private int amount;
 
   /**
@@ -119,7 +119,7 @@ public class VAT {
     /**
      * amount in cents
      */
-    @NotNull()
+    @NotNull
     private int amount;
 
     /**

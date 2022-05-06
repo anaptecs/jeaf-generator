@@ -29,7 +29,7 @@ public class CountryCode {
    * ISO country code (2 alpha), relative URNs with base urn:iso:std:iso:3166 are recommended <br/>
    * <b>Example:</b> <code>DE</code>
    */
-  @NotNull()
+  @NotNull
   private String code;
 
   /**
@@ -60,7 +60,7 @@ public class CountryCode {
     /**
      * ISO country code (2 alpha), relative URNs with base urn:iso:std:iso:3166 are recommended
      */
-    @NotNull()
+    @NotNull
     private String code;
 
     /**

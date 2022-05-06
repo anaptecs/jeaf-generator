@@ -22,7 +22,7 @@ public class ChannelCode {
    * <b>Default Value:</b> <code>"WEBSHOP"</code> <br/>
    * <b>Example:</b> <code>MOBILE_APP</code>
    */
-  @NotNull()
+  @NotNull
   private String code;
 
   /**
@@ -51,7 +51,7 @@ public class ChannelCode {
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private String code = "WEBSHOP";
 
     /**

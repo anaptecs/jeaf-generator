@@ -32,7 +32,7 @@ public class ProductCode implements ServiceObject {
   /**
    * 
    */
-  @Positive()
+  @Positive
   private int code;
 
   /**
@@ -63,7 +63,7 @@ public class ProductCode implements ServiceObject {
     /**
      * 
      */
-    @Positive()
+    @Positive
     private int code;
 
     /**

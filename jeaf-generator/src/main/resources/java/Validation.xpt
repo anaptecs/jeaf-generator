@@ -1,6 +1,7 @@
 «IMPORT uml»
 «IMPORT JMM»
 «EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
 «EXTENSION java::CustomValidationCommons»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
@@ -133,6 +134,9 @@ public @interface «validationClass» {
 			«ENDIF»
 	    «ENDIF»
 	«ENDFOREACH»
+	«IF generateValidAnnotationsForClasses() &&(this.isStereotypeApplied("POJO") || this.isStereotypeApplied("ServiceObject") || this.isStereotypeApplied("DomainObject") || this.isStereotypeApplied("PersistentObject")) && this.isStereotypeApplied("Valid")==false »
+	@javax.validation.Valid
+	«ENDIF»
 «ENDDEFINE»
 
 
@@ -157,19 +161,19 @@ public @interface «validationClass» {
 «ENDDEFINE»
 
 «DEFINE NegativeAnnotation FOR Negative»
-   @javax.validation.constraints.Negative(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+   @javax.validation.constraints.Negative«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE NegativeOrZeroAnnotation FOR NegativeOrZero»
-   @javax.validation.constraints.NegativeOrZero(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+   @javax.validation.constraints.NegativeOrZero«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE PositiveOrZeroAnnotation FOR PositiveOrZero»
-   @javax.validation.constraints.PositiveOrZero(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+   @javax.validation.constraints.PositiveOrZero«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE PositiveAnnotation FOR Positive»
-   @javax.validation.constraints.Positive(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+   @javax.validation.constraints.Positive«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE SizeAnnotation FOR Size»
@@ -185,47 +189,47 @@ public @interface «validationClass» {
 «ENDDEFINE»
 
 «DEFINE NotEmptyAnnotation FOR NotEmpty»
-   @javax.validation.constraints.NotEmpty(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+   @javax.validation.constraints.NotEmpty«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE NullAnnotation FOR Null»
-   @javax.validation.constraints.Null(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+   @javax.validation.constraints.Null«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE NotNullAnnotation FOR NotNull»
-   @javax.validation.constraints.NotNull(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+   @javax.validation.constraints.NotNull«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE AssertTrueAnnotation FOR AssertTrue»
-   @javax.validation.constraints.AssertTrue(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+   @javax.validation.constraints.AssertTrue«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE AssertFalseAnnotation FOR AssertFalse»
-   @javax.validation.constraints.AssertFalse(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+   @javax.validation.constraints.AssertFalse«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE NotBlankAnnotation FOR NotBlank»
-   @javax.validation.constraints.NotBlank(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+   @javax.validation.constraints.NotBlank«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE PastAnnotation FOR Past»
-   @javax.validation.constraints.Past(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+   @javax.validation.constraints.Past«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE PastOrPresentAnnotation FOR PastOrPresent»
-   @javax.validation.constraints.PastOrPresent(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+   @javax.validation.constraints.PastOrPresent«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE FutureOrPresentAnnotation FOR FutureOrPresent»
-   @javax.validation.constraints.FutureOrPresent(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+   @javax.validation.constraints.FutureOrPresent«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE FutureAnnotation FOR Future»
-   @javax.validation.constraints.Future(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+   @javax.validation.constraints.Future«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE ValidAnnotation FOR Valid -»
-   @javax.validation.Valid(«EXPAND ValidationAnnotationBasicsEmptyValidation»)
+   @javax.validation.Valid«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE CustomValidationAnnotation(Stereotype stereotype) FOR Element»

@@ -314,6 +314,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateJacksonAnnotations;
 
   /**
+   * Switch defines if Java Validation Annotation @Valid will be generated for all generated POJO, ServiceObjects,
+   * DomainObject and PersistentObjects even in cases when it is not defined in the UML model.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateValidAnnotationForClasses;
+
+  /**
    * Switch defines whether Java Validation Annotations should not only be generated for explicitly modeled annotations
    * but also from multiplicity of modeled attributes.
    */
@@ -693,10 +700,15 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate Message Constants:                       " + generateMessageConstants);
     }
     if (generateValidationAnnotationsForAttributesFromMultiplicity) {
-      lLog.info("Generate Validation Annotations for Attributes:   " + generateMessageConstants);
+      lLog.info("Generate @Valid Annotations for classes:   " + generateValidAnnotationForClasses);
+    }
+    if (generateValidationAnnotationsForAttributesFromMultiplicity) {
+      lLog.info("Generate Validation Annotations for attributes:   "
+          + generateValidationAnnotationsForAttributesFromMultiplicity);
     }
     if (generateValidationAnnotationsForAssociationsFromMultiplicity) {
-      lLog.info("Generate Validation Annotations for Associations: " + generateMessageConstants);
+      lLog.info("Generate Validation Annotations for associations: "
+          + generateValidationAnnotationsForAssociationsFromMultiplicity);
     }
     if (generatePersistentObjects) {
       lLog.info("Generate Persistent Objects:                      " + generatePersistentObjects);
@@ -790,6 +802,7 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty("switch.gen.suppress.classname.openapi", suppressClassNameCommentInOpenAPISpec.toString());
 
+      System.setProperty("switch.gen.enable.valid.annotation.classes", generateValidAnnotationForClasses.toString());
       System.setProperty("switch.gen.enable.validation.annotation.attributes",
           generateValidationAnnotationsForAttributesFromMultiplicity.toString());
       System.setProperty("switch.gen.enable.validation.annotation.associations",

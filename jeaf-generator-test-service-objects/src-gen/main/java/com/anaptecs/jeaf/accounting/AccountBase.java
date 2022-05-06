@@ -34,7 +34,7 @@ import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@Valid()
+@Valid
 public abstract class AccountBase implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
@@ -97,7 +97,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   /**
    * 
    */
-  @Valid()
+  @Valid
   @Size(min = 0, max = 100)
   private Set<Booking> bookings = new HashSet<Booking>();
 
@@ -617,7 +617,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
    * 
    * @return {@link Double}
    */
-  @NotNull()
+  @NotNull
   public abstract Double calclulateBalance( );
 
   /**

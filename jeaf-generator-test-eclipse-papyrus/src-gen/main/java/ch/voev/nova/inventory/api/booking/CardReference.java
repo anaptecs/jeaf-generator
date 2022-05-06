@@ -58,7 +58,7 @@ public class CardReference {
   /**
    * Code of the card type according to issuer.
    */
-  @NotNull()
+  @NotNull
   private String code;
 
   /**
@@ -115,7 +115,7 @@ public class CardReference {
     /**
      * Code of the card type according to issuer.
      */
-    @NotNull()
+    @NotNull
     private String code;
 
     /**

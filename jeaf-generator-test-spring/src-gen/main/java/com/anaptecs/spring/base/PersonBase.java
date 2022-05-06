@@ -13,7 +13,7 @@ import javax.validation.Valid;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@Valid()
+@Valid
 public abstract class PersonBase extends Partner {
   /**
    * Constant for the name of attribute "surname".

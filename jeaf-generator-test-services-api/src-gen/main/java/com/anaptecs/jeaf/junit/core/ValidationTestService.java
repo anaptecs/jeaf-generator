@@ -23,8 +23,8 @@ public interface ValidationTestService extends Service {
    * @param pString2
    * @return {@link String}
    */
-  @NotNull()
-  String validateInNOutput( @NotNull() String pString1, @NotEmpty() String pString2 );
+  @NotNull
+  String validateInNOutput( @NotNull String pString1, @NotEmpty String pString2 );
 
   /**
    * 
@@ -32,8 +32,8 @@ public interface ValidationTestService extends Service {
    * @param pString2
    * @return {@link String}
    */
-  @NotNull()
-  String notValidOutput( String pString1, @NotEmpty() String pString2 );
+  @NotNull
+  String notValidOutput( String pString1, @NotEmpty String pString2 );
 
   /**
    * 
@@ -41,7 +41,7 @@ public interface ValidationTestService extends Service {
    * @param pString2
    * @return {@link String}
    */
-  @NotNull()
+  @NotNull
   String validateOutputOnly( String pString1, String pString2 );
 
   /**
@@ -64,5 +64,5 @@ public interface ValidationTestService extends Service {
    * 
    * @param pTestObject
    */
-  void createValidationTestObject( @Valid() ValidationTestObject pTestObject );
+  void createValidationTestObject( @Valid ValidationTestObject pTestObject );
 }

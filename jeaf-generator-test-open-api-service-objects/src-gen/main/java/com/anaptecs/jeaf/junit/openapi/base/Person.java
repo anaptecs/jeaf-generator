@@ -11,7 +11,7 @@ import javax.validation.Valid;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-@Valid()
+@Valid
 public class Person extends PersonBase {
   /**
    * Default serial version uid.

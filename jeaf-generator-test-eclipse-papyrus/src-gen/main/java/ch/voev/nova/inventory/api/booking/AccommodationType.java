@@ -29,7 +29,7 @@ public class AccommodationType {
    * Accommodation type definition out of the Accommodation Type Code List <br/>
    * <b>Default Value:</b> <code>"SEAT"</code>
    */
-  @NotNull()
+  @NotNull
   private String code;
 
   /**
@@ -60,7 +60,7 @@ public class AccommodationType {
     /**
      * Accommodation type definition out of the Accommodation Type Code List
      */
-    @NotNull()
+    @NotNull
     private String code = "SEAT";
 
     /**

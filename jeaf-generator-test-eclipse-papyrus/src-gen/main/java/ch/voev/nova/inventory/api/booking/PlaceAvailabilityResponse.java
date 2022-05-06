@@ -43,7 +43,7 @@ public class PlaceAvailabilityResponse {
   /**
    * 
    */
-  @NotNull()
+  @NotNull
   private List<TripAvailability> tripAvailabilities = new ArrayList<TripAvailability>();
 
   /**

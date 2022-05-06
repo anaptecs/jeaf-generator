@@ -32,7 +32,7 @@ import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@Valid()
+@Valid
 public abstract class ResellerBase implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
@@ -82,7 +82,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   /**
    * 
    */
-  @NotBlank()
+  @NotBlank
   @Size(min = 0, max = 32)
   private String name;
 
@@ -153,7 +153,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     /**
      * 
      */
-    @NotBlank()
+    @NotBlank
     @Size(min = 0, max = 32)
     private String name;
 

@@ -42,7 +42,7 @@ public class Context {
   /**
    * 
    */
-  @NotEmpty()
+  @NotEmpty
   private String accessToken;
 
   /**
@@ -96,7 +96,7 @@ public class Context {
     /**
      * 
      */
-    @NotEmpty()
+    @NotEmpty
     private String accessToken;
 
     /**

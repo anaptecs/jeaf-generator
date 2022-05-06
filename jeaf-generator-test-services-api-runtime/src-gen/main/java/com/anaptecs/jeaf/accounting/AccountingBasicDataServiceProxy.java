@@ -65,7 +65,7 @@ public final class AccountingBasicDataServiceProxy extends ServiceProxy implemen
    * @return Bank Service object describing the created bank object. The returned object contains besides the attributes
    * also the object id of the created persistent bank object. The method never returns null.
    */
-  public Bank createBank( @Valid() @NotNull() Bank pBank ) {
+  public Bank createBank( @Valid @NotNull Bank pBank ) {
     try {
       Command lCommand = new CreateBank_Bank_AccountingBasicDataService_Command(pBank);
       return (Bank) this.executeCommand(lCommand);
@@ -239,7 +239,7 @@ final class CreateBank_Bank_AccountingBasicDataService_Command extends Command {
    * 
    * @param pBank Bank
    */
-  CreateBank_Bank_AccountingBasicDataService_Command( @Valid() @NotNull() Bank pBank ) {
+  CreateBank_Bank_AccountingBasicDataService_Command( @Valid @NotNull Bank pBank ) {
     super(AccountingBasicDataService.class);
     bank = pBank;
     parameters = new Object[] { bank };

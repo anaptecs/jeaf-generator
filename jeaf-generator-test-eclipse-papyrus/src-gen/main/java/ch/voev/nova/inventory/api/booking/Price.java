@@ -53,7 +53,7 @@ public class Price {
   /**
    * amount in cents
    */
-  @NotNull()
+  @NotNull
   private int amount;
 
   /**
@@ -105,7 +105,7 @@ public class Price {
     /**
      * amount in cents
      */
-    @NotNull()
+    @NotNull
     private int amount;
 
     /**

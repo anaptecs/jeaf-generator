@@ -74,14 +74,14 @@ public class PlaceAvailability {
    * <br/>
    * <b>Example:</b> <code>id-1</code>
    */
-  @NotNull()
+  @NotNull
   private String id;
 
   /**
    * <br/>
    * <b>Example:</b> <code>leg-1</code>
    */
-  @NotNull()
+  @NotNull
   private String legId;
 
   /**
@@ -159,13 +159,13 @@ public class PlaceAvailability {
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private String id;
 
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private String legId;
 
     /**

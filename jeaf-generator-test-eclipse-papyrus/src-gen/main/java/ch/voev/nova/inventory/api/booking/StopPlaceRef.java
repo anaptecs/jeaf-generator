@@ -33,7 +33,7 @@ public class StopPlaceRef extends PlaceRef {
    * <br/>
    * <b>Example:</b> <code>urn:uic:stn:8503000</code>
    */
-  @NotNull()
+  @NotNull
   private String stopPlaceRef;
 
   /**
@@ -71,7 +71,7 @@ public class StopPlaceRef extends PlaceRef {
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private String stopPlaceRef;
 
     /**

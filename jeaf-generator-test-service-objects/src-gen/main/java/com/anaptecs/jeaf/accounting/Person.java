@@ -80,19 +80,19 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
-  @NotBlank()
+  @NotBlank
   private String name;
 
   /**
    * 
    */
-  @NotBlank()
+  @NotBlank
   private String firstName;
 
   /**
    * 
    */
-  @PastOrPresent()
+  @PastOrPresent
   private Calendar dateOfBirth;
 
   /**
@@ -103,19 +103,19 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
-  @Valid()
+  @Valid
   private Individual customer;
 
   /**
    * 
    */
-  @PositiveOrZero()
+  @PositiveOrZero
   private Integer age;
 
   /**
    * 
    */
-  @NotBlank()
+  @NotBlank
   private String displayName;
 
   /**
@@ -167,19 +167,19 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     /**
      * 
      */
-    @NotBlank()
+    @NotBlank
     private String name;
 
     /**
      * 
      */
-    @NotBlank()
+    @NotBlank
     private String firstName;
 
     /**
      * 
      */
-    @PastOrPresent()
+    @PastOrPresent
     private Calendar dateOfBirth;
 
     /**
@@ -195,13 +195,13 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     /**
      * 
      */
-    @PositiveOrZero()
+    @PositiveOrZero
     private Integer age;
 
     /**
      * 
      */
-    @NotBlank()
+    @NotBlank
     private String displayName;
 
     /**

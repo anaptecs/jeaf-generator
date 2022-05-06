@@ -35,7 +35,7 @@ public class Context implements ServiceObject {
    * 
    */
   @HeaderParam("token")
-  @NotEmpty()
+  @NotEmpty
   private String accessToken;
 
   /**
@@ -97,7 +97,7 @@ public class Context implements ServiceObject {
     /**
      * 
      */
-    @NotEmpty()
+    @NotEmpty
     private String accessToken;
 
     /**

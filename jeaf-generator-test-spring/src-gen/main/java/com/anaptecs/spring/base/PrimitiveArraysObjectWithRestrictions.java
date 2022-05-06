@@ -180,7 +180,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * 
    */
-  @NotEmpty()
+  @NotEmpty
   private long[] aLongArray;
 
   /**
@@ -338,7 +338,7 @@ public class PrimitiveArraysObjectWithRestrictions {
     /**
      * 
      */
-    @NotEmpty()
+    @NotEmpty
     private long[] aLongArray;
 
     /**

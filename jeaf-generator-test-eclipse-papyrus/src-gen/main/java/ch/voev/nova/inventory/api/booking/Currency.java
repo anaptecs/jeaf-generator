@@ -29,7 +29,7 @@ public class Currency {
    * ISO 4217 currency codes <br/>
    * <b>Example:</b> <code>CHF, EUR, SEK</code>
    */
-  @NotNull()
+  @NotNull
   private String code;
 
   /**
@@ -60,7 +60,7 @@ public class Currency {
     /**
      * ISO 4217 currency codes
      */
-    @NotNull()
+    @NotNull
     private String code;
 
     /**

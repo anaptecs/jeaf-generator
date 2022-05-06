@@ -19,7 +19,7 @@ import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@Valid()
+@Valid
 public abstract class PersonBase extends Partner {
   /**
    * Default serial version uid.

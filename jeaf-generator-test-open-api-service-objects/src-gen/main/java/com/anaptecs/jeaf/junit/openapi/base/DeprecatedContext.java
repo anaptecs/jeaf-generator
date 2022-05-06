@@ -35,7 +35,7 @@ public class DeprecatedContext implements ServiceObject {
    * 
    */
   @HeaderParam("token")
-  @NotEmpty()
+  @NotEmpty
   private String accessToken;
 
   /**
@@ -91,7 +91,7 @@ public class DeprecatedContext implements ServiceObject {
     /**
      * 
      */
-    @NotEmpty()
+    @NotEmpty
     private String accessToken;
 
     /**

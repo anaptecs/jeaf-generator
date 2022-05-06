@@ -42,13 +42,13 @@ public class ValidationTestObject implements ServiceObject {
    * 
    */
   @Email()
-  @NotNull()
+  @NotNull
   private String myEMail;
 
   /**
    * 
    */
-  @Past()
+  @Past
   private Calendar dateOfBirth;
 
   /**
@@ -81,13 +81,13 @@ public class ValidationTestObject implements ServiceObject {
      * 
      */
     @Email()
-    @NotNull()
+    @NotNull
     private String myEMail;
 
     /**
      * 
      */
-    @Past()
+    @Past
     private Calendar dateOfBirth;
 
     /**

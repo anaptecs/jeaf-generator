@@ -32,7 +32,7 @@ public class PointOfInterestRef extends PlaceRef {
   /**
    * 
    */
-  @NotNull()
+  @NotNull
   private String pointOfInterestRef;
 
   /**
@@ -69,7 +69,7 @@ public class PointOfInterestRef extends PlaceRef {
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private String pointOfInterestRef;
 
     /**

@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-@Valid()
+@Valid
 @JsonIdentityInfo(property = "objectID", generator = PropertyGenerator.class)
 public class Reseller extends ResellerBase {
   /**

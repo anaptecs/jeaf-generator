@@ -22,7 +22,7 @@ import javax.validation.constraints.Size;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@Valid()
+@Valid
 public abstract class ResellerBase {
   /**
    * Constant for the name of attribute "channels".
@@ -62,7 +62,7 @@ public abstract class ResellerBase {
   /**
    * 
    */
-  @NotBlank()
+  @NotBlank
   @Size(min = 0, max = 32)
   private String name;
 
@@ -118,7 +118,7 @@ public abstract class ResellerBase {
     /**
      * 
      */
-    @NotBlank()
+    @NotBlank
     @Size(min = 0, max = 32)
     private String name;
 

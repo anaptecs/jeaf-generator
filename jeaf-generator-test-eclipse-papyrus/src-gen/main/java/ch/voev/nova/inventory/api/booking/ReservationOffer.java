@@ -53,14 +53,14 @@ public class ReservationOffer {
   /**
    * 
    */
-  @NotNull()
+  @NotNull
   private String id;
 
   /**
    * The product code expressed in the provider system (could be a mapping from an even lower-level provider). <br/>
    * <b>Example:</b> <code>Reservierungsentgelt</code>
    */
-  @NotNull()
+  @NotNull
   private String productCode;
 
   /**
@@ -76,7 +76,7 @@ public class ReservationOffer {
   /**
    * 
    */
-  @NotNull()
+  @NotNull
   private String placeAvailabilityId;
 
   /**
@@ -113,13 +113,13 @@ public class ReservationOffer {
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private String id;
 
     /**
      * The product code expressed in the provider system (could be a mapping from an even lower-level provider).
      */
-    @NotNull()
+    @NotNull
     private String productCode;
 
     /**
@@ -135,7 +135,7 @@ public class ReservationOffer {
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private String placeAvailabilityId;
 
     /**

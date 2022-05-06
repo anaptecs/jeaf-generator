@@ -60,7 +60,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
   /**
    * 
    */
-  @NotNull()
+  @NotNull
   private Boolean active;
 
   /**
@@ -71,19 +71,19 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
   /**
    * 
    */
-  @Positive()
+  @Positive
   private Integer zipCode;
 
   /**
    * 
    */
-  @NotBlank()
+  @NotBlank
   private String city;
 
   /**
    * 
    */
-  @NotBlank()
+  @NotBlank
   private String country;
 
   /**
@@ -131,7 +131,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private Boolean active;
 
     /**
@@ -142,19 +142,19 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
     /**
      * 
      */
-    @Positive()
+    @Positive
     private Integer zipCode;
 
     /**
      * 
      */
-    @NotBlank()
+    @NotBlank
     private String city;
 
     /**
      * 
      */
-    @NotBlank()
+    @NotBlank
     private String country;
 
     /**

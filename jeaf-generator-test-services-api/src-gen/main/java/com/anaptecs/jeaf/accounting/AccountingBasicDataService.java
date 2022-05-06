@@ -35,7 +35,7 @@ public interface AccountingBasicDataService extends Service {
    * @param pBank
    * @return {@link Bank}
    */
-  Bank createBank( @Valid() @NotNull() Bank pBank );
+  Bank createBank( @Valid @NotNull Bank pBank );
 
   /**
    * 

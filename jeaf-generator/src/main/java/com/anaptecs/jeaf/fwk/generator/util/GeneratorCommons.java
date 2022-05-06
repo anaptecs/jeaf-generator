@@ -193,6 +193,8 @@ public class GeneratorCommons {
 
   public static final String GENERATION_COMMENT = "switch.gen.generation.comment";
 
+  public static final String VALID_ANNOTATION_FOR_CLASSES = "switch.gen.enable.valid.annotation.classes";
+
   public static final String VALIDATION_ANNOTATION_FOR_ATTRIBUTES =
       "switch.gen.enable.validation.annotation.attributes";
 
@@ -757,6 +759,11 @@ public class GeneratorCommons {
       lBuilder.append("\"com.anaptecs.jeaf.generator.JEAFGenerator\"");
     }
     return lBuilder.toString();
+  }
+
+  public static boolean generateValidAnnotationsForClasses( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(VALID_ANNOTATION_FOR_CLASSES, Boolean.TRUE, Boolean.class);
   }
 
   public static boolean generateValidationAnnotationsForAttributesFromMultiplicity( ) {

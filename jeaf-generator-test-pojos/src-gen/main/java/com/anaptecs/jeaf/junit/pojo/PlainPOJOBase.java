@@ -41,7 +41,7 @@ public abstract class PlainPOJOBase {
   /**
    * 
    */
-  @PositiveOrZero()
+  @PositiveOrZero
   private Integer world;
 
   /**
@@ -78,7 +78,7 @@ public abstract class PlainPOJOBase {
     /**
      * 
      */
-    @PositiveOrZero()
+    @PositiveOrZero
     private Integer world;
 
     /**

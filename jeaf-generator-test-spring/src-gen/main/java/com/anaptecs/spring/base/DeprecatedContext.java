@@ -38,7 +38,7 @@ public class DeprecatedContext {
   /**
    * 
    */
-  @NotEmpty()
+  @NotEmpty
   private String accessToken;
 
   /**
@@ -87,7 +87,7 @@ public class DeprecatedContext {
     /**
      * 
      */
-    @NotEmpty()
+    @NotEmpty
     private String accessToken;
 
     /**

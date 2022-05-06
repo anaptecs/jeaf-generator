@@ -165,13 +165,13 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
-  @Negative()
+  @Negative
   private byte aByte;
 
   /**
    * 
    */
-  @NegativeOrZero()
+  @NegativeOrZero
   private Byte bByte;
 
   /**
@@ -183,13 +183,13 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
-  @Positive()
+  @Positive
   private Short bShort;
 
   /**
    * 
    */
-  @PositiveOrZero()
+  @PositiveOrZero
   private int aInteger;
 
   /**
@@ -270,7 +270,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * 
    */
-  @NotEmpty()
+  @NotEmpty
   @Size(min = 0, max = 128)
   private String bString;
 
@@ -340,13 +340,13 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
-    @Negative()
+    @Negative
     private byte aByte;
 
     /**
      * 
      */
-    @NegativeOrZero()
+    @NegativeOrZero
     private Byte bByte;
 
     /**
@@ -358,13 +358,13 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
-    @Positive()
+    @Positive
     private Short bShort;
 
     /**
      * 
      */
-    @PositiveOrZero()
+    @PositiveOrZero
     private int aInteger;
 
     /**
@@ -443,7 +443,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * 
      */
-    @NotEmpty()
+    @NotEmpty
     @Size(min = 0, max = 128)
     private String bString;
 

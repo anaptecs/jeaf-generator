@@ -43,7 +43,7 @@ public interface ProductService extends Service {
    * @param pProductID
    * @return {@link Product}
    */
-  Product getProduct( @NotEmpty() String pProductID );
+  Product getProduct( @NotEmpty String pProductID );
 
   /**
    * 
@@ -64,7 +64,7 @@ public interface ProductService extends Service {
    * @param pChannelCode
    * @return {@link ChannelCode}
    */
-  ChannelCode createChannelCode( @NotBlank() String pChannelCode );
+  ChannelCode createChannelCode( @NotBlank String pChannelCode );
 
   /**
   * 

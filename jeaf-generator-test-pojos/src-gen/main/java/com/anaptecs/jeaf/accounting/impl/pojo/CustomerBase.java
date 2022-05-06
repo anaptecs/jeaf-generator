@@ -53,13 +53,13 @@ public abstract class CustomerBase {
   /**
    * 
    */
-  @NotBlank()
+  @NotBlank
   private String name;
 
   /**
    * 
    */
-  @NotBlank()
+  @NotBlank
   private String firstName;
 
   /**
@@ -106,13 +106,13 @@ public abstract class CustomerBase {
     /**
      * 
      */
-    @NotBlank()
+    @NotBlank
     private String name;
 
     /**
      * 
      */
-    @NotBlank()
+    @NotBlank
     private String firstName;
 
     /**

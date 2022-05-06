@@ -44,7 +44,7 @@ public class Warning {
   /**
    * 
    */
-  @NotNull()
+  @NotNull
   private String code;
 
   /**
@@ -98,7 +98,7 @@ public class Warning {
     /**
      * 
      */
-    @NotNull()
+    @NotNull
     private String code;
 
     /**
