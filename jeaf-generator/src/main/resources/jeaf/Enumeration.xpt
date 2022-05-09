@@ -278,7 +278,7 @@ public final class «name» {
 		    }
 		    // Node is not a TextNode
 		    else {
-		      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.json.api.JSONMessages.UNEXPECTED_NODE_TYPE_FOR_OBJECT_ID_DESERIAL, lNode.toString(), lNode.getClass().getName());
+		      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.json.api.JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION, lNode.toString(), lNode.getClass().getName());
 		    }
 		}
 	}
