@@ -78,6 +78,14 @@ public class GeneratorMojo extends AbstractMojo {
   private MavenProject project;
 
   /**
+   * UML Modeling Tool that was used to create the UML Model. By default it is assumed that MagicDraw UML was used.
+   * 
+   * Supported values are (case sensitive): MAGIC_DRAW, ECLIPSE_PAPYRUS, OTHER
+   */
+  @Parameter(required = false, defaultValue = "MAGIC_DRAW")
+  private ModelingTool umlModellingTool;
+
+  /**
    * Directory which contains all XMI files. The files have to be exported from MagicDraw UML using its Eclipse UML2
    * Export v2.x (File - Export To - Eclipse UML2 (v2.0x) XMI File)
    */
@@ -601,6 +609,7 @@ public class GeneratorMojo extends AbstractMojo {
     lLog.info("res:                                              " + resourceDirectory);
     lLog.info("res-gen:                                          " + resourceGenDirectory);
     lLog.info(" ");
+    lLog.info("UML Modelling Tool:                               " + umlModellingTool.getDisplayName());
     lLog.info("Target Runtime:                                   " + targetRuntime.name());
     lLog.info(" ");
     lLog.info("Code-Style:                                       " + xmlFormatterStyleFile);
@@ -873,28 +882,33 @@ public class GeneratorMojo extends AbstractMojo {
     List<String> lUMLFiles = lFileTools.listFiles(lXMIFiles, lFileTools.createExtensionFilenameFilter(lExtensions));
 
     // Fix all XMI files
-    String lCurrentFile = null;
-    try {
-      for (String lNextFileName : lUMLFiles) {
-        lCurrentFile = lNextFileName;
-        Path lNextFile = Paths.get(lNextFileName);
-        Stream<String> lLines = Files.lines(lNextFile);
-        List<String> lReplacement =
-            lLines.map(line -> line.replaceAll("xmlns:uml=\"http://www.eclipse.org/uml2/5.0.0/UML\"",
-                "xmlns:uml=\"http://www.eclipse.org/uml2/2.0.0/UML\"")).collect(Collectors.toList());
-        lReplacement = lReplacement.stream()
-            .map(line -> line.replaceAll("xmlns:standard=\"http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard\"",
-                "xmlns:standard=\"http://www.eclipse.org/uml2/schemas/Standard/1\""))
-            .collect(Collectors.toList());
-        Files.write(lNextFile, lReplacement);
-        lLines.close();
+    if (umlModellingTool != ModelingTool.MAGIC_DRAW) {
+      this.getLog().info("Preparing XMI files to be processed by JEAF Generator");
+      String lCurrentFile = null;
+      try {
+        for (String lNextFileName : lUMLFiles) {
+          lCurrentFile = lNextFileName;
+          Path lNextFile = Paths.get(lNextFileName);
+          Stream<String> lLines = Files.lines(lNextFile);
+          List<String> lReplacement =
+              lLines.map(line -> line.replaceAll("xmlns:uml=\"http://www.eclipse.org/uml2/5.0.0/UML\"",
+                  "xmlns:uml=\"http://www.eclipse.org/uml2/2.0.0/UML\"")).collect(Collectors.toList());
+          lReplacement = lReplacement.stream()
+              .map(line -> line.replaceAll("xmlns:standard=\"http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard\"",
+                  "xmlns:standard=\"http://www.eclipse.org/uml2/schemas/Standard/1\""))
+              .collect(Collectors.toList());
+          Files.write(lNextFile, lReplacement);
+          lLines.close();
+        }
+      }
+      catch (IOException e) {
+        throw new MojoFailureException("Unable to process XMI file" + lCurrentFile, e);
       }
     }
-    catch (IOException e) {
-      throw new MojoFailureException("Unable to process XMI file" + lCurrentFile, e);
-    }
     lStopwatch.stop();
-    this.getLog().info("XMI file preparation took " + lStopwatch.getResult().getDuration() + "ms");
+    if (umlModellingTool != ModelingTool.MAGIC_DRAW) {
+      this.getLog().info("XMI file preparation took " + lStopwatch.getResult().getDuration() + "ms");
+    }
   }
 
   /**
@@ -910,7 +924,12 @@ public class GeneratorMojo extends AbstractMojo {
     String lXMIDirectory;
     StringTools lTools = Tools.getStringTools();
     if (lTools.isRealString(xmiDirectory)) {
-      lXMIDirectory = lExtractDirectory;
+      if (umlModellingTool == ModelingTool.MAGIC_DRAW) {
+        lXMIDirectory = xmiDirectory;
+      }
+      else {
+        lXMIDirectory = lExtractDirectory;
+      }
     }
     // Try to find XMI files inside artifact
     else if (lTools.isRealString(modelArtifactGroupID) && lTools.isRealString(modelArtifactArtifactID)) {
@@ -926,7 +945,6 @@ public class GeneratorMojo extends AbstractMojo {
       throw new MojoFailureException(
           "Path to UML model (XMI) is neither defined as direct directory (config parameter 'xmiDirectory') nor through a Maven artifact (config parameters 'modelArtifactXXX'.");
     }
-    this.getLog().info(lXMIDirectory);
     return lXMIDirectory;
   }
 
@@ -945,27 +963,31 @@ public class GeneratorMojo extends AbstractMojo {
     if (lTools.isRealString(xmiDirectory)) {
       // Delete may be existing directory with XMI files.
       lXMIDirectoryPath = this.getXMIDirectoryLocation();
-      FileTools lFileTools = Tools.getFileTools();
-      lFileTools.tryDeleteRecursive(lXMIDirectoryPath, true);
 
-      File lXMIDirectory = new File(lXMIDirectoryPath);
-      lFileTools.createDirectory(lXMIDirectory);
+      // In case that UML Modeling Tool is not MagicDraw UML then XMI files need to be manipulated before they can be
+      // processed. Thar's why we need to copy them first.
+      if (umlModellingTool != ModelingTool.MAGIC_DRAW) {
+        FileTools lFileTools = Tools.getFileTools();
+        lFileTools.tryDeleteRecursive(lXMIDirectoryPath, true);
 
-      List<String> lExtensions = new ArrayList<>();
-      lExtensions.add("*.uml");
-      List<String> lUMLFiles =
-          lFileTools.listFiles(xmiDirectory, lFileTools.createExtensionFilenameFilter(lExtensions));
+        File lXMIDirectory = new File(lXMIDirectoryPath);
+        lFileTools.createDirectory(lXMIDirectory);
 
-      try {
-        for (String lFile : lUMLFiles) {
-          File lSourceFile = new File(lFile);
-          lFileTools.copyFile(lSourceFile, new File(lXMIDirectoryPath, lSourceFile.getName()));
+        List<String> lExtensions = new ArrayList<>();
+        lExtensions.add("*.uml");
+        List<String> lUMLFiles =
+            lFileTools.listFiles(xmiDirectory, lFileTools.createExtensionFilenameFilter(lExtensions));
+
+        try {
+          for (String lFile : lUMLFiles) {
+            File lSourceFile = new File(lFile);
+            lFileTools.copyFile(lSourceFile, new File(lXMIDirectoryPath, lSourceFile.getName()));
+          }
+        }
+        catch (IOException e) {
+          throw new MojoFailureException("Unable to copy XMI files to working directory.", e);
         }
       }
-      catch (IOException e) {
-        throw new MojoFailureException("Unable to copy XMI files to working directory.", e);
-      }
-
     }
     // Try to find XMI files inside artifact
     else if (lTools.isRealString(modelArtifactGroupID) && lTools.isRealString(modelArtifactArtifactID)) {
@@ -1002,6 +1024,7 @@ public class GeneratorMojo extends AbstractMojo {
       throw new MojoFailureException(
           "Path to UML model (XMI) is neither defined as direct directory (config parameter 'xmiDirectory') nor through a Maven artifact (config parameters 'modelArtifactXXX'.");
     }
+    this.getLog().debug("XMI Working Directory: " + lXMIDirectoryPath);
     return lXMIDirectoryPath;
   }
 
