@@ -1,15 +1,13 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
  * 
- * Copyright 2004 - 2021. All rights reserved.
+ * Copyright 2004 - 2019. All rights reserved.
  */
-package com.anaptecs.jeaf.junit.openapi.base.serializers;
+package com.anaptecs.spring.base.serializers;
 
 import java.io.IOException;
 
-import com.anaptecs.jeaf.json.api.JSONMessages;
-import com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum;
-import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
+import com.anaptecs.spring.base.ExtensibleEnum;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -31,8 +29,9 @@ public class ExtensibleEnumDeserializer extends JsonDeserializer<ExtensibleEnum>
     }
     // Node is not a TextNode
     else {
-      throw new JEAFSystemException(JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION,
-          ExtensibleEnum.class.getName(), lNode.toString(), lNode.getClass().getName());
+      throw new IOException(
+          "Unable to deserialize object of type ''ExtensibleEnum''. Expected text node but received other type of JSON content. Current JSON node ''"
+              + lNode.toString() + "'' is of type ''" + lNode.getClass().getName() + "''.");
     }
   }
 }

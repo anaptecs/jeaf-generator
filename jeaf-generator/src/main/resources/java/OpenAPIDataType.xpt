@@ -272,12 +272,16 @@
 		/**
 		 * Factory assembles all configured serializers / deserializers into a module.
 		 */
+		«IF isTargetRuntimeJEAF()»
 		@com.anaptecs.jeaf.json.annotations.ModuleFactory
-		public class «name» implements com.anaptecs.jeaf.json.api.ObjectMapperModuleFactory {
+		«ENDIF»
+		public class «name» «IF isTargetRuntimeJEAF()»implements com.anaptecs.jeaf.json.api.ObjectMapperModuleFactory«ENDIF» {
 			/**
 			 * Method creates a module that consists of all serializers / deserializers of the current package.
 			 */
+			«IF isTargetRuntimeJEAF()»
 			@Override
+			«ENDIF»
 			public com.fasterxml.jackson.databind.Module createModule( ) {
 				// Create module for serializers / deserializers that are located in this package
 				com.fasterxml.jackson.databind.module.SimpleModule lModule = new com.fasterxml.jackson.databind.module.SimpleModule(this.getClass().getName());
