@@ -28,8 +28,17 @@ public class DeprecatedRESTServiceResource {
    */
   @GET
   public Response doSomething( ) {
-    DeprecatedRESTService lService = JEAF.getService(DeprecatedRESTService.class);
+    DeprecatedRESTService lService = this.getDeprecatedRESTService();
     lService.doSomething();
     return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * Method returns reference to service to which all REST requests will be delegated.
+   *
+   * @return DeprecatedRESTService Service instance to which all requests will be delegated.
+   */
+  private DeprecatedRESTService getDeprecatedRESTService( ) {
+    return JEAF.getService(DeprecatedRESTService.class);
   }
 }

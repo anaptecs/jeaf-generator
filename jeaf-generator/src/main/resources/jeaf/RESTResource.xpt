@@ -17,7 +17,24 @@ package «packageName()»;
 «IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
 «EXPAND java::Helper::GenerateDeprecationAnnotation -»
 public class «name»Resource {
+	«IF isTargetRuntimeJEAF() == false»
+	@javax.inject.Inject
+	private «this.fqn()» «name.toFirstLower()»;
+	«ENDIF»
 	«EXPAND RESTOperationImpl FOREACH ownedOperation.typeSelect(RESTOperation)»
+	
+	/**
+	 * Method returns reference to service to which all REST requests will be delegated.
+	 *
+	 * @return «this.name» Service instance to which all requests will be delegated.
+	 */
+	private «this.fqn()» get«name»() {
+	  «IF isTargetRuntimeJEAF() == false»
+	  return «name.toFirstLower()»;
+	  «ELSE»
+	  return com.anaptecs.jeaf.core.api.JEAF.getService(«this.fqn()».class);
+	  «ENDIF»
+	}
 }
 «ENDFILE»
 «ENDDEFINE»
@@ -42,7 +59,7 @@ public class «name»Resource {
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
 	public javax.ws.rs.core.Response  «name» («EXPAND RESTParameterSignature FOR this»)«getThrownExceptionsAsString()»{
-	  «this.getOwningClass().fqn()» lService = com.anaptecs.jeaf.core.api.JEAF.getService(«this.getOwningClass().fqn()».class);
+	  «this.getOwningClass().fqn()» lService = this.get«this.getOwningClass().name»();
 	  «IF getReturnTypeName() != "void"»
 	  «getReturnTypeName()» lResult = lService.«this.name»(«this.asParameterListNames()»);
 	  return javax.ws.rs.core.Response.status(«EXPAND StatusCode»).entity(lResult).build();

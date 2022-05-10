@@ -39,7 +39,7 @@ public class AccountingServiceResource {
   @Path("/accounts")
   @PUT
   public Response createAccount( Customer pCustomer, Person pAuthorizedPerson ) {
-    AccountingService lService = JEAF.getService(AccountingService.class);
+    AccountingService lService = this.getAccountingService();
     Account lResult = lService.createAccount(pCustomer, pAuthorizedPerson);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
@@ -77,5 +77,14 @@ public class AccountingServiceResource {
         }
       }
     });
+  }
+
+  /**
+   * Method returns reference to service to which all REST requests will be delegated.
+   *
+   * @return AccountingService Service instance to which all requests will be delegated.
+   */
+  private AccountingService getAccountingService( ) {
+    return JEAF.getService(AccountingService.class);
   }
 }

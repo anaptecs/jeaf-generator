@@ -44,7 +44,7 @@ public class RESTTestServiceResource {
    */
   @GET
   public Response getResource( String pID ) {
-    RESTTestService lService = JEAF.getService(RESTTestService.class);
+    RESTTestService lService = this.getRESTTestService();
     String lResult = lService.getResource(pID);
     return Response.status(Response.Status.ACCEPTED).entity(lResult).build();
   }
@@ -90,7 +90,7 @@ public class RESTTestServiceResource {
   @PUT
   @Consumes(MediaType.APPLICATION_OCTET_STREAM)
   public Response doSomethingRESTy( ) {
-    RESTTestService lService = JEAF.getService(RESTTestService.class);
+    RESTTestService lService = this.getRESTTestService();
     lService.doSomethingRESTy();
     return Response.status(Response.Status.OK).build();
   }
@@ -103,7 +103,7 @@ public class RESTTestServiceResource {
   @Produces(MediaType.APPLICATION_JSON)
   public Response yetAnotherRESTOperation( @PathParam("id") String pID, @HeaderParam("token") String pToken,
       @QueryParam("filter") String pQueryParam1, @CookieParam("cookieEntry") String pCookieParam ) {
-    RESTTestService lService = JEAF.getService(RESTTestService.class);
+    RESTTestService lService = this.getRESTTestService();
     boolean lResult = lService.yetAnotherRESTOperation(pID, pToken, pQueryParam1, pCookieParam);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
@@ -114,7 +114,7 @@ public class RESTTestServiceResource {
   @Path("beanParam1")
   @GET
   public Response handleBeanParam1( @BeanParam Context pContext ) {
-    RESTTestService lService = JEAF.getService(RESTTestService.class);
+    RESTTestService lService = this.getRESTTestService();
     lService.handleBeanParam1(pContext);
     return Response.status(Response.Status.OK).build();
   }
@@ -125,7 +125,7 @@ public class RESTTestServiceResource {
   @Path("beanParam2")
   @POST
   public Response handleBeanParam1( @BeanParam BeanParameter pBeanParam ) {
-    RESTTestService lService = JEAF.getService(RESTTestService.class);
+    RESTTestService lService = this.getRESTTestService();
     lService.handleBeanParam1(pBeanParam);
     return Response.status(Response.Status.OK).build();
   }
@@ -137,7 +137,7 @@ public class RESTTestServiceResource {
   @GET
   @Deprecated
   public Response deprecatedOperation( ) {
-    RESTTestService lService = JEAF.getService(RESTTestService.class);
+    RESTTestService lService = this.getRESTTestService();
     lService.deprecatedOperation();
     return Response.status(Response.Status.OK).build();
   }
@@ -148,7 +148,7 @@ public class RESTTestServiceResource {
   @Path("deprecation/dep2")
   @GET
   public Response deprecatedParameter( int pParam1, @Deprecated int pParam2 ) {
-    RESTTestService lService = JEAF.getService(RESTTestService.class);
+    RESTTestService lService = this.getRESTTestService();
     lService.deprecatedParameter(pParam1, pParam2);
     return Response.status(Response.Status.OK).build();
   }
@@ -160,7 +160,7 @@ public class RESTTestServiceResource {
   @GET
   @Deprecated
   public Response deprectaedReturnValue( int pParam1 ) {
-    RESTTestService lService = JEAF.getService(RESTTestService.class);
+    RESTTestService lService = this.getRESTTestService();
     int lResult = lService.deprectaedReturnValue(pParam1);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
@@ -235,5 +235,14 @@ public class RESTTestServiceResource {
         }
       }
     });
+  }
+
+  /**
+   * Method returns reference to service to which all REST requests will be delegated.
+   *
+   * @return RESTTestService Service instance to which all requests will be delegated.
+   */
+  private RESTTestService getRESTTestService( ) {
+    return JEAF.getService(RESTTestService.class);
   }
 }
