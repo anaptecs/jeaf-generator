@@ -708,8 +708,8 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateMessageConstants) {
       lLog.info("Generate Message Constants:                       " + generateMessageConstants);
     }
-    if (generateValidationAnnotationsForAttributesFromMultiplicity) {
-      lLog.info("Generate @Valid Annotations for classes:   " + generateValidAnnotationForClasses);
+    if (generateValidAnnotationForClasses) {
+      lLog.info("Generate @Valid Annotations for classes:          " + generateValidAnnotationForClasses);
     }
     if (generateValidationAnnotationsForAttributesFromMultiplicity) {
       lLog.info("Generate Validation Annotations for attributes:   "
