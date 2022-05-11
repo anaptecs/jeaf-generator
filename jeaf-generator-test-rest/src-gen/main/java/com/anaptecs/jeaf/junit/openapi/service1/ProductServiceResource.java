@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.service1;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
@@ -19,6 +20,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.container.AsyncResponse;
+import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -36,6 +39,10 @@ import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
 import com.anaptecs.jeaf.junit.openapi.base.StringCodeType;
+import com.anaptecs.jeaf.workload.api.Workload;
+import com.anaptecs.jeaf.workload.api.WorkloadManager;
+import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;
+import com.anaptecs.jeaf.workload.api.rest.RESTWorkloadErrorHandler;
 
 /**
  * @author JEAF Generator
@@ -49,10 +56,34 @@ public class ProductServiceResource {
    * {@link ProductService#getProducts()}
    */
   @GET
-  public Response getProducts( ) {
-    ProductService lService = this.getProductService();
-    List<Product> lResult = lService.getProducts();
-    return Response.status(Response.Status.OK).entity(lResult).build();
+  public void getProducts( @Suspended AsyncResponse pAsyncResponse,
+      @javax.ws.rs.core.Context HttpServletRequest pRequest ) {
+    // Lookup workload manager that takes care that the system will have an optimal throughput.
+    WorkloadManager lWorkloadManager = Workload.getWorkloadManager();
+    // Prepare meta information about the request.
+    String lEndpointURL = pRequest.getServletPath() + pRequest.getPathInfo();
+    RESTRequestType lRequestInfo = new RESTRequestType(lEndpointURL, pRequest.getMethod());
+    // Hand over current request to workload manager. Depending on its strategy and the current workload the request
+    // will be either be directly executed, first queued or rejected.
+    lWorkloadManager.execute(lRequestInfo, new RESTWorkloadErrorHandler(pAsyncResponse), new Runnable() {
+      @Override
+      public void run( ) {
+        try {
+          // As soon as the request is executed the service call will be performed.
+          ProductService lService = JEAF.getService(ProductService.class);
+          List<Product> lResult = lService.getProducts();
+          Response lResponseObject = Response.status(Response.Status.OK).entity(lResult).build();
+          // Due to the asynchronous processing of the requests, the response can not be returned as return value.
+          // Therefore we make use of the defined JAX-RS mechanisms.
+          pAsyncResponse.resume(lResponseObject);
+        }
+        // All kinds of exceptions have to be reported to the client. Due to the asynchronous processing we have to
+        // catch them here and return them to the client via class AsyncResponse.
+        catch (RuntimeException e) {
+          pAsyncResponse.resume(e);
+        }
+      }
+    });
   }
 
   /**
