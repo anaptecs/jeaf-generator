@@ -56,14 +56,14 @@ public class AccountingServiceResource {
     // Prepare meta information about the request.
     String lEndpointURL = pRequest.getServletPath() + pRequest.getPathInfo();
     RESTRequestType lRequestInfo = new RESTRequestType(lEndpointURL, pRequest.getMethod());
+    // Lookup service that will be called later during async processing of the request
+    AccountingService lService = this.getAccountingService();
     // Hand over current request to workload manager. Depending on its strategy and the current workload the request
     // will be either be directly executed, first queued or rejected.
     lWorkloadManager.execute(lRequestInfo, new RESTWorkloadErrorHandler(pAsyncResponse), new Runnable() {
       @Override
       public void run( ) {
         try {
-          // As soon as the request is executed the service call will be performed.
-          AccountingService lService = JEAF.getService(AccountingService.class);
           lService.performBooking(pBooking, pSecurityToken);
           Response lResponseObject = Response.ok().status(Response.Status.OK).build();
           // Due to the asynchronous processing of the requests, the response can not be returned as return value.

@@ -60,14 +60,14 @@ public class RESTTestServiceResource {
     // Prepare meta information about the request.
     String lEndpointURL = pRequest.getServletPath() + pRequest.getPathInfo();
     RESTRequestType lRequestInfo = new RESTRequestType(lEndpointURL, pRequest.getMethod());
+    // Lookup service that will be called later during async processing of the request
+    RESTTestService lService = this.getRESTTestService();
     // Hand over current request to workload manager. Depending on its strategy and the current workload the request
     // will be either be directly executed, first queued or rejected.
     lWorkloadManager.execute(lRequestInfo, new RESTWorkloadErrorHandler(pAsyncResponse), new Runnable() {
       @Override
       public void run( ) {
         try {
-          // As soon as the request is executed the service call will be performed.
-          RESTTestService lService = JEAF.getService(RESTTestService.class);
           TestServiceObject lResult = lService.updateTestServiceObject(pObject);
           Response lResponseObject = Response.status(Response.Status.RESET_CONTENT).entity(lResult).build();
           // Due to the asynchronous processing of the requests, the response can not be returned as return value.
@@ -178,14 +178,14 @@ public class RESTTestServiceResource {
     // Prepare meta information about the request.
     String lEndpointURL = pRequest.getServletPath() + pRequest.getPathInfo();
     RESTRequestType lRequestInfo = new RESTRequestType(lEndpointURL, pRequest.getMethod());
+    // Lookup service that will be called later during async processing of the request
+    RESTTestService lService = this.getRESTTestService();
     // Hand over current request to workload manager. Depending on its strategy and the current workload the request
     // will be either be directly executed, first queued or rejected.
     lWorkloadManager.execute(lRequestInfo, new RESTWorkloadErrorHandler(pAsyncResponse), new Runnable() {
       @Override
       public void run( ) {
         try {
-          // As soon as the request is executed the service call will be performed.
-          RESTTestService lService = JEAF.getService(RESTTestService.class);
           String lResult = lService.deprecatedAsyncParam(pParam1, pParam2);
           Response lResponseObject = Response.status(Response.Status.OK).entity(lResult).build();
           // Due to the asynchronous processing of the requests, the response can not be returned as return value.
@@ -214,14 +214,14 @@ public class RESTTestServiceResource {
     // Prepare meta information about the request.
     String lEndpointURL = pRequest.getServletPath() + pRequest.getPathInfo();
     RESTRequestType lRequestInfo = new RESTRequestType(lEndpointURL, pRequest.getMethod());
+    // Lookup service that will be called later during async processing of the request
+    RESTTestService lService = this.getRESTTestService();
     // Hand over current request to workload manager. Depending on its strategy and the current workload the request
     // will be either be directly executed, first queued or rejected.
     lWorkloadManager.execute(lRequestInfo, new RESTWorkloadErrorHandler(pAsyncResponse), new Runnable() {
       @Override
       public void run( ) {
         try {
-          // As soon as the request is executed the service call will be performed.
-          RESTTestService lService = JEAF.getService(RESTTestService.class);
           String lResult = lService.deprecatedAsync(pParam1, pParam2);
           Response lResponseObject = Response.status(Response.Status.OK).entity(lResult).build();
           // Due to the asynchronous processing of the requests, the response can not be returned as return value.
