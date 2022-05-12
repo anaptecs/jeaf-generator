@@ -7,11 +7,14 @@ package com.anaptecs.spring.base;
 
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
 @Deprecated
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ChildAA extends ChildA {
   /**
    * Constant for the name of attribute "childAAAttribute".

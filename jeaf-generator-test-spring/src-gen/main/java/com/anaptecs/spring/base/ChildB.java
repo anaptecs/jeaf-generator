@@ -13,12 +13,15 @@ import java.util.Set;
 
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Multi line class comment
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ChildB extends ParentClass {
   /**
    * Constant for the name of attribute "childBAttribute".

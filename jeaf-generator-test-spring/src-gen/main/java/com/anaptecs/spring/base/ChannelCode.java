@@ -7,10 +7,13 @@ package com.anaptecs.spring.base;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ChannelCode {
   /**
    * Constant for the name of attribute "code".

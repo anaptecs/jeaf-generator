@@ -18,11 +18,14 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
 @Valid
+@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ResellerBase {
   /**
    * Constant for the name of attribute "channels".

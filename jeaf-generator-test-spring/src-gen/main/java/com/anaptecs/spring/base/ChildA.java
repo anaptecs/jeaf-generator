@@ -5,12 +5,15 @@
  */
 package com.anaptecs.spring.base;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * single line class comment
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ChildA extends ParentClass {
   /**
    * Constant for the name of attribute "childAAttribute".

@@ -11,10 +11,13 @@ import java.math.BigInteger;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Constant for the name of attribute "aBooleanArray".

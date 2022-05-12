@@ -8,10 +8,13 @@ package com.anaptecs.spring.base;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PrimitiveArraysObject {
   /**
    * Constant for the name of attribute "aBooleanArray".

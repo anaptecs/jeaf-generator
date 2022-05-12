@@ -11,10 +11,13 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Calendar;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DateObject {
   /**
    * Constant for the name of attribute "localTime".

@@ -12,10 +12,19 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
+@JsonSubTypes({ @JsonSubTypes.Type(value = POI.class, name = "POI"),
+  @JsonSubTypes.Type(value = UICStop.class, name = "UICStop") })
 public class Stop {
   /**
    * Constant for the name of attribute "name".
@@ -35,6 +44,7 @@ public class Stop {
   /**
    * 
    */
+  @JsonProperty("_links")
   private List<LinkObject> links = new ArrayList<LinkObject>();
 
   /**

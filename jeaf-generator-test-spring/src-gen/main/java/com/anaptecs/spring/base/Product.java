@@ -15,12 +15,15 @@ import java.util.UUID;
 
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Data type represents a product definition
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
   /**
    * Constant for the name of attribute "resellers".

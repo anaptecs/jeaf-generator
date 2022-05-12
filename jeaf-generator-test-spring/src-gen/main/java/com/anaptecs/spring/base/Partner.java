@@ -12,10 +12,18 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
+@JsonSubTypes({ @JsonSubTypes.Type(value = Company.class, name = "Company"),
+  @JsonSubTypes.Type(value = Person.class, name = "Person") })
 public class Partner {
   /**
    * Constant for the name of attribute "postalAddresses".

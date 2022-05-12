@@ -5,12 +5,15 @@
  */
 package com.anaptecs.spring.base;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Generic error response type that is used in all cases.
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ErrorResponse {
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"

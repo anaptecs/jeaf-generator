@@ -12,10 +12,13 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PartnerContainer {
   /**
    * Constant for the name of attribute "partners".

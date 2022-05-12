@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Type represents a duration.
  * 
@@ -13,6 +15,7 @@ package com.anaptecs.spring.base;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Duration {
   /**
    * Constant for the name of attribute "value".

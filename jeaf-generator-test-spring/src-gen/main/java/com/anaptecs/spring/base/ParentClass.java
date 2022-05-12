@@ -5,10 +5,20 @@
  */
 package com.anaptecs.spring.base;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
+@JsonSubTypes({ @JsonSubTypes.Type(value = ChildA.class, name = "ChildA"),
+  @JsonSubTypes.Type(value = ChildAA.class, name = "ChildAA"),
+  @JsonSubTypes.Type(value = ChildB.class, name = "ChildB"),
+  @JsonSubTypes.Type(value = ChildBB.class, name = "ChildBB") })
 public class ParentClass {
   /**
    * Constant for the name of attribute "parentAttribute".

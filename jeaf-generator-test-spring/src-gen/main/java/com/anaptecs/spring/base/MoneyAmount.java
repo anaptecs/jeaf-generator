@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Type represents an amount of money.
  * 
@@ -17,6 +19,7 @@ import javax.validation.constraints.NotNull;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MoneyAmount {
   /**
    * Constant for the name of attribute "amount".

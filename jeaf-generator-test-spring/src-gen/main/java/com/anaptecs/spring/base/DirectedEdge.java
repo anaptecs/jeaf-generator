@@ -5,10 +5,14 @@
  */
 package com.anaptecs.spring.base;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DirectedEdge {
   /**
    * Constant for the name of attribute "start".
@@ -38,6 +42,7 @@ public class DirectedEdge {
   /**
    * 
    */
+  @JsonProperty("previousName")
   private String link;
 
   /**
