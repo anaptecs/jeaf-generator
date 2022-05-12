@@ -197,10 +197,16 @@
 «DEFINE Root FOR ModuleFactory»
     «IF generateJSONSerializers() == true && this.isInGeneratorWhitelist() == true»
 		«info("Processing <<ModuleFactory>> " + this.name + " (" + (this.fqn()) + ")")»
-    	«EXPAND java::OpenAPIDataType::GenerateModuleFactory»
+    	«EXPAND java::Jackson::GenerateModuleFactory»
     «ENDIF»
 «ENDDEFINE»
 
+«DEFINE Root FOR ObjectMapperFactory»
+    «IF generateJSONSerializers() == true && this.isInGeneratorWhitelist() == true»
+		«info("Processing <<ObjectMapperFactory>> " + this.name + " (" + (this.fqn()) + ")")»
+    	«EXPAND java::Jackson::GenerateObjectMapperFactory»
+    «ENDIF»
+«ENDDEFINE»
 
 «DEFINE Root FOR Object»
 «ENDDEFINE»
