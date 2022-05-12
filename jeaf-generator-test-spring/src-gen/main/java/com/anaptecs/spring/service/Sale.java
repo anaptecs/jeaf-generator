@@ -8,11 +8,13 @@ package com.anaptecs.spring.service;
 import java.math.BigDecimal;
 
 import com.anaptecs.spring.base.Channel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Sale {
   /**
    * Constant for the name of attribute "transactionAmount".
