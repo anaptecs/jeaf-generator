@@ -6,29 +6,18 @@
 package com.anaptecs.spring.service;
 
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.BeanParam;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.GET;
-import javax.ws.rs.HEAD;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.PATCH;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.container.AsyncResponse;
-import javax.ws.rs.container.Suspended;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
-import com.anaptecs.jeaf.workload.api.Workload;
-import com.anaptecs.jeaf.workload.api.WorkloadManager;
-import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;
-import com.anaptecs.jeaf.workload.api.rest.RESTWorkloadErrorHandler;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.Context;
@@ -45,9 +34,8 @@ import com.anaptecs.spring.base.StringCodeType;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@Path("/products")
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
+@RequestMapping(path = "/products", consumes = { "application/json" }, produces = { "application/json" })
+@RestController
 public class ProductServiceResource {
   @Inject
   private ProductService productService;
@@ -55,258 +43,290 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#getProducts()}
    */
-  @GET
-  public void getProducts( @Suspended AsyncResponse pAsyncResponse,
-      @javax.ws.rs.core.Context HttpServletRequest pRequest ) {
-    // Lookup workload manager that takes care that the system will have an optimal throughput.
-    WorkloadManager lWorkloadManager = Workload.getWorkloadManager();
-    // Prepare meta information about the request.
-    String lEndpointURL = pRequest.getServletPath() + pRequest.getPathInfo();
-    RESTRequestType lRequestInfo = new RESTRequestType(lEndpointURL, pRequest.getMethod());
-    // Lookup service that will be called later during async processing of the request
+  @RequestMapping(method = { RequestMethod.GET })
+  public List<Product> getProducts( ) {
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    // Hand over current request to workload manager. Depending on its strategy and the current workload the request
-    // will be either be directly executed, first queued or rejected.
-    lWorkloadManager.execute(lRequestInfo, new RESTWorkloadErrorHandler(pAsyncResponse), new Runnable() {
-      @Override
-      public void run( ) {
-        try {
-          List<Product> lResult = lService.getProducts();
-          Response lResponseObject = Response.status(Response.Status.OK).entity(lResult).build();
-          // Due to the asynchronous processing of the requests, the response can not be returned as return value.
-          // Therefore we make use of the defined JAX-RS mechanisms.
-          pAsyncResponse.resume(lResponseObject);
-        }
-        // All kinds of exceptions have to be reported to the client. Due to the asynchronous processing we have to
-        // catch them here and return them to the client via class AsyncResponse.
-        catch (RuntimeException e) {
-          pAsyncResponse.resume(e);
-        }
-      }
-    });
+    return lService.getProducts();
   }
 
   /**
    * {@link ProductService#getProduct()}
    */
-  @Path("{id}")
-  @GET
-  public Response getProduct( @PathParam("id") String pProductID ) {
+  @RequestMapping(path = "{id}", method = { RequestMethod.GET })
+  public Product getProduct( @PathVariable(name = "id", required = true) String pProductID ) {
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    Product lResult = lService.getProduct(pProductID);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.getProduct(pProductID);
   }
 
   /**
    * {@link ProductService#createProduct()}
    */
-  @POST
-  public Response createProduct( Product pProduct ) {
+  @RequestMapping(method = { RequestMethod.POST })
+  public boolean createProduct( Product pProduct ) {
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    boolean lResult = lService.createProduct(pProduct);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.createProduct(pProduct);
   }
 
   /**
    * {@link ProductService#getSortiment()}
    */
-  @Path("sortiment/{id}")
-  @GET
-  public Response getSortiment( @BeanParam Context pContext ) {
+  @RequestMapping(path = "sortiment/{id}", method = { RequestMethod.GET })
+  public Sortiment getSortiment( @RequestHeader(name = "token", required = true) String pAccessToken,
+      @RequestHeader(name = "lang", required = true) Locale pLanguage,
+      @CookieValue(name = "reseller", required = true) long pResellerID,
+      @PathVariable(name = "id", required = true) long pPathParam,
+      @RequestParam(name = "q1", required = true) String pQueryParam ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    Context.Builder lBuilder = Context.Builder.newBuilder();
+    lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setLanguage(pLanguage);
+    lBuilder.setResellerID(pResellerID);
+    lBuilder.setPathParam(pPathParam);
+    lBuilder.setQueryParam(pQueryParam);
+    Context pContext = lBuilder.build();
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    Sortiment lResult = lService.getSortiment(pContext);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.getSortiment(pContext);
   }
 
   /**
    * {@link ProductService#createChannelCode()}
    */
-  @Path("ChannelCode")
-  @POST
-  @Consumes(MediaType.APPLICATION_XML)
-  @Produces(MediaType.APPLICATION_XML)
-  public Response createChannelCode( String pChannelCode ) {
+  @RequestMapping(
+      path = "ChannelCode",
+      consumes = { "application/xml" },
+      produces = { "application/xml" },
+      method = { RequestMethod.POST })
+  public ChannelCode createChannelCode( String pChannelCode ) {
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    ChannelCode lResult = lService.createChannelCode(pChannelCode);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.createChannelCode(pChannelCode);
   }
 
   /**
    * {@link ProductService#ping()}
    */
-  @HEAD
-  public Response ping( ) {
+  @RequestMapping(method = { RequestMethod.HEAD })
+  public void ping( ) {
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
     lService.ping();
-    return Response.status(Response.Status.OK).build();
   }
 
   /**
    * {@link ProductService#deprecatedOperation()}
    */
-  @Path("deprecated/operation")
-  @GET
+  @RequestMapping(path = "deprecated/operation", method = { RequestMethod.GET })
   @Deprecated
-  public Response deprecatedOperation( ) {
+  public String deprecatedOperation( ) {
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    String lResult = lService.deprecatedOperation();
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.deprecatedOperation();
   }
 
   /**
    * {@link ProductService#deprecatedContext()}
    */
-  @Path("deprecated/context")
-  @POST
-  public Response deprecatedContext( @BeanParam DeprecatedContext pContext ) {
+  @RequestMapping(path = "deprecated/context", method = { RequestMethod.POST })
+  public String deprecatedContext( @RequestHeader(name = "token", required = true) String pAccessToken,
+      @RequestHeader(name = "lang", required = true) Locale pLanguage,
+      @CookieValue(name = "reseller", required = true) long pResellerID,
+      @RequestParam(name = "q1", required = true) String pQueryParam ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    DeprecatedContext.Builder lBuilder = DeprecatedContext.Builder.newBuilder();
+    lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setLanguage(pLanguage);
+    lBuilder.setResellerID(pResellerID);
+    lBuilder.setQueryParam(pQueryParam);
+    DeprecatedContext pContext = lBuilder.build();
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    String lResult = lService.deprecatedContext(pContext);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.deprecatedContext(pContext);
   }
 
   /**
    * {@link ProductService#deprecatedBeanParam()}
    */
-  @Path("deprecated/beanParams")
-  @POST
-  public Response deprecatedBeanParam( @BeanParam BeanParameter pBeanParam ) {
+  @RequestMapping(path = "deprecated/beanParams", method = { RequestMethod.POST })
+  public void deprecatedBeanParam( @RequestHeader(name = "token", required = true) String pAccessToken,
+      @RequestHeader(name = "lang", required = true) Locale pLanguage,
+      @RequestParam(name = "q2", required = true) @Deprecated String pOldStyle ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    BeanParameter.Builder lBuilder = BeanParameter.Builder.newBuilder();
+    lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setLanguage(pLanguage);
+    lBuilder.setOldStyle(pOldStyle);
+    BeanParameter pBeanParam = lBuilder.build();
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
     lService.deprecatedBeanParam(pBeanParam);
-    return Response.status(Response.Status.OK).build();
   }
 
   /**
    * {@link ProductService#deprecatedParams()}
    */
-  @Path("deprecated/params")
-  @POST
+  @RequestMapping(path = "deprecated/params", method = { RequestMethod.POST })
   @Deprecated
-  public Response deprecatedParams( @HeaderParam("param1") @Deprecated int pParam1 ) {
+  public String deprecatedParams( @RequestHeader(name = "param1", required = true) @Deprecated int pParam1 ) {
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    String lResult = lService.deprecatedParams(pParam1);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.deprecatedParams(pParam1);
   }
 
   /**
    * {@link ProductService#deprecatedBody()}
    */
-  @Path("deprecated/body")
-  @POST
-  public Response deprecatedBody( @DefaultValue("Hello World!") @Deprecated String pBody ) {
+  @RequestMapping(path = "deprecated/body", method = { RequestMethod.POST })
+  public String deprecatedBody( @Deprecated String pBody ) {
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    String lResult = lService.deprecatedBody(pBody);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.deprecatedBody(pBody);
   }
 
   /**
    * {@link ProductService#deprectedComplexRequestBody()}
    */
-  @Path("deprecated/complexBody")
-  @POST
-  public Response deprectedComplexRequestBody( @Deprecated Product pProduct ) {
+  @RequestMapping(path = "deprecated/complexBody", method = { RequestMethod.POST })
+  public void deprectedComplexRequestBody( @Deprecated Product pProduct ) {
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
     lService.deprectedComplexRequestBody(pProduct);
-    return Response.status(Response.Status.OK).build();
   }
 
   /**
    * {@link ProductService#deprecatedComplexReturn()}
    */
-  @Path("deprecated/complexReturn")
-  @GET
+  @RequestMapping(path = "deprecated/complexReturn", method = { RequestMethod.GET })
   @Deprecated
-  public Response deprecatedComplexReturn( ) {
+  public Product deprecatedComplexReturn( ) {
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    Product lResult = lService.deprecatedComplexReturn();
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.deprecatedComplexReturn();
   }
 
   /**
    * {@link ProductService#loadSpecificThings()}
    */
-  @Path("specific/{id}")
-  @PATCH
-  public Response loadSpecificThings( @BeanParam SpecialContext pContext ) {
+  @RequestMapping(path = "specific/{id}", method = { RequestMethod.PATCH })
+  public void loadSpecificThings( @RequestHeader(name = "specificHeader", required = true) String pSpecificHeader,
+      @RequestHeader(name = "token", required = true) String pAccessToken,
+      @RequestHeader(name = "lang", required = true) Locale pLanguage,
+      @CookieValue(name = "reseller", required = true) long pResellerID,
+      @PathVariable(name = "id", required = true) long pPathParam,
+      @RequestParam(name = "q1", required = true) String pQueryParam ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    SpecialContext.Builder lBuilder = SpecialContext.Builder.newBuilder();
+    lBuilder.setSpecificHeader(pSpecificHeader);
+    lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setLanguage(pLanguage);
+    lBuilder.setResellerID(pResellerID);
+    lBuilder.setPathParam(pPathParam);
+    lBuilder.setQueryParam(pQueryParam);
+    SpecialContext pContext = lBuilder.build();
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
     lService.loadSpecificThings(pContext);
-    return Response.status(Response.Status.OK).build();
   }
 
   /**
    * {@link ProductService#createChannelCodeFromObject()}
    */
-  @Path("ChannelCodeObject")
-  @POST
-  public Response createChannelCodeFromObject( ChannelCode pChannelCode ) {
+  @RequestMapping(path = "ChannelCodeObject", method = { RequestMethod.POST })
+  public ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode ) {
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    ChannelCode lResult = lService.createChannelCodeFromObject(pChannelCode);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.createChannelCodeFromObject(pChannelCode);
   }
 
   /**
    * {@link ProductService#addCurrencies()}
    */
-  @Path("currencies")
-  @POST
-  public Response addCurrencies( List<CurrencyCode> pCurrencies ) {
+  @RequestMapping(path = "currencies", method = { RequestMethod.POST })
+  public List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies ) {
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    List<CurrencyCode> lResult = lService.addCurrencies(pCurrencies);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.addCurrencies(pCurrencies);
   }
 
   /**
    * {@link ProductService#isCurrencySupported()}
    */
-  @Path("currencies/valid")
-  @POST
-  public Response isCurrencySupported( CurrencyCode pCurrency ) {
+  @RequestMapping(path = "currencies/valid", method = { RequestMethod.POST })
+  public CurrencyCode isCurrencySupported( CurrencyCode pCurrency ) {
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    CurrencyCode lResult = lService.isCurrencySupported(pCurrency);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.isCurrencySupported(pCurrency);
   }
 
   /**
    * {@link ProductService#testCodeTypeUsage()}
    */
-  @Path("codeTypeUsages")
-  @POST
-  public Response testCodeTypeUsage( StringCodeType pStringCode ) {
+  @RequestMapping(path = "codeTypeUsages", method = { RequestMethod.POST })
+  public IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode ) {
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    IntegerCodeType lResult = lService.testCodeTypeUsage(pStringCode);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.testCodeTypeUsage(pStringCode);
   }
 
   /**
    * {@link ProductService#testLocalBeanParamType()}
    */
-  @Path("/LocalBeanParam")
-  @GET
-  public Response testLocalBeanParamType( @BeanParam LocalBeanParamType pBeanParam ) {
+  @RequestMapping(path = "/LocalBeanParam", method = { RequestMethod.GET })
+  public String testLocalBeanParamType( @RequestHeader(name = "localKey", required = true) String pLocalKey,
+      @RequestHeader(name = "localID", required = true) String pLocalID ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    LocalBeanParamType.Builder lBuilder = LocalBeanParamType.Builder.newBuilder();
+    lBuilder.setLocalKey(pLocalKey);
+    lBuilder.setLocalID(pLocalID);
+    LocalBeanParamType pBeanParam = lBuilder.build();
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    String lResult = lService.testLocalBeanParamType(pBeanParam);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.testLocalBeanParamType(pBeanParam);
   }
 
   /**
    * {@link ProductService#testExternalBeanParameterType()}
    */
-  @Path("/ExternalBeanParam")
-  @GET
-  public Response testExternalBeanParameterType( @BeanParam ParentBeanParamType pParent ) {
+  @RequestMapping(path = "/ExternalBeanParam", method = { RequestMethod.GET })
+  public String testExternalBeanParameterType( @RequestHeader(name = "novaKey", required = true) String pNovaKey,
+      @RequestHeader(name = "tkID", required = true) String pTkID ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    ParentBeanParamType.Builder lBuilder = ParentBeanParamType.Builder.newBuilder();
+    lBuilder.setNovaKey(pNovaKey);
+    lBuilder.setTkID(pTkID);
+    ParentBeanParamType pParent = lBuilder.build();
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    String lResult = lService.testExternalBeanParameterType(pParent);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.testExternalBeanParameterType(pParent);
   }
 
   /**
    * {@link ProductService#testChildBeanParameter()}
    */
-  @Path("/ChildBeanParam")
-  @GET
-  public Response testChildBeanParameter( @BeanParam ChildBeanParameterType pChild ) {
+  @RequestMapping(path = "/ChildBeanParam", method = { RequestMethod.GET })
+  public String testChildBeanParameter(
+      @RequestHeader(name = "X-Child-Property", required = true) String pChildProperty,
+      @RequestHeader(name = "novaKey", required = true) String pNovaKey,
+      @RequestHeader(name = "tkID", required = true) String pTkID ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    ChildBeanParameterType.Builder lBuilder = ChildBeanParameterType.Builder.newBuilder();
+    lBuilder.setChildProperty(pChildProperty);
+    lBuilder.setNovaKey(pNovaKey);
+    lBuilder.setTkID(pTkID);
+    ChildBeanParameterType pChild = lBuilder.build();
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    String lResult = lService.testChildBeanParameter(pChild);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.testChildBeanParameter(pChild);
   }
 
   /**

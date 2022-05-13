@@ -12,9 +12,28 @@
 package «packageName()»;
 
 «this.getJavadoc()»
-«IF path.length > 0»@javax.ws.rs.Path("«path»")«ENDIF»
-«IF consumes.size > 0»@javax.ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
-«IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
+«IF isTargetRuntimeSpring()»
+	«IF path.length > 0 || consumes.size > 0 || produces.size > 0»
+	@org.springframework.web.bind.annotation.RequestMapping(
+	«IF path.length > 0»path = "«path»" 
+	      «IF consumes.size > 0 || produces.size > 0 », 
+	      «ENDIF»
+	«ENDIF»
+	«IF consumes.size > 0»
+	 	consumes = {«FOREACH consumes AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»}
+		«IF produces.size > 0»,«ENDIF»
+	«ENDIF»
+	«IF produces.size > 0»
+	 	produces = {«FOREACH produces AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»}
+	«ENDIF»
+	)
+	«ENDIF»
+	@org.springframework.web.bind.annotation.RestController
+«ELSE»
+	«IF path.length > 0»@javax.ws.rs.Path("«path»")«ENDIF»
+	«IF consumes.size > 0»@javax.ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
+	«IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
+«ENDIF»
 «EXPAND java::Helper::GenerateDeprecationAnnotation -»
 public class «name»Resource {
 	«IF isTargetRuntimeJEAF() == false»
@@ -29,10 +48,10 @@ public class «name»Resource {
 	 * @return «this.name» Service instance to which all requests will be delegated.
 	 */
 	private «this.fqn()» get«name»() {
-	  «IF isTargetRuntimeJEAF() == false»
-	  return «name.toFirstLower()»;
-	  «ELSE»
+	  «IF isTargetRuntimeJEAF()»
 	  return com.anaptecs.jeaf.core.api.JEAF.getService(«this.fqn()».class);
+	  «ELSE»
+	  return «name.toFirstLower()»;
 	  «ENDIF»
 	}
 }
@@ -41,10 +60,14 @@ public class «name»Resource {
 
 
 «DEFINE RESTOperationImpl FOR RESTOperation»
-	«IF async == false»
-		«EXPAND SyncRESTOperationImpl FOR this»
+	«IF isTargetRuntimeSpring()»
+		«EXPAND SpringRESTControllerOperationImpl»
 	«ELSE»
-		«EXPAND AsyncRESTOperationImpl FOR this»
+		«IF async == false»
+			«EXPAND SyncRESTOperationImpl FOR this»
+		«ELSE»
+			«EXPAND AsyncRESTOperationImpl FOR this»
+		«ENDIF»
 	«ENDIF»	
 «ENDDEFINE»
 
@@ -66,6 +89,39 @@ public class «name»Resource {
 	  «ELSE»
 	  lService.«this.name»(«this.asParameterListNames()»);
 	  return javax.ws.rs.core.Response.status(«EXPAND StatusCode»).build();
+	  «ENDIF»
+	}
+«ENDDEFINE»
+
+«DEFINE SpringRESTControllerOperationImpl FOR RESTOperation»
+	/**
+	 * {@link «this.getOwningClass().fqn()»#«name»()}
+	 */
+	@org.springframework.web.bind.annotation.RequestMapping(
+	«IF path.length > 0»path = "«path»",«ENDIF»
+	«IF consumes.size > 0»consumes = {«FOREACH consumes AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»},«ENDIF»
+	«IF produces.size > 0»produces = {«FOREACH produces AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»},«ENDIF»
+	method = { «FOREACH httpMethods AS httpMethod SEPARATOR ","»org.springframework.web.bind.annotation.RequestMethod.«httpMethod»«ENDFOREACH»}
+	)
+	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
+	public «getReturnTypeName()»  «name» («EXPAND SpringRESTParameterSignature FOR this»)«getThrownExceptionsAsString()»{
+	  «IF this.hasBeanParameters()»
+	  // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the service interface but "only" our REST controller.
+	  «ENDIF»
+	  «FOREACH this.getBeanParams() AS beanParam»
+	  «beanParam.getTypeName()».Builder lBuilder = «beanParam.getTypeName()».Builder.newBuilder();
+	  «FOREACH beanParam.type.getAllAttributesFromHierarchy() AS attribute»
+	  lBuilder.«attribute.asSetter()»(«attribute.asParameter()»);
+	  «ENDFOREACH»
+	  «beanParam.getTypeName()» «beanParam.name» = lBuilder.build();
+	  «ENDFOREACH»
+      // Get Spring service and delegate call.
+	  «this.getOwningClass().fqn()» lService = this.get«this.getOwningClass().name»();
+	  «IF getReturnTypeName() != "void"»
+	  return lService.«this.name»(«this.asParameterListNames()»);
+	  «ELSE»
+	  lService.«this.name»(«this.asParameterListNames()»);
 	  «ENDIF»
 	}
 «ENDDEFINE»
@@ -135,16 +191,16 @@ public class «name»Resource {
 
 «DEFINE RESTParameterDefinition FOR Parameter»
   «IF this.isStereotypeApplied("PathParam") -»
-  @javax.ws.rs.PathParam("«((PathParam) this).value-»")
+  @javax.ws.rs.PathParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
   «ENDIF-»
   «IF this.isStereotypeApplied("HeaderParam") -»
-  @javax.ws.rs.HeaderParam("«((HeaderParam) this).value-»")
+  @javax.ws.rs.HeaderParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
   «ENDIF-»
   «IF this.isStereotypeApplied("QueryParam") -»
-  @javax.ws.rs.QueryParam("«((QueryParam) this).value-»")
+  @javax.ws.rs.QueryParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
   «ENDIF-»
   «IF this.isStereotypeApplied("CookieParam") -»
-  @javax.ws.rs.CookieParam("«((CookieParam) this).value-»")
+  @javax.ws.rs.CookieParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
   «ENDIF-»
   «IF this.isStereotypeApplied("BeanParam") -»
   @javax.ws.rs.BeanParam 
@@ -161,5 +217,57 @@ public class «name»Resource {
 
   «EXPAND java::Helper::GenerateDeprecationAnnotation»
   «this.getTypeName()» «this.name»
+«ENDDEFINE»
+
+«DEFINE SpringRESTParameterSignature FOR Operation»
+  «EXPAND SpringRESTParameterDefinition FOREACH ownedParameter.select(e| e.isInputParameter()) SEPARATOR ", "» 
+«ENDDEFINE»
+
+«DEFINE SpringRESTParameterDefinition FOR Parameter»
+  «IF this.isStereotypeApplied("PathParam") -»
+  @org.springframework.web.bind.annotation.PathVariable(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()» «IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF this.type.isBasicType() && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»)
+  «ENDIF-»
+  «IF this.isStereotypeApplied("HeaderParam") -»
+  @org.springframework.web.bind.annotation.RequestHeader(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF this.type.isBasicType() && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»)
+  «ENDIF-»
+  «IF this.isStereotypeApplied("QueryParam") -»
+  @org.springframework.web.bind.annotation.RequestParam(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF this.type.isBasicType() && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»))
+  «ENDIF-»
+  «IF this.isStereotypeApplied("CookieParam") -»
+  @org.springframework.web.bind.annotation.CookieValue(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF this.type.isBasicType() && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»))
+  «ENDIF-»
+  «IF this.isStereotypeApplied("BeanParam") -»
+  	«EXPAND ProcessBeanParam FOR ((Class)this.type)»
+  «ENDIF-»
+  «IF this.type.isStereotypeApplied("BeanParam") -»
+  	«EXPAND ProcessBeanParam FOR ((Class)this.type)»
+  «ENDIF-»
+
+  «EXPAND java::Helper::GenerateDeprecationAnnotation»
+  «IF this.isBeanParamater() == false»
+  	«this.getTypeName()» «this.name»
+  «ENDIF»
+«ENDDEFINE»
+
+«DEFINE ProcessBeanParam FOR Class»
+	«EXPAND SpringRESTBeanParameterDefinition FOREACH this.getAllAttributesFromHierarchy() SEPARATOR ","»
+«ENDDEFINE»
+
+«DEFINE SpringRESTBeanParameterDefinition FOR Property»
+  «IF this.isStereotypeApplied("PathParam") -»
+  @org.springframework.web.bind.annotation.PathVariable(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequiredProperty()» «IF this.hasInitValue()», defaultValue = "«this.initValue()»"«ENDIF»)
+  «ENDIF-»
+  «IF this.isStereotypeApplied("HeaderParam") -»
+  @org.springframework.web.bind.annotation.RequestHeader(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequiredProperty()»«IF this.hasInitValue()», defaultValue = "«this.initValue()»"«ENDIF»)
+  «ENDIF-»
+  «IF this.isStereotypeApplied("QueryParam") -»
+  @org.springframework.web.bind.annotation.RequestParam(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequiredProperty()»«IF this.hasInitValue()», defaultValue = "«this.initValue()»"«ENDIF»)
+  «ENDIF-»
+  «IF this.isStereotypeApplied("CookieParam") -»
+  @org.springframework.web.bind.annotation.CookieValue(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequiredProperty()»«IF this.hasInitValue()», defaultValue = "«this.initValue()»"«ENDIF»)
+  «ENDIF-»
+
+  «EXPAND java::Helper::GenerateDeprecationAnnotation»
+  «this.fqn()» «this.asParameter()»
 «ENDDEFINE»
 

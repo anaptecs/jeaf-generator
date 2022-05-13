@@ -6,21 +6,29 @@
 package com.anaptecs.spring.service;
 
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
-import javax.ws.rs.HEAD;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
@@ -41,6 +49,7 @@ import com.anaptecs.spring.base.StringCodeType;
 @Path("/products")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@RestController
 public class ProductServiceRESTController {
   @Inject
   private ProductService productService;
@@ -48,32 +57,40 @@ public class ProductServiceRESTController {
   /**
    * {@link ProductService#getProducts()}
    */
-  @GET
-  public Response getProducts( ) {
+  @RequestMapping(
+      value = "/products",
+      produces = { "application/json", "application/problem+json" },
+      consumes = { "application/json" },
+      method = { RequestMethod.GET })
+  public List<Product> getProducts( ) {
     ProductService lService = this.getProductService();
-    List<Product> lResult = lService.getProducts();
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.getProducts();
   }
 
   /**
    * {@link ProductService#getProduct()}
    */
-  @Path("{id}")
-  @GET
-  public Response getProduct( @PathParam("id") String pProductID ) {
+  @RequestMapping(
+      value = "/products/{id}",
+      produces = { "application/json", "application/problem+json" },
+      consumes = { "application/json" },
+      method = RequestMethod.GET)
+  public Product getProduct( @PathVariable("id") String pProductID ) {
     ProductService lService = this.getProductService();
-    Product lResult = lService.getProduct(pProductID);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.getProduct(pProductID);
   }
 
   /**
    * {@link ProductService#createProduct()}
    */
-  @POST
-  public Response createProduct( Product pProduct ) {
+  @RequestMapping(
+      value = "/products",
+      produces = { "application/json", "application/problem+json" },
+      consumes = { "application/json" },
+      method = { RequestMethod.POST, RequestMethod.GET })
+  public boolean createProduct( @RequestBody Product pProduct ) {
     ProductService lService = this.getProductService();
-    boolean lResult = lService.createProduct(pProduct);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.createProduct(pProduct);
   }
 
   /**
@@ -81,33 +98,48 @@ public class ProductServiceRESTController {
    */
   @Path("sortiment/{id}")
   @GET
-  public Response getSortiment( @BeanParam Context pContext ) {
+  public Sortiment getSortiment( @RequestHeader("token") String pAccessToken, @HeaderParam("lang") Locale pLanguage,
+      @CookieValue("reseller") long pResellerID, @PathVariable(name = "id") long pPathParam,
+      @RequestParam("q1") String pQueryParam ) {
+
+    // Convert parameters into object as "BeanParams" are not supported by Spring. This way we do not pollute the service interface but "only" our REST controller.
+    Context.Builder lBuilder = Context.Builder.newBuilder();
+    lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setLanguage(pLanguage);
+    lBuilder.setResellerID(pResellerID);
+    lBuilder.setPathParam(pPathParam);
+    lBuilder.setQueryParam(pQueryParam);
+    Context lContext = lBuilder.build();
+
+    // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
-    Sortiment lResult = lService.getSortiment(pContext);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.getSortiment(lContext);
   }
 
   /**
    * {@link ProductService#createChannelCode()}
    */
-  @Path("ChannelCode")
-  @POST
-  @Consumes(MediaType.APPLICATION_XML)
-  @Produces(MediaType.APPLICATION_XML)
-  public Response createChannelCode( String pChannelCode ) {
+  @RequestMapping(
+      value = "/products/ChannelCode",
+      produces = { "application/json", "application/problem+json" },
+      consumes = { "application/json" },
+      method = RequestMethod.POST)
+  public ChannelCode createChannelCode( @RequestBody String pChannelCode ) {
     ProductService lService = this.getProductService();
-    ChannelCode lResult = lService.createChannelCode(pChannelCode);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return lService.createChannelCode(pChannelCode);
   }
 
   /**
    * {@link ProductService#ping()}
    */
-  @HEAD
-  public Response ping( ) {
+  @RequestMapping(
+      value = "/products/ChannelCode",
+      produces = { "application/json", "application/problem+json" },
+      consumes = { "application/json" },
+      method = RequestMethod.HEAD)
+  public void ping( ) {
     ProductService lService = this.getProductService();
     lService.ping();
-    return Response.status(Response.Status.OK).build();
   }
 
   /**

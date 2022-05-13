@@ -1,0 +1,8 @@
+extension java::Naming;
+extension java::GeneratorCommons;
+
+boolean isBeanParam(uml::Parameter param):
+	param.isStereotypeApplied("BeanParam") || param.type.isStereotypeApplied("BeanParam");
+	
+List[uml::Parameter] getBeanParams(uml::Operation operation):
+	operation.ownedParameter.select(e| e.isInputParameter() && e.isBeanParam() == false);
