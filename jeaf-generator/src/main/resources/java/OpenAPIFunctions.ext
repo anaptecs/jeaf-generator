@@ -314,6 +314,9 @@ cached hasOpenAPIComment(JMM::OpenAPIEnumeration enum):
   if enum.hasComment()
   then true
   else 
+    enum.hasLiteralComment();
+
+cached hasLiteralComment(JMM::OpenAPIEnumeration enum):
     if enum.ownedLiteral.select(e|e.hasComment()).isEmpty == false
     then true
     else enum.ownedLiteral.select(e|e.isDeprecated()).isEmpty == false;

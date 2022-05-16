@@ -280,11 +280,6 @@ components:
       description: >-
         Coarse grained categorization of the product type. Used to determine the type of an
         Offer (see "OfferPartType").
-        Valid Values:
-        - ADMISSION
-        - RESERVATION
-        - ANCILLARY
-        - FEE
       type: string
       enum:
         - ADMISSION
@@ -358,11 +353,6 @@ components:
     ServiceClassType:
       description: >-
         Type of quality level, finer grained than the comfort class.
-        Known Values:
-        - BEST
-        - HIGH
-        - STANDARD
-        - BASIC
       type: string
       x-extensible-enum:
         - BEST
@@ -374,13 +364,6 @@ components:
     FulfillmentMediaType:
       description: >-
         Fulfillment types. RCT2, RCCST and UIC-PDF are official UIC standards.
-        Known Values:
-        - RCT2
-        - RCCST
-        - UIC_PDF
-        - PDF_A4
-        - PKPASS
-        - TICKETLESS
       type: string
       x-extensible-enum:
         - RCT2

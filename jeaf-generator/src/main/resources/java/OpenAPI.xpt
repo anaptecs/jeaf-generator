@@ -585,6 +585,7 @@ components:
         «IF this.hasComment() -»
         «this.getCommentForOpenAPIDescription("        ")»
         «ENDIF-»
+        «IF this.hasLiteralComment()-»
         «IF this.extensibleEnum == true-»
         Known Values:
         «ELSE-»
@@ -593,6 +594,7 @@ components:
         «FOREACH this.ownedLiteral AS literal-»
         - «IF literal.isDeprecated() -»@Deprecated «ENDIF»«literal.name»«IF literal.hasComment()»: «literal.getCommentForOpenAPIDescription("            ")»«ENDIF»
         «ENDFOREACH-»
+        «ENDIF-»
       «ENDIF-»        
       type: string
       «IF this.isDeprecated() -»
