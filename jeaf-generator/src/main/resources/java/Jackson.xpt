@@ -92,7 +92,7 @@
 		package «this.packageName()»;
 		
 		import com.fasterxml.jackson.annotation.JsonAutoDetect;
-		import com.fasterxml.jackson.databind.DeserializationFeature;
+		import com.fasterxml.jackson.annotation.JsonInclude.Include;		
 		import com.fasterxml.jackson.databind.ObjectMapper;
 		import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 		import com.fasterxml.jackson.databind.json.JsonMapper;
@@ -122,7 +122,27 @@
 			    lBuilder.visibility(lVisibilityChecker);
 		
 			    // Configure mapper features
-			    lBuilder.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
+			    «FOREACH enabledMapperFeatures AS feature»
+			    lBuilder.enable(com.fasterxml.jackson.databind.MapperFeature.«feature.toString()»);
+			    «ENDFOREACH»
+			    «FOREACH disabledMapperFeatures AS feature»
+			    lBuilder.disable(com.fasterxml.jackson.databind.MapperFeature.«feature.toString()»);
+			    «ENDFOREACH»
+			    «FOREACH enabledSerializationFeatures AS feature»
+			    lBuilder.enable(com.fasterxml.jackson.databind.SerializationFeature.«feature.toString()»);
+			    «ENDFOREACH»
+			    «FOREACH disabledSerializationFeatures AS feature»
+			    lBuilder.disable(com.fasterxml.jackson.databind.SerializationFeature.«feature.toString()»);
+			    «ENDFOREACH»
+			    «FOREACH enabledDeserializationFeatures AS feature»
+			    lBuilder.enable(com.fasterxml.jackson.databind.DeserializationFeature.«feature.toString()»);
+			    «ENDFOREACH»
+			    «FOREACH disabledDeserializationFeatures AS feature»
+			    lBuilder.disable(com.fasterxml.jackson.databind.DeserializationFeature.«feature.toString()»);
+			    «ENDFOREACH»
+			    «IF disabledDeserializationFeatures.size == 0 && enableSemVerForJSON()»
+			    lBuilder.disable(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
+			    «ENDIF»
 		
 			    // Create configured modules and add them as well.
 			    «FOREACH this.clientDependency.supplier.typeSelect(ModuleFactory) AS moduleFactory»
@@ -130,7 +150,9 @@
 			    «ENDFOREACH»
 		
 			    // Create object mapper and return it
-			    return lBuilder.build();
+			    JsonMapper lObjectMapper = lBuilder.build();
+			    lObjectMapper.setDefaultPropertyInclusion(Include.«defaultPropertyInclusion.name»);
+			    return lObjectMapper;
 			}
 		}
 	«ENDFILE»

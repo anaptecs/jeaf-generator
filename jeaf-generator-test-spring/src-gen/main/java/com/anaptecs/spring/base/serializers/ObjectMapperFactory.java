@@ -6,6 +6,7 @@
 package com.anaptecs.spring.base.serializers;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
@@ -40,6 +41,8 @@ public class ObjectMapperFactory {
     // Create configured modules and add them as well.
     lBuilder.addModule(new BaseModuleFactory().createModule());
     // Create object mapper and return it
-    return lBuilder.build();
+    JsonMapper lObjectMapper = lBuilder.build();
+    lObjectMapper.setDefaultPropertyInclusion(Include.NON_EMPTY);
+    return lObjectMapper;
   }
 }
