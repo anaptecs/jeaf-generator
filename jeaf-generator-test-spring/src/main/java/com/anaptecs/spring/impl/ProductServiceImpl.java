@@ -5,8 +5,11 @@
  */
 package com.anaptecs.spring.impl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -45,6 +48,7 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   public Product getProduct( @NotEmpty String pProductID ) {
+    assertEquals("12345", pProductID);
     return null;
   }
 
@@ -55,6 +59,11 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   public Sortiment getSortiment( Context pContext ) {
+    assertEquals("12345", pContext.getAccessToken());
+    assertEquals(Locale.GERMAN, pContext.getLanguage());
+    assertEquals(4711, pContext.getPathParam());
+    assertEquals("QUERY_ME", pContext.getQueryParam());
+    assertEquals(47110815L, pContext.getResellerID());
     return null;
   }
 
