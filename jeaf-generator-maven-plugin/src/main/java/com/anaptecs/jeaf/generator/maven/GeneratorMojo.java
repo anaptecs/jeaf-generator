@@ -83,7 +83,7 @@ public class GeneratorMojo extends AbstractMojo {
    * Supported values are (case sensitive): MAGIC_DRAW, ECLIPSE_PAPYRUS, OTHER
    */
   @Parameter(required = false, defaultValue = "MAGIC_DRAW")
-  private ModelingTool umlModellingTool;
+  private ModelingTool umlModelingTool;
 
   /**
    * Directory which contains all XMI files. The files have to be exported from MagicDraw UML using its Eclipse UML2
@@ -609,7 +609,7 @@ public class GeneratorMojo extends AbstractMojo {
     lLog.info("res:                                              " + resourceDirectory);
     lLog.info("res-gen:                                          " + resourceGenDirectory);
     lLog.info(" ");
-    lLog.info("UML Modeling Tool:                                " + umlModellingTool.getDisplayName());
+    lLog.info("UML Modeling Tool:                                " + umlModelingTool.getDisplayName());
     lLog.info("Target Runtime:                                   " + targetRuntime.name());
     lLog.info(" ");
     lLog.info("Code-Style:                                       " + xmlFormatterStyleFile);
@@ -882,7 +882,7 @@ public class GeneratorMojo extends AbstractMojo {
     List<String> lUMLFiles = lFileTools.listFiles(lXMIFiles, lFileTools.createExtensionFilenameFilter(lExtensions));
 
     // Fix all XMI files
-    if (umlModellingTool != ModelingTool.MAGIC_DRAW) {
+    if (umlModelingTool != ModelingTool.MAGIC_DRAW) {
       this.getLog().info("Preparing XMI files to be processed by JEAF Generator");
       String lCurrentFile = null;
       try {
@@ -906,7 +906,7 @@ public class GeneratorMojo extends AbstractMojo {
       }
     }
     lStopwatch.stop();
-    if (umlModellingTool != ModelingTool.MAGIC_DRAW) {
+    if (umlModelingTool != ModelingTool.MAGIC_DRAW) {
       this.getLog().info("XMI file preparation took " + lStopwatch.getResult().getDuration() + "ms");
     }
   }
@@ -924,7 +924,7 @@ public class GeneratorMojo extends AbstractMojo {
     String lXMIDirectory;
     StringTools lTools = Tools.getStringTools();
     if (lTools.isRealString(xmiDirectory)) {
-      if (umlModellingTool == ModelingTool.MAGIC_DRAW) {
+      if (umlModelingTool == ModelingTool.MAGIC_DRAW) {
         lXMIDirectory = xmiDirectory;
       }
       else {
@@ -966,7 +966,7 @@ public class GeneratorMojo extends AbstractMojo {
 
       // In case that UML Modeling Tool is not MagicDraw UML then XMI files need to be manipulated before they can be
       // processed. Thar's why we need to copy them first.
-      if (umlModellingTool != ModelingTool.MAGIC_DRAW) {
+      if (umlModelingTool != ModelingTool.MAGIC_DRAW) {
         FileTools lFileTools = Tools.getFileTools();
         lFileTools.tryDeleteRecursive(lXMIDirectoryPath, true);
 
