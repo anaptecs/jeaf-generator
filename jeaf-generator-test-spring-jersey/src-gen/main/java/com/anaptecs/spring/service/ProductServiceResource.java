@@ -123,8 +123,8 @@ public class ProductServiceResource {
    */
   @Path("ChannelCode")
   @POST
-  @Consumes(MediaType.APPLICATION_XML)
-  @Produces(MediaType.APPLICATION_XML)
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.APPLICATION_JSON)
   public Response createChannelCode( String pChannelCode ) {
     ProductService lService = this.getProductService();
     ChannelCode lResult = lService.createChannelCode(pChannelCode);
