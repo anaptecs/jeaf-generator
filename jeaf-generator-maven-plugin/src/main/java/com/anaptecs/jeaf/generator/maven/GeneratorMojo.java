@@ -609,7 +609,7 @@ public class GeneratorMojo extends AbstractMojo {
     lLog.info("res:                                              " + resourceDirectory);
     lLog.info("res-gen:                                          " + resourceGenDirectory);
     lLog.info(" ");
-    lLog.info("UML Modelling Tool:                               " + umlModellingTool.getDisplayName());
+    lLog.info("UML Modeling Tool:                                " + umlModellingTool.getDisplayName());
     lLog.info("Target Runtime:                                   " + targetRuntime.name());
     lLog.info(" ");
     lLog.info("Code-Style:                                       " + xmlFormatterStyleFile);
