@@ -7,6 +7,8 @@ package com.anaptecs.spring.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.io.IOException;
+
 import javax.inject.Inject;
 
 import org.apache.hc.client5.http.cookie.BasicCookieStore;
@@ -16,6 +18,8 @@ import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.client5.http.impl.cookie.BasicClientCookie;
 import org.apache.hc.client5.http.protocol.HttpClientContext;
 import org.apache.hc.core5.http.ClassicHttpRequest;
+import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.apache.hc.core5.http.protocol.BasicHttpContext;
 import org.apache.hc.core5.http.protocol.HttpContext;
@@ -98,4 +102,32 @@ public class SpringRESTControllerTest {
     assertEquals(200, lResponse.getCode());
   }
 
+  @Test
+  void testPOSTRequests( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.post(template.getRootUri() + "/products");
+
+    //
+    // createProduct(...)
+    //
+
+    // InputStreamEntity lBodyStream = new InputStreamEntity(null, ContentType.APPLICATION_JSON);
+    StringEntity lBody =
+        new StringEntity("{\"name\":\"My First Product\",\"uri\":\"https://products.anaptecs.de/123456789\"}",
+            ContentType.APPLICATION_JSON);
+    lRequest.setEntity(lBody);
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("true", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
+    assertEquals(200, lResponse.getCode());
+
+    //
+    // createChannelCode
+    //
+    lRequest = ClassicRequestBuilder.post(template.getRootUri() + "/products/ChannelCode");
+    lBody = new StringEntity("MyMobile", ContentType.APPLICATION_JSON);
+    lRequest.setEntity(lBody);
+    lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("\"MyMobile\"", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
+    assertEquals(200, lResponse.getCode());
+  }
 }
