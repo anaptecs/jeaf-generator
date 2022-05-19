@@ -61,7 +61,7 @@ public class DeprecatedContext {
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
-  protected DeprecatedContext( ) {
+  public DeprecatedContext( ) {
     // Nothing to do.
   }
 

@@ -34,7 +34,7 @@ public class LocalBeanParamType {
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
-  protected LocalBeanParamType( ) {
+  public LocalBeanParamType( ) {
     // Nothing to do.
   }
 

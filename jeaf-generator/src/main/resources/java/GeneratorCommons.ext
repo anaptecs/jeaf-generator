@@ -253,3 +253,9 @@ cached boolean isTargetRuntimeJava():
 cached boolean isTargetRuntimeSpring():
   JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isTargetRuntimeSpring();
   
+cached boolean isRESTLibraryJAXRS():
+  JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isRESTLibraryJAXRS();
+  
+cached boolean isRESTLibrarySpringWebMVC():
+  JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isRESTLibrarySpringWebMVC();
+ 

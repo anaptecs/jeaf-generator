@@ -38,7 +38,7 @@ public class ParentBeanParamType {
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
-  protected ParentBeanParamType( ) {
+  public ParentBeanParamType( ) {
     // Nothing to do.
   }
 

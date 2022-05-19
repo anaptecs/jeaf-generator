@@ -12,7 +12,7 @@
 package «packageName()»;
 
 «this.getJavadoc()»
-«IF isTargetRuntimeSpring()»
+«IF isRESTLibrarySpringWebMVC()»
 	«IF path.length > 0 || consumes.size > 0 || produces.size > 0»
 	@org.springframework.web.bind.annotation.RequestMapping(
 	«IF path.length > 0»path = "«path»" 
@@ -60,18 +60,18 @@ public class «name»Resource {
 
 
 «DEFINE RESTOperationImpl FOR RESTOperation»
-	«IF isTargetRuntimeSpring()»
+	«IF isRESTLibrarySpringWebMVC()»
 		«EXPAND SpringRESTControllerOperationImpl»
 	«ELSE»
 		«IF async == false»
-			«EXPAND SyncRESTOperationImpl FOR this»
+			«EXPAND SyncJAXRSOperationImpl FOR this»
 		«ELSE»
-			«EXPAND AsyncRESTOperationImpl FOR this»
+			«EXPAND AsyncJAXRSOperationImpl FOR this»
 		«ENDIF»
 	«ENDIF»	
 «ENDDEFINE»
 
-«DEFINE SyncRESTOperationImpl FOR RESTOperation»
+«DEFINE SyncJAXRSOperationImpl FOR RESTOperation»
 	/**
 	 * {@link «this.getOwningClass().fqn()»#«name»()}
 	 */
@@ -126,7 +126,7 @@ public class «name»Resource {
 	}
 «ENDDEFINE»
 
-«DEFINE AsyncRESTOperationImpl FOR RESTOperation»
+«DEFINE AsyncJAXRSOperationImpl FOR RESTOperation»
 	/**
 	 * {@link «this.getOwningClass().fqn()»#«name»()}
 	 */

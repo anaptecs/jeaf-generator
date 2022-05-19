@@ -48,6 +48,7 @@ import org.twdata.maven.mojoexecutor.MojoExecutor.Element;
 import org.twdata.maven.mojoexecutor.MojoExecutor.ExecutionEnvironment;
 
 import com.anaptecs.jeaf.fwk.generator.util.ModelingTool;
+import com.anaptecs.jeaf.fwk.generator.util.RESTLibrary;
 import com.anaptecs.jeaf.fwk.generator.util.TargetRuntime;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ConversionResult;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ExcelToMessageResourceConverter;
@@ -411,6 +412,15 @@ public class GeneratorMojo extends AbstractMojo {
   private TargetRuntime targetRuntime;
 
   /**
+   * REST Library that is the target for code generation. Depending on the target runtime either JAX-RS (Java and JEAF)
+   * or SPRING_WEB_MVC (Spring) is used as default.
+   * 
+   * Supported values are (case sensitive): JAX_RS, SPRING_WEB_MVC
+   */
+  @Parameter(required = false)
+  private RESTLibrary restLibrary;
+
+  /**
    * Switch defines whether a message constants should be generated from resource files or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -612,6 +622,9 @@ public class GeneratorMojo extends AbstractMojo {
     lLog.info(" ");
     lLog.info("UML Modeling Tool:                                " + umlModelingTool.getDisplayName());
     lLog.info("Target Runtime:                                   " + targetRuntime.name());
+    if (restLibrary != null) {
+      lLog.info("REST Library:                                     " + restLibrary.name());
+    }
     lLog.info(" ");
     lLog.info("Code-Style:                                       " + xmlFormatterStyleFile);
     lLog.info("Package Whitelist:                                " + this.getPackageWhitelist());
@@ -803,6 +816,9 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.json.serializers", generateJSONSerializers.toString());
       System.setProperty("switch.gen.enable.name.constants", generateConstantsForAttributeNames.toString());
       System.setProperty("switch.gen.target.runtime", targetRuntime.name());
+      if (restLibrary != null) {
+        System.setProperty("switch.gen.target.rest.library", restLibrary.name());
+      }
 
       System.setProperty("switch.gen.suppress.warnings", suppressWarnings.stream().collect(Collectors.joining("; ")));
       System.setProperty("switch.gen.suppress.all.warnings", suppressAllWarnings.toString());

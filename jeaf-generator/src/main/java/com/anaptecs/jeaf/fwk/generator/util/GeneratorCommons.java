@@ -191,6 +191,8 @@ public class GeneratorCommons {
 
   public static final String TARGET_RUNTIME = "switch.gen.target.runtime";
 
+  public static final String REST_LIBRARY = "switch.gen.target.rest.library";
+
   public static final String GENERATION_COMMENT = "switch.gen.generation.comment";
 
   public static final String VALID_ANNOTATION_FOR_CLASSES = "switch.gen.enable.valid.annotation.classes";
@@ -1125,6 +1127,33 @@ public class GeneratorCommons {
 
   public static boolean isTargetRuntimeJava( ) {
     return getTargetRuntime() == TargetRuntime.JAVA;
+  }
+
+  public static RESTLibrary getRESTLibrary( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    String lValue = lConfiguration.getConfigurationValue(REST_LIBRARY, false, String.class);
+    RESTLibrary lRESTLibrary;
+    if (lValue != null) {
+      lRESTLibrary = RESTLibrary.valueOf(lValue.toUpperCase());
+    }
+    else {
+      if (isTargetRuntimeSpring()) {
+        lRESTLibrary = RESTLibrary.SPRING_WEB_MVC;
+      }
+      else {
+        lRESTLibrary = RESTLibrary.JAX_RS;
+      }
+    }
+
+    return lRESTLibrary;
+  }
+
+  public static boolean isRESTLibraryJAXRS( ) {
+    return getRESTLibrary() == RESTLibrary.JAX_RS;
+  }
+
+  public static boolean isRESTLibrarySpringWebMVC( ) {
+    return getRESTLibrary() == RESTLibrary.SPRING_WEB_MVC;
   }
 
 }

@@ -39,7 +39,7 @@
 					/**
 					 * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal" object creation builder should be used instead.
 					 */
-					protected «name»( ) {
+					«IF this.isStereotypeApplied("BeanParam")»public«ELSE»protected«ENDIF» «name»( ) {
 					  «IF needsToImplementIdentifiable() == true»
 					  objectID = null;
 					  «ELSE»«IF this.requiresAttributeInitValue() == false»

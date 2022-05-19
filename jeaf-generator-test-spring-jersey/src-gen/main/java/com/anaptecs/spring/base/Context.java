@@ -79,7 +79,7 @@ public class Context {
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
-  protected Context( ) {
+  public Context( ) {
     // Nothing to do.
   }
 
