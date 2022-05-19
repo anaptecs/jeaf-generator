@@ -47,6 +47,7 @@ import org.twdata.maven.mojoexecutor.MojoExecutor;
 import org.twdata.maven.mojoexecutor.MojoExecutor.Element;
 import org.twdata.maven.mojoexecutor.MojoExecutor.ExecutionEnvironment;
 
+import com.anaptecs.jeaf.fwk.generator.util.ModelingTool;
 import com.anaptecs.jeaf.fwk.generator.util.TargetRuntime;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ConversionResult;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ExcelToMessageResourceConverter;

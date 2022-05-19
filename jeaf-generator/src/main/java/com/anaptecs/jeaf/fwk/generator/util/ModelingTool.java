@@ -1,9 +1,4 @@
-/**
- * Copyright 2004 - 2022 anaptecs GmbH, Burgstr. 96, 72764 Reutlingen, Germany
- *
- * All rights reserved.
- */
-package com.anaptecs.jeaf.generator.maven;
+package com.anaptecs.jeaf.fwk.generator.util;
 
 public enum ModelingTool {
   MAGIC_DRAW("MagicDraw UML"), ECLIPSE_PAPYRUS("Eclipse Papyrus"), OTHER("Unknown Modeling Tool");
@@ -17,5 +12,4 @@ public enum ModelingTool {
   public String getDisplayName( ) {
     return displayName;
   }
-
 }
