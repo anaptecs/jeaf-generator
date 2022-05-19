@@ -6,6 +6,7 @@
 package com.anaptecs.spring.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +55,9 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   public boolean createProduct( Product pProduct ) {
-    return false;
+    assertNotNull(pProduct, "Parameter pProduct must not be null.");
+    assertEquals("My First Product", pProduct.getName());
+    return true;
   }
 
   @Override
@@ -69,7 +72,8 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   public ChannelCode createChannelCode( @NotBlank String pChannelCode ) {
-    return null;
+    assertEquals("MyMobile", pChannelCode);
+    return ChannelCode.Builder.newBuilder().setCode(pChannelCode).build();
   }
 
   @Override

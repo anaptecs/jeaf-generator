@@ -2,6 +2,7 @@
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION entity::ModelProperties»
+«EXTENSION jeaf::RESTFunctions»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -224,27 +225,27 @@ public class «name»Resource {
 «ENDDEFINE»
 
 «DEFINE SpringRESTParameterDefinition FOR Parameter»
-  «IF this.isStereotypeApplied("PathParam") -»
+  «IF this.isPathParam() -»
   @org.springframework.web.bind.annotation.PathVariable(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()» «IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF this.type.isBasicType() && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»)
   «ENDIF-»
-  «IF this.isStereotypeApplied("HeaderParam") -»
+  «IF this.isHeaderParam() -»
   @org.springframework.web.bind.annotation.RequestHeader(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF this.type.isBasicType() && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»)
   «ENDIF-»
-  «IF this.isStereotypeApplied("QueryParam") -»
+  «IF this.isQueryParam() -»
   @org.springframework.web.bind.annotation.RequestParam(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF this.type.isBasicType() && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»))
   «ENDIF-»
-  «IF this.isStereotypeApplied("CookieParam") -»
+  «IF this.isCookieParam() -»
   @org.springframework.web.bind.annotation.CookieValue(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF this.type.isBasicType() && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»))
   «ENDIF-»
-  «IF this.isStereotypeApplied("BeanParam") -»
+  «IF this.isBeanParam() -»
   	«EXPAND ProcessBeanParam FOR ((Class)this.type)»
   «ENDIF-»
-  «IF this.type.isStereotypeApplied("BeanParam") -»
-  	«EXPAND ProcessBeanParam FOR ((Class)this.type)»
+  «IF this.isRequestBody() -»
+  @org.springframework.web.bind.annotation.RequestBody(required = «this.isRequired()»)
   «ENDIF-»
 
   «EXPAND java::Helper::GenerateDeprecationAnnotation»
-  «IF this.isBeanParamater() == false»
+  «IF this.isBeanParam() == false»
   	«this.getTypeName()» «this.name»
   «ENDIF»
 «ENDDEFINE»
@@ -254,16 +255,16 @@ public class «name»Resource {
 «ENDDEFINE»
 
 «DEFINE SpringRESTBeanParameterDefinition FOR Property»
-  «IF this.isStereotypeApplied("PathParam") -»
+  «IF this.isPathParamProperty() -»
   @org.springframework.web.bind.annotation.PathVariable(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequiredProperty()» «IF this.hasInitValue()», defaultValue = "«this.initValue()»"«ENDIF»)
   «ENDIF-»
-  «IF this.isStereotypeApplied("HeaderParam") -»
+  «IF this.isHeaderParamProperty() -»
   @org.springframework.web.bind.annotation.RequestHeader(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequiredProperty()»«IF this.hasInitValue()», defaultValue = "«this.initValue()»"«ENDIF»)
   «ENDIF-»
-  «IF this.isStereotypeApplied("QueryParam") -»
+  «IF this.isQueryParamProperty() -»
   @org.springframework.web.bind.annotation.RequestParam(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequiredProperty()»«IF this.hasInitValue()», defaultValue = "«this.initValue()»"«ENDIF»)
   «ENDIF-»
-  «IF this.isStereotypeApplied("CookieParam") -»
+  «IF this.isCookieParamProperty() -»
   @org.springframework.web.bind.annotation.CookieValue(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequiredProperty()»«IF this.hasInitValue()», defaultValue = "«this.initValue()»"«ENDIF»)
   «ENDIF-»
 

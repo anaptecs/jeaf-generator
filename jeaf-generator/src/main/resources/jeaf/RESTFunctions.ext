@@ -1,8 +1,40 @@
 extension java::Naming;
 extension java::GeneratorCommons;
 
-boolean isBeanParam(uml::Parameter param):
+cached boolean isBeanParam(uml::Parameter param):
 	param.isStereotypeApplied("BeanParam") || param.type.isStereotypeApplied("BeanParam");
 	
-List[uml::Parameter] getBeanParams(uml::Operation operation):
+cached List[uml::Parameter] getBeanParams(uml::Operation operation):
 	operation.ownedParameter.select(e| e.isInputParameter() && e.isBeanParam() == false);
+	
+	
+cached boolean isPathParam(uml::Parameter param):
+	param.isStereotypeApplied("PathParam");
+
+cached boolean isHeaderParam(uml::Parameter param):
+	param.isStereotypeApplied("HeaderParam");
+
+cached boolean isQueryParam(uml::Parameter param):
+	param.isStereotypeApplied("QueryParam");
+
+cached boolean isCookieParam(uml::Parameter param):
+	param.isStereotypeApplied("CookieParam");
+
+cached boolean isRequestBody(uml::Parameter param):
+    !(param.isPathParam() || param.isHeaderParam() || param.isQueryParam() || param.isQueryParam() || param.isBeanParam());
+
+
+
+cached boolean isPathParamProperty(uml::Property property):
+	property.isStereotypeApplied("PathParam");
+
+cached boolean isHeaderParamProperty(uml::Property property):
+	property.isStereotypeApplied("HeaderParam");
+
+cached boolean isQueryParamProperty(uml::Property property):
+	property.isStereotypeApplied("QueryParam");
+
+cached boolean isCookieParamProperty(uml::Property property):
+	property.isStereotypeApplied("CookieParam");
+
+    

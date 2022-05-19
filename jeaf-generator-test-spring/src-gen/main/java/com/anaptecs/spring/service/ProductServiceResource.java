@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -64,7 +65,7 @@ public class ProductServiceResource {
    * {@link ProductService#createProduct()}
    */
   @RequestMapping(method = { RequestMethod.POST })
-  public boolean createProduct( Product pProduct ) {
+  public boolean createProduct( @RequestBody(required = true) Product pProduct ) {
     // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
     return lService.createProduct(pProduct);
@@ -98,10 +99,10 @@ public class ProductServiceResource {
    */
   @RequestMapping(
       path = "ChannelCode",
-      consumes = { "application/xml" },
-      produces = { "application/xml" },
+      consumes = { "application/json" },
+      produces = { "application/json" },
       method = { RequestMethod.POST })
-  public ChannelCode createChannelCode( String pChannelCode ) {
+  public ChannelCode createChannelCode( @RequestBody(required = true) String pChannelCode ) {
     // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
     return lService.createChannelCode(pChannelCode);
@@ -183,7 +184,7 @@ public class ProductServiceResource {
    * {@link ProductService#deprecatedBody()}
    */
   @RequestMapping(path = "deprecated/body", method = { RequestMethod.POST })
-  public String deprecatedBody( @Deprecated String pBody ) {
+  public String deprecatedBody( @RequestBody(required = true) @Deprecated String pBody ) {
     // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
     return lService.deprecatedBody(pBody);
@@ -193,7 +194,7 @@ public class ProductServiceResource {
    * {@link ProductService#deprectedComplexRequestBody()}
    */
   @RequestMapping(path = "deprecated/complexBody", method = { RequestMethod.POST })
-  public void deprectedComplexRequestBody( @Deprecated Product pProduct ) {
+  public void deprectedComplexRequestBody( @RequestBody(required = true) @Deprecated Product pProduct ) {
     // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
     lService.deprectedComplexRequestBody(pProduct);
@@ -239,7 +240,7 @@ public class ProductServiceResource {
    * {@link ProductService#createChannelCodeFromObject()}
    */
   @RequestMapping(path = "ChannelCodeObject", method = { RequestMethod.POST })
-  public ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode ) {
+  public ChannelCode createChannelCodeFromObject( @RequestBody(required = true) ChannelCode pChannelCode ) {
     // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
     return lService.createChannelCodeFromObject(pChannelCode);
@@ -249,7 +250,7 @@ public class ProductServiceResource {
    * {@link ProductService#addCurrencies()}
    */
   @RequestMapping(path = "currencies", method = { RequestMethod.POST })
-  public List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies ) {
+  public List<CurrencyCode> addCurrencies( @RequestBody(required = true) List<CurrencyCode> pCurrencies ) {
     // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
     return lService.addCurrencies(pCurrencies);
@@ -259,7 +260,7 @@ public class ProductServiceResource {
    * {@link ProductService#isCurrencySupported()}
    */
   @RequestMapping(path = "currencies/valid", method = { RequestMethod.POST })
-  public CurrencyCode isCurrencySupported( CurrencyCode pCurrency ) {
+  public CurrencyCode isCurrencySupported( @RequestBody(required = true) CurrencyCode pCurrency ) {
     // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
     return lService.isCurrencySupported(pCurrency);
@@ -269,7 +270,7 @@ public class ProductServiceResource {
    * {@link ProductService#testCodeTypeUsage()}
    */
   @RequestMapping(path = "codeTypeUsages", method = { RequestMethod.POST })
-  public IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode ) {
+  public IntegerCodeType testCodeTypeUsage( @RequestBody(required = true) StringCodeType pStringCode ) {
     // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
     return lService.testCodeTypeUsage(pStringCode);
