@@ -7,6 +7,8 @@ package com.anaptecs.spring.base;
 
 import java.util.Locale;
 
+import javax.ws.rs.HeaderParam;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
@@ -20,6 +22,7 @@ public class SpecialContext extends Context {
   /**
    * 
    */
+  @HeaderParam("specificHeader")
   private String specificHeader;
 
   /**

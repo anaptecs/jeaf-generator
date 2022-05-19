@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.service;
 
+import javax.ws.rs.HeaderParam;
+
 import com.anaptecs.spring.base.ParentBeanParamType;
 
 /**
@@ -20,6 +22,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * 
    */
+  @HeaderParam("X-Child-Property")
   private String childProperty;
 
   /**

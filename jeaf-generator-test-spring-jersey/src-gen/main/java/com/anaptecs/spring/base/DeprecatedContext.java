@@ -8,6 +8,9 @@ package com.anaptecs.spring.base;
 import java.util.Locale;
 
 import javax.validation.constraints.NotEmpty;
+import javax.ws.rs.CookieParam;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.QueryParam;
 
 /**
  * @author JEAF Generator
@@ -38,6 +41,7 @@ public class DeprecatedContext {
   /**
    * 
    */
+  @HeaderParam("token")
   @NotEmpty
   private String accessToken;
 
@@ -45,16 +49,19 @@ public class DeprecatedContext {
    * <br/>
    * <b>Example:</b> <code>en</code>
    */
+  @HeaderParam("lang")
   private Locale language;
 
   /**
    * 
    */
+  @CookieParam("reseller")
   private long resellerID;
 
   /**
    * 
    */
+  @QueryParam("q1")
   private String queryParam;
 
   /**

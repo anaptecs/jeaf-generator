@@ -8,6 +8,10 @@ package com.anaptecs.spring.base;
 import java.util.Locale;
 
 import javax.validation.constraints.NotEmpty;
+import javax.ws.rs.CookieParam;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 
 /**
  * @author JEAF Generator
@@ -42,6 +46,7 @@ public class Context {
   /**
    * 
    */
+  @HeaderParam("token")
   @NotEmpty
   private String accessToken;
 
@@ -49,21 +54,25 @@ public class Context {
    * <br/>
    * <b>Example:</b> <code>en</code>
    */
+  @HeaderParam("lang")
   private Locale language;
 
   /**
    * 
    */
+  @CookieParam("reseller")
   private long resellerID;
 
   /**
    * 
    */
+  @PathParam("id")
   private long pathParam;
 
   /**
    * 
    */
+  @QueryParam("q1")
   private String queryParam;
 
   /**

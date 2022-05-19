@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.service;
 
+import javax.ws.rs.HeaderParam;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
@@ -23,11 +25,13 @@ public class LocalBeanParamType {
   /**
    * 
    */
+  @HeaderParam("localKey")
   private String localKey;
 
   /**
    * 
    */
+  @HeaderParam("localID")
   private String localID;
 
   /**

@@ -7,6 +7,9 @@ package com.anaptecs.spring.base;
 
 import java.util.Locale;
 
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.QueryParam;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -34,17 +37,20 @@ public class BeanParameter {
   /**
    * 
    */
+  @HeaderParam("token")
   private String accessToken;
 
   /**
    * 
    */
+  @HeaderParam("lang")
   private Locale language;
 
   /**
    * 
    */
   @Deprecated
+  @QueryParam("q2")
   private String oldStyle;
 
   /**
