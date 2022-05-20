@@ -46,9 +46,7 @@ public class SpringRESTControllerTest {
   @Test
   void testAdvancedRESTControllerFeatures( ) throws Exception {
     // Execute simple request using Apache HTTP client
-    BasicCookieStore lCookieStore = new BasicCookieStore();
-
-    CloseableHttpClient lHttpClient = HttpClientBuilder.create().setDefaultCookieStore(lCookieStore).build();
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
 
     ClassicHttpRequest lRequest = ClassicRequestBuilder.get(template.getRootUri() + "/products").build();
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest);
@@ -93,6 +91,7 @@ public class SpringRESTControllerTest {
     BasicClientCookie lCookie = new BasicClientCookie("reseller", "47110815");
     lCookie.setDomain("localhost");
     lCookie.setPath("/");
+    BasicCookieStore lCookieStore = new BasicCookieStore();
     lCookieStore.addCookie(lCookie);
     HttpContext lLocalContext = new BasicHttpContext();
     lLocalContext.setAttribute(HttpClientContext.COOKIE_STORE, lCookieStore);
