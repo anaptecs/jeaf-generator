@@ -110,7 +110,7 @@
               «ENDIF-»
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»              
               «IF attribute.isDeprecated() -»
-            deprecated: true
+          deprecated: true
               «ENDIF-»
             «ENDIF-»
            «ENDIF-»
