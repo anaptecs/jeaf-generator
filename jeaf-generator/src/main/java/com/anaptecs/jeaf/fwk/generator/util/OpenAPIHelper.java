@@ -380,4 +380,22 @@ public class OpenAPIHelper {
     }
     return lStatusCode;
   }
+
+  public static final String WITH_DELIMITER = "((?<=%1$s)|(?=%1$s))";
+
+  public static String[] splitRESTPath( String pRESTPath, String... pPathParams ) {
+    // Builder regular expression to split path into several parts
+    StringBuilder lBuilder = new StringBuilder();
+    for (int i = 0; i < pPathParams.length; i++) {
+      lBuilder.append("\\{");
+      lBuilder.append(pPathParams[i]);
+      lBuilder.append("\\}");
+      if (i < pPathParams.length - 1) {
+        lBuilder.append('|');
+      }
+    }
+
+    String lPattern = String.format(WITH_DELIMITER, lBuilder.toString());
+    return pRESTPath.split(lPattern);
+  }
 }
