@@ -306,7 +306,7 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateJUnitTests;
 
   /**
-   * Switch defines whether an Open API specification should be generated or not.
+   * Switch defines whether an OpenAPI specification should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateOpenAPISpec;
@@ -690,7 +690,7 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate JUnit Test Cases:                        " + generateJUnitTests);
     }
     if (generateOpenAPISpec) {
-      lLog.info("Generate Open API Specification:                  " + generateOpenAPISpec);
+      lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
     }
     if (generateJAXRSAnnotations) {
       lLog.info("Generate JAX-RS annotations:                      " + generateJAXRSAnnotations);
