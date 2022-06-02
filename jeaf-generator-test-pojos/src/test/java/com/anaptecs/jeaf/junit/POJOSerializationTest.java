@@ -29,7 +29,7 @@ public class POJOSerializationTest {
 
     JSONTools lTools = JSON.getJSONTools();
     String lJSON = lTools.writeObjectToString(lBidirectB);
-    assertEquals("{\"as\":[{\"child\":{\"child\":null}}],\"theAs\":[{\"child\":{\"child\":null}}]}", lJSON);
+    assertEquals("{\"as\":[{\"child\":{}}],\"theAs\":[{\"child\":{}}]}", lJSON);
 
     BidirectionalB lDeserializedB = lTools.read(lJSON, BidirectionalB.class);
     BidirectionalA lA = lDeserializedB.getAs().iterator().next();
