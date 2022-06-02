@@ -744,19 +744,12 @@ paths:
       parameters:
         - name: channelTypes
           in: query
+          description: >-
+            Default value: MOBILE
           schema:
             type: array
-            default: [MOBILE]
             items:
-              type: string
-              enum:
-                - COUNTER
-                - CALL_CENTER
-                - MOBILE
-                - TVM
-                - WEB
-                # Literal "LEGACY_POS" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
-                - LEGACY_POS
+              $ref: '../base/product-base.yml#/components/schemas/ChannelType'
       responses:
         '200':
           description: >-
@@ -784,18 +777,11 @@ paths:
       parameters:
         - name: channelType
           in: query
+          description: >-
+            Default value: COUNTER
           required: true
           schema:
-            type: string
-            default: COUNTER
-            enum:
-              - COUNTER
-              - CALL_CENTER
-              - MOBILE
-              - TVM
-              - WEB
-              # Literal "LEGACY_POS" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
-              - LEGACY_POS
+            $ref: '../base/product-base.yml#/components/schemas/ChannelType' 
       responses:
         '200':
           description: >-

@@ -619,9 +619,12 @@ public class GeneratorMojo extends AbstractMojo {
     lLog.info("src-gen:                                          " + sourceGenDirectory);
     lLog.info("res:                                              " + resourceDirectory);
     lLog.info("res-gen:                                          " + resourceGenDirectory);
-    lLog.info(" ");
-    lLog.info("UML Modeling Tool:                                " + umlModelingTool.getDisplayName());
-    lLog.info("Target Runtime:                                   " + targetRuntime.name());
+
+    if (this.isUMLGenerationRequested() == true) {
+      lLog.info(" ");
+      lLog.info("UML Modeling Tool:                                " + umlModelingTool.getDisplayName());
+      lLog.info("Target Runtime:                                   " + targetRuntime.name());
+    }
     if (restLibrary != null) {
       lLog.info("REST Library:                                     " + restLibrary.name());
     }

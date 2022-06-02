@@ -32,6 +32,12 @@
 		    <version>${spring.boot.version}</version>
 		</dependency>
 
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-actuator</artifactId>
+		    <version>${spring.boot.version}</version>
+		</dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -59,6 +65,12 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>com.anaptecs.jeaf.json</groupId>
+			<artifactId>jeaf-json-problem</artifactId>
+			<version>${jeaf.json.api.version}</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>com.anaptecs.jeaf.workload</groupId>
 			<artifactId>jeaf-workload-rest-api</artifactId>
 			<version>${jeaf.workload.api.version}</version>
@@ -75,6 +87,12 @@
 			<groupId>org.apache.httpcomponents.client5</groupId>
 			<artifactId>httpclient5</artifactId>
 			<version>${apache.httpclient5.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.github.resilience4j</groupId>
+			<artifactId>resilience4j-circuitbreaker</artifactId>
+			<version>${resilience4j.version}</version>
 		</dependency>
 
 		<dependency>

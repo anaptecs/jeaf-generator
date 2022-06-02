@@ -80,7 +80,7 @@ public class JSONSerializationTest {
         Reseller.Builder.newBuilder().setName("Reseller 1").setLanguage(Locale.GERMAN).setChannels(lChannels).build();
     lJSONString = lTools.writeObjectToString(lReseller);
     assertEquals(
-        "{\"objectID\":null,\"channels\":[{\"channelType\":\"COUNTER\",\"channelCode\":\"POS\",\"code\":47,\"selfServiceChannel\":false},{\"channelType\":\"MOBILE\",\"channelCode\":\"MOBILE_APP\",\"code\":42,\"selfServiceChannel\":true}],\"name\":\"Reseller 1\",\"language\":\"de\"}",
+        "{\"channels\":[{\"channelType\":\"COUNTER\",\"channelCode\":\"POS\",\"code\":47,\"selfServiceChannel\":false},{\"channelType\":\"MOBILE\",\"channelCode\":\"MOBILE_APP\",\"code\":42,\"selfServiceChannel\":true}],\"name\":\"Reseller 1\",\"language\":\"de\"}",
         lJSONString);
 
     // Test deserialization
@@ -97,7 +97,7 @@ public class JSONSerializationTest {
     ParentClass lParentClass = ParentClass.Builder.newBuilder().setParentAttribute("parent").build();
     JSONTools lTools = JSON.getJSONTools();
     String lValue = lTools.writeObjectToString(lParentClass);
-    assertEquals("{\"objectType\":\"ParentClass\",\"parentAttribute\":\"parent\",\"ibans\":[]}", lValue);
+    assertEquals("{\"objectType\":\"ParentClass\",\"parentAttribute\":\"parent\"}", lValue);
 
     ParentClass lDeserializedParent = lTools.read(lValue, ParentClass.class);
     assertEquals("parent", lParentClass.getParentAttribute());
@@ -105,7 +105,7 @@ public class JSONSerializationTest {
     ChildBB lChildBB = ChildBB.Builder.newBuilder().setChildBBAttribute(123456789l).build();
     lValue = lTools.writeObjectToString(lChildBB);
     assertEquals(
-        "{\"objectType\":\"ChildBB\",\"parentAttribute\":null,\"ibans\":[],\"childBAttribute\":false,\"composition\":[],\"childBBAttribute\":123456789,\"deprecatedAttribute\":0,\"deprecatedBs\":[],\"deprecatedParent\":null,\"deprecatedArray\":null}",
+        "{\"objectType\":\"ChildBB\",\"childBAttribute\":false,\"childBBAttribute\":123456789,\"deprecatedAttribute\":0}",
         lValue);
 
     lDeserializedParent = lTools.read(lValue, ParentClass.class);
@@ -115,7 +115,7 @@ public class JSONSerializationTest {
     lChildBB.addToComposition(lChildAA);
     lValue = lTools.writeObjectToString(lChildBB);
     assertEquals(
-        "{\"objectType\":\"ChildBB\",\"parentAttribute\":null,\"ibans\":[],\"childBAttribute\":false,\"composition\":[{\"objectType\":\"ChildAA\",\"parentAttribute\":null,\"ibans\":[],\"childAAttribute\":4711,\"childAAAttribute\":0,\"sizedArray\":0,\"requiredArray\":null}],\"childBBAttribute\":123456789,\"deprecatedAttribute\":0,\"deprecatedBs\":[],\"deprecatedParent\":null,\"deprecatedArray\":null}",
+        "{\"objectType\":\"ChildBB\",\"childBAttribute\":false,\"composition\":[{\"objectType\":\"ChildAA\",\"childAAttribute\":4711,\"childAAAttribute\":0,\"sizedArray\":0}],\"childBBAttribute\":123456789,\"deprecatedAttribute\":0}",
         lValue);
 
     lDeserializedParent = lTools.read(lValue, ParentClass.class);
@@ -160,7 +160,7 @@ public class JSONSerializationTest {
     JSONTools lTools = JSON.getJSONTools();
     String lJSON = lTools.writeObjectToString(lProducts);
     String lExpected =
-        "[{\"objectID\":\"12|0\",\"resellers\":[{\"objectID\":\"1234|5\",\"channels\":[],\"name\":\"Good Guys Inc.\",\"language\":\"de\"}],\"name\":\"Fancy Thing\",\"image\":null,\"link\":null,\"productID\":\"c513b71f-433d-4118-be8b-7190226eb155\",\"supportedCurrencies\":[],\"productCodes\":[],\"description\":null,\"uri\":\"https://products.anaptecs.de/123456789\"},{\"objectID\":\"4|1\",\"resellers\":[\"1234|5\"],\"name\":\"Standard Thing\",\"image\":null,\"link\":null,\"productID\":\"c513b71f-433d-4118-be8b-7190226eb123\",\"supportedCurrencies\":[],\"productCodes\":[],\"description\":null,\"uri\":\"https://products.anaptecs.de/123456789\"}]";
+        "[{\"objectID\":\"12|0\",\"resellers\":[{\"objectID\":\"1234|5\",\"name\":\"Good Guys Inc.\",\"language\":\"de\"}],\"name\":\"Fancy Thing\",\"productID\":\"c513b71f-433d-4118-be8b-7190226eb155\",\"uri\":\"https://products.anaptecs.de/123456789\"},{\"objectID\":\"4|1\",\"resellers\":[\"1234|5\"],\"name\":\"Standard Thing\",\"productID\":\"c513b71f-433d-4118-be8b-7190226eb123\",\"uri\":\"https://products.anaptecs.de/123456789\"}]";
     assertEquals(lExpected, lJSON);
   }
 
@@ -206,9 +206,7 @@ public class JSONSerializationTest {
     Company lCompany =
         Company.Builder.newBuilder().setID(new ServiceObjectID("123456", 2)).setName("anaptecs GmbH").build();
     String lJSON = lTools.writeObjectToString(lCompany);
-    assertEquals(
-        "{\"objectType\":\"Company\",\"objectID\":\"123456|2\",\"postalAddresses\":[],\"name\":\"anaptecs GmbH\"}",
-        lJSON);
+    assertEquals("{\"objectType\":\"Company\",\"objectID\":\"123456|2\",\"name\":\"anaptecs GmbH\"}", lJSON);
 
     Person lDonald = Person.Builder.newBuilder().setID(new ServiceObjectID("9876", 5)).setFirstName("Donald")
         .setSurname("Duck").build();
@@ -223,7 +221,7 @@ public class JSONSerializationTest {
     Partner[] lArray = lPartners.toArray(new Partner[0]);
     lJSON = lTools.writeObjectToString(lArray);
     assertEquals(
-        "[{\"objectType\":\"Person\",\"objectID\":\"9876|5\",\"postalAddresses\":[],\"surname\":\"Duck\",\"firstName\":\"Donald\"},{\"objectType\":\"Company\",\"objectID\":\"123456|2\",\"postalAddresses\":[],\"name\":\"anaptecs GmbH\"},{\"objectType\":\"Partner\",\"objectID\":\"4711|0\",\"postalAddresses\":[]}]",
+        "[{\"objectType\":\"Person\",\"objectID\":\"9876|5\",\"surname\":\"Duck\",\"firstName\":\"Donald\"},{\"objectType\":\"Company\",\"objectID\":\"123456|2\",\"name\":\"anaptecs GmbH\"},{\"objectType\":\"Partner\",\"objectID\":\"4711|0\"}]",
         lJSON);
 
     ObjectMapper lObjectMapper = lTools.getDefaultObjectMapper();
@@ -231,12 +229,12 @@ public class JSONSerializationTest {
     ObjectWriter lWriter = lObjectMapper.writerFor(lType);
     lJSON = lWriter.writeValueAsString(lPartners);
     assertEquals(
-        "[{\"objectType\":\"Person\",\"objectID\":\"9876|5\",\"postalAddresses\":[],\"surname\":\"Duck\",\"firstName\":\"Donald\"},{\"objectType\":\"Company\",\"objectID\":\"123456|2\",\"postalAddresses\":[],\"name\":\"anaptecs GmbH\"},{\"objectType\":\"Partner\",\"objectID\":\"4711|0\",\"postalAddresses\":[]}]",
+        "[{\"objectType\":\"Person\",\"objectID\":\"9876|5\",\"surname\":\"Duck\",\"firstName\":\"Donald\"},{\"objectType\":\"Company\",\"objectID\":\"123456|2\",\"name\":\"anaptecs GmbH\"},{\"objectType\":\"Partner\",\"objectID\":\"4711|0\"}]",
         lJSON);
 
     lJSON = lTools.writeObjectsToString(lPartners, Partner.class);
     assertEquals(
-        "[{\"objectType\":\"Person\",\"objectID\":\"9876|5\",\"postalAddresses\":[],\"surname\":\"Duck\",\"firstName\":\"Donald\"},{\"objectType\":\"Company\",\"objectID\":\"123456|2\",\"postalAddresses\":[],\"name\":\"anaptecs GmbH\"},{\"objectType\":\"Partner\",\"objectID\":\"4711|0\",\"postalAddresses\":[]}]",
+        "[{\"objectType\":\"Person\",\"objectID\":\"9876|5\",\"surname\":\"Duck\",\"firstName\":\"Donald\"},{\"objectType\":\"Company\",\"objectID\":\"123456|2\",\"name\":\"anaptecs GmbH\"},{\"objectType\":\"Partner\",\"objectID\":\"4711|0\"}]",
         lJSON);
 
     PartnerContainer lContainer = PartnerContainer.Builder.newBuilder().build();
@@ -246,7 +244,7 @@ public class JSONSerializationTest {
 
     lJSON = lTools.writeObjectToString(lContainer);
     assertEquals(
-        "{\"partners\":[{\"objectType\":\"Person\",\"objectID\":\"9876|5\",\"postalAddresses\":[],\"surname\":\"Duck\",\"firstName\":\"Donald\"},{\"objectType\":\"Company\",\"objectID\":\"123456|2\",\"postalAddresses\":[],\"name\":\"anaptecs GmbH\"},{\"objectType\":\"Partner\",\"objectID\":\"4711|0\",\"postalAddresses\":[]}]}",
+        "{\"partners\":[{\"objectType\":\"Person\",\"objectID\":\"9876|5\",\"surname\":\"Duck\",\"firstName\":\"Donald\"},{\"objectType\":\"Company\",\"objectID\":\"123456|2\",\"name\":\"anaptecs GmbH\"},{\"objectType\":\"Partner\",\"objectID\":\"4711|0\"}]}",
         lJSON);
   }
 
@@ -277,11 +275,11 @@ public class JSONSerializationTest {
 
     JSONTools lTools = JSON.getJSONTools();
     String lJSON = lTools.writeObjectToString(lReseller);
-    assertEquals("{\"objectID\":\"1234|5\",\"channels\":[],\"name\":\"Good Guys Inc.\",\"language\":\"de\"}", lJSON);
+    assertEquals("{\"objectID\":\"1234|5\",\"name\":\"Good Guys Inc.\",\"language\":\"de\"}", lJSON);
 
     lJSON = lTools.writeObjectToString(lProduct1);
     String lProductJSON =
-        "{\"objectID\":\"12|0\",\"resellers\":[{\"objectID\":\"1234|5\",\"channels\":[],\"name\":\"Good Guys Inc.\",\"language\":\"de\"}],\"name\":\"Fancy Thing\",\"image\":null,\"link\":null,\"productID\":\"c513b71f-433d-4118-be8b-7190226eb155\",\"supportedCurrencies\":[],\"productCodes\":[],\"description\":null,\"uri\":\"https://products.anaptecs.de/123456789\"}";
+        "{\"objectID\":\"12|0\",\"resellers\":[{\"objectID\":\"1234|5\",\"name\":\"Good Guys Inc.\",\"language\":\"de\"}],\"name\":\"Fancy Thing\",\"productID\":\"c513b71f-433d-4118-be8b-7190226eb155\",\"uri\":\"https://products.anaptecs.de/123456789\"}";
     assertEquals(lProductJSON, lJSON);
 
     Product lDeserializedProduct = lTools.read(lProductJSON, Product.class);
@@ -304,9 +302,9 @@ public class JSONSerializationTest {
     assertEquals(lBidirectA, lChild.getParent());
     JSONTools lTools = JSON.getJSONTools();
     String lJSON = lTools.writeObjectToString(lBidirectA);
-    assertEquals("{\"parent\":null}", lJSON);
+    assertEquals("{}", lJSON);
     lJSON = lTools.writeObjectToString(lChild);
-    assertEquals("{\"parent\":{\"parent\":null}}", lJSON);
+    assertEquals("{\"parent\":{}}", lJSON);
 
     BidirectA lDeserializedA = lTools.read(lJSON, BidirectA.class);
     BidirectA lParent = lDeserializedA.getParent();
@@ -314,7 +312,7 @@ public class JSONSerializationTest {
     assertEquals(lDeserializedA, lParent.getTransientChild());
 
     lJSON = lTools.writeObjectToString(lBidirectB);
-    assertEquals("{\"a\":{\"parent\":null}}", lJSON);
+    assertEquals("{\"a\":{}}", lJSON);
 
     BidirectB lDeserializedB = lTools.read(lJSON, BidirectB.class);
     BidirectA lA = lDeserializedB.getA();

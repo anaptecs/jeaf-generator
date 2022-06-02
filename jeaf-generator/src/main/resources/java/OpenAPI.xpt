@@ -308,9 +308,14 @@ components:
         «FOREACH operation.getOpenAPIInputParameters() AS param-»
         - name: «EXPAND RESTParamName FOR param»
           in: «param.getOpenAPIParameterType()»
-          «IF param.hasComment()-»
+          «IF param.hasComment()|| param.hasDefaultValueForEnum() -»
           description: >-
+            «IF param.hasComment()-»
             «param.getCommentForOpenAPIDescription("            ")»
+            «ENDIF-»
+            «IF param.hasDefaultValueForEnum() -»
+            Default value: «param.getDefaultValueForEnum()»
+            «ENDIF-»
           «ENDIF-»
           «IF param.isRequired() -»
           required: «param.isRequired()»
@@ -350,52 +355,6 @@ components:
                   «ENDIF-»
                 «ENDIF-»
             «ELSE-»
-              «IF param.isOpenAPIEnum()-»
-                «LET ((JMM::OpenAPIEnumeration) param.type) AS enum -» 
-                «IF param.isMultivalued() == false -»
-            type: string
-                  «IF param.hasDefaultValueForEnum() -»
-            default: «param.getDefaultValueForEnum()»
-                  «ENDIF-»
-                  «IF enum.extensibleEnum == true-»
-            x-extensible-enum:
-                  «ELSE-»
-            enum:
-                  «ENDIF-»
-                  «FOREACH enum.ownedLiteral AS literal-»        
-                  «IF literal.hasComment()-»
-              # «literal.getYAMLStyleComment("        ")»
-                  «ENDIF-»
-                  «IF literal.isDeprecated() -»
-              # Literal "«literal.name»" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
-                  «ENDIF-»
-              - «literal.name»
-                  «ENDFOREACH-»
-                «ELSE-»
-            type: array
-                  «IF param.hasDefaultValueForEnum() -»
-            default: [«param.getDefaultValueForEnum()»]
-                  «ENDIF-»
-            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
-            items:
-              type: string
-                  «IF enum.extensibleEnum == true-»
-              x-extensible-enum:
-                  «ELSE-»
-              enum:
-                  «ENDIF-»
-                  «FOREACH enum.ownedLiteral AS literal-»        
-                  «IF literal.hasComment()-»
-                # «literal.getYAMLStyleComment("        ")»
-                  «ENDIF-»
-                  «IF literal.isDeprecated() -»
-                # Literal "«literal.name»" is marked as deprecated. However OpenAPI does not support to mark literals as deprecated. 
-                  «ENDIF-»
-                - «literal.name»
-                  «ENDFOREACH-»
-                «ENDIF-»
-                «ENDLET-»
-              «ELSE-»
                 «IF param.isMultivalued() == false -»
             $ref: «param.type.getOpenAPIType(this)» 
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
@@ -405,7 +364,6 @@ components:
             items:
               $ref: «param.type.getOpenAPIType(this)»
                 «ENDIF-»
-              «ENDIF-»              
             «ENDIF-»
         «ENDFOREACH-»
       «ENDIF-»
