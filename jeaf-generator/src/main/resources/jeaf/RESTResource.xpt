@@ -232,10 +232,10 @@ public class «name»Resource {
   @org.springframework.web.bind.annotation.RequestHeader(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF this.type.isBasicType() && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»)
   «ENDIF-»
   «IF this.isQueryParam() -»
-  @org.springframework.web.bind.annotation.RequestParam(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF this.type.isBasicType() && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»))
+  @org.springframework.web.bind.annotation.RequestParam(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF this.type.isBasicType() && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»)
   «ENDIF-»
   «IF this.isCookieParam() -»
-  @org.springframework.web.bind.annotation.CookieValue(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF this.type.isBasicType() && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»))
+  @org.springframework.web.bind.annotation.CookieValue(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF this.type.isBasicType() && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»)
   «ENDIF-»
   «IF this.isBeanParam() -»
   	«EXPAND ProcessBeanParam FOR ((Class)this.type)»
