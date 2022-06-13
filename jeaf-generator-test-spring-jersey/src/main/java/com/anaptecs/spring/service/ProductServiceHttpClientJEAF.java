@@ -48,13 +48,19 @@ import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
 // @Component
 public class ProductServiceHttpClientJEAF {
   /**
+   * Maximum size of the connection pool.
+   */
+  @Value("${productservice.http.maxPoolSize}")
+  private int maxPoolSize = 20;
+
+  /**
    * Maximum amount of idle connections in the connection pool.
    */
   @Value("${productservice.http.maxIdleConnections}")
   private int maxIdleConnections = 20;
 
   /**
-   * Keep alive duration for connection to proxy target (in milliseconds)
+   * Keep alive duration for connection to REST service (in milliseconds)
    */
   @Value("${productservice.http.keepAliveDuration}")
   private int keepAliveDuration = 1 * 60 * 1000;
@@ -67,27 +73,26 @@ public class ProductServiceHttpClientJEAF {
   private int validateAfterInactivityDuration = 10 * 1000;
 
   /**
-   * Maximum amount of retries before a call to the proxy target is considered to be failed.
+   * Maximum amount of retries before a call to the REST service is considered to be failed.
    */
   @Value("${productservice.http.maxRetries}")
   private int maxRetries = 1;
 
   /**
-   * Interval in milliseconds after which the proxy target is called again in case that retries are configured.
+   * Interval in milliseconds after which the REST service is called again in case that retries are configured.
    */
   @Value("${productservice.http.retryInterval}")
   private int retryInterval = 100;
 
   /**
-   * Response timeout in milliseconds for calls to proxy target. Please be aware that this is a very sensitive parameter
-   * and needs to be fine-tuned for your purposes. the response timeout has a very strong influence on the behavior of
-   * your service to the outside world and also influences pipeline configuration values.
+   * Response timeout in milliseconds for calls to target service. Please be aware that this is a very sensitive
+   * parameter and needs to be fine-tuned for your purposes.
    */
   @Value("${productservice.http.responseTimeout}")
   private int responseTimeout = 10000;
 
   /**
-   * Timeout in milliseconds to establish connections to the proxy target. As connections are pooled this parameter
+   * Timeout in milliseconds to establish connections to the REST service. As connections are pooled this parameter
    * should not have a too strong influence on the overall behavior. However please ensure that it fits to your
    * environment.
    */
@@ -104,7 +109,7 @@ public class ProductServiceHttpClientJEAF {
 
   /**
    * Failure rate threshold (percent of requests) defines which amount of failed request must be exceeded due to
-   * technical problems that the circuit breaker opens and no further request will be sent to the proxy target.
+   * technical problems that the circuit breaker opens and no further request will be sent to the REST service.
    * 
    * Value must between 0 and 100.
    */
@@ -112,7 +117,7 @@ public class ProductServiceHttpClientJEAF {
   private int failureRateThreshold = 30;
 
   /**
-   * Duration in milliseconds that the circuit breaker stays open until request will be sent to the proxy target again.
+   * Duration in milliseconds that the circuit breaker stays open until request will be sent to the REST service again.
    * 
    * The value must be zero or greater.
    */
@@ -178,8 +183,8 @@ public class ProductServiceHttpClientJEAF {
 
     PoolingHttpClientConnectionManager lConnectionManager = new PoolingHttpClientConnectionManager(lRegistry,
         PoolConcurrencyPolicy.LAX, PoolReusePolicy.LIFO, TimeValue.ofMilliseconds(keepAliveDuration));
+    lConnectionManager.setMaxTotal(maxPoolSize);
     lConnectionManager.setDefaultMaxPerRoute(maxIdleConnections);
-    lConnectionManager.setMaxTotal(maxIdleConnections);
     lConnectionManager.setValidateAfterInactivity(TimeValue.ofMilliseconds(validateAfterInactivityDuration));
     lConnectionManager.setDefaultSocketConfig(lSocketConfig);
 
