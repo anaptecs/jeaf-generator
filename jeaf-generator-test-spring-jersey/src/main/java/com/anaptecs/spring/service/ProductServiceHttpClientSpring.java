@@ -32,6 +32,7 @@ import org.apache.hc.core5.pool.PoolReusePolicy;
 import org.apache.hc.core5.util.TimeValue;
 import org.apache.hc.core5.util.Timeout;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import com.anaptecs.jeaf.json.api.JSONMessages;
 import com.anaptecs.jeaf.json.problem.RESTProblemException;
@@ -46,55 +47,63 @@ import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig.Builder;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
 
-// @Configuration
-// @Component
+/**
+ * Class implements a http client implementation that can be used to call ProductService. This implementation supports a
+ * wide range of configuration parameters for Apache HTTP client and Resilience4J circuit breaker.
+ */
+@Component
 public class ProductServiceHttpClientSpring {
+  /**
+   * Maximum size of the connection pool.
+   */
+  @Value("${productservice.http.maxPoolSize}")
+  private int maxPoolSize;
+
   /**
    * Maximum amount of idle connections in the connection pool.
    */
   @Value("${productservice.http.maxIdleConnections}")
-  private int maxIdleConnections = 20;
+  private int maxIdleConnections;
 
   /**
-   * Keep alive duration for connection to proxy target (in milliseconds)
+   * Keep alive duration for connection to REST service (in milliseconds)
    */
   @Value("${productservice.http.keepAliveDuration}")
-  private int keepAliveDuration = 1 * 60 * 1000;
+  private int keepAliveDuration;
 
   /**
    * Parameter configures the time period in milliseconds after which a connection is validated before it is taken from
    * the pool again.
    */
   @Value("${productservice.http.validateAfterInactivityDuration}")
-  private int validateAfterInactivityDuration = 10 * 1000;
+  private int validateAfterInactivityDuration;
 
   /**
-   * Maximum amount of retries before a call to the proxy target is considered to be failed.
+   * Maximum amount of retries before a call to the REST service is considered to be failed.
    */
   @Value("${productservice.http.maxRetries}")
-  private int maxRetries = 1;
+  private int maxRetries;
 
   /**
-   * Interval in milliseconds after which the proxy target is called again in case that retries are configured.
+   * Interval in milliseconds after which the REST service is called again in case that retries are configured.
    */
   @Value("${productservice.http.retryInterval}")
-  private int retryInterval = 100;
+  private int retryInterval;
 
   /**
-   * Response timeout in milliseconds for calls to proxy target. Please be aware that this is a very sensitive parameter
-   * and needs to be fine-tuned for your purposes. the response timeout has a very strong influence on the behavior of
-   * your service to the outside world and also influences pipeline configuration values.
+   * Response timeout in milliseconds for calls to REST service. Please be aware that this is a very sensitive parameter
+   * and needs to be fine-tuned for your purposes.
    */
   @Value("${productservice.http.responseTimeout}")
-  private int responseTimeout = 10000;
+  private int responseTimeout;
 
   /**
-   * Timeout in milliseconds to establish connections to the proxy target. As connections are pooled this parameter
+   * Timeout in milliseconds to establish connections to the REST service. As connections are pooled this parameter
    * should not have a too strong influence on the overall behavior. However please ensure that it fits to your
    * environment.
    */
   @Value("${productservice.http.connectTimeout}")
-  private int connectTimeout = 10000;
+  private int connectTimeout;
 
   /**
    * Instance of http client that is used to call proxied REST service. Configuration of HTTP client is according to the
@@ -106,20 +115,20 @@ public class ProductServiceHttpClientSpring {
 
   /**
    * Failure rate threshold (percent of requests) defines which amount of failed request must be exceeded due to
-   * technical problems that the circuit breaker opens and no further request will be sent to the proxy target.
+   * technical problems that the circuit breaker opens and no further request will be sent to the REST service.
    * 
    * Value must between 0 and 100.
    */
   @Value("${productservice.circuitbreaker.failureRateThreshold}")
-  private int failureRateThreshold = 30;
+  private int failureRateThreshold;
 
   /**
-   * Duration in milliseconds that the circuit breaker stays open until request will be sent to the proxy target again.
+   * Duration in milliseconds that the circuit breaker stays open until request will be sent to the REST service again.
    * 
    * The value must be zero or greater.
    */
   @Value("${productservice.circuitbreaker.durationInOpenState}")
-  private int durationInOpenState = 1000;
+  private int durationInOpenState;
 
   /**
    * Configures the duration in milliseconds above which calls are considered as slow and increase the slow calls
@@ -128,7 +137,7 @@ public class ProductServiceHttpClientSpring {
    * The value must be zero or greater.
    */
   @Value("${productservice.circuitbreaker.slowRequestDuration}")
-  private int slowRequestDuration = 10000;
+  private int slowRequestDuration;
 
   /**
    * Configures the slow request threshold in percentage. The circuit breaker considers a call as slow when the call
@@ -138,7 +147,7 @@ public class ProductServiceHttpClientSpring {
    * Value must between 0 and 100.
    */
   @Value("${productservice.circuitbreaker.slowRequestRateThreshold}")
-  private int slowRequestRateThreshold = 30;
+  private int slowRequestRateThreshold;
 
   /**
    * Configures the number of permitted calls when the circuit breaker is half open.
@@ -146,7 +155,7 @@ public class ProductServiceHttpClientSpring {
    * The value must be zero or greater.
    */
   @Value("${productservice.circuitbreaker.permittedCallsInHalfOpenState}")
-  private int permittedCallsInHalfOpenState = 5;
+  private int permittedCallsInHalfOpenState;
 
   /**
    * Configures the size of the sliding window in seconds which is used to record the outcome of calls when the circuit
@@ -155,7 +164,7 @@ public class ProductServiceHttpClientSpring {
    * The value must be greater than 0.
    */
   @Value("${productservice.circuitbreaker.slidingWindowSizeSeconds}")
-  private int slidingWindowSizeSeconds = 5;
+  private int slidingWindowSizeSeconds;
 
   /**
    * Circuit breaker instance that is used when calling the REST service.
@@ -183,8 +192,8 @@ public class ProductServiceHttpClientSpring {
 
     PoolingHttpClientConnectionManager lConnectionManager = new PoolingHttpClientConnectionManager(lRegistry,
         PoolConcurrencyPolicy.LAX, PoolReusePolicy.LIFO, TimeValue.ofMilliseconds(keepAliveDuration));
+    lConnectionManager.setMaxTotal(maxPoolSize);
     lConnectionManager.setDefaultMaxPerRoute(maxIdleConnections);
-    lConnectionManager.setMaxTotal(maxIdleConnections);
     lConnectionManager.setValidateAfterInactivity(TimeValue.ofMilliseconds(validateAfterInactivityDuration));
     lConnectionManager.setDefaultSocketConfig(lSocketConfig);
 
