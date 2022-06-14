@@ -129,4 +129,14 @@ public class SpringRESTControllerTest {
     assertEquals("\"MyMobile\"", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
   }
+
+  @Test
+  void testServiceProxyInit( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + "/rest-products/test-init");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+
+    assertEquals(0, lResponse.getEntity().getContentLength());
+    assertEquals(200, lResponse.getCode());
+  }
 }

@@ -44,6 +44,7 @@
     <AuthorizationType name="createCategory.com.anaptecs.jeaf.services.outputmanager.FormManagementService" />
     <AuthorizationType name="createChannelCode.com.anaptecs.jeaf.junit.openapi.service1.ProductService" />
     <AuthorizationType name="createChannelCode.com.anaptecs.spring.service.ProductService" />
+    <AuthorizationType name="createChannelCode.com.anaptecs.spring.service.RESTProductService" />
     <AuthorizationType name="createChannelCodeFromObject.com.anaptecs.jeaf.junit.openapi.service1.ProductService" />
     <AuthorizationType name="createChannelCodeFromObject.com.anaptecs.spring.service.ProductService" />
     <AuthorizationType name="createClassA.com.anaptecs.jeaf.junit.core.BusinessObjectTestService" />
@@ -63,6 +64,7 @@
     <AuthorizationType name="createPerson.com.anaptecs.jeaf.services.usermanagement.UserManagementService" />
     <AuthorizationType name="createProduct.com.anaptecs.jeaf.junit.openapi.service1.ProductService" />
     <AuthorizationType name="createProduct.com.anaptecs.spring.service.ProductService" />
+    <AuthorizationType name="createProduct.com.anaptecs.spring.service.RESTProductService" />
     <AuthorizationType name="createProperty.com.anaptecs.jeaf.services.systemmanagement.PropertyAdminService" />
     <AuthorizationType name="createResponsibilityType.com.anaptecs.jeaf.accounting.AccountingBasicDataService" />
     <AuthorizationType name="createRoleDefinition.com.anaptecs.jeaf.services.usermanagement.AuthorizationAdminService" />
@@ -174,13 +176,16 @@
     <AuthorizationType name="getPerson.com.anaptecs.jeaf.services.usermanagement.UserManagementService" />
     <AuthorizationType name="getProduct.com.anaptecs.jeaf.junit.openapi.service1.ProductService" />
     <AuthorizationType name="getProduct.com.anaptecs.spring.service.ProductService" />
+    <AuthorizationType name="getProduct.com.anaptecs.spring.service.RESTProductService" />
     <AuthorizationType name="getProducts.com.anaptecs.jeaf.junit.openapi.service1.ProductService" />
     <AuthorizationType name="getProducts.com.anaptecs.spring.service.ProductService" />
+    <AuthorizationType name="getProducts.com.anaptecs.spring.service.RESTProductService" />
     <AuthorizationType name="getRequestingContacts.com.anaptecs.jeaf.services.usermanagement.UserManagementService" />
     <AuthorizationType name="getResource.com.anaptecs.jeaf.junit.rest.RESTTestService" />
     <AuthorizationType name="getRoleDefinition.com.anaptecs.jeaf.services.usermanagement.AuthorizationAdminService" />
     <AuthorizationType name="getSortiment.com.anaptecs.jeaf.junit.openapi.service1.ProductService" />
     <AuthorizationType name="getSortiment.com.anaptecs.spring.service.ProductService" />
+    <AuthorizationType name="getSortiment.com.anaptecs.spring.service.RESTProductService" />
     <AuthorizationType name="getState.com.anaptecs.jeaf.services.usermanagement.UserManagementAdminService" />
     <AuthorizationType name="getTask.com.anaptecs.jeaf.services.scheduling.SchedulingService" />
     <AuthorizationType name="getTestServiceObject.com.anaptecs.jeaf.junit.rest.RESTTestService" />
@@ -207,6 +212,7 @@
     <AuthorizationType name="performSchufaCheck.com.anaptecs.jeaf.accounting.impl.schufa.SchufaService" />
     <AuthorizationType name="ping.com.anaptecs.jeaf.junit.openapi.service1.ProductService" />
     <AuthorizationType name="ping.com.anaptecs.spring.service.ProductService" />
+    <AuthorizationType name="ping.com.anaptecs.spring.service.RESTProductService" />
     <AuthorizationType name="print.com.anaptecs.jeaf.services.outputmanager.OutputService" />
     <AuthorizationType name="processSimpleDatatypes.com.anaptecs.jeaf.junit.core.GeneratorTestService" />
     <AuthorizationType name="queryOrganizationalUnits.com.anaptecs.jeaf.services.usermanagement.UserManagementService" />
@@ -253,6 +259,7 @@
     <AuthorizationType name="testGenericsAsResult.com.anaptecs.jeaf.junit.core.GeneratorTestService" />
     <AuthorizationType name="testIllgealContextAccess.com.anaptecs.jeaf.junit.core.JEAFTestService" />
     <AuthorizationType name="testIndirectInvocations.com.anaptecs.jeaf.junit.tx.TransactionHandlingService" />
+    <AuthorizationType name="testInit.com.anaptecs.spring.service.RESTProductService" />
     <AuthorizationType name="testInitialObjectCache.com.anaptecs.jeaf.junit.core.BusinessObjectTestService" />
     <AuthorizationType name="testJDBCWorker.com.anaptecs.jeaf.junit.core.BusinessObjectTestService" />
     <AuthorizationType name="testLocalBeanParamType.com.anaptecs.jeaf.junit.openapi.service1.ProductService" />
