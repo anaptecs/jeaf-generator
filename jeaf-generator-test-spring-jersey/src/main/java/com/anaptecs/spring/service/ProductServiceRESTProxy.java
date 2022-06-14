@@ -90,7 +90,7 @@ public class ProductServiceRESTProxy implements RESTProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
 
     // Build URI of request
-    // TODO Also include @PathParam, @QueryParam from normal and bean params
+    // TODO Also include @PathParam, @QueryParam for normal and bean params
     StringBuilder lURIBuilder = new StringBuilder();
     lURIBuilder.append(externalServiceURL);
     lURIBuilder.append("/products");
