@@ -8,6 +8,7 @@ package com.anaptecs.spring.test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -24,17 +25,23 @@ import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.apache.hc.core5.http.protocol.BasicHttpContext;
 import org.apache.hc.core5.http.protocol.HttpContext;
 import org.junit.jupiter.api.Test;
+import org.mockserver.integration.ClientAndServer;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 
 import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.impl.SpringTestApplication;
+import com.anaptecs.spring.service.RESTProductService;
 
 @SpringBootTest(classes = SpringTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SpringRESTControllerTest {
   @Inject
   private TestRestTemplate template;
+
+  @Inject
+  private RESTProductService restProductService;
 
   @Test
   void testRESTControllerAccess( ) {
@@ -139,4 +146,54 @@ public class SpringRESTControllerTest {
     assertEquals(0, lResponse.getEntity().getContentLength());
     assertEquals(200, lResponse.getCode());
   }
+
+  @Test
+  void testSimpleRESTCallThroughProxy( ) throws Exception {
+    ClientAndServer lMockServer = null;
+    try {
+      lMockServer = MockServer.createMockServer();
+
+      CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+      ClassicHttpRequest lRequest = ClassicRequestBuilder.get(template.getRootUri() + "/rest-products").build();
+      CloseableHttpResponse lResponse = lHttpClient.execute(lRequest);
+
+      assertEquals("[{\"name\":\"Cool Product\",\"uri\":\"https://products.anaptecs.de/123456789\"}]",
+          Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
+
+      lRequest = ClassicRequestBuilder.get(template.getRootUri() + "/rest-products/12345").build();
+      lResponse = lHttpClient.execute(lRequest);
+      assertEquals(200, lResponse.getCode());
+    }
+    finally {
+      if (lMockServer != null) {
+        lMockServer.stop();
+      }
+    }
+  }
+
+  @Test
+  void testRESTProductService( ) throws Exception {
+    ClientAndServer lMockServer = null;
+    try {
+      lMockServer = MockServer.createMockServer();
+
+      // Test getProducts
+      List<Product> lProducts = restProductService.getProducts();
+      assertEquals(1, lProducts.size());
+
+      Product lProduct = restProductService.getProduct("4711");
+      assertEquals(null, lProduct);
+
+      lProduct = restProductService.getProduct("12345");
+      assertEquals("Cool Product", lProduct.getName());
+      assertEquals("https://products.anaptecs.de/123456789", lProduct.getUri());
+      assertEquals(null, lProduct.getDescription());
+    }
+    finally {
+      if (lMockServer != null) {
+        lMockServer.stop();
+      }
+    }
+  }
+
 }

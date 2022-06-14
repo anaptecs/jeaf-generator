@@ -23,6 +23,7 @@ import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
 import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
 import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
 import org.apache.hc.core5.http.ClassicHttpRequest;
+import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.URIScheme;
 import org.apache.hc.core5.http.config.Registry;
 import org.apache.hc.core5.http.config.RegistryBuilder;
@@ -300,7 +301,8 @@ public class ProductServiceHttpClientSpring {
    * @param pRequest Request that should b executed. The parameter must not be null.
    * @param pSuccessfulStatusCode Status code that defines that the call was successful.
    * @param pResponseType Object describing the response type of the call.
-   * @return T Object of defined response type.
+   * @return T Object of defined response type. If the called REST resource returns no content as response then null
+   * will be returned.
    */
   private <T> T executeRequest( ClassicHttpRequest pRequest, int pSuccessfulStatusCode, JavaType pResponseType ) {
     // Try to execute call to REST resource
@@ -321,12 +323,27 @@ public class ProductServiceHttpClientSpring {
       // If call was successful then we have to convert response into real objects.
       int lStatusCode = lResponse.getCode();
       if (lStatusCode == pSuccessfulStatusCode) {
-        return objectMapper.readValue(lResponse.getEntity().getContent(), pResponseType);
+        T lResultObject;
+        HttpEntity lEntity = lResponse.getEntity();
+        if (lEntity.getContentLength() > 0) {
+          lResultObject = objectMapper.readValue(lEntity.getContent(), pResponseType);
+        }
+        else {
+          lResultObject = null;
+        }
+
+        return lResultObject;
       }
       // Error when trying to execute REST call.
       else {
         // Try to resolve some details using problem JSON.
-        throw new RESTProblemException(lStatusCode, lResponse.getEntity().getContent());
+        HttpEntity lEntity = lResponse.getEntity();
+        if (lEntity.getContentLength() > 0) {
+          throw new RESTProblemException(lStatusCode, lResponse.getEntity().getContent());
+        }
+        else {
+          throw new RESTProblemException(lStatusCode);
+        }
       }
     }
     // IOException can result from communication or serialization problems.

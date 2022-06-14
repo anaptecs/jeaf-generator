@@ -8,6 +8,7 @@ package com.anaptecs.spring.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -47,7 +48,7 @@ public class ProductServiceRESTProxy implements RESTProductService {
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
     lURIBuilder.append(externalServiceURL);
-    lURIBuilder.append("/products");
+    lURIBuilder.append("/rest-products");
     lRequestBuilder.setUri(lURIBuilder.toString());
 
     // Set content type information
@@ -55,7 +56,11 @@ public class ProductServiceRESTProxy implements RESTProductService {
 
     // Execute request and return result
     ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeCollectionResultRequest(lRequest, 200, List.class, Product.class);
+    List<Product> lResult = httpClient.executeCollectionResultRequest(lRequest, 200, List.class, Product.class);
+    if (lResult == null) {
+      lResult = Collections.emptyList();
+    }
+    return lResult;
   }
 
   @Override
@@ -66,7 +71,7 @@ public class ProductServiceRESTProxy implements RESTProductService {
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
     lURIBuilder.append(externalServiceURL);
-    lURIBuilder.append("/products");
+    lURIBuilder.append("/rest-products");
     lURIBuilder.append("/");
     lURIBuilder.append(pProductID);
     lRequestBuilder.setUri(lURIBuilder.toString());
@@ -121,7 +126,7 @@ public class ProductServiceRESTProxy implements RESTProductService {
   @Override
   public void testInit( ) {
     XFun.getTrace().info("Starting REST Proxy Init Test");
-    assertEquals("http://localhost:8080", externalServiceURL);
+    assertEquals("http://localhost:8099", externalServiceURL);
     assertNotNull(httpClient);
   }
 
