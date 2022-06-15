@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.Context;
+import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.service.RESTProductService;
@@ -54,4 +55,13 @@ public class RESTProductServiceImpl implements RESTProductService {
   public void testInit( ) {
   }
 
+  @Override
+  public List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode ) {
+    return null;
+  }
+
+  @Override
+  public List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode ) {
+    return null;
+  }
 }

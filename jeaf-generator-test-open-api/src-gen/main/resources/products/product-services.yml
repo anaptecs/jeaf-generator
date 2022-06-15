@@ -35,8 +35,8 @@ tags:
   - name: MasterData
     description: >-
       Tag marks all operations that are connected with Master Data.
-  - name: Another Tag
   - name: B Tag
+  - name: Another Tag
 
 paths:
   # ProductService
@@ -790,6 +790,82 @@ paths:
             application/json:
               schema:
                 $ref: '../base/product-base.yml#/components/schemas/Channel'
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+
+  /products/currencies/{channelCode}:
+    get:
+      operationId: getSupportedCurrencies
+      parameters:
+        - name: channelCode
+          in: path
+          required: true
+          schema:
+            type: string
+            default: 'WEBSHOP'
+            example: MOBILE_APP
+            nullable: false
+      responses:
+        '200':
+          description: >-
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                description: >-
+                  ISO 4217 currency code.
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 3
+                  example: CHF
+                nullable: false
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+
+  /products/async-currencies/{channelCode}:
+    get:
+      operationId: getSupportedCurrenciesAsync
+      parameters:
+        - name: channelCode
+          in: path
+          required: true
+          schema:
+            type: string
+            default: 'WEBSHOP'
+            example: MOBILE_APP
+            nullable: false
+      responses:
+        '200':
+          description: >-
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                description: >-
+                  ISO 4217 currency code.
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 3
+                  example: CHF
+                nullable: false
           headers:
             X-Global-Response-Header:
               schema:

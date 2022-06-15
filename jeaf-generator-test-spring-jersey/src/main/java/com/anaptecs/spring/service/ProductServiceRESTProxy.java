@@ -156,4 +156,30 @@ public class ProductServiceRESTProxy implements RESTProductService {
     }
     return lResult;
   }
+
+  @Override
+  public List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode ) {
+    // Create builder for GET request
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+
+    // Build URI of request
+    StringBuilder lURIBuilder = new StringBuilder();
+    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append("/rest-products");
+    lURIBuilder.append("/async-currencies/");
+    lURIBuilder.append(pChannelCode.getCode());
+    lRequestBuilder.setUri(lURIBuilder.toString());
+
+    // Set content type information
+    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+
+    // Execute request and return result
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    List<CurrencyCode> lResult =
+        httpClient.executeCollectionResultRequest(lRequest, 200, List.class, CurrencyCode.class);
+    if (lResult == null) {
+      lResult = Collections.emptyList();
+    }
+    return lResult;
+  }
 }

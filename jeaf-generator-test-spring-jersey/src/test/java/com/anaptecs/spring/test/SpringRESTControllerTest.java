@@ -166,6 +166,18 @@ public class SpringRESTControllerTest {
       lRequest = ClassicRequestBuilder.get(template.getRootUri() + "/rest-products/12345").build();
       lResponse = lHttpClient.execute(lRequest);
       assertEquals(200, lResponse.getCode());
+
+      lRequest = ClassicRequestBuilder.get(template.getRootUri() + "/rest-products/currencies/0815").build();
+      lResponse = lHttpClient.execute(lRequest);
+      assertEquals(200, lResponse.getCode());
+      assertEquals("[\"EUR\",\"CHF\"]",
+          Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
+
+      lRequest = ClassicRequestBuilder.get(template.getRootUri() + "/rest-products/async-currencies/0815").build();
+      lResponse = lHttpClient.execute(lRequest);
+      assertEquals(200, lResponse.getCode());
+      assertEquals("[\"EUR\",\"CHF\",\"USD\"]",
+          Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     }
     finally {
       if (lMockServer != null) {
@@ -195,7 +207,16 @@ public class SpringRESTControllerTest {
       ChannelCode lChannelCode = ChannelCode.Builder.newBuilder().setCode("0815").build();
       List<CurrencyCode> lSupportedCurrencies = restProductService.getSupportedCurrencies(lChannelCode);
       assertNotNull(lSupportedCurrencies);
-      assertEquals(0, lSupportedCurrencies.size());
+      assertEquals("EUR", lSupportedCurrencies.get(0).getCode());
+      assertEquals("CHF", lSupportedCurrencies.get(1).getCode());
+      assertEquals(2, lSupportedCurrencies.size());
+
+      lSupportedCurrencies = restProductService.getSupportedCurrenciesAsync(lChannelCode);
+      assertNotNull(lSupportedCurrencies);
+      assertEquals("EUR", lSupportedCurrencies.get(0).getCode());
+      assertEquals("CHF", lSupportedCurrencies.get(1).getCode());
+      assertEquals("USD", lSupportedCurrencies.get(2).getCode());
+      assertEquals(3, lSupportedCurrencies.size());
     }
     finally {
       if (lMockServer != null) {

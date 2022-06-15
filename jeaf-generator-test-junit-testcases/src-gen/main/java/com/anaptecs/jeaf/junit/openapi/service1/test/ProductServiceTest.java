@@ -20,14 +20,22 @@ public class ProductServiceTest extends ProductServiceTestBase {
     // Create new test suite.
     TestSuite lSuite = new TestSuite("ProductServiceTest");
     // Add all test of this class.
-    lSuite.addTest(new ProductServiceTest("testDeprecatedOperation"));
-    lSuite.addTest(new ProductServiceTest("testTestExternalBeanParameterType"));
     lSuite.addTest(new ProductServiceTest("testDeprecatedBody"));
-    lSuite.addTest(new ProductServiceTest("testGetProduct"));
     lSuite.addTest(new ProductServiceTest("testDeprecatedBeanParam"));
-    lSuite.addTest(new ProductServiceTest("testLoadSpecificThings"));
     lSuite.addTest(new ProductServiceTest("testPing"));
     lSuite.addTest(new ProductServiceTest("testDeprecatedParams"));
+    lSuite.addTest(new ProductServiceTest("testGetSupportedCurrenciesAsync"));
+    lSuite.addTest(new ProductServiceTest("testDeprectedComplexRequestBody"));
+    lSuite.addTest(new ProductServiceTest("testTestChildBeanParameter"));
+    lSuite.addTest(new ProductServiceTest("testCreateChannelCode"));
+    lSuite.addTest(new ProductServiceTest("testGetSupportedCurrencies"));
+    lSuite.addTest(new ProductServiceTest("testGetProducts"));
+    lSuite.addTest(new ProductServiceTest("testDeprecatedContext"));
+    lSuite.addTest(new ProductServiceTest("testDeprecatedComplexReturn"));
+    lSuite.addTest(new ProductServiceTest("testDeprecatedOperation"));
+    lSuite.addTest(new ProductServiceTest("testTestExternalBeanParameterType"));
+    lSuite.addTest(new ProductServiceTest("testGetProduct"));
+    lSuite.addTest(new ProductServiceTest("testLoadSpecificThings"));
     lSuite.addTest(new ProductServiceTest("testIsCurrencySupported"));
     lSuite.addTest(new ProductServiceTest("testCreateProduct"));
     lSuite.addTest(new ProductServiceTest("testCreateChannelCodeFromObject"));
@@ -35,15 +43,9 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testGetDefaultChannel"));
     lSuite.addTest(new ProductServiceTest("testAddCurrencies"));
     lSuite.addTest(new ProductServiceTest("testGetSortiment"));
-    lSuite.addTest(new ProductServiceTest("testDeprectedComplexRequestBody"));
     lSuite.addTest(new ProductServiceTest("testCheckIBAN"));
     lSuite.addTest(new ProductServiceTest("testTestLocalBeanParamType"));
     lSuite.addTest(new ProductServiceTest("testGetChannels"));
-    lSuite.addTest(new ProductServiceTest("testTestChildBeanParameter"));
-    lSuite.addTest(new ProductServiceTest("testCreateChannelCode"));
-    lSuite.addTest(new ProductServiceTest("testGetProducts"));
-    lSuite.addTest(new ProductServiceTest("testDeprecatedContext"));
-    lSuite.addTest(new ProductServiceTest("testDeprecatedComplexReturn"));
     // Return created test suite.
     return lSuite;
   }
@@ -82,26 +84,6 @@ public class ProductServiceTest extends ProductServiceTestBase {
   }
 
   /**
-   * Method test the implementation of service method deprecatedOperation
-   * 
-   * @throws Exception if a test fails.
-   */
-  @Override
-  public void testDeprecatedOperation( ) throws Exception {
-    // TODO Implement test for service method deprecatedOperation(...)
-  }
-
-  /**
-   * Method test the implementation of service method testExternalBeanParameterType
-   * 
-   * @throws Exception if a test fails.
-   */
-  @Override
-  public void testTestExternalBeanParameterType( ) throws Exception {
-    // TODO Implement test for service method testExternalBeanParameterType(...)
-  }
-
-  /**
    * Method test the implementation of service method deprecatedBody
    * 
    * @throws Exception if a test fails.
@@ -112,16 +94,6 @@ public class ProductServiceTest extends ProductServiceTestBase {
   }
 
   /**
-   * Method test the implementation of service method getProduct
-   * 
-   * @throws Exception if a test fails.
-   */
-  @Override
-  public void testGetProduct( ) throws Exception {
-    // TODO Implement test for service method getProduct(...)
-  }
-
-  /**
    * Method test the implementation of service method deprecatedBeanParam
    * 
    * @throws Exception if a test fails.
@@ -129,16 +101,6 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testDeprecatedBeanParam( ) throws Exception {
     // TODO Implement test for service method deprecatedBeanParam(...)
-  }
-
-  /**
-   * Method test the implementation of service method loadSpecificThings
-   * 
-   * @throws Exception if a test fails.
-   */
-  @Override
-  public void testLoadSpecificThings( ) throws Exception {
-    // TODO Implement test for service method loadSpecificThings(...)
   }
 
   /**
@@ -159,6 +121,126 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testDeprecatedParams( ) throws Exception {
     // TODO Implement test for service method deprecatedParams(...)
+  }
+
+  /**
+   * Method test the implementation of service method getSupportedCurrenciesAsync
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testGetSupportedCurrenciesAsync( ) throws Exception {
+    // TODO Implement test for service method getSupportedCurrenciesAsync(...)
+  }
+
+  /**
+   * Method test the implementation of service method deprectedComplexRequestBody
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprectedComplexRequestBody( ) throws Exception {
+    // TODO Implement test for service method deprectedComplexRequestBody(...)
+  }
+
+  /**
+   * Method test the implementation of service method testChildBeanParameter
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestChildBeanParameter( ) throws Exception {
+    // TODO Implement test for service method testChildBeanParameter(...)
+  }
+
+  /**
+   * Method test the implementation of service method createChannelCode
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testCreateChannelCode( ) throws Exception {
+    // TODO Implement test for service method createChannelCode(...)
+  }
+
+  /**
+   * Method test the implementation of service method getSupportedCurrencies
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testGetSupportedCurrencies( ) throws Exception {
+    // TODO Implement test for service method getSupportedCurrencies(...)
+  }
+
+  /**
+   * Method test the implementation of service method getProducts
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testGetProducts( ) throws Exception {
+    // TODO Implement test for service method getProducts(...)
+  }
+
+  /**
+   * Method test the implementation of service method deprecatedContext
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprecatedContext( ) throws Exception {
+    // TODO Implement test for service method deprecatedContext(...)
+  }
+
+  /**
+   * Method test the implementation of service method deprecatedComplexReturn
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprecatedComplexReturn( ) throws Exception {
+    // TODO Implement test for service method deprecatedComplexReturn(...)
+  }
+
+  /**
+   * Method test the implementation of service method deprecatedOperation
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeprecatedOperation( ) throws Exception {
+    // TODO Implement test for service method deprecatedOperation(...)
+  }
+
+  /**
+   * Method test the implementation of service method testExternalBeanParameterType
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestExternalBeanParameterType( ) throws Exception {
+    // TODO Implement test for service method testExternalBeanParameterType(...)
+  }
+
+  /**
+   * Method test the implementation of service method getProduct
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testGetProduct( ) throws Exception {
+    // TODO Implement test for service method getProduct(...)
+  }
+
+  /**
+   * Method test the implementation of service method loadSpecificThings
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testLoadSpecificThings( ) throws Exception {
+    // TODO Implement test for service method loadSpecificThings(...)
   }
 
   /**
@@ -232,16 +314,6 @@ public class ProductServiceTest extends ProductServiceTestBase {
   }
 
   /**
-   * Method test the implementation of service method deprectedComplexRequestBody
-   * 
-   * @throws Exception if a test fails.
-   */
-  @Override
-  public void testDeprectedComplexRequestBody( ) throws Exception {
-    // TODO Implement test for service method deprectedComplexRequestBody(...)
-  }
-
-  /**
    * Method test the implementation of service method checkIBAN
    * 
    * @throws Exception if a test fails.
@@ -269,55 +341,5 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testGetChannels( ) throws Exception {
     // TODO Implement test for service method getChannels(...)
-  }
-
-  /**
-   * Method test the implementation of service method testChildBeanParameter
-   * 
-   * @throws Exception if a test fails.
-   */
-  @Override
-  public void testTestChildBeanParameter( ) throws Exception {
-    // TODO Implement test for service method testChildBeanParameter(...)
-  }
-
-  /**
-   * Method test the implementation of service method createChannelCode
-   * 
-   * @throws Exception if a test fails.
-   */
-  @Override
-  public void testCreateChannelCode( ) throws Exception {
-    // TODO Implement test for service method createChannelCode(...)
-  }
-
-  /**
-   * Method test the implementation of service method getProducts
-   * 
-   * @throws Exception if a test fails.
-   */
-  @Override
-  public void testGetProducts( ) throws Exception {
-    // TODO Implement test for service method getProducts(...)
-  }
-
-  /**
-   * Method test the implementation of service method deprecatedContext
-   * 
-   * @throws Exception if a test fails.
-   */
-  @Override
-  public void testDeprecatedContext( ) throws Exception {
-    // TODO Implement test for service method deprecatedContext(...)
-  }
-
-  /**
-   * Method test the implementation of service method deprecatedComplexReturn
-   * 
-   * @throws Exception if a test fails.
-   */
-  @Override
-  public void testDeprecatedComplexReturn( ) throws Exception {
-    // TODO Implement test for service method deprecatedComplexReturn(...)
   }
 }

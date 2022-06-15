@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.Context;
+import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 
@@ -90,11 +91,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#createChannelCode()}
    */
-  @RequestMapping(
-      path = "ChannelCode",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.POST })
+  @RequestMapping(path = "ChannelCode", method = { RequestMethod.POST })
   public ChannelCode createChannelCode( @RequestBody(required = true) String pChannelCode ) {
     // Get Spring service and delegate call.
     RESTProductService lService = this.getRESTProductService();
@@ -119,6 +116,32 @@ public class RESTProductServiceResource {
     // Get Spring service and delegate call.
     RESTProductService lService = this.getRESTProductService();
     lService.testInit();
+  }
+
+  /**
+   * {@link RESTProductService#getSupportedCurrencies()}
+   */
+  @RequestMapping(path = "currencies/{channelCode}", method = { RequestMethod.GET })
+  public List<CurrencyCode> getSupportedCurrencies(
+      @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    ChannelCode pChannelCode = ChannelCode.Builder.newBuilder().setCode(pChannelCodeAsBasicType).build();
+    // Get Spring service and delegate call.
+    RESTProductService lService = this.getRESTProductService();
+    return lService.getSupportedCurrencies(pChannelCode);
+  }
+
+  /**
+   * {@link RESTProductService#getSupportedCurrenciesAsync()}
+   */
+  @RequestMapping(path = "async-currencies/{channelCode}", method = { RequestMethod.GET })
+  public List<CurrencyCode> getSupportedCurrenciesAsync(
+      @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    ChannelCode pChannelCode = ChannelCode.Builder.newBuilder().setCode(pChannelCodeAsBasicType).build();
+    // Get Spring service and delegate call.
+    RESTProductService lService = this.getRESTProductService();
+    return lService.getSupportedCurrenciesAsync(pChannelCode);
   }
 
   /**

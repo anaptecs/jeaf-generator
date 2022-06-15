@@ -146,14 +146,50 @@ public class RESTProductServiceResource {
    */
   @Path("currencies/{channelCode}")
   @GET
-  public Response getSupportedCurrencies( @PathParam("channelCode") String pChannelCode ) {
-    // Convert basic type into real object
-    ChannelCode lChannelCode = ChannelCode.Builder.newBuilder().setCode(pChannelCode).build();
-
-    // Call service and return result
+  public Response getSupportedCurrencies( @PathParam("channelCode") String pChannelCodeAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    ChannelCode pChannelCode = ChannelCode.Builder.newBuilder().setCode(pChannelCodeAsBasicType).build();
     RESTProductService lService = this.getRESTProductService();
-    List<CurrencyCode> lResult = lService.getSupportedCurrencies(lChannelCode);
+    List<CurrencyCode> lResult = lService.getSupportedCurrencies(pChannelCode);
     return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#getSupportedCurrenciesAsync()}
+   */
+  @Path("async-currencies/{channelCode}")
+  @GET
+  public void getSupportedCurrenciesAsync( @Suspended AsyncResponse pAsyncResponse,
+      @javax.ws.rs.core.Context HttpServletRequest pRequest,
+      @PathParam("channelCode") String pChannelCodeAsBasicType ) {
+    // Lookup workload manager that takes care that the system will have an optimal throughput.
+    WorkloadManager lWorkloadManager = Workload.getWorkloadManager();
+    // Prepare meta information about the request.
+    String lEndpointURL = pRequest.getServletPath() + pRequest.getPathInfo();
+    RESTRequestType lRequestInfo = new RESTRequestType(lEndpointURL, pRequest.getMethod());
+    // Lookup service that will be called later during async processing of the request
+    RESTProductService lService = this.getRESTProductService();
+    // Hand over current request to workload manager. Depending on its strategy and the current workload the request
+    // will be either be directly executed, first queued or rejected.
+    lWorkloadManager.execute(lRequestInfo, new RESTWorkloadErrorHandler(pAsyncResponse), new Runnable() {
+      @Override
+      public void run( ) {
+        try {
+          // Convert basic type parameters into "real" objects.
+          ChannelCode pChannelCode = ChannelCode.Builder.newBuilder().setCode(pChannelCodeAsBasicType).build();
+          List<CurrencyCode> lResult = lService.getSupportedCurrenciesAsync(pChannelCode);
+          Response lResponseObject = Response.status(Response.Status.OK).entity(lResult).build();
+          // Due to the asynchronous processing of the requests, the response can not be returned as return value.
+          // Therefore we make use of the defined JAX-RS mechanisms.
+          pAsyncResponse.resume(lResponseObject);
+        }
+        // All kinds of exceptions have to be reported to the client. Due to the asynchronous processing we have to
+        // catch them here and return them to the client via class AsyncResponse.
+        catch (RuntimeException e) {
+          pAsyncResponse.resume(e);
+        }
+      }
+    });
   }
 
   /**

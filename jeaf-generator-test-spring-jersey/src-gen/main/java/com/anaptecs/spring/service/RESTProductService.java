@@ -73,4 +73,11 @@ public interface RESTProductService {
    * @return {@link CurrencyCode}
    */
   List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode );
+
+  /**
+   * 
+   * @param pChannelCode
+   * @return {@link CurrencyCode}
+   */
+  List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode );
 }
