@@ -48,6 +48,7 @@ public class MockServer {
     MockServer.addMockResponse("/rest-products/12345",
         "{\"name\":\"Cool Product\",\"uri\":\"https://products.anaptecs.de/123456789\"}", 1);
     MockServer.addMockResponse("/rest-products/4711", "", 1);
+    MockServer.addMockResponse("/rest-products/currencies/0815", null, MOCK_PORT);
 
     return lMockServer;
   }

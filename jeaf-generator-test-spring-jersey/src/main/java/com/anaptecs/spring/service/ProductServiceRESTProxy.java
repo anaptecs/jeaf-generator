@@ -26,6 +26,7 @@ import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.Context;
+import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 
@@ -93,7 +94,7 @@ public class ProductServiceRESTProxy implements RESTProductService {
     // TODO Also include @PathParam, @QueryParam for normal and bean params
     StringBuilder lURIBuilder = new StringBuilder();
     lURIBuilder.append(externalServiceURL);
-    lURIBuilder.append("/products");
+    lURIBuilder.append("/rest-products");
     lRequestBuilder.setUri(lURIBuilder.toString());
 
     // Set content type information
@@ -130,4 +131,29 @@ public class ProductServiceRESTProxy implements RESTProductService {
     assertNotNull(httpClient);
   }
 
+  @Override
+  public List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode ) {
+    // Create builder for GET request
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+
+    // Build URI of request
+    StringBuilder lURIBuilder = new StringBuilder();
+    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append("/rest-products");
+    lURIBuilder.append("/currencies/");
+    lURIBuilder.append(pChannelCode.getCode());
+    lRequestBuilder.setUri(lURIBuilder.toString());
+
+    // Set content type information
+    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+
+    // Execute request and return result
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    List<CurrencyCode> lResult =
+        httpClient.executeCollectionResultRequest(lRequest, 200, List.class, CurrencyCode.class);
+    if (lResult == null) {
+      lResult = Collections.emptyList();
+    }
+    return lResult;
+  }
 }

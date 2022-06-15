@@ -12,6 +12,7 @@ import javax.validation.constraints.NotEmpty;
 
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.Context;
+import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 
@@ -65,4 +66,11 @@ public interface RESTProductService {
   * 
   */
   void testInit( );
+
+  /**
+   * 
+   * @param pChannelCode
+   * @return {@link CurrencyCode}
+   */
+  List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode );
 }

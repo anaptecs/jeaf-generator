@@ -28,6 +28,7 @@ import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;
 import com.anaptecs.jeaf.workload.api.rest.RESTWorkloadErrorHandler;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.Context;
+import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 
@@ -113,8 +114,6 @@ public class RESTProductServiceResource {
    */
   @Path("ChannelCode")
   @POST
-  @Consumes(MediaType.APPLICATION_JSON)
-  @Produces(MediaType.APPLICATION_JSON)
   public Response createChannelCode( String pChannelCode ) {
     RESTProductService lService = this.getRESTProductService();
     ChannelCode lResult = lService.createChannelCode(pChannelCode);
@@ -140,6 +139,21 @@ public class RESTProductServiceResource {
     RESTProductService lService = this.getRESTProductService();
     lService.testInit();
     return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link RESTProductService#getSupportedCurrencies()}
+   */
+  @Path("currencies/{channelCode}")
+  @GET
+  public Response getSupportedCurrencies( @PathParam("channelCode") String pChannelCode ) {
+    // Convert basic type into real object
+    ChannelCode lChannelCode = ChannelCode.Builder.newBuilder().setCode(pChannelCode).build();
+
+    // Call service and return result
+    RESTProductService lService = this.getRESTProductService();
+    List<CurrencyCode> lResult = lService.getSupportedCurrencies(lChannelCode);
+    return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
   /**

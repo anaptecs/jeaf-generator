@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.test;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
@@ -31,6 +32,8 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 
 import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.spring.base.ChannelCode;
+import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.impl.SpringTestApplication;
 import com.anaptecs.spring.service.RESTProductService;
@@ -188,6 +191,11 @@ public class SpringRESTControllerTest {
       assertEquals("Cool Product", lProduct.getName());
       assertEquals("https://products.anaptecs.de/123456789", lProduct.getUri());
       assertEquals(null, lProduct.getDescription());
+
+      ChannelCode lChannelCode = ChannelCode.Builder.newBuilder().setCode("0815").build();
+      List<CurrencyCode> lSupportedCurrencies = restProductService.getSupportedCurrencies(lChannelCode);
+      assertNotNull(lSupportedCurrencies);
+      assertEquals(0, lSupportedCurrencies.size());
     }
     finally {
       if (lMockServer != null) {
