@@ -9,7 +9,7 @@
 «IMPORT JMM»
 
 «DEFINE RESTResourceClass FOR RESTResource»
-«FILE packagePath()+"/"+name+"Resource.java" GenBase»
+«FILE packagePath()+"/"+name+"Resource.java" GenOnce»
 «getFileHeader()»
 package «packageName()»;
 

@@ -232,6 +232,18 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateRESTResources;
 
   /**
+   * Switch defines whether REST service proxies should be generated or not.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateRESTServiceProxies;
+
+  /**
+   * Switch defines whether a default config file for REST service proxies should be generated or not.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateRESTServiceProxyConfigFile;
+
+  /**
    * Switch defines whether activity interfaces should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -663,6 +675,12 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateRESTResources) {
       lLog.info("Generate REST Resources:                          " + generateRESTResources);
     }
+    if (generateRESTServiceProxies) {
+      lLog.info("Generate REST Service Proxies:                    " + generateRESTServiceProxies);
+    }
+    if (generateRESTServiceProxyConfigFile) {
+      lLog.info("Generate REST Service Default Config File:        " + generateRESTServiceProxyConfigFile);
+    }
     if (generateActivityInterfaces) {
       lLog.info("Generate Activity Interfaces:                     " + generateActivityInterfaces);
     }
@@ -807,6 +825,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.component.impls", generateComponentImpls.toString());
       System.setProperty("switch.gen.service.provider.impls", generateServiceProviderImpls.toString());
       System.setProperty("switch.gen.rest.resources", generateRESTResources.toString());
+      System.setProperty("switch.gen.rest.service.proxy", generateRESTServiceProxies.toString());
+      System.setProperty("switch.gen.rest.service.proxy.config.file", generateRESTServiceProxyConfigFile.toString());
       System.setProperty("switch.gen.service.objects", generateServiceObjects.toString());
       System.setProperty("switch.gen.exception.classes", generateExceptionClasses.toString());
       System.setProperty("switch.gen.pojos", generatePOJOs.toString());
@@ -1051,10 +1071,10 @@ public class GeneratorMojo extends AbstractMojo {
   private boolean isUMLGenerationRequested( ) {
     return generateCustomConstraints | generateServiceInterfaces | generateServiceProxies
         | generateServiceProviderInterfaces | generateServiceProviderImpls | generateRESTResources
-        | generateActivityInterfaces | generateActivityImpls | generateServiceObjects | generatePOJOs
-        | generateDomainObjects | generateObjectMappers | generatePersistentObjects | generateComponentImpls
-        | generateComponentRuntimeClasses | generateGlobalParts | generateExceptionClasses | generateJUnitTests
-        | generateOpenAPISpec;
+        | generateRESTServiceProxies | generateRESTServiceProxyConfigFile | generateActivityInterfaces
+        | generateActivityImpls | generateServiceObjects | generatePOJOs | generateDomainObjects | generateObjectMappers
+        | generatePersistentObjects | generateComponentImpls | generateComponentRuntimeClasses | generateGlobalParts
+        | generateExceptionClasses | generateJUnitTests | generateOpenAPISpec;
   }
 
   private boolean isMessageConstantsGenerationRequested( ) {
