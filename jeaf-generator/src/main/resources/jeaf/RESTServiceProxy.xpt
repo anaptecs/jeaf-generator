@@ -1,7 +1,15 @@
+«EXTENSION java::GeneratorCommons»
+
 «IMPORT uml»
 «IMPORT JMM»
 
 «DEFINE RESTServiceProxyConfigFile FOR RESTResource»
+  «IF isTargetRuntimeSpring()»
+  	«EXPAND RESTServiceProxyConfigFileSpring»
+  «ENDIF» 
+«ENDDEFINE»
+
+«DEFINE RESTServiceProxyConfigFileSpring FOR RESTResource»
 «FILE "config/application-"+name.toLowerCase()+".yml" res»
 # File contains configuration for external REST resource «this.name»
 «this.name»:
