@@ -61,7 +61,7 @@
 «ENDDEFINE»
 
 «DEFINE CreateComponentClass FOR JEAFComponent»
-    «FILE packagePath()+"/"+name+"Component.java" GenBase»
+    «FILE packagePath()+"/"+name+"Component.java" src_gen»
     «getFileHeader()»
     package «packageName()»;
     
@@ -420,7 +420,7 @@
 
 
 «DEFINE CreatePortBaseClass(Component component) FOR Port»
-      «FILE this.type.packagePath()+"/" + this.type.name + "Base.java" GenBase»
+      «FILE this.type.packagePath()+"/" + this.type.name + "Base.java" src_gen»
         «getFileHeader()»
         package «this.type.packageName()»;
         
@@ -518,7 +518,7 @@
 «ENDDEFINE»
 
 «DEFINE CreatePort FOR Port»
-        «FILE this.type.packagePath()+"/"+this.type.name+".java" GenOnce»
+        «FILE this.type.packagePath()+"/"+this.type.name+".java" src»
         /*
          * Copyright 2004 - 2011 anaptecs GmbH Burgstr. 96, 72764 Reutlingen, Germany All rights reserved.
          */
@@ -547,7 +547,7 @@
 «ENDDEFINE»
 
 «DEFINE CreateServiceImplBaseForComponent(Component component) FOR JEAFService»
-        «FILE component.packagePath()+"/"+this.name+"ImplBase.java" GenBase»
+        «FILE component.packagePath()+"/"+this.name+"ImplBase.java" src_gen»
         «getFileHeader()»
         package «component.packageName()»;
         
@@ -680,7 +680,7 @@
 «ENDDEFINE»
 
 «DEFINE CreateServiceImplBaseForPort(Port port) FOR JEAFService»
-    «FILE port.type.packagePath()+"/"+this.name+"ImplBase.java" GenBase»
+    «FILE port.type.packagePath()+"/"+this.name+"ImplBase.java" src_gen»
     /*
      * Copyright 2004 - 2011 anaptecs GmbH Burgstr. 96, 72764 Reutlingen, Germany All rights reserved.
      */
@@ -726,7 +726,7 @@
 
 
 «DEFINE CreateServiceImpl(Type owner, String parentClass) FOR JEAFService»
-        «FILE owner.packagePath()+"/"+this.name+"Impl.java" GenOnce»
+        «FILE owner.packagePath()+"/"+this.name+"Impl.java" src»
         «getFileHeader()»
         package «owner.packageName()»;
         
@@ -762,7 +762,7 @@
 «ENDDEFINE»
 
 «DEFINE CreateComponentFactory FOR JEAFComponent»
-    «FILE packagePath()+"/"+name+"ComponentFactory.java" GenBase»
+    «FILE packagePath()+"/"+name+"ComponentFactory.java" src_gen»
     «getFileHeader()»
     package «packageName()»;
     
@@ -833,13 +833,13 @@
 
 «DEFINE CreateComponentProperties FOR JEAFComponent»
     // Create property file
-    «FILE name+".properties" Res»
+    «FILE name+".properties" res»
 «FOREACH this.getAllRealProperties().typeSelect(Property) AS property»
 «property.name»=«ENDFOREACH»
     «ENDFILE»
     
     // Create xml file for import tool.
-    «FILE name+".xml" GenRes»<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    «FILE name+".xml" res_gen»<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root>
   <ComponentInfo name="«this.name»" basePackage="«this.packageName()»" cacheTTL="600" >
 «FOREACH this.getAllRealProperties().typeSelect(Property) AS property»    <Property name="«property.name»" type="«property.type.fqnForXML()»" defaultValue="«property.defaultValue.stringValue()»" comment="" />
@@ -850,7 +850,7 @@
 
 
 «DEFINE CreateServiceFactory(Type owner) FOR JEAFService»
-        «FILE owner.packagePath()+"/"+this.name+"Factory.java" GenBase»
+        «FILE owner.packagePath()+"/"+this.name+"Factory.java" src_gen»
         «getFileHeader()»
         package «owner.packageName()»;
         
@@ -936,7 +936,7 @@
 
 «DEFINE CreateComponentConfigurationClass FOR JEAFComponent»
 
-    «FILE packagePath()+"/"+name+"ComponentConfiguration.java" GenBase»
+    «FILE packagePath()+"/"+name+"ComponentConfiguration.java" src_gen»
     «getFileHeader()»
     package «packageName()»;
     

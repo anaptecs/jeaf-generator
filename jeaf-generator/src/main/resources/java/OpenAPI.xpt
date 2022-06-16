@@ -12,7 +12,7 @@
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE GenerateOpenAPI FOR OpenAPI3Specification»
-	«FILE resourceName GenRes-»
+	«FILE resourceName res_gen-»
 openapi: «openAPIVersion»
 
 info:

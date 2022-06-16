@@ -176,7 +176,7 @@
 «ENDDEFINE»
 
 «DEFINE GenerateDataTypeSerializer FOR OpenAPIDataType -»
-	«FILE packagePath() + "/serializers/" + name +"Serializer.java" GenBase»
+	«FILE packagePath() + "/serializers/" + name +"Serializer.java" src_gen»
 		«getFileHeader()»
 		package «this.packageName()».serializers;
 		
@@ -206,7 +206,7 @@
 «ENDDEFINE»
 
 «DEFINE GenerateDataTypeDeserializer FOR OpenAPIDataType -»
-	«FILE packagePath() + "/serializers/" + name +"Deserializer.java" GenBase»
+	«FILE packagePath() + "/serializers/" + name +"Deserializer.java" src_gen»
 		«getFileHeader()»
 		package «this.packageName()».serializers;
 		

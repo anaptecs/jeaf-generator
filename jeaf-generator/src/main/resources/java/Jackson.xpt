@@ -45,7 +45,7 @@
 «ENDDEFINE»
 
 «DEFINE GenerateModuleFactory FOR ModuleFactory -»
-	«FILE packagePath() + "/" + name + ".java" GenBase»
+	«FILE packagePath() + "/" + name + ".java" src_gen»
 		«getFileHeader()»
 		package «this.packageName()»;
 		
@@ -87,7 +87,7 @@
 «ENDDEFINE»
 
 «DEFINE GenerateObjectMapperFactory FOR ObjectMapperFactory -»
-	«FILE packagePath() + "/" + name + ".java" GenBase»
+	«FILE packagePath() + "/" + name + ".java" src_gen»
 		«getFileHeader()»
 		package «this.packageName()»;
 		

@@ -3,7 +3,7 @@
 «EXTENSION java::GeneratorCommons»
 
 «DEFINE AuthorizationTypes FOR Model»
-  «FILE "AuthorizationData.xml" GenRes»<?xml version='1.0' encoding='UTF-8' standalone="yes"?>
+  «FILE "AuthorizationData.xml" res_gen»<?xml version='1.0' encoding='UTF-8' standalone="yes"?>
   <Root>
     «FOREACH this.getAllAuthorizationTypes() AS authType»<AuthorizationType name="«authType»"/>«ENDFOREACH»
     

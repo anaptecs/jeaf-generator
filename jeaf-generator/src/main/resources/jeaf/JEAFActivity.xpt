@@ -6,7 +6,7 @@
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE GenerateActivityInterface FOR JEAFActivity»
-	«FILE packagePath()+"/"+name+".java" GenBase»
+	«FILE packagePath()+"/"+name+".java" src_gen»
 	«getFileHeader()»
 	package «packageName()»;
 	
@@ -32,7 +32,7 @@
 «ENDDEFINE»
 
 «DEFINE GenerateActivityImplClass FOR JEAFActivity»
-	«FILE packagePath()+"/"+name+"Impl.java" GenOnce»
+	«FILE packagePath()+"/"+name+"Impl.java" src»
 	«getFileHeader()»
 	package «packageName()»;
 	

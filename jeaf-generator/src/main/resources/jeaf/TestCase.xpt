@@ -12,7 +12,7 @@
 «ENDDEFINE»
 
 «DEFINE TestCaseBaseClass FOR JEAFService»
-«FILE packagePath() + "/test/" + this.getTestCaseBaseName() + ".java" GenBase»
+«FILE packagePath() + "/test/" + this.getTestCaseBaseName() + ".java" src_gen»
 «getFileHeader()»
 package «packageName()».test;
 
@@ -65,7 +65,7 @@ public abstract class «this.getTestCaseBaseName()» extends JEAFTestCase {
 «ENDDEFINE»
 
 «DEFINE TestCaseClass FOR JEAFService»
-«FILE packagePath() + "/test/" + this.getTestCaseName() + ".java" GenOnce»
+«FILE packagePath() + "/test/" + this.getTestCaseName() + ".java" src»
 «getFileHeader()»
 package «packageName()».test;
 

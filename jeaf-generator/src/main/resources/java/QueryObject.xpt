@@ -9,7 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 «DEFINE QueryClass FOR QueryObject»
-	«FILE packagePath() + "/" + name +".java" GenBase»
+	«FILE packagePath() + "/" + name +".java" src_gen»
 	«getFileHeader()»
 	package «this.packageName()»;
 	

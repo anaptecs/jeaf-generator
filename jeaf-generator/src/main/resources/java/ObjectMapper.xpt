@@ -22,7 +22,7 @@
     «LET getObjectMapperName(lSourceClassShortName, lTargetClassShortName) AS lMapperName»
     
     «REM»Create new mapper class file.«ENDREM»
-    «FILE getMapperPackagePath(lTargetClass) + "/" + lMapperName + ".java" GenBase»
+    «FILE getMapperPackagePath(lTargetClass) + "/" + lMapperName + ".java" src_gen»
     «getFileHeader()»
     package «getMapperPackage(lTargetClass)»;
 
