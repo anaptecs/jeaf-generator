@@ -58,45 +58,45 @@ public class ProductServiceHttpClientSpring {
   /**
    * Maximum size of the connection pool.
    */
-  @Value("${productservice.http.maxPoolSize}")
+  @Value("${productService.http.maxPoolSize}")
   private int maxPoolSize;
 
   /**
    * Maximum amount of idle connections in the connection pool.
    */
-  @Value("${productservice.http.maxIdleConnections}")
+  @Value("${productService.http.maxIdleConnections}")
   private int maxIdleConnections;
 
   /**
    * Keep alive duration for connection to REST service (in milliseconds)
    */
-  @Value("${productservice.http.keepAliveDuration}")
+  @Value("${productService.http.keepAliveDuration}")
   private int keepAliveDuration;
 
   /**
    * Parameter configures the time period in milliseconds after which a connection is validated before it is taken from
    * the pool again.
    */
-  @Value("${productservice.http.validateAfterInactivityDuration}")
+  @Value("${productService.http.validateAfterInactivityDuration}")
   private int validateAfterInactivityDuration;
 
   /**
    * Maximum amount of retries before a call to the REST service is considered to be failed.
    */
-  @Value("${productservice.http.maxRetries}")
+  @Value("${productService.http.maxRetries}")
   private int maxRetries;
 
   /**
    * Interval in milliseconds after which the REST service is called again in case that retries are configured.
    */
-  @Value("${productservice.http.retryInterval}")
+  @Value("${productService.http.retryInterval}")
   private int retryInterval;
 
   /**
    * Response timeout in milliseconds for calls to REST service. Please be aware that this is a very sensitive parameter
    * and needs to be fine-tuned for your purposes.
    */
-  @Value("${productservice.http.responseTimeout}")
+  @Value("${productService.http.responseTimeout}")
   private int responseTimeout;
 
   /**
@@ -104,7 +104,7 @@ public class ProductServiceHttpClientSpring {
    * should not have a too strong influence on the overall behavior. However please ensure that it fits to your
    * environment.
    */
-  @Value("${productservice.http.connectTimeout}")
+  @Value("${productService.http.connectTimeout}")
   private int connectTimeout;
 
   /**
@@ -121,7 +121,7 @@ public class ProductServiceHttpClientSpring {
    * 
    * Value must between 0 and 100.
    */
-  @Value("${productservice.circuitbreaker.failureRateThreshold}")
+  @Value("${productService.circuitbreaker.failureRateThreshold}")
   private int failureRateThreshold;
 
   /**
@@ -129,7 +129,7 @@ public class ProductServiceHttpClientSpring {
    * 
    * The value must be zero or greater.
    */
-  @Value("${productservice.circuitbreaker.durationInOpenState}")
+  @Value("${productService.circuitbreaker.durationInOpenState}")
   private int durationInOpenState;
 
   /**
@@ -138,7 +138,7 @@ public class ProductServiceHttpClientSpring {
    * 
    * The value must be zero or greater.
    */
-  @Value("${productservice.circuitbreaker.slowRequestDuration}")
+  @Value("${productService.circuitbreaker.slowRequestDuration}")
   private int slowRequestDuration;
 
   /**
@@ -148,7 +148,7 @@ public class ProductServiceHttpClientSpring {
    * 
    * Value must between 0 and 100.
    */
-  @Value("${productservice.circuitbreaker.slowRequestRateThreshold}")
+  @Value("${productService.circuitbreaker.slowRequestRateThreshold}")
   private int slowRequestRateThreshold;
 
   /**
@@ -156,7 +156,7 @@ public class ProductServiceHttpClientSpring {
    * 
    * The value must be zero or greater.
    */
-  @Value("${productservice.circuitbreaker.permittedCallsInHalfOpenState}")
+  @Value("${productService.circuitbreaker.permittedCallsInHalfOpenState}")
   private int permittedCallsInHalfOpenState;
 
   /**
@@ -165,7 +165,7 @@ public class ProductServiceHttpClientSpring {
    * 
    * The value must be greater than 0.
    */
-  @Value("${productservice.circuitbreaker.slidingWindowSizeSeconds}")
+  @Value("${productService.circuitbreaker.slidingWindowSizeSeconds}")
   private int slidingWindowSizeSeconds;
 
   /**

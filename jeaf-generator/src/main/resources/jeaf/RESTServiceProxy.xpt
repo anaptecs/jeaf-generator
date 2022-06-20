@@ -24,45 +24,45 @@ public class «name»HttpClient {
   /**
    * Maximum size of the connection pool.
    */
-  @org.springframework.beans.factory.annotation.Value("${productservice.http.maxPoolSize}")
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.maxPoolSize}")
   private int maxPoolSize;
 
   /**
    * Maximum amount of idle connections in the connection pool.
    */
-  @org.springframework.beans.factory.annotation.Value("${productservice.http.maxIdleConnections}")
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.maxIdleConnections}")
   private int maxIdleConnections;
 
   /**
    * Keep alive duration for connection to REST service (in milliseconds)
    */
-  @org.springframework.beans.factory.annotation.Value("${productservice.http.keepAliveDuration}")
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.keepAliveDuration}")
   private int keepAliveDuration;
 
   /**
    * Parameter configures the time period in milliseconds after which a connection is validated before it is taken from
    * the pool again.
    */
-  @org.springframework.beans.factory.annotation.Value("${productservice.http.validateAfterInactivityDuration}")
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.validateAfterInactivityDuration}")
   private int validateAfterInactivityDuration;
 
   /**
    * Maximum amount of retries before a call to the REST service is considered to be failed.
    */
-  @org.springframework.beans.factory.annotation.Value("${productservice.http.maxRetries}")
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.maxRetries}")
   private int maxRetries;
 
   /**
    * Interval in milliseconds after which the REST service is called again in case that retries are configured.
    */
-  @org.springframework.beans.factory.annotation.Value("${productservice.http.retryInterval}")
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.retryInterval}")
   private int retryInterval;
 
   /**
    * Response timeout in milliseconds for calls to REST service. Please be aware that this is a very sensitive parameter
    * and needs to be fine-tuned for your purposes.
    */
-  @org.springframework.beans.factory.annotation.Value("${productservice.http.responseTimeout}")
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.responseTimeout}")
   private int responseTimeout;
 
   /**
@@ -70,7 +70,7 @@ public class «name»HttpClient {
    * should not have a too strong influence on the overall behavior. However please ensure that it fits to your
    * environment.
    */
-  @org.springframework.beans.factory.annotation.Value("${productservice.http.connectTimeout}")
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.connectTimeout}")
   private int connectTimeout;
 
   /**
@@ -87,7 +87,7 @@ public class «name»HttpClient {
    * 
    * Value must between 0 and 100.
    */
-  @org.springframework.beans.factory.annotation.Value("${productservice.circuitbreaker.failureRateThreshold}")
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».circuitbreaker.failureRateThreshold}")
   private int failureRateThreshold;
 
   /**
@@ -95,7 +95,7 @@ public class «name»HttpClient {
    * 
    * The value must be zero or greater.
    */
-  @org.springframework.beans.factory.annotation.Value("${productservice.circuitbreaker.durationInOpenState}")
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».circuitbreaker.durationInOpenState}")
   private int durationInOpenState;
 
   /**
@@ -104,7 +104,7 @@ public class «name»HttpClient {
    * 
    * The value must be zero or greater.
    */
-  @org.springframework.beans.factory.annotation.Value("${productservice.circuitbreaker.slowRequestDuration}")
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».circuitbreaker.slowRequestDuration}")
   private int slowRequestDuration;
 
   /**
@@ -114,7 +114,7 @@ public class «name»HttpClient {
    * 
    * Value must between 0 and 100.
    */
-  @org.springframework.beans.factory.annotation.Value("${productservice.circuitbreaker.slowRequestRateThreshold}")
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».circuitbreaker.slowRequestRateThreshold}")
   private int slowRequestRateThreshold;
 
   /**
@@ -122,7 +122,7 @@ public class «name»HttpClient {
    * 
    * The value must be zero or greater.
    */
-  @org.springframework.beans.factory.annotation.Value("${productservice.circuitbreaker.permittedCallsInHalfOpenState}")
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».circuitbreaker.permittedCallsInHalfOpenState}")
   private int permittedCallsInHalfOpenState;
 
   /**
@@ -131,7 +131,7 @@ public class «name»HttpClient {
    * 
    * The value must be greater than 0.
    */
-  @org.springframework.beans.factory.annotation.Value("${productservice.circuitbreaker.slidingWindowSizeSeconds}")
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».circuitbreaker.slidingWindowSizeSeconds}")
   private int slidingWindowSizeSeconds;
 
   /**
@@ -346,7 +346,7 @@ public class «name»HttpClient {
 «DEFINE GenerateRESTServiceProxyConfigFileSpring FOR RESTResource»
 «FILE "config/application-"+name.toLowerCase()+".yml" res»
 # File contains configuration for external REST resource «this.name»
-«this.name»:
+«this.name.toFirstLower()»:
   # URL to external service
   externalURL: TODO: Please configure URL of external REST resource
   

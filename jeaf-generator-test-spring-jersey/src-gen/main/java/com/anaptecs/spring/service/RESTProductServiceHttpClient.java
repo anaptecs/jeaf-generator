@@ -56,45 +56,45 @@ public class RESTProductServiceHttpClient {
   /**
    * Maximum size of the connection pool.
    */
-  @Value("${productservice.http.maxPoolSize}")
+  @Value("${rESTProductService.http.maxPoolSize}")
   private int maxPoolSize;
 
   /**
    * Maximum amount of idle connections in the connection pool.
    */
-  @Value("${productservice.http.maxIdleConnections}")
+  @Value("${rESTProductService.http.maxIdleConnections}")
   private int maxIdleConnections;
 
   /**
    * Keep alive duration for connection to REST service (in milliseconds)
    */
-  @Value("${productservice.http.keepAliveDuration}")
+  @Value("${rESTProductService.http.keepAliveDuration}")
   private int keepAliveDuration;
 
   /**
    * Parameter configures the time period in milliseconds after which a connection is validated before it is taken from
    * the pool again.
    */
-  @Value("${productservice.http.validateAfterInactivityDuration}")
+  @Value("${rESTProductService.http.validateAfterInactivityDuration}")
   private int validateAfterInactivityDuration;
 
   /**
    * Maximum amount of retries before a call to the REST service is considered to be failed.
    */
-  @Value("${productservice.http.maxRetries}")
+  @Value("${rESTProductService.http.maxRetries}")
   private int maxRetries;
 
   /**
    * Interval in milliseconds after which the REST service is called again in case that retries are configured.
    */
-  @Value("${productservice.http.retryInterval}")
+  @Value("${rESTProductService.http.retryInterval}")
   private int retryInterval;
 
   /**
    * Response timeout in milliseconds for calls to REST service. Please be aware that this is a very sensitive parameter
    * and needs to be fine-tuned for your purposes.
    */
-  @Value("${productservice.http.responseTimeout}")
+  @Value("${rESTProductService.http.responseTimeout}")
   private int responseTimeout;
 
   /**
@@ -102,7 +102,7 @@ public class RESTProductServiceHttpClient {
    * should not have a too strong influence on the overall behavior. However please ensure that it fits to your
    * environment.
    */
-  @Value("${productservice.http.connectTimeout}")
+  @Value("${rESTProductService.http.connectTimeout}")
   private int connectTimeout;
 
   /**
@@ -119,7 +119,7 @@ public class RESTProductServiceHttpClient {
    * 
    * Value must between 0 and 100.
    */
-  @Value("${productservice.circuitbreaker.failureRateThreshold}")
+  @Value("${rESTProductService.circuitbreaker.failureRateThreshold}")
   private int failureRateThreshold;
 
   /**
@@ -127,7 +127,7 @@ public class RESTProductServiceHttpClient {
    * 
    * The value must be zero or greater.
    */
-  @Value("${productservice.circuitbreaker.durationInOpenState}")
+  @Value("${rESTProductService.circuitbreaker.durationInOpenState}")
   private int durationInOpenState;
 
   /**
@@ -136,7 +136,7 @@ public class RESTProductServiceHttpClient {
    * 
    * The value must be zero or greater.
    */
-  @Value("${productservice.circuitbreaker.slowRequestDuration}")
+  @Value("${rESTProductService.circuitbreaker.slowRequestDuration}")
   private int slowRequestDuration;
 
   /**
@@ -146,7 +146,7 @@ public class RESTProductServiceHttpClient {
    * 
    * Value must between 0 and 100.
    */
-  @Value("${productservice.circuitbreaker.slowRequestRateThreshold}")
+  @Value("${rESTProductService.circuitbreaker.slowRequestRateThreshold}")
   private int slowRequestRateThreshold;
 
   /**
@@ -154,7 +154,7 @@ public class RESTProductServiceHttpClient {
    * 
    * The value must be zero or greater.
    */
-  @Value("${productservice.circuitbreaker.permittedCallsInHalfOpenState}")
+  @Value("${rESTProductService.circuitbreaker.permittedCallsInHalfOpenState}")
   private int permittedCallsInHalfOpenState;
 
   /**
@@ -163,7 +163,7 @@ public class RESTProductServiceHttpClient {
    * 
    * The value must be greater than 0.
    */
-  @Value("${productservice.circuitbreaker.slidingWindowSizeSeconds}")
+  @Value("${rESTProductService.circuitbreaker.slidingWindowSizeSeconds}")
   private int slidingWindowSizeSeconds;
 
   /**

@@ -35,7 +35,7 @@ public class ProductServiceRESTProxy implements RESTProductService {
   /**
    * URL of the REST service that is proxied by this service implementation.
    */
-  @Value("${productservice.externalURL}")
+  @Value("${productService.externalURL}")
   private String externalServiceURL;
 
   @Inject
