@@ -4,6 +4,19 @@
 «IMPORT uml»
 «IMPORT JMM»
 
+«DEFINE GenerateRESTServiceProxy FOR RESTResource»
+  «IF isTargetRuntimeSpring()»
+  	«EXPAND GenerateRESTServiceProxySpring»
+  «ENDIF» 
+«ENDDEFINE»
+
+«DEFINE GenerateRESTServiceProxySpring FOR RESTResource»
+«FILE packagePath()+"/proxy/"+name+"HttpClient.java" src_gen»
+«getFileHeader()»
+package «packageName()».proxy;
+«ENDFILE»
+«ENDDEFINE»
+
 «DEFINE GenerateRESTServiceProxyHttpClient FOR RESTResource»
   «IF isTargetRuntimeSpring()»
   	«EXPAND GenerateRESTServiceProxyHttpClientSpring»
@@ -11,9 +24,9 @@
 «ENDDEFINE»
 
 «DEFINE GenerateRESTServiceProxyHttpClientSpring FOR RESTResource»
-«FILE packagePath()+"/"+name+"HttpClient.java" src_gen»
+«FILE packagePath()+"/proxy/"+name+"HttpClient.java" src_gen»
 «getFileHeader()»
-package «packageName()»;
+package «packageName()».proxy;
 
 /**
  * Class implements a http client implementation that can be used to call «name». This implementation supports a

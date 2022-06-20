@@ -3,7 +3,7 @@
  * 
  * Copyright 2004 - 2019. All rights reserved.
  */
-package com.anaptecs.spring.service;
+package com.anaptecs.spring.service.proxy;
 
 import java.io.IOException;
 import java.time.Duration;
