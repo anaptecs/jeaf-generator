@@ -207,7 +207,7 @@ public class ProductServiceHttpClientSpring {
     HttpClientBuilder lBuilder = HttpClientBuilder.create();
     lBuilder.setConnectionManager(lConnectionManager);
 
-    // Configure request specific paramaters.
+    // Configure request specific parameters.
     RequestConfig.Builder lConfigBuilder = RequestConfig.custom();
     lConfigBuilder.setConnectionKeepAlive(TimeValue.ofMilliseconds(keepAliveDuration));
     lConfigBuilder.setConnectTimeout(Timeout.ofMilliseconds(connectTimeout));
