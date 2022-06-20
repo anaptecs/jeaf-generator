@@ -42,7 +42,6 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
@@ -252,8 +251,7 @@ public class RESTProductServiceHttpClient {
     Check.checkInvalidParameterNull(pCollectionClass, "pCollectionClass");
     Check.checkInvalidParameterNull(pTypeClass, "pTypeClass");
     // Create matching response type for collections as defined by the passed parameters
-    TypeFactory lTypeFactory = objectMapper.getTypeFactory();
-    JavaType lResponseType = lTypeFactory.constructCollectionType(pCollectionClass, pTypeClass);
+    JavaType lResponseType = objectMapper.getTypeFactory().constructCollectionType(pCollectionClass, pTypeClass);
     // Execute request and return result.
     return executeRequest(pRequest, pSuccessfulStatusCode, lResponseType);
   }
@@ -273,8 +271,7 @@ public class RESTProductServiceHttpClient {
     Check.checkInvalidParameterNull(pRequest, "pRequest");
     Check.checkInvalidParameterNull(pTypeClass, "pTypeClass");
     // Create matching response type as defined by the passed parameters
-    TypeFactory lTypeFactory = objectMapper.getTypeFactory();
-    JavaType lResponseType = lTypeFactory.constructType(pTypeClass);
+    JavaType lResponseType = objectMapper.getTypeFactory().constructType(pTypeClass);
     // Execute request and return result.
     return executeRequest(pRequest, pSuccessfulStatusCode, lResponseType);
   }

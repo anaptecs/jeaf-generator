@@ -230,8 +230,7 @@ public class «name»HttpClient {
     com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pTypeClass, "pTypeClass");
 
     // Create matching response type for collections as defined by the passed parameters
-    com.fasterxml.jackson.databind.type.TypeFactory lTypeFactory = objectMapper.getTypeFactory();
-    com.fasterxml.jackson.databind.JavaType lResponseType = lTypeFactory.constructCollectionType(pCollectionClass, pTypeClass);
+    com.fasterxml.jackson.databind.JavaType lResponseType = objectMapper.getTypeFactory().constructCollectionType(pCollectionClass, pTypeClass);
 
     // Execute request and return result.
     return executeRequest(pRequest, pSuccessfulStatusCode, lResponseType);
@@ -254,8 +253,7 @@ public class «name»HttpClient {
     Check.checkInvalidParameterNull(pTypeClass, "pTypeClass");
 
     // Create matching response type as defined by the passed parameters
-    TypeFactory lTypeFactory = objectMapper.getTypeFactory();
-    JavaType lResponseType = lTypeFactory.constructType(pTypeClass);
+    JavaType lResponseType = objectMapper.getTypeFactory().constructType(pTypeClass);
 
     // Execute request and return result.
     return executeRequest(pRequest, pSuccessfulStatusCode, lResponseType);
