@@ -30,6 +30,22 @@ import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 
+/**
+ * Class implements a proxy for an REST Service. The proxy is implemented as Spring services. This way to developers it
+ * looks like a plain Spring Service.
+ * 
+ * This implementation deals with everything that is required to call the external REST service including the following
+ * things:
+ * <ul>
+ * <li>Serialization / deserialization between Java and JSON</li>
+ * <li>Proper connection pooling and timeouts for HTTP requests</li>
+ * <li>Proper setting of HTTP header</li>
+ * <li>Circuit breaker in case of availabilities problems of the REST service</li>
+ * </ul>
+ * 
+ * However, as an transactional context can not be propagated to another REST resource developers till have to take care
+ * about proper transaction handling if needed.
+ */
 @Service
 public class ProductServiceRESTProxy implements RESTProductService {
   /**
