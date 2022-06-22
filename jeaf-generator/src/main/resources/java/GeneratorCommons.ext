@@ -52,6 +52,12 @@ cached boolean generateServiceProviderImpls() :
 cached boolean generateRESTResources() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateRESTResources();
     
+cached boolean generateRESTServiceProxies() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateRESTServiceProxies();
+    
+cached boolean generateRESTServiceProxyConfigFile() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateRESTServiceProxyConfigFile();
+    
 cached boolean generateActivityInterfaces() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateActivityInterfaces();
     

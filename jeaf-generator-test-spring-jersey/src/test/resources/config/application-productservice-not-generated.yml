@@ -1,8 +1,14 @@
 # File contains configuration for external REST resource ProductService
-productservice:
+productService:
   # URL to external service
-  externalURL: http://localhost:8080
+  externalURL: http://localhost:8099
   
+  # Domain of the cookie that is used in requests.
+  cookieDomain: localhost
+  
+  # Path of the cookie that is used in requests.
+  cookiePath: /
+
   # Apache HTTP Client configuration
   http:
     # Maximum size of the connection pool.

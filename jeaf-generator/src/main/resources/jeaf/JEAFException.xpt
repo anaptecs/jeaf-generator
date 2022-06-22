@@ -10,7 +10,7 @@
 	
 	
 // Application exception.
-«FILE packagePath()+"/"+name+".java" GenBase»
+«FILE packagePath()+"/"+name+".java" src_gen»
 	
 «getFileHeader()»
 package «packageName()»;
@@ -121,7 +121,7 @@ public final class «name» extends ApplicationException {
 // System exception.
 «DEFINE SystemException FOR SystemException»
 	
-«FILE packagePath()+"/"+name+".java" GenBase»
+«FILE packagePath()+"/"+name+".java" src_gen»
 «getFileHeader()»
 package «packageName()»;
 

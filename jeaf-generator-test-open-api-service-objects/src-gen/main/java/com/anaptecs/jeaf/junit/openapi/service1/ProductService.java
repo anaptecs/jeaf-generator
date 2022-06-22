@@ -199,4 +199,18 @@ public interface ProductService extends Service {
    * @return {@link Channel}
    */
   Channel getDefaultChannel( ChannelType pChannelType );
+
+  /**
+   * 
+   * @param pChannelCode
+   * @return {@link CurrencyCode}
+   */
+  List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode );
+
+  /**
+   * 
+   * @param pChannelCode
+   * @return {@link CurrencyCode}
+   */
+  List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode );
 }

@@ -8,7 +8,7 @@
 
 «DEFINE JEAFServiceProviderTemplate FOR JEAFServiceProvider»
 
-«FILE packagePath()+"/"+name+".java" GenBase»
+«FILE packagePath()+"/"+name+".java" src_gen»
 «getFileHeader()»
 package «packageName()»;
 
@@ -29,7 +29,7 @@ public interface «name» extends «IF generalization.size > 0» «this.getAllEx
 
 «EXPAND CreateServiceProviderProperties»
 
-«FILE packagePath()+"/"+name+"Base.java" GenBase»
+«FILE packagePath()+"/"+name+"Base.java" src_gen»
 «getFileHeader()»
 package «packageName()»;
 
@@ -84,7 +84,7 @@ abstract class «name»Base implements com.anaptecs.jeaf.core.spi.ServiceProvide
 }
 «ENDFILE»
 
-«FILE packagePath()+"/"+name+".java" GenOnce»
+«FILE packagePath()+"/"+name+".java" src»
 «getFileHeader()»
 package «packageName()»;
 
@@ -135,7 +135,7 @@ final class «name» extends «name»Base {
 }
 «ENDFILE»
 
-«FILE packagePath()+"/"+this.getServiceProviderFactoryName()+".java" GenBase»
+«FILE packagePath()+"/"+this.getServiceProviderFactoryName()+".java" src_gen»
 «getFileHeader()»
 package «packageName()»;
 
@@ -185,11 +185,11 @@ public final class «this.getServiceProviderFactoryName()» extends ServiceProvi
 «ENDDEFINE»
 
 «DEFINE CreateServiceProviderProperties FOR JEAFServiceProviderImpl»
-    «FILE name+".properties" Res»
+    «FILE name+".properties" res»
 «FOREACH this.ownedAttribute AS property»
 «property.name»=«ENDFOREACH»
     «ENDFILE»
-    «FILE name+".xml" GenRes»<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    «FILE name+".xml" res_gen»<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Root>
   <ComponentInfo name="«this.name»" basePackage="«this.packageName()»" cacheTTL="0" >
 «FOREACH this.ownedAttribute  AS property»    <Property name="«property.name»" type="«property.type.fqn()»" defaultValue="«property.defaultValue.stringValue()»" comment="" />

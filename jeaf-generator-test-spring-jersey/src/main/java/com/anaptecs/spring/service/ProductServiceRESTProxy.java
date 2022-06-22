@@ -5,7 +5,13 @@
  */
 package com.anaptecs.spring.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.validation.constraints.NotBlank;
@@ -18,38 +24,48 @@ import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.anaptecs.jeaf.json.api.JSON;
-import com.anaptecs.spring.base.BeanParameter;
+import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
-import com.anaptecs.spring.base.DeprecatedContext;
-import com.anaptecs.spring.base.IntegerCodeType;
-import com.anaptecs.spring.base.ParentBeanParamType;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
-import com.anaptecs.spring.base.SpecialContext;
-import com.anaptecs.spring.base.StringCodeType;
 
-// @Service
-public class ProductServiceRESTProxy implements ProductService {
+/**
+ * Class implements a proxy for an REST Service. The proxy is implemented as Spring services. This way to developers it
+ * looks like a plain Spring Service.
+ * 
+ * This implementation deals with everything that is required to call the external REST service including the following
+ * things:
+ * <ul>
+ * <li>Serialization / deserialization between Java and JSON</li>
+ * <li>Proper connection pooling and timeouts for HTTP requests</li>
+ * <li>Proper setting of HTTP header</li>
+ * <li>Circuit breaker in case of availabilities problems of the REST service</li>
+ * </ul>
+ * 
+ * However, as an transactional context can not be propagated to another REST resource developers till have to take care
+ * about proper transaction handling if needed.
+ */
+public class ProductServiceRESTProxy implements RESTProductService {
   /**
    * URL of the REST service that is proxied by this service implementation.
    */
-  @Value("${productservice.externalURL}")
+  @Value("${productService.externalURL}")
   private String externalServiceURL;
 
   @Inject
   private ProductServiceHttpClientSpring httpClient;
 
   @Override
-  public List<Product> getProducts( ) {
+  public List<Product> getProducts( int pMaxResultSize ) {
     // Create builder for GET request
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
 
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
     lURIBuilder.append(externalServiceURL);
-    lURIBuilder.append("/products");
+    lURIBuilder.append("/rest-products");
     lRequestBuilder.setUri(lURIBuilder.toString());
 
     // Set content type information
@@ -57,7 +73,11 @@ public class ProductServiceRESTProxy implements ProductService {
 
     // Execute request and return result
     ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeCollectionResultRequest(lRequest, 200, List.class, Product.class);
+    List<Product> lResult = httpClient.executeCollectionResultRequest(lRequest, 200, List.class, Product.class);
+    if (lResult == null) {
+      lResult = Collections.emptyList();
+    }
+    return lResult;
   }
 
   @Override
@@ -68,7 +88,7 @@ public class ProductServiceRESTProxy implements ProductService {
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
     lURIBuilder.append(externalServiceURL);
-    lURIBuilder.append("/products");
+    lURIBuilder.append("/rest-products");
     lURIBuilder.append("/");
     lURIBuilder.append(pProductID);
     lRequestBuilder.setUri(lURIBuilder.toString());
@@ -87,10 +107,10 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
 
     // Build URI of request
-    // TODO Also include @PathParam, @QueryParam from normal and bean params
+    // TODO Also include @PathParam, @QueryParam for normal and bean params
     StringBuilder lURIBuilder = new StringBuilder();
     lURIBuilder.append(externalServiceURL);
-    lURIBuilder.append("/products");
+    lURIBuilder.append("/rest-products");
     lRequestBuilder.setUri(lURIBuilder.toString());
 
     // Set content type information
@@ -121,75 +141,66 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   @Override
-  public String deprecatedOperation( ) {
+  public void testInit( ) {
+    XFun.getTrace().info("Starting REST Proxy Init Test");
+    assertEquals("http://localhost:8099", externalServiceURL);
+    assertNotNull(httpClient);
+  }
+
+  @Override
+  public List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode ) {
+    // Create builder for GET request
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+
+    // Build URI of request
+    StringBuilder lURIBuilder = new StringBuilder();
+    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append("/rest-products");
+    lURIBuilder.append("/currencies/");
+    lURIBuilder.append(pChannelCode.getCode());
+    lRequestBuilder.setUri(lURIBuilder.toString());
+
+    // Set content type information
+    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+
+    // Execute request and return result
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    List<CurrencyCode> lResult =
+        httpClient.executeCollectionResultRequest(lRequest, 200, List.class, CurrencyCode.class);
+    if (lResult == null) {
+      lResult = Collections.emptyList();
+    }
+    return lResult;
+  }
+
+  @Override
+  public List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode ) {
+    // Create builder for GET request
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+
+    // Build URI of request
+    StringBuilder lURIBuilder = new StringBuilder();
+    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append("/rest-products");
+    lURIBuilder.append("/async-currencies/");
+    lURIBuilder.append(pChannelCode.getCode());
+    lRequestBuilder.setUri(lURIBuilder.toString());
+
+    // Set content type information
+    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+
+    // Execute request and return result
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    List<CurrencyCode> lResult =
+        httpClient.executeCollectionResultRequest(lRequest, 200, List.class, CurrencyCode.class);
+    if (lResult == null) {
+      lResult = Collections.emptyList();
+    }
+    return lResult;
+  }
+
+  @Override
+  public String testParams( BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam ) {
     return null;
   }
-
-  @Override
-  public String deprecatedContext( DeprecatedContext pContext ) {
-    return null;
-  }
-
-  @Override
-  public void deprecatedBeanParam( BeanParameter pBeanParam ) {
-  }
-
-  @Override
-  public String deprecatedParams( int pParam1 ) {
-    return null;
-  }
-
-  @Override
-  public String deprecatedBody( String pBody ) {
-    return null;
-  }
-
-  @Override
-  public void deprectedComplexRequestBody( Product pProduct ) {
-  }
-
-  @Override
-  public Product deprecatedComplexReturn( ) {
-    return null;
-  }
-
-  @Override
-  public void loadSpecificThings( SpecialContext pContext ) {
-  }
-
-  @Override
-  public ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode ) {
-    return null;
-  }
-
-  @Override
-  public List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies ) {
-    return null;
-  }
-
-  @Override
-  public CurrencyCode isCurrencySupported( CurrencyCode pCurrency ) {
-    return null;
-  }
-
-  @Override
-  public IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode ) {
-    return null;
-  }
-
-  @Override
-  public String testLocalBeanParamType( LocalBeanParamType pBeanParam ) {
-    return null;
-  }
-
-  @Override
-  public String testExternalBeanParameterType( ParentBeanParamType pParent ) {
-    return null;
-  }
-
-  @Override
-  public String testChildBeanParameter( ChildBeanParameterType pChild ) {
-    return null;
-  }
-
 }

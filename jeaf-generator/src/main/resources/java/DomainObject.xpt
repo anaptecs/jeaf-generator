@@ -13,7 +13,7 @@
 «DEFINE DomainClass FOR DomainObject»
 	«IF generateDomainObjects() == true»
 	«IF this.ownedOperation.size == 0 && this.hasCustomImplementation == false»
-	«FILE packagePath() + "/" + name +".java" GenBase»
+	«FILE packagePath() + "/" + name +".java" src_gen»
 	«getFileHeader()»
 	package «this.packageName()»;
   
@@ -115,7 +115,7 @@
   }
   «ENDFILE»
   «ELSE»
-      «FILE packagePath() + "/" + name +"Base.java" GenBase»
+      «FILE packagePath() + "/" + name +"Base.java" src_gen»
       «getFileHeader()»
       package «this.packageName()»;
       
@@ -224,7 +224,7 @@
       }
       «ENDFILE»
 
-      «FILE packagePath() + "/" + name +".java" GenOnce»
+      «FILE packagePath() + "/" + name +".java" src»
       «getFileHeader()»
       package «this.packageName()»;
       

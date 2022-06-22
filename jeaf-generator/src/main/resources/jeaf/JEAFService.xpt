@@ -14,7 +14,7 @@
 //*********************************************************\\
 //*********************************************************\\
 «DEFINE JEAFServiceInterface FOR JEAFService»
-«FILE packagePath()+"/"+name+".java" GenBase»
+«FILE packagePath()+"/"+name+".java" src_gen»
 «getFileHeader()»
 package «packageName()»;
 
@@ -32,7 +32,7 @@ public interface «name» «IF generalization.size > 0»extends «this.getAllExt
 //*********************************************************\\
 «DEFINE JEAFServiceProxy FOR JEAFService»
 «IF this.isAbstract == false»
-«FILE packagePath()+"/"+name+"Proxy.java" GenBase»
+«FILE packagePath()+"/"+name+"Proxy.java" src_gen»
 «getFileHeader()»
 package «packageName()»;
 

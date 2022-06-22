@@ -111,72 +111,72 @@
   «ENDLET -»
 «ENDDEFINE»
 
-«DEFINE GenerateOpenAPIDataTypeForPath(OpenAPI3Specification spec, Parameter param) FOR OpenAPIDataType -»
-                «LET this.ownedAttribute.get(0) AS attribute -»
+«DEFINE GenerateOpenAPIDataTypeForPath(OpenAPI3Specification spec, Parameter param, String indent) FOR OpenAPIDataType -»
+«indent»            «LET this.ownedAttribute.get(0) AS attribute -»
                 «IF attribute.hasComment()-»
-                description: >-
-                  «attribute.getCommentForOpenAPIDescription("                  ")»
+«indent»            description: >-
+«indent»              «attribute.getCommentForOpenAPIDescription("                  ")»
                 «ENDIF-»
                 «IF param.isMultivalued() == false-»
-                type: «attribute.type.getOpenAPIType(spec)»
+«indent»            type: «attribute.type.getOpenAPIType(spec)»
                   «IF attribute.hasOpenAPIFormatForProperty()-»
-                format: «attribute.getOpenAPIFormatForProperty()»
+«indent»            format: «attribute.getOpenAPIFormatForProperty()»
                   «ENDIF-»
                   «IF attribute.hasPatternForProperty() -»
-                pattern: '«attribute.getPatternForProperty()»'
+«indent»            pattern: '«attribute.getPatternForProperty()»'
                   «ENDIF-»
                   «IF attribute.defaultValue != null -»
-                default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
+«indent»            default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
                   «ENDIF-»
                 «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR attribute-»    
                   «IF attribute.isDeprecated() || param.isDeprecated() -»
-                deprecated: true
+«indent»            deprecated: true
                   «ENDIF-»
                   «IF attribute.hasExample()-»
                     «IF ((Example) attribute).exampleValue.length > 0-»
-                example: «((Example) attribute).exampleValue»
+«indent»            example: «((Example) attribute).exampleValue»
                     «ENDIF-»
                   «ENDIF-»
                 «ELSE-»
-                type: array
-                items:
-                  type: «attribute.type.getOpenAPIType(spec)»
+«indent»            type: array
+«indent»            items:
+«indent»              type: «attribute.type.getOpenAPIType(spec)»
                   «IF attribute.hasOpenAPIFormatForProperty()-»
-                  format: «attribute.getOpenAPIFormatForProperty()»
+«indent»              format: «attribute.getOpenAPIFormatForProperty()»
                   «ENDIF-»
                   «IF attribute.hasPatternForProperty() -»
-                  pattern: '«attribute.getPatternForProperty()»'
+«indent»              pattern: '«attribute.getPatternForProperty()»'
                   «ENDIF-»
                   «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("            ") FOR attribute-»
                   «IF attribute.hasExample()-»
                   «IF ((Example) attribute).exampleValue.length > 0-»
-                  example: «((Example) attribute).exampleValue»
+«indent»              example: «((Example) attribute).exampleValue»
                   «ENDIF-»
                   «ENDIF-»
                   «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR param-»
                   «IF attribute.isDeprecated() || param.isDeprecated() -»
-                deprecated: true
+«indent»            deprecated: true
                   «ENDIF-»
                 «ENDIF-»
                 «IF attribute.isNullable() == false -»
-                nullable: «attribute.isNullable()»
+«indent»            nullable: «attribute.isNullable()»
                 «ENDIF-»  
                 «IF attribute.isReadOnly()  -»
-                readOnly: «attribute.isReadOnly()»
+«indent»            readOnly: «attribute.isReadOnly()»
                 «ENDIF-»  
                 «IF attribute.isWriteOnly() -»
-                writeOnly: «attribute.isWriteOnly()»
+«indent»            writeOnly: «attribute.isWriteOnly()»
                 «ENDIF-»  
                 «IF param.hasExample()-»
                 «IF ((Example) param).exampleValue.length > 0-»
-                example: «((Example) param).exampleValue»
+«indent»            example: «((Example) param).exampleValue»
                 «ENDIF-»
                 «ENDIF-»
                 «ENDLET -»
 «ENDDEFINE»
 
 «DEFINE GenerateDataTypeSerializer FOR OpenAPIDataType -»
-	«FILE packagePath() + "/serializers/" + name +"Serializer.java" GenBase»
+	«FILE packagePath() + "/serializers/" + name +"Serializer.java" src_gen»
 		«getFileHeader()»
 		package «this.packageName()».serializers;
 		
@@ -206,7 +206,7 @@
 «ENDDEFINE»
 
 «DEFINE GenerateDataTypeDeserializer FOR OpenAPIDataType -»
-	«FILE packagePath() + "/serializers/" + name +"Deserializer.java" GenBase»
+	«FILE packagePath() + "/serializers/" + name +"Deserializer.java" src_gen»
 		«getFileHeader()»
 		package «this.packageName()».serializers;
 		

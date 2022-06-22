@@ -308,4 +308,26 @@ final class ProductServiceImpl extends ProductServiceImplBase {
     // TODO Implement method and return real result
     return null;
   }
+
+  /**
+   * 
+   * @param pChannelCode
+   * @return {@link CurrencyCode}
+   */
+  @Override
+  public List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode ) {
+    // TODO Implement method and return real result
+    return null;
+  }
+
+  /**
+   * 
+   * @param pChannelCode
+   * @return {@link CurrencyCode}
+   */
+  @Override
+  public List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode ) {
+    // TODO Implement method and return real result
+    return null;
+  }
 }

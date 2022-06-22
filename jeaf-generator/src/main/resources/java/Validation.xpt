@@ -10,7 +10,7 @@
 	«LET className.split("\\.").last() AS validationClass»
 	«LET className.replaceFirst("\\."+validationClass, "") AS packageName»
 	«info("Validation Class: " + validationClass)»
-	«FILE className.packagePath() + ".java" GenBase»
+	«FILE className.packagePath() + ".java" src_gen»
 package «packageName»;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;

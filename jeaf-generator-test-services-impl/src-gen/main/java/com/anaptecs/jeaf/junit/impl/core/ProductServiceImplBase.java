@@ -71,6 +71,12 @@ abstract class ProductServiceImplBase implements ProductService, ServiceImplemen
   public static final String GETSORTIMENT_AUTH_TYPE =
       "getSortiment.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 
+  public static final String GETSUPPORTEDCURRENCIESASYNC_AUTH_TYPE =
+      "getSupportedCurrenciesAsync.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
+  public static final String GETSUPPORTEDCURRENCIES_AUTH_TYPE =
+      "getSupportedCurrencies.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
   public static final String ISCURRENCYSUPPORTED_AUTH_TYPE =
       "isCurrencySupported.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 

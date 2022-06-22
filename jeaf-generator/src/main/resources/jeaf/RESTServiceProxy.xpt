@@ -1,0 +1,682 @@
+«EXTENSION java::GeneratorCommons»
+«EXTENSION java::Naming»
+«EXTENSION jeaf::RESTFunctions»
+«EXTENSION java::OpenAPIFunctions»
+
+«IMPORT uml»
+«IMPORT JMM»
+
+«DEFINE GenerateRESTServiceProxy FOR RESTResource»
+  «IF isTargetRuntimeSpring()»
+  	«EXPAND GenerateRESTServiceProxySpring»
+  «ENDIF» 
+«ENDDEFINE»
+
+«DEFINE GenerateRESTServiceProxySpring FOR RESTResource»
+«FILE packagePath()+"/proxy/"+name+"RESTProxy.java" src_gen»
+«getFileHeader()»
+package «packageName()».proxy;
+
+
+/**
+ * Class implements a proxy for an REST Service. The proxy is implemented as Spring services. This way to developers it
+ * looks like a plain Spring Service.
+ * 
+ * This implementation deals with everything that is required to call the external REST service including the following
+ * things:
+ * <ul>
+ * <li>Serialization / deserialization between Java and JSON</li>
+ * <li>Proper connection pooling and timeouts for HTTP requests</li>
+ * <li>Proper setting of HTTP header</li>
+ * <li>Circuit breaker in case of availabilities problems of the REST service</li>
+ * </ul>
+ * 
+ * However, as an transactional context can not be propagated to another REST resource developers till have to take care
+ * about proper transaction handling if needed.
+ */
+@org.springframework.stereotype.Service
+public class «name»RESTProxy implements «this.fqn()» {
+  /**
+   * URL of the REST service that is proxied by this service implementation.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».externalURL}")
+  private String externalServiceURL;
+  
+  «IF this.usesCookies()»
+  /**
+   * Domain of the cookie that is used in requests.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».cookieDomain}")
+  private String cookieDomain;
+  
+  /**
+   * Path of the cookie that is used in requests.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».cookiePath}")
+  private String cookiePath;
+  «ENDIF»
+  
+  @javax.inject.Inject
+  private «name»HttpClient httpClient;
+  
+  «EXPAND RESTProxyOperationOperation(this) FOREACH ownedOperation.typeSelect(RESTOperation)»
+}
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE RESTProxyOperationOperation(RESTResource service) FOR RESTOperation»
+    «this.getJavadoc()» 
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
+    @Override
+	«visibility» «getReturnTypeName()» «name» («EXPAND jeaf::JEAFOperation::ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
+		// Create builder for «this.httpMethods.selectFirst(e|e!=null)» request
+		org.apache.hc.core5.http.io.support.ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.«this.httpMethods.toList().get(0).toString().toLowerCase()»();
+		
+	    // Build URI of request
+	    StringBuilder lURIBuilder = new StringBuilder();
+	    lURIBuilder.append(externalServiceURL);
+	    «IF service.path.length > 0»
+	    lURIBuilder.append("«service.path»");
+	    «ENDIF»
+	    «IF this.path.length > 0»
+	    	lURIBuilder.append('/');
+	    	«FOREACH splitRESTPath(this.path, this.getAllPathParams(), this.getAllPathParamNamnes()) AS pathPart»
+	    	lURIBuilder.append(«pathPart»);
+	    	«ENDFOREACH»
+	    «ENDIF»
+	    «IF this.getQueryParams().size > 0»
+	    	lURIBuilder.append('?');
+	    	«FOREACH this.getQueryParams() AS queryParam SEPARATOR "lURIBuilder.append(','); "»
+	    	lURIBuilder.append("«queryParam.getRESTQueryParamName()»=");
+	    	lURIBuilder.append(«queryParam.name»);
+	    	«ENDFOREACH»
+	    «ENDIF»
+	    «IF this.getBeanParams().size > 0»
+	    	«IF this.getQueryParams().size == 0»
+	    	lURIBuilder.append('?');
+	    	«ELSE»
+	    	lURIBuilder.append(',');
+	    	«ENDIF»
+	    	«FOREACH this.getBeanParams() AS beanParam»
+	    		«FOREACH beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::QueryParam) AS queryParam SEPARATOR "lURIBuilder.append(','); "»
+			    	lURIBuilder.append("«queryParam.getRESTQueryParamName()»=");
+			    	lURIBuilder.append(«beanParam.name».«queryParam.asGetter()»());
+	    		«ENDFOREACH»
+	    	«ENDFOREACH»
+    	«ENDIF»
+	    lRequestBuilder.setUri(lURIBuilder.toString());
+	    
+		// Set HTTP header
+		lRequestBuilder.setHeader(org.apache.hc.core5.http.HttpHeaders.ACCEPT, org.apache.hc.core5.http.ContentType.APPLICATION_JSON.getMimeType());
+		«FOREACH this.getHeaderParams() AS headerParam»
+		lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", «EXPAND HeaderParamValueAccessor FOR headerParam»);
+		«ENDFOREACH»
+    	«FOREACH this.getBeanParams() AS beanParam»
+    		«FOREACH beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam) AS headerParam»
+		    	lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", «EXPAND HeaderParamValueAccessorForBeanParam(beanParam) FOR headerParam»);
+    		«ENDFOREACH»
+    	«ENDFOREACH»
+    	
+    	«IF this.hasCookieParams()»
+	    	// Handle cookie parameters
+	    	org.apache.hc.client5.http.cookie.BasicCookieStore lCookieStore = new BasicCookieStore();
+	    	org.apache.hc.core5.http.protocol.HttpContext lLocalContext = new org.apache.hc.core5.http.protocol.BasicHttpContext();
+	    	lLocalContext.setAttribute(org.apache.hc.client5.http.protocol.HttpClientContext.COOKIE_STORE, lCookieStore);
+	    	«FOREACH this.getCookieParams() AS cookieParam»
+	    	org.apache.hc.client5.http.impl.cookie.BasicClientCookie l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie = new BasicClientCookie("«cookieParam.getRESTCookieParamName()»", «EXPAND CookieParamValueAccessor FOR cookieParam»);
+			if(cookieDomain != null) {
+			  l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie.setDomain(cookieDomain);
+			}
+			if(cookiePath != null) {
+			  l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie.setPath(cookiePath);
+			}
+			lCookieStore.addCookie(l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie);
+	    	«ENDFOREACH»
+	    	«FOREACH this.getBeanParams() AS beanParam»
+	    		«FOREACH beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::CookieParam) AS cookieParam»
+			    	org.apache.hc.client5.http.impl.cookie.BasicClientCookie l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie = new BasicClientCookie("«cookieParam.getRESTCookieParamName()»", «EXPAND CookieParamValueAccessorForBeanParam(beanParam) FOR cookieParam»);
+					if(cookieDomain != null) {
+					  l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie.setDomain(cookieDomain);
+					}
+					if(cookiePath != null) {
+					  l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie.setPath(cookiePath);
+					}
+					lCookieStore.addCookie(l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie);
+	    		«ENDFOREACH»
+	    	«ENDFOREACH»
+    	«ENDIF»
+	    
+	    «FOREACH this.getRequestBodyParameters() AS body»
+	    // Convert parameter «body.name» into request body.
+	    String lRequestBody = com.anaptecs.jeaf.json.api.JSON.getJSONTools().writeObjectToString(«body.name»);
+	    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+	    «ENDFOREACH»
+
+		«IF getReturnTypeName() != "void"»
+		// Execute request and return result.
+		«ELSE»
+		// Execute request.
+		«ENDIF»
+		org.apache.hc.core5.http.ClassicHttpRequest lRequest = lRequestBuilder.build();
+		
+		«IF getReturnTypeName() != "void"»
+			«IF this.getReturnResult().isMultivalued() == false»
+			return httpClient.executeSingleObjectResultRequest(lRequest, «IF this.hasCookieParams()»lLocalContext«ELSE»null«ENDIF», «this.getHTTPStatusCode()», «this.getReturnResult().type.fqn()».class);
+			«ELSE»
+		    «getReturnTypeName()» lResult = httpClient.executeCollectionResultRequest(lRequest, «IF this.hasCookieParams()»lLocalContext«ELSE»null«ENDIF», «this.getHTTPStatusCode()», «this.getReturnResult().getCollectionType()».class, «this.getReturnResult().type.fqn()».class);
+		    if (lResult == null) {
+		      lResult = java.util.Collections.emptyList();
+		    }
+		    return lResult;
+			«ENDIF»
+		«ELSE»
+		    httpClient.executeNoResponseContentRequest(lRequest, «IF this.hasCookieParams()»lLocalContext«ELSE»null«ENDIF», «this.getHTTPStatusCode()»);
+		«ENDIF»
+	}
+«ENDDEFINE»
+
+«DEFINE HeaderParamValueAccessor FOR HeaderParam»
+	«IF type.fqn() == "java.lang.String"»
+		«name»
+	«ELSE»
+		«IF type.isPrimitiveType()»
+			String.valueOf(«name»)
+		«ELSE»
+			«IF type.isOpenAPIDataType()»
+				«name».«type.getAllAttributesFromHierarchy().first().asGetter()»()
+			«ELSE»
+				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«name»)
+			«ENDIF»
+		«ENDIF»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE HeaderParamValueAccessorForBeanParam(uml::Parameter beanParam) FOR HeaderParam»
+	«IF type.fqn() == "java.lang.String"»
+		«beanParam.name».«this.asGetter()»()
+	«ELSE»
+		«IF type.isPrimitiveType()»
+			String.valueOf(«beanParam.name».«this.asGetter()»())
+		«ELSE»
+			«IF type.isOpenAPIDataType()»
+				«beanParam.name».«this.asGetter()»().«type.getAllAttributesFromHierarchy().first().asGetter()»()
+			«ELSE»
+				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«beanParam.name».«this.asGetter()»())
+			«ENDIF»
+		«ENDIF»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE CookieParamValueAccessor FOR CookieParam»
+	«IF type.fqn() == "java.lang.String"»
+		«name»
+	«ELSE»
+		«IF type.isPrimitiveType()»
+			String.valueOf(«name»)
+		«ELSE»
+			«IF type.isOpenAPIDataType()»
+				«name».«type.getAllAttributesFromHierarchy().first().asGetter()»()
+			«ELSE»
+				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«name»)
+			«ENDIF»
+		«ENDIF»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE CookieParamValueAccessorForBeanParam(uml::Parameter beanParam) FOR CookieParam»
+	«IF type.fqn() == "java.lang.String"»
+		«beanParam.name».«this.asGetter()»()
+	«ELSE»
+		«IF type.isPrimitiveType()»
+			String.valueOf(«beanParam.name».«this.asGetter()»())
+		«ELSE»
+			«IF type.isOpenAPIDataType()»
+				«beanParam.name».«this.asGetter()»().«type.getAllAttributesFromHierarchy().first().asGetter()»()
+			«ELSE»
+				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«beanParam.name».«this.asGetter()»())
+			«ENDIF»
+		«ENDIF»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE GenerateRESTServiceProxyHttpClient FOR RESTResource»
+  «IF isTargetRuntimeSpring()»
+  	«EXPAND GenerateRESTServiceProxyHttpClientSpring»
+  «ENDIF» 
+«ENDDEFINE»
+
+«DEFINE GenerateRESTServiceProxyHttpClientSpring FOR RESTResource»
+«FILE packagePath()+"/proxy/"+name+"HttpClient.java" src_gen»
+«getFileHeader()»
+package «packageName()».proxy;
+
+/**
+ * Class implements a http client implementation that can be used to call «name». This implementation supports a
+ * wide range of configuration parameters for Apache HTTP client and Resilience4J circuit breaker.
+ */
+@org.springframework.stereotype.Component
+public class «name»HttpClient {
+  /**
+   * Maximum size of the connection pool.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.maxPoolSize}")
+  private int maxPoolSize;
+
+  /**
+   * Maximum amount of idle connections in the connection pool.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.maxIdleConnections}")
+  private int maxIdleConnections;
+
+  /**
+   * Keep alive duration for connection to REST service (in milliseconds)
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.keepAliveDuration}")
+  private int keepAliveDuration;
+
+  /**
+   * Parameter configures the time period in milliseconds after which a connection is validated before it is taken from
+   * the pool again.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.validateAfterInactivityDuration}")
+  private int validateAfterInactivityDuration;
+
+  /**
+   * Maximum amount of retries before a call to the REST service is considered to be failed.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.maxRetries}")
+  private int maxRetries;
+
+  /**
+   * Interval in milliseconds after which the REST service is called again in case that retries are configured.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.retryInterval}")
+  private int retryInterval;
+
+  /**
+   * Response timeout in milliseconds for calls to REST service. Please be aware that this is a very sensitive parameter
+   * and needs to be fine-tuned for your purposes.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.responseTimeout}")
+  private int responseTimeout;
+
+  /**
+   * Timeout in milliseconds to establish connections to the REST service. As connections are pooled this parameter
+   * should not have a too strong influence on the overall behavior. However please ensure that it fits to your
+   * environment.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.connectTimeout}")
+  private int connectTimeout;
+
+  /**
+   * Instance of http client that is used to call proxied REST service. Configuration of HTTP client is according to the
+   * defined configuration values.
+   * 
+   * @see #initializeHTTPClient()
+   */
+  private org.apache.hc.client5.http.impl.classic.CloseableHttpClient httpClient;
+
+  /**
+   * Failure rate threshold (percent of requests) defines which amount of failed request must be exceeded due to
+   * technical problems that the circuit breaker opens and no further request will be sent to the REST service.
+   * 
+   * Value must between 0 and 100.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».circuitbreaker.failureRateThreshold}")
+  private int failureRateThreshold;
+
+  /**
+   * Duration in milliseconds that the circuit breaker stays open until request will be sent to the REST service again.
+   * 
+   * The value must be zero or greater.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».circuitbreaker.durationInOpenState}")
+  private int durationInOpenState;
+
+  /**
+   * Configures the duration in milliseconds above which calls are considered as slow and increase the slow calls
+   * percentage.
+   * 
+   * The value must be zero or greater.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».circuitbreaker.slowRequestDuration}")
+  private int slowRequestDuration;
+
+  /**
+   * Configures the slow request threshold in percentage. The circuit breaker considers a call as slow when the call
+   * duration is greater than <code>slowCallDuration</code>. When the percentage of slow calls is equal to or greater
+   * than the threshold, the circuit breaker transitions to open and starts short-circuiting calls.
+   * 
+   * Value must between 0 and 100.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».circuitbreaker.slowRequestRateThreshold}")
+  private int slowRequestRateThreshold;
+
+  /**
+   * Configures the number of permitted calls when the circuit breaker is half open.
+   * 
+   * The value must be zero or greater.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».circuitbreaker.permittedCallsInHalfOpenState}")
+  private int permittedCallsInHalfOpenState;
+
+  /**
+   * Configures the size of the sliding window in seconds which is used to record the outcome of calls when the circuit
+   * breaker is closed.
+   * 
+   * The value must be greater than 0.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».circuitbreaker.slidingWindowSizeSeconds}")
+  private int slidingWindowSizeSeconds;
+
+  /**
+   * Circuit breaker instance that is used when calling the REST service.
+   * 
+   * @see #initializeCircuitBreaker()
+   */
+  private io.github.resilience4j.circuitbreaker.CircuitBreaker circuitBreaker;
+
+  /**
+   * Object mapper is used for serialization and deserialization of objects from Java to JSON and vice versa.
+   */
+  @javax.inject.Inject
+  private com.fasterxml.jackson.databind.ObjectMapper objectMapper;
+
+  /**
+   * Method is called after service startup and performs initialization of Apache HTTP Client.
+   */
+  @javax.annotation.PostConstruct
+  private void initializeHTTPClient( ) {
+    com.anaptecs.jeaf.xfun.api.XFun.getTrace().info("Initializing Apache HTTP Client for ProductService");
+
+    // Create connection manager that can be used by multiple threads in parallel.
+    org.apache.hc.core5.http.io.SocketConfig lSocketConfig = SocketConfig.custom().setTcpNoDelay(true).build();
+
+    org.apache.hc.core5.http.config.Registry<org.apache.hc.client5.http.socket.ConnectionSocketFactory> lRegistry = org.apache.hc.core5.http.config.RegistryBuilder.<ConnectionSocketFactory>create()
+        .register(org.apache.hc.core5.http.URIScheme.HTTP.id, org.apache.hc.client5.http.socket.PlainConnectionSocketFactory.getSocketFactory())
+        .register(URIScheme.HTTPS.id, org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory.getSocketFactory()).build();
+
+    // Configure connection manager according to provided configuration parameters
+    org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager lConnectionManager = new PoolingHttpClientConnectionManager(lRegistry,
+        org.apache.hc.core5.pool.PoolConcurrencyPolicy.LAX, org.apache.hc.core5.pool.PoolReusePolicy.LIFO, org.apache.hc.core5.util.TimeValue.ofMilliseconds(keepAliveDuration));
+    lConnectionManager.setMaxTotal(maxPoolSize);
+    lConnectionManager.setDefaultMaxPerRoute(maxIdleConnections);
+    lConnectionManager.setValidateAfterInactivity(TimeValue.ofMilliseconds(validateAfterInactivityDuration));
+    lConnectionManager.setDefaultSocketConfig(lSocketConfig);
+
+    // Create pool for http connections that is used for this proxy.
+    org.apache.hc.client5.http.impl.classic.HttpClientBuilder lBuilder = HttpClientBuilder.create();
+    lBuilder.setConnectionManager(lConnectionManager);
+
+    // Configure request specific parameters.
+    org.apache.hc.client5.http.config.RequestConfig.Builder lConfigBuilder = org.apache.hc.client5.http.config.RequestConfig.custom();
+    lConfigBuilder.setConnectionKeepAlive(TimeValue.ofMilliseconds(keepAliveDuration));
+    lConfigBuilder.setConnectTimeout(org.apache.hc.core5.util.Timeout.ofMilliseconds(connectTimeout));
+    lConfigBuilder.setResponseTimeout(Timeout.ofMilliseconds(responseTimeout));
+    lConfigBuilder.setExpectContinueEnabled(true);
+    lBuilder.setDefaultRequestConfig(lConfigBuilder.build());
+
+    // Define retry behavior.
+    lBuilder.setRetryStrategy(new org.apache.hc.client5.http.impl.DefaultHttpRequestRetryStrategy(maxRetries, TimeValue.ofMilliseconds(retryInterval)));
+
+    // Finally we have to create the http client.
+    httpClient = lBuilder.build();
+  }
+
+  /**
+   * Method is called after service startup and performs initialization of resilience4J circuit breaker.
+   */
+  @javax.annotation.PostConstruct
+  private void initializeCircuitBreaker( ) {
+    com.anaptecs.jeaf.xfun.api.XFun.getTrace().info("Initializing Circuit Breaker for ProductService");
+
+    // Create circuit break configuration for target.
+    io.github.resilience4j.circuitbreaker.CircuitBreakerConfig.Builder lConfigBuilder = io.github.resilience4j.circuitbreaker.CircuitBreakerConfig.custom();
+    lConfigBuilder.failureRateThreshold(failureRateThreshold);
+    lConfigBuilder.waitDurationInOpenState(java.time.Duration.ofMillis(durationInOpenState));
+    lConfigBuilder.slowCallDurationThreshold(java.time.Duration.ofMillis(slowRequestDuration));
+    lConfigBuilder.slowCallRateThreshold(slowRequestRateThreshold);
+    lConfigBuilder.permittedNumberOfCallsInHalfOpenState(permittedCallsInHalfOpenState);
+    lConfigBuilder.slidingWindowSize(slidingWindowSizeSeconds);
+    lConfigBuilder.recordExceptions(java.io.IOException.class, java.lang.RuntimeException.class);
+
+    io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry lCircuitBreakerRegistry = io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry.of(lConfigBuilder.build());
+    circuitBreaker = lCircuitBreakerRegistry.circuitBreaker("Product Service Circuit Breaker");
+  }
+
+  /**
+   * Method executes a HTTP request that is expected to return a collection of objects as result.
+   * 
+   * @param pRequest HTTP request that should be executed. The parameter must not be null.
+   * @param pSuccessfulStatusCode HTTP status code that represents a successful call. This status code is required in
+   * order to be able to distinguish between successful and failed requests.
+   * @param pCollectionClass Class object of collection class that should be returned e.g. java.util.List. The parameter
+   * must not be null.
+   * @param pTypeClass Type of the objects that will be inside the collection. The parameter must not be null.
+   * @return T Collection of objects as it was defined by <code>pCollectionClass</code> and <code>pTypeClass</code>
+   */
+  @SuppressWarnings({ "rawtypes" })
+  public <T> T executeCollectionResultRequest( org.apache.hc.core5.http.ClassicHttpRequest pRequest, org.apache.hc.core5.http.protocol.HttpContext pHttpContext, int pSuccessfulStatusCode,
+      Class<? extends java.util.Collection> pCollectionClass, Class<?> pTypeClass ) {
+
+    // Check parameters
+    com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pRequest, "pRequest");
+    com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pCollectionClass, "pCollectionClass");
+    com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pTypeClass, "pTypeClass");
+
+    // Create matching response type for collections as defined by the passed parameters
+    com.fasterxml.jackson.databind.JavaType lResponseType = objectMapper.getTypeFactory().constructCollectionType(pCollectionClass, pTypeClass);
+
+    // Execute request and return result.
+    return executeRequest(pRequest, pHttpContext, pSuccessfulStatusCode, lResponseType);
+  }
+
+  /**
+   * Method executes a HTTP request that is expected to return a single non collection object as result.
+   * 
+   * @param pRequest HTTP request that should be executed. The parameter must not be null.
+   * @param pSuccessfulStatusCode HTTP status code that represents a successful call. This status code is required in
+   * order to be able to distinguish between successful and failed requests.
+   * @param pTypeClass Type of the object that will be returned by the call. The parameter must not be null.
+   * @return T Single object as it was defined by <code>pTypeClass</code>
+   */
+  public <T> T executeSingleObjectResultRequest( ClassicHttpRequest pRequest, HttpContext pHttpContext, int pSuccessfulStatusCode,
+      Class<?> pTypeClass ) {
+
+    // Check parameters
+    Check.checkInvalidParameterNull(pRequest, "pRequest");
+    Check.checkInvalidParameterNull(pTypeClass, "pTypeClass");
+
+    // Create matching response type as defined by the passed parameters
+    JavaType lResponseType = objectMapper.getTypeFactory().constructType(pTypeClass);
+
+    // Execute request and return result.
+    return executeRequest(pRequest, pHttpContext, pSuccessfulStatusCode, lResponseType);
+  }
+
+  /**
+   * Method executes a HTTP request that is expected to return no response content.
+   * 
+   * @param pRequest HTTP request that should be executed. The parameter must not be null.
+   * @param pSuccessfulStatusCode HTTP status code that represents a successful call. This status code is required in
+   * order to be able to distinguish between successful and failed requests.
+   */
+  public void executeNoResponseContentRequest( ClassicHttpRequest pRequest, HttpContext pHttpContext, int pSuccessfulStatusCode ) {
+    // Check parameters
+    Check.checkInvalidParameterNull(pRequest, "pRequest");
+    // Execute request and return result.
+    executeRequest(pRequest, pHttpContext, pSuccessfulStatusCode, null);
+  }
+
+  /**
+   * Method executes the passed HTTP request using the configured HTTP client and circuit breaker.
+   * 
+   * @param pRequest Request that should b executed. The parameter must not be null.
+   * @param pSuccessfulStatusCode Status code that defines that the call was successful.
+   * @param pResponseType Object describing the response type of the call. The parameter may be null in case that operation does not return any content e.g. void operations.
+   * @return T Object of defined response type. If the called REST resource returns no content as response then null
+   * will be returned.
+   */
+  private <T> T executeRequest( ClassicHttpRequest pRequest, HttpContext pHttpContext, int pSuccessfulStatusCode, JavaType pResponseType ) {
+    // Try to execute call to REST resource
+    org.apache.hc.client5.http.impl.classic.CloseableHttpResponse lResponse = null;
+    try {
+      // Decorate call to proxy with circuit breaker.
+      java.util.concurrent.Callable<CloseableHttpResponse> lCallable =
+          CircuitBreaker.decorateCallable(circuitBreaker, new Callable<CloseableHttpResponse>() {
+            @Override
+            public CloseableHttpResponse call( ) throws IOException {
+              return httpClient.execute(pRequest, pHttpContext);
+            }
+          });
+
+      // Execute request to REST resource
+      lResponse = circuitBreaker.executeCallable(lCallable);
+
+      // If call was successful then we have to convert response into real objects.
+      int lStatusCode = lResponse.getCode();
+      if (lStatusCode == pSuccessfulStatusCode) {
+        T lResultObject;
+        org.apache.hc.core5.http.HttpEntity lEntity = lResponse.getEntity();
+        if (lEntity.getContentLength() > 0) {
+          lResultObject = objectMapper.readValue(lEntity.getContent(), pResponseType);
+        }
+        else {
+          lResultObject = null;
+        }
+
+        return lResultObject;
+      }
+      // Error when trying to execute REST call.
+      else {
+        // Try to resolve some details using problem JSON.
+        HttpEntity lEntity = lResponse.getEntity();
+        if (lEntity.getContentLength() > 0) {
+          throw new com.anaptecs.jeaf.json.problem.RESTProblemException(lStatusCode, lResponse.getEntity().getContent());
+        }
+        else {
+          throw new RESTProblemException(lStatusCode);
+        }
+      }
+    }
+    // IOException can result from communication or serialization problems.
+    catch (IOException e) {
+      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(JSONMessages.REST_RESPONSE_PROCESSING_ERROR, e, pRequest.getRequestUri(),
+          e.getMessage());
+    }
+    // Thanks to circuit breaker interface definition of Resilience4J we have to handle RuntimeExceptions
+    catch (RuntimeException e) {
+      throw e;
+    }
+    // Thanks to circuit breaker interface definition of Resilience4J we also have to catch java.lang.Exception ;-(
+    catch (Exception e) {
+      throw new JEAFSystemException(JSONMessages.REST_RESPONSE_PROCESSING_ERROR, e, pRequest.getRequestUri(),
+          e.getMessage());
+    }
+    // No matter what happened we have at least close the http response if possible.
+    finally {
+      if (lResponse != null) {
+        try {
+          lResponse.close();
+        }
+        catch (IOException e) {
+          com.anaptecs.jeaf.xfun.api.XFun.getTrace().warn(com.anaptecs.jeaf.json.api.JSONMessages.UNABLE_TO_CLOSE_HTTP_RESPONSE, e, pRequest.getRequestUri(), e.getMessage());
+        }
+      }
+    }
+  }
+}
+«ENDFILE»
+«ENDDEFINE»
+
+
+«DEFINE GenerateRESTServiceProxyConfigFile FOR RESTResource»
+  «IF isTargetRuntimeSpring()»
+  	«EXPAND GenerateRESTServiceProxyConfigFileSpring»
+  «ENDIF» 
+«ENDDEFINE»
+
+«DEFINE GenerateRESTServiceProxyConfigFileSpring FOR RESTResource»
+«FILE "config/application-"+name.toLowerCase()+".yml" res»
+# File contains configuration for external REST resource «this.name»
+«this.name.toFirstLower()»:
+  # URL to external service
+  externalURL: TODO: Please configure URL of external REST resource
+  
+  «IF this.usesCookies() -»
+  # Domain of the cookie that is used in requests.
+  cookieDomain:
+  
+  # Path of the cookie that is used in requests.
+  cookiePath:
+  «ENDIF -»
+  
+  # Apache HTTP Client configuration
+  http:
+    # Maximum size of the connection pool.
+    maxPoolSize: 20
+    
+    # Maximum amount of idle connections in the connection pool.
+    maxIdleConnections: 20
+    
+    # Keep alive duration for connection to proxy target (in milliseconds)
+    keepAliveDuration: 60000
+    
+    #  Parameter configures the time period in milliseconds after which a connection is validated before it is taken 
+    # from the pool again.    
+    validateAfterInactivityDuration: 10000
+    
+    # Maximum amount of retries before a call to the REST service is considered to be failed.
+    maxRetries: 1
+    
+    # Interval in milliseconds after which the REST service is called again in case that retries are configured.
+    retryInterval: 100
+    
+    # Response timeout in milliseconds for calls to REST service. Please be aware that this is a very sensitive 
+    # parameter and needs to be fine-tuned for your purposes.
+    responseTimeout: 10000
+    
+    # Timeout in milliseconds to establish connections to the REST service. As connections are pooled this parameter
+    # should not have a too strong influence on the overall behavior. However please ensure that it fits to your
+    # environment.
+    connectTimeout: 10000
+    
+  # Resilience4J circuit breaker configuration
+  circuitbreaker:
+    # Failure rate threshold (percent of requests) defines which amount of failed request must be exceeded due to
+    # technical problems that the circuit breaker opens and no further request will be sent to the REST service.
+    #  
+    # Value must between 0 and 100.
+    failureRateThreshold: 30
+    
+    # Duration in milliseconds that the circuit breaker stays open until request will be sent to the REST service again.
+    # 
+    # The value must be zero or greater.
+    durationInOpenState: 1000
+    
+    # Configures the duration in milliseconds above which calls are considered as slow and increase the slow calls
+    # percentage.
+    # 
+    # The value must be zero or greater.
+    slowRequestDuration: 10000
+    
+    # Configures the slow request threshold in percentage. The circuit breaker considers a call as slow when the call
+    # duration is greater than <code>slowCallDuration</code>. When the percentage of slow calls is equal to or greater
+    # than the threshold, the circuit breaker transitions to open and starts short-circuiting calls.
+    # 
+    # Value must between 0 and 100.
+    slowRequestRateThreshold: 30
+    
+    # Configures the number of permitted calls when the circuit breaker is half open.
+    # 
+    # The value must be zero or greater.
+    permittedCallsInHalfOpenState: 5
+    
+    # Configures the size of the sliding window in seconds which is used to record the outcome of calls when the circuit
+    # breaker is closed.
+    # 
+    # The value must be greater than 0.
+    slidingWindowSizeSeconds: 5
+«ENDFILE»
+«ENDDEFINE»

@@ -12,7 +12,7 @@
 	//********** the csv file with the class ids **************\\
 	//*********************************************************\\
 	//*********************************************************\\
-	«FILE "ClassIDs.csv" GenRes»Class ID;Business Object«FOREACH getClassIDs() AS classNameAndId»
+	«FILE "ClassIDs.csv" res_gen»Class ID;Business Object«FOREACH getClassIDs() AS classNameAndId»
 		«classNameAndId»«ENDFOREACH»«ENDFILE»
 «ENDDEFINE»
 

@@ -3,12 +3,13 @@
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION entity::ModelProperties»
 «EXTENSION jeaf::RESTFunctions»
+«EXTENSION java::OpenAPIFunctions»
 
 «IMPORT uml»
 «IMPORT JMM»
 
 «DEFINE RESTResourceClass FOR RESTResource»
-«FILE packagePath()+"/"+name+"Resource.java" GenBase»
+«FILE packagePath()+"/"+name+"Resource.java" src_gen»
 «getFileHeader()»
 package «packageName()»;
 
@@ -83,6 +84,13 @@ public class «name»Resource {
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
 	public javax.ws.rs.core.Response  «name» («EXPAND RESTParameterSignature FOR this»)«getThrownExceptionsAsString()»{
+	  «IF this.hasDataTypeParameters()»
+	  // Convert basic type parameters into "real" objects.
+	  	«FOREACH this.getDataTypeParameters() AS basicParam»
+	    «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».Builder.newBuilder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
+	  	«ENDFOREACH»
+	  «ENDIF»
+
 	  «this.getOwningClass().fqn()» lService = this.get«this.getOwningClass().name»();
 	  «IF getReturnTypeName() != "void"»
 	  «getReturnTypeName()» lResult = lService.«this.name»(«this.asParameterListNames()»);
@@ -117,6 +125,12 @@ public class «name»Resource {
 	  «ENDFOREACH»
 	  «beanParam.getTypeName()» «beanParam.name» = lBuilder.build();
 	  «ENDFOREACH»
+	  «IF this.hasDataTypeParameters()»
+	  // Convert basic type parameters into "real" objects.
+	  	«FOREACH this.getDataTypeParameters() AS basicParam»
+	    «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».Builder.newBuilder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
+	  	«ENDFOREACH»
+	  «ENDIF»
       // Get Spring service and delegate call.
 	  «this.getOwningClass().fqn()» lService = this.get«this.getOwningClass().name»();
 	  «IF getReturnTypeName() != "void"»
@@ -137,7 +151,7 @@ public class «name»Resource {
 	«IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation -»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
-	public void  «name» (@javax.ws.rs.container.Suspended javax.ws.rs.container.AsyncResponse pAsyncResponse, @javax.ws.rs.core.Context javax.servlet.http.HttpServletRequest pRequest «IF this.hasInputParameters()»,«ENDIF» «EXPAND JEAFOperation::ParameterSignature FOR this»)«getThrownExceptionsAsString()»{
+	public void  «name» (@javax.ws.rs.container.Suspended javax.ws.rs.container.AsyncResponse pAsyncResponse, @javax.ws.rs.core.Context javax.servlet.http.HttpServletRequest pRequest «IF this.hasInputParameters()»,«ENDIF» «EXPAND RESTParameterSignature FOR this»)«getThrownExceptionsAsString()»{
 	    // Lookup workload manager that takes care that the system will have an optimal throughput.
 	    com.anaptecs.jeaf.workload.api.WorkloadManager lWorkloadManager = com.anaptecs.jeaf.workload.api.Workload.getWorkloadManager();
 	
@@ -153,6 +167,12 @@ public class «name»Resource {
 			@Override
 			public void run( ) {
 			    try {
+					«IF this.hasDataTypeParameters()»
+					// Convert basic type parameters into "real" objects.
+						«FOREACH this.getDataTypeParameters() AS basicParam»
+					    «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».Builder.newBuilder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
+					  	«ENDFOREACH»
+					«ENDIF»
 					«IF getReturnTypeName() != "void"»
 					«getReturnTypeName()» lResult = lService.«this.name»(«this.asParameterListNames()»);
 					javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response.status(«EXPAND StatusCode»).entity(lResult).build();
@@ -217,7 +237,11 @@ public class «name»Resource {
   «ENDIF»
 
   «EXPAND java::Helper::GenerateDeprecationAnnotation»
-  «this.getTypeName()» «this.name»
+  «IF this.type.isOpenAPIDataType() && this.isRequestBody() == false»
+  	«this.type.attribute().first().fqn()» «this.name»AsBasicType
+  «ELSE»
+  	«this.getTypeName()» «this.name»
+  «ENDIF»
 «ENDDEFINE»
 
 «DEFINE SpringRESTParameterSignature FOR Operation»
@@ -246,7 +270,11 @@ public class «name»Resource {
 
   «EXPAND java::Helper::GenerateDeprecationAnnotation»
   «IF this.isBeanParam() == false»
-  	«this.getTypeName()» «this.name»
+	  «IF this.type.isOpenAPIDataType() && this.isRequestBody() == false»
+	  	«this.type.attribute().first().fqn()» «this.name»AsBasicType
+	  «ELSE»
+	  	«this.getTypeName()» «this.name»
+	  «ENDIF»
   «ENDIF»
 «ENDDEFINE»
 

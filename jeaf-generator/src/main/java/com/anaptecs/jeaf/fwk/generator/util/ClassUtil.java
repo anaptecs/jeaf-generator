@@ -265,22 +265,7 @@ public class ClassUtil {
     String lReturnValue;
     // Max. Multiplicity of more than one
     if (lMultiplicityElement.isMultivalued()) {
-      // Type is not unique and not ordered -> Collection
-      if (lMultiplicityElement.isUnique() == false && lMultiplicityElement.isOrdered() == false) {
-        lReturnValue = Collection.class.getName() + "<" + lFQN + ">";
-      }
-      // Type is unique but not ordered.
-      else if (lMultiplicityElement.isUnique() == true && lMultiplicityElement.isOrdered() == false) {
-        lReturnValue = Set.class.getName() + "<" + lFQN + ">";
-      }
-      // Type is not unique but ordered.
-      else if (lMultiplicityElement.isUnique() == false && lMultiplicityElement.isOrdered() == true) {
-        lReturnValue = List.class.getName() + "<" + lFQN + ">";
-      }
-      // Type is unique and ordered.
-      else {
-        lReturnValue = SortedSet.class.getName() + "<" + lFQN + ">";
-      }
+      lReturnValue = ClassUtil.getCollectionType(lMultiplicityElement) + "<" + lFQN + ">";
     }
     // Singular type.
     else {
@@ -291,6 +276,60 @@ public class ClassUtil {
       else {
         lReturnValue = lFQN;
       }
+    }
+    return lReturnValue;
+  }
+
+  public static String getCollectionType( MultiplicityElement lMultiplicityElement ) {
+    String lReturnValue;
+    if (lMultiplicityElement.isMultivalued()) {
+      // Type is not unique and not ordered -> Collection
+      if (lMultiplicityElement.isUnique() == false && lMultiplicityElement.isOrdered() == false) {
+        lReturnValue = Collection.class.getName();
+      }
+      // Type is unique but not ordered.
+      else if (lMultiplicityElement.isUnique() == true && lMultiplicityElement.isOrdered() == false) {
+        lReturnValue = Set.class.getName();
+      }
+      // Type is not unique but ordered.
+      else if (lMultiplicityElement.isUnique() == false && lMultiplicityElement.isOrdered() == true) {
+        lReturnValue = List.class.getName();
+      }
+      // Type is unique and ordered.
+      else {
+        lReturnValue = SortedSet.class.getName();
+      }
+    }
+    // Singular type.
+    else {
+      lReturnValue = "";
+    }
+    return lReturnValue;
+  }
+
+  public static String getCollectionTypeShort( MultiplicityElement lMultiplicityElement ) {
+    String lReturnValue;
+    if (lMultiplicityElement.isMultivalued()) {
+      // Type is not unique and not ordered -> Collection
+      if (lMultiplicityElement.isUnique() == false && lMultiplicityElement.isOrdered() == false) {
+        lReturnValue = Collection.class.getSimpleName();
+      }
+      // Type is unique but not ordered.
+      else if (lMultiplicityElement.isUnique() == true && lMultiplicityElement.isOrdered() == false) {
+        lReturnValue = Set.class.getSimpleName();
+      }
+      // Type is not unique but ordered.
+      else if (lMultiplicityElement.isUnique() == false && lMultiplicityElement.isOrdered() == true) {
+        lReturnValue = List.class.getSimpleName();
+      }
+      // Type is unique and ordered.
+      else {
+        lReturnValue = SortedSet.class.getSimpleName();
+      }
+    }
+    // Singular type.
+    else {
+      lReturnValue = "";
     }
     return lReturnValue;
   }
@@ -642,29 +681,6 @@ public class ClassUtil {
       lFQN = pType.getName();
     }
     return BASIC_TYPES.containsKey(lFQN);
-  }
-
-  public static String getCollectionType( MultiplicityElement pMultiplicityElement ) {
-    // Check parameter
-    Check.checkInvalidParameterNull(pMultiplicityElement, "pMultiplicityElement");
-
-    String lReturnValue;
-    if (pMultiplicityElement.isUnique() == false && pMultiplicityElement.isOrdered() == false) {
-      lReturnValue = "Collection";
-    }
-    // Type is unique but not ordered.
-    else if (pMultiplicityElement.isUnique() == true && pMultiplicityElement.isOrdered() == false) {
-      lReturnValue = "Set";
-    }
-    // Type is not unique but ordered.
-    else if (pMultiplicityElement.isUnique() == false && pMultiplicityElement.isOrdered() == true) {
-      lReturnValue = "List";
-    }
-    // Type is unique and ordered.
-    else {
-      lReturnValue = "SortedSet";
-    }
-    return lReturnValue;
   }
 
   public static String getCollectionImplType( MultiplicityElement pMultiplicityElement ) {

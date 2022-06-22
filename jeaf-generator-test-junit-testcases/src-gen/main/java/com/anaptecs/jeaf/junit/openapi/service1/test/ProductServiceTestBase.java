@@ -43,20 +43,6 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   }
 
   /**
-   * Method test the implementation of service method deprecatedOperation(...)
-   * 
-   * @throws Exception if the test fails.
-   */
-  public abstract void testDeprecatedOperation( ) throws Exception;
-
-  /**
-   * Method test the implementation of service method testExternalBeanParameterType(...)
-   * 
-   * @throws Exception if the test fails.
-   */
-  public abstract void testTestExternalBeanParameterType( ) throws Exception;
-
-  /**
    * Method test the implementation of service method deprecatedBody(...)
    * 
    * @throws Exception if the test fails.
@@ -64,25 +50,11 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testDeprecatedBody( ) throws Exception;
 
   /**
-   * Method test the implementation of service method getProduct(...)
-   * 
-   * @throws Exception if the test fails.
-   */
-  public abstract void testGetProduct( ) throws Exception;
-
-  /**
    * Method test the implementation of service method deprecatedBeanParam(...)
    * 
    * @throws Exception if the test fails.
    */
   public abstract void testDeprecatedBeanParam( ) throws Exception;
-
-  /**
-   * Method test the implementation of service method loadSpecificThings(...)
-   * 
-   * @throws Exception if the test fails.
-   */
-  public abstract void testLoadSpecificThings( ) throws Exception;
 
   /**
    * Method test the implementation of service method ping(...)
@@ -97,6 +69,90 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testDeprecatedParams( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method getSupportedCurrenciesAsync(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testGetSupportedCurrenciesAsync( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method deprectedComplexRequestBody(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprectedComplexRequestBody( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method testChildBeanParameter(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestChildBeanParameter( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method createChannelCode(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testCreateChannelCode( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method getSupportedCurrencies(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testGetSupportedCurrencies( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method getProducts(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testGetProducts( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method deprecatedContext(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprecatedContext( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method deprecatedComplexReturn(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprecatedComplexReturn( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method deprecatedOperation(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeprecatedOperation( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method testExternalBeanParameterType(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestExternalBeanParameterType( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method getProduct(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testGetProduct( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method loadSpecificThings(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testLoadSpecificThings( ) throws Exception;
 
   /**
    * Method test the implementation of service method isCurrencySupported(...)
@@ -148,13 +204,6 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testGetSortiment( ) throws Exception;
 
   /**
-   * Method test the implementation of service method deprectedComplexRequestBody(...)
-   * 
-   * @throws Exception if the test fails.
-   */
-  public abstract void testDeprectedComplexRequestBody( ) throws Exception;
-
-  /**
    * Method test the implementation of service method checkIBAN(...)
    * 
    * @throws Exception if the test fails.
@@ -174,39 +223,4 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testGetChannels( ) throws Exception;
-
-  /**
-   * Method test the implementation of service method testChildBeanParameter(...)
-   * 
-   * @throws Exception if the test fails.
-   */
-  public abstract void testTestChildBeanParameter( ) throws Exception;
-
-  /**
-   * Method test the implementation of service method createChannelCode(...)
-   * 
-   * @throws Exception if the test fails.
-   */
-  public abstract void testCreateChannelCode( ) throws Exception;
-
-  /**
-   * Method test the implementation of service method getProducts(...)
-   * 
-   * @throws Exception if the test fails.
-   */
-  public abstract void testGetProducts( ) throws Exception;
-
-  /**
-   * Method test the implementation of service method deprecatedContext(...)
-   * 
-   * @throws Exception if the test fails.
-   */
-  public abstract void testDeprecatedContext( ) throws Exception;
-
-  /**
-   * Method test the implementation of service method deprecatedComplexReturn(...)
-   * 
-   * @throws Exception if the test fails.
-   */
-  public abstract void testDeprecatedComplexReturn( ) throws Exception;
 }

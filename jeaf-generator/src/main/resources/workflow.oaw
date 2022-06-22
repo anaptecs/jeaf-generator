@@ -42,10 +42,10 @@
 		<!-- Fuer jedes 'model' im slot model rufe Define 'Root' im template 'Root' auf -->
 		<expand value="${template.root} FOR ${output.slot}"/>
 		
-		<outlet name="GenBase" path="${path.src.gen}/" overwrite="true"/>
-		<outlet name="GenOnce" path="${path.src}/" overwrite="false"/>
-		<outlet name="GenRes"  path="${path.res.gen}/" overwrite="true"/>
-		<outlet name="Res"  path="${path.res}/" overwrite="false"/>
+		<outlet name="src_gen" path="${path.src.gen}/" overwrite="true"/>
+		<outlet name="src" path="${path.src}/" overwrite="false"/>
+		<outlet name="res_gen"  path="${path.res.gen}/" overwrite="true"/>
+		<outlet name="res"  path="${path.res}/" overwrite="false"/>
 		<outlet path="error" />
     </component>
     
@@ -57,10 +57,10 @@
 		<fileEncoding value="UTF-8"/>
 		<expand value="CustomRoot::InfoMessage FOR ${output.slot}"/>
 		
-		<outlet name="GenBase" path="${path.src.gen}/" overwrite="true"/>
-		<outlet name="GenOnce" path="${path.src}/" overwrite="false"/>
-		<outlet name="GenRes"  path="${path.res.gen}/" overwrite="true"/>
-		<outlet name="Res"  path="${path.res}/" overwrite="false"/>
+		<outlet name="src_gen" path="${path.src.gen}/" overwrite="true"/>
+		<outlet name="src" path="${path.src}/" overwrite="false"/>
+		<outlet name="res_gen"  path="${path.res.gen}/" overwrite="true"/>
+		<outlet name="res"  path="${path.res}/" overwrite="false"/>
 		<outlet path="error" />
     </component>
 
@@ -72,10 +72,10 @@
 		<fileEncoding value="UTF-8"/>
 		<expand value="${custom.root.template} FOR ${output.slot}"/>
 		
-		<outlet name="GenBase" path="${path.src.gen}/" overwrite="true"/>
-		<outlet name="GenOnce" path="${path.src}/" overwrite="false"/>
-		<outlet name="GenRes"  path="${path.res.gen}/" overwrite="true"/>
-		<outlet name="Res"  path="${path.res}/" overwrite="false"/>
+		<outlet name="src_gen" path="${path.src.gen}/" overwrite="true"/>
+		<outlet name="src" path="${path.src}/" overwrite="false"/>
+		<outlet name="res_gen"  path="${path.res.gen}/" overwrite="true"/>
+		<outlet name="res"  path="${path.res}/" overwrite="false"/>
 		<outlet path="error" />
     </component>
     

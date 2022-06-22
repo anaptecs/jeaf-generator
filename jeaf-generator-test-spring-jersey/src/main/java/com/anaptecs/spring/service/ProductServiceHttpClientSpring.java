@@ -23,6 +23,7 @@ import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
 import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
 import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
 import org.apache.hc.core5.http.ClassicHttpRequest;
+import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.URIScheme;
 import org.apache.hc.core5.http.config.Registry;
 import org.apache.hc.core5.http.config.RegistryBuilder;
@@ -37,6 +38,7 @@ import org.springframework.stereotype.Component;
 import com.anaptecs.jeaf.json.api.JSONMessages;
 import com.anaptecs.jeaf.json.problem.RESTProblemException;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -56,45 +58,45 @@ public class ProductServiceHttpClientSpring {
   /**
    * Maximum size of the connection pool.
    */
-  @Value("${productservice.http.maxPoolSize}")
+  @Value("${productService.http.maxPoolSize}")
   private int maxPoolSize;
 
   /**
    * Maximum amount of idle connections in the connection pool.
    */
-  @Value("${productservice.http.maxIdleConnections}")
+  @Value("${productService.http.maxIdleConnections}")
   private int maxIdleConnections;
 
   /**
    * Keep alive duration for connection to REST service (in milliseconds)
    */
-  @Value("${productservice.http.keepAliveDuration}")
+  @Value("${productService.http.keepAliveDuration}")
   private int keepAliveDuration;
 
   /**
    * Parameter configures the time period in milliseconds after which a connection is validated before it is taken from
    * the pool again.
    */
-  @Value("${productservice.http.validateAfterInactivityDuration}")
+  @Value("${productService.http.validateAfterInactivityDuration}")
   private int validateAfterInactivityDuration;
 
   /**
    * Maximum amount of retries before a call to the REST service is considered to be failed.
    */
-  @Value("${productservice.http.maxRetries}")
+  @Value("${productService.http.maxRetries}")
   private int maxRetries;
 
   /**
    * Interval in milliseconds after which the REST service is called again in case that retries are configured.
    */
-  @Value("${productservice.http.retryInterval}")
+  @Value("${productService.http.retryInterval}")
   private int retryInterval;
 
   /**
    * Response timeout in milliseconds for calls to REST service. Please be aware that this is a very sensitive parameter
    * and needs to be fine-tuned for your purposes.
    */
-  @Value("${productservice.http.responseTimeout}")
+  @Value("${productService.http.responseTimeout}")
   private int responseTimeout;
 
   /**
@@ -102,7 +104,7 @@ public class ProductServiceHttpClientSpring {
    * should not have a too strong influence on the overall behavior. However please ensure that it fits to your
    * environment.
    */
-  @Value("${productservice.http.connectTimeout}")
+  @Value("${productService.http.connectTimeout}")
   private int connectTimeout;
 
   /**
@@ -119,7 +121,7 @@ public class ProductServiceHttpClientSpring {
    * 
    * Value must between 0 and 100.
    */
-  @Value("${productservice.circuitbreaker.failureRateThreshold}")
+  @Value("${productService.circuitbreaker.failureRateThreshold}")
   private int failureRateThreshold;
 
   /**
@@ -127,7 +129,7 @@ public class ProductServiceHttpClientSpring {
    * 
    * The value must be zero or greater.
    */
-  @Value("${productservice.circuitbreaker.durationInOpenState}")
+  @Value("${productService.circuitbreaker.durationInOpenState}")
   private int durationInOpenState;
 
   /**
@@ -136,7 +138,7 @@ public class ProductServiceHttpClientSpring {
    * 
    * The value must be zero or greater.
    */
-  @Value("${productservice.circuitbreaker.slowRequestDuration}")
+  @Value("${productService.circuitbreaker.slowRequestDuration}")
   private int slowRequestDuration;
 
   /**
@@ -146,7 +148,7 @@ public class ProductServiceHttpClientSpring {
    * 
    * Value must between 0 and 100.
    */
-  @Value("${productservice.circuitbreaker.slowRequestRateThreshold}")
+  @Value("${productService.circuitbreaker.slowRequestRateThreshold}")
   private int slowRequestRateThreshold;
 
   /**
@@ -154,7 +156,7 @@ public class ProductServiceHttpClientSpring {
    * 
    * The value must be zero or greater.
    */
-  @Value("${productservice.circuitbreaker.permittedCallsInHalfOpenState}")
+  @Value("${productService.circuitbreaker.permittedCallsInHalfOpenState}")
   private int permittedCallsInHalfOpenState;
 
   /**
@@ -163,7 +165,7 @@ public class ProductServiceHttpClientSpring {
    * 
    * The value must be greater than 0.
    */
-  @Value("${productservice.circuitbreaker.slidingWindowSizeSeconds}")
+  @Value("${productService.circuitbreaker.slidingWindowSizeSeconds}")
   private int slidingWindowSizeSeconds;
 
   /**
@@ -173,6 +175,9 @@ public class ProductServiceHttpClientSpring {
    */
   private CircuitBreaker circuitBreaker;
 
+  /**
+   * Object mapper is used for serialization and deserialization of objects from Java to JSON and vice versa.
+   */
   @Inject
   private ObjectMapper objectMapper;
 
@@ -181,7 +186,7 @@ public class ProductServiceHttpClientSpring {
    */
   @PostConstruct
   private void initializeHTTPClient( ) {
-    System.out.println("Initializing Apache HTTP Client for ProductService");
+    XFun.getTrace().info("Initializing Apache HTTP Client for ProductService");
 
     // Create connection manager that can be used by multiple threads in parallel.
     SocketConfig lSocketConfig = SocketConfig.custom().setTcpNoDelay(true).build();
@@ -190,6 +195,7 @@ public class ProductServiceHttpClientSpring {
         .register(URIScheme.HTTP.id, PlainConnectionSocketFactory.getSocketFactory())
         .register(URIScheme.HTTPS.id, SSLConnectionSocketFactory.getSocketFactory()).build();
 
+    // Configure connection manager according to provided configuration parameters
     PoolingHttpClientConnectionManager lConnectionManager = new PoolingHttpClientConnectionManager(lRegistry,
         PoolConcurrencyPolicy.LAX, PoolReusePolicy.LIFO, TimeValue.ofMilliseconds(keepAliveDuration));
     lConnectionManager.setMaxTotal(maxPoolSize);
@@ -201,7 +207,7 @@ public class ProductServiceHttpClientSpring {
     HttpClientBuilder lBuilder = HttpClientBuilder.create();
     lBuilder.setConnectionManager(lConnectionManager);
 
-    // Define configuration for each request.
+    // Configure request specific parameters.
     RequestConfig.Builder lConfigBuilder = RequestConfig.custom();
     lConfigBuilder.setConnectionKeepAlive(TimeValue.ofMilliseconds(keepAliveDuration));
     lConfigBuilder.setConnectTimeout(Timeout.ofMilliseconds(connectTimeout));
@@ -216,9 +222,12 @@ public class ProductServiceHttpClientSpring {
     httpClient = lBuilder.build();
   }
 
+  /**
+   * Method is called after service startup and performs initialization of resilience4J circuit breaker.
+   */
   @PostConstruct
   private void initializeCircuitBreaker( ) {
-    System.out.println("Initializing Circuit Breaker for ProductService");
+    XFun.getTrace().info("Initializing Circuit Breaker for ProductService");
 
     // Create circuit break configuration for target.
     Builder lConfigBuilder = CircuitBreakerConfig.custom();
@@ -234,51 +243,107 @@ public class ProductServiceHttpClientSpring {
     circuitBreaker = lCircuitBreakerRegistry.circuitBreaker("Product Service Circuit Breaker");
   }
 
-  public CloseableHttpResponse executeRequest( ClassicHttpRequest pRequest ) throws Exception {
-    // Decorate call to proxy with circuit breaker.
-    Callable<CloseableHttpResponse> lCallable =
-        CircuitBreaker.decorateCallable(circuitBreaker, new Callable<CloseableHttpResponse>() {
-          @Override
-          public CloseableHttpResponse call( ) throws IOException {
-            return httpClient.execute(pRequest);
-          }
-        });
-    return circuitBreaker.executeCallable(lCallable);
-  }
-
+  /**
+   * Method executes a HTTP request that is expected to return a collection of objects as result.
+   * 
+   * @param pRequest HTTP request that should be executed. The parameter must not be null.
+   * @param pSuccessfulStatusCode HTTP status code that represents a successful call. This status code is required in
+   * order to be able to distinguish between successful and failed requests.
+   * @param pCollectionClass Class object of collection class that should be returned e.g. java.util.List. The parameter
+   * must not be null.
+   * @param pTypeClass Type of the objects that will be inside the collection. The parameter must not be null.
+   * @return T Collection of objects as it was defined by <code>pCollectionClass</code> and <code>pTypeClass</code>
+   */
   @SuppressWarnings({ "rawtypes" })
   public <T> T executeCollectionResultRequest( ClassicHttpRequest pRequest, int pSuccessfulStatusCode,
       Class<? extends Collection> pCollectionClass, Class<?> pTypeClass ) {
 
+    // Check parameters
+    Check.checkInvalidParameterNull(pRequest, "pRequest");
+    Check.checkInvalidParameterNull(pCollectionClass, "pCollectionClass");
+    Check.checkInvalidParameterNull(pTypeClass, "pTypeClass");
+
+    // Create matching response type for collections as defined by the passed parameters
     TypeFactory lTypeFactory = objectMapper.getTypeFactory();
     JavaType lResponseType = lTypeFactory.constructCollectionType(pCollectionClass, pTypeClass);
+
+    // Execute request and return result.
     return executeRequest(pRequest, pSuccessfulStatusCode, lResponseType);
   }
 
+  /**
+   * Method executes a HTTP request that is expected to return a single non collection object as result.
+   * 
+   * @param pRequest HTTP request that should be executed. The parameter must not be null.
+   * @param pSuccessfulStatusCode HTTP status code that represents a successful call. This status code is required in
+   * order to be able to distinguish between successful and failed requests.
+   * @param pTypeClass Type of the object that will be returned by the call. The parameter must not be null.
+   * @return T Single object as it was defined by <code>pTypeClass</code>
+   */
   public <T> T executeSingleObjectResultRequest( ClassicHttpRequest pRequest, int pSuccessfulStatusCode,
       Class<?> pTypeClass ) {
 
+    // Check parameters
+    Check.checkInvalidParameterNull(pRequest, "pRequest");
+    Check.checkInvalidParameterNull(pTypeClass, "pTypeClass");
+
+    // Create matching response type as defined by the passed parameters
     TypeFactory lTypeFactory = objectMapper.getTypeFactory();
     JavaType lResponseType = lTypeFactory.constructType(pTypeClass);
+
+    // Execute request and return result.
     return executeRequest(pRequest, pSuccessfulStatusCode, lResponseType);
   }
 
-  private <T> T executeRequest( ClassicHttpRequest pRequest, int pSuccessfulStatusCode, JavaType lResponseType ) {
+  /**
+   * Method executes the passed HTTP request using the configured HTTP client and circuit breaker.
+   * 
+   * @param pRequest Request that should b executed. The parameter must not be null.
+   * @param pSuccessfulStatusCode Status code that defines that the call was successful.
+   * @param pResponseType Object describing the response type of the call.
+   * @return T Object of defined response type. If the called REST resource returns no content as response then null
+   * will be returned.
+   */
+  private <T> T executeRequest( ClassicHttpRequest pRequest, int pSuccessfulStatusCode, JavaType pResponseType ) {
     // Try to execute call to REST resource
     CloseableHttpResponse lResponse = null;
     try {
+      // Decorate call to proxy with circuit breaker.
+      Callable<CloseableHttpResponse> lCallable =
+          CircuitBreaker.decorateCallable(circuitBreaker, new Callable<CloseableHttpResponse>() {
+            @Override
+            public CloseableHttpResponse call( ) throws IOException {
+              return httpClient.execute(pRequest);
+            }
+          });
+
       // Execute request to REST resource
-      lResponse = this.executeRequest(pRequest);
-      int lStatusCode = lResponse.getCode();
+      lResponse = circuitBreaker.executeCallable(lCallable);
 
       // If call was successful then we have to convert response into real objects.
+      int lStatusCode = lResponse.getCode();
       if (lStatusCode == pSuccessfulStatusCode) {
-        return objectMapper.readValue(lResponse.getEntity().getContent(), lResponseType);
+        T lResultObject;
+        HttpEntity lEntity = lResponse.getEntity();
+        if (lEntity.getContentLength() > 0) {
+          lResultObject = objectMapper.readValue(lEntity.getContent(), pResponseType);
+        }
+        else {
+          lResultObject = null;
+        }
+
+        return lResultObject;
       }
       // Error when trying to execute REST call.
       else {
         // Try to resolve some details using problem JSON.
-        throw new RESTProblemException(lStatusCode, lResponse.getEntity().getContent());
+        HttpEntity lEntity = lResponse.getEntity();
+        if (lEntity.getContentLength() > 0) {
+          throw new RESTProblemException(lStatusCode, lResponse.getEntity().getContent());
+        }
+        else {
+          throw new RESTProblemException(lStatusCode);
+        }
       }
     }
     // IOException can result from communication or serialization problems.
@@ -286,7 +351,7 @@ public class ProductServiceHttpClientSpring {
       throw new JEAFSystemException(JSONMessages.REST_RESPONSE_PROCESSING_ERROR, e, pRequest.getRequestUri(),
           e.getMessage());
     }
-    // Thanks to circuit breaker interface definition of resilience4j we also have to catch java.lang.Exception ;-(
+    // Thanks to circuit breaker interface definition of Resilience4J we also have to catch java.lang.Exception ;-(
     catch (Exception e) {
       throw new JEAFSystemException(JSONMessages.REST_RESPONSE_PROCESSING_ERROR, e, pRequest.getRequestUri(),
           e.getMessage());

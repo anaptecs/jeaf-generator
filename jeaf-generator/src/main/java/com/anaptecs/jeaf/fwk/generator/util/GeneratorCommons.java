@@ -73,10 +73,21 @@ public class GeneratorCommons {
   public static final String SERVICE_PROVIDER_IMPLS_PROPERTY = "switch.gen.service.provider.impls";
 
   /**
-   * Constant defines the name of the system property which enables the generation of service provider impls from the
-   * model.
+   * Constant defines the name of the system property which enables the generation of REST resources from the model.
    */
   public static final String REST_RESOURCES_PROPERTY = "switch.gen.rest.resources";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of REST service proxies from the
+   * model.
+   */
+  public static final String REST_SERVICE_PROXY_PROPERTY = "switch.gen.rest.service.proxy";
+
+  /**
+   * Constant defines the name of the system property which enables the generation of REST service proxies from the
+   * model.
+   */
+  public static final String REST_SERVICE_PROXY_CONFIG_FILE_PROPERTY = "switch.gen.rest.service.proxy.config.file";
 
   /**
    * Constant defines the name of the system property which enables the generation of service interfaces from the model.
@@ -528,6 +539,28 @@ public class GeneratorCommons {
   public static boolean generateRESTResources( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(REST_RESOURCES_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether service provider interfaces from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if service provider interfaces should be generated from the model and false in
+   * all other cases.
+   */
+  public static boolean generateRESTServiceProxies( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(REST_SERVICE_PROXY_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether service provider interfaces from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if service provider interfaces should be generated from the model and false in
+   * all other cases.
+   */
+  public static boolean generateRESTServiceProxyConfigFile( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(REST_SERVICE_PROXY_CONFIG_FILE_PROPERTY, Boolean.TRUE, Boolean.class);
   }
 
   /**

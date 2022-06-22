@@ -13,7 +13,7 @@
 «DEFINE POJOClass FOR POJO»
 	«IF generatePOJOs() == true»
 		«IF this.ownedOperation.size == 0 && this.hasCustomImplementation == false»
-			«FILE packagePath() + "/" + name +".java" GenBase»
+			«FILE packagePath() + "/" + name +".java" src_gen»
 				«getFileHeader()»
 				package «this.packageName()»;
 				
@@ -139,7 +139,7 @@
 		«REM»POJO has own methods«ENDREM»
 		«ELSE»
 			«REM»Generate base class«ENDREM»
-			«FILE packagePath() + "/" + name +"Base.java" GenBase»
+			«FILE packagePath() + "/" + name +"Base.java" src_gen»
 				«getFileHeader()»
 				package «this.packageName()»;
 				  
@@ -264,7 +264,7 @@
 			«ENDFILE»
 				
 			«REM»Generate class with parts that can / need be implemented by developers«ENDREM»
-			«FILE packagePath() + "/" + name +".java" GenOnce»
+			«FILE packagePath() + "/" + name +".java" src»
 				«getFileHeader()»
 				package «this.packageName()»;
 				  

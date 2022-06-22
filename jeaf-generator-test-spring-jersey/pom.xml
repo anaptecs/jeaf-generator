@@ -111,6 +111,22 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.anaptecs.jeaf.json</groupId>
+			<artifactId>jeaf-json-impl-runtime</artifactId>
+			<version>${jeaf.json.impl.version}</version>
+			<type>pom</type>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Dependency for mock server which is used to test request delegation. -->
+		<dependency>
+			<groupId>org.mock-server</groupId>
+			<artifactId>mockserver-netty</artifactId>
+			<version>${mock.server.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
 			<groupId>com.anaptecs.jeaf.uml</groupId>
 			<artifactId>jeaf-uml-test-model</artifactId>
 			<version>${jeaf.test.model.version}</version>
@@ -163,6 +179,9 @@
 					<generatePOJOs>true</generatePOJOs>
 					<generateJSONSerializers>true</generateJSONSerializers>
 					<generateJacksonAnnotations>true</generateJacksonAnnotations>
+					
+					<generateRESTServiceProxies>true</generateRESTServiceProxies>
+					<generateRESTServiceProxyConfigFile>true</generateRESTServiceProxyConfigFile>
 
 					<!-- Define information that are written to file headers -->
 					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>
@@ -190,6 +209,7 @@
 						<phase>clean</phase>
 						<configuration>
 							<resourceGenDirectory>${basedir}/src-gen/main/resources</resourceGenDirectory>
+							<testResourceGenDirectory>${basedir}/src-gen/test/resources</testResourceGenDirectory>
 							<cleanMetaInfDirectory>true</cleanMetaInfDirectory>
 							<cleanOnly>true</cleanOnly>
 						</configuration>
@@ -203,6 +223,7 @@
 						</goals>
 						<configuration>
 							<resourceGenDirectory>${basedir}/src-gen/main/resources</resourceGenDirectory>
+							<testResourceGenDirectory>${basedir}/src-gen/test/resources</testResourceGenDirectory>
 							<targetDirectory>${basedir}/target/classes</targetDirectory>
 						</configuration>
 					</execution>
