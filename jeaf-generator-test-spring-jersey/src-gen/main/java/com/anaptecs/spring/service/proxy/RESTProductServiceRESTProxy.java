@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.service.proxy;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -312,5 +313,48 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       lResult = Collections.emptyList();
     }
     return lResult;
+  }
+
+  /**
+   * 
+   * @param pBigDecimalHeader
+   * @param pIntCookieParam
+   * @param pLocaleQueryParam
+   * @return {@link String}
+   */
+  @Override
+  public String testParams( BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam ) {
+    // Create builder for GET request
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+    // Build URI of request
+    StringBuilder lURIBuilder = new StringBuilder();
+    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append("/rest-products");
+    lURIBuilder.append('/');
+    lURIBuilder.append("test-params");
+    lURIBuilder.append('?');
+    lURIBuilder.append("locale=");
+    lURIBuilder.append(pLocaleQueryParam);
+    lRequestBuilder.setUri(lURIBuilder.toString());
+    // Set HTTP header
+    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    lRequestBuilder.setHeader("Big-Header",
+        XFun.getDatatypeConverterRegistry().getConverter(BigDecimal.class, String.class).convert(pBigDecimalHeader));
+    // Handle cookie parameters
+    BasicCookieStore lCookieStore = new BasicCookieStore();
+    HttpContext lLocalContext = new BasicHttpContext();
+    lLocalContext.setAttribute(HttpClientContext.COOKIE_STORE, lCookieStore);
+    BasicClientCookie lGiveMeMoreCookiesCookie =
+        new BasicClientCookie("giveMeMoreCookies", String.valueOf(pIntCookieParam));
+    if (cookieDomain != null) {
+      lGiveMeMoreCookiesCookie.setDomain(cookieDomain);
+    }
+    if (cookiePath != null) {
+      lGiveMeMoreCookiesCookie.setPath(cookiePath);
+    }
+    lCookieStore.addCookie(lGiveMeMoreCookiesCookie);
+    // Execute request and return result.
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    return httpClient.executeSingleObjectResultRequest(lRequest, lLocalContext, 200, String.class);
   }
 }

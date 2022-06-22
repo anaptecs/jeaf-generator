@@ -5,14 +5,18 @@
  */
 package com.anaptecs.spring.service;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.CookieParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.HEAD;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -191,6 +195,18 @@ public class RESTProductServiceResource {
         }
       }
     });
+  }
+
+  /**
+   * {@link RESTProductService#testParams()}
+   */
+  @Path("test-params")
+  @GET
+  public Response testParams( @HeaderParam("Big-Header") BigDecimal pBigDecimalHeader,
+      @CookieParam("giveMeMoreCookies") int pIntCookieParam, @QueryParam("locale") Locale pLocaleQueryParam ) {
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testParams(pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
+    return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
   /**

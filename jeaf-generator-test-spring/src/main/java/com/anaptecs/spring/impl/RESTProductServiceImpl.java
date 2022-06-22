@@ -5,7 +5,9 @@
  */
 package com.anaptecs.spring.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Locale;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -62,6 +64,11 @@ public class RESTProductServiceImpl implements RESTProductService {
 
   @Override
   public List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode ) {
+    return null;
+  }
+
+  @Override
+  public String testParams( BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam ) {
     return null;
   }
 }

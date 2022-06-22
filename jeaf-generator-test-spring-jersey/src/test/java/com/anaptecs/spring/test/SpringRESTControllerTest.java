@@ -6,10 +6,13 @@
 package com.anaptecs.spring.test;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
@@ -37,7 +40,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 
+import com.anaptecs.jeaf.json.api.JSONMessages;
 import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.Product;
@@ -65,29 +70,34 @@ public class SpringRESTControllerTest {
     @SuppressWarnings("resource")
     MockServerClient lClient = new MockServerClient("localhost", MOCK_PORT);
 
-    lClient.when(mockRequest("/rest-products", "GET")).respond(
-        mockResponse("[{\"name\":\"Cool Product\",\"uri\":\"https://products.anaptecs.de/123456789\"}]", 200, 0));
+    lClient.when(mockRequest("/rest-products", "GET"))
+        .respond(mockResponse("[{\"name\":\"Cool Product\",\"uri\":\"https://products.anaptecs.de/123456789\"}]"));
 
-    lClient.when(mockRequest("/rest-products", "POST")).respond(mockResponse("true", 200, 0));
+    lClient.when(mockRequest("/rest-products", "POST")).respond(mockResponse("true"));
 
-    lClient.when(mockRequest("/rest-products/4711")).respond(mockResponse(null, 200, 0));
+    lClient.when(mockRequest("/rest-products/4711")).respond(mockResponse(null));
 
-    lClient.when(mockRequest("/rest-products/12345")).respond(
-        mockResponse("{\"name\":\"Cool Product\",\"uri\":\"https://products.anaptecs.de/123456789\"}", 200, 1));
+    lClient.when(mockRequest("/rest-products/12345"))
+        .respond(mockResponse("{\"name\":\"Cool Product\",\"uri\":\"https://products.anaptecs.de/123456789\"}"));
 
     HttpRequest lRequest = mockRequest("/rest-products/sortiment/4711").withQueryStringParameter("q1", "QUERY_ME")
         .withHeader("token", "12345").withHeader("lang", "de").withCookie("reseller", "47110815");
-    lClient.when(lRequest).respond(mockResponse(null, 200, 1));
+    lClient.when(lRequest).respond(mockResponse(null));
 
-    lClient.when(mockRequest("/rest-products/currencies/0815")).respond(mockResponse("[\"EUR\", \"CHF\"]", 200, 1));
+    lClient.when(mockRequest("/rest-products/currencies/0815")).respond(mockResponse("[\"EUR\", \"CHF\"]"));
 
     lClient.when(mockRequest("/rest-products/async-currencies/0815"))
         .respond(mockResponse("[\"EUR\", \"CHF\", \"USD\"]", 200, 1));
 
-    lClient.when(mockRequest("/rest-products/test-init")).respond(mockResponse(null, 200, 1));
+    lClient.when(mockRequest("/rest-products/test-init")).respond(mockResponse(null));
 
     lClient.when(mockRequest("/rest-products/ChannelCode", "POST").withBody("\"MyMobile\""))
-        .respond(mockResponse("\"MyMobile\"", 200, 0));
+        .respond(mockResponse("\"MyMobile\""));
+
+    lClient
+        .when(mockRequest("/rest-products/test-params").withQueryStringParameter("locale", "de_DE")
+            .withCookie("giveMeMoreCookies", "9999").withHeader("Big-Header", "3.1423"))
+        .respond(mockResponse("\"Hello World of REST!\""));
   }
 
   @AfterAll
@@ -103,6 +113,10 @@ public class SpringRESTControllerTest {
 
   private static HttpRequest mockRequest( String pRequestURI ) {
     return HttpRequest.request().withPath(pRequestURI);
+  }
+
+  private static HttpResponse mockResponse( String pResponseBody ) {
+    return HttpResponse.response().withDelay(TimeUnit.MILLISECONDS, 0).withStatusCode(200).withBody(pResponseBody);
   }
 
   private static HttpResponse mockResponse( String pResponseBody, int pStatusCode, int pDelay ) {
@@ -267,6 +281,16 @@ public class SpringRESTControllerTest {
     assertEquals("CHF", lSupportedCurrencies.get(1).getCode());
     assertEquals("USD", lSupportedCurrencies.get(2).getCode());
     assertEquals(3, lSupportedCurrencies.size());
-  }
 
+    String lResult = restProductService.testParams(BigDecimal.valueOf(3.1423), 9999, Locale.GERMANY);
+    assertEquals("Hello World of REST!", lResult);
+
+    try {
+      restProductService.testParams(BigDecimal.valueOf(3.1423), 9999, Locale.GERMAN);
+      fail("Expecting exception");
+    }
+    catch (JEAFSystemException e) {
+      assertEquals(JSONMessages.RECEIVED_REST_PROBLEM_JSON, e.getErrorCode());
+    }
+  }
 }

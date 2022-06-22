@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Locale;
 
@@ -142,6 +143,18 @@ public class RESTProductServiceResource {
     // Get Spring service and delegate call.
     RESTProductService lService = this.getRESTProductService();
     return lService.getSupportedCurrenciesAsync(pChannelCode);
+  }
+
+  /**
+   * {@link RESTProductService#testParams()}
+   */
+  @RequestMapping(path = "test-params", method = { RequestMethod.GET })
+  public String testParams( @RequestHeader(name = "Big-Header", required = true) BigDecimal pBigDecimalHeader,
+      @CookieValue(name = "giveMeMoreCookies", required = true) @RequestBody(required = true) int pIntCookieParam,
+      @RequestParam(name = "locale", required = true) Locale pLocaleQueryParam ) {
+    // Get Spring service and delegate call.
+    RESTProductService lService = this.getRESTProductService();
+    return lService.testParams(pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
   }
 
   /**

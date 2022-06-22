@@ -347,6 +347,10 @@ public class RESTProductServiceHttpClient {
       throw new JEAFSystemException(JSONMessages.REST_RESPONSE_PROCESSING_ERROR, e, pRequest.getRequestUri(),
           e.getMessage());
     }
+    // Thanks to circuit breaker interface definition of Resilience4J we have to handle RuntimeExceptions
+    catch (RuntimeException e) {
+      throw e;
+    }
     // Thanks to circuit breaker interface definition of Resilience4J we also have to catch java.lang.Exception ;-(
     catch (Exception e) {
       throw new JEAFSystemException(JSONMessages.REST_RESPONSE_PROCESSING_ERROR, e, pRequest.getRequestUri(),

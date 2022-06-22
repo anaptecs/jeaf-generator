@@ -8,8 +8,10 @@ package com.anaptecs.spring.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 import javax.validation.constraints.NotBlank;
@@ -195,5 +197,10 @@ public class ProductServiceRESTProxy implements RESTProductService {
       lResult = Collections.emptyList();
     }
     return lResult;
+  }
+
+  @Override
+  public String testParams( BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam ) {
+    return null;
   }
 }

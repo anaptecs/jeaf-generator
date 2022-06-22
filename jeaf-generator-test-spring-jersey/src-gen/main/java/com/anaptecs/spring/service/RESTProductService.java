@@ -5,7 +5,9 @@
  */
 package com.anaptecs.spring.service;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Locale;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -81,4 +83,13 @@ public interface RESTProductService {
    * @return {@link CurrencyCode}
    */
   List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode );
+
+  /**
+   * 
+   * @param pBigDecimalHeader
+   * @param pIntCookieParam
+   * @param pLocaleQueryParam
+   * @return {@link String}
+   */
+  String testParams( BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam );
 }
