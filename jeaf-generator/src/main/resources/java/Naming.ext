@@ -281,6 +281,9 @@ cached boolean isPersistentObject(uml::NamedElement namedElement) :
 cached String getCollectionType(uml::MultiplicityElement multiplicityElement) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getCollectionType(org.eclipse.uml2.uml.MultiplicityElement);
     
+cached String getCollectionTypeShort(uml::MultiplicityElement multiplicityElement) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getCollectionTypeShort(org.eclipse.uml2.uml.MultiplicityElement);
+    
 cached String getCollectionImplType(uml::MultiplicityElement multiplicityElement) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getCollectionImplType(org.eclipse.uml2.uml.MultiplicityElement);
     

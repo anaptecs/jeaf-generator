@@ -23,7 +23,7 @@ import com.anaptecs.spring.service.RESTProductService;
 public class RESTProductServiceImpl implements RESTProductService {
 
   @Override
-  public List<Product> getProducts( ) {
+  public List<Product> getProducts( int pMaxResultSize ) {
     return null;
   }
 

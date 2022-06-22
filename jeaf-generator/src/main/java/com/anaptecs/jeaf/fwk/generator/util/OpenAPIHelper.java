@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Property;
 
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.checks.Assert;
 
 public class OpenAPIHelper {
   public static final Map<String, String> basicTypes = new HashMap<String, String>();
@@ -383,19 +385,52 @@ public class OpenAPIHelper {
 
   public static final String WITH_DELIMITER = "((?<=%1$s)|(?=%1$s))";
 
-  public static String[] splitRESTPath( String pRESTPath, String... pPathParams ) {
-    // Builder regular expression to split path into several parts
-    StringBuilder lBuilder = new StringBuilder();
-    for (int i = 0; i < pPathParams.length; i++) {
-      lBuilder.append("\\{");
-      lBuilder.append(pPathParams[i]);
-      lBuilder.append("\\}");
-      if (i < pPathParams.length - 1) {
-        lBuilder.append('|');
+  public static List<String> splitRESTPath( String pRESTPath, List<String> pPathParams, List<String> pVariableNames ) {
+    Assert.assertTrue(pPathParams.size() == pVariableNames.size(),
+        "Internal error amount of path params and variables names must be the same");
+
+    List<String> lSplitResult = Arrays.asList(splitRESTPath(pRESTPath, pPathParams.toArray(new String[] {})));
+    List<String> lParts = new ArrayList<String>(lSplitResult.size());
+    if (pPathParams.isEmpty() == false) {
+      for (String lNextPart : lSplitResult) {
+        String lPart = lNextPart;
+        for (int i = 0; i < pPathParams.size(); i++) {
+          lPart = lPart.replaceAll("\\{" + pPathParams.get(i) + "\\}", pVariableNames.get(i));
+        }
+        // We also have distinguish between variables and path content
+        if (lNextPart.equals(lPart)) {
+          lParts.add("\"" + lPart + "\"");
+        }
+        else {
+          lParts.add(lPart);
+        }
       }
     }
+    else {
+      lParts.add("\"" + lSplitResult.get(0) + "\"");
+    }
+    return lParts;
+  }
 
-    String lPattern = String.format(WITH_DELIMITER, lBuilder.toString());
-    return pRESTPath.split(lPattern);
+  public static String[] splitRESTPath( String pRESTPath, String... pPathParams ) {
+    String[] lSplitResult;
+    if (pPathParams != null && pPathParams.length > 0) {
+      // Builder regular expression to split path into several parts
+      StringBuilder lBuilder = new StringBuilder();
+      for (int i = 0; i < pPathParams.length; i++) {
+        lBuilder.append("\\{");
+        lBuilder.append(pPathParams[i]);
+        lBuilder.append("\\}");
+        if (i < pPathParams.length - 1) {
+          lBuilder.append('|');
+        }
+      }
+      String lPattern = String.format(WITH_DELIMITER, lBuilder.toString());
+      lSplitResult = pRESTPath.split(lPattern);
+    }
+    else {
+      lSplitResult = new String[] { pRESTPath };
+    }
+    return lSplitResult;
   }
 }

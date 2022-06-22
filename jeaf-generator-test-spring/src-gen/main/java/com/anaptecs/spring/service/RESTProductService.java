@@ -25,9 +25,10 @@ public interface RESTProductService {
    * Operation returns all available product.
    * 
    * 
+   * @param pMaxResultSize
    * @return {@link Product}
    */
-  List<Product> getProducts( );
+  List<Product> getProducts( int pMaxResultSize );
 
   /**
    * 

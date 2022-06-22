@@ -1,5 +1,8 @@
 package com.anaptecs.jeaf.fwk.generator.test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import junit.framework.TestCase;
 
 import org.junit.jupiter.api.Test;
@@ -25,5 +28,21 @@ public class PathSplitTest {
     TestCase.assertEquals("{orderID}", lParts[3]);
     TestCase.assertEquals("/list", lParts[4]);
     TestCase.assertEquals(5, lParts.length);
+  }
+
+  @Test
+  void testListBasedSplit( ) {
+    List<String> lParamNames = Arrays.asList(new String[] { "id", "productID" });
+    List<String> lVariableNames = Arrays.asList(new String[] { "pTheID", "pProductID" });
+    List<String> lParts =
+        OpenAPIHelper.splitRESTPath("{id}sortiment/{id}/something/{productID}/more", lParamNames, lVariableNames);
+    System.out.println(lParts);
+    TestCase.assertEquals("pTheID", lParts.get(0));
+    TestCase.assertEquals("\"sortiment/\"", lParts.get(1));
+    TestCase.assertEquals("pTheID", lParts.get(2));
+    TestCase.assertEquals("\"/something/\"", lParts.get(3));
+    TestCase.assertEquals("pProductID", lParts.get(4));
+    TestCase.assertEquals("\"/more\"", lParts.get(5));
+    TestCase.assertEquals(6, lParts.size());
   }
 }

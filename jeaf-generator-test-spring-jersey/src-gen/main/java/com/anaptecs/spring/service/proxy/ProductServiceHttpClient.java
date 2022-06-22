@@ -28,6 +28,7 @@ import org.apache.hc.core5.http.URIScheme;
 import org.apache.hc.core5.http.config.Registry;
 import org.apache.hc.core5.http.config.RegistryBuilder;
 import org.apache.hc.core5.http.io.SocketConfig;
+import org.apache.hc.core5.http.protocol.HttpContext;
 import org.apache.hc.core5.pool.PoolConcurrencyPolicy;
 import org.apache.hc.core5.pool.PoolReusePolicy;
 import org.apache.hc.core5.util.TimeValue;
@@ -244,8 +245,8 @@ public class ProductServiceHttpClient {
    * @return T Collection of objects as it was defined by <code>pCollectionClass</code> and <code>pTypeClass</code>
    */
   @SuppressWarnings({ "rawtypes" })
-  public <T> T executeCollectionResultRequest( ClassicHttpRequest pRequest, int pSuccessfulStatusCode,
-      Class<? extends Collection> pCollectionClass, Class<?> pTypeClass ) {
+  public <T> T executeCollectionResultRequest( ClassicHttpRequest pRequest, HttpContext pHttpContext,
+      int pSuccessfulStatusCode, Class<? extends Collection> pCollectionClass, Class<?> pTypeClass ) {
     // Check parameters
     Check.checkInvalidParameterNull(pRequest, "pRequest");
     Check.checkInvalidParameterNull(pCollectionClass, "pCollectionClass");
@@ -253,7 +254,7 @@ public class ProductServiceHttpClient {
     // Create matching response type for collections as defined by the passed parameters
     JavaType lResponseType = objectMapper.getTypeFactory().constructCollectionType(pCollectionClass, pTypeClass);
     // Execute request and return result.
-    return executeRequest(pRequest, pSuccessfulStatusCode, lResponseType);
+    return executeRequest(pRequest, pHttpContext, pSuccessfulStatusCode, lResponseType);
   }
 
   /**
@@ -265,15 +266,30 @@ public class ProductServiceHttpClient {
    * @param pTypeClass Type of the object that will be returned by the call. The parameter must not be null.
    * @return T Single object as it was defined by <code>pTypeClass</code>
    */
-  public <T> T executeSingleObjectResultRequest( ClassicHttpRequest pRequest, int pSuccessfulStatusCode,
-      Class<?> pTypeClass ) {
+  public <T> T executeSingleObjectResultRequest( ClassicHttpRequest pRequest, HttpContext pHttpContext,
+      int pSuccessfulStatusCode, Class<?> pTypeClass ) {
     // Check parameters
     Check.checkInvalidParameterNull(pRequest, "pRequest");
     Check.checkInvalidParameterNull(pTypeClass, "pTypeClass");
     // Create matching response type as defined by the passed parameters
     JavaType lResponseType = objectMapper.getTypeFactory().constructType(pTypeClass);
     // Execute request and return result.
-    return executeRequest(pRequest, pSuccessfulStatusCode, lResponseType);
+    return executeRequest(pRequest, pHttpContext, pSuccessfulStatusCode, lResponseType);
+  }
+
+  /**
+   * Method executes a HTTP request that is expected to return no response content.
+   * 
+   * @param pRequest HTTP request that should be executed. The parameter must not be null.
+   * @param pSuccessfulStatusCode HTTP status code that represents a successful call. This status code is required in
+   * order to be able to distinguish between successful and failed requests.
+   */
+  public void executeNoResponseContentRequest( ClassicHttpRequest pRequest, HttpContext pHttpContext,
+      int pSuccessfulStatusCode ) {
+    // Check parameters
+    Check.checkInvalidParameterNull(pRequest, "pRequest");
+    // Execute request and return result.
+    executeRequest(pRequest, pHttpContext, pSuccessfulStatusCode, null);
   }
 
   /**
@@ -281,11 +297,13 @@ public class ProductServiceHttpClient {
    * 
    * @param pRequest Request that should b executed. The parameter must not be null.
    * @param pSuccessfulStatusCode Status code that defines that the call was successful.
-   * @param pResponseType Object describing the response type of the call.
+   * @param pResponseType Object describing the response type of the call. The parameter may be null in case that
+   * operation does not return any content e.g. void operations.
    * @return T Object of defined response type. If the called REST resource returns no content as response then null
    * will be returned.
    */
-  private <T> T executeRequest( ClassicHttpRequest pRequest, int pSuccessfulStatusCode, JavaType pResponseType ) {
+  private <T> T executeRequest( ClassicHttpRequest pRequest, HttpContext pHttpContext, int pSuccessfulStatusCode,
+      JavaType pResponseType ) {
     // Try to execute call to REST resource
     CloseableHttpResponse lResponse = null;
     try {
@@ -294,7 +312,7 @@ public class ProductServiceHttpClient {
           CircuitBreaker.decorateCallable(circuitBreaker, new Callable<CloseableHttpResponse>() {
             @Override
             public CloseableHttpResponse call( ) throws IOException {
-              return httpClient.execute(pRequest);
+              return httpClient.execute(pRequest, pHttpContext);
             }
           });
       // Execute request to REST resource

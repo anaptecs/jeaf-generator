@@ -20,7 +20,6 @@ import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.HttpHeaders;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 
 import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.xfun.api.XFun;
@@ -46,7 +45,6 @@ import com.anaptecs.spring.base.Sortiment;
  * However, as an transactional context can not be propagated to another REST resource developers till have to take care
  * about proper transaction handling if needed.
  */
-@Service
 public class ProductServiceRESTProxy implements RESTProductService {
   /**
    * URL of the REST service that is proxied by this service implementation.
@@ -58,7 +56,7 @@ public class ProductServiceRESTProxy implements RESTProductService {
   private ProductServiceHttpClientSpring httpClient;
 
   @Override
-  public List<Product> getProducts( ) {
+  public List<Product> getProducts( int pMaxResultSize ) {
     // Create builder for GET request
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
 

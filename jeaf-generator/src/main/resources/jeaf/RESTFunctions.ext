@@ -1,12 +1,12 @@
 extension java::Naming;
 extension java::GeneratorCommons;
+extension java::OpenAPIFunctions;
 
 cached boolean isBeanParam(uml::Parameter param):
 	param.isStereotypeApplied("BeanParam") || param.type.isStereotypeApplied("BeanParam");
 	
 cached List[uml::Parameter] getBeanParams(uml::Operation operation):
-	operation.ownedParameter.select(e| e.isInputParameter() && e.isBeanParam() == false);
-	
+	operation.ownedParameter.select(e| e.isInputParameter() && e.isBeanParam() == true);
 	
 cached boolean isPathParam(uml::Parameter param):
 	param.isStereotypeApplied("PathParam");
@@ -23,8 +23,6 @@ cached boolean isCookieParam(uml::Parameter param):
 cached boolean isRequestBody(uml::Parameter param):
     !(param.isPathParam() || param.isHeaderParam() || param.isQueryParam() || param.isQueryParam() || param.isBeanParam());
 
-
-
 cached boolean isPathParamProperty(uml::Property property):
 	property.isStereotypeApplied("PathParam");
 
@@ -36,5 +34,79 @@ cached boolean isQueryParamProperty(uml::Property property):
 
 cached boolean isCookieParamProperty(uml::Property property):
 	property.isStereotypeApplied("CookieParam");
-
+	
+cached List[JMM::PathParam] getPathParams(uml::Operation operation):
+    operation.ownedParameter.typeSelect(JMM::PathParam);
     
+cached List[JMM::QueryParam] getQueryParams(uml::Operation operation):
+    operation.ownedParameter.typeSelect(JMM::QueryParam);
+
+cached List[JMM::HeaderParam] getHeaderParams(uml::Operation operation):
+    operation.ownedParameter.typeSelect(JMM::HeaderParam);
+
+cached List[JMM::CookieParam] getCookieParams(uml::Operation operation):
+    operation.ownedParameter.typeSelect(JMM::CookieParam);
+
+cached List[JMM::PathParam] getBeanPathParams(uml::Operation operation):
+    operation.getBeanParams().type.getAllAttributesFromHierarchy().typeSelect(JMM::PathParam);
+    
+cached boolean usesCookies(JMM::RESTResource resource):
+   resource.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.hasCookieParams()).size > 0;
+   
+cached boolean hasCookieParams(uml::Operation operation):
+    (operation.getCookieParams().size + operation.getBeanParams().type.getAllAttributesFromHierarchy().typeSelect(JMM::CookieParam).size) > 0;
+    
+cached List[String] getBeanPathVariableNames(uml::Operation operation):
+    operation.getBeanParams().getInternalBeanPathVariableNames();
+    
+List[String] getInternalBeanPathVariableNames(uml::Parameter beanParam):
+    beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::PathParam).do(beanParam);
+    
+private String do(JMM::PathParam pathParam, uml::Parameter beanParam):
+    if pathParam.type.isOpenAPIDataType() then
+      beanParam.name + "." + pathParam.asGetter() + "()." + pathParam.type.getAllAttributesFromHierarchy().first().asGetter() + "()"
+    else 
+	  beanParam.name + "." + pathParam.asGetter() + "()";
+    
+private String addPrefix(String text, String prefix):
+    prefix + text;
+    
+cached List[String] getAllPathParams(uml::Operation operation):
+    operation.getPathParams().getRESTPathParamName().addAll(operation.getBeanPathParams().getRESTPathParamName());   
+    
+cached List[String] getAllPathParamNamnes(uml::Operation operation):
+    operation.getPathParams().getPathVariableName().addAll(operation.getBeanPathVariableNames());
+    
+cached String getPathVariableName(JMM::PathParam pathParam):
+    if pathParam.type.isOpenAPIDataType() then
+      pathParam.name + "." + pathParam.type.getAllAttributesFromHierarchy().first().asGetter() + "()"
+    else 
+      pathParam.name;
+
+cached String getRESTPathParamName(JMM::PathParam param):
+    if (param.value.length > 0) then
+       param.value
+    else
+       param.name; 
+
+cached String getRESTQueryParamName(JMM::QueryParam param):
+    if (param.value.length > 0) then
+       param.value
+    else
+       param.name; 
+
+cached String getRESTHeaderParamName(JMM::HeaderParam param):
+    if (param.value.length > 0) then
+       param.value
+    else
+       param.name; 
+
+cached String getRESTCookieParamName(JMM::CookieParam param):
+    if (param.value.length > 0) then
+       param.value
+    else
+       param.name; 
+
+
+List[String] splitRESTPath(String path, List[String] paramNames, List[String] variableNames):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.splitRESTPath(java.lang.String, java.util.List, java.util.List);

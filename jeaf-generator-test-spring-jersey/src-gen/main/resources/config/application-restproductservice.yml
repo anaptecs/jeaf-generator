@@ -4,6 +4,12 @@ rESTProductService:
   # URL to external service
   externalURL: TODO: Please configure URL of external REST resource
   
+  # Domain of the cookie that is used in requests.
+  cookieDomain:
+  
+  # Path of the cookie that is used in requests.
+  cookiePath:
+  
   # Apache HTTP Client configuration
   http:
     # Maximum size of the connection pool.

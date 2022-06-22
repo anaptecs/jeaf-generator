@@ -39,10 +39,10 @@ public class RESTProductServiceResource {
    * {@link RESTProductService#getProducts()}
    */
   @RequestMapping(method = { RequestMethod.GET })
-  public List<Product> getProducts( ) {
+  public List<Product> getProducts( @RequestParam(name = "maxResult", required = true) int pMaxResultSize ) {
     // Get Spring service and delegate call.
     RESTProductService lService = this.getRESTProductService();
-    return lService.getProducts();
+    return lService.getProducts(pMaxResultSize);
   }
 
   /**

@@ -224,7 +224,7 @@
 	    }
 	    «ENDIF»
 	    // Return all «this.type.name» objects as unmodifiable collection.
-		return java.util.Collections.unmodifiable«this.getCollectionType()»(«asInstanceVar()»);
+		return java.util.Collections.unmodifiable«this.getCollectionTypeShort()»(«asInstanceVar()»);
 	}
 	
     «IF isReadOnly == false»

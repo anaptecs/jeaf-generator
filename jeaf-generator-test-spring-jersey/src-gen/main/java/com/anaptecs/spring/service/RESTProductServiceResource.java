@@ -17,6 +17,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.MediaType;
@@ -48,7 +49,7 @@ public class RESTProductServiceResource {
    */
   @GET
   public void getProducts( @Suspended AsyncResponse pAsyncResponse,
-      @javax.ws.rs.core.Context HttpServletRequest pRequest ) {
+      @javax.ws.rs.core.Context HttpServletRequest pRequest, @QueryParam("maxResult") int pMaxResultSize ) {
     // Lookup workload manager that takes care that the system will have an optimal throughput.
     WorkloadManager lWorkloadManager = Workload.getWorkloadManager();
     // Prepare meta information about the request.
@@ -62,7 +63,7 @@ public class RESTProductServiceResource {
       @Override
       public void run( ) {
         try {
-          List<Product> lResult = lService.getProducts();
+          List<Product> lResult = lService.getProducts(pMaxResultSize);
           Response lResponseObject = Response.status(Response.Status.OK).entity(lResult).build();
           // Due to the asynchronous processing of the requests, the response can not be returned as return value.
           // Therefore we make use of the defined JAX-RS mechanisms.

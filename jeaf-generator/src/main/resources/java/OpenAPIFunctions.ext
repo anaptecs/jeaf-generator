@@ -2,121 +2,121 @@ extension java::Naming;
 extension java::GeneratorCommons;
 extension jeaf::RESTFunctions;
 
-boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
+cached boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 	getOpenAPITypes(spec).size > 0;
 	
-List[JMM::OpenAPIType] getOpenAPITypes(JMM::OpenAPI3Specification spec):
+cached List[JMM::OpenAPIType] getOpenAPITypes(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIType);
 	
-List[JMM::OpenAPIDataType] getOpenAPIDataTypes(JMM::OpenAPI3Specification spec):
+cached List[JMM::OpenAPIDataType] getOpenAPIDataTypes(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIDataType);
 	
-boolean hasOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
+cached boolean hasOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
     getOpenAPISecuritySchemes(spec).size > 0;
     
-List[uml::Property] getOpenAPIParameters(JMM::OpenAPI3Specification spec):
+cached List[uml::Property] getOpenAPIParameters(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::BeanParam).select(e|e.inline==false).typeSelect(uml::Class).ownedAttribute.sortBy(e|e.name);
     
-boolean hasOpenAPIParameters(JMM::OpenAPI3Specification spec):
+cached boolean hasOpenAPIParameters(JMM::OpenAPI3Specification spec):
     spec.getOpenAPIParameters().size > 0;
 
-List[JMM::OpenAPISecurityScheme] getOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
+cached List[JMM::OpenAPISecurityScheme] getOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
     spec.getModel().allOwnedElements().typeSelect(JMM::OpenAPISecurityScheme).select(e|e.isInGeneratorWhitelist() == true).sortBy(e|e.name);
 
 cached List[JMM::OpenAPIResponse] getResponses(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIResponse).sortBy(e|e.name).sortBy(e|e.getOrderNumber());
 
-List[JMM::OpenAPI3Specification] getDependentSpecs(JMM::OpenAPI3Specification spec):
+cached List[JMM::OpenAPI3Specification] getDependentSpecs(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(JMM::OpenAPI3Specification);
 	
 Void registerSpecDependency( uml::Component pSource, uml::Component pTarget, String pReference ):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.registerSpecDependency( org.eclipse.uml2.uml.Component, org.eclipse.uml2.uml.Component, java.lang.String );
 	
-boolean hasOpenAPIEnums(JMM::OpenAPI3Specification spec):
+cached boolean hasOpenAPIEnums(JMM::OpenAPI3Specification spec):
 	getOpenAPIEnums(spec).size > 0;
 	
-List[JMM::OpenAPIEnumeration] getOpenAPIEnums(JMM::OpenAPI3Specification spec):
+cached List[JMM::OpenAPIEnumeration] getOpenAPIEnums(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIEnumeration);
 	
-boolean referencesRESTResources(JMM::OpenAPI3Specification spec):
+cached boolean referencesRESTResources(JMM::OpenAPI3Specification spec):
 	getRESTResources(spec).size > 0;
 	
-List[JMM::RESTResource] getRESTResources(JMM::OpenAPI3Specification spec):
+cached List[JMM::RESTResource] getRESTResources(JMM::OpenAPI3Specification spec):
 	spec.clientDependency.supplier.typeSelect(JMM::RESTResource).sortBy(e|e.getOrderNumber());
 	
-List[JMM::RESTOperation] getRESTOperations(JMM::RESTResource service, String pPath):
+cached List[JMM::RESTOperation] getRESTOperations(JMM::RESTResource service, String pPath):
    service.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.path == pPath);
    
-Set[String] getPaths(JMM::RESTResource service):
+cached Set[String] getPaths(JMM::RESTResource service):
    service.ownedOperation.typeSelect(JMM::RESTOperation).path.toSet();
 	
-String getYAMLStyleComment(uml::Element element, String indentation):
+cached String getYAMLStyleComment(uml::Element element, String indentation):
     element.ownedComment.get(0).body.replaceAll("\n", "\r\n" + indentation + "# ");
 
-String getCommentForOpenAPIDescription(uml::Element element, String indentation):
+cached String getCommentForOpenAPIDescription(uml::Element element, String indentation):
     element.ownedComment.get(0).body.replaceAll("\n", "\r\n" + indentation);
     
-boolean hasMultiLineComment(uml::Element element) :
+cached boolean hasMultiLineComment(uml::Element element) :
     //element.ownedComment.get(0).body.contains("\n");
     true;
     
-boolean generateDefaultClassMapping() :
+cached boolean generateDefaultClassMapping() :
     false;
     
-String getOpenAPIType(uml::Type type, JMM::OpenAPI3Specification spec):
+cached String getOpenAPIType(uml::Type type, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);
     
-String getOpenAPIParameter(uml::Property property, JMM::OpenAPI3Specification spec):
+cached String getOpenAPIParameter(uml::Property property, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIParameter(org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Component);
     
-String getResponseType(uml::Type type, JMM::OpenAPI3Specification spec):
+cached String getResponseType(uml::Type type, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getResponseType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);    
 
-String getOpenAPIFormatInternal(uml::Type type):
+cached String getOpenAPIFormatInternal(uml::Type type):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIFormat(org.eclipse.uml2.uml.Type);
     
-String getOpenAPIFormatForProperty(uml::Property property):
+cached String getOpenAPIFormatForProperty(uml::Property property):
     if property.isStereotypeApplied("OpenAPIFormat")
     then ((JMM::OpenAPIFormat) property).format
     else property.type.getOpenAPIFormatInternal();
     
-boolean hasOpenAPIFormatForProperty(uml::Property property):
+cached boolean hasOpenAPIFormatForProperty(uml::Property property):
     getOpenAPIFormatForProperty(property) != null;
     
-String getOpenAPIFormatForParam(uml::Parameter parameter):
+cached String getOpenAPIFormatForParam(uml::Parameter parameter):
     if parameter.isStereotypeApplied("OpenAPIFormat")
     then ((JMM::OpenAPIFormat) parameter).format
     else parameter.type.getOpenAPIFormatInternal();
     
-boolean hasOpenAPIFormatForParam(uml::Parameter parameter):
+cached boolean hasOpenAPIFormatForParam(uml::Parameter parameter):
     getOpenAPIFormatForParam(parameter) != null;
     
-String getPatternForProperty(uml::Property property):
+cached String getPatternForProperty(uml::Property property):
   if property.isStereotypeApplied("OpenAPIPattern")
   then ((JMM::OpenAPIPattern) property).pattern
   else "";
 
-boolean hasPatternForProperty(uml::Property property):
+cached boolean hasPatternForProperty(uml::Property property):
   property.isStereotypeApplied("OpenAPIPattern");
     
-String getPatternForParam(uml::Parameter parameter):
+cached String getPatternForParam(uml::Parameter parameter):
   if parameter.isStereotypeApplied("OpenAPIPattern")
   then ((JMM::OpenAPIPattern) parameter).pattern
   else "";
 
-boolean hasPatternForParam(uml::Parameter parameter):
+cached boolean hasPatternForParam(uml::Parameter parameter):
   parameter.isStereotypeApplied("OpenAPIPattern");
     
-boolean isBasicOpenAPIType(uml::Type type):
+cached boolean isBasicOpenAPIType(uml::Type type):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.isBasicOpenAPIType(org.eclipse.uml2.uml.Type);
     
-boolean isOpenAPIDataType(uml::Type type):
+cached boolean isOpenAPIDataType(uml::Type type):
    isStereotypeApplied(type, "OpenAPIDataType");
    
-List[uml::Parameter] getDataTypeParameters(uml::Operation operation):
+cached List[uml::Parameter] getDataTypeParameters(uml::Operation operation):
    operation.ownedParameter.select(e|e.type.isOpenAPIDataType() && e.isInputParameter() && e.isRequestBody() == false);
    
-boolean hasDataTypeParameters(uml::Operation operation):
+cached boolean hasDataTypeParameters(uml::Operation operation):
    operation.getDataTypeParameters().size > 0;
    
 Void registerLocalType(uml::NamedElement localClass, JMM::OpenAPI3Specification spec):
@@ -131,87 +131,87 @@ cached List[uml::Class] getAllSubclasses(uml::Type class) :
 cached List[uml::Class] getAllConcreteSubclasses(uml::Type class) :
    class.getAllSubclasses().select(e|e.isAbstract == false);
    
-boolean isOneOfForClassHierachieEnabled():
+cached boolean isOneOfForClassHierachieEnabled():
   false;
    
-boolean isTopOfClassHierarchy(uml::Class class) :
+cached boolean isTopOfClassHierarchy(uml::Class class) :
    class.superClass.isEmpty == true && getAllSubclasses(class).size > 0;
 	
-String toOpenAPIContentType(JMM::MediaType mediaType) :
+cached String toOpenAPIContentType(JMM::MediaType mediaType) :
    toOpenAPIContentType(mediaType.toString());
    
-Set[JMM::MediaType] unifyMediaTypes(Collection[JMM::MediaType] mediaTypes1, Collection[JMM::MediaType] mediaTypes2):
+cached Set[JMM::MediaType] unifyMediaTypes(Collection[JMM::MediaType] mediaTypes1, Collection[JMM::MediaType] mediaTypes2):
    mediaTypes1.toSet().addAll(mediaTypes2);
    
-String toOpenAPIContentType(String mediaType) :
+cached String toOpenAPIContentType(String mediaType) :
    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.toOpenAPIContentType(java.lang.String);
    
-boolean isOpenAPIParameterType(uml::Element element):
+cached boolean isOpenAPIParameterType(uml::Element element):
    getOpenAPIParameterType(element) != null;
 
-String getOpenAPIParameterType(uml::Element param):
+cached String getOpenAPIParameterType(uml::Element param):
    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIParameterType(org.eclipse.uml2.uml.Element);
    
-boolean isOpenAPIInputParameter(uml::Parameter param):
+cached boolean isOpenAPIInputParameter(uml::Parameter param):
    param.isInputParameter() && param.isOpenAPIParameterType();
 
-List[uml::Parameter] getOpenAPIInputParameters(uml::Operation operation):   
+cached List[uml::Parameter] getOpenAPIInputParameters(uml::Operation operation):   
    operation.ownedParameter.select(p| p.isOpenAPIInputParameter());   
 
-boolean hasOpenAPIInputParameters(uml::Operation operation):
+cached boolean hasOpenAPIInputParameters(uml::Operation operation):
    getOpenAPIInputParameters(operation).size > 0;
    
-boolean isBeanParamater(uml::Parameter param):
+cached boolean isBeanParamater(uml::Parameter param):
    param.isStereotypeApplied("BeanParam") || param.type.isStereotypeApplied("BeanParam");
    
-List[uml::Parameter] getBeanParams(uml::Operation operation):
+cached List[uml::Parameter] getBeanParams(uml::Operation operation):
    operation.ownedParameter.select(e|e.isBeanParamater());
    
-boolean inlineBeanParam(uml::Parameter param) :
+cached boolean inlineBeanParam(uml::Parameter param) :
    if param.type.isStereotypeApplied("BeanParam")
    then ((JMM::BeanParam) param.type).inline
    else true;
    
-boolean hasBeanParameters(uml::Operation operation):
+cached boolean hasBeanParameters(uml::Operation operation):
    getBeanParams(operation).size > 0;
    
-boolean hasOpenAPIProperties(uml::Class pClass):
+cached boolean hasOpenAPIProperties(uml::Class pClass):
    getOpenAPIProperties(pClass).size > 0;
    
-List[uml::Property] getOpenAPIProperties(uml::Element class):
+cached List[uml::Property] getOpenAPIProperties(uml::Element class):
    class.getAllAttributesFromHierarchy().select(e|e.isOpenAPIParameterType());
    
-List[uml::Property] getAllAttributesFromHierarchy(uml::Element class):
+cached List[uml::Property] getAllAttributesFromHierarchy(uml::Element class):
   JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getAllAttributesFromHierarchy(org.eclipse.uml2.uml.Element);   
    
-boolean isRequired(uml::Parameter param):
+cached boolean isRequired(uml::Parameter param):
    param.isStereotypeApplied("NotNull") || param.isStereotypeApplied("NotEmpty") || param.isStereotypeApplied("NotBlank") || param.type.isPrimitiveType()|| param.lower > 0;
 
-boolean isRequiredProperty(uml::Property property):
+cached boolean isRequiredProperty(uml::Property property):
    property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank") || (property.lower > 0) || (property.association != null && property.lower > 0) || (property.isMultivalued() && property.lower > 0);
    
-List[uml::Property] getRequiredProperties(uml::Class class):
+cached List[uml::Property] getRequiredProperties(uml::Class class):
     class.ownedAttribute.select(e|e.isRequiredProperty() && e.isTransient() == false);
     
-boolean hasRequiredProperties(uml::Class class):
+cached boolean hasRequiredProperties(uml::Class class):
     getRequiredProperties(class).size > 0;
     
-boolean supportsRequestBody(JMM::HTTPMethod httpMethod):
+cached boolean supportsRequestBody(JMM::HTTPMethod httpMethod):
   httpMethod.toString().toLowerCase() == "post" || httpMethod.toString().toLowerCase() == "put" || httpMethod.toString().toLowerCase() == "patch";
 
-boolean hasRequestBody(uml::Operation operation, JMM::HTTPMethod httpMethod):
+cached boolean hasRequestBody(uml::Operation operation, JMM::HTTPMethod httpMethod):
   getRequestBodyParameters(operation).size == 1  && httpMethod.supportsRequestBody() == true;
   
-List[uml::Parameter] getRequestBodyParameters(uml::Operation operation):
+cached List[uml::Parameter] getRequestBodyParameters(uml::Operation operation):
   operation.ownedParameter.select(e|e.isInputParameter() && e.isOpenAPIInputParameter() == false && e.isBeanParamater() == false);
   
-boolean hasReturnTypeVoid(uml::Operation operation):
+cached boolean hasReturnTypeVoid(uml::Operation operation):
   getReturnTypeName(operation) == "void";
   
-uml::Parameter getReturnParameter(uml::Operation operation):
+cached uml::Parameter getReturnParameter(uml::Operation operation):
   operation.getReturnResult();
   
-boolean isNullable(uml::Property property):
+cached boolean isNullable(uml::Property property):
   if property.isStereotypeApplied("OpenAPIProperty") 
   then ((JMM::OpenAPIProperty) property).nullable 
   else
@@ -223,16 +223,16 @@ boolean isNullable(uml::Property property):
       else true;
   
   
-boolean isReadOnly(uml::Property property):
+cached boolean isReadOnly(uml::Property property):
   if property.isStereotypeApplied("OpenAPIProperty") 
   then ((JMM::OpenAPIProperty) property).accessType.name == "READ_ONLY" 
   else 
     property.isReadOnly;
   
-boolean isWriteOnly(uml::Property property):
+cached boolean isWriteOnly(uml::Property property):
   if property.isStereotypeApplied("OpenAPIProperty") then ((JMM::OpenAPIProperty) property).accessType.name == "WRITE_ONLY" else false;
   
-String getOperationID(uml::Operation operation, uml::Interface service):
+cached String getOperationID(uml::Operation operation, uml::Interface service):
    operation.name;
    
 cached String getJAXRSStatusCodeName(String pJMMStatusCode):
@@ -271,39 +271,39 @@ cached List[uml::Property] getHeaderFields(uml::Operation operation) :
 cached boolean hasResponseHeaderFields(uml::Operation operation) :
   operation.getResponseHeaderGroups().size > 0; 
 
-boolean hasCustomResponse(JMM::OpenAPI3Specification spec):
+cached boolean hasCustomResponse(JMM::OpenAPI3Specification spec):
   getCustomResponses(spec).size > 0;
   
-Set[JMM::OAuthScope] getOAuthScopes(JMM::OpenAPISecurityScheme scheme):
+cached Set[JMM::OAuthScope] getOAuthScopes(JMM::OpenAPISecurityScheme scheme):
   scheme.clientDependency.supplier.typeSelect(JMM::OAuthFlow).clientDependency.supplier.typeSelect(JMM::OAuthScope).toSet().sortBy(e|e.name);
 
-boolean isOrdered(uml::Element element) :
+cached boolean isOrdered(uml::Element element) :
     isStereotypeApplied(element, "Ordered"); 
     
-String getOrderNumber(uml::Element element) :
+cached String getOrderNumber(uml::Element element) :
     if element.isOrdered() == true
     then ((JMM::Ordered) element).order.toString()
     else "9999";  
     
-List[uml::Element] getOrderedSchemaElements(JMM::OpenAPI3Specification spec) :
+cached List[uml::Element] getOrderedSchemaElements(JMM::OpenAPI3Specification spec) :
     spec.getOpenAPITypes().addAll(spec.getOpenAPIDataTypes().select(e|e.inline == false)).addAll(spec.getOpenAPIEnums()).toList().sortBy(e|e.name).sortBy(e|e.getOrderNumber());
     
-List[JMM::OpenAPITag] getOrderedOpenAPITags(JMM::OpenAPI3Specification spec) :
+cached List[JMM::OpenAPITag] getOrderedOpenAPITags(JMM::OpenAPI3Specification spec) :
     spec.clientDependency.supplier.typeSelect(JMM::OpenAPITag).toList().sortBy(e|e.order);
     
-uml::EnumerationLiteral getDefaultLiteral(JMM::OpenAPIEnumeration enum) :
+cached uml::EnumerationLiteral getDefaultLiteral(JMM::OpenAPIEnumeration enum) :
     enum.ownedLiteral.select(e|e.isStereotypeApplied("DefaultLiteral")).first();
 
-boolean hasDefaultLiteral(JMM::OpenAPIEnumeration enum) :
+cached boolean hasDefaultLiteral(JMM::OpenAPIEnumeration enum) :
     getDefaultLiteral(enum) != null;
     
-JMM::OpenAPIAliasName asAlias(uml::Property property):
+cached JMM::OpenAPIAliasName asAlias(uml::Property property):
   (JMM::OpenAPIAliasName) property;
   
-boolean hasAliasAttributeName(uml::Property property) :
+cached boolean hasAliasAttributeName(uml::Property property) :
    isStereotypeApplied(property, "OpenAPIAliasName");
 
-String getAttributeName(uml::Property property) :
+cached String getAttributeName(uml::Property property) :
    if property.hasAliasAttributeName() == true
    then ((JMM::OpenAPIAliasName) property).openAPIPropertyName
    else property.name;
