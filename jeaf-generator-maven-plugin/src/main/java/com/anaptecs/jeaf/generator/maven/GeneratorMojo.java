@@ -77,7 +77,10 @@ public class GeneratorMojo extends AbstractMojo {
    * Reference to Maven project. Reference will be injected by Maven and can not be configured via POM.
    */
   @Parameter(defaultValue = "${project}", required = true, readonly = true)
-  private MavenProject project;
+  private MavenProject mavenProject;
+
+  @Parameter(defaultValue = "${session}", readonly = true)
+  private MavenSession mavenSession;
 
   /**
    * UML Modeling Tool that was used to create the UML Model. By default it is assumed that MagicDraw UML was used.
@@ -540,12 +543,6 @@ public class GeneratorMojo extends AbstractMojo {
   private boolean removeUnusedImports;
 
   @Component
-  private MavenProject mavenProject;
-
-  @Component
-  private MavenSession mavenSession;
-
-  @Component
   private BuildPluginManager pluginManager;
 
   /**
@@ -960,7 +957,7 @@ public class GeneratorMojo extends AbstractMojo {
    */
   private String getXMIDirectoryLocation( ) throws MojoFailureException {
     // XMI directory is defined directly.
-    String lExtractDirectory = project.getBuild().getDirectory() + "/uml-model";
+    String lExtractDirectory = mavenProject.getBuild().getDirectory() + "/uml-model";
     String lXMIDirectory;
     StringTools lTools = Tools.getStringTools();
     if (lTools.isRealString(xmiDirectory)) {
@@ -1034,11 +1031,11 @@ public class GeneratorMojo extends AbstractMojo {
       String lKey = modelArtifactGroupID + ":" + modelArtifactArtifactID;
       try {
         // Lookup maven module that contains UML model
-        Artifact lModelArtifact = project.getArtifactMap().get(lKey);
+        Artifact lModelArtifact = mavenProject.getArtifactMap().get(lKey);
         if (lModelArtifact != null) {
           Assert.assertNotNull(lModelArtifact, "Model artifact not availble.");
           String lFilePath = lModelArtifact.getFile().getCanonicalPath();
-          String lExtractDirectory = project.getBuild().getDirectory() + "/uml-model";
+          String lExtractDirectory = mavenProject.getBuild().getDirectory() + "/uml-model";
           this.getLog().info("Extracting UML model files from Maven Artifact " + lFilePath + " to directory "
               + lExtractDirectory + ".");
           Tools.getFileTools().extractZipFile(lFilePath, lExtractDirectory, Long.MAX_VALUE);
