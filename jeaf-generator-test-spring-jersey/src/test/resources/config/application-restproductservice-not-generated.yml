@@ -32,12 +32,12 @@ rESTProductService:
     
     # Response timeout in milliseconds for calls to REST service. Please be aware that this is a very sensitive 
     # parameter and needs to be fine-tuned for your purposes.
-    responseTimeout: 10000
+    responseTimeout: 100
     
     # Timeout in milliseconds to establish connections to the REST service. As connections are pooled this parameter
     # should not have a too strong influence on the overall behavior. However please ensure that it fits to your
     # environment.
-    connectTimeout: 10000
+    connectTimeout: 100
     
   # Resilience4J circuit breaker configuration
   circuitbreaker:
