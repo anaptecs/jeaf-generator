@@ -258,6 +258,11 @@ package «packageName()».proxy;
 @org.springframework.stereotype.Component
 public class «name»HttpClient {
   /**
+   * Constant for problem JSON content type.
+   */
+  private static final String PROBLEM_JSON_CONTENT_TYPE = "application/problem+json";
+
+  /**
    * Maximum size of the connection pool.
    */
   @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.maxPoolSize}")
@@ -550,20 +555,33 @@ public class «name»HttpClient {
       }
       // Error when trying to execute REST call.
       else {
-        // Try to resolve some details using problem JSON.
-        HttpEntity lEntity = lResponse.getEntity();
-        if (lEntity.getContentLength() > 0) {
+        // If server provided problem JSON then we will return this information.
+        if (PROBLEM_JSON_CONTENT_TYPE.equals(lResponse.getEntity().getContentType())) {
           throw new com.anaptecs.jeaf.json.problem.RESTProblemException(lStatusCode, lResponse.getEntity().getContent());
         }
+        // Build up problem JSON from the information we have.
         else {
-          throw new RESTProblemException(lStatusCode);
+          // Try to resolve some details.
+          com.anaptecs.jeaf.json.problem.Problem.Builder lProblemBuilder = Problem.Builder.newBuilder().setStatus(lStatusCode);
+          lProblemBuilder.setType(pRequest.getUri().toString());
+          HttpEntity lEntity = lResponse.getEntity();
+          if (lEntity != null && lEntity.getContentLength() > 0) {
+            lProblemBuilder.setDetail(com.anaptecs.jeaf.tools.api.Tools.getStreamTools().getStreamContentAsString(lEntity.getContent()));
+          }
+          throw new RESTProblemException(lProblemBuilder.build());
         }
       }
     }
+    //
+    // In all the cases below we will use status code 500 INTERNAL_SERVER error as it is not the clients fault that the
+    // request could not be processed
+    //
     // IOException can result from communication or serialization problems.
     catch (IOException e) {
-      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(JSONMessages.REST_RESPONSE_PROCESSING_ERROR, e, pRequest.getRequestUri(),
-          e.getMessage());
+      com.anaptecs.jeaf.json.problem.Problem.Builder lProblemBuilder = com.anaptecs.jeaf.json.problem.Problem.Builder.newBuilder().setStatus(com.anaptecs.jeaf.tools.api.http.HTTPStatusCode.INTERNAL_SERVER_ERROR.getCode());
+      lProblemBuilder.setType(pRequest.toString());
+      lProblemBuilder.setDetail(e.getMessage());
+      throw new RESTProblemException(lProblemBuilder.build(), e);
     }
     // Thanks to circuit breaker interface definition of Resilience4J we have to handle RuntimeExceptions
     catch (RuntimeException e) {
@@ -571,8 +589,10 @@ public class «name»HttpClient {
     }
     // Thanks to circuit breaker interface definition of Resilience4J we also have to catch java.lang.Exception ;-(
     catch (Exception e) {
-      throw new JEAFSystemException(JSONMessages.REST_RESPONSE_PROCESSING_ERROR, e, pRequest.getRequestUri(),
-          e.getMessage());
+      com.anaptecs.jeaf.json.problem.Problem.Builder lProblemBuilder = com.anaptecs.jeaf.json.problem.Problem.Builder.newBuilder().setStatus(com.anaptecs.jeaf.tools.api.http.HTTPStatusCode.INTERNAL_SERVER_ERROR.getCode());
+      lProblemBuilder.setType(pRequest.toString());
+      lProblemBuilder.setDetail(e.getMessage());
+      throw new RESTProblemException(lProblemBuilder.build(), e);
     }
     // No matter what happened we have at least close the http response if possible.
     finally {
