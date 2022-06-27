@@ -30,6 +30,7 @@ public final class MyServiceProviderImplFactory extends ServiceProviderFactory {
    * 
    * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#createServiceProviderImplementation()
    */
+  @Override
   public ServiceProviderImplementation createServiceProviderImplementation( ) {
     return new MyServiceProviderImpl();
   }
@@ -42,6 +43,7 @@ public final class MyServiceProviderImplFactory extends ServiceProviderFactory {
    * 
    * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#getServiceProviderInterface()
    */
+  @Override
   public Class<? extends ServiceProvider> getServiceProviderInterface( ) {
     return MyServiceProvider.class;
   }

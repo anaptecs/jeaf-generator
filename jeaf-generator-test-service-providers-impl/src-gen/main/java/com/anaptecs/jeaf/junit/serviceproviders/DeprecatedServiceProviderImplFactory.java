@@ -30,6 +30,7 @@ public final class DeprecatedServiceProviderImplFactory extends ServiceProviderF
    * 
    * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#createServiceProviderImplementation()
    */
+  @Override
   public ServiceProviderImplementation createServiceProviderImplementation( ) {
     return new DeprecatedServiceProviderImpl();
   }
@@ -42,6 +43,7 @@ public final class DeprecatedServiceProviderImplFactory extends ServiceProviderF
    * 
    * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#getServiceProviderInterface()
    */
+  @Override
   public Class<? extends ServiceProvider> getServiceProviderInterface( ) {
     return DeprecatedServiceProvider.class;
   }

@@ -31,6 +31,7 @@ public final class MessagingServiceProviderImplFactory extends ServiceProviderFa
    * 
    * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#createServiceProviderImplementation()
    */
+  @Override
   public ServiceProviderImplementation createServiceProviderImplementation( ) {
     return new MessagingServiceProviderImpl();
   }
@@ -43,6 +44,7 @@ public final class MessagingServiceProviderImplFactory extends ServiceProviderFa
    * 
    * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#getServiceProviderInterface()
    */
+  @Override
   public Class<? extends ServiceProvider> getServiceProviderInterface( ) {
     return MessagingServiceProvider.class;
   }
