@@ -20,7 +20,6 @@ import org.apache.hc.core5.http.HttpHeaders;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.apache.hc.core5.http.protocol.BasicHttpContext;
 import org.apache.hc.core5.http.protocol.HttpContext;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.anaptecs.jeaf.json.api.JSON;
@@ -59,22 +58,10 @@ import com.anaptecs.spring.service.ProductService;
 @Service
 public class ProductServiceRESTProxy implements ProductService {
   /**
-   * URL of the REST service that is proxied by this service implementation.
+   * Reference to object holding all the required configuration values to delegate request to external REST service.
    */
-  @Value("${productService.externalURL}")
-  private String externalServiceURL;
-
-  /**
-   * Domain of the cookie that is used in requests.
-   */
-  @Value("${productService.cookieDomain}")
-  private String cookieDomain;
-
-  /**
-   * Path of the cookie that is used in requests.
-   */
-  @Value("${productService.cookiePath}")
-  private String cookiePath;
+  @Inject
+  private ProductServiceConfiguration configuration;
 
   @Inject
   private ProductServiceHttpClient httpClient;
@@ -91,7 +78,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
@@ -116,7 +103,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append(pProductID);
@@ -139,7 +126,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
@@ -163,7 +150,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("sortiment/");
@@ -182,11 +169,13 @@ public class ProductServiceRESTProxy implements ProductService {
     HttpContext lLocalContext = new BasicHttpContext();
     lLocalContext.setAttribute(HttpClientContext.COOKIE_STORE, lCookieStore);
     BasicClientCookie lResellerCookie = new BasicClientCookie("reseller", String.valueOf(pContext.getResellerID()));
-    if (cookieDomain != null) {
-      lResellerCookie.setDomain(cookieDomain);
+    String lCookieDomain = configuration.getCookieDomain();
+    if (lCookieDomain != null) {
+      lResellerCookie.setDomain(lCookieDomain);
     }
-    if (cookiePath != null) {
-      lResellerCookie.setPath(cookiePath);
+    String lCookiePath = configuration.getCookiePath();
+    if (lCookiePath != null) {
+      lResellerCookie.setPath(lCookiePath);
     }
     lCookieStore.addCookie(lResellerCookie);
     // Execute request and return result.
@@ -205,7 +194,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("ChannelCode");
@@ -229,7 +218,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.head();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
@@ -250,7 +239,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("deprecated/operation");
@@ -273,7 +262,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("deprecated/context");
@@ -291,11 +280,13 @@ public class ProductServiceRESTProxy implements ProductService {
     HttpContext lLocalContext = new BasicHttpContext();
     lLocalContext.setAttribute(HttpClientContext.COOKIE_STORE, lCookieStore);
     BasicClientCookie lResellerCookie = new BasicClientCookie("reseller", String.valueOf(pContext.getResellerID()));
-    if (cookieDomain != null) {
-      lResellerCookie.setDomain(cookieDomain);
+    String lCookieDomain = configuration.getCookieDomain();
+    if (lCookieDomain != null) {
+      lResellerCookie.setDomain(lCookieDomain);
     }
-    if (cookiePath != null) {
-      lResellerCookie.setPath(cookiePath);
+    String lCookiePath = configuration.getCookiePath();
+    if (lCookiePath != null) {
+      lResellerCookie.setPath(lCookiePath);
     }
     lCookieStore.addCookie(lResellerCookie);
     // Execute request and return result.
@@ -313,7 +304,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("deprecated/beanParams");
@@ -343,7 +334,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("deprecated/params");
@@ -367,7 +358,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("deprecated/body");
@@ -395,7 +386,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("deprecated/complexBody");
@@ -421,7 +412,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("deprecated/complexReturn");
@@ -443,7 +434,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.patch();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("specific/");
@@ -464,11 +455,13 @@ public class ProductServiceRESTProxy implements ProductService {
     HttpContext lLocalContext = new BasicHttpContext();
     lLocalContext.setAttribute(HttpClientContext.COOKIE_STORE, lCookieStore);
     BasicClientCookie lResellerCookie = new BasicClientCookie("reseller", String.valueOf(pContext.getResellerID()));
-    if (cookieDomain != null) {
-      lResellerCookie.setDomain(cookieDomain);
+    String lCookieDomain = configuration.getCookieDomain();
+    if (lCookieDomain != null) {
+      lResellerCookie.setDomain(lCookieDomain);
     }
-    if (cookiePath != null) {
-      lResellerCookie.setPath(cookiePath);
+    String lCookiePath = configuration.getCookiePath();
+    if (lCookiePath != null) {
+      lResellerCookie.setPath(lCookiePath);
     }
     lCookieStore.addCookie(lResellerCookie);
     // Execute request.
@@ -489,7 +482,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("ChannelCodeObject");
@@ -515,7 +508,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("currencies");
@@ -546,7 +539,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("currencies/valid");
@@ -572,7 +565,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("codeTypeUsages");
@@ -598,7 +591,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("/LocalBeanParam");
@@ -626,7 +619,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("/ExternalBeanParam");
@@ -654,7 +647,7 @@ public class ProductServiceRESTProxy implements ProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("/ChildBeanParam");

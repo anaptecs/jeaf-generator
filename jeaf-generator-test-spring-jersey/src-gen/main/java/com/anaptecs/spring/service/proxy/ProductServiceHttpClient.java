@@ -33,7 +33,6 @@ import org.apache.hc.core5.pool.PoolConcurrencyPolicy;
 import org.apache.hc.core5.pool.PoolReusePolicy;
 import org.apache.hc.core5.util.TimeValue;
 import org.apache.hc.core5.util.Timeout;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.anaptecs.jeaf.json.api.JSONMessages;
@@ -62,56 +61,10 @@ public class ProductServiceHttpClient {
   private static final String PROBLEM_JSON_CONTENT_TYPE = "application/problem+json";
 
   /**
-   * Maximum size of the connection pool.
+   * Reference to object holding all the required configuration values for the HTTP client and circuit breaker.
    */
-  @Value("${productService.http.maxPoolSize}")
-  private int maxPoolSize;
-
-  /**
-   * Maximum amount of idle connections in the connection pool.
-   */
-  @Value("${productService.http.maxIdleConnections}")
-  private int maxIdleConnections;
-
-  /**
-   * Keep alive duration for connection to REST service (in milliseconds).
-   */
-  @Value("${productService.http.keepAliveDuration}")
-  private int keepAliveDuration;
-
-  /**
-   * Parameter configures the time period in milliseconds after which a connection is validated before it is taken from
-   * the pool again.
-   */
-  @Value("${productService.http.validateAfterInactivityDuration}")
-  private int validateAfterInactivityDuration;
-
-  /**
-   * Maximum amount of retries before a call to the REST service is considered to be failed.
-   */
-  @Value("${productService.http.maxRetries}")
-  private int maxRetries;
-
-  /**
-   * Interval in milliseconds after which the REST service is called again in case that retries are configured.
-   */
-  @Value("${productService.http.retryInterval}")
-  private int retryInterval;
-
-  /**
-   * Response timeout in milliseconds for calls to REST service. Please be aware that this is a very sensitive parameter
-   * and needs to be fine-tuned for your purposes.
-   */
-  @Value("${productService.http.responseTimeout}")
-  private int responseTimeout;
-
-  /**
-   * Timeout in milliseconds to establish connections to the REST service. As connections are pooled this parameter
-   * should not have a too strong influence on the overall behavior. However please ensure that it fits to your
-   * environment.
-   */
-  @Value("${productService.http.connectTimeout}")
-  private int connectTimeout;
+  @Inject
+  private ProductServiceConfiguration configuration;
 
   /**
    * Instance of http client that is used to call proxied REST service. Configuration of HTTP client is according to the
@@ -120,59 +73,6 @@ public class ProductServiceHttpClient {
    * @see #initializeHTTPClient()
    */
   private CloseableHttpClient httpClient;
-
-  /**
-   * Failure rate threshold (percent of requests) defines which amount of failed request must be exceeded due to
-   * technical problems that the circuit breaker opens and no further request will be sent to the REST service.
-   * 
-   * Value must between 0 and 100.
-   */
-  @Value("${productService.circuitbreaker.failureRateThreshold}")
-  private int failureRateThreshold;
-
-  /**
-   * Duration in milliseconds that the circuit breaker stays open until request will be sent to the REST service again.
-   * 
-   * The value must be zero or greater.
-   */
-  @Value("${productService.circuitbreaker.durationInOpenState}")
-  private int durationInOpenState;
-
-  /**
-   * Configures the duration in milliseconds above which calls are considered as slow and increase the slow calls
-   * percentage.
-   * 
-   * The value must be zero or greater.
-   */
-  @Value("${productService.circuitbreaker.slowRequestDuration}")
-  private int slowRequestDuration;
-
-  /**
-   * Configures the slow request threshold in percentage. The circuit breaker considers a call as slow when the call
-   * duration is greater than <code>slowCallDuration</code>. When the percentage of slow calls is equal to or greater
-   * than the threshold, the circuit breaker transitions to open and starts short-circuiting calls.
-   * 
-   * Value must between 0 and 100.
-   */
-  @Value("${productService.circuitbreaker.slowRequestRateThreshold}")
-  private int slowRequestRateThreshold;
-
-  /**
-   * Configures the number of permitted calls when the circuit breaker is half open.
-   * 
-   * The value must be zero or greater.
-   */
-  @Value("${productService.circuitbreaker.permittedCallsInHalfOpenState}")
-  private int permittedCallsInHalfOpenState;
-
-  /**
-   * Configures the size of the sliding window in seconds which is used to record the outcome of calls when the circuit
-   * breaker is closed.
-   * 
-   * The value must be greater than 0.
-   */
-  @Value("${productService.circuitbreaker.slidingWindowSizeSeconds}")
-  private int slidingWindowSizeSeconds;
 
   /**
    * Circuit breaker instance that is used when calling the REST service.
@@ -199,24 +99,27 @@ public class ProductServiceHttpClient {
         .register(URIScheme.HTTP.id, PlainConnectionSocketFactory.getSocketFactory())
         .register(URIScheme.HTTPS.id, SSLConnectionSocketFactory.getSocketFactory()).build();
     // Configure connection manager according to provided configuration parameters
-    PoolingHttpClientConnectionManager lConnectionManager = new PoolingHttpClientConnectionManager(lRegistry,
-        PoolConcurrencyPolicy.LAX, PoolReusePolicy.LIFO, TimeValue.ofMilliseconds(keepAliveDuration));
-    lConnectionManager.setMaxTotal(maxPoolSize);
-    lConnectionManager.setDefaultMaxPerRoute(maxIdleConnections);
-    lConnectionManager.setValidateAfterInactivity(TimeValue.ofMilliseconds(validateAfterInactivityDuration));
+    PoolingHttpClientConnectionManager lConnectionManager =
+        new PoolingHttpClientConnectionManager(lRegistry, PoolConcurrencyPolicy.LAX, PoolReusePolicy.LIFO,
+            TimeValue.ofMilliseconds(configuration.getKeepAliveDuration()));
+    lConnectionManager.setMaxTotal(configuration.getMaxPoolSize());
+    lConnectionManager.setDefaultMaxPerRoute(configuration.getMaxIdleConnections());
+    lConnectionManager
+        .setValidateAfterInactivity(TimeValue.ofMilliseconds(configuration.getValidateAfterInactivityDuration()));
     lConnectionManager.setDefaultSocketConfig(lSocketConfig);
     // Create pool for http connections that is used for this proxy.
     HttpClientBuilder lBuilder = HttpClientBuilder.create();
     lBuilder.setConnectionManager(lConnectionManager);
     // Configure request specific parameters.
     RequestConfig.Builder lConfigBuilder = RequestConfig.custom();
-    lConfigBuilder.setConnectionKeepAlive(TimeValue.ofMilliseconds(keepAliveDuration));
-    lConfigBuilder.setConnectTimeout(Timeout.ofMilliseconds(connectTimeout));
-    lConfigBuilder.setResponseTimeout(Timeout.ofMilliseconds(responseTimeout));
+    lConfigBuilder.setConnectionKeepAlive(TimeValue.ofMilliseconds(configuration.getKeepAliveDuration()));
+    lConfigBuilder.setConnectTimeout(Timeout.ofMilliseconds(configuration.getConnectTimeout()));
+    lConfigBuilder.setResponseTimeout(Timeout.ofMilliseconds(configuration.getResponseTimeout()));
     lConfigBuilder.setExpectContinueEnabled(true);
     lBuilder.setDefaultRequestConfig(lConfigBuilder.build());
     // Define retry behavior.
-    lBuilder.setRetryStrategy(new DefaultHttpRequestRetryStrategy(maxRetries, TimeValue.ofMilliseconds(retryInterval)));
+    lBuilder.setRetryStrategy(new DefaultHttpRequestRetryStrategy(configuration.getMaxRetries(),
+        TimeValue.ofMilliseconds(configuration.getRetryInterval())));
     // Finally we have to create the http client.
     httpClient = lBuilder.build();
   }
@@ -229,12 +132,12 @@ public class ProductServiceHttpClient {
     XFun.getTrace().info("Initializing Circuit Breaker for ProductService");
     // Create circuit break configuration for target.
     CircuitBreakerConfig.Builder lConfigBuilder = CircuitBreakerConfig.custom();
-    lConfigBuilder.failureRateThreshold(failureRateThreshold);
-    lConfigBuilder.waitDurationInOpenState(Duration.ofMillis(durationInOpenState));
-    lConfigBuilder.slowCallDurationThreshold(Duration.ofMillis(slowRequestDuration));
-    lConfigBuilder.slowCallRateThreshold(slowRequestRateThreshold);
-    lConfigBuilder.permittedNumberOfCallsInHalfOpenState(permittedCallsInHalfOpenState);
-    lConfigBuilder.slidingWindowSize(slidingWindowSizeSeconds);
+    lConfigBuilder.failureRateThreshold(configuration.getFailureRateThreshold());
+    lConfigBuilder.waitDurationInOpenState(Duration.ofMillis(configuration.getDurationInOpenState()));
+    lConfigBuilder.slowCallDurationThreshold(Duration.ofMillis(configuration.getSlowRequestDuration()));
+    lConfigBuilder.slowCallRateThreshold(configuration.getSlowRequestRateThreshold());
+    lConfigBuilder.permittedNumberOfCallsInHalfOpenState(configuration.getPermittedCallsInHalfOpenState());
+    lConfigBuilder.slidingWindowSize(configuration.getSlidingWindowSizeSeconds());
     lConfigBuilder.recordExceptions(IOException.class, RuntimeException.class);
     CircuitBreakerRegistry lCircuitBreakerRegistry = CircuitBreakerRegistry.of(lConfigBuilder.build());
     circuitBreaker = lCircuitBreakerRegistry.circuitBreaker("Product Service Circuit Breaker");

@@ -21,7 +21,6 @@ import org.apache.hc.core5.http.HttpHeaders;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.apache.hc.core5.http.protocol.BasicHttpContext;
 import org.apache.hc.core5.http.protocol.HttpContext;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.anaptecs.jeaf.json.api.JSON;
@@ -52,22 +51,10 @@ import com.anaptecs.spring.service.RESTProductService;
 @Service
 public class RESTProductServiceRESTProxy implements RESTProductService {
   /**
-   * URL of the REST service that is proxied by this service implementation.
+   * Reference to object holding all the required configuration values to delegate request to external REST service.
    */
-  @Value("${rESTProductService.externalURL}")
-  private String externalServiceURL;
-
-  /**
-   * Domain of the cookie that is used in requests.
-   */
-  @Value("${rESTProductService.cookieDomain}")
-  private String cookieDomain;
-
-  /**
-   * Path of the cookie that is used in requests.
-   */
-  @Value("${rESTProductService.cookiePath}")
-  private String cookiePath;
+  @Inject
+  private RESTProductServiceConfiguration configuration;
 
   @Inject
   private RESTProductServiceHttpClient httpClient;
@@ -85,7 +72,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/rest-products");
     lURIBuilder.append('?');
     lURIBuilder.append("maxResult=");
@@ -113,7 +100,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/rest-products");
     lURIBuilder.append('/');
     lURIBuilder.append(pProductID);
@@ -136,7 +123,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/rest-products");
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
@@ -160,7 +147,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/rest-products");
     lURIBuilder.append('/');
     lURIBuilder.append("sortiment/");
@@ -179,11 +166,13 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     HttpContext lLocalContext = new BasicHttpContext();
     lLocalContext.setAttribute(HttpClientContext.COOKIE_STORE, lCookieStore);
     BasicClientCookie lResellerCookie = new BasicClientCookie("reseller", String.valueOf(pContext.getResellerID()));
-    if (cookieDomain != null) {
-      lResellerCookie.setDomain(cookieDomain);
+    String lCookieDomain = configuration.getCookieDomain();
+    if (lCookieDomain != null) {
+      lResellerCookie.setDomain(lCookieDomain);
     }
-    if (cookiePath != null) {
-      lResellerCookie.setPath(cookiePath);
+    String lCookiePath = configuration.getCookiePath();
+    if (lCookiePath != null) {
+      lResellerCookie.setPath(lCookiePath);
     }
     lCookieStore.addCookie(lResellerCookie);
     // Execute request and return result.
@@ -202,7 +191,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/rest-products");
     lURIBuilder.append('/');
     lURIBuilder.append("ChannelCode");
@@ -226,7 +215,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.head();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/rest-products");
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
@@ -245,7 +234,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/rest-products");
     lURIBuilder.append('/');
     lURIBuilder.append("test-init");
@@ -268,7 +257,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/rest-products");
     lURIBuilder.append('/');
     lURIBuilder.append("currencies/");
@@ -297,7 +286,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/rest-products");
     lURIBuilder.append('/');
     lURIBuilder.append("async-currencies/");
@@ -328,7 +317,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
     StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(externalServiceURL);
+    lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/rest-products");
     lURIBuilder.append('/');
     lURIBuilder.append("test-params");
@@ -346,11 +335,13 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lLocalContext.setAttribute(HttpClientContext.COOKIE_STORE, lCookieStore);
     BasicClientCookie lGiveMeMoreCookiesCookie =
         new BasicClientCookie("giveMeMoreCookies", String.valueOf(pIntCookieParam));
-    if (cookieDomain != null) {
-      lGiveMeMoreCookiesCookie.setDomain(cookieDomain);
+    String lCookieDomain = configuration.getCookieDomain();
+    if (lCookieDomain != null) {
+      lGiveMeMoreCookiesCookie.setDomain(lCookieDomain);
     }
-    if (cookiePath != null) {
-      lGiveMeMoreCookiesCookie.setPath(cookiePath);
+    String lCookiePath = configuration.getCookiePath();
+    if (lCookiePath != null) {
+      lGiveMeMoreCookiesCookie.setPath(lCookiePath);
     }
     lCookieStore.addCookie(lGiveMeMoreCookiesCookie);
     // Execute request and return result.
