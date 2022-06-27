@@ -74,7 +74,7 @@ public class RESTProductServiceHttpClient {
   private int maxIdleConnections;
 
   /**
-   * Keep alive duration for connection to REST service (in milliseconds)
+   * Keep alive duration for connection to REST service (in milliseconds).
    */
   @Value("${rESTProductService.http.keepAliveDuration}")
   private int keepAliveDuration;

@@ -12,67 +12,67 @@ import org.springframework.stereotype.Component;
  * Class provides all the configuration parameters that are required by REST Proxy Service implementation.
  */
 @Component
-public class RESTProductServiceConfiguration {
+public class ProductServiceConfiguration {
   /**
    * URL of the REST service that is proxied by this service implementation.
    */
-  @Value("${rESTProductService.externalURL}")
+  @Value("${productService.externalURL}")
   private String externalServiceURL;
 
   /**
    * Domain of the cookie that is used in requests.
    */
-  @Value("${rESTProductService.cookieDomain}")
+  @Value("${productService.cookieDomain}")
   private String cookieDomain;
 
   /**
    * Path of the cookie that is used in requests.
    */
-  @Value("${rESTProductService.cookiePath}")
+  @Value("${productService.cookiePath}")
   private String cookiePath;
 
   /**
    * Maximum size of the connection pool.
    */
-  @Value("${rESTProductService.http.maxPoolSize}")
+  @Value("${productService.http.maxPoolSize}")
   private int maxPoolSize;
 
   /**
    * Maximum amount of idle connections in the connection pool.
    */
-  @Value("${rESTProductService.http.maxIdleConnections}")
+  @Value("${productService.http.maxIdleConnections}")
   private int maxIdleConnections;
 
   /**
    * Keep alive duration for connection to REST service (in milliseconds).
    */
-  @Value("${rESTProductService.http.keepAliveDuration}")
+  @Value("${productService.http.keepAliveDuration}")
   private int keepAliveDuration;
 
   /**
    * Parameter configures the time period in milliseconds after which a connection is validated before it is taken from
    * the pool again.
    */
-  @Value("${rESTProductService.http.validateAfterInactivityDuration}")
+  @Value("${productService.http.validateAfterInactivityDuration}")
   private int validateAfterInactivityDuration;
 
   /**
    * Maximum amount of retries before a call to the REST service is considered to be failed.
    */
-  @Value("${rESTProductService.http.maxRetries}")
+  @Value("${productService.http.maxRetries}")
   private int maxRetries;
 
   /**
    * Interval in milliseconds after which the REST service is called again in case that retries are configured.
    */
-  @Value("${rESTProductService.http.retryInterval}")
+  @Value("${productService.http.retryInterval}")
   private int retryInterval;
 
   /**
    * Response timeout in milliseconds for calls to REST service. Please be aware that this is a very sensitive parameter
    * and needs to be fine-tuned for your purposes.
    */
-  @Value("${rESTProductService.http.responseTimeout}")
+  @Value("${productService.http.responseTimeout}")
   private int responseTimeout;
 
   /**
@@ -80,7 +80,7 @@ public class RESTProductServiceConfiguration {
    * should not have a too strong influence on the overall behavior. However please ensure that it fits to your
    * environment.
    */
-  @Value("${rESTProductService.http.connectTimeout}")
+  @Value("${productService.http.connectTimeout}")
   private int connectTimeout;
 
   /**
@@ -89,7 +89,7 @@ public class RESTProductServiceConfiguration {
    * 
    * Value must between 0 and 100.
    */
-  @Value("${rESTProductService.circuitbreaker.failureRateThreshold}")
+  @Value("${productService.circuitbreaker.failureRateThreshold}")
   private int failureRateThreshold;
 
   /**
@@ -97,7 +97,7 @@ public class RESTProductServiceConfiguration {
    * 
    * The value must be zero or greater.
    */
-  @Value("${rESTProductService.circuitbreaker.durationInOpenState}")
+  @Value("${productService.circuitbreaker.durationInOpenState}")
   private int durationInOpenState;
 
   /**
@@ -106,7 +106,7 @@ public class RESTProductServiceConfiguration {
    * 
    * The value must be zero or greater.
    */
-  @Value("${rESTProductService.circuitbreaker.slowRequestDuration}")
+  @Value("${productService.circuitbreaker.slowRequestDuration}")
   private int slowRequestDuration;
 
   /**
@@ -116,7 +116,7 @@ public class RESTProductServiceConfiguration {
    * 
    * Value must between 0 and 100.
    */
-  @Value("${rESTProductService.circuitbreaker.slowRequestRateThreshold}")
+  @Value("${productService.circuitbreaker.slowRequestRateThreshold}")
   private int slowRequestRateThreshold;
 
   /**
@@ -124,7 +124,7 @@ public class RESTProductServiceConfiguration {
    * 
    * The value must be zero or greater.
    */
-  @Value("${rESTProductService.circuitbreaker.permittedCallsInHalfOpenState}")
+  @Value("${productService.circuitbreaker.permittedCallsInHalfOpenState}")
   private int permittedCallsInHalfOpenState;
 
   /**
@@ -133,7 +133,7 @@ public class RESTProductServiceConfiguration {
    * 
    * The value must be greater than 0.
    */
-  @Value("${rESTProductService.circuitbreaker.slidingWindowSizeSeconds}")
+  @Value("${productService.circuitbreaker.slidingWindowSizeSeconds}")
   private int slidingWindowSizeSeconds;
 
   /**
