@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * Class provides all the configuration parameters that are required by REST Proxy Service implementation.
  */
 @Component
-public class RESTPRoductServiceConfiguration {
+public class RESTProductServiceConfiguration {
   /**
    * URL of the REST service that is proxied by this service implementation.
    */
