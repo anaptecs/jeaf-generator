@@ -275,7 +275,7 @@ public class «name»HttpClient {
   private int maxIdleConnections;
 
   /**
-   * Keep alive duration for connection to REST service (in milliseconds)
+   * Keep alive duration for connection to REST service (in milliseconds).
    */
   @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».http.keepAliveDuration}")
   private int keepAliveDuration;
