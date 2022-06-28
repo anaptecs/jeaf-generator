@@ -13,9 +13,9 @@
 «ENDDEFINE»
 
 «DEFINE GenerateRESTServiceProxySpring FOR RESTResource»
-«FILE packagePath()+"/proxy/"+name+"RESTProxy.java" src_gen»
+«FILE packagePath()+"/restproxy/"+name+"RESTProxy.java" src_gen»
 «getFileHeader()»
-package «packageName()».proxy;
+package «packageName()».restproxy;
 
 
 /**
@@ -237,9 +237,9 @@ public class «name»RESTProxy implements «this.fqn()» {
 «ENDDEFINE»
 
 «DEFINE GenerateRESTServiceProxyHttpClientSpring FOR RESTResource»
-«FILE packagePath()+"/proxy/"+name+"HttpClient.java" src_gen»
+«FILE packagePath()+"/restproxy/"+name+"HttpClient.java" src_gen»
 «getFileHeader()»
-package «packageName()».proxy;
+package «packageName()».restproxy;
 
 /**
  * Class implements a http client implementation that can be used to call «name». This implementation supports a
@@ -508,9 +508,9 @@ public class «name»HttpClient {
 «ENDDEFINE»
 
 «DEFINE GenerateRESTServiceProxyConfigSpring FOR RESTResource»
-«FILE packagePath()+"/proxy/"+name+"Configuration.java" src_gen»
+«FILE packagePath()+"/restproxy/"+name+"Configuration.java" src_gen»
 «getFileHeader()»
-package «packageName()».proxy;
+package «packageName()».restproxy;
 
 /**
  * Class provides all the configuration parameters that are required by REST Proxy Service implementation.

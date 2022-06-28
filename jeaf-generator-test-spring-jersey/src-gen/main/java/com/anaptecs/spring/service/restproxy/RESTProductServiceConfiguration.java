@@ -3,7 +3,7 @@
  * 
  * Copyright 2004 - 2019. All rights reserved.
  */
-package com.anaptecs.spring.service.proxy;
+package com.anaptecs.spring.service.restproxy;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
