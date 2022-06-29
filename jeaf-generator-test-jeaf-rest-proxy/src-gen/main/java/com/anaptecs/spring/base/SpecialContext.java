@@ -20,6 +20,11 @@ import com.anaptecs.jeaf.xfun.api.XFunMessages;
  */
 public class SpecialContext extends Context {
   /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * Constant for the name of attribute "specificHeader".
    */
   public static final String SPECIFICHEADER = "specificHeader";

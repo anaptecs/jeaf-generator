@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.util.Collection;
 import java.util.Collections;
@@ -29,7 +30,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @version JEAF Release 1.4.x
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Product {
+public class Product implements Serializable {
+  /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
   /**
    * Constant for the name of attribute "resellers".
    */

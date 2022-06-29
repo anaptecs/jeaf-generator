@@ -21,6 +21,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UICStop extends Stop {
   /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * Constant for the name of attribute "uicCode".
    */
   public static final String UICCODE = "uicCode";

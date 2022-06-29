@@ -21,6 +21,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Company extends Partner {
   /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * Constant for the name of attribute "name".
    */
   public static final String NAME = "name";

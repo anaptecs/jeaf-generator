@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.validation.ConstraintViolationException;
@@ -25,7 +26,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @version JEAF Release 1.4.x
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MoneyAmount {
+public class MoneyAmount implements Serializable {
+  /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
   /**
    * Constant for the name of attribute "amount".
    */

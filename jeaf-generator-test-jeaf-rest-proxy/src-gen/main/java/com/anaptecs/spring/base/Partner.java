@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -30,7 +31,12 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = Company.class, name = "Company"),
   @JsonSubTypes.Type(value = Person.class, name = "Person") })
-public class Partner {
+public class Partner implements Serializable {
+  /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
   /**
    * Constant for the name of attribute "postalAddresses".
    */

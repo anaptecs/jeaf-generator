@@ -166,6 +166,7 @@
 					<generateJAXRSAnnotations>true</generateJAXRSAnnotations>
 					<generateServiceInterfaces>true</generateServiceInterfaces>
 					<generatePOJOs>true</generatePOJOs>
+					<makePOJOsSerializable>true</makePOJOsSerializable>
 					<generateJSONSerializers>true</generateJSONSerializers>
 					<generateJacksonAnnotations>true</generateJacksonAnnotations>
 					
@@ -217,7 +218,7 @@
 						<configuration>
 							<resourceGenDirectory>${basedir}/src-gen/main/resources</resourceGenDirectory>
 							<testResourceGenDirectory>${basedir}/src-gen/test/resources</testResourceGenDirectory>
-							<targetDirectory>${basedir}/target/classes</targetDirectory>
+							<testTargetDirectory>${basedir}/target/test-classes</testTargetDirectory>
 						</configuration>
 					</execution>
 				</executions>

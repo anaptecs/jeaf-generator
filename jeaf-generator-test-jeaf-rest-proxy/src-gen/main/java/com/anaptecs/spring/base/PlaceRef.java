@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.io.Serializable;
+
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -24,7 +26,12 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
   @JsonSubTypes.Type(value = CHStopPlace.class, name = "CHStopPlace"),
   @JsonSubTypes.Type(value = UICStopPlace.class, name = "UICStopPlace"),
   @JsonSubTypes.Type(value = TopoRef.class, name = "TopoRef") })
-public abstract class PlaceRef {
+public abstract class PlaceRef implements Serializable {
+  /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
   /**
    * Constant for the name of attribute "name".
    */

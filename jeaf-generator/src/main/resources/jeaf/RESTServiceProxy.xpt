@@ -9,14 +9,147 @@
 «DEFINE GenerateRESTServiceProxy FOR RESTResource»
   «IF isTargetRuntimeSpring()»
   	«EXPAND GenerateRESTServiceProxySpring»
-  «ENDIF» 
+  «ENDIF»
+  «IF isTargetRuntimeJEAF()»
+  	«EXPAND GenerateRESTProxyServiceProviderInterface»
+  	«EXPAND GenerateRESTProxyServiceProviderFactory»
+  	«EXPAND GenerateRESTProxyServiceProviderImpl»
+  «ENDIF»
+   
 «ENDDEFINE»
+
+«DEFINE GenerateRESTProxyServiceProviderInterface FOR RESTResource»
+«FILE packagePath()+"/restproxy/"+name+"RESTProxyServiceProvider.java" src_gen»
+«getFileHeader()»
+package «packageName()».restproxy;
+
+/**
+ * Service Provider Interface is generated so that a proxy for a REST Resource can be provided as JEAF Service Provider.
+ */
+public interface «name»RESTProxyServiceProvider extends com.anaptecs.jeaf.core.api.ServiceProvider {
+  «EXPAND JEAFOperation::InterfaceOperation FOREACH ownedOperation»
+}
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE GenerateRESTProxyServiceProviderFactory FOR RESTResource»
+«FILE packagePath()+"/restproxy/"+name+"RESTProxyServiceProviderFactory.java" src_gen»
+«getFileHeader()»
+package «packageName()».restproxy;
+
+import com.anaptecs.jeaf.core.api.ServiceProvider;
+import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
+import com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory;
+
+/**
+ * This class is the factory class the service provider implementation «name»RESTProxyServiceProviderImpl().
+ * 
+ * «getComment()»
+ */
+@com.anaptecs.jeaf.core.annotations.ServiceProviderFactory
+public final class «name»RESTProxyServiceProviderFactory extends ServiceProviderFactory {
+  /**
+   * Initialize object. No actions have to be performed.
+   */
+  public «name»RESTProxyServiceProviderFactory( ) {
+    // Nothing to do.
+  }
+
+  /**
+   * Method creates a new instance of the service provider.
+   * 
+   * @return {@link ServiceProviderImplementation} Instance of service provider. The method never returns null.
+   * 
+   * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#createServiceProviderImplementation()
+   */
+  public ServiceProviderImplementation createServiceProviderImplementation( ) {
+    return new «name»RESTProxyServiceProviderImpl();
+  }
+
+  /**
+   * Method returns the interface of the service provider created by this factory.
+   * 
+   * @return Class Class object of interface that belongs to the service provider that is created by this factory. The
+   * method never returns null.
+   * 
+   * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#getServiceProviderInterface()
+   */
+  public Class<? extends ServiceProvider> getServiceProviderInterface( ) {
+    return «packageName()».restproxy.«name»RESTProxyServiceProvider.class;
+  }
+}
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE GenerateRESTProxyServiceProviderImpl FOR RESTResource»
+«FILE packagePath()+"/restproxy/"+name+"RESTProxyServiceProviderImpl.java" src_gen»
+«getFileHeader()»
+package «packageName()».restproxy;
+
+import com.anaptecs.jeaf.core.api.ServiceProvider;
+import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
+import com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory;
+
+/**
+ * Class implements a service provider that acts as proxy for REST service «name».
+ */
+public final class «name»RESTProxyServiceProviderImpl implements com.anaptecs.jeaf.core.spi.ServiceProviderImplementation, «packageName()».restproxy.«name»RESTProxyServiceProvider {
+  /**
+   * Reference to the object that identifies this component. The reference is never null.
+   */
+  private static final com.anaptecs.jeaf.xfun.api.common.ComponentID COMPONENT_ID;
+
+  /**
+   * Static initializer is used to create the components ComponentID object and its trace object.
+   */
+  static {
+    // Create Component ID and trace object.
+    Package lBasePackage = «name»RESTProxyServiceProviderImpl.class.getPackage();
+    COMPONENT_ID = new ComponentID("«name»RESTProxyServiceProviderImpl", lBasePackage.getName());
+  }
+
+  /**
+   * Reference to object holding all the required configuration values to delegate request to external REST service.
+   */
+  private «name»Configuration configuration;
+
+  /**
+   * HTTP client is used to handle communication to REST service.
+   */
+  private «name»HttpClient httpClient;
+  
+  /**
+   * Determine configuration of the service provider implementation and initialize httpo client to call REST service. 
+   */
+  @Override
+  public void initialize( ) {
+    // Initialize configuration and http client.
+    com.anaptecs.jeaf.xfun.api.config.Configuration lComponentConfiguration = XFun.getConfigurationProvider().getComponentConfiguration(COMPONENT_ID);
+    configuration = new «name»Configuration(lComponentConfiguration);
+    httpClient = new «name»HttpClient(configuration);
+  }
+  
+  /**
+   * Method checks state of this service provider implementation.
+   * 
+   * @return {@link HealthCheckResult} Result of the check.
+   */
+  @Override
+  public com.anaptecs.jeaf.xfun.api.health.HealthCheckResult check( com.anaptecs.jeaf.xfun.api.health.CheckLevel pLevel ) {
+    return httpClient.check(pLevel);
+  }
+
+  «EXPAND RESTProxyOperationOperation(this) FOREACH ownedOperation.typeSelect(RESTOperation)»
+}
+«ENDFILE»
+«ENDDEFINE»
+
+
 
 «DEFINE GenerateRESTServiceProxySpring FOR RESTResource»
 «FILE packagePath()+"/restproxy/"+name+"RESTProxy.java" src_gen»
 «getFileHeader()»
 package «packageName()».restproxy;
-
 
 /**
  * Class implements a proxy for an REST Service. The proxy is implemented as Spring services. This way to developers it
@@ -42,6 +175,9 @@ public class «name»RESTProxy implements «this.fqn()» {
   @javax.inject.Inject
   private «name»Configuration configuration;
 
+  /**
+   * HTTP client is used to handle communication to REST service.
+   */
   @javax.inject.Inject
   private «name»HttpClient httpClient;
   
@@ -231,12 +367,6 @@ public class «name»RESTProxy implements «this.fqn()» {
 «ENDDEFINE»
 
 «DEFINE GenerateRESTServiceProxyHttpClient FOR RESTResource»
-  «IF isTargetRuntimeSpring()»
-  	«EXPAND GenerateRESTServiceProxyHttpClientSpring»
-  «ENDIF» 
-«ENDDEFINE»
-
-«DEFINE GenerateRESTServiceProxyHttpClientSpring FOR RESTResource»
 «FILE packagePath()+"/restproxy/"+name+"HttpClient.java" src_gen»
 «getFileHeader()»
 package «packageName()».restproxy;
@@ -245,7 +375,9 @@ package «packageName()».restproxy;
  * Class implements a http client implementation that can be used to call «name». This implementation supports a
  * wide range of configuration parameters for Apache HTTP client and Resilience4J circuit breaker.
  */
+«IF isTargetRuntimeSpring()»
 @org.springframework.stereotype.Component
+«ENDIF»
 public class «name»HttpClient {
   /**
    * Constant for problem JSON content type.
@@ -255,8 +387,10 @@ public class «name»HttpClient {
   /**
    * Reference to object holding all the required configuration values for the HTTP client and circuit breaker.
    */
+  «IF isTargetRuntimeSpring()»
   @Inject
-  private «name»Configuration configuration;
+  «ENDIF»
+  private «IF isTargetRuntimeJEAF()»final «ENDIF»«name»Configuration configuration;
 
   /**
    * Instance of http client that is used to call proxied REST service. Configuration of HTTP client is according to the
@@ -264,28 +398,44 @@ public class «name»HttpClient {
    * 
    * @see #initializeHTTPClient()
    */
-  private org.apache.hc.client5.http.impl.classic.CloseableHttpClient httpClient;
+  private «IF isTargetRuntimeJEAF()»final «ENDIF»org.apache.hc.client5.http.impl.classic.CloseableHttpClient httpClient;
 
   /**
    * Circuit breaker instance that is used when calling the REST service.
    * 
    * @see #initializeCircuitBreaker()
    */
-  private io.github.resilience4j.circuitbreaker.CircuitBreaker circuitBreaker;
+  private «IF isTargetRuntimeJEAF()»final «ENDIF»io.github.resilience4j.circuitbreaker.CircuitBreaker circuitBreaker;
 
   /**
    * Object mapper is used for serialization and deserialization of objects from Java to JSON and vice versa.
    */
+  «IF isTargetRuntimeSpring()»
   @javax.inject.Inject
-  private com.fasterxml.jackson.databind.ObjectMapper objectMapper;
+  «ENDIF»
+  private «IF isTargetRuntimeJEAF()»final «ENDIF»com.fasterxml.jackson.databind.ObjectMapper objectMapper;
+
+  «IF isTargetRuntimeJEAF()»
+  /**
+   * Initialize object.
+   * 
+   * @param pConfiguration Object to access configuration values for http client. The paramater must not be null.
+   */
+  «name»HttpClient( «name»Configuration pConfiguration ) {
+    configuration = pConfiguration;
+    httpClient = this.initializeHTTPClient();
+    circuitBreaker = this.initializeCircuitBreaker();
+    objectMapper = com.anaptecs.jeaf.json.api.JSON.getJSONTools().getDefaultObjectMapper();
+  }
+  «ENDIF»
 
   /**
    * Method is called after service startup and performs initialization of Apache HTTP Client.
    */
+  «IF isTargetRuntimeSpring()» 
   @javax.annotation.PostConstruct
-  private void initializeHTTPClient( ) {
-    com.anaptecs.jeaf.xfun.api.XFun.getTrace().info("Initializing Apache HTTP Client for ProductService");
-
+  «ENDIF»
+  private «IF isTargetRuntimeJEAF()»CloseableHttpClient«ELSE»void«ENDIF» initializeHTTPClient( ) {
     // Create connection manager that can be used by multiple threads in parallel.
     org.apache.hc.core5.http.io.SocketConfig lSocketConfig = SocketConfig.custom().setTcpNoDelay(true).build();
 
@@ -317,16 +467,20 @@ public class «name»HttpClient {
     lBuilder.setRetryStrategy(new org.apache.hc.client5.http.impl.DefaultHttpRequestRetryStrategy(configuration.getMaxRetries(), TimeValue.ofMilliseconds(configuration.getRetryInterval())));
 
     // Finally we have to create the http client.
+    «IF isTargetRuntimeJEAF()»
+    return lBuilder.build();
+    «ELSE»
     httpClient = lBuilder.build();
+    «ENDIF»
   }
 
   /**
    * Method is called after service startup and performs initialization of resilience4J circuit breaker.
    */
+  «IF isTargetRuntimeSpring()»
   @javax.annotation.PostConstruct
-  private void initializeCircuitBreaker( ) {
-    com.anaptecs.jeaf.xfun.api.XFun.getTrace().info("Initializing Circuit Breaker for ProductService");
-
+  «ENDIF»
+  private «IF isTargetRuntimeJEAF()»CircuitBreaker«ELSE»void«ENDIF» initializeCircuitBreaker( ) {
     // Create circuit break configuration for target.
     io.github.resilience4j.circuitbreaker.CircuitBreakerConfig.Builder lConfigBuilder = io.github.resilience4j.circuitbreaker.CircuitBreakerConfig.custom();
     lConfigBuilder.failureRateThreshold(configuration.getFailureRateThreshold());
@@ -338,7 +492,54 @@ public class «name»HttpClient {
     lConfigBuilder.recordExceptions(java.io.IOException.class, java.lang.RuntimeException.class);
 
     io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry lCircuitBreakerRegistry = io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry.of(lConfigBuilder.build());
+    «IF isTargetRuntimeJEAF()»
+    return lCircuitBreakerRegistry.circuitBreaker("Product Service Circuit Breaker");
+    «ELSE»
     circuitBreaker = lCircuitBreakerRegistry.circuitBreaker("Product Service Circuit Breaker");
+    «ENDIF»
+  }
+
+  /**
+   * Method check state state of this http client based on the state of the circuit breaker.
+   * 
+   * @param pLevel Check level is not consider for the executed checks.
+   * @return {@link HealthCheckResult} Result of the check. Method returns null in case that everything is fine.
+   */
+  public com.anaptecs.jeaf.xfun.api.health.HealthCheckResult check( com.anaptecs.jeaf.xfun.api.health.CheckLevel pLevel ) {
+    // Determine circuit breaker state.
+    io.github.resilience4j.circuitbreaker.CircuitBreaker.State lState = circuitBreaker.getState();
+
+    // Determine health state depending on circuit breaker state.
+    HealthCheckResult lCheckResult;
+    switch (lState) {
+      // Everything is fine
+      case CLOSED:
+        lCheckResult = null;
+        break;
+
+      // Circuit breaker is not active
+      case DISABLED:
+      case METRICS_ONLY:
+        com.anaptecs.jeaf.xfun.api.errorhandling.FailureMessage lWarning = new FailureMessage(JSONMessages.CIRCUIT_BREAKER_NOT_ACTIVE, "«name»",
+            configuration.getExternalServiceURL(), lState.name());
+        lCheckResult = new HealthCheckResult(com.anaptecs.jeaf.xfun.api.health.HealthStatus.WARNING, lWarning, null);
+        break;
+
+      // Besides open states also half open is treated as open to avoid flipping back and forth of health state
+      case OPEN:
+      case FORCED_OPEN:
+      case HALF_OPEN:
+        com.anaptecs.jeaf.xfun.api.errorhandling.FailureMessage lError = new FailureMessage(JSONMessages.CIRCUIT_BREAKER_NOT_ACTIVE, "«name»",
+            configuration.getExternalServiceURL(), lState.name());
+        lCheckResult = new HealthCheckResult(com.anaptecs.jeaf.xfun.api.health.HealthStatus.ERROR, null, lError);
+        break;
+
+      default:
+        com.anaptecs.jeaf.xfun.api.checks.Assert.unexpectedEnumLiteral(lState);
+        lCheckResult = null;
+    }
+
+    return lCheckResult;
   }
 
   /**
@@ -502,12 +703,6 @@ public class «name»HttpClient {
 «ENDDEFINE»
 
 «DEFINE GenerateRESTServiceProxyConfig FOR RESTResource»
-  «IF isTargetRuntimeSpring()»
-  	«EXPAND GenerateRESTServiceProxyConfigSpring»
-  «ENDIF» 
-«ENDDEFINE»
-
-«DEFINE GenerateRESTServiceProxyConfigSpring FOR RESTResource»
 «FILE packagePath()+"/restproxy/"+name+"Configuration.java" src_gen»
 «getFileHeader()»
 package «packageName()».restproxy;
@@ -515,12 +710,32 @@ package «packageName()».restproxy;
 /**
  * Class provides all the configuration parameters that are required by REST Proxy Service implementation.
  */
+«IF isTargetRuntimeSpring()»
 @org.springframework.stereotype.Component
+«ENDIF»
 public class «name»Configuration {
+«IF isTargetRuntimeJEAF()»
+  /**
+   * Object can be used to lookup configuration values.
+   */
+  private final com.anaptecs.jeaf.xfun.api.config.Configuration configuration;
+
+  /**
+   * Initialize object.
+   * 
+   * @param pConfiguration Configuration object that should be used to retrieve configuration values. The parameter must
+   * not be null.
+   */
+  public «name»Configuration( Configuration pConfiguration ) {
+    com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pConfiguration, "pConfiguration");
+    configuration = pConfiguration;
+  }
+«ENDIF»
+«IF isTargetRuntimeSpring()»
   /**
    * URL of the REST service that is proxied by this service implementation.
    */
-  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».externalURL}")
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».externalServiceURL}")
   private String externalServiceURL;
   
   «IF this.usesCookies()»
@@ -641,14 +856,19 @@ public class «name»Configuration {
    */
   @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».circuitbreaker.slidingWindowSizeSeconds}")
   private int slidingWindowSizeSeconds;
-
+«ENDIF»
   /**
    * Method returns the URL of the REST service that is proxied by this service implementation.
    * 
    * @return String URL of the REST service. The Method never returns null.
    */
   public String getExternalServiceURL( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("externalServiceURL", String.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return externalServiceURL;
+    «ENDIF»
   }
 
   /**
@@ -657,7 +877,12 @@ public class «name»Configuration {
    * @return String Cookie domain that should be used.
    */
   public String getCookieDomain( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("cookieDomain", String.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return cookieDomain;
+    «ENDIF»
   }
 
   /**
@@ -666,7 +891,12 @@ public class «name»Configuration {
    * @return String Cookie path that should be used.
    */
   public String getCookiePath( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("cookiePath", String.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return cookiePath;
+    «ENDIF»
   }
 
   /**
@@ -675,7 +905,12 @@ public class «name»Configuration {
    * @return int Maximum pool size.
    */
   public int getMaxPoolSize( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("maxPoolSize", Integer.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return maxPoolSize;
+    «ENDIF»
   }
 
   /**
@@ -684,7 +919,12 @@ public class «name»Configuration {
    * @return int Maximum amount of idle connections.
    */
   public int getMaxIdleConnections( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("maxIdleConnections", Integer.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return maxIdleConnections;
+    «ENDIF»
   }
 
   /**
@@ -693,7 +933,12 @@ public class «name»Configuration {
    * @return int Connection keep alive duration.
    */
   public int getKeepAliveDuration( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("keepAliveDuration", Integer.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return keepAliveDuration;
+    «ENDIF»
   }
 
   /**
@@ -704,7 +949,12 @@ public class «name»Configuration {
    * again.
    */
   public int getValidateAfterInactivityDuration( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("validateAfterInactivityDuration", Integer.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return validateAfterInactivityDuration;
+    «ENDIF»
   }
 
   /**
@@ -713,7 +963,12 @@ public class «name»Configuration {
    * @return int Maximum amount of retries before a call to the REST service is considered to be failed.
    */
   public int getMaxRetries( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("maxRetries", Integer.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return maxRetries;
+    «ENDIF»
   }
 
   /**
@@ -724,7 +979,12 @@ public class «name»Configuration {
    * configured.
    */
   public int getRetryInterval( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("retryInterval", Integer.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return retryInterval;
+    «ENDIF»
   }
 
   /**
@@ -733,7 +993,12 @@ public class «name»Configuration {
    * @return int Response timeout in milliseconds for calls to REST service.
    */
   public int getResponseTimeout( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("responseTimeout", Integer.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return responseTimeout;
+    «ENDIF»
   }
 
   /**
@@ -743,7 +1008,12 @@ public class «name»Configuration {
    * @return int Timeout in milliseconds to establish connections to the REST service.
    */
   public int getConnectTimeout( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("connectTimeout", Integer.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return connectTimeout;
+    «ENDIF»
   }
 
   /**
@@ -754,7 +1024,12 @@ public class «name»Configuration {
    * @return int Failure rate threshold.
    */
   public int getFailureRateThreshold( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("failureRateThreshold", Integer.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return failureRateThreshold;
+    «ENDIF»
   }
 
   /**
@@ -765,7 +1040,12 @@ public class «name»Configuration {
    * service again.
    */
   public int getDurationInOpenState( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("durationInOpenState", Integer.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return durationInOpenState;
+    «ENDIF»
   }
 
   /**
@@ -775,7 +1055,12 @@ public class «name»Configuration {
    * @return int Duration in milliseconds above which calls are considered as slow.
    */
   public int getSlowRequestDuration( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("slowRequestDuration", Integer.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return slowRequestDuration;
+    «ENDIF»
   }
 
   /**
@@ -788,7 +1073,12 @@ public class «name»Configuration {
    * @return int Slow request threshold in percentage.
    */
   public int getSlowRequestRateThreshold( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("slowRequestRateThreshold", Integer.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return slowRequestRateThreshold;
+    «ENDIF»
   }
 
   /**
@@ -797,7 +1087,12 @@ public class «name»Configuration {
    * @return int Number of permitted calls when the circuit breaker is half open.
    */
   public int getPermittedCallsInHalfOpenState( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("permittedCallsInHalfOpenState", Integer.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return permittedCallsInHalfOpenState;
+    «ENDIF»
   }
 
   /**
@@ -809,7 +1104,12 @@ public class «name»Configuration {
    * @return int Size of the sliding window in seconds which is used to record the outcome of calls.
    */
   public int getSlidingWindowSizeSeconds( ) {
+    «IF isTargetRuntimeJEAF()»
+    return configuration.getConfigurationValue("slidingWindowSizeSeconds", Integer.class);
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
     return slidingWindowSizeSeconds;
+    «ENDIF»
   }
 }
 «ENDFILE»
@@ -819,6 +1119,9 @@ public class «name»Configuration {
   «IF isTargetRuntimeSpring()»
   	«EXPAND GenerateRESTServiceProxyConfigFileSpring»
   «ENDIF» 
+  «IF isTargetRuntimeJEAF()»
+    «EXPAND GenerateRESTServiceProxyConfigFileJEAF»
+  «ENDIF»
 «ENDDEFINE»
 
 «DEFINE GenerateRESTServiceProxyConfigFileSpring FOR RESTResource»
@@ -826,7 +1129,7 @@ public class «name»Configuration {
 # File contains configuration for external REST resource «this.name»
 «this.name.toFirstLower()»:
   # URL to external service
-  externalURL: TODO: Please configure URL of external REST resource
+  externalServiceURL: TODO: Please configure URL of external REST resource
   
   «IF this.usesCookies() -»
   # Domain of the cookie that is used in requests.
@@ -902,5 +1205,95 @@ public class «name»Configuration {
     # 
     # The value must be greater than 0.
     slidingWindowSizeSeconds: 5
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE GenerateRESTServiceProxyConfigFileJEAF FOR RESTResource»
+«FILE name+"RESTProxyServiceProviderImpl.properties" res-»
+#
+# File contains configuration for external REST resource «this.name»
+#
+
+# URL to external service
+externalServiceURL=Please configure URL of external REST resource
+  
+«IF this.usesCookies() -»
+# Domain of the cookie that is used in requests.
+cookieDomain=
+  
+# Path of the cookie that is used in requests.
+cookiePath=
+«ENDIF -»
+  
+#
+# Apache HTTP Client configuration
+#
+
+# Maximum size of the connection pool.
+maxPoolSize=20
+
+# Maximum amount of idle connections in the connection pool.
+maxIdleConnections=20
+
+# Keep alive duration for connection to proxy target (in milliseconds)
+keepAliveDuration=60000
+
+#  Parameter configures the time period in milliseconds after which a connection is validated before it is taken 
+# from the pool again.    
+validateAfterInactivityDuration=10000
+
+# Maximum amount of retries before a call to the REST service is considered to be failed.
+maxRetries=1
+
+# Interval in milliseconds after which the REST service is called again in case that retries are configured.
+retryInterval=100
+
+# Response timeout in milliseconds for calls to REST service. Please be aware that this is a very sensitive 
+# parameter and needs to be fine-tuned for your purposes.
+responseTimeout=10000
+
+# Timeout in milliseconds to establish connections to the REST service. As connections are pooled this parameter
+# should not have a too strong influence on the overall behavior. However please ensure that it fits to your
+# environment.
+connectTimeout=10000
+
+#
+# Resilience4J circuit breaker configuration
+#
+
+# Failure rate threshold (percent of requests) defines which amount of failed request must be exceeded due to
+# technical problems that the circuit breaker opens and no further request will be sent to the REST service.
+#  
+# Value must between 0 and 100.
+failureRateThreshold=30
+    
+# Duration in milliseconds that the circuit breaker stays open until request will be sent to the REST service again.
+# 
+# The value must be zero or greater.
+durationInOpenState=1000
+
+# Configures the duration in milliseconds above which calls are considered as slow and increase the slow calls
+# percentage.
+# 
+# The value must be zero or greater.
+slowRequestDuration=10000
+
+# Configures the slow request threshold in percentage. The circuit breaker considers a call as slow when the call
+# duration is greater than <code>slowCallDuration</code>. When the percentage of slow calls is equal to or greater
+# than the threshold, the circuit breaker transitions to open and starts short-circuiting calls.
+# 
+# Value must between 0 and 100.
+slowRequestRateThreshold=30
+
+# Configures the number of permitted calls when the circuit breaker is half open.
+# 
+# The value must be zero or greater.
+permittedCallsInHalfOpenState=5
+
+# Configures the size of the sliding window in seconds which is used to record the outcome of calls when the circuit
+# breaker is closed.
+# 
+# The value must be greater than 0.
+slidingWindowSizeSeconds=5
 «ENDFILE»
 «ENDDEFINE»

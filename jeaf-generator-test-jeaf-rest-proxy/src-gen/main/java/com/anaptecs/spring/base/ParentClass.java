@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.io.Serializable;
+
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -25,7 +27,12 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
   @JsonSubTypes.Type(value = ChildAA.class, name = "ChildAA"),
   @JsonSubTypes.Type(value = ChildB.class, name = "ChildB"),
   @JsonSubTypes.Type(value = ChildBB.class, name = "ChildBB") })
-public class ParentClass {
+public class ParentClass implements Serializable {
+  /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
   /**
    * Constant for the name of attribute "parentAttribute".
    */

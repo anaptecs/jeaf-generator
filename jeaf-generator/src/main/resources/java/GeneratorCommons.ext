@@ -34,6 +34,9 @@ cached boolean generateServiceObjects() :
 cached boolean generatePOJOs() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generatePOJOs();    
     
+cached boolean makePOJOsSerializable() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.makePOJOsSerializable();    
+    
 cached boolean generateExceptionClasses() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateExceptionClasses();
     

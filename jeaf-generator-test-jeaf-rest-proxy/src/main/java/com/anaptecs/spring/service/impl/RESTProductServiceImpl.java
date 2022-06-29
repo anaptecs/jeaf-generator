@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Locale;
 
+import com.anaptecs.jeaf.core.annotations.JEAFServiceProvider;
 import com.anaptecs.jeaf.core.api.Component;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
@@ -18,11 +19,15 @@ import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
+import com.anaptecs.spring.service.restproxy.RESTProductServiceRESTProxyServiceProvider;
 
 /**
  * Implementation of RESTProductService.
  */
 final class RESTProductServiceImpl extends RESTProductServiceImplBase {
+  @JEAFServiceProvider
+  private RESTProductServiceRESTProxyServiceProvider proxy;
+
   /**
    * Initialize object.
    */
@@ -53,7 +58,7 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
 
   @Override
   public List<Product> getProducts( int pMaxResultSize ) {
-    return null;
+    return proxy.getProducts(pMaxResultSize);
   }
 
   /**
@@ -64,7 +69,7 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
 
   @Override
   public Product getProduct( String pProductID ) {
-    return null;
+    return proxy.getProduct(pProductID);
   }
 
   /**
@@ -75,7 +80,7 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
 
   @Override
   public boolean createProduct( Product pProduct ) {
-    return false;
+    return proxy.createProduct(pProduct);
   }
 
   /**
@@ -86,7 +91,7 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
 
   @Override
   public Sortiment getSortiment( Context pContext ) {
-    return null;
+    return proxy.getSortiment(pContext);
   }
 
   /**
@@ -97,7 +102,7 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
 
   @Override
   public ChannelCode createChannelCode( String pChannelCode ) {
-    return null;
+    return proxy.createChannelCode(pChannelCode);
   }
 
   /**
@@ -106,6 +111,7 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
 
   @Override
   public void ping( ) {
+    proxy.ping();
   }
 
   /**
@@ -114,6 +120,7 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
 
   @Override
   public void testInit( ) {
+    proxy.testInit();
   }
 
   /**
@@ -124,7 +131,7 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
 
   @Override
   public List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode ) {
-    return null;
+    return proxy.getSupportedCurrencies(pChannelCode);
   }
 
   /**
@@ -135,7 +142,7 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
 
   @Override
   public List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode ) {
-    return null;
+    return proxy.getSupportedCurrenciesAsync(pChannelCode);
   }
 
   /**
@@ -148,6 +155,6 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
 
   @Override
   public String testParams( BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam ) {
-    return null;
+    return proxy.testParams(pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
   }
 }

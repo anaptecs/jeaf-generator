@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.service;
 
+import java.io.Serializable;
+
 import javax.validation.ConstraintViolationException;
 import javax.ws.rs.HeaderParam;
 
@@ -17,7 +19,12 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-public class LocalBeanParamType {
+public class LocalBeanParamType implements Serializable {
+  /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
   /**
    * Constant for the name of attribute "localKey".
    */

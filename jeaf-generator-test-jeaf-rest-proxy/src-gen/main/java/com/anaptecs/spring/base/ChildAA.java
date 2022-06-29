@@ -21,6 +21,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ChildAA extends ChildA {
   /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * Constant for the name of attribute "childAAAttribute".
    */
   public static final String CHILDAAATTRIBUTE = "childAAAttribute";

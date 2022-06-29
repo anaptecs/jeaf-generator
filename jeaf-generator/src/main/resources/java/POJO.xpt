@@ -27,6 +27,12 @@
 				«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 				«EXPAND java::Jackson::JacksonClassAnnotations -»				
 				public «IF isAbstract»abstract«ENDIF» class «name» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
+					«IF makePOJOsSerializable()»
+                    /**
+                     * Default serial version UID.
+                     */
+                    private static final long serialVersionUID = 1L;
+					«ENDIF»
 					«REM»Generate constants for all real attributes«ENDREM»
 					«EXPAND java::Helper::GenerateConstantsForAttributeNames FOR ((uml::Class) this)»
 					  
@@ -153,6 +159,13 @@
 			    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 			    «EXPAND java::Jackson::JacksonClassAnnotations -»
 				public abstract class «name»Base «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
+					«IF makePOJOsSerializable()»
+                    /**
+                     * Default serial version UID.
+                     */
+                    private static final long serialVersionUID = 1L;
+					«ENDIF»
+
 					«REM»Generate constants for all real attributes«ENDREM»
 					«EXPAND java::Helper::GenerateConstantsForAttributeNames FOR ((uml::Class) this)»
 					  
@@ -272,6 +285,13 @@
 				«EXPAND java::Validation::ValidationAnnotation»
 				«EXPAND java::Helper::GenerateDeprecationAnnotation -»
 				public «IF isAbstract»abstract«ENDIF» class «name» extends «name»Base {
+					«IF makePOJOsSerializable()»
+                    /**
+                     * Default serial version UID.
+                     */
+                    private static final long serialVersionUID = 1L;
+					«ENDIF»
+
 					/**
 					 * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal" object creation builder should be used instead.
 					 */
@@ -302,6 +322,9 @@
 «ENDDEFINE»
 
 «DEFINE InterfaceDeclarations FOR POJO»
-	«IF needsToImplementIdentifiable()==true» implements com.anaptecs.jeaf.xfun.api.common.Identifiable<«this.getObjectIDClassName()»>«ENDIF»
+	«IF needsToImplementIdentifiable()==true» implements com.anaptecs.jeaf.xfun.api.common.Identifiable<«this.getObjectIDClassName()»> «IF makePOJOsSerializable()  && superClass.isEmpty», java.io.Serializable«ENDIF»
+	«ELSE»
+		«IF makePOJOsSerializable() && superClass.isEmpty» implements java.io.Serializable«ENDIF»
+	«ENDIF»
 «ENDDEFINE»
 

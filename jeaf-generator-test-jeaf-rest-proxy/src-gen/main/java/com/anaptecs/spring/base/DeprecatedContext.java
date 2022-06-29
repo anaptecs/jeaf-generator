@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import java.io.Serializable;
 import java.util.Locale;
 
 import javax.validation.ConstraintViolationException;
@@ -23,7 +24,12 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @version JEAF Release 1.4.x
  */
 @Deprecated
-public class DeprecatedContext {
+public class DeprecatedContext implements Serializable {
+  /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
   /**
    * Constant for the name of attribute "accessToken".
    */

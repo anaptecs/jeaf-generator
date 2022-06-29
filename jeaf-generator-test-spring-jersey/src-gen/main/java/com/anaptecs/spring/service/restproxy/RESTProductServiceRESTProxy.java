@@ -56,6 +56,9 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Inject
   private RESTProductServiceConfiguration configuration;
 
+  /**
+   * HTTP client is used to handle communication to REST service.
+   */
   @Inject
   private RESTProductServiceHttpClient httpClient;
 

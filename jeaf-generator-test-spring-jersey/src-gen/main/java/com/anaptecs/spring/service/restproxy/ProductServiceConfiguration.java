@@ -16,7 +16,7 @@ public class ProductServiceConfiguration {
   /**
    * URL of the REST service that is proxied by this service implementation.
    */
-  @Value("${productService.externalURL}")
+  @Value("${productService.externalServiceURL}")
   private String externalServiceURL;
 
   /**

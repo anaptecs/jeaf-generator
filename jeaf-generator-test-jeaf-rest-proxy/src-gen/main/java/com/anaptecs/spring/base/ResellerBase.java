@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -31,7 +32,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 @Valid
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class ResellerBase {
+public abstract class ResellerBase implements Serializable {
+  /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
   /**
    * Constant for the name of attribute "channels".
    */

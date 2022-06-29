@@ -41,7 +41,12 @@ import com.anaptecs.jeaf.json.problem.RESTProblemException;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.http.HTTPStatusCode;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.checks.Assert;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.anaptecs.jeaf.xfun.api.errorhandling.FailureMessage;
+import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
+import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
+import com.anaptecs.jeaf.xfun.api.health.HealthStatus;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -92,7 +97,6 @@ public class ProductServiceHttpClient {
    */
   @PostConstruct
   private void initializeHTTPClient( ) {
-    XFun.getTrace().info("Initializing Apache HTTP Client for ProductService");
     // Create connection manager that can be used by multiple threads in parallel.
     SocketConfig lSocketConfig = SocketConfig.custom().setTcpNoDelay(true).build();
     Registry<ConnectionSocketFactory> lRegistry = RegistryBuilder.<ConnectionSocketFactory> create()
@@ -129,7 +133,6 @@ public class ProductServiceHttpClient {
    */
   @PostConstruct
   private void initializeCircuitBreaker( ) {
-    XFun.getTrace().info("Initializing Circuit Breaker for ProductService");
     // Create circuit break configuration for target.
     CircuitBreakerConfig.Builder lConfigBuilder = CircuitBreakerConfig.custom();
     lConfigBuilder.failureRateThreshold(configuration.getFailureRateThreshold());
@@ -141,6 +144,44 @@ public class ProductServiceHttpClient {
     lConfigBuilder.recordExceptions(IOException.class, RuntimeException.class);
     CircuitBreakerRegistry lCircuitBreakerRegistry = CircuitBreakerRegistry.of(lConfigBuilder.build());
     circuitBreaker = lCircuitBreakerRegistry.circuitBreaker("Product Service Circuit Breaker");
+  }
+
+  /**
+   * Method check state state of this http client based on the state of the circuit breaker.
+   * 
+   * @param pLevel Check level is not consider for the executed checks.
+   * @return {@link HealthCheckResult} Result of the check. Method returns null in case that everything is fine.
+   */
+  public HealthCheckResult check( CheckLevel pLevel ) {
+    // Determine circuit breaker state.
+    CircuitBreaker.State lState = circuitBreaker.getState();
+    // Determine health state depending on circuit breaker state.
+    HealthCheckResult lCheckResult;
+    switch (lState) {
+      // Everything is fine
+      case CLOSED:
+        lCheckResult = null;
+        break;
+      // Circuit breaker is not active
+      case DISABLED:
+      case METRICS_ONLY:
+        FailureMessage lWarning = new FailureMessage(JSONMessages.CIRCUIT_BREAKER_NOT_ACTIVE, "ProductService",
+            configuration.getExternalServiceURL(), lState.name());
+        lCheckResult = new HealthCheckResult(HealthStatus.WARNING, lWarning, null);
+        break;
+      // Besides open states also half open is treated as open to avoid flipping back and forth of health state
+      case OPEN:
+      case FORCED_OPEN:
+      case HALF_OPEN:
+        FailureMessage lError = new FailureMessage(JSONMessages.CIRCUIT_BREAKER_NOT_ACTIVE, "ProductService",
+            configuration.getExternalServiceURL(), lState.name());
+        lCheckResult = new HealthCheckResult(HealthStatus.ERROR, null, lError);
+        break;
+      default:
+        Assert.unexpectedEnumLiteral(lState);
+        lCheckResult = null;
+    }
+    return lCheckResult;
   }
 
   /**

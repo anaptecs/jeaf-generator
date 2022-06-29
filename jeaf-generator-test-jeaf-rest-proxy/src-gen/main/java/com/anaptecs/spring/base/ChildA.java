@@ -18,6 +18,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ChildA extends ParentClass {
   /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * Constant for the name of attribute "childAAttribute".
    */
   public static final String CHILDAATTRIBUTE = "childAAttribute";

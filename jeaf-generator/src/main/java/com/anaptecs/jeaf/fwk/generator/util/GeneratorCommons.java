@@ -110,6 +110,11 @@ public class GeneratorCommons {
   public static final String POJO_PROPERTY = "switch.gen.pojos";
 
   /**
+   * Constant defines the name of the system property which enables the generation of serializable POJOs from the model.
+   */
+  public static final String MAKE_POJO_SERIALIZABLE_PROPERTY = "switch.gen.serializable.pojos";
+
+  /**
    * Constant defines the name of the system property which enables the generation of exception classes from the model.
    */
   public static final String EXCEPTION_CLASSES_PROPERTY = "switch.gen.exception.classes";
@@ -604,6 +609,16 @@ public class GeneratorCommons {
   public static boolean generatePOJOs( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(POJO_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether generated POJOs should be serializable.
+   * 
+   * @return boolean Method returns true if POJOs should be serializable.
+   */
+  public static boolean makePOJOsSerializable( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(MAKE_POJO_SERIALIZABLE_PROPERTY, Boolean.FALSE, Boolean.class);
   }
 
   /**

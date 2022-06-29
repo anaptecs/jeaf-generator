@@ -283,6 +283,12 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generatePOJOs;
 
   /**
+   * Switch defines whether POJO's should be serializable or not.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean makePOJOsSerializable;
+
+  /**
    * Switch defines whether domain objects should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -686,6 +692,7 @@ public class GeneratorMojo extends AbstractMojo {
     }
     if (generatePOJOs) {
       lLog.info("Generate POJO's:                                  " + generatePOJOs);
+      lLog.info("Make POJO's serializable:                         " + makePOJOsSerializable);
       lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
     }
     if (generateDomainObjects) {
@@ -827,6 +834,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.service.objects", generateServiceObjects.toString());
       System.setProperty("switch.gen.exception.classes", generateExceptionClasses.toString());
       System.setProperty("switch.gen.pojos", generatePOJOs.toString());
+      System.setProperty("switch.gen.serializable.pojos", makePOJOsSerializable.toString());
       System.setProperty("switch.gen.domain.objects", generateDomainObjects.toString());
       System.setProperty("switch.gen.junits", generateJUnitTests.toString());
       System.setProperty("switch.gen.openapispec", generateOpenAPISpec.toString());

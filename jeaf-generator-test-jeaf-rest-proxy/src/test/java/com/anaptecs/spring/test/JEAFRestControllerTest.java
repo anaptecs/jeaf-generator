@@ -32,7 +32,6 @@ import org.apache.hc.core5.http.protocol.BasicHttpContext;
 import org.apache.hc.core5.http.protocol.HttpContext;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockserver.client.MockServerClient;
 import org.mockserver.integration.ClientAndServer;
@@ -54,7 +53,6 @@ import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.service.RESTProductService;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 
-@Disabled
 public class JEAFRestControllerTest {
   private static FastLaneServer server;
 
@@ -64,7 +62,7 @@ public class JEAFRestControllerTest {
 
   public static final String ROOT_URI = "http://localhost:8090/rest";
 
-  private RESTProductService restProductService = JEAF.getService(RESTProductService.class);
+  private static RESTProductService restProductService;
 
   @BeforeAll
   static void startWebContainer( ) {
@@ -155,6 +153,22 @@ public class JEAFRestControllerTest {
   private static HttpResponse mockResponse( String pResponseBody, int pStatusCode, int pDelay ) {
     return HttpResponse.response().withDelay(TimeUnit.MILLISECONDS, pDelay).withStatusCode(pStatusCode)
         .withBody(pResponseBody);
+  }
+
+  @BeforeAll
+  static void loadServices( ) {
+    try {
+      restProductService = JEAF.getService(RESTProductService.class);
+    }
+    catch (Throwable e) {
+      if (e.getCause().getCause() instanceof ExceptionInInitializerError) {
+        System.out.println("XXXXX");
+        System.out.println("ExceptionInInitializerError");
+        System.out.println("XXXXX");
+        ExceptionInInitializerError lError = (ExceptionInInitializerError) e.getCause().getCause();
+        lError.getException().printStackTrace();
+      }
+    }
   }
 
   @Test

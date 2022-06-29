@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.io.Serializable;
+
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.Tools;
@@ -20,7 +22,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @version JEAF Release 1.4.x
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ErrorResponse {
+public class ErrorResponse implements Serializable {
+  /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.

@@ -19,6 +19,11 @@ import com.anaptecs.spring.base.ParentBeanParamType;
  */
 public class ChildBeanParameterType extends ParentBeanParamType {
   /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * Constant for the name of attribute "childProperty".
    */
   public static final String CHILDPROPERTY = "childProperty";
