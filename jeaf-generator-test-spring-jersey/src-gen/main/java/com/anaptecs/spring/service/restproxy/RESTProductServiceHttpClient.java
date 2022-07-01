@@ -5,7 +5,10 @@
  */
 package com.anaptecs.spring.service.restproxy;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
 import java.time.Duration;
 import java.util.Collection;
 import java.util.concurrent.Callable;
@@ -33,20 +36,17 @@ import org.apache.hc.core5.pool.PoolConcurrencyPolicy;
 import org.apache.hc.core5.pool.PoolReusePolicy;
 import org.apache.hc.core5.util.TimeValue;
 import org.apache.hc.core5.util.Timeout;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.zalando.problem.Problem;
+import org.zalando.problem.ProblemBuilder;
+import org.zalando.problem.Status;
+import org.zalando.problem.ThrowableProblem;
+import org.zalando.problem.spring.web.advice.HttpStatusAdapter;
 
-import com.anaptecs.jeaf.json.api.JSONMessages;
-import com.anaptecs.jeaf.json.problem.Problem;
-import com.anaptecs.jeaf.json.problem.RESTProblemException;
-import com.anaptecs.jeaf.tools.api.Tools;
-import com.anaptecs.jeaf.tools.api.http.HTTPStatusCode;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.checks.Assert;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
-import com.anaptecs.jeaf.xfun.api.errorhandling.FailureMessage;
-import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
-import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
-import com.anaptecs.jeaf.xfun.api.health.HealthStatus;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -64,6 +64,11 @@ public class RESTProductServiceHttpClient {
    * Constant for problem JSON content type.
    */
   private static final String PROBLEM_JSON_CONTENT_TYPE = "application/problem+json";
+
+  /**
+   * Logger for this class.
+   */
+  private static final Logger logger = LoggerFactory.getLogger(RESTProductServiceHttpClient.class);
 
   /**
    * Reference to object holding all the required configuration values for the HTTP client and circuit breaker.
@@ -147,44 +152,6 @@ public class RESTProductServiceHttpClient {
   }
 
   /**
-   * Method check state state of this http client based on the state of the circuit breaker.
-   * 
-   * @param pLevel Check level is not consider for the executed checks.
-   * @return {@link HealthCheckResult} Result of the check. Method returns null in case that everything is fine.
-   */
-  public HealthCheckResult check( CheckLevel pLevel ) {
-    // Determine circuit breaker state.
-    CircuitBreaker.State lState = circuitBreaker.getState();
-    // Determine health state depending on circuit breaker state.
-    HealthCheckResult lCheckResult;
-    switch (lState) {
-      // Everything is fine
-      case CLOSED:
-        lCheckResult = null;
-        break;
-      // Circuit breaker is not active
-      case DISABLED:
-      case METRICS_ONLY:
-        FailureMessage lWarning = new FailureMessage(JSONMessages.CIRCUIT_BREAKER_NOT_ACTIVE, "RESTProductService",
-            configuration.getExternalServiceURL(), lState.name());
-        lCheckResult = new HealthCheckResult(HealthStatus.WARNING, lWarning, null);
-        break;
-      // Besides open states also half open is treated as open to avoid flipping back and forth of health state
-      case OPEN:
-      case FORCED_OPEN:
-      case HALF_OPEN:
-        FailureMessage lError = new FailureMessage(JSONMessages.CIRCUIT_BREAKER_NOT_ACTIVE, "RESTProductService",
-            configuration.getExternalServiceURL(), lState.name());
-        lCheckResult = new HealthCheckResult(HealthStatus.ERROR, null, lError);
-        break;
-      default:
-        Assert.unexpectedEnumLiteral(lState);
-        lCheckResult = null;
-    }
-    return lCheckResult;
-  }
-
-  /**
    * Method executes a HTTP request that is expected to return a collection of objects as result.
    * 
    * @param pRequest HTTP request that should be executed. The parameter must not be null.
@@ -257,7 +224,10 @@ public class RESTProductServiceHttpClient {
       JavaType pResponseType ) {
     // Try to execute call to REST resource
     CloseableHttpResponse lResponse = null;
+    URI lRequestURI = null;
     try {
+      // For reasons of proper error handling we need to find out the request URI.
+      lRequestURI = pRequest.getUri();
       // Decorate call to proxy with circuit breaker.
       Callable<CloseableHttpResponse> lCallable =
           CircuitBreaker.decorateCallable(circuitBreaker, new Callable<CloseableHttpResponse>() {
@@ -285,18 +255,23 @@ public class RESTProductServiceHttpClient {
       else {
         // If server provided problem JSON then we will return this information.
         if (PROBLEM_JSON_CONTENT_TYPE.equals(lResponse.getEntity().getContentType())) {
-          throw new RESTProblemException(lStatusCode, lResponse.getEntity().getContent());
+          ThrowableProblem lProblem =
+              objectMapper.readValue(lResponse.getEntity().getContent(), ThrowableProblem.class);
+          throw lProblem;
         }
         // Build up problem JSON from the information we have.
         else {
           // Try to resolve some details.
-          Problem.Builder lProblemBuilder = Problem.Builder.newBuilder().setStatus(lStatusCode);
-          lProblemBuilder.setType(pRequest.getUri().toString());
+          ProblemBuilder lProblemBuilder = Problem.builder();
+          HttpStatusAdapter lStatus = new HttpStatusAdapter(HttpStatus.valueOf(lStatusCode));
+          lProblemBuilder.withStatus(lStatus);
+          lProblemBuilder.withTitle(lStatus.getReasonPhrase());
+          lProblemBuilder.withType(pRequest.getUri());
           HttpEntity lEntity = lResponse.getEntity();
-          if (lEntity != null && lEntity.getContentLength() > 0) {
-            lProblemBuilder.setDetail(Tools.getStreamTools().getStreamContentAsString(lEntity.getContent()));
+          if (lEntity.getContentLength() > 0) {
+            lProblemBuilder.withDetail(this.getContent(lEntity.getContent()));
           }
-          throw new RESTProblemException(lProblemBuilder.build());
+          throw lProblemBuilder.build();
         }
       }
     }
@@ -306,11 +281,13 @@ public class RESTProductServiceHttpClient {
     //
     // IOException can result from communication or serialization problems.
     catch (IOException e) {
-      Problem.Builder lProblemBuilder =
-          Problem.Builder.newBuilder().setStatus(HTTPStatusCode.INTERNAL_SERVER_ERROR.getCode());
-      lProblemBuilder.setType(pRequest.toString());
-      lProblemBuilder.setDetail(e.getMessage());
-      throw new RESTProblemException(lProblemBuilder.build(), e);
+      logger.error("Exception occurred when try to call REST Service " + pRequest.toString(), e);
+      ProblemBuilder lBuilder = Problem.builder();
+      lBuilder.withStatus(Status.INTERNAL_SERVER_ERROR);
+      lBuilder.withTitle(Status.INTERNAL_SERVER_ERROR.getReasonPhrase());
+      lBuilder.withType(lRequestURI);
+      lBuilder.withDetail(e.getMessage());
+      throw lBuilder.build();
     }
     // Thanks to circuit breaker interface definition of Resilience4J we have to handle RuntimeExceptions
     catch (RuntimeException e) {
@@ -318,11 +295,13 @@ public class RESTProductServiceHttpClient {
     }
     // Thanks to circuit breaker interface definition of Resilience4J we also have to catch java.lang.Exception ;-(
     catch (Exception e) {
-      Problem.Builder lProblemBuilder =
-          Problem.Builder.newBuilder().setStatus(HTTPStatusCode.INTERNAL_SERVER_ERROR.getCode());
-      lProblemBuilder.setType(pRequest.toString());
-      lProblemBuilder.setDetail(e.getMessage());
-      throw new RESTProblemException(lProblemBuilder.build(), e);
+      logger.error("Exception occurred when try to call REST Service " + pRequest.toString(), e);
+      ProblemBuilder lBuilder = Problem.builder();
+      lBuilder.withStatus(Status.INTERNAL_SERVER_ERROR);
+      lBuilder.withTitle(Status.INTERNAL_SERVER_ERROR.getReasonPhrase());
+      lBuilder.withType(lRequestURI);
+      lBuilder.withDetail(e.getMessage());
+      throw lBuilder.build();
     }
     // No matter what happened we have at least close the http response if possible.
     finally {
@@ -331,9 +310,32 @@ public class RESTProductServiceHttpClient {
           lResponse.close();
         }
         catch (IOException e) {
-          XFun.getTrace().warn(JSONMessages.UNABLE_TO_CLOSE_HTTP_RESPONSE, e, pRequest.getRequestUri(), e.getMessage());
+          logger.error(
+              "Unable to close http client response from REST Service " + configuration.getExternalServiceURL(), e);
         }
       }
     }
   }
+
+  /**
+   * Method returns the content of the passed input stream.
+   * 
+   * @param pInputStream Stream to access the content. The parameter must not be null.
+   * @return byte[] Available content of the stream. The method never returns null.
+   */
+  private String getContent( InputStream pInputStream ) throws IOException {
+    // Check parameter
+    Check.checkInvalidParameterNull(pInputStream, "pInputStream");
+    int lAvailableBytes = pInputStream.available();
+    ByteArrayOutputStream lBytes = new ByteArrayOutputStream(lAvailableBytes);
+
+    // Read as much bytes as possible into the buffer.
+    int lBytesRead;
+    byte[] lBuffer = new byte[128];
+    while ((lBytesRead = pInputStream.read(lBuffer, 0, lBuffer.length)) != -1) {
+      lBytes.write(lBuffer, 0, lBytesRead);
+    }
+    return new String(lBytes.toByteArray());
+  }
+
 }
