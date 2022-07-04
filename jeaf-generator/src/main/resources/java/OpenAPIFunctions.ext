@@ -205,6 +205,9 @@ cached boolean hasRequestBody(uml::Operation operation, JMM::HTTPMethod httpMeth
 cached List[uml::Parameter] getRequestBodyParameters(uml::Operation operation):
   operation.ownedParameter.select(e|e.isInputParameter() && e.isOpenAPIInputParameter() == false && e.isBeanParamater() == false);
   
+cached boolean hasRequestBody(uml::Operation operation):
+  operation.getRequestBodyParameters().size > 0;
+  
 cached boolean hasReturnTypeVoid(uml::Operation operation):
   getReturnTypeName(operation) == "void";
   

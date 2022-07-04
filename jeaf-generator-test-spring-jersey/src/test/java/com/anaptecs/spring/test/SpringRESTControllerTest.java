@@ -6,14 +6,12 @@
 package com.anaptecs.spring.test;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.net.SocketTimeoutException;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -43,18 +41,14 @@ import org.mockserver.model.MediaType;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
+import org.zalando.problem.ThrowableProblem;
 
-import com.anaptecs.jeaf.json.api.JSONMessages;
-import com.anaptecs.jeaf.json.problem.Problem;
-import com.anaptecs.jeaf.json.problem.RESTProblemException;
 import com.anaptecs.jeaf.tools.api.Tools;
-import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.impl.SpringTestApplication;
 import com.anaptecs.spring.service.RESTProductService;
-import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 
 @SpringBootTest(classes = SpringTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SpringRESTControllerTest {
@@ -311,8 +305,11 @@ public class SpringRESTControllerTest {
       restProductService.testParams(BigDecimal.valueOf(3.1423), 9999, Locale.GERMAN);
       fail("Expecting exception");
     }
-    catch (JEAFSystemException e) {
-      assertEquals(JSONMessages.RECEIVED_REST_PROBLEM_JSON, e.getErrorCode());
+    catch (ThrowableProblem e) {
+      assertEquals(404, e.getStatus().getStatusCode());
+      assertEquals("Not Found", e.getTitle());
+      assertEquals("http://localhost:8099/rest-products/test-params?locale=de", e.getType().toString());
+      assertEquals(null, e.getDetail());
     }
   }
 
@@ -323,15 +320,11 @@ public class SpringRESTControllerTest {
       restProductService.getProduct("666");
       fail("Exception expected.");
     }
-    catch (RESTProblemException e) {
-      assertEquals(JSONMessages.RECEIVED_REST_PROBLEM_JSON, e.getErrorCode());
-      assertNull(e.getCause());
-      assertTrue(e.getMessage().endsWith("1804] REST call returned problem JSON (http status code: 404)"));
-      Problem lProblem = e.getProblem();
-      assertEquals("http://localhost:8099/rest-products/666", lProblem.getType());
-      assertEquals("Not Found", lProblem.getTitle());
-      assertEquals(404, lProblem.getStatus());
-      assertEquals("Invalid product number", lProblem.getDetail());
+    catch (ThrowableProblem e) {
+      assertEquals("http://localhost:8099/rest-products/666", e.getType().toString());
+      assertEquals("Not Found", e.getTitle());
+      assertEquals(404, e.getStatus().getStatusCode());
+      assertEquals("Invalid product number", e.getDetail());
     }
 
     // Test processing of problem JSON if it is returned from a REST resource
@@ -339,15 +332,11 @@ public class SpringRESTControllerTest {
       restProductService.getProduct("777");
       fail("Exception expected.");
     }
-    catch (RESTProblemException e) {
-      assertEquals(JSONMessages.RECEIVED_REST_PROBLEM_JSON, e.getErrorCode());
-      assertTrue(e.getMessage().endsWith("1804] REST call returned problem JSON (http status code: 400)"));
-      assertNull(e.getCause());
-      Problem lProblem = e.getProblem();
-      assertEquals("https://example.org/out-of-stock", lProblem.getType());
-      assertEquals("Out of Stock", lProblem.getTitle());
-      assertEquals(400, lProblem.getStatus());
-      assertEquals("Item B00027Y5QG is no longer available", lProblem.getDetail());
+    catch (ThrowableProblem e) {
+      assertEquals("https://example.org/out-of-stock", e.getType().toString());
+      assertEquals("Out of Stock", e.getTitle());
+      assertEquals(400, e.getStatus().getStatusCode());
+      assertEquals("Item B00027Y5QG is no longer available", e.getDetail());
     }
 
     // Test JSON parsing problems
@@ -355,15 +344,11 @@ public class SpringRESTControllerTest {
       restProductService.getProduct("json-problem");
       fail("Exception expected.");
     }
-    catch (RESTProblemException e) {
-      assertEquals(JSONMessages.RECEIVED_REST_PROBLEM_JSON, e.getErrorCode());
-      assertTrue(e.getMessage().endsWith("1804] REST call returned problem JSON (http status code: 500)"));
-      assertEquals(MismatchedInputException.class, e.getCause().getClass());
-      Problem lProblem = e.getProblem();
-      assertEquals("GET http://localhost:8099/rest-products/json-problem", lProblem.getType());
-      assertEquals("Internal Server Error", lProblem.getTitle());
-      assertEquals(500, lProblem.getStatus());
-      assertTrue(lProblem.getDetail().startsWith(
+    catch (ThrowableProblem e) {
+      assertEquals("http://localhost:8099/rest-products/json-problem", e.getType().toString());
+      assertEquals("Internal Server Error", e.getTitle());
+      assertEquals(500, e.getStatus().getStatusCode());
+      assertTrue(e.getDetail().startsWith(
           "Cannot deserialize value of type `com.anaptecs.spring.base.Product` from Array value (token `JsonToken.START_ARRAY`)"));
     }
 
@@ -372,15 +357,11 @@ public class SpringRESTControllerTest {
       restProductService.getProduct("timeout");
       fail("Exception expected.");
     }
-    catch (RESTProblemException e) {
-      assertEquals(JSONMessages.RECEIVED_REST_PROBLEM_JSON, e.getErrorCode());
-      assertTrue(e.getMessage().endsWith("1804] REST call returned problem JSON (http status code: 500)"));
-      assertEquals(SocketTimeoutException.class, e.getCause().getClass());
-      Problem lProblem = e.getProblem();
-      assertEquals("GET http://localhost:8099/rest-products/timeout", lProblem.getType());
-      assertEquals("Internal Server Error", lProblem.getTitle());
-      assertEquals(500, lProblem.getStatus());
-      assertEquals("Read timed out", lProblem.getDetail());
+    catch (ThrowableProblem e) {
+      assertEquals("http://localhost:8099/rest-products/timeout", e.getType().toString());
+      assertEquals("Internal Server Error", e.getTitle());
+      assertEquals(500, e.getStatus().getStatusCode());
+      assertEquals("Read timed out", e.getDetail());
     }
   }
 }

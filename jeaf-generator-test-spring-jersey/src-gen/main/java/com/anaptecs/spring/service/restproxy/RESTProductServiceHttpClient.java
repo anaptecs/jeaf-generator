@@ -324,11 +324,8 @@ public class RESTProductServiceHttpClient {
    * @return byte[] Available content of the stream. The method never returns null.
    */
   private String getContent( InputStream pInputStream ) throws IOException {
-    // Check parameter
-    Check.checkInvalidParameterNull(pInputStream, "pInputStream");
     int lAvailableBytes = pInputStream.available();
     ByteArrayOutputStream lBytes = new ByteArrayOutputStream(lAvailableBytes);
-
     // Read as much bytes as possible into the buffer.
     int lBytesRead;
     byte[] lBuffer = new byte[128];
@@ -337,5 +334,4 @@ public class RESTProductServiceHttpClient {
     }
     return new String(lBytes.toByteArray());
   }
-
 }

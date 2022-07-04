@@ -3,6 +3,7 @@ package com.anaptecs.spring.impl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.zalando.problem.ProblemModule;
 
 import com.anaptecs.spring.base.serializers.ObjectMapperFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,6 +16,8 @@ public class ObjectMapperConfig {
   @Bean
   @Primary
   public ObjectMapper objectMapper( ) {
-    return ObjectMapperFactory.createObjectMapper();
+    ObjectMapper lObjectMapper = ObjectMapperFactory.createObjectMapper();
+    lObjectMapper.registerModule(new ProblemModule());
+    return lObjectMapper;
   }
 }

@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.service.restproxy;
 
+import java.io.IOException;
+import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -20,9 +22,13 @@ import org.apache.hc.core5.http.HttpHeaders;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.apache.hc.core5.http.protocol.BasicHttpContext;
 import org.apache.hc.core5.http.protocol.HttpContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.zalando.problem.Problem;
+import org.zalando.problem.ProblemBuilder;
+import org.zalando.problem.Status;
 
-import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
@@ -38,6 +44,7 @@ import com.anaptecs.spring.base.StringCodeType;
 import com.anaptecs.spring.service.ChildBeanParameterType;
 import com.anaptecs.spring.service.LocalBeanParamType;
 import com.anaptecs.spring.service.ProductService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Class implements a proxy for an REST Service. The proxy is implemented as Spring services. This way to developers it
@@ -58,6 +65,11 @@ import com.anaptecs.spring.service.ProductService;
 @Service
 public class ProductServiceRESTProxy implements ProductService {
   /**
+   * Logger for this class.
+   */
+  private static final Logger logger = LoggerFactory.getLogger(ProductServiceHttpClient.class);
+
+  /**
    * Reference to object holding all the required configuration values to delegate request to external REST service.
    */
   @Inject
@@ -68,6 +80,12 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Inject
   private ProductServiceHttpClient httpClient;
+
+  /**
+   * Object mapper is used for serialization and deserialization of objects from Java to JSON and vice versa.
+   */
+  @Inject
+  private ObjectMapper objectMapper;
 
   /**
    * Operation returns all available product.
@@ -125,21 +143,33 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public boolean createProduct( Product pProduct ) {
-    // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pProduct into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pProduct);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
-    // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, Boolean.class);
+    URI lRequestURI = null;
+    try {
+      // Create builder for POST request
+      ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
+      // Build URI of request
+      StringBuilder lURIBuilder = new StringBuilder();
+      lURIBuilder.append(configuration.getExternalServiceURL());
+      lURIBuilder.append("/products");
+      lRequestBuilder.setUri(lURIBuilder.toString());
+      lRequestURI = lRequestBuilder.getUri();
+      // Set HTTP header
+      lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+      // Convert parameter pProduct into request body.
+      String lRequestBody = objectMapper.writeValueAsString(pProduct);
+      lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+      // Execute request and return result.
+      ClassicHttpRequest lRequest = lRequestBuilder.build();
+      return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, Boolean.class);
+    }
+    catch (IOException e) {
+      logger.error("Unable to serialize object(s) to JSON.", e);
+      ProblemBuilder lProblemBuilder = Problem.builder();
+      lProblemBuilder.withStatus(Status.INTERNAL_SERVER_ERROR);
+      lProblemBuilder.withType(lRequestURI);
+      lProblemBuilder.withDetail(e.getMessage());
+      throw lProblemBuilder.build();
+    }
   }
 
   /**
@@ -193,23 +223,35 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public ChannelCode createChannelCode( String pChannelCode ) {
-    // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("ChannelCode");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pChannelCode into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pChannelCode);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
-    // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, ChannelCode.class);
+    URI lRequestURI = null;
+    try {
+      // Create builder for POST request
+      ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
+      // Build URI of request
+      StringBuilder lURIBuilder = new StringBuilder();
+      lURIBuilder.append(configuration.getExternalServiceURL());
+      lURIBuilder.append("/products");
+      lURIBuilder.append('/');
+      lURIBuilder.append("ChannelCode");
+      lRequestBuilder.setUri(lURIBuilder.toString());
+      lRequestURI = lRequestBuilder.getUri();
+      // Set HTTP header
+      lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+      // Convert parameter pChannelCode into request body.
+      String lRequestBody = objectMapper.writeValueAsString(pChannelCode);
+      lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+      // Execute request and return result.
+      ClassicHttpRequest lRequest = lRequestBuilder.build();
+      return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, ChannelCode.class);
+    }
+    catch (IOException e) {
+      logger.error("Unable to serialize object(s) to JSON.", e);
+      ProblemBuilder lProblemBuilder = Problem.builder();
+      lProblemBuilder.withStatus(Status.INTERNAL_SERVER_ERROR);
+      lProblemBuilder.withType(lRequestURI);
+      lProblemBuilder.withDetail(e.getMessage());
+      throw lProblemBuilder.build();
+    }
   }
 
   /**
@@ -357,23 +399,35 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public String deprecatedBody( @Deprecated String pBody ) {
-    // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("deprecated/body");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pBody into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pBody);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
-    // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);
+    URI lRequestURI = null;
+    try {
+      // Create builder for POST request
+      ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
+      // Build URI of request
+      StringBuilder lURIBuilder = new StringBuilder();
+      lURIBuilder.append(configuration.getExternalServiceURL());
+      lURIBuilder.append("/products");
+      lURIBuilder.append('/');
+      lURIBuilder.append("deprecated/body");
+      lRequestBuilder.setUri(lURIBuilder.toString());
+      lRequestURI = lRequestBuilder.getUri();
+      // Set HTTP header
+      lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+      // Convert parameter pBody into request body.
+      String lRequestBody = objectMapper.writeValueAsString(pBody);
+      lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+      // Execute request and return result.
+      ClassicHttpRequest lRequest = lRequestBuilder.build();
+      return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);
+    }
+    catch (IOException e) {
+      logger.error("Unable to serialize object(s) to JSON.", e);
+      ProblemBuilder lProblemBuilder = Problem.builder();
+      lProblemBuilder.withStatus(Status.INTERNAL_SERVER_ERROR);
+      lProblemBuilder.withType(lRequestURI);
+      lProblemBuilder.withDetail(e.getMessage());
+      throw lProblemBuilder.build();
+    }
   }
 
   /**
@@ -385,23 +439,35 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public void deprectedComplexRequestBody( @Deprecated Product pProduct ) {
-    // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("deprecated/complexBody");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pProduct into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pProduct);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
-    // Execute request.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+    URI lRequestURI = null;
+    try {
+      // Create builder for POST request
+      ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
+      // Build URI of request
+      StringBuilder lURIBuilder = new StringBuilder();
+      lURIBuilder.append(configuration.getExternalServiceURL());
+      lURIBuilder.append("/products");
+      lURIBuilder.append('/');
+      lURIBuilder.append("deprecated/complexBody");
+      lRequestBuilder.setUri(lURIBuilder.toString());
+      lRequestURI = lRequestBuilder.getUri();
+      // Set HTTP header
+      lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+      // Convert parameter pProduct into request body.
+      String lRequestBody = objectMapper.writeValueAsString(pProduct);
+      lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+      // Execute request.
+      ClassicHttpRequest lRequest = lRequestBuilder.build();
+      httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+    }
+    catch (IOException e) {
+      logger.error("Unable to serialize object(s) to JSON.", e);
+      ProblemBuilder lProblemBuilder = Problem.builder();
+      lProblemBuilder.withStatus(Status.INTERNAL_SERVER_ERROR);
+      lProblemBuilder.withType(lRequestURI);
+      lProblemBuilder.withDetail(e.getMessage());
+      throw lProblemBuilder.build();
+    }
   }
 
   /**
@@ -481,23 +547,35 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode ) {
-    // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("ChannelCodeObject");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pChannelCode into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pChannelCode);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
-    // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, ChannelCode.class);
+    URI lRequestURI = null;
+    try {
+      // Create builder for POST request
+      ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
+      // Build URI of request
+      StringBuilder lURIBuilder = new StringBuilder();
+      lURIBuilder.append(configuration.getExternalServiceURL());
+      lURIBuilder.append("/products");
+      lURIBuilder.append('/');
+      lURIBuilder.append("ChannelCodeObject");
+      lRequestBuilder.setUri(lURIBuilder.toString());
+      lRequestURI = lRequestBuilder.getUri();
+      // Set HTTP header
+      lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+      // Convert parameter pChannelCode into request body.
+      String lRequestBody = objectMapper.writeValueAsString(pChannelCode);
+      lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+      // Execute request and return result.
+      ClassicHttpRequest lRequest = lRequestBuilder.build();
+      return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, ChannelCode.class);
+    }
+    catch (IOException e) {
+      logger.error("Unable to serialize object(s) to JSON.", e);
+      ProblemBuilder lProblemBuilder = Problem.builder();
+      lProblemBuilder.withStatus(Status.INTERNAL_SERVER_ERROR);
+      lProblemBuilder.withType(lRequestURI);
+      lProblemBuilder.withDetail(e.getMessage());
+      throw lProblemBuilder.build();
+    }
   }
 
   /**
@@ -507,28 +585,40 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies ) {
-    // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("currencies");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pCurrencies into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pCurrencies);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
-    // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    List<CurrencyCode> lResult =
-        httpClient.executeCollectionResultRequest(lRequest, null, 200, List.class, CurrencyCode.class);
-    if (lResult == null) {
-      lResult = Collections.emptyList();
+    URI lRequestURI = null;
+    try {
+      // Create builder for POST request
+      ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
+      // Build URI of request
+      StringBuilder lURIBuilder = new StringBuilder();
+      lURIBuilder.append(configuration.getExternalServiceURL());
+      lURIBuilder.append("/products");
+      lURIBuilder.append('/');
+      lURIBuilder.append("currencies");
+      lRequestBuilder.setUri(lURIBuilder.toString());
+      lRequestURI = lRequestBuilder.getUri();
+      // Set HTTP header
+      lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+      // Convert parameter pCurrencies into request body.
+      String lRequestBody = objectMapper.writeValueAsString(pCurrencies);
+      lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+      // Execute request and return result.
+      ClassicHttpRequest lRequest = lRequestBuilder.build();
+      List<CurrencyCode> lResult =
+          httpClient.executeCollectionResultRequest(lRequest, null, 200, List.class, CurrencyCode.class);
+      if (lResult == null) {
+        lResult = Collections.emptyList();
+      }
+      return lResult;
     }
-    return lResult;
+    catch (IOException e) {
+      logger.error("Unable to serialize object(s) to JSON.", e);
+      ProblemBuilder lProblemBuilder = Problem.builder();
+      lProblemBuilder.withStatus(Status.INTERNAL_SERVER_ERROR);
+      lProblemBuilder.withType(lRequestURI);
+      lProblemBuilder.withDetail(e.getMessage());
+      throw lProblemBuilder.build();
+    }
   }
 
   /**
@@ -538,23 +628,35 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public CurrencyCode isCurrencySupported( CurrencyCode pCurrency ) {
-    // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("currencies/valid");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pCurrency into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pCurrency);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
-    // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, CurrencyCode.class);
+    URI lRequestURI = null;
+    try {
+      // Create builder for POST request
+      ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
+      // Build URI of request
+      StringBuilder lURIBuilder = new StringBuilder();
+      lURIBuilder.append(configuration.getExternalServiceURL());
+      lURIBuilder.append("/products");
+      lURIBuilder.append('/');
+      lURIBuilder.append("currencies/valid");
+      lRequestBuilder.setUri(lURIBuilder.toString());
+      lRequestURI = lRequestBuilder.getUri();
+      // Set HTTP header
+      lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+      // Convert parameter pCurrency into request body.
+      String lRequestBody = objectMapper.writeValueAsString(pCurrency);
+      lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+      // Execute request and return result.
+      ClassicHttpRequest lRequest = lRequestBuilder.build();
+      return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, CurrencyCode.class);
+    }
+    catch (IOException e) {
+      logger.error("Unable to serialize object(s) to JSON.", e);
+      ProblemBuilder lProblemBuilder = Problem.builder();
+      lProblemBuilder.withStatus(Status.INTERNAL_SERVER_ERROR);
+      lProblemBuilder.withType(lRequestURI);
+      lProblemBuilder.withDetail(e.getMessage());
+      throw lProblemBuilder.build();
+    }
   }
 
   /**
@@ -564,23 +666,35 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode ) {
-    // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("codeTypeUsages");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pStringCode into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pStringCode);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
-    // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, IntegerCodeType.class);
+    URI lRequestURI = null;
+    try {
+      // Create builder for POST request
+      ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
+      // Build URI of request
+      StringBuilder lURIBuilder = new StringBuilder();
+      lURIBuilder.append(configuration.getExternalServiceURL());
+      lURIBuilder.append("/products");
+      lURIBuilder.append('/');
+      lURIBuilder.append("codeTypeUsages");
+      lRequestBuilder.setUri(lURIBuilder.toString());
+      lRequestURI = lRequestBuilder.getUri();
+      // Set HTTP header
+      lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+      // Convert parameter pStringCode into request body.
+      String lRequestBody = objectMapper.writeValueAsString(pStringCode);
+      lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+      // Execute request and return result.
+      ClassicHttpRequest lRequest = lRequestBuilder.build();
+      return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, IntegerCodeType.class);
+    }
+    catch (IOException e) {
+      logger.error("Unable to serialize object(s) to JSON.", e);
+      ProblemBuilder lProblemBuilder = Problem.builder();
+      lProblemBuilder.withStatus(Status.INTERNAL_SERVER_ERROR);
+      lProblemBuilder.withType(lRequestURI);
+      lProblemBuilder.withDetail(e.getMessage());
+      throw lProblemBuilder.build();
+    }
   }
 
   /**

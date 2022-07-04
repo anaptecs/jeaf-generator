@@ -5,7 +5,9 @@
  */
 package com.anaptecs.spring.service.restproxy;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.time.Duration;
 import java.util.Collection;
@@ -64,7 +66,7 @@ public class ProductServiceHttpClient {
   private static final String PROBLEM_JSON_CONTENT_TYPE = "application/problem+json";
 
   /**
-   * Only instance of logger.
+   * Logger for this class.
    */
   private static final Logger logger = LoggerFactory.getLogger(ProductServiceHttpClient.class);
 
@@ -226,7 +228,6 @@ public class ProductServiceHttpClient {
     try {
       // For reasons of proper error handling we need to find out the request URI.
       lRequestURI = pRequest.getUri();
-
       // Decorate call to proxy with circuit breaker.
       Callable<CloseableHttpResponse> lCallable =
           CircuitBreaker.decorateCallable(circuitBreaker, new Callable<CloseableHttpResponse>() {
@@ -255,16 +256,21 @@ public class ProductServiceHttpClient {
         // If server provided problem JSON then we will return this information.
         if (PROBLEM_JSON_CONTENT_TYPE.equals(lResponse.getEntity().getContentType())) {
           ThrowableProblem lProblem =
-              objectMapper.readValue(lResponse.getEntity().getContent(), org.zalando.problem.ThrowableProblem.class);
+              objectMapper.readValue(lResponse.getEntity().getContent(), ThrowableProblem.class);
           throw lProblem;
         }
         // Build up problem JSON from the information we have.
         else {
           // Try to resolve some details.
           ProblemBuilder lProblemBuilder = Problem.builder();
-          lProblemBuilder.withStatus(new HttpStatusAdapter(HttpStatus.valueOf(lStatusCode)));
+          HttpStatusAdapter lStatus = new HttpStatusAdapter(HttpStatus.valueOf(lStatusCode));
+          lProblemBuilder.withStatus(lStatus);
+          lProblemBuilder.withTitle(lStatus.getReasonPhrase());
           lProblemBuilder.withType(pRequest.getUri());
-          lProblemBuilder.withDetail(lResponse.getEntity().toString());
+          HttpEntity lEntity = lResponse.getEntity();
+          if (lEntity.getContentLength() > 0) {
+            lProblemBuilder.withDetail(this.getContent(lEntity.getContent()));
+          }
           throw lProblemBuilder.build();
         }
       }
@@ -278,6 +284,7 @@ public class ProductServiceHttpClient {
       logger.error("Exception occurred when try to call REST Service " + pRequest.toString(), e);
       ProblemBuilder lBuilder = Problem.builder();
       lBuilder.withStatus(Status.INTERNAL_SERVER_ERROR);
+      lBuilder.withTitle(Status.INTERNAL_SERVER_ERROR.getReasonPhrase());
       lBuilder.withType(lRequestURI);
       lBuilder.withDetail(e.getMessage());
       throw lBuilder.build();
@@ -291,6 +298,7 @@ public class ProductServiceHttpClient {
       logger.error("Exception occurred when try to call REST Service " + pRequest.toString(), e);
       ProblemBuilder lBuilder = Problem.builder();
       lBuilder.withStatus(Status.INTERNAL_SERVER_ERROR);
+      lBuilder.withTitle(Status.INTERNAL_SERVER_ERROR.getReasonPhrase());
       lBuilder.withType(lRequestURI);
       lBuilder.withDetail(e.getMessage());
       throw lBuilder.build();
@@ -307,5 +315,23 @@ public class ProductServiceHttpClient {
         }
       }
     }
+  }
+
+  /**
+   * Method returns the content of the passed input stream.
+   * 
+   * @param pInputStream Stream to access the content. The parameter must not be null.
+   * @return byte[] Available content of the stream. The method never returns null.
+   */
+  private String getContent( InputStream pInputStream ) throws IOException {
+    int lAvailableBytes = pInputStream.available();
+    ByteArrayOutputStream lBytes = new ByteArrayOutputStream(lAvailableBytes);
+    // Read as much bytes as possible into the buffer.
+    int lBytesRead;
+    byte[] lBuffer = new byte[128];
+    while ((lBytesRead = pInputStream.read(lBuffer, 0, lBuffer.length)) != -1) {
+      lBytes.write(lBuffer, 0, lBytesRead);
+    }
+    return new String(lBytes.toByteArray());
   }
 }

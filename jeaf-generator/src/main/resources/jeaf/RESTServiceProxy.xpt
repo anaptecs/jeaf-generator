@@ -170,6 +170,11 @@ package «packageName()».restproxy;
 @org.springframework.stereotype.Service
 public class «name»RESTProxy implements «this.fqn()» {
   /**
+   * Logger for this class.
+   */
+  private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(«name»HttpClient.class);
+
+  /**
    * Reference to object holding all the required configuration values to delegate request to external REST service.
    */
   @javax.inject.Inject
@@ -181,6 +186,12 @@ public class «name»RESTProxy implements «this.fqn()» {
   @javax.inject.Inject
   private «name»HttpClient httpClient;
   
+  /**
+   * Object mapper is used for serialization and deserialization of objects from Java to JSON and vice versa.
+   */
+  @javax.inject.Inject
+  private com.fasterxml.jackson.databind.ObjectMapper objectMapper;
+
   «EXPAND RESTProxyOperationOperation(this) FOREACH ownedOperation.typeSelect(RESTOperation)»
 }
 «ENDFILE»
@@ -192,6 +203,10 @@ public class «name»RESTProxy implements «this.fqn()» {
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
     @Override
 	«visibility» «getReturnTypeName()» «name» («EXPAND jeaf::JEAFOperation::ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
+	«IF isTargetRuntimeSpring() && this.hasRequestBody()»
+    java.net.URI lRequestURI = null;
+    try {
+	«ENDIF»
 		// Create builder for «this.httpMethods.selectFirst(e|e!=null)» request
 		org.apache.hc.core5.http.io.support.ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.«this.httpMethods.toList().get(0).toString().toLowerCase()»();
 		
@@ -228,6 +243,9 @@ public class «name»RESTProxy implements «this.fqn()» {
 	    	«ENDFOREACH»
     	«ENDIF»
 	    lRequestBuilder.setUri(lURIBuilder.toString());
+	    «IF isTargetRuntimeSpring() && this.hasRequestBody()»
+	    lRequestURI = lRequestBuilder.getUri();
+	    «ENDIF»
 	    
 		// Set HTTP header
 		lRequestBuilder.setHeader(org.apache.hc.core5.http.HttpHeaders.ACCEPT, org.apache.hc.core5.http.ContentType.APPLICATION_JSON.getMimeType());
@@ -275,7 +293,12 @@ public class «name»RESTProxy implements «this.fqn()» {
 	    
 	    «FOREACH this.getRequestBodyParameters() AS body»
 	    // Convert parameter «body.name» into request body.
+	    «IF isTargetRuntimeJEAF()»
 	    String lRequestBody = com.anaptecs.jeaf.json.api.JSON.getJSONTools().writeObjectToString(«body.name»);
+	    «ENDIF»
+	    «IF isTargetRuntimeSpring()»
+	    String lRequestBody = objectMapper.writeValueAsString(«body.name»);
+	    «ENDIF»
 	    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
 	    «ENDFOREACH»
 
@@ -299,6 +322,17 @@ public class «name»RESTProxy implements «this.fqn()» {
 		«ELSE»
 		    httpClient.executeNoResponseContentRequest(lRequest, «IF this.hasCookieParams()»lLocalContext«ELSE»null«ENDIF», «this.getHTTPStatusCode()»);
 		«ENDIF»
+	«IF isTargetRuntimeSpring() && this.hasRequestBody()»
+    }
+    catch (java.io.IOException e) {
+      logger.error("Unable to serialize object(s) to JSON.", e);
+      org.zalando.problem.ProblemBuilder lProblemBuilder = org.zalando.problem.Problem.builder();
+      lProblemBuilder.withStatus(org.zalando.problem.Status.INTERNAL_SERVER_ERROR);
+      lProblemBuilder.withType(lRequestURI);
+      lProblemBuilder.withDetail(e.getMessage());
+      throw lProblemBuilder.build();
+    }
+    «ENDIF»
 	}
 «ENDDEFINE»
 
@@ -383,6 +417,13 @@ public class «name»HttpClient {
    * Constant for problem JSON content type.
    */
   private static final String PROBLEM_JSON_CONTENT_TYPE = "application/problem+json";
+
+  «IF isTargetRuntimeSpring()»
+  /**
+   * Logger for this class.
+   */
+  private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(«name»HttpClient.class);
+  «ENDIF»
 
   /**
    * Reference to object holding all the required configuration values for the HTTP client and circuit breaker.
@@ -499,6 +540,7 @@ public class «name»HttpClient {
     «ENDIF»
   }
 
+  «IF isTargetRuntimeJEAF()»
   /**
    * Method check state state of this http client based on the state of the circuit breaker.
    * 
@@ -541,6 +583,7 @@ public class «name»HttpClient {
 
     return lCheckResult;
   }
+  «ENDIF»
 
   /**
    * Method executes a HTTP request that is expected to return a collection of objects as result.
@@ -618,7 +661,11 @@ public class «name»HttpClient {
   private <T> T executeRequest( ClassicHttpRequest pRequest, HttpContext pHttpContext, int pSuccessfulStatusCode, JavaType pResponseType ) {
     // Try to execute call to REST resource
     org.apache.hc.client5.http.impl.classic.CloseableHttpResponse lResponse = null;
+    java.net.URI lRequestURI = null;
     try {
+      // For reasons of proper error handling we need to find out the request URI.
+      lRequestURI = pRequest.getUri();
+
       // Decorate call to proxy with circuit breaker.
       java.util.concurrent.Callable<CloseableHttpResponse> lCallable =
           CircuitBreaker.decorateCallable(circuitBreaker, new Callable<CloseableHttpResponse>() {
@@ -646,6 +693,7 @@ public class «name»HttpClient {
         return lResultObject;
       }
       // Error when trying to execute REST call.
+      «IF isTargetRuntimeJEAF()»
       else {
         // If server provided problem JSON then we will return this information.
         if (PROBLEM_JSON_CONTENT_TYPE.equals(lResponse.getEntity().getContentType())) {
@@ -655,7 +703,7 @@ public class «name»HttpClient {
         else {
           // Try to resolve some details.
           com.anaptecs.jeaf.json.problem.Problem.Builder lProblemBuilder = Problem.Builder.newBuilder().setStatus(lStatusCode);
-          lProblemBuilder.setType(pRequest.getUri().toString());
+          lProblemBuilder.setType(lRequestURI.toString());
           HttpEntity lEntity = lResponse.getEntity();
           if (lEntity != null && lEntity.getContentLength() > 0) {
             lProblemBuilder.setDetail(com.anaptecs.jeaf.tools.api.Tools.getStreamTools().getStreamContentAsString(lEntity.getContent()));
@@ -697,7 +745,93 @@ public class «name»HttpClient {
         }
       }
     }
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
+      else {
+        // If server provided problem JSON then we will return this information.
+        if (PROBLEM_JSON_CONTENT_TYPE.equals(lResponse.getEntity().getContentType())) {
+          ThrowableProblem lProblem =
+              objectMapper.readValue(lResponse.getEntity().getContent(), org.zalando.problem.ThrowableProblem.class);
+          throw lProblem;
+        }
+        // Build up problem JSON from the information we have.
+        else {
+          // Try to resolve some details.
+          org.zalando.problem.ProblemBuilder lProblemBuilder = org.zalando.problem.Problem.builder();
+          org.zalando.problem.spring.web.advice.HttpStatusAdapter lStatus = new HttpStatusAdapter(org.springframework.http.HttpStatus.valueOf(lStatusCode));
+          lProblemBuilder.withStatus(lStatus);
+          lProblemBuilder.withTitle(lStatus.getReasonPhrase());
+          lProblemBuilder.withType(pRequest.getUri());
+          HttpEntity lEntity = lResponse.getEntity();
+          if (lEntity.getContentLength() > 0) {
+            lProblemBuilder.withDetail(this.getContent(lEntity.getContent()));
+          }
+          throw lProblemBuilder.build();
+        }
+      }
+    }
+    //
+    // In all the cases below we will use status code 500 INTERNAL_SERVER error as it is not the clients fault that the
+    // request could not be processed
+    //
+    // IOException can result from communication or serialization problems.
+    catch (IOException e) {
+      logger.error("Exception occurred when try to call REST Service " + pRequest.toString(), e);
+      ProblemBuilder lBuilder = Problem.builder();
+      lBuilder.withStatus(org.zalando.problem.Status.INTERNAL_SERVER_ERROR);
+      lBuilder.withTitle(Status.INTERNAL_SERVER_ERROR.getReasonPhrase());
+      lBuilder.withType(lRequestURI);
+      lBuilder.withDetail(e.getMessage());
+      throw lBuilder.build();
+    }
+    // Thanks to circuit breaker interface definition of Resilience4J we have to handle RuntimeExceptions
+    catch (RuntimeException e) {
+      throw e;
+    }
+    // Thanks to circuit breaker interface definition of Resilience4J we also have to catch java.lang.Exception ;-(
+    catch (Exception e) {
+      logger.error("Exception occurred when try to call REST Service " + pRequest.toString(), e);
+      ProblemBuilder lBuilder = Problem.builder();
+      lBuilder.withStatus(org.zalando.problem.Status.INTERNAL_SERVER_ERROR);
+      lBuilder.withTitle(Status.INTERNAL_SERVER_ERROR.getReasonPhrase());
+      lBuilder.withType(lRequestURI);
+      lBuilder.withDetail(e.getMessage());
+      throw lBuilder.build();
+    }
+    // No matter what happened we have at least close the http response if possible.
+    finally {
+      if (lResponse != null) {
+        try {
+          lResponse.close();
+        }
+        catch (IOException e) {
+          logger.error(
+              "Unable to close http client response from REST Service " + configuration.getExternalServiceURL(), e);
+        }
+      }
+    }
+    «ENDIF»
   }
+  «IF isTargetRuntimeSpring()»
+	/**
+	 * Method returns the content of the passed input stream.
+	 * 
+	 * @param pInputStream Stream to access the content. The parameter must not be null.
+	 * @return byte[] Available content of the stream. The method never returns null.
+	 */
+	private String getContent( java.io.InputStream pInputStream ) throws IOException {
+	  int lAvailableBytes = pInputStream.available();
+	  java.io.ByteArrayOutputStream lBytes = new ByteArrayOutputStream(lAvailableBytes);
+	
+	  // Read as much bytes as possible into the buffer.
+	  int lBytesRead;
+	  byte[] lBuffer = new byte[128];
+	  while ((lBytesRead = pInputStream.read(lBuffer, 0, lBuffer.length)) != -1) {
+	    lBytes.write(lBuffer, 0, lBytesRead);
+	  }
+	  return new String(lBytes.toByteArray());
+	}
+  «ENDIF»
 }
 «ENDFILE»
 «ENDDEFINE»

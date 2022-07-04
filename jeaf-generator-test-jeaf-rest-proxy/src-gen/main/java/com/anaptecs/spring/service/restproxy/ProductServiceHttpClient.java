@@ -6,6 +6,7 @@
 package com.anaptecs.spring.service.restproxy;
 
 import java.io.IOException;
+import java.net.URI;
 import java.time.Duration;
 import java.util.Collection;
 import java.util.concurrent.Callable;
@@ -261,7 +262,10 @@ public class ProductServiceHttpClient {
       JavaType pResponseType ) {
     // Try to execute call to REST resource
     CloseableHttpResponse lResponse = null;
+    URI lRequestURI = null;
     try {
+      // For reasons of proper error handling we need to find out the request URI.
+      lRequestURI = pRequest.getUri();
       // Decorate call to proxy with circuit breaker.
       Callable<CloseableHttpResponse> lCallable =
           CircuitBreaker.decorateCallable(circuitBreaker, new Callable<CloseableHttpResponse>() {
@@ -295,7 +299,7 @@ public class ProductServiceHttpClient {
         else {
           // Try to resolve some details.
           Problem.Builder lProblemBuilder = Problem.Builder.newBuilder().setStatus(lStatusCode);
-          lProblemBuilder.setType(pRequest.getUri().toString());
+          lProblemBuilder.setType(lRequestURI.toString());
           HttpEntity lEntity = lResponse.getEntity();
           if (lEntity != null && lEntity.getContentLength() > 0) {
             lProblemBuilder.setDetail(Tools.getStreamTools().getStreamContentAsString(lEntity.getContent()));
