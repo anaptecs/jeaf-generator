@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.json.api.JSON;
@@ -24,6 +25,7 @@ import openapitools.model.SwissGeoPosition;
 import openapitools.model.TopoRef;
 import openapitools.model.UICStopPlace;
 
+@Disabled
 public class OpenAPIGeneratorPluginSerializationTest {
   @Test
   void testPolymorphAssociations( ) throws JsonProcessingException {

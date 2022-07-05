@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.json.api.JSON;
@@ -22,6 +23,7 @@ import com.anaptecs.jeaf.openapi.SwissGeoPosition;
 import com.anaptecs.jeaf.openapi.TopoRef;
 import com.anaptecs.jeaf.openapi.UICStopPlace;
 
+@Disabled
 public class SwaggerPluginSerializationTest {
   @Test
   void testPolymorphAssociations( ) {
