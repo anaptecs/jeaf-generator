@@ -337,7 +337,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 «ENDDEFINE»
 
 «DEFINE HeaderParamValueAccessor FOR HeaderParam»
-	«IF type.fqn() == "java.lang.String"»
+	«IF type.fqn() == "java.lang.String" || type.fqn() == "String"»
 		«name»
 	«ELSE»
 		«IF type.isPrimitiveType()»
@@ -353,7 +353,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 «ENDDEFINE»
 
 «DEFINE HeaderParamValueAccessorForBeanParam(uml::Parameter beanParam) FOR HeaderParam»
-	«IF type.fqn() == "java.lang.String"»
+	«IF type.fqn() == "java.lang.String" || type.fqn() == "String"»
 		«beanParam.name».«this.asGetter()»()
 	«ELSE»
 		«IF type.isPrimitiveType()»

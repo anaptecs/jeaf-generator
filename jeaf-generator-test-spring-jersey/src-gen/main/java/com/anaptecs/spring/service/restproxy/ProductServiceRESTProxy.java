@@ -514,8 +514,7 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("specificHeader", XFun.getDatatypeConverterRegistry()
-        .getConverter(String.class, String.class).convert(pContext.getSpecificHeader()));
+    lRequestBuilder.setHeader("specificHeader", pContext.getSpecificHeader());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());
     lRequestBuilder.setHeader("lang",
         XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class).convert(pContext.getLanguage()));
@@ -716,10 +715,8 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("localKey",
-        XFun.getDatatypeConverterRegistry().getConverter(String.class, String.class).convert(pBeanParam.getLocalKey()));
-    lRequestBuilder.setHeader("localID",
-        XFun.getDatatypeConverterRegistry().getConverter(String.class, String.class).convert(pBeanParam.getLocalID()));
+    lRequestBuilder.setHeader("localKey", pBeanParam.getLocalKey());
+    lRequestBuilder.setHeader("localID", pBeanParam.getLocalID());
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);
@@ -744,10 +741,8 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("novaKey",
-        XFun.getDatatypeConverterRegistry().getConverter(String.class, String.class).convert(pParent.getNovaKey()));
-    lRequestBuilder.setHeader("tkID",
-        XFun.getDatatypeConverterRegistry().getConverter(String.class, String.class).convert(pParent.getTkID()));
+    lRequestBuilder.setHeader("novaKey", pParent.getNovaKey());
+    lRequestBuilder.setHeader("tkID", pParent.getTkID());
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);
@@ -772,12 +767,9 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("X-Child-Property", XFun.getDatatypeConverterRegistry()
-        .getConverter(String.class, String.class).convert(pChild.getChildProperty()));
-    lRequestBuilder.setHeader("novaKey",
-        XFun.getDatatypeConverterRegistry().getConverter(String.class, String.class).convert(pChild.getNovaKey()));
-    lRequestBuilder.setHeader("tkID",
-        XFun.getDatatypeConverterRegistry().getConverter(String.class, String.class).convert(pChild.getTkID()));
+    lRequestBuilder.setHeader("X-Child-Property", pChild.getChildProperty());
+    lRequestBuilder.setHeader("novaKey", pChild.getNovaKey());
+    lRequestBuilder.setHeader("tkID", pChild.getTkID());
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);
