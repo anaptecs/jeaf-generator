@@ -600,10 +600,12 @@ public class «name»HttpClient {
   public <T> T executeCollectionResultRequest( org.apache.hc.core5.http.ClassicHttpRequest pRequest, org.apache.hc.core5.http.protocol.HttpContext pHttpContext, int pSuccessfulStatusCode,
       Class<? extends java.util.Collection> pCollectionClass, Class<?> pTypeClass ) {
 
+    «IF isTargetRuntimeJEAF()»
     // Check parameters
     com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pRequest, "pRequest");
     com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pCollectionClass, "pCollectionClass");
     com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(pTypeClass, "pTypeClass");
+    «ENDIF»
 
     // Create matching response type for collections as defined by the passed parameters
     com.fasterxml.jackson.databind.JavaType lResponseType = objectMapper.getTypeFactory().constructCollectionType(pCollectionClass, pTypeClass);
@@ -624,9 +626,11 @@ public class «name»HttpClient {
   public <T> T executeSingleObjectResultRequest( ClassicHttpRequest pRequest, HttpContext pHttpContext, int pSuccessfulStatusCode,
       Class<?> pTypeClass ) {
 
+    «IF isTargetRuntimeJEAF()»
     // Check parameters
     Check.checkInvalidParameterNull(pRequest, "pRequest");
     Check.checkInvalidParameterNull(pTypeClass, "pTypeClass");
+    «ENDIF»
 
     // Create matching response type as defined by the passed parameters
     JavaType lResponseType = objectMapper.getTypeFactory().constructType(pTypeClass);
@@ -643,8 +647,10 @@ public class «name»HttpClient {
    * order to be able to distinguish between successful and failed requests.
    */
   public void executeNoResponseContentRequest( ClassicHttpRequest pRequest, HttpContext pHttpContext, int pSuccessfulStatusCode ) {
+    «IF isTargetRuntimeJEAF()»
     // Check parameters
     Check.checkInvalidParameterNull(pRequest, "pRequest");
+    «ENDIF»
     // Execute request and return result.
     executeRequest(pRequest, pHttpContext, pSuccessfulStatusCode, null);
   }

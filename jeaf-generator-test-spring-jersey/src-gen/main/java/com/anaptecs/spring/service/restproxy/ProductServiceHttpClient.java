@@ -46,7 +46,6 @@ import org.zalando.problem.Status;
 import org.zalando.problem.ThrowableProblem;
 import org.zalando.problem.spring.web.advice.HttpStatusAdapter;
 
-import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -165,10 +164,6 @@ public class ProductServiceHttpClient {
   @SuppressWarnings({ "rawtypes" })
   public <T> T executeCollectionResultRequest( ClassicHttpRequest pRequest, HttpContext pHttpContext,
       int pSuccessfulStatusCode, Class<? extends Collection> pCollectionClass, Class<?> pTypeClass ) {
-    // Check parameters
-    Check.checkInvalidParameterNull(pRequest, "pRequest");
-    Check.checkInvalidParameterNull(pCollectionClass, "pCollectionClass");
-    Check.checkInvalidParameterNull(pTypeClass, "pTypeClass");
     // Create matching response type for collections as defined by the passed parameters
     JavaType lResponseType = objectMapper.getTypeFactory().constructCollectionType(pCollectionClass, pTypeClass);
     // Execute request and return result.
@@ -186,9 +181,6 @@ public class ProductServiceHttpClient {
    */
   public <T> T executeSingleObjectResultRequest( ClassicHttpRequest pRequest, HttpContext pHttpContext,
       int pSuccessfulStatusCode, Class<?> pTypeClass ) {
-    // Check parameters
-    Check.checkInvalidParameterNull(pRequest, "pRequest");
-    Check.checkInvalidParameterNull(pTypeClass, "pTypeClass");
     // Create matching response type as defined by the passed parameters
     JavaType lResponseType = objectMapper.getTypeFactory().constructType(pTypeClass);
     // Execute request and return result.
@@ -204,8 +196,6 @@ public class ProductServiceHttpClient {
    */
   public void executeNoResponseContentRequest( ClassicHttpRequest pRequest, HttpContext pHttpContext,
       int pSuccessfulStatusCode ) {
-    // Check parameters
-    Check.checkInvalidParameterNull(pRequest, "pRequest");
     // Execute request and return result.
     executeRequest(pRequest, pHttpContext, pSuccessfulStatusCode, null);
   }
