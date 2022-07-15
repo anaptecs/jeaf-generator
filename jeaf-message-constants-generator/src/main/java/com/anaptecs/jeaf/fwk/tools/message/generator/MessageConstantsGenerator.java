@@ -31,7 +31,6 @@ import org.w3c.dom.NodeList;
 
 import com.anaptecs.jeaf.fwk.tools.message.util.JEAFToolsApplicationException;
 import com.anaptecs.jeaf.fwk.tools.message.util.JEAFToolsSystemException;
-import com.anaptecs.jeaf.tools.annotations.ToolsConfig;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.annotations.AppInfo;
 import com.anaptecs.jeaf.xfun.annotations.StartupInfoConfig;
@@ -51,9 +50,7 @@ import com.anaptecs.jeaf.xfun.api.trace.Trace;
  */
 @AppInfo(applicationID = "com.anaptecs.jeaf.Generator", applicationName = "JEAF Generator")
 @StartupInfoConfig(traceStartupInfo = false)
-@ToolsConfig(validationTools = NoValidationToolsImpl.class)
 @TraceConfig(traceMessageFormat = "")
-
 public class MessageConstantsGenerator {
   /**
    * Constant for name of stylesheet that defines the transformation of the xml document.

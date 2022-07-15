@@ -16,9 +16,11 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
+import com.anaptecs.jeaf.tools.annotations.ToolsImplementation;
 import com.anaptecs.jeaf.tools.api.validation.ValidationResult;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
+@ToolsImplementation(toolsInterface = ValidationTools.class)
 public class NoValidationToolsImpl implements ValidationTools {
 
   @Override

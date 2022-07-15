@@ -28,7 +28,7 @@
 			<groupId>com.anaptecs.jeaf.x-fun</groupId>
 			<artifactId>jeaf-x-fun-default-runtime</artifactId>
 			<version>${jeaf.x-fun.impl.version}</version>
-			<scope>test</scope>
+			<scope>runtime</scope>
 			<type>pom</type>
 		</dependency>
 
@@ -75,7 +75,7 @@
 						</goals>
 						<phase>clean</phase>
 						<configuration>
-							<resourceGenDirectory>${basedir}/res-gen</resourceGenDirectory>
+							<resourceGenDirectory>${basedir}/src-gen/main/resources</resourceGenDirectory>
 							<cleanMetaInfDirectory>true</cleanMetaInfDirectory>
 							<cleanOnly>true</cleanOnly>
 						</configuration>
@@ -86,11 +86,8 @@
 							<goal>GenerateJEAFConfig</goal>
 						</goals>
 						<configuration>
-							<resourceGenDirectory>${basedir}/res-gen</resourceGenDirectory>
+							<resourceGenDirectory>${basedir}/src-gen/main/resources</resourceGenDirectory>
 							<targetDirectory>${basedir}/target/classes</targetDirectory>
-							<excludes>
-								<exclude>com.anaptecs.jeaf.xfun.*</exclude>
-							</excludes>
 						</configuration>
 					</execution>
 				</executions>
