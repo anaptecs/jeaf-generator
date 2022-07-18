@@ -712,7 +712,7 @@ public class «name»HttpClient {
           lProblemBuilder.setType(lRequestURI.toString());
           HttpEntity lEntity = lResponse.getEntity();
           if (lEntity != null && lEntity.getContentLength() > 0) {
-            lProblemBuilder.setDetail(com.anaptecs.jeaf.tools.api.Tools.getStreamTools().getStreamContentAsString(lEntity.getContent()));
+            lProblemBuilder.setDetail(com.anaptecs.jeaf.tools.api.stream.StreamTools.getStreamTools().getStreamContentAsString(lEntity.getContent()));
           }
           throw new RESTProblemException(lProblemBuilder.build());
         }

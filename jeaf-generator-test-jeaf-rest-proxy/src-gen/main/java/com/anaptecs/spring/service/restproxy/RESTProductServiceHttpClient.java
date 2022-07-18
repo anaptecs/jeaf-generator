@@ -36,8 +36,8 @@ import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.json.api.JSONMessages;
 import com.anaptecs.jeaf.json.problem.Problem;
 import com.anaptecs.jeaf.json.problem.RESTProblemException;
-import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.http.HTTPStatusCode;
+import com.anaptecs.jeaf.tools.api.stream.StreamTools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Assert;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -302,7 +302,7 @@ public class RESTProductServiceHttpClient {
           lProblemBuilder.setType(lRequestURI.toString());
           HttpEntity lEntity = lResponse.getEntity();
           if (lEntity != null && lEntity.getContentLength() > 0) {
-            lProblemBuilder.setDetail(Tools.getStreamTools().getStreamContentAsString(lEntity.getContent()));
+            lProblemBuilder.setDetail(StreamTools.getStreamTools().getStreamContentAsString(lEntity.getContent()));
           }
           throw new RESTProblemException(lProblemBuilder.build());
         }
