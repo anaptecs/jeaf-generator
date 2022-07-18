@@ -120,7 +120,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF sup
 	 */
 	public «this.name» buildValidated( ) throws javax.validation.ConstraintViolationException {
       «this.name» lPOJO = this.build();
-      com.anaptecs.jeaf.tools.api.Tools.getValidationTools().enforceObjectValidation(lPOJO);
+      com.anaptecs.jeaf.tools.api.validation.ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
 	}
 	«ENDIF»
@@ -219,7 +219,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 	 */
 	public «this.name» buildValidated( ) throws javax.validation.ConstraintViolationException {
       «this.name» lPOJO = this.build();
-      com.anaptecs.jeaf.tools.api.Tools.getValidationTools().enforceObjectValidation(lPOJO);
+      com.anaptecs.jeaf.tools.api.validation.ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
 	}
 	«ENDIF»

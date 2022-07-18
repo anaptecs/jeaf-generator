@@ -7,7 +7,7 @@ package com.anaptecs.jeaf.junit.otherpackage;
 
 import javax.validation.ConstraintViolationException;
 
-import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 /**
  * @author JEAF Generator
@@ -98,7 +98,7 @@ public class InputSubclass extends Input {
      */
     public InputSubclass buildValidated( ) throws ConstraintViolationException {
       InputSubclass lPOJO = this.build();
-      Tools.getValidationTools().enforceObjectValidation(lPOJO);
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 import javax.validation.ConstraintViolationException;
 
-import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -160,7 +160,7 @@ public class EnumTest implements Serializable {
      */
     public EnumTest buildValidated( ) throws ConstraintViolationException {
       EnumTest lPOJO = this.build();
-      Tools.getValidationTools().enforceObjectValidation(lPOJO);
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

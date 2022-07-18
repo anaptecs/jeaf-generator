@@ -16,7 +16,7 @@ import java.util.TreeSet;
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 
-import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -268,7 +268,7 @@ public class ImmutableAssociationPOJO {
      */
     public ImmutableAssociationPOJO buildValidated( ) throws ConstraintViolationException {
       ImmutableAssociationPOJO lPOJO = this.build();
-      Tools.getValidationTools().enforceObjectValidation(lPOJO);
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

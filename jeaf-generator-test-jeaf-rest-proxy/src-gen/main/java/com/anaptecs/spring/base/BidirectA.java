@@ -14,7 +14,7 @@ import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
 
-import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -206,7 +206,7 @@ public class BidirectA implements Serializable {
      */
     public BidirectA buildValidated( ) throws ConstraintViolationException {
       BidirectA lPOJO = this.build();
-      Tools.getValidationTools().enforceObjectValidation(lPOJO);
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

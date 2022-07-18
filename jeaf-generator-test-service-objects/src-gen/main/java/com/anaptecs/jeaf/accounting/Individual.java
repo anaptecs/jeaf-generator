@@ -7,7 +7,7 @@ package com.anaptecs.jeaf.accounting;
 
 import javax.validation.ConstraintViolationException;
 
-import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
 /**
@@ -196,7 +196,7 @@ public class Individual extends Customer {
      */
     public Individual buildValidated( ) throws ConstraintViolationException {
       Individual lPOJO = this.build();
-      Tools.getValidationTools().enforceObjectValidation(lPOJO);
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

@@ -7,7 +7,7 @@ package ch.voev.nova.inventory.api.booking;
 
 import javax.validation.ConstraintViolationException;
 
-import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 /**
  * WGS84 coordinates position. Provided by OJP.
@@ -150,7 +150,7 @@ public class GeoPosition extends PlaceRef {
      */
     public GeoPosition buildValidated( ) throws ConstraintViolationException {
       GeoPosition lPOJO = this.build();
-      Tools.getValidationTools().enforceObjectValidation(lPOJO);
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

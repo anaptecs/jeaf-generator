@@ -8,7 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
-import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 /**
  * @author JEAF Generator
@@ -100,7 +100,7 @@ public class UICStopPlace extends StopPlaceRef {
      */
     public UICStopPlace buildValidated( ) throws ConstraintViolationException {
       UICStopPlace lPOJO = this.build();
-      Tools.getValidationTools().enforceObjectValidation(lPOJO);
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

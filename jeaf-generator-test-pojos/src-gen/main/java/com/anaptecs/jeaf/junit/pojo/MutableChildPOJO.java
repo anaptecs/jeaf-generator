@@ -8,7 +8,7 @@ package com.anaptecs.jeaf.junit.pojo;
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 
-import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -153,7 +153,7 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
      */
     public MutableChildPOJO buildValidated( ) throws ConstraintViolationException {
       MutableChildPOJO lPOJO = this.build();
-      Tools.getValidationTools().enforceObjectValidation(lPOJO);
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

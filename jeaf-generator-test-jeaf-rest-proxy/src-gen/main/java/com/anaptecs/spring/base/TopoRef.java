@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import javax.validation.ConstraintViolationException;
 
-import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -111,7 +111,7 @@ public class TopoRef extends PlaceRef {
      */
     public TopoRef buildValidated( ) throws ConstraintViolationException {
       TopoRef lPOJO = this.build();
-      Tools.getValidationTools().enforceObjectValidation(lPOJO);
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

@@ -14,7 +14,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Size;
 
-import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -188,7 +188,7 @@ public class ChildB extends ParentClass {
      */
     public ChildB buildValidated( ) throws ConstraintViolationException {
       ChildB lPOJO = this.build();
-      Tools.getValidationTools().enforceObjectValidation(lPOJO);
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }

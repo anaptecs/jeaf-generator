@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.ws.rs.HeaderParam;
 
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
-import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
@@ -155,7 +155,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
      */
     public ChildBeanParameterType buildValidated( ) throws ConstraintViolationException {
       ChildBeanParameterType lPOJO = this.build();
-      Tools.getValidationTools().enforceObjectValidation(lPOJO);
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
   }
