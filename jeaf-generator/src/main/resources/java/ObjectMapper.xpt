@@ -341,7 +341,7 @@
 					«IF lTargetClass == supplier.owner»
 						«IF isDatatypeConverterRequired(supplier, client) == false»
 							«IF autoBoxingToolsRequired(supplier, client) == true»
-								pTarget.«supplier.asSetter()»(com.anaptecs.jeaf.tools.api.Tools.getAutoBoxingTools().autoBox(pSource.«client.asGetter()»()));
+								pTarget.«supplier.asSetter()»(com.anaptecs.jeaf.tools.api.lang.AutoBoxingTools.getAutoBoxingTools().autoBox(pSource.«client.asGetter()»()));
 							«ELSE»
 								pTarget.«supplier.asSetter()»(pSource.«client.asGetter()»());
 							«ENDIF»
@@ -404,7 +404,7 @@
 						«IF lTargetClass == supplier.owner»
 							«IF isDatatypeConverterRequired(supplier, client) == false»
 								«IF autoBoxingToolsRequired(supplier, client) == true»
-									pTarget.«supplier.asSetter()»(com.anaptecs.jeaf.tools.api.Tools.getAutoBoxingTools().autoBox(pSource.«client.asGetter()»()));
+									pTarget.«supplier.asSetter()»(com.anaptecs.jeaf.tools.api.lang.AutoBoxingTools.getAutoBoxingTools().autoBox(pSource.«client.asGetter()»()));
 								«ELSE»
 									pTarget.«supplier.asSetter()»(pSource.«client.asGetter()»());
 								«ENDIF»
@@ -452,7 +452,7 @@
 					«IF lTargetClass == supplier.owner»
 						«IF isDatatypeConverterRequired(supplier, client) == false»
 							«IF autoBoxingToolsRequired(supplier, client) == true»
-								pSource.«client.asSetter()»(com.anaptecs.jeaf.tools.api.Tools.getAutoBoxingTools().autoBox(pTarget.«supplier.asGetter()»()));
+								pSource.«client.asSetter()»(com.anaptecs.jeaf.tools.api.lang.AutoBoxingTools.getAutoBoxingTools().autoBox(pTarget.«supplier.asGetter()»()));
 							«ELSE»
 								pSource.«client.asSetter()»(pTarget.«supplier.asGetter()»());
 							«ENDIF»

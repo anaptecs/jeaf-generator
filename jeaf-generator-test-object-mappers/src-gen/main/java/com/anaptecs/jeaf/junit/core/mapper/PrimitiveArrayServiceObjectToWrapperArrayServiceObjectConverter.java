@@ -13,7 +13,7 @@ import java.util.List;
 import com.anaptecs.jeaf.core.api.ObjectMapper;
 import com.anaptecs.jeaf.junit.core.PrimitiveArrayServiceObject;
 import com.anaptecs.jeaf.junit.core.WrapperArrayServiceObject;
-import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.lang.AutoBoxingTools;
 import com.anaptecs.jeaf.xfun.api.checks.Assert;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
@@ -205,7 +205,7 @@ public class PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
   private void setTargetObject( PrimitiveArrayServiceObject pSource, WrapperArrayServiceObject pTarget ) {
-    pTarget.setBooleanArray(Tools.getAutoBoxingTools().autoBox(pSource.getBooleanArray()));
+    pTarget.setBooleanArray(AutoBoxingTools.getAutoBoxingTools().autoBox(pSource.getBooleanArray()));
   }
 
   /**
@@ -217,7 +217,7 @@ public class PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter
    */
   private void updateTargetObject( PrimitiveArrayServiceObject pSource, WrapperArrayServiceObject pTarget ) {
     // Update target object
-    pTarget.setBooleanArray(Tools.getAutoBoxingTools().autoBox(pSource.getBooleanArray()));
+    pTarget.setBooleanArray(AutoBoxingTools.getAutoBoxingTools().autoBox(pSource.getBooleanArray()));
   }
 
   /**
@@ -228,6 +228,6 @@ public class PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
   private void setSourceObject( PrimitiveArrayServiceObject pSource, WrapperArrayServiceObject pTarget ) {
-    pSource.setBooleanArray(Tools.getAutoBoxingTools().autoBox(pTarget.getBooleanArray()));
+    pSource.setBooleanArray(AutoBoxingTools.getAutoBoxingTools().autoBox(pTarget.getBooleanArray()));
   }
 }
