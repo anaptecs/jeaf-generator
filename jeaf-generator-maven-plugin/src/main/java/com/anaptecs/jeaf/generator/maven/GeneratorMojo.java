@@ -586,6 +586,8 @@ public class GeneratorMojo extends AbstractMojo {
         }
         // Error during code generation from UML model
         else {
+          this.getLog().error(
+              "Problem occured during code generation from UML model. Please see log output for further details.");
           throw new MojoFailureException(
               "Problem occured during code generation from UML model. Please see log output for further details.");
         }
