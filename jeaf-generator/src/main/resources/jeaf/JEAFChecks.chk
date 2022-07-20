@@ -34,13 +34,17 @@ context JEAFService if runChecks("JEAFService") ERROR "Error: Service " + name+ 
 
 context ServiceObject if runChecks("ServiceObject") ERROR "Error: Service Object " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
 context ServiceObject if runChecks("ServiceObject") ERROR "Error: Service Object " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
+context ServiceObject if runChecks("ServiceObject") ERROR "Error: Service Object " + name+ " has method(s) with input parameters without name. Please ensure that all input parameters are named (" + fqn() + ")": ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
 
 
 context DomainObject if runChecks("DomainObject") ERROR "Error: Domain Object " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
 context DomainObject if runChecks("DomainObject") ERROR "Error: Domain Object " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
+context DomainObject if runChecks("DomainObject") ERROR "Error: Domain Object " + name+ " has method(s) with input parameters without name. Please ensure that all input parameters are named (" + fqn() + ")": ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
+
 
 context PersistentObject if runChecks("PersistentObject") ERROR "Error: Persistent Object " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
 context PersistentObject if runChecks("PersistentObject") ERROR "Error: Persistent Object " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
+context PersistentObject if runChecks("PersistentObject") ERROR "Error: Persistent Object " + name+ " has method(s) with input parameters without name. Please ensure that all input parameters are named (" + fqn() + ")": ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
 
 context Operation if runChecks() ERROR "Error: Method " + name + " has parameter(s) without type.": hasOnlySupportedParamaterTypes() == true;
 context Operation if runChecks() ERROR "Error: Method " + name + " (...) of class " + ((NamedElement)this.owner).fqn() + " does not have a valid return type": hasReturnType() == true;
