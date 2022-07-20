@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.anaptecs.jeaf.generator</groupId>
@@ -30,20 +31,21 @@
 			<artifactId>jeaf-core-service-channel-base</artifactId>
 			<version>${jeaf.core.impl.version}</version>
 		</dependency>
-
-		<!-- TODO: Check version conflict between here and JEAF inherited -->
+		
+		<!-- Dependency is required as of Java 11 javax.annotations are no longer part of standard JDK -->
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>${jackson.version}</version>
+		    <groupId>javax.activation</groupId>
+		    <artifactId>activation</artifactId>
+		    <version>1.1.1</version>
 		</dependency>
 		
+
 		<dependency>
 			<groupId>com.anaptecs.jeaf.json</groupId>
 			<artifactId>jeaf-json-problem</artifactId>
 			<version>${jeaf.json.api.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.anaptecs.jeaf.workload</groupId>
 			<artifactId>jeaf-workload-rest-api</artifactId>
@@ -84,7 +86,7 @@
 			<version>${jeaf.fastlane.impl.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.anaptecs.jeaf.workload</groupId>
 			<artifactId>jeaf-workload-impl</artifactId>
@@ -113,6 +115,12 @@
 			<artifactId>mockserver-netty</artifactId>
 			<version>${mock.server.version}</version>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>jakarta.xml.bind</groupId>
+					<artifactId>jakarta.xml.bind-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -169,10 +177,10 @@
 					<makePOJOsSerializable>true</makePOJOsSerializable>
 					<generateJSONSerializers>true</generateJSONSerializers>
 					<generateJacksonAnnotations>true</generateJacksonAnnotations>
-					
+
 					<generateRESTServiceProxies>true</generateRESTServiceProxies>
 					<generateRESTServiceProxyConfigFile>true</generateRESTServiceProxyConfigFile>
-					
+
 					<generateServiceProxies>true</generateServiceProxies>
 					<generateComponentImpls>true</generateComponentImpls>
 					<generateComponentRuntimeClasses>true</generateComponentRuntimeClasses>
@@ -182,7 +190,7 @@
 					<fileHeaderAuthor>JEAF Generator</fileHeaderAuthor>
 					<fileHeaderCopyright>Copyright 2004 - 2019. All rights reserved.</fileHeaderCopyright>
 					<fileHeaderVersion>JEAF Release 1.4.x</fileHeaderVersion>
-					
+
 					<!-- Define code formatting style -->
 					<!-- <conventionFile>anaptecs_code_guideline.xml</conventionFile> -->
 				</configuration>
@@ -194,7 +202,7 @@
 				<artifactId>jeaf-maven-plugin</artifactId>
 				<version>${maven.jeaf-plugin.version}</version>
 				<executions>
-					<!--  Cleanup run -->
+					<!-- Cleanup run -->
 					<execution>
 						<id>Clean</id>
 						<goals>
@@ -226,7 +234,7 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
