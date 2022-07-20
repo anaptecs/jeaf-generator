@@ -29,7 +29,8 @@ context DomainObject if runChecks("DomainObject") ERROR "Error: Domain Object " 
 context PersistentObject if runChecks("PersistentObject") ERROR "Error: Persistent Object " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
 context PersistentObject if runChecks("PersistentObject") ERROR "Error: Persistent Object " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
 
-context JEAFService if runChecks("JEAFService") ERROR "Error: Service " + name+ " has method with unsupported return type. Please ensure that all methods have a real return type and that no arrays of primitive types returned (" + fqn() + ")": ownedOperation.forAll( e | e.isSupportedReturnType() == true);
+context JEAFService if runChecks("JEAFService") ERROR "Error: Service " + name+ " has method(s) with unsupported return type. Please ensure that all methods have a real return type and that no arrays of primitive types returned (" + fqn() + ")": ownedOperation.forAll( e | e.isSupportedReturnType() == true);
+context JEAFService if runChecks("JEAFService") ERROR "Error: Service " + name+ " has method(s) with input parameters without name. Please ensure that all input parameters are named (" + fqn() + ")": ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
 
 context ServiceObject if runChecks("ServiceObject") ERROR "Error: Service Object " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
 context ServiceObject if runChecks("ServiceObject") ERROR "Error: Service Object " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);

@@ -157,8 +157,11 @@ String asParameterDefinitionList(List parameters):
 cached boolean isInputParameter(uml::Parameter parameter):
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isInputParameter(org.eclipse.uml2.uml.Parameter);
     
-List[uml::Parameter] getInputParameters(uml::Operation operation):
+cached List[uml::Parameter] getInputParameters(uml::Operation operation):
    operation.ownedParameter.select(p| p.isInputParameter());
+   
+cached boolean areAllInputParametersNamed(uml::Operation operation):
+   operation.getInputParameters().select(e|e.name.length == 0).isEmpty;
    
 boolean hasInputParameters(uml::Operation operation):
    getInputParameters(operation).size > 0;
