@@ -566,36 +566,42 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Override
   public void execute( ) throws MojoExecutionException, MojoFailureException {
-    if (this.isGenerationRequested()) {
-      // Show startup info.
-      this.showStartupInfo();
+    try {
+      if (this.isGenerationRequested()) {
+        // Show startup info.
+        this.showStartupInfo();
 
-      // Clean *-gen directories
-      this.cleanDirectories();
+        // Clean *-gen directories
+        this.cleanDirectories();
 
-      // Run message constants generator
-      this.runMessageConstantsGenerator();
+        // Run message constants generator
+        this.runMessageConstantsGenerator();
 
-      // Run Generator based on UML model Successful
-      boolean lSuccessful = this.runUMLGenerator();
+        // Run Generator based on UML model Successful
+        boolean lSuccessful = this.runUMLGenerator();
 
-      if (lSuccessful == true) {
-        // Format generated sources and resources
-        this.runFormatter();
+        if (lSuccessful == true) {
+          // Format generated sources and resources
+          this.runFormatter();
+        }
+        // Error during code generation from UML model
+        else {
+          throw new MojoFailureException(
+              "Problem occured during code generation from UML model. Please see log output for further details.");
+        }
       }
-      // Error during code generation from UML model
+      // Nothing should be generated.
       else {
-        throw new MojoFailureException(
-            "Problem occured during code generation from UML model. Please see log output for further details.");
+        Log lLog = this.getLog();
+        lLog.info("--------------------------------------------------------------------------------------");
+        lLog.info("Starting JEAF Generator " + XFun.getVersionInfo().getVersionString());
+        lLog.info("Skipping code generation as there is no configuration present.");
+        lLog.info("--------------------------------------------------------------------------------------");
       }
     }
-    // Nothing should be generated.
-    else {
-      Log lLog = this.getLog();
-      lLog.info("--------------------------------------------------------------------------------------");
-      lLog.info("Starting JEAF Generator " + XFun.getVersionInfo().getVersionString());
-      lLog.info("Skipping code generation as there is no configuration present.");
-      lLog.info("--------------------------------------------------------------------------------------");
+    catch (MojoExecutionException | MojoFailureException | RuntimeException | Error e) {
+      this.getLog().error(e);
+      throw e;
     }
   }
 
