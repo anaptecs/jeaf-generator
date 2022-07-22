@@ -9,7 +9,7 @@
 		<Root level="INFO">
 			<AppenderRef ref="STDOUT"/>
 		</Root>
-		<Logger name="JEAF_DEFAULT" level="WARN" />
+		<Logger name="JEAF_DEFAULT_LOGGER" level="ERROR" />
 		<Logger name="org.openarchitectureware.workflow" level="WARN" />
 		<Logger name="org.andromda.beautifier.plugin.ImportBeautifierMojo" level="WARN" />
 		

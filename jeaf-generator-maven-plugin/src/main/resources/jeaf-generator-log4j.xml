@@ -10,8 +10,8 @@
 		</layout>
 	</appender>
 
-	<logger name="JEAF_DEFAULT" >
-	    <level value="WARN" />
+	<logger name="JEAF_DEFAULT_LOGGER" >
+	    <level value="ERROR" />
 		<appender-ref ref="SYSOUT" />
 	</logger>	
 	

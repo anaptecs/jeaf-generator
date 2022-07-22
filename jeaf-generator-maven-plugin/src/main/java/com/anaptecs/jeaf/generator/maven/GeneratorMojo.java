@@ -913,6 +913,21 @@ public class GeneratorMojo extends AbstractMojo {
     return lSuccessful;
   }
 
+  private void preCheckXMIFiles( List<String> pUMLFiles ) throws MojoFailureException {
+    for (String lNextFile : pUMLFiles) {
+      try {
+        String lStartOfFile = FileTools.getFileTools().readLinesAsString(lNextFile, 0, 5);
+        if (lStartOfFile.contains("file:/")) {
+          this.getLog().warn(lNextFile
+              + " seems to use file system references. This might lead to portabilty issues with the exported XMI files. For further details please refer to FAQ entry #2.1 on https://anaptecs.atlassian.net/l/cp/ndmtZxvX");
+        }
+      }
+      catch (IOException e) {
+        this.getLog().error(e.getMessage());
+      }
+    }
+  }
+
   private void prepareXMIFiles( ) throws MojoFailureException {
     Stopwatch lStopwatch = Tools.getPerformanceTools().createStopwatch("XMI file preparation", TimePrecision.MILLIS);
     lStopwatch.start();
@@ -925,6 +940,9 @@ public class GeneratorMojo extends AbstractMojo {
     List<String> lExtensions = new ArrayList<>();
     lExtensions.add("*.uml");
     List<String> lUMLFiles = lFileTools.listFiles(lXMIFiles, lFileTools.createExtensionFilenameFilter(lExtensions));
+
+    // Do some pre checks on XMI files to avoid trouble during code generation
+    this.preCheckXMIFiles(lUMLFiles);
 
     // Fix all XMI files
     if (umlModelingTool != ModelingTool.MAGIC_DRAW) {
