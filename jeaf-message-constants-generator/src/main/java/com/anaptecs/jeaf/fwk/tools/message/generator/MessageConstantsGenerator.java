@@ -50,7 +50,7 @@ import com.anaptecs.jeaf.xfun.api.trace.Trace;
  */
 @AppInfo(applicationID = "com.anaptecs.jeaf.Generator", applicationName = "JEAF Generator")
 @StartupInfoConfig(traceStartupInfo = false)
-@TraceConfig(traceMessageFormat = "")
+@TraceConfig(defaultLoggerName = "JEAF_GENERATOR", traceMessageFormat = "", exposeLoggersViaJMX = false)
 public class MessageConstantsGenerator {
   /**
    * Constant for name of stylesheet that defines the transformation of the xml document.

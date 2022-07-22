@@ -10,8 +10,8 @@
 			<AppenderRef ref="STDOUT"/>
 		</Root>
 		<Logger name="JEAF_DEFAULT_LOGGER" level="ERROR" />
+		<Logger name="JEAF_GENERATOR" level="WARN" />
 		<Logger name="org.openarchitectureware.workflow" level="WARN" />
-		<Logger name="org.andromda.beautifier.plugin.ImportBeautifierMojo" level="WARN" />
-		
+		<Logger name="org.andromda.beautifier.plugin.ImportBeautifierMojo" level="WARN" />		
 	</Loggers>
 </Configuration>

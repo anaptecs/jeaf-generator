@@ -15,6 +15,11 @@
 		<appender-ref ref="SYSOUT" />
 	</logger>	
 	
+	<logger name="JEAF_GENERATOR" >
+	    <level value="WARN" />
+		<appender-ref ref="SYSOUT" />
+	</logger>	
+	
 	<logger name="org.andromda.beautifier.plugin.ImportBeautifierMojo" >
 	    <level value="WARN" />
 		<appender-ref ref="SYSOUT" />
