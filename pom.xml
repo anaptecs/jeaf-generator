@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.anaptecs.jeaf</groupId>
 		<artifactId>jeaf-plugin-project-parent</artifactId>
-		<version>1.0.34-SNAPSHOT</version>
+		<version>1.0.34</version>
 	</parent>
 
 	<groupId>com.anaptecs.jeaf.generator</groupId>
@@ -25,23 +25,23 @@
 	</scm>
 	
 	<properties>
-		<jeaf.x-fun.api.version>1.6.17-SNAPSHOT</jeaf.x-fun.api.version>
-		<jeaf.x-fun.impl.version>1.6.23-SNAPSHOT</jeaf.x-fun.impl.version>
-		<jeaf.tools.api.version>1.6.20-SNAPSHOT</jeaf.tools.api.version>
-		<jeaf.core.api.version>1.6.19-SNAPSHOT</jeaf.core.api.version>
-		<jeaf.core.impl.version>1.6.21-SNAPSHOT</jeaf.core.impl.version>
-		<jeaf.persistence.api.version>1.6.14-SNAPSHOT</jeaf.persistence.api.version>
-		<jeaf.junit.extensions.version>1.6.14-SNAPSHOT</jeaf.junit.extensions.version>
-		<jeaf.fastlane.impl.version>1.6.19-SNAPSHOT</jeaf.fastlane.impl.version>
-		<jeaf.workload.api.version>1.6.18-SNAPSHOT</jeaf.workload.api.version>
-		<jeaf.workload.impl.version>1.6.17-SNAPSHOT</jeaf.workload.impl.version>
-		<jeaf.json.api.version>1.6.14-SNAPSHOT</jeaf.json.api.version>
-		<jeaf.json.impl.version>1.6.15-SNAPSHOT</jeaf.json.impl.version>
-		<jeaf.test.model.version>1.0.40-SNAPSHOT</jeaf.test.model.version>
+		<jeaf.x-fun.api.version>1.6.17</jeaf.x-fun.api.version>
+		<jeaf.x-fun.impl.version>1.6.23</jeaf.x-fun.impl.version>
+		<jeaf.tools.api.version>1.6.20</jeaf.tools.api.version>
+		<jeaf.core.api.version>1.6.18</jeaf.core.api.version>
+		<jeaf.core.impl.version>1.6.20</jeaf.core.impl.version>
+		<jeaf.persistence.api.version>1.6.13</jeaf.persistence.api.version>
+		<jeaf.junit.extensions.version>1.6.13</jeaf.junit.extensions.version>
+		<jeaf.fastlane.impl.version>1.6.18</jeaf.fastlane.impl.version>
+		<jeaf.workload.api.version>1.6.17</jeaf.workload.api.version>
+		<jeaf.workload.impl.version>1.6.16</jeaf.workload.impl.version>
+		<jeaf.json.api.version>1.6.13</jeaf.json.api.version>
+		<jeaf.json.impl.version>1.6.14</jeaf.json.impl.version>
+		<jeaf.test.model.version>1.0.40</jeaf.test.model.version>
 		
 		<!-- Please be aware that Spring Boot and Spring core versions must match together -->
-		<spring.boot.version>2.7.0</spring.boot.version>
-		<spring.core.version>5.3.20</spring.core.version>
+		<spring.boot.version>2.7.2</spring.boot.version>
+		<spring.core.version>5.3.22</spring.core.version>
 	</properties>
 
 	<modules>
