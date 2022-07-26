@@ -41,6 +41,7 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
 import com.anaptecs.jeaf.xfun.api.messages.MessageDataDTD;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
+import com.anaptecs.jeaf.xfun.api.trace.TraceProvider;
 
 /**
  * Class generates a java class out of a XML document containing message information. Therefore the class uses XSLT.
@@ -234,7 +235,7 @@ public class MessageConstantsGenerator {
 
     // Get DOM element containing class information. If the XML file contains no element CLASS_INFO then no class will
     // be generated.
-    Trace lTrace = XFun.getTrace();
+    Trace lTrace = TraceProvider.getTraceProvider().getTrace(this.getClass());
     NodeList lNodes = lMessageResource.getElementsByTagName(MessageDataDTD.CLASS_INFO);
     if (lNodes.getLength() == 1) {
       Element lClassInfo = (Element) lNodes.item(0);
