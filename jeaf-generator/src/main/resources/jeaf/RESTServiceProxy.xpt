@@ -294,7 +294,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 	    «FOREACH this.getRequestBodyParameters() AS body»
 	    // Convert parameter «body.name» into request body.
 	    «IF isTargetRuntimeJEAF()»
-	    String lRequestBody = com.anaptecs.jeaf.json.api.JSON.getJSONTools().writeObjectToString(«body.name»);
+	    String lRequestBody = com.anaptecs.jeaf.json.api.JSONTools.getJSONTools().writeObjectToString(«body.name»);
 	    «ENDIF»
 	    «IF isTargetRuntimeSpring()»
 	    String lRequestBody = objectMapper.writeValueAsString(«body.name»);
@@ -466,7 +466,7 @@ public class «name»HttpClient {
     configuration = pConfiguration;
     httpClient = this.initializeHTTPClient();
     circuitBreaker = this.initializeCircuitBreaker();
-    objectMapper = com.anaptecs.jeaf.json.api.JSON.getJSONTools().getDefaultObjectMapper();
+    objectMapper = com.anaptecs.jeaf.json.api.JSONTools.getJSONTools().getDefaultObjectMapper();
   }
   «ENDIF»
 

@@ -21,7 +21,7 @@ import org.apache.hc.core5.http.protocol.BasicHttpContext;
 import org.apache.hc.core5.http.protocol.HttpContext;
 
 import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
-import com.anaptecs.jeaf.json.api.JSON;
+import com.anaptecs.jeaf.json.api.JSONTools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 import com.anaptecs.jeaf.xfun.api.config.Configuration;
@@ -152,7 +152,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pProduct into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pProduct);
+    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pProduct);
     lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -222,7 +222,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pChannelCode into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pChannelCode);
+    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pChannelCode);
     lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();

@@ -20,7 +20,7 @@ import org.apache.hc.core5.http.protocol.BasicHttpContext;
 import org.apache.hc.core5.http.protocol.HttpContext;
 
 import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
-import com.anaptecs.jeaf.json.api.JSON;
+import com.anaptecs.jeaf.json.api.JSONTools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 import com.anaptecs.jeaf.xfun.api.config.Configuration;
@@ -155,7 +155,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pProduct into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pProduct);
+    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pProduct);
     lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -225,7 +225,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pChannelCode into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pChannelCode);
+    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pChannelCode);
     lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -389,7 +389,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pBody into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pBody);
+    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pBody);
     lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -417,7 +417,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pProduct into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pProduct);
+    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pProduct);
     lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
     // Execute request.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -512,7 +512,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pChannelCode into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pChannelCode);
+    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pChannelCode);
     lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -538,7 +538,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pCurrencies into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pCurrencies);
+    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pCurrencies);
     lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -569,7 +569,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pCurrency into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pCurrency);
+    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pCurrency);
     lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -595,7 +595,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pStringCode into request body.
-    String lRequestBody = JSON.getJSONTools().writeObjectToString(pStringCode);
+    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pStringCode);
     lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();

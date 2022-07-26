@@ -32,8 +32,8 @@ import org.apache.hc.core5.pool.PoolReusePolicy;
 import org.apache.hc.core5.util.TimeValue;
 import org.apache.hc.core5.util.Timeout;
 
-import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.json.api.JSONMessages;
+import com.anaptecs.jeaf.json.api.JSONTools;
 import com.anaptecs.jeaf.json.problem.Problem;
 import com.anaptecs.jeaf.json.problem.RESTProblemException;
 import com.anaptecs.jeaf.tools.api.http.HTTPStatusCode;
@@ -96,7 +96,7 @@ public class ProductServiceHttpClient {
     configuration = pConfiguration;
     httpClient = this.initializeHTTPClient();
     circuitBreaker = this.initializeCircuitBreaker();
-    objectMapper = JSON.getJSONTools().getDefaultObjectMapper();
+    objectMapper = JSONTools.getJSONTools().getDefaultObjectMapper();
   }
 
   /**
