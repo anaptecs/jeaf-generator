@@ -84,6 +84,13 @@ public class ProductServiceConfiguration {
   private int connectTimeout;
 
   /**
+   * Timeout in milliseconds when requesting a connection from the pool of http connections. This parameter especially
+   * becomes important in cases where a connection pool is configured too small or in cases of unexpected high load.
+   */
+  @Value("${productService.http.connectionRequestTimeout}")
+  private int connectionRequestTimeout;
+
+  /**
    * Failure rate threshold (percent of requests) defines which amount of failed request must be exceeded due to
    * technical problems that the circuit breaker opens and no further request will be sent to the REST service.
    * 
@@ -238,6 +245,15 @@ public class ProductServiceConfiguration {
    */
   public int getConnectTimeout( ) {
     return connectTimeout;
+  }
+
+  /**
+   * Method returns the connection request timeout when a http connection is taken from the pool.
+   * 
+   * @return int Connection request timeout in milliseconds.
+   */
+  public int getConnectionRequestTimeout( ) {
+    return connectionRequestTimeout;
   }
 
   /**

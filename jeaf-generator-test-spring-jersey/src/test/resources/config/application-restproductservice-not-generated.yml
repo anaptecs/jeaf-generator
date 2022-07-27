@@ -39,6 +39,10 @@ rESTProductService:
     # environment.
     connectTimeout: 100
     
+    # Timeout in milliseconds when requesting a connection from the pool of http connections. This parameter especially
+    # becomes important in cases where a connection pool is configured too small or in cases of unexpected high load.
+    connectionRequestTimeout: 100
+
   # Resilience4J circuit breaker configuration
   circuitbreaker:
     # Failure rate threshold (percent of requests) defines which amount of failed request must be exceeded due to

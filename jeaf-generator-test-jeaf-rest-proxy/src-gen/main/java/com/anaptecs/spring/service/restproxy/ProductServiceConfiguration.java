@@ -133,6 +133,15 @@ public class ProductServiceConfiguration {
   }
 
   /**
+   * Method returns the connection request timeout when a http connection is taken from the pool.
+   * 
+   * @return int Connection request timeout in milliseconds.
+   */
+  public int getConnectionRequestTimeout( ) {
+    return configuration.getConfigurationValue("connectionRequestTimeout", Integer.class);
+  }
+
+  /**
    * Method returns the failure rate threshold (percent of requests) defines which amount of failed request must be
    * exceeded due to technical problems that the circuit breaker opens and no further request will be sent to the REST
    * service.

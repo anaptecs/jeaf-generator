@@ -238,15 +238,6 @@ public class ProductServiceConfiguration {
   }
 
   /**
-   * Method returns the connection request timeout when a http connection is taken from the pool.
-   * 
-   * @return int Connection request timeout in milliseconds.
-   */
-  public int getConnectionRequestTimeout( ) {
-    return connectionRequestTimeout;
-  }
-
-  /**
    * Method returns the timeout in milliseconds to establish connections to the REST service. As connections are pooled
    * this parameter should not have a too strong influence on the overall behavior.
    * 
@@ -254,6 +245,15 @@ public class ProductServiceConfiguration {
    */
   public int getConnectTimeout( ) {
     return connectTimeout;
+  }
+
+  /**
+   * Method returns the connection request timeout when a http connection is taken from the pool.
+   * 
+   * @return int Connection request timeout in milliseconds.
+   */
+  public int getConnectionRequestTimeout( ) {
+    return connectionRequestTimeout;
   }
 
   /**

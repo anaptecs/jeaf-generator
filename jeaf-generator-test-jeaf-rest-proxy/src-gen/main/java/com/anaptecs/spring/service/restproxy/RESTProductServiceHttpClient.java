@@ -124,6 +124,7 @@ public class RESTProductServiceHttpClient {
     RequestConfig.Builder lConfigBuilder = RequestConfig.custom();
     lConfigBuilder.setConnectionKeepAlive(TimeValue.ofMilliseconds(configuration.getKeepAliveDuration()));
     lConfigBuilder.setConnectTimeout(Timeout.ofMilliseconds(configuration.getConnectTimeout()));
+    lConfigBuilder.setConnectionRequestTimeout(Timeout.ofMilliseconds(configuration.getConnectionRequestTimeout()));
     lConfigBuilder.setResponseTimeout(Timeout.ofMilliseconds(configuration.getResponseTimeout()));
     lConfigBuilder.setExpectContinueEnabled(true);
     lBuilder.setDefaultRequestConfig(lConfigBuilder.build());
