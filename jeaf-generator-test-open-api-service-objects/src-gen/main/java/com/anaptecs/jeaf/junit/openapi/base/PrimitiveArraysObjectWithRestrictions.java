@@ -420,8 +420,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setAByteArray( byte[] pAByteArray ) {
       // Assign value to attribute
       if (pAByteArray != null) {
-        aByteArray = new byte[pAByteArray.length];
-        System.arraycopy(pAByteArray, 0, aByteArray, 0, pAByteArray.length);
+        aByteArray = pAByteArray;
       }
       else {
         aByteArray = null;
@@ -873,8 +872,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public byte[] getAByteArray( ) {
     byte[] lReturnValue;
     if (aByteArray != null) {
-      lReturnValue = new byte[aByteArray.length];
-      System.arraycopy(aByteArray, 0, lReturnValue, 0, aByteArray.length);
+      lReturnValue = aByteArray;
     }
     else {
       lReturnValue = null;
@@ -891,8 +889,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setAByteArray( byte[] pAByteArray ) {
     // Assign value to attribute
     if (pAByteArray != null) {
-      aByteArray = new byte[pAByteArray.length];
-      System.arraycopy(pAByteArray, 0, aByteArray, 0, pAByteArray.length);
+      aByteArray = pAByteArray;
     }
     else {
       aByteArray = null;

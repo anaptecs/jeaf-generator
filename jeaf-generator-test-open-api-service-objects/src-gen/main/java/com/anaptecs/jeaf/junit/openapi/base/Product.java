@@ -316,8 +316,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     public Builder setImage( byte[] pImage ) {
       // Assign value to attribute
       if (pImage != null) {
-        image = new byte[pImage.length];
-        System.arraycopy(pImage, 0, image, 0, pImage.length);
+        image = pImage;
       }
       else {
         image = null;
@@ -601,8 +600,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   public byte[] getImage( ) {
     byte[] lReturnValue;
     if (image != null) {
-      lReturnValue = new byte[image.length];
-      System.arraycopy(image, 0, lReturnValue, 0, image.length);
+      lReturnValue = image;
     }
     else {
       lReturnValue = null;
@@ -618,8 +616,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   public void setImage( byte[] pImage ) {
     // Assign value to attribute
     if (pImage != null) {
-      image = new byte[pImage.length];
-      System.arraycopy(pImage, 0, image, 0, pImage.length);
+      image = pImage;
     }
     else {
       image = null;

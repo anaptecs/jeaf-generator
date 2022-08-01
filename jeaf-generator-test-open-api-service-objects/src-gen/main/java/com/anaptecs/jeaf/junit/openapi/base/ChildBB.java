@@ -249,8 +249,7 @@ public class ChildBB extends ChildB {
     public Builder setDeprecatedArray( byte[] pDeprecatedArray ) {
       // Assign value to attribute
       if (pDeprecatedArray != null) {
-        deprecatedArray = new byte[pDeprecatedArray.length];
-        System.arraycopy(pDeprecatedArray, 0, deprecatedArray, 0, pDeprecatedArray.length);
+        deprecatedArray = pDeprecatedArray;
       }
       else {
         deprecatedArray = null;
@@ -458,8 +457,7 @@ public class ChildBB extends ChildB {
   public byte[] getDeprecatedArray( ) {
     byte[] lReturnValue;
     if (deprecatedArray != null) {
-      lReturnValue = new byte[deprecatedArray.length];
-      System.arraycopy(deprecatedArray, 0, lReturnValue, 0, deprecatedArray.length);
+      lReturnValue = deprecatedArray;
     }
     else {
       lReturnValue = null;
@@ -477,8 +475,7 @@ public class ChildBB extends ChildB {
   public void setDeprecatedArray( byte[] pDeprecatedArray ) {
     // Assign value to attribute
     if (pDeprecatedArray != null) {
-      deprecatedArray = new byte[pDeprecatedArray.length];
-      System.arraycopy(pDeprecatedArray, 0, deprecatedArray, 0, pDeprecatedArray.length);
+      deprecatedArray = pDeprecatedArray;
     }
     else {
       deprecatedArray = null;
