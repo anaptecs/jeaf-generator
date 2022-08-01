@@ -460,6 +460,40 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateNullChecksForToOneAssociations;
 
   /**
+   * Switch defines whether generated methods dealing with any kind of collections must ensure that the internal state
+   * of an object can not be modified by accident. This will lead to get method that make use of
+   * Collections.unmodifiableCollection(...). Builders that receive a collection as input will copy their content. This
+   * is the default behavior of JEAF Generator.
+   * 
+   * If this parameter is set to <code>true</code> then this means that collections returned from a get method may also
+   * be modified from the outside.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean disableImmutabilityOfCollections;
+
+  /**
+   * Switch defines whether generated methods dealing with arrays must ensure that the internal state of an object can
+   * not be modified by accident. This will lead to System.arraycopy(...) in get methods. Builders that receive an array
+   * as input will copy their content. This is the default behavior of JEAF Generator.
+   * 
+   * If this parameter is set to <code>true</code> then this means that arrays return from get method can directly be
+   * modified and this will also impact the state of the object were the array belongs to.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean disableImmutabilityOfArrays;
+
+  /**
+   * Switch defines whether generated methods dealing with byte arrays must ensure that the internal state of an object
+   * can not be modified by accident. This will lead to System.arraycopy(...) in get methods. Builders that receive an
+   * array as input will copy their content. This is the default behavior of JEAF Generator.
+   * 
+   * If this parameter is set to <code>true</code> then this means that arrays return from get method can directly be
+   * modified and this will also impact the state of the object were the array belongs to.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean disableImmutabilityOfBinaryData;
+
+  /**
    * Name of the row within which the OID / primary key will be stored. If the property is not set "OID" will be used as
    * default.
    */
@@ -566,6 +600,7 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Override
   public void execute( ) throws MojoExecutionException, MojoFailureException {
+
     if (this.isGenerationRequested()) {
       // Show startup info.
       this.showStartupInfo();
@@ -771,6 +806,18 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateNullChecksForToOneAssociations) {
       lLog.info("NULL checks for to one associations:              " + generateNullChecksForToOneAssociations);
     }
+
+    // Print information about immutability behavior
+    if (disableImmutabilityOfCollections) {
+      lLog.info("Disable immutability for collections:             " + disableImmutabilityOfCollections);
+    }
+    if (disableImmutabilityOfArrays) {
+      lLog.info("Disable immutability for non-binary arrays:       " + disableImmutabilityOfArrays);
+    }
+    if (disableImmutabilityOfBinaryData) {
+      lLog.info("Disable immutability for binary arrays:           " + disableImmutabilityOfBinaryData);
+    }
+
     lLog.info(" ");
     lLog.info("Javadoc Company Tag:                              " + fileHeaderCompany);
     lLog.info("Javadoc Author Tag:                               " + fileHeaderAuthor);
@@ -865,6 +912,11 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.public.setters.for.associations", generatePublicSettersForAssociations.toString());
       System.setProperty("switch.gen.null.checks.for.to.one.associations.of.service.objects",
           generateNullChecksForToOneAssociations.toString());
+
+      System.setProperty("switch.gen.disable.collection.immutability", disableImmutabilityOfCollections.toString());
+      System.setProperty("switch.gen.disable.array.immutability", disableImmutabilityOfArrays.toString());
+      System.setProperty("switch.gen.disable.binary.data.immutability", disableImmutabilityOfBinaryData.toString());
+
       System.setProperty("name.oid.row", peristentObjectsOIDRowName);
       System.setProperty("name.version.label.row", peristentObjectsVersionLabelRowName);
 

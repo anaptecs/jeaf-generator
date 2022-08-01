@@ -158,11 +158,26 @@ public class GeneratorCommons {
   public static final String GENERATE_PUBLIC_SETTERS = "switch.gen.public.setters.for.associations";
 
   /**
-   * Constant defines the name of the system property which enables the generation of null checks for setters fo to one
+   * Constant defines the name of the system property which enables the generation of null checks for setters of to one
    * associations of service objects.
    */
   public static final String GENERATE_NULL_CHECKS_FOR_TO_ONE_ASSOCIATIONS_OF_SERVICE_OBJECTS =
       "switch.gen.null.checks.for.to.one.associations.of.service.objects";
+
+  /**
+   * Constant defines the name of the system property which disables immutability of collections.
+   */
+  public static final String DISABLE_COLLECTION_IMMUTABILITY = "switch.gen.disable.collection.immutability";
+
+  /**
+   * Constant defines the name of the system property which disables immutability of collections.
+   */
+  public static final String DISABLE_ARRAY_IMMUTABILITY = "switch.gen.disable.array.immutability";
+
+  /**
+   * Constant defines the name of the system property which disables immutability of collections.
+   */
+  public static final String DISABLE_BINRAY_DATA_IMMUTABILITY = "switch.gen.disable.binary.data.immutability";
 
   /**
    * Constant defines the name of the system property which enables the generation of JUnit tests for services.
@@ -840,6 +855,21 @@ public class GeneratorCommons {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(GENERATE_NULL_CHECKS_FOR_TO_ONE_ASSOCIATIONS_OF_SERVICE_OBJECTS,
         Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean disableCollectionImmutability( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(DISABLE_COLLECTION_IMMUTABILITY, Boolean.FALSE, Boolean.class);
+  }
+
+  public static boolean disableArrayImmutability( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(DISABLE_ARRAY_IMMUTABILITY, Boolean.FALSE, Boolean.class);
+  }
+
+  public static boolean disableBinaryDataImmutability( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(DISABLE_BINRAY_DATA_IMMUTABILITY, Boolean.FALSE, Boolean.class);
   }
 
   public static String getMavenVersion( ) {

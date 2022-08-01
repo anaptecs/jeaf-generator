@@ -96,8 +96,21 @@
 	public «this.fqn()»«IF isMultivalued()»[]«ENDIF» «asGetter()»() {
 	    «IF this.isMultivalued() == false»return «asInstanceVar()»;«ELSE»«this.fqn()»[] lReturnValue;
 	    if(«asInstanceVar()» != null) {
-	      lReturnValue = new «this.fqn()»[«asInstanceVar()».length];
-	      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
+	      «IF this.isBinaryType()»
+		      «IF disableBinaryDataImmutability()»
+			      lReturnValue = «asInstanceVar()»;
+		      «ELSE»
+			      lReturnValue = new «this.fqn()»[«asInstanceVar()».length];
+			      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
+		      «ENDIF»
+	      «ELSE»
+		      «IF disableArrayImmutability()»
+			      lReturnValue = «asInstanceVar()»;
+		      «ELSE»
+			      lReturnValue = new «this.fqn()»[«asInstanceVar()».length];
+			      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
+		      «ENDIF»
+	      «ENDIF»
 	    }
 	    else {
 	      lReturnValue = null;
@@ -120,13 +133,26 @@
 		«IF this.isMultivalued() == false»
 			«asInstanceVar()»=«asParameter()»;
 		«ELSE»
-			if(«asParameter()» != null) {
-		      «asInstanceVar()» = new «this.fqn()»[«asParameter()».length];
-		      System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
-		    }
-		    else {
+		  if(«asParameter()» != null) {
+	      «IF this.isBinaryType()»
+		      «IF disableBinaryDataImmutability()»
+			      «asInstanceVar()» = «asParameter()»;
+		      «ELSE»
+			      «asInstanceVar()» = new «this.fqn()»[«asParameter()».length];
+			      System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
+		      «ENDIF»
+	      «ELSE»
+		      «IF disableArrayImmutability()»
+			      «asInstanceVar()» = «asParameter()»;
+		      «ELSE»
+			      «asInstanceVar()» = new «this.fqn()»[«asParameter()».length];
+			      System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
+		      «ENDIF»
+	      «ENDIF»
+		  }
+		  else {
 		      «asInstanceVar()» = null;
-		    }
+		  }
 		«ENDIF»
 	}
 «ENDDEFINE»

@@ -282,11 +282,24 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 			«asInstanceVar()»=«asParameter()»;
 		«ELSE»
 			if(«asParameter()» != null) {
-			«asInstanceVar()» = new «this.fqn()»[«asParameter()».length];
-			System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
+			«IF this.isBinaryType()»
+				«IF disableBinaryDataImmutability()»
+					«asInstanceVar()» = «asParameter()»;
+				«ELSE»
+					«asInstanceVar()» = new «this.fqn()»[«asParameter()».length];
+					System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
+				«ENDIF»
+			«ELSE»
+				«IF disableArrayImmutability()»
+					«asInstanceVar()» = «asParameter()»;
+				«ELSE»
+					«asInstanceVar()» = new «this.fqn()»[«asParameter()».length];
+					System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
+				«ENDIF»
+			«ENDIF»
 			}
 			else {
-			«asInstanceVar()» = null;
+				«asInstanceVar()» = null;
 			}
 		«ENDIF»
 		return this;
