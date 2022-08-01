@@ -7,7 +7,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -251,11 +250,11 @@ public class Leg implements ServiceObject {
    * 
    *
    * @return Collection All PlaceRef objects that belong to the association "stopovers". The method never returns null
-   * and the returned collection is unmodifiable.
+   * and the returned collection is modifiable.
    */
   public List<PlaceRef> getStopovers( ) {
-    // Return all PlaceRef objects as unmodifiable collection.
-    return Collections.unmodifiableList(stopovers);
+    // Return all PlaceRef objects directly without any protection against modification.
+    return stopovers;
   }
 
   /**

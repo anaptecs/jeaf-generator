@@ -6,7 +6,6 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -249,8 +248,7 @@ public class ChildBB extends ChildB {
     public Builder setDeprecatedArray( byte[] pDeprecatedArray ) {
       // Assign value to attribute
       if (pDeprecatedArray != null) {
-        deprecatedArray = new byte[pDeprecatedArray.length];
-        System.arraycopy(pDeprecatedArray, 0, deprecatedArray, 0, pDeprecatedArray.length);
+        deprecatedArray = pDeprecatedArray;
       }
       else {
         deprecatedArray = null;
@@ -330,12 +328,12 @@ public class ChildBB extends ChildB {
    * 
    *
    * @return Collection All ChildB objects that belong to the association "deprecatedBs". The method never returns null
-   * and the returned collection is unmodifiable.
+   * and the returned collection is modifiable.
    */
   @Deprecated
   public Set<ChildB> getDeprecatedBs( ) {
-    // Return all ChildB objects as unmodifiable collection.
-    return Collections.unmodifiableSet(deprecatedBs);
+    // Return all ChildB objects directly without any protection against modification.
+    return deprecatedBs;
   }
 
   /**
@@ -458,8 +456,7 @@ public class ChildBB extends ChildB {
   public byte[] getDeprecatedArray( ) {
     byte[] lReturnValue;
     if (deprecatedArray != null) {
-      lReturnValue = new byte[deprecatedArray.length];
-      System.arraycopy(deprecatedArray, 0, lReturnValue, 0, deprecatedArray.length);
+      lReturnValue = deprecatedArray;
     }
     else {
       lReturnValue = null;
@@ -477,8 +474,7 @@ public class ChildBB extends ChildB {
   public void setDeprecatedArray( byte[] pDeprecatedArray ) {
     // Assign value to attribute
     if (pDeprecatedArray != null) {
-      deprecatedArray = new byte[pDeprecatedArray.length];
-      System.arraycopy(pDeprecatedArray, 0, deprecatedArray, 0, pDeprecatedArray.length);
+      deprecatedArray = pDeprecatedArray;
     }
     else {
       deprecatedArray = null;

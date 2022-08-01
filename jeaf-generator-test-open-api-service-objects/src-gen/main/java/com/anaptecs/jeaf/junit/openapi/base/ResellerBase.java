@@ -7,7 +7,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -285,7 +284,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    * 
    *
    * @return Collection All Channel objects that belong to the association "channels". The method never returns null and
-   * the returned collection is unmodifiable.
+   * the returned collection is modifiable.
    */
   public List<Channel> getChannels( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -296,8 +295,8 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
         lNext.setReseller((Reseller) this);
       }
     }
-    // Return all Channel objects as unmodifiable collection.
-    return Collections.unmodifiableList(channels);
+    // Return all Channel objects directly without any protection against modification.
+    return channels;
   }
 
   /**
@@ -390,11 +389,11 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    * 
    *
    * @return Collection All Product objects that belong to the association "products". The method never returns null and
-   * the returned collection is unmodifiable.
+   * the returned collection is modifiable.
    */
   public Set<Product> getProducts( ) {
-    // Return all Product objects as unmodifiable collection.
-    return Collections.unmodifiableSet(products);
+    // Return all Product objects directly without any protection against modification.
+    return products;
   }
 
   /**

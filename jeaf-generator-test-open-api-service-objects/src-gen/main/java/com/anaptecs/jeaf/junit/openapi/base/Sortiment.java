@@ -6,7 +6,6 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -157,7 +156,7 @@ public class Sortiment implements ServiceObject {
    * 
    *
    * @return Collection All Product objects that belong to the association "products". The method never returns null and
-   * the returned collection is unmodifiable.
+   * the returned collection is modifiable.
    */
   public Set<Product> getProducts( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -168,8 +167,8 @@ public class Sortiment implements ServiceObject {
         lNext.addToSortiments((Sortiment) this);
       }
     }
-    // Return all Product objects as unmodifiable collection.
-    return Collections.unmodifiableSet(products);
+    // Return all Product objects directly without any protection against modification.
+    return products;
   }
 
   /**

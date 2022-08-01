@@ -150,6 +150,18 @@ cached boolean generatePublicSettersForAssociations() :
     
 cached boolean generateNullChecksForToOneAssociationsOfServiceObjects() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateNullChecksForToOneAssociationsOfServiceObjects();
+    
+cached boolean disableCollectionImmutability():
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.disableCollectionImmutability();
+            
+cached boolean disableArrayImmutability():
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.disableArrayImmutability();
+            
+cached boolean disableBinaryDataImmutability():
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.disableBinaryDataImmutability();
+    
+cached boolean isBinaryType(uml::Property property):
+    property.type.name == "byte";
             
 cached boolean isPort(uml::Property property):
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isPort(org.eclipse.uml2.uml.Property);

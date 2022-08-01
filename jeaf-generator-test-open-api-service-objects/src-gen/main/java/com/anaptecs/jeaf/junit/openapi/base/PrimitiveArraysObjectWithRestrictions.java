@@ -369,8 +369,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setABooleanArray( boolean[] pABooleanArray ) {
       // Assign value to attribute
       if (pABooleanArray != null) {
-        aBooleanArray = new boolean[pABooleanArray.length];
-        System.arraycopy(pABooleanArray, 0, aBooleanArray, 0, pABooleanArray.length);
+        aBooleanArray = pABooleanArray;
       }
       else {
         aBooleanArray = null;
@@ -386,8 +385,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setBBooleanArray( Boolean[] pBBooleanArray ) {
       // Assign value to attribute
       if (pBBooleanArray != null) {
-        bBooleanArray = new Boolean[pBBooleanArray.length];
-        System.arraycopy(pBBooleanArray, 0, bBooleanArray, 0, pBBooleanArray.length);
+        bBooleanArray = pBBooleanArray;
       }
       else {
         bBooleanArray = null;
@@ -403,8 +401,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setCBooleanArray( boolean[] pCBooleanArray ) {
       // Assign value to attribute
       if (pCBooleanArray != null) {
-        cBooleanArray = new boolean[pCBooleanArray.length];
-        System.arraycopy(pCBooleanArray, 0, cBooleanArray, 0, pCBooleanArray.length);
+        cBooleanArray = pCBooleanArray;
       }
       else {
         cBooleanArray = null;
@@ -420,8 +417,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setAByteArray( byte[] pAByteArray ) {
       // Assign value to attribute
       if (pAByteArray != null) {
-        aByteArray = new byte[pAByteArray.length];
-        System.arraycopy(pAByteArray, 0, aByteArray, 0, pAByteArray.length);
+        aByteArray = pAByteArray;
       }
       else {
         aByteArray = null;
@@ -437,8 +433,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setBByteArray( Byte[] pBByteArray ) {
       // Assign value to attribute
       if (pBByteArray != null) {
-        bByteArray = new Byte[pBByteArray.length];
-        System.arraycopy(pBByteArray, 0, bByteArray, 0, pBByteArray.length);
+        bByteArray = pBByteArray;
       }
       else {
         bByteArray = null;
@@ -454,8 +449,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setAShortArray( short[] pAShortArray ) {
       // Assign value to attribute
       if (pAShortArray != null) {
-        aShortArray = new short[pAShortArray.length];
-        System.arraycopy(pAShortArray, 0, aShortArray, 0, pAShortArray.length);
+        aShortArray = pAShortArray;
       }
       else {
         aShortArray = null;
@@ -471,8 +465,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setBShortArray( Short[] pBShortArray ) {
       // Assign value to attribute
       if (pBShortArray != null) {
-        bShortArray = new Short[pBShortArray.length];
-        System.arraycopy(pBShortArray, 0, bShortArray, 0, pBShortArray.length);
+        bShortArray = pBShortArray;
       }
       else {
         bShortArray = null;
@@ -488,8 +481,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setAIntegerArray( int[] pAIntegerArray ) {
       // Assign value to attribute
       if (pAIntegerArray != null) {
-        aIntegerArray = new int[pAIntegerArray.length];
-        System.arraycopy(pAIntegerArray, 0, aIntegerArray, 0, pAIntegerArray.length);
+        aIntegerArray = pAIntegerArray;
       }
       else {
         aIntegerArray = null;
@@ -505,8 +497,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setBIntegerArray( Integer[] pBIntegerArray ) {
       // Assign value to attribute
       if (pBIntegerArray != null) {
-        bIntegerArray = new Integer[pBIntegerArray.length];
-        System.arraycopy(pBIntegerArray, 0, bIntegerArray, 0, pBIntegerArray.length);
+        bIntegerArray = pBIntegerArray;
       }
       else {
         bIntegerArray = null;
@@ -522,8 +513,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setCIntegerArray( Integer[] pCIntegerArray ) {
       // Assign value to attribute
       if (pCIntegerArray != null) {
-        cIntegerArray = new Integer[pCIntegerArray.length];
-        System.arraycopy(pCIntegerArray, 0, cIntegerArray, 0, pCIntegerArray.length);
+        cIntegerArray = pCIntegerArray;
       }
       else {
         cIntegerArray = null;
@@ -539,8 +529,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setALongArray( long[] pALongArray ) {
       // Assign value to attribute
       if (pALongArray != null) {
-        aLongArray = new long[pALongArray.length];
-        System.arraycopy(pALongArray, 0, aLongArray, 0, pALongArray.length);
+        aLongArray = pALongArray;
       }
       else {
         aLongArray = null;
@@ -556,8 +545,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setBLongArray( Long[] pBLongArray ) {
       // Assign value to attribute
       if (pBLongArray != null) {
-        bLongArray = new Long[pBLongArray.length];
-        System.arraycopy(pBLongArray, 0, bLongArray, 0, pBLongArray.length);
+        bLongArray = pBLongArray;
       }
       else {
         bLongArray = null;
@@ -573,8 +561,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
       // Assign value to attribute
       if (pABigIntegerArray != null) {
-        aBigIntegerArray = new BigInteger[pABigIntegerArray.length];
-        System.arraycopy(pABigIntegerArray, 0, aBigIntegerArray, 0, pABigIntegerArray.length);
+        aBigIntegerArray = pABigIntegerArray;
       }
       else {
         aBigIntegerArray = null;
@@ -590,8 +577,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setACharacterArray( char[] pACharacterArray ) {
       // Assign value to attribute
       if (pACharacterArray != null) {
-        aCharacterArray = new char[pACharacterArray.length];
-        System.arraycopy(pACharacterArray, 0, aCharacterArray, 0, pACharacterArray.length);
+        aCharacterArray = pACharacterArray;
       }
       else {
         aCharacterArray = null;
@@ -607,8 +593,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setBCharacterArray( Character[] pBCharacterArray ) {
       // Assign value to attribute
       if (pBCharacterArray != null) {
-        bCharacterArray = new Character[pBCharacterArray.length];
-        System.arraycopy(pBCharacterArray, 0, bCharacterArray, 0, pBCharacterArray.length);
+        bCharacterArray = pBCharacterArray;
       }
       else {
         bCharacterArray = null;
@@ -624,8 +609,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setAFloatArray( float[] pAFloatArray ) {
       // Assign value to attribute
       if (pAFloatArray != null) {
-        aFloatArray = new float[pAFloatArray.length];
-        System.arraycopy(pAFloatArray, 0, aFloatArray, 0, pAFloatArray.length);
+        aFloatArray = pAFloatArray;
       }
       else {
         aFloatArray = null;
@@ -641,8 +625,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setBFloatArray( Float[] pBFloatArray ) {
       // Assign value to attribute
       if (pBFloatArray != null) {
-        bFloatArray = new Float[pBFloatArray.length];
-        System.arraycopy(pBFloatArray, 0, bFloatArray, 0, pBFloatArray.length);
+        bFloatArray = pBFloatArray;
       }
       else {
         bFloatArray = null;
@@ -658,8 +641,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setADoubleArray( double[] pADoubleArray ) {
       // Assign value to attribute
       if (pADoubleArray != null) {
-        aDoubleArray = new double[pADoubleArray.length];
-        System.arraycopy(pADoubleArray, 0, aDoubleArray, 0, pADoubleArray.length);
+        aDoubleArray = pADoubleArray;
       }
       else {
         aDoubleArray = null;
@@ -675,8 +657,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setBDoubleArray( Double[] pBDoubleArray ) {
       // Assign value to attribute
       if (pBDoubleArray != null) {
-        bDoubleArray = new Double[pBDoubleArray.length];
-        System.arraycopy(pBDoubleArray, 0, bDoubleArray, 0, pBDoubleArray.length);
+        bDoubleArray = pBDoubleArray;
       }
       else {
         bDoubleArray = null;
@@ -692,8 +673,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
       // Assign value to attribute
       if (pABigDecimalArray != null) {
-        aBigDecimalArray = new BigDecimal[pABigDecimalArray.length];
-        System.arraycopy(pABigDecimalArray, 0, aBigDecimalArray, 0, pABigDecimalArray.length);
+        aBigDecimalArray = pABigDecimalArray;
       }
       else {
         aBigDecimalArray = null;
@@ -709,8 +689,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setAStringArray( String[] pAStringArray ) {
       // Assign value to attribute
       if (pAStringArray != null) {
-        aStringArray = new String[pAStringArray.length];
-        System.arraycopy(pAStringArray, 0, aStringArray, 0, pAStringArray.length);
+        aStringArray = pAStringArray;
       }
       else {
         aStringArray = null;
@@ -726,8 +705,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     public Builder setBStringArray( String[] pBStringArray ) {
       // Assign value to attribute
       if (pBStringArray != null) {
-        bStringArray = new String[pBStringArray.length];
-        System.arraycopy(pBStringArray, 0, bStringArray, 0, pBStringArray.length);
+        bStringArray = pBStringArray;
       }
       else {
         bStringArray = null;
@@ -768,8 +746,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public boolean[] getABooleanArray( ) {
     boolean[] lReturnValue;
     if (aBooleanArray != null) {
-      lReturnValue = new boolean[aBooleanArray.length];
-      System.arraycopy(aBooleanArray, 0, lReturnValue, 0, aBooleanArray.length);
+      lReturnValue = aBooleanArray;
     }
     else {
       lReturnValue = null;
@@ -786,8 +763,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setABooleanArray( boolean[] pABooleanArray ) {
     // Assign value to attribute
     if (pABooleanArray != null) {
-      aBooleanArray = new boolean[pABooleanArray.length];
-      System.arraycopy(pABooleanArray, 0, aBooleanArray, 0, pABooleanArray.length);
+      aBooleanArray = pABooleanArray;
     }
     else {
       aBooleanArray = null;
@@ -803,8 +779,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public Boolean[] getBBooleanArray( ) {
     Boolean[] lReturnValue;
     if (bBooleanArray != null) {
-      lReturnValue = new Boolean[bBooleanArray.length];
-      System.arraycopy(bBooleanArray, 0, lReturnValue, 0, bBooleanArray.length);
+      lReturnValue = bBooleanArray;
     }
     else {
       lReturnValue = null;
@@ -821,8 +796,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setBBooleanArray( Boolean[] pBBooleanArray ) {
     // Assign value to attribute
     if (pBBooleanArray != null) {
-      bBooleanArray = new Boolean[pBBooleanArray.length];
-      System.arraycopy(pBBooleanArray, 0, bBooleanArray, 0, pBBooleanArray.length);
+      bBooleanArray = pBBooleanArray;
     }
     else {
       bBooleanArray = null;
@@ -838,8 +812,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public boolean[] getCBooleanArray( ) {
     boolean[] lReturnValue;
     if (cBooleanArray != null) {
-      lReturnValue = new boolean[cBooleanArray.length];
-      System.arraycopy(cBooleanArray, 0, lReturnValue, 0, cBooleanArray.length);
+      lReturnValue = cBooleanArray;
     }
     else {
       lReturnValue = null;
@@ -856,8 +829,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setCBooleanArray( boolean[] pCBooleanArray ) {
     // Assign value to attribute
     if (pCBooleanArray != null) {
-      cBooleanArray = new boolean[pCBooleanArray.length];
-      System.arraycopy(pCBooleanArray, 0, cBooleanArray, 0, pCBooleanArray.length);
+      cBooleanArray = pCBooleanArray;
     }
     else {
       cBooleanArray = null;
@@ -873,8 +845,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public byte[] getAByteArray( ) {
     byte[] lReturnValue;
     if (aByteArray != null) {
-      lReturnValue = new byte[aByteArray.length];
-      System.arraycopy(aByteArray, 0, lReturnValue, 0, aByteArray.length);
+      lReturnValue = aByteArray;
     }
     else {
       lReturnValue = null;
@@ -891,8 +862,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setAByteArray( byte[] pAByteArray ) {
     // Assign value to attribute
     if (pAByteArray != null) {
-      aByteArray = new byte[pAByteArray.length];
-      System.arraycopy(pAByteArray, 0, aByteArray, 0, pAByteArray.length);
+      aByteArray = pAByteArray;
     }
     else {
       aByteArray = null;
@@ -908,8 +878,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public Byte[] getBByteArray( ) {
     Byte[] lReturnValue;
     if (bByteArray != null) {
-      lReturnValue = new Byte[bByteArray.length];
-      System.arraycopy(bByteArray, 0, lReturnValue, 0, bByteArray.length);
+      lReturnValue = bByteArray;
     }
     else {
       lReturnValue = null;
@@ -926,8 +895,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setBByteArray( Byte[] pBByteArray ) {
     // Assign value to attribute
     if (pBByteArray != null) {
-      bByteArray = new Byte[pBByteArray.length];
-      System.arraycopy(pBByteArray, 0, bByteArray, 0, pBByteArray.length);
+      bByteArray = pBByteArray;
     }
     else {
       bByteArray = null;
@@ -943,8 +911,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public short[] getAShortArray( ) {
     short[] lReturnValue;
     if (aShortArray != null) {
-      lReturnValue = new short[aShortArray.length];
-      System.arraycopy(aShortArray, 0, lReturnValue, 0, aShortArray.length);
+      lReturnValue = aShortArray;
     }
     else {
       lReturnValue = null;
@@ -961,8 +928,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setAShortArray( short[] pAShortArray ) {
     // Assign value to attribute
     if (pAShortArray != null) {
-      aShortArray = new short[pAShortArray.length];
-      System.arraycopy(pAShortArray, 0, aShortArray, 0, pAShortArray.length);
+      aShortArray = pAShortArray;
     }
     else {
       aShortArray = null;
@@ -978,8 +944,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public Short[] getBShortArray( ) {
     Short[] lReturnValue;
     if (bShortArray != null) {
-      lReturnValue = new Short[bShortArray.length];
-      System.arraycopy(bShortArray, 0, lReturnValue, 0, bShortArray.length);
+      lReturnValue = bShortArray;
     }
     else {
       lReturnValue = null;
@@ -996,8 +961,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setBShortArray( Short[] pBShortArray ) {
     // Assign value to attribute
     if (pBShortArray != null) {
-      bShortArray = new Short[pBShortArray.length];
-      System.arraycopy(pBShortArray, 0, bShortArray, 0, pBShortArray.length);
+      bShortArray = pBShortArray;
     }
     else {
       bShortArray = null;
@@ -1013,8 +977,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public int[] getAIntegerArray( ) {
     int[] lReturnValue;
     if (aIntegerArray != null) {
-      lReturnValue = new int[aIntegerArray.length];
-      System.arraycopy(aIntegerArray, 0, lReturnValue, 0, aIntegerArray.length);
+      lReturnValue = aIntegerArray;
     }
     else {
       lReturnValue = null;
@@ -1031,8 +994,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setAIntegerArray( int[] pAIntegerArray ) {
     // Assign value to attribute
     if (pAIntegerArray != null) {
-      aIntegerArray = new int[pAIntegerArray.length];
-      System.arraycopy(pAIntegerArray, 0, aIntegerArray, 0, pAIntegerArray.length);
+      aIntegerArray = pAIntegerArray;
     }
     else {
       aIntegerArray = null;
@@ -1048,8 +1010,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public Integer[] getBIntegerArray( ) {
     Integer[] lReturnValue;
     if (bIntegerArray != null) {
-      lReturnValue = new Integer[bIntegerArray.length];
-      System.arraycopy(bIntegerArray, 0, lReturnValue, 0, bIntegerArray.length);
+      lReturnValue = bIntegerArray;
     }
     else {
       lReturnValue = null;
@@ -1066,8 +1027,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setBIntegerArray( Integer[] pBIntegerArray ) {
     // Assign value to attribute
     if (pBIntegerArray != null) {
-      bIntegerArray = new Integer[pBIntegerArray.length];
-      System.arraycopy(pBIntegerArray, 0, bIntegerArray, 0, pBIntegerArray.length);
+      bIntegerArray = pBIntegerArray;
     }
     else {
       bIntegerArray = null;
@@ -1083,8 +1043,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public Integer[] getCIntegerArray( ) {
     Integer[] lReturnValue;
     if (cIntegerArray != null) {
-      lReturnValue = new Integer[cIntegerArray.length];
-      System.arraycopy(cIntegerArray, 0, lReturnValue, 0, cIntegerArray.length);
+      lReturnValue = cIntegerArray;
     }
     else {
       lReturnValue = null;
@@ -1101,8 +1060,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setCIntegerArray( Integer[] pCIntegerArray ) {
     // Assign value to attribute
     if (pCIntegerArray != null) {
-      cIntegerArray = new Integer[pCIntegerArray.length];
-      System.arraycopy(pCIntegerArray, 0, cIntegerArray, 0, pCIntegerArray.length);
+      cIntegerArray = pCIntegerArray;
     }
     else {
       cIntegerArray = null;
@@ -1118,8 +1076,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public long[] getALongArray( ) {
     long[] lReturnValue;
     if (aLongArray != null) {
-      lReturnValue = new long[aLongArray.length];
-      System.arraycopy(aLongArray, 0, lReturnValue, 0, aLongArray.length);
+      lReturnValue = aLongArray;
     }
     else {
       lReturnValue = null;
@@ -1136,8 +1093,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setALongArray( long[] pALongArray ) {
     // Assign value to attribute
     if (pALongArray != null) {
-      aLongArray = new long[pALongArray.length];
-      System.arraycopy(pALongArray, 0, aLongArray, 0, pALongArray.length);
+      aLongArray = pALongArray;
     }
     else {
       aLongArray = null;
@@ -1153,8 +1109,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public Long[] getBLongArray( ) {
     Long[] lReturnValue;
     if (bLongArray != null) {
-      lReturnValue = new Long[bLongArray.length];
-      System.arraycopy(bLongArray, 0, lReturnValue, 0, bLongArray.length);
+      lReturnValue = bLongArray;
     }
     else {
       lReturnValue = null;
@@ -1171,8 +1126,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setBLongArray( Long[] pBLongArray ) {
     // Assign value to attribute
     if (pBLongArray != null) {
-      bLongArray = new Long[pBLongArray.length];
-      System.arraycopy(pBLongArray, 0, bLongArray, 0, pBLongArray.length);
+      bLongArray = pBLongArray;
     }
     else {
       bLongArray = null;
@@ -1188,8 +1142,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public BigInteger[] getABigIntegerArray( ) {
     BigInteger[] lReturnValue;
     if (aBigIntegerArray != null) {
-      lReturnValue = new BigInteger[aBigIntegerArray.length];
-      System.arraycopy(aBigIntegerArray, 0, lReturnValue, 0, aBigIntegerArray.length);
+      lReturnValue = aBigIntegerArray;
     }
     else {
       lReturnValue = null;
@@ -1206,8 +1159,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
     // Assign value to attribute
     if (pABigIntegerArray != null) {
-      aBigIntegerArray = new BigInteger[pABigIntegerArray.length];
-      System.arraycopy(pABigIntegerArray, 0, aBigIntegerArray, 0, pABigIntegerArray.length);
+      aBigIntegerArray = pABigIntegerArray;
     }
     else {
       aBigIntegerArray = null;
@@ -1223,8 +1175,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public char[] getACharacterArray( ) {
     char[] lReturnValue;
     if (aCharacterArray != null) {
-      lReturnValue = new char[aCharacterArray.length];
-      System.arraycopy(aCharacterArray, 0, lReturnValue, 0, aCharacterArray.length);
+      lReturnValue = aCharacterArray;
     }
     else {
       lReturnValue = null;
@@ -1241,8 +1192,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setACharacterArray( char[] pACharacterArray ) {
     // Assign value to attribute
     if (pACharacterArray != null) {
-      aCharacterArray = new char[pACharacterArray.length];
-      System.arraycopy(pACharacterArray, 0, aCharacterArray, 0, pACharacterArray.length);
+      aCharacterArray = pACharacterArray;
     }
     else {
       aCharacterArray = null;
@@ -1258,8 +1208,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public Character[] getBCharacterArray( ) {
     Character[] lReturnValue;
     if (bCharacterArray != null) {
-      lReturnValue = new Character[bCharacterArray.length];
-      System.arraycopy(bCharacterArray, 0, lReturnValue, 0, bCharacterArray.length);
+      lReturnValue = bCharacterArray;
     }
     else {
       lReturnValue = null;
@@ -1276,8 +1225,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setBCharacterArray( Character[] pBCharacterArray ) {
     // Assign value to attribute
     if (pBCharacterArray != null) {
-      bCharacterArray = new Character[pBCharacterArray.length];
-      System.arraycopy(pBCharacterArray, 0, bCharacterArray, 0, pBCharacterArray.length);
+      bCharacterArray = pBCharacterArray;
     }
     else {
       bCharacterArray = null;
@@ -1293,8 +1241,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public float[] getAFloatArray( ) {
     float[] lReturnValue;
     if (aFloatArray != null) {
-      lReturnValue = new float[aFloatArray.length];
-      System.arraycopy(aFloatArray, 0, lReturnValue, 0, aFloatArray.length);
+      lReturnValue = aFloatArray;
     }
     else {
       lReturnValue = null;
@@ -1311,8 +1258,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setAFloatArray( float[] pAFloatArray ) {
     // Assign value to attribute
     if (pAFloatArray != null) {
-      aFloatArray = new float[pAFloatArray.length];
-      System.arraycopy(pAFloatArray, 0, aFloatArray, 0, pAFloatArray.length);
+      aFloatArray = pAFloatArray;
     }
     else {
       aFloatArray = null;
@@ -1328,8 +1274,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public Float[] getBFloatArray( ) {
     Float[] lReturnValue;
     if (bFloatArray != null) {
-      lReturnValue = new Float[bFloatArray.length];
-      System.arraycopy(bFloatArray, 0, lReturnValue, 0, bFloatArray.length);
+      lReturnValue = bFloatArray;
     }
     else {
       lReturnValue = null;
@@ -1346,8 +1291,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setBFloatArray( Float[] pBFloatArray ) {
     // Assign value to attribute
     if (pBFloatArray != null) {
-      bFloatArray = new Float[pBFloatArray.length];
-      System.arraycopy(pBFloatArray, 0, bFloatArray, 0, pBFloatArray.length);
+      bFloatArray = pBFloatArray;
     }
     else {
       bFloatArray = null;
@@ -1363,8 +1307,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public double[] getADoubleArray( ) {
     double[] lReturnValue;
     if (aDoubleArray != null) {
-      lReturnValue = new double[aDoubleArray.length];
-      System.arraycopy(aDoubleArray, 0, lReturnValue, 0, aDoubleArray.length);
+      lReturnValue = aDoubleArray;
     }
     else {
       lReturnValue = null;
@@ -1381,8 +1324,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setADoubleArray( double[] pADoubleArray ) {
     // Assign value to attribute
     if (pADoubleArray != null) {
-      aDoubleArray = new double[pADoubleArray.length];
-      System.arraycopy(pADoubleArray, 0, aDoubleArray, 0, pADoubleArray.length);
+      aDoubleArray = pADoubleArray;
     }
     else {
       aDoubleArray = null;
@@ -1398,8 +1340,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public Double[] getBDoubleArray( ) {
     Double[] lReturnValue;
     if (bDoubleArray != null) {
-      lReturnValue = new Double[bDoubleArray.length];
-      System.arraycopy(bDoubleArray, 0, lReturnValue, 0, bDoubleArray.length);
+      lReturnValue = bDoubleArray;
     }
     else {
       lReturnValue = null;
@@ -1416,8 +1357,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setBDoubleArray( Double[] pBDoubleArray ) {
     // Assign value to attribute
     if (pBDoubleArray != null) {
-      bDoubleArray = new Double[pBDoubleArray.length];
-      System.arraycopy(pBDoubleArray, 0, bDoubleArray, 0, pBDoubleArray.length);
+      bDoubleArray = pBDoubleArray;
     }
     else {
       bDoubleArray = null;
@@ -1433,8 +1373,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public BigDecimal[] getABigDecimalArray( ) {
     BigDecimal[] lReturnValue;
     if (aBigDecimalArray != null) {
-      lReturnValue = new BigDecimal[aBigDecimalArray.length];
-      System.arraycopy(aBigDecimalArray, 0, lReturnValue, 0, aBigDecimalArray.length);
+      lReturnValue = aBigDecimalArray;
     }
     else {
       lReturnValue = null;
@@ -1451,8 +1390,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
     // Assign value to attribute
     if (pABigDecimalArray != null) {
-      aBigDecimalArray = new BigDecimal[pABigDecimalArray.length];
-      System.arraycopy(pABigDecimalArray, 0, aBigDecimalArray, 0, pABigDecimalArray.length);
+      aBigDecimalArray = pABigDecimalArray;
     }
     else {
       aBigDecimalArray = null;
@@ -1468,8 +1406,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public String[] getAStringArray( ) {
     String[] lReturnValue;
     if (aStringArray != null) {
-      lReturnValue = new String[aStringArray.length];
-      System.arraycopy(aStringArray, 0, lReturnValue, 0, aStringArray.length);
+      lReturnValue = aStringArray;
     }
     else {
       lReturnValue = null;
@@ -1486,8 +1423,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setAStringArray( String[] pAStringArray ) {
     // Assign value to attribute
     if (pAStringArray != null) {
-      aStringArray = new String[pAStringArray.length];
-      System.arraycopy(pAStringArray, 0, aStringArray, 0, pAStringArray.length);
+      aStringArray = pAStringArray;
     }
     else {
       aStringArray = null;
@@ -1503,8 +1439,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public String[] getBStringArray( ) {
     String[] lReturnValue;
     if (bStringArray != null) {
-      lReturnValue = new String[bStringArray.length];
-      System.arraycopy(bStringArray, 0, lReturnValue, 0, bStringArray.length);
+      lReturnValue = bStringArray;
     }
     else {
       lReturnValue = null;
@@ -1521,8 +1456,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public void setBStringArray( String[] pBStringArray ) {
     // Assign value to attribute
     if (pBStringArray != null) {
-      bStringArray = new String[pBStringArray.length];
-      System.arraycopy(pBStringArray, 0, bStringArray, 0, pBStringArray.length);
+      bStringArray = pBStringArray;
     }
     else {
       bStringArray = null;
