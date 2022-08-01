@@ -6,7 +6,6 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -251,11 +250,11 @@ public class CodeTypeUsageTest implements ServiceObject {
    * 
    *
    * @return Collection All BooleanCodeType objects that belong to the association "booleanCodeAssociation". The method
-   * never returns null and the returned collection is unmodifiable.
+   * never returns null and the returned collection is modifiable.
    */
   public Set<BooleanCodeType> getBooleanCodeAssociation( ) {
-    // Return all BooleanCodeType objects as unmodifiable collection.
-    return Collections.unmodifiableSet(booleanCodeAssociation);
+    // Return all BooleanCodeType objects directly without any protection against modification.
+    return booleanCodeAssociation;
   }
 
   /**
@@ -338,11 +337,11 @@ public class CodeTypeUsageTest implements ServiceObject {
    * 
    *
    * @return Collection All ShortCodeType objects that belong to the association "shortCodeTypeAssociation". The method
-   * never returns null and the returned collection is unmodifiable.
+   * never returns null and the returned collection is modifiable.
    */
   public Set<ShortCodeType> getShortCodeTypeAssociation( ) {
-    // Return all ShortCodeType objects as unmodifiable collection.
-    return Collections.unmodifiableSet(shortCodeTypeAssociation);
+    // Return all ShortCodeType objects directly without any protection against modification.
+    return shortCodeTypeAssociation;
   }
 
   /**

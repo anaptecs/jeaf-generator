@@ -6,7 +6,6 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -329,12 +328,12 @@ public class ChildBB extends ChildB {
    * 
    *
    * @return Collection All ChildB objects that belong to the association "deprecatedBs". The method never returns null
-   * and the returned collection is unmodifiable.
+   * and the returned collection is modifiable.
    */
   @Deprecated
   public Set<ChildB> getDeprecatedBs( ) {
-    // Return all ChildB objects as unmodifiable collection.
-    return Collections.unmodifiableSet(deprecatedBs);
+    // Return all ChildB objects directly without any protection against modification.
+    return deprecatedBs;
   }
 
   /**

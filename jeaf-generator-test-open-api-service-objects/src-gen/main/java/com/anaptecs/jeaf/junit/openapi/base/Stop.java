@@ -7,7 +7,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -203,11 +202,11 @@ public class Stop implements ServiceObject {
    * 
    *
    * @return Collection All LinkObject objects that belong to the association "links". The method never returns null and
-   * the returned collection is unmodifiable.
+   * the returned collection is modifiable.
    */
   public List<LinkObject> getLinks( ) {
-    // Return all LinkObject objects as unmodifiable collection.
-    return Collections.unmodifiableList(links);
+    // Return all LinkObject objects directly without any protection against modification.
+    return links;
   }
 
   /**

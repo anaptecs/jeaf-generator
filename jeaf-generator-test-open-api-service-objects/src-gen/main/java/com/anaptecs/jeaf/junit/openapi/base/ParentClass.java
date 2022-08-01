@@ -6,7 +6,6 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -204,11 +203,11 @@ public class ParentClass implements ServiceObject {
    * 
    *
    * @return Collection All IBAN objects that belong to the association "ibans". The method never returns null and the
-   * returned collection is unmodifiable.
+   * returned collection is modifiable.
    */
   public Set<IBAN> getIbans( ) {
-    // Return all IBAN objects as unmodifiable collection.
-    return Collections.unmodifiableSet(ibans);
+    // Return all IBAN objects directly without any protection against modification.
+    return ibans;
   }
 
   /**

@@ -6,7 +6,6 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -218,11 +217,11 @@ public class ChildB extends ParentClass {
    * Method returns the association "composition". the composition
    *
    * @return Collection All ParentClass objects that belong to the association "composition". The method never returns
-   * null and the returned collection is unmodifiable.
+   * null and the returned collection is modifiable.
    */
   public Set<ParentClass> getComposition( ) {
-    // Return all ParentClass objects as unmodifiable collection.
-    return Collections.unmodifiableSet(composition);
+    // Return all ParentClass objects directly without any protection against modification.
+    return composition;
   }
 
   /**

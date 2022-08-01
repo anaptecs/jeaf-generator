@@ -232,7 +232,7 @@
      * «this.getComment()»
      *
      * @return Collection All «this.type.name» objects that belong to the association "«asInstanceVar()»". 
-     * The method never returns null and the returned collection is unmodifiable.
+     * The method never returns null and the returned collection is «IF disableCollectionImmutability()»modifiable«ELSE»unmodifiable«ENDIF».
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «this.fqn()» «asGetter()» () {
@@ -249,8 +249,13 @@
 	      }
 	    }
 	    «ENDIF»
+	    «IF disableCollectionImmutability()»
+	    // Return all «this.type.name» objects directly without any protection against modification.
+		return «asInstanceVar()»;
+	    «ELSE»
 	    // Return all «this.type.name» objects as unmodifiable collection.
 		return java.util.Collections.unmodifiable«this.getCollectionTypeShort()»(«asInstanceVar()»);
+		«ENDIF»
 	}
 	
     «IF isReadOnly == false»

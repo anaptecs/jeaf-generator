@@ -6,7 +6,6 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -203,11 +202,11 @@ public class BidirectA implements ServiceObject {
    * 
    *
    * @return Collection All BidirectB objects that belong to the association "transientBs". The method never returns
-   * null and the returned collection is unmodifiable.
+   * null and the returned collection is modifiable.
    */
   public Set<BidirectB> getTransientBs( ) {
-    // Return all BidirectB objects as unmodifiable collection.
-    return Collections.unmodifiableSet(transientBs);
+    // Return all BidirectB objects directly without any protection against modification.
+    return transientBs;
   }
 
   /**

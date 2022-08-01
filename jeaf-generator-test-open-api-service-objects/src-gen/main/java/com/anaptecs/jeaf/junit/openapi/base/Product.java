@@ -7,7 +7,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.net.URL;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -474,7 +473,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * 
    *
    * @return Collection All Reseller objects that belong to the association "resellers". The method never returns null
-   * and the returned collection is unmodifiable.
+   * and the returned collection is modifiable.
    */
   public Set<Reseller> getResellers( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -485,8 +484,8 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
         lNext.addToProducts((Product) this);
       }
     }
-    // Return all Reseller objects as unmodifiable collection.
-    return Collections.unmodifiableSet(resellers);
+    // Return all Reseller objects directly without any protection against modification.
+    return resellers;
   }
 
   /**
@@ -659,11 +658,11 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * 
    *
    * @return Collection All CurrencyCode objects that belong to the association "supportedCurrencies". The method never
-   * returns null and the returned collection is unmodifiable.
+   * returns null and the returned collection is modifiable.
    */
   public Set<CurrencyCode> getSupportedCurrencies( ) {
-    // Return all CurrencyCode objects as unmodifiable collection.
-    return Collections.unmodifiableSet(supportedCurrencies);
+    // Return all CurrencyCode objects directly without any protection against modification.
+    return supportedCurrencies;
   }
 
   /**
@@ -746,11 +745,11 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * 
    *
    * @return Collection All ProductCode objects that belong to the association "productCodes". The method never returns
-   * null and the returned collection is unmodifiable.
+   * null and the returned collection is modifiable.
    */
   public Set<ProductCode> getProductCodes( ) {
-    // Return all ProductCode objects as unmodifiable collection.
-    return Collections.unmodifiableSet(productCodes);
+    // Return all ProductCode objects directly without any protection against modification.
+    return productCodes;
   }
 
   /**
@@ -855,11 +854,11 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * 
    *
    * @return Collection All Sortiment objects that belong to the association "sortiments". The method never returns null
-   * and the returned collection is unmodifiable.
+   * and the returned collection is modifiable.
    */
   public Set<Sortiment> getSortiments( ) {
-    // Return all Sortiment objects as unmodifiable collection.
-    return Collections.unmodifiableSet(sortiments);
+    // Return all Sortiment objects directly without any protection against modification.
+    return sortiments;
   }
 
   /**

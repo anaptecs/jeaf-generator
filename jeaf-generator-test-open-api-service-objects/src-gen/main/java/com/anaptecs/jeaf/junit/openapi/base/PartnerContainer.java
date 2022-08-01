@@ -7,7 +7,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -150,11 +149,11 @@ public class PartnerContainer implements ServiceObject {
    * 
    *
    * @return Collection All Partner objects that belong to the association "partners". The method never returns null and
-   * the returned collection is unmodifiable.
+   * the returned collection is modifiable.
    */
   public List<Partner> getPartners( ) {
-    // Return all Partner objects as unmodifiable collection.
-    return Collections.unmodifiableList(partners);
+    // Return all Partner objects directly without any protection against modification.
+    return partners;
   }
 
   /**

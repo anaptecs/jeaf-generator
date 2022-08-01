@@ -7,7 +7,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -219,11 +218,11 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
    * 
    *
    * @return Collection All PostalAddress objects that belong to the association "postalAddresses". The method never
-   * returns null and the returned collection is unmodifiable.
+   * returns null and the returned collection is modifiable.
    */
   public List<PostalAddress> getPostalAddresses( ) {
-    // Return all PostalAddress objects as unmodifiable collection.
-    return Collections.unmodifiableList(postalAddresses);
+    // Return all PostalAddress objects directly without any protection against modification.
+    return postalAddresses;
   }
 
   /**
