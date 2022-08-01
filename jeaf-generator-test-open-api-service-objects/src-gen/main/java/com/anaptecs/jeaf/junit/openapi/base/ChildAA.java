@@ -168,8 +168,7 @@ public class ChildAA extends ChildA {
     public Builder setRequiredArray( String[] pRequiredArray ) {
       // Assign value to attribute
       if (pRequiredArray != null) {
-        requiredArray = new String[pRequiredArray.length];
-        System.arraycopy(pRequiredArray, 0, requiredArray, 0, pRequiredArray.length);
+        requiredArray = pRequiredArray;
       }
       else {
         requiredArray = null;
@@ -249,8 +248,7 @@ public class ChildAA extends ChildA {
   public String[] getRequiredArray( ) {
     String[] lReturnValue;
     if (requiredArray != null) {
-      lReturnValue = new String[requiredArray.length];
-      System.arraycopy(requiredArray, 0, lReturnValue, 0, requiredArray.length);
+      lReturnValue = requiredArray;
     }
     else {
       lReturnValue = null;
@@ -267,8 +265,7 @@ public class ChildAA extends ChildA {
   public void setRequiredArray( String[] pRequiredArray ) {
     // Assign value to attribute
     if (pRequiredArray != null) {
-      requiredArray = new String[pRequiredArray.length];
-      System.arraycopy(pRequiredArray, 0, requiredArray, 0, pRequiredArray.length);
+      requiredArray = pRequiredArray;
     }
     else {
       requiredArray = null;
