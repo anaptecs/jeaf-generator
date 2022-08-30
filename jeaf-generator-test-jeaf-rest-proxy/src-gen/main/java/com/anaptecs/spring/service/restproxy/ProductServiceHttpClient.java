@@ -7,6 +7,7 @@ package com.anaptecs.spring.service.restproxy;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.time.Duration;
 import java.util.Collection;
 import java.util.concurrent.Callable;
@@ -21,6 +22,7 @@ import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
 import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
 import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
 import org.apache.hc.core5.http.ClassicHttpRequest;
+import org.apache.hc.core5.http.Header;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.URIScheme;
 import org.apache.hc.core5.http.config.Registry;
@@ -267,6 +269,8 @@ public class ProductServiceHttpClient {
     try {
       // For reasons of proper error handling we need to find out the request URI.
       lRequestURI = pRequest.getUri();
+      // Trace request. Actually request logging is only done if log level is set to DEBUG.
+      this.traceRequest(pRequest);
       // Decorate call to proxy with circuit breaker.
       Callable<CloseableHttpResponse> lCallable =
           CircuitBreaker.decorateCallable(circuitBreaker, new Callable<CloseableHttpResponse>() {
@@ -283,7 +287,15 @@ public class ProductServiceHttpClient {
         T lResultObject;
         HttpEntity lEntity = lResponse.getEntity();
         if (lEntity.getContentLength() > 0) {
-          lResultObject = objectMapper.readValue(lEntity.getContent(), pResponseType);
+          // Check if response logging is active.
+          if (XFun.getTrace().isTraceEnabled()) {
+            String lResponseBody = StreamTools.getStreamTools().getStreamContentAsString(lEntity.getContent());
+            this.traceResponse(lResponse, lRequestURI, lResponseBody);
+            lResultObject = objectMapper.readValue(lResponseBody, pResponseType);
+          }
+          else {
+            lResultObject = objectMapper.readValue(lEntity.getContent(), pResponseType);
+          }
         }
         else {
           lResultObject = null;
@@ -343,6 +355,66 @@ public class ProductServiceHttpClient {
           XFun.getTrace().warn(JSONMessages.UNABLE_TO_CLOSE_HTTP_RESPONSE, e, pRequest.getRequestUri(), e.getMessage());
         }
       }
+    }
+  }
+
+  private void traceRequest( ClassicHttpRequest pRequest ) throws URISyntaxException, IOException {
+    if (XFun.getTrace().isDebugEnabled()) {
+      StringBuilder lBuilder = new StringBuilder();
+      // Add first line with http method and URL
+      lBuilder.append("Request: (");
+      lBuilder.append(pRequest.getMethod());
+      lBuilder.append(") ");
+      lBuilder.append(pRequest.getUri());
+      lBuilder.append(System.lineSeparator());
+      // Add header fields
+      lBuilder.append("Request Headers: ");
+      for (Header lNextHeader : pRequest.getHeaders()) {
+        lBuilder.append(lNextHeader.getName());
+        lBuilder.append("='");
+        lBuilder.append(lNextHeader.getValue());
+        lBuilder.append("' ");
+      }
+      lBuilder.append(System.lineSeparator());
+      // Add body if request has one.
+      HttpEntity lEntity = pRequest.getEntity();
+      if (lEntity != null && lEntity.getContentLength() > 0) {
+        lBuilder.append("Body: ");
+        lBuilder.append(StreamTools.getStreamTools().getStreamContentAsString(lEntity.getContent()));
+      }
+      // Finally really log the request.
+      XFun.getTrace().debug(lBuilder.toString());
+    }
+  }
+
+  private void traceResponse( CloseableHttpResponse pResponse, URI pRequestURI, String pBody )
+    throws URISyntaxException, IOException {
+    if (XFun.getTrace().isTraceEnabled()) {
+      StringBuilder lBuilder = new StringBuilder();
+      // Add first line with http method and URL
+      lBuilder.append("Response: ");
+      lBuilder.append(pRequestURI);
+      lBuilder.append(System.lineSeparator());
+      // Add http status code.
+      lBuilder.append("Status Code: ");
+      lBuilder.append(pResponse.getCode());
+      lBuilder.append(System.lineSeparator());
+      // Add header fields
+      lBuilder.append("Response Headers: ");
+      for (Header lNextHeader : pResponse.getHeaders()) {
+        lBuilder.append(lNextHeader.getName());
+        lBuilder.append("='");
+        lBuilder.append(lNextHeader.getValue());
+        lBuilder.append("' ");
+      }
+      lBuilder.append(System.lineSeparator());
+      // Add body if request has one.
+      if (pBody != null) {
+        lBuilder.append("Body: ");
+        lBuilder.append(pBody);
+      }
+      // Finally really log the response.
+      XFun.getTrace().debug(lBuilder.toString());
     }
   }
 }

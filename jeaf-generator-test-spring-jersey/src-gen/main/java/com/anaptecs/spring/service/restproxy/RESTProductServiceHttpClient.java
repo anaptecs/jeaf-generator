@@ -221,10 +221,8 @@ public class RESTProductServiceHttpClient {
     try {
       // For reasons of proper error handling we need to find out the request URI.
       lRequestURI = pRequest.getUri();
-
       // Trace request. Actually request logging is only done if log level is set to DEBUG.
       this.traceRequest(pRequest);
-
       // Decorate call to proxy with circuit breaker.
       Callable<CloseableHttpResponse> lCallable =
           CircuitBreaker.decorateCallable(circuitBreaker, new Callable<CloseableHttpResponse>() {
@@ -325,14 +323,12 @@ public class RESTProductServiceHttpClient {
   private void traceRequest( ClassicHttpRequest pRequest ) throws URISyntaxException, IOException {
     if (logger.isDebugEnabled()) {
       StringBuilder lBuilder = new StringBuilder();
-
       // Add first line with http method and URL
       lBuilder.append("Request: (");
       lBuilder.append(pRequest.getMethod());
       lBuilder.append(") ");
       lBuilder.append(pRequest.getUri());
       lBuilder.append(System.lineSeparator());
-
       // Add header fields
       lBuilder.append("Request Headers: ");
       for (Header lNextHeader : pRequest.getHeaders()) {
@@ -342,34 +338,29 @@ public class RESTProductServiceHttpClient {
         lBuilder.append("' ");
       }
       lBuilder.append(System.lineSeparator());
-
       // Add body if request has one.
       HttpEntity lEntity = pRequest.getEntity();
       if (lEntity != null && lEntity.getContentLength() > 0) {
         lBuilder.append("Body: ");
         lBuilder.append(this.getContent(lEntity.getContent()));
       }
-
       // Finally really log the request.
       logger.debug(lBuilder.toString());
     }
   }
 
   private void traceResponse( CloseableHttpResponse pResponse, URI pRequestURI, String pBody )
-    throws UnsupportedOperationException, IOException {
+    throws URISyntaxException, IOException {
     if (logger.isTraceEnabled()) {
       StringBuilder lBuilder = new StringBuilder();
-
       // Add first line with http method and URL
       lBuilder.append("Response: ");
       lBuilder.append(pRequestURI);
       lBuilder.append(System.lineSeparator());
-
       // Add http status code.
       lBuilder.append("Status Code: ");
       lBuilder.append(pResponse.getCode());
       lBuilder.append(System.lineSeparator());
-
       // Add header fields
       lBuilder.append("Response Headers: ");
       for (Header lNextHeader : pResponse.getHeaders()) {
@@ -379,15 +370,13 @@ public class RESTProductServiceHttpClient {
         lBuilder.append("' ");
       }
       lBuilder.append(System.lineSeparator());
-
       // Add body if request has one.
       if (pBody != null) {
         lBuilder.append("Body: ");
         lBuilder.append(pBody);
       }
-
-      // Finally really log the request.
-      logger.trace(lBuilder.toString());
+      // Finally really log the response.
+      logger.debug(lBuilder.toString());
     }
   }
 
@@ -395,7 +384,7 @@ public class RESTProductServiceHttpClient {
    * Method returns the content of the passed input stream.
    * 
    * @param pInputStream Stream to access the content. The parameter must not be null.
-   * @return byte[] Available content of the stream. The method never returns null.
+   * @return String Available content of the stream. The method never returns null.
    */
   private String getContent( InputStream pInputStream ) throws IOException {
     int lAvailableBytes = pInputStream.available();
