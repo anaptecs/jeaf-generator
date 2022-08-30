@@ -296,6 +296,17 @@ cached List[JMM::OpenAPITag] getOrderedOpenAPITags(JMM::OpenAPI3Specification sp
     
 cached uml::EnumerationLiteral getDefaultLiteral(JMM::OpenAPIEnumeration enum) :
     enum.ownedLiteral.select(e|e.isStereotypeApplied("DefaultLiteral")).first();
+    
+cached String getLiteralName(uml::EnumerationLiteral literal):
+    if literal.isYAML11QutingRequired() == true
+    then "'" + literal.name + "'"
+    else literal.name;
+
+cached boolean isYAML11QutingRequired(uml::EnumerationLiteral literal):
+   enableYAML11Compatibility() && isYAML11Boolean(literal.name.toUpperCase());
+   
+boolean isYAML11Boolean(String value):
+   value == "YES" || value == "NO" || value == "Y" || value == "N" || value == "ON" || value == "OFF" || value == "TRUE" || value == "FALSE";
 
 cached boolean hasDefaultLiteral(JMM::OpenAPIEnumeration enum) :
     getDefaultLiteral(enum) != null;

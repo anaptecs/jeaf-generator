@@ -190,6 +190,11 @@ public class GeneratorCommons {
   public static final String OPEN_API_SPEC_PROPERTY = "switch.gen.openapispec";
 
   /**
+   * Constant defines the name of the system property which enables YAML 1.1 compatibility mode for OpenAPI.
+   */
+  public static final String OPEN_API_YAML_11_COMPATIBILITY = "switch.gen.openapi.yaml.11.comapitibility";
+
+  /**
    * Constant defines the name of the system property which enables the generation of JAX-RS annotations.
    */
   public static final String JAX_RS_ANNOTATIONS_PROPERTY = "switch.gen.jaxrs.annotations";
@@ -732,6 +737,16 @@ public class GeneratorCommons {
   public static boolean generateOpenAPISpec( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(OPEN_API_SPEC_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether YAML 1.1 compatibility mode for OpenAPI should be enabled.
+   * 
+   * @return boolean Method returns true if YAML 1.1 compatibility mode should be enabled and false in all other cases.
+   */
+  public static boolean enableYAML11Compatibility( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(OPEN_API_YAML_11_COMPATIBILITY, Boolean.TRUE, Boolean.class);
   }
 
   /**

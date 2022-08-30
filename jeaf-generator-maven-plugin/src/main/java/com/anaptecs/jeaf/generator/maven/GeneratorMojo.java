@@ -333,6 +333,21 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateOpenAPISpec;
 
   /**
+   * Switch defines whether YAML 1.1 compatibility mode for OpenAPI should be enabled. In YAML 1.1 there is a big
+   * difference compared to YAML 1.2 when it comes to boolean values. In YAML 1.1 besides <code>true</code> and
+   * <code>false</code> also <code>yes</code>, <code>no</code>, <code>y</code>, <code>n</code>, <code>on</code> and
+   * <code>off</code> are treated as boolean values. This might lead to ugly situation when tools or applications are
+   * still working with YAML 1.1 based parsers. To prevent such trouble it is possible to tell JEAF generator that in
+   * such cases these values should be quoted.
+   * 
+   * @see <a href=
+   * "https://stackoverflow.com/questions/61157594/why-does-swagger-codegen-convert-an-on-off-string-enum-to-true-false">https://stackoverflow.com/questions/61157594/why-does-swagger-codegen-convert-an-on-off-string-enum-to-true-false</>
+   * 
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean enableYAML11Compatibility;
+
+  /**
    * Switch defines whether JAX-RS annotations should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -751,6 +766,7 @@ public class GeneratorMojo extends AbstractMojo {
     }
     if (generateOpenAPISpec) {
       lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
+      lLog.info("Enable YAML 1.1 compatibility mode:               " + enableYAML11Compatibility);
     }
     if (generateJAXRSAnnotations) {
       lLog.info("Generate JAX-RS annotations:                      " + generateJAXRSAnnotations);
@@ -885,6 +901,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.domain.objects", generateDomainObjects.toString());
       System.setProperty("switch.gen.junits", generateJUnitTests.toString());
       System.setProperty("switch.gen.openapispec", generateOpenAPISpec.toString());
+      System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());
+
       System.setProperty("switch.gen.jaxrs.annotations", generateJAXRSAnnotations.toString());
       System.setProperty("switch.gen.jackson.annotations", generateJacksonAnnotations.toString());
       System.setProperty("switch.gen.enable.json.semver", enableSemVerForJSON.toString());

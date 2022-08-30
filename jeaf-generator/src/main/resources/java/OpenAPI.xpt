@@ -568,10 +568,10 @@ components:
       enum:
       «ENDIF-»
         «FOREACH this.ownedLiteral AS literal-»        
-        - «literal.name»
+        - «literal.getLiteralName()»
         «ENDFOREACH-»
       «IF this.hasDefaultLiteral()-»
-      default: «this.getDefaultLiteral().name»
+      default: «this.getDefaultLiteral().getLiteralName()»
       «ENDIF-»
 «ENDDEFINE»
 

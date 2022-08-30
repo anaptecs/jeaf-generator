@@ -176,6 +176,21 @@ components:
         a:
           $ref: '#/components/schemas/BidirectA'
 
+    # com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum
+    BooleanLiteralsEnum:
+      type: string
+      enum:
+        - YES
+        - ON
+        - off
+        - y
+        - n
+        - YEAH
+        - NO
+        - True
+        - FaLsE
+      default: YES
+
     # com.anaptecs.jeaf.junit.openapi.base.CHStopPlace
     CHStopPlace:
       allOf:
