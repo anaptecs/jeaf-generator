@@ -824,7 +824,7 @@ public class «name»HttpClient {
 	 * Method returns the content of the passed input stream.
 	 * 
 	 * @param pInputStream Stream to access the content. The parameter must not be null.
-	 * @return byte[] Available content of the stream. The method never returns null.
+	 * @return String Available content of the stream. The method never returns null.
 	 */
 	private String getContent( java.io.InputStream pInputStream ) throws IOException {
 	  int lAvailableBytes = pInputStream.available();
