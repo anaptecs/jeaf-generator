@@ -118,3 +118,14 @@ boolean hasValidRESTResourcePath(JMM::RESTResource restResource):
     if restResource.path.length > 0
     then restResource.path.startsWith("/")
     else true;
+    
+boolean hasValidRESTResourcePath(JMM::RESTOperation operation):
+    if operation.path.length > 0 || ((JMM::RESTResource)operation.owner).path.length > 0
+    then true
+    else false;
+    
+boolean hasValidOperationPath(JMM::RESTOperation operation):
+    if operation.path.length > 0 && operation.path.startsWith("/")
+    then false
+    else true;
+    
