@@ -336,7 +336,7 @@ public class ProductServiceHttpClient {
       lBuilder.append("Request Headers: ");
       for (Header lNextHeader : pRequest.getHeaders()) {
         // For security reasons sensitive headers have to be filtered out from tracing.
-        if (lSensitiveHeaderNames.contains(lNextHeader.getName())) {
+        if (lSensitiveHeaderNames.contains(lNextHeader.getName().toLowerCase()) == false) {
           lBuilder.append(lNextHeader.getName());
           lBuilder.append("='");
           lBuilder.append(lNextHeader.getValue());
@@ -373,7 +373,7 @@ public class ProductServiceHttpClient {
       lBuilder.append("Response Headers: ");
       for (Header lNextHeader : pResponse.getHeaders()) {
         // For security reasons sensitive headers have to be filtered out from tracing.
-        if (lSensitiveHeaderNames.contains(lNextHeader.getName())) {
+        if (lSensitiveHeaderNames.contains(lNextHeader.getName().toLowerCase()) == false) {
           lBuilder.append(lNextHeader.getName());
           lBuilder.append("='");
           lBuilder.append(lNextHeader.getValue());

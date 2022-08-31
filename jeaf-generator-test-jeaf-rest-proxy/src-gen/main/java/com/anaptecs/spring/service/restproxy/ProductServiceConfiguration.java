@@ -5,6 +5,9 @@
  */
 package com.anaptecs.spring.service.restproxy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.config.Configuration;
 
@@ -62,6 +65,19 @@ public class ProductServiceConfiguration {
    */
   public int getMaxPoolSize( ) {
     return configuration.getConfigurationValue("maxPoolSize", Integer.class);
+  }
+
+  /**
+   * Method returns the http header names that are considered to be sensitive.
+   * 
+   * @return {@link List} List with the names of all http headers that are considered to be sensitive. The method never
+   * returns null.
+   */
+  public List<String> getSensitiveHeaderNames( ) {
+    List<String> lHeaderNames =
+        new ArrayList<>(configuration.getConfigurationValueList("sensitiveHeaders", String.class));
+    lHeaderNames.replaceAll(String::toLowerCase);
+    return lHeaderNames;
   }
 
   /**

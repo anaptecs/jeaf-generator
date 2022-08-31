@@ -5,7 +5,7 @@
  */
 package com.anaptecs.spring.service.restproxy;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class ProductServiceConfiguration {
    * List of http headers that is considered to be security sensitive.
    */
   @Value("${productService.sensitiveHeaders}")
-  private String[] sensistiveHeaders;
+  private String[] sensitiveHeaders;
 
   private List<String> sensitiveHeaderNames;
 
@@ -190,8 +190,11 @@ public class ProductServiceConfiguration {
    */
   public List<String> getSensitiveHeaderNames( ) {
     if (sensitiveHeaderNames == null) {
-      if (sensistiveHeaders != null) {
-        sensitiveHeaderNames = Arrays.asList(sensistiveHeaders);
+      if (sensitiveHeaders != null) {
+        sensitiveHeaderNames = new ArrayList<>(sensitiveHeaders.length);
+        for (String lNext : sensitiveHeaders) {
+          sensitiveHeaderNames.add(lNext.toLowerCase());
+        }
       }
       else {
         sensitiveHeaderNames = Collections.emptyList();
