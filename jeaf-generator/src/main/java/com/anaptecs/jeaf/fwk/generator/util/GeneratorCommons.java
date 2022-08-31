@@ -1070,6 +1070,7 @@ public class GeneratorCommons {
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPISecurityScheme");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPIResponse");
 
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "RESTResource");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "RESTOperation");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "PathParam");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "HeaderParam");
@@ -1152,8 +1153,9 @@ public class GeneratorCommons {
       lRunChecks = generateActivityInterfaces() | generateActivityImpls();
     }
     // RESTOperation or REST params
-    else if ("RESTOperation".equals(pStereotype) || "PathParam".equals(pStereotype) || "QueryParam".equals(pStereotype)
-        || "HeaderParam".equals(pStereotype) || "CookieParam".equals(pStereotype)) {
+    else if ("RESTResource".equals(pStereotype) || "RESTOperation".equals(pStereotype)
+        || "PathParam".equals(pStereotype) || "QueryParam".equals(pStereotype) || "HeaderParam".equals(pStereotype)
+        || "CookieParam".equals(pStereotype)) {
       lRunChecks = generateRESTResources() | generateOpenAPISpec();
     }
     else {

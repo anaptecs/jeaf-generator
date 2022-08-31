@@ -113,3 +113,8 @@ cached String getRESTCookieParamName(JMM::CookieParam param):
 
 List[String] splitRESTPath(String path, List[String] paramNames, List[String] variableNames):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.splitRESTPath(java.lang.String, java.util.List, java.util.List);
+
+boolean hasValidRESTResourcePath(JMM::RESTResource restResource):
+    if restResource.path.length > 0
+    then restResource.path.startsWith("/")
+    else true;

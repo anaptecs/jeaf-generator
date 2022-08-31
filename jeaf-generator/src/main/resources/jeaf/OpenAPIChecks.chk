@@ -6,6 +6,7 @@ extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
 extension jeaf::RESTFunctions;
 
+context RESTResource if runChecks("RESTResource") ERROR "Error: <<RESTResource>> Path of REST Resource " +  name + " must start with '/' if it is defined. (" + fqn() + ")": this.hasValidRESTResourcePath() == true;
 
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + this.getOwningClass().fqn() + "." + name + "(...) must define at least one HTTP-Method. Please correct your UML model.": httpMethods.size > 0;
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> uses http status code " + this.statusCode.name + " which is not compatible with JAX-RS": isJAXRSStatusCode(this.statusCode.name) == true;
