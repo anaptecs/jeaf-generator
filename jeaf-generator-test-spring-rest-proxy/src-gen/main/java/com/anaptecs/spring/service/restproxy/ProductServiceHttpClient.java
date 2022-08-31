@@ -12,6 +12,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Duration;
 import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.Callable;
 
 import javax.annotation.PostConstruct;
@@ -329,13 +330,18 @@ public class ProductServiceHttpClient {
       lBuilder.append(") ");
       lBuilder.append(pRequest.getUri());
       lBuilder.append(System.lineSeparator());
+
       // Add header fields
+      List<String> lSensitiveHeaderNames = configuration.getSensitiveHeaderNames();
       lBuilder.append("Request Headers: ");
       for (Header lNextHeader : pRequest.getHeaders()) {
-        lBuilder.append(lNextHeader.getName());
-        lBuilder.append("='");
-        lBuilder.append(lNextHeader.getValue());
-        lBuilder.append("' ");
+        // For security reasons sensitive headers have to be filtered out from tracing.
+        if (lSensitiveHeaderNames.contains(lNextHeader.getName())) {
+          lBuilder.append(lNextHeader.getName());
+          lBuilder.append("='");
+          lBuilder.append(lNextHeader.getValue());
+          lBuilder.append("' ");
+        }
       }
       lBuilder.append(System.lineSeparator());
       // Add body if request has one.
@@ -361,13 +367,18 @@ public class ProductServiceHttpClient {
       lBuilder.append("Status Code: ");
       lBuilder.append(pResponse.getCode());
       lBuilder.append(System.lineSeparator());
+
       // Add header fields
+      List<String> lSensitiveHeaderNames = configuration.getSensitiveHeaderNames();
       lBuilder.append("Response Headers: ");
       for (Header lNextHeader : pResponse.getHeaders()) {
-        lBuilder.append(lNextHeader.getName());
-        lBuilder.append("='");
-        lBuilder.append(lNextHeader.getValue());
-        lBuilder.append("' ");
+        // For security reasons sensitive headers have to be filtered out from tracing.
+        if (lSensitiveHeaderNames.contains(lNextHeader.getName())) {
+          lBuilder.append(lNextHeader.getName());
+          lBuilder.append("='");
+          lBuilder.append(lNextHeader.getValue());
+          lBuilder.append("' ");
+        }
       }
       lBuilder.append(System.lineSeparator());
       // Add body if request has one.

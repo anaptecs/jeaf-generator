@@ -5,6 +5,10 @@
  */
 package com.anaptecs.spring.service.restproxy;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -24,6 +28,14 @@ public class ProductServiceConfiguration {
    */
   @Value("${productService.cookieDomain}")
   private String cookieDomain;
+
+  /**
+   * List of http headers that is considered to be security sensitive.
+   */
+  @Value("${productService.sensitiveHeaders}")
+  private String[] sensistiveHeaders;
+
+  private List<String> sensitiveHeaderNames;
 
   /**
    * Path of the cookie that is used in requests.
@@ -168,6 +180,24 @@ public class ProductServiceConfiguration {
    */
   public String getCookiePath( ) {
     return cookiePath;
+  }
+
+  /**
+   * Method returns the http header names that are considered to be sensitive.
+   * 
+   * @return {@link List} List with the names of all http headers that are considered to be sensitive. The method never
+   * returns null.
+   */
+  public List<String> getSensitiveHeaderNames( ) {
+    if (sensitiveHeaderNames == null) {
+      if (sensistiveHeaders != null) {
+        sensitiveHeaderNames = Arrays.asList(sensistiveHeaders);
+      }
+      else {
+        sensitiveHeaderNames = Collections.emptyList();
+      }
+    }
+    return sensitiveHeaderNames;
   }
 
   /**
