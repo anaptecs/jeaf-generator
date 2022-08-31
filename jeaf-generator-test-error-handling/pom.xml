@@ -13,25 +13,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.anaptecs.jeaf.generator</groupId>
-			<artifactId>jeaf-generator-test-services-api</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>${javaee-api.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.anaptecs.jeaf.workload</groupId>
-			<artifactId>jeaf-workload-rest-api</artifactId>
-			<version>${jeaf.workload.api.version}</version>
-		</dependency>
-
-		<dependency>
 			<groupId>com.anaptecs.jeaf.uml</groupId>
 			<artifactId>jeaf-uml-test-model</artifactId>
 			<version>${jeaf.test.model.version}</version>
