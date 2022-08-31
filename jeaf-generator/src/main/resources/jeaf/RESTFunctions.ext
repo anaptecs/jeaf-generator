@@ -129,3 +129,8 @@ boolean hasValidOperationPath(JMM::RESTOperation operation):
     then false
     else true;
     
+    
+boolean hasUnsupportedRequestBody(JMM::RESTOperation operation):
+    if (operation.hasRequestBody() && operation.httpMethods.select(e|e.supportsRequestBody()).size > 0) || operation.hasRequestBody() == false
+    then false
+    else true;

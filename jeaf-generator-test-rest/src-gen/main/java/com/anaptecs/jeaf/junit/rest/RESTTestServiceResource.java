@@ -43,7 +43,7 @@ public class RESTTestServiceResource {
    * {@link RESTTestService#getResource()}
    */
   @GET
-  public Response getResource( String pID ) {
+  public Response getResource( @PathParam("{ID}") String pID ) {
     RESTTestService lService = this.getRESTTestService();
     String lResult = lService.getResource(pID);
     return Response.status(Response.Status.ACCEPTED).entity(lResult).build();
@@ -147,7 +147,8 @@ public class RESTTestServiceResource {
    */
   @Path("deprecation/dep2")
   @GET
-  public Response deprecatedParameter( int pParam1, @HeaderParam("pParam2") @Deprecated int pParam2 ) {
+  public Response deprecatedParameter( @HeaderParam("pParam1") int pParam1,
+      @HeaderParam("pParam2") @Deprecated int pParam2 ) {
     RESTTestService lService = this.getRESTTestService();
     lService.deprecatedParameter(pParam1, pParam2);
     return Response.status(Response.Status.OK).build();
@@ -159,7 +160,7 @@ public class RESTTestServiceResource {
   @Path("deprecation/dep3")
   @GET
   @Deprecated
-  public Response deprectaedReturnValue( int pParam1 ) {
+  public Response deprectaedReturnValue( @HeaderParam("pParam1") int pParam1 ) {
     RESTTestService lService = this.getRESTTestService();
     int lResult = lService.deprectaedReturnValue(pParam1);
     return Response.status(Response.Status.OK).entity(lResult).build();
