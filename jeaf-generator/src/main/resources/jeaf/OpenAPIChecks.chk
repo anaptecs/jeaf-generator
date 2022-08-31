@@ -4,13 +4,15 @@ import JMM;
 extension java::Naming;
 extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
+extension jeaf::RESTFunctions;
 
 
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + this.getOwningClass().fqn() + "." + name + "(...) must define at least one HTTP-Method. Please correct your UML model.": httpMethods.size > 0;
-context RESTOperation if runChecks("RESTOperation") ERROR "Error: REST Operation uses http status code " + this.statusCode.name + " which is not compatible with JAX-RS": isJAXRSStatusCode(this.statusCode.name) == true;
+context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> uses http status code " + this.statusCode.name + " which is not compatible with JAX-RS": isJAXRSStatusCode(this.statusCode.name) == true;
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: Either REST resource or REST operation need to define at least one consumed media type (" + this.fqn() + ")": unifyMediaTypes(((JMM::RESTResource)this.owner).consumes, this.consumes).size > 0;
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: Either REST resource or REST operation need to define at least one produced media type (" + this.fqn() + ")": unifyMediaTypes(((JMM::RESTResource)this.owner).produces, this.produces).size > 0;
-context RESTOperation if runChecks("RESTOperation") ERROR "Error: REST operation " + name+ " has input parameters without name. Please ensure that all input parameters are named (" + fqn() + ")": this.areAllInputParametersNamed() == true;
+context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + ((NamedElement)owner).name + "." + name+ " has input parameters without name. Please ensure that all input parameters are named (" + fqn() + ")": this.areAllInputParametersNamed() == true;
+context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + ((NamedElement)owner).name + "."+ name + " has multiple request body parameters. Please ensure that there is not more than 1 request body for a REST operation (" + this.getBodyParamNames() + ")": this.getBodyParamNames().size < 2 ;
 
 context Model if runChecks() ERROR "Error: OpenAPI Specification more than one global default error response": this.hasValidOneGlobalDefaultErrorResponse() == false;
 

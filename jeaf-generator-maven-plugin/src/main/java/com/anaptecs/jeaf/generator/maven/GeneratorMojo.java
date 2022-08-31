@@ -615,7 +615,6 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Override
   public void execute( ) throws MojoExecutionException, MojoFailureException {
-
     if (this.isGenerationRequested()) {
       // Show startup info.
       this.showStartupInfo();
