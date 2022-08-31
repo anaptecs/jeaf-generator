@@ -160,8 +160,8 @@ public class ProductServiceHttpClient {
    * @param pRequest HTTP request that should be executed. The parameter must not be null.
    * @param pSuccessfulStatusCode HTTP status code that represents a successful call. This status code is required in
    * order to be able to distinguish between successful and failed requests.
-   * @param pCollectionClass Class object of collection class that should be returned e.g. java.util.List. The parameter
-   * must not be null.
+   * @param pCollectionClass Class object of collection class that should be returned e.g. List. The parameter must not
+   * be null.
    * @param pTypeClass Type of the objects that will be inside the collection. The parameter must not be null.
    * @return T Collection of objects as it was defined by <code>pCollectionClass</code> and <code>pTypeClass</code>
    */
@@ -330,7 +330,6 @@ public class ProductServiceHttpClient {
       lBuilder.append(") ");
       lBuilder.append(pRequest.getUri());
       lBuilder.append(System.lineSeparator());
-
       // Add header fields
       List<String> lSensitiveHeaderNames = configuration.getSensitiveHeaderNames();
       lBuilder.append("Request Headers: ");
@@ -367,7 +366,6 @@ public class ProductServiceHttpClient {
       lBuilder.append("Status Code: ");
       lBuilder.append(pResponse.getCode());
       lBuilder.append(System.lineSeparator());
-
       // Add header fields
       List<String> lSensitiveHeaderNames = configuration.getSensitiveHeaderNames();
       lBuilder.append("Response Headers: ");

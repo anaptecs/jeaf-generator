@@ -30,18 +30,18 @@ public class ProductServiceConfiguration {
   private String cookieDomain;
 
   /**
+   * Path of the cookie that is used in requests.
+   */
+  @Value("${productService.cookiePath}")
+  private String cookiePath;
+
+  /**
    * List of http headers that is considered to be security sensitive.
    */
   @Value("${productService.sensitiveHeaders}")
   private String[] sensitiveHeaders;
 
   private List<String> sensitiveHeaderNames;
-
-  /**
-   * Path of the cookie that is used in requests.
-   */
-  @Value("${productService.cookiePath}")
-  private String cookiePath;
 
   /**
    * Maximum size of the connection pool.
@@ -185,13 +185,13 @@ public class ProductServiceConfiguration {
   /**
    * Method returns the http header names that are considered to be sensitive.
    * 
-   * @return {@link List} List with the names of all http headers that are considered to be sensitive. The method never
-   * returns null.
+   * @return {@link List} List with the names of all http headers that are considered to be sensitive. All returned
+   * header names are normalized to lower-case. The method never returns null.
    */
   public List<String> getSensitiveHeaderNames( ) {
     if (sensitiveHeaderNames == null) {
       if (sensitiveHeaders != null) {
-        sensitiveHeaderNames = new ArrayList<>(sensitiveHeaders.length);
+        sensitiveHeaderNames = new ArrayList<String>(sensitiveHeaders.length);
         for (String lNext : sensitiveHeaders) {
           sensitiveHeaderNames.add(lNext.toLowerCase());
         }

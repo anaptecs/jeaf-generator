@@ -5,6 +5,10 @@
  */
 package com.anaptecs.spring.service.restproxy;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -30,6 +34,14 @@ public class RESTProductServiceConfiguration {
    */
   @Value("${rESTProductService.cookiePath}")
   private String cookiePath;
+
+  /**
+   * List of http headers that is considered to be security sensitive.
+   */
+  @Value("${rESTProductService.sensitiveHeaders}")
+  private String[] sensitiveHeaders;
+
+  private List<String> sensitiveHeaderNames;
 
   /**
    * Maximum size of the connection pool.
@@ -168,6 +180,27 @@ public class RESTProductServiceConfiguration {
    */
   public String getCookiePath( ) {
     return cookiePath;
+  }
+
+  /**
+   * Method returns the http header names that are considered to be sensitive.
+   * 
+   * @return {@link List} List with the names of all http headers that are considered to be sensitive. All returned
+   * header names are normalized to lower-case. The method never returns null.
+   */
+  public List<String> getSensitiveHeaderNames( ) {
+    if (sensitiveHeaderNames == null) {
+      if (sensitiveHeaders != null) {
+        sensitiveHeaderNames = new ArrayList<String>(sensitiveHeaders.length);
+        for (String lNext : sensitiveHeaders) {
+          sensitiveHeaderNames.add(lNext.toLowerCase());
+        }
+      }
+      else {
+        sensitiveHeaderNames = Collections.emptyList();
+      }
+    }
+    return sensitiveHeaderNames;
   }
 
   /**

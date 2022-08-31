@@ -10,6 +10,9 @@ productService:
   # Path of the cookie that is used in requests.
   cookiePath:
   
+  # Comma separated list of http header names that should be considered to be sensitive.
+  sensitiveHeaders: Authorzation
+  
   # Apache HTTP Client configuration
   http:
     # Maximum size of the connection pool.

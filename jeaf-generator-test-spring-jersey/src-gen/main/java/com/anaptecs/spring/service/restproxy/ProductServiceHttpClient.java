@@ -12,6 +12,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Duration;
 import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.Callable;
 
 import javax.annotation.PostConstruct;
@@ -159,8 +160,8 @@ public class ProductServiceHttpClient {
    * @param pRequest HTTP request that should be executed. The parameter must not be null.
    * @param pSuccessfulStatusCode HTTP status code that represents a successful call. This status code is required in
    * order to be able to distinguish between successful and failed requests.
-   * @param pCollectionClass Class object of collection class that should be returned e.g. java.util.List. The parameter
-   * must not be null.
+   * @param pCollectionClass Class object of collection class that should be returned e.g. List. The parameter must not
+   * be null.
    * @param pTypeClass Type of the objects that will be inside the collection. The parameter must not be null.
    * @return T Collection of objects as it was defined by <code>pCollectionClass</code> and <code>pTypeClass</code>
    */
@@ -330,12 +331,16 @@ public class ProductServiceHttpClient {
       lBuilder.append(pRequest.getUri());
       lBuilder.append(System.lineSeparator());
       // Add header fields
+      List<String> lSensitiveHeaderNames = configuration.getSensitiveHeaderNames();
       lBuilder.append("Request Headers: ");
       for (Header lNextHeader : pRequest.getHeaders()) {
-        lBuilder.append(lNextHeader.getName());
-        lBuilder.append("='");
-        lBuilder.append(lNextHeader.getValue());
-        lBuilder.append("' ");
+        // For security reasons sensitive headers have to be filtered out from tracing.
+        if (lSensitiveHeaderNames.contains(lNextHeader.getName().toLowerCase()) == false) {
+          lBuilder.append(lNextHeader.getName());
+          lBuilder.append("='");
+          lBuilder.append(lNextHeader.getValue());
+          lBuilder.append("' ");
+        }
       }
       lBuilder.append(System.lineSeparator());
       // Add body if request has one.
@@ -362,12 +367,16 @@ public class ProductServiceHttpClient {
       lBuilder.append(pResponse.getCode());
       lBuilder.append(System.lineSeparator());
       // Add header fields
+      List<String> lSensitiveHeaderNames = configuration.getSensitiveHeaderNames();
       lBuilder.append("Response Headers: ");
       for (Header lNextHeader : pResponse.getHeaders()) {
-        lBuilder.append(lNextHeader.getName());
-        lBuilder.append("='");
-        lBuilder.append(lNextHeader.getValue());
-        lBuilder.append("' ");
+        // For security reasons sensitive headers have to be filtered out from tracing.
+        if (lSensitiveHeaderNames.contains(lNextHeader.getName().toLowerCase()) == false) {
+          lBuilder.append(lNextHeader.getName());
+          lBuilder.append("='");
+          lBuilder.append(lNextHeader.getValue());
+          lBuilder.append("' ");
+        }
       }
       lBuilder.append(System.lineSeparator());
       // Add body if request has one.

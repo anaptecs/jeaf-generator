@@ -853,12 +853,16 @@ public class «name»HttpClient {
       lBuilder.append(System.lineSeparator());
 
       // Add header fields
+      java.util.List<String> lSensitiveHeaderNames = configuration.getSensitiveHeaderNames();
       lBuilder.append("Request Headers: ");
       for (org.apache.hc.core5.http.Header lNextHeader : pRequest.getHeaders()) {
-        lBuilder.append(lNextHeader.getName());
-        lBuilder.append("='");
-        lBuilder.append(lNextHeader.getValue());
-        lBuilder.append("' ");
+        // For security reasons sensitive headers have to be filtered out from tracing.
+        if (lSensitiveHeaderNames.contains(lNextHeader.getName().toLowerCase()) == false) {
+          lBuilder.append(lNextHeader.getName());
+          lBuilder.append("='");
+          lBuilder.append(lNextHeader.getValue());
+          lBuilder.append("' ");
+        }
       }
       lBuilder.append(System.lineSeparator());
 
@@ -904,12 +908,16 @@ public class «name»HttpClient {
       lBuilder.append(System.lineSeparator());
 
       // Add header fields
+      java.util.List<String> lSensitiveHeaderNames = configuration.getSensitiveHeaderNames();
       lBuilder.append("Response Headers: ");
       for (org.apache.hc.core5.http.Header lNextHeader : pResponse.getHeaders()) {
-        lBuilder.append(lNextHeader.getName());
-        lBuilder.append("='");
-        lBuilder.append(lNextHeader.getValue());
-        lBuilder.append("' ");
+        // For security reasons sensitive headers have to be filtered out from tracing.
+        if (lSensitiveHeaderNames.contains(lNextHeader.getName().toLowerCase()) == false) {
+	      lBuilder.append(lNextHeader.getName());
+	      lBuilder.append("='");
+	      lBuilder.append(lNextHeader.getValue());
+	      lBuilder.append("' ");
+	    }
       }
       lBuilder.append(System.lineSeparator());
 
@@ -1002,6 +1010,14 @@ public class «name»Configuration {
   @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».cookiePath}")
   private String cookiePath;
   «ENDIF»
+
+  /**
+   * List of http headers that is considered to be security sensitive.
+   */
+  @org.springframework.beans.factory.annotation.Value("${«name.toFirstLower()».sensitiveHeaders}")
+  private String[] sensitiveHeaders;
+
+  private java.util.List<String> sensitiveHeaderNames;
 
   /**
    * Maximum size of the connection pool.
@@ -1158,6 +1174,36 @@ public class «name»Configuration {
     «ENDIF»
   }
   «ENDIF»
+
+  /**
+   * Method returns the http header names that are considered to be sensitive.
+   * 
+   * @return {@link List} List with the names of all http headers that are considered to be sensitive. All returned header names are normalized to lower-case. The method never returns null.
+   */
+  public java.util.List<String> getSensitiveHeaderNames( ) {
+    «IF isTargetRuntimeJEAF()»
+    java.util.List<String> lHeaderNames = configuration.getConfigurationValueList("sensitiveHeaders", String.class);
+    java.util.List<String> lLowerCaseHeaderNames = new java.util.ArrayList<String>(lHeaderNames.size());
+    for (String lNextHeaderName : lHeaderNames) {
+      lLowerCaseHeaderNames.add(lNextHeaderName.toLowerCase());
+    }
+    return lLowerCaseHeaderNames;
+    «ENDIF»
+    «IF isTargetRuntimeSpring()»
+    if (sensitiveHeaderNames == null) {
+      if (sensitiveHeaders != null) {
+        sensitiveHeaderNames = new java.util.ArrayList<String>(sensitiveHeaders.length);
+        for (String lNext : sensitiveHeaders) {
+          sensitiveHeaderNames.add(lNext.toLowerCase());
+        }
+      }
+      else {
+        sensitiveHeaderNames = java.util.Collections.emptyList();
+      }
+    }
+    return sensitiveHeaderNames;
+    «ENDIF»
+  }
 
   /**
    * Method returns the maximum size of the connection pool.
@@ -1413,6 +1459,9 @@ public class «name»Configuration {
   cookiePath:
   «ENDIF -»
   
+  # Comma separated list of http header names that should be considered to be sensitive.
+  sensitiveHeaders: Authorzation
+  
   # Apache HTTP Client configuration
   http:
     # Maximum size of the connection pool.
@@ -1503,6 +1552,9 @@ cookieDomain=
 # Path of the cookie that is used in requests.
 cookiePath=
 «ENDIF -»
+  
+# Comma separated list of http header names that should be considered to be sensitive.
+sensitiveHeaders=Authorzation
   
 #
 # Apache HTTP Client configuration

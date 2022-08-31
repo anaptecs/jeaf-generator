@@ -5,6 +5,9 @@
  */
 package com.anaptecs.spring.service.restproxy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.config.Configuration;
 
@@ -53,6 +56,21 @@ public class RESTProductServiceConfiguration {
    */
   public String getCookiePath( ) {
     return configuration.getConfigurationValue("cookiePath", String.class);
+  }
+
+  /**
+   * Method returns the http header names that are considered to be sensitive.
+   * 
+   * @return {@link List} List with the names of all http headers that are considered to be sensitive. All returned
+   * header names are normalized to lower-case. The method never returns null.
+   */
+  public List<String> getSensitiveHeaderNames( ) {
+    List<String> lHeaderNames = configuration.getConfigurationValueList("sensitiveHeaders", String.class);
+    List<String> lLowerCaseHeaderNames = new ArrayList<String>(lHeaderNames.size());
+    for (String lNextHeaderName : lHeaderNames) {
+      lLowerCaseHeaderNames.add(lNextHeaderName.toLowerCase());
+    }
+    return lLowerCaseHeaderNames;
   }
 
   /**

@@ -59,25 +59,27 @@ public class ProductServiceConfiguration {
   }
 
   /**
+   * Method returns the http header names that are considered to be sensitive.
+   * 
+   * @return {@link List} List with the names of all http headers that are considered to be sensitive. All returned
+   * header names are normalized to lower-case. The method never returns null.
+   */
+  public List<String> getSensitiveHeaderNames( ) {
+    List<String> lHeaderNames = configuration.getConfigurationValueList("sensitiveHeaders", String.class);
+    List<String> lLowerCaseHeaderNames = new ArrayList<String>(lHeaderNames.size());
+    for (String lNextHeaderName : lHeaderNames) {
+      lLowerCaseHeaderNames.add(lNextHeaderName.toLowerCase());
+    }
+    return lLowerCaseHeaderNames;
+  }
+
+  /**
    * Method returns the maximum size of the connection pool.
    * 
    * @return int Maximum pool size.
    */
   public int getMaxPoolSize( ) {
     return configuration.getConfigurationValue("maxPoolSize", Integer.class);
-  }
-
-  /**
-   * Method returns the http header names that are considered to be sensitive.
-   * 
-   * @return {@link List} List with the names of all http headers that are considered to be sensitive. The method never
-   * returns null.
-   */
-  public List<String> getSensitiveHeaderNames( ) {
-    List<String> lHeaderNames =
-        new ArrayList<>(configuration.getConfigurationValueList("sensitiveHeaders", String.class));
-    lHeaderNames.replaceAll(String::toLowerCase);
-    return lHeaderNames;
   }
 
   /**
