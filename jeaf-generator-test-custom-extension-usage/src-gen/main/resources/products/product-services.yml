@@ -637,7 +637,7 @@ paths:
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
 
-  /products//LocalBeanParam:
+  /products/LocalBeanParam:
     get:
       operationId: testLocalBeanParamType
       parameters:
@@ -661,7 +661,7 @@ paths:
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
 
-  /products//ExternalBeanParam:
+  /products/ExternalBeanParam:
     get:
       operationId: testExternalBeanParameterType
       parameters:
@@ -685,7 +685,7 @@ paths:
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
 
-  /products//ChildBeanParam:
+  /products/ChildBeanParam:
     get:
       operationId: testChildBeanParameter
       parameters:

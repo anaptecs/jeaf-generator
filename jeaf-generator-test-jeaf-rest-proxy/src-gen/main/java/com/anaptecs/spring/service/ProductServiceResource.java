@@ -276,7 +276,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testLocalBeanParamType()}
    */
-  @Path("/LocalBeanParam")
+  @Path("LocalBeanParam")
   @GET
   public Response testLocalBeanParamType( @BeanParam LocalBeanParamType pBeanParam ) {
     ProductService lService = this.getProductService();
@@ -287,7 +287,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testExternalBeanParameterType()}
    */
-  @Path("/ExternalBeanParam")
+  @Path("ExternalBeanParam")
   @GET
   public Response testExternalBeanParameterType( @BeanParam ParentBeanParamType pParent ) {
     ProductService lService = this.getProductService();
@@ -298,7 +298,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testChildBeanParameter()}
    */
-  @Path("/ChildBeanParam")
+  @Path("ChildBeanParam")
   @GET
   public Response testChildBeanParameter( @BeanParam ChildBeanParameterType pChild ) {
     ProductService lService = this.getProductService();

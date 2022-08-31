@@ -279,7 +279,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testLocalBeanParamType()}
    */
-  @RequestMapping(path = "/LocalBeanParam", method = { RequestMethod.GET })
+  @RequestMapping(path = "LocalBeanParam", method = { RequestMethod.GET })
   public String testLocalBeanParamType( @RequestHeader(name = "localKey", required = true) String pLocalKey,
       @RequestHeader(name = "localID", required = true) String pLocalID ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
@@ -296,7 +296,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testExternalBeanParameterType()}
    */
-  @RequestMapping(path = "/ExternalBeanParam", method = { RequestMethod.GET })
+  @RequestMapping(path = "ExternalBeanParam", method = { RequestMethod.GET })
   public String testExternalBeanParameterType( @RequestHeader(name = "novaKey", required = true) String pNovaKey,
       @RequestHeader(name = "tkID", required = true) String pTkID ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
@@ -313,7 +313,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testChildBeanParameter()}
    */
-  @RequestMapping(path = "/ChildBeanParam", method = { RequestMethod.GET })
+  @RequestMapping(path = "ChildBeanParam", method = { RequestMethod.GET })
   public String testChildBeanParameter(
       @RequestHeader(name = "X-Child-Property", required = true) String pChildProperty,
       @RequestHeader(name = "novaKey", required = true) String pNovaKey,

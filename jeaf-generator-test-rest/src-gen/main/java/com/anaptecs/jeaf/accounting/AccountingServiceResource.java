@@ -37,7 +37,7 @@ public class AccountingServiceResource {
   /**
    * {@link AccountingService#performBooking()}
    */
-  @Path("/bookings")
+  @Path("bookings")
   @PUT
   public void performBooking( @Suspended AsyncResponse pAsyncResponse, @Context HttpServletRequest pRequest,
       Booking pBooking, @HeaderParam("pSecurityToken") SecurityToken pSecurityToken ) {

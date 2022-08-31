@@ -710,7 +710,7 @@ public class ProductServiceRESTProxy implements ProductService {
     lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
-    lURIBuilder.append("/LocalBeanParam");
+    lURIBuilder.append("LocalBeanParam");
     lURIBuilder.append('?');
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
@@ -736,7 +736,7 @@ public class ProductServiceRESTProxy implements ProductService {
     lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
-    lURIBuilder.append("/ExternalBeanParam");
+    lURIBuilder.append("ExternalBeanParam");
     lURIBuilder.append('?');
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
@@ -762,7 +762,7 @@ public class ProductServiceRESTProxy implements ProductService {
     lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
-    lURIBuilder.append("/ChildBeanParam");
+    lURIBuilder.append("ChildBeanParam");
     lURIBuilder.append('?');
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header

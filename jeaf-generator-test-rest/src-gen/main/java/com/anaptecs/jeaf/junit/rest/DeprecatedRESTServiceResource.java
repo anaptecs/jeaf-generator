@@ -18,7 +18,7 @@ import com.anaptecs.jeaf.core.api.JEAF;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@Path("do/something")
+@Path("/do/something")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Deprecated
