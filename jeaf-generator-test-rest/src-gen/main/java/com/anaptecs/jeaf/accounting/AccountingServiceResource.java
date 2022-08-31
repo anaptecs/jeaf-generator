@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.accounting;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -34,23 +35,12 @@ import com.anaptecs.jeaf.workload.api.rest.RESTWorkloadErrorHandler;
 @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 public class AccountingServiceResource {
   /**
-   * {@link AccountingService#createAccount()}
-   */
-  @Path("/accounts")
-  @PUT
-  public Response createAccount( Customer pCustomer, Person pAuthorizedPerson ) {
-    AccountingService lService = this.getAccountingService();
-    Account lResult = lService.createAccount(pCustomer, pAuthorizedPerson);
-    return Response.status(Response.Status.OK).entity(lResult).build();
-  }
-
-  /**
    * {@link AccountingService#performBooking()}
    */
   @Path("/bookings")
   @PUT
   public void performBooking( @Suspended AsyncResponse pAsyncResponse, @Context HttpServletRequest pRequest,
-      Booking pBooking, SecurityToken pSecurityToken ) {
+      Booking pBooking, @HeaderParam("pSecurityToken") SecurityToken pSecurityToken ) {
     // Lookup workload manager that takes care that the system will have an optimal throughput.
     WorkloadManager lWorkloadManager = Workload.getWorkloadManager();
     // Prepare meta information about the request.

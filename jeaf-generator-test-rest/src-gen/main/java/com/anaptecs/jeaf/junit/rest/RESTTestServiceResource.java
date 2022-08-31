@@ -147,7 +147,7 @@ public class RESTTestServiceResource {
    */
   @Path("deprecation/dep2")
   @GET
-  public Response deprecatedParameter( int pParam1, @Deprecated int pParam2 ) {
+  public Response deprecatedParameter( int pParam1, @HeaderParam("pParam2") @Deprecated int pParam2 ) {
     RESTTestService lService = this.getRESTTestService();
     lService.deprecatedParameter(pParam1, pParam2);
     return Response.status(Response.Status.OK).build();
@@ -172,7 +172,7 @@ public class RESTTestServiceResource {
   @POST
   @Deprecated
   public void deprecatedAsyncParam( @Suspended AsyncResponse pAsyncResponse,
-      @javax.ws.rs.core.Context HttpServletRequest pRequest, @Deprecated int pParam1, int pParam2 ) {
+      @javax.ws.rs.core.Context HttpServletRequest pRequest, @Deprecated int pParam1 ) {
     // Lookup workload manager that takes care that the system will have an optimal throughput.
     WorkloadManager lWorkloadManager = Workload.getWorkloadManager();
     // Prepare meta information about the request.
@@ -186,7 +186,7 @@ public class RESTTestServiceResource {
       @Override
       public void run( ) {
         try {
-          String lResult = lService.deprecatedAsyncParam(pParam1, pParam2);
+          String lResult = lService.deprecatedAsyncParam(pParam1);
           Response lResponseObject = Response.status(Response.Status.OK).entity(lResult).build();
           // Due to the asynchronous processing of the requests, the response can not be returned as return value.
           // Therefore we make use of the defined JAX-RS mechanisms.
@@ -208,7 +208,7 @@ public class RESTTestServiceResource {
   @POST
   @Deprecated
   public void deprecatedAsync( @Suspended AsyncResponse pAsyncResponse,
-      @javax.ws.rs.core.Context HttpServletRequest pRequest, int pParam1, int pParam2 ) {
+      @javax.ws.rs.core.Context HttpServletRequest pRequest, int pParam1 ) {
     // Lookup workload manager that takes care that the system will have an optimal throughput.
     WorkloadManager lWorkloadManager = Workload.getWorkloadManager();
     // Prepare meta information about the request.
@@ -222,7 +222,7 @@ public class RESTTestServiceResource {
       @Override
       public void run( ) {
         try {
-          String lResult = lService.deprecatedAsync(pParam1, pParam2);
+          String lResult = lService.deprecatedAsync(pParam1);
           Response lResponseObject = Response.status(Response.Status.OK).entity(lResult).build();
           // Due to the asynchronous processing of the requests, the response can not be returned as return value.
           // Therefore we make use of the defined JAX-RS mechanisms.

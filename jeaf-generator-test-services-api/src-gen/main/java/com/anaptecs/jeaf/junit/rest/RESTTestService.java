@@ -91,18 +91,16 @@ public interface RESTTestService extends Service {
   /**
    * 
    * @param pParam1
-   * @param pParam2
    * @return {@link String}
    */
   @Deprecated
-  String deprecatedAsyncParam( @Deprecated int pParam1, int pParam2 );
+  String deprecatedAsyncParam( @Deprecated int pParam1 );
 
   /**
    * 
    * @param pParam1
-   * @param pParam2
    * @return {@link String}
    */
   @Deprecated
-  String deprecatedAsync( int pParam1, int pParam2 );
+  String deprecatedAsync( int pParam1 );
 }

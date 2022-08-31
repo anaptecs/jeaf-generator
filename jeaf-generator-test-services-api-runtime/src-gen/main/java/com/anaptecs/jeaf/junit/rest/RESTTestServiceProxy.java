@@ -213,9 +213,9 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
    * 
    */
   @Deprecated
-  public String deprecatedAsyncParam( @Deprecated int pParam1, int pParam2 ) {
+  public String deprecatedAsyncParam( @Deprecated int pParam1 ) {
     try {
-      Command lCommand = new DeprecatedAsyncParam_int_int_RESTTestService_Command(pParam1, pParam2);
+      Command lCommand = new DeprecatedAsyncParam_int_RESTTestService_Command(pParam1);
       return (String) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -229,9 +229,9 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
    * 
    */
   @Deprecated
-  public String deprecatedAsync( int pParam1, int pParam2 ) {
+  public String deprecatedAsync( int pParam1 ) {
     try {
-      Command lCommand = new DeprecatedAsync_int_int_RESTTestService_Command(pParam1, pParam2);
+      Command lCommand = new DeprecatedAsync_int_RESTTestService_Command(pParam1);
       return (String) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -1365,7 +1365,7 @@ final class DeprectaedReturnValue_int_RESTTestService_Command extends Command {
 /**
  * Generated command class for service method "deprecatedAsyncParam".
  */
-final class DeprecatedAsyncParam_int_int_RESTTestService_Command extends Command {
+final class DeprecatedAsyncParam_int_RESTTestService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -1390,11 +1390,11 @@ final class DeprecatedAsyncParam_int_int_RESTTestService_Command extends Command
    */
   static {
     try {
-      SERVICE_METHOD = RESTTestService.class.getMethod("deprecatedAsyncParam", int.class, int.class);
+      SERVICE_METHOD = RESTTestService.class.getMethod("deprecatedAsyncParam", int.class);
     }
     catch (NoSuchMethodException e) {
       throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, RESTTestService.class.getName(),
-          "deprecatedAsyncParam(int.class, int.class)");
+          "deprecatedAsyncParam(int.class)");
     }
   }
 
@@ -1404,22 +1404,15 @@ final class DeprecatedAsyncParam_int_int_RESTTestService_Command extends Command
   private final int param1;
 
   /**
-   * Attribute transports the method parameter "pParam2" to the service implementation via the service channel.
-   */
-  private final int param2;
-
-  /**
    * Initialize object. All parameters from method "deprecatedAsyncParam" have to be passed as parameters to this
    * command object.
    * 
    * @param pParam1 int
-   * @param pParam2 int
    */
-  DeprecatedAsyncParam_int_int_RESTTestService_Command( @Deprecated int pParam1, int pParam2 ) {
+  DeprecatedAsyncParam_int_RESTTestService_Command( @Deprecated int pParam1 ) {
     super(RESTTestService.class);
     param1 = pParam1;
-    param2 = pParam2;
-    parameters = new Object[] { param1, param2 };
+    parameters = new Object[] { param1 };
   }
 
   /**
@@ -1440,7 +1433,7 @@ final class DeprecatedAsyncParam_int_int_RESTTestService_Command extends Command
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
     long lStartTime = System.nanoTime();
-    Serializable lResult = (Serializable) lService.deprecatedAsyncParam(param1, param2);
+    Serializable lResult = (Serializable) lService.deprecatedAsyncParam(param1);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
     // Trace result of service call.
@@ -1473,7 +1466,7 @@ final class DeprecatedAsyncParam_int_int_RESTTestService_Command extends Command
 /**
  * Generated command class for service method "deprecatedAsync".
  */
-final class DeprecatedAsync_int_int_RESTTestService_Command extends Command {
+final class DeprecatedAsync_int_RESTTestService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -1498,11 +1491,11 @@ final class DeprecatedAsync_int_int_RESTTestService_Command extends Command {
    */
   static {
     try {
-      SERVICE_METHOD = RESTTestService.class.getMethod("deprecatedAsync", int.class, int.class);
+      SERVICE_METHOD = RESTTestService.class.getMethod("deprecatedAsync", int.class);
     }
     catch (NoSuchMethodException e) {
       throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, RESTTestService.class.getName(),
-          "deprecatedAsync(int.class, int.class)");
+          "deprecatedAsync(int.class)");
     }
   }
 
@@ -1512,22 +1505,15 @@ final class DeprecatedAsync_int_int_RESTTestService_Command extends Command {
   private final int param1;
 
   /**
-   * Attribute transports the method parameter "pParam2" to the service implementation via the service channel.
-   */
-  private final int param2;
-
-  /**
    * Initialize object. All parameters from method "deprecatedAsync" have to be passed as parameters to this command
    * object.
    * 
    * @param pParam1 int
-   * @param pParam2 int
    */
-  DeprecatedAsync_int_int_RESTTestService_Command( int pParam1, int pParam2 ) {
+  DeprecatedAsync_int_RESTTestService_Command( int pParam1 ) {
     super(RESTTestService.class);
     param1 = pParam1;
-    param2 = pParam2;
-    parameters = new Object[] { param1, param2 };
+    parameters = new Object[] { param1 };
   }
 
   /**
@@ -1548,7 +1534,7 @@ final class DeprecatedAsync_int_int_RESTTestService_Command extends Command {
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
     long lStartTime = System.nanoTime();
-    Serializable lResult = (Serializable) lService.deprecatedAsync(param1, param2);
+    Serializable lResult = (Serializable) lService.deprecatedAsync(param1);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
     // Trace result of service call.
