@@ -215,21 +215,21 @@ public class ProductServiceResource {
    * {@link ProductService#loadSpecificThings()}
    */
   @RequestMapping(path = "specific/{id}", method = { RequestMethod.PATCH })
-  public void loadSpecificThings( @RequestHeader(name = "specificHeader", required = true) String pSpecificHeader,
-      @RequestHeader(name = "token", required = true) String pAccessToken,
+  public void loadSpecificThings( @RequestHeader(name = "token", required = true) String pAccessToken,
       @RequestHeader(name = "lang", required = true) Locale pLanguage,
       @CookieValue(name = "reseller", required = true) long pResellerID,
       @PathVariable(name = "id", required = true) long pPathParam,
-      @RequestParam(name = "q1", required = true) String pQueryParam ) {
+      @RequestParam(name = "q1", required = true) String pQueryParam,
+      @RequestHeader(name = "specificHeader", required = true) String pSpecificHeader ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     SpecialContext.Builder lBuilder = SpecialContext.Builder.newBuilder();
-    lBuilder.setSpecificHeader(pSpecificHeader);
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);
     lBuilder.setPathParam(pPathParam);
     lBuilder.setQueryParam(pQueryParam);
+    lBuilder.setSpecificHeader(pSpecificHeader);
     SpecialContext pContext = lBuilder.build();
     // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
@@ -314,16 +314,15 @@ public class ProductServiceResource {
    * {@link ProductService#testChildBeanParameter()}
    */
   @RequestMapping(path = "ChildBeanParam", method = { RequestMethod.GET })
-  public String testChildBeanParameter(
-      @RequestHeader(name = "X-Child-Property", required = true) String pChildProperty,
-      @RequestHeader(name = "novaKey", required = true) String pNovaKey,
-      @RequestHeader(name = "tkID", required = true) String pTkID ) {
+  public String testChildBeanParameter( @RequestHeader(name = "novaKey", required = true) String pNovaKey,
+      @RequestHeader(name = "tkID", required = true) String pTkID,
+      @RequestHeader(name = "X-Child-Property", required = true) String pChildProperty ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     ChildBeanParameterType.Builder lBuilder = ChildBeanParameterType.Builder.newBuilder();
-    lBuilder.setChildProperty(pChildProperty);
     lBuilder.setNovaKey(pNovaKey);
     lBuilder.setTkID(pTkID);
+    lBuilder.setChildProperty(pChildProperty);
     ChildBeanParameterType pChild = lBuilder.build();
     // Get Spring service and delegate call.
     ProductService lService = this.getProductService();

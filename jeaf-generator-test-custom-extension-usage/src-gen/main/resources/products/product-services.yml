@@ -445,11 +445,6 @@ paths:
     patch:
       operationId: loadSpecificThings
       parameters:
-        - name: specificHeader
-          in: header
-          required: true
-          schema:
-            type: string
         - name: token
           in: header
           required: true
@@ -475,6 +470,11 @@ paths:
             format: int64
         - name: q1
           in: query
+          required: true
+          schema:
+            type: string
+        - name: specificHeader
+          in: header
           required: true
           schema:
             type: string
@@ -689,9 +689,9 @@ paths:
     get:
       operationId: testChildBeanParameter
       parameters:
-        - $ref: '#/components/parameters/childProperty'
         - $ref: '../base/product-base.yml#/components/parameters/novaKey'
         - $ref: '../base/product-base.yml#/components/parameters/tkID'
+        - $ref: '#/components/parameters/childProperty'
       responses:
         '200':
           description: >-

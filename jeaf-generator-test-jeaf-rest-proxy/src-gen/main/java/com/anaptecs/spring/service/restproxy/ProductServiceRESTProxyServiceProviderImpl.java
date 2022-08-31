@@ -468,10 +468,10 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("specificHeader", pContext.getSpecificHeader());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());
     lRequestBuilder.setHeader("lang",
         XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class).convert(pContext.getLanguage()));
+    lRequestBuilder.setHeader("specificHeader", pContext.getSpecificHeader());
     // Handle cookie parameters
     BasicCookieStore lCookieStore = new BasicCookieStore();
     HttpContext lLocalContext = new BasicHttpContext();
@@ -673,9 +673,9 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("X-Child-Property", pChild.getChildProperty());
     lRequestBuilder.setHeader("novaKey", pChild.getNovaKey());
     lRequestBuilder.setHeader("tkID", pChild.getTkID());
+    lRequestBuilder.setHeader("X-Child-Property", pChild.getChildProperty());
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);
