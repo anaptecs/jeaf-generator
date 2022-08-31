@@ -509,6 +509,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean disableImmutabilityOfBinaryData;
 
   /**
+   * Switch defines if errors during code generation should break the build. This feature is mainly intended for test
+   * purposes of JEAF Generator itself.
+   */
+  @Parameter(required = false, defaultValue = "true")
+  private Boolean breakBuildOnGeneratorError;
+
+  /**
    * Name of the row within which the OID / primary key will be stored. If the property is not set "OID" will be used as
    * default.
    */
@@ -634,8 +641,15 @@ public class GeneratorMojo extends AbstractMojo {
       }
       // Error during code generation from UML model
       else {
-        throw new MojoFailureException(
-            "Problem occured during code generation from UML model. Please see log output for further details.");
+        if (breakBuildOnGeneratorError == true) {
+          throw new MojoFailureException(
+              "Problem occured during code generation from UML model. Please see log output for further details.");
+        }
+        else {
+          this.getLog().error("");
+          this.getLog().error("Error(s) during code generation. Please see log output for further details.");
+          this.getLog().error("");
+        }
       }
     }
     // Nothing should be generated.
@@ -683,6 +697,13 @@ public class GeneratorMojo extends AbstractMojo {
     lLog.info("src-gen:                                          " + sourceGenDirectory);
     lLog.info("res:                                              " + resourceDirectory);
     lLog.info("res-gen:                                          " + resourceGenDirectory);
+
+    if (breakBuildOnGeneratorError == false) {
+      lLog.warn("");
+      lLog.warn(
+          "Errors during code generation do not break the build. Please make sure that this is configured intentionally.");
+      lLog.warn("");
+    }
 
     if (this.isUMLGenerationRequested() == true) {
       lLog.info(" ");
