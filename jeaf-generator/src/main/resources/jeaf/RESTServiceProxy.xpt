@@ -361,7 +361,12 @@ public class «name»RESTProxy implements «this.fqn()» {
 			«IF type.isOpenAPIDataType()»
 				«name».«type.getAllAttributesFromHierarchy().first().asGetter()»()
 			«ELSE»
+				«IF isTargetRuntimeJEAF()»
 				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«name»)
+				«ENDIF»
+				«IF isTargetRuntimeSpring()»
+				«name».toString()
+				«ENDIF»
 			«ENDIF»
 		«ENDIF»
 	«ENDIF»
@@ -377,7 +382,12 @@ public class «name»RESTProxy implements «this.fqn()» {
 			«IF type.isOpenAPIDataType()»
 				«beanParam.name».«this.asGetter()»().«type.getAllAttributesFromHierarchy().first().asGetter()»()
 			«ELSE»
+				«IF isTargetRuntimeJEAF()»
 				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«beanParam.name».«this.asGetter()»())
+				«ENDIF»
+				«IF isTargetRuntimeSpring()»
+				«beanParam.name».«this.asGetter()»().toString()
+				«ENDIF»
 			«ENDIF»
 		«ENDIF»
 	«ENDIF»

@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -29,7 +28,6 @@ import org.zalando.problem.Problem;
 import org.zalando.problem.ProblemBuilder;
 import org.zalando.problem.Status;
 
-import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.Context;
@@ -196,8 +194,7 @@ public class ProductServiceRESTProxy implements ProductService {
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());
-    lRequestBuilder.setHeader("lang",
-        XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class).convert(pContext.getLanguage()));
+    lRequestBuilder.setHeader("lang", pContext.getLanguage().toString());
     // Handle cookie parameters
     BasicCookieStore lCookieStore = new BasicCookieStore();
     HttpContext lLocalContext = new BasicHttpContext();
@@ -320,8 +317,7 @@ public class ProductServiceRESTProxy implements ProductService {
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());
-    lRequestBuilder.setHeader("lang",
-        XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class).convert(pContext.getLanguage()));
+    lRequestBuilder.setHeader("lang", pContext.getLanguage().toString());
     // Handle cookie parameters
     BasicCookieStore lCookieStore = new BasicCookieStore();
     HttpContext lLocalContext = new BasicHttpContext();
@@ -363,8 +359,7 @@ public class ProductServiceRESTProxy implements ProductService {
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pBeanParam.getAccessToken());
-    lRequestBuilder.setHeader("lang",
-        XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class).convert(pBeanParam.getLanguage()));
+    lRequestBuilder.setHeader("lang", pBeanParam.getLanguage().toString());
     // Execute request.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     httpClient.executeNoResponseContentRequest(lRequest, null, 200);
@@ -519,8 +514,7 @@ public class ProductServiceRESTProxy implements ProductService {
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());
-    lRequestBuilder.setHeader("lang",
-        XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class).convert(pContext.getLanguage()));
+    lRequestBuilder.setHeader("lang", pContext.getLanguage().toString());
     lRequestBuilder.setHeader("specificHeader", pContext.getSpecificHeader());
     // Handle cookie parameters
     BasicCookieStore lCookieStore = new BasicCookieStore();
