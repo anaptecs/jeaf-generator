@@ -180,7 +180,9 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append(pContext.getPathParam());
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+    if (pContext.getQueryParam() != null) {
+      lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+    }
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());
@@ -290,7 +292,9 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append("deprecated/context");
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+    if (pContext.getQueryParam() != null) {
+      lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+    }
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());
@@ -331,7 +335,9 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append("deprecated/beanParams");
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    lRequestBuilder.addParameter("q2", pBeanParam.getOldStyle());
+    if (pBeanParam.getOldStyle() != null) {
+      lRequestBuilder.addParameter("q2", pBeanParam.getOldStyle());
+    }
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pBeanParam.getAccessToken());
@@ -461,7 +467,9 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append(pContext.getPathParam());
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+    if (pContext.getQueryParam() != null) {
+      lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+    }
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());

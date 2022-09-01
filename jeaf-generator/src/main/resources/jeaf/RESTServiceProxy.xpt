@@ -232,11 +232,13 @@ public class «name»RESTProxy implements «this.fqn()» {
     	«IF queryParam.type.isPrimitiveType() && queryParam.isMultivalued()==false»
     	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", String.valueOf(«queryParam.name»));
     	«ELSE»
+    	if(«queryParam.name» != null) {
     	«IF queryParam.type.isStringType()»
     	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", «queryParam.name»);
     	«ELSE»
     	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", «queryParam.name».toString());
     	«ENDIF»
+    	}
     	«ENDIF»
     	«ENDFOREACH»
 
@@ -245,11 +247,13 @@ public class «name»RESTProxy implements «this.fqn()» {
 		    	«IF queryParam.type.isPrimitiveType() && queryParam.isMultivalued() == false»
 		    	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", String.valueOf(«beanParam.name».«queryParam.asGetter()»()));
 		    	«ELSE»
+		    	if(«beanParam.name».«queryParam.asGetter()»() != null) {
 		    	«IF queryParam.type.isStringType()»
 		    	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", «beanParam.name».«queryParam.asGetter()»());
 		    	«ELSE»
 		    	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", «beanParam.name».«queryParam.asGetter()»().toString());
 		    	«ENDIF»
+		    	}
 		    	«ENDIF»
     		«ENDFOREACH»
     	«ENDFOREACH»

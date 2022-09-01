@@ -179,7 +179,9 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append(pContext.getPathParam());
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+    if (pContext.getQueryParam() != null) {
+      lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+    }
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());
@@ -347,7 +349,9 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append("test-params");
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    lRequestBuilder.addParameter("locale", pLocaleQueryParam.toString());
+    if (pLocaleQueryParam != null) {
+      lRequestBuilder.addParameter("locale", pLocaleQueryParam.toString());
+    }
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("Big-Header",
@@ -391,8 +395,12 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append(pChannelType);
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    lRequestBuilder.addParameter("timeUnit", pTimeUnit.toString());
-    lRequestBuilder.addParameter("extensibleEnum", pExtensibleEnum.toString());
+    if (pTimeUnit != null) {
+      lRequestBuilder.addParameter("timeUnit", pTimeUnit.toString());
+    }
+    if (pExtensibleEnum != null) {
+      lRequestBuilder.addParameter("extensibleEnum", pExtensibleEnum.toString());
+    }
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request.
