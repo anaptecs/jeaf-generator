@@ -235,4 +235,26 @@ public final class FulfillmentMediaType {
     }
     return lEquals;
   }
+
+  /**
+   * {@link Object#toString()}
+   */
+  @Override
+  public String toString( ) {
+    String lLiteralName;
+    if (this.isUnknownLiteral() == false) {
+      lLiteralName = this.getLiteral().name();
+    }
+    // Object represents unknown literal.
+    else {
+      String lUnknownLiteralName = this.getUnknownLiteralName();
+      if (lUnknownLiteralName != null) {
+        lLiteralName = lUnknownLiteralName;
+      }
+      else {
+        lLiteralName = this.getLiteral().name();
+      }
+    }
+    return lLiteralName;
+  }
 }

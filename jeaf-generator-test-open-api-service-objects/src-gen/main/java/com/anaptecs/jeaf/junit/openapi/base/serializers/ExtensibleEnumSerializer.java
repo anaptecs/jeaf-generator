@@ -19,22 +19,8 @@ public class ExtensibleEnumSerializer extends JsonSerializer<ExtensibleEnum> {
   @Override
   public void serialize( ExtensibleEnum pObject, JsonGenerator pGenerator, SerializerProvider pSerializers )
     throws IOException {
-    // Resolve name of enum literal
-    String lLiteralName;
-    if (pObject.isUnknownLiteral() == false) {
-      lLiteralName = pObject.getLiteral().name();
-    }
-    // Object represent unknown literal.
-    else {
-      String lUnknownLiteralName = pObject.getUnknownLiteralName();
-      if (lUnknownLiteralName != null) {
-        lLiteralName = lUnknownLiteralName;
-      }
-      else {
-        lLiteralName = pObject.getLiteral().name();
-      }
-    }
-    // Write value directly to JSON and avoid nesting object structures
-    pGenerator.writeString(lLiteralName);
+    // Write value directly to JSON and avoid nesting object structures. Existing toString() operation is exactly what
+    // we need.
+    pGenerator.writeString(pObject.toString());
   }
 }

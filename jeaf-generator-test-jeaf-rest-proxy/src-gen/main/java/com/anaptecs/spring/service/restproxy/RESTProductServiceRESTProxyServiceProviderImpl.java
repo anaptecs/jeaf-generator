@@ -28,10 +28,13 @@ import com.anaptecs.jeaf.xfun.api.config.Configuration;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 import com.anaptecs.spring.base.ChannelCode;
+import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
+import com.anaptecs.spring.base.TimeUnit;
 
 /**
  * Class implements a service provider that acts as proxy for REST service RESTProductService.
@@ -370,5 +373,36 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     return httpClient.executeSingleObjectResultRequest(lRequest, lLocalContext, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pChannelType
+   * @param pTimeUnit
+   * @param pExtensibleEnum
+   */
+  @Override
+  public void testEnumParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
+    // Create builder for GET request
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+    // Build URI of request
+    StringBuilder lURIBuilder = new StringBuilder();
+    lURIBuilder.append(configuration.getExternalServiceURL());
+    lURIBuilder.append("/rest-products");
+    lURIBuilder.append('/');
+    lURIBuilder.append("test-enum-params/");
+    lURIBuilder.append(pChannelType);
+    lURIBuilder.append('?');
+    lURIBuilder.append("timeUnit=");
+    lURIBuilder.append(pTimeUnit);
+    lURIBuilder.append(',');
+    lURIBuilder.append("extensibleEnum=");
+    lURIBuilder.append(pExtensibleEnum);
+    lRequestBuilder.setUri(lURIBuilder.toString());
+    // Set HTTP header
+    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    // Execute request.
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
   }
 }

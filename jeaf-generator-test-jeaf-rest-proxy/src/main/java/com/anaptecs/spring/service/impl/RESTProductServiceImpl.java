@@ -15,10 +15,13 @@ import com.anaptecs.jeaf.core.api.Component;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 import com.anaptecs.spring.base.ChannelCode;
+import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
+import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.restproxy.RESTProductServiceRESTProxyServiceProvider;
 
 /**
@@ -156,5 +159,10 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
   @Override
   public String testParams( BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam ) {
     return proxy.testParams(pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
+  }
+
+  @Override
+  public void testEnumParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
+    proxy.testEnumParams(pChannelType, pTimeUnit, pExtensibleEnum);
   }
 }

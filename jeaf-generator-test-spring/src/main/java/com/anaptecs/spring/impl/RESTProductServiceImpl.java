@@ -15,10 +15,13 @@ import javax.validation.constraints.NotEmpty;
 import org.springframework.stereotype.Service;
 
 import com.anaptecs.spring.base.ChannelCode;
+import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
+import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.RESTProductService;
 
 @Service
@@ -70,5 +73,9 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public String testParams( BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam ) {
     return null;
+  }
+
+  @Override
+  public void testEnumParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
   }
 }

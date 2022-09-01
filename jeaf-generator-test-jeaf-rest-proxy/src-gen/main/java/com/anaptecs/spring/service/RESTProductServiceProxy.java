@@ -24,10 +24,13 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 import com.anaptecs.spring.base.ChannelCode;
+import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
+import com.anaptecs.spring.base.TimeUnit;
 
 /**
  * ServiceProxy class for JEAF service RESTProductService.
@@ -195,6 +198,22 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
       Command lCommand = new TestParams_BigDecimal_int_Locale_RESTProductService_Command(pBigDecimalHeader,
           pIntCookieParam, pLocaleQueryParam);
       return (String) this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
+
+  /**
+   * Generated proxy implementation for method "testEnumParams".
+   * 
+   * 
+   */
+  public void testEnumParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
+    try {
+      Command lCommand = new TestEnumParams_ChannelType_TimeUnit_ExtensibleEnum_RESTProductService_Command(pChannelType,
+          pTimeUnit, pExtensibleEnum);
+      this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
       throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
@@ -1190,6 +1209,125 @@ final class TestParams_BigDecimal_int_Locale_RESTProductService_Command extends 
     // Trace result of service call.
     lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
     return lResult;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   * 
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   * 
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "testEnumParams".
+ */
+final class TestEnumParams_ChannelType_TimeUnit_ExtensibleEnum_RESTProductService_Command extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD =
+          RESTProductService.class.getMethod("testEnumParams", ChannelType.class, TimeUnit.class, ExtensibleEnum.class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
+          RESTProductService.class.getName(),
+          "testEnumParams(ChannelType.class, TimeUnit.class, ExtensibleEnum.class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pChannelType" to the service implementation via the service channel.
+   */
+  private final ChannelType channelType;
+
+  /**
+   * Attribute transports the method parameter "pTimeUnit" to the service implementation via the service channel.
+   */
+  private final TimeUnit timeUnit;
+
+  /**
+   * Attribute transports the method parameter "pExtensibleEnum" to the service implementation via the service channel.
+   */
+  private final ExtensibleEnum extensibleEnum;
+
+  /**
+   * Initialize object. All parameters from method "testEnumParams" have to be passed as parameters to this command
+   * object.
+   * 
+   * @param pChannelType ChannelType
+   * @param pTimeUnit TimeUnit
+   * @param pExtensibleEnum ExtensibleEnum
+   */
+  TestEnumParams_ChannelType_TimeUnit_ExtensibleEnum_RESTProductService_Command( ChannelType pChannelType,
+      TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
+    super(RESTProductService.class);
+    channelType = pChannelType;
+    timeUnit = pTimeUnit;
+    extensibleEnum = pExtensibleEnum;
+    parameters = new Object[] { channelType, timeUnit, extensibleEnum };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   * 
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    RESTProductService lService = (RESTProductService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    lService.testEnumParams(channelType, timeUnit, extensibleEnum);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    // Method has no return type thus the method returns null.
+    return null;
   }
 
   /**

@@ -13,10 +13,13 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 import com.anaptecs.spring.base.ChannelCode;
+import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
+import com.anaptecs.spring.base.TimeUnit;
 
 /**
  * @author JEAF Generator
@@ -92,4 +95,12 @@ public interface RESTProductService {
    * @return {@link String}
    */
   String testParams( BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam );
+
+  /**
+   * 
+   * @param pChannelType
+   * @param pTimeUnit
+   * @param pExtensibleEnum
+   */
+  void testEnumParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum );
 }

@@ -214,6 +214,28 @@ public final class «name» {
     }
     return lEquals;
   }
+
+  /**
+   * {@link Object#toString()}
+   */
+  @Override
+  public String toString( ) {
+    String lLiteralName;
+    if (this.isUnknownLiteral() == false) {
+      lLiteralName = this.getLiteral().name();
+    }
+    // Object represents unknown literal.
+    else {
+      String lUnknownLiteralName = this.getUnknownLiteralName();
+      if (lUnknownLiteralName != null) {
+        lLiteralName = lUnknownLiteralName;
+      }
+      else {
+        lLiteralName = this.getLiteral().name();
+      }
+    }
+    return lLiteralName;
+  }
 «ENDIF»
 }
 «ENDFILE»
@@ -230,26 +252,9 @@ public final class «name» {
 		 */
 		public class «name»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<«name»> {
 		  @Override
-		  public void serialize( «this.fqn()» pObject, com.fasterxml.jackson.core.JsonGenerator pGenerator, com.fasterxml.jackson.databind.SerializerProvider pSerializers )
-		    throws java.io.IOException {
-
-		    // Resolve name of enum literal
-		    String lLiteralName;
-		    if (pObject.isUnknownLiteral() == false) {
-		      lLiteralName = pObject.getLiteral().name();
-		    }
-		    // Object represent unknown literal.
-		    else {
-		      String lUnknownLiteralName = pObject.getUnknownLiteralName();
-		      if (lUnknownLiteralName != null) {
-		        lLiteralName = lUnknownLiteralName;
-		      }
-		      else {
-		        lLiteralName = pObject.getLiteral().name();
-		      }
-		    }
-		    // Write value directly to JSON and avoid nesting object structures
-		    pGenerator.writeString(lLiteralName);
+		  public void serialize( «this.fqn()» pObject, com.fasterxml.jackson.core.JsonGenerator pGenerator, com.fasterxml.jackson.databind.SerializerProvider pSerializers ) throws java.io.IOException {
+		    // Write value directly to JSON and avoid nesting object structures. Existing toString() operation is exactly what we need.
+		    pGenerator.writeString(pObject.toString());
 		  }		    
 		}
 	«ENDFILE»

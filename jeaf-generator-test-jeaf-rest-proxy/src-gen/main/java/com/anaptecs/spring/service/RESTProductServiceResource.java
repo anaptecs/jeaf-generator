@@ -32,10 +32,13 @@ import com.anaptecs.jeaf.workload.api.WorkloadManager;
 import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;
 import com.anaptecs.jeaf.workload.api.rest.RESTWorkloadErrorHandler;
 import com.anaptecs.spring.base.ChannelCode;
+import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
+import com.anaptecs.spring.base.TimeUnit;
 
 /**
  * @author JEAF Generator
@@ -204,6 +207,18 @@ public class RESTProductServiceResource {
     RESTProductService lService = this.getRESTProductService();
     String lResult = lService.testParams(pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
     return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testEnumParams()}
+   */
+  @Path("test-enum-params/{channelType}")
+  @GET
+  public Response testEnumParams( @PathParam("channelType") ChannelType pChannelType,
+      @QueryParam("timeUnit") TimeUnit pTimeUnit, @QueryParam("extensibleEnum") ExtensibleEnum pExtensibleEnum ) {
+    RESTProductService lService = this.getRESTProductService();
+    lService.testEnumParams(pChannelType, pTimeUnit, pExtensibleEnum);
+    return Response.status(Response.Status.OK).build();
   }
 
   /**

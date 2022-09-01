@@ -21,10 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.anaptecs.spring.base.ChannelCode;
+import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
+import com.anaptecs.spring.base.TimeUnit;
 
 /**
  * @author JEAF Generator
@@ -155,6 +158,18 @@ public class RESTProductServiceResource {
     // Get Spring service and delegate call.
     RESTProductService lService = this.getRESTProductService();
     return lService.testParams(pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
+  }
+
+  /**
+   * {@link RESTProductService#testEnumParams()}
+   */
+  @RequestMapping(path = "test-enum-params/{channelType}", method = { RequestMethod.GET })
+  public void testEnumParams( @PathVariable(name = "channelType", required = true) ChannelType pChannelType,
+      @RequestParam(name = "timeUnit", required = true) TimeUnit pTimeUnit,
+      @RequestParam(name = "extensibleEnum", required = true) ExtensibleEnum pExtensibleEnum ) {
+    // Get Spring service and delegate call.
+    RESTProductService lService = this.getRESTProductService();
+    lService.testEnumParams(pChannelType, pTimeUnit, pExtensibleEnum);
   }
 
   /**
