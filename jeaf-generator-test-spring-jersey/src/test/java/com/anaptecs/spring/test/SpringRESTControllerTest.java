@@ -26,6 +26,7 @@ import org.apache.hc.client5.http.impl.cookie.BasicClientCookie;
 import org.apache.hc.client5.http.protocol.HttpClientContext;
 import org.apache.hc.core5.http.ClassicHttpRequest;
 import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.ProtocolException;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.apache.hc.core5.http.protocol.BasicHttpContext;
@@ -44,6 +45,7 @@ import org.springframework.http.ResponseEntity;
 import org.zalando.problem.ThrowableProblem;
 
 import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.CurrencyCode;
@@ -383,12 +385,16 @@ public class SpringRESTControllerTest {
   }
 
   @Test
-  private void testApacheHttpClientBehavior( ) {
+  void testApacheHttpClientBehavior( ) throws ProtocolException {
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     lRequestBuilder.setUri("http://localhost:8099/rest-products/666");
     lRequestBuilder.addParameter("timeUnit", "MINUTE");
     lRequestBuilder.addParameter("extensibleEnum", ExtensibleEnum.valueOf("VERY PINK").toString());
+    lRequestBuilder.addParameter("nullParam", null);
+    lRequestBuilder.addHeader("nullHeader", null);
     ClassicHttpRequest lRequest = lRequestBuilder.build();
-
+    assertEquals(null, lRequest.getHeader("nullHeader").getValue());
+    assertEquals(true, lRequest.getRequestUri().endsWith("&nullParam"));
+    XFun.getTrace().info(lRequest.toString());
   }
 }
