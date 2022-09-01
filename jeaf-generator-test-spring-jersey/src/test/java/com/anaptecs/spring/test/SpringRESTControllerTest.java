@@ -123,6 +123,16 @@ public class SpringRESTControllerTest {
 
     lClient.when(mockRequest("/rest-products/test-enum-params/COUNTER").withQueryStringParameter("timeUnit", "MINUTE")
         .withQueryStringParameter("extensibleEnum", "VERY PINK")).respond(mockResponse(null, 200, 0));
+
+    lClient
+        .when(mockRequest("/rest-products/test-enum-header-params").withHeader("Channel-Type", "COUNTER")
+            .withHeader("Time-Unit", "MINUTE").withHeader("Extensible-Enum", "BLUE"))
+        .respond(mockResponse(null, 200, 0));
+
+    lClient
+        .when(mockRequest("/rest-products/test-enum-header-params").withHeader("Channel-Type", "COUNTER")
+            .withHeader("Time-Unit", "MINUTE").withHeader("Extensible-Enum", "VERY PINK"))
+        .respond(mockResponse(null, 200, 0));
   }
 
   @AfterAll
@@ -328,6 +338,16 @@ public class SpringRESTControllerTest {
         ExtensibleEnum.BLUE);
 
     restProductService.testEnumParams(ChannelType.COUNTER, com.anaptecs.spring.base.TimeUnit.MINUTE,
+        ExtensibleEnum.valueOf("VERY PINK"));
+
+  }
+
+  @Test
+  void testEnumHeaderParamHandling( ) {
+    restProductService.testEnumHeaderParams(ChannelType.COUNTER, com.anaptecs.spring.base.TimeUnit.MINUTE,
+        ExtensibleEnum.BLUE);
+
+    restProductService.testEnumHeaderParams(ChannelType.COUNTER, com.anaptecs.spring.base.TimeUnit.MINUTE,
         ExtensibleEnum.valueOf("VERY PINK"));
 
   }

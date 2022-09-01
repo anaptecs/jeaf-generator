@@ -426,4 +426,31 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     httpClient.executeNoResponseContentRequest(lRequest, null, 200);
   }
+
+  /**
+   * 
+   * @param pChannelType
+   * @param pTimeUnit
+   * @param pExtensibleEnum
+   */
+  @Override
+  public void testEnumHeaderParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
+    // Create builder for GET request
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+    // Build URI of request
+    StringBuilder lURIBuilder = new StringBuilder();
+    lURIBuilder.append(configuration.getExternalServiceURL());
+    lURIBuilder.append("/rest-products");
+    lURIBuilder.append('/');
+    lURIBuilder.append("test-enum-header-params");
+    lRequestBuilder.setUri(lURIBuilder.toString());
+    // Set HTTP header
+    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    lRequestBuilder.setHeader("Channel-Type", pChannelType.toString());
+    lRequestBuilder.setHeader("Time-Unit", pTimeUnit.toString());
+    lRequestBuilder.setHeader("Extensible-Enum", pExtensibleEnum.toString());
+    // Execute request.
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+  }
 }

@@ -165,4 +165,10 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
   public void testEnumParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
     proxy.testEnumParams(pChannelType, pTimeUnit, pExtensibleEnum);
   }
+
+  @Override
+  public void testEnumHeaderParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
+    proxy.testEnumHeaderParams(pChannelType, pTimeUnit, pExtensibleEnum);
+  }
+
 }

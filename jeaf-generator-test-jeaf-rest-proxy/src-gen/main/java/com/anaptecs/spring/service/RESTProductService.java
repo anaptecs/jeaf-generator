@@ -104,4 +104,12 @@ public interface RESTProductService extends Service {
    * @param pExtensibleEnum
    */
   void testEnumParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum );
+
+  /**
+   * 
+   * @param pChannelType
+   * @param pTimeUnit
+   * @param pExtensibleEnum
+   */
+  void testEnumHeaderParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum );
 }

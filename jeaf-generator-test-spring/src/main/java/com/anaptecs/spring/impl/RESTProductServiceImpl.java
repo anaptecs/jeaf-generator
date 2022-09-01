@@ -78,4 +78,8 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public void testEnumParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
   }
+
+  @Override
+  public void testEnumHeaderParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
+  }
 }

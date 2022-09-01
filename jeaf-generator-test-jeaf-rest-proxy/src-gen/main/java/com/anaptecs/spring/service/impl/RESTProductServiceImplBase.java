@@ -40,6 +40,9 @@ abstract class RESTProductServiceImplBase implements RESTProductService, Service
 
   public static final String PING_AUTH_TYPE = "ping.com.anaptecs.spring.service.RESTProductService";
 
+  public static final String TESTENUMHEADERPARAMS_AUTH_TYPE =
+      "testEnumHeaderParams.com.anaptecs.spring.service.RESTProductService";
+
   public static final String TESTENUMPARAMS_AUTH_TYPE = "testEnumParams.com.anaptecs.spring.service.RESTProductService";
 
   public static final String TESTINIT_AUTH_TYPE = "testInit.com.anaptecs.spring.service.RESTProductService";

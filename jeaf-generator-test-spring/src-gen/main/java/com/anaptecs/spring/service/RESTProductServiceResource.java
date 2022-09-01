@@ -173,6 +173,18 @@ public class RESTProductServiceResource {
   }
 
   /**
+   * {@link RESTProductService#testEnumHeaderParams()}
+   */
+  @RequestMapping(path = "test-enum-header-params", method = { RequestMethod.GET })
+  public void testEnumHeaderParams( @RequestHeader(name = "Channel-Type", required = true) ChannelType pChannelType,
+      @RequestHeader(name = "Time-Unit", required = true) TimeUnit pTimeUnit,
+      @RequestHeader(name = "Extensible-Enum", required = true) ExtensibleEnum pExtensibleEnum ) {
+    // Get Spring service and delegate call.
+    RESTProductService lService = this.getRESTProductService();
+    lService.testEnumHeaderParams(pChannelType, pTimeUnit, pExtensibleEnum);
+  }
+
+  /**
    * Method returns reference to service to which all REST requests will be delegated.
    *
    * @return RESTProductService Service instance to which all requests will be delegated.

@@ -222,6 +222,18 @@ public class RESTProductServiceResource {
   }
 
   /**
+   * {@link RESTProductService#testEnumHeaderParams()}
+   */
+  @Path("test-enum-header-params")
+  @GET
+  public Response testEnumHeaderParams( @HeaderParam("Channel-Type") ChannelType pChannelType,
+      @HeaderParam("Time-Unit") TimeUnit pTimeUnit, @HeaderParam("Extensible-Enum") ExtensibleEnum pExtensibleEnum ) {
+    RESTProductService lService = this.getRESTProductService();
+    lService.testEnumHeaderParams(pChannelType, pTimeUnit, pExtensibleEnum);
+    return Response.status(Response.Status.OK).build();
+  }
+
+  /**
    * Method returns reference to service to which all REST requests will be delegated.
    *
    * @return RESTProductService Service instance to which all requests will be delegated.
