@@ -232,7 +232,11 @@ public class «name»RESTProxy implements «this.fqn()» {
     	«IF queryParam.type.isPrimitiveType() && queryParam.isMultivalued()==false»
     	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", String.valueOf(«queryParam.name»));
     	«ELSE»
+    	«IF queryParam.type.isStringType()»
+    	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", «queryParam.name»);
+    	«ELSE»
     	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", «queryParam.name».toString());
+    	«ENDIF»
     	«ENDIF»
     	«ENDFOREACH»
 
@@ -241,7 +245,11 @@ public class «name»RESTProxy implements «this.fqn()» {
 		    	«IF queryParam.type.isPrimitiveType() && queryParam.isMultivalued() == false»
 		    	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", String.valueOf(«beanParam.name».«queryParam.asGetter()»()));
 		    	«ELSE»
+		    	«IF queryParam.type.isStringType()»
+		    	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", «beanParam.name».«queryParam.asGetter()»());
+		    	«ELSE»
 		    	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", «beanParam.name».«queryParam.asGetter()»().toString());
+		    	«ENDIF»
 		    	«ENDIF»
     		«ENDFOREACH»
     	«ENDFOREACH»
@@ -340,7 +348,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 «ENDDEFINE»
 
 «DEFINE HeaderParamValueAccessor FOR HeaderParam»
-	«IF type.fqn() == "java.lang.String" || type.fqn() == "String"»
+	«IF type.isStringType()»
 		«name»
 	«ELSE»
 		«IF type.isPrimitiveType()»

@@ -189,7 +189,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lURIBuilder.append(pContext.getPathParam());
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    lRequestBuilder.addParameter("q1", pContext.getQueryParam().toString());
+    lRequestBuilder.addParameter("q1", pContext.getQueryParam());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());

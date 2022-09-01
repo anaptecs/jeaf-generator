@@ -190,7 +190,7 @@ public class ProductServiceRESTProxy implements ProductService {
     lURIBuilder.append(pContext.getPathParam());
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    lRequestBuilder.addParameter("q1", pContext.getQueryParam().toString());
+    lRequestBuilder.addParameter("q1", pContext.getQueryParam());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());
@@ -312,7 +312,7 @@ public class ProductServiceRESTProxy implements ProductService {
     lURIBuilder.append("deprecated/context");
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    lRequestBuilder.addParameter("q1", pContext.getQueryParam().toString());
+    lRequestBuilder.addParameter("q1", pContext.getQueryParam());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());
@@ -353,7 +353,7 @@ public class ProductServiceRESTProxy implements ProductService {
     lURIBuilder.append("deprecated/beanParams");
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    lRequestBuilder.addParameter("q2", pBeanParam.getOldStyle().toString());
+    lRequestBuilder.addParameter("q2", pBeanParam.getOldStyle());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pBeanParam.getAccessToken());
@@ -507,7 +507,7 @@ public class ProductServiceRESTProxy implements ProductService {
     lURIBuilder.append(pContext.getPathParam());
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    lRequestBuilder.addParameter("q1", pContext.getQueryParam().toString());
+    lRequestBuilder.addParameter("q1", pContext.getQueryParam());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());

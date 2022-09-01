@@ -381,4 +381,14 @@ public class SpringRESTControllerTest {
       assertEquals("Read timed out", e.getDetail());
     }
   }
+
+  @Test
+  private void testApacheHttpClientBehavior( ) {
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+    lRequestBuilder.setUri("http://localhost:8099/rest-products/666");
+    lRequestBuilder.addParameter("timeUnit", "MINUTE");
+    lRequestBuilder.addParameter("extensibleEnum", ExtensibleEnum.valueOf("VERY PINK").toString());
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+
+  }
 }
