@@ -45,7 +45,9 @@ import org.zalando.problem.ThrowableProblem;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.spring.base.ChannelCode;
+import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.impl.SpringTestApplication;
 import com.anaptecs.spring.service.RESTProductService;
@@ -114,6 +116,11 @@ public class SpringRESTControllerTest {
 
     lClient.when(mockRequest("/rest-products/timeout")).respond(mockResponse(null, 200, 500));
 
+    lClient.when(mockRequest("/rest-products/test-enum-params/COUNTER").withQueryStringParameter("timeUnit", "MINUTE")
+        .withQueryStringParameter("extensibleEnum", "BLUE")).respond(mockResponse(null, 200, 0));
+
+    lClient.when(mockRequest("/rest-products/test-enum-params/COUNTER").withQueryStringParameter("timeUnit", "MINUTE")
+        .withQueryStringParameter("extensibleEnum", "VERY PINK")).respond(mockResponse(null, 200, 0));
   }
 
   @AfterAll
@@ -311,6 +318,16 @@ public class SpringRESTControllerTest {
       assertEquals("http://localhost:8099/rest-products/test-params?locale=de", e.getType().toString());
       assertEquals(null, e.getDetail());
     }
+  }
+
+  @Test
+  void testEnumParamHandling( ) {
+    restProductService.testEnumParams(ChannelType.COUNTER, com.anaptecs.spring.base.TimeUnit.MINUTE,
+        ExtensibleEnum.BLUE);
+
+    restProductService.testEnumParams(ChannelType.COUNTER, com.anaptecs.spring.base.TimeUnit.MINUTE,
+        ExtensibleEnum.valueOf("VERY PINK"));
+
   }
 
   @Test

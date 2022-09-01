@@ -178,10 +178,9 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("sortiment/");
     lURIBuilder.append(pContext.getPathParam());
-    lURIBuilder.append('?');
-    lURIBuilder.append("q1=");
-    lURIBuilder.append(pContext.getQueryParam());
     lRequestBuilder.setUri(lURIBuilder.toString());
+    // Add query parameter(s) to request
+    lRequestBuilder.addParameter("q1", pContext.getQueryParam().toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());
@@ -289,10 +288,9 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("deprecated/context");
-    lURIBuilder.append('?');
-    lURIBuilder.append("q1=");
-    lURIBuilder.append(pContext.getQueryParam());
     lRequestBuilder.setUri(lURIBuilder.toString());
+    // Add query parameter(s) to request
+    lRequestBuilder.addParameter("q1", pContext.getQueryParam().toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());
@@ -331,10 +329,9 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("deprecated/beanParams");
-    lURIBuilder.append('?');
-    lURIBuilder.append("q2=");
-    lURIBuilder.append(pBeanParam.getOldStyle());
     lRequestBuilder.setUri(lURIBuilder.toString());
+    // Add query parameter(s) to request
+    lRequestBuilder.addParameter("q2", pBeanParam.getOldStyle().toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pBeanParam.getAccessToken());
@@ -462,10 +459,9 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("specific/");
     lURIBuilder.append(pContext.getPathParam());
-    lURIBuilder.append('?');
-    lURIBuilder.append("q1=");
-    lURIBuilder.append(pContext.getQueryParam());
     lRequestBuilder.setUri(lURIBuilder.toString());
+    // Add query parameter(s) to request
+    lRequestBuilder.addParameter("q1", pContext.getQueryParam().toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());
@@ -617,7 +613,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("LocalBeanParam");
-    lURIBuilder.append('?');
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
@@ -643,7 +638,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("ExternalBeanParam");
-    lURIBuilder.append('?');
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
@@ -669,7 +663,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append("/products");
     lURIBuilder.append('/');
     lURIBuilder.append("ChildBeanParam");
-    lURIBuilder.append('?');
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());

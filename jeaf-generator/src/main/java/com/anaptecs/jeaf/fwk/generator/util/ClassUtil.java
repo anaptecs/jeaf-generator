@@ -1573,9 +1573,4 @@ public class ClassUtil {
     }
     return lIsInputParameter;
   }
-
-  public static boolean isEnumeration( TypedElement pTypedElement ) {
-    // pTypedElement.getType().
-    return true;
-  }
 }

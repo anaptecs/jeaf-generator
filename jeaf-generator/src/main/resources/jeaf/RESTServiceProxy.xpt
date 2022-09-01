@@ -222,27 +222,30 @@ public class «name»RESTProxy implements «this.fqn()» {
 	    	lURIBuilder.append(«pathPart»);
 	    	«ENDFOREACH»
 	    «ENDIF»
-	    «IF this.getQueryParams().size > 0»
-	    	lURIBuilder.append('?');
-	    	«FOREACH this.getQueryParams() AS queryParam SEPARATOR "lURIBuilder.append(','); "»
-	    	lURIBuilder.append("«queryParam.getRESTQueryParamName()»=");
-	    	lURIBuilder.append(«queryParam.name»);
-	    	«ENDFOREACH»
-	    «ENDIF»
-	    «IF this.getBeanParams().size > 0»
-	    	«IF this.getQueryParams().size == 0»
-	    	lURIBuilder.append('?');
-	    	«ELSE»
-	    	lURIBuilder.append(',');
-	    	«ENDIF»
-	    	«FOREACH this.getBeanParams() AS beanParam»
-	    		«FOREACH beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::QueryParam) AS queryParam SEPARATOR "lURIBuilder.append(','); "»
-			    	lURIBuilder.append("«queryParam.getRESTQueryParamName()»=");
-			    	lURIBuilder.append(«beanParam.name».«queryParam.asGetter()»());
-	    		«ENDFOREACH»
-	    	«ENDFOREACH»
-    	«ENDIF»
 	    lRequestBuilder.setUri(lURIBuilder.toString());
+	    
+	   «IF this.getQueryParams().size > 0 || this.getBeanParams().type.getAllAttributesFromHierarchy().typeSelect(JMM::QueryParam).size > 0»
+	   // Add query parameter(s) to request
+	   «ENDIF»
+	   
+    	«FOREACH this.getQueryParams() AS queryParam »
+    	«IF queryParam.type.isPrimitiveType() && queryParam.isMultivalued()==false»
+    	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", String.valueOf(«queryParam.name»));
+    	«ELSE»
+    	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", «queryParam.name».toString());
+    	«ENDIF»
+    	«ENDFOREACH»
+
+    	«FOREACH this.getBeanParams() AS beanParam»
+    		«FOREACH beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::QueryParam) AS queryParam»
+		    	«IF queryParam.type.isPrimitiveType() && queryParam.isMultivalued() == false»
+		    	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", String.valueOf(«beanParam.name».«queryParam.asGetter()»()));
+		    	«ELSE»
+		    	lRequestBuilder.addParameter("«queryParam.getRESTQueryParamName()»", «beanParam.name».«queryParam.asGetter()»().toString());
+		    	«ENDIF»
+    		«ENDFOREACH»
+    	«ENDFOREACH»
+
 	    «IF isTargetRuntimeSpring() && this.hasRequestBody()»
 	    lRequestURI = lRequestBuilder.getUri();
 	    «ENDIF»

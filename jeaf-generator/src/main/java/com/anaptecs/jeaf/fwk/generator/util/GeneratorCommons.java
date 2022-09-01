@@ -1251,4 +1251,8 @@ public class GeneratorCommons {
     return getRESTLibrary() == RESTLibrary.SPRING_WEB_MVC;
   }
 
+  public static boolean isEnumeration( Element pElement ) {
+    return pElement instanceof Enumeration;
+  }
+
 }

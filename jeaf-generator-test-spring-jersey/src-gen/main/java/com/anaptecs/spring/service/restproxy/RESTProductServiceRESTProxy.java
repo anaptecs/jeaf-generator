@@ -98,10 +98,9 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     StringBuilder lURIBuilder = new StringBuilder();
     lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/rest-products");
-    lURIBuilder.append('?');
-    lURIBuilder.append("maxResult=");
-    lURIBuilder.append(pMaxResultSize);
     lRequestBuilder.setUri(lURIBuilder.toString());
+    // Add query parameter(s) to request
+    lRequestBuilder.addParameter("maxResult", String.valueOf(pMaxResultSize));
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request and return result.
@@ -188,10 +187,9 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lURIBuilder.append('/');
     lURIBuilder.append("sortiment/");
     lURIBuilder.append(pContext.getPathParam());
-    lURIBuilder.append('?');
-    lURIBuilder.append("q1=");
-    lURIBuilder.append(pContext.getQueryParam());
     lRequestBuilder.setUri(lURIBuilder.toString());
+    // Add query parameter(s) to request
+    lRequestBuilder.addParameter("q1", pContext.getQueryParam().toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("token", pContext.getAccessToken());
@@ -369,10 +367,9 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lURIBuilder.append("/rest-products");
     lURIBuilder.append('/');
     lURIBuilder.append("test-params");
-    lURIBuilder.append('?');
-    lURIBuilder.append("locale=");
-    lURIBuilder.append(pLocaleQueryParam);
     lRequestBuilder.setUri(lURIBuilder.toString());
+    // Add query parameter(s) to request
+    lRequestBuilder.addParameter("locale", pLocaleQueryParam.toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("Big-Header",
@@ -414,13 +411,10 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lURIBuilder.append('/');
     lURIBuilder.append("test-enum-params/");
     lURIBuilder.append(pChannelType);
-    lURIBuilder.append('?');
-    lURIBuilder.append("timeUnit=");
-    lURIBuilder.append(pTimeUnit);
-    lURIBuilder.append(',');
-    lURIBuilder.append("extensibleEnum=");
-    lURIBuilder.append(pExtensibleEnum);
     lRequestBuilder.setUri(lURIBuilder.toString());
+    // Add query parameter(s) to request
+    lRequestBuilder.addParameter("timeUnit", pTimeUnit.toString());
+    lRequestBuilder.addParameter("extensibleEnum", pExtensibleEnum.toString());
     // Set HTTP header
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request.
