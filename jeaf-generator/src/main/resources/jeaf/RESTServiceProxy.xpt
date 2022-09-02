@@ -718,7 +718,7 @@ public class «name»HttpClient {
       if (lStatusCode == pSuccessfulStatusCode) {
         T lResultObject;
         org.apache.hc.core5.http.HttpEntity lEntity = lResponse.getEntity();
-        if (lEntity.getContentLength() > 0) {
+        if (pResponseType != null && lEntity.getContentLength() > 0) {
           // Check if response logging is active.
           «IF isTargetRuntimeJEAF()»
           if(com.anaptecs.jeaf.xfun.api.XFun.getTrace().isTraceEnabled()) {

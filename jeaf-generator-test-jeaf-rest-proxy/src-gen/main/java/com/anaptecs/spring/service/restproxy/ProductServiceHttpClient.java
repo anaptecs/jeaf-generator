@@ -287,7 +287,7 @@ public class ProductServiceHttpClient {
       if (lStatusCode == pSuccessfulStatusCode) {
         T lResultObject;
         HttpEntity lEntity = lResponse.getEntity();
-        if (lEntity.getContentLength() > 0) {
+        if (pResponseType != null && lEntity.getContentLength() > 0) {
           // Check if response logging is active.
           if (XFun.getTrace().isTraceEnabled()) {
             String lResponseBody = StreamTools.getStreamTools().getStreamContentAsString(lEntity.getContent());
