@@ -100,7 +100,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
     lRequestBuilder.addParameter("maxResult", String.valueOf(pMaxResultSize));
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -127,7 +127,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lURIBuilder.append('/');
     lURIBuilder.append(pProductID);
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -151,7 +151,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       lURIBuilder.append("/rest-products");
       lRequestBuilder.setUri(lURIBuilder.toString());
       lRequestURI = lRequestBuilder.getUri();
-      // Set HTTP header
+      // Set HTTP header(s)
       lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
       // Convert parameter pProduct into request body.
       String lRequestBody = objectMapper.writeValueAsString(pProduct);
@@ -191,10 +191,20 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     if (pContext.getQueryParam() != null) {
       lRequestBuilder.addParameter("q1", pContext.getQueryParam());
     }
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("token", pContext.getAccessToken());
-    lRequestBuilder.setHeader("lang", pContext.getLanguage().toString());
+    if (pContext.getAccessToken() != null) {
+      lRequestBuilder.setHeader("token", pContext.getAccessToken());
+    }
+    else {
+      lRequestBuilder.setHeader("token", null);
+    }
+    if (pContext.getLanguage() != null) {
+      lRequestBuilder.setHeader("lang", pContext.getLanguage().toString());
+    }
+    else {
+      lRequestBuilder.setHeader("lang", null);
+    }
     // Handle cookie parameters
     BasicCookieStore lCookieStore = new BasicCookieStore();
     HttpContext lLocalContext = new BasicHttpContext();
@@ -233,7 +243,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       lURIBuilder.append("ChannelCode");
       lRequestBuilder.setUri(lURIBuilder.toString());
       lRequestURI = lRequestBuilder.getUri();
-      // Set HTTP header
+      // Set HTTP header(s)
       lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
       // Convert parameter pChannelCode into request body.
       String lRequestBody = objectMapper.writeValueAsString(pChannelCode);
@@ -264,7 +274,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/rest-products");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -285,7 +295,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lURIBuilder.append('/');
     lURIBuilder.append("test-init");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -309,7 +319,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lURIBuilder.append("currencies/");
     lURIBuilder.append(pChannelCode.getCode());
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -338,7 +348,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lURIBuilder.append("async-currencies/");
     lURIBuilder.append(pChannelCode.getCode());
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -372,9 +382,14 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     if (pLocaleQueryParam != null) {
       lRequestBuilder.addParameter("locale", pLocaleQueryParam.toString());
     }
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("Big-Header", pBigDecimalHeader.toString());
+    if (pBigDecimalHeader != null) {
+      lRequestBuilder.setHeader("Big-Header", pBigDecimalHeader.toString());
+    }
+    else {
+      lRequestBuilder.setHeader("Big-Header", null);
+    }
     // Handle cookie parameters
     BasicCookieStore lCookieStore = new BasicCookieStore();
     HttpContext lLocalContext = new BasicHttpContext();
@@ -420,7 +435,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     if (pExtensibleEnum != null) {
       lRequestBuilder.addParameter("extensibleEnum", pExtensibleEnum.toString());
     }
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -444,11 +459,26 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lURIBuilder.append('/');
     lURIBuilder.append("test-enum-header-params");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("Channel-Type", pChannelType.toString());
-    lRequestBuilder.setHeader("Time-Unit", pTimeUnit.toString());
-    lRequestBuilder.setHeader("Extensible-Enum", pExtensibleEnum.toString());
+    if (pChannelType != null) {
+      lRequestBuilder.setHeader("Channel-Type", pChannelType.toString());
+    }
+    else {
+      lRequestBuilder.setHeader("Channel-Type", null);
+    }
+    if (pTimeUnit != null) {
+      lRequestBuilder.setHeader("Time-Unit", pTimeUnit.toString());
+    }
+    else {
+      lRequestBuilder.setHeader("Time-Unit", null);
+    }
+    if (pExtensibleEnum != null) {
+      lRequestBuilder.setHeader("Extensible-Enum", pExtensibleEnum.toString());
+    }
+    else {
+      lRequestBuilder.setHeader("Extensible-Enum", null);
+    }
     // Execute request.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     httpClient.executeNoResponseContentRequest(lRequest, null, 200);

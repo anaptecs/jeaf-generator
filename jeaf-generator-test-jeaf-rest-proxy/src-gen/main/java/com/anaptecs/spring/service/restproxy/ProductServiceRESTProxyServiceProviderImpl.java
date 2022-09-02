@@ -104,7 +104,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -131,7 +131,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append(pProductID);
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -152,7 +152,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pProduct into request body.
     String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pProduct);
@@ -183,11 +183,21 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     if (pContext.getQueryParam() != null) {
       lRequestBuilder.addParameter("q1", pContext.getQueryParam());
     }
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("token", pContext.getAccessToken());
-    lRequestBuilder.setHeader("lang",
-        XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class).convert(pContext.getLanguage()));
+    if (pContext.getAccessToken() != null) {
+      lRequestBuilder.setHeader("token", pContext.getAccessToken());
+    }
+    else {
+      lRequestBuilder.setHeader("token", null);
+    }
+    if (pContext.getLanguage() != null) {
+      lRequestBuilder.setHeader("lang",
+          XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class).convert(pContext.getLanguage()));
+    }
+    else {
+      lRequestBuilder.setHeader("lang", null);
+    }
     // Handle cookie parameters
     BasicCookieStore lCookieStore = new BasicCookieStore();
     HttpContext lLocalContext = new BasicHttpContext();
@@ -223,7 +233,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("ChannelCode");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pChannelCode into request body.
     String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pChannelCode);
@@ -245,7 +255,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/products");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -268,7 +278,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("deprecated/operation");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -295,11 +305,21 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     if (pContext.getQueryParam() != null) {
       lRequestBuilder.addParameter("q1", pContext.getQueryParam());
     }
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("token", pContext.getAccessToken());
-    lRequestBuilder.setHeader("lang",
-        XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class).convert(pContext.getLanguage()));
+    if (pContext.getAccessToken() != null) {
+      lRequestBuilder.setHeader("token", pContext.getAccessToken());
+    }
+    else {
+      lRequestBuilder.setHeader("token", null);
+    }
+    if (pContext.getLanguage() != null) {
+      lRequestBuilder.setHeader("lang",
+          XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class).convert(pContext.getLanguage()));
+    }
+    else {
+      lRequestBuilder.setHeader("lang", null);
+    }
     // Handle cookie parameters
     BasicCookieStore lCookieStore = new BasicCookieStore();
     HttpContext lLocalContext = new BasicHttpContext();
@@ -338,11 +358,21 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     if (pBeanParam.getOldStyle() != null) {
       lRequestBuilder.addParameter("q2", pBeanParam.getOldStyle());
     }
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("token", pBeanParam.getAccessToken());
-    lRequestBuilder.setHeader("lang",
-        XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class).convert(pBeanParam.getLanguage()));
+    if (pBeanParam.getAccessToken() != null) {
+      lRequestBuilder.setHeader("token", pBeanParam.getAccessToken());
+    }
+    else {
+      lRequestBuilder.setHeader("token", null);
+    }
+    if (pBeanParam.getLanguage() != null) {
+      lRequestBuilder.setHeader("lang", XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class)
+          .convert(pBeanParam.getLanguage()));
+    }
+    else {
+      lRequestBuilder.setHeader("lang", null);
+    }
     // Execute request.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     httpClient.executeNoResponseContentRequest(lRequest, null, 200);
@@ -365,7 +395,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("deprecated/params");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("param1", String.valueOf(pParam1));
     // Execute request and return result.
@@ -389,7 +419,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("deprecated/body");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pBody into request body.
     String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pBody);
@@ -417,7 +447,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("deprecated/complexBody");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pProduct into request body.
     String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pProduct);
@@ -443,7 +473,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("deprecated/complexReturn");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
@@ -470,12 +500,27 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     if (pContext.getQueryParam() != null) {
       lRequestBuilder.addParameter("q1", pContext.getQueryParam());
     }
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("token", pContext.getAccessToken());
-    lRequestBuilder.setHeader("lang",
-        XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class).convert(pContext.getLanguage()));
-    lRequestBuilder.setHeader("specificHeader", pContext.getSpecificHeader());
+    if (pContext.getAccessToken() != null) {
+      lRequestBuilder.setHeader("token", pContext.getAccessToken());
+    }
+    else {
+      lRequestBuilder.setHeader("token", null);
+    }
+    if (pContext.getLanguage() != null) {
+      lRequestBuilder.setHeader("lang",
+          XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class).convert(pContext.getLanguage()));
+    }
+    else {
+      lRequestBuilder.setHeader("lang", null);
+    }
+    if (pContext.getSpecificHeader() != null) {
+      lRequestBuilder.setHeader("specificHeader", pContext.getSpecificHeader());
+    }
+    else {
+      lRequestBuilder.setHeader("specificHeader", null);
+    }
     // Handle cookie parameters
     BasicCookieStore lCookieStore = new BasicCookieStore();
     HttpContext lLocalContext = new BasicHttpContext();
@@ -513,7 +558,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("ChannelCodeObject");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pChannelCode into request body.
     String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pChannelCode);
@@ -539,7 +584,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("currencies");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pCurrencies into request body.
     String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pCurrencies);
@@ -570,7 +615,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("currencies/valid");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pCurrency into request body.
     String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pCurrency);
@@ -596,7 +641,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("codeTypeUsages");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Convert parameter pStringCode into request body.
     String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pStringCode);
@@ -622,10 +667,20 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("LocalBeanParam");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("localKey", pBeanParam.getLocalKey());
-    lRequestBuilder.setHeader("localID", pBeanParam.getLocalID());
+    if (pBeanParam.getLocalKey() != null) {
+      lRequestBuilder.setHeader("localKey", pBeanParam.getLocalKey());
+    }
+    else {
+      lRequestBuilder.setHeader("localKey", null);
+    }
+    if (pBeanParam.getLocalID() != null) {
+      lRequestBuilder.setHeader("localID", pBeanParam.getLocalID());
+    }
+    else {
+      lRequestBuilder.setHeader("localID", null);
+    }
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);
@@ -647,10 +702,20 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("ExternalBeanParam");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("novaKey", pParent.getNovaKey());
-    lRequestBuilder.setHeader("tkID", pParent.getTkID());
+    if (pParent.getNovaKey() != null) {
+      lRequestBuilder.setHeader("novaKey", pParent.getNovaKey());
+    }
+    else {
+      lRequestBuilder.setHeader("novaKey", null);
+    }
+    if (pParent.getTkID() != null) {
+      lRequestBuilder.setHeader("tkID", pParent.getTkID());
+    }
+    else {
+      lRequestBuilder.setHeader("tkID", null);
+    }
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);
@@ -672,11 +737,26 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("ChildBeanParam");
     lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header
+    // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    lRequestBuilder.setHeader("novaKey", pChild.getNovaKey());
-    lRequestBuilder.setHeader("tkID", pChild.getTkID());
-    lRequestBuilder.setHeader("X-Child-Property", pChild.getChildProperty());
+    if (pChild.getNovaKey() != null) {
+      lRequestBuilder.setHeader("novaKey", pChild.getNovaKey());
+    }
+    else {
+      lRequestBuilder.setHeader("novaKey", null);
+    }
+    if (pChild.getTkID() != null) {
+      lRequestBuilder.setHeader("tkID", pChild.getTkID());
+    }
+    else {
+      lRequestBuilder.setHeader("tkID", null);
+    }
+    if (pChild.getChildProperty() != null) {
+      lRequestBuilder.setHeader("X-Child-Property", pChild.getChildProperty());
+    }
+    else {
+      lRequestBuilder.setHeader("X-Child-Property", null);
+    }
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);

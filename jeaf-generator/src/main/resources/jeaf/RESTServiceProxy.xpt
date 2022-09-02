@@ -262,14 +262,33 @@ public class «name»RESTProxy implements «this.fqn()» {
 	    lRequestURI = lRequestBuilder.getUri();
 	    «ENDIF»
 	    
-		// Set HTTP header
+		// Set HTTP header(s)
 		lRequestBuilder.setHeader(org.apache.hc.core5.http.HttpHeaders.ACCEPT, org.apache.hc.core5.http.ContentType.APPLICATION_JSON.getMimeType());
 		«FOREACH this.getHeaderParams() AS headerParam»
-		lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", «EXPAND HeaderParamValueAccessor FOR headerParam»);
+			«IF headerParam.type.isPrimitiveType() == false»
+			if («headerParam.name» != null) {
+			«ENDIF»
+			lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", «EXPAND HeaderParamValueAccessor FOR headerParam»);
+			«IF headerParam.type.isPrimitiveType() == false»
+			}
+			else {
+			lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", null);
+			}
+			«ENDIF»
 		«ENDFOREACH»
+
     	«FOREACH this.getBeanParams() AS beanParam»
     		«FOREACH beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam) AS headerParam»
+				«IF headerParam.type.isPrimitiveType() == false»
+				if («beanParam.name».«headerParam.asGetter()»() != null) {
+				«ENDIF»
 		    	lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", «EXPAND HeaderParamValueAccessorForBeanParam(beanParam) FOR headerParam»);
+				«IF headerParam.type.isPrimitiveType() == false»
+				}
+				else {
+				lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", null);
+				}
+				«ENDIF»
     		«ENDFOREACH»
     	«ENDFOREACH»
     	
