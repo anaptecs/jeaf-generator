@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping for class com.anaptecs.jeaf.accounting.impl.domain.ResponsibilityTypeBO -->
+<hibernate-mapping package="com.anaptecs.jeaf.accounting.impl.domain">
+    <class name="ResponsibilityTypeBO" table="RESPONSIBILITYTYPEBO" discriminator-value="1109">
+        <id column="OID" name="objectID" length="15" />
+        <discriminator column="CLASS_ID" type="integer" />
+        <version column="VERSION" name="versionLabel" />
+
+        <!-- Attribute mapping for attribute "String type" -->
+        <property name="type" access="field" unique="false" not-null="false">
+            <column name="TYPE" unique="false" not-null="false" />
+        </property>
+
+        <!-- Attribute mapping for attribute "Character typeChar" -->
+        <property name="typeChar" access="field" unique="false" not-null="false">
+            <column name="TYPECHAR" unique="false" not-null="false" />
+        </property>
+
+        <!-- Attribute mapping for attribute "Byte sortorder" -->
+        <property name="sortorder" access="field" unique="false" not-null="false">
+            <column name="SORTORDER" unique="false" not-null="false" />
+        </property>
+    </class>
+</hibernate-mapping>

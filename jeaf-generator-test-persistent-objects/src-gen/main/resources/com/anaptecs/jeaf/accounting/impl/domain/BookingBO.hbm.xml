@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping for class com.anaptecs.jeaf.accounting.impl.domain.BookingBO -->
+<hibernate-mapping package="com.anaptecs.jeaf.accounting.impl.domain">
+    <class name="BookingBO" table="BOOKINGBO" discriminator-value="1102">
+        <id column="OID" name="objectID" length="15" />
+        <discriminator column="CLASS_ID" type="integer" />
+        <version column="VERSION" name="versionLabel" />
+
+        <!-- Attribute mapping for attribute "Double amount" -->
+        <property name="amount" access="field" unique="false" not-null="false">
+            <column name="AMOUNT" unique="false" not-null="false" />
+        </property>
+
+        <!-- Attribute mapping for attribute "byte sessionKey" -->
+        <property name="sessionKey" access="field" unique="false" not-null="false">
+            <column name="SESSIONKEY" unique="false" not-null="false" />
+        </property>
+
+        <!-- Association mapping for role "account (1..1)" -->
+        <!-- Association BookingBO - AccountBO -->
+        <many-to-one name="account" class="com.anaptecs.jeaf.accounting.impl.domain.AccountBO" column="ACCOUNT_OID" access="field" not-null="true" cascade="" />
+
+        <!-- Association mapping for role "remitters (1..*)" -->
+        <!-- Association BookingBO - MyPersonBO -->
+        <set name="remitters" access="field" cascade="none" batch-size="20">
+            <key column="BOOKINGBO_OID" />
+            <one-to-many class="com.anaptecs.jeaf.accounting.impl.domain.MyPersonBO" />
+        </set>
+    </class>
+</hibernate-mapping>

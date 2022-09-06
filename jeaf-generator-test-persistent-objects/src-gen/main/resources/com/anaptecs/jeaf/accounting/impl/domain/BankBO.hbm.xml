@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping for class com.anaptecs.jeaf.accounting.impl.domain.BankBO -->
+<hibernate-mapping package="com.anaptecs.jeaf.accounting.impl.domain">
+    <class name="BankBO" table="BANK" discriminator-value="1103">
+        <id column="OID" name="objectID" length="15" />
+        <discriminator column="CLASS_ID" type="integer" />
+        <version column="VERSION" name="versionLabel" />
+
+        <!-- Attribute mapping for attribute "String name" -->
+        <property name="name" access="field" unique="false" not-null="false">
+            <column name="NAME" unique="false" not-null="false" />
+        </property>
+
+        <!-- Attribute mapping for attribute "Long code" -->
+        <property name="code" access="field" unique="false" not-null="false">
+            <column name="CODE" unique="false" not-null="false" />
+        </property>
+
+        <!-- Attribute mapping for attribute "Short type" -->
+        <property name="type" access="field" unique="false" not-null="false">
+            <column name="TYPE" unique="false" not-null="false" />
+        </property>
+
+        <!-- Association mapping for role "employees (0..*)" -->
+        <!-- Association BankBO - EmployeeBO -->
+        <set name="employees" access="field" inverse="true" cascade="">
+            <key column="BANK_OID" />
+            <one-to-many class="com.anaptecs.jeaf.accounting.impl.domain.EmployeeBO" />
+        </set>
+
+        <!-- Association mapping for role "accounts (0..*)" -->
+        <!-- Association BankBO - AccountBO -->
+        <set name="accounts" access="field" inverse="true" cascade="save-update, refresh">
+            <key column="BANK_OID" />
+            <one-to-many class="com.anaptecs.jeaf.accounting.impl.domain.AccountBO" />
+        </set>
+    </class>
+</hibernate-mapping>

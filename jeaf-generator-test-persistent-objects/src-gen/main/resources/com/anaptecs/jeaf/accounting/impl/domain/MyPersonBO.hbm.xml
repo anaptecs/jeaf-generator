@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping for class com.anaptecs.jeaf.accounting.impl.domain.MyPersonBO -->
+<hibernate-mapping package="com.anaptecs.jeaf.accounting.impl.domain">
+    <class name="MyPersonBO" table="SAMPLE_PERSON" discriminator-value="1107">
+        <id column="OID" name="objectID" length="15" />
+        <discriminator column="CLASS_ID" type="integer" />
+        <version column="VERSION" name="versionLabel" />
+
+        <!-- Attribute mapping for attribute "String name" -->
+        <property name="name" access="field" unique="false" not-null="false" length="64">
+            <column name="NAME" unique="false" not-null="false" length="64" />
+        </property>
+
+        <!-- Attribute mapping for attribute "String firstName" -->
+        <property name="firstName" access="field" unique="false" not-null="false" length="64">
+            <column name="FIRSTNAME" unique="false" not-null="false" length="64" />
+        </property>
+
+        <!-- Attribute mapping for attribute "Calendar dateOfBirth" -->
+        <property name="dateOfBirth" access="field" unique="false" not-null="false">
+            <column name="DATEOFBIRTH" unique="false" not-null="false" />
+        </property>
+
+        <!-- Association mapping for role "accounts (0..*)" -->
+        <!-- Association MyPersonBO - AccountBO -->
+        <set name="accounts" table="ACCOUNT_PERSON_LINK" access="field" cascade="">
+            <key column="MYPERSONBO_OID" />
+            <many-to-many class="com.anaptecs.jeaf.accounting.impl.domain.AccountBO" column="ACCOUNTBO_OID" />
+        </set>
+
+        <!-- Association mapping for role "employee (0..1)" -->
+        <!-- Association MyPersonBO - EmployeeBO -->
+        <one-to-one name="employee" class="com.anaptecs.jeaf.accounting.impl.domain.EmployeeBO" access="field" cascade="" property-ref="person" />
+
+        <!-- Association mapping for role "customer (0..1)" -->
+        <!-- Association MyPersonBO - IndividualBO -->
+        <one-to-one name="customer" class="com.anaptecs.jeaf.accounting.impl.domain.IndividualBO" access="field" cascade="none" property-ref="person" />
+    </class>
+</hibernate-mapping>

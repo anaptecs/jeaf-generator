@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!-- Hibernate mapping for class com.anaptecs.jeaf.accounting.impl.domain.EmployeeBO -->
+<hibernate-mapping package="com.anaptecs.jeaf.accounting.impl.domain">
+    <class name="EmployeeBO" table="EMPLOYEEBO" discriminator-value="1108">
+        <id column="OID" name="objectID" length="15" />
+        <discriminator column="CLASS_ID" type="integer" />
+        <version column="VERSION" name="versionLabel" />
+
+        <!-- Association mapping for role "bank (1..1)" -->
+        <!-- Association EmployeeBO - BankBO -->
+        <many-to-one name="bank" class="com.anaptecs.jeaf.accounting.impl.domain.BankBO" column="BANK_OID" access="field" not-null="true" cascade="" />
+
+        <!-- Association mapping for role "person (1..1)" -->
+        <!-- Association EmployeeBO - MyPersonBO -->
+        <many-to-one name="person" class="com.anaptecs.jeaf.accounting.impl.domain.MyPersonBO" column="PERSON_OID" access="field" unique="true" cascade="" />
+
+        <!-- Association mapping for role "attendedCustomers (0..*)" -->
+        <!-- Association EmployeeBO - CustomerBO -->
+        <set name="attendedCustomers" table="EMPLOYEE_CUSTOMER_LINK" access="field" inverse="true" cascade="">
+            <key column="EMPLOYEEBO_OID" />
+            <many-to-many class="com.anaptecs.jeaf.accounting.impl.domain.CustomerBO" column="CUSTOMERBO_OID" />
+        </set>
+
+        <!-- Association mapping for role "superior (0..1)" -->
+        <!-- Association EmployeeBO - EmployeeBO -->
+        <many-to-one name="superior" class="com.anaptecs.jeaf.accounting.impl.domain.EmployeeBO" column="SUPERIOR_OID" access="field" cascade="" />
+
+        <!-- Association mapping for role "employees (0..*)" -->
+        <!-- Association EmployeeBO - EmployeeBO -->
+        <set name="employees" access="field" inverse="true" cascade="">
+            <key column="SUPERIOR_OID" />
+            <one-to-many class="com.anaptecs.jeaf.accounting.impl.domain.EmployeeBO" />
+        </set>
+
+        <!-- Association mapping for role "responsibility (1..1)" -->
+        <!-- Association EmployeeBO - ResponsibilityTypeBO -->
+        <many-to-one name="responsibility" class="com.anaptecs.jeaf.accounting.impl.domain.ResponsibilityTypeBO" column="RESPONSIBILITY_OID" access="field" not-null="true" cascade="" />
+    </class>
+</hibernate-mapping>
