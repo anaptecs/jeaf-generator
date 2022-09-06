@@ -7,6 +7,8 @@ import org.zalando.problem.ProblemModule;
 
 import com.anaptecs.spring.base.serializers.ObjectMapperFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 /**
  * Jackson Object Mapper configuration that is supposed to be used in context of OSDM.
@@ -18,6 +20,8 @@ public class ObjectMapperConfig {
   public ObjectMapper objectMapper( ) {
     ObjectMapper lObjectMapper = ObjectMapperFactory.createObjectMapper();
     lObjectMapper.registerModule(new ProblemModule());
+    lObjectMapper.registerModule(new JavaTimeModule());
+    lObjectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
     return lObjectMapper;
   }
 }

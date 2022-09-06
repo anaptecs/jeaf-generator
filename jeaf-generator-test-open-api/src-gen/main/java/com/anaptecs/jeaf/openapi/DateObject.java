@@ -39,7 +39,7 @@ public class DateObject {
   private OffsetDateTime calendar = null;
 
   @JsonProperty("sqlDate")
-  private OffsetDateTime sqlDate = null;
+  private LocalDate sqlDate = null;
 
   @JsonProperty("utilDate")
   private OffsetDateTime utilDate = null;
@@ -116,7 +116,7 @@ public class DateObject {
     this.calendar = calendar;
   }
 
-  public DateObject sqlDate(OffsetDateTime sqlDate) {
+  public DateObject sqlDate(LocalDate sqlDate) {
     this.sqlDate = sqlDate;
     return this;
   }
@@ -126,11 +126,11 @@ public class DateObject {
    * @return sqlDate
   **/
   @Schema(required = true, description = "")
-  public OffsetDateTime getSqlDate() {
+  public LocalDate getSqlDate() {
     return sqlDate;
   }
 
-  public void setSqlDate(OffsetDateTime sqlDate) {
+  public void setSqlDate(LocalDate sqlDate) {
     this.sqlDate = sqlDate;
   }
 

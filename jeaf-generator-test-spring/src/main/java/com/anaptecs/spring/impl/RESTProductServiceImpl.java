@@ -6,6 +6,14 @@
 package com.anaptecs.spring.impl;
 
 import java.math.BigDecimal;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -82,4 +90,11 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public void testEnumHeaderParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
   }
+
+  @Override
+  public void testDateQueryParams( LocalDateTime pLocalStartTimestamp, OffsetDateTime pStartTimestamp,
+      LocalTime pLocalStartTime, OffsetTime pStartTime, Calendar pCalendar, Date pUtilDate, java.sql.Date pSQLDate,
+      Time pSQLTime, Timestamp pSQLTimestamp ) {
+  }
+
 }

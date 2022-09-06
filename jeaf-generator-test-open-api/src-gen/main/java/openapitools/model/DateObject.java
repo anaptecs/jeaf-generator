@@ -56,7 +56,7 @@ public class DateObject {
   private OffsetDateTime calendar;
 
   public static final String JSON_PROPERTY_SQL_DATE = "sqlDate";
-  private OffsetDateTime sqlDate;
+  private LocalDate sqlDate;
 
   public static final String JSON_PROPERTY_UTIL_DATE = "utilDate";
   private OffsetDateTime utilDate;
@@ -168,7 +168,7 @@ public class DateObject {
   }
 
 
-  public DateObject sqlDate(OffsetDateTime sqlDate) {
+  public DateObject sqlDate(LocalDate sqlDate) {
     this.sqlDate = sqlDate;
     return this;
   }
@@ -182,14 +182,14 @@ public class DateObject {
   @JsonProperty(JSON_PROPERTY_SQL_DATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public OffsetDateTime getSqlDate() {
+  public LocalDate getSqlDate() {
     return sqlDate;
   }
 
 
   @JsonProperty(JSON_PROPERTY_SQL_DATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSqlDate(OffsetDateTime sqlDate) {
+  public void setSqlDate(LocalDate sqlDate) {
     this.sqlDate = sqlDate;
   }
 

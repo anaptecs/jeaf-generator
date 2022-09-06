@@ -8,6 +8,14 @@ package com.anaptecs.spring.service.restproxy;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URI;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -479,6 +487,66 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     else {
       lRequestBuilder.setHeader("Extensible-Enum", null);
     }
+    // Execute request.
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+  }
+
+  /**
+   * 
+   * @param pLocalStartTimestamp
+   * @param pStartTimestamp
+   * @param pLocalStartTime
+   * @param pStartTime
+   * @param pCalendar
+   * @param pUtilDate
+   * @param pSQLDate
+   * @param pSQLTime
+   * @param pSQLTimestamp
+   */
+  @Override
+  public void testDateQueryParams( LocalDateTime pLocalStartTimestamp, OffsetDateTime pStartTimestamp,
+      LocalTime pLocalStartTime, OffsetTime pStartTime, Calendar pCalendar, java.util.Date pUtilDate, Date pSQLDate,
+      Time pSQLTime, Timestamp pSQLTimestamp ) {
+    // Create builder for GET request
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+    // Build URI of request
+    StringBuilder lURIBuilder = new StringBuilder();
+    lURIBuilder.append(configuration.getExternalServiceURL());
+    lURIBuilder.append("/rest-products");
+    lURIBuilder.append('/');
+    lURIBuilder.append("test-date-query-params");
+    lRequestBuilder.setUri(lURIBuilder.toString());
+    // Add query parameter(s) to request
+    if (pLocalStartTimestamp != null) {
+      lRequestBuilder.addParameter("localStartTimestamp", pLocalStartTimestamp.toString());
+    }
+    if (pStartTimestamp != null) {
+      lRequestBuilder.addParameter("startTimestamp", pStartTimestamp.toString());
+    }
+    if (pLocalStartTime != null) {
+      lRequestBuilder.addParameter("localStartTime", pLocalStartTime.toString());
+    }
+    if (pStartTime != null) {
+      lRequestBuilder.addParameter("startTime", pStartTime.toString());
+    }
+    if (pCalendar != null) {
+      lRequestBuilder.addParameter("calendar", pCalendar.toString());
+    }
+    if (pUtilDate != null) {
+      lRequestBuilder.addParameter("utilDate", pUtilDate.toString());
+    }
+    if (pSQLDate != null) {
+      lRequestBuilder.addParameter("sqlDate", pSQLDate.toString());
+    }
+    if (pSQLTime != null) {
+      lRequestBuilder.addParameter("pSQLTime", pSQLTime.toString());
+    }
+    if (pSQLTimestamp != null) {
+      lRequestBuilder.addParameter("pSQLTimestamp", pSQLTimestamp.toString());
+    }
+    // Set HTTP header(s)
+    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     httpClient.executeNoResponseContentRequest(lRequest, null, 200);

@@ -6,6 +6,14 @@
 package com.anaptecs.spring.service.restproxy;
 
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -111,4 +119,20 @@ public interface RESTProductServiceRESTProxyServiceProvider extends ServiceProvi
    * @param pExtensibleEnum
    */
   void testEnumHeaderParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum );
+
+  /**
+   * 
+   * @param pLocalStartTimestamp
+   * @param pStartTimestamp
+   * @param pLocalStartTime
+   * @param pStartTime
+   * @param pCalendar
+   * @param pUtilDate
+   * @param pSQLDate
+   * @param pSQLTime
+   * @param pSQLTimestamp
+   */
+  void testDateQueryParams( LocalDateTime pLocalStartTimestamp, OffsetDateTime pStartTimestamp,
+      LocalTime pLocalStartTime, OffsetTime pStartTime, Calendar pCalendar, java.util.Date pUtilDate, Date pSQLDate,
+      Time pSQLTime, Timestamp pSQLTimestamp );
 }

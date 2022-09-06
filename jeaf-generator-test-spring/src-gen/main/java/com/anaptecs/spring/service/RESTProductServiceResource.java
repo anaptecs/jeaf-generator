@@ -6,6 +6,14 @@
 package com.anaptecs.spring.service;
 
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -182,6 +190,26 @@ public class RESTProductServiceResource {
     // Get Spring service and delegate call.
     RESTProductService lService = this.getRESTProductService();
     lService.testEnumHeaderParams(pChannelType, pTimeUnit, pExtensibleEnum);
+  }
+
+  /**
+   * {@link RESTProductService#testDateQueryParams()}
+   */
+  @RequestMapping(path = "test-date-query-params", method = { RequestMethod.GET })
+  public void testDateQueryParams(
+      @RequestParam(name = "localStartTimestamp", required = true) LocalDateTime pLocalStartTimestamp,
+      @RequestParam(name = "startTimestamp", required = true) OffsetDateTime pStartTimestamp,
+      @RequestParam(name = "localStartTime", required = true) LocalTime pLocalStartTime,
+      @RequestParam(name = "startTime", required = true) OffsetTime pStartTime,
+      @RequestParam(name = "calendar", required = true) Calendar pCalendar,
+      @RequestParam(name = "utilDate", required = true) java.util.Date pUtilDate,
+      @RequestParam(name = "sqlDate", required = true) Date pSQLDate,
+      @RequestParam(name = "pSQLTime", required = true) Time pSQLTime,
+      @RequestParam(name = "pSQLTimestamp", required = true) Timestamp pSQLTimestamp ) {
+    // Get Spring service and delegate call.
+    RESTProductService lService = this.getRESTProductService();
+    lService.testDateQueryParams(pLocalStartTimestamp, pStartTimestamp, pLocalStartTime, pStartTime, pCalendar,
+        pUtilDate, pSQLDate, pSQLTime, pSQLTimestamp);
   }
 
   /**

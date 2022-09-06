@@ -88,12 +88,16 @@ public class OpenAPIHelper {
     basicTypes.put(UUID.class.getName(), "string");
     basicTypes.put(Locale.class.getName(), "string");
     basicTypes.put(java.sql.Date.class.getName(), "string");
+    basicTypes.put(java.sql.Time.class.getName(), "string");
+    basicTypes.put(java.sql.Timestamp.class.getName(), "string");
+
     basicTypes.put(java.util.Date.class.getName(), "string");
     basicTypes.put(Calendar.class.getName(), "string");
     basicTypes.put("java.time.LocalTime", "string");
     basicTypes.put("java.time.LocalDate", "string");
     basicTypes.put("java.time.LocalDateTime", "string");
     basicTypes.put("java.time.OffsetDateTime", "string");
+    basicTypes.put("java.time.OffsetTime", "string");
     basicTypes.put("java.time.Duration", "string");
     basicTypes.put(URI.class.getName(), "string");
 
@@ -128,14 +132,23 @@ public class OpenAPIHelper {
     // Format mappings for BigDecimal
     formatMapping.put(BigDecimal.class.getName(), "double");
 
-    formatMapping.put(java.sql.Date.class.getName(), "date-time");
+    // Format mappings for java.sql dates
+    formatMapping.put(java.sql.Date.class.getName(), "date");
+    formatMapping.put(java.sql.Time.class.getName(), "time");
+    formatMapping.put(java.sql.Timestamp.class.getName(), "date-time");
+
+    // Format mapping for java.util date classes
     formatMapping.put(java.util.Date.class.getName(), "date-time");
     formatMapping.put(Calendar.class.getName(), "date-time");
+
+    // Format mapping for java.time classes
     formatMapping.put("java.time.LocalTime", "time");
+    formatMapping.put("java.time.OffsetTime", "time");
     formatMapping.put("java.time.LocalDate", "date");
     formatMapping.put("java.time.LocalDateTime", "date-time");
     formatMapping.put("java.time.OffsetDateTime", "date-time");
     formatMapping.put("java.time.Duration", "duration");
+
     formatMapping.put(URI.class.getName(), "uri");
 
     // Content type mapping
@@ -146,7 +159,6 @@ public class OpenAPIHelper {
     contentTypeMapping.put("TEXT_PLAIN", "text/plain");
 
     // HTTP Status Code Mapping
-
     httpStatusCodeMapping.put("100_CONTINUE", null);
     httpStatusCodeMapping.put("101_SWITCHING_PROTOCOLS", null);
     httpStatusCodeMapping.put("102_PROCESSING", null);

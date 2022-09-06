@@ -3,6 +3,7 @@ package com.anaptecs.spring.impl;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.Configuration;
 
+import com.anaptecs.jeaf.jersey.impl.time.JavaTimeConverterProvider;
 import com.anaptecs.spring.service.ProductServiceResource;
 import com.anaptecs.spring.service.RESTProductServiceResource;
 
@@ -12,5 +13,6 @@ public class JerseyConfig extends ResourceConfig {
   public JerseyConfig( ) {
     register(ProductServiceResource.class);
     register(RESTProductServiceResource.class);
+    register(JavaTimeConverterProvider.class);
   }
 }

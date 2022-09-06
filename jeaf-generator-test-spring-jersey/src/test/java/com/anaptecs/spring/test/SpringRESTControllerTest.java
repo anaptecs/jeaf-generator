@@ -12,8 +12,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
@@ -45,6 +57,7 @@ import org.springframework.http.ResponseEntity;
 import org.zalando.problem.ThrowableProblem;
 
 import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.date.DateTools;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
@@ -141,6 +154,9 @@ public class SpringRESTControllerTest {
 
     lClient.when(mockRequest("/rest-products/test-enum-header-params").withHeader("Channel-Type", "MOBILE")
         .withHeader("Time-Unit", "").withHeader("Extensible-Enum", "")).respond(mockResponse(null, 200, 0));
+
+    // test-date-query-params
+    lClient.when(mockRequest("/rest-products/test-date-query-params")).respond(mockResponse(null, 200, 0));
   }
 
   @AfterAll
@@ -428,5 +444,69 @@ public class SpringRESTControllerTest {
     assertEquals(null, lRequest.getHeader("nullHeader").getValue());
     assertEquals(true, lRequest.getRequestUri().endsWith("&nullParam"));
     XFun.getTrace().info(lRequest.toString());
+  }
+
+  @Test
+  void testDateConversions( ) {
+    // Date and Calendar to String
+    Calendar lCalendar = DateTools.getDateTools().toCalendar("2022-03-17 13:22:12.453");
+    lCalendar.setTimeZone(TimeZone.getTimeZone("GMT+1:00"));
+    Date lUtilDate = DateTools.getDateTools().toDate(lCalendar);
+
+    SimpleDateFormat lDateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+    SimpleDateFormat lDateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat lTimeFormatter = new SimpleDateFormat("HH:mm:ss.SSSXXX");
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lUtilDate));
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lCalendar.getTime()));
+
+    // Test java.sql classes
+    java.sql.Date lSQLDate = new java.sql.Date(lUtilDate.getTime());
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lSQLDate));
+    assertEquals("2022-03-17", lDateFormatter.format(lSQLDate));
+    assertEquals("2022-03-17", lSQLDate.toString());
+    Time lSQLTime = new Time(lUtilDate.getTime());
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lSQLTime));
+    assertEquals("13:22:12.453+01:00", lTimeFormatter.format(lSQLTime));
+    assertEquals("13:22:12", lSQLTime.toString());
+    Timestamp lSQLTimestamp = new Timestamp(lUtilDate.getTime());
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lSQLTimestamp));
+    assertEquals("2022-03-17 13:22:12.453", lSQLTimestamp.toString());
+
+    // XFun.getTrace().info(String.format("%1$tY-%1$tm-%1$tdT%1$tH:%1$tM:%1$tS.%1$tL%1$tz", new Date()));
+
+    // Test java.time offset aware classes
+    OffsetDateTime lOffsetDateTime = OffsetDateTime.parse("2022-03-17T13:22:12.453+01:00");
+    assertEquals("2022-03-17T13:22:12.453+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
+    assertEquals("2022-03-17T13:22:12.453+01:00", lOffsetDateTime.toString());
+
+    lOffsetDateTime = OffsetDateTime.parse("2022-03-17T13:22:12+01:00");
+    assertEquals("2022-03-17T13:22:12+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
+    assertEquals("2022-03-17T13:22:12+01:00", lOffsetDateTime.toString());
+
+    lOffsetDateTime = OffsetDateTime.parse("2022-03-17T13:22+01:00");
+    assertEquals("2022-03-17T13:22:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
+    assertEquals("2022-03-17T13:22+01:00", lOffsetDateTime.toString());
+
+    OffsetTime lOffsetTime = OffsetTime.parse("13:22:12.453+01:00");
+    assertEquals("13:22:12.453+01:00", DateTimeFormatter.ISO_OFFSET_TIME.format(lOffsetTime));
+    assertEquals("13:22:12.453+01:00", lOffsetTime.toString());
+
+    // Test java.time local classes
+    LocalDateTime lLocalDateTime = LocalDateTime.parse("2022-03-17T13:22:12.453");
+    assertEquals("2022-03-17T13:22:12.453", DateTimeFormatter.ISO_DATE_TIME.format(lLocalDateTime));
+    assertEquals("2022-03-17T13:22:12.453", lLocalDateTime.toString());
+
+    LocalDate lLocalDate = LocalDate.parse("2022-03-17");
+    assertEquals("2022-03-17", DateTimeFormatter.ISO_DATE.format(lLocalDate));
+    assertEquals("2022-03-17", lLocalDate.toString());
+
+    LocalTime lLocalTime = LocalTime.parse("13:22:12.453");
+    assertEquals("13:22:12.453", DateTimeFormatter.ISO_TIME.format(lLocalTime));
+    assertEquals("13:22:12.453", lLocalTime.toString());
+
+    // TODO Generate warning in case of OpenAPI incompatible date types.
+
+    restProductService.testDateQueryParams(lLocalDateTime, lOffsetDateTime, lLocalTime, lOffsetTime, lCalendar,
+        lUtilDate, lSQLDate, lSQLTime, lSQLTimestamp);
   }
 }

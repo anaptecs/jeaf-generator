@@ -6,6 +6,14 @@
 package com.anaptecs.spring.service;
 
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -230,6 +238,23 @@ public class RESTProductServiceResource {
       @HeaderParam("Time-Unit") TimeUnit pTimeUnit, @HeaderParam("Extensible-Enum") ExtensibleEnum pExtensibleEnum ) {
     RESTProductService lService = this.getRESTProductService();
     lService.testEnumHeaderParams(pChannelType, pTimeUnit, pExtensibleEnum);
+    return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link RESTProductService#testDateQueryParams()}
+   */
+  @Path("test-date-query-params")
+  @GET
+  public Response testDateQueryParams( @QueryParam("localStartTimestamp") LocalDateTime pLocalStartTimestamp,
+      @QueryParam("startTimestamp") OffsetDateTime pStartTimestamp,
+      @QueryParam("localStartTime") LocalTime pLocalStartTime, @QueryParam("startTime") OffsetTime pStartTime,
+      @QueryParam("calendar") Calendar pCalendar, @QueryParam("utilDate") java.util.Date pUtilDate,
+      @QueryParam("sqlDate") Date pSQLDate, @QueryParam("pSQLTime") Time pSQLTime,
+      @QueryParam("pSQLTimestamp") Timestamp pSQLTimestamp ) {
+    RESTProductService lService = this.getRESTProductService();
+    lService.testDateQueryParams(pLocalStartTimestamp, pStartTimestamp, pLocalStartTime, pStartTime, pCalendar,
+        pUtilDate, pSQLDate, pSQLTime, pSQLTimestamp);
     return Response.status(Response.Status.OK).build();
   }
 
