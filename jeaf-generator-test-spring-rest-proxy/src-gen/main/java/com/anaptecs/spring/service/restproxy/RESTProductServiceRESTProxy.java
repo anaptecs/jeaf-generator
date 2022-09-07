@@ -11,6 +11,7 @@ import java.net.URI;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
@@ -494,20 +495,22 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
 
   /**
    * 
-   * @param pLocalStartTimestamp
+   * @param pPath
    * @param pStartTimestamp
-   * @param pLocalStartTime
    * @param pStartTime
+   * @param pLocalStartTimestamp
+   * @param pLocalStartTime
+   * @param pLocalStartDate
    * @param pCalendar
    * @param pUtilDate
-   * @param pSQLDate
-   * @param pSQLTime
    * @param pSQLTimestamp
+   * @param pSQLTime
+   * @param pSQLDate
    */
   @Override
-  public void testDateQueryParams( LocalDateTime pLocalStartTimestamp, OffsetDateTime pStartTimestamp,
-      LocalTime pLocalStartTime, OffsetTime pStartTime, Calendar pCalendar, java.util.Date pUtilDate, Date pSQLDate,
-      Time pSQLTime, Timestamp pSQLTimestamp ) {
+  public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
+      LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
+      Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, java.util.Date pSQLDate ) {
     // Create builder for GET request
     ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
     // Build URI of request
@@ -515,20 +518,24 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/rest-products");
     lURIBuilder.append('/');
-    lURIBuilder.append("test-date-query-params");
+    lURIBuilder.append("test-date-query-params/");
+    lURIBuilder.append(pPath);
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    if (pLocalStartTimestamp != null) {
-      lRequestBuilder.addParameter("localStartTimestamp", pLocalStartTimestamp.toString());
-    }
     if (pStartTimestamp != null) {
       lRequestBuilder.addParameter("startTimestamp", pStartTimestamp.toString());
+    }
+    if (pStartTime != null) {
+      lRequestBuilder.addParameter("startTime", pStartTime.toString());
+    }
+    if (pLocalStartTimestamp != null) {
+      lRequestBuilder.addParameter("localStartTimestamp", pLocalStartTimestamp.toString());
     }
     if (pLocalStartTime != null) {
       lRequestBuilder.addParameter("localStartTime", pLocalStartTime.toString());
     }
-    if (pStartTime != null) {
-      lRequestBuilder.addParameter("startTime", pStartTime.toString());
+    if (pLocalStartDate != null) {
+      lRequestBuilder.addParameter("localStartDate", pLocalStartDate.toString());
     }
     if (pCalendar != null) {
       lRequestBuilder.addParameter("calendar", pCalendar.toString());
@@ -536,14 +543,14 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     if (pUtilDate != null) {
       lRequestBuilder.addParameter("utilDate", pUtilDate.toString());
     }
-    if (pSQLDate != null) {
-      lRequestBuilder.addParameter("sqlDate", pSQLDate.toString());
+    if (pSQLTimestamp != null) {
+      lRequestBuilder.addParameter("sqlTimestamp", pSQLTimestamp.toString());
     }
     if (pSQLTime != null) {
-      lRequestBuilder.addParameter("pSQLTime", pSQLTime.toString());
+      lRequestBuilder.addParameter("sqlTime", pSQLTime.toString());
     }
-    if (pSQLTimestamp != null) {
-      lRequestBuilder.addParameter("pSQLTimestamp", pSQLTimestamp.toString());
+    if (pSQLDate != null) {
+      lRequestBuilder.addParameter("sqlDate", pSQLDate.toString());
     }
     // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());

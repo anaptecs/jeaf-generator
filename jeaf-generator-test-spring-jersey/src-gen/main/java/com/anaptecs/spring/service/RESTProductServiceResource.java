@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
@@ -247,17 +248,18 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateQueryParams()}
    */
-  @Path("test-date-query-params")
+  @Path("test-date-query-params/{path}")
   @GET
-  public Response testDateQueryParams( @QueryParam("localStartTimestamp") LocalDateTime pLocalStartTimestamp,
-      @QueryParam("startTimestamp") OffsetDateTime pStartTimestamp,
-      @QueryParam("localStartTime") LocalTime pLocalStartTime, @QueryParam("startTime") OffsetTime pStartTime,
-      @QueryParam("calendar") Calendar pCalendar, @QueryParam("utilDate") java.util.Date pUtilDate,
-      @QueryParam("sqlDate") Date pSQLDate, @QueryParam("pSQLTime") Time pSQLTime,
-      @QueryParam("pSQLTimestamp") Timestamp pSQLTimestamp ) {
+  public Response testDateQueryParams( @PathParam("path") String pPath,
+      @QueryParam("startTimestamp") OffsetDateTime pStartTimestamp, @QueryParam("startTime") OffsetTime pStartTime,
+      @QueryParam("localStartTimestamp") LocalDateTime pLocalStartTimestamp,
+      @QueryParam("localStartTime") LocalTime pLocalStartTime, @QueryParam("localStartDate") LocalDate pLocalStartDate,
+      @QueryParam("calendar") Calendar pCalendar, @QueryParam("utilDate") Date pUtilDate,
+      @QueryParam("sqlTimestamp") Timestamp pSQLTimestamp, @QueryParam("sqlTime") Time pSQLTime,
+      @QueryParam("sqlDate") java.util.Date pSQLDate ) {
     RESTProductService lService = this.getRESTProductService();
-    lService.testDateQueryParams(pLocalStartTimestamp, pStartTimestamp, pLocalStartTime, pStartTime, pCalendar,
-        pUtilDate, pSQLDate, pSQLTime, pSQLTimestamp);
+    lService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
+        pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
     return Response.status(Response.Status.OK).build();
   }
 

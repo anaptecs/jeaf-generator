@@ -156,7 +156,43 @@ public class SpringRESTControllerTest {
         .withHeader("Time-Unit", "").withHeader("Extensible-Enum", "")).respond(mockResponse(null, 200, 0));
 
     // test-date-query-params
-    lClient.when(mockRequest("/rest-products/test-date-query-params")).respond(mockResponse(null, 200, 0));
+    lClient.when(mockRequest("/rest-products/test-date-query-params/1")
+        .withQueryStringParameter("startTimestamp", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("startTime", "13:22:12.453+01:00")
+        .withQueryStringParameter("localStartTimestamp", "2022-03-17T13:22:12.453")
+        .withQueryStringParameter("localStartTime", "13:22:12.453")
+        .withQueryStringParameter("localStartDate", "2022-03-17")
+        .withQueryStringParameter("calendar", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("utilDate", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("sqlTimestamp", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00").withQueryStringParameter("sqlDate", "2022-03-17"))
+        .respond(mockResponse(null, 200, 0));
+
+    lClient.when(mockRequest("/rest-products/test-date-query-params/2")
+        .withQueryStringParameter("startTimestamp", "2022-03-17T13:22:12+01:00")
+        .withQueryStringParameter("startTime", "13:22:12.453+01:00")
+        .withQueryStringParameter("localStartTimestamp", "2022-03-17T13:22:12.453")
+        .withQueryStringParameter("localStartTime", "13:22:12.453")
+        .withQueryStringParameter("localStartDate", "2022-03-17")
+        .withQueryStringParameter("calendar", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("utilDate", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("sqlTimestamp", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00").withQueryStringParameter("sqlDate", "2022-03-17"))
+        .respond(mockResponse(null, 200, 0));
+
+    lClient.when(mockRequest("/rest-products/test-date-query-params/3")
+        .withQueryStringParameter("startTimestamp", "2022-03-17T13:22:00+01:00")
+        .withQueryStringParameter("startTime", "13:22:12.453+01:00")
+        .withQueryStringParameter("localStartTimestamp", "2022-03-17T13:22:12.453")
+        .withQueryStringParameter("localStartTime", "13:22:12.453")
+        .withQueryStringParameter("localStartDate", "2022-03-17")
+        .withQueryStringParameter("calendar", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("utilDate", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("sqlTimestamp", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00").withQueryStringParameter("sqlDate", "2022-03-17"))
+        .respond(mockResponse(null, 200, 0));
+
+    lClient.when(mockRequest("/rest-products/test-date-query-params/4")).respond(mockResponse(null, 200, 0));
   }
 
   @AfterAll
@@ -454,23 +490,25 @@ public class SpringRESTControllerTest {
     Date lUtilDate = DateTools.getDateTools().toDate(lCalendar);
 
     SimpleDateFormat lDateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-    SimpleDateFormat lDateFormatter = new SimpleDateFormat("yyyy-MM-dd");
-    SimpleDateFormat lTimeFormatter = new SimpleDateFormat("HH:mm:ss.SSSXXX");
-    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lUtilDate));
     assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lCalendar.getTime()));
 
     // Test java.sql classes
-    java.sql.Date lSQLDate = new java.sql.Date(lUtilDate.getTime());
-    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lSQLDate));
-    assertEquals("2022-03-17", lDateFormatter.format(lSQLDate));
-    assertEquals("2022-03-17", lSQLDate.toString());
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lUtilDate));
+    Timestamp lSQLTimestamp = new Timestamp(lUtilDate.getTime());
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lSQLTimestamp));
+    assertEquals("2022-03-17 13:22:12.453", lSQLTimestamp.toString());
+
+    SimpleDateFormat lTimeFormatter = new SimpleDateFormat("HH:mm:ss.SSSXXX");
     Time lSQLTime = new Time(lUtilDate.getTime());
     assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lSQLTime));
     assertEquals("13:22:12.453+01:00", lTimeFormatter.format(lSQLTime));
     assertEquals("13:22:12", lSQLTime.toString());
-    Timestamp lSQLTimestamp = new Timestamp(lUtilDate.getTime());
-    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lSQLTimestamp));
-    assertEquals("2022-03-17 13:22:12.453", lSQLTimestamp.toString());
+
+    SimpleDateFormat lDateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+    java.sql.Date lSQLDate = new java.sql.Date(lUtilDate.getTime());
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lSQLDate));
+    assertEquals("2022-03-17", lDateFormatter.format(lSQLDate));
+    assertEquals("2022-03-17", lSQLDate.toString());
 
     // XFun.getTrace().info(String.format("%1$tY-%1$tm-%1$tdT%1$tH:%1$tM:%1$tS.%1$tL%1$tz", new Date()));
 
@@ -478,14 +516,6 @@ public class SpringRESTControllerTest {
     OffsetDateTime lOffsetDateTime = OffsetDateTime.parse("2022-03-17T13:22:12.453+01:00");
     assertEquals("2022-03-17T13:22:12.453+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
     assertEquals("2022-03-17T13:22:12.453+01:00", lOffsetDateTime.toString());
-
-    lOffsetDateTime = OffsetDateTime.parse("2022-03-17T13:22:12+01:00");
-    assertEquals("2022-03-17T13:22:12+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
-    assertEquals("2022-03-17T13:22:12+01:00", lOffsetDateTime.toString());
-
-    lOffsetDateTime = OffsetDateTime.parse("2022-03-17T13:22+01:00");
-    assertEquals("2022-03-17T13:22:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
-    assertEquals("2022-03-17T13:22+01:00", lOffsetDateTime.toString());
 
     OffsetTime lOffsetTime = OffsetTime.parse("13:22:12.453+01:00");
     assertEquals("13:22:12.453+01:00", DateTimeFormatter.ISO_OFFSET_TIME.format(lOffsetTime));
@@ -506,7 +536,25 @@ public class SpringRESTControllerTest {
 
     // TODO Generate warning in case of OpenAPI incompatible date types.
 
-    restProductService.testDateQueryParams(lLocalDateTime, lOffsetDateTime, lLocalTime, lOffsetTime, lCalendar,
-        lUtilDate, lSQLDate, lSQLTime, lSQLTimestamp);
+    restProductService.testDateQueryParams("1", lOffsetDateTime, lOffsetTime, lLocalDateTime, lLocalTime, lLocalDate,
+        lCalendar, lSQLDate, lSQLTimestamp, lSQLTime, lSQLDate);
+
+    lOffsetDateTime = OffsetDateTime.parse("2022-03-17T13:22:12+01:00");
+    assertEquals("2022-03-17T13:22:12+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
+    assertEquals("2022-03-17T13:22:12+01:00", lOffsetDateTime.toString());
+
+    restProductService.testDateQueryParams("2", lOffsetDateTime, lOffsetTime, lLocalDateTime, lLocalTime, lLocalDate,
+        lCalendar, lSQLDate, lSQLTimestamp, lSQLTime, lSQLDate);
+
+    lOffsetDateTime = OffsetDateTime.parse("2022-03-17T13:22+01:00");
+    assertEquals("2022-03-17T13:22:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
+    assertEquals("2022-03-17T13:22+01:00", lOffsetDateTime.toString());
+
+    restProductService.testDateQueryParams("3", lOffsetDateTime, lOffsetTime, lLocalDateTime, lLocalTime, lLocalDate,
+        lCalendar, lSQLDate, lSQLTimestamp, lSQLTime, lSQLDate);
+
+    restProductService.testDateQueryParams("4", null, null, null, null, null, null, null, null, null, null);
+
   }
+
 }

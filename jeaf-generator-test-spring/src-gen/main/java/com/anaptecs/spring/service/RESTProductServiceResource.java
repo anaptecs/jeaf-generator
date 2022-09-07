@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
@@ -195,21 +196,22 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateQueryParams()}
    */
-  @RequestMapping(path = "test-date-query-params", method = { RequestMethod.GET })
-  public void testDateQueryParams(
-      @RequestParam(name = "localStartTimestamp", required = true) LocalDateTime pLocalStartTimestamp,
+  @RequestMapping(path = "test-date-query-params/{path}", method = { RequestMethod.GET })
+  public void testDateQueryParams( @PathVariable(name = "path", required = true) String pPath,
       @RequestParam(name = "startTimestamp", required = true) OffsetDateTime pStartTimestamp,
-      @RequestParam(name = "localStartTime", required = true) LocalTime pLocalStartTime,
       @RequestParam(name = "startTime", required = true) OffsetTime pStartTime,
+      @RequestParam(name = "localStartTimestamp", required = true) LocalDateTime pLocalStartTimestamp,
+      @RequestParam(name = "localStartTime", required = true) LocalTime pLocalStartTime,
+      @RequestParam(name = "localStartDate", required = true) LocalDate pLocalStartDate,
       @RequestParam(name = "calendar", required = true) Calendar pCalendar,
-      @RequestParam(name = "utilDate", required = true) java.util.Date pUtilDate,
-      @RequestParam(name = "sqlDate", required = true) Date pSQLDate,
-      @RequestParam(name = "pSQLTime", required = true) Time pSQLTime,
-      @RequestParam(name = "pSQLTimestamp", required = true) Timestamp pSQLTimestamp ) {
+      @RequestParam(name = "utilDate", required = true) Date pUtilDate,
+      @RequestParam(name = "sqlTimestamp", required = true) Timestamp pSQLTimestamp,
+      @RequestParam(name = "sqlTime", required = true) Time pSQLTime,
+      @RequestParam(name = "sqlDate", required = true) java.util.Date pSQLDate ) {
     // Get Spring service and delegate call.
     RESTProductService lService = this.getRESTProductService();
-    lService.testDateQueryParams(pLocalStartTimestamp, pStartTimestamp, pLocalStartTime, pStartTime, pCalendar,
-        pUtilDate, pSQLDate, pSQLTime, pSQLTimestamp);
+    lService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
+        pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
   }
 
   /**

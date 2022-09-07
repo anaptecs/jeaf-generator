@@ -8,6 +8,7 @@ package com.anaptecs.spring.impl;
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
@@ -92,9 +93,9 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public void testDateQueryParams( LocalDateTime pLocalStartTimestamp, OffsetDateTime pStartTimestamp,
-      LocalTime pLocalStartTime, OffsetTime pStartTime, Calendar pCalendar, Date pUtilDate, java.sql.Date pSQLDate,
-      Time pSQLTime, Timestamp pSQLTimestamp ) {
+  public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
+      LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
+      java.sql.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
   }
 
 }
