@@ -507,7 +507,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
    * @param pSQLDate
    */
   @Override
-  public void testDateQueryParams( OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
+  public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
       Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, java.util.Date pSQLDate ) {
     // Create builder for GET request
@@ -517,7 +517,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lURIBuilder.append(configuration.getExternalServiceURL());
     lURIBuilder.append("/rest-products");
     lURIBuilder.append('/');
-    lURIBuilder.append("test-date-query-params");
+    lURIBuilder.append("test-date-query-params/");
+    lURIBuilder.append(pPath);
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
     if (pStartTimestamp != null) {
