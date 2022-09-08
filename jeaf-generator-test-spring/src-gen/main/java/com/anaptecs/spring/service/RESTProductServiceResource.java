@@ -215,6 +215,40 @@ public class RESTProductServiceResource {
   }
 
   /**
+   * {@link RESTProductService#testDateQueryParamsBean()}
+   */
+  @RequestMapping(path = "test-date-query-params-beans/{path}", method = { RequestMethod.GET })
+  public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) String pPath,
+      @RequestParam(name = "offsetDateTime", required = true) OffsetDateTime pOffsetDateTime,
+      @RequestParam(name = "offsetTime", required = true) OffsetTime pOffsetTime,
+      @RequestParam(name = "localDateTime", required = true) LocalDateTime pLocalDateTime,
+      @RequestParam(name = "localTime", required = true) LocalTime pLocalTime,
+      @RequestParam(name = "localDate", required = true) LocalDate pLocalDate,
+      @RequestParam(name = "utilDate", required = true) java.util.Date pUtilDate,
+      @RequestParam(name = "calendar", required = true) Calendar pCalendar,
+      @RequestParam(name = "sqlTimestamp", required = true) Timestamp pSqlTimestamp,
+      @RequestParam(name = "sqlTime", required = true) Time pSqlTime,
+      @RequestParam(name = "sqlDate", required = true) Date pSqlDate ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    DateQueryParamsBean.Builder lBuilder = DateQueryParamsBean.Builder.newBuilder();
+    lBuilder.setOffsetDateTime(pOffsetDateTime);
+    lBuilder.setOffsetTime(pOffsetTime);
+    lBuilder.setLocalDateTime(pLocalDateTime);
+    lBuilder.setLocalTime(pLocalTime);
+    lBuilder.setLocalDate(pLocalDate);
+    lBuilder.setUtilDate(pUtilDate);
+    lBuilder.setCalendar(pCalendar);
+    lBuilder.setSqlTimestamp(pSqlTimestamp);
+    lBuilder.setSqlTime(pSqlTime);
+    lBuilder.setSqlDate(pSqlDate);
+    DateQueryParamsBean pQueryParams = lBuilder.build();
+    // Get Spring service and delegate call.
+    RESTProductService lService = this.getRESTProductService();
+    lService.testDateQueryParamsBean(pPath, pQueryParams);
+  }
+
+  /**
    * Method returns reference to service to which all REST requests will be delegated.
    *
    * @return RESTProductService Service instance to which all requests will be delegated.

@@ -31,6 +31,7 @@ import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.TimeUnit;
+import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.restproxy.RESTProductServiceRESTProxyServiceProvider;
 
 /**
@@ -187,6 +188,11 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
 
     proxy.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
         pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
+  }
+
+  @Override
+  public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
+    proxy.testDateQueryParamsBean(pPath, pQueryParams);
   }
 
 }

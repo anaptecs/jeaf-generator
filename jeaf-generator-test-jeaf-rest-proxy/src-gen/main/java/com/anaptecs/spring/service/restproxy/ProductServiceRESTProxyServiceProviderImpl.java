@@ -180,8 +180,10 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append(pContext.getPathParam());
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    if (pContext.getQueryParam() != null) {
-      lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+    if (pContext != null) {
+      if (pContext.getQueryParam() != null) {
+        lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+      }
     }
     // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
@@ -302,8 +304,10 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append("deprecated/context");
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    if (pContext.getQueryParam() != null) {
-      lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+    if (pContext != null) {
+      if (pContext.getQueryParam() != null) {
+        lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+      }
     }
     // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
@@ -355,8 +359,10 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append("deprecated/beanParams");
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    if (pBeanParam.getOldStyle() != null) {
-      lRequestBuilder.addParameter("q2", pBeanParam.getOldStyle());
+    if (pBeanParam != null) {
+      if (pBeanParam.getOldStyle() != null) {
+        lRequestBuilder.addParameter("q2", pBeanParam.getOldStyle());
+      }
     }
     // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
@@ -497,8 +503,10 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append(pContext.getPathParam());
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    if (pContext.getQueryParam() != null) {
-      lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+    if (pContext != null) {
+      if (pContext.getQueryParam() != null) {
+        lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+      }
     }
     // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
@@ -667,6 +675,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("LocalBeanParam");
     lRequestBuilder.setUri(lURIBuilder.toString());
+    if (pBeanParam != null) {
+    }
     // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     if (pBeanParam.getLocalKey() != null) {
@@ -702,6 +712,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("ExternalBeanParam");
     lRequestBuilder.setUri(lURIBuilder.toString());
+    if (pParent != null) {
+    }
     // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     if (pParent.getNovaKey() != null) {
@@ -737,6 +749,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lURIBuilder.append('/');
     lURIBuilder.append("ChildBeanParam");
     lRequestBuilder.setUri(lURIBuilder.toString());
+    if (pChild != null) {
+    }
     // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     if (pChild.getNovaKey() != null) {

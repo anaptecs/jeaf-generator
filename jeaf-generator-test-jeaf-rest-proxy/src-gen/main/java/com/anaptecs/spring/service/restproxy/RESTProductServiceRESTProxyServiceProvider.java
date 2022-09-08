@@ -30,6 +30,7 @@ import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.TimeUnit;
+import com.anaptecs.spring.service.DateQueryParamsBean;
 
 /**
  * Service Provider Interface is generated so that a proxy for a REST Resource can be provided as JEAF Service Provider.
@@ -138,4 +139,11 @@ public interface RESTProductServiceRESTProxyServiceProvider extends ServiceProvi
   void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
       java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate );
+
+  /**
+   * 
+   * @param pPath
+   * @param pQueryParams
+   */
+  void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams );
 }

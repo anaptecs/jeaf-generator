@@ -261,6 +261,18 @@ public class RESTProductServiceResource {
   }
 
   /**
+   * {@link RESTProductService#testDateQueryParamsBean()}
+   */
+  @Path("test-date-query-params-beans/{path}")
+  @GET
+  public Response testDateQueryParamsBean( @PathParam("path") String pPath,
+      @BeanParam DateQueryParamsBean pQueryParams ) {
+    RESTProductService lService = this.getRESTProductService();
+    lService.testDateQueryParamsBean(pPath, pQueryParams);
+    return Response.status(Response.Status.OK).build();
+  }
+
+  /**
    * Method returns reference to service to which all REST requests will be delegated.
    *
    * @return RESTProductService Service instance to which all requests will be delegated.

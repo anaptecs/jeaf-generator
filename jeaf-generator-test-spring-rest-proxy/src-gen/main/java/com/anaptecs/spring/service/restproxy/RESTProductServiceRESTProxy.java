@@ -49,6 +49,7 @@ import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.TimeUnit;
+import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.RESTProductService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -199,8 +200,10 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lURIBuilder.append(pContext.getPathParam());
     lRequestBuilder.setUri(lURIBuilder.toString());
     // Add query parameter(s) to request
-    if (pContext.getQueryParam() != null) {
-      lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+    if (pContext != null) {
+      if (pContext.getQueryParam() != null) {
+        lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+      }
     }
     // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
@@ -555,6 +558,70 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     if (pSQLDate != null) {
       lRequestBuilder.addParameter("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pSQLDate));
+    }
+    // Set HTTP header(s)
+    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    // Execute request.
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+  }
+
+  /**
+   * 
+   * @param pPath
+   * @param pQueryParams
+   */
+  @Override
+  public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
+    // Create builder for GET request
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+    // Build URI of request
+    StringBuilder lURIBuilder = new StringBuilder();
+    lURIBuilder.append(configuration.getExternalServiceURL());
+    lURIBuilder.append("/rest-products");
+    lURIBuilder.append('/');
+    lURIBuilder.append("test-date-query-params-beans/");
+    lURIBuilder.append(pPath);
+    lRequestBuilder.setUri(lURIBuilder.toString());
+    // Add query parameter(s) to request
+    if (pQueryParams != null) {
+      if (pQueryParams.getOffsetDateTime() != null) {
+        lRequestBuilder.addParameter("offsetDateTime",
+            DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pQueryParams.getOffsetDateTime()));
+      }
+      if (pQueryParams.getOffsetTime() != null) {
+        lRequestBuilder.addParameter("offsetTime",
+            DateTimeFormatter.ISO_OFFSET_TIME.format(pQueryParams.getOffsetTime()));
+      }
+      if (pQueryParams.getLocalDateTime() != null) {
+        lRequestBuilder.addParameter("localDateTime",
+            DateTimeFormatter.ISO_DATE_TIME.format(pQueryParams.getLocalDateTime()));
+      }
+      if (pQueryParams.getLocalTime() != null) {
+        lRequestBuilder.addParameter("localTime", DateTimeFormatter.ISO_TIME.format(pQueryParams.getLocalTime()));
+      }
+      if (pQueryParams.getLocalDate() != null) {
+        lRequestBuilder.addParameter("localDate", DateTimeFormatter.ISO_DATE.format(pQueryParams.getLocalDate()));
+      }
+      if (pQueryParams.getUtilDate() != null) {
+        lRequestBuilder.addParameter("utilDate",
+            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getUtilDate()));
+      }
+      if (pQueryParams.getCalendar() != null) {
+        lRequestBuilder.addParameter("calendar",
+            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getCalendar().getTime()));
+      }
+      if (pQueryParams.getSqlTimestamp() != null) {
+        lRequestBuilder.addParameter("sqlTimestamp",
+            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTimestamp()));
+      }
+      if (pQueryParams.getSqlTime() != null) {
+        lRequestBuilder.addParameter("sqlTime",
+            new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTime()));
+      }
+      if (pQueryParams.getSqlDate() != null) {
+        lRequestBuilder.addParameter("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pQueryParams.getSqlDate()));
+      }
     }
     // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
