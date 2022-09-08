@@ -78,6 +78,13 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<dependency>
+			<artifactId>jeaf-jersey-extensions-impl</artifactId>
+			<groupId>com.anaptecs.jeaf.jersey</groupId>
+			<version>${jeaf.jersey.extensions.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
 		<!-- Dependency on JEAF Workload Management is only required for test purposes -->
 		<dependency>
 			<groupId>com.anaptecs.jeaf.fast-lane</groupId>

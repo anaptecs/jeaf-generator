@@ -204,10 +204,10 @@ public class RESTProductServiceResource {
       @RequestParam(name = "localStartTime", required = true) LocalTime pLocalStartTime,
       @RequestParam(name = "localStartDate", required = true) LocalDate pLocalStartDate,
       @RequestParam(name = "calendar", required = true) Calendar pCalendar,
-      @RequestParam(name = "utilDate", required = true) Date pUtilDate,
+      @RequestParam(name = "utilDate", required = true) java.util.Date pUtilDate,
       @RequestParam(name = "sqlTimestamp", required = true) Timestamp pSQLTimestamp,
       @RequestParam(name = "sqlTime", required = true) Time pSQLTime,
-      @RequestParam(name = "sqlDate", required = true) java.util.Date pSQLDate ) {
+      @RequestParam(name = "sqlDate", required = true) Date pSQLDate ) {
     // Get Spring service and delegate call.
     RESTProductService lService = this.getRESTProductService();
     lService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,

@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
@@ -249,14 +250,14 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
    * 
    * 
    */
-  public void testDateQueryParams( LocalDateTime pLocalStartTimestamp, OffsetDateTime pStartTimestamp,
-      LocalTime pLocalStartTime, OffsetTime pStartTime, Calendar pCalendar, java.util.Date pUtilDate, Date pSQLDate,
-      Time pSQLTime, Timestamp pSQLTimestamp ) {
+  public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
+      LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
     try {
       Command lCommand =
-          new TestDateQueryParams_LocalDateTime_OffsetDateTime_LocalTime_OffsetTime_Calendar_Date_Date_Time_Timestamp_RESTProductService_Command(
-              pLocalStartTimestamp, pStartTimestamp, pLocalStartTime, pStartTime, pCalendar, pUtilDate, pSQLDate,
-              pSQLTime, pSQLTimestamp);
+          new TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_RESTProductService_Command(
+              pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime, pLocalStartDate, pCalendar,
+              pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
       this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -1518,7 +1519,7 @@ final class TestEnumHeaderParams_ChannelType_TimeUnit_ExtensibleEnum_RESTProduct
 /**
  * Generated command class for service method "testDateQueryParams".
  */
-final class TestDateQueryParams_LocalDateTime_OffsetDateTime_LocalTime_OffsetTime_Calendar_Date_Date_Time_Timestamp_RESTProductService_Command
+final class TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_RESTProductService_Command
     extends Command {
   /**
    * Default serial version uid.
@@ -1544,16 +1545,31 @@ final class TestDateQueryParams_LocalDateTime_OffsetDateTime_LocalTime_OffsetTim
    */
   static {
     try {
-      SERVICE_METHOD = RESTProductService.class.getMethod("testDateQueryParams", LocalDateTime.class,
-          OffsetDateTime.class, LocalTime.class, OffsetTime.class, Calendar.class, java.util.Date.class, Date.class,
-          Time.class, Timestamp.class);
+      SERVICE_METHOD = RESTProductService.class.getMethod("testDateQueryParams", String.class, OffsetDateTime.class,
+          OffsetTime.class, LocalDateTime.class, LocalTime.class, LocalDate.class, Calendar.class, java.util.Date.class,
+          Timestamp.class, Time.class, Date.class);
     }
     catch (NoSuchMethodException e) {
       throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
           RESTProductService.class.getName(),
-          "testDateQueryParams(LocalDateTime.class, OffsetDateTime.class, LocalTime.class, OffsetTime.class, Calendar.class, java.util.Date.class, Date.class, Time.class, Timestamp.class)");
+          "testDateQueryParams(String.class, OffsetDateTime.class, OffsetTime.class, LocalDateTime.class, LocalTime.class, LocalDate.class, Calendar.class, java.util.Date.class, Timestamp.class, Time.class, Date.class)");
     }
   }
+
+  /**
+   * Attribute transports the method parameter "pPath" to the service implementation via the service channel.
+   */
+  private final String path;
+
+  /**
+   * Attribute transports the method parameter "pStartTimestamp" to the service implementation via the service channel.
+   */
+  private final OffsetDateTime startTimestamp;
+
+  /**
+   * Attribute transports the method parameter "pStartTime" to the service implementation via the service channel.
+   */
+  private final OffsetTime startTime;
 
   /**
    * Attribute transports the method parameter "pLocalStartTimestamp" to the service implementation via the service
@@ -1562,19 +1578,14 @@ final class TestDateQueryParams_LocalDateTime_OffsetDateTime_LocalTime_OffsetTim
   private final LocalDateTime localStartTimestamp;
 
   /**
-   * Attribute transports the method parameter "pStartTimestamp" to the service implementation via the service channel.
-   */
-  private final OffsetDateTime startTimestamp;
-
-  /**
    * Attribute transports the method parameter "pLocalStartTime" to the service implementation via the service channel.
    */
   private final LocalTime localStartTime;
 
   /**
-   * Attribute transports the method parameter "pStartTime" to the service implementation via the service channel.
+   * Attribute transports the method parameter "pLocalStartDate" to the service implementation via the service channel.
    */
-  private final OffsetTime startTime;
+  private final LocalDate localStartDate;
 
   /**
    * Attribute transports the method parameter "pCalendar" to the service implementation via the service channel.
@@ -1587,9 +1598,9 @@ final class TestDateQueryParams_LocalDateTime_OffsetDateTime_LocalTime_OffsetTim
   private final java.util.Date utilDate;
 
   /**
-   * Attribute transports the method parameter "pSQLDate" to the service implementation via the service channel.
+   * Attribute transports the method parameter "pSQLTimestamp" to the service implementation via the service channel.
    */
-  private final Date sQLDate;
+  private final Timestamp sQLTimestamp;
 
   /**
    * Attribute transports the method parameter "pSQLTime" to the service implementation via the service channel.
@@ -1597,40 +1608,44 @@ final class TestDateQueryParams_LocalDateTime_OffsetDateTime_LocalTime_OffsetTim
   private final Time sQLTime;
 
   /**
-   * Attribute transports the method parameter "pSQLTimestamp" to the service implementation via the service channel.
+   * Attribute transports the method parameter "pSQLDate" to the service implementation via the service channel.
    */
-  private final Timestamp sQLTimestamp;
+  private final Date sQLDate;
 
   /**
    * Initialize object. All parameters from method "testDateQueryParams" have to be passed as parameters to this command
    * object.
    * 
-   * @param pLocalStartTimestamp LocalDateTime
+   * @param pPath String
    * @param pStartTimestamp OffsetDateTime
-   * @param pLocalStartTime LocalTime
    * @param pStartTime OffsetTime
+   * @param pLocalStartTimestamp LocalDateTime
+   * @param pLocalStartTime LocalTime
+   * @param pLocalStartDate LocalDate
    * @param pCalendar Calendar
    * @param pUtilDate java.util.Date
-   * @param pSQLDate Date
-   * @param pSQLTime Time
    * @param pSQLTimestamp Timestamp
+   * @param pSQLTime Time
+   * @param pSQLDate Date
    */
-  TestDateQueryParams_LocalDateTime_OffsetDateTime_LocalTime_OffsetTime_Calendar_Date_Date_Time_Timestamp_RESTProductService_Command(
-      LocalDateTime pLocalStartTimestamp, OffsetDateTime pStartTimestamp, LocalTime pLocalStartTime,
-      OffsetTime pStartTime, Calendar pCalendar, java.util.Date pUtilDate, Date pSQLDate, Time pSQLTime,
-      Timestamp pSQLTimestamp ) {
+  TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_RESTProductService_Command(
+      String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime, LocalDateTime pLocalStartTimestamp,
+      LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar, java.util.Date pUtilDate,
+      Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
     super(RESTProductService.class);
-    localStartTimestamp = pLocalStartTimestamp;
+    path = pPath;
     startTimestamp = pStartTimestamp;
-    localStartTime = pLocalStartTime;
     startTime = pStartTime;
+    localStartTimestamp = pLocalStartTimestamp;
+    localStartTime = pLocalStartTime;
+    localStartDate = pLocalStartDate;
     calendar = pCalendar;
     utilDate = pUtilDate;
-    sQLDate = pSQLDate;
-    sQLTime = pSQLTime;
     sQLTimestamp = pSQLTimestamp;
-    parameters = new Object[] { localStartTimestamp, startTimestamp, localStartTime, startTime, calendar, utilDate,
-      sQLDate, sQLTime, sQLTimestamp };
+    sQLTime = pSQLTime;
+    sQLDate = pSQLDate;
+    parameters = new Object[] { path, startTimestamp, startTime, localStartTimestamp, localStartTime, localStartDate,
+      calendar, utilDate, sQLTimestamp, sQLTime, sQLDate };
   }
 
   /**
@@ -1651,8 +1666,8 @@ final class TestDateQueryParams_LocalDateTime_OffsetDateTime_LocalTime_OffsetTim
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
     long lStartTime = System.nanoTime();
-    lService.testDateQueryParams(localStartTimestamp, startTimestamp, localStartTime, startTime, calendar, utilDate,
-        sQLDate, sQLTime, sQLTimestamp);
+    lService.testDateQueryParams(path, startTimestamp, startTime, localStartTimestamp, localStartTime, localStartDate,
+        calendar, utilDate, sQLTimestamp, sQLTime, sQLDate);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
     // Trace result of service call.

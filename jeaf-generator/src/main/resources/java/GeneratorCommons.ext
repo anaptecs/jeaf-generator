@@ -248,6 +248,45 @@ cached boolean isBooleanType(uml::Type type) :
 
 cached boolean isStringType(uml::Type type) :
   type.fqn() == "java.lang.String" || type.fqn() == "String"; 
+  
+cached boolean isUtilDate(uml::Type type) :
+  type.fqn() == "java.util.Date";
+
+cached boolean isCalendar(uml::Type type) :
+  type.fqn() == "java.util.Calendar";
+  
+cached boolean isLocalDate(uml::Type type) :
+  type.fqn() == "java.time.LocalDate";
+
+cached boolean isLocalDateTime(uml::Type type) :
+  type.fqn() == "java.time.LocalDateTime";
+
+cached boolean isLocalTime(uml::Type type) :
+  type.fqn() == "java.time.LocalTime";
+  
+cached boolean isLocalDateType(uml::Type type) :
+  isLocalDateTime(type) || isLocalTime(type) || isLocalDate(type);
+
+cached boolean isOffsetDateTime(uml::Type type) :
+  type.fqn() == "java.time.OffsetDateTime";
+
+cached boolean isOffsetTime(uml::Type type) :
+  type.fqn() == "java.time.OffsetTime";
+  
+cached boolean isSQLDate(uml::Type type) :
+  type.fqn() == "java.sql.Date";
+
+cached boolean isSQLTime(uml::Type type) :
+  type.fqn() == "java.sql.Time";
+
+cached boolean isSQLTimestamp(uml::Type type) :
+  type.fqn() == "java.sql.Timestamp";
+  
+cached boolean isSQLDateType(uml::Type type) :
+  isSQLTimestamp(type) || isSQLTime(type) || isSQLDate(type);
+  
+cached boolean isAnyDateType(uml::Type type) :
+  isOffsetDateTime(type) || isOffsetTime(type) || isLocalDateType(type) || isSQLDateType(type) || isUtilDate(type) || isCalendar(type);
 
 cached boolean isByteType(uml::Type type) :
   type.fqn() == "java.lang.Byte" || type.fqn() == "Byte" || type.fqn() == "byte"; 

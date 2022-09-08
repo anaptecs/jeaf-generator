@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
@@ -122,17 +123,19 @@ public interface RESTProductServiceRESTProxyServiceProvider extends ServiceProvi
 
   /**
    * 
-   * @param pLocalStartTimestamp
+   * @param pPath
    * @param pStartTimestamp
-   * @param pLocalStartTime
    * @param pStartTime
+   * @param pLocalStartTimestamp
+   * @param pLocalStartTime
+   * @param pLocalStartDate
    * @param pCalendar
    * @param pUtilDate
-   * @param pSQLDate
-   * @param pSQLTime
    * @param pSQLTimestamp
+   * @param pSQLTime
+   * @param pSQLDate
    */
-  void testDateQueryParams( LocalDateTime pLocalStartTimestamp, OffsetDateTime pStartTimestamp,
-      LocalTime pLocalStartTime, OffsetTime pStartTime, Calendar pCalendar, java.util.Date pUtilDate, Date pSQLDate,
-      Time pSQLTime, Timestamp pSQLTimestamp );
+  void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
+      LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate );
 }

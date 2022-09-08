@@ -254,9 +254,9 @@ public class RESTProductServiceResource {
       @QueryParam("startTimestamp") OffsetDateTime pStartTimestamp, @QueryParam("startTime") OffsetTime pStartTime,
       @QueryParam("localStartTimestamp") LocalDateTime pLocalStartTimestamp,
       @QueryParam("localStartTime") LocalTime pLocalStartTime, @QueryParam("localStartDate") LocalDate pLocalStartDate,
-      @QueryParam("calendar") Calendar pCalendar, @QueryParam("utilDate") Date pUtilDate,
+      @QueryParam("calendar") Calendar pCalendar, @QueryParam("utilDate") java.util.Date pUtilDate,
       @QueryParam("sqlTimestamp") Timestamp pSQLTimestamp, @QueryParam("sqlTime") Time pSQLTime,
-      @QueryParam("sqlDate") java.util.Date pSQLDate ) {
+      @QueryParam("sqlDate") Date pSQLDate ) {
     RESTProductService lService = this.getRESTProductService();
     lService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
         pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
