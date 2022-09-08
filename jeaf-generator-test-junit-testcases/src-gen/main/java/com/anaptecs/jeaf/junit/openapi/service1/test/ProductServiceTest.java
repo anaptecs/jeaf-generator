@@ -35,6 +35,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testDeprecatedOperation"));
     lSuite.addTest(new ProductServiceTest("testTestExternalBeanParameterType"));
     lSuite.addTest(new ProductServiceTest("testGetProduct"));
+    lSuite.addTest(new ProductServiceTest("testTestDateQueryParamsBean"));
     lSuite.addTest(new ProductServiceTest("testLoadSpecificThings"));
     lSuite.addTest(new ProductServiceTest("testIsCurrencySupported"));
     lSuite.addTest(new ProductServiceTest("testCreateProduct"));
@@ -232,6 +233,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testGetProduct( ) throws Exception {
     // TODO Implement test for service method getProduct(...)
+  }
+
+  /**
+   * Method test the implementation of service method testDateQueryParamsBean
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestDateQueryParamsBean( ) throws Exception {
+    // TODO Implement test for service method testDateQueryParamsBean(...)
   }
 
   /**

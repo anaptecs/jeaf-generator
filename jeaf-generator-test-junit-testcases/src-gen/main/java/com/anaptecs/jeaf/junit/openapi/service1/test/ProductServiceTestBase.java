@@ -148,6 +148,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testGetProduct( ) throws Exception;
 
   /**
+   * Method test the implementation of service method testDateQueryParamsBean(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestDateQueryParamsBean( ) throws Exception;
+
+  /**
    * Method test the implementation of service method loadSpecificThings(...)
    * 
    * @throws Exception if the test fails.

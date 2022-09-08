@@ -480,6 +480,22 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
       throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
     }
   }
+
+  /**
+   * Generated proxy implementation for method "testDateQueryParamsBean".
+   * 
+   * 
+   */
+  public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
+    try {
+      Command lCommand =
+          new TestDateQueryParamsBean_String_DateQueryParamsBean_ProductService_Command(pPath, pQueryParams);
+      this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
 }
 
 /**
@@ -3234,6 +3250,117 @@ final class TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_L
     long lStartTime = System.nanoTime();
     lService.testDateQueryParams(path, startTimestamp, startTime, localStartTimestamp, localStartTime, localStartDate,
         calendar, utilDate, sQLTimestamp, sQLTime, sQLDate);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    // Method has no return type thus the method returns null.
+    return null;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   * 
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   * 
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "testDateQueryParamsBean".
+ */
+final class TestDateQueryParamsBean_String_DateQueryParamsBean_ProductService_Command extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD =
+          ProductService.class.getMethod("testDateQueryParamsBean", String.class, DateQueryParamsBean.class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "testDateQueryParamsBean(String.class, DateQueryParamsBean.class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pPath" to the service implementation via the service channel.
+   */
+  private final String path;
+
+  /**
+   * Attribute transports the method parameter "pQueryParams" to the service implementation via the service channel.
+   */
+  private final DateQueryParamsBean queryParams;
+
+  /**
+   * Initialize object. All parameters from method "testDateQueryParamsBean" have to be passed as parameters to this
+   * command object.
+   * 
+   * @param pPath String
+   * @param pQueryParams DateQueryParamsBean
+   */
+  TestDateQueryParamsBean_String_DateQueryParamsBean_ProductService_Command( String pPath,
+      DateQueryParamsBean pQueryParams ) {
+    super(ProductService.class);
+    path = pPath;
+    queryParams = pQueryParams;
+    parameters = new Object[] { path, queryParams };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   * 
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    ProductService lService = (ProductService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    lService.testDateQueryParamsBean(path, queryParams);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
     // Trace result of service call.

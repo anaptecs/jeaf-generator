@@ -951,6 +951,81 @@ paths:
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
 
+  /products/test-date-query-params-beans/{path}:
+    get:
+      operationId: testDateQueryParamsBean
+      parameters:
+        - name: offsetDateTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: offsetTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+        - name: localDateTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: localTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+        - name: localDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: utilDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: calendar
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: sqlTimestamp
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: sqlTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+        - name: sqlDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+
 
 security:
   - {}

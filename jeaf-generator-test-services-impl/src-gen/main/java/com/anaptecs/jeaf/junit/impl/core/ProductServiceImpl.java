@@ -31,6 +31,7 @@ import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
 import com.anaptecs.jeaf.junit.openapi.base.StringCodeType;
 import com.anaptecs.jeaf.junit.openapi.service1.ChildBeanParameterType;
+import com.anaptecs.jeaf.junit.openapi.service1.DateQueryParamsBean;
 import com.anaptecs.jeaf.junit.openapi.service1.LocalBeanParamType;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
@@ -358,5 +359,14 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
       java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
+  }
+
+  /**
+   * 
+   * @param pPath
+   * @param pQueryParams
+   */
+  @Override
+  public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
   }
 }
