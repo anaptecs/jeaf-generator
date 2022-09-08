@@ -5,6 +5,15 @@
  */
 package com.anaptecs.jeaf.junit.openapi.service1;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.validation.constraints.NotBlank;
@@ -213,4 +222,22 @@ public interface ProductService extends Service {
    * @return {@link CurrencyCode}
    */
   List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode );
+
+  /**
+   * 
+   * @param pPath
+   * @param pStartTimestamp
+   * @param pStartTime
+   * @param pLocalStartTimestamp
+   * @param pLocalStartTime
+   * @param pLocalStartDate
+   * @param pCalendar
+   * @param pUtilDate
+   * @param pSQLTimestamp
+   * @param pSQLTime
+   * @param pSQLDate
+   */
+  void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
+      LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate );
 }

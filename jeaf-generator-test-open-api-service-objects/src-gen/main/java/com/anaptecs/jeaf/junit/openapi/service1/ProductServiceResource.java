@@ -5,6 +5,15 @@
  */
 package com.anaptecs.jeaf.junit.openapi.service1;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -391,6 +400,24 @@ public class ProductServiceResource {
         }
       }
     });
+  }
+
+  /**
+   * {@link ProductService#testDateQueryParams()}
+   */
+  @Path("test-date-query-params/{path}")
+  @GET
+  public Response testDateQueryParams( @PathParam("path") String pPath,
+      @QueryParam("startTimestamp") OffsetDateTime pStartTimestamp, @QueryParam("startTime") OffsetTime pStartTime,
+      @QueryParam("localStartTimestamp") LocalDateTime pLocalStartTimestamp,
+      @QueryParam("localStartTime") LocalTime pLocalStartTime, @QueryParam("localStartDate") LocalDate pLocalStartDate,
+      @QueryParam("calendar") Calendar pCalendar, @QueryParam("utilDate") java.util.Date pUtilDate,
+      @QueryParam("sqlTimestamp") Timestamp pSQLTimestamp, @QueryParam("sqlTime") Time pSQLTime,
+      @QueryParam("sqlDate") Date pSQLDate ) {
+    ProductService lService = this.getProductService();
+    lService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
+        pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
+    return Response.status(Response.Status.OK).build();
   }
 
   /**

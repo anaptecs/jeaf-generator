@@ -5,6 +5,15 @@
  */
 package com.anaptecs.jeaf.junit.impl.core;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.util.Calendar;
 import java.util.List;
 
 import com.anaptecs.jeaf.core.api.Component;
@@ -329,5 +338,25 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   public List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode ) {
     // TODO Implement method and return real result
     return null;
+  }
+
+  /**
+   * 
+   * @param pPath
+   * @param pStartTimestamp
+   * @param pStartTime
+   * @param pLocalStartTimestamp
+   * @param pLocalStartTime
+   * @param pLocalStartDate
+   * @param pCalendar
+   * @param pUtilDate
+   * @param pSQLTimestamp
+   * @param pSQLTime
+   * @param pSQLDate
+   */
+  @Override
+  public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
+      LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
   }
 }

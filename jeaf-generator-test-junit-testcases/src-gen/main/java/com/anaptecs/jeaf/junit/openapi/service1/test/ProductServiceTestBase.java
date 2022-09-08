@@ -183,6 +183,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testTestCodeTypeUsage( ) throws Exception;
 
   /**
+   * Method test the implementation of service method testDateQueryParams(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestDateQueryParams( ) throws Exception;
+
+  /**
    * Method test the implementation of service method getDefaultChannel(...)
    * 
    * @throws Exception if the test fails.
