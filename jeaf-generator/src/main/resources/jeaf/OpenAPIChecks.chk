@@ -16,7 +16,7 @@ context RESTOperation if runChecks("RESTOperation") ERROR "Error: Either REST re
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: Either REST resource or REST operation need to define at least one produced media type (" + this.fqn() + ")": unifyMediaTypes(((JMM::RESTResource)this.owner).produces, this.produces).size > 0;
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + ((NamedElement)owner).name + "." + name + "(...) has input parameters without name. Please ensure that all input parameters are named (" + fqn() + ")": this.areAllInputParametersNamed() == true;
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + ((NamedElement)owner).name + "."+ name + "(...) has multiple request body parameters. Please ensure that there is not more than 1 request body for a REST operation (" + this.getBodyParamNames() + ")": this.getBodyParamNames().size < 2 ;
-context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + ((NamedElement)owner).name + "."+ name + "(...) has request body parameter even though its http method does not allow it. (" + fqn() + ")": this.hasUnsupportedRequestBody() == false ;
+context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + ((NamedElement)owner).name + "."+ name + "(...) has request body parameter even though its http method(s) " + httpMethods + " do not allow it. (" + fqn() + ")": this.hasUnsupportedRequestBody() == false ;
 
 context Model if runChecks() ERROR "Error: OpenAPI Specification more than one global default error response": this.hasValidOneGlobalDefaultErrorResponse() == false;
 
