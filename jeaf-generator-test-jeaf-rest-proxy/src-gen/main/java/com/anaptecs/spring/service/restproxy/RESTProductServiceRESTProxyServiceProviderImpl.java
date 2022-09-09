@@ -46,6 +46,7 @@ import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.TimeUnit;
+import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 
 /**
@@ -198,18 +199,20 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     }
     // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    if (pContext.getAccessToken() != null) {
-      lRequestBuilder.setHeader("token", pContext.getAccessToken());
-    }
-    else {
-      lRequestBuilder.setHeader("token", null);
-    }
-    if (pContext.getLanguage() != null) {
-      lRequestBuilder.setHeader("lang",
-          XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class).convert(pContext.getLanguage()));
-    }
-    else {
-      lRequestBuilder.setHeader("lang", null);
+    if (pContext != null) {
+      if (pContext.getAccessToken() != null) {
+        lRequestBuilder.setHeader("token", pContext.getAccessToken());
+      }
+      else {
+        lRequestBuilder.setHeader("token", null);
+      }
+      if (pContext.getLanguage() != null) {
+        lRequestBuilder.setHeader("lang", XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class)
+            .convert(pContext.getLanguage()));
+      }
+      else {
+        lRequestBuilder.setHeader("lang", null);
+      }
     }
     // Handle cookie parameters
     BasicCookieStore lCookieStore = new BasicCookieStore();
@@ -609,6 +612,207 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     }
     // Set HTTP header(s)
     lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    // Execute request.
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+  }
+
+  /**
+   * 
+   * @param pPath
+   * @param pOffsetDateTime
+   * @param pOffsetTime
+   * @param pLocalDateTime
+   * @param pLocalTime
+   * @param pLocalDate
+   * @param pCalendar
+   * @param pUtilDate
+   * @param pSQLTimestamp
+   * @param pSQLTime
+   * @param pSQLDate
+   */
+  @Override
+  public void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
+      LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
+    // Create builder for GET request
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+    // Build URI of request
+    StringBuilder lURIBuilder = new StringBuilder();
+    lURIBuilder.append(configuration.getExternalServiceURL());
+    lURIBuilder.append("/rest-products");
+    lURIBuilder.append('/');
+    lURIBuilder.append("test-date-header-params/");
+    lURIBuilder.append(pPath);
+    lRequestBuilder.setUri(lURIBuilder.toString());
+    // Set HTTP header(s)
+    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    if (pOffsetDateTime != null) {
+      lRequestBuilder.setHeader("Offset-Date-Time", XFun.getDatatypeConverterRegistry()
+          .getConverter(OffsetDateTime.class, String.class).convert(pOffsetDateTime));
+    }
+    else {
+      lRequestBuilder.setHeader("Offset-Date-Time", null);
+    }
+    if (pOffsetTime != null) {
+      lRequestBuilder.setHeader("Offset-Time",
+          XFun.getDatatypeConverterRegistry().getConverter(OffsetTime.class, String.class).convert(pOffsetTime));
+    }
+    else {
+      lRequestBuilder.setHeader("Offset-Time", null);
+    }
+    if (pLocalDateTime != null) {
+      lRequestBuilder.setHeader("Local-Date-Time",
+          XFun.getDatatypeConverterRegistry().getConverter(LocalDateTime.class, String.class).convert(pLocalDateTime));
+    }
+    else {
+      lRequestBuilder.setHeader("Local-Date-Time", null);
+    }
+    if (pLocalTime != null) {
+      lRequestBuilder.setHeader("Local-Time",
+          XFun.getDatatypeConverterRegistry().getConverter(LocalTime.class, String.class).convert(pLocalTime));
+    }
+    else {
+      lRequestBuilder.setHeader("Local-Time", null);
+    }
+    if (pLocalDate != null) {
+      lRequestBuilder.setHeader("Local-Date",
+          XFun.getDatatypeConverterRegistry().getConverter(LocalDate.class, String.class).convert(pLocalDate));
+    }
+    else {
+      lRequestBuilder.setHeader("Local-Date", null);
+    }
+    if (pCalendar != null) {
+      lRequestBuilder.setHeader("Calendar",
+          XFun.getDatatypeConverterRegistry().getConverter(Calendar.class, String.class).convert(pCalendar));
+    }
+    else {
+      lRequestBuilder.setHeader("Calendar", null);
+    }
+    if (pUtilDate != null) {
+      lRequestBuilder.setHeader("Util-Date",
+          XFun.getDatatypeConverterRegistry().getConverter(java.util.Date.class, String.class).convert(pUtilDate));
+    }
+    else {
+      lRequestBuilder.setHeader("Util-Date", null);
+    }
+    if (pSQLTimestamp != null) {
+      lRequestBuilder.setHeader("SQL-Timestamp",
+          XFun.getDatatypeConverterRegistry().getConverter(Timestamp.class, String.class).convert(pSQLTimestamp));
+    }
+    else {
+      lRequestBuilder.setHeader("SQL-Timestamp", null);
+    }
+    if (pSQLTime != null) {
+      lRequestBuilder.setHeader("SQL-Time",
+          XFun.getDatatypeConverterRegistry().getConverter(Time.class, String.class).convert(pSQLTime));
+    }
+    else {
+      lRequestBuilder.setHeader("SQL-Time", null);
+    }
+    if (pSQLDate != null) {
+      lRequestBuilder.setHeader("SQL-Date",
+          XFun.getDatatypeConverterRegistry().getConverter(Date.class, String.class).convert(pSQLDate));
+    }
+    else {
+      lRequestBuilder.setHeader("SQL-Date", null);
+    }
+    // Execute request.
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+  }
+
+  /**
+   * 
+   * @param pPath
+   * @param pHeaderParams
+   */
+  @Override
+  public void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
+    // Create builder for GET request
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+    // Build URI of request
+    StringBuilder lURIBuilder = new StringBuilder();
+    lURIBuilder.append(configuration.getExternalServiceURL());
+    lURIBuilder.append("/rest-products");
+    lURIBuilder.append('/');
+    lURIBuilder.append("test-date-header-params-beans/");
+    lURIBuilder.append(pPath);
+    lRequestBuilder.setUri(lURIBuilder.toString());
+    // Set HTTP header(s)
+    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    if (pHeaderParams != null) {
+      if (pHeaderParams.getOffsetDateTime() != null) {
+        lRequestBuilder.setHeader("Offset-Date-Time", XFun.getDatatypeConverterRegistry()
+            .getConverter(OffsetDateTime.class, String.class).convert(pHeaderParams.getOffsetDateTime()));
+      }
+      else {
+        lRequestBuilder.setHeader("Offset-Date-Time", null);
+      }
+      if (pHeaderParams.getOffsetTime() != null) {
+        lRequestBuilder.setHeader("Offset-Time", XFun.getDatatypeConverterRegistry()
+            .getConverter(OffsetTime.class, String.class).convert(pHeaderParams.getOffsetTime()));
+      }
+      else {
+        lRequestBuilder.setHeader("Offset-Time", null);
+      }
+      if (pHeaderParams.getLocalDateTime() != null) {
+        lRequestBuilder.setHeader("Local-Date-Time", XFun.getDatatypeConverterRegistry()
+            .getConverter(LocalDateTime.class, String.class).convert(pHeaderParams.getLocalDateTime()));
+      }
+      else {
+        lRequestBuilder.setHeader("Local-Date-Time", null);
+      }
+      if (pHeaderParams.getLocalTime() != null) {
+        lRequestBuilder.setHeader("Local-Time", XFun.getDatatypeConverterRegistry()
+            .getConverter(LocalTime.class, String.class).convert(pHeaderParams.getLocalTime()));
+      }
+      else {
+        lRequestBuilder.setHeader("Local-Time", null);
+      }
+      if (pHeaderParams.getLocalDate() != null) {
+        lRequestBuilder.setHeader("Local-Date", XFun.getDatatypeConverterRegistry()
+            .getConverter(LocalDate.class, String.class).convert(pHeaderParams.getLocalDate()));
+      }
+      else {
+        lRequestBuilder.setHeader("Local-Date", null);
+      }
+      if (pHeaderParams.getUtilDate() != null) {
+        lRequestBuilder.setHeader("Util-Date", XFun.getDatatypeConverterRegistry()
+            .getConverter(java.util.Date.class, String.class).convert(pHeaderParams.getUtilDate()));
+      }
+      else {
+        lRequestBuilder.setHeader("Util-Date", null);
+      }
+      if (pHeaderParams.getCalendar() != null) {
+        lRequestBuilder.setHeader("Calendar", XFun.getDatatypeConverterRegistry()
+            .getConverter(Calendar.class, String.class).convert(pHeaderParams.getCalendar()));
+      }
+      else {
+        lRequestBuilder.setHeader("Calendar", null);
+      }
+      if (pHeaderParams.getSqlTimestamp() != null) {
+        lRequestBuilder.setHeader("SQL-Timestamp", XFun.getDatatypeConverterRegistry()
+            .getConverter(Timestamp.class, String.class).convert(pHeaderParams.getSqlTimestamp()));
+      }
+      else {
+        lRequestBuilder.setHeader("SQL-Timestamp", null);
+      }
+      if (pHeaderParams.getSqlTime() != null) {
+        lRequestBuilder.setHeader("SQL-Time", XFun.getDatatypeConverterRegistry().getConverter(Time.class, String.class)
+            .convert(pHeaderParams.getSqlTime()));
+      }
+      else {
+        lRequestBuilder.setHeader("SQL-Time", null);
+      }
+      if (pHeaderParams.getSqlDate() != null) {
+        lRequestBuilder.setHeader("SQL-Date", XFun.getDatatypeConverterRegistry().getConverter(Date.class, String.class)
+            .convert(pHeaderParams.getSqlDate()));
+      }
+      else {
+        lRequestBuilder.setHeader("SQL-Date", null);
+      }
+    }
     // Execute request.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     httpClient.executeNoResponseContentRequest(lRequest, null, 200);

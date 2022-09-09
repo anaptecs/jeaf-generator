@@ -65,6 +65,7 @@ import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.impl.SpringTestApplication;
+import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean.Builder;
 import com.anaptecs.spring.service.RESTProductService;
@@ -167,7 +168,8 @@ public class SpringRESTControllerTest {
         .withQueryStringParameter("calendar", "2022-03-17T13:22:12.453+01:00")
         .withQueryStringParameter("utilDate", "2022-03-17T13:22:12.453+01:00")
         .withQueryStringParameter("sqlTimestamp", "2022-03-17T13:22:12.453+01:00")
-        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00").withQueryStringParameter("sqlDate", "2022-03-17"))
+        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00")
+        .withQueryStringParameter("sqlDate", "2022-03-17"))
         .respond(mockResponse(null, 200, 0));
 
     lClient.when(mockRequest("/rest-products/test-date-query-params/2")
@@ -179,7 +181,8 @@ public class SpringRESTControllerTest {
         .withQueryStringParameter("calendar", "2022-03-17T13:22:12.453+01:00")
         .withQueryStringParameter("utilDate", "2022-03-17T13:22:12.453+01:00")
         .withQueryStringParameter("sqlTimestamp", "2022-03-17T13:22:12.453+01:00")
-        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00").withQueryStringParameter("sqlDate", "2022-03-17"))
+        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00")
+        .withQueryStringParameter("sqlDate", "2022-03-17"))
         .respond(mockResponse(null, 200, 0));
 
     lClient.when(mockRequest("/rest-products/test-date-query-params/3")
@@ -191,7 +194,8 @@ public class SpringRESTControllerTest {
         .withQueryStringParameter("calendar", "2022-03-17T13:22:12.453+01:00")
         .withQueryStringParameter("utilDate", "2022-03-17T13:22:12.453+01:00")
         .withQueryStringParameter("sqlTimestamp", "2022-03-17T13:22:12.453+01:00")
-        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00").withQueryStringParameter("sqlDate", "2022-03-17"))
+        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00")
+        .withQueryStringParameter("sqlDate", "2022-03-17"))
         .respond(mockResponse(null, 200, 0));
 
     lClient.when(mockRequest("/rest-products/test-date-query-params/4")).respond(mockResponse(null, 200, 0));
@@ -201,36 +205,126 @@ public class SpringRESTControllerTest {
         .withQueryStringParameter("offsetDateTime", "2022-03-17T13:22:12.453+01:00")
         .withQueryStringParameter("offsetTime", "13:22:12.453+01:00")
         .withQueryStringParameter("localDateTime", "2022-03-17T13:22:12.453")
-        .withQueryStringParameter("localTime", "13:22:12.453").withQueryStringParameter("localDate", "2022-03-17")
+        .withQueryStringParameter("localTime", "13:22:12.453")
+        .withQueryStringParameter("localDate", "2022-03-17")
         .withQueryStringParameter("calendar", "2022-03-17T13:22:12.453+01:00")
         .withQueryStringParameter("utilDate", "2022-03-17T13:22:12.453+01:00")
         .withQueryStringParameter("sqlTimestamp", "2022-03-17T13:22:12.453+01:00")
-        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00").withQueryStringParameter("sqlDate", "2022-03-17"))
+        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00")
+        .withQueryStringParameter("sqlDate", "2022-03-17"))
         .respond(mockResponse(null, 200, 0));
 
     lClient.when(mockRequest("/rest-products/test-date-query-params-beans/2")
         .withQueryStringParameter("offsetDateTime", "2022-03-17T13:22:12+01:00")
         .withQueryStringParameter("offsetTime", "13:22:12.453+01:00")
         .withQueryStringParameter("localDateTime", "2022-03-17T13:22:12.453")
-        .withQueryStringParameter("localTime", "13:22:12.453").withQueryStringParameter("localDate", "2022-03-17")
+        .withQueryStringParameter("localTime", "13:22:12.453")
+        .withQueryStringParameter("localDate", "2022-03-17")
         .withQueryStringParameter("calendar", "2022-03-17T13:22:12.453+01:00")
         .withQueryStringParameter("utilDate", "2022-03-17T13:22:12.453+01:00")
         .withQueryStringParameter("sqlTimestamp", "2022-03-17T13:22:12.453+01:00")
-        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00").withQueryStringParameter("sqlDate", "2022-03-17"))
+        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00")
+        .withQueryStringParameter("sqlDate", "2022-03-17"))
         .respond(mockResponse(null, 200, 0));
 
     lClient.when(mockRequest("/rest-products/test-date-query-params-beans/3")
         .withQueryStringParameter("offsetDateTime", "2022-03-17T13:22:00+01:00")
         .withQueryStringParameter("offsetTime", "13:22:12.453+01:00")
         .withQueryStringParameter("localDateTime", "2022-03-17T13:22:12.453")
-        .withQueryStringParameter("localTime", "13:22:12.453").withQueryStringParameter("localDate", "2022-03-17")
+        .withQueryStringParameter("localTime", "13:22:12.453")
+        .withQueryStringParameter("localDate", "2022-03-17")
         .withQueryStringParameter("calendar", "2022-03-17T13:22:12.453+01:00")
         .withQueryStringParameter("utilDate", "2022-03-17T13:22:12.453+01:00")
         .withQueryStringParameter("sqlTimestamp", "2022-03-17T13:22:12.453+01:00")
-        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00").withQueryStringParameter("sqlDate", "2022-03-17"))
+        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00")
+        .withQueryStringParameter("sqlDate", "2022-03-17"))
         .respond(mockResponse(null, 200, 0));
 
     lClient.when(mockRequest("/rest-products/test-date-query-params-beans/4")).respond(mockResponse(null, 200, 0));
+
+    // test-date-header-params
+    lClient.when(mockRequest("/rest-products/test-date-header-params/1")
+        .withHeader("Offset-Date-Time", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("Offset-Time", "13:22:12.453+01:00")
+        .withHeader("Local-Date-Time", "2022-03-17T13:22:12.453")
+        .withHeader("Local-Time", "13:22:12.453")
+        .withHeader("Local-Date", "2022-03-17")
+        .withHeader("Calendar", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("Util-Date", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Timestamp", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Time", "13:22:12.453+01:00")
+        .withHeader("SQL-Date", "2022-03-17"))
+        .respond(mockResponse(null, 200, 0));
+
+    lClient.when(mockRequest("/rest-products/test-date-header-params/2")
+        .withHeader("Offset-Date-Time", "2022-03-17T13:22:12+01:00")
+        .withHeader("Offset-Time", "13:22:12.453+01:00")
+        .withHeader("Local-Date-Time", "2022-03-17T13:22:12.453")
+        .withHeader("Local-Time", "13:22:12.453")
+        .withHeader("Local-Date", "2022-03-17")
+        .withHeader("Calendar", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("Util-Date", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Timestamp", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Time", "13:22:12.453+01:00")
+        .withHeader("SQL-Date", "2022-03-17"))
+        .respond(mockResponse(null, 200, 0));
+
+    lClient.when(mockRequest("/rest-products/test-date-header-params/3")
+        .withHeader("Offset-Date-Time", "2022-03-17T13:22:00+01:00")
+        .withHeader("Offset-Time", "13:22:12.453+01:00")
+        .withHeader("Local-Date-Time", "2022-03-17T13:22:12.453")
+        .withHeader("Local-Time", "13:22:12.453")
+        .withHeader("Local-Date", "2022-03-17")
+        .withHeader("Calendar", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("Util-Date", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Timestamp", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Time", "13:22:12.453+01:00")
+        .withHeader("SQL-Date", "2022-03-17"))
+        .respond(mockResponse(null, 200, 0));
+
+    lClient.when(mockRequest("/rest-products/test-date-header-params/4")).respond(mockResponse(null, 200, 0));
+
+    // test-date-header-params-beans
+    lClient.when(mockRequest("/rest-products/test-date-header-params-beans/1")
+        .withHeader("Offset-Date-Time", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("Offset-Time", "13:22:12.453+01:00")
+        .withHeader("Local-Date-Time", "2022-03-17T13:22:12.453")
+        .withHeader("Local-Time", "13:22:12.453")
+        .withHeader("Local-Date", "2022-03-17")
+        .withHeader("Calendar", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("Util-Date", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Timestamp", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Time", "13:22:12.453+01:00")
+        .withHeader("SQL-Date", "2022-03-17"))
+        .respond(mockResponse(null, 200, 0));
+
+    lClient.when(mockRequest("/rest-products/test-date-header-params-beans/2")
+        .withHeader("Offset-Date-Time", "2022-03-17T13:22:12+01:00")
+        .withHeader("Offset-Time", "13:22:12.453+01:00")
+        .withHeader("Local-Date-Time", "2022-03-17T13:22:12.453")
+        .withHeader("Local-Time", "13:22:12.453")
+        .withHeader("Local-Date", "2022-03-17")
+        .withHeader("Calendar", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("Util-Date", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Timestamp", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Time", "13:22:12.453+01:00")
+        .withHeader("SQL-Date", "2022-03-17"))
+        .respond(mockResponse(null, 200, 0));
+
+    lClient.when(mockRequest("/rest-products/test-date-header-params-beans/3")
+        .withHeader("Offset-Date-Time", "2022-03-17T13:22:00+01:00")
+        .withHeader("Offset-Time", "13:22:12.453+01:00")
+        .withHeader("Local-Date-Time", "2022-03-17T13:22:12.453")
+        .withHeader("Local-Time", "13:22:12.453")
+        .withHeader("Local-Date", "2022-03-17")
+        .withHeader("Calendar", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("Util-Date", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Timestamp", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Time", "13:22:12.453+01:00")
+        .withHeader("SQL-Date", "2022-03-17"))
+        .respond(mockResponse(null, 200, 0));
+
+    lClient.when(mockRequest("/rest-products/test-date-header-params-beans/4")).respond(mockResponse(null, 200, 0));
   }
 
   @AfterAll
@@ -521,7 +615,7 @@ public class SpringRESTControllerTest {
   }
 
   @Test
-  void testDateConversions( ) {
+  void testQueryParamDateConversions( ) {
     // Date and Calendar to String
     Calendar lCalendar = DateTools.getDateTools().toCalendar("2022-03-17 13:22:12.453");
     lCalendar.setTimeZone(TimeZone.getTimeZone("GMT+1:00"));
@@ -596,7 +690,7 @@ public class SpringRESTControllerTest {
   }
 
   @Test
-  void testDateConversionsForBeanParams( ) {
+  void testBeanQueryParamDateConversions( ) {
     // Date and Calendar to String
     Calendar lCalendar = DateTools.getDateTools().toCalendar("2022-03-17 13:22:12.453");
     lCalendar.setTimeZone(TimeZone.getTimeZone("GMT+1:00"));
@@ -698,4 +792,179 @@ public class SpringRESTControllerTest {
     restProductService.testDateQueryParamsBean("4", null);
   }
 
+  @Test
+  void testHeaderParamDateConversions( ) {
+    // Date and Calendar to String
+    Calendar lCalendar = DateTools.getDateTools().toCalendar("2022-03-17 13:22:12.453");
+    lCalendar.setTimeZone(TimeZone.getTimeZone("GMT+1:00"));
+    Date lUtilDate = DateTools.getDateTools().toDate(lCalendar);
+
+    SimpleDateFormat lDateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lCalendar.getTime()));
+
+    // Test java.sql classes
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lUtilDate));
+    Timestamp lSQLTimestamp = new Timestamp(lUtilDate.getTime());
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lSQLTimestamp));
+    assertEquals("2022-03-17 13:22:12.453", lSQLTimestamp.toString());
+
+    SimpleDateFormat lTimeFormatter = new SimpleDateFormat("HH:mm:ss.SSSXXX");
+    Time lSQLTime = new Time(lUtilDate.getTime());
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lSQLTime));
+    assertEquals("13:22:12.453+01:00", lTimeFormatter.format(lSQLTime));
+    assertEquals("13:22:12", lSQLTime.toString());
+
+    SimpleDateFormat lDateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+    java.sql.Date lSQLDate = new java.sql.Date(lUtilDate.getTime());
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lSQLDate));
+    assertEquals("2022-03-17", lDateFormatter.format(lSQLDate));
+    assertEquals("2022-03-17", lSQLDate.toString());
+
+    // Test java.time offset aware classes
+    OffsetDateTime lOffsetDateTime = OffsetDateTime.parse("2022-03-17T13:22:12.453+01:00");
+    assertEquals("2022-03-17T13:22:12.453+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
+    assertEquals("2022-03-17T13:22:12.453+01:00", lOffsetDateTime.toString());
+
+    OffsetTime lOffsetTime = OffsetTime.parse("13:22:12.453+01:00");
+    assertEquals("13:22:12.453+01:00", DateTimeFormatter.ISO_OFFSET_TIME.format(lOffsetTime));
+    assertEquals("13:22:12.453+01:00", lOffsetTime.toString());
+
+    // Test java.time local classes
+    LocalDateTime lLocalDateTime = LocalDateTime.parse("2022-03-17T13:22:12.453");
+    assertEquals("2022-03-17T13:22:12.453", DateTimeFormatter.ISO_DATE_TIME.format(lLocalDateTime));
+    assertEquals("2022-03-17T13:22:12.453", lLocalDateTime.toString());
+
+    LocalDate lLocalDate = LocalDate.parse("2022-03-17");
+    assertEquals("2022-03-17", DateTimeFormatter.ISO_DATE.format(lLocalDate));
+    assertEquals("2022-03-17", lLocalDate.toString());
+
+    LocalTime lLocalTime = LocalTime.parse("13:22:12.453");
+    assertEquals("13:22:12.453", DateTimeFormatter.ISO_TIME.format(lLocalTime));
+    assertEquals("13:22:12.453", lLocalTime.toString());
+
+    // TODO Generate warning in case of OpenAPI incompatible date types.
+
+    restProductService.testDateHeaderParams("1", lOffsetDateTime, lOffsetTime, lLocalDateTime, lLocalTime, lLocalDate,
+        lCalendar, lSQLDate, lSQLTimestamp, lSQLTime, lSQLDate);
+
+    lOffsetDateTime = OffsetDateTime.parse("2022-03-17T13:22:12+01:00");
+    assertEquals("2022-03-17T13:22:12+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
+    assertEquals("2022-03-17T13:22:12+01:00", lOffsetDateTime.toString());
+
+    restProductService.testDateHeaderParams("2", lOffsetDateTime, lOffsetTime, lLocalDateTime, lLocalTime, lLocalDate,
+        lCalendar, lSQLDate, lSQLTimestamp, lSQLTime, lSQLDate);
+
+    lOffsetDateTime = OffsetDateTime.parse("2022-03-17T13:22+01:00");
+    assertEquals("2022-03-17T13:22:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
+    assertEquals("2022-03-17T13:22+01:00", lOffsetDateTime.toString());
+
+    restProductService.testDateHeaderParams("3", lOffsetDateTime, lOffsetTime, lLocalDateTime, lLocalTime, lLocalDate,
+        lCalendar, lSQLDate, lSQLTimestamp, lSQLTime, lSQLDate);
+
+    restProductService.testDateHeaderParams("4", null, null, null, null, null, null, null, null, null, null);
+
+  }
+
+  @Test
+  void testBeanHeaderParamDateConversions( ) {
+    // Date and Calendar to String
+    Calendar lCalendar = DateTools.getDateTools().toCalendar("2022-03-17 13:22:12.453");
+    lCalendar.setTimeZone(TimeZone.getTimeZone("GMT+1:00"));
+    Date lUtilDate = DateTools.getDateTools().toDate(lCalendar);
+
+    SimpleDateFormat lDateTimeFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lCalendar.getTime()));
+
+    // Test java.sql classes
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lUtilDate));
+    Timestamp lSQLTimestamp = new Timestamp(lUtilDate.getTime());
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lSQLTimestamp));
+    assertEquals("2022-03-17 13:22:12.453", lSQLTimestamp.toString());
+
+    SimpleDateFormat lTimeFormatter = new SimpleDateFormat("HH:mm:ss.SSSXXX");
+    Time lSQLTime = new Time(lUtilDate.getTime());
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lSQLTime));
+    assertEquals("13:22:12.453+01:00", lTimeFormatter.format(lSQLTime));
+    assertEquals("13:22:12", lSQLTime.toString());
+
+    SimpleDateFormat lDateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+    java.sql.Date lSQLDate = new java.sql.Date(lUtilDate.getTime());
+    assertEquals("2022-03-17T13:22:12.453+01:00", lDateTimeFormatter.format(lSQLDate));
+    assertEquals("2022-03-17", lDateFormatter.format(lSQLDate));
+    assertEquals("2022-03-17", lSQLDate.toString());
+
+    // XFun.getTrace().info(String.format("%1$tY-%1$tm-%1$tdT%1$tH:%1$tM:%1$tS.%1$tL%1$tz", new Date()));
+
+    // Test java.time offset aware classes
+    OffsetDateTime lOffsetDateTime = OffsetDateTime.parse("2022-03-17T13:22:12.453+01:00");
+    assertEquals("2022-03-17T13:22:12.453+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
+    assertEquals("2022-03-17T13:22:12.453+01:00", lOffsetDateTime.toString());
+
+    OffsetTime lOffsetTime = OffsetTime.parse("13:22:12.453+01:00");
+    assertEquals("13:22:12.453+01:00", DateTimeFormatter.ISO_OFFSET_TIME.format(lOffsetTime));
+    assertEquals("13:22:12.453+01:00", lOffsetTime.toString());
+
+    // Test java.time local classes
+    LocalDateTime lLocalDateTime = LocalDateTime.parse("2022-03-17T13:22:12.453");
+    assertEquals("2022-03-17T13:22:12.453", DateTimeFormatter.ISO_DATE_TIME.format(lLocalDateTime));
+    assertEquals("2022-03-17T13:22:12.453", lLocalDateTime.toString());
+
+    LocalDate lLocalDate = LocalDate.parse("2022-03-17");
+    assertEquals("2022-03-17", DateTimeFormatter.ISO_DATE.format(lLocalDate));
+    assertEquals("2022-03-17", lLocalDate.toString());
+
+    LocalTime lLocalTime = LocalTime.parse("13:22:12.453");
+    assertEquals("13:22:12.453", DateTimeFormatter.ISO_TIME.format(lLocalTime));
+    assertEquals("13:22:12.453", lLocalTime.toString());
+
+    // TODO Generate warning in case of OpenAPI incompatible date types.
+    com.anaptecs.spring.service.DateHeaderParamsBean.Builder lBuilder = DateHeaderParamsBean.Builder.newBuilder();
+    lBuilder.setOffsetDateTime(lOffsetDateTime);
+    lBuilder.setOffsetTime(lOffsetTime);
+    lBuilder.setLocalDateTime(lLocalDateTime);
+    lBuilder.setLocalTime(lLocalTime);
+    lBuilder.setLocalDate(lLocalDate);
+    lBuilder.setUtilDate(lUtilDate);
+    lBuilder.setCalendar(lCalendar);
+    lBuilder.setSqlTimestamp(lSQLTimestamp);
+    lBuilder.setSqlTime(lSQLTime);
+    lBuilder.setSqlDate(lSQLDate);
+    restProductService.testDateHeaderParamsBean("1", lBuilder.build());
+
+    lOffsetDateTime = OffsetDateTime.parse("2022-03-17T13:22:12+01:00");
+    assertEquals("2022-03-17T13:22:12+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
+    assertEquals("2022-03-17T13:22:12+01:00", lOffsetDateTime.toString());
+
+    lBuilder = DateHeaderParamsBean.Builder.newBuilder();
+    lBuilder.setOffsetDateTime(lOffsetDateTime);
+    lBuilder.setOffsetTime(lOffsetTime);
+    lBuilder.setLocalDateTime(lLocalDateTime);
+    lBuilder.setLocalTime(lLocalTime);
+    lBuilder.setLocalDate(lLocalDate);
+    lBuilder.setUtilDate(lUtilDate);
+    lBuilder.setCalendar(lCalendar);
+    lBuilder.setSqlTimestamp(lSQLTimestamp);
+    lBuilder.setSqlTime(lSQLTime);
+    lBuilder.setSqlDate(lSQLDate);
+    restProductService.testDateHeaderParamsBean("2", lBuilder.build());
+
+    lOffsetDateTime = OffsetDateTime.parse("2022-03-17T13:22+01:00");
+    assertEquals("2022-03-17T13:22:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
+    assertEquals("2022-03-17T13:22+01:00", lOffsetDateTime.toString());
+
+    lBuilder = DateHeaderParamsBean.Builder.newBuilder();
+    lBuilder.setOffsetDateTime(lOffsetDateTime);
+    lBuilder.setOffsetTime(lOffsetTime);
+    lBuilder.setLocalDateTime(lLocalDateTime);
+    lBuilder.setLocalTime(lLocalTime);
+    lBuilder.setLocalDate(lLocalDate);
+    lBuilder.setUtilDate(lUtilDate);
+    lBuilder.setCalendar(lCalendar);
+    lBuilder.setSqlTimestamp(lSQLTimestamp);
+    lBuilder.setSqlTime(lSQLTime);
+    lBuilder.setSqlDate(lSQLDate);
+    restProductService.testDateHeaderParamsBean("3", lBuilder.build());
+
+    restProductService.testDateHeaderParamsBean("4", null);
+  }
 }

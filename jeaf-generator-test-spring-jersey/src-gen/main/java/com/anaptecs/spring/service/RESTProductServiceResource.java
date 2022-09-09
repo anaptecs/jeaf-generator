@@ -276,6 +276,36 @@ public class RESTProductServiceResource {
   }
 
   /**
+   * {@link RESTProductService#testDateHeaderParams()}
+   */
+  @Path("test-date-header-params/{path}")
+  @GET
+  public Response testDateHeaderParams( @PathParam("path") String pPath,
+      @HeaderParam("Offset-Date-Time") OffsetDateTime pOffsetDateTime,
+      @HeaderParam("Offset-Time") OffsetTime pOffsetTime, @HeaderParam("Local-Date-Time") LocalDateTime pLocalDateTime,
+      @HeaderParam("Local-Time") LocalTime pLocalTime, @HeaderParam("Local-Date") LocalDate pLocalDate,
+      @HeaderParam("Calendar") Calendar pCalendar, @HeaderParam("Util-Date") java.util.Date pUtilDate,
+      @HeaderParam("SQL-Timestamp") Timestamp pSQLTimestamp, @HeaderParam("SQL-Time") Time pSQLTime,
+      @HeaderParam("SQL-Date") Date pSQLDate ) {
+    RESTProductService lService = this.getRESTProductService();
+    lService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate,
+        pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
+    return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link RESTProductService#testDateHeaderParamsBean()}
+   */
+  @Path("test-date-header-params-beans/{path}")
+  @GET
+  public Response testDateHeaderParamsBean( @PathParam("path") String pPath,
+      @BeanParam DateHeaderParamsBean pHeaderParams ) {
+    RESTProductService lService = this.getRESTProductService();
+    lService.testDateHeaderParamsBean(pPath, pHeaderParams);
+    return Response.status(Response.Status.OK).build();
+  }
+
+  /**
    * Method returns reference to service to which all REST requests will be delegated.
    *
    * @return RESTProductService Service instance to which all requests will be delegated.

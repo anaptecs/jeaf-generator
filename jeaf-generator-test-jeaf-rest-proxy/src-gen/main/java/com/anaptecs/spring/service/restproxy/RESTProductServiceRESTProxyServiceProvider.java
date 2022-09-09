@@ -30,6 +30,7 @@ import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.TimeUnit;
+import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 
 /**
@@ -146,4 +147,29 @@ public interface RESTProductServiceRESTProxyServiceProvider extends ServiceProvi
    * @param pQueryParams
    */
   void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams );
+
+  /**
+   * 
+   * @param pPath
+   * @param pOffsetDateTime
+   * @param pOffsetTime
+   * @param pLocalDateTime
+   * @param pLocalTime
+   * @param pLocalDate
+   * @param pCalendar
+   * @param pUtilDate
+   * @param pSQLTimestamp
+   * @param pSQLTime
+   * @param pSQLDate
+   */
+  void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
+      LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate );
+
+  /**
+   * 
+   * @param pPath
+   * @param pHeaderParams
+   */
+  void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams );
 }

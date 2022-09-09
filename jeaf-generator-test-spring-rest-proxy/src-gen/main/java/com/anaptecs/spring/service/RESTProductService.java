@@ -145,4 +145,29 @@ public interface RESTProductService {
    * @param pQueryParams
    */
   void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams );
+
+  /**
+   * 
+   * @param pPath
+   * @param pOffsetDateTime
+   * @param pOffsetTime
+   * @param pLocalDateTime
+   * @param pLocalTime
+   * @param pLocalDate
+   * @param pCalendar
+   * @param pUtilDate
+   * @param pSQLTimestamp
+   * @param pSQLTime
+   * @param pSQLDate
+   */
+  void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
+      LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate );
+
+  /**
+   * 
+   * @param pPath
+   * @param pHeaderParams
+   */
+  void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams );
 }
