@@ -150,13 +150,18 @@ cached List[uml::Parameter] getOpenAPIIncomaptibleParameterTypes(JMM::RESTOperat
   if operation.getOpenAPISpecifications().size > 0
   then operation.ownedParameter.select(e|e.type.isIncompatibleOpenAPIType())
   else {};
-  
+
+cached List[uml::Property] getOpenAPIIncompatibleBeanProperties(JMM::BeanParam beanParam) :
+  beanParam.ownedAttribute.select(e|e.type.isIncompatibleOpenAPIType());
   
 cached boolean isIncompatibleOpenAPIType(uml::Type type) :
   if type.fqn() == "java.time.LocalTime" || type.fqn() == "java.time.LocalDateTime"
   then true
   else false;
   
-cached String asErrorMessage(uml::Parameter parameter) :
+cached String asParamErrorMessage(uml::Parameter parameter) :
   parameter.type.fqn() + " " + parameter.name;
+    
+cached String asPropertyErrorMessage(uml::Property property) :
+  property.type.fqn() + " " + property.name;
     

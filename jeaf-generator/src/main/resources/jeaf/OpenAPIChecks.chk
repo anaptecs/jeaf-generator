@@ -18,7 +18,7 @@ context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperatio
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + ((NamedElement)owner).name + "."+ name + "(...) has multiple request body parameters. Please ensure that there is not more than 1 request body for a REST operation (" + this.getBodyParamNames() + ")": this.getBodyParamNames().size < 2 ;
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + ((NamedElement)owner).name + "."+ name + "(...) has request body parameter even though its http method(s) " + httpMethods + " do not allow it. (" + fqn() + ")": this.hasUnsupportedRequestBody() == false ;
 
-context RESTOperation if runChecks("RESTOperation") WARNING "Warning: [9101] <<RESTOperation>> " + ((NamedElement)owner).name + "."+ name + "(...) has parameter type(s) " + this.getOpenAPIIncomaptibleParameterTypes().asErrorMessage() + " that are not compatible with OpenAPI (" + fqn() + "). For further details please refer to FAQ entry #2.2 on https://anaptecs.atlassian.net/l/cp/ndmtZxvX": this.getOpenAPIIncomaptibleParameterTypes().size == 0;
+context RESTOperation if runChecks("RESTOperation") WARNING "Warning: [9101] <<RESTOperation>> " + ((NamedElement)owner).name + "."+ name + "(...) has parameter type(s) " + this.getOpenAPIIncomaptibleParameterTypes().asParamErrorMessage() + " that are not compatible with OpenAPI (" + fqn() + "). For further details please refer to FAQ entry #2.2 on https://anaptecs.atlassian.net/l/cp/ndmtZxvX": this.getOpenAPIIncomaptibleParameterTypes().size == 0;
 
 context Model if runChecks() ERROR "Error: OpenAPI Specification more than one global default error response": this.hasValidOneGlobalDefaultErrorResponse() == false;
 
@@ -32,3 +32,5 @@ context OpenAPIDataType if runChecks("OpenAPIDataType") ERROR "Error: <<OpenAPID
 
 context PathParam if runChecks("PathParam") ERROR "Error: <<PathParam>> " + this.fqn() + " must be required.": this.lower == 1;
 context PathParam if runChecks("PathParam") ERROR "Error: <<PathParam>> " + this.fqn() + " must not be multivalued.": this.isMultivalued() == false;
+
+context BeanParam if runChecks("RESTOperation") WARNING "Warning: [9103] <<BeanParam>> " + name + " has propertie(s) " + this.getOpenAPIIncompatibleBeanProperties().asPropertyErrorMessage() + " that are not comaptible with OpenAPI (" + fqn() + "). For further details please refer to FAQ entry #2.2 on https://anaptecs.atlassian.net/l/cp/ndmtZxvX": this.getOpenAPIIncompatibleBeanProperties().size == 0;
