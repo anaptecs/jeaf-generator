@@ -7,6 +7,17 @@ package com.anaptecs.spring.service.restproxy;
 
 import java.io.IOException;
 import java.net.URI;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
@@ -40,6 +51,8 @@ import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCodeType;
 import com.anaptecs.spring.service.ChildBeanParameterType;
+import com.anaptecs.spring.service.DateHeaderParamsBean;
+import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.LocalBeanParamType;
 import com.anaptecs.spring.service.ProductService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -870,5 +883,327 @@ public class ProductServiceRESTProxy implements ProductService {
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pPath
+   * @param pStartTimestamp
+   * @param pStartTime
+   * @param pLocalStartTimestamp
+   * @param pLocalStartTime
+   * @param pLocalStartDate
+   * @param pCalendar
+   * @param pUtilDate
+   * @param pSQLTimestamp
+   * @param pSQLTime
+   * @param pSQLDate
+   */
+  @Override
+  public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
+      LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
+    // Create builder for GET request
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+    // Build URI of request
+    StringBuilder lURIBuilder = new StringBuilder();
+    lURIBuilder.append(configuration.getExternalServiceURL());
+    lURIBuilder.append("/products");
+    lURIBuilder.append('/');
+    lURIBuilder.append("test-date-query-params/");
+    lURIBuilder.append(pPath);
+    lRequestBuilder.setUri(lURIBuilder.toString());
+    // Add query parameter(s) to request
+    if (pStartTimestamp != null) {
+      lRequestBuilder.addParameter("startTimestamp", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pStartTimestamp));
+    }
+    if (pStartTime != null) {
+      lRequestBuilder.addParameter("startTime", DateTimeFormatter.ISO_OFFSET_TIME.format(pStartTime));
+    }
+    if (pLocalStartTimestamp != null) {
+      lRequestBuilder.addParameter("localStartTimestamp", DateTimeFormatter.ISO_DATE_TIME.format(pLocalStartTimestamp));
+    }
+    if (pLocalStartTime != null) {
+      lRequestBuilder.addParameter("localStartTime", DateTimeFormatter.ISO_TIME.format(pLocalStartTime));
+    }
+    if (pLocalStartDate != null) {
+      lRequestBuilder.addParameter("localStartDate", DateTimeFormatter.ISO_DATE.format(pLocalStartDate));
+    }
+    if (pCalendar != null) {
+      lRequestBuilder.addParameter("calendar",
+          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pCalendar.getTime()));
+    }
+    if (pUtilDate != null) {
+      lRequestBuilder.addParameter("utilDate", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pUtilDate));
+    }
+    if (pSQLTimestamp != null) {
+      lRequestBuilder.addParameter("sqlTimestamp",
+          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pSQLTimestamp));
+    }
+    if (pSQLTime != null) {
+      lRequestBuilder.addParameter("sqlTime", new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pSQLTime));
+    }
+    if (pSQLDate != null) {
+      lRequestBuilder.addParameter("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pSQLDate));
+    }
+    // Set HTTP header(s)
+    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    // Execute request.
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+  }
+
+  /**
+   * 
+   * @param pPath
+   * @param pQueryParams
+   */
+  @Override
+  public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
+    // Create builder for GET request
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+    // Build URI of request
+    StringBuilder lURIBuilder = new StringBuilder();
+    lURIBuilder.append(configuration.getExternalServiceURL());
+    lURIBuilder.append("/products");
+    lURIBuilder.append('/');
+    lURIBuilder.append("test-date-query-params-beans/");
+    lURIBuilder.append(pPath);
+    lRequestBuilder.setUri(lURIBuilder.toString());
+    // Add query parameter(s) to request
+    if (pQueryParams != null) {
+      if (pQueryParams.getOffsetDateTime() != null) {
+        lRequestBuilder.addParameter("offsetDateTime",
+            DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pQueryParams.getOffsetDateTime()));
+      }
+      if (pQueryParams.getOffsetTime() != null) {
+        lRequestBuilder.addParameter("offsetTime",
+            DateTimeFormatter.ISO_OFFSET_TIME.format(pQueryParams.getOffsetTime()));
+      }
+      if (pQueryParams.getLocalDateTime() != null) {
+        lRequestBuilder.addParameter("localDateTime",
+            DateTimeFormatter.ISO_DATE_TIME.format(pQueryParams.getLocalDateTime()));
+      }
+      if (pQueryParams.getLocalTime() != null) {
+        lRequestBuilder.addParameter("localTime", DateTimeFormatter.ISO_TIME.format(pQueryParams.getLocalTime()));
+      }
+      if (pQueryParams.getLocalDate() != null) {
+        lRequestBuilder.addParameter("localDate", DateTimeFormatter.ISO_DATE.format(pQueryParams.getLocalDate()));
+      }
+      if (pQueryParams.getUtilDate() != null) {
+        lRequestBuilder.addParameter("utilDate",
+            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getUtilDate()));
+      }
+      if (pQueryParams.getCalendar() != null) {
+        lRequestBuilder.addParameter("calendar",
+            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getCalendar().getTime()));
+      }
+      if (pQueryParams.getSqlTimestamp() != null) {
+        lRequestBuilder.addParameter("sqlTimestamp",
+            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTimestamp()));
+      }
+      if (pQueryParams.getSqlTime() != null) {
+        lRequestBuilder.addParameter("sqlTime",
+            new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTime()));
+      }
+      if (pQueryParams.getSqlDate() != null) {
+        lRequestBuilder.addParameter("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pQueryParams.getSqlDate()));
+      }
+    }
+    // Set HTTP header(s)
+    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    // Execute request.
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+  }
+
+  /**
+   * 
+   * @param pPath
+   * @param pOffsetDateTime
+   * @param pOffsetTime
+   * @param pLocalDateTime
+   * @param pLocalTime
+   * @param pLocalDate
+   * @param pCalendar
+   * @param pUtilDate
+   * @param pSQLTimestamp
+   * @param pSQLTime
+   * @param pSQLDate
+   */
+  @Override
+  public void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
+      LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
+    // Create builder for GET request
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+    // Build URI of request
+    StringBuilder lURIBuilder = new StringBuilder();
+    lURIBuilder.append(configuration.getExternalServiceURL());
+    lURIBuilder.append("/products");
+    lURIBuilder.append('/');
+    lURIBuilder.append("test-date-header-params/");
+    lURIBuilder.append(pPath);
+    lRequestBuilder.setUri(lURIBuilder.toString());
+    // Set HTTP header(s)
+    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    if (pOffsetDateTime != null) {
+      lRequestBuilder.setHeader("Offset-Date-Time", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pOffsetDateTime));
+    }
+    else {
+      lRequestBuilder.setHeader("Offset-Date-Time", null);
+    }
+    if (pOffsetTime != null) {
+      lRequestBuilder.setHeader("Offset-Time", DateTimeFormatter.ISO_OFFSET_TIME.format(pOffsetTime));
+    }
+    else {
+      lRequestBuilder.setHeader("Offset-Time", null);
+    }
+    if (pLocalDateTime != null) {
+      lRequestBuilder.setHeader("Local-Date-Time", DateTimeFormatter.ISO_DATE_TIME.format(pLocalDateTime));
+    }
+    else {
+      lRequestBuilder.setHeader("Local-Date-Time", null);
+    }
+    if (pLocalTime != null) {
+      lRequestBuilder.setHeader("Local-Time", DateTimeFormatter.ISO_TIME.format(pLocalTime));
+    }
+    else {
+      lRequestBuilder.setHeader("Local-Time", null);
+    }
+    if (pLocalDate != null) {
+      lRequestBuilder.setHeader("Local-Date", DateTimeFormatter.ISO_DATE.format(pLocalDate));
+    }
+    else {
+      lRequestBuilder.setHeader("Local-Date", null);
+    }
+    if (pCalendar != null) {
+      lRequestBuilder.setHeader("Calendar",
+          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pCalendar.getTime()));
+    }
+    else {
+      lRequestBuilder.setHeader("Calendar", null);
+    }
+    if (pUtilDate != null) {
+      lRequestBuilder.setHeader("Util-Date", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pUtilDate));
+    }
+    else {
+      lRequestBuilder.setHeader("Util-Date", null);
+    }
+    if (pSQLTimestamp != null) {
+      lRequestBuilder.setHeader("SQL-Timestamp",
+          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pSQLTimestamp));
+    }
+    else {
+      lRequestBuilder.setHeader("SQL-Timestamp", null);
+    }
+    if (pSQLTime != null) {
+      lRequestBuilder.setHeader("SQL-Time", new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pSQLTime));
+    }
+    else {
+      lRequestBuilder.setHeader("SQL-Time", null);
+    }
+    if (pSQLDate != null) {
+      lRequestBuilder.setHeader("SQL-Date", new SimpleDateFormat("yyyy-MM-dd").format(pSQLDate));
+    }
+    else {
+      lRequestBuilder.setHeader("SQL-Date", null);
+    }
+    // Execute request.
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+  }
+
+  /**
+   * 
+   * @param pPath
+   * @param pHeaderParams
+   */
+  @Override
+  public void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
+    // Create builder for GET request
+    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
+    // Build URI of request
+    StringBuilder lURIBuilder = new StringBuilder();
+    lURIBuilder.append(configuration.getExternalServiceURL());
+    lURIBuilder.append("/products");
+    lURIBuilder.append('/');
+    lURIBuilder.append("test-date-header-params-beans/");
+    lURIBuilder.append(pPath);
+    lRequestBuilder.setUri(lURIBuilder.toString());
+    // Set HTTP header(s)
+    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    if (pHeaderParams != null) {
+      if (pHeaderParams.getOffsetDateTime() != null) {
+        lRequestBuilder.setHeader("Offset-Date-Time",
+            DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pHeaderParams.getOffsetDateTime()));
+      }
+      else {
+        lRequestBuilder.setHeader("Offset-Date-Time", null);
+      }
+      if (pHeaderParams.getOffsetTime() != null) {
+        lRequestBuilder.setHeader("Offset-Time",
+            DateTimeFormatter.ISO_OFFSET_TIME.format(pHeaderParams.getOffsetTime()));
+      }
+      else {
+        lRequestBuilder.setHeader("Offset-Time", null);
+      }
+      if (pHeaderParams.getLocalDateTime() != null) {
+        lRequestBuilder.setHeader("Local-Date-Time",
+            DateTimeFormatter.ISO_DATE_TIME.format(pHeaderParams.getLocalDateTime()));
+      }
+      else {
+        lRequestBuilder.setHeader("Local-Date-Time", null);
+      }
+      if (pHeaderParams.getLocalTime() != null) {
+        lRequestBuilder.setHeader("Local-Time", DateTimeFormatter.ISO_TIME.format(pHeaderParams.getLocalTime()));
+      }
+      else {
+        lRequestBuilder.setHeader("Local-Time", null);
+      }
+      if (pHeaderParams.getLocalDate() != null) {
+        lRequestBuilder.setHeader("Local-Date", DateTimeFormatter.ISO_DATE.format(pHeaderParams.getLocalDate()));
+      }
+      else {
+        lRequestBuilder.setHeader("Local-Date", null);
+      }
+      if (pHeaderParams.getUtilDate() != null) {
+        lRequestBuilder.setHeader("Util-Date",
+            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pHeaderParams.getUtilDate()));
+      }
+      else {
+        lRequestBuilder.setHeader("Util-Date", null);
+      }
+      if (pHeaderParams.getCalendar() != null) {
+        lRequestBuilder.setHeader("Calendar",
+            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pHeaderParams.getCalendar().getTime()));
+      }
+      else {
+        lRequestBuilder.setHeader("Calendar", null);
+      }
+      if (pHeaderParams.getSqlTimestamp() != null) {
+        lRequestBuilder.setHeader("SQL-Timestamp",
+            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pHeaderParams.getSqlTimestamp()));
+      }
+      else {
+        lRequestBuilder.setHeader("SQL-Timestamp", null);
+      }
+      if (pHeaderParams.getSqlTime() != null) {
+        lRequestBuilder.setHeader("SQL-Time",
+            new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pHeaderParams.getSqlTime()));
+      }
+      else {
+        lRequestBuilder.setHeader("SQL-Time", null);
+      }
+      if (pHeaderParams.getSqlDate() != null) {
+        lRequestBuilder.setHeader("SQL-Date", new SimpleDateFormat("yyyy-MM-dd").format(pHeaderParams.getSqlDate()));
+      }
+      else {
+        lRequestBuilder.setHeader("SQL-Date", null);
+      }
+    }
+    // Execute request.
+    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
   }
 }

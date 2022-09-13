@@ -1008,7 +1008,7 @@ public class GeneratorMojo extends AbstractMojo {
       try {
         String lStartOfFile = FileTools.getFileTools().readLinesAsString(lNextFile, 0, 5);
         if (lStartOfFile.contains("file:/")) {
-          this.getLog().warn(lNextFile
+          this.getLog().warn("Warning: [9102] " + lNextFile
               + " seems to use file system references. This might lead to portabilty issues with the exported XMI files. For further details please refer to FAQ entry #2.1 on https://anaptecs.atlassian.net/l/cp/ndmtZxvX");
         }
       }

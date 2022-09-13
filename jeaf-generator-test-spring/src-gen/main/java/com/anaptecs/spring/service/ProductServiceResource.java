@@ -5,6 +5,15 @@
  */
 package com.anaptecs.spring.service;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -327,6 +336,116 @@ public class ProductServiceResource {
     // Get Spring service and delegate call.
     ProductService lService = this.getProductService();
     return lService.testChildBeanParameter(pChild);
+  }
+
+  /**
+   * {@link ProductService#testDateQueryParams()}
+   */
+  @RequestMapping(path = "test-date-query-params/{path}", method = { RequestMethod.GET })
+  public void testDateQueryParams( @PathVariable(name = "path", required = true) String pPath,
+      @RequestParam(name = "startTimestamp", required = true) OffsetDateTime pStartTimestamp,
+      @RequestParam(name = "startTime", required = true) OffsetTime pStartTime,
+      @RequestParam(name = "localStartTimestamp", required = true) LocalDateTime pLocalStartTimestamp,
+      @RequestParam(name = "localStartTime", required = true) LocalTime pLocalStartTime,
+      @RequestParam(name = "localStartDate", required = true) LocalDate pLocalStartDate,
+      @RequestParam(name = "calendar", required = true) Calendar pCalendar,
+      @RequestParam(name = "utilDate", required = true) java.util.Date pUtilDate,
+      @RequestParam(name = "sqlTimestamp", required = true) Timestamp pSQLTimestamp,
+      @RequestParam(name = "sqlTime", required = true) Time pSQLTime,
+      @RequestParam(name = "sqlDate", required = true) Date pSQLDate ) {
+    // Get Spring service and delegate call.
+    ProductService lService = this.getProductService();
+    lService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
+        pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
+  }
+
+  /**
+   * {@link ProductService#testDateQueryParamsBean()}
+   */
+  @RequestMapping(path = "test-date-query-params-beans/{path}", method = { RequestMethod.GET })
+  public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) String pPath,
+      @RequestParam(name = "offsetDateTime", required = true) OffsetDateTime pOffsetDateTime,
+      @RequestParam(name = "offsetTime", required = true) OffsetTime pOffsetTime,
+      @RequestParam(name = "localDateTime", required = true) LocalDateTime pLocalDateTime,
+      @RequestParam(name = "localTime", required = true) LocalTime pLocalTime,
+      @RequestParam(name = "localDate", required = true) LocalDate pLocalDate,
+      @RequestParam(name = "utilDate", required = true) java.util.Date pUtilDate,
+      @RequestParam(name = "calendar", required = true) Calendar pCalendar,
+      @RequestParam(name = "sqlTimestamp", required = true) Timestamp pSqlTimestamp,
+      @RequestParam(name = "sqlTime", required = true) Time pSqlTime,
+      @RequestParam(name = "sqlDate", required = true) Date pSqlDate ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    DateQueryParamsBean.Builder lBuilder = DateQueryParamsBean.Builder.newBuilder();
+    lBuilder.setOffsetDateTime(pOffsetDateTime);
+    lBuilder.setOffsetTime(pOffsetTime);
+    lBuilder.setLocalDateTime(pLocalDateTime);
+    lBuilder.setLocalTime(pLocalTime);
+    lBuilder.setLocalDate(pLocalDate);
+    lBuilder.setUtilDate(pUtilDate);
+    lBuilder.setCalendar(pCalendar);
+    lBuilder.setSqlTimestamp(pSqlTimestamp);
+    lBuilder.setSqlTime(pSqlTime);
+    lBuilder.setSqlDate(pSqlDate);
+    DateQueryParamsBean pQueryParams = lBuilder.build();
+    // Get Spring service and delegate call.
+    ProductService lService = this.getProductService();
+    lService.testDateQueryParamsBean(pPath, pQueryParams);
+  }
+
+  /**
+   * {@link ProductService#testDateHeaderParams()}
+   */
+  @RequestMapping(path = "test-date-header-params/{path}", method = { RequestMethod.GET })
+  public void testDateHeaderParams( @PathVariable(name = "path", required = true) String pPath,
+      @RequestHeader(name = "Offset-Date-Time", required = true) OffsetDateTime pOffsetDateTime,
+      @RequestHeader(name = "Offset-Time", required = true) OffsetTime pOffsetTime,
+      @RequestHeader(name = "Local-Date-Time", required = true) LocalDateTime pLocalDateTime,
+      @RequestHeader(name = "Local-Time", required = true) LocalTime pLocalTime,
+      @RequestHeader(name = "Local-Date", required = true) LocalDate pLocalDate,
+      @RequestHeader(name = "Calendar", required = true) Calendar pCalendar,
+      @RequestHeader(name = "Util-Date", required = true) java.util.Date pUtilDate,
+      @RequestHeader(name = "SQL-Timestamp", required = true) Timestamp pSQLTimestamp,
+      @RequestHeader(name = "SQL-Time", required = true) Time pSQLTime,
+      @RequestHeader(name = "SQL-Date", required = true) Date pSQLDate ) {
+    // Get Spring service and delegate call.
+    ProductService lService = this.getProductService();
+    lService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate,
+        pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
+  }
+
+  /**
+   * {@link ProductService#testDateHeaderParamsBean()}
+   */
+  @RequestMapping(path = "test-date-header-params-beans/{path}", method = { RequestMethod.GET })
+  public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) String pPath,
+      @RequestHeader(name = "Offset-Date-Time", required = true) OffsetDateTime pOffsetDateTime,
+      @RequestHeader(name = "Offset-Time", required = true) OffsetTime pOffsetTime,
+      @RequestHeader(name = "Local-Date-Time", required = true) LocalDateTime pLocalDateTime,
+      @RequestHeader(name = "Local-Time", required = true) LocalTime pLocalTime,
+      @RequestHeader(name = "Local-Date", required = true) LocalDate pLocalDate,
+      @RequestHeader(name = "Util-Date", required = true) java.util.Date pUtilDate,
+      @RequestHeader(name = "Calendar", required = true) Calendar pCalendar,
+      @RequestHeader(name = "SQL-Timestamp", required = true) Timestamp pSqlTimestamp,
+      @RequestHeader(name = "SQL-Time", required = true) Time pSqlTime,
+      @RequestHeader(name = "SQL-Date", required = true) Date pSqlDate ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    DateHeaderParamsBean.Builder lBuilder = DateHeaderParamsBean.Builder.newBuilder();
+    lBuilder.setOffsetDateTime(pOffsetDateTime);
+    lBuilder.setOffsetTime(pOffsetTime);
+    lBuilder.setLocalDateTime(pLocalDateTime);
+    lBuilder.setLocalTime(pLocalTime);
+    lBuilder.setLocalDate(pLocalDate);
+    lBuilder.setUtilDate(pUtilDate);
+    lBuilder.setCalendar(pCalendar);
+    lBuilder.setSqlTimestamp(pSqlTimestamp);
+    lBuilder.setSqlTime(pSqlTime);
+    lBuilder.setSqlDate(pSqlDate);
+    DateHeaderParamsBean pHeaderParams = lBuilder.build();
+    // Get Spring service and delegate call.
+    ProductService lService = this.getProductService();
+    lService.testDateHeaderParamsBean(pPath, pHeaderParams);
   }
 
   /**

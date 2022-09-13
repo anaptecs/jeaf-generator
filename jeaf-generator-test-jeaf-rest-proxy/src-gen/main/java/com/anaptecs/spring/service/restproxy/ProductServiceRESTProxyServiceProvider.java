@@ -5,6 +5,15 @@
  */
 package com.anaptecs.spring.service.restproxy;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.validation.constraints.NotBlank;
@@ -23,6 +32,8 @@ import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCodeType;
 import com.anaptecs.spring.service.ChildBeanParameterType;
+import com.anaptecs.spring.service.DateHeaderParamsBean;
+import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.LocalBeanParamType;
 
 /**
@@ -177,4 +188,54 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
    * @return {@link String}
    */
   String testChildBeanParameter( ChildBeanParameterType pChild );
+
+  /**
+   * 
+   * @param pPath
+   * @param pStartTimestamp
+   * @param pStartTime
+   * @param pLocalStartTimestamp
+   * @param pLocalStartTime
+   * @param pLocalStartDate
+   * @param pCalendar
+   * @param pUtilDate
+   * @param pSQLTimestamp
+   * @param pSQLTime
+   * @param pSQLDate
+   */
+  void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
+      LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate );
+
+  /**
+   * 
+   * @param pPath
+   * @param pQueryParams
+   */
+  void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams );
+
+  /**
+   * 
+   * @param pPath
+   * @param pOffsetDateTime
+   * @param pOffsetTime
+   * @param pLocalDateTime
+   * @param pLocalTime
+   * @param pLocalDate
+   * @param pCalendar
+   * @param pUtilDate
+   * @param pSQLTimestamp
+   * @param pSQLTime
+   * @param pSQLDate
+   */
+  void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
+      LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate );
+
+  /**
+   * 
+   * @param pPath
+   * @param pHeaderParams
+   */
+  void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams );
 }

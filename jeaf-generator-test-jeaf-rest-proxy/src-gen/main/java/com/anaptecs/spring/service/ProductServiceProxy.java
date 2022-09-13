@@ -7,6 +7,15 @@ package com.anaptecs.spring.service;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.validation.constraints.NotBlank;
@@ -366,6 +375,78 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
     try {
       Command lCommand = new TestChildBeanParameter_ChildBeanParameterType_ProductService_Command(pChild);
       return (String) this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
+
+  /**
+   * Generated proxy implementation for method "testDateQueryParams".
+   * 
+   * 
+   */
+  public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
+      LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
+    try {
+      Command lCommand =
+          new TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_ProductService_Command(
+              pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime, pLocalStartDate, pCalendar,
+              pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
+      this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
+
+  /**
+   * Generated proxy implementation for method "testDateQueryParamsBean".
+   * 
+   * 
+   */
+  public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
+    try {
+      Command lCommand =
+          new TestDateQueryParamsBean_String_DateQueryParamsBean_ProductService_Command(pPath, pQueryParams);
+      this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
+
+  /**
+   * Generated proxy implementation for method "testDateHeaderParams".
+   * 
+   * 
+   */
+  public void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
+      LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
+    try {
+      Command lCommand =
+          new TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_ProductService_Command(
+              pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate, pCalendar, pUtilDate,
+              pSQLTimestamp, pSQLTime, pSQLDate);
+      this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
+
+  /**
+   * Generated proxy implementation for method "testDateHeaderParamsBean".
+   * 
+   * 
+   */
+  public void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
+    try {
+      Command lCommand =
+          new TestDateHeaderParamsBean_String_DateHeaderParamsBean_ProductService_Command(pPath, pHeaderParams);
+      this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
       throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
@@ -2447,6 +2528,589 @@ final class TestChildBeanParameter_ChildBeanParameterType_ProductService_Command
     // Trace result of service call.
     lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
     return lResult;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   * 
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   * 
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "testDateQueryParams".
+ */
+final class TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_ProductService_Command
+    extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD = ProductService.class.getMethod("testDateQueryParams", String.class, OffsetDateTime.class,
+          OffsetTime.class, LocalDateTime.class, LocalTime.class, LocalDate.class, Calendar.class, java.util.Date.class,
+          Timestamp.class, Time.class, Date.class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "testDateQueryParams(String.class, OffsetDateTime.class, OffsetTime.class, LocalDateTime.class, LocalTime.class, LocalDate.class, Calendar.class, java.util.Date.class, Timestamp.class, Time.class, Date.class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pPath" to the service implementation via the service channel.
+   */
+  private final String path;
+
+  /**
+   * Attribute transports the method parameter "pStartTimestamp" to the service implementation via the service channel.
+   */
+  private final OffsetDateTime startTimestamp;
+
+  /**
+   * Attribute transports the method parameter "pStartTime" to the service implementation via the service channel.
+   */
+  private final OffsetTime startTime;
+
+  /**
+   * Attribute transports the method parameter "pLocalStartTimestamp" to the service implementation via the service
+   * channel.
+   */
+  private final LocalDateTime localStartTimestamp;
+
+  /**
+   * Attribute transports the method parameter "pLocalStartTime" to the service implementation via the service channel.
+   */
+  private final LocalTime localStartTime;
+
+  /**
+   * Attribute transports the method parameter "pLocalStartDate" to the service implementation via the service channel.
+   */
+  private final LocalDate localStartDate;
+
+  /**
+   * Attribute transports the method parameter "pCalendar" to the service implementation via the service channel.
+   */
+  private final Calendar calendar;
+
+  /**
+   * Attribute transports the method parameter "pUtilDate" to the service implementation via the service channel.
+   */
+  private final java.util.Date utilDate;
+
+  /**
+   * Attribute transports the method parameter "pSQLTimestamp" to the service implementation via the service channel.
+   */
+  private final Timestamp sQLTimestamp;
+
+  /**
+   * Attribute transports the method parameter "pSQLTime" to the service implementation via the service channel.
+   */
+  private final Time sQLTime;
+
+  /**
+   * Attribute transports the method parameter "pSQLDate" to the service implementation via the service channel.
+   */
+  private final Date sQLDate;
+
+  /**
+   * Initialize object. All parameters from method "testDateQueryParams" have to be passed as parameters to this command
+   * object.
+   * 
+   * @param pPath String
+   * @param pStartTimestamp OffsetDateTime
+   * @param pStartTime OffsetTime
+   * @param pLocalStartTimestamp LocalDateTime
+   * @param pLocalStartTime LocalTime
+   * @param pLocalStartDate LocalDate
+   * @param pCalendar Calendar
+   * @param pUtilDate java.util.Date
+   * @param pSQLTimestamp Timestamp
+   * @param pSQLTime Time
+   * @param pSQLDate Date
+   */
+  TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_ProductService_Command(
+      String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime, LocalDateTime pLocalStartTimestamp,
+      LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar, java.util.Date pUtilDate,
+      Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
+    super(ProductService.class);
+    path = pPath;
+    startTimestamp = pStartTimestamp;
+    startTime = pStartTime;
+    localStartTimestamp = pLocalStartTimestamp;
+    localStartTime = pLocalStartTime;
+    localStartDate = pLocalStartDate;
+    calendar = pCalendar;
+    utilDate = pUtilDate;
+    sQLTimestamp = pSQLTimestamp;
+    sQLTime = pSQLTime;
+    sQLDate = pSQLDate;
+    parameters = new Object[] { path, startTimestamp, startTime, localStartTimestamp, localStartTime, localStartDate,
+      calendar, utilDate, sQLTimestamp, sQLTime, sQLDate };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   * 
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    ProductService lService = (ProductService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    lService.testDateQueryParams(path, startTimestamp, startTime, localStartTimestamp, localStartTime, localStartDate,
+        calendar, utilDate, sQLTimestamp, sQLTime, sQLDate);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    // Method has no return type thus the method returns null.
+    return null;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   * 
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   * 
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "testDateQueryParamsBean".
+ */
+final class TestDateQueryParamsBean_String_DateQueryParamsBean_ProductService_Command extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD =
+          ProductService.class.getMethod("testDateQueryParamsBean", String.class, DateQueryParamsBean.class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "testDateQueryParamsBean(String.class, DateQueryParamsBean.class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pPath" to the service implementation via the service channel.
+   */
+  private final String path;
+
+  /**
+   * Attribute transports the method parameter "pQueryParams" to the service implementation via the service channel.
+   */
+  private final DateQueryParamsBean queryParams;
+
+  /**
+   * Initialize object. All parameters from method "testDateQueryParamsBean" have to be passed as parameters to this
+   * command object.
+   * 
+   * @param pPath String
+   * @param pQueryParams DateQueryParamsBean
+   */
+  TestDateQueryParamsBean_String_DateQueryParamsBean_ProductService_Command( String pPath,
+      DateQueryParamsBean pQueryParams ) {
+    super(ProductService.class);
+    path = pPath;
+    queryParams = pQueryParams;
+    parameters = new Object[] { path, queryParams };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   * 
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    ProductService lService = (ProductService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    lService.testDateQueryParamsBean(path, queryParams);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    // Method has no return type thus the method returns null.
+    return null;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   * 
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   * 
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "testDateHeaderParams".
+ */
+final class TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_ProductService_Command
+    extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD = ProductService.class.getMethod("testDateHeaderParams", String.class, OffsetDateTime.class,
+          OffsetTime.class, LocalDateTime.class, LocalTime.class, LocalDate.class, Calendar.class, java.util.Date.class,
+          Timestamp.class, Time.class, Date.class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "testDateHeaderParams(String.class, OffsetDateTime.class, OffsetTime.class, LocalDateTime.class, LocalTime.class, LocalDate.class, Calendar.class, java.util.Date.class, Timestamp.class, Time.class, Date.class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pPath" to the service implementation via the service channel.
+   */
+  private final String path;
+
+  /**
+   * Attribute transports the method parameter "pOffsetDateTime" to the service implementation via the service channel.
+   */
+  private final OffsetDateTime offsetDateTime;
+
+  /**
+   * Attribute transports the method parameter "pOffsetTime" to the service implementation via the service channel.
+   */
+  private final OffsetTime offsetTime;
+
+  /**
+   * Attribute transports the method parameter "pLocalDateTime" to the service implementation via the service channel.
+   */
+  private final LocalDateTime localDateTime;
+
+  /**
+   * Attribute transports the method parameter "pLocalTime" to the service implementation via the service channel.
+   */
+  private final LocalTime localTime;
+
+  /**
+   * Attribute transports the method parameter "pLocalDate" to the service implementation via the service channel.
+   */
+  private final LocalDate localDate;
+
+  /**
+   * Attribute transports the method parameter "pCalendar" to the service implementation via the service channel.
+   */
+  private final Calendar calendar;
+
+  /**
+   * Attribute transports the method parameter "pUtilDate" to the service implementation via the service channel.
+   */
+  private final java.util.Date utilDate;
+
+  /**
+   * Attribute transports the method parameter "pSQLTimestamp" to the service implementation via the service channel.
+   */
+  private final Timestamp sQLTimestamp;
+
+  /**
+   * Attribute transports the method parameter "pSQLTime" to the service implementation via the service channel.
+   */
+  private final Time sQLTime;
+
+  /**
+   * Attribute transports the method parameter "pSQLDate" to the service implementation via the service channel.
+   */
+  private final Date sQLDate;
+
+  /**
+   * Initialize object. All parameters from method "testDateHeaderParams" have to be passed as parameters to this
+   * command object.
+   * 
+   * @param pPath String
+   * @param pOffsetDateTime OffsetDateTime
+   * @param pOffsetTime OffsetTime
+   * @param pLocalDateTime LocalDateTime
+   * @param pLocalTime LocalTime
+   * @param pLocalDate LocalDate
+   * @param pCalendar Calendar
+   * @param pUtilDate java.util.Date
+   * @param pSQLTimestamp Timestamp
+   * @param pSQLTime Time
+   * @param pSQLDate Date
+   */
+  TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_ProductService_Command(
+      String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime, LocalDateTime pLocalDateTime,
+      LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar, java.util.Date pUtilDate, Timestamp pSQLTimestamp,
+      Time pSQLTime, Date pSQLDate ) {
+    super(ProductService.class);
+    path = pPath;
+    offsetDateTime = pOffsetDateTime;
+    offsetTime = pOffsetTime;
+    localDateTime = pLocalDateTime;
+    localTime = pLocalTime;
+    localDate = pLocalDate;
+    calendar = pCalendar;
+    utilDate = pUtilDate;
+    sQLTimestamp = pSQLTimestamp;
+    sQLTime = pSQLTime;
+    sQLDate = pSQLDate;
+    parameters = new Object[] { path, offsetDateTime, offsetTime, localDateTime, localTime, localDate, calendar,
+      utilDate, sQLTimestamp, sQLTime, sQLDate };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   * 
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    ProductService lService = (ProductService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    lService.testDateHeaderParams(path, offsetDateTime, offsetTime, localDateTime, localTime, localDate, calendar,
+        utilDate, sQLTimestamp, sQLTime, sQLDate);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    // Method has no return type thus the method returns null.
+    return null;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   * 
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   * 
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "testDateHeaderParamsBean".
+ */
+final class TestDateHeaderParamsBean_String_DateHeaderParamsBean_ProductService_Command extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD =
+          ProductService.class.getMethod("testDateHeaderParamsBean", String.class, DateHeaderParamsBean.class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "testDateHeaderParamsBean(String.class, DateHeaderParamsBean.class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pPath" to the service implementation via the service channel.
+   */
+  private final String path;
+
+  /**
+   * Attribute transports the method parameter "pHeaderParams" to the service implementation via the service channel.
+   */
+  private final DateHeaderParamsBean headerParams;
+
+  /**
+   * Initialize object. All parameters from method "testDateHeaderParamsBean" have to be passed as parameters to this
+   * command object.
+   * 
+   * @param pPath String
+   * @param pHeaderParams DateHeaderParamsBean
+   */
+  TestDateHeaderParamsBean_String_DateHeaderParamsBean_ProductService_Command( String pPath,
+      DateHeaderParamsBean pHeaderParams ) {
+    super(ProductService.class);
+    path = pPath;
+    headerParams = pHeaderParams;
+    parameters = new Object[] { path, headerParams };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   * 
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    ProductService lService = (ProductService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    lService.testDateHeaderParamsBean(path, headerParams);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    // Method has no return type thus the method returns null.
+    return null;
   }
 
   /**

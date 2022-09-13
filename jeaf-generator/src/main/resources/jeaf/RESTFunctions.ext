@@ -111,26 +111,52 @@ cached String getRESTCookieParamName(JMM::CookieParam param):
        param.name; 
 
 
-List[String] splitRESTPath(String path, List[String] paramNames, List[String] variableNames):
+cached List[String] splitRESTPath(String path, List[String] paramNames, List[String] variableNames):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.splitRESTPath(java.lang.String, java.util.List, java.util.List);
 
-boolean hasValidRESTResourcePath(JMM::RESTResource restResource):
+cached boolean hasValidRESTResourcePath(JMM::RESTResource restResource):
     if restResource.path.length > 0
     then restResource.path.startsWith("/")
     else true;
     
-boolean hasValidRESTResourcePath(JMM::RESTOperation operation):
+cached boolean hasValidRESTResourcePath(JMM::RESTOperation operation):
     if operation.path.length > 0 || ((JMM::RESTResource)operation.owner).path.length > 0
     then true
     else false;
     
-boolean hasValidOperationPath(JMM::RESTOperation operation):
+cached boolean hasValidOperationPath(JMM::RESTOperation operation):
     if operation.path.length > 0 && operation.path.startsWith("/")
     then false
     else true;
     
     
-boolean hasUnsupportedRequestBody(JMM::RESTOperation operation):
+cached boolean hasUnsupportedRequestBody(JMM::RESTOperation operation):
     if (operation.hasRequestBody() && operation.httpMethods.select(e|e.supportsRequestBody()).size > 0) || operation.hasRequestBody() == false
     then false
     else true;
+
+cached boolean belongsToOpenAPISpec(JMM::RESTOperation operation):
+    if operation.owner.getRelationships().typeSelect(uml::Dependency).source.typeSelect(JMM::OpenAPI3Specification) > 0
+    then true
+    else false;
+    
+cached List[JMM::OpenAPI3Specification] getOpenAPISpecifications(JMM::RESTOperation operation):
+  ((JMM::RESTResource)operation.owner).getOpenAPISpecifications();
+
+cached List[JMM::OpenAPI3Specification] getOpenAPISpecifications(JMM::RESTResource restResource):
+  restResource.getRelationships().typeSelect(uml::Dependency).source.typeSelect(JMM::OpenAPI3Specification);
+  
+cached List[uml::Parameter] getOpenAPIIncomaptibleParameterTypes(JMM::RESTOperation operation) :
+  if operation.getOpenAPISpecifications().size > 0
+  then operation.ownedParameter.select(e|e.type.isIncompatibleOpenAPIType())
+  else {};
+  
+  
+cached boolean isIncompatibleOpenAPIType(uml::Type type) :
+  if type.fqn() == "java.time.LocalTime" || type.fqn() == "java.time.LocalDateTime"
+  then true
+  else false;
+  
+cached String asErrorMessage(uml::Parameter parameter) :
+  parameter.type.fqn() + " " + parameter.name;
+    

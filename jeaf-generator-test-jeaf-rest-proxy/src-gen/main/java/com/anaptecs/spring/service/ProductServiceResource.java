@@ -5,6 +5,15 @@
  */
 package com.anaptecs.spring.service;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +28,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.MediaType;
@@ -304,6 +314,66 @@ public class ProductServiceResource {
     ProductService lService = this.getProductService();
     String lResult = lService.testChildBeanParameter(pChild);
     return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#testDateQueryParams()}
+   */
+  @Path("test-date-query-params/{path}")
+  @GET
+  public Response testDateQueryParams( @PathParam("path") String pPath,
+      @QueryParam("startTimestamp") OffsetDateTime pStartTimestamp, @QueryParam("startTime") OffsetTime pStartTime,
+      @QueryParam("localStartTimestamp") LocalDateTime pLocalStartTimestamp,
+      @QueryParam("localStartTime") LocalTime pLocalStartTime, @QueryParam("localStartDate") LocalDate pLocalStartDate,
+      @QueryParam("calendar") Calendar pCalendar, @QueryParam("utilDate") java.util.Date pUtilDate,
+      @QueryParam("sqlTimestamp") Timestamp pSQLTimestamp, @QueryParam("sqlTime") Time pSQLTime,
+      @QueryParam("sqlDate") Date pSQLDate ) {
+    ProductService lService = this.getProductService();
+    lService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
+        pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
+    return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link ProductService#testDateQueryParamsBean()}
+   */
+  @Path("test-date-query-params-beans/{path}")
+  @GET
+  public Response testDateQueryParamsBean( @PathParam("path") String pPath,
+      @BeanParam DateQueryParamsBean pQueryParams ) {
+    ProductService lService = this.getProductService();
+    lService.testDateQueryParamsBean(pPath, pQueryParams);
+    return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link ProductService#testDateHeaderParams()}
+   */
+  @Path("test-date-header-params/{path}")
+  @GET
+  public Response testDateHeaderParams( @PathParam("path") String pPath,
+      @HeaderParam("Offset-Date-Time") OffsetDateTime pOffsetDateTime,
+      @HeaderParam("Offset-Time") OffsetTime pOffsetTime, @HeaderParam("Local-Date-Time") LocalDateTime pLocalDateTime,
+      @HeaderParam("Local-Time") LocalTime pLocalTime, @HeaderParam("Local-Date") LocalDate pLocalDate,
+      @HeaderParam("Calendar") Calendar pCalendar, @HeaderParam("Util-Date") java.util.Date pUtilDate,
+      @HeaderParam("SQL-Timestamp") Timestamp pSQLTimestamp, @HeaderParam("SQL-Time") Time pSQLTime,
+      @HeaderParam("SQL-Date") Date pSQLDate ) {
+    ProductService lService = this.getProductService();
+    lService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate,
+        pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
+    return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link ProductService#testDateHeaderParamsBean()}
+   */
+  @Path("test-date-header-params-beans/{path}")
+  @GET
+  public Response testDateHeaderParamsBean( @PathParam("path") String pPath,
+      @BeanParam DateHeaderParamsBean pHeaderParams ) {
+    ProductService lService = this.getProductService();
+    lService.testDateHeaderParamsBean(pPath, pHeaderParams);
+    return Response.status(Response.Status.OK).build();
   }
 
   /**

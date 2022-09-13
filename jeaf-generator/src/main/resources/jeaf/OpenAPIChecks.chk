@@ -18,6 +18,8 @@ context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperatio
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + ((NamedElement)owner).name + "."+ name + "(...) has multiple request body parameters. Please ensure that there is not more than 1 request body for a REST operation (" + this.getBodyParamNames() + ")": this.getBodyParamNames().size < 2 ;
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + ((NamedElement)owner).name + "."+ name + "(...) has request body parameter even though its http method(s) " + httpMethods + " do not allow it. (" + fqn() + ")": this.hasUnsupportedRequestBody() == false ;
 
+context RESTOperation if runChecks("RESTOperation") WARNING "Warning: [9101] <<RESTOperation>> " + ((NamedElement)owner).name + "."+ name + "(...) has parameter type(s) " + this.getOpenAPIIncomaptibleParameterTypes().asErrorMessage() + " that are not compatible with OpenAPI (" + fqn() + "). For further details please refer to FAQ entry #2.2 on https://anaptecs.atlassian.net/l/cp/ndmtZxvX": this.getOpenAPIIncomaptibleParameterTypes().size == 0;
+
 context Model if runChecks() ERROR "Error: OpenAPI Specification more than one global default error response": this.hasValidOneGlobalDefaultErrorResponse() == false;
 
 context OpenAPIResponse if runChecks("OpenAPIResponse") ERROR "Error: <<OpenAPIResponse>> " + this.name + " needs to define exactly one reference to <<OpenAPIType>> that is used as response type.": this.getResponseTypes().size == 1;
