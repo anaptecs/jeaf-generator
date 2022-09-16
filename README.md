@@ -6,7 +6,7 @@ This repository contains the source code for JEAF Generator. JEAF Generator can 
 ## Links ##
 For further information please refer to our documentation:
 
-* [JEAF Generator](https://anaptecs.atlassian.net/l/c/N7r5x11X)
+* [JEAF Generator](https://anaptecs.atlassian.net/l/cp/roLu4d09)
 * [JEAF Modelling Guide](https://anaptecs.atlassian.net/l/c/1B2ci31g)
 
 ## How do I get set up? ##
