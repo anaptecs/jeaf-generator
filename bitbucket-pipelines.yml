@@ -1,7 +1,8 @@
 clone:
   depth: full
 pipelines:
-  default:
-    - step:
-        script:
-          - git push --mirror git@github.com:anaptecs/jeaf-generator.git
+  branches:
+    master:
+      - step:
+          script:
+            - git push --mirror git@github.com:anaptecs/jeaf-generator.git
