@@ -60,6 +60,10 @@ import com.anaptecs.spring.service.RESTProductService;
  */
 @Service
 public class RESTProductServiceRESTProxy implements RESTProductService {
+  /**
+   * REST request executor is used to send REST request to the proxied REST resource. Depedning on the Spring
+   * configuration the matching implementation will be injected here.
+   */
   @Autowired
   private RESTRequestExecutor requestExecutor;
 
