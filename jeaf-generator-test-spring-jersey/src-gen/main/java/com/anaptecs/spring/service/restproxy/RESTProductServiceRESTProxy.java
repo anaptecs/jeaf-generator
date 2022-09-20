@@ -24,11 +24,11 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.anaptecs.jeaf.rest.api.executor.ContentType;
-import com.anaptecs.jeaf.rest.api.executor.HttpMethod;
-import com.anaptecs.jeaf.rest.api.executor.RESTRequest;
-import com.anaptecs.jeaf.rest.api.executor.RESTRequest.Builder;
-import com.anaptecs.jeaf.rest.api.executor.RESTRequestExecutor;
+import com.anaptecs.jeaf.rest.executor.api.ContentType;
+import com.anaptecs.jeaf.rest.executor.api.HttpMethod;
+import com.anaptecs.jeaf.rest.executor.api.RESTRequest;
+import com.anaptecs.jeaf.rest.executor.api.RESTRequest.Builder;
+import com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
@@ -193,7 +193,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Override
   public ChannelCode createChannelCode( String pChannelCode ) {
     // Create builder for GET request
-    Builder lRequestBuilder = Builder.newBuilder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    Builder lRequestBuilder = Builder.newBuilder(ProductService.class, HttpMethod.POST, ContentType.JSON);
 
     // Build URI of request
     StringBuilder lPathBuilder = new StringBuilder();
