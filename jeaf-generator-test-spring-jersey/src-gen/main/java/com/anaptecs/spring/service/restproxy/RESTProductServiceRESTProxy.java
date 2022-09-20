@@ -55,13 +55,13 @@ import com.anaptecs.spring.service.RESTProductService;
  * <li>Circuit breaker in case of availabilities problems of the REST service</li>
  * </ul>
  * 
- * However, as an transactional context can not be propagated to another REST resource developers till have to take care
- * about proper transaction handling if needed.
+ * However, as an transactional context can not be propagated to another REST resource developers still have to take
+ * care about proper transaction handling if needed.
  */
 @Service
 public class RESTProductServiceRESTProxy implements RESTProductService {
   /**
-   * REST request executor is used to send REST request to the proxied REST resource. Depedning on the Spring
+   * REST request executor is used to send REST request to the proxied REST resource. Depending on the Spring
    * configuration the matching implementation will be injected here.
    */
   @Autowired
