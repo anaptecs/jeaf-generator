@@ -43,7 +43,7 @@ import com.anaptecs.spring.service.ProductService;
 import com.anaptecs.spring.service.RESTProductService;
 
 /**
- * Class implements a proxy for an REST Service. The proxy is implemented as Spring services. This way to developers it
+ * Class implements a proxy for a REST Service. The proxy is implemented as Spring service. This way to developers it
  * looks like a plain Spring Service.
  * 
  * This implementation deals with everything that is required to call the external REST service including the following
