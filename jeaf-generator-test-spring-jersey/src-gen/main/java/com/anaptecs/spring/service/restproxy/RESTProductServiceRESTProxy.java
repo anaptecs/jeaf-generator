@@ -21,7 +21,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.anaptecs.jeaf.rest.executor.api.ContentType;
@@ -61,11 +60,19 @@ import com.anaptecs.spring.service.RESTProductService;
 @Service
 public class RESTProductServiceRESTProxy implements RESTProductService {
   /**
+   * Initialize object.
+   * 
+   * @param pRequestExecutor Dependency on concrete {@link RESTRequestExecutor} implementation that should be used.
+   */
+  public RESTProductServiceRESTProxy( RESTRequestExecutor pRequestExecutor ) {
+    requestExecutor = pRequestExecutor;
+  }
+
+  /**
    * REST request executor is used to send REST request to the proxied REST resource. Depending on the Spring
    * configuration the matching implementation will be injected here.
    */
-  @Autowired
-  private RESTRequestExecutor requestExecutor;
+  private final RESTRequestExecutor requestExecutor;
 
   /**
    * Operation returns all available product.
@@ -77,7 +84,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Override
   public List<Product> getProducts( int pMaxResultSize ) {
     // Create builder for GET request
-    Builder lRequestBuilder = Builder.newBuilder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    Builder lRequestBuilder = Builder.newBuilder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
 
     // Build URI of request
     StringBuilder lPathBuilder = new StringBuilder();

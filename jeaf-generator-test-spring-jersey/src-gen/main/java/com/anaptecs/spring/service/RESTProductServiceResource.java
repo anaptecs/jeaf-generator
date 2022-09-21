@@ -57,6 +57,9 @@ import com.anaptecs.spring.base.TimeUnit;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class RESTProductServiceResource {
+  /**
+   * All request to this class will be delegated to {@link RESTProductService}.
+   */
   @Inject
   private RESTProductService rESTProductService;
 
