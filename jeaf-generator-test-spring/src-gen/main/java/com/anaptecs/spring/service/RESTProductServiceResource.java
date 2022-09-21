@@ -18,8 +18,6 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import javax.inject.Inject;
-
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,17 +43,30 @@ import com.anaptecs.spring.base.TimeUnit;
 @RequestMapping(path = "/rest-products", consumes = { "application/json" }, produces = { "application/json" })
 @RestController
 public class RESTProductServiceResource {
-  @Inject
-  private RESTProductService rESTProductService;
+  /**
+   * All request to this class will be delegated to {@link RESTProductService}.
+   */
+  /**
+   * Initialize object.
+   * 
+   * @param pRESTProductService Dependency on concrete {@link RESTProductService} implementation that should be used.
+   */
+  RESTProductServiceResource( RESTProductService pRESTProductService ) {
+    rESTProductService = pRESTProductService;
+  }
+
+  /**
+   * All request to this class will be delegated to {@link RESTProductService}.
+   */
+  private final RESTProductService rESTProductService;
 
   /**
    * {@link RESTProductService#getProducts()}
    */
   @RequestMapping(method = { RequestMethod.GET })
   public List<Product> getProducts( @RequestParam(name = "maxResult", required = true) int pMaxResultSize ) {
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    return lService.getProducts(pMaxResultSize);
+    // Delegate request to service.
+    return rESTProductService.getProducts(pMaxResultSize);
   }
 
   /**
@@ -63,9 +74,8 @@ public class RESTProductServiceResource {
    */
   @RequestMapping(path = "{id}", method = { RequestMethod.GET })
   public Product getProduct( @PathVariable(name = "id", required = true) String pProductID ) {
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    return lService.getProduct(pProductID);
+    // Delegate request to service.
+    return rESTProductService.getProduct(pProductID);
   }
 
   /**
@@ -73,9 +83,8 @@ public class RESTProductServiceResource {
    */
   @RequestMapping(method = { RequestMethod.POST })
   public boolean createProduct( @RequestBody(required = true) Product pProduct ) {
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    return lService.createProduct(pProduct);
+    // Delegate request to service.
+    return rESTProductService.createProduct(pProduct);
   }
 
   /**
@@ -96,9 +105,8 @@ public class RESTProductServiceResource {
     lBuilder.setPathParam(pPathParam);
     lBuilder.setQueryParam(pQueryParam);
     Context pContext = lBuilder.build();
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    return lService.getSortiment(pContext);
+    // Delegate request to service.
+    return rESTProductService.getSortiment(pContext);
   }
 
   /**
@@ -106,9 +114,8 @@ public class RESTProductServiceResource {
    */
   @RequestMapping(path = "ChannelCode", method = { RequestMethod.POST })
   public ChannelCode createChannelCode( @RequestBody(required = true) String pChannelCode ) {
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    return lService.createChannelCode(pChannelCode);
+    // Delegate request to service.
+    return rESTProductService.createChannelCode(pChannelCode);
   }
 
   /**
@@ -116,9 +123,8 @@ public class RESTProductServiceResource {
    */
   @RequestMapping(method = { RequestMethod.HEAD })
   public void ping( ) {
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    lService.ping();
+    // Delegate request to service.
+    rESTProductService.ping();
   }
 
   /**
@@ -126,9 +132,8 @@ public class RESTProductServiceResource {
    */
   @RequestMapping(path = "test-init", method = { RequestMethod.GET })
   public void testInit( ) {
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    lService.testInit();
+    // Delegate request to service.
+    rESTProductService.testInit();
   }
 
   /**
@@ -139,9 +144,8 @@ public class RESTProductServiceResource {
       @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     ChannelCode pChannelCode = ChannelCode.Builder.newBuilder().setCode(pChannelCodeAsBasicType).build();
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    return lService.getSupportedCurrencies(pChannelCode);
+    // Delegate request to service.
+    return rESTProductService.getSupportedCurrencies(pChannelCode);
   }
 
   /**
@@ -152,9 +156,8 @@ public class RESTProductServiceResource {
       @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     ChannelCode pChannelCode = ChannelCode.Builder.newBuilder().setCode(pChannelCodeAsBasicType).build();
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    return lService.getSupportedCurrenciesAsync(pChannelCode);
+    // Delegate request to service.
+    return rESTProductService.getSupportedCurrenciesAsync(pChannelCode);
   }
 
   /**
@@ -164,9 +167,8 @@ public class RESTProductServiceResource {
   public String testParams( @RequestHeader(name = "Big-Header", required = true) BigDecimal pBigDecimalHeader,
       @CookieValue(name = "giveMeMoreCookies", required = true) @RequestBody(required = true) int pIntCookieParam,
       @RequestParam(name = "locale", required = true) Locale pLocaleQueryParam ) {
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    return lService.testParams(pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
+    // Delegate request to service.
+    return rESTProductService.testParams(pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
   }
 
   /**
@@ -176,9 +178,8 @@ public class RESTProductServiceResource {
   public void testEnumParams( @PathVariable(name = "channelType", required = true) ChannelType pChannelType,
       @RequestParam(name = "timeUnit", required = true) TimeUnit pTimeUnit,
       @RequestParam(name = "extensibleEnum", required = true) ExtensibleEnum pExtensibleEnum ) {
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    lService.testEnumParams(pChannelType, pTimeUnit, pExtensibleEnum);
+    // Delegate request to service.
+    rESTProductService.testEnumParams(pChannelType, pTimeUnit, pExtensibleEnum);
   }
 
   /**
@@ -188,9 +189,8 @@ public class RESTProductServiceResource {
   public void testEnumHeaderParams( @RequestHeader(name = "Channel-Type", required = true) ChannelType pChannelType,
       @RequestHeader(name = "Time-Unit", required = true) TimeUnit pTimeUnit,
       @RequestHeader(name = "Extensible-Enum", required = true) ExtensibleEnum pExtensibleEnum ) {
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    lService.testEnumHeaderParams(pChannelType, pTimeUnit, pExtensibleEnum);
+    // Delegate request to service.
+    rESTProductService.testEnumHeaderParams(pChannelType, pTimeUnit, pExtensibleEnum);
   }
 
   /**
@@ -208,9 +208,8 @@ public class RESTProductServiceResource {
       @RequestParam(name = "sqlTimestamp", required = true) Timestamp pSQLTimestamp,
       @RequestParam(name = "sqlTime", required = true) Time pSQLTime,
       @RequestParam(name = "sqlDate", required = true) Date pSQLDate ) {
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    lService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
+    // Delegate request to service.
+    rESTProductService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
         pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
   }
 
@@ -243,9 +242,8 @@ public class RESTProductServiceResource {
     lBuilder.setSqlTime(pSqlTime);
     lBuilder.setSqlDate(pSqlDate);
     DateQueryParamsBean pQueryParams = lBuilder.build();
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    lService.testDateQueryParamsBean(pPath, pQueryParams);
+    // Delegate request to service.
+    rESTProductService.testDateQueryParamsBean(pPath, pQueryParams);
   }
 
   /**
@@ -263,9 +261,8 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "SQL-Timestamp", required = true) Timestamp pSQLTimestamp,
       @RequestHeader(name = "SQL-Time", required = true) Time pSQLTime,
       @RequestHeader(name = "SQL-Date", required = true) Date pSQLDate ) {
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    lService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate,
+    // Delegate request to service.
+    rESTProductService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate,
         pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
   }
 
@@ -298,17 +295,7 @@ public class RESTProductServiceResource {
     lBuilder.setSqlTime(pSqlTime);
     lBuilder.setSqlDate(pSqlDate);
     DateHeaderParamsBean pHeaderParams = lBuilder.build();
-    // Get Spring service and delegate call.
-    RESTProductService lService = this.getRESTProductService();
-    lService.testDateHeaderParamsBean(pPath, pHeaderParams);
-  }
-
-  /**
-   * Method returns reference to service to which all REST requests will be delegated.
-   *
-   * @return RESTProductService Service instance to which all requests will be delegated.
-   */
-  private RESTProductService getRESTProductService( ) {
-    return rESTProductService;
+    // Delegate request to service.
+    rESTProductService.testDateHeaderParamsBean(pPath, pHeaderParams);
   }
 }

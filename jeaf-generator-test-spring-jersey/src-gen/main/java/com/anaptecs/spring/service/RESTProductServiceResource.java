@@ -74,15 +74,13 @@ public class RESTProductServiceResource {
     // Prepare meta information about the request.
     String lEndpointURL = pRequest.getServletPath() + pRequest.getPathInfo();
     RESTRequestType lRequestInfo = new RESTRequestType(lEndpointURL, pRequest.getMethod());
-    // Lookup service that will be called later during async processing of the request
-    RESTProductService lService = this.getRESTProductService();
     // Hand over current request to workload manager. Depending on its strategy and the current workload the request
     // will be either be directly executed, first queued or rejected.
     lWorkloadManager.execute(lRequestInfo, new RESTWorkloadErrorHandler(pAsyncResponse), new Runnable() {
       @Override
       public void run( ) {
         try {
-          List<Product> lResult = lService.getProducts(pMaxResultSize);
+          List<Product> lResult = rESTProductService.getProducts(pMaxResultSize);
           Response lResponseObject = Response.status(Response.Status.OK).entity(lResult).build();
           // Due to the asynchronous processing of the requests, the response can not be returned as return value.
           // Therefore we make use of the defined JAX-RS mechanisms.
@@ -103,8 +101,8 @@ public class RESTProductServiceResource {
   @Path("{id}")
   @GET
   public Response getProduct( @PathParam("id") String pProductID ) {
-    RESTProductService lService = this.getRESTProductService();
-    Product lResult = lService.getProduct(pProductID);
+    // Delegate request to service.
+    Product lResult = rESTProductService.getProduct(pProductID);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
@@ -113,8 +111,8 @@ public class RESTProductServiceResource {
    */
   @POST
   public Response createProduct( Product pProduct ) {
-    RESTProductService lService = this.getRESTProductService();
-    boolean lResult = lService.createProduct(pProduct);
+    // Delegate request to service.
+    boolean lResult = rESTProductService.createProduct(pProduct);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
@@ -124,8 +122,8 @@ public class RESTProductServiceResource {
   @Path("sortiment/{id}")
   @GET
   public Response getSortiment( @BeanParam Context pContext ) {
-    RESTProductService lService = this.getRESTProductService();
-    Sortiment lResult = lService.getSortiment(pContext);
+    // Delegate request to service.
+    Sortiment lResult = rESTProductService.getSortiment(pContext);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
@@ -135,8 +133,8 @@ public class RESTProductServiceResource {
   @Path("ChannelCode")
   @POST
   public Response createChannelCode( String pChannelCode ) {
-    RESTProductService lService = this.getRESTProductService();
-    ChannelCode lResult = lService.createChannelCode(pChannelCode);
+    // Delegate request to service.
+    ChannelCode lResult = rESTProductService.createChannelCode(pChannelCode);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
@@ -145,8 +143,8 @@ public class RESTProductServiceResource {
    */
   @HEAD
   public Response ping( ) {
-    RESTProductService lService = this.getRESTProductService();
-    lService.ping();
+    // Delegate request to service.
+    rESTProductService.ping();
     return Response.status(Response.Status.OK).build();
   }
 
@@ -156,8 +154,8 @@ public class RESTProductServiceResource {
   @Path("test-init")
   @GET
   public Response testInit( ) {
-    RESTProductService lService = this.getRESTProductService();
-    lService.testInit();
+    // Delegate request to service.
+    rESTProductService.testInit();
     return Response.status(Response.Status.OK).build();
   }
 
@@ -169,8 +167,8 @@ public class RESTProductServiceResource {
   public Response getSupportedCurrencies( @PathParam("channelCode") String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     ChannelCode pChannelCode = ChannelCode.Builder.newBuilder().setCode(pChannelCodeAsBasicType).build();
-    RESTProductService lService = this.getRESTProductService();
-    List<CurrencyCode> lResult = lService.getSupportedCurrencies(pChannelCode);
+    // Delegate request to service.
+    List<CurrencyCode> lResult = rESTProductService.getSupportedCurrencies(pChannelCode);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
@@ -187,8 +185,6 @@ public class RESTProductServiceResource {
     // Prepare meta information about the request.
     String lEndpointURL = pRequest.getServletPath() + pRequest.getPathInfo();
     RESTRequestType lRequestInfo = new RESTRequestType(lEndpointURL, pRequest.getMethod());
-    // Lookup service that will be called later during async processing of the request
-    RESTProductService lService = this.getRESTProductService();
     // Hand over current request to workload manager. Depending on its strategy and the current workload the request
     // will be either be directly executed, first queued or rejected.
     lWorkloadManager.execute(lRequestInfo, new RESTWorkloadErrorHandler(pAsyncResponse), new Runnable() {
@@ -197,7 +193,7 @@ public class RESTProductServiceResource {
         try {
           // Convert basic type parameters into "real" objects.
           ChannelCode pChannelCode = ChannelCode.Builder.newBuilder().setCode(pChannelCodeAsBasicType).build();
-          List<CurrencyCode> lResult = lService.getSupportedCurrenciesAsync(pChannelCode);
+          List<CurrencyCode> lResult = rESTProductService.getSupportedCurrenciesAsync(pChannelCode);
           Response lResponseObject = Response.status(Response.Status.OK).entity(lResult).build();
           // Due to the asynchronous processing of the requests, the response can not be returned as return value.
           // Therefore we make use of the defined JAX-RS mechanisms.
@@ -219,8 +215,8 @@ public class RESTProductServiceResource {
   @GET
   public Response testParams( @HeaderParam("Big-Header") BigDecimal pBigDecimalHeader,
       @CookieParam("giveMeMoreCookies") int pIntCookieParam, @QueryParam("locale") Locale pLocaleQueryParam ) {
-    RESTProductService lService = this.getRESTProductService();
-    String lResult = lService.testParams(pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
+    // Delegate request to service.
+    String lResult = rESTProductService.testParams(pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
@@ -231,8 +227,8 @@ public class RESTProductServiceResource {
   @GET
   public Response testEnumParams( @PathParam("channelType") ChannelType pChannelType,
       @QueryParam("timeUnit") TimeUnit pTimeUnit, @QueryParam("extensibleEnum") ExtensibleEnum pExtensibleEnum ) {
-    RESTProductService lService = this.getRESTProductService();
-    lService.testEnumParams(pChannelType, pTimeUnit, pExtensibleEnum);
+    // Delegate request to service.
+    rESTProductService.testEnumParams(pChannelType, pTimeUnit, pExtensibleEnum);
     return Response.status(Response.Status.OK).build();
   }
 
@@ -243,8 +239,8 @@ public class RESTProductServiceResource {
   @GET
   public Response testEnumHeaderParams( @HeaderParam("Channel-Type") ChannelType pChannelType,
       @HeaderParam("Time-Unit") TimeUnit pTimeUnit, @HeaderParam("Extensible-Enum") ExtensibleEnum pExtensibleEnum ) {
-    RESTProductService lService = this.getRESTProductService();
-    lService.testEnumHeaderParams(pChannelType, pTimeUnit, pExtensibleEnum);
+    // Delegate request to service.
+    rESTProductService.testEnumHeaderParams(pChannelType, pTimeUnit, pExtensibleEnum);
     return Response.status(Response.Status.OK).build();
   }
 
@@ -260,8 +256,8 @@ public class RESTProductServiceResource {
       @QueryParam("calendar") Calendar pCalendar, @QueryParam("utilDate") java.util.Date pUtilDate,
       @QueryParam("sqlTimestamp") Timestamp pSQLTimestamp, @QueryParam("sqlTime") Time pSQLTime,
       @QueryParam("sqlDate") Date pSQLDate ) {
-    RESTProductService lService = this.getRESTProductService();
-    lService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
+    // Delegate request to service.
+    rESTProductService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
         pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
     return Response.status(Response.Status.OK).build();
   }
@@ -273,8 +269,8 @@ public class RESTProductServiceResource {
   @GET
   public Response testDateQueryParamsBean( @PathParam("path") String pPath,
       @BeanParam DateQueryParamsBean pQueryParams ) {
-    RESTProductService lService = this.getRESTProductService();
-    lService.testDateQueryParamsBean(pPath, pQueryParams);
+    // Delegate request to service.
+    rESTProductService.testDateQueryParamsBean(pPath, pQueryParams);
     return Response.status(Response.Status.OK).build();
   }
 
@@ -290,8 +286,8 @@ public class RESTProductServiceResource {
       @HeaderParam("Calendar") Calendar pCalendar, @HeaderParam("Util-Date") java.util.Date pUtilDate,
       @HeaderParam("SQL-Timestamp") Timestamp pSQLTimestamp, @HeaderParam("SQL-Time") Time pSQLTime,
       @HeaderParam("SQL-Date") Date pSQLDate ) {
-    RESTProductService lService = this.getRESTProductService();
-    lService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate,
+    // Delegate request to service.
+    rESTProductService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate,
         pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
     return Response.status(Response.Status.OK).build();
   }
@@ -303,17 +299,8 @@ public class RESTProductServiceResource {
   @GET
   public Response testDateHeaderParamsBean( @PathParam("path") String pPath,
       @BeanParam DateHeaderParamsBean pHeaderParams ) {
-    RESTProductService lService = this.getRESTProductService();
-    lService.testDateHeaderParamsBean(pPath, pHeaderParams);
+    // Delegate request to service.
+    rESTProductService.testDateHeaderParamsBean(pPath, pHeaderParams);
     return Response.status(Response.Status.OK).build();
-  }
-
-  /**
-   * Method returns reference to service to which all REST requests will be delegated.
-   *
-   * @return RESTProductService Service instance to which all requests will be delegated.
-   */
-  private RESTProductService getRESTProductService( ) {
-    return rESTProductService;
   }
 }

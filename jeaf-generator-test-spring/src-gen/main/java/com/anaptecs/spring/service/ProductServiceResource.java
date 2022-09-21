@@ -46,6 +46,9 @@ import com.anaptecs.spring.base.StringCodeType;
 @RestController
 public class ProductServiceResource {
   /**
+   * All request to this class will be delegated to {@link ProductService}.
+   */
+  /**
    * Initialize object.
    * 
    * @param pProductService Dependency on concrete {@link ProductService} implementation that should be used.
@@ -64,9 +67,8 @@ public class ProductServiceResource {
    */
   @RequestMapping(method = { RequestMethod.GET })
   public List<Product> getProducts( ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.getProducts();
+    // Delegate request to service.
+    return productService.getProducts();
   }
 
   /**
@@ -74,9 +76,8 @@ public class ProductServiceResource {
    */
   @RequestMapping(path = "{id}", method = { RequestMethod.GET })
   public Product getProduct( @PathVariable(name = "id", required = true) String pProductID ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.getProduct(pProductID);
+    // Delegate request to service.
+    return productService.getProduct(pProductID);
   }
 
   /**
@@ -84,9 +85,8 @@ public class ProductServiceResource {
    */
   @RequestMapping(method = { RequestMethod.POST })
   public boolean createProduct( @RequestBody(required = true) Product pProduct ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.createProduct(pProduct);
+    // Delegate request to service.
+    return productService.createProduct(pProduct);
   }
 
   /**
@@ -107,9 +107,8 @@ public class ProductServiceResource {
     lBuilder.setPathParam(pPathParam);
     lBuilder.setQueryParam(pQueryParam);
     Context pContext = lBuilder.build();
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.getSortiment(pContext);
+    // Delegate request to service.
+    return productService.getSortiment(pContext);
   }
 
   /**
@@ -121,9 +120,8 @@ public class ProductServiceResource {
       produces = { "application/json" },
       method = { RequestMethod.POST })
   public ChannelCode createChannelCode( @RequestBody(required = true) String pChannelCode ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.createChannelCode(pChannelCode);
+    // Delegate request to service.
+    return productService.createChannelCode(pChannelCode);
   }
 
   /**
@@ -131,9 +129,8 @@ public class ProductServiceResource {
    */
   @RequestMapping(method = { RequestMethod.HEAD })
   public void ping( ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    lService.ping();
+    // Delegate request to service.
+    productService.ping();
   }
 
   /**
@@ -142,9 +139,8 @@ public class ProductServiceResource {
   @RequestMapping(path = "deprecated/operation", method = { RequestMethod.GET })
   @Deprecated
   public String deprecatedOperation( ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.deprecatedOperation();
+    // Delegate request to service.
+    return productService.deprecatedOperation();
   }
 
   /**
@@ -163,9 +159,8 @@ public class ProductServiceResource {
     lBuilder.setResellerID(pResellerID);
     lBuilder.setQueryParam(pQueryParam);
     DeprecatedContext pContext = lBuilder.build();
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.deprecatedContext(pContext);
+    // Delegate request to service.
+    return productService.deprecatedContext(pContext);
   }
 
   /**
@@ -182,9 +177,8 @@ public class ProductServiceResource {
     lBuilder.setLanguage(pLanguage);
     lBuilder.setOldStyle(pOldStyle);
     BeanParameter pBeanParam = lBuilder.build();
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    lService.deprecatedBeanParam(pBeanParam);
+    // Delegate request to service.
+    productService.deprecatedBeanParam(pBeanParam);
   }
 
   /**
@@ -193,9 +187,8 @@ public class ProductServiceResource {
   @RequestMapping(path = "deprecated/params", method = { RequestMethod.POST })
   @Deprecated
   public String deprecatedParams( @RequestHeader(name = "param1", required = true) @Deprecated int pParam1 ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.deprecatedParams(pParam1);
+    // Delegate request to service.
+    return productService.deprecatedParams(pParam1);
   }
 
   /**
@@ -203,9 +196,8 @@ public class ProductServiceResource {
    */
   @RequestMapping(path = "deprecated/body", method = { RequestMethod.POST })
   public String deprecatedBody( @RequestBody(required = true) @Deprecated String pBody ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.deprecatedBody(pBody);
+    // Delegate request to service.
+    return productService.deprecatedBody(pBody);
   }
 
   /**
@@ -213,9 +205,8 @@ public class ProductServiceResource {
    */
   @RequestMapping(path = "deprecated/complexBody", method = { RequestMethod.POST })
   public void deprectedComplexRequestBody( @RequestBody(required = true) @Deprecated Product pProduct ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    lService.deprectedComplexRequestBody(pProduct);
+    // Delegate request to service.
+    productService.deprectedComplexRequestBody(pProduct);
   }
 
   /**
@@ -224,9 +215,8 @@ public class ProductServiceResource {
   @RequestMapping(path = "deprecated/complexReturn", method = { RequestMethod.GET })
   @Deprecated
   public Product deprecatedComplexReturn( ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.deprecatedComplexReturn();
+    // Delegate request to service.
+    return productService.deprecatedComplexReturn();
   }
 
   /**
@@ -249,9 +239,8 @@ public class ProductServiceResource {
     lBuilder.setQueryParam(pQueryParam);
     lBuilder.setSpecificHeader(pSpecificHeader);
     SpecialContext pContext = lBuilder.build();
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    lService.loadSpecificThings(pContext);
+    // Delegate request to service.
+    productService.loadSpecificThings(pContext);
   }
 
   /**
@@ -259,9 +248,8 @@ public class ProductServiceResource {
    */
   @RequestMapping(path = "ChannelCodeObject", method = { RequestMethod.POST })
   public ChannelCode createChannelCodeFromObject( @RequestBody(required = true) ChannelCode pChannelCode ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.createChannelCodeFromObject(pChannelCode);
+    // Delegate request to service.
+    return productService.createChannelCodeFromObject(pChannelCode);
   }
 
   /**
@@ -269,9 +257,8 @@ public class ProductServiceResource {
    */
   @RequestMapping(path = "currencies", method = { RequestMethod.POST })
   public List<CurrencyCode> addCurrencies( @RequestBody(required = true) List<CurrencyCode> pCurrencies ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.addCurrencies(pCurrencies);
+    // Delegate request to service.
+    return productService.addCurrencies(pCurrencies);
   }
 
   /**
@@ -279,9 +266,8 @@ public class ProductServiceResource {
    */
   @RequestMapping(path = "currencies/valid", method = { RequestMethod.POST })
   public CurrencyCode isCurrencySupported( @RequestBody(required = true) CurrencyCode pCurrency ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.isCurrencySupported(pCurrency);
+    // Delegate request to service.
+    return productService.isCurrencySupported(pCurrency);
   }
 
   /**
@@ -289,9 +275,8 @@ public class ProductServiceResource {
    */
   @RequestMapping(path = "codeTypeUsages", method = { RequestMethod.POST })
   public IntegerCodeType testCodeTypeUsage( @RequestBody(required = true) StringCodeType pStringCode ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.testCodeTypeUsage(pStringCode);
+    // Delegate request to service.
+    return productService.testCodeTypeUsage(pStringCode);
   }
 
   /**
@@ -306,9 +291,8 @@ public class ProductServiceResource {
     lBuilder.setLocalKey(pLocalKey);
     lBuilder.setLocalID(pLocalID);
     LocalBeanParamType pBeanParam = lBuilder.build();
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.testLocalBeanParamType(pBeanParam);
+    // Delegate request to service.
+    return productService.testLocalBeanParamType(pBeanParam);
   }
 
   /**
@@ -323,9 +307,8 @@ public class ProductServiceResource {
     lBuilder.setNovaKey(pNovaKey);
     lBuilder.setTkID(pTkID);
     ParentBeanParamType pParent = lBuilder.build();
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.testExternalBeanParameterType(pParent);
+    // Delegate request to service.
+    return productService.testExternalBeanParameterType(pParent);
   }
 
   /**
@@ -342,9 +325,8 @@ public class ProductServiceResource {
     lBuilder.setTkID(pTkID);
     lBuilder.setChildProperty(pChildProperty);
     ChildBeanParameterType pChild = lBuilder.build();
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    return lService.testChildBeanParameter(pChild);
+    // Delegate request to service.
+    return productService.testChildBeanParameter(pChild);
   }
 
   /**
@@ -362,9 +344,8 @@ public class ProductServiceResource {
       @RequestParam(name = "sqlTimestamp", required = true) Timestamp pSQLTimestamp,
       @RequestParam(name = "sqlTime", required = true) Time pSQLTime,
       @RequestParam(name = "sqlDate", required = true) Date pSQLDate ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    lService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
+    // Delegate request to service.
+    productService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
         pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
   }
 
@@ -397,9 +378,8 @@ public class ProductServiceResource {
     lBuilder.setSqlTime(pSqlTime);
     lBuilder.setSqlDate(pSqlDate);
     DateQueryParamsBean pQueryParams = lBuilder.build();
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    lService.testDateQueryParamsBean(pPath, pQueryParams);
+    // Delegate request to service.
+    productService.testDateQueryParamsBean(pPath, pQueryParams);
   }
 
   /**
@@ -417,9 +397,8 @@ public class ProductServiceResource {
       @RequestHeader(name = "SQL-Timestamp", required = true) Timestamp pSQLTimestamp,
       @RequestHeader(name = "SQL-Time", required = true) Time pSQLTime,
       @RequestHeader(name = "SQL-Date", required = true) Date pSQLDate ) {
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    lService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate,
+    // Delegate request to service.
+    productService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate,
         pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
   }
 
@@ -452,17 +431,7 @@ public class ProductServiceResource {
     lBuilder.setSqlTime(pSqlTime);
     lBuilder.setSqlDate(pSqlDate);
     DateHeaderParamsBean pHeaderParams = lBuilder.build();
-    // Get Spring service and delegate call.
-    ProductService lService = this.getProductService();
-    lService.testDateHeaderParamsBean(pPath, pHeaderParams);
-  }
-
-  /**
-   * Method returns reference to service to which all REST requests will be delegated.
-   *
-   * @return ProductService Service instance to which all requests will be delegated.
-   */
-  private ProductService getProductService( ) {
-    return productService;
+    // Delegate request to service.
+    productService.testDateHeaderParamsBean(pPath, pHeaderParams);
   }
 }
