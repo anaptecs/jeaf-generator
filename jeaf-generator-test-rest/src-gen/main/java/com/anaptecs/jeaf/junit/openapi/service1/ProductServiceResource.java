@@ -101,6 +101,7 @@ public class ProductServiceResource {
   @Path("{id}")
   @GET
   public Response getProduct( @PathParam("id") @DefaultValue("4711") String pProductID ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     Product lResult = lService.getProduct(pProductID);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -111,6 +112,7 @@ public class ProductServiceResource {
    */
   @POST
   public Response createProduct( Product pProduct ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     boolean lResult = lService.createProduct(pProduct);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -122,6 +124,7 @@ public class ProductServiceResource {
   @Path("sortiment/{id}")
   @GET
   public Response getSortiment( @BeanParam Context pContext ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     Sortiment lResult = lService.getSortiment(pContext);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -135,6 +138,7 @@ public class ProductServiceResource {
   @Consumes(MediaType.APPLICATION_XML)
   @Produces(MediaType.APPLICATION_XML)
   public Response createChannelCode( String pChannelCode ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     ChannelCode lResult = lService.createChannelCode(pChannelCode);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -145,6 +149,7 @@ public class ProductServiceResource {
    */
   @HEAD
   public Response ping( ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.ping();
     return Response.status(Response.Status.OK).build();
@@ -157,6 +162,7 @@ public class ProductServiceResource {
   @GET
   @Deprecated
   public Response deprecatedOperation( ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.deprecatedOperation();
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -168,6 +174,7 @@ public class ProductServiceResource {
   @Path("deprecated/context")
   @POST
   public Response deprecatedContext( @BeanParam DeprecatedContext pContext ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.deprecatedContext(pContext);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -179,6 +186,7 @@ public class ProductServiceResource {
   @Path("deprecated/beanParams")
   @POST
   public Response deprecatedBeanParam( @BeanParam BeanParameter pBeanParam ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.deprecatedBeanParam(pBeanParam);
     return Response.status(Response.Status.OK).build();
@@ -191,6 +199,7 @@ public class ProductServiceResource {
   @POST
   @Deprecated
   public Response deprecatedParams( @HeaderParam("param1") @Deprecated int pParam1 ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.deprecatedParams(pParam1);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -202,6 +211,7 @@ public class ProductServiceResource {
   @Path("deprecated/body")
   @POST
   public Response deprecatedBody( @DefaultValue("Hello World!") @Deprecated String pBody ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.deprecatedBody(pBody);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -213,6 +223,7 @@ public class ProductServiceResource {
   @Path("deprecated/complexBody")
   @POST
   public Response deprectedComplexRequestBody( @Deprecated Product pProduct ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.deprectedComplexRequestBody(pProduct);
     return Response.status(Response.Status.OK).build();
@@ -225,6 +236,7 @@ public class ProductServiceResource {
   @GET
   @Deprecated
   public Response deprecatedComplexReturn( ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     Product lResult = lService.deprecatedComplexReturn();
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -236,6 +248,7 @@ public class ProductServiceResource {
   @Path("specific/{id}")
   @PATCH
   public Response loadSpecificThings( @BeanParam SpecialContext pContext ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.loadSpecificThings(pContext);
     return Response.status(Response.Status.OK).build();
@@ -247,6 +260,7 @@ public class ProductServiceResource {
   @Path("ChannelCodeObject")
   @POST
   public Response createChannelCodeFromObject( ChannelCode pChannelCode ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     ChannelCode lResult = lService.createChannelCodeFromObject(pChannelCode);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -258,6 +272,7 @@ public class ProductServiceResource {
   @Path("currencies")
   @POST
   public Response addCurrencies( List<CurrencyCode> pCurrencies ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     List<CurrencyCode> lResult = lService.addCurrencies(pCurrencies);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -269,6 +284,7 @@ public class ProductServiceResource {
   @Path("currencies/valid")
   @POST
   public Response isCurrencySupported( CurrencyCode pCurrency ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     CurrencyCode lResult = lService.isCurrencySupported(pCurrency);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -280,6 +296,7 @@ public class ProductServiceResource {
   @Path("codeTypeUsages")
   @POST
   public Response testCodeTypeUsage( StringCodeType pStringCode ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     IntegerCodeType lResult = lService.testCodeTypeUsage(pStringCode);
     return Response.status(Response.Status.ACCEPTED).entity(lResult).build();
@@ -291,6 +308,7 @@ public class ProductServiceResource {
   @Path("LocalBeanParam")
   @GET
   public Response testLocalBeanParamType( @BeanParam LocalBeanParamType pBeanParam ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testLocalBeanParamType(pBeanParam);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -302,6 +320,7 @@ public class ProductServiceResource {
   @Path("ExternalBeanParam")
   @GET
   public Response testExternalBeanParameterType( @BeanParam ParentBeanParamType pParent ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testExternalBeanParameterType(pParent);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -313,6 +332,7 @@ public class ProductServiceResource {
   @Path("ChildBeanParam")
   @GET
   public Response testChildBeanParameter( @BeanParam ChildBeanParameterType pChild ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testChildBeanParameter(pChild);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -324,6 +344,7 @@ public class ProductServiceResource {
   @Path("IBAN")
   @POST
   public Response checkIBAN( String pIBAN ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     boolean lResult = lService.checkIBAN(pIBAN);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -335,6 +356,7 @@ public class ProductServiceResource {
   @Path("channels")
   @GET
   public Response getChannels( @QueryParam("channelTypes") @DefaultValue("MOBILE") List<ChannelType> pChannelTypes ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     List<Channel> lResult = lService.getChannels(pChannelTypes);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -346,6 +368,7 @@ public class ProductServiceResource {
   @Path("DefaultChannel")
   @GET
   public Response getDefaultChannel( @QueryParam("channelType") @DefaultValue("COUNTER") ChannelType pChannelType ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     Channel lResult = lService.getDefaultChannel(pChannelType);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -359,6 +382,7 @@ public class ProductServiceResource {
   public Response getSupportedCurrencies( @PathParam("channelCode") String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     ChannelCode pChannelCode = ChannelCode.Builder.newBuilder().setCode(pChannelCodeAsBasicType).build();
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     List<CurrencyCode> lResult = lService.getSupportedCurrencies(pChannelCode);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -414,6 +438,7 @@ public class ProductServiceResource {
       @QueryParam("calendar") Calendar pCalendar, @QueryParam("utilDate") java.util.Date pUtilDate,
       @QueryParam("sqlTimestamp") Timestamp pSQLTimestamp, @QueryParam("sqlTime") Time pSQLTime,
       @QueryParam("sqlDate") Date pSQLDate ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
         pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
@@ -427,6 +452,7 @@ public class ProductServiceResource {
   @GET
   public Response testDateQueryParamsBean( @PathParam("path") String pPath,
       @BeanParam DateQueryParamsBean pQueryParams ) {
+    // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.testDateQueryParamsBean(pPath, pQueryParams);
     return Response.status(Response.Status.OK).build();

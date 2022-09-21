@@ -44,6 +44,7 @@ public class RESTTestServiceResource {
    */
   @GET
   public Response getResource( @PathParam("{ID}") String pID ) {
+    // Delegate request to service.
     RESTTestService lService = this.getRESTTestService();
     String lResult = lService.getResource(pID);
     return Response.status(Response.Status.ACCEPTED).entity(lResult).build();
@@ -90,6 +91,7 @@ public class RESTTestServiceResource {
   @PUT
   @Consumes(MediaType.APPLICATION_OCTET_STREAM)
   public Response doSomethingRESTy( ) {
+    // Delegate request to service.
     RESTTestService lService = this.getRESTTestService();
     lService.doSomethingRESTy();
     return Response.status(Response.Status.OK).build();
@@ -103,6 +105,7 @@ public class RESTTestServiceResource {
   @Produces(MediaType.APPLICATION_JSON)
   public Response yetAnotherRESTOperation( @PathParam("id") String pID, @HeaderParam("token") String pToken,
       @QueryParam("filter") String pQueryParam1, @CookieParam("cookieEntry") String pCookieParam ) {
+    // Delegate request to service.
     RESTTestService lService = this.getRESTTestService();
     boolean lResult = lService.yetAnotherRESTOperation(pID, pToken, pQueryParam1, pCookieParam);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -114,6 +117,7 @@ public class RESTTestServiceResource {
   @Path("beanParam1")
   @GET
   public Response handleBeanParam1( @BeanParam Context pContext ) {
+    // Delegate request to service.
     RESTTestService lService = this.getRESTTestService();
     lService.handleBeanParam1(pContext);
     return Response.status(Response.Status.OK).build();
@@ -125,6 +129,7 @@ public class RESTTestServiceResource {
   @Path("beanParam2")
   @POST
   public Response handleBeanParam1( @BeanParam BeanParameter pBeanParam ) {
+    // Delegate request to service.
     RESTTestService lService = this.getRESTTestService();
     lService.handleBeanParam1(pBeanParam);
     return Response.status(Response.Status.OK).build();
@@ -137,6 +142,7 @@ public class RESTTestServiceResource {
   @GET
   @Deprecated
   public Response deprecatedOperation( ) {
+    // Delegate request to service.
     RESTTestService lService = this.getRESTTestService();
     lService.deprecatedOperation();
     return Response.status(Response.Status.OK).build();
@@ -149,6 +155,7 @@ public class RESTTestServiceResource {
   @GET
   public Response deprecatedParameter( @HeaderParam("pParam1") int pParam1,
       @HeaderParam("pParam2") @Deprecated int pParam2 ) {
+    // Delegate request to service.
     RESTTestService lService = this.getRESTTestService();
     lService.deprecatedParameter(pParam1, pParam2);
     return Response.status(Response.Status.OK).build();
@@ -161,6 +168,7 @@ public class RESTTestServiceResource {
   @GET
   @Deprecated
   public Response deprectaedReturnValue( @HeaderParam("pParam1") int pParam1 ) {
+    // Delegate request to service.
     RESTTestService lService = this.getRESTTestService();
     int lResult = lService.deprectaedReturnValue(pParam1);
     return Response.status(Response.Status.OK).entity(lResult).build();
