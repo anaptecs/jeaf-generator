@@ -36,7 +36,6 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    * object creation builder should be used instead.
    */
   protected MutableChildPOJO( ) {
-    // Nothing to do.
   }
 
   /**

@@ -63,7 +63,6 @@ public class ParentPOJO {
    * object creation builder should be used instead.
    */
   protected ParentPOJO( ) {
-    // Nothing to do.
   }
 
   /**

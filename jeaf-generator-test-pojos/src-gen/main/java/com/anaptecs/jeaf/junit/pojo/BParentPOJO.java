@@ -41,7 +41,6 @@ public class BParentPOJO {
    * object creation builder should be used instead.
    */
   protected BParentPOJO( ) {
-    // Nothing to do.
   }
 
   /**

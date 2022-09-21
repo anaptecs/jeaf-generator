@@ -81,7 +81,6 @@ public class Booking {
    * object creation builder should be used instead.
    */
   protected Booking( ) {
-    // Nothing to do.
   }
 
   /**

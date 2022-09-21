@@ -47,7 +47,6 @@ public class BChildPOJO extends BParentPOJO {
    * object creation builder should be used instead.
    */
   protected BChildPOJO( ) {
-    // Nothing to do.
   }
 
   /**

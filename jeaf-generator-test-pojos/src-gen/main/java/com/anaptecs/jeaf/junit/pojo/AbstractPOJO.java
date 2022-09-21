@@ -41,7 +41,6 @@ public abstract class AbstractPOJO {
    * object creation builder should be used instead.
    */
   protected AbstractPOJO( ) {
-    // Nothing to do.
   }
 
   /**

@@ -49,7 +49,6 @@ public abstract class PlainPOJOBase {
    * object creation builder should be used instead.
    */
   protected PlainPOJOBase( ) {
-    // Nothing to do.
   }
 
   /**

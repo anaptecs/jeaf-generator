@@ -38,7 +38,6 @@ public class ChildPOJO extends ParentPOJO {
    * object creation builder should be used instead.
    */
   protected ChildPOJO( ) {
-    // Nothing to do.
   }
 
   /**
