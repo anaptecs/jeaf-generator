@@ -50,7 +50,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF sup
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new «this.name» objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -415,7 +415,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 	  /**
 	   * Method returns a new builder.
 	   * 
-	   * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+	   * @return {@link Builder} New builder that can be used to create new «this.name» objects.
 	   */
 	  public static Builder newBuilder( ) {
 	    return new Builder();
