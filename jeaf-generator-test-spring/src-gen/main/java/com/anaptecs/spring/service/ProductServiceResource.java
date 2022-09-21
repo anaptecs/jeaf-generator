@@ -17,8 +17,6 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import javax.inject.Inject;
-
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,8 +45,19 @@ import com.anaptecs.spring.base.StringCodeType;
 @RequestMapping(path = "/products", consumes = { "application/json" }, produces = { "application/json" })
 @RestController
 public class ProductServiceResource {
-  @Inject
-  private ProductService productService;
+  /**
+   * Initialize object.
+   * 
+   * @param pProductService Dependency on concrete {@link ProductService} implementation that should be used.
+   */
+  ProductServiceResource( ProductService pProductService ) {
+    productService = pProductService;
+  }
+
+  /**
+   * All request to this class will be delegated to {@link ProductService}.
+   */
+  private final ProductService productService;
 
   /**
    * {@link ProductService#getProducts()}
