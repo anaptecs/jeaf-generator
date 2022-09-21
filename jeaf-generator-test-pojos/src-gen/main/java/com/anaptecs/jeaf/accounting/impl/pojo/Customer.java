@@ -25,6 +25,15 @@ public class Customer extends CustomerBase {
   }
 
   /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+   */
+  public Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
    * Class implements builder to create a new instance of class Customer. As the class has readonly attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

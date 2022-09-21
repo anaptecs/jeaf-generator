@@ -10,7 +10,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Currency;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.annotation.Generated;
@@ -68,14 +67,14 @@ public abstract class AccountBase {
   /**
    * 
    */
-  private Set<Booking> allBookings = new HashSet<Booking>();
+  private Set<Booking> allBookings;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected AccountBase( ) {
-    // Nothing to do.
+    allBookings = new HashSet<Booking>();
   }
 
   /**
@@ -91,7 +90,10 @@ public abstract class AccountBase {
     owner = pBuilder.owner;
     currency = pBuilder.currency;
     if (pBuilder.allBookings != null) {
-      allBookings.addAll(pBuilder.allBookings);
+      allBookings = pBuilder.allBookings;
+    }
+    else {
+      allBookings = new HashSet<Booking>();
     }
   }
 
@@ -308,23 +310,6 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method sets the association "allBookings" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pAllBookings Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setAllBookings( Set<Booking> pAllBookings ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "allBookings".
-    this.clearAllBookings();
-    // If the association is null, removing all entries is sufficient.
-    if (pAllBookings != null) {
-      allBookings = new HashSet<Booking>(pAllBookings);
-    }
-  }
-
-  /**
    * Method adds the passed Booking object to the association "allBookings".
    * 
    * 
@@ -373,11 +358,7 @@ public abstract class AccountBase {
    */
   public void clearAllBookings( ) {
     // Remove all objects from association "allBookings".
-    Collection<Booking> lAllBookings = new HashSet<Booking>(allBookings);
-    Iterator<Booking> lIterator = lAllBookings.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromAllBookings(lIterator.next());
-    }
+    allBookings.clear();
   }
 
   /**

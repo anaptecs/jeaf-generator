@@ -65,7 +65,7 @@ public class ImmutableAssociationPOJO {
   /**
    * 
    */
-  private final SortedSet<ImmutablePOJO> readonlyAssociation = new TreeSet<ImmutablePOJO>();
+  private final SortedSet<ImmutablePOJO> readonlyAssociation;
 
   /**
    * 
@@ -76,7 +76,7 @@ public class ImmutableAssociationPOJO {
    * 
    */
   @Deprecated
-  private Set<ImmutableChildPOJO> deprecatedRefs = new HashSet<ImmutableChildPOJO>();
+  private Set<ImmutableChildPOJO> deprecatedRefs;
 
   /**
    * 
@@ -90,7 +90,9 @@ public class ImmutableAssociationPOJO {
    */
   protected ImmutableAssociationPOJO( ) {
     yetAnotherAttribute = false;
+    readonlyAssociation = new TreeSet<ImmutablePOJO>();
     immutableChildPOJO = null;
+    deprecatedRefs = new HashSet<ImmutableChildPOJO>();
   }
 
   /**
@@ -104,7 +106,10 @@ public class ImmutableAssociationPOJO {
     // Read attribute values from builder.
     yetAnotherAttribute = pBuilder.yetAnotherAttribute;
     if (pBuilder.readonlyAssociation != null) {
-      readonlyAssociation.addAll(pBuilder.readonlyAssociation);
+      readonlyAssociation = pBuilder.readonlyAssociation;
+    }
+    else {
+      readonlyAssociation = Collections.emptySortedSet();
     }
     immutableChildPOJO = pBuilder.immutableChildPOJO;
     if (pBuilder.deprecatedRefs != null) {
