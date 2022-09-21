@@ -4,8 +4,8 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.Configuration;
 
 import com.anaptecs.jeaf.jersey.impl.time.JavaTimeConverterProvider;
-import com.anaptecs.spring.service.ProductServiceResource;
-import com.anaptecs.spring.service.RESTProductServiceResource;
+import com.anaptecs.spring.service.resource.ProductServiceResource;
+import com.anaptecs.spring.service.resource.RESTProductServiceResource;
 
 @Configuration
 public class JerseyConfig extends ResourceConfig {

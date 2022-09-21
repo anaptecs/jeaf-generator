@@ -9,9 +9,9 @@
 «IMPORT JMM»
 
 «DEFINE RESTResourceClass FOR RESTResource»
-«FILE packagePath()+"/"+name+"Resource.java" src_gen»
+«FILE packagePath()+"/resource/"+name+"Resource.java" src_gen»
 «getFileHeader()»
-package «packageName()»;
+package «packageName()».resource;
 
 «this.getJavadoc()»
 «IF isRESTLibrarySpringWebMVC()»

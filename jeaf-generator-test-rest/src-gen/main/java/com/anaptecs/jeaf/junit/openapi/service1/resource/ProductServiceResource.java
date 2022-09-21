@@ -3,7 +3,7 @@
  * 
  * Copyright 2004 - 2019. All rights reserved.
  */
-package com.anaptecs.jeaf.junit.openapi.service1;
+package com.anaptecs.jeaf.junit.openapi.service1.resource;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -48,6 +48,10 @@ import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
 import com.anaptecs.jeaf.junit.openapi.base.StringCodeType;
+import com.anaptecs.jeaf.junit.openapi.service1.ChildBeanParameterType;
+import com.anaptecs.jeaf.junit.openapi.service1.DateQueryParamsBean;
+import com.anaptecs.jeaf.junit.openapi.service1.LocalBeanParamType;
+import com.anaptecs.jeaf.junit.openapi.service1.ProductService;
 import com.anaptecs.jeaf.workload.api.Workload;
 import com.anaptecs.jeaf.workload.api.WorkloadManager;
 import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;

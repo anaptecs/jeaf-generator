@@ -3,7 +3,7 @@
  * 
  * Copyright 2004 - 2019. All rights reserved.
  */
-package com.anaptecs.spring.service;
+package com.anaptecs.spring.service.resource;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -37,6 +37,11 @@ import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCodeType;
+import com.anaptecs.spring.service.ChildBeanParameterType;
+import com.anaptecs.spring.service.DateHeaderParamsBean;
+import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.LocalBeanParamType;
+import com.anaptecs.spring.service.ProductService;
 
 /**
  * @author JEAF Generator

@@ -3,7 +3,7 @@
  * 
  * Copyright 2004 - 2019. All rights reserved.
  */
-package com.anaptecs.jeaf.junit.rest;
+package com.anaptecs.jeaf.junit.rest.resource;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.anaptecs.jeaf.core.api.JEAF;
+import com.anaptecs.jeaf.junit.rest.DeprecatedRESTService;
 
 /**
  * @author JEAF Generator

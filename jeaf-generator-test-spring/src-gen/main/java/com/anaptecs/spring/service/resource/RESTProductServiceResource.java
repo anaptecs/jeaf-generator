@@ -3,7 +3,7 @@
  * 
  * Copyright 2004 - 2019. All rights reserved.
  */
-package com.anaptecs.spring.service;
+package com.anaptecs.spring.service.resource;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -35,6 +35,9 @@ import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.TimeUnit;
+import com.anaptecs.spring.service.DateHeaderParamsBean;
+import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.RESTProductService;
 
 /**
  * @author JEAF Generator

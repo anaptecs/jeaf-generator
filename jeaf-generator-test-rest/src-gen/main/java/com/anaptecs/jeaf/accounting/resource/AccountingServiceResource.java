@@ -3,7 +3,7 @@
  * 
  * Copyright 2004 - 2019. All rights reserved.
  */
-package com.anaptecs.jeaf.accounting;
+package com.anaptecs.jeaf.accounting.resource;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
@@ -17,6 +17,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.anaptecs.jeaf.accounting.AccountingService;
+import com.anaptecs.jeaf.accounting.Booking;
+import com.anaptecs.jeaf.accounting.SecurityToken;
 import com.anaptecs.jeaf.core.api.JEAF;
 import com.anaptecs.jeaf.workload.api.Workload;
 import com.anaptecs.jeaf.workload.api.WorkloadManager;
