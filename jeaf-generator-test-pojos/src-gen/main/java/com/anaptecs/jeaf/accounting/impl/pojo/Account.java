@@ -47,7 +47,7 @@ public class Account extends AccountBase {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Account objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

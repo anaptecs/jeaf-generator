@@ -48,7 +48,7 @@ public class ReadonlyDefaultPOJO extends ReadonlyDefaultPOJOBase {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ReadonlyDefaultPOJO objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

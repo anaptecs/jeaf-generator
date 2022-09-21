@@ -101,7 +101,7 @@ public class BChildPOJO extends BParentPOJO {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new BChildPOJO objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

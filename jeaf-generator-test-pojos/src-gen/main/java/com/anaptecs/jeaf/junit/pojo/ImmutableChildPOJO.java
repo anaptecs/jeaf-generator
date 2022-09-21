@@ -99,7 +99,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ImmutableChildPOJO objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
