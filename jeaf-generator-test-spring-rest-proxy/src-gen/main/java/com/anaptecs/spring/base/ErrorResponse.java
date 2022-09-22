@@ -17,7 +17,6 @@ public class ErrorResponse {
    * object creation builder should be used instead.
    */
   protected ErrorResponse( ) {
-    // Nothing to do.
   }
 
   /**
@@ -51,7 +50,7 @@ public class ErrorResponse {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ErrorResponse objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

@@ -27,7 +27,6 @@ public abstract class ChildA extends ParentClass {
    * object creation builder should be used instead.
    */
   protected ChildA( ) {
-    // Nothing to do.
   }
 
   /**

@@ -113,7 +113,7 @@ public class ProductDefinition {
   /**
    * 
    */
-  private List<TemporalValidity> validities = new ArrayList<TemporalValidity>();
+  private List<TemporalValidity> validities;
 
   /**
    * unique id of this product on this server.
@@ -150,7 +150,7 @@ public class ProductDefinition {
   /**
    * Structured description of the sales or after-sales conditions.
    */
-  private List<Condition> conditions = new ArrayList<Condition>();
+  private List<Condition> conditions;
 
   /**
    * Accommodation type according to UIC
@@ -194,15 +194,18 @@ public class ProductDefinition {
   /**
    * 
    */
-  private List<FulfillmentOption> fulfillmentOptions = new ArrayList<FulfillmentOption>();
+  private List<FulfillmentOption> fulfillmentOptions;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected ProductDefinition( ) {
+    validities = new ArrayList<TemporalValidity>();
+    conditions = new ArrayList<Condition>();
     isTrainBound = false;
     isReturnProduct = false;
+    fulfillmentOptions = new ArrayList<FulfillmentOption>();
   }
 
   /**
@@ -215,7 +218,10 @@ public class ProductDefinition {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.validities != null) {
-      validities.addAll(pBuilder.validities);
+      validities = pBuilder.validities;
+    }
+    else {
+      validities = new ArrayList<TemporalValidity>();
     }
     id = pBuilder.id;
     summary = pBuilder.summary;
@@ -224,7 +230,10 @@ public class ProductDefinition {
     code = pBuilder.code;
     description = pBuilder.description;
     if (pBuilder.conditions != null) {
-      conditions.addAll(pBuilder.conditions);
+      conditions = pBuilder.conditions;
+    }
+    else {
+      conditions = new ArrayList<Condition>();
     }
     accommodationType = pBuilder.accommodationType;
     accommodationSubType = pBuilder.accommodationSubType;
@@ -234,7 +243,10 @@ public class ProductDefinition {
     isTrainBound = pBuilder.isTrainBound;
     isReturnProduct = pBuilder.isReturnProduct;
     if (pBuilder.fulfillmentOptions != null) {
-      fulfillmentOptions.addAll(pBuilder.fulfillmentOptions);
+      fulfillmentOptions = pBuilder.fulfillmentOptions;
+    }
+    else {
+      fulfillmentOptions = new ArrayList<FulfillmentOption>();
     }
   }
 
@@ -359,7 +371,7 @@ public class ProductDefinition {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ProductDefinition objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -602,23 +614,6 @@ public class ProductDefinition {
   }
 
   /**
-   * Method sets the association "validities" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pValidities Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setValidities( List<TemporalValidity> pValidities ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "validities".
-    this.clearValidities();
-    // If the association is null, removing all entries is sufficient.
-    if (pValidities != null) {
-      validities = new ArrayList<TemporalValidity>(pValidities);
-    }
-  }
-
-  /**
    * Method adds the passed TemporalValidity object to the association "validities".
    * 
    * 
@@ -818,22 +813,6 @@ public class ProductDefinition {
   public List<Condition> getConditions( ) {
     // Return all Condition objects as unmodifiable collection.
     return Collections.unmodifiableList(conditions);
-  }
-
-  /**
-   * Method sets the association "conditions" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it. Structured description of the sales or after-sales conditions.
-   * 
-   * @param pConditions Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setConditions( List<Condition> pConditions ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "conditions".
-    this.clearConditions();
-    // If the association is null, removing all entries is sufficient.
-    if (pConditions != null) {
-      conditions = new ArrayList<Condition>(pConditions);
-    }
   }
 
   /**
@@ -1070,24 +1049,6 @@ public class ProductDefinition {
   public List<FulfillmentOption> getFulfillmentOptions( ) {
     // Return all FulfillmentOption objects as unmodifiable collection.
     return Collections.unmodifiableList(fulfillmentOptions);
-  }
-
-  /**
-   * Method sets the association "fulfillmentOptions" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pFulfillmentOptions Collection with objects to which the association should be set. The parameter must not
-   * be null.
-   */
-  void setFulfillmentOptions( List<FulfillmentOption> pFulfillmentOptions ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "fulfillmentOptions".
-    this.clearFulfillmentOptions();
-    // If the association is null, removing all entries is sufficient.
-    if (pFulfillmentOptions != null) {
-      fulfillmentOptions = new ArrayList<FulfillmentOption>(pFulfillmentOptions);
-    }
   }
 
   /**

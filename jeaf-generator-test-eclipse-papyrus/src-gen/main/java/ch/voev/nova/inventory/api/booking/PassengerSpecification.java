@@ -75,19 +75,20 @@ public class PassengerSpecification {
   /**
    * reduction or loyalty cards owned by the passenger
    */
-  private List<CardReference> cards = new ArrayList<CardReference>();
+  private List<CardReference> cards;
 
   /**
    * For the persons with reduced mobility (PRMs) its specific needs for support are expressed.
    */
-  private List<PRMNeedType> prmNeeds = new ArrayList<PRMNeedType>();
+  private List<PRMNeedType> prmNeeds;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected PassengerSpecification( ) {
-    // Nothing to do.
+    cards = new ArrayList<CardReference>();
+    prmNeeds = new ArrayList<PRMNeedType>();
   }
 
   /**
@@ -103,10 +104,16 @@ public class PassengerSpecification {
     type = pBuilder.type;
     dateOfBirth = pBuilder.dateOfBirth;
     if (pBuilder.cards != null) {
-      cards.addAll(pBuilder.cards);
+      cards = pBuilder.cards;
+    }
+    else {
+      cards = new ArrayList<CardReference>();
     }
     if (pBuilder.prmNeeds != null) {
-      prmNeeds.addAll(pBuilder.prmNeeds);
+      prmNeeds = pBuilder.prmNeeds;
+    }
+    else {
+      prmNeeds = new ArrayList<PRMNeedType>();
     }
   }
 
@@ -165,7 +172,7 @@ public class PassengerSpecification {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new PassengerSpecification objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -349,22 +356,6 @@ public class PassengerSpecification {
   }
 
   /**
-   * Method sets the association "cards" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it. reduction or loyalty cards owned by the passenger
-   * 
-   * @param pCards Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setCards( List<CardReference> pCards ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "cards".
-    this.clearCards();
-    // If the association is null, removing all entries is sufficient.
-    if (pCards != null) {
-      cards = new ArrayList<CardReference>(pCards);
-    }
-  }
-
-  /**
    * Method adds the passed CardReference object to the association "cards". reduction or loyalty cards owned by the
    * passenger
    * 
@@ -427,23 +418,6 @@ public class PassengerSpecification {
   public List<PRMNeedType> getPrmNeeds( ) {
     // Return all PRMNeedType objects as unmodifiable collection.
     return Collections.unmodifiableList(prmNeeds);
-  }
-
-  /**
-   * Method sets the association "prmNeeds" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it. For the persons with reduced mobility (PRMs) its specific needs for support
-   * are expressed.
-   * 
-   * @param pPrmNeeds Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setPrmNeeds( List<PRMNeedType> pPrmNeeds ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "prmNeeds".
-    this.clearPrmNeeds();
-    // If the association is null, removing all entries is sufficient.
-    if (pPrmNeeds != null) {
-      prmNeeds = new ArrayList<PRMNeedType>(pPrmNeeds);
-    }
   }
 
   /**

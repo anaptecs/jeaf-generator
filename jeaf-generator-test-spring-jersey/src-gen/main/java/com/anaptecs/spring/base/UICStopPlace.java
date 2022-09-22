@@ -18,7 +18,6 @@ public class UICStopPlace extends StopPlaceRef {
    * object creation builder should be used instead.
    */
   protected UICStopPlace( ) {
-    // Nothing to do.
   }
 
   /**
@@ -56,7 +55,7 @@ public class UICStopPlace extends StopPlaceRef {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new UICStopPlace objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

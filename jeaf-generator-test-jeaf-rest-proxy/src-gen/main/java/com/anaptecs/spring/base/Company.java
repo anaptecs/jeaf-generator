@@ -40,7 +40,6 @@ public class Company extends Partner {
    * object creation builder should be used instead.
    */
   protected Company( ) {
-    // Nothing to do.
   }
 
   /**
@@ -86,7 +85,7 @@ public class Company extends Partner {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Company objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

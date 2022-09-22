@@ -39,19 +39,20 @@ public class VehicleResponse {
   /**
    * 
    */
-  private List<Warning> warnings = new ArrayList<Warning>();
+  private List<Warning> warnings;
 
   /**
    * 
    */
-  private List<Vehicle> vehicles = new ArrayList<Vehicle>();
+  private List<Vehicle> vehicles;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected VehicleResponse( ) {
-    // Nothing to do.
+    warnings = new ArrayList<Warning>();
+    vehicles = new ArrayList<Vehicle>();
   }
 
   /**
@@ -64,10 +65,16 @@ public class VehicleResponse {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.warnings != null) {
-      warnings.addAll(pBuilder.warnings);
+      warnings = pBuilder.warnings;
+    }
+    else {
+      warnings = new ArrayList<Warning>();
     }
     if (pBuilder.vehicles != null) {
-      vehicles.addAll(pBuilder.vehicles);
+      vehicles = pBuilder.vehicles;
+    }
+    else {
+      vehicles = new ArrayList<Vehicle>();
     }
   }
 
@@ -106,7 +113,7 @@ public class VehicleResponse {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new VehicleResponse objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -192,23 +199,6 @@ public class VehicleResponse {
   }
 
   /**
-   * Method sets the association "warnings" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pWarnings Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setWarnings( List<Warning> pWarnings ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "warnings".
-    this.clearWarnings();
-    // If the association is null, removing all entries is sufficient.
-    if (pWarnings != null) {
-      warnings = new ArrayList<Warning>(pWarnings);
-    }
-  }
-
-  /**
    * Method adds the passed Warning object to the association "warnings".
    * 
    * 
@@ -273,23 +263,6 @@ public class VehicleResponse {
   public List<Vehicle> getVehicles( ) {
     // Return all Vehicle objects as unmodifiable collection.
     return Collections.unmodifiableList(vehicles);
-  }
-
-  /**
-   * Method sets the association "vehicles" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pVehicles Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setVehicles( List<Vehicle> pVehicles ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "vehicles".
-    this.clearVehicles();
-    // If the association is null, removing all entries is sufficient.
-    if (pVehicles != null) {
-      vehicles = new ArrayList<Vehicle>(pVehicles);
-    }
   }
 
   /**

@@ -53,7 +53,7 @@ public class CardReference {
   /**
    * Types of card. One card can have multiple roles, such as loyalty and reduction
    */
-  private List<CardType> types = new ArrayList<CardType>();
+  private List<CardType> types;
 
   /**
    * Code of the card type according to issuer.
@@ -81,7 +81,7 @@ public class CardReference {
    * object creation builder should be used instead.
    */
   protected CardReference( ) {
-    // Nothing to do.
+    types = new ArrayList<CardType>();
   }
 
   /**
@@ -94,7 +94,10 @@ public class CardReference {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.types != null) {
-      types.addAll(pBuilder.types);
+      types = pBuilder.types;
+    }
+    else {
+      types = new ArrayList<CardType>();
     }
     code = pBuilder.code;
     name = pBuilder.name;
@@ -156,7 +159,7 @@ public class CardReference {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new CardReference objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -267,22 +270,6 @@ public class CardReference {
   public List<CardType> getTypes( ) {
     // Return all CardType objects as unmodifiable collection.
     return Collections.unmodifiableList(types);
-  }
-
-  /**
-   * Method sets the association "types" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it. Types of card. One card can have multiple roles, such as loyalty and reduction
-   * 
-   * @param pTypes Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setTypes( List<CardType> pTypes ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "types".
-    this.clearTypes();
-    // If the association is null, removing all entries is sufficient.
-    if (pTypes != null) {
-      types = new ArrayList<CardType>(pTypes);
-    }
   }
 
   /**

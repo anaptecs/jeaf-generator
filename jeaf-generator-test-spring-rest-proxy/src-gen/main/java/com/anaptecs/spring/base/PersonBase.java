@@ -40,7 +40,6 @@ public abstract class PersonBase extends Partner {
    * object creation builder should be used instead.
    */
   protected PersonBase( ) {
-    // Nothing to do.
   }
 
   /**

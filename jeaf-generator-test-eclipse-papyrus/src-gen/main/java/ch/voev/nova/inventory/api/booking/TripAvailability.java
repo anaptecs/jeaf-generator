@@ -51,19 +51,20 @@ public class TripAvailability {
   /**
    * 
    */
-  private List<PlaceAvailability> placeAvailabilities = new ArrayList<PlaceAvailability>();
+  private List<PlaceAvailability> placeAvailabilities;
 
   /**
    * 
    */
-  private List<ReservationOffer> reservationOffers = new ArrayList<ReservationOffer>();
+  private List<ReservationOffer> reservationOffers;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected TripAvailability( ) {
-    // Nothing to do.
+    placeAvailabilities = new ArrayList<PlaceAvailability>();
+    reservationOffers = new ArrayList<ReservationOffer>();
   }
 
   /**
@@ -77,10 +78,16 @@ public class TripAvailability {
     // Read attribute values from builder.
     tripId = pBuilder.tripId;
     if (pBuilder.placeAvailabilities != null) {
-      placeAvailabilities.addAll(pBuilder.placeAvailabilities);
+      placeAvailabilities = pBuilder.placeAvailabilities;
+    }
+    else {
+      placeAvailabilities = new ArrayList<PlaceAvailability>();
     }
     if (pBuilder.reservationOffers != null) {
-      reservationOffers.addAll(pBuilder.reservationOffers);
+      reservationOffers = pBuilder.reservationOffers;
+    }
+    else {
+      reservationOffers = new ArrayList<ReservationOffer>();
     }
   }
 
@@ -126,7 +133,7 @@ public class TripAvailability {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new TripAvailability objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -244,24 +251,6 @@ public class TripAvailability {
   }
 
   /**
-   * Method sets the association "placeAvailabilities" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pPlaceAvailabilities Collection with objects to which the association should be set. The parameter must not
-   * be null.
-   */
-  void setPlaceAvailabilities( List<PlaceAvailability> pPlaceAvailabilities ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "placeAvailabilities".
-    this.clearPlaceAvailabilities();
-    // If the association is null, removing all entries is sufficient.
-    if (pPlaceAvailabilities != null) {
-      placeAvailabilities = new ArrayList<PlaceAvailability>(pPlaceAvailabilities);
-    }
-  }
-
-  /**
    * Method adds the passed PlaceAvailability object to the association "placeAvailabilities".
    * 
    * 
@@ -328,24 +317,6 @@ public class TripAvailability {
   public List<ReservationOffer> getReservationOffers( ) {
     // Return all ReservationOffer objects as unmodifiable collection.
     return Collections.unmodifiableList(reservationOffers);
-  }
-
-  /**
-   * Method sets the association "reservationOffers" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pReservationOffers Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setReservationOffers( List<ReservationOffer> pReservationOffers ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "reservationOffers".
-    this.clearReservationOffers();
-    // If the association is null, removing all entries is sufficient.
-    if (pReservationOffers != null) {
-      reservationOffers = new ArrayList<ReservationOffer>(pReservationOffers);
-    }
   }
 
   /**

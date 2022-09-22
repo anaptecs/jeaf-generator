@@ -27,7 +27,6 @@ public class UICStop extends Stop {
    * object creation builder should be used instead.
    */
   protected UICStop( ) {
-    // Nothing to do.
   }
 
   /**
@@ -73,7 +72,7 @@ public class UICStop extends Stop {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new UICStop objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

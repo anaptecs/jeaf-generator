@@ -41,13 +41,13 @@ public class CodeTypeUsageTest implements ServiceObject {
   /**
    * 
    */
-  private Set<BooleanCodeType> booleanCodeAssociation = new HashSet<BooleanCodeType>();
+  private Set<BooleanCodeType> booleanCodeAssociation;
 
   /**
    * 
    */
   @Size(min = 1)
-  private Set<ShortCodeType> shortCodeTypeAssociation = new HashSet<ShortCodeType>();
+  private Set<ShortCodeType> shortCodeTypeAssociation;
 
   /**
    * 
@@ -60,7 +60,8 @@ public class CodeTypeUsageTest implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected CodeTypeUsageTest( ) {
-    // Nothing to do.
+    booleanCodeAssociation = new HashSet<BooleanCodeType>();
+    shortCodeTypeAssociation = new HashSet<ShortCodeType>();
   }
 
   /**
@@ -74,10 +75,16 @@ public class CodeTypeUsageTest implements ServiceObject {
     // Read attribute values from builder.
     booleanCode = pBuilder.booleanCode;
     if (pBuilder.booleanCodeAssociation != null) {
-      booleanCodeAssociation.addAll(pBuilder.booleanCodeAssociation);
+      booleanCodeAssociation = pBuilder.booleanCodeAssociation;
+    }
+    else {
+      booleanCodeAssociation = new HashSet<BooleanCodeType>();
     }
     if (pBuilder.shortCodeTypeAssociation != null) {
-      shortCodeTypeAssociation.addAll(pBuilder.shortCodeTypeAssociation);
+      shortCodeTypeAssociation = pBuilder.shortCodeTypeAssociation;
+    }
+    else {
+      shortCodeTypeAssociation = new HashSet<ShortCodeType>();
     }
     stringCode = pBuilder.stringCode;
   }
@@ -129,7 +136,7 @@ public class CodeTypeUsageTest implements ServiceObject {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new CodeTypeUsageTest objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -258,24 +265,6 @@ public class CodeTypeUsageTest implements ServiceObject {
   }
 
   /**
-   * Method sets the association "booleanCodeAssociation" to the passed collection. All objects that formerly were part
-   * of the association will be removed from it.
-   * 
-   * 
-   * @param pBooleanCodeAssociation Collection with objects to which the association should be set. The parameter must
-   * not be null.
-   */
-  void setBooleanCodeAssociation( Set<BooleanCodeType> pBooleanCodeAssociation ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "booleanCodeAssociation".
-    this.clearBooleanCodeAssociation();
-    // If the association is null, removing all entries is sufficient.
-    if (pBooleanCodeAssociation != null) {
-      booleanCodeAssociation = new HashSet<BooleanCodeType>(pBooleanCodeAssociation);
-    }
-  }
-
-  /**
    * Method adds the passed BooleanCodeType object to the association "booleanCodeAssociation".
    * 
    * 
@@ -342,24 +331,6 @@ public class CodeTypeUsageTest implements ServiceObject {
   public Set<ShortCodeType> getShortCodeTypeAssociation( ) {
     // Return all ShortCodeType objects directly without any protection against modification.
     return shortCodeTypeAssociation;
-  }
-
-  /**
-   * Method sets the association "shortCodeTypeAssociation" to the passed collection. All objects that formerly were
-   * part of the association will be removed from it.
-   * 
-   * 
-   * @param pShortCodeTypeAssociation Collection with objects to which the association should be set. The parameter must
-   * not be null.
-   */
-  void setShortCodeTypeAssociation( Set<ShortCodeType> pShortCodeTypeAssociation ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "shortCodeTypeAssociation".
-    this.clearShortCodeTypeAssociation();
-    // If the association is null, removing all entries is sufficient.
-    if (pShortCodeTypeAssociation != null) {
-      shortCodeTypeAssociation = new HashSet<ShortCodeType>(pShortCodeTypeAssociation);
-    }
   }
 
   /**

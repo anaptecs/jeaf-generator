@@ -37,7 +37,6 @@ public class ProductCategoryRef {
    * object creation builder should be used instead.
    */
   protected ProductCategoryRef( ) {
-    // Nothing to do.
   }
 
   /**
@@ -82,7 +81,7 @@ public class ProductCategoryRef {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ProductCategoryRef objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

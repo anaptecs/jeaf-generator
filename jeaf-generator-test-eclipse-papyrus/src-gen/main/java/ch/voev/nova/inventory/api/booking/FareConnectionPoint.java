@@ -52,14 +52,14 @@ public class FareConnectionPoint {
   /**
    * 
    */
-  private List<StationSet> stationSets = new ArrayList<StationSet>();
+  private List<StationSet> stationSets;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected FareConnectionPoint( ) {
-    // Nothing to do.
+    stationSets = new ArrayList<StationSet>();
   }
 
   /**
@@ -73,7 +73,10 @@ public class FareConnectionPoint {
     // Read attribute values from builder.
     name = pBuilder.name;
     if (pBuilder.stationSets != null) {
-      stationSets.addAll(pBuilder.stationSets);
+      stationSets = pBuilder.stationSets;
+    }
+    else {
+      stationSets = new ArrayList<StationSet>();
     }
   }
 
@@ -112,7 +115,7 @@ public class FareConnectionPoint {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new FareConnectionPoint objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -211,23 +214,6 @@ public class FareConnectionPoint {
   public List<StationSet> getStationSets( ) {
     // Return all StationSet objects as unmodifiable collection.
     return Collections.unmodifiableList(stationSets);
-  }
-
-  /**
-   * Method sets the association "stationSets" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pStationSets Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setStationSets( List<StationSet> pStationSets ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "stationSets".
-    this.clearStationSets();
-    // If the association is null, removing all entries is sufficient.
-    if (pStationSets != null) {
-      stationSets = new ArrayList<StationSet>(pStationSets);
-    }
   }
 
   /**

@@ -65,7 +65,7 @@ public class ChildBB extends ChildB {
    * 
    */
   @Deprecated
-  private Set<ChildB> deprecatedBs = new HashSet<ChildB>();
+  private Set<ChildB> deprecatedBs;
 
   /**
    * 
@@ -85,7 +85,7 @@ public class ChildBB extends ChildB {
    * object creation builder should be used instead.
    */
   protected ChildBB( ) {
-    // Nothing to do.
+    deprecatedBs = new HashSet<ChildB>();
   }
 
   /**
@@ -100,7 +100,10 @@ public class ChildBB extends ChildB {
     childBBAttribute = pBuilder.childBBAttribute;
     deprecatedAttribute = pBuilder.deprecatedAttribute;
     if (pBuilder.deprecatedBs != null) {
-      deprecatedBs.addAll(pBuilder.deprecatedBs);
+      deprecatedBs = pBuilder.deprecatedBs;
+    }
+    else {
+      deprecatedBs = new HashSet<ChildB>();
     }
     deprecatedParent = pBuilder.deprecatedParent;
     deprecatedArray = pBuilder.deprecatedArray;
@@ -166,7 +169,7 @@ public class ChildBB extends ChildB {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ChildBB objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -340,25 +343,6 @@ public class ChildBB extends ChildB {
   public Set<ChildB> getDeprecatedBs( ) {
     // Return all ChildB objects as unmodifiable collection.
     return Collections.unmodifiableSet(deprecatedBs);
-  }
-
-  /**
-   * Method sets the association "deprecatedBs" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pDeprecatedBs Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  @Deprecated
-  void setDeprecatedBs( Set<ChildB> pDeprecatedBs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "deprecatedBs".
-    this.clearDeprecatedBs();
-    // If the association is null, removing all entries is sufficient.
-    if (pDeprecatedBs != null) {
-      deprecatedBs = new HashSet<ChildB>(pDeprecatedBs);
-    }
   }
 
   /**

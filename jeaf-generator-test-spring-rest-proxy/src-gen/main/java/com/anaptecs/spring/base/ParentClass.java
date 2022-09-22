@@ -25,7 +25,6 @@ public class ParentClass {
    * object creation builder should be used instead.
    */
   protected ParentClass( ) {
-    // Nothing to do.
   }
 
   /**
@@ -67,7 +66,7 @@ public class ParentClass {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ParentClass objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

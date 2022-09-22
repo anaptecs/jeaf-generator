@@ -46,14 +46,14 @@ public class TripSpecification {
   /**
    * 
    */
-  private List<TripLegSpecification> legs = new ArrayList<TripLegSpecification>();
+  private List<TripLegSpecification> legs;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected TripSpecification( ) {
-    // Nothing to do.
+    legs = new ArrayList<TripLegSpecification>();
   }
 
   /**
@@ -67,7 +67,10 @@ public class TripSpecification {
     // Read attribute values from builder.
     externalRef = pBuilder.externalRef;
     if (pBuilder.legs != null) {
-      legs.addAll(pBuilder.legs);
+      legs = pBuilder.legs;
+    }
+    else {
+      legs = new ArrayList<TripLegSpecification>();
     }
   }
 
@@ -107,7 +110,7 @@ public class TripSpecification {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new TripSpecification objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -207,23 +210,6 @@ public class TripSpecification {
   public List<TripLegSpecification> getLegs( ) {
     // Return all TripLegSpecification objects as unmodifiable collection.
     return Collections.unmodifiableList(legs);
-  }
-
-  /**
-   * Method sets the association "legs" to the passed collection. All objects that formerly were part of the association
-   * will be removed from it.
-   * 
-   * 
-   * @param pLegs Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setLegs( List<TripLegSpecification> pLegs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "legs".
-    this.clearLegs();
-    // If the association is null, removing all entries is sufficient.
-    if (pLegs != null) {
-      legs = new ArrayList<TripLegSpecification>(pLegs);
-    }
   }
 
   /**

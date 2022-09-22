@@ -52,7 +52,6 @@ public class ChildAA extends ChildA {
    * object creation builder should be used instead.
    */
   protected ChildAA( ) {
-    // Nothing to do.
   }
 
   /**
@@ -114,7 +113,7 @@ public class ChildAA extends ChildA {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ChildAA objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

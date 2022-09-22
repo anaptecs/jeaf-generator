@@ -6,19 +6,23 @@
 package com.anaptecs.jeaf.junit;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Collections;
 import java.util.Currency;
 
 import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.accounting.impl.pojo.Account;
 import com.anaptecs.jeaf.accounting.impl.pojo.Customer;
+import com.anaptecs.jeaf.junit.pojo.ImmutableAssociationPOJO;
 
 class BuilderTest {
   @Test
-  void testPOJOBuilder( ) {
+  void testBuilderForPOJOsWithCustomImplementation( ) {
     Customer lDonald = Customer.Builder.newBuilder().setFirstName("Donald").setName("Duck").build();
     Account lAccount01 = Account.Builder.newBuilder().setCurrency(Currency.getInstance("CHF")).build();
 
@@ -50,6 +54,38 @@ class BuilderTest {
 
     assertEquals(0, lDonald.getAccounts().size());
     assertEquals(0, lDaisy.getAccounts().size());
+  }
+
+  @Test
+  void testBuilderForPOJOsWithoutCustomImplementation( ) {
+    ImmutableAssociationPOJO lPojo = ImmutableAssociationPOJO.Builder.newBuilder()
+        .setYetAnotherAttribute(true).build();
+    assertNotNull(lPojo.getDeprecatedRefs());
+    assertNotNull(lPojo.getReadonlyAssociation());
+    assertEquals(true, lPojo.getYetAnotherAttribute());
+    assertNull(lPojo.getImmutableChildPOJO());
+
+    ImmutableAssociationPOJO.Builder.newBuilder()
+        .setYetAnotherAttribute(true).setDeprecatedRefs(Collections.emptySet()).setReadonlyAssociation(Collections
+            .emptySortedSet()).build();
+    assertNotNull(lPojo.getDeprecatedRefs());
+    assertNotNull(lPojo.getReadonlyAssociation());
+    assertEquals(true, lPojo.getYetAnotherAttribute());
+    assertNull(lPojo.getImmutableChildPOJO());
+
+    // Test empty constructor
+    lPojo = new MyImmutableAssociationPOJO();
+    assertNotNull(lPojo.getDeprecatedRefs());
+    assertNotNull(lPojo.getReadonlyAssociation());
+    assertEquals(false, lPojo.getYetAnotherAttribute());
+    assertNull(lPojo.getImmutableChildPOJO());
 
   }
+}
+
+class MyImmutableAssociationPOJO extends ImmutableAssociationPOJO {
+
+  MyImmutableAssociationPOJO( ) {
+  }
+
 }

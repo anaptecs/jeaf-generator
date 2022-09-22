@@ -46,14 +46,14 @@ public class FulfillmentOption {
   /**
    * 
    */
-  private List<FulfillmentMediaType> media = new ArrayList<FulfillmentMediaType>();
+  private List<FulfillmentMediaType> media;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected FulfillmentOption( ) {
-    // Nothing to do.
+    media = new ArrayList<FulfillmentMediaType>();
   }
 
   /**
@@ -67,7 +67,10 @@ public class FulfillmentOption {
     // Read attribute values from builder.
     type = pBuilder.type;
     if (pBuilder.media != null) {
-      media.addAll(pBuilder.media);
+      media = pBuilder.media;
+    }
+    else {
+      media = new ArrayList<FulfillmentMediaType>();
     }
   }
 
@@ -106,7 +109,7 @@ public class FulfillmentOption {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new FulfillmentOption objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -211,23 +214,6 @@ public class FulfillmentOption {
   public List<FulfillmentMediaType> getMedia( ) {
     // Return all FulfillmentMediaType objects as unmodifiable collection.
     return Collections.unmodifiableList(media);
-  }
-
-  /**
-   * Method sets the association "media" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pMedia Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setMedia( List<FulfillmentMediaType> pMedia ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "media".
-    this.clearMedia();
-    // If the association is null, removing all entries is sufficient.
-    if (pMedia != null) {
-      media = new ArrayList<FulfillmentMediaType>(pMedia);
-    }
   }
 
   /**

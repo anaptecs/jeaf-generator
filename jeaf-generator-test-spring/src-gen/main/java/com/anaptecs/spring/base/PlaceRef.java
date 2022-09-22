@@ -37,7 +37,6 @@ public abstract class PlaceRef {
    * object creation builder should be used instead.
    */
   protected PlaceRef( ) {
-    // Nothing to do.
   }
 
   /**

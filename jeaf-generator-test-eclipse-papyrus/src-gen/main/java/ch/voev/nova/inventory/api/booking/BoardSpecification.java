@@ -45,7 +45,6 @@ public class BoardSpecification {
    * object creation builder should be used instead.
    */
   protected BoardSpecification( ) {
-    // Nothing to do.
   }
 
   /**
@@ -97,7 +96,7 @@ public class BoardSpecification {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new BoardSpecification objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

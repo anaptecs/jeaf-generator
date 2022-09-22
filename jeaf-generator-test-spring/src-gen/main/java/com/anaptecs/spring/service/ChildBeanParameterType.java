@@ -27,7 +27,6 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    * object creation builder should be used instead.
    */
   public ChildBeanParameterType( ) {
-    // Nothing to do.
   }
 
   /**
@@ -73,7 +72,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ChildBeanParameterType objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

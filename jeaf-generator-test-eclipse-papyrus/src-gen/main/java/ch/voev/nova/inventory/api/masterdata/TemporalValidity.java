@@ -46,7 +46,6 @@ public class TemporalValidity {
    * object creation builder should be used instead.
    */
   protected TemporalValidity( ) {
-    // Nothing to do.
   }
 
   /**
@@ -97,7 +96,7 @@ public class TemporalValidity {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new TemporalValidity objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

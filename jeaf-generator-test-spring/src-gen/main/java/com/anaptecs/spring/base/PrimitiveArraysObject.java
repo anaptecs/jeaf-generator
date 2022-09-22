@@ -251,7 +251,6 @@ public class PrimitiveArraysObject {
    * object creation builder should be used instead.
    */
   protected PrimitiveArraysObject( ) {
-    // Nothing to do.
   }
 
   /**
@@ -447,7 +446,7 @@ public class PrimitiveArraysObject {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new PrimitiveArraysObject objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

@@ -25,7 +25,6 @@ public class LongCodeType {
    * object creation builder should be used instead.
    */
   protected LongCodeType( ) {
-    // Nothing to do.
   }
 
   /**
@@ -67,7 +66,7 @@ public class LongCodeType {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new LongCodeType objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

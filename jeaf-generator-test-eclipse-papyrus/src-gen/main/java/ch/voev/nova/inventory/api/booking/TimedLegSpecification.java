@@ -54,7 +54,7 @@ public class TimedLegSpecification {
   /**
    * 
    */
-  private List<IntermediateSpecification> intermediates = new ArrayList<IntermediateSpecification>();
+  private List<IntermediateSpecification> intermediates;
 
   /**
    * 
@@ -71,7 +71,7 @@ public class TimedLegSpecification {
    * object creation builder should be used instead.
    */
   protected TimedLegSpecification( ) {
-    // Nothing to do.
+    intermediates = new ArrayList<IntermediateSpecification>();
   }
 
   /**
@@ -85,7 +85,10 @@ public class TimedLegSpecification {
     // Read attribute values from builder.
     start = pBuilder.start;
     if (pBuilder.intermediates != null) {
-      intermediates.addAll(pBuilder.intermediates);
+      intermediates = pBuilder.intermediates;
+    }
+    else {
+      intermediates = new ArrayList<IntermediateSpecification>();
     }
     end = pBuilder.end;
     service = pBuilder.service;
@@ -138,7 +141,7 @@ public class TimedLegSpecification {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new TimedLegSpecification objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -263,24 +266,6 @@ public class TimedLegSpecification {
   public List<IntermediateSpecification> getIntermediates( ) {
     // Return all IntermediateSpecification objects as unmodifiable collection.
     return Collections.unmodifiableList(intermediates);
-  }
-
-  /**
-   * Method sets the association "intermediates" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pIntermediates Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setIntermediates( List<IntermediateSpecification> pIntermediates ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "intermediates".
-    this.clearIntermediates();
-    // If the association is null, removing all entries is sufficient.
-    if (pIntermediates != null) {
-      intermediates = new ArrayList<IntermediateSpecification>(pIntermediates);
-    }
   }
 
   /**

@@ -119,14 +119,14 @@ public class PlaceAvailability {
   /**
    * 
    */
-  private List<PlaceProperty> availablePlaceProperties = new ArrayList<PlaceProperty>();
+  private List<PlaceProperty> availablePlaceProperties;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected PlaceAvailability( ) {
-    // Nothing to do.
+    availablePlaceProperties = new ArrayList<PlaceProperty>();
   }
 
   /**
@@ -147,7 +147,10 @@ public class PlaceAvailability {
     accommodationSubType = pBuilder.accommodationSubType;
     numericAvailability = pBuilder.numericAvailability;
     if (pBuilder.availablePlaceProperties != null) {
-      availablePlaceProperties.addAll(pBuilder.availablePlaceProperties);
+      availablePlaceProperties = pBuilder.availablePlaceProperties;
+    }
+    else {
+      availablePlaceProperties = new ArrayList<PlaceProperty>();
     }
   }
 
@@ -230,7 +233,7 @@ public class PlaceAvailability {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new PlaceAvailability objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -595,24 +598,6 @@ public class PlaceAvailability {
   public List<PlaceProperty> getAvailablePlaceProperties( ) {
     // Return all PlaceProperty objects as unmodifiable collection.
     return Collections.unmodifiableList(availablePlaceProperties);
-  }
-
-  /**
-   * Method sets the association "availablePlaceProperties" to the passed collection. All objects that formerly were
-   * part of the association will be removed from it.
-   * 
-   * 
-   * @param pAvailablePlaceProperties Collection with objects to which the association should be set. The parameter must
-   * not be null.
-   */
-  void setAvailablePlaceProperties( List<PlaceProperty> pAvailablePlaceProperties ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "availablePlaceProperties".
-    this.clearAvailablePlaceProperties();
-    // If the association is null, removing all entries is sufficient.
-    if (pAvailablePlaceProperties != null) {
-      availablePlaceProperties = new ArrayList<PlaceProperty>(pAvailablePlaceProperties);
-    }
   }
 
   /**

@@ -37,7 +37,6 @@ public class CountryCode {
    * object creation builder should be used instead.
    */
   protected CountryCode( ) {
-    // Nothing to do.
   }
 
   /**
@@ -82,7 +81,7 @@ public class CountryCode {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new CountryCode objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

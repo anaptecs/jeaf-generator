@@ -56,7 +56,7 @@
 		«EXPAND Validation::ValidationAnnotation»
 		«IF isMultivalued()»
 			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»
-			«visibility» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()» «asInstanceVar()» = new «this.getCollectionImplType()»<«type.fqn()»>();
+			«visibility» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()» «asInstanceVar()»;
 		«ELSE»
 			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
 			«visibility» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «type.fqn()» «asInstanceVar()»;
@@ -259,6 +259,7 @@
 	}
 	
     «IF isReadOnly == false»
+    «IF generatePublicSettersForAssociations()»
     /**
      * Method sets the association "«asInstanceVar()»" to the passed collection. All objects that formerly were part of the association will be removed from it.
      * «this.getComment()»
@@ -266,7 +267,7 @@
      * @param «asParameter()» Collection with objects to which the association should be set. The parameter must not be null.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «IF generatePublicSettersForAssociations()»public«ENDIF» void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
+    public void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
         // Check of parameter is not required.
         
         // Remove all objects from association "«asInstanceVar()»".
@@ -277,6 +278,7 @@
           «asInstanceVar()» = new «this.getCollectionImplType()»<«type.fqn()»>(«asParameter()»);
         }
     }
+    «ENDIF»
 
     /**
      * Method adds the passed «this.type.name» object to the association "«asInstanceVar()»".     

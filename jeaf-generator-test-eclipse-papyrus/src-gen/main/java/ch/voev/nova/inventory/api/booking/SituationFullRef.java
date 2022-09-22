@@ -35,7 +35,6 @@ public class SituationFullRef {
    * object creation builder should be used instead.
    */
   protected SituationFullRef( ) {
-    // Nothing to do.
   }
 
   /**
@@ -79,7 +78,7 @@ public class SituationFullRef {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new SituationFullRef objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

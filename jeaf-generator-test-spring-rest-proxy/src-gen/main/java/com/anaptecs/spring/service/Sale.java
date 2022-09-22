@@ -39,7 +39,6 @@ public class Sale {
    * object creation builder should be used instead.
    */
   protected Sale( ) {
-    // Nothing to do.
   }
 
   /**
@@ -88,7 +87,7 @@ public class Sale {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Sale objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

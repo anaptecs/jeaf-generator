@@ -28,7 +28,6 @@ public class BooleanCode {
    * object creation builder should be used instead.
    */
   protected BooleanCode( ) {
-    // Nothing to do.
   }
 
   /**
@@ -70,7 +69,7 @@ public class BooleanCode {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new BooleanCode objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

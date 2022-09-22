@@ -54,7 +54,6 @@ public class IntermediateSpecification {
    * object creation builder should be used instead.
    */
   protected IntermediateSpecification( ) {
-    // Nothing to do.
   }
 
   /**
@@ -112,7 +111,7 @@ public class IntermediateSpecification {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new IntermediateSpecification objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

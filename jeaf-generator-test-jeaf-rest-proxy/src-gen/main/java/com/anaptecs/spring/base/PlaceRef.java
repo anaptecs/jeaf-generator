@@ -47,7 +47,6 @@ public abstract class PlaceRef implements Serializable {
    * object creation builder should be used instead.
    */
   protected PlaceRef( ) {
-    // Nothing to do.
   }
 
   /**

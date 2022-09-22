@@ -71,7 +71,7 @@ public class ReservationOffer {
   /**
    * 
    */
-  private List<FulfillmentType> availableFulfillmentTypes = new ArrayList<FulfillmentType>();
+  private List<FulfillmentType> availableFulfillmentTypes;
 
   /**
    * 
@@ -84,7 +84,7 @@ public class ReservationOffer {
    * object creation builder should be used instead.
    */
   protected ReservationOffer( ) {
-    // Nothing to do.
+    availableFulfillmentTypes = new ArrayList<FulfillmentType>();
   }
 
   /**
@@ -100,7 +100,10 @@ public class ReservationOffer {
     productCode = pBuilder.productCode;
     price = pBuilder.price;
     if (pBuilder.availableFulfillmentTypes != null) {
-      availableFulfillmentTypes.addAll(pBuilder.availableFulfillmentTypes);
+      availableFulfillmentTypes = pBuilder.availableFulfillmentTypes;
+    }
+    else {
+      availableFulfillmentTypes = new ArrayList<FulfillmentType>();
     }
     placeAvailabilityId = pBuilder.placeAvailabilityId;
   }
@@ -161,7 +164,7 @@ public class ReservationOffer {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ReservationOffer objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -342,24 +345,6 @@ public class ReservationOffer {
   public List<FulfillmentType> getAvailableFulfillmentTypes( ) {
     // Return all FulfillmentType objects as unmodifiable collection.
     return Collections.unmodifiableList(availableFulfillmentTypes);
-  }
-
-  /**
-   * Method sets the association "availableFulfillmentTypes" to the passed collection. All objects that formerly were
-   * part of the association will be removed from it.
-   * 
-   * 
-   * @param pAvailableFulfillmentTypes Collection with objects to which the association should be set. The parameter
-   * must not be null.
-   */
-  void setAvailableFulfillmentTypes( List<FulfillmentType> pAvailableFulfillmentTypes ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "availableFulfillmentTypes".
-    this.clearAvailableFulfillmentTypes();
-    // If the association is null, removing all entries is sufficient.
-    if (pAvailableFulfillmentTypes != null) {
-      availableFulfillmentTypes = new ArrayList<FulfillmentType>(pAvailableFulfillmentTypes);
-    }
   }
 
   /**

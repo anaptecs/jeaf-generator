@@ -48,7 +48,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    * 
    */
   @Size(min = 1)
-  private List<Channel> channels = new ArrayList<Channel>();
+  private List<Channel> channels;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -58,7 +58,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   /**
    * 
    */
-  private transient Set<Product> products = new HashSet<Product>();
+  private transient Set<Product> products;
 
   /**
    * 
@@ -79,8 +79,10 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    */
   protected ResellerBase( ) {
     objectID = null;
+    channels = new ArrayList<Channel>();
     // Bidirectional back reference is not yet set up correctly
     channelsBackReferenceInitialized = false;
+    products = new HashSet<Product>();
   }
 
   /**
@@ -101,12 +103,18 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     }
     // Read attribute values from builder.
     if (pBuilder.channels != null) {
-      channels.addAll(pBuilder.channels);
+      channels = pBuilder.channels;
+    }
+    else {
+      channels = new ArrayList<Channel>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     channelsBackReferenceInitialized = true;
     if (pBuilder.products != null) {
-      products.addAll(pBuilder.products);
+      products = pBuilder.products;
+    }
+    else {
+      products = new HashSet<Product>();
     }
     name = pBuilder.name;
     language = pBuilder.language;
@@ -300,23 +308,6 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   }
 
   /**
-   * Method sets the association "channels" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pChannels Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setChannels( List<Channel> pChannels ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "channels".
-    this.clearChannels();
-    // If the association is null, removing all entries is sufficient.
-    if (pChannels != null) {
-      channels = new ArrayList<Channel>(pChannels);
-    }
-  }
-
-  /**
    * Method adds the passed Channel object to the association "channels".
    * 
    * 
@@ -394,23 +385,6 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   public Set<Product> getProducts( ) {
     // Return all Product objects directly without any protection against modification.
     return products;
-  }
-
-  /**
-   * Method sets the association "products" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pProducts Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setProducts( Set<Product> pProducts ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "products".
-    this.clearProducts();
-    // If the association is null, removing all entries is sufficient.
-    if (pProducts != null) {
-      products = new HashSet<Product>(pProducts);
-    }
   }
 
   /**

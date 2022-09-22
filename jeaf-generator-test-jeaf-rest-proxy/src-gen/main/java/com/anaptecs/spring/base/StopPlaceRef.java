@@ -23,7 +23,6 @@ public abstract class StopPlaceRef extends PlaceRef {
    * object creation builder should be used instead.
    */
   protected StopPlaceRef( ) {
-    // Nothing to do.
   }
 
   /**

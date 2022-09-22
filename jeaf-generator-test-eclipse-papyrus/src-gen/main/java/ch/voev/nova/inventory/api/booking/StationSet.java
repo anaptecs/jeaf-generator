@@ -32,14 +32,14 @@ public class StationSet {
   /**
    * 
    */
-  private List<StopPlaceRef> stations = new ArrayList<StopPlaceRef>();
+  private List<StopPlaceRef> stations;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected StationSet( ) {
-    // Nothing to do.
+    stations = new ArrayList<StopPlaceRef>();
   }
 
   /**
@@ -52,7 +52,10 @@ public class StationSet {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.stations != null) {
-      stations.addAll(pBuilder.stations);
+      stations = pBuilder.stations;
+    }
+    else {
+      stations = new ArrayList<StopPlaceRef>();
     }
   }
 
@@ -85,7 +88,7 @@ public class StationSet {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new StationSet objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -151,23 +154,6 @@ public class StationSet {
   public List<StopPlaceRef> getStations( ) {
     // Return all StopPlaceRef objects as unmodifiable collection.
     return Collections.unmodifiableList(stations);
-  }
-
-  /**
-   * Method sets the association "stations" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pStations Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setStations( List<StopPlaceRef> pStations ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "stations".
-    this.clearStations();
-    // If the association is null, removing all entries is sufficient.
-    if (pStations != null) {
-      stations = new ArrayList<StopPlaceRef>(pStations);
-    }
   }
 
   /**

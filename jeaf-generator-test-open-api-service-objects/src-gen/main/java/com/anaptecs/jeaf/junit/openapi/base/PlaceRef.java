@@ -46,7 +46,6 @@ public abstract class PlaceRef implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected PlaceRef( ) {
-    // Nothing to do.
   }
 
   /**

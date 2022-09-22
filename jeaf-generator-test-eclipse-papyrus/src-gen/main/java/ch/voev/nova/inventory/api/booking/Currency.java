@@ -37,7 +37,6 @@ public class Currency {
    * object creation builder should be used instead.
    */
   protected Currency( ) {
-    // Nothing to do.
   }
 
   /**
@@ -82,7 +81,7 @@ public class Currency {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Currency objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

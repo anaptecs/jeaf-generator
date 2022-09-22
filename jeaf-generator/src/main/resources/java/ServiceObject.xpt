@@ -48,9 +48,6 @@
 		protected «name»( ) {
 		  «IF needsToImplementIdentifiable() == true»
 		  objectID = null;
-		  «ELSE»«IF this.requiresAttributeInitValue() == false»
-		  // Nothing to do.
-		  «ENDIF»
 		  «ENDIF»
 		  «FOREACH this.ownedAttribute AS attr»
 			  «IF attr.isReadOnly == true && attr.isStatic == false»
@@ -62,7 +59,16 @@
 				  		«attr.name» = «attr.getPrimitiveDefaultValue()»;
 				  	«ENDIF»
 				  «ELSE»
-				  	«attr.name» = null;
+						«IF attr.isMultivalued()»
+							«REM»Distiguish between arrays and collections.«ENDREM»
+							«IF attr.association == null»
+							«attr.name» = null;
+							«ELSE»
+							«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+							«ENDIF»
+						«ELSE»
+							«attr.name» = null;
+						«ENDIF»
 				  «ENDIF»
 			    «ELSE»
 					«IF attr.isMultivalued() == false»
@@ -70,8 +76,13 @@
 					«ENDIF»
 				«ENDIF»
 			  «ELSE»
-				  «IF attr.isRealInitValue() && attr.isStatic == false »
-                      «attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
+				  «IF attr.isMultivalued() && attr.association != null»
+					«REM»Only in case of collections we have to initilize them.«ENDREM»
+					«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+				  «ELSE»
+					  «IF attr.isRealInitValue() && attr.isStatic == false »
+                          «attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
+					  «ENDIF»
 				  «ENDIF»
 			  «ENDIF»
 			  «IF attr.isTransientBidirectionalBackReference()»
@@ -115,7 +126,10 @@
 			  	«IF attr.isMultivalued()»
 		        	«IF attr.isStatic == false»
 		        	if(pBuilder.«attr.name» != null) {
-		        	    «attr.name».addAll(pBuilder.«attr.name»);
+		        	    «attr.name» = pBuilder.«attr.name»;
+		        	}
+		        	else {
+		        		«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
 		        	}
 		        	«ENDIF»
 			  	«ELSE»
@@ -174,9 +188,6 @@
 		protected «name»Base( ) {
 		  «IF needsToImplementIdentifiable() == true»
 		  objectID = null;
-		  «ELSE»«IF this.requiresAttributeInitValue() == false»
-		  // Nothing to do.
-		  «ENDIF»
 		  «ENDIF»
 		  «FOREACH this.ownedAttribute AS attr»
 			  «IF attr.isReadOnly == true && attr.isStatic == false»
@@ -191,13 +202,25 @@
 					  	«attr.name» = null;
 					  «ENDIF»
 				  «ELSE»
-					  «IF attr.isMultivalued() == false»
-					  	«attr.name» = null;
-					  «ENDIF»
+						«IF attr.isMultivalued()»
+						«REM»Distiguish between arrays and collections.«ENDREM»
+							«IF attr.association == null»
+							«attr.name» = null;
+							«ELSE»
+							«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+							«ENDIF»
+						«ELSE»
+							«attr.name» = null;
+						«ENDIF»
 				  «ENDIF»
 			  «ELSE»
-				  «IF attr.isRealInitValue() && attr.isStatic == false »
-                      «attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
+				  «IF attr.isMultivalued() && attr.association != null»
+					«REM»Only in case of collections we have to initilize them.«ENDREM»
+					«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+				  «ELSE»
+					  «IF attr.isRealInitValue() && attr.isStatic == false »
+                          «attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
+					  «ENDIF»
 				  «ENDIF»
 			  «ENDIF»
 			  «IF attr.isTransientBidirectionalBackReference()»
@@ -241,7 +264,10 @@
 		  	«IF attr.isMultivalued()»
 	        	«IF attr.isStatic == false»
 	        	if(pBuilder.«attr.name» != null) {
-	        	    «attr.name».addAll(pBuilder.«attr.name»);
+	        	    «attr.name» = pBuilder.«attr.name»;
+	        	}
+	        	else {
+	        		«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
 	        	}
 	        	«ENDIF»
 		  	«ELSE»

@@ -107,14 +107,14 @@ public class TransferLeg {
   /**
    * 
    */
-  private List<SituationFullRef> situationFullRefs = new ArrayList<SituationFullRef>();
+  private List<SituationFullRef> situationFullRefs;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected TransferLeg( ) {
-    // Nothing to do.
+    situationFullRefs = new ArrayList<SituationFullRef>();
   }
 
   /**
@@ -134,7 +134,10 @@ public class TransferLeg {
     timeWindowEnd = pBuilder.timeWindowEnd;
     duration = pBuilder.duration;
     if (pBuilder.situationFullRefs != null) {
-      situationFullRefs.addAll(pBuilder.situationFullRefs);
+      situationFullRefs = pBuilder.situationFullRefs;
+    }
+    else {
+      situationFullRefs = new ArrayList<SituationFullRef>();
     }
   }
 
@@ -209,7 +212,7 @@ public class TransferLeg {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new TransferLeg objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -500,24 +503,6 @@ public class TransferLeg {
   public List<SituationFullRef> getSituationFullRefs( ) {
     // Return all SituationFullRef objects as unmodifiable collection.
     return Collections.unmodifiableList(situationFullRefs);
-  }
-
-  /**
-   * Method sets the association "situationFullRefs" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pSituationFullRefs Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setSituationFullRefs( List<SituationFullRef> pSituationFullRefs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "situationFullRefs".
-    this.clearSituationFullRefs();
-    // If the association is null, removing all entries is sufficient.
-    if (pSituationFullRefs != null) {
-      situationFullRefs = new ArrayList<SituationFullRef>(pSituationFullRefs);
-    }
   }
 
   /**

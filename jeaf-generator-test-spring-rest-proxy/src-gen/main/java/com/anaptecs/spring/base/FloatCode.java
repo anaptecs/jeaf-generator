@@ -25,7 +25,6 @@ public class FloatCode {
    * object creation builder should be used instead.
    */
   protected FloatCode( ) {
-    // Nothing to do.
   }
 
   /**
@@ -67,7 +66,7 @@ public class FloatCode {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new FloatCode objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

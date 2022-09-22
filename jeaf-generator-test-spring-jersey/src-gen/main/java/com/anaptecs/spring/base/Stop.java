@@ -45,14 +45,14 @@ public class Stop {
    * 
    */
   @JsonProperty("_links")
-  private List<LinkObject> links = new ArrayList<LinkObject>();
+  private List<LinkObject> links;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected Stop( ) {
-    // Nothing to do.
+    links = new ArrayList<LinkObject>();
   }
 
   /**
@@ -64,7 +64,10 @@ public class Stop {
     // Read attribute values from builder.
     name = pBuilder.name;
     if (pBuilder.links != null) {
-      links.addAll(pBuilder.links);
+      links = pBuilder.links;
+    }
+    else {
+      links = new ArrayList<LinkObject>();
     }
   }
 
@@ -103,7 +106,7 @@ public class Stop {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Stop objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -187,23 +190,6 @@ public class Stop {
   public List<LinkObject> getLinks( ) {
     // Return all LinkObject objects as unmodifiable collection.
     return Collections.unmodifiableList(links);
-  }
-
-  /**
-   * Method sets the association "links" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pLinks Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setLinks( List<LinkObject> pLinks ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "links".
-    this.clearLinks();
-    // If the association is null, removing all entries is sufficient.
-    if (pLinks != null) {
-      links = new ArrayList<LinkObject>(pLinks);
-    }
   }
 
   /**

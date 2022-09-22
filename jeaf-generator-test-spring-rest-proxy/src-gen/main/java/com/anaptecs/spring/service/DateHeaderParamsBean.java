@@ -125,7 +125,6 @@ public class DateHeaderParamsBean {
    * object creation builder should be used instead.
    */
   public DateHeaderParamsBean( ) {
-    // Nothing to do.
   }
 
   /**
@@ -230,7 +229,7 @@ public class DateHeaderParamsBean {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new DateHeaderParamsBean objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

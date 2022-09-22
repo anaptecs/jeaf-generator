@@ -39,14 +39,14 @@ public class ChildB extends ParentClass {
   /**
    * the composition
    */
-  private Set<ParentClass> composition = new HashSet<ParentClass>();
+  private Set<ParentClass> composition;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected ChildB( ) {
-    // Nothing to do.
+    composition = new HashSet<ParentClass>();
   }
 
   /**
@@ -60,7 +60,10 @@ public class ChildB extends ParentClass {
     // Read attribute values from builder.
     childBAttribute = pBuilder.childBAttribute;
     if (pBuilder.composition != null) {
-      composition.addAll(pBuilder.composition);
+      composition = pBuilder.composition;
+    }
+    else {
+      composition = new HashSet<ParentClass>();
     }
   }
 
@@ -102,7 +105,7 @@ public class ChildB extends ParentClass {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ChildB objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -195,22 +198,6 @@ public class ChildB extends ParentClass {
   public Set<ParentClass> getComposition( ) {
     // Return all ParentClass objects as unmodifiable collection.
     return Collections.unmodifiableSet(composition);
-  }
-
-  /**
-   * Method sets the association "composition" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it. the composition
-   * 
-   * @param pComposition Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setComposition( Set<ParentClass> pComposition ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "composition".
-    this.clearComposition();
-    // If the association is null, removing all entries is sufficient.
-    if (pComposition != null) {
-      composition = new HashSet<ParentClass>(pComposition);
-    }
   }
 
   /**

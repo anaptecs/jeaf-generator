@@ -25,7 +25,6 @@ public class LinkObject {
    * object creation builder should be used instead.
    */
   protected LinkObject( ) {
-    // Nothing to do.
   }
 
   /**
@@ -67,7 +66,7 @@ public class LinkObject {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new LinkObject objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

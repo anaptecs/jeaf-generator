@@ -35,7 +35,6 @@ public class FloatCodeType implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected FloatCodeType( ) {
-    // Nothing to do.
   }
 
   /**
@@ -79,7 +78,7 @@ public class FloatCodeType implements ServiceObject {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new FloatCodeType objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

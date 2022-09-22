@@ -41,7 +41,6 @@ public class DoubleCode implements Serializable {
    * object creation builder should be used instead.
    */
   protected DoubleCode( ) {
-    // Nothing to do.
   }
 
   /**
@@ -85,7 +84,7 @@ public class DoubleCode implements Serializable {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new DoubleCode objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

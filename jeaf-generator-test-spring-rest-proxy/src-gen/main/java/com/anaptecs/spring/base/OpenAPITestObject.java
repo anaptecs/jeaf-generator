@@ -115,7 +115,6 @@ public class OpenAPITestObject {
    * object creation builder should be used instead.
    */
   protected OpenAPITestObject( ) {
-    // Nothing to do.
   }
 
   /**
@@ -220,7 +219,7 @@ public class OpenAPITestObject {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new OpenAPITestObject objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

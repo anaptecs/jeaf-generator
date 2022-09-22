@@ -44,7 +44,6 @@ public class ServiceClass {
    * object creation builder should be used instead.
    */
   protected ServiceClass( ) {
-    // Nothing to do.
   }
 
   /**
@@ -95,7 +94,7 @@ public class ServiceClass {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ServiceClass objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

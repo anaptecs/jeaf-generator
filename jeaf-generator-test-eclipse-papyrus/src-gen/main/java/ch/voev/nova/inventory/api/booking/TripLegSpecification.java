@@ -56,7 +56,6 @@ public class TripLegSpecification {
    * object creation builder should be used instead.
    */
   protected TripLegSpecification( ) {
-    // Nothing to do.
   }
 
   /**
@@ -115,7 +114,7 @@ public class TripLegSpecification {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new TripLegSpecification objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

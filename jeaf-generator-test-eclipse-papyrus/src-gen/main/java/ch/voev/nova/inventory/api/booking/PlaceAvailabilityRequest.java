@@ -42,12 +42,12 @@ public class PlaceAvailabilityRequest {
   /**
    * 
    */
-  private List<TripSpecification> tripSpecifications = new ArrayList<TripSpecification>();
+  private List<TripSpecification> tripSpecifications;
 
   /**
    * 
    */
-  private List<PassengerSpecification> passengerSpecifications = new ArrayList<PassengerSpecification>();
+  private List<PassengerSpecification> passengerSpecifications;
 
   /**
    * <br/>
@@ -60,6 +60,8 @@ public class PlaceAvailabilityRequest {
    * object creation builder should be used instead.
    */
   protected PlaceAvailabilityRequest( ) {
+    tripSpecifications = new ArrayList<TripSpecification>();
+    passengerSpecifications = new ArrayList<PassengerSpecification>();
     embeddedParts = EmbeddedParts.ALL;
   }
 
@@ -73,10 +75,16 @@ public class PlaceAvailabilityRequest {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.tripSpecifications != null) {
-      tripSpecifications.addAll(pBuilder.tripSpecifications);
+      tripSpecifications = pBuilder.tripSpecifications;
+    }
+    else {
+      tripSpecifications = new ArrayList<TripSpecification>();
     }
     if (pBuilder.passengerSpecifications != null) {
-      passengerSpecifications.addAll(pBuilder.passengerSpecifications);
+      passengerSpecifications = pBuilder.passengerSpecifications;
+    }
+    else {
+      passengerSpecifications = new ArrayList<PassengerSpecification>();
     }
     embeddedParts = pBuilder.embeddedParts;
   }
@@ -122,7 +130,7 @@ public class PlaceAvailabilityRequest {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new PlaceAvailabilityRequest objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -219,24 +227,6 @@ public class PlaceAvailabilityRequest {
   }
 
   /**
-   * Method sets the association "tripSpecifications" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pTripSpecifications Collection with objects to which the association should be set. The parameter must not
-   * be null.
-   */
-  void setTripSpecifications( List<TripSpecification> pTripSpecifications ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "tripSpecifications".
-    this.clearTripSpecifications();
-    // If the association is null, removing all entries is sufficient.
-    if (pTripSpecifications != null) {
-      tripSpecifications = new ArrayList<TripSpecification>(pTripSpecifications);
-    }
-  }
-
-  /**
    * Method adds the passed TripSpecification object to the association "tripSpecifications".
    * 
    * 
@@ -303,24 +293,6 @@ public class PlaceAvailabilityRequest {
   public List<PassengerSpecification> getPassengerSpecifications( ) {
     // Return all PassengerSpecification objects as unmodifiable collection.
     return Collections.unmodifiableList(passengerSpecifications);
-  }
-
-  /**
-   * Method sets the association "passengerSpecifications" to the passed collection. All objects that formerly were part
-   * of the association will be removed from it.
-   * 
-   * 
-   * @param pPassengerSpecifications Collection with objects to which the association should be set. The parameter must
-   * not be null.
-   */
-  void setPassengerSpecifications( List<PassengerSpecification> pPassengerSpecifications ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "passengerSpecifications".
-    this.clearPassengerSpecifications();
-    // If the association is null, removing all entries is sufficient.
-    if (pPassengerSpecifications != null) {
-      passengerSpecifications = new ArrayList<PassengerSpecification>(pPassengerSpecifications);
-    }
   }
 
   /**

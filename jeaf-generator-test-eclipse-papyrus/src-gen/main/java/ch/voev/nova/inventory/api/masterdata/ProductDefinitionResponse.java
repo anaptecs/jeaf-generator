@@ -40,19 +40,20 @@ public class ProductDefinitionResponse {
   /**
    * 
    */
-  private List<Warning> warnings = new ArrayList<Warning>();
+  private List<Warning> warnings;
 
   /**
    * 
    */
-  private Set<ProductDefinition> productDefinitions = new HashSet<ProductDefinition>();
+  private Set<ProductDefinition> productDefinitions;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected ProductDefinitionResponse( ) {
-    // Nothing to do.
+    warnings = new ArrayList<Warning>();
+    productDefinitions = new HashSet<ProductDefinition>();
   }
 
   /**
@@ -65,10 +66,16 @@ public class ProductDefinitionResponse {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.warnings != null) {
-      warnings.addAll(pBuilder.warnings);
+      warnings = pBuilder.warnings;
+    }
+    else {
+      warnings = new ArrayList<Warning>();
     }
     if (pBuilder.productDefinitions != null) {
-      productDefinitions.addAll(pBuilder.productDefinitions);
+      productDefinitions = pBuilder.productDefinitions;
+    }
+    else {
+      productDefinitions = new HashSet<ProductDefinition>();
     }
   }
 
@@ -107,7 +114,7 @@ public class ProductDefinitionResponse {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ProductDefinitionResponse objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -193,23 +200,6 @@ public class ProductDefinitionResponse {
   }
 
   /**
-   * Method sets the association "warnings" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pWarnings Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setWarnings( List<Warning> pWarnings ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "warnings".
-    this.clearWarnings();
-    // If the association is null, removing all entries is sufficient.
-    if (pWarnings != null) {
-      warnings = new ArrayList<Warning>(pWarnings);
-    }
-  }
-
-  /**
    * Method adds the passed Warning object to the association "warnings".
    * 
    * 
@@ -274,24 +264,6 @@ public class ProductDefinitionResponse {
   public Set<ProductDefinition> getProductDefinitions( ) {
     // Return all ProductDefinition objects as unmodifiable collection.
     return Collections.unmodifiableSet(productDefinitions);
-  }
-
-  /**
-   * Method sets the association "productDefinitions" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pProductDefinitions Collection with objects to which the association should be set. The parameter must not
-   * be null.
-   */
-  void setProductDefinitions( Set<ProductDefinition> pProductDefinitions ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "productDefinitions".
-    this.clearProductDefinitions();
-    // If the association is null, removing all entries is sufficient.
-    if (pProductDefinitions != null) {
-      productDefinitions = new HashSet<ProductDefinition>(pProductDefinitions);
-    }
   }
 
   /**

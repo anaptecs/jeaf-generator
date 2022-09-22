@@ -66,7 +66,6 @@ public class Mode {
    * object creation builder should be used instead.
    */
   protected Mode( ) {
-    // Nothing to do.
   }
 
   /**
@@ -131,7 +130,7 @@ public class Mode {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Mode objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

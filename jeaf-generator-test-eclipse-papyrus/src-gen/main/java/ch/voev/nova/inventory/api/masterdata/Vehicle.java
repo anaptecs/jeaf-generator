@@ -53,7 +53,7 @@ public class Vehicle {
   /**
    * 
    */
-  private List<TemporalValidity> validities = new ArrayList<TemporalValidity>();
+  private List<TemporalValidity> validities;
 
   /**
    * 
@@ -82,7 +82,7 @@ public class Vehicle {
    * object creation builder should be used instead.
    */
   protected Vehicle( ) {
-    validities = null;
+    validities = new ArrayList<TemporalValidity>();
   }
 
   /**
@@ -95,7 +95,10 @@ public class Vehicle {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.validities != null) {
-      validities.addAll(pBuilder.validities);
+      validities = pBuilder.validities;
+    }
+    else {
+      validities = new ArrayList<TemporalValidity>();
     }
     id = pBuilder.id;
     lastModified = pBuilder.lastModified;
@@ -156,7 +159,7 @@ public class Vehicle {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Vehicle objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -266,23 +269,6 @@ public class Vehicle {
   public List<TemporalValidity> getValidities( ) {
     // Return all TemporalValidity objects as unmodifiable collection.
     return Collections.unmodifiableList(validities);
-  }
-
-  /**
-   * Method sets the association "validities" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pValidities Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setValidities( List<TemporalValidity> pValidities ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "validities".
-    this.clearValidities();
-    // If the association is null, removing all entries is sufficient.
-    if (pValidities != null) {
-      validities = new ArrayList<TemporalValidity>(pValidities);
-    }
   }
 
   /**

@@ -121,7 +121,7 @@ public class DatedJourney {
   /**
    * 
    */
-  private List<SituationFullRef> situationFullRefs = new ArrayList<SituationFullRef>();
+  private List<SituationFullRef> situationFullRefs;
 
   /**
    * 
@@ -133,7 +133,7 @@ public class DatedJourney {
    * object creation builder should be used instead.
    */
   protected DatedJourney( ) {
-    // Nothing to do.
+    situationFullRefs = new ArrayList<SituationFullRef>();
   }
 
   /**
@@ -153,7 +153,10 @@ public class DatedJourney {
     operatorRefs = pBuilder.operatorRefs;
     serviceStatus = pBuilder.serviceStatus;
     if (pBuilder.situationFullRefs != null) {
-      situationFullRefs.addAll(pBuilder.situationFullRefs);
+      situationFullRefs = pBuilder.situationFullRefs;
+    }
+    else {
+      situationFullRefs = new ArrayList<SituationFullRef>();
     }
     operatingDayRef = pBuilder.operatingDayRef;
   }
@@ -243,7 +246,7 @@ public class DatedJourney {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new DatedJourney objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -641,24 +644,6 @@ public class DatedJourney {
   public List<SituationFullRef> getSituationFullRefs( ) {
     // Return all SituationFullRef objects as unmodifiable collection.
     return Collections.unmodifiableList(situationFullRefs);
-  }
-
-  /**
-   * Method sets the association "situationFullRefs" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pSituationFullRefs Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setSituationFullRefs( List<SituationFullRef> pSituationFullRefs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "situationFullRefs".
-    this.clearSituationFullRefs();
-    // If the association is null, removing all entries is sufficient.
-    if (pSituationFullRefs != null) {
-      situationFullRefs = new ArrayList<SituationFullRef>(pSituationFullRefs);
-    }
   }
 
   /**

@@ -46,7 +46,6 @@ public class BidirectB implements Serializable {
    * object creation builder should be used instead.
    */
   protected BidirectB( ) {
-    // Nothing to do.
     // Bidirectional back reference is not yet set up correctly
     aBackReferenceInitialized = false;
   }
@@ -94,7 +93,7 @@ public class BidirectB implements Serializable {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new BidirectB objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

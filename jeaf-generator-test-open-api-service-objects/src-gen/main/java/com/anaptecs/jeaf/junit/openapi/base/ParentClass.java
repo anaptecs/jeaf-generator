@@ -49,14 +49,14 @@ public class ParentClass implements ServiceObject {
   /**
    * 
    */
-  private Set<IBAN> ibans = new HashSet<IBAN>();
+  private Set<IBAN> ibans;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected ParentClass( ) {
-    // Nothing to do.
+    ibans = new HashSet<IBAN>();
   }
 
   /**
@@ -70,7 +70,10 @@ public class ParentClass implements ServiceObject {
     // Read attribute values from builder.
     parentAttribute = pBuilder.parentAttribute;
     if (pBuilder.ibans != null) {
-      ibans.addAll(pBuilder.ibans);
+      ibans = pBuilder.ibans;
+    }
+    else {
+      ibans = new HashSet<IBAN>();
     }
   }
 
@@ -109,7 +112,7 @@ public class ParentClass implements ServiceObject {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ParentClass objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -208,23 +211,6 @@ public class ParentClass implements ServiceObject {
   public Set<IBAN> getIbans( ) {
     // Return all IBAN objects directly without any protection against modification.
     return ibans;
-  }
-
-  /**
-   * Method sets the association "ibans" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pIbans Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setIbans( Set<IBAN> pIbans ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "ibans".
-    this.clearIbans();
-    // If the association is null, removing all entries is sufficient.
-    if (pIbans != null) {
-      ibans = new HashSet<IBAN>(pIbans);
-    }
   }
 
   /**

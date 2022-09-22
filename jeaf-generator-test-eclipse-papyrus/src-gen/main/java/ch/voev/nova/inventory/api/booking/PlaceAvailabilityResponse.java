@@ -38,20 +38,21 @@ public class PlaceAvailabilityResponse {
   /**
    * 
    */
-  private List<Warning> warnings = new ArrayList<Warning>();
+  private List<Warning> warnings;
 
   /**
    * 
    */
   @NotNull
-  private List<TripAvailability> tripAvailabilities = new ArrayList<TripAvailability>();
+  private List<TripAvailability> tripAvailabilities;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected PlaceAvailabilityResponse( ) {
-    // Nothing to do.
+    warnings = new ArrayList<Warning>();
+    tripAvailabilities = new ArrayList<TripAvailability>();
   }
 
   /**
@@ -64,10 +65,16 @@ public class PlaceAvailabilityResponse {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.warnings != null) {
-      warnings.addAll(pBuilder.warnings);
+      warnings = pBuilder.warnings;
+    }
+    else {
+      warnings = new ArrayList<Warning>();
     }
     if (pBuilder.tripAvailabilities != null) {
-      tripAvailabilities.addAll(pBuilder.tripAvailabilities);
+      tripAvailabilities = pBuilder.tripAvailabilities;
+    }
+    else {
+      tripAvailabilities = new ArrayList<TripAvailability>();
     }
   }
 
@@ -106,7 +113,7 @@ public class PlaceAvailabilityResponse {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new PlaceAvailabilityResponse objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -192,23 +199,6 @@ public class PlaceAvailabilityResponse {
   }
 
   /**
-   * Method sets the association "warnings" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pWarnings Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setWarnings( List<Warning> pWarnings ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "warnings".
-    this.clearWarnings();
-    // If the association is null, removing all entries is sufficient.
-    if (pWarnings != null) {
-      warnings = new ArrayList<Warning>(pWarnings);
-    }
-  }
-
-  /**
    * Method adds the passed Warning object to the association "warnings".
    * 
    * 
@@ -273,24 +263,6 @@ public class PlaceAvailabilityResponse {
   public List<TripAvailability> getTripAvailabilities( ) {
     // Return all TripAvailability objects as unmodifiable collection.
     return Collections.unmodifiableList(tripAvailabilities);
-  }
-
-  /**
-   * Method sets the association "tripAvailabilities" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pTripAvailabilities Collection with objects to which the association should be set. The parameter must not
-   * be null.
-   */
-  void setTripAvailabilities( List<TripAvailability> pTripAvailabilities ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "tripAvailabilities".
-    this.clearTripAvailabilities();
-    // If the association is null, removing all entries is sufficient.
-    if (pTripAvailabilities != null) {
-      tripAvailabilities = new ArrayList<TripAvailability>(pTripAvailabilities);
-    }
   }
 
   /**

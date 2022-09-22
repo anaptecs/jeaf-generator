@@ -34,7 +34,7 @@ public class BidirectA {
   /**
    * 
    */
-  private transient Set<BidirectB> transientBs = new HashSet<BidirectB>();
+  private transient Set<BidirectB> transientBs;
 
   /**
    * 
@@ -56,7 +56,7 @@ public class BidirectA {
    * object creation builder should be used instead.
    */
   protected BidirectA( ) {
-    // Nothing to do.
+    transientBs = new HashSet<BidirectB>();
     // Bidirectional back reference is not yet set up correctly
     parentBackReferenceInitialized = false;
   }
@@ -69,7 +69,10 @@ public class BidirectA {
   protected BidirectA( Builder pBuilder ) {
     // Read attribute values from builder.
     if (pBuilder.transientBs != null) {
-      transientBs.addAll(pBuilder.transientBs);
+      transientBs = pBuilder.transientBs;
+    }
+    else {
+      transientBs = new HashSet<BidirectB>();
     }
     parent = pBuilder.parent;
     // Bidirectional back reference is set up correctly as a builder is used.
@@ -118,7 +121,7 @@ public class BidirectA {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new BidirectA objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -191,23 +194,6 @@ public class BidirectA {
   public Set<BidirectB> getTransientBs( ) {
     // Return all BidirectB objects as unmodifiable collection.
     return Collections.unmodifiableSet(transientBs);
-  }
-
-  /**
-   * Method sets the association "transientBs" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pTransientBs Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setTransientBs( Set<BidirectB> pTransientBs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "transientBs".
-    this.clearTransientBs();
-    // If the association is null, removing all entries is sufficient.
-    if (pTransientBs != null) {
-      transientBs = new HashSet<BidirectB>(pTransientBs);
-    }
   }
 
   /**

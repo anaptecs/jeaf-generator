@@ -41,7 +41,6 @@ public class ByteCode implements Serializable {
    * object creation builder should be used instead.
    */
   protected ByteCode( ) {
-    // Nothing to do.
   }
 
   /**
@@ -85,7 +84,7 @@ public class ByteCode implements Serializable {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ByteCode objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

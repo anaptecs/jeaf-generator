@@ -40,14 +40,14 @@ public class PartnerContainer implements Serializable {
   /**
    * 
    */
-  private List<Partner> partners = new ArrayList<Partner>();
+  private List<Partner> partners;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected PartnerContainer( ) {
-    // Nothing to do.
+    partners = new ArrayList<Partner>();
   }
 
   /**
@@ -60,7 +60,10 @@ public class PartnerContainer implements Serializable {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.partners != null) {
-      partners.addAll(pBuilder.partners);
+      partners = pBuilder.partners;
+    }
+    else {
+      partners = new ArrayList<Partner>();
     }
   }
 
@@ -93,7 +96,7 @@ public class PartnerContainer implements Serializable {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new PartnerContainer objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -160,23 +163,6 @@ public class PartnerContainer implements Serializable {
   public List<Partner> getPartners( ) {
     // Return all Partner objects as unmodifiable collection.
     return Collections.unmodifiableList(partners);
-  }
-
-  /**
-   * Method sets the association "partners" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pPartners Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setPartners( List<Partner> pPartners ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "partners".
-    this.clearPartners();
-    // If the association is null, removing all entries is sufficient.
-    if (pPartners != null) {
-      partners = new ArrayList<Partner>(pPartners);
-    }
   }
 
   /**

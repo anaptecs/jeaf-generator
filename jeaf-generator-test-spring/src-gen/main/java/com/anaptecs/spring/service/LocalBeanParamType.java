@@ -35,7 +35,6 @@ public class LocalBeanParamType {
    * object creation builder should be used instead.
    */
   public LocalBeanParamType( ) {
-    // Nothing to do.
   }
 
   /**
@@ -84,7 +83,7 @@ public class LocalBeanParamType {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new LocalBeanParamType objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

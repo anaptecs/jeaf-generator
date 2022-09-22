@@ -54,7 +54,7 @@ public class Text {
   /**
    * 
    */
-  private List<Translation> translations = new ArrayList<Translation>();
+  private List<Translation> translations;
 
   /**
    * 
@@ -71,7 +71,7 @@ public class Text {
    * object creation builder should be used instead.
    */
   protected Text( ) {
-    // Nothing to do.
+    translations = new ArrayList<Translation>();
   }
 
   /**
@@ -85,7 +85,10 @@ public class Text {
     // Read attribute values from builder.
     id = pBuilder.id;
     if (pBuilder.translations != null) {
-      translations.addAll(pBuilder.translations);
+      translations = pBuilder.translations;
+    }
+    else {
+      translations = new ArrayList<Translation>();
     }
     text = pBuilder.text;
     shortText = pBuilder.shortText;
@@ -138,7 +141,7 @@ public class Text {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Text objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -257,24 +260,6 @@ public class Text {
   public List<Translation> getTranslations( ) {
     // Return all Translation objects as unmodifiable collection.
     return Collections.unmodifiableList(translations);
-  }
-
-  /**
-   * Method sets the association "translations" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pTranslations Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setTranslations( List<Translation> pTranslations ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "translations".
-    this.clearTranslations();
-    // If the association is null, removing all entries is sufficient.
-    if (pTranslations != null) {
-      translations = new ArrayList<Translation>(pTranslations);
-    }
   }
 
   /**

@@ -65,7 +65,7 @@ public class Price {
   /**
    * 
    */
-  private List<VAT> vats = new ArrayList<VAT>();
+  private List<VAT> vats;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -73,6 +73,7 @@ public class Price {
    */
   protected Price( ) {
     scale = 2;
+    vats = new ArrayList<VAT>();
   }
 
   /**
@@ -88,7 +89,10 @@ public class Price {
     amount = pBuilder.amount;
     scale = pBuilder.scale;
     if (pBuilder.vats != null) {
-      vats.addAll(pBuilder.vats);
+      vats = pBuilder.vats;
+    }
+    else {
+      vats = new ArrayList<VAT>();
     }
   }
 
@@ -140,7 +144,7 @@ public class Price {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Price objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -303,23 +307,6 @@ public class Price {
   public List<VAT> getVats( ) {
     // Return all VAT objects as unmodifiable collection.
     return Collections.unmodifiableList(vats);
-  }
-
-  /**
-   * Method sets the association "vats" to the passed collection. All objects that formerly were part of the association
-   * will be removed from it.
-   * 
-   * 
-   * @param pVats Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setVats( List<VAT> pVats ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "vats".
-    this.clearVats();
-    // If the association is null, removing all entries is sufficient.
-    if (pVats != null) {
-      vats = new ArrayList<VAT>(pVats);
-    }
   }
 
   /**

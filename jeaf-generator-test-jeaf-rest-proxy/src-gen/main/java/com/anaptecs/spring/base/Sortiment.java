@@ -39,7 +39,7 @@ public class Sortiment implements Serializable {
   /**
    * 
    */
-  private Set<Product> products = new HashSet<Product>();
+  private Set<Product> products;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -51,7 +51,7 @@ public class Sortiment implements Serializable {
    * object creation builder should be used instead.
    */
   protected Sortiment( ) {
-    // Nothing to do.
+    products = new HashSet<Product>();
     // Bidirectional back reference is not yet set up correctly
     productsBackReferenceInitialized = false;
   }
@@ -66,7 +66,10 @@ public class Sortiment implements Serializable {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.products != null) {
-      products.addAll(pBuilder.products);
+      products = pBuilder.products;
+    }
+    else {
+      products = new HashSet<Product>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     productsBackReferenceInitialized = true;
@@ -101,7 +104,7 @@ public class Sortiment implements Serializable {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Sortiment objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -175,23 +178,6 @@ public class Sortiment implements Serializable {
     }
     // Return all Product objects as unmodifiable collection.
     return Collections.unmodifiableSet(products);
-  }
-
-  /**
-   * Method sets the association "products" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pProducts Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setProducts( Set<Product> pProducts ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "products".
-    this.clearProducts();
-    // If the association is null, removing all entries is sufficient.
-    if (pProducts != null) {
-      products = new HashSet<Product>(pProducts);
-    }
   }
 
   /**

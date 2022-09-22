@@ -149,7 +149,6 @@ public class DateQueryParamsBean implements Serializable {
    * object creation builder should be used instead.
    */
   public DateQueryParamsBean( ) {
-    // Nothing to do.
   }
 
   /**
@@ -256,7 +255,7 @@ public class DateQueryParamsBean implements Serializable {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new DateQueryParamsBean objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
