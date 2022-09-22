@@ -40,7 +40,7 @@ public class AssortmentDO extends DomainObject {
   /**
    * 
    */
-  private Set<ProductDO> products = new HashSet<ProductDO>();
+  private Set<ProductDO> products;
 
   /**
    * 
@@ -52,6 +52,7 @@ public class AssortmentDO extends DomainObject {
    */
   public AssortmentDO( ) {
     // Nothing to do.
+    products = new HashSet<ProductDO>();
   }
 
   /**
@@ -61,6 +62,7 @@ public class AssortmentDO extends DomainObject {
    */
   public AssortmentDO( DomainObjectID pDomainObjectID ) {
     super(pDomainObjectID);
+    products = new HashSet<ProductDO>();
   }
 
   /**
@@ -73,23 +75,6 @@ public class AssortmentDO extends DomainObject {
   public Set<ProductDO> getProducts( ) {
     // Return all ProductDO objects as unmodifiable collection.
     return Collections.unmodifiableSet(products);
-  }
-
-  /**
-   * Method sets the association "products" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pProducts Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setProducts( Set<ProductDO> pProducts ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "products".
-    this.clearProducts();
-    // If the association is null, removing all entries is sufficient.
-    if (pProducts != null) {
-      products = new HashSet<ProductDO>(pProducts);
-    }
   }
 
   /**

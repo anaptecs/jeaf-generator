@@ -75,13 +75,14 @@ public class KanteDO extends DomainObject {
   /**
    * 
    */
-  private Set<NetzbereichDO> netzbereiche = new HashSet<NetzbereichDO>();
+  private Set<NetzbereichDO> netzbereiche;
 
   /**
    * Initialize object. Nothing special to do.
    */
   public KanteDO( ) {
     // Nothing to do.
+    netzbereiche = new HashSet<NetzbereichDO>();
   }
 
   /**
@@ -91,6 +92,7 @@ public class KanteDO extends DomainObject {
    */
   public KanteDO( DomainObjectID pDomainObjectID ) {
     super(pDomainObjectID);
+    netzbereiche = new HashSet<NetzbereichDO>();
   }
 
   /**
@@ -208,24 +210,6 @@ public class KanteDO extends DomainObject {
   public Set<NetzbereichDO> getNetzbereiche( ) {
     // Return all NetzbereichDO objects as unmodifiable collection.
     return Collections.unmodifiableSet(netzbereiche);
-  }
-
-  /**
-   * Method sets the association "netzbereiche" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pNetzbereiche Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setNetzbereiche( Set<NetzbereichDO> pNetzbereiche ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "netzbereiche".
-    this.clearNetzbereiche();
-    // If the association is null, removing all entries is sufficient.
-    if (pNetzbereiche != null) {
-      netzbereiche = new HashSet<NetzbereichDO>(pNetzbereiche);
-    }
   }
 
   /**

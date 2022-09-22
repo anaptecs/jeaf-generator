@@ -53,13 +53,14 @@ public abstract class PriceBase extends DomainObject {
    * 
    */
   @Deprecated
-  private Set<VerbindungspunktDO> verbindungspunkte = new HashSet<VerbindungspunktDO>();
+  private Set<VerbindungspunktDO> verbindungspunkte;
 
   /**
    * Initialize object. Nothing special to do.
    */
   public PriceBase( ) {
     // Nothing to do.
+    verbindungspunkte = new HashSet<VerbindungspunktDO>();
   }
 
   /**
@@ -69,6 +70,7 @@ public abstract class PriceBase extends DomainObject {
    */
   public PriceBase( DomainObjectID pDomainObjectID ) {
     super(pDomainObjectID);
+    verbindungspunkte = new HashSet<VerbindungspunktDO>();
   }
 
   /**
@@ -136,25 +138,6 @@ public abstract class PriceBase extends DomainObject {
   public Set<VerbindungspunktDO> getVerbindungspunkte( ) {
     // Return all VerbindungspunktDO objects as unmodifiable collection.
     return Collections.unmodifiableSet(verbindungspunkte);
-  }
-
-  /**
-   * Method sets the association "verbindungspunkte" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pVerbindungspunkte Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  @Deprecated
-  void setVerbindungspunkte( Set<VerbindungspunktDO> pVerbindungspunkte ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "verbindungspunkte".
-    this.clearVerbindungspunkte();
-    // If the association is null, removing all entries is sufficient.
-    if (pVerbindungspunkte != null) {
-      verbindungspunkte = new HashSet<VerbindungspunktDO>(pVerbindungspunkte);
-    }
   }
 
   /**

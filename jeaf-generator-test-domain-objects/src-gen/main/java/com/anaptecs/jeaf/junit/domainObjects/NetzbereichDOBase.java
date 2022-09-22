@@ -30,13 +30,14 @@ public abstract class NetzbereichDOBase extends DomainObject {
   /**
    * 
    */
-  private Set<KanteDO> kanten = new HashSet<KanteDO>();
+  private Set<KanteDO> kanten;
 
   /**
    * Initialize object. Nothing special to do.
    */
   public NetzbereichDOBase( ) {
     // Nothing to do.
+    kanten = new HashSet<KanteDO>();
   }
 
   /**
@@ -46,6 +47,7 @@ public abstract class NetzbereichDOBase extends DomainObject {
    */
   public NetzbereichDOBase( DomainObjectID pDomainObjectID ) {
     super(pDomainObjectID);
+    kanten = new HashSet<KanteDO>();
   }
 
   /**
@@ -58,23 +60,6 @@ public abstract class NetzbereichDOBase extends DomainObject {
   public Set<KanteDO> getKanten( ) {
     // Return all KanteDO objects as unmodifiable collection.
     return Collections.unmodifiableSet(kanten);
-  }
-
-  /**
-   * Method sets the association "kanten" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pKanten Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setKanten( Set<KanteDO> pKanten ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "kanten".
-    this.clearKanten();
-    // If the association is null, removing all entries is sufficient.
-    if (pKanten != null) {
-      kanten = new HashSet<KanteDO>(pKanten);
-    }
   }
 
   /**

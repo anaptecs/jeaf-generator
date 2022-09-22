@@ -52,13 +52,14 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   /**
    * 
    */
-  private SortedSet<UICCodeDO> uicCodes = new TreeSet<UICCodeDO>();
+  private SortedSet<UICCodeDO> uicCodes;
 
   /**
    * Initialize object. Nothing special to do.
    */
   public VerbindungspunktDO( ) {
     objectID = null;
+    uicCodes = new TreeSet<UICCodeDO>();
   }
 
   /**
@@ -69,6 +70,7 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   public VerbindungspunktDO( DomainObjectID pDomainObjectID ) {
     super(pDomainObjectID);
     objectID = null;
+    uicCodes = new TreeSet<UICCodeDO>();
   }
 
   /**
@@ -131,23 +133,6 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   public SortedSet<UICCodeDO> getUicCodes( ) {
     // Return all UICCodeDO objects as unmodifiable collection.
     return Collections.unmodifiableSortedSet(uicCodes);
-  }
-
-  /**
-   * Method sets the association "uicCodes" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pUicCodes Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setUicCodes( SortedSet<UICCodeDO> pUicCodes ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "uicCodes".
-    this.clearUicCodes();
-    // If the association is null, removing all entries is sufficient.
-    if (pUicCodes != null) {
-      uicCodes = new TreeSet<UICCodeDO>(pUicCodes);
-    }
   }
 
   /**

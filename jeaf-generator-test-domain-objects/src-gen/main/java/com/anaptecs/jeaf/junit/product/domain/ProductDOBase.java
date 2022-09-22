@@ -52,12 +52,12 @@ public abstract class ProductDOBase extends DomainObject {
   /**
    * 
    */
-  private Set<AssortmentDO> assortments = new HashSet<AssortmentDO>();
+  private Set<AssortmentDO> assortments;
 
   /**
    * 
    */
-  private Set<PriceDO> pricesPerCurrency = new HashSet<PriceDO>();
+  private Set<PriceDO> pricesPerCurrency;
 
   /**
    * 
@@ -84,6 +84,8 @@ public abstract class ProductDOBase extends DomainObject {
    */
   public ProductDOBase( ) {
     // Nothing to do.
+    assortments = new HashSet<AssortmentDO>();
+    pricesPerCurrency = new HashSet<PriceDO>();
   }
 
   /**
@@ -93,6 +95,8 @@ public abstract class ProductDOBase extends DomainObject {
    */
   public ProductDOBase( DomainObjectID pDomainObjectID ) {
     super(pDomainObjectID);
+    assortments = new HashSet<AssortmentDO>();
+    pricesPerCurrency = new HashSet<PriceDO>();
   }
 
   /**
@@ -105,23 +109,6 @@ public abstract class ProductDOBase extends DomainObject {
   public Set<AssortmentDO> getAssortments( ) {
     // Return all AssortmentDO objects as unmodifiable collection.
     return Collections.unmodifiableSet(assortments);
-  }
-
-  /**
-   * Method sets the association "assortments" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pAssortments Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setAssortments( Set<AssortmentDO> pAssortments ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "assortments".
-    this.clearAssortments();
-    // If the association is null, removing all entries is sufficient.
-    if (pAssortments != null) {
-      assortments = new HashSet<AssortmentDO>(pAssortments);
-    }
   }
 
   /**
@@ -200,24 +187,6 @@ public abstract class ProductDOBase extends DomainObject {
   public Set<PriceDO> getPricesPerCurrency( ) {
     // Return all PriceDO objects as unmodifiable collection.
     return Collections.unmodifiableSet(pricesPerCurrency);
-  }
-
-  /**
-   * Method sets the association "pricesPerCurrency" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pPricesPerCurrency Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setPricesPerCurrency( Set<PriceDO> pPricesPerCurrency ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "pricesPerCurrency".
-    this.clearPricesPerCurrency();
-    // If the association is null, removing all entries is sufficient.
-    if (pPricesPerCurrency != null) {
-      pricesPerCurrency = new HashSet<PriceDO>(pPricesPerCurrency);
-    }
   }
 
   /**
