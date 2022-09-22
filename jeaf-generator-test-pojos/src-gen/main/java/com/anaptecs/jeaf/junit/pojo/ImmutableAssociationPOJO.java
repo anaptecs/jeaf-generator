@@ -109,11 +109,14 @@ public class ImmutableAssociationPOJO {
       readonlyAssociation = pBuilder.readonlyAssociation;
     }
     else {
-      readonlyAssociation = Collections.emptySortedSet();
+      readonlyAssociation = new TreeSet<ImmutablePOJO>();
     }
     immutableChildPOJO = pBuilder.immutableChildPOJO;
     if (pBuilder.deprecatedRefs != null) {
-      deprecatedRefs.addAll(pBuilder.deprecatedRefs);
+      deprecatedRefs = pBuilder.deprecatedRefs;
+    }
+    else {
+      deprecatedRefs = new HashSet<ImmutableChildPOJO>();
     }
     deprecatedRef = pBuilder.deprecatedRef;
   }
@@ -173,7 +176,7 @@ public class ImmutableAssociationPOJO {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ImmutableAssociationPOJO objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -321,25 +324,6 @@ public class ImmutableAssociationPOJO {
   public Set<ImmutableChildPOJO> getDeprecatedRefs( ) {
     // Return all ImmutableChildPOJO objects as unmodifiable collection.
     return Collections.unmodifiableSet(deprecatedRefs);
-  }
-
-  /**
-   * Method sets the association "deprecatedRefs" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pDeprecatedRefs Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  @Deprecated
-  void setDeprecatedRefs( Set<ImmutableChildPOJO> pDeprecatedRefs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "deprecatedRefs".
-    this.clearDeprecatedRefs();
-    // If the association is null, removing all entries is sufficient.
-    if (pDeprecatedRefs != null) {
-      deprecatedRefs = new HashSet<ImmutableChildPOJO>(pDeprecatedRefs);
-    }
   }
 
   /**
