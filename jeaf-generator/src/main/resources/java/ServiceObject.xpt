@@ -49,47 +49,7 @@
 		  «IF needsToImplementIdentifiable() == true»
 		  objectID = null;
 		  «ENDIF»
-		  «FOREACH this.ownedAttribute AS attr»
-			  «IF attr.isReadOnly == true && attr.isStatic == false»
-			  	«IF attr.type.isPrimitiveType() == true»
-				  «IF attr.isMultivalued() == false»
-				  	«IF attr.isRealInitValue()»
-				  		«attr.name» = «attr.initValue()»;
-				  	«ELSE»
-				  		«attr.name» = «attr.getPrimitiveDefaultValue()»;
-				  	«ENDIF»
-				  «ELSE»
-						«IF attr.isMultivalued()»
-							«REM»Distiguish between arrays and collections.«ENDREM»
-							«IF attr.association == null»
-							«attr.name» = null;
-							«ELSE»
-							«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
-							«ENDIF»
-						«ELSE»
-							«attr.name» = null;
-						«ENDIF»
-				  «ENDIF»
-			    «ELSE»
-					«IF attr.isMultivalued() == false»
-					«attr.name» = null;
-					«ENDIF»
-				«ENDIF»
-			  «ELSE»
-				  «IF attr.isMultivalued() && attr.association != null»
-					«REM»Only in case of collections we have to initilize them.«ENDREM»
-					«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
-				  «ELSE»
-					  «IF attr.isRealInitValue() && attr.isStatic == false »
-                          «attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
-					  «ENDIF»
-				  «ENDIF»
-			  «ENDIF»
-			  «IF attr.isTransientBidirectionalBackReference()»
-			    // Bidirectional back reference is not yet set up correctly
-			    «attr.asInstanceVar()»BackReferenceInitialized = false;
-			  «ENDIF»
-		  «ENDFOREACH»
+		  «EXPAND ServiceObjectPlainConstructorInit»
 		}
 
 		/**
@@ -118,29 +78,7 @@
 			«IF this.ownedAttribute.size > 0»
 			// Read attribute values from builder.
 			«ENDIF»
-			
-			«FOREACH this.ownedAttribute AS attr»
-			  «IF attr.association == null»
-			  	«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»
-			  «ELSE»
-			  	«IF attr.isMultivalued()»
-		        	«IF attr.isStatic == false»
-		        	if(pBuilder.«attr.name» != null) {
-		        	    «attr.name» = pBuilder.«attr.name»;
-		        	}
-		        	else {
-		        		«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
-		        	}
-		        	«ENDIF»
-			  	«ELSE»
-					«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»			  	
-			  	«ENDIF»
-			  «ENDIF»			  
-			  «IF attr.isTransientBidirectionalBackReference()»
-				// Bidirectional back reference is set up correctly as a builder is used.
-				«attr.asInstanceVar()»BackReferenceInitialized = true;
-			  «ENDIF»
-			«ENDFOREACH»
+			«EXPAND ServiceObjectBuilderConstructorInit»
 		}
 		  
 		«REM»Generate builder«ENDREM»
@@ -189,45 +127,7 @@
 		  «IF needsToImplementIdentifiable() == true»
 		  objectID = null;
 		  «ENDIF»
-		  «FOREACH this.ownedAttribute AS attr»
-			  «IF attr.isReadOnly == true && attr.isStatic == false»
-				  «IF attr.type.isPrimitiveType() == true»
-					  «IF attr.isMultivalued() == false»
-					  	«IF attr.isRealInitValue()»
-					  		«attr.name» = «attr.initValue()»;
-					  	«ELSE»
-					  		«attr.name» = «attr.getPrimitiveDefaultValue()»;
-					  	«ENDIF»
-					  «ELSE»
-					  	«attr.name» = null;
-					  «ENDIF»
-				  «ELSE»
-						«IF attr.isMultivalued()»
-						«REM»Distiguish between arrays and collections.«ENDREM»
-							«IF attr.association == null»
-							«attr.name» = null;
-							«ELSE»
-							«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
-							«ENDIF»
-						«ELSE»
-							«attr.name» = null;
-						«ENDIF»
-				  «ENDIF»
-			  «ELSE»
-				  «IF attr.isMultivalued() && attr.association != null»
-					«REM»Only in case of collections we have to initilize them.«ENDREM»
-					«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
-				  «ELSE»
-					  «IF attr.isRealInitValue() && attr.isStatic == false »
-                          «attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
-					  «ENDIF»
-				  «ENDIF»
-			  «ENDIF»
-			  «IF attr.isTransientBidirectionalBackReference()»
-			    // Bidirectional back reference is not yet set up correctly
-			    «attr.asInstanceVar()»BackReferenceInitialized = false;
-			  «ENDIF»
-		  «ENDFOREACH»
+		  «EXPAND ServiceObjectPlainConstructorInit»
 		}
 
 		/**
@@ -256,29 +156,7 @@
 		«IF this.ownedAttribute.size > 0»
 		// Read attribute values from builder.
 		«ENDIF»
-
-		«FOREACH this.ownedAttribute AS attr»
-		  «IF attr.association == null»
-		  	«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»
-		  «ELSE»
-		  	«IF attr.isMultivalued()»
-	        	«IF attr.isStatic == false»
-	        	if(pBuilder.«attr.name» != null) {
-	        	    «attr.name» = pBuilder.«attr.name»;
-	        	}
-	        	else {
-	        		«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
-	        	}
-	        	«ENDIF»
-		  	«ELSE»
-				«IF attr.isStatic == false»«attr.name» = pBuilder.«attr.name»;«ENDIF»			  	
-		  	«ENDIF»
-		  «ENDIF»			  
-		  «IF attr.isTransientBidirectionalBackReference()»
-			// Bidirectional back reference is set up correctly as a builder is used.
-			«attr.asInstanceVar()»BackReferenceInitialized = true;
-		  «ENDIF»
-		«ENDFOREACH»
+		«EXPAND ServiceObjectBuilderConstructorInit»
 		}
 		
 		«REM»Generate builder«ENDREM»
@@ -348,3 +226,74 @@
 	«ENDIF»
 «ENDDEFINE»
 
+
+«DEFINE ServiceObjectPlainConstructorInit FOR ServiceObject»
+	«FOREACH this.ownedAttribute AS attr»
+		«IF attr.isReadOnly && attr.isStatic == false»
+			«IF attr.type.isPrimitiveType() == true»
+				«IF attr.isMultivalued() == false»
+					«IF attr.isRealInitValue()»
+						«attr.name» = «attr.initValue()»;
+					«ELSE»
+						«attr.name» = «attr.getPrimitiveDefaultValue()»;
+					«ENDIF»
+				«ELSE»
+					«attr.name» = null;
+				«ENDIF»
+			«ELSE»
+				«IF attr.isMultivalued()»
+					«REM»Distiguish between arrays and collections.«ENDREM»
+					«IF attr.association == null»
+						«attr.name» = null;
+					«ELSE»
+						«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+					«ENDIF»
+				«ELSE»
+					«attr.name» = null;
+				«ENDIF»
+			«ENDIF»
+		«ELSE»
+			«IF attr.isMultivalued() && attr.association != null»
+				«REM»Only in case of collections we have to initilize them.«ENDREM»
+				«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+			«ELSE»
+				«IF attr.isRealInitValue() && attr.isStatic == false »
+					«attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
+				«ENDIF»
+			«ENDIF»
+		«ENDIF»
+		«IF attr.isTransientBidirectionalBackReference()»
+			// Bidirectional back reference is not yet set up correctly
+			«attr.asInstanceVar()»BackReferenceInitialized = false;
+		«ENDIF»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE ServiceObjectBuilderConstructorInit FOR ServiceObject»
+	«FOREACH this.ownedAttribute AS attr»
+		«IF attr.association == null»
+			«IF attr.isStatic == false»
+				«attr.name» = pBuilder.«attr.name»;
+			«ENDIF»
+		«ELSE»
+			«IF attr.isMultivalued()»
+				«IF attr.isStatic == false»
+					if(pBuilder.«attr.name» != null) {
+					«attr.name» = pBuilder.«attr.name»;
+					}
+					else {
+					«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+					}
+				«ENDIF»
+			«ELSE»
+				«IF attr.isStatic == false»
+					«attr.name» = pBuilder.«attr.name»;
+				«ENDIF»			  	
+			«ENDIF»
+		«ENDIF»			  
+		«IF attr.isTransientBidirectionalBackReference()»
+			// Bidirectional back reference is set up correctly as a builder is used.
+			«attr.asInstanceVar()»BackReferenceInitialized = true;
+		«ENDIF»
+	«ENDFOREACH»
+«ENDDEFINE»
