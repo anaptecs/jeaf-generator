@@ -24,7 +24,6 @@ public class WegsucheAnfrage extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public WegsucheAnfrage( ) {
-    // Nothing to do.
   }
 
   /**

@@ -59,7 +59,6 @@ public abstract class AccountDOBase extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public AccountDOBase( ) {
-    // Nothing to do.
   }
 
   /**

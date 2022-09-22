@@ -47,7 +47,6 @@ public class PriceDO extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public PriceDO( ) {
-    // Nothing to do.
   }
 
   /**

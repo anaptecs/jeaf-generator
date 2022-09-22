@@ -33,7 +33,6 @@ public class MappingChildDO extends MappingParentDO {
    * Initialize object. Nothing special to do.
    */
   public MappingChildDO( ) {
-    // Nothing to do.
   }
 
   /**

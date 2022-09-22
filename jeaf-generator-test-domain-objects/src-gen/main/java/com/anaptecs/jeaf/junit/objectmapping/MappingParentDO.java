@@ -34,7 +34,6 @@ public class MappingParentDO extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public MappingParentDO( ) {
-    // Nothing to do.
   }
 
   /**

@@ -37,7 +37,6 @@ public abstract class PfadDOBase extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public PfadDOBase( ) {
-    // Nothing to do.
     kantenSequenz = new ArrayList<KanteDO>();
   }
 

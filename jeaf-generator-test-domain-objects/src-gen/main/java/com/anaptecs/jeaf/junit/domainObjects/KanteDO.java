@@ -81,7 +81,6 @@ public class KanteDO extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public KanteDO( ) {
-    // Nothing to do.
     netzbereiche = new HashSet<NetzbereichDO>();
   }
 

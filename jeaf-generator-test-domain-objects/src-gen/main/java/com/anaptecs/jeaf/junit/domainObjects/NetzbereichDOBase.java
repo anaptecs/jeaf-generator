@@ -36,7 +36,6 @@ public abstract class NetzbereichDOBase extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public NetzbereichDOBase( ) {
-    // Nothing to do.
     kanten = new HashSet<KanteDO>();
   }
 

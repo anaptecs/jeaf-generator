@@ -51,7 +51,6 @@ public class AssortmentDO extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public AssortmentDO( ) {
-    // Nothing to do.
     products = new HashSet<ProductDO>();
   }
 

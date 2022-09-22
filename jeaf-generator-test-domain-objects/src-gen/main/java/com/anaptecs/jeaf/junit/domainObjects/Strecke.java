@@ -24,7 +24,6 @@ public class Strecke extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public Strecke( ) {
-    // Nothing to do.
   }
 
   /**

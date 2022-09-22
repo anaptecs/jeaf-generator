@@ -25,7 +25,6 @@ public class Reiseweg extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public Reiseweg( ) {
-    // Nothing to do.
   }
 
   /**

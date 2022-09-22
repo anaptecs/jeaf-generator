@@ -59,7 +59,6 @@ public abstract class PriceBase extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public PriceBase( ) {
-    // Nothing to do.
     verbindungspunkte = new HashSet<VerbindungspunktDO>();
   }
 

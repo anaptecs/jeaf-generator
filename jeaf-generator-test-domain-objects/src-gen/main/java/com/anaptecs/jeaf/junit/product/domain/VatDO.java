@@ -34,7 +34,6 @@ public class VatDO extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public VatDO( ) {
-    // Nothing to do.
   }
 
   /**

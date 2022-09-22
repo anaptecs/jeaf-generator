@@ -24,7 +24,6 @@ public class InfoPLUSConnection extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public InfoPLUSConnection( ) {
-    // Nothing to do.
   }
 
   /**

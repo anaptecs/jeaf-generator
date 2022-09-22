@@ -83,7 +83,6 @@ public abstract class ProductDOBase extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public ProductDOBase( ) {
-    // Nothing to do.
     assortments = new HashSet<AssortmentDO>();
     pricesPerCurrency = new HashSet<PriceDO>();
   }

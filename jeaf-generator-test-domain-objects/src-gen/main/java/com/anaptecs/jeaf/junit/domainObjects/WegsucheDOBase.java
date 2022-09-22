@@ -26,7 +26,6 @@ public abstract class WegsucheDOBase extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public WegsucheDOBase( ) {
-    // Nothing to do.
   }
 
   /**
