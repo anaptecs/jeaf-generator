@@ -108,7 +108,6 @@ public class PrimitiveServiceObject implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected PrimitiveServiceObject( ) {
-    // Nothing to do.
   }
 
   /**
@@ -201,7 +200,7 @@ public class PrimitiveServiceObject implements ServiceObject {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new PrimitiveServiceObject objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

@@ -37,7 +37,6 @@ public abstract class SubclassWithIDnMethodBase extends IdentifiableServiceObjec
    * object creation builder should be used instead.
    */
   protected SubclassWithIDnMethodBase( ) {
-    // Nothing to do.
   }
 
   /**

@@ -36,7 +36,6 @@ public class MappingChild extends MappingParent {
    * object creation builder should be used instead.
    */
   protected MappingChild( ) {
-    // Nothing to do.
   }
 
   /**
@@ -82,7 +81,7 @@ public class MappingChild extends MappingParent {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new MappingChild objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

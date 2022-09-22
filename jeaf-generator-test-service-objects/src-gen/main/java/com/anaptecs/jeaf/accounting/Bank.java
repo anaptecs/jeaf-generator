@@ -154,7 +154,7 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Bank objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

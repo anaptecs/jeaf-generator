@@ -487,7 +487,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new PrimitiveObjectWithRestrictions objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

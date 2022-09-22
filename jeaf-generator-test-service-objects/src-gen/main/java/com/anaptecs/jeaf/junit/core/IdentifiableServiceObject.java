@@ -121,7 +121,7 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new IdentifiableServiceObject objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

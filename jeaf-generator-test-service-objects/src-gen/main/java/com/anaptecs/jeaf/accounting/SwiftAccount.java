@@ -43,7 +43,6 @@ public class SwiftAccount extends Account {
    * object creation builder should be used instead.
    */
   protected SwiftAccount( ) {
-    // Nothing to do.
   }
 
   /**
@@ -90,7 +89,7 @@ public class SwiftAccount extends Account {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new SwiftAccount objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

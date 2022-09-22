@@ -24,7 +24,6 @@ public class SwissGeoPosition extends GeoPosition {
    * object creation builder should be used instead.
    */
   protected SwissGeoPosition( ) {
-    // Nothing to do.
   }
 
   /**
@@ -62,7 +61,7 @@ public class SwissGeoPosition extends GeoPosition {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new SwissGeoPosition objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

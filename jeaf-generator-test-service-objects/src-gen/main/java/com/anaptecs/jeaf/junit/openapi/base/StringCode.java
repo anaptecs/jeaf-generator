@@ -38,7 +38,6 @@ public class StringCode implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected StringCode( ) {
-    // Nothing to do.
   }
 
   /**
@@ -82,7 +81,7 @@ public class StringCode implements ServiceObject {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new StringCode objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

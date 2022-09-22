@@ -138,7 +138,7 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ResponsibilityType objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

@@ -38,7 +38,6 @@ public class ShortCode implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected ShortCode( ) {
-    // Nothing to do.
   }
 
   /**
@@ -82,7 +81,7 @@ public class ShortCode implements ServiceObject {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ShortCode objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

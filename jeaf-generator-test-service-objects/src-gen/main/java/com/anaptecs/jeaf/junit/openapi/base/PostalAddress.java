@@ -68,7 +68,6 @@ public class PostalAddress implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected PostalAddress( ) {
-    // Nothing to do.
   }
 
   /**
@@ -133,7 +132,7 @@ public class PostalAddress implements ServiceObject {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new PostalAddress objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

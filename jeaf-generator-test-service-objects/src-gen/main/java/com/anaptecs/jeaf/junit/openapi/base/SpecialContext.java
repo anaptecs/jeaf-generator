@@ -38,7 +38,6 @@ public class SpecialContext extends Context {
    * object creation builder should be used instead.
    */
   protected SpecialContext( ) {
-    // Nothing to do.
   }
 
   /**
@@ -84,7 +83,7 @@ public class SpecialContext extends Context {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new SpecialContext objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

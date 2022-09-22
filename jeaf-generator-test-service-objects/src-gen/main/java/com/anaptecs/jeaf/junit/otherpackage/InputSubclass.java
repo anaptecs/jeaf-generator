@@ -24,7 +24,6 @@ public class InputSubclass extends Input {
    * object creation builder should be used instead.
    */
   protected InputSubclass( ) {
-    // Nothing to do.
   }
 
   /**
@@ -62,7 +61,7 @@ public class InputSubclass extends Input {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new InputSubclass objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

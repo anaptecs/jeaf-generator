@@ -90,7 +90,6 @@ public abstract class TestServiceObjectBase implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected TestServiceObjectBase( ) {
-    // Nothing to do.
   }
 
   /**

@@ -37,7 +37,6 @@ public class SubclassWithID extends IdentifiableServiceObject {
    * object creation builder should be used instead.
    */
   protected SubclassWithID( ) {
-    // Nothing to do.
   }
 
   /**
@@ -83,7 +82,7 @@ public class SubclassWithID extends IdentifiableServiceObject {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new SubclassWithID objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

@@ -74,7 +74,6 @@ public class DeprecatedContext implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected DeprecatedContext( ) {
-    // Nothing to do.
   }
 
   /**
@@ -141,7 +140,7 @@ public class DeprecatedContext implements ServiceObject {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new DeprecatedContext objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

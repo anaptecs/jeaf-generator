@@ -53,7 +53,7 @@ public class Reseller extends ResellerBase {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Reseller objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();

@@ -35,7 +35,6 @@ public class Individual extends Customer {
    * object creation builder should be used instead.
    */
   protected Individual( ) {
-    // Nothing to do.
   }
 
   /**
@@ -81,7 +80,7 @@ public class Individual extends Customer {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Individual objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
