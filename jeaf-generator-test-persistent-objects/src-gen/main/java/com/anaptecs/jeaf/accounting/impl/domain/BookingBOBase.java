@@ -69,7 +69,7 @@ public abstract class BookingBOBase extends PersistentObject {
   /**
    * Person who authorized the booking.
    */
-  private Set<MyPersonBO> remitters = new HashSet<MyPersonBO>();
+  private Set<MyPersonBO> remitters;
 
   /**
    * 
@@ -81,7 +81,7 @@ public abstract class BookingBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected BookingBOBase( ) {
-    // Nothing to do.
+    remitters = new HashSet<MyPersonBO>();
   }
 
   /**
@@ -167,22 +167,6 @@ public abstract class BookingBOBase extends PersistentObject {
   public Set<MyPersonBO> getRemitters( ) {
     // Return all MyPersonBO objects as unmodifiable collection.
     return Collections.unmodifiableSet(remitters);
-  }
-
-  /**
-   * Method sets the association "remitters" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it. Person who authorized the booking.
-   * 
-   * @param pRemitters Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setRemitters( Set<MyPersonBO> pRemitters ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "remitters".
-    this.clearRemitters();
-    // If the association is null, removing all entries is sufficient.
-    if (pRemitters != null) {
-      remitters = new HashSet<MyPersonBO>(pRemitters);
-    }
   }
 
   /**

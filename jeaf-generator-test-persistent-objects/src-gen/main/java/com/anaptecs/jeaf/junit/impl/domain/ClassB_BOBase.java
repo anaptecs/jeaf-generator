@@ -44,7 +44,7 @@ public abstract class ClassB_BOBase extends PersistentObject {
   /**
    * 
    */
-  private Set<ClassA_BO> classAs = new HashSet<ClassA_BO>();
+  private Set<ClassA_BO> classAs;
 
   /**
    * 
@@ -56,7 +56,7 @@ public abstract class ClassB_BOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected ClassB_BOBase( ) {
-    // Nothing to do.
+    classAs = new HashSet<ClassA_BO>();
   }
 
   /**
@@ -78,23 +78,6 @@ public abstract class ClassB_BOBase extends PersistentObject {
   public Set<ClassA_BO> getClassAs( ) {
     // Return all ClassA_BO objects as unmodifiable collection.
     return Collections.unmodifiableSet(classAs);
-  }
-
-  /**
-   * Method sets the association "classAs" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pClassAs Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setClassAs( Set<ClassA_BO> pClassAs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "classAs".
-    this.clearClassAs();
-    // If the association is null, removing all entries is sufficient.
-    if (pClassAs != null) {
-      classAs = new HashSet<ClassA_BO>(pClassAs);
-    }
   }
 
   /**

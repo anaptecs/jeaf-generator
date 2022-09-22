@@ -69,7 +69,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
   /**
    * 
    */
-  private Set<CustomerBO> attendedCustomers = new HashSet<CustomerBO>();
+  private Set<CustomerBO> attendedCustomers;
 
   /**
    * 
@@ -79,7 +79,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
   /**
    * 
    */
-  private Set<EmployeeBO> employees = new HashSet<EmployeeBO>();
+  private Set<EmployeeBO> employees;
 
   /**
    * 
@@ -91,7 +91,8 @@ public abstract class EmployeeBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected EmployeeBOBase( ) {
-    // Nothing to do.
+    attendedCustomers = new HashSet<CustomerBO>();
+    employees = new HashSet<EmployeeBO>();
   }
 
   /**
@@ -201,24 +202,6 @@ public abstract class EmployeeBOBase extends PersistentObject {
   public Set<CustomerBO> getAttendedCustomers( ) {
     // Return all CustomerBO objects as unmodifiable collection.
     return Collections.unmodifiableSet(attendedCustomers);
-  }
-
-  /**
-   * Method sets the association "attendedCustomers" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pAttendedCustomers Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setAttendedCustomers( Set<CustomerBO> pAttendedCustomers ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "attendedCustomers".
-    this.clearAttendedCustomers();
-    // If the association is null, removing all entries is sufficient.
-    if (pAttendedCustomers != null) {
-      attendedCustomers = new HashSet<CustomerBO>(pAttendedCustomers);
-    }
   }
 
   /**
@@ -342,23 +325,6 @@ public abstract class EmployeeBOBase extends PersistentObject {
   public Set<EmployeeBO> getEmployees( ) {
     // Return all EmployeeBO objects as unmodifiable collection.
     return Collections.unmodifiableSet(employees);
-  }
-
-  /**
-   * Method sets the association "employees" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pEmployees Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setEmployees( Set<EmployeeBO> pEmployees ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "employees".
-    this.clearEmployees();
-    // If the association is null, removing all entries is sufficient.
-    if (pEmployees != null) {
-      employees = new HashSet<EmployeeBO>(pEmployees);
-    }
   }
 
   /**

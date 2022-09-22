@@ -31,12 +31,12 @@ public abstract class OrderingABase extends PersistentObject {
   /**
    * 
    */
-  private SortedSet<OrderingB> orderedUnique = new TreeSet<OrderingB>();
+  private SortedSet<OrderingB> orderedUnique;
 
   /**
    * 
    */
-  private List<OrderingB> orderedNotUnique = new ArrayList<OrderingB>();
+  private List<OrderingB> orderedNotUnique;
 
   /**
    * 
@@ -46,14 +46,16 @@ public abstract class OrderingABase extends PersistentObject {
   /**
    * 
    */
-  private Collection<OrderingB> notOrderedNotUnique = new ArrayList<OrderingB>();
+  private Collection<OrderingB> notOrderedNotUnique;
 
   /**
    * Initialize object. The constructor of the class has visibility protected in order to avoid creating business
    * objects not through JEAFs persistence service provider.
    */
   protected OrderingABase( ) {
-    // Nothing to do.
+    orderedUnique = new TreeSet<OrderingB>();
+    orderedNotUnique = new ArrayList<OrderingB>();
+    notOrderedNotUnique = new ArrayList<OrderingB>();
   }
 
   /**
@@ -75,24 +77,6 @@ public abstract class OrderingABase extends PersistentObject {
   public SortedSet<OrderingB> getOrderedUnique( ) {
     // Return all OrderingB objects as unmodifiable collection.
     return Collections.unmodifiableSortedSet(orderedUnique);
-  }
-
-  /**
-   * Method sets the association "orderedUnique" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pOrderedUnique Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setOrderedUnique( SortedSet<OrderingB> pOrderedUnique ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "orderedUnique".
-    this.clearOrderedUnique();
-    // If the association is null, removing all entries is sufficient.
-    if (pOrderedUnique != null) {
-      orderedUnique = new TreeSet<OrderingB>(pOrderedUnique);
-    }
   }
 
   /**
@@ -175,24 +159,6 @@ public abstract class OrderingABase extends PersistentObject {
   public List<OrderingB> getOrderedNotUnique( ) {
     // Return all OrderingB objects as unmodifiable collection.
     return Collections.unmodifiableList(orderedNotUnique);
-  }
-
-  /**
-   * Method sets the association "orderedNotUnique" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pOrderedNotUnique Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setOrderedNotUnique( List<OrderingB> pOrderedNotUnique ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "orderedNotUnique".
-    this.clearOrderedNotUnique();
-    // If the association is null, removing all entries is sufficient.
-    if (pOrderedNotUnique != null) {
-      orderedNotUnique = new ArrayList<OrderingB>(pOrderedNotUnique);
-    }
   }
 
   /**
@@ -319,24 +285,6 @@ public abstract class OrderingABase extends PersistentObject {
   public Collection<OrderingB> getNotOrderedNotUnique( ) {
     // Return all OrderingB objects as unmodifiable collection.
     return Collections.unmodifiableCollection(notOrderedNotUnique);
-  }
-
-  /**
-   * Method sets the association "notOrderedNotUnique" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pNotOrderedNotUnique Collection with objects to which the association should be set. The parameter must not
-   * be null.
-   */
-  void setNotOrderedNotUnique( Collection<OrderingB> pNotOrderedNotUnique ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "notOrderedNotUnique".
-    this.clearNotOrderedNotUnique();
-    // If the association is null, removing all entries is sufficient.
-    if (pNotOrderedNotUnique != null) {
-      notOrderedNotUnique = new ArrayList<OrderingB>(pNotOrderedNotUnique);
-    }
   }
 
   /**

@@ -85,12 +85,12 @@ public abstract class AccountBOBase extends PersistentObject {
   /**
    * 
    */
-  private Set<BookingBO> bookings = new HashSet<BookingBO>();
+  private Set<BookingBO> bookings;
 
   /**
    * 
    */
-  private Set<MyPersonBO> authorizedPersons = new HashSet<MyPersonBO>();
+  private Set<MyPersonBO> authorizedPersons;
 
   /**
    * 
@@ -102,7 +102,8 @@ public abstract class AccountBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected AccountBOBase( ) {
-    // Nothing to do.
+    bookings = new HashSet<BookingBO>();
+    authorizedPersons = new HashSet<MyPersonBO>();
   }
 
   /**
@@ -236,23 +237,6 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "bookings" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pBookings Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setBookings( Set<BookingBO> pBookings ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "bookings".
-    this.clearBookings();
-    // If the association is null, removing all entries is sufficient.
-    if (pBookings != null) {
-      bookings = new HashSet<BookingBO>(pBookings);
-    }
-  }
-
-  /**
    * Method adds the passed BookingBO object to the association "bookings".
    * 
    * 
@@ -330,24 +314,6 @@ public abstract class AccountBOBase extends PersistentObject {
   public Set<MyPersonBO> getAuthorizedPersons( ) {
     // Return all MyPersonBO objects as unmodifiable collection.
     return Collections.unmodifiableSet(authorizedPersons);
-  }
-
-  /**
-   * Method sets the association "authorizedPersons" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pAuthorizedPersons Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setAuthorizedPersons( Set<MyPersonBO> pAuthorizedPersons ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "authorizedPersons".
-    this.clearAuthorizedPersons();
-    // If the association is null, removing all entries is sufficient.
-    if (pAuthorizedPersons != null) {
-      authorizedPersons = new HashSet<MyPersonBO>(pAuthorizedPersons);
-    }
   }
 
   /**
