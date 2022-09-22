@@ -74,7 +74,6 @@ public abstract class PublicClassBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected PublicClassBOBase( ) {
-    // Nothing to do.
   }
 
   /**

@@ -65,7 +65,6 @@ public abstract class CompanyBOBase extends CustomerBO {
    * objects not through JEAFs persistence service provider.
    */
   protected CompanyBOBase( ) {
-    // Nothing to do.
   }
 
   /**

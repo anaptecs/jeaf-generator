@@ -50,7 +50,6 @@ public abstract class CManyBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected CManyBOBase( ) {
-    // Nothing to do.
   }
 
   /**

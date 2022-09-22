@@ -35,7 +35,6 @@ public abstract class GrandchildBOBase extends ChildBO {
    * objects not through JEAFs persistence service provider.
    */
   protected GrandchildBOBase( ) {
-    // Nothing to do.
   }
 
   /**
