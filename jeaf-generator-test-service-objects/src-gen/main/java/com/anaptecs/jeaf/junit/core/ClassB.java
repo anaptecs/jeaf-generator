@@ -51,7 +51,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
-  private SortedSet<ClassA> manyAs = new TreeSet<ClassA>();
+  private SortedSet<ClassA> manyAs;
 
   /**
    * 
@@ -64,6 +64,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   protected ClassB( ) {
     objectID = null;
+    manyAs = new TreeSet<ClassA>();
   }
 
   /**
@@ -84,7 +85,10 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
     }
     // Read attribute values from builder.
     if (pBuilder.manyAs != null) {
-      manyAs.addAll(pBuilder.manyAs);
+      manyAs = pBuilder.manyAs;
+    }
+    else {
+      manyAs = new TreeSet<ClassA>();
     }
     intValue = pBuilder.intValue;
   }
@@ -130,7 +134,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new ClassB objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -244,23 +248,6 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   public SortedSet<ClassA> getManyAs( ) {
     // Return all ClassA objects as unmodifiable collection.
     return Collections.unmodifiableSortedSet(manyAs);
-  }
-
-  /**
-   * Method sets the association "manyAs" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pManyAs Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setManyAs( SortedSet<ClassA> pManyAs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "manyAs".
-    this.clearManyAs();
-    // If the association is null, removing all entries is sufficient.
-    if (pManyAs != null) {
-      manyAs = new TreeSet<ClassA>(pManyAs);
-    }
   }
 
   /**

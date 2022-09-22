@@ -58,14 +58,14 @@ public class Leg implements ServiceObject {
   /**
    * 
    */
-  private List<PlaceRef> stopovers = new ArrayList<PlaceRef>();
+  private List<PlaceRef> stopovers;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected Leg( ) {
-    // Nothing to do.
+    stopovers = new ArrayList<PlaceRef>();
   }
 
   /**
@@ -80,7 +80,10 @@ public class Leg implements ServiceObject {
     start = pBuilder.start;
     stop = pBuilder.stop;
     if (pBuilder.stopovers != null) {
-      stopovers.addAll(pBuilder.stopovers);
+      stopovers = pBuilder.stopovers;
+    }
+    else {
+      stopovers = new ArrayList<PlaceRef>();
     }
   }
 
@@ -125,7 +128,7 @@ public class Leg implements ServiceObject {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Leg objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -266,23 +269,6 @@ public class Leg implements ServiceObject {
   public List<PlaceRef> getStopovers( ) {
     // Return all PlaceRef objects as unmodifiable collection.
     return Collections.unmodifiableList(stopovers);
-  }
-
-  /**
-   * Method sets the association "stopovers" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pStopovers Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setStopovers( List<PlaceRef> pStopovers ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "stopovers".
-    this.clearStopovers();
-    // If the association is null, removing all entries is sufficient.
-    if (pStopovers != null) {
-      stopovers = new ArrayList<PlaceRef>(pStopovers);
-    }
   }
 
   /**

@@ -78,7 +78,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
    * 
    */
   @Deprecated
-  private Set<ValidationTestObject> deprecatedRefs = new HashSet<ValidationTestObject>();
+  private Set<ValidationTestObject> deprecatedRefs;
 
   /**
    * <br/>
@@ -91,6 +91,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
    * object creation builder should be used instead.
    */
   protected PartiallyDeprecatedServiceObjectBase( ) {
+    deprecatedRefs = new HashSet<ValidationTestObject>();
     readonlyDefault = 4711;
   }
 
@@ -107,7 +108,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     outdated = pBuilder.outdated;
     deprecatedRef = pBuilder.deprecatedRef;
     if (pBuilder.deprecatedRefs != null) {
-      deprecatedRefs.addAll(pBuilder.deprecatedRefs);
+      deprecatedRefs = pBuilder.deprecatedRefs;
+    }
+    else {
+      deprecatedRefs = new HashSet<ValidationTestObject>();
     }
     readonlyDefault = pBuilder.readonlyDefault;
   }
@@ -338,25 +342,6 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   public Set<ValidationTestObject> getDeprecatedRefs( ) {
     // Return all ValidationTestObject objects as unmodifiable collection.
     return Collections.unmodifiableSet(deprecatedRefs);
-  }
-
-  /**
-   * Method sets the association "deprecatedRefs" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pDeprecatedRefs Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  @Deprecated
-  void setDeprecatedRefs( Set<ValidationTestObject> pDeprecatedRefs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "deprecatedRefs".
-    this.clearDeprecatedRefs();
-    // If the association is null, removing all entries is sufficient.
-    if (pDeprecatedRefs != null) {
-      deprecatedRefs = new HashSet<ValidationTestObject>(pDeprecatedRefs);
-    }
   }
 
   /**

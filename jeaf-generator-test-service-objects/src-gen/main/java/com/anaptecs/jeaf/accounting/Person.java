@@ -98,7 +98,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
-  private transient Set<Account> accounts = new HashSet<Account>();
+  private transient Set<Account> accounts;
 
   /**
    * 
@@ -124,6 +124,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   protected Person( ) {
     objectID = null;
+    accounts = new HashSet<Account>();
   }
 
   /**
@@ -147,7 +148,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     firstName = pBuilder.firstName;
     dateOfBirth = pBuilder.dateOfBirth;
     if (pBuilder.accounts != null) {
-      accounts.addAll(pBuilder.accounts);
+      accounts = pBuilder.accounts;
+    }
+    else {
+      accounts = new HashSet<Account>();
     }
     customer = pBuilder.customer;
     age = pBuilder.age;
@@ -230,7 +234,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Person objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -461,23 +465,6 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   public Set<Account> getAccounts( ) {
     // Return all Account objects as unmodifiable collection.
     return Collections.unmodifiableSet(accounts);
-  }
-
-  /**
-   * Method sets the association "accounts" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pAccounts Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setAccounts( Set<Account> pAccounts ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "accounts".
-    this.clearAccounts();
-    // If the association is null, removing all entries is sufficient.
-    if (pAccounts != null) {
-      accounts = new HashSet<Account>(pAccounts);
-    }
   }
 
   /**

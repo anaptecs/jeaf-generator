@@ -62,17 +62,17 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   /**
    * 
    */
-  private Set<Boolean> booleanSet = new HashSet<Boolean>();
+  private Set<Boolean> booleanSet;
 
   /**
    * 
    */
-  private Set<StringBuffer> buffers = new HashSet<StringBuffer>();
+  private Set<StringBuffer> buffers;
 
   /**
    * 
    */
-  private Set<String> strings = new HashSet<String>();
+  private Set<String> strings;
 
   /**
    * 
@@ -84,7 +84,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected PrimitiveReferenceServiceObject( ) {
-    // Nothing to do.
+    booleanSet = new HashSet<Boolean>();
+    buffers = new HashSet<StringBuffer>();
+    strings = new HashSet<String>();
   }
 
   /**
@@ -98,13 +100,22 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     // Read attribute values from builder.
     aBoolean = pBuilder.aBoolean;
     if (pBuilder.booleanSet != null) {
-      booleanSet.addAll(pBuilder.booleanSet);
+      booleanSet = pBuilder.booleanSet;
+    }
+    else {
+      booleanSet = new HashSet<Boolean>();
     }
     if (pBuilder.buffers != null) {
-      buffers.addAll(pBuilder.buffers);
+      buffers = pBuilder.buffers;
+    }
+    else {
+      buffers = new HashSet<StringBuffer>();
     }
     if (pBuilder.strings != null) {
-      strings.addAll(pBuilder.strings);
+      strings = pBuilder.strings;
+    }
+    else {
+      strings = new HashSet<String>();
     }
     stringArray = pBuilder.stringArray;
   }
@@ -162,7 +173,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new PrimitiveReferenceServiceObject objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -319,23 +330,6 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method sets the association "booleanSet" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pBooleanSet Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setBooleanSet( Set<Boolean> pBooleanSet ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "booleanSet".
-    this.clearBooleanSet();
-    // If the association is null, removing all entries is sufficient.
-    if (pBooleanSet != null) {
-      booleanSet = new HashSet<Boolean>(pBooleanSet);
-    }
-  }
-
-  /**
    * Method adds the passed Boolean object to the association "booleanSet".
    * 
    * 
@@ -403,23 +397,6 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method sets the association "buffers" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pBuffers Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setBuffers( Set<StringBuffer> pBuffers ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "buffers".
-    this.clearBuffers();
-    // If the association is null, removing all entries is sufficient.
-    if (pBuffers != null) {
-      buffers = new HashSet<StringBuffer>(pBuffers);
-    }
-  }
-
-  /**
    * Method adds the passed StringBuffer object to the association "buffers".
    * 
    * 
@@ -484,23 +461,6 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   public Set<String> getStrings( ) {
     // Return all String objects as unmodifiable collection.
     return Collections.unmodifiableSet(strings);
-  }
-
-  /**
-   * Method sets the association "strings" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pStrings Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setStrings( Set<String> pStrings ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "strings".
-    this.clearStrings();
-    // If the association is null, removing all entries is sufficient.
-    if (pStrings != null) {
-      strings = new HashSet<String>(pStrings);
-    }
   }
 
   /**

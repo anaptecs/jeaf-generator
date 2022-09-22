@@ -46,7 +46,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
-  private List<PostalAddress> postalAddresses = new ArrayList<PostalAddress>();
+  private List<PostalAddress> postalAddresses;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -54,6 +54,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   protected Partner( ) {
     objectID = null;
+    postalAddresses = new ArrayList<PostalAddress>();
   }
 
   /**
@@ -74,7 +75,10 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
     }
     // Read attribute values from builder.
     if (pBuilder.postalAddresses != null) {
-      postalAddresses.addAll(pBuilder.postalAddresses);
+      postalAddresses = pBuilder.postalAddresses;
+    }
+    else {
+      postalAddresses = new ArrayList<PostalAddress>();
     }
   }
 
@@ -113,7 +117,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Partner objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -217,24 +221,6 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
   public List<PostalAddress> getPostalAddresses( ) {
     // Return all PostalAddress objects as unmodifiable collection.
     return Collections.unmodifiableList(postalAddresses);
-  }
-
-  /**
-   * Method sets the association "postalAddresses" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pPostalAddresses Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "postalAddresses".
-    this.clearPostalAddresses();
-    // If the association is null, removing all entries is sufficient.
-    if (pPostalAddresses != null) {
-      postalAddresses = new ArrayList<PostalAddress>(pPostalAddresses);
-    }
   }
 
   /**

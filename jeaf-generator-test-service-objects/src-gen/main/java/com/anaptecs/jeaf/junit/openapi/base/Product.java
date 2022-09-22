@@ -96,7 +96,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
-  private Set<Reseller> resellers = new HashSet<Reseller>();
+  private Set<Reseller> resellers;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -129,12 +129,12 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * 
    */
   @Size(min = 7, max = 42)
-  private Set<CurrencyCode> supportedCurrencies = new HashSet<CurrencyCode>();
+  private Set<CurrencyCode> supportedCurrencies;
 
   /**
    * 
    */
-  private Set<ProductCode> productCodes = new HashSet<ProductCode>();
+  private Set<ProductCode> productCodes;
 
   /**
    * 
@@ -145,7 +145,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
-  private transient Set<Sortiment> sortiments = new HashSet<Sortiment>();
+  private transient Set<Sortiment> sortiments;
 
   /**
    * <br/>
@@ -159,9 +159,13 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   protected Product( ) {
     objectID = null;
+    resellers = new HashSet<Reseller>();
     // Bidirectional back reference is not yet set up correctly
     resellersBackReferenceInitialized = false;
     productID = null;
+    supportedCurrencies = new HashSet<CurrencyCode>();
+    productCodes = new HashSet<ProductCode>();
+    sortiments = new HashSet<Sortiment>();
     uri = "https://products.anaptecs.de/123456789";
   }
 
@@ -183,7 +187,10 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     }
     // Read attribute values from builder.
     if (pBuilder.resellers != null) {
-      resellers.addAll(pBuilder.resellers);
+      resellers = pBuilder.resellers;
+    }
+    else {
+      resellers = new HashSet<Reseller>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     resellersBackReferenceInitialized = true;
@@ -192,14 +199,23 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     link = pBuilder.link;
     productID = pBuilder.productID;
     if (pBuilder.supportedCurrencies != null) {
-      supportedCurrencies.addAll(pBuilder.supportedCurrencies);
+      supportedCurrencies = pBuilder.supportedCurrencies;
+    }
+    else {
+      supportedCurrencies = new HashSet<CurrencyCode>();
     }
     if (pBuilder.productCodes != null) {
-      productCodes.addAll(pBuilder.productCodes);
+      productCodes = pBuilder.productCodes;
+    }
+    else {
+      productCodes = new HashSet<ProductCode>();
     }
     description = pBuilder.description;
     if (pBuilder.sortiments != null) {
-      sortiments.addAll(pBuilder.sortiments);
+      sortiments = pBuilder.sortiments;
+    }
+    else {
+      sortiments = new HashSet<Sortiment>();
     }
     uri = pBuilder.uri;
   }
@@ -295,7 +311,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new Product objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -531,23 +547,6 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method sets the association "resellers" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pResellers Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setResellers( Set<Reseller> pResellers ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "resellers".
-    this.clearResellers();
-    // If the association is null, removing all entries is sufficient.
-    if (pResellers != null) {
-      resellers = new HashSet<Reseller>(pResellers);
-    }
-  }
-
-  /**
    * Method adds the passed Reseller object to the association "resellers".
    * 
    * 
@@ -710,24 +709,6 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method sets the association "supportedCurrencies" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pSupportedCurrencies Collection with objects to which the association should be set. The parameter must not
-   * be null.
-   */
-  void setSupportedCurrencies( Set<CurrencyCode> pSupportedCurrencies ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "supportedCurrencies".
-    this.clearSupportedCurrencies();
-    // If the association is null, removing all entries is sufficient.
-    if (pSupportedCurrencies != null) {
-      supportedCurrencies = new HashSet<CurrencyCode>(pSupportedCurrencies);
-    }
-  }
-
-  /**
    * Method adds the passed CurrencyCode object to the association "supportedCurrencies".
    * 
    * 
@@ -794,24 +775,6 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   public Set<ProductCode> getProductCodes( ) {
     // Return all ProductCode objects as unmodifiable collection.
     return Collections.unmodifiableSet(productCodes);
-  }
-
-  /**
-   * Method sets the association "productCodes" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pProductCodes Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setProductCodes( Set<ProductCode> pProductCodes ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "productCodes".
-    this.clearProductCodes();
-    // If the association is null, removing all entries is sufficient.
-    if (pProductCodes != null) {
-      productCodes = new HashSet<ProductCode>(pProductCodes);
-    }
   }
 
   /**
@@ -903,23 +866,6 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   public Set<Sortiment> getSortiments( ) {
     // Return all Sortiment objects as unmodifiable collection.
     return Collections.unmodifiableSet(sortiments);
-  }
-
-  /**
-   * Method sets the association "sortiments" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pSortiments Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setSortiments( Set<Sortiment> pSortiments ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "sortiments".
-    this.clearSortiments();
-    // If the association is null, removing all entries is sufficient.
-    if (pSortiments != null) {
-      sortiments = new HashSet<Sortiment>(pSortiments);
-    }
   }
 
   /**
