@@ -105,7 +105,7 @@ public final class «name»RESTProxyServiceProviderImpl implements com.anaptecs.
   static {
     // Create Component ID and trace object.
     Package lBasePackage = «name»RESTProxyServiceProviderImpl.class.getPackage();
-    COMPONENT_ID = new ComponentID("«name»RESTProxyServiceProviderImpl", lBasePackage.getName());
+    COMPONENT_ID = new com.anaptecs.jeaf.xfun.api.common.ComponentID("«name»RESTProxyServiceProviderImpl", lBasePackage.getName());
   }
 
   /**

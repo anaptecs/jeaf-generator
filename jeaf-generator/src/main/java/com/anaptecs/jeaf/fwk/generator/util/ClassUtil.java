@@ -221,6 +221,19 @@ public class ClassUtil {
       lFQN = lTypeName;
     }
 
+    // Special handling for primitive types
+    if (ClassUtil.isPrimitive(pTypedElement.getType()) == true) {
+      lFQN = lFQN.toLowerCase();
+    }
+    // Handle return type void.
+    else if ("MagicDraw Profile.datatypes.void".equals(lFQN)) {
+      lFQN = "void";
+    }
+    // Default type name is already created.
+    else if ("java.lang.Class".equals(lFQN) || lFQN.equals("Class")) {
+      lFQN = "Class<?>";
+    }
+
     // Find out if passed element is modeled as association or not.
     boolean lModeledAsAssociation;
     if (pTypedElement instanceof Property) {
@@ -236,29 +249,68 @@ public class ClassUtil {
       lModeledAsAssociation = false;
     }
 
-    // Generated code is different is something is modeled as attribute or association.
-    if (lModeledAsAssociation == false) {
-      // Special handling for primitive types
-      if (ClassUtil.isPrimitive(pTypedElement.getType()) == true) {
-        lReturnValue = lTypeName.toLowerCase();
-      }
-      else if (ClassUtil.isBasicType(pTypedElement.getType())) {
-        lReturnValue = lFQN;
-      }
-      // Handle return type void.
-      else if ("MagicDraw Profile.datatypes.void".equals(lFQN)) {
-        lReturnValue = "void";
+    // Check if collection type is required
+    boolean lCollectionRequired;
+    if (pTypedElement instanceof Property) {
+      // If properties are not modeled as association then the will be generated as simple arrays in case they are
+      // multivalued.
+      if (lModeledAsAssociation && lMultiplicityElement.isMultivalued()) {
+        lCollectionRequired = true;
       }
       else {
-        lReturnValue = getTypeNameForRealTypes(lMultiplicityElement, lFQN);
+        lCollectionRequired = false;
       }
     }
-    // Type is modeled as association
-    else {
-      lReturnValue = getTypeNameForRealTypes(lMultiplicityElement, lFQN);
+    // In case of parameters, primitive types will be represented as arrays all other types as collections.
+    else if (pTypedElement instanceof Parameter) {
+      // Parameter is not multivalued
+      if (lMultiplicityElement.isMultivalued()) {
+        if (ClassUtil.isPrimitive(pTypedElement.getType())) {
+          lCollectionRequired = false;
+        }
+        else {
+          lCollectionRequired = true;
+        }
+      }
+      // Parameter is not multivalued
+      else {
+        lCollectionRequired = false;
+      }
     }
-    // Return determined type.
-    return lReturnValue;
+    // In case of all other type of model elements we will work with collections only depending on their multiplicity.
+    else {
+      lCollectionRequired = lMultiplicityElement.isMultivalued();
+    }
+
+    if (lCollectionRequired) {
+      lFQN = ClassUtil.getCollectionType(lMultiplicityElement) + "<" + lFQN + ">";
+    }
+
+    return lFQN;
+
+    // // Generated code is different is something is modeled as attribute or association.
+    // if (lModeledAsAssociation == false) {
+    // // Special handling for primitive types
+    // if (ClassUtil.isPrimitive(pTypedElement.getType()) == true) {
+    // lReturnValue = lFQN.toLowerCase();
+    // }
+    // else if (ClassUtil.isBasicType(pTypedElement.getType())) {
+    // lReturnValue = lFQN;
+    // }
+    // // Handle return type void.
+    // else if ("MagicDraw Profile.datatypes.void".equals(lFQN)) {
+    // lReturnValue = "void";
+    // }
+    // else {
+    // lReturnValue = getTypeNameForRealTypes(lMultiplicityElement, lFQN);
+    // }
+    // }
+    // // Type is modeled as association
+    // else {
+    // lReturnValue = getTypeNameForRealTypes(lMultiplicityElement, lFQN);
+    // }
+    // // Return determined type.
+    // return lReturnValue;
   }
 
   private static String getTypeNameForRealTypes( MultiplicityElement lMultiplicityElement, String lFQN ) {
