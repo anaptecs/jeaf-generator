@@ -206,7 +206,6 @@ public class ClassUtil {
     Check.checkInvalidParameterNull(pTypedElement, "pParameter");
 
     MultiplicityElement lMultiplicityElement = (MultiplicityElement) pTypedElement;
-    String lReturnValue;
 
     // if (pParameter.getType() != null) {
     String lTypePackage = getPackageName(pTypedElement.getType());
@@ -287,49 +286,6 @@ public class ClassUtil {
     }
 
     return lFQN;
-
-    // // Generated code is different is something is modeled as attribute or association.
-    // if (lModeledAsAssociation == false) {
-    // // Special handling for primitive types
-    // if (ClassUtil.isPrimitive(pTypedElement.getType()) == true) {
-    // lReturnValue = lFQN.toLowerCase();
-    // }
-    // else if (ClassUtil.isBasicType(pTypedElement.getType())) {
-    // lReturnValue = lFQN;
-    // }
-    // // Handle return type void.
-    // else if ("MagicDraw Profile.datatypes.void".equals(lFQN)) {
-    // lReturnValue = "void";
-    // }
-    // else {
-    // lReturnValue = getTypeNameForRealTypes(lMultiplicityElement, lFQN);
-    // }
-    // }
-    // // Type is modeled as association
-    // else {
-    // lReturnValue = getTypeNameForRealTypes(lMultiplicityElement, lFQN);
-    // }
-    // // Return determined type.
-    // return lReturnValue;
-  }
-
-  private static String getTypeNameForRealTypes( MultiplicityElement lMultiplicityElement, String lFQN ) {
-    String lReturnValue;
-    // Max. Multiplicity of more than one
-    if (lMultiplicityElement.isMultivalued()) {
-      lReturnValue = ClassUtil.getCollectionType(lMultiplicityElement) + "<" + lFQN + ">";
-    }
-    // Singular type.
-    else {
-      // Default type name is already created.
-      if (lFQN.equals("java.lang.Class") || lFQN.equals("Class")) {
-        lReturnValue = "Class<?>";
-      }
-      else {
-        lReturnValue = lFQN;
-      }
-    }
-    return lReturnValue;
   }
 
   public static String getCollectionType( MultiplicityElement lMultiplicityElement ) {
