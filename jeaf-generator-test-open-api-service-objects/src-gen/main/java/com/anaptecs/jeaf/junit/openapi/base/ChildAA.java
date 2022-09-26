@@ -125,26 +125,6 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ChildAA objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ChildAA objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( ChildAA pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets the attribute "childAAttribute".
      * 
      * @param pChildAAttribute Value to which the attribute "childAAttribute" should be set.
@@ -291,7 +271,7 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

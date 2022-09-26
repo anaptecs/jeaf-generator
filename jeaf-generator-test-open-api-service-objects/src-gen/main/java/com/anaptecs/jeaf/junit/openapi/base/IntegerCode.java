@@ -98,26 +98,6 @@ public class IntegerCode implements ServiceObject {
     }
 
     /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new IntegerCode objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new IntegerCode objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( IntegerCode pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets the attribute "code".
      * 
      * @param pCode Value to which the attribute "code" should be set.
@@ -174,7 +154,7 @@ public class IntegerCode implements ServiceObject {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

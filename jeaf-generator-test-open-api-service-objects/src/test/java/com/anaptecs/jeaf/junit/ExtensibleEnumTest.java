@@ -118,7 +118,7 @@ public class ExtensibleEnumTest {
     assertEquals(lUnknown, lReadEnum);
     assertFalse(lUnknown == lReadEnum);
 
-    EnumTest lEnumTest = EnumTest.Builder.newBuilder().setEnumRef(lPink).build();
+    EnumTest lEnumTest = EnumTest.builder().setEnumRef(lPink).build();
     lJSON = lTools.writeObjectToString(lEnumTest);
     assertEquals("{\"property\":\"GREEN\",\"enumRef\":\"PINK\"}", lJSON);
 
