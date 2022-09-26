@@ -8,8 +8,6 @@ package com.anaptecs.spring.base;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -224,11 +222,7 @@ public class Stop {
    */
   public void clearLinks( ) {
     // Remove all objects from association "links".
-    Collection<LinkObject> lLinks = new HashSet<LinkObject>(links);
-    Iterator<LinkObject> lIterator = lLinks.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromLinks(lIterator.next());
-    }
+    links.clear();
   }
 
   /**

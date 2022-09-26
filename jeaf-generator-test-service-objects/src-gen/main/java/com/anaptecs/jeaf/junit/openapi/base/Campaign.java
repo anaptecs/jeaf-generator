@@ -224,6 +224,7 @@ public class Campaign implements ServiceObject {
     Collection<DiscountOffer> lDiscountOffers = new HashSet<DiscountOffer>(discountOffers);
     Iterator<DiscountOffer> lIterator = lDiscountOffers.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromDiscountOffers(lIterator.next());
     }
   }

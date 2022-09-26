@@ -314,6 +314,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
     Collection<ClassA> lManyAs = new HashSet<ClassA>(manyAs);
     Iterator<ClassA> lIterator = lManyAs.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromManyAs(lIterator.next());
     }
   }

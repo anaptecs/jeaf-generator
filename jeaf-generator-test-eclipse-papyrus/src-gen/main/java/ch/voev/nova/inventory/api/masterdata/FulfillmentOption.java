@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.masterdata;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -264,11 +262,7 @@ public class FulfillmentOption {
    */
   public void clearMedia( ) {
     // Remove all objects from association "media".
-    Collection<FulfillmentMediaType> lMedia = new HashSet<FulfillmentMediaType>(media);
-    Iterator<FulfillmentMediaType> lIterator = lMedia.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromMedia(lIterator.next());
-    }
+    media.clear();
   }
 
   /**

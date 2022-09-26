@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.masterdata;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -661,11 +659,7 @@ public class ProductDefinition {
    */
   public void clearValidities( ) {
     // Remove all objects from association "validities".
-    Collection<TemporalValidity> lValidities = new HashSet<TemporalValidity>(validities);
-    Iterator<TemporalValidity> lIterator = lValidities.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromValidities(lIterator.next());
-    }
+    validities.clear();
   }
 
   /**
@@ -863,11 +857,7 @@ public class ProductDefinition {
    */
   public void clearConditions( ) {
     // Remove all objects from association "conditions".
-    Collection<Condition> lConditions = new HashSet<Condition>(conditions);
-    Iterator<Condition> lIterator = lConditions.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromConditions(lIterator.next());
-    }
+    conditions.clear();
   }
 
   /**
@@ -1101,11 +1091,7 @@ public class ProductDefinition {
    */
   public void clearFulfillmentOptions( ) {
     // Remove all objects from association "fulfillmentOptions".
-    Collection<FulfillmentOption> lFulfillmentOptions = new HashSet<FulfillmentOption>(fulfillmentOptions);
-    Iterator<FulfillmentOption> lIterator = lFulfillmentOptions.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromFulfillmentOptions(lIterator.next());
-    }
+    fulfillmentOptions.clear();
   }
 
   /**

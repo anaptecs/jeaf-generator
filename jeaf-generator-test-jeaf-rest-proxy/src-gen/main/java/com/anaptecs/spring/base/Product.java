@@ -548,6 +548,7 @@ public class Product implements Serializable {
     Collection<Reseller> lResellers = new HashSet<Reseller>(resellers);
     Iterator<Reseller> lIterator = lResellers.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromResellers(lIterator.next());
     }
   }
@@ -699,11 +700,7 @@ public class Product implements Serializable {
    */
   public void clearSupportedCurrencies( ) {
     // Remove all objects from association "supportedCurrencies".
-    Collection<CurrencyCode> lSupportedCurrencies = new HashSet<CurrencyCode>(supportedCurrencies);
-    Iterator<CurrencyCode> lIterator = lSupportedCurrencies.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromSupportedCurrencies(lIterator.next());
-    }
+    supportedCurrencies.clear();
   }
 
   /**
@@ -767,11 +764,7 @@ public class Product implements Serializable {
    */
   public void clearProductCodes( ) {
     // Remove all objects from association "productCodes".
-    Collection<ProductCode> lProductCodes = new HashSet<ProductCode>(productCodes);
-    Iterator<ProductCode> lIterator = lProductCodes.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromProductCodes(lIterator.next());
-    }
+    productCodes.clear();
   }
 
   /**
@@ -870,6 +863,7 @@ public class Product implements Serializable {
     Collection<Sortiment> lSortiments = new HashSet<Sortiment>(sortiments);
     Iterator<Sortiment> lIterator = lSortiments.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromSortiments(lIterator.next());
     }
   }

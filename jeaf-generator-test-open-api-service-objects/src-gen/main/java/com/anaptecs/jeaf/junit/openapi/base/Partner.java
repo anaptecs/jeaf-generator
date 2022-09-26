@@ -7,8 +7,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -279,11 +277,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   public void clearPostalAddresses( ) {
     // Remove all objects from association "postalAddresses".
-    Collection<PostalAddress> lPostalAddresses = new HashSet<PostalAddress>(postalAddresses);
-    Iterator<PostalAddress> lIterator = lPostalAddresses.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromPostalAddresses(lIterator.next());
-    }
+    postalAddresses.clear();
   }
 
   /**

@@ -9,8 +9,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -401,11 +399,7 @@ public class PassengerSpecification {
    */
   public void clearCards( ) {
     // Remove all objects from association "cards".
-    Collection<CardReference> lCards = new HashSet<CardReference>(cards);
-    Iterator<CardReference> lIterator = lCards.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromCards(lIterator.next());
-    }
+    cards.clear();
   }
 
   /**
@@ -468,11 +462,7 @@ public class PassengerSpecification {
    */
   public void clearPrmNeeds( ) {
     // Remove all objects from association "prmNeeds".
-    Collection<PRMNeedType> lPrmNeeds = new HashSet<PRMNeedType>(prmNeeds);
-    Iterator<PRMNeedType> lIterator = lPrmNeeds.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromPrmNeeds(lIterator.next());
-    }
+    prmNeeds.clear();
   }
 
   /**

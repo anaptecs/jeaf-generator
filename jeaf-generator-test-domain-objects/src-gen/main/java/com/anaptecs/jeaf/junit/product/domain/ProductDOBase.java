@@ -172,6 +172,7 @@ public abstract class ProductDOBase extends DomainObject {
     Collection<AssortmentDO> lAssortments = new HashSet<AssortmentDO>(assortments);
     Iterator<AssortmentDO> lIterator = lAssortments.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromAssortments(lIterator.next());
     }
   }
@@ -238,11 +239,7 @@ public abstract class ProductDOBase extends DomainObject {
    */
   public void clearPricesPerCurrency( ) {
     // Remove all objects from association "pricesPerCurrency".
-    Collection<PriceDO> lPricesPerCurrency = new HashSet<PriceDO>(pricesPerCurrency);
-    Iterator<PriceDO> lIterator = lPricesPerCurrency.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromPricesPerCurrency(lIterator.next());
-    }
+    pricesPerCurrency.clear();
   }
 
   /**

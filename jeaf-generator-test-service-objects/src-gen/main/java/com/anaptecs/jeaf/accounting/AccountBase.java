@@ -473,6 +473,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
     Collection<Person> lAuthorizedPersons = new HashSet<Person>(authorizedPersons);
     Iterator<Person> lIterator = lAuthorizedPersons.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromAuthorizedPersons(lIterator.next());
     }
   }
@@ -561,6 +562,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
     Collection<Booking> lBookings = new HashSet<Booking>(bookings);
     Iterator<Booking> lIterator = lBookings.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromBookings(lIterator.next());
     }
   }

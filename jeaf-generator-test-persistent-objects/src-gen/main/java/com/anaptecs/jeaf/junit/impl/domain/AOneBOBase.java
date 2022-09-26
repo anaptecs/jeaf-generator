@@ -219,6 +219,7 @@ public abstract class AOneBOBase extends PersistentObject {
     Collection<CManyBO> lCManys = new HashSet<CManyBO>(cManys);
     Iterator<CManyBO> lIterator = lCManys.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromCManys(lIterator.next());
     }
   }

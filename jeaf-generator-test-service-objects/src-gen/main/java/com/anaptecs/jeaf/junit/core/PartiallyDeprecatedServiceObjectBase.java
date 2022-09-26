@@ -8,7 +8,6 @@ package com.anaptecs.jeaf.junit.core;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -398,11 +397,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   @Deprecated
   public void clearDeprecatedRefs( ) {
     // Remove all objects from association "deprecatedRefs".
-    Collection<ValidationTestObject> lDeprecatedRefs = new HashSet<ValidationTestObject>(deprecatedRefs);
-    Iterator<ValidationTestObject> lIterator = lDeprecatedRefs.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromDeprecatedRefs(lIterator.next());
-    }
+    deprecatedRefs.clear();
   }
 
   /**

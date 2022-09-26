@@ -330,6 +330,7 @@ public abstract class ResellerBase implements Serializable {
     Collection<Channel> lChannels = new HashSet<Channel>(channels);
     Iterator<Channel> lIterator = lChannels.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromChannels(lIterator.next());
     }
   }
@@ -407,6 +408,7 @@ public abstract class ResellerBase implements Serializable {
     Collection<Product> lProducts = new HashSet<Product>(products);
     Iterator<Product> lIterator = lProducts.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromProducts(lIterator.next());
     }
   }

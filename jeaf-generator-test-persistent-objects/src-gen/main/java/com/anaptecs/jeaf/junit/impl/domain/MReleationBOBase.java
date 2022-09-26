@@ -141,6 +141,7 @@ public abstract class MReleationBOBase extends PersistentObject {
     Collection<NReleationBO> lNs = new HashSet<NReleationBO>(ns);
     Iterator<NReleationBO> lIterator = lNs.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromNs(lIterator.next());
     }
   }

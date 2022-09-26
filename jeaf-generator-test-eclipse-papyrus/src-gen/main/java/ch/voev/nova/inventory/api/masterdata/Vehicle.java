@@ -9,8 +9,6 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -319,11 +317,7 @@ public class Vehicle {
    */
   public void clearValidities( ) {
     // Remove all objects from association "validities".
-    Collection<TemporalValidity> lValidities = new HashSet<TemporalValidity>(validities);
-    Iterator<TemporalValidity> lIterator = lValidities.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromValidities(lIterator.next());
-    }
+    validities.clear();
   }
 
   /**

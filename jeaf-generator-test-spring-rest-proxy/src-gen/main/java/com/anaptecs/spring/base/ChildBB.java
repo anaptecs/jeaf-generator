@@ -8,7 +8,6 @@ package com.anaptecs.spring.base;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.validation.constraints.Size;
@@ -389,11 +388,7 @@ public class ChildBB extends ChildB {
   @Deprecated
   public void clearDeprecatedBs( ) {
     // Remove all objects from association "deprecatedBs".
-    Collection<ChildB> lDeprecatedBs = new HashSet<ChildB>(deprecatedBs);
-    Iterator<ChildB> lIterator = lDeprecatedBs.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromDeprecatedBs(lIterator.next());
-    }
+    deprecatedBs.clear();
   }
 
   /**

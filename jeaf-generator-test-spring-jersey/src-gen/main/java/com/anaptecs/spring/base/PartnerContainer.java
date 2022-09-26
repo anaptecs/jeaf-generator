@@ -8,8 +8,6 @@ package com.anaptecs.spring.base;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -180,11 +178,7 @@ public class PartnerContainer {
    */
   public void clearPartners( ) {
     // Remove all objects from association "partners".
-    Collection<Partner> lPartners = new HashSet<Partner>(partners);
-    Iterator<Partner> lIterator = lPartners.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromPartners(lIterator.next());
-    }
+    partners.clear();
   }
 
   /**

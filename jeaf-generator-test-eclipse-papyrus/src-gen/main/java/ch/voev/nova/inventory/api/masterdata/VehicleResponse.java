@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.masterdata;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -246,11 +244,7 @@ public class VehicleResponse {
    */
   public void clearWarnings( ) {
     // Remove all objects from association "warnings".
-    Collection<Warning> lWarnings = new HashSet<Warning>(warnings);
-    Iterator<Warning> lIterator = lWarnings.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromWarnings(lIterator.next());
-    }
+    warnings.clear();
   }
 
   /**
@@ -313,11 +307,7 @@ public class VehicleResponse {
    */
   public void clearVehicles( ) {
     // Remove all objects from association "vehicles".
-    Collection<Vehicle> lVehicles = new HashSet<Vehicle>(vehicles);
-    Iterator<Vehicle> lIterator = lVehicles.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromVehicles(lIterator.next());
-    }
+    vehicles.clear();
   }
 
   /**

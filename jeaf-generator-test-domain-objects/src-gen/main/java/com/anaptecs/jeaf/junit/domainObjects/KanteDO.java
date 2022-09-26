@@ -273,6 +273,7 @@ public class KanteDO extends DomainObject {
     Collection<NetzbereichDO> lNetzbereiche = new HashSet<NetzbereichDO>(netzbereiche);
     Iterator<NetzbereichDO> lIterator = lNetzbereiche.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromNetzbereiche(lIterator.next());
     }
   }

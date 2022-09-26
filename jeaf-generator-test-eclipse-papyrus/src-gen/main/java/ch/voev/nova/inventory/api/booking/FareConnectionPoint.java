@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.booking;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -265,11 +263,7 @@ public class FareConnectionPoint {
    */
   public void clearStationSets( ) {
     // Remove all objects from association "stationSets".
-    Collection<StationSet> lStationSets = new HashSet<StationSet>(stationSets);
-    Iterator<StationSet> lIterator = lStationSets.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromStationSets(lIterator.next());
-    }
+    stationSets.clear();
   }
 
   /**

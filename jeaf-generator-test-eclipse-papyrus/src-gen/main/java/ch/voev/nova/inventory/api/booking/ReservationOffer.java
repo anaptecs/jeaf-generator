@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.booking;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -397,11 +395,7 @@ public class ReservationOffer {
    */
   public void clearAvailableFulfillmentTypes( ) {
     // Remove all objects from association "availableFulfillmentTypes".
-    Collection<FulfillmentType> lAvailableFulfillmentTypes = new HashSet<FulfillmentType>(availableFulfillmentTypes);
-    Iterator<FulfillmentType> lIterator = lAvailableFulfillmentTypes.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromAvailableFulfillmentTypes(lIterator.next());
-    }
+    availableFulfillmentTypes.clear();
   }
 
   /**

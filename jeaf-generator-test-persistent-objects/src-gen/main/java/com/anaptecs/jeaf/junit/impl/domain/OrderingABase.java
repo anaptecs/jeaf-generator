@@ -145,6 +145,7 @@ public abstract class OrderingABase extends PersistentObject {
     Collection<OrderingB> lOrderedUnique = new HashSet<OrderingB>(orderedUnique);
     Iterator<OrderingB> lIterator = lOrderedUnique.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromOrderedUnique(lIterator.next());
     }
   }
@@ -227,6 +228,7 @@ public abstract class OrderingABase extends PersistentObject {
     Collection<OrderingB> lOrderedNotUnique = new HashSet<OrderingB>(orderedNotUnique);
     Iterator<OrderingB> lIterator = lOrderedNotUnique.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromOrderedNotUnique(lIterator.next());
     }
   }
@@ -353,6 +355,7 @@ public abstract class OrderingABase extends PersistentObject {
     Collection<OrderingB> lNotOrderedNotUnique = new HashSet<OrderingB>(notOrderedNotUnique);
     Iterator<OrderingB> lIterator = lNotOrderedNotUnique.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromNotOrderedNotUnique(lIterator.next());
     }
   }

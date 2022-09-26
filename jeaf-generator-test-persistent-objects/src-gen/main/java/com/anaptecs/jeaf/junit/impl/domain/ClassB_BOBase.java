@@ -144,6 +144,7 @@ public abstract class ClassB_BOBase extends PersistentObject {
     Collection<ClassA_BO> lClassAs = new HashSet<ClassA_BO>(classAs);
     Iterator<ClassA_BO> lIterator = lClassAs.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromClassAs(lIterator.next());
     }
   }

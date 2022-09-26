@@ -222,6 +222,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
     Collection<BaseClassBO> lBaseClasses = new HashSet<BaseClassBO>(baseClasses);
     Iterator<BaseClassBO> lIterator = lBaseClasses.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromBaseClasses(lIterator.next());
     }
   }

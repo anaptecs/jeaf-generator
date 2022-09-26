@@ -255,6 +255,7 @@ public class BidirectA {
     Collection<BidirectB> lTransientBs = new HashSet<BidirectB>(transientBs);
     Iterator<BidirectB> lIterator = lTransientBs.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromTransientBs(lIterator.next());
     }
   }

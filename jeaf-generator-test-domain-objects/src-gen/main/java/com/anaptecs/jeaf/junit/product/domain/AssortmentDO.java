@@ -137,6 +137,7 @@ public class AssortmentDO extends DomainObject {
     Collection<ProductDO> lProducts = new HashSet<ProductDO>(products);
     Iterator<ProductDO> lIterator = lProducts.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromProducts(lIterator.next());
     }
   }

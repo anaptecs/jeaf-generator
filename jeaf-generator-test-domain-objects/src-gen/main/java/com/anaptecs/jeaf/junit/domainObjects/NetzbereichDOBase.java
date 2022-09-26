@@ -122,6 +122,7 @@ public abstract class NetzbereichDOBase extends DomainObject {
     Collection<KanteDO> lKanten = new HashSet<KanteDO>(kanten);
     Iterator<KanteDO> lIterator = lKanten.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromKanten(lIterator.next());
     }
   }

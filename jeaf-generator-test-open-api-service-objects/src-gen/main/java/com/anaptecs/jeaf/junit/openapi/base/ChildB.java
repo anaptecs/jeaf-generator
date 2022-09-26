@@ -7,7 +7,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -272,11 +271,7 @@ public class ChildB extends ParentClass {
    */
   public void clearComposition( ) {
     // Remove all objects from association "composition".
-    Collection<ParentClass> lComposition = new HashSet<ParentClass>(composition);
-    Iterator<ParentClass> lIterator = lComposition.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromComposition(lIterator.next());
-    }
+    composition.clear();
   }
 
   /**

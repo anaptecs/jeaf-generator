@@ -197,6 +197,7 @@ public abstract class BankBOBase extends PersistentObject {
     Collection<EmployeeBO> lEmployees = new HashSet<EmployeeBO>(employees);
     Iterator<EmployeeBO> lIterator = lEmployees.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromEmployees(lIterator.next());
     }
   }
@@ -277,6 +278,7 @@ public abstract class BankBOBase extends PersistentObject {
     Collection<AccountBO> lAccounts = new HashSet<AccountBO>(accounts);
     Iterator<AccountBO> lIterator = lAccounts.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromAccounts(lIterator.next());
     }
   }

@@ -291,6 +291,7 @@ public class BidirectionalB {
     Collection<BidirectionalA> lAs = new HashSet<BidirectionalA>(as);
     Iterator<BidirectionalA> lIterator = lAs.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromAs(lIterator.next());
     }
   }
@@ -376,6 +377,7 @@ public class BidirectionalB {
     Collection<BidirectionalA> lTheAs = new HashSet<BidirectionalA>(theAs);
     Iterator<BidirectionalA> lIterator = lTheAs.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromTheAs(lIterator.next());
     }
   }

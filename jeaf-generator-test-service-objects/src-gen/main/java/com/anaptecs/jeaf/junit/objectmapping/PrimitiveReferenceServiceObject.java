@@ -8,7 +8,6 @@ package com.anaptecs.jeaf.junit.objectmapping;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -377,11 +376,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
    */
   public void clearBooleanSet( ) {
     // Remove all objects from association "booleanSet".
-    Collection<Boolean> lBooleanSet = new HashSet<Boolean>(booleanSet);
-    Iterator<Boolean> lIterator = lBooleanSet.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromBooleanSet(lIterator.next());
-    }
+    booleanSet.clear();
   }
 
   /**
@@ -444,11 +439,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
    */
   public void clearBuffers( ) {
     // Remove all objects from association "buffers".
-    Collection<StringBuffer> lBuffers = new HashSet<StringBuffer>(buffers);
-    Iterator<StringBuffer> lIterator = lBuffers.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromBuffers(lIterator.next());
-    }
+    buffers.clear();
   }
 
   /**
@@ -511,11 +502,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
    */
   public void clearStrings( ) {
     // Remove all objects from association "strings".
-    Collection<String> lStrings = new HashSet<String>(strings);
-    Iterator<String> lIterator = lStrings.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromStrings(lIterator.next());
-    }
+    strings.clear();
   }
 
   /**

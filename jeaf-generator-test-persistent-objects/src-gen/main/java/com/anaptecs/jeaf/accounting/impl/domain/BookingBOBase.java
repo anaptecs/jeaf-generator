@@ -3,7 +3,6 @@ package com.anaptecs.jeaf.accounting.impl.domain;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -213,11 +212,7 @@ public abstract class BookingBOBase extends PersistentObject {
    */
   public void clearRemitters( ) {
     // Remove all objects from association "remitters".
-    Collection<MyPersonBO> lRemitters = new HashSet<MyPersonBO>(remitters);
-    Iterator<MyPersonBO> lIterator = lRemitters.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromRemitters(lIterator.next());
-    }
+    remitters.clear();
   }
 
   /**

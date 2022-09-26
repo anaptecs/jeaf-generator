@@ -8,7 +8,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -328,11 +327,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    */
   public void clearBooleanCodeAssociation( ) {
     // Remove all objects from association "booleanCodeAssociation".
-    Collection<BooleanCodeType> lBooleanCodeAssociation = new HashSet<BooleanCodeType>(booleanCodeAssociation);
-    Iterator<BooleanCodeType> lIterator = lBooleanCodeAssociation.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromBooleanCodeAssociation(lIterator.next());
-    }
+    booleanCodeAssociation.clear();
   }
 
   /**
@@ -397,11 +392,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    */
   public void clearShortCodeTypeAssociation( ) {
     // Remove all objects from association "shortCodeTypeAssociation".
-    Collection<ShortCodeType> lShortCodeTypeAssociation = new HashSet<ShortCodeType>(shortCodeTypeAssociation);
-    Iterator<ShortCodeType> lIterator = lShortCodeTypeAssociation.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromShortCodeTypeAssociation(lIterator.next());
-    }
+    shortCodeTypeAssociation.clear();
   }
 
   /**

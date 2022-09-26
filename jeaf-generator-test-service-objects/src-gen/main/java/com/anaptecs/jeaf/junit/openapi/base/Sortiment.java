@@ -239,6 +239,7 @@ public class Sortiment implements ServiceObject {
     Collection<Product> lProducts = new HashSet<Product>(products);
     Iterator<Product> lIterator = lProducts.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromProducts(lIterator.next());
     }
   }

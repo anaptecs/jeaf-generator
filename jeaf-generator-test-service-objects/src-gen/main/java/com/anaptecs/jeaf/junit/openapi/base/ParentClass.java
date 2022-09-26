@@ -8,7 +8,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -259,11 +258,7 @@ public class ParentClass implements ServiceObject {
    */
   public void clearIbans( ) {
     // Remove all objects from association "ibans".
-    Collection<IBAN> lIbans = new HashSet<IBAN>(ibans);
-    Iterator<IBAN> lIterator = lIbans.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromIbans(lIterator.next());
-    }
+    ibans.clear();
   }
 
   /**

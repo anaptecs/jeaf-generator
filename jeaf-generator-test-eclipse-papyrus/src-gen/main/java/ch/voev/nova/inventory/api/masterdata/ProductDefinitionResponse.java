@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -247,11 +246,7 @@ public class ProductDefinitionResponse {
    */
   public void clearWarnings( ) {
     // Remove all objects from association "warnings".
-    Collection<Warning> lWarnings = new HashSet<Warning>(warnings);
-    Iterator<Warning> lIterator = lWarnings.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromWarnings(lIterator.next());
-    }
+    warnings.clear();
   }
 
   /**
@@ -316,11 +311,7 @@ public class ProductDefinitionResponse {
    */
   public void clearProductDefinitions( ) {
     // Remove all objects from association "productDefinitions".
-    Collection<ProductDefinition> lProductDefinitions = new HashSet<ProductDefinition>(productDefinitions);
-    Iterator<ProductDefinition> lIterator = lProductDefinitions.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromProductDefinitions(lIterator.next());
-    }
+    productDefinitions.clear();
   }
 
   /**

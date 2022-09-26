@@ -8,8 +8,6 @@ package com.anaptecs.spring.base;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -186,11 +184,7 @@ public class Partner {
    */
   public void clearPostalAddresses( ) {
     // Remove all objects from association "postalAddresses".
-    Collection<PostalAddress> lPostalAddresses = new HashSet<PostalAddress>(postalAddresses);
-    Iterator<PostalAddress> lIterator = lPostalAddresses.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromPostalAddresses(lIterator.next());
-    }
+    postalAddresses.clear();
   }
 
   /**

@@ -7,8 +7,6 @@ package com.anaptecs.jeaf.junit.domainObjects;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -183,11 +181,7 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
    */
   public void clearUicCodes( ) {
     // Remove all objects from association "uicCodes".
-    Collection<UICCodeDO> lUicCodes = new HashSet<UICCodeDO>(uicCodes);
-    Iterator<UICCodeDO> lIterator = lUicCodes.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromUicCodes(lIterator.next());
-    }
+    uicCodes.clear();
   }
 
   /**

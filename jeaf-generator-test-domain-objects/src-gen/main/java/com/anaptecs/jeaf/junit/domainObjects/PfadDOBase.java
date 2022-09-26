@@ -8,8 +8,6 @@ package com.anaptecs.jeaf.junit.domainObjects;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import com.anaptecs.jeaf.core.api.DomainObject;
@@ -112,11 +110,7 @@ public abstract class PfadDOBase extends DomainObject {
    */
   public void clearKantenSequenz( ) {
     // Remove all objects from association "kantenSequenz".
-    Collection<KanteDO> lKantenSequenz = new HashSet<KanteDO>(kantenSequenz);
-    Iterator<KanteDO> lIterator = lKantenSequenz.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromKantenSequenz(lIterator.next());
-    }
+    kantenSequenz.clear();
   }
 
   /**

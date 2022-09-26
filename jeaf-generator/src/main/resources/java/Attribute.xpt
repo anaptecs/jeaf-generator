@@ -352,12 +352,18 @@
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void clear«name.toFirstUpper()» () {
+      «IF opposite != null && opposite.isNavigable() == true»
       // Remove all objects from association "«asInstanceVar()»".
       java.util.Collection<«type.fqn()»> «asLocalVar()» = new java.util.HashSet<«type.fqn()»>(«asInstanceVar()»);
       java.util.Iterator<«type.fqn()»> lIterator = «asLocalVar()».iterator();
       while(lIterator.hasNext()) {
+          // As association is bidirectional we have to clear it in both directions.
           this.removeFrom«name.toFirstUpper()»(lIterator.next());
       }
+      «ELSE»
+      // Remove all objects from association "«asInstanceVar()»".
+      «asInstanceVar()».clear();
+      «ENDIF»
     }
     «ENDIF»
     

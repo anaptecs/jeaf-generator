@@ -8,7 +8,6 @@ package com.anaptecs.jeaf.junit.domainObjects;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import com.anaptecs.jeaf.core.api.DomainObject;
@@ -193,11 +192,7 @@ public abstract class PriceBase extends DomainObject {
   @Deprecated
   public void clearVerbindungspunkte( ) {
     // Remove all objects from association "verbindungspunkte".
-    Collection<VerbindungspunktDO> lVerbindungspunkte = new HashSet<VerbindungspunktDO>(verbindungspunkte);
-    Iterator<VerbindungspunktDO> lIterator = lVerbindungspunkte.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromVerbindungspunkte(lIterator.next());
-    }
+    verbindungspunkte.clear();
   }
 
   /**

@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.booking;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -357,11 +355,7 @@ public class Price {
    */
   public void clearVats( ) {
     // Remove all objects from association "vats".
-    Collection<VAT> lVats = new HashSet<VAT>(vats);
-    Iterator<VAT> lIterator = lVats.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromVats(lIterator.next());
-    }
+    vats.clear();
   }
 
   /**

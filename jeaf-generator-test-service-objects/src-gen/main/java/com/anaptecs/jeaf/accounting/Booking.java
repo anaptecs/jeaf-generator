@@ -8,7 +8,6 @@ package com.anaptecs.jeaf.accounting;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -468,11 +467,7 @@ public class Booking implements ServiceObject {
    */
   public void clearRemitters( ) {
     // Remove all objects from association "remitters".
-    Collection<Person> lRemitters = new HashSet<Person>(remitters);
-    Iterator<Person> lIterator = lRemitters.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromRemitters(lIterator.next());
-    }
+    remitters.clear();
   }
 
   /**

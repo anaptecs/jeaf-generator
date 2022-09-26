@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.masterdata;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -311,11 +309,7 @@ public class Text {
    */
   public void clearTranslations( ) {
     // Remove all objects from association "translations".
-    Collection<Translation> lTranslations = new HashSet<Translation>(translations);
-    Iterator<Translation> lIterator = lTranslations.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromTranslations(lIterator.next());
-    }
+    translations.clear();
   }
 
   /**

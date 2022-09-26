@@ -8,7 +8,6 @@ package com.anaptecs.jeaf.junit.pojo;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -380,11 +379,7 @@ public class ImmutableAssociationPOJO {
   @Deprecated
   public void clearDeprecatedRefs( ) {
     // Remove all objects from association "deprecatedRefs".
-    Collection<ImmutableChildPOJO> lDeprecatedRefs = new HashSet<ImmutableChildPOJO>(deprecatedRefs);
-    Iterator<ImmutableChildPOJO> lIterator = lDeprecatedRefs.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromDeprecatedRefs(lIterator.next());
-    }
+    deprecatedRefs.clear();
   }
 
   /**

@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.booking;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -318,11 +316,7 @@ public class TimedLegSpecification {
    */
   public void clearIntermediates( ) {
     // Remove all objects from association "intermediates".
-    Collection<IntermediateSpecification> lIntermediates = new HashSet<IntermediateSpecification>(intermediates);
-    Iterator<IntermediateSpecification> lIterator = lIntermediates.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromIntermediates(lIterator.next());
-    }
+    intermediates.clear();
   }
 
   /**

@@ -528,6 +528,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     Collection<Account> lAccounts = new HashSet<Account>(accounts);
     Iterator<Account> lIterator = lAccounts.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromAccounts(lIterator.next());
     }
   }
