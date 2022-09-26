@@ -91,7 +91,7 @@ public class ProductServiceResource {
       @RequestParam(name = "q1", required = true) String pQueryParam ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    Context.Builder lBuilder = Context.Builder.newBuilder();
+    Context.Builder lBuilder = Context.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);
@@ -148,7 +148,7 @@ public class ProductServiceResource {
       @RequestParam(name = "q1", required = true) String pQueryParam ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DeprecatedContext.Builder lBuilder = DeprecatedContext.Builder.newBuilder();
+    DeprecatedContext.Builder lBuilder = DeprecatedContext.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);
@@ -168,7 +168,7 @@ public class ProductServiceResource {
       @RequestParam(name = "q2", required = true) @Deprecated String pOldStyle ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    BeanParameter.Builder lBuilder = BeanParameter.Builder.newBuilder();
+    BeanParameter.Builder lBuilder = BeanParameter.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setOldStyle(pOldStyle);
@@ -232,7 +232,7 @@ public class ProductServiceResource {
       @RequestHeader(name = "specificHeader", required = true) String pSpecificHeader ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    SpecialContext.Builder lBuilder = SpecialContext.Builder.newBuilder();
+    SpecialContext.Builder lBuilder = SpecialContext.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);
@@ -293,7 +293,7 @@ public class ProductServiceResource {
       @RequestHeader(name = "localID", required = true) String pLocalID ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    LocalBeanParamType.Builder lBuilder = LocalBeanParamType.Builder.newBuilder();
+    LocalBeanParamType.Builder lBuilder = LocalBeanParamType.builder();
     lBuilder.setLocalKey(pLocalKey);
     lBuilder.setLocalID(pLocalID);
     LocalBeanParamType pBeanParam = lBuilder.build();
@@ -310,7 +310,7 @@ public class ProductServiceResource {
       @RequestHeader(name = "tkID", required = true) String pTkID ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    ParentBeanParamType.Builder lBuilder = ParentBeanParamType.Builder.newBuilder();
+    ParentBeanParamType.Builder lBuilder = ParentBeanParamType.builder();
     lBuilder.setNovaKey(pNovaKey);
     lBuilder.setTkID(pTkID);
     ParentBeanParamType pParent = lBuilder.build();
@@ -328,7 +328,7 @@ public class ProductServiceResource {
       @RequestHeader(name = "X-Child-Property", required = true) String pChildProperty ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    ChildBeanParameterType.Builder lBuilder = ChildBeanParameterType.Builder.newBuilder();
+    ChildBeanParameterType.Builder lBuilder = ChildBeanParameterType.builder();
     lBuilder.setNovaKey(pNovaKey);
     lBuilder.setTkID(pTkID);
     lBuilder.setChildProperty(pChildProperty);
@@ -376,7 +376,7 @@ public class ProductServiceResource {
       @RequestParam(name = "sqlDate", required = true) Date pSqlDate ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DateQueryParamsBean.Builder lBuilder = DateQueryParamsBean.Builder.newBuilder();
+    DateQueryParamsBean.Builder lBuilder = DateQueryParamsBean.builder();
     lBuilder.setOffsetDateTime(pOffsetDateTime);
     lBuilder.setOffsetTime(pOffsetTime);
     lBuilder.setLocalDateTime(pLocalDateTime);
@@ -431,7 +431,7 @@ public class ProductServiceResource {
       @RequestHeader(name = "SQL-Date", required = true) Date pSqlDate ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DateHeaderParamsBean.Builder lBuilder = DateHeaderParamsBean.Builder.newBuilder();
+    DateHeaderParamsBean.Builder lBuilder = DateHeaderParamsBean.builder();
     lBuilder.setOffsetDateTime(pOffsetDateTime);
     lBuilder.setOffsetTime(pOffsetTime);
     lBuilder.setLocalDateTime(pLocalDateTime);

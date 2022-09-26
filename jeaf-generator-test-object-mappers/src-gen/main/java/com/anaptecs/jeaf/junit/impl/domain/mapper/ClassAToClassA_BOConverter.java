@@ -178,7 +178,7 @@ public class ClassAToClassA_BOConverter implements ObjectMapper<ClassA, ClassA_B
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    ClassA.Builder lBuilder = ClassA.Builder.newBuilder();
+    ClassA.Builder lBuilder = ClassA.builder();
     lBuilder.setID(pTarget.getID());
     ClassA lNewSourceObject = lBuilder.build();
     ClassAToClassA_BOConverter lObjectMapper = ClassAToClassA_BOConverter.getConverter();

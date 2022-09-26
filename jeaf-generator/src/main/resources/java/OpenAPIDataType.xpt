@@ -225,28 +225,28 @@
 		    «LET this.ownedAttribute.get(0) AS attr»
 			    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
 			    «IF attr.type.isBooleanType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»(lNode.asBoolean()).build();
+		        return «this.fqn()».builder().«attr.asSetter()»(lNode.asBoolean()).build();
 		        «ENDIF»
 			    «IF attr.type.isStringType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»(lNode.asText()).build();
+		        return «this.fqn()».builder().«attr.asSetter()»(lNode.asText()).build();
 		        «ENDIF»
 		        «IF attr.type.isByteType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»((byte)lNode.asInt()).build();
+		        return «this.fqn()».builder().«attr.asSetter()»((byte)lNode.asInt()).build();
 		        «ENDIF»
 		        «IF attr.type.isShortType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»((short)lNode.asInt()).build();
+		        return «this.fqn()».builder().«attr.asSetter()»((short)lNode.asInt()).build();
 		        «ENDIF»
 		        «IF attr.type.isIntegerType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»(lNode.asInt()).build();
+		        return «this.fqn()».builder().«attr.asSetter()»(lNode.asInt()).build();
 		        «ENDIF»
 		        «IF attr.type.isLongType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»(lNode.asLong()).build();
+		        return «this.fqn()».builder().«attr.asSetter()»(lNode.asLong()).build();
 		        «ENDIF»
 		        «IF attr.type.isFloatType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»((float)lNode.asDouble()).build();
+		        return «this.fqn()».builder().«attr.asSetter()»((float)lNode.asDouble()).build();
 		        «ENDIF»
 		        «IF attr.type.isDoubleType()»
-		        return «this.fqn()».Builder.newBuilder().«attr.asSetter()»(lNode.asDouble()).build();
+		        return «this.fqn()».builder().«attr.asSetter()»(lNode.asDouble()).build();
 		        «ENDIF»
 		    }
 		    // Node is not a TextNode

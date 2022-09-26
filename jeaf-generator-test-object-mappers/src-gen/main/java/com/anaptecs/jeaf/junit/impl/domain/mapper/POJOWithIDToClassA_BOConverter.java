@@ -181,7 +181,7 @@ public class POJOWithIDToClassA_BOConverter implements ObjectMapper<POJOWithID, 
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    POJOWithID.Builder lBuilder = POJOWithID.Builder.newBuilder();
+    POJOWithID.Builder lBuilder = POJOWithID.builder();
     lBuilder.setID(pTarget.getID());
     POJOWithID lNewSourceObject = lBuilder.build();
     POJOWithIDToClassA_BOConverter lObjectMapper = POJOWithIDToClassA_BOConverter.getConverter();

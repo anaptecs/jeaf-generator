@@ -166,12 +166,12 @@ public class IdentifiableServiceObjectToUICCodeDOConverter
     IdentifiableServiceObject lNewSourceObject;
     DomainObjectID lDomainObjectID = pTarget.getDomainObjectID();
     if (lDomainObjectID != null) {
-      IdentifiableServiceObject.Builder lBuilder = IdentifiableServiceObject.Builder.newBuilder();
+      IdentifiableServiceObject.Builder lBuilder = IdentifiableServiceObject.builder();
       lBuilder.setID(lDomainObjectID);
       lNewSourceObject = lBuilder.build();
     }
     else {
-      lNewSourceObject = IdentifiableServiceObject.Builder.newBuilder().build();
+      lNewSourceObject = IdentifiableServiceObject.builder().build();
     }
     IdentifiableServiceObjectToUICCodeDOConverter lObjectMapper =
         IdentifiableServiceObjectToUICCodeDOConverter.getConverter();

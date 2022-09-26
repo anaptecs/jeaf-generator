@@ -55,7 +55,7 @@ public class POJOWithIDnMethodToPOJOWithIDConverter implements ObjectMapper<POJO
     // Check parameter
     Check.checkInvalidParameterNull(pSource, "pSource");
     // Create new target object.
-    POJOWithID lTarget = POJOWithID.Builder.newBuilder().build();
+    POJOWithID lTarget = POJOWithID.builder().build();
     POJOWithIDnMethodToPOJOWithIDConverter lObjectMapper = POJOWithIDnMethodToPOJOWithIDConverter.getConverter();
     // Take value(s) from source, map them to target and return the created target object.
     lObjectMapper.applyMappings(pSource, lTarget, MappingType.CREATE);
@@ -157,7 +157,7 @@ public class POJOWithIDnMethodToPOJOWithIDConverter implements ObjectMapper<POJO
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    POJOWithIDnMethod.Builder lBuilder = POJOWithIDnMethod.Builder.newBuilder();
+    POJOWithIDnMethod.Builder lBuilder = POJOWithIDnMethod.builder();
     lBuilder.setID(pTarget.getID());
     POJOWithIDnMethod lNewSourceObject = lBuilder.build();
     POJOWithIDnMethodToPOJOWithIDConverter lObjectMapper = POJOWithIDnMethodToPOJOWithIDConverter.getConverter();

@@ -864,7 +864,7 @@ public class «name»HttpClient {
         // Build up problem JSON from the information we have.
         else {
           // Try to resolve some details.
-          com.anaptecs.jeaf.json.problem.Problem.Builder lProblemBuilder = Problem.Builder.newBuilder().setStatus(lStatusCode);
+          com.anaptecs.jeaf.json.problem.Problem.Builder lProblemBuilder = Problem.builder().setStatus(lStatusCode);
           lProblemBuilder.setType(lRequestURI.toString());
           HttpEntity lEntity = lResponse.getEntity();
           if (lEntity != null && lEntity.getContentLength() > 0) {
@@ -880,7 +880,7 @@ public class «name»HttpClient {
     //
     // IOException can result from communication or serialization problems.
     catch (IOException e) {
-      com.anaptecs.jeaf.json.problem.Problem.Builder lProblemBuilder = com.anaptecs.jeaf.json.problem.Problem.Builder.newBuilder().setStatus(com.anaptecs.jeaf.tools.api.http.HTTPStatusCode.INTERNAL_SERVER_ERROR.getCode());
+      com.anaptecs.jeaf.json.problem.Problem.Builder lProblemBuilder = com.anaptecs.jeaf.json.problem.Problem.builder().setStatus(com.anaptecs.jeaf.tools.api.http.HTTPStatusCode.INTERNAL_SERVER_ERROR.getCode());
       lProblemBuilder.setType(pRequest.toString());
       lProblemBuilder.setDetail(e.getMessage());
       throw new RESTProblemException(lProblemBuilder.build(), e);
@@ -891,7 +891,7 @@ public class «name»HttpClient {
     }
     // Thanks to circuit breaker interface definition of Resilience4J we also have to catch java.lang.Exception ;-(
     catch (Exception e) {
-      com.anaptecs.jeaf.json.problem.Problem.Builder lProblemBuilder = com.anaptecs.jeaf.json.problem.Problem.Builder.newBuilder().setStatus(com.anaptecs.jeaf.tools.api.http.HTTPStatusCode.INTERNAL_SERVER_ERROR.getCode());
+      com.anaptecs.jeaf.json.problem.Problem.Builder lProblemBuilder = com.anaptecs.jeaf.json.problem.Problem.builder().setStatus(com.anaptecs.jeaf.tools.api.http.HTTPStatusCode.INTERNAL_SERVER_ERROR.getCode());
       lProblemBuilder.setType(pRequest.toString());
       lProblemBuilder.setDetail(e.getMessage());
       throw new RESTProblemException(lProblemBuilder.build(), e);

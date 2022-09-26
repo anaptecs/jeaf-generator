@@ -55,7 +55,7 @@ public class ParentPOJOToBChildPOJOConverter implements ObjectMapper<ParentPOJO,
     // Check parameter
     Check.checkInvalidParameterNull(pSource, "pSource");
     // Create new target object.
-    BChildPOJO lTarget = BChildPOJO.Builder.newBuilder().build();
+    BChildPOJO lTarget = BChildPOJO.builder().build();
     ParentPOJOToBChildPOJOConverter lObjectMapper = ParentPOJOToBChildPOJOConverter.getConverter();
     // Take value(s) from source, map them to target and return the created target object.
     lObjectMapper.applyMappings(pSource, lTarget, MappingType.CREATE);
@@ -157,7 +157,7 @@ public class ParentPOJOToBChildPOJOConverter implements ObjectMapper<ParentPOJO,
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    ParentPOJO lNewSourceObject = ParentPOJO.Builder.newBuilder().build();
+    ParentPOJO lNewSourceObject = ParentPOJO.builder().build();
     ParentPOJOToBChildPOJOConverter lObjectMapper = ParentPOJOToBChildPOJOConverter.getConverter();
     lObjectMapper.applyMappings(lNewSourceObject, pTarget, MappingType.READ);
     return lNewSourceObject;

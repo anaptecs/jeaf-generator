@@ -24,7 +24,7 @@ public class FloatCodeDeserializer extends JsonDeserializer<FloatCode> {
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
-      return FloatCode.Builder.newBuilder().setCode((float) lNode.asDouble()).build();
+      return FloatCode.builder().setCode((float) lNode.asDouble()).build();
     }
     // Node is not a TextNode
     else {

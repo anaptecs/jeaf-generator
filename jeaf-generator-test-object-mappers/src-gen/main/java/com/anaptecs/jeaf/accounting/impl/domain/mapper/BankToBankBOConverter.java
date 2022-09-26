@@ -179,7 +179,7 @@ public class BankToBankBOConverter implements ObjectMapper<Bank, BankBO> {
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    Bank.Builder lBuilder = Bank.Builder.newBuilder();
+    Bank.Builder lBuilder = Bank.builder();
     lBuilder.setID(pTarget.getID());
     Bank lNewSourceObject = lBuilder.build();
     BankToBankBOConverter lObjectMapper = BankToBankBOConverter.getConverter();

@@ -184,7 +184,7 @@ public class IndividualToIndividualBOConverter implements ObjectMapper<Individua
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    Individual.Builder lBuilder = Individual.Builder.newBuilder();
+    Individual.Builder lBuilder = Individual.builder();
     lBuilder.setID(pTarget.getID());
     Individual lNewSourceObject = lBuilder.build();
     IndividualToIndividualBOConverter lObjectMapper = IndividualToIndividualBOConverter.getConverter();
