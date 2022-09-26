@@ -182,7 +182,7 @@ public class GeneratorCommons {
   /**
    * Constant defines the name of the system property that enables legacy builder style.
    */
-  public static final String ENABLE_LEGACY_BUILDER_STYLE = "switch.gen.disable.binary.data.immutability";
+  public static final String ENABLE_LEGACY_BUILDER_STYLE = "switch.gen.enable.legacy.builder.style";
 
   /**
    * Constant defines the name of the system property which enables the generation of JUnit tests for services.
