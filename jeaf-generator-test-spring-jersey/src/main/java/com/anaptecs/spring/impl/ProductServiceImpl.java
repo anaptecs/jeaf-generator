@@ -49,7 +49,7 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   public List<Product> getProducts( ) {
-    Builder lBuilder = Product.Builder.newBuilder();
+    Builder lBuilder = Product.builder();
     lBuilder.setName("Cool Product");
 
     List<Product> lProducts = new ArrayList<>();
@@ -84,7 +84,7 @@ public class ProductServiceImpl implements ProductService {
   @Override
   public ChannelCode createChannelCode( @NotBlank String pChannelCode ) {
     assertEquals("MyMobile", pChannelCode);
-    return ChannelCode.Builder.newBuilder().setCode(pChannelCode).build();
+    return ChannelCode.builder().setCode(pChannelCode).build();
   }
 
   @Override

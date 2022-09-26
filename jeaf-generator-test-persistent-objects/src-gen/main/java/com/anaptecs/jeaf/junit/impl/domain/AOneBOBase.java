@@ -59,14 +59,14 @@ public abstract class AOneBOBase extends PersistentObject {
   /**
    * 
    */
-  private Set<CManyBO> cManys = new HashSet<CManyBO>();
+  private Set<CManyBO> cManys;
 
   /**
    * Initialize object. The constructor of the class has visibility protected in order to avoid creating business
    * objects not through JEAFs persistence service provider.
    */
   protected AOneBOBase( ) {
-    // Nothing to do.
+    cManys = new HashSet<CManyBO>();
   }
 
   /**
@@ -156,23 +156,6 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "cManys" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pCManys Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setCManys( Set<CManyBO> pCManys ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "cManys".
-    this.clearCManys();
-    // If the association is null, removing all entries is sufficient.
-    if (pCManys != null) {
-      cManys = new HashSet<CManyBO>(pCManys);
-    }
-  }
-
-  /**
    * Method adds the passed CManyBO object to the association "cManys".
    * 
    * 
@@ -236,6 +219,7 @@ public abstract class AOneBOBase extends PersistentObject {
     Collection<CManyBO> lCManys = new HashSet<CManyBO>(cManys);
     Iterator<CManyBO> lIterator = lCManys.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromCManys(lIterator.next());
     }
   }

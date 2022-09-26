@@ -92,7 +92,7 @@ public abstract class MyPersonBOBase extends PersistentObject {
   /**
    * 
    */
-  private Set<AccountBO> accounts = new HashSet<AccountBO>();
+  private Set<AccountBO> accounts;
 
   /**
    * 
@@ -109,7 +109,7 @@ public abstract class MyPersonBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected MyPersonBOBase( ) {
-    // Nothing to do.
+    accounts = new HashSet<AccountBO>();
   }
 
   /**
@@ -197,23 +197,6 @@ public abstract class MyPersonBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "accounts" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pAccounts Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setAccounts( Set<AccountBO> pAccounts ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "accounts".
-    this.clearAccounts();
-    // If the association is null, removing all entries is sufficient.
-    if (pAccounts != null) {
-      accounts = new HashSet<AccountBO>(pAccounts);
-    }
-  }
-
-  /**
    * Method adds the passed AccountBO object to the association "accounts".
    * 
    * 
@@ -274,6 +257,7 @@ public abstract class MyPersonBOBase extends PersistentObject {
     Collection<AccountBO> lAccounts = new HashSet<AccountBO>(accounts);
     Iterator<AccountBO> lIterator = lAccounts.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromAccounts(lIterator.next());
     }
   }

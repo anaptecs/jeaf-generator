@@ -13,6 +13,14 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.anaptecs.jeaf.x-fun</groupId>
+			<artifactId>jeaf-x-fun-default-runtime</artifactId>
+			<version>${jeaf.x-fun.impl.version}</version>
+			<type>pom</type>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
 			<groupId>com.anaptecs.jeaf.core</groupId>
 			<artifactId>jeaf-core-api</artifactId>
 			<version>${jeaf.core.api.version}</version>

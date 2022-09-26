@@ -24,14 +24,14 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF sup
 	«ENDFOREACH»
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link «name»#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       «IF superClass.isEmpty == false»super();«ENDIF»
     }
 
     /**
-     * Use {@link #newBuilder(«this.name»)} instead of private constructor to create new builder.
+     * Use {@link «name»#builder(«this.name»)} instead of private constructor to create new builder.
      */
     protected Builder( «this.name» pObject ) {
       «IF superClass.isEmpty == false»super(pObject);«ENDIF»
@@ -46,11 +46,11 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF sup
       }
     }
 
-   «IF isAbstract == false»
+   «IF isAbstract == false && enableLegacyBuilderStyle()»
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new «this.name» objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -145,14 +145,14 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 	«ENDFOREACH»
 
     /**
-     * Use {@link «this.name».Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link «this.name».builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
       «IF superClass.isEmpty == false && superClass.get(0).hasReadOnlyProperties()== true»super();«ENDIF»
     }
 
     /**
-     * Use {@link «this.name».Builder#newBuilder(«this.name»)} instead of protected constructor to create new builder.
+     * Use {@link «this.name».builder(«this.name»)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( «this.name»Base pObject ) {
       «IF superClass.isEmpty == false && superClass.get(0).hasReadOnlyProperties()== true»super(pObject);«ENDIF»
@@ -400,22 +400,23 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 	 */
 	public static class Builder extends «this.name».BuilderBase {
 	  /**
-	   * Use {@link #newBuilder()} instead of protected constructor to create new builder.
+	   * Use {@link «name»#builder()} instead of protected constructor to create new builder.
 	   */
 	  protected Builder( ) {
 	  }
 	
 	  /**
-	   * Use {@link #newBuilder(«this.name»)} instead of protected constructor to create new builder.
+	   * Use {@link «name»#builder(«this.name»)} instead of protected constructor to create new builder.
 	   */
 	  protected Builder( «this.name» pObject ) {
 	    super(pObject);
 	  }
 	
+	  «IF isAbstract == false && enableLegacyBuilderStyle()»
 	  /**
 	   * Method returns a new builder.
 	   * 
-	   * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+	   * @return {@link Builder} New builder that can be used to create new «this.name» objects.
 	   */
 	  public static Builder newBuilder( ) {
 	    return new Builder();
@@ -431,5 +432,30 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 	  public static Builder newBuilder( «this.name» pObject ) {
 	    return new Builder(pObject);
 	  }
+	  «ENDIF»
 	}
+«ENDDEFINE»
+
+«DEFINE StaticBuilderMethods FOR uml::Class»
+   «IF isAbstract == false»
+    /**
+     * Method returns a new builder.
+     * 
+     * @return {@link Builder} New builder that can be used to create new «this.name» objects.
+     */
+    public static Builder builder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     * 
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new «this.name» objects. The method never
+     * returns null.
+     */
+    public static Builder builder( «this.name» pObject ) {
+      return new Builder(pObject);
+    }
+    «ENDIF»
 «ENDDEFINE»

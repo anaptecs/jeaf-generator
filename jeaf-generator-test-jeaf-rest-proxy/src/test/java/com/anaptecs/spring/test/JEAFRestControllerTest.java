@@ -317,7 +317,7 @@ public class JEAFRestControllerTest {
     assertEquals("https://products.anaptecs.de/123456789", lProduct.getUri());
     assertEquals(null, lProduct.getDescription());
 
-    ChannelCode lChannelCode = ChannelCode.Builder.newBuilder().setCode("0815").build();
+    ChannelCode lChannelCode = ChannelCode.builder().setCode("0815").build();
     List<CurrencyCode> lSupportedCurrencies = restProductService.getSupportedCurrencies(lChannelCode);
     assertNotNull(lSupportedCurrencies);
     assertEquals("EUR", lSupportedCurrencies.get(0).getCode());

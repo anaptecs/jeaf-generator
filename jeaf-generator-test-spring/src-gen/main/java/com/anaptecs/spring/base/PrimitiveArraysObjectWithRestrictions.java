@@ -247,7 +247,6 @@ public class PrimitiveArraysObjectWithRestrictions {
    * object creation builder should be used instead.
    */
   protected PrimitiveArraysObjectWithRestrictions( ) {
-    // Nothing to do.
   }
 
   /**
@@ -279,6 +278,26 @@ public class PrimitiveArraysObjectWithRestrictions {
     aBigDecimalArray = pBuilder.aBigDecimalArray;
     aStringArray = pBuilder.aStringArray;
     bStringArray = pBuilder.bStringArray;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new PrimitiveArraysObjectWithRestrictions objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new PrimitiveArraysObjectWithRestrictions objects.
+   * The method never returns null.
+   */
+  public static Builder builder( PrimitiveArraysObjectWithRestrictions pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -401,14 +420,14 @@ public class PrimitiveArraysObjectWithRestrictions {
     private String[] bStringArray;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PrimitiveArraysObjectWithRestrictions#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PrimitiveArraysObjectWithRestrictions)} instead of private constructor to create new
-     * builder.
+     * Use {@link PrimitiveArraysObjectWithRestrictions#builder(PrimitiveArraysObjectWithRestrictions)} instead of
+     * private constructor to create new builder.
      */
     protected Builder( PrimitiveArraysObjectWithRestrictions pObject ) {
       if (pObject != null) {
@@ -441,7 +460,7 @@ public class PrimitiveArraysObjectWithRestrictions {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new PrimitiveArraysObjectWithRestrictions objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -1614,7 +1633,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

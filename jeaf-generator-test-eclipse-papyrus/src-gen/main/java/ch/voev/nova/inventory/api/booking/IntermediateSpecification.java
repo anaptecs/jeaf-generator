@@ -54,7 +54,6 @@ public class IntermediateSpecification {
    * object creation builder should be used instead.
    */
   protected IntermediateSpecification( ) {
-    // Nothing to do.
   }
 
   /**
@@ -69,6 +68,26 @@ public class IntermediateSpecification {
     stopPlaceRef = pBuilder.stopPlaceRef;
     serviceArrival = pBuilder.serviceArrival;
     serviceDeparture = pBuilder.serviceDeparture;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new IntermediateSpecification objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new IntermediateSpecification objects. The method
+   * never returns null.
+   */
+  public static Builder builder( IntermediateSpecification pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -92,13 +111,14 @@ public class IntermediateSpecification {
     private ServiceTime serviceDeparture;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link IntermediateSpecification#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(IntermediateSpecification)} instead of private constructor to create new builder.
+     * Use {@link IntermediateSpecification#builder(IntermediateSpecification)} instead of private constructor to create
+     * new builder.
      */
     protected Builder( IntermediateSpecification pObject ) {
       if (pObject != null) {
@@ -107,26 +127,6 @@ public class IntermediateSpecification {
         serviceArrival = pObject.serviceArrival;
         serviceDeparture = pObject.serviceDeparture;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new IntermediateSpecification objects. The method
-     * never returns null.
-     */
-    public static Builder newBuilder( IntermediateSpecification pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -268,7 +268,7 @@ public class IntermediateSpecification {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

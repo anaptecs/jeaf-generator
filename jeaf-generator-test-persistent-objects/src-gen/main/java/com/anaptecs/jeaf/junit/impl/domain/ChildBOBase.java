@@ -50,7 +50,6 @@ public abstract class ChildBOBase extends BaseClassBO {
    * objects not through JEAFs persistence service provider.
    */
   protected ChildBOBase( ) {
-    // Nothing to do.
   }
 
   /**

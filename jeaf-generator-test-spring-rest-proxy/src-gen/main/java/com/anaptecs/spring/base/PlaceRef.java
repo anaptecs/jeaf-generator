@@ -25,7 +25,6 @@ public abstract class PlaceRef {
    * object creation builder should be used instead.
    */
   protected PlaceRef( ) {
-    // Nothing to do.
   }
 
   /**
@@ -49,13 +48,13 @@ public abstract class PlaceRef {
     private String name;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PlaceRef#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PlaceRef)} instead of private constructor to create new builder.
+     * Use {@link PlaceRef#builder(PlaceRef)} instead of private constructor to create new builder.
      */
     protected Builder( PlaceRef pObject ) {
       if (pObject != null) {
@@ -98,7 +97,7 @@ public abstract class PlaceRef {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

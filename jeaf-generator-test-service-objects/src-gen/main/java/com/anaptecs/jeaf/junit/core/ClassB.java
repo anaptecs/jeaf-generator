@@ -51,7 +51,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
-  private SortedSet<ClassA> manyAs = new TreeSet<ClassA>();
+  private SortedSet<ClassA> manyAs;
 
   /**
    * 
@@ -64,6 +64,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   protected ClassB( ) {
     objectID = null;
+    manyAs = new TreeSet<ClassA>();
   }
 
   /**
@@ -84,9 +85,31 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
     }
     // Read attribute values from builder.
     if (pBuilder.manyAs != null) {
-      manyAs.addAll(pBuilder.manyAs);
+      manyAs = pBuilder.manyAs;
+    }
+    else {
+      manyAs = new TreeSet<ClassA>();
     }
     intValue = pBuilder.intValue;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new ClassB objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new ClassB objects. The method never returns null.
+   */
+  public static Builder builder( ClassB pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -110,13 +133,13 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
     private Integer intValue;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ClassB#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ClassB)} instead of private constructor to create new builder.
+     * Use {@link ClassB#builder(ClassB)} instead of private constructor to create new builder.
      */
     protected Builder( ClassB pObject ) {
       if (pObject != null) {
@@ -125,25 +148,6 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
         manyAs = pObject.manyAs;
         intValue = pObject.intValue;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ClassB objects. The method never returns null.
-     */
-    public static Builder newBuilder( ClassB pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -247,23 +251,6 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method sets the association "manyAs" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pManyAs Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setManyAs( SortedSet<ClassA> pManyAs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "manyAs".
-    this.clearManyAs();
-    // If the association is null, removing all entries is sufficient.
-    if (pManyAs != null) {
-      manyAs = new TreeSet<ClassA>(pManyAs);
-    }
-  }
-
-  /**
    * Method adds the passed ClassA object to the association "manyAs".
    * 
    * 
@@ -327,6 +314,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
     Collection<ClassA> lManyAs = new HashSet<ClassA>(manyAs);
     Iterator<ClassA> lIterator = lManyAs.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromManyAs(lIterator.next());
     }
   }
@@ -353,7 +341,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

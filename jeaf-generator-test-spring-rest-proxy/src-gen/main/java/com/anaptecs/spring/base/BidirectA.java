@@ -34,7 +34,7 @@ public class BidirectA {
   /**
    * 
    */
-  private transient Set<BidirectB> transientBs = new HashSet<BidirectB>();
+  private transient Set<BidirectB> transientBs;
 
   /**
    * 
@@ -56,7 +56,7 @@ public class BidirectA {
    * object creation builder should be used instead.
    */
   protected BidirectA( ) {
-    // Nothing to do.
+    transientBs = new HashSet<BidirectB>();
     // Bidirectional back reference is not yet set up correctly
     parentBackReferenceInitialized = false;
   }
@@ -69,12 +69,35 @@ public class BidirectA {
   protected BidirectA( Builder pBuilder ) {
     // Read attribute values from builder.
     if (pBuilder.transientBs != null) {
-      transientBs.addAll(pBuilder.transientBs);
+      transientBs = pBuilder.transientBs;
+    }
+    else {
+      transientBs = new HashSet<BidirectB>();
     }
     parent = pBuilder.parent;
     // Bidirectional back reference is set up correctly as a builder is used.
     parentBackReferenceInitialized = true;
     transientChild = pBuilder.transientChild;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new BidirectA objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new BidirectA objects. The method never returns
+   * null.
+   */
+  public static Builder builder( BidirectA pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -98,13 +121,13 @@ public class BidirectA {
     private BidirectA transientChild;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link BidirectA#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(BidirectA)} instead of private constructor to create new builder.
+     * Use {@link BidirectA#builder(BidirectA)} instead of private constructor to create new builder.
      */
     protected Builder( BidirectA pObject ) {
       if (pObject != null) {
@@ -113,26 +136,6 @@ public class BidirectA {
         parent = pObject.parent;
         transientChild = pObject.transientChild;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new BidirectA objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( BidirectA pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -194,23 +197,6 @@ public class BidirectA {
   }
 
   /**
-   * Method sets the association "transientBs" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pTransientBs Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setTransientBs( Set<BidirectB> pTransientBs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "transientBs".
-    this.clearTransientBs();
-    // If the association is null, removing all entries is sufficient.
-    if (pTransientBs != null) {
-      transientBs = new HashSet<BidirectB>(pTransientBs);
-    }
-  }
-
-  /**
    * Method adds the passed BidirectB object to the association "transientBs".
    * 
    * 
@@ -269,6 +255,7 @@ public class BidirectA {
     Collection<BidirectB> lTransientBs = new HashSet<BidirectB>(transientBs);
     Iterator<BidirectB> lIterator = lTransientBs.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromTransientBs(lIterator.next());
     }
   }
@@ -366,7 +353,7 @@ public class BidirectA {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

@@ -37,7 +37,6 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
    * object creation builder should be used instead.
    */
   protected SubclassWithoutIDnMethodBase( ) {
-    // Nothing to do.
   }
 
   /**
@@ -63,15 +62,15 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
     private Boolean attr;
 
     /**
-     * Use {@link SubclassWithoutIDnMethod.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link SubclassWithoutIDnMethod.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
       super();
     }
 
     /**
-     * Use {@link SubclassWithoutIDnMethod.Builder#newBuilder(SubclassWithoutIDnMethod)} instead of protected
-     * constructor to create new builder.
+     * Use {@link SubclassWithoutIDnMethod.builder(SubclassWithoutIDnMethod)} instead of protected constructor to create
+     * new builder.
      */
     protected BuilderBase( SubclassWithoutIDnMethodBase pObject ) {
       super(pObject);
@@ -165,7 +164,7 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
   public abstract void doLess( );
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

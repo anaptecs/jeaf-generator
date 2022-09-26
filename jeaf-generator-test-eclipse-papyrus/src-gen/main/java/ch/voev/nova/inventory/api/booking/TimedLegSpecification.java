@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.booking;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -54,7 +52,7 @@ public class TimedLegSpecification {
   /**
    * 
    */
-  private List<IntermediateSpecification> intermediates = new ArrayList<IntermediateSpecification>();
+  private List<IntermediateSpecification> intermediates;
 
   /**
    * 
@@ -71,7 +69,7 @@ public class TimedLegSpecification {
    * object creation builder should be used instead.
    */
   protected TimedLegSpecification( ) {
-    // Nothing to do.
+    intermediates = new ArrayList<IntermediateSpecification>();
   }
 
   /**
@@ -85,10 +83,33 @@ public class TimedLegSpecification {
     // Read attribute values from builder.
     start = pBuilder.start;
     if (pBuilder.intermediates != null) {
-      intermediates.addAll(pBuilder.intermediates);
+      intermediates = pBuilder.intermediates;
+    }
+    else {
+      intermediates = new ArrayList<IntermediateSpecification>();
     }
     end = pBuilder.end;
     service = pBuilder.service;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new TimedLegSpecification objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new TimedLegSpecification objects. The method never
+   * returns null.
+   */
+  public static Builder builder( TimedLegSpecification pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -117,13 +138,14 @@ public class TimedLegSpecification {
     private DatedJourney service;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link TimedLegSpecification#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(TimedLegSpecification)} instead of private constructor to create new builder.
+     * Use {@link TimedLegSpecification#builder(TimedLegSpecification)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( TimedLegSpecification pObject ) {
       if (pObject != null) {
@@ -133,26 +155,6 @@ public class TimedLegSpecification {
         end = pObject.end;
         service = pObject.service;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new TimedLegSpecification objects. The method
-     * never returns null.
-     */
-    public static Builder newBuilder( TimedLegSpecification pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -266,24 +268,6 @@ public class TimedLegSpecification {
   }
 
   /**
-   * Method sets the association "intermediates" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pIntermediates Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setIntermediates( List<IntermediateSpecification> pIntermediates ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "intermediates".
-    this.clearIntermediates();
-    // If the association is null, removing all entries is sufficient.
-    if (pIntermediates != null) {
-      intermediates = new ArrayList<IntermediateSpecification>(pIntermediates);
-    }
-  }
-
-  /**
    * Method adds the passed IntermediateSpecification object to the association "intermediates".
    * 
    * 
@@ -333,11 +317,7 @@ public class TimedLegSpecification {
    */
   public void clearIntermediates( ) {
     // Remove all objects from association "intermediates".
-    Collection<IntermediateSpecification> lIntermediates = new HashSet<IntermediateSpecification>(intermediates);
-    Iterator<IntermediateSpecification> lIterator = lIntermediates.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromIntermediates(lIterator.next());
-    }
+    intermediates.clear();
   }
 
   /**
@@ -397,7 +377,7 @@ public class TimedLegSpecification {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

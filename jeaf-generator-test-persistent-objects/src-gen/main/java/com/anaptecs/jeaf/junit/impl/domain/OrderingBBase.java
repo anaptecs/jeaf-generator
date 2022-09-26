@@ -45,7 +45,6 @@ public abstract class OrderingBBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected OrderingBBase( ) {
-    // Nothing to do.
   }
 
   /**

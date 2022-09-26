@@ -161,7 +161,7 @@ public class OtherMappingObjectToMappingChildDOConverter implements ObjectMapper
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    OtherMappingObject lNewSourceObject = OtherMappingObject.Builder.newBuilder().build();
+    OtherMappingObject lNewSourceObject = OtherMappingObject.builder().build();
     OtherMappingObjectToMappingChildDOConverter lObjectMapper =
         OtherMappingObjectToMappingChildDOConverter.getConverter();
     lObjectMapper.applyMappings(lNewSourceObject, pTarget, MappingType.READ);

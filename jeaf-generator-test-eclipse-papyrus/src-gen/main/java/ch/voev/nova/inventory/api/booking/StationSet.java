@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.booking;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -32,14 +30,14 @@ public class StationSet {
   /**
    * 
    */
-  private List<StopPlaceRef> stations = new ArrayList<StopPlaceRef>();
+  private List<StopPlaceRef> stations;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected StationSet( ) {
-    // Nothing to do.
+    stations = new ArrayList<StopPlaceRef>();
   }
 
   /**
@@ -52,8 +50,31 @@ public class StationSet {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.stations != null) {
-      stations.addAll(pBuilder.stations);
+      stations = pBuilder.stations;
     }
+    else {
+      stations = new ArrayList<StopPlaceRef>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new StationSet objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new StationSet objects. The method never returns
+   * null.
+   */
+  public static Builder builder( StationSet pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -67,39 +88,19 @@ public class StationSet {
     private List<StopPlaceRef> stations;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link StationSet#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(StationSet)} instead of private constructor to create new builder.
+     * Use {@link StationSet#builder(StationSet)} instead of private constructor to create new builder.
      */
     protected Builder( StationSet pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         stations = pObject.stations;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new StationSet objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( StationSet pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -154,23 +155,6 @@ public class StationSet {
   }
 
   /**
-   * Method sets the association "stations" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pStations Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setStations( List<StopPlaceRef> pStations ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "stations".
-    this.clearStations();
-    // If the association is null, removing all entries is sufficient.
-    if (pStations != null) {
-      stations = new ArrayList<StopPlaceRef>(pStations);
-    }
-  }
-
-  /**
    * Method adds the passed StopPlaceRef object to the association "stations".
    * 
    * 
@@ -218,15 +202,11 @@ public class StationSet {
    */
   public void clearStations( ) {
     // Remove all objects from association "stations".
-    Collection<StopPlaceRef> lStations = new HashSet<StopPlaceRef>(stations);
-    Iterator<StopPlaceRef> lIterator = lStations.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromStations(lIterator.next());
-    }
+    stations.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

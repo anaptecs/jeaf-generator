@@ -37,14 +37,14 @@ public class DiscountOffer implements ServiceObject {
   /**
    * 
    */
-  private Set<Campaign> campaigns = new HashSet<Campaign>();
+  private Set<Campaign> campaigns;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected DiscountOffer( ) {
-    // Nothing to do.
+    campaigns = new HashSet<Campaign>();
   }
 
   /**
@@ -57,8 +57,31 @@ public class DiscountOffer implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.campaigns != null) {
-      campaigns.addAll(pBuilder.campaigns);
+      campaigns = pBuilder.campaigns;
     }
+    else {
+      campaigns = new HashSet<Campaign>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new DiscountOffer objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new DiscountOffer objects. The method never returns
+   * null.
+   */
+  public static Builder builder( DiscountOffer pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -72,39 +95,19 @@ public class DiscountOffer implements ServiceObject {
     private Set<Campaign> campaigns;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link DiscountOffer#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(DiscountOffer)} instead of private constructor to create new builder.
+     * Use {@link DiscountOffer#builder(DiscountOffer)} instead of private constructor to create new builder.
      */
     protected Builder( DiscountOffer pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         campaigns = pObject.campaigns;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new DiscountOffer objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( DiscountOffer pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -157,23 +160,6 @@ public class DiscountOffer implements ServiceObject {
   public Set<Campaign> getCampaigns( ) {
     // Return all Campaign objects as unmodifiable collection.
     return Collections.unmodifiableSet(campaigns);
-  }
-
-  /**
-   * Method sets the association "campaigns" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pCampaigns Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setCampaigns( Set<Campaign> pCampaigns ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "campaigns".
-    this.clearCampaigns();
-    // If the association is null, removing all entries is sufficient.
-    if (pCampaigns != null) {
-      campaigns = new HashSet<Campaign>(pCampaigns);
-    }
   }
 
   /**
@@ -237,12 +223,13 @@ public class DiscountOffer implements ServiceObject {
     Collection<Campaign> lCampaigns = new HashSet<Campaign>(campaigns);
     Iterator<Campaign> lIterator = lCampaigns.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromCampaigns(lIterator.next());
     }
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

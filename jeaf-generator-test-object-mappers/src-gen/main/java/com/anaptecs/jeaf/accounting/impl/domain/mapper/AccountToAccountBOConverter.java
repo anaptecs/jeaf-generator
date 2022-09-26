@@ -178,7 +178,7 @@ public class AccountToAccountBOConverter implements ObjectMapper<Account, Accoun
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    Account.Builder lBuilder = Account.Builder.newBuilder();
+    Account.Builder lBuilder = Account.builder();
     lBuilder.setID(pTarget.getID());
     Account lNewSourceObject = lBuilder.build();
     AccountToAccountBOConverter lObjectMapper = AccountToAccountBOConverter.getConverter();

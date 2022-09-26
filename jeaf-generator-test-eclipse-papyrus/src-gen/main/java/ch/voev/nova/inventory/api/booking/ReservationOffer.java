@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.booking;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -71,7 +69,7 @@ public class ReservationOffer {
   /**
    * 
    */
-  private List<FulfillmentType> availableFulfillmentTypes = new ArrayList<FulfillmentType>();
+  private List<FulfillmentType> availableFulfillmentTypes;
 
   /**
    * 
@@ -84,7 +82,7 @@ public class ReservationOffer {
    * object creation builder should be used instead.
    */
   protected ReservationOffer( ) {
-    // Nothing to do.
+    availableFulfillmentTypes = new ArrayList<FulfillmentType>();
   }
 
   /**
@@ -100,9 +98,32 @@ public class ReservationOffer {
     productCode = pBuilder.productCode;
     price = pBuilder.price;
     if (pBuilder.availableFulfillmentTypes != null) {
-      availableFulfillmentTypes.addAll(pBuilder.availableFulfillmentTypes);
+      availableFulfillmentTypes = pBuilder.availableFulfillmentTypes;
+    }
+    else {
+      availableFulfillmentTypes = new ArrayList<FulfillmentType>();
     }
     placeAvailabilityId = pBuilder.placeAvailabilityId;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new ReservationOffer objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new ReservationOffer objects. The method never
+   * returns null.
+   */
+  public static Builder builder( ReservationOffer pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -139,13 +160,13 @@ public class ReservationOffer {
     private String placeAvailabilityId;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ReservationOffer#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ReservationOffer)} instead of private constructor to create new builder.
+     * Use {@link ReservationOffer#builder(ReservationOffer)} instead of private constructor to create new builder.
      */
     protected Builder( ReservationOffer pObject ) {
       if (pObject != null) {
@@ -156,26 +177,6 @@ public class ReservationOffer {
         availableFulfillmentTypes = pObject.availableFulfillmentTypes;
         placeAvailabilityId = pObject.placeAvailabilityId;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ReservationOffer objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( ReservationOffer pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -345,24 +346,6 @@ public class ReservationOffer {
   }
 
   /**
-   * Method sets the association "availableFulfillmentTypes" to the passed collection. All objects that formerly were
-   * part of the association will be removed from it.
-   * 
-   * 
-   * @param pAvailableFulfillmentTypes Collection with objects to which the association should be set. The parameter
-   * must not be null.
-   */
-  void setAvailableFulfillmentTypes( List<FulfillmentType> pAvailableFulfillmentTypes ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "availableFulfillmentTypes".
-    this.clearAvailableFulfillmentTypes();
-    // If the association is null, removing all entries is sufficient.
-    if (pAvailableFulfillmentTypes != null) {
-      availableFulfillmentTypes = new ArrayList<FulfillmentType>(pAvailableFulfillmentTypes);
-    }
-  }
-
-  /**
    * Method adds the passed FulfillmentType object to the association "availableFulfillmentTypes".
    * 
    * 
@@ -412,11 +395,7 @@ public class ReservationOffer {
    */
   public void clearAvailableFulfillmentTypes( ) {
     // Remove all objects from association "availableFulfillmentTypes".
-    Collection<FulfillmentType> lAvailableFulfillmentTypes = new HashSet<FulfillmentType>(availableFulfillmentTypes);
-    Iterator<FulfillmentType> lIterator = lAvailableFulfillmentTypes.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromAvailableFulfillmentTypes(lIterator.next());
-    }
+    availableFulfillmentTypes.clear();
   }
 
   /**
@@ -441,7 +420,7 @@ public class ReservationOffer {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

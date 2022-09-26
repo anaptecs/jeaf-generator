@@ -8,7 +8,6 @@ package com.anaptecs.spring.base;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.validation.constraints.Size;
@@ -42,14 +41,14 @@ public class ChildB extends ParentClass {
   /**
    * the composition
    */
-  private Set<ParentClass> composition = new HashSet<ParentClass>();
+  private Set<ParentClass> composition;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected ChildB( ) {
-    // Nothing to do.
+    composition = new HashSet<ParentClass>();
   }
 
   /**
@@ -63,8 +62,30 @@ public class ChildB extends ParentClass {
     // Read attribute values from builder.
     childBAttribute = pBuilder.childBAttribute;
     if (pBuilder.composition != null) {
-      composition.addAll(pBuilder.composition);
+      composition = pBuilder.composition;
     }
+    else {
+      composition = new HashSet<ParentClass>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new ChildB objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new ChildB objects. The method never returns null.
+   */
+  public static Builder builder( ChildB pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -84,14 +105,14 @@ public class ChildB extends ParentClass {
     private Set<ParentClass> composition;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ChildB#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(ChildB)} instead of private constructor to create new builder.
+     * Use {@link ChildB#builder(ChildB)} instead of private constructor to create new builder.
      */
     protected Builder( ChildB pObject ) {
       super(pObject);
@@ -100,25 +121,6 @@ public class ChildB extends ParentClass {
         childBAttribute = pObject.childBAttribute;
         composition = pObject.composition;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ChildB objects. The method never returns null.
-     */
-    public static Builder newBuilder( ChildB pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -201,22 +203,6 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method sets the association "composition" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it. the composition
-   * 
-   * @param pComposition Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setComposition( Set<ParentClass> pComposition ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "composition".
-    this.clearComposition();
-    // If the association is null, removing all entries is sufficient.
-    if (pComposition != null) {
-      composition = new HashSet<ParentClass>(pComposition);
-    }
-  }
-
-  /**
    * Method adds the passed ParentClass object to the association "composition". the composition
    * 
    * @param pComposition Object that should be added to the association "composition". The parameter must not be null.
@@ -255,15 +241,11 @@ public class ChildB extends ParentClass {
    */
   public void clearComposition( ) {
     // Remove all objects from association "composition".
-    Collection<ParentClass> lComposition = new HashSet<ParentClass>(composition);
-    Iterator<ParentClass> lIterator = lComposition.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromComposition(lIterator.next());
-    }
+    composition.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

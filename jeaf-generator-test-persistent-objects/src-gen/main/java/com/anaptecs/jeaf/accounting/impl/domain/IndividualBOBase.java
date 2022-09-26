@@ -30,7 +30,6 @@ public abstract class IndividualBOBase extends CustomerBO {
    * objects not through JEAFs persistence service provider.
    */
   protected IndividualBOBase( ) {
-    // Nothing to do.
   }
 
   /**

@@ -82,7 +82,6 @@ public class DateObject {
    * object creation builder should be used instead.
    */
   protected DateObject( ) {
-    // Nothing to do.
   }
 
   /**
@@ -98,6 +97,26 @@ public class DateObject {
     calendar = pBuilder.calendar;
     sqlDate = pBuilder.sqlDate;
     utilDate = pBuilder.utilDate;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new DateObject objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new DateObject objects. The method never returns
+   * null.
+   */
+  public static Builder builder( DateObject pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -136,13 +155,13 @@ public class DateObject {
     private java.util.Date utilDate;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link DateObject#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(DateObject)} instead of private constructor to create new builder.
+     * Use {@link DateObject#builder(DateObject)} instead of private constructor to create new builder.
      */
     protected Builder( DateObject pObject ) {
       if (pObject != null) {
@@ -154,26 +173,6 @@ public class DateObject {
         sqlDate = pObject.sqlDate;
         utilDate = pObject.utilDate;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new DateObject objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( DateObject pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -379,7 +378,7 @@ public class DateObject {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

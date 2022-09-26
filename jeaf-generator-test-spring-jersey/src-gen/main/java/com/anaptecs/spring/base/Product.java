@@ -79,7 +79,7 @@ public class Product {
   /**
    * 
    */
-  private Set<Reseller> resellers = new HashSet<Reseller>();
+  private Set<Reseller> resellers;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -112,12 +112,12 @@ public class Product {
    * 
    */
   @Size(min = 7, max = 42)
-  private Set<CurrencyCode> supportedCurrencies = new HashSet<CurrencyCode>();
+  private Set<CurrencyCode> supportedCurrencies;
 
   /**
    * 
    */
-  private Set<ProductCode> productCodes = new HashSet<ProductCode>();
+  private Set<ProductCode> productCodes;
 
   /**
    * 
@@ -128,7 +128,7 @@ public class Product {
   /**
    * 
    */
-  private transient Set<Sortiment> sortiments = new HashSet<Sortiment>();
+  private transient Set<Sortiment> sortiments;
 
   /**
    * <br/>
@@ -141,9 +141,13 @@ public class Product {
    * object creation builder should be used instead.
    */
   protected Product( ) {
+    resellers = new HashSet<Reseller>();
     // Bidirectional back reference is not yet set up correctly
     resellersBackReferenceInitialized = false;
     productID = null;
+    supportedCurrencies = new HashSet<CurrencyCode>();
+    productCodes = new HashSet<ProductCode>();
+    sortiments = new HashSet<Sortiment>();
     uri = "https://products.anaptecs.de/123456789";
   }
 
@@ -155,7 +159,10 @@ public class Product {
   protected Product( Builder pBuilder ) {
     // Read attribute values from builder.
     if (pBuilder.resellers != null) {
-      resellers.addAll(pBuilder.resellers);
+      resellers = pBuilder.resellers;
+    }
+    else {
+      resellers = new HashSet<Reseller>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     resellersBackReferenceInitialized = true;
@@ -164,16 +171,44 @@ public class Product {
     link = pBuilder.link;
     productID = pBuilder.productID;
     if (pBuilder.supportedCurrencies != null) {
-      supportedCurrencies.addAll(pBuilder.supportedCurrencies);
+      supportedCurrencies = pBuilder.supportedCurrencies;
+    }
+    else {
+      supportedCurrencies = new HashSet<CurrencyCode>();
     }
     if (pBuilder.productCodes != null) {
-      productCodes.addAll(pBuilder.productCodes);
+      productCodes = pBuilder.productCodes;
+    }
+    else {
+      productCodes = new HashSet<ProductCode>();
     }
     description = pBuilder.description;
     if (pBuilder.sortiments != null) {
-      sortiments.addAll(pBuilder.sortiments);
+      sortiments = pBuilder.sortiments;
+    }
+    else {
+      sortiments = new HashSet<Sortiment>();
     }
     uri = pBuilder.uri;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new Product objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new Product objects. The method never returns null.
+   */
+  public static Builder builder( Product pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -234,13 +269,13 @@ public class Product {
     private String uri = "https://products.anaptecs.de/123456789";
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Product#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Product)} instead of private constructor to create new builder.
+     * Use {@link Product#builder(Product)} instead of private constructor to create new builder.
      */
     protected Builder( Product pObject ) {
       if (pObject != null) {
@@ -256,26 +291,6 @@ public class Product {
         sortiments = pObject.sortiments;
         uri = pObject.uri;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Product objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Product pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -446,23 +461,6 @@ public class Product {
   }
 
   /**
-   * Method sets the association "resellers" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pResellers Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setResellers( Set<Reseller> pResellers ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "resellers".
-    this.clearResellers();
-    // If the association is null, removing all entries is sufficient.
-    if (pResellers != null) {
-      resellers = new HashSet<Reseller>(pResellers);
-    }
-  }
-
-  /**
    * Method adds the passed Reseller object to the association "resellers".
    * 
    * 
@@ -517,6 +515,7 @@ public class Product {
     Collection<Reseller> lResellers = new HashSet<Reseller>(resellers);
     Iterator<Reseller> lIterator = lResellers.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromResellers(lIterator.next());
     }
   }
@@ -619,24 +618,6 @@ public class Product {
   }
 
   /**
-   * Method sets the association "supportedCurrencies" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pSupportedCurrencies Collection with objects to which the association should be set. The parameter must not
-   * be null.
-   */
-  void setSupportedCurrencies( Set<CurrencyCode> pSupportedCurrencies ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "supportedCurrencies".
-    this.clearSupportedCurrencies();
-    // If the association is null, removing all entries is sufficient.
-    if (pSupportedCurrencies != null) {
-      supportedCurrencies = new HashSet<CurrencyCode>(pSupportedCurrencies);
-    }
-  }
-
-  /**
    * Method adds the passed CurrencyCode object to the association "supportedCurrencies".
    * 
    * 
@@ -680,11 +661,7 @@ public class Product {
    */
   public void clearSupportedCurrencies( ) {
     // Remove all objects from association "supportedCurrencies".
-    Collection<CurrencyCode> lSupportedCurrencies = new HashSet<CurrencyCode>(supportedCurrencies);
-    Iterator<CurrencyCode> lIterator = lSupportedCurrencies.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromSupportedCurrencies(lIterator.next());
-    }
+    supportedCurrencies.clear();
   }
 
   /**
@@ -697,24 +674,6 @@ public class Product {
   public Set<ProductCode> getProductCodes( ) {
     // Return all ProductCode objects as unmodifiable collection.
     return Collections.unmodifiableSet(productCodes);
-  }
-
-  /**
-   * Method sets the association "productCodes" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pProductCodes Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setProductCodes( Set<ProductCode> pProductCodes ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "productCodes".
-    this.clearProductCodes();
-    // If the association is null, removing all entries is sufficient.
-    if (pProductCodes != null) {
-      productCodes = new HashSet<ProductCode>(pProductCodes);
-    }
   }
 
   /**
@@ -760,11 +719,7 @@ public class Product {
    */
   public void clearProductCodes( ) {
     // Remove all objects from association "productCodes".
-    Collection<ProductCode> lProductCodes = new HashSet<ProductCode>(productCodes);
-    Iterator<ProductCode> lIterator = lProductCodes.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromProductCodes(lIterator.next());
-    }
+    productCodes.clear();
   }
 
   /**
@@ -800,23 +755,6 @@ public class Product {
   public Set<Sortiment> getSortiments( ) {
     // Return all Sortiment objects as unmodifiable collection.
     return Collections.unmodifiableSet(sortiments);
-  }
-
-  /**
-   * Method sets the association "sortiments" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pSortiments Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setSortiments( Set<Sortiment> pSortiments ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "sortiments".
-    this.clearSortiments();
-    // If the association is null, removing all entries is sufficient.
-    if (pSortiments != null) {
-      sortiments = new HashSet<Sortiment>(pSortiments);
-    }
   }
 
   /**
@@ -874,6 +812,7 @@ public class Product {
     Collection<Sortiment> lSortiments = new HashSet<Sortiment>(sortiments);
     Iterator<Sortiment> lIterator = lSortiments.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromSortiments(lIterator.next());
     }
   }
@@ -900,7 +839,7 @@ public class Product {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

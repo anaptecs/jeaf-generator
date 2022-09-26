@@ -8,7 +8,6 @@ package com.anaptecs.spring.base;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -75,7 +74,7 @@ public class ChildBB extends ChildB {
    * 
    */
   @Deprecated
-  private Set<ChildB> deprecatedBs = new HashSet<ChildB>();
+  private Set<ChildB> deprecatedBs;
 
   /**
    * 
@@ -95,7 +94,7 @@ public class ChildBB extends ChildB {
    * object creation builder should be used instead.
    */
   protected ChildBB( ) {
-    // Nothing to do.
+    deprecatedBs = new HashSet<ChildB>();
   }
 
   /**
@@ -110,10 +109,32 @@ public class ChildBB extends ChildB {
     childBBAttribute = pBuilder.childBBAttribute;
     deprecatedAttribute = pBuilder.deprecatedAttribute;
     if (pBuilder.deprecatedBs != null) {
-      deprecatedBs.addAll(pBuilder.deprecatedBs);
+      deprecatedBs = pBuilder.deprecatedBs;
+    }
+    else {
+      deprecatedBs = new HashSet<ChildB>();
     }
     deprecatedParent = pBuilder.deprecatedParent;
     deprecatedArray = pBuilder.deprecatedArray;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new ChildBB objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new ChildBB objects. The method never returns null.
+   */
+  public static Builder builder( ChildBB pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -152,14 +173,14 @@ public class ChildBB extends ChildB {
     private byte[] deprecatedArray;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ChildBB#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(ChildBB)} instead of private constructor to create new builder.
+     * Use {@link ChildBB#builder(ChildBB)} instead of private constructor to create new builder.
      */
     protected Builder( ChildBB pObject ) {
       super(pObject);
@@ -171,26 +192,6 @@ public class ChildBB extends ChildB {
         deprecatedParent = pObject.deprecatedParent;
         deprecatedArray = pObject.deprecatedArray;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ChildBB objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( ChildBB pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -366,25 +367,6 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method sets the association "deprecatedBs" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pDeprecatedBs Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  @Deprecated
-  void setDeprecatedBs( Set<ChildB> pDeprecatedBs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "deprecatedBs".
-    this.clearDeprecatedBs();
-    // If the association is null, removing all entries is sufficient.
-    if (pDeprecatedBs != null) {
-      deprecatedBs = new HashSet<ChildB>(pDeprecatedBs);
-    }
-  }
-
-  /**
    * Method adds the passed ChildB object to the association "deprecatedBs".
    * 
    * 
@@ -437,11 +419,7 @@ public class ChildBB extends ChildB {
   @Deprecated
   public void clearDeprecatedBs( ) {
     // Remove all objects from association "deprecatedBs".
-    Collection<ChildB> lDeprecatedBs = new HashSet<ChildB>(deprecatedBs);
-    Iterator<ChildB> lIterator = lDeprecatedBs.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromDeprecatedBs(lIterator.next());
-    }
+    deprecatedBs.clear();
   }
 
   /**
@@ -513,7 +491,7 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

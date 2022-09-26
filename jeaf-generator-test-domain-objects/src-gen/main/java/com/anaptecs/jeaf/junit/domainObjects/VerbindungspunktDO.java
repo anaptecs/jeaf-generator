@@ -7,8 +7,6 @@ package com.anaptecs.jeaf.junit.domainObjects;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -52,13 +50,14 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   /**
    * 
    */
-  private SortedSet<UICCodeDO> uicCodes = new TreeSet<UICCodeDO>();
+  private SortedSet<UICCodeDO> uicCodes;
 
   /**
    * Initialize object. Nothing special to do.
    */
   public VerbindungspunktDO( ) {
     objectID = null;
+    uicCodes = new TreeSet<UICCodeDO>();
   }
 
   /**
@@ -69,6 +68,7 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   public VerbindungspunktDO( DomainObjectID pDomainObjectID ) {
     super(pDomainObjectID);
     objectID = null;
+    uicCodes = new TreeSet<UICCodeDO>();
   }
 
   /**
@@ -134,23 +134,6 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   }
 
   /**
-   * Method sets the association "uicCodes" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pUicCodes Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setUicCodes( SortedSet<UICCodeDO> pUicCodes ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "uicCodes".
-    this.clearUicCodes();
-    // If the association is null, removing all entries is sufficient.
-    if (pUicCodes != null) {
-      uicCodes = new TreeSet<UICCodeDO>(pUicCodes);
-    }
-  }
-
-  /**
    * Method adds the passed UICCodeDO object to the association "uicCodes".
    * 
    * 
@@ -198,15 +181,11 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
    */
   public void clearUicCodes( ) {
     // Remove all objects from association "uicCodes".
-    Collection<UICCodeDO> lUicCodes = new HashSet<UICCodeDO>(uicCodes);
-    Iterator<UICCodeDO> lIterator = lUicCodes.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromUicCodes(lIterator.next());
-    }
+    uicCodes.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

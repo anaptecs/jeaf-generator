@@ -161,7 +161,7 @@ public class OtherMappingObjectToMappingParentDOConverter implements ObjectMappe
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    OtherMappingObject lNewSourceObject = OtherMappingObject.Builder.newBuilder().build();
+    OtherMappingObject lNewSourceObject = OtherMappingObject.builder().build();
     OtherMappingObjectToMappingParentDOConverter lObjectMapper =
         OtherMappingObjectToMappingParentDOConverter.getConverter();
     lObjectMapper.applyMappings(lNewSourceObject, pTarget, MappingType.READ);

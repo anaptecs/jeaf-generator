@@ -58,7 +58,7 @@ public class PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter
     // Check parameter
     Check.checkInvalidParameterNull(pSource, "pSource");
     // Create new target object.
-    WrapperArrayServiceObject lTarget = WrapperArrayServiceObject.Builder.newBuilder().build();
+    WrapperArrayServiceObject lTarget = WrapperArrayServiceObject.builder().build();
     PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter lObjectMapper =
         PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter.getConverter();
     // Take value(s) from source, map them to target and return the created target object.
@@ -167,7 +167,7 @@ public class PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    PrimitiveArrayServiceObject lNewSourceObject = PrimitiveArrayServiceObject.Builder.newBuilder().build();
+    PrimitiveArrayServiceObject lNewSourceObject = PrimitiveArrayServiceObject.builder().build();
     PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter lObjectMapper =
         PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter.getConverter();
     lObjectMapper.applyMappings(lNewSourceObject, pTarget, MappingType.READ);

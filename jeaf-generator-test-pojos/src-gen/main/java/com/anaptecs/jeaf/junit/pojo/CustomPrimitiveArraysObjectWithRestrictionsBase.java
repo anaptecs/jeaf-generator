@@ -411,15 +411,14 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     private String[] bStringArray;
 
     /**
-     * Use {@link CustomPrimitiveArraysObjectWithRestrictions.Builder#newBuilder()} instead of protected constructor to
-     * create new builder.
+     * Use {@link CustomPrimitiveArraysObjectWithRestrictions.builder()} instead of protected constructor to create new
+     * builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use
-     * {@link CustomPrimitiveArraysObjectWithRestrictions.Builder#newBuilder(CustomPrimitiveArraysObjectWithRestrictions)}
+     * Use {@link CustomPrimitiveArraysObjectWithRestrictions.builder(CustomPrimitiveArraysObjectWithRestrictions)}
      * instead of protected constructor to create new builder.
      */
     protected BuilderBase( CustomPrimitiveArraysObjectWithRestrictionsBase pObject ) {
@@ -1602,7 +1601,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

@@ -71,16 +71,16 @@ public abstract class BidirectionalABase {
   /**
    * 
    */
-  private transient Set<BidirectionalB> transientBs = new HashSet<BidirectionalB>();
+  private transient Set<BidirectionalB> transientBs;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected BidirectionalABase( ) {
-    // Nothing to do.
     // Bidirectional back reference is not yet set up correctly
     childBackReferenceInitialized = false;
+    transientBs = new HashSet<BidirectionalB>();
   }
 
   /**
@@ -98,7 +98,10 @@ public abstract class BidirectionalABase {
     // Bidirectional back reference is set up correctly as a builder is used.
     childBackReferenceInitialized = true;
     if (pBuilder.transientBs != null) {
-      transientBs.addAll(pBuilder.transientBs);
+      transientBs = pBuilder.transientBs;
+    }
+    else {
+      transientBs = new HashSet<BidirectionalB>();
     }
   }
 
@@ -128,14 +131,13 @@ public abstract class BidirectionalABase {
     private Set<BidirectionalB> transientBs;
 
     /**
-     * Use {@link BidirectionalA.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link BidirectionalA.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link BidirectionalA.Builder#newBuilder(BidirectionalA)} instead of protected constructor to create new
-     * builder.
+     * Use {@link BidirectionalA.builder(BidirectionalA)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( BidirectionalABase pObject ) {
       if (pObject != null) {
@@ -365,23 +367,6 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method sets the association "transientBs" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pTransientBs Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setTransientBs( Set<BidirectionalB> pTransientBs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "transientBs".
-    this.clearTransientBs();
-    // If the association is null, removing all entries is sufficient.
-    if (pTransientBs != null) {
-      transientBs = new HashSet<BidirectionalB>(pTransientBs);
-    }
-  }
-
-  /**
    * Method adds the passed BidirectionalB object to the association "transientBs".
    * 
    * 
@@ -443,12 +428,13 @@ public abstract class BidirectionalABase {
     Collection<BidirectionalB> lTransientBs = new HashSet<BidirectionalB>(transientBs);
     Iterator<BidirectionalB> lIterator = lTransientBs.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromTransientBs(lIterator.next());
     }
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

@@ -178,7 +178,7 @@ public class PersonToMyPersonBOConverter implements ObjectMapper<Person, MyPerso
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    Person.Builder lBuilder = Person.Builder.newBuilder();
+    Person.Builder lBuilder = Person.builder();
     lBuilder.setID(pTarget.getID());
     Person lNewSourceObject = lBuilder.build();
     PersonToMyPersonBOConverter lObjectMapper = PersonToMyPersonBOConverter.getConverter();

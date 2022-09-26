@@ -35,7 +35,6 @@ public class OperationDayRef {
    * object creation builder should be used instead.
    */
   protected OperationDayRef( ) {
-    // Nothing to do.
   }
 
   /**
@@ -51,6 +50,26 @@ public class OperationDayRef {
   }
 
   /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new OperationDayRef objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new OperationDayRef objects. The method never
+   * returns null.
+   */
+  public static Builder builder( OperationDayRef pObject ) {
+    return new Builder(pObject);
+  }
+
+  /**
    * Class implements builder to create a new instance of class OperationDayRef. As the class has read only attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
@@ -61,39 +80,19 @@ public class OperationDayRef {
     private String value;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link OperationDayRef#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(OperationDayRef)} instead of private constructor to create new builder.
+     * Use {@link OperationDayRef#builder(OperationDayRef)} instead of private constructor to create new builder.
      */
     protected Builder( OperationDayRef pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         value = pObject.value;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new OperationDayRef objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( OperationDayRef pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -153,7 +152,7 @@ public class OperationDayRef {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

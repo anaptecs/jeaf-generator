@@ -55,7 +55,7 @@ public class ClassAToValidationTestObjectConverter implements ObjectMapper<Class
     // Check parameter
     Check.checkInvalidParameterNull(pSource, "pSource");
     // Create new target object.
-    ValidationTestObject lTarget = ValidationTestObject.Builder.newBuilder().build();
+    ValidationTestObject lTarget = ValidationTestObject.builder().build();
     ClassAToValidationTestObjectConverter lObjectMapper = ClassAToValidationTestObjectConverter.getConverter();
     // Take value(s) from source, map them to target and return the created target object.
     lObjectMapper.applyMappings(pSource, lTarget, MappingType.CREATE);
@@ -157,7 +157,7 @@ public class ClassAToValidationTestObjectConverter implements ObjectMapper<Class
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    ClassA lNewSourceObject = ClassA.Builder.newBuilder().build();
+    ClassA lNewSourceObject = ClassA.builder().build();
     ClassAToValidationTestObjectConverter lObjectMapper = ClassAToValidationTestObjectConverter.getConverter();
     lObjectMapper.applyMappings(lNewSourceObject, pTarget, MappingType.READ);
     return lNewSourceObject;

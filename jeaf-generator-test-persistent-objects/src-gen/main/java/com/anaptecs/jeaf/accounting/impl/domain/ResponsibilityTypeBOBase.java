@@ -70,7 +70,6 @@ public abstract class ResponsibilityTypeBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected ResponsibilityTypeBOBase( ) {
-    // Nothing to do.
   }
 
   /**

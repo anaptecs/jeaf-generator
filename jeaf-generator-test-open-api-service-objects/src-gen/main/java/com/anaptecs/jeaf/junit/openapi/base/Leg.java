@@ -7,8 +7,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -47,14 +45,14 @@ public class Leg implements ServiceObject {
   /**
    * 
    */
-  private List<PlaceRef> stopovers = new ArrayList<PlaceRef>();
+  private List<PlaceRef> stopovers;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected Leg( ) {
-    // Nothing to do.
+    stopovers = new ArrayList<PlaceRef>();
   }
 
   /**
@@ -69,8 +67,30 @@ public class Leg implements ServiceObject {
     start = pBuilder.start;
     stop = pBuilder.stop;
     if (pBuilder.stopovers != null) {
-      stopovers.addAll(pBuilder.stopovers);
+      stopovers = pBuilder.stopovers;
     }
+    else {
+      stopovers = new ArrayList<PlaceRef>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new Leg objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new Leg objects. The method never returns null.
+   */
+  public static Builder builder( Leg pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -94,13 +114,13 @@ public class Leg implements ServiceObject {
     private List<PlaceRef> stopovers;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Leg#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Leg)} instead of private constructor to create new builder.
+     * Use {@link Leg#builder(Leg)} instead of private constructor to create new builder.
      */
     protected Builder( Leg pObject ) {
       if (pObject != null) {
@@ -109,25 +129,6 @@ public class Leg implements ServiceObject {
         stop = pObject.stop;
         stopovers = pObject.stopovers;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Leg objects. The method never returns null.
-     */
-    public static Builder newBuilder( Leg pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -258,23 +259,6 @@ public class Leg implements ServiceObject {
   }
 
   /**
-   * Method sets the association "stopovers" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pStopovers Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setStopovers( List<PlaceRef> pStopovers ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "stopovers".
-    this.clearStopovers();
-    // If the association is null, removing all entries is sufficient.
-    if (pStopovers != null) {
-      stopovers = new ArrayList<PlaceRef>(pStopovers);
-    }
-  }
-
-  /**
    * Method adds the passed PlaceRef object to the association "stopovers".
    * 
    * 
@@ -322,15 +306,11 @@ public class Leg implements ServiceObject {
    */
   public void clearStopovers( ) {
     // Remove all objects from association "stopovers".
-    Collection<PlaceRef> lStopovers = new HashSet<PlaceRef>(stopovers);
-    Iterator<PlaceRef> lIterator = lStopovers.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromStopovers(lIterator.next());
-    }
+    stopovers.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

@@ -66,13 +66,13 @@ public abstract class AdvancedPOJOBase {
     private int readonlyDefault = 4711;
 
     /**
-     * Use {@link AdvancedPOJO.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link AdvancedPOJO.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link AdvancedPOJO.Builder#newBuilder(AdvancedPOJO)} instead of protected constructor to create new builder.
+     * Use {@link AdvancedPOJO.builder(AdvancedPOJO)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( AdvancedPOJOBase pObject ) {
       if (pObject != null) {
@@ -140,7 +140,7 @@ public abstract class AdvancedPOJOBase {
   public abstract int returnPrimitive( );
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

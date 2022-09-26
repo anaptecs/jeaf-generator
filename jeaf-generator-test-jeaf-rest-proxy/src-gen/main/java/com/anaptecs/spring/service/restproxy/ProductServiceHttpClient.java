@@ -312,7 +312,7 @@ public class ProductServiceHttpClient {
         // Build up problem JSON from the information we have.
         else {
           // Try to resolve some details.
-          Problem.Builder lProblemBuilder = Problem.Builder.newBuilder().setStatus(lStatusCode);
+          Problem.Builder lProblemBuilder = Problem.builder().setStatus(lStatusCode);
           lProblemBuilder.setType(lRequestURI.toString());
           HttpEntity lEntity = lResponse.getEntity();
           if (lEntity != null && lEntity.getContentLength() > 0) {
@@ -328,8 +328,7 @@ public class ProductServiceHttpClient {
     //
     // IOException can result from communication or serialization problems.
     catch (IOException e) {
-      Problem.Builder lProblemBuilder =
-          Problem.Builder.newBuilder().setStatus(HTTPStatusCode.INTERNAL_SERVER_ERROR.getCode());
+      Problem.Builder lProblemBuilder = Problem.builder().setStatus(HTTPStatusCode.INTERNAL_SERVER_ERROR.getCode());
       lProblemBuilder.setType(pRequest.toString());
       lProblemBuilder.setDetail(e.getMessage());
       throw new RESTProblemException(lProblemBuilder.build(), e);
@@ -340,8 +339,7 @@ public class ProductServiceHttpClient {
     }
     // Thanks to circuit breaker interface definition of Resilience4J we also have to catch java.lang.Exception ;-(
     catch (Exception e) {
-      Problem.Builder lProblemBuilder =
-          Problem.Builder.newBuilder().setStatus(HTTPStatusCode.INTERNAL_SERVER_ERROR.getCode());
+      Problem.Builder lProblemBuilder = Problem.builder().setStatus(HTTPStatusCode.INTERNAL_SERVER_ERROR.getCode());
       lProblemBuilder.setType(pRequest.toString());
       lProblemBuilder.setDetail(e.getMessage());
       throw new RESTProblemException(lProblemBuilder.build(), e);

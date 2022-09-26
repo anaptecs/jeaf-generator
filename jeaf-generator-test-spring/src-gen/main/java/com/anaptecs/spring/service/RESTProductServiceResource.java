@@ -89,7 +89,7 @@ public class RESTProductServiceResource {
       @RequestParam(name = "q1", required = true) String pQueryParam ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    Context.Builder lBuilder = Context.Builder.newBuilder();
+    Context.Builder lBuilder = Context.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);
@@ -138,7 +138,7 @@ public class RESTProductServiceResource {
   public List<CurrencyCode> getSupportedCurrencies(
       @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ChannelCode pChannelCode = ChannelCode.Builder.newBuilder().setCode(pChannelCodeAsBasicType).build();
+    ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
     // Get Spring service and delegate call.
     RESTProductService lService = this.getRESTProductService();
     return lService.getSupportedCurrencies(pChannelCode);
@@ -151,7 +151,7 @@ public class RESTProductServiceResource {
   public List<CurrencyCode> getSupportedCurrenciesAsync(
       @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ChannelCode pChannelCode = ChannelCode.Builder.newBuilder().setCode(pChannelCodeAsBasicType).build();
+    ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
     // Get Spring service and delegate call.
     RESTProductService lService = this.getRESTProductService();
     return lService.getSupportedCurrenciesAsync(pChannelCode);
@@ -231,7 +231,7 @@ public class RESTProductServiceResource {
       @RequestParam(name = "sqlDate", required = true) Date pSqlDate ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DateQueryParamsBean.Builder lBuilder = DateQueryParamsBean.Builder.newBuilder();
+    DateQueryParamsBean.Builder lBuilder = DateQueryParamsBean.builder();
     lBuilder.setOffsetDateTime(pOffsetDateTime);
     lBuilder.setOffsetTime(pOffsetTime);
     lBuilder.setLocalDateTime(pLocalDateTime);
@@ -286,7 +286,7 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "SQL-Date", required = true) Date pSqlDate ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DateHeaderParamsBean.Builder lBuilder = DateHeaderParamsBean.Builder.newBuilder();
+    DateHeaderParamsBean.Builder lBuilder = DateHeaderParamsBean.builder();
     lBuilder.setOffsetDateTime(pOffsetDateTime);
     lBuilder.setOffsetTime(pOffsetTime);
     lBuilder.setLocalDateTime(pLocalDateTime);

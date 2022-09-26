@@ -24,7 +24,7 @@ public class BooleanCodeTypeDeserializer extends JsonDeserializer<BooleanCodeTyp
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
-      return BooleanCodeType.Builder.newBuilder().setCode(lNode.asBoolean()).build();
+      return BooleanCodeType.builder().setCode(lNode.asBoolean()).build();
     }
     // Node is not a TextNode
     else {

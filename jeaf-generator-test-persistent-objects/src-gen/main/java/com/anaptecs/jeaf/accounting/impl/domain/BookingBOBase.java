@@ -3,7 +3,6 @@ package com.anaptecs.jeaf.accounting.impl.domain;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -69,7 +68,7 @@ public abstract class BookingBOBase extends PersistentObject {
   /**
    * Person who authorized the booking.
    */
-  private Set<MyPersonBO> remitters = new HashSet<MyPersonBO>();
+  private Set<MyPersonBO> remitters;
 
   /**
    * 
@@ -81,7 +80,7 @@ public abstract class BookingBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected BookingBOBase( ) {
-    // Nothing to do.
+    remitters = new HashSet<MyPersonBO>();
   }
 
   /**
@@ -170,22 +169,6 @@ public abstract class BookingBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "remitters" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it. Person who authorized the booking.
-   * 
-   * @param pRemitters Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setRemitters( Set<MyPersonBO> pRemitters ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "remitters".
-    this.clearRemitters();
-    // If the association is null, removing all entries is sufficient.
-    if (pRemitters != null) {
-      remitters = new HashSet<MyPersonBO>(pRemitters);
-    }
-  }
-
-  /**
    * Method adds the passed MyPersonBO object to the association "remitters". Person who authorized the booking.
    * 
    * @param pRemitters Object that should be added to the association "remitters". The parameter must not be null.
@@ -229,11 +212,7 @@ public abstract class BookingBOBase extends PersistentObject {
    */
   public void clearRemitters( ) {
     // Remove all objects from association "remitters".
-    Collection<MyPersonBO> lRemitters = new HashSet<MyPersonBO>(remitters);
-    Iterator<MyPersonBO> lIterator = lRemitters.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromRemitters(lIterator.next());
-    }
+    remitters.clear();
   }
 
   /**

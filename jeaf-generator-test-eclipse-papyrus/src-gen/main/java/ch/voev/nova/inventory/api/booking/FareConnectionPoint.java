@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.booking;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -52,14 +50,14 @@ public class FareConnectionPoint {
   /**
    * 
    */
-  private List<StationSet> stationSets = new ArrayList<StationSet>();
+  private List<StationSet> stationSets;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected FareConnectionPoint( ) {
-    // Nothing to do.
+    stationSets = new ArrayList<StationSet>();
   }
 
   /**
@@ -73,8 +71,31 @@ public class FareConnectionPoint {
     // Read attribute values from builder.
     name = pBuilder.name;
     if (pBuilder.stationSets != null) {
-      stationSets.addAll(pBuilder.stationSets);
+      stationSets = pBuilder.stationSets;
     }
+    else {
+      stationSets = new ArrayList<StationSet>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new FareConnectionPoint objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new FareConnectionPoint objects. The method never
+   * returns null.
+   */
+  public static Builder builder( FareConnectionPoint pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -93,13 +114,14 @@ public class FareConnectionPoint {
     private List<StationSet> stationSets;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link FareConnectionPoint#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(FareConnectionPoint)} instead of private constructor to create new builder.
+     * Use {@link FareConnectionPoint#builder(FareConnectionPoint)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( FareConnectionPoint pObject ) {
       if (pObject != null) {
@@ -107,26 +129,6 @@ public class FareConnectionPoint {
         name = pObject.name;
         stationSets = pObject.stationSets;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new FareConnectionPoint objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( FareConnectionPoint pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -214,23 +216,6 @@ public class FareConnectionPoint {
   }
 
   /**
-   * Method sets the association "stationSets" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pStationSets Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setStationSets( List<StationSet> pStationSets ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "stationSets".
-    this.clearStationSets();
-    // If the association is null, removing all entries is sufficient.
-    if (pStationSets != null) {
-      stationSets = new ArrayList<StationSet>(pStationSets);
-    }
-  }
-
-  /**
    * Method adds the passed StationSet object to the association "stationSets".
    * 
    * 
@@ -279,15 +264,11 @@ public class FareConnectionPoint {
    */
   public void clearStationSets( ) {
     // Remove all objects from association "stationSets".
-    Collection<StationSet> lStationSets = new HashSet<StationSet>(stationSets);
-    Iterator<StationSet> lIterator = lStationSets.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromStationSets(lIterator.next());
-    }
+    stationSets.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

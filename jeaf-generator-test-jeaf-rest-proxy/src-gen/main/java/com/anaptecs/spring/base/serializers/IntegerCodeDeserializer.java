@@ -26,7 +26,7 @@ public class IntegerCodeDeserializer extends JsonDeserializer<IntegerCode> {
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
-      return IntegerCode.Builder.newBuilder().setCode(lNode.asInt()).build();
+      return IntegerCode.builder().setCode(lNode.asInt()).build();
     }
     // Node is not a TextNode
     else {

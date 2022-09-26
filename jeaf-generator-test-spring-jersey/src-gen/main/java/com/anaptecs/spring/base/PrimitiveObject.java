@@ -241,7 +241,6 @@ public class PrimitiveObject {
    * object creation builder should be used instead.
    */
   protected PrimitiveObject( ) {
-    // Nothing to do.
   }
 
   /**
@@ -273,6 +272,26 @@ public class PrimitiveObject {
     aBigDecimal = pBuilder.aBigDecimal;
     aString = pBuilder.aString;
     bString = pBuilder.bString;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new PrimitiveObject objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new PrimitiveObject objects. The method never
+   * returns null.
+   */
+  public static Builder builder( PrimitiveObject pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -391,13 +410,13 @@ public class PrimitiveObject {
     private String bString;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PrimitiveObject#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PrimitiveObject)} instead of private constructor to create new builder.
+     * Use {@link PrimitiveObject#builder(PrimitiveObject)} instead of private constructor to create new builder.
      */
     protected Builder( PrimitiveObject pObject ) {
       if (pObject != null) {
@@ -425,26 +444,6 @@ public class PrimitiveObject {
         aString = pObject.aString;
         bString = pObject.bString;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new PrimitiveObject objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( PrimitiveObject pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -1163,7 +1162,7 @@ public class PrimitiveObject {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

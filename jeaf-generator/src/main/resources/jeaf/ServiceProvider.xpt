@@ -57,7 +57,7 @@ abstract class «name»Base implements com.anaptecs.jeaf.core.spi.ServiceProvide
 	static {
 		// Create Component ID and trace object.
 		Package lBasePackage = «this.name».class.getPackage();
-		COMPONENT_ID = new ComponentID("«this.name»", lBasePackage.getName());
+		COMPONENT_ID = new com.anaptecs.jeaf.xfun.api.common.ComponentID("«this.name»", lBasePackage.getName());
 	}
 	«ENDIF»
 

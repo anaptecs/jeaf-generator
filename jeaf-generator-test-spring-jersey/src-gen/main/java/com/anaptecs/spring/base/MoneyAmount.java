@@ -64,6 +64,26 @@ public class MoneyAmount {
   }
 
   /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new MoneyAmount objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new MoneyAmount objects. The method never returns
+   * null.
+   */
+  public static Builder builder( MoneyAmount pObject ) {
+    return new Builder(pObject);
+  }
+
+  /**
    * Class implements builder to create a new instance of class MoneyAmount. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
@@ -81,13 +101,13 @@ public class MoneyAmount {
     private CurrencyCode currencyCode;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link MoneyAmount#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(MoneyAmount)} instead of private constructor to create new builder.
+     * Use {@link MoneyAmount#builder(MoneyAmount)} instead of private constructor to create new builder.
      */
     protected Builder( MoneyAmount pObject ) {
       if (pObject != null) {
@@ -95,26 +115,6 @@ public class MoneyAmount {
         amount = pObject.amount;
         currencyCode = pObject.currencyCode;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new MoneyAmount objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( MoneyAmount pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -170,7 +170,7 @@ public class MoneyAmount {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

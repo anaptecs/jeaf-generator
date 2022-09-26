@@ -52,12 +52,12 @@ public abstract class ProductDOBase extends DomainObject {
   /**
    * 
    */
-  private Set<AssortmentDO> assortments = new HashSet<AssortmentDO>();
+  private Set<AssortmentDO> assortments;
 
   /**
    * 
    */
-  private Set<PriceDO> pricesPerCurrency = new HashSet<PriceDO>();
+  private Set<PriceDO> pricesPerCurrency;
 
   /**
    * 
@@ -83,7 +83,8 @@ public abstract class ProductDOBase extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public ProductDOBase( ) {
-    // Nothing to do.
+    assortments = new HashSet<AssortmentDO>();
+    pricesPerCurrency = new HashSet<PriceDO>();
   }
 
   /**
@@ -93,6 +94,8 @@ public abstract class ProductDOBase extends DomainObject {
    */
   public ProductDOBase( DomainObjectID pDomainObjectID ) {
     super(pDomainObjectID);
+    assortments = new HashSet<AssortmentDO>();
+    pricesPerCurrency = new HashSet<PriceDO>();
   }
 
   /**
@@ -105,23 +108,6 @@ public abstract class ProductDOBase extends DomainObject {
   public Set<AssortmentDO> getAssortments( ) {
     // Return all AssortmentDO objects as unmodifiable collection.
     return Collections.unmodifiableSet(assortments);
-  }
-
-  /**
-   * Method sets the association "assortments" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pAssortments Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setAssortments( Set<AssortmentDO> pAssortments ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "assortments".
-    this.clearAssortments();
-    // If the association is null, removing all entries is sufficient.
-    if (pAssortments != null) {
-      assortments = new HashSet<AssortmentDO>(pAssortments);
-    }
   }
 
   /**
@@ -186,6 +172,7 @@ public abstract class ProductDOBase extends DomainObject {
     Collection<AssortmentDO> lAssortments = new HashSet<AssortmentDO>(assortments);
     Iterator<AssortmentDO> lIterator = lAssortments.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromAssortments(lIterator.next());
     }
   }
@@ -200,24 +187,6 @@ public abstract class ProductDOBase extends DomainObject {
   public Set<PriceDO> getPricesPerCurrency( ) {
     // Return all PriceDO objects as unmodifiable collection.
     return Collections.unmodifiableSet(pricesPerCurrency);
-  }
-
-  /**
-   * Method sets the association "pricesPerCurrency" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pPricesPerCurrency Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setPricesPerCurrency( Set<PriceDO> pPricesPerCurrency ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "pricesPerCurrency".
-    this.clearPricesPerCurrency();
-    // If the association is null, removing all entries is sufficient.
-    if (pPricesPerCurrency != null) {
-      pricesPerCurrency = new HashSet<PriceDO>(pPricesPerCurrency);
-    }
   }
 
   /**
@@ -270,11 +239,7 @@ public abstract class ProductDOBase extends DomainObject {
    */
   public void clearPricesPerCurrency( ) {
     // Remove all objects from association "pricesPerCurrency".
-    Collection<PriceDO> lPricesPerCurrency = new HashSet<PriceDO>(pricesPerCurrency);
-    Iterator<PriceDO> lIterator = lPricesPerCurrency.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromPricesPerCurrency(lIterator.next());
-    }
+    pricesPerCurrency.clear();
   }
 
   /**
@@ -383,7 +348,7 @@ public abstract class ProductDOBase extends DomainObject {
   public abstract PriceDO getPrice( Currency pCurrency );
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

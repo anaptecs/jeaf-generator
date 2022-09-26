@@ -42,7 +42,7 @@ public class BidirectionalB {
   /**
    * 
    */
-  private List<BidirectionalA> as = new ArrayList<BidirectionalA>();
+  private List<BidirectionalA> as;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -52,7 +52,7 @@ public class BidirectionalB {
   /**
    * 
    */
-  private List<BidirectionalA> theAs = new ArrayList<BidirectionalA>();
+  private List<BidirectionalA> theAs;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -64,9 +64,10 @@ public class BidirectionalB {
    * object creation builder should be used instead.
    */
   protected BidirectionalB( ) {
-    // Nothing to do.
+    as = new ArrayList<BidirectionalA>();
     // Bidirectional back reference is not yet set up correctly
     asBackReferenceInitialized = false;
+    theAs = new ArrayList<BidirectionalA>();
     // Bidirectional back reference is not yet set up correctly
     theAsBackReferenceInitialized = false;
   }
@@ -81,15 +82,41 @@ public class BidirectionalB {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.as != null) {
-      as.addAll(pBuilder.as);
+      as = pBuilder.as;
+    }
+    else {
+      as = new ArrayList<BidirectionalA>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     asBackReferenceInitialized = true;
     if (pBuilder.theAs != null) {
-      theAs.addAll(pBuilder.theAs);
+      theAs = pBuilder.theAs;
+    }
+    else {
+      theAs = new ArrayList<BidirectionalA>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     theAsBackReferenceInitialized = true;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new BidirectionalB objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new BidirectionalB objects. The method never returns
+   * null.
+   */
+  public static Builder builder( BidirectionalB pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -108,13 +135,13 @@ public class BidirectionalB {
     private List<BidirectionalA> theAs;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link BidirectionalB#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(BidirectionalB)} instead of private constructor to create new builder.
+     * Use {@link BidirectionalB#builder(BidirectionalB)} instead of private constructor to create new builder.
      */
     protected Builder( BidirectionalB pObject ) {
       if (pObject != null) {
@@ -122,26 +149,6 @@ public class BidirectionalB {
         as = pObject.as;
         theAs = pObject.theAs;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new BidirectionalB objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( BidirectionalB pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -221,23 +228,6 @@ public class BidirectionalB {
   }
 
   /**
-   * Method sets the association "as" to the passed collection. All objects that formerly were part of the association
-   * will be removed from it.
-   * 
-   * 
-   * @param pAs Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setAs( List<BidirectionalA> pAs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "as".
-    this.clearAs();
-    // If the association is null, removing all entries is sufficient.
-    if (pAs != null) {
-      as = new ArrayList<BidirectionalA>(pAs);
-    }
-  }
-
-  /**
    * Method adds the passed BidirectionalA object to the association "as".
    * 
    * 
@@ -301,6 +291,7 @@ public class BidirectionalB {
     Collection<BidirectionalA> lAs = new HashSet<BidirectionalA>(as);
     Iterator<BidirectionalA> lIterator = lAs.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromAs(lIterator.next());
     }
   }
@@ -323,23 +314,6 @@ public class BidirectionalB {
     }
     // Return all BidirectionalA objects as unmodifiable collection.
     return Collections.unmodifiableList(theAs);
-  }
-
-  /**
-   * Method sets the association "theAs" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pTheAs Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setTheAs( List<BidirectionalA> pTheAs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "theAs".
-    this.clearTheAs();
-    // If the association is null, removing all entries is sufficient.
-    if (pTheAs != null) {
-      theAs = new ArrayList<BidirectionalA>(pTheAs);
-    }
   }
 
   /**
@@ -403,12 +377,13 @@ public class BidirectionalB {
     Collection<BidirectionalA> lTheAs = new HashSet<BidirectionalA>(theAs);
     Iterator<BidirectionalA> lIterator = lTheAs.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromTheAs(lIterator.next());
     }
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

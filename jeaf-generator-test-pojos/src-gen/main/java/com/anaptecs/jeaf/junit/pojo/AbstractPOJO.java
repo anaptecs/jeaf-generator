@@ -41,7 +41,6 @@ public abstract class AbstractPOJO {
    * object creation builder should be used instead.
    */
   protected AbstractPOJO( ) {
-    // Nothing to do.
   }
 
   /**
@@ -67,13 +66,13 @@ public abstract class AbstractPOJO {
     private String abtractAttr;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link AbstractPOJO#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(AbstractPOJO)} instead of private constructor to create new builder.
+     * Use {@link AbstractPOJO#builder(AbstractPOJO)} instead of private constructor to create new builder.
      */
     protected Builder( AbstractPOJO pObject ) {
       if (pObject != null) {
@@ -116,7 +115,7 @@ public abstract class AbstractPOJO {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

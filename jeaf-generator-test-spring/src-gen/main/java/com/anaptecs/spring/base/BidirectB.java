@@ -33,7 +33,6 @@ public class BidirectB {
    * object creation builder should be used instead.
    */
   protected BidirectB( ) {
-    // Nothing to do.
     // Bidirectional back reference is not yet set up correctly
     aBackReferenceInitialized = false;
   }
@@ -51,6 +50,26 @@ public class BidirectB {
   }
 
   /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new BidirectB objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new BidirectB objects. The method never returns
+   * null.
+   */
+  public static Builder builder( BidirectB pObject ) {
+    return new Builder(pObject);
+  }
+
+  /**
    * Class implements builder to create a new instance of class BidirectB. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
@@ -61,13 +80,13 @@ public class BidirectB {
     private BidirectA a;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link BidirectB#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(BidirectB)} instead of private constructor to create new builder.
+     * Use {@link BidirectB#builder(BidirectB)} instead of private constructor to create new builder.
      */
     protected Builder( BidirectB pObject ) {
       if (pObject != null) {
@@ -79,7 +98,7 @@ public class BidirectB {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new BidirectB objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -163,7 +182,7 @@ public class BidirectB {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

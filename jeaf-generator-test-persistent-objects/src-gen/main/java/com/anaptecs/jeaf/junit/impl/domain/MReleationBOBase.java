@@ -44,7 +44,7 @@ public abstract class MReleationBOBase extends PersistentObject {
   /**
    * 
    */
-  private Set<NReleationBO> ns = new HashSet<NReleationBO>();
+  private Set<NReleationBO> ns;
 
   /**
    * 
@@ -56,7 +56,7 @@ public abstract class MReleationBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected MReleationBOBase( ) {
-    // Nothing to do.
+    ns = new HashSet<NReleationBO>();
   }
 
   /**
@@ -78,23 +78,6 @@ public abstract class MReleationBOBase extends PersistentObject {
   public Set<NReleationBO> getNs( ) {
     // Return all NReleationBO objects as unmodifiable collection.
     return Collections.unmodifiableSet(ns);
-  }
-
-  /**
-   * Method sets the association "ns" to the passed collection. All objects that formerly were part of the association
-   * will be removed from it.
-   * 
-   * 
-   * @param pNs Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setNs( Set<NReleationBO> pNs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "ns".
-    this.clearNs();
-    // If the association is null, removing all entries is sufficient.
-    if (pNs != null) {
-      ns = new HashSet<NReleationBO>(pNs);
-    }
   }
 
   /**
@@ -158,6 +141,7 @@ public abstract class MReleationBOBase extends PersistentObject {
     Collection<NReleationBO> lNs = new HashSet<NReleationBO>(ns);
     Iterator<NReleationBO> lIterator = lNs.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromNs(lIterator.next());
     }
   }

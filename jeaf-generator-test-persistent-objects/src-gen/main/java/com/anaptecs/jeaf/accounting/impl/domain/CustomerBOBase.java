@@ -54,12 +54,12 @@ public abstract class CustomerBOBase extends PersistentObject {
   /**
    * 
    */
-  private Set<AccountBO> accounts = new HashSet<AccountBO>();
+  private Set<AccountBO> accounts;
 
   /**
    * 
    */
-  private Set<EmployeeBO> attendingEmployees = new HashSet<EmployeeBO>();
+  private Set<EmployeeBO> attendingEmployees;
 
   /**
    * 
@@ -76,7 +76,8 @@ public abstract class CustomerBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected CustomerBOBase( ) {
-    // Nothing to do.
+    accounts = new HashSet<AccountBO>();
+    attendingEmployees = new HashSet<EmployeeBO>();
   }
 
   /**
@@ -98,23 +99,6 @@ public abstract class CustomerBOBase extends PersistentObject {
   public Set<AccountBO> getAccounts( ) {
     // Return all AccountBO objects as unmodifiable collection.
     return Collections.unmodifiableSet(accounts);
-  }
-
-  /**
-   * Method sets the association "accounts" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pAccounts Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setAccounts( Set<AccountBO> pAccounts ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "accounts".
-    this.clearAccounts();
-    // If the association is null, removing all entries is sufficient.
-    if (pAccounts != null) {
-      accounts = new HashSet<AccountBO>(pAccounts);
-    }
   }
 
   /**
@@ -181,6 +165,7 @@ public abstract class CustomerBOBase extends PersistentObject {
     Collection<AccountBO> lAccounts = new HashSet<AccountBO>(accounts);
     Iterator<AccountBO> lIterator = lAccounts.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromAccounts(lIterator.next());
     }
   }
@@ -195,24 +180,6 @@ public abstract class CustomerBOBase extends PersistentObject {
   public Set<EmployeeBO> getAttendingEmployees( ) {
     // Return all EmployeeBO objects as unmodifiable collection.
     return Collections.unmodifiableSet(attendingEmployees);
-  }
-
-  /**
-   * Method sets the association "attendingEmployees" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pAttendingEmployees Collection with objects to which the association should be set. The parameter must not
-   * be null.
-   */
-  void setAttendingEmployees( Set<EmployeeBO> pAttendingEmployees ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "attendingEmployees".
-    this.clearAttendingEmployees();
-    // If the association is null, removing all entries is sufficient.
-    if (pAttendingEmployees != null) {
-      attendingEmployees = new HashSet<EmployeeBO>(pAttendingEmployees);
-    }
   }
 
   /**
@@ -278,6 +245,7 @@ public abstract class CustomerBOBase extends PersistentObject {
     Collection<EmployeeBO> lAttendingEmployees = new HashSet<EmployeeBO>(attendingEmployees);
     Iterator<EmployeeBO> lIterator = lAttendingEmployees.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromAttendingEmployees(lIterator.next());
     }
   }

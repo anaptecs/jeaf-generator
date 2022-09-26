@@ -66,14 +66,14 @@ public abstract class ReadonlyDefaultPOJOBase {
     private int readonlyDefault = 4711;
 
     /**
-     * Use {@link ReadonlyDefaultPOJO.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link ReadonlyDefaultPOJO.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link ReadonlyDefaultPOJO.Builder#newBuilder(ReadonlyDefaultPOJO)} instead of protected constructor to
-     * create new builder.
+     * Use {@link ReadonlyDefaultPOJO.builder(ReadonlyDefaultPOJO)} instead of protected constructor to create new
+     * builder.
      */
     protected BuilderBase( ReadonlyDefaultPOJOBase pObject ) {
       if (pObject != null) {
@@ -128,7 +128,7 @@ public abstract class ReadonlyDefaultPOJOBase {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

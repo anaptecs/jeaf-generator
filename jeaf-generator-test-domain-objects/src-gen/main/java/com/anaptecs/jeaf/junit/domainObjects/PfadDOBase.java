@@ -8,8 +8,6 @@ package com.anaptecs.jeaf.junit.domainObjects;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import com.anaptecs.jeaf.core.api.DomainObject;
@@ -31,13 +29,13 @@ public abstract class PfadDOBase extends DomainObject {
   /**
    * 
    */
-  private List<KanteDO> kantenSequenz = new ArrayList<KanteDO>();
+  private List<KanteDO> kantenSequenz;
 
   /**
    * Initialize object. Nothing special to do.
    */
   public PfadDOBase( ) {
-    // Nothing to do.
+    kantenSequenz = new ArrayList<KanteDO>();
   }
 
   /**
@@ -47,6 +45,7 @@ public abstract class PfadDOBase extends DomainObject {
    */
   public PfadDOBase( DomainObjectID pDomainObjectID ) {
     super(pDomainObjectID);
+    kantenSequenz = new ArrayList<KanteDO>();
   }
 
   /**
@@ -59,24 +58,6 @@ public abstract class PfadDOBase extends DomainObject {
   public List<KanteDO> getKantenSequenz( ) {
     // Return all KanteDO objects as unmodifiable collection.
     return Collections.unmodifiableList(kantenSequenz);
-  }
-
-  /**
-   * Method sets the association "kantenSequenz" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pKantenSequenz Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setKantenSequenz( List<KanteDO> pKantenSequenz ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "kantenSequenz".
-    this.clearKantenSequenz();
-    // If the association is null, removing all entries is sufficient.
-    if (pKantenSequenz != null) {
-      kantenSequenz = new ArrayList<KanteDO>(pKantenSequenz);
-    }
   }
 
   /**
@@ -129,11 +110,7 @@ public abstract class PfadDOBase extends DomainObject {
    */
   public void clearKantenSequenz( ) {
     // Remove all objects from association "kantenSequenz".
-    Collection<KanteDO> lKantenSequenz = new HashSet<KanteDO>(kantenSequenz);
-    Iterator<KanteDO> lIterator = lKantenSequenz.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromKantenSequenz(lIterator.next());
-    }
+    kantenSequenz.clear();
   }
 
   /**
@@ -143,7 +120,7 @@ public abstract class PfadDOBase extends DomainObject {
   public abstract Reiseweg ermittleReiseweg( );
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

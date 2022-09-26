@@ -98,7 +98,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
-  private transient Set<Account> accounts = new HashSet<Account>();
+  private transient Set<Account> accounts;
 
   /**
    * 
@@ -124,6 +124,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   protected Person( ) {
     objectID = null;
+    accounts = new HashSet<Account>();
   }
 
   /**
@@ -147,11 +148,33 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     firstName = pBuilder.firstName;
     dateOfBirth = pBuilder.dateOfBirth;
     if (pBuilder.accounts != null) {
-      accounts.addAll(pBuilder.accounts);
+      accounts = pBuilder.accounts;
+    }
+    else {
+      accounts = new HashSet<Account>();
     }
     customer = pBuilder.customer;
     age = pBuilder.age;
     displayName = pBuilder.displayName;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new Person objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new Person objects. The method never returns null.
+   */
+  public static Builder builder( Person pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -205,13 +228,13 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     private String displayName;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Person#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Person)} instead of private constructor to create new builder.
+     * Use {@link Person#builder(Person)} instead of private constructor to create new builder.
      */
     protected Builder( Person pObject ) {
       if (pObject != null) {
@@ -225,25 +248,6 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
         age = pObject.age;
         displayName = pObject.displayName;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Person objects. The method never returns null.
-     */
-    public static Builder newBuilder( Person pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -464,23 +468,6 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method sets the association "accounts" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pAccounts Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setAccounts( Set<Account> pAccounts ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "accounts".
-    this.clearAccounts();
-    // If the association is null, removing all entries is sufficient.
-    if (pAccounts != null) {
-      accounts = new HashSet<Account>(pAccounts);
-    }
-  }
-
-  /**
    * Method adds the passed Account object to the association "accounts".
    * 
    * 
@@ -541,6 +528,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     Collection<Account> lAccounts = new HashSet<Account>(accounts);
     Iterator<Account> lIterator = lAccounts.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromAccounts(lIterator.next());
     }
   }
@@ -631,7 +619,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

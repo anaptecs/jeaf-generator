@@ -87,7 +87,7 @@ public class «name»Resource {
 	  «IF this.hasDataTypeParameters()»
 	  // Convert basic type parameters into "real" objects.
 	  	«FOREACH this.getDataTypeParameters() AS basicParam»
-	    «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».Builder.newBuilder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
+	    «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
 	  	«ENDFOREACH»
 	  «ENDIF»
 
@@ -119,7 +119,7 @@ public class «name»Resource {
 	  // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the service interface but "only" our REST controller.
 	  «ENDIF»
 	  «FOREACH this.getBeanParams() AS beanParam»
-	  «beanParam.getTypeName()».Builder lBuilder = «beanParam.getTypeName()».Builder.newBuilder();
+	  «beanParam.getTypeName()».Builder lBuilder = «beanParam.getTypeName()».builder();
 	  «FOREACH beanParam.type.getAllAttributesFromHierarchy() AS attribute»
 	  lBuilder.«attribute.asSetter()»(«attribute.asParameter()»);
 	  «ENDFOREACH»
@@ -128,7 +128,7 @@ public class «name»Resource {
 	  «IF this.hasDataTypeParameters()»
 	  // Convert basic type parameters into "real" objects.
 	  	«FOREACH this.getDataTypeParameters() AS basicParam»
-	    «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».Builder.newBuilder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
+	    «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
 	  	«ENDFOREACH»
 	  «ENDIF»
       // Get Spring service and delegate call.
@@ -170,7 +170,7 @@ public class «name»Resource {
 					«IF this.hasDataTypeParameters()»
 					// Convert basic type parameters into "real" objects.
 						«FOREACH this.getDataTypeParameters() AS basicParam»
-					    «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».Builder.newBuilder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
+					    «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
 					  	«ENDFOREACH»
 					«ENDIF»
 					«IF getReturnTypeName() != "void"»

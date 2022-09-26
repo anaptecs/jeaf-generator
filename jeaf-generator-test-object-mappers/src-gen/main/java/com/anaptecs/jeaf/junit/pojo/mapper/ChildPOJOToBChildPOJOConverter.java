@@ -55,7 +55,7 @@ public class ChildPOJOToBChildPOJOConverter implements ObjectMapper<ChildPOJO, B
     // Check parameter
     Check.checkInvalidParameterNull(pSource, "pSource");
     // Create new target object.
-    BChildPOJO lTarget = BChildPOJO.Builder.newBuilder().build();
+    BChildPOJO lTarget = BChildPOJO.builder().build();
     ChildPOJOToBChildPOJOConverter lObjectMapper = ChildPOJOToBChildPOJOConverter.getConverter();
     // As class ChildPOJO also has a super class we have to retrieve a mapper for its super class as well. The delegate
     // is responsible for applying all mappings of the super classes.
@@ -162,7 +162,7 @@ public class ChildPOJOToBChildPOJOConverter implements ObjectMapper<ChildPOJO, B
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    ChildPOJO lNewSourceObject = ChildPOJO.Builder.newBuilder().build();
+    ChildPOJO lNewSourceObject = ChildPOJO.builder().build();
     ChildPOJOToBChildPOJOConverter lObjectMapper = ChildPOJOToBChildPOJOConverter.getConverter();
     lObjectMapper.applyMappings(lNewSourceObject, pTarget, MappingType.READ);
     return lNewSourceObject;

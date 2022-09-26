@@ -8,8 +8,6 @@ package com.anaptecs.spring.base;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -28,14 +26,14 @@ public class PartnerContainer {
   /**
    * 
    */
-  private List<Partner> partners = new ArrayList<Partner>();
+  private List<Partner> partners;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected PartnerContainer( ) {
-    // Nothing to do.
+    partners = new ArrayList<Partner>();
   }
 
   /**
@@ -46,8 +44,31 @@ public class PartnerContainer {
   protected PartnerContainer( Builder pBuilder ) {
     // Read attribute values from builder.
     if (pBuilder.partners != null) {
-      partners.addAll(pBuilder.partners);
+      partners = pBuilder.partners;
     }
+    else {
+      partners = new ArrayList<Partner>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new PartnerContainer objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new PartnerContainer objects. The method never
+   * returns null.
+   */
+  public static Builder builder( PartnerContainer pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -61,13 +82,13 @@ public class PartnerContainer {
     private List<Partner> partners;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PartnerContainer#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PartnerContainer)} instead of private constructor to create new builder.
+     * Use {@link PartnerContainer#builder(PartnerContainer)} instead of private constructor to create new builder.
      */
     protected Builder( PartnerContainer pObject ) {
       if (pObject != null) {
@@ -79,7 +100,7 @@ public class PartnerContainer {
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+     * @return {@link Builder} New builder that can be used to create new PartnerContainer objects.
      */
     public static Builder newBuilder( ) {
       return new Builder();
@@ -136,23 +157,6 @@ public class PartnerContainer {
   }
 
   /**
-   * Method sets the association "partners" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pPartners Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setPartners( List<Partner> pPartners ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "partners".
-    this.clearPartners();
-    // If the association is null, removing all entries is sufficient.
-    if (pPartners != null) {
-      partners = new ArrayList<Partner>(pPartners);
-    }
-  }
-
-  /**
    * Method adds the passed Partner object to the association "partners".
    * 
    * 
@@ -194,15 +198,11 @@ public class PartnerContainer {
    */
   public void clearPartners( ) {
     // Remove all objects from association "partners".
-    Collection<Partner> lPartners = new HashSet<Partner>(partners);
-    Iterator<Partner> lIterator = lPartners.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromPartners(lIterator.next());
-    }
+    partners.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

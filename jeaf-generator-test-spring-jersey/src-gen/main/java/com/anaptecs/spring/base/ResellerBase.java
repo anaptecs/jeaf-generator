@@ -50,7 +50,7 @@ public abstract class ResellerBase {
   /**
    * 
    */
-  private List<Channel> channels = new ArrayList<Channel>();
+  private List<Channel> channels;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -60,7 +60,7 @@ public abstract class ResellerBase {
   /**
    * 
    */
-  private transient Set<Product> products = new HashSet<Product>();
+  private transient Set<Product> products;
 
   /**
    * 
@@ -79,9 +79,10 @@ public abstract class ResellerBase {
    * object creation builder should be used instead.
    */
   protected ResellerBase( ) {
-    // Nothing to do.
+    channels = new ArrayList<Channel>();
     // Bidirectional back reference is not yet set up correctly
     channelsBackReferenceInitialized = false;
+    products = new HashSet<Product>();
   }
 
   /**
@@ -92,12 +93,18 @@ public abstract class ResellerBase {
   protected ResellerBase( BuilderBase pBuilder ) {
     // Read attribute values from builder.
     if (pBuilder.channels != null) {
-      channels.addAll(pBuilder.channels);
+      channels = pBuilder.channels;
+    }
+    else {
+      channels = new ArrayList<Channel>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     channelsBackReferenceInitialized = true;
     if (pBuilder.products != null) {
-      products.addAll(pBuilder.products);
+      products = pBuilder.products;
+    }
+    else {
+      products = new HashSet<Product>();
     }
     name = pBuilder.name;
     language = pBuilder.language;
@@ -131,13 +138,13 @@ public abstract class ResellerBase {
     private Locale language;
 
     /**
-     * Use {@link Reseller.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link Reseller.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link Reseller.Builder#newBuilder(Reseller)} instead of protected constructor to create new builder.
+     * Use {@link Reseller.builder(Reseller)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ResellerBase pObject ) {
       if (pObject != null) {
@@ -234,23 +241,6 @@ public abstract class ResellerBase {
   }
 
   /**
-   * Method sets the association "channels" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pChannels Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setChannels( List<Channel> pChannels ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "channels".
-    this.clearChannels();
-    // If the association is null, removing all entries is sufficient.
-    if (pChannels != null) {
-      channels = new ArrayList<Channel>(pChannels);
-    }
-  }
-
-  /**
    * Method adds the passed Channel object to the association "channels".
    * 
    * 
@@ -308,6 +298,7 @@ public abstract class ResellerBase {
     Collection<Channel> lChannels = new HashSet<Channel>(channels);
     Iterator<Channel> lIterator = lChannels.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromChannels(lIterator.next());
     }
   }
@@ -322,23 +313,6 @@ public abstract class ResellerBase {
   public Set<Product> getProducts( ) {
     // Return all Product objects as unmodifiable collection.
     return Collections.unmodifiableSet(products);
-  }
-
-  /**
-   * Method sets the association "products" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pProducts Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setProducts( Set<Product> pProducts ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "products".
-    this.clearProducts();
-    // If the association is null, removing all entries is sufficient.
-    if (pProducts != null) {
-      products = new HashSet<Product>(pProducts);
-    }
   }
 
   /**
@@ -396,6 +370,7 @@ public abstract class ResellerBase {
     Collection<Product> lProducts = new HashSet<Product>(products);
     Iterator<Product> lIterator = lProducts.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromProducts(lIterator.next());
     }
   }
@@ -455,7 +430,7 @@ public abstract class ResellerBase {
   public abstract double returnPrimitive( );
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

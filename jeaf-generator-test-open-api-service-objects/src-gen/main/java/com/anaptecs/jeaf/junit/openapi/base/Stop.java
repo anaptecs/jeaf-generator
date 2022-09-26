@@ -7,8 +7,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -50,14 +48,14 @@ public class Stop implements ServiceObject {
    * 
    */
   @JsonProperty("_links")
-  private List<LinkObject> links = new ArrayList<LinkObject>();
+  private List<LinkObject> links;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected Stop( ) {
-    // Nothing to do.
+    links = new ArrayList<LinkObject>();
   }
 
   /**
@@ -71,8 +69,30 @@ public class Stop implements ServiceObject {
     // Read attribute values from builder.
     name = pBuilder.name;
     if (pBuilder.links != null) {
-      links.addAll(pBuilder.links);
+      links = pBuilder.links;
     }
+    else {
+      links = new ArrayList<LinkObject>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new Stop objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new Stop objects. The method never returns null.
+   */
+  public static Builder builder( Stop pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -91,13 +111,13 @@ public class Stop implements ServiceObject {
     private List<LinkObject> links;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Stop#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Stop)} instead of private constructor to create new builder.
+     * Use {@link Stop#builder(Stop)} instead of private constructor to create new builder.
      */
     protected Builder( Stop pObject ) {
       if (pObject != null) {
@@ -105,25 +125,6 @@ public class Stop implements ServiceObject {
         name = pObject.name;
         links = pObject.links;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Stop objects. The method never returns null.
-     */
-    public static Builder newBuilder( Stop pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -210,23 +211,6 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method sets the association "links" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pLinks Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setLinks( List<LinkObject> pLinks ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "links".
-    this.clearLinks();
-    // If the association is null, removing all entries is sufficient.
-    if (pLinks != null) {
-      links = new ArrayList<LinkObject>(pLinks);
-    }
-  }
-
-  /**
    * Method adds the passed LinkObject object to the association "links".
    * 
    * 
@@ -274,15 +258,11 @@ public class Stop implements ServiceObject {
    */
   public void clearLinks( ) {
     // Remove all objects from association "links".
-    Collection<LinkObject> lLinks = new HashSet<LinkObject>(links);
-    Iterator<LinkObject> lIterator = lLinks.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromLinks(lIterator.next());
-    }
+    links.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

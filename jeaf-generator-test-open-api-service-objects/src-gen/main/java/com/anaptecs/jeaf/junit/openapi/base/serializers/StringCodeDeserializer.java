@@ -26,7 +26,7 @@ public class StringCodeDeserializer extends JsonDeserializer<StringCode> {
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
-      return StringCode.Builder.newBuilder().setCode(lNode.asText()).build();
+      return StringCode.builder().setCode(lNode.asText()).build();
     }
     // Node is not a TextNode
     else {
