@@ -222,13 +222,14 @@ public class DateQueryParamsBean {
     private Date sqlDate;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link DateQueryParamsBean#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(DateQueryParamsBean)} instead of private constructor to create new builder.
+     * Use {@link DateQueryParamsBean#builder(DateQueryParamsBean)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( DateQueryParamsBean pObject ) {
       if (pObject != null) {

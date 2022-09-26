@@ -163,6 +163,9 @@ cached boolean disableArrayImmutability():
 cached boolean disableBinaryDataImmutability():
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.disableBinaryDataImmutability();
     
+cached boolean enableLegacyBuilderStyle():
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.enableLegacyBuilderStyle();
+    
 cached boolean isBinaryType(uml::Property property):
     property.type.name == "byte";
             

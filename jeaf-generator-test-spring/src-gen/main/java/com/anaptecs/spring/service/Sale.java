@@ -89,13 +89,13 @@ public class Sale {
     private Channel sale;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Sale#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Sale)} instead of private constructor to create new builder.
+     * Use {@link Sale#builder(Sale)} instead of private constructor to create new builder.
      */
     protected Builder( Sale pObject ) {
       if (pObject != null) {

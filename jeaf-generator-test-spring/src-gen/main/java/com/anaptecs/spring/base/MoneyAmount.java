@@ -101,13 +101,13 @@ public class MoneyAmount {
     private CurrencyCode currencyCode;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link MoneyAmount#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(MoneyAmount)} instead of private constructor to create new builder.
+     * Use {@link MoneyAmount#builder(MoneyAmount)} instead of private constructor to create new builder.
      */
     protected Builder( MoneyAmount pObject ) {
       if (pObject != null) {

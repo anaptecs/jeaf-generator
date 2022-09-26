@@ -410,13 +410,13 @@ public class PrimitiveObject {
     private String bString;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PrimitiveObject#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PrimitiveObject)} instead of private constructor to create new builder.
+     * Use {@link PrimitiveObject#builder(PrimitiveObject)} instead of private constructor to create new builder.
      */
     protected Builder( PrimitiveObject pObject ) {
       if (pObject != null) {

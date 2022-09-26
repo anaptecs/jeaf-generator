@@ -82,13 +82,13 @@ public class BankAccount implements ServiceObject {
     private String iban;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link BankAccount#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(BankAccount)} instead of private constructor to create new builder.
+     * Use {@link BankAccount#builder(BankAccount)} instead of private constructor to create new builder.
      */
     protected Builder( BankAccount pObject ) {
       if (pObject != null) {

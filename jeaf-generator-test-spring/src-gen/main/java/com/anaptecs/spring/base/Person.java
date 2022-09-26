@@ -52,13 +52,13 @@ public class Person extends PersonBase {
    */
   public static class Builder extends Person.BuilderBase {
     /**
-     * Use {@link #newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link Person#builder()} instead of protected constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Person)} instead of protected constructor to create new builder.
+     * Use {@link Person#builder(Person)} instead of protected constructor to create new builder.
      */
     protected Builder( Person pObject ) {
       super(pObject);

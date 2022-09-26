@@ -55,14 +55,14 @@ public class TopoRef extends PlaceRef {
    */
   public static class Builder extends PlaceRef.Builder {
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link TopoRef#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(TopoRef)} instead of private constructor to create new builder.
+     * Use {@link TopoRef#builder(TopoRef)} instead of private constructor to create new builder.
      */
     protected Builder( TopoRef pObject ) {
       super(pObject);

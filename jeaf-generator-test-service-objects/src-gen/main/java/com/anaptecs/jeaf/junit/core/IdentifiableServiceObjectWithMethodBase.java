@@ -86,15 +86,14 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
     private Integer hello;
 
     /**
-     * Use {@link IdentifiableServiceObjectWithMethod.Builder#newBuilder()} instead of protected constructor to create
-     * new builder.
+     * Use {@link IdentifiableServiceObjectWithMethod.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link IdentifiableServiceObjectWithMethod.Builder#newBuilder(IdentifiableServiceObjectWithMethod)} instead
-     * of protected constructor to create new builder.
+     * Use {@link IdentifiableServiceObjectWithMethod.builder(IdentifiableServiceObjectWithMethod)} instead of protected
+     * constructor to create new builder.
      */
     protected BuilderBase( IdentifiableServiceObjectWithMethodBase pObject ) {
       if (pObject != null) {

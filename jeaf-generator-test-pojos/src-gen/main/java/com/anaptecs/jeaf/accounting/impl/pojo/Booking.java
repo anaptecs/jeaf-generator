@@ -149,13 +149,13 @@ public class Booking {
     private Calendar executionTimestamp;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Booking#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Booking)} instead of private constructor to create new builder.
+     * Use {@link Booking#builder(Booking)} instead of private constructor to create new builder.
      */
     protected Builder( Booking pObject ) {
       if (pObject != null) {
@@ -166,26 +166,6 @@ public class Booking {
         currency = pObject.currency;
         executionTimestamp = pObject.executionTimestamp;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new Booking objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Booking objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Booking pObject ) {
-      return new Builder(pObject);
     }
 
     /**

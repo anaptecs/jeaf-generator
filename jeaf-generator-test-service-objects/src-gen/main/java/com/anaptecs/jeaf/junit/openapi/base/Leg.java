@@ -125,13 +125,13 @@ public class Leg implements ServiceObject {
     private List<PlaceRef> stopovers;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Leg#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Leg)} instead of private constructor to create new builder.
+     * Use {@link Leg#builder(Leg)} instead of private constructor to create new builder.
      */
     protected Builder( Leg pObject ) {
       if (pObject != null) {
@@ -140,25 +140,6 @@ public class Leg implements ServiceObject {
         stop = pObject.stop;
         stopovers = pObject.stopovers;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new Leg objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Leg objects. The method never returns null.
-     */
-    public static Builder newBuilder( Leg pObject ) {
-      return new Builder(pObject);
     }
 
     /**

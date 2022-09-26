@@ -131,14 +131,13 @@ public abstract class BidirectionalABase {
     private Set<BidirectionalB> transientBs;
 
     /**
-     * Use {@link BidirectionalA.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link BidirectionalA.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link BidirectionalA.Builder#newBuilder(BidirectionalA)} instead of protected constructor to create new
-     * builder.
+     * Use {@link BidirectionalA.builder(BidirectionalA)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( BidirectionalABase pObject ) {
       if (pObject != null) {

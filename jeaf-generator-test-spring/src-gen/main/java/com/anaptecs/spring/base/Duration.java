@@ -92,13 +92,13 @@ public class Duration {
     private TimeUnit timeUnit = TimeUnit.DAY;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Duration#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Duration)} instead of private constructor to create new builder.
+     * Use {@link Duration#builder(Duration)} instead of private constructor to create new builder.
      */
     protected Builder( Duration pObject ) {
       if (pObject != null) {

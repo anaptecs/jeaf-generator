@@ -180,6 +180,11 @@ public class GeneratorCommons {
   public static final String DISABLE_BINRAY_DATA_IMMUTABILITY = "switch.gen.disable.binary.data.immutability";
 
   /**
+   * Constant defines the name of the system property that enables legacy builder style.
+   */
+  public static final String ENABLE_LEGACY_BUILDER_STYLE = "switch.gen.disable.binary.data.immutability";
+
+  /**
    * Constant defines the name of the system property which enables the generation of JUnit tests for services.
    */
   public static final String JUNIT_PROPERTY = "switch.gen.junits";
@@ -885,6 +890,11 @@ public class GeneratorCommons {
   public static boolean disableBinaryDataImmutability( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(DISABLE_BINRAY_DATA_IMMUTABILITY, Boolean.FALSE, Boolean.class);
+  }
+
+  public static boolean enableLegacyBuilderStyle( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(ENABLE_LEGACY_BUILDER_STYLE, Boolean.FALSE, Boolean.class);
   }
 
   public static String getMavenVersion( ) {

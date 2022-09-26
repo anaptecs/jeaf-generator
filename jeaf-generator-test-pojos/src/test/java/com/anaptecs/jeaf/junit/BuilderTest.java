@@ -64,7 +64,7 @@ class BuilderTest {
     assertEquals(true, lPojo.getYetAnotherAttribute());
     assertNull(lPojo.getImmutableChildPOJO());
 
-    ImmutableAssociationPOJO.Builder.newBuilder()
+    ImmutableAssociationPOJO.builder()
         .setYetAnotherAttribute(true).setDeprecatedRefs(Collections.emptySet()).setReadonlyAssociation(Collections
             .emptySortedSet()).build();
     assertNotNull(lPojo.getDeprecatedRefs());

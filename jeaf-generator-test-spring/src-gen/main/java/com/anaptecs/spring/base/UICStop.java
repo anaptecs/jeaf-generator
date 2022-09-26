@@ -74,14 +74,14 @@ public class UICStop extends Stop {
     private String uicCode;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link UICStop#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(UICStop)} instead of private constructor to create new builder.
+     * Use {@link UICStop#builder(UICStop)} instead of private constructor to create new builder.
      */
     protected Builder( UICStop pObject ) {
       super(pObject);

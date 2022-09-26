@@ -195,13 +195,14 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
     private byte[] myByteArray;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link WrapperDatatypeServiceObject#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(WrapperDatatypeServiceObject)} instead of private constructor to create new builder.
+     * Use {@link WrapperDatatypeServiceObject#builder(WrapperDatatypeServiceObject)} instead of private constructor to
+     * create new builder.
      */
     protected Builder( WrapperDatatypeServiceObject pObject ) {
       if (pObject != null) {
@@ -215,26 +216,6 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
         myShort = pObject.myShort;
         myByteArray = pObject.myByteArray;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new WrapperDatatypeServiceObject objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new WrapperDatatypeServiceObject objects. The
-     * method never returns null.
-     */
-    public static Builder newBuilder( WrapperDatatypeServiceObject pObject ) {
-      return new Builder(pObject);
     }
 
     /**

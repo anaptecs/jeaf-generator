@@ -111,13 +111,13 @@ public class Stop implements ServiceObject {
     private List<LinkObject> links;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Stop#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Stop)} instead of private constructor to create new builder.
+     * Use {@link Stop#builder(Stop)} instead of private constructor to create new builder.
      */
     protected Builder( Stop pObject ) {
       if (pObject != null) {

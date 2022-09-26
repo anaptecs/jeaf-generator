@@ -131,13 +131,13 @@ public class DeprecatedContext implements ServiceObject {
     private String queryParam;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link DeprecatedContext#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(DeprecatedContext)} instead of private constructor to create new builder.
+     * Use {@link DeprecatedContext#builder(DeprecatedContext)} instead of private constructor to create new builder.
      */
     protected Builder( DeprecatedContext pObject ) {
       if (pObject != null) {

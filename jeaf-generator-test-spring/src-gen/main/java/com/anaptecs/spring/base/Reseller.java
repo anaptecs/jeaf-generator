@@ -52,13 +52,13 @@ public class Reseller extends ResellerBase {
    */
   public static class Builder extends Reseller.BuilderBase {
     /**
-     * Use {@link #newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link Reseller#builder()} instead of protected constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Reseller)} instead of protected constructor to create new builder.
+     * Use {@link Reseller#builder(Reseller)} instead of protected constructor to create new builder.
      */
     protected Builder( Reseller pObject ) {
       super(pObject);

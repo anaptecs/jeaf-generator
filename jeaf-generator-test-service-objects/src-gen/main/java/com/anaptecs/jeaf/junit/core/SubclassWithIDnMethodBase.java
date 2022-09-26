@@ -62,15 +62,15 @@ public abstract class SubclassWithIDnMethodBase extends IdentifiableServiceObjec
     private boolean attr;
 
     /**
-     * Use {@link SubclassWithIDnMethod.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link SubclassWithIDnMethod.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
       super();
     }
 
     /**
-     * Use {@link SubclassWithIDnMethod.Builder#newBuilder(SubclassWithIDnMethod)} instead of protected constructor to
-     * create new builder.
+     * Use {@link SubclassWithIDnMethod.builder(SubclassWithIDnMethod)} instead of protected constructor to create new
+     * builder.
      */
     protected BuilderBase( SubclassWithIDnMethodBase pObject ) {
       super(pObject);

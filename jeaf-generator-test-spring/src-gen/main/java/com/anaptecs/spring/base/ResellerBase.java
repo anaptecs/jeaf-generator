@@ -138,13 +138,13 @@ public abstract class ResellerBase {
     private Locale language;
 
     /**
-     * Use {@link Reseller.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link Reseller.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link Reseller.Builder#newBuilder(Reseller)} instead of protected constructor to create new builder.
+     * Use {@link Reseller.builder(Reseller)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ResellerBase pObject ) {
       if (pObject != null) {

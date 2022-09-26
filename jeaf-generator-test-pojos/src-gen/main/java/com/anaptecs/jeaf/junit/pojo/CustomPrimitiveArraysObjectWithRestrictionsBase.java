@@ -411,15 +411,14 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     private String[] bStringArray;
 
     /**
-     * Use {@link CustomPrimitiveArraysObjectWithRestrictions.Builder#newBuilder()} instead of protected constructor to
-     * create new builder.
+     * Use {@link CustomPrimitiveArraysObjectWithRestrictions.builder()} instead of protected constructor to create new
+     * builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use
-     * {@link CustomPrimitiveArraysObjectWithRestrictions.Builder#newBuilder(CustomPrimitiveArraysObjectWithRestrictions)}
+     * Use {@link CustomPrimitiveArraysObjectWithRestrictions.builder(CustomPrimitiveArraysObjectWithRestrictions)}
      * instead of protected constructor to create new builder.
      */
     protected BuilderBase( CustomPrimitiveArraysObjectWithRestrictionsBase pObject ) {

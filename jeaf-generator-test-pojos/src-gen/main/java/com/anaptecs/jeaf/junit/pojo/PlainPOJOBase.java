@@ -81,13 +81,13 @@ public abstract class PlainPOJOBase {
     private Integer world;
 
     /**
-     * Use {@link PlainPOJO.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link PlainPOJO.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link PlainPOJO.Builder#newBuilder(PlainPOJO)} instead of protected constructor to create new builder.
+     * Use {@link PlainPOJO.builder(PlainPOJO)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( PlainPOJOBase pObject ) {
       if (pObject != null) {

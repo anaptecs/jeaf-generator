@@ -84,13 +84,14 @@ public class ParentBeanParamType {
     private String tkID;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ParentBeanParamType#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ParentBeanParamType)} instead of private constructor to create new builder.
+     * Use {@link ParentBeanParamType#builder(ParentBeanParamType)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( ParentBeanParamType pObject ) {
       if (pObject != null) {

@@ -82,13 +82,13 @@ public class StringCodeType implements ServiceObject {
     private String code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link StringCodeType#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(StringCodeType)} instead of private constructor to create new builder.
+     * Use {@link StringCodeType#builder(StringCodeType)} instead of private constructor to create new builder.
      */
     protected Builder( StringCodeType pObject ) {
       if (pObject != null) {

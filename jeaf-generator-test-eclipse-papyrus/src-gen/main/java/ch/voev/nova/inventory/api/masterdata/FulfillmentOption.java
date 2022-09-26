@@ -108,13 +108,13 @@ public class FulfillmentOption {
     private List<FulfillmentMediaType> media;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link FulfillmentOption#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(FulfillmentOption)} instead of private constructor to create new builder.
+     * Use {@link FulfillmentOption#builder(FulfillmentOption)} instead of private constructor to create new builder.
      */
     protected Builder( FulfillmentOption pObject ) {
       if (pObject != null) {
@@ -122,26 +122,6 @@ public class FulfillmentOption {
         type = pObject.type;
         media = pObject.media;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new FulfillmentOption objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new FulfillmentOption objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( FulfillmentOption pObject ) {
-      return new Builder(pObject);
     }
 
     /**

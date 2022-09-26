@@ -83,39 +83,20 @@ public class PrimitiveArrayServiceObject implements ServiceObject {
     private boolean[] booleanArray;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PrimitiveArrayServiceObject#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PrimitiveArrayServiceObject)} instead of private constructor to create new builder.
+     * Use {@link PrimitiveArrayServiceObject#builder(PrimitiveArrayServiceObject)} instead of private constructor to
+     * create new builder.
      */
     protected Builder( PrimitiveArrayServiceObject pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         booleanArray = pObject.booleanArray;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new PrimitiveArrayServiceObject objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new PrimitiveArrayServiceObject objects. The
-     * method never returns null.
-     */
-    public static Builder newBuilder( PrimitiveArrayServiceObject pObject ) {
-      return new Builder(pObject);
     }
 
     /**

@@ -136,13 +136,13 @@ public class CodeTypeUsageTest {
     private StringCodeType stringCode;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link CodeTypeUsageTest#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(CodeTypeUsageTest)} instead of private constructor to create new builder.
+     * Use {@link CodeTypeUsageTest#builder(CodeTypeUsageTest)} instead of private constructor to create new builder.
      */
     protected Builder( CodeTypeUsageTest pObject ) {
       if (pObject != null) {

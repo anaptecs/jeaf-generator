@@ -66,13 +66,13 @@ public abstract class AbstractPOJO {
     private String abtractAttr;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link AbstractPOJO#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(AbstractPOJO)} instead of private constructor to create new builder.
+     * Use {@link AbstractPOJO#builder(AbstractPOJO)} instead of private constructor to create new builder.
      */
     protected Builder( AbstractPOJO pObject ) {
       if (pObject != null) {

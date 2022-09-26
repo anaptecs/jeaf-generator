@@ -141,13 +141,13 @@ public class Context implements ServiceObject {
     private String queryParam;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Context#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Context)} instead of private constructor to create new builder.
+     * Use {@link Context#builder(Context)} instead of private constructor to create new builder.
      */
     protected Builder( Context pObject ) {
       if (pObject != null) {

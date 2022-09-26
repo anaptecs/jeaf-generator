@@ -112,13 +112,14 @@ public class PlaceAvailabilityResponse {
     private List<TripAvailability> tripAvailabilities;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PlaceAvailabilityResponse#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PlaceAvailabilityResponse)} instead of private constructor to create new builder.
+     * Use {@link PlaceAvailabilityResponse#builder(PlaceAvailabilityResponse)} instead of private constructor to create
+     * new builder.
      */
     protected Builder( PlaceAvailabilityResponse pObject ) {
       if (pObject != null) {
@@ -126,26 +127,6 @@ public class PlaceAvailabilityResponse {
         warnings = pObject.warnings;
         tripAvailabilities = pObject.tripAvailabilities;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new PlaceAvailabilityResponse objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new PlaceAvailabilityResponse objects. The method
-     * never returns null.
-     */
-    public static Builder newBuilder( PlaceAvailabilityResponse pObject ) {
-      return new Builder(pObject);
     }
 
     /**

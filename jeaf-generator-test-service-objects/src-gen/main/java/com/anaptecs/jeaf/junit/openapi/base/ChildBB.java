@@ -171,14 +171,14 @@ public class ChildBB extends ChildB {
     private byte[] deprecatedArray;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ChildBB#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(ChildBB)} instead of private constructor to create new builder.
+     * Use {@link ChildBB#builder(ChildBB)} instead of private constructor to create new builder.
      */
     protected Builder( ChildBB pObject ) {
       super(pObject);
@@ -190,26 +190,6 @@ public class ChildBB extends ChildB {
         deprecatedParent = pObject.deprecatedParent;
         deprecatedArray = pObject.deprecatedArray;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ChildBB objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ChildBB objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( ChildBB pObject ) {
-      return new Builder(pObject);
     }
 
     /**

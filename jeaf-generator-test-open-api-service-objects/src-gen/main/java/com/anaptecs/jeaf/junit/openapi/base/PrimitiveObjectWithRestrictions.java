@@ -365,13 +365,14 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     private String bString;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PrimitiveObjectWithRestrictions#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PrimitiveObjectWithRestrictions)} instead of private constructor to create new builder.
+     * Use {@link PrimitiveObjectWithRestrictions#builder(PrimitiveObjectWithRestrictions)} instead of private
+     * constructor to create new builder.
      */
     protected Builder( PrimitiveObjectWithRestrictions pObject ) {
       if (pObject != null) {

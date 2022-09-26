@@ -91,13 +91,13 @@ public class DiscountOffer implements ServiceObject {
     private Set<Campaign> campaigns;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link DiscountOffer#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(DiscountOffer)} instead of private constructor to create new builder.
+     * Use {@link DiscountOffer#builder(DiscountOffer)} instead of private constructor to create new builder.
      */
     protected Builder( DiscountOffer pObject ) {
       if (pObject != null) {

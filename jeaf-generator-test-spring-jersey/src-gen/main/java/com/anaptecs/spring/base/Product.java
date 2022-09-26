@@ -269,13 +269,13 @@ public class Product {
     private String uri = "https://products.anaptecs.de/123456789";
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Product#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Product)} instead of private constructor to create new builder.
+     * Use {@link Product#builder(Product)} instead of private constructor to create new builder.
      */
     protected Builder( Product pObject ) {
       if (pObject != null) {
@@ -291,26 +291,6 @@ public class Product {
         sortiments = pObject.sortiments;
         uri = pObject.uri;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new Product objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Product objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Product pObject ) {
-      return new Builder(pObject);
     }
 
     /**

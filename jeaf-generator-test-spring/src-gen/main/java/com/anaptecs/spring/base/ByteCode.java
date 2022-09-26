@@ -70,13 +70,13 @@ public class ByteCode {
     private Byte code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ByteCode#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ByteCode)} instead of private constructor to create new builder.
+     * Use {@link ByteCode#builder(ByteCode)} instead of private constructor to create new builder.
      */
     protected Builder( ByteCode pObject ) {
       if (pObject != null) {

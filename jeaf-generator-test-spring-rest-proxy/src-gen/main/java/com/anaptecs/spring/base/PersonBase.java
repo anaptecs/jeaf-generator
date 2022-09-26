@@ -71,13 +71,13 @@ public abstract class PersonBase extends Partner {
     private String firstName;
 
     /**
-     * Use {@link Person.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link Person.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link Person.Builder#newBuilder(Person)} instead of protected constructor to create new builder.
+     * Use {@link Person.builder(Person)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( PersonBase pObject ) {
       if (pObject != null) {

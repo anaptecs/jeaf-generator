@@ -71,13 +71,13 @@ public class BooleanCode {
     private boolean code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link BooleanCode#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(BooleanCode)} instead of private constructor to create new builder.
+     * Use {@link BooleanCode#builder(BooleanCode)} instead of private constructor to create new builder.
      */
     protected Builder( BooleanCode pObject ) {
       if (pObject != null) {

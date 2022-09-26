@@ -80,13 +80,13 @@ public class DoubleCode implements ServiceObject {
     private double code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link DoubleCode#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(DoubleCode)} instead of private constructor to create new builder.
+     * Use {@link DoubleCode#builder(DoubleCode)} instead of private constructor to create new builder.
      */
     protected Builder( DoubleCode pObject ) {
       if (pObject != null) {

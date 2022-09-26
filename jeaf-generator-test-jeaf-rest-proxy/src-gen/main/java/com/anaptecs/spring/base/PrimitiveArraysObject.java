@@ -440,13 +440,14 @@ public class PrimitiveArraysObject implements Serializable {
     private String[] cStringArray;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PrimitiveArraysObject#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PrimitiveArraysObject)} instead of private constructor to create new builder.
+     * Use {@link PrimitiveArraysObject#builder(PrimitiveArraysObject)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( PrimitiveArraysObject pObject ) {
       if (pObject != null) {
@@ -475,26 +476,6 @@ public class PrimitiveArraysObject implements Serializable {
         bStringArray = pObject.bStringArray;
         cStringArray = pObject.cStringArray;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new PrimitiveArraysObject objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new PrimitiveArraysObject objects. The method
-     * never returns null.
-     */
-    public static Builder newBuilder( PrimitiveArraysObject pObject ) {
-      return new Builder(pObject);
     }
 
     /**

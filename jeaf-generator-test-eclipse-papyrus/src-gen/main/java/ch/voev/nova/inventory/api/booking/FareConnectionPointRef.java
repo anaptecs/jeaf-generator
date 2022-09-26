@@ -94,14 +94,15 @@ public class FareConnectionPointRef extends PlaceRef {
     private String name;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link FareConnectionPointRef#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(FareConnectionPointRef)} instead of private constructor to create new builder.
+     * Use {@link FareConnectionPointRef#builder(FareConnectionPointRef)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( FareConnectionPointRef pObject ) {
       super(pObject);
@@ -110,26 +111,6 @@ public class FareConnectionPointRef extends PlaceRef {
         fareConnectionPoint = pObject.fareConnectionPoint;
         name = pObject.name;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new FareConnectionPointRef objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new FareConnectionPointRef objects. The method
-     * never returns null.
-     */
-    public static Builder newBuilder( FareConnectionPointRef pObject ) {
-      return new Builder(pObject);
     }
 
     /**

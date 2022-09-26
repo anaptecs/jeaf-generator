@@ -83,14 +83,15 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     private String childProperty;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ChildBeanParameterType#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(ChildBeanParameterType)} instead of private constructor to create new builder.
+     * Use {@link ChildBeanParameterType#builder(ChildBeanParameterType)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( ChildBeanParameterType pObject ) {
       super(pObject);

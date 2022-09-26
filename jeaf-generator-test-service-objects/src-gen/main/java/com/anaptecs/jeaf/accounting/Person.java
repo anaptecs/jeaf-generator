@@ -228,13 +228,13 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     private String displayName;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Person#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Person)} instead of private constructor to create new builder.
+     * Use {@link Person#builder(Person)} instead of private constructor to create new builder.
      */
     protected Builder( Person pObject ) {
       if (pObject != null) {
@@ -248,25 +248,6 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
         age = pObject.age;
         displayName = pObject.displayName;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new Person objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Person objects. The method never returns null.
-     */
-    public static Builder newBuilder( Person pObject ) {
-      return new Builder(pObject);
     }
 
     /**

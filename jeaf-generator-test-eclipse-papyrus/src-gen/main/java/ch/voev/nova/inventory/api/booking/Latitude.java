@@ -85,39 +85,19 @@ public class Latitude {
     private float value;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Latitude#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Latitude)} instead of private constructor to create new builder.
+     * Use {@link Latitude#builder(Latitude)} instead of private constructor to create new builder.
      */
     protected Builder( Latitude pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         value = pObject.value;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new Latitude objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Latitude objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Latitude pObject ) {
-      return new Builder(pObject);
     }
 
     /**

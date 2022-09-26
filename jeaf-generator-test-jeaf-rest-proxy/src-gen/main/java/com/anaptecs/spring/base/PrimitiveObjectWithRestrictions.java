@@ -470,13 +470,14 @@ public class PrimitiveObjectWithRestrictions implements Serializable {
     private String bString;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PrimitiveObjectWithRestrictions#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PrimitiveObjectWithRestrictions)} instead of private constructor to create new builder.
+     * Use {@link PrimitiveObjectWithRestrictions#builder(PrimitiveObjectWithRestrictions)} instead of private
+     * constructor to create new builder.
      */
     protected Builder( PrimitiveObjectWithRestrictions pObject ) {
       if (pObject != null) {
@@ -504,26 +505,6 @@ public class PrimitiveObjectWithRestrictions implements Serializable {
         aString = pObject.aString;
         bString = pObject.bString;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new PrimitiveObjectWithRestrictions objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new PrimitiveObjectWithRestrictions objects. The
-     * method never returns null.
-     */
-    public static Builder newBuilder( PrimitiveObjectWithRestrictions pObject ) {
-      return new Builder(pObject);
     }
 
     /**

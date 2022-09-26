@@ -509,6 +509,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean disableImmutabilityOfBinaryData;
 
   /**
+   * Switch enables the JEAF Generator legacy style for builder pattern in generated code. If the flag is enabled then
+   * static builder methods will also be generated on the builder class itself no only on its surrounding class.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean enableLegacyBuilderStyle;
+
+  /**
    * Switch defines if errors during code generation should break the build. This feature is mainly intended for test
    * purposes of JEAF Generator itself.
    */
@@ -854,6 +861,10 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Disable immutability for binary arrays:           " + disableImmutabilityOfBinaryData);
     }
 
+    if (enableLegacyBuilderStyle) {
+      lLog.info("Enable legacy builder style:                      " + enableLegacyBuilderStyle);
+    }
+
     lLog.info(" ");
     lLog.info("Javadoc Company Tag:                              " + fileHeaderCompany);
     lLog.info("Javadoc Author Tag:                               " + fileHeaderAuthor);
@@ -954,6 +965,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.disable.collection.immutability", disableImmutabilityOfCollections.toString());
       System.setProperty("switch.gen.disable.array.immutability", disableImmutabilityOfArrays.toString());
       System.setProperty("switch.gen.disable.binary.data.immutability", disableImmutabilityOfBinaryData.toString());
+
+      System.setProperty("switch.gen.enable.legacy.builder.style", enableLegacyBuilderStyle.toString());
 
       System.setProperty("name.oid.row", peristentObjectsOIDRowName);
       System.setProperty("name.version.label.row", peristentObjectsVersionLabelRowName);

@@ -64,14 +64,14 @@ public class CHStopPlace extends StopPlaceRef {
    */
   public static class Builder extends StopPlaceRef.Builder {
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link CHStopPlace#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(CHStopPlace)} instead of private constructor to create new builder.
+     * Use {@link CHStopPlace#builder(CHStopPlace)} instead of private constructor to create new builder.
      */
     protected Builder( CHStopPlace pObject ) {
       super(pObject);

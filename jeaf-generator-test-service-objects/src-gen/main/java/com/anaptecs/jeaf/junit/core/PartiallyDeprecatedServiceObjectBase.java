@@ -149,15 +149,14 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     private int readonlyDefault = 4711;
 
     /**
-     * Use {@link PartiallyDeprecatedServiceObject.Builder#newBuilder()} instead of protected constructor to create new
-     * builder.
+     * Use {@link PartiallyDeprecatedServiceObject.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link PartiallyDeprecatedServiceObject.Builder#newBuilder(PartiallyDeprecatedServiceObject)} instead of
-     * protected constructor to create new builder.
+     * Use {@link PartiallyDeprecatedServiceObject.builder(PartiallyDeprecatedServiceObject)} instead of protected
+     * constructor to create new builder.
      */
     protected BuilderBase( PartiallyDeprecatedServiceObjectBase pObject ) {
       if (pObject != null) {

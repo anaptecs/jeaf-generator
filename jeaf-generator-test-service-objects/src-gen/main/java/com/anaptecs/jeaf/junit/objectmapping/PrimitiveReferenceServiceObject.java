@@ -170,13 +170,14 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     private String[] stringArray;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PrimitiveReferenceServiceObject#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PrimitiveReferenceServiceObject)} instead of private constructor to create new builder.
+     * Use {@link PrimitiveReferenceServiceObject#builder(PrimitiveReferenceServiceObject)} instead of private
+     * constructor to create new builder.
      */
     protected Builder( PrimitiveReferenceServiceObject pObject ) {
       if (pObject != null) {
@@ -187,26 +188,6 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
         strings = pObject.strings;
         stringArray = pObject.stringArray;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new PrimitiveReferenceServiceObject objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new PrimitiveReferenceServiceObject objects. The
-     * method never returns null.
-     */
-    public static Builder newBuilder( PrimitiveReferenceServiceObject pObject ) {
-      return new Builder(pObject);
     }
 
     /**

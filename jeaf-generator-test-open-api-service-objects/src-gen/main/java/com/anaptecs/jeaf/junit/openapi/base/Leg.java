@@ -114,13 +114,13 @@ public class Leg implements ServiceObject {
     private List<PlaceRef> stopovers;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Leg#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Leg)} instead of private constructor to create new builder.
+     * Use {@link Leg#builder(Leg)} instead of private constructor to create new builder.
      */
     protected Builder( Leg pObject ) {
       if (pObject != null) {

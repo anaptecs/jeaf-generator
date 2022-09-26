@@ -50,36 +50,16 @@ public class PlainPOJO extends PlainPOJOBase {
    */
   public static class Builder extends PlainPOJO.BuilderBase {
     /**
-     * Use {@link #newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link PlainPOJO#builder()} instead of protected constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PlainPOJO)} instead of protected constructor to create new builder.
+     * Use {@link PlainPOJO#builder(PlainPOJO)} instead of protected constructor to create new builder.
      */
     protected Builder( PlainPOJO pObject ) {
       super(pObject);
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new PlainPOJO objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( PlainPOJO pObject ) {
-      return new Builder(pObject);
     }
   }
 

@@ -158,13 +158,13 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
     private String country;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Customer#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Customer)} instead of private constructor to create new builder.
+     * Use {@link Customer#builder(Customer)} instead of private constructor to create new builder.
      */
     protected Builder( Customer pObject ) {
       if (pObject != null) {

@@ -114,13 +114,14 @@ public class FareConnectionPoint {
     private List<StationSet> stationSets;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link FareConnectionPoint#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(FareConnectionPoint)} instead of private constructor to create new builder.
+     * Use {@link FareConnectionPoint#builder(FareConnectionPoint)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( FareConnectionPoint pObject ) {
       if (pObject != null) {
@@ -128,26 +129,6 @@ public class FareConnectionPoint {
         name = pObject.name;
         stationSets = pObject.stationSets;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new FareConnectionPoint objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new FareConnectionPoint objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( FareConnectionPoint pObject ) {
-      return new Builder(pObject);
     }
 
     /**

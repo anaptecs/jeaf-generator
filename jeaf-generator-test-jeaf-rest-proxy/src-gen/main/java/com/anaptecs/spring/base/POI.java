@@ -84,14 +84,14 @@ public class POI extends Stop {
     private String description;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link POI#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(POI)} instead of private constructor to create new builder.
+     * Use {@link POI#builder(POI)} instead of private constructor to create new builder.
      */
     protected Builder( POI pObject ) {
       super(pObject);
@@ -99,25 +99,6 @@ public class POI extends Stop {
         // Read attribute values from passed object.
         description = pObject.description;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new POI objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new POI objects. The method never returns null.
-     */
-    public static Builder newBuilder( POI pObject ) {
-      return new Builder(pObject);
     }
 
     /**

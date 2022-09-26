@@ -86,13 +86,13 @@ public class ChannelCode implements ServiceObject {
     private String code = "WEBSHOP";
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ChannelCode#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ChannelCode)} instead of private constructor to create new builder.
+     * Use {@link ChannelCode#builder(ChannelCode)} instead of private constructor to create new builder.
      */
     protected Builder( ChannelCode pObject ) {
       if (pObject != null) {

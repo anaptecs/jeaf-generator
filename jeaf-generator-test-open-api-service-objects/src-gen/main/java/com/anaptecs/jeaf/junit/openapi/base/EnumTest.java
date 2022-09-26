@@ -96,13 +96,13 @@ public class EnumTest implements ServiceObject {
     private ExtensibleEnum enumRef = ExtensibleEnum.RED;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link EnumTest#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(EnumTest)} instead of private constructor to create new builder.
+     * Use {@link EnumTest#builder(EnumTest)} instead of private constructor to create new builder.
      */
     protected Builder( EnumTest pObject ) {
       if (pObject != null) {

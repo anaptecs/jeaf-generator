@@ -88,39 +88,19 @@ public class StationSet {
     private List<StopPlaceRef> stations;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link StationSet#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(StationSet)} instead of private constructor to create new builder.
+     * Use {@link StationSet#builder(StationSet)} instead of private constructor to create new builder.
      */
     protected Builder( StationSet pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         stations = pObject.stations;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new StationSet objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new StationSet objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( StationSet pObject ) {
-      return new Builder(pObject);
     }
 
     /**

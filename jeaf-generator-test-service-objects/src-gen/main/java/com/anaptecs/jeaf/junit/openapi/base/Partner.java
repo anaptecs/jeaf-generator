@@ -115,13 +115,13 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
     private List<PostalAddress> postalAddresses;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Partner#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Partner)} instead of private constructor to create new builder.
+     * Use {@link Partner#builder(Partner)} instead of private constructor to create new builder.
      */
     protected Builder( Partner pObject ) {
       if (pObject != null) {
@@ -129,26 +129,6 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
         objectID = pObject.objectID;
         postalAddresses = pObject.postalAddresses;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new Partner objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Partner objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Partner pObject ) {
-      return new Builder(pObject);
     }
 
     /**

@@ -148,13 +148,13 @@ public class CodeTypeUsageTest implements ServiceObject {
     private StringCodeType stringCode;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link CodeTypeUsageTest#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(CodeTypeUsageTest)} instead of private constructor to create new builder.
+     * Use {@link CodeTypeUsageTest#builder(CodeTypeUsageTest)} instead of private constructor to create new builder.
      */
     protected Builder( CodeTypeUsageTest pObject ) {
       if (pObject != null) {
@@ -164,26 +164,6 @@ public class CodeTypeUsageTest implements ServiceObject {
         shortCodeTypeAssociation = pObject.shortCodeTypeAssociation;
         stringCode = pObject.stringCode;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new CodeTypeUsageTest objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new CodeTypeUsageTest objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( CodeTypeUsageTest pObject ) {
-      return new Builder(pObject);
     }
 
     /**

@@ -80,13 +80,13 @@ public class BooleanCodeType implements ServiceObject {
     private boolean code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link BooleanCodeType#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(BooleanCodeType)} instead of private constructor to create new builder.
+     * Use {@link BooleanCodeType#builder(BooleanCodeType)} instead of private constructor to create new builder.
      */
     protected Builder( BooleanCodeType pObject ) {
       if (pObject != null) {

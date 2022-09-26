@@ -81,13 +81,13 @@ public class IBAN implements ServiceObject {
     private String value;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link IBAN#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(IBAN)} instead of private constructor to create new builder.
+     * Use {@link IBAN#builder(IBAN)} instead of private constructor to create new builder.
      */
     protected Builder( IBAN pObject ) {
       if (pObject != null) {

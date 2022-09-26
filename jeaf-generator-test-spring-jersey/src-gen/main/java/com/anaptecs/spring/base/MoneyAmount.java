@@ -101,13 +101,13 @@ public class MoneyAmount {
     private CurrencyCode currencyCode;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link MoneyAmount#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(MoneyAmount)} instead of private constructor to create new builder.
+     * Use {@link MoneyAmount#builder(MoneyAmount)} instead of private constructor to create new builder.
      */
     protected Builder( MoneyAmount pObject ) {
       if (pObject != null) {
@@ -115,26 +115,6 @@ public class MoneyAmount {
         amount = pObject.amount;
         currencyCode = pObject.currencyCode;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new MoneyAmount objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new MoneyAmount objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( MoneyAmount pObject ) {
-      return new Builder(pObject);
     }
 
     /**

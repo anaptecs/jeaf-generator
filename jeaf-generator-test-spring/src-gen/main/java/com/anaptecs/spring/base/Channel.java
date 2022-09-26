@@ -137,13 +137,13 @@ public class Channel {
     private Reseller reseller;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Channel#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Channel)} instead of private constructor to create new builder.
+     * Use {@link Channel#builder(Channel)} instead of private constructor to create new builder.
      */
     protected Builder( Channel pObject ) {
       if (pObject != null) {

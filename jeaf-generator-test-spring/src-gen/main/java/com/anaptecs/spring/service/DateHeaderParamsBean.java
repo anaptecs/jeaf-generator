@@ -222,13 +222,14 @@ public class DateHeaderParamsBean {
     private Date sqlDate;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link DateHeaderParamsBean#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(DateHeaderParamsBean)} instead of private constructor to create new builder.
+     * Use {@link DateHeaderParamsBean#builder(DateHeaderParamsBean)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( DateHeaderParamsBean pObject ) {
       if (pObject != null) {

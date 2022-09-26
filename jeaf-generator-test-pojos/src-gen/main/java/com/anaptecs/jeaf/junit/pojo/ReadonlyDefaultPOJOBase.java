@@ -66,14 +66,14 @@ public abstract class ReadonlyDefaultPOJOBase {
     private int readonlyDefault = 4711;
 
     /**
-     * Use {@link ReadonlyDefaultPOJO.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link ReadonlyDefaultPOJO.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link ReadonlyDefaultPOJO.Builder#newBuilder(ReadonlyDefaultPOJO)} instead of protected constructor to
-     * create new builder.
+     * Use {@link ReadonlyDefaultPOJO.builder(ReadonlyDefaultPOJO)} instead of protected constructor to create new
+     * builder.
      */
     protected BuilderBase( ReadonlyDefaultPOJOBase pObject ) {
       if (pObject != null) {

@@ -89,14 +89,14 @@ public class SwiftAccount extends Account {
     private String bic;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link SwiftAccount#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(SwiftAccount)} instead of private constructor to create new builder.
+     * Use {@link SwiftAccount#builder(SwiftAccount)} instead of private constructor to create new builder.
      */
     protected Builder( SwiftAccount pObject ) {
       super(pObject);
@@ -104,26 +104,6 @@ public class SwiftAccount extends Account {
         // Read attribute values from passed object.
         bic = pObject.bic;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new SwiftAccount objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new SwiftAccount objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( SwiftAccount pObject ) {
-      return new Builder(pObject);
     }
 
     /**

@@ -163,14 +163,14 @@ public class ChildBB extends ChildB {
     private byte[] deprecatedArray;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ChildBB#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(ChildBB)} instead of private constructor to create new builder.
+     * Use {@link ChildBB#builder(ChildBB)} instead of private constructor to create new builder.
      */
     protected Builder( ChildBB pObject ) {
       super(pObject);

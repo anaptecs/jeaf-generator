@@ -137,13 +137,13 @@ public class Text {
     private String shortText;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Text#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Text)} instead of private constructor to create new builder.
+     * Use {@link Text#builder(Text)} instead of private constructor to create new builder.
      */
     protected Builder( Text pObject ) {
       if (pObject != null) {
@@ -153,25 +153,6 @@ public class Text {
         text = pObject.text;
         shortText = pObject.shortText;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new Text objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Text objects. The method never returns null.
-     */
-    public static Builder newBuilder( Text pObject ) {
-      return new Builder(pObject);
     }
 
     /**

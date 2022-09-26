@@ -38,14 +38,14 @@ public abstract class StopPlaceRef extends PlaceRef {
    */
   public static abstract class Builder extends PlaceRef.Builder {
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link StopPlaceRef#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(StopPlaceRef)} instead of private constructor to create new builder.
+     * Use {@link StopPlaceRef#builder(StopPlaceRef)} instead of private constructor to create new builder.
      */
     protected Builder( StopPlaceRef pObject ) {
       super(pObject);

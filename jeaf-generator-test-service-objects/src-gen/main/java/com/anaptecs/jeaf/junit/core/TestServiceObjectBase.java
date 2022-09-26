@@ -145,14 +145,13 @@ public abstract class TestServiceObjectBase implements ServiceObject {
     private Integer[] dummy3;
 
     /**
-     * Use {@link TestServiceObject.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link TestServiceObject.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link TestServiceObject.Builder#newBuilder(TestServiceObject)} instead of protected constructor to create
-     * new builder.
+     * Use {@link TestServiceObject.builder(TestServiceObject)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( TestServiceObjectBase pObject ) {
       if (pObject != null) {

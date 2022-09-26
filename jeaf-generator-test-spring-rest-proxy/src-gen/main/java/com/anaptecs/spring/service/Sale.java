@@ -87,13 +87,13 @@ public class Sale {
     private Channel sale;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Sale#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Sale)} instead of private constructor to create new builder.
+     * Use {@link Sale#builder(Sale)} instead of private constructor to create new builder.
      */
     protected Builder( Sale pObject ) {
       if (pObject != null) {
@@ -101,25 +101,6 @@ public class Sale {
         transactionAmount = pObject.transactionAmount;
         sale = pObject.sale;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new Sale objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Sale objects. The method never returns null.
-     */
-    public static Builder newBuilder( Sale pObject ) {
-      return new Builder(pObject);
     }
 
     /**

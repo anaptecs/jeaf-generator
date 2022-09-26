@@ -81,14 +81,14 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
     private Integer writeable;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link MutableChildPOJO#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(MutableChildPOJO)} instead of private constructor to create new builder.
+     * Use {@link MutableChildPOJO#builder(MutableChildPOJO)} instead of private constructor to create new builder.
      */
     protected Builder( MutableChildPOJO pObject ) {
       super(pObject);
@@ -96,26 +96,6 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
         // Read attribute values from passed object.
         writeable = pObject.writeable;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new MutableChildPOJO objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new MutableChildPOJO objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( MutableChildPOJO pObject ) {
-      return new Builder(pObject);
     }
 
     /**

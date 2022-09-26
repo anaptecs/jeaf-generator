@@ -56,40 +56,20 @@ public class UICStopPlace extends StopPlaceRef {
    */
   public static class Builder extends StopPlaceRef.Builder {
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link UICStopPlace#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(UICStopPlace)} instead of private constructor to create new builder.
+     * Use {@link UICStopPlace#builder(UICStopPlace)} instead of private constructor to create new builder.
      */
     protected Builder( UICStopPlace pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new UICStopPlace objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new UICStopPlace objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( UICStopPlace pObject ) {
-      return new Builder(pObject);
     }
 
     /**

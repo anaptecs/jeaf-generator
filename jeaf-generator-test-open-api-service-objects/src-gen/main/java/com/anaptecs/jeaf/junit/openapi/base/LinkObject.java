@@ -82,13 +82,13 @@ public class LinkObject implements ServiceObject {
     private String href;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link LinkObject#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(LinkObject)} instead of private constructor to create new builder.
+     * Use {@link LinkObject#builder(LinkObject)} instead of private constructor to create new builder.
      */
     protected Builder( LinkObject pObject ) {
       if (pObject != null) {

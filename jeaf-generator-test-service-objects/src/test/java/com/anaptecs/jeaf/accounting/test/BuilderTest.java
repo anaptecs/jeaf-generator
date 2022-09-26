@@ -18,7 +18,7 @@ public class BuilderTest {
 
   @Test
   void testServiceObjectBuilder( ) {
-    Person lPerson = Person.Builder.newBuilder().build();
+    Person lPerson = Person.builder().build();
     Set<Person> lPersons = new HashSet<>();
     lPersons.add(lPerson);
 

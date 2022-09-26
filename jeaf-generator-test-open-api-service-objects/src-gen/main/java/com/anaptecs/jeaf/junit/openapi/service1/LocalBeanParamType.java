@@ -97,13 +97,13 @@ public class LocalBeanParamType implements ServiceObject {
     private String localID;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link LocalBeanParamType#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(LocalBeanParamType)} instead of private constructor to create new builder.
+     * Use {@link LocalBeanParamType#builder(LocalBeanParamType)} instead of private constructor to create new builder.
      */
     protected Builder( LocalBeanParamType pObject ) {
       if (pObject != null) {

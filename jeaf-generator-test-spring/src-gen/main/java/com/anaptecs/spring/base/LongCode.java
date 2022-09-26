@@ -70,13 +70,13 @@ public class LongCode {
     private Long code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link LongCode#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(LongCode)} instead of private constructor to create new builder.
+     * Use {@link LongCode#builder(LongCode)} instead of private constructor to create new builder.
      */
     protected Builder( LongCode pObject ) {
       if (pObject != null) {

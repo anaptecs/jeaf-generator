@@ -57,36 +57,16 @@ public class TestServiceObject extends TestServiceObjectBase {
    */
   public static class Builder extends TestServiceObject.BuilderBase {
     /**
-     * Use {@link #newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link TestServiceObject#builder()} instead of protected constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(TestServiceObject)} instead of protected constructor to create new builder.
+     * Use {@link TestServiceObject#builder(TestServiceObject)} instead of protected constructor to create new builder.
      */
     protected Builder( TestServiceObject pObject ) {
       super(pObject);
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new TestServiceObject objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( TestServiceObject pObject ) {
-      return new Builder(pObject);
     }
   }
 }

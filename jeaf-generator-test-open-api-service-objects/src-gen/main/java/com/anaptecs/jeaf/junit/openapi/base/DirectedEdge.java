@@ -107,13 +107,13 @@ public class DirectedEdge implements ServiceObject {
     private String link;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link DirectedEdge#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(DirectedEdge)} instead of private constructor to create new builder.
+     * Use {@link DirectedEdge#builder(DirectedEdge)} instead of private constructor to create new builder.
      */
     protected Builder( DirectedEdge pObject ) {
       if (pObject != null) {

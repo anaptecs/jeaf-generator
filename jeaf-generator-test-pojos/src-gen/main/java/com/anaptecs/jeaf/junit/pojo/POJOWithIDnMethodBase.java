@@ -87,14 +87,13 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
     private Double attr;
 
     /**
-     * Use {@link POJOWithIDnMethod.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link POJOWithIDnMethod.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link POJOWithIDnMethod.Builder#newBuilder(POJOWithIDnMethod)} instead of protected constructor to create
-     * new builder.
+     * Use {@link POJOWithIDnMethod.builder(POJOWithIDnMethod)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( POJOWithIDnMethodBase pObject ) {
       if (pObject != null) {

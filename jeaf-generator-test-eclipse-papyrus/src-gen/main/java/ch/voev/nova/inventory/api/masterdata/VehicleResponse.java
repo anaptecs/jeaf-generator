@@ -112,13 +112,13 @@ public class VehicleResponse {
     private List<Vehicle> vehicles;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link VehicleResponse#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(VehicleResponse)} instead of private constructor to create new builder.
+     * Use {@link VehicleResponse#builder(VehicleResponse)} instead of private constructor to create new builder.
      */
     protected Builder( VehicleResponse pObject ) {
       if (pObject != null) {
@@ -126,26 +126,6 @@ public class VehicleResponse {
         warnings = pObject.warnings;
         vehicles = pObject.vehicles;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new VehicleResponse objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new VehicleResponse objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( VehicleResponse pObject ) {
-      return new Builder(pObject);
     }
 
     /**

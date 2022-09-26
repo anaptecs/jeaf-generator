@@ -84,13 +84,14 @@ public class ParentBeanParamType {
     private String tkID;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ParentBeanParamType#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ParentBeanParamType)} instead of private constructor to create new builder.
+     * Use {@link ParentBeanParamType#builder(ParentBeanParamType)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( ParentBeanParamType pObject ) {
       if (pObject != null) {
@@ -98,26 +99,6 @@ public class ParentBeanParamType {
         novaKey = pObject.novaKey;
         tkID = pObject.tkID;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ParentBeanParamType objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ParentBeanParamType objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( ParentBeanParamType pObject ) {
-      return new Builder(pObject);
     }
 
     /**

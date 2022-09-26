@@ -71,13 +71,13 @@ public class FloatCode {
     private Float code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link FloatCode#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(FloatCode)} instead of private constructor to create new builder.
+     * Use {@link FloatCode#builder(FloatCode)} instead of private constructor to create new builder.
      */
     protected Builder( FloatCode pObject ) {
       if (pObject != null) {

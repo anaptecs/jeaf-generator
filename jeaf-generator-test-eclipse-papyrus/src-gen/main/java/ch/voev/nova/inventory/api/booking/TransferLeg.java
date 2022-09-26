@@ -205,13 +205,13 @@ public class TransferLeg {
     private List<SituationFullRef> situationFullRefs;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link TransferLeg#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(TransferLeg)} instead of private constructor to create new builder.
+     * Use {@link TransferLeg#builder(TransferLeg)} instead of private constructor to create new builder.
      */
     protected Builder( TransferLeg pObject ) {
       if (pObject != null) {
@@ -225,26 +225,6 @@ public class TransferLeg {
         duration = pObject.duration;
         situationFullRefs = pObject.situationFullRefs;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new TransferLeg objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new TransferLeg objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( TransferLeg pObject ) {
-      return new Builder(pObject);
     }
 
     /**

@@ -71,13 +71,13 @@ public class IntegerCode {
     private Integer code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link IntegerCode#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(IntegerCode)} instead of private constructor to create new builder.
+     * Use {@link IntegerCode#builder(IntegerCode)} instead of private constructor to create new builder.
      */
     protected Builder( IntegerCode pObject ) {
       if (pObject != null) {

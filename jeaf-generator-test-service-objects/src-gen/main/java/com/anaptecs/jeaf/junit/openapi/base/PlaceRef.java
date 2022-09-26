@@ -60,13 +60,13 @@ public abstract class PlaceRef implements ServiceObject {
     private String name;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PlaceRef#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PlaceRef)} instead of private constructor to create new builder.
+     * Use {@link PlaceRef#builder(PlaceRef)} instead of private constructor to create new builder.
      */
     protected Builder( PlaceRef pObject ) {
       if (pObject != null) {

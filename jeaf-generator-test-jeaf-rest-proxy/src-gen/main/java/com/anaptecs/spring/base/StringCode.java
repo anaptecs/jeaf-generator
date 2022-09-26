@@ -86,39 +86,19 @@ public class StringCode implements Serializable {
     private String code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link StringCode#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(StringCode)} instead of private constructor to create new builder.
+     * Use {@link StringCode#builder(StringCode)} instead of private constructor to create new builder.
      */
     protected Builder( StringCode pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         code = pObject.code;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new StringCode objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new StringCode objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( StringCode pObject ) {
-      return new Builder(pObject);
     }
 
     /**

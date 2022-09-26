@@ -56,13 +56,13 @@ public class ErrorResponse {
    */
   public static class Builder {
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ErrorResponse#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ErrorResponse)} instead of private constructor to create new builder.
+     * Use {@link ErrorResponse#builder(ErrorResponse)} instead of private constructor to create new builder.
      */
     protected Builder( ErrorResponse pObject ) {
       if (pObject != null) {

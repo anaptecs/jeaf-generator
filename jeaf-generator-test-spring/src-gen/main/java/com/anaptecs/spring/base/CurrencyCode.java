@@ -78,13 +78,13 @@ public class CurrencyCode {
     private String code = "CHF";
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link CurrencyCode#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(CurrencyCode)} instead of private constructor to create new builder.
+     * Use {@link CurrencyCode#builder(CurrencyCode)} instead of private constructor to create new builder.
      */
     protected Builder( CurrencyCode pObject ) {
       if (pObject != null) {

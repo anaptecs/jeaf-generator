@@ -89,14 +89,14 @@ public class GeoPosition extends PlaceRef {
     private int latitude;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link GeoPosition#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(GeoPosition)} instead of private constructor to create new builder.
+     * Use {@link GeoPosition#builder(GeoPosition)} instead of private constructor to create new builder.
      */
     protected Builder( GeoPosition pObject ) {
       super(pObject);

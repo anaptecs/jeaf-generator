@@ -97,13 +97,13 @@ public class BoardSpecification {
     private ServiceTime serviceDeparture;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link BoardSpecification#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(BoardSpecification)} instead of private constructor to create new builder.
+     * Use {@link BoardSpecification#builder(BoardSpecification)} instead of private constructor to create new builder.
      */
     protected Builder( BoardSpecification pObject ) {
       if (pObject != null) {
@@ -111,26 +111,6 @@ public class BoardSpecification {
         stopPlaceRef = pObject.stopPlaceRef;
         serviceDeparture = pObject.serviceDeparture;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new BoardSpecification objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new BoardSpecification objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( BoardSpecification pObject ) {
-      return new Builder(pObject);
     }
 
     /**

@@ -92,13 +92,13 @@ public class Duration {
     private TimeUnit timeUnit = TimeUnit.DAY;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Duration#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Duration)} instead of private constructor to create new builder.
+     * Use {@link Duration#builder(Duration)} instead of private constructor to create new builder.
      */
     protected Builder( Duration pObject ) {
       if (pObject != null) {
@@ -106,26 +106,6 @@ public class Duration {
         value = pObject.value;
         timeUnit = pObject.timeUnit;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new Duration objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Duration objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Duration pObject ) {
-      return new Builder(pObject);
     }
 
     /**

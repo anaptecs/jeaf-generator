@@ -495,7 +495,7 @@ public class SpringRESTControllerTest {
     assertEquals("https://products.anaptecs.de/123456789", lProduct.getUri());
     assertEquals(null, lProduct.getDescription());
 
-    ChannelCode lChannelCode = ChannelCode.Builder.newBuilder().setCode("0815").build();
+    ChannelCode lChannelCode = ChannelCode.builder().setCode("0815").build();
     List<CurrencyCode> lSupportedCurrencies = restProductService.getSupportedCurrencies(lChannelCode);
     assertNotNull(lSupportedCurrencies);
     assertEquals("EUR", lSupportedCurrencies.get(0).getCode());
@@ -742,7 +742,7 @@ public class SpringRESTControllerTest {
     assertEquals("13:22:12.453", lLocalTime.toString());
 
     // TODO Generate warning in case of OpenAPI incompatible date types.
-    Builder lBuilder = DateQueryParamsBean.Builder.newBuilder();
+    Builder lBuilder = DateQueryParamsBean.builder();
     lBuilder.setOffsetDateTime(lOffsetDateTime);
     lBuilder.setOffsetTime(lOffsetTime);
     lBuilder.setLocalDateTime(lLocalDateTime);
@@ -759,7 +759,7 @@ public class SpringRESTControllerTest {
     assertEquals("2022-03-17T13:22:12+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
     assertEquals("2022-03-17T13:22:12+01:00", lOffsetDateTime.toString());
 
-    lBuilder = DateQueryParamsBean.Builder.newBuilder();
+    lBuilder = DateQueryParamsBean.builder();
     lBuilder.setOffsetDateTime(lOffsetDateTime);
     lBuilder.setOffsetTime(lOffsetTime);
     lBuilder.setLocalDateTime(lLocalDateTime);
@@ -776,7 +776,7 @@ public class SpringRESTControllerTest {
     assertEquals("2022-03-17T13:22:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
     assertEquals("2022-03-17T13:22+01:00", lOffsetDateTime.toString());
 
-    lBuilder = DateQueryParamsBean.Builder.newBuilder();
+    lBuilder = DateQueryParamsBean.builder();
     lBuilder.setOffsetDateTime(lOffsetDateTime);
     lBuilder.setOffsetTime(lOffsetTime);
     lBuilder.setLocalDateTime(lLocalDateTime);
@@ -918,7 +918,7 @@ public class SpringRESTControllerTest {
     assertEquals("13:22:12.453", lLocalTime.toString());
 
     // TODO Generate warning in case of OpenAPI incompatible date types.
-    com.anaptecs.spring.service.DateHeaderParamsBean.Builder lBuilder = DateHeaderParamsBean.Builder.newBuilder();
+    com.anaptecs.spring.service.DateHeaderParamsBean.Builder lBuilder = DateHeaderParamsBean.builder();
     lBuilder.setOffsetDateTime(lOffsetDateTime);
     lBuilder.setOffsetTime(lOffsetTime);
     lBuilder.setLocalDateTime(lLocalDateTime);
@@ -935,7 +935,7 @@ public class SpringRESTControllerTest {
     assertEquals("2022-03-17T13:22:12+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
     assertEquals("2022-03-17T13:22:12+01:00", lOffsetDateTime.toString());
 
-    lBuilder = DateHeaderParamsBean.Builder.newBuilder();
+    lBuilder = DateHeaderParamsBean.builder();
     lBuilder.setOffsetDateTime(lOffsetDateTime);
     lBuilder.setOffsetTime(lOffsetTime);
     lBuilder.setLocalDateTime(lLocalDateTime);
@@ -952,7 +952,7 @@ public class SpringRESTControllerTest {
     assertEquals("2022-03-17T13:22:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lOffsetDateTime));
     assertEquals("2022-03-17T13:22+01:00", lOffsetDateTime.toString());
 
-    lBuilder = DateHeaderParamsBean.Builder.newBuilder();
+    lBuilder = DateHeaderParamsBean.builder();
     lBuilder.setOffsetDateTime(lOffsetDateTime);
     lBuilder.setOffsetTime(lOffsetTime);
     lBuilder.setLocalDateTime(lLocalDateTime);

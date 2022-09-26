@@ -195,13 +195,14 @@ public class PrimitiveServiceObject implements ServiceObject {
     private char aChar;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PrimitiveServiceObject#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PrimitiveServiceObject)} instead of private constructor to create new builder.
+     * Use {@link PrimitiveServiceObject#builder(PrimitiveServiceObject)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( PrimitiveServiceObject pObject ) {
       if (pObject != null) {
@@ -215,26 +216,6 @@ public class PrimitiveServiceObject implements ServiceObject {
         aDouble = pObject.aDouble;
         aChar = pObject.aChar;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new PrimitiveServiceObject objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new PrimitiveServiceObject objects. The method
-     * never returns null.
-     */
-    public static Builder newBuilder( PrimitiveServiceObject pObject ) {
-      return new Builder(pObject);
     }
 
     /**

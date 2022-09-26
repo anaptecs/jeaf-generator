@@ -137,13 +137,13 @@ public class Warning {
     private String instance;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Warning#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Warning)} instead of private constructor to create new builder.
+     * Use {@link Warning#builder(Warning)} instead of private constructor to create new builder.
      */
     protected Builder( Warning pObject ) {
       if (pObject != null) {
@@ -153,26 +153,6 @@ public class Warning {
         detail = pObject.detail;
         instance = pObject.instance;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new Warning objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Warning objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Warning pObject ) {
-      return new Builder(pObject);
     }
 
     /**

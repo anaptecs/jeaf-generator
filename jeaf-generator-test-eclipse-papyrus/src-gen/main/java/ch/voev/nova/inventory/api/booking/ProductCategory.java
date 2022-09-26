@@ -122,13 +122,13 @@ public class ProductCategory {
     private ProductCategoryRef productCategoryRef;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ProductCategory#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ProductCategory)} instead of private constructor to create new builder.
+     * Use {@link ProductCategory#builder(ProductCategory)} instead of private constructor to create new builder.
      */
     protected Builder( ProductCategory pObject ) {
       if (pObject != null) {
@@ -137,26 +137,6 @@ public class ProductCategory {
         shortName = pObject.shortName;
         productCategoryRef = pObject.productCategoryRef;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ProductCategory objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ProductCategory objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( ProductCategory pObject ) {
-      return new Builder(pObject);
     }
 
     /**

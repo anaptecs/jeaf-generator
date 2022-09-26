@@ -269,13 +269,13 @@ public class Product {
     private String uri = "https://products.anaptecs.de/123456789";
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Product#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Product)} instead of private constructor to create new builder.
+     * Use {@link Product#builder(Product)} instead of private constructor to create new builder.
      */
     protected Builder( Product pObject ) {
       if (pObject != null) {

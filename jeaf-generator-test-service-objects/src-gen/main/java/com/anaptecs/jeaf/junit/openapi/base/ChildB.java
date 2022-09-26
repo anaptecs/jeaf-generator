@@ -113,14 +113,14 @@ public class ChildB extends ParentClass {
     private Set<ParentClass> composition;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ChildB#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(ChildB)} instead of private constructor to create new builder.
+     * Use {@link ChildB#builder(ChildB)} instead of private constructor to create new builder.
      */
     protected Builder( ChildB pObject ) {
       super(pObject);
@@ -129,25 +129,6 @@ public class ChildB extends ParentClass {
         childBAttribute = pObject.childBAttribute;
         composition = pObject.composition;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ChildB objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ChildB objects. The method never returns null.
-     */
-    public static Builder newBuilder( ChildB pObject ) {
-      return new Builder(pObject);
     }
 
     /**

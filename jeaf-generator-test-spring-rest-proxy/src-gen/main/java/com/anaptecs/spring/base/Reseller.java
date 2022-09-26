@@ -52,36 +52,16 @@ public class Reseller extends ResellerBase {
    */
   public static class Builder extends Reseller.BuilderBase {
     /**
-     * Use {@link #newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link Reseller#builder()} instead of protected constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Reseller)} instead of protected constructor to create new builder.
+     * Use {@link Reseller#builder(Reseller)} instead of protected constructor to create new builder.
      */
     protected Builder( Reseller pObject ) {
       super(pObject);
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new Reseller objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( Reseller pObject ) {
-      return new Builder(pObject);
     }
   }
 

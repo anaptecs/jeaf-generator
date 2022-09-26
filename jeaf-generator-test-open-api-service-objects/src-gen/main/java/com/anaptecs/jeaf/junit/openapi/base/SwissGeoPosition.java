@@ -64,14 +64,14 @@ public class SwissGeoPosition extends GeoPosition {
    */
   public static class Builder extends GeoPosition.Builder {
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link SwissGeoPosition#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(SwissGeoPosition)} instead of private constructor to create new builder.
+     * Use {@link SwissGeoPosition#builder(SwissGeoPosition)} instead of private constructor to create new builder.
      */
     protected Builder( SwissGeoPosition pObject ) {
       super(pObject);

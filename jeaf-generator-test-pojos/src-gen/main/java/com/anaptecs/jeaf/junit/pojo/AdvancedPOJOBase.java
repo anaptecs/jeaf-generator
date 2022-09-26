@@ -66,13 +66,13 @@ public abstract class AdvancedPOJOBase {
     private int readonlyDefault = 4711;
 
     /**
-     * Use {@link AdvancedPOJO.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link AdvancedPOJO.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link AdvancedPOJO.Builder#newBuilder(AdvancedPOJO)} instead of protected constructor to create new builder.
+     * Use {@link AdvancedPOJO.builder(AdvancedPOJO)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( AdvancedPOJOBase pObject ) {
       if (pObject != null) {

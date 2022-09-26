@@ -152,13 +152,13 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
     private BankType type;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Bank#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Bank)} instead of private constructor to create new builder.
+     * Use {@link Bank#builder(Bank)} instead of private constructor to create new builder.
      */
     protected Builder( Bank pObject ) {
       if (pObject != null) {
@@ -168,25 +168,6 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
         code = pObject.code;
         type = pObject.type;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new Bank objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Bank objects. The method never returns null.
-     */
-    public static Builder newBuilder( Bank pObject ) {
-      return new Builder(pObject);
     }
 
     /**

@@ -78,13 +78,13 @@ public class ParentClass {
     private String parentAttribute;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ParentClass#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ParentClass)} instead of private constructor to create new builder.
+     * Use {@link ParentClass#builder(ParentClass)} instead of private constructor to create new builder.
      */
     protected Builder( ParentClass pObject ) {
       if (pObject != null) {

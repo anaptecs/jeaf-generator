@@ -135,13 +135,13 @@ public class ServiceStatus {
     private String occupancy;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ServiceStatus#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ServiceStatus)} instead of private constructor to create new builder.
+     * Use {@link ServiceStatus#builder(ServiceStatus)} instead of private constructor to create new builder.
      */
     protected Builder( ServiceStatus pObject ) {
       if (pObject != null) {
@@ -151,26 +151,6 @@ public class ServiceStatus {
         deviation = pObject.deviation;
         occupancy = pObject.occupancy;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ServiceStatus objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ServiceStatus objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( ServiceStatus pObject ) {
-      return new Builder(pObject);
     }
 
     /**

@@ -82,13 +82,13 @@ public class PartnerContainer {
     private List<Partner> partners;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PartnerContainer#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PartnerContainer)} instead of private constructor to create new builder.
+     * Use {@link PartnerContainer#builder(PartnerContainer)} instead of private constructor to create new builder.
      */
     protected Builder( PartnerContainer pObject ) {
       if (pObject != null) {

@@ -121,13 +121,14 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
     private String country;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link IdentifiableServiceObject#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(IdentifiableServiceObject)} instead of private constructor to create new builder.
+     * Use {@link IdentifiableServiceObject#builder(IdentifiableServiceObject)} instead of private constructor to create
+     * new builder.
      */
     protected Builder( IdentifiableServiceObject pObject ) {
       if (pObject != null) {
@@ -136,26 +137,6 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
         hello = pObject.hello;
         country = pObject.country;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new IdentifiableServiceObject objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new IdentifiableServiceObject objects. The method
-     * never returns null.
-     */
-    public static Builder newBuilder( IdentifiableServiceObject pObject ) {
-      return new Builder(pObject);
     }
 
     /**

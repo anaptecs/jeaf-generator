@@ -147,13 +147,13 @@ public class Problem {
     private String instance;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Problem#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Problem)} instead of private constructor to create new builder.
+     * Use {@link Problem#builder(Problem)} instead of private constructor to create new builder.
      */
     protected Builder( Problem pObject ) {
       if (pObject != null) {

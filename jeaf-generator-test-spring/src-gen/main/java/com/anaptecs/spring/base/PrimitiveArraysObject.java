@@ -426,13 +426,14 @@ public class PrimitiveArraysObject {
     private String[] cStringArray;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PrimitiveArraysObject#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PrimitiveArraysObject)} instead of private constructor to create new builder.
+     * Use {@link PrimitiveArraysObject#builder(PrimitiveArraysObject)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( PrimitiveArraysObject pObject ) {
       if (pObject != null) {

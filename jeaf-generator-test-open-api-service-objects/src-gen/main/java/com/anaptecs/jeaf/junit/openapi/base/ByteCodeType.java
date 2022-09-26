@@ -80,13 +80,13 @@ public class ByteCodeType implements ServiceObject {
     private byte code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ByteCodeType#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ByteCodeType)} instead of private constructor to create new builder.
+     * Use {@link ByteCodeType#builder(ByteCodeType)} instead of private constructor to create new builder.
      */
     protected Builder( ByteCodeType pObject ) {
       if (pObject != null) {

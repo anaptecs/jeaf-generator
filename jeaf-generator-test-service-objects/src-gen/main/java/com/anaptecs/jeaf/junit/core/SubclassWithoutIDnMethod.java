@@ -55,36 +55,17 @@ public class SubclassWithoutIDnMethod extends SubclassWithoutIDnMethodBase {
    */
   public static class Builder extends SubclassWithoutIDnMethod.BuilderBase {
     /**
-     * Use {@link #newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link SubclassWithoutIDnMethod#builder()} instead of protected constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(SubclassWithoutIDnMethod)} instead of protected constructor to create new builder.
+     * Use {@link SubclassWithoutIDnMethod#builder(SubclassWithoutIDnMethod)} instead of protected constructor to create
+     * new builder.
      */
     protected Builder( SubclassWithoutIDnMethod pObject ) {
       super(pObject);
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new SubclassWithoutIDnMethod objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( SubclassWithoutIDnMethod pObject ) {
-      return new Builder(pObject);
     }
   }
 

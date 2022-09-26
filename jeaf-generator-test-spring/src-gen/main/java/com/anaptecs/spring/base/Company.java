@@ -74,14 +74,14 @@ public class Company extends Partner {
     private String name;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Company#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(Company)} instead of private constructor to create new builder.
+     * Use {@link Company#builder(Company)} instead of private constructor to create new builder.
      */
     protected Builder( Company pObject ) {
       super(pObject);

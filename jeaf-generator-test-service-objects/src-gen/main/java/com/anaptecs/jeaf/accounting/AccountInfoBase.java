@@ -117,13 +117,13 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
     private ServiceObjectID bankID;
 
     /**
-     * Use {@link AccountInfo.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link AccountInfo.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link AccountInfo.Builder#newBuilder(AccountInfo)} instead of protected constructor to create new builder.
+     * Use {@link AccountInfo.builder(AccountInfo)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( AccountInfoBase pObject ) {
       if (pObject != null) {

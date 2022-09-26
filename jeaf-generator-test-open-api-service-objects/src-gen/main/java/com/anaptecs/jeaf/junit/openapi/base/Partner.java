@@ -121,13 +121,13 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
     private List<PostalAddress> postalAddresses;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Partner#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Partner)} instead of private constructor to create new builder.
+     * Use {@link Partner#builder(Partner)} instead of private constructor to create new builder.
      */
     protected Builder( Partner pObject ) {
       if (pObject != null) {

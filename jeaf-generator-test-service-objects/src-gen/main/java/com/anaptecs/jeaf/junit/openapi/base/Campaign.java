@@ -94,39 +94,19 @@ public class Campaign implements ServiceObject {
     private Set<DiscountOffer> discountOffers;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Campaign#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Campaign)} instead of private constructor to create new builder.
+     * Use {@link Campaign#builder(Campaign)} instead of private constructor to create new builder.
      */
     protected Builder( Campaign pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         discountOffers = pObject.discountOffers;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new Campaign objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Campaign objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Campaign pObject ) {
-      return new Builder(pObject);
     }
 
     /**

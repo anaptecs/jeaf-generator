@@ -80,13 +80,13 @@ public class ShortCode implements ServiceObject {
     private short code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ShortCode#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ShortCode)} instead of private constructor to create new builder.
+     * Use {@link ShortCode#builder(ShortCode)} instead of private constructor to create new builder.
      */
     protected Builder( ShortCode pObject ) {
       if (pObject != null) {

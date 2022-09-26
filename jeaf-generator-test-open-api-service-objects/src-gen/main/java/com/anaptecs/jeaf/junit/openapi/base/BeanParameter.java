@@ -115,13 +115,13 @@ public class BeanParameter implements ServiceObject {
     private String oldStyle;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link BeanParameter#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(BeanParameter)} instead of private constructor to create new builder.
+     * Use {@link BeanParameter#builder(BeanParameter)} instead of private constructor to create new builder.
      */
     protected Builder( BeanParameter pObject ) {
       if (pObject != null) {

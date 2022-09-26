@@ -62,40 +62,20 @@ public class InputSubclass extends Input {
    */
   public static class Builder extends Input.Builder {
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link InputSubclass#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(InputSubclass)} instead of private constructor to create new builder.
+     * Use {@link InputSubclass#builder(InputSubclass)} instead of private constructor to create new builder.
      */
     protected Builder( InputSubclass pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new InputSubclass objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new InputSubclass objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( InputSubclass pObject ) {
-      return new Builder(pObject);
     }
 
     /**

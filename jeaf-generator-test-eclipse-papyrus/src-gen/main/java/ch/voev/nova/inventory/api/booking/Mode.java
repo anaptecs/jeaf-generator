@@ -128,13 +128,13 @@ public class Mode {
     private PTMode ptMode;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Mode#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Mode)} instead of private constructor to create new builder.
+     * Use {@link Mode#builder(Mode)} instead of private constructor to create new builder.
      */
     protected Builder( Mode pObject ) {
       if (pObject != null) {
@@ -144,25 +144,6 @@ public class Mode {
         description = pObject.description;
         ptMode = pObject.ptMode;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new Mode objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Mode objects. The method never returns null.
-     */
-    public static Builder newBuilder( Mode pObject ) {
-      return new Builder(pObject);
     }
 
     /**

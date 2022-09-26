@@ -71,39 +71,19 @@ public class ShortCodeType {
     private short code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ShortCodeType#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ShortCodeType)} instead of private constructor to create new builder.
+     * Use {@link ShortCodeType#builder(ShortCodeType)} instead of private constructor to create new builder.
      */
     protected Builder( ShortCodeType pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         code = pObject.code;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ShortCodeType objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ShortCodeType objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( ShortCodeType pObject ) {
-      return new Builder(pObject);
     }
 
     /**

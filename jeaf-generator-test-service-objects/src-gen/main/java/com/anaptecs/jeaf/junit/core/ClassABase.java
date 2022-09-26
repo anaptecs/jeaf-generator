@@ -101,13 +101,13 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
     private ClassB oneB;
 
     /**
-     * Use {@link ClassA.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link ClassA.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link ClassA.Builder#newBuilder(ClassA)} instead of protected constructor to create new builder.
+     * Use {@link ClassA.builder(ClassA)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ClassABase pObject ) {
       if (pObject != null) {

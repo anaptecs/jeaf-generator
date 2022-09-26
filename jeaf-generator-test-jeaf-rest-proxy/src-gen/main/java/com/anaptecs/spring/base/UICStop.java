@@ -84,14 +84,14 @@ public class UICStop extends Stop {
     private String uicCode;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link UICStop#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(UICStop)} instead of private constructor to create new builder.
+     * Use {@link UICStop#builder(UICStop)} instead of private constructor to create new builder.
      */
     protected Builder( UICStop pObject ) {
       super(pObject);
@@ -99,26 +99,6 @@ public class UICStop extends Stop {
         // Read attribute values from passed object.
         uicCode = pObject.uicCode;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new UICStop objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new UICStop objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( UICStop pObject ) {
-      return new Builder(pObject);
     }
 
     /**

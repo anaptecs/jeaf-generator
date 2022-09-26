@@ -431,14 +431,14 @@ public class PrimitiveArraysObjectWithRestrictions {
     private String[] bStringArray;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PrimitiveArraysObjectWithRestrictions#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PrimitiveArraysObjectWithRestrictions)} instead of private constructor to create new
-     * builder.
+     * Use {@link PrimitiveArraysObjectWithRestrictions#builder(PrimitiveArraysObjectWithRestrictions)} instead of
+     * private constructor to create new builder.
      */
     protected Builder( PrimitiveArraysObjectWithRestrictions pObject ) {
       if (pObject != null) {
@@ -466,26 +466,6 @@ public class PrimitiveArraysObjectWithRestrictions {
         aStringArray = pObject.aStringArray;
         bStringArray = pObject.bStringArray;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new PrimitiveArraysObjectWithRestrictions objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new PrimitiveArraysObjectWithRestrictions objects.
-     * The method never returns null.
-     */
-    public static Builder newBuilder( PrimitiveArraysObjectWithRestrictions pObject ) {
-      return new Builder(pObject);
     }
 
     /**

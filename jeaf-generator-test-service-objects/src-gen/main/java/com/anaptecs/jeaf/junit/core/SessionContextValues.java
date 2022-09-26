@@ -99,13 +99,14 @@ public class SessionContextValues implements ServiceObject {
     private Integer counter;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link SessionContextValues#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(SessionContextValues)} instead of private constructor to create new builder.
+     * Use {@link SessionContextValues#builder(SessionContextValues)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( SessionContextValues pObject ) {
       if (pObject != null) {
@@ -113,26 +114,6 @@ public class SessionContextValues implements ServiceObject {
         timestamp = pObject.timestamp;
         counter = pObject.counter;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new SessionContextValues objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new SessionContextValues objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( SessionContextValues pObject ) {
-      return new Builder(pObject);
     }
 
     /**

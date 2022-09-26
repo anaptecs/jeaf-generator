@@ -91,13 +91,13 @@ public class BidirectB implements ServiceObject {
     private BidirectA a;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link BidirectB#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(BidirectB)} instead of private constructor to create new builder.
+     * Use {@link BidirectB#builder(BidirectB)} instead of private constructor to create new builder.
      */
     protected Builder( BidirectB pObject ) {
       if (pObject != null) {

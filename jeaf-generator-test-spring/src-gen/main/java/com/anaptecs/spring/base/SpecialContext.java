@@ -72,14 +72,14 @@ public class SpecialContext extends Context {
     private String specificHeader;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link SpecialContext#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(SpecialContext)} instead of private constructor to create new builder.
+     * Use {@link SpecialContext#builder(SpecialContext)} instead of private constructor to create new builder.
      */
     protected Builder( SpecialContext pObject ) {
       super(pObject);

@@ -71,13 +71,13 @@ public class ShortCodeType {
     private short code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ShortCodeType#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ShortCodeType)} instead of private constructor to create new builder.
+     * Use {@link ShortCodeType#builder(ShortCodeType)} instead of private constructor to create new builder.
      */
     protected Builder( ShortCodeType pObject ) {
       if (pObject != null) {

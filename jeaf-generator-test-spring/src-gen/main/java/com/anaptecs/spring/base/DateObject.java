@@ -158,13 +158,13 @@ public class DateObject {
     private java.util.Date utilDate;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link DateObject#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(DateObject)} instead of private constructor to create new builder.
+     * Use {@link DateObject#builder(DateObject)} instead of private constructor to create new builder.
      */
     protected Builder( DateObject pObject ) {
       if (pObject != null) {

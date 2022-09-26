@@ -109,13 +109,13 @@ public class TripSpecification {
     private List<TripLegSpecification> legs;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link TripSpecification#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(TripSpecification)} instead of private constructor to create new builder.
+     * Use {@link TripSpecification#builder(TripSpecification)} instead of private constructor to create new builder.
      */
     protected Builder( TripSpecification pObject ) {
       if (pObject != null) {
@@ -123,26 +123,6 @@ public class TripSpecification {
         externalRef = pObject.externalRef;
         legs = pObject.legs;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new TripSpecification objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new TripSpecification objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( TripSpecification pObject ) {
-      return new Builder(pObject);
     }
 
     /**

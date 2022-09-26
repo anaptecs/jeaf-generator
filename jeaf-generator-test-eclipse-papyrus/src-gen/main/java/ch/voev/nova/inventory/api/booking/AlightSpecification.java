@@ -95,13 +95,14 @@ public class AlightSpecification {
     private ServiceTime serviceArrival;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link AlightSpecification#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(AlightSpecification)} instead of private constructor to create new builder.
+     * Use {@link AlightSpecification#builder(AlightSpecification)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( AlightSpecification pObject ) {
       if (pObject != null) {
@@ -109,26 +110,6 @@ public class AlightSpecification {
         stopPlaceRef = pObject.stopPlaceRef;
         serviceArrival = pObject.serviceArrival;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new AlightSpecification objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new AlightSpecification objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( AlightSpecification pObject ) {
-      return new Builder(pObject);
     }
 
     /**

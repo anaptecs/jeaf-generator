@@ -116,13 +116,13 @@ public class PostalAddress {
     private int postalCode;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PostalAddress#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PostalAddress)} instead of private constructor to create new builder.
+     * Use {@link PostalAddress#builder(PostalAddress)} instead of private constructor to create new builder.
      */
     protected Builder( PostalAddress pObject ) {
       if (pObject != null) {
@@ -132,26 +132,6 @@ public class PostalAddress {
         city = pObject.city;
         postalCode = pObject.postalCode;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new PostalAddress objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new PostalAddress objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( PostalAddress pObject ) {
-      return new Builder(pObject);
     }
 
     /**

@@ -81,14 +81,14 @@ public class POI extends Stop {
     private String description;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link POI#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(POI)} instead of private constructor to create new builder.
+     * Use {@link POI#builder(POI)} instead of private constructor to create new builder.
      */
     protected Builder( POI pObject ) {
       super(pObject);

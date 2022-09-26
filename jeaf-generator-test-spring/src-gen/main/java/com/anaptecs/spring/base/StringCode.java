@@ -71,13 +71,13 @@ public class StringCode {
     private String code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link StringCode#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(StringCode)} instead of private constructor to create new builder.
+     * Use {@link StringCode#builder(StringCode)} instead of private constructor to create new builder.
      */
     protected Builder( StringCode pObject ) {
       if (pObject != null) {

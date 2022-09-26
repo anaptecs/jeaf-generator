@@ -53,38 +53,18 @@ public class CustomPrimitiveArraysObjectWithRestrictions extends CustomPrimitive
    */
   public static class Builder extends CustomPrimitiveArraysObjectWithRestrictions.BuilderBase {
     /**
-     * Use {@link #newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link CustomPrimitiveArraysObjectWithRestrictions#builder()} instead of protected constructor to create new
+     * builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(CustomPrimitiveArraysObjectWithRestrictions)} instead of protected constructor to create
-     * new builder.
+     * Use {@link CustomPrimitiveArraysObjectWithRestrictions#builder(CustomPrimitiveArraysObjectWithRestrictions)}
+     * instead of protected constructor to create new builder.
      */
     protected Builder( CustomPrimitiveArraysObjectWithRestrictions pObject ) {
       super(pObject);
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new CustomPrimitiveArraysObjectWithRestrictions
-     * objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( CustomPrimitiveArraysObjectWithRestrictions pObject ) {
-      return new Builder(pObject);
     }
   }
 }

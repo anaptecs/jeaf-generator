@@ -81,14 +81,14 @@ public class MappingChild extends MappingParent {
     private int value;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link MappingChild#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(MappingChild)} instead of private constructor to create new builder.
+     * Use {@link MappingChild#builder(MappingChild)} instead of private constructor to create new builder.
      */
     protected Builder( MappingChild pObject ) {
       super(pObject);
@@ -96,26 +96,6 @@ public class MappingChild extends MappingParent {
         // Read attribute values from passed object.
         value = pObject.value;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new MappingChild objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new MappingChild objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( MappingChild pObject ) {
-      return new Builder(pObject);
     }
 
     /**

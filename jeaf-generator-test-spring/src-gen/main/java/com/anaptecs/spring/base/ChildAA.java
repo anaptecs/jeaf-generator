@@ -110,14 +110,14 @@ public class ChildAA extends ChildA {
     private String[] requiredArray;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ChildAA#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(ChildAA)} instead of private constructor to create new builder.
+     * Use {@link ChildAA#builder(ChildAA)} instead of private constructor to create new builder.
      */
     protected Builder( ChildAA pObject ) {
       super(pObject);

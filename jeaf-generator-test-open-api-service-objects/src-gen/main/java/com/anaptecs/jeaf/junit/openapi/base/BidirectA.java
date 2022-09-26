@@ -124,13 +124,13 @@ public class BidirectA implements ServiceObject {
     private BidirectA transientChild;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link BidirectA#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(BidirectA)} instead of private constructor to create new builder.
+     * Use {@link BidirectA#builder(BidirectA)} instead of private constructor to create new builder.
      */
     protected Builder( BidirectA pObject ) {
       if (pObject != null) {

@@ -215,13 +215,13 @@ public class OpenAPITestObject {
     private double notNullableArray;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link OpenAPITestObject#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(OpenAPITestObject)} instead of private constructor to create new builder.
+     * Use {@link OpenAPITestObject#builder(OpenAPITestObject)} instead of private constructor to create new builder.
      */
     protected Builder( OpenAPITestObject pObject ) {
       if (pObject != null) {

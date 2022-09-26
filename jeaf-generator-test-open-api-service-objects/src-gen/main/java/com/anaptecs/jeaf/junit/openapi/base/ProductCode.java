@@ -83,13 +83,13 @@ public class ProductCode implements ServiceObject {
     private int code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ProductCode#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ProductCode)} instead of private constructor to create new builder.
+     * Use {@link ProductCode#builder(ProductCode)} instead of private constructor to create new builder.
      */
     protected Builder( ProductCode pObject ) {
       if (pObject != null) {

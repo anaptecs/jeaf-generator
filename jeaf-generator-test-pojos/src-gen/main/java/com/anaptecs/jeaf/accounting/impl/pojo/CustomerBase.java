@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class CustomerBase {
+public abstract class CustomerBase extends Partner {
   /**
    * Constant for the name of attribute "name".
    */
@@ -87,8 +87,8 @@ public abstract class CustomerBase {
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected CustomerBase( BuilderBase pBuilder ) {
-    // Ensure that builder is not null.
-    Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+    // Call constructor of super class.
+    super(pBuilder);
     // Read attribute values from builder.
     name = pBuilder.name;
     firstName = pBuilder.firstName;
@@ -105,7 +105,7 @@ public abstract class CustomerBase {
    * Class implements builder to create a new instance of class Customer. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
-  public static abstract class BuilderBase {
+  public static abstract class BuilderBase extends Partner.Builder {
     /**
      * 
      */
@@ -130,13 +130,13 @@ public abstract class CustomerBase {
     private Set<Account> accounts;
 
     /**
-     * Use {@link Customer.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link Customer.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link Customer.Builder#newBuilder(Customer)} instead of protected constructor to create new builder.
+     * Use {@link Customer.builder(Customer)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( CustomerBase pObject ) {
       if (pObject != null) {
@@ -377,11 +377,7 @@ public abstract class CustomerBase {
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
   protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = new StringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
-    lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
-    lBuilder.append('\n');
+    StringBuilder lBuilder = super.toStringBuilder();
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "name", "" + name));
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "firstName", "" + firstName));

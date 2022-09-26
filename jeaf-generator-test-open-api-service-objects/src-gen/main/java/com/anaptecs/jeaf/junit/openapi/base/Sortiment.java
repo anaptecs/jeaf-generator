@@ -100,13 +100,13 @@ public class Sortiment implements ServiceObject {
     private Set<Product> products;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Sortiment#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Sortiment)} instead of private constructor to create new builder.
+     * Use {@link Sortiment#builder(Sortiment)} instead of private constructor to create new builder.
      */
     protected Builder( Sortiment pObject ) {
       if (pObject != null) {

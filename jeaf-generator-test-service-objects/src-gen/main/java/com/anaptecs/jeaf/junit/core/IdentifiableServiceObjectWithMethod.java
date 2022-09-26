@@ -56,37 +56,17 @@ public class IdentifiableServiceObjectWithMethod extends IdentifiableServiceObje
    */
   public static class Builder extends IdentifiableServiceObjectWithMethod.BuilderBase {
     /**
-     * Use {@link #newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link IdentifiableServiceObjectWithMethod#builder()} instead of protected constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(IdentifiableServiceObjectWithMethod)} instead of protected constructor to create new
-     * builder.
+     * Use {@link IdentifiableServiceObjectWithMethod#builder(IdentifiableServiceObjectWithMethod)} instead of protected
+     * constructor to create new builder.
      */
     protected Builder( IdentifiableServiceObjectWithMethod pObject ) {
       super(pObject);
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new IdentifiableServiceObjectWithMethod objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( IdentifiableServiceObjectWithMethod pObject ) {
-      return new Builder(pObject);
     }
   }
 

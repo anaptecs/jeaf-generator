@@ -82,14 +82,14 @@ public class SubclassWithoutID extends IdentifiableServiceObject {
     private Boolean attr;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link SubclassWithoutID#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(SubclassWithoutID)} instead of private constructor to create new builder.
+     * Use {@link SubclassWithoutID#builder(SubclassWithoutID)} instead of private constructor to create new builder.
      */
     protected Builder( SubclassWithoutID pObject ) {
       super(pObject);
@@ -97,26 +97,6 @@ public class SubclassWithoutID extends IdentifiableServiceObject {
         // Read attribute values from passed object.
         attr = pObject.attr;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new SubclassWithoutID objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new SubclassWithoutID objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( SubclassWithoutID pObject ) {
-      return new Builder(pObject);
     }
 
     /**

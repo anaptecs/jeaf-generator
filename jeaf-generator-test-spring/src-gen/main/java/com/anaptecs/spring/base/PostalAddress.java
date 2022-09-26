@@ -119,13 +119,13 @@ public class PostalAddress {
     private int postalCode;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PostalAddress#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PostalAddress)} instead of private constructor to create new builder.
+     * Use {@link PostalAddress#builder(PostalAddress)} instead of private constructor to create new builder.
      */
     protected Builder( PostalAddress pObject ) {
       if (pObject != null) {

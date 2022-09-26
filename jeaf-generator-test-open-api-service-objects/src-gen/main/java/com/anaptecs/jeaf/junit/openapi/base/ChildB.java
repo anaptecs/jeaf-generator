@@ -104,14 +104,14 @@ public class ChildB extends ParentClass {
     private Set<ParentClass> composition;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ChildB#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(ChildB)} instead of private constructor to create new builder.
+     * Use {@link ChildB#builder(ChildB)} instead of private constructor to create new builder.
      */
     protected Builder( ChildB pObject ) {
       super(pObject);

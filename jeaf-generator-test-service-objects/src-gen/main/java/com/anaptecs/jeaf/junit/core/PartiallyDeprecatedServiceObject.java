@@ -56,36 +56,17 @@ public class PartiallyDeprecatedServiceObject extends PartiallyDeprecatedService
    */
   public static class Builder extends PartiallyDeprecatedServiceObject.BuilderBase {
     /**
-     * Use {@link #newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link PartiallyDeprecatedServiceObject#builder()} instead of protected constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PartiallyDeprecatedServiceObject)} instead of protected constructor to create new builder.
+     * Use {@link PartiallyDeprecatedServiceObject#builder(PartiallyDeprecatedServiceObject)} instead of protected
+     * constructor to create new builder.
      */
     protected Builder( PartiallyDeprecatedServiceObject pObject ) {
       super(pObject);
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new PartiallyDeprecatedServiceObject objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( PartiallyDeprecatedServiceObject pObject ) {
-      return new Builder(pObject);
     }
   }
 
