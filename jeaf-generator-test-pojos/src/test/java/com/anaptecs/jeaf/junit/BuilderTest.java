@@ -23,15 +23,15 @@ import com.anaptecs.jeaf.junit.pojo.ImmutableAssociationPOJO;
 class BuilderTest {
   @Test
   void testBuilderForPOJOsWithCustomImplementation( ) {
-    Customer lDonald = Customer.Builder.newBuilder().setFirstName("Donald").setName("Duck").build();
-    Account lAccount01 = Account.Builder.newBuilder().setCurrency(Currency.getInstance("CHF")).build();
+    Customer lDonald = Customer.builder().setFirstName("Donald").setName("Duck").build();
+    Account lAccount01 = Account.builder().setCurrency(Currency.getInstance("CHF")).build();
 
     lAccount01.setOwner(lDonald);
     assertEquals(lDonald, lAccount01.getOwner());
     assertEquals(true, lDonald.getAccounts().contains(lAccount01));
     assertEquals(1, lDonald.getAccounts().size());
 
-    Account lAccount02 = Account.Builder.newBuilder().setCurrency(Currency.getInstance("EUR")).build();
+    Account lAccount02 = Account.builder().setCurrency(Currency.getInstance("EUR")).build();
     lDonald.addToAccounts(lAccount02);
     assertEquals(lDonald, lAccount02.getOwner());
     assertEquals(true, lDonald.getAccounts().contains(lAccount01));
@@ -39,7 +39,7 @@ class BuilderTest {
     assertEquals(2, lDonald.getAccounts().size());
 
     // Transfer Account to Daisy.
-    Customer lDaisy = Customer.Builder.newBuilder().setFirstName("Daisy").setName("Duck").build();
+    Customer lDaisy = Customer.builder().setFirstName("Daisy").setName("Duck").build();
     lAccount01.setOwner(lDaisy);
     assertEquals(lDaisy, lAccount01.getOwner());
     assertFalse(lDonald.getAccounts().contains(lAccount01));
@@ -58,8 +58,7 @@ class BuilderTest {
 
   @Test
   void testBuilderForPOJOsWithoutCustomImplementation( ) {
-    ImmutableAssociationPOJO lPojo = ImmutableAssociationPOJO.Builder.newBuilder()
-        .setYetAnotherAttribute(true).build();
+    ImmutableAssociationPOJO lPojo = ImmutableAssociationPOJO.builder().setYetAnotherAttribute(true).build();
     assertNotNull(lPojo.getDeprecatedRefs());
     assertNotNull(lPojo.getReadonlyAssociation());
     assertEquals(true, lPojo.getYetAnotherAttribute());

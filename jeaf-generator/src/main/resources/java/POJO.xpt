@@ -84,6 +84,7 @@
 					}
 					  
 					«REM»Generate builder«ENDREM»
+					«EXPAND java::Builder::StaticBuilderMethods FOR this»
 					«EXPAND java::Builder::GenerateBuilder (this.getObjectIDClassName())»
 					
 					«IF needsToImplementIdentifiable() == true»
@@ -211,6 +212,7 @@
 					  super(pBuilder);
 					}
 					  
+					«EXPAND java::Builder::StaticBuilderMethods FOR this»
 					«EXPAND java::Builder::GenerateBuilderImpl»
 					
 					«EXPAND jeaf::JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperation»

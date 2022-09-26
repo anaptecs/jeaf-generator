@@ -71,14 +71,14 @@ public abstract class CustomerBase {
   /**
    * 
    */
-  private Set<Account> accounts = new HashSet<Account>();
+  private Set<Account> accounts;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected CustomerBase( ) {
-    // Nothing to do.
+    accounts = new HashSet<Account>();
   }
 
   /**
@@ -94,7 +94,10 @@ public abstract class CustomerBase {
     firstName = pBuilder.firstName;
     email = pBuilder.email;
     if (pBuilder.accounts != null) {
-      accounts.addAll(pBuilder.accounts);
+      accounts = pBuilder.accounts;
+    }
+    else {
+      accounts = new HashSet<Account>();
     }
   }
 
@@ -293,23 +296,6 @@ public abstract class CustomerBase {
   }
 
   /**
-   * Method sets the association "accounts" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pAccounts Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setAccounts( Set<Account> pAccounts ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "accounts".
-    this.clearAccounts();
-    // If the association is null, removing all entries is sufficient.
-    if (pAccounts != null) {
-      accounts = new HashSet<Account>(pAccounts);
-    }
-  }
-
-  /**
    * Method adds the passed Account object to the association "accounts".
    * 
    * 
@@ -373,6 +359,7 @@ public abstract class CustomerBase {
     Collection<Account> lAccounts = new HashSet<Account>(accounts);
     Iterator<Account> lIterator = lAccounts.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromAccounts(lIterator.next());
     }
   }
