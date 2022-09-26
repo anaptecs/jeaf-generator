@@ -425,7 +425,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   public abstract String doSomething( int pParam1, @Deprecated int pParam2 );
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
