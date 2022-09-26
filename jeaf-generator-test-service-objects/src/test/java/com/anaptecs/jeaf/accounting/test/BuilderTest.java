@@ -22,9 +22,9 @@ public class BuilderTest {
     Set<Person> lPersons = new HashSet<>();
     lPersons.add(lPerson);
 
-    Booking lBooking = Booking.Builder.newBuilder().setRemitters(lPersons).build();
+    Booking lBooking = Booking.builder().setRemitters(lPersons).build();
 
-    Account lAccount01 = Account.Builder.newBuilder().setAuthorizedPersons(lPersons).build();
+    Account lAccount01 = Account.builder().setAuthorizedPersons(lPersons).build();
 
   }
 }

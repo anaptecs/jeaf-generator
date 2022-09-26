@@ -292,6 +292,26 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new PrimitiveArraysObjectWithRestrictions objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new PrimitiveArraysObjectWithRestrictions objects.
+   * The method never returns null.
+   */
+  public static Builder builder( PrimitiveArraysObjectWithRestrictions pObject ) {
+    return new Builder(pObject);
+  }
+
+  /**
    * Class implements builder to create a new instance of class PrimitiveArraysObjectWithRestrictions. As the class has
    * read only attributes or associations instances can not be created directly. Instead this builder class has to be
    * used.
