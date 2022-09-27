@@ -56,7 +56,6 @@ public class ValidationTestObject implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected ValidationTestObject( ) {
-    // Nothing to do.
   }
 
   /**
@@ -70,6 +69,26 @@ public class ValidationTestObject implements ServiceObject {
     // Read attribute values from builder.
     myEMail = pBuilder.myEMail;
     dateOfBirth = pBuilder.dateOfBirth;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new ValidationTestObject objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new ValidationTestObject objects. The method never
+   * returns null.
+   */
+  public static Builder builder( ValidationTestObject pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -91,13 +110,14 @@ public class ValidationTestObject implements ServiceObject {
     private Calendar dateOfBirth;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ValidationTestObject#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ValidationTestObject)} instead of private constructor to create new builder.
+     * Use {@link ValidationTestObject#builder(ValidationTestObject)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( ValidationTestObject pObject ) {
       if (pObject != null) {
@@ -105,26 +125,6 @@ public class ValidationTestObject implements ServiceObject {
         myEMail = pObject.myEMail;
         dateOfBirth = pObject.dateOfBirth;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ValidationTestObject objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( ValidationTestObject pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -216,7 +216,7 @@ public class ValidationTestObject implements ServiceObject {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

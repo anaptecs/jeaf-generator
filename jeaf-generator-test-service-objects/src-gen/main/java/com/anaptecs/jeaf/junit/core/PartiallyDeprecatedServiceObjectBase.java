@@ -8,7 +8,6 @@ package com.anaptecs.jeaf.junit.core;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -78,7 +77,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
    * 
    */
   @Deprecated
-  private Set<ValidationTestObject> deprecatedRefs = new HashSet<ValidationTestObject>();
+  private Set<ValidationTestObject> deprecatedRefs;
 
   /**
    * <br/>
@@ -91,6 +90,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
    * object creation builder should be used instead.
    */
   protected PartiallyDeprecatedServiceObjectBase( ) {
+    deprecatedRefs = new HashSet<ValidationTestObject>();
     readonlyDefault = 4711;
   }
 
@@ -107,7 +107,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     outdated = pBuilder.outdated;
     deprecatedRef = pBuilder.deprecatedRef;
     if (pBuilder.deprecatedRefs != null) {
-      deprecatedRefs.addAll(pBuilder.deprecatedRefs);
+      deprecatedRefs = pBuilder.deprecatedRefs;
+    }
+    else {
+      deprecatedRefs = new HashSet<ValidationTestObject>();
     }
     readonlyDefault = pBuilder.readonlyDefault;
   }
@@ -146,15 +149,14 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     private int readonlyDefault = 4711;
 
     /**
-     * Use {@link PartiallyDeprecatedServiceObject.Builder#newBuilder()} instead of protected constructor to create new
-     * builder.
+     * Use {@link PartiallyDeprecatedServiceObject.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link PartiallyDeprecatedServiceObject.Builder#newBuilder(PartiallyDeprecatedServiceObject)} instead of
-     * protected constructor to create new builder.
+     * Use {@link PartiallyDeprecatedServiceObject.builder(PartiallyDeprecatedServiceObject)} instead of protected
+     * constructor to create new builder.
      */
     protected BuilderBase( PartiallyDeprecatedServiceObjectBase pObject ) {
       if (pObject != null) {
@@ -341,25 +343,6 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method sets the association "deprecatedRefs" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pDeprecatedRefs Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  @Deprecated
-  void setDeprecatedRefs( Set<ValidationTestObject> pDeprecatedRefs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "deprecatedRefs".
-    this.clearDeprecatedRefs();
-    // If the association is null, removing all entries is sufficient.
-    if (pDeprecatedRefs != null) {
-      deprecatedRefs = new HashSet<ValidationTestObject>(pDeprecatedRefs);
-    }
-  }
-
-  /**
    * Method adds the passed ValidationTestObject object to the association "deprecatedRefs".
    * 
    * 
@@ -413,11 +396,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   @Deprecated
   public void clearDeprecatedRefs( ) {
     // Remove all objects from association "deprecatedRefs".
-    Collection<ValidationTestObject> lDeprecatedRefs = new HashSet<ValidationTestObject>(deprecatedRefs);
-    Iterator<ValidationTestObject> lIterator = lDeprecatedRefs.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromDeprecatedRefs(lIterator.next());
-    }
+    deprecatedRefs.clear();
   }
 
   /**
@@ -446,7 +425,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   public abstract String doSomething( int pParam1, @Deprecated int pParam2 );
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

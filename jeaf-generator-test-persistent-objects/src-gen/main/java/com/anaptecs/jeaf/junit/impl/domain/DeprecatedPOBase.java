@@ -66,14 +66,14 @@ public abstract class DeprecatedPOBase extends PersistentObject {
    * 
    */
   @Deprecated
-  private Set<BaseClassBO> baseClasses = new HashSet<BaseClassBO>();
+  private Set<BaseClassBO> baseClasses;
 
   /**
    * Initialize object. The constructor of the class has visibility protected in order to avoid creating business
    * objects not through JEAFs persistence service provider.
    */
   protected DeprecatedPOBase( ) {
-    // Nothing to do.
+    baseClasses = new HashSet<BaseClassBO>();
   }
 
   /**
@@ -154,24 +154,6 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "baseClasses" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pBaseClasses Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  @Deprecated
-  void setBaseClasses( Set<BaseClassBO> pBaseClasses ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "baseClasses".
-    this.clearBaseClasses();
-    // If the association is null, removing all entries is sufficient.
-    if (pBaseClasses != null) {
-      baseClasses = new HashSet<BaseClassBO>(pBaseClasses);
-    }
-  }
-
-  /**
    * Method adds the passed BaseClassBO object to the association "baseClasses".
    * 
    * 
@@ -240,6 +222,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
     Collection<BaseClassBO> lBaseClasses = new HashSet<BaseClassBO>(baseClasses);
     Iterator<BaseClassBO> lIterator = lBaseClasses.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromBaseClasses(lIterator.next());
     }
   }

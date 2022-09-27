@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class CustomerBase {
+public abstract class CustomerBase extends Partner {
   /**
    * Constant for the name of attribute "name".
    */
@@ -71,14 +71,14 @@ public abstract class CustomerBase {
   /**
    * 
    */
-  private Set<Account> accounts = new HashSet<Account>();
+  private Set<Account> accounts;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected CustomerBase( ) {
-    // Nothing to do.
+    accounts = new HashSet<Account>();
   }
 
   /**
@@ -87,14 +87,17 @@ public abstract class CustomerBase {
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected CustomerBase( BuilderBase pBuilder ) {
-    // Ensure that builder is not null.
-    Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+    // Call constructor of super class.
+    super(pBuilder);
     // Read attribute values from builder.
     name = pBuilder.name;
     firstName = pBuilder.firstName;
     email = pBuilder.email;
     if (pBuilder.accounts != null) {
-      accounts.addAll(pBuilder.accounts);
+      accounts = pBuilder.accounts;
+    }
+    else {
+      accounts = new HashSet<Account>();
     }
   }
 
@@ -102,7 +105,7 @@ public abstract class CustomerBase {
    * Class implements builder to create a new instance of class Customer. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
-  public static abstract class BuilderBase {
+  public static abstract class BuilderBase extends Partner.Builder {
     /**
      * 
      */
@@ -127,13 +130,13 @@ public abstract class CustomerBase {
     private Set<Account> accounts;
 
     /**
-     * Use {@link Customer.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link Customer.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link Customer.Builder#newBuilder(Customer)} instead of protected constructor to create new builder.
+     * Use {@link Customer.builder(Customer)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( CustomerBase pObject ) {
       if (pObject != null) {
@@ -293,23 +296,6 @@ public abstract class CustomerBase {
   }
 
   /**
-   * Method sets the association "accounts" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pAccounts Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setAccounts( Set<Account> pAccounts ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "accounts".
-    this.clearAccounts();
-    // If the association is null, removing all entries is sufficient.
-    if (pAccounts != null) {
-      accounts = new HashSet<Account>(pAccounts);
-    }
-  }
-
-  /**
    * Method adds the passed Account object to the association "accounts".
    * 
    * 
@@ -373,6 +359,7 @@ public abstract class CustomerBase {
     Collection<Account> lAccounts = new HashSet<Account>(accounts);
     Iterator<Account> lIterator = lAccounts.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromAccounts(lIterator.next());
     }
   }
@@ -384,17 +371,13 @@ public abstract class CustomerBase {
   public abstract String getDisplayName( );
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
   protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = new StringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
-    lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
-    lBuilder.append('\n');
+    StringBuilder lBuilder = super.toStringBuilder();
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "name", "" + name));
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "firstName", "" + firstName));

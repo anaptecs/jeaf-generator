@@ -40,7 +40,7 @@ public class AssortmentDO extends DomainObject {
   /**
    * 
    */
-  private Set<ProductDO> products = new HashSet<ProductDO>();
+  private Set<ProductDO> products;
 
   /**
    * 
@@ -51,7 +51,7 @@ public class AssortmentDO extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public AssortmentDO( ) {
-    // Nothing to do.
+    products = new HashSet<ProductDO>();
   }
 
   /**
@@ -61,6 +61,7 @@ public class AssortmentDO extends DomainObject {
    */
   public AssortmentDO( DomainObjectID pDomainObjectID ) {
     super(pDomainObjectID);
+    products = new HashSet<ProductDO>();
   }
 
   /**
@@ -73,23 +74,6 @@ public class AssortmentDO extends DomainObject {
   public Set<ProductDO> getProducts( ) {
     // Return all ProductDO objects as unmodifiable collection.
     return Collections.unmodifiableSet(products);
-  }
-
-  /**
-   * Method sets the association "products" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pProducts Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setProducts( Set<ProductDO> pProducts ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "products".
-    this.clearProducts();
-    // If the association is null, removing all entries is sufficient.
-    if (pProducts != null) {
-      products = new HashSet<ProductDO>(pProducts);
-    }
   }
 
   /**
@@ -153,6 +137,7 @@ public class AssortmentDO extends DomainObject {
     Collection<ProductDO> lProducts = new HashSet<ProductDO>(products);
     Iterator<ProductDO> lIterator = lProducts.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromProducts(lIterator.next());
     }
   }
@@ -179,7 +164,7 @@ public class AssortmentDO extends DomainObject {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

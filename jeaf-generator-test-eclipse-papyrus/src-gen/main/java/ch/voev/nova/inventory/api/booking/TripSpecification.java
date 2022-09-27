@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.booking;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -46,14 +44,14 @@ public class TripSpecification {
   /**
    * 
    */
-  private List<TripLegSpecification> legs = new ArrayList<TripLegSpecification>();
+  private List<TripLegSpecification> legs;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected TripSpecification( ) {
-    // Nothing to do.
+    legs = new ArrayList<TripLegSpecification>();
   }
 
   /**
@@ -67,8 +65,31 @@ public class TripSpecification {
     // Read attribute values from builder.
     externalRef = pBuilder.externalRef;
     if (pBuilder.legs != null) {
-      legs.addAll(pBuilder.legs);
+      legs = pBuilder.legs;
     }
+    else {
+      legs = new ArrayList<TripLegSpecification>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new TripSpecification objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new TripSpecification objects. The method never
+   * returns null.
+   */
+  public static Builder builder( TripSpecification pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -88,13 +109,13 @@ public class TripSpecification {
     private List<TripLegSpecification> legs;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link TripSpecification#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(TripSpecification)} instead of private constructor to create new builder.
+     * Use {@link TripSpecification#builder(TripSpecification)} instead of private constructor to create new builder.
      */
     protected Builder( TripSpecification pObject ) {
       if (pObject != null) {
@@ -102,26 +123,6 @@ public class TripSpecification {
         externalRef = pObject.externalRef;
         legs = pObject.legs;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new TripSpecification objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( TripSpecification pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -210,23 +211,6 @@ public class TripSpecification {
   }
 
   /**
-   * Method sets the association "legs" to the passed collection. All objects that formerly were part of the association
-   * will be removed from it.
-   * 
-   * 
-   * @param pLegs Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setLegs( List<TripLegSpecification> pLegs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "legs".
-    this.clearLegs();
-    // If the association is null, removing all entries is sufficient.
-    if (pLegs != null) {
-      legs = new ArrayList<TripLegSpecification>(pLegs);
-    }
-  }
-
-  /**
    * Method adds the passed TripLegSpecification object to the association "legs".
    * 
    * 
@@ -274,15 +258,11 @@ public class TripSpecification {
    */
   public void clearLegs( ) {
     // Remove all objects from association "legs".
-    Collection<TripLegSpecification> lLegs = new HashSet<TripLegSpecification>(legs);
-    Iterator<TripLegSpecification> lIterator = lLegs.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromLegs(lIterator.next());
-    }
+    legs.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

@@ -38,7 +38,6 @@ public class MappingParent implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected MappingParent( ) {
-    // Nothing to do.
   }
 
   /**
@@ -54,6 +53,26 @@ public class MappingParent implements ServiceObject {
   }
 
   /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new MappingParent objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new MappingParent objects. The method never returns
+   * null.
+   */
+  public static Builder builder( MappingParent pObject ) {
+    return new Builder(pObject);
+  }
+
+  /**
    * Class implements builder to create a new instance of class MappingParent. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
@@ -64,39 +83,19 @@ public class MappingParent implements ServiceObject {
     private String name;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link MappingParent#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(MappingParent)} instead of private constructor to create new builder.
+     * Use {@link MappingParent#builder(MappingParent)} instead of private constructor to create new builder.
      */
     protected Builder( MappingParent pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         name = pObject.name;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new MappingParent objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( MappingParent pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -156,7 +155,7 @@ public class MappingParent implements ServiceObject {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

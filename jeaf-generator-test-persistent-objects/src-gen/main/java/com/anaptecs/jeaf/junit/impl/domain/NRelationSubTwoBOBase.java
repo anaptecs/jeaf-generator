@@ -35,7 +35,6 @@ public abstract class NRelationSubTwoBOBase extends NReleationBO {
    * objects not through JEAFs persistence service provider.
    */
   protected NRelationSubTwoBOBase( ) {
-    // Nothing to do.
   }
 
   /**

@@ -75,13 +75,13 @@ public class KanteDO extends DomainObject {
   /**
    * 
    */
-  private Set<NetzbereichDO> netzbereiche = new HashSet<NetzbereichDO>();
+  private Set<NetzbereichDO> netzbereiche;
 
   /**
    * Initialize object. Nothing special to do.
    */
   public KanteDO( ) {
-    // Nothing to do.
+    netzbereiche = new HashSet<NetzbereichDO>();
   }
 
   /**
@@ -91,6 +91,7 @@ public class KanteDO extends DomainObject {
    */
   public KanteDO( DomainObjectID pDomainObjectID ) {
     super(pDomainObjectID);
+    netzbereiche = new HashSet<NetzbereichDO>();
   }
 
   /**
@@ -211,24 +212,6 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method sets the association "netzbereiche" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pNetzbereiche Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setNetzbereiche( Set<NetzbereichDO> pNetzbereiche ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "netzbereiche".
-    this.clearNetzbereiche();
-    // If the association is null, removing all entries is sufficient.
-    if (pNetzbereiche != null) {
-      netzbereiche = new HashSet<NetzbereichDO>(pNetzbereiche);
-    }
-  }
-
-  /**
    * Method adds the passed NetzbereichDO object to the association "netzbereiche".
    * 
    * 
@@ -290,12 +273,13 @@ public class KanteDO extends DomainObject {
     Collection<NetzbereichDO> lNetzbereiche = new HashSet<NetzbereichDO>(netzbereiche);
     Iterator<NetzbereichDO> lIterator = lNetzbereiche.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromNetzbereiche(lIterator.next());
     }
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

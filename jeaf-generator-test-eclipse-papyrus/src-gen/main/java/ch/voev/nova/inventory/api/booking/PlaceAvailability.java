@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.booking;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -119,14 +117,14 @@ public class PlaceAvailability {
   /**
    * 
    */
-  private List<PlaceProperty> availablePlaceProperties = new ArrayList<PlaceProperty>();
+  private List<PlaceProperty> availablePlaceProperties;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected PlaceAvailability( ) {
-    // Nothing to do.
+    availablePlaceProperties = new ArrayList<PlaceProperty>();
   }
 
   /**
@@ -147,8 +145,31 @@ public class PlaceAvailability {
     accommodationSubType = pBuilder.accommodationSubType;
     numericAvailability = pBuilder.numericAvailability;
     if (pBuilder.availablePlaceProperties != null) {
-      availablePlaceProperties.addAll(pBuilder.availablePlaceProperties);
+      availablePlaceProperties = pBuilder.availablePlaceProperties;
     }
+    else {
+      availablePlaceProperties = new ArrayList<PlaceProperty>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new PlaceAvailability objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new PlaceAvailability objects. The method never
+   * returns null.
+   */
+  public static Builder builder( PlaceAvailability pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -204,13 +225,13 @@ public class PlaceAvailability {
     private List<PlaceProperty> availablePlaceProperties;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PlaceAvailability#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PlaceAvailability)} instead of private constructor to create new builder.
+     * Use {@link PlaceAvailability#builder(PlaceAvailability)} instead of private constructor to create new builder.
      */
     protected Builder( PlaceAvailability pObject ) {
       if (pObject != null) {
@@ -225,26 +246,6 @@ public class PlaceAvailability {
         numericAvailability = pObject.numericAvailability;
         availablePlaceProperties = pObject.availablePlaceProperties;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new PlaceAvailability objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( PlaceAvailability pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -598,24 +599,6 @@ public class PlaceAvailability {
   }
 
   /**
-   * Method sets the association "availablePlaceProperties" to the passed collection. All objects that formerly were
-   * part of the association will be removed from it.
-   * 
-   * 
-   * @param pAvailablePlaceProperties Collection with objects to which the association should be set. The parameter must
-   * not be null.
-   */
-  void setAvailablePlaceProperties( List<PlaceProperty> pAvailablePlaceProperties ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "availablePlaceProperties".
-    this.clearAvailablePlaceProperties();
-    // If the association is null, removing all entries is sufficient.
-    if (pAvailablePlaceProperties != null) {
-      availablePlaceProperties = new ArrayList<PlaceProperty>(pAvailablePlaceProperties);
-    }
-  }
-
-  /**
    * Method adds the passed PlaceProperty object to the association "availablePlaceProperties".
    * 
    * 
@@ -665,15 +648,11 @@ public class PlaceAvailability {
    */
   public void clearAvailablePlaceProperties( ) {
     // Remove all objects from association "availablePlaceProperties".
-    Collection<PlaceProperty> lAvailablePlaceProperties = new HashSet<PlaceProperty>(availablePlaceProperties);
-    Iterator<PlaceProperty> lIterator = lAvailablePlaceProperties.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromAvailablePlaceProperties(lIterator.next());
-    }
+    availablePlaceProperties.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

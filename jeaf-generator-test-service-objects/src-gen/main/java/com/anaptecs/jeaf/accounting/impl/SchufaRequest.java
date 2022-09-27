@@ -60,7 +60,6 @@ public class SchufaRequest implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected SchufaRequest( ) {
-    // Nothing to do.
   }
 
   /**
@@ -75,6 +74,26 @@ public class SchufaRequest implements ServiceObject {
     name = pBuilder.name;
     firstName = pBuilder.firstName;
     dateOfBirth = pBuilder.dateOfBirth;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new SchufaRequest objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new SchufaRequest objects. The method never returns
+   * null.
+   */
+  public static Builder builder( SchufaRequest pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -98,13 +117,13 @@ public class SchufaRequest implements ServiceObject {
     private Calendar dateOfBirth;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link SchufaRequest#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(SchufaRequest)} instead of private constructor to create new builder.
+     * Use {@link SchufaRequest#builder(SchufaRequest)} instead of private constructor to create new builder.
      */
     protected Builder( SchufaRequest pObject ) {
       if (pObject != null) {
@@ -113,26 +132,6 @@ public class SchufaRequest implements ServiceObject {
         firstName = pObject.firstName;
         dateOfBirth = pObject.dateOfBirth;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new SchufaRequest objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( SchufaRequest pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -256,7 +255,7 @@ public class SchufaRequest implements ServiceObject {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

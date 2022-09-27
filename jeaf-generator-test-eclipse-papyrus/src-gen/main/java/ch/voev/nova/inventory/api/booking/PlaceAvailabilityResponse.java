@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.booking;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -38,20 +36,21 @@ public class PlaceAvailabilityResponse {
   /**
    * 
    */
-  private List<Warning> warnings = new ArrayList<Warning>();
+  private List<Warning> warnings;
 
   /**
    * 
    */
   @NotNull
-  private List<TripAvailability> tripAvailabilities = new ArrayList<TripAvailability>();
+  private List<TripAvailability> tripAvailabilities;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected PlaceAvailabilityResponse( ) {
-    // Nothing to do.
+    warnings = new ArrayList<Warning>();
+    tripAvailabilities = new ArrayList<TripAvailability>();
   }
 
   /**
@@ -64,11 +63,37 @@ public class PlaceAvailabilityResponse {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.warnings != null) {
-      warnings.addAll(pBuilder.warnings);
+      warnings = pBuilder.warnings;
+    }
+    else {
+      warnings = new ArrayList<Warning>();
     }
     if (pBuilder.tripAvailabilities != null) {
-      tripAvailabilities.addAll(pBuilder.tripAvailabilities);
+      tripAvailabilities = pBuilder.tripAvailabilities;
     }
+    else {
+      tripAvailabilities = new ArrayList<TripAvailability>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new PlaceAvailabilityResponse objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new PlaceAvailabilityResponse objects. The method
+   * never returns null.
+   */
+  public static Builder builder( PlaceAvailabilityResponse pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -87,13 +112,14 @@ public class PlaceAvailabilityResponse {
     private List<TripAvailability> tripAvailabilities;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PlaceAvailabilityResponse#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PlaceAvailabilityResponse)} instead of private constructor to create new builder.
+     * Use {@link PlaceAvailabilityResponse#builder(PlaceAvailabilityResponse)} instead of private constructor to create
+     * new builder.
      */
     protected Builder( PlaceAvailabilityResponse pObject ) {
       if (pObject != null) {
@@ -101,26 +127,6 @@ public class PlaceAvailabilityResponse {
         warnings = pObject.warnings;
         tripAvailabilities = pObject.tripAvailabilities;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new PlaceAvailabilityResponse objects. The method
-     * never returns null.
-     */
-    public static Builder newBuilder( PlaceAvailabilityResponse pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -192,23 +198,6 @@ public class PlaceAvailabilityResponse {
   }
 
   /**
-   * Method sets the association "warnings" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pWarnings Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setWarnings( List<Warning> pWarnings ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "warnings".
-    this.clearWarnings();
-    // If the association is null, removing all entries is sufficient.
-    if (pWarnings != null) {
-      warnings = new ArrayList<Warning>(pWarnings);
-    }
-  }
-
-  /**
    * Method adds the passed Warning object to the association "warnings".
    * 
    * 
@@ -256,11 +245,7 @@ public class PlaceAvailabilityResponse {
    */
   public void clearWarnings( ) {
     // Remove all objects from association "warnings".
-    Collection<Warning> lWarnings = new HashSet<Warning>(warnings);
-    Iterator<Warning> lIterator = lWarnings.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromWarnings(lIterator.next());
-    }
+    warnings.clear();
   }
 
   /**
@@ -273,24 +258,6 @@ public class PlaceAvailabilityResponse {
   public List<TripAvailability> getTripAvailabilities( ) {
     // Return all TripAvailability objects as unmodifiable collection.
     return Collections.unmodifiableList(tripAvailabilities);
-  }
-
-  /**
-   * Method sets the association "tripAvailabilities" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pTripAvailabilities Collection with objects to which the association should be set. The parameter must not
-   * be null.
-   */
-  void setTripAvailabilities( List<TripAvailability> pTripAvailabilities ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "tripAvailabilities".
-    this.clearTripAvailabilities();
-    // If the association is null, removing all entries is sufficient.
-    if (pTripAvailabilities != null) {
-      tripAvailabilities = new ArrayList<TripAvailability>(pTripAvailabilities);
-    }
   }
 
   /**
@@ -343,15 +310,11 @@ public class PlaceAvailabilityResponse {
    */
   public void clearTripAvailabilities( ) {
     // Remove all objects from association "tripAvailabilities".
-    Collection<TripAvailability> lTripAvailabilities = new HashSet<TripAvailability>(tripAvailabilities);
-    Iterator<TripAvailability> lIterator = lTripAvailabilities.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromTripAvailabilities(lIterator.next());
-    }
+    tripAvailabilities.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

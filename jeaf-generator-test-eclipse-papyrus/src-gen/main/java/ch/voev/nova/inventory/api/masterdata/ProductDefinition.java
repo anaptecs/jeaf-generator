@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.masterdata;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -113,7 +111,7 @@ public class ProductDefinition {
   /**
    * 
    */
-  private List<TemporalValidity> validities = new ArrayList<TemporalValidity>();
+  private List<TemporalValidity> validities;
 
   /**
    * unique id of this product on this server.
@@ -150,7 +148,7 @@ public class ProductDefinition {
   /**
    * Structured description of the sales or after-sales conditions.
    */
-  private List<Condition> conditions = new ArrayList<Condition>();
+  private List<Condition> conditions;
 
   /**
    * Accommodation type according to UIC
@@ -194,15 +192,18 @@ public class ProductDefinition {
   /**
    * 
    */
-  private List<FulfillmentOption> fulfillmentOptions = new ArrayList<FulfillmentOption>();
+  private List<FulfillmentOption> fulfillmentOptions;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected ProductDefinition( ) {
+    validities = new ArrayList<TemporalValidity>();
+    conditions = new ArrayList<Condition>();
     isTrainBound = false;
     isReturnProduct = false;
+    fulfillmentOptions = new ArrayList<FulfillmentOption>();
   }
 
   /**
@@ -215,7 +216,10 @@ public class ProductDefinition {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.validities != null) {
-      validities.addAll(pBuilder.validities);
+      validities = pBuilder.validities;
+    }
+    else {
+      validities = new ArrayList<TemporalValidity>();
     }
     id = pBuilder.id;
     summary = pBuilder.summary;
@@ -224,7 +228,10 @@ public class ProductDefinition {
     code = pBuilder.code;
     description = pBuilder.description;
     if (pBuilder.conditions != null) {
-      conditions.addAll(pBuilder.conditions);
+      conditions = pBuilder.conditions;
+    }
+    else {
+      conditions = new ArrayList<Condition>();
     }
     accommodationType = pBuilder.accommodationType;
     accommodationSubType = pBuilder.accommodationSubType;
@@ -234,8 +241,31 @@ public class ProductDefinition {
     isTrainBound = pBuilder.isTrainBound;
     isReturnProduct = pBuilder.isReturnProduct;
     if (pBuilder.fulfillmentOptions != null) {
-      fulfillmentOptions.addAll(pBuilder.fulfillmentOptions);
+      fulfillmentOptions = pBuilder.fulfillmentOptions;
     }
+    else {
+      fulfillmentOptions = new ArrayList<FulfillmentOption>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new ProductDefinition objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new ProductDefinition objects. The method never
+   * returns null.
+   */
+  public static Builder builder( ProductDefinition pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -326,13 +356,13 @@ public class ProductDefinition {
     private List<FulfillmentOption> fulfillmentOptions;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ProductDefinition#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ProductDefinition)} instead of private constructor to create new builder.
+     * Use {@link ProductDefinition#builder(ProductDefinition)} instead of private constructor to create new builder.
      */
     protected Builder( ProductDefinition pObject ) {
       if (pObject != null) {
@@ -354,26 +384,6 @@ public class ProductDefinition {
         isReturnProduct = pObject.isReturnProduct;
         fulfillmentOptions = pObject.fulfillmentOptions;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ProductDefinition objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( ProductDefinition pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -602,23 +612,6 @@ public class ProductDefinition {
   }
 
   /**
-   * Method sets the association "validities" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pValidities Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setValidities( List<TemporalValidity> pValidities ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "validities".
-    this.clearValidities();
-    // If the association is null, removing all entries is sufficient.
-    if (pValidities != null) {
-      validities = new ArrayList<TemporalValidity>(pValidities);
-    }
-  }
-
-  /**
    * Method adds the passed TemporalValidity object to the association "validities".
    * 
    * 
@@ -666,11 +659,7 @@ public class ProductDefinition {
    */
   public void clearValidities( ) {
     // Remove all objects from association "validities".
-    Collection<TemporalValidity> lValidities = new HashSet<TemporalValidity>(validities);
-    Iterator<TemporalValidity> lIterator = lValidities.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromValidities(lIterator.next());
-    }
+    validities.clear();
   }
 
   /**
@@ -821,22 +810,6 @@ public class ProductDefinition {
   }
 
   /**
-   * Method sets the association "conditions" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it. Structured description of the sales or after-sales conditions.
-   * 
-   * @param pConditions Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setConditions( List<Condition> pConditions ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "conditions".
-    this.clearConditions();
-    // If the association is null, removing all entries is sufficient.
-    if (pConditions != null) {
-      conditions = new ArrayList<Condition>(pConditions);
-    }
-  }
-
-  /**
    * Method adds the passed Condition object to the association "conditions". Structured description of the sales or
    * after-sales conditions.
    * 
@@ -884,11 +857,7 @@ public class ProductDefinition {
    */
   public void clearConditions( ) {
     // Remove all objects from association "conditions".
-    Collection<Condition> lConditions = new HashSet<Condition>(conditions);
-    Iterator<Condition> lIterator = lConditions.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromConditions(lIterator.next());
-    }
+    conditions.clear();
   }
 
   /**
@@ -1073,24 +1042,6 @@ public class ProductDefinition {
   }
 
   /**
-   * Method sets the association "fulfillmentOptions" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pFulfillmentOptions Collection with objects to which the association should be set. The parameter must not
-   * be null.
-   */
-  void setFulfillmentOptions( List<FulfillmentOption> pFulfillmentOptions ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "fulfillmentOptions".
-    this.clearFulfillmentOptions();
-    // If the association is null, removing all entries is sufficient.
-    if (pFulfillmentOptions != null) {
-      fulfillmentOptions = new ArrayList<FulfillmentOption>(pFulfillmentOptions);
-    }
-  }
-
-  /**
    * Method adds the passed FulfillmentOption object to the association "fulfillmentOptions".
    * 
    * 
@@ -1140,15 +1091,11 @@ public class ProductDefinition {
    */
   public void clearFulfillmentOptions( ) {
     // Remove all objects from association "fulfillmentOptions".
-    Collection<FulfillmentOption> lFulfillmentOptions = new HashSet<FulfillmentOption>(fulfillmentOptions);
-    Iterator<FulfillmentOption> lIterator = lFulfillmentOptions.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromFulfillmentOptions(lIterator.next());
-    }
+    fulfillmentOptions.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

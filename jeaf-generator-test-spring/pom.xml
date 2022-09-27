@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.anaptecs.jeaf.generator</groupId>
 		<artifactId>jeaf-generator-project</artifactId>
-		<version>1.6.59-SNAPSHOT</version>
+		<version>1.6.60-SNAPSHOT</version>
 	</parent>
 
 	<name>JEAF Generator Test Spring</name>
@@ -126,6 +126,7 @@
 					<generatePOJOs>true</generatePOJOs>
 					<generateJSONSerializers>true</generateJSONSerializers>
 					<generateJacksonAnnotations>true</generateJacksonAnnotations>
+					<enableLegacyBuilderStyle>true</enableLegacyBuilderStyle>
 
 					<!-- Define information that are written to file headers -->
 					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>

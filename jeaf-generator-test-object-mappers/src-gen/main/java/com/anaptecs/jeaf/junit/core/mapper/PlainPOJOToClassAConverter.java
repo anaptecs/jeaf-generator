@@ -54,7 +54,7 @@ public class PlainPOJOToClassAConverter implements ObjectMapper<PlainPOJO, Class
     // Check parameter
     Check.checkInvalidParameterNull(pSource, "pSource");
     // Create new target object.
-    ClassA lTarget = ClassA.Builder.newBuilder().build();
+    ClassA lTarget = ClassA.builder().build();
     PlainPOJOToClassAConverter lObjectMapper = PlainPOJOToClassAConverter.getConverter();
     // Take value(s) from source, map them to target and return the created target object.
     lObjectMapper.applyMappings(pSource, lTarget, MappingType.CREATE);
@@ -154,7 +154,7 @@ public class PlainPOJOToClassAConverter implements ObjectMapper<PlainPOJO, Class
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    PlainPOJO lNewSourceObject = PlainPOJO.Builder.newBuilder().build();
+    PlainPOJO lNewSourceObject = PlainPOJO.builder().build();
     PlainPOJOToClassAConverter lObjectMapper = PlainPOJOToClassAConverter.getConverter();
     lObjectMapper.applyMappings(lNewSourceObject, pTarget, MappingType.READ);
     return lNewSourceObject;

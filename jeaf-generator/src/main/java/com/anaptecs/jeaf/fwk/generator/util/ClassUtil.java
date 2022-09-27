@@ -206,7 +206,6 @@ public class ClassUtil {
     Check.checkInvalidParameterNull(pTypedElement, "pParameter");
 
     MultiplicityElement lMultiplicityElement = (MultiplicityElement) pTypedElement;
-    String lReturnValue;
 
     // if (pParameter.getType() != null) {
     String lTypePackage = getPackageName(pTypedElement.getType());
@@ -219,6 +218,19 @@ public class ClassUtil {
     }
     else {
       lFQN = lTypeName;
+    }
+
+    // Special handling for primitive types
+    if (ClassUtil.isPrimitive(pTypedElement.getType()) == true) {
+      lFQN = lFQN.toLowerCase();
+    }
+    // Handle return type void.
+    else if ("MagicDraw Profile.datatypes.void".equals(lFQN)) {
+      lFQN = "void";
+    }
+    // Default type name is already created.
+    else if ("java.lang.Class".equals(lFQN) || lFQN.equals("Class")) {
+      lFQN = "Class<?>";
     }
 
     // Find out if passed element is modeled as association or not.
@@ -236,48 +248,44 @@ public class ClassUtil {
       lModeledAsAssociation = false;
     }
 
-    // Generated code is different is something is modeled as attribute or association.
-    if (lModeledAsAssociation == false) {
-      // Special handling for primitive types
-      if (ClassUtil.isPrimitive(pTypedElement.getType()) == true) {
-        lReturnValue = lTypeName.toLowerCase();
-      }
-      else if (ClassUtil.isBasicType(pTypedElement.getType())) {
-        lReturnValue = lFQN;
-      }
-      // Handle return type void.
-      else if ("MagicDraw Profile.datatypes.void".equals(lFQN)) {
-        lReturnValue = "void";
+    // Check if collection type is required
+    boolean lCollectionRequired;
+    if (pTypedElement instanceof Property) {
+      // If properties are not modeled as association then the will be generated as simple arrays in case they are
+      // multivalued.
+      if (lModeledAsAssociation && lMultiplicityElement.isMultivalued()) {
+        lCollectionRequired = true;
       }
       else {
-        lReturnValue = getTypeNameForRealTypes(lMultiplicityElement, lFQN);
+        lCollectionRequired = false;
       }
     }
-    // Type is modeled as association
-    else {
-      lReturnValue = getTypeNameForRealTypes(lMultiplicityElement, lFQN);
+    // In case of parameters, primitive types will be represented as arrays all other types as collections.
+    else if (pTypedElement instanceof Parameter) {
+      // Parameter is not multivalued
+      if (lMultiplicityElement.isMultivalued()) {
+        if (ClassUtil.isPrimitive(pTypedElement.getType())) {
+          lCollectionRequired = false;
+        }
+        else {
+          lCollectionRequired = true;
+        }
+      }
+      // Parameter is not multivalued
+      else {
+        lCollectionRequired = false;
+      }
     }
-    // Return determined type.
-    return lReturnValue;
-  }
+    // In case of all other type of model elements we will work with collections only depending on their multiplicity.
+    else {
+      lCollectionRequired = lMultiplicityElement.isMultivalued();
+    }
 
-  private static String getTypeNameForRealTypes( MultiplicityElement lMultiplicityElement, String lFQN ) {
-    String lReturnValue;
-    // Max. Multiplicity of more than one
-    if (lMultiplicityElement.isMultivalued()) {
-      lReturnValue = ClassUtil.getCollectionType(lMultiplicityElement) + "<" + lFQN + ">";
+    if (lCollectionRequired) {
+      lFQN = ClassUtil.getCollectionType(lMultiplicityElement) + "<" + lFQN + ">";
     }
-    // Singular type.
-    else {
-      // Default type name is already created.
-      if (lFQN.equals("java.lang.Class") || lFQN.equals("Class")) {
-        lReturnValue = "Class<?>";
-      }
-      else {
-        lReturnValue = lFQN;
-      }
-    }
-    return lReturnValue;
+
+    return lFQN;
   }
 
   public static String getCollectionType( MultiplicityElement lMultiplicityElement ) {

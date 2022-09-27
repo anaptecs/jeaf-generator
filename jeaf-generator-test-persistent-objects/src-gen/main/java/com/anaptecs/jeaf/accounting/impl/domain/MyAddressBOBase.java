@@ -85,7 +85,6 @@ public abstract class MyAddressBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected MyAddressBOBase( ) {
-    // Nothing to do.
   }
 
   /**

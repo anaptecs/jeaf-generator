@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.masterdata;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -39,19 +37,20 @@ public class VehicleResponse {
   /**
    * 
    */
-  private List<Warning> warnings = new ArrayList<Warning>();
+  private List<Warning> warnings;
 
   /**
    * 
    */
-  private List<Vehicle> vehicles = new ArrayList<Vehicle>();
+  private List<Vehicle> vehicles;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected VehicleResponse( ) {
-    // Nothing to do.
+    warnings = new ArrayList<Warning>();
+    vehicles = new ArrayList<Vehicle>();
   }
 
   /**
@@ -64,11 +63,37 @@ public class VehicleResponse {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.warnings != null) {
-      warnings.addAll(pBuilder.warnings);
+      warnings = pBuilder.warnings;
+    }
+    else {
+      warnings = new ArrayList<Warning>();
     }
     if (pBuilder.vehicles != null) {
-      vehicles.addAll(pBuilder.vehicles);
+      vehicles = pBuilder.vehicles;
     }
+    else {
+      vehicles = new ArrayList<Vehicle>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new VehicleResponse objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new VehicleResponse objects. The method never
+   * returns null.
+   */
+  public static Builder builder( VehicleResponse pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -87,13 +112,13 @@ public class VehicleResponse {
     private List<Vehicle> vehicles;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link VehicleResponse#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(VehicleResponse)} instead of private constructor to create new builder.
+     * Use {@link VehicleResponse#builder(VehicleResponse)} instead of private constructor to create new builder.
      */
     protected Builder( VehicleResponse pObject ) {
       if (pObject != null) {
@@ -101,26 +126,6 @@ public class VehicleResponse {
         warnings = pObject.warnings;
         vehicles = pObject.vehicles;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new VehicleResponse objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( VehicleResponse pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -192,23 +197,6 @@ public class VehicleResponse {
   }
 
   /**
-   * Method sets the association "warnings" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pWarnings Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setWarnings( List<Warning> pWarnings ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "warnings".
-    this.clearWarnings();
-    // If the association is null, removing all entries is sufficient.
-    if (pWarnings != null) {
-      warnings = new ArrayList<Warning>(pWarnings);
-    }
-  }
-
-  /**
    * Method adds the passed Warning object to the association "warnings".
    * 
    * 
@@ -256,11 +244,7 @@ public class VehicleResponse {
    */
   public void clearWarnings( ) {
     // Remove all objects from association "warnings".
-    Collection<Warning> lWarnings = new HashSet<Warning>(warnings);
-    Iterator<Warning> lIterator = lWarnings.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromWarnings(lIterator.next());
-    }
+    warnings.clear();
   }
 
   /**
@@ -273,23 +257,6 @@ public class VehicleResponse {
   public List<Vehicle> getVehicles( ) {
     // Return all Vehicle objects as unmodifiable collection.
     return Collections.unmodifiableList(vehicles);
-  }
-
-  /**
-   * Method sets the association "vehicles" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pVehicles Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setVehicles( List<Vehicle> pVehicles ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "vehicles".
-    this.clearVehicles();
-    // If the association is null, removing all entries is sufficient.
-    if (pVehicles != null) {
-      vehicles = new ArrayList<Vehicle>(pVehicles);
-    }
   }
 
   /**
@@ -340,15 +307,11 @@ public class VehicleResponse {
    */
   public void clearVehicles( ) {
     // Remove all objects from association "vehicles".
-    Collection<Vehicle> lVehicles = new HashSet<Vehicle>(vehicles);
-    Iterator<Vehicle> lIterator = lVehicles.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromVehicles(lIterator.next());
-    }
+    vehicles.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

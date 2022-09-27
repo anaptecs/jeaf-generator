@@ -51,7 +51,7 @@ public class JSONSerializationTest {
 
   @Test
   public void testSimpleJSONSerialization( ) throws JsonProcessingException {
-    ChannelCode lChannelCode = ChannelCode.Builder.newBuilder().setCode("POS").build();
+    ChannelCode lChannelCode = ChannelCode.builder().setCode("POS").build();
     JSONTools lTools = JSON.getJSONTools();
     String lJSONString = lTools.writeObjectToString(lChannelCode);
     assertEquals("\"POS\"", lJSONString);
@@ -59,7 +59,7 @@ public class JSONSerializationTest {
     ChannelCode lDeserializedChannelCode = lTools.read(lJSONString, ChannelCode.class);
     assertEquals("POS", lDeserializedChannelCode.getCode());
 
-    Channel lChannel = Channel.Builder.newBuilder().setChannelCode(lChannelCode).setChannelType(ChannelType.COUNTER)
+    Channel lChannel = Channel.builder().setChannelCode(lChannelCode).setChannelType(ChannelType.COUNTER)
         .setCode(47).setSelfServiceChannel(false).build();
 
     lJSONString = lTools.writeObjectToString(lChannel);
@@ -71,13 +71,13 @@ public class JSONSerializationTest {
     assertEquals(ChannelType.COUNTER, lDeserilaizedChannel.getChannelType());
 
     Channel lChannel2 =
-        Channel.Builder.newBuilder().setChannelCode(ChannelCode.Builder.newBuilder().setCode("MOBILE_APP").build())
+        Channel.builder().setChannelCode(ChannelCode.builder().setCode("MOBILE_APP").build())
             .setChannelType(ChannelType.MOBILE).setCode(42).setSelfServiceChannel(true).build();
     List<Channel> lChannels = new ArrayList<>();
     lChannels.add(lChannel);
     lChannels.add(lChannel2);
     Reseller lReseller =
-        Reseller.Builder.newBuilder().setName("Reseller 1").setLanguage(Locale.GERMAN).setChannels(lChannels).build();
+        Reseller.builder().setName("Reseller 1").setLanguage(Locale.GERMAN).setChannels(lChannels).build();
     lJSONString = lTools.writeObjectToString(lReseller);
     assertEquals(
         "{\"channels\":[{\"channelType\":\"COUNTER\",\"channelCode\":\"POS\",\"code\":47,\"selfServiceChannel\":false},{\"channelType\":\"MOBILE\",\"channelCode\":\"MOBILE_APP\",\"code\":42,\"selfServiceChannel\":true}],\"name\":\"Reseller 1\",\"language\":\"de\"}",
@@ -94,7 +94,7 @@ public class JSONSerializationTest {
 
   @Test
   public void testInheritanceSerialization( ) throws JsonProcessingException {
-    ParentClass lParentClass = ParentClass.Builder.newBuilder().setParentAttribute("parent").build();
+    ParentClass lParentClass = ParentClass.builder().setParentAttribute("parent").build();
     JSONTools lTools = JSON.getJSONTools();
     String lValue = lTools.writeObjectToString(lParentClass);
     assertEquals("{\"objectType\":\"ParentClass\",\"parentAttribute\":\"parent\"}", lValue);
@@ -102,7 +102,7 @@ public class JSONSerializationTest {
     ParentClass lDeserializedParent = lTools.read(lValue, ParentClass.class);
     assertEquals("parent", lParentClass.getParentAttribute());
 
-    ChildBB lChildBB = ChildBB.Builder.newBuilder().setChildBBAttribute(123456789l).build();
+    ChildBB lChildBB = ChildBB.builder().setChildBBAttribute(123456789l).build();
     lValue = lTools.writeObjectToString(lChildBB);
     assertEquals(
         "{\"objectType\":\"ChildBB\",\"childBAttribute\":false,\"childBBAttribute\":123456789,\"deprecatedAttribute\":0}",
@@ -111,7 +111,7 @@ public class JSONSerializationTest {
     lDeserializedParent = lTools.read(lValue, ParentClass.class);
     assert (lDeserializedParent instanceof ChildBB);
 
-    ChildAA lChildAA = ChildAA.Builder.newBuilder().setChildAAttribute(4711).build();
+    ChildAA lChildAA = ChildAA.builder().setChildAAttribute(4711).build();
     lChildBB.addToComposition(lChildAA);
     lValue = lTools.writeObjectToString(lChildBB);
     assertEquals(
@@ -134,18 +134,18 @@ public class JSONSerializationTest {
     ServiceObjectID lProductID1 = new ServiceObjectID("12", 0);
     ServiceObjectID lProductID2 = new ServiceObjectID("4", 1);
     ServiceObjectID lResellerID = new ServiceObjectID("1234", 5);
-    Reseller lReseller =
-        Reseller.Builder.newBuilder().setID(lResellerID).setName("Good Guys Inc.").setLanguage(Locale.GERMAN).build();
+    Reseller lReseller = Reseller.builder().setID(lResellerID).setName("Good Guys Inc.").setLanguage(Locale.GERMAN)
+        .build();
 
     // Create 1st product
-    Builder lProductBuilder = Product.Builder.newBuilder();
+    Builder lProductBuilder = Product.builder();
     lProductBuilder.setID(lProductID1);
     lProductBuilder.setName("Fancy Thing");
     lProductBuilder.setProductID(UUID.fromString("c513b71f-433d-4118-be8b-7190226eb155"));
     Product lProduct1 = lProductBuilder.build();
     lProduct1.addToResellers(lReseller);
 
-    lProductBuilder = Product.Builder.newBuilder();
+    lProductBuilder = Product.builder();
     lProductBuilder.setID(lProductID2);
     lProductBuilder.setName("Standard Thing");
     lProductBuilder.setProductID(UUID.fromString("c513b71f-433d-4118-be8b-7190226eb123"));
@@ -204,14 +204,14 @@ public class JSONSerializationTest {
   void testInheritance( ) throws JsonProcessingException {
     JSONTools lTools = JSON.getJSONTools();
     Company lCompany =
-        Company.Builder.newBuilder().setID(new ServiceObjectID("123456", 2)).setName("anaptecs GmbH").build();
+        Company.builder().setID(new ServiceObjectID("123456", 2)).setName("anaptecs GmbH").build();
     String lJSON = lTools.writeObjectToString(lCompany);
     assertEquals("{\"objectType\":\"Company\",\"objectID\":\"123456|2\",\"name\":\"anaptecs GmbH\"}", lJSON);
 
-    Person lDonald = Person.Builder.newBuilder().setID(new ServiceObjectID("9876", 5)).setFirstName("Donald")
+    Person lDonald = Person.builder().setID(new ServiceObjectID("9876", 5)).setFirstName("Donald")
         .setSurname("Duck").build();
 
-    Partner lPartner = Partner.Builder.newBuilder().setID(new ServiceObjectID("4711", 0)).build();
+    Partner lPartner = Partner.builder().setID(new ServiceObjectID("4711", 0)).build();
 
     List<Partner> lPartners = new ArrayList<>();
     lPartners.add(lDonald);
@@ -237,7 +237,7 @@ public class JSONSerializationTest {
         "[{\"objectType\":\"Person\",\"objectID\":\"9876|5\",\"surname\":\"Duck\",\"firstName\":\"Donald\"},{\"objectType\":\"Company\",\"objectID\":\"123456|2\",\"name\":\"anaptecs GmbH\"},{\"objectType\":\"Partner\",\"objectID\":\"4711|0\"}]",
         lJSON);
 
-    PartnerContainer lContainer = PartnerContainer.Builder.newBuilder().build();
+    PartnerContainer lContainer = PartnerContainer.builder().build();
     lContainer.addToPartners(lDonald);
     lContainer.addToPartners(lCompany);
     lContainer.addToPartners(lPartner);
@@ -254,17 +254,17 @@ public class JSONSerializationTest {
     ServiceObjectID lProductID2 = new ServiceObjectID("4", 1);
     ServiceObjectID lResellerID = new ServiceObjectID("1234", 5);
     Reseller lReseller =
-        Reseller.Builder.newBuilder().setID(lResellerID).setName("Good Guys Inc.").setLanguage(Locale.GERMAN).build();
+        Reseller.builder().setID(lResellerID).setName("Good Guys Inc.").setLanguage(Locale.GERMAN).build();
 
     // Create 1st product
-    Builder lProductBuilder = Product.Builder.newBuilder();
+    Builder lProductBuilder = Product.builder();
     lProductBuilder.setID(lProductID1);
     lProductBuilder.setName("Fancy Thing");
     lProductBuilder.setProductID(UUID.fromString("c513b71f-433d-4118-be8b-7190226eb155"));
     Product lProduct1 = lProductBuilder.build();
     lProduct1.addToResellers(lReseller);
 
-    lProductBuilder = Product.Builder.newBuilder();
+    lProductBuilder = Product.builder();
     lProductBuilder.setID(lProductID2);
     lProductBuilder.setName("Standard Thing");
     lProductBuilder.setProductID(UUID.fromString("c513b71f-433d-4118-be8b-7190226eb123"));
@@ -292,9 +292,9 @@ public class JSONSerializationTest {
 
   @Test
   void testBidirectionalAssociationsforServiceObjects( ) {
-    BidirectA lBidirectA = BidirectA.Builder.newBuilder().build();
-    BidirectA lChild = BidirectA.Builder.newBuilder().build();
-    BidirectB lBidirectB = BidirectB.Builder.newBuilder().build();
+    BidirectA lBidirectA = BidirectA.builder().build();
+    BidirectA lChild = BidirectA.builder().build();
+    BidirectB lBidirectB = BidirectB.builder().build();
 
     lBidirectA.addToTransientBs(lBidirectB);
     lBidirectA.setTransientChild(lChild);
@@ -325,7 +325,7 @@ public class JSONSerializationTest {
   void testPolymorphAssociations( ) {
     JSONTools lTools = JSON.getJSONTools();
 
-    UICStopPlace.Builder lStartBuilder = UICStopPlace.Builder.newBuilder();
+    UICStopPlace.Builder lStartBuilder = UICStopPlace.builder();
     lStartBuilder.setName("Bern");
     UICStopPlace lBern = lStartBuilder.build();
 
@@ -336,7 +336,7 @@ public class JSONSerializationTest {
     UICStopPlace lUICStopPlace = (UICStopPlace) lReadPlaceRef;
     assertEquals("Bern", lUICStopPlace.getName());
 
-    CHStopPlace.Builder lStopBuilder = CHStopPlace.Builder.newBuilder();
+    CHStopPlace.Builder lStopBuilder = CHStopPlace.builder();
     lStopBuilder.setName("Zürich");
     CHStopPlace lZurich = lStopBuilder.build();
     lJSON = lTools.writeObjectToString(lZurich);
@@ -346,15 +346,15 @@ public class JSONSerializationTest {
     CHStopPlace lCHStopPlace = (CHStopPlace) lReadPlaceRef;
     assertEquals("Zürich", lCHStopPlace.getName());
 
-    SwissGeoPosition.Builder lSwissGeoPositionBuilder = SwissGeoPosition.Builder.newBuilder();
+    SwissGeoPosition.Builder lSwissGeoPositionBuilder = SwissGeoPosition.builder();
     lSwissGeoPositionBuilder.setLongitude(0).setLatitude(0).setName("Uni Bern");
     SwissGeoPosition lUniBern = lSwissGeoPositionBuilder.build();
 
-    TopoRef.Builder lTopRefBuilder = TopoRef.Builder.newBuilder();
+    TopoRef.Builder lTopRefBuilder = TopoRef.builder();
     lTopRefBuilder.setName("Olten");
     TopoRef lOlten = lTopRefBuilder.build();
 
-    GeoPosition.Builder lGeoPositionBuilder = GeoPosition.Builder.newBuilder();
+    GeoPosition.Builder lGeoPositionBuilder = GeoPosition.builder();
     lGeoPositionBuilder.setLongitude(47).setLatitude(11).setName("What do I know ;-)");
     GeoPosition lSomewhere = lGeoPositionBuilder.build();
 
@@ -374,7 +374,7 @@ public class JSONSerializationTest {
         "[{\"name\":\"Bern\"},{\"name\":\"Uni Bern\",\"longitude\":0,\"latitude\":0},{\"name\":\"Olten\"},{\"name\":\"Zürich\"}]",
         lJSON);
 
-    Leg lLeg = Leg.Builder.newBuilder().build();
+    Leg lLeg = Leg.builder().build();
     lLeg.setStart(lBern);
     lLeg.setStop(lZurich);
 

@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.masterdata;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -54,7 +52,7 @@ public class Text {
   /**
    * 
    */
-  private List<Translation> translations = new ArrayList<Translation>();
+  private List<Translation> translations;
 
   /**
    * 
@@ -71,7 +69,7 @@ public class Text {
    * object creation builder should be used instead.
    */
   protected Text( ) {
-    // Nothing to do.
+    translations = new ArrayList<Translation>();
   }
 
   /**
@@ -85,10 +83,32 @@ public class Text {
     // Read attribute values from builder.
     id = pBuilder.id;
     if (pBuilder.translations != null) {
-      translations.addAll(pBuilder.translations);
+      translations = pBuilder.translations;
+    }
+    else {
+      translations = new ArrayList<Translation>();
     }
     text = pBuilder.text;
     shortText = pBuilder.shortText;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new Text objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new Text objects. The method never returns null.
+   */
+  public static Builder builder( Text pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -117,13 +137,13 @@ public class Text {
     private String shortText;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Text#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Text)} instead of private constructor to create new builder.
+     * Use {@link Text#builder(Text)} instead of private constructor to create new builder.
      */
     protected Builder( Text pObject ) {
       if (pObject != null) {
@@ -133,25 +153,6 @@ public class Text {
         text = pObject.text;
         shortText = pObject.shortText;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Text objects. The method never returns null.
-     */
-    public static Builder newBuilder( Text pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -260,24 +261,6 @@ public class Text {
   }
 
   /**
-   * Method sets the association "translations" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pTranslations Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setTranslations( List<Translation> pTranslations ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "translations".
-    this.clearTranslations();
-    // If the association is null, removing all entries is sufficient.
-    if (pTranslations != null) {
-      translations = new ArrayList<Translation>(pTranslations);
-    }
-  }
-
-  /**
    * Method adds the passed Translation object to the association "translations".
    * 
    * 
@@ -326,11 +309,7 @@ public class Text {
    */
   public void clearTranslations( ) {
     // Remove all objects from association "translations".
-    Collection<Translation> lTranslations = new HashSet<Translation>(translations);
-    Iterator<Translation> lIterator = lTranslations.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromTranslations(lIterator.next());
-    }
+    translations.clear();
   }
 
   /**
@@ -376,7 +355,7 @@ public class Text {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

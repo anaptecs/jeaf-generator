@@ -117,13 +117,13 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
     private ServiceObjectID bankID;
 
     /**
-     * Use {@link AccountInfo.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link AccountInfo.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link AccountInfo.Builder#newBuilder(AccountInfo)} instead of protected constructor to create new builder.
+     * Use {@link AccountInfo.builder(AccountInfo)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( AccountInfoBase pObject ) {
       if (pObject != null) {
@@ -300,7 +300,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
   public abstract Double calclulateBalance( );
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

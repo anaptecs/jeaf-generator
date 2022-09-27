@@ -63,7 +63,6 @@ public class DirectedEdge implements Serializable {
    * object creation builder should be used instead.
    */
   protected DirectedEdge( ) {
-    // Nothing to do.
   }
 
   /**
@@ -78,6 +77,26 @@ public class DirectedEdge implements Serializable {
     start = pBuilder.start;
     end = pBuilder.end;
     link = pBuilder.link;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new DirectedEdge objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new DirectedEdge objects. The method never returns
+   * null.
+   */
+  public static Builder builder( DirectedEdge pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -101,13 +120,13 @@ public class DirectedEdge implements Serializable {
     private String link;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link DirectedEdge#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(DirectedEdge)} instead of private constructor to create new builder.
+     * Use {@link DirectedEdge#builder(DirectedEdge)} instead of private constructor to create new builder.
      */
     protected Builder( DirectedEdge pObject ) {
       if (pObject != null) {
@@ -116,26 +135,6 @@ public class DirectedEdge implements Serializable {
         end = pObject.end;
         link = pObject.link;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new DirectedEdge objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( DirectedEdge pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -265,7 +264,7 @@ public class DirectedEdge implements Serializable {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

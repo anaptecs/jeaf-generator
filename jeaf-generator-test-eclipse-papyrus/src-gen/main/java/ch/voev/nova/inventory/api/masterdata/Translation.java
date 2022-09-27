@@ -53,7 +53,6 @@ public class Translation {
    * object creation builder should be used instead.
    */
   protected Translation( ) {
-    // Nothing to do.
   }
 
   /**
@@ -68,6 +67,26 @@ public class Translation {
     language = pBuilder.language;
     text = pBuilder.text;
     shortText = pBuilder.shortText;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new Translation objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new Translation objects. The method never returns
+   * null.
+   */
+  public static Builder builder( Translation pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -91,13 +110,13 @@ public class Translation {
     private String shortText;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Translation#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Translation)} instead of private constructor to create new builder.
+     * Use {@link Translation#builder(Translation)} instead of private constructor to create new builder.
      */
     protected Builder( Translation pObject ) {
       if (pObject != null) {
@@ -106,26 +125,6 @@ public class Translation {
         text = pObject.text;
         shortText = pObject.shortText;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Translation objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Translation pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -247,7 +246,7 @@ public class Translation {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

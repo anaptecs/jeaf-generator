@@ -81,32 +81,7 @@
 		     * business objects not through JEAFs persistence service provider.
 		     */
 		    protected «this.getBOBaseName()»( ) {
-			  «IF this.requiresAttributeInitValue() == false»
-			  // Nothing to do.
-		  	  «ENDIF»
-			  «FOREACH this.ownedAttribute AS attr»
-				  «IF attr.isReadOnly == true && attr.isStatic == false»
-					  «IF attr.type.isPrimitiveType() == true»
-						  «IF attr.isMultivalued() == false»
-							  «IF attr.isRealInitValue()»
-							  «attr.name» = «attr.initValue()»;
-							  «ELSE»
-							  «attr.name» = «attr.getPrimitiveDefaultValue()»;
-							  «ENDIF»
-						  «ELSE»
-						  	  «attr.name» = null;
-						  «ENDIF»
-					  «ELSE»
-						  «IF attr.isMultivalued() == false»
-						  «attr.name» = null;
-						  «ENDIF»
-					  «ENDIF»
-				  «ELSE»
-					  «IF attr.isRealInitValue() && attr.isStatic == false »
-                          «attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
-					  «ENDIF»
-				  «ENDIF»
-			  «ENDFOREACH»
+		  	  «EXPAND PersistentObjectConstructorInits»
 		    }
 			
 			  /**
@@ -244,3 +219,42 @@
 		«ENDIF-»
 	«ENDIF-»
 «ENDDEFINE»
+
+«DEFINE PersistentObjectConstructorInits FOR PersistentObject»
+	«FOREACH this.ownedAttribute AS attr»
+		«IF attr.isReadOnly == true && attr.isStatic == false»
+			«IF attr.type.isPrimitiveType() == true»
+				«IF attr.isMultivalued() == false»
+					«IF attr.isRealInitValue()»
+						«attr.name» = «attr.initValue()»;
+					«ELSE»
+						«attr.name» = «attr.getPrimitiveDefaultValue()»;
+					«ENDIF»
+				«ELSE»
+					«attr.name» = null;
+				«ENDIF»
+			«ELSE»
+				«IF attr.isMultivalued()»
+					«REM»Distiguish between arrays and collections.«ENDREM»
+					«IF attr.association == null»
+						«attr.name» = null;
+					«ELSE»
+						«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+					«ENDIF»
+				«ELSE»
+					«attr.name» = null;
+				«ENDIF»
+			«ENDIF»
+		«ELSE»
+			«IF attr.isMultivalued() && attr.association != null»
+				«REM»Only in case of collections we have to initilize them.«ENDREM»
+				«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+			«ELSE»
+				«IF attr.isRealInitValue() && attr.isStatic == false »
+					«attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
+				«ENDIF»
+			«ENDIF»
+		«ENDIF»
+	«ENDFOREACH»
+«ENDDEFINE»
+

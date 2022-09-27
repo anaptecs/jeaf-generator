@@ -50,7 +50,6 @@ public abstract class FlushTestSlaveBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected FlushTestSlaveBOBase( ) {
-    // Nothing to do.
   }
 
   /**

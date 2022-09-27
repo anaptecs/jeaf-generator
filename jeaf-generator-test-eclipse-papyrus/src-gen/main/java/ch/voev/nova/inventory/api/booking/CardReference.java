@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.booking;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -53,7 +51,7 @@ public class CardReference {
   /**
    * Types of card. One card can have multiple roles, such as loyalty and reduction
    */
-  private List<CardType> types = new ArrayList<CardType>();
+  private List<CardType> types;
 
   /**
    * Code of the card type according to issuer.
@@ -81,7 +79,7 @@ public class CardReference {
    * object creation builder should be used instead.
    */
   protected CardReference( ) {
-    // Nothing to do.
+    types = new ArrayList<CardType>();
   }
 
   /**
@@ -94,12 +92,35 @@ public class CardReference {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     if (pBuilder.types != null) {
-      types.addAll(pBuilder.types);
+      types = pBuilder.types;
+    }
+    else {
+      types = new ArrayList<CardType>();
     }
     code = pBuilder.code;
     name = pBuilder.name;
     number = pBuilder.number;
     issuer = pBuilder.issuer;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new CardReference objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new CardReference objects. The method never returns
+   * null.
+   */
+  public static Builder builder( CardReference pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -134,13 +155,13 @@ public class CardReference {
     private Company issuer;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link CardReference#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(CardReference)} instead of private constructor to create new builder.
+     * Use {@link CardReference#builder(CardReference)} instead of private constructor to create new builder.
      */
     protected Builder( CardReference pObject ) {
       if (pObject != null) {
@@ -151,26 +172,6 @@ public class CardReference {
         number = pObject.number;
         issuer = pObject.issuer;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new CardReference objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( CardReference pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -270,22 +271,6 @@ public class CardReference {
   }
 
   /**
-   * Method sets the association "types" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it. Types of card. One card can have multiple roles, such as loyalty and reduction
-   * 
-   * @param pTypes Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setTypes( List<CardType> pTypes ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "types".
-    this.clearTypes();
-    // If the association is null, removing all entries is sufficient.
-    if (pTypes != null) {
-      types = new ArrayList<CardType>(pTypes);
-    }
-  }
-
-  /**
    * Method adds the passed CardType object to the association "types". Types of card. One card can have multiple roles,
    * such as loyalty and reduction
    * 
@@ -333,11 +318,7 @@ public class CardReference {
    */
   public void clearTypes( ) {
     // Remove all objects from association "types".
-    Collection<CardType> lTypes = new HashSet<CardType>(types);
-    Iterator<CardType> lIterator = lTypes.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromTypes(lIterator.next());
-    }
+    types.clear();
   }
 
   /**
@@ -426,7 +407,7 @@ public class CardReference {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

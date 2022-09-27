@@ -50,7 +50,6 @@ public abstract class BOneBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected BOneBOBase( ) {
-    // Nothing to do.
   }
 
   /**

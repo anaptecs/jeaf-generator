@@ -37,7 +37,6 @@ public class CountryCode {
    * object creation builder should be used instead.
    */
   protected CountryCode( ) {
-    // Nothing to do.
   }
 
   /**
@@ -53,6 +52,26 @@ public class CountryCode {
   }
 
   /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new CountryCode objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new CountryCode objects. The method never returns
+   * null.
+   */
+  public static Builder builder( CountryCode pObject ) {
+    return new Builder(pObject);
+  }
+
+  /**
    * Class implements builder to create a new instance of class CountryCode. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
@@ -64,39 +83,19 @@ public class CountryCode {
     private String code;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link CountryCode#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(CountryCode)} instead of private constructor to create new builder.
+     * Use {@link CountryCode#builder(CountryCode)} instead of private constructor to create new builder.
      */
     protected Builder( CountryCode pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         code = pObject.code;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new CountryCode objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( CountryCode pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -157,7 +156,7 @@ public class CountryCode {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

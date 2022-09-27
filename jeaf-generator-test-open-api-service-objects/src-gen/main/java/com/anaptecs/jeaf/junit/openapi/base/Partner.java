@@ -7,8 +7,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -52,7 +50,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * 
    */
-  private List<PostalAddress> postalAddresses = new ArrayList<PostalAddress>();
+  private List<PostalAddress> postalAddresses;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -60,6 +58,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   protected Partner( ) {
     objectID = null;
+    postalAddresses = new ArrayList<PostalAddress>();
   }
 
   /**
@@ -80,8 +79,30 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
     }
     // Read attribute values from builder.
     if (pBuilder.postalAddresses != null) {
-      postalAddresses.addAll(pBuilder.postalAddresses);
+      postalAddresses = pBuilder.postalAddresses;
     }
+    else {
+      postalAddresses = new ArrayList<PostalAddress>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new Partner objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new Partner objects. The method never returns null.
+   */
+  public static Builder builder( Partner pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -100,13 +121,13 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
     private List<PostalAddress> postalAddresses;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Partner#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Partner)} instead of private constructor to create new builder.
+     * Use {@link Partner#builder(Partner)} instead of private constructor to create new builder.
      */
     protected Builder( Partner pObject ) {
       if (pObject != null) {
@@ -114,26 +135,6 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
         objectID = pObject.objectID;
         postalAddresses = pObject.postalAddresses;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Partner objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Partner pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -226,24 +227,6 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method sets the association "postalAddresses" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pPostalAddresses Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "postalAddresses".
-    this.clearPostalAddresses();
-    // If the association is null, removing all entries is sufficient.
-    if (pPostalAddresses != null) {
-      postalAddresses = new ArrayList<PostalAddress>(pPostalAddresses);
-    }
-  }
-
-  /**
    * Method adds the passed PostalAddress object to the association "postalAddresses".
    * 
    * 
@@ -293,15 +276,11 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   public void clearPostalAddresses( ) {
     // Remove all objects from association "postalAddresses".
-    Collection<PostalAddress> lPostalAddresses = new HashSet<PostalAddress>(postalAddresses);
-    Iterator<PostalAddress> lIterator = lPostalAddresses.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromPostalAddresses(lIterator.next());
-    }
+    postalAddresses.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

@@ -24,7 +24,7 @@ public class ByteCodeDeserializer extends JsonDeserializer<ByteCode> {
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
-      return ByteCode.Builder.newBuilder().setCode((byte) lNode.asInt()).build();
+      return ByteCode.builder().setCode((byte) lNode.asInt()).build();
     }
     // Node is not a TextNode
     else {

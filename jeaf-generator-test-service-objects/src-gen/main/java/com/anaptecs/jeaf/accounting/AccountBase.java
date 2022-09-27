@@ -87,7 +87,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   /**
    * 
    */
-  private Set<Person> authorizedPersons = new HashSet<Person>();
+  private Set<Person> authorizedPersons;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -99,7 +99,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
    */
   @Valid
   @Size(min = 0, max = 100)
-  private Set<Booking> bookings = new HashSet<Booking>();
+  private Set<Booking> bookings;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -117,8 +117,10 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
    */
   protected AccountBase( ) {
     objectID = null;
+    authorizedPersons = new HashSet<Person>();
     // Bidirectional back reference is not yet set up correctly
     authorizedPersonsBackReferenceInitialized = false;
+    bookings = new HashSet<Booking>();
     // Bidirectional back reference is not yet set up correctly
     bookingsBackReferenceInitialized = false;
   }
@@ -143,12 +145,18 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
     iban = pBuilder.iban;
     balance = pBuilder.balance;
     if (pBuilder.authorizedPersons != null) {
-      authorizedPersons.addAll(pBuilder.authorizedPersons);
+      authorizedPersons = pBuilder.authorizedPersons;
+    }
+    else {
+      authorizedPersons = new HashSet<Person>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     authorizedPersonsBackReferenceInitialized = true;
     if (pBuilder.bookings != null) {
-      bookings.addAll(pBuilder.bookings);
+      bookings = pBuilder.bookings;
+    }
+    else {
+      bookings = new HashSet<Booking>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     bookingsBackReferenceInitialized = true;
@@ -194,13 +202,13 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
     private ServiceObjectID bankID;
 
     /**
-     * Use {@link Account.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link Account.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link Account.Builder#newBuilder(Account)} instead of protected constructor to create new builder.
+     * Use {@link Account.builder(Account)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( AccountBase pObject ) {
       if (pObject != null) {
@@ -403,24 +411,6 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   }
 
   /**
-   * Method sets the association "authorizedPersons" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pAuthorizedPersons Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setAuthorizedPersons( Set<Person> pAuthorizedPersons ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "authorizedPersons".
-    this.clearAuthorizedPersons();
-    // If the association is null, removing all entries is sufficient.
-    if (pAuthorizedPersons != null) {
-      authorizedPersons = new HashSet<Person>(pAuthorizedPersons);
-    }
-  }
-
-  /**
    * Method adds the passed Person object to the association "authorizedPersons".
    * 
    * 
@@ -483,6 +473,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
     Collection<Person> lAuthorizedPersons = new HashSet<Person>(authorizedPersons);
     Iterator<Person> lIterator = lAuthorizedPersons.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromAuthorizedPersons(lIterator.next());
     }
   }
@@ -505,23 +496,6 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
     }
     // Return all Booking objects as unmodifiable collection.
     return Collections.unmodifiableSet(bookings);
-  }
-
-  /**
-   * Method sets the association "bookings" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pBookings Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setBookings( Set<Booking> pBookings ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "bookings".
-    this.clearBookings();
-    // If the association is null, removing all entries is sufficient.
-    if (pBookings != null) {
-      bookings = new HashSet<Booking>(pBookings);
-    }
   }
 
   /**
@@ -588,6 +562,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
     Collection<Booking> lBookings = new HashSet<Booking>(bookings);
     Iterator<Booking> lIterator = lBookings.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromBookings(lIterator.next());
     }
   }
@@ -621,7 +596,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   public abstract Double calclulateBalance( );
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

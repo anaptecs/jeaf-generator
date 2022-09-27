@@ -56,7 +56,6 @@ public abstract class SwiftTransactionLogBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected SwiftTransactionLogBOBase( ) {
-    // Nothing to do.
   }
 
   /**

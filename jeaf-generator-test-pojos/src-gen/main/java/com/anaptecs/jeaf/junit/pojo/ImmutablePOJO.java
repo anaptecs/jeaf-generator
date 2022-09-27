@@ -64,6 +64,26 @@ public class ImmutablePOJO {
   }
 
   /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new ImmutablePOJO objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new ImmutablePOJO objects. The method never returns
+   * null.
+   */
+  public static Builder builder( ImmutablePOJO pObject ) {
+    return new Builder(pObject);
+  }
+
+  /**
    * Class implements builder to create a new instance of class ImmutablePOJO. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
@@ -79,13 +99,13 @@ public class ImmutablePOJO {
     private Integer something;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ImmutablePOJO#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ImmutablePOJO)} instead of private constructor to create new builder.
+     * Use {@link ImmutablePOJO#builder(ImmutablePOJO)} instead of private constructor to create new builder.
      */
     protected Builder( ImmutablePOJO pObject ) {
       if (pObject != null) {
@@ -93,26 +113,6 @@ public class ImmutablePOJO {
         name = pObject.name;
         something = pObject.something;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJO objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( ImmutablePOJO pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -193,7 +193,7 @@ public class ImmutablePOJO {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

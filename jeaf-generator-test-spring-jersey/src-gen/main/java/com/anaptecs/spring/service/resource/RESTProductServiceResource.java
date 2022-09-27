@@ -169,7 +169,7 @@ public class RESTProductServiceResource {
   @GET
   public Response getSupportedCurrencies( @PathParam("channelCode") String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ChannelCode pChannelCode = ChannelCode.Builder.newBuilder().setCode(pChannelCodeAsBasicType).build();
+    ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
     // Delegate request to service.
     List<CurrencyCode> lResult = rESTProductService.getSupportedCurrencies(pChannelCode);
     return Response.status(Response.Status.OK).entity(lResult).build();
@@ -195,7 +195,7 @@ public class RESTProductServiceResource {
       public void run( ) {
         try {
           // Convert basic type parameters into "real" objects.
-          ChannelCode pChannelCode = ChannelCode.Builder.newBuilder().setCode(pChannelCodeAsBasicType).build();
+          ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
           List<CurrencyCode> lResult = rESTProductService.getSupportedCurrenciesAsync(pChannelCode);
           Response lResponseObject = Response.status(Response.Status.OK).entity(lResult).build();
           // Due to the asynchronous processing of the requests, the response can not be returned as return value.

@@ -86,15 +86,14 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
     private Integer hello;
 
     /**
-     * Use {@link IdentifiableServiceObjectWithMethod.Builder#newBuilder()} instead of protected constructor to create
-     * new builder.
+     * Use {@link IdentifiableServiceObjectWithMethod.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link IdentifiableServiceObjectWithMethod.Builder#newBuilder(IdentifiableServiceObjectWithMethod)} instead
-     * of protected constructor to create new builder.
+     * Use {@link IdentifiableServiceObjectWithMethod.builder(IdentifiableServiceObjectWithMethod)} instead of protected
+     * constructor to create new builder.
      */
     protected BuilderBase( IdentifiableServiceObjectWithMethodBase pObject ) {
       if (pObject != null) {
@@ -204,7 +203,7 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
   public abstract void doSomething( );
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

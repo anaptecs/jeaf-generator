@@ -10,8 +10,6 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -107,14 +105,14 @@ public class TransferLeg {
   /**
    * 
    */
-  private List<SituationFullRef> situationFullRefs = new ArrayList<SituationFullRef>();
+  private List<SituationFullRef> situationFullRefs;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected TransferLeg( ) {
-    // Nothing to do.
+    situationFullRefs = new ArrayList<SituationFullRef>();
   }
 
   /**
@@ -134,8 +132,31 @@ public class TransferLeg {
     timeWindowEnd = pBuilder.timeWindowEnd;
     duration = pBuilder.duration;
     if (pBuilder.situationFullRefs != null) {
-      situationFullRefs.addAll(pBuilder.situationFullRefs);
+      situationFullRefs = pBuilder.situationFullRefs;
     }
+    else {
+      situationFullRefs = new ArrayList<SituationFullRef>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new TransferLeg objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new TransferLeg objects. The method never returns
+   * null.
+   */
+  public static Builder builder( TransferLeg pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -184,13 +205,13 @@ public class TransferLeg {
     private List<SituationFullRef> situationFullRefs;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link TransferLeg#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(TransferLeg)} instead of private constructor to create new builder.
+     * Use {@link TransferLeg#builder(TransferLeg)} instead of private constructor to create new builder.
      */
     protected Builder( TransferLeg pObject ) {
       if (pObject != null) {
@@ -204,26 +225,6 @@ public class TransferLeg {
         duration = pObject.duration;
         situationFullRefs = pObject.situationFullRefs;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new TransferLeg objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( TransferLeg pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -503,24 +504,6 @@ public class TransferLeg {
   }
 
   /**
-   * Method sets the association "situationFullRefs" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pSituationFullRefs Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setSituationFullRefs( List<SituationFullRef> pSituationFullRefs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "situationFullRefs".
-    this.clearSituationFullRefs();
-    // If the association is null, removing all entries is sufficient.
-    if (pSituationFullRefs != null) {
-      situationFullRefs = new ArrayList<SituationFullRef>(pSituationFullRefs);
-    }
-  }
-
-  /**
    * Method adds the passed SituationFullRef object to the association "situationFullRefs".
    * 
    * 
@@ -570,15 +553,11 @@ public class TransferLeg {
    */
   public void clearSituationFullRefs( ) {
     // Remove all objects from association "situationFullRefs".
-    Collection<SituationFullRef> lSituationFullRefs = new HashSet<SituationFullRef>(situationFullRefs);
-    Iterator<SituationFullRef> lIterator = lSituationFullRefs.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromSituationFullRefs(lIterator.next());
-    }
+    situationFullRefs.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

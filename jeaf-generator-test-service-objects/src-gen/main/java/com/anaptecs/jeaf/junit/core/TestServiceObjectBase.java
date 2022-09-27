@@ -90,7 +90,6 @@ public abstract class TestServiceObjectBase implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected TestServiceObjectBase( ) {
-    // Nothing to do.
   }
 
   /**
@@ -146,14 +145,13 @@ public abstract class TestServiceObjectBase implements ServiceObject {
     private Integer[] dummy3;
 
     /**
-     * Use {@link TestServiceObject.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link TestServiceObject.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link TestServiceObject.Builder#newBuilder(TestServiceObject)} instead of protected constructor to create
-     * new builder.
+     * Use {@link TestServiceObject.builder(TestServiceObject)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( TestServiceObjectBase pObject ) {
       if (pObject != null) {
@@ -424,7 +422,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

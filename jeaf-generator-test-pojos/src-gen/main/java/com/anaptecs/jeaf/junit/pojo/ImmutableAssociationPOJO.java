@@ -8,7 +8,6 @@ package com.anaptecs.jeaf.junit.pojo;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -65,7 +64,7 @@ public class ImmutableAssociationPOJO {
   /**
    * 
    */
-  private final SortedSet<ImmutablePOJO> readonlyAssociation = new TreeSet<ImmutablePOJO>();
+  private final SortedSet<ImmutablePOJO> readonlyAssociation;
 
   /**
    * 
@@ -76,7 +75,7 @@ public class ImmutableAssociationPOJO {
    * 
    */
   @Deprecated
-  private Set<ImmutableChildPOJO> deprecatedRefs = new HashSet<ImmutableChildPOJO>();
+  private Set<ImmutableChildPOJO> deprecatedRefs;
 
   /**
    * 
@@ -90,7 +89,9 @@ public class ImmutableAssociationPOJO {
    */
   protected ImmutableAssociationPOJO( ) {
     yetAnotherAttribute = false;
+    readonlyAssociation = new TreeSet<ImmutablePOJO>();
     immutableChildPOJO = null;
+    deprecatedRefs = new HashSet<ImmutableChildPOJO>();
   }
 
   /**
@@ -104,13 +105,39 @@ public class ImmutableAssociationPOJO {
     // Read attribute values from builder.
     yetAnotherAttribute = pBuilder.yetAnotherAttribute;
     if (pBuilder.readonlyAssociation != null) {
-      readonlyAssociation.addAll(pBuilder.readonlyAssociation);
+      readonlyAssociation = pBuilder.readonlyAssociation;
+    }
+    else {
+      readonlyAssociation = new TreeSet<ImmutablePOJO>();
     }
     immutableChildPOJO = pBuilder.immutableChildPOJO;
     if (pBuilder.deprecatedRefs != null) {
-      deprecatedRefs.addAll(pBuilder.deprecatedRefs);
+      deprecatedRefs = pBuilder.deprecatedRefs;
+    }
+    else {
+      deprecatedRefs = new HashSet<ImmutableChildPOJO>();
     }
     deprecatedRef = pBuilder.deprecatedRef;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new ImmutableAssociationPOJO objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new ImmutableAssociationPOJO objects. The method
+   * never returns null.
+   */
+  public static Builder builder( ImmutableAssociationPOJO pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -146,13 +173,14 @@ public class ImmutableAssociationPOJO {
     private ChildPOJO deprecatedRef;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ImmutableAssociationPOJO#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ImmutableAssociationPOJO)} instead of private constructor to create new builder.
+     * Use {@link ImmutableAssociationPOJO#builder(ImmutableAssociationPOJO)} instead of private constructor to create
+     * new builder.
      */
     protected Builder( ImmutableAssociationPOJO pObject ) {
       if (pObject != null) {
@@ -163,26 +191,6 @@ public class ImmutableAssociationPOJO {
         deprecatedRefs = pObject.deprecatedRefs;
         deprecatedRef = pObject.deprecatedRef;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ImmutableAssociationPOJO objects. The method
-     * never returns null.
-     */
-    public static Builder newBuilder( ImmutableAssociationPOJO pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -319,25 +327,6 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method sets the association "deprecatedRefs" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pDeprecatedRefs Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  @Deprecated
-  void setDeprecatedRefs( Set<ImmutableChildPOJO> pDeprecatedRefs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "deprecatedRefs".
-    this.clearDeprecatedRefs();
-    // If the association is null, removing all entries is sufficient.
-    if (pDeprecatedRefs != null) {
-      deprecatedRefs = new HashSet<ImmutableChildPOJO>(pDeprecatedRefs);
-    }
-  }
-
-  /**
    * Method adds the passed ImmutableChildPOJO object to the association "deprecatedRefs".
    * 
    * 
@@ -391,11 +380,7 @@ public class ImmutableAssociationPOJO {
   @Deprecated
   public void clearDeprecatedRefs( ) {
     // Remove all objects from association "deprecatedRefs".
-    Collection<ImmutableChildPOJO> lDeprecatedRefs = new HashSet<ImmutableChildPOJO>(deprecatedRefs);
-    Iterator<ImmutableChildPOJO> lIterator = lDeprecatedRefs.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromDeprecatedRefs(lIterator.next());
-    }
+    deprecatedRefs.clear();
   }
 
   /**
@@ -430,7 +415,7 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

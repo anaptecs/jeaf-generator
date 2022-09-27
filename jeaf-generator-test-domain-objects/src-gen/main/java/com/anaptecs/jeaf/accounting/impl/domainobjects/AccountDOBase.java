@@ -59,7 +59,6 @@ public abstract class AccountDOBase extends DomainObject {
    * Initialize object. Nothing special to do.
    */
   public AccountDOBase( ) {
-    // Nothing to do.
   }
 
   /**
@@ -142,7 +141,7 @@ public abstract class AccountDOBase extends DomainObject {
   public abstract ServiceObjectID getBankID( );
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

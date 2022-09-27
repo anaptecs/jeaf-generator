@@ -10,13 +10,13 @@ import com.anaptecs.jeaf.xfun.api.common.ObjectID;
 
 public class BuilderTest {
   public void testBuilder( ) {
-    ImmutablePOJO.Builder lBuilder = ImmutablePOJO.Builder.newBuilder();
+    ImmutablePOJO.Builder lBuilder = ImmutablePOJO.builder();
     ImmutablePOJO lPOJO = lBuilder.setName("Hello").setSomething(4711).build();
     lPOJO = lBuilder.setName("Hello").setSomething(4711).buildValidated();
 
-    lBuilder = ImmutablePOJO.Builder.newBuilder(lPOJO);
+    lBuilder = ImmutablePOJO.builder(lPOJO);
 
-    Builder lNewBuilder = POJOWithIDnMethod.Builder.newBuilder();
+    Builder lNewBuilder = POJOWithIDnMethod.builder();
     POJOWithIDnMethod lPOJOwithIDnMethod = lNewBuilder.setID(null).build();
     ObjectID lObjectID = lPOJOwithIDnMethod.getID();
     lObjectID.toString();

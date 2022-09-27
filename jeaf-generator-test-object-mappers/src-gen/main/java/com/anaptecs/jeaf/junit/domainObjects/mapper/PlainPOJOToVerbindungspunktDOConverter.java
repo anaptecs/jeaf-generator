@@ -157,7 +157,7 @@ public class PlainPOJOToVerbindungspunktDOConverter implements ObjectMapper<Plai
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    PlainPOJO lNewSourceObject = PlainPOJO.Builder.newBuilder().build();
+    PlainPOJO lNewSourceObject = PlainPOJO.builder().build();
     PlainPOJOToVerbindungspunktDOConverter lObjectMapper = PlainPOJOToVerbindungspunktDOConverter.getConverter();
     lObjectMapper.applyMappings(lNewSourceObject, pTarget, MappingType.READ);
     return lNewSourceObject;

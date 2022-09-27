@@ -26,7 +26,7 @@ public class ProductCodeDeserializer extends JsonDeserializer<ProductCode> {
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
-      return ProductCode.Builder.newBuilder().setCode(lNode.asInt()).build();
+      return ProductCode.builder().setCode(lNode.asInt()).build();
     }
     // Node is not a TextNode
     else {

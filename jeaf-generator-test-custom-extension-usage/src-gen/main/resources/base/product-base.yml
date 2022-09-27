@@ -198,6 +198,16 @@ components:
         - type: object
           additionalProperties: false
 
+    # com.anaptecs.jeaf.junit.openapi.base.Campaign
+    Campaign:
+      type: object
+      additionalProperties: false
+      properties:
+        discountOffers:
+          type: array
+          items:
+            $ref: '#/components/schemas/DiscountOffer'
+
     # com.anaptecs.jeaf.junit.openapi.base.Channel
     Channel:
       type: object
@@ -453,6 +463,16 @@ components:
         previousName:
           type: string
           nullable: false
+
+    # com.anaptecs.jeaf.junit.openapi.base.DiscountOffer
+    DiscountOffer:
+      type: object
+      additionalProperties: false
+      properties:
+        campaigns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Campaign'
 
     # com.anaptecs.jeaf.junit.openapi.base.Duration
     Duration:

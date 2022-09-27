@@ -26,7 +26,7 @@ public class ShortCodeDeserializer extends JsonDeserializer<ShortCode> {
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
-      return ShortCode.Builder.newBuilder().setCode((short) lNode.asInt()).build();
+      return ShortCode.builder().setCode((short) lNode.asInt()).build();
     }
     // Node is not a TextNode
     else {

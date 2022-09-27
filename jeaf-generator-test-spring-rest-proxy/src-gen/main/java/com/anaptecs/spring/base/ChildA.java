@@ -27,7 +27,6 @@ public abstract class ChildA extends ParentClass {
    * object creation builder should be used instead.
    */
   protected ChildA( ) {
-    // Nothing to do.
   }
 
   /**
@@ -53,14 +52,14 @@ public abstract class ChildA extends ParentClass {
     private int childAAttribute;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ChildA#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
       super();
     }
 
     /**
-     * Use {@link #newBuilder(ChildA)} instead of private constructor to create new builder.
+     * Use {@link ChildA#builder(ChildA)} instead of private constructor to create new builder.
      */
     protected Builder( ChildA pObject ) {
       super(pObject);
@@ -116,7 +115,7 @@ public abstract class ChildA extends ParentClass {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

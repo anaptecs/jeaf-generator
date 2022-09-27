@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.booking;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -121,7 +119,7 @@ public class DatedJourney {
   /**
    * 
    */
-  private List<SituationFullRef> situationFullRefs = new ArrayList<SituationFullRef>();
+  private List<SituationFullRef> situationFullRefs;
 
   /**
    * 
@@ -133,7 +131,7 @@ public class DatedJourney {
    * object creation builder should be used instead.
    */
   protected DatedJourney( ) {
-    // Nothing to do.
+    situationFullRefs = new ArrayList<SituationFullRef>();
   }
 
   /**
@@ -153,9 +151,32 @@ public class DatedJourney {
     operatorRefs = pBuilder.operatorRefs;
     serviceStatus = pBuilder.serviceStatus;
     if (pBuilder.situationFullRefs != null) {
-      situationFullRefs.addAll(pBuilder.situationFullRefs);
+      situationFullRefs = pBuilder.situationFullRefs;
+    }
+    else {
+      situationFullRefs = new ArrayList<SituationFullRef>();
     }
     operatingDayRef = pBuilder.operatingDayRef;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new DatedJourney objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new DatedJourney objects. The method never returns
+   * null.
+   */
+  public static Builder builder( DatedJourney pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -217,13 +238,13 @@ public class DatedJourney {
     private OperationDayRef operatingDayRef;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link DatedJourney#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(DatedJourney)} instead of private constructor to create new builder.
+     * Use {@link DatedJourney#builder(DatedJourney)} instead of private constructor to create new builder.
      */
     protected Builder( DatedJourney pObject ) {
       if (pObject != null) {
@@ -238,26 +259,6 @@ public class DatedJourney {
         situationFullRefs = pObject.situationFullRefs;
         operatingDayRef = pObject.operatingDayRef;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new DatedJourney objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( DatedJourney pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -644,24 +645,6 @@ public class DatedJourney {
   }
 
   /**
-   * Method sets the association "situationFullRefs" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pSituationFullRefs Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  void setSituationFullRefs( List<SituationFullRef> pSituationFullRefs ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "situationFullRefs".
-    this.clearSituationFullRefs();
-    // If the association is null, removing all entries is sufficient.
-    if (pSituationFullRefs != null) {
-      situationFullRefs = new ArrayList<SituationFullRef>(pSituationFullRefs);
-    }
-  }
-
-  /**
    * Method adds the passed SituationFullRef object to the association "situationFullRefs".
    * 
    * 
@@ -711,11 +694,7 @@ public class DatedJourney {
    */
   public void clearSituationFullRefs( ) {
     // Remove all objects from association "situationFullRefs".
-    Collection<SituationFullRef> lSituationFullRefs = new HashSet<SituationFullRef>(situationFullRefs);
-    Iterator<SituationFullRef> lIterator = lSituationFullRefs.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromSituationFullRefs(lIterator.next());
-    }
+    situationFullRefs.clear();
   }
 
   /**
@@ -747,7 +726,7 @@ public class DatedJourney {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

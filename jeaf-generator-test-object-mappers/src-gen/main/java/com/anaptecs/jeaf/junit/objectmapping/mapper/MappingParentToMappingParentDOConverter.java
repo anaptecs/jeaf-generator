@@ -158,7 +158,7 @@ public class MappingParentToMappingParentDOConverter implements ObjectMapper<Map
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    MappingParent lNewSourceObject = MappingParent.Builder.newBuilder().build();
+    MappingParent lNewSourceObject = MappingParent.builder().build();
     MappingParentToMappingParentDOConverter lObjectMapper = MappingParentToMappingParentDOConverter.getConverter();
     lObjectMapper.applyMappings(lNewSourceObject, pTarget, MappingType.READ);
     return lNewSourceObject;

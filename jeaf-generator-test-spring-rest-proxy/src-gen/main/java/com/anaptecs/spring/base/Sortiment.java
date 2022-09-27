@@ -24,7 +24,7 @@ public class Sortiment {
   /**
    * 
    */
-  private Set<Product> products = new HashSet<Product>();
+  private Set<Product> products;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -36,7 +36,7 @@ public class Sortiment {
    * object creation builder should be used instead.
    */
   protected Sortiment( ) {
-    // Nothing to do.
+    products = new HashSet<Product>();
     // Bidirectional back reference is not yet set up correctly
     productsBackReferenceInitialized = false;
   }
@@ -49,10 +49,33 @@ public class Sortiment {
   protected Sortiment( Builder pBuilder ) {
     // Read attribute values from builder.
     if (pBuilder.products != null) {
-      products.addAll(pBuilder.products);
+      products = pBuilder.products;
+    }
+    else {
+      products = new HashSet<Product>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     productsBackReferenceInitialized = true;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new Sortiment objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new Sortiment objects. The method never returns
+   * null.
+   */
+  public static Builder builder( Sortiment pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -66,39 +89,19 @@ public class Sortiment {
     private Set<Product> products;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Sortiment#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Sortiment)} instead of private constructor to create new builder.
+     * Use {@link Sortiment#builder(Sortiment)} instead of private constructor to create new builder.
      */
     protected Builder( Sortiment pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         products = pObject.products;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Sortiment objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Sortiment pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -145,23 +148,6 @@ public class Sortiment {
     }
     // Return all Product objects as unmodifiable collection.
     return Collections.unmodifiableSet(products);
-  }
-
-  /**
-   * Method sets the association "products" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pProducts Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setProducts( Set<Product> pProducts ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "products".
-    this.clearProducts();
-    // If the association is null, removing all entries is sufficient.
-    if (pProducts != null) {
-      products = new HashSet<Product>(pProducts);
-    }
   }
 
   /**
@@ -219,12 +205,13 @@ public class Sortiment {
     Collection<Product> lProducts = new HashSet<Product>(products);
     Iterator<Product> lIterator = lProducts.iterator();
     while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
       this.removeFromProducts(lIterator.next());
     }
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

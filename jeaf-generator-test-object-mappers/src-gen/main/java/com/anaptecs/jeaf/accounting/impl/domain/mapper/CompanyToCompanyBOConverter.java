@@ -183,7 +183,7 @@ public class CompanyToCompanyBOConverter implements ObjectMapper<Company, Compan
     // Check parameter
     Check.checkInvalidParameterNull(pTarget, "pTarget");
     // Create new source object, apply mappings and return created object.
-    Company.Builder lBuilder = Company.Builder.newBuilder();
+    Company.Builder lBuilder = Company.builder();
     lBuilder.setID(pTarget.getID());
     Company lNewSourceObject = lBuilder.build();
     CompanyToCompanyBOConverter lObjectMapper = CompanyToCompanyBOConverter.getConverter();

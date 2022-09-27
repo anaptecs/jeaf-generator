@@ -8,7 +8,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -47,14 +46,14 @@ public class ParentClass implements ServiceObject {
   /**
    * 
    */
-  private Set<IBAN> ibans = new HashSet<IBAN>();
+  private Set<IBAN> ibans;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected ParentClass( ) {
-    // Nothing to do.
+    ibans = new HashSet<IBAN>();
   }
 
   /**
@@ -68,8 +67,31 @@ public class ParentClass implements ServiceObject {
     // Read attribute values from builder.
     parentAttribute = pBuilder.parentAttribute;
     if (pBuilder.ibans != null) {
-      ibans.addAll(pBuilder.ibans);
+      ibans = pBuilder.ibans;
     }
+    else {
+      ibans = new HashSet<IBAN>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new ParentClass objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new ParentClass objects. The method never returns
+   * null.
+   */
+  public static Builder builder( ParentClass pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -88,13 +110,13 @@ public class ParentClass implements ServiceObject {
     private Set<IBAN> ibans;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link ParentClass#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(ParentClass)} instead of private constructor to create new builder.
+     * Use {@link ParentClass#builder(ParentClass)} instead of private constructor to create new builder.
      */
     protected Builder( ParentClass pObject ) {
       if (pObject != null) {
@@ -102,26 +124,6 @@ public class ParentClass implements ServiceObject {
         parentAttribute = pObject.parentAttribute;
         ibans = pObject.ibans;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ParentClass objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( ParentClass pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -209,23 +211,6 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method sets the association "ibans" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it.
-   * 
-   * 
-   * @param pIbans Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setIbans( Set<IBAN> pIbans ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "ibans".
-    this.clearIbans();
-    // If the association is null, removing all entries is sufficient.
-    if (pIbans != null) {
-      ibans = new HashSet<IBAN>(pIbans);
-    }
-  }
-
-  /**
    * Method adds the passed IBAN object to the association "ibans".
    * 
    * 
@@ -273,15 +258,11 @@ public class ParentClass implements ServiceObject {
    */
   public void clearIbans( ) {
     // Remove all objects from association "ibans".
-    Collection<IBAN> lIbans = new HashSet<IBAN>(ibans);
-    Iterator<IBAN> lIterator = lIbans.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromIbans(lIterator.next());
-    }
+    ibans.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

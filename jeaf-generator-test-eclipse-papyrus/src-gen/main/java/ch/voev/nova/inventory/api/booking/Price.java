@@ -8,8 +8,6 @@ package ch.voev.nova.inventory.api.booking;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -65,7 +63,7 @@ public class Price {
   /**
    * 
    */
-  private List<VAT> vats = new ArrayList<VAT>();
+  private List<VAT> vats;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -73,6 +71,7 @@ public class Price {
    */
   protected Price( ) {
     scale = 2;
+    vats = new ArrayList<VAT>();
   }
 
   /**
@@ -88,8 +87,30 @@ public class Price {
     amount = pBuilder.amount;
     scale = pBuilder.scale;
     if (pBuilder.vats != null) {
-      vats.addAll(pBuilder.vats);
+      vats = pBuilder.vats;
     }
+    else {
+      vats = new ArrayList<VAT>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new Price objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new Price objects. The method never returns null.
+   */
+  public static Builder builder( Price pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -119,13 +140,13 @@ public class Price {
     private List<VAT> vats;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link Price#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(Price)} instead of private constructor to create new builder.
+     * Use {@link Price#builder(Price)} instead of private constructor to create new builder.
      */
     protected Builder( Price pObject ) {
       if (pObject != null) {
@@ -135,25 +156,6 @@ public class Price {
         scale = pObject.scale;
         vats = pObject.vats;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Price objects. The method never returns null.
-     */
-    public static Builder newBuilder( Price pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -306,23 +308,6 @@ public class Price {
   }
 
   /**
-   * Method sets the association "vats" to the passed collection. All objects that formerly were part of the association
-   * will be removed from it.
-   * 
-   * 
-   * @param pVats Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setVats( List<VAT> pVats ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "vats".
-    this.clearVats();
-    // If the association is null, removing all entries is sufficient.
-    if (pVats != null) {
-      vats = new ArrayList<VAT>(pVats);
-    }
-  }
-
-  /**
    * Method adds the passed VAT object to the association "vats".
    * 
    * 
@@ -370,15 +355,11 @@ public class Price {
    */
   public void clearVats( ) {
     // Remove all objects from association "vats".
-    Collection<VAT> lVats = new HashSet<VAT>(vats);
-    Iterator<VAT> lIterator = lVats.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromVats(lIterator.next());
-    }
+    vats.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

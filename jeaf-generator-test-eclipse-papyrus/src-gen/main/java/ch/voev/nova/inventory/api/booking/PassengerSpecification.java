@@ -9,8 +9,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
@@ -75,19 +73,20 @@ public class PassengerSpecification {
   /**
    * reduction or loyalty cards owned by the passenger
    */
-  private List<CardReference> cards = new ArrayList<CardReference>();
+  private List<CardReference> cards;
 
   /**
    * For the persons with reduced mobility (PRMs) its specific needs for support are expressed.
    */
-  private List<PRMNeedType> prmNeeds = new ArrayList<PRMNeedType>();
+  private List<PRMNeedType> prmNeeds;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected PassengerSpecification( ) {
-    // Nothing to do.
+    cards = new ArrayList<CardReference>();
+    prmNeeds = new ArrayList<PRMNeedType>();
   }
 
   /**
@@ -103,11 +102,37 @@ public class PassengerSpecification {
     type = pBuilder.type;
     dateOfBirth = pBuilder.dateOfBirth;
     if (pBuilder.cards != null) {
-      cards.addAll(pBuilder.cards);
+      cards = pBuilder.cards;
+    }
+    else {
+      cards = new ArrayList<CardReference>();
     }
     if (pBuilder.prmNeeds != null) {
-      prmNeeds.addAll(pBuilder.prmNeeds);
+      prmNeeds = pBuilder.prmNeeds;
     }
+    else {
+      prmNeeds = new ArrayList<PRMNeedType>();
+    }
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new PassengerSpecification objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new PassengerSpecification objects. The method never
+   * returns null.
+   */
+  public static Builder builder( PassengerSpecification pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -143,13 +168,14 @@ public class PassengerSpecification {
     private List<PRMNeedType> prmNeeds;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link PassengerSpecification#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(PassengerSpecification)} instead of private constructor to create new builder.
+     * Use {@link PassengerSpecification#builder(PassengerSpecification)} instead of private constructor to create new
+     * builder.
      */
     protected Builder( PassengerSpecification pObject ) {
       if (pObject != null) {
@@ -160,26 +186,6 @@ public class PassengerSpecification {
         cards = pObject.cards;
         prmNeeds = pObject.prmNeeds;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new PassengerSpecification objects. The method
-     * never returns null.
-     */
-    public static Builder newBuilder( PassengerSpecification pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -349,22 +355,6 @@ public class PassengerSpecification {
   }
 
   /**
-   * Method sets the association "cards" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it. reduction or loyalty cards owned by the passenger
-   * 
-   * @param pCards Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setCards( List<CardReference> pCards ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "cards".
-    this.clearCards();
-    // If the association is null, removing all entries is sufficient.
-    if (pCards != null) {
-      cards = new ArrayList<CardReference>(pCards);
-    }
-  }
-
-  /**
    * Method adds the passed CardReference object to the association "cards". reduction or loyalty cards owned by the
    * passenger
    * 
@@ -410,11 +400,7 @@ public class PassengerSpecification {
    */
   public void clearCards( ) {
     // Remove all objects from association "cards".
-    Collection<CardReference> lCards = new HashSet<CardReference>(cards);
-    Iterator<CardReference> lIterator = lCards.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromCards(lIterator.next());
-    }
+    cards.clear();
   }
 
   /**
@@ -427,23 +413,6 @@ public class PassengerSpecification {
   public List<PRMNeedType> getPrmNeeds( ) {
     // Return all PRMNeedType objects as unmodifiable collection.
     return Collections.unmodifiableList(prmNeeds);
-  }
-
-  /**
-   * Method sets the association "prmNeeds" to the passed collection. All objects that formerly were part of the
-   * association will be removed from it. For the persons with reduced mobility (PRMs) its specific needs for support
-   * are expressed.
-   * 
-   * @param pPrmNeeds Collection with objects to which the association should be set. The parameter must not be null.
-   */
-  void setPrmNeeds( List<PRMNeedType> pPrmNeeds ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "prmNeeds".
-    this.clearPrmNeeds();
-    // If the association is null, removing all entries is sufficient.
-    if (pPrmNeeds != null) {
-      prmNeeds = new ArrayList<PRMNeedType>(pPrmNeeds);
-    }
   }
 
   /**
@@ -494,15 +463,11 @@ public class PassengerSpecification {
    */
   public void clearPrmNeeds( ) {
     // Remove all objects from association "prmNeeds".
-    Collection<PRMNeedType> lPrmNeeds = new HashSet<PRMNeedType>(prmNeeds);
-    Iterator<PRMNeedType> lIterator = lPrmNeeds.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromPrmNeeds(lIterator.next());
-    }
+    prmNeeds.clear();
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

@@ -30,41 +30,42 @@ public class SubclassWithoutIDnMethod extends SubclassWithoutIDnMethodBase {
   }
 
   /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new SubclassWithoutIDnMethod objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new SubclassWithoutIDnMethod objects. The method
+   * never returns null.
+   */
+  public static Builder builder( SubclassWithoutIDnMethod pObject ) {
+    return new Builder(pObject);
+  }
+
+  /**
    * Class implements builder to create a new instance of class SubclassWithoutIDnMethod. As the class has readonly
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends SubclassWithoutIDnMethod.BuilderBase {
     /**
-     * Use {@link #newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link SubclassWithoutIDnMethod#builder()} instead of protected constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(SubclassWithoutIDnMethod)} instead of protected constructor to create new builder.
+     * Use {@link SubclassWithoutIDnMethod#builder(SubclassWithoutIDnMethod)} instead of protected constructor to create
+     * new builder.
      */
     protected Builder( SubclassWithoutIDnMethod pObject ) {
       super(pObject);
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( SubclassWithoutIDnMethod pObject ) {
-      return new Builder(pObject);
     }
   }
 

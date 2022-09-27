@@ -8,7 +8,6 @@ package com.anaptecs.jeaf.junit.domainObjects;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import com.anaptecs.jeaf.core.api.DomainObject;
@@ -53,13 +52,13 @@ public abstract class PriceBase extends DomainObject {
    * 
    */
   @Deprecated
-  private Set<VerbindungspunktDO> verbindungspunkte = new HashSet<VerbindungspunktDO>();
+  private Set<VerbindungspunktDO> verbindungspunkte;
 
   /**
    * Initialize object. Nothing special to do.
    */
   public PriceBase( ) {
-    // Nothing to do.
+    verbindungspunkte = new HashSet<VerbindungspunktDO>();
   }
 
   /**
@@ -69,6 +68,7 @@ public abstract class PriceBase extends DomainObject {
    */
   public PriceBase( DomainObjectID pDomainObjectID ) {
     super(pDomainObjectID);
+    verbindungspunkte = new HashSet<VerbindungspunktDO>();
   }
 
   /**
@@ -139,25 +139,6 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method sets the association "verbindungspunkte" to the passed collection. All objects that formerly were part of
-   * the association will be removed from it.
-   * 
-   * 
-   * @param pVerbindungspunkte Collection with objects to which the association should be set. The parameter must not be
-   * null.
-   */
-  @Deprecated
-  void setVerbindungspunkte( Set<VerbindungspunktDO> pVerbindungspunkte ) {
-    // Check of parameter is not required.
-    // Remove all objects from association "verbindungspunkte".
-    this.clearVerbindungspunkte();
-    // If the association is null, removing all entries is sufficient.
-    if (pVerbindungspunkte != null) {
-      verbindungspunkte = new HashSet<VerbindungspunktDO>(pVerbindungspunkte);
-    }
-  }
-
-  /**
    * Method adds the passed VerbindungspunktDO object to the association "verbindungspunkte".
    * 
    * 
@@ -211,11 +192,7 @@ public abstract class PriceBase extends DomainObject {
   @Deprecated
   public void clearVerbindungspunkte( ) {
     // Remove all objects from association "verbindungspunkte".
-    Collection<VerbindungspunktDO> lVerbindungspunkte = new HashSet<VerbindungspunktDO>(verbindungspunkte);
-    Iterator<VerbindungspunktDO> lIterator = lVerbindungspunkte.iterator();
-    while (lIterator.hasNext()) {
-      this.removeFromVerbindungspunkte(lIterator.next());
-    }
+    verbindungspunkte.clear();
   }
 
   /**
@@ -234,7 +211,7 @@ public abstract class PriceBase extends DomainObject {
   public abstract String doSomething( int pParam1, @Deprecated int pParam2 );
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

@@ -164,12 +164,12 @@ public class AccountInfoToAccountDOConverter implements ObjectMapper<AccountInfo
     AccountInfo lNewSourceObject;
     DomainObjectID lDomainObjectID = pTarget.getDomainObjectID();
     if (lDomainObjectID != null) {
-      AccountInfo.Builder lBuilder = AccountInfo.Builder.newBuilder();
+      AccountInfo.Builder lBuilder = AccountInfo.builder();
       lBuilder.setID(lDomainObjectID);
       lNewSourceObject = lBuilder.build();
     }
     else {
-      lNewSourceObject = AccountInfo.Builder.newBuilder().build();
+      lNewSourceObject = AccountInfo.builder().build();
     }
     AccountInfoToAccountDOConverter lObjectMapper = AccountInfoToAccountDOConverter.getConverter();
     lObjectMapper.applyMappings(lNewSourceObject, pTarget, MappingType.READ);

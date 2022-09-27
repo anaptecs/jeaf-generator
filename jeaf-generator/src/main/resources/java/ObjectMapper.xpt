@@ -69,7 +69,7 @@
 			  
 			// Create new target object.
 			«IF lTargetClass.isPOJO() || lTargetClass.isServiceObject() »
-			«lTargetClassName» lTarget = «lTargetClassName».Builder.newBuilder().build();
+			«lTargetClassName» lTarget = «lTargetClassName».builder().build();
 			«ELSE»«IF lTargetClass.isDomainObject()»
 			«lTargetClassName» lTarget = new «lTargetClassName»();
 			«ELSE»«IF lTargetClass.isPersistentObject()»
@@ -228,11 +228,11 @@
 			«REM»Handling POJO as source object«ENDREM»
 			«IF lSourceClass.isPOJO()»
 				«IF lSourceClass.implementsIdentifiable() && lTargetClass.implementsIdentifiable()»
-					«lSourceClassName».Builder lBuilder = «lSourceClassName».Builder.newBuilder();
+					«lSourceClassName».Builder lBuilder = «lSourceClassName».builder();
 					lBuilder.setID(pTarget.getID());
 					«lSourceClassName» lNewSourceObject = lBuilder.build();
 				«ELSE»	
-					«lSourceClassName» lNewSourceObject = «lSourceClassName».Builder.newBuilder().build();
+					«lSourceClassName» lNewSourceObject = «lSourceClassName».builder().build();
 				«ENDIF»
 
 			«REM»Handling ServiceObject as source object«ENDREM»
@@ -242,38 +242,38 @@
 						«lSourceClassName» lNewSourceObject;
 						com.anaptecs.jeaf.core.api.ServiceObjectID lServiceObjectID = pTarget.getID();
 						if (lServiceObjectID != null) {
-							«lSourceClassName».Builder lBuilder = «lSourceClassName».Builder.newBuilder();
+							«lSourceClassName».Builder lBuilder = «lSourceClassName».builder();
 							lBuilder.setID(lServiceObjectID);
 							lNewSourceObject = lBuilder.build();
 						}
 						else {
-							lNewSourceObject = «lSourceClassName».Builder.newBuilder().build();
+							lNewSourceObject = «lSourceClassName».builder().build();
 						}
 					«ELSE»
-						«lSourceClassName» lNewSourceObject = «lSourceClassName».Builder.newBuilder().build();
+						«lSourceClassName» lNewSourceObject = «lSourceClassName».builder().build();
 					«ENDIF»
 				«ELSE»«IF lTargetClass.isDomainObject()»
 					«IF lSourceClass.implementsIdentifiable() == true»
 					«lSourceClassName» lNewSourceObject;
 					com.anaptecs.jeaf.core.api.DomainObjectID lDomainObjectID = pTarget.getDomainObjectID();
 					if (lDomainObjectID != null) {
-						«lSourceClassName».Builder lBuilder = «lSourceClassName».Builder.newBuilder();
+						«lSourceClassName».Builder lBuilder = «lSourceClassName».builder();
 						lBuilder.setID(lDomainObjectID);
 						lNewSourceObject = lBuilder.build();
 					}
 					else {
-						lNewSourceObject = «lSourceClassName».Builder.newBuilder().build();
+						lNewSourceObject = «lSourceClassName».builder().build();
 					}
 					«ELSE»
-						«lSourceClassName» lNewSourceObject = «lSourceClassName».Builder.newBuilder().build();
+						«lSourceClassName» lNewSourceObject = «lSourceClassName».builder().build();
 					«ENDIF»
 				«ELSE»«IF lTargetClass.isPersistentObject()»
 					«IF lSourceClass.implementsIdentifiable() == true»
-						«lSourceClassName».Builder lBuilder = «lSourceClassName».Builder.newBuilder();
+						«lSourceClassName».Builder lBuilder = «lSourceClassName».builder();
 						lBuilder.setID(pTarget.getID());
 						«lSourceClassName» lNewSourceObject = lBuilder.build();
 					«ELSE»
-						«lSourceClassName» lNewSourceObject = «lSourceClassName».Builder.newBuilder().build();
+						«lSourceClassName» lNewSourceObject = «lSourceClassName».builder().build();
 					«ENDIF»
 				«ELSE»
 					// ERROR: Target class is not a service or domain or persistent object.

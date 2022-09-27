@@ -108,7 +108,6 @@ public class WrapperTypesServiceObject implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected WrapperTypesServiceObject( ) {
-    // Nothing to do.
   }
 
   /**
@@ -128,6 +127,26 @@ public class WrapperTypesServiceObject implements ServiceObject {
     aFloat = pBuilder.aFloat;
     aDouble = pBuilder.aDouble;
     aChar = pBuilder.aChar;
+  }
+
+  /**
+   * Method returns a new builder.
+   * 
+   * @return {@link Builder} New builder that can be used to create new WrapperTypesServiceObject objects.
+   */
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Method creates a new builder and initialize it with the data from the passed object.
+   * 
+   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+   * @return {@link Builder} New builder that can be used to create new WrapperTypesServiceObject objects. The method
+   * never returns null.
+   */
+  public static Builder builder( WrapperTypesServiceObject pObject ) {
+    return new Builder(pObject);
   }
 
   /**
@@ -176,13 +195,14 @@ public class WrapperTypesServiceObject implements ServiceObject {
     private Character aChar;
 
     /**
-     * Use {@link #newBuilder()} instead of private constructor to create new builder.
+     * Use {@link WrapperTypesServiceObject#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
     }
 
     /**
-     * Use {@link #newBuilder(WrapperTypesServiceObject)} instead of private constructor to create new builder.
+     * Use {@link WrapperTypesServiceObject#builder(WrapperTypesServiceObject)} instead of private constructor to create
+     * new builder.
      */
     protected Builder( WrapperTypesServiceObject pObject ) {
       if (pObject != null) {
@@ -196,26 +216,6 @@ public class WrapperTypesServiceObject implements ServiceObject {
         aDouble = pObject.aDouble;
         aChar = pObject.aChar;
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new WrapperTypesServiceObject objects. The method
-     * never returns null.
-     */
-    public static Builder newBuilder( WrapperTypesServiceObject pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -499,7 +499,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

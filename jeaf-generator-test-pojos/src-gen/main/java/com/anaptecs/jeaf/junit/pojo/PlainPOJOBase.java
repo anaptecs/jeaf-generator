@@ -49,7 +49,6 @@ public abstract class PlainPOJOBase {
    * object creation builder should be used instead.
    */
   protected PlainPOJOBase( ) {
-    // Nothing to do.
   }
 
   /**
@@ -82,13 +81,13 @@ public abstract class PlainPOJOBase {
     private Integer world;
 
     /**
-     * Use {@link PlainPOJO.Builder#newBuilder()} instead of protected constructor to create new builder.
+     * Use {@link PlainPOJO.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link PlainPOJO.Builder#newBuilder(PlainPOJO)} instead of protected constructor to create new builder.
+     * Use {@link PlainPOJO.builder(PlainPOJO)} instead of protected constructor to create new builder.
      */
     protected BuilderBase( PlainPOJOBase pObject ) {
       if (pObject != null) {
@@ -201,7 +200,7 @@ public abstract class PlainPOJOBase {
   public abstract String doSomething( @Deprecated int pParam1, int pParam2 );
 
   /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. the returned
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.

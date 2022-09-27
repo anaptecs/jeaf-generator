@@ -24,7 +24,7 @@ public class LongCodeTypeDeserializer extends JsonDeserializer<LongCodeType> {
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
-      return LongCodeType.Builder.newBuilder().setCode(lNode.asLong()).build();
+      return LongCodeType.builder().setCode(lNode.asLong()).build();
     }
     // Node is not a TextNode
     else {

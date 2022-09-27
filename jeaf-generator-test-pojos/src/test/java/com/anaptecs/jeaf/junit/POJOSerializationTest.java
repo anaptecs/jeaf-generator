@@ -14,9 +14,9 @@ public class POJOSerializationTest {
 
   @Test
   void testBidirectionalAssociationsforPOJOs( ) {
-    BidirectionalA lBidirectA = BidirectionalA.Builder.newBuilder().build();
-    BidirectionalA lChild = BidirectionalA.Builder.newBuilder().build();
-    BidirectionalB lBidirectB = BidirectionalB.Builder.newBuilder().build();
+    BidirectionalA lBidirectA = BidirectionalA.builder().build();
+    BidirectionalA lChild = BidirectionalA.builder().build();
+    BidirectionalB lBidirectB = BidirectionalB.builder().build();
 
     lBidirectA.setTransientB(lBidirectB);
     assertEquals(lBidirectA, lBidirectB.getAs().iterator().next());
