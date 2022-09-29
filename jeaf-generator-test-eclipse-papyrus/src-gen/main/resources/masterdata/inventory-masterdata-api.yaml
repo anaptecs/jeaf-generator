@@ -2,7 +2,7 @@ openapi: 3.0.3
 
 info:
   title: NOVA Master Data API
-  version: 1.6.60-SNAPSHOT
+  version: 1.6.61-SNAPSHOT
   description: >-
     NOVA Master Data API to access inventory information.
   contact:
@@ -59,6 +59,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VehicleResponse'
+    
+    
 
   /inventory/productDefinitions:
     get:
@@ -95,6 +97,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProductDefinitionResponse'
+    
+    
 
 
 security:
