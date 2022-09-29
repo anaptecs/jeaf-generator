@@ -34,6 +34,7 @@ import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
+import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
@@ -180,7 +181,9 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       }
     }
     // Handle cookie parameters
-    lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
+    if (pContext != null) {
+      lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
+    }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Sortiment.class);
@@ -716,6 +719,64 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       }
       else {
         lRequestBuilder.setHeader("SQL-Date", null);
+      }
+    }
+    // Execute request.
+    RESTRequest lRequest = lRequestBuilder.build();
+    requestExecutor.executeNoResultRequest(lRequest, 200);
+  }
+
+  /**
+   * 
+   * @param pChannelTypeParam
+   * @param pContext
+   */
+  @Override
+  public void testCookieParams( ChannelType pChannelTypeParam, SpecialContext pContext ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("cookies");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pContext != null) {
+      if (pContext.getQueryParam() != null) {
+        lRequestBuilder.addQueryParam("q1", pContext.getQueryParam());
+      }
+    }
+    // Set HTTP header(s)
+    if (pContext != null) {
+      if (pContext.getAccessToken() != null) {
+        lRequestBuilder.setHeader("token", pContext.getAccessToken());
+      }
+      else {
+        lRequestBuilder.setHeader("token", null);
+      }
+      if (pContext.getLanguage() != null) {
+        lRequestBuilder.setHeader("lang", pContext.getLanguage().toString());
+      }
+      else {
+        lRequestBuilder.setHeader("lang", null);
+      }
+      if (pContext.getSpecificHeader() != null) {
+        lRequestBuilder.setHeader("specificHeader", pContext.getSpecificHeader());
+      }
+      else {
+        lRequestBuilder.setHeader("specificHeader", null);
+      }
+    }
+    // Handle cookie parameters
+    if (pChannelTypeParam != null) {
+      lRequestBuilder.setCookie("Channel-Type-Param", pChannelTypeParam.toString());
+    }
+    if (pContext != null) {
+      lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
+      if (pContext.getChannelType() != null) {
+        lRequestBuilder.setCookie("Channel-Type", pContext.getChannelType().toString());
       }
     }
     // Execute request.

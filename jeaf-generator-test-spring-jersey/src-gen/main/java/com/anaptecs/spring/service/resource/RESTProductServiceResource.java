@@ -47,6 +47,7 @@ import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
+import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
@@ -304,6 +305,18 @@ public class RESTProductServiceResource {
       @BeanParam DateHeaderParamsBean pHeaderParams ) {
     // Delegate request to service.
     rESTProductService.testDateHeaderParamsBean(pPath, pHeaderParams);
+    return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link RESTProductService#testCookieParams()}
+   */
+  @Path("cookies")
+  @GET
+  public Response testCookieParams( @CookieParam("Channel-Type-Param") ChannelType pChannelTypeParam,
+      @BeanParam SpecialContext pContext ) {
+    // Delegate request to service.
+    rESTProductService.testCookieParams(pChannelTypeParam, pContext);
     return Response.status(Response.Status.OK).build();
   }
 }

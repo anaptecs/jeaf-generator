@@ -308,31 +308,47 @@ public class «name»RESTProxy implements «this.fqn()» {
 	    	org.apache.hc.client5.http.cookie.BasicCookieStore lCookieStore = new BasicCookieStore();
 	    	org.apache.hc.core5.http.protocol.HttpContext lLocalContext = new org.apache.hc.core5.http.protocol.BasicHttpContext();
 	    	lLocalContext.setAttribute(org.apache.hc.client5.http.protocol.HttpClientContext.COOKIE_STORE, lCookieStore);
-	    	«FOREACH this.getCookieParams() AS cookieParam»
-	    	org.apache.hc.client5.http.impl.cookie.BasicClientCookie l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie = new BasicClientCookie("«cookieParam.getRESTCookieParamName()»", «EXPAND CookieParamValueAccessor FOR cookieParam»);
 			String lCookieDomain = configuration.getCookieDomain(); 
-			if(lCookieDomain != null) {
-			  l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie.setDomain(lCookieDomain);
-			}
 			String lCookiePath = configuration.getCookiePath(); 
-			if(lCookiePath != null) {
-			  l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie.setPath(lCookiePath);
+	    	«FOREACH this.getCookieParams() AS cookieParam»
+	    	«IF cookieParam.type.isPrimitiveType() == false»
+			if («cookieParam.name» != null) {
+			«ENDIF»
+	    	org.apache.hc.client5.http.impl.cookie.BasicClientCookie l«cookieParam.name.toFirstUpper()»Cookie = new BasicClientCookie("«cookieParam.getRESTCookieParamName()»", «EXPAND CookieParamValueAccessor FOR cookieParam»);
+			if(lCookieDomain != null) {
+			  l«cookieParam.name.toFirstUpper()»Cookie.setDomain(lCookieDomain);
 			}
-			lCookieStore.addCookie(l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie);
+			if(lCookiePath != null) {
+			  l«cookieParam.name.toFirstUpper()»Cookie.setPath(lCookiePath);
+			}
+			lCookieStore.addCookie(l«cookieParam.name.toFirstUpper()»Cookie);
+	    	«IF cookieParam.type.isPrimitiveType() == false»
+			}
+			«ENDIF»
 	    	«ENDFOREACH»
 	    	«FOREACH this.getBeanParams() AS beanParam»
+	    		«IF beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::CookieParam).size > 0»
+	    		if(«beanParam.name» != null) {
+	    		«ENDIF»	    		
 	    		«FOREACH beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::CookieParam) AS cookieParam»
-			    	org.apache.hc.client5.http.impl.cookie.BasicClientCookie l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie = new BasicClientCookie("«cookieParam.getRESTCookieParamName()»", «EXPAND CookieParamValueAccessorForBeanParam(beanParam) FOR cookieParam»);
-					String lCookieDomain = configuration.getCookieDomain();
+					«IF cookieParam.type.isPrimitiveType() == false»
+					if («beanParam.name».«cookieParam.asGetter()»() != null) {
+					«ENDIF»
+			    	org.apache.hc.client5.http.impl.cookie.BasicClientCookie l«cookieParam.name.toFirstUpper()»Cookie = new BasicClientCookie("«cookieParam.getRESTCookieParamName()»", «EXPAND CookieParamValueAccessorForBeanParam(beanParam) FOR cookieParam»);
 					if(lCookieDomain != null) {
-					  l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie.setDomain(lCookieDomain);
+					  l«cookieParam.name.toFirstUpper()»Cookie.setDomain(lCookieDomain);
 					}
-					String lCookiePath = configuration.getCookiePath();
 					if(lCookiePath != null) {
-					  l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie.setPath(lCookiePath);
+					  l«cookieParam.name.toFirstUpper()»Cookie.setPath(lCookiePath);
 					}
-					lCookieStore.addCookie(l«cookieParam.getRESTCookieParamName().toFirstUpper()»Cookie);
+					lCookieStore.addCookie(l«cookieParam.name.toFirstUpper()»Cookie);
+					«IF cookieParam.type.isPrimitiveType() == false»
+					}
+					«ENDIF»
 	    		«ENDFOREACH»
+	    		«IF beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::CookieParam).size > 0»
+	    		}
+	    		«ENDIF»	    		
 	    	«ENDFOREACH»
     	«ENDIF»
 	    
@@ -494,12 +510,31 @@ public class «name»RESTProxy implements «this.fqn()» {
     	«IF this.hasCookieParams()»
 	    	// Handle cookie parameters
 	    	«FOREACH this.getCookieParams() AS cookieParam»
+	    	«IF cookieParam.type.isPrimitiveType() == false»
+			if («cookieParam.name» != null) {
+			«ENDIF»
 			lRequestBuilder.setCookie("«cookieParam.getRESTCookieParamName()»", «EXPAND CookieParamValueAccessor FOR cookieParam»);
+	    	«IF cookieParam.type.isPrimitiveType() == false»
+			}
+			«ENDIF»
 	    	«ENDFOREACH»
+	    	
 	    	«FOREACH this.getBeanParams() AS beanParam»
+	    		«IF beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::CookieParam).size > 0»
+	    		if(«beanParam.name» != null) {
+	    		«ENDIF»	    		
 	    		«FOREACH beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::CookieParam) AS cookieParam»
+					«IF cookieParam.type.isPrimitiveType() == false»
+					if («beanParam.name».«cookieParam.asGetter()»() != null) {
+					«ENDIF»
 					lRequestBuilder.setCookie("«cookieParam.getRESTCookieParamName()»", «EXPAND CookieParamValueAccessorForBeanParam(beanParam) FOR cookieParam»);
+					«IF cookieParam.type.isPrimitiveType() == false»
+					}
+					«ENDIF»
 	    		«ENDFOREACH»
+	    		«IF beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::CookieParam).size > 0»
+	    		}
+	    		«ENDIF»	    		
 	    	«ENDFOREACH»
     	«ENDIF»
 	    
@@ -593,7 +628,16 @@ public class «name»RESTProxy implements «this.fqn()» {
 			«IF type.isOpenAPIDataType()»
 				«name».«type.getAllAttributesFromHierarchy().first().asGetter()»()
 			«ELSE»
+				«IF isTargetRuntimeJEAF()»
 				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«name»)
+				«ENDIF»
+				«IF isTargetRuntimeSpring()»
+				«IF type.isAnyDateType()»
+				«EXPAND DateConversion FOR this»
+				«ELSE»
+				«name».toString()
+				«ENDIF»
+				«ENDIF»
 			«ENDIF»
 		«ENDIF»
 	«ENDIF»
@@ -609,7 +653,16 @@ public class «name»RESTProxy implements «this.fqn()» {
 			«IF type.isOpenAPIDataType()»
 				«beanParam.name».«this.asGetter()»().«type.getAllAttributesFromHierarchy().first().asGetter()»()
 			«ELSE»
+				«IF isTargetRuntimeJEAF()»
 				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«beanParam.name».«this.asGetter()»())
+				«ENDIF»
+				«IF isTargetRuntimeSpring()»
+				«IF type.isAnyDateType()»
+				«EXPAND DateConversionForBeanParam(beanParam) FOR this»
+				«ELSE»
+				«beanParam.name».«this.asGetter()»().toString()
+				«ENDIF»
+				«ENDIF»
 			«ENDIF»
 		«ENDIF»
 	«ENDIF»

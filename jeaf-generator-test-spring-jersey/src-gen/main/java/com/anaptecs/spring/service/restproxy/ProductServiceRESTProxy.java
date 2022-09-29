@@ -176,7 +176,9 @@ public class ProductServiceRESTProxy implements ProductService {
       }
     }
     // Handle cookie parameters
-    lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
+    if (pContext != null) {
+      lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
+    }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Sortiment.class);
@@ -277,7 +279,9 @@ public class ProductServiceRESTProxy implements ProductService {
       }
     }
     // Handle cookie parameters
-    lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
+    if (pContext != null) {
+      lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
+    }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
@@ -455,7 +459,12 @@ public class ProductServiceRESTProxy implements ProductService {
       }
     }
     // Handle cookie parameters
-    lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
+    if (pContext != null) {
+      lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
+      if (pContext.getChannelType() != null) {
+        lRequestBuilder.setCookie("Channel-Type", pContext.getChannelType().toString());
+      }
+    }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 200);

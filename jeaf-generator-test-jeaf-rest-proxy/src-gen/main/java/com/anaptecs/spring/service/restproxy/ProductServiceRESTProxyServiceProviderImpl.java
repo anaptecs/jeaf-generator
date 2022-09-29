@@ -39,6 +39,7 @@ import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
+import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DeprecatedContext;
@@ -219,16 +220,18 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     BasicCookieStore lCookieStore = new BasicCookieStore();
     HttpContext lLocalContext = new BasicHttpContext();
     lLocalContext.setAttribute(HttpClientContext.COOKIE_STORE, lCookieStore);
-    BasicClientCookie lResellerCookie = new BasicClientCookie("reseller", String.valueOf(pContext.getResellerID()));
     String lCookieDomain = configuration.getCookieDomain();
-    if (lCookieDomain != null) {
-      lResellerCookie.setDomain(lCookieDomain);
-    }
     String lCookiePath = configuration.getCookiePath();
-    if (lCookiePath != null) {
-      lResellerCookie.setPath(lCookiePath);
+    if (pContext != null) {
+      BasicClientCookie lResellerIDCookie = new BasicClientCookie("reseller", String.valueOf(pContext.getResellerID()));
+      if (lCookieDomain != null) {
+        lResellerIDCookie.setDomain(lCookieDomain);
+      }
+      if (lCookiePath != null) {
+        lResellerIDCookie.setPath(lCookiePath);
+      }
+      lCookieStore.addCookie(lResellerIDCookie);
     }
-    lCookieStore.addCookie(lResellerCookie);
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     return httpClient.executeSingleObjectResultRequest(lRequest, lLocalContext, 200, Sortiment.class);
@@ -345,16 +348,18 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     BasicCookieStore lCookieStore = new BasicCookieStore();
     HttpContext lLocalContext = new BasicHttpContext();
     lLocalContext.setAttribute(HttpClientContext.COOKIE_STORE, lCookieStore);
-    BasicClientCookie lResellerCookie = new BasicClientCookie("reseller", String.valueOf(pContext.getResellerID()));
     String lCookieDomain = configuration.getCookieDomain();
-    if (lCookieDomain != null) {
-      lResellerCookie.setDomain(lCookieDomain);
-    }
     String lCookiePath = configuration.getCookiePath();
-    if (lCookiePath != null) {
-      lResellerCookie.setPath(lCookiePath);
+    if (pContext != null) {
+      BasicClientCookie lResellerIDCookie = new BasicClientCookie("reseller", String.valueOf(pContext.getResellerID()));
+      if (lCookieDomain != null) {
+        lResellerIDCookie.setDomain(lCookieDomain);
+      }
+      if (lCookiePath != null) {
+        lResellerIDCookie.setPath(lCookiePath);
+      }
+      lCookieStore.addCookie(lResellerIDCookie);
     }
-    lCookieStore.addCookie(lResellerCookie);
     // Execute request and return result.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     return httpClient.executeSingleObjectResultRequest(lRequest, lLocalContext, 200, String.class);
@@ -554,16 +559,29 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     BasicCookieStore lCookieStore = new BasicCookieStore();
     HttpContext lLocalContext = new BasicHttpContext();
     lLocalContext.setAttribute(HttpClientContext.COOKIE_STORE, lCookieStore);
-    BasicClientCookie lResellerCookie = new BasicClientCookie("reseller", String.valueOf(pContext.getResellerID()));
     String lCookieDomain = configuration.getCookieDomain();
-    if (lCookieDomain != null) {
-      lResellerCookie.setDomain(lCookieDomain);
-    }
     String lCookiePath = configuration.getCookiePath();
-    if (lCookiePath != null) {
-      lResellerCookie.setPath(lCookiePath);
+    if (pContext != null) {
+      BasicClientCookie lResellerIDCookie = new BasicClientCookie("reseller", String.valueOf(pContext.getResellerID()));
+      if (lCookieDomain != null) {
+        lResellerIDCookie.setDomain(lCookieDomain);
+      }
+      if (lCookiePath != null) {
+        lResellerIDCookie.setPath(lCookiePath);
+      }
+      lCookieStore.addCookie(lResellerIDCookie);
+      if (pContext.getChannelType() != null) {
+        BasicClientCookie lChannelTypeCookie = new BasicClientCookie("Channel-Type", XFun.getDatatypeConverterRegistry()
+            .getConverter(ChannelType.class, String.class).convert(pContext.getChannelType()));
+        if (lCookieDomain != null) {
+          lChannelTypeCookie.setDomain(lCookieDomain);
+        }
+        if (lCookiePath != null) {
+          lChannelTypeCookie.setPath(lCookiePath);
+        }
+        lCookieStore.addCookie(lChannelTypeCookie);
+      }
     }
-    lCookieStore.addCookie(lResellerCookie);
     // Execute request.
     ClassicHttpRequest lRequest = lRequestBuilder.build();
     httpClient.executeNoResponseContentRequest(lRequest, lLocalContext, 200);

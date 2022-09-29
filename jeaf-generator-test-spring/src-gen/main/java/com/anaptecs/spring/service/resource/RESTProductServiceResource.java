@@ -34,6 +34,7 @@ import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
+import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
@@ -300,5 +301,34 @@ public class RESTProductServiceResource {
     DateHeaderParamsBean pHeaderParams = lBuilder.build();
     // Delegate request to service.
     rESTProductService.testDateHeaderParamsBean(pPath, pHeaderParams);
+  }
+
+  /**
+   * {@link RESTProductService#testCookieParams()}
+   */
+  @RequestMapping(path = "cookies", method = { RequestMethod.GET })
+  public void testCookieParams(
+      @CookieValue(name = "Channel-Type-Param", required = true) @RequestBody(
+          required = true) ChannelType pChannelTypeParam,
+      @RequestHeader(name = "token", required = true) String pAccessToken,
+      @RequestHeader(name = "lang", required = true) Locale pLanguage,
+      @CookieValue(name = "reseller", required = true) long pResellerID,
+      @PathVariable(name = "id", required = true) long pPathParam,
+      @RequestParam(name = "q1", required = true) String pQueryParam,
+      @RequestHeader(name = "specificHeader", required = true) String pSpecificHeader,
+      @CookieValue(name = "Channel-Type", required = true) ChannelType pChannelType ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    SpecialContext.Builder lBuilder = SpecialContext.builder();
+    lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setLanguage(pLanguage);
+    lBuilder.setResellerID(pResellerID);
+    lBuilder.setPathParam(pPathParam);
+    lBuilder.setQueryParam(pQueryParam);
+    lBuilder.setSpecificHeader(pSpecificHeader);
+    lBuilder.setChannelType(pChannelType);
+    SpecialContext pContext = lBuilder.build();
+    // Delegate request to service.
+    rESTProductService.testCookieParams(pChannelTypeParam, pContext);
   }
 }
