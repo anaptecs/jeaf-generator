@@ -56,12 +56,6 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>org.zalando</groupId>
-		    <artifactId>problem-spring-web</artifactId>
-		    <version>0.23.0</version>
-		</dependency>
-		
-		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 			<version>${validation-api.version}</version>
@@ -75,49 +69,15 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>${jackson.version}</version>
-		</dependency>
-
-
-		<dependency>
-		    <groupId>com.fasterxml.jackson.datatype</groupId>
-		    <artifactId>jackson-datatype-jsr310</artifactId>
-		    <version>${jackson.version}</version>
-		</dependency>
-		
-		<dependency>
 			<artifactId>jeaf-jersey-extensions-impl</artifactId>
 			<groupId>com.anaptecs.jeaf.jersey</groupId>
 			<version>${jeaf.jersey.extensions.version}</version>
 		</dependency>
 		
-		<!--  
-		<dependency>
-			<groupId>com.anaptecs.jeaf.workload</groupId>
-			<artifactId>jeaf-workload-rest-api</artifactId>
-			<version>${jeaf.workload.api.version}</version>
-		</dependency>
-		-->
-
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
 			<version>${junit.version}</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5 -->
-		<dependency>
-			<groupId>org.apache.httpcomponents.client5</groupId>
-			<artifactId>httpclient5</artifactId>
-			<version>${apache.httpclient5.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.github.resilience4j</groupId>
-			<artifactId>resilience4j-circuitbreaker</artifactId>
-			<version>${resilience4j.version}</version>
 		</dependency>
 
 		<dependency>
@@ -143,8 +103,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Dependency for mock server which is used to test request delegation. -->
-		
+		<!-- Dependency for mock server which is used to test request delegation. -->		
 		<dependency>
 			<groupId>org.mock-server</groupId>
 			<artifactId>mockserver-client-java</artifactId>
