@@ -139,7 +139,7 @@ public final class «name»RESTProxyServiceProviderImpl implements com.anaptecs.
     return httpClient.check(pLevel);
   }
 
-  «EXPAND RESTProxyOperationOperation(this) FOREACH ownedOperation.typeSelect(RESTOperation)»
+  «EXPAND JEAFRESTProxyOperationOperation(this) FOREACH ownedOperation.typeSelect(RESTOperation)»
 }
 «ENDFILE»
 «ENDDEFINE»
@@ -164,40 +164,33 @@ package «packageName()».restproxy;
  * <li>Circuit breaker in case of availabilities problems of the REST service</li>
  * </ul>
  * 
- * However, as an transactional context can not be propagated to another REST resource developers till have to take care
+ * However, as an transactional context can not be propagated to another REST resource developers still have to take care
  * about proper transaction handling if needed.
  */
 @org.springframework.stereotype.Service
 public class «name»RESTProxy implements «this.fqn()» {
   /**
-   * Logger for this class.
+   * REST request executor is used to send REST request to the proxied REST resource. Depending on the Spring
+   * configuration the matching implementation will be injected here.
    */
-  private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(«name»HttpClient.class);
+  private final com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor requestExecutor;
 
   /**
-   * Reference to object holding all the required configuration values to delegate request to external REST service.
+   * Initialize object.
+   * 
+   * @param pRequestExecutor Dependency on concrete {@link RESTRequestExecutor} implementation that should be used.
    */
-  @javax.inject.Inject
-  private «name»Configuration configuration;
+  public «name»RESTProxy( com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor pRequestExecutor ) {
+    requestExecutor = pRequestExecutor;
+  }
 
-  /**
-   * HTTP client is used to handle communication to REST service.
-   */
-  @javax.inject.Inject
-  private «name»HttpClient httpClient;
-  
-  /**
-   * Object mapper is used for serialization and deserialization of objects from Java to JSON and vice versa.
-   */
-  @javax.inject.Inject
-  private com.fasterxml.jackson.databind.ObjectMapper objectMapper;
-
-  «EXPAND RESTProxyOperationOperation(this) FOREACH ownedOperation.typeSelect(RESTOperation)»
+  «EXPAND SpringRESTProxyOperationOperation(this) FOREACH ownedOperation.typeSelect(RESTOperation)»
 }
 «ENDFILE»
 «ENDDEFINE»
 
-«DEFINE RESTProxyOperationOperation(RESTResource service) FOR RESTOperation»
+
+«DEFINE JEAFRESTProxyOperationOperation(RESTResource service) FOR RESTOperation»
     «this.getJavadoc()» 
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
@@ -387,6 +380,158 @@ public class «name»RESTProxy implements «this.fqn()» {
     «ENDIF»
 	}
 «ENDDEFINE»
+
+
+
+
+
+
+«DEFINE SpringRESTProxyOperationOperation(RESTResource service) FOR RESTOperation»
+    «this.getJavadoc()» 
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
+    @Override
+	«visibility» «getReturnTypeName()» «name» («EXPAND jeaf::JEAFOperation::ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
+		// Create builder for «this.httpMethods.selectFirst(e|e!=null)» request
+		com.anaptecs.jeaf.rest.executor.api.RESTRequest.Builder lRequestBuilder = com.anaptecs.jeaf.rest.executor.api.RESTRequest.builder(«service.fqn()».class, com.anaptecs.jeaf.rest.executor.api.HttpMethod.«this.httpMethods.selectFirst(e|e!=null)», com.anaptecs.jeaf.rest.executor.api.ContentType.JSON);
+		
+	    // Build path of request
+	    StringBuilder lPathBuilder = new StringBuilder();
+	    «IF service.path.length > 0»
+	    lPathBuilder.append("«service.path»");
+	    «ENDIF»
+	    «IF this.path.length > 0»
+	    	lPathBuilder.append('/');
+	    	«FOREACH splitRESTPath(this.path, this.getAllPathParams(), this.getAllPathParamNamnes()) AS pathPart»
+	    	lPathBuilder.append(«pathPart»);
+	    	«ENDFOREACH»
+	    «ENDIF»
+	    lRequestBuilder.setPath(lPathBuilder.toString());
+	    
+	   «IF this.getQueryParams().size > 0 || this.getBeanParams().type.getAllAttributesFromHierarchy().typeSelect(JMM::QueryParam).size > 0»
+	   // Add query parameter(s) to request
+	   «ENDIF»
+	   
+    	«FOREACH this.getQueryParams() AS queryParam »
+    	«IF queryParam.type.isPrimitiveType() && queryParam.isMultivalued()==false»
+    	lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", String.valueOf(«queryParam.name»));
+    	«ELSE»
+    	if(«queryParam.name» != null) {
+    	«IF queryParam.type.isStringType()»
+    	lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «queryParam.name»);
+    	«ELSE»
+    	«IF queryParam.type.isAnyDateType()»
+    	lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «EXPAND DateConversion FOR queryParam»);
+    	«ELSE»
+    	lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «queryParam.name».toString());
+    	«ENDIF»
+    	«ENDIF»
+    	}
+    	«ENDIF»
+    	«ENDFOREACH»
+
+    	«FOREACH this.getBeanParams() AS beanParam»
+    		«IF beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::QueryParam).size > 0»
+    		if(«beanParam.name» != null) {
+    		«ENDIF»
+    		«FOREACH beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::QueryParam) AS queryParam»
+		    	«IF queryParam.type.isPrimitiveType() && queryParam.isMultivalued() == false»
+		    	lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", String.valueOf(«beanParam.name».«queryParam.asGetter()»()));
+		    	«ELSE»
+		    	if(«beanParam.name».«queryParam.asGetter()»() != null) {
+		    	«IF queryParam.type.isStringType()»
+		    	lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «beanParam.name».«queryParam.asGetter()»());
+		    	«ELSE»«IF queryParam.type.isAnyDateType()»
+		    	lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «EXPAND DateConversionForBeanParam(beanParam) FOR queryParam»);
+		    	«ELSE»
+		    	lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «beanParam.name».«queryParam.asGetter()»().toString());
+		    	«ENDIF»«ENDIF»
+		    	}
+		    	«ENDIF»
+    		«ENDFOREACH»
+    		«IF beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::QueryParam).size > 0»
+		    }
+    		«ENDIF»
+    	«ENDFOREACH»
+
+		«IF this.getHeaderParams().size > 0 || this.getBeanParams().type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam).size > 0»
+		// Set HTTP header(s)
+		«FOREACH this.getHeaderParams() AS headerParam»
+			«IF headerParam.type.isPrimitiveType() == false»
+			if («headerParam.name» != null) {
+			«ENDIF»
+			lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", «EXPAND HeaderParamValueAccessor FOR headerParam»);
+			«IF headerParam.type.isPrimitiveType() == false»
+			}
+			else {
+			lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", null);
+			}
+			«ENDIF»
+		«ENDFOREACH»
+		«ENDIF»
+
+    	«FOREACH this.getBeanParams() AS beanParam»
+    		«IF beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam).size > 0»
+    		if(«beanParam.name» != null) {
+    		«ENDIF»
+    		«FOREACH beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam) AS headerParam»
+				«IF headerParam.type.isPrimitiveType() == false»
+				if («beanParam.name».«headerParam.asGetter()»() != null) {
+				«ENDIF»
+		    	lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", «EXPAND HeaderParamValueAccessorForBeanParam(beanParam) FOR headerParam»);
+				«IF headerParam.type.isPrimitiveType() == false»
+				}
+				else {
+				lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", null);
+				}
+				«ENDIF»
+    		«ENDFOREACH»
+    		«IF beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam).size > 0»
+    		}
+    		«ENDIF»
+    	«ENDFOREACH»
+    	
+    	«IF this.hasCookieParams()»
+	    	// Handle cookie parameters
+	    	«FOREACH this.getCookieParams() AS cookieParam»
+			lRequestBuilder.setCookie("«cookieParam.getRESTCookieParamName()»", «EXPAND CookieParamValueAccessor FOR cookieParam»);
+	    	«ENDFOREACH»
+	    	«FOREACH this.getBeanParams() AS beanParam»
+	    		«FOREACH beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::CookieParam) AS cookieParam»
+					lRequestBuilder.setCookie("«cookieParam.getRESTCookieParamName()»", «EXPAND CookieParamValueAccessorForBeanParam(beanParam) FOR cookieParam»);
+	    		«ENDFOREACH»
+	    	«ENDFOREACH»
+    	«ENDIF»
+	    
+	    «FOREACH this.getRequestBodyParameters() AS body»
+	    // Set parameter «body.name» as request body.
+	    lRequestBuilder.setBody(«body.name»);
+	    «ENDFOREACH»
+
+		«IF getReturnTypeName() != "void"»
+		// Execute request and return result.
+		«ELSE»
+		// Execute request.
+		«ENDIF»
+		com.anaptecs.jeaf.rest.executor.api.RESTRequest lRequest = lRequestBuilder.build();
+		
+		«IF getReturnTypeName() != "void"»
+			«IF this.getReturnResult().isMultivalued() == false»
+			return requestExecutor.executeSingleObjectResultRequest(lRequest, «this.getHTTPStatusCode()», «this.getReturnResult().type.fqn()».class);
+			«ELSE»
+		    «getReturnTypeName()» lResult = requestExecutor.executeCollectionResultRequest(lRequest, «this.getHTTPStatusCode()», «this.getReturnResult().getCollectionType()».class, «this.getReturnResult().type.fqn()».class);
+		    if (lResult == null) {
+		      lResult = «this.getReturnResult().getEmptyCollectionOperation()»;
+		    }
+		    return lResult;
+			«ENDIF»
+		«ELSE»
+		    requestExecutor.executeNoResultRequest(lRequest, «this.getHTTPStatusCode()»);
+		«ENDIF»
+	}
+«ENDDEFINE»
+
+
 
 «DEFINE HeaderParamValueAccessor FOR HeaderParam»
 	«IF type.isStringType()»

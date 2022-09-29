@@ -26,7 +26,6 @@ import org.springframework.stereotype.Service;
 import com.anaptecs.jeaf.rest.executor.api.ContentType;
 import com.anaptecs.jeaf.rest.executor.api.HttpMethod;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequest;
-import com.anaptecs.jeaf.rest.executor.api.RESTRequest.Builder;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
@@ -38,11 +37,10 @@ import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
-import com.anaptecs.spring.service.ProductService;
 import com.anaptecs.spring.service.RESTProductService;
 
 /**
- * Class implements a proxy for a REST Service. The proxy is implemented as Spring service. This way to developers it
+ * Class implements a proxy for an REST Service. The proxy is implemented as Spring services. This way to developers it
  * looks like a plain Spring Service.
  * 
  * This implementation deals with everything that is required to call the external REST service including the following
@@ -60,6 +58,12 @@ import com.anaptecs.spring.service.RESTProductService;
 @Service
 public class RESTProductServiceRESTProxy implements RESTProductService {
   /**
+   * REST request executor is used to send REST request to the proxied REST resource. Depending on the Spring
+   * configuration the matching implementation will be injected here.
+   */
+  private final RESTRequestExecutor requestExecutor;
+
+  /**
    * Initialize object.
    * 
    * @param pRequestExecutor Dependency on concrete {@link RESTRequestExecutor} implementation that should be used.
@@ -67,12 +71,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   public RESTProductServiceRESTProxy( RESTRequestExecutor pRequestExecutor ) {
     requestExecutor = pRequestExecutor;
   }
-
-  /**
-   * REST request executor is used to send REST request to the proxied REST resource. Depending on the Spring
-   * configuration the matching implementation will be injected here.
-   */
-  private final RESTRequestExecutor requestExecutor;
 
   /**
    * Operation returns all available product.
@@ -84,16 +82,14 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Override
   public List<Product> getProducts( int pMaxResultSize ) {
     // Create builder for GET request
-    Builder lRequestBuilder = RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
-
-    // Build URI of request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lRequestBuilder.setPath(lPathBuilder.toString());
-
     // Add query parameter(s) to request
     lRequestBuilder.addQueryParam("maxResult", String.valueOf(pMaxResultSize));
-
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     List<Product> lResult = requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, Product.class);
@@ -111,16 +107,14 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Override
   public Product getProduct( String pProductID ) {
     // Create builder for GET request
-    Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-
-    // Build URI of request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-
     lPathBuilder.append("/rest-products");
     lPathBuilder.append('/');
     lPathBuilder.append(pProductID);
     lRequestBuilder.setPath(lPathBuilder.toString());
-
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Product.class);
@@ -134,16 +128,14 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Override
   public boolean createProduct( Product pProduct ) {
     // Create builder for POST request
-    Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
-
-    // Build URI of request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.POST, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lRequestBuilder.setPath(lPathBuilder.toString());
-
-    // Convert parameter pProduct into request body.
+    // Set parameter pProduct as request body.
     lRequestBuilder.setBody(pProduct);
-
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Boolean.class);
@@ -157,16 +149,15 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Override
   public Sortiment getSortiment( Context pContext ) {
     // Create builder for GET request
-    Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-
-    // Build URI of request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lPathBuilder.append('/');
     lPathBuilder.append("sortiment/");
     lPathBuilder.append(pContext.getPathParam());
     lRequestBuilder.setPath(lPathBuilder.toString());
-
     // Add query parameter(s) to request
     if (pContext != null) {
       if (pContext.getQueryParam() != null) {
@@ -190,7 +181,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Handle cookie parameters
     lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
-
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Sortiment.class);
@@ -203,19 +193,17 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
    */
   @Override
   public ChannelCode createChannelCode( String pChannelCode ) {
-    // Create builder for GET request
-    Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
-
-    // Build URI of request
+    // Create builder for POST request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.POST, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lPathBuilder.append('/');
     lPathBuilder.append("ChannelCode");
     lRequestBuilder.setPath(lPathBuilder.toString());
-
-    // Convert parameter pChannelCode into request body.
+    // Set parameter pChannelCode as request body.
     lRequestBuilder.setBody(pChannelCode);
-
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, ChannelCode.class);
@@ -227,13 +215,12 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Override
   public void ping( ) {
     // Create builder for HEAD request
-    Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.HEAD, ContentType.JSON);
-
-    // Build URI of request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.HEAD, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lRequestBuilder.setPath(lPathBuilder.toString());
-
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 200);
@@ -245,15 +232,14 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Override
   public void testInit( ) {
     // Create builder for GET request
-    Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-
-    // Build URI of request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lPathBuilder.append('/');
     lPathBuilder.append("test-init");
     lRequestBuilder.setPath(lPathBuilder.toString());
-
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 200);
@@ -267,20 +253,19 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Override
   public List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode ) {
     // Create builder for GET request
-    Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-
-    // Build URI of request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lPathBuilder.append('/');
     lPathBuilder.append("currencies/");
     lPathBuilder.append(pChannelCode.getCode());
     lRequestBuilder.setPath(lPathBuilder.toString());
-
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    List<CurrencyCode> lResult = requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class,
-        CurrencyCode.class);
+    List<CurrencyCode> lResult =
+        requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, CurrencyCode.class);
     if (lResult == null) {
       lResult = Collections.emptyList();
     }
@@ -295,20 +280,19 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Override
   public List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode ) {
     // Create builder for GET request
-    Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-
-    // Build URI of request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lPathBuilder.append('/');
     lPathBuilder.append("async-currencies/");
     lPathBuilder.append(pChannelCode.getCode());
     lRequestBuilder.setPath(lPathBuilder.toString());
-
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    List<CurrencyCode> lResult = requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class,
-        CurrencyCode.class);
+    List<CurrencyCode> lResult =
+        requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, CurrencyCode.class);
     if (lResult == null) {
       lResult = Collections.emptyList();
     }
@@ -325,20 +309,18 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Override
   public String testParams( BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam ) {
     // Create builder for GET request
-    Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-
-    // Build URI of request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lPathBuilder.append('/');
     lPathBuilder.append("test-params");
     lRequestBuilder.setPath(lPathBuilder.toString());
-
     // Add query parameter(s) to request
     if (pLocaleQueryParam != null) {
       lRequestBuilder.addQueryParam("locale", pLocaleQueryParam.toString());
     }
-
     // Set HTTP header(s)
     if (pBigDecimalHeader != null) {
       lRequestBuilder.setHeader("Big-Header", pBigDecimalHeader.toString());
@@ -346,10 +328,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     else {
       lRequestBuilder.setHeader("Big-Header", null);
     }
-
     // Handle cookie parameters
     lRequestBuilder.setCookie("giveMeMoreCookies", String.valueOf(pIntCookieParam));
-
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
@@ -364,16 +344,15 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Override
   public void testEnumParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
     // Create builder for GET request
-    Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-
-    // Build URI of request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lPathBuilder.append('/');
     lPathBuilder.append("test-enum-params/");
     lPathBuilder.append(pChannelType);
     lRequestBuilder.setPath(lPathBuilder.toString());
-
     // Add query parameter(s) to request
     if (pTimeUnit != null) {
       lRequestBuilder.addQueryParam("timeUnit", pTimeUnit.toString());
@@ -381,7 +360,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     if (pExtensibleEnum != null) {
       lRequestBuilder.addQueryParam("extensibleEnum", pExtensibleEnum.toString());
     }
-
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 200);
@@ -396,15 +374,14 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Override
   public void testEnumHeaderParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
     // Create builder for GET request
-    Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-
-    // Build URI of request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lPathBuilder.append('/');
     lPathBuilder.append("test-enum-header-params");
     lRequestBuilder.setPath(lPathBuilder.toString());
-
     // Set HTTP header(s)
     if (pChannelType != null) {
       lRequestBuilder.setHeader("Channel-Type", pChannelType.toString());
@@ -424,7 +401,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     else {
       lRequestBuilder.setHeader("Extensible-Enum", null);
     }
-
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 200);
@@ -449,9 +425,9 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
       java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
     // Create builder for GET request
-    Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-
-    // Build URI of request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lPathBuilder.append('/');
@@ -466,8 +442,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       lRequestBuilder.addQueryParam("startTime", DateTimeFormatter.ISO_OFFSET_TIME.format(pStartTime));
     }
     if (pLocalStartTimestamp != null) {
-      lRequestBuilder.addQueryParam("localStartTimestamp", DateTimeFormatter.ISO_DATE_TIME.format(
-          pLocalStartTimestamp));
+      lRequestBuilder.addQueryParam("localStartTimestamp",
+          DateTimeFormatter.ISO_DATE_TIME.format(pLocalStartTimestamp));
     }
     if (pLocalStartTime != null) {
       lRequestBuilder.addQueryParam("localStartTime", DateTimeFormatter.ISO_TIME.format(pLocalStartTime));
@@ -492,7 +468,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     if (pSQLDate != null) {
       lRequestBuilder.addQueryParam("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pSQLDate));
     }
-
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 200);
@@ -506,16 +481,15 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Override
   public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
     // Create builder for GET request
-    Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-
-    // Build URI of request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lPathBuilder.append('/');
     lPathBuilder.append("test-date-query-params-beans/");
     lPathBuilder.append(pPath);
     lRequestBuilder.setPath(lPathBuilder.toString());
-
     // Add query parameter(s) to request
     if (pQueryParams != null) {
       if (pQueryParams.getOffsetDateTime() != null) {
@@ -556,7 +530,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
         lRequestBuilder.addQueryParam("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pQueryParams.getSqlDate()));
       }
     }
-
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 200);
@@ -580,18 +553,16 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   public void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
       java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
-
     // Create builder for GET request
-    Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-
-    // Build URI of request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lPathBuilder.append('/');
     lPathBuilder.append("test-date-header-params/");
     lPathBuilder.append(pPath);
     lRequestBuilder.setPath(lPathBuilder.toString());
-
     // Set HTTP header(s)
     if (pOffsetDateTime != null) {
       lRequestBuilder.setHeader("Offset-Date-Time", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pOffsetDateTime));
@@ -668,16 +639,15 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   @Override
   public void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
     // Create builder for GET request
-    Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-
-    // Build URI of request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lPathBuilder.append('/');
     lPathBuilder.append("test-date-header-params-beans/");
     lPathBuilder.append(pPath);
     lRequestBuilder.setPath(lPathBuilder.toString());
-
     // Set HTTP header(s)
     if (pHeaderParams != null) {
       if (pHeaderParams.getOffsetDateTime() != null) {
