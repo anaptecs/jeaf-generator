@@ -17,6 +17,8 @@ import com.anaptecs.jeaf.junit.openapi.base.serializers.ByteCodeTypeDeserializer
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ByteCodeTypeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ChannelCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ChannelCodeSerializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingTypeDeserializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingTypeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.CurrencyCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.CurrencyCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeDeserializer;
@@ -106,6 +108,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addSerializer(StringCodeType.class, new StringCodeTypeSerializer());
     lModule.addDeserializer(StringCodeType.class, new StringCodeTypeDeserializer());
     // Add serializers and deserializers for enumerations
+    lModule.addSerializer(ComplexBookingType.class, new ComplexBookingTypeSerializer());
+    lModule.addDeserializer(ComplexBookingType.class, new ComplexBookingTypeDeserializer());
     lModule.addSerializer(ExtensibleEnum.class, new ExtensibleEnumSerializer());
     lModule.addDeserializer(ExtensibleEnum.class, new ExtensibleEnumDeserializer());
     // Return created module.
