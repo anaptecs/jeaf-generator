@@ -9,9 +9,9 @@
 «IMPORT JMM»
 
 «DEFINE RESTResourceClass FOR RESTResource»
-«FILE packagePath()+"/"+name+"Resource.java" src_gen»
+«FILE packagePath()+"/resource/"+name+"Resource.java" src_gen»
 «getFileHeader()»
-package «packageName()»;
+package «packageName()».resource;
 
 «this.getJavadoc()»
 «IF isRESTLibrarySpringWebMVC()»
@@ -39,23 +39,43 @@ package «packageName()»;
 «EXPAND java::Helper::GenerateDeprecationAnnotation -»
 public class «name»Resource {
 	«IF isTargetRuntimeJEAF() == false»
-	@javax.inject.Inject
-	private «this.fqn()» «name.toFirstLower()»;
+	«ENDIF»
+	«IF isTargetRuntimeSpring()»
+	  /**
+	   * All request to this class will be delegated to {@link «this.fqn()»}.
+	   */
+		«IF isRESTLibrarySpringWebMVC()»
+			/**
+			 * Initialize object.
+			 * 
+			 * @param p«name» Dependency on concrete {@link «this.fqn()»} implementation that should be used.
+			 */
+			«name»Resource( «this.fqn()» p«name» ) {
+			  «name.toFirstLower()» = p«name»;
+			}
+			
+			/**
+			 * All request to this class will be delegated to {@link «this.fqn()»}.
+			 */
+			private final «this.fqn()» «name.toFirstLower()»;
+		«ENDIF»
+		«IF isRESTLibraryJAXRS()»
+			@javax.inject.Inject
+			private «this.fqn()» «name.toFirstLower()»;
+		«ENDIF»
 	«ENDIF»
 	«EXPAND RESTOperationImpl FOREACH ownedOperation.typeSelect(RESTOperation)»
 	
-	/**
-	 * Method returns reference to service to which all REST requests will be delegated.
-	 *
-	 * @return «this.name» Service instance to which all requests will be delegated.
-	 */
-	private «this.fqn()» get«name»() {
-	  «IF isTargetRuntimeJEAF()»
-	  return com.anaptecs.jeaf.core.api.JEAF.getService(«this.fqn()».class);
-	  «ELSE»
-	  return «name.toFirstLower()»;
-	  «ENDIF»
-	}
+	«IF isTargetRuntimeJEAF()»
+		/**
+		 * Method returns reference to service to which all REST requests will be delegated.
+		 *
+		 * @return «this.name» Service instance to which all requests will be delegated.
+		 */
+		private «this.fqn()» get«name»() {
+		  return com.anaptecs.jeaf.core.api.JEAF.getService(«this.fqn()».class);
+		}
+	«ENDIF»
 }
 «ENDFILE»
 «ENDDEFINE»
@@ -91,13 +111,25 @@ public class «name»Resource {
 	  	«ENDFOREACH»
 	  «ENDIF»
 
-	  «this.getOwningClass().fqn()» lService = this.get«this.getOwningClass().name»();
-	  «IF getReturnTypeName() != "void"»
-	  «getReturnTypeName()» lResult = lService.«this.name»(«this.asParameterListNames()»);
-	  return javax.ws.rs.core.Response.status(«EXPAND StatusCode»).entity(lResult).build();
-	  «ELSE»
-	  lService.«this.name»(«this.asParameterListNames()»);
-	  return javax.ws.rs.core.Response.status(«EXPAND StatusCode»).build();
+      // Delegate request to service.
+      «IF isTargetRuntimeJEAF()»
+		  «this.getOwningClass().fqn()» lService = this.get«this.getOwningClass().name»();
+		  «IF getReturnTypeName() != "void"»
+		  «getReturnTypeName()» lResult = lService.«this.name»(«this.asParameterListNames()»);
+		  return javax.ws.rs.core.Response.status(«EXPAND StatusCode»).entity(lResult).build();
+		  «ELSE»
+		  lService.«this.name»(«this.asParameterListNames()»);
+		  return javax.ws.rs.core.Response.status(«EXPAND StatusCode»).build();
+		  «ENDIF»
+	  «ENDIF»
+      «IF isTargetRuntimeSpring()»
+		  «IF getReturnTypeName() != "void"»
+		  «getReturnTypeName()» lResult = «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+		  return javax.ws.rs.core.Response.status(«EXPAND StatusCode»).entity(lResult).build();
+		  «ELSE»
+		  «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+		  return javax.ws.rs.core.Response.status(«EXPAND StatusCode»).build();
+		  «ENDIF»
 	  «ENDIF»
 	}
 «ENDDEFINE»
@@ -131,12 +163,11 @@ public class «name»Resource {
 	    «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
 	  	«ENDFOREACH»
 	  «ENDIF»
-      // Get Spring service and delegate call.
-	  «this.getOwningClass().fqn()» lService = this.get«this.getOwningClass().name»();
+      // Delegate request to service.
 	  «IF getReturnTypeName() != "void"»
-	  return lService.«this.name»(«this.asParameterListNames()»);
+	  return «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
 	  «ELSE»
-	  lService.«this.name»(«this.asParameterListNames()»);
+	  «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
 	  «ENDIF»
 	}
 «ENDDEFINE»
@@ -159,8 +190,10 @@ public class «name»Resource {
 	    String lEndpointURL = pRequest.getServletPath() + pRequest.getPathInfo();
 	    com.anaptecs.jeaf.workload.api.rest.RESTRequestType lRequestInfo = new com.anaptecs.jeaf.workload.api.rest.RESTRequestType(lEndpointURL, pRequest.getMethod());
 
+     	«IF isTargetRuntimeJEAF()»
      	// Lookup service that will be called later during async processing of the request
      	«this.getOwningClass().fqn()» lService = this.get«this.getOwningClass().name»();
+     	«ENDIF»
      	
 	    // Hand over current request to workload manager. Depending on its strategy and the current workload the request will be either be directly executed, first queued or rejected.
 	    lWorkloadManager.execute(lRequestInfo, new com.anaptecs.jeaf.workload.api.rest.RESTWorkloadErrorHandler(pAsyncResponse), new Runnable() {
@@ -173,13 +206,25 @@ public class «name»Resource {
 					    «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
 					  	«ENDFOREACH»
 					«ENDIF»
-					«IF getReturnTypeName() != "void"»
-					«getReturnTypeName()» lResult = lService.«this.name»(«this.asParameterListNames()»);
-					javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response.status(«EXPAND StatusCode»).entity(lResult).build();
-					«ELSE»
-					lService.«this.name»(«this.asParameterListNames()»);
-					javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response.ok().status(«EXPAND StatusCode»).build();
+					«IF isTargetRuntimeJEAF()»
+						«IF getReturnTypeName() != "void"»
+						«getReturnTypeName()» lResult = lService.«this.name»(«this.asParameterListNames()»);
+						javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response.status(«EXPAND StatusCode»).entity(lResult).build();
+						«ELSE»
+						lService.«this.name»(«this.asParameterListNames()»);
+						javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response.ok().status(«EXPAND StatusCode»).build();
+						«ENDIF»
 					«ENDIF»
+					«IF isTargetRuntimeSpring()»
+						«IF getReturnTypeName() != "void"»
+						«getReturnTypeName()» lResult = «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+						javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response.status(«EXPAND StatusCode»).entity(lResult).build();
+						«ELSE»
+						«this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+						javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response.ok().status(«EXPAND StatusCode»).build();
+						«ENDIF»
+					«ENDIF»
+					
 			
 					// Due to the asynchronous processing of the requests, the response can not be returned as return value. Therefore we make use of the defined JAX-RS mechanisms.
 					pAsyncResponse.resume(lResponseObject);

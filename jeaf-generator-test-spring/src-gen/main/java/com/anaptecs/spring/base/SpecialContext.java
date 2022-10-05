@@ -18,9 +18,19 @@ public class SpecialContext extends Context {
   public static final String SPECIFICHEADER = "specificHeader";
 
   /**
+   * Constant for the name of attribute "channelType".
+   */
+  public static final String CHANNELTYPE = "channelType";
+
+  /**
    * 
    */
   private String specificHeader;
+
+  /**
+   * 
+   */
+  private ChannelType channelType;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -39,6 +49,7 @@ public class SpecialContext extends Context {
     super(pBuilder);
     // Read attribute values from builder.
     specificHeader = pBuilder.specificHeader;
+    channelType = pBuilder.channelType;
   }
 
   /**
@@ -72,6 +83,11 @@ public class SpecialContext extends Context {
     private String specificHeader;
 
     /**
+     * 
+     */
+    private ChannelType channelType;
+
+    /**
      * Use {@link SpecialContext#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -86,6 +102,7 @@ public class SpecialContext extends Context {
       if (pObject != null) {
         // Read attribute values from passed object.
         specificHeader = pObject.specificHeader;
+        channelType = pObject.channelType;
       }
     }
 
@@ -181,6 +198,17 @@ public class SpecialContext extends Context {
     }
 
     /**
+     * Method sets the attribute "channelType".
+     * 
+     * @param pChannelType Value to which the attribute "channelType" should be set.
+     */
+    public Builder setChannelType( ChannelType pChannelType ) {
+      // Assign value to attribute
+      channelType = pChannelType;
+      return this;
+    }
+
+    /**
      * Method creates a new instance of class SpecialContext. The object will be initialized with the values of the
      * builder.
      * 
@@ -213,6 +241,27 @@ public class SpecialContext extends Context {
   }
 
   /**
+   * Method returns the attribute "channelType".
+   * 
+   * 
+   * @return ChannelType Value to which the attribute "channelType" is set.
+   */
+  public ChannelType getChannelType( ) {
+    return channelType;
+  }
+
+  /**
+   * Method sets the attribute "channelType".
+   * 
+   * 
+   * @param pChannelType Value to which the attribute "channelType" should be set.
+   */
+  public void setChannelType( ChannelType pChannelType ) {
+    // Assign value to attribute
+    channelType = pChannelType;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -222,6 +271,9 @@ public class SpecialContext extends Context {
     StringBuilder lBuilder = super.toStringBuilder();
     lBuilder.append("specificHeader: ");
     lBuilder.append(specificHeader);
+    lBuilder.append('\n');
+    lBuilder.append("channelType: ");
+    lBuilder.append(channelType);
     lBuilder.append('\n');
     return lBuilder;
   }

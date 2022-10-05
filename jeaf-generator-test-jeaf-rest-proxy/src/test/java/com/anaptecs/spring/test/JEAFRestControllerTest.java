@@ -387,7 +387,7 @@ public class JEAFRestControllerTest {
       assertTrue(e.getMessage().endsWith("1804] REST call returned problem JSON (http status code: 500)"));
       assertEquals(MismatchedInputException.class, e.getCause().getClass());
       Problem lProblem = e.getProblem();
-      assertEquals("GET http://localhost:8099/rest-products/json-problem", lProblem.getType());
+      assertEquals("http://localhost:8099/rest-products/json-problem", lProblem.getType());
       assertEquals("Internal Server Error", lProblem.getTitle());
       assertEquals(500, lProblem.getStatus());
       assertTrue(lProblem.getDetail().startsWith(
@@ -404,7 +404,7 @@ public class JEAFRestControllerTest {
       assertTrue(e.getMessage().endsWith("1804] REST call returned problem JSON (http status code: 500)"));
       assertEquals(SocketTimeoutException.class, e.getCause().getClass());
       Problem lProblem = e.getProblem();
-      assertEquals("GET http://localhost:8099/rest-products/timeout", lProblem.getType());
+      assertEquals("http://localhost:8099/rest-products/timeout", lProblem.getType());
       assertEquals("Internal Server Error", lProblem.getTitle());
       assertEquals(500, lProblem.getStatus());
       assertEquals("Read timed out", lProblem.getDetail());

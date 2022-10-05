@@ -2,7 +2,7 @@ openapi: 3.0.3
 
 info:
   title: Product Services
-  version: 1.6.60-SNAPSHOT
+  version: 1.6.61-SNAPSHOT
   description: >-
     This component represents the OpenAPI interface of the accounting service.
     
@@ -78,10 +78,13 @@ paths:
             Yet-Another-Header:
               schema:
                 type: boolean
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
     post:
       tags:
@@ -107,20 +110,26 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
     head:
       operationId: ping
       responses:
+    
         '204':
           $ref: '#/components/responses/NoContentResponse'
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/{id}:
     get:
@@ -150,10 +159,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/sortiment/{id}:
     get:
@@ -203,10 +215,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/ChannelCode:
     post:
@@ -244,10 +259,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/deprecated/operation:
     get:
@@ -266,10 +284,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/deprecated/context:
     post:
@@ -310,10 +331,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/deprecated/beanParams:
     post:
@@ -336,10 +360,13 @@ paths:
           schema:
             type: string
       responses:
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/deprecated/params:
     post:
@@ -366,10 +393,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/deprecated/body:
     post:
@@ -394,10 +424,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/deprecated/complexBody:
     post:
@@ -414,10 +447,13 @@ paths:
             schema:
               $ref: '../base/product-base.yml#/components/schemas/Product'
       responses:
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/deprecated/complexReturn:
     get:
@@ -436,10 +472,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/specific/{id}:
     patch:
@@ -479,10 +518,13 @@ paths:
           schema:
             type: string
       responses:
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/ChannelCodeObject:
     post:
@@ -514,10 +556,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/currencies:
     post:
@@ -562,10 +607,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/currencies/valid:
     post:
@@ -605,10 +653,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/codeTypeUsages:
     post:
@@ -632,10 +683,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/LocalBeanParam:
     get:
@@ -656,10 +710,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/ExternalBeanParam:
     get:
@@ -680,10 +737,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/ChildBeanParam:
     get:
@@ -705,10 +765,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/IBAN:
     post:
@@ -733,10 +796,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/channels:
     get:
@@ -766,10 +832,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/DefaultChannel:
     get:
@@ -795,10 +864,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/currencies/{channelCode}:
     get:
@@ -833,10 +905,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/async-currencies/{channelCode}:
     get:
@@ -871,10 +946,13 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/test-date-query-params/{path}:
     get:
@@ -946,10 +1024,13 @@ paths:
             type: string
             format: date
       responses:
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
   /products/test-date-query-params-beans/{path}:
     get:
@@ -1021,10 +1102,13 @@ paths:
           schema:
             type: string
       responses:
+    
+    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+    
 
 
 security:

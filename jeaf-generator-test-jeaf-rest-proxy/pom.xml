@@ -38,7 +38,12 @@
 		    <version>1.1.1</version>
 		</dependency>
 		
-
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-request-executor-service-provider</artifactId>
+			<version>${jeaf.rest.api.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>com.anaptecs.jeaf.json</groupId>
 			<artifactId>jeaf-json-problem</artifactId>
@@ -57,19 +62,13 @@
 			<version>${junit.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5 -->
 		<dependency>
-			<groupId>org.apache.httpcomponents.client5</groupId>
-			<artifactId>httpclient5</artifactId>
-			<version>${apache.httpclient5.version}</version>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-request-executor-apache-jeaf</artifactId>
+			<version>${jeaf.rest.impl.version}</version>
+			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>io.github.resilience4j</groupId>
-			<artifactId>resilience4j-circuitbreaker</artifactId>
-			<version>${resilience4j.version}</version>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>com.anaptecs.jeaf.x-fun</groupId>
 			<artifactId>jeaf-x-fun-default-runtime</artifactId>

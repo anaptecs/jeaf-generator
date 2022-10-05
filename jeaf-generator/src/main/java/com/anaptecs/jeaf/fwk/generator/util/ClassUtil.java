@@ -342,6 +342,34 @@ public class ClassUtil {
     return lReturnValue;
   }
 
+  public static String getEmptyCollectionOperation( MultiplicityElement lMultiplicityElement ) {
+    String lReturnValue;
+    final String lPrefix = "java.util.Collections.";
+    if (lMultiplicityElement.isMultivalued()) {
+      // Type is not unique and not ordered -> Collection
+      if (lMultiplicityElement.isUnique() == false && lMultiplicityElement.isOrdered() == false) {
+        lReturnValue = lPrefix + "emptyList()";
+      }
+      // Type is unique but not ordered.
+      else if (lMultiplicityElement.isUnique() == true && lMultiplicityElement.isOrdered() == false) {
+        lReturnValue = lPrefix + "emptySet()";
+      }
+      // Type is not unique but ordered.
+      else if (lMultiplicityElement.isUnique() == false && lMultiplicityElement.isOrdered() == true) {
+        lReturnValue = lPrefix + "emptyList()";
+      }
+      // Type is unique and ordered.
+      else {
+        lReturnValue = lPrefix + "emptySortedSet()";
+      }
+    }
+    // Singular type.
+    else {
+      lReturnValue = "";
+    }
+    return lReturnValue;
+  }
+
   /**
    * Returns the name of the parameters type. Checks if the parameter is multiple. If it is, "[]" us added.
    * 

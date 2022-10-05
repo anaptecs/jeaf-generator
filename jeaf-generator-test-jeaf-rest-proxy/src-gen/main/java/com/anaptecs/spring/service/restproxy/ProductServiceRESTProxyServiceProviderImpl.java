@@ -20,25 +20,19 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-import org.apache.hc.client5.http.cookie.BasicCookieStore;
-import org.apache.hc.client5.http.impl.cookie.BasicClientCookie;
-import org.apache.hc.client5.http.protocol.HttpClientContext;
-import org.apache.hc.core5.http.ClassicHttpRequest;
-import org.apache.hc.core5.http.ContentType;
-import org.apache.hc.core5.http.HttpHeaders;
-import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
-import org.apache.hc.core5.http.protocol.BasicHttpContext;
-import org.apache.hc.core5.http.protocol.HttpContext;
-
+import com.anaptecs.jeaf.core.annotations.JEAFServiceProvider;
 import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
-import com.anaptecs.jeaf.json.api.JSONTools;
+import com.anaptecs.jeaf.rest.executor.api.ContentType;
+import com.anaptecs.jeaf.rest.executor.api.HttpMethod;
+import com.anaptecs.jeaf.rest.executor.api.RESTRequest;
+import com.anaptecs.jeaf.rest.executor.api.jeaf.RESTRequestExecutorServiceProvider;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
-import com.anaptecs.jeaf.xfun.api.config.Configuration;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
+import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DeprecatedContext;
@@ -52,6 +46,7 @@ import com.anaptecs.spring.service.ChildBeanParameterType;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.LocalBeanParamType;
+import com.anaptecs.spring.service.ProductService;
 
 /**
  * Class implements a service provider that acts as proxy for REST service ProductService.
@@ -72,24 +67,18 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * Reference to object holding all the required configuration values to delegate request to external REST service.
+   * REST request executor is used to send REST request to the proxied REST resource. Depending on the Spring
+   * configuration the matching implementation will be injected here.
    */
-  private ProductServiceConfiguration configuration;
-
-  /**
-   * HTTP client is used to handle communication to REST service.
-   */
-  private ProductServiceHttpClient httpClient;
+  @JEAFServiceProvider
+  private RESTRequestExecutorServiceProvider requestExecutor;
 
   /**
    * Determine configuration of the service provider implementation and initialize httpo client to call REST service.
    */
   @Override
   public void initialize( ) {
-    // Initialize configuration and http client.
-    Configuration lComponentConfiguration = XFun.getConfigurationProvider().getComponentConfiguration(COMPONENT_ID);
-    configuration = new ProductServiceConfiguration(lComponentConfiguration);
-    httpClient = new ProductServiceHttpClient(configuration);
+    // Nothing to do.
   }
 
   /**
@@ -99,7 +88,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
    */
   @Override
   public HealthCheckResult check( CheckLevel pLevel ) {
-    return httpClient.check(pLevel);
+    return null;
   }
 
   /**
@@ -111,17 +100,14 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public List<Product> getProducts( ) {
     // Create builder for GET request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    List<Product> lResult = httpClient.executeCollectionResultRequest(lRequest, null, 200, List.class, Product.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    List<Product> lResult = requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, Product.class);
     if (lResult == null) {
       lResult = Collections.emptyList();
     }
@@ -136,19 +122,16 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public Product getProduct( String pProductID ) {
     // Create builder for GET request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append(pProductID);
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append(pProductID);
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, Product.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Product.class);
   }
 
   /**
@@ -159,20 +142,16 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public boolean createProduct( Product pProduct ) {
     // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pProduct into request body.
-    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pProduct);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set parameter pProduct as request body.
+    lRequestBuilder.setBody(pProduct);
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, Boolean.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Boolean.class);
   }
 
   /**
@@ -183,23 +162,21 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public Sortiment getSortiment( Context pContext ) {
     // Create builder for GET request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("sortiment/");
-    lURIBuilder.append(pContext.getPathParam());
-    lRequestBuilder.setUri(lURIBuilder.toString());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("sortiment/");
+    lPathBuilder.append(pContext.getPathParam());
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pContext != null) {
       if (pContext.getQueryParam() != null) {
-        lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+        lRequestBuilder.addQueryParam("q1", pContext.getQueryParam());
       }
     }
     // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     if (pContext != null) {
       if (pContext.getAccessToken() != null) {
         lRequestBuilder.setHeader("token", pContext.getAccessToken());
@@ -216,22 +193,12 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       }
     }
     // Handle cookie parameters
-    BasicCookieStore lCookieStore = new BasicCookieStore();
-    HttpContext lLocalContext = new BasicHttpContext();
-    lLocalContext.setAttribute(HttpClientContext.COOKIE_STORE, lCookieStore);
-    BasicClientCookie lResellerCookie = new BasicClientCookie("reseller", String.valueOf(pContext.getResellerID()));
-    String lCookieDomain = configuration.getCookieDomain();
-    if (lCookieDomain != null) {
-      lResellerCookie.setDomain(lCookieDomain);
+    if (pContext != null) {
+      lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
     }
-    String lCookiePath = configuration.getCookiePath();
-    if (lCookiePath != null) {
-      lResellerCookie.setPath(lCookiePath);
-    }
-    lCookieStore.addCookie(lResellerCookie);
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, lLocalContext, 200, Sortiment.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Sortiment.class);
   }
 
   /**
@@ -242,22 +209,18 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public ChannelCode createChannelCode( String pChannelCode ) {
     // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("ChannelCode");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pChannelCode into request body.
-    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pChannelCode);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("ChannelCode");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set parameter pChannelCode as request body.
+    lRequestBuilder.setBody(pChannelCode);
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, ChannelCode.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, ChannelCode.class);
   }
 
   /**
@@ -266,17 +229,14 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public void ping( ) {
     // Create builder for HEAD request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.head();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.HEAD, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+    RESTRequest lRequest = lRequestBuilder.build();
+    requestExecutor.executeNoResultRequest(lRequest, 200);
   }
 
   /**
@@ -287,19 +247,16 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public String deprecatedOperation( ) {
     // Create builder for GET request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("deprecated/operation");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("deprecated/operation");
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
   }
 
   /**
@@ -310,22 +267,20 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public String deprecatedContext( DeprecatedContext pContext ) {
     // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("deprecated/context");
-    lRequestBuilder.setUri(lURIBuilder.toString());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("deprecated/context");
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pContext != null) {
       if (pContext.getQueryParam() != null) {
-        lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+        lRequestBuilder.addQueryParam("q1", pContext.getQueryParam());
       }
     }
     // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     if (pContext != null) {
       if (pContext.getAccessToken() != null) {
         lRequestBuilder.setHeader("token", pContext.getAccessToken());
@@ -342,22 +297,12 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       }
     }
     // Handle cookie parameters
-    BasicCookieStore lCookieStore = new BasicCookieStore();
-    HttpContext lLocalContext = new BasicHttpContext();
-    lLocalContext.setAttribute(HttpClientContext.COOKIE_STORE, lCookieStore);
-    BasicClientCookie lResellerCookie = new BasicClientCookie("reseller", String.valueOf(pContext.getResellerID()));
-    String lCookieDomain = configuration.getCookieDomain();
-    if (lCookieDomain != null) {
-      lResellerCookie.setDomain(lCookieDomain);
+    if (pContext != null) {
+      lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
     }
-    String lCookiePath = configuration.getCookiePath();
-    if (lCookiePath != null) {
-      lResellerCookie.setPath(lCookiePath);
-    }
-    lCookieStore.addCookie(lResellerCookie);
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, lLocalContext, 200, String.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
   }
 
   /**
@@ -367,22 +312,20 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public void deprecatedBeanParam( BeanParameter pBeanParam ) {
     // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("deprecated/beanParams");
-    lRequestBuilder.setUri(lURIBuilder.toString());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("deprecated/beanParams");
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pBeanParam != null) {
       if (pBeanParam.getOldStyle() != null) {
-        lRequestBuilder.addParameter("q2", pBeanParam.getOldStyle());
+        lRequestBuilder.addQueryParam("q2", pBeanParam.getOldStyle());
       }
     }
     // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     if (pBeanParam != null) {
       if (pBeanParam.getAccessToken() != null) {
         lRequestBuilder.setHeader("token", pBeanParam.getAccessToken());
@@ -399,8 +342,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       }
     }
     // Execute request.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+    RESTRequest lRequest = lRequestBuilder.build();
+    requestExecutor.executeNoResultRequest(lRequest, 200);
   }
 
   /**
@@ -412,20 +355,18 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public String deprecatedParams( @Deprecated int pParam1 ) {
     // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("deprecated/params");
-    lRequestBuilder.setUri(lURIBuilder.toString());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("deprecated/params");
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     lRequestBuilder.setHeader("param1", String.valueOf(pParam1));
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
   }
 
   /**
@@ -436,22 +377,18 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public String deprecatedBody( @Deprecated String pBody ) {
     // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("deprecated/body");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pBody into request body.
-    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pBody);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("deprecated/body");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set parameter pBody as request body.
+    lRequestBuilder.setBody(pBody);
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
   }
 
   /**
@@ -464,22 +401,18 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public void deprectedComplexRequestBody( @Deprecated Product pProduct ) {
     // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("deprecated/complexBody");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pProduct into request body.
-    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pProduct);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("deprecated/complexBody");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set parameter pProduct as request body.
+    lRequestBuilder.setBody(pProduct);
     // Execute request.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+    RESTRequest lRequest = lRequestBuilder.build();
+    requestExecutor.executeNoResultRequest(lRequest, 200);
   }
 
   /**
@@ -490,19 +423,16 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public Product deprecatedComplexReturn( ) {
     // Create builder for GET request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("deprecated/complexReturn");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("deprecated/complexReturn");
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, Product.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Product.class);
   }
 
   /**
@@ -512,23 +442,21 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public void loadSpecificThings( SpecialContext pContext ) {
     // Create builder for PATCH request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.patch();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("specific/");
-    lURIBuilder.append(pContext.getPathParam());
-    lRequestBuilder.setUri(lURIBuilder.toString());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.PATCH, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("specific/");
+    lPathBuilder.append(pContext.getPathParam());
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pContext != null) {
       if (pContext.getQueryParam() != null) {
-        lRequestBuilder.addParameter("q1", pContext.getQueryParam());
+        lRequestBuilder.addQueryParam("q1", pContext.getQueryParam());
       }
     }
     // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     if (pContext != null) {
       if (pContext.getAccessToken() != null) {
         lRequestBuilder.setHeader("token", pContext.getAccessToken());
@@ -551,22 +479,16 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       }
     }
     // Handle cookie parameters
-    BasicCookieStore lCookieStore = new BasicCookieStore();
-    HttpContext lLocalContext = new BasicHttpContext();
-    lLocalContext.setAttribute(HttpClientContext.COOKIE_STORE, lCookieStore);
-    BasicClientCookie lResellerCookie = new BasicClientCookie("reseller", String.valueOf(pContext.getResellerID()));
-    String lCookieDomain = configuration.getCookieDomain();
-    if (lCookieDomain != null) {
-      lResellerCookie.setDomain(lCookieDomain);
+    if (pContext != null) {
+      lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
+      if (pContext.getChannelType() != null) {
+        lRequestBuilder.setCookie("Channel-Type", XFun.getDatatypeConverterRegistry()
+            .getConverter(ChannelType.class, String.class).convert(pContext.getChannelType()));
+      }
     }
-    String lCookiePath = configuration.getCookiePath();
-    if (lCookiePath != null) {
-      lResellerCookie.setPath(lCookiePath);
-    }
-    lCookieStore.addCookie(lResellerCookie);
     // Execute request.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    httpClient.executeNoResponseContentRequest(lRequest, lLocalContext, 200);
+    RESTRequest lRequest = lRequestBuilder.build();
+    requestExecutor.executeNoResultRequest(lRequest, 200);
   }
 
   /**
@@ -579,22 +501,18 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode ) {
     // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("ChannelCodeObject");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pChannelCode into request body.
-    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pChannelCode);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("ChannelCodeObject");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set parameter pChannelCode as request body.
+    lRequestBuilder.setBody(pChannelCode);
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, ChannelCode.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, ChannelCode.class);
   }
 
   /**
@@ -605,23 +523,19 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies ) {
     // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("currencies");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pCurrencies into request body.
-    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pCurrencies);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("currencies");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set parameter pCurrencies as request body.
+    lRequestBuilder.setBody(pCurrencies);
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
+    RESTRequest lRequest = lRequestBuilder.build();
     List<CurrencyCode> lResult =
-        httpClient.executeCollectionResultRequest(lRequest, null, 200, List.class, CurrencyCode.class);
+        requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, CurrencyCode.class);
     if (lResult == null) {
       lResult = Collections.emptyList();
     }
@@ -636,22 +550,18 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public CurrencyCode isCurrencySupported( CurrencyCode pCurrency ) {
     // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("currencies/valid");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pCurrency into request body.
-    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pCurrency);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("currencies/valid");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set parameter pCurrency as request body.
+    lRequestBuilder.setBody(pCurrency);
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, CurrencyCode.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, CurrencyCode.class);
   }
 
   /**
@@ -662,22 +572,18 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode ) {
     // Create builder for POST request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.post();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("codeTypeUsages");
-    lRequestBuilder.setUri(lURIBuilder.toString());
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
-    // Convert parameter pStringCode into request body.
-    String lRequestBody = JSONTools.getJSONTools().writeObjectToString(pStringCode);
-    lRequestBuilder.setEntity(lRequestBody, ContentType.APPLICATION_JSON);
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("codeTypeUsages");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set parameter pStringCode as request body.
+    lRequestBuilder.setBody(pStringCode);
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, IntegerCodeType.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, IntegerCodeType.class);
   }
 
   /**
@@ -688,16 +594,14 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public String testLocalBeanParamType( LocalBeanParamType pBeanParam ) {
     // Create builder for GET request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("LocalBeanParam");
-    lRequestBuilder.setUri(lURIBuilder.toString());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("LocalBeanParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     if (pBeanParam != null) {
       if (pBeanParam.getLocalKey() != null) {
         lRequestBuilder.setHeader("localKey", pBeanParam.getLocalKey());
@@ -713,8 +617,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       }
     }
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
   }
 
   /**
@@ -725,16 +629,14 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public String testExternalBeanParameterType( ParentBeanParamType pParent ) {
     // Create builder for GET request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("ExternalBeanParam");
-    lRequestBuilder.setUri(lURIBuilder.toString());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("ExternalBeanParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     if (pParent != null) {
       if (pParent.getNovaKey() != null) {
         lRequestBuilder.setHeader("novaKey", pParent.getNovaKey());
@@ -750,8 +652,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       }
     }
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
   }
 
   /**
@@ -762,16 +664,14 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public String testChildBeanParameter( ChildBeanParameterType pChild ) {
     // Create builder for GET request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("ChildBeanParam");
-    lRequestBuilder.setUri(lURIBuilder.toString());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("ChildBeanParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     if (pChild != null) {
       if (pChild.getNovaKey() != null) {
         lRequestBuilder.setHeader("novaKey", pChild.getNovaKey());
@@ -793,8 +693,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       }
     }
     // Execute request and return result.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    return httpClient.executeSingleObjectResultRequest(lRequest, null, 200, String.class);
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
   }
 
   /**
@@ -816,53 +716,51 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
       java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
     // Create builder for GET request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("test-date-query-params/");
-    lURIBuilder.append(pPath);
-    lRequestBuilder.setUri(lURIBuilder.toString());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("test-date-query-params/");
+    lPathBuilder.append(pPath);
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pStartTimestamp != null) {
-      lRequestBuilder.addParameter("startTimestamp", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pStartTimestamp));
+      lRequestBuilder.addQueryParam("startTimestamp", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pStartTimestamp));
     }
     if (pStartTime != null) {
-      lRequestBuilder.addParameter("startTime", DateTimeFormatter.ISO_OFFSET_TIME.format(pStartTime));
+      lRequestBuilder.addQueryParam("startTime", DateTimeFormatter.ISO_OFFSET_TIME.format(pStartTime));
     }
     if (pLocalStartTimestamp != null) {
-      lRequestBuilder.addParameter("localStartTimestamp", DateTimeFormatter.ISO_DATE_TIME.format(pLocalStartTimestamp));
+      lRequestBuilder.addQueryParam("localStartTimestamp",
+          DateTimeFormatter.ISO_DATE_TIME.format(pLocalStartTimestamp));
     }
     if (pLocalStartTime != null) {
-      lRequestBuilder.addParameter("localStartTime", DateTimeFormatter.ISO_TIME.format(pLocalStartTime));
+      lRequestBuilder.addQueryParam("localStartTime", DateTimeFormatter.ISO_TIME.format(pLocalStartTime));
     }
     if (pLocalStartDate != null) {
-      lRequestBuilder.addParameter("localStartDate", DateTimeFormatter.ISO_DATE.format(pLocalStartDate));
+      lRequestBuilder.addQueryParam("localStartDate", DateTimeFormatter.ISO_DATE.format(pLocalStartDate));
     }
     if (pCalendar != null) {
-      lRequestBuilder.addParameter("calendar",
+      lRequestBuilder.addQueryParam("calendar",
           new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pCalendar.getTime()));
     }
     if (pUtilDate != null) {
-      lRequestBuilder.addParameter("utilDate", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pUtilDate));
+      lRequestBuilder.addQueryParam("utilDate", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pUtilDate));
     }
     if (pSQLTimestamp != null) {
-      lRequestBuilder.addParameter("sqlTimestamp",
+      lRequestBuilder.addQueryParam("sqlTimestamp",
           new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pSQLTimestamp));
     }
     if (pSQLTime != null) {
-      lRequestBuilder.addParameter("sqlTime", new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pSQLTime));
+      lRequestBuilder.addQueryParam("sqlTime", new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pSQLTime));
     }
     if (pSQLDate != null) {
-      lRequestBuilder.addParameter("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pSQLDate));
+      lRequestBuilder.addQueryParam("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pSQLDate));
     }
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+    RESTRequest lRequest = lRequestBuilder.build();
+    requestExecutor.executeNoResultRequest(lRequest, 200);
   }
 
   /**
@@ -873,60 +771,57 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
     // Create builder for GET request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("test-date-query-params-beans/");
-    lURIBuilder.append(pPath);
-    lRequestBuilder.setUri(lURIBuilder.toString());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("test-date-query-params-beans/");
+    lPathBuilder.append(pPath);
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pQueryParams != null) {
       if (pQueryParams.getOffsetDateTime() != null) {
-        lRequestBuilder.addParameter("offsetDateTime",
+        lRequestBuilder.addQueryParam("offsetDateTime",
             DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pQueryParams.getOffsetDateTime()));
       }
       if (pQueryParams.getOffsetTime() != null) {
-        lRequestBuilder.addParameter("offsetTime",
+        lRequestBuilder.addQueryParam("offsetTime",
             DateTimeFormatter.ISO_OFFSET_TIME.format(pQueryParams.getOffsetTime()));
       }
       if (pQueryParams.getLocalDateTime() != null) {
-        lRequestBuilder.addParameter("localDateTime",
+        lRequestBuilder.addQueryParam("localDateTime",
             DateTimeFormatter.ISO_DATE_TIME.format(pQueryParams.getLocalDateTime()));
       }
       if (pQueryParams.getLocalTime() != null) {
-        lRequestBuilder.addParameter("localTime", DateTimeFormatter.ISO_TIME.format(pQueryParams.getLocalTime()));
+        lRequestBuilder.addQueryParam("localTime", DateTimeFormatter.ISO_TIME.format(pQueryParams.getLocalTime()));
       }
       if (pQueryParams.getLocalDate() != null) {
-        lRequestBuilder.addParameter("localDate", DateTimeFormatter.ISO_DATE.format(pQueryParams.getLocalDate()));
+        lRequestBuilder.addQueryParam("localDate", DateTimeFormatter.ISO_DATE.format(pQueryParams.getLocalDate()));
       }
       if (pQueryParams.getUtilDate() != null) {
-        lRequestBuilder.addParameter("utilDate",
+        lRequestBuilder.addQueryParam("utilDate",
             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getUtilDate()));
       }
       if (pQueryParams.getCalendar() != null) {
-        lRequestBuilder.addParameter("calendar",
+        lRequestBuilder.addQueryParam("calendar",
             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getCalendar().getTime()));
       }
       if (pQueryParams.getSqlTimestamp() != null) {
-        lRequestBuilder.addParameter("sqlTimestamp",
+        lRequestBuilder.addQueryParam("sqlTimestamp",
             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTimestamp()));
       }
       if (pQueryParams.getSqlTime() != null) {
-        lRequestBuilder.addParameter("sqlTime",
+        lRequestBuilder.addQueryParam("sqlTime",
             new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTime()));
       }
       if (pQueryParams.getSqlDate() != null) {
-        lRequestBuilder.addParameter("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pQueryParams.getSqlDate()));
+        lRequestBuilder.addQueryParam("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pQueryParams.getSqlDate()));
       }
     }
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     // Execute request.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+    RESTRequest lRequest = lRequestBuilder.build();
+    requestExecutor.executeNoResultRequest(lRequest, 200);
   }
 
   /**
@@ -948,17 +843,15 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
       java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
     // Create builder for GET request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("test-date-header-params/");
-    lURIBuilder.append(pPath);
-    lRequestBuilder.setUri(lURIBuilder.toString());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("test-date-header-params/");
+    lPathBuilder.append(pPath);
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     if (pOffsetDateTime != null) {
       lRequestBuilder.setHeader("Offset-Date-Time", XFun.getDatatypeConverterRegistry()
           .getConverter(OffsetDateTime.class, String.class).convert(pOffsetDateTime));
@@ -1030,8 +923,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       lRequestBuilder.setHeader("SQL-Date", null);
     }
     // Execute request.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+    RESTRequest lRequest = lRequestBuilder.build();
+    requestExecutor.executeNoResultRequest(lRequest, 200);
   }
 
   /**
@@ -1042,17 +935,15 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   @Override
   public void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
     // Create builder for GET request
-    ClassicRequestBuilder lRequestBuilder = ClassicRequestBuilder.get();
-    // Build URI of request
-    StringBuilder lURIBuilder = new StringBuilder();
-    lURIBuilder.append(configuration.getExternalServiceURL());
-    lURIBuilder.append("/products");
-    lURIBuilder.append('/');
-    lURIBuilder.append("test-date-header-params-beans/");
-    lURIBuilder.append(pPath);
-    lRequestBuilder.setUri(lURIBuilder.toString());
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("test-date-header-params-beans/");
+    lPathBuilder.append(pPath);
+    lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
-    lRequestBuilder.setHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.getMimeType());
     if (pHeaderParams != null) {
       if (pHeaderParams.getOffsetDateTime() != null) {
         lRequestBuilder.setHeader("Offset-Date-Time", XFun.getDatatypeConverterRegistry()
@@ -1126,7 +1017,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       }
     }
     // Execute request.
-    ClassicHttpRequest lRequest = lRequestBuilder.build();
-    httpClient.executeNoResponseContentRequest(lRequest, null, 200);
+    RESTRequest lRequest = lRequestBuilder.build();
+    requestExecutor.executeNoResultRequest(lRequest, 200);
   }
 }

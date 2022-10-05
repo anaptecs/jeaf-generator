@@ -135,8 +135,6 @@
 		«IF generateRESTServiceProxies() == true && this.isInGeneratorWhitelist() == true»
 			«info("Processing <<RESTResource>> " + this.name + " (" + (this.fqn()) + ")")»
 			«EXPAND jeaf::RESTServiceProxy::GenerateRESTServiceProxy FOR (RESTResource) this»
-			«EXPAND jeaf::RESTServiceProxy::GenerateRESTServiceProxyHttpClient FOR (RESTResource) this»
-			«EXPAND jeaf::RESTServiceProxy::GenerateRESTServiceProxyConfig FOR (RESTResource) this»
 		«ENDIF»
 
 		«IF generateRESTServiceProxyConfigFile() == true && this.isInGeneratorWhitelist() == true»

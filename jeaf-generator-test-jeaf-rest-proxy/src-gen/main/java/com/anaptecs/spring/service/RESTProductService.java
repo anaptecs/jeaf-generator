@@ -29,6 +29,7 @@ import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
+import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
 
 /**
@@ -171,4 +172,11 @@ public interface RESTProductService extends Service {
    * @param pHeaderParams
    */
   void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams );
+
+  /**
+   * 
+   * @param pChannelTypeParam
+   * @param pContext
+   */
+  void testCookieParams( ChannelType pChannelTypeParam, SpecialContext pContext );
 }
