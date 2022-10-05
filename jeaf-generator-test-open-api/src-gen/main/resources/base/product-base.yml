@@ -176,6 +176,16 @@ components:
         a:
           $ref: '#/components/schemas/BidirectA'
 
+    # com.anaptecs.jeaf.junit.openapi.base.Booking
+    Booking:
+      type: object
+      additionalProperties: false
+      required:
+        - booking
+      properties:
+        booking:
+          $ref: '#/components/schemas/BookingID'
+
     # com.anaptecs.jeaf.junit.openapi.base.BookingID
     BookingID:
       type: object
@@ -1484,4 +1494,18 @@ components:
         - $ref: '#/components/schemas/StopPlaceRef'
         - type: object
           additionalProperties: false
+
+    # com.anaptecs.jeaf.junit.openapi.base.WeirdBooking
+    WeirdBooking:
+      type: object
+      additionalProperties: false
+      required:
+        - booking
+      properties:
+        booking:
+          $ref: '#/components/schemas/ComplexBookingID'
+        additionalBookings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComplexBookingID'
 
