@@ -25,25 +25,25 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 
 public class Booking {
-  @JsonProperty("booking")
-  private BookingID booking = null;
+  @JsonProperty("bookingID")
+  private BookingID bookingID = null;
 
-  public Booking booking(BookingID booking) {
-    this.booking = booking;
+  public Booking bookingID(BookingID bookingID) {
+    this.bookingID = bookingID;
     return this;
   }
 
    /**
-   * Get booking
-   * @return booking
+   * Get bookingID
+   * @return bookingID
   **/
   @Schema(required = true, description = "")
-  public BookingID getBooking() {
-    return booking;
+  public BookingID getBookingID() {
+    return bookingID;
   }
 
-  public void setBooking(BookingID booking) {
-    this.booking = booking;
+  public void setBookingID(BookingID bookingID) {
+    this.bookingID = bookingID;
   }
 
 
@@ -56,12 +56,12 @@ public class Booking {
       return false;
     }
     Booking booking = (Booking) o;
-    return Objects.equals(this.booking, booking.booking);
+    return Objects.equals(this.bookingID, booking.bookingID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(booking);
+    return Objects.hash(bookingID);
   }
 
 
@@ -70,7 +70,7 @@ public class Booking {
     StringBuilder sb = new StringBuilder();
     sb.append("class Booking {\n");
     
-    sb.append("    booking: ").append(toIndentedString(booking)).append("\n");
+    sb.append("    bookingID: ").append(toIndentedString(bookingID)).append("\n");
     sb.append("}");
     return sb.toString();
   }

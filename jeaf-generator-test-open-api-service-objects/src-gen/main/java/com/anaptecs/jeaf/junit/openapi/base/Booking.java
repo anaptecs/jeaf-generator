@@ -30,7 +30,7 @@ public class Booking implements ServiceObject {
    * 
    */
   @NotNull
-  private BookingID booking;
+  private BookingID bookingID;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -48,7 +48,7 @@ public class Booking implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    booking = pBuilder.booking;
+    bookingID = pBuilder.bookingID;
   }
 
   /**
@@ -78,7 +78,7 @@ public class Booking implements ServiceObject {
     /**
      * 
      */
-    private BookingID booking;
+    private BookingID bookingID;
 
     /**
      * Use {@link Booking#builder()} instead of private constructor to create new builder.
@@ -92,17 +92,17 @@ public class Booking implements ServiceObject {
     protected Builder( Booking pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        booking = pObject.booking;
+        bookingID = pObject.bookingID;
       }
     }
 
     /**
-     * Method sets the association "booking".
+     * Method sets the association "bookingID".
      * 
-     * @param pBooking BookingID to which the association "booking" should be set.
+     * @param pBookingID BookingID to which the association "bookingID" should be set.
      */
-    public Builder setBooking( BookingID pBooking ) {
-      booking = pBooking;
+    public Builder setBookingID( BookingID pBookingID ) {
+      bookingID = pBookingID;
       return this;
     }
 
@@ -130,31 +130,31 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method returns the association "booking".
+   * Method returns the association "bookingID".
    * 
    *
-   * @return BookingID BookingID to which the association "booking" is set.
+   * @return BookingID BookingID to which the association "bookingID" is set.
    */
-  public BookingID getBooking( ) {
-    return booking;
+  public BookingID getBookingID( ) {
+    return bookingID;
   }
 
   /**
-   * Method sets the association "booking".
+   * Method sets the association "bookingID".
    * 
    * 
-   * @param pBooking BookingID to which the association "booking" should be set.
+   * @param pBookingID BookingID to which the association "bookingID" should be set.
    */
-  public void setBooking( BookingID pBooking ) {
-    booking = pBooking;
+  public void setBookingID( BookingID pBookingID ) {
+    bookingID = pBookingID;
   }
 
   /**
-   * Method unsets the association "booking".
+   * Method unsets the association "bookingID".
    * 
    */
-  public final void unsetBooking( ) {
-    booking = null;
+  public final void unsetBookingID( ) {
+    bookingID = null;
   }
 
   /**

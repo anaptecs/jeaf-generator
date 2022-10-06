@@ -181,9 +181,9 @@ components:
       type: object
       additionalProperties: false
       required:
-        - booking
+        - bookingID
       properties:
-        booking:
+        bookingID:
           $ref: '#/components/schemas/BookingID'
 
     # com.anaptecs.jeaf.junit.openapi.base.BookingID
