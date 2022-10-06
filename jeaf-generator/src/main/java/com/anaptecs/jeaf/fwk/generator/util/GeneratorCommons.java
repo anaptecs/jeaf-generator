@@ -1033,6 +1033,7 @@ public class GeneratorCommons {
     // XFun.getTrace().info(
     // "Analyzing element " + pElement.getName() + " in package " + ClassUtil.getPackageName(lPackage));
 
+    // Verify if checks should be run for teh passed stereotype.
     if (GeneratorCommons.shouldStereotypeBeChecked(pStereotype) == true
         && GeneratorCommons.isInGeneratorWhitelist(lPackage) == true) {
       String lOwnerName = Naming.getFullyQualifiedName(lOwner);
