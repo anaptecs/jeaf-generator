@@ -30,12 +30,6 @@ public class BookingID implements ServiceObject {
    * 
    */
   @NotNull
-  private InventoryType inventory;
-
-  /**
-   * 
-   */
-  @NotNull
   private String referenceID;
 
   /**
@@ -43,6 +37,12 @@ public class BookingID implements ServiceObject {
    */
   @NotNull
   private String externalRefID;
+
+  /**
+   * 
+   */
+  @NotNull
+  private InventoryType inventory;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -60,9 +60,9 @@ public class BookingID implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    inventory = pBuilder.inventory;
     referenceID = pBuilder.referenceID;
     externalRefID = pBuilder.externalRefID;
+    inventory = pBuilder.inventory;
   }
 
   /**
@@ -93,17 +93,17 @@ public class BookingID implements ServiceObject {
     /**
      * 
      */
-    private InventoryType inventory;
-
-    /**
-     * 
-     */
     private String referenceID;
 
     /**
      * 
      */
     private String externalRefID;
+
+    /**
+     * 
+     */
+    private InventoryType inventory;
 
     /**
      * Use {@link BookingID#builder()} instead of private constructor to create new builder.
@@ -117,20 +117,10 @@ public class BookingID implements ServiceObject {
     protected Builder( BookingID pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        inventory = pObject.inventory;
         referenceID = pObject.referenceID;
         externalRefID = pObject.externalRefID;
+        inventory = pObject.inventory;
       }
-    }
-
-    /**
-     * Method sets the association "inventory".
-     * 
-     * @param pInventory InventoryType to which the association "inventory" should be set.
-     */
-    public Builder setInventory( InventoryType pInventory ) {
-      inventory = pInventory;
-      return this;
     }
 
     /**
@@ -156,6 +146,16 @@ public class BookingID implements ServiceObject {
     }
 
     /**
+     * Method sets the association "inventory".
+     * 
+     * @param pInventory InventoryType to which the association "inventory" should be set.
+     */
+    public Builder setInventory( InventoryType pInventory ) {
+      inventory = pInventory;
+      return this;
+    }
+
+    /**
      * Method creates a new instance of class BookingID. The object will be initialized with the values of the builder.
      * 
      * @return BookingID Created object. The method never returns null.
@@ -176,34 +176,6 @@ public class BookingID implements ServiceObject {
       ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
     }
-  }
-
-  /**
-   * Method returns the association "inventory".
-   * 
-   *
-   * @return InventoryType InventoryType to which the association "inventory" is set.
-   */
-  public InventoryType getInventory( ) {
-    return inventory;
-  }
-
-  /**
-   * Method sets the association "inventory".
-   * 
-   * 
-   * @param pInventory InventoryType to which the association "inventory" should be set.
-   */
-  public void setInventory( InventoryType pInventory ) {
-    inventory = pInventory;
-  }
-
-  /**
-   * Method unsets the association "inventory".
-   * 
-   */
-  public final void unsetInventory( ) {
-    inventory = null;
   }
 
   /**
@@ -246,6 +218,34 @@ public class BookingID implements ServiceObject {
   public void setExternalRefID( String pExternalRefID ) {
     // Assign value to attribute
     externalRefID = pExternalRefID;
+  }
+
+  /**
+   * Method returns the association "inventory".
+   * 
+   *
+   * @return InventoryType InventoryType to which the association "inventory" is set.
+   */
+  public InventoryType getInventory( ) {
+    return inventory;
+  }
+
+  /**
+   * Method sets the association "inventory".
+   * 
+   * 
+   * @param pInventory InventoryType to which the association "inventory" should be set.
+   */
+  public void setInventory( InventoryType pInventory ) {
+    inventory = pInventory;
+  }
+
+  /**
+   * Method unsets the association "inventory".
+   * 
+   */
+  public final void unsetInventory( ) {
+    inventory = null;
   }
 
   /**
