@@ -194,6 +194,7 @@ components:
         - referenceID
         - externalRefID
         - inventory
+        - bookingCode
       properties:
         referenceID:
           type: string
@@ -203,6 +204,9 @@ components:
           nullable: false
         inventory:
           $ref: '#/components/schemas/InventoryType'
+        bookingCode:
+          type: string
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum
     BooleanLiteralsEnum:

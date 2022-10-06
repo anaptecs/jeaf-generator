@@ -35,7 +35,8 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   BookingID.JSON_PROPERTY_REFERENCE_I_D,
   BookingID.JSON_PROPERTY_EXTERNAL_REF_I_D,
-  BookingID.JSON_PROPERTY_INVENTORY
+  BookingID.JSON_PROPERTY_INVENTORY,
+  BookingID.JSON_PROPERTY_BOOKING_CODE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BookingID {
@@ -47,6 +48,9 @@ public class BookingID {
 
   public static final String JSON_PROPERTY_INVENTORY = "inventory";
   private InventoryType inventory;
+
+  public static final String JSON_PROPERTY_BOOKING_CODE = "bookingCode";
+  private String bookingCode;
 
   public BookingID() { 
   }
@@ -129,6 +133,32 @@ public class BookingID {
   }
 
 
+  public BookingID bookingCode(String bookingCode) {
+    this.bookingCode = bookingCode;
+    return this;
+  }
+
+   /**
+   * Get bookingCode
+   * @return bookingCode
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_BOOKING_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getBookingCode() {
+    return bookingCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BOOKING_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setBookingCode(String bookingCode) {
+    this.bookingCode = bookingCode;
+  }
+
+
   /**
    * Return true if this BookingID object is equal to o.
    */
@@ -143,12 +173,13 @@ public class BookingID {
     BookingID bookingID = (BookingID) o;
     return Objects.equals(this.referenceID, bookingID.referenceID) &&
         Objects.equals(this.externalRefID, bookingID.externalRefID) &&
-        Objects.equals(this.inventory, bookingID.inventory);
+        Objects.equals(this.inventory, bookingID.inventory) &&
+        Objects.equals(this.bookingCode, bookingID.bookingCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(referenceID, externalRefID, inventory);
+    return Objects.hash(referenceID, externalRefID, inventory, bookingCode);
   }
 
   @Override
@@ -158,6 +189,7 @@ public class BookingID {
     sb.append("    referenceID: ").append(toIndentedString(referenceID)).append("\n");
     sb.append("    externalRefID: ").append(toIndentedString(externalRefID)).append("\n");
     sb.append("    inventory: ").append(toIndentedString(inventory)).append("\n");
+    sb.append("    bookingCode: ").append(toIndentedString(bookingCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -39,6 +39,11 @@ public class BookingID implements ServiceObject {
   public static final String INVENTORY = "inventory";
 
   /**
+   * Constant for the name of attribute "bookingCode".
+   */
+  public static final String BOOKINGCODE = "bookingCode";
+
+  /**
    * 
    */
   private String referenceID;
@@ -52,6 +57,11 @@ public class BookingID implements ServiceObject {
    * 
    */
   private InventoryType inventory;
+
+  /**
+   * 
+   */
+  private BookingCode bookingCode;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -72,6 +82,7 @@ public class BookingID implements ServiceObject {
     referenceID = pBuilder.referenceID;
     externalRefID = pBuilder.externalRefID;
     inventory = pBuilder.inventory;
+    bookingCode = pBuilder.bookingCode;
   }
 
   /**
@@ -115,6 +126,11 @@ public class BookingID implements ServiceObject {
     private InventoryType inventory;
 
     /**
+     * 
+     */
+    private BookingCode bookingCode;
+
+    /**
      * Use {@link BookingID#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -129,6 +145,7 @@ public class BookingID implements ServiceObject {
         referenceID = pObject.referenceID;
         externalRefID = pObject.externalRefID;
         inventory = pObject.inventory;
+        bookingCode = pObject.bookingCode;
       }
     }
 
@@ -161,6 +178,16 @@ public class BookingID implements ServiceObject {
      */
     public Builder setInventory( InventoryType pInventory ) {
       inventory = pInventory;
+      return this;
+    }
+
+    /**
+     * Method sets the association "bookingCode".
+     * 
+     * @param pBookingCode BookingCode to which the association "bookingCode" should be set.
+     */
+    public Builder setBookingCode( BookingCode pBookingCode ) {
+      bookingCode = pBookingCode;
       return this;
     }
 
@@ -255,6 +282,34 @@ public class BookingID implements ServiceObject {
    */
   public final void unsetInventory( ) {
     inventory = null;
+  }
+
+  /**
+   * Method returns the association "bookingCode".
+   * 
+   *
+   * @return BookingCode BookingCode to which the association "bookingCode" is set.
+   */
+  public BookingCode getBookingCode( ) {
+    return bookingCode;
+  }
+
+  /**
+   * Method sets the association "bookingCode".
+   * 
+   * 
+   * @param pBookingCode BookingCode to which the association "bookingCode" should be set.
+   */
+  public void setBookingCode( BookingCode pBookingCode ) {
+    bookingCode = pBookingCode;
+  }
+
+  /**
+   * Method unsets the association "bookingCode".
+   * 
+   */
+  public final void unsetBookingCode( ) {
+    bookingCode = null;
   }
 
   /**

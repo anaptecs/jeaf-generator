@@ -34,6 +34,9 @@ public class BookingID {
   @JsonProperty("inventory")
   private InventoryType inventory = null;
 
+  @JsonProperty("bookingCode")
+  private String bookingCode = null;
+
   public BookingID referenceID(String referenceID) {
     this.referenceID = referenceID;
     return this;
@@ -88,6 +91,24 @@ public class BookingID {
     this.inventory = inventory;
   }
 
+  public BookingID bookingCode(String bookingCode) {
+    this.bookingCode = bookingCode;
+    return this;
+  }
+
+   /**
+   * Get bookingCode
+   * @return bookingCode
+  **/
+  @Schema(required = true, description = "")
+  public String getBookingCode() {
+    return bookingCode;
+  }
+
+  public void setBookingCode(String bookingCode) {
+    this.bookingCode = bookingCode;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -100,12 +121,13 @@ public class BookingID {
     BookingID bookingID = (BookingID) o;
     return Objects.equals(this.referenceID, bookingID.referenceID) &&
         Objects.equals(this.externalRefID, bookingID.externalRefID) &&
-        Objects.equals(this.inventory, bookingID.inventory);
+        Objects.equals(this.inventory, bookingID.inventory) &&
+        Objects.equals(this.bookingCode, bookingID.bookingCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(referenceID, externalRefID, inventory);
+    return Objects.hash(referenceID, externalRefID, inventory, bookingCode);
   }
 
 
@@ -117,6 +139,7 @@ public class BookingID {
     sb.append("    referenceID: ").append(toIndentedString(referenceID)).append("\n");
     sb.append("    externalRefID: ").append(toIndentedString(externalRefID)).append("\n");
     sb.append("    inventory: ").append(toIndentedString(inventory)).append("\n");
+    sb.append("    bookingCode: ").append(toIndentedString(bookingCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

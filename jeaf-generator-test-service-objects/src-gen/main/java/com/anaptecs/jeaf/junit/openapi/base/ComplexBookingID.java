@@ -5,10 +5,10 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.validation.ConstraintViolationException;
 
@@ -61,7 +61,7 @@ public class ComplexBookingID implements ServiceObject {
   /**
    * 
    */
-  private Set<BookingID> bookingIDs;
+  private List<BookingID> bookingIDs;
 
   /**
    * 
@@ -73,7 +73,7 @@ public class ComplexBookingID implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected ComplexBookingID( ) {
-    bookingIDs = new HashSet<BookingID>();
+    bookingIDs = new ArrayList<BookingID>();
   }
 
   /**
@@ -91,7 +91,7 @@ public class ComplexBookingID implements ServiceObject {
       bookingIDs = pBuilder.bookingIDs;
     }
     else {
-      bookingIDs = new HashSet<BookingID>();
+      bookingIDs = new ArrayList<BookingID>();
     }
     complexBookingType = pBuilder.complexBookingType;
   }
@@ -134,7 +134,7 @@ public class ComplexBookingID implements ServiceObject {
     /**
      * 
      */
-    private Set<BookingID> bookingIDs;
+    private List<BookingID> bookingIDs;
 
     /**
      * 
@@ -187,10 +187,10 @@ public class ComplexBookingID implements ServiceObject {
      * 
      * @param pBookingIDs Collection with objects to which the association should be set.
      */
-    public Builder setBookingIDs( Set<BookingID> pBookingIDs ) {
+    public Builder setBookingIDs( List<BookingID> pBookingIDs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pBookingIDs != null) {
-        bookingIDs = new HashSet<BookingID>(pBookingIDs);
+        bookingIDs = new ArrayList<BookingID>(pBookingIDs);
       }
       else {
         bookingIDs = null;
@@ -281,9 +281,9 @@ public class ComplexBookingID implements ServiceObject {
    * @return Collection All BookingID objects that belong to the association "bookingIDs". The method never returns null
    * and the returned collection is unmodifiable.
    */
-  public Set<BookingID> getBookingIDs( ) {
+  public List<BookingID> getBookingIDs( ) {
     // Return all BookingID objects as unmodifiable collection.
-    return Collections.unmodifiableSet(bookingIDs);
+    return Collections.unmodifiableList(bookingIDs);
   }
 
   /**
