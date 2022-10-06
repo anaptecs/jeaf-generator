@@ -435,11 +435,16 @@ components:
       additionalProperties: false
       required:
         - referenceID
+        - internalID
         - bookingIDs
         - complexBookingType
       properties:
         referenceID:
           type: string
+          nullable: false
+        internalID:
+          type: integer
+          format: int64
           nullable: false
         bookingIDs:
           type: array

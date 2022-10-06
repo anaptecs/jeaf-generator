@@ -34,6 +34,11 @@ public class ComplexBookingID implements ServiceObject {
   public static final String REFERENCEID = "referenceID";
 
   /**
+   * Constant for the name of attribute "internalID".
+   */
+  public static final String INTERNALID = "internalID";
+
+  /**
    * Constant for the name of attribute "bookingIDs".
    */
   public static final String BOOKINGIDS = "bookingIDs";
@@ -47,6 +52,11 @@ public class ComplexBookingID implements ServiceObject {
    * 
    */
   private String referenceID;
+
+  /**
+   * 
+   */
+  private long internalID;
 
   /**
    * 
@@ -76,6 +86,7 @@ public class ComplexBookingID implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     referenceID = pBuilder.referenceID;
+    internalID = pBuilder.internalID;
     if (pBuilder.bookingIDs != null) {
       bookingIDs = pBuilder.bookingIDs;
     }
@@ -118,6 +129,11 @@ public class ComplexBookingID implements ServiceObject {
     /**
      * 
      */
+    private long internalID;
+
+    /**
+     * 
+     */
     private Set<BookingID> bookingIDs;
 
     /**
@@ -138,6 +154,7 @@ public class ComplexBookingID implements ServiceObject {
       if (pObject != null) {
         // Read attribute values from passed object.
         referenceID = pObject.referenceID;
+        internalID = pObject.internalID;
         bookingIDs = pObject.bookingIDs;
         complexBookingType = pObject.complexBookingType;
       }
@@ -151,6 +168,17 @@ public class ComplexBookingID implements ServiceObject {
     public Builder setReferenceID( String pReferenceID ) {
       // Assign value to attribute
       referenceID = pReferenceID;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "internalID".
+     * 
+     * @param pInternalID Value to which the attribute "internalID" should be set.
+     */
+    public Builder setInternalID( long pInternalID ) {
+      // Assign value to attribute
+      internalID = pInternalID;
       return this;
     }
 
@@ -223,6 +251,27 @@ public class ComplexBookingID implements ServiceObject {
   public void setReferenceID( String pReferenceID ) {
     // Assign value to attribute
     referenceID = pReferenceID;
+  }
+
+  /**
+   * Method returns the attribute "internalID".
+   * 
+   * 
+   * @return long Value to which the attribute "internalID" is set.
+   */
+  public long getInternalID( ) {
+    return internalID;
+  }
+
+  /**
+   * Method sets the attribute "internalID".
+   * 
+   * 
+   * @param pInternalID Value to which the attribute "internalID" should be set.
+   */
+  public void setInternalID( long pInternalID ) {
+    // Assign value to attribute
+    internalID = pInternalID;
   }
 
   /**
@@ -330,6 +379,9 @@ public class ComplexBookingID implements ServiceObject {
     lBuilder.append('\n');
     lBuilder
         .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "referenceID", "" + referenceID));
+    lBuilder.append('\n');
+    lBuilder
+        .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "internalID", "" + internalID));
     lBuilder.append('\n');
     return lBuilder;
   }

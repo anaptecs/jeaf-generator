@@ -36,6 +36,7 @@ import openapitools.JSON;
  */
 @JsonPropertyOrder({
   ComplexBookingID.JSON_PROPERTY_REFERENCE_I_D,
+  ComplexBookingID.JSON_PROPERTY_INTERNAL_I_D,
   ComplexBookingID.JSON_PROPERTY_BOOKING_I_DS,
   ComplexBookingID.JSON_PROPERTY_COMPLEX_BOOKING_TYPE
 })
@@ -43,6 +44,9 @@ import openapitools.JSON;
 public class ComplexBookingID {
   public static final String JSON_PROPERTY_REFERENCE_I_D = "referenceID";
   private String referenceID;
+
+  public static final String JSON_PROPERTY_INTERNAL_I_D = "internalID";
+  private Long internalID;
 
   public static final String JSON_PROPERTY_BOOKING_I_DS = "bookingIDs";
   private List<BookingID> bookingIDs = new ArrayList<>();
@@ -76,6 +80,32 @@ public class ComplexBookingID {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setReferenceID(String referenceID) {
     this.referenceID = referenceID;
+  }
+
+
+  public ComplexBookingID internalID(Long internalID) {
+    this.internalID = internalID;
+    return this;
+  }
+
+   /**
+   * Get internalID
+   * @return internalID
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_INTERNAL_I_D)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Long getInternalID() {
+    return internalID;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INTERNAL_I_D)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setInternalID(Long internalID) {
+    this.internalID = internalID;
   }
 
 
@@ -149,13 +179,14 @@ public class ComplexBookingID {
     }
     ComplexBookingID complexBookingID = (ComplexBookingID) o;
     return Objects.equals(this.referenceID, complexBookingID.referenceID) &&
+        Objects.equals(this.internalID, complexBookingID.internalID) &&
         Objects.equals(this.bookingIDs, complexBookingID.bookingIDs) &&
         Objects.equals(this.complexBookingType, complexBookingID.complexBookingType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(referenceID, bookingIDs, complexBookingType);
+    return Objects.hash(referenceID, internalID, bookingIDs, complexBookingType);
   }
 
   @Override
@@ -163,6 +194,7 @@ public class ComplexBookingID {
     StringBuilder sb = new StringBuilder();
     sb.append("class ComplexBookingID {\n");
     sb.append("    referenceID: ").append(toIndentedString(referenceID)).append("\n");
+    sb.append("    internalID: ").append(toIndentedString(internalID)).append("\n");
     sb.append("    bookingIDs: ").append(toIndentedString(bookingIDs)).append("\n");
     sb.append("    complexBookingType: ").append(toIndentedString(complexBookingType)).append("\n");
     sb.append("}");

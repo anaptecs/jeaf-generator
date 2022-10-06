@@ -30,6 +30,9 @@ public class ComplexBookingID {
   @JsonProperty("referenceID")
   private String referenceID = null;
 
+  @JsonProperty("internalID")
+  private Long internalID = null;
+
   @JsonProperty("bookingIDs")
   private List<BookingID> bookingIDs = new ArrayList<>();
 
@@ -52,6 +55,24 @@ public class ComplexBookingID {
 
   public void setReferenceID(String referenceID) {
     this.referenceID = referenceID;
+  }
+
+  public ComplexBookingID internalID(Long internalID) {
+    this.internalID = internalID;
+    return this;
+  }
+
+   /**
+   * Get internalID
+   * @return internalID
+  **/
+  @Schema(required = true, description = "")
+  public Long getInternalID() {
+    return internalID;
+  }
+
+  public void setInternalID(Long internalID) {
+    this.internalID = internalID;
   }
 
   public ComplexBookingID bookingIDs(List<BookingID> bookingIDs) {
@@ -106,13 +127,14 @@ public class ComplexBookingID {
     }
     ComplexBookingID complexBookingID = (ComplexBookingID) o;
     return Objects.equals(this.referenceID, complexBookingID.referenceID) &&
+        Objects.equals(this.internalID, complexBookingID.internalID) &&
         Objects.equals(this.bookingIDs, complexBookingID.bookingIDs) &&
         Objects.equals(this.complexBookingType, complexBookingID.complexBookingType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(referenceID, bookingIDs, complexBookingType);
+    return Objects.hash(referenceID, internalID, bookingIDs, complexBookingType);
   }
 
 
@@ -122,6 +144,7 @@ public class ComplexBookingID {
     sb.append("class ComplexBookingID {\n");
     
     sb.append("    referenceID: ").append(toIndentedString(referenceID)).append("\n");
+    sb.append("    internalID: ").append(toIndentedString(internalID)).append("\n");
     sb.append("    bookingIDs: ").append(toIndentedString(bookingIDs)).append("\n");
     sb.append("    complexBookingType: ").append(toIndentedString(complexBookingType)).append("\n");
     sb.append("}");
