@@ -221,7 +221,7 @@
 			// Parse JSON content.
 			com.fasterxml.jackson.databind.JsonNode lNode = pParser.getCodec().readTree(pParser);
 		
-		    // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
+		    // We expect that data types are always serialized as plain text which will result in a TextNode.
 		    «LET this.ownedAttribute.get(0) AS attr»
 			    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
 			    «IF attr.type.isBooleanType()»
