@@ -33,49 +33,23 @@ import openapitools.JSON;
  * BookingID
  */
 @JsonPropertyOrder({
-  BookingID.JSON_PROPERTY_INVENTORY,
   BookingID.JSON_PROPERTY_REFERENCE_I_D,
-  BookingID.JSON_PROPERTY_EXTERNAL_REF_I_D
+  BookingID.JSON_PROPERTY_EXTERNAL_REF_I_D,
+  BookingID.JSON_PROPERTY_INVENTORY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BookingID {
-  public static final String JSON_PROPERTY_INVENTORY = "inventory";
-  private InventoryType inventory;
-
   public static final String JSON_PROPERTY_REFERENCE_I_D = "referenceID";
   private String referenceID;
 
   public static final String JSON_PROPERTY_EXTERNAL_REF_I_D = "externalRefID";
   private String externalRefID;
 
+  public static final String JSON_PROPERTY_INVENTORY = "inventory";
+  private InventoryType inventory;
+
   public BookingID() { 
   }
-
-  public BookingID inventory(InventoryType inventory) {
-    this.inventory = inventory;
-    return this;
-  }
-
-   /**
-   * Get inventory
-   * @return inventory
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty(JSON_PROPERTY_INVENTORY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public InventoryType getInventory() {
-    return inventory;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_INVENTORY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setInventory(InventoryType inventory) {
-    this.inventory = inventory;
-  }
-
 
   public BookingID referenceID(String referenceID) {
     this.referenceID = referenceID;
@@ -129,6 +103,32 @@ public class BookingID {
   }
 
 
+  public BookingID inventory(InventoryType inventory) {
+    this.inventory = inventory;
+    return this;
+  }
+
+   /**
+   * Get inventory
+   * @return inventory
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_INVENTORY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public InventoryType getInventory() {
+    return inventory;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INVENTORY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setInventory(InventoryType inventory) {
+    this.inventory = inventory;
+  }
+
+
   /**
    * Return true if this BookingID object is equal to o.
    */
@@ -141,23 +141,23 @@ public class BookingID {
       return false;
     }
     BookingID bookingID = (BookingID) o;
-    return Objects.equals(this.inventory, bookingID.inventory) &&
-        Objects.equals(this.referenceID, bookingID.referenceID) &&
-        Objects.equals(this.externalRefID, bookingID.externalRefID);
+    return Objects.equals(this.referenceID, bookingID.referenceID) &&
+        Objects.equals(this.externalRefID, bookingID.externalRefID) &&
+        Objects.equals(this.inventory, bookingID.inventory);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inventory, referenceID, externalRefID);
+    return Objects.hash(referenceID, externalRefID, inventory);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BookingID {\n");
-    sb.append("    inventory: ").append(toIndentedString(inventory)).append("\n");
     sb.append("    referenceID: ").append(toIndentedString(referenceID)).append("\n");
     sb.append("    externalRefID: ").append(toIndentedString(externalRefID)).append("\n");
+    sb.append("    inventory: ").append(toIndentedString(inventory)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -191,18 +191,18 @@ components:
       type: object
       additionalProperties: false
       required:
-        - inventory
         - referenceID
         - externalRefID
+        - inventory
       properties:
-        inventory:
-          $ref: '#/components/schemas/InventoryType'
         referenceID:
           type: string
           nullable: false
         externalRefID:
           type: string
           nullable: false
+        inventory:
+          $ref: '#/components/schemas/InventoryType'
 
     # com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum
     BooleanLiteralsEnum:

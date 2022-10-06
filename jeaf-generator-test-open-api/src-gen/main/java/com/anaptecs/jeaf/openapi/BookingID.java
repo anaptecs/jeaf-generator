@@ -25,32 +25,14 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 
 public class BookingID {
-  @JsonProperty("inventory")
-  private InventoryType inventory = null;
-
   @JsonProperty("referenceID")
   private String referenceID = null;
 
   @JsonProperty("externalRefID")
   private String externalRefID = null;
 
-  public BookingID inventory(InventoryType inventory) {
-    this.inventory = inventory;
-    return this;
-  }
-
-   /**
-   * Get inventory
-   * @return inventory
-  **/
-  @Schema(required = true, description = "")
-  public InventoryType getInventory() {
-    return inventory;
-  }
-
-  public void setInventory(InventoryType inventory) {
-    this.inventory = inventory;
-  }
+  @JsonProperty("inventory")
+  private InventoryType inventory = null;
 
   public BookingID referenceID(String referenceID) {
     this.referenceID = referenceID;
@@ -88,6 +70,24 @@ public class BookingID {
     this.externalRefID = externalRefID;
   }
 
+  public BookingID inventory(InventoryType inventory) {
+    this.inventory = inventory;
+    return this;
+  }
+
+   /**
+   * Get inventory
+   * @return inventory
+  **/
+  @Schema(required = true, description = "")
+  public InventoryType getInventory() {
+    return inventory;
+  }
+
+  public void setInventory(InventoryType inventory) {
+    this.inventory = inventory;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -98,14 +98,14 @@ public class BookingID {
       return false;
     }
     BookingID bookingID = (BookingID) o;
-    return Objects.equals(this.inventory, bookingID.inventory) &&
-        Objects.equals(this.referenceID, bookingID.referenceID) &&
-        Objects.equals(this.externalRefID, bookingID.externalRefID);
+    return Objects.equals(this.referenceID, bookingID.referenceID) &&
+        Objects.equals(this.externalRefID, bookingID.externalRefID) &&
+        Objects.equals(this.inventory, bookingID.inventory);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inventory, referenceID, externalRefID);
+    return Objects.hash(referenceID, externalRefID, inventory);
   }
 
 
@@ -114,9 +114,9 @@ public class BookingID {
     StringBuilder sb = new StringBuilder();
     sb.append("class BookingID {\n");
     
-    sb.append("    inventory: ").append(toIndentedString(inventory)).append("\n");
     sb.append("    referenceID: ").append(toIndentedString(referenceID)).append("\n");
     sb.append("    externalRefID: ").append(toIndentedString(externalRefID)).append("\n");
+    sb.append("    inventory: ").append(toIndentedString(inventory)).append("\n");
     sb.append("}");
     return sb.toString();
   }
