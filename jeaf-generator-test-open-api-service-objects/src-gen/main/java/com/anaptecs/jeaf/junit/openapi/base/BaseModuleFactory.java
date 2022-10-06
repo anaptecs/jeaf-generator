@@ -7,6 +7,8 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import com.anaptecs.jeaf.json.annotations.ModuleFactory;
 import com.anaptecs.jeaf.json.api.ObjectMapperModuleFactory;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.BookingCodeDeserializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.BookingCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BooleanCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BooleanCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BooleanCodeTypeDeserializer;
@@ -67,6 +69,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     // Create module for serializers / deserializers that are located in this package
     SimpleModule lModule = new SimpleModule(this.getClass().getName());
     // Add serializers and deserializers for datatypes
+    lModule.addSerializer(BookingCode.class, new BookingCodeSerializer());
+    lModule.addDeserializer(BookingCode.class, new BookingCodeDeserializer());
     lModule.addSerializer(BooleanCode.class, new BooleanCodeSerializer());
     lModule.addDeserializer(BooleanCode.class, new BooleanCodeDeserializer());
     lModule.addSerializer(BooleanCodeType.class, new BooleanCodeTypeSerializer());
