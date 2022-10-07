@@ -176,6 +176,38 @@ components:
         a:
           $ref: '#/components/schemas/BidirectA'
 
+    # com.anaptecs.jeaf.junit.openapi.base.Booking
+    Booking:
+      type: object
+      additionalProperties: false
+      required:
+        - booking
+      properties:
+        booking:
+          $ref: '#/components/schemas/BookingID'
+
+    # com.anaptecs.jeaf.junit.openapi.base.BookingID
+    BookingID:
+      type: object
+      additionalProperties: false
+      required:
+        - referenceID
+        - externalRefID
+        - inventory
+        - bookingCode
+      properties:
+        referenceID:
+          type: string
+          nullable: false
+        externalRefID:
+          type: string
+          nullable: false
+        inventory:
+          $ref: '#/components/schemas/InventoryType'
+        bookingCode:
+          type: string
+          nullable: false
+
     # com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum
     BooleanLiteralsEnum:
       type: string
@@ -401,6 +433,38 @@ components:
               type: string
               nullable: false
 
+    # com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID
+    ComplexBookingID:
+      type: object
+      additionalProperties: false
+      required:
+        - referenceID
+        - internalID
+        - bookingIDs
+        - complexBookingType
+      properties:
+        referenceID:
+          type: string
+          nullable: false
+        internalID:
+          type: integer
+          format: int64
+          nullable: false
+        bookingIDs:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookingID'
+          minItems: 1
+        complexBookingType:
+          $ref: '#/components/schemas/ComplexBookingType'
+
+    # com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType
+    ComplexBookingType:
+      type: string
+      x-extensible-enum:
+        - COMPLEX
+        - VERY_COMPLEX
+
     # com.anaptecs.jeaf.junit.openapi.base.DateObject
     DateObject:
       type: object
@@ -512,6 +576,14 @@ components:
               type: integer
               format: int32
               nullable: false
+
+    # com.anaptecs.jeaf.junit.openapi.base.InventoryType
+    InventoryType:
+      type: string
+      enum:
+        - SBB
+        - SNCF
+        - DB
 
     # com.anaptecs.jeaf.junit.openapi.base.Leg
     Leg:
@@ -1431,4 +1503,18 @@ components:
         - $ref: '#/components/schemas/StopPlaceRef'
         - type: object
           additionalProperties: false
+
+    # com.anaptecs.jeaf.junit.openapi.base.WeirdBooking
+    WeirdBooking:
+      type: object
+      additionalProperties: false
+      required:
+        - booking
+      properties:
+        booking:
+          $ref: '#/components/schemas/ComplexBookingID'
+        additionalBookings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComplexBookingID'
 

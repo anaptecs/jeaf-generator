@@ -7,6 +7,8 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import com.anaptecs.jeaf.json.annotations.ModuleFactory;
 import com.anaptecs.jeaf.json.api.ObjectMapperModuleFactory;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.BookingCodeDeserializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.BookingCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BooleanCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BooleanCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BooleanCodeTypeDeserializer;
@@ -17,6 +19,8 @@ import com.anaptecs.jeaf.junit.openapi.base.serializers.ByteCodeTypeDeserializer
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ByteCodeTypeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ChannelCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ChannelCodeSerializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingTypeDeserializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingTypeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.CurrencyCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.CurrencyCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeDeserializer;
@@ -65,6 +69,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     // Create module for serializers / deserializers that are located in this package
     SimpleModule lModule = new SimpleModule(this.getClass().getName());
     // Add serializers and deserializers for datatypes
+    lModule.addSerializer(BookingCode.class, new BookingCodeSerializer());
+    lModule.addDeserializer(BookingCode.class, new BookingCodeDeserializer());
     lModule.addSerializer(BooleanCode.class, new BooleanCodeSerializer());
     lModule.addDeserializer(BooleanCode.class, new BooleanCodeDeserializer());
     lModule.addSerializer(BooleanCodeType.class, new BooleanCodeTypeSerializer());
@@ -106,6 +112,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addSerializer(StringCodeType.class, new StringCodeTypeSerializer());
     lModule.addDeserializer(StringCodeType.class, new StringCodeTypeDeserializer());
     // Add serializers and deserializers for enumerations
+    lModule.addSerializer(ComplexBookingType.class, new ComplexBookingTypeSerializer());
+    lModule.addDeserializer(ComplexBookingType.class, new ComplexBookingTypeDeserializer());
     lModule.addSerializer(ExtensibleEnum.class, new ExtensibleEnumSerializer());
     lModule.addDeserializer(ExtensibleEnum.class, new ExtensibleEnumDeserializer());
     // Return created module.
