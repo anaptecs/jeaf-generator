@@ -13,6 +13,12 @@
             «attribute.getCommentForOpenAPIDescription("            ")»
           «ENDIF-»
           «IF ownerAttribute.isMultivalued() == false-»
+          «IF this.compositeDataType == true -»
+          type: string
+              «IF ownerAttribute.isDeprecated() -»
+          deprecated: true
+              «ENDIF-»
+          «ELSE-»
           type: «attribute.type.getOpenAPIType(spec)»
               «IF attribute.hasOpenAPIFormatForProperty()-»
           format: «attribute.getOpenAPIFormatForProperty()»
@@ -32,9 +38,16 @@
           example: «((Example) attribute).exampleValue»
                 «ENDIF-»
               «ENDIF-»
+          «ENDIF-»
           «ELSE-»
           type: array
           items:
+            «IF this.compositeDataType == true -»
+            type: string
+                «IF ownerAttribute.isDeprecated() -»
+            deprecated: true
+                «ENDIF-»
+            «ELSE-»
             type: «attribute.type.getOpenAPIType(spec)»
               «IF attribute.hasOpenAPIFormatForProperty()-»
             format: «attribute.getOpenAPIFormatForProperty()»
@@ -55,6 +68,7 @@
               «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
             deprecated: true
               «ENDIF-»
+            «ENDIF-»
           «ENDIF-»
           «IF attribute.isNullable() == false -»
           nullable: «attribute.isNullable()»
@@ -75,6 +89,12 @@
     # «this.fqn()»
     «ENDIF-»
     «this.name»:
+      «IF this.compositeDataType == true -»
+      type: string
+          «IF ownerAttribute.isDeprecated() -»
+      deprecated: true
+          «ENDIF-»
+      «ELSE-»
       type: «attribute.type.getOpenAPIType(spec)»
       «IF attribute.hasOpenAPIFormatForProperty()-»
       format: «attribute.getOpenAPIFormatForProperty()»
@@ -107,6 +127,7 @@
       example: «((Example) attribute).exampleValue»
         «ENDIF-»
       «ENDIF-»
+      «ENDIF-»
     «ENDIF-»         
   «ENDLET -»
 «ENDDEFINE»
@@ -118,6 +139,12 @@
 «indent»              «attribute.getCommentForOpenAPIDescription("                  ")»
                 «ENDIF-»
                 «IF param.isMultivalued() == false-»
+				    «IF this.compositeDataType == true -»
+«indent»            type: string
+				        «IF param.isDeprecated() -»
+«indent»            deprecated: true
+				        «ENDIF-»
+				    «ELSE-»
 «indent»            type: «attribute.type.getOpenAPIType(spec)»
                   «IF attribute.hasOpenAPIFormatForProperty()-»
 «indent»            format: «attribute.getOpenAPIFormatForProperty()»
@@ -137,9 +164,16 @@
 «indent»            example: «((Example) attribute).exampleValue»
                     «ENDIF-»
                   «ENDIF-»
+                  «ENDIF-»
                 «ELSE-»
 «indent»            type: array
 «indent»            items:
+				    «IF this.compositeDataType == true -»
+«indent»              type: string
+				        «IF param.isDeprecated() -»
+«indent»              deprecated: true
+				        «ENDIF-»
+				    «ELSE-»
 «indent»              type: «attribute.type.getOpenAPIType(spec)»
                   «IF attribute.hasOpenAPIFormatForProperty()-»
 «indent»              format: «attribute.getOpenAPIFormatForProperty()»
@@ -157,6 +191,7 @@
                   «IF attribute.isDeprecated() || param.isDeprecated() -»
 «indent»            deprecated: true
                   «ENDIF-»
+                «ENDIF-»
                 «ENDIF-»
                 «IF attribute.isNullable() == false -»
 «indent»            nullable: «attribute.isNullable()»
