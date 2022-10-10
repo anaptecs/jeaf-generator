@@ -184,27 +184,6 @@ components:
         - bookingID
       properties:
         bookingID:
-          $ref: '#/components/schemas/BookingID'
-
-    # com.anaptecs.jeaf.junit.openapi.base.BookingID
-    BookingID:
-      type: object
-      additionalProperties: false
-      required:
-        - referenceID
-        - externalRefID
-        - inventory
-        - bookingCode
-      properties:
-        referenceID:
-          type: string
-          nullable: false
-        externalRefID:
-          type: string
-          nullable: false
-        inventory:
-          $ref: '#/components/schemas/InventoryType'
-        bookingCode:
           type: string
           nullable: false
 
@@ -432,31 +411,6 @@ components:
             name:
               type: string
               nullable: false
-
-    # com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID
-    ComplexBookingID:
-      type: object
-      additionalProperties: false
-      required:
-        - referenceID
-        - internalID
-        - bookingIDs
-        - complexBookingType
-      properties:
-        referenceID:
-          type: string
-          nullable: false
-        internalID:
-          type: integer
-          format: int64
-          nullable: false
-        bookingIDs:
-          type: array
-          items:
-            $ref: '#/components/schemas/BookingID'
-          minItems: 1
-        complexBookingType:
-          $ref: '#/components/schemas/ComplexBookingType'
 
     # com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType
     ComplexBookingType:
@@ -1512,9 +1466,11 @@ components:
         - booking
       properties:
         booking:
-          $ref: '#/components/schemas/ComplexBookingID'
+          type: string
+          nullable: false
         additionalBookings:
           type: array
           items:
-            $ref: '#/components/schemas/ComplexBookingID'
+            type: string
+          nullable: false
 
