@@ -235,6 +235,14 @@ cached boolean isReadOnly(uml::Property property):
 cached boolean isWriteOnly(uml::Property property):
   if property.isStereotypeApplied("OpenAPIProperty") then ((JMM::OpenAPIProperty) property).accessType.name == "WRITE_ONLY" else false;
   
+cached boolean isNullableForParam(uml::Parameter param):
+	if param.isStereotypeApplied("NotNull")
+	then false
+	else 
+	  if param.lower > 0
+	  then false
+	  else true;
+
 cached String getOperationID(uml::Operation operation, uml::Interface service):
    operation.name;
    

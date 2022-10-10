@@ -596,6 +596,7 @@ components:
           maxLength: 3
           example: CHF
           nullable: false
+          readOnly: true
 
     # com.anaptecs.jeaf.junit.openapi.base.OpenAPITestObject
     OpenAPITestObject:
@@ -679,7 +680,6 @@ components:
           items:
             type: string
             pattern: '^DE\d{2}\s?([0-9a-zA-Z]{4}\s?){4}[0-9a-zA-Z]{2}$'
-          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.Partner
     Partner:
@@ -1472,5 +1472,4 @@ components:
           type: array
           items:
             type: string
-          nullable: false
 

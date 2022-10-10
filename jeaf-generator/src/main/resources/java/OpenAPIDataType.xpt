@@ -70,14 +70,14 @@
               «ENDIF-»
             «ENDIF-»
           «ENDIF-»
-          «IF attribute.isNullable() == false -»
-          nullable: «attribute.isNullable()»
+          «IF ownerAttribute.isNullable() == false -»
+          nullable: «ownerAttribute.isNullable()»
           «ENDIF-»  
-          «IF attribute.isReadOnly()  -»
-          readOnly: «attribute.isReadOnly()»
+          «IF ownerAttribute.isReadOnly()  -»
+          readOnly: «ownerAttribute.isReadOnly()»
           «ENDIF-»  
-          «IF attribute.isWriteOnly() -»
-          writeOnly: «attribute.isWriteOnly()»
+          «IF ownerAttribute.isWriteOnly() -»
+          writeOnly: «ownerAttribute.isWriteOnly()»
           «ENDIF-»  
             «IF ownerAttribute.hasExample()-»
               «IF ((Example) ownerAttribute).exampleValue.length > 0-»
@@ -193,14 +193,8 @@
                   «ENDIF-»
                 «ENDIF-»
                 «ENDIF-»
-                «IF attribute.isNullable() == false -»
-«indent»            nullable: «attribute.isNullable()»
-                «ENDIF-»  
-                «IF attribute.isReadOnly()  -»
-«indent»            readOnly: «attribute.isReadOnly()»
-                «ENDIF-»  
-                «IF attribute.isWriteOnly() -»
-«indent»            writeOnly: «attribute.isWriteOnly()»
+                «IF param.isNullableForParam() == false -»
+«indent»            nullable: «param.isNullableForParam()»
                 «ENDIF-»  
                 «IF param.hasExample()-»
                 «IF ((Example) param).exampleValue.length > 0-»
