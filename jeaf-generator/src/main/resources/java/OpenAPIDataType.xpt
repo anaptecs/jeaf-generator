@@ -12,7 +12,7 @@
           description: >-
             «attribute.getCommentForOpenAPIDescription("            ")»
           «ENDIF-»
-            «IF ownerAttribute.isMultivalued() == false-»
+          «IF ownerAttribute.isMultivalued() == false-»
           type: «attribute.type.getOpenAPIType(spec)»
               «IF attribute.hasOpenAPIFormatForProperty()-»
           format: «attribute.getOpenAPIFormatForProperty()»
@@ -32,7 +32,7 @@
           example: «((Example) attribute).exampleValue»
                 «ENDIF-»
               «ENDIF-»
-            «ELSE-»
+          «ELSE-»
           type: array
           items:
             type: «attribute.type.getOpenAPIType(spec)»
@@ -55,7 +55,7 @@
               «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
             deprecated: true
               «ENDIF-»
-            «ENDIF-»
+          «ENDIF-»
           «IF attribute.isNullable() == false -»
           nullable: «attribute.isNullable()»
           «ENDIF-»  
