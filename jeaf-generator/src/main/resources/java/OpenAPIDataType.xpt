@@ -218,17 +218,21 @@
 		  public void serialize( «this.fqn()» pObject, com.fasterxml.jackson.core.JsonGenerator pGenerator, com.fasterxml.jackson.databind.SerializerProvider pSerializers )
 		    throws java.io.IOException {
 		    
-		  «LET this.ownedAttribute.get(0) AS attr»
-		    // Write value directly to JSON and avoid nesting object structures
-		    «IF attr.type.isStringType()»
-		    pGenerator.writeString(pObject.«attr.asGetter()»());
-		    «ELSE»«IF attr.type.isBooleanType()»
-		    pGenerator.writeBoolean(pObject.«attr.asGetter()»());
-		    «ELSE»
-		    pGenerator.writeNumber(pObject.«attr.asGetter()»());
-		    «ENDIF»		    
-		    «ENDIF»
-		  «ENDLET»
+		  «IF this.isCompositeDataType()»
+		  	  pGenerator.writeString(pObject.get«this.getCompositeDateTypePublicFieldName().toFirstUpper()»());
+		  «ELSE»
+			  «LET this.ownedAttribute.get(0) AS attr»
+			    // Write value directly to JSON and avoid nesting object structures
+			    «IF attr.type.isStringType()»
+			    pGenerator.writeString(pObject.«attr.asGetter()»());
+			    «ELSE»«IF attr.type.isBooleanType()»
+			    pGenerator.writeBoolean(pObject.«attr.asGetter()»());
+			    «ELSE»
+			    pGenerator.writeNumber(pObject.«attr.asGetter()»());
+			    «ENDIF»		    
+			    «ENDIF»
+			  «ENDLET»
+		  «ENDIF»
 		  }
 		}
 	«ENDFILE»
@@ -251,32 +255,38 @@
 			com.fasterxml.jackson.databind.JsonNode lNode = pParser.getCodec().readTree(pParser);
 		
 		    // We expect that data types are always serialized as plain text which will result in a TextNode.
-		    «LET this.ownedAttribute.get(0) AS attr»
-			    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
-			    «IF attr.type.isBooleanType()»
-		        return «this.fqn()».builder().«attr.asSetter()»(lNode.asBoolean()).build();
-		        «ENDIF»
-			    «IF attr.type.isStringType()»
-		        return «this.fqn()».builder().«attr.asSetter()»(lNode.asText()).build();
-		        «ENDIF»
-		        «IF attr.type.isByteType()»
-		        return «this.fqn()».builder().«attr.asSetter()»((byte)lNode.asInt()).build();
-		        «ENDIF»
-		        «IF attr.type.isShortType()»
-		        return «this.fqn()».builder().«attr.asSetter()»((short)lNode.asInt()).build();
-		        «ENDIF»
-		        «IF attr.type.isIntegerType()»
-		        return «this.fqn()».builder().«attr.asSetter()»(lNode.asInt()).build();
-		        «ENDIF»
-		        «IF attr.type.isLongType()»
-		        return «this.fqn()».builder().«attr.asSetter()»(lNode.asLong()).build();
-		        «ENDIF»
-		        «IF attr.type.isFloatType()»
-		        return «this.fqn()».builder().«attr.asSetter()»((float)lNode.asDouble()).build();
-		        «ENDIF»
-		        «IF attr.type.isDoubleType()»
-		        return «this.fqn()».builder().«attr.asSetter()»(lNode.asDouble()).build();
-		        «ENDIF»
+		    «IF this.isCompositeDataType()»
+		    	if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
+		    	return «this.fqn()».builder().set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»(lNode.asText()).build();
+		    «ELSE»		    
+			    «LET this.ownedAttribute.get(0) AS attr»
+				    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
+				    «IF attr.type.isBooleanType()»
+			        return «this.fqn()».builder().«attr.asSetter()»(lNode.asBoolean()).build();
+			        «ENDIF»
+				    «IF attr.type.isStringType()»
+			        return «this.fqn()».builder().«attr.asSetter()»(lNode.asText()).build();
+			        «ENDIF»
+			        «IF attr.type.isByteType()»
+			        return «this.fqn()».builder().«attr.asSetter()»((byte)lNode.asInt()).build();
+			        «ENDIF»
+			        «IF attr.type.isShortType()»
+			        return «this.fqn()».builder().«attr.asSetter()»((short)lNode.asInt()).build();
+			        «ENDIF»
+			        «IF attr.type.isIntegerType()»
+			        return «this.fqn()».builder().«attr.asSetter()»(lNode.asInt()).build();
+			        «ENDIF»
+			        «IF attr.type.isLongType()»
+			        return «this.fqn()».builder().«attr.asSetter()»(lNode.asLong()).build();
+			        «ENDIF»
+			        «IF attr.type.isFloatType()»
+			        return «this.fqn()».builder().«attr.asSetter()»((float)lNode.asDouble()).build();
+			        «ENDIF»
+			        «IF attr.type.isDoubleType()»
+			        return «this.fqn()».builder().«attr.asSetter()»(lNode.asDouble()).build();
+			        «ENDIF»
+			    «ENDLET»
+		    «ENDIF»
 		    }
 		    // Node is not a TextNode
 		    else {
@@ -286,7 +296,6 @@
 		      throw new java.io.IOException("Unable to deserialize object of type «this.fqn()». Expected text node but received other type of JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+ lNode.getClass().getName() + "''.");
 		      «ENDIF»
 		    }
-		    «ENDLET»
 		}
 	}
 	«ENDFILE»

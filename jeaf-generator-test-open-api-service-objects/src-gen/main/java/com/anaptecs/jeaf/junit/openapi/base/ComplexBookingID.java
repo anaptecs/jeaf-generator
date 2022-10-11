@@ -5,14 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -32,34 +26,16 @@ public class ComplexBookingID implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * 
+   * String representation of this object.
    */
-  @NotNull
-  private String referenceID;
-
-  /**
-   * 
-   */
-  private long internalID;
-
-  /**
-   * 
-   */
-  @Size(min = 1)
-  private List<BookingID> bookingIDs;
-
-  /**
-   * 
-   */
-  @NotNull
-  private ComplexBookingType complexBookingType;
+  private final String bookingID;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected ComplexBookingID( ) {
-    bookingIDs = new ArrayList<BookingID>();
+    bookingID = null;
   }
 
   /**
@@ -71,15 +47,7 @@ public class ComplexBookingID implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    referenceID = pBuilder.referenceID;
-    internalID = pBuilder.internalID;
-    if (pBuilder.bookingIDs != null) {
-      bookingIDs = pBuilder.bookingIDs;
-    }
-    else {
-      bookingIDs = new ArrayList<BookingID>();
-    }
-    complexBookingType = pBuilder.complexBookingType;
+    bookingID = pBuilder.bookingID;
   }
 
   /**
@@ -108,24 +76,9 @@ public class ComplexBookingID implements ServiceObject {
    */
   public static class Builder {
     /**
-     * 
+     * String representation of this object.
      */
-    private String referenceID;
-
-    /**
-     * 
-     */
-    private long internalID;
-
-    /**
-     * 
-     */
-    private List<BookingID> bookingIDs;
-
-    /**
-     * 
-     */
-    private ComplexBookingType complexBookingType;
+    private String bookingID;
 
     /**
      * Use {@link ComplexBookingID#builder()} instead of private constructor to create new builder.
@@ -139,58 +92,17 @@ public class ComplexBookingID implements ServiceObject {
     protected Builder( ComplexBookingID pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        referenceID = pObject.referenceID;
-        internalID = pObject.internalID;
-        bookingIDs = pObject.bookingIDs;
-        complexBookingType = pObject.complexBookingType;
+        bookingID = pObject.bookingID;
       }
     }
 
     /**
-     * Method sets the attribute "referenceID".
+     * Method returns the String representation of this object.
      * 
-     * @param pReferenceID Value to which the attribute "referenceID" should be set.
+     * @return String bookingID String representation of this object.
      */
-    public Builder setReferenceID( String pReferenceID ) {
-      // Assign value to attribute
-      referenceID = pReferenceID;
-      return this;
-    }
-
-    /**
-     * Method sets the attribute "internalID".
-     * 
-     * @param pInternalID Value to which the attribute "internalID" should be set.
-     */
-    public Builder setInternalID( long pInternalID ) {
-      // Assign value to attribute
-      internalID = pInternalID;
-      return this;
-    }
-
-    /**
-     * Method sets the association "bookingIDs".
-     * 
-     * @param pBookingIDs Collection with objects to which the association should be set.
-     */
-    public Builder setBookingIDs( List<BookingID> pBookingIDs ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pBookingIDs != null) {
-        bookingIDs = new ArrayList<BookingID>(pBookingIDs);
-      }
-      else {
-        bookingIDs = null;
-      }
-      return this;
-    }
-
-    /**
-     * Method sets the association "complexBookingType".
-     * 
-     * @param pComplexBookingType ComplexBookingType to which the association "complexBookingType" should be set.
-     */
-    public Builder setComplexBookingType( ComplexBookingType pComplexBookingType ) {
-      complexBookingType = pComplexBookingType;
+    public Builder setBookingID( String pBookingID ) {
+      bookingID = pBookingID;
       return this;
     }
 
@@ -219,136 +131,12 @@ public class ComplexBookingID implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "referenceID".
+   * Method returns the String representation of this object.
    * 
-   * 
-   * @return String Value to which the attribute "referenceID" is set.
+   * @return String String representation of this object.
    */
-  public String getReferenceID( ) {
-    return referenceID;
-  }
-
-  /**
-   * Method sets the attribute "referenceID".
-   * 
-   * 
-   * @param pReferenceID Value to which the attribute "referenceID" should be set.
-   */
-  public void setReferenceID( String pReferenceID ) {
-    // Assign value to attribute
-    referenceID = pReferenceID;
-  }
-
-  /**
-   * Method returns the attribute "internalID".
-   * 
-   * 
-   * @return long Value to which the attribute "internalID" is set.
-   */
-  public long getInternalID( ) {
-    return internalID;
-  }
-
-  /**
-   * Method sets the attribute "internalID".
-   * 
-   * 
-   * @param pInternalID Value to which the attribute "internalID" should be set.
-   */
-  public void setInternalID( long pInternalID ) {
-    // Assign value to attribute
-    internalID = pInternalID;
-  }
-
-  /**
-   * Method returns the association "bookingIDs".
-   * 
-   *
-   * @return Collection All BookingID objects that belong to the association "bookingIDs". The method never returns null
-   * and the returned collection is modifiable.
-   */
-  public List<BookingID> getBookingIDs( ) {
-    // Return all BookingID objects directly without any protection against modification.
-    return bookingIDs;
-  }
-
-  /**
-   * Method adds the passed BookingID object to the association "bookingIDs".
-   * 
-   * 
-   * @param pBookingIDs Object that should be added to the association "bookingIDs". The parameter must not be null.
-   */
-  public void addToBookingIDs( BookingID pBookingIDs ) {
-    // Check parameter "pBookingIDs" for invalid value null.
-    Check.checkInvalidParameterNull(pBookingIDs, "pBookingIDs");
-    // Add passed object to collection of associated BookingID objects.
-    bookingIDs.add(pBookingIDs);
-  }
-
-  /**
-   * Method adds all passed objects to the association "bookingIDs".
-   * 
-   * 
-   * @param pBookingIDs Collection with all objects that should be added to the association "bookingIDs". The parameter
-   * must not be null.
-   */
-  public void addToBookingIDs( Collection<BookingID> pBookingIDs ) {
-    // Check parameter "pBookingIDs" for invalid value null.
-    Check.checkInvalidParameterNull(pBookingIDs, "pBookingIDs");
-    // Add all passed objects.
-    for (BookingID lNextObject : pBookingIDs) {
-      this.addToBookingIDs(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed BookingID object from the association "bookingIDs".
-   * 
-   * 
-   * @param pBookingIDs Object that should be removed from the association "bookingIDs". The parameter must not be null.
-   */
-  public void removeFromBookingIDs( BookingID pBookingIDs ) {
-    // Check parameter for invalid value null.
-    Check.checkInvalidParameterNull(pBookingIDs, "pBookingIDs");
-    // Remove passed object from collection of associated BookingID objects.
-    bookingIDs.remove(pBookingIDs);
-  }
-
-  /**
-   * Method removes all objects from the association "bookingIDs".
-   * 
-   */
-  public void clearBookingIDs( ) {
-    // Remove all objects from association "bookingIDs".
-    bookingIDs.clear();
-  }
-
-  /**
-   * Method returns the association "complexBookingType".
-   * 
-   *
-   * @return ComplexBookingType ComplexBookingType to which the association "complexBookingType" is set.
-   */
-  public ComplexBookingType getComplexBookingType( ) {
-    return complexBookingType;
-  }
-
-  /**
-   * Method sets the association "complexBookingType".
-   * 
-   * 
-   * @param pComplexBookingType ComplexBookingType to which the association "complexBookingType" should be set.
-   */
-  public void setComplexBookingType( ComplexBookingType pComplexBookingType ) {
-    complexBookingType = pComplexBookingType;
-  }
-
-  /**
-   * Method unsets the association "complexBookingType".
-   * 
-   */
-  public final void unsetComplexBookingType( ) {
-    complexBookingType = null;
+  public String getBookingID( ) {
+    return bookingID;
   }
 
   /**
@@ -363,11 +151,7 @@ public class ComplexBookingID implements ServiceObject {
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
     lBuilder.append('\n');
-    lBuilder
-        .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "referenceID", "" + referenceID));
-    lBuilder.append('\n');
-    lBuilder
-        .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "internalID", "" + internalID));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "bookingID", "" + bookingID));
     lBuilder.append('\n');
     return lBuilder;
   }
