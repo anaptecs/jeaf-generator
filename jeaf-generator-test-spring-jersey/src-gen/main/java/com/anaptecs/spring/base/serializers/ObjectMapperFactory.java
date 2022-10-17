@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base.serializers;
 
+import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -25,6 +26,8 @@ public class ObjectMapperFactory {
    * @return {@link ObjectMapper} Created object mapper. The method never returns null.
    */
   public static ObjectMapper createObjectMapper( ) {
+    // TODO Create composite type converter that should be used.
+    CompositeTypeConverter lCompositeTypeConverter = null;
     // Create builder for object mappper.
     Builder lBuilder = JsonMapper.builder();
     // Set default visibilities so that they match to the generated classes that are intended to be serialized using
@@ -39,7 +42,7 @@ public class ObjectMapperFactory {
     // Configure mapper features
     lBuilder.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
     // Create configured modules and add them as well.
-    lBuilder.addModule(new BaseModuleFactory().createModule());
+    lBuilder.addModule(new BaseModuleFactory(lCompositeTypeConverter).createModule());
     // Create object mapper and return it
     JsonMapper lObjectMapper = lBuilder.build();
     lObjectMapper.setDefaultPropertyInclusion(Include.NON_EMPTY);
