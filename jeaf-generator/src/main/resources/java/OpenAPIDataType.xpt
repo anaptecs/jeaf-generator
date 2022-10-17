@@ -229,7 +229,7 @@
 			/**
 			 * Serializer is used to convert composite data type «name» into a String representation.
 			 */
-			private «IF isTargetRuntimeJEAF() == false»»final «ENDIF» com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter serializer;
+			private «IF isTargetRuntimeJEAF() == false»final «ENDIF» com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter serializer;
 			
 			«IF isTargetRuntimeJEAF() == false»
 			/**
@@ -315,7 +315,7 @@
 			/**
 			 * Deserializer is used to convert a String representation of composite data type «name» back into an real object.
 			 */
-			private «IF isTargetRuntimeJEAF() == false»»final «ENDIF» com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter deserializer;
+			private «IF isTargetRuntimeJEAF() == false»final «ENDIF» com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter deserializer;
 			
 			«IF isTargetRuntimeJEAF() == false»
 			/**

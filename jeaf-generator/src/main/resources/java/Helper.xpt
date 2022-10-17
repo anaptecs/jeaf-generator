@@ -86,15 +86,22 @@
 
 «DEFINE GenerateConstantsForAttributeNames FOR uml::Class»
 	«IF generateConstantsForAttributeNames() == true»
-		«FOREACH this.ownedAttribute AS attr»
-			«IF attr.isStatic == false»        
-			/**
-			 * Constant for the name of attribute "«attr.name»".
-			 */
-			«EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr-»
-			public static final String «attr.asInstanceVar().toUpperCase()» = "«attr.asInstanceVar()»";
-			«ENDIF»
-		«ENDFOREACH»
+		«IF this.isCompositeDataType()»
+				/**
+				 * Constant for the name of attribute "«this.getCompositeDateTypePublicFieldName()»".
+				 */
+				public static final String «this.getCompositeDateTypePublicFieldName().toUpperCase()» = "«this.getCompositeDateTypePublicFieldName()»";
+		«ELSE»
+			«FOREACH this.ownedAttribute AS attr»
+				«IF attr.isStatic == false»        
+				/**
+				 * Constant for the name of attribute "«attr.name»".
+				 */
+				«EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr-»
+				public static final String «attr.asInstanceVar().toUpperCase()» = "«attr.asInstanceVar()»";
+				«ENDIF»
+			«ENDFOREACH»
+		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»
 
