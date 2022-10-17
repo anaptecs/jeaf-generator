@@ -14,7 +14,6 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.anaptecs.jeaf.openapi.BookingID;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -26,9 +25,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 public class Booking {
   @JsonProperty("bookingID")
-  private BookingID bookingID = null;
+  private String bookingID = null;
 
-  public Booking bookingID(BookingID bookingID) {
+  public Booking bookingID(String bookingID) {
     this.bookingID = bookingID;
     return this;
   }
@@ -38,11 +37,11 @@ public class Booking {
    * @return bookingID
   **/
   @Schema(required = true, description = "")
-  public BookingID getBookingID() {
+  public String getBookingID() {
     return bookingID;
   }
 
-  public void setBookingID(BookingID bookingID) {
+  public void setBookingID(String bookingID) {
     this.bookingID = bookingID;
   }
 

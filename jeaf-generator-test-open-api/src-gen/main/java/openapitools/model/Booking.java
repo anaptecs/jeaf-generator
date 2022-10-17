@@ -24,7 +24,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import openapitools.model.BookingID;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -38,12 +37,12 @@ import openapitools.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Booking {
   public static final String JSON_PROPERTY_BOOKING_I_D = "bookingID";
-  private BookingID bookingID;
+  private String bookingID;
 
   public Booking() { 
   }
 
-  public Booking bookingID(BookingID bookingID) {
+  public Booking bookingID(String bookingID) {
     this.bookingID = bookingID;
     return this;
   }
@@ -57,14 +56,14 @@ public class Booking {
   @JsonProperty(JSON_PROPERTY_BOOKING_I_D)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public BookingID getBookingID() {
+  public String getBookingID() {
     return bookingID;
   }
 
 
   @JsonProperty(JSON_PROPERTY_BOOKING_I_D)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setBookingID(BookingID bookingID) {
+  public void setBookingID(String bookingID) {
     this.bookingID = bookingID;
   }
 

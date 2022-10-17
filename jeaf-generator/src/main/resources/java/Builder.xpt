@@ -19,9 +19,16 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF sup
 	 */
 	private com.anaptecs.jeaf.xfun.api.common.ObjectIdentity<?> objectID;
 	«ENDIF»
-	«FOREACH this.ownedAttribute AS attr»
-	«EXPAND BuilderPropertyDeclaration FOR attr»
-	«ENDFOREACH»
+	«IF this.isCompositeDataType()»
+		/**
+		 * String representation of this object.
+		 */
+		private String bookingID;
+	«ELSE»
+		«FOREACH this.ownedAttribute AS attr»
+		«EXPAND BuilderPropertyDeclaration FOR attr»
+		«ENDFOREACH»
+	«ENDIF»
 
     /**
      * Use {@link «name»#builder()} instead of private constructor to create new builder.
@@ -40,9 +47,13 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF sup
 		«IF needsToImplementIdentifiable() == true»
 		objectID = pObject.objectID;
 		«ENDIF»
-        «FOREACH this.ownedAttribute AS attr»
-        «IF attr.isStatic == false»«attr.name» = pObject.«attr.name»;«ENDIF»
-        «ENDFOREACH»
+        «IF this.isCompositeDataType()»
+        	«this.getCompositeDateTypePublicFieldName()» = pObject.«this.getCompositeDateTypePublicFieldName()»;
+        «ELSE»
+	        «FOREACH this.ownedAttribute AS attr»
+	        «IF attr.isStatic == false»«attr.name» = pObject.«attr.name»;«ENDIF»
+	        «ENDFOREACH»
+        «ENDIF»
       }
     }
 
@@ -95,9 +106,21 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF sup
 	«ENDIF»
 	
 	«REM»Generate setters for each property of the builder«ENDREM»
-	«FOREACH this.ownedAttribute AS attr»
-		«EXPAND BuilderSetter("Builder") FOR attr»
-	«ENDFOREACH»
+	«IF this.isCompositeDataType()»
+		/**
+		 * Method returns the String representation of this object.
+		 * 
+		 * @return String bookingID String representation of this object.
+		 */
+		public Builder set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»( String p«this.getCompositeDateTypePublicFieldName().toFirstUpper()» ) {
+		  «this.getCompositeDateTypePublicFieldName()» = p«this.getCompositeDateTypePublicFieldName().toFirstUpper()»;
+		  return this;
+		}		
+	«ELSE»
+		«FOREACH this.ownedAttribute AS attr»
+			«EXPAND BuilderSetter("Builder") FOR attr»
+		«ENDFOREACH»
+	«ENDIF»
 	
 	«IF this.isAbstract == false»
 	/**
@@ -140,9 +163,17 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 	 */
 	private com.anaptecs.jeaf.xfun.api.common.ObjectIdentity<?> objectID;
 	«ENDIF»
-	«FOREACH this.ownedAttribute AS attr»
-	«EXPAND BuilderPropertyDeclaration FOR attr»
-	«ENDFOREACH»
+
+	«IF this.isCompositeDataType()»
+		/**
+		 * String representation of this object.
+		 */
+		private String bookingID;
+	«ELSE»
+		«FOREACH this.ownedAttribute AS attr»
+		«EXPAND BuilderPropertyDeclaration FOR attr»
+		«ENDFOREACH»
+	«ENDIF»
 
     /**
      * Use {@link «this.name».builder()} instead of protected constructor to create new builder.
@@ -161,9 +192,14 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 		«IF needsToImplementIdentifiable() == true»
 		objectID = pObject.objectID;
 		«ENDIF»
-        «FOREACH this.ownedAttribute AS attr»
-        «IF attr.isStatic == false»«attr.name» = pObject.«attr.name»;«ENDIF»
-        «ENDFOREACH»
+
+        «IF this.isCompositeDataType()»
+        	«this.getCompositeDateTypePublicFieldName()» = pObject.«this.getCompositeDateTypePublicFieldName()»;
+        «ELSE»
+	        «FOREACH this.ownedAttribute AS attr»
+	        «IF attr.isStatic == false»«attr.name» = pObject.«attr.name»;«ENDIF»
+	        «ENDFOREACH»
+        «ENDIF»
       }
     }
 
@@ -194,10 +230,22 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 	«ENDIF»
 	
 	«REM»Generate setters for each property of the builder«ENDREM»
-	«FOREACH this.ownedAttribute AS attr»
-	«EXPAND BuilderSetter("BuilderBase") FOR attr»
-	«ENDFOREACH»
-	
+	«IF this.isCompositeDataType()»
+		/**
+		 * Method returns the String representation of this object.
+		 * 
+		 * @return String bookingID String representation of this object.
+		 */
+		public BuilderBase set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»( String p«this.getCompositeDateTypePublicFieldName().toFirstUpper()» ) {
+		  «this.getCompositeDateTypePublicFieldName()» = p«this.getCompositeDateTypePublicFieldName().toFirstUpper()»;
+		  return this;
+		}		
+	«ELSE»
+		«FOREACH this.ownedAttribute AS attr»
+			«EXPAND BuilderSetter("BuilderBase") FOR attr»
+		«ENDFOREACH»
+	«ENDIF»
+
 	«IF this.isAbstract == false»
 	/**
 	 * Method creates a new instance of class «this.name». The object will be initialized with the values of the

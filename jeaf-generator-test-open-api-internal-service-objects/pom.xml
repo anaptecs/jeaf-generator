@@ -7,15 +7,21 @@
 		<version>1.6.61-SNAPSHOT</version>
 	</parent>
 
-	<name>JEAF Generator Test Open API Internal Service Objects</name>
+	<name>JEAF Generator Test OpenAPI Internal Service Objects</name>
 	<artifactId>jeaf-generator-test-open-api-internal-service-objects</artifactId>
 	<packaging>jar</packaging>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.anaptecs.jeaf.core</groupId>
-			<artifactId>jeaf-core-api</artifactId>
+			<artifactId>jeaf-core-service-channel-api</artifactId>
 			<version>${jeaf.core.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-composite-type-service-provider</artifactId>
+			<version>${jeaf.rest.api.version}</version>
 		</dependency>
 
 		<dependency>
@@ -24,12 +30,6 @@
 		    <version>${jeaf.json.api.version}</version>
 		</dependency>
 		
-		<dependency>
-			<groupId>com.anaptecs.jeaf.rest</groupId>
-			<artifactId>jeaf-rest-composite-type-api</artifactId>
-			<version>${jeaf.rest.api.version}</version>
-		</dependency>
-
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
@@ -47,6 +47,12 @@
 			<groupId>com.anaptecs.jeaf.workload</groupId>
 			<artifactId>jeaf-workload-rest-api</artifactId>
 			<version>${jeaf.workload.api.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.anaptecs.jeaf.x-fun</groupId>
+					<artifactId>jeaf-x-fun-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -54,6 +60,19 @@
 			<artifactId>jeaf-x-fun-default-runtime</artifactId>
 			<version>${jeaf.x-fun.impl.version}</version>
 			<type>pom</type>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.anaptecs.jeaf.core</groupId>
+			<artifactId>jeaf-core-service-channel-jse</artifactId>
+			<version>${jeaf.core.impl.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-composite-type-impl-kryo-jeaf</artifactId>
+			<version>${jeaf.rest.impl.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -64,7 +83,6 @@
 		    <type>pom</type>
 		    <scope>test</scope>
 		</dependency>
-
 
 		<dependency>
 			<groupId>com.anaptecs.jeaf.json</groupId>
@@ -181,6 +199,7 @@
 								<detectXFunConfigs>true</detectXFunConfigs>
 								<detectToolsConfigs>true</detectToolsConfigs>
 								<detectJSONConfigs>true</detectJSONConfigs>
+								<detectCoreConfigs>true</detectCoreConfigs>
 							</explicitConfigurationDetection>
 						</configuration>
 					</execution>

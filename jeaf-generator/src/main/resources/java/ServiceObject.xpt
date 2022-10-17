@@ -40,7 +40,14 @@
 		«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())»
 		«ENDIF»
 		
-		«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
+		«IF this.isCompositeDataType()»
+			/**
+			 * String representation of this object.
+			 */
+			private «IF this.isCompositeDataTypeReadonly()»final «ENDIF» String «this.getCompositeDateTypePublicFieldName()»;
+		«ELSE»
+			«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
+		«ENDIF»
 	    
 		/**
 		 * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal" object creation builder should be used instead.
@@ -84,12 +91,34 @@
 		«REM»Generate builder«ENDREM»
 		«EXPAND java::Builder::StaticBuilderMethods FOR this»
 		«EXPAND java::Builder::GenerateBuilder (this.getObjectIDClassName())»
-					
-        «IF needsToImplementIdentifiable() == true»
-			«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())»
-        «ENDIF»
-
-		«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
+		
+		«IF this.isCompositeDataType()»
+			/**
+			 * Method returns the String representation of this object.
+			 * 
+			 * @return String String representation of this object.
+			 */
+			public String get«this.getCompositeDateTypePublicFieldName().toFirstUpper()»( ) {
+			  return «this.getCompositeDateTypePublicFieldName()»;
+			}
+			
+			«IF this.isCompositeDataTypeReadonly() == false»
+			/**
+			 * Method returns the String representation of this object.
+			 * 
+			 * @return String bookingID String representation of this object.
+			 */
+			public void set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»( String p«this.getCompositeDateTypePublicFieldName().toFirstUpper()» ) {
+			  «this.getCompositeDateTypePublicFieldName()» = p«this.getCompositeDateTypePublicFieldName().toFirstUpper()»;
+			}
+			«ENDIF»
+		«ELSE»
+	        «IF needsToImplementIdentifiable() == true»
+				«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())»
+	        «ENDIF»
+	
+			«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
+		«ENDIF»
 		«EXPAND java::Helper::GenerateToStringMethod»
 	}
 	«ENDFILE»
@@ -119,7 +148,14 @@
 		«EXPAND java::Identifiable::GenerateIdentifiableDeclaration (this.getObjectIDClassName())»
 		«ENDIF»
 		
-		«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
+		«IF this.isCompositeDataType()»
+			/**
+			 * String representation of this object.
+			 */
+			private «IF this.isCompositeDataTypeReadonly()»final «ENDIF» String «this.getCompositeDateTypePublicFieldName()»;
+		«ELSE»
+			«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
+		«ENDIF»
 
 		/**
 		 * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal" object creation builder should be used instead.
@@ -163,12 +199,34 @@
 		«REM»Generate builder«ENDREM»
 		«EXPAND java::Builder::GenerateBuilderBase (this.getObjectIDClassName())»
 					
-		«IF needsToImplementIdentifiable() == true»
-			«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())»
-        «ENDIF»
+		«IF this.isCompositeDataType()»
+			/**
+			 * Method returns the String representation of this object.
+			 * 
+			 * @return String String representation of this object.
+			 */
+			public String get«this.getCompositeDateTypePublicFieldName().toFirstUpper()»( ) {
+			  return «this.getCompositeDateTypePublicFieldName()»;
+			}
+			
+			«IF this.isCompositeDataTypeReadonly() == false»
+			/**
+			 * Method returns the String representation of this object.
+			 * 
+			 * @return String bookingID String representation of this object.
+			 */
+			public void set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»( String p«this.getCompositeDateTypePublicFieldName().toFirstUpper()» ) {
+			  «this.getCompositeDateTypePublicFieldName()» = p«this.getCompositeDateTypePublicFieldName().toFirstUpper()»;
+			}
+			«ENDIF»
+		«ELSE»
+	        «IF needsToImplementIdentifiable() == true»
+				«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())»
+	        «ENDIF»
+	
+			«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
+		«ENDIF»
 
-		«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
-      
         «EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
         «EXPAND java::Helper::GenerateToStringMethod»
       }
@@ -230,72 +288,82 @@
 
 
 «DEFINE ServiceObjectPlainConstructorInit FOR ServiceObject»
-	«FOREACH this.ownedAttribute AS attr»
-		«IF attr.isReadOnly && attr.isStatic == false»
-			«IF attr.type.isPrimitiveType() == true»
-				«IF attr.isMultivalued() == false»
-					«IF attr.isRealInitValue()»
-						«attr.name» = «attr.initValue()»;
+	«IF this.isCompositeDataType()»
+		«IF this.isCompositeDataTypeReadonly()»
+			«this.getCompositeDateTypePublicFieldName()» = null;
+		«ENDIF»
+	«ELSE»
+		«FOREACH this.ownedAttribute AS attr»
+			«IF attr.isReadOnly && attr.isStatic == false»
+				«IF attr.type.isPrimitiveType() == true»
+					«IF attr.isMultivalued() == false»
+						«IF attr.isRealInitValue()»
+							«attr.name» = «attr.initValue()»;
+						«ELSE»
+							«attr.name» = «attr.getPrimitiveDefaultValue()»;
+						«ENDIF»
 					«ELSE»
-						«attr.name» = «attr.getPrimitiveDefaultValue()»;
-					«ENDIF»
-				«ELSE»
-					«attr.name» = null;
-				«ENDIF»
-			«ELSE»
-				«IF attr.isMultivalued()»
-					«REM»Distiguish between arrays and collections.«ENDREM»
-					«IF attr.association == null»
 						«attr.name» = null;
-					«ELSE»
-						«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
 					«ENDIF»
 				«ELSE»
-					«attr.name» = null;
+					«IF attr.isMultivalued()»
+						«REM»Distiguish between arrays and collections.«ENDREM»
+						«IF attr.association == null»
+							«attr.name» = null;
+						«ELSE»
+							«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+						«ENDIF»
+					«ELSE»
+						«attr.name» = null;
+					«ENDIF»
 				«ENDIF»
-			«ENDIF»
-		«ELSE»
-			«IF attr.isMultivalued() && attr.association != null»
-				«REM»Only in case of collections we have to initilize them.«ENDREM»
-				«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
 			«ELSE»
-				«IF attr.isRealInitValue() && attr.isStatic == false »
-					«attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
+				«IF attr.isMultivalued() && attr.association != null»
+					«REM»Only in case of collections we have to initilize them.«ENDREM»
+					«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+				«ELSE»
+					«IF attr.isRealInitValue() && attr.isStatic == false »
+						«attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
+					«ENDIF»
 				«ENDIF»
 			«ENDIF»
-		«ENDIF»
-		«IF attr.isTransientBidirectionalBackReference()»
-			// Bidirectional back reference is not yet set up correctly
-			«attr.asInstanceVar()»BackReferenceInitialized = false;
-		«ENDIF»
-	«ENDFOREACH»
+			«IF attr.isTransientBidirectionalBackReference()»
+				// Bidirectional back reference is not yet set up correctly
+				«attr.asInstanceVar()»BackReferenceInitialized = false;
+			«ENDIF»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE ServiceObjectBuilderConstructorInit FOR ServiceObject»
-	«FOREACH this.ownedAttribute AS attr»
-		«IF attr.association == null»
-			«IF attr.isStatic == false»
-				«attr.name» = pBuilder.«attr.name»;
-			«ENDIF»
-		«ELSE»
-			«IF attr.isMultivalued()»
+	«IF this.isCompositeDataType()»
+		«this.getCompositeDateTypePublicFieldName()» = pBuilder.«this.getCompositeDateTypePublicFieldName()»;
+	«ELSE»
+		«FOREACH this.ownedAttribute AS attr»
+			«IF attr.association == null»
 				«IF attr.isStatic == false»
-					if(pBuilder.«attr.name» != null) {
 					«attr.name» = pBuilder.«attr.name»;
-					}
-					else {
-					«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
-					}
 				«ENDIF»
 			«ELSE»
-				«IF attr.isStatic == false»
-					«attr.name» = pBuilder.«attr.name»;
-				«ENDIF»			  	
+				«IF attr.isMultivalued()»
+					«IF attr.isStatic == false»
+						if(pBuilder.«attr.name» != null) {
+						«attr.name» = pBuilder.«attr.name»;
+						}
+						else {
+						«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+						}
+					«ENDIF»
+				«ELSE»
+					«IF attr.isStatic == false»
+						«attr.name» = pBuilder.«attr.name»;
+					«ENDIF»			  	
+				«ENDIF»
+			«ENDIF»			  
+			«IF attr.isTransientBidirectionalBackReference()»
+				// Bidirectional back reference is set up correctly as a builder is used.
+				«attr.asInstanceVar()»BackReferenceInitialized = true;
 			«ENDIF»
-		«ENDIF»			  
-		«IF attr.isTransientBidirectionalBackReference()»
-			// Bidirectional back reference is set up correctly as a builder is used.
-			«attr.asInstanceVar()»BackReferenceInitialized = true;
-		«ENDIF»
-	«ENDFOREACH»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»

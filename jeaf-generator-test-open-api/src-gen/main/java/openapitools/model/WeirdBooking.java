@@ -26,7 +26,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import openapitools.model.ComplexBookingID;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -41,15 +40,15 @@ import openapitools.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class WeirdBooking {
   public static final String JSON_PROPERTY_BOOKING = "booking";
-  private ComplexBookingID booking;
+  private String booking;
 
   public static final String JSON_PROPERTY_ADDITIONAL_BOOKINGS = "additionalBookings";
-  private List<ComplexBookingID> additionalBookings = null;
+  private List<String> additionalBookings = null;
 
   public WeirdBooking() { 
   }
 
-  public WeirdBooking booking(ComplexBookingID booking) {
+  public WeirdBooking booking(String booking) {
     this.booking = booking;
     return this;
   }
@@ -63,24 +62,24 @@ public class WeirdBooking {
   @JsonProperty(JSON_PROPERTY_BOOKING)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public ComplexBookingID getBooking() {
+  public String getBooking() {
     return booking;
   }
 
 
   @JsonProperty(JSON_PROPERTY_BOOKING)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setBooking(ComplexBookingID booking) {
+  public void setBooking(String booking) {
     this.booking = booking;
   }
 
 
-  public WeirdBooking additionalBookings(List<ComplexBookingID> additionalBookings) {
+  public WeirdBooking additionalBookings(List<String> additionalBookings) {
     this.additionalBookings = additionalBookings;
     return this;
   }
 
-  public WeirdBooking addAdditionalBookingsItem(ComplexBookingID additionalBookingsItem) {
+  public WeirdBooking addAdditionalBookingsItem(String additionalBookingsItem) {
     if (this.additionalBookings == null) {
       this.additionalBookings = new ArrayList<>();
     }
@@ -97,14 +96,14 @@ public class WeirdBooking {
   @JsonProperty(JSON_PROPERTY_ADDITIONAL_BOOKINGS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<ComplexBookingID> getAdditionalBookings() {
+  public List<String> getAdditionalBookings() {
     return additionalBookings;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ADDITIONAL_BOOKINGS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalBookings(List<ComplexBookingID> additionalBookings) {
+  public void setAdditionalBookings(List<String> additionalBookings) {
     this.additionalBookings = additionalBookings;
   }
 

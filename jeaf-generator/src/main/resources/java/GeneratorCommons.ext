@@ -154,6 +154,9 @@ cached boolean generatePublicSettersForAssociations() :
 cached boolean generateNullChecksForToOneAssociationsOfServiceObjects() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateNullChecksForToOneAssociationsOfServiceObjects();
     
+cached boolean generatePublicObjectView() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generatePublicObjectView();
+    
 cached boolean disableCollectionImmutability():
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.disableCollectionImmutability();
             
@@ -326,4 +329,49 @@ cached boolean isRESTLibraryJAXRS():
   
 cached boolean isRESTLibrarySpringWebMVC():
   JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isRESTLibrarySpringWebMVC();
+  
+  
+cached boolean isCompositeDataType(uml::Class class):
+  if generatePublicObjectView() == false
+  then false
+  else 
+	  if class.isStereotypeApplied("POJO")
+	  then ((JMM::ServiceObject) class).compositeDataType
+	  else 
+	  		if class.isStereotypeApplied("ServiceObject")
+	  		then ((JMM::POJO) class).compositeDataType
+	  		else false;
  
+cached String getCompositeDateTypePublicFieldName(uml::Class class):
+  if class.isStereotypeApplied("POJO")
+  then ((JMM::ServiceObject) class).compositeDateTypePublicFieldName
+  else 
+  		if class.isStereotypeApplied("ServiceObject")
+  		then ((JMM::POJO) class).compositeDateTypePublicFieldName
+  		else false;
+ 
+ cached boolean isCompositeDataTypeReadonly(uml::Class class):
+  if class.isStereotypeApplied("POJO")
+  then ((JMM::ServiceObject) class).compositeDataTypeReadonly
+  else 
+  		if class.isStereotypeApplied("ServiceObject")
+  		then ((JMM::POJO) class).compositeDataTypeReadonly
+  		else false;
+ 
+ 
+cached boolean generateInternalViewOfCompositeDataType(uml::Class class):
+  if generatePublicObjectView() == true
+  then false
+  else 
+	  if class.isStereotypeApplied("POJO")
+	  then ((JMM::ServiceObject) class).compositeDataType
+	  else 
+	  		if class.isStereotypeApplied("ServiceObject")
+	  		then ((JMM::POJO) class).compositeDataType
+	  		else false;
+
+	  		
+cached int getMetaModelVersion(uml::Element element):
+  element.getModel().getAllAppliedProfiles().allOwnedElements().typeSelect(JMM::ModelVersion).get(0).revision;
+  
+  

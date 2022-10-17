@@ -49,10 +49,12 @@ public class MoneyAmount {
 
   @JsonCreator
   public MoneyAmount(
-    @JsonProperty(JSON_PROPERTY_AMOUNT) Double amount
+    @JsonProperty(JSON_PROPERTY_AMOUNT) Double amount, 
+    @JsonProperty(JSON_PROPERTY_CURRENCY_CODE) String currencyCode
   ) {
     this();
     this.amount = amount;
+    this.currencyCode = currencyCode;
   }
 
    /**
@@ -71,11 +73,6 @@ public class MoneyAmount {
 
 
 
-  public MoneyAmount currencyCode(String currencyCode) {
-    this.currencyCode = currencyCode;
-    return this;
-  }
-
    /**
    * ISO 4217 currency code.
    * @return currencyCode
@@ -90,11 +87,6 @@ public class MoneyAmount {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CURRENCY_CODE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCurrencyCode(String currencyCode) {
-    this.currencyCode = currencyCode;
-  }
 
 
   /**

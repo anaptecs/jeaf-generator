@@ -348,3 +348,18 @@ cached hasLiteralComment(JMM::OpenAPIEnumeration enum):
     if enum.ownedLiteral.select(e|e.hasComment()).isEmpty == false
     then true
     else enum.ownedLiteral.select(e|e.isDeprecated()).isEmpty == false;
+    
+cached List[JMM::OpenAPIDataType] getOpenAPIDataTypes(JMM::ModuleFactory moduleFactory):
+	moduleFactory.clientDependency.supplier.typeSelect(uml::Package).allOwnedElements().typeSelect(JMM::OpenAPIDataType).sortBy(e|e.name);
+	
+cached List[String] collectSerializedClassNames(uml::Class class):
+   {class.fqn()}.addAll(class.attribute.collectDependendTypeNames()).toSet().select(e|e.length > 0);
+   
+cached List[String] collectDependendTypeNames(uml::Property property):
+   if (property.type.isPrimitiveType() == false && property.type.isBasicType() == false)
+   then {property.getCollectionImplType(), property.type.fqn(), property.type.getExtensibleEnumType()}.addAll(((uml::Class)property.type).attribute.collectDependendTypeNames());
+
+ cached String getExtensibleEnumType(uml::Type type):
+   if type.isStereotypeApplied("JEAFEnumeration") && ((JMM::JEAFEnumeration) type).extensibleEnum
+   then type.fqn() +"." + type.name + "Type";
+   
