@@ -23,11 +23,11 @@ public class ObjectMapperFactory {
    * Method creates a ready-to-use Jackson Object Mapper. The created object will be configured so that it matches best
    * to the generated classes. It will also use the serializer modules as it was defined in the UML model.
    * 
+   * @param pCompositeTypeConverter {@link CompositeTypeConverter} implementation that should be used to serialize /
+   * deserialize composite data types.
    * @return {@link ObjectMapper} Created object mapper. The method never returns null.
    */
-  public static ObjectMapper createObjectMapper( ) {
-    // TODO Create composite type converter that should be used.
-    CompositeTypeConverter lCompositeTypeConverter = null;
+  public static ObjectMapper createObjectMapper( CompositeTypeConverter pCompositeTypeConverter ) {
     // Create builder for object mappper.
     Builder lBuilder = JsonMapper.builder();
     // Set default visibilities so that they match to the generated classes that are intended to be serialized using
@@ -42,7 +42,7 @@ public class ObjectMapperFactory {
     // Configure mapper features
     lBuilder.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
     // Create configured modules and add them as well.
-    lBuilder.addModule(new BaseModuleFactory(lCompositeTypeConverter).createModule());
+    lBuilder.addModule(new BaseModuleFactory(pCompositeTypeConverter).createModule());
     // Create object mapper and return it
     JsonMapper lObjectMapper = lBuilder.build();
     lObjectMapper.setDefaultPropertyInclusion(Include.NON_EMPTY);

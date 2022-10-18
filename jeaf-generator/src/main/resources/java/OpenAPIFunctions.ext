@@ -359,7 +359,17 @@ cached List[String] collectDependendTypeNames(uml::Property property):
    if (property.type.isPrimitiveType() == false && property.type.isBasicType() == false)
    then {property.getCollectionImplType(), property.type.fqn(), property.type.getExtensibleEnumType()}.addAll(((uml::Class)property.type).attribute.collectDependendTypeNames());
 
- cached String getExtensibleEnumType(uml::Type type):
+cached String getExtensibleEnumType(uml::Type type):
    if type.isStereotypeApplied("JEAFEnumeration") && ((JMM::JEAFEnumeration) type).extensibleEnum
    then type.fqn() +"." + type.name + "Type";
    
+cached boolean isCompositeDataTypeConverterRequiredForObjectMapperFactory(JMM::ObjectMapperFactory factory):
+	if(factory.clientDependency.supplier.typeSelect(JMM::ModuleFactory).getOpenAPIDataTypes().select(e|e.generateInternalViewOfCompositeDataType()).size > 0 && isTargetRuntimeJEAF() == false)
+	then true
+	else false;
+		
+cached boolean requiresCompositeDataTypeConverter(JMM::ModuleFactory factory):
+	factory.getOpenAPIDataTypes().select(e|e.generateInternalViewOfCompositeDataType()).size > 0 && isTargetRuntimeJEAF() == false;
+	
+	
+	
