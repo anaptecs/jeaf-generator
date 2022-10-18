@@ -14,7 +14,6 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
-<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -74,68 +73,6 @@ public class WeirdBooking {
   }
 
   public void setAdditionalBookings(List<String> additionalBookings) {
-=======
-import com.anaptecs.jeaf.openapi.ComplexBookingID;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.v3.oas.annotations.media.Schema;
-import java.util.ArrayList;
-import java.util.List;
-/**
- * WeirdBooking
- */
-
-
-public class WeirdBooking {
-  @JsonProperty("booking")
-  private ComplexBookingID booking = null;
-
-  @JsonProperty("additionalBookings")
-  private List<ComplexBookingID> additionalBookings = null;
-
-  public WeirdBooking booking(ComplexBookingID booking) {
-    this.booking = booking;
-    return this;
-  }
-
-   /**
-   * Get booking
-   * @return booking
-  **/
-  @Schema(required = true, description = "")
-  public ComplexBookingID getBooking() {
-    return booking;
-  }
-
-  public void setBooking(ComplexBookingID booking) {
-    this.booking = booking;
-  }
-
-  public WeirdBooking additionalBookings(List<ComplexBookingID> additionalBookings) {
-    this.additionalBookings = additionalBookings;
-    return this;
-  }
-
-  public WeirdBooking addAdditionalBookingsItem(ComplexBookingID additionalBookingsItem) {
-    if (this.additionalBookings == null) {
-      this.additionalBookings = new ArrayList<>();
-    }
-    this.additionalBookings.add(additionalBookingsItem);
-    return this;
-  }
-
-   /**
-   * Get additionalBookings
-   * @return additionalBookings
-  **/
-  @Schema(description = "")
-  public List<ComplexBookingID> getAdditionalBookings() {
-    return additionalBookings;
-  }
-
-  public void setAdditionalBookings(List<ComplexBookingID> additionalBookings) {
->>>>>>> refs/remotes/origin/master
     this.additionalBookings = additionalBookings;
   }
 

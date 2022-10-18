@@ -73,7 +73,6 @@ public final class ComplexBookingType {
   }
 
   /**
-<<<<<<< HEAD
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation available constructors {@link #ComplexBookingType(ComplexBookingTypeType)} and
    * {@link #ComplexBookingType(String)} should be used.
@@ -82,8 +81,6 @@ public final class ComplexBookingType {
   }
 
   /**
-=======
->>>>>>> refs/remotes/origin/master
    * Initialize object from real enumeration literal
    * 
    * @param pLiteral Enumeration literal that should be used to initialize the extensible enumeration. The parameter

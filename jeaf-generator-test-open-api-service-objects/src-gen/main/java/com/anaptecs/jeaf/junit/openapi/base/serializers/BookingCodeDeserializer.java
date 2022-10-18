@@ -24,11 +24,7 @@ public class BookingCodeDeserializer extends JsonDeserializer<BookingCode> {
   public BookingCode deserialize( JsonParser pParser, DeserializationContext pContext ) throws IOException {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
-<<<<<<< HEAD
     // We expect that data types are always serialized as plain text which will result in a TextNode.
-=======
-    // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
->>>>>>> refs/remotes/origin/master
     if (lNode instanceof TextNode) {
       return BookingCode.builder().setCode(lNode.asText()).build();
     }

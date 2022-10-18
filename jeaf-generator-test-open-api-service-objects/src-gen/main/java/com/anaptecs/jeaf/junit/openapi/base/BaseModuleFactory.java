@@ -9,11 +9,8 @@ import com.anaptecs.jeaf.json.annotations.ModuleFactory;
 import com.anaptecs.jeaf.json.api.ObjectMapperModuleFactory;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BookingCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BookingCodeSerializer;
-<<<<<<< HEAD
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BookingIDDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BookingIDSerializer;
-=======
->>>>>>> refs/remotes/origin/master
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BooleanCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BooleanCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BooleanCodeTypeDeserializer;
@@ -24,11 +21,8 @@ import com.anaptecs.jeaf.junit.openapi.base.serializers.ByteCodeTypeDeserializer
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ByteCodeTypeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ChannelCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ChannelCodeSerializer;
-<<<<<<< HEAD
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingIDDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingIDSerializer;
-=======
->>>>>>> refs/remotes/origin/master
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingTypeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingTypeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.CurrencyCodeDeserializer;
@@ -81,11 +75,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     // Add serializers and deserializers for datatypes
     lModule.addSerializer(BookingCode.class, new BookingCodeSerializer());
     lModule.addDeserializer(BookingCode.class, new BookingCodeDeserializer());
-<<<<<<< HEAD
     lModule.addSerializer(BookingID.class, new BookingIDSerializer());
     lModule.addDeserializer(BookingID.class, new BookingIDDeserializer());
-=======
->>>>>>> refs/remotes/origin/master
     lModule.addSerializer(BooleanCode.class, new BooleanCodeSerializer());
     lModule.addDeserializer(BooleanCode.class, new BooleanCodeDeserializer());
     lModule.addSerializer(BooleanCodeType.class, new BooleanCodeTypeSerializer());

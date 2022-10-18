@@ -14,7 +14,6 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
-<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -71,65 +70,6 @@ public class Booking {
     sb.append("class Booking {\n");
     
     sb.append("    bookingID: ").append(toIndentedString(bookingID)).append("\n");
-=======
-import com.anaptecs.jeaf.openapi.BookingID;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.v3.oas.annotations.media.Schema;
-/**
- * Booking
- */
-
-
-public class Booking {
-  @JsonProperty("booking")
-  private BookingID booking = null;
-
-  public Booking booking(BookingID booking) {
-    this.booking = booking;
-    return this;
-  }
-
-   /**
-   * Get booking
-   * @return booking
-  **/
-  @Schema(required = true, description = "")
-  public BookingID getBooking() {
-    return booking;
-  }
-
-  public void setBooking(BookingID booking) {
-    this.booking = booking;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Booking booking = (Booking) o;
-    return Objects.equals(this.booking, booking.booking);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(booking);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Booking {\n");
-    
-    sb.append("    booking: ").append(toIndentedString(booking)).append("\n");
->>>>>>> refs/remotes/origin/master
     sb.append("}");
     return sb.toString();
   }
