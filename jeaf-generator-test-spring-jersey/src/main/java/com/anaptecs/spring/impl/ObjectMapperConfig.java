@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.zalando.problem.ProblemModule;
 
-import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
-import com.anaptecs.jeaf.rest.composite.impl.kryo.KryoCompositeTypeConverter;
 import com.anaptecs.spring.base.serializers.ObjectMapperFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -20,8 +18,7 @@ public class ObjectMapperConfig {
   @Bean
   @Primary
   public ObjectMapper objectMapper( ) {
-    CompositeTypeConverter lCompositeTypeConverter = new KryoCompositeTypeConverter();
-    ObjectMapper lObjectMapper = ObjectMapperFactory.createObjectMapper(lCompositeTypeConverter);
+    ObjectMapper lObjectMapper = ObjectMapperFactory.createObjectMapper();
     lObjectMapper.registerModule(new ProblemModule());
     lObjectMapper.registerModule(new JavaTimeModule());
     lObjectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
