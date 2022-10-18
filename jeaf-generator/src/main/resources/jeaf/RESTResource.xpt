@@ -50,7 +50,7 @@ public class «name»Resource {
 			 * 
 			 * @param p«name» Dependency on concrete {@link «this.fqn()»} implementation that should be used.
 			 */
-			«name»Resource( «this.fqn()» p«name» ) {
+			public «name»Resource( «this.fqn()» p«name» ) {
 			  «name.toFirstLower()» = p«name»;
 			}
 			

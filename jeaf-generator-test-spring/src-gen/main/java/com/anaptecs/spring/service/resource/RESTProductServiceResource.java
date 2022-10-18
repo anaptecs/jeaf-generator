@@ -55,7 +55,7 @@ public class RESTProductServiceResource {
    * 
    * @param pRESTProductService Dependency on concrete {@link RESTProductService} implementation that should be used.
    */
-  RESTProductServiceResource( RESTProductService pRESTProductService ) {
+  public RESTProductServiceResource( RESTProductService pRESTProductService ) {
     rESTProductService = pRESTProductService;
   }
 

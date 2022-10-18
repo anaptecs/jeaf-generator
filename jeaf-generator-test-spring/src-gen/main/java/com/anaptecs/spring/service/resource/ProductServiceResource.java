@@ -59,7 +59,7 @@ public class ProductServiceResource {
    * 
    * @param pProductService Dependency on concrete {@link ProductService} implementation that should be used.
    */
-  ProductServiceResource( ProductService pProductService ) {
+  public ProductServiceResource( ProductService pProductService ) {
     productService = pProductService;
   }
 
