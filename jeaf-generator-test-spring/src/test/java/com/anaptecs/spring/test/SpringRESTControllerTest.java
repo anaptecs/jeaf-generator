@@ -36,9 +36,11 @@ public class SpringRESTControllerTest {
   @Inject
   private TestRestTemplate template;
 
+  private static final String PREFIX = "/nova/prefix";
+
   @Test
   void testRESTControllerAccess( ) {
-    ResponseEntity<String> lResponse = template.getForEntity("/products", String.class);
+    ResponseEntity<String> lResponse = template.getForEntity(PREFIX + "/products", String.class);
     assertEquals("[{\"name\":\"Cool Product\",\"uri\":\"https://products.anaptecs.de/123456789\"}]",
         lResponse.getBody());
   }
@@ -48,7 +50,7 @@ public class SpringRESTControllerTest {
     // Execute simple request using Apache HTTP client
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
 
-    ClassicHttpRequest lRequest = ClassicRequestBuilder.get(template.getRootUri() + "/products").build();
+    ClassicHttpRequest lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/products").build();
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest);
     assertEquals(200, lResponse.getCode());
     assertEquals("[{\"name\":\"Cool Product\",\"uri\":\"https://products.anaptecs.de/123456789\"}]",
@@ -60,7 +62,7 @@ public class SpringRESTControllerTest {
     // getProduct(...)
     //
     ClassicRequestBuilder lBuilder = ClassicRequestBuilder.create("GET");
-    lBuilder.setUri(template.getRootUri() + "/products/17");
+    lBuilder.setUri(template.getRootUri() + PREFIX + "/products/17");
     lRequest = lBuilder.build();
 
     lResponse = lHttpClient.execute(lRequest);
@@ -70,7 +72,7 @@ public class SpringRESTControllerTest {
     // getProduct(...)
     //
     lBuilder = ClassicRequestBuilder.create("GET");
-    lBuilder.setUri(template.getRootUri() + "/products/12345");
+    lBuilder.setUri(template.getRootUri() + PREFIX + "/products/12345");
     lRequest = lBuilder.build();
 
     lResponse = lHttpClient.execute(lRequest);
@@ -81,7 +83,7 @@ public class SpringRESTControllerTest {
     // getSortiment(...)
     //
     lBuilder = ClassicRequestBuilder.create("GET");
-    lBuilder.setUri(template.getRootUri() + "/products/sortiment/4711");
+    lBuilder.setUri(template.getRootUri() + PREFIX + "/products/sortiment/4711");
     lBuilder.addHeader("token", "12345");
     lBuilder.addHeader("lang", "DE");
     lBuilder.addParameter("q1", "QUERY_ME");
@@ -104,7 +106,7 @@ public class SpringRESTControllerTest {
   @Test
   void testPOSTRequests( ) throws IOException {
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.post(template.getRootUri() + "/products");
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.post(template.getRootUri() + PREFIX + "/products");
 
     //
     // createProduct(...)
@@ -122,7 +124,7 @@ public class SpringRESTControllerTest {
     //
     // createChannelCode
     //
-    lRequest = ClassicRequestBuilder.post(template.getRootUri() + "/products/ChannelCode");
+    lRequest = ClassicRequestBuilder.post(template.getRootUri() + PREFIX + "/products/ChannelCode");
     lBody = new StringEntity("MyMobile", ContentType.APPLICATION_JSON);
     lRequest.setEntity(lBody);
     lResponse = lHttpClient.execute(lRequest.build());

@@ -78,6 +78,12 @@ public class GeneratorCommons {
   public static final String REST_RESOURCES_PROPERTY = "switch.gen.rest.resources";
 
   /**
+   * Constant defines the name of the property that defines the REST path prefix that should be used when generating
+   * REST resources.
+   */
+  public static final String REST_PATH_PREFIX_PROPERTY = "switch.gen.rest.path.prefix";
+
+  /**
    * Constant defines the name of the system property which enables the generation of REST service proxies from the
    * model.
    */
@@ -575,6 +581,17 @@ public class GeneratorCommons {
   public static boolean generateRESTResources( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(REST_RESOURCES_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether service provider interfaces from the UML model should be generated or not.
+   * 
+   * @return boolean Method returns true if service provider interfaces should be generated from the model and false in
+   * all other cases.
+   */
+  public static String getRESTPathPrefix( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(REST_PATH_PREFIX_PROPERTY, "", String.class);
   }
 
   /**

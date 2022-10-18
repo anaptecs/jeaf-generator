@@ -19,7 +19,7 @@ import com.anaptecs.jeaf.junit.rest.DeprecatedRESTService;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@Path("/do/something")
+@Path("/nova/prefix/do/something")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Deprecated

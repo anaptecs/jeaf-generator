@@ -61,7 +61,7 @@ import com.anaptecs.jeaf.workload.api.rest.RESTWorkloadErrorHandler;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@Path("/products")
+@Path("/nova/prefix/products")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ProductServiceResource {

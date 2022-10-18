@@ -170,4 +170,12 @@ cached String asParamErrorMessage(uml::Parameter parameter) :
     
 cached String asPropertyErrorMessage(uml::Property property) :
   property.type.fqn() + " " + property.name;
+  
+cached String getRESTPath(JMM::RESTResource resource):
+	if getRESTPathPrefix().length > 0
+	then getRESTPathPrefix() + resource.path
+	else resource.path;
+	
+cached String getRESTPathPrefix():
+	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getRESTPathPrefix();
     

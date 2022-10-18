@@ -235,6 +235,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateRESTResources;
 
   /**
+   * Parameter defines the prefix that should be used for REST paths of generated REST resources / controllers. The
+   * value provided here will be used as prefix. To be a valid path it has to start with '/' and must not end with '/'.
+   */
+  @Parameter(required = false)
+  private String restPathPrefix = "";
+
+  /**
    * Switch defines whether REST service proxies should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -762,6 +769,9 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateRESTResources) {
       lLog.info("Generate REST Resources:                          " + generateRESTResources);
     }
+    if (restPathPrefix.length() > 0) {
+      lLog.info("REST Path Prefix:                                 " + restPathPrefix);
+    }
     if (generateRESTServiceProxies) {
       lLog.info("Generate REST Service Proxies:                    " + generateRESTServiceProxies);
     }
@@ -934,6 +944,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.component.impls", generateComponentImpls.toString());
       System.setProperty("switch.gen.service.provider.impls", generateServiceProviderImpls.toString());
       System.setProperty("switch.gen.rest.resources", generateRESTResources.toString());
+      System.setProperty("switch.gen.rest.path.prefix", restPathPrefix);
       System.setProperty("switch.gen.rest.service.proxy", generateRESTServiceProxies.toString());
       System.setProperty("switch.gen.rest.service.proxy.config.file", generateRESTServiceProxyConfigFile.toString());
       System.setProperty("switch.gen.service.objects", generateServiceObjects.toString());

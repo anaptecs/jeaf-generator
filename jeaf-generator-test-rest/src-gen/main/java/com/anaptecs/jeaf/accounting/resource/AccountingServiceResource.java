@@ -33,7 +33,7 @@ import com.anaptecs.jeaf.workload.api.rest.RESTWorkloadErrorHandler;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@Path("/api/v1/accounting")
+@Path("/nova/prefix/api/v1/accounting")
 @Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 public class AccountingServiceResource {
