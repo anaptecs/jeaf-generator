@@ -20,7 +20,7 @@ import com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType;
 import com.anaptecs.jeaf.junit.openapi.base.InventoryType;
 import com.anaptecs.jeaf.junit.openapi.base.WeirdBooking;
 
-public class CompositeDataTypeTest {
+public class InternalViewCompositeDataTypeTest {
   @Test
   void testCompositeDataType( ) {
     BookingCode lBookingCode = BookingCode.builder().setCode("BOOKING_CODE").build();
