@@ -59,6 +59,9 @@
 
 					<!-- Define what should be generated. By default nothing is generated. -->
 					<generateRESTResources>true</generateRESTResources>
+					<generateOpenAPISpec>true</generateOpenAPISpec>
+					<generatePOJOs>true</generatePOJOs>
+					<generateServiceObjects>true</generateServiceObjects>
 					
 					<!-- For test purposes the build does not break if we face problems here as this is the intention of this Maven project -->
 					<breakBuildOnGeneratorError>false</breakBuildOnGeneratorError>

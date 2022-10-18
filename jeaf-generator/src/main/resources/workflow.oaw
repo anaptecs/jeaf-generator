@@ -15,6 +15,16 @@
         </metaModel>
         
         <checkFile value="jeaf::VersionCheck"/>
+        
+        <expression value="${output.slot}.eAllContents.union({${output.slot}})"/>
+    </component>
+
+    <component class="org.openarchitectureware.check.CheckComponent">
+        <metaModel id="UmlMM" class="oaw.uml2.UML2MetaModel"/>
+        <metaModel id="${profile.name}" class="oaw.uml2.profile.ProfileMetaModel">
+            <profile value="${profile.file}"/>
+        </metaModel>
+        
         <checkFile value="jeaf::JEAFChecks"/>
         <checkFile value="entity::EntityChecks"/>
         <checkFile value="java::AssociationChecks"/>
