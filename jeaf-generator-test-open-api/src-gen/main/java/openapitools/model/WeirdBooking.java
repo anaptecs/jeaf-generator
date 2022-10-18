@@ -26,6 +26,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -104,6 +105,87 @@ public class WeirdBooking {
   @JsonProperty(JSON_PROPERTY_ADDITIONAL_BOOKINGS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAdditionalBookings(List<String> additionalBookings) {
+=======
+import openapitools.model.ComplexBookingID;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import openapitools.JSON;
+
+
+/**
+ * WeirdBooking
+ */
+@JsonPropertyOrder({
+  WeirdBooking.JSON_PROPERTY_BOOKING,
+  WeirdBooking.JSON_PROPERTY_ADDITIONAL_BOOKINGS
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+public class WeirdBooking {
+  public static final String JSON_PROPERTY_BOOKING = "booking";
+  private ComplexBookingID booking;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_BOOKINGS = "additionalBookings";
+  private List<ComplexBookingID> additionalBookings = null;
+
+  public WeirdBooking() { 
+  }
+
+  public WeirdBooking booking(ComplexBookingID booking) {
+    this.booking = booking;
+    return this;
+  }
+
+   /**
+   * Get booking
+   * @return booking
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_BOOKING)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public ComplexBookingID getBooking() {
+    return booking;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BOOKING)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setBooking(ComplexBookingID booking) {
+    this.booking = booking;
+  }
+
+
+  public WeirdBooking additionalBookings(List<ComplexBookingID> additionalBookings) {
+    this.additionalBookings = additionalBookings;
+    return this;
+  }
+
+  public WeirdBooking addAdditionalBookingsItem(ComplexBookingID additionalBookingsItem) {
+    if (this.additionalBookings == null) {
+      this.additionalBookings = new ArrayList<>();
+    }
+    this.additionalBookings.add(additionalBookingsItem);
+    return this;
+  }
+
+   /**
+   * Get additionalBookings
+   * @return additionalBookings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ADDITIONAL_BOOKINGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<ComplexBookingID> getAdditionalBookings() {
+    return additionalBookings;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ADDITIONAL_BOOKINGS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalBookings(List<ComplexBookingID> additionalBookings) {
+>>>>>>> refs/remotes/origin/master
     this.additionalBookings = additionalBookings;
   }
 

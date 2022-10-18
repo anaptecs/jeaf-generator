@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -93,6 +94,78 @@ public class Booking {
     StringBuilder sb = new StringBuilder();
     sb.append("class Booking {\n");
     sb.append("    bookingID: ").append(toIndentedString(bookingID)).append("\n");
+=======
+import openapitools.model.BookingID;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import openapitools.JSON;
+
+
+/**
+ * Booking
+ */
+@JsonPropertyOrder({
+  Booking.JSON_PROPERTY_BOOKING
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+public class Booking {
+  public static final String JSON_PROPERTY_BOOKING = "booking";
+  private BookingID booking;
+
+  public Booking() { 
+  }
+
+  public Booking booking(BookingID booking) {
+    this.booking = booking;
+    return this;
+  }
+
+   /**
+   * Get booking
+   * @return booking
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_BOOKING)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public BookingID getBooking() {
+    return booking;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BOOKING)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setBooking(BookingID booking) {
+    this.booking = booking;
+  }
+
+
+  /**
+   * Return true if this Booking object is equal to o.
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Booking booking = (Booking) o;
+    return Objects.equals(this.booking, booking.booking);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(booking);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class Booking {\n");
+    sb.append("    booking: ").append(toIndentedString(booking)).append("\n");
+>>>>>>> refs/remotes/origin/master
     sb.append("}");
     return sb.toString();
   }

@@ -528,7 +528,7 @@ new java.text.SimpleDateFormat("yyyy-MM-dd").format(«beanParam.name».«this.as
 «ENDDEFINE»
 
 «DEFINE GenerateRESTServiceProxyConfigFileSpring FOR RESTResource»
-«FILE "config/application-"+name.toLowerCase()+".yml" res»
+«FILE name.toLowerCase()+"-rest-client.yaml" res»
 # File contains configuration for external REST resource «this.name»
 # URL to external service
 externalServiceURL: TODO: Please configure URL of external REST resource
@@ -539,9 +539,9 @@ cookieDomain:
 
 # Path of the cookie that is used in requests.
 cookiePath:
-«ENDIF -»
 
-# Comma separated list of http header names that should be considered to be sensitive.
+«ENDIF -»
+# List of http header names that should be considered to be sensitive.
 sensitiveHeaders: 
  - Authorzation
 
