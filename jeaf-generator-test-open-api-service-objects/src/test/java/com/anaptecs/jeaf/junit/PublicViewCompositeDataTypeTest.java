@@ -15,7 +15,7 @@ import com.anaptecs.jeaf.junit.openapi.base.BookingID;
 import com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID;
 import com.anaptecs.jeaf.junit.openapi.base.WeirdBooking;
 
-public class CompositeDataTypeTest {
+public class PublicViewCompositeDataTypeTest {
   @Test
   void testCompositeDataType( ) {
     BookingID lBookingID = BookingID.builder().setBookingID("123456").build();
