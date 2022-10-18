@@ -724,20 +724,25 @@ public class ClassUtil {
     Check.checkInvalidParameterNull(pMultiplicityElement, "pMultiplicityElement");
 
     String lReturnValue;
-    if (pMultiplicityElement.isUnique() == false && pMultiplicityElement.isOrdered() == false) {
-      lReturnValue = ArrayList.class.getName();
+    if (pMultiplicityElement.isMultivalued()) {
+      if (pMultiplicityElement.isUnique() == false && pMultiplicityElement.isOrdered() == false) {
+        lReturnValue = ArrayList.class.getName();
+      }
+      // Type is unique but not ordered.
+      else if (pMultiplicityElement.isUnique() == true && pMultiplicityElement.isOrdered() == false) {
+        lReturnValue = HashSet.class.getName();
+      }
+      // Type is not unique but ordered.
+      else if (pMultiplicityElement.isUnique() == false && pMultiplicityElement.isOrdered() == true) {
+        lReturnValue = ArrayList.class.getName();
+      }
+      // Type is unique and ordered.
+      else {
+        lReturnValue = TreeSet.class.getName();
+      }
     }
-    // Type is unique but not ordered.
-    else if (pMultiplicityElement.isUnique() == true && pMultiplicityElement.isOrdered() == false) {
-      lReturnValue = HashSet.class.getName();
-    }
-    // Type is not unique but ordered.
-    else if (pMultiplicityElement.isUnique() == false && pMultiplicityElement.isOrdered() == true) {
-      lReturnValue = ArrayList.class.getName();
-    }
-    // Type is unique and ordered.
     else {
-      lReturnValue = TreeSet.class.getName();
+      lReturnValue = null;
     }
     return lReturnValue;
   }

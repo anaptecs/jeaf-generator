@@ -38,9 +38,9 @@
 		<jeaf.json.api.version>1.6.15</jeaf.json.api.version>
 		<jeaf.json.impl.version>1.6.16</jeaf.json.impl.version>
 		<jeaf.jersey.extensions.version>1.6.0</jeaf.jersey.extensions.version>
-		<jeaf.rest.api.version>1.6.1-RC02</jeaf.rest.api.version>
-		<jeaf.rest.impl.version>1.6.1-RC02</jeaf.rest.impl.version>
-		<jeaf.test.model.version>1.0.44</jeaf.test.model.version>
+		<jeaf.rest.api.version>1.6.1-RC03-SNAPSHOT</jeaf.rest.api.version>
+		<jeaf.rest.impl.version>1.6.1-RC03-SNAPSHOT</jeaf.rest.impl.version>
+		<jeaf.test.model.version>1.0.45-SNAPSHOT</jeaf.test.model.version>
 		
 		<!-- Please be aware that Spring Boot and Spring core versions must match together -->
 		<spring.boot.version>2.7.2</spring.boot.version>
@@ -75,7 +75,12 @@
 		<module>jeaf-generator-test-junit-testcases</module>
 		<module>jeaf-generator-test-open-api</module>
 		<module>jeaf-generator-test-open-api-service-objects</module>
+		
+		<!-- Needs to be fixed with JEAF-3119 -->
+		<!--  
 		<module>jeaf-generator-test-eclipse-papyrus</module>
+		-->
+		
 		<module>jeaf-generator-test-jeaf-rest-proxy</module>
 		<module>jeaf-generator-test-spring</module>
 		<module>jeaf-generator-test-spring-jersey</module>

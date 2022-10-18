@@ -165,6 +165,12 @@ public class GeneratorCommons {
       "switch.gen.null.checks.for.to.one.associations.of.service.objects";
 
   /**
+   * Constant defines the name of the syste property which enable generation of public object view of POJO's and
+   * ServiceObjects.
+   */
+  public static final String GENERATE_PUBLIC_OBJECT_VIEW = "switch.gen.public.object.view";
+
+  /**
    * Constant defines the name of the system property which disables immutability of collections.
    */
   public static final String DISABLE_COLLECTION_IMMUTABILITY = "switch.gen.disable.collection.immutability";
@@ -877,6 +883,11 @@ public class GeneratorCommons {
         Boolean.TRUE, Boolean.class);
   }
 
+  public static boolean generatePublicObjectView( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_PUBLIC_OBJECT_VIEW, Boolean.TRUE, Boolean.class);
+  }
+
   public static boolean disableCollectionImmutability( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(DISABLE_COLLECTION_IMMUTABILITY, Boolean.FALSE, Boolean.class);
@@ -1033,6 +1044,7 @@ public class GeneratorCommons {
     // XFun.getTrace().info(
     // "Analyzing element " + pElement.getName() + " in package " + ClassUtil.getPackageName(lPackage));
 
+    // Verify if checks should be run for teh passed stereotype.
     if (GeneratorCommons.shouldStereotypeBeChecked(pStereotype) == true
         && GeneratorCommons.isInGeneratorWhitelist(lPackage) == true) {
       String lOwnerName = Naming.getFullyQualifiedName(lOwner);

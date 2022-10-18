@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
+import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
+import com.anaptecs.jeaf.rest.composite.impl.kryo.KryoCompositeTypeConverter;
 import com.anaptecs.spring.base.serializers.ObjectMapperFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -15,6 +17,7 @@ public class ObjectMapperConfig {
   @Bean
   @Primary
   public ObjectMapper objectMapper( ) {
-    return ObjectMapperFactory.createObjectMapper();
+    CompositeTypeConverter lCompositeTypeConverter = new KryoCompositeTypeConverter();
+    return ObjectMapperFactory.createObjectMapper(lCompositeTypeConverter);
   }
 }

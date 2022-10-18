@@ -7,7 +7,7 @@
 		<version>1.6.63-SNAPSHOT</version>
 	</parent>
 
-	<name>JEAF Generator Test Open API Service Objects</name>
+	<name>JEAF Generator Test OpenAPI Service Objects</name>
 	<artifactId>jeaf-generator-test-open-api-service-objects</artifactId>
 	<packaging>jar</packaging>
 
@@ -125,6 +125,8 @@
 					<generateValidationAnnotationsForAssociationsFromMultiplicity>true</generateValidationAnnotationsForAssociationsFromMultiplicity>
 					<generateValidationAnnotationsForAttributesFromMultiplicity>true</generateValidationAnnotationsForAttributesFromMultiplicity>
 					
+					<generatePublicObjectView>true</generatePublicObjectView>
+					
 					<disableImmutabilityOfBinaryData>true</disableImmutabilityOfBinaryData>
 					<disableImmutabilityOfArrays>true</disableImmutabilityOfArrays>
 					<disableImmutabilityOfCollections>true</disableImmutabilityOfCollections>
@@ -140,7 +142,10 @@
 				</configuration>
 			</plugin>
 
-			<!-- JEAF Maven Plugin will generate JEAF configuration files. Besides executing the plugin during build no specific configurations are required to use JEAF X-Fun. -->
+			<!-- 
+			     JEAF Maven Plugin will generate JEAF configuration files. Besides executing the plugin during build no 
+			     specific configurations are required to use JEAF X-Fun. 
+			-->
 			<plugin>
 				<groupId>com.anaptecs.jeaf.maven</groupId>
 				<artifactId>jeaf-maven-plugin</artifactId>

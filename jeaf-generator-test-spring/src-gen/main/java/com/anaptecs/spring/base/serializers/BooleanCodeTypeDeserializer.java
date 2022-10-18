@@ -22,7 +22,7 @@ public class BooleanCodeTypeDeserializer extends JsonDeserializer<BooleanCodeTyp
   public BooleanCodeType deserialize( JsonParser pParser, DeserializationContext pContext ) throws IOException {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
-    // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
+    // We expect that data types are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
       return BooleanCodeType.builder().setCode(lNode.asBoolean()).build();
     }

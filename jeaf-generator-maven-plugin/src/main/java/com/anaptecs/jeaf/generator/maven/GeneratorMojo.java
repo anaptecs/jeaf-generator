@@ -475,6 +475,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateNullChecksForToOneAssociations;
 
   /**
+   * Switch defines if only the public view of POJO's or ServiceObjects should be generated. This will lead to generated
+   * classes where some internal structures of a POJO / ServiceObject will be hidden to the outside world.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generatePublicObjectView;
+
+  /**
    * Switch defines whether generated methods dealing with any kind of collections must ensure that the internal state
    * of an object can not be modified by accident. This will lead to get method that make use of
    * Collections.unmodifiableCollection(...). Builders that receive a collection as input will copy their content. This
@@ -850,6 +857,10 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("NULL checks for to one associations:              " + generateNullChecksForToOneAssociations);
     }
 
+    if (generatePublicObjectView) {
+      lLog.info("Generate public view for POJO's / ServiceObjects: " + generatePublicObjectView);
+    }
+
     // Print information about immutability behavior
     if (disableImmutabilityOfCollections) {
       lLog.info("Disable immutability for collections:             " + disableImmutabilityOfCollections);
@@ -961,6 +972,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.public.setters.for.associations", generatePublicSettersForAssociations.toString());
       System.setProperty("switch.gen.null.checks.for.to.one.associations.of.service.objects",
           generateNullChecksForToOneAssociations.toString());
+
+      System.setProperty("switch.gen.public.object.view", generatePublicObjectView.toString());
 
       System.setProperty("switch.gen.disable.collection.immutability", disableImmutabilityOfCollections.toString());
       System.setProperty("switch.gen.disable.array.immutability", disableImmutabilityOfArrays.toString());

@@ -7,7 +7,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -27,34 +26,16 @@ public class BookingID implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * 
+   * String representation of this object.
    */
-  @NotNull
-  private String referenceID;
-
-  /**
-   * 
-   */
-  @NotNull
-  private String externalRefID;
-
-  /**
-   * 
-   */
-  @NotNull
-  private InventoryType inventory;
-
-  /**
-   * 
-   */
-  @NotNull
-  private BookingCode bookingCode;
+  private final String bookingID;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected BookingID( ) {
+    bookingID = null;
   }
 
   /**
@@ -66,10 +47,7 @@ public class BookingID implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    referenceID = pBuilder.referenceID;
-    externalRefID = pBuilder.externalRefID;
-    inventory = pBuilder.inventory;
-    bookingCode = pBuilder.bookingCode;
+    bookingID = pBuilder.bookingID;
   }
 
   /**
@@ -98,24 +76,9 @@ public class BookingID implements ServiceObject {
    */
   public static class Builder {
     /**
-     * 
+     * String representation of this object.
      */
-    private String referenceID;
-
-    /**
-     * 
-     */
-    private String externalRefID;
-
-    /**
-     * 
-     */
-    private InventoryType inventory;
-
-    /**
-     * 
-     */
-    private BookingCode bookingCode;
+    private String bookingID;
 
     /**
      * Use {@link BookingID#builder()} instead of private constructor to create new builder.
@@ -129,52 +92,17 @@ public class BookingID implements ServiceObject {
     protected Builder( BookingID pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        referenceID = pObject.referenceID;
-        externalRefID = pObject.externalRefID;
-        inventory = pObject.inventory;
-        bookingCode = pObject.bookingCode;
+        bookingID = pObject.bookingID;
       }
     }
 
     /**
-     * Method sets the attribute "referenceID".
+     * Method returns the String representation of this object.
      * 
-     * @param pReferenceID Value to which the attribute "referenceID" should be set.
+     * @return String bookingID String representation of this object.
      */
-    public Builder setReferenceID( String pReferenceID ) {
-      // Assign value to attribute
-      referenceID = pReferenceID;
-      return this;
-    }
-
-    /**
-     * Method sets the attribute "externalRefID".
-     * 
-     * @param pExternalRefID Value to which the attribute "externalRefID" should be set.
-     */
-    public Builder setExternalRefID( String pExternalRefID ) {
-      // Assign value to attribute
-      externalRefID = pExternalRefID;
-      return this;
-    }
-
-    /**
-     * Method sets the association "inventory".
-     * 
-     * @param pInventory InventoryType to which the association "inventory" should be set.
-     */
-    public Builder setInventory( InventoryType pInventory ) {
-      inventory = pInventory;
-      return this;
-    }
-
-    /**
-     * Method sets the association "bookingCode".
-     * 
-     * @param pBookingCode BookingCode to which the association "bookingCode" should be set.
-     */
-    public Builder setBookingCode( BookingCode pBookingCode ) {
-      bookingCode = pBookingCode;
+    public Builder setBookingID( String pBookingID ) {
+      bookingID = pBookingID;
       return this;
     }
 
@@ -202,101 +130,12 @@ public class BookingID implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "referenceID".
+   * Method returns the String representation of this object.
    * 
-   * 
-   * @return String Value to which the attribute "referenceID" is set.
+   * @return String String representation of this object.
    */
-  public String getReferenceID( ) {
-    return referenceID;
-  }
-
-  /**
-   * Method sets the attribute "referenceID".
-   * 
-   * 
-   * @param pReferenceID Value to which the attribute "referenceID" should be set.
-   */
-  public void setReferenceID( String pReferenceID ) {
-    // Assign value to attribute
-    referenceID = pReferenceID;
-  }
-
-  /**
-   * Method returns the attribute "externalRefID".
-   * 
-   * 
-   * @return String Value to which the attribute "externalRefID" is set.
-   */
-  public String getExternalRefID( ) {
-    return externalRefID;
-  }
-
-  /**
-   * Method sets the attribute "externalRefID".
-   * 
-   * 
-   * @param pExternalRefID Value to which the attribute "externalRefID" should be set.
-   */
-  public void setExternalRefID( String pExternalRefID ) {
-    // Assign value to attribute
-    externalRefID = pExternalRefID;
-  }
-
-  /**
-   * Method returns the association "inventory".
-   * 
-   *
-   * @return InventoryType InventoryType to which the association "inventory" is set.
-   */
-  public InventoryType getInventory( ) {
-    return inventory;
-  }
-
-  /**
-   * Method sets the association "inventory".
-   * 
-   * 
-   * @param pInventory InventoryType to which the association "inventory" should be set.
-   */
-  public void setInventory( InventoryType pInventory ) {
-    inventory = pInventory;
-  }
-
-  /**
-   * Method unsets the association "inventory".
-   * 
-   */
-  public final void unsetInventory( ) {
-    inventory = null;
-  }
-
-  /**
-   * Method returns the association "bookingCode".
-   * 
-   *
-   * @return BookingCode BookingCode to which the association "bookingCode" is set.
-   */
-  public BookingCode getBookingCode( ) {
-    return bookingCode;
-  }
-
-  /**
-   * Method sets the association "bookingCode".
-   * 
-   * 
-   * @param pBookingCode BookingCode to which the association "bookingCode" should be set.
-   */
-  public void setBookingCode( BookingCode pBookingCode ) {
-    bookingCode = pBookingCode;
-  }
-
-  /**
-   * Method unsets the association "bookingCode".
-   * 
-   */
-  public final void unsetBookingCode( ) {
-    bookingCode = null;
+  public String getBookingID( ) {
+    return bookingID;
   }
 
   /**
@@ -311,11 +150,7 @@ public class BookingID implements ServiceObject {
     lBuilder.append('\n');
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
     lBuilder.append('\n');
-    lBuilder
-        .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "referenceID", "" + referenceID));
-    lBuilder.append('\n');
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "externalRefID", "" + externalRefID));
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "bookingID", "" + bookingID));
     lBuilder.append('\n');
     return lBuilder;
   }

@@ -12,23 +12,23 @@ context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTResource
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + ((NamedElement)owner).name + "." + name  + "(...) has invalid path. Path of operation must not start with '/'. (" + fqn() + ")": this.hasValidOperationPath() == true;
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + ((NamedElement)owner).name + "." + name + "(...) must define at least one HTTP-Method. Please correct your UML model." + fqn() + ")": httpMethods.size > 0;
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> uses http status code " + this.statusCode.name + " which is not compatible with JAX-RS": isJAXRSStatusCode(this.statusCode.name) == true;
-context RESTOperation if runChecks("RESTOperation") ERROR "Error: Either REST resource or REST operation need to define at least one consumed media type (" + this.fqn() + ")": unifyMediaTypes(((JMM::RESTResource)this.owner).consumes, this.consumes).size > 0;
-context RESTOperation if runChecks("RESTOperation") ERROR "Error: Either REST resource or REST operation need to define at least one produced media type (" + this.fqn() + ")": unifyMediaTypes(((JMM::RESTResource)this.owner).produces, this.produces).size > 0;
+context RESTOperation if runChecks("RESTOperation") ERROR "Error: Either Either <<RESTResource>> or <<RESTOperation>> need to define at least one consumed media type (" + this.fqn() + ")": unifyMediaTypes(((JMM::RESTResource)this.owner).consumes, this.consumes).size > 0;
+context RESTOperation if runChecks("RESTOperation") ERROR "Error: Either Either <<RESTResource>> or <<RESTOperation>> need to define at least one produced media type (" + this.fqn() + ")": unifyMediaTypes(((JMM::RESTResource)this.owner).produces, this.produces).size > 0;
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + ((NamedElement)owner).name + "." + name + "(...) has input parameters without name. Please ensure that all input parameters are named (" + fqn() + ")": this.areAllInputParametersNamed() == true;
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + ((NamedElement)owner).name + "."+ name + "(...) has multiple request body parameters. Please ensure that there is not more than 1 request body for a REST operation (" + this.getBodyParamNames() + ")": this.getBodyParamNames().size < 2 ;
 context RESTOperation if runChecks("RESTOperation") ERROR "Error: <<RESTOperation>> " + ((NamedElement)owner).name + "."+ name + "(...) has request body parameter even though its http method(s) " + httpMethods + " do not allow it. (" + fqn() + ")": this.hasUnsupportedRequestBody() == false ;
 
 context RESTOperation if runChecks("RESTOperation") WARNING "Warning: [9101] <<RESTOperation>> " + ((NamedElement)owner).name + "."+ name + "(...) has parameter type(s) " + this.getOpenAPIIncomaptibleParameterTypes().asParamErrorMessage() + " that are not compatible with OpenAPI (" + fqn() + "). For further details please refer to FAQ entry #2.2 on https://anaptecs.atlassian.net/l/cp/ndmtZxvX": this.getOpenAPIIncomaptibleParameterTypes().size == 0;
 
-context Model if runChecks() ERROR "Error: OpenAPI Specification more than one global default error response": this.hasValidOneGlobalDefaultErrorResponse() == false;
+context Model if runChecks() ERROR "Error: <<OpenAPISpecification>> more than one global default error response": this.hasValidOneGlobalDefaultErrorResponse() == false;
 
 context OpenAPIResponse if runChecks("OpenAPIResponse") ERROR "Error: <<OpenAPIResponse>> " + this.name + " needs to define exactly one reference to <<OpenAPIType>> that is used as response type.": this.getResponseTypes().size == 1;
 
 //context OpenAPI3Specification if runChecks("OpenAPI3Specification") ERROR "Error: <<OpenAPI3Specification>> " + this.name + " has " + this.getCustomResponses().size + " error responses.": this.getCustomResponses().size < 2;
-
-context OpenAPIDataType if runChecks("OpenAPIDataType") ERROR "Error: <<OpenAPIDataType>> " + this.name + " must have excatly one property." : this.ownedAttribute.size == 1;
-context OpenAPIDataType if runChecks("OpenAPIDataType") ERROR "Error: <<OpenAPIDataType>> " + this.name + " must have only properties with primitive types.": this.ownedAttribute.get(0).type.isBasicOpenAPIType() == true;
-context OpenAPIDataType if runChecks("OpenAPIDataType") ERROR "Error: <<OpenAPIDataType>> " + this.name + " must not have multivalued properties.": this.ownedAttribute.get(0).isMultivalued() == false;
+context OpenAPIDataType if runChecks("OpenAPIDataType") && this.compositeDataType == false ERROR "Error: <<OpenAPIDataType>> " + this.name + " must have excatly one property." : this.ownedAttribute.size == 1;
+context OpenAPIDataType if runChecks("OpenAPIDataType") && this.compositeDataType == false ERROR "Error: <<OpenAPIDataType>> " + this.name + " must have only properties with primitive types.": this.ownedAttribute.get(0).type.isBasicOpenAPIType() == true;
+context OpenAPIDataType if runChecks("OpenAPIDataType") && this.compositeDataType == false ERROR "Error: <<OpenAPIDataType>> " + this.name + " must not have multivalued properties.": this.ownedAttribute.get(0).isMultivalued() == false;
+context OpenAPIDataType if runChecks("OpenAPIDataType") ERROR "Error: <<OpenAPIDataType>> " + this.name + " must not have a parent class.": this.superClass.size == 0;
 
 context PathParam if runChecks("PathParam") ERROR "Error: <<PathParam>> " + this.fqn() + " must be required.": this.lower == 1;
 context PathParam if runChecks("PathParam") ERROR "Error: <<PathParam>> " + this.fqn() + " must not be multivalued.": this.isMultivalued() == false;

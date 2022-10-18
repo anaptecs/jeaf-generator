@@ -5,10 +5,10 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.validation.ConstraintViolationException;
 
@@ -46,14 +46,14 @@ public class WeirdBooking implements ServiceObject {
   /**
    * 
    */
-  private Set<ComplexBookingID> additionalBookings;
+  private List<ComplexBookingID> additionalBookings;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected WeirdBooking( ) {
-    additionalBookings = new HashSet<ComplexBookingID>();
+    additionalBookings = new ArrayList<ComplexBookingID>();
   }
 
   /**
@@ -70,7 +70,7 @@ public class WeirdBooking implements ServiceObject {
       additionalBookings = pBuilder.additionalBookings;
     }
     else {
-      additionalBookings = new HashSet<ComplexBookingID>();
+      additionalBookings = new ArrayList<ComplexBookingID>();
     }
   }
 
@@ -107,7 +107,7 @@ public class WeirdBooking implements ServiceObject {
     /**
      * 
      */
-    private Set<ComplexBookingID> additionalBookings;
+    private List<ComplexBookingID> additionalBookings;
 
     /**
      * Use {@link WeirdBooking#builder()} instead of private constructor to create new builder.
@@ -141,10 +141,10 @@ public class WeirdBooking implements ServiceObject {
      * 
      * @param pAdditionalBookings Collection with objects to which the association should be set.
      */
-    public Builder setAdditionalBookings( Set<ComplexBookingID> pAdditionalBookings ) {
+    public Builder setAdditionalBookings( List<ComplexBookingID> pAdditionalBookings ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pAdditionalBookings != null) {
-        additionalBookings = new HashSet<ComplexBookingID>(pAdditionalBookings);
+        additionalBookings = new ArrayList<ComplexBookingID>(pAdditionalBookings);
       }
       else {
         additionalBookings = null;
@@ -211,9 +211,9 @@ public class WeirdBooking implements ServiceObject {
    * @return Collection All ComplexBookingID objects that belong to the association "additionalBookings". The method
    * never returns null and the returned collection is unmodifiable.
    */
-  public Set<ComplexBookingID> getAdditionalBookings( ) {
+  public List<ComplexBookingID> getAdditionalBookings( ) {
     // Return all ComplexBookingID objects as unmodifiable collection.
-    return Collections.unmodifiableSet(additionalBookings);
+    return Collections.unmodifiableList(additionalBookings);
   }
 
   /**

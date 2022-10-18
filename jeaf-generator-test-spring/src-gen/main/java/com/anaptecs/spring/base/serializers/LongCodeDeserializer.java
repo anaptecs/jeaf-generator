@@ -22,7 +22,7 @@ public class LongCodeDeserializer extends JsonDeserializer<LongCode> {
   public LongCode deserialize( JsonParser pParser, DeserializationContext pContext ) throws IOException {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
-    // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
+    // We expect that data types are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
       return LongCode.builder().setCode(lNode.asLong()).build();
     }

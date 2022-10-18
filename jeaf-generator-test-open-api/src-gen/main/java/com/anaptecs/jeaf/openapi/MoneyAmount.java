@@ -39,11 +39,6 @@ public class MoneyAmount {
     return amount;
   }
 
-  public MoneyAmount currencyCode(String currencyCode) {
-    this.currencyCode = currencyCode;
-    return this;
-  }
-
    /**
    * ISO 4217 currency code.
    * @return currencyCode
@@ -51,10 +46,6 @@ public class MoneyAmount {
   @Schema(example = "CHF", required = true, description = "ISO 4217 currency code.")
   public String getCurrencyCode() {
     return currencyCode;
-  }
-
-  public void setCurrencyCode(String currencyCode) {
-    this.currencyCode = currencyCode;
   }
 
 

@@ -181,30 +181,9 @@ components:
       type: object
       additionalProperties: false
       required:
-        - booking
+        - bookingID
       properties:
-        booking:
-          $ref: '#/components/schemas/BookingID'
-
-    # com.anaptecs.jeaf.junit.openapi.base.BookingID
-    BookingID:
-      type: object
-      additionalProperties: false
-      required:
-        - referenceID
-        - externalRefID
-        - inventory
-        - bookingCode
-      properties:
-        referenceID:
-          type: string
-          nullable: false
-        externalRefID:
-          type: string
-          nullable: false
-        inventory:
-          $ref: '#/components/schemas/InventoryType'
-        bookingCode:
+        bookingID:
           type: string
           nullable: false
 
@@ -433,31 +412,6 @@ components:
               type: string
               nullable: false
 
-    # com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID
-    ComplexBookingID:
-      type: object
-      additionalProperties: false
-      required:
-        - referenceID
-        - internalID
-        - bookingIDs
-        - complexBookingType
-      properties:
-        referenceID:
-          type: string
-          nullable: false
-        internalID:
-          type: integer
-          format: int64
-          nullable: false
-        bookingIDs:
-          type: array
-          items:
-            $ref: '#/components/schemas/BookingID'
-          minItems: 1
-        complexBookingType:
-          $ref: '#/components/schemas/ComplexBookingType'
-
     # com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType
     ComplexBookingType:
       type: string
@@ -642,6 +596,7 @@ components:
           maxLength: 3
           example: CHF
           nullable: false
+          readOnly: true
 
     # com.anaptecs.jeaf.junit.openapi.base.OpenAPITestObject
     OpenAPITestObject:
@@ -725,7 +680,6 @@ components:
           items:
             type: string
             pattern: '^DE\d{2}\s?([0-9a-zA-Z]{4}\s?){4}[0-9a-zA-Z]{2}$'
-          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.Partner
     Partner:
@@ -1512,9 +1466,10 @@ components:
         - booking
       properties:
         booking:
-          $ref: '#/components/schemas/ComplexBookingID'
+          type: string
+          nullable: false
         additionalBookings:
           type: array
           items:
-            $ref: '#/components/schemas/ComplexBookingID'
+            type: string
 

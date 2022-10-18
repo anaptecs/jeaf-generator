@@ -130,7 +130,9 @@
 					<targetRuntime>SPRING</targetRuntime>
 					<restLibrary>JAX_RS</restLibrary>
 					<generateServiceInterfaces>true</generateServiceInterfaces>
+					<generateJSONSerializers>true</generateJSONSerializers>
 					<generatePOJOs>true</generatePOJOs>
+					<generatePublicObjectView>true</generatePublicObjectView>
 					<generateRESTServiceProxies>true</generateRESTServiceProxies>
 					<generateRESTServiceProxyConfigFile>true</generateRESTServiceProxyConfigFile>
 

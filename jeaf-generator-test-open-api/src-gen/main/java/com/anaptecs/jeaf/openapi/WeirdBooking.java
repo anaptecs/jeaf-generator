@@ -14,7 +14,6 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.anaptecs.jeaf.openapi.ComplexBookingID;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,12 +27,12 @@ import java.util.List;
 
 public class WeirdBooking {
   @JsonProperty("booking")
-  private ComplexBookingID booking = null;
+  private String booking = null;
 
   @JsonProperty("additionalBookings")
-  private List<ComplexBookingID> additionalBookings = null;
+  private List<String> additionalBookings = null;
 
-  public WeirdBooking booking(ComplexBookingID booking) {
+  public WeirdBooking booking(String booking) {
     this.booking = booking;
     return this;
   }
@@ -43,20 +42,20 @@ public class WeirdBooking {
    * @return booking
   **/
   @Schema(required = true, description = "")
-  public ComplexBookingID getBooking() {
+  public String getBooking() {
     return booking;
   }
 
-  public void setBooking(ComplexBookingID booking) {
+  public void setBooking(String booking) {
     this.booking = booking;
   }
 
-  public WeirdBooking additionalBookings(List<ComplexBookingID> additionalBookings) {
+  public WeirdBooking additionalBookings(List<String> additionalBookings) {
     this.additionalBookings = additionalBookings;
     return this;
   }
 
-  public WeirdBooking addAdditionalBookingsItem(ComplexBookingID additionalBookingsItem) {
+  public WeirdBooking addAdditionalBookingsItem(String additionalBookingsItem) {
     if (this.additionalBookings == null) {
       this.additionalBookings = new ArrayList<>();
     }
@@ -69,11 +68,11 @@ public class WeirdBooking {
    * @return additionalBookings
   **/
   @Schema(description = "")
-  public List<ComplexBookingID> getAdditionalBookings() {
+  public List<String> getAdditionalBookings() {
     return additionalBookings;
   }
 
-  public void setAdditionalBookings(List<ComplexBookingID> additionalBookings) {
+  public void setAdditionalBookings(List<String> additionalBookings) {
     this.additionalBookings = additionalBookings;
   }
 

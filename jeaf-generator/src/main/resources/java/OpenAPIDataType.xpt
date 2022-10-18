@@ -12,7 +12,13 @@
           description: >-
             «attribute.getCommentForOpenAPIDescription("            ")»
           «ENDIF-»
-            «IF ownerAttribute.isMultivalued() == false-»
+          «IF ownerAttribute.isMultivalued() == false-»
+          «IF this.compositeDataType == true -»
+          type: string
+              «IF ownerAttribute.isDeprecated() -»
+          deprecated: true
+              «ENDIF-»
+          «ELSE-»
           type: «attribute.type.getOpenAPIType(spec)»
               «IF attribute.hasOpenAPIFormatForProperty()-»
           format: «attribute.getOpenAPIFormatForProperty()»
@@ -32,9 +38,16 @@
           example: «((Example) attribute).exampleValue»
                 «ENDIF-»
               «ENDIF-»
-            «ELSE-»
+          «ENDIF-»
+          «ELSE-»
           type: array
           items:
+            «IF this.compositeDataType == true -»
+            type: string
+                «IF ownerAttribute.isDeprecated() -»
+            deprecated: true
+                «ENDIF-»
+            «ELSE-»
             type: «attribute.type.getOpenAPIType(spec)»
               «IF attribute.hasOpenAPIFormatForProperty()-»
             format: «attribute.getOpenAPIFormatForProperty()»
@@ -56,14 +69,15 @@
             deprecated: true
               «ENDIF-»
             «ENDIF-»
-          «IF attribute.isNullable() == false -»
-          nullable: «attribute.isNullable()»
+          «ENDIF-»
+          «IF ownerAttribute.isNullable() == false -»
+          nullable: «ownerAttribute.isNullable()»
           «ENDIF-»  
-          «IF attribute.isReadOnly()  -»
-          readOnly: «attribute.isReadOnly()»
+          «IF ownerAttribute.isReadOnly()  -»
+          readOnly: «ownerAttribute.isReadOnly()»
           «ENDIF-»  
-          «IF attribute.isWriteOnly() -»
-          writeOnly: «attribute.isWriteOnly()»
+          «IF ownerAttribute.isWriteOnly() -»
+          writeOnly: «ownerAttribute.isWriteOnly()»
           «ENDIF-»  
             «IF ownerAttribute.hasExample()-»
               «IF ((Example) ownerAttribute).exampleValue.length > 0-»
@@ -75,6 +89,12 @@
     # «this.fqn()»
     «ENDIF-»
     «this.name»:
+      «IF this.compositeDataType == true -»
+      type: string
+          «IF ownerAttribute.isDeprecated() -»
+      deprecated: true
+          «ENDIF-»
+      «ELSE-»
       type: «attribute.type.getOpenAPIType(spec)»
       «IF attribute.hasOpenAPIFormatForProperty()-»
       format: «attribute.getOpenAPIFormatForProperty()»
@@ -107,6 +127,7 @@
       example: «((Example) attribute).exampleValue»
         «ENDIF-»
       «ENDIF-»
+      «ENDIF-»
     «ENDIF-»         
   «ENDLET -»
 «ENDDEFINE»
@@ -118,6 +139,12 @@
 «indent»              «attribute.getCommentForOpenAPIDescription("                  ")»
                 «ENDIF-»
                 «IF param.isMultivalued() == false-»
+				    «IF this.compositeDataType == true -»
+«indent»            type: string
+				        «IF param.isDeprecated() -»
+«indent»            deprecated: true
+				        «ENDIF-»
+				    «ELSE-»
 «indent»            type: «attribute.type.getOpenAPIType(spec)»
                   «IF attribute.hasOpenAPIFormatForProperty()-»
 «indent»            format: «attribute.getOpenAPIFormatForProperty()»
@@ -137,9 +164,16 @@
 «indent»            example: «((Example) attribute).exampleValue»
                     «ENDIF-»
                   «ENDIF-»
+                  «ENDIF-»
                 «ELSE-»
 «indent»            type: array
 «indent»            items:
+				    «IF this.compositeDataType == true -»
+«indent»              type: string
+				        «IF param.isDeprecated() -»
+«indent»              deprecated: true
+				        «ENDIF-»
+				    «ELSE-»
 «indent»              type: «attribute.type.getOpenAPIType(spec)»
                   «IF attribute.hasOpenAPIFormatForProperty()-»
 «indent»              format: «attribute.getOpenAPIFormatForProperty()»
@@ -158,14 +192,9 @@
 «indent»            deprecated: true
                   «ENDIF-»
                 «ENDIF-»
-                «IF attribute.isNullable() == false -»
-«indent»            nullable: «attribute.isNullable()»
-                «ENDIF-»  
-                «IF attribute.isReadOnly()  -»
-«indent»            readOnly: «attribute.isReadOnly()»
-                «ENDIF-»  
-                «IF attribute.isWriteOnly() -»
-«indent»            writeOnly: «attribute.isWriteOnly()»
+                «ENDIF-»
+                «IF param.isNullableForParam() == false -»
+«indent»            nullable: «param.isNullableForParam()»
                 «ENDIF-»  
                 «IF param.hasExample()-»
                 «IF ((Example) param).exampleValue.length > 0-»
@@ -185,22 +214,78 @@
 		 * Class implements a JSON / Jackson serializer for class «name».
 		 */
 		public class «name»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<«name»> {
+		
+		  «IF this.generateInternalViewOfCompositeDataType()»
+			/**
+			 * List contains all classes that are involved in the serialization process. This information is required by some serialization mechanisms for efficiency and security reasons.
+			 */
+			private static final java.util.List<Class<?>> SERIALIZED_CLASSES;
+			
+			static {
+			  java.util.List<Class<?>> lClasses = java.util.Arrays.asList(«FOREACH collectSerializedClassNames() AS className SEPARATOR ", "»«className».class«ENDFOREACH»);
+			  SERIALIZED_CLASSES = java.util.Collections.unmodifiableList(lClasses);
+			}
+
+			/**
+			 * Serializer is used to convert composite data type «name» into a String representation.
+			 */
+			private «IF isTargetRuntimeJEAF() == false»final «ENDIF» com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter serializer;
+			
+			«IF isTargetRuntimeJEAF() == false»
+			/**
+			 * Initialize object.
+			 * 
+			 * @param pSerializer Implementation of {@link CompositeTypeConverter} that should be used to create a String representation of «name». The parameter must not be null.
+			 */
+			public «name»Serializer( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pSerializer ) {
+			  serializer = pSerializer;
+			}
+			«ENDIF»
+		  «ENDIF»
+
 		  @Override
 		  public void serialize( «this.fqn()» pObject, com.fasterxml.jackson.core.JsonGenerator pGenerator, com.fasterxml.jackson.databind.SerializerProvider pSerializers )
 		    throws java.io.IOException {
 		    
-		  «LET this.ownedAttribute.get(0) AS attr»
-		    // Write value directly to JSON and avoid nesting object structures
-		    «IF attr.type.isStringType()»
-		    pGenerator.writeString(pObject.«attr.asGetter()»());
-		    «ELSE»«IF attr.type.isBooleanType()»
-		    pGenerator.writeBoolean(pObject.«attr.asGetter()»());
-		    «ELSE»
-		    pGenerator.writeNumber(pObject.«attr.asGetter()»());
-		    «ENDIF»		    
-		    «ENDIF»
-		  «ENDLET»
+		  «IF this.isCompositeDataType()»
+		  	  pGenerator.writeString(pObject.get«this.getCompositeDateTypePublicFieldName().toFirstUpper()»());
+		  «ELSE»
+			  «IF this.generateInternalViewOfCompositeDataType()»
+					// Convert «name» into an public string only representation.
+					«IF isTargetRuntimeJEAF()»
+					pGenerator.writeString(this.getSerializer().serializeObject(pObject, SERIALIZED_CLASSES));
+					«ELSE»
+					pGenerator.writeString(serializer.serializeObject(pObject, SERIALIZED_CLASSES));
+					«ENDIF»
+			  «ELSE»
+				  «LET this.ownedAttribute.get(0) AS attr»
+				    // Write value directly to JSON and avoid nesting object structures
+				    «IF attr.type.isStringType()»
+				    pGenerator.writeString(pObject.«attr.asGetter()»());
+				    «ELSE»«IF attr.type.isBooleanType()»
+				    pGenerator.writeBoolean(pObject.«attr.asGetter()»());
+				    «ELSE»
+				    pGenerator.writeNumber(pObject.«attr.asGetter()»());
+				    «ENDIF»		    
+				    «ENDIF»
+				  «ENDLET»
+			  «ENDIF»
+		  «ENDIF»
 		  }
+		  
+		  «IF this.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF()»
+			/**
+			 * Method returns the {@link CompositeTypeConverter} that should be used to serialize objects.
+			 * 
+			 * @return {@link CompositeTypeConverter} Serializer that should be used. The method never returns null.
+			 */
+			private com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter getSerializer( ) {
+			  if (serializer == null) {
+			    serializer = com.anaptecs.jeaf.core.api.JEAF.getServiceProvider(com.anaptecs.jeaf.rest.composite.api.jeaf.CompositeTypeConverterServiceProvider.class);
+			  }
+			  return serializer;
+			}
+		  «ENDIF»
 		}
 	«ENDFILE»
 «ENDDEFINE»
@@ -216,38 +301,84 @@
 		 */
 		public class «name»Deserializer extends com.fasterxml.jackson.databind.JsonDeserializer<«this.fqn()»> {
 
+		  «IF this.generateInternalViewOfCompositeDataType()»
+			/**
+			 * List contains all classes that are involved in the serialization process. This information is required by some serialization mechanisms for efficiency and security reasons.
+			 */
+			private static final java.util.List<Class<?>> SERIALIZED_CLASSES;
+
+			static {
+			  java.util.List<Class<?>> lClasses = java.util.Arrays.asList(«FOREACH collectSerializedClassNames() AS className SEPARATOR ", "»«className».class«ENDFOREACH»);
+			  SERIALIZED_CLASSES = java.util.Collections.unmodifiableList(lClasses);
+			}
+
+			/**
+			 * Deserializer is used to convert a String representation of composite data type «name» back into an real object.
+			 */
+			private «IF isTargetRuntimeJEAF() == false»final «ENDIF» com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter deserializer;
+			
+			«IF isTargetRuntimeJEAF() == false»
+			/**
+			 * Initialize object.
+			 * 
+			 * @param pDeserializer Implementation of {@link CompositeTypeConverter} that should be used to create a «name» object from its String representation. The parameter must not be null.
+			 */
+			public «name»Deserializer( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pDeserializer ) {
+			  deserializer = pDeserializer;
+			}
+			«ENDIF»
+		  «ENDIF»
+
+
+
 		@Override
 		public «this.fqn()» deserialize( com.fasterxml.jackson.core.JsonParser pParser, com.fasterxml.jackson.databind.DeserializationContext pContext ) throws java.io.IOException {
 			// Parse JSON content.
 			com.fasterxml.jackson.databind.JsonNode lNode = pParser.getCodec().readTree(pParser);
 		
-		    // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
-		    «LET this.ownedAttribute.get(0) AS attr»
-			    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
-			    «IF attr.type.isBooleanType()»
-		        return «this.fqn()».builder().«attr.asSetter()»(lNode.asBoolean()).build();
-		        «ENDIF»
-			    «IF attr.type.isStringType()»
-		        return «this.fqn()».builder().«attr.asSetter()»(lNode.asText()).build();
-		        «ENDIF»
-		        «IF attr.type.isByteType()»
-		        return «this.fqn()».builder().«attr.asSetter()»((byte)lNode.asInt()).build();
-		        «ENDIF»
-		        «IF attr.type.isShortType()»
-		        return «this.fqn()».builder().«attr.asSetter()»((short)lNode.asInt()).build();
-		        «ENDIF»
-		        «IF attr.type.isIntegerType()»
-		        return «this.fqn()».builder().«attr.asSetter()»(lNode.asInt()).build();
-		        «ENDIF»
-		        «IF attr.type.isLongType()»
-		        return «this.fqn()».builder().«attr.asSetter()»(lNode.asLong()).build();
-		        «ENDIF»
-		        «IF attr.type.isFloatType()»
-		        return «this.fqn()».builder().«attr.asSetter()»((float)lNode.asDouble()).build();
-		        «ENDIF»
-		        «IF attr.type.isDoubleType()»
-		        return «this.fqn()».builder().«attr.asSetter()»(lNode.asDouble()).build();
-		        «ENDIF»
+		    // We expect that data types are always serialized as plain text which will result in a TextNode.
+		    «IF this.isCompositeDataType()»
+		    	if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
+		    	return «this.fqn()».builder().set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»(lNode.asText()).build();
+		    «ELSE»		    
+				«IF this.generateInternalViewOfCompositeDataType()»
+					if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
+						// Convert public string representation of «name» into real object.
+						«IF isTargetRuntimeJEAF()»
+							return this.getDeserializer().deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+						«ELSE»						
+							return deserializer.deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+						«ENDIF»
+				«ELSE»
+				    «LET this.ownedAttribute.get(0) AS attr»
+					    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
+					    «IF attr.type.isBooleanType()»
+				        return «this.fqn()».builder().«attr.asSetter()»(lNode.asBoolean()).build();
+				        «ENDIF»
+					    «IF attr.type.isStringType()»
+				        return «this.fqn()».builder().«attr.asSetter()»(lNode.asText()).build();
+				        «ENDIF»
+				        «IF attr.type.isByteType()»
+				        return «this.fqn()».builder().«attr.asSetter()»((byte)lNode.asInt()).build();
+				        «ENDIF»
+				        «IF attr.type.isShortType()»
+				        return «this.fqn()».builder().«attr.asSetter()»((short)lNode.asInt()).build();
+				        «ENDIF»
+				        «IF attr.type.isIntegerType()»
+				        return «this.fqn()».builder().«attr.asSetter()»(lNode.asInt()).build();
+				        «ENDIF»
+				        «IF attr.type.isLongType()»
+				        return «this.fqn()».builder().«attr.asSetter()»(lNode.asLong()).build();
+				        «ENDIF»
+				        «IF attr.type.isFloatType()»
+				        return «this.fqn()».builder().«attr.asSetter()»((float)lNode.asDouble()).build();
+				        «ENDIF»
+				        «IF attr.type.isDoubleType()»
+				        return «this.fqn()».builder().«attr.asSetter()»(lNode.asDouble()).build();
+				        «ENDIF»
+				    «ENDLET»
+		    	«ENDIF»
+		    «ENDIF»
 		    }
 		    // Node is not a TextNode
 		    else {
@@ -257,8 +388,21 @@
 		      throw new java.io.IOException("Unable to deserialize object of type «this.fqn()». Expected text node but received other type of JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+ lNode.getClass().getName() + "''.");
 		      «ENDIF»
 		    }
-		    «ENDLET»
 		}
+
+		«IF this.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF()»
+			/**
+			 * Method returns the {@link CompositeTypeConverter} that should be used to serialize objects.
+			 * 
+			 * @return {@link CompositeTypeConverter} Deserializer that should be used. The method never returns null.
+			 */
+			private com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter getDeserializer( ) {
+			  if (deserializer == null) {
+			    deserializer = com.anaptecs.jeaf.core.api.JEAF.getServiceProvider(com.anaptecs.jeaf.rest.composite.api.jeaf.CompositeTypeConverterServiceProvider.class);
+			  }
+			  return deserializer;
+			}
+		«ENDIF»
 	}
 	«ENDFILE»
 «ENDDEFINE»

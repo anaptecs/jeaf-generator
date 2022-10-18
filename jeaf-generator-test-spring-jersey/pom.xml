@@ -56,6 +56,19 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-composite-type-api</artifactId>
+			<version>${jeaf.rest.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-composite-type-impl-kryo</artifactId>
+			<version>${jeaf.rest.impl.version}</version>
+		</dependency>
+		
+
+		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 			<version>${validation-api.version}</version>
@@ -169,6 +182,7 @@
 					<generateJAXRSAnnotations>true</generateJAXRSAnnotations>
 					<generateServiceInterfaces>true</generateServiceInterfaces>
 					<generatePOJOs>true</generatePOJOs>
+					<generatePublicObjectView>true</generatePublicObjectView>
 					<generateJSONSerializers>true</generateJSONSerializers>
 					<generateJacksonAnnotations>true</generateJacksonAnnotations>
 					
