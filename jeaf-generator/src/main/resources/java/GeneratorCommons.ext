@@ -392,6 +392,6 @@ cached boolean generateInternalViewOfCompositeDataType(uml::Class class):
 cached int getMetaModelVersion(uml::Element element):
   element.getModel().getAllAppliedProfiles().allOwnedElements().typeSelect(JMM::ModelVersion).get(0).revision;
   
-String getErrorMessage(uml::NamedElement element, int errorCode, List[String] params):
-     errorCode.toString() + ": " + params.toString() + " " + element.fqn();
+String getErrorMessage(uml::NamedElement element, String errorCode, List[String] params):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getErrorMessage(org.eclipse.uml2.uml.NamedElement, java.lang.String, java.util.List);
  

@@ -42,6 +42,8 @@ import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Assert;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.config.Configuration;
+import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
+import com.anaptecs.jeaf.xfun.api.messages.MessageRepository;
 
 public class GeneratorCommons {
   /**
@@ -1316,5 +1318,13 @@ public class GeneratorCommons {
       }
     }
     return lOrderdSlots;
+  }
+
+  public static String getErrorMessage( NamedElement pElement, String pErrorCode, List<String> pParams ) {
+    MessageRepository lMessageRepository = XFun.getMessageRepository();
+    ErrorCode lErrorCode = lMessageRepository.getErrorCode(Integer.valueOf(pErrorCode));
+    String lMessage = lErrorCode.toString(pParams.toArray(new String[] {}));
+    return "   [" + pErrorCode + "] " + lMessage + " (Checked model element: " + Naming.getFullyQualifiedName(pElement)
+        + ")     ";
   }
 }
