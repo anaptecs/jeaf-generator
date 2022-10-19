@@ -27,10 +27,14 @@ import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingTypeDeseri
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingTypeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.CurrencyCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.CurrencyCodeSerializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.DataUnitDeserializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.DataUnitSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeTypeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeTypeSerializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.EntityDeserializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.EntitySerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ExtensibleEnumDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ExtensibleEnumSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.FloatCodeDeserializer;
@@ -57,6 +61,8 @@ import com.anaptecs.jeaf.junit.openapi.base.serializers.StringCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.StringCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.StringCodeTypeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.StringCodeTypeSerializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.VersionedObjectSoftLinkDeserializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.VersionedObjectSoftLinkSerializer;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
@@ -119,9 +125,15 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addDeserializer(StringCode.class, new StringCodeDeserializer());
     lModule.addSerializer(StringCodeType.class, new StringCodeTypeSerializer());
     lModule.addDeserializer(StringCodeType.class, new StringCodeTypeDeserializer());
+    lModule.addSerializer(VersionedObjectSoftLink.class, new VersionedObjectSoftLinkSerializer());
+    lModule.addDeserializer(VersionedObjectSoftLink.class, new VersionedObjectSoftLinkDeserializer());
     // Add serializers and deserializers for enumerations
     lModule.addSerializer(ComplexBookingType.class, new ComplexBookingTypeSerializer());
     lModule.addDeserializer(ComplexBookingType.class, new ComplexBookingTypeDeserializer());
+    lModule.addSerializer(DataUnit.class, new DataUnitSerializer());
+    lModule.addDeserializer(DataUnit.class, new DataUnitDeserializer());
+    lModule.addSerializer(Entity.class, new EntitySerializer());
+    lModule.addDeserializer(Entity.class, new EntityDeserializer());
     lModule.addSerializer(ExtensibleEnum.class, new ExtensibleEnumSerializer());
     lModule.addDeserializer(ExtensibleEnum.class, new ExtensibleEnumDeserializer());
     // Return created module.
