@@ -35,7 +35,8 @@ import openapitools.JSON;
  */
 @JsonPropertyOrder({
   WeirdBooking.JSON_PROPERTY_BOOKING,
-  WeirdBooking.JSON_PROPERTY_ADDITIONAL_BOOKINGS
+  WeirdBooking.JSON_PROPERTY_ADDITIONAL_BOOKINGS,
+  WeirdBooking.JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class WeirdBooking {
@@ -44,6 +45,9 @@ public class WeirdBooking {
 
   public static final String JSON_PROPERTY_ADDITIONAL_BOOKINGS = "additionalBookings";
   private List<String> additionalBookings = null;
+
+  public static final String JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK = "versionedObjectSoftLink";
+  private String versionedObjectSoftLink;
 
   public WeirdBooking() { 
   }
@@ -108,6 +112,32 @@ public class WeirdBooking {
   }
 
 
+  public WeirdBooking versionedObjectSoftLink(String versionedObjectSoftLink) {
+    this.versionedObjectSoftLink = versionedObjectSoftLink;
+    return this;
+  }
+
+   /**
+   * Get versionedObjectSoftLink
+   * @return versionedObjectSoftLink
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getVersionedObjectSoftLink() {
+    return versionedObjectSoftLink;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setVersionedObjectSoftLink(String versionedObjectSoftLink) {
+    this.versionedObjectSoftLink = versionedObjectSoftLink;
+  }
+
+
   /**
    * Return true if this WeirdBooking object is equal to o.
    */
@@ -121,12 +151,13 @@ public class WeirdBooking {
     }
     WeirdBooking weirdBooking = (WeirdBooking) o;
     return Objects.equals(this.booking, weirdBooking.booking) &&
-        Objects.equals(this.additionalBookings, weirdBooking.additionalBookings);
+        Objects.equals(this.additionalBookings, weirdBooking.additionalBookings) &&
+        Objects.equals(this.versionedObjectSoftLink, weirdBooking.versionedObjectSoftLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(booking, additionalBookings);
+    return Objects.hash(booking, additionalBookings, versionedObjectSoftLink);
   }
 
   @Override
@@ -135,6 +166,7 @@ public class WeirdBooking {
     sb.append("class WeirdBooking {\n");
     sb.append("    booking: ").append(toIndentedString(booking)).append("\n");
     sb.append("    additionalBookings: ").append(toIndentedString(additionalBookings)).append("\n");
+    sb.append("    versionedObjectSoftLink: ").append(toIndentedString(versionedObjectSoftLink)).append("\n");
     sb.append("}");
     return sb.toString();
   }
