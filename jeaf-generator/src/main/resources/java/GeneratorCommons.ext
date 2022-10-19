@@ -374,4 +374,6 @@ cached boolean generateInternalViewOfCompositeDataType(uml::Class class):
 cached int getMetaModelVersion(uml::Element element):
   element.getModel().getAllAppliedProfiles().allOwnedElements().typeSelect(JMM::ModelVersion).get(0).revision;
   
-  
+String getErrorMessage(uml::NamedElement element, int errorCode, List[String] params):
+     errorCode.toString() + ": " + params.toString() + " " + element.fqn();
+ 
