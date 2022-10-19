@@ -12,7 +12,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 «DEFINE POJOClass FOR POJO»
 	«IF generatePOJOs() == true»
-		«IF this.ownedOperation.size == 0 && this.hasCustomImplementation == false»
+		«IF this.ownedOperation.size == 0 && this.hasCustomImplementation == false && (this.compositeDataTypeCustomSerialization == false || (this.compositeDataTypeCustomSerialization == true && this.generateInternalViewOfCompositeDataType() == false))»
 			«FILE packagePath() + "/" + name +".java" src_gen»
 				«getFileHeader()»
 				package «this.packageName()»;
