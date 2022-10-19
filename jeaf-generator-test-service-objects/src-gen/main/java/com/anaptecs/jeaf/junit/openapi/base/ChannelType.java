@@ -7,26 +7,48 @@ public enum ChannelType {
   /**
    * 
    */
-  COUNTER,
+  COUNTER("CNT"),
   /**
    * 
    */
-  CALL_CENTER,
+  CALL_CENTER("CC"),
   /**
    * 
    */
-  MOBILE,
+  MOBILE("MOB"),
   /**
    * 
    */
-  TVM,
+  TVM("TVM"),
   /**
    * 
    */
-  WEB,
+  WEB("WEB"),
   /**
    * 
    */
   @Deprecated
-  LEGACY_POS;
+  LEGACY_POS("PRISMA");
+
+  /**
+   * Initialize object.
+   */
+  private ChannelType( String pCode ) {
+    code = pCode;
+  }
+
+  /**
+   * 
+   */
+  private final String code;
+
+  /**
+   * Method returns the attribute "code".
+   * 
+   * 
+   * @return String Value to which the attribute "code" is set.
+   */
+  public String getCode( ) {
+    return code;
+  }
 }
