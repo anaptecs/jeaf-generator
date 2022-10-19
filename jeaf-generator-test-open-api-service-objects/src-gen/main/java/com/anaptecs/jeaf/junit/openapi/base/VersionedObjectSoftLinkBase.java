@@ -58,7 +58,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     /**
      * String representation of this object.
      */
-    private String bookingID;
+    private String objectID;
 
     /**
      * Use {@link VersionedObjectSoftLink.builder()} instead of protected constructor to create new builder.
@@ -80,7 +80,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     /**
      * Method returns the String representation of this object.
      * 
-     * @return String bookingID String representation of this object.
+     * @return String String representation of this object.
      */
     public BuilderBase setObjectID( String pObjectID ) {
       objectID = pObjectID;
