@@ -253,7 +253,10 @@ cached boolean isBooleanType(uml::Type type) :
   type.fqn() == "java.lang.Boolean" || type.fqn() == "Boolean" ||type.fqn() == "boolean"; 
 
 cached boolean isStringType(uml::Type type) :
-  type.fqn() == "java.lang.String" || type.fqn() == "String"; 
+  type.fqn() == "java.lang.String" || type.fqn() == "String";
+  
+cached boolean isStringTypeSlot(uml::Slot slot):
+	slot.definingFeature.type.isStringType(); 
   
 cached boolean isUtilDate(uml::Type type) :
   type.fqn() == "java.util.Date";

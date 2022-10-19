@@ -20,7 +20,10 @@ package «packageName()»;
 	   * «literal.getComment()»
 	   */
 	  «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
-	  «literal.name»«IF literal != this.ownedLiteral.last()»,«ELSE»;«ENDIF»
+	  «literal.name»«IF literal.slot.size > 0»( 
+	  	«FOREACH literal.slot AS slot SEPARATOR ", "»«IF slot.isStringTypeSlot()»"«ENDIF»«slot.value.first().stringValue()»«IF slot.isStringTypeSlot()»"«ENDIF»«ENDFOREACH»	  
+	  )«ENDIF»	  
+	  «IF literal != this.ownedLiteral.last()»,«ELSE»;«ENDIF»
 	«ENDFOREACH»
 	
 	«IF this.ownedAttribute.size > 0»
