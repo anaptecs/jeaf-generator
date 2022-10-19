@@ -39,6 +39,11 @@ public class WeirdBooking implements ServiceObject {
   public static final String ADDITIONALBOOKINGS = "additionalBookings";
 
   /**
+   * Constant for the name of attribute "versionedObjectSoftLink".
+   */
+  public static final String VERSIONEDOBJECTSOFTLINK = "versionedObjectSoftLink";
+
+  /**
    * 
    */
   private ComplexBookingID booking;
@@ -47,6 +52,11 @@ public class WeirdBooking implements ServiceObject {
    * 
    */
   private List<ComplexBookingID> additionalBookings;
+
+  /**
+   * 
+   */
+  private VersionedObjectSoftLink versionedObjectSoftLink;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -72,6 +82,7 @@ public class WeirdBooking implements ServiceObject {
     else {
       additionalBookings = new ArrayList<ComplexBookingID>();
     }
+    versionedObjectSoftLink = pBuilder.versionedObjectSoftLink;
   }
 
   /**
@@ -110,6 +121,11 @@ public class WeirdBooking implements ServiceObject {
     private List<ComplexBookingID> additionalBookings;
 
     /**
+     * 
+     */
+    private VersionedObjectSoftLink versionedObjectSoftLink;
+
+    /**
      * Use {@link WeirdBooking#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -123,6 +139,7 @@ public class WeirdBooking implements ServiceObject {
         // Read attribute values from passed object.
         booking = pObject.booking;
         additionalBookings = pObject.additionalBookings;
+        versionedObjectSoftLink = pObject.versionedObjectSoftLink;
       }
     }
 
@@ -149,6 +166,17 @@ public class WeirdBooking implements ServiceObject {
       else {
         additionalBookings = null;
       }
+      return this;
+    }
+
+    /**
+     * Method sets the association "versionedObjectSoftLink".
+     * 
+     * @param pVersionedObjectSoftLink VersionedObjectSoftLink to which the association "versionedObjectSoftLink" should
+     * be set.
+     */
+    public Builder setVersionedObjectSoftLink( VersionedObjectSoftLink pVersionedObjectSoftLink ) {
+      versionedObjectSoftLink = pVersionedObjectSoftLink;
       return this;
     }
 
@@ -267,6 +295,35 @@ public class WeirdBooking implements ServiceObject {
   public void clearAdditionalBookings( ) {
     // Remove all objects from association "additionalBookings".
     additionalBookings.clear();
+  }
+
+  /**
+   * Method returns the association "versionedObjectSoftLink".
+   * 
+   *
+   * @return VersionedObjectSoftLink VersionedObjectSoftLink to which the association "versionedObjectSoftLink" is set.
+   */
+  public VersionedObjectSoftLink getVersionedObjectSoftLink( ) {
+    return versionedObjectSoftLink;
+  }
+
+  /**
+   * Method sets the association "versionedObjectSoftLink".
+   * 
+   * 
+   * @param pVersionedObjectSoftLink VersionedObjectSoftLink to which the association "versionedObjectSoftLink" should
+   * be set.
+   */
+  public void setVersionedObjectSoftLink( VersionedObjectSoftLink pVersionedObjectSoftLink ) {
+    versionedObjectSoftLink = pVersionedObjectSoftLink;
+  }
+
+  /**
+   * Method unsets the association "versionedObjectSoftLink".
+   * 
+   */
+  public final void unsetVersionedObjectSoftLink( ) {
+    versionedObjectSoftLink = null;
   }
 
   /**

@@ -364,12 +364,12 @@ cached String getExtensibleEnumType(uml::Type type):
    then type.fqn() +"." + type.name + "Type";
    
 cached boolean isCompositeDataTypeConverterRequiredForObjectMapperFactory(JMM::ObjectMapperFactory factory):
-	if(factory.clientDependency.supplier.typeSelect(JMM::ModuleFactory).getOpenAPIDataTypes().select(e|e.generateInternalViewOfCompositeDataType()).size > 0 && isTargetRuntimeJEAF() == false)
+	if(factory.clientDependency.supplier.typeSelect(JMM::ModuleFactory).getOpenAPIDataTypes().select(e|e.generateInternalViewOfCompositeDataType() && e.hasCompositeDateTypeCustomSerialization() == false).size > 0 && isTargetRuntimeJEAF() == false)
 	then true
 	else false;
 		
 cached boolean requiresCompositeDataTypeConverter(JMM::ModuleFactory factory):
-	factory.getOpenAPIDataTypes().select(e|e.generateInternalViewOfCompositeDataType()).size > 0 && isTargetRuntimeJEAF() == false;
+	factory.getOpenAPIDataTypes().select(e|e.generateInternalViewOfCompositeDataType() && e.hasCompositeDateTypeCustomSerialization()).size > 0 && isTargetRuntimeJEAF() == false;
 	
 	
 	
