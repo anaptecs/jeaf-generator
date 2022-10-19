@@ -277,6 +277,30 @@
 					«EXPAND java::Builder::GenerateBuilderImpl»
 					
 					«EXPAND jeaf::JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperation»
+
+				  «IF this.compositeDataTypeCustomSerialization»
+				  /**
+				   * Method serializes this object into its custom string representation.
+				   * 
+				   * @return {@link String} Serialized String representation of this object. The method must not return null.
+				   */
+				  public String serialize( ) {
+				    // TODO Implementation required
+				    return null;
+				  }
+				
+				  /**
+				   * Method deserialized the passed String representation of this object into a new instance of this class.
+				   * 
+				   * @param pSerialized Serialized representation that should be used to create a new instance. The parameter is never null.
+				   * @return {@link «name»} Instance of this class as it was deserialized from the passed string. The method must not return null.
+				   */
+				  public static «name» deserialize( String pSerialized ) {
+				    // TODO Implementation required
+				    return null;
+				  }
+				  «ENDIF»
+
 				}
 			«ENDFILE»
 		«ENDIF»

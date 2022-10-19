@@ -213,33 +213,34 @@
 		/**
 		 * Class implements a JSON / Jackson serializer for class «name».
 		 */
-		public class «name»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<«name»> {
-		
+		public class «name»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<«name»> {		
 		  «IF this.generateInternalViewOfCompositeDataType()»
-			/**
-			 * List contains all classes that are involved in the serialization process. This information is required by some serialization mechanisms for efficiency and security reasons.
-			 */
-			private static final java.util.List<Class<?>> SERIALIZED_CLASSES;
-			
-			static {
-			  java.util.List<Class<?>> lClasses = java.util.Arrays.asList(«FOREACH collectSerializedClassNames() AS className SEPARATOR ", "»«className».class«ENDFOREACH»);
-			  SERIALIZED_CLASSES = java.util.Collections.unmodifiableList(lClasses);
-			}
-
-			/**
-			 * Serializer is used to convert composite data type «name» into a String representation.
-			 */
-			private «IF isTargetRuntimeJEAF() == false»final «ENDIF» com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter serializer;
-			
-			«IF isTargetRuntimeJEAF() == false»
-			/**
-			 * Initialize object.
-			 * 
-			 * @param pSerializer Implementation of {@link CompositeTypeConverter} that should be used to create a String representation of «name». The parameter must not be null.
-			 */
-			public «name»Serializer( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pSerializer ) {
-			  serializer = pSerializer;
-			}
+			«IF this.hasCompositeDateTypeCustomSerialization() == false»
+				/**
+				 * List contains all classes that are involved in the serialization process. This information is required by some serialization mechanisms for efficiency and security reasons.
+				 */
+				private static final java.util.List<Class<?>> SERIALIZED_CLASSES;
+				
+				static {
+				  java.util.List<Class<?>> lClasses = java.util.Arrays.asList(«FOREACH collectSerializedClassNames() AS className SEPARATOR ", "»«className».class«ENDFOREACH»);
+				  SERIALIZED_CLASSES = java.util.Collections.unmodifiableList(lClasses);
+				}
+	
+				/**
+				 * Serializer is used to convert composite data type «name» into a String representation.
+				 */
+				private «IF isTargetRuntimeJEAF() == false»final «ENDIF» com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter serializer;
+				
+				«IF isTargetRuntimeJEAF() == false»
+				/**
+				 * Initialize object.
+				 * 
+				 * @param pSerializer Implementation of {@link CompositeTypeConverter} that should be used to create a String representation of «name». The parameter must not be null.
+				 */
+				public «name»Serializer( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pSerializer ) {
+				  serializer = pSerializer;
+				}
+				«ENDIF»
 			«ENDIF»
 		  «ENDIF»
 
@@ -252,11 +253,15 @@
 		  «ELSE»
 			  «IF this.generateInternalViewOfCompositeDataType()»
 					// Convert «name» into an public string only representation.
+			  	«IF this.hasCompositeDateTypeCustomSerialization()»
+			  		pGenerator.writeString(pObject.serialize());
+			  	«ELSE»
 					«IF isTargetRuntimeJEAF()»
 					pGenerator.writeString(this.getSerializer().serializeObject(pObject, SERIALIZED_CLASSES));
 					«ELSE»
 					pGenerator.writeString(serializer.serializeObject(pObject, SERIALIZED_CLASSES));
 					«ENDIF»
+			  	«ENDIF»
 			  «ELSE»
 				  «LET this.ownedAttribute.get(0) AS attr»
 				    // Write value directly to JSON and avoid nesting object structures
@@ -273,7 +278,7 @@
 		  «ENDIF»
 		  }
 		  
-		  «IF this.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF()»
+		  «IF this.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF() && hasCompositeDateTypeCustomSerialization() == false»
 			/**
 			 * Method returns the {@link CompositeTypeConverter} that should be used to serialize objects.
 			 * 
@@ -302,31 +307,33 @@
 		public class «name»Deserializer extends com.fasterxml.jackson.databind.JsonDeserializer<«this.fqn()»> {
 
 		  «IF this.generateInternalViewOfCompositeDataType()»
-			/**
-			 * List contains all classes that are involved in the serialization process. This information is required by some serialization mechanisms for efficiency and security reasons.
-			 */
-			private static final java.util.List<Class<?>> SERIALIZED_CLASSES;
-
-			static {
-			  java.util.List<Class<?>> lClasses = java.util.Arrays.asList(«FOREACH collectSerializedClassNames() AS className SEPARATOR ", "»«className».class«ENDFOREACH»);
-			  SERIALIZED_CLASSES = java.util.Collections.unmodifiableList(lClasses);
-			}
-
-			/**
-			 * Deserializer is used to convert a String representation of composite data type «name» back into an real object.
-			 */
-			private «IF isTargetRuntimeJEAF() == false»final «ENDIF» com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter deserializer;
-			
-			«IF isTargetRuntimeJEAF() == false»
-			/**
-			 * Initialize object.
-			 * 
-			 * @param pDeserializer Implementation of {@link CompositeTypeConverter} that should be used to create a «name» object from its String representation. The parameter must not be null.
-			 */
-			public «name»Deserializer( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pDeserializer ) {
-			  deserializer = pDeserializer;
-			}
-			«ENDIF»
+			«IF this.hasCompositeDateTypeCustomSerialization() == false»
+				/**
+				 * List contains all classes that are involved in the serialization process. This information is required by some serialization mechanisms for efficiency and security reasons.
+				 */
+				private static final java.util.List<Class<?>> SERIALIZED_CLASSES;
+	
+				static {
+				  java.util.List<Class<?>> lClasses = java.util.Arrays.asList(«FOREACH collectSerializedClassNames() AS className SEPARATOR ", "»«className».class«ENDFOREACH»);
+				  SERIALIZED_CLASSES = java.util.Collections.unmodifiableList(lClasses);
+				}
+	
+				/**
+				 * Deserializer is used to convert a String representation of composite data type «name» back into an real object.
+				 */
+				private «IF isTargetRuntimeJEAF() == false»final «ENDIF» com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter deserializer;
+				
+				«IF isTargetRuntimeJEAF() == false»
+				/**
+				 * Initialize object.
+				 * 
+				 * @param pDeserializer Implementation of {@link CompositeTypeConverter} that should be used to create a «name» object from its String representation. The parameter must not be null.
+				 */
+				public «name»Deserializer( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pDeserializer ) {
+				  deserializer = pDeserializer;
+				}
+				«ENDIF»				
+		  	«ENDIF»
 		  «ENDIF»
 
 
@@ -344,11 +351,15 @@
 				«IF this.generateInternalViewOfCompositeDataType()»
 					if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
 						// Convert public string representation of «name» into real object.
+				  	«IF this.hasCompositeDateTypeCustomSerialization()»
+				  		return «name».deserialize(lNode.asText());
+				  	«ELSE»
 						«IF isTargetRuntimeJEAF()»
 							return this.getDeserializer().deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
 						«ELSE»						
 							return deserializer.deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
 						«ENDIF»
+					«ENDIF»
 				«ELSE»
 				    «LET this.ownedAttribute.get(0) AS attr»
 					    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
@@ -390,7 +401,7 @@
 		    }
 		}
 
-		«IF this.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF()»
+		«IF this.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF() && hasCompositeDateTypeCustomSerialization() == false»
 			/**
 			 * Method returns the {@link CompositeTypeConverter} that should be used to serialize objects.
 			 * 

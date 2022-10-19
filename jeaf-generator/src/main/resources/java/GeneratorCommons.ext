@@ -367,6 +367,15 @@ cached String getCompositeDateTypePublicFieldName(uml::Class class):
   		then ((JMM::POJO) class).compositeDataTypeReadonly
   		else false;
  
+cached boolean hasCompositeDateTypeCustomSerialization(uml::Class class):
+  if class.isStereotypeApplied("POJO")
+  then ((JMM::ServiceObject) class).compositeDataTypeCustomSerialization
+  else 
+  		if class.isStereotypeApplied("ServiceObject")
+  		then ((JMM::POJO) class).compositeDataTypeCustomSerialization
+  		else false;
+ 
+
  
 cached boolean generateInternalViewOfCompositeDataType(uml::Class class):
   if generatePublicObjectView() == true

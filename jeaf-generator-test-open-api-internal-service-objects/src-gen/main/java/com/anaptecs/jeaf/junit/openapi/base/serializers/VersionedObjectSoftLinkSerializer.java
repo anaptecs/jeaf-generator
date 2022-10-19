@@ -16,7 +16,6 @@ import com.fasterxml.jackson.databind.SerializerProvider;
  * Class implements a JSON / Jackson serializer for class VersionedObjectSoftLink.
  */
 public class VersionedObjectSoftLinkSerializer extends JsonSerializer<VersionedObjectSoftLink> {
-
   @Override
   public void serialize( VersionedObjectSoftLink pObject, JsonGenerator pGenerator, SerializerProvider pSerializers )
     throws IOException {
