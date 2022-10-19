@@ -58,7 +58,7 @@
 		«ENDIF»
 		public class «name» «IF isTargetRuntimeJEAF()»implements com.anaptecs.jeaf.json.api.ObjectMapperModuleFactory«ENDIF» {
 			«IF this.getOpenAPIDataTypes().select(e|e.generateInternalViewOfCompositeDataType()).isEmpty == false»
-				«IF isTargetRuntimeJEAF() == false»
+				«IF isTargetRuntimeJEAF() == false && hasCompositeDateTypeCustomSerialization() == false»
 					/**
 					 * Composite type converter is used for serialization / deserialization in case that module factory contains composite data types.
 					 */
@@ -88,7 +88,7 @@
 				
 				// Add serializers and deserializers for datatypes				
 				«FOREACH this.getOpenAPIDataTypes() AS datatype»
-					«IF datatype.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF()== false»
+					«IF datatype.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF()== false && datatype.hasCompositeDateTypeCustomSerialization() == false»
 						lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer(compositeTypeConverter));
 						lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer(compositeTypeConverter));
 					«ELSE»
