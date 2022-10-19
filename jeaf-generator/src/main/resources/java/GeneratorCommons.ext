@@ -253,7 +253,16 @@ cached boolean isBooleanType(uml::Type type) :
   type.fqn() == "java.lang.Boolean" || type.fqn() == "Boolean" ||type.fqn() == "boolean"; 
 
 cached boolean isStringType(uml::Type type) :
-  type.fqn() == "java.lang.String" || type.fqn() == "String"; 
+  type.fqn() == "java.lang.String" || type.fqn() == "String";
+  
+cached boolean isStringTypeSlot(uml::Slot slot):
+	slot.definingFeature.type.isStringType(); 
+	
+cached boolean isFloatTypeSlot(uml::Slot slot):
+	slot.definingFeature.type.isFloatType(); 
+	
+cached List[uml::Slot] getOrderedSlots(uml::EnumerationLiteral literal):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getOrderedSlots(org.eclipse.uml2.uml.EnumerationLiteral);
   
 cached boolean isUtilDate(uml::Type type) :
   type.fqn() == "java.util.Date";

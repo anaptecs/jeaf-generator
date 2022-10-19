@@ -9,9 +9,11 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.uml2.uml.Activity;
@@ -21,6 +23,7 @@ import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Enumeration;
+import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
@@ -29,6 +32,7 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.ValueSpecification;
 
@@ -1294,4 +1298,23 @@ public class GeneratorCommons {
     return pElement instanceof Enumeration;
   }
 
+  public static List<Slot> getOrderedSlots( EnumerationLiteral pLiteral ) {
+    Map<Property, Slot> lSlotsByProperty = new HashMap<Property, Slot>();
+    Iterator<Slot> lIterator = pLiteral.getSlots().iterator();
+    while (lIterator.hasNext()) {
+      Slot lNextSlot = lIterator.next();
+      lSlotsByProperty.put((Property) lNextSlot.getDefiningFeature(), lNextSlot);
+    }
+    List<Slot> lOrderdSlots = new ArrayList<Slot>(lSlotsByProperty.size());
+    Enumeration lEnumeration = (Enumeration) pLiteral.getOwner();
+    Iterator<Property> lAttrIter = lEnumeration.getAttributes().iterator();
+    while (lAttrIter.hasNext()) {
+      Property lProperty = lAttrIter.next();
+      Slot lSlot = lSlotsByProperty.get(lProperty);
+      if (lSlot != null) {
+        lOrderdSlots.add(lSlot);
+      }
+    }
+    return lOrderdSlots;
+  }
 }
