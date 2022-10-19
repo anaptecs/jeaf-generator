@@ -32,6 +32,9 @@ public class WeirdBooking {
   @JsonProperty("additionalBookings")
   private List<String> additionalBookings = null;
 
+  @JsonProperty("versionedObjectSoftLink")
+  private String versionedObjectSoftLink = null;
+
   public WeirdBooking booking(String booking) {
     this.booking = booking;
     return this;
@@ -76,6 +79,24 @@ public class WeirdBooking {
     this.additionalBookings = additionalBookings;
   }
 
+  public WeirdBooking versionedObjectSoftLink(String versionedObjectSoftLink) {
+    this.versionedObjectSoftLink = versionedObjectSoftLink;
+    return this;
+  }
+
+   /**
+   * Get versionedObjectSoftLink
+   * @return versionedObjectSoftLink
+  **/
+  @Schema(required = true, description = "")
+  public String getVersionedObjectSoftLink() {
+    return versionedObjectSoftLink;
+  }
+
+  public void setVersionedObjectSoftLink(String versionedObjectSoftLink) {
+    this.versionedObjectSoftLink = versionedObjectSoftLink;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -87,12 +108,13 @@ public class WeirdBooking {
     }
     WeirdBooking weirdBooking = (WeirdBooking) o;
     return Objects.equals(this.booking, weirdBooking.booking) &&
-        Objects.equals(this.additionalBookings, weirdBooking.additionalBookings);
+        Objects.equals(this.additionalBookings, weirdBooking.additionalBookings) &&
+        Objects.equals(this.versionedObjectSoftLink, weirdBooking.versionedObjectSoftLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(booking, additionalBookings);
+    return Objects.hash(booking, additionalBookings, versionedObjectSoftLink);
   }
 
 
@@ -103,6 +125,7 @@ public class WeirdBooking {
     
     sb.append("    booking: ").append(toIndentedString(booking)).append("\n");
     sb.append("    additionalBookings: ").append(toIndentedString(additionalBookings)).append("\n");
+    sb.append("    versionedObjectSoftLink: ").append(toIndentedString(versionedObjectSoftLink)).append("\n");
     sb.append("}");
     return sb.toString();
   }

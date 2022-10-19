@@ -70,7 +70,7 @@ public abstract class ComplexBookingIDBase {
     /**
      * Method returns the String representation of this object.
      * 
-     * @return String bookingID String representation of this object.
+     * @return String String representation of this object.
      */
     public BuilderBase setBookingID( String pBookingID ) {
       bookingID = pBookingID;

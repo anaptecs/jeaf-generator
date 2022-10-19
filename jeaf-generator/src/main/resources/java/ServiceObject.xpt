@@ -13,7 +13,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 «DEFINE ServiceObjectClass FOR ServiceObject»
   «IF generateServiceObjects() == true»
-  «IF this.ownedOperation.size == 0 && this.hasCustomImplementation == false»
+  «IF this.ownedOperation.size == 0 && this.hasCustomImplementation == false && (this.compositeDataTypeCustomSerialization == false || (this.compositeDataTypeCustomSerialization == true && this.generateInternalViewOfCompositeDataType() == false))»
 	«FILE packagePath() + "/" + name +".java" src_gen»
 	«getFileHeader()»
 	package «this.packageName()»;
@@ -106,7 +106,7 @@
 			/**
 			 * Method returns the String representation of this object.
 			 * 
-			 * @return String bookingID String representation of this object.
+			 * @return String String representation of this object.
 			 */
 			public void set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»( String p«this.getCompositeDateTypePublicFieldName().toFirstUpper()» ) {
 			  «this.getCompositeDateTypePublicFieldName()» = p«this.getCompositeDateTypePublicFieldName().toFirstUpper()»;
@@ -213,7 +213,7 @@
 			/**
 			 * Method returns the String representation of this object.
 			 * 
-			 * @return String bookingID String representation of this object.
+			 * @return String String representation of this object.
 			 */
 			public void set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»( String p«this.getCompositeDateTypePublicFieldName().toFirstUpper()» ) {
 			  «this.getCompositeDateTypePublicFieldName()» = p«this.getCompositeDateTypePublicFieldName().toFirstUpper()»;
@@ -264,6 +264,29 @@
 		«EXPAND java::Builder::GenerateBuilderImpl»
 
 		«EXPAND jeaf::JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperation»
+
+		  «IF this.compositeDataTypeCustomSerialization»
+		  /**
+		   * Method serializes this object into its custom string representation.
+		   * 
+		   * @return {@link String} Serialized String representation of this object. The method must not return null.
+		   */
+		  public String serialize( ) {
+		    // TODO Implementation required
+		    return null;
+		  }
+		
+		  /**
+		   * Method deserialized the passed String representation of this object into a new instance of this class.
+		   * 
+		   * @param pSerialized Serialized representation that should be used to create a new instance. The parameter is never null.
+		   * @return {@link «name»} Instance of this class as it was deserialized from the passed string. The method must not return null.
+		   */
+		  public static «name» deserialize( String pSerialized ) {
+		    // TODO Implementation required
+		    return null;
+		  }
+		  «ENDIF»
 	  }
 	  «ENDFILE»
 	«ENDIF»

@@ -419,6 +419,12 @@ components:
         - COMPLEX
         - VERY_COMPLEX
 
+    # com.anaptecs.jeaf.junit.openapi.base.DataUnit
+    DataUnit:
+      type: string
+      x-extensible-enum:
+        - COUPON
+
     # com.anaptecs.jeaf.junit.openapi.base.DateObject
     DateObject:
       type: object
@@ -511,6 +517,13 @@ components:
           nullable: false
         timeUnit:
           $ref: '#/components/schemas/TimeUnit'
+
+    # com.anaptecs.jeaf.junit.openapi.base.Entity
+    Entity:
+      type: string
+      x-extensible-enum:
+        - DISCOUNT_CAMPAIGN
+        - DISCOUNT_OFFER
 
     # com.anaptecs.jeaf.junit.openapi.base.GeoPosition
     GeoPosition:
@@ -1464,6 +1477,7 @@ components:
       additionalProperties: false
       required:
         - booking
+        - versionedObjectSoftLink
       properties:
         booking:
           type: string
@@ -1472,4 +1486,7 @@ components:
           type: array
           items:
             type: string
+        versionedObjectSoftLink:
+          type: string
+          nullable: false
 

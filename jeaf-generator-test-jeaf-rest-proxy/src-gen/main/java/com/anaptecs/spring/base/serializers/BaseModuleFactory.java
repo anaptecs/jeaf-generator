@@ -17,8 +17,10 @@ import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ComplexBookingID;
 import com.anaptecs.spring.base.ComplexBookingType;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.DataUnit;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.DoubleCodeType;
+import com.anaptecs.spring.base.Entity;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.FloatCode;
 import com.anaptecs.spring.base.FloatCodeType;
@@ -29,6 +31,7 @@ import com.anaptecs.spring.base.LongCodeType;
 import com.anaptecs.spring.base.ProductCode;
 import com.anaptecs.spring.base.ShortCode;
 import com.anaptecs.spring.base.ShortCodeType;
+import com.anaptecs.spring.base.SoftLink;
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.StringCodeType;
 import com.fasterxml.jackson.databind.Module;
@@ -87,6 +90,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addDeserializer(ShortCode.class, new ShortCodeDeserializer());
     lModule.addSerializer(ShortCodeType.class, new ShortCodeTypeSerializer());
     lModule.addDeserializer(ShortCodeType.class, new ShortCodeTypeDeserializer());
+    lModule.addSerializer(SoftLink.class, new SoftLinkSerializer());
+    lModule.addDeserializer(SoftLink.class, new SoftLinkDeserializer());
     lModule.addSerializer(StringCode.class, new StringCodeSerializer());
     lModule.addDeserializer(StringCode.class, new StringCodeDeserializer());
     lModule.addSerializer(StringCodeType.class, new StringCodeTypeSerializer());
@@ -94,6 +99,10 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     // Add serializers and deserializers for enumerations
     lModule.addSerializer(ComplexBookingType.class, new ComplexBookingTypeSerializer());
     lModule.addDeserializer(ComplexBookingType.class, new ComplexBookingTypeDeserializer());
+    lModule.addSerializer(DataUnit.class, new DataUnitSerializer());
+    lModule.addDeserializer(DataUnit.class, new DataUnitDeserializer());
+    lModule.addSerializer(Entity.class, new EntitySerializer());
+    lModule.addDeserializer(Entity.class, new EntityDeserializer());
     lModule.addSerializer(ExtensibleEnum.class, new ExtensibleEnumSerializer());
     lModule.addDeserializer(ExtensibleEnum.class, new ExtensibleEnumDeserializer());
     // Return created module.
