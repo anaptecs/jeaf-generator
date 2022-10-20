@@ -14,11 +14,11 @@ context JEAFComponent if runChecks("JEAFComponent") ERROR "Error: No layer defin
 
 context ServiceObject if runChecks("ServiceObject") ERROR "Error: <<ServiceObject>> " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
 context ServiceObject if runChecks("ServiceObject") ERROR "Error: <<ServiceObject>> " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
-context ServiceObject if runChecks("ServiceObject") && compositeDataType == true ERROR "<<ServiceObject>> " + this.name + " must not have a parent class as it is marked to be a composite data type.": this.superClass.size == 0;
+context ServiceObject if runChecks("ServiceObject") && compositeDataType == true ERROR this.getErrorMessage("9123", {"ServiceObject", name}): this.superClass.size == 0;
 
 context POJO if runChecks("POJO") ERROR "Error: <<POJO>> " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
 context POJO if runChecks("POJO") ERROR "Error: <<POJO>> " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
-context POJO if runChecks("POJO") && compositeDataType == true ERROR "<<POJO>> " + this.name + " must not have a parent class as it is marked to be a composite data type.": this.superClass.size == 0;
+context POJO if runChecks("POJO") && compositeDataType == true ERROR this.getErrorMessage("9123", {"POJO", name}): this.superClass.size == 0;
 
 context OpenAPIType if runChecks("OpenAPIType") ERROR "Error: <<OpenAPIType>> " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
 context OpenAPIType if runChecks("OpenAPIType") ERROR "Error: <<OpenAPIType>> " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
@@ -51,8 +51,9 @@ context PersistentObject if runChecks("PersistentObject") ERROR "Error: <<Persis
 context Operation if runChecks() ERROR "Error: Method " + name + " has parameter(s) without type.": hasOnlySupportedParamaterTypes() == true;
 context Operation if runChecks() ERROR "Error: Method " + name + " (...) of class " + ((NamedElement)this.owner).fqn() + " does not have a valid return type": hasReturnType() == true;
 
-context ServiceObject if runChecks("ServiceObject") WARNING "Warning: <<ServiceObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context POJO if runChecks("POJO") WARNING "Warning: <<POJO>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context ServiceObject if runChecks("ServiceObject") WARNING this.getWarningMessage("9122", {"ServiceObject", name}): ownedComment.size  > 0;
+context POJO if runChecks("POJO") WARNING this.getWarningMessage("9122", {"POJO", name}): ownedComment.size  > 0;
+
 context JEAFEnumeration if runChecks("JEAFEnumeration") WARNING "Warning: <<JEAFEnumeration>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
 context DomainObject if runChecks("DomainObject") WARNING "Warning: <<DomainObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
 context QueryObject if runChecks("QueryObject") WARNING "Warning: <<QueryObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
