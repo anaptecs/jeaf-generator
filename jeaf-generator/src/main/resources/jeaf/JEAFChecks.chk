@@ -8,28 +8,26 @@ extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
 
 
-context Model if this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).size > 0 ERROR "Error: JEAF Generator expects JEAF Meta Model (JMM) revision 71 or higher. Please update your UML project to a newer version of JMM. Your current revision is: " + this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision: this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision >= 71;
-
 context JEAFComponent if runChecks("JEAFComponent") ERROR "Error: No layer defined for JEAF Component " + this.name : layer != null;
 
-context ServiceObject if runChecks("ServiceObject") ERROR "Error: <<ServiceObject>> " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context ServiceObject if runChecks("ServiceObject") ERROR "Error: <<ServiceObject>> " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9124", {"ServiceObject", name}): ownedAttribute.forAll( a | a.type != null);
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9125", {"ServiceObject", name}): ownedAttribute.forAll( a | a.name.length > 0);
 context ServiceObject if runChecks("ServiceObject") && compositeDataType == true ERROR this.getErrorMessage("9123", {"ServiceObject", name}): this.superClass.size == 0;
 
-context POJO if runChecks("POJO") ERROR "Error: <<POJO>> " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context POJO if runChecks("POJO") ERROR "Error: <<POJO>> " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
+context POJO if runChecks("POJO") ERROR this.getErrorMessage("9124", {"POJO", name}): ownedAttribute.forAll( a | a.type != null);
+context POJO if runChecks("POJO") ERROR this.getErrorMessage("9125", {"POJO", name}): ownedAttribute.forAll( a | a.name.length > 0);
 context POJO if runChecks("POJO") && compositeDataType == true ERROR this.getErrorMessage("9123", {"POJO", name}): this.superClass.size == 0;
 
-context OpenAPIType if runChecks("OpenAPIType") ERROR "Error: <<OpenAPIType>> " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context OpenAPIType if runChecks("OpenAPIType") ERROR "Error: <<OpenAPIType>> " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
+context OpenAPIType if runChecks("OpenAPIType") ERROR this.getErrorMessage("9124", {"OpenAPIType", name}): ownedAttribute.forAll( a | a.type != null);
+context OpenAPIType if runChecks("OpenAPIType") ERROR this.getErrorMessage("9125", {"OpenAPIType", name}): ownedAttribute.forAll( a | a.name.length > 0);
 
-context OpenAPIDataType if runChecks("OpenDataAPIType") ERROR "Error: <<OpenAPIDataType>> " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
+context OpenAPIDataType if runChecks("OpenDataAPIType") ERROR this.getErrorMessage("9124", {"OpenAPIDataType", name}): ownedAttribute.forAll( a | a.type != null);
 
-context DomainObject if runChecks("DomainObject") ERROR "Error: <<DomainObject>> " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context DomainObject if runChecks("DomainObject") ERROR "Error: <<DomainObject>> " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
+context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9124", {"DomainObject", name}): ownedAttribute.forAll( a | a.type != null);
+context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9125", {"DomainObject", name}): ownedAttribute.forAll( a | a.name.length > 0);
 
-context PersistentObject if runChecks("PersistentObject") ERROR "Error: <<PersistentObject>> " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context PersistentObject if runChecks("PersistentObject") ERROR "Error: <<PersistentObject>> " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
+context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9124", {"PersistentObject", name}): ownedAttribute.forAll( a | a.type != null);
+context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9125", {"PersistentObject", name}): ownedAttribute.forAll( a | a.name.length > 0);
 
 context JEAFService if runChecks("JEAFService") ERROR "Error: <<JEAFService>> " + name+ " has method(s) with unsupported return type. Please ensure that all methods have a real return type and that no arrays of primitive types returned (" + fqn() + ")": ownedOperation.forAll( e | e.isSupportedReturnType() == true);
 context JEAFService if runChecks("JEAFService") ERROR "Error: <<JEAFService>> " + name+ " has method(s) with input parameters without name. Please ensure that all input parameters are named (" + fqn() + ")": ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
