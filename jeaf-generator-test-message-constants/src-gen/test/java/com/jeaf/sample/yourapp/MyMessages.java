@@ -27,7 +27,7 @@ public final class MyMessages {
   public static final ErrorCode BANK_BALANCE_NOT_SUFFICIENT;
 
   /**
-   * 
+   * « »
    */
   public static final ErrorCode SOURCE_BANK_ACCOUNT_LOCKED;
 
