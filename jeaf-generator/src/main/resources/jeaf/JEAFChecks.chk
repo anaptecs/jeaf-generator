@@ -18,6 +18,9 @@ context POJO if runChecks("POJO") ERROR this.getErrorMessage("9124", {"POJO", na
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9125", {"POJO", name}): ownedAttribute.forAll( a | a.name.length > 0);
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9127", {"POJO", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
 context POJO if runChecks("POJO") && compositeDataType == true ERROR this.getErrorMessage("9123", {"POJO", name}): this.superClass.size == 0;
+context POJO if runChecks("POJO") ERROR this.getErrorMessage("9128", {"POJO", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
+context POJO if runChecks("POJO") ERROR this.getErrorMessage("9129", {"POJO", name}): ownedOperation.forAll( e | e.name.length > 0);
+context POJO if runChecks("POJO") ERROR this.getErrorMessage("9130", {"POJO", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 
 context OpenAPIType if runChecks("OpenAPIType") ERROR this.getErrorMessage("9124", {"OpenAPIType", name}): ownedAttribute.forAll( a | a.type != null);
 context OpenAPIType if runChecks("OpenAPIType") ERROR this.getErrorMessage("9125", {"OpenAPIType", name}): ownedAttribute.forAll( a | a.name.length > 0);
@@ -33,22 +36,22 @@ context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMes
 context JEAFService if runChecks("JEAFService") ERROR this.getErrorMessage("9126", {name}): ownedOperation.forAll( e | e.isSupportedReturnType() == true);
 context JEAFService if runChecks("JEAFService") ERROR this.getErrorMessage("9127", {"JEAFService", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
 
-context ServiceObject if runChecks("ServiceObject") ERROR "Error: <<ServiceObject>> " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
-context ServiceObject if runChecks("ServiceObject") ERROR "Error: <<ServiceObject>> " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9128", {"ServiceObject", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9129", {"ServiceObject", name}): ownedOperation.forAll( e | e.name.length > 0);
 context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9127", {"ServiceObject", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9130", {"ServiceObject", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 
 
-context DomainObject if runChecks("DomainObject") ERROR "Error: <<DomainObject>> " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
-context DomainObject if runChecks("DomainObject") ERROR "Error: <<DomainObject>> " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
+context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9128", {"DomainObject", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
+context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9129", {"DomainObject", name}): ownedOperation.forAll( e | e.name.length > 0);
 context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9127", {"DomainObject", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
+context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9130", {"DomainObject", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 
 
-context PersistentObject if runChecks("PersistentObject") ERROR "Error: <<PersistentObject>> " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
-context PersistentObject if runChecks("PersistentObject") ERROR "Error: <<PersistentObject>> " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
+context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9128", {"PersistentObject", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
+context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9129", {"PersistentObject", name}): ownedOperation.forAll( e | e.name.length > 0);
 context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9127", {"PersistentObject", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
-
-context Operation if runChecks() ERROR "Error: Method " + name + " has parameter(s) without type.": hasOnlySupportedParamaterTypes() == true;
-context Operation if runChecks() ERROR "Error: Method " + name + " (...) of class " + ((NamedElement)this.owner).fqn() + " does not have a valid return type": hasReturnType() == true;
+context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9130", {"PersistentObject", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 
 context ServiceObject if runChecks("ServiceObject") WARNING this.getWarningMessage("9122", {"ServiceObject", name}): ownedComment.size  > 0;
 context POJO if runChecks("POJO") WARNING this.getWarningMessage("9122", {"POJO", name}): ownedComment.size  > 0;
