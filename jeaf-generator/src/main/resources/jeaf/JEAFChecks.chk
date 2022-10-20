@@ -54,10 +54,10 @@ context Operation if runChecks() ERROR "Error: Method " + name + " (...) of clas
 context ServiceObject if runChecks("ServiceObject") WARNING this.getWarningMessage("9122", {"ServiceObject", name}): ownedComment.size  > 0;
 context POJO if runChecks("POJO") WARNING this.getWarningMessage("9122", {"POJO", name}): ownedComment.size  > 0;
 
-context JEAFEnumeration if runChecks("JEAFEnumeration") WARNING "Warning: <<JEAFEnumeration>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context DomainObject if runChecks("DomainObject") WARNING "Warning: <<DomainObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context QueryObject if runChecks("QueryObject") WARNING "Warning: <<QueryObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context JEAFService if runChecks("JEAFService") WARNING "Warning: <<JEAFService>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context OpenAPIType if runChecks("OpenAPIType") WARNING "Warning: <<OpenAPIType>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
+context JEAFEnumeration if runChecks("JEAFEnumeration") WARNING this.getWarningMessage("9122", {"JEAFEnumeration", name}): ownedComment.size  > 0;
+context DomainObject if runChecks("DomainObject") WARNING this.getWarningMessage("9122", {"DomainObject", name}): ownedComment.size  > 0;
+context QueryObject if runChecks("QueryObject") WARNING this.getWarningMessage("9122", {"QueryObject", name}): ownedComment.size  > 0;
+context JEAFService if runChecks("JEAFService") WARNING this.getWarningMessage("9122", {"JEAFService", name}): ownedComment.size  > 0;
+context OpenAPIType if runChecks("OpenAPIType") WARNING this.getWarningMessage("9122", {"OpenAPIType", name}): ownedComment.size  > 0;
 
 context JEAFActivity if runChecks("JEAFActivity") ERROR "Error: <<JEAFActivity>> must define exactly one return parameter " + name + " (" + fqn() + "). Activity has " + this.getReturnParameterCount()+ " return parameters.": this.getReturnParameterCount()  == 1;

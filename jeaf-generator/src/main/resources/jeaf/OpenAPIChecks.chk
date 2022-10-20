@@ -19,7 +19,7 @@ context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9111", {((NamedElement)owner).name + "." + name}): this.areAllInputParametersNamed() == true;
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9112", {((NamedElement)owner).name + "." + name, this.getBodyParamNames().toString()}): this.getBodyParamNames().size < 2 ;
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9113", {((NamedElement)owner).name + "." + name, httpMethods.toString()}): this.hasUnsupportedRequestBody() == false ;
-context RESTOperation if runChecks("RESTOperation") WARNING this.getWarningMessage("9101", {((NamedElement)owner).name + "." + name, this.getOpenAPIIncomaptibleParameterTypes().asParamErrorMessage()}): this.getOpenAPIIncomaptibleParameterTypes().size == 0;
+context RESTOperation if runChecks("RESTOperation") WARNING this.getWarningMessage("9101", {((NamedElement)owner).name + "." + name, this.getOpenAPIIncomaptibleParameterTypes().asParamErrorMessage().toString()}): this.getOpenAPIIncomaptibleParameterTypes().size == 0;
 
 // Global checks for OpenAPI3Specification
 context Model if runChecks() ERROR this.getErrorMessage("9114", {}): this.hasValidOneGlobalDefaultErrorResponse() == false;
@@ -42,4 +42,4 @@ context PathParam if runChecks("PathParam") ERROR this.getErrorMessage("9120", {
 context PathParam if runChecks("PathParam") ERROR this.getErrorMessage("9120", {this.fqn()}): this.isMultivalued() == false;
 
 // Checks for BeanParams
-context BeanParam if runChecks("RESTOperation") WARNING this.getWarningMessage("9103", {this.fqn(), this.getOpenAPIIncompatibleBeanProperties().asPropertyErrorMessage()}): this.getOpenAPIIncompatibleBeanProperties().size == 0;
+context BeanParam if runChecks("RESTOperation") WARNING this.getWarningMessage("9103", {this.fqn(), this.getOpenAPIIncompatibleBeanProperties().asPropertyErrorMessage().toString()}): this.getOpenAPIIncompatibleBeanProperties().size == 0;

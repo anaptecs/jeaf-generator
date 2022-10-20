@@ -1320,11 +1320,10 @@ public class GeneratorCommons {
     return lOrderdSlots;
   }
 
-  public static String getMessage( NamedElement pElement, String pErrorCode, List<String> pParams, String pPrefix ) {
+  public static String getMessage( NamedElement pElement, String pErrorCode, List<String> pParams ) {
     MessageRepository lMessageRepository = XFun.getMessageRepository();
     ErrorCode lErrorCode = lMessageRepository.getErrorCode(Integer.valueOf(pErrorCode));
     String lMessage = lErrorCode.toString(pParams.toArray(new String[] {}));
-    return pPrefix + "[" + pErrorCode + "] " + lMessage + " (Model element: " + Naming.getFullyQualifiedName(pElement)
-        + ")     ";
+    return "[" + pErrorCode + "] " + lMessage + " (Model element: " + Naming.getFullyQualifiedName(pElement) + ")     ";
   }
 }
