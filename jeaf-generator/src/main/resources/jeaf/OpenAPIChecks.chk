@@ -6,10 +6,11 @@ extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
 extension jeaf::RESTFunctions;
 
-// Checks for RESTResources
+// Checks for stereotype RESTResource
 context RESTResource if runChecks("RESTResource") ERROR this.getErrorMessage("9104", {name}): this.hasValidRESTResourcePath() == true;
 
-// Checks for RESTOperations
+
+// Checks for stereotype RESTOperation
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9105", {((NamedElement)owner).name + "." + name}): this.hasValidRESTResourcePath() == true;
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9106", {((NamedElement)owner).name + "." + name}): this.hasValidOperationPath() == true;
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9107", {((NamedElement)owner).name + "." + name}): httpMethods.size > 0;
@@ -21,25 +22,37 @@ context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9113", {((NamedElement)owner).name + "." + name, httpMethods.toString()}): this.hasUnsupportedRequestBody() == false ;
 context RESTOperation if runChecks("RESTOperation") WARNING this.getWarningMessage("9101", {((NamedElement)owner).name + "." + name, this.getOpenAPIIncomaptibleParameterTypes().asParamErrorMessage().toString()}): this.getOpenAPIIncomaptibleParameterTypes().size == 0;
 
+
 // Global checks for OpenAPI3Specification
 context Model if runChecks() ERROR this.getErrorMessage("9114", {}): this.hasValidOneGlobalDefaultErrorResponse() == false;
 // Check is no longer correct
 //context OpenAPI3Specification if runChecks("OpenAPI3Specification") ERROR "Error: <<OpenAPI3Specification>> " + this.name + " has " + this.getCustomResponses().size + " error responses.": this.getCustomResponses().size < 2;
 
 
-// Checks for OpenAPIResponses
+// Checks for stereotype OpenAPIResponse
 context OpenAPIResponse if runChecks("OpenAPIResponse") ERROR this.getErrorMessage("9115", {name}): this.getResponseTypes().size == 1;
 
-// Checks for OpenAPIDataTypes
+// Checks for stereotype OpenAPIType
+context OpenAPIType if runChecks("OpenAPIType") ERROR this.getErrorMessage("9124", {"OpenAPIType", name}): ownedAttribute.forAll( a | a.type != null);
+context OpenAPIType if runChecks("OpenAPIType") ERROR this.getErrorMessage("9125", {"OpenAPIType", name}): ownedAttribute.forAll( a | a.name.length > 0);
+
+context OpenAPIType if runChecks("OpenAPIType") WARNING this.getWarningMessage("9122", {"OpenAPIType", name}): ownedComment.size  > 0;
+
+
+// Checks for stereotype OpenAPIDataType
+context OpenAPIDataType if runChecks("OpenDataAPIType") ERROR this.getErrorMessage("9124", {"OpenAPIDataType", name}): ownedAttribute.forAll( a | a.type != null);
 context OpenAPIDataType if runChecks("OpenAPIDataType") && this.compositeDataType == false ERROR this.getErrorMessage("9116", {name}): this.ownedAttribute.size == 1;
 context OpenAPIDataType if runChecks("OpenAPIDataType") && this.compositeDataType == false ERROR this.getErrorMessage("9117", {name}): this.ownedAttribute.get(0).type.isBasicOpenAPIType() == true;
 context OpenAPIDataType if runChecks("OpenAPIDataType") && this.compositeDataType == false ERROR this.getErrorMessage("9118", {name}): this.ownedAttribute.get(0).isMultivalued() == false;
 context OpenAPIDataType if runChecks("OpenAPIDataType") ERROR this.getErrorMessage("9119", {name}): this.superClass.size == 0;
 
+context OpenAPIDataType if runChecks("OpenAPIDataType") WARNING this.getWarningMessage("9122", {"OpenAPIDataType", name}): ownedComment.size  > 0;
 
-// Checks for PathParams
+
+// Checks for stereotype PathParam
 context PathParam if runChecks("PathParam") ERROR this.getErrorMessage("9120", {this.fqn()}): this.lower == 1;
 context PathParam if runChecks("PathParam") ERROR this.getErrorMessage("9120", {this.fqn()}): this.isMultivalued() == false;
 
-// Checks for BeanParams
+
+// Checks for stereotype BeanParam
 context BeanParam if runChecks("RESTOperation") WARNING this.getWarningMessage("9103", {this.fqn(), this.getOpenAPIIncompatibleBeanProperties().asPropertyErrorMessage().toString()}): this.getOpenAPIIncompatibleBeanProperties().size == 0;

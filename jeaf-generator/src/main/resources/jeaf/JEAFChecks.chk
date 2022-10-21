@@ -8,12 +8,22 @@ extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
 
 
-context JEAFComponent if runChecks("JEAFComponent") ERROR "Error: No layer defined for JEAF Component " + this.name : layer != null;
+// Checks for stereotype JEAFComponent
+context JEAFComponent if runChecks("JEAFComponent") ERROR this.getErrorMessage("9132", {name}): layer != null;
 
+// Checks for stereotype ServiceObject
 context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9124", {"ServiceObject", name}): ownedAttribute.forAll( a | a.type != null);
 context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9125", {"ServiceObject", name}): ownedAttribute.forAll( a | a.name.length > 0);
 context ServiceObject if runChecks("ServiceObject") && compositeDataType == true ERROR this.getErrorMessage("9123", {"ServiceObject", name}): this.superClass.size == 0;
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9128", {"ServiceObject", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9129", {"ServiceObject", name}): ownedOperation.forAll( e | e.name.length > 0);
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9127", {"ServiceObject", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9130", {"ServiceObject", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 
+context ServiceObject if runChecks("ServiceObject") WARNING this.getWarningMessage("9122", {"ServiceObject", name}): ownedComment.size  > 0;
+
+
+// Checks for stereotype POJO
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9124", {"POJO", name}): ownedAttribute.forAll( a | a.type != null);
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9125", {"POJO", name}): ownedAttribute.forAll( a | a.name.length > 0);
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9127", {"POJO", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
@@ -22,44 +32,45 @@ context POJO if runChecks("POJO") ERROR this.getErrorMessage("9128", {"POJO", na
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9129", {"POJO", name}): ownedOperation.forAll( e | e.name.length > 0);
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9130", {"POJO", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 
-context OpenAPIType if runChecks("OpenAPIType") ERROR this.getErrorMessage("9124", {"OpenAPIType", name}): ownedAttribute.forAll( a | a.type != null);
-context OpenAPIType if runChecks("OpenAPIType") ERROR this.getErrorMessage("9125", {"OpenAPIType", name}): ownedAttribute.forAll( a | a.name.length > 0);
+context POJO if runChecks("POJO") WARNING this.getWarningMessage("9122", {"POJO", name}): ownedComment.size  > 0;
 
-context OpenAPIDataType if runChecks("OpenDataAPIType") ERROR this.getErrorMessage("9124", {"OpenAPIDataType", name}): ownedAttribute.forAll( a | a.type != null);
 
+// Checks for stereotype DomainObject
 context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9124", {"DomainObject", name}): ownedAttribute.forAll( a | a.type != null);
 context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9125", {"DomainObject", name}): ownedAttribute.forAll( a | a.name.length > 0);
-
-context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9124", {"PersistentObject", name}): ownedAttribute.forAll( a | a.type != null);
-context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9125", {"PersistentObject", name}): ownedAttribute.forAll( a | a.name.length > 0);
-
-context JEAFService if runChecks("JEAFService") ERROR this.getErrorMessage("9126", {name}): ownedOperation.forAll( e | e.isSupportedReturnType() == true);
-context JEAFService if runChecks("JEAFService") ERROR this.getErrorMessage("9127", {"JEAFService", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
-
-context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9128", {"ServiceObject", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
-context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9129", {"ServiceObject", name}): ownedOperation.forAll( e | e.name.length > 0);
-context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9127", {"ServiceObject", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
-context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9130", {"ServiceObject", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
-
-
 context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9128", {"DomainObject", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
 context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9129", {"DomainObject", name}): ownedOperation.forAll( e | e.name.length > 0);
 context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9127", {"DomainObject", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
 context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9130", {"DomainObject", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 
+context DomainObject if runChecks("DomainObject") WARNING this.getWarningMessage("9122", {"DomainObject", name}): ownedComment.size  > 0;
 
+
+// Checks for stereotype PersistentObject
+context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9124", {"PersistentObject", name}): ownedAttribute.forAll( a | a.type != null);
+context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9125", {"PersistentObject", name}): ownedAttribute.forAll( a | a.name.length > 0);
 context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9128", {"PersistentObject", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
 context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9129", {"PersistentObject", name}): ownedOperation.forAll( e | e.name.length > 0);
 context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9127", {"PersistentObject", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
 context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9130", {"PersistentObject", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 
-context ServiceObject if runChecks("ServiceObject") WARNING this.getWarningMessage("9122", {"ServiceObject", name}): ownedComment.size  > 0;
-context POJO if runChecks("POJO") WARNING this.getWarningMessage("9122", {"POJO", name}): ownedComment.size  > 0;
+context PersistentObject if runChecks("PersistentObject") WARNING this.getWarningMessage("9122", {"PersistentObject", name}): ownedComment.size  > 0;
 
-context JEAFEnumeration if runChecks("JEAFEnumeration") WARNING this.getWarningMessage("9122", {"JEAFEnumeration", name}): ownedComment.size  > 0;
-context DomainObject if runChecks("DomainObject") WARNING this.getWarningMessage("9122", {"DomainObject", name}): ownedComment.size  > 0;
-context QueryObject if runChecks("QueryObject") WARNING this.getWarningMessage("9122", {"QueryObject", name}): ownedComment.size  > 0;
+
+// Checks for stereotype JEAFService
+context JEAFService if runChecks("JEAFService") ERROR this.getErrorMessage("9126", {name}): ownedOperation.forAll( e | e.isSupportedReturnType() == true);
+context JEAFService if runChecks("JEAFService") ERROR this.getErrorMessage("9127", {"JEAFService", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
+
 context JEAFService if runChecks("JEAFService") WARNING this.getWarningMessage("9122", {"JEAFService", name}): ownedComment.size  > 0;
-context OpenAPIType if runChecks("OpenAPIType") WARNING this.getWarningMessage("9122", {"OpenAPIType", name}): ownedComment.size  > 0;
 
-context JEAFActivity if runChecks("JEAFActivity") ERROR "Error: <<JEAFActivity>> must define exactly one return parameter " + name + " (" + fqn() + "). Activity has " + this.getReturnParameterCount()+ " return parameters.": this.getReturnParameterCount()  == 1;
+
+// Checks for stereotype JEAFEnumeration
+context JEAFEnumeration if runChecks("JEAFEnumeration") WARNING this.getWarningMessage("9122", {"JEAFEnumeration", name}): ownedComment.size  > 0;
+
+
+// Checks for stereotype QueryObject
+context QueryObject if runChecks("QueryObject") WARNING this.getWarningMessage("9122", {"QueryObject", name}): ownedComment.size  > 0;
+
+
+// Checks for stereotype JEAFActivity
+context JEAFActivity if runChecks("JEAFActivity") ERROR this.getWarningMessage("9131", {name, this.getReturnParameterCount().toString()}): this.getReturnParameterCount()  == 1;
