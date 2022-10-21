@@ -1333,6 +1333,12 @@ public class GeneratorCommons {
     MessageRepository lMessageRepository = XFun.getMessageRepository();
     ErrorCode lErrorCode = lMessageRepository.getErrorCode(Integer.valueOf(pErrorCode));
     String lMessage = lErrorCode.toString(pParams.toArray(new String[] {}));
-    return "[" + pErrorCode + "] " + lMessage + " (Model element: " + Naming.getFullyQualifiedName(pElement) + ")     ";
+    String lElementName = Naming.getFullyQualifiedName(pElement);
+    if (lElementName == null || lElementName.isEmpty() || lElementName.equals("unknown")) {
+      lElementName =
+          "unnamed " + pElement.getClass().getSimpleName() + " in package "
+              + Naming.getFullyQualifiedName(pElement.getNearestPackage());
+    }
+    return "[" + pErrorCode + "] " + lMessage + " (Model element: " + lElementName + ")     ";
   }
 }
