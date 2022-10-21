@@ -40,7 +40,7 @@ public class ChildAA extends ChildA {
    * 
    */
   @Size(min = 10, max = 100)
-  private int sizedArray;
+  private int[] sizedArray;
 
   /**
    * 
@@ -102,7 +102,7 @@ public class ChildAA extends ChildA {
      * 
      */
     @Size(min = 10, max = 100)
-    private int sizedArray;
+    private int[] sizedArray;
 
     /**
      * 
@@ -177,9 +177,15 @@ public class ChildAA extends ChildA {
      * 
      * @param pSizedArray Value to which the attribute "sizedArray" should be set.
      */
-    public Builder setSizedArray( int pSizedArray ) {
+    public Builder setSizedArray( int[] pSizedArray ) {
       // Assign value to attribute
-      sizedArray = pSizedArray;
+      if (pSizedArray != null) {
+        sizedArray = new int[pSizedArray.length];
+        System.arraycopy(pSizedArray, 0, sizedArray, 0, pSizedArray.length);
+      }
+      else {
+        sizedArray = null;
+      }
       return this;
     }
 
@@ -235,8 +241,16 @@ public class ChildAA extends ChildA {
    * 
    * @return int Value to which the attribute "sizedArray" is set.
    */
-  public int getSizedArray( ) {
-    return sizedArray;
+  public int[] getSizedArray( ) {
+    int[] lReturnValue;
+    if (sizedArray != null) {
+      lReturnValue = new int[sizedArray.length];
+      System.arraycopy(sizedArray, 0, lReturnValue, 0, sizedArray.length);
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
   }
 
   /**
@@ -245,9 +259,15 @@ public class ChildAA extends ChildA {
    * 
    * @param pSizedArray Value to which the attribute "sizedArray" should be set.
    */
-  public void setSizedArray( int pSizedArray ) {
+  public void setSizedArray( int[] pSizedArray ) {
     // Assign value to attribute
-    sizedArray = pSizedArray;
+    if (pSizedArray != null) {
+      sizedArray = new int[pSizedArray.length];
+      System.arraycopy(pSizedArray, 0, sizedArray, 0, pSizedArray.length);
+    }
+    else {
+      sizedArray = null;
+    }
   }
 
   /**
@@ -295,9 +315,6 @@ public class ChildAA extends ChildA {
     StringBuilder lBuilder = super.toStringBuilder();
     lBuilder.append("childAAAttribute: ");
     lBuilder.append(childAAAttribute);
-    lBuilder.append('\n');
-    lBuilder.append("sizedArray: ");
-    lBuilder.append(sizedArray);
     lBuilder.append('\n');
     return lBuilder;
   }

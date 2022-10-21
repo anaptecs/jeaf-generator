@@ -46,17 +46,6 @@ context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("91
 context DomainObject if runChecks("DomainObject") WARNING this.getWarningMessage("9122", {"DomainObject", name}): ownedComment.size  > 0;
 
 
-// Checks for stereotype PersistentObject
-context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9124", {"PersistentObject", name}): ownedAttribute.forAll( a | a.type != null);
-context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9125", {"PersistentObject", name}): ownedAttribute.forAll( a | a.name.length > 0);
-context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9128", {"PersistentObject", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
-context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9129", {"PersistentObject", name}): ownedOperation.forAll( e | e.name.length > 0);
-context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9127", {"PersistentObject", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
-context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9130", {"PersistentObject", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
-
-context PersistentObject if runChecks("PersistentObject") WARNING this.getWarningMessage("9122", {"PersistentObject", name}): ownedComment.size  > 0;
-
-
 // Checks for stereotype JEAFService
 context JEAFService if runChecks("JEAFService") ERROR this.getErrorMessage("9126", {name}): ownedOperation.forAll( e | e.isSupportedReturnType() == true);
 context JEAFService if runChecks("JEAFService") ERROR this.getErrorMessage("9127", {"JEAFService", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);

@@ -41,7 +41,7 @@ import openapitools.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ChildBAllOf {
   public static final String JSON_PROPERTY_CHILD_B_ATTRIBUTE = "childBAttribute";
-  private Boolean childBAttribute;
+  private List<Boolean> childBAttribute = null;
 
   public static final String JSON_PROPERTY_COMPOSITION = "composition";
   private List<ParentClass> composition = null;
@@ -49,8 +49,16 @@ public class ChildBAllOf {
   public ChildBAllOf() { 
   }
 
-  public ChildBAllOf childBAttribute(Boolean childBAttribute) {
+  public ChildBAllOf childBAttribute(List<Boolean> childBAttribute) {
     this.childBAttribute = childBAttribute;
+    return this;
+  }
+
+  public ChildBAllOf addChildBAttributeItem(Boolean childBAttributeItem) {
+    if (this.childBAttribute == null) {
+      this.childBAttribute = new ArrayList<>();
+    }
+    this.childBAttribute.add(childBAttributeItem);
     return this;
   }
 
@@ -58,19 +66,19 @@ public class ChildBAllOf {
    * A child attribute
    * @return childBAttribute
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "A child attribute")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "A child attribute")
   @JsonProperty(JSON_PROPERTY_CHILD_B_ATTRIBUTE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Boolean getChildBAttribute() {
+  public List<Boolean> getChildBAttribute() {
     return childBAttribute;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CHILD_B_ATTRIBUTE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setChildBAttribute(Boolean childBAttribute) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setChildBAttribute(List<Boolean> childBAttribute) {
     this.childBAttribute = childBAttribute;
   }
 

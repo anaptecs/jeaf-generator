@@ -31,7 +31,7 @@ public class ChildAA extends ChildA {
   private Integer childAAAttribute = null;
 
   @JsonProperty("sizedArray")
-  private Integer sizedArray = null;
+  private List<Integer> sizedArray = null;
 
   @JsonProperty("requiredArray")
   private List<String> requiredArray = new ArrayList<>();
@@ -54,8 +54,16 @@ public class ChildAA extends ChildA {
     this.childAAAttribute = childAAAttribute;
   }
 
-  public ChildAA sizedArray(Integer sizedArray) {
+  public ChildAA sizedArray(List<Integer> sizedArray) {
     this.sizedArray = sizedArray;
+    return this;
+  }
+
+  public ChildAA addSizedArrayItem(Integer sizedArrayItem) {
+    if (this.sizedArray == null) {
+      this.sizedArray = new ArrayList<>();
+    }
+    this.sizedArray.add(sizedArrayItem);
     return this;
   }
 
@@ -63,12 +71,12 @@ public class ChildAA extends ChildA {
    * Get sizedArray
    * @return sizedArray
   **/
-  @Schema(required = true, description = "")
-  public Integer getSizedArray() {
+  @Schema(description = "")
+  public List<Integer> getSizedArray() {
     return sizedArray;
   }
 
-  public void setSizedArray(Integer sizedArray) {
+  public void setSizedArray(List<Integer> sizedArray) {
     this.sizedArray = sizedArray;
   }
 

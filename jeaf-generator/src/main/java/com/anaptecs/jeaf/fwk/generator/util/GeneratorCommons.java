@@ -1082,13 +1082,13 @@ public class GeneratorCommons {
         }
       }
       else {
-        lFQN = pElement.toString();
+        lFQN = lOwnerName + ":" + pElement.toString();
       }
 
       // Check for stereotypes
       if (pElement instanceof Class || pElement instanceof Interface || pElement instanceof Component
           || pElement instanceof Enumeration || pElement instanceof Activity || pElement instanceof Dependency
-          || pElement instanceof Operation || pElement instanceof Parameter) {
+          || pElement instanceof Operation || pElement instanceof Property || pElement instanceof Parameter) {
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_ACTIVITY);
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_APPLICATION_EXCEPTION);
         // lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_COMPONENT);
@@ -1106,6 +1106,9 @@ public class GeneratorCommons {
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_SYSTEM_EXCEPTION);
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_PERSISTENCE_UNIT);
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_OBJECT_MAPPING);
+
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "PersistentObject");
+        lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Role");
 
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "ServiceObject");
         lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "POJO");
@@ -1151,7 +1154,8 @@ public class GeneratorCommons {
         }
       }
       else {
-        XFun.getTrace().debug("Ignoring " + lFQN + " due to not supported type.");
+        XFun.getTrace()
+            .debug("Ignoring " + lFQN + " due to not supported type: " + pElement.getClass().getSimpleName());
       }
     }
     // Nothing to do as element is not included in white list.
@@ -1182,7 +1186,7 @@ public class GeneratorCommons {
       lRunChecks = generateDomainObjects();
     }
     // PersistentObject
-    else if ("PersistentObject".equals(pStereotype)) {
+    else if ("PersistentObject".equals(pStereotype) || "Role".equals(pStereotype)) {
       lRunChecks = generatePersistentObjects();
     }
     // ServiceObject, QueryObject

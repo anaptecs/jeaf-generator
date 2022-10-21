@@ -210,7 +210,7 @@ public class ChildBB extends ChildB {
      * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
      */
     @Override
-    public Builder setChildBAttribute( boolean pChildBAttribute ) {
+    public Builder setChildBAttribute( boolean[] pChildBAttribute ) {
       // Call super class implementation.
       super.setChildBAttribute(pChildBAttribute);
       return this;

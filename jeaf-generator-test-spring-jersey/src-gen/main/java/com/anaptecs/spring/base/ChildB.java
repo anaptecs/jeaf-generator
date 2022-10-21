@@ -36,7 +36,7 @@ public class ChildB extends ParentClass {
    * A child attribute
    */
   @Size(min = 11, max = 42)
-  private boolean childBAttribute;
+  private boolean[] childBAttribute;
 
   /**
    * the composition
@@ -97,7 +97,7 @@ public class ChildB extends ParentClass {
      * A child attribute
      */
     @Size(min = 11, max = 42)
-    private boolean childBAttribute;
+    private boolean[] childBAttribute;
 
     /**
      * the composition
@@ -140,9 +140,15 @@ public class ChildB extends ParentClass {
      * 
      * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
      */
-    public Builder setChildBAttribute( boolean pChildBAttribute ) {
+    public Builder setChildBAttribute( boolean[] pChildBAttribute ) {
       // Assign value to attribute
-      childBAttribute = pChildBAttribute;
+      if (pChildBAttribute != null) {
+        childBAttribute = new boolean[pChildBAttribute.length];
+        System.arraycopy(pChildBAttribute, 0, childBAttribute, 0, pChildBAttribute.length);
+      }
+      else {
+        childBAttribute = null;
+      }
       return this;
     }
 
@@ -177,8 +183,16 @@ public class ChildB extends ParentClass {
    * 
    * @return Boolean Value to which the attribute "childBAttribute" is set.
    */
-  public boolean getChildBAttribute( ) {
-    return childBAttribute;
+  public boolean[] getChildBAttribute( ) {
+    boolean[] lReturnValue;
+    if (childBAttribute != null) {
+      lReturnValue = new boolean[childBAttribute.length];
+      System.arraycopy(childBAttribute, 0, lReturnValue, 0, childBAttribute.length);
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
   }
 
   /**
@@ -186,9 +200,15 @@ public class ChildB extends ParentClass {
    * 
    * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
    */
-  public void setChildBAttribute( boolean pChildBAttribute ) {
+  public void setChildBAttribute( boolean[] pChildBAttribute ) {
     // Assign value to attribute
-    childBAttribute = pChildBAttribute;
+    if (pChildBAttribute != null) {
+      childBAttribute = new boolean[pChildBAttribute.length];
+      System.arraycopy(pChildBAttribute, 0, childBAttribute, 0, pChildBAttribute.length);
+    }
+    else {
+      childBAttribute = null;
+    }
   }
 
   /**
@@ -252,9 +272,6 @@ public class ChildB extends ParentClass {
    */
   protected StringBuilder toStringBuilder( ) {
     StringBuilder lBuilder = super.toStringBuilder();
-    lBuilder.append("childBAttribute: ");
-    lBuilder.append(childBAttribute);
-    lBuilder.append('\n');
     return lBuilder;
   }
 

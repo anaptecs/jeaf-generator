@@ -44,7 +44,7 @@ public class ChildAAAllOf {
   private Integer childAAAttribute;
 
   public static final String JSON_PROPERTY_SIZED_ARRAY = "sizedArray";
-  private Integer sizedArray;
+  private List<Integer> sizedArray = null;
 
   public static final String JSON_PROPERTY_REQUIRED_ARRAY = "requiredArray";
   private List<String> requiredArray = new ArrayList<>();
@@ -78,8 +78,16 @@ public class ChildAAAllOf {
   }
 
 
-  public ChildAAAllOf sizedArray(Integer sizedArray) {
+  public ChildAAAllOf sizedArray(List<Integer> sizedArray) {
     this.sizedArray = sizedArray;
+    return this;
+  }
+
+  public ChildAAAllOf addSizedArrayItem(Integer sizedArrayItem) {
+    if (this.sizedArray == null) {
+      this.sizedArray = new ArrayList<>();
+    }
+    this.sizedArray.add(sizedArrayItem);
     return this;
   }
 
@@ -87,19 +95,19 @@ public class ChildAAAllOf {
    * Get sizedArray
    * @return sizedArray
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_SIZED_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Integer getSizedArray() {
+  public List<Integer> getSizedArray() {
     return sizedArray;
   }
 
 
   @JsonProperty(JSON_PROPERTY_SIZED_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSizedArray(Integer sizedArray) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSizedArray(List<Integer> sizedArray) {
     this.sizedArray = sizedArray;
   }
 
