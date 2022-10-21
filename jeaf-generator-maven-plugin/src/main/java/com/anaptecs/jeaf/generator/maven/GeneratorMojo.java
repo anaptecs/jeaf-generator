@@ -669,6 +669,8 @@ public class GeneratorMojo extends AbstractMojo {
         else {
           this.getLog().error("");
           this.getLog().error("Error(s) during code generation. Please see log output for further details.");
+          this.getLog().error(
+              "For further information about how to solve them please check: https://anaptecs.atlassian.net/l/cp/5KVHFrW9");
           this.getLog().error("");
         }
       }
