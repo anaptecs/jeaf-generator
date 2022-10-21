@@ -27,7 +27,7 @@
     «IF generateJSONSerializers() == true»
 	    «FOREACH this.allOwnedElements().typeSelect(OpenAPIDataType) AS dataType»
 		    «IF dataType.isInGeneratorWhitelist() == true»
-				«info("Processing <<OpenAPIDataType>> " + dataType.name + " (" + (dataType.fqn()) + ")")»
+				«info("Processing «OpenAPIDataType» " + dataType.name + " (" + (dataType.fqn()) + ")")»
 		    	«EXPAND java::OpenAPIDataType::GenerateDataTypeSerializer FOR dataType»
 		    	«EXPAND java::OpenAPIDataType::GenerateDataTypeDeserializer FOR dataType»
 		    «ENDIF»
@@ -57,53 +57,53 @@
 
 «DEFINE Root FOR JEAFComponent»
     «IF generateComponentImplClasses() == true && this.isInGeneratorWhitelist() == true»
-	     «info("Processing <<JEAFComponent>> " + this.name + " (" + (this.fqn()) + ")")»
+	     «info("Processing «JEAFComponent» " + this.name + " (" + (this.fqn()) + ")")»
     	«EXPAND jeaf::JEAFComponent::JEAFComponentImplClasses»
 	«ENDIF»
     «IF generateComponentRuntimeClasses() == true»
-	     «info("Processing <<JEAFComponent>> " + this.name + " (" + (this.fqn()) + ")")»
+	     «info("Processing «JEAFComponent» " + this.name + " (" + (this.fqn()) + ")")»
     	«EXPAND jeaf::JEAFComponent::JEAFComponentRuntimeClasses»
 	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR PersistentObject»
     «IF generatePersistentObjects() == true && this.isInGeneratorWhitelist() == true»
-		«info("Processing <<PersistentObject>> " + this.name + " (" + (this.fqn()) + ")")»
+		«info("Processing «PersistentObject» " + this.name + " (" + (this.fqn()) + ")")»
 		«EXPAND entity::Entity::PersistentClass»
 	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR PersistenceUnit»
     «IF generatePersistentObjects() == true && this.isInGeneratorWhitelist() == true»
-		«info("Processing <<PersistenceUnit>> " + this.name + " (" + (this.fqn()) + ")")»
+		«info("Processing «PersistenceUnit» " + this.name + " (" + (this.fqn()) + ")")»
 		«EXPAND entity::Entity::GeneratePersistenceUnit»
 	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR ServiceObject»
 	«IF (generateServiceObjects() == true || generateObjectMappers() == true) && this.isInGeneratorWhitelist() == true»
-		«info("Processing <<ServiceObject>> " + this.name + " (" + (this.fqn()) + ")")»
+		«info("Processing «ServiceObject» " + this.name + " (" + (this.fqn()) + ")")»
 		«EXPAND java::ServiceObject::ServiceObjectClass»
 	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR DomainObject»
 	«IF (generateDomainObjects() == true || generateObjectMappers() == true) && this.isInGeneratorWhitelist() == true»
-		«info("Processing <<DomainObject>> " + this.name + " (" + (this.fqn()) + ")")»
+		«info("Processing «DomainObject» " + this.name + " (" + (this.fqn()) + ")")»
 		«EXPAND java::DomainObject::DomainClass»
 	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR QueryObject»
 	«IF generateServiceObjects() == true && this.isInGeneratorWhitelist() == true»
-		«info("Processing <<QueryObject>> " + this.name + " (" + (this.fqn()) + ")")»
+		«info("Processing «QueryObject» " + this.name + " (" + (this.fqn()) + ")")»
 		«EXPAND java::QueryObject::QueryClass»
 	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR POJO»
 	«IF (generatePOJOs() == true || generateObjectMappers() == true) && this.isInGeneratorWhitelist() == true»
-		«info("Processing <<POJO>> " + this.name + " (" + (this.fqn()) + ")")»
+		«info("Processing «POJO» " + this.name + " (" + (this.fqn()) + ")")»
 		«EXPAND java::POJO::POJOClass»
 	«ENDIF»
 «ENDDEFINE»
@@ -112,15 +112,15 @@
 	«REM»Handle stereotype JEAFService«ENDREM»
 	«IF this.isStereotypeApplied("JEAFService")»
 	    «IF generateServices() == true && this.isInGeneratorWhitelist() == true»
-			«info("Processing <<JEAFService>> " + this.name + " (" + (this.fqn()) + ")")»
+			«info("Processing «JEAFService» " + this.name + " (" + (this.fqn()) + ")")»
 	    	«EXPAND jeaf::JEAFService::JEAFServiceInterface FOR (JEAFService) this»
 	    «ENDIF»
 	    «IF generateServiceProxies() == true && this.isInGeneratorWhitelist() == true»
-			«info("Processing <<JEAFService>> " + this.name + " (" + (this.fqn()) + ")")»
+			«info("Processing «JEAFService» " + this.name + " (" + (this.fqn()) + ")")»
 	    	«EXPAND jeaf::JEAFService::JEAFServiceProxy FOR (JEAFService) this»
 	    «ENDIF»
 	    «IF generateJUnitTests() == true && this.isInGeneratorWhitelist() == true»
-			«info("Processing <<JEAFService>> " + this.name + " (" + (this.fqn()) + ")")»
+			«info("Processing «JEAFService» " + this.name + " (" + (this.fqn()) + ")")»
 	      «EXPAND jeaf::TestCase::JEAFTestCaseTemplate FOR (JEAFService) this»
 	    «ENDIF»
 	«ENDIF»
@@ -128,17 +128,17 @@
 	«REM»Handle stereotype RESTResource«ENDREM»
 	«IF this.isStereotypeApplied("RESTResource")»
 		«IF generateRESTResources() == true && this.isInGeneratorWhitelist() == true»
-			«info("Processing <<RESTResource>> " + this.name + " (" + (this.fqn()) + ")")»
+			«info("Processing «RESTResource» " + this.name + " (" + (this.fqn()) + ")")»
 			«EXPAND jeaf::RESTResource::RESTResourceClass FOR (RESTResource) this»
 		«ENDIF»
 		
 		«IF generateRESTServiceProxies() == true && this.isInGeneratorWhitelist() == true»
-			«info("Processing <<RESTResource>> " + this.name + " (" + (this.fqn()) + ")")»
+			«info("Processing «RESTResource» " + this.name + " (" + (this.fqn()) + ")")»
 			«EXPAND jeaf::RESTServiceProxy::GenerateRESTServiceProxy FOR (RESTResource) this»
 		«ENDIF»
 
 		«IF generateRESTServiceProxyConfigFile() == true && this.isInGeneratorWhitelist() == true»
-			«info("Processing <<RESTResource>> " + this.name + " (" + (this.fqn()) + ")")»
+			«info("Processing «RESTResource» " + this.name + " (" + (this.fqn()) + ")")»
 			«EXPAND jeaf::RESTServiceProxy::GenerateRESTServiceProxyConfigFile FOR (RESTResource) this»
 		«ENDIF»
 	«ENDIF»
@@ -146,74 +146,74 @@
 
 «DEFINE Root FOR ApplicationException»
     «IF generateExceptionClasses() == true && this.isInGeneratorWhitelist() == true»
-     «info("Processing <<ApplicationException>> " + this.name + " (" + (this.fqn()) + ")")»
+     «info("Processing «ApplicationException» " + this.name + " (" + (this.fqn()) + ")")»
 	   «EXPAND jeaf::JEAFException::ApplicationException»
 	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR SystemException»
     «IF generateExceptionClasses() == true && this.isInGeneratorWhitelist() == true»
-     «info("Processing <<SystemException>> " + this.name + " (" + (this.fqn()) + ")")»
+     «info("Processing «SystemException» " + this.name + " (" + (this.fqn()) + ")")»
 	   «EXPAND jeaf::JEAFException::SystemException»
 	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR JEAFEnumeration»
     «IF (generateServiceObjects() == true || generateDomainObjects() == true || generatePOJOs() == true) && this.isInGeneratorWhitelist() == true»
-		«info("Processing <<JEAFEnumeration>> " + this.name + " (" + (this.fqn()) + ")")»
+		«info("Processing «JEAFEnumeration» " + this.name + " (" + (this.fqn()) + ")")»
 		«EXPAND jeaf::Enumeration::JEAFEnumTemplate»
 	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR JEAFServiceProvider»
     «IF generateServiceProviderInterfaces() == true && this.isInGeneratorWhitelist() == true»
-		«info("Processing <<JEAFServiceProvider>> " + this.name + " (" + (this.fqn()) + ")")»
+		«info("Processing «JEAFServiceProvider» " + this.name + " (" + (this.fqn()) + ")")»
         «EXPAND jeaf::ServiceProvider::JEAFServiceProviderTemplate»
 	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR JEAFServiceProviderImpl»
     «IF generateServiceProviderImpls() == true && this.isInGeneratorWhitelist() == true»
-		«info("Processing <<JEAFServiceProviderImpl>> " + this.name + " (" + (this.fqn()) + ")")»
+		«info("Processing «JEAFServiceProviderImpl» " + this.name + " (" + (this.fqn()) + ")")»
 		«EXPAND jeaf::ServiceProvider::JEAFServiceProviderImplTemplate»
     «ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR LoadStrategy»
     «IF generateServiceObjects() == true && this.isInGeneratorWhitelist() == true»
-		«info("Processing <<LoadStrategy>> " + this.name + " (" + (this.fqn()) + ")")»
+		«info("Processing «LoadStrategy» " + this.name + " (" + (this.fqn()) + ")")»
         «EXPAND java::LoadStrategy::LoadStrategyTemplate»
 	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR JEAFActivity»
     «IF generateActivityInterfaces() == true && this.isInGeneratorWhitelist() == true»
-		«info("Processing <<JEAFActivity>> " + this.name + " (" + (this.fqn()) + ")")»
+		«info("Processing «JEAFActivity» " + this.name + " (" + (this.fqn()) + ")")»
     	«EXPAND jeaf::JEAFActivity::GenerateActivityInterface»
     «ENDIF»
     «IF generateActivityImpls() == true»
-		«info("Processing <<JEAFActivity>> " + this.name + " (" + (this.fqn()) + ")")»
+		«info("Processing «JEAFActivity» " + this.name + " (" + (this.fqn()) + ")")»
     	«EXPAND jeaf::JEAFActivity::GenerateActivityImplClass»
 	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR OpenAPI3Specification»
     «IF generateOpenAPISpec() == true && this.isInGeneratorWhitelist() == true»
-		«info("Processing <<OpenAPI3Specification>> " + this.name + " (" + (this.fqn()) + ")")»
+		«info("Processing «OpenAPI3Specification» " + this.name + " (" + (this.fqn()) + ")")»
     	«EXPAND java::OpenAPI::GenerateOpenAPI»
     «ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR ModuleFactory»
     «IF generateJSONSerializers() == true && this.isInGeneratorWhitelist() == true»
-		«info("Processing <<ModuleFactory>> " + this.name + " (" + (this.fqn()) + ")")»
+		«info("Processing «ModuleFactory» " + this.name + " (" + (this.fqn()) + ")")»
     	«EXPAND java::Jackson::GenerateModuleFactory»
     «ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR ObjectMapperFactory»
     «IF generateJSONSerializers() == true && this.isInGeneratorWhitelist() == true»
-		«info("Processing <<ObjectMapperFactory>> " + this.name + " (" + (this.fqn()) + ")")»
+		«info("Processing «ObjectMapperFactory» " + this.name + " (" + (this.fqn()) + ")")»
     	«EXPAND java::Jackson::GenerateObjectMapperFactory»
     «ENDIF»
 «ENDDEFINE»

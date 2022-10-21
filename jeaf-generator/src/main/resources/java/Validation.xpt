@@ -6,7 +6,7 @@
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE GenerateCustomValidation FOR CustomConstraint»
-	«info("Processing <<CustomConstraint>> " + this.name + " (" + (this.fqn()) + ")")»
+	«info("Processing «CustomConstraint» " + this.name + " (" + (this.fqn()) + ")")»
 	«LET className.split("\\.").last() AS validationClass»
 	«LET className.replaceFirst("\\."+validationClass, "") AS packageName»
 	«info("Validation Class: " + validationClass)»
