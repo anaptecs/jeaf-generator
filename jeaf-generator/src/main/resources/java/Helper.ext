@@ -1,0 +1,4 @@
+
+
+cached List[uml::Property] getToStringProperties(uml::Class class):
+	class.ownedAttribute.select(e|e.association == null && e.isMultivalued() == false);

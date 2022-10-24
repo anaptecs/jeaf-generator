@@ -1,5 +1,6 @@
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::Naming»
+«EXTENSION java::Helper»
 
 «DEFINE GenerateToStringMethod FOR uml::Class»
   /**
@@ -22,12 +23,14 @@
 	            StringBuilder lBuilder = new StringBuilder();
 			    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
 			    lBuilder.append('\n');
-			    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
-			    lBuilder.append('\n');
+			    «IF this.getToStringProperties().size > 0»
+				    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
+				    lBuilder.append('\n');
+			    «ENDIF»
 		    «ELSE»
 			    StringBuilder lBuilder = super.toStringBuilder();
 		    «ENDIF»
-		    «FOREACH this.ownedAttribute AS attribute»
+		    «FOREACH this.getToStringProperties() AS attribute»
 			    «IF attribute.association == null && attribute.isMultivalued() == false»
 			    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "«attribute.name»", "" + «attribute.name»));
 			    lBuilder.append('\n');
@@ -48,12 +51,14 @@
 	            StringBuilder lBuilder = new StringBuilder();
 			    lBuilder.append(this.getClass().getName());
 			    lBuilder.append('\n');
-			    lBuilder.append("Attributes:");
-			    lBuilder.append('\n');
+			    «IF this.getToStringProperties().size > 0»
+				    lBuilder.append("Attributes:");
+				    lBuilder.append('\n');
+			    «ENDIF»
 		    «ELSE»
 			    StringBuilder lBuilder = super.toStringBuilder();
 		    «ENDIF»
-		    «FOREACH this.ownedAttribute AS attribute»
+		    «FOREACH this.getToStringProperties() AS attribute»
 			    «IF attribute.association == null && attribute.isMultivalued() == false»
 			    lBuilder.append("«attribute.name»: ");
 			    lBuilder.append(«attribute.name»);

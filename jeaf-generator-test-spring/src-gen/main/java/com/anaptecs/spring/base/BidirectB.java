@@ -191,8 +191,6 @@ public class BidirectB {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(this.getClass().getName());
     lBuilder.append('\n');
-    lBuilder.append("Attributes:");
-    lBuilder.append('\n');
     return lBuilder;
   }
 
