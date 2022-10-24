@@ -584,42 +584,51 @@ public class DateQueryParamsBean {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
-    lBuilder.append("Attributes:");
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
     lBuilder.append("offsetDateTime: ");
     lBuilder.append(offsetDateTime);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
     lBuilder.append("offsetTime: ");
     lBuilder.append(offsetTime);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
     lBuilder.append("localDateTime: ");
     lBuilder.append(localDateTime);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
     lBuilder.append("localTime: ");
     lBuilder.append(localTime);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
     lBuilder.append("localDate: ");
     lBuilder.append(localDate);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
     lBuilder.append("utilDate: ");
     lBuilder.append(utilDate);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
     lBuilder.append("calendar: ");
     lBuilder.append(calendar);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
     lBuilder.append("sqlTimestamp: ");
     lBuilder.append(sqlTimestamp);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
     lBuilder.append("sqlTime: ");
     lBuilder.append(sqlTime);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
     lBuilder.append("sqlDate: ");
     lBuilder.append(sqlDate);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -631,6 +640,6 @@ public class DateQueryParamsBean {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

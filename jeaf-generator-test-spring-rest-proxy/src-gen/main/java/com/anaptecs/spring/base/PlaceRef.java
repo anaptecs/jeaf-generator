@@ -102,15 +102,15 @@ public abstract class PlaceRef {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
-    lBuilder.append("Attributes:");
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
     lBuilder.append("name: ");
     lBuilder.append(name);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -122,6 +122,6 @@ public abstract class PlaceRef {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

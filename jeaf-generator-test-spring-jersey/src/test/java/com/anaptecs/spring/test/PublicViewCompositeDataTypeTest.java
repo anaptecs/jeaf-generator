@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.spring.base.Booking;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ComplexBookingID;
@@ -27,10 +28,17 @@ public class PublicViewCompositeDataTypeTest {
   @Test
   void testCompositeDataType( ) throws JsonProcessingException {
     BookingID lBookingID = BookingID.builder().setBookingID("123456").build();
-    Booking lBooking = Booking.builder().setBookingID(lBookingID).build();
+    Booking lBooking = Booking.builder().setCustomerName("Donald Duck").setBookingID(lBookingID).build();
+
+    XFun.getTrace().info(System.lineSeparator() + lBooking.toString());
+    assertEquals("com.anaptecs.spring.base.Booking" + System.lineSeparator() +
+        "bookingID: " + System.lineSeparator() +
+        "    com.anaptecs.spring.base.BookingID" + System.lineSeparator() +
+        "    bookingID: 123456" + System.lineSeparator() +
+        "customerName: Donald Duck" + System.lineSeparator(), lBooking.toString());
 
     String lJSON = objectMapper.writeValueAsString(lBooking);
-    assertEquals("{\"bookingID\":\"123456\"}", lJSON);
+    assertEquals("{\"bookingID\":\"123456\",\"customerName\":\"Donald Duck\"}", lJSON);
 
     Booking lReadBooking = objectMapper.readValue(lJSON, Booking.class);
     assertEquals("123456", lReadBooking.getBookingID().getBookingID());
@@ -41,6 +49,13 @@ public class PublicViewCompositeDataTypeTest {
     ComplexBookingID lBookingID = ComplexBookingID.builder().setBookingID("XYZ-1234567").build();
     WeirdBooking lWeirdBooking = WeirdBooking.builder().setBooking(lBookingID).build();
 
+    XFun.getTrace().info(System.lineSeparator() + lWeirdBooking.toString());
+    assertEquals("com.anaptecs.spring.base.WeirdBooking" + System.lineSeparator() +
+        "booking: " + System.lineSeparator() +
+        "    com.anaptecs.spring.base.ComplexBookingID" + System.lineSeparator() +
+        "    bookingID: XYZ-1234567" + System.lineSeparator() +
+        "additionalBookings: 0 element(s)" + System.lineSeparator(), lWeirdBooking.toString());
+
     String lJSON = objectMapper.writeValueAsString(lWeirdBooking);
     assertEquals("{\"booking\":\"XYZ-1234567\"}", lJSON);
 
@@ -49,7 +64,16 @@ public class PublicViewCompositeDataTypeTest {
     ComplexBookingID lAdditionalBooking2 = ComplexBookingID.builder().setBookingID("ADD-123-2").build();
     lWeirdBooking.addToAdditionalBookings(lAdditionalBooking2);
 
+    XFun.getTrace().info(System.lineSeparator() + lWeirdBooking.toString());
+
     lJSON = objectMapper.writeValueAsString(lWeirdBooking);
     assertEquals("{\"booking\":\"XYZ-1234567\",\"additionalBookings\":[\"ADD-123-1\",\"ADD-123-2\"]}", lJSON);
+
+    lWeirdBooking = WeirdBooking.builder().build();
+    XFun.getTrace().info("" + System.lineSeparator() + lWeirdBooking.toString());
+    assertEquals("com.anaptecs.spring.base.WeirdBooking" + System.lineSeparator() +
+        "booking:  null" + System.lineSeparator() +
+        "additionalBookings: 0 element(s)" + System.lineSeparator(), lWeirdBooking.toString());
+
   }
 }

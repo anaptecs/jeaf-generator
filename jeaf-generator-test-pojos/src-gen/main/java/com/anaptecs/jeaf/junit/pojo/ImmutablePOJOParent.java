@@ -9,8 +9,6 @@ import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -212,14 +210,16 @@ public class ImmutablePOJOParent extends AbstractPOJO {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = super.toStringBuilder();
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "parentAttribute", "" + parentAttribute));
-    lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "anotherParentAttribute",
-        "" + anotherParentAttribute));
-    lBuilder.append('\n');
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
+    lBuilder.append(pIndent);
+    lBuilder.append("parentAttribute: ");
+    lBuilder.append(parentAttribute);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("anotherParentAttribute: ");
+    lBuilder.append(anotherParentAttribute);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -231,6 +231,6 @@ public class ImmutablePOJOParent extends AbstractPOJO {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

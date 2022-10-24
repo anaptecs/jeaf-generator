@@ -14,6 +14,7 @@ import com.anaptecs.jeaf.junit.openapi.base.Booking;
 import com.anaptecs.jeaf.junit.openapi.base.BookingID;
 import com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID;
 import com.anaptecs.jeaf.junit.openapi.base.WeirdBooking;
+import com.anaptecs.jeaf.xfun.api.XFun;
 
 public class PublicViewCompositeDataTypeTest {
   @Test
@@ -26,6 +27,12 @@ public class PublicViewCompositeDataTypeTest {
 
     Booking lReadBooking = JSON.getJSONTools().read(lJSON, Booking.class);
     assertEquals("123456", lReadBooking.getBookingID().getBookingID());
+
+    XFun.getTrace().info("\n" + lBooking.toString());
+    assertEquals("com.anaptecs.jeaf.junit.openapi.base.Booking" + System.lineSeparator() +
+        "bookingID: " + System.lineSeparator() +
+        "    com.anaptecs.jeaf.junit.openapi.base.BookingID" + System.lineSeparator() +
+        "    bookingID: 123456" + System.lineSeparator(), lBooking.toString());
   }
 
   @Test
@@ -43,5 +50,20 @@ public class PublicViewCompositeDataTypeTest {
 
     lJSON = JSON.getJSONTools().writeObjectToString(lWeirdBooking);
     assertEquals("{\"booking\":\"XYZ-1234567\",\"additionalBookings\":[\"ADD-123-1\",\"ADD-123-2\"]}", lJSON);
+
+    XFun.getTrace().info(lWeirdBooking.toString());
+    assertEquals("com.anaptecs.jeaf.junit.openapi.base.WeirdBooking" + System.lineSeparator() +
+        "booking: " + System.lineSeparator() +
+        "    com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID" + System.lineSeparator() +
+        "    bookingID: XYZ-1234567" + System.lineSeparator() +
+        "additionalBookings: 2 element(s)" + System.lineSeparator() +
+        "    com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID" + System.lineSeparator() +
+        "    bookingID: ADD-123-1" + System.lineSeparator() +
+        System.lineSeparator() +
+        "    com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID" + System.lineSeparator() +
+        "    bookingID: ADD-123-2" + System.lineSeparator() +
+        System.lineSeparator() +
+        "versionedObjectSoftLink:  null" + System.lineSeparator(), lWeirdBooking.toString());
+
   }
 }

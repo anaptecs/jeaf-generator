@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Arrays;
+
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -311,11 +313,30 @@ public class ChildAA extends ChildA {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = super.toStringBuilder();
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
+    lBuilder.append(pIndent);
     lBuilder.append("childAAAttribute: ");
     lBuilder.append(childAAAttribute);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("sizedArray: ");
+    if (sizedArray != null) {
+      lBuilder.append(Arrays.toString(sizedArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("requiredArray: ");
+    if (requiredArray != null) {
+      lBuilder.append(Arrays.toString(requiredArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -327,6 +348,6 @@ public class ChildAA extends ChildA {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

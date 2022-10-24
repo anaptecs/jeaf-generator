@@ -35,7 +35,7 @@ public class ComplexBookingIDSerializer extends JsonSerializer<ComplexBookingID>
   static {
     List<Class<?>> lClasses =
         Arrays.asList(ComplexBookingID.class, ArrayList.class, BookingID.class, InventoryType.class, BookingCode.class,
-            ComplexBookingType.class, ComplexBookingType.ComplexBookingTypeType.class);
+            ComplexBookingType.class, ComplexBookingType.ComplexBookingTypeType.class, String[].class);
     SERIALIZED_CLASSES = Collections.unmodifiableList(lClasses);
   }
 

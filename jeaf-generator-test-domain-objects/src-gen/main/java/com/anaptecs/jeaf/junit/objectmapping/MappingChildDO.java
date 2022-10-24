@@ -6,8 +6,6 @@
 package com.anaptecs.jeaf.junit.objectmapping;
 
 import com.anaptecs.jeaf.core.api.DomainObjectID;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
 /**
  * @author JEAF Generator
@@ -71,10 +69,12 @@ public class MappingChildDO extends MappingParentDO {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = super.toStringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "value", "" + value));
-    lBuilder.append('\n');
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
+    lBuilder.append(pIndent);
+    lBuilder.append("value: ");
+    lBuilder.append(value);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -86,6 +86,6 @@ public class MappingChildDO extends MappingParentDO {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

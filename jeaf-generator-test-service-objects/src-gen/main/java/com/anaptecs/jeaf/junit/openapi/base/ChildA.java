@@ -7,9 +7,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Set;
 
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
-
 /**
  * single line class comment
  * 
@@ -142,11 +139,12 @@ public abstract class ChildA extends ParentClass {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = super.toStringBuilder();
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "childAAttribute", "" + childAAttribute));
-    lBuilder.append('\n');
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
+    lBuilder.append(pIndent);
+    lBuilder.append("childAAttribute: ");
+    lBuilder.append(childAAttribute);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -158,6 +156,6 @@ public abstract class ChildA extends ParentClass {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }
