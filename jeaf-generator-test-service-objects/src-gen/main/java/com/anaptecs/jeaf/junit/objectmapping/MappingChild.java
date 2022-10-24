@@ -8,8 +8,6 @@ package com.anaptecs.jeaf.junit.objectmapping;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
 /**
  * @author JEAF Generator
@@ -174,7 +172,9 @@ public class MappingChild extends MappingParent {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = super.toStringBuilder(pIndent);
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "value", "" + value));
+    lBuilder.append(pIndent);
+    lBuilder.append("value: ");
+    lBuilder.append(value);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

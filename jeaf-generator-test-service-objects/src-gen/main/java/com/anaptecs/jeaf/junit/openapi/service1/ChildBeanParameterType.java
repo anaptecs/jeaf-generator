@@ -9,8 +9,6 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
 /**
  * @author JEAF Generator
@@ -188,8 +186,9 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = super.toStringBuilder(pIndent);
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "childProperty", "" + childProperty));
+    lBuilder.append(pIndent);
+    lBuilder.append("childProperty: ");
+    lBuilder.append(childProperty);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

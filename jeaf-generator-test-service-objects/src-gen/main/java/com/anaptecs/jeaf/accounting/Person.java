@@ -21,8 +21,6 @@ import javax.validation.constraints.PositiveOrZero;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
@@ -626,21 +624,28 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
+    lBuilder.append(pIndent);
+    lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append(pIndent);
+    lBuilder.append("name: ");
+    lBuilder.append(name);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "name", "" + name));
+    lBuilder.append(pIndent);
+    lBuilder.append("firstName: ");
+    lBuilder.append(firstName);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "firstName", "" + firstName));
+    lBuilder.append(pIndent);
+    lBuilder.append("dateOfBirth: ");
+    lBuilder.append(dateOfBirth);
     lBuilder.append(System.lineSeparator());
-    lBuilder
-        .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "dateOfBirth", "" + dateOfBirth));
+    lBuilder.append(pIndent);
+    lBuilder.append("age: ");
+    lBuilder.append(age);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "age", "" + age));
-    lBuilder.append(System.lineSeparator());
-    lBuilder
-        .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "displayName", "" + displayName));
+    lBuilder.append(pIndent);
+    lBuilder.append("displayName: ");
+    lBuilder.append(displayName);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

@@ -8,8 +8,6 @@ package com.anaptecs.spring.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -225,9 +223,13 @@ public class GeoPosition extends PlaceRef {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = super.toStringBuilder(pIndent);
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "longitude", "" + longitude));
+    lBuilder.append(pIndent);
+    lBuilder.append("longitude: ");
+    lBuilder.append(longitude);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "latitude", "" + latitude));
+    lBuilder.append(pIndent);
+    lBuilder.append("latitude: ");
+    lBuilder.append(latitude);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

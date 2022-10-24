@@ -7,8 +7,6 @@ package com.anaptecs.jeaf.junit.pojo;
 
 import javax.annotation.Generated;
 
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -122,12 +120,12 @@ public abstract class AbstractPOJO {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
+    lBuilder.append(pIndent);
+    lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
-    lBuilder.append(System.lineSeparator());
-    lBuilder
-        .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "abtractAttr", "" + abtractAttr));
+    lBuilder.append(pIndent);
+    lBuilder.append("abtractAttr: ");
+    lBuilder.append(abtractAttr);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

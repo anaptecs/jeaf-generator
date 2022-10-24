@@ -13,8 +13,6 @@ import javax.validation.constraints.Pattern;
 
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
 /**
@@ -240,7 +238,9 @@ public class SwiftAccount extends Account {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = super.toStringBuilder(pIndent);
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "bic", "" + bic));
+    lBuilder.append(pIndent);
+    lBuilder.append("bic: ");
+    lBuilder.append(bic);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

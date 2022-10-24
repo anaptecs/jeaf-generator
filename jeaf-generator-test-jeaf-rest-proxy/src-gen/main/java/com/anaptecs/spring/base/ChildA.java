@@ -5,8 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -132,8 +130,9 @@ public abstract class ChildA extends ParentClass {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = super.toStringBuilder(pIndent);
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "childAAttribute", "" + childAAttribute));
+    lBuilder.append(pIndent);
+    lBuilder.append("childAAttribute: ");
+    lBuilder.append(childAAttribute);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

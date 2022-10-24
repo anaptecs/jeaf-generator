@@ -8,8 +8,6 @@ package com.anaptecs.jeaf.accounting;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
 /**
@@ -378,14 +376,21 @@ public class Company extends Customer {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = super.toStringBuilder(pIndent);
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "name", "" + name));
+    lBuilder.append(pIndent);
+    lBuilder.append("name: ");
+    lBuilder.append(name);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "registrationNumber",
-        "" + registrationNumber));
+    lBuilder.append(pIndent);
+    lBuilder.append("registrationNumber: ");
+    lBuilder.append(registrationNumber);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "taxNumber", "" + taxNumber));
+    lBuilder.append(pIndent);
+    lBuilder.append("taxNumber: ");
+    lBuilder.append(taxNumber);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "attendant", "" + attendant));
+    lBuilder.append(pIndent);
+    lBuilder.append("attendant: ");
+    lBuilder.append(attendant);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

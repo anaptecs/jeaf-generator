@@ -10,8 +10,6 @@ import java.util.List;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
 /**
  * @author JEAF Generator
@@ -186,8 +184,9 @@ public class POI extends Stop {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = super.toStringBuilder(pIndent);
-    lBuilder
-        .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "description", "" + description));
+    lBuilder.append(pIndent);
+    lBuilder.append("description: ");
+    lBuilder.append(description);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

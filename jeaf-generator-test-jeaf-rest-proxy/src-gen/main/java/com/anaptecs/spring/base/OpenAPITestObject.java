@@ -10,8 +10,6 @@ import java.io.Serializable;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -606,39 +604,48 @@ public class OpenAPITestObject implements Serializable {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
+    lBuilder.append(pIndent);
+    lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append(pIndent);
+    lBuilder.append("readOnlyAttribute: ");
+    lBuilder.append(readOnlyAttribute);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "readOnlyAttribute",
-        "" + readOnlyAttribute));
+    lBuilder.append(pIndent);
+    lBuilder.append("readWriteAttribute: ");
+    lBuilder.append(readWriteAttribute);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "readWriteAttribute",
-        "" + readWriteAttribute));
+    lBuilder.append(pIndent);
+    lBuilder.append("writeOnlyAttribute: ");
+    lBuilder.append(writeOnlyAttribute);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "writeOnlyAttribute",
-        "" + writeOnlyAttribute));
+    lBuilder.append(pIndent);
+    lBuilder.append("nullableAttribute: ");
+    lBuilder.append(nullableAttribute);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "nullableAttribute",
-        "" + nullableAttribute));
+    lBuilder.append(pIndent);
+    lBuilder.append("notNullableAttribute: ");
+    lBuilder.append(notNullableAttribute);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "notNullableAttribute",
-        "" + notNullableAttribute));
+    lBuilder.append(pIndent);
+    lBuilder.append("readOnlyArray: ");
+    lBuilder.append(readOnlyArray);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "readOnlyArray", "" + readOnlyArray));
+    lBuilder.append(pIndent);
+    lBuilder.append("readWriteArray: ");
+    lBuilder.append(readWriteArray);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "readWriteArray", "" + readWriteArray));
+    lBuilder.append(pIndent);
+    lBuilder.append("writeOnlyArray: ");
+    lBuilder.append(writeOnlyArray);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "writeOnlyArray", "" + writeOnlyArray));
+    lBuilder.append(pIndent);
+    lBuilder.append("nullableArray: ");
+    lBuilder.append(nullableArray);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "nullableArray", "" + nullableArray));
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "notNullableArray",
-        "" + notNullableArray));
+    lBuilder.append(pIndent);
+    lBuilder.append("notNullableArray: ");
+    lBuilder.append(notNullableArray);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
