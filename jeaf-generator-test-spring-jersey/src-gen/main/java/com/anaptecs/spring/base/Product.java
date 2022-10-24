@@ -6,6 +6,7 @@
 package com.anaptecs.spring.base;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -871,7 +872,13 @@ public class Product {
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("image: ");
-    // TODO: toString for array
+    if (image != null) {
+      lBuilder.append(Arrays.toString(image));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("link: ");
     lBuilder.append(link);

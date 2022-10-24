@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -525,7 +526,13 @@ public class ChildBB extends ChildB {
     }
     lBuilder.append(pIndent);
     lBuilder.append("deprecatedArray: ");
-    // TODO: toString for array
+    if (deprecatedArray != null) {
+      lBuilder.append(Arrays.toString(deprecatedArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

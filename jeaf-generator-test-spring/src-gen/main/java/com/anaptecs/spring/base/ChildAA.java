@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Arrays;
+
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -319,10 +321,22 @@ public class ChildAA extends ChildA {
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("sizedArray: ");
-    // TODO: toString for array
+    if (sizedArray != null) {
+      lBuilder.append(Arrays.toString(sizedArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("requiredArray: ");
-    // TODO: toString for array
+    if (requiredArray != null) {
+      lBuilder.append(Arrays.toString(requiredArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

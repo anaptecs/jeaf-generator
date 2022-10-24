@@ -28,7 +28,7 @@
 				    lBuilder.append(System.lineSeparator());
 			    «ENDIF»
 		    «ELSE»
-			    StringBuilder lBuilder = super.toStringBuilder();
+			    StringBuilder lBuilder = super.toStringBuilder(pIndent);
 		    «ENDIF»
 		    «FOREACH this.getToStringProperties() AS attribute»
 			    «IF attribute.association == null && attribute.isMultivalued() == false»
@@ -82,10 +82,15 @@
     «IF association == null »
 	    «IF isMultivalued() == false»
 		    lBuilder.append(«name»);
-		    lBuilder.append(System.lineSeparator());
 	    «ELSE»
-		    // TODO: toString for array
+		    if(«name» != null) {
+		    	lBuilder.append(java.util.Arrays.toString(«name»));
+		    }
+		    else {
+		    	lBuilder.append(" null");
+		    }
 	    «ENDIF»
+	    lBuilder.append(System.lineSeparator());
     «ELSE»
 	    «IF isMultivalued() == false»
 		    «IF type.isEnumeration() == false»

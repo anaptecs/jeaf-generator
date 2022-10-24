@@ -56,6 +56,11 @@ public abstract class ComplexBookingIDBase implements Serializable {
   public static final String ANOTHERID = "anotherID";
 
   /**
+   * Constant for the name of attribute "strings".
+   */
+  public static final String STRINGS = "strings";
+
+  /**
    * 
    */
   private long internalID;
@@ -79,6 +84,11 @@ public abstract class ComplexBookingIDBase implements Serializable {
    * 
    */
   private Integer anotherID;
+
+  /**
+   * 
+   */
+  private String[] strings;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -107,6 +117,7 @@ public abstract class ComplexBookingIDBase implements Serializable {
     }
     complexBookingType = pBuilder.complexBookingType;
     anotherID = pBuilder.anotherID;
+    strings = pBuilder.strings;
   }
 
   /**
@@ -140,6 +151,11 @@ public abstract class ComplexBookingIDBase implements Serializable {
     private Integer anotherID;
 
     /**
+     * 
+     */
+    private String[] strings;
+
+    /**
      * Use {@link ComplexBookingID.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
@@ -156,6 +172,7 @@ public abstract class ComplexBookingIDBase implements Serializable {
         bookingIDs = pObject.bookingIDs;
         complexBookingType = pObject.complexBookingType;
         anotherID = pObject.anotherID;
+        strings = pObject.strings;
       }
     }
 
@@ -215,6 +232,23 @@ public abstract class ComplexBookingIDBase implements Serializable {
     public BuilderBase setAnotherID( Integer pAnotherID ) {
       // Assign value to attribute
       anotherID = pAnotherID;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "strings".
+     * 
+     * @param pStrings Value to which the attribute "strings" should be set.
+     */
+    public BuilderBase setStrings( String[] pStrings ) {
+      // Assign value to attribute
+      if (pStrings != null) {
+        strings = new String[pStrings.length];
+        System.arraycopy(pStrings, 0, strings, 0, pStrings.length);
+      }
+      else {
+        strings = null;
+      }
       return this;
     }
 
@@ -394,6 +428,41 @@ public abstract class ComplexBookingIDBase implements Serializable {
   public void setAnotherID( Integer pAnotherID ) {
     // Assign value to attribute
     anotherID = pAnotherID;
+  }
+
+  /**
+   * Method returns the attribute "strings".
+   * 
+   * 
+   * @return String Value to which the attribute "strings" is set.
+   */
+  public String[] getStrings( ) {
+    String[] lReturnValue;
+    if (strings != null) {
+      lReturnValue = new String[strings.length];
+      System.arraycopy(strings, 0, lReturnValue, 0, strings.length);
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
+  }
+
+  /**
+   * Method sets the attribute "strings".
+   * 
+   * 
+   * @param pStrings Value to which the attribute "strings" should be set.
+   */
+  public void setStrings( String[] pStrings ) {
+    // Assign value to attribute
+    if (pStrings != null) {
+      strings = new String[pStrings.length];
+      System.arraycopy(pStrings, 0, strings, 0, pStrings.length);
+    }
+    else {
+      strings = null;
+    }
   }
 
   /**

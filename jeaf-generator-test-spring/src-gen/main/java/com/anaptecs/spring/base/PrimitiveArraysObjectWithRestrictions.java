@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Arrays;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -1645,70 +1646,202 @@ public class PrimitiveArraysObjectWithRestrictions {
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("aBooleanArray: ");
-    // TODO: toString for array
+    if (aBooleanArray != null) {
+      lBuilder.append(Arrays.toString(aBooleanArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("bBooleanArray: ");
-    // TODO: toString for array
+    if (bBooleanArray != null) {
+      lBuilder.append(Arrays.toString(bBooleanArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("cBooleanArray: ");
-    // TODO: toString for array
+    if (cBooleanArray != null) {
+      lBuilder.append(Arrays.toString(cBooleanArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("aByteArray: ");
-    // TODO: toString for array
+    if (aByteArray != null) {
+      lBuilder.append(Arrays.toString(aByteArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("bByteArray: ");
-    // TODO: toString for array
+    if (bByteArray != null) {
+      lBuilder.append(Arrays.toString(bByteArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("aShortArray: ");
-    // TODO: toString for array
+    if (aShortArray != null) {
+      lBuilder.append(Arrays.toString(aShortArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("bShortArray: ");
-    // TODO: toString for array
+    if (bShortArray != null) {
+      lBuilder.append(Arrays.toString(bShortArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("aIntegerArray: ");
-    // TODO: toString for array
+    if (aIntegerArray != null) {
+      lBuilder.append(Arrays.toString(aIntegerArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("bIntegerArray: ");
-    // TODO: toString for array
+    if (bIntegerArray != null) {
+      lBuilder.append(Arrays.toString(bIntegerArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("cIntegerArray: ");
-    // TODO: toString for array
+    if (cIntegerArray != null) {
+      lBuilder.append(Arrays.toString(cIntegerArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("aLongArray: ");
-    // TODO: toString for array
+    if (aLongArray != null) {
+      lBuilder.append(Arrays.toString(aLongArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("bLongArray: ");
-    // TODO: toString for array
+    if (bLongArray != null) {
+      lBuilder.append(Arrays.toString(bLongArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("aBigIntegerArray: ");
-    // TODO: toString for array
+    if (aBigIntegerArray != null) {
+      lBuilder.append(Arrays.toString(aBigIntegerArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("aCharacterArray: ");
-    // TODO: toString for array
+    if (aCharacterArray != null) {
+      lBuilder.append(Arrays.toString(aCharacterArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("bCharacterArray: ");
-    // TODO: toString for array
+    if (bCharacterArray != null) {
+      lBuilder.append(Arrays.toString(bCharacterArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("aFloatArray: ");
-    // TODO: toString for array
+    if (aFloatArray != null) {
+      lBuilder.append(Arrays.toString(aFloatArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("bFloatArray: ");
-    // TODO: toString for array
+    if (bFloatArray != null) {
+      lBuilder.append(Arrays.toString(bFloatArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("aDoubleArray: ");
-    // TODO: toString for array
+    if (aDoubleArray != null) {
+      lBuilder.append(Arrays.toString(aDoubleArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("bDoubleArray: ");
-    // TODO: toString for array
+    if (bDoubleArray != null) {
+      lBuilder.append(Arrays.toString(bDoubleArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("aBigDecimalArray: ");
-    // TODO: toString for array
+    if (aBigDecimalArray != null) {
+      lBuilder.append(Arrays.toString(aBigDecimalArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("aStringArray: ");
-    // TODO: toString for array
+    if (aStringArray != null) {
+      lBuilder.append(Arrays.toString(aStringArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("bStringArray: ");
-    // TODO: toString for array
+    if (bStringArray != null) {
+      lBuilder.append(Arrays.toString(bStringArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -274,7 +275,13 @@ public class ChildB extends ParentClass {
     StringBuilder lBuilder = super.toStringBuilder(pIndent);
     lBuilder.append(pIndent);
     lBuilder.append("childBAttribute: ");
-    // TODO: toString for array
+    if (childBAttribute != null) {
+      lBuilder.append(Arrays.toString(childBAttribute));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("composition: ");
     if (composition != null) {
