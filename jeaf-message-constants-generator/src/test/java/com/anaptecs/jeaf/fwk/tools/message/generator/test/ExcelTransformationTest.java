@@ -16,8 +16,8 @@ import org.xmlunit.diff.Diff;
 import org.xmlunit.diff.Difference;
 
 import com.anaptecs.jeaf.fwk.tools.message.generator.ConversionResult;
-import com.anaptecs.jeaf.fwk.tools.message.generator.ErrorCodes;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ExcelToMessageResourceConverter;
+import com.anaptecs.jeaf.generator.ErrorCodes;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.xml.XMLTools;
 import com.anaptecs.jeaf.xfun.api.checks.VerificationResult;
@@ -91,13 +91,13 @@ public class ExcelTransformationTest {
     FailureMessage lFailureMessage = lErrors.get(0);
     assertEquals(ErrorCodes.INVALID_CLASS_INFO, lFailureMessage.getMessageID());
     assertEquals(
-        "Unable to convert Excel workbook to message resource file. Class-Information is incomplete or invalid. Affected field 'Package' in file './src/test/resources/broken-test-messages.xlsx'",
+        "Unable to convert Excel workbook to message resource file. Class-Information is incomplete or invalid. Affected field 'Package' in file './src/test/resources/broken-test-messages.xlsx'.",
         lFailureMessage.toString(Locale.ENGLISH));
 
     lFailureMessage = lErrors.get(1);
     assertEquals(ErrorCodes.INVALID_CLASS_INFO, lFailureMessage.getMessageID());
     assertEquals(
-        "Unable to convert Excel workbook to message resource file. Class-Information is incomplete or invalid. Affected field 'Class-Name' in file './src/test/resources/broken-test-messages.xlsx'",
+        "Unable to convert Excel workbook to message resource file. Class-Information is incomplete or invalid. Affected field 'Class-Name' in file './src/test/resources/broken-test-messages.xlsx'.",
         lFailureMessage.toString(Locale.ENGLISH));
 
     lFailureMessage = lErrors.get(2);

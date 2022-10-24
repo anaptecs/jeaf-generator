@@ -5,70 +5,70 @@ extension java::GeneratorCommons;
 
 
 // Checks for annotation DecimalMin
-context DecimalMin if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Maximum value for Java Bean Validation 'DecimalMin' missing.": minValue.length > 0;
-context DecimalMin if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'DecimalMin'. CharcterSequence or number is expected.": type.isCharSequence() || type.isNumericForAnnotation();
+context DecimalMin if runChecks() ERROR this.getErrorMessage("9137", {((NamedElement)this.owner).name + "." + name}): minValue.length > 0;
+context DecimalMin if runChecks() ERROR this.getErrorMessage("9138", {((NamedElement)this.owner).name + "." + name, "DecimalMin"}): type.isCharSequence() || type.isNumericForAnnotation();
 
 // Checks for annotation DecimalMax
-context DecimalMax if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Maximum value for Java Bean Validation 'DecimalMax' missing.": maxValue.length > 0;
-context DecimalMax if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'DecimalMax'. CharcterSequence or number is expected.": type.isCharSequence() || type.isNumericForAnnotation();
+context DecimalMax if runChecks() ERROR this.getErrorMessage("9139", {((NamedElement)this.owner).name + "." + name}): maxValue.length > 0;
+context DecimalMax if runChecks() ERROR this.getErrorMessage("9138", {((NamedElement)this.owner).name + "." + name, "DecimalMax"}): type.isCharSequence() || type.isNumericForAnnotation();
 
 // Checks for annotation Min
-context Min if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Min'. Number is expected.": type.isNumericForAnnotation();
+context Min if runChecks() ERROR this.getErrorMessage("9140", {((NamedElement)this.owner).name + "." + name, "Min"}): type.isNumericForAnnotation();
 
 // Checks for annotation Max
-context Max if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Max'. Number is expected.": type.isNumericForAnnotation();
+context Max if runChecks() ERROR this.getErrorMessage("9140", {((NamedElement)this.owner).name + "." + name, "Max"}): type.isNumericForAnnotation();
 
 // Checks for annotation Digits
-context Digits if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Maximum number of integral digits for Java Bean Validation 'Digits' must be zero or greater (integer = " + integer + ").": integer >= 0;
-context Digits if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": maximum number of fractional digits for Java Bean Validation 'Digits' must be zero or greater.(fraction = " + fraction + ").": fraction >= 0;
-context Digits if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Size'. CharcterSequence or number is expected.": type.isCharSequence() || type.isNumericForAnnotation();
+context Digits if runChecks() ERROR this.getErrorMessage("9141", {((NamedElement)this.owner).name + "." + name, integer.toString()}): integer >= 0;
+context Digits if runChecks() ERROR this.getErrorMessage("9142", {((NamedElement)this.owner).name + "." + name, fraction.toString()}): fraction >= 0;
+context Digits if runChecks() ERROR this.getErrorMessage("9138", {((NamedElement)this.owner).name + "." + name, "Digits"}): type.isCharSequence() || type.isNumericForAnnotation();
 
 // Checks for annotation Negative
-context Negative if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Negative'. Number is expected.": type.isNumericForAnnotation();
+context Negative if runChecks() ERROR this.getErrorMessage("9140", {((NamedElement)this.owner).name + "." + name, "Negative"}): type.isNumericForAnnotation();
 
 // Checks for annotation NegativeOrZero
-context NegativeOrZero if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'NegativeOrZero'. Number is expected.": type.isNumericForAnnotation();
+context NegativeOrZero if runChecks() ERROR this.getErrorMessage("9140", {((NamedElement)this.owner).name + "." + name, "NegativeOrZero"}): type.isNumericForAnnotation();
 
 // Checks for annotation PositiveOrZero
-context PositiveOrZero if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'PositiveOrZero'. Number is expected.": type.isNumericForAnnotation();
+context PositiveOrZero if runChecks() ERROR this.getErrorMessage("9140", {((NamedElement)this.owner).name + "." + name, "PositiveOrZero"}): type.isNumericForAnnotation();
 
 // Checks for annotation Positive
-context Positive if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Positive'. Number is expected.": type.isNumericForAnnotation();
+context Positive if runChecks() ERROR this.getErrorMessage("9140", {((NamedElement)this.owner).name + "." + name, "Positive"}): type.isNumericForAnnotation();
 
 // Checks for annotation Size
-context Size if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Minimum size for Java Bean Validation 'Size' must be zero or greater (min = " + min + ").": min >= -1;
-context Size if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Maximum size for Java Bean Validation 'Size' must be zero or greater.(max = " + max + ").": max >= -1;
-context Size if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Maximum size for Java Bean Validation 'Size' must be greater or equal as minimum size (min = " + min + " max = " + max +").": max >= min || max == -1;
-context Size if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Either maximum or minimum size of Java Bean Validation 'Size' must be set": !(max == -1 && min == -1);
-context Size if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Size'. CharcterSequence, Collection or Map is expected.": type.isCharSequence() || this.isMultivalued();
+context Size if runChecks() ERROR this.getErrorMessage("9143", {((NamedElement)this.owner).name + "." + name, min.toString()}): min >= -1;
+context Size if runChecks() ERROR this.getErrorMessage("9144", {((NamedElement)this.owner).name + "." + name, max.toString()}): max >= -1;
+context Size if runChecks() ERROR this.getErrorMessage("9145", {((NamedElement)this.owner).name + "." + name, min.toString(), max.toString()}): max >= min || max == -1;
+context Size if runChecks() ERROR this.getErrorMessage("9146", {((NamedElement)this.owner).name + "." + name}): !(max == -1 && min == -1);
+context Size if runChecks() ERROR this.getErrorMessage("9147", {((NamedElement)this.owner).name + "." + name, "Size"}): type.isCharSequence() || this.isMultivalued();
 
 // Checks for annotation Pattern
-context Pattern if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Regexp pattern for Java Bean Validation 'Pattern' missing.": regexp.length > 0;
-context Pattern if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Pattern'. CharcterSequence is expected.": type.isCharSequence();
+context Pattern if runChecks() ERROR this.getErrorMessage("9148", {((NamedElement)this.owner).name + "." + name}): regexp.length > 0;
+context Pattern if runChecks() ERROR this.getErrorMessage("9149", {((NamedElement)this.owner).name + "." + name, "Pattern"}): type.isCharSequence();
 
 // Checks for annotation Email
-context Email if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Email'. CharcterSequence is expected.": type.isCharSequence();
+context Email if runChecks() ERROR this.getErrorMessage("9149", {((NamedElement)this.owner).name + "." + name, "Email"}): type.isCharSequence();
 
 // Checks for annotation NotEmpty
-context NotEmpty if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'NotEmpty'. CharcterSequence, Collection or Map is expected.": type.isCharSequence() || this.isMultivalued();
+context NotEmpty if runChecks() ERROR this.getErrorMessage("9147", {((NamedElement)this.owner).name + "." + name, "NotEmpty"}): type.isCharSequence() || this.isMultivalued();
 
 // Checks for annotation AssertTrue
-context AssertTrue if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'AssertTrue'. Boolean type is expected.": type.isBooleanForAnnotation();
+context AssertTrue if runChecks() ERROR this.getErrorMessage("9150", {((NamedElement)this.owner).name + "." + name, "AssertTrue"}): type.isBooleanForAnnotation();
 
 // Checks for annotation AssertFalse
-context AssertFalse if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'AssertFalse'. Boolean type is expected.": type.isBooleanForAnnotation();
+context AssertFalse if runChecks() ERROR this.getErrorMessage("9150", {((NamedElement)this.owner).name + "." + name, "AssertFalse"}): type.isBooleanForAnnotation();
 
 // Checks for annotation NotBlank
-context NotBlank if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'NotBlank'. CharcterSequence or number is expected.": type.isCharSequence();
+context NotBlank if runChecks() ERROR this.getErrorMessage("9138", {((NamedElement)this.owner).name + "." + name, "NotBlank"}): type.isCharSequence();
 
 // Checks for annotation Past
-context Past if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Past'. Date type is expected.": type.isDateForAnnotation();
+context Past if runChecks() ERROR this.getErrorMessage("9151", {((NamedElement)this.owner).name + "." + name, "Past"}): type.isDateForAnnotation();
 
 // Checks for annotation PastOrPresent
-context PastOrPresent if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'PastOrPresent'. Date type is expected.": type.isDateForAnnotation();
+context PastOrPresent if runChecks() ERROR this.getErrorMessage("9151", {((NamedElement)this.owner).name + "." + name, "PastOrPresent"}): type.isDateForAnnotation();
 
 // Checks for annotation FutureOrPresent
-context FutureOrPresent if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'FutureOrPresent'. Date type is expected.": type.isDateForAnnotation();
+context FutureOrPresent if runChecks() ERROR this.getErrorMessage("9151", {((NamedElement)this.owner).name + "." + name, "FutureOrPresent"}): type.isDateForAnnotation();
 
 // Checks for annotation Future
-context Future if runChecks() ERROR "Error: " + ((NamedElement)this.owner).name + "." + name + ": Wrong target type '" + type.name + "' for Java Bean Validation 'Future'. Date type is expected.": type.isDateForAnnotation();
+context Future if runChecks() ERROR this.getErrorMessage("9151", {((NamedElement)this.owner).name + "." + name, "Future"}): type.isDateForAnnotation();

@@ -26,6 +26,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.anaptecs.jeaf.generator.ErrorCodes;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.xml.XMLTools;
 import com.anaptecs.jeaf.xfun.api.checks.Assert;

@@ -13,6 +13,12 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.anaptecs.jeaf.generator</groupId>
+			<artifactId>jeaf-generator-messages</artifactId>
+			<version>${jeaf.generator.messages.version}</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>com.anaptecs.jeaf.x-fun</groupId>
 			<artifactId>jeaf-x-fun-impl</artifactId>
 			<version>${jeaf.x-fun.impl.version}</version>

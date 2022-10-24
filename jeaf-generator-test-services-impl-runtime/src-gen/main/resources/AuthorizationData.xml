@@ -115,6 +115,7 @@
     <AuthorizationType name="deprectedOperation.com.anaptecs.jeaf.junit.core.BusinessObjectTestService" />
     <AuthorizationType name="doAnotherthing1.com.anaptecs.jeaf.junit.core.JEAFAuthorizationTestService" />
     <AuthorizationType name="doSomeNotRESTThing.com.anaptecs.jeaf.junit.rest.RESTTestService" />
+    <AuthorizationType name="doSomething.com.anaptecs.broken.rest.BrokenService" />
     <AuthorizationType name="doSomething.com.anaptecs.jeaf.junit.core.DeprecatedTestService" />
     <AuthorizationType name="doSomething.com.anaptecs.jeaf.junit.core.JEAFAuthorizationTestService" />
     <AuthorizationType name="doSomething.com.anaptecs.jeaf.junit.rest.DeprecatedRESTService" />
@@ -208,9 +209,12 @@
     <AuthorizationType name="lockAccount.com.anaptecs.jeaf.accounting.AccountingService" />
     <AuthorizationType name="lockExpiredTasks.com.anaptecs.jeaf.services.scheduling.SchedulerService" />
     <AuthorizationType name="lockUserAccount.com.anaptecs.jeaf.services.usermanagement.UserManagementService" />
+    <AuthorizationType name="methodWithUnnamedParam.com.anaptecs.broken.rest.BrokenService" />
     <AuthorizationType name="noMethodValidation.com.anaptecs.jeaf.junit.core.ValidationTestService" />
     <AuthorizationType name="notValidOutput.com.anaptecs.jeaf.junit.core.ValidationTestService" />
+    <AuthorizationType name="operationWithoutReturnType.com.anaptecs.broken.rest.PathlessRESTResource" />
     <AuthorizationType name="parentServiceMethod.com.anaptecs.jeaf.junit.core.ParentService" />
+    <AuthorizationType name="pathlessOperation.com.anaptecs.broken.rest.PathlessRESTResource" />
     <AuthorizationType name="performBooking.com.anaptecs.jeaf.accounting.AccountingService" />
     <AuthorizationType name="performBooking.com.anaptecs.jeaf.accounting.impl.swift.SwiftAccountingService" />
     <AuthorizationType name="performSchufaCheck.com.anaptecs.jeaf.accounting.impl.schufa.SchufaService" />

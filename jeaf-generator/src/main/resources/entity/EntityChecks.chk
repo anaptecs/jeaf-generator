@@ -5,8 +5,22 @@ extension java::Naming;
 extension entity::ModelProperties; 
 extension java::GeneratorCommons;
 
-context PersistentObject if runChecks() WARNING "Warning: Persistent Object " + name+ " (" + fqn() + ") should have a documentation": ownedComment.size  > 0;
 
-context PersistentObject if runChecks() ERROR "Error: Class " + name+ " (" + fqn() + ") must have a class id > 0. Current class id: " + classID.toString() : classID > 0;
+// Checks for stereotype PersistentObject
+context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9124", {"PersistentObject", name}): ownedAttribute.forAll( a | a.type != null);
+context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9125", {"PersistentObject", name}): ownedAttribute.forAll( a | a.name.length > 0);
+context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9128", {"PersistentObject", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
+context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9129", {"PersistentObject", name}): ownedOperation.forAll( e | e.name.length > 0);
+context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9127", {"PersistentObject", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
+context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9130", {"PersistentObject", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
+context PersistentObject if runChecks("PersistentObject") ERROR this.getErrorMessage("9133", {name, classID.toString()}): classID > 0;
+context Property if isNavigable() && class != null && class.isStereotypeApplied("PersistentObject") && runChecks() ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
 
-context Role if runChecks() ERROR "Error: Both ends of an assocation must have stereotype 'Role' "  + opposite.toString() : opposite.getAppliedStereotype("Role") == null;
+context PersistentObject if runChecks("PersistentObject") WARNING this.getWarningMessage("9122", {"PersistentObject", name}): ownedComment.size  > 0;
+
+
+// Checks for stereotype Role
+context Role if runChecks("Role") && opposite != null ERROR this.getErrorMessage("9134", {((NamedElement)this.owner).name + "." + name, ((NamedElement)opposite.owner).name + "." + opposite.name}): opposite.isStereotypeApplied("Role") == true;
+context Role if isMultivalued() && opposite.isMultivalued() && runChecks("Role") 
+	ERROR "Error: " + class.fqn()+ "->"+ type.fqn() + ": The tag linkTable must be set to only one association end of of an association. Not setting it is not allowed." :
+	isTableValid();

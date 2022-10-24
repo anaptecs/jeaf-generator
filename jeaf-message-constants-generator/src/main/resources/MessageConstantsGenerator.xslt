@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- 
      Stylesheet defines the transformation of an XML document that has the 
      structure that is defined in DTD MessageData.dtd. Through this templates
@@ -11,7 +11,7 @@
 
 
 <!-- Define output type of template -->
-<xsl:output method="text" version="1.0" encoding="ISO-8859-1" indent="yes"/>
+<xsl:output method="text" version="1.0" encoding="UTF-8" indent="yes"/>
 
 
 

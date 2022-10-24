@@ -31,6 +31,7 @@ import org.w3c.dom.NodeList;
 
 import com.anaptecs.jeaf.fwk.tools.message.util.JEAFToolsApplicationException;
 import com.anaptecs.jeaf.fwk.tools.message.util.JEAFToolsSystemException;
+import com.anaptecs.jeaf.generator.ErrorCodes;
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.xfun.annotations.AppInfo;
 import com.anaptecs.jeaf.xfun.annotations.StartupInfoConfig;

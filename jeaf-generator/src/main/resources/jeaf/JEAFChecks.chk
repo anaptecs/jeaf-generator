@@ -8,55 +8,61 @@ extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
 
 
-context Model if this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).size > 0 ERROR "Error: JEAF Generator expects JEAF Meta Model (JMM) revision 71 or higher. Please update your UML project to a newer version of JMM. Your current revision is: " + this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision: this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision >= 71;
+// Checks for stereotype JEAFComponent
+context JEAFComponent if runChecks("JEAFComponent") ERROR this.getErrorMessage("9132", {name}): layer != null;
 
-context JEAFComponent if runChecks("JEAFComponent") ERROR "Error: No layer defined for JEAF Component " + this.name : layer != null;
+// Checks for stereotype ServiceObject
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9124", {"ServiceObject", name}): ownedAttribute.forAll( a | a.type != null);
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9125", {"ServiceObject", name}): ownedAttribute.forAll( a | a.name.length > 0);
+context ServiceObject if runChecks("ServiceObject") && compositeDataType == true ERROR this.getErrorMessage("9123", {"ServiceObject", name}): this.superClass.size == 0;
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9128", {"ServiceObject", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9129", {"ServiceObject", name}): ownedOperation.forAll( e | e.name.length > 0);
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9127", {"ServiceObject", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9130", {"ServiceObject", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
+context Property if isNavigable() && class != null && class.isStereotypeApplied("ServiceObject") && runChecks() ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
 
-context ServiceObject if runChecks("ServiceObject") ERROR "Error: <<ServiceObject>> " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context ServiceObject if runChecks("ServiceObject") ERROR "Error: <<ServiceObject>> " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
-context ServiceObject if runChecks("ServiceObject") && compositeDataType == true ERROR "<<ServiceObject>> " + this.name + " must not have a parent class as it is marked to be a composite data type.": this.superClass.size == 0;
-
-context POJO if runChecks("POJO") ERROR "Error: <<POJO>> " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context POJO if runChecks("POJO") ERROR "Error: <<POJO>> " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
-context POJO if runChecks("POJO") && compositeDataType == true ERROR "<<POJO>> " + this.name + " must not have a parent class as it is marked to be a composite data type.": this.superClass.size == 0;
-
-context OpenAPIType if runChecks("OpenAPIType") ERROR "Error: <<OpenAPIType>> " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context OpenAPIType if runChecks("OpenAPIType") ERROR "Error: <<OpenAPIType>> " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
-
-context OpenAPIDataType if runChecks("OpenDataAPIType") ERROR "Error: <<OpenAPIDataType>> " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-
-context DomainObject if runChecks("DomainObject") ERROR "Error: <<DomainObject>> " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context DomainObject if runChecks("DomainObject") ERROR "Error: <<DomainObject>> " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
-
-context PersistentObject if runChecks("PersistentObject") ERROR "Error: <<PersistentObject>> " + name + " has attribute(s) without a type (" + fqn() + ")": ownedAttribute.forAll( a | a.type != null);
-context PersistentObject if runChecks("PersistentObject") ERROR "Error: <<PersistentObject>> " + name + " has attribute(s) or association(s) without a name (" + fqn() + ")": ownedAttribute.forAll( a | a.name != null);
-
-context JEAFService if runChecks("JEAFService") ERROR "Error: <<JEAFService>> " + name+ " has method(s) with unsupported return type. Please ensure that all methods have a real return type and that no arrays of primitive types returned (" + fqn() + ")": ownedOperation.forAll( e | e.isSupportedReturnType() == true);
-context JEAFService if runChecks("JEAFService") ERROR "Error: <<JEAFService>> " + name+ " has method(s) with input parameters without name. Please ensure that all input parameters are named (" + fqn() + ")": ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
-
-context ServiceObject if runChecks("ServiceObject") ERROR "Error: <<ServiceObject>> " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
-context ServiceObject if runChecks("ServiceObject") ERROR "Error: <<ServiceObject>> " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
-context ServiceObject if runChecks("ServiceObject") ERROR "Error: <<ServiceObject>> " + name+ " has method(s) with input parameters without name. Please ensure that all input parameters are named (" + fqn() + ")": ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
+context ServiceObject if runChecks("ServiceObject") WARNING this.getWarningMessage("9122", {"ServiceObject", name}): ownedComment.size  > 0;
 
 
-context DomainObject if runChecks("DomainObject") ERROR "Error: <<DomainObject>> " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
-context DomainObject if runChecks("DomainObject") ERROR "Error: <<DomainObject>> " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
-context DomainObject if runChecks("DomainObject") ERROR "Error: <<DomainObject>> " + name+ " has method(s) with input parameters without name. Please ensure that all input parameters are named (" + fqn() + ")": ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
+// Checks for stereotype POJO
+context POJO if runChecks("POJO") ERROR this.getErrorMessage("9124", {"POJO", name}): ownedAttribute.forAll( a | a.type != null);
+context POJO if runChecks("POJO") ERROR this.getErrorMessage("9125", {"POJO", name}): ownedAttribute.forAll( a | a.name.length > 0);
+context POJO if runChecks("POJO") ERROR this.getErrorMessage("9127", {"POJO", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
+context POJO if runChecks("POJO") && compositeDataType == true ERROR this.getErrorMessage("9123", {"POJO", name}): this.superClass.size == 0;
+context POJO if runChecks("POJO") ERROR this.getErrorMessage("9128", {"POJO", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
+context POJO if runChecks("POJO") ERROR this.getErrorMessage("9129", {"POJO", name}): ownedOperation.forAll( e | e.name.length > 0);
+context POJO if runChecks("POJO") ERROR this.getErrorMessage("9130", {"POJO", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
+context Property if isNavigable() && class != null && class.isStereotypeApplied("POJO") && runChecks() ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
+
+context POJO if runChecks("POJO") WARNING this.getWarningMessage("9122", {"POJO", name}): ownedComment.size  > 0;
 
 
-context PersistentObject if runChecks("PersistentObject") ERROR "Error: <<PersistentObject>> " + name + " has method(s) without a return type. Please ensure that all methods have a return type (" + fqn() + ")": ownedOperation.forAll( e | e.hasReturnType() == true);
-context PersistentObject if runChecks("PersistentObject") ERROR "Error: <<PersistentObject>> " + name + " has method(s) without a name. Please ensure that all methods have a name (" + fqn() + ")": ownedOperation.forAll( e | e.name != null);
-context PersistentObject if runChecks("PersistentObject") ERROR "Error: <<PersistentObject>> " + name+ " has method(s) with input parameters without name. Please ensure that all input parameters are named (" + fqn() + ")": ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
+// Checks for stereotype DomainObject
+context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9124", {"DomainObject", name}): ownedAttribute.forAll( a | a.type != null);
+context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9125", {"DomainObject", name}): ownedAttribute.forAll( a | a.name.length > 0);
+context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9128", {"DomainObject", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
+context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9129", {"DomainObject", name}): ownedOperation.forAll( e | e.name.length > 0);
+context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9127", {"DomainObject", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
+context DomainObject if runChecks("DomainObject") ERROR this.getErrorMessage("9130", {"DomainObject", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
+context Property if isNavigable() && class != null && class.isStereotypeApplied("DomainObject") && runChecks() ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
 
-context Operation if runChecks() ERROR "Error: Method " + name + " has parameter(s) without type.": hasOnlySupportedParamaterTypes() == true;
-context Operation if runChecks() ERROR "Error: Method " + name + " (...) of class " + ((NamedElement)this.owner).fqn() + " does not have a valid return type": hasReturnType() == true;
+context DomainObject if runChecks("DomainObject") WARNING this.getWarningMessage("9122", {"DomainObject", name}): ownedComment.size  > 0;
 
-context ServiceObject if runChecks("ServiceObject") WARNING "Warning: <<ServiceObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context POJO if runChecks("POJO") WARNING "Warning: <<POJO>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context JEAFEnumeration if runChecks("JEAFEnumeration") WARNING "Warning: <<JEAFEnumeration>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context DomainObject if runChecks("DomainObject") WARNING "Warning: <<DomainObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context QueryObject if runChecks("QueryObject") WARNING "Warning: <<QueryObject>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context JEAFService if runChecks("JEAFService") WARNING "Warning: <<JEAFService>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
-context OpenAPIType if runChecks("OpenAPIType") WARNING "Warning: <<OpenAPIType>> " + name + " should have a documentation (" + fqn() + ")": ownedComment.size  > 0;
 
-context JEAFActivity if runChecks("JEAFActivity") ERROR "Error: <<JEAFActivity>> must define exactly one return parameter " + name + " (" + fqn() + "). Activity has " + this.getReturnParameterCount()+ " return parameters.": this.getReturnParameterCount()  == 1;
+// Checks for stereotype JEAFService
+context JEAFService if runChecks("JEAFService") ERROR this.getErrorMessage("9126", {name}): ownedOperation.forAll( e | e.isSupportedReturnType() == true);
+context JEAFService if runChecks("JEAFService") ERROR this.getErrorMessage("9127", {"JEAFService", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
+
+context JEAFService if runChecks("JEAFService") WARNING this.getWarningMessage("9122", {"JEAFService", name}): ownedComment.size  > 0;
+
+
+// Checks for stereotype JEAFEnumeration
+context JEAFEnumeration if runChecks("JEAFEnumeration") WARNING this.getWarningMessage("9122", {"JEAFEnumeration", name}): ownedComment.size  > 0;
+
+
+// Checks for stereotype QueryObject
+context QueryObject if runChecks("QueryObject") WARNING this.getWarningMessage("9122", {"QueryObject", name}): ownedComment.size  > 0;
+
+
+// Checks for stereotype JEAFActivity
+context JEAFActivity if runChecks("JEAFActivity") ERROR this.getWarningMessage("9131", {name, this.getReturnParameterCount().toString()}): this.getReturnParameterCount()  == 1;

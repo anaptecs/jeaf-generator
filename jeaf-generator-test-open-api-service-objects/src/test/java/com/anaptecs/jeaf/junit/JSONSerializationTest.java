@@ -105,7 +105,7 @@ public class JSONSerializationTest {
     ChildBB lChildBB = ChildBB.builder().setChildBBAttribute(123456789l).build();
     lValue = lTools.writeObjectToString(lChildBB);
     assertEquals(
-        "{\"objectType\":\"ChildBB\",\"childBAttribute\":false,\"childBBAttribute\":123456789,\"deprecatedAttribute\":0}",
+        "{\"objectType\":\"ChildBB\",\"childBBAttribute\":123456789,\"deprecatedAttribute\":0}",
         lValue);
 
     lDeserializedParent = lTools.read(lValue, ParentClass.class);
@@ -115,7 +115,7 @@ public class JSONSerializationTest {
     lChildBB.addToComposition(lChildAA);
     lValue = lTools.writeObjectToString(lChildBB);
     assertEquals(
-        "{\"objectType\":\"ChildBB\",\"childBAttribute\":false,\"composition\":[{\"objectType\":\"ChildAA\",\"childAAttribute\":4711,\"childAAAttribute\":0,\"sizedArray\":0}],\"childBBAttribute\":123456789,\"deprecatedAttribute\":0}",
+        "{\"objectType\":\"ChildBB\",\"composition\":[{\"objectType\":\"ChildAA\",\"childAAttribute\":4711,\"childAAAttribute\":0}],\"childBBAttribute\":123456789,\"deprecatedAttribute\":0}",
         lValue);
 
     lDeserializedParent = lTools.read(lValue, ParentClass.class);
