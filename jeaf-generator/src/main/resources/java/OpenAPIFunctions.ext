@@ -357,7 +357,11 @@ cached List[String] collectSerializedClassNames(uml::Class class):
    
 cached List[String] collectDependendTypeNames(uml::Property property):
    if (property.type.isPrimitiveType() == false && property.type.isBasicType() == false)
-   then {property.getCollectionImplType(), property.type.fqn(), property.type.getExtensibleEnumType()}.addAll(((uml::Class)property.type).attribute.collectDependendTypeNames());
+   then {property.getCollectionImplType(), property.type.fqn(), property.type.getExtensibleEnumType()}.addAll(((uml::Class)property.type).attribute.collectDependendTypeNames())
+   else 
+   		if property.isMultivalued()
+   		then {property.type.fqn() + "[]"};
+   
 
 cached String getExtensibleEnumType(uml::Type type):
    if type.isStereotypeApplied("JEAFEnumeration") && ((JMM::JEAFEnumeration) type).extensibleEnum
