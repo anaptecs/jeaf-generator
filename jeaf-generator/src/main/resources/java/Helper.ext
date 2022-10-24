@@ -1,0 +1,7 @@
+extension java::GeneratorCommons;
+
+
+cached List[uml::Property] getToStringProperties(uml::Class class):
+	if enableDetailedToString() == true
+	then class.ownedAttribute
+	else class.ownedAttribute.select(e|e.association == null && e.isMultivalued() == false);

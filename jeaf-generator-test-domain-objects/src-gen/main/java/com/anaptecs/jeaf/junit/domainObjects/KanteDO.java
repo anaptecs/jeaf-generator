@@ -13,8 +13,6 @@ import java.util.Set;
 
 import com.anaptecs.jeaf.core.api.DomainObject;
 import com.anaptecs.jeaf.core.api.DomainObjectID;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
@@ -284,14 +282,15 @@ public class KanteDO extends DomainObject {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
-    lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
-    lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "gerichtet", "" + gerichtet));
-    lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append(this.getClass().getName());
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("gerichtet: ");
+    lBuilder.append(gerichtet);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -303,6 +302,6 @@ public class KanteDO extends DomainObject {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

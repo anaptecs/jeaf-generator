@@ -163,11 +163,12 @@ public class POI extends Stop {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = super.toStringBuilder();
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
+    lBuilder.append(pIndent);
     lBuilder.append("description: ");
     lBuilder.append(description);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -179,6 +180,6 @@ public class POI extends Stop {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

@@ -19,6 +19,7 @@ import com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID;
 import com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType;
 import com.anaptecs.jeaf.junit.openapi.base.InventoryType;
 import com.anaptecs.jeaf.junit.openapi.base.WeirdBooking;
+import com.anaptecs.jeaf.xfun.api.XFun;
 
 public class InternalViewCompositeDataTypeTest {
   @Test
@@ -36,6 +37,17 @@ public class InternalViewCompositeDataTypeTest {
     assertEquals("EXT-0987654321", lReadBooking.getBookingID().getExternalRefID());
     assertEquals(InventoryType.SBB, lReadBooking.getBookingID().getInventory());
     assertEquals("BOOKING_CODE", lReadBooking.getBookingID().getBookingCode().getCode());
+
+    XFun.getTrace().info(lBooking.toString());
+    assertEquals("com.anaptecs.jeaf.junit.openapi.base.Booking" + System.lineSeparator() +
+        "bookingID: " + System.lineSeparator() +
+        "    com.anaptecs.jeaf.junit.openapi.base.BookingID" + System.lineSeparator() +
+        "    referenceID: 123456" + System.lineSeparator() +
+        "    externalRefID: EXT-0987654321" + System.lineSeparator() +
+        "    inventory: SBB" + System.lineSeparator() +
+        "    bookingCode: " + System.lineSeparator() +
+        "        com.anaptecs.jeaf.junit.openapi.base.BookingCode" + System.lineSeparator() +
+        "        code: BOOKING_CODE" + System.lineSeparator(), lBooking.toString());
   }
 
   @Test
@@ -96,6 +108,72 @@ public class InternalViewCompositeDataTypeTest {
     assertEquals("REF-123-2", lReadBooking.getAdditionalBookings().get(1).getReferenceID());
     assertEquals(ComplexBookingType.COMPLEX, lReadBooking.getAdditionalBookings().get(1).getComplexBookingType());
     assertEquals(1, lReadBooking.getAdditionalBookings().get(1).getBookingIDs().size());
+
+    XFun.getTrace().info(lWeirdBooking.toString());
+    assertEquals("com.anaptecs.jeaf.junit.openapi.base.WeirdBooking" + System.lineSeparator() +
+        "booking: " + System.lineSeparator() +
+        "    com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID" + System.lineSeparator() +
+        "    internalID: 123456789" + System.lineSeparator() +
+        "    referenceID: REF-123" + System.lineSeparator() +
+        "    bookingIDs: 2 element(s)" + System.lineSeparator() +
+        "        com.anaptecs.jeaf.junit.openapi.base.BookingID" + System.lineSeparator() +
+        "        referenceID: XXYYZZ" + System.lineSeparator() +
+        "        externalRefID: EXT_#äöß?\"§$§\"$\"%$" + System.lineSeparator() +
+        "        inventory: SNCF" + System.lineSeparator() +
+        "        bookingCode: " + System.lineSeparator() +
+        "            com.anaptecs.jeaf.junit.openapi.base.BookingCode" + System.lineSeparator() +
+        "            code: REFUND_CODE" + System.lineSeparator() +
+        System.lineSeparator() +
+        "        com.anaptecs.jeaf.junit.openapi.base.BookingID" + System.lineSeparator() +
+        "        referenceID: 123456" + System.lineSeparator() +
+        "        externalRefID: EXT-0987654321" + System.lineSeparator() +
+        "        inventory: SBB" + System.lineSeparator() +
+        "        bookingCode: " + System.lineSeparator() +
+        "            com.anaptecs.jeaf.junit.openapi.base.BookingCode" + System.lineSeparator() +
+        "            code: BOOKING_CODE" + System.lineSeparator() +
+        System.lineSeparator() +
+        "    complexBookingType: VERY_COMPLEX" + System.lineSeparator() +
+        "    anotherID: null" + System.lineSeparator() +
+        "additionalBookings: 2 element(s)" + System.lineSeparator() +
+        "    com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID" + System.lineSeparator() +
+        "    internalID: 9991234" + System.lineSeparator() +
+        "    referenceID: REF-123-1" + System.lineSeparator() +
+        "    bookingIDs: 2 element(s)" + System.lineSeparator() +
+        "        com.anaptecs.jeaf.junit.openapi.base.BookingID" + System.lineSeparator() +
+        "        referenceID: XXYYZZ" + System.lineSeparator() +
+        "        externalRefID: EXT_#äöß?\"§$§\"$\"%$" + System.lineSeparator() +
+        "        inventory: SNCF" + System.lineSeparator() +
+        "        bookingCode: " + System.lineSeparator() +
+        "            com.anaptecs.jeaf.junit.openapi.base.BookingCode" + System.lineSeparator() +
+        "            code: REFUND_CODE" + System.lineSeparator() +
+        System.lineSeparator() +
+        "        com.anaptecs.jeaf.junit.openapi.base.BookingID" + System.lineSeparator() +
+        "        referenceID: 123456" + System.lineSeparator() +
+        "        externalRefID: EXT-0987654321" + System.lineSeparator() +
+        "        inventory: SBB" + System.lineSeparator() +
+        "        bookingCode: " + System.lineSeparator() +
+        "            com.anaptecs.jeaf.junit.openapi.base.BookingCode" + System.lineSeparator() +
+        "            code: BOOKING_CODE" + System.lineSeparator() +
+        System.lineSeparator() +
+        "    complexBookingType: VERY_COMPLEX" + System.lineSeparator() +
+        "    anotherID: null" + System.lineSeparator() +
+        System.lineSeparator() +
+        "    com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID" + System.lineSeparator() +
+        "    internalID: 123456789" + System.lineSeparator() +
+        "    referenceID: REF-123-2" + System.lineSeparator() +
+        "    bookingIDs: 1 element(s)" + System.lineSeparator() +
+        "        com.anaptecs.jeaf.junit.openapi.base.BookingID" + System.lineSeparator() +
+        "        referenceID: XXYYZZ" + System.lineSeparator() +
+        "        externalRefID: EXT_#äöß?\"§$§\"$\"%$" + System.lineSeparator() +
+        "        inventory: SNCF" + System.lineSeparator() +
+        "        bookingCode: " + System.lineSeparator() +
+        "            com.anaptecs.jeaf.junit.openapi.base.BookingCode" + System.lineSeparator() +
+        "            code: REFUND_CODE" + System.lineSeparator() +
+        System.lineSeparator() +
+        "    complexBookingType: COMPLEX" + System.lineSeparator() +
+        "    anotherID: null" + System.lineSeparator() +
+        System.lineSeparator() +
+        "versionedObjectSoftLink:  null" + System.lineSeparator(), lWeirdBooking.toString());
 
   }
 }

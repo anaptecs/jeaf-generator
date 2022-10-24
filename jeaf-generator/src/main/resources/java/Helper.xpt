@@ -1,5 +1,6 @@
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::Naming»
+«EXTENSION java::Helper»
 
 «DEFINE GenerateToStringMethod FOR uml::Class»
   /**
@@ -7,60 +8,30 @@
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
-    «IF isTargetRuntimeJEAF()»
-	    «IF this.isCompositeDataType()»
-            StringBuilder lBuilder = new StringBuilder();
-		    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
-		    lBuilder.append('\n');
-		    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
-		    lBuilder.append('\n');
-		    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "«this.getCompositeDateTypePublicFieldName()»", "" + «this.getCompositeDateTypePublicFieldName()»));
-		    lBuilder.append('\n');
-	    «ELSE»
-		    «IF this.superClass.isEmpty == true»
-	            StringBuilder lBuilder = new StringBuilder();
-			    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
-			    lBuilder.append('\n');
-			    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
-			    lBuilder.append('\n');
-		    «ELSE»
-			    StringBuilder lBuilder = super.toStringBuilder();
-		    «ENDIF»
-		    «FOREACH this.ownedAttribute AS attribute»
-			    «IF attribute.association == null && attribute.isMultivalued() == false»
-			    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "«attribute.name»", "" + «attribute.name»));
-			    lBuilder.append('\n');
-			    «ENDIF»
-		    «ENDFOREACH»
-	    «ENDIF»
+  public StringBuilder toStringBuilder( String pIndent) {
+    «IF this.isCompositeDataType()»
+        StringBuilder lBuilder = new StringBuilder();
+        lBuilder.append(pIndent);
+	    lBuilder.append(this.getClass().getName());
+	    lBuilder.append(System.lineSeparator());
+	    lBuilder.append(pIndent);
+	    lBuilder.append("«this.getCompositeDateTypePublicFieldName()»: ");
+	    lBuilder.append(«this.getCompositeDateTypePublicFieldName()»);
+	    lBuilder.append(System.lineSeparator());
     «ELSE»
-	    «IF this.isCompositeDataType()»
+	    «IF this.superClass.isEmpty == true»
             StringBuilder lBuilder = new StringBuilder();
+            lBuilder.append(pIndent);
 		    lBuilder.append(this.getClass().getName());
-		    lBuilder.append('\n');
-		    lBuilder.append("Attributes:");
-		    lBuilder.append('\n');
-		    lBuilder.append("«this.getCompositeDateTypePublicFieldName()»: ");
-		    lBuilder.append(«this.getCompositeDateTypePublicFieldName()»);
+		    lBuilder.append(System.lineSeparator());
 	    «ELSE»
-		    «IF this.superClass.isEmpty == true»
-	            StringBuilder lBuilder = new StringBuilder();
-			    lBuilder.append(this.getClass().getName());
-			    lBuilder.append('\n');
-			    lBuilder.append("Attributes:");
-			    lBuilder.append('\n');
-		    «ELSE»
-			    StringBuilder lBuilder = super.toStringBuilder();
-		    «ENDIF»
-		    «FOREACH this.ownedAttribute AS attribute»
-			    «IF attribute.association == null && attribute.isMultivalued() == false»
-			    lBuilder.append("«attribute.name»: ");
-			    lBuilder.append(«attribute.name»);
-			    lBuilder.append('\n');
-			    «ENDIF»
-		    «ENDFOREACH»
+		    StringBuilder lBuilder = super.toStringBuilder(pIndent);
 	    «ENDIF»
+	    «FOREACH this.getToStringProperties() AS attribute»
+			lBuilder.append(pIndent);
+			lBuilder.append("«attribute.name»: ");
+		    «EXPAND ToStringValue FOR attribute»
+	    «ENDFOREACH»
     «ENDIF»
     return lBuilder;
   }
@@ -72,9 +43,56 @@
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
   
+«ENDDEFINE»
+
+«DEFINE ToStringValue FOR uml::Property»
+    «IF association == null »
+	    «IF isMultivalued() == false»
+		    lBuilder.append(«name»);
+	    «ELSE»
+		    if(«name» != null) {
+		    	lBuilder.append(java.util.Arrays.toString(«name»));
+		    }
+		    else {
+		    	lBuilder.append(" null");
+		    }
+	    «ENDIF»
+	    lBuilder.append(System.lineSeparator());
+    «ELSE»
+	    «IF isMultivalued() == false»
+		    «IF type.isEnumeration() == false»
+		    if(«name» != null) {
+		    	lBuilder.append(System.lineSeparator());
+		    	lBuilder.append(«name».toStringBuilder(pIndent + "    "));
+		    }
+		    else {
+		    	lBuilder.append(" null");
+		    	lBuilder.append(System.lineSeparator());
+		    }
+		    «ELSE»
+		    lBuilder.append(«name»);
+		    lBuilder.append(System.lineSeparator());
+		    «ENDIF»
+	    «ELSE»
+		    if («name» != null) {
+		      lBuilder.append(«name».size());
+		      lBuilder.append(" element(s)");
+		    }
+		    else {
+		      lBuilder.append(" null");
+		    }
+		    lBuilder.append(System.lineSeparator());
+		    if («name» != null) {
+		      for («type.fqn()» lNext : «name») {
+		        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+		        lBuilder.append(System.lineSeparator());
+		      }
+		    }
+	    «ENDIF»
+    «ENDIF»
 «ENDDEFINE»
 
 

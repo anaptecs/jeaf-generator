@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,8 +16,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
@@ -465,14 +464,51 @@ public class ChildBB extends ChildB {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = super.toStringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "childBBAttribute",
-        "" + childBBAttribute));
-    lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "deprecatedAttribute",
-        "" + deprecatedAttribute));
-    lBuilder.append('\n');
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
+    lBuilder.append(pIndent);
+    lBuilder.append("childBBAttribute: ");
+    lBuilder.append(childBBAttribute);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("deprecatedAttribute: ");
+    lBuilder.append(deprecatedAttribute);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("deprecatedBs: ");
+    if (deprecatedBs != null) {
+      lBuilder.append(deprecatedBs.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (deprecatedBs != null) {
+      for (ChildB lNext : deprecatedBs) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("deprecatedParent: ");
+    if (deprecatedParent != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(deprecatedParent.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("deprecatedArray: ");
+    if (deprecatedArray != null) {
+      lBuilder.append(Arrays.toString(deprecatedArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -484,6 +520,6 @@ public class ChildBB extends ChildB {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

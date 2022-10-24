@@ -166,6 +166,9 @@ cached boolean disableArrayImmutability():
 cached boolean disableBinaryDataImmutability():
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.disableBinaryDataImmutability();
     
+cached boolean enableDetailedToString():
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.enableDetailedToString();
+    
 cached boolean enableLegacyBuilderStyle():
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.enableLegacyBuilderStyle();
     

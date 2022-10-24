@@ -381,12 +381,47 @@ public class BidirectA {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
-    lBuilder.append("Attributes:");
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("transientBs: ");
+    if (transientBs != null) {
+      lBuilder.append(transientBs.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (transientBs != null) {
+      for (BidirectB lNext : transientBs) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("parent: ");
+    if (parent != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(parent.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("transientChild: ");
+    if (transientChild != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(transientChild.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     return lBuilder;
   }
 
@@ -398,6 +433,6 @@ public class BidirectA {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

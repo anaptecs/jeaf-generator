@@ -6,6 +6,7 @@
 package com.anaptecs.spring.base;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -864,27 +865,104 @@ public class Product {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
-    lBuilder.append("Attributes:");
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("resellers: ");
+    if (resellers != null) {
+      lBuilder.append(resellers.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (resellers != null) {
+      for (Reseller lNext : resellers) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
     lBuilder.append("name: ");
     lBuilder.append(name);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("image: ");
+    if (image != null) {
+      lBuilder.append(Arrays.toString(image));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
     lBuilder.append("link: ");
     lBuilder.append(link);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
     lBuilder.append("productID: ");
     lBuilder.append(productID);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("supportedCurrencies: ");
+    if (supportedCurrencies != null) {
+      lBuilder.append(supportedCurrencies.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (supportedCurrencies != null) {
+      for (CurrencyCode lNext : supportedCurrencies) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("productCodes: ");
+    if (productCodes != null) {
+      lBuilder.append(productCodes.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (productCodes != null) {
+      for (ProductCode lNext : productCodes) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
     lBuilder.append("description: ");
     lBuilder.append(description);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("sortiments: ");
+    if (sortiments != null) {
+      lBuilder.append(sortiments.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (sortiments != null) {
+      for (Sortiment lNext : sortiments) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
     lBuilder.append("uri: ");
     lBuilder.append(uri);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -896,6 +974,6 @@ public class Product {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

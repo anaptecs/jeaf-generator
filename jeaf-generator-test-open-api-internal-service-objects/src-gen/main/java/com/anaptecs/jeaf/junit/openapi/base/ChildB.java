@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,8 +15,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
@@ -35,7 +34,7 @@ public class ChildB extends ParentClass {
    * A child attribute
    */
   @Size(min = 11, max = 42)
-  private boolean childBAttribute;
+  private boolean[] childBAttribute;
 
   /**
    * the composition
@@ -96,7 +95,7 @@ public class ChildB extends ParentClass {
      * A child attribute
      */
     @Size(min = 11, max = 42)
-    private boolean childBAttribute;
+    private boolean[] childBAttribute;
 
     /**
      * the composition
@@ -151,9 +150,14 @@ public class ChildB extends ParentClass {
      * 
      * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
      */
-    public Builder setChildBAttribute( boolean pChildBAttribute ) {
+    public Builder setChildBAttribute( boolean[] pChildBAttribute ) {
       // Assign value to attribute
-      childBAttribute = pChildBAttribute;
+      if (pChildBAttribute != null) {
+        childBAttribute = pChildBAttribute;
+      }
+      else {
+        childBAttribute = null;
+      }
       return this;
     }
 
@@ -201,8 +205,15 @@ public class ChildB extends ParentClass {
    * 
    * @return Boolean Value to which the attribute "childBAttribute" is set.
    */
-  public boolean getChildBAttribute( ) {
-    return childBAttribute;
+  public boolean[] getChildBAttribute( ) {
+    boolean[] lReturnValue;
+    if (childBAttribute != null) {
+      lReturnValue = childBAttribute;
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
   }
 
   /**
@@ -210,9 +221,14 @@ public class ChildB extends ParentClass {
    * 
    * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
    */
-  public void setChildBAttribute( boolean pChildBAttribute ) {
+  public void setChildBAttribute( boolean[] pChildBAttribute ) {
     // Assign value to attribute
-    childBAttribute = pChildBAttribute;
+    if (pChildBAttribute != null) {
+      childBAttribute = pChildBAttribute;
+    }
+    else {
+      childBAttribute = null;
+    }
   }
 
   /**
@@ -280,11 +296,33 @@ public class ChildB extends ParentClass {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = super.toStringBuilder();
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "childBAttribute", "" + childBAttribute));
-    lBuilder.append('\n');
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
+    lBuilder.append(pIndent);
+    lBuilder.append("childBAttribute: ");
+    if (childBAttribute != null) {
+      lBuilder.append(Arrays.toString(childBAttribute));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("composition: ");
+    if (composition != null) {
+      lBuilder.append(composition.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (composition != null) {
+      for (ParentClass lNext : composition) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 
@@ -296,6 +334,6 @@ public class ChildB extends ParentClass {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

@@ -244,12 +244,37 @@ public class WeirdBooking {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
-    lBuilder.append("Attributes:");
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("booking: ");
+    if (booking != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(booking.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("additionalBookings: ");
+    if (additionalBookings != null) {
+      lBuilder.append(additionalBookings.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (additionalBookings != null) {
+      for (ComplexBookingID lNext : additionalBookings) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 
@@ -261,6 +286,6 @@ public class WeirdBooking {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

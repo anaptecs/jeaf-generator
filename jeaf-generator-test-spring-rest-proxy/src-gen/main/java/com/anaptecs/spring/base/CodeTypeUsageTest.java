@@ -382,18 +382,19 @@ public class CodeTypeUsageTest {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
-    lBuilder.append("Attributes:");
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
     lBuilder.append("booleanCode: ");
     lBuilder.append(booleanCode);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
     lBuilder.append("stringCode: ");
     lBuilder.append(stringCode);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -405,6 +406,6 @@ public class CodeTypeUsageTest {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

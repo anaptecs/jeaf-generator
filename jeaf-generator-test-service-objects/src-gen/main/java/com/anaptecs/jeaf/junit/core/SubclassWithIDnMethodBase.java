@@ -8,8 +8,6 @@ package com.anaptecs.jeaf.junit.core;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
 /**
@@ -169,10 +167,12 @@ public abstract class SubclassWithIDnMethodBase extends IdentifiableServiceObjec
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = super.toStringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "attr", "" + attr));
-    lBuilder.append('\n');
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
+    lBuilder.append(pIndent);
+    lBuilder.append("attr: ");
+    lBuilder.append(attr);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -184,6 +184,6 @@ public abstract class SubclassWithIDnMethodBase extends IdentifiableServiceObjec
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

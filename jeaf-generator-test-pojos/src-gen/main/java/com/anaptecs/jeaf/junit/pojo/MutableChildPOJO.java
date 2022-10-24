@@ -9,8 +9,6 @@ import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -184,10 +182,12 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = super.toStringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "writeable", "" + writeable));
-    lBuilder.append('\n');
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
+    lBuilder.append(pIndent);
+    lBuilder.append("writeable: ");
+    lBuilder.append(writeable);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -199,6 +199,6 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

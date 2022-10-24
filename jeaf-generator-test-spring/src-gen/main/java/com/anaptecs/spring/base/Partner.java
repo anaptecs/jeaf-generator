@@ -212,12 +212,27 @@ public class Partner {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
-    lBuilder.append("Attributes:");
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("postalAddresses: ");
+    if (postalAddresses != null) {
+      lBuilder.append(postalAddresses.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (postalAddresses != null) {
+      for (PostalAddress lNext : postalAddresses) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 
@@ -229,6 +244,6 @@ public class Partner {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

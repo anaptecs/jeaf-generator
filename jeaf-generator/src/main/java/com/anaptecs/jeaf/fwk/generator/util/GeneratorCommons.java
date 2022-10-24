@@ -198,6 +198,11 @@ public class GeneratorCommons {
   public static final String DISABLE_BINRAY_DATA_IMMUTABILITY = "switch.gen.disable.binary.data.immutability";
 
   /**
+   * Constant defines the name of the system property that enables generation of detailed toString() operation.
+   */
+  public static final String ENABLE_DETAILED_TO_STRING = "switch.gen.enable.detailed.toString";
+
+  /**
    * Constant defines the name of the system property that enables legacy builder style.
    */
   public static final String ENABLE_LEGACY_BUILDER_STYLE = "switch.gen.enable.legacy.builder.style";
@@ -924,6 +929,11 @@ public class GeneratorCommons {
   public static boolean disableBinaryDataImmutability( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(DISABLE_BINRAY_DATA_IMMUTABILITY, Boolean.FALSE, Boolean.class);
+  }
+
+  public static boolean enableDetailedToString( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(ENABLE_DETAILED_TO_STRING, Boolean.FALSE, Boolean.class);
   }
 
   public static boolean enableLegacyBuilderStyle( ) {

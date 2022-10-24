@@ -6,8 +6,6 @@
 package com.anaptecs.jeaf.junit.core;
 
 import com.anaptecs.jeaf.core.api.QueryObject;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
 /**
  * @author JEAF Generator
@@ -191,24 +189,31 @@ public class ProductQuery extends QueryObject {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
-    lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
-    lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "name", "" + name));
-    lBuilder.append('\n');
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "minAvailability", "" + minAvailability));
-    lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "minPrice", "" + minPrice));
-    lBuilder.append('\n');
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "maxPrice", "" + maxPrice));
-    lBuilder.append('\n');
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "manufacturer", "" + manufacturer));
-    lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append(this.getClass().getName());
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("name: ");
+    lBuilder.append(name);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("minAvailability: ");
+    lBuilder.append(minAvailability);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("minPrice: ");
+    lBuilder.append(minPrice);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("maxPrice: ");
+    lBuilder.append(maxPrice);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("manufacturer: ");
+    lBuilder.append(manufacturer);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -220,6 +225,6 @@ public class ProductQuery extends QueryObject {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }
