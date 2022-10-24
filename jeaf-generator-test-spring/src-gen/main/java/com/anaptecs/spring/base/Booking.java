@@ -19,9 +19,19 @@ public class Booking {
   public static final String BOOKINGID = "bookingID";
 
   /**
+   * Constant for the name of attribute "customerName".
+   */
+  public static final String CUSTOMERNAME = "customerName";
+
+  /**
    * 
    */
   private BookingID bookingID;
+
+  /**
+   * 
+   */
+  private String customerName;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -38,6 +48,7 @@ public class Booking {
   protected Booking( Builder pBuilder ) {
     // Read attribute values from builder.
     bookingID = pBuilder.bookingID;
+    customerName = pBuilder.customerName;
   }
 
   /**
@@ -70,6 +81,11 @@ public class Booking {
     private BookingID bookingID;
 
     /**
+     * 
+     */
+    private String customerName;
+
+    /**
      * Use {@link Booking#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -82,6 +98,7 @@ public class Booking {
       if (pObject != null) {
         // Read attribute values from passed object.
         bookingID = pObject.bookingID;
+        customerName = pObject.customerName;
       }
     }
 
@@ -112,6 +129,17 @@ public class Booking {
      */
     public Builder setBookingID( BookingID pBookingID ) {
       bookingID = pBookingID;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "customerName".
+     * 
+     * @param pCustomerName Value to which the attribute "customerName" should be set.
+     */
+    public Builder setCustomerName( String pCustomerName ) {
+      // Assign value to attribute
+      customerName = pCustomerName;
       return this;
     }
 
@@ -154,14 +182,44 @@ public class Booking {
   }
 
   /**
+   * Method returns the attribute "customerName".
+   * 
+   * 
+   * @return String Value to which the attribute "customerName" is set.
+   */
+  public String getCustomerName( ) {
+    return customerName;
+  }
+
+  /**
+   * Method sets the attribute "customerName".
+   * 
+   * 
+   * @param pCustomerName Value to which the attribute "customerName" should be set.
+   */
+  public void setCustomerName( String pCustomerName ) {
+    // Assign value to attribute
+    customerName = pCustomerName;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
+    lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("bookingID: ");
+    lBuilder.append('\n');
+    lBuilder.append(bookingID.toStringBuilder(pIndent + "    "));
+    lBuilder.append(pIndent);
+    lBuilder.append("customerName: ");
+    lBuilder.append(customerName);
     lBuilder.append('\n');
     return lBuilder;
   }
@@ -174,6 +232,6 @@ public class Booking {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

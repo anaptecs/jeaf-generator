@@ -576,39 +576,48 @@ public class OpenAPITestObject {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append('\n');
-    lBuilder.append("Attributes:");
-    lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("readOnlyAttribute: ");
     lBuilder.append(readOnlyAttribute);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("readWriteAttribute: ");
     lBuilder.append(readWriteAttribute);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("writeOnlyAttribute: ");
     lBuilder.append(writeOnlyAttribute);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("nullableAttribute: ");
     lBuilder.append(nullableAttribute);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("notNullableAttribute: ");
     lBuilder.append(notNullableAttribute);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("readOnlyArray: ");
     lBuilder.append(readOnlyArray);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("readWriteArray: ");
     lBuilder.append(readWriteArray);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("writeOnlyArray: ");
     lBuilder.append(writeOnlyArray);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("nullableArray: ");
     lBuilder.append(nullableArray);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("notNullableArray: ");
     lBuilder.append(notNullableArray);
     lBuilder.append('\n');
@@ -623,6 +632,6 @@ public class OpenAPITestObject {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

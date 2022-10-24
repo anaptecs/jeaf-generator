@@ -523,6 +523,14 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean disableImmutabilityOfBinaryData;
 
   /**
+   * Switch defines if a detailed toString() method should be generated for POJOs, ServiceObjects and DomainObjects.
+   * "Detailed" here means that besides the attributes of an class also references to other objects and arrays with be
+   * present in result of toString().
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean enableDetailedToStringMethod;
+
+  /**
    * Switch enables the JEAF Generator legacy style for builder pattern in generated code. If the flag is enabled then
    * static builder methods will also be generated on the builder class itself no only on its surrounding class.
    */
@@ -884,8 +892,12 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Disable immutability for binary arrays:           " + disableImmutabilityOfBinaryData);
     }
 
+    if (enableDetailedToStringMethod) {
+      lLog.info("Enable legacy builder style:                      " + enableDetailedToStringMethod);
+    }
+
     if (enableLegacyBuilderStyle) {
-      lLog.info("Enable legacy builder style:                      " + enableLegacyBuilderStyle);
+      lLog.info("Enable detailed toString():                       " + enableLegacyBuilderStyle);
     }
 
     lLog.info(" ");
@@ -992,6 +1004,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.disable.array.immutability", disableImmutabilityOfArrays.toString());
       System.setProperty("switch.gen.disable.binary.data.immutability", disableImmutabilityOfBinaryData.toString());
 
+      System.setProperty("switch.gen.enable.detailed.toString", enableDetailedToStringMethod.toString());
       System.setProperty("switch.gen.enable.legacy.builder.style", enableLegacyBuilderStyle.toString());
 
       System.setProperty("name.oid.row", peristentObjectsOIDRowName);

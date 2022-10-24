@@ -8,7 +8,7 @@
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent) {
     «IF isTargetRuntimeJEAF()»
 	    «IF this.isCompositeDataType()»
             StringBuilder lBuilder = new StringBuilder();
@@ -40,29 +40,43 @@
     «ELSE»
 	    «IF this.isCompositeDataType()»
             StringBuilder lBuilder = new StringBuilder();
+            lBuilder.append(pIndent);
 		    lBuilder.append(this.getClass().getName());
 		    lBuilder.append('\n');
-		    lBuilder.append("Attributes:");
-		    lBuilder.append('\n');
+		    lBuilder.append(pIndent);
 		    lBuilder.append("«this.getCompositeDateTypePublicFieldName()»: ");
 		    lBuilder.append(«this.getCompositeDateTypePublicFieldName()»);
 	    «ELSE»
 		    «IF this.superClass.isEmpty == true»
 	            StringBuilder lBuilder = new StringBuilder();
+	            lBuilder.append(pIndent);
 			    lBuilder.append(this.getClass().getName());
 			    lBuilder.append('\n');
-			    «IF this.getToStringProperties().size > 0»
-				    lBuilder.append("Attributes:");
-				    lBuilder.append('\n');
-			    «ENDIF»
 		    «ELSE»
-			    StringBuilder lBuilder = super.toStringBuilder();
+			    StringBuilder lBuilder = super.toStringBuilder(pIndent);
 		    «ENDIF»
 		    «FOREACH this.getToStringProperties() AS attribute»
-			    «IF attribute.association == null && attribute.isMultivalued() == false»
-			    lBuilder.append("«attribute.name»: ");
-			    lBuilder.append(«attribute.name»);
-			    lBuilder.append('\n');
+				lBuilder.append(pIndent);
+				lBuilder.append("«attribute.name»: ");
+			    «IF attribute.association == null »
+				    «IF attribute.isMultivalued() == false»
+					    lBuilder.append(«attribute.name»);
+					    lBuilder.append('\n');
+				    «ELSE»
+					    // TODO: toString for array
+				    «ENDIF»
+			    «ELSE»
+				    «IF attribute.isMultivalued() == false»
+					    «IF attribute.type.isEnumeration() == false»
+					    lBuilder.append('\n');
+					    lBuilder.append(«attribute.name».toStringBuilder(pIndent + "    "));
+					    «ELSE»
+					    lBuilder.append(«attribute.name»);
+					    lBuilder.append('\n');
+					    «ENDIF»
+				    «ELSE»
+					    // TODO: toString for array
+				    «ENDIF»
 			    «ENDIF»
 		    «ENDFOREACH»
 	    «ENDIF»
@@ -77,9 +91,12 @@
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
   
+«ENDDEFINE»
+
+«DEFINE ToStringValue FOR uml::Property»
 «ENDDEFINE»
 
 

@@ -187,10 +187,15 @@ public class BidirectB {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("a: ");
+    lBuilder.append('\n');
+    lBuilder.append(a.toStringBuilder(pIndent + "    "));
     return lBuilder;
   }
 
@@ -202,6 +207,6 @@ public class BidirectB {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

@@ -267,11 +267,13 @@ public class SpecialContext extends Context {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = super.toStringBuilder();
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
+    lBuilder.append(pIndent);
     lBuilder.append("specificHeader: ");
     lBuilder.append(specificHeader);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("channelType: ");
     lBuilder.append(channelType);
     lBuilder.append('\n');
@@ -286,6 +288,6 @@ public class SpecialContext extends Context {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

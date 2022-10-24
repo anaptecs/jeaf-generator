@@ -369,18 +369,27 @@ public abstract class ComplexBookingIDBase {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append('\n');
-    lBuilder.append("Attributes:");
-    lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("internalID: ");
     lBuilder.append(internalID);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("referenceID: ");
     lBuilder.append(referenceID);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("bookingIDs: ");
+    // TODO: toString for array
+    lBuilder.append(pIndent);
+    lBuilder.append("complexBookingType: ");
+    lBuilder.append(complexBookingType);
+    lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("anotherID: ");
     lBuilder.append(anotherID);
     lBuilder.append('\n');
@@ -395,6 +404,6 @@ public abstract class ComplexBookingIDBase {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

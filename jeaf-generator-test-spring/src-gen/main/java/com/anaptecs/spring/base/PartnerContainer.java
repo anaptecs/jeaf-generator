@@ -207,10 +207,14 @@ public class PartnerContainer {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("partners: ");
+    // TODO: toString for array
     return lBuilder;
   }
 
@@ -222,6 +226,6 @@ public class PartnerContainer {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

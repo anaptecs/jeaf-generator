@@ -291,10 +291,19 @@ public class ChildAA extends ChildA {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = super.toStringBuilder();
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
+    lBuilder.append(pIndent);
     lBuilder.append("childAAAttribute: ");
     lBuilder.append(childAAAttribute);
+    lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("sizedArray: ");
+    // TODO: toString for array
+    lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("requiredArray: ");
+    // TODO: toString for array
     lBuilder.append('\n');
     return lBuilder;
   }
@@ -307,6 +316,6 @@ public class ChildAA extends ChildA {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

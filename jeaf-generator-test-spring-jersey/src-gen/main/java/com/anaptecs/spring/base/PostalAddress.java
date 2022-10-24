@@ -282,21 +282,24 @@ public class PostalAddress {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append('\n');
-    lBuilder.append("Attributes:");
-    lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("street: ");
     lBuilder.append(street);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("houseNumber: ");
     lBuilder.append(houseNumber);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("city: ");
     lBuilder.append(city);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("postalCode: ");
     lBuilder.append(postalCode);
     lBuilder.append('\n');
@@ -311,6 +314,6 @@ public class PostalAddress {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

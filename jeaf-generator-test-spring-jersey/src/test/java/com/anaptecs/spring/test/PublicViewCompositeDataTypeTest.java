@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.spring.base.Booking;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ComplexBookingID;
@@ -27,7 +28,9 @@ public class PublicViewCompositeDataTypeTest {
   @Test
   void testCompositeDataType( ) throws JsonProcessingException {
     BookingID lBookingID = BookingID.builder().setBookingID("123456").build();
-    Booking lBooking = Booking.builder().setBookingID(lBookingID).build();
+    Booking lBooking = Booking.builder().setCustomerName("Donald Duck").setBookingID(lBookingID).build();
+
+    XFun.getTrace().info("\n" + lBooking.toString());
 
     String lJSON = objectMapper.writeValueAsString(lBooking);
     assertEquals("{\"bookingID\":\"123456\"}", lJSON);
@@ -40,6 +43,8 @@ public class PublicViewCompositeDataTypeTest {
   void testComplexCompositeDataType( ) throws JsonProcessingException {
     ComplexBookingID lBookingID = ComplexBookingID.builder().setBookingID("XYZ-1234567").build();
     WeirdBooking lWeirdBooking = WeirdBooking.builder().setBooking(lBookingID).build();
+
+    assertEquals("", lWeirdBooking.toString());
 
     String lJSON = objectMapper.writeValueAsString(lWeirdBooking);
     assertEquals("{\"booking\":\"XYZ-1234567\"}", lJSON);

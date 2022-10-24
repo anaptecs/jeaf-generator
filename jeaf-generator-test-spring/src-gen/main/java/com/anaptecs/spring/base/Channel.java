@@ -357,18 +357,31 @@ public class Channel {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append('\n');
-    lBuilder.append("Attributes:");
+    lBuilder.append(pIndent);
+    lBuilder.append("channelType: ");
+    lBuilder.append(channelType);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("channelCode: ");
+    lBuilder.append('\n');
+    lBuilder.append(channelCode.toStringBuilder(pIndent + "    "));
+    lBuilder.append(pIndent);
     lBuilder.append("code: ");
     lBuilder.append(code);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("selfServiceChannel: ");
     lBuilder.append(selfServiceChannel);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("reseller: ");
+    lBuilder.append('\n');
+    lBuilder.append(reseller.toStringBuilder(pIndent + "    "));
     return lBuilder;
   }
 
@@ -380,6 +393,6 @@ public class Channel {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

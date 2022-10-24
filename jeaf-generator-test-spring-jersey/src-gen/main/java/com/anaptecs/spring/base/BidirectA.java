@@ -361,9 +361,24 @@ public class BidirectA {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
+    lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("transientBs: ");
+    // TODO: toString for array
+    lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("parent: ");
+    lBuilder.append('\n');
+    lBuilder.append(parent.toStringBuilder(pIndent + "    "));
+    lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("transientChild: ");
+    lBuilder.append('\n');
+    lBuilder.append(transientChild.toStringBuilder(pIndent + "    "));
     lBuilder.append('\n');
     return lBuilder;
   }
@@ -376,6 +391,6 @@ public class BidirectA {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

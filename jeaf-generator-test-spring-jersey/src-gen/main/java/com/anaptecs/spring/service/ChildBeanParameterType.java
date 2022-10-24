@@ -166,8 +166,9 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = super.toStringBuilder();
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
+    lBuilder.append(pIndent);
     lBuilder.append("childProperty: ");
     lBuilder.append(childProperty);
     lBuilder.append('\n');
@@ -182,6 +183,6 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

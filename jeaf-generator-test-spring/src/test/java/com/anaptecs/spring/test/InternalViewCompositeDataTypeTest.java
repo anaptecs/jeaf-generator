@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.spring.base.Booking;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
@@ -34,7 +35,9 @@ public class InternalViewCompositeDataTypeTest {
     BookingCode lBookingCode = BookingCode.builder().setCode("BOOKING_CODE").build();
     BookingID lBookingID = BookingID.builder().setBookingCode(lBookingCode).setInventory(InventoryType.SBB)
         .setReferenceID("123456").setExternalRefID("EXT-0987654321").build();
-    Booking lBooking = Booking.builder().setBookingID(lBookingID).build();
+    Booking lBooking = Booking.builder().setCustomerName("Daisy Duck").setBookingID(lBookingID).build();
+
+    XFun.getTrace().info("\n" + lBooking);
 
     String lJSON = objectMapper.writeValueAsString(lBooking);
     assertEquals("{\"bookingID\":\"DUJPT0tJTkdfQ09ExUVYVC0wOTg3NjU0MzKxATEyMzQ1tg==\"}", lJSON);

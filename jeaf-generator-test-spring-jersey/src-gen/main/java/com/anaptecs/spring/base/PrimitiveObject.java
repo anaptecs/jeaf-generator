@@ -1167,75 +1167,96 @@ public class PrimitiveObject {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append('\n');
-    lBuilder.append("Attributes:");
-    lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("aBoolean: ");
     lBuilder.append(aBoolean);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("bBoolean: ");
     lBuilder.append(bBoolean);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("cBoolean: ");
     lBuilder.append(cBoolean);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("aByte: ");
     lBuilder.append(aByte);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("bByte: ");
     lBuilder.append(bByte);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("aShort: ");
     lBuilder.append(aShort);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("bShort: ");
     lBuilder.append(bShort);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("aInteger: ");
     lBuilder.append(aInteger);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("bInteger: ");
     lBuilder.append(bInteger);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("cInteger: ");
     lBuilder.append(cInteger);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("aLong: ");
     lBuilder.append(aLong);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("bLong: ");
     lBuilder.append(bLong);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("aBigInteger: ");
     lBuilder.append(aBigInteger);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("aCharacter: ");
     lBuilder.append(aCharacter);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("bCharacter: ");
     lBuilder.append(bCharacter);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("aFloat: ");
     lBuilder.append(aFloat);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("bFloat: ");
     lBuilder.append(bFloat);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("aDouble: ");
     lBuilder.append(aDouble);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("bDouble: ");
     lBuilder.append(bDouble);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("aBigDecimal: ");
     lBuilder.append(aBigDecimal);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("aString: ");
     lBuilder.append(aString);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("bString: ");
     lBuilder.append(bString);
     lBuilder.append('\n');
@@ -1250,6 +1271,6 @@ public class PrimitiveObject {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

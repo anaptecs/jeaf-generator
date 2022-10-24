@@ -435,15 +435,22 @@ public abstract class ResellerBase {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append('\n');
-    lBuilder.append("Attributes:");
-    lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("channels: ");
+    // TODO: toString for array
+    lBuilder.append(pIndent);
+    lBuilder.append("products: ");
+    // TODO: toString for array
+    lBuilder.append(pIndent);
     lBuilder.append("name: ");
     lBuilder.append(name);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("language: ");
     lBuilder.append(language);
     lBuilder.append('\n');
@@ -458,6 +465,6 @@ public abstract class ResellerBase {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

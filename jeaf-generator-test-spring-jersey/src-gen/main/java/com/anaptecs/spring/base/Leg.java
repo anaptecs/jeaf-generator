@@ -295,9 +295,24 @@ public class Leg {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
+    lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("start: ");
+    lBuilder.append('\n');
+    lBuilder.append(start.toStringBuilder(pIndent + "    "));
+    lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("stop: ");
+    lBuilder.append('\n');
+    lBuilder.append(stop.toStringBuilder(pIndent + "    "));
+    lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("stopovers: ");
+    // TODO: toString for array
     lBuilder.append('\n');
     return lBuilder;
   }
@@ -310,6 +325,6 @@ public class Leg {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

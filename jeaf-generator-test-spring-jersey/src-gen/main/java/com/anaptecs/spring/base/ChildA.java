@@ -123,8 +123,9 @@ public abstract class ChildA extends ParentClass {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = super.toStringBuilder();
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
+    lBuilder.append(pIndent);
     lBuilder.append("childAAttribute: ");
     lBuilder.append(childAAttribute);
     lBuilder.append('\n');
@@ -139,6 +140,6 @@ public abstract class ChildA extends ParentClass {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

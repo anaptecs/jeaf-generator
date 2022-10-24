@@ -253,15 +253,24 @@ public abstract class SoftLinkBase {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append('\n');
-    lBuilder.append("Attributes:");
-    lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("objectID: ");
     lBuilder.append(objectID);
     lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("dataUnit: ");
+    lBuilder.append(dataUnit);
+    lBuilder.append('\n');
+    lBuilder.append(pIndent);
+    lBuilder.append("entity: ");
+    lBuilder.append(entity);
+    lBuilder.append('\n');
+    lBuilder.append(pIndent);
     lBuilder.append("refrenceID: ");
     lBuilder.append(refrenceID);
     lBuilder.append('\n');
@@ -276,6 +285,6 @@ public abstract class SoftLinkBase {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }
