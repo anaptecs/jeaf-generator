@@ -190,15 +190,15 @@ public class ParentBeanParamType {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("novaKey: ");
     lBuilder.append(novaKey);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("tkID: ");
     lBuilder.append(tkID);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

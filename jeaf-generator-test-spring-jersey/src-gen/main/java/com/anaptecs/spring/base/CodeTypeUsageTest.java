@@ -389,23 +389,47 @@ public class CodeTypeUsageTest {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("booleanCode: ");
     lBuilder.append(booleanCode);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("booleanCodeAssociation: ");
-    // TODO: toString for array
-    lBuilder.append('\n');
+    if (booleanCodeAssociation != null) {
+      lBuilder.append(booleanCodeAssociation.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (booleanCodeAssociation != null) {
+      for (BooleanCodeType lNext : booleanCodeAssociation) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     lBuilder.append(pIndent);
     lBuilder.append("shortCodeTypeAssociation: ");
-    // TODO: toString for array
-    lBuilder.append('\n');
+    if (shortCodeTypeAssociation != null) {
+      lBuilder.append(shortCodeTypeAssociation.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (shortCodeTypeAssociation != null) {
+      for (ShortCodeType lNext : shortCodeTypeAssociation) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     lBuilder.append(pIndent);
     lBuilder.append("stringCode: ");
     lBuilder.append(stringCode);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

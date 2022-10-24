@@ -188,7 +188,7 @@ public class UICStop extends Stop {
     lBuilder.append(pIndent);
     lBuilder.append("uicCode: ");
     lBuilder.append(uicCode);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

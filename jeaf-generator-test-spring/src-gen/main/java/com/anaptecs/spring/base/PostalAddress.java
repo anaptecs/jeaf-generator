@@ -306,23 +306,23 @@ public class PostalAddress {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("street: ");
     lBuilder.append(street);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("houseNumber: ");
     lBuilder.append(houseNumber);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("city: ");
     lBuilder.append(city);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("postalCode: ");
     lBuilder.append(postalCode);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

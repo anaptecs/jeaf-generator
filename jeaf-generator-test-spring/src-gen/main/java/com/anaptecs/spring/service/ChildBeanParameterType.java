@@ -188,7 +188,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     lBuilder.append(pIndent);
     lBuilder.append("childProperty: ");
     lBuilder.append(childProperty);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

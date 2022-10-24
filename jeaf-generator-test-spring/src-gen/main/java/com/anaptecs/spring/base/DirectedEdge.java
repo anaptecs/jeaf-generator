@@ -265,19 +265,31 @@ public class DirectedEdge {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("start: ");
-    lBuilder.append('\n');
-    lBuilder.append(start.toStringBuilder(pIndent + "    "));
+    if (start != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(start.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     lBuilder.append(pIndent);
     lBuilder.append("end: ");
-    lBuilder.append('\n');
-    lBuilder.append(end.toStringBuilder(pIndent + "    "));
+    if (end != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(end.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     lBuilder.append(pIndent);
     lBuilder.append("link: ");
     lBuilder.append(link);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

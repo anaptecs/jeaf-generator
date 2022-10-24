@@ -317,23 +317,29 @@ public class BookingID {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("referenceID: ");
     lBuilder.append(referenceID);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("externalRefID: ");
     lBuilder.append(externalRefID);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("inventory: ");
     lBuilder.append(inventory);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("bookingCode: ");
-    lBuilder.append('\n');
-    lBuilder.append(bookingCode.toStringBuilder(pIndent + "    "));
+    if (bookingCode != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(bookingCode.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     return lBuilder;
   }
 

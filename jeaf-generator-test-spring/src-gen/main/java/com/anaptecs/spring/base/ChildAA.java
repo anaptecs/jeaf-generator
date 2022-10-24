@@ -316,7 +316,7 @@ public class ChildAA extends ChildA {
     lBuilder.append(pIndent);
     lBuilder.append("childAAAttribute: ");
     lBuilder.append(childAAAttribute);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("sizedArray: ");
     // TODO: toString for array

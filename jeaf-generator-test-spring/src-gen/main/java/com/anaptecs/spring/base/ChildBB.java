@@ -492,18 +492,37 @@ public class ChildBB extends ChildB {
     lBuilder.append(pIndent);
     lBuilder.append("childBBAttribute: ");
     lBuilder.append(childBBAttribute);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("deprecatedAttribute: ");
     lBuilder.append(deprecatedAttribute);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("deprecatedBs: ");
-    // TODO: toString for array
+    if (deprecatedBs != null) {
+      lBuilder.append(deprecatedBs.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (deprecatedBs != null) {
+      for (ChildB lNext : deprecatedBs) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     lBuilder.append(pIndent);
     lBuilder.append("deprecatedParent: ");
-    lBuilder.append('\n');
-    lBuilder.append(deprecatedParent.toStringBuilder(pIndent + "    "));
+    if (deprecatedParent != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(deprecatedParent.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     lBuilder.append(pIndent);
     lBuilder.append("deprecatedArray: ");
     // TODO: toString for array

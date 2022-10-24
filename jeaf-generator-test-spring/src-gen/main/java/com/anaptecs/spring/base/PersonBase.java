@@ -193,11 +193,11 @@ public abstract class PersonBase extends Partner {
     lBuilder.append(pIndent);
     lBuilder.append("surname: ");
     lBuilder.append(surname);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("firstName: ");
     lBuilder.append(firstName);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

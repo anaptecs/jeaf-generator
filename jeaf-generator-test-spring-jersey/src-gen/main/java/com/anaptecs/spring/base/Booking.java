@@ -192,16 +192,21 @@ public class Booking {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("bookingID: ");
-    lBuilder.append('\n');
-    lBuilder.append(bookingID.toStringBuilder(pIndent + "    "));
-    lBuilder.append('\n');
+    if (bookingID != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(bookingID.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     lBuilder.append(pIndent);
     lBuilder.append("customerName: ");
     lBuilder.append(customerName);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

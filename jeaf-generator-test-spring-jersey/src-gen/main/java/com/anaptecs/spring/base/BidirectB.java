@@ -171,12 +171,17 @@ public class BidirectB {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("a: ");
-    lBuilder.append('\n');
-    lBuilder.append(a.toStringBuilder(pIndent + "    "));
-    lBuilder.append('\n');
+    if (a != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(a.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     return lBuilder;
   }
 

@@ -214,15 +214,21 @@ public class Sale {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("transactionAmount: ");
     lBuilder.append(transactionAmount);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("sale: ");
-    lBuilder.append('\n');
-    lBuilder.append(sale.toStringBuilder(pIndent + "    "));
+    if (sale != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(sale.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     return lBuilder;
   }
 

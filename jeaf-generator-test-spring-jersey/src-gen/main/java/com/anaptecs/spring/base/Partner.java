@@ -196,11 +196,23 @@ public class Partner {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("postalAddresses: ");
-    // TODO: toString for array
-    lBuilder.append('\n');
+    if (postalAddresses != null) {
+      lBuilder.append(postalAddresses.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (postalAddresses != null) {
+      for (PostalAddress lNext : postalAddresses) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 

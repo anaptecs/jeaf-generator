@@ -299,21 +299,43 @@ public class Leg {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("start: ");
-    lBuilder.append('\n');
-    lBuilder.append(start.toStringBuilder(pIndent + "    "));
-    lBuilder.append('\n');
+    if (start != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(start.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     lBuilder.append(pIndent);
     lBuilder.append("stop: ");
-    lBuilder.append('\n');
-    lBuilder.append(stop.toStringBuilder(pIndent + "    "));
-    lBuilder.append('\n');
+    if (stop != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(stop.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     lBuilder.append(pIndent);
     lBuilder.append("stopovers: ");
-    // TODO: toString for array
-    lBuilder.append('\n');
+    if (stopovers != null) {
+      lBuilder.append(stopovers.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (stopovers != null) {
+      for (PlaceRef lNext : stopovers) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 

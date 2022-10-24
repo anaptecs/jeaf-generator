@@ -373,26 +373,39 @@ public abstract class ComplexBookingIDBase {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("internalID: ");
     lBuilder.append(internalID);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("referenceID: ");
     lBuilder.append(referenceID);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("bookingIDs: ");
-    // TODO: toString for array
+    if (bookingIDs != null) {
+      lBuilder.append(bookingIDs.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (bookingIDs != null) {
+      for (BookingID lNext : bookingIDs) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     lBuilder.append(pIndent);
     lBuilder.append("complexBookingType: ");
     lBuilder.append(complexBookingType);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("anotherID: ");
     lBuilder.append(anotherID);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

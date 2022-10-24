@@ -275,11 +275,22 @@ public class ChildB extends ParentClass {
     lBuilder.append(pIndent);
     lBuilder.append("childBAttribute: ");
     // TODO: toString for array
-    lBuilder.append('\n');
     lBuilder.append(pIndent);
     lBuilder.append("composition: ");
-    // TODO: toString for array
-    lBuilder.append('\n');
+    if (composition != null) {
+      lBuilder.append(composition.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (composition != null) {
+      for (ParentClass lNext : composition) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 

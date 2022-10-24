@@ -107,10 +107,11 @@ public abstract class ComplexBookingIDBase {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("bookingID: ");
     lBuilder.append(bookingID);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

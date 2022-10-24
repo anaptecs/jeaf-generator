@@ -156,7 +156,7 @@ public class Company extends Partner {
     lBuilder.append(pIndent);
     lBuilder.append("name: ");
     lBuilder.append(name);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

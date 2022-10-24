@@ -225,11 +225,11 @@ public class GeoPosition extends PlaceRef {
     lBuilder.append(pIndent);
     lBuilder.append("longitude: ");
     lBuilder.append(longitude);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("latitude: ");
     lBuilder.append(latitude);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

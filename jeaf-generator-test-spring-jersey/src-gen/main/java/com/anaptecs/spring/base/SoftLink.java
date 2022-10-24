@@ -125,10 +125,11 @@ public class SoftLink {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("openID: ");
     lBuilder.append(openID);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

@@ -38,15 +38,32 @@ public class InternalViewCompositeDataTypeTest {
     Booking lBooking = Booking.builder().setCustomerName("Daisy Duck").setBookingID(lBookingID).build();
 
     XFun.getTrace().info("\n" + lBooking);
+    assertEquals("com.anaptecs.spring.base.Booking" + System.lineSeparator() +
+        "bookingID: " + System.lineSeparator() +
+        "    com.anaptecs.spring.base.BookingID" + System.lineSeparator() +
+        "    referenceID: 123456" + System.lineSeparator() +
+        "    externalRefID: EXT-0987654321" + System.lineSeparator() +
+        "    inventory: SBB" + System.lineSeparator() +
+        "    bookingCode: " + System.lineSeparator() +
+        "        com.anaptecs.spring.base.BookingCode" + System.lineSeparator() +
+        "        code: BOOKING_CODE" + System.lineSeparator() +
+        "customerName: Daisy Duck" + System.lineSeparator(), lBooking.toString());
 
     String lJSON = objectMapper.writeValueAsString(lBooking);
-    assertEquals("{\"bookingID\":\"DUJPT0tJTkdfQ09ExUVYVC0wOTg3NjU0MzKxATEyMzQ1tg==\"}", lJSON);
+    assertEquals("{\"bookingID\":\"DUJPT0tJTkdfQ09ExUVYVC0wOTg3NjU0MzKxATEyMzQ1tg==\",\"customerName\":\"Daisy Duck\"}",
+        lJSON);
 
     Booking lReadBooking = objectMapper.readValue(lJSON, Booking.class);
     assertEquals("123456", lReadBooking.getBookingID().getReferenceID());
     assertEquals("EXT-0987654321", lReadBooking.getBookingID().getExternalRefID());
     assertEquals(InventoryType.SBB, lReadBooking.getBookingID().getInventory());
     assertEquals("BOOKING_CODE", lReadBooking.getBookingID().getBookingCode().getCode());
+
+    lBooking = Booking.builder().build();
+    XFun.getTrace().info("\n" + lBooking);
+    assertEquals("com.anaptecs.spring.base.Booking" + System.lineSeparator() +
+        "bookingID:  null" + System.lineSeparator() +
+        "customerName: null" + System.lineSeparator(), lBooking.toString());
   }
 
   @Test
@@ -74,6 +91,71 @@ public class InternalViewCompositeDataTypeTest {
     WeirdBooking lWeirdBooking = WeirdBooking.builder().setBooking(lComplexBookingID).setAdditionalBookings(Arrays
         .asList(lAdditionalBookingID1,
             lAdditionalBookingID2)).build();
+
+    XFun.getTrace().info("\n" + lWeirdBooking);
+    assertEquals("com.anaptecs.spring.base.WeirdBooking" + System.lineSeparator() +
+        "booking: " + System.lineSeparator() +
+        "    com.anaptecs.spring.base.ComplexBookingID" + System.lineSeparator() +
+        "    internalID: 123456789" + System.lineSeparator() +
+        "    referenceID: REF-123" + System.lineSeparator() +
+        "    bookingIDs: 2 element(s)" + System.lineSeparator() +
+        "        com.anaptecs.spring.base.BookingID" + System.lineSeparator() +
+        "        referenceID: XXYYZZ" + System.lineSeparator() +
+        "        externalRefID: EXT_#äöß?\"§$§\"$\"%$" + System.lineSeparator() +
+        "        inventory: SNCF" + System.lineSeparator() +
+        "        bookingCode: " + System.lineSeparator() +
+        "            com.anaptecs.spring.base.BookingCode" + System.lineSeparator() +
+        "            code: REFUND_CODE" + System.lineSeparator() +
+        System.lineSeparator() +
+        "        com.anaptecs.spring.base.BookingID" + System.lineSeparator() +
+        "        referenceID: 123456" + System.lineSeparator() +
+        "        externalRefID: EXT-0987654321" + System.lineSeparator() +
+        "        inventory: SBB" + System.lineSeparator() +
+        "        bookingCode: " + System.lineSeparator() +
+        "            com.anaptecs.spring.base.BookingCode" + System.lineSeparator() +
+        "            code: BOOKING_CODE" + System.lineSeparator() +
+        System.lineSeparator() +
+        "    complexBookingType: VERY_COMPLEX" + System.lineSeparator() +
+        "    anotherID: null" + System.lineSeparator() +
+        "additionalBookings: 2 element(s)" + System.lineSeparator() +
+        "    com.anaptecs.spring.base.ComplexBookingID" + System.lineSeparator() +
+        "    internalID: 9991234" + System.lineSeparator() +
+        "    referenceID: REF-123-1" + System.lineSeparator() +
+        "    bookingIDs: 2 element(s)" + System.lineSeparator() +
+        "        com.anaptecs.spring.base.BookingID" + System.lineSeparator() +
+        "        referenceID: XXYYZZ" + System.lineSeparator() +
+        "        externalRefID: EXT_#äöß?\"§$§\"$\"%$" + System.lineSeparator() +
+        "        inventory: SNCF" + System.lineSeparator() +
+        "        bookingCode: " + System.lineSeparator() +
+        "            com.anaptecs.spring.base.BookingCode" + System.lineSeparator() +
+        "            code: REFUND_CODE" + System.lineSeparator() +
+        System.lineSeparator() +
+        "        com.anaptecs.spring.base.BookingID" + System.lineSeparator() +
+        "        referenceID: 123456" + System.lineSeparator() +
+        "        externalRefID: EXT-0987654321" + System.lineSeparator() +
+        "        inventory: SBB" + System.lineSeparator() +
+        "        bookingCode: " + System.lineSeparator() +
+        "            com.anaptecs.spring.base.BookingCode" + System.lineSeparator() +
+        "            code: BOOKING_CODE" + System.lineSeparator() +
+        System.lineSeparator() +
+        "    complexBookingType: VERY_COMPLEX" + System.lineSeparator() +
+        "    anotherID: null" + System.lineSeparator() +
+        System.lineSeparator() +
+        "    com.anaptecs.spring.base.ComplexBookingID" + System.lineSeparator() +
+        "    internalID: 123456789" + System.lineSeparator() +
+        "    referenceID: REF-123-2" + System.lineSeparator() +
+        "    bookingIDs: 1 element(s)" + System.lineSeparator() +
+        "        com.anaptecs.spring.base.BookingID" + System.lineSeparator() +
+        "        referenceID: XXYYZZ" + System.lineSeparator() +
+        "        externalRefID: EXT_#äöß?\"§$§\"$\"%$" + System.lineSeparator() +
+        "        inventory: SNCF" + System.lineSeparator() +
+        "        bookingCode: " + System.lineSeparator() +
+        "            com.anaptecs.spring.base.BookingCode" + System.lineSeparator() +
+        "            code: REFUND_CODE" + System.lineSeparator() +
+        System.lineSeparator() +
+        "    complexBookingType: COMPLEX" + System.lineSeparator() +
+        "    anotherID: null" + System.lineSeparator() +
+        System.lineSeparator(), lWeirdBooking.toString());
 
     String lJSON = objectMapper.writeValueAsString(lWeirdBooking);
     assertEquals(

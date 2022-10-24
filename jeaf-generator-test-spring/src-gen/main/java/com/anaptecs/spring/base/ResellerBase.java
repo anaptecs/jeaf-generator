@@ -439,21 +439,47 @@ public abstract class ResellerBase {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("channels: ");
-    // TODO: toString for array
+    if (channels != null) {
+      lBuilder.append(channels.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (channels != null) {
+      for (Channel lNext : channels) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     lBuilder.append(pIndent);
     lBuilder.append("products: ");
-    // TODO: toString for array
+    if (products != null) {
+      lBuilder.append(products.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (products != null) {
+      for (Product lNext : products) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     lBuilder.append(pIndent);
     lBuilder.append("name: ");
     lBuilder.append(name);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("language: ");
     lBuilder.append(language);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

@@ -365,21 +365,43 @@ public class BidirectA {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("transientBs: ");
-    // TODO: toString for array
-    lBuilder.append('\n');
+    if (transientBs != null) {
+      lBuilder.append(transientBs.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (transientBs != null) {
+      for (BidirectB lNext : transientBs) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     lBuilder.append(pIndent);
     lBuilder.append("parent: ");
-    lBuilder.append('\n');
-    lBuilder.append(parent.toStringBuilder(pIndent + "    "));
-    lBuilder.append('\n');
+    if (parent != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(parent.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     lBuilder.append(pIndent);
     lBuilder.append("transientChild: ");
-    lBuilder.append('\n');
-    lBuilder.append(transientChild.toStringBuilder(pIndent + "    "));
-    lBuilder.append('\n');
+    if (transientChild != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(transientChild.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     return lBuilder;
   }
 

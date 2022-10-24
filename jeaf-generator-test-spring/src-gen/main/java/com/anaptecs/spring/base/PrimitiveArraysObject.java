@@ -1701,7 +1701,7 @@ public class PrimitiveArraysObject {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("aBooleanArray: ");
     // TODO: toString for array

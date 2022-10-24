@@ -361,27 +361,39 @@ public class Channel {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("channelType: ");
     lBuilder.append(channelType);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("channelCode: ");
-    lBuilder.append('\n');
-    lBuilder.append(channelCode.toStringBuilder(pIndent + "    "));
+    if (channelCode != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(channelCode.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     lBuilder.append(pIndent);
     lBuilder.append("code: ");
     lBuilder.append(code);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("selfServiceChannel: ");
     lBuilder.append(selfServiceChannel);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("reseller: ");
-    lBuilder.append('\n');
-    lBuilder.append(reseller.toStringBuilder(pIndent + "    "));
+    if (reseller != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(reseller.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     return lBuilder;
   }
 

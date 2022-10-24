@@ -128,7 +128,7 @@ public abstract class ChildA extends ParentClass {
     lBuilder.append(pIndent);
     lBuilder.append("childAAttribute: ");
     lBuilder.append(childAAttribute);
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

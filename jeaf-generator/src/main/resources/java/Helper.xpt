@@ -13,19 +13,19 @@
 	    «IF this.isCompositeDataType()»
             StringBuilder lBuilder = new StringBuilder();
 		    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
-		    lBuilder.append('\n');
+		    lBuilder.append(System.lineSeparator());
 		    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
-		    lBuilder.append('\n');
+		    lBuilder.append(System.lineSeparator());
 		    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "«this.getCompositeDateTypePublicFieldName()»", "" + «this.getCompositeDateTypePublicFieldName()»));
-		    lBuilder.append('\n');
+		    lBuilder.append(System.lineSeparator());
 	    «ELSE»
 		    «IF this.superClass.isEmpty == true»
 	            StringBuilder lBuilder = new StringBuilder();
 			    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
-			    lBuilder.append('\n');
+			    lBuilder.append(System.lineSeparator());
 			    «IF this.getToStringProperties().size > 0»
 				    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
-				    lBuilder.append('\n');
+				    lBuilder.append(System.lineSeparator());
 			    «ENDIF»
 		    «ELSE»
 			    StringBuilder lBuilder = super.toStringBuilder();
@@ -33,7 +33,7 @@
 		    «FOREACH this.getToStringProperties() AS attribute»
 			    «IF attribute.association == null && attribute.isMultivalued() == false»
 			    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "«attribute.name»", "" + «attribute.name»));
-			    lBuilder.append('\n');
+			    lBuilder.append(System.lineSeparator());
 			    «ENDIF»
 		    «ENDFOREACH»
 	    «ENDIF»
@@ -42,42 +42,24 @@
             StringBuilder lBuilder = new StringBuilder();
             lBuilder.append(pIndent);
 		    lBuilder.append(this.getClass().getName());
-		    lBuilder.append('\n');
+		    lBuilder.append(System.lineSeparator());
 		    lBuilder.append(pIndent);
 		    lBuilder.append("«this.getCompositeDateTypePublicFieldName()»: ");
 		    lBuilder.append(«this.getCompositeDateTypePublicFieldName()»);
+		    lBuilder.append(System.lineSeparator());
 	    «ELSE»
 		    «IF this.superClass.isEmpty == true»
 	            StringBuilder lBuilder = new StringBuilder();
 	            lBuilder.append(pIndent);
 			    lBuilder.append(this.getClass().getName());
-			    lBuilder.append('\n');
+			    lBuilder.append(System.lineSeparator());
 		    «ELSE»
 			    StringBuilder lBuilder = super.toStringBuilder(pIndent);
 		    «ENDIF»
 		    «FOREACH this.getToStringProperties() AS attribute»
 				lBuilder.append(pIndent);
 				lBuilder.append("«attribute.name»: ");
-			    «IF attribute.association == null »
-				    «IF attribute.isMultivalued() == false»
-					    lBuilder.append(«attribute.name»);
-					    lBuilder.append('\n');
-				    «ELSE»
-					    // TODO: toString for array
-				    «ENDIF»
-			    «ELSE»
-				    «IF attribute.isMultivalued() == false»
-					    «IF attribute.type.isEnumeration() == false»
-					    lBuilder.append('\n');
-					    lBuilder.append(«attribute.name».toStringBuilder(pIndent + "    "));
-					    «ELSE»
-					    lBuilder.append(«attribute.name»);
-					    lBuilder.append('\n');
-					    «ENDIF»
-				    «ELSE»
-					    // TODO: toString for array
-				    «ENDIF»
-			    «ENDIF»
+			    «EXPAND ToStringValue FOR attribute»
 		    «ENDFOREACH»
 	    «ENDIF»
     «ENDIF»
@@ -97,6 +79,45 @@
 «ENDDEFINE»
 
 «DEFINE ToStringValue FOR uml::Property»
+    «IF association == null »
+	    «IF isMultivalued() == false»
+		    lBuilder.append(«name»);
+		    lBuilder.append(System.lineSeparator());
+	    «ELSE»
+		    // TODO: toString for array
+	    «ENDIF»
+    «ELSE»
+	    «IF isMultivalued() == false»
+		    «IF type.isEnumeration() == false»
+		    if(«name» != null) {
+		    	lBuilder.append(System.lineSeparator());
+		    	lBuilder.append(«name».toStringBuilder(pIndent + "    "));
+		    }
+		    else {
+		    	lBuilder.append(" null");
+		    	lBuilder.append(System.lineSeparator());
+		    }
+		    «ELSE»
+		    lBuilder.append(«name»);
+		    lBuilder.append(System.lineSeparator());
+		    «ENDIF»
+	    «ELSE»
+		    if («name» != null) {
+		      lBuilder.append(«name».size());
+		      lBuilder.append(" element(s)");
+		    }
+		    else {
+		      lBuilder.append(" null");
+		    }
+		    lBuilder.append(System.lineSeparator());
+		    if («name» != null) {
+		      for («type.fqn()» lNext : «name») {
+		        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+		        lBuilder.append(System.lineSeparator());
+		      }
+		    }
+	    «ENDIF»
+    «ENDIF»
 «ENDDEFINE»
 
 
