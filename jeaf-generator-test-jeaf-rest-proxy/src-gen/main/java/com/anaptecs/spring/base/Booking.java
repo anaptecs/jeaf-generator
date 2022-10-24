@@ -32,9 +32,19 @@ public class Booking implements Serializable {
   public static final String BOOKINGID = "bookingID";
 
   /**
+   * Constant for the name of attribute "customerName".
+   */
+  public static final String CUSTOMERNAME = "customerName";
+
+  /**
    * 
    */
   private BookingID bookingID;
+
+  /**
+   * 
+   */
+  private String customerName;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -53,6 +63,7 @@ public class Booking implements Serializable {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     bookingID = pBuilder.bookingID;
+    customerName = pBuilder.customerName;
   }
 
   /**
@@ -85,6 +96,11 @@ public class Booking implements Serializable {
     private BookingID bookingID;
 
     /**
+     * 
+     */
+    private String customerName;
+
+    /**
      * Use {@link Booking#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -97,6 +113,7 @@ public class Booking implements Serializable {
       if (pObject != null) {
         // Read attribute values from passed object.
         bookingID = pObject.bookingID;
+        customerName = pObject.customerName;
       }
     }
 
@@ -107,6 +124,17 @@ public class Booking implements Serializable {
      */
     public Builder setBookingID( BookingID pBookingID ) {
       bookingID = pBookingID;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "customerName".
+     * 
+     * @param pCustomerName Value to which the attribute "customerName" should be set.
+     */
+    public Builder setCustomerName( String pCustomerName ) {
+      // Assign value to attribute
+      customerName = pCustomerName;
       return this;
     }
 
@@ -162,15 +190,41 @@ public class Booking implements Serializable {
   }
 
   /**
+   * Method returns the attribute "customerName".
+   * 
+   * 
+   * @return String Value to which the attribute "customerName" is set.
+   */
+  public String getCustomerName( ) {
+    return customerName;
+  }
+
+  /**
+   * Method sets the attribute "customerName".
+   * 
+   * 
+   * @param pCustomerName Value to which the attribute "customerName" should be set.
+   */
+  public void setCustomerName( String pCustomerName ) {
+    // Assign value to attribute
+    customerName = pCustomerName;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(
+        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "customerName", "" + customerName));
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -182,6 +236,6 @@ public class Booking implements Serializable {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

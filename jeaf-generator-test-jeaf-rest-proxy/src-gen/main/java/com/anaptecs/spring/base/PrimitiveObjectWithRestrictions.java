@@ -1241,60 +1241,60 @@ public class PrimitiveObjectWithRestrictions implements Serializable {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "aBoolean", "" + aBoolean));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "bBoolean", "" + bBoolean));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "cBoolean", "" + cBoolean));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "aByte", "" + aByte));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "bByte", "" + bByte));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "aShort", "" + aShort));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "bShort", "" + bShort));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "aInteger", "" + aInteger));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "bInteger", "" + bInteger));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "cInteger", "" + cInteger));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "aLong", "" + aLong));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "bLong", "" + bLong));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder
         .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "aBigInteger", "" + aBigInteger));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder
         .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "aCharacter", "" + aCharacter));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder
         .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "bCharacter", "" + bCharacter));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "aFloat", "" + aFloat));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "bFloat", "" + bFloat));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "aDouble", "" + aDouble));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "bDouble", "" + bDouble));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder
         .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "aBigDecimal", "" + aBigDecimal));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "aString", "" + aString));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "bString", "" + bString));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -1306,6 +1306,6 @@ public class PrimitiveObjectWithRestrictions implements Serializable {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }

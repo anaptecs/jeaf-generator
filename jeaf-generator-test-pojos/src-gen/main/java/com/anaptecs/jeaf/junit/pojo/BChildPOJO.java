@@ -222,14 +222,14 @@ public class BChildPOJO extends BParentPOJO {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  protected StringBuilder toStringBuilder( ) {
-    StringBuilder lBuilder = super.toStringBuilder();
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
     lBuilder.append(
         XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "weirdAttribute", "" + weirdAttribute));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     lBuilder.append(
         XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "childAttribute", "" + childAttribute));
-    lBuilder.append('\n');
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
@@ -241,6 +241,6 @@ public class BChildPOJO extends BParentPOJO {
    */
   @Override
   public String toString( ) {
-    return this.toStringBuilder().toString();
+    return this.toStringBuilder("").toString();
   }
 }
