@@ -22,8 +22,6 @@ import javax.ws.rs.QueryParam;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
@@ -588,33 +586,48 @@ public class DateQueryParamsBean implements ServiceObject {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
+    lBuilder.append(pIndent);
+    lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append(pIndent);
+    lBuilder.append("offsetDateTime: ");
+    lBuilder.append(offsetDateTime);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "offsetDateTime", "" + offsetDateTime));
+    lBuilder.append(pIndent);
+    lBuilder.append("offsetTime: ");
+    lBuilder.append(offsetTime);
     lBuilder.append(System.lineSeparator());
-    lBuilder
-        .append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "offsetTime", "" + offsetTime));
+    lBuilder.append(pIndent);
+    lBuilder.append("localDateTime: ");
+    lBuilder.append(localDateTime);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "localDateTime", "" + localDateTime));
+    lBuilder.append(pIndent);
+    lBuilder.append("localTime: ");
+    lBuilder.append(localTime);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "localTime", "" + localTime));
+    lBuilder.append(pIndent);
+    lBuilder.append("localDate: ");
+    lBuilder.append(localDate);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "localDate", "" + localDate));
+    lBuilder.append(pIndent);
+    lBuilder.append("utilDate: ");
+    lBuilder.append(utilDate);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "utilDate", "" + utilDate));
+    lBuilder.append(pIndent);
+    lBuilder.append("calendar: ");
+    lBuilder.append(calendar);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "calendar", "" + calendar));
+    lBuilder.append(pIndent);
+    lBuilder.append("sqlTimestamp: ");
+    lBuilder.append(sqlTimestamp);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "sqlTimestamp", "" + sqlTimestamp));
+    lBuilder.append(pIndent);
+    lBuilder.append("sqlTime: ");
+    lBuilder.append(sqlTime);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "sqlTime", "" + sqlTime));
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "sqlDate", "" + sqlDate));
+    lBuilder.append(pIndent);
+    lBuilder.append("sqlDate: ");
+    lBuilder.append(sqlDate);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

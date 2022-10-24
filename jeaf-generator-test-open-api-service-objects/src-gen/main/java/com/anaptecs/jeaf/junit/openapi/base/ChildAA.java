@@ -5,13 +5,13 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Arrays;
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
 /**
  * @author JEAF Generator
@@ -295,8 +295,27 @@ public class ChildAA extends ChildA {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = super.toStringBuilder(pIndent);
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "childAAAttribute",
-        "" + childAAAttribute));
+    lBuilder.append(pIndent);
+    lBuilder.append("childAAAttribute: ");
+    lBuilder.append(childAAAttribute);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("sizedArray: ");
+    if (sizedArray != null) {
+      lBuilder.append(Arrays.toString(sizedArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("requiredArray: ");
+    if (requiredArray != null) {
+      lBuilder.append(Arrays.toString(requiredArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

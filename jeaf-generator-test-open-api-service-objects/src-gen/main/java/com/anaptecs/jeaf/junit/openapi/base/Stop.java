@@ -15,8 +15,6 @@ import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -269,12 +267,29 @@ public class Stop implements ServiceObject {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
+    lBuilder.append(pIndent);
+    lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTES_SECTION));
+    lBuilder.append(pIndent);
+    lBuilder.append("name: ");
+    lBuilder.append(name);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "name", "" + name));
+    lBuilder.append(pIndent);
+    lBuilder.append("links: ");
+    if (links != null) {
+      lBuilder.append(links.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
     lBuilder.append(System.lineSeparator());
+    if (links != null) {
+      for (LinkObject lNext : links) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 

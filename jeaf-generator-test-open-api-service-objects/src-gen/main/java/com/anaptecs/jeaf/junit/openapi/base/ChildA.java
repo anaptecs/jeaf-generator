@@ -9,9 +9,6 @@ import java.util.Set;
 
 import javax.validation.Valid;
 
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
-
 /**
  * single line class comment
  * 
@@ -142,8 +139,9 @@ public abstract class ChildA extends ParentClass {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = super.toStringBuilder(pIndent);
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "childAAttribute", "" + childAAttribute));
+    lBuilder.append(pIndent);
+    lBuilder.append("childAAttribute: ");
+    lBuilder.append(childAAttribute);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

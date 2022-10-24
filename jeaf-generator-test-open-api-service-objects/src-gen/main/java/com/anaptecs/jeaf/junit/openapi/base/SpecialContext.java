@@ -13,8 +13,6 @@ import javax.validation.constraints.NotNull;
 import javax.ws.rs.HeaderParam;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 
 /**
  * @author JEAF Generator
@@ -225,8 +223,9 @@ public class SpecialContext extends Context {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = super.toStringBuilder(pIndent);
-    lBuilder.append(
-        XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_ATTRIBUTE, "specificHeader", "" + specificHeader));
+    lBuilder.append(pIndent);
+    lBuilder.append("specificHeader: ");
+    lBuilder.append(specificHeader);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

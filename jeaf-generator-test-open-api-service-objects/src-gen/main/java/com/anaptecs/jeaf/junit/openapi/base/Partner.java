@@ -15,8 +15,6 @@ import javax.validation.Valid;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
@@ -287,8 +285,25 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
-    lBuilder.append(XFun.getMessageRepository().getMessage(XFunMessages.OBJECT_INFO, this.getClass().getName()));
+    lBuilder.append(pIndent);
+    lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("postalAddresses: ");
+    if (postalAddresses != null) {
+      lBuilder.append(postalAddresses.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (postalAddresses != null) {
+      for (PostalAddress lNext : postalAddresses) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 
