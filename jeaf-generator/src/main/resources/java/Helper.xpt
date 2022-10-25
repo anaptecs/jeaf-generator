@@ -87,7 +87,12 @@
 		    lBuilder.append(System.lineSeparator());
 		    if («name» != null) {
 		      for («type.fqn()» lNext : «name») {
+		      	«IF type.isEnumeration() == false»
 		        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+		        «ELSE»
+		        lBuilder.append(pIndent + "    ");
+		        lBuilder.append(lNext.toString());
+		        «ENDIF»
 		        lBuilder.append(System.lineSeparator());
 		      }
 		    }

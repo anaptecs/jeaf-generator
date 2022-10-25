@@ -47,7 +47,8 @@ public class InternalViewCompositeDataTypeTest {
         "    bookingCode: " + System.lineSeparator() +
         "        com.anaptecs.spring.base.BookingCode" + System.lineSeparator() +
         "        code: BOOKING_CODE" + System.lineSeparator() +
-        "customerName: Daisy Duck" + System.lineSeparator(), lBooking.toString());
+        "customerName: Daisy Duck" + System.lineSeparator() +
+        "inventories: 0 element(s)" + System.lineSeparator(), lBooking.toString());
 
     String lJSON = objectMapper.writeValueAsString(lBooking);
     assertEquals("{\"bookingID\":\"DUJPT0tJTkdfQ09ExUVYVC0wOTg3NjU0MzKxATEyMzQ1tg==\",\"customerName\":\"Daisy Duck\"}",
@@ -63,7 +64,8 @@ public class InternalViewCompositeDataTypeTest {
     XFun.getTrace().info("\n" + lBooking);
     assertEquals("com.anaptecs.spring.base.Booking" + System.lineSeparator() +
         "bookingID:  null" + System.lineSeparator() +
-        "customerName: null" + System.lineSeparator(), lBooking.toString());
+        "customerName: null" + System.lineSeparator() + "inventories: 0 element(s)" + System.lineSeparator(), lBooking
+            .toString());
   }
 
   @Test
