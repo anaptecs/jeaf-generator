@@ -258,6 +258,9 @@ cached boolean isBooleanType(uml::Type type) :
 cached boolean isStringType(uml::Type type) :
   type.fqn() == "java.lang.String" || type.fqn() == "String";
   
+cached boolean isEnumTypeSlot(uml::Slot slot):
+	slot.definingFeature.type.isEnumeration(); 
+	
 cached boolean isStringTypeSlot(uml::Slot slot):
 	slot.definingFeature.type.isStringType(); 
 	

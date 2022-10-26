@@ -47,7 +47,7 @@ public final class «name» {
 	   */
 	  «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
 	  «literal.name»«IF literal.slot.size > 0»( 
-	  	«FOREACH literal.getOrderedSlots() AS slot SEPARATOR ", "»«IF slot.isStringTypeSlot()»"«ENDIF»«slot.value.first().stringValue()»«IF slot.isStringTypeSlot()»"«ENDIF»«IF slot.isFloatTypeSlot()»f«ENDIF»«ENDFOREACH»	  
+	  	«FOREACH literal.getOrderedSlots() AS slot SEPARATOR ", "»«IF slot.isEnumTypeSlot()»«slot.definingFeature.type.fqn()».«ENDIF»«IF slot.isStringTypeSlot()»"«ENDIF»«slot.value.first().stringValue()»«IF slot.isStringTypeSlot()»"«ENDIF»«IF slot.isFloatTypeSlot()»f«ENDIF»«ENDFOREACH»	  
 	  )«ENDIF»,
 	«ENDFOREACH»
 	  /**
@@ -66,7 +66,11 @@ public final class «name» {
 			  «ELSE»«IF attr.type.isBooleanType()»
 			  «attr.name» = false;
 			  «ELSE»
-			  «attr.name» = -1;
+			  	«IF attr.type.isEnumeration()»
+			  		«attr.name» = null;
+			  	«ELSE»
+			  		«attr.name» = -1;
+			  	«ENDIF»
 			  «ENDIF»			  
 			  «ENDIF»
 			  «ENDFOREACH»
