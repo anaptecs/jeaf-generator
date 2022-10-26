@@ -394,26 +394,6 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     lBuilder.append(referenceID);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("bookingIDs: ");
-    if (bookingIDs != null) {
-      lBuilder.append(bookingIDs.size());
-      lBuilder.append(" element(s)");
-    }
-    else {
-      lBuilder.append(" null");
-    }
-    lBuilder.append(System.lineSeparator());
-    if (bookingIDs != null) {
-      for (BookingID lNext : bookingIDs) {
-        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
-        lBuilder.append(System.lineSeparator());
-      }
-    }
-    lBuilder.append(pIndent);
-    lBuilder.append("complexBookingType: ");
-    lBuilder.append(complexBookingType);
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
     lBuilder.append("anotherID: ");
     lBuilder.append(anotherID);
     lBuilder.append(System.lineSeparator());

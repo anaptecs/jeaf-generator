@@ -346,20 +346,6 @@ public class Channel implements ServiceObject {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("channelType: ");
-    lBuilder.append(channelType);
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("channelCode: ");
-    if (channelCode != null) {
-      lBuilder.append(System.lineSeparator());
-      lBuilder.append(channelCode.toStringBuilder(pIndent + "    "));
-    }
-    else {
-      lBuilder.append(" null");
-      lBuilder.append(System.lineSeparator());
-    }
-    lBuilder.append(pIndent);
     lBuilder.append("code: ");
     lBuilder.append(code);
     lBuilder.append(System.lineSeparator());
@@ -367,16 +353,6 @@ public class Channel implements ServiceObject {
     lBuilder.append("selfServiceChannel: ");
     lBuilder.append(selfServiceChannel);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("reseller: ");
-    if (reseller != null) {
-      lBuilder.append(System.lineSeparator());
-      lBuilder.append(reseller.toStringBuilder(pIndent + "    "));
-    }
-    else {
-      lBuilder.append(" null");
-      lBuilder.append(System.lineSeparator());
-    }
     return lBuilder;
   }
 

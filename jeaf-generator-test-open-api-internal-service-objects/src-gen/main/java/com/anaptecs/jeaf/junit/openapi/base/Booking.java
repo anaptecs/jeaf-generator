@@ -166,16 +166,6 @@ public class Booking implements ServiceObject {
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("bookingID: ");
-    if (bookingID != null) {
-      lBuilder.append(System.lineSeparator());
-      lBuilder.append(bookingID.toStringBuilder(pIndent + "    "));
-    }
-    else {
-      lBuilder.append(" null");
-      lBuilder.append(System.lineSeparator());
-    }
     return lBuilder;
   }
 

@@ -316,20 +316,6 @@ public class BookingID implements ServiceObject {
     lBuilder.append("externalRefID: ");
     lBuilder.append(externalRefID);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("inventory: ");
-    lBuilder.append(inventory);
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("bookingCode: ");
-    if (bookingCode != null) {
-      lBuilder.append(System.lineSeparator());
-      lBuilder.append(bookingCode.toStringBuilder(pIndent + "    "));
-    }
-    else {
-      lBuilder.append(" null");
-      lBuilder.append(System.lineSeparator());
-    }
     return lBuilder;
   }
 

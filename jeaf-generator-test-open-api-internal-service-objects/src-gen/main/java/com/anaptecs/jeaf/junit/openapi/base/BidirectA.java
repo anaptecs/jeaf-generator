@@ -383,42 +383,6 @@ public class BidirectA implements ServiceObject {
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("transientBs: ");
-    if (transientBs != null) {
-      lBuilder.append(transientBs.size());
-      lBuilder.append(" element(s)");
-    }
-    else {
-      lBuilder.append(" null");
-    }
-    lBuilder.append(System.lineSeparator());
-    if (transientBs != null) {
-      for (BidirectB lNext : transientBs) {
-        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
-        lBuilder.append(System.lineSeparator());
-      }
-    }
-    lBuilder.append(pIndent);
-    lBuilder.append("parent: ");
-    if (parent != null) {
-      lBuilder.append(System.lineSeparator());
-      lBuilder.append(parent.toStringBuilder(pIndent + "    "));
-    }
-    else {
-      lBuilder.append(" null");
-      lBuilder.append(System.lineSeparator());
-    }
-    lBuilder.append(pIndent);
-    lBuilder.append("transientChild: ");
-    if (transientChild != null) {
-      lBuilder.append(System.lineSeparator());
-      lBuilder.append(transientChild.toStringBuilder(pIndent + "    "));
-    }
-    else {
-      lBuilder.append(" null");
-      lBuilder.append(System.lineSeparator());
-    }
     return lBuilder;
   }
 

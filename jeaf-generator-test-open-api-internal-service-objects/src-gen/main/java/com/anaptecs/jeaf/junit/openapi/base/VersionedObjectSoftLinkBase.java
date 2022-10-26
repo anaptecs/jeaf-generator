@@ -238,14 +238,6 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     lBuilder.append("objectID: ");
     lBuilder.append(objectID);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("dataUnit: ");
-    lBuilder.append(dataUnit);
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("entity: ");
-    lBuilder.append(entity);
-    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

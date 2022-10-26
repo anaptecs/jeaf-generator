@@ -324,42 +324,6 @@ public class WeirdBooking implements ServiceObject {
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("booking: ");
-    if (booking != null) {
-      lBuilder.append(System.lineSeparator());
-      lBuilder.append(booking.toStringBuilder(pIndent + "    "));
-    }
-    else {
-      lBuilder.append(" null");
-      lBuilder.append(System.lineSeparator());
-    }
-    lBuilder.append(pIndent);
-    lBuilder.append("additionalBookings: ");
-    if (additionalBookings != null) {
-      lBuilder.append(additionalBookings.size());
-      lBuilder.append(" element(s)");
-    }
-    else {
-      lBuilder.append(" null");
-    }
-    lBuilder.append(System.lineSeparator());
-    if (additionalBookings != null) {
-      for (ComplexBookingID lNext : additionalBookings) {
-        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
-        lBuilder.append(System.lineSeparator());
-      }
-    }
-    lBuilder.append(pIndent);
-    lBuilder.append("versionedObjectSoftLink: ");
-    if (versionedObjectSoftLink != null) {
-      lBuilder.append(System.lineSeparator());
-      lBuilder.append(versionedObjectSoftLink.toStringBuilder(pIndent + "    "));
-    }
-    else {
-      lBuilder.append(" null");
-      lBuilder.append(System.lineSeparator());
-    }
     return lBuilder;
   }
 

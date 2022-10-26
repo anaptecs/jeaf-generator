@@ -276,22 +276,6 @@ public class ParentClass implements ServiceObject {
     lBuilder.append("parentAttribute: ");
     lBuilder.append(parentAttribute);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("ibans: ");
-    if (ibans != null) {
-      lBuilder.append(ibans.size());
-      lBuilder.append(" element(s)");
-    }
-    else {
-      lBuilder.append(" null");
-    }
-    lBuilder.append(System.lineSeparator());
-    if (ibans != null) {
-      for (IBAN lNext : ibans) {
-        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
-        lBuilder.append(System.lineSeparator());
-      }
-    }
     return lBuilder;
   }
 
