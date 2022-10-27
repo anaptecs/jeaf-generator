@@ -70,7 +70,7 @@
 					 * @param pCompositeTypeConverter {@link CompositeTypeConverter} implementation that should be used to serialize /
 					 * deserialize composite data types.
 					 */
-					public BaseModuleFactory( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pCompositeTypeConverter ) {
+					public «name»( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pCompositeTypeConverter ) {
 					  compositeTypeConverter = pCompositeTypeConverter;
 					}
 				«ENDIF»
