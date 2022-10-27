@@ -151,11 +151,11 @@ public class «name»Resource {
 	  // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the service interface but "only" our REST controller.
 	  «ENDIF»
 	  «FOREACH this.getBeanParams() AS beanParam»
-	  «beanParam.getTypeName()».Builder lBuilder = «beanParam.getTypeName()».builder();
+	  «beanParam.getTypeName()».Builder «beanParam.name.toLocalVar()»Builder = «beanParam.getTypeName()».builder();
 	  «FOREACH beanParam.type.getAllAttributesFromHierarchy() AS attribute»
-	  lBuilder.«attribute.asSetter()»(«attribute.asParameter()»);
+	  «beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.asParameter()»);
 	  «ENDFOREACH»
-	  «beanParam.getTypeName()» «beanParam.name» = lBuilder.build();
+	  «beanParam.getTypeName()» «beanParam.name» = «beanParam.name.toLocalVar()»Builder.build();
 	  «ENDFOREACH»
 	  «IF this.hasDataTypeParameters()»
 	  // Convert basic type parameters into "real" objects.

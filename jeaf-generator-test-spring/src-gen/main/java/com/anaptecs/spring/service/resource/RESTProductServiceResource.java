@@ -105,13 +105,13 @@ public class RESTProductServiceResource {
       @RequestParam(name = "q1", required = true) String pQueryParam ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    Context.Builder lBuilder = Context.builder();
-    lBuilder.setAccessToken(pAccessToken);
-    lBuilder.setLanguage(pLanguage);
-    lBuilder.setResellerID(pResellerID);
-    lBuilder.setPathParam(pPathParam);
-    lBuilder.setQueryParam(pQueryParam);
-    Context pContext = lBuilder.build();
+    Context.Builder lContextBuilder = Context.builder();
+    lContextBuilder.setAccessToken(pAccessToken);
+    lContextBuilder.setLanguage(pLanguage);
+    lContextBuilder.setResellerID(pResellerID);
+    lContextBuilder.setPathParam(pPathParam);
+    lContextBuilder.setQueryParam(pQueryParam);
+    Context pContext = lContextBuilder.build();
     // Delegate request to service.
     return rESTProductService.getSortiment(pContext);
   }
@@ -237,18 +237,18 @@ public class RESTProductServiceResource {
       @RequestParam(name = "sqlDate", required = true) Date pSqlDate ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DateQueryParamsBean.Builder lBuilder = DateQueryParamsBean.builder();
-    lBuilder.setOffsetDateTime(pOffsetDateTime);
-    lBuilder.setOffsetTime(pOffsetTime);
-    lBuilder.setLocalDateTime(pLocalDateTime);
-    lBuilder.setLocalTime(pLocalTime);
-    lBuilder.setLocalDate(pLocalDate);
-    lBuilder.setUtilDate(pUtilDate);
-    lBuilder.setCalendar(pCalendar);
-    lBuilder.setSqlTimestamp(pSqlTimestamp);
-    lBuilder.setSqlTime(pSqlTime);
-    lBuilder.setSqlDate(pSqlDate);
-    DateQueryParamsBean pQueryParams = lBuilder.build();
+    DateQueryParamsBean.Builder lQueryParamsBuilder = DateQueryParamsBean.builder();
+    lQueryParamsBuilder.setOffsetDateTime(pOffsetDateTime);
+    lQueryParamsBuilder.setOffsetTime(pOffsetTime);
+    lQueryParamsBuilder.setLocalDateTime(pLocalDateTime);
+    lQueryParamsBuilder.setLocalTime(pLocalTime);
+    lQueryParamsBuilder.setLocalDate(pLocalDate);
+    lQueryParamsBuilder.setUtilDate(pUtilDate);
+    lQueryParamsBuilder.setCalendar(pCalendar);
+    lQueryParamsBuilder.setSqlTimestamp(pSqlTimestamp);
+    lQueryParamsBuilder.setSqlTime(pSqlTime);
+    lQueryParamsBuilder.setSqlDate(pSqlDate);
+    DateQueryParamsBean pQueryParams = lQueryParamsBuilder.build();
     // Delegate request to service.
     rESTProductService.testDateQueryParamsBean(pPath, pQueryParams);
   }
@@ -290,18 +290,18 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "SQL-Date", required = true) Date pSqlDate ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DateHeaderParamsBean.Builder lBuilder = DateHeaderParamsBean.builder();
-    lBuilder.setOffsetDateTime(pOffsetDateTime);
-    lBuilder.setOffsetTime(pOffsetTime);
-    lBuilder.setLocalDateTime(pLocalDateTime);
-    lBuilder.setLocalTime(pLocalTime);
-    lBuilder.setLocalDate(pLocalDate);
-    lBuilder.setUtilDate(pUtilDate);
-    lBuilder.setCalendar(pCalendar);
-    lBuilder.setSqlTimestamp(pSqlTimestamp);
-    lBuilder.setSqlTime(pSqlTime);
-    lBuilder.setSqlDate(pSqlDate);
-    DateHeaderParamsBean pHeaderParams = lBuilder.build();
+    DateHeaderParamsBean.Builder lHeaderParamsBuilder = DateHeaderParamsBean.builder();
+    lHeaderParamsBuilder.setOffsetDateTime(pOffsetDateTime);
+    lHeaderParamsBuilder.setOffsetTime(pOffsetTime);
+    lHeaderParamsBuilder.setLocalDateTime(pLocalDateTime);
+    lHeaderParamsBuilder.setLocalTime(pLocalTime);
+    lHeaderParamsBuilder.setLocalDate(pLocalDate);
+    lHeaderParamsBuilder.setUtilDate(pUtilDate);
+    lHeaderParamsBuilder.setCalendar(pCalendar);
+    lHeaderParamsBuilder.setSqlTimestamp(pSqlTimestamp);
+    lHeaderParamsBuilder.setSqlTime(pSqlTime);
+    lHeaderParamsBuilder.setSqlDate(pSqlDate);
+    DateHeaderParamsBean pHeaderParams = lHeaderParamsBuilder.build();
     // Delegate request to service.
     rESTProductService.testDateHeaderParamsBean(pPath, pHeaderParams);
   }
@@ -322,15 +322,15 @@ public class RESTProductServiceResource {
       @CookieValue(name = "Channel-Type", required = true) ChannelType pChannelType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    SpecialContext.Builder lBuilder = SpecialContext.builder();
-    lBuilder.setAccessToken(pAccessToken);
-    lBuilder.setLanguage(pLanguage);
-    lBuilder.setResellerID(pResellerID);
-    lBuilder.setPathParam(pPathParam);
-    lBuilder.setQueryParam(pQueryParam);
-    lBuilder.setSpecificHeader(pSpecificHeader);
-    lBuilder.setChannelType(pChannelType);
-    SpecialContext pContext = lBuilder.build();
+    SpecialContext.Builder lContextBuilder = SpecialContext.builder();
+    lContextBuilder.setAccessToken(pAccessToken);
+    lContextBuilder.setLanguage(pLanguage);
+    lContextBuilder.setResellerID(pResellerID);
+    lContextBuilder.setPathParam(pPathParam);
+    lContextBuilder.setQueryParam(pQueryParam);
+    lContextBuilder.setSpecificHeader(pSpecificHeader);
+    lContextBuilder.setChannelType(pChannelType);
+    SpecialContext pContext = lContextBuilder.build();
     // Delegate request to service.
     rESTProductService.testCookieParams(pChannelTypeParam, pContext);
   }
