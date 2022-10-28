@@ -487,41 +487,47 @@ public class GeneratorCommons {
     // Check parameter for null.
     Check.checkInvalidParameterNull(pNamedElement, "pNamedElement");
 
-    // Check if system property is defined.
-    // TODO Move this check to class ResourceAccessProvider.
-    String lPropertyTest = System.getProperty(GENERATOR_WHITELIST_PROPERTY);
+    // Check if element is marked to be ignored
     boolean lIsInWhitelist;
+    if (ClassUtil.isStereotypeApplied(pNamedElement, "Ignore")) {
+      lIsInWhitelist = false;
+    }
+    else {
+      // Check if system property is defined.
+      // TODO Move this check to class ResourceAccessProvider.
+      String lPropertyTest = System.getProperty(GENERATOR_WHITELIST_PROPERTY);
 
-    // Get white list as it is defined as system property
-    if (lPropertyTest != null) {
-      Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-      List<String> lPackageNames =
-          lConfiguration.getConfigurationValueList(GENERATOR_WHITELIST_PROPERTY, false, String.class);
+      // Get white list as it is defined as system property
+      if (lPropertyTest != null) {
+        Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+        List<String> lPackageNames =
+            lConfiguration.getConfigurationValueList(GENERATOR_WHITELIST_PROPERTY, false, String.class);
 
-      // Check if white list is empty. This means that all packages should be generated.
-      if (lPackageNames.size() > 0) {
-        lIsInWhitelist = false;
+        // Check if white list is empty. This means that all packages should be generated.
+        if (lPackageNames.size() > 0) {
+          lIsInWhitelist = false;
 
-        // Get fully qualified name of the passed package.
-        String lPackageName = ClassUtil.getPackageName(pNamedElement.getNearestPackage());
+          // Get fully qualified name of the passed package.
+          String lPackageName = ClassUtil.getPackageName(pNamedElement.getNearestPackage());
 
-        for (String lNextWhitelistEntry : lPackageNames) {
-          // Get next white list entry and check if it matches with the passed package
-          if (lPackageName.startsWith(lNextWhitelistEntry) == true) {
-            // White list entry and package match.
-            lIsInWhitelist = true;
-            break;
+          for (String lNextWhitelistEntry : lPackageNames) {
+            // Get next white list entry and check if it matches with the passed package
+            if (lPackageName.startsWith(lNextWhitelistEntry) == true) {
+              // White list entry and package match.
+              lIsInWhitelist = true;
+              break;
+            }
           }
         }
+        // No entries in white list defined and thus all packages will be accepted.
+        else {
+          lIsInWhitelist = true;
+        }
       }
-      // No entries in white list defined and thus all packages will be accepted.
+      // System property is not defined and thus all packages will be accepted.
       else {
         lIsInWhitelist = true;
       }
-    }
-    // System property is not defined and thus all packages will be accepted.
-    else {
-      lIsInWhitelist = true;
     }
 
     // Return result of white list check.
