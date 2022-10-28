@@ -262,7 +262,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 			«IF headerParam.type.isPrimitiveType() == false»
 			}
 			else {
-			lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", null);
+			lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", (String) null);
 			}
 			«ENDIF»
 		«ENDFOREACH»
@@ -280,7 +280,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 				«IF headerParam.type.isPrimitiveType() == false»
 				}
 				else {
-				lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", null);
+				lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", (String) null);
 				}
 				«ENDIF»
     		«ENDFOREACH»

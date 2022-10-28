@@ -185,14 +185,14 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
         lRequestBuilder.setHeader("token", pContext.getAccessToken());
       }
       else {
-        lRequestBuilder.setHeader("token", null);
+        lRequestBuilder.setHeader("token", (String) null);
       }
       if (pContext.getLanguage() != null) {
         lRequestBuilder.setHeader("lang", XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class)
             .convert(pContext.getLanguage()));
       }
       else {
-        lRequestBuilder.setHeader("lang", null);
+        lRequestBuilder.setHeader("lang", (String) null);
       }
     }
     // Handle cookie parameters
@@ -345,7 +345,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
           XFun.getDatatypeConverterRegistry().getConverter(BigDecimal.class, String.class).convert(pBigDecimalHeader));
     }
     else {
-      lRequestBuilder.setHeader("Big-Header", null);
+      lRequestBuilder.setHeader("Big-Header", (String) null);
     }
     // Handle cookie parameters
     lRequestBuilder.setCookie("giveMeMoreCookies", String.valueOf(pIntCookieParam));
@@ -407,21 +407,21 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
           XFun.getDatatypeConverterRegistry().getConverter(ChannelType.class, String.class).convert(pChannelType));
     }
     else {
-      lRequestBuilder.setHeader("Channel-Type", null);
+      lRequestBuilder.setHeader("Channel-Type", (String) null);
     }
     if (pTimeUnit != null) {
       lRequestBuilder.setHeader("Time-Unit",
           XFun.getDatatypeConverterRegistry().getConverter(TimeUnit.class, String.class).convert(pTimeUnit));
     }
     else {
-      lRequestBuilder.setHeader("Time-Unit", null);
+      lRequestBuilder.setHeader("Time-Unit", (String) null);
     }
     if (pExtensibleEnum != null) {
       lRequestBuilder.setHeader("Extensible-Enum", XFun.getDatatypeConverterRegistry()
           .getConverter(ExtensibleEnum.class, String.class).convert(pExtensibleEnum));
     }
     else {
-      lRequestBuilder.setHeader("Extensible-Enum", null);
+      lRequestBuilder.setHeader("Extensible-Enum", (String) null);
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -591,70 +591,70 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
           .getConverter(OffsetDateTime.class, String.class).convert(pOffsetDateTime));
     }
     else {
-      lRequestBuilder.setHeader("Offset-Date-Time", null);
+      lRequestBuilder.setHeader("Offset-Date-Time", (String) null);
     }
     if (pOffsetTime != null) {
       lRequestBuilder.setHeader("Offset-Time",
           XFun.getDatatypeConverterRegistry().getConverter(OffsetTime.class, String.class).convert(pOffsetTime));
     }
     else {
-      lRequestBuilder.setHeader("Offset-Time", null);
+      lRequestBuilder.setHeader("Offset-Time", (String) null);
     }
     if (pLocalDateTime != null) {
       lRequestBuilder.setHeader("Local-Date-Time",
           XFun.getDatatypeConverterRegistry().getConverter(LocalDateTime.class, String.class).convert(pLocalDateTime));
     }
     else {
-      lRequestBuilder.setHeader("Local-Date-Time", null);
+      lRequestBuilder.setHeader("Local-Date-Time", (String) null);
     }
     if (pLocalTime != null) {
       lRequestBuilder.setHeader("Local-Time",
           XFun.getDatatypeConverterRegistry().getConverter(LocalTime.class, String.class).convert(pLocalTime));
     }
     else {
-      lRequestBuilder.setHeader("Local-Time", null);
+      lRequestBuilder.setHeader("Local-Time", (String) null);
     }
     if (pLocalDate != null) {
       lRequestBuilder.setHeader("Local-Date",
           XFun.getDatatypeConverterRegistry().getConverter(LocalDate.class, String.class).convert(pLocalDate));
     }
     else {
-      lRequestBuilder.setHeader("Local-Date", null);
+      lRequestBuilder.setHeader("Local-Date", (String) null);
     }
     if (pCalendar != null) {
       lRequestBuilder.setHeader("Calendar",
           XFun.getDatatypeConverterRegistry().getConverter(Calendar.class, String.class).convert(pCalendar));
     }
     else {
-      lRequestBuilder.setHeader("Calendar", null);
+      lRequestBuilder.setHeader("Calendar", (String) null);
     }
     if (pUtilDate != null) {
       lRequestBuilder.setHeader("Util-Date",
           XFun.getDatatypeConverterRegistry().getConverter(java.util.Date.class, String.class).convert(pUtilDate));
     }
     else {
-      lRequestBuilder.setHeader("Util-Date", null);
+      lRequestBuilder.setHeader("Util-Date", (String) null);
     }
     if (pSQLTimestamp != null) {
       lRequestBuilder.setHeader("SQL-Timestamp",
           XFun.getDatatypeConverterRegistry().getConverter(Timestamp.class, String.class).convert(pSQLTimestamp));
     }
     else {
-      lRequestBuilder.setHeader("SQL-Timestamp", null);
+      lRequestBuilder.setHeader("SQL-Timestamp", (String) null);
     }
     if (pSQLTime != null) {
       lRequestBuilder.setHeader("SQL-Time",
           XFun.getDatatypeConverterRegistry().getConverter(Time.class, String.class).convert(pSQLTime));
     }
     else {
-      lRequestBuilder.setHeader("SQL-Time", null);
+      lRequestBuilder.setHeader("SQL-Time", (String) null);
     }
     if (pSQLDate != null) {
       lRequestBuilder.setHeader("SQL-Date",
           XFun.getDatatypeConverterRegistry().getConverter(Date.class, String.class).convert(pSQLDate));
     }
     else {
-      lRequestBuilder.setHeader("SQL-Date", null);
+      lRequestBuilder.setHeader("SQL-Date", (String) null);
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -685,70 +685,70 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
             .getConverter(OffsetDateTime.class, String.class).convert(pHeaderParams.getOffsetDateTime()));
       }
       else {
-        lRequestBuilder.setHeader("Offset-Date-Time", null);
+        lRequestBuilder.setHeader("Offset-Date-Time", (String) null);
       }
       if (pHeaderParams.getOffsetTime() != null) {
         lRequestBuilder.setHeader("Offset-Time", XFun.getDatatypeConverterRegistry()
             .getConverter(OffsetTime.class, String.class).convert(pHeaderParams.getOffsetTime()));
       }
       else {
-        lRequestBuilder.setHeader("Offset-Time", null);
+        lRequestBuilder.setHeader("Offset-Time", (String) null);
       }
       if (pHeaderParams.getLocalDateTime() != null) {
         lRequestBuilder.setHeader("Local-Date-Time", XFun.getDatatypeConverterRegistry()
             .getConverter(LocalDateTime.class, String.class).convert(pHeaderParams.getLocalDateTime()));
       }
       else {
-        lRequestBuilder.setHeader("Local-Date-Time", null);
+        lRequestBuilder.setHeader("Local-Date-Time", (String) null);
       }
       if (pHeaderParams.getLocalTime() != null) {
         lRequestBuilder.setHeader("Local-Time", XFun.getDatatypeConverterRegistry()
             .getConverter(LocalTime.class, String.class).convert(pHeaderParams.getLocalTime()));
       }
       else {
-        lRequestBuilder.setHeader("Local-Time", null);
+        lRequestBuilder.setHeader("Local-Time", (String) null);
       }
       if (pHeaderParams.getLocalDate() != null) {
         lRequestBuilder.setHeader("Local-Date", XFun.getDatatypeConverterRegistry()
             .getConverter(LocalDate.class, String.class).convert(pHeaderParams.getLocalDate()));
       }
       else {
-        lRequestBuilder.setHeader("Local-Date", null);
+        lRequestBuilder.setHeader("Local-Date", (String) null);
       }
       if (pHeaderParams.getUtilDate() != null) {
         lRequestBuilder.setHeader("Util-Date", XFun.getDatatypeConverterRegistry()
             .getConverter(java.util.Date.class, String.class).convert(pHeaderParams.getUtilDate()));
       }
       else {
-        lRequestBuilder.setHeader("Util-Date", null);
+        lRequestBuilder.setHeader("Util-Date", (String) null);
       }
       if (pHeaderParams.getCalendar() != null) {
         lRequestBuilder.setHeader("Calendar", XFun.getDatatypeConverterRegistry()
             .getConverter(Calendar.class, String.class).convert(pHeaderParams.getCalendar()));
       }
       else {
-        lRequestBuilder.setHeader("Calendar", null);
+        lRequestBuilder.setHeader("Calendar", (String) null);
       }
       if (pHeaderParams.getSqlTimestamp() != null) {
         lRequestBuilder.setHeader("SQL-Timestamp", XFun.getDatatypeConverterRegistry()
             .getConverter(Timestamp.class, String.class).convert(pHeaderParams.getSqlTimestamp()));
       }
       else {
-        lRequestBuilder.setHeader("SQL-Timestamp", null);
+        lRequestBuilder.setHeader("SQL-Timestamp", (String) null);
       }
       if (pHeaderParams.getSqlTime() != null) {
         lRequestBuilder.setHeader("SQL-Time", XFun.getDatatypeConverterRegistry().getConverter(Time.class, String.class)
             .convert(pHeaderParams.getSqlTime()));
       }
       else {
-        lRequestBuilder.setHeader("SQL-Time", null);
+        lRequestBuilder.setHeader("SQL-Time", (String) null);
       }
       if (pHeaderParams.getSqlDate() != null) {
         lRequestBuilder.setHeader("SQL-Date", XFun.getDatatypeConverterRegistry().getConverter(Date.class, String.class)
             .convert(pHeaderParams.getSqlDate()));
       }
       else {
-        lRequestBuilder.setHeader("SQL-Date", null);
+        lRequestBuilder.setHeader("SQL-Date", (String) null);
       }
     }
     // Execute request.
@@ -784,20 +784,20 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
         lRequestBuilder.setHeader("token", pContext.getAccessToken());
       }
       else {
-        lRequestBuilder.setHeader("token", null);
+        lRequestBuilder.setHeader("token", (String) null);
       }
       if (pContext.getLanguage() != null) {
         lRequestBuilder.setHeader("lang", XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class)
             .convert(pContext.getLanguage()));
       }
       else {
-        lRequestBuilder.setHeader("lang", null);
+        lRequestBuilder.setHeader("lang", (String) null);
       }
       if (pContext.getSpecificHeader() != null) {
         lRequestBuilder.setHeader("specificHeader", pContext.getSpecificHeader());
       }
       else {
-        lRequestBuilder.setHeader("specificHeader", null);
+        lRequestBuilder.setHeader("specificHeader", (String) null);
       }
     }
     // Handle cookie parameters
