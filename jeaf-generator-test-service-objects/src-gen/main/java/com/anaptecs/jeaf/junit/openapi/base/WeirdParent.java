@@ -1,34 +1,25 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
  * 
- * Copyright 2004 - 2021. All rights reserved.
+ * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * @author JEAF Generator
- * @version JEAF Release 1.6.x
+ * @version JEAF Release 1.4.x
  */
-@Valid
-@JsonIgnoreProperties(value = "objectType")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({ @JsonSubTypes.Type(value = WeirdBooking.class, name = "WeirdBooking") })
 public class WeirdParent implements ServiceObject {
   /**
    * Default serial version uid.
@@ -36,21 +27,33 @@ public class WeirdParent implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
+   * Constant for the name of attribute "someProperty".
+   */
+  public static final String SOMEPROPERTY = "someProperty";
+
+  /**
+   * Constant for the name of attribute "complexBooking".
+   */
+  public static final String COMPLEXBOOKING = "complexBooking";
+
+  /**
+   * Constant for the name of attribute "complexBookings".
+   */
+  public static final String COMPLEXBOOKINGS = "complexBookings";
+
+  /**
    * 
    */
-  @NotNull
   private String someProperty;
 
   /**
    * 
    */
-  @NotNull
   private ComplexBookingID complexBooking;
 
   /**
    * 
    */
-  @Size(min = 1)
   private Set<ComplexBookingID> complexBookings;
 
   /**
@@ -253,11 +256,11 @@ public class WeirdParent implements ServiceObject {
    * 
    *
    * @return Collection All ComplexBookingID objects that belong to the association "complexBookings". The method never
-   * returns null and the returned collection is modifiable.
+   * returns null and the returned collection is unmodifiable.
    */
   public Set<ComplexBookingID> getComplexBookings( ) {
-    // Return all ComplexBookingID objects directly without any protection against modification.
-    return complexBookings;
+    // Return all ComplexBookingID objects as unmodifiable collection.
+    return Collections.unmodifiableSet(complexBookings);
   }
 
   /**
@@ -328,32 +331,6 @@ public class WeirdParent implements ServiceObject {
     lBuilder.append("someProperty: ");
     lBuilder.append(someProperty);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("complexBooking: ");
-    if (complexBooking != null) {
-      lBuilder.append(System.lineSeparator());
-      lBuilder.append(complexBooking.toStringBuilder(pIndent + "    "));
-    }
-    else {
-      lBuilder.append(" null");
-      lBuilder.append(System.lineSeparator());
-    }
-    lBuilder.append(pIndent);
-    lBuilder.append("complexBookings: ");
-    if (complexBookings != null) {
-      lBuilder.append(complexBookings.size());
-      lBuilder.append(" element(s)");
-    }
-    else {
-      lBuilder.append(" null");
-    }
-    lBuilder.append(System.lineSeparator());
-    if (complexBookings != null) {
-      for (ComplexBookingID lNext : complexBookings) {
-        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
-        lBuilder.append(System.lineSeparator());
-      }
-    }
     return lBuilder;
   }
 

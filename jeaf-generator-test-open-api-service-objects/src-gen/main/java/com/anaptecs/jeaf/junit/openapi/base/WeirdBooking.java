@@ -8,12 +8,12 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
@@ -22,7 +22,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @version JEAF Release 1.6.x
  */
 @Valid
-public class WeirdBooking implements ServiceObject {
+public class WeirdBooking extends WeirdParent {
   /**
    * Default serial version uid.
    */
@@ -35,7 +35,7 @@ public class WeirdBooking implements ServiceObject {
   private ComplexBookingID booking;
 
   /**
-   * 
+   * additional bookings
    */
   private List<ComplexBookingID> additionalBookings;
 
@@ -44,6 +44,16 @@ public class WeirdBooking implements ServiceObject {
    */
   @NotNull
   private VersionedObjectSoftLink versionedObjectSoftLink;
+
+  /**
+   * 
+   */
+  private int childProperty;
+
+  /**
+   * the real booking
+   */
+  private Booking realBooking;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -59,8 +69,8 @@ public class WeirdBooking implements ServiceObject {
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected WeirdBooking( Builder pBuilder ) {
-    // Ensure that builder is not null.
-    Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+    // Call constructor of super class.
+    super(pBuilder);
     // Read attribute values from builder.
     booking = pBuilder.booking;
     if (pBuilder.additionalBookings != null) {
@@ -70,6 +80,8 @@ public class WeirdBooking implements ServiceObject {
       additionalBookings = new ArrayList<ComplexBookingID>();
     }
     versionedObjectSoftLink = pBuilder.versionedObjectSoftLink;
+    childProperty = pBuilder.childProperty;
+    realBooking = pBuilder.realBooking;
   }
 
   /**
@@ -96,14 +108,14 @@ public class WeirdBooking implements ServiceObject {
    * Class implements builder to create a new instance of class WeirdBooking. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
-  public static class Builder {
+  public static class Builder extends WeirdParent.Builder {
     /**
      * 
      */
     private ComplexBookingID booking;
 
     /**
-     * 
+     * additional bookings
      */
     private List<ComplexBookingID> additionalBookings;
 
@@ -113,21 +125,71 @@ public class WeirdBooking implements ServiceObject {
     private VersionedObjectSoftLink versionedObjectSoftLink;
 
     /**
+     * 
+     */
+    private int childProperty;
+
+    /**
+     * the real booking
+     */
+    private Booking realBooking;
+
+    /**
      * Use {@link WeirdBooking#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
+      super();
     }
 
     /**
      * Use {@link WeirdBooking#builder(WeirdBooking)} instead of private constructor to create new builder.
      */
     protected Builder( WeirdBooking pObject ) {
+      super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
         booking = pObject.booking;
         additionalBookings = pObject.additionalBookings;
         versionedObjectSoftLink = pObject.versionedObjectSoftLink;
+        childProperty = pObject.childProperty;
+        realBooking = pObject.realBooking;
       }
+    }
+
+    /**
+     * Method sets the attribute "someProperty".
+     * 
+     * @param pSomeProperty Value to which the attribute "someProperty" should be set.
+     */
+    @Override
+    public Builder setSomeProperty( String pSomeProperty ) {
+      // Call super class implementation.
+      super.setSomeProperty(pSomeProperty);
+      return this;
+    }
+
+    /**
+     * Method sets the association "complexBooking".
+     * 
+     * @param pComplexBooking ComplexBookingID to which the association "complexBooking" should be set.
+     */
+    @Override
+    public Builder setComplexBooking( ComplexBookingID pComplexBooking ) {
+      // Call super class implementation.
+      super.setComplexBooking(pComplexBooking);
+      return this;
+    }
+
+    /**
+     * Method sets the association "complexBookings".
+     * 
+     * @param pComplexBookings Collection with objects to which the association should be set.
+     */
+    @Override
+    public Builder setComplexBookings( Set<ComplexBookingID> pComplexBookings ) {
+      // Call super class implementation.
+      super.setComplexBookings(pComplexBookings);
+      return this;
     }
 
     /**
@@ -141,7 +203,7 @@ public class WeirdBooking implements ServiceObject {
     }
 
     /**
-     * Method sets the association "additionalBookings".
+     * Method sets the association "additionalBookings". additional bookings
      * 
      * @param pAdditionalBookings Collection with objects to which the association should be set.
      */
@@ -164,6 +226,27 @@ public class WeirdBooking implements ServiceObject {
      */
     public Builder setVersionedObjectSoftLink( VersionedObjectSoftLink pVersionedObjectSoftLink ) {
       versionedObjectSoftLink = pVersionedObjectSoftLink;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "childProperty".
+     * 
+     * @param pChildProperty Value to which the attribute "childProperty" should be set.
+     */
+    public Builder setChildProperty( int pChildProperty ) {
+      // Assign value to attribute
+      childProperty = pChildProperty;
+      return this;
+    }
+
+    /**
+     * Method sets the association "realBooking". the real booking
+     * 
+     * @param pRealBooking Booking to which the association "realBooking" should be set.
+     */
+    public Builder setRealBooking( Booking pRealBooking ) {
+      realBooking = pRealBooking;
       return this;
     }
 
@@ -220,8 +303,7 @@ public class WeirdBooking implements ServiceObject {
   }
 
   /**
-   * Method returns the association "additionalBookings".
-   * 
+   * Method returns the association "additionalBookings". additional bookings
    *
    * @return Collection All ComplexBookingID objects that belong to the association "additionalBookings". The method
    * never returns null and the returned collection is modifiable.
@@ -232,8 +314,7 @@ public class WeirdBooking implements ServiceObject {
   }
 
   /**
-   * Method adds the passed ComplexBookingID object to the association "additionalBookings".
-   * 
+   * Method adds the passed ComplexBookingID object to the association "additionalBookings". additional bookings
    * 
    * @param pAdditionalBookings Object that should be added to the association "additionalBookings". The parameter must
    * not be null.
@@ -246,8 +327,7 @@ public class WeirdBooking implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "additionalBookings".
-   * 
+   * Method adds all passed objects to the association "additionalBookings". additional bookings
    * 
    * @param pAdditionalBookings Collection with all objects that should be added to the association
    * "additionalBookings". The parameter must not be null.
@@ -262,8 +342,7 @@ public class WeirdBooking implements ServiceObject {
   }
 
   /**
-   * Method removes the passed ComplexBookingID object from the association "additionalBookings".
-   * 
+   * Method removes the passed ComplexBookingID object from the association "additionalBookings". additional bookings
    * 
    * @param pAdditionalBookings Object that should be removed from the association "additionalBookings". The parameter
    * must not be null.
@@ -276,8 +355,7 @@ public class WeirdBooking implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "additionalBookings".
-   * 
+   * Method removes all objects from the association "additionalBookings". additional bookings
    */
   public void clearAdditionalBookings( ) {
     // Remove all objects from association "additionalBookings".
@@ -314,16 +392,59 @@ public class WeirdBooking implements ServiceObject {
   }
 
   /**
+   * Method returns the attribute "childProperty".
+   * 
+   * 
+   * @return int Value to which the attribute "childProperty" is set.
+   */
+  public int getChildProperty( ) {
+    return childProperty;
+  }
+
+  /**
+   * Method sets the attribute "childProperty".
+   * 
+   * 
+   * @param pChildProperty Value to which the attribute "childProperty" should be set.
+   */
+  public void setChildProperty( int pChildProperty ) {
+    // Assign value to attribute
+    childProperty = pChildProperty;
+  }
+
+  /**
+   * Method returns the association "realBooking". the real booking
+   *
+   * @return Booking Booking to which the association "realBooking" is set.
+   */
+  public Booking getRealBooking( ) {
+    return realBooking;
+  }
+
+  /**
+   * Method sets the association "realBooking". the real booking
+   * 
+   * @param pRealBooking Booking to which the association "realBooking" should be set.
+   */
+  public void setRealBooking( Booking pRealBooking ) {
+    realBooking = pRealBooking;
+  }
+
+  /**
+   * Method unsets the association "realBooking". the real booking
+   */
+  public final void unsetRealBooking( ) {
+    realBooking = null;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
   public StringBuilder toStringBuilder( String pIndent ) {
-    StringBuilder lBuilder = new StringBuilder();
-    lBuilder.append(pIndent);
-    lBuilder.append(this.getClass().getName());
-    lBuilder.append(System.lineSeparator());
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
     lBuilder.append(pIndent);
     lBuilder.append("booking: ");
     if (booking != null) {
@@ -355,6 +476,20 @@ public class WeirdBooking implements ServiceObject {
     if (versionedObjectSoftLink != null) {
       lBuilder.append(System.lineSeparator());
       lBuilder.append(versionedObjectSoftLink.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("childProperty: ");
+    lBuilder.append(childProperty);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("realBooking: ");
+    if (realBooking != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(realBooking.toStringBuilder(pIndent + "    "));
     }
     else {
       lBuilder.append(" null");

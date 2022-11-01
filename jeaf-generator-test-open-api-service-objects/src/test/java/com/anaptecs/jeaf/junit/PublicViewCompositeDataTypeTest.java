@@ -41,7 +41,7 @@ public class PublicViewCompositeDataTypeTest {
     WeirdBooking lWeirdBooking = WeirdBooking.builder().setBooking(lBookingID).build();
 
     String lJSON = JSON.getJSONTools().writeObjectToString(lWeirdBooking);
-    assertEquals("{\"booking\":\"XYZ-1234567\"}", lJSON);
+    assertEquals("{\"objectType\":\"WeirdBooking\",\"booking\":\"XYZ-1234567\",\"childProperty\":0}", lJSON);
 
     ComplexBookingID lAdditionalBooking1 = ComplexBookingID.builder().setBookingID("ADD-123-1").build();
     lWeirdBooking.addToAdditionalBookings(lAdditionalBooking1);
@@ -49,10 +49,15 @@ public class PublicViewCompositeDataTypeTest {
     lWeirdBooking.addToAdditionalBookings(lAdditionalBooking2);
 
     lJSON = JSON.getJSONTools().writeObjectToString(lWeirdBooking);
-    assertEquals("{\"booking\":\"XYZ-1234567\",\"additionalBookings\":[\"ADD-123-1\",\"ADD-123-2\"]}", lJSON);
+    assertEquals(
+        "{\"objectType\":\"WeirdBooking\",\"booking\":\"XYZ-1234567\",\"additionalBookings\":[\"ADD-123-1\",\"ADD-123-2\"],\"childProperty\":0}",
+        lJSON);
 
     XFun.getTrace().info(lWeirdBooking.toString());
     assertEquals("com.anaptecs.jeaf.junit.openapi.base.WeirdBooking" + System.lineSeparator() +
+        "someProperty: null" + System.lineSeparator() +
+        "complexBooking:  null" + System.lineSeparator() +
+        "complexBookings: 0 element(s)" + System.lineSeparator() +
         "booking: " + System.lineSeparator() +
         "    com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID" + System.lineSeparator() +
         "    bookingID: XYZ-1234567" + System.lineSeparator() +
@@ -63,7 +68,9 @@ public class PublicViewCompositeDataTypeTest {
         "    com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID" + System.lineSeparator() +
         "    bookingID: ADD-123-2" + System.lineSeparator() +
         System.lineSeparator() +
-        "versionedObjectSoftLink:  null" + System.lineSeparator(), lWeirdBooking.toString());
+        "versionedObjectSoftLink:  null" + System.lineSeparator() +
+        "childProperty: 0" + System.lineSeparator() +
+        "realBooking:  null" + System.lineSeparator(), lWeirdBooking.toString());
 
   }
 }
