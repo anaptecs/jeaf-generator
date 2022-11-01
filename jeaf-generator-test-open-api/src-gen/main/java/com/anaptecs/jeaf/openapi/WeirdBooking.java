@@ -14,6 +14,8 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.anaptecs.jeaf.openapi.Booking;
+import com.anaptecs.jeaf.openapi.WeirdParent;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -25,7 +27,7 @@ import java.util.List;
  */
 
 
-public class WeirdBooking {
+public class WeirdBooking extends WeirdParent {
   @JsonProperty("booking")
   private String booking = null;
 
@@ -34,6 +36,12 @@ public class WeirdBooking {
 
   @JsonProperty("versionedObjectSoftLink")
   private String versionedObjectSoftLink = null;
+
+  @JsonProperty("childProperty")
+  private Integer childProperty = null;
+
+  @JsonProperty("realBooking")
+  private Booking realBooking = null;
 
   public WeirdBooking booking(String booking) {
     this.booking = booking;
@@ -97,6 +105,42 @@ public class WeirdBooking {
     this.versionedObjectSoftLink = versionedObjectSoftLink;
   }
 
+  public WeirdBooking childProperty(Integer childProperty) {
+    this.childProperty = childProperty;
+    return this;
+  }
+
+   /**
+   * Get childProperty
+   * @return childProperty
+  **/
+  @Schema(required = true, description = "")
+  public Integer getChildProperty() {
+    return childProperty;
+  }
+
+  public void setChildProperty(Integer childProperty) {
+    this.childProperty = childProperty;
+  }
+
+  public WeirdBooking realBooking(Booking realBooking) {
+    this.realBooking = realBooking;
+    return this;
+  }
+
+   /**
+   * Get realBooking
+   * @return realBooking
+  **/
+  @Schema(description = "")
+  public Booking getRealBooking() {
+    return realBooking;
+  }
+
+  public void setRealBooking(Booking realBooking) {
+    this.realBooking = realBooking;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -109,12 +153,15 @@ public class WeirdBooking {
     WeirdBooking weirdBooking = (WeirdBooking) o;
     return Objects.equals(this.booking, weirdBooking.booking) &&
         Objects.equals(this.additionalBookings, weirdBooking.additionalBookings) &&
-        Objects.equals(this.versionedObjectSoftLink, weirdBooking.versionedObjectSoftLink);
+        Objects.equals(this.versionedObjectSoftLink, weirdBooking.versionedObjectSoftLink) &&
+        Objects.equals(this.childProperty, weirdBooking.childProperty) &&
+        Objects.equals(this.realBooking, weirdBooking.realBooking) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(booking, additionalBookings, versionedObjectSoftLink);
+    return Objects.hash(booking, additionalBookings, versionedObjectSoftLink, childProperty, realBooking, super.hashCode());
   }
 
 
@@ -122,10 +169,12 @@ public class WeirdBooking {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class WeirdBooking {\n");
-    
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    booking: ").append(toIndentedString(booking)).append("\n");
     sb.append("    additionalBookings: ").append(toIndentedString(additionalBookings)).append("\n");
     sb.append("    versionedObjectSoftLink: ").append(toIndentedString(versionedObjectSoftLink)).append("\n");
+    sb.append("    childProperty: ").append(toIndentedString(childProperty)).append("\n");
+    sb.append("    realBooking: ").append(toIndentedString(realBooking)).append("\n");
     sb.append("}");
     return sb.toString();
   }

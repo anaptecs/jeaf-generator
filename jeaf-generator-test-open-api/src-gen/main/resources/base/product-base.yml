@@ -1472,20 +1472,56 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.WeirdBooking
     WeirdBooking:
+      allOf:
+        - $ref: '#/components/schemas/WeirdParent'
+        - type: object
+          additionalProperties: false
+          required:
+            - booking
+            - versionedObjectSoftLink
+            - childProperty
+          properties:
+            booking:
+              type: string
+              nullable: false
+            additionalBookings:
+              type: array
+              items:
+                type: string
+            versionedObjectSoftLink:
+              type: string
+              nullable: false
+            childProperty:
+              type: integer
+              format: int32
+              nullable: false
+            realBooking:
+              $ref: '#/components/schemas/Booking'
+
+    # com.anaptecs.jeaf.junit.openapi.base.WeirdParent
+    WeirdParent:
       type: object
       additionalProperties: false
+      discriminator:
+        propertyName: objectType
       required:
-        - booking
-        - versionedObjectSoftLink
+        - objectType
+        - someProperty
+        - complexBooking
+        - complexBookings
       properties:
-        booking:
+        objectType:
+          description: Attribute is used as discriminator for inheritance between data types.
+          type: string
+        someProperty:
           type: string
           nullable: false
-        additionalBookings:
+        complexBooking:
+          type: string
+          nullable: false
+        complexBookings:
           type: array
           items:
             type: string
-        versionedObjectSoftLink:
-          type: string
           nullable: false
 

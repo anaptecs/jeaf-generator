@@ -153,7 +153,7 @@ components:
           «EXPAND java::OpenAPIType::GenerateOpenAPIType(this) FOR ((OpenAPIType) element)»
         «ELSE-»
           «IF element.isStereotypeApplied("OpenAPIDataType") -»
-            «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null) FOR ((OpenAPIDataType) element)»
+            «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null, "") FOR ((OpenAPIDataType) element)»
           «ELSE-»
 «EXPAND GenerateOpenAPIEnum FOR ((OpenAPIEnumeration) element)»
           «ENDIF-»
@@ -162,7 +162,7 @@ components:
     «ELSE-»
       «EXPAND java::OpenAPIType::GenerateOpenAPIType(this) FOREACH this.getOpenAPITypes().sortBy(e|e.name)»
       «EXPAND GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums().sortBy(e|e.name)»
-      «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null) FOREACH this.getOpenAPIDataTypes().select(e|e.inline == false).sortBy(e|e.name)»
+      «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null, "") FOREACH this.getOpenAPIDataTypes().select(e|e.inline == false).sortBy(e|e.name)»
     «ENDIF-»
   «ENDIF -»
 «ENDIF-»

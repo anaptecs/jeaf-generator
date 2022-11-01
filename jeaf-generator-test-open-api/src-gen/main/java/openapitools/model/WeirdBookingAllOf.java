@@ -20,8 +20,6 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
@@ -29,26 +27,22 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import openapitools.model.Booking;
-import openapitools.model.WeirdBookingAllOf;
-import openapitools.model.WeirdParent;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
 
 /**
- * WeirdBooking
+ * WeirdBookingAllOf
  */
 @JsonPropertyOrder({
-  WeirdBooking.JSON_PROPERTY_BOOKING,
-  WeirdBooking.JSON_PROPERTY_ADDITIONAL_BOOKINGS,
-  WeirdBooking.JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK,
-  WeirdBooking.JSON_PROPERTY_CHILD_PROPERTY,
-  WeirdBooking.JSON_PROPERTY_REAL_BOOKING
+  WeirdBookingAllOf.JSON_PROPERTY_BOOKING,
+  WeirdBookingAllOf.JSON_PROPERTY_ADDITIONAL_BOOKINGS,
+  WeirdBookingAllOf.JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK,
+  WeirdBookingAllOf.JSON_PROPERTY_CHILD_PROPERTY,
+  WeirdBookingAllOf.JSON_PROPERTY_REAL_BOOKING
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
-
-public class WeirdBooking extends WeirdParent {
+public class WeirdBookingAllOf {
   public static final String JSON_PROPERTY_BOOKING = "booking";
   private String booking;
 
@@ -64,10 +58,10 @@ public class WeirdBooking extends WeirdParent {
   public static final String JSON_PROPERTY_REAL_BOOKING = "realBooking";
   private Booking realBooking;
 
-  public WeirdBooking() { 
+  public WeirdBookingAllOf() { 
   }
 
-  public WeirdBooking booking(String booking) {
+  public WeirdBookingAllOf booking(String booking) {
     this.booking = booking;
     return this;
   }
@@ -93,12 +87,12 @@ public class WeirdBooking extends WeirdParent {
   }
 
 
-  public WeirdBooking additionalBookings(List<String> additionalBookings) {
+  public WeirdBookingAllOf additionalBookings(List<String> additionalBookings) {
     this.additionalBookings = additionalBookings;
     return this;
   }
 
-  public WeirdBooking addAdditionalBookingsItem(String additionalBookingsItem) {
+  public WeirdBookingAllOf addAdditionalBookingsItem(String additionalBookingsItem) {
     if (this.additionalBookings == null) {
       this.additionalBookings = new ArrayList<>();
     }
@@ -127,7 +121,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
 
-  public WeirdBooking versionedObjectSoftLink(String versionedObjectSoftLink) {
+  public WeirdBookingAllOf versionedObjectSoftLink(String versionedObjectSoftLink) {
     this.versionedObjectSoftLink = versionedObjectSoftLink;
     return this;
   }
@@ -153,7 +147,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
 
-  public WeirdBooking childProperty(Integer childProperty) {
+  public WeirdBookingAllOf childProperty(Integer childProperty) {
     this.childProperty = childProperty;
     return this;
   }
@@ -179,7 +173,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
 
-  public WeirdBooking realBooking(Booking realBooking) {
+  public WeirdBookingAllOf realBooking(Booking realBooking) {
     this.realBooking = realBooking;
     return this;
   }
@@ -206,7 +200,7 @@ public class WeirdBooking extends WeirdParent {
 
 
   /**
-   * Return true if this WeirdBooking object is equal to o.
+   * Return true if this WeirdBooking_allOf object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -216,25 +210,23 @@ public class WeirdBooking extends WeirdParent {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WeirdBooking weirdBooking = (WeirdBooking) o;
-    return Objects.equals(this.booking, weirdBooking.booking) &&
-        Objects.equals(this.additionalBookings, weirdBooking.additionalBookings) &&
-        Objects.equals(this.versionedObjectSoftLink, weirdBooking.versionedObjectSoftLink) &&
-        Objects.equals(this.childProperty, weirdBooking.childProperty) &&
-        Objects.equals(this.realBooking, weirdBooking.realBooking) &&
-        super.equals(o);
+    WeirdBookingAllOf weirdBookingAllOf = (WeirdBookingAllOf) o;
+    return Objects.equals(this.booking, weirdBookingAllOf.booking) &&
+        Objects.equals(this.additionalBookings, weirdBookingAllOf.additionalBookings) &&
+        Objects.equals(this.versionedObjectSoftLink, weirdBookingAllOf.versionedObjectSoftLink) &&
+        Objects.equals(this.childProperty, weirdBookingAllOf.childProperty) &&
+        Objects.equals(this.realBooking, weirdBookingAllOf.realBooking);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(booking, additionalBookings, versionedObjectSoftLink, childProperty, realBooking, super.hashCode());
+    return Objects.hash(booking, additionalBookings, versionedObjectSoftLink, childProperty, realBooking);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WeirdBooking {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("class WeirdBookingAllOf {\n");
     sb.append("    booking: ").append(toIndentedString(booking)).append("\n");
     sb.append("    additionalBookings: ").append(toIndentedString(additionalBookings)).append("\n");
     sb.append("    versionedObjectSoftLink: ").append(toIndentedString(versionedObjectSoftLink)).append("\n");
@@ -255,11 +247,5 @@ public class WeirdBooking extends WeirdParent {
     return o.toString().replace("\n", "\n    ");
   }
 
-static {
-  // Initialize and register the discriminator mappings.
-  Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("WeirdBooking", WeirdBooking.class);
-  JSON.registerDiscriminator(WeirdBooking.class, "objectType", mappings);
-}
 }
 
