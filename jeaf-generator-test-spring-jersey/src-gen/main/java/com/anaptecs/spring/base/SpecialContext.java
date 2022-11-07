@@ -172,6 +172,18 @@ public class SpecialContext extends Context {
     }
 
     /**
+     * Method sets the attribute "lang".
+     * 
+     * @param pLang Value to which the attribute "lang" should be set.
+     */
+    @Override
+    public Builder setLang( String pLang ) {
+      // Call super class implementation.
+      super.setLang(pLang);
+      return this;
+    }
+
+    /**
      * Method sets the attribute "specificHeader".
      * 
      * @param pSpecificHeader Value to which the attribute "specificHeader" should be set.

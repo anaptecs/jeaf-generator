@@ -5,83 +5,83 @@
 «IMPORT uml»
 «IMPORT JMM»
 
-«DEFINE GenerateOpenAPIDataType(OpenAPI3Specification spec, Property ownerAttribute) FOR OpenAPIDataType -»
+«DEFINE GenerateOpenAPIDataType(OpenAPI3Specification spec, Property ownerAttribute, String indentation) FOR OpenAPIDataType -»
   «LET this.ownedAttribute.get(0) AS attribute -»
     «IF this.inline == true -»
-          «IF attribute.hasComment()-»
-          description: >-
-            «attribute.getCommentForOpenAPIDescription("            ")»
+          «IF ownerAttribute.hasComment()-»
+«indentation»          description: >-
+«indentation»            «ownerAttribute.getCommentForOpenAPIDescription(indentation + "            ")»
           «ENDIF-»
           «IF ownerAttribute.isMultivalued() == false-»
           «IF this.compositeDataType == true -»
-          type: string
+«indentation»          type: string
               «IF ownerAttribute.isDeprecated() -»
-          deprecated: true
+«indentation»          deprecated: true
               «ENDIF-»
           «ELSE-»
-          type: «attribute.type.getOpenAPIType(spec)»
+«indentation»          type: «attribute.type.getOpenAPIType(spec)»
               «IF attribute.hasOpenAPIFormatForProperty()-»
-          format: «attribute.getOpenAPIFormatForProperty()»
+«indentation»          format: «attribute.getOpenAPIFormatForProperty()»
               «ENDIF-»
               «IF attribute.hasPatternForProperty() -»
-          pattern: '«attribute.getPatternForProperty()»'
+«indentation»          pattern: '«attribute.getPatternForProperty()»'
               «ENDIF-»
           «IF attribute.defaultValue != null -»
-          default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
+«indentation»          default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
           «ENDIF-»
           «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»    
               «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
-          deprecated: true
+«indentation»          deprecated: true
               «ENDIF-»
               «IF attribute.hasExample()-»
                 «IF ((Example) attribute).exampleValue.length > 0-»
-          example: «((Example) attribute).exampleValue»
+«indentation»          example: «((Example) attribute).exampleValue»
                 «ENDIF-»
               «ENDIF-»
           «ENDIF-»
           «ELSE-»
-          type: array
-          items:
+«indentation»          type: array
+«indentation»          items:
             «IF this.compositeDataType == true -»
-            type: string
+«indentation»            type: string
                 «IF ownerAttribute.isDeprecated() -»
-            deprecated: true
+«indentation»            deprecated: true
                 «ENDIF-»
             «ELSE-»
-            type: «attribute.type.getOpenAPIType(spec)»
+«indentation»            type: «attribute.type.getOpenAPIType(spec)»
               «IF attribute.hasOpenAPIFormatForProperty()-»
-            format: «attribute.getOpenAPIFormatForProperty()»
+«indentation»            format: «attribute.getOpenAPIFormatForProperty()»
               «ENDIF-»
               «IF attribute.hasPatternForProperty() -»
-            pattern: '«attribute.getPatternForProperty()»'
+«indentation»            pattern: '«attribute.getPatternForProperty()»'
               «ENDIF-»
               «IF attribute.defaultValue != null -»
-            default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
+«indentation»            default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
               «ENDIF-»
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR attribute-»
             «IF attribute.hasExample()-»
               «IF ((Example) attribute).exampleValue.length > 0-»
-            example: «((Example) attribute).exampleValue»
+«indentation»            example: «((Example) attribute).exampleValue»
               «ENDIF-»
             «ENDIF-»
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR ownerAttribute-»
               «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
-            deprecated: true
+«indentation»            deprecated: true
               «ENDIF-»
             «ENDIF-»
           «ENDIF-»
           «IF ownerAttribute.isNullable() == false -»
-          nullable: «ownerAttribute.isNullable()»
+«indentation»          nullable: «ownerAttribute.isNullable()»
           «ENDIF-»  
           «IF ownerAttribute.isReadOnly()  -»
-          readOnly: «ownerAttribute.isReadOnly()»
+«indentation»          readOnly: «ownerAttribute.isReadOnly()»
           «ENDIF-»  
           «IF ownerAttribute.isWriteOnly() -»
-          writeOnly: «ownerAttribute.isWriteOnly()»
+«indentation»          writeOnly: «ownerAttribute.isWriteOnly()»
           «ENDIF-»  
             «IF ownerAttribute.hasExample()-»
               «IF ((Example) ownerAttribute).exampleValue.length > 0-»
-          example: «((Example) ownerAttribute).exampleValue»
+«indentation»          example: «((Example) ownerAttribute).exampleValue»
               «ENDIF-»
             «ENDIF-»
     «ELSE-»
@@ -386,6 +386,9 @@
 				        «ENDIF»
 				        «IF attr.type.isDoubleType()»
 				        return «this.fqn()».builder().«attr.asSetter()»(lNode.asDouble()).build();
+				        «ENDIF»
+				        «IF attr.type.isBigType()»
+				        return «this.fqn()».builder().«attr.asSetter()»(new «attr.type.fqn()»(lNode.asDouble())).build();
 				        «ENDIF»
 				    «ENDLET»
 		    	«ENDIF»

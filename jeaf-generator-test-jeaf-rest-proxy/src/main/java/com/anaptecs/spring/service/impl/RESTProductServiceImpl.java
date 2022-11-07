@@ -216,4 +216,9 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
   public void testCookieParams( ChannelType pChannelType, SpecialContext pContext ) {
     proxy.testCookieParams(pChannelType, pContext);
   }
+
+  @Override
+  public String testOptionalQueryParams( String pQuery1, int pQuery2 ) {
+    return null;
+  }
 }

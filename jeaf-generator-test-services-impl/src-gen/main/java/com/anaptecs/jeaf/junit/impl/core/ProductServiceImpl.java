@@ -369,4 +369,16 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   @Override
   public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
   }
+
+  /**
+   * 
+   * @param query1
+   * @param query2
+   * @return {@link String}
+   */
+  @Override
+  public String testOptionalQueryParams( String query1, int query2 ) {
+    // TODO Implement method and return real result
+    return null;
+  }
 }

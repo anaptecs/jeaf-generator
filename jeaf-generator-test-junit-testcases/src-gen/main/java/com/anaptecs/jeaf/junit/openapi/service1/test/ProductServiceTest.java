@@ -42,6 +42,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testCreateChannelCodeFromObject"));
     lSuite.addTest(new ProductServiceTest("testTestCodeTypeUsage"));
     lSuite.addTest(new ProductServiceTest("testTestDateQueryParams"));
+    lSuite.addTest(new ProductServiceTest("testTestOptionalQueryParams"));
     lSuite.addTest(new ProductServiceTest("testGetDefaultChannel"));
     lSuite.addTest(new ProductServiceTest("testAddCurrencies"));
     lSuite.addTest(new ProductServiceTest("testGetSortiment"));
@@ -303,6 +304,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testTestDateQueryParams( ) throws Exception {
     // TODO Implement test for service method testDateQueryParams(...)
+  }
+
+  /**
+   * Method test the implementation of service method testOptionalQueryParams
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestOptionalQueryParams( ) throws Exception {
+    // TODO Implement test for service method testOptionalQueryParams(...)
   }
 
   /**

@@ -892,12 +892,12 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Disable immutability for binary arrays:           " + disableImmutabilityOfBinaryData);
     }
 
-    if (enableDetailedToStringMethod) {
-      lLog.info("Enable legacy builder style:                      " + enableDetailedToStringMethod);
+    if (enableLegacyBuilderStyle) {
+      lLog.info("Enable legacy builder style:                      " + enableLegacyBuilderStyle);
     }
 
-    if (enableLegacyBuilderStyle) {
-      lLog.info("Enable detailed toString():                       " + enableLegacyBuilderStyle);
+    if (enableDetailedToStringMethod) {
+      lLog.info("Enable detailed toString():                       " + enableDetailedToStringMethod);
     }
 
     lLog.info(" ");

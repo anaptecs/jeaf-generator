@@ -97,11 +97,11 @@ public class Channel {
   }
 
    /**
-   * Get channelCode
+   * The business code of the channel
    * @return channelCode
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "MOBILE_APP", required = true, value = "")
+  @ApiModelProperty(example = "MOBILE_APP", required = true, value = "The business code of the channel")
   @JsonProperty(JSON_PROPERTY_CHANNEL_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

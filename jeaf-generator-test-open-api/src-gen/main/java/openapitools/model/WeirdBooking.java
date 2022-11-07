@@ -20,12 +20,17 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import openapitools.model.Booking;
+import openapitools.model.WeirdBookingAllOf;
+import openapitools.model.WeirdParent;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -36,10 +41,14 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   WeirdBooking.JSON_PROPERTY_BOOKING,
   WeirdBooking.JSON_PROPERTY_ADDITIONAL_BOOKINGS,
-  WeirdBooking.JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK
+  WeirdBooking.JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK,
+  WeirdBooking.JSON_PROPERTY_CHILD_PROPERTY,
+  WeirdBooking.JSON_PROPERTY_REAL_BOOKING
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class WeirdBooking {
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
+
+public class WeirdBooking extends WeirdParent {
   public static final String JSON_PROPERTY_BOOKING = "booking";
   private String booking;
 
@@ -48,6 +57,12 @@ public class WeirdBooking {
 
   public static final String JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK = "versionedObjectSoftLink";
   private String versionedObjectSoftLink;
+
+  public static final String JSON_PROPERTY_CHILD_PROPERTY = "childProperty";
+  private Integer childProperty;
+
+  public static final String JSON_PROPERTY_REAL_BOOKING = "realBooking";
+  private Booking realBooking;
 
   public WeirdBooking() { 
   }
@@ -92,11 +107,11 @@ public class WeirdBooking {
   }
 
    /**
-   * Get additionalBookings
+   * additional bookings
    * @return additionalBookings
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "additional bookings")
   @JsonProperty(JSON_PROPERTY_ADDITIONAL_BOOKINGS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -118,11 +133,11 @@ public class WeirdBooking {
   }
 
    /**
-   * Get versionedObjectSoftLink
+   * soft link 2nd line 3rd line
    * @return versionedObjectSoftLink
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "soft link 2nd line 3rd line")
   @JsonProperty(JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -135,6 +150,58 @@ public class WeirdBooking {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setVersionedObjectSoftLink(String versionedObjectSoftLink) {
     this.versionedObjectSoftLink = versionedObjectSoftLink;
+  }
+
+
+  public WeirdBooking childProperty(Integer childProperty) {
+    this.childProperty = childProperty;
+    return this;
+  }
+
+   /**
+   * Get childProperty
+   * @return childProperty
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_CHILD_PROPERTY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Integer getChildProperty() {
+    return childProperty;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CHILD_PROPERTY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setChildProperty(Integer childProperty) {
+    this.childProperty = childProperty;
+  }
+
+
+  public WeirdBooking realBooking(Booking realBooking) {
+    this.realBooking = realBooking;
+    return this;
+  }
+
+   /**
+   * Get realBooking
+   * @return realBooking
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_REAL_BOOKING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Booking getRealBooking() {
+    return realBooking;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_REAL_BOOKING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRealBooking(Booking realBooking) {
+    this.realBooking = realBooking;
   }
 
 
@@ -152,21 +219,27 @@ public class WeirdBooking {
     WeirdBooking weirdBooking = (WeirdBooking) o;
     return Objects.equals(this.booking, weirdBooking.booking) &&
         Objects.equals(this.additionalBookings, weirdBooking.additionalBookings) &&
-        Objects.equals(this.versionedObjectSoftLink, weirdBooking.versionedObjectSoftLink);
+        Objects.equals(this.versionedObjectSoftLink, weirdBooking.versionedObjectSoftLink) &&
+        Objects.equals(this.childProperty, weirdBooking.childProperty) &&
+        Objects.equals(this.realBooking, weirdBooking.realBooking) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(booking, additionalBookings, versionedObjectSoftLink);
+    return Objects.hash(booking, additionalBookings, versionedObjectSoftLink, childProperty, realBooking, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class WeirdBooking {\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    booking: ").append(toIndentedString(booking)).append("\n");
     sb.append("    additionalBookings: ").append(toIndentedString(additionalBookings)).append("\n");
     sb.append("    versionedObjectSoftLink: ").append(toIndentedString(versionedObjectSoftLink)).append("\n");
+    sb.append("    childProperty: ").append(toIndentedString(childProperty)).append("\n");
+    sb.append("    realBooking: ").append(toIndentedString(realBooking)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -182,5 +255,11 @@ public class WeirdBooking {
     return o.toString().replace("\n", "\n    ");
   }
 
+static {
+  // Initialize and register the discriminator mappings.
+  Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
+  mappings.put("WeirdBooking", WeirdBooking.class);
+  JSON.registerDiscriminator(WeirdBooking.class, "objectType", mappings);
+}
 }
 

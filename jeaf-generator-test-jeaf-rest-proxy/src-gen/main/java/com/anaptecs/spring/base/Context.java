@@ -54,6 +54,11 @@ public class Context implements Serializable {
   public static final String QUERYPARAM = "queryParam";
 
   /**
+   * Constant for the name of attribute "lang".
+   */
+  public static final String LANG = "lang";
+
+  /**
    * 
    */
   @HeaderParam("token")
@@ -86,6 +91,11 @@ public class Context implements Serializable {
   private String queryParam;
 
   /**
+   * 
+   */
+  private String lang;
+
+  /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
@@ -106,6 +116,7 @@ public class Context implements Serializable {
     resellerID = pBuilder.resellerID;
     pathParam = pBuilder.pathParam;
     queryParam = pBuilder.queryParam;
+    lang = pBuilder.lang;
   }
 
   /**
@@ -159,6 +170,11 @@ public class Context implements Serializable {
     private String queryParam;
 
     /**
+     * 
+     */
+    private String lang;
+
+    /**
      * Use {@link Context#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -175,6 +191,7 @@ public class Context implements Serializable {
         resellerID = pObject.resellerID;
         pathParam = pObject.pathParam;
         queryParam = pObject.queryParam;
+        lang = pObject.lang;
       }
     }
 
@@ -230,6 +247,17 @@ public class Context implements Serializable {
     public Builder setQueryParam( String pQueryParam ) {
       // Assign value to attribute
       queryParam = pQueryParam;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "lang".
+     * 
+     * @param pLang Value to which the attribute "lang" should be set.
+     */
+    public Builder setLang( String pLang ) {
+      // Assign value to attribute
+      lang = pLang;
       return this;
     }
 
@@ -362,6 +390,27 @@ public class Context implements Serializable {
   }
 
   /**
+   * Method returns the attribute "lang".
+   * 
+   * 
+   * @return String Value to which the attribute "lang" is set.
+   */
+  public String getLang( ) {
+    return lang;
+  }
+
+  /**
+   * Method sets the attribute "lang".
+   * 
+   * 
+   * @param pLang Value to which the attribute "lang" should be set.
+   */
+  public void setLang( String pLang ) {
+    // Assign value to attribute
+    lang = pLang;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -391,6 +440,10 @@ public class Context implements Serializable {
     lBuilder.append(pIndent);
     lBuilder.append("queryParam: ");
     lBuilder.append(queryParam);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("lang: ");
+    lBuilder.append(lang);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

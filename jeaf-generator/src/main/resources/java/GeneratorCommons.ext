@@ -327,6 +327,9 @@ cached boolean isFloatType(uml::Type type) :
 cached boolean isDoubleType(uml::Type type) :
   type.fqn() == "java.lang.Double" || type.fqn() == "Double" || type.fqn() == "double"; 
 
+cached boolean isBigType(uml::Type type) :
+  type.fqn() == "java.math.BigDecimal" || type.fqn() == "java.math.BigInteger"; 
+
 cached boolean isEnumeration(uml::Element element):
   JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isEnumeration(org.eclipse.uml2.uml.Element);  
 
@@ -407,3 +410,8 @@ String getErrorMessage(uml::NamedElement element, String errorCode, List[String]
 String getMessage(uml::NamedElement element, String errorCode, List[String] params):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getMessage(org.eclipse.uml2.uml.NamedElement, java.lang.String, java.util.List);
  
+ 
+String toLocalVar(String name) :
+ 	if( name.startsWith("p"))
+ 	then name.replaceFirst("p", "l")
+ 	else "l" + name.toFirstUpper();

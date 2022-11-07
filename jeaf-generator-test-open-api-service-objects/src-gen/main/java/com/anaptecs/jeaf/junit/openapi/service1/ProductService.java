@@ -247,4 +247,12 @@ public interface ProductService extends Service {
    * @param pQueryParams
    */
   void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams );
+
+  /**
+   * 
+   * @param query1
+   * @param query2
+   * @return {@link String}
+   */
+  String testOptionalQueryParams( String query1, int query2 );
 }

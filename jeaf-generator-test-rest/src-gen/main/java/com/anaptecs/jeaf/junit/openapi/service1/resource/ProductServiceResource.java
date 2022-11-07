@@ -463,6 +463,19 @@ public class ProductServiceResource {
   }
 
   /**
+   * {@link ProductService#testOptionalQueryParams()}
+   */
+  @Path("test-optional-query-params")
+  @GET
+  public Response testOptionalQueryParams( @QueryParam("query1") @DefaultValue("Just a default value") String query1,
+      @QueryParam("query2") int query2 ) {
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    String lResult = lService.testOptionalQueryParams(query1, query2);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
    * Method returns reference to service to which all REST requests will be delegated.
    *
    * @return ProductService Service instance to which all requests will be delegated.

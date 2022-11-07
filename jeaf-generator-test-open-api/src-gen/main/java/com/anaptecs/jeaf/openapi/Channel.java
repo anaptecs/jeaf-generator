@@ -61,10 +61,10 @@ public class Channel {
   }
 
    /**
-   * Get channelCode
+   * The business code of the channel
    * @return channelCode
   **/
-  @Schema(example = "MOBILE_APP", required = true, description = "")
+  @Schema(example = "MOBILE_APP", required = true, description = "The business code of the channel")
   public String getChannelCode() {
     return channelCode;
   }

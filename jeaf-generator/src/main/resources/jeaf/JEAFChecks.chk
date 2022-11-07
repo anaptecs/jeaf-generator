@@ -66,3 +66,6 @@ context QueryObject if runChecks("QueryObject") WARNING this.getWarningMessage("
 
 // Checks for stereotype JEAFActivity
 context JEAFActivity if runChecks("JEAFActivity") ERROR this.getWarningMessage("9131", {name, this.getReturnParameterCount().toString()}): this.getReturnParameterCount()  == 1;
+
+// Checks for stereotype Ignore
+context Ignore if runChecks() WARNING this.getWarningMessage("9152", {name}): false;

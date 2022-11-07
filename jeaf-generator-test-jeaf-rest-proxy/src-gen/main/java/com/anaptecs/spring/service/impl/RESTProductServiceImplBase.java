@@ -62,6 +62,9 @@ abstract class RESTProductServiceImplBase implements RESTProductService, Service
 
   public static final String TESTINIT_AUTH_TYPE = "testInit.com.anaptecs.spring.service.RESTProductService";
 
+  public static final String TESTOPTIONALQUERYPARAMS_AUTH_TYPE =
+      "testOptionalQueryParams.com.anaptecs.spring.service.RESTProductService";
+
   public static final String TESTPARAMS_AUTH_TYPE = "testParams.com.anaptecs.spring.service.RESTProductService";
 
   /**

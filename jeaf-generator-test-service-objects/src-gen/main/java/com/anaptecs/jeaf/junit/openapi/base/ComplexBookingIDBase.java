@@ -52,7 +52,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   public static final String ANOTHERID = "anotherID";
 
   /**
-   * 
+   * Internal ID 2nd line 3rd line
    */
   private long internalID;
 
@@ -111,7 +111,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
    */
   public static abstract class BuilderBase {
     /**
-     * 
+     * Internal ID 2nd line 3rd line
      */
     private long internalID;
 
@@ -156,7 +156,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "internalID".
+     * Method sets the attribute "internalID". Internal ID 2nd line 3rd line
      * 
      * @param pInternalID Value to which the attribute "internalID" should be set.
      */
@@ -239,8 +239,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "internalID".
-   * 
+   * Method returns the attribute "internalID". Internal ID 2nd line 3rd line
    * 
    * @return long Value to which the attribute "internalID" is set.
    */
@@ -249,8 +248,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "internalID".
-   * 
+   * Method sets the attribute "internalID". Internal ID 2nd line 3rd line
    * 
    * @param pInternalID Value to which the attribute "internalID" should be set.
    */
