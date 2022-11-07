@@ -8,9 +8,9 @@
 «DEFINE GenerateOpenAPIDataType(OpenAPI3Specification spec, Property ownerAttribute, String indentation) FOR OpenAPIDataType -»
   «LET this.ownedAttribute.get(0) AS attribute -»
     «IF this.inline == true -»
-          «IF attribute.hasComment()-»
-          description: >-
-            «attribute.getCommentForOpenAPIDescription("            ")»
+          «IF ownerAttribute.hasComment()-»
+«indentation»          description: >-
+«indentation»            «ownerAttribute.getCommentForOpenAPIDescription(indentation + "            ")»
           «ENDIF-»
           «IF ownerAttribute.isMultivalued() == false-»
           «IF this.compositeDataType == true -»

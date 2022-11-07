@@ -37,7 +37,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   public static final String ENTITY = "entity";
 
   /**
-   * 
+   * Internal ID of a versioned object
    */
   private final long objectID;
 
@@ -79,7 +79,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
    */
   public static abstract class BuilderBase {
     /**
-     * 
+     * Internal ID of a versioned object
      */
     private long objectID;
 
@@ -113,7 +113,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "objectID".
+     * Method sets the attribute "objectID". Internal ID of a versioned object
      * 
      * @param pObjectID Value to which the attribute "objectID" should be set.
      */
@@ -168,8 +168,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "objectID".
-   * 
+   * Method returns the attribute "objectID". Internal ID of a versioned object
    * 
    * @return long Value to which the attribute "objectID" is set.
    */

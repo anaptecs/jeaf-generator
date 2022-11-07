@@ -62,7 +62,7 @@ public class WeirdBooking extends WeirdParent {
   private List<ComplexBookingID> additionalBookings;
 
   /**
-   * 
+   * soft link 2nd line 3rd line
    */
   private VersionedObjectSoftLink versionedObjectSoftLink;
 
@@ -141,7 +141,7 @@ public class WeirdBooking extends WeirdParent {
     private List<ComplexBookingID> additionalBookings;
 
     /**
-     * 
+     * soft link 2nd line 3rd line
      */
     private VersionedObjectSoftLink versionedObjectSoftLink;
 
@@ -240,7 +240,7 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "versionedObjectSoftLink".
+     * Method sets the association "versionedObjectSoftLink". soft link 2nd line 3rd line
      * 
      * @param pVersionedObjectSoftLink VersionedObjectSoftLink to which the association "versionedObjectSoftLink" should
      * be set.
@@ -384,8 +384,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method returns the association "versionedObjectSoftLink".
-   * 
+   * Method returns the association "versionedObjectSoftLink". soft link 2nd line 3rd line
    *
    * @return VersionedObjectSoftLink VersionedObjectSoftLink to which the association "versionedObjectSoftLink" is set.
    */
@@ -394,8 +393,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method sets the association "versionedObjectSoftLink".
-   * 
+   * Method sets the association "versionedObjectSoftLink". soft link 2nd line 3rd line
    * 
    * @param pVersionedObjectSoftLink VersionedObjectSoftLink to which the association "versionedObjectSoftLink" should
    * be set.
@@ -405,8 +403,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method unsets the association "versionedObjectSoftLink".
-   * 
+   * Method unsets the association "versionedObjectSoftLink". soft link 2nd line 3rd line
    */
   public final void unsetVersionedObjectSoftLink( ) {
     versionedObjectSoftLink = null;

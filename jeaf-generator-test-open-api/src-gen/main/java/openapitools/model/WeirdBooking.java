@@ -107,11 +107,11 @@ public class WeirdBooking extends WeirdParent {
   }
 
    /**
-   * Get additionalBookings
+   * additional bookings
    * @return additionalBookings
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "additional bookings")
   @JsonProperty(JSON_PROPERTY_ADDITIONAL_BOOKINGS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -133,11 +133,11 @@ public class WeirdBooking extends WeirdParent {
   }
 
    /**
-   * Get versionedObjectSoftLink
+   * soft link 2nd line 3rd line
    * @return versionedObjectSoftLink
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "soft link 2nd line 3rd line")
   @JsonProperty(JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

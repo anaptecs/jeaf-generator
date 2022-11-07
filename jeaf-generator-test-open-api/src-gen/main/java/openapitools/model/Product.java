@@ -226,11 +226,11 @@ public class Product {
   }
 
    /**
-   * ISO 4217 currency code.
+   * Get supportedCurrencies
    * @return supportedCurrencies
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "ISO 4217 currency code.")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_SUPPORTED_CURRENCIES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

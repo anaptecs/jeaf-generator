@@ -232,6 +232,8 @@ components:
         channelType:
           $ref: '#/components/schemas/ChannelType'
         channelCode:
+          description: >-
+            The business code of the channel
           type: string
           default: 'WEBSHOP'
           example: MOBILE_APP
@@ -600,8 +602,6 @@ components:
           nullable: false
           readOnly: true
         currencyCode:
-          description: >-
-            ISO 4217 currency code.
           type: string
           default: 'CHF'
           minLength: 3
@@ -1316,8 +1316,6 @@ components:
           nullable: false
           readOnly: true
         supportedCurrencies:
-          description: >-
-            ISO 4217 currency code.
           type: array
           items:
             type: string
@@ -1485,10 +1483,16 @@ components:
               type: string
               nullable: false
             additionalBookings:
+              description: >-
+                additional bookings
               type: array
               items:
                 type: string
             versionedObjectSoftLink:
+              description: >-
+                soft link
+                2nd line
+                3rd line
               type: string
               nullable: false
             childProperty:

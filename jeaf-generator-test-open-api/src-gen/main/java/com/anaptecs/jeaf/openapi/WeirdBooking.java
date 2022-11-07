@@ -75,10 +75,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
    /**
-   * Get additionalBookings
+   * additional bookings
    * @return additionalBookings
   **/
-  @Schema(description = "")
+  @Schema(description = "additional bookings")
   public List<String> getAdditionalBookings() {
     return additionalBookings;
   }
@@ -93,10 +93,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
    /**
-   * Get versionedObjectSoftLink
+   * soft link 2nd line 3rd line
    * @return versionedObjectSoftLink
   **/
-  @Schema(required = true, description = "")
+  @Schema(required = true, description = "soft link 2nd line 3rd line")
   public String getVersionedObjectSoftLink() {
     return versionedObjectSoftLink;
   }
