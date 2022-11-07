@@ -783,4 +783,31 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 200);
   }
+
+  /**
+   * 
+   * @param query1
+   * @param query2
+   * @return {@link String}
+   */
+  @Override
+  public String testOptionalQueryParams( String query1, int query2 ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("test-optional-query-params");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (query1 != null) {
+      lRequestBuilder.addQueryParam("query1", query1);
+    }
+    lRequestBuilder.addQueryParam("query2", String.valueOf(query2));
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
 }

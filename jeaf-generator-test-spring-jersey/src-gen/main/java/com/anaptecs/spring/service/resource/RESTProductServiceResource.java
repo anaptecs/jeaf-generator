@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.CookieParam;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.HEAD;
 import javax.ws.rs.HeaderParam;
@@ -318,5 +319,17 @@ public class RESTProductServiceResource {
     // Delegate request to service.
     rESTProductService.testCookieParams(pChannelTypeParam, pContext);
     return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link RESTProductService#testOptionalQueryParams()}
+   */
+  @Path("test-optional-query-params")
+  @GET
+  public Response testOptionalQueryParams( @QueryParam("query1") @DefaultValue("Just a default value") String query1,
+      @QueryParam("query2") int query2 ) {
+    // Delegate request to service.
+    String lResult = rESTProductService.testOptionalQueryParams(query1, query2);
+    return Response.status(Response.Status.OK).entity(lResult).build();
   }
 }

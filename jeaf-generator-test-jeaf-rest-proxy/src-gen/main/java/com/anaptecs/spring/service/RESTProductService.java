@@ -179,4 +179,12 @@ public interface RESTProductService extends Service {
    * @param pContext
    */
   void testCookieParams( ChannelType pChannelTypeParam, SpecialContext pContext );
+
+  /**
+   * 
+   * @param query1
+   * @param query2
+   * @return {@link String}
+   */
+  String testOptionalQueryParams( String query1, int query2 );
 }

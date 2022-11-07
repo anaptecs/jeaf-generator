@@ -336,4 +336,15 @@ public class RESTProductServiceResource {
     // Delegate request to service.
     rESTProductService.testCookieParams(pChannelTypeParam, pContext);
   }
+
+  /**
+   * {@link RESTProductService#testOptionalQueryParams()}
+   */
+  @RequestMapping(path = "test-optional-query-params", method = { RequestMethod.GET })
+  public String testOptionalQueryParams(
+      @RequestParam(name = "query1", required = false, defaultValue = "Just a default value") String query1,
+      @RequestParam(name = "query2", required = true) int query2 ) {
+    // Delegate request to service.
+    return rESTProductService.testOptionalQueryParams(query1, query2);
+  }
 }

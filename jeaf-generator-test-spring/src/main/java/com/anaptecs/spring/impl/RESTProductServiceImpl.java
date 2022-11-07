@@ -118,4 +118,9 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public void testCookieParams( ChannelType pChannelType, SpecialContext pContext ) {
   }
+
+  @Override
+  public String testOptionalQueryParams( String pQuery1, int pQuery2 ) {
+    return null;
+  }
 }
