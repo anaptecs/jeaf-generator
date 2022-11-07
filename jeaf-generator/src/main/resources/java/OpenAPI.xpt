@@ -304,7 +304,7 @@ components:
         «ENDIF-»
         «ENDFOREACH-»
         «ENDFOREACH-»
-        «REM»Process normal paramaters«ENDREM-»
+        «REM»Process normal parameters«ENDREM-»
         «FOREACH operation.getOpenAPIInputParameters() AS param-»
         - name: «EXPAND RESTParamName FOR param»
           in: «param.getOpenAPIParameterType()»

@@ -34,8 +34,10 @@ boolean hasDefaultValueForEnum(Parameter param):
 
 
 InstanceValue getDefaultValueForBasicType(Parameter param):
-  param.ownedElement.typeSelect(LiteralSpecification).first().stringValue().replaceAll("\"", "");
+  param.getDefault().replaceAll("\"", "");
 
 boolean hasDefaultValueForBasicType(Parameter param):
-  !param.ownedElement.typeSelect(LiteralSpecification).isEmpty;
+  if param.getDefault().length > 0
+  then true
+  else false;
   

@@ -327,6 +327,9 @@ cached boolean isFloatType(uml::Type type) :
 cached boolean isDoubleType(uml::Type type) :
   type.fqn() == "java.lang.Double" || type.fqn() == "Double" || type.fqn() == "double"; 
 
+cached boolean isBigType(uml::Type type) :
+  type.fqn() == "java.math.BigDecimal" || type.fqn() == "java.math.BigInteger"; 
+
 cached boolean isEnumeration(uml::Element element):
   JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isEnumeration(org.eclipse.uml2.uml.Element);  
 

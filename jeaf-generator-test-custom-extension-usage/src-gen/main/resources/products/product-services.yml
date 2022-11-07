@@ -35,8 +35,8 @@ tags:
   - name: MasterData
     description: >-
       Tag marks all operations that are connected with Master Data.
-  - name: B Tag
   - name: Another Tag
+  - name: B Tag
 
 paths:
   # ProductService
@@ -1100,6 +1100,42 @@ paths:
           schema:
             type: string
       responses:
+    
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
+
+  /products/test-optional-query-params:
+    get:
+      operationId: testOptionalQueryParams
+      parameters:
+        - name: query1
+          in: query
+          schema:
+            type: string
+            default: Just a default value
+        - name: query2
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: >-
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
     
     
         '400':

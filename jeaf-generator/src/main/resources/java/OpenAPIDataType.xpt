@@ -387,6 +387,9 @@
 				        «IF attr.type.isDoubleType()»
 				        return «this.fqn()».builder().«attr.asSetter()»(lNode.asDouble()).build();
 				        «ENDIF»
+				        «IF attr.type.isBigType()»
+				        return «this.fqn()».builder().«attr.asSetter()»(new «attr.type.fqn()»(lNode.asDouble())).build();
+				        «ENDIF»
 				    «ENDLET»
 		    	«ENDIF»
 		    «ENDIF»
