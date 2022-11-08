@@ -88,12 +88,14 @@
 				
 				// Add serializers and deserializers for datatypes				
 				«FOREACH this.getOpenAPIDataTypes() AS datatype»
-					«IF datatype.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF()== false && datatype.hasCompositeDateTypeCustomSerialization() == false»
-						lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer(compositeTypeConverter));
-						lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer(compositeTypeConverter));
-					«ELSE»
-						lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer());
-						lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer());
+					«IF datatype.isStereotypeApplied("Ignore") == false»
+						«IF datatype.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF()== false && datatype.hasCompositeDateTypeCustomSerialization() == false»
+							lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer(compositeTypeConverter));
+							lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer(compositeTypeConverter));
+						«ELSE»
+							lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer());
+							lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer());
+						«ENDIF»
 					«ENDIF»
 				«ENDFOREACH»
 				
