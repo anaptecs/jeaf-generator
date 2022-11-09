@@ -95,7 +95,10 @@ cached boolean generateOpenAPISpec() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateOpenAPISpec();
     
 cached boolean enableYAML11Compatibility() :    
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.enableYAML11Compatibility();    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.enableYAML11Compatibility();
+    
+cached boolean addIgnorableHeadersToOpenAPISpec() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.addIgnorableHeadersToOpenAPISpec();
     
 cached boolean generateJAXRSAnnotations() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateJAXRSAnnotations();

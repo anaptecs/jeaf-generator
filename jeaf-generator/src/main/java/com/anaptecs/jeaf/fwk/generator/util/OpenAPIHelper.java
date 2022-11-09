@@ -380,23 +380,28 @@ public class OpenAPIHelper {
   }
 
   public static boolean isIgnoredHeader( Element pElement ) {
-    Stereotype lAppliedStereotype = ClassUtil.getAppliedStereotype(pElement, "HeaderParam");
     boolean lIgnoredHeaderName;
-    if (lAppliedStereotype != null) {
-      String lHeaderName = (String) pElement.getValue(lAppliedStereotype, "value");
-      if (lHeaderName == null) {
-        lHeaderName = ((NamedElement) pElement).getName();
-      }
-      if ("Accept".equalsIgnoreCase(lHeaderName) || "Content-Type".equalsIgnoreCase(lHeaderName)
-          || "Authorization".equalsIgnoreCase(lHeaderName)) {
-        lIgnoredHeaderName = true;
+    if (GeneratorCommons.addIgnorableHeadersToOpenAPISpec()) {
+      lIgnoredHeaderName = false;
+    }
+    else {
+      Stereotype lAppliedStereotype = ClassUtil.getAppliedStereotype(pElement, "HeaderParam");
+      if (lAppliedStereotype != null) {
+        String lHeaderName = (String) pElement.getValue(lAppliedStereotype, "value");
+        if (lHeaderName == null) {
+          lHeaderName = ((NamedElement) pElement).getName();
+        }
+        if ("Accept".equalsIgnoreCase(lHeaderName) || "Content-Type".equalsIgnoreCase(lHeaderName)
+            || "Authorization".equalsIgnoreCase(lHeaderName)) {
+          lIgnoredHeaderName = true;
+        }
+        else {
+          lIgnoredHeaderName = false;
+        }
       }
       else {
         lIgnoredHeaderName = false;
       }
-    }
-    else {
-      lIgnoredHeaderName = false;
     }
     return lIgnoredHeaderName;
   }

@@ -697,6 +697,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/localKey'
         - $ref: '#/components/parameters/localID'
+        - $ref: '#/components/parameters/authorization'
       responses:
         '200':
           description: >-
@@ -1147,6 +1148,22 @@ paths:
   /products/special-header-params:
     get:
       operationId: testSpecialHeaderParams
+      parameters:
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: content-type
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: ACCEPT
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
     
     
@@ -1183,6 +1200,14 @@ components:
             write:pets: Modify pets
 
   parameters:
+    # com.anaptecs.jeaf.junit.openapi.service1.LocalBeanParamType.authorization
+    authorization:
+      name: authorization
+      in: header
+      schema:
+        type: string
+      required: true
+
     # com.anaptecs.jeaf.junit.openapi.service1.ChildBeanParameterType.childProperty
     childProperty:
       name: X-Child-Property

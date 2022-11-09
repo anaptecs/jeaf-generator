@@ -355,6 +355,18 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean enableYAML11Compatibility;
 
   /**
+   * OpenAPI standard defines that for whatever reason some header fields should not be mentioned in the OpenAPI
+   * specification e.g. 'Authorization' header. However from an overall perspective it still might make sense to
+   * explicitly show the for better documentation purposes. This can be done by setting this property to
+   * <code>true</code>
+   * 
+   * @see <a href=
+   * "https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#parameterObject">https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#parameterObject</>
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean addIgnoredHeadersToOpenAPISpec;
+
+  /**
    * Switch defines whether JAX-RS annotations should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -821,6 +833,7 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateOpenAPISpec) {
       lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
       lLog.info("Enable YAML 1.1 compatibility mode:               " + enableYAML11Compatibility);
+      lLog.info("Add ignored header fields to OpenAPI spec:        " + addIgnoredHeadersToOpenAPISpec);
     }
     if (generateJAXRSAnnotations) {
       lLog.info("Generate JAX-RS annotations:                      " + generateJAXRSAnnotations);
@@ -969,6 +982,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.junits", generateJUnitTests.toString());
       System.setProperty("switch.gen.openapispec", generateOpenAPISpec.toString());
       System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());
+      System.setProperty("switch.gen.openapi.addIgnoredHeadersToOpenAPISpec", addIgnoredHeadersToOpenAPISpec
+          .toString());
 
       System.setProperty("switch.gen.jaxrs.annotations", generateJAXRSAnnotations.toString());
       System.setProperty("switch.gen.jackson.annotations", generateJacksonAnnotations.toString());
