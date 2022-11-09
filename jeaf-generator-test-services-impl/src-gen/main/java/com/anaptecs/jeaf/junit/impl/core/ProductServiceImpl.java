@@ -381,4 +381,14 @@ final class ProductServiceImpl extends ProductServiceImplBase {
     // TODO Implement method and return real result
     return null;
   }
+
+  /**
+   * 
+   * @param authorization
+   * @param pContentType
+   * @param pAccept
+   */
+  @Override
+  public void testSpecialHeaderParams( String authorization, String pContentType, String pAccept ) {
+  }
 }

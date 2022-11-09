@@ -106,6 +106,9 @@ abstract class ProductServiceImplBase implements ProductService, ServiceImplemen
   public static final String TESTOPTIONALQUERYPARAMS_AUTH_TYPE =
       "testOptionalQueryParams.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 
+  public static final String TESTSPECIALHEADERPARAMS_AUTH_TYPE =
+      "testSpecialHeaderParams.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
   /**
    * Reference to the component that provides this service implementation. The reference is never null.
    */

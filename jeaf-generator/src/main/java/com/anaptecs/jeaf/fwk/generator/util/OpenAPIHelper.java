@@ -17,7 +17,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Stereotype;
 
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Assert;
@@ -358,7 +360,12 @@ public class OpenAPIHelper {
       lOpenAPIType = "path";
     }
     else if (ClassUtil.isStereotypeApplied(pType, "HeaderParam")) {
-      lOpenAPIType = "header";
+      if (isIgnoredHeader(pType)) {
+        lOpenAPIType = null;
+      }
+      else {
+        lOpenAPIType = "header";
+      }
     }
     else if (ClassUtil.isStereotypeApplied(pType, "QueryParam")) {
       lOpenAPIType = "query";
@@ -370,6 +377,28 @@ public class OpenAPIHelper {
       lOpenAPIType = null;
     }
     return lOpenAPIType;
+  }
+
+  public static boolean isIgnoredHeader( Element pElement ) {
+    Stereotype lAppliedStereotype = ClassUtil.getAppliedStereotype(pElement, "HeaderParam");
+    boolean lIgnoredHeaderName;
+    if (lAppliedStereotype != null) {
+      String lHeaderName = (String) pElement.getValue(lAppliedStereotype, "value");
+      if (lHeaderName == null) {
+        lHeaderName = ((NamedElement) pElement).getName();
+      }
+      if ("Accept".equalsIgnoreCase(lHeaderName) || "Content-Type".equalsIgnoreCase(lHeaderName)
+          || "Authorization".equalsIgnoreCase(lHeaderName)) {
+        lIgnoredHeaderName = true;
+      }
+      else {
+        lIgnoredHeaderName = false;
+      }
+    }
+    else {
+      lIgnoredHeaderName = false;
+    }
+    return lIgnoredHeaderName;
   }
 
   public static List<Element> getAllAttributesFromHierarchy( Element pElement ) {

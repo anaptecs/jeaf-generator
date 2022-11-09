@@ -255,4 +255,12 @@ public interface ProductService extends Service {
    * @return {@link String}
    */
   String testOptionalQueryParams( String query1, int query2 );
+
+  /**
+   * 
+   * @param authorization
+   * @param pContentType
+   * @param pAccept
+   */
+  void testSpecialHeaderParams( String authorization, String pContentType, String pAccept );
 }

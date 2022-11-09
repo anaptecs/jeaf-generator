@@ -476,6 +476,19 @@ public class ProductServiceResource {
   }
 
   /**
+   * {@link ProductService#testSpecialHeaderParams()}
+   */
+  @Path("special-header-params")
+  @GET
+  public Response testSpecialHeaderParams( @HeaderParam("authorization") String authorization,
+      @HeaderParam("content-type") String pContentType, @HeaderParam("ACCEPT") String pAccept ) {
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    lService.testSpecialHeaderParams(authorization, pContentType, pAccept);
+    return Response.status(Response.Status.OK).build();
+  }
+
+  /**
    * Method returns reference to service to which all REST requests will be delegated.
    *
    * @return ProductService Service instance to which all requests will be delegated.

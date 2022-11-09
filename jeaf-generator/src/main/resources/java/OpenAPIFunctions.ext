@@ -15,7 +15,7 @@ cached boolean hasOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
     getOpenAPISecuritySchemes(spec).size > 0;
     
 cached List[uml::Property] getOpenAPIParameters(JMM::OpenAPI3Specification spec):
-	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::BeanParam).select(e|e.inline==false).typeSelect(uml::Class).ownedAttribute.sortBy(e|e.name);
+	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::BeanParam).select(e|e.inline==false).typeSelect(uml::Class).ownedAttribute.select(e|e.isIgnoredHeaderParam()== false).sortBy(e|e.name);
     
 cached boolean hasOpenAPIParameters(JMM::OpenAPI3Specification spec):
     spec.getOpenAPIParameters().size > 0;
@@ -154,9 +154,12 @@ cached String getOpenAPIParameterType(uml::Element param):
    
 cached boolean isOpenAPIInputParameter(uml::Parameter param):
    param.isInputParameter() && param.isOpenAPIParameterType();
-
+   
 cached List[uml::Parameter] getOpenAPIInputParameters(uml::Operation operation):   
-   operation.ownedParameter.select(p| p.isOpenAPIInputParameter());   
+   operation.ownedParameter.select(p| p.isOpenAPIInputParameter());
+   
+cached boolean isIgnoredHeaderParam(uml::Element element) :
+   JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.isIgnoredHeader(org.eclipse.uml2.uml.Element);
 
 cached boolean hasOpenAPIInputParameters(uml::Operation operation):
    getOpenAPIInputParameters(operation).size > 0;
@@ -200,10 +203,10 @@ cached boolean supportsRequestBody(JMM::HTTPMethod httpMethod):
   httpMethod.toString().toLowerCase() == "post" || httpMethod.toString().toLowerCase() == "put" || httpMethod.toString().toLowerCase() == "patch";
 
 cached boolean hasRequestBody(uml::Operation operation, JMM::HTTPMethod httpMethod):
-  getRequestBodyParameters(operation).size == 1  && httpMethod.supportsRequestBody() == true;
+  operation.getRequestBodyParameters().size == 1  && httpMethod.supportsRequestBody() == true;
   
 cached List[uml::Parameter] getRequestBodyParameters(uml::Operation operation):
-  operation.ownedParameter.select(e|e.isInputParameter() && e.isOpenAPIInputParameter() == false && e.isBeanParamater() == false);
+  operation.ownedParameter.select(e|e.isInputParameter() && e.isOpenAPIInputParameter() == false && e.isBeanParamater() == false && e.isIgnoredHeaderParam() == false);
   
 cached boolean hasRequestBody(uml::Operation operation):
   operation.getRequestBodyParameters().size > 0;

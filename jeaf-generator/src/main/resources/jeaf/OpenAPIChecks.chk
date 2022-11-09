@@ -53,6 +53,9 @@ context OpenAPIDataType if runChecks("OpenAPIDataType") WARNING this.getWarningM
 context PathParam if runChecks("PathParam") ERROR this.getErrorMessage("9120", {this.fqn()}): this.lower == 1;
 context PathParam if runChecks("PathParam") ERROR this.getErrorMessage("9120", {this.fqn()}): this.isMultivalued() == false;
 
+// Checks for stereotype HeaderParam
+context HeaderParam if runChecks("HeaderParam") WARNING this.getWarningMessage("9153", {((NamedElement)owner).fqn(), this.getRESTHeaderParamName(), name}): this.isIgnoredHeaderParam() == false;
+
 
 // Checks for stereotype BeanParam
 context BeanParam if runChecks("RESTOperation") WARNING this.getWarningMessage("9103", {this.fqn(), this.getOpenAPIIncompatibleBeanProperties().asPropertyErrorMessage().toString()}): this.getOpenAPIIncompatibleBeanProperties().size == 0;
