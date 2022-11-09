@@ -39,10 +39,10 @@ cached List[JMM::OpenAPIEnumeration] getOpenAPIEnums(JMM::OpenAPI3Specification 
 	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIEnumeration);
 	
 cached boolean referencesRESTResources(JMM::OpenAPI3Specification spec):
-	getRESTResources(spec).size > 0;
+	spec.getRESTResources().size > 0;
 	
 cached List[JMM::RESTResource] getRESTResources(JMM::OpenAPI3Specification spec):
-	spec.clientDependency.supplier.typeSelect(JMM::RESTResource).sortBy(e|e.getOrderNumber());
+	spec.clientDependency.supplier.typeSelect(JMM::RESTResource).select(e|e.isInGeneratorWhitelist()).sortBy(e|e.getOrderNumber());
 	
 cached List[JMM::RESTOperation] getRESTOperations(JMM::RESTResource service, String pPath):
    service.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.path == pPath);
