@@ -376,8 +376,8 @@ public class RESTProductServiceResource {
   @GET
   public Response processComplexBookingID( @PathParam("bookingID") String pComplextBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ComplexBookingID pComplextBookingID = this.getCompositeTypeConverter()
-        .deserializeObject(pComplextBookingIDAsBasicType, ComplexBookingID.class, COMPLEXBOOKINGID_SERIALIZED_CLASSES);
+    ComplexBookingID pComplextBookingID =
+        ComplexBookingID.builder().setBookingID(pComplextBookingIDAsBasicType).build();
     // Delegate request to service.
     RESTProductService lService = this.getRESTProductService();
     boolean lResult = lService.processComplexBookingID(pComplextBookingID);

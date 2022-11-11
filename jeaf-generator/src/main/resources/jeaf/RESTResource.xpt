@@ -150,11 +150,15 @@ public class «name»Resource {
 	  // Convert basic type parameters into "real" objects.
 	  	«FOREACH this.getDataTypeParameters() AS basicParam»
 	    	«IF basicParam.type.isCompositeDataTypeForRESTResource()»
-	    		«IF isTargetRuntimeJEAF()»
-	    			«basicParam.type.fqn()» «basicParam.name» = this.getCompositeTypeConverter().deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
-	    		«ENDIF»
-	    		«IF isTargetRuntimeSpring()»
-	    			«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+	    		«IF generatePublicObjectView()»
+					«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»(«basicParam.name»AsBasicType).build();
+	    		«ELSE»
+		    		«IF isTargetRuntimeJEAF()»
+		    			«basicParam.type.fqn()» «basicParam.name» = this.getCompositeTypeConverter().deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+		    		«ENDIF»
+		    		«IF isTargetRuntimeSpring()»
+		    			«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+		    		«ENDIF»
 	    		«ENDIF»
 	    	«ELSE»
 	    		«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
@@ -212,7 +216,11 @@ public class «name»Resource {
 	  // Convert basic type parameters into "real" objects.
 	  	«FOREACH this.getDataTypeParameters() AS basicParam»
 	    	«IF basicParam.type.isCompositeDataTypeForRESTResource()»
-	    		«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+	    		«IF generatePublicObjectView()»
+					«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»(«basicParam.name»AsBasicType).build();
+	    		«ELSE»
+	    			«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+	    		«ENDIF»
 	    	«ELSE»
 	    		«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
 	    	«ENDIF»
@@ -259,11 +267,15 @@ public class «name»Resource {
 					// Convert basic type parameters into "real" objects.
 						«FOREACH this.getDataTypeParameters() AS basicParam»
 							«IF basicParam.type.isCompositeDataTypeForRESTResource()»
-					    		«IF isTargetRuntimeJEAF()»
-					    			«basicParam.type.fqn()» «basicParam.name» = this.getCompositeTypeConverter().deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
-					    		«ENDIF»
-					    		«IF isTargetRuntimeSpring()»
-					    			«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+					    		«IF generatePublicObjectView()»
+									«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»(«basicParam.name»AsBasicType).build();
+					    		«ELSE»
+						    		«IF isTargetRuntimeJEAF()»
+						    			«basicParam.type.fqn()» «basicParam.name» = this.getCompositeTypeConverter().deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+						    		«ENDIF»
+						    		«IF isTargetRuntimeSpring()»
+						    			«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+						    		«ENDIF»
 					    		«ENDIF»
 							«ELSE»
 								«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
