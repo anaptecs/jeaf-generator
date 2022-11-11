@@ -25,7 +25,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * 
+   * Internal ID of a versioned object
    */
   private final long objectID;
 
@@ -69,7 +69,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
    */
   public static abstract class BuilderBase {
     /**
-     * 
+     * Internal ID of a versioned object
      */
     private long objectID;
 
@@ -103,7 +103,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "objectID".
+     * Method sets the attribute "objectID". Internal ID of a versioned object
      * 
      * @param pObjectID Value to which the attribute "objectID" should be set.
      */
@@ -158,8 +158,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "objectID".
-   * 
+   * Method returns the attribute "objectID". Internal ID of a versioned object
    * 
    * @return long Value to which the attribute "objectID" is set.
    */
@@ -237,6 +236,14 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     lBuilder.append(pIndent);
     lBuilder.append("objectID: ");
     lBuilder.append(objectID);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("dataUnit: ");
+    lBuilder.append(dataUnit);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("entity: ");
+    lBuilder.append(entity);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

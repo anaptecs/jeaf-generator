@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -913,8 +914,33 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
+    lBuilder.append("resellers: ");
+    if (resellers != null) {
+      lBuilder.append(resellers.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (resellers != null) {
+      for (Reseller lNext : resellers) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
     lBuilder.append("name: ");
     lBuilder.append(name);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("image: ");
+    if (image != null) {
+      lBuilder.append(Arrays.toString(image));
+    }
+    else {
+      lBuilder.append(" null");
+    }
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("link: ");
@@ -925,9 +951,57 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     lBuilder.append(productID);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
+    lBuilder.append("supportedCurrencies: ");
+    if (supportedCurrencies != null) {
+      lBuilder.append(supportedCurrencies.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (supportedCurrencies != null) {
+      for (CurrencyCode lNext : supportedCurrencies) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("productCodes: ");
+    if (productCodes != null) {
+      lBuilder.append(productCodes.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (productCodes != null) {
+      for (ProductCode lNext : productCodes) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
     lBuilder.append("description: ");
     lBuilder.append(description);
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("sortiments: ");
+    if (sortiments != null) {
+      lBuilder.append(sortiments.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (sortiments != null) {
+      for (Sortiment lNext : sortiments) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     lBuilder.append(pIndent);
     lBuilder.append("uri: ");
     lBuilder.append(uri);

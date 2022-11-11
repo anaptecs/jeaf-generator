@@ -78,7 +78,7 @@ public class InternalViewCompositeDataTypeTest {
 
     String lJSON = JSON.getJSONTools().writeObjectToString(lWeirdBooking);
     assertEquals(
-        "{\"booking\":\"AAyDDQAPUkVGVU5EX0NPRMWTRVhUXyPDpMO2w58/IsKnJMKnIiQiJSQCWFhZWVraD0JPT0tJTkdfQ09ExUVYVC0wOTg3NjU0MzKxATEyMzQ1tgECgKq03nVSRUYtMTKz\",\"additionalBookings\":[\"AAyDDQAPUkVGVU5EX0NPRMWTRVhUXyPDpMO2w58/IsKnJMKnIiQiJSQCWFhZWVraD0JPT0tJTkdfQ09ExUVYVC0wOTg3NjU0MzKxATEyMzQ1tgECgITRwwlSRUYtMTIzLbE=\",\"AAyCDQAPUkVGVU5EX0NPRMWTRVhUXyPDpMO2w58/IsKnJMKnIiQiJSQCWFhZWVraAQGAqrTedVJFRi0xMjMtsg==\"]}",
+        "{\"objectType\":\"WeirdBooking\",\"booking\":\"AAyDDQAPUkVGVU5EX0NPRMWTRVhUXyPDpMO2w58_IsKnJMKnIiQiJSQCWFhZWVraD0JPT0tJTkdfQ09ExUVYVC0wOTg3NjU0MzKxATEyMzQ1tgECgKq03nVSRUYtMTKz\",\"additionalBookings\":[\"AAyDDQAPUkVGVU5EX0NPRMWTRVhUXyPDpMO2w58_IsKnJMKnIiQiJSQCWFhZWVraD0JPT0tJTkdfQ09ExUVYVC0wOTg3NjU0MzKxATEyMzQ1tgECgITRwwlSRUYtMTIzLbE=\",\"AAyCDQAPUkVGVU5EX0NPRMWTRVhUXyPDpMO2w58_IsKnJMKnIiQiJSQCWFhZWVraAQGAqrTedVJFRi0xMjMtsg==\"],\"childProperty\":0}",
         lJSON);
 
     WeirdBooking lReadBooking = JSON.getJSONTools().read(lJSON, WeirdBooking.class);
@@ -111,6 +111,9 @@ public class InternalViewCompositeDataTypeTest {
 
     XFun.getTrace().info(lWeirdBooking.toString());
     assertEquals("com.anaptecs.jeaf.junit.openapi.base.WeirdBooking" + System.lineSeparator() +
+        "someProperty: null" + System.lineSeparator() +
+        "complexBooking:  null" + System.lineSeparator() +
+        "complexBookings: 0 element(s)" + System.lineSeparator() +
         "booking: " + System.lineSeparator() +
         "    com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID" + System.lineSeparator() +
         "    internalID: 123456789" + System.lineSeparator() +
@@ -173,7 +176,9 @@ public class InternalViewCompositeDataTypeTest {
         "    complexBookingType: COMPLEX" + System.lineSeparator() +
         "    anotherID: null" + System.lineSeparator() +
         System.lineSeparator() +
-        "versionedObjectSoftLink:  null" + System.lineSeparator(), lWeirdBooking.toString());
+        "versionedObjectSoftLink:  null" + System.lineSeparator() +
+        "childProperty: 0" + System.lineSeparator() +
+        "realBooking:  null" + System.lineSeparator(), lWeirdBooking.toString());
 
   }
 }

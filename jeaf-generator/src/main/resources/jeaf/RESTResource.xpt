@@ -38,29 +38,63 @@ package «packageName()».resource;
 «ENDIF»
 «EXPAND java::Helper::GenerateDeprecationAnnotation -»
 public class «name»Resource {
-	«IF isTargetRuntimeJEAF() == false»
+	
+	«IF this.hasCompositeDataTypes()»
+		«FOREACH this.getCompositeDataTypes() AS compositeDataType»
+		/**
+		 * List contains all classes that are involved in the serialization process of class «compositeDataType.name». This information is required by some serialization mechanisms for efficiency and security reasons.
+		 */
+		private static final List<Class<?>> «compositeDataType.name.toUpperCase()»_SERIALIZED_CLASSES;
+		static {
+		  java.util.List<Class<?>> lClasses = java.util.Arrays.asList(«FOREACH compositeDataType.collectSerializedClassNames() AS className SEPARATOR ", "»«className».class«ENDFOREACH»);
+		  «compositeDataType.name.toUpperCase()»_SERIALIZED_CLASSES = java.util.Collections.unmodifiableList(lClasses);
+		}
+		«ENDFOREACH»
+		
+		«IF isTargetRuntimeSpring()»
+			«IF isRESTLibrarySpringWebMVC()»
+				/**
+				 * REST interface makes usage of so called composite data types. As Spring itself is not able to do conversions from a String representation into a real object this is done in the generated REST Controller.
+				 */
+				private final com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter compositeTypeConverter;
+			«ENDIF»
+			«IF isRESTLibraryJAXRS()»
+				/**
+				 * REST interface makes usage of so called composite data types. As Spring itself is not able to do conversions from a String representation into a real object this is done in the generated REST Controller.
+				 */
+				@org.springframework.beans.factory.annotation.Autowired
+				private com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter compositeTypeConverter;
+			«ENDIF»
+		«ENDIF»		
 	«ENDIF»
+
 	«IF isTargetRuntimeSpring()»
-	  /**
-	   * All request to this class will be delegated to {@link «this.fqn()»}.
-	   */
 		«IF isRESTLibrarySpringWebMVC()»
-			/**
-			 * Initialize object.
-			 * 
-			 * @param p«name» Dependency on concrete {@link «this.fqn()»} implementation that should be used.
-			 */
-			public «name»Resource( «this.fqn()» p«name» ) {
-			  «name.toFirstLower()» = p«name»;
-			}
-			
 			/**
 			 * All request to this class will be delegated to {@link «this.fqn()»}.
 			 */
 			private final «this.fqn()» «name.toFirstLower()»;
+		
+			/**
+			 * Initialize object.
+			 * 
+			 * @param p«name» Dependency on concrete {@link «this.fqn()»} implementation that should be used.
+			 «IF this.hasCompositeDataTypes() -»
+			 * @param pCompositeTypeConverter Composite type converter is used convert types from their string representation to a real object that can be processed internally.
+			 «ENDIF -»
+			 */
+			public «name»Resource( «this.fqn()» p«name» «IF this.hasCompositeDataTypes()», com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pCompositeTypeConverter«ENDIF») {
+			  «name.toFirstLower()» = p«name»;
+			  «IF this.hasCompositeDataTypes()»
+			  compositeTypeConverter = pCompositeTypeConverter;
+			  «ENDIF»
+			}
 		«ENDIF»
 		«IF isRESTLibraryJAXRS()»
-			@javax.inject.Inject
+			/**
+			 * All request to this class will be delegated to {@link «this.fqn()»}.
+			 */
+			@org.springframework.beans.factory.annotation.Autowired
 			private «this.fqn()» «name.toFirstLower()»;
 		«ENDIF»
 	«ENDIF»
@@ -74,6 +108,14 @@ public class «name»Resource {
 		 */
 		private «this.fqn()» get«name»() {
 		  return com.anaptecs.jeaf.core.api.JEAF.getService(«this.fqn()».class);
+		}
+
+		/**
+		 * Method returns the composite type converter that should be used in this environment. This REST interface makes usage of so called composite data types. As Spring itself is not able to do conversions from a String representation into a real object this is done in the generated REST Controller.
+		 * @return {@link CompositeTypeConverter} CompositeTypeConverter implementation that is configured to be used here. The method never returns null.
+		 */
+		private com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter getCompositeTypeConverter( ) {
+		  return JEAF.getServiceProvider(com.anaptecs.jeaf.rest.composite.api.jeaf.CompositeTypeConverterServiceProvider.class);
 		}
 	«ENDIF»
 }
@@ -107,7 +149,20 @@ public class «name»Resource {
 	  «IF this.hasDataTypeParameters()»
 	  // Convert basic type parameters into "real" objects.
 	  	«FOREACH this.getDataTypeParameters() AS basicParam»
-	    «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
+	    	«IF basicParam.type.isCompositeDataTypeForRESTResource()»
+	    		«IF generatePublicObjectView()»
+					«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»(«basicParam.name»AsBasicType).build();
+	    		«ELSE»
+		    		«IF isTargetRuntimeJEAF()»
+		    			«basicParam.type.fqn()» «basicParam.name» = this.getCompositeTypeConverter().deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+		    		«ENDIF»
+		    		«IF isTargetRuntimeSpring()»
+		    			«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+		    		«ENDIF»
+	    		«ENDIF»
+	    	«ELSE»
+	    		«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
+	    	«ENDIF»
 	  	«ENDFOREACH»
 	  «ENDIF»
 
@@ -160,7 +215,15 @@ public class «name»Resource {
 	  «IF this.hasDataTypeParameters()»
 	  // Convert basic type parameters into "real" objects.
 	  	«FOREACH this.getDataTypeParameters() AS basicParam»
-	    «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
+	    	«IF basicParam.type.isCompositeDataTypeForRESTResource()»
+	    		«IF generatePublicObjectView()»
+					«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»(«basicParam.name»AsBasicType).build();
+	    		«ELSE»
+	    			«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+	    		«ENDIF»
+	    	«ELSE»
+	    		«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
+	    	«ENDIF»
 	  	«ENDFOREACH»
 	  «ENDIF»
       // Delegate request to service.
@@ -203,7 +266,20 @@ public class «name»Resource {
 					«IF this.hasDataTypeParameters()»
 					// Convert basic type parameters into "real" objects.
 						«FOREACH this.getDataTypeParameters() AS basicParam»
-					    «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
+							«IF basicParam.type.isCompositeDataTypeForRESTResource()»
+					    		«IF generatePublicObjectView()»
+									«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»(«basicParam.name»AsBasicType).build();
+					    		«ELSE»
+						    		«IF isTargetRuntimeJEAF()»
+						    			«basicParam.type.fqn()» «basicParam.name» = this.getCompositeTypeConverter().deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+						    		«ENDIF»
+						    		«IF isTargetRuntimeSpring()»
+						    			«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+						    		«ENDIF»
+					    		«ENDIF»
+							«ELSE»
+								«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
+							«ENDIF»
 					  	«ENDFOREACH»
 					«ENDIF»
 					«IF isTargetRuntimeJEAF()»
@@ -281,12 +357,16 @@ public class «name»Resource {
   @javax.ws.rs.DefaultValue("«this.getDefaultValueForBasicType()»")
   «ENDIF»
 
-  «EXPAND java::Helper::GenerateDeprecationAnnotation»
-  «IF this.type.isOpenAPIDataType() && this.isRequestBody() == false»
-  	«this.type.attribute().first().fqn()» «this.name»AsBasicType
-  «ELSE»
-  	«this.getTypeName()» «this.name»
-  «ENDIF»
+«EXPAND java::Helper::GenerateDeprecationAnnotation»
+	«IF this.type.isOpenAPIDataType() && this.isRequestBody() == false»
+	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
+	  		String «this.name»AsBasicType
+	  	«ELSE»
+	  		«this.type.attribute().first().fqn()» «this.name»AsBasicType
+	  	«ENDIF»
+	«ELSE»
+	  	«this.getTypeName()» «this.name»
+	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE SpringRESTParameterSignature FOR Operation»
@@ -316,7 +396,11 @@ public class «name»Resource {
   «EXPAND java::Helper::GenerateDeprecationAnnotation»
   «IF this.isBeanParam() == false»
 	  «IF this.type.isOpenAPIDataType() && this.isRequestBody() == false»
-	  	«this.type.attribute().first().fqn()» «this.name»AsBasicType
+	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
+	  		String «this.name»AsBasicType
+	  	«ELSE»
+	  		«this.type.attribute().first().fqn()» «this.name»AsBasicType
+	  	«ENDIF»
 	  «ELSE»
 	  	«this.getTypeName()» «this.name»
 	  «ENDIF»

@@ -25,50 +25,21 @@ public class BookingID implements Serializable {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constant for the name of attribute "referenceID".
+   * Constant for the name of attribute "bookingID".
    */
-  public static final String REFERENCEID = "referenceID";
+  public static final String BOOKINGID = "bookingID";
 
   /**
-   * Constant for the name of attribute "externalRefID".
+   * String representation of this object.
    */
-  public static final String EXTERNALREFID = "externalRefID";
-
-  /**
-   * Constant for the name of attribute "inventory".
-   */
-  public static final String INVENTORY = "inventory";
-
-  /**
-   * Constant for the name of attribute "bookingCode".
-   */
-  public static final String BOOKINGCODE = "bookingCode";
-
-  /**
-   * 
-   */
-  private String referenceID;
-
-  /**
-   * 
-   */
-  private String externalRefID;
-
-  /**
-   * 
-   */
-  private InventoryType inventory;
-
-  /**
-   * 
-   */
-  private BookingCode bookingCode;
+  private final String bookingID;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected BookingID( ) {
+    bookingID = null;
   }
 
   /**
@@ -80,10 +51,7 @@ public class BookingID implements Serializable {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    referenceID = pBuilder.referenceID;
-    externalRefID = pBuilder.externalRefID;
-    inventory = pBuilder.inventory;
-    bookingCode = pBuilder.bookingCode;
+    bookingID = pBuilder.bookingID;
   }
 
   /**
@@ -112,24 +80,9 @@ public class BookingID implements Serializable {
    */
   public static class Builder {
     /**
-     * 
+     * String representation of this object.
      */
-    private String referenceID;
-
-    /**
-     * 
-     */
-    private String externalRefID;
-
-    /**
-     * 
-     */
-    private InventoryType inventory;
-
-    /**
-     * 
-     */
-    private BookingCode bookingCode;
+    private String bookingID;
 
     /**
      * Use {@link BookingID#builder()} instead of private constructor to create new builder.
@@ -143,52 +96,17 @@ public class BookingID implements Serializable {
     protected Builder( BookingID pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        referenceID = pObject.referenceID;
-        externalRefID = pObject.externalRefID;
-        inventory = pObject.inventory;
-        bookingCode = pObject.bookingCode;
+        bookingID = pObject.bookingID;
       }
     }
 
     /**
-     * Method sets the attribute "referenceID".
+     * Method returns the String representation of this object.
      * 
-     * @param pReferenceID Value to which the attribute "referenceID" should be set.
+     * @return String String representation of this object.
      */
-    public Builder setReferenceID( String pReferenceID ) {
-      // Assign value to attribute
-      referenceID = pReferenceID;
-      return this;
-    }
-
-    /**
-     * Method sets the attribute "externalRefID".
-     * 
-     * @param pExternalRefID Value to which the attribute "externalRefID" should be set.
-     */
-    public Builder setExternalRefID( String pExternalRefID ) {
-      // Assign value to attribute
-      externalRefID = pExternalRefID;
-      return this;
-    }
-
-    /**
-     * Method sets the association "inventory".
-     * 
-     * @param pInventory InventoryType to which the association "inventory" should be set.
-     */
-    public Builder setInventory( InventoryType pInventory ) {
-      inventory = pInventory;
-      return this;
-    }
-
-    /**
-     * Method sets the association "bookingCode".
-     * 
-     * @param pBookingCode BookingCode to which the association "bookingCode" should be set.
-     */
-    public Builder setBookingCode( BookingCode pBookingCode ) {
-      bookingCode = pBookingCode;
+    public Builder setBookingID( String pBookingID ) {
+      bookingID = pBookingID;
       return this;
     }
 
@@ -216,101 +134,12 @@ public class BookingID implements Serializable {
   }
 
   /**
-   * Method returns the attribute "referenceID".
+   * Method returns the String representation of this object.
    * 
-   * 
-   * @return String Value to which the attribute "referenceID" is set.
+   * @return String String representation of this object.
    */
-  public String getReferenceID( ) {
-    return referenceID;
-  }
-
-  /**
-   * Method sets the attribute "referenceID".
-   * 
-   * 
-   * @param pReferenceID Value to which the attribute "referenceID" should be set.
-   */
-  public void setReferenceID( String pReferenceID ) {
-    // Assign value to attribute
-    referenceID = pReferenceID;
-  }
-
-  /**
-   * Method returns the attribute "externalRefID".
-   * 
-   * 
-   * @return String Value to which the attribute "externalRefID" is set.
-   */
-  public String getExternalRefID( ) {
-    return externalRefID;
-  }
-
-  /**
-   * Method sets the attribute "externalRefID".
-   * 
-   * 
-   * @param pExternalRefID Value to which the attribute "externalRefID" should be set.
-   */
-  public void setExternalRefID( String pExternalRefID ) {
-    // Assign value to attribute
-    externalRefID = pExternalRefID;
-  }
-
-  /**
-   * Method returns the association "inventory".
-   * 
-   *
-   * @return InventoryType InventoryType to which the association "inventory" is set.
-   */
-  public InventoryType getInventory( ) {
-    return inventory;
-  }
-
-  /**
-   * Method sets the association "inventory".
-   * 
-   * 
-   * @param pInventory InventoryType to which the association "inventory" should be set.
-   */
-  public void setInventory( InventoryType pInventory ) {
-    inventory = pInventory;
-  }
-
-  /**
-   * Method unsets the association "inventory".
-   * 
-   */
-  public final void unsetInventory( ) {
-    inventory = null;
-  }
-
-  /**
-   * Method returns the association "bookingCode".
-   * 
-   *
-   * @return BookingCode BookingCode to which the association "bookingCode" is set.
-   */
-  public BookingCode getBookingCode( ) {
-    return bookingCode;
-  }
-
-  /**
-   * Method sets the association "bookingCode".
-   * 
-   * 
-   * @param pBookingCode BookingCode to which the association "bookingCode" should be set.
-   */
-  public void setBookingCode( BookingCode pBookingCode ) {
-    bookingCode = pBookingCode;
-  }
-
-  /**
-   * Method unsets the association "bookingCode".
-   * 
-   */
-  public final void unsetBookingCode( ) {
-    bookingCode = null;
+  public String getBookingID( ) {
+    return bookingID;
   }
 
   /**
@@ -325,12 +154,8 @@ public class BookingID implements Serializable {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("referenceID: ");
-    lBuilder.append(referenceID);
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("externalRefID: ");
-    lBuilder.append(externalRefID);
+    lBuilder.append("bookingID: ");
+    lBuilder.append(bookingID);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

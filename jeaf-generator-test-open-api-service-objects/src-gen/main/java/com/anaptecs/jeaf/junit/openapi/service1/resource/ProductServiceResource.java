@@ -52,6 +52,8 @@ import com.anaptecs.jeaf.junit.openapi.service1.ChildBeanParameterType;
 import com.anaptecs.jeaf.junit.openapi.service1.DateQueryParamsBean;
 import com.anaptecs.jeaf.junit.openapi.service1.LocalBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.service1.ProductService;
+import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
+import com.anaptecs.jeaf.rest.composite.api.jeaf.CompositeTypeConverterServiceProvider;
 import com.anaptecs.jeaf.workload.api.Workload;
 import com.anaptecs.jeaf.workload.api.WorkloadManager;
 import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;
@@ -495,5 +497,17 @@ public class ProductServiceResource {
    */
   private ProductService getProductService( ) {
     return JEAF.getService(ProductService.class);
+  }
+
+  /**
+   * Method returns the composite type converter that should be used in this environment. This REST interface makes
+   * usage of so called composite data types. As Spring itself is not able to do conversions from a String
+   * representation into a real object this is done in the generated REST Controller.
+   * 
+   * @return {@link CompositeTypeConverter} CompositeTypeConverter implementation that is configured to be used here.
+   * The method never returns null.
+   */
+  private CompositeTypeConverter getCompositeTypeConverter( ) {
+    return JEAF.getServiceProvider(CompositeTypeConverterServiceProvider.class);
   }
 }

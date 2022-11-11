@@ -218,6 +218,10 @@ public class EnumTest implements ServiceObject {
     lBuilder.append("property: ");
     lBuilder.append(property);
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("enumRef: ");
+    lBuilder.append(enumRef);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

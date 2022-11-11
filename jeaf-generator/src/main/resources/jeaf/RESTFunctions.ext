@@ -82,9 +82,19 @@ cached List[String] getAllPathParamNamnes(uml::Operation operation):
     
 cached String getPathVariableName(JMM::PathParam pathParam):
     if pathParam.type.isOpenAPIDataType() then
-      pathParam.name + "." + pathParam.type.getAllAttributesFromHierarchy().first().asGetter() + "()"
+        pathParam.getPathVariableNameForDataType()
     else 
       pathParam.name;
+      
+cached String getPathVariableNameForDataType(JMM::PathParam pathParam):
+    if ((JMM::POJO) pathParam.type).compositeDataType then
+      pathParam.name + ".get" + ((JMM::POJO) pathParam.type).compositeDateTypePublicFieldName.toFirstUpper() + "()"
+    else
+      if ((JMM::ServiceObject) pathParam.type).compositeDataType then
+	    pathParam.name + ".get" + ((JMM::ServiceObject) pathParam.type).compositeDateTypePublicFieldName.toFirstUpper() + "()"
+      else
+       pathParam.name + "." + pathParam.type.getAllAttributesFromHierarchy().first().asGetter() + "()";
+    
 
 cached String getRESTPathParamName(JMM::PathParam param):
     if (param.value.length > 0) then
@@ -178,4 +188,17 @@ cached String getRESTPath(JMM::RESTResource resource):
 	
 cached String getRESTPathPrefix():
 	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getRESTPathPrefix();
+
+
+cached List[uml::Class] getCompositeDataTypes(JMM::RESTResource resource):
+	resource.ownedOperation.getPathParams().type.select(e|e.isCompositeDataTypeForRESTResource()).toSet();
+	
+cached boolean hasCompositeDataTypes(JMM::RESTResource resource):
+	resource.getCompositeDataTypes().isEmpty == false;
+
+cached boolean isCompositeDataTypeForRESTResource(uml::Type type):
+   isStereotypeApplied(type, "OpenAPIDataType") && ((JMM::OpenAPIDataType) type).compositeDataType;
+   
+
+	
     

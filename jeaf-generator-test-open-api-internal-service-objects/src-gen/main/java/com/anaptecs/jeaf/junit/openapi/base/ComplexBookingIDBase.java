@@ -30,7 +30,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * 
+   * Internal ID 2nd line 3rd line
    */
   private long internalID;
 
@@ -93,7 +93,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
    */
   public static abstract class BuilderBase {
     /**
-     * 
+     * Internal ID 2nd line 3rd line
      */
     private long internalID;
 
@@ -138,7 +138,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "internalID".
+     * Method sets the attribute "internalID". Internal ID 2nd line 3rd line
      * 
      * @param pInternalID Value to which the attribute "internalID" should be set.
      */
@@ -221,8 +221,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "internalID".
-   * 
+   * Method returns the attribute "internalID". Internal ID 2nd line 3rd line
    * 
    * @return long Value to which the attribute "internalID" is set.
    */
@@ -231,8 +230,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "internalID".
-   * 
+   * Method sets the attribute "internalID". Internal ID 2nd line 3rd line
    * 
    * @param pInternalID Value to which the attribute "internalID" should be set.
    */
@@ -392,6 +390,26 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     lBuilder.append(pIndent);
     lBuilder.append("referenceID: ");
     lBuilder.append(referenceID);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("bookingIDs: ");
+    if (bookingIDs != null) {
+      lBuilder.append(bookingIDs.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (bookingIDs != null) {
+      for (BookingID lNext : bookingIDs) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("complexBookingType: ");
+    lBuilder.append(complexBookingType);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("anotherID: ");

@@ -16,7 +16,7 @@ public final class Entity {
     /**
      * 
      */
-    DISCOUNT_OFFER,
+    DISCOUNT_OFFER("DISOFF", DataUnit.COUPON),
     /**
      * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external
      * interface.
@@ -28,13 +28,15 @@ public final class Entity {
      */
     private EntityType( ) {
       entityID = null;
+      dataUnit = null;
     }
 
     /**
      * Initialize object.
      */
-    private EntityType( String pEntityID ) {
+    private EntityType( String pEntityID, DataUnit pDataUnit ) {
       entityID = pEntityID;
+      dataUnit = pDataUnit;
     }
 
     /**
@@ -44,6 +46,12 @@ public final class Entity {
     private final String entityID;
 
     /**
+     * 
+     */
+    @NotNull
+    private DataUnit dataUnit;
+
+    /**
      * Method returns the attribute "entityID".
      * 
      * 
@@ -51,6 +59,16 @@ public final class Entity {
      */
     public String getEntityID( ) {
       return entityID;
+    }
+
+    /**
+     * Method returns the attribute "dataUnit".
+     * 
+     * 
+     * @return DataUnit Value to which the attribute "dataUnit" is set.
+     */
+    public DataUnit getDataUnit( ) {
+      return dataUnit;
     }
   }
 

@@ -23,6 +23,7 @@ import javax.validation.constraints.NotEmpty;
 
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
+import com.anaptecs.spring.base.ComplexBookingID;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
@@ -186,4 +187,11 @@ public interface RESTProductService {
    * @return {@link String}
    */
   String testOptionalQueryParams( String query1, int query2 );
+
+  /**
+   * 
+   * @param pComplextBookingID
+   * @return {@link Boolean}
+   */
+  boolean processComplexBookingID( ComplexBookingID pComplextBookingID );
 }

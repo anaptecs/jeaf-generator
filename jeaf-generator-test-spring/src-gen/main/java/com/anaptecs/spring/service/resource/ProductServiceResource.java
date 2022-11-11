@@ -54,6 +54,8 @@ public class ProductServiceResource {
   /**
    * All request to this class will be delegated to {@link ProductService}.
    */
+  private final ProductService productService;
+
   /**
    * Initialize object.
    * 
@@ -62,11 +64,6 @@ public class ProductServiceResource {
   public ProductServiceResource( ProductService pProductService ) {
     productService = pProductService;
   }
-
-  /**
-   * All request to this class will be delegated to {@link ProductService}.
-   */
-  private final ProductService productService;
 
   /**
    * {@link ProductService#getProducts()}
