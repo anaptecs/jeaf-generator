@@ -17,7 +17,6 @@ import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ComplexBookingID;
 import com.anaptecs.spring.base.InventoryType;
 import com.anaptecs.spring.base.WeirdBooking;
-import com.anaptecs.spring.impl.SpringTestApplication;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

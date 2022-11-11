@@ -5,12 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import java.io.Serializable;
-
-import javax.validation.ConstraintViolationException;
-
-import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -18,12 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @version JEAF Release 1.4.x
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class SoftLinkBase implements Serializable {
-  /**
-   * Default serial version UID.
-   */
-  private static final long serialVersionUID = 1L;
-
+public abstract class SoftLinkBase {
   /**
    * Constant for the name of attribute "objectID".
    */
@@ -79,8 +68,6 @@ public abstract class SoftLinkBase implements Serializable {
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected SoftLinkBase( BuilderBase pBuilder ) {
-    // Ensure that builder is not null.
-    Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     objectID = pBuilder.objectID;
     dataUnit = pBuilder.dataUnit;
@@ -182,19 +169,6 @@ public abstract class SoftLinkBase implements Serializable {
     public SoftLink build( ) {
       return new SoftLink(this);
     }
-
-    /**
-     * Method creates a new validated instance of class SoftLink. The object will be initialized with the values of the
-     * builder and validated afterwards.
-     * 
-     * @return SoftLink Created and validated object. The method never returns null.
-     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
-     */
-    public SoftLink buildValidated( ) throws ConstraintViolationException {
-      SoftLink lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
-    }
   }
 
   /**
@@ -287,6 +261,14 @@ public abstract class SoftLinkBase implements Serializable {
     lBuilder.append(pIndent);
     lBuilder.append("objectID: ");
     lBuilder.append(objectID);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("dataUnit: ");
+    lBuilder.append(dataUnit);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("entity: ");
+    lBuilder.append(entity);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("refrenceID: ");

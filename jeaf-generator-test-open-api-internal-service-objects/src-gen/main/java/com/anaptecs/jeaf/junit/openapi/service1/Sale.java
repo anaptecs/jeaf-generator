@@ -219,6 +219,16 @@ public class Sale implements ServiceObject {
     lBuilder.append("transactionAmount: ");
     lBuilder.append(transactionAmount);
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("sale: ");
+    if (sale != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(sale.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     return lBuilder;
   }
 

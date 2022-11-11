@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -472,6 +473,41 @@ public class ChildBB extends ChildB {
     lBuilder.append(pIndent);
     lBuilder.append("deprecatedAttribute: ");
     lBuilder.append(deprecatedAttribute);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("deprecatedBs: ");
+    if (deprecatedBs != null) {
+      lBuilder.append(deprecatedBs.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (deprecatedBs != null) {
+      for (ChildB lNext : deprecatedBs) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("deprecatedParent: ");
+    if (deprecatedParent != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(deprecatedParent.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("deprecatedArray: ");
+    if (deprecatedArray != null) {
+      lBuilder.append(Arrays.toString(deprecatedArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

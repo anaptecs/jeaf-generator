@@ -19,6 +19,7 @@ public class SoftLinkSerializer extends JsonSerializer<SoftLink> {
   @Override
   public void serialize( SoftLink pObject, JsonGenerator pGenerator, SerializerProvider pSerializers )
     throws IOException {
-    pGenerator.writeString(pObject.getOpenID());
+    // Convert SoftLink into an public string only representation.
+    pGenerator.writeString(pObject.serialize());
   }
 }

@@ -5,10 +5,11 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
@@ -31,14 +32,14 @@ public class Campaign implements ServiceObject {
   /**
    * 
    */
-  private Set<DiscountOffer> discountOffers;
+  private List<DiscountOffer> discountOffers;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected Campaign( ) {
-    discountOffers = new HashSet<DiscountOffer>();
+    discountOffers = new ArrayList<DiscountOffer>();
   }
 
   /**
@@ -54,7 +55,7 @@ public class Campaign implements ServiceObject {
       discountOffers = pBuilder.discountOffers;
     }
     else {
-      discountOffers = new HashSet<DiscountOffer>();
+      discountOffers = new ArrayList<DiscountOffer>();
     }
   }
 
@@ -85,7 +86,7 @@ public class Campaign implements ServiceObject {
     /**
      * 
      */
-    private Set<DiscountOffer> discountOffers;
+    private List<DiscountOffer> discountOffers;
 
     /**
      * Use {@link Campaign#builder()} instead of private constructor to create new builder.
@@ -108,10 +109,10 @@ public class Campaign implements ServiceObject {
      * 
      * @param pDiscountOffers Collection with objects to which the association should be set.
      */
-    public Builder setDiscountOffers( Set<DiscountOffer> pDiscountOffers ) {
+    public Builder setDiscountOffers( List<DiscountOffer> pDiscountOffers ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDiscountOffers != null) {
-        discountOffers = new HashSet<DiscountOffer>(pDiscountOffers);
+        discountOffers = new ArrayList<DiscountOffer>(pDiscountOffers);
       }
       else {
         discountOffers = null;
@@ -149,7 +150,7 @@ public class Campaign implements ServiceObject {
    * @return Collection All DiscountOffer objects that belong to the association "discountOffers". The method never
    * returns null and the returned collection is modifiable.
    */
-  public Set<DiscountOffer> getDiscountOffers( ) {
+  public List<DiscountOffer> getDiscountOffers( ) {
     // Return all DiscountOffer objects directly without any protection against modification.
     return discountOffers;
   }
@@ -233,6 +234,22 @@ public class Campaign implements ServiceObject {
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("discountOffers: ");
+    if (discountOffers != null) {
+      lBuilder.append(discountOffers.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (discountOffers != null) {
+      for (DiscountOffer lNext : discountOffers) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 

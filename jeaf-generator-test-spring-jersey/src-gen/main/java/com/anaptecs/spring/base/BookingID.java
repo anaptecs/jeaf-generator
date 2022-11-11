@@ -14,21 +14,50 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingID {
   /**
-   * Constant for the name of attribute "bookingID".
+   * Constant for the name of attribute "referenceID".
    */
-  public static final String BOOKINGID = "bookingID";
+  public static final String REFERENCEID = "referenceID";
 
   /**
-   * String representation of this object.
+   * Constant for the name of attribute "externalRefID".
    */
-  private final String bookingID;
+  public static final String EXTERNALREFID = "externalRefID";
+
+  /**
+   * Constant for the name of attribute "inventory".
+   */
+  public static final String INVENTORY = "inventory";
+
+  /**
+   * Constant for the name of attribute "bookingCode".
+   */
+  public static final String BOOKINGCODE = "bookingCode";
+
+  /**
+   * 
+   */
+  private String referenceID;
+
+  /**
+   * 
+   */
+  private String externalRefID;
+
+  /**
+   * 
+   */
+  private InventoryType inventory;
+
+  /**
+   * 
+   */
+  private BookingCode bookingCode;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected BookingID( ) {
-    bookingID = null;
   }
 
   /**
@@ -38,7 +67,10 @@ public class BookingID {
    */
   protected BookingID( Builder pBuilder ) {
     // Read attribute values from builder.
-    bookingID = pBuilder.bookingID;
+    referenceID = pBuilder.referenceID;
+    externalRefID = pBuilder.externalRefID;
+    inventory = pBuilder.inventory;
+    bookingCode = pBuilder.bookingCode;
   }
 
   /**
@@ -67,9 +99,24 @@ public class BookingID {
    */
   public static class Builder {
     /**
-     * String representation of this object.
+     * 
      */
-    private String bookingID;
+    private String referenceID;
+
+    /**
+     * 
+     */
+    private String externalRefID;
+
+    /**
+     * 
+     */
+    private InventoryType inventory;
+
+    /**
+     * 
+     */
+    private BookingCode bookingCode;
 
     /**
      * Use {@link BookingID#builder()} instead of private constructor to create new builder.
@@ -83,17 +130,52 @@ public class BookingID {
     protected Builder( BookingID pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        bookingID = pObject.bookingID;
+        referenceID = pObject.referenceID;
+        externalRefID = pObject.externalRefID;
+        inventory = pObject.inventory;
+        bookingCode = pObject.bookingCode;
       }
     }
 
     /**
-     * Method returns the String representation of this object.
+     * Method sets the attribute "referenceID".
      * 
-     * @return String String representation of this object.
+     * @param pReferenceID Value to which the attribute "referenceID" should be set.
      */
-    public Builder setBookingID( String pBookingID ) {
-      bookingID = pBookingID;
+    public Builder setReferenceID( String pReferenceID ) {
+      // Assign value to attribute
+      referenceID = pReferenceID;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "externalRefID".
+     * 
+     * @param pExternalRefID Value to which the attribute "externalRefID" should be set.
+     */
+    public Builder setExternalRefID( String pExternalRefID ) {
+      // Assign value to attribute
+      externalRefID = pExternalRefID;
+      return this;
+    }
+
+    /**
+     * Method sets the association "inventory".
+     * 
+     * @param pInventory InventoryType to which the association "inventory" should be set.
+     */
+    public Builder setInventory( InventoryType pInventory ) {
+      inventory = pInventory;
+      return this;
+    }
+
+    /**
+     * Method sets the association "bookingCode".
+     * 
+     * @param pBookingCode BookingCode to which the association "bookingCode" should be set.
+     */
+    public Builder setBookingCode( BookingCode pBookingCode ) {
+      bookingCode = pBookingCode;
       return this;
     }
 
@@ -108,12 +190,101 @@ public class BookingID {
   }
 
   /**
-   * Method returns the String representation of this object.
+   * Method returns the attribute "referenceID".
    * 
-   * @return String String representation of this object.
+   * 
+   * @return String Value to which the attribute "referenceID" is set.
    */
-  public String getBookingID( ) {
-    return bookingID;
+  public String getReferenceID( ) {
+    return referenceID;
+  }
+
+  /**
+   * Method sets the attribute "referenceID".
+   * 
+   * 
+   * @param pReferenceID Value to which the attribute "referenceID" should be set.
+   */
+  public void setReferenceID( String pReferenceID ) {
+    // Assign value to attribute
+    referenceID = pReferenceID;
+  }
+
+  /**
+   * Method returns the attribute "externalRefID".
+   * 
+   * 
+   * @return String Value to which the attribute "externalRefID" is set.
+   */
+  public String getExternalRefID( ) {
+    return externalRefID;
+  }
+
+  /**
+   * Method sets the attribute "externalRefID".
+   * 
+   * 
+   * @param pExternalRefID Value to which the attribute "externalRefID" should be set.
+   */
+  public void setExternalRefID( String pExternalRefID ) {
+    // Assign value to attribute
+    externalRefID = pExternalRefID;
+  }
+
+  /**
+   * Method returns the association "inventory".
+   * 
+   *
+   * @return InventoryType InventoryType to which the association "inventory" is set.
+   */
+  public InventoryType getInventory( ) {
+    return inventory;
+  }
+
+  /**
+   * Method sets the association "inventory".
+   * 
+   * 
+   * @param pInventory InventoryType to which the association "inventory" should be set.
+   */
+  public void setInventory( InventoryType pInventory ) {
+    inventory = pInventory;
+  }
+
+  /**
+   * Method unsets the association "inventory".
+   * 
+   */
+  public final void unsetInventory( ) {
+    inventory = null;
+  }
+
+  /**
+   * Method returns the association "bookingCode".
+   * 
+   *
+   * @return BookingCode BookingCode to which the association "bookingCode" is set.
+   */
+  public BookingCode getBookingCode( ) {
+    return bookingCode;
+  }
+
+  /**
+   * Method sets the association "bookingCode".
+   * 
+   * 
+   * @param pBookingCode BookingCode to which the association "bookingCode" should be set.
+   */
+  public void setBookingCode( BookingCode pBookingCode ) {
+    bookingCode = pBookingCode;
+  }
+
+  /**
+   * Method unsets the association "bookingCode".
+   * 
+   */
+  public final void unsetBookingCode( ) {
+    bookingCode = null;
   }
 
   /**
@@ -128,9 +299,27 @@ public class BookingID {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("bookingID: ");
-    lBuilder.append(bookingID);
+    lBuilder.append("referenceID: ");
+    lBuilder.append(referenceID);
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("externalRefID: ");
+    lBuilder.append(externalRefID);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("inventory: ");
+    lBuilder.append(inventory);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("bookingCode: ");
+    if (bookingCode != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(bookingCode.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     return lBuilder;
   }
 

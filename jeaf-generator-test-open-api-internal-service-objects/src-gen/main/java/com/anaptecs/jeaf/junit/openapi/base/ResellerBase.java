@@ -518,6 +518,38 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
+    lBuilder.append("channels: ");
+    if (channels != null) {
+      lBuilder.append(channels.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (channels != null) {
+      for (Channel lNext : channels) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("products: ");
+    if (products != null) {
+      lBuilder.append(products.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (products != null) {
+      for (Product lNext : products) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
     lBuilder.append("name: ");
     lBuilder.append(name);
     lBuilder.append(System.lineSeparator());

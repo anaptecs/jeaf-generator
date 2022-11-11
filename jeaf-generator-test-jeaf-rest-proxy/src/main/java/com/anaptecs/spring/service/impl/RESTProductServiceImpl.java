@@ -25,6 +25,7 @@ import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
+import com.anaptecs.spring.base.ComplexBookingID;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
@@ -220,5 +221,10 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
   @Override
   public String testOptionalQueryParams( String pQuery1, int pQuery2 ) {
     return null;
+  }
+
+  @Override
+  public boolean processComplexBookingID( ComplexBookingID pComplextBookingID ) {
+    return false;
   }
 }

@@ -14,7 +14,10 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -27,11 +30,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
+import com.anaptecs.spring.base.BookingCode;
+import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
+import com.anaptecs.spring.base.ComplexBookingID;
+import com.anaptecs.spring.base.ComplexBookingType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
+import com.anaptecs.spring.base.InventoryType;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
@@ -51,21 +60,40 @@ import com.anaptecs.spring.service.RESTProductService;
 @RestController
 public class RESTProductServiceResource {
   /**
-   * All request to this class will be delegated to {@link RESTProductService}.
+   * List contains all classes that are involved in the serialization process of class ComplexBookingID. This
+   * information is required by some serialization mechanisms for efficiency and security reasons.
    */
-  /**
-   * Initialize object.
-   * 
-   * @param pRESTProductService Dependency on concrete {@link RESTProductService} implementation that should be used.
-   */
-  public RESTProductServiceResource( RESTProductService pRESTProductService ) {
-    rESTProductService = pRESTProductService;
+  private static final List<Class<?>> COMPLEXBOOKINGID_SERIALIZED_CLASSES;
+  static {
+    List<Class<?>> lClasses =
+        Arrays.asList(ComplexBookingID.class, ArrayList.class, BookingID.class, InventoryType.class, BookingCode.class,
+            ComplexBookingType.class, ComplexBookingType.ComplexBookingTypeType.class, String[].class);
+    COMPLEXBOOKINGID_SERIALIZED_CLASSES = Collections.unmodifiableList(lClasses);
   }
+
+  /**
+   * REST interface makes usage of so called composite data types. As Spring itself is not able to do conversions from a
+   * String representation into a real object this is done in the generated REST Controller.
+   */
+  private final CompositeTypeConverter compositeTypeConverter;
 
   /**
    * All request to this class will be delegated to {@link RESTProductService}.
    */
   private final RESTProductService rESTProductService;
+
+  /**
+   * Initialize object.
+   * 
+   * @param pRESTProductService Dependency on concrete {@link RESTProductService} implementation that should be used.
+   * @param pCompositeTypeConverter Composite type converter is used convert types from their string representation to a
+   * real object that can be processed internally.
+   */
+  public RESTProductServiceResource( RESTProductService pRESTProductService,
+      CompositeTypeConverter pCompositeTypeConverter ) {
+    rESTProductService = pRESTProductService;
+    compositeTypeConverter = pCompositeTypeConverter;
+  }
 
   /**
    * {@link RESTProductService#getProducts()}
@@ -346,5 +374,18 @@ public class RESTProductServiceResource {
       @RequestParam(name = "query2", required = true) int query2 ) {
     // Delegate request to service.
     return rESTProductService.testOptionalQueryParams(query1, query2);
+  }
+
+  /**
+   * {@link RESTProductService#processComplexBookingID()}
+   */
+  @RequestMapping(path = "complex/{bookingID}", method = { RequestMethod.GET })
+  public boolean processComplexBookingID(
+      @PathVariable(name = "bookingID", required = true) String pComplextBookingIDAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    ComplexBookingID pComplextBookingID = compositeTypeConverter.deserializeObject(pComplextBookingIDAsBasicType,
+        ComplexBookingID.class, COMPLEXBOOKINGID_SERIALIZED_CLASSES);
+    // Delegate request to service.
+    return rESTProductService.processComplexBookingID(pComplextBookingID);
   }
 }

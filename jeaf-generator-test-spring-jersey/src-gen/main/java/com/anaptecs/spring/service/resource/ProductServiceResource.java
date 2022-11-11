@@ -16,7 +16,6 @@ import java.time.OffsetTime;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
@@ -34,6 +33,8 @@ import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anaptecs.jeaf.workload.api.Workload;
 import com.anaptecs.jeaf.workload.api.WorkloadManager;
@@ -67,7 +68,7 @@ public class ProductServiceResource {
   /**
    * All request to this class will be delegated to {@link ProductService}.
    */
-  @Inject
+  @Autowired
   private ProductService productService;
 
   /**
