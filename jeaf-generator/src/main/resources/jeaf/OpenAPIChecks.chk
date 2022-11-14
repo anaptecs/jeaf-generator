@@ -8,6 +8,7 @@ extension jeaf::RESTFunctions;
 
 // Checks for stereotype RESTResource
 context RESTResource if runChecks("RESTResource") ERROR this.getErrorMessage("9104", {name}): this.hasValidRESTResourcePath() == true;
+context RESTResource if runChecks("RESTResource") ERROR	this.getErrorMessage("9130", {"RESTResource", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 
 
 // Checks for stereotype RESTOperation
@@ -20,6 +21,7 @@ context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9111", {((NamedElement)owner).name + "." + name}): this.areAllInputParametersNamed() == true;
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9112", {((NamedElement)owner).name + "." + name, this.getBodyParamNames().toString()}): this.getBodyParamNames().size < 2 ;
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9113", {((NamedElement)owner).name + "." + name, httpMethods.toString()}): this.hasUnsupportedRequestBody() == false ;
+
 context RESTOperation if runChecks("RESTOperation") WARNING this.getWarningMessage("9101", {((NamedElement)owner).name + "." + name, this.getOpenAPIIncomaptibleParameterTypes().asParamErrorMessage().toString()}): this.getOpenAPIIncomaptibleParameterTypes().size == 0;
 
 

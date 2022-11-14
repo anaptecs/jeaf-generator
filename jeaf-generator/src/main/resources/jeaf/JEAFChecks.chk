@@ -52,7 +52,7 @@ context DomainObject if runChecks("DomainObject") WARNING this.getWarningMessage
 // Checks for stereotype JEAFService
 context JEAFService if runChecks("JEAFService") ERROR this.getErrorMessage("9126", {name}): ownedOperation.forAll( e | e.isSupportedReturnType() == true);
 context JEAFService if runChecks("JEAFService") ERROR this.getErrorMessage("9127", {"JEAFService", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
-
+context JEAFService if runChecks("JEAFService") ERROR this.getErrorMessage("9130", {"JEAFService", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 context JEAFService if runChecks("JEAFService") WARNING this.getWarningMessage("9122", {"JEAFService", name}): ownedComment.size  > 0;
 
 
