@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.anaptecs.jeaf.generator</groupId>
 		<artifactId>jeaf-generator-project</artifactId>
-		<version>1.6.70-SNAPSHOT</version>
+		<version>1.6.71-SNAPSHOT</version>
 	</parent>
 
 	<name>JEAF Generator Test Custom Extension Usage</name>
@@ -76,6 +76,7 @@
 
 					<!-- Define what should be generated. By default nothing is generated. -->
 					<generateOpenAPISpec>true</generateOpenAPISpec>
+					<addIgnoredHeadersToOpenAPISpec>true</addIgnoredHeadersToOpenAPISpec>
 
 					<!-- Define information that are written to file headers -->
 					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>

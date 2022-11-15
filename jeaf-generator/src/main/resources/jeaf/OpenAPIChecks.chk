@@ -8,6 +8,7 @@ extension jeaf::RESTFunctions;
 
 // Checks for stereotype RESTResource
 context RESTResource if runChecks("RESTResource") ERROR this.getErrorMessage("9104", {name}): this.hasValidRESTResourcePath() == true;
+context RESTResource if runChecks("RESTResource") ERROR	this.getErrorMessage("9130", {"RESTResource", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 
 
 // Checks for stereotype RESTOperation
@@ -20,6 +21,7 @@ context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9111", {((NamedElement)owner).name + "." + name}): this.areAllInputParametersNamed() == true;
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9112", {((NamedElement)owner).name + "." + name, this.getBodyParamNames().toString()}): this.getBodyParamNames().size < 2 ;
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9113", {((NamedElement)owner).name + "." + name, httpMethods.toString()}): this.hasUnsupportedRequestBody() == false ;
+
 context RESTOperation if runChecks("RESTOperation") WARNING this.getWarningMessage("9101", {((NamedElement)owner).name + "." + name, this.getOpenAPIIncomaptibleParameterTypes().asParamErrorMessage().toString()}): this.getOpenAPIIncomaptibleParameterTypes().size == 0;
 
 
@@ -52,6 +54,9 @@ context OpenAPIDataType if runChecks("OpenAPIDataType") WARNING this.getWarningM
 // Checks for stereotype PathParam
 context PathParam if runChecks("PathParam") ERROR this.getErrorMessage("9120", {this.fqn()}): this.lower == 1;
 context PathParam if runChecks("PathParam") ERROR this.getErrorMessage("9120", {this.fqn()}): this.isMultivalued() == false;
+
+// Checks for stereotype HeaderParam
+context HeaderParam if runChecks("HeaderParam") WARNING this.getWarningMessage("9153", {((NamedElement)owner).fqn(), this.getRESTHeaderParamName(), name}): this.isIgnoredHeaderParam() == false;
 
 
 // Checks for stereotype BeanParam

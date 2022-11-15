@@ -27,6 +27,8 @@ import com.anaptecs.jeaf.junit.core.TestServiceObject;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.rest.RESTTestService;
+import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
+import com.anaptecs.jeaf.rest.composite.api.jeaf.CompositeTypeConverterServiceProvider;
 import com.anaptecs.jeaf.workload.api.Workload;
 import com.anaptecs.jeaf.workload.api.WorkloadManager;
 import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;
@@ -254,5 +256,17 @@ public class RESTTestServiceResource {
    */
   private RESTTestService getRESTTestService( ) {
     return JEAF.getService(RESTTestService.class);
+  }
+
+  /**
+   * Method returns the composite type converter that should be used in this environment. This REST interface makes
+   * usage of so called composite data types. As Spring itself is not able to do conversions from a String
+   * representation into a real object this is done in the generated REST Controller.
+   * 
+   * @return {@link CompositeTypeConverter} CompositeTypeConverter implementation that is configured to be used here.
+   * The method never returns null.
+   */
+  private CompositeTypeConverter getCompositeTypeConverter( ) {
+    return JEAF.getServiceProvider(CompositeTypeConverterServiceProvider.class);
   }
 }

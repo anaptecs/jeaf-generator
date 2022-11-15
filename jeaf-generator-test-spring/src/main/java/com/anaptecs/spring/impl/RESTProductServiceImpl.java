@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.impl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -23,11 +25,15 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.stereotype.Service;
 
+import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
+import com.anaptecs.spring.base.ComplexBookingID;
+import com.anaptecs.spring.base.ComplexBookingType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
+import com.anaptecs.spring.base.InventoryType;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
@@ -122,5 +128,24 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public String testOptionalQueryParams( String pQuery1, int pQuery2 ) {
     return null;
+  }
+
+  @Override
+  public boolean processComplexBookingID( ComplexBookingID pComplextBookingID ) {
+    assertEquals(123456789, pComplextBookingID.getInternalID());
+    assertEquals(ComplexBookingType.VERY_COMPLEX, pComplextBookingID.getComplexBookingType());
+
+    BookingID lBookingID1 = pComplextBookingID.getBookingIDs().get(0);
+    assertEquals("REFUND_CODE", lBookingID1.getBookingCode().getCode());
+    assertEquals(InventoryType.SNCF, lBookingID1.getInventory());
+    assertEquals("XXYYZZ", lBookingID1.getReferenceID());
+    assertEquals("EXT_#äöß?\"§$§\"$\"%$", lBookingID1.getExternalRefID());
+
+    BookingID lBookingID2 = pComplextBookingID.getBookingIDs().get(1);
+    assertEquals("BOOKING_CODE", lBookingID2.getBookingCode().getCode());
+    assertEquals(InventoryType.SBB, lBookingID2.getInventory());
+    assertEquals("123456", lBookingID2.getReferenceID());
+    assertEquals("EXT-0987654321", lBookingID2.getExternalRefID());
+    return true;
   }
 }

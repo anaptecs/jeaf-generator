@@ -106,6 +106,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testGetSupportedCurrencies( ) throws Exception;
 
   /**
+   * Method test the implementation of service method testSpecialHeaderParams(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestSpecialHeaderParams( ) throws Exception;
+
+  /**
    * Method test the implementation of service method getProducts(...)
    * 
    * @throws Exception if the test fails.

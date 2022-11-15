@@ -40,6 +40,13 @@ public class LocalBeanParamType implements ServiceObject {
   private String localID;
 
   /**
+   * 
+   */
+  @HeaderParam("authorization")
+  @NotNull
+  private String authorization;
+
+  /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
@@ -57,6 +64,7 @@ public class LocalBeanParamType implements ServiceObject {
     // Read attribute values from builder.
     localKey = pBuilder.localKey;
     localID = pBuilder.localID;
+    authorization = pBuilder.authorization;
   }
 
   /**
@@ -95,6 +103,11 @@ public class LocalBeanParamType implements ServiceObject {
     private String localID;
 
     /**
+     * 
+     */
+    private String authorization;
+
+    /**
      * Use {@link LocalBeanParamType#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -108,6 +121,7 @@ public class LocalBeanParamType implements ServiceObject {
         // Read attribute values from passed object.
         localKey = pObject.localKey;
         localID = pObject.localID;
+        authorization = pObject.authorization;
       }
     }
 
@@ -130,6 +144,17 @@ public class LocalBeanParamType implements ServiceObject {
     public Builder setLocalID( String pLocalID ) {
       // Assign value to attribute
       localID = pLocalID;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "authorization".
+     * 
+     * @param pAuthorization Value to which the attribute "authorization" should be set.
+     */
+    public Builder setAuthorization( String pAuthorization ) {
+      // Assign value to attribute
+      authorization = pAuthorization;
       return this;
     }
 
@@ -200,6 +225,27 @@ public class LocalBeanParamType implements ServiceObject {
   }
 
   /**
+   * Method returns the attribute "authorization".
+   * 
+   * 
+   * @return String Value to which the attribute "authorization" is set.
+   */
+  public String getAuthorization( ) {
+    return authorization;
+  }
+
+  /**
+   * Method sets the attribute "authorization".
+   * 
+   * 
+   * @param pAuthorization Value to which the attribute "authorization" should be set.
+   */
+  public void setAuthorization( String pAuthorization ) {
+    // Assign value to attribute
+    authorization = pAuthorization;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -217,6 +263,10 @@ public class LocalBeanParamType implements ServiceObject {
     lBuilder.append(pIndent);
     lBuilder.append("localID: ");
     lBuilder.append(localID);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("authorization: ");
+    lBuilder.append(authorization);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

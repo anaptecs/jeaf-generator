@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Arrays;
+
 import javax.validation.constraints.Size;
 
 /**
@@ -293,6 +295,24 @@ public class ChildAA extends ChildA {
     lBuilder.append(pIndent);
     lBuilder.append("childAAAttribute: ");
     lBuilder.append(childAAAttribute);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("sizedArray: ");
+    if (sizedArray != null) {
+      lBuilder.append(Arrays.toString(sizedArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("requiredArray: ");
+    if (requiredArray != null) {
+      lBuilder.append(Arrays.toString(requiredArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

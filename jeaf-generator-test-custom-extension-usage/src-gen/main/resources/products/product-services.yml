@@ -2,7 +2,7 @@ openapi: 3.0.3
 
 info:
   title: Product Services
-  version: 1.6.70-SNAPSHOT
+  version: 1.6.71-SNAPSHOT
   description: >-
     This component represents the OpenAPI interface of the accounting service.
     
@@ -35,8 +35,8 @@ tags:
   - name: MasterData
     description: >-
       Tag marks all operations that are connected with Master Data.
-  - name: Another Tag
   - name: B Tag
+  - name: Another Tag
 
 paths:
   # ProductService
@@ -697,6 +697,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/localKey'
         - $ref: '#/components/parameters/localID'
+        - $ref: '#/components/parameters/authorization'
       responses:
         '200':
           description: >-
@@ -1144,6 +1145,34 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
     
 
+  /products/special-header-params:
+    get:
+      operationId: testSpecialHeaderParams
+      parameters:
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: content-type
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: ACCEPT
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+    
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
+
 
 security:
   - {}
@@ -1171,6 +1200,14 @@ components:
             write:pets: Modify pets
 
   parameters:
+    # com.anaptecs.jeaf.junit.openapi.service1.LocalBeanParamType.authorization
+    authorization:
+      name: authorization
+      in: header
+      schema:
+        type: string
+      required: true
+
     # com.anaptecs.jeaf.junit.openapi.service1.ChildBeanParameterType.childProperty
     childProperty:
       name: X-Child-Property

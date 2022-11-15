@@ -2,7 +2,7 @@ openapi: 3.0.3
 
 info:
   title: Product Services
-  version: 1.6.70-SNAPSHOT
+  version: 1.6.71-SNAPSHOT
   description: >-
     This component represents the OpenAPI interface of the accounting service.
     
@@ -35,8 +35,8 @@ tags:
   - name: MasterData
     description: >-
       Tag marks all operations that are connected with Master Data.
-  - name: Another Tag
   - name: B Tag
+  - name: Another Tag
 
 paths:
   # ProductService
@@ -1136,6 +1136,18 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
+
+  /products/special-header-params:
+    get:
+      operationId: testSpecialHeaderParams
+      responses:
     
     
         '400':

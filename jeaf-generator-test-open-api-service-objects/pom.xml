@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.anaptecs.jeaf.generator</groupId>
 		<artifactId>jeaf-generator-project</artifactId>
-		<version>1.6.70-SNAPSHOT</version>
+		<version>1.6.71-SNAPSHOT</version>
 	</parent>
 
 	<name>JEAF Generator Test OpenAPI Service Objects</name>
@@ -65,6 +65,18 @@
 			<artifactId>jeaf-json-impl</artifactId>
 		    <version>${jeaf.json.impl.version}</version>
 		    <scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-composite-type-api</artifactId>
+			<version>${jeaf.rest.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-composite-type-impl-kryo-jeaf</artifactId>
+			<version>${jeaf.rest.impl.version}</version>
 		</dependency>
 
 		<dependency>

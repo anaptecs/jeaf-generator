@@ -293,9 +293,36 @@ public class Booking {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
+    lBuilder.append("bookingID: ");
+    if (bookingID != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(bookingID.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
+    lBuilder.append(pIndent);
     lBuilder.append("customerName: ");
     lBuilder.append(customerName);
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("inventories: ");
+    if (inventories != null) {
+      lBuilder.append(inventories.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (inventories != null) {
+      for (InventoryType lNext : inventories) {
+        lBuilder.append(pIndent + "    ");
+        lBuilder.append(lNext.toString());
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 

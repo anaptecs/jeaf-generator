@@ -95,7 +95,10 @@ cached boolean generateOpenAPISpec() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateOpenAPISpec();
     
 cached boolean enableYAML11Compatibility() :    
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.enableYAML11Compatibility();    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.enableYAML11Compatibility();
+    
+cached boolean addIgnorableHeadersToOpenAPISpec() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.addIgnorableHeadersToOpenAPISpec();
     
 cached boolean generateJAXRSAnnotations() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateJAXRSAnnotations();
@@ -349,7 +352,7 @@ cached boolean isRESTLibrarySpringWebMVC():
   JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isRESTLibrarySpringWebMVC();
   
   
-cached boolean isCompositeDataType(uml::Class class):
+cached boolean isCompositeDataType(uml::Type class):
   if generatePublicObjectView() == false
   then false
   else 
@@ -360,7 +363,7 @@ cached boolean isCompositeDataType(uml::Class class):
 	  		then ((JMM::POJO) class).compositeDataType
 	  		else false;
  
-cached String getCompositeDateTypePublicFieldName(uml::Class class):
+cached String getCompositeDateTypePublicFieldName(uml::Type class):
   if class.isStereotypeApplied("POJO")
   then ((JMM::ServiceObject) class).compositeDateTypePublicFieldName
   else 
@@ -368,7 +371,7 @@ cached String getCompositeDateTypePublicFieldName(uml::Class class):
   		then ((JMM::POJO) class).compositeDateTypePublicFieldName
   		else false;
  
- cached boolean isCompositeDataTypeReadonly(uml::Class class):
+ cached boolean isCompositeDataTypeReadonly(uml::Type class):
   if class.isStereotypeApplied("POJO")
   then ((JMM::ServiceObject) class).compositeDataTypeReadonly
   else 
@@ -376,7 +379,7 @@ cached String getCompositeDateTypePublicFieldName(uml::Class class):
   		then ((JMM::POJO) class).compositeDataTypeReadonly
   		else false;
  
-cached boolean hasCompositeDateTypeCustomSerialization(uml::Class class):
+cached boolean hasCompositeDateTypeCustomSerialization(uml::Type class):
   if class.isStereotypeApplied("POJO")
   then ((JMM::ServiceObject) class).compositeDataTypeCustomSerialization
   else 
@@ -386,7 +389,7 @@ cached boolean hasCompositeDateTypeCustomSerialization(uml::Class class):
  
 
  
-cached boolean generateInternalViewOfCompositeDataType(uml::Class class):
+cached boolean generateInternalViewOfCompositeDataType(uml::Type class):
   if generatePublicObjectView() == true
   then false
   else 

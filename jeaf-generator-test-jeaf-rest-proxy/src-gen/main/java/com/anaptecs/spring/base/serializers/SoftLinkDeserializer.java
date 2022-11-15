@@ -26,8 +26,7 @@ public class SoftLinkDeserializer extends JsonDeserializer<SoftLink> {
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     // We expect that data types are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
-      // Convert public string representation of SoftLink into real object.
-      return SoftLink.deserialize(lNode.asText());
+      return SoftLink.builder().setOpenID(lNode.asText()).build();
     }
     // Node is not a TextNode
     else {

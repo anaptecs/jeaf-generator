@@ -29,6 +29,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testTestChildBeanParameter"));
     lSuite.addTest(new ProductServiceTest("testCreateChannelCode"));
     lSuite.addTest(new ProductServiceTest("testGetSupportedCurrencies"));
+    lSuite.addTest(new ProductServiceTest("testTestSpecialHeaderParams"));
     lSuite.addTest(new ProductServiceTest("testGetProducts"));
     lSuite.addTest(new ProductServiceTest("testDeprecatedContext"));
     lSuite.addTest(new ProductServiceTest("testDeprecatedComplexReturn"));
@@ -174,6 +175,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testGetSupportedCurrencies( ) throws Exception {
     // TODO Implement test for service method getSupportedCurrencies(...)
+  }
+
+  /**
+   * Method test the implementation of service method testSpecialHeaderParams
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestSpecialHeaderParams( ) throws Exception {
+    // TODO Implement test for service method testSpecialHeaderParams(...)
   }
 
   /**

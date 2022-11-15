@@ -242,6 +242,26 @@ public class DirectedEdge {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
+    lBuilder.append("start: ");
+    if (start != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(start.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("end: ");
+    if (end != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(end.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
+    lBuilder.append(pIndent);
     lBuilder.append("link: ");
     lBuilder.append(link);
     lBuilder.append(System.lineSeparator());

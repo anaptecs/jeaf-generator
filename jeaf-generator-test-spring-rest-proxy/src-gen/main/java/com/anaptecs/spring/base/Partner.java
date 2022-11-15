@@ -189,6 +189,22 @@ public class Partner {
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("postalAddresses: ");
+    if (postalAddresses != null) {
+      lBuilder.append(postalAddresses.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (postalAddresses != null) {
+      for (PostalAddress lNext : postalAddresses) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 

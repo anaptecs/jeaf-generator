@@ -33,6 +33,7 @@ import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
+import com.anaptecs.spring.base.ComplexBookingID;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
@@ -842,5 +843,27 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pComplextBookingID
+   * @return {@link Boolean}
+   */
+  @Override
+  public boolean processComplexBookingID( ComplexBookingID pComplextBookingID ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("complex/");
+    lPathBuilder.append(pComplextBookingID.getBookingID());
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Boolean.class);
   }
 }

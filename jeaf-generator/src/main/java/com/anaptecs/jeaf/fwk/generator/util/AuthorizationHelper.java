@@ -19,6 +19,7 @@ import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.UseCase;
@@ -98,7 +99,8 @@ public class AuthorizationHelper {
     Set<String> lAuthorizationTypes = new HashSet<String>();
 
     for (Element lNextElement : lAllOwnedElements) {
-      if (lNextElement instanceof Interface && ClassUtil.isStereotypeApplied(lNextElement, "JEAFService")) {
+      if (lNextElement instanceof Interface && ClassUtil.isStereotypeApplied(lNextElement, "JEAFService")
+          && GeneratorCommons.isInGeneratorWhitelist((NamedElement) lNextElement)) {
         Interface lService = (Interface) lNextElement;
         final String lServiceName = "." + Naming.getFullyQualifiedName(lService);
         // Get names of all authorization types of the current service.
