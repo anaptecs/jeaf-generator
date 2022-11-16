@@ -6,10 +6,10 @@ cached boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 	getOpenAPITypes(spec).size > 0;
 	
 cached List[JMM::OpenAPIType] getOpenAPITypes(JMM::OpenAPI3Specification spec):
-	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIType).select(e|e.isInGeneratorWhitelist());
+	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIType).select(e|e.ignore() == false);
 	
 cached List[JMM::OpenAPIDataType] getOpenAPIDataTypes(JMM::OpenAPI3Specification spec):
-	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIDataType).select(e|e.isInGeneratorWhitelist());
+	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIDataType).select(e|e.ignore() == false);
 	
 cached boolean hasOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
     getOpenAPISecuritySchemes(spec).size > 0;
@@ -36,7 +36,7 @@ cached boolean hasOpenAPIEnums(JMM::OpenAPI3Specification spec):
 	getOpenAPIEnums(spec).size > 0;
 	
 cached List[JMM::OpenAPIEnumeration] getOpenAPIEnums(JMM::OpenAPI3Specification spec):
-	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIEnumeration).select(e|e.isInGeneratorWhitelist());
+	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIEnumeration).select(e|e.ignore() == false);
 	
 cached boolean referencesRESTResources(JMM::OpenAPI3Specification spec):
 	spec.getRESTResources().size > 0;

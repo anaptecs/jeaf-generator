@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.anaptecs.jeaf.generator</groupId>
 		<artifactId>jeaf-generator-project</artifactId>
-		<version>1.6.71-SNAPSHOT</version>
+		<version>1.6.72-SNAPSHOT</version>
 	</parent>
 
 	<name>JEAF Generator Test OpenAPI</name>
@@ -148,6 +148,23 @@
 					<!-- Define code formatting style -->
 					<!-- <conventionFile>anaptecs_code_guideline.xml</conventionFile> -->
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>it.traeck.tools.openapi</groupId>
+				<artifactId>openapi-validator-maven-plugin</artifactId>
+				<version>${openapi-validator-plugin}</version>
+				<executions>
+					  <execution>
+					    <goals>
+					      	<goal>validate</goal>
+					    </goals>
+					    <phase>generate-sources</phase>
+					    <configuration>
+					      <inputSpec>${project.basedir}/src-gen/main/resources/products/product-services.yml</inputSpec>
+					    </configuration>
+					  </execution>
+				</executions>			
 			</plugin>
 
 			<plugin>
@@ -311,6 +328,19 @@
 										<versionRange>[5.4.0,)</versionRange>
 										<goals>
 											<goal>generate</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>it.traeck.tools.openapi</groupId>
+										<artifactId>openapi-validator-maven-plugin</artifactId>
+										<versionRange>[1.0.2,)</versionRange>
+										<goals>
+											<goal>validate</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>

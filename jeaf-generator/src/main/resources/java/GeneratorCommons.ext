@@ -418,3 +418,6 @@ String toLocalVar(String name) :
  	if( name.startsWith("p"))
  	then name.replaceFirst("p", "l")
  	else "l" + name.toFirstUpper();
+
+cached boolean ignore(uml::Element element):
+	element.isStereotypeApplied("Ignore");
