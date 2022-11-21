@@ -7,6 +7,10 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import com.anaptecs.jeaf.json.annotations.ModuleFactory;
 import com.anaptecs.jeaf.json.api.ObjectMapperModuleFactory;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.BigDecimalCodeDeserializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.BigDecimalCodeSerializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.BigIntegerCodeDeserializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.BigIntegerCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BookingCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BookingCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.BookingIDDeserializer;
@@ -27,6 +31,8 @@ import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingTypeDeseri
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingTypeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.CurrencyCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.CurrencyCodeSerializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.DataTypeWithConstraintsDeserializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.DataTypeWithConstraintsSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DataUnitDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DataUnitSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeDeserializer;
@@ -79,6 +85,10 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     // Create module for serializers / deserializers that are located in this package
     SimpleModule lModule = new SimpleModule(this.getClass().getName());
     // Add serializers and deserializers for datatypes
+    lModule.addSerializer(BigDecimalCode.class, new BigDecimalCodeSerializer());
+    lModule.addDeserializer(BigDecimalCode.class, new BigDecimalCodeDeserializer());
+    lModule.addSerializer(BigIntegerCode.class, new BigIntegerCodeSerializer());
+    lModule.addDeserializer(BigIntegerCode.class, new BigIntegerCodeDeserializer());
     lModule.addSerializer(BookingCode.class, new BookingCodeSerializer());
     lModule.addDeserializer(BookingCode.class, new BookingCodeDeserializer());
     lModule.addSerializer(BookingID.class, new BookingIDSerializer());
@@ -97,6 +107,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addDeserializer(ComplexBookingID.class, new ComplexBookingIDDeserializer());
     lModule.addSerializer(CurrencyCode.class, new CurrencyCodeSerializer());
     lModule.addDeserializer(CurrencyCode.class, new CurrencyCodeDeserializer());
+    lModule.addSerializer(DataTypeWithConstraints.class, new DataTypeWithConstraintsSerializer());
+    lModule.addDeserializer(DataTypeWithConstraints.class, new DataTypeWithConstraintsDeserializer());
     lModule.addSerializer(DoubleCode.class, new DoubleCodeSerializer());
     lModule.addDeserializer(DoubleCode.class, new DoubleCodeDeserializer());
     lModule.addSerializer(DoubleCodeType.class, new DoubleCodeTypeSerializer());

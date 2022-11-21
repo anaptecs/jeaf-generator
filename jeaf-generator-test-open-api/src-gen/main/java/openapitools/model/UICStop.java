@@ -39,7 +39,10 @@ import openapitools.JSON;
  * UICStop
  */
 @JsonPropertyOrder({
-  UICStop.JSON_PROPERTY_UIC_CODE
+  UICStop.JSON_PROPERTY_UIC_CODE,
+  UICStop.JSON_PROPERTY_PRIORITY,
+  UICStop.JSON_PROPERTY_CODE,
+  UICStop.JSON_PROPERTY_INDEX2
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
@@ -47,6 +50,15 @@ import openapitools.JSON;
 public class UICStop extends Stop {
   public static final String JSON_PROPERTY_UIC_CODE = "uicCode";
   private String uicCode;
+
+  public static final String JSON_PROPERTY_PRIORITY = "priority";
+  private Integer priority;
+
+  public static final String JSON_PROPERTY_CODE = "code";
+  private Long code;
+
+  public static final String JSON_PROPERTY_INDEX2 = "index2";
+  private Integer index2;
 
   public UICStop() { 
   }
@@ -77,6 +89,89 @@ public class UICStop extends Stop {
   }
 
 
+  public UICStop priority(Integer priority) {
+    this.priority = priority;
+    return this;
+  }
+
+   /**
+   * Get priority
+   * minimum: 1
+   * maximum: 32
+   * @return priority
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_PRIORITY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Integer getPriority() {
+    return priority;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PRIORITY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setPriority(Integer priority) {
+    this.priority = priority;
+  }
+
+
+  public UICStop code(Long code) {
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * Get code
+   * minimum: 1000
+   * maximum: 9999
+   * @return code
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Long getCode() {
+    return code;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setCode(Long code) {
+    this.code = code;
+  }
+
+
+  public UICStop index2(Integer index2) {
+    this.index2 = index2;
+    return this;
+  }
+
+   /**
+   * Get index2
+   * minimum: 0
+   * @return index2
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_INDEX2)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Integer getIndex2() {
+    return index2;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INDEX2)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setIndex2(Integer index2) {
+    this.index2 = index2;
+  }
+
+
   /**
    * Return true if this UICStop object is equal to o.
    */
@@ -90,12 +185,15 @@ public class UICStop extends Stop {
     }
     UICStop uiCStop = (UICStop) o;
     return Objects.equals(this.uicCode, uiCStop.uicCode) &&
+        Objects.equals(this.priority, uiCStop.priority) &&
+        Objects.equals(this.code, uiCStop.code) &&
+        Objects.equals(this.index2, uiCStop.index2) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(uicCode, super.hashCode());
+    return Objects.hash(uicCode, priority, code, index2, super.hashCode());
   }
 
   @Override
@@ -104,6 +202,9 @@ public class UICStop extends Stop {
     sb.append("class UICStop {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    uicCode: ").append(toIndentedString(uicCode)).append("\n");
+    sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    index2: ").append(toIndentedString(index2)).append("\n");
     sb.append("}");
     return sb.toString();
   }

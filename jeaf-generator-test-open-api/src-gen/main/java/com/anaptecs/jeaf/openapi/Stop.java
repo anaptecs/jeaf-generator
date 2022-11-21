@@ -44,6 +44,9 @@ public class Stop {
   @JsonProperty("_links")
   private List<LinkObject> _links = null;
 
+  @JsonProperty("index")
+  private Integer index = null;
+
   public Stop objectType(String objectType) {
     this.objectType = objectType;
     return this;
@@ -106,6 +109,26 @@ public class Stop {
     this._links = _links;
   }
 
+  public Stop index(Integer index) {
+    this.index = index;
+    return this;
+  }
+
+   /**
+   * Get index
+   * minimum: 0
+   * maximum: 32
+   * @return index
+  **/
+  @Schema(required = true, description = "")
+  public Integer getIndex() {
+    return index;
+  }
+
+  public void setIndex(Integer index) {
+    this.index = index;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -118,12 +141,13 @@ public class Stop {
     Stop stop = (Stop) o;
     return Objects.equals(this.objectType, stop.objectType) &&
         Objects.equals(this.name, stop.name) &&
-        Objects.equals(this._links, stop._links);
+        Objects.equals(this._links, stop._links) &&
+        Objects.equals(this.index, stop.index);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectType, name, _links);
+    return Objects.hash(objectType, name, _links, index);
   }
 
 
@@ -135,6 +159,7 @@ public class Stop {
     sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -38,6 +38,9 @@ public class CodeTypeUsageTest {
   @JsonProperty("stringCode")
   private String stringCode = null;
 
+  @JsonProperty("shortCode")
+  private Integer shortCode = null;
+
   public CodeTypeUsageTest booleanCode(Boolean booleanCode) {
     this.booleanCode = booleanCode;
     return this;
@@ -123,6 +126,25 @@ public class CodeTypeUsageTest {
     this.stringCode = stringCode;
   }
 
+  public CodeTypeUsageTest shortCode(Integer shortCode) {
+    this.shortCode = shortCode;
+    return this;
+  }
+
+   /**
+   * Get shortCode
+   * maximum: 4711
+   * @return shortCode
+  **/
+  @Schema(required = true, description = "")
+  public Integer getShortCode() {
+    return shortCode;
+  }
+
+  public void setShortCode(Integer shortCode) {
+    this.shortCode = shortCode;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -136,12 +158,13 @@ public class CodeTypeUsageTest {
     return Objects.equals(this.booleanCode, codeTypeUsageTest.booleanCode) &&
         Objects.equals(this.booleanCodeAssociation, codeTypeUsageTest.booleanCodeAssociation) &&
         Objects.equals(this.shortCodeTypeAssociation, codeTypeUsageTest.shortCodeTypeAssociation) &&
-        Objects.equals(this.stringCode, codeTypeUsageTest.stringCode);
+        Objects.equals(this.stringCode, codeTypeUsageTest.stringCode) &&
+        Objects.equals(this.shortCode, codeTypeUsageTest.shortCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(booleanCode, booleanCodeAssociation, shortCodeTypeAssociation, stringCode);
+    return Objects.hash(booleanCode, booleanCodeAssociation, shortCodeTypeAssociation, stringCode, shortCode);
   }
 
 
@@ -154,6 +177,7 @@ public class CodeTypeUsageTest {
     sb.append("    booleanCodeAssociation: ").append(toIndentedString(booleanCodeAssociation)).append("\n");
     sb.append("    shortCodeTypeAssociation: ").append(toIndentedString(shortCodeTypeAssociation)).append("\n");
     sb.append("    stringCode: ").append(toIndentedString(stringCode)).append("\n");
+    sb.append("    shortCode: ").append(toIndentedString(shortCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

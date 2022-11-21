@@ -122,6 +122,18 @@ public class POI extends Stop {
     }
 
     /**
+     * Method sets the attribute "index".
+     * 
+     * @param pIndex Value to which the attribute "index" should be set.
+     */
+    @Override
+    public Builder setIndex( byte pIndex ) {
+      // Call super class implementation.
+      super.setIndex(pIndex);
+      return this;
+    }
+
+    /**
      * Method sets the attribute "description".
      * 
      * @param pDescription Value to which the attribute "description" should be set.

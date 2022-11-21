@@ -7,7 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -27,7 +27,7 @@ public class BookingCode implements ServiceObject {
   /**
    * 
    */
-  @NotNull
+  @Size(min = 3, max = 5)
   private String code;
 
   /**
@@ -77,6 +77,7 @@ public class BookingCode implements ServiceObject {
     /**
      * 
      */
+    @Size(min = 3, max = 5)
     private String code;
 
     /**

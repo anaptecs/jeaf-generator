@@ -385,6 +385,7 @@ components:
         - booleanCode
         - shortCodeTypeAssociation
         - stringCode
+        - shortCode
       properties:
         booleanCode:
           $ref: '#/components/schemas/BooleanCodeType'
@@ -399,6 +400,11 @@ components:
           minItems: 1
         stringCode:
           $ref: '#/components/schemas/StringCodeType'
+        shortCode:
+          type: integer
+          format: int32
+          maximum: 4711
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.Company
     Company:
@@ -544,6 +550,53 @@ components:
               type: integer
               format: int32
               nullable: false
+
+    # com.anaptecs.jeaf.junit.openapi.base.HeavyDataTypeUser
+    HeavyDataTypeUser:
+      type: object
+      additionalProperties: false
+      required:
+        - booleanCode
+        - byteCode
+        - shortCode
+        - integerCode
+        - floatCode
+        - doubleCode
+        - bigInegerCode
+        - bigDecimalCode
+      properties:
+        booleanCode:
+          type: boolean
+          nullable: false
+        byteCode:
+          type: integer
+          format: int32
+          nullable: false
+        shortCode:
+          type: integer
+          format: int32
+          maximum: 4711
+          nullable: false
+        integerCode:
+          type: integer
+          format: int32
+          nullable: false
+        floatCode:
+          type: number
+          format: float
+          nullable: false
+        doubleCode:
+          type: number
+          format: double
+          nullable: false
+        bigInegerCode:
+          type: integer
+          format: int64
+          nullable: false
+        bigDecimalCode:
+          type: number
+          format: double
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.InventoryType
     InventoryType:
@@ -1391,6 +1444,7 @@ components:
       required:
         - objectType
         - name
+        - index
       properties:
         objectType:
           description: Attribute is used as discriminator for inheritance between data types.
@@ -1402,6 +1456,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LinkObject'
+        index:
+          type: integer
+          format: int32
+          maximum: 32
+          minimum: 0
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.StopPlaceRef
     StopPlaceRef:
@@ -1456,9 +1516,34 @@ components:
           additionalProperties: false
           required:
             - uicCode
+            - priority
+            - code
+            - index2
           properties:
             uicCode:
               type: string
+              minLength: 32
+              maxLength: 255
+              nullable: false
+            priority:
+              type: integer
+              format: int32
+              maximum: 32.777
+              exclusiveMaximum: true
+              minimum: 1.025
+              exclusiveMinimum: true
+              nullable: false
+            code:
+              type: integer
+              format: int64
+              minimum: 1000
+              maximum: 9999
+              nullable: false
+            index2:
+              type: integer
+              format: int32
+              minimum: 0
+              exclusiveMinimum: true
               nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.UICStopPlace
