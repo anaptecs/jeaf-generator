@@ -11,7 +11,9 @@ import java.util.List;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -49,6 +51,13 @@ public class Stop implements ServiceObject {
   private List<LinkObject> links;
 
   /**
+   * 
+   */
+  @Max(value = 32)
+  @PositiveOrZero
+  private byte index;
+
+  /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
@@ -72,6 +81,7 @@ public class Stop implements ServiceObject {
     else {
       links = new ArrayList<LinkObject>();
     }
+    index = pBuilder.index;
   }
 
   /**
@@ -109,6 +119,13 @@ public class Stop implements ServiceObject {
     private List<LinkObject> links;
 
     /**
+     * 
+     */
+    @Max(value = 32)
+    @PositiveOrZero
+    private byte index;
+
+    /**
      * Use {@link Stop#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -122,6 +139,7 @@ public class Stop implements ServiceObject {
         // Read attribute values from passed object.
         name = pObject.name;
         links = pObject.links;
+        index = pObject.index;
       }
     }
 
@@ -149,6 +167,17 @@ public class Stop implements ServiceObject {
       else {
         links = null;
       }
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "index".
+     * 
+     * @param pIndex Value to which the attribute "index" should be set.
+     */
+    public Builder setIndex( byte pIndex ) {
+      // Assign value to attribute
+      index = pIndex;
       return this;
     }
 
@@ -260,6 +289,27 @@ public class Stop implements ServiceObject {
   }
 
   /**
+   * Method returns the attribute "index".
+   * 
+   * 
+   * @return byte Value to which the attribute "index" is set.
+   */
+  public byte getIndex( ) {
+    return index;
+  }
+
+  /**
+   * Method sets the attribute "index".
+   * 
+   * 
+   * @param pIndex Value to which the attribute "index" should be set.
+   */
+  public void setIndex( byte pIndex ) {
+    // Assign value to attribute
+    index = pIndex;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -290,6 +340,10 @@ public class Stop implements ServiceObject {
         lBuilder.append(System.lineSeparator());
       }
     }
+    lBuilder.append(pIndent);
+    lBuilder.append("index: ");
+    lBuilder.append(index);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

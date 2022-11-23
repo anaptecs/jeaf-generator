@@ -8,6 +8,12 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.List;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
@@ -27,9 +33,45 @@ public class UICStop extends Stop {
   public static final String UICCODE = "uicCode";
 
   /**
+   * Constant for the name of attribute "priority".
+   */
+  public static final String PRIORITY = "priority";
+
+  /**
+   * Constant for the name of attribute "code".
+   */
+  public static final String CODE = "code";
+
+  /**
+   * Constant for the name of attribute "index2".
+   */
+  public static final String INDEX2 = "index2";
+
+  /**
    * 
    */
+  @Size(min = 32, max = 255)
   private String uicCode;
+
+  /**
+   * 
+   */
+  @DecimalMax(value = "32.777", inclusive = true)
+  @DecimalMin(value = "1.025", inclusive = true)
+  private int priority;
+
+  /**
+   * 
+   */
+  @Min(value = 1000)
+  @Max(value = 9999)
+  private long code;
+
+  /**
+   * 
+   */
+  @Positive
+  private byte index2;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -48,6 +90,9 @@ public class UICStop extends Stop {
     super(pBuilder);
     // Read attribute values from builder.
     uicCode = pBuilder.uicCode;
+    priority = pBuilder.priority;
+    code = pBuilder.code;
+    index2 = pBuilder.index2;
   }
 
   /**
@@ -77,7 +122,28 @@ public class UICStop extends Stop {
     /**
      * 
      */
+    @Size(min = 32, max = 255)
     private String uicCode;
+
+    /**
+     * 
+     */
+    @DecimalMax(value = "32.777", inclusive = true)
+    @DecimalMin(value = "1.025", inclusive = true)
+    private int priority;
+
+    /**
+     * 
+     */
+    @Min(value = 1000)
+    @Max(value = 9999)
+    private long code;
+
+    /**
+     * 
+     */
+    @Positive
+    private byte index2;
 
     /**
      * Use {@link UICStop#builder()} instead of private constructor to create new builder.
@@ -94,6 +160,9 @@ public class UICStop extends Stop {
       if (pObject != null) {
         // Read attribute values from passed object.
         uicCode = pObject.uicCode;
+        priority = pObject.priority;
+        code = pObject.code;
+        index2 = pObject.index2;
       }
     }
 
@@ -122,6 +191,18 @@ public class UICStop extends Stop {
     }
 
     /**
+     * Method sets the attribute "index".
+     * 
+     * @param pIndex Value to which the attribute "index" should be set.
+     */
+    @Override
+    public Builder setIndex( byte pIndex ) {
+      // Call super class implementation.
+      super.setIndex(pIndex);
+      return this;
+    }
+
+    /**
      * Method sets the attribute "uicCode".
      * 
      * @param pUicCode Value to which the attribute "uicCode" should be set.
@@ -129,6 +210,39 @@ public class UICStop extends Stop {
     public Builder setUicCode( String pUicCode ) {
       // Assign value to attribute
       uicCode = pUicCode;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "priority".
+     * 
+     * @param pPriority Value to which the attribute "priority" should be set.
+     */
+    public Builder setPriority( int pPriority ) {
+      // Assign value to attribute
+      priority = pPriority;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "code".
+     * 
+     * @param pCode Value to which the attribute "code" should be set.
+     */
+    public Builder setCode( long pCode ) {
+      // Assign value to attribute
+      code = pCode;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "index2".
+     * 
+     * @param pIndex2 Value to which the attribute "index2" should be set.
+     */
+    public Builder setIndex2( byte pIndex2 ) {
+      // Assign value to attribute
+      index2 = pIndex2;
       return this;
     }
 
@@ -177,6 +291,69 @@ public class UICStop extends Stop {
   }
 
   /**
+   * Method returns the attribute "priority".
+   * 
+   * 
+   * @return int Value to which the attribute "priority" is set.
+   */
+  public int getPriority( ) {
+    return priority;
+  }
+
+  /**
+   * Method sets the attribute "priority".
+   * 
+   * 
+   * @param pPriority Value to which the attribute "priority" should be set.
+   */
+  public void setPriority( int pPriority ) {
+    // Assign value to attribute
+    priority = pPriority;
+  }
+
+  /**
+   * Method returns the attribute "code".
+   * 
+   * 
+   * @return long Value to which the attribute "code" is set.
+   */
+  public long getCode( ) {
+    return code;
+  }
+
+  /**
+   * Method sets the attribute "code".
+   * 
+   * 
+   * @param pCode Value to which the attribute "code" should be set.
+   */
+  public void setCode( long pCode ) {
+    // Assign value to attribute
+    code = pCode;
+  }
+
+  /**
+   * Method returns the attribute "index2".
+   * 
+   * 
+   * @return byte Value to which the attribute "index2" is set.
+   */
+  public byte getIndex2( ) {
+    return index2;
+  }
+
+  /**
+   * Method sets the attribute "index2".
+   * 
+   * 
+   * @param pIndex2 Value to which the attribute "index2" should be set.
+   */
+  public void setIndex2( byte pIndex2 ) {
+    // Assign value to attribute
+    index2 = pIndex2;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -187,6 +364,18 @@ public class UICStop extends Stop {
     lBuilder.append(pIndent);
     lBuilder.append("uicCode: ");
     lBuilder.append(uicCode);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("priority: ");
+    lBuilder.append(priority);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("code: ");
+    lBuilder.append(code);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("index2: ");
+    lBuilder.append(index2);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

@@ -12,7 +12,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.TextNode;
+import com.fasterxml.jackson.databind.node.NumericNode;
 
 /**
  * Class implements a JSON / Jackson deserializer for class FloatCode.
@@ -23,13 +23,14 @@ public class FloatCodeDeserializer extends JsonDeserializer<FloatCode> {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     // We expect that data types are always serialized as plain text which will result in a TextNode.
-    if (lNode instanceof TextNode) {
-      return FloatCode.builder().setCode((float) lNode.asDouble()).build();
+    if (lNode instanceof NumericNode) {
+      NumericNode lNumericNode = (NumericNode) lNode;
+      return FloatCode.builder().setCode((float) lNumericNode.doubleValue()).build();
     }
     // Node is not a TextNode
     else {
       throw new IOException(
-          "Unable to deserialize object of type FloatCode. Expected text node but received other type of JSON content. Current JSON node ''"
+          "Unable to deserialize object of type FloatCode. Expected node type that matches to data type but received other JSON content. Current JSON node ''"
               + lNode.toString() + "'' is of type ''" + lNode.getClass().getName() + "''.");
     }
   }

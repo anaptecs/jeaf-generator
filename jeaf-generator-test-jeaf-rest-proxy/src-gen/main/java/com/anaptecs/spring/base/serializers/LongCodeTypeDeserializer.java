@@ -14,7 +14,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.TextNode;
+import com.fasterxml.jackson.databind.node.NumericNode;
 
 /**
  * Class implements a JSON / Jackson deserializer for class LongCodeType.
@@ -25,8 +25,9 @@ public class LongCodeTypeDeserializer extends JsonDeserializer<LongCodeType> {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     // We expect that data types are always serialized as plain text which will result in a TextNode.
-    if (lNode instanceof TextNode) {
-      return LongCodeType.builder().setCode(lNode.asLong()).build();
+    if (lNode instanceof NumericNode) {
+      NumericNode lNumericNode = (NumericNode) lNode;
+      return LongCodeType.builder().setCode(lNumericNode.longValue()).build();
     }
     // Node is not a TextNode
     else {

@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.Max;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -29,6 +30,7 @@ public class ShortCode implements ServiceObject {
   /**
    * 
    */
+  @Max(value = 4711)
   private short code;
 
   /**
@@ -78,6 +80,7 @@ public class ShortCode implements ServiceObject {
     /**
      * 
      */
+    @Max(value = 4711)
     private short code;
 
     /**

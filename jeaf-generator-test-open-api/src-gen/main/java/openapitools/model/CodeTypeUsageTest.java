@@ -37,7 +37,8 @@ import openapitools.JSON;
   CodeTypeUsageTest.JSON_PROPERTY_BOOLEAN_CODE,
   CodeTypeUsageTest.JSON_PROPERTY_BOOLEAN_CODE_ASSOCIATION,
   CodeTypeUsageTest.JSON_PROPERTY_SHORT_CODE_TYPE_ASSOCIATION,
-  CodeTypeUsageTest.JSON_PROPERTY_STRING_CODE
+  CodeTypeUsageTest.JSON_PROPERTY_STRING_CODE,
+  CodeTypeUsageTest.JSON_PROPERTY_SHORT_CODE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CodeTypeUsageTest {
@@ -52,6 +53,9 @@ public class CodeTypeUsageTest {
 
   public static final String JSON_PROPERTY_STRING_CODE = "stringCode";
   private String stringCode;
+
+  public static final String JSON_PROPERTY_SHORT_CODE = "shortCode";
+  private Integer shortCode;
 
   public CodeTypeUsageTest() { 
   }
@@ -173,6 +177,33 @@ public class CodeTypeUsageTest {
   }
 
 
+  public CodeTypeUsageTest shortCode(Integer shortCode) {
+    this.shortCode = shortCode;
+    return this;
+  }
+
+   /**
+   * Get shortCode
+   * maximum: 4711
+   * @return shortCode
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_SHORT_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Integer getShortCode() {
+    return shortCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SHORT_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setShortCode(Integer shortCode) {
+    this.shortCode = shortCode;
+  }
+
+
   /**
    * Return true if this CodeTypeUsageTest object is equal to o.
    */
@@ -188,12 +219,13 @@ public class CodeTypeUsageTest {
     return Objects.equals(this.booleanCode, codeTypeUsageTest.booleanCode) &&
         Objects.equals(this.booleanCodeAssociation, codeTypeUsageTest.booleanCodeAssociation) &&
         Objects.equals(this.shortCodeTypeAssociation, codeTypeUsageTest.shortCodeTypeAssociation) &&
-        Objects.equals(this.stringCode, codeTypeUsageTest.stringCode);
+        Objects.equals(this.stringCode, codeTypeUsageTest.stringCode) &&
+        Objects.equals(this.shortCode, codeTypeUsageTest.shortCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(booleanCode, booleanCodeAssociation, shortCodeTypeAssociation, stringCode);
+    return Objects.hash(booleanCode, booleanCodeAssociation, shortCodeTypeAssociation, stringCode, shortCode);
   }
 
   @Override
@@ -204,6 +236,7 @@ public class CodeTypeUsageTest {
     sb.append("    booleanCodeAssociation: ").append(toIndentedString(booleanCodeAssociation)).append("\n");
     sb.append("    shortCodeTypeAssociation: ").append(toIndentedString(shortCodeTypeAssociation)).append("\n");
     sb.append("    stringCode: ").append(toIndentedString(stringCode)).append("\n");
+    sb.append("    shortCode: ").append(toIndentedString(shortCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

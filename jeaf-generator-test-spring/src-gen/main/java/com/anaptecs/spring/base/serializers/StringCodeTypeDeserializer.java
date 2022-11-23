@@ -29,7 +29,7 @@ public class StringCodeTypeDeserializer extends JsonDeserializer<StringCodeType>
     // Node is not a TextNode
     else {
       throw new IOException(
-          "Unable to deserialize object of type StringCodeType. Expected text node but received other type of JSON content. Current JSON node ''"
+          "Unable to deserialize object of type StringCodeType. Expected node type that matches to data type but received other JSON content. Current JSON node ''"
               + lNode.toString() + "'' is of type ''" + lNode.getClass().getName() + "''.");
     }
   }

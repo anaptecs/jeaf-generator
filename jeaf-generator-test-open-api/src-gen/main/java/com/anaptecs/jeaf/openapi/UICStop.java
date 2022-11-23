@@ -30,6 +30,15 @@ public class UICStop extends Stop {
   @JsonProperty("uicCode")
   private String uicCode = null;
 
+  @JsonProperty("priority")
+  private Integer priority = null;
+
+  @JsonProperty("code")
+  private Long code = null;
+
+  @JsonProperty("index2")
+  private Integer index2 = null;
+
   public UICStop uicCode(String uicCode) {
     this.uicCode = uicCode;
     return this;
@@ -48,6 +57,65 @@ public class UICStop extends Stop {
     this.uicCode = uicCode;
   }
 
+  public UICStop priority(Integer priority) {
+    this.priority = priority;
+    return this;
+  }
+
+   /**
+   * Get priority
+   * minimum: 1
+   * maximum: 32
+   * @return priority
+  **/
+  @Schema(required = true, description = "")
+  public Integer getPriority() {
+    return priority;
+  }
+
+  public void setPriority(Integer priority) {
+    this.priority = priority;
+  }
+
+  public UICStop code(Long code) {
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * Get code
+   * minimum: 1000
+   * maximum: 9999
+   * @return code
+  **/
+  @Schema(required = true, description = "")
+  public Long getCode() {
+    return code;
+  }
+
+  public void setCode(Long code) {
+    this.code = code;
+  }
+
+  public UICStop index2(Integer index2) {
+    this.index2 = index2;
+    return this;
+  }
+
+   /**
+   * Get index2
+   * minimum: 0
+   * @return index2
+  **/
+  @Schema(required = true, description = "")
+  public Integer getIndex2() {
+    return index2;
+  }
+
+  public void setIndex2(Integer index2) {
+    this.index2 = index2;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -59,12 +127,15 @@ public class UICStop extends Stop {
     }
     UICStop uiCStop = (UICStop) o;
     return Objects.equals(this.uicCode, uiCStop.uicCode) &&
+        Objects.equals(this.priority, uiCStop.priority) &&
+        Objects.equals(this.code, uiCStop.code) &&
+        Objects.equals(this.index2, uiCStop.index2) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(uicCode, super.hashCode());
+    return Objects.hash(uicCode, priority, code, index2, super.hashCode());
   }
 
 
@@ -74,6 +145,9 @@ public class UICStop extends Stop {
     sb.append("class UICStop {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    uicCode: ").append(toIndentedString(uicCode)).append("\n");
+    sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    index2: ").append(toIndentedString(index2)).append("\n");
     sb.append("}");
     return sb.toString();
   }

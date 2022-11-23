@@ -41,7 +41,8 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   Stop.JSON_PROPERTY_OBJECT_TYPE,
   Stop.JSON_PROPERTY_NAME,
-  Stop.JSON_PROPERTY_LINKS
+  Stop.JSON_PROPERTY_LINKS,
+  Stop.JSON_PROPERTY_INDEX
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
@@ -59,6 +60,9 @@ public class Stop {
 
   public static final String JSON_PROPERTY_LINKS = "_links";
   private List<LinkObject> links = null;
+
+  public static final String JSON_PROPERTY_INDEX = "index";
+  private Integer index;
 
   public Stop() { 
   }
@@ -149,6 +153,34 @@ public class Stop {
   }
 
 
+  public Stop index(Integer index) {
+    this.index = index;
+    return this;
+  }
+
+   /**
+   * Get index
+   * minimum: 0
+   * maximum: 32
+   * @return index
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_INDEX)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Integer getIndex() {
+    return index;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INDEX)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setIndex(Integer index) {
+    this.index = index;
+  }
+
+
   /**
    * Return true if this Stop object is equal to o.
    */
@@ -163,12 +195,13 @@ public class Stop {
     Stop stop = (Stop) o;
     return Objects.equals(this.objectType, stop.objectType) &&
         Objects.equals(this.name, stop.name) &&
-        Objects.equals(this.links, stop.links);
+        Objects.equals(this.links, stop.links) &&
+        Objects.equals(this.index, stop.index);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectType, name, links);
+    return Objects.hash(objectType, name, links, index);
   }
 
   @Override
@@ -178,6 +211,7 @@ public class Stop {
     sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("}");
     return sb.toString();
   }

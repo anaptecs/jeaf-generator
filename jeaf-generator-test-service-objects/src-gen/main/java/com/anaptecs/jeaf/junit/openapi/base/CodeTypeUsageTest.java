@@ -47,6 +47,11 @@ public class CodeTypeUsageTest implements ServiceObject {
   public static final String STRINGCODE = "stringCode";
 
   /**
+   * Constant for the name of attribute "shortCode".
+   */
+  public static final String SHORTCODE = "shortCode";
+
+  /**
    * 
    */
   private BooleanCodeType booleanCode;
@@ -65,6 +70,11 @@ public class CodeTypeUsageTest implements ServiceObject {
    * 
    */
   private StringCodeType stringCode;
+
+  /**
+   * 
+   */
+  private ShortCode shortCode;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -98,6 +108,7 @@ public class CodeTypeUsageTest implements ServiceObject {
       shortCodeTypeAssociation = new HashSet<ShortCodeType>();
     }
     stringCode = pBuilder.stringCode;
+    shortCode = pBuilder.shortCode;
   }
 
   /**
@@ -146,6 +157,11 @@ public class CodeTypeUsageTest implements ServiceObject {
     private StringCodeType stringCode;
 
     /**
+     * 
+     */
+    private ShortCode shortCode;
+
+    /**
      * Use {@link CodeTypeUsageTest#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -161,6 +177,7 @@ public class CodeTypeUsageTest implements ServiceObject {
         booleanCodeAssociation = pObject.booleanCodeAssociation;
         shortCodeTypeAssociation = pObject.shortCodeTypeAssociation;
         stringCode = pObject.stringCode;
+        shortCode = pObject.shortCode;
       }
     }
 
@@ -215,6 +232,16 @@ public class CodeTypeUsageTest implements ServiceObject {
     public Builder setStringCode( StringCodeType pStringCode ) {
       // Assign value to attribute
       stringCode = pStringCode;
+      return this;
+    }
+
+    /**
+     * Method sets the association "shortCode".
+     * 
+     * @param pShortCode ShortCode to which the association "shortCode" should be set.
+     */
+    public Builder setShortCode( ShortCode pShortCode ) {
+      shortCode = pShortCode;
       return this;
     }
 
@@ -412,6 +439,34 @@ public class CodeTypeUsageTest implements ServiceObject {
   public void setStringCode( StringCodeType pStringCode ) {
     // Assign value to attribute
     stringCode = pStringCode;
+  }
+
+  /**
+   * Method returns the association "shortCode".
+   * 
+   *
+   * @return ShortCode ShortCode to which the association "shortCode" is set.
+   */
+  public ShortCode getShortCode( ) {
+    return shortCode;
+  }
+
+  /**
+   * Method sets the association "shortCode".
+   * 
+   * 
+   * @param pShortCode ShortCode to which the association "shortCode" should be set.
+   */
+  public void setShortCode( ShortCode pShortCode ) {
+    shortCode = pShortCode;
+  }
+
+  /**
+   * Method unsets the association "shortCode".
+   * 
+   */
+  public final void unsetShortCode( ) {
+    shortCode = null;
   }
 
   /**
