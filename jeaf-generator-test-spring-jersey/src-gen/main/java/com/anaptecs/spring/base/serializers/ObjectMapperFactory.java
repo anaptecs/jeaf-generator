@@ -28,7 +28,7 @@ public class ObjectMapperFactory {
    * @return {@link ObjectMapper} Created object mapper. The method never returns null.
    */
   public static ObjectMapper createObjectMapper( CompositeTypeConverter pCompositeTypeConverter ) {
-    // Create builder for object mappper.
+    // Create builder for object mapper.
     Builder lBuilder = JsonMapper.builder();
     // Set default visibilities so that they match to the generated classes that are intended to be serialized using
     // Jackson
@@ -42,7 +42,9 @@ public class ObjectMapperFactory {
     // Configure mapper features
     lBuilder.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
     // Create configured modules and add them as well.
-    lBuilder.addModule(new BaseModuleFactory(pCompositeTypeConverter).createModule());
+    lBuilder.addModule(BaseModuleFactory.createDataTypeSerializerModule());
+    lBuilder.addModule(BaseModuleFactory.createCompositeDataTypeSerializerModule(pCompositeTypeConverter));
+    lBuilder.addModule(BaseModuleFactory.createEnumSerializerModule());
     // Create object mapper and return it
     JsonMapper lObjectMapper = lBuilder.build();
     lObjectMapper.setDefaultPropertyInclusion(Include.NON_EMPTY);

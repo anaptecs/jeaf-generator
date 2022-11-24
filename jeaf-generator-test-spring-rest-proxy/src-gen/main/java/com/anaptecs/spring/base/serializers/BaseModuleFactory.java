@@ -40,12 +40,12 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
  */
 public class BaseModuleFactory {
   /**
-   * Method creates a module that consists of all serializers / deserializers of the current package.
+   * Method creates a module that consists of all serializers / deserializers for data types.
    */
-  public Module createModule( ) {
+  public static Module createDataTypeSerializerModule( ) {
     // Create module for serializers / deserializers that are located in this package
-    SimpleModule lModule = new SimpleModule(this.getClass().getName());
-    // Add serializers and deserializers for datatypes
+    SimpleModule lModule = new SimpleModule("DataTypeSerializerModule." + BaseModuleFactory.class.getName());
+    // Add serializers and deserializers for data types
     lModule.addSerializer(BookingCode.class, new BookingCodeSerializer());
     lModule.addDeserializer(BookingCode.class, new BookingCodeDeserializer());
     lModule.addSerializer(BookingID.class, new BookingIDSerializer());
@@ -92,6 +92,16 @@ public class BaseModuleFactory {
     lModule.addDeserializer(StringCode.class, new StringCodeDeserializer());
     lModule.addSerializer(StringCodeType.class, new StringCodeTypeSerializer());
     lModule.addDeserializer(StringCodeType.class, new StringCodeTypeDeserializer());
+    // Return created module.
+    return lModule;
+  }
+
+  /**
+   * Method creates a module that consists of all serializers / deserializers for enums.
+   */
+  public static Module createEnumSerializerModule( ) {
+    // Create module for serializers / deserializers that are located in this package
+    SimpleModule lModule = new SimpleModule("EnumSerializerModule." + BaseModuleFactory.class.getName());
     // Add serializers and deserializers for enumerations
     lModule.addSerializer(ComplexBookingType.class, new ComplexBookingTypeSerializer());
     lModule.addDeserializer(ComplexBookingType.class, new ComplexBookingTypeDeserializer());
