@@ -21,7 +21,7 @@
 	«ENDIF»
 	
 	«IF generateOpenAPISpec() == true»
-		«EXPAND java::OpenAPI::RegisterLocalTypes FOREACH this.allOwnedElements().typeSelect(OpenAPI3Specification)»
+		«EXPAND java::OpenAPI::RegisterLocalTypes FOREACH this.allOwnedElements().typeSelect(OpenAPI3Specification).select(e|e.isInGeneratorWhitelist())»
 	«ENDIF»
 
     «IF generateJSONSerializers() == true»
