@@ -6,6 +6,7 @@
 package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -169,6 +170,22 @@ public class Booking {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pInventories != null) {
         inventories = new ArrayList<InventoryType>(pInventories);
+      }
+      else {
+        inventories = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets the association "inventories".
+     * 
+     * @param pInventories Array with objects to which the association should be set.
+     */
+    public Builder setInventories( InventoryType... pInventories ) {
+      // To ensure immutability we have to copy the content of the passed array.
+      if (pInventories != null) {
+        inventories = new ArrayList<InventoryType>(Arrays.asList(pInventories));
       }
       else {
         inventories = null;

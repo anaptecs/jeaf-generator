@@ -314,6 +314,9 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 	    «ELSE»
 	        «EXPAND CreateBuilderAssociationSetter(builderClassName)»
 	    «ENDIF»
+	    «IF this.isMultivalued() && this.type.isEnumeration()»
+	    	«EXPAND CreateBuilderVarArgsSetter(builderClassName)»
+	    «ENDIF»
     «ENDIF»
 «ENDDEFINE»
 
@@ -386,6 +389,30 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»
+
+«DEFINE CreateBuilderVarArgsSetter(String builderClassName) FOR Property»
+	«IF isNavigable()»
+		«IF isMultivalued()»
+			/**
+			 * Method sets the association "«asInstanceVar()»". «this.getComment()»
+			 * 
+			 * @param «asParameter()» Array with objects to which the association should be set.
+			 */
+			«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+			public «builderClassName» set«name.toFirstUpper()»(«this.type.fqn()»... «asParameter()») {
+			    // To ensure immutability we have to copy the content of the passed array.
+			    if(«asParameter()» != null) {
+			      «asInstanceVar()» = new «this.getCollectionImplType()»<«type.fqn()»>(java.util.Arrays.asList(«asParameter()»));
+			    }
+			    else {
+			      «asInstanceVar()» = null;
+			    }
+			    return this;
+			}
+		«ENDIF»
+	«ENDIF»
+«ENDDEFINE»
+
 
 «DEFINE OverwriteBuilderSetterFromBaseClasses(String builderClassName) FOR Property»
     «IF this.isStatic == false»

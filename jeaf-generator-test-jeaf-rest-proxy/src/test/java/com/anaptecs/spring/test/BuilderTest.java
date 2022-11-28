@@ -9,8 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import com.anaptecs.spring.base.Booking;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChildAA;
+import com.anaptecs.spring.base.InventoryType;
 import com.anaptecs.spring.base.ProductCode;
 
 public class BuilderTest {
@@ -33,5 +35,10 @@ public class BuilderTest {
     // Test standard POJO
     ProductCode lProductCode = ProductCode.builder(125).build();
     assertEquals(125, lProductCode.getCode());
+
+    Booking lBooking = Booking.builder("Donald Duck").setInventories(InventoryType.DB, InventoryType.SBB).build();
+    assertEquals("Donald Duck", lBooking.getCustomerName());
+    assertEquals(InventoryType.DB, lBooking.getInventories().get(0));
+    assertEquals(InventoryType.SBB, lBooking.getInventories().get(1));
   }
 }

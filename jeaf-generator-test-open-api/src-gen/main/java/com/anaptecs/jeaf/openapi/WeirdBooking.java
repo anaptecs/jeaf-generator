@@ -15,6 +15,7 @@ package com.anaptecs.jeaf.openapi;
 import java.util.Objects;
 import java.util.Arrays;
 import com.anaptecs.jeaf.openapi.Booking;
+import com.anaptecs.jeaf.openapi.InventoryType;
 import com.anaptecs.jeaf.openapi.WeirdParent;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -42,6 +43,9 @@ public class WeirdBooking extends WeirdParent {
 
   @JsonProperty("realBooking")
   private Booking realBooking = null;
+
+  @JsonProperty("inventories")
+  private List<InventoryType> inventories = null;
 
   public WeirdBooking booking(String booking) {
     this.booking = booking;
@@ -141,6 +145,32 @@ public class WeirdBooking extends WeirdParent {
     this.realBooking = realBooking;
   }
 
+  public WeirdBooking inventories(List<InventoryType> inventories) {
+    this.inventories = inventories;
+    return this;
+  }
+
+  public WeirdBooking addInventoriesItem(InventoryType inventoriesItem) {
+    if (this.inventories == null) {
+      this.inventories = new ArrayList<>();
+    }
+    this.inventories.add(inventoriesItem);
+    return this;
+  }
+
+   /**
+   * Get inventories
+   * @return inventories
+  **/
+  @Schema(description = "")
+  public List<InventoryType> getInventories() {
+    return inventories;
+  }
+
+  public void setInventories(List<InventoryType> inventories) {
+    this.inventories = inventories;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -156,12 +186,13 @@ public class WeirdBooking extends WeirdParent {
         Objects.equals(this.versionedObjectSoftLink, weirdBooking.versionedObjectSoftLink) &&
         Objects.equals(this.childProperty, weirdBooking.childProperty) &&
         Objects.equals(this.realBooking, weirdBooking.realBooking) &&
+        Objects.equals(this.inventories, weirdBooking.inventories) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(booking, additionalBookings, versionedObjectSoftLink, childProperty, realBooking, super.hashCode());
+    return Objects.hash(booking, additionalBookings, versionedObjectSoftLink, childProperty, realBooking, inventories, super.hashCode());
   }
 
 
@@ -175,6 +206,7 @@ public class WeirdBooking extends WeirdParent {
     sb.append("    versionedObjectSoftLink: ").append(toIndentedString(versionedObjectSoftLink)).append("\n");
     sb.append("    childProperty: ").append(toIndentedString(childProperty)).append("\n");
     sb.append("    realBooking: ").append(toIndentedString(realBooking)).append("\n");
+    sb.append("    inventories: ").append(toIndentedString(inventories)).append("\n");
     sb.append("}");
     return sb.toString();
   }
