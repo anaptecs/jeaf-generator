@@ -27,6 +27,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import openapitools.model.Booking;
+import openapitools.model.InventoryType;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -39,7 +40,8 @@ import openapitools.JSON;
   WeirdBookingAllOf.JSON_PROPERTY_ADDITIONAL_BOOKINGS,
   WeirdBookingAllOf.JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK,
   WeirdBookingAllOf.JSON_PROPERTY_CHILD_PROPERTY,
-  WeirdBookingAllOf.JSON_PROPERTY_REAL_BOOKING
+  WeirdBookingAllOf.JSON_PROPERTY_REAL_BOOKING,
+  WeirdBookingAllOf.JSON_PROPERTY_INVENTORIES
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class WeirdBookingAllOf {
@@ -57,6 +59,9 @@ public class WeirdBookingAllOf {
 
   public static final String JSON_PROPERTY_REAL_BOOKING = "realBooking";
   private Booking realBooking;
+
+  public static final String JSON_PROPERTY_INVENTORIES = "inventories";
+  private List<InventoryType> inventories = null;
 
   public WeirdBookingAllOf() { 
   }
@@ -199,6 +204,40 @@ public class WeirdBookingAllOf {
   }
 
 
+  public WeirdBookingAllOf inventories(List<InventoryType> inventories) {
+    this.inventories = inventories;
+    return this;
+  }
+
+  public WeirdBookingAllOf addInventoriesItem(InventoryType inventoriesItem) {
+    if (this.inventories == null) {
+      this.inventories = new ArrayList<>();
+    }
+    this.inventories.add(inventoriesItem);
+    return this;
+  }
+
+   /**
+   * Get inventories
+   * @return inventories
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_INVENTORIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<InventoryType> getInventories() {
+    return inventories;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INVENTORIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setInventories(List<InventoryType> inventories) {
+    this.inventories = inventories;
+  }
+
+
   /**
    * Return true if this WeirdBooking_allOf object is equal to o.
    */
@@ -215,12 +254,13 @@ public class WeirdBookingAllOf {
         Objects.equals(this.additionalBookings, weirdBookingAllOf.additionalBookings) &&
         Objects.equals(this.versionedObjectSoftLink, weirdBookingAllOf.versionedObjectSoftLink) &&
         Objects.equals(this.childProperty, weirdBookingAllOf.childProperty) &&
-        Objects.equals(this.realBooking, weirdBookingAllOf.realBooking);
+        Objects.equals(this.realBooking, weirdBookingAllOf.realBooking) &&
+        Objects.equals(this.inventories, weirdBookingAllOf.inventories);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(booking, additionalBookings, versionedObjectSoftLink, childProperty, realBooking);
+    return Objects.hash(booking, additionalBookings, versionedObjectSoftLink, childProperty, realBooking, inventories);
   }
 
   @Override
@@ -232,6 +272,7 @@ public class WeirdBookingAllOf {
     sb.append("    versionedObjectSoftLink: ").append(toIndentedString(versionedObjectSoftLink)).append("\n");
     sb.append("    childProperty: ").append(toIndentedString(childProperty)).append("\n");
     sb.append("    realBooking: ").append(toIndentedString(realBooking)).append("\n");
+    sb.append("    inventories: ").append(toIndentedString(inventories)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -178,7 +178,8 @@ public class InternalViewCompositeDataTypeTest {
         System.lineSeparator() +
         "versionedObjectSoftLink:  null" + System.lineSeparator() +
         "childProperty: 0" + System.lineSeparator() +
-        "realBooking:  null" + System.lineSeparator(), lWeirdBooking.toString());
+        "realBooking:  null" + System.lineSeparator() +
+        "inventories: 0 element(s)" + System.lineSeparator(), lWeirdBooking.toString());
 
   }
 }

@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -52,6 +53,11 @@ public class WeirdBooking extends WeirdParent {
   public static final String REALBOOKING = "realBooking";
 
   /**
+   * Constant for the name of attribute "inventories".
+   */
+  public static final String INVENTORIES = "inventories";
+
+  /**
    * 
    */
   private ComplexBookingID booking;
@@ -77,11 +83,17 @@ public class WeirdBooking extends WeirdParent {
   private Booking realBooking;
 
   /**
+   * 
+   */
+  private Set<InventoryType> inventories;
+
+  /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   protected WeirdBooking( ) {
     additionalBookings = new ArrayList<ComplexBookingID>();
+    inventories = new HashSet<InventoryType>();
   }
 
   /**
@@ -103,6 +115,12 @@ public class WeirdBooking extends WeirdParent {
     versionedObjectSoftLink = pBuilder.versionedObjectSoftLink;
     childProperty = pBuilder.childProperty;
     realBooking = pBuilder.realBooking;
+    if (pBuilder.inventories != null) {
+      inventories = pBuilder.inventories;
+    }
+    else {
+      inventories = new HashSet<InventoryType>();
+    }
   }
 
   /**
@@ -166,6 +184,11 @@ public class WeirdBooking extends WeirdParent {
     private Booking realBooking;
 
     /**
+     * 
+     */
+    private Set<InventoryType> inventories;
+
+    /**
      * Use {@link WeirdBooking#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -184,6 +207,7 @@ public class WeirdBooking extends WeirdParent {
         versionedObjectSoftLink = pObject.versionedObjectSoftLink;
         childProperty = pObject.childProperty;
         realBooking = pObject.realBooking;
+        inventories = pObject.inventories;
       }
     }
 
@@ -278,6 +302,22 @@ public class WeirdBooking extends WeirdParent {
      */
     public Builder setRealBooking( Booking pRealBooking ) {
       realBooking = pRealBooking;
+      return this;
+    }
+
+    /**
+     * Method sets the association "inventories".
+     * 
+     * @param pInventories Collection with objects to which the association should be set.
+     */
+    public Builder setInventories( Set<InventoryType> pInventories ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pInventories != null) {
+        inventories = new HashSet<InventoryType>(pInventories);
+      }
+      else {
+        inventories = null;
+      }
       return this;
     }
 
@@ -463,6 +503,70 @@ public class WeirdBooking extends WeirdParent {
    */
   public final void unsetRealBooking( ) {
     realBooking = null;
+  }
+
+  /**
+   * Method returns the association "inventories".
+   * 
+   *
+   * @return Collection All InventoryType objects that belong to the association "inventories". The method never returns
+   * null and the returned collection is unmodifiable.
+   */
+  public Set<InventoryType> getInventories( ) {
+    // Return all InventoryType objects as unmodifiable collection.
+    return Collections.unmodifiableSet(inventories);
+  }
+
+  /**
+   * Method adds the passed InventoryType object to the association "inventories".
+   * 
+   * 
+   * @param pInventories Object that should be added to the association "inventories". The parameter must not be null.
+   */
+  public void addToInventories( InventoryType pInventories ) {
+    // Check parameter "pInventories" for invalid value null.
+    Check.checkInvalidParameterNull(pInventories, "pInventories");
+    // Add passed object to collection of associated InventoryType objects.
+    inventories.add(pInventories);
+  }
+
+  /**
+   * Method adds all passed objects to the association "inventories".
+   * 
+   * 
+   * @param pInventories Collection with all objects that should be added to the association "inventories". The
+   * parameter must not be null.
+   */
+  public void addToInventories( Collection<InventoryType> pInventories ) {
+    // Check parameter "pInventories" for invalid value null.
+    Check.checkInvalidParameterNull(pInventories, "pInventories");
+    // Add all passed objects.
+    for (InventoryType lNextObject : pInventories) {
+      this.addToInventories(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed InventoryType object from the association "inventories".
+   * 
+   * 
+   * @param pInventories Object that should be removed from the association "inventories". The parameter must not be
+   * null.
+   */
+  public void removeFromInventories( InventoryType pInventories ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pInventories, "pInventories");
+    // Remove passed object from collection of associated InventoryType objects.
+    inventories.remove(pInventories);
+  }
+
+  /**
+   * Method removes all objects from the association "inventories".
+   * 
+   */
+  public void clearInventories( ) {
+    // Remove all objects from association "inventories".
+    inventories.clear();
   }
 
   /**

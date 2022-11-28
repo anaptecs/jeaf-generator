@@ -29,6 +29,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import openapitools.model.Booking;
+import openapitools.model.InventoryType;
 import openapitools.model.WeirdBookingAllOf;
 import openapitools.model.WeirdParent;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -43,7 +44,8 @@ import openapitools.JSON;
   WeirdBooking.JSON_PROPERTY_ADDITIONAL_BOOKINGS,
   WeirdBooking.JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK,
   WeirdBooking.JSON_PROPERTY_CHILD_PROPERTY,
-  WeirdBooking.JSON_PROPERTY_REAL_BOOKING
+  WeirdBooking.JSON_PROPERTY_REAL_BOOKING,
+  WeirdBooking.JSON_PROPERTY_INVENTORIES
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
@@ -63,6 +65,9 @@ public class WeirdBooking extends WeirdParent {
 
   public static final String JSON_PROPERTY_REAL_BOOKING = "realBooking";
   private Booking realBooking;
+
+  public static final String JSON_PROPERTY_INVENTORIES = "inventories";
+  private List<InventoryType> inventories = null;
 
   public WeirdBooking() { 
   }
@@ -205,6 +210,40 @@ public class WeirdBooking extends WeirdParent {
   }
 
 
+  public WeirdBooking inventories(List<InventoryType> inventories) {
+    this.inventories = inventories;
+    return this;
+  }
+
+  public WeirdBooking addInventoriesItem(InventoryType inventoriesItem) {
+    if (this.inventories == null) {
+      this.inventories = new ArrayList<>();
+    }
+    this.inventories.add(inventoriesItem);
+    return this;
+  }
+
+   /**
+   * Get inventories
+   * @return inventories
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_INVENTORIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<InventoryType> getInventories() {
+    return inventories;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INVENTORIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setInventories(List<InventoryType> inventories) {
+    this.inventories = inventories;
+  }
+
+
   /**
    * Return true if this WeirdBooking object is equal to o.
    */
@@ -222,12 +261,13 @@ public class WeirdBooking extends WeirdParent {
         Objects.equals(this.versionedObjectSoftLink, weirdBooking.versionedObjectSoftLink) &&
         Objects.equals(this.childProperty, weirdBooking.childProperty) &&
         Objects.equals(this.realBooking, weirdBooking.realBooking) &&
+        Objects.equals(this.inventories, weirdBooking.inventories) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(booking, additionalBookings, versionedObjectSoftLink, childProperty, realBooking, super.hashCode());
+    return Objects.hash(booking, additionalBookings, versionedObjectSoftLink, childProperty, realBooking, inventories, super.hashCode());
   }
 
   @Override
@@ -240,6 +280,7 @@ public class WeirdBooking extends WeirdParent {
     sb.append("    versionedObjectSoftLink: ").append(toIndentedString(versionedObjectSoftLink)).append("\n");
     sb.append("    childProperty: ").append(toIndentedString(childProperty)).append("\n");
     sb.append("    realBooking: ").append(toIndentedString(realBooking)).append("\n");
+    sb.append("    inventories: ").append(toIndentedString(inventories)).append("\n");
     sb.append("}");
     return sb.toString();
   }
