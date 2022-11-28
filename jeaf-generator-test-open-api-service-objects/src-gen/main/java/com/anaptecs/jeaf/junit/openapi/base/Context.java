@@ -108,6 +108,18 @@ public class Context implements ServiceObject {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( String pAccessToken, long pResellerID, long pPathParam, String pQueryParam ) {
+    Builder lBuilder = builder();
+    lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setResellerID(pResellerID);
+    lBuilder.setPathParam(pPathParam);
+    lBuilder.setQueryParam(pQueryParam);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class Context. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

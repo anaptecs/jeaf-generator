@@ -111,6 +111,19 @@ public class Problem {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( String pTitle, int pStatus, String pType, String pDetail, String pInstance ) {
+    Builder lBuilder = builder();
+    lBuilder.setTitle(pTitle);
+    lBuilder.setStatus(pStatus);
+    lBuilder.setType(pType);
+    lBuilder.setDetail(pDetail);
+    lBuilder.setInstance(pInstance);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class Problem. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

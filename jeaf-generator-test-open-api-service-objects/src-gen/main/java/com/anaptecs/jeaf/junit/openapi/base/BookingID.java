@@ -68,6 +68,12 @@ public class BookingID implements ServiceObject {
     return new Builder(pObject);
   }
 
+  public static Builder builder( String pBookingID ) {
+    Builder lBuilder = builder();
+    lBuilder.setBookingID(pBookingID);
+    return lBuilder;
+  }
+
   /**
    * Class implements builder to create a new instance of class BookingID. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.

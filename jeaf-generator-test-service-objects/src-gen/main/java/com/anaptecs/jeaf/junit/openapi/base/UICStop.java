@@ -115,6 +115,20 @@ public class UICStop extends Stop {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( String pName, byte pIndex, String pUicCode, int pPriority, long pCode, byte pIndex2 ) {
+    Builder lBuilder = builder();
+    lBuilder.setName(pName);
+    lBuilder.setIndex(pIndex);
+    lBuilder.setUicCode(pUicCode);
+    lBuilder.setPriority(pPriority);
+    lBuilder.setCode(pCode);
+    lBuilder.setIndex2(pIndex2);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class UICStop. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

@@ -1,4 +1,5 @@
 extension java::Naming;
+extension java::OpenAPIFunctions;
 
 // Function checks whether the passed package is part of the package white list for generation. 
 cached String isMayBeInPackageWhitelist(uml::Package package) : 
@@ -424,3 +425,9 @@ String toLocalVar(String name) :
 
 cached boolean ignore(uml::Element element):
 	element.isStereotypeApplied("Ignore");
+	
+cached List[uml::Property] getRequiredPropertiesForBuilder(uml::Class class):
+	class.getAllAttributesFromHierarchy().select(e|e.isMultivalued() == false && e.isStatic == false && e.lower > 0 && (e.type.isBasicType() || e.type.isPrimitiveType() || e.type.isEnumeration()));
+	
+	
+	

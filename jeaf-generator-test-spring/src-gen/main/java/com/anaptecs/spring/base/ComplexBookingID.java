@@ -45,6 +45,19 @@ public class ComplexBookingID extends ComplexBookingIDBase {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( long pInternalID, String pReferenceID, ComplexBookingType pComplexBookingType,
+      Integer pAnotherID ) {
+    Builder lBuilder = builder();
+    lBuilder.setInternalID(pInternalID);
+    lBuilder.setReferenceID(pReferenceID);
+    lBuilder.setComplexBookingType(pComplexBookingType);
+    lBuilder.setAnotherID(pAnotherID);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class ComplexBookingID. As the class has readonly attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */

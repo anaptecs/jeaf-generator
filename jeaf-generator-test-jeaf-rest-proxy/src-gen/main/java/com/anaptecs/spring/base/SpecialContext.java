@@ -86,6 +86,22 @@ public class SpecialContext extends Context {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( String pAccessToken, long pResellerID, long pPathParam, String pQueryParam,
+      String pLang, String pSpecificHeader, ChannelType pChannelType ) {
+    Builder lBuilder = builder();
+    lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setResellerID(pResellerID);
+    lBuilder.setPathParam(pPathParam);
+    lBuilder.setQueryParam(pQueryParam);
+    lBuilder.setLang(pLang);
+    lBuilder.setSpecificHeader(pSpecificHeader);
+    lBuilder.setChannelType(pChannelType);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class SpecialContext. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

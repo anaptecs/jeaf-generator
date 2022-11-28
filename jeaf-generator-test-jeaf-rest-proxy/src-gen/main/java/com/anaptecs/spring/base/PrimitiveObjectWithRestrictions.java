@@ -338,6 +338,39 @@ public class PrimitiveObjectWithRestrictions implements Serializable {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( Boolean pABoolean, Boolean pBBoolean, Boolean pCBoolean, byte pAByte, Byte pBByte,
+      short pAShort, Short pBShort, int pAInteger, Integer pBInteger, Integer pCInteger, long pALong, Long pBLong,
+      BigInteger pABigInteger, char pACharacter, Character pBCharacter, float pAFloat, Float pBFloat, double pADouble,
+      Double pBDouble, BigDecimal pABigDecimal, String pAString, String pBString ) {
+    Builder lBuilder = builder();
+    lBuilder.setABoolean(pABoolean);
+    lBuilder.setBBoolean(pBBoolean);
+    lBuilder.setCBoolean(pCBoolean);
+    lBuilder.setAByte(pAByte);
+    lBuilder.setBByte(pBByte);
+    lBuilder.setAShort(pAShort);
+    lBuilder.setBShort(pBShort);
+    lBuilder.setAInteger(pAInteger);
+    lBuilder.setBInteger(pBInteger);
+    lBuilder.setCInteger(pCInteger);
+    lBuilder.setALong(pALong);
+    lBuilder.setBLong(pBLong);
+    lBuilder.setABigInteger(pABigInteger);
+    lBuilder.setACharacter(pACharacter);
+    lBuilder.setBCharacter(pBCharacter);
+    lBuilder.setAFloat(pAFloat);
+    lBuilder.setBFloat(pBFloat);
+    lBuilder.setADouble(pADouble);
+    lBuilder.setBDouble(pBDouble);
+    lBuilder.setABigDecimal(pABigDecimal);
+    lBuilder.setAString(pAString);
+    lBuilder.setBString(pBString);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class PrimitiveObjectWithRestrictions. As the class has read
    * only attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */

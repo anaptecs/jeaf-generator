@@ -50,6 +50,17 @@ public class VersionedObjectSoftLink extends VersionedObjectSoftLinkBase {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( long pObjectID, DataUnit pDataUnit, Entity pEntity ) {
+    Builder lBuilder = builder();
+    lBuilder.setObjectID(pObjectID);
+    lBuilder.setDataUnit(pDataUnit);
+    lBuilder.setEntity(pEntity);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class VersionedObjectSoftLink. As the class has readonly
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */

@@ -76,6 +76,17 @@ public class SwiftAccount extends Account {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( Long pIban, BigDecimal pBalance, String pBic ) {
+    Builder lBuilder = builder();
+    lBuilder.setIban(pIban);
+    lBuilder.setBalance(pBalance);
+    lBuilder.setBic(pBic);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class SwiftAccount. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

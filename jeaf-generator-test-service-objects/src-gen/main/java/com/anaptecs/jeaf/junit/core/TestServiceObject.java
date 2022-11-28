@@ -52,6 +52,17 @@ public class TestServiceObject extends TestServiceObjectBase {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( String pKey, String pInfo, int pSomeTest ) {
+    Builder lBuilder = builder();
+    lBuilder.setKey(pKey);
+    lBuilder.setInfo(pInfo);
+    lBuilder.setSomeTest(pSomeTest);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class TestServiceObject. As the class has readonly attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */

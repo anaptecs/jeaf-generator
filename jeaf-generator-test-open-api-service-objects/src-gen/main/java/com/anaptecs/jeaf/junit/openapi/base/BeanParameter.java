@@ -92,6 +92,16 @@ public class BeanParameter implements ServiceObject {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( String pAccessToken, String pOldStyle ) {
+    Builder lBuilder = builder();
+    lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setOldStyle(pOldStyle);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class BeanParameter. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
