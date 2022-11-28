@@ -81,6 +81,15 @@ public class MoneyAmount {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( BigDecimal pAmount ) {
+    Builder lBuilder = builder();
+    lBuilder.setAmount(pAmount);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class MoneyAmount. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

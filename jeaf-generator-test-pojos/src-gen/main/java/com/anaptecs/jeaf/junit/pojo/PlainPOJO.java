@@ -45,6 +45,16 @@ public class PlainPOJO extends PlainPOJOBase {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( String pHello, Integer pWorld ) {
+    Builder lBuilder = builder();
+    lBuilder.setHello(pHello);
+    lBuilder.setWorld(pWorld);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class PlainPOJO. As the class has readonly attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

@@ -69,6 +69,16 @@ public class MappingChild extends MappingParent {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( String pName, int pValue ) {
+    Builder lBuilder = builder();
+    lBuilder.setName(pName);
+    lBuilder.setValue(pValue);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class MappingChild. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

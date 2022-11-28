@@ -105,6 +105,16 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( String pSomeProperty, int pChildProperty ) {
+    Builder lBuilder = builder();
+    lBuilder.setSomeProperty(pSomeProperty);
+    lBuilder.setChildProperty(pChildProperty);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class WeirdBooking. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

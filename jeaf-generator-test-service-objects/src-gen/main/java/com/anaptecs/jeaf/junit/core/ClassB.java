@@ -111,6 +111,15 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( Integer pIntValue ) {
+    Builder lBuilder = builder();
+    lBuilder.setIntValue(pIntValue);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class ClassB. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

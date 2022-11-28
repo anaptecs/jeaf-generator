@@ -70,6 +70,17 @@ public class SubclassWithID extends IdentifiableServiceObject {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( Integer pHello, String pCountry, Boolean pAttr ) {
+    Builder lBuilder = builder();
+    lBuilder.setHello(pHello);
+    lBuilder.setCountry(pCountry);
+    lBuilder.setAttr(pAttr);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class SubclassWithID. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

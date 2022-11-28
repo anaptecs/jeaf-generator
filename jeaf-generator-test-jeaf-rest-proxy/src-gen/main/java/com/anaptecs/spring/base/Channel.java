@@ -120,6 +120,17 @@ public class Channel implements Serializable {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( ChannelType pChannelType, int pCode, Boolean pSelfServiceChannel ) {
+    Builder lBuilder = builder();
+    lBuilder.setChannelType(pChannelType);
+    lBuilder.setCode(pCode);
+    lBuilder.setSelfServiceChannel(pSelfServiceChannel);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class Channel. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

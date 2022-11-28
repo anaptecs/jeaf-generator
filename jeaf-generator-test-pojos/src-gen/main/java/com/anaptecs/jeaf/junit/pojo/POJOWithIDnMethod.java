@@ -45,6 +45,15 @@ public class POJOWithIDnMethod extends POJOWithIDnMethodBase {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( Double pAttr ) {
+    Builder lBuilder = builder();
+    lBuilder.setAttr(pAttr);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class POJOWithIDnMethod. As the class has readonly attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */

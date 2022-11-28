@@ -129,6 +129,17 @@ public class ChildBB extends ChildB {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( String pParentAttribute, Long pChildBBAttribute, int pDeprecatedAttribute ) {
+    Builder lBuilder = builder();
+    lBuilder.setParentAttribute(pParentAttribute);
+    lBuilder.setChildBBAttribute(pChildBBAttribute);
+    lBuilder.setDeprecatedAttribute(pDeprecatedAttribute);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class ChildBB. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

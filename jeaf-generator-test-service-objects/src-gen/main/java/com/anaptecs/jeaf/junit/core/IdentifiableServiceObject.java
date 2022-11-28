@@ -99,6 +99,16 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( Integer pHello, String pCountry ) {
+    Builder lBuilder = builder();
+    lBuilder.setHello(pHello);
+    lBuilder.setCountry(pCountry);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class IdentifiableServiceObject. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */

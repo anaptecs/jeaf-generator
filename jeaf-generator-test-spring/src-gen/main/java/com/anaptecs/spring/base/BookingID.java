@@ -94,6 +94,17 @@ public class BookingID {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( String pReferenceID, String pExternalRefID, InventoryType pInventory ) {
+    Builder lBuilder = builder();
+    lBuilder.setReferenceID(pReferenceID);
+    lBuilder.setExternalRefID(pExternalRefID);
+    lBuilder.setInventory(pInventory);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class BookingID. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

@@ -44,6 +44,18 @@ public class SoftLink extends SoftLinkBase {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( long pObjectID, DataUnit pDataUnit, Entity pEntity, String pRefrenceID ) {
+    Builder lBuilder = builder();
+    lBuilder.setObjectID(pObjectID);
+    lBuilder.setDataUnit(pDataUnit);
+    lBuilder.setEntity(pEntity);
+    lBuilder.setRefrenceID(pRefrenceID);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class SoftLink. As the class has readonly attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

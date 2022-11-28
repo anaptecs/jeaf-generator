@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.accounting;
 
+import java.math.BigDecimal;
+
 import javax.validation.Valid;
 
 /**
@@ -49,6 +51,16 @@ public class Account extends AccountBase {
    */
   public static Builder builder( Account pObject ) {
     return new Builder(pObject);
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( Long pIban, BigDecimal pBalance ) {
+    Builder lBuilder = builder();
+    lBuilder.setIban(pIban);
+    lBuilder.setBalance(pBalance);
+    return lBuilder;
   }
 
   /**
