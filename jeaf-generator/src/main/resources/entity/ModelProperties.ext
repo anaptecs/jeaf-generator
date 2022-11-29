@@ -37,7 +37,7 @@ InstanceValue getDefaultValueForBasicType(Parameter param):
   param.getDefault().replaceAll("\"", "");
 
 boolean hasDefaultValueForBasicType(Parameter param):
-  if param.getDefault().length > 0
+  if param.getDefault().trim().length > 0
   then true
   else false;
   
