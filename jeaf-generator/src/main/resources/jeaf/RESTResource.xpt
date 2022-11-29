@@ -206,11 +206,11 @@ public class «name»Resource {
 	  // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the service interface but "only" our REST controller.
 	  «ENDIF»
 	  «FOREACH this.getBeanParams() AS beanParam»
-	  «beanParam.getTypeName()».Builder «beanParam.name.toLocalVar()»Builder = «beanParam.getTypeName()».builder();
-	  «FOREACH beanParam.type.getAllAttributesFromHierarchy() AS attribute»
-	  «beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.asParameter()»);
-	  «ENDFOREACH»
-	  «beanParam.getTypeName()» «beanParam.name» = «beanParam.name.toLocalVar()»Builder.build();
+		  «beanParam.getTypeName()».Builder «beanParam.name.toLocalVar()»Builder = «beanParam.getTypeName()».builder();
+		  «FOREACH beanParam.type.getAllAttributesFromHierarchy() AS attribute»
+		  	«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.asParameter()»);
+		  «ENDFOREACH»
+		  «beanParam.getTypeName()» «beanParam.name» = «beanParam.name.toLocalVar()»Builder.build();
 	  «ENDFOREACH»
 	  «IF this.hasDataTypeParameters()»
 	  // Convert basic type parameters into "real" objects.
@@ -429,7 +429,7 @@ public class «name»Resource {
   
 	  «IF this.type.isOpenAPIDataType() »
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
-	  		String «this.name»AsBasicType
+	  		String «this.asParameter()»AsBasicType
 	  	«ELSE»
 	  		«this.type.attribute().first().fqn()» «this.asParameter()»AsBasicType
 	  	«ENDIF»
