@@ -191,7 +191,7 @@ cached String getRESTPathPrefix():
 
 
 cached List[uml::Class] getCompositeDataTypes(JMM::RESTResource resource):
-	resource.ownedOperation.getPathParams().type.select(e|e.isCompositeDataTypeForRESTResource()).toSet();
+	resource.ownedOperation.getPathParams().type.select(e|e.isCompositeDataTypeForRESTResource()).addAll(resource.ownedOperation.getHeaderParams().type.select(e|e.isCompositeDataTypeForRESTResource())).toSet();
 	
 cached boolean hasCompositeDataTypes(JMM::RESTResource resource):
 	resource.getCompositeDataTypes().isEmpty == false;
