@@ -32,11 +32,24 @@ InstanceValue getDefaultValueForEnum(Parameter param):
 boolean hasDefaultValueForEnum(Parameter param):
   !param.ownedElement.typeSelect(InstanceValue).isEmpty;
 
+InstanceValue getDefaultValueForEnumProperty(Property param):
+  param.ownedElement.typeSelect(InstanceValue).first().stringValue();
+
+boolean hasDefaultValueForEnumProperty(Property param):
+  !param.ownedElement.typeSelect(InstanceValue).isEmpty;
 
 InstanceValue getDefaultValueForBasicType(Parameter param):
   param.getDefault().replaceAll("\"", "");
 
 boolean hasDefaultValueForBasicType(Parameter param):
+  if param.getDefault().trim().length > 0
+  then true
+  else false;
+  
+InstanceValue getDefaultValueForBasicTypeProperty(Property param):
+  param.getDefault().replaceAll("\"", "");
+
+boolean hasDefaultValueForBasicTypeProperty(Property param):
   if param.getDefault().trim().length > 0
   then true
   else false;
