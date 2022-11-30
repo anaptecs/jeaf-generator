@@ -1,6 +1,8 @@
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::Naming»
 «EXTENSION java::Helper»
+«EXTENSION java::OpenAPIFunctions»
+
 
 «DEFINE GenerateToStringMethod FOR uml::Class»
   /**
@@ -45,7 +47,6 @@
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
-  
 «ENDDEFINE»
 
 «DEFINE ToStringValue FOR uml::Property»
@@ -141,5 +142,51 @@
   «IF getSuppressedWarnings().isEmpty == false»
   @java.lang.SuppressWarnings(«FOREACH getSuppressedWarnings() AS warning SEPARATOR ", "»"«warning»"«ENDFOREACH»)
   «ENDIF»
+«ENDDEFINE»
+
+«DEFINE GenerateEqualsHashCode FOR uml::Class»
+	«IF this.isCompositeDataType()»
+		@Override
+		public int hashCode( ) {
+		  return java.util.Objects.hash(«this.getCompositeDateTypePublicFieldName()»);
+		}
+		
+		@Override
+		public boolean equals( Object pOtherObject ) {
+		  boolean lEquals;
+		  if (this == pOtherObject) {
+		    lEquals = true;
+		  }
+		  else if (pOtherObject instanceof «this.fqn()» == false) {
+		    lEquals = false;
+		  }
+		  else {
+		    lEquals = java.util.Objects.equals(«this.getCompositeDateTypePublicFieldName()», ((«this.fqn()») pOtherObject).get«this.getCompositeDateTypePublicFieldName().toFirstUpper()»());
+		  }
+		  return lEquals;
+		}
+	«ELSE»
+		«IF this.isOpenAPIDataType() && this.getAllAttributesFromHierarchy().size == 1»
+		@Override
+		public int hashCode( ) {
+		  return java.util.Objects.hash(«this.getAllAttributesFromHierarchy().first().name»);
+		}
+		
+		@Override
+		public boolean equals( Object pOtherObject ) {
+		  boolean lEquals;
+		  if (this == pOtherObject) {
+		    lEquals = true;
+		  }
+		  else if (pOtherObject instanceof «this.fqn()» == false) {
+		    lEquals = false;
+		  }
+		  else {
+		    lEquals = java.util.Objects.equals(«this.getAllAttributesFromHierarchy().first().name», ((«this.fqn()») pOtherObject).«this.getAllAttributesFromHierarchy().first().asGetter()»());
+		  }
+		  return lEquals;
+		}
+		«ENDIF»
+	«ENDIF»
 «ENDDEFINE»
 

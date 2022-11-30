@@ -6,6 +6,7 @@
 package com.anaptecs.spring.base;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 
@@ -121,6 +122,26 @@ public abstract class ComplexBookingIDBase implements Serializable {
    */
   public String getBookingID( ) {
     return bookingID;
+  }
+
+  @Override
+  public int hashCode( ) {
+    return Objects.hash(bookingID);
+  }
+
+  @Override
+  public boolean equals( Object pOtherObject ) {
+    boolean lEquals;
+    if (this == pOtherObject) {
+      lEquals = true;
+    }
+    else if (pOtherObject instanceof ComplexBookingID == false) {
+      lEquals = false;
+    }
+    else {
+      lEquals = Objects.equals(bookingID, ((ComplexBookingID) pOtherObject).getBookingID());
+    }
+    return lEquals;
   }
 
   /**

@@ -122,6 +122,7 @@
 						«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
 					«ENDIF»
 
+					«EXPAND java::Helper::GenerateEqualsHashCode»
 					«EXPAND java::Helper::GenerateToStringMethod»
 				}
 			«ENDFILE»
@@ -240,6 +241,7 @@
 					«ENDIF»
 
 					«EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
+					«EXPAND java::Helper::GenerateEqualsHashCode»
 					«EXPAND java::Helper::GenerateToStringMethod»
 				}
 			«ENDFILE»

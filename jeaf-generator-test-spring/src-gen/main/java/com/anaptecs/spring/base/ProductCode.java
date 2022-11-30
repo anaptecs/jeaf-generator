@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Objects;
+
 import javax.validation.constraints.Positive;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -160,6 +162,26 @@ public class ProductCode {
   public void setCode( int pCode ) {
     // Assign value to attribute
     code = pCode;
+  }
+
+  @Override
+  public int hashCode( ) {
+    return Objects.hash(code);
+  }
+
+  @Override
+  public boolean equals( Object pOtherObject ) {
+    boolean lEquals;
+    if (this == pOtherObject) {
+      lEquals = true;
+    }
+    else if (pOtherObject instanceof ProductCode == false) {
+      lEquals = false;
+    }
+    else {
+      lEquals = Objects.equals(code, ((ProductCode) pOtherObject).getCode());
+    }
+    return lEquals;
   }
 
   /**

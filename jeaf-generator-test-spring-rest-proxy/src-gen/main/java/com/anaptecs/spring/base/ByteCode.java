@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Objects;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
@@ -131,6 +133,26 @@ public class ByteCode {
   public void setCode( Byte pCode ) {
     // Assign value to attribute
     code = pCode;
+  }
+
+  @Override
+  public int hashCode( ) {
+    return Objects.hash(code);
+  }
+
+  @Override
+  public boolean equals( Object pOtherObject ) {
+    boolean lEquals;
+    if (this == pOtherObject) {
+      lEquals = true;
+    }
+    else if (pOtherObject instanceof ByteCode == false) {
+      lEquals = false;
+    }
+    else {
+      lEquals = Objects.equals(code, ((ByteCode) pOtherObject).getCode());
+    }
+    return lEquals;
   }
 
   /**

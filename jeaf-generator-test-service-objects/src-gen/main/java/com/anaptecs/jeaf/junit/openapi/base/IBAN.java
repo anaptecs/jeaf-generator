@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Objects;
+
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -157,6 +159,26 @@ public class IBAN implements ServiceObject {
   public void setValue( String pValue ) {
     // Assign value to attribute
     value = pValue;
+  }
+
+  @Override
+  public int hashCode( ) {
+    return Objects.hash(value);
+  }
+
+  @Override
+  public boolean equals( Object pOtherObject ) {
+    boolean lEquals;
+    if (this == pOtherObject) {
+      lEquals = true;
+    }
+    else if (pOtherObject instanceof IBAN == false) {
+      lEquals = false;
+    }
+    else {
+      lEquals = Objects.equals(value, ((IBAN) pOtherObject).getValue());
+    }
+    return lEquals;
   }
 
   /**

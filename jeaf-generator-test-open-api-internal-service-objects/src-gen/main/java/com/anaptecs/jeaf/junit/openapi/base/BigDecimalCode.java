@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
@@ -160,6 +161,26 @@ public class BigDecimalCode implements ServiceObject {
   public void setCode( BigDecimal pCode ) {
     // Assign value to attribute
     code = pCode;
+  }
+
+  @Override
+  public int hashCode( ) {
+    return Objects.hash(code);
+  }
+
+  @Override
+  public boolean equals( Object pOtherObject ) {
+    boolean lEquals;
+    if (this == pOtherObject) {
+      lEquals = true;
+    }
+    else if (pOtherObject instanceof BigDecimalCode == false) {
+      lEquals = false;
+    }
+    else {
+      lEquals = Objects.equals(code, ((BigDecimalCode) pOtherObject).getCode());
+    }
+    return lEquals;
   }
 
   /**

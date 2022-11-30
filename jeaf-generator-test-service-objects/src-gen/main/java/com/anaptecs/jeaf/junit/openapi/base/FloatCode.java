@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Objects;
+
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -158,6 +160,26 @@ public class FloatCode implements ServiceObject {
   public void setCode( Float pCode ) {
     // Assign value to attribute
     code = pCode;
+  }
+
+  @Override
+  public int hashCode( ) {
+    return Objects.hash(code);
+  }
+
+  @Override
+  public boolean equals( Object pOtherObject ) {
+    boolean lEquals;
+    if (this == pOtherObject) {
+      lEquals = true;
+    }
+    else if (pOtherObject instanceof FloatCode == false) {
+      lEquals = false;
+    }
+    else {
+      lEquals = Objects.equals(code, ((FloatCode) pOtherObject).getCode());
+    }
+    return lEquals;
   }
 
   /**
