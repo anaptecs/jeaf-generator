@@ -32,7 +32,7 @@ package «packageName()».resource;
 	«ENDIF»
 	@org.springframework.web.bind.annotation.RestController
 «ELSE»
-	«IF this.getRESTPath().length > 0»@javax.ws.rs.Path("«this.getRESTPath()»")«ENDIF»
+	@javax.ws.rs.Path("«IF this.getRESTPath().length > 0»«this.getRESTPath()»«ELSE»/«ENDIF»")
 	«IF consumes.size > 0»@javax.ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
 	«IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
 «ENDIF»

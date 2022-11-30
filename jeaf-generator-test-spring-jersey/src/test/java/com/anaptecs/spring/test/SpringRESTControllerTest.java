@@ -480,4 +480,14 @@ public class SpringRESTControllerTest {
     assertEquals(200, lResponse.getCode());
   }
 
+  @Test
+  void testPathlessRESTController( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + "/doSomething");
+
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("Something", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
+    assertEquals(200, lResponse.getCode());
+  }
+
 }

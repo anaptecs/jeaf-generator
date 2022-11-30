@@ -183,8 +183,17 @@ cached String asPropertyErrorMessage(uml::Property property) :
   
 cached String getRESTPath(JMM::RESTResource resource):
 	if getRESTPathPrefix().length > 0
-	then getRESTPathPrefix() + resource.path
+	then 
+		resource.buildRESTPath()
 	else resource.path;
+	
+cached String buildRESTPath(JMM::RESTResource resource):
+	if resource.path.length > 0
+	then 
+		getRESTPathPrefix() + resource.path
+	else 
+		getRESTPathPrefix();
+
 	
 cached String getRESTPathPrefix():
 	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getRESTPathPrefix();
