@@ -134,6 +134,11 @@ public class Product {
     this.link = link;
   }
 
+  public Product productID(String productID) {
+    this.productID = productID;
+    return this;
+  }
+
    /**
    * Get productID
    * @return productID
@@ -141,6 +146,10 @@ public class Product {
   @Schema(required = true, description = "")
   public String getProductID() {
     return productID;
+  }
+
+  public void setProductID(String productID) {
+    this.productID = productID;
   }
 
   public Product supportedCurrencies(List<String> supportedCurrencies) {

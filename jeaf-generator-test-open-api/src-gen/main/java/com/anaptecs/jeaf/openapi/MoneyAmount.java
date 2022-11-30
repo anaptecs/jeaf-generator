@@ -30,6 +30,11 @@ public class MoneyAmount {
   @JsonProperty("currencyCode")
   private String currencyCode = "CHF";
 
+  public MoneyAmount amount(Double amount) {
+    this.amount = amount;
+    return this;
+  }
+
    /**
    * The amount of money. Attribute is always set.
    * @return amount
@@ -39,6 +44,15 @@ public class MoneyAmount {
     return amount;
   }
 
+  public void setAmount(Double amount) {
+    this.amount = amount;
+  }
+
+  public MoneyAmount currencyCode(String currencyCode) {
+    this.currencyCode = currencyCode;
+    return this;
+  }
+
    /**
    * Get currencyCode
    * @return currencyCode
@@ -46,6 +60,10 @@ public class MoneyAmount {
   @Schema(example = "CHF", required = true, description = "")
   public String getCurrencyCode() {
     return currencyCode;
+  }
+
+  public void setCurrencyCode(String currencyCode) {
+    this.currencyCode = currencyCode;
   }
 
 

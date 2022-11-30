@@ -242,11 +242,9 @@ components:
           type: integer
           format: int32
           nullable: false
-          readOnly: true
         selfServiceChannel:
           type: boolean
           nullable: false
-          readOnly: true
           default: true
 
     # com.anaptecs.jeaf.junit.openapi.base.ChannelType
@@ -653,7 +651,6 @@ components:
           type: number
           format: double
           nullable: false
-          readOnly: true
         currencyCode:
           type: string
           default: 'CHF'
@@ -661,7 +658,6 @@ components:
           maxLength: 3
           example: CHF
           nullable: false
-          readOnly: true
 
     # com.anaptecs.jeaf.junit.openapi.base.OpenAPITestObject
     OpenAPITestObject:
@@ -681,7 +677,6 @@ components:
       properties:
         readOnlyAttribute:
           type: string
-          readOnly: true
         readWriteAttribute:
           type: string
         writeOnlyAttribute:
@@ -696,7 +691,6 @@ components:
           nullable: false
         readOnlyArray:
           type: string
-          readOnly: true
         readWriteArray:
           type: string
         writeOnlyArray:
@@ -1313,24 +1307,19 @@ components:
         title:
           type: string
           nullable: false
-          readOnly: true
         status:
           type: integer
           format: int32
           nullable: false
-          readOnly: true
         type:
           type: string
           nullable: false
-          readOnly: true
         detail:
           type: string
           nullable: false
-          readOnly: true
         instance:
           type: string
           nullable: false
-          readOnly: true
 
     # com.anaptecs.jeaf.junit.openapi.base.Product
     Product:
@@ -1367,7 +1356,6 @@ components:
         productID:
           type: string
           nullable: false
-          readOnly: true
         supportedCurrencies:
           type: array
           items:

@@ -117,7 +117,7 @@
           «IF attribute.isNullable() == false -»
           nullable: «attribute.isNullable()»
           «ENDIF-»  
-          «IF attribute.isReadOnly()  -»
+          «IF attribute.isReadOnly() && true == false  -»
           readOnly: «attribute.isReadOnly()»
           «ENDIF-»  
           «IF attribute.isWriteOnly() -»
@@ -257,7 +257,7 @@
           «IF attribute.isNullable() == false -»
               nullable: «attribute.isNullable()»
           «ENDIF-»  
-          «IF attribute.isReadOnly()  -»
+          «IF attribute.isReadOnly() && true == false -»
               readOnly: «attribute.isReadOnly()»
           «ENDIF-»  
           «IF attribute.isWriteOnly() -»

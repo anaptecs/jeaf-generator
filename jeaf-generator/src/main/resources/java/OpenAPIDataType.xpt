@@ -73,7 +73,7 @@
           «IF ownerAttribute.isNullable() == false -»
 «indentation»          nullable: «ownerAttribute.isNullable()»
           «ENDIF-»  
-          «IF ownerAttribute.isReadOnly()  -»
+          «IF ownerAttribute.isReadOnly() && true == false -»
 «indentation»          readOnly: «ownerAttribute.isReadOnly()»
           «ENDIF-»  
           «IF ownerAttribute.isWriteOnly() -»
@@ -116,7 +116,7 @@
       «IF attribute.isNullable() == false -»
       nullable: «attribute.isNullable()»
       «ENDIF-»  
-      «IF attribute.isReadOnly()  -»
+      «IF attribute.isReadOnly() && true == false -»
       readOnly: «attribute.isReadOnly()»
       «ENDIF-»  
       «IF attribute.isWriteOnly() -»

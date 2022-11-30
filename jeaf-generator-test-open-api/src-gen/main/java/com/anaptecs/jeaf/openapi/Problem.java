@@ -39,6 +39,11 @@ public class Problem {
   @JsonProperty("instance")
   private String instance = null;
 
+  public Problem title(String title) {
+    this.title = title;
+    return this;
+  }
+
    /**
    * Get title
    * @return title
@@ -46,6 +51,15 @@ public class Problem {
   @Schema(required = true, description = "")
   public String getTitle() {
     return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public Problem status(Integer status) {
+    this.status = status;
+    return this;
   }
 
    /**
@@ -57,6 +71,15 @@ public class Problem {
     return status;
   }
 
+  public void setStatus(Integer status) {
+    this.status = status;
+  }
+
+  public Problem type(String type) {
+    this.type = type;
+    return this;
+  }
+
    /**
    * Get type
    * @return type
@@ -64,6 +87,15 @@ public class Problem {
   @Schema(required = true, description = "")
   public String getType() {
     return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  public Problem detail(String detail) {
+    this.detail = detail;
+    return this;
   }
 
    /**
@@ -75,6 +107,15 @@ public class Problem {
     return detail;
   }
 
+  public void setDetail(String detail) {
+    this.detail = detail;
+  }
+
+  public Problem instance(String instance) {
+    this.instance = instance;
+    return this;
+  }
+
    /**
    * Get instance
    * @return instance
@@ -82,6 +123,10 @@ public class Problem {
   @Schema(required = true, description = "")
   public String getInstance() {
     return instance;
+  }
+
+  public void setInstance(String instance) {
+    this.instance = instance;
   }
 
 

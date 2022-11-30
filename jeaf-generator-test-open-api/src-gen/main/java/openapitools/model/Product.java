@@ -79,14 +79,6 @@ public class Product {
   public Product() { 
   }
 
-  @JsonCreator
-  public Product(
-    @JsonProperty(JSON_PROPERTY_PRODUCT_I_D) String productID
-  ) {
-    this();
-    this.productID = productID;
-  }
-
   public Product resellers(List<Reseller> resellers) {
     this.resellers = resellers;
     return this;
@@ -199,6 +191,11 @@ public class Product {
   }
 
 
+  public Product productID(String productID) {
+    this.productID = productID;
+    return this;
+  }
+
    /**
    * Get productID
    * @return productID
@@ -213,6 +210,11 @@ public class Product {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_PRODUCT_I_D)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setProductID(String productID) {
+    this.productID = productID;
+  }
 
 
   public Product supportedCurrencies(List<String> supportedCurrencies) {

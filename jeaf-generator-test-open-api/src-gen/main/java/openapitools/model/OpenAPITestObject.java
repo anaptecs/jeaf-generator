@@ -78,14 +78,9 @@ public class OpenAPITestObject {
   public OpenAPITestObject() { 
   }
 
-  @JsonCreator
-  public OpenAPITestObject(
-    @JsonProperty(JSON_PROPERTY_READ_ONLY_ATTRIBUTE) String readOnlyAttribute, 
-    @JsonProperty(JSON_PROPERTY_READ_ONLY_ARRAY) String readOnlyArray
-  ) {
-    this();
+  public OpenAPITestObject readOnlyAttribute(String readOnlyAttribute) {
     this.readOnlyAttribute = readOnlyAttribute;
-    this.readOnlyArray = readOnlyArray;
+    return this;
   }
 
    /**
@@ -102,6 +97,11 @@ public class OpenAPITestObject {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_READ_ONLY_ATTRIBUTE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setReadOnlyAttribute(String readOnlyAttribute) {
+    this.readOnlyAttribute = readOnlyAttribute;
+  }
 
 
   public OpenAPITestObject readWriteAttribute(String readWriteAttribute) {
@@ -208,6 +208,11 @@ public class OpenAPITestObject {
   }
 
 
+  public OpenAPITestObject readOnlyArray(String readOnlyArray) {
+    this.readOnlyArray = readOnlyArray;
+    return this;
+  }
+
    /**
    * Get readOnlyArray
    * @return readOnlyArray
@@ -222,6 +227,11 @@ public class OpenAPITestObject {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_READ_ONLY_ARRAY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setReadOnlyArray(String readOnlyArray) {
+    this.readOnlyArray = readOnlyArray;
+  }
 
 
   public OpenAPITestObject readWriteArray(String readWriteArray) {
