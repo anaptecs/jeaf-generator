@@ -54,6 +54,11 @@ public class OpenAPITestObject {
   @JsonProperty("notNullableArray")
   private Double notNullableArray = null;
 
+  public OpenAPITestObject readOnlyAttribute(String readOnlyAttribute) {
+    this.readOnlyAttribute = readOnlyAttribute;
+    return this;
+  }
+
    /**
    * Get readOnlyAttribute
    * @return readOnlyAttribute
@@ -61,6 +66,10 @@ public class OpenAPITestObject {
   @Schema(required = true, description = "")
   public String getReadOnlyAttribute() {
     return readOnlyAttribute;
+  }
+
+  public void setReadOnlyAttribute(String readOnlyAttribute) {
+    this.readOnlyAttribute = readOnlyAttribute;
   }
 
   public OpenAPITestObject readWriteAttribute(String readWriteAttribute) {
@@ -135,6 +144,11 @@ public class OpenAPITestObject {
     this.notNullableAttribute = notNullableAttribute;
   }
 
+  public OpenAPITestObject readOnlyArray(String readOnlyArray) {
+    this.readOnlyArray = readOnlyArray;
+    return this;
+  }
+
    /**
    * Get readOnlyArray
    * @return readOnlyArray
@@ -142,6 +156,10 @@ public class OpenAPITestObject {
   @Schema(required = true, description = "")
   public String getReadOnlyArray() {
     return readOnlyArray;
+  }
+
+  public void setReadOnlyArray(String readOnlyArray) {
+    this.readOnlyArray = readOnlyArray;
   }
 
   public OpenAPITestObject readWriteArray(String readWriteArray) {

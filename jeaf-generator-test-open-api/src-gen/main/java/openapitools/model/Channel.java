@@ -55,16 +55,6 @@ public class Channel {
   public Channel() { 
   }
 
-  @JsonCreator
-  public Channel(
-    @JsonProperty(JSON_PROPERTY_CODE) Integer code, 
-    @JsonProperty(JSON_PROPERTY_SELF_SERVICE_CHANNEL) Boolean selfServiceChannel
-  ) {
-    this();
-    this.code = code;
-    this.selfServiceChannel = selfServiceChannel;
-  }
-
   public Channel channelType(ChannelType channelType) {
     this.channelType = channelType;
     return this;
@@ -117,6 +107,11 @@ public class Channel {
   }
 
 
+  public Channel code(Integer code) {
+    this.code = code;
+    return this;
+  }
+
    /**
    * Get code
    * @return code
@@ -131,7 +126,17 @@ public class Channel {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setCode(Integer code) {
+    this.code = code;
+  }
 
+
+  public Channel selfServiceChannel(Boolean selfServiceChannel) {
+    this.selfServiceChannel = selfServiceChannel;
+    return this;
+  }
 
    /**
    * Get selfServiceChannel
@@ -147,6 +152,11 @@ public class Channel {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_SELF_SERVICE_CHANNEL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setSelfServiceChannel(Boolean selfServiceChannel) {
+    this.selfServiceChannel = selfServiceChannel;
+  }
 
 
   /**

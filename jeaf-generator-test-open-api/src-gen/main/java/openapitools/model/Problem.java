@@ -58,20 +58,9 @@ public class Problem {
   public Problem() { 
   }
 
-  @JsonCreator
-  public Problem(
-    @JsonProperty(JSON_PROPERTY_TITLE) String title, 
-    @JsonProperty(JSON_PROPERTY_STATUS) Integer status, 
-    @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_DETAIL) String detail, 
-    @JsonProperty(JSON_PROPERTY_INSTANCE) String instance
-  ) {
-    this();
+  public Problem title(String title) {
     this.title = title;
-    this.status = status;
-    this.type = type;
-    this.detail = detail;
-    this.instance = instance;
+    return this;
   }
 
    /**
@@ -88,7 +77,17 @@ public class Problem {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TITLE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
+
+  public Problem status(Integer status) {
+    this.status = status;
+    return this;
+  }
 
    /**
    * Get status
@@ -104,7 +103,17 @@ public class Problem {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setStatus(Integer status) {
+    this.status = status;
+  }
 
+
+  public Problem type(String type) {
+    this.type = type;
+    return this;
+  }
 
    /**
    * Get type
@@ -120,7 +129,17 @@ public class Problem {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setType(String type) {
+    this.type = type;
+  }
 
+
+  public Problem detail(String detail) {
+    this.detail = detail;
+    return this;
+  }
 
    /**
    * Get detail
@@ -136,7 +155,17 @@ public class Problem {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_DETAIL)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDetail(String detail) {
+    this.detail = detail;
+  }
 
+
+  public Problem instance(String instance) {
+    this.instance = instance;
+    return this;
+  }
 
    /**
    * Get instance
@@ -152,6 +181,11 @@ public class Problem {
   }
 
 
+  @JsonProperty(JSON_PROPERTY_INSTANCE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setInstance(String instance) {
+    this.instance = instance;
+  }
 
 
   /**

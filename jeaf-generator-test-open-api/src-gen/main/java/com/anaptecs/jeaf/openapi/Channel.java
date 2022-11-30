@@ -73,6 +73,11 @@ public class Channel {
     this.channelCode = channelCode;
   }
 
+  public Channel code(Integer code) {
+    this.code = code;
+    return this;
+  }
+
    /**
    * Get code
    * @return code
@@ -82,6 +87,15 @@ public class Channel {
     return code;
   }
 
+  public void setCode(Integer code) {
+    this.code = code;
+  }
+
+  public Channel selfServiceChannel(Boolean selfServiceChannel) {
+    this.selfServiceChannel = selfServiceChannel;
+    return this;
+  }
+
    /**
    * Get selfServiceChannel
    * @return selfServiceChannel
@@ -89,6 +103,10 @@ public class Channel {
   @Schema(required = true, description = "")
   public Boolean isSelfServiceChannel() {
     return selfServiceChannel;
+  }
+
+  public void setSelfServiceChannel(Boolean selfServiceChannel) {
+    this.selfServiceChannel = selfServiceChannel;
   }
 
 
