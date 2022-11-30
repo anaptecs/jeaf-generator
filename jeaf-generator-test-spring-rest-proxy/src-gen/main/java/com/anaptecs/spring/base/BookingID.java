@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Objects;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
@@ -117,6 +119,26 @@ public class BookingID {
    */
   public String getBookingID( ) {
     return bookingID;
+  }
+
+  @Override
+  public int hashCode( ) {
+    return Objects.hash(bookingID);
+  }
+
+  @Override
+  public boolean equals( Object pOtherObject ) {
+    boolean lEquals;
+    if (this == pOtherObject) {
+      lEquals = true;
+    }
+    else if (pOtherObject instanceof BookingID == false) {
+      lEquals = false;
+    }
+    else {
+      lEquals = Objects.equals(bookingID, ((BookingID) pOtherObject).getBookingID());
+    }
+    return lEquals;
   }
 
   /**

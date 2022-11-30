@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Objects;
+
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -157,6 +159,26 @@ public class LongCode implements ServiceObject {
   public void setCode( Long pCode ) {
     // Assign value to attribute
     code = pCode;
+  }
+
+  @Override
+  public int hashCode( ) {
+    return Objects.hash(code);
+  }
+
+  @Override
+  public boolean equals( Object pOtherObject ) {
+    boolean lEquals;
+    if (this == pOtherObject) {
+      lEquals = true;
+    }
+    else if (pOtherObject instanceof LongCode == false) {
+      lEquals = false;
+    }
+    else {
+      lEquals = Objects.equals(code, ((LongCode) pOtherObject).getCode());
+    }
+    return lEquals;
   }
 
   /**

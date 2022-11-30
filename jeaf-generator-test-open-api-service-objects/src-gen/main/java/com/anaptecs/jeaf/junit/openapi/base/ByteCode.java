@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Objects;
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -156,6 +158,26 @@ public class ByteCode implements ServiceObject {
   public void setCode( Byte pCode ) {
     // Assign value to attribute
     code = pCode;
+  }
+
+  @Override
+  public int hashCode( ) {
+    return Objects.hash(code);
+  }
+
+  @Override
+  public boolean equals( Object pOtherObject ) {
+    boolean lEquals;
+    if (this == pOtherObject) {
+      lEquals = true;
+    }
+    else if (pOtherObject instanceof ByteCode == false) {
+      lEquals = false;
+    }
+    else {
+      lEquals = Objects.equals(code, ((ByteCode) pOtherObject).getCode());
+    }
+    return lEquals;
   }
 
   /**

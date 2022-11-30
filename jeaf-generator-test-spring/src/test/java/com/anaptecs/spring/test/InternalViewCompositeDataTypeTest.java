@@ -6,6 +6,7 @@
 package com.anaptecs.spring.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 
@@ -19,6 +20,7 @@ import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ComplexBookingID;
 import com.anaptecs.spring.base.ComplexBookingType;
+import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.InventoryType;
 import com.anaptecs.spring.base.WeirdBooking;
 import com.anaptecs.spring.impl.SpringTestApplication;
@@ -197,5 +199,21 @@ public class InternalViewCompositeDataTypeTest {
     assertEquals(ComplexBookingType.COMPLEX, lReadBooking.getAdditionalBookings().get(1).getComplexBookingType());
     assertEquals(1, lReadBooking.getAdditionalBookings().get(1).getBookingIDs().size());
     assertEquals(null, lReadBooking.getAdditionalBookings().get(1).getStrings());
+  }
+
+  @Test
+  void testEqualsHashCodeForDataType( ) {
+    double lAlmostPI = 3.1415;
+    DoubleCode lDoubleCode1 = DoubleCode.builder(lAlmostPI).build();
+    DoubleCode lDoubleCode2 = DoubleCode.builder(3.1415).build();
+    DoubleCode lDoubleCodeOther = DoubleCode.builder(3.1).build();
+
+    assertEquals(lDoubleCode1, lDoubleCode2);
+    assertEquals(lDoubleCode1.hashCode(), lDoubleCode2.hashCode());
+
+    assertEquals(lDoubleCode1, lDoubleCode1);
+
+    assertNotEquals(lDoubleCode1, lDoubleCodeOther);
+    assertNotEquals("Hello", lDoubleCode1);
   }
 }

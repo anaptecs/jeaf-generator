@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -135,6 +137,26 @@ public class FloatCode {
   public void setCode( Float pCode ) {
     // Assign value to attribute
     code = pCode;
+  }
+
+  @Override
+  public int hashCode( ) {
+    return Objects.hash(code);
+  }
+
+  @Override
+  public boolean equals( Object pOtherObject ) {
+    boolean lEquals;
+    if (this == pOtherObject) {
+      lEquals = true;
+    }
+    else if (pOtherObject instanceof FloatCode == false) {
+      lEquals = false;
+    }
+    else {
+      lEquals = Objects.equals(code, ((FloatCode) pOtherObject).getCode());
+    }
+    return lEquals;
   }
 
   /**

@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Objects;
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
@@ -140,6 +142,26 @@ public class BookingID implements ServiceObject {
    */
   public String getBookingID( ) {
     return bookingID;
+  }
+
+  @Override
+  public int hashCode( ) {
+    return Objects.hash(bookingID);
+  }
+
+  @Override
+  public boolean equals( Object pOtherObject ) {
+    boolean lEquals;
+    if (this == pOtherObject) {
+      lEquals = true;
+    }
+    else if (pOtherObject instanceof BookingID == false) {
+      lEquals = false;
+    }
+    else {
+      lEquals = Objects.equals(bookingID, ((BookingID) pOtherObject).getBookingID());
+    }
+    return lEquals;
   }
 
   /**

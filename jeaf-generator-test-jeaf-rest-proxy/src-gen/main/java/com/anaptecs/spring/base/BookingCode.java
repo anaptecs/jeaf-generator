@@ -6,6 +6,7 @@
 package com.anaptecs.spring.base;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 
@@ -162,6 +163,26 @@ public class BookingCode implements Serializable {
   public void setCode( String pCode ) {
     // Assign value to attribute
     code = pCode;
+  }
+
+  @Override
+  public int hashCode( ) {
+    return Objects.hash(code);
+  }
+
+  @Override
+  public boolean equals( Object pOtherObject ) {
+    boolean lEquals;
+    if (this == pOtherObject) {
+      lEquals = true;
+    }
+    else if (pOtherObject instanceof BookingCode == false) {
+      lEquals = false;
+    }
+    else {
+      lEquals = Objects.equals(code, ((BookingCode) pOtherObject).getCode());
+    }
+    return lEquals;
   }
 
   /**
