@@ -29,6 +29,8 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 
 import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.spring.base.BookingCode;
+import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.impl.SpringTestApplication;
 
 @SpringBootTest(classes = SpringTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -145,4 +147,32 @@ public class SpringRESTControllerTest {
     assertEquals(200, lResponse.getCode());
   }
 
+  @Test
+  void testDataTypesAsHeaderParams( ) throws IOException {
+    String lBookingIDString = "DUJPT0tJTkdfQ09ExUVYVC0wOTg3NjU0MzKxATEyMzQ1tg==";
+    BookingCode lBookingCode = BookingCode.builder("4711-0815").build();
+    DoubleCode lDoubleCode = DoubleCode.builder(3.14159).build();
+
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
+        + "/rest-products/dataTypesInHeader");
+    lRequest.addHeader("bookingID", lBookingIDString);
+    lRequest.addHeader("bookingCode", lBookingCode.getCode());
+    lRequest.addHeader("DoubleCode", Double.toString(lDoubleCode.getCode()));
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("123456_EXT-0987654321_4711-0815_3.14159", Tools.getStreamTools().getStreamContentAsString(lResponse
+        .getEntity().getContent()));
+    assertEquals(200, lResponse.getCode());
+
+    lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
+        + "/rest-products/dataTypesInBeanHeader");
+    lRequest.addHeader("bookingID", lBookingIDString);
+    lRequest.addHeader("bookingCode", lBookingCode.getCode());
+    lRequest.addHeader("DoubleCode", Double.toString(lDoubleCode.getCode()));
+    lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("Bean-Header: 123456_EXT-0987654321_4711-0815_3.14159", Tools.getStreamTools()
+        .getStreamContentAsString(lResponse
+            .getEntity().getContent()));
+    assertEquals(200, lResponse.getCode());
+  }
 }

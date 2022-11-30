@@ -358,7 +358,11 @@ public class «name»RESTProxy implements «this.fqn()» {
 			String.valueOf(«name»)
 		«ELSE»
 			«IF type.isOpenAPIDataType()»
-				«name».«type.getAllAttributesFromHierarchy().first().asGetter()»()
+				«IF type.isCompositeDataType()»
+					«name».get«type.getCompositeDateTypePublicFieldName().toFirstUpper()»()
+				«ELSE»
+					«name».«type.getAllAttributesFromHierarchy().first().asGetter()»()
+				«ENDIF»
 			«ELSE»
 				«IF isTargetRuntimeJEAF()»
 				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«name»)
@@ -383,7 +387,11 @@ public class «name»RESTProxy implements «this.fqn()» {
 			String.valueOf(«beanParam.name».«this.asGetter()»())
 		«ELSE»
 			«IF type.isOpenAPIDataType()»
-				«beanParam.name».«this.asGetter()»().«type.getAllAttributesFromHierarchy().first().asGetter()»()
+				«IF type.isCompositeDataType()»
+					«beanParam.name».«this.asGetter()»().get«type.getCompositeDateTypePublicFieldName().toFirstUpper()»()
+				«ELSE»
+					«beanParam.name».«this.asGetter()»().«type.getAllAttributesFromHierarchy().first().asGetter()»()
+				«ENDIF»
 			«ELSE»
 				«IF isTargetRuntimeJEAF()»
 				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«beanParam.name».«this.asGetter()»())

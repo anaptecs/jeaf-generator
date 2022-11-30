@@ -39,12 +39,14 @@ import com.anaptecs.spring.base.ComplexBookingID;
 import com.anaptecs.spring.base.ComplexBookingType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.InventoryType;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
+import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.RESTProductService;
@@ -69,6 +71,16 @@ public class RESTProductServiceResource {
         Arrays.asList(ComplexBookingID.class, ArrayList.class, BookingID.class, InventoryType.class, BookingCode.class,
             ComplexBookingType.class, ComplexBookingType.ComplexBookingTypeType.class, String[].class);
     COMPLEXBOOKINGID_SERIALIZED_CLASSES = Collections.unmodifiableList(lClasses);
+  }
+
+  /**
+   * List contains all classes that are involved in the serialization process of class BookingID. This information is
+   * required by some serialization mechanisms for efficiency and security reasons.
+   */
+  private static final List<Class<?>> BOOKINGID_SERIALIZED_CLASSES;
+  static {
+    List<Class<?>> lClasses = Arrays.asList(BookingID.class, InventoryType.class, BookingCode.class);
+    BOOKINGID_SERIALIZED_CLASSES = Collections.unmodifiableList(lClasses);
   }
 
   /**
@@ -179,7 +191,7 @@ public class RESTProductServiceResource {
   public List<CurrencyCode> getSupportedCurrencies(
       @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
+    ChannelCode pChannelCode = ChannelCode.builder(pChannelCodeAsBasicType).build();
     // Delegate request to service.
     return rESTProductService.getSupportedCurrencies(pChannelCode);
   }
@@ -191,7 +203,7 @@ public class RESTProductServiceResource {
   public List<CurrencyCode> getSupportedCurrenciesAsync(
       @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
+    ChannelCode pChannelCode = ChannelCode.builder(pChannelCodeAsBasicType).build();
     // Delegate request to service.
     return rESTProductService.getSupportedCurrenciesAsync(pChannelCode);
   }
@@ -387,5 +399,42 @@ public class RESTProductServiceResource {
         ComplexBookingID.class, COMPLEXBOOKINGID_SERIALIZED_CLASSES);
     // Delegate request to service.
     return rESTProductService.processComplexBookingID(pComplextBookingID);
+  }
+
+  /**
+   * {@link RESTProductService#testDataTypesAsHeaderParam()}
+   */
+  @RequestMapping(path = "dataTypesInHeader", method = { RequestMethod.GET })
+  public String testDataTypesAsHeaderParam(
+      @RequestHeader(name = "BookingID", required = true) String pBookingIDAsBasicType,
+      @RequestHeader(name = "BookingCode", required = true) String pBookingCodeAsBasicType,
+      @RequestHeader(name = "DoubleCode", required = true) double pDoubleCodeAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    BookingID pBookingID =
+        compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class, BOOKINGID_SERIALIZED_CLASSES);
+    BookingCode pBookingCode = BookingCode.builder(pBookingCodeAsBasicType).build();
+    DoubleCode pDoubleCode = DoubleCode.builder(pDoubleCodeAsBasicType).build();
+    // Delegate request to service.
+    return rESTProductService.testDataTypesAsHeaderParam(pBookingID, pBookingCode, pDoubleCode);
+  }
+
+  /**
+   * {@link RESTProductService#testDataTypesAsHeaderBeanParam()}
+   */
+  @RequestMapping(path = "dataTypesInBeanHeader", method = { RequestMethod.GET })
+  public String testDataTypesAsHeaderBeanParam(
+      @RequestHeader(name = "bookingID", required = true) String pBookingIDAsBasicType,
+      @RequestHeader(name = "bookingCode", required = true) String pBookingCodeAsBasicType,
+      @RequestHeader(name = "DoubleCode", required = true) double pDoubleCodeAsBasicType ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    AdvancedHeader.Builder lContextBuilder = AdvancedHeader.builder();
+    lContextBuilder.setBookingID(
+        compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class, BOOKINGID_SERIALIZED_CLASSES));
+    lContextBuilder.setBookingCode(BookingCode.builder(pBookingCodeAsBasicType).build());
+    lContextBuilder.setDoubleCode(DoubleCode.builder(pDoubleCodeAsBasicType).build());
+    AdvancedHeader pContext = lContextBuilder.build();
+    // Delegate request to service.
+    return rESTProductService.testDataTypesAsHeaderBeanParam(pContext);
   }
 }

@@ -27,16 +27,20 @@ import com.anaptecs.jeaf.rest.executor.api.ContentType;
 import com.anaptecs.jeaf.rest.executor.api.HttpMethod;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequest;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor;
+import com.anaptecs.spring.base.BookingCode;
+import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.ComplexBookingID;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
+import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.RESTProductService;
@@ -832,5 +836,89 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Boolean.class);
+  }
+
+  /**
+   * 
+   * @param pBookingID
+   * @param pBookingCode
+   * @param pDoubleCode
+   * @return {@link String}
+   */
+  @Override
+  public String testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("dataTypesInHeader");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set HTTP header(s)
+    if (pBookingID != null) {
+      lRequestBuilder.setHeader("BookingID", pBookingID.getBookingID());
+    }
+    else {
+      lRequestBuilder.setHeader("BookingID", (String) null);
+    }
+    if (pBookingCode != null) {
+      lRequestBuilder.setHeader("BookingCode", pBookingCode.getCode());
+    }
+    else {
+      lRequestBuilder.setHeader("BookingCode", (String) null);
+    }
+    if (pDoubleCode != null) {
+      lRequestBuilder.setHeader("DoubleCode", pDoubleCode.getCode());
+    }
+    else {
+      lRequestBuilder.setHeader("DoubleCode", (String) null);
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pContext
+   * @return {@link String}
+   */
+  @Override
+  public String testDataTypesAsHeaderBeanParam( AdvancedHeader pContext ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("dataTypesInBeanHeader");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set HTTP header(s)
+    if (pContext != null) {
+      if (pContext.getBookingID() != null) {
+        lRequestBuilder.setHeader("bookingID", pContext.getBookingID().getBookingID());
+      }
+      else {
+        lRequestBuilder.setHeader("bookingID", (String) null);
+      }
+      if (pContext.getBookingCode() != null) {
+        lRequestBuilder.setHeader("bookingCode", pContext.getBookingCode().getCode());
+      }
+      else {
+        lRequestBuilder.setHeader("bookingCode", (String) null);
+      }
+      if (pContext.getDoubleCode() != null) {
+        lRequestBuilder.setHeader("DoubleCode", pContext.getDoubleCode().getCode());
+      }
+      else {
+        lRequestBuilder.setHeader("DoubleCode", (String) null);
+      }
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
   }
 }

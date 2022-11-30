@@ -26,6 +26,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.stereotype.Service;
 
+import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
@@ -33,6 +34,7 @@ import com.anaptecs.spring.base.ComplexBookingID;
 import com.anaptecs.spring.base.ComplexBookingType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.InventoryType;
 import com.anaptecs.spring.base.Product;
@@ -40,6 +42,7 @@ import com.anaptecs.spring.base.Product.Builder;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
+import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.RESTProductService;
@@ -179,5 +182,15 @@ public class RESTProductServiceImpl implements RESTProductService {
     assertEquals("123456", lBookingID2.getReferenceID());
     assertEquals("EXT-0987654321", lBookingID2.getExternalRefID());
     return true;
+  }
+
+  @Override
+  public String testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode ) {
+    return null;
+  }
+
+  @Override
+  public String testDataTypesAsHeaderBeanParam( AdvancedHeader pContext ) {
+    return null;
   }
 }
