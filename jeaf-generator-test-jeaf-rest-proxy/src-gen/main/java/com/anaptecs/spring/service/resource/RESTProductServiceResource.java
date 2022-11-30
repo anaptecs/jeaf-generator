@@ -54,12 +54,14 @@ import com.anaptecs.spring.base.ComplexBookingID;
 import com.anaptecs.spring.base.ComplexBookingType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.InventoryType;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
+import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.RESTProductService;
@@ -82,6 +84,16 @@ public class RESTProductServiceResource {
         Arrays.asList(ComplexBookingID.class, ArrayList.class, BookingID.class, InventoryType.class, BookingCode.class,
             ComplexBookingType.class, ComplexBookingType.ComplexBookingTypeType.class, String[].class);
     COMPLEXBOOKINGID_SERIALIZED_CLASSES = Collections.unmodifiableList(lClasses);
+  }
+
+  /**
+   * List contains all classes that are involved in the serialization process of class BookingID. This information is
+   * required by some serialization mechanisms for efficiency and security reasons.
+   */
+  private static final List<Class<?>> BOOKINGID_SERIALIZED_CLASSES;
+  static {
+    List<Class<?>> lClasses = Arrays.asList(BookingID.class, InventoryType.class, BookingCode.class);
+    BOOKINGID_SERIALIZED_CLASSES = Collections.unmodifiableList(lClasses);
   }
 
   /**
@@ -381,6 +393,36 @@ public class RESTProductServiceResource {
     // Delegate request to service.
     RESTProductService lService = this.getRESTProductService();
     boolean lResult = lService.processComplexBookingID(pComplextBookingID);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testDataTypesAsHeaderParam()}
+   */
+  @Path("dataTypesInHeader")
+  @GET
+  public Response testDataTypesAsHeaderParam( @HeaderParam("BookingID") String pBookingIDAsBasicType,
+      @HeaderParam("BookingCode") String pBookingCodeAsBasicType,
+      @HeaderParam("DoubleCode") double pDoubleCodeAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    BookingID pBookingID = BookingID.builder().setBookingID(pBookingIDAsBasicType).build();
+    BookingCode pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
+    DoubleCode pDoubleCode = DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build();
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testDataTypesAsHeaderParam(pBookingID, pBookingCode, pDoubleCode);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testDataTypesAsHeaderBeanParam()}
+   */
+  @Path("dataTypesInBeanHeader")
+  @GET
+  public Response testDataTypesAsHeaderBeanParam( @BeanParam AdvancedHeader pContext ) {
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testDataTypesAsHeaderBeanParam(pContext);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 

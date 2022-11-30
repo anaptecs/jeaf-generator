@@ -46,6 +46,12 @@ abstract class RESTProductServiceImplBase implements RESTProductService, Service
   public static final String TESTCOOKIEPARAMS_AUTH_TYPE =
       "testCookieParams.com.anaptecs.spring.service.RESTProductService";
 
+  public static final String TESTDATATYPESASHEADERBEANPARAM_AUTH_TYPE =
+      "testDataTypesAsHeaderBeanParam.com.anaptecs.spring.service.RESTProductService";
+
+  public static final String TESTDATATYPESASHEADERPARAM_AUTH_TYPE =
+      "testDataTypesAsHeaderParam.com.anaptecs.spring.service.RESTProductService";
+
   public static final String TESTDATEHEADERPARAMSBEAN_AUTH_TYPE =
       "testDateHeaderParamsBean.com.anaptecs.spring.service.RESTProductService";
 

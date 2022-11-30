@@ -23,16 +23,20 @@ import com.anaptecs.jeaf.core.annotations.JEAFServiceProvider;
 import com.anaptecs.jeaf.core.api.Component;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
+import com.anaptecs.spring.base.BookingCode;
+import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.ComplexBookingID;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
+import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.restproxy.RESTProductServiceRESTProxyServiceProvider;
@@ -226,5 +230,15 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
   @Override
   public boolean processComplexBookingID( ComplexBookingID pComplextBookingID ) {
     return false;
+  }
+
+  @Override
+  public String testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode ) {
+    return null;
+  }
+
+  @Override
+  public String testDataTypesAsHeaderBeanParam( AdvancedHeader pContext ) {
+    return null;
   }
 }

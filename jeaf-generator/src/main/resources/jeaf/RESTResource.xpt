@@ -208,7 +208,19 @@ public class «name»Resource {
 	  «FOREACH this.getBeanParams() AS beanParam»
 		  «beanParam.getTypeName()».Builder «beanParam.name.toLocalVar()»Builder = «beanParam.getTypeName()».builder();
 		  «FOREACH beanParam.type.getAllAttributesFromHierarchy() AS attribute»
-		  	«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.asParameter()»);
+		  		«IF attribute.type.isOpenAPIDataType()»
+		  			«IF attribute.type.isCompositeDataTypeForRESTResource()»
+		  				«IF generatePublicObjectView()»
+		  					«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.type.fqn()».builder(«attribute.asParameter()»AsBasicType).build());
+		  				«ELSE»
+		  					«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(compositeTypeConverter.deserializeObject(«attribute.asParameter()»AsBasicType, «attribute.type.fqn()».class, «attribute.type.name.toUpperCase()»_SERIALIZED_CLASSES));
+		  				«ENDIF»
+		  			«ELSE»
+		  				«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.type.fqn()».builder(«attribute.asParameter()»AsBasicType).build());
+		  			«ENDIF»
+		  		«ELSE»
+		  			«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.asParameter()»);
+		  		«ENDIF»
 		  «ENDFOREACH»
 		  «beanParam.getTypeName()» «beanParam.name» = «beanParam.name.toLocalVar()»Builder.build();
 	  «ENDFOREACH»
@@ -217,12 +229,12 @@ public class «name»Resource {
 	  	«FOREACH this.getDataTypeParameters() AS basicParam»
 	    	«IF basicParam.type.isCompositeDataTypeForRESTResource()»
 	    		«IF generatePublicObjectView()»
-					«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»(«basicParam.name»AsBasicType).build();
+					«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder(«basicParam.name»AsBasicType).build();
 	    		«ELSE»
 	    			«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
 	    		«ENDIF»
 	    	«ELSE»
-	    		«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
+	    		«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder(«basicParam.name»AsBasicType).build();
 	    	«ENDIF»
 	  	«ENDFOREACH»
 	  «ENDIF»

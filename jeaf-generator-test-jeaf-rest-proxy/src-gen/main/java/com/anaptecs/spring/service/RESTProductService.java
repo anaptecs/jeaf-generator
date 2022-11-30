@@ -22,11 +22,14 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 import com.anaptecs.jeaf.core.api.Service;
+import com.anaptecs.spring.base.BookingCode;
+import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.ComplexBookingID;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
@@ -195,4 +198,20 @@ public interface RESTProductService extends Service {
    * @return {@link Boolean}
    */
   boolean processComplexBookingID( ComplexBookingID pComplextBookingID );
+
+  /**
+   * 
+   * @param pBookingID
+   * @param pBookingCode
+   * @param pDoubleCode
+   * @return {@link String}
+   */
+  String testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode );
+
+  /**
+   * 
+   * @param pContext
+   * @return {@link String}
+   */
+  String testDataTypesAsHeaderBeanParam( AdvancedHeader pContext );
 }

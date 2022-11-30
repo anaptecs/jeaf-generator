@@ -88,6 +88,20 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- Dependency for mock server which is used to test request delegation. -->
+		<dependency>
+			<groupId>org.mock-server</groupId>
+			<artifactId>mockserver-netty</artifactId>
+			<version>${mock.server.version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>jakarta.xml.bind</groupId>
+					<artifactId>jakarta.xml.bind-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
 		<dependency>
 			<groupId>com.anaptecs.jeaf.uml</groupId>
 			<artifactId>jeaf-uml-test-model</artifactId>
