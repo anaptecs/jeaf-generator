@@ -166,7 +166,7 @@
 		  return lEquals;
 		}
 	«ELSE»
-		«IF this.isOpenAPIDataType() && this.getAllAttributesFromHierarchy().size == 1»
+		«IF this.isOpenAPIDataType() && this.getAllAttributesFromHierarchy().size == 1 && this.getAllAttributesFromHierarchy().first().isMultivalued() == false»
 		@Override
 		public int hashCode( ) {
 		  return java.util.Objects.hash(«this.getAllAttributesFromHierarchy().first().name»);
