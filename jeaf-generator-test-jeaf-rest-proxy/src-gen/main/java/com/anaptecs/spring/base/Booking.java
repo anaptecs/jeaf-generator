@@ -198,7 +198,7 @@ public class Booking implements Serializable {
     public Builder setInventories( InventoryType... pInventories ) {
       // To ensure immutability we have to copy the content of the passed array.
       if (pInventories != null) {
-        inventories = Arrays.asList(pInventories);
+        inventories = new ArrayList<InventoryType>(Arrays.asList(pInventories));
       }
       else {
         inventories = null;
