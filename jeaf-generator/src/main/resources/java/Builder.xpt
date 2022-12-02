@@ -402,7 +402,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 			public «builderClassName» set«name.toFirstUpper()»(«this.type.fqn()»... «asParameter()») {
 			    // To ensure immutability we have to copy the content of the passed array.
 			    if(«asParameter()» != null) {
-			      «asInstanceVar()» = «IF this.getCollectionImplType() == "java.utilArrayList"»java.util.Arrays.asList(«asParameter()»)«ELSE»new «this.getCollectionImplType()»<«type.fqn()»>(java.util.Arrays.asList(«asParameter()»))«ENDIF»;
+			      «asInstanceVar()» = «IF this.getCollectionImplType() == "java.util.ArrayList"»java.util.Arrays.asList(«asParameter()»)«ELSE»new «this.getCollectionImplType()»<«type.fqn()»>(java.util.Arrays.asList(«asParameter()»))«ENDIF»;
 			    }
 			    else {
 			      «asInstanceVar()» = null;
