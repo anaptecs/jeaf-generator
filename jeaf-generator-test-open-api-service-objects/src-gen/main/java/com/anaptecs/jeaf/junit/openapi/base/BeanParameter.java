@@ -94,9 +94,10 @@ public class BeanParameter implements ServiceObject {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pAccessToken, String pOldStyle ) {
+  public static Builder builder( String pAccessToken, Locale pLanguage, String pOldStyle ) {
     Builder lBuilder = builder();
     lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setLanguage(pLanguage);
     lBuilder.setOldStyle(pOldStyle);
     return lBuilder;
   }

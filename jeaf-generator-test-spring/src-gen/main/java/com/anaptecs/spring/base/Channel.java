@@ -109,11 +109,14 @@ public class Channel {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( ChannelType pChannelType, int pCode, Boolean pSelfServiceChannel ) {
+  public static Builder builder( ChannelType pChannelType, ChannelCode pChannelCode, int pCode,
+      Boolean pSelfServiceChannel, Reseller pReseller ) {
     Builder lBuilder = builder();
     lBuilder.setChannelType(pChannelType);
+    lBuilder.setChannelCode(pChannelCode);
     lBuilder.setCode(pCode);
     lBuilder.setSelfServiceChannel(pSelfServiceChannel);
+    lBuilder.setReseller(pReseller);
     return lBuilder;
   }
 

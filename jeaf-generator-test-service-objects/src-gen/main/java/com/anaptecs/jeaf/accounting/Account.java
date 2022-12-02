@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 
 import javax.validation.Valid;
 
+import com.anaptecs.jeaf.core.api.ServiceObjectID;
+
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
@@ -56,10 +58,11 @@ public class Account extends AccountBase {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( Long pIban, BigDecimal pBalance ) {
+  public static Builder builder( Long pIban, BigDecimal pBalance, ServiceObjectID pBankID ) {
     Builder lBuilder = builder();
     lBuilder.setIban(pIban);
     lBuilder.setBalance(pBalance);
+    lBuilder.setBankID(pBankID);
     return lBuilder;
   }
 

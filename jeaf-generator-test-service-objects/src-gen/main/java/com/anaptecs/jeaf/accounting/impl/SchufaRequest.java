@@ -97,10 +97,11 @@ public class SchufaRequest implements ServiceObject {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pName, String pFirstName ) {
+  public static Builder builder( String pName, String pFirstName, Calendar pDateOfBirth ) {
     Builder lBuilder = builder();
     lBuilder.setName(pName);
     lBuilder.setFirstName(pFirstName);
+    lBuilder.setDateOfBirth(pDateOfBirth);
     return lBuilder;
   }
 

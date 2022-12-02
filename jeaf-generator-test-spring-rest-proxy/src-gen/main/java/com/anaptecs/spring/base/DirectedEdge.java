@@ -82,8 +82,9 @@ public class DirectedEdge {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pLink ) {
+  public static Builder builder( Stop pEnd, String pLink ) {
     Builder lBuilder = builder();
+    lBuilder.setEnd(pEnd);
     lBuilder.setLink(pLink);
     return lBuilder;
   }

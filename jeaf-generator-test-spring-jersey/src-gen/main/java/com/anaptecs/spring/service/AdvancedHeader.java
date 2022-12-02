@@ -89,6 +89,17 @@ public class AdvancedHeader {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode ) {
+    Builder lBuilder = builder();
+    lBuilder.setBookingID(pBookingID);
+    lBuilder.setBookingCode(pBookingCode);
+    lBuilder.setDoubleCode(pDoubleCode);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class AdvancedHeader. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

@@ -119,9 +119,14 @@ public class Booking {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( BigDecimal pAmount ) {
+  public static Builder builder( Account pSourceAccount, Account pTargetAccount, BigDecimal pAmount, Currency pCurrency,
+      Calendar pExecutionTimestamp ) {
     Builder lBuilder = builder();
+    lBuilder.setSourceAccount(pSourceAccount);
+    lBuilder.setTargetAccount(pTargetAccount);
     lBuilder.setAmount(pAmount);
+    lBuilder.setCurrency(pCurrency);
+    lBuilder.setExecutionTimestamp(pExecutionTimestamp);
     return lBuilder;
   }
 

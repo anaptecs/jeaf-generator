@@ -179,6 +179,26 @@ public class DateQueryParamsBean {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime, LocalDateTime pLocalDateTime,
+      LocalTime pLocalTime, LocalDate pLocalDate, java.util.Date pUtilDate, Calendar pCalendar, Timestamp pSqlTimestamp,
+      Time pSqlTime, Date pSqlDate ) {
+    Builder lBuilder = builder();
+    lBuilder.setOffsetDateTime(pOffsetDateTime);
+    lBuilder.setOffsetTime(pOffsetTime);
+    lBuilder.setLocalDateTime(pLocalDateTime);
+    lBuilder.setLocalTime(pLocalTime);
+    lBuilder.setLocalDate(pLocalDate);
+    lBuilder.setUtilDate(pUtilDate);
+    lBuilder.setCalendar(pCalendar);
+    lBuilder.setSqlTimestamp(pSqlTimestamp);
+    lBuilder.setSqlTime(pSqlTime);
+    lBuilder.setSqlDate(pSqlDate);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class DateQueryParamsBean. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */

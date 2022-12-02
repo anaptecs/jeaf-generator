@@ -135,6 +135,21 @@ public class DateObject implements Serializable {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( LocalTime pLocalTime, LocalDate pLocalDate, LocalDateTime pLocalDateTime,
+      Calendar pCalendar, Date pSqlDate, java.util.Date pUtilDate ) {
+    Builder lBuilder = builder();
+    lBuilder.setLocalTime(pLocalTime);
+    lBuilder.setLocalDate(pLocalDate);
+    lBuilder.setLocalDateTime(pLocalDateTime);
+    lBuilder.setCalendar(pCalendar);
+    lBuilder.setSqlDate(pSqlDate);
+    lBuilder.setUtilDate(pUtilDate);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class DateObject. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

@@ -72,13 +72,15 @@ public class Individual extends Customer {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( Boolean pActive, String pStreet, Integer pZipCode, String pCity, String pCountry ) {
+  public static Builder builder( Boolean pActive, String pStreet, Integer pZipCode, String pCity, String pCountry,
+      Person pPerson ) {
     Builder lBuilder = builder();
     lBuilder.setActive(pActive);
     lBuilder.setStreet(pStreet);
     lBuilder.setZipCode(pZipCode);
     lBuilder.setCity(pCity);
     lBuilder.setCountry(pCountry);
+    lBuilder.setPerson(pPerson);
     return lBuilder;
   }
 

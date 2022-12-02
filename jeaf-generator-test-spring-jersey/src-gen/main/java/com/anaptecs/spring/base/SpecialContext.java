@@ -80,10 +80,11 @@ public class SpecialContext extends Context {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pAccessToken, long pResellerID, long pPathParam, String pQueryParam,
-      String pLang, String pSpecificHeader, ChannelType pChannelType ) {
+  public static Builder builder( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
+      String pQueryParam, String pLang, String pSpecificHeader, ChannelType pChannelType ) {
     Builder lBuilder = builder();
     lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);
     lBuilder.setPathParam(pPathParam);
     lBuilder.setQueryParam(pQueryParam);

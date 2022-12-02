@@ -92,9 +92,10 @@ public class ValidationTestObject implements ServiceObject {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pMyEMail ) {
+  public static Builder builder( String pMyEMail, Calendar pDateOfBirth ) {
     Builder lBuilder = builder();
     lBuilder.setMyEMail(pMyEMail);
+    lBuilder.setDateOfBirth(pDateOfBirth);
     return lBuilder;
   }
 

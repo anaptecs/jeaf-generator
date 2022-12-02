@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.accounting.impl.pojo;
 
 import java.math.BigDecimal;
+import java.util.Currency;
 
 /**
  * @author JEAF Generator
@@ -48,9 +49,11 @@ public class Account extends AccountBase {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( int pIban ) {
+  public static Builder builder( int pIban, Customer pOwner, Currency pCurrency ) {
     Builder lBuilder = builder();
     lBuilder.setIban(pIban);
+    lBuilder.setOwner(pOwner);
+    lBuilder.setCurrency(pCurrency);
     return lBuilder;
   }
 

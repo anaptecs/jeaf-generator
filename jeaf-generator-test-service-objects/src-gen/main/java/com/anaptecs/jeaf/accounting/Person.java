@@ -178,10 +178,12 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pName, String pFirstName, Integer pAge, String pDisplayName ) {
+  public static Builder builder( String pName, String pFirstName, Calendar pDateOfBirth, Integer pAge,
+      String pDisplayName ) {
     Builder lBuilder = builder();
     lBuilder.setName(pName);
     lBuilder.setFirstName(pFirstName);
+    lBuilder.setDateOfBirth(pDateOfBirth);
     lBuilder.setAge(pAge);
     lBuilder.setDisplayName(pDisplayName);
     return lBuilder;

@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import com.anaptecs.jeaf.junit.openapi.base.BookingCode;
 import com.anaptecs.jeaf.junit.openapi.base.BookingID;
 import com.anaptecs.jeaf.junit.openapi.base.ChildAA;
 import com.anaptecs.jeaf.junit.openapi.base.InventoryType;
@@ -30,7 +31,8 @@ public class BuilderTest {
     String lReferenceID = "pReferenceID";
     String lExternalRefID = "pExternalRefID";
     InventoryType lInventory = InventoryType.SBB;
-    BookingID lBookingID = BookingID.builder(lReferenceID, lExternalRefID, lInventory).build();
+    BookingCode lBookingCode = BookingCode.builder("My-Booking-1234").build();
+    BookingID lBookingID = BookingID.builder(lReferenceID, lExternalRefID, lInventory, lBookingCode).build();
     assertEquals(lReferenceID, lBookingID.getReferenceID());
     assertEquals(lExternalRefID, lBookingID.getExternalRefID());
     assertEquals(lInventory, lBookingID.getInventory());

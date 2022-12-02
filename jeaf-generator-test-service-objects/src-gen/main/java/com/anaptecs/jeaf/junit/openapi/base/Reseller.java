@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Locale;
+
 import javax.validation.Valid;
 
 /**
@@ -54,9 +56,10 @@ public class Reseller extends ResellerBase {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pName ) {
+  public static Builder builder( String pName, Locale pLanguage ) {
     Builder lBuilder = builder();
     lBuilder.setName(pName);
+    lBuilder.setLanguage(pLanguage);
     return lBuilder;
   }
 

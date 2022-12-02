@@ -96,8 +96,9 @@ public class SecurityToken implements ServiceObject {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( Integer pValue ) {
+  public static Builder builder( Booking pBooking, Integer pValue ) {
     Builder lBuilder = builder();
+    lBuilder.setBooking(pBooking);
     lBuilder.setValue(pValue);
     return lBuilder;
   }

@@ -103,9 +103,10 @@ public class WeirdParent implements ServiceObject {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pSomeProperty ) {
+  public static Builder builder( String pSomeProperty, ComplexBookingID pComplexBooking ) {
     Builder lBuilder = builder();
     lBuilder.setSomeProperty(pSomeProperty);
+    lBuilder.setComplexBooking(pComplexBooking);
     return lBuilder;
   }
 

@@ -36,7 +36,8 @@ public class BuilderTest {
     ProductCode lProductCode = ProductCode.builder(125).build();
     assertEquals(125, lProductCode.getCode());
 
-    Booking lBooking = Booking.builder("Donald Duck").setInventories(InventoryType.DB, InventoryType.SBB).build();
+    Booking lBooking = Booking.builder(lBookingID, "Donald Duck").setInventories(InventoryType.DB, InventoryType.SBB)
+        .build();
     assertEquals("Donald Duck", lBooking.getCustomerName());
     assertEquals(InventoryType.DB, lBooking.getInventories().get(0));
     assertEquals(InventoryType.SBB, lBooking.getInventories().get(1));

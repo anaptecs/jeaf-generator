@@ -147,9 +147,13 @@ public class WeirdBooking extends WeirdParent {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pSomeProperty, int pChildProperty ) {
+  public static Builder builder( String pSomeProperty, ComplexBookingID pComplexBooking, ComplexBookingID pBooking,
+      VersionedObjectSoftLink pVersionedObjectSoftLink, int pChildProperty ) {
     Builder lBuilder = builder();
     lBuilder.setSomeProperty(pSomeProperty);
+    lBuilder.setComplexBooking(pComplexBooking);
+    lBuilder.setBooking(pBooking);
+    lBuilder.setVersionedObjectSoftLink(pVersionedObjectSoftLink);
     lBuilder.setChildProperty(pChildProperty);
     return lBuilder;
   }

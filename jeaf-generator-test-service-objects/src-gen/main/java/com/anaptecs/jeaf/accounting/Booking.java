@@ -142,9 +142,14 @@ public class Booking implements ServiceObject {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( Double pAmount ) {
+  public static Builder builder( Double pAmount, Account pSource, Account pTarget, SecurityToken pToken,
+      Account pAccount ) {
     Builder lBuilder = builder();
     lBuilder.setAmount(pAmount);
+    lBuilder.setSource(pSource);
+    lBuilder.setTarget(pTarget);
+    lBuilder.setToken(pToken);
+    lBuilder.setAccount(pAccount);
     return lBuilder;
   }
 

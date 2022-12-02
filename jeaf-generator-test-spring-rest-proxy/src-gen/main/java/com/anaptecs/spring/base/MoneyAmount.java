@@ -83,9 +83,10 @@ public class MoneyAmount {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( BigDecimal pAmount ) {
+  public static Builder builder( BigDecimal pAmount, CurrencyCode pCurrencyCode ) {
     Builder lBuilder = builder();
     lBuilder.setAmount(pAmount);
+    lBuilder.setCurrencyCode(pCurrencyCode);
     return lBuilder;
   }
 

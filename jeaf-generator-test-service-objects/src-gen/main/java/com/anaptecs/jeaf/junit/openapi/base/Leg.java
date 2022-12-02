@@ -103,6 +103,16 @@ public class Leg implements ServiceObject {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( PlaceRef pStart, PlaceRef pStop ) {
+    Builder lBuilder = builder();
+    lBuilder.setStart(pStart);
+    lBuilder.setStop(pStop);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class Leg. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

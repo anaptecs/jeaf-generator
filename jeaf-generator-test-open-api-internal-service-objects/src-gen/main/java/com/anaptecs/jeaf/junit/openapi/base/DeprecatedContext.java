@@ -104,9 +104,10 @@ public class DeprecatedContext implements ServiceObject {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pAccessToken, long pResellerID, String pQueryParam ) {
+  public static Builder builder( String pAccessToken, Locale pLanguage, long pResellerID, String pQueryParam ) {
     Builder lBuilder = builder();
     lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);
     lBuilder.setQueryParam(pQueryParam);
     return lBuilder;

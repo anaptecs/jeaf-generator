@@ -240,9 +240,11 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pName, String pDescription, String pUri ) {
+  public static Builder builder( String pName, URL pLink, UUID pProductID, String pDescription, String pUri ) {
     Builder lBuilder = builder();
     lBuilder.setName(pName);
+    lBuilder.setLink(pLink);
+    lBuilder.setProductID(pProductID);
     lBuilder.setDescription(pDescription);
     lBuilder.setUri(pUri);
     return lBuilder;

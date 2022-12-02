@@ -78,10 +78,11 @@ public class SwiftAccount extends Account {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( Long pIban, BigDecimal pBalance, String pBic ) {
+  public static Builder builder( Long pIban, BigDecimal pBalance, ServiceObjectID pBankID, String pBic ) {
     Builder lBuilder = builder();
     lBuilder.setIban(pIban);
     lBuilder.setBalance(pBalance);
+    lBuilder.setBankID(pBankID);
     lBuilder.setBic(pBic);
     return lBuilder;
   }

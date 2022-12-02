@@ -108,8 +108,9 @@ public class Booking implements Serializable {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pCustomerName ) {
+  public static Builder builder( BookingID pBookingID, String pCustomerName ) {
     Builder lBuilder = builder();
+    lBuilder.setBookingID(pBookingID);
     lBuilder.setCustomerName(pCustomerName);
     return lBuilder;
   }
