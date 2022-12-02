@@ -191,7 +191,7 @@ public class RESTProductServiceResource {
   public List<CurrencyCode> getSupportedCurrencies(
       @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ChannelCode pChannelCode = ChannelCode.builder(pChannelCodeAsBasicType).build();
+    ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
     // Delegate request to service.
     return rESTProductService.getSupportedCurrencies(pChannelCode);
   }
@@ -203,7 +203,7 @@ public class RESTProductServiceResource {
   public List<CurrencyCode> getSupportedCurrenciesAsync(
       @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ChannelCode pChannelCode = ChannelCode.builder(pChannelCodeAsBasicType).build();
+    ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
     // Delegate request to service.
     return rESTProductService.getSupportedCurrenciesAsync(pChannelCode);
   }
@@ -412,8 +412,8 @@ public class RESTProductServiceResource {
     // Convert basic type parameters into "real" objects.
     BookingID pBookingID =
         compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class, BOOKINGID_SERIALIZED_CLASSES);
-    BookingCode pBookingCode = BookingCode.builder(pBookingCodeAsBasicType).build();
-    DoubleCode pDoubleCode = DoubleCode.builder(pDoubleCodeAsBasicType).build();
+    BookingCode pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
+    DoubleCode pDoubleCode = DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build();
     // Delegate request to service.
     return rESTProductService.testDataTypesAsHeaderParam(pBookingID, pBookingCode, pDoubleCode);
   }
@@ -431,8 +431,8 @@ public class RESTProductServiceResource {
     AdvancedHeader.Builder lContextBuilder = AdvancedHeader.builder();
     lContextBuilder.setBookingID(
         compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class, BOOKINGID_SERIALIZED_CLASSES));
-    lContextBuilder.setBookingCode(BookingCode.builder(pBookingCodeAsBasicType).build());
-    lContextBuilder.setDoubleCode(DoubleCode.builder(pDoubleCodeAsBasicType).build());
+    lContextBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
+    lContextBuilder.setDoubleCode(DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build());
     AdvancedHeader pContext = lContextBuilder.build();
     // Delegate request to service.
     return rESTProductService.testDataTypesAsHeaderBeanParam(pContext);

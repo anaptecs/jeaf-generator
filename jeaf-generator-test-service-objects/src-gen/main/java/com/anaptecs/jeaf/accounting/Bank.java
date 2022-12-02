@@ -125,17 +125,6 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( String pName, Long pCode, BankType pType ) {
-    Builder lBuilder = builder();
-    lBuilder.setName(pName);
-    lBuilder.setCode(pCode);
-    lBuilder.setType(pType);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class Bank. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

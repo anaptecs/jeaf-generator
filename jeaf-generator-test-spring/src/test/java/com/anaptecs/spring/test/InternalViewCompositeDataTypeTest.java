@@ -204,9 +204,9 @@ public class InternalViewCompositeDataTypeTest {
   @Test
   void testEqualsHashCodeForDataType( ) {
     double lAlmostPI = 3.1415;
-    DoubleCode lDoubleCode1 = DoubleCode.builder(lAlmostPI).build();
-    DoubleCode lDoubleCode2 = DoubleCode.builder(3.1415).build();
-    DoubleCode lDoubleCodeOther = DoubleCode.builder(3.1).build();
+    DoubleCode lDoubleCode1 = DoubleCode.builder().setCode(lAlmostPI).build();
+    DoubleCode lDoubleCode2 = DoubleCode.builder().setCode(3.1415).build();
+    DoubleCode lDoubleCodeOther = DoubleCode.builder().setCode(3.1).build();
 
     assertEquals(lDoubleCode1, lDoubleCode2);
     assertEquals(lDoubleCode1.hashCode(), lDoubleCode2.hashCode());

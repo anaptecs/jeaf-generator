@@ -5,8 +5,6 @@
  */
 package com.anaptecs.jeaf.accounting;
 
-import com.anaptecs.jeaf.core.api.ServiceObjectID;
-
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
@@ -49,17 +47,6 @@ public class AccountInfo extends AccountInfoBase {
    */
   public static Builder builder( AccountInfo pObject ) {
     return new Builder(pObject);
-  }
-
-  /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( Long pIban, Double pBalance, ServiceObjectID pBankID ) {
-    Builder lBuilder = builder();
-    lBuilder.setIban(pIban);
-    lBuilder.setBalance(pBalance);
-    lBuilder.setBankID(pBankID);
-    return lBuilder;
   }
 
   /**

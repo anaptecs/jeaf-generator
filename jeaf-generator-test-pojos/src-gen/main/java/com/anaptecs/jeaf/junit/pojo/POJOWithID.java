@@ -101,16 +101,6 @@ public class POJOWithID implements Identifiable<ObjectID> {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( Double pAttr, String pName ) {
-    Builder lBuilder = builder();
-    lBuilder.setAttr(pAttr);
-    lBuilder.setName(pName);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class POJOWithID. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

@@ -71,16 +71,6 @@ public class EnumTest {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( ExtensibleEnum pProperty, ExtensibleEnum pEnumRef ) {
-    Builder lBuilder = builder();
-    lBuilder.setProperty(pProperty);
-    lBuilder.setEnumRef(pEnumRef);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class EnumTest. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

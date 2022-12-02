@@ -97,20 +97,6 @@ public class Channel implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( ChannelType pChannelType, ChannelCode pChannelCode, int pCode,
-      Boolean pSelfServiceChannel, Reseller pReseller ) {
-    Builder lBuilder = builder();
-    lBuilder.setChannelType(pChannelType);
-    lBuilder.setChannelCode(pChannelCode);
-    lBuilder.setCode(pCode);
-    lBuilder.setSelfServiceChannel(pSelfServiceChannel);
-    lBuilder.setReseller(pReseller);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class Channel. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

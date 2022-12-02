@@ -72,15 +72,6 @@ public class Sale {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( BigDecimal pTransactionAmount ) {
-    Builder lBuilder = builder();
-    lBuilder.setTransactionAmount(pTransactionAmount);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class Sale. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

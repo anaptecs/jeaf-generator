@@ -39,9 +39,9 @@ public class SpringRESTServiceProxyTest {
 
   public static final String BOOKING_ID_STRING = "DUJPT0tJTkdfQ09ExUVYVC0wOTg3NjU0MzKxATEyMzQ1tg==";
 
-  public static final BookingCode BOOKING_CODE = BookingCode.builder("4711-0815").build();
+  public static final BookingCode BOOKING_CODE = BookingCode.builder().setCode("4711-0815").build();
 
-  public static final DoubleCode DOUBLE_CODE = DoubleCode.builder(3.14159).build();
+  public static final DoubleCode DOUBLE_CODE = DoubleCode.builder().setCode(3.14159).build();
 
   public static final String DATA_TYPE_RESPONSE = "123456_EXT-0987654321_4711-0815_3.14159";
 

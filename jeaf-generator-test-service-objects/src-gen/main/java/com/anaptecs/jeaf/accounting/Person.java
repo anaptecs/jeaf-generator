@@ -176,20 +176,6 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( String pName, String pFirstName, Calendar pDateOfBirth, Integer pAge,
-      String pDisplayName ) {
-    Builder lBuilder = builder();
-    lBuilder.setName(pName);
-    lBuilder.setFirstName(pFirstName);
-    lBuilder.setDateOfBirth(pDateOfBirth);
-    lBuilder.setAge(pAge);
-    lBuilder.setDisplayName(pDisplayName);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class Person. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

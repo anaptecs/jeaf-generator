@@ -148,24 +148,6 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( BooleanCode pBooleanCode, ByteCode pByteCode, ShortCode pShortCode,
-      IntegerCode pIntegerCode, FloatCode pFloatCode, DoubleCode pDoubleCode, BigIntegerCode pBigInegerCode,
-      BigDecimalCode pBigDecimalCode ) {
-    Builder lBuilder = builder();
-    lBuilder.setBooleanCode(pBooleanCode);
-    lBuilder.setByteCode(pByteCode);
-    lBuilder.setShortCode(pShortCode);
-    lBuilder.setIntegerCode(pIntegerCode);
-    lBuilder.setFloatCode(pFloatCode);
-    lBuilder.setDoubleCode(pDoubleCode);
-    lBuilder.setBigInegerCode(pBigInegerCode);
-    lBuilder.setBigDecimalCode(pBigDecimalCode);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class HeavyDataTypeUser. As the class has read only attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */

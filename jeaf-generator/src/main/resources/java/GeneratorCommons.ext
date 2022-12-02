@@ -176,6 +176,9 @@ cached boolean enableDetailedToString():
 cached boolean enableLegacyBuilderStyle():
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.enableLegacyBuilderStyle();
     
+cached boolean generateBuilderMethodWithAllManadatoryFields():
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateBuilderMethodWithAllManadatoryFields();
+    
 cached boolean isBinaryType(uml::Property property):
     property.type.name == "byte";
             

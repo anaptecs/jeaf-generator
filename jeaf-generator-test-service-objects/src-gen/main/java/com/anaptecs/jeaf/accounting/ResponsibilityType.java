@@ -110,17 +110,6 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( String pType, Character pTypeChar, Byte pSortorder ) {
-    Builder lBuilder = builder();
-    lBuilder.setType(pType);
-    lBuilder.setTypeChar(pTypeChar);
-    lBuilder.setSortorder(pSortorder);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class ResponsibilityType. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */

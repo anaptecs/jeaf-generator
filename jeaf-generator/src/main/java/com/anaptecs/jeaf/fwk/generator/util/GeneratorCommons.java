@@ -208,6 +208,13 @@ public class GeneratorCommons {
   public static final String ENABLE_LEGACY_BUILDER_STYLE = "switch.gen.enable.legacy.builder.style";
 
   /**
+   * Constant defines then name of the system property that enables generation of an additional builder method with all
+   * mandatory fields.
+   */
+  public static final String GENERATE_BUILDER_METHOD_WITH_ALL_MANDATORY_FIELDS =
+      "switch.gen.enable.builder.for.manadatory.fields";
+
+  /**
    * Constant defines the name of the system property which enables the generation of JUnit tests for services.
    */
   public static final String JUNIT_PROPERTY = "switch.gen.junits";
@@ -960,6 +967,12 @@ public class GeneratorCommons {
   public static boolean enableLegacyBuilderStyle( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(ENABLE_LEGACY_BUILDER_STYLE, Boolean.FALSE, Boolean.class);
+  }
+
+  public static boolean generateBuilderMethodWithAllManadatoryFields( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_BUILDER_METHOD_WITH_ALL_MANDATORY_FIELDS, Boolean.FALSE,
+        Boolean.class);
   }
 
   public static String getMavenVersion( ) {

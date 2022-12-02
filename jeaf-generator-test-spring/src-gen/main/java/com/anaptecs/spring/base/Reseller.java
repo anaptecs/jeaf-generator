@@ -5,8 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.Locale;
-
 import javax.validation.Valid;
 
 /**
@@ -46,16 +44,6 @@ public class Reseller extends ResellerBase {
    */
   public static Builder builder( Reseller pObject ) {
     return new Builder(pObject);
-  }
-
-  /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( String pName, Locale pLanguage ) {
-    Builder lBuilder = builder();
-    lBuilder.setName(pName);
-    lBuilder.setLanguage(pLanguage);
-    return lBuilder;
   }
 
   /**

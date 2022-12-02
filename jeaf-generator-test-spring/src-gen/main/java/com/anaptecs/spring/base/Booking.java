@@ -94,16 +94,6 @@ public class Booking {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( BookingID pBookingID, String pCustomerName ) {
-    Builder lBuilder = builder();
-    lBuilder.setBookingID(pBookingID);
-    lBuilder.setCustomerName(pCustomerName);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class Booking. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

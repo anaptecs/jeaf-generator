@@ -550,6 +550,12 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean enableLegacyBuilderStyle;
 
   /**
+   * Switch enables that JEAF Generator generates a builder(...) method that directly contains all mandatory fields.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateBuilderWithAllMandatoryFields;
+
+  /**
    * Switch defines if errors during code generation should break the build. This feature is mainly intended for test
    * purposes of JEAF Generator itself.
    */
@@ -909,6 +915,10 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Enable legacy builder style:                      " + enableLegacyBuilderStyle);
     }
 
+    if (generateBuilderWithAllMandatoryFields) {
+      lLog.info("Generate builder with all manadatory fields:      " + generateBuilderWithAllMandatoryFields);
+    }
+
     if (enableDetailedToStringMethod) {
       lLog.info("Enable detailed toString():                       " + enableDetailedToStringMethod);
     }
@@ -1021,6 +1031,8 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty("switch.gen.enable.detailed.toString", enableDetailedToStringMethod.toString());
       System.setProperty("switch.gen.enable.legacy.builder.style", enableLegacyBuilderStyle.toString());
+      System.setProperty("switch.gen.enable.builder.for.manadatory.fields", generateBuilderWithAllMandatoryFields
+          .toString());
 
       System.setProperty("name.oid.row", peristentObjectsOIDRowName);
       System.setProperty("name.version.label.row", peristentObjectsVersionLabelRowName);

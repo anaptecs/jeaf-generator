@@ -533,7 +533,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
       return new Builder(pObject);
     }
     
-   «IF this.getRequiredPropertiesForBuilder().size > 0 && this.isCompositeDataType() == false»
+   «IF generateBuilderMethodWithAllManadatoryFields() && this.getRequiredPropertiesForBuilder().size > 0 && this.isCompositeDataType() == false»
    /**
     * Method creates a new builder and initializes it with the passed attributes.
     */

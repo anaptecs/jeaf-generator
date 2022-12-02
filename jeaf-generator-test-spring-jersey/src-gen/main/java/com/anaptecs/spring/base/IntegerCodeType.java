@@ -63,15 +63,6 @@ public class IntegerCodeType {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( int pCode ) {
-    Builder lBuilder = builder();
-    lBuilder.setCode(pCode);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class IntegerCodeType. As the class has read only attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */

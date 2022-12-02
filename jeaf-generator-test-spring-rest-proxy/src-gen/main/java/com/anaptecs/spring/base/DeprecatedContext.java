@@ -98,18 +98,6 @@ public class DeprecatedContext {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( String pAccessToken, Locale pLanguage, long pResellerID, String pQueryParam ) {
-    Builder lBuilder = builder();
-    lBuilder.setAccessToken(pAccessToken);
-    lBuilder.setLanguage(pLanguage);
-    lBuilder.setResellerID(pResellerID);
-    lBuilder.setQueryParam(pQueryParam);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class DeprecatedContext. As the class has read only attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */

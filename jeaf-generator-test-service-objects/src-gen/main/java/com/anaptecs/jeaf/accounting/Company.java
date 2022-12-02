@@ -102,24 +102,6 @@ public class Company extends Customer {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( Boolean pActive, String pStreet, Integer pZipCode, String pCity, String pCountry,
-      String pName, Long pRegistrationNumber, Long pTaxNumber, String pAttendant ) {
-    Builder lBuilder = builder();
-    lBuilder.setActive(pActive);
-    lBuilder.setStreet(pStreet);
-    lBuilder.setZipCode(pZipCode);
-    lBuilder.setCity(pCity);
-    lBuilder.setCountry(pCountry);
-    lBuilder.setName(pName);
-    lBuilder.setRegistrationNumber(pRegistrationNumber);
-    lBuilder.setTaxNumber(pTaxNumber);
-    lBuilder.setAttendant(pAttendant);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class Company. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

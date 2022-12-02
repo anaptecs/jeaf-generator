@@ -52,16 +52,6 @@ public class Person extends PersonBase {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( String pSurname, String pFirstName ) {
-    Builder lBuilder = builder();
-    lBuilder.setSurname(pSurname);
-    lBuilder.setFirstName(pFirstName);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class Person. As the class has readonly attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

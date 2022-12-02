@@ -150,8 +150,8 @@ public class SpringRESTControllerTest {
   @Test
   void testDataTypesAsHeaderParams( ) throws IOException {
     String lBookingIDString = "DUJPT0tJTkdfQ09ExUVYVC0wOTg3NjU0MzKxATEyMzQ1tg==";
-    BookingCode lBookingCode = BookingCode.builder("4711-0815").build();
-    DoubleCode lDoubleCode = DoubleCode.builder(3.14159).build();
+    BookingCode lBookingCode = BookingCode.builder().setCode("4711-0815").build();
+    DoubleCode lDoubleCode = DoubleCode.builder().setCode(3.14159).build();
 
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
     ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX

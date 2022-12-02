@@ -104,16 +104,6 @@ public class BidirectA {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( BidirectA pParent, BidirectA pTransientChild ) {
-    Builder lBuilder = builder();
-    lBuilder.setParent(pParent);
-    lBuilder.setTransientChild(pTransientChild);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class BidirectA. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

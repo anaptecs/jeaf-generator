@@ -140,20 +140,6 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( Double pAmount, Account pSource, Account pTarget, SecurityToken pToken,
-      Account pAccount ) {
-    Builder lBuilder = builder();
-    lBuilder.setAmount(pAmount);
-    lBuilder.setSource(pSource);
-    lBuilder.setTarget(pTarget);
-    lBuilder.setToken(pToken);
-    lBuilder.setAccount(pAccount);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class Booking. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

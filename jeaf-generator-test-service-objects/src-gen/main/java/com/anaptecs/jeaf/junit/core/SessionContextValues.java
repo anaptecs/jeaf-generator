@@ -82,16 +82,6 @@ public class SessionContextValues implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( String pTimestamp, Integer pCounter ) {
-    Builder lBuilder = builder();
-    lBuilder.setTimestamp(pTimestamp);
-    lBuilder.setCounter(pCounter);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class SessionContextValues. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */

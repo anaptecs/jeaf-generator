@@ -160,26 +160,6 @@ public class OpenAPITestObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( String pReadOnlyAttribute, String pReadWriteAttribute, int pWriteOnlyAttribute,
-      Boolean pNullableAttribute, double pNotNullableAttribute, String pReadOnlyArray, String pReadWriteArray,
-      int pWriteOnlyArray, double pNullableArray, double pNotNullableArray ) {
-    Builder lBuilder = builder();
-    lBuilder.setReadOnlyAttribute(pReadOnlyAttribute);
-    lBuilder.setReadWriteAttribute(pReadWriteAttribute);
-    lBuilder.setWriteOnlyAttribute(pWriteOnlyAttribute);
-    lBuilder.setNullableAttribute(pNullableAttribute);
-    lBuilder.setNotNullableAttribute(pNotNullableAttribute);
-    lBuilder.setReadOnlyArray(pReadOnlyArray);
-    lBuilder.setReadWriteArray(pReadWriteArray);
-    lBuilder.setWriteOnlyArray(pWriteOnlyArray);
-    lBuilder.setNullableArray(pNullableArray);
-    lBuilder.setNotNullableArray(pNotNullableArray);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class OpenAPITestObject. As the class has read only attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */

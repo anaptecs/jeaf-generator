@@ -127,21 +127,6 @@ public class Context {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
-      String pQueryParam, String pLang ) {
-    Builder lBuilder = builder();
-    lBuilder.setAccessToken(pAccessToken);
-    lBuilder.setLanguage(pLanguage);
-    lBuilder.setResellerID(pResellerID);
-    lBuilder.setPathParam(pPathParam);
-    lBuilder.setQueryParam(pQueryParam);
-    lBuilder.setLang(pLang);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class Context. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */

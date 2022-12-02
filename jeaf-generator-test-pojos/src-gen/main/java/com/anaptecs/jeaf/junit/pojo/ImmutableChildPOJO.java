@@ -81,20 +81,6 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( String pAbtractAttr, String pParentAttribute, Integer pAnotherParentAttribute,
-      String pChildAttribute, Double pAnotherChildAttribute ) {
-    Builder lBuilder = builder();
-    lBuilder.setAbtractAttr(pAbtractAttr);
-    lBuilder.setParentAttribute(pParentAttribute);
-    lBuilder.setAnotherParentAttribute(pAnotherParentAttribute);
-    lBuilder.setChildAttribute(pChildAttribute);
-    lBuilder.setAnotherChildAttribute(pAnotherChildAttribute);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class ImmutableChildPOJO. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */

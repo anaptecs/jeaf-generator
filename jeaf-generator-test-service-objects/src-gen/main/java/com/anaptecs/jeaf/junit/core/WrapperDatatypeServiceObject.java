@@ -148,22 +148,6 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the passed attributes.
-   */
-  public static Builder builder( Boolean pMyBoolean, Byte pMyByte, Character pMyCharacter, Double pMyDouble,
-      Float pMyFloat, Long pMyLong, Short pMyShort ) {
-    Builder lBuilder = builder();
-    lBuilder.setMyBoolean(pMyBoolean);
-    lBuilder.setMyByte(pMyByte);
-    lBuilder.setMyCharacter(pMyCharacter);
-    lBuilder.setMyDouble(pMyDouble);
-    lBuilder.setMyFloat(pMyFloat);
-    lBuilder.setMyLong(pMyLong);
-    lBuilder.setMyShort(pMyShort);
-    return lBuilder;
-  }
-
-  /**
    * Class implements builder to create a new instance of class WrapperDatatypeServiceObject. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
