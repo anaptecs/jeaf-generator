@@ -36,6 +36,7 @@ import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCodeType;
+import com.anaptecs.spring.base.TechnicalHeaderContext;
 import com.anaptecs.spring.service.ChildBeanParameterType;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
@@ -987,5 +988,74 @@ public class ProductServiceRESTProxy implements ProductService {
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 200);
+  }
+
+  /**
+   * 
+   * @param pReseller
+   * @param pAuthenticationToken
+   * @return {@link String}
+   */
+  @Override
+  public String testTechnicalHeaderParam( String pReseller, String pAuthenticationToken ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("technicalHeaderParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set HTTP header(s)
+    if (pReseller != null) {
+      lRequestBuilder.setHeader("Reseller", pReseller);
+    }
+    else {
+      lRequestBuilder.setHeader("Reseller", (String) null);
+    }
+    if (pAuthenticationToken != null) {
+      lRequestBuilder.setHeader("Authentication", pAuthenticationToken);
+    }
+    else {
+      lRequestBuilder.setHeader("Authentication", (String) null);
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pContext
+   * @return {@link String}
+   */
+  @Override
+  public String testTechnicalHeaderBean( TechnicalHeaderContext pContext ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("technicalHeaderBeanParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set HTTP header(s)
+    if (pContext != null) {
+      if (pContext.getReseller() != null) {
+        lRequestBuilder.setHeader("Reseller", pContext.getReseller());
+      }
+      else {
+        lRequestBuilder.setHeader("Reseller", (String) null);
+      }
+      if (pContext.getAuthenticationToken() != null) {
+        lRequestBuilder.setHeader("Authentication", pContext.getAuthenticationToken());
+      }
+      else {
+        lRequestBuilder.setHeader("Authentication", (String) null);
+      }
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
   }
 }

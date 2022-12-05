@@ -31,6 +31,7 @@ import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCodeType;
+import com.anaptecs.spring.base.TechnicalHeaderContext;
 
 /**
  * @author JEAF Generator
@@ -235,4 +236,19 @@ public interface ProductService extends Service {
    * @param pHeaderParams
    */
   void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams );
+
+  /**
+   * 
+   * @param pReseller
+   * @param pAuthenticationToken
+   * @return {@link String}
+   */
+  String testTechnicalHeaderParam( String pReseller, String pAuthenticationToken );
+
+  /**
+   * 
+   * @param pContext
+   * @return {@link String}
+   */
+  String testTechnicalHeaderBean( TechnicalHeaderContext pContext );
 }

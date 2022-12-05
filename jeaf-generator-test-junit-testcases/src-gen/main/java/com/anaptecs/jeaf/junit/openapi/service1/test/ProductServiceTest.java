@@ -25,6 +25,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testPing"));
     lSuite.addTest(new ProductServiceTest("testDeprecatedParams"));
     lSuite.addTest(new ProductServiceTest("testGetSupportedCurrenciesAsync"));
+    lSuite.addTest(new ProductServiceTest("testTestTechnicalHeaderParam"));
     lSuite.addTest(new ProductServiceTest("testDeprectedComplexRequestBody"));
     lSuite.addTest(new ProductServiceTest("testTestChildBeanParameter"));
     lSuite.addTest(new ProductServiceTest("testCreateChannelCode"));
@@ -39,6 +40,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testTestDateQueryParamsBean"));
     lSuite.addTest(new ProductServiceTest("testLoadSpecificThings"));
     lSuite.addTest(new ProductServiceTest("testIsCurrencySupported"));
+    lSuite.addTest(new ProductServiceTest("testTestTechnicalHeaderBean"));
     lSuite.addTest(new ProductServiceTest("testCreateProduct"));
     lSuite.addTest(new ProductServiceTest("testCreateChannelCodeFromObject"));
     lSuite.addTest(new ProductServiceTest("testTestCodeTypeUsage"));
@@ -135,6 +137,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testGetSupportedCurrenciesAsync( ) throws Exception {
     // TODO Implement test for service method getSupportedCurrenciesAsync(...)
+  }
+
+  /**
+   * Method test the implementation of service method testTechnicalHeaderParam
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestTechnicalHeaderParam( ) throws Exception {
+    // TODO Implement test for service method testTechnicalHeaderParam(...)
   }
 
   /**
@@ -275,6 +287,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testIsCurrencySupported( ) throws Exception {
     // TODO Implement test for service method isCurrencySupported(...)
+  }
+
+  /**
+   * Method test the implementation of service method testTechnicalHeaderBean
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestTechnicalHeaderBean( ) throws Exception {
+    // TODO Implement test for service method testTechnicalHeaderBean(...)
   }
 
   /**

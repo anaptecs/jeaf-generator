@@ -33,6 +33,7 @@ import com.anaptecs.jeaf.junit.openapi.base.StringCodeType;
 import com.anaptecs.jeaf.junit.openapi.service1.ChildBeanParameterType;
 import com.anaptecs.jeaf.junit.openapi.service1.DateQueryParamsBean;
 import com.anaptecs.jeaf.junit.openapi.service1.LocalBeanParamType;
+import com.anaptecs.jeaf.junit.openapi.service1.TechnicalHeaderContext;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 
@@ -390,5 +391,28 @@ final class ProductServiceImpl extends ProductServiceImplBase {
    */
   @Override
   public void testSpecialHeaderParams( String authorization, String pContentType, String pAccept ) {
+  }
+
+  /**
+   * 
+   * @param pContext
+   * @return {@link String}
+   */
+  @Override
+  public String testTechnicalHeaderBean( TechnicalHeaderContext pContext ) {
+    // TODO Implement method and return real result
+    return null;
+  }
+
+  /**
+   * 
+   * @param pReseller
+   * @param pAuthenticationToken
+   * @return {@link String}
+   */
+  @Override
+  public String testTechnicalHeaderParam( String pReseller, String pAuthenticationToken ) {
+    // TODO Implement method and return real result
+    return null;
   }
 }

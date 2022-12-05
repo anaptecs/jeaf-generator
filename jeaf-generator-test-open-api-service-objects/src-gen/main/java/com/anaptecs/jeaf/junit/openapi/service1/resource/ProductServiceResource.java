@@ -52,6 +52,7 @@ import com.anaptecs.jeaf.junit.openapi.service1.ChildBeanParameterType;
 import com.anaptecs.jeaf.junit.openapi.service1.DateQueryParamsBean;
 import com.anaptecs.jeaf.junit.openapi.service1.LocalBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.service1.ProductService;
+import com.anaptecs.jeaf.junit.openapi.service1.TechnicalHeaderContext;
 import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
 import com.anaptecs.jeaf.rest.composite.api.jeaf.CompositeTypeConverterServiceProvider;
 import com.anaptecs.jeaf.workload.api.Workload;
@@ -488,6 +489,31 @@ public class ProductServiceResource {
     ProductService lService = this.getProductService();
     lService.testSpecialHeaderParams(authorization, pContentType, pAccept);
     return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link ProductService#testTechnicalHeaderBean()}
+   */
+  @Path("technicalHeaderBeanParam")
+  @GET
+  public Response testTechnicalHeaderBean( @BeanParam TechnicalHeaderContext pContext ) {
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    String lResult = lService.testTechnicalHeaderBean(pContext);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#testTechnicalHeaderParam()}
+   */
+  @Path("technicalHeaderParam")
+  @GET
+  public Response testTechnicalHeaderParam( @HeaderParam("Reseller") String pReseller,
+      @HeaderParam("Authentication") String pAuthenticationToken ) {
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    String lResult = lService.testTechnicalHeaderParam(pReseller, pAuthenticationToken);
+    return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
   /**
