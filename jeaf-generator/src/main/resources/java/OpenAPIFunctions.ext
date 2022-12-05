@@ -114,7 +114,7 @@ cached boolean isOpenAPIDataType(uml::Type type):
    isStereotypeApplied(type, "OpenAPIDataType");
    
 cached List[uml::Parameter] getDataTypeParameters(uml::Operation operation):
-   operation.ownedParameter.select(e|e.type.isOpenAPIDataType() && e.isInputParameter() && e.isRequestBody() == false);
+   operation.ownedParameter.select(e|e.type.isOpenAPIDataType() && e.isInputParameter() && e.isRequestBody() == false && e.isParameterSuppressed() == false);
    
 cached boolean hasDataTypeParameters(uml::Operation operation):
    operation.getDataTypeParameters().size > 0;

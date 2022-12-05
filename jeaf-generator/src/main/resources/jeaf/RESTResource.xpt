@@ -340,7 +340,7 @@ public class «name»Resource {
 «ENDDEFINE»
 
 «DEFINE RESTParameterSignature FOR Operation»
-  «EXPAND RESTParameterDefinition FOREACH ownedParameter.select(e| e.isInputParameter()) SEPARATOR ", "» 
+  «EXPAND RESTParameterDefinition FOREACH ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false) SEPARATOR ", "» 
 «ENDDEFINE»
 
 «DEFINE RESTParameterDefinition FOR Parameter»

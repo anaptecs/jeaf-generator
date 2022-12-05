@@ -152,7 +152,7 @@ final class «this.getCommandClassName()» extends Command {
     }
 
     «FOREACH ownedParameter AS param»
-    «IF param.isInputParameter()»
+    «IF param.isInputParameter() && param.isParameterSuppressed() == false»
         /**
          * Attribute transports the method parameter "«param.name»" to the service implementation via the service 
          * channel.
@@ -169,7 +169,7 @@ final class «this.getCommandClassName()» extends Command {
   «this.getCommandClassName()»(«EXPAND JEAFOperation::ParameterSignature») {
     super(«targetService.name».class);
         «FOREACH ownedParameter AS param»
-            «IF param.isInputParameter()»
+            «IF param.isInputParameter() && param.isParameterSuppressed() == false»
                 «param.fromParameterToInstance()» = «param.name»;«ENDIF»
         «ENDFOREACH»
         parameters = new Object[]{«asParameterListInstanceNames()»};

@@ -411,7 +411,7 @@ final class ProductServiceImpl extends ProductServiceImplBase {
    * @return {@link String}
    */
   @Override
-  public String testTechnicalHeaderParam( String pReseller, String pAuthenticationToken ) {
+  public String testTechnicalHeaderParam( String pReseller ) {
     // TODO Implement method and return real result
     return null;
   }

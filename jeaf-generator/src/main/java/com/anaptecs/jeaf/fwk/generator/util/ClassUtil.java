@@ -748,24 +748,6 @@ public class ClassUtil {
   }
 
   /**
-   * Returns the comma separated names of parameters from a method, without converting them
-   * 
-   * @param pOperation must not be null
-   * @return String with the comma separated parameters Example Operation: public String doSomething(String pFirst,
-   * String pSecond, int pThird) Returns: "pFirst, pSecond, pThird"
-   */
-  public static String getParameterListNames( Operation pOperation ) {
-    StringBuffer lBuffSignatur = new StringBuffer();
-    List<Parameter> lInputParameters = ClassUtil.getInputParameters(pOperation);
-    for (Parameter lNextParameter : lInputParameters) {
-      lBuffSignatur.append(lNextParameter.getName());
-      lBuffSignatur.append(ClassUtil.PARAMETER_SEPERATOR);
-    }
-    String resultSignature = lBuffSignatur.toString();
-    return ClassUtil.shortenParamList(resultSignature);
-  }
-
-  /**
    * Returns the parameters from the operation as JavaDoc comment
    * 
    * @param pOperation the opereation which provide the parameters are needed must not be null
@@ -784,24 +766,6 @@ public class ClassUtil {
       lBuffSignatur.append(" ");
       lBuffSignatur.append(ClassUtil.getTypeName(lNextParameter));
       lBuffSignatur.append(" \n");
-    }
-    String resultSignature = lBuffSignatur.toString();
-    return ClassUtil.shortenParamList(resultSignature);
-  }
-
-  /**
-   * Returns the comma separated names of parameters from a method, converts them to instance variables
-   * 
-   * @param pOperation must not be null
-   * @return String with the comma separated parameters Example: Operation: public String doSomething(String pFirst,
-   * String pSecond, int pThird) Returns: "first, second, third"
-   */
-  public static String getParameterListInstanceNames( Operation pOperation ) {
-    StringBuffer lBuffSignatur = new StringBuffer();
-    List<Parameter> lInputParameters = ClassUtil.getInputParameters(pOperation);
-    for (Parameter lNextParameter : lInputParameters) {
-      lBuffSignatur.append(Naming.fromParameterToInstance(lNextParameter));
-      lBuffSignatur.append(ClassUtil.PARAMETER_SEPERATOR);
     }
     String resultSignature = lBuffSignatur.toString();
     return ClassUtil.shortenParamList(resultSignature);

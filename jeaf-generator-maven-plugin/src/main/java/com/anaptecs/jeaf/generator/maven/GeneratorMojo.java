@@ -355,6 +355,12 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean enableYAML11Compatibility;
 
   /**
+   * Switch can be used to suppress technical http headers in generated Java code.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean suppressTechnicalHeaders;
+
+  /**
    * OpenAPI standard defines that for whatever reason some header fields should not be mentioned in the OpenAPI
    * specification e.g. 'Authorization' header. However from an overall perspective it still might make sense to
    * explicitly show the for better documentation purposes. This can be done by setting this property to
@@ -841,6 +847,11 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Enable YAML 1.1 compatibility mode:               " + enableYAML11Compatibility);
       lLog.info("Add ignored header fields to OpenAPI spec:        " + addIgnoredHeadersToOpenAPISpec);
     }
+
+    if (suppressTechnicalHeaders) {
+      lLog.info("Suppress technical http headers:                  " + suppressTechnicalHeaders);
+    }
+
     if (generateJAXRSAnnotations) {
       lLog.info("Generate JAX-RS annotations:                      " + generateJAXRSAnnotations);
     }
@@ -992,6 +1003,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.junits", generateJUnitTests.toString());
       System.setProperty("switch.gen.openapispec", generateOpenAPISpec.toString());
       System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());
+      System.setProperty("switch.gen.rest.suppress.technical.headers", suppressTechnicalHeaders.toString());
       System.setProperty("switch.gen.openapi.addIgnoredHeadersToOpenAPISpec", addIgnoredHeadersToOpenAPISpec
           .toString());
 
