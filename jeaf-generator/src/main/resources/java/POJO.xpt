@@ -46,7 +46,7 @@
 						 */
 						private «IF this.isCompositeDataTypeReadonly()»final «ENDIF» String «this.getCompositeDateTypePublicFieldName()»;
 					«ELSE»
-						«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
+						«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false)»
 					«ENDIF»
 					
 					/**
@@ -119,7 +119,7 @@
 							«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())»
 				        «ENDIF»
 				
-						«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
+						«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false)»
 					«ENDIF»
 
 					«EXPAND java::Helper::GenerateEqualsHashCode»
@@ -164,7 +164,7 @@
 						 */
 						private «IF this.isCompositeDataTypeReadonly()»final «ENDIF» String «this.getCompositeDateTypePublicFieldName()»;
 					«ELSE»
-						«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute»
+						«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false)»
 					«ENDIF»
 					
 					/**
@@ -237,7 +237,7 @@
 							«EXPAND java::Identifiable::GenerateIdentifiableGetters (this.getObjectIDClassName())»
 				        «ENDIF»
 				
-						«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
+						«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false)»
 					«ENDIF»
 
 					«EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
@@ -375,7 +375,7 @@
 	«IF this.isCompositeDataType()»
 		«this.getCompositeDateTypePublicFieldName()» = pBuilder.«this.getCompositeDateTypePublicFieldName()»;
 	«ELSE»
-		«FOREACH this.ownedAttribute AS attr»
+		«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false) AS attr»
 			«IF attr.association == null»
 				«IF attr.isStatic == false»
 					«attr.name» = pBuilder.«attr.name»;

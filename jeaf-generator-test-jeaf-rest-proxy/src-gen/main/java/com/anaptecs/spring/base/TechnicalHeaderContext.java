@@ -29,21 +29,10 @@ public class TechnicalHeaderContext implements Serializable {
   public static final String RESELLER = "reseller";
 
   /**
-   * Constant for the name of attribute "authenticationToken".
-   */
-  public static final String AUTHENTICATIONTOKEN = "authenticationToken";
-
-  /**
    * 
    */
   @HeaderParam("Reseller")
   private String reseller;
-
-  /**
-   * 
-   */
-  @HeaderParam("Authentication")
-  private String authenticationToken;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -62,7 +51,6 @@ public class TechnicalHeaderContext implements Serializable {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     reseller = pBuilder.reseller;
-    authenticationToken = pBuilder.authenticationToken;
   }
 
   /**
@@ -88,10 +76,9 @@ public class TechnicalHeaderContext implements Serializable {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pReseller, String pAuthenticationToken ) {
+  public static Builder builder( String pReseller ) {
     Builder lBuilder = builder();
     lBuilder.setReseller(pReseller);
-    lBuilder.setAuthenticationToken(pAuthenticationToken);
     return lBuilder;
   }
 
@@ -104,11 +91,6 @@ public class TechnicalHeaderContext implements Serializable {
      * 
      */
     private String reseller;
-
-    /**
-     * 
-     */
-    private String authenticationToken;
 
     /**
      * Use {@link TechnicalHeaderContext#builder()} instead of private constructor to create new builder.
@@ -124,7 +106,6 @@ public class TechnicalHeaderContext implements Serializable {
       if (pObject != null) {
         // Read attribute values from passed object.
         reseller = pObject.reseller;
-        authenticationToken = pObject.authenticationToken;
       }
     }
 
@@ -136,17 +117,6 @@ public class TechnicalHeaderContext implements Serializable {
     public Builder setReseller( String pReseller ) {
       // Assign value to attribute
       reseller = pReseller;
-      return this;
-    }
-
-    /**
-     * Method sets the attribute "authenticationToken".
-     * 
-     * @param pAuthenticationToken Value to which the attribute "authenticationToken" should be set.
-     */
-    public Builder setAuthenticationToken( String pAuthenticationToken ) {
-      // Assign value to attribute
-      authenticationToken = pAuthenticationToken;
       return this;
     }
 
@@ -196,27 +166,6 @@ public class TechnicalHeaderContext implements Serializable {
   }
 
   /**
-   * Method returns the attribute "authenticationToken".
-   * 
-   * 
-   * @return String Value to which the attribute "authenticationToken" is set.
-   */
-  public String getAuthenticationToken( ) {
-    return authenticationToken;
-  }
-
-  /**
-   * Method sets the attribute "authenticationToken".
-   * 
-   * 
-   * @param pAuthenticationToken Value to which the attribute "authenticationToken" should be set.
-   */
-  public void setAuthenticationToken( String pAuthenticationToken ) {
-    // Assign value to attribute
-    authenticationToken = pAuthenticationToken;
-  }
-
-  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -230,10 +179,6 @@ public class TechnicalHeaderContext implements Serializable {
     lBuilder.append(pIndent);
     lBuilder.append("reseller: ");
     lBuilder.append(reseller);
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("authenticationToken: ");
-    lBuilder.append(authenticationToken);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

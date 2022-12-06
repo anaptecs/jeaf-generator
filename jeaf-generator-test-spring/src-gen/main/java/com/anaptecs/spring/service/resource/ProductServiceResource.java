@@ -447,8 +447,7 @@ public class ProductServiceResource {
    * {@link ProductService#testTechnicalHeaderParam()}
    */
   @RequestMapping(path = "technicalHeaderParam", method = { RequestMethod.GET })
-  public String testTechnicalHeaderParam( @RequestHeader(name = "Reseller", required = true) String pReseller,
-      @RequestHeader(name = "Authentication", required = true) String pAuthenticationToken ) {
+  public String testTechnicalHeaderParam( @RequestHeader(name = "Reseller", required = true) String pReseller ) {
     // Delegate request to service.
     return productService.testTechnicalHeaderParam(pReseller);
   }
@@ -457,13 +456,11 @@ public class ProductServiceResource {
    * {@link ProductService#testTechnicalHeaderBean()}
    */
   @RequestMapping(path = "technicalHeaderBeanParam", method = { RequestMethod.GET })
-  public String testTechnicalHeaderBean( @RequestHeader(name = "Reseller", required = true) String pReseller,
-      @RequestHeader(name = "Authentication", required = true) String pAuthenticationToken ) {
+  public String testTechnicalHeaderBean( @RequestHeader(name = "Reseller", required = true) String pReseller ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     TechnicalHeaderContext.Builder lContextBuilder = TechnicalHeaderContext.builder();
     lContextBuilder.setReseller(pReseller);
-    lContextBuilder.setAuthenticationToken(pAuthenticationToken);
     TechnicalHeaderContext pContext = lContextBuilder.build();
     // Delegate request to service.
     return productService.testTechnicalHeaderBean(pContext);

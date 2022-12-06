@@ -1073,12 +1073,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       else {
         lRequestBuilder.setHeader("Reseller", (String) null);
       }
-      if (pContext.getAuthenticationToken() != null) {
-        lRequestBuilder.setHeader("Authentication", pContext.getAuthenticationToken());
-      }
-      else {
-        lRequestBuilder.setHeader("Authentication", (String) null);
-      }
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();

@@ -33,13 +33,6 @@ public class TechnicalHeaderContext implements ServiceObject {
   private String reseller;
 
   /**
-   * 
-   */
-  @HeaderParam("Authentication")
-  @NotNull
-  private String authenticationToken;
-
-  /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
@@ -56,7 +49,6 @@ public class TechnicalHeaderContext implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     reseller = pBuilder.reseller;
-    authenticationToken = pBuilder.authenticationToken;
   }
 
   /**
@@ -82,10 +74,9 @@ public class TechnicalHeaderContext implements ServiceObject {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pReseller, String pAuthenticationToken ) {
+  public static Builder builder( String pReseller ) {
     Builder lBuilder = builder();
     lBuilder.setReseller(pReseller);
-    lBuilder.setAuthenticationToken(pAuthenticationToken);
     return lBuilder;
   }
 
@@ -98,11 +89,6 @@ public class TechnicalHeaderContext implements ServiceObject {
      * 
      */
     private String reseller;
-
-    /**
-     * 
-     */
-    private String authenticationToken;
 
     /**
      * Use {@link TechnicalHeaderContext#builder()} instead of private constructor to create new builder.
@@ -118,7 +104,6 @@ public class TechnicalHeaderContext implements ServiceObject {
       if (pObject != null) {
         // Read attribute values from passed object.
         reseller = pObject.reseller;
-        authenticationToken = pObject.authenticationToken;
       }
     }
 
@@ -130,17 +115,6 @@ public class TechnicalHeaderContext implements ServiceObject {
     public Builder setReseller( String pReseller ) {
       // Assign value to attribute
       reseller = pReseller;
-      return this;
-    }
-
-    /**
-     * Method sets the attribute "authenticationToken".
-     * 
-     * @param pAuthenticationToken Value to which the attribute "authenticationToken" should be set.
-     */
-    public Builder setAuthenticationToken( String pAuthenticationToken ) {
-      // Assign value to attribute
-      authenticationToken = pAuthenticationToken;
       return this;
     }
 
@@ -190,27 +164,6 @@ public class TechnicalHeaderContext implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "authenticationToken".
-   * 
-   * 
-   * @return String Value to which the attribute "authenticationToken" is set.
-   */
-  public String getAuthenticationToken( ) {
-    return authenticationToken;
-  }
-
-  /**
-   * Method sets the attribute "authenticationToken".
-   * 
-   * 
-   * @param pAuthenticationToken Value to which the attribute "authenticationToken" should be set.
-   */
-  public void setAuthenticationToken( String pAuthenticationToken ) {
-    // Assign value to attribute
-    authenticationToken = pAuthenticationToken;
-  }
-
-  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -224,10 +177,6 @@ public class TechnicalHeaderContext implements ServiceObject {
     lBuilder.append(pIndent);
     lBuilder.append("reseller: ");
     lBuilder.append(reseller);
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("authenticationToken: ");
-    lBuilder.append(authenticationToken);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

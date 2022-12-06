@@ -18,21 +18,10 @@ public class TechnicalHeaderContext {
   public static final String RESELLER = "reseller";
 
   /**
-   * Constant for the name of attribute "authenticationToken".
-   */
-  public static final String AUTHENTICATIONTOKEN = "authenticationToken";
-
-  /**
    * 
    */
   @HeaderParam("Reseller")
   private String reseller;
-
-  /**
-   * 
-   */
-  @HeaderParam("Authentication")
-  private String authenticationToken;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -49,7 +38,6 @@ public class TechnicalHeaderContext {
   protected TechnicalHeaderContext( Builder pBuilder ) {
     // Read attribute values from builder.
     reseller = pBuilder.reseller;
-    authenticationToken = pBuilder.authenticationToken;
   }
 
   /**
@@ -83,11 +71,6 @@ public class TechnicalHeaderContext {
     private String reseller;
 
     /**
-     * 
-     */
-    private String authenticationToken;
-
-    /**
      * Use {@link TechnicalHeaderContext#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -101,7 +84,6 @@ public class TechnicalHeaderContext {
       if (pObject != null) {
         // Read attribute values from passed object.
         reseller = pObject.reseller;
-        authenticationToken = pObject.authenticationToken;
       }
     }
 
@@ -113,17 +95,6 @@ public class TechnicalHeaderContext {
     public Builder setReseller( String pReseller ) {
       // Assign value to attribute
       reseller = pReseller;
-      return this;
-    }
-
-    /**
-     * Method sets the attribute "authenticationToken".
-     * 
-     * @param pAuthenticationToken Value to which the attribute "authenticationToken" should be set.
-     */
-    public Builder setAuthenticationToken( String pAuthenticationToken ) {
-      // Assign value to attribute
-      authenticationToken = pAuthenticationToken;
       return this;
     }
 
@@ -160,27 +131,6 @@ public class TechnicalHeaderContext {
   }
 
   /**
-   * Method returns the attribute "authenticationToken".
-   * 
-   * 
-   * @return String Value to which the attribute "authenticationToken" is set.
-   */
-  public String getAuthenticationToken( ) {
-    return authenticationToken;
-  }
-
-  /**
-   * Method sets the attribute "authenticationToken".
-   * 
-   * 
-   * @param pAuthenticationToken Value to which the attribute "authenticationToken" should be set.
-   */
-  public void setAuthenticationToken( String pAuthenticationToken ) {
-    // Assign value to attribute
-    authenticationToken = pAuthenticationToken;
-  }
-
-  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -194,10 +144,6 @@ public class TechnicalHeaderContext {
     lBuilder.append(pIndent);
     lBuilder.append("reseller: ");
     lBuilder.append(reseller);
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("authenticationToken: ");
-    lBuilder.append(authenticationToken);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
