@@ -88,10 +88,10 @@ cached String getPathVariableName(JMM::PathParam pathParam):
       
 cached String getPathVariableNameForDataType(JMM::PathParam pathParam):
     if ((JMM::POJO) pathParam.type).compositeDataType then
-      pathParam.name + ".get" + ((JMM::POJO) pathParam.type).compositeDateTypePublicFieldName.toFirstUpper() + "()"
+      pathParam.name + ".get" + ((JMM::POJO) pathParam.type).compositeDataTypePublicFieldName.toFirstUpper() + "()"
     else
       if ((JMM::ServiceObject) pathParam.type).compositeDataType then
-	    pathParam.name + ".get" + ((JMM::ServiceObject) pathParam.type).compositeDateTypePublicFieldName.toFirstUpper() + "()"
+	    pathParam.name + ".get" + ((JMM::ServiceObject) pathParam.type).compositeDataTypePublicFieldName.toFirstUpper() + "()"
       else
        pathParam.name + "." + pathParam.type.getAllAttributesFromHierarchy().first().asGetter() + "()";
     

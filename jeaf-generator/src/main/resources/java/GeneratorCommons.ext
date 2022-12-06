@@ -372,10 +372,10 @@ cached boolean isCompositeDataType(uml::Type class):
  
 cached String getCompositeDateTypePublicFieldName(uml::Type class):
   if class.isStereotypeApplied("POJO")
-  then ((JMM::ServiceObject) class).compositeDateTypePublicFieldName
+  then ((JMM::ServiceObject) class).compositeDataTypePublicFieldName
   else 
   		if class.isStereotypeApplied("ServiceObject")
-  		then ((JMM::POJO) class).compositeDateTypePublicFieldName
+  		then ((JMM::POJO) class).compositeDataTypePublicFieldName
   		else false;
  
  cached boolean isCompositeDataTypeReadonly(uml::Type class):
