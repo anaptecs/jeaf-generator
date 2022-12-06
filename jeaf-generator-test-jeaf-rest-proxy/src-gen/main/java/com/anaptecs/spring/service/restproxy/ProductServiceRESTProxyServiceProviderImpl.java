@@ -1029,7 +1029,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
    * @return {@link String}
    */
   @Override
-  public String testTechnicalHeaderParam( String pReseller, String pAuthenticationToken ) {
+  public String testTechnicalHeaderParam( String pReseller ) {
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
@@ -1044,12 +1044,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     }
     else {
       lRequestBuilder.setHeader("Reseller", (String) null);
-    }
-    if (pAuthenticationToken != null) {
-      lRequestBuilder.setHeader("Authentication", pAuthenticationToken);
-    }
-    else {
-      lRequestBuilder.setHeader("Authentication", (String) null);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();

@@ -246,7 +246,7 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
    * @param pAuthenticationToken
    * @return {@link String}
    */
-  String testTechnicalHeaderParam( String pReseller, String pAuthenticationToken );
+  String testTechnicalHeaderParam( String pReseller );
 
   /**
    * 

@@ -243,7 +243,7 @@ public interface ProductService extends Service {
    * @param pAuthenticationToken
    * @return {@link String}
    */
-  String testTechnicalHeaderParam( String pReseller, String pAuthenticationToken );
+  String testTechnicalHeaderParam( String pReseller );
 
   /**
    * 

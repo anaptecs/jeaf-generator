@@ -45,7 +45,7 @@ cached List[JMM::QueryParam] getQueryParams(uml::Operation operation):
     operation.ownedParameter.typeSelect(JMM::QueryParam);
 
 cached List[JMM::HeaderParam] getHeaderParams(uml::Operation operation):
-    operation.ownedParameter.typeSelect(JMM::HeaderParam);
+    operation.ownedParameter.typeSelect(JMM::HeaderParam).select(e|e.isParameterSuppressed() == false);
 
 cached List[JMM::CookieParam] getCookieParams(uml::Operation operation):
     operation.ownedParameter.typeSelect(JMM::CookieParam);

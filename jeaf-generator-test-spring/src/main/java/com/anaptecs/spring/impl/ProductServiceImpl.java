@@ -186,7 +186,7 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
-  public String testTechnicalHeaderParam( String pReseller, String pAuthenticationToken ) {
+  public String testTechnicalHeaderParam( String pReseller ) {
     return null;
   }
 

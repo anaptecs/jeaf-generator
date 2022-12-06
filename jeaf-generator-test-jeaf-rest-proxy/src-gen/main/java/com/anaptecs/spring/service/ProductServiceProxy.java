@@ -459,10 +459,9 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
    * 
    * 
    */
-  public String testTechnicalHeaderParam( String pReseller, String pAuthenticationToken ) {
+  public String testTechnicalHeaderParam( String pReseller ) {
     try {
-      Command lCommand =
-          new TestTechnicalHeaderParam_String_String_ProductService_Command(pReseller, pAuthenticationToken);
+      Command lCommand = new TestTechnicalHeaderParam_String_String_ProductService_Command(pReseller);
       return (String) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -3209,23 +3208,16 @@ final class TestTechnicalHeaderParam_String_String_ProductService_Command extend
   private final String reseller;
 
   /**
-   * Attribute transports the method parameter "pAuthenticationToken" to the service implementation via the service
-   * channel.
-   */
-  private final String authenticationToken;
-
-  /**
    * Initialize object. All parameters from method "testTechnicalHeaderParam" have to be passed as parameters to this
    * command object.
    * 
    * @param pReseller String
    * @param pAuthenticationToken String
    */
-  TestTechnicalHeaderParam_String_String_ProductService_Command( String pReseller, String pAuthenticationToken ) {
+  TestTechnicalHeaderParam_String_String_ProductService_Command( String pReseller ) {
     super(ProductService.class);
     reseller = pReseller;
-    authenticationToken = pAuthenticationToken;
-    parameters = new Object[] { reseller, authenticationToken };
+    parameters = new Object[] { reseller };
   }
 
   /**
@@ -3246,7 +3238,7 @@ final class TestTechnicalHeaderParam_String_String_ProductService_Command extend
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
     long lStartTime = System.nanoTime();
-    Serializable lResult = (Serializable) lService.testTechnicalHeaderParam(reseller, authenticationToken);
+    Serializable lResult = (Serializable) lService.testTechnicalHeaderParam(reseller);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
     // Trace result of service call.

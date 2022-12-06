@@ -392,10 +392,9 @@ public class ProductServiceResource {
    */
   @Path("technicalHeaderParam")
   @GET
-  public Response testTechnicalHeaderParam( @HeaderParam("Reseller") String pReseller,
-      @HeaderParam("Authentication") String pAuthenticationToken ) {
+  public Response testTechnicalHeaderParam( @HeaderParam("Reseller") String pReseller ) {
     // Delegate request to service.
-    String lResult = productService.testTechnicalHeaderParam(pReseller, pAuthenticationToken);
+    String lResult = productService.testTechnicalHeaderParam(pReseller);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 

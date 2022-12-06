@@ -450,7 +450,7 @@ public class ProductServiceResource {
   public String testTechnicalHeaderParam( @RequestHeader(name = "Reseller", required = true) String pReseller,
       @RequestHeader(name = "Authentication", required = true) String pAuthenticationToken ) {
     // Delegate request to service.
-    return productService.testTechnicalHeaderParam(pReseller, pAuthenticationToken);
+    return productService.testTechnicalHeaderParam(pReseller);
   }
 
   /**
