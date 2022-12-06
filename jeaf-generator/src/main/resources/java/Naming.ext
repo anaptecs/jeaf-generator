@@ -1,3 +1,5 @@
+extension java::GeneratorCommons;
+
 // Function returns the name of the parameter for a java method accoring to the anaptecs code styleguide. For the 
 // element "name" the function will return "pName".
 cached String asParameter (uml::NamedElement element) :
@@ -138,7 +140,7 @@ String fromParameterToInstance(uml::NamedElement elem) :
 
 // Returns the parameter names as list, comma separated
 cached String asParameterListNames(uml::Operation operation) :
-    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getParameterListNames(org.eclipse.uml2.uml.Operation);
+	operation.getInputParameters().select(e|e.isParameterSuppressed() == false).name.toString(", ");
     
 cached String getParameterTypeNames(uml::Operation operation) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getParameterTypeNames(org.eclipse.uml2.uml.Operation);
@@ -149,7 +151,7 @@ String asParameterJavaDoc(uml::Operation operation) :
 
 // Returns the paramters names as list, coma separated, cuts off the first letter (should always be "p")
 String asParameterListInstanceNames(uml::Operation operation) :
-    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getParameterListInstanceNames(org.eclipse.uml2.uml.Operation);
+    operation.getInputParameters().select(e|e.isParameterSuppressed() == false).fromParameterToInstance().toString(", ");
     
 String asParameterDefinitionList(List parameters):
     JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.asParameterDefinitionList(java.util.List);
@@ -165,8 +167,7 @@ cached boolean areAllInputParametersNamed(uml::Operation operation):
    
 boolean hasInputParameters(uml::Operation operation):
    getInputParameters(operation).size > 0;
-
-                
+   
 // Returns the name of the parameter's type, adds a "[]" at the end if the parameter is multivalued
 String getTypeName(uml::Parameter parameter) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getTypeName(org.eclipse.uml2.uml.TypedElement);

@@ -51,6 +51,7 @@ import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCodeType;
+import com.anaptecs.spring.base.TechnicalHeaderContext;
 import com.anaptecs.spring.service.ChildBeanParameterType;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
@@ -384,5 +385,27 @@ public class ProductServiceResource {
     // Delegate request to service.
     productService.testDateHeaderParamsBean(pPath, pHeaderParams);
     return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link ProductService#testTechnicalHeaderParam()}
+   */
+  @Path("technicalHeaderParam")
+  @GET
+  public Response testTechnicalHeaderParam( @HeaderParam("Reseller") String pReseller ) {
+    // Delegate request to service.
+    String lResult = productService.testTechnicalHeaderParam(pReseller);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#testTechnicalHeaderBean()}
+   */
+  @Path("technicalHeaderBeanParam")
+  @GET
+  public Response testTechnicalHeaderBean( @BeanParam TechnicalHeaderContext pContext ) {
+    // Delegate request to service.
+    String lResult = productService.testTechnicalHeaderBean(pContext);
+    return Response.status(Response.Status.OK).entity(lResult).build();
   }
 }

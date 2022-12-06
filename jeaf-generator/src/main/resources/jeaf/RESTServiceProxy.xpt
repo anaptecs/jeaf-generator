@@ -252,7 +252,7 @@ public class «name»RESTProxy implements «this.fqn()» {
     		«ENDIF»
     	«ENDFOREACH»
 
-		«IF this.getHeaderParams().size > 0 || this.getBeanParams().type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam).size > 0»
+		«IF this.getHeaderParams().size > 0 || this.getBeanParams().type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam).select(e|e.isPropertySuppressed() == false).size > 0»
 		// Set HTTP header(s)
 		«FOREACH this.getHeaderParams() AS headerParam»
 			«IF headerParam.type.isPrimitiveType() == false»
@@ -269,10 +269,10 @@ public class «name»RESTProxy implements «this.fqn()» {
 		«ENDIF»
 
     	«FOREACH this.getBeanParams() AS beanParam»
-    		«IF beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam).size > 0»
+    		«IF beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam).select(e|e.isPropertySuppressed() == false).size > 0»
     		if(«beanParam.name» != null) {
     		«ENDIF»
-    		«FOREACH beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam) AS headerParam»
+    		«FOREACH beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam).select(e|e.isPropertySuppressed() == false) AS headerParam»
 				«IF headerParam.type.isPrimitiveType() == false»
 				if («beanParam.name».«headerParam.asGetter()»() != null) {
 				«ENDIF»
@@ -284,7 +284,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 				}
 				«ENDIF»
     		«ENDFOREACH»
-    		«IF beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam).size > 0»
+    		«IF beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam).select(e|e.isPropertySuppressed() == false).size > 0»
     		}
     		«ENDIF»
     	«ENDFOREACH»

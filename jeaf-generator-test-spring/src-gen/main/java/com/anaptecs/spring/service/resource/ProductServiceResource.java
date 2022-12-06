@@ -38,6 +38,7 @@ import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCodeType;
+import com.anaptecs.spring.base.TechnicalHeaderContext;
 import com.anaptecs.spring.service.ChildBeanParameterType;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
@@ -440,5 +441,28 @@ public class ProductServiceResource {
     DateHeaderParamsBean pHeaderParams = lHeaderParamsBuilder.build();
     // Delegate request to service.
     productService.testDateHeaderParamsBean(pPath, pHeaderParams);
+  }
+
+  /**
+   * {@link ProductService#testTechnicalHeaderParam()}
+   */
+  @RequestMapping(path = "technicalHeaderParam", method = { RequestMethod.GET })
+  public String testTechnicalHeaderParam( @RequestHeader(name = "Reseller", required = true) String pReseller ) {
+    // Delegate request to service.
+    return productService.testTechnicalHeaderParam(pReseller);
+  }
+
+  /**
+   * {@link ProductService#testTechnicalHeaderBean()}
+   */
+  @RequestMapping(path = "technicalHeaderBeanParam", method = { RequestMethod.GET })
+  public String testTechnicalHeaderBean( @RequestHeader(name = "Reseller", required = true) String pReseller ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    TechnicalHeaderContext.Builder lContextBuilder = TechnicalHeaderContext.builder();
+    lContextBuilder.setReseller(pReseller);
+    TechnicalHeaderContext pContext = lContextBuilder.build();
+    // Delegate request to service.
+    return productService.testTechnicalHeaderBean(pContext);
   }
 }

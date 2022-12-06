@@ -263,4 +263,19 @@ public interface ProductService extends Service {
    * @param pAccept
    */
   void testSpecialHeaderParams( String authorization, String pContentType, String pAccept );
+
+  /**
+   * 
+   * @param pContext
+   * @return {@link String}
+   */
+  String testTechnicalHeaderBean( TechnicalHeaderContext pContext );
+
+  /**
+   * 
+   * @param pReseller
+   * @param pAuthenticationToken
+   * @return {@link String}
+   */
+  String testTechnicalHeaderParam( String pReseller );
 }

@@ -207,7 +207,7 @@ public class «name»Resource {
 	  «ENDIF»
 	  «FOREACH this.getBeanParams() AS beanParam»
 		  «beanParam.getTypeName()».Builder «beanParam.name.toLocalVar()»Builder = «beanParam.getTypeName()».builder();
-		  «FOREACH beanParam.type.getAllAttributesFromHierarchy() AS attribute»
+		  «FOREACH beanParam.type.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false) AS attribute»
 		  		«IF attribute.type.isOpenAPIDataType()»
 		  			«IF attribute.type.isCompositeDataTypeForRESTResource()»
 		  				«IF generatePublicObjectView()»
@@ -340,7 +340,7 @@ public class «name»Resource {
 «ENDDEFINE»
 
 «DEFINE RESTParameterSignature FOR Operation»
-  «EXPAND RESTParameterDefinition FOREACH ownedParameter.select(e| e.isInputParameter()) SEPARATOR ", "» 
+  «EXPAND RESTParameterDefinition FOREACH ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false) SEPARATOR ", "» 
 «ENDDEFINE»
 
 «DEFINE RESTParameterDefinition FOR Parameter»
@@ -382,7 +382,7 @@ public class «name»Resource {
 «ENDDEFINE»
 
 «DEFINE SpringRESTParameterSignature FOR Operation»
-  «EXPAND SpringRESTParameterDefinition FOREACH ownedParameter.select(e| e.isInputParameter()) SEPARATOR ", "» 
+  «EXPAND SpringRESTParameterDefinition FOREACH ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false) SEPARATOR ", "» 
 «ENDDEFINE»
 
 «DEFINE SpringRESTParameterDefinition FOR Parameter»
@@ -420,7 +420,7 @@ public class «name»Resource {
 «ENDDEFINE»
 
 «DEFINE ProcessBeanParam FOR Class»
-	«EXPAND SpringRESTBeanParameterDefinition FOREACH this.getAllAttributesFromHierarchy() SEPARATOR ","»
+	«EXPAND SpringRESTBeanParameterDefinition FOREACH this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false) SEPARATOR ","»
 «ENDDEFINE»
 
 «DEFINE SpringRESTBeanParameterDefinition FOR Property»

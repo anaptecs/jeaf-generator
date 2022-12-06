@@ -31,6 +31,7 @@ import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCodeType;
+import com.anaptecs.spring.base.TechnicalHeaderContext;
 import com.anaptecs.spring.service.ChildBeanParameterType;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
@@ -238,4 +239,19 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
    * @param pHeaderParams
    */
   void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams );
+
+  /**
+   * 
+   * @param pReseller
+   * @param pAuthenticationToken
+   * @return {@link String}
+   */
+  String testTechnicalHeaderParam( String pReseller );
+
+  /**
+   * 
+   * @param pContext
+   * @return {@link String}
+   */
+  String testTechnicalHeaderBean( TechnicalHeaderContext pContext );
 }

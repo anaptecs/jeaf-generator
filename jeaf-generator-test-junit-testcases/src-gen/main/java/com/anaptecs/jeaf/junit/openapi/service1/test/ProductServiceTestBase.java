@@ -78,6 +78,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testGetSupportedCurrenciesAsync( ) throws Exception;
 
   /**
+   * Method test the implementation of service method testTechnicalHeaderParam(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestTechnicalHeaderParam( ) throws Exception;
+
+  /**
    * Method test the implementation of service method deprectedComplexRequestBody(...)
    * 
    * @throws Exception if the test fails.
@@ -174,6 +181,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testIsCurrencySupported( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method testTechnicalHeaderBean(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestTechnicalHeaderBean( ) throws Exception;
 
   /**
    * Method test the implementation of service method createProduct(...)

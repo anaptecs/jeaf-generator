@@ -38,6 +38,7 @@ import com.anaptecs.spring.base.Product.Builder;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCodeType;
+import com.anaptecs.spring.base.TechnicalHeaderContext;
 import com.anaptecs.spring.service.ChildBeanParameterType;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
@@ -182,4 +183,15 @@ public class ProductServiceImpl implements ProductService {
   @Override
   public void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
   }
+
+  @Override
+  public String testTechnicalHeaderParam( String pReseller ) {
+    return null;
+  }
+
+  @Override
+  public String testTechnicalHeaderBean( TechnicalHeaderContext pContext ) {
+    return null;
+  }
+
 }

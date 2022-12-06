@@ -230,6 +230,11 @@ public class GeneratorCommons {
   public static final String OPEN_API_YAML_11_COMPATIBILITY = "switch.gen.openapi.yaml.11.comapitibility";
 
   /**
+   * Constant defines the name of the system property which enable that technical http headers will be suppressed.
+   */
+  public static final String SUPPRESS_TECHNICAL_HTTP_HEADERS = "switch.gen.rest.suppress.technical.headers";
+
+  /**
    * Constant defines the name of the property which enables that ignorable headers are added to OpenAPI spec
    */
   public static final String ADD_IGNORED_HEADER_TO_OPEN_API_SPEC = "switch.gen.openapi.addIgnoredHeadersToOpenAPISpec";
@@ -807,9 +812,15 @@ public class GeneratorCommons {
   }
 
   /**
+   * Method checks if technical http headers should be suppressed.
+   */
+  public static boolean suppressTechnicalHttpHeaders( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(SUPPRESS_TECHNICAL_HTTP_HEADERS, Boolean.FALSE, Boolean.class);
+  }
+
+  /**
    * Method checks if ignorable http headers should anyways be added to the OpenAPI spec.
-   * 
-   * @return
    */
   public static boolean addIgnorableHeadersToOpenAPISpec( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();

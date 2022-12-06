@@ -430,7 +430,25 @@ cached boolean ignore(uml::Element element):
 	element.isStereotypeApplied("Ignore");
 	
 cached List[uml::Property] getRequiredPropertiesForBuilder(uml::Class class):
-	class.getAllAttributesFromHierarchy().select(e|e.isMultivalued() == false && e.isStatic == false && e.lower > 0);
+	class.getAllAttributesFromHierarchy().select(e|e.isMultivalued() == false && e.isStatic == false && e.lower > 0 && e.isPropertySuppressed() == false);
 	
 	
+boolean suppressTechnicalHttpHeaders():
+	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.suppressTechnicalHttpHeaders();
+	
+boolean isParameterSuppressed(uml::Parameter param):
+	suppressTechnicalHttpHeaders() && param.isTechnicalHeaderParameter();
+
+boolean isPropertySuppressed(uml::Property property):
+	suppressTechnicalHttpHeaders() && property.isTechnicalHeaderProperty();
+	
+
+boolean isTechnicalHeaderParameter(uml::Parameter param):
+	param.isStereotypeApplied("HeaderParam") && ((JMM::HeaderParam) param).technicalHeader;
+
+boolean isTechnicalHeaderProperty(uml::Property property):
+	property.isStereotypeApplied("HeaderParam") && ((JMM::HeaderParam) property).technicalHeader;
+
+
+                
 	

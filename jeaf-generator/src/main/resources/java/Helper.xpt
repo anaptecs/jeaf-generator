@@ -29,7 +29,7 @@
 	    «ELSE»
 		    StringBuilder lBuilder = super.toStringBuilder(pIndent);
 	    «ENDIF»
-	    «FOREACH this.getToStringProperties() AS attribute»
+	    «FOREACH this.getToStringProperties().select(e|e.isPropertySuppressed() == false) AS attribute»
 			lBuilder.append(pIndent);
 			lBuilder.append("«attribute.name»: ");
 		    «EXPAND ToStringValue FOR attribute»
@@ -116,7 +116,7 @@
 				 */
 				public static final String «this.getCompositeDateTypePublicFieldName().toUpperCase()» = "«this.getCompositeDateTypePublicFieldName()»";
 		«ELSE»
-			«FOREACH this.ownedAttribute AS attr»
+			«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false) AS attr»
 				«IF attr.isStatic == false»        
 				/**
 				 * Constant for the name of attribute "«attr.name»".
@@ -166,10 +166,10 @@
 		  return lEquals;
 		}
 	«ELSE»
-		«IF this.isOpenAPIDataType() && this.getAllAttributesFromHierarchy().size == 1 && this.getAllAttributesFromHierarchy().first().isMultivalued() == false»
+		«IF this.isOpenAPIDataType() && this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false).size == 1 && this.getAllAttributesFromHierarchy().first().isMultivalued() == false»
 		@Override
 		public int hashCode( ) {
-		  return java.util.Objects.hash(«this.getAllAttributesFromHierarchy().first().name»);
+		  return java.util.Objects.hash(«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false).first().name»);
 		}
 		
 		@Override
@@ -182,7 +182,7 @@
 		    lEquals = false;
 		  }
 		  else {
-		    lEquals = java.util.Objects.equals(«this.getAllAttributesFromHierarchy().first().name», ((«this.fqn()») pOtherObject).«this.getAllAttributesFromHierarchy().first().asGetter()»());
+		    lEquals = java.util.Objects.equals(«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false).first().name», ((«this.fqn()») pOtherObject).«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false).first().asGetter()»());
 		  }
 		  return lEquals;
 		}
