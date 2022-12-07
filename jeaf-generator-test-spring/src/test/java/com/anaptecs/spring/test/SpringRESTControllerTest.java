@@ -186,4 +186,20 @@ public class SpringRESTControllerTest {
     assertEquals("Something", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
   }
+
+  @Test
+  void testCustomHeaders( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
+        + "/products/technicalHeaderBeanParam");
+
+    lRequest.addHeader("Reseller", "Fancy Company");
+    lRequest.addHeader("Custom-Header", "MyCustomHeaderValue");
+
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("MyCustomHeaderValue", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity()
+        .getContent()));
+    assertEquals(200, lResponse.getCode());
+
+  }
 }

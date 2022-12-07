@@ -20,6 +20,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -192,7 +193,9 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   public String testTechnicalHeaderBean( TechnicalHeaderContext pContext ) {
-    return null;
+    Map<String, String> lCustomHeaders = pContext.getCustomHeaders();
+    System.out.println(lCustomHeaders);
+    return lCustomHeaders.get("custom-header");
   }
 
 }

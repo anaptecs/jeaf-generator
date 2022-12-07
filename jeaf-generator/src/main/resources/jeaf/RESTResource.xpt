@@ -201,7 +201,7 @@ public class «name»Resource {
 	)
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
-	public «getReturnTypeName()»  «name» («EXPAND SpringRESTParameterSignature FOR this»)«getThrownExceptionsAsString()»{
+	public «getReturnTypeName()»  «name» («EXPAND SpringRESTParameterSignature FOR this» «IF this.ownedParameter.select(e|e.hasParamCustomHeaders()).size > 0» «IF ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false).size > 0»,«ENDIF» @org.springframework.web.bind.annotation.RequestHeader java.util.Map<String, String> pHeaders«ENDIF»)«getThrownExceptionsAsString()»{
 	  «IF this.hasBeanParameters()»
 	  // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the service interface but "only" our REST controller.
 	  «ENDIF»
@@ -223,6 +223,12 @@ public class «name»Resource {
 		  		«ENDIF»
 		  «ENDFOREACH»
 		  «beanParam.getTypeName()» «beanParam.name» = «beanParam.name.toLocalVar()»Builder.build();
+		  «IF beanParam.hasParamCustomHeaders()»
+			// Add custom headers.
+			for (java.util.Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
+			  «beanParam.name».addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+			}		  
+		  «ENDIF»
 	  «ENDFOREACH»
 	  «IF this.hasDataTypeParameters()»
 	  // Convert basic type parameters into "real" objects.
