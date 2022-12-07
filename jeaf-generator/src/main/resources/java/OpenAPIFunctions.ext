@@ -312,6 +312,12 @@ cached String getLiteralName(uml::EnumerationLiteral literal):
     if literal.isYAML11QutingRequired() == true
     then "'" + literal.name + "'"
     else literal.name;
+    
+cached String getEnumerationType(uml::Enumeration enum):
+	if enum.isStereotypeApplied("OpenAPIEnumeration") && ((JMM::OpenAPIEnumeration) enum).extensibleEnum
+	then "x-extensible-enum"
+	else "enum";
+		
 
 cached boolean isYAML11QutingRequired(uml::EnumerationLiteral literal):
    enableYAML11Compatibility() && isYAML11Boolean(literal.name.toUpperCase());

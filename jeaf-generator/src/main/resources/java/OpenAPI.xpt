@@ -131,6 +131,36 @@ components:
           example: «((Example) parameter).exampleValue»
           «ENDIF-»
         «ENDIF-»
+      «ELSE-»
+      	«IF parameter.type.isOpenAPIDataType() -»
+      		«IF ((JMM::OpenAPIDataType)parameter.type).compositeDataType -»
+        type: string
+      		«ELSE-»
+        type: «parameter.type.attribute().first().type.getOpenAPIType(this)»
+          			«IF parameter.type.attribute().first().hasOpenAPIFormatForProperty()-»
+        format: «parameter.type.attribute().first().getOpenAPIFormatForProperty()»
+          			«ENDIF-»
+          			«IF parameter.type.attribute().first().hasPatternForProperty() -»
+        pattern: '«parameter.type.attribute().first().getPatternForProperty()»'
+          			«ENDIF-»
+        		«IF parameter.hasExample()-»
+          			«IF ((Example) parameter).exampleValue.length > 0-»
+          example: «((Example) parameter).exampleValue»
+          			«ENDIF-»
+        		«ENDIF-»
+      		«ENDIF-»
+      	«ELSE-»
+      		«IF parameter.type.isEnumeration() -»
+        type: string
+        «((uml::Enumeration) parameter.type).getEnumerationType()»:
+          		«FOREACH ((uml::Enumeration) parameter.type).ownedLiteral AS literal-»
+          - «literal.getLiteralName()»
+          		«ENDFOREACH-»
+          		«IF ((JMM::OpenAPIEnumeration) parameter.type).hasDefaultLiteral()-»
+        default: «((JMM::OpenAPIEnumeration) parameter.type).getDefaultLiteral().getLiteralName()»
+          		«ENDIF-»
+      		«ENDIF-»
+      	«ENDIF-»
       «ENDIF-»
       «IF parameter.isRequiredProperty() -»
       required: «parameter.isRequiredProperty()»

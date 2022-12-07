@@ -1243,6 +1243,23 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
     
 
+  /products/testNotInlinedBeanParam:
+    post:
+      operationId: testNotInlinedBeanParam
+      parameters:
+        - $ref: '../base/product-base.yml#/components/parameters/header'
+        - $ref: '../base/product-base.yml#/components/parameters/doubleCode'
+        - $ref: '../base/product-base.yml#/components/parameters/extensibleEnum'
+        - $ref: '../base/product-base.yml#/components/parameters/bookingID'
+      responses:
+    
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
+
 
 security:
   - {}

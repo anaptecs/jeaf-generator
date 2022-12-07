@@ -45,6 +45,7 @@ import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType;
+import com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
@@ -520,6 +521,18 @@ public class ProductServiceResource {
     ProductService lService = this.getProductService();
     String lResult = lService.testTechnicalHeaderParam(pReseller);
     return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#testNotInlinedBeanParam()}
+   */
+  @Path("testNotInlinedBeanParam")
+  @POST
+  public Response testNotInlinedBeanParam( @BeanParam NotInlinedBeanParam pInlinedBeanParam ) {
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    lService.testNotInlinedBeanParam(pInlinedBeanParam);
+    return Response.status(Response.Status.OK).build();
   }
 
   /**
