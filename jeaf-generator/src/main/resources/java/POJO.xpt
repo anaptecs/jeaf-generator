@@ -49,6 +49,13 @@
 						«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false)»
 					«ENDIF»
 					
+					«IF this.hasCustomHeaders()»
+						/**
+						 * Map contains all custom headers that were set on the object.
+						 */
+						private java.util.Map<String, String> customHeaders = new java.util.HashMap<String, String>();
+					«ENDIF»
+					
 					/**
 					 * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal" object creation builder should be used instead.
 					 */
@@ -122,6 +129,7 @@
 						«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false)»
 					«ENDIF»
 
+					«EXPAND java::Helper::GenerateCustomHeaders»
 					«EXPAND java::Helper::GenerateEqualsHashCode»
 					«EXPAND java::Helper::GenerateToStringMethod»
 				}
@@ -165,6 +173,13 @@
 						private «IF this.isCompositeDataTypeReadonly()»final «ENDIF» String «this.getCompositeDateTypePublicFieldName()»;
 					«ELSE»
 						«EXPAND Attribute::PropertyDeclaration FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false)»
+					«ENDIF»
+					
+					«IF this.hasCustomHeaders()»
+						/**
+						 * Map contains all custom headers that were set on the object.
+						 */
+						private java.util.Map<String, String> customHeaders = new java.util.HashMap<String, String>();
 					«ENDIF»
 					
 					/**
@@ -241,6 +256,7 @@
 					«ENDIF»
 
 					«EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
+					«EXPAND java::Helper::GenerateCustomHeaders»
 					«EXPAND java::Helper::GenerateEqualsHashCode»
 					«EXPAND java::Helper::GenerateToStringMethod»
 				}
