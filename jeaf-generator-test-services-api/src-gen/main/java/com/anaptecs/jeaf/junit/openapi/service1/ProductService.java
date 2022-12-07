@@ -28,6 +28,7 @@ import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType;
+import com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
@@ -278,4 +279,10 @@ public interface ProductService extends Service {
    * @return {@link String}
    */
   String testTechnicalHeaderParam( String pReseller );
+
+  /**
+   * 
+   * @param pInlinedBeanParam
+   */
+  void testNotInlinedBeanParam( NotInlinedBeanParam pInlinedBeanParam );
 }

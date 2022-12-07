@@ -26,6 +26,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testDeprecatedParams"));
     lSuite.addTest(new ProductServiceTest("testGetSupportedCurrenciesAsync"));
     lSuite.addTest(new ProductServiceTest("testTestTechnicalHeaderParam"));
+    lSuite.addTest(new ProductServiceTest("testTestNotInlinedBeanParam"));
     lSuite.addTest(new ProductServiceTest("testDeprectedComplexRequestBody"));
     lSuite.addTest(new ProductServiceTest("testTestChildBeanParameter"));
     lSuite.addTest(new ProductServiceTest("testCreateChannelCode"));
@@ -147,6 +148,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testTestTechnicalHeaderParam( ) throws Exception {
     // TODO Implement test for service method testTechnicalHeaderParam(...)
+  }
+
+  /**
+   * Method test the implementation of service method testNotInlinedBeanParam
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestNotInlinedBeanParam( ) throws Exception {
+    // TODO Implement test for service method testNotInlinedBeanParam(...)
   }
 
   /**

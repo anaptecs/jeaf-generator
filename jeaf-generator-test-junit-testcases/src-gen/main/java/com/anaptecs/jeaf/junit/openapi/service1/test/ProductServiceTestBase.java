@@ -85,6 +85,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testTestTechnicalHeaderParam( ) throws Exception;
 
   /**
+   * Method test the implementation of service method testNotInlinedBeanParam(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestNotInlinedBeanParam( ) throws Exception;
+
+  /**
    * Method test the implementation of service method deprectedComplexRequestBody(...)
    * 
    * @throws Exception if the test fails.

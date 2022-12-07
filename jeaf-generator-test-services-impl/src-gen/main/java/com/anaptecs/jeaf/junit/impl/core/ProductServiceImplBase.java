@@ -103,6 +103,9 @@ abstract class ProductServiceImplBase implements ProductService, ServiceImplemen
   public static final String TESTLOCALBEANPARAMTYPE_AUTH_TYPE =
       "testLocalBeanParamType.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 
+  public static final String TESTNOTINLINEDBEANPARAM_AUTH_TYPE =
+      "testNotInlinedBeanParam.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
   public static final String TESTOPTIONALQUERYPARAMS_AUTH_TYPE =
       "testOptionalQueryParams.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 

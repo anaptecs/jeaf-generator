@@ -25,6 +25,7 @@ import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType;
+import com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
@@ -414,5 +415,13 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   public String testTechnicalHeaderParam( String pReseller ) {
     // TODO Implement method and return real result
     return null;
+  }
+
+  /**
+   * 
+   * @param pInlinedBeanParam
+   */
+  @Override
+  public void testNotInlinedBeanParam( NotInlinedBeanParam pInlinedBeanParam ) {
   }
 }
