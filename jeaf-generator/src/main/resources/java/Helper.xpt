@@ -192,10 +192,10 @@
 
 «DEFINE GenerateCustomHeadersField FOR uml::Class»
 	«IF this.hasCustomHeaders()»
-	/**
-	 * Map contains all custom headers that were set on the object.
-	 */
-	private java.util.Map<String, String> customHeaders = new java.util.HashMap<String, String>();
+		/**
+		 * Map contains all custom headers that were set on the object.
+		 */
+		private java.util.Map<String, String> customHeaders = new java.util.HashMap<String, String>();
 	«ENDIF»
 «ENDDEFINE»
 
