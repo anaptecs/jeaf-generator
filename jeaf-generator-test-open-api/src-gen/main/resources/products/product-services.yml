@@ -1230,21 +1230,10 @@ paths:
     post:
       operationId: testNotInlinedBeanParam
       parameters:
-        - name: header
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: doubleCode
-          in: header
-          required: true
-          schema:
-            type: string
-        - name: extensibleEnum
-          in: header
-          required: true
-          schema:
-            type: string
+        - $ref: '../base/product-base.yml#/components/parameters/header'
+        - $ref: '../base/product-base.yml#/components/parameters/doubleCode'
+        - $ref: '../base/product-base.yml#/components/parameters/extensibleEnum'
+        - $ref: '../base/product-base.yml#/components/parameters/bookingID'
       responses:
     
     

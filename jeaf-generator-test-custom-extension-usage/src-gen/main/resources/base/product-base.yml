@@ -49,6 +49,43 @@ components:
             write:pets: Modify pets
 
   parameters:
+    # com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam.bookingID
+    bookingID:
+      name: bookingID
+      in: header
+      schema:
+        type: string
+      required: true
+
+    # com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam.doubleCode
+    doubleCode:
+      name: doubleCode
+      in: header
+      schema:
+        type: number
+        format: double
+      required: true
+
+    # com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam.extensibleEnum
+    extensibleEnum:
+      name: extensibleEnum
+      in: header
+      schema:
+        type: string
+        x-extensible-enum:
+          - RED
+          - GREEN
+          - BLUE
+      required: true
+
+    # com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam.header
+    header:
+      name: header
+      in: header
+      schema:
+        type: string
+      required: true
+
     # com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType.novaKey
     novaKey:
       name: novaKey

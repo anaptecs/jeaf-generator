@@ -37,6 +37,11 @@ public class NotInlinedBeanParam implements ServiceObject {
   public static final String EXTENSIBLEENUM = "extensibleEnum";
 
   /**
+   * Constant for the name of attribute "bookingID".
+   */
+  public static final String BOOKINGID = "bookingID";
+
+  /**
    * 
    */
   private String header;
@@ -50,6 +55,11 @@ public class NotInlinedBeanParam implements ServiceObject {
    * 
    */
   private ExtensibleEnum extensibleEnum;
+
+  /**
+   * 
+   */
+  private BookingID bookingID;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -70,6 +80,7 @@ public class NotInlinedBeanParam implements ServiceObject {
     header = pBuilder.header;
     doubleCode = pBuilder.doubleCode;
     extensibleEnum = pBuilder.extensibleEnum;
+    bookingID = pBuilder.bookingID;
   }
 
   /**
@@ -113,6 +124,11 @@ public class NotInlinedBeanParam implements ServiceObject {
     private ExtensibleEnum extensibleEnum;
 
     /**
+     * 
+     */
+    private BookingID bookingID;
+
+    /**
      * Use {@link NotInlinedBeanParam#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -128,6 +144,7 @@ public class NotInlinedBeanParam implements ServiceObject {
         header = pObject.header;
         doubleCode = pObject.doubleCode;
         extensibleEnum = pObject.extensibleEnum;
+        bookingID = pObject.bookingID;
       }
     }
 
@@ -161,6 +178,17 @@ public class NotInlinedBeanParam implements ServiceObject {
     public Builder setExtensibleEnum( ExtensibleEnum pExtensibleEnum ) {
       // Assign value to attribute
       extensibleEnum = pExtensibleEnum;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "bookingID".
+     * 
+     * @param pBookingID Value to which the attribute "bookingID" should be set.
+     */
+    public Builder setBookingID( BookingID pBookingID ) {
+      // Assign value to attribute
+      bookingID = pBookingID;
       return this;
     }
 
@@ -252,6 +280,27 @@ public class NotInlinedBeanParam implements ServiceObject {
   }
 
   /**
+   * Method returns the attribute "bookingID".
+   * 
+   * 
+   * @return BookingID Value to which the attribute "bookingID" is set.
+   */
+  public BookingID getBookingID( ) {
+    return bookingID;
+  }
+
+  /**
+   * Method sets the attribute "bookingID".
+   * 
+   * 
+   * @param pBookingID Value to which the attribute "bookingID" should be set.
+   */
+  public void setBookingID( BookingID pBookingID ) {
+    // Assign value to attribute
+    bookingID = pBookingID;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -273,6 +322,10 @@ public class NotInlinedBeanParam implements ServiceObject {
     lBuilder.append(pIndent);
     lBuilder.append("extensibleEnum: ");
     lBuilder.append(extensibleEnum);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("bookingID: ");
+    lBuilder.append(bookingID);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
