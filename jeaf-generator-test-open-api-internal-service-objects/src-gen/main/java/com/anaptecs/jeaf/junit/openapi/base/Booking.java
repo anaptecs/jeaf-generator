@@ -25,7 +25,7 @@ public class Booking implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * 
+   * ID of the booking
    */
   @NotNull
   private BookingID bookingID;
@@ -83,7 +83,7 @@ public class Booking implements ServiceObject {
    */
   public static class Builder {
     /**
-     * 
+     * ID of the booking
      */
     private BookingID bookingID;
 
@@ -104,7 +104,7 @@ public class Booking implements ServiceObject {
     }
 
     /**
-     * Method sets the association "bookingID".
+     * Method sets the association "bookingID". ID of the booking
      * 
      * @param pBookingID BookingID to which the association "bookingID" should be set.
      */
@@ -137,8 +137,7 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method returns the association "bookingID".
-   * 
+   * Method returns the association "bookingID". ID of the booking
    *
    * @return BookingID BookingID to which the association "bookingID" is set.
    */
@@ -147,8 +146,7 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method sets the association "bookingID".
-   * 
+   * Method sets the association "bookingID". ID of the booking
    * 
    * @param pBookingID BookingID to which the association "bookingID" should be set.
    */
@@ -157,8 +155,7 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "bookingID".
-   * 
+   * Method unsets the association "bookingID". ID of the booking
    */
   public final void unsetBookingID( ) {
     bookingID = null;
