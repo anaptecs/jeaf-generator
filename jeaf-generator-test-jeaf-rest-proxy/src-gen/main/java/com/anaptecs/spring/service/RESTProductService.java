@@ -214,4 +214,11 @@ public interface RESTProductService extends Service {
    * @return {@link String}
    */
   String testDataTypesAsHeaderBeanParam( AdvancedHeader pContext );
+
+  /**
+   * 
+   * @param pIntegerArray
+   * @return {@link String}
+   */
+  String testPrimitiveArrays( int[] pIntegerArray );
 }

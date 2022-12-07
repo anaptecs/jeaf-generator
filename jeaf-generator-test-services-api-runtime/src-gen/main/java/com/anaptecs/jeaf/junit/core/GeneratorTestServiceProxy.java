@@ -92,7 +92,7 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
    * 
    * 
    */
-  public boolean testPrimitivesAsParameter( int pInteger, byte pByteArray, double pDoubleValue ) {
+  public boolean testPrimitivesAsParameter( int pInteger, byte[] pByteArray, double pDoubleValue ) {
     try {
       Command lCommand = new TestPrimitivesAsParameter_int_byte_double_GeneratorTestService_Command(pInteger,
           pByteArray, pDoubleValue);
@@ -687,7 +687,7 @@ final class TestPrimitivesAsParameter_int_byte_double_GeneratorTestService_Comma
   /**
    * Attribute transports the method parameter "pByteArray" to the service implementation via the service channel.
    */
-  private final byte byteArray;
+  private final byte[] byteArray;
 
   /**
    * Attribute transports the method parameter "pDoubleValue" to the service implementation via the service channel.
@@ -699,10 +699,10 @@ final class TestPrimitivesAsParameter_int_byte_double_GeneratorTestService_Comma
    * command object.
    * 
    * @param pInteger int
-   * @param pByteArray byte
+   * @param pByteArray byte[]
    * @param pDoubleValue double
    */
-  TestPrimitivesAsParameter_int_byte_double_GeneratorTestService_Command( int pInteger, byte pByteArray,
+  TestPrimitivesAsParameter_int_byte_double_GeneratorTestService_Command( int pInteger, byte[] pByteArray,
       double pDoubleValue ) {
     super(GeneratorTestService.class);
     integer = pInteger;

@@ -28,6 +28,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testTestTechnicalHeaderParam"));
     lSuite.addTest(new ProductServiceTest("testTestNotInlinedBeanParam"));
     lSuite.addTest(new ProductServiceTest("testDeprectedComplexRequestBody"));
+    lSuite.addTest(new ProductServiceTest("testTestPrimitiveArray"));
     lSuite.addTest(new ProductServiceTest("testTestChildBeanParameter"));
     lSuite.addTest(new ProductServiceTest("testCreateChannelCode"));
     lSuite.addTest(new ProductServiceTest("testGetSupportedCurrencies"));
@@ -168,6 +169,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testDeprectedComplexRequestBody( ) throws Exception {
     // TODO Implement test for service method deprectedComplexRequestBody(...)
+  }
+
+  /**
+   * Method test the implementation of service method testPrimitiveArray
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestPrimitiveArray( ) throws Exception {
+    // TODO Implement test for service method testPrimitiveArray(...)
   }
 
   /**

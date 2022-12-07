@@ -216,4 +216,11 @@ public interface RESTProductServiceRESTProxyServiceProvider extends ServiceProvi
    * @return {@link String}
    */
   String testDataTypesAsHeaderBeanParam( AdvancedHeader pContext );
+
+  /**
+   * 
+   * @param pIntegerArray
+   * @return {@link String}
+   */
+  String testPrimitiveArrays( int[] pIntegerArray );
 }

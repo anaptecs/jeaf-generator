@@ -416,4 +416,15 @@ public class RESTProductServiceResource {
     String lResult = rESTProductService.testDataTypesAsHeaderBeanParam(pContext);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
+
+  /**
+   * {@link RESTProductService#testPrimitiveArrays()}
+   */
+  @Path("testPrimitiveArrayAsBody")
+  @POST
+  public Response testPrimitiveArrays( int[] pIntegerArray ) {
+    // Delegate request to service.
+    String lResult = rESTProductService.testPrimitiveArrays(pIntegerArray);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
 }

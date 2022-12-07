@@ -250,14 +250,17 @@ public class ClassUtil {
 
     // Check if collection type is required
     boolean lCollectionRequired;
+    boolean lArrayRequired;
     if (pTypedElement instanceof Property) {
       // If properties are not modeled as association then the will be generated as simple arrays in case they are
       // multivalued.
       if (lModeledAsAssociation && lMultiplicityElement.isMultivalued()) {
         lCollectionRequired = true;
+        lArrayRequired = false;
       }
       else {
         lCollectionRequired = false;
+        lArrayRequired = false;
       }
     }
     // In case of parameters, primitive types will be represented as arrays all other types as collections.
@@ -266,23 +269,30 @@ public class ClassUtil {
       if (lMultiplicityElement.isMultivalued()) {
         if (ClassUtil.isPrimitive(pTypedElement.getType())) {
           lCollectionRequired = false;
+          lArrayRequired = true;
         }
         else {
           lCollectionRequired = true;
+          lArrayRequired = false;
         }
       }
       // Parameter is not multivalued
       else {
         lCollectionRequired = false;
+        lArrayRequired = false;
       }
     }
     // In case of all other type of model elements we will work with collections only depending on their multiplicity.
     else {
       lCollectionRequired = lMultiplicityElement.isMultivalued();
+      lArrayRequired = false;
     }
 
     if (lCollectionRequired) {
       lFQN = ClassUtil.getCollectionType(lMultiplicityElement) + "<" + lFQN + ">";
+    }
+    else if (lArrayRequired) {
+      lFQN = lFQN + "[]";
     }
 
     return lFQN;

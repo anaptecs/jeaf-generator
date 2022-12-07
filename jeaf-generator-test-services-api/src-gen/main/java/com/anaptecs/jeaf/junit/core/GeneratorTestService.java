@@ -42,7 +42,7 @@ public interface GeneratorTestService extends ParentService {
    * @param pDoubleValue
    * @return {@link Boolean}
    */
-  boolean testPrimitivesAsParameter( int pInteger, byte pByteArray, double pDoubleValue );
+  boolean testPrimitivesAsParameter( int pInteger, byte[] pByteArray, double pDoubleValue );
 
   /**
    * 

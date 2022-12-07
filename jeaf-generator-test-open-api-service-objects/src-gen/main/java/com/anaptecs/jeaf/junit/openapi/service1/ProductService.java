@@ -285,4 +285,10 @@ public interface ProductService extends Service {
    * @param pInlinedBeanParam
    */
   void testNotInlinedBeanParam( NotInlinedBeanParam pInlinedBeanParam );
+
+  /**
+   * 
+   * @param pIntegerArray
+   */
+  void testPrimitiveArray( int[] pIntegerArray );
 }

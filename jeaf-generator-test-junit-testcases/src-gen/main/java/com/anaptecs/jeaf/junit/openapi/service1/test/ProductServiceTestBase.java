@@ -99,6 +99,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testDeprectedComplexRequestBody( ) throws Exception;
 
   /**
+   * Method test the implementation of service method testPrimitiveArray(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestPrimitiveArray( ) throws Exception;
+
+  /**
    * Method test the implementation of service method testChildBeanParameter(...)
    * 
    * @throws Exception if the test fails.

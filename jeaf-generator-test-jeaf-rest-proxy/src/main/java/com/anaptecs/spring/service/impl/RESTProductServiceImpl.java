@@ -241,4 +241,10 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
   public String testDataTypesAsHeaderBeanParam( AdvancedHeader pContext ) {
     return null;
   }
+
+  @Override
+  public String testPrimitiveArrays( int[] pIntegerArray ) {
+    return null;
+  }
+
 }

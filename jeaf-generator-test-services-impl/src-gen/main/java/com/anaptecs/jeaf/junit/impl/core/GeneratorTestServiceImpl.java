@@ -78,7 +78,7 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
    * @return {@link Boolean}
    */
   @Override
-  public boolean testPrimitivesAsParameter( int pInteger, byte pByteArray, double pDoubleValue ) {
+  public boolean testPrimitivesAsParameter( int pInteger, byte[] pByteArray, double pDoubleValue ) {
     // TODO Implement method and return real result
     return false;
   }

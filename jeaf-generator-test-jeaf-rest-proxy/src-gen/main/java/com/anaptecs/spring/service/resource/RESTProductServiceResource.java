@@ -427,6 +427,18 @@ public class RESTProductServiceResource {
   }
 
   /**
+   * {@link RESTProductService#testPrimitiveArrays()}
+   */
+  @Path("testPrimitiveArrayAsBody")
+  @POST
+  public Response testPrimitiveArrays( int[] pIntegerArray ) {
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testPrimitiveArrays(pIntegerArray);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
    * Method returns reference to service to which all REST requests will be delegated.
    *
    * @return RESTProductService Service instance to which all requests will be delegated.

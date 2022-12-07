@@ -954,4 +954,27 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
   }
+
+  /**
+   * 
+   * @param pIntegerArray
+   * @return {@link String}
+   */
+  @Override
+  public String testPrimitiveArrays( int[] pIntegerArray ) {
+    // Create builder for POST request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.POST, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testPrimitiveArrayAsBody");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set parameter pIntegerArray as request body.
+    lRequestBuilder.setBody(pIntegerArray);
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
 }
