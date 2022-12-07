@@ -18,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -1035,6 +1036,10 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
     if (pContext != null) {
+      // First we process custom headers then the explicit ones.
+      for (Map.Entry<String, String> lNextEntry : pContext.getCustomHeaders().entrySet()) {
+        lRequestBuilder.setHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      }
       if (pContext.getReseller() != null) {
         lRequestBuilder.setHeader("Reseller", pContext.getReseller());
       }

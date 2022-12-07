@@ -5,6 +5,10 @@
  */
 package com.anaptecs.jeaf.junit.openapi.service1;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -31,6 +35,11 @@ public class TechnicalHeaderContext implements ServiceObject {
   @HeaderParam("Reseller")
   @NotNull
   private String reseller;
+
+  /**
+   * Map contains all custom headers that were set on the object.
+   */
+  private Map<String, String> customHeaders = new HashMap<String, String>();
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -161,6 +170,31 @@ public class TechnicalHeaderContext implements ServiceObject {
   public void setReseller( String pReseller ) {
     // Assign value to attribute
     reseller = pReseller;
+  }
+
+  /**
+   * Method returns map with all custom headers that were added
+   * 
+   * @return {@link Map} Map with all custom headers. The method never returns null. The returned map is unmodifiable.
+   */
+  public Map<String, String> getCustomHeaders( ) {
+    return Collections.unmodifiableMap(customHeaders);
+  }
+
+  /**
+   * Method adds the passed values as custom headers. The passed name and value of the http header must be compliant
+   * with guidelines about http headers.
+   * 
+   * @param pHeaderName Name of the HTTP header. The parameter must not be null,
+   * @param pHeaderValue Value of the http header the parameter may be null.
+   */
+  public void addCustomHeader( String pHeaderName, String pHeaderValue ) {
+    if (pHeaderName != null) {
+      customHeaders.put(pHeaderName, pHeaderValue);
+    }
+    else {
+      throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
+    }
   }
 
   /**

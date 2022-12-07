@@ -394,8 +394,6 @@ cached boolean hasCompositeDateTypeCustomSerialization(uml::Type class):
   		then ((JMM::POJO) class).compositeDataTypeCustomSerialization
   		else false;
  
-
- 
 cached boolean generateInternalViewOfCompositeDataType(uml::Type class):
   if generatePublicObjectView() == true
   then false
@@ -407,7 +405,18 @@ cached boolean generateInternalViewOfCompositeDataType(uml::Type class):
 	  		then ((JMM::POJO) class).compositeDataType
 	  		else false;
 
+
+cached boolean hasCustomHeaders(uml::Type class):
+	if class.isStereotypeApplied("BeanParam")
+	then ((JMM::BeanParam)class).supportsCustomHeaders
+	else false;
 	  		
+cached boolean hasParamCustomHeaders(uml::Parameter param):
+	if param.isStereotypeApplied("BeanParam")
+	then ((JMM::BeanParam)param).supportsCustomHeaders
+	else param.type.hasCustomHeaders();
+	  		
+
 cached int getMetaModelVersion(uml::Element element):
   element.getModel().getAllAppliedProfiles().allOwnedElements().typeSelect(JMM::ModelVersion).get(0).revision;
   

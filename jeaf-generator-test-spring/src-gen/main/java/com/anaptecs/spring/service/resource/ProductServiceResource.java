@@ -16,6 +16,7 @@ import java.time.OffsetTime;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -456,12 +457,17 @@ public class ProductServiceResource {
    * {@link ProductService#testTechnicalHeaderBean()}
    */
   @RequestMapping(path = "technicalHeaderBeanParam", method = { RequestMethod.GET })
-  public String testTechnicalHeaderBean( @RequestHeader(name = "Reseller", required = true) String pReseller ) {
+  public String testTechnicalHeaderBean( @RequestHeader(name = "Reseller", required = true) String pReseller,
+      @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     TechnicalHeaderContext.Builder lContextBuilder = TechnicalHeaderContext.builder();
     lContextBuilder.setReseller(pReseller);
     TechnicalHeaderContext pContext = lContextBuilder.build();
+    // Add custom headers.
+    for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
+      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+    }
     // Delegate request to service.
     return productService.testTechnicalHeaderBean(pContext);
   }

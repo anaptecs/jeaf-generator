@@ -145,7 +145,7 @@ public class «name»Resource {
 	«IF produces.size > 0»@javax.ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»javax.ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
-	public javax.ws.rs.core.Response  «name» («EXPAND RESTParameterSignature FOR this»)«getThrownExceptionsAsString()»{
+	public javax.ws.rs.core.Response  «name» («EXPAND RESTParameterSignature FOR this» «IF this.ownedParameter.select(e|e.hasParamCustomHeaders()).size > 0» «IF ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false).size > 0»,«ENDIF» @javax.ws.rs.core.Context javax.ws.rs.core.HttpHeaders pHeaders«ENDIF»)«getThrownExceptionsAsString()»{
 	  «IF this.hasDataTypeParameters()»
 	  // Convert basic type parameters into "real" objects.
 	  	«FOREACH this.getDataTypeParameters() AS basicParam»
@@ -165,6 +165,13 @@ public class «name»Resource {
 	    	«ENDIF»
 	  	«ENDFOREACH»
 	  «ENDIF»
+	  
+	  «FOREACH this.ownedParameter.select(e|e.isInputParameter() && e.isParameterSuppressed() == false && e.hasParamCustomHeaders()) AS beanParam»
+	    // Add all http headers as custom headers.
+	    for (java.util.Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
+	      «beanParam.name».addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
+	    }
+	  «ENDFOREACH»
 
       // Delegate request to service.
       «IF isTargetRuntimeJEAF()»
@@ -201,7 +208,7 @@ public class «name»Resource {
 	)
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
-	public «getReturnTypeName()»  «name» («EXPAND SpringRESTParameterSignature FOR this»)«getThrownExceptionsAsString()»{
+	public «getReturnTypeName()»  «name» («EXPAND SpringRESTParameterSignature FOR this» «IF this.ownedParameter.select(e|e.hasParamCustomHeaders()).size > 0» «IF ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false).size > 0»,«ENDIF» @org.springframework.web.bind.annotation.RequestHeader java.util.Map<String, String> pHeaders«ENDIF»)«getThrownExceptionsAsString()»{
 	  «IF this.hasBeanParameters()»
 	  // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the service interface but "only" our REST controller.
 	  «ENDIF»
@@ -223,6 +230,12 @@ public class «name»Resource {
 		  		«ENDIF»
 		  «ENDFOREACH»
 		  «beanParam.getTypeName()» «beanParam.name» = «beanParam.name.toLocalVar()»Builder.build();
+		  «IF beanParam.hasParamCustomHeaders()»
+			// Add custom headers.
+			for (java.util.Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
+			  «beanParam.name».addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+			}		  
+		  «ENDIF»
 	  «ENDFOREACH»
 	  «IF this.hasDataTypeParameters()»
 	  // Convert basic type parameters into "real" objects.

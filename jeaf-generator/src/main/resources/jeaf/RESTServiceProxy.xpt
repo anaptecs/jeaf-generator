@@ -271,6 +271,12 @@ public class «name»RESTProxy implements «this.fqn()» {
     	«FOREACH this.getBeanParams() AS beanParam»
     		«IF beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam).select(e|e.isPropertySuppressed() == false).size > 0»
     		if(«beanParam.name» != null) {
+    			«IF beanParam.hasParamCustomHeaders()»
+					// First we process custom headers then the explicit ones.
+					for (java.util.Map.Entry<String, String> lNextEntry : pContext.getCustomHeaders().entrySet()) {
+					  lRequestBuilder.setHeader(lNextEntry.getKey(), lNextEntry.getValue());
+					}
+    			«ENDIF»
     		«ENDIF»
     		«FOREACH beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam).select(e|e.isPropertySuppressed() == false) AS headerParam»
 				«IF headerParam.type.isPrimitiveType() == false»
