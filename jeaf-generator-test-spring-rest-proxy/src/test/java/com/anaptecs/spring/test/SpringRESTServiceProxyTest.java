@@ -7,6 +7,7 @@ package com.anaptecs.spring.test;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
@@ -21,12 +22,15 @@ import org.mockserver.model.HttpRequest;
 import org.mockserver.model.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.zalando.problem.ThrowableProblem;
 
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.Product;
+import com.anaptecs.spring.base.TechnicalHeaderContext;
 import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.ProductService;
 import com.anaptecs.spring.service.RESTProductService;
 
 @SpringBootTest(classes = SpringTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -47,6 +51,9 @@ public class SpringRESTServiceProxyTest {
 
   @Autowired
   private RESTProductService productService;
+
+  @Autowired
+  private ProductService theRealProductService;
 
   @BeforeAll
   static void startMockServer( ) throws IOException {
@@ -69,6 +76,9 @@ public class SpringRESTServiceProxyTest {
     lClient.when(mockRequest("/rest-products/dataTypesInBeanHeader", "GET").withHeader("bookingID", BOOKING_ID_STRING)
         .withHeader("bookingCode", BOOKING_CODE.getCode()).withHeader("DoubleCode", Double.toString(DOUBLE_CODE
             .getCode()))).respond(mockResponse("\"" + DATA_TYPE_RESPONSE + "\""));
+
+    lClient.when(mockRequest("/products/technicalHeaderBeanParam", "GET").withHeader("Custom-Header", "XYZ"))
+        .respond(mockResponse(""));
   }
 
   @AfterAll
@@ -118,5 +128,22 @@ public class SpringRESTServiceProxyTest {
         .setDoubleCode(DOUBLE_CODE).build();
     lResponse = productService.testDataTypesAsHeaderBeanParam(lAdvancedHeader);
     assertEquals(DATA_TYPE_RESPONSE, lResponse);
+  }
+
+  @Test
+  void testTechnicalHeaders( ) {
+    TechnicalHeaderContext lContext = TechnicalHeaderContext.builder().build();
+    lContext.addCustomHeader("Custom-Header", "XYZ");
+    String lResult = theRealProductService.testTechnicalHeaderBean(lContext);
+    assertEquals(null, lResult);
+
+    try {
+      lContext.addCustomHeader("Custom-Header", "XYZ1");
+      theRealProductService.testTechnicalHeaderBean(lContext);
+      fail();
+    }
+    catch (ThrowableProblem e) {
+      assertEquals(404, e.getStatus().getStatusCode());
+    }
   }
 }

@@ -19,6 +19,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.anaptecs.jeaf.core.annotations.JEAFServiceProvider;
 import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
@@ -1067,6 +1068,10 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
     if (pContext != null) {
+      // First we process custom headers then the explicit ones.
+      for (Map.Entry<String, String> lNextEntry : pContext.getCustomHeaders().entrySet()) {
+        lRequestBuilder.setHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      }
       if (pContext.getReseller() != null) {
         lRequestBuilder.setHeader("Reseller", pContext.getReseller());
       }
