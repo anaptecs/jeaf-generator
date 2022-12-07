@@ -424,4 +424,12 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   @Override
   public void testNotInlinedBeanParam( NotInlinedBeanParam pInlinedBeanParam ) {
   }
+
+  /**
+   * 
+   * @param pIntegerArray
+   */
+  @Override
+  public void testPrimitiveArray( int[] pIntegerArray ) {
+  }
 }

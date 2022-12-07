@@ -437,4 +437,13 @@ public class RESTProductServiceResource {
     // Delegate request to service.
     return rESTProductService.testDataTypesAsHeaderBeanParam(pContext);
   }
+
+  /**
+   * {@link RESTProductService#testPrimitiveArrays()}
+   */
+  @RequestMapping(path = "testPrimitiveArrayAsBody", method = { RequestMethod.POST })
+  public String testPrimitiveArrays( @RequestBody(required = true) int[] pIntegerArray ) {
+    // Delegate request to service.
+    return rESTProductService.testPrimitiveArrays(pIntegerArray);
+  }
 }

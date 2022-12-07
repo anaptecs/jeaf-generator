@@ -163,4 +163,9 @@ public class RESTProductServiceImpl implements RESTProductService {
     return "Bean-Header: " + pContext.getBookingID().getReferenceID() + "_" + pContext.getBookingID()
         .getExternalRefID() + "_" + pContext.getBookingCode().getCode() + "_" + pContext.getDoubleCode().getCode();
   }
+
+  @Override
+  public String testPrimitiveArrays( int[] pIntegerArray ) {
+    return null;
+  }
 }

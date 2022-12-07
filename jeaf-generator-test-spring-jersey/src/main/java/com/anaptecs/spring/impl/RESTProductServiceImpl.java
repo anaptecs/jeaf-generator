@@ -193,4 +193,9 @@ public class RESTProductServiceImpl implements RESTProductService {
   public String testDataTypesAsHeaderBeanParam( AdvancedHeader pContext ) {
     return null;
   }
+
+  @Override
+  public String testPrimitiveArrays( int[] pIntegerArray ) {
+    return null;
+  }
 }
