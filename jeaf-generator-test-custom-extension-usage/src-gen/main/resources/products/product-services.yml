@@ -35,6 +35,7 @@ tags:
   - name: MasterData
     description: >-
       Tag marks all operations that are connected with Master Data.
+  - name: A Tag
   - name: Another Tag
   - name: B Tag
 
@@ -807,6 +808,8 @@ paths:
 
   /products/channels:
     get:
+      tags:
+        - A Tag
       operationId: getChannels
       parameters:
         - name: channelTypes
