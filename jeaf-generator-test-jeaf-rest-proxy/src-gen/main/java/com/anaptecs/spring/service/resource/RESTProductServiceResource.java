@@ -20,6 +20,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.BeanParam;
@@ -36,6 +37,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -158,7 +160,11 @@ public class RESTProductServiceResource {
    */
   @Path("sortiment/{id}")
   @GET
-  public Response getSortiment( @BeanParam Context pContext ) {
+  public Response getSortiment( @BeanParam Context pContext, @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
+    // Add all http headers as custom headers.
+    for (Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
+      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
+    }
     // Delegate request to service.
     RESTProductService lService = this.getRESTProductService();
     Sortiment lResult = lService.getSortiment(pContext);
@@ -361,7 +367,11 @@ public class RESTProductServiceResource {
   @Path("cookies")
   @GET
   public Response testCookieParams( @CookieParam("Channel-Type-Param") ChannelType pChannelTypeParam,
-      @BeanParam SpecialContext pContext ) {
+      @BeanParam SpecialContext pContext, @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
+    // Add all http headers as custom headers.
+    for (Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
+      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
+    }
     // Delegate request to service.
     RESTProductService lService = this.getRESTProductService();
     lService.testCookieParams(pChannelTypeParam, pContext);

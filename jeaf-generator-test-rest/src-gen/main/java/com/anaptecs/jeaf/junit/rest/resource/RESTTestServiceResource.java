@@ -5,6 +5,9 @@
  */
 package com.anaptecs.jeaf.junit.rest.resource;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
@@ -19,6 +22,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -119,7 +123,11 @@ public class RESTTestServiceResource {
    */
   @Path("beanParam1")
   @GET
-  public Response handleBeanParam1( @BeanParam Context pContext ) {
+  public Response handleBeanParam1( @BeanParam Context pContext, @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
+    // Add all http headers as custom headers.
+    for (Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
+      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
+    }
     // Delegate request to service.
     RESTTestService lService = this.getRESTTestService();
     lService.handleBeanParam1(pContext);

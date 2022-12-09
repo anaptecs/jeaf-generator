@@ -33,10 +33,10 @@ public class Booking {
   }
 
    /**
-   * ID of the booking Type represents a booking ID.
+   * ID of the booking
    * @return bookingID
   **/
-  @Schema(required = true, description = "ID of the booking Type represents a booking ID.")
+  @Schema(required = true, description = "ID of the booking")
   public String getBookingID() {
     return bookingID;
   }

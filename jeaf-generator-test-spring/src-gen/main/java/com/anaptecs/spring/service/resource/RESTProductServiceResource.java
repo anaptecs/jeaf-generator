@@ -20,6 +20,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -142,7 +143,8 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "lang", required = true) Locale pLanguage,
       @CookieValue(name = "reseller", required = true) long pResellerID,
       @PathVariable(name = "id", required = true) long pPathParam,
-      @RequestParam(name = "q1", required = true) String pQueryParam, String pLang ) {
+      @RequestParam(name = "q1", required = true) String pQueryParam, String pLang,
+      @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     Context.Builder lContextBuilder = Context.builder();
@@ -153,6 +155,10 @@ public class RESTProductServiceResource {
     lContextBuilder.setQueryParam(pQueryParam);
     lContextBuilder.setLang(pLang);
     Context pContext = lContextBuilder.build();
+    // Add custom headers.
+    for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
+      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+    }
     // Delegate request to service.
     return rESTProductService.getSortiment(pContext);
   }
@@ -360,7 +366,8 @@ public class RESTProductServiceResource {
       @PathVariable(name = "id", required = true) long pPathParam,
       @RequestParam(name = "q1", required = true) String pQueryParam, String pLang,
       @RequestHeader(name = "specificHeader", required = true) String pSpecificHeader,
-      @CookieValue(name = "Channel-Type", required = true) ChannelType pChannelType ) {
+      @CookieValue(name = "Channel-Type", required = true) ChannelType pChannelType,
+      @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     SpecialContext.Builder lContextBuilder = SpecialContext.builder();
@@ -373,6 +380,10 @@ public class RESTProductServiceResource {
     lContextBuilder.setSpecificHeader(pSpecificHeader);
     lContextBuilder.setChannelType(pChannelType);
     SpecialContext pContext = lContextBuilder.build();
+    // Add custom headers.
+    for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
+      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+    }
     // Delegate request to service.
     rESTProductService.testCookieParams(pChannelTypeParam, pContext);
   }

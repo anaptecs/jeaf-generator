@@ -131,7 +131,11 @@ public class ProductServiceResource {
    */
   @Path("sortiment/{id}")
   @GET
-  public Response getSortiment( @BeanParam Context pContext ) {
+  public Response getSortiment( @BeanParam Context pContext, @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
+    // Add all http headers as custom headers.
+    for (Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
+      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
+    }
     // Delegate request to service.
     ProductService lService = this.getProductService();
     Sortiment lResult = lService.getSortiment(pContext);
@@ -255,7 +259,12 @@ public class ProductServiceResource {
    */
   @Path("specific/{id}")
   @PATCH
-  public Response loadSpecificThings( @BeanParam SpecialContext pContext ) {
+  public Response loadSpecificThings( @BeanParam SpecialContext pContext,
+      @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
+    // Add all http headers as custom headers.
+    for (Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
+      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
+    }
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.loadSpecificThings(pContext);

@@ -12,8 +12,7 @@
 «indentation»          description: >-
           «IF ownerAttribute.hasComment() -»
 «indentation»            «ownerAttribute.getCommentForOpenAPIDescription(indentation + "            ")»
-          «ENDIF-»
-          «IF this.compositeDataType && this.hasComment() -»
+          «ELSE-»
 «indentation»            «this.getCommentForOpenAPIDescription(indentation + "            ")»
           «ENDIF-»
           «ENDIF-»
