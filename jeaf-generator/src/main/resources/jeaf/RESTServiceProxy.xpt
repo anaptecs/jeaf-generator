@@ -273,7 +273,7 @@ public class «name»RESTProxy implements «this.fqn()» {
     		if(«beanParam.name» != null) {
     			«IF beanParam.hasParamCustomHeaders()»
 					// First we process custom headers then the explicit ones.
-					for (java.util.Map.Entry<String, String> lNextEntry : pContext.getCustomHeaders().entrySet()) {
+					for (java.util.Map.Entry<String, String> lNextEntry : «beanParam.name».getCustomHeaders().entrySet()) {
 					  lRequestBuilder.setHeader(lNextEntry.getKey(), lNextEntry.getValue());
 					}
     			«ENDIF»
