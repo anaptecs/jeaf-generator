@@ -414,7 +414,18 @@ cached boolean hasCustomHeaders(uml::Type class):
 cached boolean hasParamCustomHeaders(uml::Parameter param):
 	if param.isStereotypeApplied("BeanParam")
 	then ((JMM::BeanParam)param).supportsCustomHeaders
-	else param.type.hasCustomHeaders();
+	else 
+		if param.type.isStereotypeApplied("BeanParam")
+		then ((JMM::BeanParam) param.type).hasHierarchyCustomHeaders()
+		else false;
+	
+cached boolean hasHierarchyCustomHeaders(JMM::BeanParam class):
+	if class.supportsCustomHeaders 
+	then true
+	else 
+		if class.superClass != null && class.superClass.typeSelect(JMM::BeanParam).size > 0
+		then class.superClass.typeSelect(JMM::BeanParam).first().hasHierarchyCustomHeaders()
+		else false;
 	  		
 
 cached int getMetaModelVersion(uml::Element element):

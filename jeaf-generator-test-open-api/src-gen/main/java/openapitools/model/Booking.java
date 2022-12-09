@@ -48,11 +48,11 @@ public class Booking {
   }
 
    /**
-   * ID of the booking Type represents a booking ID.
+   * ID of the booking
    * @return bookingID
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "ID of the booking Type represents a booking ID.")
+  @ApiModelProperty(required = true, value = "ID of the booking")
   @JsonProperty(JSON_PROPERTY_BOOKING_I_D)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

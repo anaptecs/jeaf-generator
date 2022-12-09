@@ -164,6 +164,10 @@ public class ProductServiceRESTProxy implements ProductService {
     }
     // Set HTTP header(s)
     if (pContext != null) {
+      // First we process custom headers then the explicit ones.
+      for (Map.Entry<String, String> lNextEntry : pContext.getCustomHeaders().entrySet()) {
+        lRequestBuilder.setHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      }
       if (pContext.getAccessToken() != null) {
         lRequestBuilder.setHeader("token", pContext.getAccessToken());
       }
@@ -441,6 +445,10 @@ public class ProductServiceRESTProxy implements ProductService {
     }
     // Set HTTP header(s)
     if (pContext != null) {
+      // First we process custom headers then the explicit ones.
+      for (Map.Entry<String, String> lNextEntry : pContext.getCustomHeaders().entrySet()) {
+        lRequestBuilder.setHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      }
       if (pContext.getAccessToken() != null) {
         lRequestBuilder.setHeader("token", pContext.getAccessToken());
       }

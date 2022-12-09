@@ -20,6 +20,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -172,6 +173,10 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Set HTTP header(s)
     if (pContext != null) {
+      // First we process custom headers then the explicit ones.
+      for (Map.Entry<String, String> lNextEntry : pContext.getCustomHeaders().entrySet()) {
+        lRequestBuilder.setHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      }
       if (pContext.getAccessToken() != null) {
         lRequestBuilder.setHeader("token", pContext.getAccessToken());
       }
@@ -755,6 +760,10 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Set HTTP header(s)
     if (pContext != null) {
+      // First we process custom headers then the explicit ones.
+      for (Map.Entry<String, String> lNextEntry : pContext.getCustomHeaders().entrySet()) {
+        lRequestBuilder.setHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      }
       if (pContext.getAccessToken() != null) {
         lRequestBuilder.setHeader("token", pContext.getAccessToken());
       }

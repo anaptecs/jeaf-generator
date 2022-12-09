@@ -168,7 +168,7 @@ public class «name»Resource {
 	  
 	  «FOREACH this.ownedParameter.select(e|e.isInputParameter() && e.isParameterSuppressed() == false && e.hasParamCustomHeaders()) AS beanParam»
 	    // Add all http headers as custom headers.
-	    for (java.util.Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
+	    for (java.util.Map.Entry<String, java.util.List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
 	      «beanParam.name».addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
 	    }
 	  «ENDFOREACH»
