@@ -43,6 +43,7 @@ import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
 @Service
@@ -167,5 +168,15 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public String testPrimitiveArrays( int[] pIntegerArray ) {
     return null;
+  }
+
+  @Override
+  public String testDataTypeAsQueryParam( BookingCode pBookingCode ) {
+    return pBookingCode.getCode();
+  }
+
+  @Override
+  public String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam ) {
+    return "Bean: " + pBeanParam.getBookingCode().getCode();
   }
 }

@@ -66,6 +66,7 @@ import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
 /**
@@ -445,6 +446,32 @@ public class RESTProductServiceResource {
     // Delegate request to service.
     RESTProductService lService = this.getRESTProductService();
     String lResult = lService.testPrimitiveArrays(pIntegerArray);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testDataTypeAsQueryParam()}
+   */
+  @Path("testDataTypeAsQueryParam")
+  @GET
+  public Response testDataTypeAsQueryParam( @QueryParam("bookingCode") String pBookingCodeAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    BookingCode pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testDataTypeAsQueryParam(pBookingCode);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testDataTypeAsBeanQueryParam()}
+   */
+  @Path("testDataTypeAsBeanQueryParam")
+  @GET
+  public Response testDataTypeAsBeanQueryParam( @BeanParam QueryBeanParam pBeanParam ) {
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testDataTypeAsBeanQueryParam(pBeanParam);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
