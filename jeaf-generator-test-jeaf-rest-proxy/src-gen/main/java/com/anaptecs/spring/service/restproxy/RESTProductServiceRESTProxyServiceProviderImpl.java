@@ -9,13 +9,11 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
@@ -48,6 +46,7 @@ import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
 /**
@@ -347,7 +346,8 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pLocaleQueryParam != null) {
-      lRequestBuilder.addQueryParam("locale", pLocaleQueryParam.toString());
+      lRequestBuilder.addQueryParam("locale",
+          XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class).convert(pLocaleQueryParam));
     }
     // Set HTTP header(s)
     if (pBigDecimalHeader != null) {
@@ -384,10 +384,12 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pTimeUnit != null) {
-      lRequestBuilder.addQueryParam("timeUnit", pTimeUnit.toString());
+      lRequestBuilder.addQueryParam("timeUnit",
+          XFun.getDatatypeConverterRegistry().getConverter(TimeUnit.class, String.class).convert(pTimeUnit));
     }
     if (pExtensibleEnum != null) {
-      lRequestBuilder.addQueryParam("extensibleEnum", pExtensibleEnum.toString());
+      lRequestBuilder.addQueryParam("extensibleEnum", XFun.getDatatypeConverterRegistry()
+          .getConverter(ExtensibleEnum.class, String.class).convert(pExtensibleEnum));
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -468,37 +470,44 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pStartTimestamp != null) {
-      lRequestBuilder.addQueryParam("startTimestamp", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pStartTimestamp));
+      lRequestBuilder.addQueryParam("startTimestamp", XFun.getDatatypeConverterRegistry()
+          .getConverter(OffsetDateTime.class, String.class).convert(pStartTimestamp));
     }
     if (pStartTime != null) {
-      lRequestBuilder.addQueryParam("startTime", DateTimeFormatter.ISO_OFFSET_TIME.format(pStartTime));
+      lRequestBuilder.addQueryParam("startTime",
+          XFun.getDatatypeConverterRegistry().getConverter(OffsetTime.class, String.class).convert(pStartTime));
     }
     if (pLocalStartTimestamp != null) {
-      lRequestBuilder.addQueryParam("localStartTimestamp",
-          DateTimeFormatter.ISO_DATE_TIME.format(pLocalStartTimestamp));
+      lRequestBuilder.addQueryParam("localStartTimestamp", XFun.getDatatypeConverterRegistry()
+          .getConverter(LocalDateTime.class, String.class).convert(pLocalStartTimestamp));
     }
     if (pLocalStartTime != null) {
-      lRequestBuilder.addQueryParam("localStartTime", DateTimeFormatter.ISO_TIME.format(pLocalStartTime));
+      lRequestBuilder.addQueryParam("localStartTime",
+          XFun.getDatatypeConverterRegistry().getConverter(LocalTime.class, String.class).convert(pLocalStartTime));
     }
     if (pLocalStartDate != null) {
-      lRequestBuilder.addQueryParam("localStartDate", DateTimeFormatter.ISO_DATE.format(pLocalStartDate));
+      lRequestBuilder.addQueryParam("localStartDate",
+          XFun.getDatatypeConverterRegistry().getConverter(LocalDate.class, String.class).convert(pLocalStartDate));
     }
     if (pCalendar != null) {
       lRequestBuilder.addQueryParam("calendar",
-          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pCalendar.getTime()));
+          XFun.getDatatypeConverterRegistry().getConverter(Calendar.class, String.class).convert(pCalendar));
     }
     if (pUtilDate != null) {
-      lRequestBuilder.addQueryParam("utilDate", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pUtilDate));
+      lRequestBuilder.addQueryParam("utilDate",
+          XFun.getDatatypeConverterRegistry().getConverter(java.util.Date.class, String.class).convert(pUtilDate));
     }
     if (pSQLTimestamp != null) {
       lRequestBuilder.addQueryParam("sqlTimestamp",
-          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pSQLTimestamp));
+          XFun.getDatatypeConverterRegistry().getConverter(Timestamp.class, String.class).convert(pSQLTimestamp));
     }
     if (pSQLTime != null) {
-      lRequestBuilder.addQueryParam("sqlTime", new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pSQLTime));
+      lRequestBuilder.addQueryParam("sqlTime",
+          XFun.getDatatypeConverterRegistry().getConverter(Time.class, String.class).convert(pSQLTime));
     }
     if (pSQLDate != null) {
-      lRequestBuilder.addQueryParam("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pSQLDate));
+      lRequestBuilder.addQueryParam("sqlDate",
+          XFun.getDatatypeConverterRegistry().getConverter(Date.class, String.class).convert(pSQLDate));
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -525,41 +534,44 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     // Add query parameter(s) to request
     if (pQueryParams != null) {
       if (pQueryParams.getOffsetDateTime() != null) {
-        lRequestBuilder.addQueryParam("offsetDateTime",
-            DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pQueryParams.getOffsetDateTime()));
+        lRequestBuilder.addQueryParam("offsetDateTime", XFun.getDatatypeConverterRegistry()
+            .getConverter(OffsetDateTime.class, String.class).convert(pQueryParams.getOffsetDateTime()));
       }
       if (pQueryParams.getOffsetTime() != null) {
-        lRequestBuilder.addQueryParam("offsetTime",
-            DateTimeFormatter.ISO_OFFSET_TIME.format(pQueryParams.getOffsetTime()));
+        lRequestBuilder.addQueryParam("offsetTime", XFun.getDatatypeConverterRegistry()
+            .getConverter(OffsetTime.class, String.class).convert(pQueryParams.getOffsetTime()));
       }
       if (pQueryParams.getLocalDateTime() != null) {
-        lRequestBuilder.addQueryParam("localDateTime",
-            DateTimeFormatter.ISO_DATE_TIME.format(pQueryParams.getLocalDateTime()));
+        lRequestBuilder.addQueryParam("localDateTime", XFun.getDatatypeConverterRegistry()
+            .getConverter(LocalDateTime.class, String.class).convert(pQueryParams.getLocalDateTime()));
       }
       if (pQueryParams.getLocalTime() != null) {
-        lRequestBuilder.addQueryParam("localTime", DateTimeFormatter.ISO_TIME.format(pQueryParams.getLocalTime()));
+        lRequestBuilder.addQueryParam("localTime", XFun.getDatatypeConverterRegistry()
+            .getConverter(LocalTime.class, String.class).convert(pQueryParams.getLocalTime()));
       }
       if (pQueryParams.getLocalDate() != null) {
-        lRequestBuilder.addQueryParam("localDate", DateTimeFormatter.ISO_DATE.format(pQueryParams.getLocalDate()));
+        lRequestBuilder.addQueryParam("localDate", XFun.getDatatypeConverterRegistry()
+            .getConverter(LocalDate.class, String.class).convert(pQueryParams.getLocalDate()));
       }
       if (pQueryParams.getUtilDate() != null) {
-        lRequestBuilder.addQueryParam("utilDate",
-            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getUtilDate()));
+        lRequestBuilder.addQueryParam("utilDate", XFun.getDatatypeConverterRegistry()
+            .getConverter(java.util.Date.class, String.class).convert(pQueryParams.getUtilDate()));
       }
       if (pQueryParams.getCalendar() != null) {
-        lRequestBuilder.addQueryParam("calendar",
-            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getCalendar().getTime()));
+        lRequestBuilder.addQueryParam("calendar", XFun.getDatatypeConverterRegistry()
+            .getConverter(Calendar.class, String.class).convert(pQueryParams.getCalendar()));
       }
       if (pQueryParams.getSqlTimestamp() != null) {
-        lRequestBuilder.addQueryParam("sqlTimestamp",
-            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTimestamp()));
+        lRequestBuilder.addQueryParam("sqlTimestamp", XFun.getDatatypeConverterRegistry()
+            .getConverter(Timestamp.class, String.class).convert(pQueryParams.getSqlTimestamp()));
       }
       if (pQueryParams.getSqlTime() != null) {
-        lRequestBuilder.addQueryParam("sqlTime",
-            new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTime()));
+        lRequestBuilder.addQueryParam("sqlTime", XFun.getDatatypeConverterRegistry()
+            .getConverter(Time.class, String.class).convert(pQueryParams.getSqlTime()));
       }
       if (pQueryParams.getSqlDate() != null) {
-        lRequestBuilder.addQueryParam("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pQueryParams.getSqlDate()));
+        lRequestBuilder.addQueryParam("sqlDate", XFun.getDatatypeConverterRegistry()
+            .getConverter(Date.class, String.class).convert(pQueryParams.getSqlDate()));
       }
     }
     // Execute request.
@@ -982,6 +994,58 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set parameter pIntegerArray as request body.
     lRequestBuilder.setBody(pIntegerArray);
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pBookingCode
+   * @return {@link String}
+   */
+  @Override
+  public String testDataTypeAsQueryParam( BookingCode pBookingCode ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testDataTypeAsQueryParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pBookingCode != null) {
+      lRequestBuilder.addQueryParam("bookingCode", pBookingCode.getCode());
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pBeanParam
+   * @return {@link String}
+   */
+  @Override
+  public String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testDataTypeAsBeanQueryParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pBeanParam != null) {
+      if (pBeanParam.getBookingCode() != null) {
+        lRequestBuilder.addQueryParam("bookingCode", pBeanParam.getBookingCode().getCode());
+      }
+    }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);

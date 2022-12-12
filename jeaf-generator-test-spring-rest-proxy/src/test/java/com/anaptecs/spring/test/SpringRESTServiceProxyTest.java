@@ -31,6 +31,7 @@ import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.TechnicalHeaderContext;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.ProductService;
+import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
 @SpringBootTest(classes = SpringTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -79,6 +80,14 @@ public class SpringRESTServiceProxyTest {
 
     lClient.when(mockRequest("/products/technicalHeaderBeanParam", "GET").withHeader("Custom-Header", "XYZ"))
         .respond(mockResponse(""));
+
+    lClient.when(mockRequest("/rest-products/testDataTypeAsQueryParam", "GET").withQueryStringParameter("bookingCode",
+        "4711-0815")).respond(mockResponse("\"OK\""));
+
+    lClient.when(mockRequest("/rest-products/testDataTypeAsBeanQueryParam", "GET").withQueryStringParameter(
+        "bookingCode",
+        "4711-0815")).respond(mockResponse("\"4711-0815\""));
+
   }
 
   @AfterAll
@@ -145,5 +154,15 @@ public class SpringRESTServiceProxyTest {
     catch (ThrowableProblem e) {
       assertEquals(404, e.getStatus().getStatusCode());
     }
+  }
+
+  @Test
+  void testDataTypesAsQueryParams( ) {
+    String lResult = productService.testDataTypeAsQueryParam(BOOKING_CODE);
+    assertEquals("OK", lResult);
+
+    lResult = productService.testDataTypeAsBeanQueryParam(QueryBeanParam.builder().setBookingCode(BOOKING_CODE)
+        .build());
+    assertEquals("4711-0815", lResult);
   }
 }

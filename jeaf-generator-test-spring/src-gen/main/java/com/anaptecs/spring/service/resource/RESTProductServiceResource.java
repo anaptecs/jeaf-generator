@@ -50,6 +50,7 @@ import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
 /**
@@ -456,5 +457,32 @@ public class RESTProductServiceResource {
   public String testPrimitiveArrays( @RequestBody(required = true) int[] pIntegerArray ) {
     // Delegate request to service.
     return rESTProductService.testPrimitiveArrays(pIntegerArray);
+  }
+
+  /**
+   * {@link RESTProductService#testDataTypeAsQueryParam()}
+   */
+  @RequestMapping(path = "testDataTypeAsQueryParam", method = { RequestMethod.GET })
+  public String testDataTypeAsQueryParam(
+      @RequestParam(name = "bookingCode", required = true) String pBookingCodeAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    BookingCode pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
+    // Delegate request to service.
+    return rESTProductService.testDataTypeAsQueryParam(pBookingCode);
+  }
+
+  /**
+   * {@link RESTProductService#testDataTypeAsBeanQueryParam()}
+   */
+  @RequestMapping(path = "testDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
+  public String testDataTypeAsBeanQueryParam(
+      @RequestParam(name = "bookingCode", required = true) String pBookingCodeAsBasicType ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    QueryBeanParam.Builder lBeanParamBuilder = QueryBeanParam.builder();
+    lBeanParamBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
+    QueryBeanParam pBeanParam = lBeanParamBuilder.build();
+    // Delegate request to service.
+    return rESTProductService.testDataTypeAsBeanQueryParam(pBeanParam);
   }
 }

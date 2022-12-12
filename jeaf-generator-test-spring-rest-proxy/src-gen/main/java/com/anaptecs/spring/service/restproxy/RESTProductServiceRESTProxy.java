@@ -44,6 +44,7 @@ import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
 /**
@@ -949,6 +950,58 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set parameter pIntegerArray as request body.
     lRequestBuilder.setBody(pIntegerArray);
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pBookingCode
+   * @return {@link String}
+   */
+  @Override
+  public String testDataTypeAsQueryParam( BookingCode pBookingCode ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testDataTypeAsQueryParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pBookingCode != null) {
+      lRequestBuilder.addQueryParam("bookingCode", pBookingCode.getCode());
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pBeanParam
+   * @return {@link String}
+   */
+  @Override
+  public String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testDataTypeAsBeanQueryParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pBeanParam != null) {
+      if (pBeanParam.getBookingCode() != null) {
+        lRequestBuilder.addQueryParam("bookingCode", pBeanParam.getBookingCode().getCode());
+      }
+    }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);

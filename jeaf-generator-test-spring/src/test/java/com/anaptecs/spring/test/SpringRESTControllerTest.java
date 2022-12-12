@@ -200,6 +200,25 @@ public class SpringRESTControllerTest {
     assertEquals("MyCustomHeaderValue", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity()
         .getContent()));
     assertEquals(200, lResponse.getCode());
+  }
 
+  @Test
+  void testDataTypesAsQueryParams( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
+        + "/rest-products/testDataTypeAsQueryParam");
+    lRequest.addParameter("bookingCode", "Just-a-Booking-Code");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("Just-a-Booking-Code", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity()
+        .getContent()));
+    assertEquals(200, lResponse.getCode());
+
+    lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
+        + "/rest-products/testDataTypeAsBeanQueryParam");
+    lRequest.addParameter("bookingCode", "Just-a-Booking-Code");
+    lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("Bean: Just-a-Booking-Code", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity()
+        .getContent()));
+    assertEquals(200, lResponse.getCode());
   }
 }

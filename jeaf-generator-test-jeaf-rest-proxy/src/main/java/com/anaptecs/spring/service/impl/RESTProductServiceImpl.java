@@ -39,6 +39,7 @@ import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.restproxy.RESTProductServiceRESTProxyServiceProvider;
 
 /**
@@ -247,4 +248,13 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
     return null;
   }
 
+  @Override
+  public String testDataTypeAsQueryParam( BookingCode pBookingCode ) {
+    return pBookingCode.getCode();
+  }
+
+  @Override
+  public String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam ) {
+    return pBeanParam.getBookingCode().getCode();
+  }
 }

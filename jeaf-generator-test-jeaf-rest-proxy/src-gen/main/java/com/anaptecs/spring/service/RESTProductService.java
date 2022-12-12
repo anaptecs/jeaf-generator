@@ -221,4 +221,18 @@ public interface RESTProductService extends Service {
    * @return {@link String}
    */
   String testPrimitiveArrays( int[] pIntegerArray );
+
+  /**
+   * 
+   * @param pBookingCode
+   * @return {@link String}
+   */
+  String testDataTypeAsQueryParam( BookingCode pBookingCode );
+
+  /**
+   * 
+   * @param pBeanParam
+   * @return {@link String}
+   */
+  String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam );
 }

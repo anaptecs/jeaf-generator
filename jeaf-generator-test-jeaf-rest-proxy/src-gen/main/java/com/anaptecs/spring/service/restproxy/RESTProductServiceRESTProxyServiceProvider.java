@@ -38,6 +38,7 @@ import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.QueryBeanParam;
 
 /**
  * Service Provider Interface is generated so that a proxy for a REST Resource can be provided as JEAF Service Provider.
@@ -223,4 +224,18 @@ public interface RESTProductServiceRESTProxyServiceProvider extends ServiceProvi
    * @return {@link String}
    */
   String testPrimitiveArrays( int[] pIntegerArray );
+
+  /**
+   * 
+   * @param pBookingCode
+   * @return {@link String}
+   */
+  String testDataTypeAsQueryParam( BookingCode pBookingCode );
+
+  /**
+   * 
+   * @param pBeanParam
+   * @return {@link String}
+   */
+  String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam );
 }
