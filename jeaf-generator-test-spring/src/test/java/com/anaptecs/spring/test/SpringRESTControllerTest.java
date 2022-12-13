@@ -221,4 +221,33 @@ public class SpringRESTControllerTest {
         .getContent()));
     assertEquals(200, lResponse.getCode());
   }
+
+  @Test
+  void testMultivaluedQueryParams( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
+        + "/rest-products/testPrimitiveArrayAsQueryParam");
+    lRequest.addParameter("intValues", "1,2,4711,9");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("[1, 2, 4711, 9]", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity()
+        .getContent()));
+    assertEquals(200, lResponse.getCode());
+
+    lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
+        + "/rest-products/testSimpleTypesAsQueryParams");
+    lRequest.addParameter("strings", "Hello,World,!,XYZ ");
+    lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("[XYZ, !, World, Hello]", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity()
+        .getContent()));
+    assertEquals(200, lResponse.getCode());
+
+    lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
+        + "/rest-products/testPrimitiveWrapperArrayAsQueryParam");
+    lRequest.addParameter("integers", "1, 3, 2, 47,-21");
+    lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("[-21, 1, 2, 3, 47]", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity()
+        .getContent()));
+    assertEquals(200, lResponse.getCode());
+  }
+
 }

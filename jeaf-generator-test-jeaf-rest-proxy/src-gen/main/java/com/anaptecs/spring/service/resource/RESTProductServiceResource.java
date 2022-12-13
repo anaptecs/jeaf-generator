@@ -21,6 +21,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.BeanParam;
@@ -472,6 +473,42 @@ public class RESTProductServiceResource {
     // Delegate request to service.
     RESTProductService lService = this.getRESTProductService();
     String lResult = lService.testDataTypeAsBeanQueryParam(pBeanParam);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testPrimitiveArrayAsQueryParam()}
+   */
+  @Path("testPrimitiveArrayAsQueryParam")
+  @GET
+  public Response testPrimitiveArrayAsQueryParam( @QueryParam("intValues") int[] pIntValues ) {
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testPrimitiveArrayAsQueryParam(pIntValues);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testSimpleTypesAsQueryParams()}
+   */
+  @Path("testSimpleTypesAsQueryParams")
+  @GET
+  public Response testSimpleTypesAsQueryParams( @QueryParam("strings") List<String> pStrings ) {
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testSimpleTypesAsQueryParams(pStrings);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testPrimitiveWrapperArrayAsQueryParam()}
+   */
+  @Path("testPrimitiveWrapperArrayAsQueryParam")
+  @GET
+  public Response testPrimitiveWrapperArrayAsQueryParam( @QueryParam("integers") Set<Integer> pIntegers ) {
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testPrimitiveWrapperArrayAsQueryParam(pIntegers);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 

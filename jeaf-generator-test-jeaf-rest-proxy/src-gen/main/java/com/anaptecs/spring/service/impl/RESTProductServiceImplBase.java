@@ -82,8 +82,17 @@ abstract class RESTProductServiceImplBase implements RESTProductService, Service
 
   public static final String TESTPARAMS_AUTH_TYPE = "testParams.com.anaptecs.spring.service.RESTProductService";
 
+  public static final String TESTPRIMITIVEARRAYASQUERYPARAM_AUTH_TYPE =
+      "testPrimitiveArrayAsQueryParam.com.anaptecs.spring.service.RESTProductService";
+
   public static final String TESTPRIMITIVEARRAYS_AUTH_TYPE =
       "testPrimitiveArrays.com.anaptecs.spring.service.RESTProductService";
+
+  public static final String TESTPRIMITIVEWRAPPERARRAYASQUERYPARAM_AUTH_TYPE =
+      "testPrimitiveWrapperArrayAsQueryParam.com.anaptecs.spring.service.RESTProductService";
+
+  public static final String TESTSIMPLETYPESASQUERYPARAMS_AUTH_TYPE =
+      "testSimpleTypesAsQueryParams.com.anaptecs.spring.service.RESTProductService";
 
   /**
    * Reference to the component that provides this service implementation. The reference is never null.

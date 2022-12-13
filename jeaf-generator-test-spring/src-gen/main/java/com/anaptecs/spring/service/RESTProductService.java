@@ -17,6 +17,7 @@ import java.time.OffsetTime;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -234,4 +235,25 @@ public interface RESTProductService {
    * @return {@link String}
    */
   String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam );
+
+  /**
+   * 
+   * @param pIntValues
+   * @return {@link String}
+   */
+  String testPrimitiveArrayAsQueryParam( int[] pIntValues );
+
+  /**
+   * 
+   * @param pStrings
+   * @return {@link String}
+   */
+  String testSimpleTypesAsQueryParams( List<String> pStrings );
+
+  /**
+   * 
+   * @param pIntegers
+   * @return {@link String}
+   */
+  String testPrimitiveWrapperArrayAsQueryParam( Set<Integer> pIntegers );
 }

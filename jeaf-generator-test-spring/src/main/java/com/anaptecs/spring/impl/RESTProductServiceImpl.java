@@ -15,10 +15,14 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -178,5 +182,23 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam ) {
     return "Bean: " + pBeanParam.getBookingCode().getCode();
+  }
+
+  @Override
+  public String testPrimitiveArrayAsQueryParam( int[] pIntValues ) {
+    return Arrays.toString(pIntValues);
+  }
+
+  @Override
+  public String testSimpleTypesAsQueryParams( List<String> pStrings ) {
+    Collections.reverse(pStrings);
+    return pStrings.toString();
+  }
+
+  @Override
+  public String testPrimitiveWrapperArrayAsQueryParam( Set<Integer> pIntegers ) {
+    List<Integer> lSorted = new ArrayList<>(pIntegers);
+    Collections.sort(lSorted);
+    return lSorted.toString();
   }
 }

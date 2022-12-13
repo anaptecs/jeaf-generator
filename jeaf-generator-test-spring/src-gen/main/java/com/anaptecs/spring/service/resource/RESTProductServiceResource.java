@@ -21,6 +21,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -484,5 +485,34 @@ public class RESTProductServiceResource {
     QueryBeanParam pBeanParam = lBeanParamBuilder.build();
     // Delegate request to service.
     return rESTProductService.testDataTypeAsBeanQueryParam(pBeanParam);
+  }
+
+  /**
+   * {@link RESTProductService#testPrimitiveArrayAsQueryParam()}
+   */
+  @RequestMapping(path = "testPrimitiveArrayAsQueryParam", method = { RequestMethod.GET })
+  public String testPrimitiveArrayAsQueryParam( @RequestParam(name = "intValues", required = true) int[] pIntValues ) {
+    // Delegate request to service.
+    return rESTProductService.testPrimitiveArrayAsQueryParam(pIntValues);
+  }
+
+  /**
+   * {@link RESTProductService#testSimpleTypesAsQueryParams()}
+   */
+  @RequestMapping(path = "testSimpleTypesAsQueryParams", method = { RequestMethod.GET })
+  public String testSimpleTypesAsQueryParams(
+      @RequestParam(name = "strings", required = false) List<String> pStrings ) {
+    // Delegate request to service.
+    return rESTProductService.testSimpleTypesAsQueryParams(pStrings);
+  }
+
+  /**
+   * {@link RESTProductService#testPrimitiveWrapperArrayAsQueryParam()}
+   */
+  @RequestMapping(path = "testPrimitiveWrapperArrayAsQueryParam", method = { RequestMethod.GET })
+  public String testPrimitiveWrapperArrayAsQueryParam(
+      @RequestParam(name = "integers", required = true) Set<Integer> pIntegers ) {
+    // Delegate request to service.
+    return rESTProductService.testPrimitiveWrapperArrayAsQueryParam(pIntegers);
   }
 }

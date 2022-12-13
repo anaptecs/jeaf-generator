@@ -14,10 +14,12 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import com.anaptecs.jeaf.core.annotations.JEAFServiceProvider;
 import com.anaptecs.jeaf.core.api.Component;
@@ -256,5 +258,20 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
   @Override
   public String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam ) {
     return pBeanParam.getBookingCode().getCode();
+  }
+
+  @Override
+  public String testPrimitiveArrayAsQueryParam( int[] pIntValues ) {
+    return Arrays.toString(pIntValues);
+  }
+
+  @Override
+  public String testSimpleTypesAsQueryParams( List<String> pStrings ) {
+    return pStrings.toString();
+  }
+
+  @Override
+  public String testPrimitiveWrapperArrayAsQueryParam( Set<Integer> pIntegers ) {
+    return pIntegers.toString();
   }
 }

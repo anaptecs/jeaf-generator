@@ -11,6 +11,9 @@ import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.AfterAll;
@@ -88,6 +91,15 @@ public class SpringRESTServiceProxyTest {
         "bookingCode",
         "4711-0815")).respond(mockResponse("\"4711-0815\""));
 
+    lClient.when(mockRequest("/rest-products/testPrimitiveArrayAsQueryParam", "GET").withQueryStringParameter(
+        "intValues", "1", "2", "47", "13")).respond(mockResponse("\"1+2+47+13\""));
+
+    lClient.when(mockRequest("/rest-products/testSimpleTypesAsQueryParams", "GET").withQueryStringParameter(
+        "strings", "Hello", "World")).respond(mockResponse("\"Hello_World_!\""));
+
+    lClient.when(mockRequest("/rest-products/testPrimitiveWrapperArrayAsQueryParam", "GET").withQueryStringParameter(
+        "integers", "1", "2", "13", "47")).respond(mockResponse("\"1-2-47-13\""));
+
   }
 
   @AfterAll
@@ -164,5 +176,22 @@ public class SpringRESTServiceProxyTest {
     lResult = productService.testDataTypeAsBeanQueryParam(QueryBeanParam.builder().setBookingCode(BOOKING_CODE)
         .build());
     assertEquals("4711-0815", lResult);
+  }
+
+  @Test
+  void testMultivaluedQueryParams( ) {
+    String lResult = productService.testPrimitiveArrayAsQueryParam(new int[] { 1, 2, 47, 13 });
+    assertEquals("1+2+47+13", lResult);
+
+    lResult = productService.testSimpleTypesAsQueryParams(Arrays.asList("Hello", "World"));
+    assertEquals("Hello_World_!", lResult);
+
+    SortedSet<Integer> lSortedSet = new TreeSet<>();
+    lSortedSet.add(1);
+    lSortedSet.add(2);
+    lSortedSet.add(47);
+    lSortedSet.add(13);
+    lResult = productService.testPrimitiveWrapperArrayAsQueryParam(lSortedSet);
+    assertEquals("1-2-47-13", lResult);
   }
 }

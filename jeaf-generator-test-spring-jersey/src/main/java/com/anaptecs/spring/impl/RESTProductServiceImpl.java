@@ -20,6 +20,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -208,5 +209,20 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam ) {
     return pBeanParam.getBookingCode().getCode();
+  }
+
+  @Override
+  public String testPrimitiveArrayAsQueryParam( int[] pIntValues ) {
+    return pIntValues.toString();
+  }
+
+  @Override
+  public String testSimpleTypesAsQueryParams( List<String> pStrings ) {
+    return pStrings.toString();
+  }
+
+  @Override
+  public String testPrimitiveWrapperArrayAsQueryParam( Set<Integer> pIntegers ) {
+    return pIntegers.toString();
   }
 }

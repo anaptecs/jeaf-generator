@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import com.anaptecs.jeaf.core.annotations.JEAFServiceProvider;
 import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
@@ -1045,6 +1046,81 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       if (pBeanParam.getBookingCode() != null) {
         lRequestBuilder.addQueryParam("bookingCode", pBeanParam.getBookingCode().getCode());
       }
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pIntValues
+   * @return {@link String}
+   */
+  @Override
+  public String testPrimitiveArrayAsQueryParam( int[] pIntValues ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testPrimitiveArrayAsQueryParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pIntValues != null) {
+      lRequestBuilder.addQueryParam("intValues", pIntValues);
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pStrings
+   * @return {@link String}
+   */
+  @Override
+  public String testSimpleTypesAsQueryParams( List<String> pStrings ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testSimpleTypesAsQueryParams");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pStrings != null) {
+      lRequestBuilder.addQueryParam("strings", pStrings);
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pIntegers
+   * @return {@link String}
+   */
+  @Override
+  public String testPrimitiveWrapperArrayAsQueryParam( Set<Integer> pIntegers ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testPrimitiveWrapperArrayAsQueryParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pIntegers != null) {
+      lRequestBuilder.addQueryParam("integers", pIntegers);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();

@@ -19,6 +19,7 @@ import java.time.OffsetTime;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -437,6 +438,51 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   public String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam ) {
     try {
       Command lCommand = new TestDataTypeAsBeanQueryParam_QueryBeanParam_RESTProductService_Command(pBeanParam);
+      return (String) this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
+
+  /**
+   * Generated proxy implementation for method "testPrimitiveArrayAsQueryParam".
+   * 
+   * 
+   */
+  public String testPrimitiveArrayAsQueryParam( int[] pIntValues ) {
+    try {
+      Command lCommand = new TestPrimitiveArrayAsQueryParam_int_RESTProductService_Command(pIntValues);
+      return (String) this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
+
+  /**
+   * Generated proxy implementation for method "testSimpleTypesAsQueryParams".
+   * 
+   * 
+   */
+  public String testSimpleTypesAsQueryParams( List<String> pStrings ) {
+    try {
+      Command lCommand = new TestSimpleTypesAsQueryParams_String_RESTProductService_Command(pStrings);
+      return (String) this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
+
+  /**
+   * Generated proxy implementation for method "testPrimitiveWrapperArrayAsQueryParam".
+   * 
+   * 
+   */
+  public String testPrimitiveWrapperArrayAsQueryParam( Set<Integer> pIntegers ) {
+    try {
+      Command lCommand = new TestPrimitiveWrapperArrayAsQueryParam_Integer_RESTProductService_Command(pIntegers);
       return (String) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -3094,6 +3140,309 @@ final class TestDataTypeAsBeanQueryParam_QueryBeanParam_RESTProductService_Comma
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
     long lStartTime = System.nanoTime();
     Serializable lResult = (Serializable) lService.testDataTypeAsBeanQueryParam(beanParam);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    return lResult;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   * 
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   * 
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "testPrimitiveArrayAsQueryParam".
+ */
+final class TestPrimitiveArrayAsQueryParam_int_RESTProductService_Command extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD = RESTProductService.class.getMethod("testPrimitiveArrayAsQueryParam", int[].class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
+          RESTProductService.class.getName(), "testPrimitiveArrayAsQueryParam(int[].class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pIntValues" to the service implementation via the service channel.
+   */
+  private final int[] intValues;
+
+  /**
+   * Initialize object. All parameters from method "testPrimitiveArrayAsQueryParam" have to be passed as parameters to
+   * this command object.
+   * 
+   * @param pIntValues int[]
+   */
+  TestPrimitiveArrayAsQueryParam_int_RESTProductService_Command( int[] pIntValues ) {
+    super(RESTProductService.class);
+    intValues = pIntValues;
+    parameters = new Object[] { intValues };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   * 
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    RESTProductService lService = (RESTProductService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    Serializable lResult = (Serializable) lService.testPrimitiveArrayAsQueryParam(intValues);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    return lResult;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   * 
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   * 
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "testSimpleTypesAsQueryParams".
+ */
+final class TestSimpleTypesAsQueryParams_String_RESTProductService_Command extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD = RESTProductService.class.getMethod("testSimpleTypesAsQueryParams", List.class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
+          RESTProductService.class.getName(), "testSimpleTypesAsQueryParams(List.class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pStrings" to the service implementation via the service channel.
+   */
+  private final List<String> strings;
+
+  /**
+   * Initialize object. All parameters from method "testSimpleTypesAsQueryParams" have to be passed as parameters to
+   * this command object.
+   * 
+   * @param pStrings List<String>
+   */
+  TestSimpleTypesAsQueryParams_String_RESTProductService_Command( List<String> pStrings ) {
+    super(RESTProductService.class);
+    strings = pStrings;
+    parameters = new Object[] { strings };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   * 
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    RESTProductService lService = (RESTProductService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    Serializable lResult = (Serializable) lService.testSimpleTypesAsQueryParams(strings);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    return lResult;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   * 
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   * 
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "testPrimitiveWrapperArrayAsQueryParam".
+ */
+final class TestPrimitiveWrapperArrayAsQueryParam_Integer_RESTProductService_Command extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD = RESTProductService.class.getMethod("testPrimitiveWrapperArrayAsQueryParam", Set.class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
+          RESTProductService.class.getName(), "testPrimitiveWrapperArrayAsQueryParam(Set.class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pIntegers" to the service implementation via the service channel.
+   */
+  private final Set<Integer> integers;
+
+  /**
+   * Initialize object. All parameters from method "testPrimitiveWrapperArrayAsQueryParam" have to be passed as
+   * parameters to this command object.
+   * 
+   * @param pIntegers Set<Integer>
+   */
+  TestPrimitiveWrapperArrayAsQueryParam_Integer_RESTProductService_Command( Set<Integer> pIntegers ) {
+    super(RESTProductService.class);
+    integers = pIntegers;
+    parameters = new Object[] { integers };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   * 
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    RESTProductService lService = (RESTProductService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    Serializable lResult = (Serializable) lService.testPrimitiveWrapperArrayAsQueryParam(integers);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
     // Trace result of service call.
