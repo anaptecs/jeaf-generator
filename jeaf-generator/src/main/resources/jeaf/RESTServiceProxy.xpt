@@ -209,12 +209,23 @@ public class «name»RESTProxy implements «this.fqn()» {
 	   «IF this.getQueryParams().size > 0 || this.getBeanParams().type.getAllAttributesFromHierarchy().typeSelect(JMM::QueryParam).size > 0»
 	   // Add query parameter(s) to request
 	   «ENDIF»
-	   
     	«FOREACH this.getQueryParams() AS queryParam »
 			«IF queryParam.type.isPrimitiveType() == false || queryParam.isMultivalued()»
 			if («queryParam.name» != null) {
 			«ENDIF»
+			«IF queryParam.isMultivalued() == true && queryParam.type.isOpenAPIDataType()»
+		      «queryParam.getCollectionType()»<String> «queryParam.name»AsBasicType = new «queryParam.getCollectionImplType()»<String>(«queryParam.name».size());
+		      for («queryParam.type.fqn()» lNext : pCodes) {
+		        «IF queryParam.type.getAllAttributesFromHierarchy().first().type.isPrimitiveType()»
+		        «queryParam.name»AsBasicType.add(String.valueOf(lNext.getCode()));
+		        «ELSE»
+		        «queryParam.name»AsBasicType.add(lNext.getCode());
+		        «ENDIF»
+		      }
+		      lRequestBuilder.addQueryParam("codes", pCodesAsBasicType);
+			«ELSE»
 			lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «EXPAND QueryParamValueAccessor FOR queryParam»);
+			«ENDIF»
 			«IF queryParam.type.isPrimitiveType() == false  || queryParam.isMultivalued()»
 			}
 			«ENDIF»

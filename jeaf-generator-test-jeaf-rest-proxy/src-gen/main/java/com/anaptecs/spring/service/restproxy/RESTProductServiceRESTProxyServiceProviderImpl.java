@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
@@ -41,6 +42,7 @@ import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
+import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
@@ -1156,6 +1158,35 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       if (pBean.getIntegers() != null) {
         lRequestBuilder.addQueryParam("integers", Arrays.asList(pBean.getIntegers()));
       }
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pCodes
+   * @return {@link String}
+   */
+  @Override
+  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testMulitvaluedDataTypeAsQueryParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pCodes != null) {
+      List<String> pCodesAsBasicType = new ArrayList<String>(pCodes.size());
+      for (IntegerCodeType lNext : pCodes) {
+        pCodesAsBasicType.add(String.valueOf(lNext.getCode()));
+      }
+      lRequestBuilder.addQueryParam("codes", pCodesAsBasicType);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();

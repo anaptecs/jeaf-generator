@@ -37,6 +37,7 @@ import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
+import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.InventoryType;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Product.Builder;
@@ -229,6 +230,11 @@ public class RESTProductServiceImpl implements RESTProductService {
 
   @Override
   public String testMultivaluedQueryParamsBean( MultivaluedQueryParamsBean pBean ) {
+    return null;
+  }
+
+  @Override
+  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes ) {
     return null;
   }
 }

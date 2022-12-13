@@ -30,6 +30,7 @@ import org.zalando.problem.ThrowableProblem;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.TechnicalHeaderContext;
 import com.anaptecs.spring.service.AdvancedHeader;
@@ -100,6 +101,8 @@ public class SpringRESTServiceProxyTest {
     lClient.when(mockRequest("/rest-products/testPrimitiveWrapperArrayAsQueryParam", "GET").withQueryStringParameter(
         "integers", "1", "2", "13", "47")).respond(mockResponse("\"1-2-47-13\""));
 
+    lClient.when(mockRequest("/rest-products/testMulitvaluedDataTypeAsQueryParam", "GET").withQueryStringParameter(
+        "codes", "47", "11")).respond(mockResponse("\"47-11\""));
   }
 
   @AfterAll
@@ -193,5 +196,12 @@ public class SpringRESTServiceProxyTest {
     lSortedSet.add(13);
     lResult = productService.testPrimitiveWrapperArrayAsQueryParam(lSortedSet);
     assertEquals("1-2-47-13", lResult);
+  }
+
+  @Test
+  void testMulitvaluedDataTypeAsQueryParam( ) {
+    String lResult = productService.testMulitvaluedDataTypeAsQueryParam(Arrays.asList(IntegerCodeType.builder().setCode(
+        47).build(), IntegerCodeType.builder().setCode(11).build()));
+    assertEquals("47-11", lResult);
   }
 }

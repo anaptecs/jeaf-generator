@@ -32,6 +32,7 @@ import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
+import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
@@ -268,4 +269,11 @@ public interface RESTProductServiceRESTProxyServiceProvider extends ServiceProvi
    * @return {@link String}
    */
   String testMultivaluedQueryParamsBean( MultivaluedQueryParamsBean pBean );
+
+  /**
+   * 
+   * @param pCodes
+   * @return {@link String}
+   */
+  String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes );
 }

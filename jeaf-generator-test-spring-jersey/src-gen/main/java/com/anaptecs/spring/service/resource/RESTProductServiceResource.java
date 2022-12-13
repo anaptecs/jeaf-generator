@@ -59,6 +59,7 @@ import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
+import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.InventoryType;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
@@ -506,6 +507,28 @@ public class RESTProductServiceResource {
   public Response testMultivaluedQueryParamsBean( @BeanParam MultivaluedQueryParamsBean pBean ) {
     // Delegate request to service.
     String lResult = rESTProductService.testMultivaluedQueryParamsBean(pBean);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testMulitvaluedDataTypeAsQueryParam()}
+   */
+  @Path("testMulitvaluedDataTypeAsQueryParam")
+  @GET
+  public Response testMulitvaluedDataTypeAsQueryParam( @QueryParam("codes") int[] pCodesAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    List<IntegerCodeType> pCodes;
+    if (pCodesAsBasicType != null) {
+      pCodes = new ArrayList<IntegerCodeType>(pCodesAsBasicType.length);
+      for (int lNext : pCodesAsBasicType) {
+        pCodes.add(IntegerCodeType.builder().setCode(lNext).build());
+      }
+    }
+    else {
+      pCodes = Collections.emptyList();
+    }
+    // Delegate request to service.
+    String lResult = rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 }

@@ -161,7 +161,20 @@ public class «name»Resource {
 		    		«ENDIF»
 	    		«ENDIF»
 	    	«ELSE»
-	    		«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
+	    		«IF basicParam.isMultivalued() == false»
+	    			«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();
+	    		«ELSE»
+	    			«basicParam.getCollectionType()»<«basicParam.type.fqn()»> «basicParam.name»;
+				    if («basicParam.name»AsBasicType != null) {
+				      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>(«basicParam.name»AsBasicType.length);
+				      for («basicParam.type.attribute().first().fqn()» lNext : «basicParam.name»AsBasicType) {
+				        «basicParam.name».add(«basicParam.type.fqn()».builder().setCode(lNext).build());
+				      }
+				    }
+				    else {
+				      «basicParam.name» = «basicParam.getEmptyCollectionOperation()»;
+				    }
+	    		«ENDIF»
 	    	«ENDIF»
 	  	«ENDFOREACH»
 	  «ENDIF»
@@ -247,7 +260,20 @@ public class «name»Resource {
 	    			«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
 	    		«ENDIF»
 	    	«ELSE»
-	    		«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.attribute().first().name.toFirstUpper()»(«basicParam.name»AsBasicType).build();
+	    		«IF basicParam.isMultivalued() == false»
+	    			«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.attribute().first().name.toFirstUpper()»(«basicParam.name»AsBasicType).build();
+	    		«ELSE»
+	    			«basicParam.getCollectionType()»<«basicParam.type.fqn()»> «basicParam.name»;
+				    if («basicParam.name»AsBasicType != null) {
+				      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>(«basicParam.name»AsBasicType.length);
+				      for («basicParam.type.attribute().first().fqn()» lNext : «basicParam.name»AsBasicType) {
+				        «basicParam.name».add(«basicParam.type.fqn()».builder().setCode(lNext).build());
+				      }
+				    }
+				    else {
+				      «basicParam.name» = «basicParam.getEmptyCollectionOperation()»;
+				    }
+	    		«ENDIF»
 	    	«ENDIF»
 	  	«ENDFOREACH»
 	  «ENDIF»
@@ -387,7 +413,7 @@ public class «name»Resource {
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
 	  		String «this.name»AsBasicType
 	  	«ELSE»
-	  		«this.type.attribute().first().fqn()» «this.name»AsBasicType
+	  		«this.type.attribute().first().fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
 	  	«ENDIF»
 	«ELSE»
 	  	«this.getTypeName()» «this.name»
@@ -424,7 +450,7 @@ public class «name»Resource {
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
 	  		String «this.name»AsBasicType
 	  	«ELSE»
-	  		«this.type.attribute().first().fqn()» «this.name»AsBasicType
+  			«this.type.attribute().first().fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
 	  	«ENDIF»
 	  «ELSE»
 	  	«this.getTypeName()» «this.name»

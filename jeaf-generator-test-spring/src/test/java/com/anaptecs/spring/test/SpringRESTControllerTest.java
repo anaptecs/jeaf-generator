@@ -250,4 +250,30 @@ public class SpringRESTControllerTest {
     assertEquals(200, lResponse.getCode());
   }
 
+  @Test
+  void testMultivaluedQueryParamsBean( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
+        + "/rest-products/testMultivaluedQueryParamsBean");
+    lRequest.addParameter("intArray", "1,4,2");
+    lRequest.addParameter("integers", "10 , 40 ,  20 ");
+    lRequest.addParameter("strings", " Hello , World ,  of REST ");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("[1, 4, 2]_[10, 40, 20]_[Hello, World, of REST]", Tools.getStreamTools().getStreamContentAsString(
+        lResponse.getEntity()
+            .getContent()));
+    assertEquals(200, lResponse.getCode());
+  }
+
+  @Test
+  void testMulitvaluedDataTypeAsQueryParam( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
+        + "/rest-products/testMulitvaluedDataTypeAsQueryParam");
+    lRequest.addParameter("codes", "1,4,2");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("1.4.2.", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
+    assertEquals(200, lResponse.getCode());
+  }
+
 }
