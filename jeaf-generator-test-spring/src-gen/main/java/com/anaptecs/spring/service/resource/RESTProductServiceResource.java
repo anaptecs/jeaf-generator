@@ -51,6 +51,7 @@ import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
@@ -514,5 +515,23 @@ public class RESTProductServiceResource {
       @RequestParam(name = "integers", required = true) Set<Integer> pIntegers ) {
     // Delegate request to service.
     return rESTProductService.testPrimitiveWrapperArrayAsQueryParam(pIntegers);
+  }
+
+  /**
+   * {@link RESTProductService#testMultivaluedQueryParamsBean()}
+   */
+  @RequestMapping(path = "testMultivaluedQueryParamsBean", method = { RequestMethod.GET })
+  public String testMultivaluedQueryParamsBean( @RequestParam(name = "intArray", required = false) int[] pIntArray,
+      @RequestParam(name = "strings", required = false) String[] pStrings,
+      @RequestParam(name = "integers", required = false) Integer[] pIntegers ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    MultivaluedQueryParamsBean.Builder lBeanBuilder = MultivaluedQueryParamsBean.builder();
+    lBeanBuilder.setIntArray(pIntArray);
+    lBeanBuilder.setStrings(pStrings);
+    lBeanBuilder.setIntegers(pIntegers);
+    MultivaluedQueryParamsBean pBean = lBeanBuilder.build();
+    // Delegate request to service.
+    return rESTProductService.testMultivaluedQueryParamsBean(pBean);
   }
 }

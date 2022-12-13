@@ -256,4 +256,11 @@ public interface RESTProductService {
    * @return {@link String}
    */
   String testPrimitiveWrapperArrayAsQueryParam( Set<Integer> pIntegers );
+
+  /**
+   * 
+   * @param pBean
+   * @return {@link String}
+   */
+  String testMultivaluedQueryParamsBean( MultivaluedQueryParamsBean pBean );
 }

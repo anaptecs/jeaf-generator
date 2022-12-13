@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
@@ -47,6 +48,7 @@ import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
@@ -1121,6 +1123,39 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     // Add query parameter(s) to request
     if (pIntegers != null) {
       lRequestBuilder.addQueryParam("integers", pIntegers);
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pBean
+   * @return {@link String}
+   */
+  @Override
+  public String testMultivaluedQueryParamsBean( MultivaluedQueryParamsBean pBean ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testMultivaluedQueryParamsBean");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pBean != null) {
+      if (pBean.getIntArray() != null) {
+        lRequestBuilder.addQueryParam("intArray", pBean.getIntArray());
+      }
+      if (pBean.getStrings() != null) {
+        lRequestBuilder.addQueryParam("strings", pBean.getStrings());
+      }
+      if (pBean.getIntegers() != null) {
+        lRequestBuilder.addQueryParam("integers", Arrays.asList(pBean.getIntegers()));
+      }
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();

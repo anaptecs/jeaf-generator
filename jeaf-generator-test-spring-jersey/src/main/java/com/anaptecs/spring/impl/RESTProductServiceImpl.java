@@ -46,6 +46,7 @@ import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
@@ -224,5 +225,10 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public String testPrimitiveWrapperArrayAsQueryParam( Set<Integer> pIntegers ) {
     return pIntegers.toString();
+  }
+
+  @Override
+  public String testMultivaluedQueryParamsBean( MultivaluedQueryParamsBean pBean ) {
+    return null;
   }
 }

@@ -451,7 +451,6 @@ public class «name»Resource {
   «ENDIF-»
 
   «EXPAND java::Helper::GenerateDeprecationAnnotation»
-  
 	  «IF this.type.isOpenAPIDataType() »
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
 	  		String «this.asParameter()»AsBasicType
@@ -459,7 +458,7 @@ public class «name»Resource {
 	  		«this.type.attribute().first().fqn()» «this.asParameter()»AsBasicType
 	  	«ENDIF»
 	  «ELSE»
-	  	«this.fqn()» «this.asParameter()»
+	  	«this.fqn()»«IF this.association == null && this.isMultivalued()»[]«ENDIF» «this.asParameter()»
 	  «ENDIF»
 «ENDDEFINE»
 

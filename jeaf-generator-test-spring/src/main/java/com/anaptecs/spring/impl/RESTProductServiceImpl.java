@@ -47,6 +47,7 @@ import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
@@ -200,5 +201,10 @@ public class RESTProductServiceImpl implements RESTProductService {
     List<Integer> lSorted = new ArrayList<>(pIntegers);
     Collections.sort(lSorted);
     return lSorted.toString();
+  }
+
+  @Override
+  public String testMultivaluedQueryParamsBean( MultivaluedQueryParamsBean pBean ) {
+    return null;
   }
 }

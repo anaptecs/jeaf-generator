@@ -67,6 +67,7 @@ import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
@@ -494,6 +495,17 @@ public class RESTProductServiceResource {
   public Response testPrimitiveWrapperArrayAsQueryParam( @QueryParam("integers") Set<Integer> pIntegers ) {
     // Delegate request to service.
     String lResult = rESTProductService.testPrimitiveWrapperArrayAsQueryParam(pIntegers);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testMultivaluedQueryParamsBean()}
+   */
+  @Path("testMultivaluedQueryParamsBean")
+  @GET
+  public Response testMultivaluedQueryParamsBean( @BeanParam MultivaluedQueryParamsBean pBean ) {
+    // Delegate request to service.
+    String lResult = rESTProductService.testMultivaluedQueryParamsBean(pBean);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 }
