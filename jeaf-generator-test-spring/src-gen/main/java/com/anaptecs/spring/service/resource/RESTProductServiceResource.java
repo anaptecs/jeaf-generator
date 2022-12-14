@@ -52,6 +52,7 @@ import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
@@ -568,5 +569,42 @@ public class RESTProductServiceResource {
     }
     // Delegate request to service.
     return rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes);
+  }
+
+  /**
+   * {@link RESTProductService#testMulitvaluedDataTypeAsBeanQueryParam()}
+   */
+  @RequestMapping(path = "testMulitvaluedDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
+  public String testMulitvaluedDataTypeAsBeanQueryParam(
+      @RequestParam(name = "longCodes", required = false) Long[] pLongCodesAsBasicType,
+      @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
+      @RequestParam(name = "doubleCodes", required = false) Double[] pDoubleCodesAsBasicType ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    DataTypesQueryBean.Builder lQueryBeanBuilder = DataTypesQueryBean.builder();
+    if (pLongCodesAsBasicType != null) {
+      LongCode[] lLongCodes = new LongCode[pLongCodesAsBasicType.length];
+      for (int i = 0; i < pLongCodesAsBasicType.length; i++) {
+        lLongCodes[i] = LongCode.builder().setCode(pLongCodesAsBasicType[i]).build();
+      }
+      lQueryBeanBuilder.setLongCodes(lLongCodes);
+    }
+    if (pCodesAsBasicType != null) {
+      IntegerCodeType[] lCodes = new IntegerCodeType[pCodesAsBasicType.length];
+      for (int i = 0; i < pCodesAsBasicType.length; i++) {
+        lCodes[i] = IntegerCodeType.builder().setCode(pCodesAsBasicType[i]).build();
+      }
+      lQueryBeanBuilder.setCodes(lCodes);
+    }
+    if (pDoubleCodesAsBasicType != null) {
+      Set<DoubleCode> lDoubleCodes = new HashSet<DoubleCode>();
+      for (Double lNext : pDoubleCodesAsBasicType) {
+        lDoubleCodes.add(DoubleCode.builder().setCode(lNext).build());
+      }
+      lQueryBeanBuilder.setDoubleCodes(lDoubleCodes);
+    }
+    DataTypesQueryBean pQueryBean = lQueryBeanBuilder.build();
+    // Delegate request to service.
+    return rESTProductService.testMulitvaluedDataTypeAsBeanQueryParam(pQueryBean);
   }
 }

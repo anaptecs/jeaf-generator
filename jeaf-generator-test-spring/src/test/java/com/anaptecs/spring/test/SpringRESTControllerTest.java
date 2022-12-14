@@ -278,4 +278,20 @@ public class SpringRESTControllerTest {
     assertEquals(200, lResponse.getCode());
   }
 
+  @Test
+  void testMulitvaluedDataTypeAsBeanQueryParam( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
+        + "/rest-products/testMulitvaluedDataTypeAsBeanQueryParam");
+    lRequest.addParameter("codes", "1,4,2");
+    lRequest.addParameter("longCodes", String.valueOf(Long.MAX_VALUE));
+    lRequest.addParameter("doubleCodes", "3.1415, 47.11");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("1.4.2.9223372036854775807_3.1415_47.11_", Tools.getStreamTools().getStreamContentAsString(lResponse
+        .getEntity()
+        .getContent()));
+    assertEquals(200, lResponse.getCode());
+
+  }
+
 }

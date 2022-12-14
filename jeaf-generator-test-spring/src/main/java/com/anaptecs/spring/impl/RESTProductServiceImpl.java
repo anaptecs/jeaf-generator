@@ -47,6 +47,7 @@ import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
@@ -218,5 +219,20 @@ public class RESTProductServiceImpl implements RESTProductService {
       lResult = lResult + lNext.getCode() + ".";
     }
     return lResult + pLongCodes.iterator().next().getCode();
+  }
+
+  @Override
+  public String testMulitvaluedDataTypeAsBeanQueryParam( DataTypesQueryBean pQueryBean ) {
+    String lResult = "";
+    for (IntegerCodeType lNext : pQueryBean.getCodes()) {
+      lResult = lResult + lNext.getCode() + ".";
+    }
+    for (LongCode lNext : pQueryBean.getLongCodes()) {
+      lResult = lResult + lNext.getCode() + "_";
+    }
+    for (DoubleCode lNext : pQueryBean.getDoubleCodes()) {
+      lResult = lResult + lNext.getCode() + "_";
+    }
+    return lResult;
   }
 }

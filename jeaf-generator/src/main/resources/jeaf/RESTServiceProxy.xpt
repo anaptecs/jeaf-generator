@@ -241,7 +241,19 @@ public class «name»RESTProxy implements «this.fqn()» {
 				«IF queryParam.type.isPrimitiveType() == false || queryParam.isMultivalued()»
 				if («beanParam.name».«queryParam.asGetter()»() != null) {
 				«ENDIF»
-		    	lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «EXPAND QueryParamValueAccessorForBeanParam(beanParam) FOR queryParam»);
+		    	«IF queryParam.isMultivalued() == true && queryParam.type.isOpenAPIDataType()»
+		    		«queryParam.getCollectionType()»<String> «queryParam.asLocalVar()» = new «queryParam.getCollectionImplType()»<String>();
+		    		for(«queryParam.type.fqn()» lNext : «beanParam.name».«queryParam.asGetter()»()) {
+		    			«IF queryParam.type.getAllAttributesFromHierarchy().first().type.isPrimitiveType()»
+		    				«queryParam.asLocalVar()».add(String.valueOf(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»()));
+		    			«ELSE»
+		    				«queryParam.asLocalVar()».add(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»().toString());
+		    			«ENDIF»
+		    		}
+		    		lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «queryParam.asLocalVar()»);
+		    	«ELSE»
+		    		lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «EXPAND QueryParamValueAccessorForBeanParam(beanParam) FOR queryParam»);
+		    	«ENDIF»
 				«IF queryParam.type.isPrimitiveType() == false || queryParam.isMultivalued()»
 				}
 				«ENDIF»

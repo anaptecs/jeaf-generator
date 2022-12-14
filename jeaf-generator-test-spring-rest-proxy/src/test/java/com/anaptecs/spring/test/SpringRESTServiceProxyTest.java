@@ -37,6 +37,7 @@ import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.TechnicalHeaderContext;
 import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.ProductService;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
@@ -107,6 +108,11 @@ public class SpringRESTServiceProxyTest {
     lClient.when(mockRequest("/rest-products/testMulitvaluedDataTypeAsQueryParam", "GET").withQueryStringParameter(
         "codes", "47", "11").withQueryStringParameter("longCodes", "4710815123", "47110815999")).respond(mockResponse(
             "\"47-11\""));
+
+    lClient.when(mockRequest("/rest-products/testMulitvaluedDataTypeAsBeanQueryParam", "GET").withQueryStringParameter(
+        "codes", "123456").withQueryStringParameter("longCodes", "99998888775566211", "-123456789")
+        .withQueryStringParameter("doubleCodes", "3.1415", "47.11")).respond(mockResponse(
+            "\"47-11-123456\""));
   }
 
   @AfterAll
@@ -210,5 +216,18 @@ public class SpringRESTServiceProxyTest {
     String lResult = productService.testMulitvaluedDataTypeAsQueryParam(Arrays.asList(IntegerCodeType.builder().setCode(
         47).build(), IntegerCodeType.builder().setCode(11).build()), lLongCodes);
     assertEquals("47-11", lResult);
+  }
+
+  @Test
+  void testMulitvaluedDataTypeAsBeanQueryParam( ) {
+    IntegerCodeType[] lCodes = new IntegerCodeType[] { IntegerCodeType.builder().setCode(123456).build() };
+    LongCode[] lLongCodes = new LongCode[] { LongCode.builder().setCode(99998888775566211L).build(), LongCode.builder()
+        .setCode(-123456789L).build() };
+    Set<DoubleCode> lDoubleCodes = new HashSet<>(Arrays.asList(new DoubleCode[] { DoubleCode.builder().setCode(3.1415)
+        .build(), DoubleCode.builder().setCode(47.11).build() }));
+    DataTypesQueryBean lQueryBean = DataTypesQueryBean.builder().setCodes(lCodes).setLongCodes(lLongCodes)
+        .setDoubleCodes(lDoubleCodes).build();
+    String lResult = productService.testMulitvaluedDataTypeAsBeanQueryParam(lQueryBean);
+    assertEquals("47-11-123456", lResult);
   }
 }
