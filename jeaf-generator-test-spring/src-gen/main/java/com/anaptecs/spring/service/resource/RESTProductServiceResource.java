@@ -45,6 +45,7 @@ import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.InventoryType;
+import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
@@ -423,7 +424,7 @@ public class RESTProductServiceResource {
   public String testDataTypesAsHeaderParam(
       @RequestHeader(name = "BookingID", required = true) String pBookingIDAsBasicType,
       @RequestHeader(name = "BookingCode", required = true) String pBookingCodeAsBasicType,
-      @RequestHeader(name = "DoubleCode", required = true) double pDoubleCodeAsBasicType ) {
+      @RequestHeader(name = "DoubleCode", required = true) Double pDoubleCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     BookingID pBookingID =
         compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class, BOOKINGID_SERIALIZED_CLASSES);
@@ -440,7 +441,7 @@ public class RESTProductServiceResource {
   public String testDataTypesAsHeaderBeanParam(
       @RequestHeader(name = "bookingID", required = true) String pBookingIDAsBasicType,
       @RequestHeader(name = "bookingCode", required = true) String pBookingCodeAsBasicType,
-      @RequestHeader(name = "DoubleCode", required = true) double pDoubleCodeAsBasicType ) {
+      @RequestHeader(name = "DoubleCode", required = true) Double pDoubleCodeAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     AdvancedHeader.Builder lContextBuilder = AdvancedHeader.builder();
@@ -541,7 +542,8 @@ public class RESTProductServiceResource {
    */
   @RequestMapping(path = "testMulitvaluedDataTypeAsQueryParam", method = { RequestMethod.GET })
   public String testMulitvaluedDataTypeAsQueryParam(
-      @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType ) {
+      @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
+      @RequestParam(name = "longCodes", required = true) Long pLongCodesAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     List<IntegerCodeType> pCodes;
     if (pCodesAsBasicType != null) {
@@ -553,7 +555,8 @@ public class RESTProductServiceResource {
     else {
       pCodes = Collections.emptyList();
     }
+    LongCode pLongCodes = LongCode.builder().setCode(pLongCodesAsBasicType).build();
     // Delegate request to service.
-    return rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes);
+    return rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes);
   }
 }

@@ -61,6 +61,7 @@ import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.InventoryType;
+import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
@@ -409,7 +410,7 @@ public class RESTProductServiceResource {
   @GET
   public Response testDataTypesAsHeaderParam( @HeaderParam("BookingID") String pBookingIDAsBasicType,
       @HeaderParam("BookingCode") String pBookingCodeAsBasicType,
-      @HeaderParam("DoubleCode") double pDoubleCodeAsBasicType ) {
+      @HeaderParam("DoubleCode") Double pDoubleCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     BookingID pBookingID =
         compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class, BOOKINGID_SERIALIZED_CLASSES);
@@ -515,7 +516,8 @@ public class RESTProductServiceResource {
    */
   @Path("testMulitvaluedDataTypeAsQueryParam")
   @GET
-  public Response testMulitvaluedDataTypeAsQueryParam( @QueryParam("codes") int[] pCodesAsBasicType ) {
+  public Response testMulitvaluedDataTypeAsQueryParam( @QueryParam("codes") int[] pCodesAsBasicType,
+      @QueryParam("longCodes") Long pLongCodesAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     List<IntegerCodeType> pCodes;
     if (pCodesAsBasicType != null) {
@@ -527,8 +529,9 @@ public class RESTProductServiceResource {
     else {
       pCodes = Collections.emptyList();
     }
+    LongCode pLongCodes = LongCode.builder().setCode(pLongCodesAsBasicType).build();
     // Delegate request to service.
-    String lResult = rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes);
+    String lResult = rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 }

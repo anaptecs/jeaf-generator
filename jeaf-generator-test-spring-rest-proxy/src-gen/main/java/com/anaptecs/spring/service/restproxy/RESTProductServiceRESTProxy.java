@@ -41,6 +41,7 @@ import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.IntegerCodeType;
+import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
@@ -1123,10 +1124,11 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   /**
    * 
    * @param pCodes
+   * @param pLongCodes
    * @return {@link String}
    */
   @Override
-  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes ) {
+  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, LongCode pLongCodes ) {
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder =
         RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
@@ -1143,6 +1145,9 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
         pCodesAsBasicType.add(String.valueOf(lNext.getCode()));
       }
       lRequestBuilder.addQueryParam("codes", pCodesAsBasicType);
+    }
+    if (pLongCodes != null) {
+      lRequestBuilder.addQueryParam("longCodes", pLongCodes.getCode());
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();

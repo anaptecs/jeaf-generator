@@ -33,7 +33,7 @@ public class BooleanCode implements Serializable {
   /**
    * 
    */
-  private boolean code;
+  private Boolean code;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -91,7 +91,7 @@ public class BooleanCode implements Serializable {
     /**
      * 
      */
-    private boolean code;
+    private Boolean code;
 
     /**
      * Use {@link BooleanCode#builder()} instead of private constructor to create new builder.
@@ -114,7 +114,7 @@ public class BooleanCode implements Serializable {
      * 
      * @param pCode Value to which the attribute "code" should be set.
      */
-    public Builder setCode( boolean pCode ) {
+    public Builder setCode( Boolean pCode ) {
       // Assign value to attribute
       code = pCode;
       return this;
@@ -150,7 +150,7 @@ public class BooleanCode implements Serializable {
    * 
    * @return Boolean Value to which the attribute "code" is set.
    */
-  public boolean getCode( ) {
+  public Boolean getCode( ) {
     return code;
   }
 
@@ -160,7 +160,7 @@ public class BooleanCode implements Serializable {
    * 
    * @param pCode Value to which the attribute "code" should be set.
    */
-  public void setCode( boolean pCode ) {
+  public void setCode( Boolean pCode ) {
     // Assign value to attribute
     code = pCode;
   }

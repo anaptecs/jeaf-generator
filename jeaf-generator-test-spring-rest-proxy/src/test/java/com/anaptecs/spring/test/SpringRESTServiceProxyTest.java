@@ -201,7 +201,7 @@ public class SpringRESTServiceProxyTest {
   @Test
   void testMulitvaluedDataTypeAsQueryParam( ) {
     String lResult = productService.testMulitvaluedDataTypeAsQueryParam(Arrays.asList(IntegerCodeType.builder().setCode(
-        47).build(), IntegerCodeType.builder().setCode(11).build()));
+        47).build(), IntegerCodeType.builder().setCode(11).build()), null);
     assertEquals("47-11", lResult);
   }
 }

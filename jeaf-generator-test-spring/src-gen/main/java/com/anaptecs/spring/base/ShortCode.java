@@ -23,7 +23,7 @@ public class ShortCode {
   /**
    * 
    */
-  private short code;
+  private Short code;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -70,7 +70,7 @@ public class ShortCode {
     /**
      * 
      */
-    private short code;
+    private Short code;
 
     /**
      * Use {@link ShortCode#builder()} instead of private constructor to create new builder.
@@ -113,7 +113,7 @@ public class ShortCode {
      * 
      * @param pCode Value to which the attribute "code" should be set.
      */
-    public Builder setCode( short pCode ) {
+    public Builder setCode( Short pCode ) {
       // Assign value to attribute
       code = pCode;
       return this;
@@ -133,9 +133,9 @@ public class ShortCode {
    * Method returns the attribute "code".
    * 
    * 
-   * @return short Value to which the attribute "code" is set.
+   * @return Short Value to which the attribute "code" is set.
    */
-  public short getCode( ) {
+  public Short getCode( ) {
     return code;
   }
 
@@ -145,7 +145,7 @@ public class ShortCode {
    * 
    * @param pCode Value to which the attribute "code" should be set.
    */
-  public void setCode( short pCode ) {
+  public void setCode( Short pCode ) {
     // Assign value to attribute
     code = pCode;
   }
