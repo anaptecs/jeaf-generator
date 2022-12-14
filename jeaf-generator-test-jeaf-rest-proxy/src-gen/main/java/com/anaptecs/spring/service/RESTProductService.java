@@ -274,4 +274,11 @@ public interface RESTProductService extends Service {
    * @return {@link String}
    */
   String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes );
+
+  /**
+   * 
+   * @param pQueryBean
+   * @return {@link String}
+   */
+  String testMulitvaluedDataTypeAsBeanQueryParam( DataTypesQueryBean pQueryBean );
 }

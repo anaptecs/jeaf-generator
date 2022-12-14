@@ -50,6 +50,7 @@ import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
@@ -1197,6 +1198,51 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
         pLongCodesAsBasicType.add(lNext.getCode());
       }
       lRequestBuilder.addQueryParam("longCodes", pLongCodesAsBasicType);
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pQueryBean
+   * @return {@link String}
+   */
+  @Override
+  public String testMulitvaluedDataTypeAsBeanQueryParam( DataTypesQueryBean pQueryBean ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testMulitvaluedDataTypeAsBeanQueryParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pQueryBean != null) {
+      if (pQueryBean.getLongCodes() != null) {
+        Set<String> lLongCodes = new HashSet<String>();
+        for (LongCode lNext : pQueryBean.getLongCodes()) {
+          lLongCodes.add(lNext.getCode().toString());
+        }
+        lRequestBuilder.addQueryParam("longCodes", lLongCodes);
+      }
+      if (pQueryBean.getCodes() != null) {
+        Set<String> lCodes = new HashSet<String>();
+        for (IntegerCodeType lNext : pQueryBean.getCodes()) {
+          lCodes.add(String.valueOf(lNext.getCode()));
+        }
+        lRequestBuilder.addQueryParam("codes", lCodes);
+      }
+      if (pQueryBean.getDoubleCodes() != null) {
+        Set<String> lDoubleCodes = new HashSet<String>();
+        for (DoubleCode lNext : pQueryBean.getDoubleCodes()) {
+          lDoubleCodes.add(lNext.getCode().toString());
+        }
+        lRequestBuilder.addQueryParam("doubleCodes", lDoubleCodes);
+      }
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
