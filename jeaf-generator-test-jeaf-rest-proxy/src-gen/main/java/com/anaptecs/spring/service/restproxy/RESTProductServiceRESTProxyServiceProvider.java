@@ -277,5 +277,5 @@ public interface RESTProductServiceRESTProxyServiceProvider extends ServiceProvi
    * @param pLongCodes
    * @return {@link String}
    */
-  String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, LongCode pLongCodes );
+  String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes );
 }

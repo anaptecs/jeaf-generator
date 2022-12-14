@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -543,11 +544,11 @@ public class RESTProductServiceResource {
   @RequestMapping(path = "testMulitvaluedDataTypeAsQueryParam", method = { RequestMethod.GET })
   public String testMulitvaluedDataTypeAsQueryParam(
       @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
-      @RequestParam(name = "longCodes", required = true) Long pLongCodesAsBasicType ) {
+      @RequestParam(name = "longCodes", required = true) Long[] pLongCodesAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     List<IntegerCodeType> pCodes;
     if (pCodesAsBasicType != null) {
-      pCodes = new ArrayList<IntegerCodeType>(pCodesAsBasicType.length);
+      pCodes = new ArrayList<IntegerCodeType>();
       for (int lNext : pCodesAsBasicType) {
         pCodes.add(IntegerCodeType.builder().setCode(lNext).build());
       }
@@ -555,7 +556,16 @@ public class RESTProductServiceResource {
     else {
       pCodes = Collections.emptyList();
     }
-    LongCode pLongCodes = LongCode.builder().setCode(pLongCodesAsBasicType).build();
+    Set<LongCode> pLongCodes;
+    if (pLongCodesAsBasicType != null) {
+      pLongCodes = new HashSet<LongCode>();
+      for (Long lNext : pLongCodesAsBasicType) {
+        pLongCodes.add(LongCode.builder().setCode(lNext).build());
+      }
+    }
+    else {
+      pLongCodes = Collections.emptySet();
+    }
     // Delegate request to service.
     return rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes);
   }

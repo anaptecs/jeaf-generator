@@ -166,7 +166,7 @@ public class «name»Resource {
 	    		«ELSE»
 	    			«basicParam.getCollectionType()»<«basicParam.type.fqn()»> «basicParam.name»;
 				    if («basicParam.name»AsBasicType != null) {
-				      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>(«basicParam.name»AsBasicType.length);
+				      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>();
 				      for («basicParam.type.attribute().first().fqn()» lNext : «basicParam.name»AsBasicType) {
 				        «basicParam.name».add(«basicParam.type.fqn()».builder().setCode(lNext).build());
 				      }
@@ -265,7 +265,7 @@ public class «name»Resource {
 	    		«ELSE»
 	    			«basicParam.getCollectionType()»<«basicParam.type.fqn()»> «basicParam.name»;
 				    if («basicParam.name»AsBasicType != null) {
-				      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>(«basicParam.name»AsBasicType.length);
+				      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>();
 				      for («basicParam.type.attribute().first().fqn()» lNext : «basicParam.name»AsBasicType) {
 				        «basicParam.name».add(«basicParam.type.fqn()».builder().setCode(lNext).build());
 				      }

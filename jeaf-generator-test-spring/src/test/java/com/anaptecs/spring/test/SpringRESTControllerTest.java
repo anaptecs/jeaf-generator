@@ -271,8 +271,10 @@ public class SpringRESTControllerTest {
     ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
         + "/rest-products/testMulitvaluedDataTypeAsQueryParam");
     lRequest.addParameter("codes", "1,4,2");
+    lRequest.addParameter("longCodes", String.valueOf(Long.MAX_VALUE));
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals("1.4.2.", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
+    assertEquals("1.4.2.9223372036854775807", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity()
+        .getContent()));
     assertEquals(200, lResponse.getCode());
   }
 

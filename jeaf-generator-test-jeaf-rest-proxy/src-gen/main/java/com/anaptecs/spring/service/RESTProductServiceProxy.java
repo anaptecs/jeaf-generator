@@ -513,7 +513,7 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
    * 
    * 
    */
-  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, LongCode pLongCodes ) {
+  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes ) {
     try {
       Command lCommand = new TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_RESTProductService_Command(
           pCodes, pLongCodes);
@@ -3637,12 +3637,11 @@ final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_RESTPro
    */
   static {
     try {
-      SERVICE_METHOD =
-          RESTProductService.class.getMethod("testMulitvaluedDataTypeAsQueryParam", List.class, LongCode.class);
+      SERVICE_METHOD = RESTProductService.class.getMethod("testMulitvaluedDataTypeAsQueryParam", List.class, Set.class);
     }
     catch (NoSuchMethodException e) {
       throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          RESTProductService.class.getName(), "testMulitvaluedDataTypeAsQueryParam(List.class, LongCode.class)");
+          RESTProductService.class.getName(), "testMulitvaluedDataTypeAsQueryParam(List.class, Set.class)");
     }
   }
 
@@ -3654,17 +3653,17 @@ final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_RESTPro
   /**
    * Attribute transports the method parameter "pLongCodes" to the service implementation via the service channel.
    */
-  private final LongCode longCodes;
+  private final Set<LongCode> longCodes;
 
   /**
    * Initialize object. All parameters from method "testMulitvaluedDataTypeAsQueryParam" have to be passed as parameters
    * to this command object.
    * 
    * @param pCodes List<IntegerCodeType>
-   * @param pLongCodes LongCode
+   * @param pLongCodes Set<LongCode>
    */
   TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_RESTProductService_Command( List<IntegerCodeType> pCodes,
-      LongCode pLongCodes ) {
+      Set<LongCode> pLongCodes ) {
     super(RESTProductService.class);
     codes = pCodes;
     longCodes = pLongCodes;

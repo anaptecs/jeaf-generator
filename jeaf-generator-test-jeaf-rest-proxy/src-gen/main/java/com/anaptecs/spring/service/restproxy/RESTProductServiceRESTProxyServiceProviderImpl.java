@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -1172,7 +1173,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
    * @return {@link String}
    */
   @Override
-  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, LongCode pLongCodes ) {
+  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes ) {
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder =
         RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
@@ -1191,7 +1192,11 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       lRequestBuilder.addQueryParam("codes", pCodesAsBasicType);
     }
     if (pLongCodes != null) {
-      lRequestBuilder.addQueryParam("longCodes", pLongCodes.getCode());
+      Set<Long> pLongCodesAsBasicType = new HashSet<Long>(pLongCodes.size());
+      for (LongCode lNext : pLongCodes) {
+        pLongCodesAsBasicType.add(lNext.getCode());
+      }
+      lRequestBuilder.addQueryParam("longCodes", pLongCodesAsBasicType);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();

@@ -212,11 +212,11 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, LongCode pLongCodes ) {
+  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes ) {
     String lResult = "";
     for (IntegerCodeType lNext : pCodes) {
       lResult = lResult + lNext.getCode() + ".";
     }
-    return lResult;
+    return lResult + pLongCodes.iterator().next().getCode();
   }
 }

@@ -284,7 +284,7 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
   }
 
   @Override
-  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, LongCode pLongCodes ) {
+  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes ) {
     return null;
   }
 }

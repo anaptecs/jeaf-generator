@@ -214,15 +214,17 @@ public class «name»RESTProxy implements «this.fqn()» {
 			if («queryParam.name» != null) {
 			«ENDIF»
 			«IF queryParam.isMultivalued() == true && queryParam.type.isOpenAPIDataType()»
-		      «queryParam.getCollectionType()»<String> «queryParam.name»AsBasicType = new «queryParam.getCollectionImplType()»<String>(«queryParam.name».size());
-		      for («queryParam.type.fqn()» lNext : pCodes) {
-		        «IF queryParam.type.getAllAttributesFromHierarchy().first().type.isPrimitiveType()»
-		        «queryParam.name»AsBasicType.add(String.valueOf(lNext.getCode()));
-		        «ELSE»
-		        «queryParam.name»AsBasicType.add(lNext.getCode());
-		        «ENDIF»
+		      «IF queryParam.type.getAllAttributesFromHierarchy().first().type.isPrimitiveType()»
+			      «queryParam.getCollectionType()»<String> «queryParam.name»AsBasicType = new «queryParam.getCollectionImplType()»<String>(«queryParam.name».size());
+			      for («queryParam.type.fqn()» lNext : «queryParam.name») {
+			        «queryParam.name»AsBasicType.add(String.valueOf(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»()));
+		      «ELSE»
+			      «queryParam.getCollectionType()»<«queryParam.type.getAllAttributesFromHierarchy().first().fqn()»> «queryParam.name»AsBasicType = new «queryParam.getCollectionImplType()»<«queryParam.type.getAllAttributesFromHierarchy().first().fqn()»>(«queryParam.name».size());
+			      for («queryParam.type.fqn()» lNext : «queryParam.name») {
+			        «queryParam.name»AsBasicType.add(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»());
+		      «ENDIF»
 		      }
-		      lRequestBuilder.addQueryParam("codes", pCodesAsBasicType);
+		      lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «queryParam.name»AsBasicType);
 			«ELSE»
 			lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «EXPAND QueryParamValueAccessor FOR queryParam»);
 			«ENDIF»

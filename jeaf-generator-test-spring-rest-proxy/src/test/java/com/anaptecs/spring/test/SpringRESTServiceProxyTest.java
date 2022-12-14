@@ -12,6 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
@@ -31,6 +33,7 @@ import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.IntegerCodeType;
+import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.TechnicalHeaderContext;
 import com.anaptecs.spring.service.AdvancedHeader;
@@ -102,7 +105,8 @@ public class SpringRESTServiceProxyTest {
         "integers", "1", "2", "13", "47")).respond(mockResponse("\"1-2-47-13\""));
 
     lClient.when(mockRequest("/rest-products/testMulitvaluedDataTypeAsQueryParam", "GET").withQueryStringParameter(
-        "codes", "47", "11")).respond(mockResponse("\"47-11\""));
+        "codes", "47", "11").withQueryStringParameter("longCodes", "4710815123", "47110815999")).respond(mockResponse(
+            "\"47-11\""));
   }
 
   @AfterAll
@@ -200,8 +204,11 @@ public class SpringRESTServiceProxyTest {
 
   @Test
   void testMulitvaluedDataTypeAsQueryParam( ) {
+    Set<LongCode> lLongCodes = new HashSet<>();
+    lLongCodes.add(LongCode.builder().setCode(4710815123L).build());
+    lLongCodes.add(LongCode.builder().setCode(47110815999L).build());
     String lResult = productService.testMulitvaluedDataTypeAsQueryParam(Arrays.asList(IntegerCodeType.builder().setCode(
-        47).build(), IntegerCodeType.builder().setCode(11).build()), null);
+        47).build(), IntegerCodeType.builder().setCode(11).build()), lLongCodes);
     assertEquals("47-11", lResult);
   }
 }
