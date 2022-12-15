@@ -13,6 +13,7 @@ import java.util.Set;
 
 import javax.ws.rs.QueryParam;
 
+import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
@@ -38,6 +39,16 @@ public class DataTypesQueryBean {
   public static final String DOUBLECODES = "doubleCodes";
 
   /**
+   * Constant for the name of attribute "bookingIDs".
+   */
+  public static final String BOOKINGIDS = "bookingIDs";
+
+  /**
+   * Constant for the name of attribute "bookingIDsArray".
+   */
+  public static final String BOOKINGIDSARRAY = "bookingIDsArray";
+
+  /**
    * 
    */
   @QueryParam("longCodes")
@@ -55,11 +66,23 @@ public class DataTypesQueryBean {
   private Set<DoubleCode> doubleCodes;
 
   /**
+   * 
+   */
+  private Set<BookingID> bookingIDs;
+
+  /**
+   * 
+   */
+  @QueryParam("bookingIDsArray")
+  private BookingID[] bookingIDsArray;
+
+  /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   public DataTypesQueryBean( ) {
     doubleCodes = new HashSet<DoubleCode>();
+    bookingIDs = new HashSet<BookingID>();
   }
 
   /**
@@ -77,6 +100,13 @@ public class DataTypesQueryBean {
     else {
       doubleCodes = new HashSet<DoubleCode>();
     }
+    if (pBuilder.bookingIDs != null) {
+      bookingIDs = pBuilder.bookingIDs;
+    }
+    else {
+      bookingIDs = new HashSet<BookingID>();
+    }
+    bookingIDsArray = pBuilder.bookingIDsArray;
   }
 
   /**
@@ -120,6 +150,16 @@ public class DataTypesQueryBean {
     private Set<DoubleCode> doubleCodes;
 
     /**
+     * 
+     */
+    private Set<BookingID> bookingIDs;
+
+    /**
+     * 
+     */
+    private BookingID[] bookingIDsArray;
+
+    /**
      * Use {@link DataTypesQueryBean#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -134,6 +174,8 @@ public class DataTypesQueryBean {
         longCodes = pObject.longCodes;
         codes = pObject.codes;
         doubleCodes = pObject.doubleCodes;
+        bookingIDs = pObject.bookingIDs;
+        bookingIDsArray = pObject.bookingIDsArray;
       }
     }
 
@@ -183,6 +225,39 @@ public class DataTypesQueryBean {
       }
       else {
         doubleCodes = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets the association "bookingIDs".
+     * 
+     * @param pBookingIDs Collection with objects to which the association should be set.
+     */
+    public Builder setBookingIDs( Set<BookingID> pBookingIDs ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pBookingIDs != null) {
+        bookingIDs = new HashSet<BookingID>(pBookingIDs);
+      }
+      else {
+        bookingIDs = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "bookingIDsArray".
+     * 
+     * @param pBookingIDsArray Value to which the attribute "bookingIDsArray" should be set.
+     */
+    public Builder setBookingIDsArray( BookingID[] pBookingIDsArray ) {
+      // Assign value to attribute
+      if (pBookingIDsArray != null) {
+        bookingIDsArray = new BookingID[pBookingIDsArray.length];
+        System.arraycopy(pBookingIDsArray, 0, bookingIDsArray, 0, pBookingIDsArray.length);
+      }
+      else {
+        bookingIDsArray = null;
       }
       return this;
     }
@@ -327,6 +402,98 @@ public class DataTypesQueryBean {
   }
 
   /**
+   * Method returns the association "bookingIDs".
+   * 
+   *
+   * @return Collection All BookingID objects that belong to the association "bookingIDs". The method never returns null
+   * and the returned collection is unmodifiable.
+   */
+  public Set<BookingID> getBookingIDs( ) {
+    // Return all BookingID objects as unmodifiable collection.
+    return Collections.unmodifiableSet(bookingIDs);
+  }
+
+  /**
+   * Method adds the passed BookingID object to the association "bookingIDs".
+   * 
+   * 
+   * @param pBookingIDs Object that should be added to the association "bookingIDs". The parameter must not be null.
+   */
+  public void addToBookingIDs( BookingID pBookingIDs ) {
+    // Add passed object to collection of associated BookingID objects.
+    bookingIDs.add(pBookingIDs);
+  }
+
+  /**
+   * Method adds all passed objects to the association "bookingIDs".
+   * 
+   * 
+   * @param pBookingIDs Collection with all objects that should be added to the association "bookingIDs". The parameter
+   * must not be null.
+   */
+  public void addToBookingIDs( Collection<BookingID> pBookingIDs ) {
+    // Add all passed objects.
+    for (BookingID lNextObject : pBookingIDs) {
+      this.addToBookingIDs(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed BookingID object from the association "bookingIDs".
+   * 
+   * 
+   * @param pBookingIDs Object that should be removed from the association "bookingIDs". The parameter must not be null.
+   */
+  public void removeFromBookingIDs( BookingID pBookingIDs ) {
+    // Remove passed object from collection of associated BookingID objects.
+    bookingIDs.remove(pBookingIDs);
+  }
+
+  /**
+   * Method removes all objects from the association "bookingIDs".
+   * 
+   */
+  public void clearBookingIDs( ) {
+    // Remove all objects from association "bookingIDs".
+    bookingIDs.clear();
+  }
+
+  /**
+   * Method returns the attribute "bookingIDsArray".
+   * 
+   * 
+   * @return BookingID Value to which the attribute "bookingIDsArray" is set.
+   */
+  public BookingID[] getBookingIDsArray( ) {
+    BookingID[] lReturnValue;
+    if (bookingIDsArray != null) {
+      lReturnValue = new BookingID[bookingIDsArray.length];
+      System.arraycopy(bookingIDsArray, 0, lReturnValue, 0, bookingIDsArray.length);
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
+  }
+
+  /**
+   * Method sets the attribute "bookingIDsArray".
+   * 
+   * 
+   * @param pBookingIDsArray Value to which the attribute "bookingIDsArray" should be set.
+   */
+  public void setBookingIDsArray( BookingID[] pBookingIDsArray ) {
+    // Assign value to attribute
+    if (pBookingIDsArray != null) {
+      bookingIDsArray = new BookingID[pBookingIDsArray.length];
+      System.arraycopy(pBookingIDsArray, 0, bookingIDsArray, 0, pBookingIDsArray.length);
+    }
+    else {
+      bookingIDsArray = null;
+    }
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -371,6 +538,31 @@ public class DataTypesQueryBean {
         lBuilder.append(System.lineSeparator());
       }
     }
+    lBuilder.append(pIndent);
+    lBuilder.append("bookingIDs: ");
+    if (bookingIDs != null) {
+      lBuilder.append(bookingIDs.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (bookingIDs != null) {
+      for (BookingID lNext : bookingIDs) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("bookingIDsArray: ");
+    if (bookingIDsArray != null) {
+      lBuilder.append(Arrays.toString(bookingIDsArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

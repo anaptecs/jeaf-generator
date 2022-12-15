@@ -244,11 +244,15 @@ public class «name»RESTProxy implements «this.fqn()» {
 		    	«IF queryParam.isMultivalued() == true && queryParam.type.isOpenAPIDataType()»
 		    		«queryParam.getCollectionType()»<String> «queryParam.asLocalVar()» = new «queryParam.getCollectionImplType()»<String>();
 		    		for(«queryParam.type.fqn()» lNext : «beanParam.name».«queryParam.asGetter()»()) {
-		    			«IF queryParam.type.getAllAttributesFromHierarchy().first().type.isPrimitiveType()»
-		    				«queryParam.asLocalVar()».add(String.valueOf(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»()));
+		    			«IF queryParam.type.isCompositeDataType()»
+		    				«queryParam.asLocalVar()».add(lNext.get«queryParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»());
 		    			«ELSE»
-		    				«queryParam.asLocalVar()».add(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»().toString());
-		    			«ENDIF»
+			    			«IF queryParam.type.getAllAttributesFromHierarchy().first().type.isPrimitiveType()»
+			    				«queryParam.asLocalVar()».add(String.valueOf(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»()));
+			    			«ELSE»
+			    				«queryParam.asLocalVar()».add(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»().toString());
+			    			«ENDIF»
+			    		«ENDIF»
 		    		}
 		    		lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «queryParam.asLocalVar()»);
 		    	«ELSE»

@@ -1243,6 +1243,20 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
         }
         lRequestBuilder.addQueryParam("doubleCodes", lDoubleCodes);
       }
+      if (pQueryBean.getBookingIDs() != null) {
+        Set<String> lBookingIDs = new HashSet<String>();
+        for (BookingID lNext : pQueryBean.getBookingIDs()) {
+          lBookingIDs.add(lNext.getBookingID());
+        }
+        lRequestBuilder.addQueryParam("bookingIDs", lBookingIDs);
+      }
+      if (pQueryBean.getBookingIDsArray() != null) {
+        Set<String> lBookingIDsArray = new HashSet<String>();
+        for (BookingID lNext : pQueryBean.getBookingIDsArray()) {
+          lBookingIDsArray.add(lNext.getBookingID());
+        }
+        lRequestBuilder.addQueryParam("bookingIDsArray", lBookingIDsArray);
+      }
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
