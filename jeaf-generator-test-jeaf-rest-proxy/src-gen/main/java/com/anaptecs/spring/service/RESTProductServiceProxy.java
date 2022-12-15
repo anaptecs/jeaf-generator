@@ -513,10 +513,12 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
    * 
    * 
    */
-  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes ) {
+  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
+      List<BookingID> pBookingIDs ) {
     try {
-      Command lCommand = new TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_RESTProductService_Command(
-          pCodes, pLongCodes);
+      Command lCommand =
+          new TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_BookingID_RESTProductService_Command(pCodes,
+              pLongCodes, pBookingIDs);
       return (String) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -3628,7 +3630,8 @@ final class TestMultivaluedQueryParamsBean_MultivaluedQueryParamsBean_RESTProduc
 /**
  * Generated command class for service method "testMulitvaluedDataTypeAsQueryParam".
  */
-final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_RESTProductService_Command extends Command {
+final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_BookingID_RESTProductService_Command
+    extends Command {
   /**
    * Default serial version uid.
    */
@@ -3653,11 +3656,12 @@ final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_RESTPro
    */
   static {
     try {
-      SERVICE_METHOD = RESTProductService.class.getMethod("testMulitvaluedDataTypeAsQueryParam", List.class, Set.class);
+      SERVICE_METHOD =
+          RESTProductService.class.getMethod("testMulitvaluedDataTypeAsQueryParam", List.class, Set.class, List.class);
     }
     catch (NoSuchMethodException e) {
       throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          RESTProductService.class.getName(), "testMulitvaluedDataTypeAsQueryParam(List.class, Set.class)");
+          RESTProductService.class.getName(), "testMulitvaluedDataTypeAsQueryParam(List.class, Set.class, List.class)");
     }
   }
 
@@ -3672,18 +3676,25 @@ final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_RESTPro
   private final Set<LongCode> longCodes;
 
   /**
+   * Attribute transports the method parameter "pBookingIDs" to the service implementation via the service channel.
+   */
+  private final List<BookingID> bookingIDs;
+
+  /**
    * Initialize object. All parameters from method "testMulitvaluedDataTypeAsQueryParam" have to be passed as parameters
    * to this command object.
    * 
    * @param pCodes List<IntegerCodeType>
    * @param pLongCodes Set<LongCode>
+   * @param pBookingIDs List<BookingID>
    */
-  TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_RESTProductService_Command( List<IntegerCodeType> pCodes,
-      Set<LongCode> pLongCodes ) {
+  TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_BookingID_RESTProductService_Command(
+      List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes, List<BookingID> pBookingIDs ) {
     super(RESTProductService.class);
     codes = pCodes;
     longCodes = pLongCodes;
-    parameters = new Object[] { codes, longCodes };
+    bookingIDs = pBookingIDs;
+    parameters = new Object[] { codes, longCodes, bookingIDs };
   }
 
   /**
@@ -3704,7 +3715,7 @@ final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_RESTPro
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
     long lStartTime = System.nanoTime();
-    Serializable lResult = (Serializable) lService.testMulitvaluedDataTypeAsQueryParam(codes, longCodes);
+    Serializable lResult = (Serializable) lService.testMulitvaluedDataTypeAsQueryParam(codes, longCodes, bookingIDs);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
     // Trace result of service call.

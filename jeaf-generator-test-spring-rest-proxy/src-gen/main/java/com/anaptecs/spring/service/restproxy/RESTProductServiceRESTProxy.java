@@ -1127,10 +1127,12 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
    * 
    * @param pCodes
    * @param pLongCodes
+   * @param pBookingIDs
    * @return {@link String}
    */
   @Override
-  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes ) {
+  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
+      List<BookingID> pBookingIDs ) {
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder =
         RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
@@ -1142,18 +1144,25 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pCodes != null) {
-      List<String> pCodesAsBasicType = new ArrayList<String>(pCodes.size());
+      List<String> pCodesAsBasicType = new ArrayList<String>();
       for (IntegerCodeType lNext : pCodes) {
         pCodesAsBasicType.add(String.valueOf(lNext.getCode()));
       }
       lRequestBuilder.addQueryParam("codes", pCodesAsBasicType);
     }
     if (pLongCodes != null) {
-      Set<Long> pLongCodesAsBasicType = new HashSet<Long>(pLongCodes.size());
+      Set<Long> pLongCodesAsBasicType = new HashSet<Long>();
       for (LongCode lNext : pLongCodes) {
         pLongCodesAsBasicType.add(lNext.getCode());
       }
       lRequestBuilder.addQueryParam("longCodes", pLongCodesAsBasicType);
+    }
+    if (pBookingIDs != null) {
+      List<String> pBookingIDsAsBasicType = new ArrayList<String>();
+      for (BookingID lNext : pBookingIDs) {
+        pBookingIDsAsBasicType.add(lNext.getBookingID());
+      }
+      lRequestBuilder.addQueryParam("bookingIDs", pBookingIDsAsBasicType);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();

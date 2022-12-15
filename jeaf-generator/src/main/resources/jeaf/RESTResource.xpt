@@ -151,14 +151,45 @@ public class «name»Resource {
 	  	«FOREACH this.getDataTypeParameters() AS basicParam»
 	    	«IF basicParam.type.isCompositeDataTypeForRESTResource()»
 	    		«IF generatePublicObjectView()»
-					«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»(«basicParam.name»AsBasicType).build();
+					«IF basicParam.isMultivalued() == false»
+						«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»(«basicParam.name»AsBasicType).build();
+					«ELSE»
+		    			«basicParam.getCollectionType()»<«basicParam.type.fqn()»> «basicParam.name»;
+					    if («basicParam.name»AsBasicType != null) {
+					      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>();
+					      for (String lNext : «basicParam.name»AsBasicType) {
+				    		«basicParam.name».add(«basicParam.type.fqn()».builder().set«basicParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»(lNext).build());
+					      }
+					    }
+					    else {
+					      «basicParam.name» = «basicParam.getEmptyCollectionOperation()»;
+					    }
+					«ENDIF»
 	    		«ELSE»
-		    		«IF isTargetRuntimeJEAF()»
-		    			«basicParam.type.fqn()» «basicParam.name» = this.getCompositeTypeConverter().deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
-		    		«ENDIF»
-		    		«IF isTargetRuntimeSpring()»
-		    			«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
-		    		«ENDIF»
+	    			«IF basicParam.isMultivalued() == false»
+			    		«IF isTargetRuntimeJEAF()»
+			    			«basicParam.type.fqn()» «basicParam.name» = this.getCompositeTypeConverter().deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+			    		«ENDIF»
+			    		«IF isTargetRuntimeSpring()»
+			    			«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+			    		«ENDIF»
+			    	«ELSE»
+		    			«basicParam.getCollectionType()»<«basicParam.type.fqn()»> «basicParam.name»;
+					    if («basicParam.name»AsBasicType != null) {
+					      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>();
+					      for (String lNext : «basicParam.name»AsBasicType) {
+				    		«IF isTargetRuntimeJEAF()»
+				    			«basicParam.name».add(this.getCompositeTypeConverter().deserializeObject(lNext, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES));
+				    		«ENDIF»
+				    		«IF isTargetRuntimeSpring()»
+				    			«basicParam.name».add(compositeTypeConverter.deserializeObject(lNext, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES));
+				    		«ENDIF»
+					      }
+					    }
+					    else {
+					      «basicParam.name» = «basicParam.getEmptyCollectionOperation()»;
+					    }
+			    	«ENDIF»
 	    		«ENDIF»
 	    	«ELSE»
 	    		«IF basicParam.isMultivalued() == false»
@@ -289,9 +320,23 @@ public class «name»Resource {
 	  	«FOREACH this.getDataTypeParameters() AS basicParam»
 	    	«IF basicParam.type.isCompositeDataTypeForRESTResource()»
 	    		«IF generatePublicObjectView()»
-					«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.attribute().first().name.toFirstUpper()»(«basicParam.name»AsBasicType).build();
+					// Fixed bug hopefully
+					«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»(«basicParam.name»AsBasicType).build();
 	    		«ELSE»
-	    			«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+	    			«IF basicParam.isMultivalued() == false»
+	    				«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+	    			«ELSE»
+					    «basicParam.getCollectionType()»<«basicParam.type.fqn()»> «basicParam.name»;
+					    if («basicParam.name»AsBasicType != null) {
+					      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>();
+					      for (String lNext : «basicParam.name»AsBasicType) {
+					        «basicParam.name».add(compositeTypeConverter.deserializeObject(lNext, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES));
+					      }
+					    }
+					    else {
+					      «basicParam.name» = «basicParam.getEmptyCollectionOperation()»;
+					    }
+	    			«ENDIF»
 	    		«ENDIF»
 	    	«ELSE»
 	    		«IF basicParam.isMultivalued() == false»
@@ -445,7 +490,7 @@ public class «name»Resource {
 «EXPAND java::Helper::GenerateDeprecationAnnotation»
 	«IF this.type.isOpenAPIDataType() && this.isRequestBody() == false»
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
-	  		String «this.name»AsBasicType
+	  		String«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
 	  	«ELSE»
 	  		«this.type.attribute().first().fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
 	  	«ENDIF»

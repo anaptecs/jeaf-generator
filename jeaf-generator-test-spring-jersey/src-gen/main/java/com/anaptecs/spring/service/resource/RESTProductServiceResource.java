@@ -519,7 +519,8 @@ public class RESTProductServiceResource {
   @Path("testMulitvaluedDataTypeAsQueryParam")
   @GET
   public Response testMulitvaluedDataTypeAsQueryParam( @QueryParam("codes") int[] pCodesAsBasicType,
-      @QueryParam("longCodes") Long[] pLongCodesAsBasicType ) {
+      @QueryParam("longCodes") Long[] pLongCodesAsBasicType,
+      @QueryParam("bookingIDs") String[] pBookingIDsAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     List<IntegerCodeType> pCodes;
     if (pCodesAsBasicType != null) {
@@ -541,8 +542,18 @@ public class RESTProductServiceResource {
     else {
       pLongCodes = Collections.emptySet();
     }
+    List<BookingID> pBookingIDs;
+    if (pBookingIDsAsBasicType != null) {
+      pBookingIDs = new ArrayList<BookingID>();
+      for (String lNext : pBookingIDsAsBasicType) {
+        pBookingIDs.add(compositeTypeConverter.deserializeObject(lNext, BookingID.class, BOOKINGID_SERIALIZED_CLASSES));
+      }
+    }
+    else {
+      pBookingIDs = Collections.emptyList();
+    }
     // Delegate request to service.
-    String lResult = rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes);
+    String lResult = rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes, pBookingIDs);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 

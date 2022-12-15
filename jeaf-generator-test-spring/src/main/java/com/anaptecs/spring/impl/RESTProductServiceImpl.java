@@ -213,7 +213,8 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes ) {
+  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
+      List<BookingID> pBookingIDs ) {
     String lResult = "";
     for (IntegerCodeType lNext : pCodes) {
       lResult = lResult + lNext.getCode() + ".";

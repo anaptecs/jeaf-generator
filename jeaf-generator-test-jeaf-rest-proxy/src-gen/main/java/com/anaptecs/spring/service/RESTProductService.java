@@ -271,9 +271,11 @@ public interface RESTProductService extends Service {
    * 
    * @param pCodes
    * @param pLongCodes
+   * @param pBookingIDs
    * @return {@link String}
    */
-  String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes );
+  String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
+      List<BookingID> pBookingIDs );
 
   /**
    * 
