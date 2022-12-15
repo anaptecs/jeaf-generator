@@ -11,6 +11,11 @@ import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.AfterAll;
@@ -27,9 +32,12 @@ import org.zalando.problem.ThrowableProblem;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.IntegerCodeType;
+import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.TechnicalHeaderContext;
 import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.ProductService;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
@@ -88,6 +96,23 @@ public class SpringRESTServiceProxyTest {
         "bookingCode",
         "4711-0815")).respond(mockResponse("\"4711-0815\""));
 
+    lClient.when(mockRequest("/rest-products/testPrimitiveArrayAsQueryParam", "GET").withQueryStringParameter(
+        "intValues", "1", "2", "47", "13")).respond(mockResponse("\"1+2+47+13\""));
+
+    lClient.when(mockRequest("/rest-products/testSimpleTypesAsQueryParams", "GET").withQueryStringParameter(
+        "strings", "Hello", "World")).respond(mockResponse("\"Hello_World_!\""));
+
+    lClient.when(mockRequest("/rest-products/testPrimitiveWrapperArrayAsQueryParam", "GET").withQueryStringParameter(
+        "integers", "1", "2", "13", "47")).respond(mockResponse("\"1-2-47-13\""));
+
+    lClient.when(mockRequest("/rest-products/testMulitvaluedDataTypeAsQueryParam", "GET").withQueryStringParameter(
+        "codes", "47", "11").withQueryStringParameter("longCodes", "4710815123", "47110815999")).respond(mockResponse(
+            "\"47-11\""));
+
+    lClient.when(mockRequest("/rest-products/testMulitvaluedDataTypeAsBeanQueryParam", "GET").withQueryStringParameter(
+        "codes", "123456").withQueryStringParameter("longCodes", "99998888775566211", "-123456789")
+        .withQueryStringParameter("doubleCodes", "3.1415", "47.11")).respond(mockResponse(
+            "\"47-11-123456\""));
   }
 
   @AfterAll
@@ -164,5 +189,45 @@ public class SpringRESTServiceProxyTest {
     lResult = productService.testDataTypeAsBeanQueryParam(QueryBeanParam.builder().setBookingCode(BOOKING_CODE)
         .build());
     assertEquals("4711-0815", lResult);
+  }
+
+  @Test
+  void testMultivaluedQueryParams( ) {
+    String lResult = productService.testPrimitiveArrayAsQueryParam(new int[] { 1, 2, 47, 13 });
+    assertEquals("1+2+47+13", lResult);
+
+    lResult = productService.testSimpleTypesAsQueryParams(Arrays.asList("Hello", "World"));
+    assertEquals("Hello_World_!", lResult);
+
+    SortedSet<Integer> lSortedSet = new TreeSet<>();
+    lSortedSet.add(1);
+    lSortedSet.add(2);
+    lSortedSet.add(47);
+    lSortedSet.add(13);
+    lResult = productService.testPrimitiveWrapperArrayAsQueryParam(lSortedSet);
+    assertEquals("1-2-47-13", lResult);
+  }
+
+  @Test
+  void testMulitvaluedDataTypeAsQueryParam( ) {
+    Set<LongCode> lLongCodes = new HashSet<>();
+    lLongCodes.add(LongCode.builder().setCode(4710815123L).build());
+    lLongCodes.add(LongCode.builder().setCode(47110815999L).build());
+    String lResult = productService.testMulitvaluedDataTypeAsQueryParam(Arrays.asList(IntegerCodeType.builder().setCode(
+        47).build(), IntegerCodeType.builder().setCode(11).build()), lLongCodes, null);
+    assertEquals("47-11", lResult);
+  }
+
+  @Test
+  void testMulitvaluedDataTypeAsBeanQueryParam( ) {
+    IntegerCodeType[] lCodes = new IntegerCodeType[] { IntegerCodeType.builder().setCode(123456).build() };
+    LongCode[] lLongCodes = new LongCode[] { LongCode.builder().setCode(99998888775566211L).build(), LongCode.builder()
+        .setCode(-123456789L).build() };
+    Set<DoubleCode> lDoubleCodes = new HashSet<>(Arrays.asList(new DoubleCode[] { DoubleCode.builder().setCode(3.1415)
+        .build(), DoubleCode.builder().setCode(47.11).build() }));
+    DataTypesQueryBean lQueryBean = DataTypesQueryBean.builder().setCodes(lCodes).setLongCodes(lLongCodes)
+        .setDoubleCodes(lDoubleCodes).build();
+    String lResult = productService.testMulitvaluedDataTypeAsBeanQueryParam(lQueryBean);
+    assertEquals("47-11-123456", lResult);
   }
 }

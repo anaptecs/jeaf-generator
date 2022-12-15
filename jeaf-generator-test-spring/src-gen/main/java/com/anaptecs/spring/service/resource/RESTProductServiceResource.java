@@ -18,9 +18,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,14 +44,18 @@ import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
+import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.InventoryType;
+import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
@@ -420,7 +426,7 @@ public class RESTProductServiceResource {
   public String testDataTypesAsHeaderParam(
       @RequestHeader(name = "BookingID", required = true) String pBookingIDAsBasicType,
       @RequestHeader(name = "BookingCode", required = true) String pBookingCodeAsBasicType,
-      @RequestHeader(name = "DoubleCode", required = true) double pDoubleCodeAsBasicType ) {
+      @RequestHeader(name = "DoubleCode", required = true) Double pDoubleCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     BookingID pBookingID =
         compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class, BOOKINGID_SERIALIZED_CLASSES);
@@ -437,12 +443,14 @@ public class RESTProductServiceResource {
   public String testDataTypesAsHeaderBeanParam(
       @RequestHeader(name = "bookingID", required = true) String pBookingIDAsBasicType,
       @RequestHeader(name = "bookingCode", required = true) String pBookingCodeAsBasicType,
-      @RequestHeader(name = "DoubleCode", required = true) double pDoubleCodeAsBasicType ) {
+      @RequestHeader(name = "DoubleCode", required = true) Double pDoubleCodeAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     AdvancedHeader.Builder lContextBuilder = AdvancedHeader.builder();
-    lContextBuilder.setBookingID(
-        compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class, BOOKINGID_SERIALIZED_CLASSES));
+    if (pBookingIDAsBasicType != null) {
+      lContextBuilder.setBookingID(compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class,
+          BOOKINGID_SERIALIZED_CLASSES));
+    }
     lContextBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
     lContextBuilder.setDoubleCode(DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build());
     AdvancedHeader pContext = lContextBuilder.build();
@@ -484,5 +492,149 @@ public class RESTProductServiceResource {
     QueryBeanParam pBeanParam = lBeanParamBuilder.build();
     // Delegate request to service.
     return rESTProductService.testDataTypeAsBeanQueryParam(pBeanParam);
+  }
+
+  /**
+   * {@link RESTProductService#testPrimitiveArrayAsQueryParam()}
+   */
+  @RequestMapping(path = "testPrimitiveArrayAsQueryParam", method = { RequestMethod.GET })
+  public String testPrimitiveArrayAsQueryParam( @RequestParam(name = "intValues", required = true) int[] pIntValues ) {
+    // Delegate request to service.
+    return rESTProductService.testPrimitiveArrayAsQueryParam(pIntValues);
+  }
+
+  /**
+   * {@link RESTProductService#testSimpleTypesAsQueryParams()}
+   */
+  @RequestMapping(path = "testSimpleTypesAsQueryParams", method = { RequestMethod.GET })
+  public String testSimpleTypesAsQueryParams(
+      @RequestParam(name = "strings", required = false) List<String> pStrings ) {
+    // Delegate request to service.
+    return rESTProductService.testSimpleTypesAsQueryParams(pStrings);
+  }
+
+  /**
+   * {@link RESTProductService#testPrimitiveWrapperArrayAsQueryParam()}
+   */
+  @RequestMapping(path = "testPrimitiveWrapperArrayAsQueryParam", method = { RequestMethod.GET })
+  public String testPrimitiveWrapperArrayAsQueryParam(
+      @RequestParam(name = "integers", required = true) Set<Integer> pIntegers ) {
+    // Delegate request to service.
+    return rESTProductService.testPrimitiveWrapperArrayAsQueryParam(pIntegers);
+  }
+
+  /**
+   * {@link RESTProductService#testMultivaluedQueryParamsBean()}
+   */
+  @RequestMapping(path = "testMultivaluedQueryParamsBean", method = { RequestMethod.GET })
+  public String testMultivaluedQueryParamsBean( @RequestParam(name = "intArray", required = false) int[] pIntArray,
+      @RequestParam(name = "strings", required = false) String[] pStrings,
+      @RequestParam(name = "integers", required = false) Integer[] pIntegers ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    MultivaluedQueryParamsBean.Builder lBeanBuilder = MultivaluedQueryParamsBean.builder();
+    lBeanBuilder.setIntArray(pIntArray);
+    lBeanBuilder.setStrings(pStrings);
+    lBeanBuilder.setIntegers(pIntegers);
+    MultivaluedQueryParamsBean pBean = lBeanBuilder.build();
+    // Delegate request to service.
+    return rESTProductService.testMultivaluedQueryParamsBean(pBean);
+  }
+
+  /**
+   * {@link RESTProductService#testMulitvaluedDataTypeAsQueryParam()}
+   */
+  @RequestMapping(path = "testMulitvaluedDataTypeAsQueryParam", method = { RequestMethod.GET })
+  public String testMulitvaluedDataTypeAsQueryParam(
+      @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
+      @RequestParam(name = "longCodes", required = true) Long[] pLongCodesAsBasicType,
+      @RequestParam(name = "bookingIDs", required = false) String[] pBookingIDsAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    List<IntegerCodeType> pCodes;
+    if (pCodesAsBasicType != null) {
+      pCodes = new ArrayList<IntegerCodeType>();
+      for (int lNext : pCodesAsBasicType) {
+        pCodes.add(IntegerCodeType.builder().setCode(lNext).build());
+      }
+    }
+    else {
+      pCodes = Collections.emptyList();
+    }
+    Set<LongCode> pLongCodes;
+    if (pLongCodesAsBasicType != null) {
+      pLongCodes = new HashSet<LongCode>();
+      for (Long lNext : pLongCodesAsBasicType) {
+        pLongCodes.add(LongCode.builder().setCode(lNext).build());
+      }
+    }
+    else {
+      pLongCodes = Collections.emptySet();
+    }
+    List<BookingID> pBookingIDs;
+    if (pBookingIDsAsBasicType != null) {
+      pBookingIDs = new ArrayList<BookingID>();
+      for (String lNext : pBookingIDsAsBasicType) {
+        pBookingIDs.add(compositeTypeConverter.deserializeObject(lNext, BookingID.class, BOOKINGID_SERIALIZED_CLASSES));
+      }
+    }
+    else {
+      pBookingIDs = Collections.emptyList();
+    }
+    // Delegate request to service.
+    return rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes, pBookingIDs);
+  }
+
+  /**
+   * {@link RESTProductService#testMulitvaluedDataTypeAsBeanQueryParam()}
+   */
+  @RequestMapping(path = "testMulitvaluedDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
+  public String testMulitvaluedDataTypeAsBeanQueryParam(
+      @RequestParam(name = "longCodes", required = false) Long[] pLongCodesAsBasicType,
+      @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
+      @RequestParam(name = "doubleCodes", required = false) Double[] pDoubleCodesAsBasicType,
+      @RequestParam(name = "bookingIDs", required = false) String[] pBookingIDsAsBasicType,
+      @RequestParam(name = "bookingIDsArray", required = false) String[] pBookingIDsArrayAsBasicType ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    DataTypesQueryBean.Builder lQueryBeanBuilder = DataTypesQueryBean.builder();
+    if (pLongCodesAsBasicType != null) {
+      LongCode[] lLongCodes = new LongCode[pLongCodesAsBasicType.length];
+      for (int i = 0; i < pLongCodesAsBasicType.length; i++) {
+        lLongCodes[i] = LongCode.builder().setCode(pLongCodesAsBasicType[i]).build();
+      }
+      lQueryBeanBuilder.setLongCodes(lLongCodes);
+    }
+    if (pCodesAsBasicType != null) {
+      IntegerCodeType[] lCodes = new IntegerCodeType[pCodesAsBasicType.length];
+      for (int i = 0; i < pCodesAsBasicType.length; i++) {
+        lCodes[i] = IntegerCodeType.builder().setCode(pCodesAsBasicType[i]).build();
+      }
+      lQueryBeanBuilder.setCodes(lCodes);
+    }
+    if (pDoubleCodesAsBasicType != null) {
+      Set<DoubleCode> lDoubleCodes = new HashSet<DoubleCode>();
+      for (Double lNext : pDoubleCodesAsBasicType) {
+        lDoubleCodes.add(DoubleCode.builder().setCode(lNext).build());
+      }
+      lQueryBeanBuilder.setDoubleCodes(lDoubleCodes);
+    }
+    if (pBookingIDsAsBasicType != null) {
+      Set<BookingID> lBookingIDs = new HashSet<BookingID>();
+      for (String lNext : pBookingIDsAsBasicType) {
+        lBookingIDs.add(compositeTypeConverter.deserializeObject(lNext, BookingID.class, BOOKINGID_SERIALIZED_CLASSES));
+      }
+      lQueryBeanBuilder.setBookingIDs(lBookingIDs);
+    }
+    if (pBookingIDsArrayAsBasicType != null) {
+      BookingID[] lBookingIDsArray = new BookingID[pBookingIDsArrayAsBasicType.length];
+      for (int i = 0; i < pBookingIDsArrayAsBasicType.length; i++) {
+        lBookingIDsArray[i] = compositeTypeConverter.deserializeObject(pBookingIDsArrayAsBasicType[i], BookingID.class,
+            BOOKINGID_SERIALIZED_CLASSES);
+      }
+      lQueryBeanBuilder.setBookingIDsArray(lBookingIDsArray);
+    }
+    DataTypesQueryBean pQueryBean = lQueryBeanBuilder.build();
+    // Delegate request to service.
+    return rESTProductService.testMulitvaluedDataTypeAsBeanQueryParam(pQueryBean);
   }
 }

@@ -209,13 +209,34 @@ public class «name»RESTProxy implements «this.fqn()» {
 	   «IF this.getQueryParams().size > 0 || this.getBeanParams().type.getAllAttributesFromHierarchy().typeSelect(JMM::QueryParam).size > 0»
 	   // Add query parameter(s) to request
 	   «ENDIF»
-	   
     	«FOREACH this.getQueryParams() AS queryParam »
-			«IF queryParam.type.isPrimitiveType() == false»
+			«IF queryParam.type.isPrimitiveType() == false || queryParam.isMultivalued()»
 			if («queryParam.name» != null) {
 			«ENDIF»
+			«IF queryParam.isMultivalued() == true && queryParam.type.isOpenAPIDataType()»
+		      «IF queryParam.type.getAllAttributesFromHierarchy().first().type.isPrimitiveType()»
+			      «queryParam.getCollectionType()»<String> «queryParam.name»AsBasicType = new «queryParam.getCollectionImplType()»<String>();
+			      for («queryParam.type.fqn()» lNext : «queryParam.name») {
+			        «queryParam.name»AsBasicType.add(String.valueOf(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»()));
+			      }
+		      «ELSE»
+			      «IF queryParam.type.isCompositeDataType()»
+				      «queryParam.getCollectionType()»<String> «queryParam.name»AsBasicType = new «queryParam.getCollectionImplType()»<String>();
+				      for («queryParam.type.fqn()» lNext : «queryParam.name») {
+				        «queryParam.name»AsBasicType.add(lNext.get«queryParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»());
+				      }
+			      «ELSE»
+				      «queryParam.getCollectionType()»<«queryParam.type.getAllAttributesFromHierarchy().first().fqn()»> «queryParam.name»AsBasicType = new «queryParam.getCollectionImplType()»<«queryParam.type.getAllAttributesFromHierarchy().first().fqn()»>();
+				      for («queryParam.type.fqn()» lNext : «queryParam.name») {
+				        «queryParam.name»AsBasicType.add(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»());
+				      }
+			      «ENDIF»
+		      «ENDIF»
+		      lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «queryParam.name»AsBasicType);
+			«ELSE»
 			lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «EXPAND QueryParamValueAccessor FOR queryParam»);
-			«IF queryParam.type.isPrimitiveType() == false»
+			«ENDIF»
+			«IF queryParam.type.isPrimitiveType() == false  || queryParam.isMultivalued()»
 			}
 			«ENDIF»
     	«ENDFOREACH»
@@ -225,11 +246,27 @@ public class «name»RESTProxy implements «this.fqn()» {
     		if(«beanParam.name» != null) {
     		«ENDIF»
     		«FOREACH beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::QueryParam) AS queryParam»
-				«IF queryParam.type.isPrimitiveType() == false»
+				«IF queryParam.type.isPrimitiveType() == false || queryParam.isMultivalued()»
 				if («beanParam.name».«queryParam.asGetter()»() != null) {
 				«ENDIF»
-		    	lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «EXPAND QueryParamValueAccessorForBeanParam(beanParam) FOR queryParam»);
-				«IF queryParam.type.isPrimitiveType() == false»
+		    	«IF queryParam.isMultivalued() == true && queryParam.type.isOpenAPIDataType()»
+		    		«queryParam.getCollectionType()»<String> «queryParam.asLocalVar()» = new «queryParam.getCollectionImplType()»<String>();
+		    		for(«queryParam.type.fqn()» lNext : «beanParam.name».«queryParam.asGetter()»()) {
+		    			«IF queryParam.type.isCompositeDataType()»
+		    				«queryParam.asLocalVar()».add(lNext.get«queryParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»());
+		    			«ELSE»
+			    			«IF queryParam.type.getAllAttributesFromHierarchy().first().type.isPrimitiveType()»
+			    				«queryParam.asLocalVar()».add(String.valueOf(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»()));
+			    			«ELSE»
+			    				«queryParam.asLocalVar()».add(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»().toString());
+			    			«ENDIF»
+			    		«ENDIF»
+		    		}
+		    		lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «queryParam.asLocalVar()»);
+		    	«ELSE»
+		    		lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «EXPAND QueryParamValueAccessorForBeanParam(beanParam) FOR queryParam»);
+		    	«ENDIF»
+				«IF queryParam.type.isPrimitiveType() == false || queryParam.isMultivalued()»
 				}
 				«ENDIF»
     		«ENDFOREACH»
@@ -347,7 +384,11 @@ public class «name»RESTProxy implements «this.fqn()» {
 		«name»
 	«ELSE»
 		«IF type.isPrimitiveType()»
-			String.valueOf(«name»)
+			«IF this.isMultivalued() == false»
+				String.valueOf(«name»)
+			«ELSE»
+				«name»
+			«ENDIF»
 		«ELSE»
 			«IF type.isOpenAPIDataType()»
 				«IF type.isCompositeDataType()»
@@ -357,13 +398,21 @@ public class «name»RESTProxy implements «this.fqn()» {
 				«ENDIF»
 			«ELSE»
 				«IF isTargetRuntimeJEAF()»
-				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«name»)
+					«IF this.isMultivalued() == false»
+						com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«name»)
+					«ELSE»
+						«name»
+					«ENDIF»
 				«ENDIF»
 				«IF isTargetRuntimeSpring()»
 				«IF type.isAnyDateType()»
 				«EXPAND DateConversion FOR this»
 				«ELSE»
-				«name».toString()
+					«IF this.isMultivalued() == false»
+						«name».toString()
+					«ELSE»
+						«name»
+					«ENDIF»
 				«ENDIF»
 				«ENDIF»
 			«ENDIF»
@@ -376,7 +425,11 @@ public class «name»RESTProxy implements «this.fqn()» {
 		«beanParam.name».«this.asGetter()»()
 	«ELSE»
 		«IF type.isPrimitiveType()»
+			«IF this.isMultivalued() == false»
 			String.valueOf(«beanParam.name».«this.asGetter()»())
+			«ELSE»
+			«beanParam.name».«this.asGetter()»()
+			«ENDIF»
 		«ELSE»
 			«IF type.isOpenAPIDataType()»
 				«IF type.isCompositeDataType()»
@@ -386,14 +439,22 @@ public class «name»RESTProxy implements «this.fqn()» {
 				«ENDIF»
 			«ELSE»
 				«IF isTargetRuntimeJEAF()»
-				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«beanParam.name».«this.asGetter()»())
+					«IF this.isMultivalued() == false»
+					com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«beanParam.name».«this.asGetter()»())
+					«ELSE»
+					java.util.Arrays.asList(«beanParam.name».«this.asGetter()»())
+					«ENDIF»
 				«ENDIF»
 				«IF isTargetRuntimeSpring()»
-				«IF type.isAnyDateType()»
-				«EXPAND DateConversionForBeanParam(beanParam) FOR this»
-				«ELSE»
-				«beanParam.name».«this.asGetter()»().toString()
-				«ENDIF»
+					«IF type.isAnyDateType()»
+						«EXPAND DateConversionForBeanParam(beanParam) FOR this»
+					«ELSE»
+						«IF this.isMultivalued() == false»
+							«beanParam.name».«this.asGetter()»().toString()
+						«ELSE»
+							java.util.Arrays.asList(«beanParam.name».«this.asGetter()»())
+						«ENDIF»
+					«ENDIF»
 				«ENDIF»
 			«ENDIF»
 		«ENDIF»

@@ -1,6 +1,7 @@
 import uml;
 import JMM;
 import Persistence;
+extension java::GeneratorCommons;
 
 List[PersistentObject] entity (Class dao) : dao.clientDependency.supplier.typeSelect(PersistentObject);
 
@@ -8,9 +9,10 @@ boolean hasEntities (Class dao) : !dao.entity().isEmpty;
 
 boolean isUnnamed (NamedElement elem) : elem.name.length == 0;
 
-List[Property] attribute (Class c) : c.ownedAttribute.select(a|PrimitiveType.isInstance(a.type));
-
-List[Property] attribute (Type c) : "should take the function with class";
+List[Property] attribute (Type type): 
+	if type.isEnumeration()
+	then ((uml::Enumeration) type).ownedAttribute
+	else ((uml::Class) type).ownedAttribute;
 
 List[Comment] comment (Class c) : c.ownedAttribute.select(a|Comment.isInstance(a.type));
 

@@ -17,6 +17,7 @@ import java.time.OffsetTime;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -31,13 +32,17 @@ import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
+import com.anaptecs.spring.base.IntegerCodeType;
+import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 
 /**
@@ -238,4 +243,49 @@ public interface RESTProductServiceRESTProxyServiceProvider extends ServiceProvi
    * @return {@link String}
    */
   String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam );
+
+  /**
+   * 
+   * @param pIntValues
+   * @return {@link String}
+   */
+  String testPrimitiveArrayAsQueryParam( int[] pIntValues );
+
+  /**
+   * 
+   * @param pStrings
+   * @return {@link String}
+   */
+  String testSimpleTypesAsQueryParams( List<String> pStrings );
+
+  /**
+   * 
+   * @param pIntegers
+   * @return {@link String}
+   */
+  String testPrimitiveWrapperArrayAsQueryParam( Set<Integer> pIntegers );
+
+  /**
+   * 
+   * @param pBean
+   * @return {@link String}
+   */
+  String testMultivaluedQueryParamsBean( MultivaluedQueryParamsBean pBean );
+
+  /**
+   * 
+   * @param pCodes
+   * @param pLongCodes
+   * @param pBookingIDs
+   * @return {@link String}
+   */
+  String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
+      List<BookingID> pBookingIDs );
+
+  /**
+   * 
+   * @param pQueryBean
+   * @return {@link String}
+   */
+  String testMulitvaluedDataTypeAsBeanQueryParam( DataTypesQueryBean pQueryBean );
 }

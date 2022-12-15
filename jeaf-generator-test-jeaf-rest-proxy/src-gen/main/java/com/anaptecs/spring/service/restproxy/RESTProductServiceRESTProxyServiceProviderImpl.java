@@ -14,11 +14,15 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import com.anaptecs.jeaf.core.annotations.JEAFServiceProvider;
 import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
@@ -39,13 +43,17 @@ import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
+import com.anaptecs.spring.base.IntegerCodeType;
+import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
@@ -1044,6 +1052,219 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     if (pBeanParam != null) {
       if (pBeanParam.getBookingCode() != null) {
         lRequestBuilder.addQueryParam("bookingCode", pBeanParam.getBookingCode().getCode());
+      }
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pIntValues
+   * @return {@link String}
+   */
+  @Override
+  public String testPrimitiveArrayAsQueryParam( int[] pIntValues ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testPrimitiveArrayAsQueryParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pIntValues != null) {
+      lRequestBuilder.addQueryParam("intValues", pIntValues);
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pStrings
+   * @return {@link String}
+   */
+  @Override
+  public String testSimpleTypesAsQueryParams( List<String> pStrings ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testSimpleTypesAsQueryParams");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pStrings != null) {
+      lRequestBuilder.addQueryParam("strings", pStrings);
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pIntegers
+   * @return {@link String}
+   */
+  @Override
+  public String testPrimitiveWrapperArrayAsQueryParam( Set<Integer> pIntegers ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testPrimitiveWrapperArrayAsQueryParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pIntegers != null) {
+      lRequestBuilder.addQueryParam("integers", pIntegers);
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pBean
+   * @return {@link String}
+   */
+  @Override
+  public String testMultivaluedQueryParamsBean( MultivaluedQueryParamsBean pBean ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testMultivaluedQueryParamsBean");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pBean != null) {
+      if (pBean.getIntArray() != null) {
+        lRequestBuilder.addQueryParam("intArray", pBean.getIntArray());
+      }
+      if (pBean.getStrings() != null) {
+        lRequestBuilder.addQueryParam("strings", pBean.getStrings());
+      }
+      if (pBean.getIntegers() != null) {
+        lRequestBuilder.addQueryParam("integers", Arrays.asList(pBean.getIntegers()));
+      }
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pCodes
+   * @param pLongCodes
+   * @param pBookingIDs
+   * @return {@link String}
+   */
+  @Override
+  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
+      List<BookingID> pBookingIDs ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testMulitvaluedDataTypeAsQueryParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pCodes != null) {
+      List<String> pCodesAsBasicType = new ArrayList<String>();
+      for (IntegerCodeType lNext : pCodes) {
+        pCodesAsBasicType.add(String.valueOf(lNext.getCode()));
+      }
+      lRequestBuilder.addQueryParam("codes", pCodesAsBasicType);
+    }
+    if (pLongCodes != null) {
+      Set<Long> pLongCodesAsBasicType = new HashSet<Long>();
+      for (LongCode lNext : pLongCodes) {
+        pLongCodesAsBasicType.add(lNext.getCode());
+      }
+      lRequestBuilder.addQueryParam("longCodes", pLongCodesAsBasicType);
+    }
+    if (pBookingIDs != null) {
+      List<String> pBookingIDsAsBasicType = new ArrayList<String>();
+      for (BookingID lNext : pBookingIDs) {
+        pBookingIDsAsBasicType.add(lNext.getBookingID());
+      }
+      lRequestBuilder.addQueryParam("bookingIDs", pBookingIDsAsBasicType);
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pQueryBean
+   * @return {@link String}
+   */
+  @Override
+  public String testMulitvaluedDataTypeAsBeanQueryParam( DataTypesQueryBean pQueryBean ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testMulitvaluedDataTypeAsBeanQueryParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pQueryBean != null) {
+      if (pQueryBean.getLongCodes() != null) {
+        Set<String> lLongCodes = new HashSet<String>();
+        for (LongCode lNext : pQueryBean.getLongCodes()) {
+          lLongCodes.add(lNext.getCode().toString());
+        }
+        lRequestBuilder.addQueryParam("longCodes", lLongCodes);
+      }
+      if (pQueryBean.getCodes() != null) {
+        Set<String> lCodes = new HashSet<String>();
+        for (IntegerCodeType lNext : pQueryBean.getCodes()) {
+          lCodes.add(String.valueOf(lNext.getCode()));
+        }
+        lRequestBuilder.addQueryParam("codes", lCodes);
+      }
+      if (pQueryBean.getDoubleCodes() != null) {
+        Set<String> lDoubleCodes = new HashSet<String>();
+        for (DoubleCode lNext : pQueryBean.getDoubleCodes()) {
+          lDoubleCodes.add(lNext.getCode().toString());
+        }
+        lRequestBuilder.addQueryParam("doubleCodes", lDoubleCodes);
+      }
+      if (pQueryBean.getBookingIDs() != null) {
+        Set<String> lBookingIDs = new HashSet<String>();
+        for (BookingID lNext : pQueryBean.getBookingIDs()) {
+          lBookingIDs.add(lNext.getBookingID());
+        }
+        lRequestBuilder.addQueryParam("bookingIDs", lBookingIDs);
+      }
+      if (pQueryBean.getBookingIDsArray() != null) {
+        Set<String> lBookingIDsArray = new HashSet<String>();
+        for (BookingID lNext : pQueryBean.getBookingIDsArray()) {
+          lBookingIDsArray.add(lNext.getBookingID());
+        }
+        lRequestBuilder.addQueryParam("bookingIDsArray", lBookingIDsArray);
       }
     }
     // Execute request and return result.

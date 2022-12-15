@@ -23,7 +23,7 @@ public class DoubleCode {
   /**
    * 
    */
-  private double code;
+  private Double code;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -70,7 +70,7 @@ public class DoubleCode {
     /**
      * 
      */
-    private double code;
+    private Double code;
 
     /**
      * Use {@link DoubleCode#builder()} instead of private constructor to create new builder.
@@ -93,7 +93,7 @@ public class DoubleCode {
      * 
      * @param pCode Value to which the attribute "code" should be set.
      */
-    public Builder setCode( double pCode ) {
+    public Builder setCode( Double pCode ) {
       // Assign value to attribute
       code = pCode;
       return this;
@@ -113,9 +113,9 @@ public class DoubleCode {
    * Method returns the attribute "code".
    * 
    * 
-   * @return double Value to which the attribute "code" is set.
+   * @return Double Value to which the attribute "code" is set.
    */
-  public double getCode( ) {
+  public Double getCode( ) {
     return code;
   }
 
@@ -125,7 +125,7 @@ public class DoubleCode {
    * 
    * @param pCode Value to which the attribute "code" should be set.
    */
-  public void setCode( double pCode ) {
+  public void setCode( Double pCode ) {
     // Assign value to attribute
     code = pCode;
   }

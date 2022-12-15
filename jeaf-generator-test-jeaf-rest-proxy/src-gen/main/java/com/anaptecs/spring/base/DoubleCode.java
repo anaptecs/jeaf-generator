@@ -33,7 +33,7 @@ public class DoubleCode implements Serializable {
   /**
    * 
    */
-  private double code;
+  private Double code;
 
   /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
@@ -77,7 +77,7 @@ public class DoubleCode implements Serializable {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( double pCode ) {
+  public static Builder builder( Double pCode ) {
     Builder lBuilder = builder();
     lBuilder.setCode(pCode);
     return lBuilder;
@@ -91,7 +91,7 @@ public class DoubleCode implements Serializable {
     /**
      * 
      */
-    private double code;
+    private Double code;
 
     /**
      * Use {@link DoubleCode#builder()} instead of private constructor to create new builder.
@@ -114,7 +114,7 @@ public class DoubleCode implements Serializable {
      * 
      * @param pCode Value to which the attribute "code" should be set.
      */
-    public Builder setCode( double pCode ) {
+    public Builder setCode( Double pCode ) {
       // Assign value to attribute
       code = pCode;
       return this;
@@ -147,9 +147,9 @@ public class DoubleCode implements Serializable {
    * Method returns the attribute "code".
    * 
    * 
-   * @return double Value to which the attribute "code" is set.
+   * @return Double Value to which the attribute "code" is set.
    */
-  public double getCode( ) {
+  public Double getCode( ) {
     return code;
   }
 
@@ -159,7 +159,7 @@ public class DoubleCode implements Serializable {
    * 
    * @param pCode Value to which the attribute "code" should be set.
    */
-  public void setCode( double pCode ) {
+  public void setCode( Double pCode ) {
     // Assign value to attribute
     code = pCode;
   }

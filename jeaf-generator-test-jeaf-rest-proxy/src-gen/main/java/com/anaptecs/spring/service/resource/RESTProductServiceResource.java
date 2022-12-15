@@ -18,9 +18,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.BeanParam;
@@ -58,14 +60,18 @@ import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
+import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.InventoryType;
+import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
@@ -414,7 +420,7 @@ public class RESTProductServiceResource {
   @GET
   public Response testDataTypesAsHeaderParam( @HeaderParam("BookingID") String pBookingIDAsBasicType,
       @HeaderParam("BookingCode") String pBookingCodeAsBasicType,
-      @HeaderParam("DoubleCode") double pDoubleCodeAsBasicType ) {
+      @HeaderParam("DoubleCode") Double pDoubleCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     BookingID pBookingID = BookingID.builder().setBookingID(pBookingIDAsBasicType).build();
     BookingCode pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
@@ -472,6 +478,111 @@ public class RESTProductServiceResource {
     // Delegate request to service.
     RESTProductService lService = this.getRESTProductService();
     String lResult = lService.testDataTypeAsBeanQueryParam(pBeanParam);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testPrimitiveArrayAsQueryParam()}
+   */
+  @Path("testPrimitiveArrayAsQueryParam")
+  @GET
+  public Response testPrimitiveArrayAsQueryParam( @QueryParam("intValues") int[] pIntValues ) {
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testPrimitiveArrayAsQueryParam(pIntValues);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testSimpleTypesAsQueryParams()}
+   */
+  @Path("testSimpleTypesAsQueryParams")
+  @GET
+  public Response testSimpleTypesAsQueryParams( @QueryParam("strings") List<String> pStrings ) {
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testSimpleTypesAsQueryParams(pStrings);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testPrimitiveWrapperArrayAsQueryParam()}
+   */
+  @Path("testPrimitiveWrapperArrayAsQueryParam")
+  @GET
+  public Response testPrimitiveWrapperArrayAsQueryParam( @QueryParam("integers") Set<Integer> pIntegers ) {
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testPrimitiveWrapperArrayAsQueryParam(pIntegers);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testMultivaluedQueryParamsBean()}
+   */
+  @Path("testMultivaluedQueryParamsBean")
+  @GET
+  public Response testMultivaluedQueryParamsBean( @BeanParam MultivaluedQueryParamsBean pBean ) {
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testMultivaluedQueryParamsBean(pBean);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testMulitvaluedDataTypeAsQueryParam()}
+   */
+  @Path("testMulitvaluedDataTypeAsQueryParam")
+  @GET
+  public Response testMulitvaluedDataTypeAsQueryParam( @QueryParam("codes") int[] pCodesAsBasicType,
+      @QueryParam("longCodes") Long[] pLongCodesAsBasicType,
+      @QueryParam("bookingIDs") String[] pBookingIDsAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    List<IntegerCodeType> pCodes;
+    if (pCodesAsBasicType != null) {
+      pCodes = new ArrayList<IntegerCodeType>();
+      for (int lNext : pCodesAsBasicType) {
+        pCodes.add(IntegerCodeType.builder().setCode(lNext).build());
+      }
+    }
+    else {
+      pCodes = Collections.emptyList();
+    }
+    Set<LongCode> pLongCodes;
+    if (pLongCodesAsBasicType != null) {
+      pLongCodes = new HashSet<LongCode>();
+      for (Long lNext : pLongCodesAsBasicType) {
+        pLongCodes.add(LongCode.builder().setCode(lNext).build());
+      }
+    }
+    else {
+      pLongCodes = Collections.emptySet();
+    }
+    List<BookingID> pBookingIDs;
+    if (pBookingIDsAsBasicType != null) {
+      pBookingIDs = new ArrayList<BookingID>();
+      for (String lNext : pBookingIDsAsBasicType) {
+        pBookingIDs.add(BookingID.builder().setBookingID(lNext).build());
+      }
+    }
+    else {
+      pBookingIDs = Collections.emptyList();
+    }
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes, pBookingIDs);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testMulitvaluedDataTypeAsBeanQueryParam()}
+   */
+  @Path("testMulitvaluedDataTypeAsBeanQueryParam")
+  @GET
+  public Response testMulitvaluedDataTypeAsBeanQueryParam( @BeanParam DataTypesQueryBean pQueryBean ) {
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testMulitvaluedDataTypeAsBeanQueryParam(pQueryBean);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
