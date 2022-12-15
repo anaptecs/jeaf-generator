@@ -447,8 +447,10 @@ public class RESTProductServiceResource {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     AdvancedHeader.Builder lContextBuilder = AdvancedHeader.builder();
-    lContextBuilder.setBookingID(
-        compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class, BOOKINGID_SERIALIZED_CLASSES));
+    if (pBookingIDAsBasicType != null) {
+      lContextBuilder.setBookingID(compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class,
+          BOOKINGID_SERIALIZED_CLASSES));
+    }
     lContextBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
     lContextBuilder.setDoubleCode(DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build());
     AdvancedHeader pContext = lContextBuilder.build();
@@ -578,7 +580,9 @@ public class RESTProductServiceResource {
   public String testMulitvaluedDataTypeAsBeanQueryParam(
       @RequestParam(name = "longCodes", required = false) Long[] pLongCodesAsBasicType,
       @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
-      @RequestParam(name = "doubleCodes", required = false) Double[] pDoubleCodesAsBasicType ) {
+      @RequestParam(name = "doubleCodes", required = false) Double[] pDoubleCodesAsBasicType,
+      @RequestParam(name = "bookingIDs", required = false) String[] pBookingIDsAsBasicType,
+      @RequestParam(name = "bookingIDsArray", required = false) String[] pBookingIDsArrayAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     DataTypesQueryBean.Builder lQueryBeanBuilder = DataTypesQueryBean.builder();
@@ -602,6 +606,21 @@ public class RESTProductServiceResource {
         lDoubleCodes.add(DoubleCode.builder().setCode(lNext).build());
       }
       lQueryBeanBuilder.setDoubleCodes(lDoubleCodes);
+    }
+    if (pBookingIDsAsBasicType != null) {
+      Set<BookingID> lBookingIDs = new HashSet<BookingID>();
+      for (String lNext : pBookingIDsAsBasicType) {
+        lBookingIDs.add(compositeTypeConverter.deserializeObject(lNext, BookingID.class, BOOKINGID_SERIALIZED_CLASSES));
+      }
+      lQueryBeanBuilder.setBookingIDs(lBookingIDs);
+    }
+    if (pBookingIDsArrayAsBasicType != null) {
+      BookingID[] lBookingIDsArray = new BookingID[pBookingIDsArrayAsBasicType.length];
+      for (int i = 0; i < pBookingIDsArrayAsBasicType.length; i++) {
+        lBookingIDsArray[i] = compositeTypeConverter.deserializeObject(pBookingIDsArrayAsBasicType[i], BookingID.class,
+            BOOKINGID_SERIALIZED_CLASSES);
+      }
+      lQueryBeanBuilder.setBookingIDsArray(lBookingIDsArray);
     }
     DataTypesQueryBean pQueryBean = lQueryBeanBuilder.build();
     // Delegate request to service.

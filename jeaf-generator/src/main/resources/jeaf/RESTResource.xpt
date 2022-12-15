@@ -230,11 +230,28 @@ public class «name»Resource {
 		  «FOREACH beanParam.type.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false) AS attribute»
 		  		«IF attribute.type.isOpenAPIDataType()»
 		  			«IF attribute.type.isCompositeDataTypeForRESTResource()»
+		  				if(«attribute.asParameter()»AsBasicType != null) {
 		  				«IF generatePublicObjectView()»
 		  					«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.type.fqn()».builder().set«attribute.type.attribute().first().name.toFirstUpper()»(«attribute.asParameter()»AsBasicType).build());
 		  				«ELSE»
-		  					«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(compositeTypeConverter.deserializeObject(«attribute.asParameter()»AsBasicType, «attribute.type.fqn()».class, «attribute.type.name.toUpperCase()»_SERIALIZED_CLASSES));
+		  					«IF attribute.isMultivalued() == false»
+		  						«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(compositeTypeConverter.deserializeObject(«attribute.asParameter()»AsBasicType, «attribute.type.fqn()».class, «attribute.type.name.toUpperCase()»_SERIALIZED_CLASSES));
+		  					«ELSE»
+		  						«IF attribute.isCollectionType()»
+			  						«attribute.getCollectionType()»<«attribute.type.fqn()»> «attribute.asLocalVar()» = new «attribute.getCollectionImplType()»<«attribute.type.fqn()»>();
+			  						for(String lNext : «attribute.asParameter()»AsBasicType) {
+			  							«attribute.asLocalVar()».add(compositeTypeConverter.deserializeObject(lNext, «attribute.type.fqn()».class, «attribute.type.name.toUpperCase()»_SERIALIZED_CLASSES));
+			  						}
+			  					«ELSE»
+			  						«attribute.type.fqn()»[] «attribute.asLocalVar()»  = new «attribute.type.fqn()»[«attribute.asParameter()»AsBasicType.length];
+			  						for(int i = 0; i < «attribute.asParameter()»AsBasicType.length; i++) {
+			  							«attribute.asLocalVar()»[i] = compositeTypeConverter.deserializeObject(«attribute.asParameter()»AsBasicType[i], «attribute.type.fqn()».class, «attribute.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+			  						}
+			  					«ENDIF»
+			  					«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.asLocalVar()»);
+		  					«ENDIF»
 		  				«ENDIF»
+		  				}
 		  			«ELSE»
 		  				«IF attribute.isMultivalued() == false»
 		  					«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.type.fqn()».builder().set«attribute.type.attribute().first().name.toFirstUpper()»(«attribute.asParameter()»AsBasicType).build());
@@ -465,7 +482,7 @@ public class «name»Resource {
   «IF this.isBeanParam() == false»
 	  «IF this.type.isOpenAPIDataType() && this.isRequestBody() == false»
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
-	  		String «this.name»AsBasicType
+	  		String«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
 	  	«ELSE»
   			«this.type.attribute().first().fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
 	  	«ENDIF»
@@ -496,7 +513,7 @@ public class «name»Resource {
   «EXPAND java::Helper::GenerateDeprecationAnnotation»
 	  «IF this.type.isOpenAPIDataType() »
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
-	  		String «this.asParameter()»AsBasicType
+	  		String«IF this.isMultivalued()»[]«ENDIF» «this.asParameter()»AsBasicType
 	  	«ELSE»
 	  		«this.type.attribute().first().fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.asParameter()»AsBasicType
 	  	«ENDIF»
