@@ -16,6 +16,7 @@ import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -44,11 +45,13 @@ import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Product.Builder;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
+import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
@@ -244,5 +247,20 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public String testMulitvaluedDataTypeAsBeanQueryParam( DataTypesQueryBean pQueryBean ) {
     return null;
+  }
+
+  @Override
+  public String testMultiValuedHeaderFieldsInBeanParam( MultiValuedHeaderBeanParam pMultiValuedBean ) {
+    String lCodes = "";
+    for (StringCode lNext : pMultiValuedBean.getCodes()) {
+      lCodes = lCodes + "-" + lNext.getCode();
+    }
+    String lStringCodeList = "";
+    for (StringCode lNext : pMultiValuedBean.getStringCodeList()) {
+      lStringCodeList = lStringCodeList + "-" + lNext.getCode();
+    }
+    return Arrays.toString(pMultiValuedBean.getNames()) + "_" + Arrays.toString(pMultiValuedBean.getInts()) + "_"
+        + Arrays.toString(pMultiValuedBean.getDoubles()) + "_"
+        + lCodes + "_" + lStringCodeList;
   }
 }

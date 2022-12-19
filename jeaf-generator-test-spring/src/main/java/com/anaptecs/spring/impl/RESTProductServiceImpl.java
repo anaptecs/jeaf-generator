@@ -45,11 +45,13 @@ import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
+import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
@@ -235,5 +237,20 @@ public class RESTProductServiceImpl implements RESTProductService {
       lResult = lResult + lNext.getCode() + "_";
     }
     return lResult;
+  }
+
+  @Override
+  public String testMultiValuedHeaderFieldsInBeanParam( MultiValuedHeaderBeanParam pMultiValuedBean ) {
+    String lCodes = "";
+    for (StringCode lNext : pMultiValuedBean.getCodes()) {
+      lCodes = lCodes + "-" + lNext.getCode();
+    }
+    String lStringCodeList = "";
+    for (StringCode lNext : pMultiValuedBean.getStringCodeList()) {
+      lStringCodeList = lStringCodeList + "-" + lNext.getCode();
+    }
+    return Arrays.toString(pMultiValuedBean.getNames()) + "_" + Arrays.toString(pMultiValuedBean.getInts()) + "_"
+        + Arrays.toString(pMultiValuedBean.getDoubles()) + "_"
+        + lCodes + "_" + lStringCodeList;
   }
 }

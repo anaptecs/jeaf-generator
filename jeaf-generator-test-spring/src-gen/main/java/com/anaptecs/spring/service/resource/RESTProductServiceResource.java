@@ -50,11 +50,13 @@ import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
+import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
@@ -636,5 +638,40 @@ public class RESTProductServiceResource {
     DataTypesQueryBean pQueryBean = lQueryBeanBuilder.build();
     // Delegate request to service.
     return rESTProductService.testMulitvaluedDataTypeAsBeanQueryParam(pQueryBean);
+  }
+
+  /**
+   * {@link RESTProductService#testMultiValuedHeaderFieldsInBeanParam()}
+   */
+  @RequestMapping(path = "testMultiValuedHeaderFieldsInBeanParam", method = { RequestMethod.GET })
+  public String testMultiValuedHeaderFieldsInBeanParam(
+      @RequestHeader(name = "names", required = false) String[] pNames,
+      @RequestHeader(name = "ints", required = true) int[] pInts,
+      @RequestHeader(name = "doubles", required = false) Double[] pDoubles,
+      @RequestHeader(name = "codes", required = false) String[] pCodesAsBasicType,
+      @RequestHeader(name = "stringCodeList", required = false) String[] pStringCodeListAsBasicType ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    MultiValuedHeaderBeanParam.Builder lMultiValuedBeanBuilder = MultiValuedHeaderBeanParam.builder();
+    lMultiValuedBeanBuilder.setNames(pNames);
+    lMultiValuedBeanBuilder.setInts(pInts);
+    lMultiValuedBeanBuilder.setDoubles(pDoubles);
+    if (pCodesAsBasicType != null) {
+      StringCode[] lCodes = new StringCode[pCodesAsBasicType.length];
+      for (int i = 0; i < pCodesAsBasicType.length; i++) {
+        lCodes[i] = StringCode.builder().setCode(pCodesAsBasicType[i]).build();
+      }
+      lMultiValuedBeanBuilder.setCodes(lCodes);
+    }
+    if (pStringCodeListAsBasicType != null) {
+      Set<StringCode> lStringCodeList = new HashSet<StringCode>();
+      for (String lNext : pStringCodeListAsBasicType) {
+        lStringCodeList.add(StringCode.builder().setCode(lNext).build());
+      }
+      lMultiValuedBeanBuilder.setStringCodeList(lStringCodeList);
+    }
+    MultiValuedHeaderBeanParam pMultiValuedBean = lMultiValuedBeanBuilder.build();
+    // Delegate request to service.
+    return rESTProductService.testMultiValuedHeaderFieldsInBeanParam(pMultiValuedBean);
   }
 }

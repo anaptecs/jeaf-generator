@@ -71,6 +71,7 @@ import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
@@ -565,6 +566,17 @@ public class RESTProductServiceResource {
   public Response testMulitvaluedDataTypeAsBeanQueryParam( @BeanParam DataTypesQueryBean pQueryBean ) {
     // Delegate request to service.
     String lResult = rESTProductService.testMulitvaluedDataTypeAsBeanQueryParam(pQueryBean);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testMultiValuedHeaderFieldsInBeanParam()}
+   */
+  @Path("testMultiValuedHeaderFieldsInBeanParam")
+  @GET
+  public Response testMultiValuedHeaderFieldsInBeanParam( @BeanParam MultiValuedHeaderBeanParam pMultiValuedBean ) {
+    // Delegate request to service.
+    String lResult = rESTProductService.testMultiValuedHeaderFieldsInBeanParam(pMultiValuedBean);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 }
