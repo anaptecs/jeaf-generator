@@ -46,11 +46,13 @@ import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
+import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
@@ -1221,6 +1223,68 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
           lBookingIDsArray.add(lNext.getBookingID());
         }
         lRequestBuilder.addQueryParam("bookingIDsArray", lBookingIDsArray);
+      }
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pMultiValuedBean
+   * @return {@link String}
+   */
+  @Override
+  public String testMultiValuedHeaderFieldsInBeanParam( MultiValuedHeaderBeanParam pMultiValuedBean ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testMultiValuedHeaderFieldsInBeanParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set HTTP header(s)
+    if (pMultiValuedBean != null) {
+      if (pMultiValuedBean.getNames() != null) {
+        lRequestBuilder.setHeader("names", pMultiValuedBean.getNames());
+      }
+      else {
+        lRequestBuilder.setHeader("names", (String) null);
+      }
+      if (pMultiValuedBean.getInts() != null) {
+        lRequestBuilder.setHeader("ints", pMultiValuedBean.getInts());
+      }
+      else {
+        lRequestBuilder.setHeader("ints", (String) null);
+      }
+      if (pMultiValuedBean.getDoubles() != null) {
+        lRequestBuilder.setHeader("doubles", Arrays.asList(pMultiValuedBean.getDoubles()));
+      }
+      else {
+        lRequestBuilder.setHeader("doubles", (String) null);
+      }
+      if (pMultiValuedBean.getCodes() != null) {
+        List<String> lValues = new ArrayList<String>();
+        for (StringCode lNext : pMultiValuedBean.getCodes()) {
+          lValues.add(lNext.getCode().toString());
+        }
+        lRequestBuilder.setHeader("codes", lValues);
+      }
+      else {
+        lRequestBuilder.setHeader("codes", (String) null);
+      }
+      if (pMultiValuedBean.getStringCodeList() != null) {
+        List<String> lValues = new ArrayList<String>();
+        for (StringCode lNext : pMultiValuedBean.getStringCodeList()) {
+          lValues.add(lNext.getCode().toString());
+        }
+        lRequestBuilder.setHeader("stringCodeList", lValues);
+      }
+      else {
+        lRequestBuilder.setHeader("stringCodeList", (String) null);
       }
     }
     // Execute request and return result.

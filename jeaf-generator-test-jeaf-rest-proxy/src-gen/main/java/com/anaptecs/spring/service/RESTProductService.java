@@ -283,4 +283,11 @@ public interface RESTProductService extends Service {
    * @return {@link String}
    */
   String testMulitvaluedDataTypeAsBeanQueryParam( DataTypesQueryBean pQueryBean );
+
+  /**
+   * 
+   * @param pMultiValuedBean
+   * @return {@link String}
+   */
+  String testMultiValuedHeaderFieldsInBeanParam( MultiValuedHeaderBeanParam pMultiValuedBean );
 }

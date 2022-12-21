@@ -42,6 +42,7 @@ import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 
@@ -288,4 +289,11 @@ public interface RESTProductServiceRESTProxyServiceProvider extends ServiceProvi
    * @return {@link String}
    */
   String testMulitvaluedDataTypeAsBeanQueryParam( DataTypesQueryBean pQueryBean );
+
+  /**
+   * 
+   * @param pMultiValuedBean
+   * @return {@link String}
+   */
+  String testMultiValuedHeaderFieldsInBeanParam( MultiValuedHeaderBeanParam pMultiValuedBean );
 }
