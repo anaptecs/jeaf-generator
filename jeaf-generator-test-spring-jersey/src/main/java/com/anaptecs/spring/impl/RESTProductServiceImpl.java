@@ -263,4 +263,10 @@ public class RESTProductServiceImpl implements RESTProductService {
         + Arrays.toString(pMultiValuedBean.getDoubles()) + "_"
         + lCodes + "_" + lStringCodeList;
   }
+
+  @Override
+  public String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles,
+      Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes ) {
+    return null;
+  }
 }

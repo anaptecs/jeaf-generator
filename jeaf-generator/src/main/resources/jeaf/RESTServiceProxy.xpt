@@ -278,11 +278,35 @@ public class «name»RESTProxy implements «this.fqn()» {
 		«IF this.getHeaderParams().size > 0 || this.getBeanParams().type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam).select(e|e.isPropertySuppressed() == false).size > 0»
 		// Set HTTP header(s)
 		«FOREACH this.getHeaderParams() AS headerParam»
-			«IF headerParam.type.isPrimitiveType() == false»
+			«IF headerParam.type.isPrimitiveType() == false || headerParam.isMultivalued()»
 			if («headerParam.name» != null) {
 			«ENDIF»
-			lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", «EXPAND HeaderParamValueAccessor FOR headerParam»);
-			«IF headerParam.type.isPrimitiveType() == false»
+				«IF headerParam.isMultivalued() == false»
+					lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", «EXPAND HeaderParamValueAccessor FOR headerParam»);
+				«ELSE»
+					«IF headerParam.type.isStringType() || headerParam.type.isPrimitiveType() || headerParam.type.isBasicType()»
+					lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", «headerParam.name»);
+					«ELSE»
+						java.util.List<String> lValues = new java.util.ArrayList<String>();
+						for («headerParam.type.fqn()» lNext : «headerParam.name») {
+							«IF headerParam.type.isOpenAPIDataType()»
+								«IF headerParam.type.isCompositeDataType()»
+									lValues.add(lNext.get«headerParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»());
+								«ELSE»
+									lValues.add(lNext.«headerParam.type.getAllAttributesFromHierarchy().first().asGetter()»().toString());
+								«ENDIF»
+							«ELSE»
+								«IF headerParam.type.isAnyDateType()»
+									lValues.add(«EXPAND DateConversionForElement("lNext") FOR headerParam»);
+								«ELSE»
+									lValues.add(lNext.toString());
+								«ENDIF»
+							«ENDIF»
+						}
+						lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", lValues);
+					«ENDIF»
+				«ENDIF»
+			«IF headerParam.type.isPrimitiveType() == false || headerParam.isMultivalued()»
 			}
 			else {
 			lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", (String) null);
@@ -337,8 +361,6 @@ public class «name»RESTProxy implements «this.fqn()» {
 									«ENDIF»
         						}
         						lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", lValues);
-
-
 							«ENDIF»
 						«ENDIF»
 					}

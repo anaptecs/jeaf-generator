@@ -1317,4 +1317,87 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
   }
+
+  /**
+   * 
+   * @param pNames
+   * @param pInts
+   * @param pDoubles
+   * @param pCodes
+   * @param pStartDate
+   * @param pTimestamps
+   * @param pTimes
+   * @return {@link String}
+   */
+  @Override
+  public String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles,
+      Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testMultiValuedHeaderFields");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set HTTP header(s)
+    if (pNames != null) {
+      lRequestBuilder.setHeader("names", pNames);
+    }
+    else {
+      lRequestBuilder.setHeader("names", (String) null);
+    }
+    if (pInts != null) {
+      lRequestBuilder.setHeader("ints", pInts);
+    }
+    else {
+      lRequestBuilder.setHeader("ints", (String) null);
+    }
+    if (pDoubles != null) {
+      lRequestBuilder.setHeader("doubles", pDoubles);
+    }
+    else {
+      lRequestBuilder.setHeader("doubles", (String) null);
+    }
+    if (pCodes != null) {
+      List<String> lValues = new ArrayList<String>();
+      for (StringCode lNext : pCodes) {
+        lValues.add(lNext.getCode().toString());
+      }
+      lRequestBuilder.setHeader("codes", lValues);
+    }
+    else {
+      lRequestBuilder.setHeader("codes", (String) null);
+    }
+    if (pStartDate != null) {
+      lRequestBuilder.setHeader("startDate", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pStartDate));
+    }
+    else {
+      lRequestBuilder.setHeader("startDate", (String) null);
+    }
+    if (pTimestamps != null) {
+      List<String> lValues = new ArrayList<String>();
+      for (OffsetDateTime lNext : pTimestamps) {
+        lValues.add(DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lNext));
+      }
+      lRequestBuilder.setHeader("timestamps", lValues);
+    }
+    else {
+      lRequestBuilder.setHeader("timestamps", (String) null);
+    }
+    if (pTimes != null) {
+      List<String> lValues = new ArrayList<String>();
+      for (OffsetTime lNext : pTimes) {
+        lValues.add(DateTimeFormatter.ISO_OFFSET_TIME.format(lNext));
+      }
+      lRequestBuilder.setHeader("times", lValues);
+    }
+    else {
+      lRequestBuilder.setHeader("times", (String) null);
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
 }

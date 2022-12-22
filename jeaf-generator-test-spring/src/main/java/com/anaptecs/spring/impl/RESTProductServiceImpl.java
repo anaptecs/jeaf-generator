@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -249,8 +250,28 @@ public class RESTProductServiceImpl implements RESTProductService {
     for (StringCode lNext : pMultiValuedBean.getStringCodeList()) {
       lStringCodeList = lStringCodeList + "-" + lNext.getCode();
     }
+
+    String lDates = "";
+    if (pMultiValuedBean.getDates() != null) {
+      for (LocalDate lNext : pMultiValuedBean.getDates()) {
+        lDates = lDates + DateTimeFormatter.ISO_DATE.format(lNext) + ",";
+      }
+    }
     return Arrays.toString(pMultiValuedBean.getNames()) + "_" + Arrays.toString(pMultiValuedBean.getInts()) + "_"
         + Arrays.toString(pMultiValuedBean.getDoubles()) + "_"
-        + lCodes + "_" + lStringCodeList;
+        + lCodes + "_" + lStringCodeList + "_" + lDates;
   }
+
+  @Override
+  public String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles,
+      Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes ) {
+    String lCodes = "";
+    for (StringCode lNext : pCodes) {
+      lCodes = lCodes + "-" + lNext.getCode();
+    }
+
+    return pNames.toString() + "_" + Arrays.toString(pInts) + "_"
+        + pDoubles.toString() + "_" + lCodes;
+  }
+
 }

@@ -650,7 +650,7 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "doubles", required = false) Double[] pDoubles,
       @RequestHeader(name = "codes", required = false) String[] pCodesAsBasicType,
       @RequestHeader(name = "stringCodeList", required = false) String[] pStringCodeListAsBasicType,
-      @RequestHeader(name = "startDate", required = true) LocalDate pStartDate,
+      @RequestHeader(name = "startDate", required = false) LocalDate pStartDate,
       @RequestHeader(name = "dates", required = false) LocalDate[] pDates,
       @RequestHeader(name = "timestamps", required = false) Set<LocalDateTime> pTimestamps ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
@@ -679,5 +679,32 @@ public class RESTProductServiceResource {
     MultiValuedHeaderBeanParam pMultiValuedBean = lMultiValuedBeanBuilder.build();
     // Delegate request to service.
     return rESTProductService.testMultiValuedHeaderFieldsInBeanParam(pMultiValuedBean);
+  }
+
+  /**
+   * {@link RESTProductService#testMultiValuedHeaderFields()}
+   */
+  @RequestMapping(path = "testMultiValuedHeaderFields", method = { RequestMethod.GET })
+  public String testMultiValuedHeaderFields( @RequestHeader(name = "names", required = false) Set<String> pNames,
+      @RequestHeader(name = "ints", required = true) int[] pInts,
+      @RequestHeader(name = "doubles", required = false) Set<Double> pDoubles,
+      @RequestHeader(name = "codes", required = false) String[] pCodesAsBasicType,
+      @RequestHeader(name = "startDate", required = false) OffsetDateTime pStartDate,
+      @RequestHeader(name = "timestamps", required = false) Set<OffsetDateTime> pTimestamps,
+      @RequestHeader(name = "times", required = false) Set<OffsetTime> pTimes ) {
+    // Convert basic type parameters into "real" objects.
+    Set<StringCode> pCodes;
+    if (pCodesAsBasicType != null) {
+      pCodes = new HashSet<StringCode>();
+      for (String lNext : pCodesAsBasicType) {
+        pCodes.add(StringCode.builder().setCode(lNext).build());
+      }
+    }
+    else {
+      pCodes = Collections.emptySet();
+    }
+    // Delegate request to service.
+    return rESTProductService.testMultiValuedHeaderFields(pNames, pInts, pDoubles, pCodes, pStartDate, pTimestamps,
+        pTimes);
   }
 }

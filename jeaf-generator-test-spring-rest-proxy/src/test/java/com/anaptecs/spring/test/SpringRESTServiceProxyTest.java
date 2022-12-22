@@ -134,6 +134,13 @@ public class SpringRESTServiceProxyTest {
         .withHeader("codes", "CODE_1", "CODE_2")
         .withHeader("stringCodeList", "CODE_4", "CODE_7"))
         .respond(mockResponse("\"Yeah!\""));
+
+    lClient.when(mockRequest("/rest-products/testMultiValuedHeaderFields", "GET")
+        .withHeader("names", "JEAF", "Development", "Team")
+        .withHeader("ints", "1", "2", "3", "4")
+        .withHeader("doubles", "3.1415", "47.11")
+        .withHeader("codes", "CODE_1", "CODE_2"))
+        .respond(mockResponse("\"Yeah, yeah!\""));
   }
 
   @AfterAll
@@ -266,4 +273,16 @@ public class SpringRESTServiceProxyTest {
     String lResult = productService.testMultiValuedHeaderFieldsInBeanParam(lBeanParam);
     assertEquals("Yeah!", lResult);
   }
+
+  @Test
+  void testMultiValuedHeaderFields( ) {
+    Set<String> lNames = new HashSet<>(Arrays.asList("JEAF", "Development", "Team"));
+    int[] lInts = new int[] { 1, 2, 3, 4 };
+    Set<Double> lDoubles = new HashSet<>(Arrays.asList(3.1415, 47.11));
+    Set<StringCode> lCodes = new HashSet<>(Arrays.asList(StringCode.builder().setCode("CODE_1").build(), StringCode
+        .builder().setCode("CODE_2").build()));
+    String lResult = productService.testMultiValuedHeaderFields(lNames, lInts, lDoubles, lCodes, null, null, null);
+    assertEquals("Yeah, yeah!", lResult);
+  }
+
 }

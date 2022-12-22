@@ -86,6 +86,9 @@ abstract class RESTProductServiceImplBase implements RESTProductService, Service
   public static final String TESTMULTIVALUEDHEADERFIELDSINBEANPARAM_AUTH_TYPE =
       "testMultiValuedHeaderFieldsInBeanParam.com.anaptecs.spring.service.RESTProductService";
 
+  public static final String TESTMULTIVALUEDHEADERFIELDS_AUTH_TYPE =
+      "testMultiValuedHeaderFields.com.anaptecs.spring.service.RESTProductService";
+
   public static final String TESTMULTIVALUEDQUERYPARAMSBEAN_AUTH_TYPE =
       "testMultivaluedQueryParamsBean.com.anaptecs.spring.service.RESTProductService";
 
