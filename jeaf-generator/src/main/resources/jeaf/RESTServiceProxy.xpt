@@ -232,9 +232,9 @@ public class «name»RESTProxy implements «this.fqn()» {
 				      }
 			      «ENDIF»
 		      «ENDIF»
-		      lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «queryParam.name»AsBasicType);
+		      lRequestBuilder.setQueryParameter("«queryParam.getRESTQueryParamName()»", «queryParam.name»AsBasicType);
 			«ELSE»
-			lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «EXPAND QueryParamValueAccessor FOR queryParam»);
+			lRequestBuilder.setQueryParameter("«queryParam.getRESTQueryParamName()»", «EXPAND QueryParamValueAccessor FOR queryParam»);
 			«ENDIF»
 			«IF queryParam.type.isPrimitiveType() == false  || queryParam.isMultivalued()»
 			}
@@ -262,9 +262,9 @@ public class «name»RESTProxy implements «this.fqn()» {
 			    			«ENDIF»
 			    		«ENDIF»
 		    		}
-		    		lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «queryParam.asLocalVar()»);
+		    		lRequestBuilder.setQueryParameter("«queryParam.getRESTQueryParamName()»", «queryParam.asLocalVar()»);
 		    	«ELSE»
-		    		lRequestBuilder.addQueryParam("«queryParam.getRESTQueryParamName()»", «EXPAND QueryParamValueAccessorForBeanParam(beanParam) FOR queryParam»);
+		    		lRequestBuilder.setQueryParameter("«queryParam.getRESTQueryParamName()»", «EXPAND QueryParamValueAccessorForBeanParam(beanParam) FOR queryParam»);
 		    	«ENDIF»
 				«IF queryParam.type.isPrimitiveType() == false || queryParam.isMultivalued()»
 				}

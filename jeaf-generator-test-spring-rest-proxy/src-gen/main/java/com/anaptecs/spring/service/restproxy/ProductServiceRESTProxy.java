@@ -159,7 +159,7 @@ public class ProductServiceRESTProxy implements ProductService {
     // Add query parameter(s) to request
     if (pContext != null) {
       if (pContext.getQueryParam() != null) {
-        lRequestBuilder.addQueryParam("q1", pContext.getQueryParam());
+        lRequestBuilder.setQueryParameter("q1", pContext.getQueryParam());
       }
     }
     // Set HTTP header(s)
@@ -266,7 +266,7 @@ public class ProductServiceRESTProxy implements ProductService {
     // Add query parameter(s) to request
     if (pContext != null) {
       if (pContext.getQueryParam() != null) {
-        lRequestBuilder.addQueryParam("q1", pContext.getQueryParam());
+        lRequestBuilder.setQueryParameter("q1", pContext.getQueryParam());
       }
     }
     // Set HTTP header(s)
@@ -310,7 +310,7 @@ public class ProductServiceRESTProxy implements ProductService {
     // Add query parameter(s) to request
     if (pBeanParam != null) {
       if (pBeanParam.getOldStyle() != null) {
-        lRequestBuilder.addQueryParam("q2", pBeanParam.getOldStyle());
+        lRequestBuilder.setQueryParameter("q2", pBeanParam.getOldStyle());
       }
     }
     // Set HTTP header(s)
@@ -440,7 +440,7 @@ public class ProductServiceRESTProxy implements ProductService {
     // Add query parameter(s) to request
     if (pContext != null) {
       if (pContext.getQueryParam() != null) {
-        lRequestBuilder.addQueryParam("q1", pContext.getQueryParam());
+        lRequestBuilder.setQueryParameter("q1", pContext.getQueryParam());
       }
     }
     // Set HTTP header(s)
@@ -715,37 +715,39 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pStartTimestamp != null) {
-      lRequestBuilder.addQueryParam("startTimestamp", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pStartTimestamp));
+      lRequestBuilder.setQueryParameter("startTimestamp",
+          DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pStartTimestamp));
     }
     if (pStartTime != null) {
-      lRequestBuilder.addQueryParam("startTime", DateTimeFormatter.ISO_OFFSET_TIME.format(pStartTime));
+      lRequestBuilder.setQueryParameter("startTime", DateTimeFormatter.ISO_OFFSET_TIME.format(pStartTime));
     }
     if (pLocalStartTimestamp != null) {
-      lRequestBuilder.addQueryParam("localStartTimestamp",
+      lRequestBuilder.setQueryParameter("localStartTimestamp",
           DateTimeFormatter.ISO_DATE_TIME.format(pLocalStartTimestamp));
     }
     if (pLocalStartTime != null) {
-      lRequestBuilder.addQueryParam("localStartTime", DateTimeFormatter.ISO_TIME.format(pLocalStartTime));
+      lRequestBuilder.setQueryParameter("localStartTime", DateTimeFormatter.ISO_TIME.format(pLocalStartTime));
     }
     if (pLocalStartDate != null) {
-      lRequestBuilder.addQueryParam("localStartDate", DateTimeFormatter.ISO_DATE.format(pLocalStartDate));
+      lRequestBuilder.setQueryParameter("localStartDate", DateTimeFormatter.ISO_DATE.format(pLocalStartDate));
     }
     if (pCalendar != null) {
-      lRequestBuilder.addQueryParam("calendar",
+      lRequestBuilder.setQueryParameter("calendar",
           new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pCalendar.getTime()));
     }
     if (pUtilDate != null) {
-      lRequestBuilder.addQueryParam("utilDate", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pUtilDate));
+      lRequestBuilder.setQueryParameter("utilDate",
+          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pUtilDate));
     }
     if (pSQLTimestamp != null) {
-      lRequestBuilder.addQueryParam("sqlTimestamp",
+      lRequestBuilder.setQueryParameter("sqlTimestamp",
           new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pSQLTimestamp));
     }
     if (pSQLTime != null) {
-      lRequestBuilder.addQueryParam("sqlTime", new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pSQLTime));
+      lRequestBuilder.setQueryParameter("sqlTime", new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pSQLTime));
     }
     if (pSQLDate != null) {
-      lRequestBuilder.addQueryParam("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pSQLDate));
+      lRequestBuilder.setQueryParameter("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pSQLDate));
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -771,41 +773,42 @@ public class ProductServiceRESTProxy implements ProductService {
     // Add query parameter(s) to request
     if (pQueryParams != null) {
       if (pQueryParams.getOffsetDateTime() != null) {
-        lRequestBuilder.addQueryParam("offsetDateTime",
+        lRequestBuilder.setQueryParameter("offsetDateTime",
             DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pQueryParams.getOffsetDateTime()));
       }
       if (pQueryParams.getOffsetTime() != null) {
-        lRequestBuilder.addQueryParam("offsetTime",
+        lRequestBuilder.setQueryParameter("offsetTime",
             DateTimeFormatter.ISO_OFFSET_TIME.format(pQueryParams.getOffsetTime()));
       }
       if (pQueryParams.getLocalDateTime() != null) {
-        lRequestBuilder.addQueryParam("localDateTime",
+        lRequestBuilder.setQueryParameter("localDateTime",
             DateTimeFormatter.ISO_DATE_TIME.format(pQueryParams.getLocalDateTime()));
       }
       if (pQueryParams.getLocalTime() != null) {
-        lRequestBuilder.addQueryParam("localTime", DateTimeFormatter.ISO_TIME.format(pQueryParams.getLocalTime()));
+        lRequestBuilder.setQueryParameter("localTime", DateTimeFormatter.ISO_TIME.format(pQueryParams.getLocalTime()));
       }
       if (pQueryParams.getLocalDate() != null) {
-        lRequestBuilder.addQueryParam("localDate", DateTimeFormatter.ISO_DATE.format(pQueryParams.getLocalDate()));
+        lRequestBuilder.setQueryParameter("localDate", DateTimeFormatter.ISO_DATE.format(pQueryParams.getLocalDate()));
       }
       if (pQueryParams.getUtilDate() != null) {
-        lRequestBuilder.addQueryParam("utilDate",
+        lRequestBuilder.setQueryParameter("utilDate",
             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getUtilDate()));
       }
       if (pQueryParams.getCalendar() != null) {
-        lRequestBuilder.addQueryParam("calendar",
+        lRequestBuilder.setQueryParameter("calendar",
             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getCalendar().getTime()));
       }
       if (pQueryParams.getSqlTimestamp() != null) {
-        lRequestBuilder.addQueryParam("sqlTimestamp",
+        lRequestBuilder.setQueryParameter("sqlTimestamp",
             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTimestamp()));
       }
       if (pQueryParams.getSqlTime() != null) {
-        lRequestBuilder.addQueryParam("sqlTime",
+        lRequestBuilder.setQueryParameter("sqlTime",
             new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTime()));
       }
       if (pQueryParams.getSqlDate() != null) {
-        lRequestBuilder.addQueryParam("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pQueryParams.getSqlDate()));
+        lRequestBuilder.setQueryParameter("sqlDate",
+            new SimpleDateFormat("yyyy-MM-dd").format(pQueryParams.getSqlDate()));
       }
     }
     // Execute request.
