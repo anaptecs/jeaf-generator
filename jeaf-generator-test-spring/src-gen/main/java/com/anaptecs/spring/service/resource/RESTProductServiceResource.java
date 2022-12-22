@@ -649,7 +649,10 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "ints", required = true) int[] pInts,
       @RequestHeader(name = "doubles", required = false) Double[] pDoubles,
       @RequestHeader(name = "codes", required = false) String[] pCodesAsBasicType,
-      @RequestHeader(name = "stringCodeList", required = false) String[] pStringCodeListAsBasicType ) {
+      @RequestHeader(name = "stringCodeList", required = false) String[] pStringCodeListAsBasicType,
+      @RequestHeader(name = "startDate", required = true) LocalDate pStartDate,
+      @RequestHeader(name = "dates", required = false) LocalDate[] pDates,
+      @RequestHeader(name = "timestamps", required = false) Set<LocalDateTime> pTimestamps ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     MultiValuedHeaderBeanParam.Builder lMultiValuedBeanBuilder = MultiValuedHeaderBeanParam.builder();
@@ -670,6 +673,9 @@ public class RESTProductServiceResource {
       }
       lMultiValuedBeanBuilder.setStringCodeList(lStringCodeList);
     }
+    lMultiValuedBeanBuilder.setStartDate(pStartDate);
+    lMultiValuedBeanBuilder.setDates(pDates);
+    lMultiValuedBeanBuilder.setTimestamps(pTimestamps);
     MultiValuedHeaderBeanParam pMultiValuedBean = lMultiValuedBeanBuilder.build();
     // Delegate request to service.
     return rESTProductService.testMultiValuedHeaderFieldsInBeanParam(pMultiValuedBean);

@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -44,6 +46,21 @@ public class MultiValuedHeaderBeanParam {
   public static final String STRINGCODELIST = "stringCodeList";
 
   /**
+   * Constant for the name of attribute "startDate".
+   */
+  public static final String STARTDATE = "startDate";
+
+  /**
+   * Constant for the name of attribute "dates".
+   */
+  public static final String DATES = "dates";
+
+  /**
+   * Constant for the name of attribute "timestamps".
+   */
+  public static final String TIMESTAMPS = "timestamps";
+
+  /**
    * 
    */
   private String[] names;
@@ -69,11 +86,27 @@ public class MultiValuedHeaderBeanParam {
   private Set<StringCode> stringCodeList;
 
   /**
+   * 
+   */
+  public LocalDate startDate;
+
+  /**
+   * 
+   */
+  private LocalDate[] dates;
+
+  /**
+   * 
+   */
+  private Set<LocalDateTime> timestamps;
+
+  /**
    * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
    * object creation builder should be used instead.
    */
   public MultiValuedHeaderBeanParam( ) {
     stringCodeList = new HashSet<StringCode>();
+    timestamps = new HashSet<LocalDateTime>();
   }
 
   /**
@@ -92,6 +125,14 @@ public class MultiValuedHeaderBeanParam {
     }
     else {
       stringCodeList = new HashSet<StringCode>();
+    }
+    startDate = pBuilder.startDate;
+    dates = pBuilder.dates;
+    if (pBuilder.timestamps != null) {
+      timestamps = pBuilder.timestamps;
+    }
+    else {
+      timestamps = new HashSet<LocalDateTime>();
     }
   }
 
@@ -146,6 +187,21 @@ public class MultiValuedHeaderBeanParam {
     private Set<StringCode> stringCodeList;
 
     /**
+     * 
+     */
+    private LocalDate startDate;
+
+    /**
+     * 
+     */
+    private LocalDate[] dates;
+
+    /**
+     * 
+     */
+    private Set<LocalDateTime> timestamps;
+
+    /**
      * Use {@link MultiValuedHeaderBeanParam#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -163,6 +219,9 @@ public class MultiValuedHeaderBeanParam {
         doubles = pObject.doubles;
         codes = pObject.codes;
         stringCodeList = pObject.stringCodeList;
+        startDate = pObject.startDate;
+        dates = pObject.dates;
+        timestamps = pObject.timestamps;
       }
     }
 
@@ -266,6 +325,50 @@ public class MultiValuedHeaderBeanParam {
       }
       else {
         stringCodeList = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "startDate".
+     * 
+     * @param pStartDate Value to which the attribute "startDate" should be set.
+     */
+    public Builder setStartDate( LocalDate pStartDate ) {
+      // Assign value to attribute
+      startDate = pStartDate;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "dates".
+     * 
+     * @param pDates Value to which the attribute "dates" should be set.
+     */
+    public Builder setDates( LocalDate[] pDates ) {
+      // Assign value to attribute
+      if (pDates != null) {
+        dates = new LocalDate[pDates.length];
+        System.arraycopy(pDates, 0, dates, 0, pDates.length);
+      }
+      else {
+        dates = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets the association "timestamps".
+     * 
+     * @param pTimestamps Collection with objects to which the association should be set.
+     */
+    public Builder setTimestamps( Set<LocalDateTime> pTimestamps ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pTimestamps != null) {
+        timestamps = new HashSet<LocalDateTime>(pTimestamps);
+      }
+      else {
+        timestamps = null;
       }
       return this;
     }
@@ -481,6 +584,119 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
+   * Method returns the attribute "startDate".
+   * 
+   * 
+   * @return LocalDate Value to which the attribute "startDate" is set.
+   */
+  public LocalDate getStartDate( ) {
+    return startDate;
+  }
+
+  /**
+   * Method sets the attribute "startDate".
+   * 
+   * 
+   * @param pStartDate Value to which the attribute "startDate" should be set.
+   */
+  public void setStartDate( LocalDate pStartDate ) {
+    // Assign value to attribute
+    startDate = pStartDate;
+  }
+
+  /**
+   * Method returns the attribute "dates".
+   * 
+   * 
+   * @return LocalDate Value to which the attribute "dates" is set.
+   */
+  public LocalDate[] getDates( ) {
+    LocalDate[] lReturnValue;
+    if (dates != null) {
+      lReturnValue = new LocalDate[dates.length];
+      System.arraycopy(dates, 0, lReturnValue, 0, dates.length);
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
+  }
+
+  /**
+   * Method sets the attribute "dates".
+   * 
+   * 
+   * @param pDates Value to which the attribute "dates" should be set.
+   */
+  public void setDates( LocalDate[] pDates ) {
+    // Assign value to attribute
+    if (pDates != null) {
+      dates = new LocalDate[pDates.length];
+      System.arraycopy(pDates, 0, dates, 0, pDates.length);
+    }
+    else {
+      dates = null;
+    }
+  }
+
+  /**
+   * Method returns the association "timestamps".
+   * 
+   *
+   * @return Collection All LocalDateTime objects that belong to the association "timestamps". The method never returns
+   * null and the returned collection is unmodifiable.
+   */
+  public Set<LocalDateTime> getTimestamps( ) {
+    // Return all LocalDateTime objects as unmodifiable collection.
+    return Collections.unmodifiableSet(timestamps);
+  }
+
+  /**
+   * Method adds the passed LocalDateTime object to the association "timestamps".
+   * 
+   * 
+   * @param pTimestamps Object that should be added to the association "timestamps". The parameter must not be null.
+   */
+  public void addToTimestamps( LocalDateTime pTimestamps ) {
+    // Add passed object to collection of associated LocalDateTime objects.
+    timestamps.add(pTimestamps);
+  }
+
+  /**
+   * Method adds all passed objects to the association "timestamps".
+   * 
+   * 
+   * @param pTimestamps Collection with all objects that should be added to the association "timestamps". The parameter
+   * must not be null.
+   */
+  public void addToTimestamps( Collection<LocalDateTime> pTimestamps ) {
+    // Add all passed objects.
+    for (LocalDateTime lNextObject : pTimestamps) {
+      this.addToTimestamps(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed LocalDateTime object from the association "timestamps".
+   * 
+   * 
+   * @param pTimestamps Object that should be removed from the association "timestamps". The parameter must not be null.
+   */
+  public void removeFromTimestamps( LocalDateTime pTimestamps ) {
+    // Remove passed object from collection of associated LocalDateTime objects.
+    timestamps.remove(pTimestamps);
+  }
+
+  /**
+   * Method removes all objects from the association "timestamps".
+   * 
+   */
+  public void clearTimestamps( ) {
+    // Remove all objects from association "timestamps".
+    timestamps.clear();
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -540,6 +756,36 @@ public class MultiValuedHeaderBeanParam {
     if (stringCodeList != null) {
       for (StringCode lNext : stringCodeList) {
         lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("startDate: ");
+    lBuilder.append(startDate);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("dates: ");
+    if (dates != null) {
+      lBuilder.append(Arrays.toString(dates));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("timestamps: ");
+    if (timestamps != null) {
+      lBuilder.append(timestamps.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (timestamps != null) {
+      for (LocalDateTime lNext : timestamps) {
+        lBuilder.append(pIndent + "    ");
+        lBuilder.append(lNext.toString());
         lBuilder.append(System.lineSeparator());
       }
     }

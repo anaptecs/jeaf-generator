@@ -329,7 +329,11 @@ public class «name»RESTProxy implements «this.fqn()» {
 											lValues.add(lNext.«headerParam.type.getAllAttributesFromHierarchy().first().asGetter()»().toString());
 										«ENDIF»
 									«ELSE»
+										«IF headerParam.type.isAnyDateType()»
+											lValues.add(«EXPAND DateConversionForElement("lNext") FOR headerParam»);
+										«ELSE»
 											lValues.add(lNext.toString());
+										«ENDIF»
 									«ENDIF»
         						}
         						lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", lValues);
@@ -675,6 +679,40 @@ new java.text.SimpleDateFormat("HH:mm:ss.SSSXXX").format(«beanParam.name».«th
 
 «ELSE»«IF type.isSQLDate()»
 new java.text.SimpleDateFormat("yyyy-MM-dd").format(«beanParam.name».«this.asGetter()»())
+«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»
+«ENDDEFINE»
+
+
+«DEFINE DateConversionForElement(String paramName) FOR Property»
+«IF type.isOffsetDateTime()»
+java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(«paramName»)
+
+«ELSE»«IF type.isOffsetTime()»
+java.time.format.DateTimeFormatter.ISO_OFFSET_TIME.format(«paramName»)
+
+«ELSE»«IF type.isLocalDateTime()»
+java.time.format.DateTimeFormatter.ISO_DATE_TIME.format(«paramName»)
+
+«ELSE»«IF type.isLocalTime()»
+java.time.format.DateTimeFormatter.ISO_TIME.format(«paramName»)
+
+«ELSE»«IF type.isLocalDate()»
+java.time.format.DateTimeFormatter.ISO_DATE.format(«paramName»)
+
+«ELSE»«IF type.isCalendar()»
+new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(«paramName».getTime())
+
+«ELSE»«IF type.isUtilDate()»
+new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(«paramName»)
+
+«ELSE»«IF type.isSQLTimestamp()»
+new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(«paramName»)
+
+«ELSE»«IF type.isSQLTime()»
+new java.text.SimpleDateFormat("HH:mm:ss.SSSXXX").format(«paramName»)
+
+«ELSE»«IF type.isSQLDate()»
+new java.text.SimpleDateFormat("yyyy-MM-dd").format(«paramName»)
 «ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»
 «ENDDEFINE»
 

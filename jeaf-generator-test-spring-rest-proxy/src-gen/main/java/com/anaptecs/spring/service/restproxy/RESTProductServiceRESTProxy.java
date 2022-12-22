@@ -1286,6 +1286,32 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       else {
         lRequestBuilder.setHeader("stringCodeList", (String) null);
       }
+      if (pMultiValuedBean.getStartDate() != null) {
+        lRequestBuilder.setHeader("startDate", DateTimeFormatter.ISO_DATE.format(pMultiValuedBean.getStartDate()));
+      }
+      else {
+        lRequestBuilder.setHeader("startDate", (String) null);
+      }
+      if (pMultiValuedBean.getDates() != null) {
+        List<String> lValues = new ArrayList<String>();
+        for (LocalDate lNext : pMultiValuedBean.getDates()) {
+          lValues.add(DateTimeFormatter.ISO_DATE.format(lNext));
+        }
+        lRequestBuilder.setHeader("dates", lValues);
+      }
+      else {
+        lRequestBuilder.setHeader("dates", (String) null);
+      }
+      if (pMultiValuedBean.getTimestamps() != null) {
+        List<String> lValues = new ArrayList<String>();
+        for (LocalDateTime lNext : pMultiValuedBean.getTimestamps()) {
+          lValues.add(DateTimeFormatter.ISO_DATE_TIME.format(lNext));
+        }
+        lRequestBuilder.setHeader("timestamps", lValues);
+      }
+      else {
+        lRequestBuilder.setHeader("timestamps", (String) null);
+      }
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
