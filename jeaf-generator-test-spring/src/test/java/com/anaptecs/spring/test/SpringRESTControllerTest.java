@@ -291,7 +291,45 @@ public class SpringRESTControllerTest {
         .getEntity()
         .getContent()));
     assertEquals(200, lResponse.getCode());
-
   }
 
+  @Test
+  void testMultiValuedHeaderFieldsInBeanParam( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
+        + "/rest-products/testMultiValuedHeaderFieldsInBeanParam");
+    lRequest.addHeader("names", "Hello, World!");
+    lRequest.addHeader("ints", "1,2,3  ,  4, 5");
+    lRequest.addHeader("doubles", "3.1415, 47.11");
+    lRequest.addHeader("codes", "StringCode1, StringCode2");
+    lRequest.addHeader("stringCodeList", "StringCode3, StringCode4");
+    // TODO Activate with JEAF-3158
+    // lRequest.addHeader("startDate", DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 24)));
+    // lRequest.addHeader("dates", DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 24)) + ", "
+    // + DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 31)));
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("[Hello, World!]_[1, 2, 3, 4, 5]_[3.1415, 47.11]_-StringCode1-StringCode2_-StringCode3-StringCode4_",
+        Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
+    assertEquals(200, lResponse.getCode());
+  }
+
+  @Test
+  void testMultiValuedHeaderFields( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
+        + "/rest-products/testMultiValuedHeaderFields");
+    lRequest.addHeader("names", "Hello, World!");
+    lRequest.addHeader("ints", "1,2,3  ,  4, 5");
+    lRequest.addHeader("doubles", "3.1415, 47.11");
+    lRequest.addHeader("codes", "StringCode1, StringCode2");
+    lRequest.addHeader("stringCodeList", "StringCode3, StringCode4");
+    // TODO Activate with JEAF-3158
+    // lRequest.addHeader("startDate", DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 24)));
+    // lRequest.addHeader("dates", DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 24)) + ", "
+    // + DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 31)));
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals("[Hello, World!]_[1, 2, 3, 4, 5]_[3.1415, 47.11]_-StringCode1-StringCode2",
+        Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
+    assertEquals(200, lResponse.getCode());
+  }
 }

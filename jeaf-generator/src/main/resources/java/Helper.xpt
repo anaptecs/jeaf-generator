@@ -88,7 +88,7 @@
 		    lBuilder.append(System.lineSeparator());
 		    if («name» != null) {
 		      for («type.fqn()» lNext : «name») {
-		      	«IF type.isEnumeration() == false»
+		      	«IF type.isEnumeration() == false && (type.isStereotypeApplied("POJO") || type.isStereotypeApplied("ServiceObject"))»
 		        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
 		        «ELSE»
 		        lBuilder.append(pIndent + "    ");

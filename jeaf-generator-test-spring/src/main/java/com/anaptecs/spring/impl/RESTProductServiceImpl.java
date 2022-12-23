@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -45,11 +46,13 @@ import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
+import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
@@ -236,4 +239,39 @@ public class RESTProductServiceImpl implements RESTProductService {
     }
     return lResult;
   }
+
+  @Override
+  public String testMultiValuedHeaderFieldsInBeanParam( MultiValuedHeaderBeanParam pMultiValuedBean ) {
+    String lCodes = "";
+    for (StringCode lNext : pMultiValuedBean.getCodes()) {
+      lCodes = lCodes + "-" + lNext.getCode();
+    }
+    String lStringCodeList = "";
+    for (StringCode lNext : pMultiValuedBean.getStringCodeList()) {
+      lStringCodeList = lStringCodeList + "-" + lNext.getCode();
+    }
+
+    String lDates = "";
+    if (pMultiValuedBean.getDates() != null) {
+      for (LocalDate lNext : pMultiValuedBean.getDates()) {
+        lDates = lDates + DateTimeFormatter.ISO_DATE.format(lNext) + ",";
+      }
+    }
+    return Arrays.toString(pMultiValuedBean.getNames()) + "_" + Arrays.toString(pMultiValuedBean.getInts()) + "_"
+        + Arrays.toString(pMultiValuedBean.getDoubles()) + "_"
+        + lCodes + "_" + lStringCodeList + "_" + lDates;
+  }
+
+  @Override
+  public String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles,
+      Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes ) {
+    String lCodes = "";
+    for (StringCode lNext : pCodes) {
+      lCodes = lCodes + "-" + lNext.getCode();
+    }
+
+    return pNames.toString() + "_" + Arrays.toString(pInts) + "_"
+        + pDoubles.toString() + "_" + lCodes;
+  }
+
 }

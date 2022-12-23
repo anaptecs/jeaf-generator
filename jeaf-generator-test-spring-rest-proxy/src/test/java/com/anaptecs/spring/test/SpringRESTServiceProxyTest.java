@@ -35,9 +35,11 @@ import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
+import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TechnicalHeaderContext;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DataTypesQueryBean;
+import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.ProductService;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
@@ -78,41 +80,67 @@ public class SpringRESTServiceProxyTest {
     lClient.when(mockRequest("/rest-products/12345"))
         .respond(mockResponse("{\"name\":\"Cool Product\",\"uri\":\"https://products.anaptecs.de/123456789\"}"));
 
-    lClient.when(mockRequest("/rest-products/dataTypesInHeader", "GET").withHeader("bookingID", BOOKING_ID_STRING)
-        .withHeader("bookingCode", BOOKING_CODE.getCode()).withHeader("DoubleCode", Double.toString(DOUBLE_CODE
-            .getCode()))).respond(mockResponse("\"" + DATA_TYPE_RESPONSE + "\""));
+    lClient.when(mockRequest("/rest-products/dataTypesInHeader", "GET")
+        .withHeader("bookingID", BOOKING_ID_STRING)
+        .withHeader("bookingCode", BOOKING_CODE.getCode())
+        .withHeader("DoubleCode", Double.toString(DOUBLE_CODE.getCode())))
+        .respond(mockResponse("\"" + DATA_TYPE_RESPONSE + "\""));
 
-    lClient.when(mockRequest("/rest-products/dataTypesInBeanHeader", "GET").withHeader("bookingID", BOOKING_ID_STRING)
-        .withHeader("bookingCode", BOOKING_CODE.getCode()).withHeader("DoubleCode", Double.toString(DOUBLE_CODE
-            .getCode()))).respond(mockResponse("\"" + DATA_TYPE_RESPONSE + "\""));
+    lClient.when(mockRequest("/rest-products/dataTypesInBeanHeader", "GET")
+        .withHeader("bookingID", BOOKING_ID_STRING)
+        .withHeader("bookingCode", BOOKING_CODE.getCode())
+        .withHeader("DoubleCode", Double.toString(DOUBLE_CODE.getCode())))
+        .respond(mockResponse("\"" + DATA_TYPE_RESPONSE + "\""));
 
-    lClient.when(mockRequest("/products/technicalHeaderBeanParam", "GET").withHeader("Custom-Header", "XYZ"))
+    lClient.when(mockRequest("/products/technicalHeaderBeanParam", "GET")
+        .withHeader("Custom-Header", "XYZ"))
         .respond(mockResponse(""));
 
-    lClient.when(mockRequest("/rest-products/testDataTypeAsQueryParam", "GET").withQueryStringParameter("bookingCode",
-        "4711-0815")).respond(mockResponse("\"OK\""));
+    lClient.when(mockRequest("/rest-products/testDataTypeAsQueryParam", "GET")
+        .withQueryStringParameter("bookingCode", "4711-0815"))
+        .respond(mockResponse("\"OK\""));
 
-    lClient.when(mockRequest("/rest-products/testDataTypeAsBeanQueryParam", "GET").withQueryStringParameter(
-        "bookingCode",
-        "4711-0815")).respond(mockResponse("\"4711-0815\""));
+    lClient.when(mockRequest("/rest-products/testDataTypeAsBeanQueryParam", "GET")
+        .withQueryStringParameter("bookingCode", "4711-0815"))
+        .respond(mockResponse("\"4711-0815\""));
 
-    lClient.when(mockRequest("/rest-products/testPrimitiveArrayAsQueryParam", "GET").withQueryStringParameter(
-        "intValues", "1", "2", "47", "13")).respond(mockResponse("\"1+2+47+13\""));
+    lClient.when(mockRequest("/rest-products/testPrimitiveArrayAsQueryParam", "GET")
+        .withQueryStringParameter("intValues", "1", "2", "47", "13"))
+        .respond(mockResponse("\"1+2+47+13\""));
 
-    lClient.when(mockRequest("/rest-products/testSimpleTypesAsQueryParams", "GET").withQueryStringParameter(
-        "strings", "Hello", "World")).respond(mockResponse("\"Hello_World_!\""));
+    lClient.when(mockRequest("/rest-products/testSimpleTypesAsQueryParams", "GET")
+        .withQueryStringParameter("strings", "Hello", "World"))
+        .respond(mockResponse("\"Hello_World_!\""));
 
-    lClient.when(mockRequest("/rest-products/testPrimitiveWrapperArrayAsQueryParam", "GET").withQueryStringParameter(
-        "integers", "1", "2", "13", "47")).respond(mockResponse("\"1-2-47-13\""));
+    lClient.when(mockRequest("/rest-products/testPrimitiveWrapperArrayAsQueryParam", "GET")
+        .withQueryStringParameter("integers", "1", "2", "13", "47"))
+        .respond(mockResponse("\"1-2-47-13\""));
 
-    lClient.when(mockRequest("/rest-products/testMulitvaluedDataTypeAsQueryParam", "GET").withQueryStringParameter(
-        "codes", "47", "11").withQueryStringParameter("longCodes", "4710815123", "47110815999")).respond(mockResponse(
-            "\"47-11\""));
+    lClient.when(mockRequest("/rest-products/testMulitvaluedDataTypeAsQueryParam", "GET")
+        .withQueryStringParameter("codes", "47", "11")
+        .withQueryStringParameter("longCodes", "4710815123", "47110815999"))
+        .respond(mockResponse("\"47-11\""));
 
-    lClient.when(mockRequest("/rest-products/testMulitvaluedDataTypeAsBeanQueryParam", "GET").withQueryStringParameter(
-        "codes", "123456").withQueryStringParameter("longCodes", "99998888775566211", "-123456789")
-        .withQueryStringParameter("doubleCodes", "3.1415", "47.11")).respond(mockResponse(
-            "\"47-11-123456\""));
+    lClient.when(mockRequest("/rest-products/testMulitvaluedDataTypeAsBeanQueryParam", "GET")
+        .withQueryStringParameter("codes", "123456")
+        .withQueryStringParameter("longCodes", "99998888775566211", "-123456789")
+        .withQueryStringParameter("doubleCodes", "3.1415", "47.11"))
+        .respond(mockResponse("\"47-11-123456\""));
+
+    lClient.when(mockRequest("/rest-products/testMultiValuedHeaderFieldsInBeanParam", "GET")
+        .withHeader("names", "JEAF", "Development", "Team")
+        .withHeader("ints", "1", "2", "3", "4")
+        .withHeader("doubles", "3.1415", "47.11")
+        .withHeader("codes", "CODE_1", "CODE_2")
+        .withHeader("stringCodeList", "CODE_4", "CODE_7"))
+        .respond(mockResponse("\"Yeah!\""));
+
+    lClient.when(mockRequest("/rest-products/testMultiValuedHeaderFields", "GET")
+        .withHeader("names", "JEAF", "Development", "Team")
+        .withHeader("ints", "1", "2", "3", "4")
+        .withHeader("doubles", "3.1415", "47.11")
+        .withHeader("codes", "CODE_1", "CODE_2"))
+        .respond(mockResponse("\"Yeah, yeah!\""));
   }
 
   @AfterAll
@@ -230,4 +258,31 @@ public class SpringRESTServiceProxyTest {
     String lResult = productService.testMulitvaluedDataTypeAsBeanQueryParam(lQueryBean);
     assertEquals("47-11-123456", lResult);
   }
+
+  @Test
+  void testMultiValuedHeaderFieldsInBeanParam( ) {
+    MultiValuedHeaderBeanParam lBeanParam = MultiValuedHeaderBeanParam.builder()
+        .setNames(new String[] { "JEAF", "Development", "Team" })
+        .setInts(new int[] { 1, 2, 3, 4 })
+        .setDoubles(new Double[] { 3.1415, 47.11 })
+        .setCodes(new StringCode[] { StringCode.builder().setCode("CODE_1").build(), StringCode.builder().setCode(
+            "CODE_2").build() })
+        .setStringCodeList(new HashSet<>(Arrays.asList(StringCode.builder().setCode("CODE_4").build(), StringCode
+            .builder().setCode("CODE_7").build())))
+        .build();
+    String lResult = productService.testMultiValuedHeaderFieldsInBeanParam(lBeanParam);
+    assertEquals("Yeah!", lResult);
+  }
+
+  @Test
+  void testMultiValuedHeaderFields( ) {
+    Set<String> lNames = new HashSet<>(Arrays.asList("JEAF", "Development", "Team"));
+    int[] lInts = new int[] { 1, 2, 3, 4 };
+    Set<Double> lDoubles = new HashSet<>(Arrays.asList(3.1415, 47.11));
+    Set<StringCode> lCodes = new HashSet<>(Arrays.asList(StringCode.builder().setCode("CODE_1").build(), StringCode
+        .builder().setCode("CODE_2").build()));
+    String lResult = productService.testMultiValuedHeaderFields(lNames, lInts, lDoubles, lCodes, null, null, null);
+    assertEquals("Yeah, yeah!", lResult);
+  }
+
 }

@@ -37,6 +37,7 @@ import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
+import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 
 /**
@@ -283,4 +284,25 @@ public interface RESTProductService extends Service {
    * @return {@link String}
    */
   String testMulitvaluedDataTypeAsBeanQueryParam( DataTypesQueryBean pQueryBean );
+
+  /**
+   * 
+   * @param pMultiValuedBean
+   * @return {@link String}
+   */
+  String testMultiValuedHeaderFieldsInBeanParam( MultiValuedHeaderBeanParam pMultiValuedBean );
+
+  /**
+   * 
+   * @param pNames
+   * @param pInts
+   * @param pDoubles
+   * @param pCodes
+   * @param pStartDate
+   * @param pTimestamps
+   * @param pTimes
+   * @return {@link String}
+   */
+  String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles, Set<StringCode> pCodes,
+      OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes );
 }

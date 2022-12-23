@@ -46,11 +46,13 @@ import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
+import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
@@ -105,7 +107,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lPathBuilder.append("/rest-products");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
-    lRequestBuilder.addQueryParam("maxResult", String.valueOf(pMaxResultSize));
+    lRequestBuilder.setQueryParameter("maxResult", String.valueOf(pMaxResultSize));
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     List<Product> lResult = requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, Product.class);
@@ -177,7 +179,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     // Add query parameter(s) to request
     if (pContext != null) {
       if (pContext.getQueryParam() != null) {
-        lRequestBuilder.addQueryParam("q1", pContext.getQueryParam());
+        lRequestBuilder.setQueryParameter("q1", pContext.getQueryParam());
       }
     }
     // Set HTTP header(s)
@@ -341,7 +343,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pLocaleQueryParam != null) {
-      lRequestBuilder.addQueryParam("locale", pLocaleQueryParam.toString());
+      lRequestBuilder.setQueryParameter("locale", pLocaleQueryParam.toString());
     }
     // Set HTTP header(s)
     if (pBigDecimalHeader != null) {
@@ -377,10 +379,10 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pTimeUnit != null) {
-      lRequestBuilder.addQueryParam("timeUnit", pTimeUnit.toString());
+      lRequestBuilder.setQueryParameter("timeUnit", pTimeUnit.toString());
     }
     if (pExtensibleEnum != null) {
-      lRequestBuilder.addQueryParam("extensibleEnum", pExtensibleEnum.toString());
+      lRequestBuilder.setQueryParameter("extensibleEnum", pExtensibleEnum.toString());
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -458,37 +460,39 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pStartTimestamp != null) {
-      lRequestBuilder.addQueryParam("startTimestamp", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pStartTimestamp));
+      lRequestBuilder.setQueryParameter("startTimestamp",
+          DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pStartTimestamp));
     }
     if (pStartTime != null) {
-      lRequestBuilder.addQueryParam("startTime", DateTimeFormatter.ISO_OFFSET_TIME.format(pStartTime));
+      lRequestBuilder.setQueryParameter("startTime", DateTimeFormatter.ISO_OFFSET_TIME.format(pStartTime));
     }
     if (pLocalStartTimestamp != null) {
-      lRequestBuilder.addQueryParam("localStartTimestamp",
+      lRequestBuilder.setQueryParameter("localStartTimestamp",
           DateTimeFormatter.ISO_DATE_TIME.format(pLocalStartTimestamp));
     }
     if (pLocalStartTime != null) {
-      lRequestBuilder.addQueryParam("localStartTime", DateTimeFormatter.ISO_TIME.format(pLocalStartTime));
+      lRequestBuilder.setQueryParameter("localStartTime", DateTimeFormatter.ISO_TIME.format(pLocalStartTime));
     }
     if (pLocalStartDate != null) {
-      lRequestBuilder.addQueryParam("localStartDate", DateTimeFormatter.ISO_DATE.format(pLocalStartDate));
+      lRequestBuilder.setQueryParameter("localStartDate", DateTimeFormatter.ISO_DATE.format(pLocalStartDate));
     }
     if (pCalendar != null) {
-      lRequestBuilder.addQueryParam("calendar",
+      lRequestBuilder.setQueryParameter("calendar",
           new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pCalendar.getTime()));
     }
     if (pUtilDate != null) {
-      lRequestBuilder.addQueryParam("utilDate", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pUtilDate));
+      lRequestBuilder.setQueryParameter("utilDate",
+          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pUtilDate));
     }
     if (pSQLTimestamp != null) {
-      lRequestBuilder.addQueryParam("sqlTimestamp",
+      lRequestBuilder.setQueryParameter("sqlTimestamp",
           new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pSQLTimestamp));
     }
     if (pSQLTime != null) {
-      lRequestBuilder.addQueryParam("sqlTime", new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pSQLTime));
+      lRequestBuilder.setQueryParameter("sqlTime", new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pSQLTime));
     }
     if (pSQLDate != null) {
-      lRequestBuilder.addQueryParam("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pSQLDate));
+      lRequestBuilder.setQueryParameter("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pSQLDate));
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -515,41 +519,42 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     // Add query parameter(s) to request
     if (pQueryParams != null) {
       if (pQueryParams.getOffsetDateTime() != null) {
-        lRequestBuilder.addQueryParam("offsetDateTime",
+        lRequestBuilder.setQueryParameter("offsetDateTime",
             DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pQueryParams.getOffsetDateTime()));
       }
       if (pQueryParams.getOffsetTime() != null) {
-        lRequestBuilder.addQueryParam("offsetTime",
+        lRequestBuilder.setQueryParameter("offsetTime",
             DateTimeFormatter.ISO_OFFSET_TIME.format(pQueryParams.getOffsetTime()));
       }
       if (pQueryParams.getLocalDateTime() != null) {
-        lRequestBuilder.addQueryParam("localDateTime",
+        lRequestBuilder.setQueryParameter("localDateTime",
             DateTimeFormatter.ISO_DATE_TIME.format(pQueryParams.getLocalDateTime()));
       }
       if (pQueryParams.getLocalTime() != null) {
-        lRequestBuilder.addQueryParam("localTime", DateTimeFormatter.ISO_TIME.format(pQueryParams.getLocalTime()));
+        lRequestBuilder.setQueryParameter("localTime", DateTimeFormatter.ISO_TIME.format(pQueryParams.getLocalTime()));
       }
       if (pQueryParams.getLocalDate() != null) {
-        lRequestBuilder.addQueryParam("localDate", DateTimeFormatter.ISO_DATE.format(pQueryParams.getLocalDate()));
+        lRequestBuilder.setQueryParameter("localDate", DateTimeFormatter.ISO_DATE.format(pQueryParams.getLocalDate()));
       }
       if (pQueryParams.getUtilDate() != null) {
-        lRequestBuilder.addQueryParam("utilDate",
+        lRequestBuilder.setQueryParameter("utilDate",
             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getUtilDate()));
       }
       if (pQueryParams.getCalendar() != null) {
-        lRequestBuilder.addQueryParam("calendar",
+        lRequestBuilder.setQueryParameter("calendar",
             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getCalendar().getTime()));
       }
       if (pQueryParams.getSqlTimestamp() != null) {
-        lRequestBuilder.addQueryParam("sqlTimestamp",
+        lRequestBuilder.setQueryParameter("sqlTimestamp",
             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTimestamp()));
       }
       if (pQueryParams.getSqlTime() != null) {
-        lRequestBuilder.addQueryParam("sqlTime",
+        lRequestBuilder.setQueryParameter("sqlTime",
             new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTime()));
       }
       if (pQueryParams.getSqlDate() != null) {
-        lRequestBuilder.addQueryParam("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pQueryParams.getSqlDate()));
+        lRequestBuilder.setQueryParameter("sqlDate",
+            new SimpleDateFormat("yyyy-MM-dd").format(pQueryParams.getSqlDate()));
       }
     }
     // Execute request.
@@ -764,7 +769,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     // Add query parameter(s) to request
     if (pContext != null) {
       if (pContext.getQueryParam() != null) {
-        lRequestBuilder.addQueryParam("q1", pContext.getQueryParam());
+        lRequestBuilder.setQueryParameter("q1", pContext.getQueryParam());
       }
     }
     // Set HTTP header(s)
@@ -826,9 +831,9 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (query1 != null) {
-      lRequestBuilder.addQueryParam("query1", query1);
+      lRequestBuilder.setQueryParameter("query1", query1);
     }
-    lRequestBuilder.addQueryParam("query2", String.valueOf(query2));
+    lRequestBuilder.setQueryParameter("query2", String.valueOf(query2));
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
@@ -981,7 +986,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pBookingCode != null) {
-      lRequestBuilder.addQueryParam("bookingCode", pBookingCode.getCode());
+      lRequestBuilder.setQueryParameter("bookingCode", pBookingCode.getCode());
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -1007,7 +1012,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     // Add query parameter(s) to request
     if (pBeanParam != null) {
       if (pBeanParam.getBookingCode() != null) {
-        lRequestBuilder.addQueryParam("bookingCode", pBeanParam.getBookingCode().getCode());
+        lRequestBuilder.setQueryParameter("bookingCode", pBeanParam.getBookingCode().getCode());
       }
     }
     // Execute request and return result.
@@ -1033,7 +1038,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pIntValues != null) {
-      lRequestBuilder.addQueryParam("intValues", pIntValues);
+      lRequestBuilder.setQueryParameter("intValues", pIntValues);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -1058,7 +1063,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pStrings != null) {
-      lRequestBuilder.addQueryParam("strings", pStrings);
+      lRequestBuilder.setQueryParameter("strings", pStrings);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -1083,7 +1088,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pIntegers != null) {
-      lRequestBuilder.addQueryParam("integers", pIntegers);
+      lRequestBuilder.setQueryParameter("integers", pIntegers);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -1109,13 +1114,13 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     // Add query parameter(s) to request
     if (pBean != null) {
       if (pBean.getIntArray() != null) {
-        lRequestBuilder.addQueryParam("intArray", pBean.getIntArray());
+        lRequestBuilder.setQueryParameter("intArray", pBean.getIntArray());
       }
       if (pBean.getStrings() != null) {
-        lRequestBuilder.addQueryParam("strings", pBean.getStrings());
+        lRequestBuilder.setQueryParameter("strings", pBean.getStrings());
       }
       if (pBean.getIntegers() != null) {
-        lRequestBuilder.addQueryParam("integers", Arrays.asList(pBean.getIntegers()));
+        lRequestBuilder.setQueryParameter("integers", Arrays.asList(pBean.getIntegers()));
       }
     }
     // Execute request and return result.
@@ -1148,21 +1153,21 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       for (IntegerCodeType lNext : pCodes) {
         pCodesAsBasicType.add(String.valueOf(lNext.getCode()));
       }
-      lRequestBuilder.addQueryParam("codes", pCodesAsBasicType);
+      lRequestBuilder.setQueryParameter("codes", pCodesAsBasicType);
     }
     if (pLongCodes != null) {
       Set<Long> pLongCodesAsBasicType = new HashSet<Long>();
       for (LongCode lNext : pLongCodes) {
         pLongCodesAsBasicType.add(lNext.getCode());
       }
-      lRequestBuilder.addQueryParam("longCodes", pLongCodesAsBasicType);
+      lRequestBuilder.setQueryParameter("longCodes", pLongCodesAsBasicType);
     }
     if (pBookingIDs != null) {
       List<String> pBookingIDsAsBasicType = new ArrayList<String>();
       for (BookingID lNext : pBookingIDs) {
         pBookingIDsAsBasicType.add(lNext.getBookingID());
       }
-      lRequestBuilder.addQueryParam("bookingIDs", pBookingIDsAsBasicType);
+      lRequestBuilder.setQueryParameter("bookingIDs", pBookingIDsAsBasicType);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -1192,36 +1197,207 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
         for (LongCode lNext : pQueryBean.getLongCodes()) {
           lLongCodes.add(lNext.getCode().toString());
         }
-        lRequestBuilder.addQueryParam("longCodes", lLongCodes);
+        lRequestBuilder.setQueryParameter("longCodes", lLongCodes);
       }
       if (pQueryBean.getCodes() != null) {
         Set<String> lCodes = new HashSet<String>();
         for (IntegerCodeType lNext : pQueryBean.getCodes()) {
           lCodes.add(String.valueOf(lNext.getCode()));
         }
-        lRequestBuilder.addQueryParam("codes", lCodes);
+        lRequestBuilder.setQueryParameter("codes", lCodes);
       }
       if (pQueryBean.getDoubleCodes() != null) {
         Set<String> lDoubleCodes = new HashSet<String>();
         for (DoubleCode lNext : pQueryBean.getDoubleCodes()) {
           lDoubleCodes.add(lNext.getCode().toString());
         }
-        lRequestBuilder.addQueryParam("doubleCodes", lDoubleCodes);
+        lRequestBuilder.setQueryParameter("doubleCodes", lDoubleCodes);
       }
       if (pQueryBean.getBookingIDs() != null) {
         Set<String> lBookingIDs = new HashSet<String>();
         for (BookingID lNext : pQueryBean.getBookingIDs()) {
           lBookingIDs.add(lNext.getBookingID());
         }
-        lRequestBuilder.addQueryParam("bookingIDs", lBookingIDs);
+        lRequestBuilder.setQueryParameter("bookingIDs", lBookingIDs);
       }
       if (pQueryBean.getBookingIDsArray() != null) {
         Set<String> lBookingIDsArray = new HashSet<String>();
         for (BookingID lNext : pQueryBean.getBookingIDsArray()) {
           lBookingIDsArray.add(lNext.getBookingID());
         }
-        lRequestBuilder.addQueryParam("bookingIDsArray", lBookingIDsArray);
+        lRequestBuilder.setQueryParameter("bookingIDsArray", lBookingIDsArray);
       }
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pMultiValuedBean
+   * @return {@link String}
+   */
+  @Override
+  public String testMultiValuedHeaderFieldsInBeanParam( MultiValuedHeaderBeanParam pMultiValuedBean ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testMultiValuedHeaderFieldsInBeanParam");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set HTTP header(s)
+    if (pMultiValuedBean != null) {
+      if (pMultiValuedBean.getNames() != null) {
+        lRequestBuilder.setHeader("names", pMultiValuedBean.getNames());
+      }
+      else {
+        lRequestBuilder.setHeader("names", (String) null);
+      }
+      if (pMultiValuedBean.getInts() != null) {
+        lRequestBuilder.setHeader("ints", pMultiValuedBean.getInts());
+      }
+      else {
+        lRequestBuilder.setHeader("ints", (String) null);
+      }
+      if (pMultiValuedBean.getDoubles() != null) {
+        lRequestBuilder.setHeader("doubles", Arrays.asList(pMultiValuedBean.getDoubles()));
+      }
+      else {
+        lRequestBuilder.setHeader("doubles", (String) null);
+      }
+      if (pMultiValuedBean.getCodes() != null) {
+        List<String> lValues = new ArrayList<String>();
+        for (StringCode lNext : pMultiValuedBean.getCodes()) {
+          lValues.add(lNext.getCode().toString());
+        }
+        lRequestBuilder.setHeader("codes", lValues);
+      }
+      else {
+        lRequestBuilder.setHeader("codes", (String) null);
+      }
+      if (pMultiValuedBean.getStringCodeList() != null) {
+        List<String> lValues = new ArrayList<String>();
+        for (StringCode lNext : pMultiValuedBean.getStringCodeList()) {
+          lValues.add(lNext.getCode().toString());
+        }
+        lRequestBuilder.setHeader("stringCodeList", lValues);
+      }
+      else {
+        lRequestBuilder.setHeader("stringCodeList", (String) null);
+      }
+      if (pMultiValuedBean.getStartDate() != null) {
+        lRequestBuilder.setHeader("startDate", DateTimeFormatter.ISO_DATE.format(pMultiValuedBean.getStartDate()));
+      }
+      else {
+        lRequestBuilder.setHeader("startDate", (String) null);
+      }
+      if (pMultiValuedBean.getDates() != null) {
+        List<String> lValues = new ArrayList<String>();
+        for (LocalDate lNext : pMultiValuedBean.getDates()) {
+          lValues.add(DateTimeFormatter.ISO_DATE.format(lNext));
+        }
+        lRequestBuilder.setHeader("dates", lValues);
+      }
+      else {
+        lRequestBuilder.setHeader("dates", (String) null);
+      }
+      if (pMultiValuedBean.getTimestamps() != null) {
+        List<String> lValues = new ArrayList<String>();
+        for (LocalDateTime lNext : pMultiValuedBean.getTimestamps()) {
+          lValues.add(DateTimeFormatter.ISO_DATE_TIME.format(lNext));
+        }
+        lRequestBuilder.setHeader("timestamps", lValues);
+      }
+      else {
+        lRequestBuilder.setHeader("timestamps", (String) null);
+      }
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * 
+   * @param pNames
+   * @param pInts
+   * @param pDoubles
+   * @param pCodes
+   * @param pStartDate
+   * @param pTimestamps
+   * @param pTimes
+   * @return {@link String}
+   */
+  @Override
+  public String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles,
+      Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testMultiValuedHeaderFields");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set HTTP header(s)
+    if (pNames != null) {
+      lRequestBuilder.setHeader("names", pNames);
+    }
+    else {
+      lRequestBuilder.setHeader("names", (String) null);
+    }
+    if (pInts != null) {
+      lRequestBuilder.setHeader("ints", pInts);
+    }
+    else {
+      lRequestBuilder.setHeader("ints", (String) null);
+    }
+    if (pDoubles != null) {
+      lRequestBuilder.setHeader("doubles", pDoubles);
+    }
+    else {
+      lRequestBuilder.setHeader("doubles", (String) null);
+    }
+    if (pCodes != null) {
+      List<String> lValues = new ArrayList<String>();
+      for (StringCode lNext : pCodes) {
+        lValues.add(lNext.getCode().toString());
+      }
+      lRequestBuilder.setHeader("codes", lValues);
+    }
+    else {
+      lRequestBuilder.setHeader("codes", (String) null);
+    }
+    if (pStartDate != null) {
+      lRequestBuilder.setHeader("startDate", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pStartDate));
+    }
+    else {
+      lRequestBuilder.setHeader("startDate", (String) null);
+    }
+    if (pTimestamps != null) {
+      List<String> lValues = new ArrayList<String>();
+      for (OffsetDateTime lNext : pTimestamps) {
+        lValues.add(DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lNext));
+      }
+      lRequestBuilder.setHeader("timestamps", lValues);
+    }
+    else {
+      lRequestBuilder.setHeader("timestamps", (String) null);
+    }
+    if (pTimes != null) {
+      List<String> lValues = new ArrayList<String>();
+      for (OffsetTime lNext : pTimes) {
+        lValues.add(DateTimeFormatter.ISO_OFFSET_TIME.format(lNext));
+      }
+      lRequestBuilder.setHeader("times", lValues);
+    }
+    else {
+      lRequestBuilder.setHeader("times", (String) null);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();

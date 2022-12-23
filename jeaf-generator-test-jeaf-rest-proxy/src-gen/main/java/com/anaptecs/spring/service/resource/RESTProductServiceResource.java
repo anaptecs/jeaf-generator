@@ -66,11 +66,13 @@ import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
+import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
@@ -583,6 +585,45 @@ public class RESTProductServiceResource {
     // Delegate request to service.
     RESTProductService lService = this.getRESTProductService();
     String lResult = lService.testMulitvaluedDataTypeAsBeanQueryParam(pQueryBean);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testMultiValuedHeaderFieldsInBeanParam()}
+   */
+  @Path("testMultiValuedHeaderFieldsInBeanParam")
+  @GET
+  public Response testMultiValuedHeaderFieldsInBeanParam( @BeanParam MultiValuedHeaderBeanParam pMultiValuedBean ) {
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult = lService.testMultiValuedHeaderFieldsInBeanParam(pMultiValuedBean);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testMultiValuedHeaderFields()}
+   */
+  @Path("testMultiValuedHeaderFields")
+  @GET
+  public Response testMultiValuedHeaderFields( @HeaderParam("names") Set<String> pNames,
+      @HeaderParam("ints") int[] pInts, @HeaderParam("doubles") Set<Double> pDoubles,
+      @HeaderParam("codes") String[] pCodesAsBasicType, @HeaderParam("startDate") OffsetDateTime pStartDate,
+      @HeaderParam("timestamps") Set<OffsetDateTime> pTimestamps, @HeaderParam("times") Set<OffsetTime> pTimes ) {
+    // Convert basic type parameters into "real" objects.
+    Set<StringCode> pCodes;
+    if (pCodesAsBasicType != null) {
+      pCodes = new HashSet<StringCode>();
+      for (String lNext : pCodesAsBasicType) {
+        pCodes.add(StringCode.builder().setCode(lNext).build());
+      }
+    }
+    else {
+      pCodes = Collections.emptySet();
+    }
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    String lResult =
+        lService.testMultiValuedHeaderFields(pNames, pInts, pDoubles, pCodes, pStartDate, pTimestamps, pTimes);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 

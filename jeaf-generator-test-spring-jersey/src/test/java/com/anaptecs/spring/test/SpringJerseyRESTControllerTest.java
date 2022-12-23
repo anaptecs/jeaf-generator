@@ -43,7 +43,7 @@ import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.impl.SpringTestApplication;
 
 @SpringBootTest(classes = SpringTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class SpringRESTControllerTest {
+public class SpringJerseyRESTControllerTest {
   @Inject
   private TestRestTemplate template;
 
