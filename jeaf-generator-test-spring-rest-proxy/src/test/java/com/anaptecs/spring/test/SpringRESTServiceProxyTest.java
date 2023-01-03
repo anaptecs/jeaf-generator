@@ -141,6 +141,70 @@ public class SpringRESTServiceProxyTest {
         .withHeader("doubles", "3.1415", "47.11")
         .withHeader("codes", "CODE_1", "CODE_2"))
         .respond(mockResponse("\"Yeah, yeah!\""));
+
+    // test-date-query-params
+    lClient.when(mockRequest("/rest-products/test-date-query-params/1")
+        .withQueryStringParameter("startTimestamp", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("startTime", "13:22:12.453+01:00")
+        .withQueryStringParameter("localStartTimestamp", "2022-03-17T13:22:12.453")
+        .withQueryStringParameter("localStartTime", "13:22:12.453")
+        .withQueryStringParameter("localStartDate", "2022-03-17")
+        .withQueryStringParameter("calendar", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("utilDate", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("sqlTimestamp", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00")
+        .withQueryStringParameter("sqlDate", "2022-03-17"))
+        .respond(mockResponse(null, 200, 0));
+
+    lClient.when(mockRequest("/rest-products/test-date-query-params/4")).respond(mockResponse(null, 200, 0));
+
+    // test-date-query-params-beans
+    lClient.when(mockRequest("/rest-products/test-date-query-params-beans/1")
+        .withQueryStringParameter("offsetDateTime", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("offsetTime", "13:22:12.453+01:00")
+        .withQueryStringParameter("localDateTime", "2022-03-17T13:22:12.453")
+        .withQueryStringParameter("localTime", "13:22:12.453")
+        .withQueryStringParameter("localDate", "2022-03-17")
+        .withQueryStringParameter("calendar", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("utilDate", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("sqlTimestamp", "2022-03-17T13:22:12.453+01:00")
+        .withQueryStringParameter("sqlTime", "13:22:12.453+01:00")
+        .withQueryStringParameter("sqlDate", "2022-03-17"))
+        .respond(mockResponse(null, 200, 0));
+
+    lClient.when(mockRequest("/rest-products/test-date-query-params-beans/4")).respond(mockResponse(null, 200, 0));
+
+    // test-date-header-params
+    lClient.when(mockRequest("/rest-products/test-date-header-params/1")
+        .withHeader("Offset-Date-Time", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("Offset-Time", "13:22:12.453+01:00")
+        .withHeader("Local-Date-Time", "2022-03-17T13:22:12.453")
+        .withHeader("Local-Time", "13:22:12.453")
+        .withHeader("Local-Date", "2022-03-17")
+        .withHeader("Calendar", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("Util-Date", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Timestamp", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Time", "13:22:12.453+01:00")
+        .withHeader("SQL-Date", "2022-03-17"))
+        .respond(mockResponse(null, 200, 0));
+
+    lClient.when(mockRequest("/rest-products/test-date-header-params/4")).respond(mockResponse(null, 200, 0));
+
+    // test-date-header-params-beans
+    lClient.when(mockRequest("/rest-products/test-date-header-params-beans/1")
+        .withHeader("Offset-Date-Time", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("Offset-Time", "13:22:12.453+01:00")
+        .withHeader("Local-Date-Time", "2022-03-17T13:22:12.453")
+        .withHeader("Local-Time", "13:22:12.453")
+        .withHeader("Local-Date", "2022-03-17")
+        .withHeader("Calendar", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("Util-Date", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Timestamp", "2022-03-17T13:22:12.453+01:00")
+        .withHeader("SQL-Time", "13:22:12.453+01:00")
+        .withHeader("SQL-Date", "2022-03-17"))
+        .respond(mockResponse(null, 200, 0));
+
+    lClient.when(mockRequest("/rest-products/test-date-header-params-beans/4")).respond(mockResponse(null, 200, 0));
   }
 
   @AfterAll

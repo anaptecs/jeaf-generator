@@ -6,10 +6,12 @@
 package com.anaptecs.spring.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -124,6 +126,23 @@ public class RESTProductServiceImpl implements RESTProductService {
 
   @Override
   public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
+    if (pPath.equals("1")) {
+      assertEquals("2022-03-17T13:22:12.453+01:00", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(
+          pQueryParams.getCalendar().getTime()));
+      assertEquals("2022-03-17", pQueryParams.getLocalDate().toString());
+      assertEquals("2022-03-17T13:22:12.453", pQueryParams.getLocalDateTime().toString());
+      assertEquals("13:22:12.453", pQueryParams.getLocalTime().toString());
+      assertEquals("2022-03-17T13:22:12.453+01:00", pQueryParams.getOffsetDateTime().toString());
+      assertEquals("13:22:12.453+01:00", pQueryParams.getOffsetTime().toString());
+      assertEquals("2022-03-17", pQueryParams.getSqlDate().toString());
+      assertEquals("13:22:12", pQueryParams.getSqlTime().toString());
+      assertEquals("2022-03-17 13:22:12.453", pQueryParams.getSqlTimestamp().toString());
+      assertEquals("2022-03-17T13:22:12.453+01:00", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(
+          pQueryParams.getUtilDate()));
+    }
+    else {
+      fail("Invalid path");
+    }
   }
 
   @Override
@@ -134,6 +153,23 @@ public class RESTProductServiceImpl implements RESTProductService {
 
   @Override
   public void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
+    if (pPath.equals("1")) {
+      assertEquals("2022-03-17T13:22:12.453+01:00", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(
+          pHeaderParams.getCalendar().getTime()));
+      assertEquals("2022-03-17", pHeaderParams.getLocalDate().toString());
+      assertEquals("2022-03-17T13:22:12.453", pHeaderParams.getLocalDateTime().toString());
+      assertEquals("13:22:12.453", pHeaderParams.getLocalTime().toString());
+      assertEquals("2022-03-17T13:22:12.453+01:00", pHeaderParams.getOffsetDateTime().toString());
+      assertEquals("13:22:12.453+01:00", pHeaderParams.getOffsetTime().toString());
+      assertEquals("2022-03-17", pHeaderParams.getSqlDate().toString());
+      assertEquals("13:22:12", pHeaderParams.getSqlTime().toString());
+      assertEquals("2022-03-17 13:22:12.453", pHeaderParams.getSqlTimestamp().toString());
+      assertEquals("2022-03-17T13:22:12.453+01:00", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(
+          pHeaderParams.getUtilDate()));
+    }
+    else {
+      fail("Invalid path");
+    }
   }
 
   @Override
@@ -259,7 +295,7 @@ public class RESTProductServiceImpl implements RESTProductService {
     }
     return Arrays.toString(pMultiValuedBean.getNames()) + "_" + Arrays.toString(pMultiValuedBean.getInts()) + "_"
         + Arrays.toString(pMultiValuedBean.getDoubles()) + "_"
-        + lCodes + "_" + lStringCodeList + "_" + lDates;
+        + lCodes + "_" + lStringCodeList + "_" + pMultiValuedBean.getStartDate() + "_" + lDates;
   }
 
   @Override

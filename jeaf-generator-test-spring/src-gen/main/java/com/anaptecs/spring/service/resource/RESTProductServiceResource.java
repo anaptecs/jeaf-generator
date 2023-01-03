@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -281,29 +283,91 @@ public class RESTProductServiceResource {
    */
   @RequestMapping(path = "test-date-query-params-beans/{path}", method = { RequestMethod.GET })
   public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) String pPath,
-      @RequestParam(name = "offsetDateTime", required = true) OffsetDateTime pOffsetDateTime,
-      @RequestParam(name = "offsetTime", required = true) OffsetTime pOffsetTime,
-      @RequestParam(name = "localDateTime", required = true) LocalDateTime pLocalDateTime,
-      @RequestParam(name = "localTime", required = true) LocalTime pLocalTime,
-      @RequestParam(name = "localDate", required = true) LocalDate pLocalDate,
-      @RequestParam(name = "utilDate", required = true) java.util.Date pUtilDate,
-      @RequestParam(name = "calendar", required = true) Calendar pCalendar,
-      @RequestParam(name = "sqlTimestamp", required = true) Timestamp pSqlTimestamp,
-      @RequestParam(name = "sqlTime", required = true) Time pSqlTime,
-      @RequestParam(name = "sqlDate", required = true) Date pSqlDate ) {
+      @RequestParam(name = "offsetDateTime", required = true) String pOffsetDateTimeAsBasicType,
+      @RequestParam(name = "offsetTime", required = true) String pOffsetTimeAsBasicType,
+      @RequestParam(name = "localDateTime", required = true) String pLocalDateTimeAsBasicType,
+      @RequestParam(name = "localTime", required = true) String pLocalTimeAsBasicType,
+      @RequestParam(name = "localDate", required = true) String pLocalDateAsBasicType,
+      @RequestParam(name = "utilDate", required = true) String pUtilDateAsBasicType,
+      @RequestParam(name = "calendar", required = true) String pCalendarAsBasicType,
+      @RequestParam(name = "sqlTimestamp", required = true) String pSqlTimestampAsBasicType,
+      @RequestParam(name = "sqlTime", required = true) String pSqlTimeAsBasicType,
+      @RequestParam(name = "sqlDate", required = true) String pSqlDateAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     DateQueryParamsBean.Builder lQueryParamsBuilder = DateQueryParamsBean.builder();
-    lQueryParamsBuilder.setOffsetDateTime(pOffsetDateTime);
-    lQueryParamsBuilder.setOffsetTime(pOffsetTime);
-    lQueryParamsBuilder.setLocalDateTime(pLocalDateTime);
-    lQueryParamsBuilder.setLocalTime(pLocalTime);
-    lQueryParamsBuilder.setLocalDate(pLocalDate);
-    lQueryParamsBuilder.setUtilDate(pUtilDate);
-    lQueryParamsBuilder.setCalendar(pCalendar);
-    lQueryParamsBuilder.setSqlTimestamp(pSqlTimestamp);
-    lQueryParamsBuilder.setSqlTime(pSqlTime);
-    lQueryParamsBuilder.setSqlDate(pSqlDate);
+    // Handle bean parameter pQueryParams.offsetDateTime
+    if (pOffsetDateTimeAsBasicType != null) {
+      lQueryParamsBuilder.setOffsetDateTime(OffsetDateTime.parse(pOffsetDateTimeAsBasicType));
+    }
+    // Handle bean parameter pQueryParams.offsetTime
+    if (pOffsetTimeAsBasicType != null) {
+      lQueryParamsBuilder.setOffsetTime(OffsetTime.parse(pOffsetTimeAsBasicType));
+    }
+    // Handle bean parameter pQueryParams.localDateTime
+    if (pLocalDateTimeAsBasicType != null) {
+      lQueryParamsBuilder.setLocalDateTime(LocalDateTime.parse(pLocalDateTimeAsBasicType));
+    }
+    // Handle bean parameter pQueryParams.localTime
+    if (pLocalTimeAsBasicType != null) {
+      lQueryParamsBuilder.setLocalTime(LocalTime.parse(pLocalTimeAsBasicType));
+    }
+    // Handle bean parameter pQueryParams.localDate
+    if (pLocalDateAsBasicType != null) {
+      lQueryParamsBuilder.setLocalDate(LocalDate.parse(pLocalDateAsBasicType));
+    }
+    // Handle bean parameter pQueryParams.utilDate
+    if (pUtilDateAsBasicType != null) {
+      try {
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pUtilDateAsBasicType);
+        lQueryParamsBuilder.setUtilDate(lDate);
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
+    // Handle bean parameter pQueryParams.calendar
+    if (pCalendarAsBasicType != null) {
+      try {
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pCalendarAsBasicType);
+        Calendar lCalendar = Calendar.getInstance();
+        lCalendar.setTime(lDate);
+        lQueryParamsBuilder.setCalendar(lCalendar);
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
+    // Handle bean parameter pQueryParams.sqlTimestamp
+    if (pSqlTimestampAsBasicType != null) {
+      try {
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pSqlTimestampAsBasicType);
+        lQueryParamsBuilder.setSqlTimestamp(new Timestamp(lDate.getTime()));
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
+    // Handle bean parameter pQueryParams.sqlTime
+    if (pSqlTimeAsBasicType != null) {
+      try {
+        java.util.Date lDate = new SimpleDateFormat("HH:mm:ss.SSSXXX").parse(pSqlTimeAsBasicType);
+        lQueryParamsBuilder.setSqlTime(new Time(lDate.getTime()));
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
+    // Handle bean parameter pQueryParams.sqlDate
+    if (pSqlDateAsBasicType != null) {
+      try {
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd").parse(pSqlDateAsBasicType);
+        lQueryParamsBuilder.setSqlDate(new Date(lDate.getTime()));
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
     DateQueryParamsBean pQueryParams = lQueryParamsBuilder.build();
     // Delegate request to service.
     rESTProductService.testDateQueryParamsBean(pPath, pQueryParams);
@@ -334,29 +398,91 @@ public class RESTProductServiceResource {
    */
   @RequestMapping(path = "test-date-header-params-beans/{path}", method = { RequestMethod.GET })
   public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) String pPath,
-      @RequestHeader(name = "Offset-Date-Time", required = true) OffsetDateTime pOffsetDateTime,
-      @RequestHeader(name = "Offset-Time", required = true) OffsetTime pOffsetTime,
-      @RequestHeader(name = "Local-Date-Time", required = true) LocalDateTime pLocalDateTime,
-      @RequestHeader(name = "Local-Time", required = true) LocalTime pLocalTime,
-      @RequestHeader(name = "Local-Date", required = true) LocalDate pLocalDate,
-      @RequestHeader(name = "Util-Date", required = true) java.util.Date pUtilDate,
-      @RequestHeader(name = "Calendar", required = true) Calendar pCalendar,
-      @RequestHeader(name = "SQL-Timestamp", required = true) Timestamp pSqlTimestamp,
-      @RequestHeader(name = "SQL-Time", required = true) Time pSqlTime,
-      @RequestHeader(name = "SQL-Date", required = true) Date pSqlDate ) {
+      @RequestHeader(name = "Offset-Date-Time", required = true) String pOffsetDateTimeAsBasicType,
+      @RequestHeader(name = "Offset-Time", required = true) String pOffsetTimeAsBasicType,
+      @RequestHeader(name = "Local-Date-Time", required = true) String pLocalDateTimeAsBasicType,
+      @RequestHeader(name = "Local-Time", required = true) String pLocalTimeAsBasicType,
+      @RequestHeader(name = "Local-Date", required = true) String pLocalDateAsBasicType,
+      @RequestHeader(name = "Util-Date", required = true) String pUtilDateAsBasicType,
+      @RequestHeader(name = "Calendar", required = true) String pCalendarAsBasicType,
+      @RequestHeader(name = "SQL-Timestamp", required = true) String pSqlTimestampAsBasicType,
+      @RequestHeader(name = "SQL-Time", required = true) String pSqlTimeAsBasicType,
+      @RequestHeader(name = "SQL-Date", required = true) String pSqlDateAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     DateHeaderParamsBean.Builder lHeaderParamsBuilder = DateHeaderParamsBean.builder();
-    lHeaderParamsBuilder.setOffsetDateTime(pOffsetDateTime);
-    lHeaderParamsBuilder.setOffsetTime(pOffsetTime);
-    lHeaderParamsBuilder.setLocalDateTime(pLocalDateTime);
-    lHeaderParamsBuilder.setLocalTime(pLocalTime);
-    lHeaderParamsBuilder.setLocalDate(pLocalDate);
-    lHeaderParamsBuilder.setUtilDate(pUtilDate);
-    lHeaderParamsBuilder.setCalendar(pCalendar);
-    lHeaderParamsBuilder.setSqlTimestamp(pSqlTimestamp);
-    lHeaderParamsBuilder.setSqlTime(pSqlTime);
-    lHeaderParamsBuilder.setSqlDate(pSqlDate);
+    // Handle bean parameter pHeaderParams.offsetDateTime
+    if (pOffsetDateTimeAsBasicType != null) {
+      lHeaderParamsBuilder.setOffsetDateTime(OffsetDateTime.parse(pOffsetDateTimeAsBasicType));
+    }
+    // Handle bean parameter pHeaderParams.offsetTime
+    if (pOffsetTimeAsBasicType != null) {
+      lHeaderParamsBuilder.setOffsetTime(OffsetTime.parse(pOffsetTimeAsBasicType));
+    }
+    // Handle bean parameter pHeaderParams.localDateTime
+    if (pLocalDateTimeAsBasicType != null) {
+      lHeaderParamsBuilder.setLocalDateTime(LocalDateTime.parse(pLocalDateTimeAsBasicType));
+    }
+    // Handle bean parameter pHeaderParams.localTime
+    if (pLocalTimeAsBasicType != null) {
+      lHeaderParamsBuilder.setLocalTime(LocalTime.parse(pLocalTimeAsBasicType));
+    }
+    // Handle bean parameter pHeaderParams.localDate
+    if (pLocalDateAsBasicType != null) {
+      lHeaderParamsBuilder.setLocalDate(LocalDate.parse(pLocalDateAsBasicType));
+    }
+    // Handle bean parameter pHeaderParams.utilDate
+    if (pUtilDateAsBasicType != null) {
+      try {
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pUtilDateAsBasicType);
+        lHeaderParamsBuilder.setUtilDate(lDate);
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
+    // Handle bean parameter pHeaderParams.calendar
+    if (pCalendarAsBasicType != null) {
+      try {
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pCalendarAsBasicType);
+        Calendar lCalendar = Calendar.getInstance();
+        lCalendar.setTime(lDate);
+        lHeaderParamsBuilder.setCalendar(lCalendar);
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
+    // Handle bean parameter pHeaderParams.sqlTimestamp
+    if (pSqlTimestampAsBasicType != null) {
+      try {
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pSqlTimestampAsBasicType);
+        lHeaderParamsBuilder.setSqlTimestamp(new Timestamp(lDate.getTime()));
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
+    // Handle bean parameter pHeaderParams.sqlTime
+    if (pSqlTimeAsBasicType != null) {
+      try {
+        java.util.Date lDate = new SimpleDateFormat("HH:mm:ss.SSSXXX").parse(pSqlTimeAsBasicType);
+        lHeaderParamsBuilder.setSqlTime(new Time(lDate.getTime()));
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
+    // Handle bean parameter pHeaderParams.sqlDate
+    if (pSqlDateAsBasicType != null) {
+      try {
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd").parse(pSqlDateAsBasicType);
+        lHeaderParamsBuilder.setSqlDate(new Date(lDate.getTime()));
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
     DateHeaderParamsBean pHeaderParams = lHeaderParamsBuilder.build();
     // Delegate request to service.
     rESTProductService.testDateHeaderParamsBean(pPath, pHeaderParams);
@@ -449,11 +575,14 @@ public class RESTProductServiceResource {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     AdvancedHeader.Builder lContextBuilder = AdvancedHeader.builder();
+    // Handle bean parameter pContext.bookingID
     if (pBookingIDAsBasicType != null) {
       lContextBuilder.setBookingID(compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class,
           BOOKINGID_SERIALIZED_CLASSES));
     }
+    // Handle bean parameter pContext.bookingCode
     lContextBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
+    // Handle bean parameter pContext.doubleCode
     lContextBuilder.setDoubleCode(DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build());
     AdvancedHeader pContext = lContextBuilder.build();
     // Delegate request to service.
@@ -490,6 +619,7 @@ public class RESTProductServiceResource {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     QueryBeanParam.Builder lBeanParamBuilder = QueryBeanParam.builder();
+    // Handle bean parameter pBeanParam.bookingCode
     lBeanParamBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
     QueryBeanParam pBeanParam = lBeanParamBuilder.build();
     // Delegate request to service.
@@ -599,6 +729,7 @@ public class RESTProductServiceResource {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     DataTypesQueryBean.Builder lQueryBeanBuilder = DataTypesQueryBean.builder();
+    // Handle bean parameter pQueryBean.longCodes
     if (pLongCodesAsBasicType != null) {
       LongCode[] lLongCodes = new LongCode[pLongCodesAsBasicType.length];
       for (int i = 0; i < pLongCodesAsBasicType.length; i++) {
@@ -606,6 +737,7 @@ public class RESTProductServiceResource {
       }
       lQueryBeanBuilder.setLongCodes(lLongCodes);
     }
+    // Handle bean parameter pQueryBean.codes
     if (pCodesAsBasicType != null) {
       IntegerCodeType[] lCodes = new IntegerCodeType[pCodesAsBasicType.length];
       for (int i = 0; i < pCodesAsBasicType.length; i++) {
@@ -613,6 +745,7 @@ public class RESTProductServiceResource {
       }
       lQueryBeanBuilder.setCodes(lCodes);
     }
+    // Handle bean parameter pQueryBean.doubleCodes
     if (pDoubleCodesAsBasicType != null) {
       Set<DoubleCode> lDoubleCodes = new HashSet<DoubleCode>();
       for (Double lNext : pDoubleCodesAsBasicType) {
@@ -620,14 +753,18 @@ public class RESTProductServiceResource {
       }
       lQueryBeanBuilder.setDoubleCodes(lDoubleCodes);
     }
+    // Handle bean parameter pQueryBean.bookingIDs
     if (pBookingIDsAsBasicType != null) {
+      // Handle bean parameter pQueryBean.bookingIDs
       Set<BookingID> lBookingIDs = new HashSet<BookingID>();
       for (String lNext : pBookingIDsAsBasicType) {
         lBookingIDs.add(compositeTypeConverter.deserializeObject(lNext, BookingID.class, BOOKINGID_SERIALIZED_CLASSES));
       }
       lQueryBeanBuilder.setBookingIDs(lBookingIDs);
     }
+    // Handle bean parameter pQueryBean.bookingIDsArray
     if (pBookingIDsArrayAsBasicType != null) {
+      // Handle bean parameter pQueryBean.bookingIDsArray
       BookingID[] lBookingIDsArray = new BookingID[pBookingIDsArrayAsBasicType.length];
       for (int i = 0; i < pBookingIDsArrayAsBasicType.length; i++) {
         lBookingIDsArray[i] = compositeTypeConverter.deserializeObject(pBookingIDsArrayAsBasicType[i], BookingID.class,
@@ -650,15 +787,19 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "doubles", required = false) Double[] pDoubles,
       @RequestHeader(name = "codes", required = false) String[] pCodesAsBasicType,
       @RequestHeader(name = "stringCodeList", required = false) String[] pStringCodeListAsBasicType,
-      @RequestHeader(name = "startDate", required = false) LocalDate pStartDate,
-      @RequestHeader(name = "dates", required = false) LocalDate[] pDates,
-      @RequestHeader(name = "timestamps", required = false) Set<LocalDateTime> pTimestamps ) {
+      @RequestHeader(name = "startDate", required = false) String pStartDateAsBasicType,
+      @RequestHeader(name = "dates", required = false) String[] pDatesAsBasicType,
+      @RequestHeader(name = "timestamps", required = false) String[] pTimestampsAsBasicType,
+      @RequestHeader(name = "calendars", required = false) String[] pCalendarsAsBasicType,
+      @RequestHeader(name = "utilDates", required = false) String[] pUtilDatesAsBasicType,
+      @RequestHeader(name = "sqlTimestamps", required = false) String[] pSqlTimestampsAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     MultiValuedHeaderBeanParam.Builder lMultiValuedBeanBuilder = MultiValuedHeaderBeanParam.builder();
     lMultiValuedBeanBuilder.setNames(pNames);
     lMultiValuedBeanBuilder.setInts(pInts);
     lMultiValuedBeanBuilder.setDoubles(pDoubles);
+    // Handle bean parameter pMultiValuedBean.codes
     if (pCodesAsBasicType != null) {
       StringCode[] lCodes = new StringCode[pCodesAsBasicType.length];
       for (int i = 0; i < pCodesAsBasicType.length; i++) {
@@ -666,6 +807,7 @@ public class RESTProductServiceResource {
       }
       lMultiValuedBeanBuilder.setCodes(lCodes);
     }
+    // Handle bean parameter pMultiValuedBean.stringCodeList
     if (pStringCodeListAsBasicType != null) {
       Set<StringCode> lStringCodeList = new HashSet<StringCode>();
       for (String lNext : pStringCodeListAsBasicType) {
@@ -673,9 +815,68 @@ public class RESTProductServiceResource {
       }
       lMultiValuedBeanBuilder.setStringCodeList(lStringCodeList);
     }
-    lMultiValuedBeanBuilder.setStartDate(pStartDate);
-    lMultiValuedBeanBuilder.setDates(pDates);
-    lMultiValuedBeanBuilder.setTimestamps(pTimestamps);
+    // Handle bean parameter pMultiValuedBean.startDate
+    if (pStartDateAsBasicType != null) {
+      lMultiValuedBeanBuilder.setStartDate(LocalDate.parse(pStartDateAsBasicType));
+    }
+    // Handle bean parameter pMultiValuedBean.dates
+    if (pDatesAsBasicType != null) {
+      LocalDate[] lDates = new LocalDate[pDatesAsBasicType.length];
+      for (int i = 0; i < pDatesAsBasicType.length; i++) {
+        lDates[i] = LocalDate.parse(pDatesAsBasicType[i]);
+      }
+      lMultiValuedBeanBuilder.setDates(lDates);
+    }
+    // Handle bean parameter pMultiValuedBean.timestamps
+    if (pTimestampsAsBasicType != null) {
+    }
+    // Handle bean parameter pMultiValuedBean.calendars
+    if (pCalendarsAsBasicType != null) {
+      try {
+        Calendar[] lCalendars = new Calendar[pCalendarsAsBasicType.length];
+        for (int i = 0; i < pCalendarsAsBasicType.length; i++) {
+          SimpleDateFormat lDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+          java.util.Date lDate = lDateFormat.parse(pCalendarsAsBasicType[i]);
+          Calendar lCalendar = Calendar.getInstance();
+          lCalendar.setTime(lDate);
+          lCalendars[i] = lCalendar;
+        }
+        lMultiValuedBeanBuilder.setCalendars(lCalendars);
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
+    // Handle bean parameter pMultiValuedBean.utilDates
+    if (pUtilDatesAsBasicType != null) {
+      try {
+        java.util.Date[] lUtilDates = new java.util.Date[pUtilDatesAsBasicType.length];
+        for (int i = 0; i < pUtilDatesAsBasicType.length; i++) {
+          SimpleDateFormat lDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+          java.util.Date lDate = lDateFormat.parse(pUtilDatesAsBasicType[i]);
+          lUtilDates[i] = lDate;
+        }
+        lMultiValuedBeanBuilder.setUtilDates(lUtilDates);
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
+    // Handle bean parameter pMultiValuedBean.sqlTimestamps
+    if (pSqlTimestampsAsBasicType != null) {
+      try {
+        Timestamp[] lSqlTimestamps = new Timestamp[pSqlTimestampsAsBasicType.length];
+        for (int i = 0; i < pSqlTimestampsAsBasicType.length; i++) {
+          SimpleDateFormat lDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+          java.util.Date lDate = lDateFormat.parse(pSqlTimestampsAsBasicType[i]);
+          lSqlTimestamps[i] = new Timestamp(lDate.getTime());
+        }
+        lMultiValuedBeanBuilder.setSqlTimestamps(lSqlTimestamps);
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
     MultiValuedHeaderBeanParam pMultiValuedBean = lMultiValuedBeanBuilder.build();
     // Delegate request to service.
     return rESTProductService.testMultiValuedHeaderFieldsInBeanParam(pMultiValuedBean);

@@ -8,6 +8,8 @@ package com.anaptecs.spring.test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.inject.Inject;
 
@@ -303,12 +305,12 @@ public class SpringRESTControllerTest {
     lRequest.addHeader("doubles", "3.1415, 47.11");
     lRequest.addHeader("codes", "StringCode1, StringCode2");
     lRequest.addHeader("stringCodeList", "StringCode3, StringCode4");
-    // TODO Activate with JEAF-3158
-    // lRequest.addHeader("startDate", DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 24)));
-    // lRequest.addHeader("dates", DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 24)) + ", "
-    // + DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 31)));
+    lRequest.addHeader("startDate", DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 24)));
+    lRequest.addHeader("dates", DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 24)) + ", "
+        + DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 31)));
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals("[Hello, World!]_[1, 2, 3, 4, 5]_[3.1415, 47.11]_-StringCode1-StringCode2_-StringCode3-StringCode4_",
+    assertEquals(
+        "[Hello, World!]_[1, 2, 3, 4, 5]_[3.1415, 47.11]_-StringCode1-StringCode2_-StringCode3-StringCode4_2022-12-24_2022-12-24,2022-12-31,",
         Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
   }
@@ -330,6 +332,44 @@ public class SpringRESTControllerTest {
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
     assertEquals("[Hello, World!]_[1, 2, 3, 4, 5]_[3.1415, 47.11]_-StringCode1-StringCode2",
         Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
+    assertEquals(200, lResponse.getCode());
+  }
+
+  @Test
+  void testDateQueryParamsBean( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
+        + "/rest-products/test-date-query-params-beans/1");
+    lRequest.addParameter("offsetDateTime", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addParameter("offsetTime", "13:22:12.453+01:00");
+    lRequest.addParameter("localDateTime", "2022-03-17T13:22:12.453");
+    lRequest.addParameter("localTime", "13:22:12.453");
+    lRequest.addParameter("localDate", "2022-03-17");
+    lRequest.addParameter("calendar", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addParameter("utilDate", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addParameter("sqlTimestamp", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addParameter("sqlTime", "13:22:12.453+01:00");
+    lRequest.addParameter("sqlDate", "2022-03-17");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals(200, lResponse.getCode());
+  }
+
+  @Test
+  void testDateHeaderParamsBean( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
+        + "/rest-products/test-date-header-params-beans/1");
+    lRequest.addHeader("Offset-Date-Time", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addHeader("Offset-Time", "13:22:12.453+01:00");
+    lRequest.addHeader("Local-Date-Time", "2022-03-17T13:22:12.453");
+    lRequest.addHeader("Local-Time", "13:22:12.453");
+    lRequest.addHeader("Local-Date", "2022-03-17");
+    lRequest.addHeader("Calendar", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addHeader("Util-Date", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addHeader("SQL-Timestamp", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addHeader("SQL-Time", "13:22:12.453+01:00");
+    lRequest.addHeader("SQL-Date", "2022-03-17");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
     assertEquals(200, lResponse.getCode());
   }
 }

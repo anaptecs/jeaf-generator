@@ -301,6 +301,9 @@ cached boolean isOffsetDateTime(uml::Type type) :
 cached boolean isOffsetTime(uml::Type type) :
   type.fqn() == "java.time.OffsetTime";
   
+cached boolean belongsToJavaTimeAPI(uml::Type type) :
+  isLocalDate(type) || isLocalDateTime(type) || isLocalTime(type) || isOffsetDateTime(type) || isOffsetTime(type);
+  
 cached boolean isSQLDate(uml::Type type) :
   type.fqn() == "java.sql.Date";
 
