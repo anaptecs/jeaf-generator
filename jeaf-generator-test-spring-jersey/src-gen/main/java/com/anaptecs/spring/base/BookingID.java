@@ -54,7 +54,7 @@ public class BookingID {
   private BookingCode bookingCode;
 
   /**
-   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected BookingID( ) {
@@ -91,6 +91,19 @@ public class BookingID {
    */
   public static Builder builder( BookingID pObject ) {
     return new Builder(pObject);
+  }
+
+  /**
+   * Method converts the passed {@link String} into an instance of this object.
+   *
+   * Please be aware that this method is only intended to be used for deserialization frameworks like JAX-RS. For
+   * "normal" object creation builder should be used instead.
+   * 
+   * @param pReferenceID String that should be used to create an instance of this class. The parameter must not be null.
+   * @return {@link BookingID} Instance of the class that matches to the passed string. The method never returns null.
+   */
+  public static BookingID valueOf( String pReferenceID ) {
+    return builder().setReferenceID(String.valueOf(pReferenceID)).build();
   }
 
   /**

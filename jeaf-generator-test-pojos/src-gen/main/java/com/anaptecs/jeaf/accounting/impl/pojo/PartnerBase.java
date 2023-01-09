@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonSubTypes({ @JsonSubTypes.Type(value = Customer.class, name = "Customer") })
 public abstract class PartnerBase {
   /**
-   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected PartnerBase( ) {

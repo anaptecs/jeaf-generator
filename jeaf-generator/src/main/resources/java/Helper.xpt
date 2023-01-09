@@ -64,7 +64,7 @@
 	    lBuilder.append(System.lineSeparator());
     «ELSE»
 	    «IF isMultivalued() == false»
-		    «IF type.isEnumeration() == false»
+		    «IF type.isEnumeration() == false && (type.isStereotypeApplied("POJO") || type.isStereotypeApplied("ServiceObject"))»
 		    if(«name» != null) {
 		    	lBuilder.append(System.lineSeparator());
 		    	lBuilder.append(«name».toStringBuilder(pIndent + "    "));
@@ -225,5 +225,59 @@
 	      throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
 	    }
 	  }
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE GenerateValueOfForOpenAPIDataType FOR uml::Class»
+	«IF generateValueOfForOpenAPIDataTypes() && this.isOpenAPIDataType()»
+		«IF this.isCompositeDataType() == false»				
+			«LET this.ownedAttribute.get(0) AS theAttribute»
+			«LET "p" + theAttribute.name.toFirstUpper() AS theParam»
+				/**
+				 * Method converts the passed {@link String} into an instance of this object.
+				 *
+				 * Please be aware that this method is only intended to be used for deserialization frameworks like JAX-RS. For "normal" object creation builder should be used instead.
+				 * 
+				 * @param «theParam» String that should be used to create an instance of this class. The parameter must not be null.
+				 * @return {@link «name»} Instance of the class that matches to the passed string. The method never returns null.
+				 */
+				public static «name» valueOf(String «theParam») {
+					return builder().set«theAttribute.name.toFirstUpper()»(
+					«IF theAttribute.type.isPrimitiveType()»
+						«IF theAttribute.type.isIntegerType()»
+						Integer.parseInt(«theParam»)
+						«ELSE»«IF theAttribute.type.isCharatcerType()»
+						«theParam».charAt(0)
+						«ELSE»
+						«theAttribute.type.fqn().toFirstUpper()».parse«theAttribute.type.fqn().toFirstUpper()»(«theParam»)							
+						«ENDIF»«ENDIF» 
+					«ELSE»
+						«IF theAttribute.type.isBigDecimal() || theAttribute.type.isBigInteger()»
+							new «theAttribute.type.fqn()»(«theParam»)
+						«ELSE»«IF theAttribute.type.isCharacterType()»
+							Character.valueOf(«theParam».charAt(0))
+						«ELSE» 
+							«theAttribute.type.fqn()».valueOf(«theParam»)
+						«ENDIF»«ENDIF»
+					«ENDIF»
+					)
+					.build();
+				}
+			«ENDLET»«ENDLET»
+		«ELSE»
+			«LET "p" + this.getCompositeDateTypePublicFieldName().toFirstUpper() AS theParam»
+				/**
+				 * Method converts the passed {@link String} into an instance of this object.
+				 *
+				 * Please be aware that this method is only intended to be used for deserialization frameworks like JAX-RS. For "normal" object creation builder should be used instead.
+				 * 
+				 * @param «theParam» String that should be used to create an instance of this class. The parameter must not be null.
+				 * @return {@link «name»} Instance of the class that matches to the passed string. The method never returns null.
+				 */
+				public static «name» valueOf(String «theParam») {
+					return builder().set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»(«theParam»).build();
+				}
+			«ENDLET»
+		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»

@@ -355,16 +355,99 @@ public class ProductServiceResource {
    */
   @RequestMapping(path = "test-date-query-params/{path}", method = { RequestMethod.GET })
   public void testDateQueryParams( @PathVariable(name = "path", required = true) String pPath,
-      @RequestParam(name = "startTimestamp", required = true) OffsetDateTime pStartTimestamp,
-      @RequestParam(name = "startTime", required = true) OffsetTime pStartTime,
-      @RequestParam(name = "localStartTimestamp", required = true) LocalDateTime pLocalStartTimestamp,
-      @RequestParam(name = "localStartTime", required = true) LocalTime pLocalStartTime,
-      @RequestParam(name = "localStartDate", required = true) LocalDate pLocalStartDate,
-      @RequestParam(name = "calendar", required = true) Calendar pCalendar,
-      @RequestParam(name = "utilDate", required = true) java.util.Date pUtilDate,
-      @RequestParam(name = "sqlTimestamp", required = true) Timestamp pSQLTimestamp,
-      @RequestParam(name = "sqlTime", required = true) Time pSQLTime,
-      @RequestParam(name = "sqlDate", required = true) Date pSQLDate ) {
+      @RequestParam(name = "startTimestamp", required = true) String pStartTimestampAsBasicType,
+      @RequestParam(name = "startTime", required = true) String pStartTimeAsBasicType,
+      @RequestParam(name = "localStartTimestamp", required = true) String pLocalStartTimestampAsBasicType,
+      @RequestParam(name = "localStartTime", required = true) String pLocalStartTimeAsBasicType,
+      @RequestParam(name = "localStartDate", required = true) String pLocalStartDateAsBasicType,
+      @RequestParam(name = "calendar", required = true) String pCalendarAsBasicType,
+      @RequestParam(name = "utilDate", required = true) String pUtilDateAsBasicType,
+      @RequestParam(name = "sqlTimestamp", required = true) String pSQLTimestampAsBasicType,
+      @RequestParam(name = "sqlTime", required = true) String pSQLTimeAsBasicType,
+      @RequestParam(name = "sqlDate", required = true) String pSQLDateAsBasicType ) {
+    // Convert date types into real objects.
+    OffsetDateTime pStartTimestamp;
+    if (pStartTimestampAsBasicType != null) {
+      pStartTimestamp = OffsetDateTime.parse(pStartTimestampAsBasicType);
+    }
+    else {
+      pStartTimestamp = null;
+    }
+    OffsetTime pStartTime;
+    if (pStartTimeAsBasicType != null) {
+      pStartTime = OffsetTime.parse(pStartTimeAsBasicType);
+    }
+    else {
+      pStartTime = null;
+    }
+    LocalDateTime pLocalStartTimestamp;
+    if (pLocalStartTimestampAsBasicType != null) {
+      pLocalStartTimestamp = LocalDateTime.parse(pLocalStartTimestampAsBasicType);
+    }
+    else {
+      pLocalStartTimestamp = null;
+    }
+    LocalTime pLocalStartTime;
+    if (pLocalStartTimeAsBasicType != null) {
+      pLocalStartTime = LocalTime.parse(pLocalStartTimeAsBasicType);
+    }
+    else {
+      pLocalStartTime = null;
+    }
+    LocalDate pLocalStartDate;
+    if (pLocalStartDateAsBasicType != null) {
+      pLocalStartDate = LocalDate.parse(pLocalStartDateAsBasicType);
+    }
+    else {
+      pLocalStartDate = null;
+    }
+    Calendar pCalendar;
+    if (pCalendarAsBasicType != null) {
+      try {
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pCalendarAsBasicType);
+        pCalendar = Calendar.getInstance();
+        pCalendar.setTime(lDate);
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
+    else {
+      pCalendar = null;
+    }
+    java.util.Date pUtilDate;
+    if (pUtilDateAsBasicType != null) {
+      try {
+        pUtilDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pUtilDateAsBasicType);
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
+    else {
+      pUtilDate = null;
+    }
+    Timestamp pSQLTimestamp;
+    if (pSQLTimestampAsBasicType != null) {
+      pSQLTimestamp = Timestamp.valueOf(pSQLTimestampAsBasicType);
+    }
+    else {
+      pSQLTimestamp = null;
+    }
+    Time pSQLTime;
+    if (pSQLTimeAsBasicType != null) {
+      pSQLTime = Time.valueOf(pSQLTimeAsBasicType);
+    }
+    else {
+      pSQLTime = null;
+    }
+    Date pSQLDate;
+    if (pSQLDateAsBasicType != null) {
+      pSQLDate = Date.valueOf(pSQLDateAsBasicType);
+    }
+    else {
+      pSQLDate = null;
+    }
     // Delegate request to service.
     productService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
         pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
@@ -432,33 +515,15 @@ public class ProductServiceResource {
     }
     // Handle bean parameter pQueryParams.sqlTimestamp
     if (pSqlTimestampAsBasicType != null) {
-      try {
-        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pSqlTimestampAsBasicType);
-        lQueryParamsBuilder.setSqlTimestamp(new Timestamp(lDate.getTime()));
-      }
-      catch (ParseException e) {
-        throw new IllegalArgumentException(e.getMessage());
-      }
+      lQueryParamsBuilder.setSqlTimestamp(Timestamp.valueOf(pSqlTimestampAsBasicType));
     }
     // Handle bean parameter pQueryParams.sqlTime
     if (pSqlTimeAsBasicType != null) {
-      try {
-        java.util.Date lDate = new SimpleDateFormat("HH:mm:ss.SSSXXX").parse(pSqlTimeAsBasicType);
-        lQueryParamsBuilder.setSqlTime(new Time(lDate.getTime()));
-      }
-      catch (ParseException e) {
-        throw new IllegalArgumentException(e.getMessage());
-      }
+      lQueryParamsBuilder.setSqlTime(Time.valueOf(pSqlTimeAsBasicType));
     }
     // Handle bean parameter pQueryParams.sqlDate
     if (pSqlDateAsBasicType != null) {
-      try {
-        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd").parse(pSqlDateAsBasicType);
-        lQueryParamsBuilder.setSqlDate(new Date(lDate.getTime()));
-      }
-      catch (ParseException e) {
-        throw new IllegalArgumentException(e.getMessage());
-      }
+      lQueryParamsBuilder.setSqlDate(Date.valueOf(pSqlDateAsBasicType));
     }
     DateQueryParamsBean pQueryParams = lQueryParamsBuilder.build();
     // Delegate request to service.
@@ -470,16 +535,99 @@ public class ProductServiceResource {
    */
   @RequestMapping(path = "test-date-header-params/{path}", method = { RequestMethod.GET })
   public void testDateHeaderParams( @PathVariable(name = "path", required = true) String pPath,
-      @RequestHeader(name = "Offset-Date-Time", required = true) OffsetDateTime pOffsetDateTime,
-      @RequestHeader(name = "Offset-Time", required = true) OffsetTime pOffsetTime,
-      @RequestHeader(name = "Local-Date-Time", required = true) LocalDateTime pLocalDateTime,
-      @RequestHeader(name = "Local-Time", required = true) LocalTime pLocalTime,
-      @RequestHeader(name = "Local-Date", required = true) LocalDate pLocalDate,
-      @RequestHeader(name = "Calendar", required = true) Calendar pCalendar,
-      @RequestHeader(name = "Util-Date", required = true) java.util.Date pUtilDate,
-      @RequestHeader(name = "SQL-Timestamp", required = true) Timestamp pSQLTimestamp,
-      @RequestHeader(name = "SQL-Time", required = true) Time pSQLTime,
-      @RequestHeader(name = "SQL-Date", required = true) Date pSQLDate ) {
+      @RequestHeader(name = "Offset-Date-Time", required = true) String pOffsetDateTimeAsBasicType,
+      @RequestHeader(name = "Offset-Time", required = true) String pOffsetTimeAsBasicType,
+      @RequestHeader(name = "Local-Date-Time", required = true) String pLocalDateTimeAsBasicType,
+      @RequestHeader(name = "Local-Time", required = true) String pLocalTimeAsBasicType,
+      @RequestHeader(name = "Local-Date", required = true) String pLocalDateAsBasicType,
+      @RequestHeader(name = "Calendar", required = true) String pCalendarAsBasicType,
+      @RequestHeader(name = "Util-Date", required = true) String pUtilDateAsBasicType,
+      @RequestHeader(name = "SQL-Timestamp", required = true) String pSQLTimestampAsBasicType,
+      @RequestHeader(name = "SQL-Time", required = true) String pSQLTimeAsBasicType,
+      @RequestHeader(name = "SQL-Date", required = true) String pSQLDateAsBasicType ) {
+    // Convert date types into real objects.
+    OffsetDateTime pOffsetDateTime;
+    if (pOffsetDateTimeAsBasicType != null) {
+      pOffsetDateTime = OffsetDateTime.parse(pOffsetDateTimeAsBasicType);
+    }
+    else {
+      pOffsetDateTime = null;
+    }
+    OffsetTime pOffsetTime;
+    if (pOffsetTimeAsBasicType != null) {
+      pOffsetTime = OffsetTime.parse(pOffsetTimeAsBasicType);
+    }
+    else {
+      pOffsetTime = null;
+    }
+    LocalDateTime pLocalDateTime;
+    if (pLocalDateTimeAsBasicType != null) {
+      pLocalDateTime = LocalDateTime.parse(pLocalDateTimeAsBasicType);
+    }
+    else {
+      pLocalDateTime = null;
+    }
+    LocalTime pLocalTime;
+    if (pLocalTimeAsBasicType != null) {
+      pLocalTime = LocalTime.parse(pLocalTimeAsBasicType);
+    }
+    else {
+      pLocalTime = null;
+    }
+    LocalDate pLocalDate;
+    if (pLocalDateAsBasicType != null) {
+      pLocalDate = LocalDate.parse(pLocalDateAsBasicType);
+    }
+    else {
+      pLocalDate = null;
+    }
+    Calendar pCalendar;
+    if (pCalendarAsBasicType != null) {
+      try {
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pCalendarAsBasicType);
+        pCalendar = Calendar.getInstance();
+        pCalendar.setTime(lDate);
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
+    else {
+      pCalendar = null;
+    }
+    java.util.Date pUtilDate;
+    if (pUtilDateAsBasicType != null) {
+      try {
+        pUtilDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pUtilDateAsBasicType);
+      }
+      catch (ParseException e) {
+        throw new IllegalArgumentException(e.getMessage());
+      }
+    }
+    else {
+      pUtilDate = null;
+    }
+    Timestamp pSQLTimestamp;
+    if (pSQLTimestampAsBasicType != null) {
+      pSQLTimestamp = Timestamp.valueOf(pSQLTimestampAsBasicType);
+    }
+    else {
+      pSQLTimestamp = null;
+    }
+    Time pSQLTime;
+    if (pSQLTimeAsBasicType != null) {
+      pSQLTime = Time.valueOf(pSQLTimeAsBasicType);
+    }
+    else {
+      pSQLTime = null;
+    }
+    Date pSQLDate;
+    if (pSQLDateAsBasicType != null) {
+      pSQLDate = Date.valueOf(pSQLDateAsBasicType);
+    }
+    else {
+      pSQLDate = null;
+    }
     // Delegate request to service.
     productService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate,
         pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
@@ -547,33 +695,15 @@ public class ProductServiceResource {
     }
     // Handle bean parameter pHeaderParams.sqlTimestamp
     if (pSqlTimestampAsBasicType != null) {
-      try {
-        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pSqlTimestampAsBasicType);
-        lHeaderParamsBuilder.setSqlTimestamp(new Timestamp(lDate.getTime()));
-      }
-      catch (ParseException e) {
-        throw new IllegalArgumentException(e.getMessage());
-      }
+      lHeaderParamsBuilder.setSqlTimestamp(Timestamp.valueOf(pSqlTimestampAsBasicType));
     }
     // Handle bean parameter pHeaderParams.sqlTime
     if (pSqlTimeAsBasicType != null) {
-      try {
-        java.util.Date lDate = new SimpleDateFormat("HH:mm:ss.SSSXXX").parse(pSqlTimeAsBasicType);
-        lHeaderParamsBuilder.setSqlTime(new Time(lDate.getTime()));
-      }
-      catch (ParseException e) {
-        throw new IllegalArgumentException(e.getMessage());
-      }
+      lHeaderParamsBuilder.setSqlTime(Time.valueOf(pSqlTimeAsBasicType));
     }
     // Handle bean parameter pHeaderParams.sqlDate
     if (pSqlDateAsBasicType != null) {
-      try {
-        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd").parse(pSqlDateAsBasicType);
-        lHeaderParamsBuilder.setSqlDate(new Date(lDate.getTime()));
-      }
-      catch (ParseException e) {
-        throw new IllegalArgumentException(e.getMessage());
-      }
+      lHeaderParamsBuilder.setSqlDate(Date.valueOf(pSqlDateAsBasicType));
     }
     DateHeaderParamsBean pHeaderParams = lHeaderParamsBuilder.build();
     // Delegate request to service.

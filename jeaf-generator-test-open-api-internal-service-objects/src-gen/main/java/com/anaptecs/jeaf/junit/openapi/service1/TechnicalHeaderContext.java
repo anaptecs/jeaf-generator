@@ -42,7 +42,7 @@ public class TechnicalHeaderContext implements ServiceObject {
   private Map<String, String> customHeaders = new HashMap<String, String>();
 
   /**
-   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected TechnicalHeaderContext( ) {

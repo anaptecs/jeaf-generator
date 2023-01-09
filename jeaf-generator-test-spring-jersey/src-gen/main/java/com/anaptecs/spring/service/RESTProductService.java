@@ -143,10 +143,11 @@ public interface RESTProductService {
    * @param pSQLTimestamp
    * @param pSQLTime
    * @param pSQLDate
+   * @param pCalendars
    */
   void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
-      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate );
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate, Set<Calendar> pCalendars );
 
   /**
    * 
@@ -168,10 +169,11 @@ public interface RESTProductService {
    * @param pSQLTimestamp
    * @param pSQLTime
    * @param pSQLDate
+   * @param pUtilDates
    */
   void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
-      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate );
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate, Set<java.util.Date> pUtilDates );
 
   /**
    * 

@@ -5,10 +5,16 @@
  */
 package com.anaptecs.spring.service;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.anaptecs.spring.base.BookingID;
@@ -47,6 +53,36 @@ public class DataTypesQueryBean {
   public static final String BOOKINGIDSARRAY = "bookingIDsArray";
 
   /**
+   * Constant for the name of attribute "offsetDateTime".
+   */
+  public static final String OFFSETDATETIME = "offsetDateTime";
+
+  /**
+   * Constant for the name of attribute "offsetTime".
+   */
+  public static final String OFFSETTIME = "offsetTime";
+
+  /**
+   * Constant for the name of attribute "localDateTime".
+   */
+  public static final String LOCALDATETIME = "localDateTime";
+
+  /**
+   * Constant for the name of attribute "localTime".
+   */
+  public static final String LOCALTIME = "localTime";
+
+  /**
+   * Constant for the name of attribute "timestamps".
+   */
+  public static final String TIMESTAMPS = "timestamps";
+
+  /**
+   * Constant for the name of attribute "times".
+   */
+  public static final String TIMES = "times";
+
+  /**
    * 
    */
   private LongCode[] longCodes;
@@ -72,12 +108,44 @@ public class DataTypesQueryBean {
   private BookingID[] bookingIDsArray;
 
   /**
-   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * 
+   */
+  private OffsetDateTime offsetDateTime;
+
+  /**
+   * 
+   */
+  private OffsetTime offsetTime;
+
+  /**
+   * 
+   */
+  private LocalDateTime localDateTime;
+
+  /**
+   * 
+   */
+  private LocalTime localTime;
+
+  /**
+   * 
+   */
+  private List<LocalDateTime> timestamps;
+
+  /**
+   * 
+   */
+  private Set<OffsetTime> times;
+
+  /**
+   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   public DataTypesQueryBean( ) {
     doubleCodes = new HashSet<DoubleCode>();
     bookingIDs = new HashSet<BookingID>();
+    timestamps = new ArrayList<LocalDateTime>();
+    times = new HashSet<OffsetTime>();
   }
 
   /**
@@ -102,6 +170,22 @@ public class DataTypesQueryBean {
       bookingIDs = new HashSet<BookingID>();
     }
     bookingIDsArray = pBuilder.bookingIDsArray;
+    offsetDateTime = pBuilder.offsetDateTime;
+    offsetTime = pBuilder.offsetTime;
+    localDateTime = pBuilder.localDateTime;
+    localTime = pBuilder.localTime;
+    if (pBuilder.timestamps != null) {
+      timestamps = pBuilder.timestamps;
+    }
+    else {
+      timestamps = new ArrayList<LocalDateTime>();
+    }
+    if (pBuilder.times != null) {
+      times = pBuilder.times;
+    }
+    else {
+      times = new HashSet<OffsetTime>();
+    }
   }
 
   /**
@@ -155,6 +239,36 @@ public class DataTypesQueryBean {
     private BookingID[] bookingIDsArray;
 
     /**
+     * 
+     */
+    private OffsetDateTime offsetDateTime;
+
+    /**
+     * 
+     */
+    private OffsetTime offsetTime;
+
+    /**
+     * 
+     */
+    private LocalDateTime localDateTime;
+
+    /**
+     * 
+     */
+    private LocalTime localTime;
+
+    /**
+     * 
+     */
+    private List<LocalDateTime> timestamps;
+
+    /**
+     * 
+     */
+    private Set<OffsetTime> times;
+
+    /**
      * Use {@link DataTypesQueryBean#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -171,6 +285,12 @@ public class DataTypesQueryBean {
         doubleCodes = pObject.doubleCodes;
         bookingIDs = pObject.bookingIDs;
         bookingIDsArray = pObject.bookingIDsArray;
+        offsetDateTime = pObject.offsetDateTime;
+        offsetTime = pObject.offsetTime;
+        localDateTime = pObject.localDateTime;
+        localTime = pObject.localTime;
+        timestamps = pObject.timestamps;
+        times = pObject.times;
       }
     }
 
@@ -273,6 +393,81 @@ public class DataTypesQueryBean {
       }
       else {
         bookingIDsArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "offsetDateTime".
+     * 
+     * @param pOffsetDateTime Value to which the attribute "offsetDateTime" should be set.
+     */
+    public Builder setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
+      // Assign value to attribute
+      offsetDateTime = pOffsetDateTime;
+      return this;
+    }
+
+    /**
+     * Method sets the association "offsetTime".
+     * 
+     * @param pOffsetTime OffsetTime to which the association "offsetTime" should be set.
+     */
+    public Builder setOffsetTime( OffsetTime pOffsetTime ) {
+      offsetTime = pOffsetTime;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "localDateTime".
+     * 
+     * @param pLocalDateTime Value to which the attribute "localDateTime" should be set.
+     */
+    public Builder setLocalDateTime( LocalDateTime pLocalDateTime ) {
+      // Assign value to attribute
+      localDateTime = pLocalDateTime;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "localTime".
+     * 
+     * @param pLocalTime Value to which the attribute "localTime" should be set.
+     */
+    public Builder setLocalTime( LocalTime pLocalTime ) {
+      // Assign value to attribute
+      localTime = pLocalTime;
+      return this;
+    }
+
+    /**
+     * Method sets the association "timestamps".
+     * 
+     * @param pTimestamps Collection with objects to which the association should be set.
+     */
+    public Builder setTimestamps( List<LocalDateTime> pTimestamps ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pTimestamps != null) {
+        timestamps = new ArrayList<LocalDateTime>(pTimestamps);
+      }
+      else {
+        timestamps = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets the association "times".
+     * 
+     * @param pTimes Collection with objects to which the association should be set.
+     */
+    public Builder setTimes( Set<OffsetTime> pTimes ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pTimes != null) {
+        times = new HashSet<OffsetTime>(pTimes);
+      }
+      else {
+        times = null;
       }
       return this;
     }
@@ -509,6 +704,211 @@ public class DataTypesQueryBean {
   }
 
   /**
+   * Method returns the attribute "offsetDateTime".
+   * 
+   * 
+   * @return OffsetDateTime Value to which the attribute "offsetDateTime" is set.
+   */
+  public OffsetDateTime getOffsetDateTime( ) {
+    return offsetDateTime;
+  }
+
+  /**
+   * Method sets the attribute "offsetDateTime".
+   * 
+   * 
+   * @param pOffsetDateTime Value to which the attribute "offsetDateTime" should be set.
+   */
+  public void setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
+    // Assign value to attribute
+    offsetDateTime = pOffsetDateTime;
+  }
+
+  /**
+   * Method returns the association "offsetTime".
+   * 
+   *
+   * @return OffsetTime OffsetTime to which the association "offsetTime" is set.
+   */
+  public OffsetTime getOffsetTime( ) {
+    return offsetTime;
+  }
+
+  /**
+   * Method sets the association "offsetTime".
+   * 
+   * 
+   * @param pOffsetTime OffsetTime to which the association "offsetTime" should be set.
+   */
+  public void setOffsetTime( OffsetTime pOffsetTime ) {
+    offsetTime = pOffsetTime;
+  }
+
+  /**
+   * Method unsets the association "offsetTime".
+   * 
+   */
+  public final void unsetOffsetTime( ) {
+    offsetTime = null;
+  }
+
+  /**
+   * Method returns the attribute "localDateTime".
+   * 
+   * 
+   * @return LocalDateTime Value to which the attribute "localDateTime" is set.
+   */
+  public LocalDateTime getLocalDateTime( ) {
+    return localDateTime;
+  }
+
+  /**
+   * Method sets the attribute "localDateTime".
+   * 
+   * 
+   * @param pLocalDateTime Value to which the attribute "localDateTime" should be set.
+   */
+  public void setLocalDateTime( LocalDateTime pLocalDateTime ) {
+    // Assign value to attribute
+    localDateTime = pLocalDateTime;
+  }
+
+  /**
+   * Method returns the attribute "localTime".
+   * 
+   * 
+   * @return LocalTime Value to which the attribute "localTime" is set.
+   */
+  public LocalTime getLocalTime( ) {
+    return localTime;
+  }
+
+  /**
+   * Method sets the attribute "localTime".
+   * 
+   * 
+   * @param pLocalTime Value to which the attribute "localTime" should be set.
+   */
+  public void setLocalTime( LocalTime pLocalTime ) {
+    // Assign value to attribute
+    localTime = pLocalTime;
+  }
+
+  /**
+   * Method returns the association "timestamps".
+   * 
+   *
+   * @return Collection All LocalDateTime objects that belong to the association "timestamps". The method never returns
+   * null and the returned collection is unmodifiable.
+   */
+  public List<LocalDateTime> getTimestamps( ) {
+    // Return all LocalDateTime objects as unmodifiable collection.
+    return Collections.unmodifiableList(timestamps);
+  }
+
+  /**
+   * Method adds the passed LocalDateTime object to the association "timestamps".
+   * 
+   * 
+   * @param pTimestamps Object that should be added to the association "timestamps". The parameter must not be null.
+   */
+  public void addToTimestamps( LocalDateTime pTimestamps ) {
+    // Add passed object to collection of associated LocalDateTime objects.
+    timestamps.add(pTimestamps);
+  }
+
+  /**
+   * Method adds all passed objects to the association "timestamps".
+   * 
+   * 
+   * @param pTimestamps Collection with all objects that should be added to the association "timestamps". The parameter
+   * must not be null.
+   */
+  public void addToTimestamps( Collection<LocalDateTime> pTimestamps ) {
+    // Add all passed objects.
+    for (LocalDateTime lNextObject : pTimestamps) {
+      this.addToTimestamps(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed LocalDateTime object from the association "timestamps".
+   * 
+   * 
+   * @param pTimestamps Object that should be removed from the association "timestamps". The parameter must not be null.
+   */
+  public void removeFromTimestamps( LocalDateTime pTimestamps ) {
+    // Remove passed object from collection of associated LocalDateTime objects.
+    timestamps.remove(pTimestamps);
+  }
+
+  /**
+   * Method removes all objects from the association "timestamps".
+   * 
+   */
+  public void clearTimestamps( ) {
+    // Remove all objects from association "timestamps".
+    timestamps.clear();
+  }
+
+  /**
+   * Method returns the association "times".
+   * 
+   *
+   * @return Collection All OffsetTime objects that belong to the association "times". The method never returns null and
+   * the returned collection is unmodifiable.
+   */
+  public Set<OffsetTime> getTimes( ) {
+    // Return all OffsetTime objects as unmodifiable collection.
+    return Collections.unmodifiableSet(times);
+  }
+
+  /**
+   * Method adds the passed OffsetTime object to the association "times".
+   * 
+   * 
+   * @param pTimes Object that should be added to the association "times". The parameter must not be null.
+   */
+  public void addToTimes( OffsetTime pTimes ) {
+    // Add passed object to collection of associated OffsetTime objects.
+    times.add(pTimes);
+  }
+
+  /**
+   * Method adds all passed objects to the association "times".
+   * 
+   * 
+   * @param pTimes Collection with all objects that should be added to the association "times". The parameter must not
+   * be null.
+   */
+  public void addToTimes( Collection<OffsetTime> pTimes ) {
+    // Add all passed objects.
+    for (OffsetTime lNextObject : pTimes) {
+      this.addToTimes(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed OffsetTime object from the association "times".
+   * 
+   * 
+   * @param pTimes Object that should be removed from the association "times". The parameter must not be null.
+   */
+  public void removeFromTimes( OffsetTime pTimes ) {
+    // Remove passed object from collection of associated OffsetTime objects.
+    times.remove(pTimes);
+  }
+
+  /**
+   * Method removes all objects from the association "times".
+   * 
+   */
+  public void clearTimes( ) {
+    // Remove all objects from association "times".
+    times.clear();
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -578,6 +978,56 @@ public class DataTypesQueryBean {
       lBuilder.append(" null");
     }
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("offsetDateTime: ");
+    lBuilder.append(offsetDateTime);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("offsetTime: ");
+    lBuilder.append(offsetTime);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("localDateTime: ");
+    lBuilder.append(localDateTime);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("localTime: ");
+    lBuilder.append(localTime);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("timestamps: ");
+    if (timestamps != null) {
+      lBuilder.append(timestamps.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (timestamps != null) {
+      for (LocalDateTime lNext : timestamps) {
+        lBuilder.append(pIndent + "    ");
+        lBuilder.append(lNext.toString());
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("times: ");
+    if (times != null) {
+      lBuilder.append(times.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (times != null) {
+      for (OffsetTime lNext : times) {
+        lBuilder.append(pIndent + "    ");
+        lBuilder.append(lNext.toString());
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 

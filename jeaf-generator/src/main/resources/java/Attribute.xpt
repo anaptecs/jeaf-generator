@@ -50,8 +50,9 @@
 	/**
  	 * «this.getComment()»
 	 */
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«IF isNavigable()»
+		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		«EXPAND RESTParamAnnotation»
 		«EXPAND java::Jackson::JSONAlias»
 		«EXPAND Validation::ValidationAnnotation»
 		«IF isMultivalued()»

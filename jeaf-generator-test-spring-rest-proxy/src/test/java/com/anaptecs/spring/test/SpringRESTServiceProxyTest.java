@@ -11,6 +11,8 @@ import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -132,14 +134,16 @@ public class SpringRESTServiceProxyTest {
         .withHeader("ints", "1", "2", "3", "4")
         .withHeader("doubles", "3.1415", "47.11")
         .withHeader("codes", "CODE_1", "CODE_2")
-        .withHeader("stringCodeList", "CODE_4", "CODE_7"))
+        .withHeader("stringCodeList", "CODE_4", "CODE_7")
+        .withHeader("dates", "2022-01-17", "2023-01-17"))
         .respond(mockResponse("\"Yeah!\""));
 
     lClient.when(mockRequest("/rest-products/testMultiValuedHeaderFields", "GET")
         .withHeader("names", "JEAF", "Development", "Team")
         .withHeader("ints", "1", "2", "3", "4")
         .withHeader("doubles", "3.1415", "47.11")
-        .withHeader("codes", "CODE_1", "CODE_2"))
+        .withHeader("codes", "CODE_1", "CODE_2")
+        .withHeader("timestamps", "2022-03-17T13:22:12.453+01:00", "2022-03-17T13:22:12.453+07:00"))
         .respond(mockResponse("\"Yeah, yeah!\""));
 
     // test-date-query-params
@@ -325,6 +329,7 @@ public class SpringRESTServiceProxyTest {
 
   @Test
   void testMultiValuedHeaderFieldsInBeanParam( ) {
+
     MultiValuedHeaderBeanParam lBeanParam = MultiValuedHeaderBeanParam.builder()
         .setNames(new String[] { "JEAF", "Development", "Team" })
         .setInts(new int[] { 1, 2, 3, 4 })
@@ -333,6 +338,7 @@ public class SpringRESTServiceProxyTest {
             "CODE_2").build() })
         .setStringCodeList(new HashSet<>(Arrays.asList(StringCode.builder().setCode("CODE_4").build(), StringCode
             .builder().setCode("CODE_7").build())))
+        .setDates(new LocalDate[] { LocalDate.of(2022, 01, 17), LocalDate.of(2023, 01, 17) })
         .build();
     String lResult = productService.testMultiValuedHeaderFieldsInBeanParam(lBeanParam);
     assertEquals("Yeah!", lResult);
@@ -345,8 +351,10 @@ public class SpringRESTServiceProxyTest {
     Set<Double> lDoubles = new HashSet<>(Arrays.asList(3.1415, 47.11));
     Set<StringCode> lCodes = new HashSet<>(Arrays.asList(StringCode.builder().setCode("CODE_1").build(), StringCode
         .builder().setCode("CODE_2").build()));
-    String lResult = productService.testMultiValuedHeaderFields(lNames, lInts, lDoubles, lCodes, null, null, null);
+    Set<OffsetDateTime> lTimestamps = new HashSet<>(Arrays.asList(OffsetDateTime.parse(
+        "2022-03-17T13:22:12.453+07:00"), OffsetDateTime.parse("2022-03-17T13:22:12.453+01:00")));
+    String lResult = productService.testMultiValuedHeaderFields(lNames, lInts, lDoubles, lCodes, null, lTimestamps,
+        null);
     assertEquals("Yeah, yeah!", lResult);
   }
-
 }

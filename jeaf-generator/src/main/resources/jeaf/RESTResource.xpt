@@ -313,8 +313,10 @@ public class «name»Resource {
 				  				«IF attribute.type.belongsToJavaTimeAPI()»
 				  					«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.type.fqn()».parse(«attribute.asParameter()»AsBasicType));
 				  				«ELSE»
+									«IF attribute.type.isSQLTimestamp() || attribute.type.isSQLDate() || attribute.type.isSQLTime()»
+						  				«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.type.fqn()».valueOf(«attribute.asParameter()»AsBasicType));
+						  			«ELSE»				  						
 				  						try {
-				  							
 				  							«IF attribute.type.isUtilDate()»
 				  								java.util.Date lDate = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(«attribute.asParameter()»AsBasicType);
 				  								«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(lDate);
@@ -323,28 +325,40 @@ public class «name»Resource {
 										        java.util.Calendar lCalendar = Calendar.getInstance();
 										        lCalendar.setTime(lDate);
 						  						«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(lCalendar);
-						  					«ELSE»«IF attribute.type.isSQLTimestamp()»
-										        java.util.Date lDate = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(«attribute.asParameter()»AsBasicType);
-						  						«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(new «attribute.type.fqn()»(lDate.getTime()));
-						  					«ELSE»«IF attribute.type.isSQLDate()»
-										        java.util.Date lDate = new java.text.SimpleDateFormat("yyyy-MM-dd").parse(«attribute.asParameter()»AsBasicType);
-						  						«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(new «attribute.type.fqn()»(lDate.getTime()));
-						  					«ELSE»«IF attribute.type.isSQLTime()»
-										        java.util.Date lDate = new java.text.SimpleDateFormat("HH:mm:ss.SSSXXX").parse(«attribute.asParameter()»AsBasicType);
-						  						«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(new «attribute.type.fqn()»(lDate.getTime()));
-						  					«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»
+						  					«ELSE»«ENDIF»«ENDIF»
 										}
 										catch (java.text.ParseException e) {
 										  throw new IllegalArgumentException(e.getMessage());
 										}
+									«ENDIF»
 				  				«ENDIF»
 				  			}
 			  			«ELSE»
 							if(«attribute.asParameter()»AsBasicType != null) {
-								«IF attribute.type.belongsToJavaTimeAPI() == false»
+								«IF attribute.type.isCalendar() || attribute.type.isUtilDate()»
 								try {
 								«ENDIF»
 								«IF attribute.isCollectionType()»
+						  			«attribute.getCollectionType()»<«attribute.type.fqn()»> «attribute.asLocalVar()» = new «attribute.getCollectionImplType()»<«attribute.type.fqn()»>();
+									for (int i = 0; i < «attribute.asParameter()»AsBasicType.length; i++) {
+									  «IF attribute.type.belongsToJavaTimeAPI()» 
+									  	«attribute.asLocalVar()».add(«attribute.type.fqn()».parse(«attribute.asParameter()»AsBasicType[i]));
+									  «ELSE»
+									  	«IF attribute.type.isCalendar()»
+										  	java.text.SimpleDateFormat lDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+										  	java.util.Date lDate = lDateFormat.parse(«attribute.asParameter()»AsBasicType[i]);
+									        java.util.Calendar lCalendar = Calendar.getInstance();
+									        lCalendar.setTime(lDate);
+					  						«attribute.asLocalVar()».add(lCalendar);
+									  	«ELSE»«IF attribute.type.isUtilDate()»
+										  	java.text.SimpleDateFormat lDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+										  	java.util.Date lDate = lDateFormat.parse(«attribute.asParameter()»AsBasicType[i]);
+									  		«attribute.asLocalVar()».add(lDate);
+									  	«ELSE»«IF attribute.type.isSQLTimestamp() || attribute.type.isSQLDate() || attribute.type.isSQLTime()»
+									  		«attribute.asLocalVar()».add(«attribute.type.fqn()».valueOf(«attribute.asParameter()»AsBasicType[i]));
+									  	«ENDIF»«ENDIF»«ENDIF»
+									  «ENDIF»
+									}
 								«ELSE»
 									«attribute.type.fqn()»[] «attribute.asLocalVar()» = new «attribute.type.fqn()»[«attribute.asParameter()»AsBasicType.length];
 									for (int i = 0; i < «attribute.asParameter()»AsBasicType.length; i++) {
@@ -361,24 +375,14 @@ public class «name»Resource {
 										  	java.text.SimpleDateFormat lDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 										  	java.util.Date lDate = lDateFormat.parse(«attribute.asParameter()»AsBasicType[i]);
 									  		«attribute.asLocalVar()»[i] = lDate;
-									  	«ELSE»«IF attribute.type.isSQLTimestamp()»
-										  	java.text.SimpleDateFormat lDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-										  	java.util.Date lDate = lDateFormat.parse(«attribute.asParameter()»AsBasicType[i]);
-									  		«attribute.asLocalVar()»[i] = new «attribute.type.fqn()»(lDate.getTime());
-									  	«ELSE»«IF attribute.type.isSQLDate()»
-										  	java.text.SimpleDateFormat lDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd");
-										  	java.util.Date lDate = lDateFormat.parse(«attribute.asParameter()»AsBasicType[i]);
-									  		«attribute.asLocalVar()»[i] = new «attribute.type.fqn()»(lDate.getTime());
-									  	«ELSE»«IF attribute.type.isSQLTime()»
-										  	java.text.SimpleDateFormat lDateFormat = new java.text.SimpleDateFormat("HH:mm:ss.SSSXXX");
-										  	java.util.Date lDate = lDateFormat.parse(«attribute.asParameter()»AsBasicType[i]);
-									  		«attribute.asLocalVar()»[i] = new «attribute.type.fqn()»(lDate.getTime());
-									  	«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»
+									  	«ELSE»«IF attribute.type.isSQLTimestamp() || attribute.type.isSQLDate() || attribute.type.isSQLTime()»
+									  		«attribute.asLocalVar()»[i] = «attribute.type.fqn()».valueOf(«attribute.asParameter()»AsBasicType[i]);
+									  	«ENDIF»«ENDIF»«ENDIF»
 									  «ENDIF»
 									}
-									«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.asLocalVar()»);
 								«ENDIF»
-								«IF attribute.type.belongsToJavaTimeAPI() == false»
+								«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.asLocalVar()»);
+								«IF attribute.type.isCalendar() || attribute.type.isUtilDate()»
 								}
 								catch (java.text.ParseException e) {
 								  throw new IllegalArgumentException(e.getMessage());
@@ -438,6 +442,76 @@ public class «name»Resource {
 				    }
 	    		«ENDIF»
 	    	«ENDIF»
+	  	«ENDFOREACH»
+	  «ENDIF»
+	  
+	  «IF this.hasDateParameters()»
+	  // Convert date types into real objects.
+	  	«FOREACH this.getDateParameters() AS dateParam»
+  			«IF dateParam.isMultivalued() == false»
+	  			«dateParam.type.fqn()» «dateParam.name»;
+	  			if(«dateParam.name»AsBasicType != null) {
+  				«IF dateParam.type.belongsToJavaTimeAPI()»
+  					«dateParam.name» = «dateParam.type.fqn()».parse(«dateParam.name»AsBasicType);
+  				«ELSE»
+					«IF dateParam.type.isSQLTimestamp() || dateParam.type.isSQLDate() || dateParam.type.isSQLTime()»
+						«dateParam.name» = «dateParam.type.fqn()».valueOf(«dateParam.name»AsBasicType);
+					«ELSE»
+						try {
+							«IF dateParam.type.isUtilDate()»
+								«dateParam.name» = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(«dateParam.name»AsBasicType);
+							«ELSE»«IF dateParam.type.isCalendar()»
+								java.util.Date lDate = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(«dateParam.name»AsBasicType);
+								«dateParam.name» = Calendar.getInstance();
+								«dateParam.name».setTime(lDate);
+							«ELSE»«ENDIF»«ENDIF»
+						}
+						catch (java.text.ParseException e) {
+							throw new IllegalArgumentException(e.getMessage());
+						}
+					«ENDIF»
+  				«ENDIF»
+	  			}
+	  			else {
+	  				«dateParam.name» = null;
+	  			}
+  			«ELSE»
+	  			«dateParam.getCollectionType()»<«dateParam.type.fqn()»> «dateParam.name»;
+	  			if(«dateParam.name»AsBasicType != null) {
+					«IF dateParam.type.isCalendar() || dateParam.type.isUtilDate()»
+					try {
+					«ENDIF»
+	  				«dateParam.name» = new «dateParam.getCollectionImplType()»<«dateParam.type.fqn()»>();
+					for (int i = 0; i < «dateParam.name»AsBasicType.length; i++) {
+					  «IF dateParam.type.belongsToJavaTimeAPI()» 
+					  	«dateParam.name».add(«dateParam.type.fqn()».parse(«dateParam.name»AsBasicType[i]));
+					  «ELSE»
+					  	«IF dateParam.type.isCalendar()»
+						  	java.text.SimpleDateFormat lDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+						  	java.util.Date lDate = lDateFormat.parse(«dateParam.name»AsBasicType[i]);
+					        java.util.Calendar lCalendar = Calendar.getInstance();
+					        lCalendar.setTime(lDate);
+	  						«dateParam.name».add(lCalendar);
+					  	«ELSE»«IF dateParam.type.isUtilDate()»
+						  	java.text.SimpleDateFormat lDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+						  	java.util.Date lDate = lDateFormat.parse(«dateParam.name»AsBasicType[i]);
+					  		«dateParam.name».add(lDate);
+					  	«ELSE»«IF dateParam.type.isSQLTimestamp() || dateParam.type.isSQLTime() || dateParam.type.isSQLTime()»
+					  		«dateParam.name».add(«dateParam.type.fqn()».valueOf(«dateParam.name»AsBasicType[i]));
+					  	«ENDIF»«ENDIF»«ENDIF»
+					  «ENDIF»
+					}
+					«IF dateParam.type.isCalendar() || dateParam.type.isUtilDate()»
+					}
+					catch (java.text.ParseException e) {
+					  throw new IllegalArgumentException(e.getMessage());
+					}
+					«ENDIF»
+				}
+  				else {
+  					«dateParam.name» = «dateParam.getEmptyCollectionOperation()»;
+  				}
+  			«ENDIF»
 	  	«ENDFOREACH»
 	  «ENDIF»
       // Delegate request to service.
@@ -514,8 +588,7 @@ public class «name»Resource {
 						javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response.ok().status(«EXPAND StatusCode»).build();
 						«ENDIF»
 					«ENDIF»
-					
-			
+
 					// Due to the asynchronous processing of the requests, the response can not be returned as return value. Therefore we make use of the defined JAX-RS mechanisms.
 					pAsyncResponse.resume(lResponseObject);
 			    }
@@ -611,12 +684,16 @@ public class «name»Resource {
   «IF this.isBeanParam() == false»
 	  «IF this.type.isOpenAPIDataType() && this.isRequestBody() == false»
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
-	  		String«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
+	  		String«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
 	  	«ELSE»
-  			«this.type.attribute().first().fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
+  			«this.type.attribute().first().fqn()»«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
 	  	«ENDIF»
 	  «ELSE»
-	  	«this.getTypeName()» «this.name»
+	  	«IF this.type.isAnyDateType()»
+	  		String«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
+	  	«ELSE»
+	  		«this.getTypeName()» «name»
+	  	«ENDIF»
 	  «ENDIF»
   «ENDIF»
 «ENDDEFINE»

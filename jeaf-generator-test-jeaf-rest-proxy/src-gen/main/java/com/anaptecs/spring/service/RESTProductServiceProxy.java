@@ -261,12 +261,12 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
    */
   public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
-      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate, Set<Calendar> pCalendars ) {
     try {
       Command lCommand =
-          new TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_RESTProductService_Command(
+          new TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_Calendar_RESTProductService_Command(
               pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime, pLocalStartDate, pCalendar,
-              pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
+              pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate, pCalendars);
       this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -297,12 +297,13 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
    */
   public void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
-      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate,
+      Set<java.util.Date> pUtilDates ) {
     try {
       Command lCommand =
-          new TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_RESTProductService_Command(
+          new TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_Date_RESTProductService_Command(
               pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate, pCalendar, pUtilDate,
-              pSQLTimestamp, pSQLTime, pSQLDate);
+              pSQLTimestamp, pSQLTime, pSQLDate, pUtilDates);
       this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -1832,7 +1833,7 @@ final class TestEnumHeaderParams_ChannelType_TimeUnit_ExtensibleEnum_RESTProduct
 /**
  * Generated command class for service method "testDateQueryParams".
  */
-final class TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_RESTProductService_Command
+final class TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_Calendar_RESTProductService_Command
     extends Command {
   /**
    * Default serial version uid.
@@ -1860,12 +1861,12 @@ final class TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_L
     try {
       SERVICE_METHOD = RESTProductService.class.getMethod("testDateQueryParams", String.class, OffsetDateTime.class,
           OffsetTime.class, LocalDateTime.class, LocalTime.class, LocalDate.class, Calendar.class, java.util.Date.class,
-          Timestamp.class, Time.class, Date.class);
+          Timestamp.class, Time.class, Date.class, Set.class);
     }
     catch (NoSuchMethodException e) {
       throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
           RESTProductService.class.getName(),
-          "testDateQueryParams(String.class, OffsetDateTime.class, OffsetTime.class, LocalDateTime.class, LocalTime.class, LocalDate.class, Calendar.class, java.util.Date.class, Timestamp.class, Time.class, Date.class)");
+          "testDateQueryParams(String.class, OffsetDateTime.class, OffsetTime.class, LocalDateTime.class, LocalTime.class, LocalDate.class, Calendar.class, java.util.Date.class, Timestamp.class, Time.class, Date.class, Set.class)");
     }
   }
 
@@ -1926,6 +1927,11 @@ final class TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_L
   private final Date sQLDate;
 
   /**
+   * Attribute transports the method parameter "pCalendars" to the service implementation via the service channel.
+   */
+  private final Set<Calendar> calendars;
+
+  /**
    * Initialize object. All parameters from method "testDateQueryParams" have to be passed as parameters to this command
    * object.
    * 
@@ -1940,11 +1946,12 @@ final class TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_L
    * @param pSQLTimestamp Timestamp
    * @param pSQLTime Time
    * @param pSQLDate Date
+   * @param pCalendars Set<Calendar>
    */
-  TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_RESTProductService_Command(
+  TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_Calendar_RESTProductService_Command(
       String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime, LocalDateTime pLocalStartTimestamp,
       LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar, java.util.Date pUtilDate,
-      Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
+      Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate, Set<Calendar> pCalendars ) {
     super(RESTProductService.class);
     path = pPath;
     startTimestamp = pStartTimestamp;
@@ -1957,8 +1964,9 @@ final class TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_L
     sQLTimestamp = pSQLTimestamp;
     sQLTime = pSQLTime;
     sQLDate = pSQLDate;
+    calendars = pCalendars;
     parameters = new Object[] { path, startTimestamp, startTime, localStartTimestamp, localStartTime, localStartDate,
-      calendar, utilDate, sQLTimestamp, sQLTime, sQLDate };
+      calendar, utilDate, sQLTimestamp, sQLTime, sQLDate, calendars };
   }
 
   /**
@@ -1980,7 +1988,7 @@ final class TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_L
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
     long lStartTime = System.nanoTime();
     lService.testDateQueryParams(path, startTimestamp, startTime, localStartTimestamp, localStartTime, localStartDate,
-        calendar, utilDate, sQLTimestamp, sQLTime, sQLDate);
+        calendar, utilDate, sQLTimestamp, sQLTime, sQLDate, calendars);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
     // Trace result of service call.
@@ -2125,7 +2133,7 @@ final class TestDateQueryParamsBean_String_DateQueryParamsBean_RESTProductServic
 /**
  * Generated command class for service method "testDateHeaderParams".
  */
-final class TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_RESTProductService_Command
+final class TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_Date_RESTProductService_Command
     extends Command {
   /**
    * Default serial version uid.
@@ -2153,12 +2161,12 @@ final class TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_
     try {
       SERVICE_METHOD = RESTProductService.class.getMethod("testDateHeaderParams", String.class, OffsetDateTime.class,
           OffsetTime.class, LocalDateTime.class, LocalTime.class, LocalDate.class, Calendar.class, java.util.Date.class,
-          Timestamp.class, Time.class, Date.class);
+          Timestamp.class, Time.class, Date.class, Set.class);
     }
     catch (NoSuchMethodException e) {
       throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
           RESTProductService.class.getName(),
-          "testDateHeaderParams(String.class, OffsetDateTime.class, OffsetTime.class, LocalDateTime.class, LocalTime.class, LocalDate.class, Calendar.class, java.util.Date.class, Timestamp.class, Time.class, Date.class)");
+          "testDateHeaderParams(String.class, OffsetDateTime.class, OffsetTime.class, LocalDateTime.class, LocalTime.class, LocalDate.class, Calendar.class, java.util.Date.class, Timestamp.class, Time.class, Date.class, Set.class)");
     }
   }
 
@@ -2218,6 +2226,11 @@ final class TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_
   private final Date sQLDate;
 
   /**
+   * Attribute transports the method parameter "pUtilDates" to the service implementation via the service channel.
+   */
+  private final Set<java.util.Date> utilDates;
+
+  /**
    * Initialize object. All parameters from method "testDateHeaderParams" have to be passed as parameters to this
    * command object.
    * 
@@ -2232,11 +2245,12 @@ final class TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_
    * @param pSQLTimestamp Timestamp
    * @param pSQLTime Time
    * @param pSQLDate Date
+   * @param pUtilDates Set<java.util.Date>
    */
-  TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_RESTProductService_Command(
+  TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_LocalTime_LocalDate_Calendar_Date_Timestamp_Time_Date_Date_RESTProductService_Command(
       String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime, LocalDateTime pLocalDateTime,
       LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar, java.util.Date pUtilDate, Timestamp pSQLTimestamp,
-      Time pSQLTime, Date pSQLDate ) {
+      Time pSQLTime, Date pSQLDate, Set<java.util.Date> pUtilDates ) {
     super(RESTProductService.class);
     path = pPath;
     offsetDateTime = pOffsetDateTime;
@@ -2249,8 +2263,9 @@ final class TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_
     sQLTimestamp = pSQLTimestamp;
     sQLTime = pSQLTime;
     sQLDate = pSQLDate;
+    utilDates = pUtilDates;
     parameters = new Object[] { path, offsetDateTime, offsetTime, localDateTime, localTime, localDate, calendar,
-      utilDate, sQLTimestamp, sQLTime, sQLDate };
+      utilDate, sQLTimestamp, sQLTime, sQLDate, utilDates };
   }
 
   /**
@@ -2272,7 +2287,7 @@ final class TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
     long lStartTime = System.nanoTime();
     lService.testDateHeaderParams(path, offsetDateTime, offsetTime, localDateTime, localTime, localDate, calendar,
-        utilDate, sQLTimestamp, sQLTime, sQLDate);
+        utilDate, sQLTimestamp, sQLTime, sQLDate, utilDates);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
     // Trace result of service call.

@@ -213,26 +213,22 @@ public class «name»RESTProxy implements «this.fqn()» {
 			«IF queryParam.type.isPrimitiveType() == false || queryParam.isMultivalued()»
 			if («queryParam.name» != null) {
 			«ENDIF»
-			«IF queryParam.isMultivalued() == true && queryParam.type.isOpenAPIDataType()»
-		      «IF queryParam.type.getAllAttributesFromHierarchy().first().type.isPrimitiveType()»
-			      «queryParam.getCollectionType()»<String> «queryParam.name»AsBasicType = new «queryParam.getCollectionImplType()»<String>();
-			      for («queryParam.type.fqn()» lNext : «queryParam.name») {
-			        «queryParam.name»AsBasicType.add(String.valueOf(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»()));
-			      }
-		      «ELSE»
-			      «IF queryParam.type.isCompositeDataType()»
-				      «queryParam.getCollectionType()»<String> «queryParam.name»AsBasicType = new «queryParam.getCollectionImplType()»<String>();
-				      for («queryParam.type.fqn()» lNext : «queryParam.name») {
-				        «queryParam.name»AsBasicType.add(lNext.get«queryParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»());
-				      }
-			      «ELSE»
-				      «queryParam.getCollectionType()»<«queryParam.type.getAllAttributesFromHierarchy().first().fqn()»> «queryParam.name»AsBasicType = new «queryParam.getCollectionImplType()»<«queryParam.type.getAllAttributesFromHierarchy().first().fqn()»>();
-				      for («queryParam.type.fqn()» lNext : «queryParam.name») {
-				        «queryParam.name»AsBasicType.add(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»());
-				      }
-			      «ENDIF»
-		      «ENDIF»
-		      lRequestBuilder.setQueryParameter("«queryParam.getRESTQueryParamName()»", «queryParam.name»AsBasicType);
+			«IF queryParam.isMultivalued() == true && (queryParam.type.isOpenAPIDataType() || queryParam.type.isAnyDateType())»
+			    java.util.List<Object> lValues = new java.util.ArrayList<Object>();
+			    for («queryParam.type.fqn()» lNext : «queryParam.name») {
+				«IF queryParam.type.isOpenAPIDataType()»
+				    «IF queryParam.type.getAllAttributesFromHierarchy().first().type.isPrimitiveType()»
+				    	lValues.add(String.valueOf(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»()));
+				    «ELSE» «IF queryParam.type.isCompositeDataType()»
+				    	lValues.add(lNext.get«queryParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»());
+					«ELSE»
+				        lValues.add(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»());
+				    «ENDIF»«ENDIF»
+			    «ELSE»
+			    	lValues.add(«EXPAND DateConversionForElement("lNext") FOR queryParam»);
+			    «ENDIF»
+			    }
+				lRequestBuilder.setQueryParameter("«queryParam.getRESTQueryParamName()»", lValues);
 			«ELSE»
 			lRequestBuilder.setQueryParameter("«queryParam.getRESTQueryParamName()»", «EXPAND QueryParamValueAccessor FOR queryParam»);
 			«ENDIF»
@@ -249,20 +245,24 @@ public class «name»RESTProxy implements «this.fqn()» {
 				«IF queryParam.type.isPrimitiveType() == false || queryParam.isMultivalued()»
 				if («beanParam.name».«queryParam.asGetter()»() != null) {
 				«ENDIF»
-		    	«IF queryParam.isMultivalued() == true && queryParam.type.isOpenAPIDataType()»
-		    		«queryParam.getCollectionType()»<String> «queryParam.asLocalVar()» = new «queryParam.getCollectionImplType()»<String>();
+		    	«IF queryParam.isMultivalued() == true && (queryParam.type.isOpenAPIDataType() || queryParam.type.isAnyDateType())»
+		    		java.util.List<Object> lValues = new java.util.ArrayList<Object>();
 		    		for(«queryParam.type.fqn()» lNext : «beanParam.name».«queryParam.asGetter()»()) {
+		    		«IF queryParam.type.isOpenAPIDataType()»
 		    			«IF queryParam.type.isCompositeDataType()»
-		    				«queryParam.asLocalVar()».add(lNext.get«queryParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»());
+		    				lValues.add(lNext.get«queryParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»());
 		    			«ELSE»
 			    			«IF queryParam.type.getAllAttributesFromHierarchy().first().type.isPrimitiveType()»
-			    				«queryParam.asLocalVar()».add(String.valueOf(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»()));
+			    				lValues.add(String.valueOf(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»()));
 			    			«ELSE»
-			    				«queryParam.asLocalVar()».add(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»().toString());
+			    				lValues.add(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»().toString());
 			    			«ENDIF»
 			    		«ENDIF»
+			    	«ELSE»
+			    		lValues.add(«EXPAND DateConversionForElement("lNext") FOR queryParam»);
+			    	«ENDIF»
 		    		}
-		    		lRequestBuilder.setQueryParameter("«queryParam.getRESTQueryParamName()»", «queryParam.asLocalVar()»);
+		    		lRequestBuilder.setQueryParameter("«queryParam.getRESTQueryParamName()»", lValues);
 		    	«ELSE»
 		    		lRequestBuilder.setQueryParameter("«queryParam.getRESTQueryParamName()»", «EXPAND QueryParamValueAccessorForBeanParam(beanParam) FOR queryParam»);
 		    	«ENDIF»
@@ -281,25 +281,25 @@ public class «name»RESTProxy implements «this.fqn()» {
 			«IF headerParam.type.isPrimitiveType() == false || headerParam.isMultivalued()»
 			if («headerParam.name» != null) {
 			«ENDIF»
-				«IF headerParam.isMultivalued() == false»
+				«IF headerParam.isMultivalued() == false && headerParam.type.isPrimitiveType() == false»
 					lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", «EXPAND HeaderParamValueAccessor FOR headerParam»);
 				«ELSE»
 					«IF headerParam.type.isStringType() || headerParam.type.isPrimitiveType() || headerParam.type.isBasicType()»
 					lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", «headerParam.name»);
 					«ELSE»
-						java.util.List<String> lValues = new java.util.ArrayList<String>();
+						java.util.List<Object> lValues = new java.util.ArrayList<Object>();
 						for («headerParam.type.fqn()» lNext : «headerParam.name») {
 							«IF headerParam.type.isOpenAPIDataType()»
 								«IF headerParam.type.isCompositeDataType()»
 									lValues.add(lNext.get«headerParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»());
 								«ELSE»
-									lValues.add(lNext.«headerParam.type.getAllAttributesFromHierarchy().first().asGetter()»().toString());
+									lValues.add(lNext.«headerParam.type.getAllAttributesFromHierarchy().first().asGetter()»());
 								«ENDIF»
 							«ELSE»
 								«IF headerParam.type.isAnyDateType()»
 									lValues.add(«EXPAND DateConversionForElement("lNext") FOR headerParam»);
 								«ELSE»
-									lValues.add(lNext.toString());
+									lValues.add(lNext);
 								«ENDIF»
 							«ENDIF»
 						}
@@ -344,19 +344,19 @@ public class «name»RESTProxy implements «this.fqn()» {
 									lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", java.util.Arrays.asList(«beanParam.name».«headerParam.asGetter()»()));
 								«ENDIF»
 							«ELSE»
-        						java.util.List<String> lValues = new java.util.ArrayList<String>();
+        						java.util.List<Object> lValues = new java.util.ArrayList<Object>();
         						for («headerParam.type.fqn()» lNext : «beanParam.name».«headerParam.asGetter()»()) {
 									«IF headerParam.type.isOpenAPIDataType()»
 										«IF headerParam.type.isCompositeDataType()»
 											lValues.add(lNext.get«headerParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»());
 										«ELSE»
-											lValues.add(lNext.«headerParam.type.getAllAttributesFromHierarchy().first().asGetter()»().toString());
+											lValues.add(lNext.«headerParam.type.getAllAttributesFromHierarchy().first().asGetter()»());
 										«ENDIF»
 									«ELSE»
 										«IF headerParam.type.isAnyDateType()»
 											lValues.add(«EXPAND DateConversionForElement("lNext") FOR headerParam»);
 										«ELSE»
-											lValues.add(lNext.toString());
+											lValues.add(lNext);
 										«ENDIF»
 									«ENDIF»
         						}
@@ -462,15 +462,15 @@ public class «name»RESTProxy implements «this.fqn()» {
 					«ENDIF»
 				«ENDIF»
 				«IF isTargetRuntimeSpring()»
-				«IF type.isAnyDateType()»
-				«EXPAND DateConversion FOR this»
-				«ELSE»
-					«IF this.isMultivalued() == false»
-						«name».toString()
+					«IF type.isAnyDateType()»
+						«EXPAND DateConversion FOR this»
 					«ELSE»
-						«name»
+						«IF this.isMultivalued() == false»
+							«name».toString()
+						«ELSE»
+							«name»
+						«ENDIF»
 					«ENDIF»
-				«ENDIF»
 				«ENDIF»
 			«ENDIF»
 		«ENDIF»
@@ -638,36 +638,31 @@ public class «name»RESTProxy implements «this.fqn()» {
 «ENDDEFINE»
 
 «DEFINE DateConversion FOR Parameter»
-«IF type.isOffsetDateTime()»
-java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(«this.name»)
-
-«ELSE»«IF type.isOffsetTime()»
-java.time.format.DateTimeFormatter.ISO_OFFSET_TIME.format(«this.name»)
-
-«ELSE»«IF type.isLocalDateTime()»
-java.time.format.DateTimeFormatter.ISO_DATE_TIME.format(«this.name»)
-
-«ELSE»«IF type.isLocalTime()»
-java.time.format.DateTimeFormatter.ISO_TIME.format(«this.name»)
-
-«ELSE»«IF type.isLocalDate()»
-java.time.format.DateTimeFormatter.ISO_DATE.format(«this.name»)
-
-«ELSE»«IF type.isCalendar()»
-new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(«this.name».getTime())
-
-«ELSE»«IF type.isUtilDate()»
-new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(«this.name»)
-
-«ELSE»«IF type.isSQLTimestamp()»
-new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(«this.name»)
-
-«ELSE»«IF type.isSQLTime()»
-new java.text.SimpleDateFormat("HH:mm:ss.SSSXXX").format(«this.name»)
-
-«ELSE»«IF type.isSQLDate()»
-new java.text.SimpleDateFormat("yyyy-MM-dd").format(«this.name»)
-«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»
+	«IF type.isOffsetDateTime()»
+	java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(«this.name»)
+	
+	«ELSE»«IF type.isOffsetTime()»
+	java.time.format.DateTimeFormatter.ISO_OFFSET_TIME.format(«this.name»)
+	
+	«ELSE»«IF type.isLocalDateTime()»
+	java.time.format.DateTimeFormatter.ISO_DATE_TIME.format(«this.name»)
+	
+	«ELSE»«IF type.isLocalTime()»
+	java.time.format.DateTimeFormatter.ISO_TIME.format(«this.name»)
+	
+	«ELSE»«IF type.isLocalDate()»
+	java.time.format.DateTimeFormatter.ISO_DATE.format(«this.name»)
+	
+	«ELSE»«IF type.isCalendar()»
+	new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(«this.name».getTime())
+	
+	«ELSE»«IF type.isUtilDate()»
+	new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(«this.name»)
+	
+	«ELSE»«IF type.isSQLTimestamp() || type.isSQLTime() || type.isSQLDate()»
+	«this.name».toString()
+	
+	«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»
 «ENDDEFINE»
 
 
@@ -677,36 +672,30 @@ new java.text.SimpleDateFormat("yyyy-MM-dd").format(«this.name»)
 
 
 «DEFINE DateConversionForElement(String paramName) FOR Property»
-«IF type.isOffsetDateTime()»
-java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(«paramName»)
-
-«ELSE»«IF type.isOffsetTime()»
-java.time.format.DateTimeFormatter.ISO_OFFSET_TIME.format(«paramName»)
-
-«ELSE»«IF type.isLocalDateTime()»
-java.time.format.DateTimeFormatter.ISO_DATE_TIME.format(«paramName»)
-
-«ELSE»«IF type.isLocalTime()»
-java.time.format.DateTimeFormatter.ISO_TIME.format(«paramName»)
-
-«ELSE»«IF type.isLocalDate()»
-java.time.format.DateTimeFormatter.ISO_DATE.format(«paramName»)
-
-«ELSE»«IF type.isCalendar()»
-new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(«paramName».getTime())
-
-«ELSE»«IF type.isUtilDate()»
-new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(«paramName»)
-
-«ELSE»«IF type.isSQLTimestamp()»
-new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(«paramName»)
-
-«ELSE»«IF type.isSQLTime()»
-new java.text.SimpleDateFormat("HH:mm:ss.SSSXXX").format(«paramName»)
-
-«ELSE»«IF type.isSQLDate()»
-new java.text.SimpleDateFormat("yyyy-MM-dd").format(«paramName»)
-«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»
+	«IF type.isOffsetDateTime()»
+	java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(«paramName»)
+	
+	«ELSE»«IF type.isOffsetTime()»
+	java.time.format.DateTimeFormatter.ISO_OFFSET_TIME.format(«paramName»)
+	
+	«ELSE»«IF type.isLocalDateTime()»
+	java.time.format.DateTimeFormatter.ISO_DATE_TIME.format(«paramName»)
+	
+	«ELSE»«IF type.isLocalTime()»
+	java.time.format.DateTimeFormatter.ISO_TIME.format(«paramName»)
+	
+	«ELSE»«IF type.isLocalDate()»
+	java.time.format.DateTimeFormatter.ISO_DATE.format(«paramName»)
+	
+	«ELSE»«IF type.isCalendar()»
+	new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(«paramName».getTime())
+	
+	«ELSE»«IF type.isUtilDate()»
+	new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(«paramName»)
+	
+	«ELSE»«IF type.isSQLTimestamp() || type.isSQLTime() || type.isSQLDate()»
+	«paramName».toString()
+	«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»«ENDIF»
 «ENDDEFINE»
 
 

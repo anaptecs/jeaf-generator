@@ -26,7 +26,7 @@ public class DoubleCode {
   private Double code;
 
   /**
-   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected DoubleCode( ) {
@@ -60,6 +60,19 @@ public class DoubleCode {
    */
   public static Builder builder( DoubleCode pObject ) {
     return new Builder(pObject);
+  }
+
+  /**
+   * Method converts the passed {@link String} into an instance of this object.
+   *
+   * Please be aware that this method is only intended to be used for deserialization frameworks like JAX-RS. For
+   * "normal" object creation builder should be used instead.
+   * 
+   * @param pCode String that should be used to create an instance of this class. The parameter must not be null.
+   * @return {@link DoubleCode} Instance of the class that matches to the passed string. The method never returns null.
+   */
+  public static DoubleCode valueOf( String pCode ) {
+    return builder().setCode(Double.valueOf(pCode)).build();
   }
 
   /**

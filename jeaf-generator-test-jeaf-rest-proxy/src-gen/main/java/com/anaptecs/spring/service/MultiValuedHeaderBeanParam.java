@@ -6,10 +6,13 @@
 package com.anaptecs.spring.service;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -71,6 +74,21 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   public static final String TIMESTAMPS = "timestamps";
 
   /**
+   * Constant for the name of attribute "calendars".
+   */
+  public static final String CALENDARS = "calendars";
+
+  /**
+   * Constant for the name of attribute "utilDates".
+   */
+  public static final String UTILDATES = "utilDates";
+
+  /**
+   * Constant for the name of attribute "sqlTimestamps".
+   */
+  public static final String SQLTIMESTAMPS = "sqlTimestamps";
+
+  /**
    * 
    */
   @HeaderParam("names")
@@ -97,6 +115,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   /**
    * 
    */
+  @HeaderParam("stringCodeList")
   private Set<StringCode> stringCodeList;
 
   /**
@@ -114,10 +133,29 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   /**
    * 
    */
+  @HeaderParam("timestamps")
   private Set<LocalDateTime> timestamps;
 
   /**
-   * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal"
+   * 
+   */
+  @HeaderParam("calendars")
+  private Calendar[] calendars;
+
+  /**
+   * 
+   */
+  @HeaderParam("utilDates")
+  private Date[] utilDates;
+
+  /**
+   * 
+   */
+  @HeaderParam("sqlTimestamps")
+  private Timestamp[] sqlTimestamps;
+
+  /**
+   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   public MultiValuedHeaderBeanParam( ) {
@@ -152,6 +190,9 @@ public class MultiValuedHeaderBeanParam implements Serializable {
     else {
       timestamps = new HashSet<LocalDateTime>();
     }
+    calendars = pBuilder.calendars;
+    utilDates = pBuilder.utilDates;
+    sqlTimestamps = pBuilder.sqlTimestamps;
   }
 
   /**
@@ -220,6 +261,21 @@ public class MultiValuedHeaderBeanParam implements Serializable {
     private Set<LocalDateTime> timestamps;
 
     /**
+     * 
+     */
+    private Calendar[] calendars;
+
+    /**
+     * 
+     */
+    private Date[] utilDates;
+
+    /**
+     * 
+     */
+    private Timestamp[] sqlTimestamps;
+
+    /**
      * Use {@link MultiValuedHeaderBeanParam#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -240,6 +296,9 @@ public class MultiValuedHeaderBeanParam implements Serializable {
         startDate = pObject.startDate;
         dates = pObject.dates;
         timestamps = pObject.timestamps;
+        calendars = pObject.calendars;
+        utilDates = pObject.utilDates;
+        sqlTimestamps = pObject.sqlTimestamps;
       }
     }
 
@@ -367,6 +426,57 @@ public class MultiValuedHeaderBeanParam implements Serializable {
       }
       else {
         timestamps = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "calendars".
+     * 
+     * @param pCalendars Value to which the attribute "calendars" should be set.
+     */
+    public Builder setCalendars( Calendar[] pCalendars ) {
+      // Assign value to attribute
+      if (pCalendars != null) {
+        calendars = new Calendar[pCalendars.length];
+        System.arraycopy(pCalendars, 0, calendars, 0, pCalendars.length);
+      }
+      else {
+        calendars = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "utilDates".
+     * 
+     * @param pUtilDates Value to which the attribute "utilDates" should be set.
+     */
+    public Builder setUtilDates( Date[] pUtilDates ) {
+      // Assign value to attribute
+      if (pUtilDates != null) {
+        utilDates = new Date[pUtilDates.length];
+        System.arraycopy(pUtilDates, 0, utilDates, 0, pUtilDates.length);
+      }
+      else {
+        utilDates = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "sqlTimestamps".
+     * 
+     * @param pSqlTimestamps Value to which the attribute "sqlTimestamps" should be set.
+     */
+    public Builder setSqlTimestamps( Timestamp[] pSqlTimestamps ) {
+      // Assign value to attribute
+      if (pSqlTimestamps != null) {
+        sqlTimestamps = new Timestamp[pSqlTimestamps.length];
+        System.arraycopy(pSqlTimestamps, 0, sqlTimestamps, 0, pSqlTimestamps.length);
+      }
+      else {
+        sqlTimestamps = null;
       }
       return this;
     }
@@ -717,6 +827,111 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   public void clearTimestamps( ) {
     // Remove all objects from association "timestamps".
     timestamps.clear();
+  }
+
+  /**
+   * Method returns the attribute "calendars".
+   * 
+   * 
+   * @return Calendar Value to which the attribute "calendars" is set.
+   */
+  public Calendar[] getCalendars( ) {
+    Calendar[] lReturnValue;
+    if (calendars != null) {
+      lReturnValue = new Calendar[calendars.length];
+      System.arraycopy(calendars, 0, lReturnValue, 0, calendars.length);
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
+  }
+
+  /**
+   * Method sets the attribute "calendars".
+   * 
+   * 
+   * @param pCalendars Value to which the attribute "calendars" should be set.
+   */
+  public void setCalendars( Calendar[] pCalendars ) {
+    // Assign value to attribute
+    if (pCalendars != null) {
+      calendars = new Calendar[pCalendars.length];
+      System.arraycopy(pCalendars, 0, calendars, 0, pCalendars.length);
+    }
+    else {
+      calendars = null;
+    }
+  }
+
+  /**
+   * Method returns the attribute "utilDates".
+   * 
+   * 
+   * @return Date Value to which the attribute "utilDates" is set.
+   */
+  public Date[] getUtilDates( ) {
+    Date[] lReturnValue;
+    if (utilDates != null) {
+      lReturnValue = new Date[utilDates.length];
+      System.arraycopy(utilDates, 0, lReturnValue, 0, utilDates.length);
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
+  }
+
+  /**
+   * Method sets the attribute "utilDates".
+   * 
+   * 
+   * @param pUtilDates Value to which the attribute "utilDates" should be set.
+   */
+  public void setUtilDates( Date[] pUtilDates ) {
+    // Assign value to attribute
+    if (pUtilDates != null) {
+      utilDates = new Date[pUtilDates.length];
+      System.arraycopy(pUtilDates, 0, utilDates, 0, pUtilDates.length);
+    }
+    else {
+      utilDates = null;
+    }
+  }
+
+  /**
+   * Method returns the attribute "sqlTimestamps".
+   * 
+   * 
+   * @return Timestamp Value to which the attribute "sqlTimestamps" is set.
+   */
+  public Timestamp[] getSqlTimestamps( ) {
+    Timestamp[] lReturnValue;
+    if (sqlTimestamps != null) {
+      lReturnValue = new Timestamp[sqlTimestamps.length];
+      System.arraycopy(sqlTimestamps, 0, lReturnValue, 0, sqlTimestamps.length);
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
+  }
+
+  /**
+   * Method sets the attribute "sqlTimestamps".
+   * 
+   * 
+   * @param pSqlTimestamps Value to which the attribute "sqlTimestamps" should be set.
+   */
+  public void setSqlTimestamps( Timestamp[] pSqlTimestamps ) {
+    // Assign value to attribute
+    if (pSqlTimestamps != null) {
+      sqlTimestamps = new Timestamp[pSqlTimestamps.length];
+      System.arraycopy(pSqlTimestamps, 0, sqlTimestamps, 0, pSqlTimestamps.length);
+    }
+    else {
+      sqlTimestamps = null;
+    }
   }
 
   /**

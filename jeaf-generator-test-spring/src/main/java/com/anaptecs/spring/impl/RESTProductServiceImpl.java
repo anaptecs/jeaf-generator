@@ -121,7 +121,25 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
-      Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate ) {
+      Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate, Set<Calendar> pCalendars ) {
+
+    if (pPath.equals("2")) {
+      assertEquals("2022-03-17T13:22:12.453+01:00", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(
+          pCalendar.getTime()));
+      assertEquals("2022-03-17", pLocalStartDate.toString());
+      assertEquals("2022-03-17T13:22:12.453", pLocalStartTimestamp.toString());
+      assertEquals("13:22:12.453", pLocalStartTime.toString());
+      assertEquals("2022-03-17T13:22:12.453+01:00", pStartTimestamp.toString());
+      assertEquals("13:22:12.453+01:00", pStartTime.toString());
+      assertEquals("2022-03-17", pSQLDate.toString());
+      assertEquals("13:22:12", pSQLTime.toString());
+      assertEquals("2022-03-17 13:22:12.453", pSQLTimestamp.toString());
+      assertEquals("2022-03-17T13:22:12.453+01:00", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(
+          pUtilDate));
+    }
+    else {
+      fail("Invalid path");
+    }
   }
 
   @Override
@@ -148,7 +166,7 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar, Date pUtilDate,
-      Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate ) {
+      Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate, Set<Date> pUtilDates ) {
   }
 
   @Override
@@ -273,7 +291,8 @@ public class RESTProductServiceImpl implements RESTProductService {
     for (DoubleCode lNext : pQueryBean.getDoubleCodes()) {
       lResult = lResult + lNext.getCode() + "_";
     }
-    return lResult;
+    return lResult + pQueryBean.getOffsetDateTime() + "_" + pQueryBean.getLocalDateTime() + "_" + pQueryBean
+        .getLocalTime() + "_" + pQueryBean.getOffsetTime() + "_" + pQueryBean.getTimes();
   }
 
   @Override
@@ -307,7 +326,7 @@ public class RESTProductServiceImpl implements RESTProductService {
     }
 
     return pNames.toString() + "_" + Arrays.toString(pInts) + "_"
-        + pDoubles.toString() + "_" + lCodes;
+        + pDoubles.toString() + "_" + lCodes + "_" + pTimestamps.toString() + "_" + pTimes.toString();
   }
 
 }

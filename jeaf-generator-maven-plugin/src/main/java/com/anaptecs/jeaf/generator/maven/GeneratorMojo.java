@@ -482,6 +482,15 @@ public class GeneratorMojo extends AbstractMojo {
   private RESTLibrary restLibrary;
 
   /**
+   * Switch defines whether for the Java representation of OpenAPI Data Types as valueOf method should be generated or
+   * not. If this is required depends on the framework that is used for your REST implementation. Currently (Spring Boot
+   * 2.7.* and Jersey 2.35) it is only required in case of Jersey. Default Spring Boot REST implementation does not
+   * require that.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateValueOfForOpenAPIDataTypes;
+
+  /**
    * Switch defines whether a message constants should be generated from resource files or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -768,6 +777,7 @@ public class GeneratorMojo extends AbstractMojo {
     if (restLibrary != null) {
       lLog.info("REST Library:                                     " + restLibrary.name());
     }
+
     lLog.info(" ");
     lLog.info("Code-Style:                                       " + xmlFormatterStyleFile);
     lLog.info("Package Whitelist:                                " + this.getPackageWhitelist());
@@ -784,6 +794,7 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateServiceObjects) {
       lLog.info("Generate Service Objects:                         " + generateServiceObjects);
       lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
+      lLog.info("Generate valueOf(...) for OpenAPI Data Types:     " + generateValueOfForOpenAPIDataTypes);
     }
     if (generateExceptionClasses) {
       lLog.info("Generate Exception Classes:                       " + generateExceptionClasses);
@@ -822,6 +833,7 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate POJO's:                                  " + generatePOJOs);
       lLog.info("Make POJO's serializable:                         " + makePOJOsSerializable);
       lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
+      lLog.info("Generate valueOf(...) for OpenAPI Data Types:     " + generateValueOfForOpenAPIDataTypes);
     }
     if (generateDomainObjects) {
       lLog.info("Generate Domain Objects:                          " + generateDomainObjects);
@@ -1016,6 +1028,8 @@ public class GeneratorMojo extends AbstractMojo {
       if (restLibrary != null) {
         System.setProperty("switch.gen.target.rest.library", restLibrary.name());
       }
+
+      System.setProperty("switch.gen.value.of.data.types", generateValueOfForOpenAPIDataTypes.toString());
 
       System.setProperty("switch.gen.suppress.warnings", suppressWarnings.stream().collect(Collectors.joining("; ")));
       System.setProperty("switch.gen.suppress.all.warnings", suppressAllWarnings.toString());

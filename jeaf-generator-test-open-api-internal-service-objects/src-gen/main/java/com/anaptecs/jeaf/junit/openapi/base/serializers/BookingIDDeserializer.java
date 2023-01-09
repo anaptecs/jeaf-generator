@@ -47,12 +47,11 @@ public class BookingIDDeserializer extends JsonDeserializer<BookingID> {
   public BookingID deserialize( JsonParser pParser, DeserializationContext pContext ) throws IOException {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
-    // We expect that data types are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
       // Convert public string representation of BookingID into real object.
       return this.getDeserializer().deserializeObject(lNode.asText(), BookingID.class, SERIALIZED_CLASSES);
     }
-    // Node is not a TextNode
+    // Node is not of expected type.
     else {
       throw new JEAFSystemException(JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION, BookingID.class.getName(),
           lNode.toString(), lNode.getClass().getName());

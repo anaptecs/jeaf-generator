@@ -170,6 +170,12 @@ public class GeneratorCommons {
   public static final String GENERATE_PUBLIC_SETTERS = "switch.gen.public.setters.for.associations";
 
   /**
+   * Constant defines the name of the system property which enables the generation of valueOf method for OpenAPI Data
+   * Types in Java.
+   */
+  public static final String GENERATE_VALUE_OF = "switch.gen.value.of.data.types";
+
+  /**
    * Constant defines the name of the system property which enables the generation of null checks for setters of to one
    * associations of service objects.
    */
@@ -942,6 +948,11 @@ public class GeneratorCommons {
   public static boolean generatePublicSettersForAssociations( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(GENERATE_PUBLIC_SETTERS, Boolean.FALSE, Boolean.class);
+  }
+
+  public static boolean generateValueOfForOpenAPIDataTypes( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_VALUE_OF, Boolean.FALSE, Boolean.class);
   }
 
   public static boolean generateNullChecksForToOneAssociationsOfServiceObjects( ) {
