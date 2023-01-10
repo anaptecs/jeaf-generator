@@ -46,6 +46,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    * 
    */
   @Size(min = 1)
+  @NotNull
   private List<Channel> channels;
 
   /**

@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -32,6 +33,7 @@ public class CurrencyCode implements ServiceObject {
    * <b>Example:</b> <code>CHF</code>
    */
   @Size(min = 3, max = 3)
+  @NotNull
   private String code;
 
   /**
