@@ -350,7 +350,7 @@ public class ProductServiceRESTProxy implements ProductService {
     lPathBuilder.append("deprecated/params");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
-    lRequestBuilder.setHeader("param1", String.valueOf(pParam1));
+    lRequestBuilder.setHeader("param1", pParam1);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
@@ -740,14 +740,13 @@ public class ProductServiceRESTProxy implements ProductService {
           new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pUtilDate));
     }
     if (pSQLTimestamp != null) {
-      lRequestBuilder.setQueryParameter("sqlTimestamp",
-          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pSQLTimestamp));
+      lRequestBuilder.setQueryParameter("sqlTimestamp", pSQLTimestamp.toString());
     }
     if (pSQLTime != null) {
-      lRequestBuilder.setQueryParameter("sqlTime", new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pSQLTime));
+      lRequestBuilder.setQueryParameter("sqlTime", pSQLTime.toString());
     }
     if (pSQLDate != null) {
-      lRequestBuilder.setQueryParameter("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pSQLDate));
+      lRequestBuilder.setQueryParameter("sqlDate", pSQLDate.toString());
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -799,16 +798,13 @@ public class ProductServiceRESTProxy implements ProductService {
             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getCalendar().getTime()));
       }
       if (pQueryParams.getSqlTimestamp() != null) {
-        lRequestBuilder.setQueryParameter("sqlTimestamp",
-            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTimestamp()));
+        lRequestBuilder.setQueryParameter("sqlTimestamp", pQueryParams.getSqlTimestamp().toString());
       }
       if (pQueryParams.getSqlTime() != null) {
-        lRequestBuilder.setQueryParameter("sqlTime",
-            new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTime()));
+        lRequestBuilder.setQueryParameter("sqlTime", pQueryParams.getSqlTime().toString());
       }
       if (pQueryParams.getSqlDate() != null) {
-        lRequestBuilder.setQueryParameter("sqlDate",
-            new SimpleDateFormat("yyyy-MM-dd").format(pQueryParams.getSqlDate()));
+        lRequestBuilder.setQueryParameter("sqlDate", pQueryParams.getSqlDate().toString());
       }
     }
     // Execute request.
@@ -888,20 +884,19 @@ public class ProductServiceRESTProxy implements ProductService {
       lRequestBuilder.setHeader("Util-Date", (String) null);
     }
     if (pSQLTimestamp != null) {
-      lRequestBuilder.setHeader("SQL-Timestamp",
-          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pSQLTimestamp));
+      lRequestBuilder.setHeader("SQL-Timestamp", pSQLTimestamp.toString());
     }
     else {
       lRequestBuilder.setHeader("SQL-Timestamp", (String) null);
     }
     if (pSQLTime != null) {
-      lRequestBuilder.setHeader("SQL-Time", new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pSQLTime));
+      lRequestBuilder.setHeader("SQL-Time", pSQLTime.toString());
     }
     else {
       lRequestBuilder.setHeader("SQL-Time", (String) null);
     }
     if (pSQLDate != null) {
-      lRequestBuilder.setHeader("SQL-Date", new SimpleDateFormat("yyyy-MM-dd").format(pSQLDate));
+      lRequestBuilder.setHeader("SQL-Date", pSQLDate.toString());
     }
     else {
       lRequestBuilder.setHeader("SQL-Date", (String) null);
@@ -977,21 +972,19 @@ public class ProductServiceRESTProxy implements ProductService {
         lRequestBuilder.setHeader("Calendar", (String) null);
       }
       if (pHeaderParams.getSqlTimestamp() != null) {
-        lRequestBuilder.setHeader("SQL-Timestamp",
-            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pHeaderParams.getSqlTimestamp()));
+        lRequestBuilder.setHeader("SQL-Timestamp", pHeaderParams.getSqlTimestamp().toString());
       }
       else {
         lRequestBuilder.setHeader("SQL-Timestamp", (String) null);
       }
       if (pHeaderParams.getSqlTime() != null) {
-        lRequestBuilder.setHeader("SQL-Time",
-            new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pHeaderParams.getSqlTime()));
+        lRequestBuilder.setHeader("SQL-Time", pHeaderParams.getSqlTime().toString());
       }
       else {
         lRequestBuilder.setHeader("SQL-Time", (String) null);
       }
       if (pHeaderParams.getSqlDate() != null) {
-        lRequestBuilder.setHeader("SQL-Date", new SimpleDateFormat("yyyy-MM-dd").format(pHeaderParams.getSqlDate()));
+        lRequestBuilder.setHeader("SQL-Date", pHeaderParams.getSqlDate().toString());
       }
       else {
         lRequestBuilder.setHeader("SQL-Date", (String) null);

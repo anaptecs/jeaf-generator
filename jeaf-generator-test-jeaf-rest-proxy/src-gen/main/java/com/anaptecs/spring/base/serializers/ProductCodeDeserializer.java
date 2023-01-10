@@ -24,12 +24,11 @@ public class ProductCodeDeserializer extends JsonDeserializer<ProductCode> {
   public ProductCode deserialize( JsonParser pParser, DeserializationContext pContext ) throws IOException {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
-    // We expect that data types are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof NumericNode) {
       NumericNode lNumericNode = (NumericNode) lNode;
       return ProductCode.builder().setCode(lNumericNode.intValue()).build();
     }
-    // Node is not a TextNode
+    // Node is not of expected type.
     else {
       throw new JEAFSystemException(JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION, ProductCode.class.getName(),
           lNode.toString(), lNode.getClass().getName());

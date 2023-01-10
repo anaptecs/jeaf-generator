@@ -119,6 +119,12 @@ cached List[uml::Parameter] getDataTypeParameters(uml::Operation operation):
 cached boolean hasDataTypeParameters(uml::Operation operation):
    operation.getDataTypeParameters().size > 0;
    
+cached List[uml::Parameter] getDateParameters(uml::Operation operation):
+   operation.ownedParameter.select(e|e.type.isAnyDateType() && e.isInputParameter() && e.isRequestBody() == false && e.isParameterSuppressed() == false);
+
+cached boolean hasDateParameters(uml::Operation operation):
+	operation.getDateParameters().size > 0;
+   
 Void registerLocalType(uml::NamedElement localClass, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.registerLocalType(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.Component);
     

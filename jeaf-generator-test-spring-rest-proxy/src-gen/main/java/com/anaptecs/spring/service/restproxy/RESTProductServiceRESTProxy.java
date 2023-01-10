@@ -20,11 +20,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedSet;
 
 import org.springframework.stereotype.Service;
 
@@ -443,11 +443,12 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
    * @param pSQLTimestamp
    * @param pSQLTime
    * @param pSQLDate
+   * @param pCalendars
    */
   @Override
   public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
-      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate, Set<Calendar> pCalendars ) {
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder =
         RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
@@ -485,14 +486,20 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
           new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pUtilDate));
     }
     if (pSQLTimestamp != null) {
-      lRequestBuilder.setQueryParameter("sqlTimestamp",
-          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pSQLTimestamp));
+      lRequestBuilder.setQueryParameter("sqlTimestamp", pSQLTimestamp.toString());
     }
     if (pSQLTime != null) {
-      lRequestBuilder.setQueryParameter("sqlTime", new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pSQLTime));
+      lRequestBuilder.setQueryParameter("sqlTime", pSQLTime.toString());
     }
     if (pSQLDate != null) {
-      lRequestBuilder.setQueryParameter("sqlDate", new SimpleDateFormat("yyyy-MM-dd").format(pSQLDate));
+      lRequestBuilder.setQueryParameter("sqlDate", pSQLDate.toString());
+    }
+    if (pCalendars != null) {
+      List<Object> lValues = new ArrayList<Object>();
+      for (Calendar lNext : pCalendars) {
+        lValues.add(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(lNext.getTime()));
+      }
+      lRequestBuilder.setQueryParameter("calendars", lValues);
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -545,16 +552,13 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
             new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getCalendar().getTime()));
       }
       if (pQueryParams.getSqlTimestamp() != null) {
-        lRequestBuilder.setQueryParameter("sqlTimestamp",
-            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTimestamp()));
+        lRequestBuilder.setQueryParameter("sqlTimestamp", pQueryParams.getSqlTimestamp().toString());
       }
       if (pQueryParams.getSqlTime() != null) {
-        lRequestBuilder.setQueryParameter("sqlTime",
-            new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pQueryParams.getSqlTime()));
+        lRequestBuilder.setQueryParameter("sqlTime", pQueryParams.getSqlTime().toString());
       }
       if (pQueryParams.getSqlDate() != null) {
-        lRequestBuilder.setQueryParameter("sqlDate",
-            new SimpleDateFormat("yyyy-MM-dd").format(pQueryParams.getSqlDate()));
+        lRequestBuilder.setQueryParameter("sqlDate", pQueryParams.getSqlDate().toString());
       }
     }
     // Execute request.
@@ -575,11 +579,13 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
    * @param pSQLTimestamp
    * @param pSQLTime
    * @param pSQLDate
+   * @param pUtilDates
    */
   @Override
   public void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
-      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
+      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate,
+      Set<java.util.Date> pUtilDates ) {
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder =
         RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
@@ -635,23 +641,32 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       lRequestBuilder.setHeader("Util-Date", (String) null);
     }
     if (pSQLTimestamp != null) {
-      lRequestBuilder.setHeader("SQL-Timestamp",
-          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pSQLTimestamp));
+      lRequestBuilder.setHeader("SQL-Timestamp", pSQLTimestamp.toString());
     }
     else {
       lRequestBuilder.setHeader("SQL-Timestamp", (String) null);
     }
     if (pSQLTime != null) {
-      lRequestBuilder.setHeader("SQL-Time", new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pSQLTime));
+      lRequestBuilder.setHeader("SQL-Time", pSQLTime.toString());
     }
     else {
       lRequestBuilder.setHeader("SQL-Time", (String) null);
     }
     if (pSQLDate != null) {
-      lRequestBuilder.setHeader("SQL-Date", new SimpleDateFormat("yyyy-MM-dd").format(pSQLDate));
+      lRequestBuilder.setHeader("SQL-Date", pSQLDate.toString());
     }
     else {
       lRequestBuilder.setHeader("SQL-Date", (String) null);
+    }
+    if (pUtilDates != null) {
+      List<Object> lValues = new ArrayList<Object>();
+      for (java.util.Date lNext : pUtilDates) {
+        lValues.add(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(lNext));
+      }
+      lRequestBuilder.setHeader("util-dates", lValues);
+    }
+    else {
+      lRequestBuilder.setHeader("util-dates", (String) null);
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -725,21 +740,19 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
         lRequestBuilder.setHeader("Calendar", (String) null);
       }
       if (pHeaderParams.getSqlTimestamp() != null) {
-        lRequestBuilder.setHeader("SQL-Timestamp",
-            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pHeaderParams.getSqlTimestamp()));
+        lRequestBuilder.setHeader("SQL-Timestamp", pHeaderParams.getSqlTimestamp().toString());
       }
       else {
         lRequestBuilder.setHeader("SQL-Timestamp", (String) null);
       }
       if (pHeaderParams.getSqlTime() != null) {
-        lRequestBuilder.setHeader("SQL-Time",
-            new SimpleDateFormat("HH:mm:ss.SSSXXX").format(pHeaderParams.getSqlTime()));
+        lRequestBuilder.setHeader("SQL-Time", pHeaderParams.getSqlTime().toString());
       }
       else {
         lRequestBuilder.setHeader("SQL-Time", (String) null);
       }
       if (pHeaderParams.getSqlDate() != null) {
-        lRequestBuilder.setHeader("SQL-Date", new SimpleDateFormat("yyyy-MM-dd").format(pHeaderParams.getSqlDate()));
+        lRequestBuilder.setHeader("SQL-Date", pHeaderParams.getSqlDate().toString());
       }
       else {
         lRequestBuilder.setHeader("SQL-Date", (String) null);
@@ -1133,11 +1146,13 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
    * @param pCodes
    * @param pLongCodes
    * @param pBookingIDs
+   * @param pTimestamps
+   * @param pLocalDates
    * @return {@link String}
    */
   @Override
   public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
-      List<BookingID> pBookingIDs ) {
+      List<BookingID> pBookingIDs, List<OffsetDateTime> pTimestamps, SortedSet<LocalDate> pLocalDates ) {
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder =
         RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
@@ -1149,25 +1164,39 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pCodes != null) {
-      List<String> pCodesAsBasicType = new ArrayList<String>();
+      List<Object> lValues = new ArrayList<Object>();
       for (IntegerCodeType lNext : pCodes) {
-        pCodesAsBasicType.add(String.valueOf(lNext.getCode()));
+        lValues.add(String.valueOf(lNext.getCode()));
       }
-      lRequestBuilder.setQueryParameter("codes", pCodesAsBasicType);
+      lRequestBuilder.setQueryParameter("codes", lValues);
     }
     if (pLongCodes != null) {
-      Set<Long> pLongCodesAsBasicType = new HashSet<Long>();
+      List<Object> lValues = new ArrayList<Object>();
       for (LongCode lNext : pLongCodes) {
-        pLongCodesAsBasicType.add(lNext.getCode());
+        lValues.add(lNext.getCode());
       }
-      lRequestBuilder.setQueryParameter("longCodes", pLongCodesAsBasicType);
+      lRequestBuilder.setQueryParameter("longCodes", lValues);
     }
     if (pBookingIDs != null) {
-      List<String> pBookingIDsAsBasicType = new ArrayList<String>();
+      List<Object> lValues = new ArrayList<Object>();
       for (BookingID lNext : pBookingIDs) {
-        pBookingIDsAsBasicType.add(lNext.getBookingID());
+        lValues.add(lNext.getBookingID());
       }
-      lRequestBuilder.setQueryParameter("bookingIDs", pBookingIDsAsBasicType);
+      lRequestBuilder.setQueryParameter("bookingIDs", lValues);
+    }
+    if (pTimestamps != null) {
+      List<Object> lValues = new ArrayList<Object>();
+      for (OffsetDateTime lNext : pTimestamps) {
+        lValues.add(DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lNext));
+      }
+      lRequestBuilder.setQueryParameter("timestamps", lValues);
+    }
+    if (pLocalDates != null) {
+      List<Object> lValues = new ArrayList<Object>();
+      for (LocalDate lNext : pLocalDates) {
+        lValues.add(DateTimeFormatter.ISO_DATE.format(lNext));
+      }
+      lRequestBuilder.setQueryParameter("localDates", lValues);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -1193,39 +1222,75 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     // Add query parameter(s) to request
     if (pQueryBean != null) {
       if (pQueryBean.getLongCodes() != null) {
-        Set<String> lLongCodes = new HashSet<String>();
+        List<Object> lValues = new ArrayList<Object>();
         for (LongCode lNext : pQueryBean.getLongCodes()) {
-          lLongCodes.add(lNext.getCode().toString());
+          lValues.add(lNext.getCode().toString());
         }
-        lRequestBuilder.setQueryParameter("longCodes", lLongCodes);
+        lRequestBuilder.setQueryParameter("longCodes", lValues);
       }
       if (pQueryBean.getCodes() != null) {
-        Set<String> lCodes = new HashSet<String>();
+        List<Object> lValues = new ArrayList<Object>();
         for (IntegerCodeType lNext : pQueryBean.getCodes()) {
-          lCodes.add(String.valueOf(lNext.getCode()));
+          lValues.add(String.valueOf(lNext.getCode()));
         }
-        lRequestBuilder.setQueryParameter("codes", lCodes);
+        lRequestBuilder.setQueryParameter("codes", lValues);
       }
       if (pQueryBean.getDoubleCodes() != null) {
-        Set<String> lDoubleCodes = new HashSet<String>();
+        List<Object> lValues = new ArrayList<Object>();
         for (DoubleCode lNext : pQueryBean.getDoubleCodes()) {
-          lDoubleCodes.add(lNext.getCode().toString());
+          lValues.add(lNext.getCode().toString());
         }
-        lRequestBuilder.setQueryParameter("doubleCodes", lDoubleCodes);
+        lRequestBuilder.setQueryParameter("doubleCodes", lValues);
       }
       if (pQueryBean.getBookingIDs() != null) {
-        Set<String> lBookingIDs = new HashSet<String>();
+        List<Object> lValues = new ArrayList<Object>();
         for (BookingID lNext : pQueryBean.getBookingIDs()) {
-          lBookingIDs.add(lNext.getBookingID());
+          lValues.add(lNext.getBookingID());
         }
-        lRequestBuilder.setQueryParameter("bookingIDs", lBookingIDs);
+        lRequestBuilder.setQueryParameter("bookingIDs", lValues);
       }
       if (pQueryBean.getBookingIDsArray() != null) {
-        Set<String> lBookingIDsArray = new HashSet<String>();
+        List<Object> lValues = new ArrayList<Object>();
         for (BookingID lNext : pQueryBean.getBookingIDsArray()) {
-          lBookingIDsArray.add(lNext.getBookingID());
+          lValues.add(lNext.getBookingID());
         }
-        lRequestBuilder.setQueryParameter("bookingIDsArray", lBookingIDsArray);
+        lRequestBuilder.setQueryParameter("bookingIDsArray", lValues);
+      }
+      if (pQueryBean.getOffsetDateTime() != null) {
+        lRequestBuilder.setQueryParameter("offsetDateTime",
+            DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pQueryBean.getOffsetDateTime()));
+      }
+      if (pQueryBean.getOffsetTime() != null) {
+        lRequestBuilder.setQueryParameter("offsetTime",
+            DateTimeFormatter.ISO_OFFSET_TIME.format(pQueryBean.getOffsetTime()));
+      }
+      if (pQueryBean.getLocalDateTime() != null) {
+        lRequestBuilder.setQueryParameter("localDateTime",
+            DateTimeFormatter.ISO_DATE_TIME.format(pQueryBean.getLocalDateTime()));
+      }
+      if (pQueryBean.getLocalTime() != null) {
+        lRequestBuilder.setQueryParameter("localTime", DateTimeFormatter.ISO_TIME.format(pQueryBean.getLocalTime()));
+      }
+      if (pQueryBean.getTimestamps() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (LocalDateTime lNext : pQueryBean.getTimestamps()) {
+          lValues.add(DateTimeFormatter.ISO_DATE_TIME.format(lNext));
+        }
+        lRequestBuilder.setQueryParameter("timestamps", lValues);
+      }
+      if (pQueryBean.getTimes() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (OffsetTime lNext : pQueryBean.getTimes()) {
+          lValues.add(DateTimeFormatter.ISO_OFFSET_TIME.format(lNext));
+        }
+        lRequestBuilder.setQueryParameter("times", lValues);
+      }
+      if (pQueryBean.getStartTimestamps() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (OffsetDateTime lNext : pQueryBean.getStartTimestamps()) {
+          lValues.add(DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lNext));
+        }
+        lRequestBuilder.setQueryParameter("startTimestamps", lValues);
       }
     }
     // Execute request and return result.
@@ -1270,9 +1335,9 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
         lRequestBuilder.setHeader("doubles", (String) null);
       }
       if (pMultiValuedBean.getCodes() != null) {
-        List<String> lValues = new ArrayList<String>();
+        List<Object> lValues = new ArrayList<Object>();
         for (StringCode lNext : pMultiValuedBean.getCodes()) {
-          lValues.add(lNext.getCode().toString());
+          lValues.add(lNext.getCode());
         }
         lRequestBuilder.setHeader("codes", lValues);
       }
@@ -1280,9 +1345,9 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
         lRequestBuilder.setHeader("codes", (String) null);
       }
       if (pMultiValuedBean.getStringCodeList() != null) {
-        List<String> lValues = new ArrayList<String>();
+        List<Object> lValues = new ArrayList<Object>();
         for (StringCode lNext : pMultiValuedBean.getStringCodeList()) {
-          lValues.add(lNext.getCode().toString());
+          lValues.add(lNext.getCode());
         }
         lRequestBuilder.setHeader("stringCodeList", lValues);
       }
@@ -1296,7 +1361,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
         lRequestBuilder.setHeader("startDate", (String) null);
       }
       if (pMultiValuedBean.getDates() != null) {
-        List<String> lValues = new ArrayList<String>();
+        List<Object> lValues = new ArrayList<Object>();
         for (LocalDate lNext : pMultiValuedBean.getDates()) {
           lValues.add(DateTimeFormatter.ISO_DATE.format(lNext));
         }
@@ -1306,7 +1371,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
         lRequestBuilder.setHeader("dates", (String) null);
       }
       if (pMultiValuedBean.getTimestamps() != null) {
-        List<String> lValues = new ArrayList<String>();
+        List<Object> lValues = new ArrayList<Object>();
         for (LocalDateTime lNext : pMultiValuedBean.getTimestamps()) {
           lValues.add(DateTimeFormatter.ISO_DATE_TIME.format(lNext));
         }
@@ -1314,6 +1379,36 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       }
       else {
         lRequestBuilder.setHeader("timestamps", (String) null);
+      }
+      if (pMultiValuedBean.getCalendars() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (Calendar lNext : pMultiValuedBean.getCalendars()) {
+          lValues.add(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(lNext.getTime()));
+        }
+        lRequestBuilder.setHeader("calendars", lValues);
+      }
+      else {
+        lRequestBuilder.setHeader("calendars", (String) null);
+      }
+      if (pMultiValuedBean.getUtilDates() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (java.util.Date lNext : pMultiValuedBean.getUtilDates()) {
+          lValues.add(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(lNext));
+        }
+        lRequestBuilder.setHeader("utilDates", lValues);
+      }
+      else {
+        lRequestBuilder.setHeader("utilDates", (String) null);
+      }
+      if (pMultiValuedBean.getSqlTimestamps() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (Timestamp lNext : pMultiValuedBean.getSqlTimestamps()) {
+          lValues.add(lNext.toString());
+        }
+        lRequestBuilder.setHeader("sqlTimestamps", lValues);
+      }
+      else {
+        lRequestBuilder.setHeader("sqlTimestamps", (String) null);
       }
     }
     // Execute request and return result.
@@ -1364,9 +1459,9 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       lRequestBuilder.setHeader("doubles", (String) null);
     }
     if (pCodes != null) {
-      List<String> lValues = new ArrayList<String>();
+      List<Object> lValues = new ArrayList<Object>();
       for (StringCode lNext : pCodes) {
-        lValues.add(lNext.getCode().toString());
+        lValues.add(lNext.getCode());
       }
       lRequestBuilder.setHeader("codes", lValues);
     }
@@ -1380,7 +1475,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       lRequestBuilder.setHeader("startDate", (String) null);
     }
     if (pTimestamps != null) {
-      List<String> lValues = new ArrayList<String>();
+      List<Object> lValues = new ArrayList<Object>();
       for (OffsetDateTime lNext : pTimestamps) {
         lValues.add(DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lNext));
       }
@@ -1390,7 +1485,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       lRequestBuilder.setHeader("timestamps", (String) null);
     }
     if (pTimes != null) {
-      List<String> lValues = new ArrayList<String>();
+      List<Object> lValues = new ArrayList<Object>();
       for (OffsetTime lNext : pTimes) {
         lValues.add(DateTimeFormatter.ISO_OFFSET_TIME.format(lNext));
       }

@@ -24,11 +24,10 @@ public class SoftLinkDeserializer extends JsonDeserializer<SoftLink> {
   public SoftLink deserialize( JsonParser pParser, DeserializationContext pContext ) throws IOException {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
-    // We expect that data types are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
       return SoftLink.builder().setOpenID(lNode.asText()).build();
     }
-    // Node is not a TextNode
+    // Node is not of expected type.
     else {
       throw new JEAFSystemException(JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION, SoftLink.class.getName(),
           lNode.toString(), lNode.getClass().getName());

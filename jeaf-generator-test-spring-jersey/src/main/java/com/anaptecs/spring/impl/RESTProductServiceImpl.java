@@ -6,15 +6,19 @@
 package com.anaptecs.spring.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.math.BigDecimal;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -22,6 +26,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.SortedSet;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -148,21 +153,70 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
-      Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate ) {
+      Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate, Set<Calendar> pCalendars ) {
+
+    if (pPath.equals("2")) {
+      assertEquals("2022-03-17T13:22:12.453+01:00", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(
+          pCalendar.getTime()));
+      assertEquals("2022-03-17", pLocalStartDate.toString());
+      assertEquals("2022-03-17T13:22:12.453", pLocalStartTimestamp.toString());
+      assertEquals("13:22:12.453", pLocalStartTime.toString());
+      assertEquals("2022-03-17T13:22:12.453+01:00", pStartTimestamp.toString());
+      assertEquals("13:22:12.453+01:00", pStartTime.toString());
+      assertEquals("2022-03-17", pSQLDate.toString());
+      assertEquals("13:22:12", pSQLTime.toString());
+      assertEquals("2022-03-17 13:22:12.453", pSQLTimestamp.toString());
+      assertNull(pUtilDate);
+    }
+    else {
+      fail("Invalid path");
+    }
   }
 
   @Override
   public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
+    if (pPath.equals("1")) {
+      assertEquals("2022-03-17T13:22:12.453+01:00", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(
+          pQueryParams.getCalendar().getTime()));
+      assertEquals("2022-03-17", pQueryParams.getLocalDate().toString());
+      assertEquals("2022-03-17T13:22:12.453", pQueryParams.getLocalDateTime().toString());
+      assertEquals("13:22:12.453", pQueryParams.getLocalTime().toString());
+      assertEquals("2022-03-17T13:22:12.453+01:00", pQueryParams.getOffsetDateTime().toString());
+      assertEquals("13:22:12.453+01:00", pQueryParams.getOffsetTime().toString());
+      assertEquals("2022-03-17", pQueryParams.getSqlDate().toString());
+      assertEquals("13:22:12", pQueryParams.getSqlTime().toString());
+      assertEquals("2022-03-17 13:22:12.453", pQueryParams.getSqlTimestamp().toString());
+      assertNull(pQueryParams.getUtilDate());
+    }
+    else {
+      fail("Invalid path");
+    }
   }
 
   @Override
   public void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar, Date pUtilDate,
-      Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate ) {
+      Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate, Set<Date> pUtilDates ) {
   }
 
   @Override
   public void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
+    if (pPath.equals("1")) {
+      assertEquals("2022-03-17T13:22:12.453+01:00", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(
+          pHeaderParams.getCalendar().getTime()));
+      assertEquals("2022-03-17", pHeaderParams.getLocalDate().toString());
+      assertEquals("2022-03-17T13:22:12.453", pHeaderParams.getLocalDateTime().toString());
+      assertEquals("13:22:12.453", pHeaderParams.getLocalTime().toString());
+      assertEquals("2022-03-17T13:22:12.453+01:00", pHeaderParams.getOffsetDateTime().toString());
+      assertEquals("13:22:12.453+01:00", pHeaderParams.getOffsetTime().toString());
+      assertEquals("2022-03-17", pHeaderParams.getSqlDate().toString());
+      assertEquals("13:22:12", pHeaderParams.getSqlTime().toString());
+      assertEquals("2022-03-17 13:22:12.453", pHeaderParams.getSqlTimestamp().toString());
+      assertNull(pHeaderParams.getUtilDate());
+    }
+    else {
+      fail("Invalid path");
+    }
   }
 
   @Override
@@ -240,13 +294,24 @@ public class RESTProductServiceImpl implements RESTProductService {
 
   @Override
   public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
-      List<BookingID> pBookingIDs ) {
+      List<BookingID> pBookingIDs, List<OffsetDateTime> pTimestamps, SortedSet<LocalDate> pLocalDates ) {
     return null;
   }
 
   @Override
   public String testMulitvaluedDataTypeAsBeanQueryParam( DataTypesQueryBean pQueryBean ) {
-    return null;
+    String lResult = "";
+    for (IntegerCodeType lNext : pQueryBean.getCodes()) {
+      lResult = lResult + lNext.getCode() + ".";
+    }
+    for (LongCode lNext : pQueryBean.getLongCodes()) {
+      lResult = lResult + lNext.getCode() + "_";
+    }
+    for (DoubleCode lNext : pQueryBean.getDoubleCodes()) {
+      lResult = lResult + lNext.getCode() + "_";
+    }
+    return lResult + pQueryBean.getOffsetDateTime() + "_" + pQueryBean.getLocalDateTime() + "_" + pQueryBean
+        .getLocalTime() + "_" + pQueryBean.getOffsetTime() + "_" + pQueryBean.getTimes();
   }
 
   @Override
@@ -259,14 +324,27 @@ public class RESTProductServiceImpl implements RESTProductService {
     for (StringCode lNext : pMultiValuedBean.getStringCodeList()) {
       lStringCodeList = lStringCodeList + "-" + lNext.getCode();
     }
+
+    String lDates = "";
+    if (pMultiValuedBean.getDates() != null) {
+      for (LocalDate lNext : pMultiValuedBean.getDates()) {
+        lDates = lDates + DateTimeFormatter.ISO_DATE.format(lNext) + ",";
+      }
+    }
     return Arrays.toString(pMultiValuedBean.getNames()) + "_" + Arrays.toString(pMultiValuedBean.getInts()) + "_"
         + Arrays.toString(pMultiValuedBean.getDoubles()) + "_"
-        + lCodes + "_" + lStringCodeList;
+        + lCodes + "_" + lStringCodeList + "_" + pMultiValuedBean.getStartDate() + "_" + lDates;
   }
 
   @Override
   public String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles,
       Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes ) {
-    return null;
+    String lCodes = "";
+    for (StringCode lNext : pCodes) {
+      lCodes = lCodes + "-" + lNext.getCode();
+    }
+
+    return pNames.toString() + "_" + Arrays.toString(pInts) + "_"
+        + pDoubles.toString() + "_" + lCodes + "_" + pTimestamps.toString() + "_" + pTimes.toString();
   }
 }

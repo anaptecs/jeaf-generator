@@ -94,10 +94,15 @@
 
 		<dependency>
 			<groupId>com.anaptecs.jeaf.x-fun</groupId>
+			<artifactId>jeaf-x-fun-api</artifactId>
+			<version>${jeaf.x-fun.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.x-fun</groupId>
 			<artifactId>jeaf-x-fun-default-runtime</artifactId>
 			<version>${jeaf.x-fun.impl.version}</version>
 			<type>pom</type>
-			<scope>runtime</scope>
 		</dependency>
 
 		<!-- Dependency on JEAF Workload Management is only required for test purposes -->
@@ -182,6 +187,7 @@
 					<generateServiceInterfaces>true</generateServiceInterfaces>
 					<generatePOJOs>true</generatePOJOs>
 					<generatePublicObjectView>false</generatePublicObjectView>
+					<generateValueOfForOpenAPIDataTypes>true</generateValueOfForOpenAPIDataTypes>
 					<generateJSONSerializers>true</generateJSONSerializers>
 					<generateJacksonAnnotations>true</generateJacksonAnnotations>
 					<enableDetailedToStringMethod>true</enableDetailedToStringMethod>

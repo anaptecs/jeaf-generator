@@ -8,6 +8,9 @@ package com.anaptecs.spring.test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
@@ -487,6 +490,157 @@ public class SpringJerseyRESTControllerTest {
 
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
     assertEquals("Something", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
+    assertEquals(200, lResponse.getCode());
+  }
+
+  @Test
+  void testMulitvaluedDataTypeAsBeanQueryParam( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri()
+        + "/rest-products/testMulitvaluedDataTypeAsBeanQueryParam");
+    lRequest.addParameter("codes", "1");
+    lRequest.addParameter("codes", "4");
+    lRequest.addParameter("codes", "2");
+    lRequest.addParameter("longCodes", String.valueOf(Long.MAX_VALUE));
+    lRequest.addParameter("doubleCodes", "3.1415");
+    lRequest.addParameter("doubleCodes", "47.11");
+    lRequest.addParameter("offsetDateTime", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addParameter("offsetTime", "13:22:12.453+01:00");
+    lRequest.addParameter("localDateTime", "2022-03-17T13:22:12.453");
+    lRequest.addParameter("localTime", "13:22:12.453");
+    lRequest.addParameter("timestamps", "2022-03-17T13:22:12.453");
+    lRequest.addParameter("timestamps", "2022-03-17T14:22:12.453");
+    lRequest.addParameter("times", "13:22:12.453+01:00");
+    lRequest.addParameter("times", "14:22:12.453+01:00");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals(200, lResponse.getCode());
+    assertEquals(
+        "1.4.2.9223372036854775807_3.1415_47.11_2022-03-17T13:22:12.453+01:00_2022-03-17T13:22:12.453_13:22:12.453_13:22:12.453+01:00_[14:22:12.453+01:00, 13:22:12.453+01:00]",
+        Tools.getStreamTools().getStreamContentAsString(lResponse
+            .getEntity()
+            .getContent()));
+    assertEquals(200, lResponse.getCode());
+  }
+
+  @Test
+  void testMultiValuedHeaderFieldsInBeanParam( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri()
+        + "/rest-products/testMultiValuedHeaderFieldsInBeanParam");
+    lRequest.addHeader("names", "Hello");
+    lRequest.addHeader("names", "World!");
+
+    lRequest.addHeader("ints", "5");
+    lRequest.addHeader("ints", "2");
+    lRequest.addHeader("ints", "3");
+    lRequest.addHeader("ints", "4");
+    lRequest.addHeader("ints", "1");
+
+    lRequest.addHeader("doubles", "3.1415");
+    lRequest.addHeader("doubles", "47.11");
+
+    lRequest.addHeader("codes", "StringCode1");
+    lRequest.addHeader("codes", "StringCode2");
+
+    lRequest.addHeader("stringCodeList", "StringCode3");
+    lRequest.addHeader("stringCodeList", "StringCode4");
+
+    lRequest.addHeader("startDate", DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 24)));
+
+    lRequest.addHeader("dates", DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 24)));
+    lRequest.addHeader("dates", DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 31)));
+
+    lRequest.addHeader("timestamps", "2022-03-17T13:22:12.453");
+    lRequest.addHeader("times", "13:22:12.453+01:00");
+    lRequest.addHeader("times", "14:22:12.453+01:00");
+
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals(
+        "[Hello, World!]_[5, 2, 3, 4, 1]_[3.1415, 47.11]_-StringCode1-StringCode2_-StringCode3-StringCode4_2022-12-24_2022-12-24,2022-12-31,",
+        Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
+    assertEquals(200, lResponse.getCode());
+  }
+
+  @Test
+  void testMultiValuedHeaderFields( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri()
+        + "/rest-products/testMultiValuedHeaderFields");
+    lRequest.addHeader("names", "Hello");
+    lRequest.addHeader("names", "World!");
+    lRequest.addHeader("ints", "1");
+    lRequest.addHeader("ints", "2");
+    lRequest.addHeader("ints", "3");
+    lRequest.addHeader("ints", "4");
+    lRequest.addHeader("ints", "5");
+    lRequest.addHeader("doubles", "3.1415");
+    lRequest.addHeader("doubles", "47.11");
+    lRequest.addHeader("codes", "StringCode1");
+    lRequest.addHeader("codes", "StringCode2");
+    lRequest.addHeader("stringCodeList", "StringCode3");
+    lRequest.addHeader("stringCodeList", "StringCode4");
+    lRequest.addHeader("timestamps", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addHeader("times", "13:22:12.453+01:00");
+    lRequest.addHeader("times", "14:22:12.453+01:00");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals(200, lResponse.getCode());
+    assertEquals(
+        "[Hello, World!]_[1, 2, 3, 4, 5]_[47.11, 3.1415]_-StringCode1-StringCode2_[2022-03-17T13:22:12.453+01:00]_[14:22:12.453+01:00, 13:22:12.453+01:00]",
+        Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
+  }
+
+  @Test
+  void testDateQueryParams( ) throws IOException, ParseException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri()
+        + "/rest-products/test-date-query-params/2");
+    lRequest.addParameter("startTimestamp", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addParameter("startTime", "13:22:12.453+01:00");
+    lRequest.addParameter("localStartTimestamp", "2022-03-17T13:22:12.453");
+    lRequest.addParameter("localStartTime", "13:22:12.453");
+    lRequest.addParameter("localStartDate", "2022-03-17");
+    lRequest.addParameter("calendar", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addParameter("sqlTimestamp", "2022-03-17 13:22:12.453");
+    lRequest.addParameter("sqlTime", "13:22:12");
+    lRequest.addParameter("sqlDate", "2022-03-17");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals(200, lResponse.getCode());
+  }
+
+  @Test
+  void testDateQueryParamsBean( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri()
+        + "/rest-products/test-date-query-params-beans/1");
+    lRequest.addParameter("offsetDateTime", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addParameter("offsetTime", "13:22:12.453+01:00");
+    lRequest.addParameter("localDateTime", "2022-03-17T13:22:12.453");
+    lRequest.addParameter("localTime", "13:22:12.453");
+    lRequest.addParameter("localDate", "2022-03-17");
+    lRequest.addParameter("calendar", "2022-03-17T13:22:12.453+01:00");
+    // lRequest.addParameter("utilDate", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addParameter("sqlTimestamp", "2022-03-17 13:22:12.453");
+    lRequest.addParameter("sqlTime", "13:22:12");
+    lRequest.addParameter("sqlDate", "2022-03-17");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals(200, lResponse.getCode());
+  }
+
+  @Test
+  void testDateHeaderParamsBean( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri()
+        + "/rest-products/test-date-header-params-beans/1");
+    lRequest.addHeader("Offset-Date-Time", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addHeader("Offset-Time", "13:22:12.453+01:00");
+    lRequest.addHeader("Local-Date-Time", "2022-03-17T13:22:12.453");
+    lRequest.addHeader("Local-Time", "13:22:12.453");
+    lRequest.addHeader("Local-Date", "2022-03-17");
+    lRequest.addHeader("Calendar", "2022-03-17T13:22:12.453+01:00");
+    lRequest.addHeader("SQL-Timestamp", "2022-03-17 13:22:12.453");
+    lRequest.addHeader("SQL-Time", "13:22:12");
+    lRequest.addHeader("SQL-Date", "2022-03-17");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
     assertEquals(200, lResponse.getCode());
   }
 

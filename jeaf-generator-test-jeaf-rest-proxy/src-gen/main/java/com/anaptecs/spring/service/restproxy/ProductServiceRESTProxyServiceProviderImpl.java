@@ -367,7 +367,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lPathBuilder.append("deprecated/params");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
-    lRequestBuilder.setHeader("param1", String.valueOf(pParam1));
+    lRequestBuilder.setHeader("param1", pParam1);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);

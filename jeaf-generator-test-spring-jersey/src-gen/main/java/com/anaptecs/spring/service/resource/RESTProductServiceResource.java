@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedSet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.BeanParam;
@@ -316,10 +317,10 @@ public class RESTProductServiceResource {
       @QueryParam("localStartTime") LocalTime pLocalStartTime, @QueryParam("localStartDate") LocalDate pLocalStartDate,
       @QueryParam("calendar") Calendar pCalendar, @QueryParam("utilDate") java.util.Date pUtilDate,
       @QueryParam("sqlTimestamp") Timestamp pSQLTimestamp, @QueryParam("sqlTime") Time pSQLTime,
-      @QueryParam("sqlDate") Date pSQLDate ) {
+      @QueryParam("sqlDate") Date pSQLDate, @QueryParam("calendars") Set<Calendar> pCalendars ) {
     // Delegate request to service.
     rESTProductService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
-        pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
+        pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate, pCalendars);
     return Response.status(Response.Status.OK).build();
   }
 
@@ -346,10 +347,10 @@ public class RESTProductServiceResource {
       @HeaderParam("Local-Time") LocalTime pLocalTime, @HeaderParam("Local-Date") LocalDate pLocalDate,
       @HeaderParam("Calendar") Calendar pCalendar, @HeaderParam("Util-Date") java.util.Date pUtilDate,
       @HeaderParam("SQL-Timestamp") Timestamp pSQLTimestamp, @HeaderParam("SQL-Time") Time pSQLTime,
-      @HeaderParam("SQL-Date") Date pSQLDate ) {
+      @HeaderParam("SQL-Date") Date pSQLDate, @HeaderParam("util-dates") Set<java.util.Date> pUtilDates ) {
     // Delegate request to service.
     rESTProductService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate,
-        pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
+        pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate, pUtilDates);
     return Response.status(Response.Status.OK).build();
   }
 
@@ -521,8 +522,9 @@ public class RESTProductServiceResource {
   @Path("testMulitvaluedDataTypeAsQueryParam")
   @GET
   public Response testMulitvaluedDataTypeAsQueryParam( @QueryParam("codes") int[] pCodesAsBasicType,
-      @QueryParam("longCodes") Long[] pLongCodesAsBasicType,
-      @QueryParam("bookingIDs") String[] pBookingIDsAsBasicType ) {
+      @QueryParam("longCodes") Long[] pLongCodesAsBasicType, @QueryParam("bookingIDs") String[] pBookingIDsAsBasicType,
+      @QueryParam("timestamps") List<OffsetDateTime> pTimestamps,
+      @QueryParam("localDates") SortedSet<LocalDate> pLocalDates ) {
     // Convert basic type parameters into "real" objects.
     List<IntegerCodeType> pCodes;
     if (pCodesAsBasicType != null) {
@@ -555,7 +557,8 @@ public class RESTProductServiceResource {
       pBookingIDs = Collections.emptyList();
     }
     // Delegate request to service.
-    String lResult = rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes, pBookingIDs);
+    String lResult = rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes, pBookingIDs,
+        pTimestamps, pLocalDates);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 

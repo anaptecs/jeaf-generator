@@ -22,12 +22,11 @@ public class SoftLinkDeserializer extends JsonDeserializer<SoftLink> {
   public SoftLink deserialize( JsonParser pParser, DeserializationContext pContext ) throws IOException {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
-    // We expect that data types are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
       // Convert public string representation of SoftLink into real object.
       return SoftLink.deserialize(lNode.asText());
     }
-    // Node is not a TextNode
+    // Node is not of expected type.
     else {
       throw new IOException(
           "Unable to deserialize object of type SoftLink. Expected node type that matches to data type but received other JSON content. Current JSON node ''"

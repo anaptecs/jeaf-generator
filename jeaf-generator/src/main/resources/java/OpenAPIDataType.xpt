@@ -271,11 +271,18 @@
 				    // Write value directly to JSON and avoid nesting object structures
 				    «IF attr.type.isStringType()»
 				    pGenerator.writeString(pObject.«attr.asGetter()»());
+				    «ELSE»«IF attr.type.isCharacterType()»
+				    	«IF attr.type.isPrimitiveType()»
+				    		pGenerator.writeString(Character.toString(pObject.«attr.asGetter()»()));
+				    	«ELSE»
+				    		pGenerator.writeString(pObject.«attr.asGetter()»().toString());
+				    	«ENDIF»
 				    «ELSE»«IF attr.type.isBooleanType()»
 				    pGenerator.writeBoolean(pObject.«attr.asGetter()»());
 				    «ELSE»
 				    pGenerator.writeNumber(pObject.«attr.asGetter()»());
-				    «ENDIF»		    
+				    «ENDIF»   
+				    «ENDIF»
 				    «ENDIF»
 				  «ENDLET»
 			  «ENDIF»
@@ -347,7 +354,6 @@
 			// Parse JSON content.
 			com.fasterxml.jackson.databind.JsonNode lNode = pParser.getCodec().readTree(pParser);
 		
-		    // We expect that data types are always serialized as plain text which will result in a TextNode.
 		    «IF this.isCompositeDataType()»
 		    	if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
 		    	return «this.fqn()».builder().set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»(lNode.asText()).build();
@@ -373,6 +379,10 @@
 					    «IF attr.type.isStringType()»
 					    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
 				        return «this.fqn()».builder().«attr.asSetter()»(lNode.asText()).build();
+				        «ENDIF»
+					    «IF attr.type.isCharacterType()»
+					    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
+				        return «this.fqn()».builder().«attr.asSetter()»(lNode.asText().charAt(0)).build();
 				        «ENDIF»
 				        «IF attr.type.isByteType()»
 					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
@@ -418,7 +428,7 @@
 		    	«ENDIF»
 		    «ENDIF»
 		    }
-		    // Node is not a TextNode
+		    // Node is not of expected type.
 		    else {
 		      «IF isTargetRuntimeJEAF()»
 		      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.json.api.JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION, «this.fqn()».class.getName(), lNode.toString(), lNode.getClass().getName());

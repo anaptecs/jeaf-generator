@@ -52,7 +52,7 @@
 		«EXPAND java::Helper::GenerateCustomHeadersField»
 					
 		/**
-		 * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal" object creation builder should be used instead.
+		 * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal" object creation builder should be used instead.
 		 */
 		protected «name»( ) {
 		  «IF needsToImplementIdentifiable() == true»
@@ -92,6 +92,7 @@
 		  
 		«REM»Generate builder«ENDREM»
 		«EXPAND java::Builder::StaticBuilderMethods FOR this»
+		«EXPAND java::Helper::GenerateValueOfForOpenAPIDataType FOR this»
 		«EXPAND java::Builder::GenerateBuilder (this.getObjectIDClassName())»
 		
 		«IF this.isCompositeDataType()»
@@ -164,7 +165,7 @@
 		«EXPAND java::Helper::GenerateCustomHeadersField»
 					
 		/**
-		 * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal" object creation builder should be used instead.
+		 * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal" object creation builder should be used instead.
 		 */
 		protected «name»Base( ) {
 		  «IF needsToImplementIdentifiable() == true»
@@ -256,7 +257,7 @@
 	    private static final long serialVersionUID = 1L;
 	    
 		/**
-		 * Default constructor is only intended to be used for deserialization as many frameworks required that. For "normal" object creation builder should be used instead.
+		 * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal" object creation builder should be used instead.
 		 */
 		protected «name»( ) {
 		}
@@ -269,6 +270,7 @@
 		}
 		  
 		«EXPAND java::Builder::StaticBuilderMethods FOR this»
+		«EXPAND java::Helper::GenerateValueOfForOpenAPIDataType FOR this»
 		«EXPAND java::Builder::GenerateBuilderImpl»
 
 		«EXPAND jeaf::JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperation»
