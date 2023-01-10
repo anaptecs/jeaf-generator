@@ -36,7 +36,9 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   ChildAAAllOf.JSON_PROPERTY_CHILD_A_A_ATTRIBUTE,
   ChildAAAllOf.JSON_PROPERTY_SIZED_ARRAY,
-  ChildAAAllOf.JSON_PROPERTY_REQUIRED_ARRAY
+  ChildAAAllOf.JSON_PROPERTY_REQUIRED_ARRAY,
+  ChildAAAllOf.JSON_PROPERTY_BIG_INTEGER_CODE,
+  ChildAAAllOf.JSON_PROPERTY_INTEGER_CODE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ChildAAAllOf {
@@ -48,6 +50,12 @@ public class ChildAAAllOf {
 
   public static final String JSON_PROPERTY_REQUIRED_ARRAY = "requiredArray";
   private List<String> requiredArray = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_BIG_INTEGER_CODE = "bigIntegerCode";
+  private Long bigIntegerCode;
+
+  public static final String JSON_PROPERTY_INTEGER_CODE = "integerCode";
+  private Integer integerCode;
 
   public ChildAAAllOf() { 
   }
@@ -143,6 +151,58 @@ public class ChildAAAllOf {
   }
 
 
+  public ChildAAAllOf bigIntegerCode(Long bigIntegerCode) {
+    this.bigIntegerCode = bigIntegerCode;
+    return this;
+  }
+
+   /**
+   * Get bigIntegerCode
+   * @return bigIntegerCode
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_BIG_INTEGER_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Long getBigIntegerCode() {
+    return bigIntegerCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BIG_INTEGER_CODE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setBigIntegerCode(Long bigIntegerCode) {
+    this.bigIntegerCode = bigIntegerCode;
+  }
+
+
+  public ChildAAAllOf integerCode(Integer integerCode) {
+    this.integerCode = integerCode;
+    return this;
+  }
+
+   /**
+   * Get integerCode
+   * @return integerCode
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_INTEGER_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Integer getIntegerCode() {
+    return integerCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INTEGER_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIntegerCode(Integer integerCode) {
+    this.integerCode = integerCode;
+  }
+
+
   /**
    * Return true if this ChildAA_allOf object is equal to o.
    */
@@ -157,12 +217,14 @@ public class ChildAAAllOf {
     ChildAAAllOf childAAAllOf = (ChildAAAllOf) o;
     return Objects.equals(this.childAAAttribute, childAAAllOf.childAAAttribute) &&
         Objects.equals(this.sizedArray, childAAAllOf.sizedArray) &&
-        Objects.equals(this.requiredArray, childAAAllOf.requiredArray);
+        Objects.equals(this.requiredArray, childAAAllOf.requiredArray) &&
+        Objects.equals(this.bigIntegerCode, childAAAllOf.bigIntegerCode) &&
+        Objects.equals(this.integerCode, childAAAllOf.integerCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(childAAAttribute, sizedArray, requiredArray);
+    return Objects.hash(childAAAttribute, sizedArray, requiredArray, bigIntegerCode, integerCode);
   }
 
   @Override
@@ -172,6 +234,8 @@ public class ChildAAAllOf {
     sb.append("    childAAAttribute: ").append(toIndentedString(childAAAttribute)).append("\n");
     sb.append("    sizedArray: ").append(toIndentedString(sizedArray)).append("\n");
     sb.append("    requiredArray: ").append(toIndentedString(requiredArray)).append("\n");
+    sb.append("    bigIntegerCode: ").append(toIndentedString(bigIntegerCode)).append("\n");
+    sb.append("    integerCode: ").append(toIndentedString(integerCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

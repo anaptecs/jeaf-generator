@@ -332,6 +332,7 @@ components:
           required:
             - childAAAttribute
             - requiredArray
+            - bigIntegerCode
           properties:
             childAAAttribute:
               description: >-
@@ -354,6 +355,12 @@ components:
                 type: string
               minItems: 1
               nullable: false
+            bigIntegerCode:
+              type: integer
+              format: int64
+              nullable: false
+            integerCode:
+              $ref: '#/components/schemas/IntegerCodeType'
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildB
     ChildB:

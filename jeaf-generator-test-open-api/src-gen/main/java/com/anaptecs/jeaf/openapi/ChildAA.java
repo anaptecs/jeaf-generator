@@ -36,6 +36,12 @@ public class ChildAA extends ChildA {
   @JsonProperty("requiredArray")
   private List<String> requiredArray = new ArrayList<>();
 
+  @JsonProperty("bigIntegerCode")
+  private Long bigIntegerCode = null;
+
+  @JsonProperty("integerCode")
+  private Integer integerCode = null;
+
   public ChildAA childAAAttribute(Integer childAAAttribute) {
     this.childAAAttribute = childAAAttribute;
     return this;
@@ -103,6 +109,42 @@ public class ChildAA extends ChildA {
     this.requiredArray = requiredArray;
   }
 
+  public ChildAA bigIntegerCode(Long bigIntegerCode) {
+    this.bigIntegerCode = bigIntegerCode;
+    return this;
+  }
+
+   /**
+   * Get bigIntegerCode
+   * @return bigIntegerCode
+  **/
+  @Schema(required = true, description = "")
+  public Long getBigIntegerCode() {
+    return bigIntegerCode;
+  }
+
+  public void setBigIntegerCode(Long bigIntegerCode) {
+    this.bigIntegerCode = bigIntegerCode;
+  }
+
+  public ChildAA integerCode(Integer integerCode) {
+    this.integerCode = integerCode;
+    return this;
+  }
+
+   /**
+   * Get integerCode
+   * @return integerCode
+  **/
+  @Schema(description = "")
+  public Integer getIntegerCode() {
+    return integerCode;
+  }
+
+  public void setIntegerCode(Integer integerCode) {
+    this.integerCode = integerCode;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -116,12 +158,14 @@ public class ChildAA extends ChildA {
     return Objects.equals(this.childAAAttribute, childAA.childAAAttribute) &&
         Objects.equals(this.sizedArray, childAA.sizedArray) &&
         Objects.equals(this.requiredArray, childAA.requiredArray) &&
+        Objects.equals(this.bigIntegerCode, childAA.bigIntegerCode) &&
+        Objects.equals(this.integerCode, childAA.integerCode) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(childAAAttribute, sizedArray, requiredArray, super.hashCode());
+    return Objects.hash(childAAAttribute, sizedArray, requiredArray, bigIntegerCode, integerCode, super.hashCode());
   }
 
 
@@ -133,6 +177,8 @@ public class ChildAA extends ChildA {
     sb.append("    childAAAttribute: ").append(toIndentedString(childAAAttribute)).append("\n");
     sb.append("    sizedArray: ").append(toIndentedString(sizedArray)).append("\n");
     sb.append("    requiredArray: ").append(toIndentedString(requiredArray)).append("\n");
+    sb.append("    bigIntegerCode: ").append(toIndentedString(bigIntegerCode)).append("\n");
+    sb.append("    integerCode: ").append(toIndentedString(integerCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

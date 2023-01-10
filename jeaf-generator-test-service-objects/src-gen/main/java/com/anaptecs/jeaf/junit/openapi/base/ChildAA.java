@@ -37,6 +37,16 @@ public class ChildAA extends ChildA {
   public static final String REQUIREDARRAY = "requiredArray";
 
   /**
+   * Constant for the name of attribute "bigIntegerCode".
+   */
+  public static final String BIGINTEGERCODE = "bigIntegerCode";
+
+  /**
+   * Constant for the name of attribute "integerCode".
+   */
+  public static final String INTEGERCODE = "integerCode";
+
+  /**
    * Multi line docs
    */
   private byte childAAAttribute;
@@ -51,6 +61,16 @@ public class ChildAA extends ChildA {
    * 
    */
   private String[] requiredArray;
+
+  /**
+   * 
+   */
+  private BigIntegerCode bigIntegerCode;
+
+  /**
+   * 
+   */
+  private IntegerCodeType integerCode;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -71,6 +91,8 @@ public class ChildAA extends ChildA {
     childAAAttribute = pBuilder.childAAAttribute;
     sizedArray = pBuilder.sizedArray;
     requiredArray = pBuilder.requiredArray;
+    bigIntegerCode = pBuilder.bigIntegerCode;
+    integerCode = pBuilder.integerCode;
   }
 
   /**
@@ -115,6 +137,16 @@ public class ChildAA extends ChildA {
     private String[] requiredArray;
 
     /**
+     * 
+     */
+    private BigIntegerCode bigIntegerCode;
+
+    /**
+     * 
+     */
+    private IntegerCodeType integerCode;
+
+    /**
      * Use {@link ChildAA#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -131,6 +163,8 @@ public class ChildAA extends ChildA {
         childAAAttribute = pObject.childAAAttribute;
         sizedArray = pObject.sizedArray;
         requiredArray = pObject.requiredArray;
+        bigIntegerCode = pObject.bigIntegerCode;
+        integerCode = pObject.integerCode;
       }
     }
 
@@ -188,6 +222,27 @@ public class ChildAA extends ChildA {
       else {
         requiredArray = null;
       }
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "bigIntegerCode".
+     * 
+     * @param pBigIntegerCode Value to which the attribute "bigIntegerCode" should be set.
+     */
+    public Builder setBigIntegerCode( BigIntegerCode pBigIntegerCode ) {
+      // Assign value to attribute
+      bigIntegerCode = pBigIntegerCode;
+      return this;
+    }
+
+    /**
+     * Method sets the association "integerCode".
+     * 
+     * @param pIntegerCode IntegerCodeType to which the association "integerCode" should be set.
+     */
+    public Builder setIntegerCode( IntegerCodeType pIntegerCode ) {
+      integerCode = pIntegerCode;
       return this;
     }
 
@@ -304,6 +359,55 @@ public class ChildAA extends ChildA {
   }
 
   /**
+   * Method returns the attribute "bigIntegerCode".
+   * 
+   * 
+   * @return BigIntegerCode Value to which the attribute "bigIntegerCode" is set.
+   */
+  public BigIntegerCode getBigIntegerCode( ) {
+    return bigIntegerCode;
+  }
+
+  /**
+   * Method sets the attribute "bigIntegerCode".
+   * 
+   * 
+   * @param pBigIntegerCode Value to which the attribute "bigIntegerCode" should be set.
+   */
+  public void setBigIntegerCode( BigIntegerCode pBigIntegerCode ) {
+    // Assign value to attribute
+    bigIntegerCode = pBigIntegerCode;
+  }
+
+  /**
+   * Method returns the association "integerCode".
+   * 
+   *
+   * @return IntegerCodeType IntegerCodeType to which the association "integerCode" is set.
+   */
+  public IntegerCodeType getIntegerCode( ) {
+    return integerCode;
+  }
+
+  /**
+   * Method sets the association "integerCode".
+   * 
+   * 
+   * @param pIntegerCode IntegerCodeType to which the association "integerCode" should be set.
+   */
+  public void setIntegerCode( IntegerCodeType pIntegerCode ) {
+    integerCode = pIntegerCode;
+  }
+
+  /**
+   * Method unsets the association "integerCode".
+   * 
+   */
+  public final void unsetIntegerCode( ) {
+    integerCode = null;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -314,6 +418,10 @@ public class ChildAA extends ChildA {
     lBuilder.append(pIndent);
     lBuilder.append("childAAAttribute: ");
     lBuilder.append(childAAAttribute);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("bigIntegerCode: ");
+    lBuilder.append(bigIntegerCode);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
