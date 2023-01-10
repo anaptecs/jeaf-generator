@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.Min;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -31,6 +32,7 @@ public class IntegerCode implements ServiceObject {
   /**
    * 
    */
+  @Min(value = 1234)
   private Integer code;
 
   /**
@@ -80,6 +82,7 @@ public class IntegerCode implements ServiceObject {
     /**
      * 
      */
+    @Min(value = 1234)
     private Integer code;
 
     /**

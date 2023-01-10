@@ -10,6 +10,7 @@ import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -30,6 +31,7 @@ public class BigIntegerCode implements ServiceObject {
   /**
    * 
    */
+  @Max(value = 4711)
   @NotNull
   private BigInteger code;
 
@@ -80,6 +82,7 @@ public class BigIntegerCode implements ServiceObject {
     /**
      * 
      */
+    @Max(value = 4711)
     private BigInteger code;
 
     /**

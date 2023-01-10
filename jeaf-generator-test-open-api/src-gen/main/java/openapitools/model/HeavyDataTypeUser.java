@@ -156,6 +156,7 @@ public class HeavyDataTypeUser {
 
    /**
    * Get integerCode
+   * minimum: 1234
    * @return integerCode
   **/
   @javax.annotation.Nonnull
@@ -234,6 +235,7 @@ public class HeavyDataTypeUser {
 
    /**
    * Get bigInegerCode
+   * maximum: 4711
    * @return bigInegerCode
   **/
   @javax.annotation.Nonnull
