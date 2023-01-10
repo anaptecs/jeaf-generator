@@ -44,6 +44,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    * 
    */
   @Size(min = 1)
+  @NotNull
   private Set<ShortCodeType> shortCodeTypeAssociation;
 
   /**

@@ -51,6 +51,7 @@ public class WeirdParent implements ServiceObject {
    * 
    */
   @Size(min = 1)
+  @NotNull
   private Set<ComplexBookingID> complexBookings;
 
   /**

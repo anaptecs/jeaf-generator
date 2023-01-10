@@ -60,6 +60,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * 
    */
   @Size(min = 12, max = Integer.MAX_VALUE)
+  @NotNull
   private String name;
 
   /**
@@ -84,12 +85,14 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    * 
    */
   @Size(min = 7, max = 42)
+  @NotNull
   private Set<CurrencyCode> supportedCurrencies;
 
   /**
    * 
    */
   @Size(min = 1)
+  @NotNull
   private Set<ProductCode> productCodes;
 
   /**
