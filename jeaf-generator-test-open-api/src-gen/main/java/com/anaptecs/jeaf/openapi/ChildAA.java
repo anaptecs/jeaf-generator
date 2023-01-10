@@ -42,6 +42,9 @@ public class ChildAA extends ChildA {
   @JsonProperty("integerCode")
   private Integer integerCode = null;
 
+  @JsonProperty("codes")
+  private List<Integer> codes = null;
+
   public ChildAA childAAAttribute(Integer childAAAttribute) {
     this.childAAAttribute = childAAAttribute;
     return this;
@@ -116,6 +119,7 @@ public class ChildAA extends ChildA {
 
    /**
    * Get bigIntegerCode
+   * maximum: 4711
    * @return bigIntegerCode
   **/
   @Schema(required = true, description = "")
@@ -145,6 +149,32 @@ public class ChildAA extends ChildA {
     this.integerCode = integerCode;
   }
 
+  public ChildAA codes(List<Integer> codes) {
+    this.codes = codes;
+    return this;
+  }
+
+  public ChildAA addCodesItem(Integer codesItem) {
+    if (this.codes == null) {
+      this.codes = new ArrayList<>();
+    }
+    this.codes.add(codesItem);
+    return this;
+  }
+
+   /**
+   * Get codes
+   * @return codes
+  **/
+  @Schema(description = "")
+  public List<Integer> getCodes() {
+    return codes;
+  }
+
+  public void setCodes(List<Integer> codes) {
+    this.codes = codes;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -160,12 +190,13 @@ public class ChildAA extends ChildA {
         Objects.equals(this.requiredArray, childAA.requiredArray) &&
         Objects.equals(this.bigIntegerCode, childAA.bigIntegerCode) &&
         Objects.equals(this.integerCode, childAA.integerCode) &&
+        Objects.equals(this.codes, childAA.codes) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(childAAAttribute, sizedArray, requiredArray, bigIntegerCode, integerCode, super.hashCode());
+    return Objects.hash(childAAAttribute, sizedArray, requiredArray, bigIntegerCode, integerCode, codes, super.hashCode());
   }
 
 
@@ -179,6 +210,7 @@ public class ChildAA extends ChildA {
     sb.append("    requiredArray: ").append(toIndentedString(requiredArray)).append("\n");
     sb.append("    bigIntegerCode: ").append(toIndentedString(bigIntegerCode)).append("\n");
     sb.append("    integerCode: ").append(toIndentedString(integerCode)).append("\n");
+    sb.append("    codes: ").append(toIndentedString(codes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

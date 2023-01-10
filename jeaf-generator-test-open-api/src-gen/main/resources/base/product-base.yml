@@ -358,9 +358,16 @@ components:
             bigIntegerCode:
               type: integer
               format: int64
+              maximum: 4711
               nullable: false
             integerCode:
               $ref: '#/components/schemas/IntegerCodeType'
+            codes:
+              type: array
+              items:
+                type: integer
+                format: int32
+                minimum: 1234
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildB
     ChildB:
@@ -624,6 +631,7 @@ components:
         integerCode:
           type: integer
           format: int32
+          minimum: 1234
           nullable: false
         floatCode:
           type: number
@@ -636,6 +644,7 @@ components:
         bigInegerCode:
           type: integer
           format: int64
+          maximum: 4711
           nullable: false
         bigDecimalCode:
           type: number

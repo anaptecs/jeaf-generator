@@ -110,6 +110,7 @@ public class HeavyDataTypeUser {
 
    /**
    * Get integerCode
+   * minimum: 1234
    * @return integerCode
   **/
   @Schema(required = true, description = "")
@@ -164,6 +165,7 @@ public class HeavyDataTypeUser {
 
    /**
    * Get bigInegerCode
+   * maximum: 4711
    * @return bigInegerCode
   **/
   @Schema(required = true, description = "")

@@ -55,6 +55,11 @@ public class ChildAA extends ChildA {
   private IntegerCodeType integerCode;
 
   /**
+   * 
+   */
+  private IntegerCode[] codes;
+
+  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
@@ -75,6 +80,7 @@ public class ChildAA extends ChildA {
     requiredArray = pBuilder.requiredArray;
     bigIntegerCode = pBuilder.bigIntegerCode;
     integerCode = pBuilder.integerCode;
+    codes = pBuilder.codes;
   }
 
   /**
@@ -129,6 +135,11 @@ public class ChildAA extends ChildA {
     private IntegerCodeType integerCode;
 
     /**
+     * 
+     */
+    private IntegerCode[] codes;
+
+    /**
      * Use {@link ChildAA#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -147,6 +158,7 @@ public class ChildAA extends ChildA {
         requiredArray = pObject.requiredArray;
         bigIntegerCode = pObject.bigIntegerCode;
         integerCode = pObject.integerCode;
+        codes = pObject.codes;
       }
     }
 
@@ -223,6 +235,22 @@ public class ChildAA extends ChildA {
      */
     public Builder setIntegerCode( IntegerCodeType pIntegerCode ) {
       integerCode = pIntegerCode;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "codes".
+     * 
+     * @param pCodes Value to which the attribute "codes" should be set.
+     */
+    public Builder setCodes( IntegerCode[] pCodes ) {
+      // Assign value to attribute
+      if (pCodes != null) {
+        codes = pCodes;
+      }
+      else {
+        codes = null;
+      }
       return this;
     }
 
@@ -384,6 +412,39 @@ public class ChildAA extends ChildA {
   }
 
   /**
+   * Method returns the attribute "codes".
+   * 
+   * 
+   * @return IntegerCode Value to which the attribute "codes" is set.
+   */
+  public IntegerCode[] getCodes( ) {
+    IntegerCode[] lReturnValue;
+    if (codes != null) {
+      lReturnValue = codes;
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
+  }
+
+  /**
+   * Method sets the attribute "codes".
+   * 
+   * 
+   * @param pCodes Value to which the attribute "codes" should be set.
+   */
+  public void setCodes( IntegerCode[] pCodes ) {
+    // Assign value to attribute
+    if (pCodes != null) {
+      codes = pCodes;
+    }
+    else {
+      codes = null;
+    }
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -427,6 +488,15 @@ public class ChildAA extends ChildA {
       lBuilder.append(" null");
       lBuilder.append(System.lineSeparator());
     }
+    lBuilder.append(pIndent);
+    lBuilder.append("codes: ");
+    if (codes != null) {
+      lBuilder.append(Arrays.toString(codes));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

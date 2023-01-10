@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -29,6 +30,7 @@ public class IntegerCode implements ServiceObject {
   /**
    * 
    */
+  @Min(value = 1234)
   @NotNull
   private Integer code;
 
@@ -88,6 +90,7 @@ public class IntegerCode implements ServiceObject {
     /**
      * 
      */
+    @Min(value = 1234)
     private Integer code;
 
     /**

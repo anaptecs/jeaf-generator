@@ -33,7 +33,7 @@
           «IF attribute.defaultValue != null -»
 «indentation»          default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
           «ENDIF-»
-          «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»    
+          «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions(indentation + "    ") FOR attribute-»    
               «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
 «indentation»          deprecated: true
               «ENDIF-»
@@ -62,7 +62,7 @@
               «IF attribute.defaultValue != null -»
 «indentation»            default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
               «ENDIF-»
-            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR attribute-»
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions(indentation + "      ") FOR attribute-»
             «IF attribute.hasExample()-»
               «IF ((Example) attribute).exampleValue.length > 0-»
 «indentation»            example: «((Example) attribute).exampleValue»

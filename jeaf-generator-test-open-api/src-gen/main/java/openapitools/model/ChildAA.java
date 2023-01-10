@@ -44,7 +44,8 @@ import openapitools.JSON;
   ChildAA.JSON_PROPERTY_SIZED_ARRAY,
   ChildAA.JSON_PROPERTY_REQUIRED_ARRAY,
   ChildAA.JSON_PROPERTY_BIG_INTEGER_CODE,
-  ChildAA.JSON_PROPERTY_INTEGER_CODE
+  ChildAA.JSON_PROPERTY_INTEGER_CODE,
+  ChildAA.JSON_PROPERTY_CODES
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
@@ -64,6 +65,9 @@ public class ChildAA extends ChildA {
 
   public static final String JSON_PROPERTY_INTEGER_CODE = "integerCode";
   private Integer integerCode;
+
+  public static final String JSON_PROPERTY_CODES = "codes";
+  private List<Integer> codes = null;
 
   public ChildAA() { 
   }
@@ -166,6 +170,7 @@ public class ChildAA extends ChildA {
 
    /**
    * Get bigIntegerCode
+   * maximum: 4711
    * @return bigIntegerCode
   **/
   @javax.annotation.Nonnull
@@ -211,6 +216,40 @@ public class ChildAA extends ChildA {
   }
 
 
+  public ChildAA codes(List<Integer> codes) {
+    this.codes = codes;
+    return this;
+  }
+
+  public ChildAA addCodesItem(Integer codesItem) {
+    if (this.codes == null) {
+      this.codes = new ArrayList<>();
+    }
+    this.codes.add(codesItem);
+    return this;
+  }
+
+   /**
+   * Get codes
+   * @return codes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_CODES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Integer> getCodes() {
+    return codes;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CODES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCodes(List<Integer> codes) {
+    this.codes = codes;
+  }
+
+
   /**
    * Return true if this ChildAA object is equal to o.
    */
@@ -228,12 +267,13 @@ public class ChildAA extends ChildA {
         Objects.equals(this.requiredArray, childAA.requiredArray) &&
         Objects.equals(this.bigIntegerCode, childAA.bigIntegerCode) &&
         Objects.equals(this.integerCode, childAA.integerCode) &&
+        Objects.equals(this.codes, childAA.codes) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(childAAAttribute, sizedArray, requiredArray, bigIntegerCode, integerCode, super.hashCode());
+    return Objects.hash(childAAAttribute, sizedArray, requiredArray, bigIntegerCode, integerCode, codes, super.hashCode());
   }
 
   @Override
@@ -246,6 +286,7 @@ public class ChildAA extends ChildA {
     sb.append("    requiredArray: ").append(toIndentedString(requiredArray)).append("\n");
     sb.append("    bigIntegerCode: ").append(toIndentedString(bigIntegerCode)).append("\n");
     sb.append("    integerCode: ").append(toIndentedString(integerCode)).append("\n");
+    sb.append("    codes: ").append(toIndentedString(codes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

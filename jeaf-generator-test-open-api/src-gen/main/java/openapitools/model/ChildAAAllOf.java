@@ -38,7 +38,8 @@ import openapitools.JSON;
   ChildAAAllOf.JSON_PROPERTY_SIZED_ARRAY,
   ChildAAAllOf.JSON_PROPERTY_REQUIRED_ARRAY,
   ChildAAAllOf.JSON_PROPERTY_BIG_INTEGER_CODE,
-  ChildAAAllOf.JSON_PROPERTY_INTEGER_CODE
+  ChildAAAllOf.JSON_PROPERTY_INTEGER_CODE,
+  ChildAAAllOf.JSON_PROPERTY_CODES
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ChildAAAllOf {
@@ -56,6 +57,9 @@ public class ChildAAAllOf {
 
   public static final String JSON_PROPERTY_INTEGER_CODE = "integerCode";
   private Integer integerCode;
+
+  public static final String JSON_PROPERTY_CODES = "codes";
+  private List<Integer> codes = null;
 
   public ChildAAAllOf() { 
   }
@@ -158,6 +162,7 @@ public class ChildAAAllOf {
 
    /**
    * Get bigIntegerCode
+   * maximum: 4711
    * @return bigIntegerCode
   **/
   @javax.annotation.Nonnull
@@ -203,6 +208,40 @@ public class ChildAAAllOf {
   }
 
 
+  public ChildAAAllOf codes(List<Integer> codes) {
+    this.codes = codes;
+    return this;
+  }
+
+  public ChildAAAllOf addCodesItem(Integer codesItem) {
+    if (this.codes == null) {
+      this.codes = new ArrayList<>();
+    }
+    this.codes.add(codesItem);
+    return this;
+  }
+
+   /**
+   * Get codes
+   * @return codes
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_CODES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Integer> getCodes() {
+    return codes;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CODES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCodes(List<Integer> codes) {
+    this.codes = codes;
+  }
+
+
   /**
    * Return true if this ChildAA_allOf object is equal to o.
    */
@@ -219,12 +258,13 @@ public class ChildAAAllOf {
         Objects.equals(this.sizedArray, childAAAllOf.sizedArray) &&
         Objects.equals(this.requiredArray, childAAAllOf.requiredArray) &&
         Objects.equals(this.bigIntegerCode, childAAAllOf.bigIntegerCode) &&
-        Objects.equals(this.integerCode, childAAAllOf.integerCode);
+        Objects.equals(this.integerCode, childAAAllOf.integerCode) &&
+        Objects.equals(this.codes, childAAAllOf.codes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(childAAAttribute, sizedArray, requiredArray, bigIntegerCode, integerCode);
+    return Objects.hash(childAAAttribute, sizedArray, requiredArray, bigIntegerCode, integerCode, codes);
   }
 
   @Override
@@ -236,6 +276,7 @@ public class ChildAAAllOf {
     sb.append("    requiredArray: ").append(toIndentedString(requiredArray)).append("\n");
     sb.append("    bigIntegerCode: ").append(toIndentedString(bigIntegerCode)).append("\n");
     sb.append("    integerCode: ").append(toIndentedString(integerCode)).append("\n");
+    sb.append("    codes: ").append(toIndentedString(codes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

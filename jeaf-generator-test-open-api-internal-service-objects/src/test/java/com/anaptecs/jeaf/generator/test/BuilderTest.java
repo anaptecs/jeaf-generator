@@ -22,7 +22,7 @@ public class BuilderTest {
     String lParentAttribute = "pParentAttribute";
     int lChildAAttribute = 1;
     byte lChildAAAttribute = 2;
-    ChildAA lChildAA = ChildAA.builder(lParentAttribute, lChildAAttribute, lChildAAAttribute).build();
+    ChildAA lChildAA = ChildAA.builder(lParentAttribute, lChildAAttribute, lChildAAAttribute, null).build();
     assertEquals(lParentAttribute, lChildAA.getParentAttribute());
     assertEquals(lChildAAttribute, lChildAA.getChildAAttribute());
     assertEquals(lChildAAttribute, lChildAA.getChildAAttribute());
