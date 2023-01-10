@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedSet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.BeanParam;
@@ -521,8 +522,9 @@ public class RESTProductServiceResource {
   @Path("testMulitvaluedDataTypeAsQueryParam")
   @GET
   public Response testMulitvaluedDataTypeAsQueryParam( @QueryParam("codes") int[] pCodesAsBasicType,
-      @QueryParam("longCodes") Long[] pLongCodesAsBasicType,
-      @QueryParam("bookingIDs") String[] pBookingIDsAsBasicType ) {
+      @QueryParam("longCodes") Long[] pLongCodesAsBasicType, @QueryParam("bookingIDs") String[] pBookingIDsAsBasicType,
+      @QueryParam("timestamps") List<OffsetDateTime> pTimestamps,
+      @QueryParam("localDates") SortedSet<LocalDate> pLocalDates ) {
     // Convert basic type parameters into "real" objects.
     List<IntegerCodeType> pCodes;
     if (pCodesAsBasicType != null) {
@@ -555,7 +557,8 @@ public class RESTProductServiceResource {
       pBookingIDs = Collections.emptyList();
     }
     // Delegate request to service.
-    String lResult = rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes, pBookingIDs);
+    String lResult = rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes, pBookingIDs,
+        pTimestamps, pLocalDates);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 

@@ -20,6 +20,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.SortedSet;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -516,11 +517,11 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
    * 
    */
   public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
-      List<BookingID> pBookingIDs ) {
+      List<BookingID> pBookingIDs, List<OffsetDateTime> pTimestamps, SortedSet<LocalDate> pLocalDates ) {
     try {
       Command lCommand =
-          new TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_BookingID_RESTProductService_Command(pCodes,
-              pLongCodes, pBookingIDs);
+          new TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_BookingID_OffsetDateTime_LocalDate_RESTProductService_Command(
+              pCodes, pLongCodes, pBookingIDs, pTimestamps, pLocalDates);
       return (String) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -3681,7 +3682,7 @@ final class TestMultivaluedQueryParamsBean_MultivaluedQueryParamsBean_RESTProduc
 /**
  * Generated command class for service method "testMulitvaluedDataTypeAsQueryParam".
  */
-final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_BookingID_RESTProductService_Command
+final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_BookingID_OffsetDateTime_LocalDate_RESTProductService_Command
     extends Command {
   /**
    * Default serial version uid.
@@ -3707,12 +3708,13 @@ final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_Booking
    */
   static {
     try {
-      SERVICE_METHOD =
-          RESTProductService.class.getMethod("testMulitvaluedDataTypeAsQueryParam", List.class, Set.class, List.class);
+      SERVICE_METHOD = RESTProductService.class.getMethod("testMulitvaluedDataTypeAsQueryParam", List.class, Set.class,
+          List.class, List.class, SortedSet.class);
     }
     catch (NoSuchMethodException e) {
       throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          RESTProductService.class.getName(), "testMulitvaluedDataTypeAsQueryParam(List.class, Set.class, List.class)");
+          RESTProductService.class.getName(),
+          "testMulitvaluedDataTypeAsQueryParam(List.class, Set.class, List.class, List.class, SortedSet.class)");
     }
   }
 
@@ -3732,20 +3734,35 @@ final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_Booking
   private final List<BookingID> bookingIDs;
 
   /**
+   * Attribute transports the method parameter "pTimestamps" to the service implementation via the service channel.
+   */
+  private final List<OffsetDateTime> timestamps;
+
+  /**
+   * Attribute transports the method parameter "pLocalDates" to the service implementation via the service channel.
+   */
+  private final SortedSet<LocalDate> localDates;
+
+  /**
    * Initialize object. All parameters from method "testMulitvaluedDataTypeAsQueryParam" have to be passed as parameters
    * to this command object.
    * 
    * @param pCodes List<IntegerCodeType>
    * @param pLongCodes Set<LongCode>
    * @param pBookingIDs List<BookingID>
+   * @param pTimestamps List<OffsetDateTime>
+   * @param pLocalDates SortedSet<LocalDate>
    */
-  TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_BookingID_RESTProductService_Command(
-      List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes, List<BookingID> pBookingIDs ) {
+  TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_BookingID_OffsetDateTime_LocalDate_RESTProductService_Command(
+      List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes, List<BookingID> pBookingIDs,
+      List<OffsetDateTime> pTimestamps, SortedSet<LocalDate> pLocalDates ) {
     super(RESTProductService.class);
     codes = pCodes;
     longCodes = pLongCodes;
     bookingIDs = pBookingIDs;
-    parameters = new Object[] { codes, longCodes, bookingIDs };
+    timestamps = pTimestamps;
+    localDates = pLocalDates;
+    parameters = new Object[] { codes, longCodes, bookingIDs, timestamps, localDates };
   }
 
   /**
@@ -3766,7 +3783,8 @@ final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_Booking
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
     long lStartTime = System.nanoTime();
-    Serializable lResult = (Serializable) lService.testMulitvaluedDataTypeAsQueryParam(codes, longCodes, bookingIDs);
+    Serializable lResult = (Serializable) lService.testMulitvaluedDataTypeAsQueryParam(codes, longCodes, bookingIDs,
+        timestamps, localDates);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
     // Trace result of service call.

@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.SortedSet;
 
 import com.anaptecs.jeaf.core.annotations.JEAFServiceProvider;
 import com.anaptecs.jeaf.core.api.Component;
@@ -288,7 +289,7 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
 
   @Override
   public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
-      List<BookingID> pBookingIDs ) {
+      List<BookingID> pBookingIDs, List<OffsetDateTime> pTimestamps, SortedSet<LocalDate> pLocalDates ) {
     return null;
   }
 

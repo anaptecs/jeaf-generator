@@ -18,6 +18,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.SortedSet;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -275,10 +276,12 @@ public interface RESTProductService extends Service {
    * @param pCodes
    * @param pLongCodes
    * @param pBookingIDs
+   * @param pTimestamps
+   * @param pLocalDates
    * @return {@link String}
    */
   String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
-      List<BookingID> pBookingIDs );
+      List<BookingID> pBookingIDs, List<OffsetDateTime> pTimestamps, SortedSet<LocalDate> pLocalDates );
 
   /**
    * 

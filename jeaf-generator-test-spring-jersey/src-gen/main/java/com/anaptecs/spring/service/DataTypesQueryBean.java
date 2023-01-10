@@ -85,6 +85,11 @@ public class DataTypesQueryBean {
   public static final String TIMES = "times";
 
   /**
+   * Constant for the name of attribute "startTimestamps".
+   */
+  public static final String STARTTIMESTAMPS = "startTimestamps";
+
+  /**
    * 
    */
   @QueryParam("longCodes")
@@ -151,6 +156,12 @@ public class DataTypesQueryBean {
   private Set<OffsetTime> times;
 
   /**
+   * 
+   */
+  @QueryParam("startTimestamps")
+  private OffsetDateTime[] startTimestamps;
+
+  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
@@ -199,6 +210,7 @@ public class DataTypesQueryBean {
     else {
       times = new HashSet<OffsetTime>();
     }
+    startTimestamps = pBuilder.startTimestamps;
   }
 
   /**
@@ -282,6 +294,11 @@ public class DataTypesQueryBean {
     private Set<OffsetTime> times;
 
     /**
+     * 
+     */
+    private OffsetDateTime[] startTimestamps;
+
+    /**
      * Use {@link DataTypesQueryBean#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -304,6 +321,7 @@ public class DataTypesQueryBean {
         localTime = pObject.localTime;
         timestamps = pObject.timestamps;
         times = pObject.times;
+        startTimestamps = pObject.startTimestamps;
       }
     }
 
@@ -461,6 +479,23 @@ public class DataTypesQueryBean {
       }
       else {
         times = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "startTimestamps".
+     * 
+     * @param pStartTimestamps Value to which the attribute "startTimestamps" should be set.
+     */
+    public Builder setStartTimestamps( OffsetDateTime[] pStartTimestamps ) {
+      // Assign value to attribute
+      if (pStartTimestamps != null) {
+        startTimestamps = new OffsetDateTime[pStartTimestamps.length];
+        System.arraycopy(pStartTimestamps, 0, startTimestamps, 0, pStartTimestamps.length);
+      }
+      else {
+        startTimestamps = null;
       }
       return this;
     }
@@ -902,6 +937,41 @@ public class DataTypesQueryBean {
   }
 
   /**
+   * Method returns the attribute "startTimestamps".
+   * 
+   * 
+   * @return OffsetDateTime Value to which the attribute "startTimestamps" is set.
+   */
+  public OffsetDateTime[] getStartTimestamps( ) {
+    OffsetDateTime[] lReturnValue;
+    if (startTimestamps != null) {
+      lReturnValue = new OffsetDateTime[startTimestamps.length];
+      System.arraycopy(startTimestamps, 0, lReturnValue, 0, startTimestamps.length);
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
+  }
+
+  /**
+   * Method sets the attribute "startTimestamps".
+   * 
+   * 
+   * @param pStartTimestamps Value to which the attribute "startTimestamps" should be set.
+   */
+  public void setStartTimestamps( OffsetDateTime[] pStartTimestamps ) {
+    // Assign value to attribute
+    if (pStartTimestamps != null) {
+      startTimestamps = new OffsetDateTime[pStartTimestamps.length];
+      System.arraycopy(pStartTimestamps, 0, startTimestamps, 0, pStartTimestamps.length);
+    }
+    else {
+      startTimestamps = null;
+    }
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -1021,6 +1091,15 @@ public class DataTypesQueryBean {
         lBuilder.append(System.lineSeparator());
       }
     }
+    lBuilder.append(pIndent);
+    lBuilder.append("startTimestamps: ");
+    if (startTimestamps != null) {
+      lBuilder.append(Arrays.toString(startTimestamps));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

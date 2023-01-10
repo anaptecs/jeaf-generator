@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedSet;
 
 import com.anaptecs.jeaf.core.annotations.JEAFServiceProvider;
 import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
@@ -1195,11 +1196,13 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
    * @param pCodes
    * @param pLongCodes
    * @param pBookingIDs
+   * @param pTimestamps
+   * @param pLocalDates
    * @return {@link String}
    */
   @Override
   public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
-      List<BookingID> pBookingIDs ) {
+      List<BookingID> pBookingIDs, List<OffsetDateTime> pTimestamps, SortedSet<LocalDate> pLocalDates ) {
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder =
         RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
@@ -1230,6 +1233,20 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
         lValues.add(lNext.getBookingID());
       }
       lRequestBuilder.setQueryParameter("bookingIDs", lValues);
+    }
+    if (pTimestamps != null) {
+      List<Object> lValues = new ArrayList<Object>();
+      for (OffsetDateTime lNext : pTimestamps) {
+        lValues.add(DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lNext));
+      }
+      lRequestBuilder.setQueryParameter("timestamps", lValues);
+    }
+    if (pLocalDates != null) {
+      List<Object> lValues = new ArrayList<Object>();
+      for (LocalDate lNext : pLocalDates) {
+        lValues.add(DateTimeFormatter.ISO_DATE.format(lNext));
+      }
+      lRequestBuilder.setQueryParameter("localDates", lValues);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -1318,6 +1335,13 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
           lValues.add(DateTimeFormatter.ISO_OFFSET_TIME.format(lNext));
         }
         lRequestBuilder.setQueryParameter("times", lValues);
+      }
+      if (pQueryBean.getStartTimestamps() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (OffsetDateTime lNext : pQueryBean.getStartTimestamps()) {
+          lValues.add(DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lNext));
+        }
+        lRequestBuilder.setQueryParameter("startTimestamps", lValues);
       }
     }
     // Execute request and return result.

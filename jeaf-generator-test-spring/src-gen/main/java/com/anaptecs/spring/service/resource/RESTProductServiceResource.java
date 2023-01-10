@@ -25,6 +25,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -848,7 +850,9 @@ public class RESTProductServiceResource {
   public String testMulitvaluedDataTypeAsQueryParam(
       @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
       @RequestParam(name = "longCodes", required = true) Long[] pLongCodesAsBasicType,
-      @RequestParam(name = "bookingIDs", required = false) String[] pBookingIDsAsBasicType ) {
+      @RequestParam(name = "bookingIDs", required = false) String[] pBookingIDsAsBasicType,
+      @RequestParam(name = "timestamps", required = false) String[] pTimestampsAsBasicType,
+      @RequestParam(name = "localDates", required = false) String[] pLocalDatesAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     List<IntegerCodeType> pCodes;
     if (pCodesAsBasicType != null) {
@@ -880,8 +884,30 @@ public class RESTProductServiceResource {
     else {
       pBookingIDs = Collections.emptyList();
     }
+    // Convert date types into real objects.
+    List<OffsetDateTime> pTimestamps;
+    if (pTimestampsAsBasicType != null) {
+      pTimestamps = new ArrayList<OffsetDateTime>();
+      for (int i = 0; i < pTimestampsAsBasicType.length; i++) {
+        pTimestamps.add(OffsetDateTime.parse(pTimestampsAsBasicType[i]));
+      }
+    }
+    else {
+      pTimestamps = Collections.emptyList();
+    }
+    SortedSet<LocalDate> pLocalDates;
+    if (pLocalDatesAsBasicType != null) {
+      pLocalDates = new TreeSet<LocalDate>();
+      for (int i = 0; i < pLocalDatesAsBasicType.length; i++) {
+        pLocalDates.add(LocalDate.parse(pLocalDatesAsBasicType[i]));
+      }
+    }
+    else {
+      pLocalDates = Collections.emptySortedSet();
+    }
     // Delegate request to service.
-    return rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes, pBookingIDs);
+    return rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes, pBookingIDs, pTimestamps,
+        pLocalDates);
   }
 
   /**
@@ -899,7 +925,8 @@ public class RESTProductServiceResource {
       @RequestParam(name = "localDateTime", required = true) String pLocalDateTimeAsBasicType,
       @RequestParam(name = "localTime", required = true) String pLocalTimeAsBasicType,
       @RequestParam(name = "timestamps", required = false) String[] pTimestampsAsBasicType,
-      @RequestParam(name = "times", required = false) String[] pTimesAsBasicType ) {
+      @RequestParam(name = "times", required = false) String[] pTimesAsBasicType,
+      @RequestParam(name = "startTimestamps", required = false) String[] pStartTimestampsAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     DataTypesQueryBean.Builder lQueryBeanBuilder = DataTypesQueryBean.builder();
@@ -977,6 +1004,14 @@ public class RESTProductServiceResource {
         lTimes.add(OffsetTime.parse(pTimesAsBasicType[i]));
       }
       lQueryBeanBuilder.setTimes(lTimes);
+    }
+    // Handle bean parameter pQueryBean.startTimestamps
+    if (pStartTimestampsAsBasicType != null) {
+      OffsetDateTime[] lStartTimestamps = new OffsetDateTime[pStartTimestampsAsBasicType.length];
+      for (int i = 0; i < pStartTimestampsAsBasicType.length; i++) {
+        lStartTimestamps[i] = OffsetDateTime.parse(pStartTimestampsAsBasicType[i]);
+      }
+      lQueryBeanBuilder.setStartTimestamps(lStartTimestamps);
     }
     DataTypesQueryBean pQueryBean = lQueryBeanBuilder.build();
     // Delegate request to service.

@@ -310,7 +310,7 @@ public class SpringRESTServiceProxyTest {
     lLongCodes.add(LongCode.builder().setCode(4710815123L).build());
     lLongCodes.add(LongCode.builder().setCode(47110815999L).build());
     String lResult = productService.testMulitvaluedDataTypeAsQueryParam(Arrays.asList(IntegerCodeType.builder().setCode(
-        47).build(), IntegerCodeType.builder().setCode(11).build()), lLongCodes, null);
+        47).build(), IntegerCodeType.builder().setCode(11).build()), lLongCodes, null, null, null);
     assertEquals("47-11", lResult);
   }
 
