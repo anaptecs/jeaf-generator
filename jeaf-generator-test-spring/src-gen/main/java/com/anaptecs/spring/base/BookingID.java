@@ -5,6 +5,11 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -13,6 +18,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingID {
+  private static CompositeTypeConverter serializer;
+
+  public static void setSerializer( CompositeTypeConverter pSerializer ) {
+    serializer = pSerializer;
+  }
+
+  private static final List<Class<?>> SERIALIZED_CLASSES;
+  static {
+    List<Class<?>> lClasses = Arrays.asList(BookingID.class, InventoryType.class, BookingCode.class);
+    SERIALIZED_CLASSES = Collections.unmodifiableList(lClasses);
+  }
+
   /**
    * Constant for the name of attribute "publicBookingID".
    */
@@ -41,7 +58,7 @@ public class BookingID {
   /**
    * 
    */
-  private String publicBookingID;
+  private transient final String publicBookingID;
 
   /**
    * 
@@ -77,11 +94,13 @@ public class BookingID {
    */
   protected BookingID( Builder pBuilder ) {
     // Read attribute values from builder.
-    publicBookingID = pBuilder.publicBookingID;
     referenceID = pBuilder.referenceID;
     externalRefID = pBuilder.externalRefID;
     inventory = pBuilder.inventory;
     bookingCode = pBuilder.bookingCode;
+
+    //
+    publicBookingID = serializer.serializeObject(this, SERIALIZED_CLASSES);
   }
 
   /**

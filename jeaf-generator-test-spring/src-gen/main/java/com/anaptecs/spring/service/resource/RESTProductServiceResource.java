@@ -747,8 +747,10 @@ public class RESTProductServiceResource {
     AdvancedHeader.Builder lContextBuilder = AdvancedHeader.builder();
     // Handle bean parameter pContext.bookingID
     if (pBookingIDAsBasicType != null) {
-      lContextBuilder.setBookingID(compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class,
-          BOOKINGID_SERIALIZED_CLASSES));
+      BookingID lDeserializeObject = compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class,
+          BOOKINGID_SERIALIZED_CLASSES);
+      lDeserializeObject.setPublicBookingID(pBookingCodeAsBasicType);
+      lContextBuilder.setBookingID(lDeserializeObject);
     }
     // Handle bean parameter pContext.bookingCode
     lContextBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());

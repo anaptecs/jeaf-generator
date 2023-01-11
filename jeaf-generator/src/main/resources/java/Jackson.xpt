@@ -234,6 +234,10 @@
 			    «FOREACH disabledDeserializationFeatures AS feature»
 			    lBuilder.disable(com.fasterxml.jackson.databind.DeserializationFeature.«feature.toString()»);
 			    «ENDFOREACH»
+			    
+			    «IF enabledMapperFeatures.size == 0»
+			    lBuilder.enable(com.fasterxml.jackson.databind.MapperFeature.PROPAGATE_TRANSIENT_MARKER);
+			    «ENDIF»
 			    «IF disabledDeserializationFeatures.size == 0 && enableSemVerForJSON()»
 			    lBuilder.disable(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
 			    «ENDIF»
