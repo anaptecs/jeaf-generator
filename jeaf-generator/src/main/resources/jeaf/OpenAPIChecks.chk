@@ -57,7 +57,10 @@ context PathParam if runChecks("PathParam") ERROR this.getErrorMessage("9120", {
 
 // Checks for stereotype HeaderParam
 context HeaderParam if runChecks("HeaderParam") WARNING this.getWarningMessage("9153", {((NamedElement)owner).fqn(), this.getRESTHeaderParamName(), name}): this.isIgnoredHeaderParam() == false;
+context HeaderParam if runChecks("HeaderParam") ERROR this.getErrorMessage("9155", {((NamedElement)owner).fqn(), this.getRESTHeaderParamName(), name}): !(isRESTLibraryJAXRS() && generateRESTResources() && this.isMultivalued() && this.getCollectionType() == "java.util.Collection");
 
+// Checks for stereotype QueryParam
+context QueryParam if runChecks("QueryParam") ERROR this.getErrorMessage("9156", {((NamedElement)owner).fqn(), this.getRESTQueryParamName(), name}): !(isRESTLibraryJAXRS() && generateRESTResources() && this.isMultivalued() && this.getCollectionType() == "java.util.Collection");
 
 // Checks for stereotype BeanParam
 context BeanParam if runChecks("RESTOperation") WARNING this.getWarningMessage("9103", {this.fqn(), this.getOpenAPIIncompatibleBeanProperties().asPropertyErrorMessage().toString()}): this.getOpenAPIIncompatibleBeanProperties().size == 0;
