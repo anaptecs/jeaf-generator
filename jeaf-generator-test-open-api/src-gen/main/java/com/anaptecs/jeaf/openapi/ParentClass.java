@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * OpenAPI spec version: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -146,10 +146,10 @@ public class ParentClass {
   }
 
    /**
-   * Association is still there be SemVer compliant.
+   * Association is still there be SemVer compliant. 
    * @return legacyBankAccounts
   **/
-  @Schema(description = "Association is still there be SemVer compliant.")
+  @Schema(description = "Association is still there be SemVer compliant. ")
   public List<BankAccount> getLegacyBankAccounts() {
     return legacyBankAccounts;
   }

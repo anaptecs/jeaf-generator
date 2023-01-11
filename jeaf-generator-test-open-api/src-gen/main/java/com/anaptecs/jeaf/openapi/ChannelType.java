@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * OpenAPI spec version: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Valid Values: - COUNTER - CALL_CENTER - MOBILE - TVM - WEB - @Deprecated LEGACY_POS
+ * Valid Values: - COUNTER - CALL_CENTER - MOBILE - TVM - WEB - @Deprecated LEGACY_POS 
  */
 public enum ChannelType {
   COUNTER("COUNTER"),

@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * The version of the OpenAPI document: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -63,11 +63,11 @@ public class ChildBAllOf {
   }
 
    /**
-   * A child attribute
+   * A child attribute 
    * @return childBAttribute
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A child attribute")
+  @ApiModelProperty(value = "A child attribute ")
   @JsonProperty(JSON_PROPERTY_CHILD_B_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -97,11 +97,11 @@ public class ChildBAllOf {
   }
 
    /**
-   * the composition
+   * the composition 
    * @return composition
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "the composition")
+  @ApiModelProperty(value = "the composition ")
   @JsonProperty(JSON_PROPERTY_COMPOSITION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

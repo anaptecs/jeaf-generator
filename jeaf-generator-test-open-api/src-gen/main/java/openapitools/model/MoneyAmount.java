@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * The version of the OpenAPI document: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -29,9 +29,9 @@ import openapitools.JSON;
 
 
 /**
- * Type represents an amount of money.         NOVA 14 Mapping * nova-base.xsd.GeldBetrag
+ * Type represents an amount of money.         NOVA 14 Mapping * nova-base.xsd.GeldBetrag 
  */
-@ApiModel(description = "Type represents an amount of money.         NOVA 14 Mapping * nova-base.xsd.GeldBetrag")
+@ApiModel(description = "Type represents an amount of money.         NOVA 14 Mapping * nova-base.xsd.GeldBetrag ")
 @JsonPropertyOrder({
   MoneyAmount.JSON_PROPERTY_AMOUNT,
   MoneyAmount.JSON_PROPERTY_CURRENCY_CODE
@@ -53,11 +53,11 @@ public class MoneyAmount {
   }
 
    /**
-   * The amount of money. Attribute is always set.
+   * The amount of money. Attribute is always set. 
    * @return amount
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The amount of money. Attribute is always set.")
+  @ApiModelProperty(required = true, value = "The amount of money. Attribute is always set. ")
   @JsonProperty(JSON_PROPERTY_AMOUNT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * The version of the OpenAPI document: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -37,9 +37,9 @@ import openapitools.JSON;
 
 
 /**
- * single line class comment
+ * single line class comment 
  */
-@ApiModel(description = "single line class comment")
+@ApiModel(description = "single line class comment ")
 @JsonPropertyOrder({
   ChildA.JSON_PROPERTY_CHILD_A_ATTRIBUTE
 })

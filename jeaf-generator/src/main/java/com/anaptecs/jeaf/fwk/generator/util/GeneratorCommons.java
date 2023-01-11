@@ -236,6 +236,11 @@ public class GeneratorCommons {
   public static final String OPEN_API_YAML_11_COMPATIBILITY = "switch.gen.openapi.yaml.11.comapitibility";
 
   /**
+   * Constant defines the name of the system property which defines the OpenAPI YAML comment style that should be used.
+   */
+  public static final String OPEN_API_YAML_COMMENT_STYLE = "switch.gen.openapi.openAPICommentStyle";
+
+  /**
    * Constant defines the name of the system property which enable that technical http headers will be suppressed.
    */
   public static final String SUPPRESS_TECHNICAL_HTTP_HEADERS = "switch.gen.rest.suppress.technical.headers";
@@ -815,6 +820,16 @@ public class GeneratorCommons {
   public static boolean enableYAML11Compatibility( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(OPEN_API_YAML_11_COMPATIBILITY, Boolean.TRUE, Boolean.class);
+  }
+
+  /**
+   * Method checks whether YAML 1.1 compatibility mode for OpenAPI should be enabled.
+   * 
+   * @return boolean Method returns true if YAML 1.1 compatibility mode should be enabled and false in all other cases.
+   */
+  public static String getOpenAPICommentStyle( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(OPEN_API_YAML_COMMENT_STYLE, true, String.class);
   }
 
   /**

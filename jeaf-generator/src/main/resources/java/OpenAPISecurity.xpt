@@ -9,7 +9,7 @@
     «this.name»:
       type: «this.type.name»
       «IF this.hasComment()-»
-      description: >-
+      description: «getOpenAPICommentStyle()»
         «this.getCommentForOpenAPIDescription("        ")»
       «ENDIF-»
       flows:

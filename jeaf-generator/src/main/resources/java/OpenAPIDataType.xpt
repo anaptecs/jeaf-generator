@@ -9,7 +9,7 @@
   «LET this.ownedAttribute.get(0) AS attribute -»
     «IF this.inline == true -»
           «IF ownerAttribute.hasComment() || (this.compositeDataType && this.hasComment())-»
-«indentation»          description: >-
+«indentation»          description: «getOpenAPICommentStyle()»
           «IF ownerAttribute.hasComment() -»
 «indentation»            «ownerAttribute.getCommentForOpenAPIDescription(indentation + "            ")»
           «ELSE-»
@@ -107,7 +107,7 @@
       pattern: '«attribute.getPatternForProperty()»'
       «ENDIF-»
       «IF this.hasComment()-»
-      description: >-
+      description: «getOpenAPICommentStyle()»
         «this.getCommentForOpenAPIDescription("        ")»
       «ENDIF-»
       «IF attribute.defaultValue != null -»
@@ -139,7 +139,7 @@
 «DEFINE GenerateOpenAPIDataTypeForPath(OpenAPI3Specification spec, Parameter param, String indent) FOR OpenAPIDataType -»
 «indent»            «LET this.ownedAttribute.get(0) AS attribute -»
                 «IF attribute.hasComment()-»
-«indent»            description: >-
+«indent»            description: «getOpenAPICommentStyle()»
 «indent»              «attribute.getCommentForOpenAPIDescription("                  ")»
                 «ENDIF-»
                 «IF param.isMultivalued() == false-»

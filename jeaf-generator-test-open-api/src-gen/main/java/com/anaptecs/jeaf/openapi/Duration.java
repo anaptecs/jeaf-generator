@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * OpenAPI spec version: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 /**
- * Type represents a duration.   NOVA 14 Mapping * nova-base.xsd.Dauer
+ * Type represents a duration.   NOVA 14 Mapping * nova-base.xsd.Dauer 
  */
-@Schema(description = "Type represents a duration.   NOVA 14 Mapping * nova-base.xsd.Dauer")
+@Schema(description = "Type represents a duration.   NOVA 14 Mapping * nova-base.xsd.Dauer ")
 
 public class Duration {
   @JsonProperty("value")

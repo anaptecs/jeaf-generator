@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * OpenAPI spec version: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -22,9 +22,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 /**
- * single line class comment
+ * single line class comment 
  */
-@Schema(description = "single line class comment")
+@Schema(description = "single line class comment ")
 
 public class ChildA extends ParentClass {
   @JsonProperty("childAAttribute")

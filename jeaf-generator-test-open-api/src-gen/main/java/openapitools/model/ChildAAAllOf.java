@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * The version of the OpenAPI document: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -70,11 +70,11 @@ public class ChildAAAllOf {
   }
 
    /**
-   * Multi line docs
+   * Multi line docs 
    * @return childAAAttribute
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Multi line docs")
+  @ApiModelProperty(required = true, value = "Multi line docs ")
   @JsonProperty(JSON_PROPERTY_CHILD_A_A_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

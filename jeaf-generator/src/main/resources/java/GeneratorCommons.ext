@@ -98,6 +98,9 @@ cached boolean generateOpenAPISpec() :
 cached boolean enableYAML11Compatibility() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.enableYAML11Compatibility();
     
+cached String getOpenAPICommentStyle() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getOpenAPICommentStyle();
+    
 cached boolean addIgnorableHeadersToOpenAPISpec() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.addIgnorableHeadersToOpenAPISpec();
     

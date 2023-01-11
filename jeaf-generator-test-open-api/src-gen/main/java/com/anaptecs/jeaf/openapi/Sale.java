@@ -1,6 +1,6 @@
 /*
  * Product Services
- * This component represents the OpenAPI interface of the accounting service. Dear Developers, please be aware that multi line comments can also be used.
+ * This component represents the OpenAPI interface of the accounting service.  Dear Developers, please be aware that multi line comments can also be used. 
  *
  * OpenAPI spec version: 1.6.86-SNAPSHOT
  * Contact: jeaf@anaptecs.de
@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 /**
- * Chännel € Ö
+ * Chännel € Ö 
  */
-@Schema(description = "Chännel € Ö")
+@Schema(description = "Chännel € Ö ")
 
 public class Sale {
   @JsonProperty("transactionAmount")

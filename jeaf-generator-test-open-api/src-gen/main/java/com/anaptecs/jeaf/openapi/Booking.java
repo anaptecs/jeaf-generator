@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * OpenAPI spec version: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -33,10 +33,10 @@ public class Booking {
   }
 
    /**
-   * ID of the booking
+   * ID of the booking 
    * @return bookingID
   **/
-  @Schema(required = true, description = "ID of the booking")
+  @Schema(required = true, description = "ID of the booking ")
   public String getBookingID() {
     return bookingID;
   }

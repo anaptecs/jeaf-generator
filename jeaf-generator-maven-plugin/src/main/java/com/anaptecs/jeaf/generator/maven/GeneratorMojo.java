@@ -348,11 +348,24 @@ public class GeneratorMojo extends AbstractMojo {
    * such cases these values should be quoted.
    * 
    * @see <a href=
-   * "https://stackoverflow.com/questions/61157594/why-does-swagger-codegen-convert-an-on-off-string-enum-to-true-false">https://stackoverflow.com/questions/61157594/why-does-swagger-codegen-convert-an-on-off-string-enum-to-true-false</>
+   * "https://stackoverflow.com/questions/61157594/why-does-swagger-codegen-convert-an-on-off-string-enum-to-true-false">https://stackoverflow.com/questions/61157594/why-does-swagger-codegen-convert-an-on-off-string-enum-to-true-false<a/>
    * 
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean enableYAML11Compatibility;
+
+  /**
+   * Configuration parameter allows to define the YAML multi line comment style that is used within the generated
+   * OpenAPI specification. For further information about the various options please refer to:
+   * <a href="https://yaml-multiline.info/">https://yaml-multiline.info/</a> <br/>
+   * <br/>
+   * By default <code>'|'</code> is used which means that new lines will be kept and that there will be a single new
+   * line at the end of each comment.
+   * 
+   * @see <a href="https://yaml-multiline.info/">https://yaml-multiline.info/</a>
+   */
+  @Parameter(required = false, defaultValue = "|")
+  private String openAPICommentStyle;
 
   /**
    * Switch can be used to suppress technical http headers in generated Java code.
@@ -857,6 +870,7 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateOpenAPISpec) {
       lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
       lLog.info("Enable YAML 1.1 compatibility mode:               " + enableYAML11Compatibility);
+      lLog.info("OpenAPI YAML multi-line comment style:            " + openAPICommentStyle);
       lLog.info("Add ignored header fields to OpenAPI spec:        " + addIgnoredHeadersToOpenAPISpec);
     }
 
@@ -1015,6 +1029,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.junits", generateJUnitTests.toString());
       System.setProperty("switch.gen.openapispec", generateOpenAPISpec.toString());
       System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());
+      System.setProperty("switch.gen.openapi.openAPICommentStyle", openAPICommentStyle.toString());
       System.setProperty("switch.gen.rest.suppress.technical.headers", suppressTechnicalHeaders.toString());
       System.setProperty("switch.gen.openapi.addIgnoredHeadersToOpenAPISpec", addIgnoredHeadersToOpenAPISpec
           .toString());
