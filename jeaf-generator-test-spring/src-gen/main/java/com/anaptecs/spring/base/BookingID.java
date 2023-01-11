@@ -14,6 +14,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingID {
   /**
+   * Constant for the name of attribute "publicBookingID".
+   */
+  public static final String PUBLICBOOKINGID = "publicBookingID";
+
+  /**
    * Constant for the name of attribute "referenceID".
    */
   public static final String REFERENCEID = "referenceID";
@@ -32,6 +37,11 @@ public class BookingID {
    * Constant for the name of attribute "bookingCode".
    */
   public static final String BOOKINGCODE = "bookingCode";
+
+  /**
+   * 
+   */
+  private String publicBookingID;
 
   /**
    * 
@@ -67,6 +77,7 @@ public class BookingID {
    */
   protected BookingID( Builder pBuilder ) {
     // Read attribute values from builder.
+    publicBookingID = pBuilder.publicBookingID;
     referenceID = pBuilder.referenceID;
     externalRefID = pBuilder.externalRefID;
     inventory = pBuilder.inventory;
@@ -101,6 +112,11 @@ public class BookingID {
     /**
      * 
      */
+    private String publicBookingID;
+
+    /**
+     * 
+     */
     private String referenceID;
 
     /**
@@ -130,6 +146,7 @@ public class BookingID {
     protected Builder( BookingID pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
+        publicBookingID = pObject.publicBookingID;
         referenceID = pObject.referenceID;
         externalRefID = pObject.externalRefID;
         inventory = pObject.inventory;
@@ -155,6 +172,17 @@ public class BookingID {
      */
     public static Builder newBuilder( BookingID pObject ) {
       return new Builder(pObject);
+    }
+
+    /**
+     * Method sets the attribute "publicBookingID".
+     * 
+     * @param pPublicBookingID Value to which the attribute "publicBookingID" should be set.
+     */
+    public Builder setPublicBookingID( String pPublicBookingID ) {
+      // Assign value to attribute
+      publicBookingID = pPublicBookingID;
+      return this;
     }
 
     /**
@@ -207,6 +235,27 @@ public class BookingID {
     public BookingID build( ) {
       return new BookingID(this);
     }
+  }
+
+  /**
+   * Method returns the attribute "publicBookingID".
+   * 
+   * 
+   * @return String Value to which the attribute "publicBookingID" is set.
+   */
+  public String getPublicBookingID( ) {
+    return publicBookingID;
+  }
+
+  /**
+   * Method sets the attribute "publicBookingID".
+   * 
+   * 
+   * @param pPublicBookingID Value to which the attribute "publicBookingID" should be set.
+   */
+  public void setPublicBookingID( String pPublicBookingID ) {
+    // Assign value to attribute
+    publicBookingID = pPublicBookingID;
   }
 
   /**
@@ -317,6 +366,10 @@ public class BookingID {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("publicBookingID: ");
+    lBuilder.append(publicBookingID);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("referenceID: ");

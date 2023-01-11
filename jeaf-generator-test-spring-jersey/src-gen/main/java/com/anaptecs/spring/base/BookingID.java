@@ -14,6 +14,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingID {
   /**
+   * Constant for the name of attribute "publicBookingID".
+   */
+  public static final String PUBLICBOOKINGID = "publicBookingID";
+
+  /**
    * Constant for the name of attribute "referenceID".
    */
   public static final String REFERENCEID = "referenceID";
@@ -32,6 +37,11 @@ public class BookingID {
    * Constant for the name of attribute "bookingCode".
    */
   public static final String BOOKINGCODE = "bookingCode";
+
+  /**
+   * 
+   */
+  private String publicBookingID;
 
   /**
    * 
@@ -67,6 +77,7 @@ public class BookingID {
    */
   protected BookingID( Builder pBuilder ) {
     // Read attribute values from builder.
+    publicBookingID = pBuilder.publicBookingID;
     referenceID = pBuilder.referenceID;
     externalRefID = pBuilder.externalRefID;
     inventory = pBuilder.inventory;
@@ -99,11 +110,12 @@ public class BookingID {
    * Please be aware that this method is only intended to be used for deserialization frameworks like JAX-RS. For
    * "normal" object creation builder should be used instead.
    * 
-   * @param pReferenceID String that should be used to create an instance of this class. The parameter must not be null.
+   * @param pPublicBookingID String that should be used to create an instance of this class. The parameter must not be
+   * null.
    * @return {@link BookingID} Instance of the class that matches to the passed string. The method never returns null.
    */
-  public static BookingID valueOf( String pReferenceID ) {
-    return builder().setReferenceID(String.valueOf(pReferenceID)).build();
+  public static BookingID valueOf( String pPublicBookingID ) {
+    return builder().setPublicBookingID(String.valueOf(pPublicBookingID)).build();
   }
 
   /**
@@ -111,6 +123,11 @@ public class BookingID {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
+    /**
+     * 
+     */
+    private String publicBookingID;
+
     /**
      * 
      */
@@ -143,11 +160,23 @@ public class BookingID {
     protected Builder( BookingID pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
+        publicBookingID = pObject.publicBookingID;
         referenceID = pObject.referenceID;
         externalRefID = pObject.externalRefID;
         inventory = pObject.inventory;
         bookingCode = pObject.bookingCode;
       }
+    }
+
+    /**
+     * Method sets the attribute "publicBookingID".
+     * 
+     * @param pPublicBookingID Value to which the attribute "publicBookingID" should be set.
+     */
+    public Builder setPublicBookingID( String pPublicBookingID ) {
+      // Assign value to attribute
+      publicBookingID = pPublicBookingID;
+      return this;
     }
 
     /**
@@ -200,6 +229,27 @@ public class BookingID {
     public BookingID build( ) {
       return new BookingID(this);
     }
+  }
+
+  /**
+   * Method returns the attribute "publicBookingID".
+   * 
+   * 
+   * @return String Value to which the attribute "publicBookingID" is set.
+   */
+  public String getPublicBookingID( ) {
+    return publicBookingID;
+  }
+
+  /**
+   * Method sets the attribute "publicBookingID".
+   * 
+   * 
+   * @param pPublicBookingID Value to which the attribute "publicBookingID" should be set.
+   */
+  public void setPublicBookingID( String pPublicBookingID ) {
+    // Assign value to attribute
+    publicBookingID = pPublicBookingID;
   }
 
   /**
@@ -310,6 +360,10 @@ public class BookingID {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("publicBookingID: ");
+    lBuilder.append(publicBookingID);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("referenceID: ");
