@@ -256,8 +256,11 @@ uml::Class getOwningClass(uml::Operation operation): (uml::Class) operation.owne
 boolean isDeprecated(uml::NamedElement element) :
   isStereotypeApplied(element, "Deprecated") || isStereotypeApplied(element, "deprecated");
   
+boolean isReadOnly(uml::Property property):
+  property.isReadOnly || property.isStereotypeApplied("CompositeDataTypePublicField");
+  
 boolean isTransient(uml::Property property):
-  isStereotypeApplied(property, "Transient");
+  property.isStereotypeApplied("Transient") || property.isStereotypeApplied("CompositeDataTypePublicField");
   
 boolean hasExample(uml::NamedElement element):
   element.isStereotypeApplied("Example");

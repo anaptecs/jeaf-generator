@@ -22,7 +22,7 @@
     «IF this.association == null»
 		«IF !isStatic»
 			«EXPAND Getter»
-			«IF isReadOnly == false»
+			«IF isReadOnly() == false»
 			«EXPAND Setter»
 			«ENDIF»
 		«ENDIF»
@@ -42,7 +42,7 @@
 	«EXPAND Validation::ValidationAnnotation»
     «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == true && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»
     «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == false && type.isPrimitiveType() == false && this.requiresNotNullAnnotation() && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
-	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false && this.isStatic == true» = «this.initValue()»«ENDIF»;
+	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false && this.isStatic == true» = «this.initValue()»«ENDIF»;
 «ENDDEFINE»
 
 // processing the association properties
@@ -58,10 +58,10 @@
 		«IF isMultivalued()»
 			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»
 			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
-			«visibility» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()» «asInstanceVar()»;
+			«visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()» «asInstanceVar()»;
 		«ELSE»
 			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
-			«visibility» «IF isReadOnly»final «ENDIF» «IF isTransient()»transient «ENDIF» «type.fqn()» «asInstanceVar()»;
+			«visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «type.fqn()» «asInstanceVar()»;
 		«ENDIF»
 		
 		
@@ -184,7 +184,7 @@
 		return «asInstanceVar()»;
 	}
 	
-    «IF isReadOnly == false»
+    «IF isReadOnly() == false»
     /**
      * Method sets the association "«asInstanceVar()»".     
      * «this.getComment()»
@@ -260,7 +260,7 @@
 		«ENDIF»
 	}
 	
-    «IF isReadOnly == false»
+    «IF isReadOnly() == false»
     «IF generatePublicSettersForAssociations()»
     /**
      * Method sets the association "«asInstanceVar()»" to the passed collection. All objects that formerly were part of the association will be removed from it.
@@ -425,8 +425,8 @@
 
 
 //copies the attributes from the businessobject to the transferobject
-«DEFINE CopyAttributeToTransfer FOR Property»«IF !isReadOnly»lTransferObject.«asSetter()»(this.«asGetter()»());«ENDIF»«ENDDEFINE»
-«DEFINE CopyAttributeToBusiness FOR Property»«IF !isReadOnly»lPersistentObject.«asSetter()»(this.«asGetter()»());«ENDIF»«ENDDEFINE»
+«DEFINE CopyAttributeToTransfer FOR Property»«IF !isReadOnly()»lTransferObject.«asSetter()»(this.«asGetter()»());«ENDIF»«ENDDEFINE»
+«DEFINE CopyAttributeToBusiness FOR Property»«IF !isReadOnly()»lPersistentObject.«asSetter()»(this.«asGetter()»());«ENDIF»«ENDDEFINE»
 
 «DEFINE RESTParamAnnotation FOR Property»
   «IF generateJAXRSAnnotations() == true -»

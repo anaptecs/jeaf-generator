@@ -222,7 +222,7 @@
 
 «DEFINE PersistentObjectConstructorInits FOR PersistentObject»
 	«FOREACH this.ownedAttribute AS attr»
-		«IF attr.isReadOnly == true && attr.isStatic == false»
+		«IF attr.isReadOnly() == true && attr.isStatic == false»
 			«IF attr.type.isPrimitiveType() == true»
 				«IF attr.isMultivalued() == false»
 					«IF attr.isRealInitValue()»
