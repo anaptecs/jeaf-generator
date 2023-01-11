@@ -5,9 +5,11 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -37,6 +39,18 @@ public class ParentClass implements ServiceObject {
   public static final String IBANS = "ibans";
 
   /**
+   * Constant for the name of attribute "theBankAccount".
+   */
+  @Deprecated
+  public static final String THEBANKACCOUNT = "theBankAccount";
+
+  /**
+   * Constant for the name of attribute "legacyBankAccounts".
+   */
+  @Deprecated
+  public static final String LEGACYBANKACCOUNTS = "legacyBankAccounts";
+
+  /**
    * 
    */
   private String parentAttribute;
@@ -47,11 +61,24 @@ public class ParentClass implements ServiceObject {
   private Set<IBAN> ibans;
 
   /**
+   * I would like to document references to other types.
+   */
+  @Deprecated
+  private BankAccount theBankAccount;
+
+  /**
+   * Association is still there be SemVer compliant.
+   */
+  @Deprecated
+  private List<BankAccount> legacyBankAccounts;
+
+  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected ParentClass( ) {
     ibans = new HashSet<IBAN>();
+    legacyBankAccounts = new ArrayList<BankAccount>();
   }
 
   /**
@@ -69,6 +96,13 @@ public class ParentClass implements ServiceObject {
     }
     else {
       ibans = new HashSet<IBAN>();
+    }
+    theBankAccount = pBuilder.theBankAccount;
+    if (pBuilder.legacyBankAccounts != null) {
+      legacyBankAccounts = pBuilder.legacyBankAccounts;
+    }
+    else {
+      legacyBankAccounts = new ArrayList<BankAccount>();
     }
   }
 
@@ -108,6 +142,18 @@ public class ParentClass implements ServiceObject {
     private Set<IBAN> ibans;
 
     /**
+     * I would like to document references to other types.
+     */
+    @Deprecated
+    private BankAccount theBankAccount;
+
+    /**
+     * Association is still there be SemVer compliant.
+     */
+    @Deprecated
+    private List<BankAccount> legacyBankAccounts;
+
+    /**
      * Use {@link ParentClass#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -121,6 +167,8 @@ public class ParentClass implements ServiceObject {
         // Read attribute values from passed object.
         parentAttribute = pObject.parentAttribute;
         ibans = pObject.ibans;
+        theBankAccount = pObject.theBankAccount;
+        legacyBankAccounts = pObject.legacyBankAccounts;
       }
     }
 
@@ -147,6 +195,33 @@ public class ParentClass implements ServiceObject {
       }
       else {
         ibans = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets the association "theBankAccount". I would like to document references to other types.
+     * 
+     * @param pTheBankAccount BankAccount to which the association "theBankAccount" should be set.
+     */
+    public Builder setTheBankAccount( BankAccount pTheBankAccount ) {
+      theBankAccount = pTheBankAccount;
+      return this;
+    }
+
+    /**
+     * Method sets the association "legacyBankAccounts". Association is still there be SemVer compliant.
+     * 
+     * @param pLegacyBankAccounts Collection with objects to which the association should be set.
+     */
+    @Deprecated
+    public Builder setLegacyBankAccounts( List<BankAccount> pLegacyBankAccounts ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pLegacyBankAccounts != null) {
+        legacyBankAccounts = new ArrayList<BankAccount>(pLegacyBankAccounts);
+      }
+      else {
+        legacyBankAccounts = null;
       }
       return this;
     }
@@ -257,6 +332,103 @@ public class ParentClass implements ServiceObject {
   public void clearIbans( ) {
     // Remove all objects from association "ibans".
     ibans.clear();
+  }
+
+  /**
+   * Method returns the association "theBankAccount". I would like to document references to other types.
+   *
+   * @return BankAccount BankAccount to which the association "theBankAccount" is set.
+   */
+  @Deprecated
+  public BankAccount getTheBankAccount( ) {
+    return theBankAccount;
+  }
+
+  /**
+   * Method sets the association "theBankAccount". I would like to document references to other types.
+   * 
+   * @param pTheBankAccount BankAccount to which the association "theBankAccount" should be set.
+   */
+  @Deprecated
+  public void setTheBankAccount( BankAccount pTheBankAccount ) {
+    theBankAccount = pTheBankAccount;
+  }
+
+  /**
+   * Method unsets the association "theBankAccount". I would like to document references to other types.
+   */
+  @Deprecated
+  public final void unsetTheBankAccount( ) {
+    theBankAccount = null;
+  }
+
+  /**
+   * Method returns the association "legacyBankAccounts". Association is still there be SemVer compliant.
+   *
+   * @return Collection All BankAccount objects that belong to the association "legacyBankAccounts". The method never
+   * returns null and the returned collection is unmodifiable.
+   */
+  @Deprecated
+  public List<BankAccount> getLegacyBankAccounts( ) {
+    // Return all BankAccount objects as unmodifiable collection.
+    return Collections.unmodifiableList(legacyBankAccounts);
+  }
+
+  /**
+   * Method adds the passed BankAccount object to the association "legacyBankAccounts". Association is still there be
+   * SemVer compliant.
+   * 
+   * @param pLegacyBankAccounts Object that should be added to the association "legacyBankAccounts". The parameter must
+   * not be null.
+   */
+  @Deprecated
+  public void addToLegacyBankAccounts( BankAccount pLegacyBankAccounts ) {
+    // Check parameter "pLegacyBankAccounts" for invalid value null.
+    Check.checkInvalidParameterNull(pLegacyBankAccounts, "pLegacyBankAccounts");
+    // Add passed object to collection of associated BankAccount objects.
+    legacyBankAccounts.add(pLegacyBankAccounts);
+  }
+
+  /**
+   * Method adds all passed objects to the association "legacyBankAccounts". Association is still there be SemVer
+   * compliant.
+   * 
+   * @param pLegacyBankAccounts Collection with all objects that should be added to the association
+   * "legacyBankAccounts". The parameter must not be null.
+   */
+  @Deprecated
+  public void addToLegacyBankAccounts( Collection<BankAccount> pLegacyBankAccounts ) {
+    // Check parameter "pLegacyBankAccounts" for invalid value null.
+    Check.checkInvalidParameterNull(pLegacyBankAccounts, "pLegacyBankAccounts");
+    // Add all passed objects.
+    for (BankAccount lNextObject : pLegacyBankAccounts) {
+      this.addToLegacyBankAccounts(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed BankAccount object from the association "legacyBankAccounts". Association is still there
+   * be SemVer compliant.
+   * 
+   * @param pLegacyBankAccounts Object that should be removed from the association "legacyBankAccounts". The parameter
+   * must not be null.
+   */
+  @Deprecated
+  public void removeFromLegacyBankAccounts( BankAccount pLegacyBankAccounts ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pLegacyBankAccounts, "pLegacyBankAccounts");
+    // Remove passed object from collection of associated BankAccount objects.
+    legacyBankAccounts.remove(pLegacyBankAccounts);
+  }
+
+  /**
+   * Method removes all objects from the association "legacyBankAccounts". Association is still there be SemVer
+   * compliant.
+   */
+  @Deprecated
+  public void clearLegacyBankAccounts( ) {
+    // Remove all objects from association "legacyBankAccounts".
+    legacyBankAccounts.clear();
   }
 
   /**

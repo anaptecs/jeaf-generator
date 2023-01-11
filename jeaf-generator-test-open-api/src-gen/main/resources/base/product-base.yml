@@ -416,12 +416,12 @@ components:
               deprecated: true
               nullable: false
             deprecatedBs:
-              # Attribute "deprecatedBs" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+              deprecated: true
               type: array
               items:
                 $ref: '#/components/schemas/ChildB'
             deprecatedParent:
-              # Attribute "deprecatedParent" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+              # Property "deprecatedParent" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
               $ref: '#/components/schemas/ParentClass'
             deprecatedArray:
               type: string
@@ -794,6 +794,16 @@ components:
           items:
             type: string
             pattern: '^DE\d{2}\s?([0-9a-zA-Z]{4}\s?){4}[0-9a-zA-Z]{2}$'
+        theBankAccount:
+          # Property "theBankAccount" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+          $ref: '#/components/schemas/BankAccount'
+        legacyBankAccounts:
+          description: >-
+            Association is still there be SemVer compliant.
+          deprecated: true
+          type: array
+          items:
+            $ref: '#/components/schemas/BankAccount'
 
     # com.anaptecs.jeaf.junit.openapi.base.Partner
     Partner:

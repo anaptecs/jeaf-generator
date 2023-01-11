@@ -28,6 +28,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import openapitools.model.BankAccount;
 import openapitools.model.ChildA;
 import openapitools.model.ChildAA;
 import openapitools.model.ChildB;
@@ -42,7 +43,9 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   ParentClass.JSON_PROPERTY_OBJECT_TYPE,
   ParentClass.JSON_PROPERTY_PARENT_ATTRIBUTE,
-  ParentClass.JSON_PROPERTY_IBANS
+  ParentClass.JSON_PROPERTY_IBANS,
+  ParentClass.JSON_PROPERTY_THE_BANK_ACCOUNT,
+  ParentClass.JSON_PROPERTY_LEGACY_BANK_ACCOUNTS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
@@ -62,6 +65,12 @@ public class ParentClass {
 
   public static final String JSON_PROPERTY_IBANS = "ibans";
   private List<String> ibans = null;
+
+  public static final String JSON_PROPERTY_THE_BANK_ACCOUNT = "theBankAccount";
+  private BankAccount theBankAccount;
+
+  public static final String JSON_PROPERTY_LEGACY_BANK_ACCOUNTS = "legacyBankAccounts";
+  private List<BankAccount> legacyBankAccounts = null;
 
   public ParentClass() { 
   }
@@ -152,6 +161,68 @@ public class ParentClass {
   }
 
 
+  public ParentClass theBankAccount(BankAccount theBankAccount) {
+    this.theBankAccount = theBankAccount;
+    return this;
+  }
+
+   /**
+   * Get theBankAccount
+   * @return theBankAccount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_THE_BANK_ACCOUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BankAccount getTheBankAccount() {
+    return theBankAccount;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_THE_BANK_ACCOUNT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTheBankAccount(BankAccount theBankAccount) {
+    this.theBankAccount = theBankAccount;
+  }
+
+
+  public ParentClass legacyBankAccounts(List<BankAccount> legacyBankAccounts) {
+    this.legacyBankAccounts = legacyBankAccounts;
+    return this;
+  }
+
+  public ParentClass addLegacyBankAccountsItem(BankAccount legacyBankAccountsItem) {
+    if (this.legacyBankAccounts == null) {
+      this.legacyBankAccounts = new ArrayList<>();
+    }
+    this.legacyBankAccounts.add(legacyBankAccountsItem);
+    return this;
+  }
+
+   /**
+   * Association is still there be SemVer compliant.
+   * @return legacyBankAccounts
+   * @deprecated
+  **/
+  @Deprecated
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Association is still there be SemVer compliant.")
+  @JsonProperty(JSON_PROPERTY_LEGACY_BANK_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<BankAccount> getLegacyBankAccounts() {
+    return legacyBankAccounts;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LEGACY_BANK_ACCOUNTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLegacyBankAccounts(List<BankAccount> legacyBankAccounts) {
+    this.legacyBankAccounts = legacyBankAccounts;
+  }
+
+
   /**
    * Return true if this ParentClass object is equal to o.
    */
@@ -166,12 +237,14 @@ public class ParentClass {
     ParentClass parentClass = (ParentClass) o;
     return Objects.equals(this.objectType, parentClass.objectType) &&
         Objects.equals(this.parentAttribute, parentClass.parentAttribute) &&
-        Objects.equals(this.ibans, parentClass.ibans);
+        Objects.equals(this.ibans, parentClass.ibans) &&
+        Objects.equals(this.theBankAccount, parentClass.theBankAccount) &&
+        Objects.equals(this.legacyBankAccounts, parentClass.legacyBankAccounts);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectType, parentAttribute, ibans);
+    return Objects.hash(objectType, parentAttribute, ibans, theBankAccount, legacyBankAccounts);
   }
 
   @Override
@@ -181,6 +254,8 @@ public class ParentClass {
     sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
     sb.append("    parentAttribute: ").append(toIndentedString(parentAttribute)).append("\n");
     sb.append("    ibans: ").append(toIndentedString(ibans)).append("\n");
+    sb.append("    theBankAccount: ").append(toIndentedString(theBankAccount)).append("\n");
+    sb.append("    legacyBankAccounts: ").append(toIndentedString(legacyBankAccounts)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -14,6 +14,7 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.anaptecs.jeaf.openapi.BankAccount;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -44,6 +45,12 @@ public class ParentClass {
 
   @JsonProperty("ibans")
   private List<String> ibans = null;
+
+  @JsonProperty("theBankAccount")
+  private BankAccount theBankAccount = null;
+
+  @JsonProperty("legacyBankAccounts")
+  private List<BankAccount> legacyBankAccounts = null;
 
   public ParentClass objectType(String objectType) {
     this.objectType = objectType;
@@ -107,6 +114,50 @@ public class ParentClass {
     this.ibans = ibans;
   }
 
+  public ParentClass theBankAccount(BankAccount theBankAccount) {
+    this.theBankAccount = theBankAccount;
+    return this;
+  }
+
+   /**
+   * Get theBankAccount
+   * @return theBankAccount
+  **/
+  @Schema(description = "")
+  public BankAccount getTheBankAccount() {
+    return theBankAccount;
+  }
+
+  public void setTheBankAccount(BankAccount theBankAccount) {
+    this.theBankAccount = theBankAccount;
+  }
+
+  public ParentClass legacyBankAccounts(List<BankAccount> legacyBankAccounts) {
+    this.legacyBankAccounts = legacyBankAccounts;
+    return this;
+  }
+
+  public ParentClass addLegacyBankAccountsItem(BankAccount legacyBankAccountsItem) {
+    if (this.legacyBankAccounts == null) {
+      this.legacyBankAccounts = new ArrayList<>();
+    }
+    this.legacyBankAccounts.add(legacyBankAccountsItem);
+    return this;
+  }
+
+   /**
+   * Association is still there be SemVer compliant.
+   * @return legacyBankAccounts
+  **/
+  @Schema(description = "Association is still there be SemVer compliant.")
+  public List<BankAccount> getLegacyBankAccounts() {
+    return legacyBankAccounts;
+  }
+
+  public void setLegacyBankAccounts(List<BankAccount> legacyBankAccounts) {
+    this.legacyBankAccounts = legacyBankAccounts;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -119,12 +170,14 @@ public class ParentClass {
     ParentClass parentClass = (ParentClass) o;
     return Objects.equals(this.objectType, parentClass.objectType) &&
         Objects.equals(this.parentAttribute, parentClass.parentAttribute) &&
-        Objects.equals(this.ibans, parentClass.ibans);
+        Objects.equals(this.ibans, parentClass.ibans) &&
+        Objects.equals(this.theBankAccount, parentClass.theBankAccount) &&
+        Objects.equals(this.legacyBankAccounts, parentClass.legacyBankAccounts);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectType, parentAttribute, ibans);
+    return Objects.hash(objectType, parentAttribute, ibans, theBankAccount, legacyBankAccounts);
   }
 
 
@@ -136,6 +189,8 @@ public class ParentClass {
     sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
     sb.append("    parentAttribute: ").append(toIndentedString(parentAttribute)).append("\n");
     sb.append("    ibans: ").append(toIndentedString(ibans)).append("\n");
+    sb.append("    theBankAccount: ").append(toIndentedString(theBankAccount)).append("\n");
+    sb.append("    legacyBankAccounts: ").append(toIndentedString(legacyBankAccounts)).append("\n");
     sb.append("}");
     return sb.toString();
   }

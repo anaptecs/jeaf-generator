@@ -132,10 +132,10 @@
               «ENDIF-»
             «ENDIF-»
           «ELSE-»
-            «IF attribute.isDeprecated() -»
-          # Attribute "«attribute.getAttributeName()»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
-            «ENDIF-»
             «IF attribute.isMultivalued() == false-»
+              «IF attribute.isDeprecated() -»
+          # Property "«attribute.getAttributeName()»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+              «ENDIF-»
               «IF isOneOfForClassHierachieEnabled() && attribute.type.getAllConcreteSubclasses().size > 0 -»
           oneOf:
                 «IF ((Class)attribute.type).isAbstract == false -»
@@ -148,6 +148,9 @@
           $ref: «attribute.type.getOpenAPIType(spec)»
               «ENDIF-»
             «ELSE-»
+              «IF attribute.isDeprecated() -»
+          deprecated: true
+              «ENDIF-»
           type: array
           items:
               «IF isOneOfForClassHierachieEnabled() && attribute.type.getAllConcreteSubclasses().size > 0 -»
@@ -272,10 +275,10 @@
               «ENDIF-»
             «ENDIF-»
           «ELSE-»
-            «IF attribute.isDeprecated() -»
-              # Attribute "«attribute.getAttributeName()»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
-            «ENDIF-»
             «IF attribute.isMultivalued() == false-»
+              «IF attribute.isDeprecated() -»
+              # Property "«attribute.getAttributeName()»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+              «ENDIF-»
               «IF isOneOfForClassHierachieEnabled() && attribute.type.getAllConcreteSubclasses().size > 0 -»
               oneOf:
                 «IF ((Class)attribute.type).isAbstract == false -»
@@ -288,6 +291,9 @@
               $ref: «attribute.type.getOpenAPIType(spec)»
               «ENDIF-»
             «ELSE-»
+              «IF attribute.isDeprecated() -»
+              deprecated: true
+              «ENDIF-»
               type: array
               items:
               «IF isOneOfForClassHierachieEnabled() && attribute.type.getAllConcreteSubclasses().size > 0 -»
