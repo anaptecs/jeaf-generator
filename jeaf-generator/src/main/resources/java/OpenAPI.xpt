@@ -19,7 +19,7 @@ info:
   title: «name»
   version: «IF apiVersion.length > 0»«apiVersion»«ELSE»«getMavenVersion()»«ENDIF»
   «IF this.hasComment() -»
-  description: >-
+  description: «getOpenAPICommentStyle()»
     «this.getCommentForOpenAPIDescription("    ")»
   «ENDIF-»
   «IF termsOfUseURL.length > 0 -»
@@ -52,7 +52,7 @@ servers:
   «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIServer).sortBy(e|e.name).sortBy(e|e.order) AS server-»
   - url: «server.url»
     «IF server.hasComment() -»
-    description: >-
+    description: «getOpenAPICommentStyle()»
       «server.getCommentForOpenAPIDescription("      ")»
     «ENDIF-»    
   «ENDFOREACH-»
@@ -102,7 +102,7 @@ components:
       name: «EXPAND RESTParamName FOR parameter»
       in: «parameter.getOpenAPIParameterType()»
       «IF parameter.hasComment()-»
-      description: >-
+      description: «getOpenAPICommentStyle()»
         «parameter.getCommentForOpenAPIDescription("        ")»
       «ENDIF-»
       schema:
@@ -263,7 +263,7 @@ components:
       summary: «operation.summary»
       «ENDIF-»
       «IF operation.hasComment()-»
-      description: >-
+      description: «getOpenAPICommentStyle()»
         «operation.getCommentForOpenAPIDescription("        ")»
       «ENDIF-»
       operationId: «IF operation.operationID.length > 0»«operation.operationID»«ELSE»«operation.getOperationID(service)»«ENDIF»
@@ -284,7 +284,7 @@ components:
         - name: «EXPAND RESTParamName FOR property»
           in: «property.getOpenAPIParameterType()»
           «IF property.hasComment()-»
-          description: >-
+          description: «getOpenAPICommentStyle()»
             «property.getCommentForOpenAPIDescription("            ")»
           «ENDIF-»
           «IF property.isRequiredProperty() -»
@@ -339,7 +339,7 @@ components:
         - name: «EXPAND RESTParamName FOR param»
           in: «param.getOpenAPIParameterType()»
           «IF param.hasComment()|| param.hasDefaultValueForEnum() -»
-          description: >-
+          description: «getOpenAPICommentStyle()»
             «IF param.hasComment()-»
             «param.getCommentForOpenAPIDescription("            ")»
             «ENDIF-»
@@ -406,7 +406,7 @@ components:
       requestBody:
       «FOREACH operation.getRequestBodyParameters() AS param-»
         «IF param.hasComment() || (param.isDeprecated() && param.type.isBasicOpenAPIType() == false) -»
-        description: >-
+        description: «getOpenAPICommentStyle()»
           «IF param.hasComment()»«param.getCommentForOpenAPIDescription("          ")»«ENDIF»
           «IF param.isDeprecated() && param.type.isBasicOpenAPIType() == false-»
           Operation has deprected body parameter. Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
@@ -471,7 +471,7 @@ components:
           «IF operation.hasReturnTypeVoid() == false-»
         '«operation.getHTTPStatusCode()»':
           «LET operation.getReturnResult() AS returnParam-»
-          description: >-
+          description: «getOpenAPICommentStyle()»
             «IF returnParam.hasComment()»«returnParam.getCommentForOpenAPIDescription("            ")»«ELSE»TODO: Please add comment for response«ENDIF»
             «IF returnParam.isDeprecated() && returnParam.type.isBasicOpenAPIType() == false-»
             Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
@@ -533,7 +533,7 @@ components:
                 default: '«headerField.defaultValue.stringValue().replaceAll("\"", "")»'
                 «ENDIF-»
                 «IF headerField.hasComment()-»
-                description: >-
+                description: «getOpenAPICommentStyle()»
                   «headerField.getCommentForOpenAPIDescription("                    ")»
                 «ENDIF-»
             «ENDFOREACH-»
@@ -554,7 +554,7 @@ components:
     «ENDIF-»
     «this.name»:
       «IF this.hasComment()-»
-      description: >-
+      description: «getOpenAPICommentStyle()»
         «this.getCommentForOpenAPIDescription("        ")»
       «ELSE -»
       description: TODO Please add comment to error response type
@@ -573,7 +573,7 @@ components:
     «ENDIF-»
     «this.name»:
       «IF this.hasOpenAPIComment()-»
-      description: >-
+      description: «getOpenAPICommentStyle()»
         «IF this.hasComment() -»
         «this.getCommentForOpenAPIDescription("        ")»
         «ENDIF-»
@@ -622,7 +622,7 @@ components:
 «DEFINE GenerateTags FOR OpenAPITag -»
   - name: «this.name»
     «IF this.hasComment()-»
-    description: >-
+    description: «getOpenAPICommentStyle()»
       «this.getCommentForOpenAPIDescription("      ")»
     «ENDIF-»    
     «IF this.externalDocsURL.length > 0 -»

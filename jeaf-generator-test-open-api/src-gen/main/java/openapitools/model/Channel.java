@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * The version of the OpenAPI document: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -87,11 +87,11 @@ public class Channel {
   }
 
    /**
-   * The business code of the channel
+   * The business code of the channel 
    * @return channelCode
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "MOBILE_APP", required = true, value = "The business code of the channel")
+  @ApiModelProperty(example = "MOBILE_APP", required = true, value = "The business code of the channel ")
   @JsonProperty(JSON_PROPERTY_CHANNEL_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

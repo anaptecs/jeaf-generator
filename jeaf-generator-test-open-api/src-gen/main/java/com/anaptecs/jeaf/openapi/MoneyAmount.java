@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * OpenAPI spec version: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -19,9 +19,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 /**
- * Type represents an amount of money.         NOVA 14 Mapping * nova-base.xsd.GeldBetrag
+ * Type represents an amount of money.         NOVA 14 Mapping * nova-base.xsd.GeldBetrag 
  */
-@Schema(description = "Type represents an amount of money.         NOVA 14 Mapping * nova-base.xsd.GeldBetrag")
+@Schema(description = "Type represents an amount of money.         NOVA 14 Mapping * nova-base.xsd.GeldBetrag ")
 
 public class MoneyAmount {
   @JsonProperty("amount")
@@ -36,10 +36,10 @@ public class MoneyAmount {
   }
 
    /**
-   * The amount of money. Attribute is always set.
+   * The amount of money. Attribute is always set. 
    * @return amount
   **/
-  @Schema(required = true, description = "The amount of money. Attribute is always set.")
+  @Schema(required = true, description = "The amount of money. Attribute is always set. ")
   public Double getAmount() {
     return amount;
   }

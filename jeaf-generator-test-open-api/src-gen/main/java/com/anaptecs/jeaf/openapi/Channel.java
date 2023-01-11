@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * OpenAPI spec version: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -61,10 +61,10 @@ public class Channel {
   }
 
    /**
-   * The business code of the channel
+   * The business code of the channel 
    * @return channelCode
   **/
-  @Schema(example = "MOBILE_APP", required = true, description = "The business code of the channel")
+  @Schema(example = "MOBILE_APP", required = true, description = "The business code of the channel ")
   public String getChannelCode() {
     return channelCode;
   }

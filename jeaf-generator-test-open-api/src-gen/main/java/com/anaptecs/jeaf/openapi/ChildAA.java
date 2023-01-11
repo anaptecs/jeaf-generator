@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * OpenAPI spec version: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -51,10 +51,10 @@ public class ChildAA extends ChildA {
   }
 
    /**
-   * Multi line docs
+   * Multi line docs 
    * @return childAAAttribute
   **/
-  @Schema(required = true, description = "Multi line docs")
+  @Schema(required = true, description = "Multi line docs ")
   public Integer getChildAAAttribute() {
     return childAAAttribute;
   }

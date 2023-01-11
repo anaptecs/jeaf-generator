@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * OpenAPI spec version: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -79,10 +79,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
    /**
-   * additional bookings
+   * additional bookings 
    * @return additionalBookings
   **/
-  @Schema(description = "additional bookings")
+  @Schema(description = "additional bookings ")
   public List<String> getAdditionalBookings() {
     return additionalBookings;
   }
@@ -97,10 +97,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
    /**
-   * soft link 2nd line 3rd line
+   * soft link 2nd line 3rd line 
    * @return versionedObjectSoftLink
   **/
-  @Schema(required = true, description = "soft link 2nd line 3rd line")
+  @Schema(required = true, description = "soft link 2nd line 3rd line ")
   public String getVersionedObjectSoftLink() {
     return versionedObjectSoftLink;
   }

@@ -3,7 +3,7 @@ openapi: 3.0.3
 info:
   title: Product Base Definitions
   version: 0.0.1
-  description: >-
+  description: |
     This component represents the Open API interface of the accounting service.
   contact:
     name: JEAF Development Team
@@ -105,7 +105,7 @@ components:
   responses:
     # com.anaptecs.jeaf.junit.openapi.base.ErrorResponse
     ErrorResponse:
-      description: >-
+      description: |
         Generic error response type that is used in all cases.
       content:
         application/problem+json:
@@ -221,7 +221,7 @@ components:
         - bookingID
       properties:
         bookingID:
-          description: >-
+          description: |
             ID of the booking
           type: string
           nullable: false
@@ -271,7 +271,7 @@ components:
         channelType:
           $ref: '#/components/schemas/ChannelType'
         channelCode:
-          description: >-
+          description: |
             The business code of the channel
           type: string
           default: 'WEBSHOP'
@@ -288,7 +288,7 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.ChannelType
     ChannelType:
-      description: >-
+      description: |
         Valid Values:
         - COUNTER
         - CALL_CENTER
@@ -308,7 +308,7 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildA
     ChildA:
-      description: >-
+      description: |
         single line class comment
       allOf:
         - $ref: '#/components/schemas/ParentClass'
@@ -335,7 +335,7 @@ components:
             - bigIntegerCode
           properties:
             childAAAttribute:
-              description: >-
+              description: |
                 Multi
                 line
                 docs
@@ -371,7 +371,7 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildB
     ChildB:
-      description: >-
+      description: |
         Multi
         line
         class
@@ -382,7 +382,7 @@ components:
           additionalProperties: false
           properties:
             childBAttribute:
-              description: >-
+              description: |
                 A child attribute
               type: array
               items:
@@ -390,7 +390,7 @@ components:
               minItems: 11
               maxItems: 42
             composition:
-              description: >-
+              description: |
                 the composition
               type: array
               items:
@@ -560,7 +560,7 @@ components:
     Duration:
       type: object
       additionalProperties: false
-      description: >-
+      description: |
         Type represents a duration.
          
         NOVA 14 Mapping
@@ -691,7 +691,7 @@ components:
     MoneyAmount:
       type: object
       additionalProperties: false
-      description: >-
+      description: |
         Type represents an amount of money.
                
         NOVA 14 Mapping
@@ -701,7 +701,7 @@ components:
         - currencyCode
       properties:
         amount:
-          description: >-
+          description: |
             The amount of money. Attribute is always set.
           type: number
           format: double
@@ -798,7 +798,7 @@ components:
           # Property "theBankAccount" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
           $ref: '#/components/schemas/BankAccount'
         legacyBankAccounts:
-          description: >-
+          description: |
             Association is still there be SemVer compliant.
           deprecated: true
           type: array
@@ -1390,7 +1390,7 @@ components:
     Product:
       type: object
       additionalProperties: false
-      description: >-
+      description: |
         Data type represents a product definition
       required:
         - name
@@ -1410,7 +1410,7 @@ components:
           minLength: 12
           nullable: false
         image:
-          description: >-
+          description: |
             Image describing the product.
           type: string
           format: byte
@@ -1532,7 +1532,7 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
     TimeUnit:
-      description: >-
+      description: |
         Enumeration represents time units.
              
         NOVA 14 Mapping
@@ -1621,13 +1621,13 @@ components:
               type: string
               nullable: false
             additionalBookings:
-              description: >-
+              description: |
                 additional bookings
               type: array
               items:
                 type: string
             versionedObjectSoftLink:
-              description: >-
+              description: |
                 soft link
                 2nd line
                 3rd line

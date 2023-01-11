@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * The version of the OpenAPI document: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -33,9 +33,9 @@ import openapitools.JSON;
 
 
 /**
- * Data type represents a product definition
+ * Data type represents a product definition 
  */
-@ApiModel(description = "Data type represents a product definition")
+@ApiModel(description = "Data type represents a product definition ")
 @JsonPropertyOrder({
   Product.JSON_PROPERTY_RESELLERS,
   Product.JSON_PROPERTY_NAME,
@@ -145,11 +145,11 @@ public class Product {
   }
 
    /**
-   * Image describing the product.
+   * Image describing the product. 
    * @return image
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Image describing the product.")
+  @ApiModelProperty(value = "Image describing the product. ")
   @JsonProperty(JSON_PROPERTY_IMAGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

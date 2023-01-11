@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * OpenAPI spec version: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -23,9 +23,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * Multi line class comment
+ * Multi line class comment 
  */
-@Schema(description = "Multi line class comment")
+@Schema(description = "Multi line class comment ")
 
 public class ChildB extends ParentClass {
   @JsonProperty("childBAttribute")
@@ -48,10 +48,10 @@ public class ChildB extends ParentClass {
   }
 
    /**
-   * A child attribute
+   * A child attribute 
    * @return childBAttribute
   **/
-  @Schema(description = "A child attribute")
+  @Schema(description = "A child attribute ")
   public List<Boolean> getChildBAttribute() {
     return childBAttribute;
   }
@@ -74,10 +74,10 @@ public class ChildB extends ParentClass {
   }
 
    /**
-   * the composition
+   * the composition 
    * @return composition
   **/
-  @Schema(description = "the composition")
+  @Schema(description = "the composition ")
   public List<ParentClass> getComposition() {
     return composition;
   }

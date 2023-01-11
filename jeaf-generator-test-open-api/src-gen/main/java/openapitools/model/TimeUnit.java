@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * The version of the OpenAPI document: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Enumeration represents time units.       NOVA 14 Mapping * nova-base.xsd.ZeitEinheit Valid Values: - MINUTE: Literal represents time unit \&quot;minutes\&quot;. - HOUR - DAY - WEEK: Literal represents time unit \&quot;weeks\&quot;.     This is the comments second line ;-) - MONTH - YEAR
+ * Enumeration represents time units.       NOVA 14 Mapping * nova-base.xsd.ZeitEinheit Valid Values: - MINUTE: Literal represents time unit \&quot;minutes\&quot;. - HOUR - DAY - WEEK: Literal represents time unit \&quot;weeks\&quot;.     This is the comments second line ;-) - MONTH - YEAR 
  */
 public enum TimeUnit {
   

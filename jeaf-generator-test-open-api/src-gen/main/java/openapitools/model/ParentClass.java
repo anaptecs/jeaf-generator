@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * The version of the OpenAPI document: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -201,13 +201,13 @@ public class ParentClass {
   }
 
    /**
-   * Association is still there be SemVer compliant.
+   * Association is still there be SemVer compliant. 
    * @return legacyBankAccounts
    * @deprecated
   **/
   @Deprecated
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Association is still there be SemVer compliant.")
+  @ApiModelProperty(value = "Association is still there be SemVer compliant. ")
   @JsonProperty(JSON_PROPERTY_LEGACY_BANK_ACCOUNTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

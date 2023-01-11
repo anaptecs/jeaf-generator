@@ -25,7 +25,7 @@
       additionalProperties: false
       «IF this.hasComment()-»
         «IF this.hasMultiLineComment()-»
-      description: >-
+      description: «getOpenAPICommentStyle()»
         «this.getCommentForOpenAPIDescription("        ")»
         «ELSE-»
       description: «this.getCommentForOpenAPIDescription("            ")»
@@ -74,7 +74,7 @@
             «IF attribute.type.isBasicOpenAPIType() == false && attribute.isMultivalued() == false-»
             «ELSE-»
               «IF attribute.hasMultiLineComment()-»
-          description: >-
+          description: «getOpenAPICommentStyle()»
             «attribute.getCommentForOpenAPIDescription("            ")»
               «ELSE-»
           description: «attribute.getCommentForOpenAPIDescription("            ")»
@@ -179,7 +179,7 @@
     «this.name»:
       «IF this.hasComment()-»
         «IF this.hasMultiLineComment()-»
-      description: >-
+      description: «getOpenAPICommentStyle()»
         «this.getCommentForOpenAPIDescription("        ")»
         «ELSE-»
       description: «this.getCommentForOpenAPIDescription("        ")»
@@ -209,7 +209,7 @@
             «IF attribute.type.isBasicOpenAPIType() == false && attribute.isMultivalued() == false-»
             «ELSE-»
               «IF attribute.hasMultiLineComment()-»
-              description: >-
+              description: «getOpenAPICommentStyle()»
                 «attribute.getCommentForOpenAPIDescription("                ")»
               «ELSE-»
               description: «attribute.getCommentForOpenAPIDescription("                ")»

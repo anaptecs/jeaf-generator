@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * OpenAPI spec version: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -22,9 +22,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * Data type represents a product definition
+ * Data type represents a product definition 
  */
-@Schema(description = "Data type represents a product definition")
+@Schema(description = "Data type represents a product definition ")
 
 public class Product {
   @JsonProperty("resellers")
@@ -104,10 +104,10 @@ public class Product {
   }
 
    /**
-   * Image describing the product.
+   * Image describing the product. 
    * @return image
   **/
-  @Schema(description = "Image describing the product.")
+  @Schema(description = "Image describing the product. ")
   public byte[] getImage() {
     return image;
   }

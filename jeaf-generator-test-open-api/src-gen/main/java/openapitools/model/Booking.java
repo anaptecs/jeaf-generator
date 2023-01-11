@@ -1,6 +1,6 @@
 /*
  * Product Base Definitions
- * This component represents the Open API interface of the accounting service.
+ * This component represents the Open API interface of the accounting service. 
  *
  * The version of the OpenAPI document: 0.0.1
  * Contact: jeaf@anaptecs.de
@@ -48,11 +48,11 @@ public class Booking {
   }
 
    /**
-   * ID of the booking
+   * ID of the booking 
    * @return bookingID
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "ID of the booking")
+  @ApiModelProperty(required = true, value = "ID of the booking ")
   @JsonProperty(JSON_PROPERTY_BOOKING_I_D)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
