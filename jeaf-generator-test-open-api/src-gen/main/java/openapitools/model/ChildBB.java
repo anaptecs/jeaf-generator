@@ -28,6 +28,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import openapitools.model.BankAccount;
 import openapitools.model.ChildB;
 import openapitools.model.ChildBBAllOf;
 import openapitools.model.ParentClass;
@@ -137,7 +138,9 @@ public class ChildBB extends ChildB {
    /**
    * Get deprecatedBs
    * @return deprecatedBs
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_DEPRECATED_BS)

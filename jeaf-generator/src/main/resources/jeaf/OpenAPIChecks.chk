@@ -61,3 +61,6 @@ context HeaderParam if runChecks("HeaderParam") WARNING this.getWarningMessage("
 
 // Checks for stereotype BeanParam
 context BeanParam if runChecks("RESTOperation") WARNING this.getWarningMessage("9103", {this.fqn(), this.getOpenAPIIncompatibleBeanProperties().asPropertyErrorMessage().toString()}): this.getOpenAPIIncompatibleBeanProperties().size == 0;
+
+// Checks for deprecations that are not supported by OpenAPI
+context Property if ((NamedElement)owner).runChecks("OpenAPIType") WARNING this.getWarningMessage("9154", {((NamedElement)owner).name + "." + name}): !(this.isMultivalued() == false && this.type.isBasicOpenAPIType() == false && this.isDeprecated() && owner.isStereotypeApplied("OpenAPIType"));

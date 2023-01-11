@@ -28,6 +28,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import openapitools.model.BankAccount;
 import openapitools.model.ChildA;
 import openapitools.model.ChildAAAllOf;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;

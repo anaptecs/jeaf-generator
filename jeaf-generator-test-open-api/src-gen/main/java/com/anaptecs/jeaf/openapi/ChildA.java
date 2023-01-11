@@ -14,6 +14,7 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.anaptecs.jeaf.openapi.BankAccount;
 import com.anaptecs.jeaf.openapi.ParentClass;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;

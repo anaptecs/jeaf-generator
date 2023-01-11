@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -97,6 +98,30 @@ public abstract class ChildA extends ParentClass {
     public Builder setIbans( Set<IBAN> pIbans ) {
       // Call super class implementation.
       super.setIbans(pIbans);
+      return this;
+    }
+
+    /**
+     * Method sets the association "theBankAccount". I would like to document references to other types.
+     * 
+     * @param pTheBankAccount BankAccount to which the association "theBankAccount" should be set.
+     */
+    @Override
+    public Builder setTheBankAccount( BankAccount pTheBankAccount ) {
+      // Call super class implementation.
+      super.setTheBankAccount(pTheBankAccount);
+      return this;
+    }
+
+    /**
+     * Method sets the association "legacyBankAccounts". Association is still there be SemVer compliant.
+     * 
+     * @param pLegacyBankAccounts Collection with objects to which the association should be set.
+     */
+    @Override
+    public Builder setLegacyBankAccounts( List<BankAccount> pLegacyBankAccounts ) {
+      // Call super class implementation.
+      super.setLegacyBankAccounts(pLegacyBankAccounts);
       return this;
     }
 

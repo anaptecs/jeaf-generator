@@ -132,7 +132,9 @@ public class ChildBBAllOf {
    /**
    * Get deprecatedBs
    * @return deprecatedBs
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_DEPRECATED_BS)
