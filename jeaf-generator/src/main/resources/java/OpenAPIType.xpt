@@ -81,8 +81,9 @@
               «ENDIF-»
             «ENDIF-»
           «ENDIF-»
-          «IF attribute.type.isBasicOpenAPIType() == true-»
+          «IF attribute.type.isBasicOpenAPIType() || attribute.isSoftLink() -»
             «IF attribute.isMultivalued() == false-»
+            «IF attribute.type.isBasicOpenAPIType()-»
           type: «attribute.type.getOpenAPIType(spec)»
               «IF attribute.hasOpenAPIFormatForProperty()-»
           format: «attribute.getOpenAPIFormatForProperty()»
@@ -94,10 +95,30 @@
               «IF attribute.isDeprecated() -»
           deprecated: true
               «ENDIF-»
+              «REM»SoftLink«ENDREM-»
+              «ELSE-»
+          type: «((SoftLink)attribute).getOpenAPISoftLinkType()»
+              «IF ((SoftLink)attribute).hasOpenAPISoftLinkFormat() -»
+          format: «((SoftLink)attribute).getOpenAPISoftLinkFormat()»
+              «ENDIF-»
+              «IF attribute.isDeprecated() -»
+          deprecated: true
+              «ENDIF-»
+              «ENDIF-»
             «ELSE-»
               «IF attribute.type.isByteType() -»
           type: string
           format: byte
+              «ELSEIF attribute.isSoftLink()-»
+          type: array
+          items:
+            type: «((SoftLink)attribute).getOpenAPISoftLinkType()»
+              «IF ((SoftLink)attribute).hasOpenAPISoftLinkFormat() -»
+            format: «((SoftLink)attribute).getOpenAPISoftLinkFormat()»
+              «ENDIF-»
+              «IF attribute.isDeprecated() -»
+          deprecated: true
+              «ENDIF-»
               «ELSE -»
           type: array
           items:
@@ -131,6 +152,7 @@
           example: «((Example) attribute).exampleValue»
               «ENDIF-»
             «ENDIF-»
+          «REM»Handling complex types«ENDREM-»
           «ELSE-»
             «IF attribute.isMultivalued() == false-»
               «IF attribute.isDeprecated() -»
@@ -216,8 +238,9 @@
               «ENDIF-»
             «ENDIF-»
           «ENDIF-»
-          «IF attribute.type.isBasicOpenAPIType() == true-»
+          «IF attribute.type.isBasicOpenAPIType() || attribute.isSoftLink() -»
             «IF attribute.isMultivalued() == false-»
+              «IF attribute.type.isBasicOpenAPIType()-»
               type: «attribute.type.getOpenAPIType(spec)»
               «IF attribute.hasOpenAPIFormatForProperty()-»
               format: «attribute.getOpenAPIFormatForProperty()»
@@ -228,6 +251,16 @@
               «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR attribute-»    
               «IF attribute.isDeprecated() -»
               deprecated: true
+              «ENDIF-»
+              «REM»SoftLink«ENDREM-»
+              «ELSE-»
+              type: «((SoftLink)attribute).getOpenAPISoftLinkType()»
+              «IF ((SoftLink)attribute).hasOpenAPISoftLinkFormat() -»
+              format: «((SoftLink)attribute).getOpenAPISoftLinkFormat()»
+              «ENDIF-»
+              «IF attribute.isDeprecated() -»
+              deprecated: true
+              «ENDIF-»
               «ENDIF-»
             «ELSE-»
               «IF attribute.type.isByteType() -»
@@ -240,6 +273,16 @@
                 «IF ((Size) attribute).max != -1-»
               maxLength: «((Size) attribute).max»
                 «ENDIF-»
+              «ENDIF-»
+              «ELSEIF attribute.isSoftLink()-»
+              type: array
+              items:
+                type: «((SoftLink)attribute).getOpenAPISoftLinkType()»
+              «IF ((SoftLink)attribute).hasOpenAPISoftLinkFormat() -»
+                format: «((SoftLink)attribute).getOpenAPISoftLinkFormat()»
+              «ENDIF-»
+              «IF attribute.isDeprecated() -»
+              deprecated: true
               «ENDIF-»
               «ELSE -»
               type: array
@@ -274,6 +317,7 @@
               example: «((Example) attribute).exampleValue»
               «ENDIF-»
             «ENDIF-»
+          «REM»Handling complex types«ENDREM-»
           «ELSE-»
             «IF attribute.isMultivalued() == false-»
               «IF attribute.isDeprecated() -»

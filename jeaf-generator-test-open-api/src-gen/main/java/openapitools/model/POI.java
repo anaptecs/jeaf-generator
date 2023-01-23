@@ -39,7 +39,9 @@ import openapitools.JSON;
  * POI
  */
 @JsonPropertyOrder({
-  POI.JSON_PROPERTY_DESCRIPTION
+  POI.JSON_PROPERTY_DESCRIPTION,
+  POI.JSON_PROPERTY_THE_LINK,
+  POI.JSON_PROPERTY_EVEN_MORE_LINKS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
@@ -47,6 +49,12 @@ import openapitools.JSON;
 public class POI extends Stop {
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
+
+  public static final String JSON_PROPERTY_THE_LINK = "theLink";
+  private Long theLink;
+
+  public static final String JSON_PROPERTY_EVEN_MORE_LINKS = "evenMoreLinks";
+  private List<String> evenMoreLinks = null;
 
   public POI() { 
   }
@@ -77,6 +85,70 @@ public class POI extends Stop {
   }
 
 
+  public POI theLink(Long theLink) {
+    this.theLink = theLink;
+    return this;
+  }
+
+   /**
+   * Get theLink
+   * @return theLink
+   * @deprecated
+  **/
+  @Deprecated
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_THE_LINK)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Long getTheLink() {
+    return theLink;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_THE_LINK)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTheLink(Long theLink) {
+    this.theLink = theLink;
+  }
+
+
+  public POI evenMoreLinks(List<String> evenMoreLinks) {
+    this.evenMoreLinks = evenMoreLinks;
+    return this;
+  }
+
+  public POI addEvenMoreLinksItem(String evenMoreLinksItem) {
+    if (this.evenMoreLinks == null) {
+      this.evenMoreLinks = new ArrayList<>();
+    }
+    this.evenMoreLinks.add(evenMoreLinksItem);
+    return this;
+  }
+
+   /**
+   * Get evenMoreLinks
+   * @return evenMoreLinks
+   * @deprecated
+  **/
+  @Deprecated
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_EVEN_MORE_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getEvenMoreLinks() {
+    return evenMoreLinks;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EVEN_MORE_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEvenMoreLinks(List<String> evenMoreLinks) {
+    this.evenMoreLinks = evenMoreLinks;
+  }
+
+
   /**
    * Return true if this POI object is equal to o.
    */
@@ -90,12 +162,14 @@ public class POI extends Stop {
     }
     POI POI = (POI) o;
     return Objects.equals(this.description, POI.description) &&
+        Objects.equals(this.theLink, POI.theLink) &&
+        Objects.equals(this.evenMoreLinks, POI.evenMoreLinks) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, super.hashCode());
+    return Objects.hash(description, theLink, evenMoreLinks, super.hashCode());
   }
 
   @Override
@@ -104,6 +178,8 @@ public class POI extends Stop {
     sb.append("class POI {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    theLink: ").append(toIndentedString(theLink)).append("\n");
+    sb.append("    evenMoreLinks: ").append(toIndentedString(evenMoreLinks)).append("\n");
     sb.append("}");
     return sb.toString();
   }

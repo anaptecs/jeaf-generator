@@ -10,9 +10,12 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -35,11 +38,26 @@ public class Campaign implements ServiceObject {
   private List<DiscountOffer> discountOffers;
 
   /**
+   * 
+   */
+  @Deprecated
+  private LinkObject theLink;
+
+  /**
+   * 
+   */
+  @Deprecated
+  @Size(min = 1)
+  @NotNull
+  private Set<LinkObject> moreLinks;
+
+  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected Campaign( ) {
     discountOffers = new ArrayList<DiscountOffer>();
+    moreLinks = new HashSet<LinkObject>();
   }
 
   /**
@@ -56,6 +74,13 @@ public class Campaign implements ServiceObject {
     }
     else {
       discountOffers = new ArrayList<DiscountOffer>();
+    }
+    theLink = pBuilder.theLink;
+    if (pBuilder.moreLinks != null) {
+      moreLinks = pBuilder.moreLinks;
+    }
+    else {
+      moreLinks = new HashSet<LinkObject>();
     }
   }
 
@@ -89,6 +114,18 @@ public class Campaign implements ServiceObject {
     private List<DiscountOffer> discountOffers;
 
     /**
+     * 
+     */
+    @Deprecated
+    private LinkObject theLink;
+
+    /**
+     * 
+     */
+    @Deprecated
+    private Set<LinkObject> moreLinks;
+
+    /**
      * Use {@link Campaign#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -101,6 +138,8 @@ public class Campaign implements ServiceObject {
       if (pObject != null) {
         // Read attribute values from passed object.
         discountOffers = pObject.discountOffers;
+        theLink = pObject.theLink;
+        moreLinks = pObject.moreLinks;
       }
     }
 
@@ -116,6 +155,33 @@ public class Campaign implements ServiceObject {
       }
       else {
         discountOffers = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets the association "theLink".
+     * 
+     * @param pTheLink LinkObject to which the association "theLink" should be set.
+     */
+    public Builder setTheLink( LinkObject pTheLink ) {
+      theLink = pTheLink;
+      return this;
+    }
+
+    /**
+     * Method sets the association "moreLinks".
+     * 
+     * @param pMoreLinks Collection with objects to which the association should be set.
+     */
+    @Deprecated
+    public Builder setMoreLinks( Set<LinkObject> pMoreLinks ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pMoreLinks != null) {
+        moreLinks = new HashSet<LinkObject>(pMoreLinks);
+      }
+      else {
+        moreLinks = null;
       }
       return this;
     }
@@ -224,6 +290,105 @@ public class Campaign implements ServiceObject {
   }
 
   /**
+   * Method returns the association "theLink".
+   * 
+   *
+   * @return LinkObject LinkObject to which the association "theLink" is set.
+   */
+  @Deprecated
+  public LinkObject getTheLink( ) {
+    return theLink;
+  }
+
+  /**
+   * Method sets the association "theLink".
+   * 
+   * 
+   * @param pTheLink LinkObject to which the association "theLink" should be set.
+   */
+  @Deprecated
+  public void setTheLink( LinkObject pTheLink ) {
+    theLink = pTheLink;
+  }
+
+  /**
+   * Method unsets the association "theLink".
+   * 
+   */
+  @Deprecated
+  public final void unsetTheLink( ) {
+    theLink = null;
+  }
+
+  /**
+   * Method returns the association "moreLinks".
+   * 
+   *
+   * @return Collection All LinkObject objects that belong to the association "moreLinks". The method never returns null
+   * and the returned collection is modifiable.
+   */
+  @Deprecated
+  public Set<LinkObject> getMoreLinks( ) {
+    // Return all LinkObject objects directly without any protection against modification.
+    return moreLinks;
+  }
+
+  /**
+   * Method adds the passed LinkObject object to the association "moreLinks".
+   * 
+   * 
+   * @param pMoreLinks Object that should be added to the association "moreLinks". The parameter must not be null.
+   */
+  @Deprecated
+  public void addToMoreLinks( LinkObject pMoreLinks ) {
+    // Check parameter "pMoreLinks" for invalid value null.
+    Check.checkInvalidParameterNull(pMoreLinks, "pMoreLinks");
+    // Add passed object to collection of associated LinkObject objects.
+    moreLinks.add(pMoreLinks);
+  }
+
+  /**
+   * Method adds all passed objects to the association "moreLinks".
+   * 
+   * 
+   * @param pMoreLinks Collection with all objects that should be added to the association "moreLinks". The parameter
+   * must not be null.
+   */
+  @Deprecated
+  public void addToMoreLinks( Collection<LinkObject> pMoreLinks ) {
+    // Check parameter "pMoreLinks" for invalid value null.
+    Check.checkInvalidParameterNull(pMoreLinks, "pMoreLinks");
+    // Add all passed objects.
+    for (LinkObject lNextObject : pMoreLinks) {
+      this.addToMoreLinks(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed LinkObject object from the association "moreLinks".
+   * 
+   * 
+   * @param pMoreLinks Object that should be removed from the association "moreLinks". The parameter must not be null.
+   */
+  @Deprecated
+  public void removeFromMoreLinks( LinkObject pMoreLinks ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pMoreLinks, "pMoreLinks");
+    // Remove passed object from collection of associated LinkObject objects.
+    moreLinks.remove(pMoreLinks);
+  }
+
+  /**
+   * Method removes all objects from the association "moreLinks".
+   * 
+   */
+  @Deprecated
+  public void clearMoreLinks( ) {
+    // Remove all objects from association "moreLinks".
+    moreLinks.clear();
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -246,6 +411,32 @@ public class Campaign implements ServiceObject {
     lBuilder.append(System.lineSeparator());
     if (discountOffers != null) {
       for (DiscountOffer lNext : discountOffers) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("theLink: ");
+    if (theLink != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(theLink.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("moreLinks: ");
+    if (moreLinks != null) {
+      lBuilder.append(moreLinks.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (moreLinks != null) {
+      for (LinkObject lNext : moreLinks) {
         lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
         lBuilder.append(System.lineSeparator());
       }

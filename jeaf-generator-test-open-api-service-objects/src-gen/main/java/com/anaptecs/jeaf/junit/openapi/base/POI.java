@@ -5,13 +5,17 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
+import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
  * @author JEAF Generator
@@ -31,10 +35,24 @@ public class POI extends Stop {
   private String description;
 
   /**
+   * 
+   */
+  @Deprecated
+  @NotNull
+  private LinkObject theLink;
+
+  /**
+   * 
+   */
+  @Deprecated
+  private Set<LinkObject> evenMoreLinks;
+
+  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected POI( ) {
+    evenMoreLinks = new HashSet<LinkObject>();
   }
 
   /**
@@ -47,6 +65,13 @@ public class POI extends Stop {
     super(pBuilder);
     // Read attribute values from builder.
     description = pBuilder.description;
+    theLink = pBuilder.theLink;
+    if (pBuilder.evenMoreLinks != null) {
+      evenMoreLinks = pBuilder.evenMoreLinks;
+    }
+    else {
+      evenMoreLinks = new HashSet<LinkObject>();
+    }
   }
 
   /**
@@ -79,6 +104,18 @@ public class POI extends Stop {
     private String description;
 
     /**
+     * 
+     */
+    @Deprecated
+    private LinkObject theLink;
+
+    /**
+     * 
+     */
+    @Deprecated
+    private Set<LinkObject> evenMoreLinks;
+
+    /**
      * Use {@link POI#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -93,6 +130,8 @@ public class POI extends Stop {
       if (pObject != null) {
         // Read attribute values from passed object.
         description = pObject.description;
+        theLink = pObject.theLink;
+        evenMoreLinks = pObject.evenMoreLinks;
       }
     }
 
@@ -144,6 +183,33 @@ public class POI extends Stop {
     }
 
     /**
+     * Method sets the association "theLink".
+     * 
+     * @param pTheLink LinkObject to which the association "theLink" should be set.
+     */
+    public Builder setTheLink( LinkObject pTheLink ) {
+      theLink = pTheLink;
+      return this;
+    }
+
+    /**
+     * Method sets the association "evenMoreLinks".
+     * 
+     * @param pEvenMoreLinks Collection with objects to which the association should be set.
+     */
+    @Deprecated
+    public Builder setEvenMoreLinks( Set<LinkObject> pEvenMoreLinks ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pEvenMoreLinks != null) {
+        evenMoreLinks = new HashSet<LinkObject>(pEvenMoreLinks);
+      }
+      else {
+        evenMoreLinks = null;
+      }
+      return this;
+    }
+
+    /**
      * Method creates a new instance of class POI. The object will be initialized with the values of the builder.
      * 
      * @return POI Created object. The method never returns null.
@@ -188,6 +254,107 @@ public class POI extends Stop {
   }
 
   /**
+   * Method returns the association "theLink".
+   * 
+   *
+   * @return LinkObject LinkObject to which the association "theLink" is set.
+   */
+  @Deprecated
+  public LinkObject getTheLink( ) {
+    return theLink;
+  }
+
+  /**
+   * Method sets the association "theLink".
+   * 
+   * 
+   * @param pTheLink LinkObject to which the association "theLink" should be set.
+   */
+  @Deprecated
+  public void setTheLink( LinkObject pTheLink ) {
+    theLink = pTheLink;
+  }
+
+  /**
+   * Method unsets the association "theLink".
+   * 
+   */
+  @Deprecated
+  public final void unsetTheLink( ) {
+    theLink = null;
+  }
+
+  /**
+   * Method returns the association "evenMoreLinks".
+   * 
+   *
+   * @return Collection All LinkObject objects that belong to the association "evenMoreLinks". The method never returns
+   * null and the returned collection is modifiable.
+   */
+  @Deprecated
+  public Set<LinkObject> getEvenMoreLinks( ) {
+    // Return all LinkObject objects directly without any protection against modification.
+    return evenMoreLinks;
+  }
+
+  /**
+   * Method adds the passed LinkObject object to the association "evenMoreLinks".
+   * 
+   * 
+   * @param pEvenMoreLinks Object that should be added to the association "evenMoreLinks". The parameter must not be
+   * null.
+   */
+  @Deprecated
+  public void addToEvenMoreLinks( LinkObject pEvenMoreLinks ) {
+    // Check parameter "pEvenMoreLinks" for invalid value null.
+    Check.checkInvalidParameterNull(pEvenMoreLinks, "pEvenMoreLinks");
+    // Add passed object to collection of associated LinkObject objects.
+    evenMoreLinks.add(pEvenMoreLinks);
+  }
+
+  /**
+   * Method adds all passed objects to the association "evenMoreLinks".
+   * 
+   * 
+   * @param pEvenMoreLinks Collection with all objects that should be added to the association "evenMoreLinks". The
+   * parameter must not be null.
+   */
+  @Deprecated
+  public void addToEvenMoreLinks( Collection<LinkObject> pEvenMoreLinks ) {
+    // Check parameter "pEvenMoreLinks" for invalid value null.
+    Check.checkInvalidParameterNull(pEvenMoreLinks, "pEvenMoreLinks");
+    // Add all passed objects.
+    for (LinkObject lNextObject : pEvenMoreLinks) {
+      this.addToEvenMoreLinks(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed LinkObject object from the association "evenMoreLinks".
+   * 
+   * 
+   * @param pEvenMoreLinks Object that should be removed from the association "evenMoreLinks". The parameter must not be
+   * null.
+   */
+  @Deprecated
+  public void removeFromEvenMoreLinks( LinkObject pEvenMoreLinks ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pEvenMoreLinks, "pEvenMoreLinks");
+    // Remove passed object from collection of associated LinkObject objects.
+    evenMoreLinks.remove(pEvenMoreLinks);
+  }
+
+  /**
+   * Method removes all objects from the association "evenMoreLinks".
+   * 
+   */
+  @Deprecated
+  public void clearEvenMoreLinks( ) {
+    // Remove all objects from association "evenMoreLinks".
+    evenMoreLinks.clear();
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -199,6 +366,32 @@ public class POI extends Stop {
     lBuilder.append("description: ");
     lBuilder.append(description);
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("theLink: ");
+    if (theLink != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(theLink.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("evenMoreLinks: ");
+    if (evenMoreLinks != null) {
+      lBuilder.append(evenMoreLinks.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (evenMoreLinks != null) {
+      for (LinkObject lNext : evenMoreLinks) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 
