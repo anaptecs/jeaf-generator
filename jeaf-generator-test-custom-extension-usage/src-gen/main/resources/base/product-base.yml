@@ -252,11 +252,24 @@ components:
     Campaign:
       type: object
       additionalProperties: false
+      required:
+        - moreLinks
       properties:
         discountOffers:
           type: array
           items:
-            $ref: '#/components/schemas/DiscountOffer'
+            type: string
+        theLink:
+          type: integer
+          format: int64
+          deprecated: true
+        moreLinks:
+          type: array
+          items:
+            type: integer
+            format: int64
+          deprecated: true
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.Channel
     Channel:
@@ -554,7 +567,8 @@ components:
         campaigns:
           type: array
           items:
-            $ref: '#/components/schemas/Campaign'
+            type: string
+          deprecated: true
 
     # com.anaptecs.jeaf.junit.openapi.base.Duration
     Duration:
@@ -768,10 +782,21 @@ components:
           additionalProperties: false
           required:
             - description
+            - theLink
           properties:
             description:
               type: string
               nullable: false
+            theLink:
+              type: integer
+              format: int64
+              deprecated: true
+              nullable: false
+            evenMoreLinks:
+              type: array
+              items:
+                type: string
+              deprecated: true
 
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
     ParentClass:

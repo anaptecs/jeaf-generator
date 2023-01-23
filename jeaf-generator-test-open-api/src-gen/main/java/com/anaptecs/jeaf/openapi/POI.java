@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.List;
 /**
  * POI
@@ -29,6 +30,12 @@ import java.util.List;
 public class POI extends Stop {
   @JsonProperty("description")
   private String description = null;
+
+  @JsonProperty("theLink")
+  private Long theLink = null;
+
+  @JsonProperty("evenMoreLinks")
+  private List<String> evenMoreLinks = null;
 
   public POI description(String description) {
     this.description = description;
@@ -48,6 +55,50 @@ public class POI extends Stop {
     this.description = description;
   }
 
+  public POI theLink(Long theLink) {
+    this.theLink = theLink;
+    return this;
+  }
+
+   /**
+   * Get theLink
+   * @return theLink
+  **/
+  @Schema(required = true, description = "")
+  public Long getTheLink() {
+    return theLink;
+  }
+
+  public void setTheLink(Long theLink) {
+    this.theLink = theLink;
+  }
+
+  public POI evenMoreLinks(List<String> evenMoreLinks) {
+    this.evenMoreLinks = evenMoreLinks;
+    return this;
+  }
+
+  public POI addEvenMoreLinksItem(String evenMoreLinksItem) {
+    if (this.evenMoreLinks == null) {
+      this.evenMoreLinks = new ArrayList<>();
+    }
+    this.evenMoreLinks.add(evenMoreLinksItem);
+    return this;
+  }
+
+   /**
+   * Get evenMoreLinks
+   * @return evenMoreLinks
+  **/
+  @Schema(description = "")
+  public List<String> getEvenMoreLinks() {
+    return evenMoreLinks;
+  }
+
+  public void setEvenMoreLinks(List<String> evenMoreLinks) {
+    this.evenMoreLinks = evenMoreLinks;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -59,12 +110,14 @@ public class POI extends Stop {
     }
     POI POI = (POI) o;
     return Objects.equals(this.description, POI.description) &&
+        Objects.equals(this.theLink, POI.theLink) &&
+        Objects.equals(this.evenMoreLinks, POI.evenMoreLinks) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, super.hashCode());
+    return Objects.hash(description, theLink, evenMoreLinks, super.hashCode());
   }
 
 
@@ -74,6 +127,8 @@ public class POI extends Stop {
     sb.append("class POI {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    theLink: ").append(toIndentedString(theLink)).append("\n");
+    sb.append("    evenMoreLinks: ").append(toIndentedString(evenMoreLinks)).append("\n");
     sb.append("}");
     return sb.toString();
   }

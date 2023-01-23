@@ -31,6 +31,7 @@ public class DiscountOffer implements ServiceObject {
   /**
    * 
    */
+  @Deprecated
   private Set<Campaign> campaigns;
 
   /**
@@ -86,6 +87,7 @@ public class DiscountOffer implements ServiceObject {
     /**
      * 
      */
+    @Deprecated
     private Set<Campaign> campaigns;
 
     /**
@@ -109,6 +111,7 @@ public class DiscountOffer implements ServiceObject {
      * 
      * @param pCampaigns Collection with objects to which the association should be set.
      */
+    @Deprecated
     public Builder setCampaigns( Set<Campaign> pCampaigns ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pCampaigns != null) {
@@ -151,6 +154,7 @@ public class DiscountOffer implements ServiceObject {
    * @return Collection All Campaign objects that belong to the association "campaigns". The method never returns null
    * and the returned collection is modifiable.
    */
+  @Deprecated
   public Set<Campaign> getCampaigns( ) {
     // Return all Campaign objects directly without any protection against modification.
     return campaigns;
@@ -162,6 +166,7 @@ public class DiscountOffer implements ServiceObject {
    * 
    * @param pCampaigns Object that should be added to the association "campaigns". The parameter must not be null.
    */
+  @Deprecated
   public void addToCampaigns( Campaign pCampaigns ) {
     // Check parameter "pCampaigns" for invalid value null.
     Check.checkInvalidParameterNull(pCampaigns, "pCampaigns");
@@ -181,6 +186,7 @@ public class DiscountOffer implements ServiceObject {
    * @param pCampaigns Collection with all objects that should be added to the association "campaigns". The parameter
    * must not be null.
    */
+  @Deprecated
   public void addToCampaigns( Collection<Campaign> pCampaigns ) {
     // Check parameter "pCampaigns" for invalid value null.
     Check.checkInvalidParameterNull(pCampaigns, "pCampaigns");
@@ -196,6 +202,7 @@ public class DiscountOffer implements ServiceObject {
    * 
    * @param pCampaigns Object that should be removed from the association "campaigns". The parameter must not be null.
    */
+  @Deprecated
   public void removeFromCampaigns( Campaign pCampaigns ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pCampaigns, "pCampaigns");
@@ -212,6 +219,7 @@ public class DiscountOffer implements ServiceObject {
    * Method removes all objects from the association "campaigns".
    * 
    */
+  @Deprecated
   public void clearCampaigns( ) {
     // Remove all objects from association "campaigns".
     Collection<Campaign> lCampaigns = new HashSet<Campaign>(campaigns);
