@@ -51,7 +51,6 @@ public class BookingIDSerializer extends JsonSerializer<BookingID> {
   public void serialize( BookingID pObject, JsonGenerator pGenerator, SerializerProvider pSerializers )
     throws IOException {
     // Convert BookingID into an public string only representation.
-    // "4711-AVBDADW": RESYS, 1234, eeee
-    pGenerator.writeString(pObject.getPublicBookingID());
+    pGenerator.writeString(serializer.serializeObject(pObject, SERIALIZED_CLASSES));
   }
 }

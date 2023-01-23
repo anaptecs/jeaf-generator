@@ -364,10 +364,23 @@
 				  	«IF this.hasCompositeDateTypeCustomSerialization()»
 				  		return «name».deserialize(lNode.asText());
 				  	«ELSE»
-						«IF isTargetRuntimeJEAF()»
-							return this.getDeserializer().deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
-						«ELSE»						
-							return deserializer.deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+						«IF this.hasCompositePublicFieldProperties()»
+							«IF isTargetRuntimeJEAF()»
+								«this.fqn()» lDeserializedObject = this.getDeserializer().deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+							«ELSE»						
+								«this.fqn()» lDeserializedObject = deserializer.deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+							«ENDIF»
+							«this.fqn()».Builder lBuilder = «this.fqn()».builder(lDeserializedObject);
+							«FOREACH this.getCompositePublicFieldProperties() AS property»
+							lBuilder.«property.asSetter()»(lNode.asText());
+							«ENDFOREACH»
+							return lBuilder.build();
+						«ELSE»
+							«IF isTargetRuntimeJEAF()»
+								return this.getDeserializer().deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+							«ELSE»						
+								return deserializer.deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+							«ENDIF»
 						«ENDIF»
 					«ENDIF»
 				«ELSE»

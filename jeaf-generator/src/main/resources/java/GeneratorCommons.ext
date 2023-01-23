@@ -422,6 +422,12 @@ cached boolean generateInternalViewOfCompositeDataType(uml::Type class):
 	  		then ((JMM::POJO) class).compositeDataType
 	  		else false;
 
+cached List[uml::Property] getCompositePublicFieldProperties(uml::Type type):
+	type.getAllAttributesFromHierarchy().select(e|e.isStereotypeApplied("CompositeDataTypePublicField"));
+	
+cached boolean hasCompositePublicFieldProperties(uml::Type type):
+	!type.getCompositePublicFieldProperties().isEmpty;
+
 
 cached boolean hasCustomHeaders(uml::Type class):
 	if class.isStereotypeApplied("BeanParam")

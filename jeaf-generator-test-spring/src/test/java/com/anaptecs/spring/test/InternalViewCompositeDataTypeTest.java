@@ -43,6 +43,7 @@ public class InternalViewCompositeDataTypeTest {
     assertEquals("com.anaptecs.spring.base.Booking" + System.lineSeparator() +
         "bookingID: " + System.lineSeparator() +
         "    com.anaptecs.spring.base.BookingID" + System.lineSeparator() +
+        "    publicBookingID: null" + System.lineSeparator() +
         "    referenceID: 123456" + System.lineSeparator() +
         "    externalRefID: EXT-0987654321" + System.lineSeparator() +
         "    inventory: SBB" + System.lineSeparator() +
@@ -61,6 +62,7 @@ public class InternalViewCompositeDataTypeTest {
     assertEquals("EXT-0987654321", lReadBooking.getBookingID().getExternalRefID());
     assertEquals(InventoryType.SBB, lReadBooking.getBookingID().getInventory());
     assertEquals("BOOKING_CODE", lReadBooking.getBookingID().getBookingCode().getCode());
+    assertEquals("DUJPT0tJTkdfQ09ExUVYVC0wOTg3NjU0MzKxATEyMzQ1tg==", lReadBooking.getBookingID().getPublicBookingID());
 
     lBooking = Booking.builder().build();
     XFun.getTrace().info("\n" + lBooking);
@@ -104,6 +106,7 @@ public class InternalViewCompositeDataTypeTest {
         "    referenceID: REF-123" + System.lineSeparator() +
         "    bookingIDs: 2 element(s)" + System.lineSeparator() +
         "        com.anaptecs.spring.base.BookingID" + System.lineSeparator() +
+        "        publicBookingID: null" + System.lineSeparator() +
         "        referenceID: XXYYZZ" + System.lineSeparator() +
         "        externalRefID: EXT_#äöß?\"§$§\"$\"%$" + System.lineSeparator() +
         "        inventory: SNCF" + System.lineSeparator() +
@@ -112,6 +115,7 @@ public class InternalViewCompositeDataTypeTest {
         "            code: REFUND_CODE" + System.lineSeparator() +
         System.lineSeparator() +
         "        com.anaptecs.spring.base.BookingID" + System.lineSeparator() +
+        "        publicBookingID: null" + System.lineSeparator() +
         "        referenceID: 123456" + System.lineSeparator() +
         "        externalRefID: EXT-0987654321" + System.lineSeparator() +
         "        inventory: SBB" + System.lineSeparator() +
@@ -128,6 +132,7 @@ public class InternalViewCompositeDataTypeTest {
         "    referenceID: REF-123-1" + System.lineSeparator() +
         "    bookingIDs: 2 element(s)" + System.lineSeparator() +
         "        com.anaptecs.spring.base.BookingID" + System.lineSeparator() +
+        "        publicBookingID: null" + System.lineSeparator() +
         "        referenceID: XXYYZZ" + System.lineSeparator() +
         "        externalRefID: EXT_#äöß?\"§$§\"$\"%$" + System.lineSeparator() +
         "        inventory: SNCF" + System.lineSeparator() +
@@ -136,6 +141,7 @@ public class InternalViewCompositeDataTypeTest {
         "            code: REFUND_CODE" + System.lineSeparator() +
         System.lineSeparator() +
         "        com.anaptecs.spring.base.BookingID" + System.lineSeparator() +
+        "        publicBookingID: null" + System.lineSeparator() +
         "        referenceID: 123456" + System.lineSeparator() +
         "        externalRefID: EXT-0987654321" + System.lineSeparator() +
         "        inventory: SBB" + System.lineSeparator() +
@@ -152,6 +158,7 @@ public class InternalViewCompositeDataTypeTest {
         "    referenceID: REF-123-2" + System.lineSeparator() +
         "    bookingIDs: 1 element(s)" + System.lineSeparator() +
         "        com.anaptecs.spring.base.BookingID" + System.lineSeparator() +
+        "        publicBookingID: null" + System.lineSeparator() +
         "        referenceID: XXYYZZ" + System.lineSeparator() +
         "        externalRefID: EXT_#äöß?\"§$§\"$\"%$" + System.lineSeparator() +
         "        inventory: SNCF" + System.lineSeparator() +
