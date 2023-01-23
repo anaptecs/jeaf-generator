@@ -55,7 +55,11 @@ public class BookingIDDeserializer extends JsonDeserializer<BookingID> {
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     if (lNode instanceof TextNode) {
       // Convert public string representation of BookingID into real object.
-      return deserializer.deserializeObject(lNode.asText(), BookingID.class, SERIALIZED_CLASSES);
+      BookingID lDeserializedObject =
+          deserializer.deserializeObject(lNode.asText(), BookingID.class, SERIALIZED_CLASSES);
+      BookingID.Builder lBuilder = BookingID.builder(lDeserializedObject);
+      lBuilder.setPublicBookingID(lNode.asText());
+      return lBuilder.build();
     }
     // Node is not of expected type.
     else {

@@ -20,7 +20,7 @@ context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("
 context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9127", {"ServiceObject", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
 context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9130", {"ServiceObject", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 context Property if isNavigable() && class != null && class.isStereotypeApplied("ServiceObject") && runChecks() ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
-
+context CompositeDataTypePublicField if ((NamedElement) owner).runChecks("ServiceObject") ERROR this.getErrorMessage("9157", {((NamedElement)owner).name + "." + name}): this.type.isStringType();
 context ServiceObject if runChecks("ServiceObject") WARNING this.getWarningMessage("9122", {"ServiceObject", name}): ownedComment.size  > 0;
 
 
@@ -33,7 +33,7 @@ context POJO if runChecks("POJO") ERROR this.getErrorMessage("9128", {"POJO", na
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9129", {"POJO", name}): ownedOperation.forAll( e | e.name.length > 0);
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9130", {"POJO", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 context Property if isNavigable() && class != null && class.isStereotypeApplied("POJO") && runChecks() ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
-
+context CompositeDataTypePublicField if ((NamedElement) owner).runChecks("POJO") ERROR this.getErrorMessage("9157", {((NamedElement)owner).name + "." + name}): this.type.isStringType();
 context POJO if runChecks("POJO") WARNING this.getWarningMessage("9122", {"POJO", name}): ownedComment.size  > 0;
 
 
@@ -69,3 +69,5 @@ context JEAFActivity if runChecks("JEAFActivity") ERROR this.getWarningMessage("
 
 // Checks for stereotype Ignore
 context Ignore if runChecks() WARNING this.getWarningMessage("9152", {name}): false;
+
+ 

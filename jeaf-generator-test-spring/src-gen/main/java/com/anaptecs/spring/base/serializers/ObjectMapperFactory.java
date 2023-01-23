@@ -9,6 +9,7 @@ import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 import com.fasterxml.jackson.databind.json.JsonMapper;
@@ -40,6 +41,7 @@ public class ObjectMapperFactory {
     lVisibilityChecker = lVisibilityChecker.withCreatorVisibility(JsonAutoDetect.Visibility.ANY);
     lBuilder.visibility(lVisibilityChecker);
     // Configure mapper features
+    lBuilder.enable(MapperFeature.PROPAGATE_TRANSIENT_MARKER);
     lBuilder.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
     // Create configured modules and add them as well.
     lBuilder.addModule(BaseModuleFactory.createDataTypeSerializerModule());

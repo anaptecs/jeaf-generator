@@ -339,7 +339,7 @@
 		«ENDIF»
 	«ELSE»
 		«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false) AS attr»
-			«IF attr.isReadOnly && attr.isStatic == false»
+			«IF attr.isReadOnly() && attr.isStatic == false»
 				«IF attr.type.isPrimitiveType() == true»
 					«IF attr.isMultivalued() == false»
 						«IF attr.isRealInitValue()»

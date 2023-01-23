@@ -323,7 +323,7 @@ cached boolean hasErrorCodeOrSeverity(JMM::Validation validation):
   validation.errorCode > 0 || validation.severity.name != "NotUsed";
 
 cached boolean requiresInitValue(uml::Property property):
-     (property.isReadOnly == true && property.isStatic == false) || (property.isRealInitValue() == true && property.isStatic == false);
+     (property.isReadOnly() == true && property.isStatic == false) || (property.isRealInitValue() == true && property.isStatic == false);
      
 cached boolean requiresAttributeInitValue(uml::Class class):
      !class.ownedAttribute.select(p|p.requiresInitValue()).isEmpty;

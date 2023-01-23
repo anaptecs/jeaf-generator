@@ -256,8 +256,11 @@ uml::Class getOwningClass(uml::Operation operation): (uml::Class) operation.owne
 boolean isDeprecated(uml::NamedElement element) :
   isStereotypeApplied(element, "Deprecated") || isStereotypeApplied(element, "deprecated");
   
+boolean isReadOnly(uml::Property property):
+  property.isReadOnly || property.isStereotypeApplied("CompositeDataTypePublicField");
+  
 boolean isTransient(uml::Property property):
-  isStereotypeApplied(property, "Transient");
+  property.isStereotypeApplied("Transient") || property.isStereotypeApplied("CompositeDataTypePublicField");
   
 boolean hasExample(uml::NamedElement element):
   element.isStereotypeApplied("Example");
@@ -418,6 +421,12 @@ cached boolean generateInternalViewOfCompositeDataType(uml::Type class):
 	  		if class.isStereotypeApplied("ServiceObject")
 	  		then ((JMM::POJO) class).compositeDataType
 	  		else false;
+
+cached List[uml::Property] getCompositePublicFieldProperties(uml::Type type):
+	type.getAllAttributesFromHierarchy().select(e|e.isStereotypeApplied("CompositeDataTypePublicField"));
+	
+cached boolean hasCompositePublicFieldProperties(uml::Type type):
+	!type.getCompositePublicFieldProperties().isEmpty;
 
 
 cached boolean hasCustomHeaders(uml::Type class):
