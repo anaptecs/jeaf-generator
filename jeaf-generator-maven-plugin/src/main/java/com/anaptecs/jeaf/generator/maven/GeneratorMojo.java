@@ -431,6 +431,14 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateJSONSerializers;
 
   /**
+   * When working with soft links in your UML model then you can define there that a custom generic type should be used
+   * for the soft link. The concrete type (its fully qualified class name) that should be used can be defined through
+   * this parameter.
+   */
+  @Parameter(required = false)
+  private String customGenericSoftLinkType = "";
+
+  /**
    * Parameter can be used to suppress link to model element in generated OpenAPI specification. By default fully
    * qualified name of the type is added as comment above the type definition.
    */
@@ -890,6 +898,10 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate JSON serializers:                        " + generateJSONSerializers);
     }
 
+    if (customGenericSoftLinkType.isEmpty() == false) {
+      lLog.info("Custom generic soft link type:                    " + customGenericSoftLinkType);
+    }
+
     if (suppressAllWarnings) {
       lLog.info("Suppress all warnings:                            " + suppressAllWarnings);
     }
@@ -1045,6 +1057,8 @@ public class GeneratorMojo extends AbstractMojo {
       }
 
       System.setProperty("switch.gen.value.of.data.types", generateValueOfForOpenAPIDataTypes.toString());
+
+      System.setProperty("switch.gen.custom.generic.soft.link.type", customGenericSoftLinkType);
 
       System.setProperty("switch.gen.suppress.warnings", suppressWarnings.stream().collect(Collectors.joining("; ")));
       System.setProperty("switch.gen.suppress.all.warnings", suppressAllWarnings.toString());

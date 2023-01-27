@@ -24,6 +24,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -32,12 +34,20 @@ import openapitools.JSON;
  * POIAllOf
  */
 @JsonPropertyOrder({
-  POIAllOf.JSON_PROPERTY_DESCRIPTION
+  POIAllOf.JSON_PROPERTY_DESCRIPTION,
+  POIAllOf.JSON_PROPERTY_THE_LINK,
+  POIAllOf.JSON_PROPERTY_EVEN_MORE_LINKS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class POIAllOf {
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
+
+  public static final String JSON_PROPERTY_THE_LINK = "theLink";
+  private Long theLink;
+
+  public static final String JSON_PROPERTY_EVEN_MORE_LINKS = "evenMoreLinks";
+  private List<String> evenMoreLinks = null;
 
   public POIAllOf() { 
   }
@@ -68,6 +78,70 @@ public class POIAllOf {
   }
 
 
+  public POIAllOf theLink(Long theLink) {
+    this.theLink = theLink;
+    return this;
+  }
+
+   /**
+   * Get theLink
+   * @return theLink
+   * @deprecated
+  **/
+  @Deprecated
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_THE_LINK)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Long getTheLink() {
+    return theLink;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_THE_LINK)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTheLink(Long theLink) {
+    this.theLink = theLink;
+  }
+
+
+  public POIAllOf evenMoreLinks(List<String> evenMoreLinks) {
+    this.evenMoreLinks = evenMoreLinks;
+    return this;
+  }
+
+  public POIAllOf addEvenMoreLinksItem(String evenMoreLinksItem) {
+    if (this.evenMoreLinks == null) {
+      this.evenMoreLinks = new ArrayList<>();
+    }
+    this.evenMoreLinks.add(evenMoreLinksItem);
+    return this;
+  }
+
+   /**
+   * Get evenMoreLinks
+   * @return evenMoreLinks
+   * @deprecated
+  **/
+  @Deprecated
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_EVEN_MORE_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getEvenMoreLinks() {
+    return evenMoreLinks;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EVEN_MORE_LINKS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEvenMoreLinks(List<String> evenMoreLinks) {
+    this.evenMoreLinks = evenMoreLinks;
+  }
+
+
   /**
    * Return true if this POI_allOf object is equal to o.
    */
@@ -80,12 +154,14 @@ public class POIAllOf {
       return false;
     }
     POIAllOf poIAllOf = (POIAllOf) o;
-    return Objects.equals(this.description, poIAllOf.description);
+    return Objects.equals(this.description, poIAllOf.description) &&
+        Objects.equals(this.theLink, poIAllOf.theLink) &&
+        Objects.equals(this.evenMoreLinks, poIAllOf.evenMoreLinks);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description);
+    return Objects.hash(description, theLink, evenMoreLinks);
   }
 
   @Override
@@ -93,6 +169,8 @@ public class POIAllOf {
     StringBuilder sb = new StringBuilder();
     sb.append("class POIAllOf {\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    theLink: ").append(toIndentedString(theLink)).append("\n");
+    sb.append("    evenMoreLinks: ").append(toIndentedString(evenMoreLinks)).append("\n");
     sb.append("}");
     return sb.toString();
   }

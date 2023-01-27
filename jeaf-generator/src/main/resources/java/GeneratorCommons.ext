@@ -464,7 +464,7 @@ String getMessage(uml::NamedElement element, String errorCode, List[String] para
 	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getMessage(org.eclipse.uml2.uml.NamedElement, java.lang.String, java.util.List);
  
  
-String toLocalVar(String name) :
+cached String toLocalVar(String name) :
  	if( name.startsWith("p"))
  	then name.replaceFirst("p", "l")
  	else "l" + name.toFirstUpper();
@@ -476,22 +476,35 @@ cached List[uml::Property] getRequiredPropertiesForBuilder(uml::Class class):
 	class.getAllAttributesFromHierarchy().select(e|e.isMultivalued() == false && e.isStatic == false && e.lower > 0 && e.isPropertySuppressed() == false);
 	
 	
-boolean suppressTechnicalHttpHeaders():
+cached boolean suppressTechnicalHttpHeaders():
 	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.suppressTechnicalHttpHeaders();
 	
-boolean isParameterSuppressed(uml::Parameter param):
+cached boolean isParameterSuppressed(uml::Parameter param):
 	suppressTechnicalHttpHeaders() && param.isTechnicalHeaderParameter();
 
-boolean isPropertySuppressed(uml::Property property):
+cached boolean isPropertySuppressed(uml::Property property):
 	suppressTechnicalHttpHeaders() && property.isTechnicalHeaderProperty();
 	
 
-boolean isTechnicalHeaderParameter(uml::Parameter param):
+cached boolean isTechnicalHeaderParameter(uml::Parameter param):
 	param.isStereotypeApplied("HeaderParam") && ((JMM::HeaderParam) param).technicalHeader;
 
-boolean isTechnicalHeaderProperty(uml::Property property):
+cached boolean isTechnicalHeaderProperty(uml::Property property):
 	property.isStereotypeApplied("HeaderParam") && ((JMM::HeaderParam) property).technicalHeader;
 
-
-                
+cached boolean isSoftLink(uml::Property property):
+	property.isStereotypeApplied("SoftLink");
 	
+cached String getSoftLinkType(JMM::SoftLink softLink):
+    if (softLink.softLinkType.name == "CustomGenericType")
+    then getCustomGenericSoftLinkType()
+    else softLink.softLinkType.name;
+
+cached String getMultivaluedSoftLinkType(JMM::SoftLink softLink):
+    if (softLink.softLinkType.name == "CustomGenericType")
+    then getCustomGenericSoftLinkType()
+    else softLink.softLinkType.name.toFirstUpper();
+
+cached String getCustomGenericSoftLinkType():
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getCustomGenericSoftLinkType();
+    

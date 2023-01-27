@@ -66,6 +66,19 @@ cached boolean generateDefaultClassMapping() :
 cached String getOpenAPIType(uml::Type type, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);
     
+cached String getOpenAPISoftLinkType(JMM::SoftLink softLink):
+	if (softLink.softLinkType.name == "long" || softLink.softLinkType.name == "Long")
+	then "integer"
+	else "string";
+    
+cached String getOpenAPISoftLinkFormat(JMM::SoftLink softLink):
+	if (softLink.softLinkType.name == "long" || softLink.softLinkType.name == "Long")
+	then "int64"
+	else null;
+    
+cached boolean hasOpenAPISoftLinkFormat(JMM::SoftLink softLink):
+	softLink.getOpenAPISoftLinkFormat() != null;
+    
 cached String getOpenAPIParameter(uml::Property property, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIParameter(org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Component);
     

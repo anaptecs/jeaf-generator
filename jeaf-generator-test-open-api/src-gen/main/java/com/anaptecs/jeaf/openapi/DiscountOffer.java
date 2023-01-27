@@ -14,7 +14,6 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.anaptecs.jeaf.openapi.Campaign;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -28,14 +27,14 @@ import java.util.List;
 
 public class DiscountOffer {
   @JsonProperty("campaigns")
-  private List<Campaign> campaigns = null;
+  private List<String> campaigns = null;
 
-  public DiscountOffer campaigns(List<Campaign> campaigns) {
+  public DiscountOffer campaigns(List<String> campaigns) {
     this.campaigns = campaigns;
     return this;
   }
 
-  public DiscountOffer addCampaignsItem(Campaign campaignsItem) {
+  public DiscountOffer addCampaignsItem(String campaignsItem) {
     if (this.campaigns == null) {
       this.campaigns = new ArrayList<>();
     }
@@ -48,11 +47,11 @@ public class DiscountOffer {
    * @return campaigns
   **/
   @Schema(description = "")
-  public List<Campaign> getCampaigns() {
+  public List<String> getCampaigns() {
     return campaigns;
   }
 
-  public void setCampaigns(List<Campaign> campaigns) {
+  public void setCampaigns(List<String> campaigns) {
     this.campaigns = campaigns;
   }
 

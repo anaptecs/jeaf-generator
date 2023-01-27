@@ -14,7 +14,6 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.anaptecs.jeaf.openapi.DiscountOffer;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -27,15 +26,62 @@ import java.util.List;
 
 
 public class Campaign {
-  @JsonProperty("discountOffers")
-  private List<DiscountOffer> discountOffers = null;
+  @JsonProperty("theLink")
+  private Long theLink = null;
 
-  public Campaign discountOffers(List<DiscountOffer> discountOffers) {
+  @JsonProperty("moreLinks")
+  private List<Long> moreLinks = new ArrayList<>();
+
+  @JsonProperty("discountOffers")
+  private List<String> discountOffers = null;
+
+  public Campaign theLink(Long theLink) {
+    this.theLink = theLink;
+    return this;
+  }
+
+   /**
+   * Get theLink
+   * @return theLink
+  **/
+  @Schema(description = "")
+  public Long getTheLink() {
+    return theLink;
+  }
+
+  public void setTheLink(Long theLink) {
+    this.theLink = theLink;
+  }
+
+  public Campaign moreLinks(List<Long> moreLinks) {
+    this.moreLinks = moreLinks;
+    return this;
+  }
+
+  public Campaign addMoreLinksItem(Long moreLinksItem) {
+    this.moreLinks.add(moreLinksItem);
+    return this;
+  }
+
+   /**
+   * Get moreLinks
+   * @return moreLinks
+  **/
+  @Schema(required = true, description = "")
+  public List<Long> getMoreLinks() {
+    return moreLinks;
+  }
+
+  public void setMoreLinks(List<Long> moreLinks) {
+    this.moreLinks = moreLinks;
+  }
+
+  public Campaign discountOffers(List<String> discountOffers) {
     this.discountOffers = discountOffers;
     return this;
   }
 
-  public Campaign addDiscountOffersItem(DiscountOffer discountOffersItem) {
+  public Campaign addDiscountOffersItem(String discountOffersItem) {
     if (this.discountOffers == null) {
       this.discountOffers = new ArrayList<>();
     }
@@ -48,11 +94,11 @@ public class Campaign {
    * @return discountOffers
   **/
   @Schema(description = "")
-  public List<DiscountOffer> getDiscountOffers() {
+  public List<String> getDiscountOffers() {
     return discountOffers;
   }
 
-  public void setDiscountOffers(List<DiscountOffer> discountOffers) {
+  public void setDiscountOffers(List<String> discountOffers) {
     this.discountOffers = discountOffers;
   }
 
@@ -66,12 +112,14 @@ public class Campaign {
       return false;
     }
     Campaign campaign = (Campaign) o;
-    return Objects.equals(this.discountOffers, campaign.discountOffers);
+    return Objects.equals(this.theLink, campaign.theLink) &&
+        Objects.equals(this.moreLinks, campaign.moreLinks) &&
+        Objects.equals(this.discountOffers, campaign.discountOffers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(discountOffers);
+    return Objects.hash(theLink, moreLinks, discountOffers);
   }
 
 
@@ -80,6 +128,8 @@ public class Campaign {
     StringBuilder sb = new StringBuilder();
     sb.append("class Campaign {\n");
     
+    sb.append("    theLink: ").append(toIndentedString(theLink)).append("\n");
+    sb.append("    moreLinks: ").append(toIndentedString(moreLinks)).append("\n");
     sb.append("    discountOffers: ").append(toIndentedString(discountOffers)).append("\n");
     sb.append("}");
     return sb.toString();

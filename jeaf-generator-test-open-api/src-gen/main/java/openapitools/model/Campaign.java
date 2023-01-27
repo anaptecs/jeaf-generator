@@ -26,7 +26,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import openapitools.model.DiscountOffer;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -35,22 +34,91 @@ import openapitools.JSON;
  * Campaign
  */
 @JsonPropertyOrder({
+  Campaign.JSON_PROPERTY_THE_LINK,
+  Campaign.JSON_PROPERTY_MORE_LINKS,
   Campaign.JSON_PROPERTY_DISCOUNT_OFFERS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Campaign {
+  public static final String JSON_PROPERTY_THE_LINK = "theLink";
+  private Long theLink;
+
+  public static final String JSON_PROPERTY_MORE_LINKS = "moreLinks";
+  private List<Long> moreLinks = new ArrayList<>();
+
   public static final String JSON_PROPERTY_DISCOUNT_OFFERS = "discountOffers";
-  private List<DiscountOffer> discountOffers = null;
+  private List<String> discountOffers = null;
 
   public Campaign() { 
   }
 
-  public Campaign discountOffers(List<DiscountOffer> discountOffers) {
+  public Campaign theLink(Long theLink) {
+    this.theLink = theLink;
+    return this;
+  }
+
+   /**
+   * Get theLink
+   * @return theLink
+   * @deprecated
+  **/
+  @Deprecated
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_THE_LINK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Long getTheLink() {
+    return theLink;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_THE_LINK)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTheLink(Long theLink) {
+    this.theLink = theLink;
+  }
+
+
+  public Campaign moreLinks(List<Long> moreLinks) {
+    this.moreLinks = moreLinks;
+    return this;
+  }
+
+  public Campaign addMoreLinksItem(Long moreLinksItem) {
+    this.moreLinks.add(moreLinksItem);
+    return this;
+  }
+
+   /**
+   * Get moreLinks
+   * @return moreLinks
+   * @deprecated
+  **/
+  @Deprecated
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_MORE_LINKS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<Long> getMoreLinks() {
+    return moreLinks;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MORE_LINKS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setMoreLinks(List<Long> moreLinks) {
+    this.moreLinks = moreLinks;
+  }
+
+
+  public Campaign discountOffers(List<String> discountOffers) {
     this.discountOffers = discountOffers;
     return this;
   }
 
-  public Campaign addDiscountOffersItem(DiscountOffer discountOffersItem) {
+  public Campaign addDiscountOffersItem(String discountOffersItem) {
     if (this.discountOffers == null) {
       this.discountOffers = new ArrayList<>();
     }
@@ -61,20 +129,22 @@ public class Campaign {
    /**
    * Get discountOffers
    * @return discountOffers
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_DISCOUNT_OFFERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<DiscountOffer> getDiscountOffers() {
+  public List<String> getDiscountOffers() {
     return discountOffers;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DISCOUNT_OFFERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDiscountOffers(List<DiscountOffer> discountOffers) {
+  public void setDiscountOffers(List<String> discountOffers) {
     this.discountOffers = discountOffers;
   }
 
@@ -91,18 +161,22 @@ public class Campaign {
       return false;
     }
     Campaign campaign = (Campaign) o;
-    return Objects.equals(this.discountOffers, campaign.discountOffers);
+    return Objects.equals(this.theLink, campaign.theLink) &&
+        Objects.equals(this.moreLinks, campaign.moreLinks) &&
+        Objects.equals(this.discountOffers, campaign.discountOffers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(discountOffers);
+    return Objects.hash(theLink, moreLinks, discountOffers);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Campaign {\n");
+    sb.append("    theLink: ").append(toIndentedString(theLink)).append("\n");
+    sb.append("    moreLinks: ").append(toIndentedString(moreLinks)).append("\n");
     sb.append("    discountOffers: ").append(toIndentedString(discountOffers)).append("\n");
     sb.append("}");
     return sb.toString();

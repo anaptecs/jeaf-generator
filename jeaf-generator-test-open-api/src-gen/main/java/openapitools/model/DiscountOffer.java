@@ -26,7 +26,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import openapitools.model.Campaign;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -40,17 +39,17 @@ import openapitools.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DiscountOffer {
   public static final String JSON_PROPERTY_CAMPAIGNS = "campaigns";
-  private List<Campaign> campaigns = null;
+  private List<String> campaigns = null;
 
   public DiscountOffer() { 
   }
 
-  public DiscountOffer campaigns(List<Campaign> campaigns) {
+  public DiscountOffer campaigns(List<String> campaigns) {
     this.campaigns = campaigns;
     return this;
   }
 
-  public DiscountOffer addCampaignsItem(Campaign campaignsItem) {
+  public DiscountOffer addCampaignsItem(String campaignsItem) {
     if (this.campaigns == null) {
       this.campaigns = new ArrayList<>();
     }
@@ -61,20 +60,22 @@ public class DiscountOffer {
    /**
    * Get campaigns
    * @return campaigns
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_CAMPAIGNS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<Campaign> getCampaigns() {
+  public List<String> getCampaigns() {
     return campaigns;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CAMPAIGNS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCampaigns(List<Campaign> campaigns) {
+  public void setCampaigns(List<String> campaigns) {
     this.campaigns = campaigns;
   }
 

@@ -252,11 +252,25 @@ components:
     Campaign:
       type: object
       additionalProperties: false
+      required:
+        - moreLinks
       properties:
+        theLink:
+          type: integer
+          format: int64
+          deprecated: true
+        moreLinks:
+          type: array
+          items:
+            type: integer
+            format: int64
+          deprecated: true
+          nullable: false
         discountOffers:
           type: array
           items:
-            $ref: '#/components/schemas/DiscountOffer'
+            type: string
+          deprecated: true
 
     # com.anaptecs.jeaf.junit.openapi.base.Channel
     Channel:
@@ -554,7 +568,8 @@ components:
         campaigns:
           type: array
           items:
-            $ref: '#/components/schemas/Campaign'
+            type: string
+          deprecated: true
 
     # com.anaptecs.jeaf.junit.openapi.base.Duration
     Duration:
@@ -768,10 +783,21 @@ components:
           additionalProperties: false
           required:
             - description
+            - theLink
           properties:
             description:
               type: string
               nullable: false
+            theLink:
+              type: integer
+              format: int64
+              deprecated: true
+              nullable: false
+            evenMoreLinks:
+              type: array
+              items:
+                type: string
+              deprecated: true
 
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
     ParentClass:
@@ -1498,6 +1524,7 @@ components:
         - objectType
         - name
         - index
+        - theSoftLink
       properties:
         objectType:
           description: Attribute is used as discriminator for inheritance between data types.
@@ -1514,6 +1541,9 @@ components:
           format: int32
           maximum: 32
           minimum: 0
+          nullable: false
+        theSoftLink:
+          type: string
           nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.StopPlaceRef

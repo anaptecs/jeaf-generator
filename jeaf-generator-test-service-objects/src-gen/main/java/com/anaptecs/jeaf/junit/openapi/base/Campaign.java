@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
 
@@ -29,21 +29,48 @@ public class Campaign implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
+   * Constant for the name of attribute "theLink".
+   */
+  @Deprecated
+  public static final String THELINK = "theLink";
+
+  /**
+   * Constant for the name of attribute "moreLinks".
+   */
+  @Deprecated
+  public static final String MORELINKS = "moreLinks";
+
+  /**
    * Constant for the name of attribute "discountOffers".
    */
+  @Deprecated
   public static final String DISCOUNTOFFERS = "discountOffers";
 
   /**
    * 
    */
-  private List<DiscountOffer> discountOffers;
+  @Deprecated
+  private long theLink;
+
+  /**
+   * 
+   */
+  @Deprecated
+  private Set<Long> moreLinks;
+
+  /**
+   * 
+   */
+  @Deprecated
+  private List<String> discountOffers;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected Campaign( ) {
-    discountOffers = new ArrayList<DiscountOffer>();
+    moreLinks = new HashSet<Long>();
+    discountOffers = new ArrayList<String>();
   }
 
   /**
@@ -55,11 +82,18 @@ public class Campaign implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
+    theLink = pBuilder.theLink;
+    if (pBuilder.moreLinks != null) {
+      moreLinks = pBuilder.moreLinks;
+    }
+    else {
+      moreLinks = new HashSet<Long>();
+    }
     if (pBuilder.discountOffers != null) {
       discountOffers = pBuilder.discountOffers;
     }
     else {
-      discountOffers = new ArrayList<DiscountOffer>();
+      discountOffers = new ArrayList<String>();
     }
   }
 
@@ -90,7 +124,29 @@ public class Campaign implements ServiceObject {
     /**
      * 
      */
-    private List<DiscountOffer> discountOffers;
+    /**
+     * 
+     */
+    @Deprecated
+    private long theLink;
+
+    /**
+     * 
+     */
+    /**
+     * 
+     */
+    @Deprecated
+    private Set<Long> moreLinks;
+
+    /**
+     * 
+     */
+    /**
+     * 
+     */
+    @Deprecated
+    private List<String> discountOffers;
 
     /**
      * Use {@link Campaign#builder()} instead of private constructor to create new builder.
@@ -104,8 +160,37 @@ public class Campaign implements ServiceObject {
     protected Builder( Campaign pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
+        theLink = pObject.theLink;
+        moreLinks = pObject.moreLinks;
         discountOffers = pObject.discountOffers;
       }
+    }
+
+    /**
+     * Method sets the association "theLink".
+     * 
+     * @param pTheLink LinkObject to which the association "theLink" should be set.
+     */
+    public Builder setTheLink( long pTheLink ) {
+      theLink = pTheLink;
+      return this;
+    }
+
+    /**
+     * Method sets the association "moreLinks".
+     * 
+     * @param pMoreLinks Collection with objects to which the association should be set.
+     */
+    @Deprecated
+    public Builder setMoreLinks( Set<Long> pMoreLinks ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pMoreLinks != null) {
+        moreLinks = new HashSet<Long>(pMoreLinks);
+      }
+      else {
+        moreLinks = null;
+      }
+      return this;
     }
 
     /**
@@ -113,10 +198,11 @@ public class Campaign implements ServiceObject {
      * 
      * @param pDiscountOffers Collection with objects to which the association should be set.
      */
-    public Builder setDiscountOffers( List<DiscountOffer> pDiscountOffers ) {
+    @Deprecated
+    public Builder setDiscountOffers( List<String> pDiscountOffers ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDiscountOffers != null) {
-        discountOffers = new ArrayList<DiscountOffer>(pDiscountOffers);
+        discountOffers = new ArrayList<String>(pDiscountOffers);
       }
       else {
         discountOffers = null;
@@ -148,13 +234,104 @@ public class Campaign implements ServiceObject {
   }
 
   /**
+   * Method returns the association "theLink".
+   * 
+   *
+   * @return LinkObject LinkObject to which the association "theLink" is set.
+   */
+  @Deprecated
+  public Long getTheLink( ) {
+    return theLink;
+  }
+
+  /**
+   * Method sets the association "theLink".
+   * 
+   * 
+   * @param pTheLink LinkObject to which the association "theLink" should be set.
+   */
+  @Deprecated
+  public void setTheLink( Long pTheLink ) {
+    theLink = pTheLink;
+  }
+
+  /**
+   * Method returns the association "moreLinks".
+   * 
+   *
+   * @return Collection All LinkObject objects that belong to the association "moreLinks". The method never returns null
+   * and the returned collection is unmodifiable.
+   */
+  @Deprecated
+  public Set<Long> getMoreLinks( ) {
+    // Return all LinkObject objects as unmodifiable collection.
+    return Collections.unmodifiableSet(moreLinks);
+  }
+
+  /**
+   * Method adds the passed LinkObject object to the association "moreLinks".
+   * 
+   * 
+   * @param pMoreLinks Object that should be added to the association "moreLinks". The parameter must not be null.
+   */
+  @Deprecated
+  public void addToMoreLinks( Long pMoreLinks ) {
+    // Check parameter "pMoreLinks" for invalid value null.
+    Check.checkInvalidParameterNull(pMoreLinks, "pMoreLinks");
+    // Add passed object to collection of associated LinkObject objects.
+    moreLinks.add(pMoreLinks);
+  }
+
+  /**
+   * Method adds all passed objects to the association "moreLinks".
+   * 
+   * 
+   * @param pMoreLinks Collection with all objects that should be added to the association "moreLinks". The parameter
+   * must not be null.
+   */
+  @Deprecated
+  public void addToMoreLinks( Collection<Long> pMoreLinks ) {
+    // Check parameter "pMoreLinks" for invalid value null.
+    Check.checkInvalidParameterNull(pMoreLinks, "pMoreLinks");
+    // Add all passed objects.
+    for (Long lNextObject : pMoreLinks) {
+      this.addToMoreLinks(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed LinkObject object from the association "moreLinks".
+   * 
+   * 
+   * @param pMoreLinks Object that should be removed from the association "moreLinks". The parameter must not be null.
+   */
+  @Deprecated
+  public void removeFromMoreLinks( Long pMoreLinks ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pMoreLinks, "pMoreLinks");
+    // Remove passed object from collection of associated LinkObject objects.
+    moreLinks.remove(pMoreLinks);
+  }
+
+  /**
+   * Method removes all objects from the association "moreLinks".
+   * 
+   */
+  @Deprecated
+  public void clearMoreLinks( ) {
+    // Remove all objects from association "moreLinks".
+    moreLinks.clear();
+  }
+
+  /**
    * Method returns the association "discountOffers".
    * 
    *
    * @return Collection All DiscountOffer objects that belong to the association "discountOffers". The method never
    * returns null and the returned collection is unmodifiable.
    */
-  public List<DiscountOffer> getDiscountOffers( ) {
+  @Deprecated
+  public List<String> getDiscountOffers( ) {
     // Return all DiscountOffer objects as unmodifiable collection.
     return Collections.unmodifiableList(discountOffers);
   }
@@ -166,16 +343,12 @@ public class Campaign implements ServiceObject {
    * @param pDiscountOffers Object that should be added to the association "discountOffers". The parameter must not be
    * null.
    */
-  public void addToDiscountOffers( DiscountOffer pDiscountOffers ) {
+  @Deprecated
+  public void addToDiscountOffers( String pDiscountOffers ) {
     // Check parameter "pDiscountOffers" for invalid value null.
     Check.checkInvalidParameterNull(pDiscountOffers, "pDiscountOffers");
     // Add passed object to collection of associated DiscountOffer objects.
     discountOffers.add(pDiscountOffers);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pDiscountOffers != null && pDiscountOffers.getCampaigns().contains(this) == false) {
-      pDiscountOffers.addToCampaigns((Campaign) this);
-    }
   }
 
   /**
@@ -185,11 +358,12 @@ public class Campaign implements ServiceObject {
    * @param pDiscountOffers Collection with all objects that should be added to the association "discountOffers". The
    * parameter must not be null.
    */
-  public void addToDiscountOffers( Collection<DiscountOffer> pDiscountOffers ) {
+  @Deprecated
+  public void addToDiscountOffers( Collection<String> pDiscountOffers ) {
     // Check parameter "pDiscountOffers" for invalid value null.
     Check.checkInvalidParameterNull(pDiscountOffers, "pDiscountOffers");
     // Add all passed objects.
-    for (DiscountOffer lNextObject : pDiscountOffers) {
+    for (String lNextObject : pDiscountOffers) {
       this.addToDiscountOffers(lNextObject);
     }
   }
@@ -201,30 +375,22 @@ public class Campaign implements ServiceObject {
    * @param pDiscountOffers Object that should be removed from the association "discountOffers". The parameter must not
    * be null.
    */
-  public void removeFromDiscountOffers( DiscountOffer pDiscountOffers ) {
+  @Deprecated
+  public void removeFromDiscountOffers( String pDiscountOffers ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pDiscountOffers, "pDiscountOffers");
     // Remove passed object from collection of associated DiscountOffer objects.
     discountOffers.remove(pDiscountOffers);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pDiscountOffers.getCampaigns().contains(this) == true) {
-      pDiscountOffers.removeFromCampaigns((Campaign) this);
-    }
   }
 
   /**
    * Method removes all objects from the association "discountOffers".
    * 
    */
+  @Deprecated
   public void clearDiscountOffers( ) {
     // Remove all objects from association "discountOffers".
-    Collection<DiscountOffer> lDiscountOffers = new HashSet<DiscountOffer>(discountOffers);
-    Iterator<DiscountOffer> lIterator = lDiscountOffers.iterator();
-    while (lIterator.hasNext()) {
-      // As association is bidirectional we have to clear it in both directions.
-      this.removeFromDiscountOffers(lIterator.next());
-    }
+    discountOffers.clear();
   }
 
   /**

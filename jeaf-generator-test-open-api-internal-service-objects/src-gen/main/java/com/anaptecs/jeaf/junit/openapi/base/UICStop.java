@@ -101,10 +101,12 @@ public class UICStop extends Stop {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pName, byte pIndex, String pUicCode, int pPriority, long pCode, byte pIndex2 ) {
+  public static Builder builder( String pName, byte pIndex, SoftLink pTheSoftLink, String pUicCode, int pPriority,
+      long pCode, byte pIndex2 ) {
     Builder lBuilder = builder();
     lBuilder.setName(pName);
     lBuilder.setIndex(pIndex);
+    lBuilder.setTheSoftLink(pTheSoftLink);
     lBuilder.setUicCode(pUicCode);
     lBuilder.setPriority(pPriority);
     lBuilder.setCode(pCode);
@@ -197,6 +199,18 @@ public class UICStop extends Stop {
     public Builder setIndex( byte pIndex ) {
       // Call super class implementation.
       super.setIndex(pIndex);
+      return this;
+    }
+
+    /**
+     * Method sets the association "theSoftLink".
+     * 
+     * @param pTheSoftLink LinkObject to which the association "theSoftLink" should be set.
+     */
+    @Override
+    public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
+      // Call super class implementation.
+      super.setTheSoftLink(pTheSoftLink);
       return this;
     }
 

@@ -22,6 +22,7 @@ context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("
 context Property if isNavigable() && class != null && class.isStereotypeApplied("ServiceObject") && runChecks() ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
 context CompositeDataTypePublicField if ((NamedElement) owner).runChecks("ServiceObject") ERROR this.getErrorMessage("9157", {((NamedElement)owner).name + "." + name}): this.type.isStringType();
 context ServiceObject if runChecks("ServiceObject") WARNING this.getWarningMessage("9122", {"ServiceObject", name}): ownedComment.size  > 0;
+context SoftLink if softLinkType.name == "CustomGenericType" && ((NamedElement) owner).runChecks("ServiceObject") ERROR this.getErrorMessage("9158", {((NamedElement)owner).name + "." + name}): getCustomGenericSoftLinkType().length > 0;
 
 
 // Checks for stereotype POJO
@@ -35,6 +36,7 @@ context POJO if runChecks("POJO") ERROR this.getErrorMessage("9130", {"POJO", na
 context Property if isNavigable() && class != null && class.isStereotypeApplied("POJO") && runChecks() ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
 context CompositeDataTypePublicField if ((NamedElement) owner).runChecks("POJO") ERROR this.getErrorMessage("9157", {((NamedElement)owner).name + "." + name}): this.type.isStringType();
 context POJO if runChecks("POJO") WARNING this.getWarningMessage("9122", {"POJO", name}): ownedComment.size  > 0;
+context SoftLink if softLinkType.name == "CustomGenericType" && ((NamedElement) owner).runChecks("POJO") ERROR this.getErrorMessage("9158", {((NamedElement)owner).name + "." + name}): getCustomGenericSoftLinkType().length > 0;
 
 
 // Checks for stereotype DomainObject
