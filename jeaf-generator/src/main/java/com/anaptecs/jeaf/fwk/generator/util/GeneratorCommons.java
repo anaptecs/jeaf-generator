@@ -273,6 +273,8 @@ public class GeneratorCommons {
 
   public static final String NAME_CONSTANTS_FOR_ATTRIBUTES = "switch.gen.enable.name.constants";
 
+  public static final String CUSTOM_GENERIC_SOFT_LINK_TYPE = "switch.gen.custom.generic.soft.link.type";
+
   public static final String SUPPRESS_WARNINGS_LIST = "switch.gen.suppress.warnings";
 
   public static final String SUPPRESS_ALL_WARNINGS = "switch.gen.suppress.all.warnings";
@@ -890,6 +892,11 @@ public class GeneratorCommons {
     return lConfiguration.getConfigurationValueList(SUPPRESS_WARNINGS_LIST, String.class);
   }
 
+  public static String getCustomGenericSoftLinkType( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(CUSTOM_GENERIC_SOFT_LINK_TYPE, String.class);
+  }
+
   public static boolean suppressAllWarnings( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(SUPPRESS_ALL_WARNINGS, Boolean.TRUE, Boolean.class);
@@ -1146,7 +1153,8 @@ public class GeneratorCommons {
     NamedElement lOwner = (NamedElement) pElement.getOwner();
 
     // XFun.getTrace().info(
-    // "Analyzing element " + pElement.getName() + " in package " + ClassUtil.getPackageName(lPackage));
+    // "Analyzing element " + pElement.getName() + " in package " + ClassUtil.getPackageName(lPackage) + " Owner: "
+    // + lOwner.getName());
 
     // Verify if checks should be run for the passed stereotype.
     if (GeneratorCommons.shouldStereotypeBeChecked(pStereotype) == true

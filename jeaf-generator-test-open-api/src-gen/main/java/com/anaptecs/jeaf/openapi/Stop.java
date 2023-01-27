@@ -47,6 +47,9 @@ public class Stop {
   @JsonProperty("index")
   private Integer index = null;
 
+  @JsonProperty("theSoftLink")
+  private String theSoftLink = null;
+
   public Stop objectType(String objectType) {
     this.objectType = objectType;
     return this;
@@ -129,6 +132,24 @@ public class Stop {
     this.index = index;
   }
 
+  public Stop theSoftLink(String theSoftLink) {
+    this.theSoftLink = theSoftLink;
+    return this;
+  }
+
+   /**
+   * Get theSoftLink
+   * @return theSoftLink
+  **/
+  @Schema(required = true, description = "")
+  public String getTheSoftLink() {
+    return theSoftLink;
+  }
+
+  public void setTheSoftLink(String theSoftLink) {
+    this.theSoftLink = theSoftLink;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -142,12 +163,13 @@ public class Stop {
     return Objects.equals(this.objectType, stop.objectType) &&
         Objects.equals(this.name, stop.name) &&
         Objects.equals(this._links, stop._links) &&
-        Objects.equals(this.index, stop.index);
+        Objects.equals(this.index, stop.index) &&
+        Objects.equals(this.theSoftLink, stop.theSoftLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectType, name, _links, index);
+    return Objects.hash(objectType, name, _links, index, theSoftLink);
   }
 
 
@@ -160,6 +182,7 @@ public class Stop {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    _links: ").append(toIndentedString(_links)).append("\n");
     sb.append("    index: ").append(toIndentedString(index)).append("\n");
+    sb.append("    theSoftLink: ").append(toIndentedString(theSoftLink)).append("\n");
     sb.append("}");
     return sb.toString();
   }

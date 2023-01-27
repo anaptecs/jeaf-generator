@@ -26,40 +26,14 @@ import java.util.List;
 
 
 public class Campaign {
-  @JsonProperty("discountOffers")
-  private List<String> discountOffers = null;
-
   @JsonProperty("theLink")
   private Long theLink = null;
 
   @JsonProperty("moreLinks")
   private List<Long> moreLinks = new ArrayList<>();
 
-  public Campaign discountOffers(List<String> discountOffers) {
-    this.discountOffers = discountOffers;
-    return this;
-  }
-
-  public Campaign addDiscountOffersItem(String discountOffersItem) {
-    if (this.discountOffers == null) {
-      this.discountOffers = new ArrayList<>();
-    }
-    this.discountOffers.add(discountOffersItem);
-    return this;
-  }
-
-   /**
-   * Get discountOffers
-   * @return discountOffers
-  **/
-  @Schema(description = "")
-  public List<String> getDiscountOffers() {
-    return discountOffers;
-  }
-
-  public void setDiscountOffers(List<String> discountOffers) {
-    this.discountOffers = discountOffers;
-  }
+  @JsonProperty("discountOffers")
+  private List<String> discountOffers = null;
 
   public Campaign theLink(Long theLink) {
     this.theLink = theLink;
@@ -102,6 +76,32 @@ public class Campaign {
     this.moreLinks = moreLinks;
   }
 
+  public Campaign discountOffers(List<String> discountOffers) {
+    this.discountOffers = discountOffers;
+    return this;
+  }
+
+  public Campaign addDiscountOffersItem(String discountOffersItem) {
+    if (this.discountOffers == null) {
+      this.discountOffers = new ArrayList<>();
+    }
+    this.discountOffers.add(discountOffersItem);
+    return this;
+  }
+
+   /**
+   * Get discountOffers
+   * @return discountOffers
+  **/
+  @Schema(description = "")
+  public List<String> getDiscountOffers() {
+    return discountOffers;
+  }
+
+  public void setDiscountOffers(List<String> discountOffers) {
+    this.discountOffers = discountOffers;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -112,14 +112,14 @@ public class Campaign {
       return false;
     }
     Campaign campaign = (Campaign) o;
-    return Objects.equals(this.discountOffers, campaign.discountOffers) &&
-        Objects.equals(this.theLink, campaign.theLink) &&
-        Objects.equals(this.moreLinks, campaign.moreLinks);
+    return Objects.equals(this.theLink, campaign.theLink) &&
+        Objects.equals(this.moreLinks, campaign.moreLinks) &&
+        Objects.equals(this.discountOffers, campaign.discountOffers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(discountOffers, theLink, moreLinks);
+    return Objects.hash(theLink, moreLinks, discountOffers);
   }
 
 
@@ -128,9 +128,9 @@ public class Campaign {
     StringBuilder sb = new StringBuilder();
     sb.append("class Campaign {\n");
     
-    sb.append("    discountOffers: ").append(toIndentedString(discountOffers)).append("\n");
     sb.append("    theLink: ").append(toIndentedString(theLink)).append("\n");
     sb.append("    moreLinks: ").append(toIndentedString(moreLinks)).append("\n");
+    sb.append("    discountOffers: ").append(toIndentedString(discountOffers)).append("\n");
     sb.append("}");
     return sb.toString();
   }

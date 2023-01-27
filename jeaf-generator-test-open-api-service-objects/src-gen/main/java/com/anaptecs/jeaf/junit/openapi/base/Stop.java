@@ -58,6 +58,12 @@ public class Stop implements ServiceObject {
   private byte index;
 
   /**
+   * 
+   */
+  @NotNull
+  private SoftLink theSoftLink;
+
+  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
@@ -82,6 +88,7 @@ public class Stop implements ServiceObject {
       links = new ArrayList<LinkObject>();
     }
     index = pBuilder.index;
+    theSoftLink = pBuilder.theSoftLink;
   }
 
   /**
@@ -126,6 +133,15 @@ public class Stop implements ServiceObject {
     private byte index;
 
     /**
+     * 
+     */
+    /**
+     * 
+     */
+    @NotNull
+    private SoftLink theSoftLink;
+
+    /**
      * Use {@link Stop#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -140,6 +156,7 @@ public class Stop implements ServiceObject {
         name = pObject.name;
         links = pObject.links;
         index = pObject.index;
+        theSoftLink = pObject.theSoftLink;
       }
     }
 
@@ -178,6 +195,16 @@ public class Stop implements ServiceObject {
     public Builder setIndex( byte pIndex ) {
       // Assign value to attribute
       index = pIndex;
+      return this;
+    }
+
+    /**
+     * Method sets the association "theSoftLink".
+     * 
+     * @param pTheSoftLink LinkObject to which the association "theSoftLink" should be set.
+     */
+    public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
+      theSoftLink = pTheSoftLink;
       return this;
     }
 
@@ -310,6 +337,34 @@ public class Stop implements ServiceObject {
   }
 
   /**
+   * Method returns the association "theSoftLink".
+   * 
+   *
+   * @return LinkObject LinkObject to which the association "theSoftLink" is set.
+   */
+  public SoftLink getTheSoftLink( ) {
+    return theSoftLink;
+  }
+
+  /**
+   * Method sets the association "theSoftLink".
+   * 
+   * 
+   * @param pTheSoftLink LinkObject to which the association "theSoftLink" should be set.
+   */
+  public void setTheSoftLink( SoftLink pTheSoftLink ) {
+    theSoftLink = pTheSoftLink;
+  }
+
+  /**
+   * Method unsets the association "theSoftLink".
+   * 
+   */
+  public final void unsetTheSoftLink( ) {
+    theSoftLink = null;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -343,6 +398,10 @@ public class Stop implements ServiceObject {
     lBuilder.append(pIndent);
     lBuilder.append("index: ");
     lBuilder.append(index);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("theSoftLink: ");
+    lBuilder.append(theSoftLink);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

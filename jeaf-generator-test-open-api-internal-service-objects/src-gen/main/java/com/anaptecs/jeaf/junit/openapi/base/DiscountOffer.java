@@ -7,7 +7,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -32,14 +31,14 @@ public class DiscountOffer implements ServiceObject {
    * 
    */
   @Deprecated
-  private Set<Campaign> campaigns;
+  private Set<SoftLink> campaigns;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected DiscountOffer( ) {
-    campaigns = new HashSet<Campaign>();
+    campaigns = new HashSet<SoftLink>();
   }
 
   /**
@@ -55,7 +54,7 @@ public class DiscountOffer implements ServiceObject {
       campaigns = pBuilder.campaigns;
     }
     else {
-      campaigns = new HashSet<Campaign>();
+      campaigns = new HashSet<SoftLink>();
     }
   }
 
@@ -87,8 +86,11 @@ public class DiscountOffer implements ServiceObject {
     /**
      * 
      */
+    /**
+     * 
+     */
     @Deprecated
-    private Set<Campaign> campaigns;
+    private Set<SoftLink> campaigns;
 
     /**
      * Use {@link DiscountOffer#builder()} instead of private constructor to create new builder.
@@ -112,10 +114,10 @@ public class DiscountOffer implements ServiceObject {
      * @param pCampaigns Collection with objects to which the association should be set.
      */
     @Deprecated
-    public Builder setCampaigns( Set<Campaign> pCampaigns ) {
+    public Builder setCampaigns( Set<SoftLink> pCampaigns ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pCampaigns != null) {
-        campaigns = new HashSet<Campaign>(pCampaigns);
+        campaigns = new HashSet<SoftLink>(pCampaigns);
       }
       else {
         campaigns = null;
@@ -155,7 +157,7 @@ public class DiscountOffer implements ServiceObject {
    * and the returned collection is modifiable.
    */
   @Deprecated
-  public Set<Campaign> getCampaigns( ) {
+  public Set<SoftLink> getCampaigns( ) {
     // Return all Campaign objects directly without any protection against modification.
     return campaigns;
   }
@@ -167,16 +169,11 @@ public class DiscountOffer implements ServiceObject {
    * @param pCampaigns Object that should be added to the association "campaigns". The parameter must not be null.
    */
   @Deprecated
-  public void addToCampaigns( Campaign pCampaigns ) {
+  public void addToCampaigns( SoftLink pCampaigns ) {
     // Check parameter "pCampaigns" for invalid value null.
     Check.checkInvalidParameterNull(pCampaigns, "pCampaigns");
     // Add passed object to collection of associated Campaign objects.
     campaigns.add(pCampaigns);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pCampaigns != null && pCampaigns.getDiscountOffers().contains(this) == false) {
-      pCampaigns.addToDiscountOffers((DiscountOffer) this);
-    }
   }
 
   /**
@@ -187,11 +184,11 @@ public class DiscountOffer implements ServiceObject {
    * must not be null.
    */
   @Deprecated
-  public void addToCampaigns( Collection<Campaign> pCampaigns ) {
+  public void addToCampaigns( Collection<SoftLink> pCampaigns ) {
     // Check parameter "pCampaigns" for invalid value null.
     Check.checkInvalidParameterNull(pCampaigns, "pCampaigns");
     // Add all passed objects.
-    for (Campaign lNextObject : pCampaigns) {
+    for (SoftLink lNextObject : pCampaigns) {
       this.addToCampaigns(lNextObject);
     }
   }
@@ -203,16 +200,11 @@ public class DiscountOffer implements ServiceObject {
    * @param pCampaigns Object that should be removed from the association "campaigns". The parameter must not be null.
    */
   @Deprecated
-  public void removeFromCampaigns( Campaign pCampaigns ) {
+  public void removeFromCampaigns( SoftLink pCampaigns ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pCampaigns, "pCampaigns");
     // Remove passed object from collection of associated Campaign objects.
     campaigns.remove(pCampaigns);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pCampaigns.getDiscountOffers().contains(this) == true) {
-      pCampaigns.removeFromDiscountOffers((DiscountOffer) this);
-    }
   }
 
   /**
@@ -222,12 +214,7 @@ public class DiscountOffer implements ServiceObject {
   @Deprecated
   public void clearCampaigns( ) {
     // Remove all objects from association "campaigns".
-    Collection<Campaign> lCampaigns = new HashSet<Campaign>(campaigns);
-    Iterator<Campaign> lIterator = lCampaigns.iterator();
-    while (lIterator.hasNext()) {
-      // As association is bidirectional we have to clear it in both directions.
-      this.removeFromCampaigns(lIterator.next());
-    }
+    campaigns.clear();
   }
 
   /**
@@ -252,8 +239,9 @@ public class DiscountOffer implements ServiceObject {
     }
     lBuilder.append(System.lineSeparator());
     if (campaigns != null) {
-      for (Campaign lNext : campaigns) {
-        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+      for (SoftLink lNext : campaigns) {
+        lBuilder.append(pIndent + "    ");
+        lBuilder.append(lNext.toString());
         lBuilder.append(System.lineSeparator());
       }
     }

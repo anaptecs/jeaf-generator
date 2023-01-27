@@ -280,7 +280,9 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 	    /**
 	     * «this.getComment()»
 	     */
-	    «IF this.association == null»
+	    «IF this.isSoftLink()»
+	       «EXPAND SoftLinkBuilderPropertyDeclaration FOR ((SoftLink) this)»
+	    «ELSEIF this.association == null»
 	        «EXPAND DoBuilderPropertyDeclaration»
 	    «ELSE»
 	        «EXPAND DoBuilderAssociationPropertyDeclaration»
@@ -291,8 +293,8 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 
 // processing the properties
 «DEFINE DoBuilderPropertyDeclaration FOR Property»
-	«EXPAND Validation::ValidationAnnotation»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND Validation::ValidationAnnotation»
 	private «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumeration()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
 «ENDDEFINE»
 
@@ -307,9 +309,28 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 	«ENDIF»
 «ENDDEFINE»
 
+«DEFINE SoftLinkBuilderPropertyDeclaration FOR SoftLink»
+    /**
+     * «this.getComment()»
+     */
+        «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+        «EXPAND Validation::ValidationAnnotation»
+        «IF isMultivalued()»
+            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»
+            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
+            «visibility» «IF isTransient()»transient «ENDIF» «this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asInstanceVar()»;
+        «ELSE»
+            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
+            «visibility» «IF isTransient()»transient «ENDIF» «this.getSoftLinkType()» «asInstanceVar()»;
+        «ENDIF»
+«ENDDEFINE»
+
+
 «DEFINE BuilderSetter(String builderClassName) FOR Property»
     «IF this.isStatic == false»
-	    «IF this.association == null»
+	    «IF this.isSoftLink()»
+	       «EXPAND CreateBuilderSoftLinkSetter(builderClassName) FOR ((SoftLink) this)»
+	    «ELSEIF this.association == null»
 	        «EXPAND CreateBuilderPropertySetter(builderClassName)»
 	    «ELSE»
 	        «EXPAND CreateBuilderAssociationSetter(builderClassName)»
@@ -390,6 +411,40 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 	«ENDIF»
 «ENDDEFINE»
 
+«DEFINE CreateBuilderSoftLinkSetter(String builderClassName) FOR SoftLink»
+    «IF isNavigable()»
+        «IF isMultivalued()»
+            /**
+             * Method sets the association "«asInstanceVar()»". «this.getComment()»
+             * 
+             * @param «asParameter()» Collection with objects to which the association should be set.
+             */
+            «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+            public «builderClassName» set«name.toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asParameter()») {
+                // To ensure immutability we have to copy the content of the passed collection.
+                if(«asParameter()» != null) {
+                  «asInstanceVar()» = new «this.getCollectionImplType()»<«this.getMultivaluedSoftLinkType()»>(«asParameter()»);
+                }
+                else {
+                  «asInstanceVar()» = null;
+                }
+                return this;
+            }
+        «ELSE»
+            /**
+             * Method sets the association "«asInstanceVar()»". «this.getComment()»
+             * 
+             * @param «asParameter()» «this.type.name» to which the association "«asInstanceVar()»" should be set.
+             */
+            public «builderClassName» «asSetter()» («this.getSoftLinkType()» «asParameter()») {
+                «asInstanceVar()» = «asParameter()»;
+                return this;
+            }
+        «ENDIF»
+    «ENDIF»
+«ENDDEFINE»
+
+
 «DEFINE CreateBuilderVarArgsSetter(String builderClassName) FOR Property»
 	«IF isNavigable()»
 		«IF isMultivalued()»
@@ -416,7 +471,9 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 
 «DEFINE OverwriteBuilderSetterFromBaseClasses(String builderClassName) FOR Property»
     «IF this.isStatic == false»
-	    «IF this.association == null»
+	    «IF this.isSoftLink()»
+	       «EXPAND OverwriteBuilderSoftLinkSetter(builderClassName) FOR ((SoftLink) this)»
+	    «ELSEIF this.association == null»
 	        «EXPAND OverwriteBuilderPropertySetter(builderClassName)»
 	    «ELSE»
 	        «EXPAND OverwriteBuilderAssociationSetter(builderClassName)»
@@ -466,6 +523,36 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 			}
 		«ENDIF»
 	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE OverwriteBuilderSoftLinkSetter(String builderClassName) FOR SoftLink»
+    «IF isNavigable()»
+        «IF isMultivalued()»
+            /**
+             * Method sets the association "«asInstanceVar()»". «this.getComment()»
+             * 
+             * @param «asParameter()» Collection with objects to which the association should be set.
+             */
+            @Override
+            public «builderClassName» set«name.toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asParameter()») {
+                // Call super class implementation.
+                super.set«name.toFirstUpper()»(«asParameter()»);
+                return this;
+            }
+        «ELSE»
+            /**
+             * Method sets the association "«asInstanceVar()»". «this.getComment()»
+             * 
+             * @param «asParameter()» «this.type.name» to which the association "«asInstanceVar()»" should be set.
+             */
+            @Override
+            public «builderClassName» «asSetter()» («this.getSoftLinkType()» «asParameter()») {
+                // Call super class implementation.
+                super.«asSetter()»(«asParameter()»);
+                return this;
+            }
+        «ENDIF»
+    «ENDIF»
 «ENDDEFINE»
 
 «DEFINE GenerateBuilderImpl FOR uml::Class»
@@ -537,7 +624,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
    /**
     * Method creates a new builder and initializes it with the passed attributes.
     */
-    public static Builder builder(«FOREACH this.getRequiredPropertiesForBuilder() AS property SEPARATOR ", "» «property.type.fqn()» p«property.name.toFirstUpper()»«ENDFOREACH») {
+    public static Builder builder(«FOREACH this.getRequiredPropertiesForBuilder() AS property SEPARATOR ", "» «IF property.isSoftLink()»«((SoftLink) property).getSoftLinkType()» «ELSE»«property.type.fqn()» «ENDIF»p«property.name.toFirstUpper()»«ENDFOREACH») {
       Builder lBuilder = builder( );
       «FOREACH this.getRequiredPropertiesForBuilder() AS property-»
 			lBuilder.«property.asSetter()»(p«property.name.toFirstUpper()»);

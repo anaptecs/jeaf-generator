@@ -356,7 +356,11 @@
 						«IF attr.association == null»
 							«attr.name» = null;
 						«ELSE»
-							«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+                            «IF attr.isSoftLink()»
+                                «attr.name» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedSoftLinkType()»>();
+                            «ELSE»
+							    «attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+							«ENDIF»
 						«ENDIF»
 					«ELSE»
 						«attr.name» = null;
@@ -365,7 +369,11 @@
 			«ELSE»
 				«IF attr.isMultivalued() && attr.association != null»
 					«REM»Only in case of collections we have to initilize them.«ENDREM»
-					«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+                    «IF attr.isSoftLink()»
+                       «attr.name» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedSoftLinkType()»>();
+                    «ELSE»
+					   «attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+					«ENDIF»
 				«ELSE»
 					«IF attr.isRealInitValue() && attr.isStatic == false »
 						«attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
@@ -396,7 +404,11 @@
 						«attr.name» = pBuilder.«attr.name»;
 						}
 						else {
-						«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+                        «IF attr.isSoftLink()»
+                          «attr.name» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedSoftLinkType()»>();
+                        «ELSE»
+    						«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+    					«ENDIF»
 						}
 					«ENDIF»
 				«ELSE»

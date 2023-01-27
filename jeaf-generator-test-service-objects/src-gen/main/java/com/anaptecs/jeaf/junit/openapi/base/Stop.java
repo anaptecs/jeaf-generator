@@ -44,6 +44,11 @@ public class Stop implements ServiceObject {
   public static final String INDEX = "index";
 
   /**
+   * Constant for the name of attribute "theSoftLink".
+   */
+  public static final String THESOFTLINK = "theSoftLink";
+
+  /**
    * 
    */
   private String name;
@@ -59,6 +64,11 @@ public class Stop implements ServiceObject {
   @Max(value = 32)
   @PositiveOrZero
   private byte index;
+
+  /**
+   * 
+   */
+  private SoftLink theSoftLink;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -85,6 +95,7 @@ public class Stop implements ServiceObject {
       links = new ArrayList<LinkObject>();
     }
     index = pBuilder.index;
+    theSoftLink = pBuilder.theSoftLink;
   }
 
   /**
@@ -129,6 +140,14 @@ public class Stop implements ServiceObject {
     private byte index;
 
     /**
+     * 
+     */
+    /**
+     * 
+     */
+    private SoftLink theSoftLink;
+
+    /**
      * Use {@link Stop#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -143,6 +162,7 @@ public class Stop implements ServiceObject {
         name = pObject.name;
         links = pObject.links;
         index = pObject.index;
+        theSoftLink = pObject.theSoftLink;
       }
     }
 
@@ -181,6 +201,16 @@ public class Stop implements ServiceObject {
     public Builder setIndex( byte pIndex ) {
       // Assign value to attribute
       index = pIndex;
+      return this;
+    }
+
+    /**
+     * Method sets the association "theSoftLink".
+     * 
+     * @param pTheSoftLink LinkObject to which the association "theSoftLink" should be set.
+     */
+    public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
+      theSoftLink = pTheSoftLink;
       return this;
     }
 
@@ -310,6 +340,34 @@ public class Stop implements ServiceObject {
   public void setIndex( byte pIndex ) {
     // Assign value to attribute
     index = pIndex;
+  }
+
+  /**
+   * Method returns the association "theSoftLink".
+   * 
+   *
+   * @return LinkObject LinkObject to which the association "theSoftLink" is set.
+   */
+  public SoftLink getTheSoftLink( ) {
+    return theSoftLink;
+  }
+
+  /**
+   * Method sets the association "theSoftLink".
+   * 
+   * 
+   * @param pTheSoftLink LinkObject to which the association "theSoftLink" should be set.
+   */
+  public void setTheSoftLink( SoftLink pTheSoftLink ) {
+    theSoftLink = pTheSoftLink;
+  }
+
+  /**
+   * Method unsets the association "theSoftLink".
+   * 
+   */
+  public final void unsetTheSoftLink( ) {
+    theSoftLink = null;
   }
 
   /**

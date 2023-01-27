@@ -177,8 +177,8 @@ public class ChildBB extends ChildB {
     /**
      * 
      */
-    @Size(min = 0, max = 4711)
     @Deprecated
+    @Size(min = 0, max = 4711)
     private byte[] deprecatedArray;
 
     /**

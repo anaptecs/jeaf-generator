@@ -64,7 +64,7 @@
 	    lBuilder.append(System.lineSeparator());
     «ELSE»
 	    «IF isMultivalued() == false»
-		    «IF type.isEnumeration() == false && (type.isStereotypeApplied("POJO") || type.isStereotypeApplied("ServiceObject"))»
+		    «IF type.isEnumeration() == false && this.isSoftLink() == false && (type.isStereotypeApplied("POJO") || type.isStereotypeApplied("ServiceObject"))»
 		    if(«name» != null) {
 		    	lBuilder.append(System.lineSeparator());
 		    	lBuilder.append(«name».toStringBuilder(pIndent + "    "));
@@ -87,6 +87,15 @@
 		    }
 		    lBuilder.append(System.lineSeparator());
 		    if («name» != null) {
+		      «IF this.isSoftLink()»
+		      «LET ((JMM::SoftLink) this) AS softLink»
+              for («softLink.getMultivaluedSoftLinkType()» lNext : «name») {
+                lBuilder.append(pIndent + "    ");
+                lBuilder.append(lNext.toString());
+                lBuilder.append(System.lineSeparator());
+              }
+              «ENDLET»
+		      «ELSE»
 		      for («type.fqn()» lNext : «name») {
 		      	«IF type.isEnumeration() == false && (type.isStereotypeApplied("POJO") || type.isStereotypeApplied("ServiceObject"))»
 		        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
@@ -96,6 +105,7 @@
 		        «ENDIF»
 		        lBuilder.append(System.lineSeparator());
 		      }
+		      «ENDIF»
 		    }
 	    «ENDIF»
     «ENDIF»

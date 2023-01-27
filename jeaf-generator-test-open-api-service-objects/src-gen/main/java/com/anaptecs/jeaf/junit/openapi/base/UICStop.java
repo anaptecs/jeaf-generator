@@ -187,6 +187,18 @@ public class UICStop extends Stop {
     }
 
     /**
+     * Method sets the association "theSoftLink".
+     * 
+     * @param pTheSoftLink LinkObject to which the association "theSoftLink" should be set.
+     */
+    @Override
+    public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
+      // Call super class implementation.
+      super.setTheSoftLink(pTheSoftLink);
+      return this;
+    }
+
+    /**
      * Method sets the attribute "uicCode".
      * 
      * @param pUicCode Value to which the attribute "uicCode" should be set.

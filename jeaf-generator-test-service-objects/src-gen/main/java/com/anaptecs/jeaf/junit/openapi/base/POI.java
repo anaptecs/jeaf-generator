@@ -52,20 +52,20 @@ public class POI extends Stop {
    * 
    */
   @Deprecated
-  private LinkObject theLink;
+  private Long theLink;
 
   /**
    * 
    */
   @Deprecated
-  private Set<LinkObject> evenMoreLinks;
+  private Set<SoftLink> evenMoreLinks;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected POI( ) {
-    evenMoreLinks = new HashSet<LinkObject>();
+    evenMoreLinks = new HashSet<SoftLink>();
   }
 
   /**
@@ -83,7 +83,7 @@ public class POI extends Stop {
       evenMoreLinks = pBuilder.evenMoreLinks;
     }
     else {
-      evenMoreLinks = new HashSet<LinkObject>();
+      evenMoreLinks = new HashSet<SoftLink>();
     }
   }
 
@@ -119,14 +119,20 @@ public class POI extends Stop {
     /**
      * 
      */
-    @Deprecated
-    private LinkObject theLink;
-
     /**
      * 
      */
     @Deprecated
-    private Set<LinkObject> evenMoreLinks;
+    private Long theLink;
+
+    /**
+     * 
+     */
+    /**
+     * 
+     */
+    @Deprecated
+    private Set<SoftLink> evenMoreLinks;
 
     /**
      * Use {@link POI#builder()} instead of private constructor to create new builder.
@@ -185,6 +191,18 @@ public class POI extends Stop {
     }
 
     /**
+     * Method sets the association "theSoftLink".
+     * 
+     * @param pTheSoftLink LinkObject to which the association "theSoftLink" should be set.
+     */
+    @Override
+    public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
+      // Call super class implementation.
+      super.setTheSoftLink(pTheSoftLink);
+      return this;
+    }
+
+    /**
      * Method sets the attribute "description".
      * 
      * @param pDescription Value to which the attribute "description" should be set.
@@ -200,7 +218,7 @@ public class POI extends Stop {
      * 
      * @param pTheLink LinkObject to which the association "theLink" should be set.
      */
-    public Builder setTheLink( LinkObject pTheLink ) {
+    public Builder setTheLink( Long pTheLink ) {
       theLink = pTheLink;
       return this;
     }
@@ -211,10 +229,10 @@ public class POI extends Stop {
      * @param pEvenMoreLinks Collection with objects to which the association should be set.
      */
     @Deprecated
-    public Builder setEvenMoreLinks( Set<LinkObject> pEvenMoreLinks ) {
+    public Builder setEvenMoreLinks( Set<SoftLink> pEvenMoreLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pEvenMoreLinks != null) {
-        evenMoreLinks = new HashSet<LinkObject>(pEvenMoreLinks);
+        evenMoreLinks = new HashSet<SoftLink>(pEvenMoreLinks);
       }
       else {
         evenMoreLinks = null;
@@ -273,7 +291,7 @@ public class POI extends Stop {
    * @return LinkObject LinkObject to which the association "theLink" is set.
    */
   @Deprecated
-  public LinkObject getTheLink( ) {
+  public Long getTheLink( ) {
     return theLink;
   }
 
@@ -284,7 +302,7 @@ public class POI extends Stop {
    * @param pTheLink LinkObject to which the association "theLink" should be set.
    */
   @Deprecated
-  public void setTheLink( LinkObject pTheLink ) {
+  public void setTheLink( Long pTheLink ) {
     theLink = pTheLink;
   }
 
@@ -305,7 +323,7 @@ public class POI extends Stop {
    * null and the returned collection is unmodifiable.
    */
   @Deprecated
-  public Set<LinkObject> getEvenMoreLinks( ) {
+  public Set<SoftLink> getEvenMoreLinks( ) {
     // Return all LinkObject objects as unmodifiable collection.
     return Collections.unmodifiableSet(evenMoreLinks);
   }
@@ -318,7 +336,7 @@ public class POI extends Stop {
    * null.
    */
   @Deprecated
-  public void addToEvenMoreLinks( LinkObject pEvenMoreLinks ) {
+  public void addToEvenMoreLinks( SoftLink pEvenMoreLinks ) {
     // Check parameter "pEvenMoreLinks" for invalid value null.
     Check.checkInvalidParameterNull(pEvenMoreLinks, "pEvenMoreLinks");
     // Add passed object to collection of associated LinkObject objects.
@@ -333,11 +351,11 @@ public class POI extends Stop {
    * parameter must not be null.
    */
   @Deprecated
-  public void addToEvenMoreLinks( Collection<LinkObject> pEvenMoreLinks ) {
+  public void addToEvenMoreLinks( Collection<SoftLink> pEvenMoreLinks ) {
     // Check parameter "pEvenMoreLinks" for invalid value null.
     Check.checkInvalidParameterNull(pEvenMoreLinks, "pEvenMoreLinks");
     // Add all passed objects.
-    for (LinkObject lNextObject : pEvenMoreLinks) {
+    for (SoftLink lNextObject : pEvenMoreLinks) {
       this.addToEvenMoreLinks(lNextObject);
     }
   }
@@ -350,7 +368,7 @@ public class POI extends Stop {
    * null.
    */
   @Deprecated
-  public void removeFromEvenMoreLinks( LinkObject pEvenMoreLinks ) {
+  public void removeFromEvenMoreLinks( SoftLink pEvenMoreLinks ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pEvenMoreLinks, "pEvenMoreLinks");
     // Remove passed object from collection of associated LinkObject objects.

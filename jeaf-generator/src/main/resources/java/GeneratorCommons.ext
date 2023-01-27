@@ -495,7 +495,16 @@ cached boolean isTechnicalHeaderProperty(uml::Property property):
 cached boolean isSoftLink(uml::Property property):
 	property.isStereotypeApplied("SoftLink");
 	
-    
+cached String getSoftLinkType(JMM::SoftLink softLink):
+    if (softLink.softLinkType.name == "CustomGenericType")
+    then getCustomGenericSoftLinkType()
+    else softLink.softLinkType.name;
 
-                
-	
+cached String getMultivaluedSoftLinkType(JMM::SoftLink softLink):
+    if (softLink.softLinkType.name == "CustomGenericType")
+    then getCustomGenericSoftLinkType()
+    else softLink.softLinkType.name.toFirstUpper();
+
+cached String getCustomGenericSoftLinkType():
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getCustomGenericSoftLinkType();
+    

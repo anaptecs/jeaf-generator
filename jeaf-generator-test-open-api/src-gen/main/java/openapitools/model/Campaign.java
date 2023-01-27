@@ -34,57 +34,23 @@ import openapitools.JSON;
  * Campaign
  */
 @JsonPropertyOrder({
-  Campaign.JSON_PROPERTY_DISCOUNT_OFFERS,
   Campaign.JSON_PROPERTY_THE_LINK,
-  Campaign.JSON_PROPERTY_MORE_LINKS
+  Campaign.JSON_PROPERTY_MORE_LINKS,
+  Campaign.JSON_PROPERTY_DISCOUNT_OFFERS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Campaign {
-  public static final String JSON_PROPERTY_DISCOUNT_OFFERS = "discountOffers";
-  private List<String> discountOffers = null;
-
   public static final String JSON_PROPERTY_THE_LINK = "theLink";
   private Long theLink;
 
   public static final String JSON_PROPERTY_MORE_LINKS = "moreLinks";
   private List<Long> moreLinks = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_DISCOUNT_OFFERS = "discountOffers";
+  private List<String> discountOffers = null;
+
   public Campaign() { 
   }
-
-  public Campaign discountOffers(List<String> discountOffers) {
-    this.discountOffers = discountOffers;
-    return this;
-  }
-
-  public Campaign addDiscountOffersItem(String discountOffersItem) {
-    if (this.discountOffers == null) {
-      this.discountOffers = new ArrayList<>();
-    }
-    this.discountOffers.add(discountOffersItem);
-    return this;
-  }
-
-   /**
-   * Get discountOffers
-   * @return discountOffers
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DISCOUNT_OFFERS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<String> getDiscountOffers() {
-    return discountOffers;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DISCOUNT_OFFERS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDiscountOffers(List<String> discountOffers) {
-    this.discountOffers = discountOffers;
-  }
-
 
   public Campaign theLink(Long theLink) {
     this.theLink = theLink;
@@ -147,6 +113,42 @@ public class Campaign {
   }
 
 
+  public Campaign discountOffers(List<String> discountOffers) {
+    this.discountOffers = discountOffers;
+    return this;
+  }
+
+  public Campaign addDiscountOffersItem(String discountOffersItem) {
+    if (this.discountOffers == null) {
+      this.discountOffers = new ArrayList<>();
+    }
+    this.discountOffers.add(discountOffersItem);
+    return this;
+  }
+
+   /**
+   * Get discountOffers
+   * @return discountOffers
+   * @deprecated
+  **/
+  @Deprecated
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_DISCOUNT_OFFERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<String> getDiscountOffers() {
+    return discountOffers;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DISCOUNT_OFFERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDiscountOffers(List<String> discountOffers) {
+    this.discountOffers = discountOffers;
+  }
+
+
   /**
    * Return true if this Campaign object is equal to o.
    */
@@ -159,23 +161,23 @@ public class Campaign {
       return false;
     }
     Campaign campaign = (Campaign) o;
-    return Objects.equals(this.discountOffers, campaign.discountOffers) &&
-        Objects.equals(this.theLink, campaign.theLink) &&
-        Objects.equals(this.moreLinks, campaign.moreLinks);
+    return Objects.equals(this.theLink, campaign.theLink) &&
+        Objects.equals(this.moreLinks, campaign.moreLinks) &&
+        Objects.equals(this.discountOffers, campaign.discountOffers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(discountOffers, theLink, moreLinks);
+    return Objects.hash(theLink, moreLinks, discountOffers);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Campaign {\n");
-    sb.append("    discountOffers: ").append(toIndentedString(discountOffers)).append("\n");
     sb.append("    theLink: ").append(toIndentedString(theLink)).append("\n");
     sb.append("    moreLinks: ").append(toIndentedString(moreLinks)).append("\n");
+    sb.append("    discountOffers: ").append(toIndentedString(discountOffers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
