@@ -73,6 +73,18 @@ public class UICStopPlace extends StopPlaceRef {
     }
 
     /**
+     * Method sets the attribute "name".
+     * 
+     * @param pName Value to which the attribute "name" should be set.
+     */
+    @Override
+    public Builder setName( String pName ) {
+      // Call super class implementation.
+      super.setName(pName);
+      return this;
+    }
+
+    /**
      * Method creates a new instance of class UICStopPlace. The object will be initialized with the values of the
      * builder.
      * 

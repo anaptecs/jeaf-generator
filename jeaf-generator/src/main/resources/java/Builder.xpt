@@ -1,6 +1,7 @@
 «EXTENSION java::Naming»
 «EXTENSION java::ObjectMapper»
 «EXTENSION java::GeneratorCommons»
+«EXTENSION java::OpenAPIFunctions»
 «EXTENSION java::Naming»
 «EXTENSION entity::ModelProperties»
 «IMPORT uml»
@@ -100,7 +101,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF sup
 	
 	«REM»Overwritte setters for each property of super class with this Builder class as return type.«ENDREM»
 	«IF this.superClass.isEmpty == false»
-		«FOREACH this.superClass.getAllAttributes().select(e|e.isPropertySuppressed() == false) AS superAttr»
+		«FOREACH this.superClass.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false) AS superAttr»
 			«EXPAND OverwriteBuilderSetterFromBaseClasses("Builder") FOR superAttr»
 		«ENDFOREACH»
 	«ENDIF»
@@ -224,7 +225,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 	
 	«REM»Overwritte setters for each property of super class with this Builder class as return type.«ENDREM»
 	«IF this.superClass.isEmpty == false»
-		«FOREACH this.superClass.getAllAttributes().select(e|e.isPropertySuppressed() == false) AS superAttr»
+		«FOREACH this.superClass.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false) AS superAttr»
 			«EXPAND OverwriteBuilderSetterFromBaseClasses("BuilderBase") FOR superAttr»
 		«ENDFOREACH»
 	«ENDIF»

@@ -91,6 +91,18 @@ public class BusinessChild extends BusinessParent {
     }
 
     /**
+     * Method sets the attribute "techAttribute".
+     * 
+     * @param pTechAttribute Value to which the attribute "techAttribute" should be set.
+     */
+    @Override
+    public Builder setTechAttribute( String pTechAttribute ) {
+      // Call super class implementation.
+      super.setTechAttribute(pTechAttribute);
+      return this;
+    }
+
+    /**
      * Method sets the attribute "parentAttribute".
      * 
      * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
