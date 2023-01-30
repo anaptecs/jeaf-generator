@@ -508,3 +508,11 @@ cached String getMultivaluedSoftLinkType(JMM::SoftLink softLink):
 cached String getCustomGenericSoftLinkType():
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getCustomGenericSoftLinkType();
     
+cached boolean isTechnicalBaseClass(uml::Class class):
+    if class.isStereotypeApplied("POJO")
+    then ((JMM::POJO) class).technicalBaseClass
+    else 
+        if class.isStereotypeApplied("ServiceObject")
+        then ((JMM::ServiceObject) class).technicalBaseClass
+        else false;
+    
