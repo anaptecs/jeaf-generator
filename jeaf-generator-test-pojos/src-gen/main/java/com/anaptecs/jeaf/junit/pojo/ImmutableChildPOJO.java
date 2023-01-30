@@ -115,6 +115,18 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
     }
 
     /**
+     * Method sets the attribute "abtractAttr".
+     * 
+     * @param pAbtractAttr Value to which the attribute "abtractAttr" should be set.
+     */
+    @Override
+    public Builder setAbtractAttr( String pAbtractAttr ) {
+      // Call super class implementation.
+      super.setAbtractAttr(pAbtractAttr);
+      return this;
+    }
+
+    /**
      * Method sets the attribute "parentAttribute".
      * 
      * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.

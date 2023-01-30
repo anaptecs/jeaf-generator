@@ -73,6 +73,18 @@ public class SwissGeoPosition extends GeoPosition {
     }
 
     /**
+     * Method sets the attribute "name".
+     * 
+     * @param pName Value to which the attribute "name" should be set.
+     */
+    @Override
+    public Builder setName( String pName ) {
+      // Call super class implementation.
+      super.setName(pName);
+      return this;
+    }
+
+    /**
      * Method sets the attribute "longitude".
      * 
      * @param pLongitude Value to which the attribute "longitude" should be set.

@@ -206,6 +206,18 @@ public class ChildBB extends ChildB {
     }
 
     /**
+     * Method sets the attribute "parentAttribute".
+     * 
+     * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+     */
+    @Override
+    public Builder setParentAttribute( String pParentAttribute ) {
+      // Call super class implementation.
+      super.setParentAttribute(pParentAttribute);
+      return this;
+    }
+
+    /**
      * Method sets the attribute "childBAttribute". A child attribute
      * 
      * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
