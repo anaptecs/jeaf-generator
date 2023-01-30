@@ -6,18 +6,12 @@
 package com.anaptecs.spring.base.techbase;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({ @JsonSubTypes.Type(value = BusinessA.class, name = "BusinessA"),
-  @JsonSubTypes.Type(value = BusinessParent.class, name = "BusinessParent"),
-  @JsonSubTypes.Type(value = BusinessChild.class, name = "BusinessChild") })
 public class TechParent {
   /**
    * Constant for the name of attribute "techAttribute".

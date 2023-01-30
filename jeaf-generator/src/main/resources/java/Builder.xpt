@@ -224,7 +224,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 	
 	«REM»Overwritte setters for each property of super class with this Builder class as return type.«ENDREM»
 	«IF this.superClass.isEmpty == false»
-		«FOREACH this.superClass.getAllAttributes() AS superAttr»
+		«FOREACH this.superClass.getAllAttributes().select(e|e.isPropertySuppressed() == false) AS superAttr»
 			«EXPAND OverwriteBuilderSetterFromBaseClasses("BuilderBase") FOR superAttr»
 		«ENDFOREACH»
 	«ENDIF»
