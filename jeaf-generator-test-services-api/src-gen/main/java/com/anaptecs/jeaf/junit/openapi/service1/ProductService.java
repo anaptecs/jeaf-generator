@@ -21,6 +21,8 @@ import javax.validation.constraints.NotEmpty;
 
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
+import com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode;
+import com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum;
 import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelType;
@@ -28,6 +30,7 @@ import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType;
+import com.anaptecs.jeaf.junit.openapi.base.MultiValuedDataType;
 import com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
@@ -291,4 +294,34 @@ public interface ProductService extends Service {
    * @param pIntegerArray
    */
   void testPrimitiveArray( int[] pIntegerArray );
+
+  /**
+   * 
+   * @param pIntValues
+   * @return {@link String}
+   */
+  String testPrimitiveArrayAsQueryParam( int[] pIntValues );
+
+  /**
+   * 
+   * @param pCodes
+   * @return {@link String}
+   */
+  String testMultivaluedHeader( List<BigDecimalCode> pCodes );
+
+  /**
+   * 
+   * @param pCodes
+   * @param pEnums
+   * @return {@link String}
+   */
+  String testMultivaluedQueryParams( List<BigDecimalCode> pCodes, List<BooleanLiteralsEnum> pEnums );
+
+  /**
+   * 
+   * @param pBeanParam
+   * @param pTheEnum
+   * @return {@link String}
+   */
+  String testMulitValuedBeanParams( MultiValuedDataType pBeanParam, BooleanLiteralsEnum pTheEnum );
 }

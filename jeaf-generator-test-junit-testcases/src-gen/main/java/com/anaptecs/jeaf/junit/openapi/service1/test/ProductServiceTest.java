@@ -22,11 +22,13 @@ public class ProductServiceTest extends ProductServiceTestBase {
     // Add all test of this class.
     lSuite.addTest(new ProductServiceTest("testDeprecatedBody"));
     lSuite.addTest(new ProductServiceTest("testDeprecatedBeanParam"));
+    lSuite.addTest(new ProductServiceTest("testTestPrimitiveArrayAsQueryParam"));
     lSuite.addTest(new ProductServiceTest("testPing"));
     lSuite.addTest(new ProductServiceTest("testDeprecatedParams"));
     lSuite.addTest(new ProductServiceTest("testGetSupportedCurrenciesAsync"));
     lSuite.addTest(new ProductServiceTest("testTestTechnicalHeaderParam"));
     lSuite.addTest(new ProductServiceTest("testTestNotInlinedBeanParam"));
+    lSuite.addTest(new ProductServiceTest("testTestMultivaluedHeader"));
     lSuite.addTest(new ProductServiceTest("testDeprectedComplexRequestBody"));
     lSuite.addTest(new ProductServiceTest("testTestPrimitiveArray"));
     lSuite.addTest(new ProductServiceTest("testTestChildBeanParameter"));
@@ -41,6 +43,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testGetProduct"));
     lSuite.addTest(new ProductServiceTest("testTestDateQueryParamsBean"));
     lSuite.addTest(new ProductServiceTest("testLoadSpecificThings"));
+    lSuite.addTest(new ProductServiceTest("testTestMultivaluedQueryParams"));
     lSuite.addTest(new ProductServiceTest("testIsCurrencySupported"));
     lSuite.addTest(new ProductServiceTest("testTestTechnicalHeaderBean"));
     lSuite.addTest(new ProductServiceTest("testCreateProduct"));
@@ -48,6 +51,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testTestCodeTypeUsage"));
     lSuite.addTest(new ProductServiceTest("testTestDateQueryParams"));
     lSuite.addTest(new ProductServiceTest("testTestOptionalQueryParams"));
+    lSuite.addTest(new ProductServiceTest("testTestMulitValuedBeanParams"));
     lSuite.addTest(new ProductServiceTest("testGetDefaultChannel"));
     lSuite.addTest(new ProductServiceTest("testAddCurrencies"));
     lSuite.addTest(new ProductServiceTest("testGetSortiment"));
@@ -112,6 +116,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   }
 
   /**
+   * Method test the implementation of service method testPrimitiveArrayAsQueryParam
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestPrimitiveArrayAsQueryParam( ) throws Exception {
+    // TODO Implement test for service method testPrimitiveArrayAsQueryParam(...)
+  }
+
+  /**
    * Method test the implementation of service method ping
    * 
    * @throws Exception if a test fails.
@@ -159,6 +173,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testTestNotInlinedBeanParam( ) throws Exception {
     // TODO Implement test for service method testNotInlinedBeanParam(...)
+  }
+
+  /**
+   * Method test the implementation of service method testMultivaluedHeader
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestMultivaluedHeader( ) throws Exception {
+    // TODO Implement test for service method testMultivaluedHeader(...)
   }
 
   /**
@@ -302,6 +326,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   }
 
   /**
+   * Method test the implementation of service method testMultivaluedQueryParams
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestMultivaluedQueryParams( ) throws Exception {
+    // TODO Implement test for service method testMultivaluedQueryParams(...)
+  }
+
+  /**
    * Method test the implementation of service method isCurrencySupported
    * 
    * @throws Exception if a test fails.
@@ -369,6 +403,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testTestOptionalQueryParams( ) throws Exception {
     // TODO Implement test for service method testOptionalQueryParams(...)
+  }
+
+  /**
+   * Method test the implementation of service method testMulitValuedBeanParams
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestMulitValuedBeanParams( ) throws Exception {
+    // TODO Implement test for service method testMulitValuedBeanParams(...)
   }
 
   /**

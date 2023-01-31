@@ -103,11 +103,23 @@ abstract class ProductServiceImplBase implements ProductService, ServiceImplemen
   public static final String TESTLOCALBEANPARAMTYPE_AUTH_TYPE =
       "testLocalBeanParamType.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 
+  public static final String TESTMULITVALUEDBEANPARAMS_AUTH_TYPE =
+      "testMulitValuedBeanParams.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
+  public static final String TESTMULTIVALUEDHEADER_AUTH_TYPE =
+      "testMultivaluedHeader.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
+  public static final String TESTMULTIVALUEDQUERYPARAMS_AUTH_TYPE =
+      "testMultivaluedQueryParams.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
   public static final String TESTNOTINLINEDBEANPARAM_AUTH_TYPE =
       "testNotInlinedBeanParam.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 
   public static final String TESTOPTIONALQUERYPARAMS_AUTH_TYPE =
       "testOptionalQueryParams.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
+  public static final String TESTPRIMITIVEARRAYASQUERYPARAM_AUTH_TYPE =
+      "testPrimitiveArrayAsQueryParam.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 
   public static final String TESTPRIMITIVEARRAY_AUTH_TYPE =
       "testPrimitiveArray.com.anaptecs.jeaf.junit.openapi.service1.ProductService";

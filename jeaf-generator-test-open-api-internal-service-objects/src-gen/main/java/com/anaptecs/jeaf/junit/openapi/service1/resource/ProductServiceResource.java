@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.openapi.service1.resource;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -13,7 +14,9 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +41,8 @@ import javax.ws.rs.core.Response;
 
 import com.anaptecs.jeaf.core.api.JEAF;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
+import com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode;
+import com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum;
 import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelType;
@@ -45,6 +50,7 @@ import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType;
+import com.anaptecs.jeaf.junit.openapi.base.MultiValuedDataType;
 import com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
@@ -554,6 +560,78 @@ public class ProductServiceResource {
     ProductService lService = this.getProductService();
     lService.testPrimitiveArray(pIntegerArray);
     return Response.status(Response.Status.OK).build();
+  }
+
+  /**
+   * {@link ProductService#testPrimitiveArrayAsQueryParam()}
+   */
+  @Path("testPrimitiveArrayAsQueryParam")
+  @GET
+  public Response testPrimitiveArrayAsQueryParam( @QueryParam("intValues") int[] pIntValues ) {
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    String lResult = lService.testPrimitiveArrayAsQueryParam(pIntValues);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#testMultivaluedHeader()}
+   */
+  @Path("big-decimal-codes-header")
+  @GET
+  public Response testMultivaluedHeader( @HeaderParam("pCodes") BigDecimal[] pCodesAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    List<BigDecimalCode> pCodes;
+    if (pCodesAsBasicType != null) {
+      pCodes = new ArrayList<BigDecimalCode>();
+      for (BigDecimal lNext : pCodesAsBasicType) {
+        pCodes.add(BigDecimalCode.builder().setCode(lNext).build());
+      }
+    }
+    else {
+      pCodes = Collections.emptyList();
+    }
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    String lResult = lService.testMultivaluedHeader(pCodes);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#testMultivaluedQueryParams()}
+   */
+  @Path("big-decimal-codes-query")
+  @GET
+  public Response testMultivaluedQueryParams( @QueryParam("pCodes") BigDecimal[] pCodesAsBasicType,
+      @QueryParam("pEnums") List<BooleanLiteralsEnum> pEnums ) {
+    // Convert basic type parameters into "real" objects.
+    List<BigDecimalCode> pCodes;
+    if (pCodesAsBasicType != null) {
+      pCodes = new ArrayList<BigDecimalCode>();
+      for (BigDecimal lNext : pCodesAsBasicType) {
+        pCodes.add(BigDecimalCode.builder().setCode(lNext).build());
+      }
+    }
+    else {
+      pCodes = Collections.emptyList();
+    }
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    String lResult = lService.testMultivaluedQueryParams(pCodes, pEnums);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#testMulitValuedBeanParams()}
+   */
+  @Path("testMulitValuedBeanParams")
+  @GET
+  public Response testMulitValuedBeanParams( @BeanParam MultiValuedDataType pBeanParam,
+      @QueryParam("pTheEnum") BooleanLiteralsEnum pTheEnum ) {
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    String lResult = lService.testMulitValuedBeanParams(pBeanParam, pTheEnum);
+    return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
   /**
