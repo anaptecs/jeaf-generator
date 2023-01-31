@@ -180,6 +180,7 @@ paths:
           required: true
           schema:
             type: string
+            minLength: 1
         - name: lang
           in: header
           required: true
@@ -302,6 +303,7 @@ paths:
           required: true
           schema:
             type: string
+            minLength: 1
         - name: lang
           in: header
           required: true
@@ -490,6 +492,7 @@ paths:
           required: true
           schema:
             type: string
+            minLength: 1
         - name: lang
           in: header
           required: true
@@ -1395,6 +1398,21 @@ paths:
             minItems: 1
             items:
               $ref: '../base/product-base.yml#/components/schemas/BooleanLiteralsEnum'
+        - name: stringProperty
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 32
+            maxLength: 64
+        - name: longValues
+          in: header
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 3270
+            maximum: 4711
         - name: pTheEnum
           in: query
           required: true

@@ -304,11 +304,13 @@ components:
                     «IF property.hasPatternForProperty() -»
             pattern: '«property.getPatternForProperty()»'
                     «ENDIF-»
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR property-»
                     «IF property.defaultValue != null -»
             default: '«property.defaultValue.stringValue()»'
                     «ENDIF-»
             	«ELSE-»
             type: array
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR property-»
             items:
               type: «property.type.getOpenAPIType(this)»
               		«IF property.hasOpenAPIFormatForProperty()-»
