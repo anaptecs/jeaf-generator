@@ -262,7 +262,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**

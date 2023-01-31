@@ -207,7 +207,7 @@ public class RESTProductServiceResource {
   public Response ping( ) {
     // Delegate request to service.
     rESTProductService.ping();
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
