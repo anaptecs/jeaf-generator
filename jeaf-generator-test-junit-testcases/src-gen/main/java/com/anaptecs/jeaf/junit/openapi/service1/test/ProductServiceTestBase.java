@@ -57,6 +57,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testDeprecatedBeanParam( ) throws Exception;
 
   /**
+   * Method test the implementation of service method testPrimitiveArrayAsQueryParam(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestPrimitiveArrayAsQueryParam( ) throws Exception;
+
+  /**
    * Method test the implementation of service method ping(...)
    * 
    * @throws Exception if the test fails.
@@ -90,6 +97,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testTestNotInlinedBeanParam( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method testMultivaluedHeader(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestMultivaluedHeader( ) throws Exception;
 
   /**
    * Method test the implementation of service method deprectedComplexRequestBody(...)
@@ -190,6 +204,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testLoadSpecificThings( ) throws Exception;
 
   /**
+   * Method test the implementation of service method testMultivaluedQueryParams(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestMultivaluedQueryParams( ) throws Exception;
+
+  /**
    * Method test the implementation of service method isCurrencySupported(...)
    * 
    * @throws Exception if the test fails.
@@ -237,6 +258,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testTestOptionalQueryParams( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method testMulitValuedBeanParams(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestMulitValuedBeanParams( ) throws Exception;
 
   /**
    * Method test the implementation of service method getDefaultChannel(...)

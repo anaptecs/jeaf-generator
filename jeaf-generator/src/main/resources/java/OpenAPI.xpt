@@ -304,11 +304,13 @@ components:
                     «IF property.hasPatternForProperty() -»
             pattern: '«property.getPatternForProperty()»'
                     «ENDIF-»
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR property-»
                     «IF property.defaultValue != null -»
             default: '«property.defaultValue.stringValue()»'
                     «ENDIF-»
             	«ELSE-»
             type: array
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR property-»
             items:
               type: «property.type.getOpenAPIType(this)»
               		«IF property.hasOpenAPIFormatForProperty()-»
@@ -324,10 +326,19 @@ components:
                   «ENDIF-»
                 «ENDIF-»
             «ELSE -»
-            type: string
-                «IF property.defaultValue != null -»
-            default: '«property.defaultValue.stringValue()»'
+              «IF property.type.isOpenAPIDataType() && ((OpenAPIDataType) property.type).inline == true -»
+              «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, property,"  ") FOR (OpenAPIDataType) property.type -»
+              «ELSE -»
+                «IF property.isMultivalued() == false -»
+            $ref: «property.type.getOpenAPIType(this)» 
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR property-»
+                «ELSE-»
+            type: array
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR property-»
+            items:
+              $ref: «property.type.getOpenAPIType(this)»
                 «ENDIF-»
+            «ENDIF-»
             «ENDIF-»
         «ELSE-»
         - $ref: «property.getOpenAPIParameter(this)»

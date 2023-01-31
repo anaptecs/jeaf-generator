@@ -18,6 +18,8 @@ import java.util.List;
 
 import com.anaptecs.jeaf.core.api.Component;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
+import com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode;
+import com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum;
 import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelCode;
 import com.anaptecs.jeaf.junit.openapi.base.ChannelType;
@@ -25,6 +27,7 @@ import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.openapi.base.CurrencyCode;
 import com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext;
 import com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType;
+import com.anaptecs.jeaf.junit.openapi.base.MultiValuedDataType;
 import com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
@@ -431,5 +434,51 @@ final class ProductServiceImpl extends ProductServiceImplBase {
    */
   @Override
   public void testPrimitiveArray( int[] pIntegerArray ) {
+  }
+
+  /**
+   * 
+   * @param pIntValues
+   * @return {@link String}
+   */
+  @Override
+  public String testPrimitiveArrayAsQueryParam( int[] pIntValues ) {
+    // TODO Implement method and return real result
+    return null;
+  }
+
+  /**
+   * 
+   * @param pCodes
+   * @return {@link String}
+   */
+  @Override
+  public String testMultivaluedHeader( List<BigDecimalCode> pCodes ) {
+    // TODO Implement method and return real result
+    return null;
+  }
+
+  /**
+   * 
+   * @param pCodes
+   * @param pEnums
+   * @return {@link String}
+   */
+  @Override
+  public String testMultivaluedQueryParams( List<BigDecimalCode> pCodes, List<BooleanLiteralsEnum> pEnums ) {
+    // TODO Implement method and return real result
+    return null;
+  }
+
+  /**
+   * 
+   * @param pBeanParam
+   * @param pTheEnum
+   * @return {@link String}
+   */
+  @Override
+  public String testMulitValuedBeanParams( MultiValuedDataType pBeanParam, BooleanLiteralsEnum pTheEnum ) {
+    // TODO Implement method and return real result
+    return null;
   }
 }
