@@ -12,6 +12,8 @@ import java.util.List;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.ws.rs.HeaderParam;
@@ -53,6 +55,22 @@ public class MultiValuedDataType implements ServiceObject {
   private List<BooleanLiteralsEnum> literals;
 
   /**
+   * 
+   */
+  @QueryParam("stringProperty")
+  @Size(min = 32, max = 64)
+  @NotNull
+  private String stringProperty;
+
+  /**
+   * 
+   */
+  @HeaderParam("longValues")
+  @Min(value = 3270)
+  @Max(value = 4711)
+  private long longValues;
+
+  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
@@ -89,6 +107,8 @@ public class MultiValuedDataType implements ServiceObject {
     else {
       literals = new ArrayList<BooleanLiteralsEnum>();
     }
+    stringProperty = pBuilder.stringProperty;
+    longValues = pBuilder.longValues;
   }
 
   /**
@@ -132,6 +152,19 @@ public class MultiValuedDataType implements ServiceObject {
     private List<BooleanLiteralsEnum> literals;
 
     /**
+     * 
+     */
+    @Size(min = 32, max = 64)
+    private String stringProperty;
+
+    /**
+     * 
+     */
+    @Min(value = 3270)
+    @Max(value = 4711)
+    private long longValues;
+
+    /**
      * Use {@link MultiValuedDataType#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -147,6 +180,8 @@ public class MultiValuedDataType implements ServiceObject {
         stringCodeHeader = pObject.stringCodeHeader;
         longCodeQueryParam = pObject.longCodeQueryParam;
         literals = pObject.literals;
+        stringProperty = pObject.stringProperty;
+        longValues = pObject.longValues;
       }
     }
 
@@ -211,6 +246,28 @@ public class MultiValuedDataType implements ServiceObject {
       else {
         literals = null;
       }
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "stringProperty".
+     * 
+     * @param pStringProperty Value to which the attribute "stringProperty" should be set.
+     */
+    public Builder setStringProperty( String pStringProperty ) {
+      // Assign value to attribute
+      stringProperty = pStringProperty;
+      return this;
+    }
+
+    /**
+     * Method sets the attribute "longValues".
+     * 
+     * @param pLongValues Value to which the attribute "longValues" should be set.
+     */
+    public Builder setLongValues( long pLongValues ) {
+      // Assign value to attribute
+      longValues = pLongValues;
       return this;
     }
 
@@ -432,6 +489,48 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
+   * Method returns the attribute "stringProperty".
+   * 
+   * 
+   * @return String Value to which the attribute "stringProperty" is set.
+   */
+  public String getStringProperty( ) {
+    return stringProperty;
+  }
+
+  /**
+   * Method sets the attribute "stringProperty".
+   * 
+   * 
+   * @param pStringProperty Value to which the attribute "stringProperty" should be set.
+   */
+  public void setStringProperty( String pStringProperty ) {
+    // Assign value to attribute
+    stringProperty = pStringProperty;
+  }
+
+  /**
+   * Method returns the attribute "longValues".
+   * 
+   * 
+   * @return long Value to which the attribute "longValues" is set.
+   */
+  public long getLongValues( ) {
+    return longValues;
+  }
+
+  /**
+   * Method sets the attribute "longValues".
+   * 
+   * 
+   * @param pLongValues Value to which the attribute "longValues" should be set.
+   */
+  public void setLongValues( long pLongValues ) {
+    // Assign value to attribute
+    longValues = pLongValues;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -491,6 +590,14 @@ public class MultiValuedDataType implements ServiceObject {
         lBuilder.append(System.lineSeparator());
       }
     }
+    lBuilder.append(pIndent);
+    lBuilder.append("stringProperty: ");
+    lBuilder.append(stringProperty);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("longValues: ");
+    lBuilder.append(longValues);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
