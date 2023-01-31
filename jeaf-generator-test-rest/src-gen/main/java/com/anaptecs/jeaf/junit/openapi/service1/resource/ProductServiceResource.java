@@ -172,7 +172,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.ping();
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**

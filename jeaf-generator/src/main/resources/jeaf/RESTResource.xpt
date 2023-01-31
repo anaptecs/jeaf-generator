@@ -244,6 +244,7 @@ public class «name»Resource {
 	/**
 	 * {@link «this.getOwningClass().fqn()»#«name»()}
 	 */
+	@org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.«getJAXRSStatusCodeName(statusCode.name)»)
 	@org.springframework.web.bind.annotation.RequestMapping(
 	«IF path.length > 0»path = "«path»",«ENDIF»
 	«IF consumes.size > 0»consumes = {«FOREACH consumes AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»},«ENDIF»

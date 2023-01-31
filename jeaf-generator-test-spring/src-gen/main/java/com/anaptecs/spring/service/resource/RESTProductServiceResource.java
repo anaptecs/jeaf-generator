@@ -28,6 +28,7 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,6 +36,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
@@ -124,6 +126,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#getProducts()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(method = { RequestMethod.GET })
   public List<Product> getProducts( @RequestParam(name = "maxResult", required = true) int pMaxResultSize ) {
     // Delegate request to service.
@@ -133,6 +136,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#getProduct()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "{id}", method = { RequestMethod.GET })
   public Product getProduct( @PathVariable(name = "id", required = true) String pProductID ) {
     // Delegate request to service.
@@ -142,6 +146,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#createProduct()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(method = { RequestMethod.POST })
   public boolean createProduct( @RequestBody(required = true) Product pProduct ) {
     // Delegate request to service.
@@ -151,6 +156,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#getSortiment()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "sortiment/{id}", method = { RequestMethod.GET })
   public Sortiment getSortiment( @RequestHeader(name = "token", required = true) String pAccessToken,
       @RequestHeader(name = "lang", required = true) Locale pLanguage,
@@ -179,6 +185,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#createChannelCode()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "ChannelCode", method = { RequestMethod.POST })
   public ChannelCode createChannelCode( @RequestBody(required = true) String pChannelCode ) {
     // Delegate request to service.
@@ -188,6 +195,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#ping()}
    */
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(method = { RequestMethod.HEAD })
   public void ping( ) {
     // Delegate request to service.
@@ -197,6 +205,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testInit()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-init", method = { RequestMethod.GET })
   public void testInit( ) {
     // Delegate request to service.
@@ -206,6 +215,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#getSupportedCurrencies()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "currencies/{channelCode}", method = { RequestMethod.GET })
   public List<CurrencyCode> getSupportedCurrencies(
       @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
@@ -218,6 +228,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#getSupportedCurrenciesAsync()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "async-currencies/{channelCode}", method = { RequestMethod.GET })
   public List<CurrencyCode> getSupportedCurrenciesAsync(
       @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
@@ -230,6 +241,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testParams()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-params", method = { RequestMethod.GET })
   public String testParams( @RequestHeader(name = "Big-Header", required = true) BigDecimal pBigDecimalHeader,
       @CookieValue(name = "giveMeMoreCookies", required = true) @RequestBody(required = true) int pIntCookieParam,
@@ -241,6 +253,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testEnumParams()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-enum-params/{channelType}", method = { RequestMethod.GET })
   public void testEnumParams( @PathVariable(name = "channelType", required = true) ChannelType pChannelType,
       @RequestParam(name = "timeUnit", required = true) TimeUnit pTimeUnit,
@@ -252,6 +265,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testEnumHeaderParams()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-enum-header-params", method = { RequestMethod.GET })
   public void testEnumHeaderParams( @RequestHeader(name = "Channel-Type", required = true) ChannelType pChannelType,
       @RequestHeader(name = "Time-Unit", required = true) TimeUnit pTimeUnit,
@@ -263,6 +277,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateQueryParams()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-date-query-params/{path}", method = { RequestMethod.GET })
   public void testDateQueryParams( @PathVariable(name = "path", required = true) String pPath,
       @RequestParam(name = "startTimestamp", required = true) String pStartTimestampAsBasicType,
@@ -386,6 +401,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateQueryParamsBean()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-date-query-params-beans/{path}", method = { RequestMethod.GET })
   public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) String pPath,
       @RequestParam(name = "offsetDateTime", required = true) String pOffsetDateTimeAsBasicType,
@@ -463,6 +479,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateHeaderParams()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-date-header-params/{path}", method = { RequestMethod.GET })
   public void testDateHeaderParams( @PathVariable(name = "path", required = true) String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) String pOffsetDateTimeAsBasicType,
@@ -584,6 +601,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateHeaderParamsBean()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-date-header-params-beans/{path}", method = { RequestMethod.GET })
   public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) String pOffsetDateTimeAsBasicType,
@@ -661,6 +679,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testCookieParams()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "cookies", method = { RequestMethod.GET })
   public void testCookieParams(
       @CookieValue(name = "Channel-Type-Param", required = true) @RequestBody(
@@ -696,6 +715,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testOptionalQueryParams()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-optional-query-params", method = { RequestMethod.GET })
   public String testOptionalQueryParams(
       @RequestParam(name = "query1", required = false, defaultValue = "Just a default value") String query1,
@@ -707,6 +727,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#processComplexBookingID()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "complex/{bookingID}", method = { RequestMethod.GET })
   public boolean processComplexBookingID(
       @PathVariable(name = "bookingID", required = true) String pComplextBookingIDAsBasicType ) {
@@ -720,6 +741,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDataTypesAsHeaderParam()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "dataTypesInHeader", method = { RequestMethod.GET })
   public String testDataTypesAsHeaderParam(
       @RequestHeader(name = "BookingID", required = true) String pBookingIDAsBasicType,
@@ -737,6 +759,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDataTypesAsHeaderBeanParam()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "dataTypesInBeanHeader", method = { RequestMethod.GET })
   public String testDataTypesAsHeaderBeanParam(
       @RequestHeader(name = "bookingID", required = true) String pBookingIDAsBasicType,
@@ -762,6 +785,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testPrimitiveArrays()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testPrimitiveArrayAsBody", method = { RequestMethod.POST })
   public String testPrimitiveArrays( @RequestBody(required = true) int[] pIntegerArray ) {
     // Delegate request to service.
@@ -771,6 +795,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDataTypeAsQueryParam()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testDataTypeAsQueryParam", method = { RequestMethod.GET })
   public String testDataTypeAsQueryParam(
       @RequestParam(name = "bookingCode", required = true) String pBookingCodeAsBasicType ) {
@@ -783,6 +808,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDataTypeAsBeanQueryParam()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
   public String testDataTypeAsBeanQueryParam(
       @RequestParam(name = "bookingCode", required = true) String pBookingCodeAsBasicType ) {
@@ -799,6 +825,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testPrimitiveArrayAsQueryParam()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testPrimitiveArrayAsQueryParam", method = { RequestMethod.GET })
   public String testPrimitiveArrayAsQueryParam( @RequestParam(name = "intValues", required = true) int[] pIntValues ) {
     // Delegate request to service.
@@ -808,6 +835,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testSimpleTypesAsQueryParams()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testSimpleTypesAsQueryParams", method = { RequestMethod.GET })
   public String testSimpleTypesAsQueryParams(
       @RequestParam(name = "strings", required = false) List<String> pStrings ) {
@@ -818,6 +846,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testPrimitiveWrapperArrayAsQueryParam()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testPrimitiveWrapperArrayAsQueryParam", method = { RequestMethod.GET })
   public String testPrimitiveWrapperArrayAsQueryParam(
       @RequestParam(name = "integers", required = true) Set<Integer> pIntegers ) {
@@ -828,6 +857,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testMultivaluedQueryParamsBean()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMultivaluedQueryParamsBean", method = { RequestMethod.GET })
   public String testMultivaluedQueryParamsBean( @RequestParam(name = "intArray", required = false) int[] pIntArray,
       @RequestParam(name = "strings", required = false) String[] pStrings,
@@ -846,6 +876,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testMulitvaluedDataTypeAsQueryParam()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMulitvaluedDataTypeAsQueryParam", method = { RequestMethod.GET })
   public String testMulitvaluedDataTypeAsQueryParam(
       @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
@@ -913,6 +944,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testMulitvaluedDataTypeAsBeanQueryParam()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMulitvaluedDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
   public String testMulitvaluedDataTypeAsBeanQueryParam(
       @RequestParam(name = "longCodes", required = false) Long[] pLongCodesAsBasicType,
@@ -1021,6 +1053,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testMultiValuedHeaderFieldsInBeanParam()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMultiValuedHeaderFieldsInBeanParam", method = { RequestMethod.GET })
   public String testMultiValuedHeaderFieldsInBeanParam(
       @RequestHeader(name = "names", required = false) String[] pNames,
@@ -1124,6 +1157,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testMultiValuedHeaderFields()}
    */
+  @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMultiValuedHeaderFields", method = { RequestMethod.GET })
   public String testMultiValuedHeaderFields( @RequestHeader(name = "names", required = false) Set<String> pNames,
       @RequestHeader(name = "ints", required = true) int[] pInts,
