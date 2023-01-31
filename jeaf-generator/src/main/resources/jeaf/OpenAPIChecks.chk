@@ -15,7 +15,7 @@ context RESTResource if runChecks("RESTResource") ERROR	this.getErrorMessage("91
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9105", {((NamedElement)owner).name + "." + name}): this.hasValidRESTResourcePath() == true;
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9106", {((NamedElement)owner).name + "." + name}): this.hasValidOperationPath() == true;
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9107", {((NamedElement)owner).name + "." + name}): httpMethods.size > 0;
-context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9108", {this.statusCode.name}): isJAXRSStatusCode(this.statusCode.name) == true;
+context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9108", {this.getStatusCodeName()}): isJAXRSStatusCode(this.getStatusCodeName()) == true;
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9109", {((NamedElement)owner).name + "." + name}): unifyMediaTypes(((JMM::RESTResource)this.owner).consumes, this.consumes).size > 0;
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9110", {((NamedElement)owner).name + "." + name}): unifyMediaTypes(((JMM::RESTResource)this.owner).produces, this.produces).size > 0;
 context RESTOperation if runChecks("RESTOperation") ERROR   this.getErrorMessage("9111", {((NamedElement)owner).name + "." + name}): this.areAllInputParametersNamed() == true;
