@@ -604,11 +604,7 @@ public class «name»Resource {
 «ENDDEFINE»
 
 «DEFINE StatusCode FOR RESTOperation»
-	«IF statusCode != null && statusCode.name.length > 0»
-		javax.ws.rs.core.Response.Status.«getJAXRSStatusCodeName(statusCode.name)»
-	«ELSE»
-		javax.ws.rs.core.Response.Status.OK»
-	«ENDIF»
+	javax.ws.rs.core.Response.Status.«getJAXRSStatusCodeName(statusCode.name)»
 «ENDDEFINE»
 
 «DEFINE HTTPMethods FOR RESTOperation»
