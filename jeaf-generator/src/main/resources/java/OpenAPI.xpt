@@ -183,7 +183,7 @@ components:
           «EXPAND java::OpenAPIType::GenerateOpenAPIType(this) FOR ((OpenAPIType) element)»
         «ELSE-»
           «IF element.isStereotypeApplied("OpenAPIDataType") -»
-            «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null, "") FOR ((OpenAPIDataType) element)»
+            «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null, "", true) FOR ((OpenAPIDataType) element)»
           «ELSE-»
 «EXPAND GenerateOpenAPIEnum FOR ((OpenAPIEnumeration) element)»
           «ENDIF-»
@@ -192,7 +192,7 @@ components:
     «ELSE-»
       «EXPAND java::OpenAPIType::GenerateOpenAPIType(this) FOREACH this.getOpenAPITypes().sortBy(e|e.name)»
       «EXPAND GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums().sortBy(e|e.name)»
-      «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null, "") FOREACH this.getOpenAPIDataTypes().select(e|e.inline == false).sortBy(e|e.name)»
+      «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null, "", true) FOREACH this.getOpenAPIDataTypes().select(e|e.inline == false).sortBy(e|e.name)»
     «ENDIF-»
   «ENDIF -»
 «ENDIF-»
@@ -327,7 +327,7 @@ components:
                 «ENDIF-»
             «ELSE -»
               «IF property.type.isOpenAPIDataType() && ((OpenAPIDataType) property.type).inline == true -»
-              «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, property,"  ") FOR (OpenAPIDataType) property.type -»
+              «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, property,"  ", false) FOR (OpenAPIDataType) property.type -»
               «ELSE -»
                 «IF property.isMultivalued() == false -»
             $ref: «property.type.getOpenAPIType(this)» 

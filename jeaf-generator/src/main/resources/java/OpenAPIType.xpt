@@ -68,7 +68,7 @@
         «FOREACH this.ownedAttribute.select(e | e.isTransient() == false) AS attribute-»
         «attribute.getAttributeName()»:
           «IF attribute.type.isOpenAPIDataType() && ((OpenAPIDataType) attribute.type).inline == true -»
-          «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute, "") FOR (OpenAPIDataType) attribute.type -»
+          «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute, "", true) FOR (OpenAPIDataType) attribute.type -»
           «ELSE -»
           «IF attribute.hasComment() -»
             «IF attribute.type.isBasicOpenAPIType() == false && attribute.isMultivalued() == false-»
@@ -225,7 +225,7 @@
         «FOREACH this.ownedAttribute.select(e | e.isTransient() == false) AS attribute-»
             «attribute.getAttributeName()»:
           «IF attribute.type.isOpenAPIDataType() && ((OpenAPIDataType) attribute.type).inline == true -»
-          «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute, "    ") FOR (OpenAPIDataType) attribute.type -»
+          «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute, "    ", true) FOR (OpenAPIDataType) attribute.type -»
           «ELSE -»
           «IF attribute.hasComment() -»
             «IF attribute.type.isBasicOpenAPIType() == false && attribute.isMultivalued() == false-»

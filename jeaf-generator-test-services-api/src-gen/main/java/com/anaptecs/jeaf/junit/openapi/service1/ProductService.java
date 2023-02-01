@@ -328,6 +328,7 @@ public interface ProductService extends Service {
   /**
    * 
    * @param pHeader
+   * @param pContext
    */
-  void noReturnType( String pHeader );
+  void noReturnType( String pHeader, MultiValuedDataType pContext );
 }

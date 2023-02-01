@@ -659,9 +659,9 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
    * 
    * 
    */
-  public void noReturnType( String pHeader ) {
+  public void noReturnType( String pHeader, MultiValuedDataType pContext ) {
     try {
-      Command lCommand = new NoReturnType_String_ProductService_Command(pHeader);
+      Command lCommand = new NoReturnType_String_MultiValuedDataType_ProductService_Command(pHeader, pContext);
       this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -4621,7 +4621,7 @@ final class TestMulitValuedBeanParams_MultiValuedDataType_BooleanLiteralsEnum_Pr
 /**
  * Generated command class for service method "noReturnType".
  */
-final class NoReturnType_String_ProductService_Command extends Command {
+final class NoReturnType_String_MultiValuedDataType_ProductService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -4646,11 +4646,11 @@ final class NoReturnType_String_ProductService_Command extends Command {
    */
   static {
     try {
-      SERVICE_METHOD = ProductService.class.getMethod("noReturnType", String.class);
+      SERVICE_METHOD = ProductService.class.getMethod("noReturnType", String.class, MultiValuedDataType.class);
     }
     catch (NoSuchMethodException e) {
       throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
-          "noReturnType(String.class)");
+          "noReturnType(String.class, MultiValuedDataType.class)");
     }
   }
 
@@ -4660,15 +4660,22 @@ final class NoReturnType_String_ProductService_Command extends Command {
   private final String header;
 
   /**
+   * Attribute transports the method parameter "pContext" to the service implementation via the service channel.
+   */
+  private final MultiValuedDataType context;
+
+  /**
    * Initialize object. All parameters from method "noReturnType" have to be passed as parameters to this command
    * object.
    * 
    * @param pHeader String
+   * @param pContext MultiValuedDataType
    */
-  NoReturnType_String_ProductService_Command( String pHeader ) {
+  NoReturnType_String_MultiValuedDataType_ProductService_Command( String pHeader, MultiValuedDataType pContext ) {
     super(ProductService.class);
     header = pHeader;
-    parameters = new Object[] { header };
+    context = pContext;
+    parameters = new Object[] { header, context };
   }
 
   /**
@@ -4689,7 +4696,7 @@ final class NoReturnType_String_ProductService_Command extends Command {
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
     long lStartTime = System.nanoTime();
-    lService.noReturnType(header);
+    lService.noReturnType(header, context);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
     // Trace result of service call.

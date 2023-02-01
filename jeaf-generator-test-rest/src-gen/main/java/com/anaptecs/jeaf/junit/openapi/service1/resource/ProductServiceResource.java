@@ -639,10 +639,10 @@ public class ProductServiceResource {
    */
   @Path("no-return-type")
   @POST
-  public Response noReturnType( @HeaderParam("The-Header") String pHeader ) {
+  public Response noReturnType( @HeaderParam("The-Header") String pHeader, @BeanParam MultiValuedDataType pContext ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
-    lService.noReturnType(pHeader);
+    lService.noReturnType(pHeader, pContext);
     return Response.status(Response.Status.NO_CONTENT).build();
   }
 
