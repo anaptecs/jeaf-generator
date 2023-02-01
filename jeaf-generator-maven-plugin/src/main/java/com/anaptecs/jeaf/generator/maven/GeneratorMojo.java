@@ -507,16 +507,16 @@ public class GeneratorMojo extends AbstractMojo {
    * By default 200 ("OK") is used. This value will only be used if there is no explicit status code defined on the
    * RESTOperation.
    */
-  @Parameter(required = false)
-  private Integer restDefaultSuccessStatusCode;
+  @Parameter(required = false, defaultValue = "200")
+  private String restDefaultSuccessStatusCode;
 
   /**
    * Parameter can be used to define the default http status code that should be used when REST requests are successful
    * for operations with return type void. By default 204 ("NO_CONTENT") is used. This value will only be used if there
    * is no explicit status code defined on the RESTOperation.
    */
-  @Parameter(required = false)
-  private Integer restDefaultVoidStatusCode;
+  @Parameter(required = false, defaultValue = "204")
+  private String restDefaultVoidStatusCode;
 
   /**
    * Switch defines whether for the Java representation of OpenAPI Data Types as valueOf method should be generated or
@@ -814,10 +814,8 @@ public class GeneratorMojo extends AbstractMojo {
     if (restLibrary != null) {
       lLog.info("REST Library:                                     " + restLibrary.name());
     }
-    if (restDefaultSuccessStatusCode != null) {
+    if (generateOpenAPISpec || generateRESTResources || generateRESTServiceProxies) {
       lLog.info("REST default success status code:                 " + restDefaultSuccessStatusCode);
-    }
-    if (restDefaultVoidStatusCode != null) {
       lLog.info("REST default success void status code:            " + restDefaultVoidStatusCode);
     }
 
@@ -1077,10 +1075,10 @@ public class GeneratorMojo extends AbstractMojo {
       if (restLibrary != null) {
         System.setProperty("switch.gen.target.rest.library", restLibrary.name());
       }
-      if (restDefaultSuccessStatusCode != null) {
+      if (restDefaultSuccessStatusCode.length() > 0) {
         System.setProperty("switch.gen.target.rest.success.status.code", restDefaultSuccessStatusCode.toString());
       }
-      if (restDefaultVoidStatusCode != null) {
+      if (restDefaultVoidStatusCode.length() > 0) {
         System.setProperty("switch.gen.target.rest.void.status.code", restDefaultVoidStatusCode.toString());
       }
 
