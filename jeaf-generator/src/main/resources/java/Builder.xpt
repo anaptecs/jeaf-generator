@@ -311,9 +311,6 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 «ENDDEFINE»
 
 «DEFINE SoftLinkBuilderPropertyDeclaration FOR SoftLink»
-    /**
-     * «this.getComment()»
-     */
         «EXPAND java::Helper::GenerateDeprecationAnnotation-»
         «EXPAND Validation::ValidationAnnotation»
         «IF isMultivalued()»

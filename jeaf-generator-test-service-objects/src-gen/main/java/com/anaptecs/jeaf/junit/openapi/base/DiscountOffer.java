@@ -91,9 +91,6 @@ public class DiscountOffer implements ServiceObject {
     /**
      * 
      */
-    /**
-     * 
-     */
     @Deprecated
     private Set<SoftLink> campaigns;
 

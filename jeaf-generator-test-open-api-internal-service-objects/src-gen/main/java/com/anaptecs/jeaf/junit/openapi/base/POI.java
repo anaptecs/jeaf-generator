@@ -120,16 +120,10 @@ public class POI extends Stop {
     /**
      * 
      */
-    /**
-     * 
-     */
     @Deprecated
     @NotNull
     private Long theLink;
 
-    /**
-     * 
-     */
     /**
      * 
      */

@@ -485,8 +485,9 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   /**
    * 
    * @param pHeader
+   * @param pContext
    */
   @Override
-  public void noReturnType( String pHeader ) {
+  public void noReturnType( String pHeader, MultiValuedDataType pContext ) {
   }
 }

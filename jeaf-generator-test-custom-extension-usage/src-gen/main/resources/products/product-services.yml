@@ -2,7 +2,7 @@ openapi: 3.0.3
 
 info:
   title: Product Services
-  version: 1.6.88-SNAPSHOT
+  version: 1.6.89-SNAPSHOT
   description: >-
     This component represents the OpenAPI interface of the accounting service.
     
@@ -1349,12 +1349,16 @@ paths:
       parameters:
         - name: stringCodeHeader
           in: header
+          description: >-
+            This is my multivalued test header
           schema:
             type: array
             items:
               type: string
         - name: longCodeQueryParam
           in: query
+          description: >-
+            Multivalued query param
           schema:
             type: array
             items:
@@ -1362,6 +1366,8 @@ paths:
               format: int64
         - name: literals
           in: query
+          description: >-
+            so many literals are possible
           required: true
           schema:
             type: array
@@ -1377,6 +1383,8 @@ paths:
             maxLength: 64
         - name: longValues
           in: header
+          description: >-
+            long values as multivalued  header
           required: true
           schema:
             type: integer
@@ -1411,6 +1419,50 @@ paths:
     post:
       operationId: noReturnType
       parameters:
+        - name: stringCodeHeader
+          in: header
+          description: >-
+            This is my multivalued test header
+          schema:
+            type: array
+            items:
+              type: string
+        - name: longCodeQueryParam
+          in: query
+          description: >-
+            Multivalued query param
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+        - name: literals
+          in: query
+          description: >-
+            so many literals are possible
+          required: true
+          schema:
+            type: array
+            minItems: 1
+            items:
+              $ref: '../base/product-base.yml#/components/schemas/BooleanLiteralsEnum'
+        - name: stringProperty
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 32
+            maxLength: 64
+        - name: longValues
+          in: header
+          description: >-
+            long values as multivalued  header
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 3270
+            maximum: 4711
         - name: The-Header
           in: header
           required: true
@@ -1419,7 +1471,7 @@ paths:
       responses:
         '202':
           description: >-
-            In case that a request was successful only status code 202 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+            This method does not need to return anything
     
         '400':
           $ref: '#/components/responses/CustomErrorResponse'

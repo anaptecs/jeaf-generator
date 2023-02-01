@@ -110,22 +110,13 @@ public class SoftLinkChildB extends SoftLinkParent {
     /**
      * 
      */
-    /**
-     * 
-     */
     private String heyBrother;
 
     /**
      * 
      */
-    /**
-     * 
-     */
     private Set<String> softLinkPartners;
 
-    /**
-     * 
-     */
     /**
      * 
      */

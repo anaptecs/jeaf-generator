@@ -56,17 +56,17 @@ public class MultiValuedDataType implements ServiceObject {
   public static final String LONGVALUES = "longValues";
 
   /**
-   * 
+   * This is my multivalued test header
    */
   private List<StringCode> stringCodeHeader;
 
   /**
-   * 
+   * Multivalued query param
    */
   private List<LongCode> longCodeQueryParam;
 
   /**
-   * 
+   * so many literals are possible
    */
   private List<BooleanLiteralsEnum> literals;
 
@@ -77,7 +77,7 @@ public class MultiValuedDataType implements ServiceObject {
   private String stringProperty;
 
   /**
-   * 
+   * long values as multivalued header
    */
   @Min(value = 3270)
   @Max(value = 4711)
@@ -150,17 +150,17 @@ public class MultiValuedDataType implements ServiceObject {
    */
   public static class Builder {
     /**
-     * 
+     * This is my multivalued test header
      */
     private List<StringCode> stringCodeHeader;
 
     /**
-     * 
+     * Multivalued query param
      */
     private List<LongCode> longCodeQueryParam;
 
     /**
-     * 
+     * so many literals are possible
      */
     private List<BooleanLiteralsEnum> literals;
 
@@ -171,7 +171,7 @@ public class MultiValuedDataType implements ServiceObject {
     private String stringProperty;
 
     /**
-     * 
+     * long values as multivalued header
      */
     @Min(value = 3270)
     @Max(value = 4711)
@@ -199,7 +199,7 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     /**
-     * Method sets the association "stringCodeHeader".
+     * Method sets the association "stringCodeHeader". This is my multivalued test header
      * 
      * @param pStringCodeHeader Collection with objects to which the association should be set.
      */
@@ -215,7 +215,7 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     /**
-     * Method sets the association "longCodeQueryParam".
+     * Method sets the association "longCodeQueryParam". Multivalued query param
      * 
      * @param pLongCodeQueryParam Collection with objects to which the association should be set.
      */
@@ -231,7 +231,7 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     /**
-     * Method sets the association "literals".
+     * Method sets the association "literals". so many literals are possible
      * 
      * @param pLiterals Collection with objects to which the association should be set.
      */
@@ -247,7 +247,7 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     /**
-     * Method sets the association "literals".
+     * Method sets the association "literals". so many literals are possible
      * 
      * @param pLiterals Array with objects to which the association should be set.
      */
@@ -274,7 +274,7 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "longValues".
+     * Method sets the attribute "longValues". long values as multivalued header
      * 
      * @param pLongValues Value to which the attribute "longValues" should be set.
      */
@@ -309,8 +309,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method returns the association "stringCodeHeader".
-   * 
+   * Method returns the association "stringCodeHeader". This is my multivalued test header
    *
    * @return Collection All StringCode objects that belong to the association "stringCodeHeader". The method never
    * returns null and the returned collection is unmodifiable.
@@ -321,8 +320,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method adds the passed StringCode object to the association "stringCodeHeader".
-   * 
+   * Method adds the passed StringCode object to the association "stringCodeHeader". This is my multivalued test header
    * 
    * @param pStringCodeHeader Object that should be added to the association "stringCodeHeader". The parameter must not
    * be null.
@@ -335,8 +333,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "stringCodeHeader".
-   * 
+   * Method adds all passed objects to the association "stringCodeHeader". This is my multivalued test header
    * 
    * @param pStringCodeHeader Collection with all objects that should be added to the association "stringCodeHeader".
    * The parameter must not be null.
@@ -351,8 +348,8 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method removes the passed StringCode object from the association "stringCodeHeader".
-   * 
+   * Method removes the passed StringCode object from the association "stringCodeHeader". This is my multivalued test
+   * header
    * 
    * @param pStringCodeHeader Object that should be removed from the association "stringCodeHeader". The parameter must
    * not be null.
@@ -365,8 +362,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "stringCodeHeader".
-   * 
+   * Method removes all objects from the association "stringCodeHeader". This is my multivalued test header
    */
   public void clearStringCodeHeader( ) {
     // Remove all objects from association "stringCodeHeader".
@@ -374,8 +370,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method returns the association "longCodeQueryParam".
-   * 
+   * Method returns the association "longCodeQueryParam". Multivalued query param
    *
    * @return Collection All LongCode objects that belong to the association "longCodeQueryParam". The method never
    * returns null and the returned collection is unmodifiable.
@@ -386,8 +381,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method adds the passed LongCode object to the association "longCodeQueryParam".
-   * 
+   * Method adds the passed LongCode object to the association "longCodeQueryParam". Multivalued query param
    * 
    * @param pLongCodeQueryParam Object that should be added to the association "longCodeQueryParam". The parameter must
    * not be null.
@@ -400,8 +394,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "longCodeQueryParam".
-   * 
+   * Method adds all passed objects to the association "longCodeQueryParam". Multivalued query param
    * 
    * @param pLongCodeQueryParam Collection with all objects that should be added to the association
    * "longCodeQueryParam". The parameter must not be null.
@@ -416,8 +409,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method removes the passed LongCode object from the association "longCodeQueryParam".
-   * 
+   * Method removes the passed LongCode object from the association "longCodeQueryParam". Multivalued query param
    * 
    * @param pLongCodeQueryParam Object that should be removed from the association "longCodeQueryParam". The parameter
    * must not be null.
@@ -430,8 +422,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "longCodeQueryParam".
-   * 
+   * Method removes all objects from the association "longCodeQueryParam". Multivalued query param
    */
   public void clearLongCodeQueryParam( ) {
     // Remove all objects from association "longCodeQueryParam".
@@ -439,8 +430,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method returns the association "literals".
-   * 
+   * Method returns the association "literals". so many literals are possible
    *
    * @return Collection All BooleanLiteralsEnum objects that belong to the association "literals". The method never
    * returns null and the returned collection is unmodifiable.
@@ -451,8 +441,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method adds the passed BooleanLiteralsEnum object to the association "literals".
-   * 
+   * Method adds the passed BooleanLiteralsEnum object to the association "literals". so many literals are possible
    * 
    * @param pLiterals Object that should be added to the association "literals". The parameter must not be null.
    */
@@ -464,8 +453,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "literals".
-   * 
+   * Method adds all passed objects to the association "literals". so many literals are possible
    * 
    * @param pLiterals Collection with all objects that should be added to the association "literals". The parameter must
    * not be null.
@@ -480,8 +468,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method removes the passed BooleanLiteralsEnum object from the association "literals".
-   * 
+   * Method removes the passed BooleanLiteralsEnum object from the association "literals". so many literals are possible
    * 
    * @param pLiterals Object that should be removed from the association "literals". The parameter must not be null.
    */
@@ -493,8 +480,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "literals".
-   * 
+   * Method removes all objects from the association "literals". so many literals are possible
    */
   public void clearLiterals( ) {
     // Remove all objects from association "literals".
@@ -523,8 +509,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "longValues".
-   * 
+   * Method returns the attribute "longValues". long values as multivalued header
    * 
    * @return long Value to which the attribute "longValues" is set.
    */
@@ -533,8 +518,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "longValues".
-   * 
+   * Method sets the attribute "longValues". long values as multivalued header
    * 
    * @param pLongValues Value to which the attribute "longValues" should be set.
    */

@@ -118,22 +118,13 @@ public class SoftLinkPartner {
     /**
      * 
      */
-    /**
-     * 
-     */
     private String theBackLink;
 
     /**
      * 
      */
-    /**
-     * 
-     */
     private Set<SoftLinkID> childLinks;
 
-    /**
-     * 
-     */
     /**
      * 
      */
