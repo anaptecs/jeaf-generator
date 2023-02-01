@@ -34,7 +34,7 @@ public class DeprecatedRESTServiceResource {
     // Delegate request to service.
     DeprecatedRESTService lService = this.getDeprecatedRESTService();
     lService.doSomething();
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**

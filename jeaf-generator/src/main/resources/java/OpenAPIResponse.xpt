@@ -4,7 +4,7 @@
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE Responses(OpenAPI3Specification spec) FOR RESTOperation -»
-    «REM»Resolve REST operation specific error responses«ENDREM»
+    «REM»Resolve REST operation specific error responses«ENDREM-»
     «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIResponse).sortBy(e|e.statusCodes) AS response -»
       «EXPAND Responses(spec, this) FOR response -»
     «ENDFOREACH -»

@@ -426,8 +426,7 @@ public class SpringJerseyRESTControllerTest {
     ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + "/rest-products/test-init");
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
 
-    assertEquals(0, lResponse.getEntity().getContentLength());
-    assertEquals(200, lResponse.getCode());
+    assertEquals(204, lResponse.getCode());
   }
 
   @Test
@@ -604,7 +603,7 @@ public class SpringJerseyRESTControllerTest {
     lRequest.addParameter("sqlTime", "13:22:12");
     lRequest.addParameter("sqlDate", "2022-03-17");
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals(200, lResponse.getCode());
+    assertEquals(204, lResponse.getCode());
   }
 
   @Test
@@ -623,7 +622,7 @@ public class SpringJerseyRESTControllerTest {
     lRequest.addParameter("sqlTime", "13:22:12");
     lRequest.addParameter("sqlDate", "2022-03-17");
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals(200, lResponse.getCode());
+    assertEquals(204, lResponse.getCode());
   }
 
   @Test
@@ -641,7 +640,7 @@ public class SpringJerseyRESTControllerTest {
     lRequest.addHeader("SQL-Time", "13:22:12");
     lRequest.addHeader("SQL-Date", "2022-03-17");
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals(200, lResponse.getCode());
+    assertEquals(204, lResponse.getCode());
   }
 
 }

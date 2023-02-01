@@ -481,4 +481,12 @@ final class ProductServiceImpl extends ProductServiceImplBase {
     // TODO Implement method and return real result
     return null;
   }
+
+  /**
+   * 
+   * @param pHeader
+   */
+  @Override
+  public void noReturnType( String pHeader ) {
+  }
 }

@@ -147,7 +147,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#ping()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(method = { RequestMethod.HEAD })
   public void ping( ) {
     // Delegate request to service.
@@ -189,7 +189,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprecatedBeanParam()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "deprecated/beanParams", method = { RequestMethod.POST })
   public void deprecatedBeanParam( @RequestHeader(name = "token", required = true) String pAccessToken,
       @RequestHeader(name = "lang", required = true) Locale pLanguage,
@@ -229,7 +229,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprectedComplexRequestBody()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "deprecated/complexBody", method = { RequestMethod.POST })
   public void deprectedComplexRequestBody( @RequestBody(required = true) @Deprecated Product pProduct ) {
     // Delegate request to service.
@@ -250,7 +250,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#loadSpecificThings()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "specific/{id}", method = { RequestMethod.PATCH })
   public void loadSpecificThings( @RequestHeader(name = "token", required = true) String pAccessToken,
       @RequestHeader(name = "lang", required = true) Locale pLanguage,
@@ -376,7 +376,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testDateQueryParams()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-query-params/{path}", method = { RequestMethod.GET })
   public void testDateQueryParams( @PathVariable(name = "path", required = true) String pPath,
       @RequestParam(name = "startTimestamp", required = true) String pStartTimestampAsBasicType,
@@ -480,7 +480,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testDateQueryParamsBean()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-query-params-beans/{path}", method = { RequestMethod.GET })
   public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) String pPath,
       @RequestParam(name = "offsetDateTime", required = true) String pOffsetDateTimeAsBasicType,
@@ -558,7 +558,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testDateHeaderParams()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-header-params/{path}", method = { RequestMethod.GET })
   public void testDateHeaderParams( @PathVariable(name = "path", required = true) String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) String pOffsetDateTimeAsBasicType,
@@ -662,7 +662,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testDateHeaderParamsBean()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-header-params-beans/{path}", method = { RequestMethod.GET })
   public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) String pOffsetDateTimeAsBasicType,

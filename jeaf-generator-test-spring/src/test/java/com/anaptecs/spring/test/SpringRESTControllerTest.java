@@ -361,7 +361,7 @@ public class SpringRESTControllerTest {
     lRequest.addParameter("sqlTime", "13:22:12");
     lRequest.addParameter("sqlDate", "2022-03-17");
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals(200, lResponse.getCode());
+    assertEquals(204, lResponse.getCode());
   }
 
   @Test
@@ -380,7 +380,7 @@ public class SpringRESTControllerTest {
     lRequest.addParameter("sqlTime", "13:22:12");
     lRequest.addParameter("sqlDate", "2022-03-17");
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals(200, lResponse.getCode());
+    assertEquals(204, lResponse.getCode());
   }
 
   @Test
@@ -399,6 +399,6 @@ public class SpringRESTControllerTest {
     lRequest.addHeader("SQL-Time", "13:22:12");
     lRequest.addHeader("SQL-Date", "2022-03-17");
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals(200, lResponse.getCode());
+    assertEquals(204, lResponse.getCode());
   }
 }

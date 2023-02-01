@@ -205,7 +205,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testInit()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-init", method = { RequestMethod.GET })
   public void testInit( ) {
     // Delegate request to service.
@@ -253,7 +253,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testEnumParams()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-enum-params/{channelType}", method = { RequestMethod.GET })
   public void testEnumParams( @PathVariable(name = "channelType", required = true) ChannelType pChannelType,
       @RequestParam(name = "timeUnit", required = true) TimeUnit pTimeUnit,
@@ -265,7 +265,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testEnumHeaderParams()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-enum-header-params", method = { RequestMethod.GET })
   public void testEnumHeaderParams( @RequestHeader(name = "Channel-Type", required = true) ChannelType pChannelType,
       @RequestHeader(name = "Time-Unit", required = true) TimeUnit pTimeUnit,
@@ -277,7 +277,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateQueryParams()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-query-params/{path}", method = { RequestMethod.GET })
   public void testDateQueryParams( @PathVariable(name = "path", required = true) String pPath,
       @RequestParam(name = "startTimestamp", required = true) String pStartTimestampAsBasicType,
@@ -401,7 +401,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateQueryParamsBean()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-query-params-beans/{path}", method = { RequestMethod.GET })
   public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) String pPath,
       @RequestParam(name = "offsetDateTime", required = true) String pOffsetDateTimeAsBasicType,
@@ -479,7 +479,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateHeaderParams()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-header-params/{path}", method = { RequestMethod.GET })
   public void testDateHeaderParams( @PathVariable(name = "path", required = true) String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) String pOffsetDateTimeAsBasicType,
@@ -601,7 +601,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateHeaderParamsBean()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-header-params-beans/{path}", method = { RequestMethod.GET })
   public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) String pOffsetDateTimeAsBasicType,
@@ -679,7 +679,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testCookieParams()}
    */
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "cookies", method = { RequestMethod.GET })
   public void testCookieParams(
       @CookieValue(name = "Channel-Type-Param", required = true) @RequestBody(

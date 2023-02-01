@@ -218,7 +218,7 @@ public class RESTProductServiceResource {
   public Response testInit( ) {
     // Delegate request to service.
     rESTProductService.testInit();
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -291,7 +291,7 @@ public class RESTProductServiceResource {
       @QueryParam("timeUnit") TimeUnit pTimeUnit, @QueryParam("extensibleEnum") ExtensibleEnum pExtensibleEnum ) {
     // Delegate request to service.
     rESTProductService.testEnumParams(pChannelType, pTimeUnit, pExtensibleEnum);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -303,7 +303,7 @@ public class RESTProductServiceResource {
       @HeaderParam("Time-Unit") TimeUnit pTimeUnit, @HeaderParam("Extensible-Enum") ExtensibleEnum pExtensibleEnum ) {
     // Delegate request to service.
     rESTProductService.testEnumHeaderParams(pChannelType, pTimeUnit, pExtensibleEnum);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -321,7 +321,7 @@ public class RESTProductServiceResource {
     // Delegate request to service.
     rESTProductService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
         pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate, pCalendars);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -333,7 +333,7 @@ public class RESTProductServiceResource {
       @BeanParam DateQueryParamsBean pQueryParams ) {
     // Delegate request to service.
     rESTProductService.testDateQueryParamsBean(pPath, pQueryParams);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -351,7 +351,7 @@ public class RESTProductServiceResource {
     // Delegate request to service.
     rESTProductService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate,
         pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate, pUtilDates);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -363,7 +363,7 @@ public class RESTProductServiceResource {
       @BeanParam DateHeaderParamsBean pHeaderParams ) {
     // Delegate request to service.
     rESTProductService.testDateHeaderParamsBean(pPath, pHeaderParams);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -379,7 +379,7 @@ public class RESTProductServiceResource {
     }
     // Delegate request to service.
     rESTProductService.testCookieParams(pChannelTypeParam, pContext);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**

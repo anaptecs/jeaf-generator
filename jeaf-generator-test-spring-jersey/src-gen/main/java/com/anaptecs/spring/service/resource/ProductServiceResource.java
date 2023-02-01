@@ -162,7 +162,7 @@ public class ProductServiceResource {
   public Response ping( ) {
     // Delegate request to service.
     productService.ping();
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -196,7 +196,7 @@ public class ProductServiceResource {
   public Response deprecatedBeanParam( @BeanParam BeanParameter pBeanParam ) {
     // Delegate request to service.
     productService.deprecatedBeanParam(pBeanParam);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -230,7 +230,7 @@ public class ProductServiceResource {
   public Response deprectedComplexRequestBody( @Deprecated Product pProduct ) {
     // Delegate request to service.
     productService.deprectedComplexRequestBody(pProduct);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -258,7 +258,7 @@ public class ProductServiceResource {
     }
     // Delegate request to service.
     productService.loadSpecificThings(pContext);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -353,7 +353,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     productService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
         pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -365,7 +365,7 @@ public class ProductServiceResource {
       @BeanParam DateQueryParamsBean pQueryParams ) {
     // Delegate request to service.
     productService.testDateQueryParamsBean(pPath, pQueryParams);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -383,7 +383,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     productService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate,
         pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -395,7 +395,7 @@ public class ProductServiceResource {
       @BeanParam DateHeaderParamsBean pHeaderParams ) {
     // Delegate request to service.
     productService.testDateHeaderParamsBean(pPath, pHeaderParams);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**

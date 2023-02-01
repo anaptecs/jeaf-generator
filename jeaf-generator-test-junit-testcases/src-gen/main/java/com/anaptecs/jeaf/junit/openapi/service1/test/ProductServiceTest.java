@@ -53,6 +53,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testTestOptionalQueryParams"));
     lSuite.addTest(new ProductServiceTest("testTestMulitValuedBeanParams"));
     lSuite.addTest(new ProductServiceTest("testGetDefaultChannel"));
+    lSuite.addTest(new ProductServiceTest("testNoReturnType"));
     lSuite.addTest(new ProductServiceTest("testAddCurrencies"));
     lSuite.addTest(new ProductServiceTest("testGetSortiment"));
     lSuite.addTest(new ProductServiceTest("testCheckIBAN"));
@@ -423,6 +424,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testGetDefaultChannel( ) throws Exception {
     // TODO Implement test for service method getDefaultChannel(...)
+  }
+
+  /**
+   * Method test the implementation of service method noReturnType
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testNoReturnType( ) throws Exception {
+    // TODO Implement test for service method noReturnType(...)
   }
 
   /**

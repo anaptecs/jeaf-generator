@@ -550,9 +550,15 @@ components:
             «ENDFOREACH-»
           «ENDIF-»
           «ENDLET-»
+          «REM»Operation has return type void«ENDREM-»
+          «ELSE-»
+        '«operation.getHTTPStatusCode()»':
+          «LET operation.getReturnResult() AS returnParam-»
+          description: «getOpenAPICommentStyle()»
+            «IF returnParam.hasComment()»«returnParam.getCommentForOpenAPIDescription("            ")»«ELSE»In case that a request was successful only status code «operation.getHTTPStatusCode()» will be returned but no response content will be provided (aka as return type 'void' in many programming languages).«ENDIF»
+          «ENDLET-»
           «ENDIF-»
         «EXPAND java::OpenAPIResponse::Responses(this) FOR operation-»
-
     «ENDFOREACH-»
     «ENDFOREACH-»
   «ENDFOREACH-»

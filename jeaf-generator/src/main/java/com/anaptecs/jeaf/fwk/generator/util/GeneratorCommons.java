@@ -287,6 +287,10 @@ public class GeneratorCommons {
 
   public static final String REST_LIBRARY = "switch.gen.target.rest.library";
 
+  public static final String REST_DEFAULT_SUCCESS_STATUS_CODE = "switch.gen.target.rest.success.status.code";
+
+  public static final String REST_DEFAULT_VOID_STATUS_CODE = "switch.gen.target.rest.void.status.code";
+
   public static final String GENERATION_COMMENT = "switch.gen.generation.comment";
 
   public static final String VALID_ANNOTATION_FOR_CLASSES = "switch.gen.enable.valid.annotation.classes";
@@ -1392,6 +1396,16 @@ public class GeneratorCommons {
 
   public static boolean isRESTLibrarySpringWebMVC( ) {
     return getRESTLibrary() == RESTLibrary.SPRING_WEB_MVC;
+  }
+
+  public static Integer getRESTDefaultSuccessStatusCode( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(REST_DEFAULT_SUCCESS_STATUS_CODE, 200, Integer.class);
+  }
+
+  public static Integer getRESTDefaultVoidStatusCode( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(REST_DEFAULT_VOID_STATUS_CODE, 204, Integer.class);
   }
 
   public static boolean isEnumeration( Element pElement ) {

@@ -240,7 +240,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**
@@ -347,7 +347,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**
@@ -416,7 +416,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setBody(pProduct);
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**
@@ -496,7 +496,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**
@@ -775,7 +775,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**
@@ -839,7 +839,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**
@@ -942,7 +942,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**
@@ -1036,7 +1036,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**

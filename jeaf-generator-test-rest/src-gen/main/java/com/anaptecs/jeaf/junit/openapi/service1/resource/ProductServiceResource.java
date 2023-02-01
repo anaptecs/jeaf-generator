@@ -172,7 +172,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.ping();
-    return Response.status(Response.Status.NO_CONTENT).build();
+    return Response.status(Response.Status.ACCEPTED).build();
   }
 
   /**
@@ -209,7 +209,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.deprecatedBeanParam(pBeanParam);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -246,7 +246,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.deprectedComplexRequestBody(pProduct);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -276,7 +276,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.loadSpecificThings(pContext);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -467,7 +467,7 @@ public class ProductServiceResource {
     ProductService lService = this.getProductService();
     lService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
         pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -480,7 +480,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.testDateQueryParamsBean(pPath, pQueryParams);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -506,7 +506,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.testSpecialHeaderParams(authorization, pContentType, pAccept);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -547,7 +547,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.testNotInlinedBeanParam(pInlinedBeanParam);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -559,7 +559,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.testPrimitiveArray(pIntegerArray);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -632,6 +632,18 @@ public class ProductServiceResource {
     ProductService lService = this.getProductService();
     String lResult = lService.testMulitValuedBeanParams(pBeanParam, pTheEnum);
     return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#noReturnType()}
+   */
+  @Path("no-return-type")
+  @POST
+  public Response noReturnType( @HeaderParam("The-Header") String pHeader ) {
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    lService.noReturnType(pHeader);
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**

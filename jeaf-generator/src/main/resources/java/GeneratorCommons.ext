@@ -376,6 +376,12 @@ cached boolean isRESTLibraryJAXRS():
 cached boolean isRESTLibrarySpringWebMVC():
   JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isRESTLibrarySpringWebMVC();
   
+cached int getRESTDefaultSuccessStatusCode():
+  JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getRESTDefaultSuccessStatusCode();
+  
+cached int getRESTDefaultVoidStatusCode():
+  JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getRESTDefaultVoidStatusCode();
+  
 cached boolean isCompositeDataType(uml::Type class):
   if generatePublicObjectView() == false
   then false

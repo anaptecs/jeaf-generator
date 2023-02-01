@@ -269,13 +269,16 @@ cached String getOperationID(uml::Operation operation, uml::Interface service):
    operation.name;
    
 cached String getStatusCodeName(JMM::RESTOperation operation):
-    if operation.statusCode != null
+    if operation.statusCode.name != "DEFAULT"
     then operation.statusCode.name
     else 
         if operation.isReturnTypeVoid()
-        then "204_NO_CONTENT"
-        else "200_OK";
+        then getModelStatusCodeName(getRESTDefaultVoidStatusCode())
+        else getModelStatusCodeName(getRESTDefaultSuccessStatusCode());
    
+cached String getModelStatusCodeName(int pStatusCode):
+  JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getModelStatusCodeName(java.lang.Integer);  
+  
 cached String getJAXRSStatusCodeName(String pJMMStatusCode):
   JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getJAXRSStatusCodeName(java.lang.String);  
   
@@ -298,12 +301,12 @@ cached String getErrorCode(JMM::HTTPStatusCode status):
    status.toString().subString(0, 3);
 
 cached String getHTTPStatusCode(JMM::RESTOperation operation):
-   if operation.statusCode != null
+   if operation.statusCode.name != "DEFAULT"
    then operation.statusCode.name.subString(0, 3)
    else 
        if operation.isReturnTypeVoid()
-       then "204"
-       else "200";
+       then getRESTDefaultVoidStatusCode()
+       else getRESTDefaultSuccessStatusCode();
    
 List[JMM::OpenAPIResponse] getCustomResponses(JMM::OpenAPI3Specification spec):
    spec.clientDependency.supplier.typeSelect(JMM::OpenAPIResponse);

@@ -324,4 +324,10 @@ public interface ProductService extends Service {
    * @return {@link String}
    */
   String testMulitValuedBeanParams( MultiValuedDataType pBeanParam, BooleanLiteralsEnum pTheEnum );
+
+  /**
+   * 
+   * @param pHeader
+   */
+  void noReturnType( String pHeader );
 }
