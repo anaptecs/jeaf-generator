@@ -106,7 +106,7 @@ public class JEAFRestControllerTest {
     lClient.when(mockRequest("/rest-products/async-currencies/0815"))
         .respond(mockResponse("[\"EUR\", \"CHF\", \"USD\"]", 200, 1));
 
-    lClient.when(mockRequest("/rest-products/test-init")).respond(mockResponse(null));
+    lClient.when(mockRequest("/rest-products/test-init")).respond(mockResponse("", 204, 0));
 
     lClient.when(mockRequest("/rest-products/ChannelCode", "POST").withBody("\"MyMobile\""))
         .respond(mockResponse("\"MyMobile\""));
@@ -273,8 +273,7 @@ public class JEAFRestControllerTest {
     ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(ROOT_URI + "/rest-products/test-init");
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
 
-    assertEquals(0, lResponse.getEntity().getContentLength());
-    assertEquals(200, lResponse.getCode());
+    assertEquals(204, lResponse.getCode());
   }
 
   @Test

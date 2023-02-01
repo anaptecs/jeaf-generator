@@ -503,6 +503,22 @@ public class GeneratorMojo extends AbstractMojo {
   private RESTLibrary restLibrary;
 
   /**
+   * Parameter can be used to define the default http status code that should be used when REST requests are successful.
+   * By default 200 ("OK") is used. This value will only be used if there is no explicit status code defined on the
+   * RESTOperation.
+   */
+  @Parameter(required = false)
+  private Integer restDefaultSuccessStatusCode;
+
+  /**
+   * Parameter can be used to define the default http status code that should be used when REST requests are successful
+   * for operations with return type void. By default 204 ("NO_CONTENT") is used. This value will only be used if there
+   * is no explicit status code defined on the RESTOperation.
+   */
+  @Parameter(required = false)
+  private Integer restDefaultVoidStatusCode;
+
+  /**
    * Switch defines whether for the Java representation of OpenAPI Data Types as valueOf method should be generated or
    * not. If this is required depends on the framework that is used for your REST implementation. Currently (Spring Boot
    * 2.7.* and Jersey 2.35) it is only required in case of Jersey. Default Spring Boot REST implementation does not
@@ -798,6 +814,12 @@ public class GeneratorMojo extends AbstractMojo {
     if (restLibrary != null) {
       lLog.info("REST Library:                                     " + restLibrary.name());
     }
+    if (restDefaultSuccessStatusCode != null) {
+      lLog.info("REST default success status code:                 " + restDefaultSuccessStatusCode);
+    }
+    if (restDefaultVoidStatusCode != null) {
+      lLog.info("REST default success void status code:            " + restDefaultVoidStatusCode);
+    }
 
     lLog.info(" ");
     lLog.info("Code-Style:                                       " + xmlFormatterStyleFile);
@@ -1054,6 +1076,12 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.target.runtime", targetRuntime.name());
       if (restLibrary != null) {
         System.setProperty("switch.gen.target.rest.library", restLibrary.name());
+      }
+      if (restDefaultSuccessStatusCode != null) {
+        System.setProperty("switch.gen.target.rest.success.status.code", restDefaultSuccessStatusCode.toString());
+      }
+      if (restDefaultVoidStatusCode != null) {
+        System.setProperty("switch.gen.target.rest.void.status.code", restDefaultVoidStatusCode.toString());
       }
 
       System.setProperty("switch.gen.value.of.data.types", generateValueOfForOpenAPIDataTypes.toString());

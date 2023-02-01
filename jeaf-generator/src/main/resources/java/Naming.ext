@@ -169,18 +169,20 @@ boolean hasInputParameters(uml::Operation operation):
    getInputParameters(operation).size > 0;
    
 // Returns the name of the parameter's type, adds a "[]" at the end if the parameter is multivalued
-String getTypeName(uml::Parameter parameter) :
+cached String getTypeName(uml::Parameter parameter) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getTypeName(org.eclipse.uml2.uml.TypedElement);
     
 //  Returns the name of the return parameter, adds a "[]" at the end if the parameter is multivalued    
-String getReturnTypeName(uml::Operation operation) :
+cached String getReturnTypeName(uml::Operation operation) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getReturnType(org.eclipse.uml2.uml.Operation);
     
-boolean returnsPrimitiveType(uml::Operation operation) :
+cached boolean returnsPrimitiveType(uml::Operation operation) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.returnsPrimitiveType(org.eclipse.uml2.uml.Operation);
     
-
-boolean isSupportedReturnType(uml::Operation operation) :
+cached boolean isReturnTypeVoid(uml::Operation operation):
+    operation.getReturnTypeName() == "void";
+    
+cached boolean isSupportedReturnType(uml::Operation operation) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isSupportedReturnType(org.eclipse.uml2.uml.Operation);
 
 boolean hasReturnType(uml::Operation operation) :

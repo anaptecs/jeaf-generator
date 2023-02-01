@@ -60,7 +60,7 @@ public class AccountingServiceResource {
       public void run( ) {
         try {
           lService.performBooking(pBooking, pSecurityToken);
-          Response lResponseObject = Response.ok().status(Response.Status.OK).build();
+          Response lResponseObject = Response.ok().status(Response.Status.NO_CONTENT).build();
           // Due to the asynchronous processing of the requests, the response can not be returned as return value.
           // Therefore we make use of the defined JAX-RS mechanisms.
           pAsyncResponse.resume(lResponseObject);

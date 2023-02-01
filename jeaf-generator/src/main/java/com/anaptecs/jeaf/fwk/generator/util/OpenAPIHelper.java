@@ -37,6 +37,8 @@ public class OpenAPIHelper {
 
   public static final Map<String, String> httpStatusCodeMapping = new HashMap<String, String>();
 
+  public static final Map<Integer, String> httpStatusCodeValues = new HashMap<Integer, String>();
+
   public static final Map<String, String> specDependencies = new HashMap<String, String>();
 
   static {
@@ -227,6 +229,74 @@ public class OpenAPIHelper {
     httpStatusCodeMapping.put("508_LOOP_DETECTED", null);
     httpStatusCodeMapping.put("510_NOT_EXTENDED", null);
     httpStatusCodeMapping.put("511_NETWORK_AUTHENTICATION_REQUIRED", "NETWORK_AUTHENTICATION_REQUIRED");
+
+    // HTTP Status Code values
+    httpStatusCodeValues.put(100, "100_CONTINUE");
+    httpStatusCodeValues.put(101, "101_SWITCHING_PROTOCOLS");
+    httpStatusCodeValues.put(102, "102_PROCESSING");
+    httpStatusCodeValues.put(103, "103_EARLY_HINTS");
+
+    httpStatusCodeValues.put(200, "200_OK");
+    httpStatusCodeValues.put(201, "201_CREATED");
+    httpStatusCodeValues.put(202, "202_ACCEPTED");
+    httpStatusCodeValues.put(203, "203_NON_AUTHORITATIVE_INFORMATION");
+    httpStatusCodeValues.put(204, "204_NO_CONTENT");
+    httpStatusCodeValues.put(205, "205_RESET_CONTENT");
+    httpStatusCodeValues.put(206, "206_PARTIAL_CONTENT");
+    httpStatusCodeValues.put(208, "208_ALREADY_REPORTED");
+    httpStatusCodeValues.put(226, "226_IM_USED");
+
+    httpStatusCodeValues.put(300, "300_MULTIPLE_CHOICES");
+    httpStatusCodeValues.put(301, "301_MOVED_PERMANENTLY");
+    httpStatusCodeValues.put(302, "302_FOUND");
+    httpStatusCodeValues.put(303, "303_SEE_OTHER");
+    httpStatusCodeValues.put(304, "304_NOT_MODIFIED");
+    httpStatusCodeValues.put(305, "305_USE_PROXY");
+    httpStatusCodeValues.put(306, "306_RESERVED");
+    httpStatusCodeValues.put(307, "307_TEMPORARY_REDIRECT");
+    httpStatusCodeValues.put(308, "308_PERMANENT_REDIRECT");
+
+    httpStatusCodeValues.put(400, "400_BAD_REQUEST");
+    httpStatusCodeValues.put(401, "401_UNAUTHORIZED");
+    httpStatusCodeValues.put(402, "402_PAYMENT_REQUIRED");
+    httpStatusCodeValues.put(403, "403_FORBIDDEN");
+    httpStatusCodeValues.put(404, "404_NOT_FOUND");
+    httpStatusCodeValues.put(405, "405_METHOD_NOT_ALLOWED");
+    httpStatusCodeValues.put(406, "406_NOT_ACCEPTABLE");
+    httpStatusCodeValues.put(407, "407_PROXY_AUTHENTICATION_REQUIRED");
+    httpStatusCodeValues.put(408, "408_REQUEST_TIMEOUT");
+    httpStatusCodeValues.put(409, "409_CONFLICT");
+    httpStatusCodeValues.put(410, "410_GONE");
+    httpStatusCodeValues.put(411, "411_LENGTH_REQUIRED");
+    httpStatusCodeValues.put(412, "412_PRECONDITION_FAILED");
+    httpStatusCodeValues.put(413, "413_PAYLOAD_TOO_LARGE");
+    httpStatusCodeValues.put(414, "414_URI_TOO_LONG");
+    httpStatusCodeValues.put(415, "415_UNSUPPORTED_MEDIA_TYPE");
+    httpStatusCodeValues.put(416, "416_RANGE_NOT_SATISFIABLE");
+    httpStatusCodeValues.put(417, "417_EXPECTATION_FAILED");
+    httpStatusCodeValues.put(418, "418_TEAPOT");
+    httpStatusCodeValues.put(421, "421_MISDIRECTED_REQUEST");
+    httpStatusCodeValues.put(422, "422_UNPROCESSABLE_ENTITY");
+    httpStatusCodeValues.put(423, "423_LOCKED");
+    httpStatusCodeValues.put(424, "424_FAILED_DEPENDENCY");
+    httpStatusCodeValues.put(425, "425_TOO_EARLY");
+    httpStatusCodeValues.put(426, "426_UPGRADE_REQUIRED");
+    httpStatusCodeValues.put(428, "428_PRECONDITION_REQUIRED");
+    httpStatusCodeValues.put(429, "429_TOO_MANY_REQUESTS");
+    httpStatusCodeValues.put(431, "431_REQUEST_HEADER_FIELDS_TOO_LARGE");
+    httpStatusCodeValues.put(451, "451_UNAVAILABLE_FOR_LEGAL_REASONS");
+
+    httpStatusCodeValues.put(500, "500_INTERNAL_SERVER_ERROR");
+    httpStatusCodeValues.put(501, "501_NOT_IMPLEMENTED");
+    httpStatusCodeValues.put(502, "502_BAD_GATEWAY");
+    httpStatusCodeValues.put(503, "503_SERVICE_UNAVAILABLE");
+    httpStatusCodeValues.put(504, "504_GATEWAY_TIMEOUT");
+    httpStatusCodeValues.put(505, "505_HTTP_VERSION_NOT_SUPPORTED");
+    httpStatusCodeValues.put(506, "506_VARIANT_ALSO_NEGOTIATES");
+    httpStatusCodeValues.put(507, "507_INSUFFICIENT_STORAGE");
+    httpStatusCodeValues.put(508, "508_LOOP_DETECTED");
+    httpStatusCodeValues.put(510, "510_NOT_EXTENDED");
+    httpStatusCodeValues.put(511, "511_NETWORK_AUTHENTICATION_REQUIRED");
   }
 
   public static String getOpenAPIType( org.eclipse.uml2.uml.Type pClass, Component pSpec ) {
@@ -426,7 +496,15 @@ public class OpenAPIHelper {
   public static String getJAXRSStatusCodeName( String pJMMStatusCode ) {
     String lStatusCode = httpStatusCodeMapping.get(pJMMStatusCode);
     if (lStatusCode == null) {
-      XFun.getTrace().debug("No mapping foudn for status code: " + pJMMStatusCode);
+      XFun.getTrace().error("No mapping found for status code: " + pJMMStatusCode);
+    }
+    return lStatusCode;
+  }
+
+  public static String getModelStatusCodeName( Integer pStatusCode ) {
+    String lStatusCode = httpStatusCodeValues.get(pStatusCode);
+    if (lStatusCode == null) {
+      XFun.getTrace().error("Invalid REST (JAX-RS) status code: " + pStatusCode);
     }
     return lStatusCode;
   }

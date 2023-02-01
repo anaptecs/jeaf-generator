@@ -83,6 +83,9 @@ abstract class ProductServiceImplBase implements ProductService, ServiceImplemen
   public static final String LOADSPECIFICTHINGS_AUTH_TYPE =
       "loadSpecificThings.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 
+  public static final String NORETURNTYPE_AUTH_TYPE =
+      "noReturnType.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
   public static final String PING_AUTH_TYPE = "ping.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 
   public static final String TESTCHILDBEANPARAMETER_AUTH_TYPE =

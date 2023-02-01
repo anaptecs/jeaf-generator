@@ -80,13 +80,11 @@ paths:
               schema:
                 type: boolean
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
     post:
       tags:
         - Products
@@ -112,17 +110,17 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
     head:
       operationId: ping
       responses:
-    
+        '202':
+          description: |
+            In case that a request was successful only status code 202 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
         '204':
           $ref: '#/components/responses/NoContentResponse'
     
@@ -131,7 +129,6 @@ paths:
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/{id}:
     get:
       tags:
@@ -161,13 +158,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/sortiment/{id}:
     get:
       tags:
@@ -218,13 +213,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/ChannelCode:
     post:
       operationId: createChannelCode
@@ -262,13 +255,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/deprecated/operation:
     get:
       operationId: deprecatedOperation
@@ -287,13 +278,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/deprecated/context:
     post:
       operationId: deprecatedContext
@@ -335,13 +324,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/deprecated/beanParams:
     post:
       operationId: deprecatedBeanParam
@@ -363,14 +350,15 @@ paths:
           schema:
             type: string
       responses:
-    
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
     
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/deprecated/params:
     post:
       operationId: deprecatedParams
@@ -397,13 +385,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/deprecated/body:
     post:
       operationId: deprecatedBody
@@ -428,13 +414,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/deprecated/complexBody:
     post:
       description: |
@@ -450,14 +434,15 @@ paths:
             schema:
               $ref: '../base/product-base.yml#/components/schemas/Product'
       responses:
-    
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
     
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/deprecated/complexReturn:
     get:
       operationId: deprecatedComplexReturn
@@ -476,13 +461,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/specific/{id}:
     patch:
       operationId: loadSpecificThings
@@ -522,14 +505,15 @@ paths:
           schema:
             type: string
       responses:
-    
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
     
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/ChannelCodeObject:
     post:
       operationId: createChannelCodeFromObject
@@ -561,13 +545,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/currencies:
     post:
       tags:
@@ -612,13 +594,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/currencies/valid:
     post:
       tags:
@@ -658,13 +638,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/codeTypeUsages:
     post:
       operationId: testCodeTypeUsage
@@ -688,13 +666,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/LocalBeanParam:
     get:
       operationId: testLocalBeanParamType
@@ -715,13 +691,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/ExternalBeanParam:
     get:
       operationId: testExternalBeanParameterType
@@ -742,13 +716,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/ChildBeanParam:
     get:
       operationId: testChildBeanParameter
@@ -770,13 +742,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/IBAN:
     post:
       operationId: checkIBAN
@@ -801,13 +771,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/channels:
     get:
       tags:
@@ -839,13 +807,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/DefaultChannel:
     get:
       operationId: getDefaultChannel
@@ -871,13 +837,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/currencies/{channelCode}:
     get:
       operationId: getSupportedCurrencies
@@ -911,13 +875,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/async-currencies/{channelCode}:
     get:
       operationId: getSupportedCurrenciesAsync
@@ -951,13 +913,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/test-date-query-params/{path}:
     get:
       operationId: testDateQueryParams
@@ -1028,14 +988,15 @@ paths:
             type: string
             format: date
       responses:
-    
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
     
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/test-date-query-params-beans/{path}:
     get:
       operationId: testDateQueryParamsBean
@@ -1106,14 +1067,15 @@ paths:
           schema:
             type: string
       responses:
-    
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
     
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/test-optional-query-params:
     get:
       operationId: testOptionalQueryParams
@@ -1143,25 +1105,24 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/special-header-params:
     get:
       operationId: testSpecialHeaderParams
       responses:
-    
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
     
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/technicalHeaderBeanParam:
     get:
       operationId: testTechnicalHeaderBean
@@ -1190,13 +1151,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/technicalHeaderParam:
     get:
       operationId: testTechnicalHeaderParam
@@ -1225,13 +1184,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/testNotInlinedBeanParam:
     post:
       operationId: testNotInlinedBeanParam
@@ -1241,14 +1198,15 @@ paths:
         - $ref: '../base/product-base.yml#/components/parameters/extensibleEnum'
         - $ref: '../base/product-base.yml#/components/parameters/bookingID'
       responses:
-    
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
     
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/testStringArray:
     post:
       operationId: testPrimitiveArray
@@ -1262,14 +1220,15 @@ paths:
                 type: integer
                 format: int32
       responses:
-    
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
     
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/testPrimitiveArrayAsQueryParam:
     get:
       operationId: testPrimitiveArrayAsQueryParam
@@ -1296,13 +1255,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/big-decimal-codes-header:
     get:
       operationId: testMultivaluedHeader
@@ -1328,13 +1285,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/big-decimal-codes-query:
     get:
       operationId: testMultivaluedQueryParams
@@ -1366,13 +1321,11 @@ paths:
                 type: string
                 default: 'Hello World'
     
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
   /products/testMulitValuedBeanParams:
     get:
       operationId: testMulitValuedBeanParams
@@ -1432,13 +1385,30 @@ paths:
                 type: string
                 default: 'Hello World'
     
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
+  /products/no-return-type:
+    post:
+      operationId: noReturnType
+      parameters:
+        - name: The-Header
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
     
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
-
 
 security:
   - {}

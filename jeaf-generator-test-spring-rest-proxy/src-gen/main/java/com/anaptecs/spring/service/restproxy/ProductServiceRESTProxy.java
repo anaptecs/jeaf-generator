@@ -225,7 +225,7 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**
@@ -330,7 +330,7 @@ public class ProductServiceRESTProxy implements ProductService {
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**
@@ -399,7 +399,7 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setBody(pProduct);
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**
@@ -477,7 +477,7 @@ public class ProductServiceRESTProxy implements ProductService {
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**
@@ -750,7 +750,7 @@ public class ProductServiceRESTProxy implements ProductService {
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**
@@ -809,7 +809,7 @@ public class ProductServiceRESTProxy implements ProductService {
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**
@@ -903,7 +903,7 @@ public class ProductServiceRESTProxy implements ProductService {
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**
@@ -992,7 +992,7 @@ public class ProductServiceRESTProxy implements ProductService {
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
-    requestExecutor.executeNoResultRequest(lRequest, 200);
+    requestExecutor.executeNoResultRequest(lRequest, 204);
   }
 
   /**

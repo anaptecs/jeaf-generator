@@ -101,7 +101,7 @@ public class RESTTestServiceResource {
     // Delegate request to service.
     RESTTestService lService = this.getRESTTestService();
     lService.doSomethingRESTy();
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -131,7 +131,7 @@ public class RESTTestServiceResource {
     // Delegate request to service.
     RESTTestService lService = this.getRESTTestService();
     lService.handleBeanParam1(pContext);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -143,7 +143,7 @@ public class RESTTestServiceResource {
     // Delegate request to service.
     RESTTestService lService = this.getRESTTestService();
     lService.handleBeanParam1(pBeanParam);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -156,7 +156,7 @@ public class RESTTestServiceResource {
     // Delegate request to service.
     RESTTestService lService = this.getRESTTestService();
     lService.deprecatedOperation();
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -169,7 +169,7 @@ public class RESTTestServiceResource {
     // Delegate request to service.
     RESTTestService lService = this.getRESTTestService();
     lService.deprecatedParameter(pParam1, pParam2);
-    return Response.status(Response.Status.OK).build();
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**
