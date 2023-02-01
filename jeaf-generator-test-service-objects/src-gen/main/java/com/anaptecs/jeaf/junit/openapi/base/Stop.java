@@ -142,9 +142,6 @@ public class Stop implements ServiceObject {
     /**
      * 
      */
-    /**
-     * 
-     */
     private SoftLink theSoftLink;
 
     /**

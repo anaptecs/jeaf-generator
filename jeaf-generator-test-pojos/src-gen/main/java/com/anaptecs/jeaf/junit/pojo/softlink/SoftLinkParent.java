@@ -116,22 +116,13 @@ public class SoftLinkParent {
     /**
      * 
      */
-    /**
-     * 
-     */
     private Set<SoftLinkID> partners;
 
     /**
      * 
      */
-    /**
-     * 
-     */
     private SoftLinkID thePartner;
 
-    /**
-     * 
-     */
     /**
      * 
      */

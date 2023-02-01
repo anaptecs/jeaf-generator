@@ -111,15 +111,9 @@ public class Campaign implements ServiceObject {
     /**
      * 
      */
-    /**
-     * 
-     */
     @Deprecated
     private long theLink;
 
-    /**
-     * 
-     */
     /**
      * 
      */
@@ -128,9 +122,6 @@ public class Campaign implements ServiceObject {
     @NotNull
     private Set<Long> moreLinks;
 
-    /**
-     * 
-     */
     /**
      * 
      */

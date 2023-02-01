@@ -124,24 +124,15 @@ public class Campaign implements ServiceObject {
     /**
      * 
      */
-    /**
-     * 
-     */
     @Deprecated
     private long theLink;
 
     /**
      * 
      */
-    /**
-     * 
-     */
     @Deprecated
     private Set<Long> moreLinks;
 
-    /**
-     * 
-     */
     /**
      * 
      */
