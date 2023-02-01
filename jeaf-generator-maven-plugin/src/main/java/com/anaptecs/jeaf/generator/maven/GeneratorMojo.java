@@ -814,10 +814,6 @@ public class GeneratorMojo extends AbstractMojo {
     if (restLibrary != null) {
       lLog.info("REST Library:                                     " + restLibrary.name());
     }
-    if (generateOpenAPISpec || generateRESTResources || generateRESTServiceProxies) {
-      lLog.info("REST default success status code:                 " + restDefaultSuccessStatusCode);
-      lLog.info("REST default success void status code:            " + restDefaultVoidStatusCode);
-    }
 
     lLog.info(" ");
     lLog.info("Code-Style:                                       " + xmlFormatterStyleFile);
@@ -900,6 +896,11 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Enable YAML 1.1 compatibility mode:               " + enableYAML11Compatibility);
       lLog.info("OpenAPI YAML multi-line comment style:            " + openAPICommentStyle);
       lLog.info("Add ignored header fields to OpenAPI spec:        " + addIgnoredHeadersToOpenAPISpec);
+    }
+
+    if (generateOpenAPISpec || generateRESTResources || generateRESTServiceProxies) {
+      lLog.info("REST default success status code:                 " + restDefaultSuccessStatusCode);
+      lLog.info("REST default success void status code:            " + restDefaultVoidStatusCode);
     }
 
     if (suppressTechnicalHeaders) {
