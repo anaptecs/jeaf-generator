@@ -14,6 +14,9 @@ cached List getAuthorizationTypeNames(uml::Interface service) :
 cached boolean isStereotypeApplied(uml::Element element, String stereotype) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isStereotypeApplied(org.eclipse.uml2.uml.Element, java.lang.String);
     
+cached String getStereotypeValue(uml::Element element, String stereotype, String attribute) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getStereotypeValue(org.eclipse.uml2.uml.Element, java.lang.String, java.lang.String);
+    
 cached List getAllAuthorizationTypes(uml::Model model) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getAllAuthorizationTypes(org.eclipse.uml2.uml.Model);
    

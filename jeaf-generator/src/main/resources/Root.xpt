@@ -3,13 +3,22 @@
 «EXTENSION java::Naming»
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::CustomValidationCommons»
+«EXTENSION java::OpenAPIFunctions»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 
 «DEFINE Root FOR Model»
+	«REM»
+	«clearCaches()»
+	«ENDREM»
+	
 	«FOREACH this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion) AS version»
 		«info ("Using JEAF Meta Model (JMM) revision " + version.revision)»
 	«ENDFOREACH»
+	
+	«IF generateRESTDeprecationReport() || generateJavaDeprecationReport()»
+	   «EXPAND jeaf::Deprecation::RESTDeprecationReport»
+	«ENDIF»
 	
     «IF generateGlobalParts() == true»
 		«EXPAND jeaf::JeafClassId::ClassId»

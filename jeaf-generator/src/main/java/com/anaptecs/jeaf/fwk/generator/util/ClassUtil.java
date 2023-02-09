@@ -1141,6 +1141,19 @@ public class ClassUtil {
     return lResult;
   }
 
+  public static String getStereotypeValue( Element pElement, String pStereotype, String pAttribute ) {
+    Stereotype lStereotype = getAppliedStereotype(pElement, pStereotype);
+    Object lValueObject = pElement.getValue(lStereotype, pAttribute);
+    String lValue;
+    if (lValueObject != null) {
+      lValue = lValueObject.toString();
+    }
+    else {
+      lValue = "";
+    }
+    return lValue;
+  }
+
   /**
    * Method returns the required interfaces of the passed component sorted by name.
    * 

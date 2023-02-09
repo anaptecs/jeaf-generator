@@ -1,0 +1,10 @@
+
+
+cached boolean isInstanceOf(uml::Element element, String type):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.TypeChecks.isInstanceOf( org.eclipse.uml2.uml.Element, java.lang.String );
+    
+cached boolean isParameter(uml::Element element):
+    isInstanceOf(element, "org.eclipse.uml2.uml.Parameter");
+    
+cached boolean isInterface(uml::Element element):
+    isInstanceOf(element, "org.eclipse.uml2.uml.Interface");

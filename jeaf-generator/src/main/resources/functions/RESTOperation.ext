@@ -1,0 +1,4 @@
+cached String getFullPath(JMM::RESTOperation operation):
+    if operation.path.length > 0
+    then ((JMM::RESTResource) operation.owner).path + "/" + operation.path + " " + operation.httpMethods
+    else ((JMM::RESTResource) operation.owner).path + " " + operation.httpMethods;

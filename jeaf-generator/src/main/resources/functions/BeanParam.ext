@@ -1,0 +1,11 @@
+extension java::GeneratorCommons;
+
+cached boolean isBeanParam(uml::Element element):
+    element.isStereotypeApplied("BeanParam");
+    
+cached boolean isParameterBeanParam(uml::Parameter param):
+    param.isBeanParam() || param.type.isBeanParam();
+    
+cached JMM::BeanParam asBeanParam(uml::Element element):
+    (JMM::HeaderParam) element;
+    

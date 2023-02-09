@@ -1,0 +1,12 @@
+extension java::GeneratorCommons;
+
+cached boolean isHeaderParam(uml::Element element):
+    element.isStereotypeApplied("HeaderParam");
+    
+cached JMM::HeaderParam asHeaderParam(uml::Element element):
+    (JMM::HeaderParam) element;
+    
+cached String getHeaderParamName(JMM::HeaderParam param):
+    if param.value.length > 0
+    then param.value
+    else param.name;
