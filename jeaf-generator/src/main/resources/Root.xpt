@@ -16,10 +16,16 @@
 		«info ("Using JEAF Meta Model (JMM) revision " + version.revision)»
 	«ENDFOREACH»
 	
-	«IF generateRESTDeprecationReport() || generateJavaDeprecationReport()»
-	   «EXPAND jeaf::Deprecation::RESTDeprecationReport»
+	«IF generateRESTDeprecationReport()»
+	   «info("Generating REST Deprecation Report")»
+	   «EXPAND jeaf::RESTDeprecation::RESTDeprecationReport»
 	«ENDIF»
 	
+    «IF generateJavaDeprecationReport()»
+       «info("Generating Java Deprecation Report")»
+       «EXPAND jeaf::JavaDeprecation::JavaDeprecationReport»
+    «ENDIF»
+    
     «IF generateGlobalParts() == true»
 		«EXPAND jeaf::JeafClassId::ClassId»
 		«EXPAND jeaf::AuthorizationData::AuthorizationTypes»

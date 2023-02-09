@@ -8,7 +8,10 @@
 
 | Deprecated Resource   | Service Name   | Description   | Deprecated since   | Planned to be removed   |
 |-----------------------|----------------|---------------|:------------------:|:-----------------------:|
+| `/api` | `com.anaptecs.jeaf.junit.rest.RESTTestService` |  |  |  |
 | `/do/something` | `com.anaptecs.jeaf.junit.rest.DeprecatedRESTService` |  |  |  |
+| `/products` | `com.anaptecs.jeaf.junit.openapi.service1.ProductService` |  |  |  |
+| `/with-deprecations` | `com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations` |  |  |  |
 
 <br>
 
@@ -41,7 +44,7 @@
 |   | `Response` | `String ` |  |  |  |
 | `/with-deprecations [POST]` | `REST Operation` | `ServiceWithDeprecations.createSomething()` | Resources can no longer be explicitly be created. | 0.9 | 1.2.3 |
 | `/with-deprecations [POST]` | `REST Operation` | `ServiceWithDeprecations.createSomething(JustAType, String, String, BeanParamWithDeprecations)` |  |  |  |
-|   | `Header Param` | `String header-xxx` |  |  |  |
+|   | `Header Param` | `String header-xxx` | Please do not use this header any longer. No matter what you pass here it will be ignored. |  |  |
 |   | `Query Param` | `String query` |  |  |  |
 |   | `Header Param` | `String deprecatedHeader` | this header param is no longer supported. Please use "xxx" instead. | 1.2.3 | PI.2.3 |
 

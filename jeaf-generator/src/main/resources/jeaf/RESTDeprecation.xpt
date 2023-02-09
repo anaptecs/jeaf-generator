@@ -49,7 +49,7 @@
 | `«element.getFullPath()»` | `REST Operation` | `«EXPAND OperationName FOR element»` | «element.getDeprecationDescription()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
     «IF element.hasDeprecatedParameters()-»
         «FOREACH element.getDeprecatedParameters() AS param-»
-|   | `«EXPAND RESTOperationParamType FOR param»` | `«EXPAND RESTOperationParamName FOR param»` |  |  |  |
+|   | `«EXPAND RESTOperationParamType FOR param»` | `«EXPAND RESTOperationParamName FOR param»` | «param.getDeprecationDescription()» | «param.getDeprecatedSince()» | «param.getDeprecationRemoval()» |
         «ENDFOREACH-»
         «FOREACH element.getDeprecatedBeanParameters() AS param-»
 |   | `«EXPAND RESTOperationBeanParamType FOR param»` | `«EXPAND RESTOperationBeanParamName FOR param»` | «param.getDeprecationDescription()» | «param.getDeprecatedSince()» | «param.getDeprecationRemoval()» |

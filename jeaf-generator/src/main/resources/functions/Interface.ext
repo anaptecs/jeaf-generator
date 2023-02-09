@@ -1,0 +1,7 @@
+extension functions::TypeChecks;
+
+cached boolean isInterface(uml::Element element):
+    element.isInstanceOf("org.eclipse.uml2.uml.Interface");
+
+cached uml::Interface asInterface(uml::Element element):
+    (uml::Interface) element;

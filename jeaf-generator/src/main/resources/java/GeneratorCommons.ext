@@ -251,11 +251,11 @@ cached boolean needsToImplementIdentifiable(uml::Class class):
 cached boolean implementsIdentifiable(uml::Class class):
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.implementsIdentifiable(org.eclipse.uml2.uml.Class);
     
-cached boolean isPOJO(uml::Class class):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isPOJO(org.eclipse.uml2.uml.Class);
+cached boolean isPOJO(uml::Element element):
+    element.isStereotypeApplied("POJO");
     
-cached boolean isServiceObject(uml::Class class):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isServiceObject(org.eclipse.uml2.uml.Class);
+cached boolean isServiceObject(uml::Element element):
+    element.isStereotypeApplied("ServiceObject");
     
 boolean isJEAFEnumeration(uml::Property property) : 
     isStereotypeApplied(property.type, "JEAFEnumeration");   
@@ -263,11 +263,11 @@ boolean isJEAFEnumeration(uml::Property property) :
 boolean isParamJEAFEnumeration(uml::Parameter parameter) : 
     parameter.type.isStereotypeApplied("JEAFEnumeration");   
     
-cached boolean isDomainObject(uml::Class class):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isDomainObject(org.eclipse.uml2.uml.Class);
+cached boolean isDomainObject(uml::Element element):
+    element.isStereotypeApplied("DomainObject");
     
-cached boolean isPersistentObject(uml::Class class):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isPersistentObject(org.eclipse.uml2.uml.Class);
+cached boolean isPersistentObject(uml::Element element):
+    element.isStereotypeApplied("PersistentObject");
     
 cached boolean hasPersistentClasses(uml::Package package):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.hasPersistentClasses(org.eclipse.uml2.uml.Package);

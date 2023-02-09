@@ -1,0 +1,111 @@
+«IMPORT uml»
+«IMPORT JMM»
+«EXTENSION java::Naming»
+«EXTENSION jeaf::Deprecation»
+
+«EXTENSION functions::TypeChecks»
+
+«EXTENSION functions::Class»
+«EXTENSION functions::POJO»
+«EXTENSION functions::ServiceObject»
+«EXTENSION functions::DomainObject»
+«EXTENSION functions::PersistentObject»
+«EXTENSION functions::JEAFEnumeration»
+«EXTENSION functions::Element»
+«EXTENSION functions::Operation»
+«EXTENSION functions::HeaderParam»
+«EXTENSION functions::QueryParam»
+«EXTENSION functions::BeanParam»
+
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+«EXTENSION java::GeneratorCommons»
+
+
+«DEFINE JavaDeprecationReport FOR Model»
+«LET this.getAllDeprecations() AS deprecations»
+«FILE getJavaDeprecationReportFileName() res_gen-»
+# «getJavaDeprecationReportName()» #
+
+<br>
+
+## Deprecated Services ##
+
+<br>
+
+| Service Name   | Description   | Deprecated since   | Planned to be removed   |
+|----------------|---------------|:------------------:|:-----------------------:|
+«FOREACH deprecations.typeSelect(JEAFService).sortBy(e|e.fqn()) AS service-»
+| `«service.fqn()»` | «service.getDeprecationDescription()» | «service.getDeprecatedSince()» | «service.getDeprecationRemoval()» |
+«ENDFOREACH-»
+
+<br>
+
+«FOREACH deprecations.typeSelect(JEAFService).sortBy(e|e.fqn()) AS service-»
+«IF service.hasDeprecatedOperations()»
+### `«service.fqn()»` ###
+
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|
+«FOREACH service.getDeprecatedOperations().sortBy(e|e.name) AS operation-»
+| `«EXPAND OperationName FOR operation»` | | «operation.getDeprecationDescription()» | «operation.getDeprecatedSince()» | «operation.getDeprecationRemoval()» |
+    «IF operation.hasDeprecatedParameters()-»
+        «FOREACH operation.getDeprecatedParameters() AS param-»
+|   | `«EXPAND OperationParamName FOR param»` | «param.getDeprecationDescription()» | «param.getDeprecatedSince()» | «param.getDeprecationRemoval()» |
+        «ENDFOREACH-»
+    «ENDIF-»
+«ENDFOREACH-»
+
+<br>
+
+«ENDIF»
+«ENDFOREACH»
+
+## Deprecated Classes ##
+
+<br>
+
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   |
+|--------|-------------|---------------|:------------------:|:-----------------------:|
+«FOREACH deprecations.select(e|e.isPOJO() || e.isServiceObject() || e.isDomainObject() || e.isPersistentObject()).sortBy(e|e.fqn()) AS element-»
+| `«element.fqn()»` | | «element.getDeprecationDescription()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
+    «IF element.asClass().hasDeprecatedProperties()-»
+        «FOREACH element.asClass().getDeprecatedProperties() AS property-»
+|   | `«property.name»` | «property.getDeprecationDescription()» | «property.getDeprecatedSince()» | «property.getDeprecationRemoval()» |
+        «ENDFOREACH-»
+    «ENDIF-»
+«ENDFOREACH-»
+
+<br>
+
+
+## Deprecated Enumerations ##
+
+<br>
+
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
+|---------------|-----------|---------------|:------------------:|:-----------------------:|
+«FOREACH deprecations.select(e|e.isJEAFEnumeration()).select(e|e.hasDeprecation()).sortBy(e|e.fqn()) AS element-»
+| `«element.fqn()»` | | «element.getDeprecationDescription()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
+    «IF element.asJEAFEnumeration().hasDeprecatedLiterals()-»
+        «FOREACH element.asJEAFEnumeration().getDeprecatedLiterals() AS literal-»
+|   | `«literal.name»` | «literal.getDeprecationDescription()» | «literal.getDeprecatedSince()» | «literal.getDeprecationRemoval()» |
+        «ENDFOREACH-»
+    «ENDIF-»
+«ENDFOREACH-»
+
+<br>
+
+«ENDFILE»
+«ENDLET»
+«ENDDEFINE»
+
+
+«DEFINE OperationName FOR Operation-»
+«name»(«FOREACH this.getInputParameters() AS param SEPARATOR ", "»«param.type.name»«ENDFOREACH»)«ENDDEFINE»
+
+«DEFINE OperationParamName FOR Parameter-»
+«this.type.name» «this.name»«ENDDEFINE»
+
+
+

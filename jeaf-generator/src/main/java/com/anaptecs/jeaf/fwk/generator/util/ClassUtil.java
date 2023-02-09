@@ -513,19 +513,7 @@ public class ClassUtil {
     return lStereotypeApplied;
   }
 
-  public static boolean isPOJO( Class pClass ) {
-    return ClassUtil.isStereotypeApplied(pClass, STEREOTYPE_POJO);
-  }
-
-  public static boolean isServiceObject( Class pClass ) {
-    return ClassUtil.isStereotypeApplied(pClass, STEREOTYPE_SERVICE_OBJECT);
-  }
-
-  public static boolean isDomainObject( Class pClass ) {
-    return ClassUtil.isStereotypeApplied(pClass, STEREOTYPE_DOMAIN_OBJECT);
-  }
-
-  public static boolean isPersistentObject( Class pClass ) {
+  private static boolean isPersistentObject( Class pClass ) {
     return ClassUtil.isStereotypeApplied(pClass, STEREOTYPE_PERSISTENT_OBJECT);
   }
 

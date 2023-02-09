@@ -1,0 +1,7 @@
+extension java::GeneratorCommons;
+
+cached boolean isPersistentObject(uml::Element element):
+    element.isStereotypeApplied("PersistentObject");
+    
+cached JMM::PersistentObject asPersistentObject(uml::Element element):
+    (JMM::PersistentObject) element;

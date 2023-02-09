@@ -9,6 +9,7 @@ extension functions::Class;
 extension functions::Enumeration;
 extension functions::Operation;
 extension functions::HeaderParam;
+extension functions::Interface;
 extension functions::QueryParam;
 extension functions::BeanParam;
 
@@ -34,8 +35,10 @@ cached String getDeprecationRemoval(uml::NamedElement element):
 cached boolean hasDeprecation(uml::Element element):
     if element.isClass()
     then element.asClass().hasClassDeprecationInternal()
+    else if element.isInterface()
+    then element.asInterface().hasInterfaceDeprecationInternal()
     else if element.isOperation()
-    then element.asOperation().hasOperationDeprecationInternal()
+    then element.asOperation().hasRESTOperationDeprecationInternal()
     else if element.isEnumeration()
     then element.asEnumeration().hasEnumerationDeprecationInternal()
     else element.isJEAFDeprecated();
@@ -58,6 +61,21 @@ cached List[uml::Property] getDeprecatedProperties(uml::Class class):
     
 ///////////////////////////////////////////////////////////////////////////////
 //
+// Handle interfaces
+//
+private cached boolean hasInterfaceDeprecationInternal(uml::Interface interface):
+    interface.isJEAFDeprecated() || interface.hasDeprecatedOperations();
+    
+cached boolean hasDeprecatedOperations(uml::Interface interface):
+    interface.getDeprecatedOperations().isEmpty == false;
+    
+cached List[uml::Operation] getDeprecatedOperations(uml::Interface interface):
+    interface.ownedOperation.select(e|e.hasJavaOperationDeprecationInternal());
+
+
+    
+///////////////////////////////////////////////////////////////////////////////
+//
 // Handle enumerations
 //
 private cached boolean hasEnumerationDeprecationInternal(uml::Enumeration enum):
@@ -75,8 +93,11 @@ cached List[uml::EnumerationLiteral] getDeprecatedLiterals(uml::Enumeration enum
 //
 // Handle operations
 //    
-private cached boolean hasOperationDeprecationInternal(uml::Operation operation):
+private cached boolean hasRESTOperationDeprecationInternal(uml::Operation operation):
     operation.isJEAFDeprecated() || operation.hasDeprecatedParameters() || operation.hasDeprecatedBeanParameters();
+    
+private cached boolean hasJavaOperationDeprecationInternal(uml::Operation operation):
+    operation.isJEAFDeprecated() || operation.hasDeprecatedParameters();
     
 cached boolean hasDeprecatedParameters(uml::Operation operation):
     operation.getDeprecatedParameters().isEmpty == false;

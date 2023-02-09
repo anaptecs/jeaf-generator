@@ -1,0 +1,7 @@
+extension java::GeneratorCommons;
+
+cached boolean isJEAFEnumeration(uml::Element element):
+    element.isStereotypeApplied("JEAFEnumeration");
+    
+cached JMM::JEAFEnumeration asJEAFEnumeration(uml::Element element):
+    (JMM::JEAFEnumeration) element;
