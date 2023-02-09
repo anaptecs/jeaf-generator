@@ -21,8 +21,8 @@
 
 ### `com.anaptecs.jeaf.junit.core.BusinessObjectTestService` ###
 
-| Operation   |  Deprecated Element   | Description   | Deprecated since   | Planned to be removed   |
-|-------------|-----------------------|---------------|:------------------:|:-----------------------:|
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|
 | `deprectedOperation()` | |  |  |  |
 
 <br>
@@ -32,8 +32,8 @@
 
 ### `com.anaptecs.jeaf.junit.core.JEAFTestService` ###
 
-| Operation   |  Deprecated Element   | Description   | Deprecated since   | Planned to be removed   |
-|-------------|-----------------------|---------------|:------------------:|:-----------------------:|
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|
 | `checkRequiredService_2()` | |  |  |  |
 
 <br>
@@ -42,8 +42,8 @@
 
 ### `com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations` ###
 
-| Operation   |  Deprecated Element   | Description   | Deprecated since   | Planned to be removed   |
-|-------------|-----------------------|---------------|:------------------:|:-----------------------:|
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|
 | `createSomething()` | | Resources can no longer be explicitly be created. | 0.9 | 1.2.3 |
 | `createSomething(JustAType, String, String, BeanParamWithDeprecations)` | |  |  |  |
 |   | `String pHeader` | Please do not use this header any longer. No matter what you pass here it will be ignored. |  |  |
@@ -55,8 +55,8 @@
 
 ### `com.anaptecs.jeaf.junit.openapi.service1.ProductService` ###
 
-| Operation   |  Deprecated Element   | Description   | Deprecated since   | Planned to be removed   |
-|-------------|-----------------------|---------------|:------------------:|:-----------------------:|
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|
 | `deprecatedBody(String)` | |  |  |  |
 |   | `String pBody` |  |  |  |
 | `deprecatedComplexReturn()` | |  |  |  |
@@ -75,8 +75,8 @@
 
 ### `com.anaptecs.jeaf.junit.rest.RESTTestService` ###
 
-| Operation   |  Deprecated Element   | Description   | Deprecated since   | Planned to be removed   |
-|-------------|-----------------------|---------------|:------------------:|:-----------------------:|
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|
 | `deprecatedAsync(int)` | |  |  |  |
 | `deprecatedAsyncParam(int)` | |  |  |  |
 |   | `int pParam1` |  |  |  |
@@ -96,8 +96,8 @@
 
 <br>
 
-| Type   | Element   | Description   | Deprecated since   | Planned to be removed   |
-|--------|-----------|---------------|:------------------:|:-----------------------:|
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   |
+|--------|-------------|---------------|:------------------:|:-----------------------:|
 | `com.anaptecs.jeaf.junit.core.DeprecatedServiceObject` | |  |  |  |
 | `com.anaptecs.jeaf.junit.core.PartiallyDeprecatedServiceObject` | |  |  |  |
 |   | `outdated` |  |  |  |
