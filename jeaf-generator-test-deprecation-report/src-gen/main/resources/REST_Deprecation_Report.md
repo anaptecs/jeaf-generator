@@ -23,11 +23,7 @@
 |   | `Body` | `int pParam1` |  |  |  |
 |   | `Response` | `String ` |  |  |  |
 | `/api/dep/async [POST]` | `REST Operation` | `RESTTestService.deprecatedAsync(int)` |  |  |  |
-| `/api/deprcation/dep1 [GET]` | `REST Operation` | `RESTTestService.deprecatedOperation()` | Please use something else.
-
-This is not the right operation any longer.
-
-Sorry!!! | a very long time | 2023-12-13 |
+| `/api/deprcation/dep1 [GET]` | `REST Operation` | `RESTTestService.deprecatedOperation()` | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13 |
 | `/api/deprecation/dep2 [GET]` | `REST Operation` | `RESTTestService.deprecatedParameter(int, int)` |  |  |  |
 |   | `Header Param` | `int pParam2` |  |  |  |
 | `/api/deprecation/dep3 [GET]` | `REST Operation` | `RESTTestService.deprectaedReturnValue(int)` |  |  |  |
@@ -71,6 +67,9 @@ Sorry!!! | a very long time | 2023-12-13 |
 |   | `deprecatedBs` |  |  |  |
 |   | `deprecatedParent` |  |  |  |
 |   | `deprecatedArray` |  |  |  |
+| `DataTypeWithDeprecation` | |  |  |  |
+|   | `code` | Time to say goodbye | just recently | Next version |
+| `DeprecatedDataType` | |  |  |  |
 | `DeprecatedType` | | This type will be replaced with .... |  |  |
 | `DiscountOffer` | |  |  |  |
 |   | `campaigns` |  |  |  |
@@ -97,7 +96,7 @@ Sorry!!! | a very long time | 2023-12-13 |
 | `DeprecatedEnum` | |  |  |  |
 | `DeprecatedEnum` | |  |  |  |
 | `EnumWithDeprecation` | |  |  |  |
-|   | `EGG` |  |  |  |
+|   | `EGG` | Eggs do not belong to apples. | 0.9 | 1.2 |
 
 <br>
 
