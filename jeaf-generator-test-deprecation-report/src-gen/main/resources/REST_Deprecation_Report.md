@@ -47,11 +47,7 @@
 
 <br>
 
-## Deprecated OpenAPI Elements ##
-
-<br>
-
-### Deprecated OpenAPI Types ###
+## Deprecated OpenAPI Types ##
 
 <br>
 
@@ -85,7 +81,7 @@
 <br>
 
 
-### Deprecated OpenAPI Enumerations ###
+## Deprecated OpenAPI Enumerations ##
 
 <br>
 
