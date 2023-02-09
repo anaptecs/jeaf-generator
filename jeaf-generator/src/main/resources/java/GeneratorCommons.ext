@@ -5,7 +5,7 @@ extension java::OpenAPIFunctions;
 cached String isMayBeInPackageWhitelist(uml::Package package) : 
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isMayBeInPackageWhitelist(org.eclipse.uml2.uml.Package);
     
-cached String isInGeneratorWhitelist(uml::NamedElement namedElement) : 
+cached boolean isInGeneratorWhitelist(uml::NamedElement namedElement) : 
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isInGeneratorWhitelist(org.eclipse.uml2.uml.NamedElement);
     
 cached List getAuthorizationTypeNames(uml::Interface service) :
@@ -91,7 +91,37 @@ cached boolean generateCustomConstraints() :
     
 cached boolean generateJUnitTests() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateJUnitTests();
+
+cached boolean generateRESTDeprecationReport():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateRESTDeprecationReport();
     
+cached String getRESTDeprecationReportName():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getRESTDeprecationReportName();
+    
+cached String getRESTDeprecationReportFileName():
+    getRESTDeprecationReportFileNameProperty() + getDeprecationReportFileExtension();    
+
+private cached String getRESTDeprecationReportFileNameProperty():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getRESTDeprecationReportFileName();
+    
+cached boolean generateJavaDeprecationReport():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateJavaDeprecationReport();
+    
+cached String getJavaDeprecationReportName():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavaDeprecationReportName();
+    
+cached String getJavaDeprecationReportFileName():
+    getJavaDeprecationReportFileNameProperty() + getDeprecationReportFileExtension();
+    
+private cached String getJavaDeprecationReportFileNameProperty():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavaDeprecationReportFileName();
+    
+cached String getDeprecationReportFormat():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getDeprecationReportFormat();
+    
+private cached String getDeprecationReportFileExtension():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getDeprecationReportFileExtension();
+   
 cached boolean generateOpenAPISpec() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateOpenAPISpec();
     
@@ -254,7 +284,7 @@ String getObjectIDClassName(JMM::DomainObject domainObject): 'com.anaptecs.jeaf.
 uml::Class getOwningClass(uml::Operation operation): (uml::Class) operation.owner;
 
 boolean isDeprecated(uml::NamedElement element) :
-  isStereotypeApplied(element, "Deprecated") || isStereotypeApplied(element, "deprecated");
+  isStereotypeApplied(element, "JEAFDeprecated") || isStereotypeApplied(element, "deprecated");
   
 boolean isReadOnly(uml::Property property):
   property.isReadOnly || property.isStereotypeApplied("CompositeDataTypePublicField");
