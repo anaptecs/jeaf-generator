@@ -49,6 +49,7 @@ import org.twdata.maven.mojoexecutor.MojoExecutor.ExecutionEnvironment;
 
 import com.anaptecs.jeaf.fwk.generator.util.ModelingTool;
 import com.anaptecs.jeaf.fwk.generator.util.RESTLibrary;
+import com.anaptecs.jeaf.fwk.generator.util.ReportFormat;
 import com.anaptecs.jeaf.fwk.generator.util.TargetRuntime;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ConversionResult;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ExcelToMessageResourceConverter;
@@ -332,6 +333,53 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateJUnitTests;
+
+  /**
+   * Switch enables the generation of a REST / OpenAPI deprecation report about the model parts which are configured to
+   * be processed.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateRESTDeprecationReport;
+
+  /**
+   * Name of the REST deprecation report.
+   */
+  @Parameter(required = false, defaultValue = "REST Deprecation Report")
+  private String restDeprecationReportName;
+
+  /**
+   * Name of the file that contains the REST deprecation report. The file extension will be chosen based on the report
+   * format.
+   */
+  @Parameter(required = false, defaultValue = "REST_Deprecation_Report")
+  private String restDeprecationReportFileName;
+
+  /**
+   * Switch enables the generation of a REST / OpenAPI deprecation report about the model parts which are configured to
+   * be processed.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateJavaDeprecationReport;
+
+  /**
+   * Name of the Java deprecation report.
+   */
+  @Parameter(required = false, defaultValue = "Java Deprecation Report")
+  private String javaDeprecationReportName;
+
+  /**
+   * Name of the file that contains the Java deprecation report. The file extension will be chosen based on the report
+   * format.
+   */
+  @Parameter(required = false, defaultValue = "Java_Deprecation_Report")
+  private String javaDeprecationReportFileName;
+
+  /**
+   * Parameter defines the format of the deprecation report. Supported formats are <code>MARKDOWN</code>,
+   * <code>HTML</code> and <code>XML</code>.
+   */
+  @Parameter(required = false, defaultValue = "MARKDOWN")
+  private ReportFormat deprecationReportFormat;
 
   /**
    * Switch defines whether an OpenAPI specification should be generated or not.
@@ -891,6 +939,22 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateJUnitTests) {
       lLog.info("Generate JUnit Test Cases:                        " + generateJUnitTests);
     }
+    if (generateRESTDeprecationReport) {
+      lLog.info("Generate REST Deprecation Report                  " + generateRESTDeprecationReport);
+      lLog.info("REST Deprecation Report Name                      " + restDeprecationReportName);
+      lLog.info("REST Deprecation Report File Name                 " + restDeprecationReportFileName
+          + deprecationReportFormat.getExtension());
+      lLog.info("REST Deprecation Report Format                    " + deprecationReportFormat);
+    }
+
+    if (generateJavaDeprecationReport) {
+      lLog.info("Generate Java Deprecation Report                  " + generateJavaDeprecationReport);
+      lLog.info("Java Deprecation Report Name                      " + javaDeprecationReportName);
+      lLog.info("Java Deprecation Report File Name                 " + javaDeprecationReportFileName
+          + deprecationReportFormat.getExtension());
+      lLog.info("Java Deprecation Report Format                    " + deprecationReportFormat);
+    }
+
     if (generateOpenAPISpec) {
       lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
       lLog.info("Enable YAML 1.1 compatibility mode:               " + enableYAML11Compatibility);
@@ -1060,6 +1124,15 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.serializable.pojos", makePOJOsSerializable.toString());
       System.setProperty("switch.gen.domain.objects", generateDomainObjects.toString());
       System.setProperty("switch.gen.junits", generateJUnitTests.toString());
+
+      System.setProperty("switch.gen.rest.deprecation.report", generateRESTDeprecationReport.toString());
+      System.setProperty("switch.gen.rest.deprecation.report.name", restDeprecationReportName.toString());
+      System.setProperty("switch.gen.rest.deprecation.report.filename", restDeprecationReportFileName.toString());
+      System.setProperty("switch.gen.java.deprecation.report", generateJavaDeprecationReport.toString());
+      System.setProperty("switch.gen.java.deprecation.report.name", javaDeprecationReportName.toString());
+      System.setProperty("switch.gen.java.deprecation.report.filename", javaDeprecationReportFileName.toString());
+      System.setProperty("switch.gen.deprecation.report.format", deprecationReportFormat.name());
+
       System.setProperty("switch.gen.openapispec", generateOpenAPISpec.toString());
       System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());
       System.setProperty("switch.gen.openapi.openAPICommentStyle", openAPICommentStyle.toString());
@@ -1348,7 +1421,8 @@ public class GeneratorMojo extends AbstractMojo {
         | generateRESTServiceProxies | generateRESTServiceProxyConfigFile | generateActivityInterfaces
         | generateActivityImpls | generateServiceObjects | generatePOJOs | generateDomainObjects | generateObjectMappers
         | generatePersistentObjects | generateComponentImpls | generateComponentRuntimeClasses | generateGlobalParts
-        | generateExceptionClasses | generateJUnitTests | generateOpenAPISpec;
+        | generateExceptionClasses | generateJUnitTests | generateRESTDeprecationReport | generateJavaDeprecationReport
+        | generateOpenAPISpec;
   }
 
   private boolean isMessageConstantsGenerationRequested( ) {

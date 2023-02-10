@@ -225,6 +225,20 @@ public class GeneratorCommons {
    */
   public static final String JUNIT_PROPERTY = "switch.gen.junits";
 
+  public static final String GENERATE_REST_DEPRECATION_REPORT = "switch.gen.rest.deprecation.report";
+
+  public static final String REST_DEPRECATION_REPORT_NAME = "switch.gen.rest.deprecation.report.name";
+
+  public static final String REST_DEPRECATION_REPORT_FILE_NAME = "switch.gen.rest.deprecation.report.filename";
+
+  public static final String GENERATE_JAVA_DEPRECATION_REPORT = "switch.gen.java.deprecation.report";
+
+  public static final String JAVA_DEPRECATION_REPORT_NAME = "switch.gen.java.deprecation.report.name";
+
+  public static final String JAVA_DEPRECATION_REPORT_FILE_NAME = "switch.gen.java.deprecation.report.filename";
+
+  public static final String DEPRECATION_REPORT_FORMAT = "switch.gen.deprecation.report.format";
+
   /**
    * Constant defines the name of the system property which enables the generation of OpenAPI specifications.
    */
@@ -805,6 +819,53 @@ public class GeneratorCommons {
   public static boolean generateJUnitTests( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(JUNIT_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean generateRESTDeprecationReport( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_REST_DEPRECATION_REPORT, Boolean.TRUE, Boolean.class);
+  }
+
+  public static String getRESTDeprecationReportName( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(REST_DEPRECATION_REPORT_NAME, true, String.class);
+  }
+
+  public static String getRESTDeprecationReportFileName( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(REST_DEPRECATION_REPORT_FILE_NAME, true, String.class);
+  }
+
+  public static boolean generateJavaDeprecationReport( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_JAVA_DEPRECATION_REPORT, Boolean.TRUE, Boolean.class);
+  }
+
+  public static String getJavaDeprecationReportName( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(JAVA_DEPRECATION_REPORT_NAME, true, String.class);
+  }
+
+  public static String getJavaDeprecationReportFileName( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(JAVA_DEPRECATION_REPORT_FILE_NAME, true, String.class);
+  }
+
+  public static ReportFormat getDeprecationReportFormat( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    String lReportFormatName = lConfiguration.getConfigurationValue(DEPRECATION_REPORT_FORMAT, null, String.class);
+    ReportFormat lReportFormat;
+    if (lReportFormatName != null) {
+      lReportFormat = ReportFormat.valueOf(lReportFormatName);
+    }
+    else {
+      lReportFormat = ReportFormat.MARKDOWN;
+    }
+    return lReportFormat;
+  }
+
+  public static String getDeprecationReportFileExtension( ) {
+    return getDeprecationReportFormat().getExtension();
   }
 
   /**

@@ -1,0 +1,7 @@
+extension functions::TypeChecks;
+
+cached boolean isClass(uml::Element element):
+    element.isInstanceOf("org.eclipse.uml2.uml.Class");
+
+cached uml::Class asClass(uml::Element element):
+    (uml::Class) element;

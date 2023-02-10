@@ -1,0 +1,120 @@
+«IMPORT uml»
+«IMPORT JMM»
+«EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION jeaf::Deprecation»
+
+«EXTENSION functions::TypeChecks»
+
+«EXTENSION functions::Class»
+«EXTENSION functions::Element»
+«EXTENSION functions::Enumeration»
+«EXTENSION functions::Operation»
+«EXTENSION functions::OpenAPIDataType»
+«EXTENSION functions::OpenAPIEnumeration»
+«EXTENSION functions::OpenAPIType»
+«EXTENSION functions::RESTOperation»
+«EXTENSION functions::HeaderParam»
+«EXTENSION functions::QueryParam»
+«EXTENSION functions::BeanParam»
+«EXTENSION functions::JEAFDeprecated»
+
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+«DEFINE RESTDeprecationReport FOR Model»
+«LET this.getAllDeprecations() AS deprecations»
+«FILE getRESTDeprecationReportFileName() res_gen-»
+# «getRESTDeprecationReportName()» #
+
+<br>
+
+## Deprecated REST Resources ##
+
+<br>
+
+| Deprecated Resource   | Service Name   | Description   | Deprecated since   | Planned to be removed   |
+|-----------------------|----------------|---------------|:------------------:|:-----------------------:|
+«FOREACH deprecations.typeSelect(RESTResource).sortBy(e|e.path) AS element-»
+| `«element.path»` | `«element.fqn()»` | «element.getDeprecationDescription()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
+«ENDFOREACH-»
+
+<br>
+
+## REST Operations with Deprecations ##
+
+<br>
+
+| Path   | Type   | Deprecated Element   | Description   | Deprecated since   | Planned to be removed   |
+|--------|--------|----------------------|---------------|:------------------:|:-----------------------:|
+«FOREACH deprecations.typeSelect(RESTOperation).sortBy(e|e.getFullPath()) AS element-»
+| `«element.getFullPath()»` | `REST Operation` | `«EXPAND OperationName FOR element»` | «element.getDeprecationDescription()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
+    «IF element.hasDeprecatedParameters()-»
+        «FOREACH element.getDeprecatedParameters() AS param-»
+|   | `«EXPAND RESTOperationParamType FOR param»` | `«EXPAND RESTOperationParamName FOR param»` | «param.getDeprecationDescription()» | «param.getDeprecatedSince()» | «param.getDeprecationRemoval()» |
+        «ENDFOREACH-»
+        «FOREACH element.getDeprecatedBeanParameters() AS param-»
+|   | `«EXPAND RESTOperationBeanParamType FOR param»` | `«EXPAND RESTOperationBeanParamName FOR param»` | «param.getDeprecationDescription()» | «param.getDeprecatedSince()» | «param.getDeprecationRemoval()» |
+        «ENDFOREACH-»
+    «ENDIF-»
+«ENDFOREACH-»
+
+<br>
+
+## Deprecated OpenAPI Types ##
+
+<br>
+
+| Type   | Element   | Description   | Deprecated since   | Planned to be removed   |
+|--------|-----------|---------------|:------------------:|:-----------------------:|
+«FOREACH deprecations.select(e|e.isOpenAPIType() || e.isOpenAPIDataType()).sortBy(e|e.name) AS element-»
+| `«element.name»` | | «element.getDeprecationDescription()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
+    «IF element.asClass().hasDeprecatedProperties()-»
+        «FOREACH element.asClass().getDeprecatedProperties() AS property-»
+|   | `«property.name»` | «property.getDeprecationDescription()» | «property.getDeprecatedSince()» | «property.getDeprecationRemoval()» |
+        «ENDFOREACH-»
+    «ENDIF-»
+«ENDFOREACH-»
+
+<br>
+
+
+## Deprecated OpenAPI Enumerations ##
+
+<br>
+
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
+|---------------|-----------|---------------|:------------------:|:-----------------------:|
+«FOREACH deprecations.select(e|e.isOpenAPIEnumeration()).select(e|e.hasDeprecation()).sortBy(e|e.name) AS element-»
+| `«element.name»` | | «element.getDeprecationDescription()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
+    «IF element.asEnumeration().hasDeprecatedLiterals()-»
+        «FOREACH element.asEnumeration().getDeprecatedLiterals() AS literal-»
+|   | `«literal.name»` | «literal.getDeprecationDescription()» | «literal.getDeprecatedSince()» | «literal.getDeprecationRemoval()» |
+        «ENDFOREACH-»
+    «ENDIF-»
+«ENDFOREACH-»
+
+<br>
+
+«ENDFILE»
+«ENDLET»
+«ENDDEFINE»
+
+
+«DEFINE OperationName FOR Operation-»
+«owner.getElementName()».«name»(«FOREACH this.getInputParameters() AS param SEPARATOR ", "»«param.type.name»«ENDFOREACH»)«ENDDEFINE»
+
+«DEFINE RESTOperationParamType FOR Parameter-»
+«IF this.isQueryParam()»Query Param«ELSEIF this.isHeaderParam()»Header Param«ELSEIF this.isInputParameter()»Body«ELSE»Response«ENDIF»«ENDDEFINE»
+
+«DEFINE RESTOperationParamName FOR Parameter-»
+«this.type.name» «IF this.isQueryParam()»«this.asQueryParam().getQueryParamName()»«ELSEIF this.isHeaderParam()»«this.asHeaderParam().getHeaderParamName()»«ELSEIF this.isInputParameter()»«this.name»«ENDIF»«ENDDEFINE»
+
+
+«DEFINE RESTOperationBeanParamType FOR Property-»
+«IF this.isQueryParam()»Query Param«ELSEIF this.isHeaderParam()»Header Param«ELSE»Unknown«ENDIF»«ENDDEFINE»
+
+«DEFINE RESTOperationBeanParamName FOR Property-»
+«this.type.name» «IF this.isQueryParam()»«this.asQueryParam().getQueryParamName()»«ELSEIF this.isHeaderParam()»«this.asHeaderParam().getHeaderParamName()»«ENDIF»«ENDDEFINE»
+
+
+

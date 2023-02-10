@@ -5,7 +5,7 @@ extension java::OpenAPIFunctions;
 cached String isMayBeInPackageWhitelist(uml::Package package) : 
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isMayBeInPackageWhitelist(org.eclipse.uml2.uml.Package);
     
-cached String isInGeneratorWhitelist(uml::NamedElement namedElement) : 
+cached boolean isInGeneratorWhitelist(uml::NamedElement namedElement) : 
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isInGeneratorWhitelist(org.eclipse.uml2.uml.NamedElement);
     
 cached List getAuthorizationTypeNames(uml::Interface service) :
@@ -13,6 +13,9 @@ cached List getAuthorizationTypeNames(uml::Interface service) :
     
 cached boolean isStereotypeApplied(uml::Element element, String stereotype) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isStereotypeApplied(org.eclipse.uml2.uml.Element, java.lang.String);
+    
+cached String getStereotypeValue(uml::Element element, String stereotype, String attribute) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getStereotypeValue(org.eclipse.uml2.uml.Element, java.lang.String, java.lang.String);
     
 cached List getAllAuthorizationTypes(uml::Model model) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getAllAuthorizationTypes(org.eclipse.uml2.uml.Model);
@@ -91,7 +94,37 @@ cached boolean generateCustomConstraints() :
     
 cached boolean generateJUnitTests() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateJUnitTests();
+
+cached boolean generateRESTDeprecationReport():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateRESTDeprecationReport();
     
+cached String getRESTDeprecationReportName():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getRESTDeprecationReportName();
+    
+cached String getRESTDeprecationReportFileName():
+    getRESTDeprecationReportFileNameProperty() + getDeprecationReportFileExtension();    
+
+private cached String getRESTDeprecationReportFileNameProperty():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getRESTDeprecationReportFileName();
+    
+cached boolean generateJavaDeprecationReport():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateJavaDeprecationReport();
+    
+cached String getJavaDeprecationReportName():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavaDeprecationReportName();
+    
+cached String getJavaDeprecationReportFileName():
+    getJavaDeprecationReportFileNameProperty() + getDeprecationReportFileExtension();
+    
+private cached String getJavaDeprecationReportFileNameProperty():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavaDeprecationReportFileName();
+    
+cached String getDeprecationReportFormat():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getDeprecationReportFormat();
+    
+private cached String getDeprecationReportFileExtension():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getDeprecationReportFileExtension();
+   
 cached boolean generateOpenAPISpec() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateOpenAPISpec();
     
@@ -218,11 +251,11 @@ cached boolean needsToImplementIdentifiable(uml::Class class):
 cached boolean implementsIdentifiable(uml::Class class):
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.implementsIdentifiable(org.eclipse.uml2.uml.Class);
     
-cached boolean isPOJO(uml::Class class):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isPOJO(org.eclipse.uml2.uml.Class);
+cached boolean isPOJO(uml::Element element):
+    element.isStereotypeApplied("POJO");
     
-cached boolean isServiceObject(uml::Class class):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isServiceObject(org.eclipse.uml2.uml.Class);
+cached boolean isServiceObject(uml::Element element):
+    element.isStereotypeApplied("ServiceObject");
     
 boolean isJEAFEnumeration(uml::Property property) : 
     isStereotypeApplied(property.type, "JEAFEnumeration");   
@@ -230,11 +263,11 @@ boolean isJEAFEnumeration(uml::Property property) :
 boolean isParamJEAFEnumeration(uml::Parameter parameter) : 
     parameter.type.isStereotypeApplied("JEAFEnumeration");   
     
-cached boolean isDomainObject(uml::Class class):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isDomainObject(org.eclipse.uml2.uml.Class);
+cached boolean isDomainObject(uml::Element element):
+    element.isStereotypeApplied("DomainObject");
     
-cached boolean isPersistentObject(uml::Class class):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isPersistentObject(org.eclipse.uml2.uml.Class);
+cached boolean isPersistentObject(uml::Element element):
+    element.isStereotypeApplied("PersistentObject");
     
 cached boolean hasPersistentClasses(uml::Package package):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.hasPersistentClasses(org.eclipse.uml2.uml.Package);
@@ -254,7 +287,7 @@ String getObjectIDClassName(JMM::DomainObject domainObject): 'com.anaptecs.jeaf.
 uml::Class getOwningClass(uml::Operation operation): (uml::Class) operation.owner;
 
 boolean isDeprecated(uml::NamedElement element) :
-  isStereotypeApplied(element, "Deprecated") || isStereotypeApplied(element, "deprecated");
+  isStereotypeApplied(element, "JEAFDeprecated") || isStereotypeApplied(element, "deprecated");
   
 boolean isReadOnly(uml::Property property):
   property.isReadOnly || property.isStereotypeApplied("CompositeDataTypePublicField");

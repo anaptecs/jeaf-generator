@@ -1,0 +1,111 @@
+extension java::GeneratorCommons;
+extension java::Naming;
+
+extension java::OpenAPIFunctions;
+
+extension functions::TypeChecks;
+
+extension functions::Class;
+extension functions::Enumeration;
+extension functions::Operation;
+extension functions::HeaderParam;
+extension functions::Interface;
+extension functions::QueryParam;
+extension functions::BeanParam;
+extension functions::JEAFDeprecated;
+
+
+cached List[uml::NamedElement] getAllDeprecations(uml::Model model):
+    model.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasDeprecation());
+    
+cached boolean hasDeprecation(uml::Element element):
+    if element.isClass()
+    then element.asClass().hasClassDeprecationInternal()
+    else if element.isInterface()
+    then element.asInterface().hasInterfaceDeprecationInternal()
+    else if element.isOperation()
+    then element.asOperation().hasRESTOperationDeprecationInternal()
+    else if element.isEnumeration()
+    then element.asEnumeration().hasEnumerationDeprecationInternal()
+    else element.isJEAFDeprecated();
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Handle classes
+//
+private cached boolean hasClassDeprecationInternal(uml::Class class):
+    class.isJEAFDeprecated() || class.hasDeprecatedProperties();
+    
+cached boolean hasDeprecatedProperties(uml::Class class):
+    class.getDeprecatedProperties().isEmpty == false;
+    
+cached List[uml::Property] getDeprecatedProperties(uml::Class class):
+    class.ownedAttribute.select(e|e.isJEAFDeprecated());
+
+
+    
+///////////////////////////////////////////////////////////////////////////////
+//
+// Handle interfaces
+//
+private cached boolean hasInterfaceDeprecationInternal(uml::Interface interface):
+    interface.isJEAFDeprecated() || interface.hasDeprecatedOperations();
+    
+cached boolean hasDeprecatedOperations(uml::Interface interface):
+    interface.getDeprecatedOperations().isEmpty == false;
+    
+cached List[uml::Operation] getDeprecatedOperations(uml::Interface interface):
+    interface.ownedOperation.select(e|e.hasJavaOperationDeprecationInternal());
+
+
+    
+///////////////////////////////////////////////////////////////////////////////
+//
+// Handle enumerations
+//
+private cached boolean hasEnumerationDeprecationInternal(uml::Enumeration enum):
+    enum.isJEAFDeprecated() || enum.hasDeprecatedLiterals();
+    
+cached boolean hasDeprecatedLiterals(uml::Enumeration enum):
+    enum.getDeprecatedLiterals().isEmpty == false;
+    
+cached List[uml::EnumerationLiteral] getDeprecatedLiterals(uml::Enumeration enum):
+    enum.ownedLiteral.select(e|e.isJEAFDeprecated());
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Handle operations
+//    
+private cached boolean hasRESTOperationDeprecationInternal(uml::Operation operation):
+    operation.isJEAFDeprecated() || operation.hasDeprecatedParameters() || operation.hasDeprecatedBeanParameters();
+    
+private cached boolean hasJavaOperationDeprecationInternal(uml::Operation operation):
+    operation.isJEAFDeprecated() || operation.hasDeprecatedParameters();
+    
+cached boolean hasDeprecatedParameters(uml::Operation operation):
+    operation.getDeprecatedParameters().isEmpty == false;
+    
+cached List[uml::Parameter] getDeprecatedParameters(uml::Operation operation):
+    operation.ownedParameter.select(e|e.isJEAFDeprecated());
+
+
+    
+///////////////////////////////////////////////////////////////////////////////
+//
+// Handle deprecations of Bean Params
+//
+cached boolean hasDeprecatedBeanParameters(uml::Operation operation):
+    operation.getDeprecatedBeanParameters().isEmpty == false;
+    
+cached List[uml::Property] getDeprecatedBeanParameters(uml::Operation operation):
+    operation.ownedParameter.select(e|e.isParameterBeanParam()).type.getDeprecatedBeanParamProperties();
+    
+cached List[uml::Property] getDeprecatedBeanParamProperties(uml::Type type):
+    type.getAllAttributesFromHierarchy().select(e|e.isQueryParam() || e.isHeaderParam()).select(e|e.isJEAFDeprecated());
+    
+
+
+///////////////////////////////////////////////////////////////////////////////

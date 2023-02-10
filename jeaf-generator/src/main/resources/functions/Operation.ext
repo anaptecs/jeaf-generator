@@ -1,0 +1,7 @@
+extension functions::TypeChecks;
+
+cached boolean isOperation(uml::Element element):
+    element.isInstanceOf("org.eclipse.uml2.uml.Operation");
+    
+cached uml::Operation asOperation(uml::Element element):
+    (uml::Operation) element;

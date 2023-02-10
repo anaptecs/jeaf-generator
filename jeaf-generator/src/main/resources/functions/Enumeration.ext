@@ -1,0 +1,7 @@
+extension functions::TypeChecks;
+
+//cached boolean isEnumeration(uml::Element element):
+//    element.isInstanceOf("org.eclipse.uml2.uml.Enumeration");
+    
+cached uml::Enumeration asEnumeration(uml::Element element):
+    (uml::Enumeration) element;

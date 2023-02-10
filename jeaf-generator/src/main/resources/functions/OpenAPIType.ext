@@ -1,0 +1,7 @@
+extension java::GeneratorCommons;
+
+cached boolean isOpenAPIType(uml::Element element):
+    element.isStereotypeApplied("OpenAPIType");
+    
+cached JMM::OpenAPIType asOpenAPIType(uml::Element element):
+    (JMM::OpenAPIType) element;

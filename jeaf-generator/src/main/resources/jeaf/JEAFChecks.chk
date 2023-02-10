@@ -6,6 +6,8 @@ extension entity::ModelProperties;
 extension java::ActivityHelper;
 extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
+extension functions::JEAFDeprecated;
+extension functions::NamedElement;
 
 
 // Checks for stereotype JEAFComponent
@@ -73,5 +75,8 @@ context JEAFActivity if runChecks("JEAFActivity") ERROR this.getWarningMessage("
 
 // Checks for stereotype Ignore
 context Ignore if runChecks() WARNING this.getWarningMessage("9152", {name}): false;
+
+// Checks for stereotype JEAFDeprecation
+context JEAFDeprecated if runChecks() WARNING this.getWarningMessage("9161", {owner.asNamedElement().fqn() + "." + name}): this.isDeprecationComplete();
 
  

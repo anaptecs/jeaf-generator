@@ -1,0 +1,7 @@
+extension java::GeneratorCommons;
+
+cached boolean isPOJO(uml::Element element):
+    element.isStereotypeApplied("POJO");
+    
+cached JMM::POJO asPOJO(uml::Element element):
+    (JMM::POJO) element;

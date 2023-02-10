@@ -1,0 +1,12 @@
+extension java::GeneratorCommons;
+
+cached boolean isQueryParam(uml::Element element):
+    element.isStereotypeApplied("QueryParam");
+    
+cached JMM::QueryParam asQueryParam(uml::Element element):
+    (JMM::QueryParam) element;
+    
+cached String getQueryParamName(JMM::QueryParam param):
+    if param.value.length > 0
+    then param.value
+    else param.name;

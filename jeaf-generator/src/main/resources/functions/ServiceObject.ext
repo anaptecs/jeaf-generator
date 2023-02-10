@@ -1,0 +1,7 @@
+extension java::GeneratorCommons;
+
+cached boolean isServiceObject(uml::Element element):
+    element.isStereotypeApplied("ServiceObject");
+    
+cached JMM::ServiceObject asServiceObject(uml::Element element):
+    (JMM::ServiceObject) element;

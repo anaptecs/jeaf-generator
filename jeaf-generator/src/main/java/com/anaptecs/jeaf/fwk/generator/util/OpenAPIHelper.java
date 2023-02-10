@@ -299,6 +299,12 @@ public class OpenAPIHelper {
     httpStatusCodeValues.put(511, "511_NETWORK_AUTHENTICATION_REQUIRED");
   }
 
+  public static void clearCaches( ) {
+    complexTypes.clear();
+    parameterTypes.clear();
+    specDependencies.clear();
+  }
+
   public static String getOpenAPIType( org.eclipse.uml2.uml.Type pClass, Component pSpec ) {
     String lFQN = Naming.getFullyQualifiedName(pClass);
     String lTypeName;

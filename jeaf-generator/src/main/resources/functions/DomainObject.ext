@@ -1,0 +1,7 @@
+extension java::GeneratorCommons;
+
+cached boolean isDomainObject(uml::Element element):
+    element.isStereotypeApplied("DomainObject");
+    
+cached JMM::DomainObject asDomainObject(uml::Element element):
+    (JMM::DomainObject) element;

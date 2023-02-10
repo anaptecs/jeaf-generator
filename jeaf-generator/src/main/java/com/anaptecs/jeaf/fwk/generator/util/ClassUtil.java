@@ -513,19 +513,7 @@ public class ClassUtil {
     return lStereotypeApplied;
   }
 
-  public static boolean isPOJO( Class pClass ) {
-    return ClassUtil.isStereotypeApplied(pClass, STEREOTYPE_POJO);
-  }
-
-  public static boolean isServiceObject( Class pClass ) {
-    return ClassUtil.isStereotypeApplied(pClass, STEREOTYPE_SERVICE_OBJECT);
-  }
-
-  public static boolean isDomainObject( Class pClass ) {
-    return ClassUtil.isStereotypeApplied(pClass, STEREOTYPE_DOMAIN_OBJECT);
-  }
-
-  public static boolean isPersistentObject( Class pClass ) {
+  private static boolean isPersistentObject( Class pClass ) {
     return ClassUtil.isStereotypeApplied(pClass, STEREOTYPE_PERSISTENT_OBJECT);
   }
 
@@ -1139,6 +1127,19 @@ public class ClassUtil {
       }
     }
     return lResult;
+  }
+
+  public static String getStereotypeValue( Element pElement, String pStereotype, String pAttribute ) {
+    Stereotype lStereotype = getAppliedStereotype(pElement, pStereotype);
+    Object lValueObject = pElement.getValue(lStereotype, pAttribute);
+    String lValue;
+    if (lValueObject != null) {
+      lValue = lValueObject.toString();
+    }
+    else {
+      lValue = "";
+    }
+    return lValue;
   }
 
   /**

@@ -144,6 +144,9 @@ Void registerLocalType(uml::NamedElement localClass, JMM::OpenAPI3Specification 
 Void registerLocalParameter(uml::Property localParam, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.registerLocalParameter(org.eclipse.uml2.uml.Property, org.eclipse.uml2.uml.Component);
     
+Void clearCaches():
+    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.clearCaches();
+   
 cached List[uml::Class] getAllSubclasses(uml::Type class) :
    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getAllSubclasses(org.eclipse.uml2.uml.Type);
    
@@ -327,7 +330,7 @@ cached Set[JMM::OAuthScope] getOAuthScopes(JMM::OpenAPISecurityScheme scheme):
   scheme.clientDependency.supplier.typeSelect(JMM::OAuthFlow).clientDependency.supplier.typeSelect(JMM::OAuthScope).toSet().sortBy(e|e.name);
 
 cached boolean isOrdered(uml::Element element) :
-    isStereotypeApplied(element, "Ordered"); 
+    element.isStereotypeApplied("Ordered"); 
     
 cached String getOrderNumber(uml::Element element) :
     if element.isOrdered() == true
