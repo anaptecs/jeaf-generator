@@ -1,0 +1,8 @@
+extension functions::TypeChecks;
+
+cached boolean isNamedElement(uml::Element element):
+    element.isInstanceOf("org.eclipse.uml2.uml.NamedElement");
+
+cached uml::NamedElement asNamedElement(uml::Element element):
+    (uml::NamedElement) element;
+    

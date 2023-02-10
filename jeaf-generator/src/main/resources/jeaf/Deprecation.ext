@@ -12,25 +12,11 @@ extension functions::HeaderParam;
 extension functions::Interface;
 extension functions::QueryParam;
 extension functions::BeanParam;
+extension functions::JEAFDeprecated;
 
 
 cached List[uml::NamedElement] getAllDeprecations(uml::Model model):
     model.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasDeprecation());
-    
-cached String getDeprecationDescription(uml::NamedElement element):
-    if element.isJEAFDeprecated()
-    then element.getStereotypeValue("JEAFDeprecated", "description").replaceAll("\n", "<br>")
-    else "";
-    
-cached String getDeprecatedSince(uml::NamedElement element):
-    if element.isJEAFDeprecated()
-    then element.getStereotypeValue("JEAFDeprecated", "since")
-    else "";
-    
-cached String getDeprecationRemoval(uml::NamedElement element):
-    if element.isJEAFDeprecated()    
-    then element.getStereotypeValue("JEAFDeprecated", "removedWith")
-    else "";
     
 cached boolean hasDeprecation(uml::Element element):
     if element.isClass()
@@ -123,10 +109,3 @@ cached List[uml::Property] getDeprecatedBeanParamProperties(uml::Type type):
 
 
 ///////////////////////////////////////////////////////////////////////////////
-cached boolean isJEAFDeprecated(uml::Element element) :
-  element.isStereotypeApplied("JEAFDeprecated");
-  
-cached JMM::JEAFDeprecated asDeprecated(uml::Element element):
-    (JMM::JEAFDeprecated) element;
-    
-    
