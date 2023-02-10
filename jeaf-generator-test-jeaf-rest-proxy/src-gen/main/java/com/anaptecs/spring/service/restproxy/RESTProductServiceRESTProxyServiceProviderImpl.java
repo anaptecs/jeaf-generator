@@ -205,15 +205,9 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       if (pContext.getAccessToken() != null) {
         lRequestBuilder.setHeader("token", pContext.getAccessToken());
       }
-      else {
-        lRequestBuilder.setHeader("token", (String) null);
-      }
       if (pContext.getLanguage() != null) {
         lRequestBuilder.setHeader("lang", XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class)
             .convert(pContext.getLanguage()));
-      }
-      else {
-        lRequestBuilder.setHeader("lang", (String) null);
       }
     }
     // Handle cookie parameters
@@ -366,9 +360,6 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       lRequestBuilder.setHeader("Big-Header",
           XFun.getDatatypeConverterRegistry().getConverter(BigDecimal.class, String.class).convert(pBigDecimalHeader));
     }
-    else {
-      lRequestBuilder.setHeader("Big-Header", (String) null);
-    }
     // Handle cookie parameters
     lRequestBuilder.setCookie("giveMeMoreCookies", String.valueOf(pIntCookieParam));
     // Execute request and return result.
@@ -430,22 +421,13 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       lRequestBuilder.setHeader("Channel-Type",
           XFun.getDatatypeConverterRegistry().getConverter(ChannelType.class, String.class).convert(pChannelType));
     }
-    else {
-      lRequestBuilder.setHeader("Channel-Type", (String) null);
-    }
     if (pTimeUnit != null) {
       lRequestBuilder.setHeader("Time-Unit",
           XFun.getDatatypeConverterRegistry().getConverter(TimeUnit.class, String.class).convert(pTimeUnit));
     }
-    else {
-      lRequestBuilder.setHeader("Time-Unit", (String) null);
-    }
     if (pExtensibleEnum != null) {
       lRequestBuilder.setHeader("Extensible-Enum", XFun.getDatatypeConverterRegistry()
           .getConverter(ExtensibleEnum.class, String.class).convert(pExtensibleEnum));
-    }
-    else {
-      lRequestBuilder.setHeader("Extensible-Enum", (String) null);
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -634,71 +616,41 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       lRequestBuilder.setHeader("Offset-Date-Time", XFun.getDatatypeConverterRegistry()
           .getConverter(OffsetDateTime.class, String.class).convert(pOffsetDateTime));
     }
-    else {
-      lRequestBuilder.setHeader("Offset-Date-Time", (String) null);
-    }
     if (pOffsetTime != null) {
       lRequestBuilder.setHeader("Offset-Time",
           XFun.getDatatypeConverterRegistry().getConverter(OffsetTime.class, String.class).convert(pOffsetTime));
-    }
-    else {
-      lRequestBuilder.setHeader("Offset-Time", (String) null);
     }
     if (pLocalDateTime != null) {
       lRequestBuilder.setHeader("Local-Date-Time",
           XFun.getDatatypeConverterRegistry().getConverter(LocalDateTime.class, String.class).convert(pLocalDateTime));
     }
-    else {
-      lRequestBuilder.setHeader("Local-Date-Time", (String) null);
-    }
     if (pLocalTime != null) {
       lRequestBuilder.setHeader("Local-Time",
           XFun.getDatatypeConverterRegistry().getConverter(LocalTime.class, String.class).convert(pLocalTime));
-    }
-    else {
-      lRequestBuilder.setHeader("Local-Time", (String) null);
     }
     if (pLocalDate != null) {
       lRequestBuilder.setHeader("Local-Date",
           XFun.getDatatypeConverterRegistry().getConverter(LocalDate.class, String.class).convert(pLocalDate));
     }
-    else {
-      lRequestBuilder.setHeader("Local-Date", (String) null);
-    }
     if (pCalendar != null) {
       lRequestBuilder.setHeader("Calendar",
           XFun.getDatatypeConverterRegistry().getConverter(Calendar.class, String.class).convert(pCalendar));
-    }
-    else {
-      lRequestBuilder.setHeader("Calendar", (String) null);
     }
     if (pUtilDate != null) {
       lRequestBuilder.setHeader("Util-Date",
           XFun.getDatatypeConverterRegistry().getConverter(java.util.Date.class, String.class).convert(pUtilDate));
     }
-    else {
-      lRequestBuilder.setHeader("Util-Date", (String) null);
-    }
     if (pSQLTimestamp != null) {
       lRequestBuilder.setHeader("SQL-Timestamp",
           XFun.getDatatypeConverterRegistry().getConverter(Timestamp.class, String.class).convert(pSQLTimestamp));
-    }
-    else {
-      lRequestBuilder.setHeader("SQL-Timestamp", (String) null);
     }
     if (pSQLTime != null) {
       lRequestBuilder.setHeader("SQL-Time",
           XFun.getDatatypeConverterRegistry().getConverter(Time.class, String.class).convert(pSQLTime));
     }
-    else {
-      lRequestBuilder.setHeader("SQL-Time", (String) null);
-    }
     if (pSQLDate != null) {
       lRequestBuilder.setHeader("SQL-Date",
           XFun.getDatatypeConverterRegistry().getConverter(Date.class, String.class).convert(pSQLDate));
-    }
-    else {
-      lRequestBuilder.setHeader("SQL-Date", (String) null);
     }
     if (pUtilDates != null) {
       List<Object> lValues = new ArrayList<Object>();
@@ -706,9 +658,6 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
         lValues.add(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(lNext));
       }
       lRequestBuilder.setHeader("util-dates", lValues);
-    }
-    else {
-      lRequestBuilder.setHeader("util-dates", (String) null);
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -738,71 +687,41 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
         lRequestBuilder.setHeader("Offset-Date-Time", XFun.getDatatypeConverterRegistry()
             .getConverter(OffsetDateTime.class, String.class).convert(pHeaderParams.getOffsetDateTime()));
       }
-      else {
-        lRequestBuilder.setHeader("Offset-Date-Time", (String) null);
-      }
       if (pHeaderParams.getOffsetTime() != null) {
         lRequestBuilder.setHeader("Offset-Time", XFun.getDatatypeConverterRegistry()
             .getConverter(OffsetTime.class, String.class).convert(pHeaderParams.getOffsetTime()));
-      }
-      else {
-        lRequestBuilder.setHeader("Offset-Time", (String) null);
       }
       if (pHeaderParams.getLocalDateTime() != null) {
         lRequestBuilder.setHeader("Local-Date-Time", XFun.getDatatypeConverterRegistry()
             .getConverter(LocalDateTime.class, String.class).convert(pHeaderParams.getLocalDateTime()));
       }
-      else {
-        lRequestBuilder.setHeader("Local-Date-Time", (String) null);
-      }
       if (pHeaderParams.getLocalTime() != null) {
         lRequestBuilder.setHeader("Local-Time", XFun.getDatatypeConverterRegistry()
             .getConverter(LocalTime.class, String.class).convert(pHeaderParams.getLocalTime()));
-      }
-      else {
-        lRequestBuilder.setHeader("Local-Time", (String) null);
       }
       if (pHeaderParams.getLocalDate() != null) {
         lRequestBuilder.setHeader("Local-Date", XFun.getDatatypeConverterRegistry()
             .getConverter(LocalDate.class, String.class).convert(pHeaderParams.getLocalDate()));
       }
-      else {
-        lRequestBuilder.setHeader("Local-Date", (String) null);
-      }
       if (pHeaderParams.getUtilDate() != null) {
         lRequestBuilder.setHeader("Util-Date", XFun.getDatatypeConverterRegistry()
             .getConverter(java.util.Date.class, String.class).convert(pHeaderParams.getUtilDate()));
-      }
-      else {
-        lRequestBuilder.setHeader("Util-Date", (String) null);
       }
       if (pHeaderParams.getCalendar() != null) {
         lRequestBuilder.setHeader("Calendar", XFun.getDatatypeConverterRegistry()
             .getConverter(Calendar.class, String.class).convert(pHeaderParams.getCalendar()));
       }
-      else {
-        lRequestBuilder.setHeader("Calendar", (String) null);
-      }
       if (pHeaderParams.getSqlTimestamp() != null) {
         lRequestBuilder.setHeader("SQL-Timestamp", XFun.getDatatypeConverterRegistry()
             .getConverter(Timestamp.class, String.class).convert(pHeaderParams.getSqlTimestamp()));
-      }
-      else {
-        lRequestBuilder.setHeader("SQL-Timestamp", (String) null);
       }
       if (pHeaderParams.getSqlTime() != null) {
         lRequestBuilder.setHeader("SQL-Time", XFun.getDatatypeConverterRegistry().getConverter(Time.class, String.class)
             .convert(pHeaderParams.getSqlTime()));
       }
-      else {
-        lRequestBuilder.setHeader("SQL-Time", (String) null);
-      }
       if (pHeaderParams.getSqlDate() != null) {
         lRequestBuilder.setHeader("SQL-Date", XFun.getDatatypeConverterRegistry().getConverter(Date.class, String.class)
             .convert(pHeaderParams.getSqlDate()));
-      }
-      else {
-        lRequestBuilder.setHeader("SQL-Date", (String) null);
       }
     }
     // Execute request.
@@ -841,21 +760,12 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       if (pContext.getAccessToken() != null) {
         lRequestBuilder.setHeader("token", pContext.getAccessToken());
       }
-      else {
-        lRequestBuilder.setHeader("token", (String) null);
-      }
       if (pContext.getLanguage() != null) {
         lRequestBuilder.setHeader("lang", XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class)
             .convert(pContext.getLanguage()));
       }
-      else {
-        lRequestBuilder.setHeader("lang", (String) null);
-      }
       if (pContext.getSpecificHeader() != null) {
         lRequestBuilder.setHeader("specificHeader", pContext.getSpecificHeader());
-      }
-      else {
-        lRequestBuilder.setHeader("specificHeader", (String) null);
       }
     }
     // Handle cookie parameters
@@ -946,20 +856,11 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     if (pBookingID != null) {
       lRequestBuilder.setHeader("BookingID", pBookingID.getBookingID());
     }
-    else {
-      lRequestBuilder.setHeader("BookingID", (String) null);
-    }
     if (pBookingCode != null) {
       lRequestBuilder.setHeader("BookingCode", pBookingCode.getCode());
     }
-    else {
-      lRequestBuilder.setHeader("BookingCode", (String) null);
-    }
     if (pDoubleCode != null) {
       lRequestBuilder.setHeader("DoubleCode", pDoubleCode.getCode());
-    }
-    else {
-      lRequestBuilder.setHeader("DoubleCode", (String) null);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -987,20 +888,11 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       if (pContext.getBookingID() != null) {
         lRequestBuilder.setHeader("bookingID", pContext.getBookingID().getBookingID());
       }
-      else {
-        lRequestBuilder.setHeader("bookingID", (String) null);
-      }
       if (pContext.getBookingCode() != null) {
         lRequestBuilder.setHeader("bookingCode", pContext.getBookingCode().getCode());
       }
-      else {
-        lRequestBuilder.setHeader("bookingCode", (String) null);
-      }
       if (pContext.getDoubleCode() != null) {
         lRequestBuilder.setHeader("DoubleCode", pContext.getDoubleCode().getCode());
-      }
-      else {
-        lRequestBuilder.setHeader("DoubleCode", (String) null);
       }
     }
     // Execute request and return result.
@@ -1370,20 +1262,11 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       if (pMultiValuedBean.getNames() != null) {
         lRequestBuilder.setHeader("names", pMultiValuedBean.getNames());
       }
-      else {
-        lRequestBuilder.setHeader("names", (String) null);
-      }
       if (pMultiValuedBean.getInts() != null) {
         lRequestBuilder.setHeader("ints", pMultiValuedBean.getInts());
       }
-      else {
-        lRequestBuilder.setHeader("ints", (String) null);
-      }
       if (pMultiValuedBean.getDoubles() != null) {
         lRequestBuilder.setHeader("doubles", Arrays.asList(pMultiValuedBean.getDoubles()));
-      }
-      else {
-        lRequestBuilder.setHeader("doubles", (String) null);
       }
       if (pMultiValuedBean.getCodes() != null) {
         List<Object> lValues = new ArrayList<Object>();
@@ -1392,9 +1275,6 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
         }
         lRequestBuilder.setHeader("codes", lValues);
       }
-      else {
-        lRequestBuilder.setHeader("codes", (String) null);
-      }
       if (pMultiValuedBean.getStringCodeList() != null) {
         List<Object> lValues = new ArrayList<Object>();
         for (StringCode lNext : pMultiValuedBean.getStringCodeList()) {
@@ -1402,15 +1282,9 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
         }
         lRequestBuilder.setHeader("stringCodeList", lValues);
       }
-      else {
-        lRequestBuilder.setHeader("stringCodeList", (String) null);
-      }
       if (pMultiValuedBean.getStartDate() != null) {
         lRequestBuilder.setHeader("startDate", XFun.getDatatypeConverterRegistry()
             .getConverter(LocalDate.class, String.class).convert(pMultiValuedBean.getStartDate()));
-      }
-      else {
-        lRequestBuilder.setHeader("startDate", (String) null);
       }
       if (pMultiValuedBean.getDates() != null) {
         List<Object> lValues = new ArrayList<Object>();
@@ -1419,18 +1293,12 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
         }
         lRequestBuilder.setHeader("dates", lValues);
       }
-      else {
-        lRequestBuilder.setHeader("dates", (String) null);
-      }
       if (pMultiValuedBean.getTimestamps() != null) {
         List<Object> lValues = new ArrayList<Object>();
         for (LocalDateTime lNext : pMultiValuedBean.getTimestamps()) {
           lValues.add(DateTimeFormatter.ISO_DATE_TIME.format(lNext));
         }
         lRequestBuilder.setHeader("timestamps", lValues);
-      }
-      else {
-        lRequestBuilder.setHeader("timestamps", (String) null);
       }
       if (pMultiValuedBean.getCalendars() != null) {
         List<Object> lValues = new ArrayList<Object>();
@@ -1439,9 +1307,6 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
         }
         lRequestBuilder.setHeader("calendars", lValues);
       }
-      else {
-        lRequestBuilder.setHeader("calendars", (String) null);
-      }
       if (pMultiValuedBean.getUtilDates() != null) {
         List<Object> lValues = new ArrayList<Object>();
         for (java.util.Date lNext : pMultiValuedBean.getUtilDates()) {
@@ -1449,18 +1314,12 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
         }
         lRequestBuilder.setHeader("utilDates", lValues);
       }
-      else {
-        lRequestBuilder.setHeader("utilDates", (String) null);
-      }
       if (pMultiValuedBean.getSqlTimestamps() != null) {
         List<Object> lValues = new ArrayList<Object>();
         for (Timestamp lNext : pMultiValuedBean.getSqlTimestamps()) {
           lValues.add(lNext.toString());
         }
         lRequestBuilder.setHeader("sqlTimestamps", lValues);
-      }
-      else {
-        lRequestBuilder.setHeader("sqlTimestamps", (String) null);
       }
     }
     // Execute request and return result.
@@ -1495,20 +1354,11 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     if (pNames != null) {
       lRequestBuilder.setHeader("names", pNames);
     }
-    else {
-      lRequestBuilder.setHeader("names", (String) null);
-    }
     if (pInts != null) {
       lRequestBuilder.setHeader("ints", pInts);
     }
-    else {
-      lRequestBuilder.setHeader("ints", (String) null);
-    }
     if (pDoubles != null) {
       lRequestBuilder.setHeader("doubles", pDoubles);
-    }
-    else {
-      lRequestBuilder.setHeader("doubles", (String) null);
     }
     if (pCodes != null) {
       List<Object> lValues = new ArrayList<Object>();
@@ -1517,15 +1367,9 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       }
       lRequestBuilder.setHeader("codes", lValues);
     }
-    else {
-      lRequestBuilder.setHeader("codes", (String) null);
-    }
     if (pStartDate != null) {
       lRequestBuilder.setHeader("startDate",
           XFun.getDatatypeConverterRegistry().getConverter(OffsetDateTime.class, String.class).convert(pStartDate));
-    }
-    else {
-      lRequestBuilder.setHeader("startDate", (String) null);
     }
     if (pTimestamps != null) {
       List<Object> lValues = new ArrayList<Object>();
@@ -1534,18 +1378,12 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       }
       lRequestBuilder.setHeader("timestamps", lValues);
     }
-    else {
-      lRequestBuilder.setHeader("timestamps", (String) null);
-    }
     if (pTimes != null) {
       List<Object> lValues = new ArrayList<Object>();
       for (OffsetTime lNext : pTimes) {
         lValues.add(DateTimeFormatter.ISO_OFFSET_TIME.format(lNext));
       }
       lRequestBuilder.setHeader("times", lValues);
-    }
-    else {
-      lRequestBuilder.setHeader("times", (String) null);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
