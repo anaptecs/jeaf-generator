@@ -8,9 +8,8 @@
 
 
 «DEFINE Root FOR Model»
-	«REM»
 	«clearCaches()»
-	«ENDREM»
+	
 	
 	«FOREACH this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion) AS version»
 		«info ("Using JEAF Meta Model (JMM) revision " + version.revision)»
