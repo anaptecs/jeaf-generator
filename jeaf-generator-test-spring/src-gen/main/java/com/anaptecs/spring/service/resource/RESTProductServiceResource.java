@@ -40,6 +40,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
+import com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChannelCode;
@@ -106,6 +107,11 @@ public class RESTProductServiceResource {
   private final CompositeTypeConverter compositeTypeConverter;
 
   /**
+   * Filter is used to provide only those headers that are configured to be processed by this REST resource.
+   */
+  private final CustomHeaderFilter customHeaderFilter;
+
+  /**
    * All request to this class will be delegated to {@link RESTProductService}.
    */
   private final RESTProductService rESTProductService;
@@ -118,9 +124,10 @@ public class RESTProductServiceResource {
    * real object that can be processed internally.
    */
   public RESTProductServiceResource( RESTProductService pRESTProductService,
-      CompositeTypeConverter pCompositeTypeConverter ) {
+      CompositeTypeConverter pCompositeTypeConverter, CustomHeaderFilter pCustomHeaderFilter ) {
     rESTProductService = pRESTProductService;
     compositeTypeConverter = pCompositeTypeConverter;
+    customHeaderFilter = pCustomHeaderFilter;
   }
 
   /**
@@ -176,7 +183,9 @@ public class RESTProductServiceResource {
     Context pContext = lContextBuilder.build();
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
-      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      if (customHeaderFilter.test(lNextEntry.getKey())) {
+        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      }
     }
     // Delegate request to service.
     return rESTProductService.getSortiment(pContext);
@@ -706,7 +715,9 @@ public class RESTProductServiceResource {
     SpecialContext pContext = lContextBuilder.build();
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
-      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      if (customHeaderFilter.test(lNextEntry.getKey())) {
+        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      }
     }
     // Delegate request to service.
     rESTProductService.testCookieParams(pChannelTypeParam, pContext);

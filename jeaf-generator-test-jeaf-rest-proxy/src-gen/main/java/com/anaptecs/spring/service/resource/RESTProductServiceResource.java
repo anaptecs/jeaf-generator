@@ -171,7 +171,7 @@ public class RESTProductServiceResource {
   @Path("sortiment/{id}")
   @GET
   public Response getSortiment( @BeanParam Context pContext, @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
-    // Add all http headers as custom headers.
+    // Add custom headers.
     for (Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
       pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
     }
@@ -378,7 +378,7 @@ public class RESTProductServiceResource {
   @GET
   public Response testCookieParams( @CookieParam("Channel-Type-Param") ChannelType pChannelTypeParam,
       @BeanParam SpecialContext pContext, @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
-    // Add all http headers as custom headers.
+    // Add custom headers.
     for (Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
       pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
     }

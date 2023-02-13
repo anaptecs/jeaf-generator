@@ -236,6 +236,17 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateRESTResources;
 
   /**
+   * Switch defines whether custom headers of a REST resource should be filtered or not. Default is <code>true</code>.
+   * If custom header filtering is defined then a {@link com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter} has to
+   * be provided via configuration.
+   * 
+   * It's strongly recommended to not use custom headers at all. However, if needed then at least they should be
+   * filtered.
+   */
+  @Parameter(required = false, defaultValue = "true")
+  private Boolean filterCustomHeaders = Boolean.TRUE;
+
+  /**
    * Parameter defines the prefix that should be used for REST paths of generated REST resources / controllers. The
    * value provided here will be used as prefix. To be a valid path it has to start with '/' and must not end with '/'.
    */
@@ -899,6 +910,9 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateRESTResources) {
       lLog.info("Generate REST Resources:                          " + generateRESTResources);
     }
+    if (filterCustomHeaders == false) {
+      lLog.info("Filter custom headers:                            " + filterCustomHeaders);
+    }
     if (restPathPrefix.length() > 0) {
       lLog.info("REST Path Prefix:                                 " + restPathPrefix);
     }
@@ -1115,6 +1129,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.component.impls", generateComponentImpls.toString());
       System.setProperty("switch.gen.service.provider.impls", generateServiceProviderImpls.toString());
       System.setProperty("switch.gen.rest.resources", generateRESTResources.toString());
+      System.setProperty("switch.gen.rest.filter.custom.headers", filterCustomHeaders.toString());
       System.setProperty("switch.gen.rest.path.prefix", restPathPrefix);
       System.setProperty("switch.gen.rest.service.proxy", generateRESTServiceProxies.toString());
       System.setProperty("switch.gen.rest.service.proxy.config.file", generateRESTServiceProxyConfigFile.toString());
