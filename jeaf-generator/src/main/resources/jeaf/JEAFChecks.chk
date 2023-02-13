@@ -16,12 +16,15 @@ context JEAFComponent if runChecks("JEAFComponent") ERROR this.getErrorMessage("
 // Checks for stereotype ServiceObject
 context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9124", {"ServiceObject", name}): ownedAttribute.forAll( a | a.type != null);
 context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9125", {"ServiceObject", name}): ownedAttribute.forAll( a | a.name.length > 0);
-context ServiceObject if runChecks("ServiceObject") && compositeDataType == true ERROR this.getErrorMessage("9123", {"ServiceObject", name}): this.superClass.size == 0;
+context ServiceObject if runChecks("ServiceObject") && compositeDataType ERROR this.getErrorMessage("9123", {"ServiceObject", name}): this.superClass.size == 0;
 context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9128", {"ServiceObject", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
 context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9129", {"ServiceObject", name}): ownedOperation.forAll( e | e.name.length > 0);
 context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9127", {"ServiceObject", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
 context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9130", {"ServiceObject", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9160", {name}): this.isStereotypeApplied("POJO") == false;
+context ServiceObject if runChecks("ServiceObject") && compositeDataType ERROR this.getErrorMessage("9162", {this.fqn()}): compositeDataTypePublicFieldName.length > 0;
+
+
 context Property if isNavigable() && class != null && class.isStereotypeApplied("ServiceObject") && runChecks() ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
 context CompositeDataTypePublicField if ((NamedElement) owner).runChecks("ServiceObject") ERROR this.getErrorMessage("9157", {((NamedElement)owner).name + "." + name}): this.type.isStringType();
 context ServiceObject if runChecks("ServiceObject") WARNING this.getWarningMessage("9122", {"ServiceObject", name}): ownedComment.size  > 0;
@@ -32,11 +35,13 @@ context SoftLink if softLinkType.name == "CustomGenericType" && ((NamedElement) 
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9124", {"POJO", name}): ownedAttribute.forAll( a | a.type != null);
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9125", {"POJO", name}): ownedAttribute.forAll( a | a.name.length > 0);
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9127", {"POJO", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
-context POJO if runChecks("POJO") && compositeDataType == true ERROR this.getErrorMessage("9123", {"POJO", name}): this.superClass.size == 0;
+context POJO if runChecks("POJO") && compositeDataType ERROR this.getErrorMessage("9123", {"POJO", name}): this.superClass.size == 0;
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9128", {"POJO", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9129", {"POJO", name}): ownedOperation.forAll( e | e.name.length > 0);
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9130", {"POJO", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9160", {name}): this.isStereotypeApplied("ServiceObject") == false;
+context POJO if runChecks("POJO") && compositeDataType ERROR this.getErrorMessage("9162", {this.fqn()}): compositeDataTypePublicFieldName.length > 0;
+
 context Property if isNavigable() && class != null && class.isStereotypeApplied("POJO") && runChecks() ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
 context CompositeDataTypePublicField if ((NamedElement) owner).runChecks("POJO") ERROR this.getErrorMessage("9157", {((NamedElement)owner).name + "." + name}): this.type.isStringType();
 context POJO if runChecks("POJO") WARNING this.getWarningMessage("9122", {"POJO", name}): ownedComment.size  > 0;
