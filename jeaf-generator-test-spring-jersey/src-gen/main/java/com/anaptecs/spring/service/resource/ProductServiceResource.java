@@ -38,6 +38,7 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter;
 import com.anaptecs.jeaf.workload.api.Workload;
 import com.anaptecs.jeaf.workload.api.WorkloadManager;
 import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;
@@ -68,6 +69,12 @@ import com.anaptecs.spring.service.ProductService;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ProductServiceResource {
+  /**
+   * Filter is used to provide only those headers that are configured to be processed by this REST resource.
+   */
+  @Autowired
+  private CustomHeaderFilter customHeaderFilter;
+
   /**
    * All request to this class will be delegated to {@link ProductService}.
    */
@@ -133,9 +140,11 @@ public class ProductServiceResource {
   @Path("sortiment/{id}")
   @GET
   public Response getSortiment( @BeanParam Context pContext, @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
-    // Add all http headers as custom headers.
+    // Add custom headers.
     for (Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
-      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
+      if (customHeaderFilter.test(lNextEntry.getKey())) {
+        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
+      }
     }
     // Delegate request to service.
     Sortiment lResult = productService.getSortiment(pContext);
@@ -252,9 +261,11 @@ public class ProductServiceResource {
   @PATCH
   public Response loadSpecificThings( @BeanParam SpecialContext pContext,
       @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
-    // Add all http headers as custom headers.
+    // Add custom headers.
     for (Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
-      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
+      if (customHeaderFilter.test(lNextEntry.getKey())) {
+        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
+      }
     }
     // Delegate request to service.
     productService.loadSpecificThings(pContext);
@@ -416,9 +427,11 @@ public class ProductServiceResource {
   @GET
   public Response testTechnicalHeaderBean( @BeanParam TechnicalHeaderContext pContext,
       @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
-    // Add all http headers as custom headers.
+    // Add custom headers.
     for (Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
-      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
+      if (customHeaderFilter.test(lNextEntry.getKey())) {
+        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
+      }
     }
     // Delegate request to service.
     String lResult = productService.testTechnicalHeaderBean(pContext);

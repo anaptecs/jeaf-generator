@@ -9,3 +9,8 @@ cached boolean isParameterBeanParam(uml::Parameter param):
 cached JMM::BeanParam asBeanParam(uml::Element element):
     (JMM::HeaderParam) element;
     
+cached JMM::BeanParam parameterAsBeanParam(uml::Parameter param):
+    if param.isBeanParam()
+    then param.asBeanParam()
+    else param.type.asBeanParam();
+    

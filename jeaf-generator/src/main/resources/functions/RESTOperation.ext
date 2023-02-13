@@ -1,4 +1,12 @@
+extension functions::BeanParam;
+
 cached String getFullPath(JMM::RESTOperation operation):
     if operation.path.length > 0
     then ((JMM::RESTResource) operation.owner).path + "/" + operation.path + " " + operation.httpMethods
     else ((JMM::RESTResource) operation.owner).path + " " + operation.httpMethods;
+    
+cached boolean hasBeanParams(JMM::RESTOperation operation):
+    operation.getBeanParams().isEmpty == false;
+
+cached List[JMM::BeanParam] getBeanParams(JMM::RESTOperation operation):
+    operation.ownedParameter.select(e|e.isParameterBeanParam()).parameterAsBeanParam();

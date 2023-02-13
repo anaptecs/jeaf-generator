@@ -83,6 +83,8 @@ public class GeneratorCommons {
    */
   public static final String REST_RESOURCES_PROPERTY = "switch.gen.rest.resources";
 
+  public static final String FILTER_CUSTOM_HEADERS = "switch.gen.rest.filter.custom.headers";
+
   /**
    * Constant defines the name of the property that defines the REST path prefix that should be used when generating
    * REST resources.
@@ -646,6 +648,11 @@ public class GeneratorCommons {
   public static boolean generateRESTResources( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(REST_RESOURCES_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean filterCustomHeaders( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(FILTER_CUSTOM_HEADERS, Boolean.TRUE, Boolean.class);
   }
 
   /**

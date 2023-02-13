@@ -19,8 +19,6 @@ import com.anaptecs.jeaf.core.api.JEAF;
 import com.anaptecs.jeaf.junit.deprecation.BeanParamWithDeprecations;
 import com.anaptecs.jeaf.junit.deprecation.JustAType;
 import com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations;
-import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
-import com.anaptecs.jeaf.rest.composite.api.jeaf.CompositeTypeConverterServiceProvider;
 
 /**
  * @author JEAF Generator
@@ -61,17 +59,5 @@ public class ServiceWithDeprecationsResource {
    */
   private ServiceWithDeprecations getServiceWithDeprecations( ) {
     return JEAF.getService(ServiceWithDeprecations.class);
-  }
-
-  /**
-   * Method returns the composite type converter that should be used in this environment. This REST interface makes
-   * usage of so called composite data types. As Spring itself is not able to do conversions from a String
-   * representation into a real object this is done in the generated REST Controller.
-   * 
-   * @return {@link CompositeTypeConverter} CompositeTypeConverter implementation that is configured to be used here.
-   * The method never returns null.
-   */
-  private CompositeTypeConverter getCompositeTypeConverter( ) {
-    return JEAF.getServiceProvider(CompositeTypeConverterServiceProvider.class);
   }
 }

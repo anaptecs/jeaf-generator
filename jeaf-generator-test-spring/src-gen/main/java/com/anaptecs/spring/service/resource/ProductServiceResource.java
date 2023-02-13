@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
@@ -58,6 +59,11 @@ import com.anaptecs.spring.service.ProductService;
 @RestController
 public class ProductServiceResource {
   /**
+   * Filter is used to provide only those headers that are configured to be processed by this REST resource.
+   */
+  private final CustomHeaderFilter customHeaderFilter;
+
+  /**
    * All request to this class will be delegated to {@link ProductService}.
    */
   private final ProductService productService;
@@ -67,8 +73,9 @@ public class ProductServiceResource {
    * 
    * @param pProductService Dependency on concrete {@link ProductService} implementation that should be used.
    */
-  public ProductServiceResource( ProductService pProductService ) {
+  public ProductServiceResource( ProductService pProductService, CustomHeaderFilter pCustomHeaderFilter ) {
     productService = pProductService;
+    customHeaderFilter = pCustomHeaderFilter;
   }
 
   /**
@@ -124,7 +131,9 @@ public class ProductServiceResource {
     Context pContext = lContextBuilder.build();
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
-      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      if (customHeaderFilter.test(lNextEntry.getKey())) {
+        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      }
     }
     // Delegate request to service.
     return productService.getSortiment(pContext);
@@ -274,7 +283,9 @@ public class ProductServiceResource {
     SpecialContext pContext = lContextBuilder.build();
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
-      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      if (customHeaderFilter.test(lNextEntry.getKey())) {
+        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      }
     }
     // Delegate request to service.
     productService.loadSpecificThings(pContext);
@@ -761,7 +772,9 @@ public class ProductServiceResource {
     TechnicalHeaderContext pContext = lContextBuilder.build();
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
-      pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      if (customHeaderFilter.test(lNextEntry.getKey())) {
+        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+      }
     }
     // Delegate request to service.
     return productService.testTechnicalHeaderBean(pContext);

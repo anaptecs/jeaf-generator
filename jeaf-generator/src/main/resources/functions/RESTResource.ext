@@ -1,0 +1,5 @@
+extension java::GeneratorCommons;
+extension functions::RESTOperation;
+
+cached boolean filterCustomHeaders(JMM::RESTResource resource):
+    filterCustomHeaders() && resource.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.hasBeanParams()).getBeanParams().select(e|e.supportsCustomHeaders).isEmpty == false;

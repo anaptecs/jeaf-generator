@@ -5,6 +5,8 @@
 «EXTENSION jeaf::RESTFunctions»
 «EXTENSION java::OpenAPIFunctions»
 
+«EXTENSION functions::RESTResource»
+
 «IMPORT uml»
 «IMPORT JMM»
 
@@ -67,6 +69,24 @@ public class «name»Resource {
 			«ENDIF»
 		«ENDIF»		
 	«ENDIF»
+	
+	«IF this.filterCustomHeaders()»
+	  «IF isTargetRuntimeSpring()»
+		  «IF isRESTLibrarySpringWebMVC()»
+			  /**
+			   * Filter is used to provide only those headers that are configured to be processed by this REST resource.
+			   */
+			  private final com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter customHeaderFilter;
+		  «ENDIF»
+            «IF isRESTLibraryJAXRS()»
+              /**
+               * Filter is used to provide only those headers that are configured to be processed by this REST resource.
+               */
+              @org.springframework.beans.factory.annotation.Autowired
+              private com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter customHeaderFilter;
+            «ENDIF»
+	  «ENDIF»
+	«ENDIF»
 
 	«IF isTargetRuntimeSpring()»
 		«IF isRESTLibrarySpringWebMVC()»
@@ -83,10 +103,13 @@ public class «name»Resource {
 			 * @param pCompositeTypeConverter Composite type converter is used convert types from their string representation to a real object that can be processed internally.
 			 «ENDIF -»
 			 */
-			public «name»Resource( «this.fqn()» p«name» «IF this.hasCompositeDataTypes()», com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pCompositeTypeConverter«ENDIF») {
+			public «name»Resource( «this.fqn()» p«name» «IF this.hasCompositeDataTypes()», com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pCompositeTypeConverter«ENDIF»«IF this.filterCustomHeaders()», com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter pCustomHeaderFilter«ENDIF») {
 			  «name.toFirstLower()» = p«name»;
 			  «IF this.hasCompositeDataTypes()»
 			  compositeTypeConverter = pCompositeTypeConverter;
+			  «ENDIF»
+			  «IF this.filterCustomHeaders()»
+              customHeaderFilter = pCustomHeaderFilter;
 			  «ENDIF»
 			}
 		«ENDIF»
@@ -110,6 +133,7 @@ public class «name»Resource {
 		  return com.anaptecs.jeaf.core.api.JEAF.getService(«this.fqn()».class);
 		}
 
+		«IF this.hasCompositeDataTypes()»
 		/**
 		 * Method returns the composite type converter that should be used in this environment. This REST interface makes usage of so called composite data types. As Spring itself is not able to do conversions from a String representation into a real object this is done in the generated REST Controller.
 		 * @return {@link CompositeTypeConverter} CompositeTypeConverter implementation that is configured to be used here. The method never returns null.
@@ -117,6 +141,7 @@ public class «name»Resource {
 		private com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter getCompositeTypeConverter( ) {
 		  return JEAF.getServiceProvider(com.anaptecs.jeaf.rest.composite.api.jeaf.CompositeTypeConverterServiceProvider.class);
 		}
+		«ENDIF»
 	«ENDIF»
 }
 «ENDFILE»
@@ -211,9 +236,15 @@ public class «name»Resource {
 	  «ENDIF»
 	  
 	  «FOREACH this.ownedParameter.select(e|e.isInputParameter() && e.isParameterSuppressed() == false && e.hasParamCustomHeaders()) AS beanParam»
-	    // Add all http headers as custom headers.
+	    // Add custom headers.
 	    for (java.util.Map.Entry<String, java.util.List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
-	      «beanParam.name».addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
+	         «IF isTargetRuntimeSpring() && filterCustomHeaders()»
+	         if (customHeaderFilter.test(lNextEntry.getKey())) {
+	         «ENDIF»	      
+	           «beanParam.name».addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
+             «IF isTargetRuntimeSpring() && filterCustomHeaders()»
+             }
+             «ENDIF»          
 	    }
 	  «ENDFOREACH»
 
@@ -400,7 +431,13 @@ public class «name»Resource {
 		  «IF beanParam.hasParamCustomHeaders()»
 			// Add custom headers.
 			for (java.util.Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
-			  «beanParam.name».addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+			 «IF filterCustomHeaders()»
+			 if (customHeaderFilter.test(lNextEntry.getKey())) {
+			 «ENDIF»
+			    «beanParam.name».addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+             «IF filterCustomHeaders()»
+             }
+             «ENDIF»
 			}		  
 		  «ENDIF»
 	  «ENDFOREACH»
