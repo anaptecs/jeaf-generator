@@ -33,6 +33,7 @@ import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.HEAD;
 import javax.ws.rs.HeaderParam;
+import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -628,6 +629,20 @@ public class RESTProductServiceResource {
     String lResult =
         lService.testMultiValuedHeaderFields(pNames, pInts, pDoubles, pCodes, pStartDate, pTimestamps, pTimes);
     return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testBookingIDAsPathParam()}
+   */
+  @Path("booking-id-as-path-param/{bookingID}")
+  @PATCH
+  public Response testBookingIDAsPathParam( @PathParam("bookingID") String pBookingIDAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    BookingID pBookingID = BookingID.builder().setBookingID(pBookingIDAsBasicType).build();
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    lService.testBookingIDAsPathParam(pBookingID);
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**

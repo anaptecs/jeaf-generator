@@ -1389,4 +1389,25 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     RESTRequest lRequest = lRequestBuilder.build();
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
   }
+
+  /**
+   * 
+   * @param pBookingID
+   */
+  @Override
+  public void testBookingIDAsPathParam( BookingID pBookingID ) {
+    // Create builder for PATCH request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.PATCH, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("booking-id-as-path-param/");
+    lPathBuilder.append(pBookingID.getBookingID());
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Execute request.
+    RESTRequest lRequest = lRequestBuilder.build();
+    requestExecutor.executeNoResultRequest(lRequest, 204);
+  }
 }

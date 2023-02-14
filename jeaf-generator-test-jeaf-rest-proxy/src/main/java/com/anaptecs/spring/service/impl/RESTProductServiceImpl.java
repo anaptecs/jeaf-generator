@@ -308,4 +308,9 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
       Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes ) {
     return null;
   }
+
+  @Override
+  public void testBookingIDAsPathParam( BookingID pBookingID ) {
+  }
+
 }

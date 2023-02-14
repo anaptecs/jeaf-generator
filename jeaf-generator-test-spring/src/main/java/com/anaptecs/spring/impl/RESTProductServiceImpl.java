@@ -331,4 +331,8 @@ public class RESTProductServiceImpl implements RESTProductService {
         + pDoubles.toString() + "_" + lCodes + "_" + pTimestamps.toString() + "_" + pTimes.toString();
   }
 
+  @Override
+  public void testBookingIDAsPathParam( BookingID pBookingID ) {
+  }
+
 }

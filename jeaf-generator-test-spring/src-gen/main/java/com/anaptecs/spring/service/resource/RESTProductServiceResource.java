@@ -1220,4 +1220,18 @@ public class RESTProductServiceResource {
     return rESTProductService.testMultiValuedHeaderFields(pNames, pInts, pDoubles, pCodes, pStartDate, pTimestamps,
         pTimes);
   }
+
+  /**
+   * {@link RESTProductService#testBookingIDAsPathParam()}
+   */
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  @RequestMapping(path = "booking-id-as-path-param/{bookingID}", method = { RequestMethod.PATCH })
+  public void testBookingIDAsPathParam(
+      @PathVariable(name = "bookingID", required = true) String pBookingIDAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    BookingID pBookingID =
+        compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class, BOOKINGID_SERIALIZED_CLASSES);
+    // Delegate request to service.
+    rESTProductService.testBookingIDAsPathParam(pBookingID);
+  }
 }
