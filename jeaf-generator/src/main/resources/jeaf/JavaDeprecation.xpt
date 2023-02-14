@@ -39,6 +39,9 @@
 «FOREACH deprecations.typeSelect(JEAFService).sortBy(e|e.fqn()) AS service-»
 | `«service.fqn()»` | «service.getDeprecationDescription()» | «service.getDeprecatedSince()» | «service.getDeprecationRemoval()» |
 «ENDFOREACH-»
+«IF deprecations.typeSelect(JEAFService).size == 0-»
+| No services are marked as deprecated. |
+«ENDIF-»
 
 <br>
 
@@ -76,6 +79,9 @@
         «ENDFOREACH-»
     «ENDIF-»
 «ENDFOREACH-»
+«IF deprecations.select(e|e.isPOJO() || e.isServiceObject() || e.isDomainObject() || e.isPersistentObject()).size == 0-»
+| No classes are marked as deprecated. |
+«ENDIF-»
 
 <br>
 
@@ -94,6 +100,9 @@
         «ENDFOREACH-»
     «ENDIF-»
 «ENDFOREACH-»
+«IF deprecations.select(e|e.isJEAFEnumeration()).select(e|e.hasDeprecation()).size == 0-»
+| No enumerations are marked as deprecated. |
+«ENDIF-»
 
 <br>
 

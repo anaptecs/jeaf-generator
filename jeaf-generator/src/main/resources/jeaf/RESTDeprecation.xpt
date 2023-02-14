@@ -37,6 +37,9 @@
 «FOREACH deprecations.typeSelect(RESTResource).sortBy(e|e.path) AS element-»
 | `«element.path»` | `«element.fqn()»` | «element.getDeprecationDescription()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
 «ENDFOREACH-»
+«IF deprecations.typeSelect(RESTResource).size == 0-»
+| No REST Resurces are marked as deprecated. |
+«ENDIF-»
 
 <br>
 
@@ -57,6 +60,9 @@
         «ENDFOREACH-»
     «ENDIF-»
 «ENDFOREACH-»
+«IF deprecations.typeSelect(RESTOperation).size == 0-»
+| No REST Operations have deprecations. |
+«ENDIF-»
 
 <br>
 
@@ -74,6 +80,9 @@
         «ENDFOREACH-»
     «ENDIF-»
 «ENDFOREACH-»
+«IF deprecations.select(e|e.isOpenAPIType() || e.isOpenAPIDataType()).size == 0-»
+| No OpenAPI Types are marked as deprecated. |
+«ENDIF-»
 
 <br>
 
@@ -92,6 +101,9 @@
         «ENDFOREACH-»
     «ENDIF-»
 «ENDFOREACH-»
+«IF deprecations.select(e|e.isOpenAPIEnumeration()).select(e|e.hasDeprecation()).size == 0-»
+| No OpenAPI Enumerations are marked as deprecated. |
+«ENDIF-»
 
 <br>
 
