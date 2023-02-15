@@ -70,10 +70,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@RequestMapping(
-    path = "/nova/prefix/rest-products",
-    consumes = { "application/json" },
-    produces = { "application/json" })
+@RequestMapping(path = "/nova/prefix/rest-products")
 @RestController
 public class RESTProductServiceResource {
   /**

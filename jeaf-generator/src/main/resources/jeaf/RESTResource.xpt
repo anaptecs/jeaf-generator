@@ -7,6 +7,7 @@
 
 «EXTENSION functions::RESTResource»
 
+
 «IMPORT uml»
 «IMPORT JMM»
 
@@ -17,21 +18,9 @@ package «packageName()».resource;
 
 «this.getJavadoc()»
 «IF isRESTLibrarySpringWebMVC()»
-	«IF this.getRESTPath().length > 0 || consumes.size > 0 || produces.size > 0»
-	@org.springframework.web.bind.annotation.RequestMapping(
-	«IF this.getRESTPath().length > 0»path = "«this.getRESTPath()»" 
-	      «IF consumes.size > 0 || produces.size > 0 », 
-	      «ENDIF»
-	«ENDIF»
-	«IF consumes.size > 0»
-	 	consumes = {«FOREACH consumes AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»}
-		«IF produces.size > 0»,«ENDIF»
-	«ENDIF»
-	«IF produces.size > 0»
-	 	produces = {«FOREACH produces AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»}
-	«ENDIF»
-	)
-	«ENDIF»
+	«IF this.getRESTPath().length > 0»
+	@org.springframework.web.bind.annotation.RequestMapping(path = "«this.getRESTPath()»")
+	«ENDIF» 
 	@org.springframework.web.bind.annotation.RestController
 «ELSE»
 	@javax.ws.rs.Path("«IF this.getRESTPath().length > 0»«this.getRESTPath()»«ELSE»/«ENDIF»")
