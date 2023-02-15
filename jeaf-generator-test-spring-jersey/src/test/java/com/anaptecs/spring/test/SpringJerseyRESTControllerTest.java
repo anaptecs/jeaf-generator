@@ -643,4 +643,18 @@ public class SpringJerseyRESTControllerTest {
     assertEquals(204, lResponse.getCode());
   }
 
+  @Test
+  void testBookingIDAsPathParam( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.patch(template.getRootUri()
+        + "/rest-products/booking-id-as-path-param/DTQ3MTEtMDgxtUVYVC0xMjMtOTi3AVJFRi01NTU5Obk=");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals(204, lResponse.getCode());
+
+    // Test request with invalid path param
+    lRequest = ClassicRequestBuilder.patch(template.getRootUri()
+        + "/rest-products/booking-id-as-path-param/XXXYYYZZZ");
+    lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals(500, lResponse.getCode());
+  }
 }

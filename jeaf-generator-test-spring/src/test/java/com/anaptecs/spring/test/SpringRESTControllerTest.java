@@ -26,17 +26,24 @@ import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.apache.hc.core5.http.protocol.BasicHttpContext;
 import org.apache.hc.core5.http.protocol.HttpContext;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 
 import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.spring.base.BookingCode;
+import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.InventoryType;
 import com.anaptecs.spring.impl.SpringTestApplication;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest(classes = SpringTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SpringRESTControllerTest {
+  @Autowired
+  private ObjectMapper objectMapper;
+
   @Inject
   private TestRestTemplate template;
 
@@ -400,5 +407,25 @@ public class SpringRESTControllerTest {
     lRequest.addHeader("SQL-Date", "2022-03-17");
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
     assertEquals(204, lResponse.getCode());
+  }
+
+  @Test
+  void testBookingIDAsPathParam( ) throws IOException {
+    BookingID lBookingID = BookingID.builder().setBookingCode(BookingCode.builder().setCode("4711-0815").build())
+        .setExternalRefID("EXT-123-987").setInventory(InventoryType.SBB).setReferenceID("REF-555999").build();
+    String lPublicBookingID = objectMapper.writeValueAsString(lBookingID);
+    assertEquals("\"DTQ3MTEtMDgxtUVYVC0xMjMtOTi3AVJFRi01NTU5Obk=\"", lPublicBookingID);
+
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.patch(template.getRootUri() + PREFIX
+        + "/rest-products/booking-id-as-path-param/DTQ3MTEtMDgxtUVYVC0xMjMtOTi3AVJFRi01NTU5Obk=");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals(204, lResponse.getCode());
+
+    // Test request with invalid path param
+    lRequest = ClassicRequestBuilder.patch(template.getRootUri() + PREFIX
+        + "/rest-products/booking-id-as-path-param/XXXYYYZZZ");
+    lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals(500, lResponse.getCode());
   }
 }

@@ -350,6 +350,11 @@ public class RESTProductServiceImpl implements RESTProductService {
 
   @Override
   public void testBookingIDAsPathParam( BookingID pBookingID ) {
+    assertEquals("4711-0815", pBookingID.getBookingCode().getCode());
+    assertEquals("EXT-123-987", pBookingID.getExternalRefID());
+    assertEquals("REF-555999", pBookingID.getReferenceID());
+    assertEquals(InventoryType.SBB, pBookingID.getInventory());
+    assertEquals("DTQ3MTEtMDgxtUVYVC0xMjMtOTi3AVJFRi01NTU5Obk=", pBookingID.getPublicBookingID());
   }
 
 }

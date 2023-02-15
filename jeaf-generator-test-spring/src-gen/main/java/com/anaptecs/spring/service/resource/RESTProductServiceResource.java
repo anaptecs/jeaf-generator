@@ -17,7 +17,6 @@ import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashSet;
@@ -39,20 +38,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
 import com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.ComplexBookingID;
-import com.anaptecs.spring.base.ComplexBookingType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.IntegerCodeType;
-import com.anaptecs.spring.base.InventoryType;
 import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
@@ -67,6 +63,8 @@ import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author JEAF Generator
@@ -79,32 +77,10 @@ import com.anaptecs.spring.service.RESTProductService;
 @RestController
 public class RESTProductServiceResource {
   /**
-   * List contains all classes that are involved in the serialization process of class ComplexBookingID. This
-   * information is required by some serialization mechanisms for efficiency and security reasons.
-   */
-  private static final List<Class<?>> COMPLEXBOOKINGID_SERIALIZED_CLASSES;
-  static {
-    List<Class<?>> lClasses =
-        Arrays.asList(ComplexBookingID.class, ArrayList.class, BookingID.class, InventoryType.class, BookingCode.class,
-            ComplexBookingType.class, ComplexBookingType.ComplexBookingTypeType.class, String[].class);
-    COMPLEXBOOKINGID_SERIALIZED_CLASSES = Collections.unmodifiableList(lClasses);
-  }
-
-  /**
-   * List contains all classes that are involved in the serialization process of class BookingID. This information is
-   * required by some serialization mechanisms for efficiency and security reasons.
-   */
-  private static final List<Class<?>> BOOKINGID_SERIALIZED_CLASSES;
-  static {
-    List<Class<?>> lClasses = Arrays.asList(BookingID.class, InventoryType.class, BookingCode.class);
-    BOOKINGID_SERIALIZED_CLASSES = Collections.unmodifiableList(lClasses);
-  }
-
-  /**
    * REST interface makes usage of so called composite data types. As Spring itself is not able to do conversions from a
    * String representation into a real object this is done in the generated REST Controller.
    */
-  private final CompositeTypeConverter compositeTypeConverter;
+  private final ObjectMapper objectMapper;
 
   /**
    * Filter is used to provide only those headers that are configured to be processed by this REST resource.
@@ -123,10 +99,10 @@ public class RESTProductServiceResource {
    * @param pCompositeTypeConverter Composite type converter is used convert types from their string representation to a
    * real object that can be processed internally.
    */
-  public RESTProductServiceResource( RESTProductService pRESTProductService,
-      CompositeTypeConverter pCompositeTypeConverter, CustomHeaderFilter pCustomHeaderFilter ) {
+  public RESTProductServiceResource( RESTProductService pRESTProductService, ObjectMapper pObjectMapper,
+      CustomHeaderFilter pCustomHeaderFilter ) {
     rESTProductService = pRESTProductService;
-    compositeTypeConverter = pCompositeTypeConverter;
+    objectMapper = pObjectMapper;
     customHeaderFilter = pCustomHeaderFilter;
   }
 
@@ -743,8 +719,8 @@ public class RESTProductServiceResource {
   public boolean processComplexBookingID(
       @PathVariable(name = "bookingID", required = true) String pComplextBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ComplexBookingID pComplextBookingID = compositeTypeConverter.deserializeObject(pComplextBookingIDAsBasicType,
-        ComplexBookingID.class, COMPLEXBOOKINGID_SERIALIZED_CLASSES);
+    ComplexBookingID pComplextBookingID =
+        this.deserializeCompositeDataType(pComplextBookingIDAsBasicType, ComplexBookingID.class);
     // Delegate request to service.
     return rESTProductService.processComplexBookingID(pComplextBookingID);
   }
@@ -759,8 +735,7 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "BookingCode", required = true) String pBookingCodeAsBasicType,
       @RequestHeader(name = "DoubleCode", required = true) Double pDoubleCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    BookingID pBookingID =
-        compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class, BOOKINGID_SERIALIZED_CLASSES);
+    BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
     BookingCode pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
     DoubleCode pDoubleCode = DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build();
     // Delegate request to service.
@@ -781,8 +756,7 @@ public class RESTProductServiceResource {
     AdvancedHeader.Builder lContextBuilder = AdvancedHeader.builder();
     // Handle bean parameter pContext.bookingID
     if (pBookingIDAsBasicType != null) {
-      lContextBuilder.setBookingID(compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class,
-          BOOKINGID_SERIALIZED_CLASSES));
+      lContextBuilder.setBookingID(this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class));
     }
     // Handle bean parameter pContext.bookingCode
     lContextBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
@@ -920,7 +894,7 @@ public class RESTProductServiceResource {
     if (pBookingIDsAsBasicType != null) {
       pBookingIDs = new ArrayList<BookingID>();
       for (String lNext : pBookingIDsAsBasicType) {
-        pBookingIDs.add(compositeTypeConverter.deserializeObject(lNext, BookingID.class, BOOKINGID_SERIALIZED_CLASSES));
+        pBookingIDs.add(this.deserializeCompositeDataType(lNext, BookingID.class));
       }
     }
     else {
@@ -1002,7 +976,7 @@ public class RESTProductServiceResource {
       // Handle bean parameter pQueryBean.bookingIDs
       Set<BookingID> lBookingIDs = new HashSet<BookingID>();
       for (String lNext : pBookingIDsAsBasicType) {
-        lBookingIDs.add(compositeTypeConverter.deserializeObject(lNext, BookingID.class, BOOKINGID_SERIALIZED_CLASSES));
+        lBookingIDs.add(this.deserializeCompositeDataType(lNext, BookingID.class));
       }
       lQueryBeanBuilder.setBookingIDs(lBookingIDs);
     }
@@ -1011,8 +985,7 @@ public class RESTProductServiceResource {
       // Handle bean parameter pQueryBean.bookingIDsArray
       BookingID[] lBookingIDsArray = new BookingID[pBookingIDsArrayAsBasicType.length];
       for (int i = 0; i < pBookingIDsArrayAsBasicType.length; i++) {
-        lBookingIDsArray[i] = compositeTypeConverter.deserializeObject(pBookingIDsArrayAsBasicType[i], BookingID.class,
-            BOOKINGID_SERIALIZED_CLASSES);
+        lBookingIDsArray[i] = this.deserializeCompositeDataType(pBookingIDsArrayAsBasicType[i], BookingID.class);
       }
       lQueryBeanBuilder.setBookingIDsArray(lBookingIDsArray);
     }
@@ -1229,9 +1202,37 @@ public class RESTProductServiceResource {
   public void testBookingIDAsPathParam(
       @PathVariable(name = "bookingID", required = true) String pBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    BookingID pBookingID =
-        compositeTypeConverter.deserializeObject(pBookingIDAsBasicType, BookingID.class, BOOKINGID_SERIALIZED_CLASSES);
+    BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
     // Delegate request to service.
     rESTProductService.testBookingIDAsPathParam(pBookingID);
+  }
+
+  /**
+   * Method is used to deserialize composite data types that are passed as some kind of parameter (not body) to this
+   * class. They need to be deserialized in the generated code as this is not supported by the used REST framework.
+   * 
+   * @param pCompositeDataTypeAsString String representation of the composite data type. The parameter may be null.
+   * @param pType Type of which the returned objects is supposed to be. The parameter must not be null.
+   * @return T Instance of the expected type or null if <code>pCompositeDataTypeAsString</code> is null.
+   */
+  private <T> T deserializeCompositeDataType( String pCompositeDataTypeAsString, Class<T> pType ) {
+    try {
+      T lObject;
+      if (pCompositeDataTypeAsString != null) {
+        StringBuilder lBuilder = new StringBuilder(pCompositeDataTypeAsString.length() + 4);
+        lBuilder.append("\"");
+        lBuilder.append(pCompositeDataTypeAsString);
+        lBuilder.append("\"");
+        lObject = objectMapper.readValue(lBuilder.toString(), pType);
+      }
+      else {
+        lObject = null;
+      }
+      return lObject;
+    }
+    catch (JsonProcessingException e) {
+      throw new IllegalArgumentException("Unable to deserialize composite data type " + pType.getName()
+          + " from String '" + pCompositeDataTypeAsString + "'. Details: " + e.getMessage(), e);
+    }
   }
 }
