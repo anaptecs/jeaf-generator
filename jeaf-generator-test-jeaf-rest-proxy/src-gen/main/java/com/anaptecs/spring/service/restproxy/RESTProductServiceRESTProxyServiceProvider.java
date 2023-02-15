@@ -316,4 +316,16 @@ public interface RESTProductServiceRESTProxyServiceProvider extends ServiceProvi
    */
   String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles, Set<StringCode> pCodes,
       OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes );
+
+  /**
+   * 
+   * @param pBookingID
+   */
+  void testBookingIDAsPathParam( BookingID pBookingID );
+
+  /**
+   * 
+   * @param pBookingID
+   */
+  void testBookingIDAsHeaderParam( BookingID pBookingID );
 }

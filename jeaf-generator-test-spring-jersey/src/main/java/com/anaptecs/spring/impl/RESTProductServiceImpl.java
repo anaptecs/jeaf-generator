@@ -347,4 +347,22 @@ public class RESTProductServiceImpl implements RESTProductService {
     return pNames.toString() + "_" + Arrays.toString(pInts) + "_"
         + pDoubles.toString() + "_" + lCodes + "_" + pTimestamps.toString() + "_" + pTimes.toString();
   }
+
+  @Override
+  public void testBookingIDAsPathParam( BookingID pBookingID ) {
+    assertEquals("4711-0815", pBookingID.getBookingCode().getCode());
+    assertEquals("EXT-123-987", pBookingID.getExternalRefID());
+    assertEquals("REF-555999", pBookingID.getReferenceID());
+    assertEquals(InventoryType.SBB, pBookingID.getInventory());
+    assertEquals("DTQ3MTEtMDgxtUVYVC0xMjMtOTi3AVJFRi01NTU5Obk=", pBookingID.getPublicBookingID());
+  }
+
+  @Override
+  public void testBookingIDAsHeaderParam( BookingID pBookingID ) {
+    assertEquals("4711-0815", pBookingID.getBookingCode().getCode());
+    assertEquals("EXT-123-987", pBookingID.getExternalRefID());
+    assertEquals("REF-555999", pBookingID.getReferenceID());
+    assertEquals(InventoryType.SBB, pBookingID.getInventory());
+    assertEquals("DTQ3MTEtMDgxtUVYVC0xMjMtOTi3AVJFRi01NTU5Obk=", pBookingID.getPublicBookingID());
+  }
 }

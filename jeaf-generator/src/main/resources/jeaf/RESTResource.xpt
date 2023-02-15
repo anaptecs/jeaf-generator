@@ -41,31 +41,20 @@ package «packageName()».resource;
 «EXPAND java::Helper::GenerateDeprecationAnnotation -»
 public class «name»Resource {
 	
-	«IF this.hasCompositeDataTypes()»
-		«FOREACH this.getCompositeDataTypes() AS compositeDataType»
-		/**
-		 * List contains all classes that are involved in the serialization process of class «compositeDataType.name». This information is required by some serialization mechanisms for efficiency and security reasons.
-		 */
-		private static final List<Class<?>> «compositeDataType.name.toUpperCase()»_SERIALIZED_CLASSES;
-		static {
-		  java.util.List<Class<?>> lClasses = java.util.Arrays.asList(«FOREACH compositeDataType.collectSerializedClassNames() AS className SEPARATOR ", "»«className».class«ENDFOREACH»);
-		  «compositeDataType.name.toUpperCase()»_SERIALIZED_CLASSES = java.util.Collections.unmodifiableList(lClasses);
-		}
-		«ENDFOREACH»
-		
+	«IF this.hasCompositeDataTypes() && generatePublicObjectView() == false»
 		«IF isTargetRuntimeSpring()»
 			«IF isRESTLibrarySpringWebMVC()»
 				/**
 				 * REST interface makes usage of so called composite data types. As Spring itself is not able to do conversions from a String representation into a real object this is done in the generated REST Controller.
 				 */
-				private final com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter compositeTypeConverter;
+				private final com.fasterxml.jackson.databind.ObjectMapper objectMapper;
 			«ENDIF»
 			«IF isRESTLibraryJAXRS()»
 				/**
 				 * REST interface makes usage of so called composite data types. As Spring itself is not able to do conversions from a String representation into a real object this is done in the generated REST Controller.
 				 */
 				@org.springframework.beans.factory.annotation.Autowired
-				private com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter compositeTypeConverter;
+				private com.fasterxml.jackson.databind.ObjectMapper objectMapper;
 			«ENDIF»
 		«ENDIF»		
 	«ENDIF»
@@ -103,10 +92,10 @@ public class «name»Resource {
 			 * @param pCompositeTypeConverter Composite type converter is used convert types from their string representation to a real object that can be processed internally.
 			 «ENDIF -»
 			 */
-			public «name»Resource( «this.fqn()» p«name» «IF this.hasCompositeDataTypes()», com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pCompositeTypeConverter«ENDIF»«IF this.filterCustomHeaders()», com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter pCustomHeaderFilter«ENDIF») {
+			public «name»Resource( «this.fqn()» p«name» «IF this.hasCompositeDataTypes()», com.fasterxml.jackson.databind.ObjectMapper pObjectMapper«ENDIF»«IF this.filterCustomHeaders()», com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter pCustomHeaderFilter«ENDIF») {
 			  «name.toFirstLower()» = p«name»;
 			  «IF this.hasCompositeDataTypes()»
-			  compositeTypeConverter = pCompositeTypeConverter;
+			  objectMapper = pObjectMapper;
 			  «ENDIF»
 			  «IF this.filterCustomHeaders()»
               customHeaderFilter = pCustomHeaderFilter;
@@ -121,7 +110,62 @@ public class «name»Resource {
 			private «this.fqn()» «name.toFirstLower()»;
 		«ENDIF»
 	«ENDIF»
+	
 	«EXPAND RESTOperationImpl FOREACH ownedOperation.typeSelect(RESTOperation)»
+	
+	«IF this.hasCompositeDataTypes() && generatePublicObjectView() == false»
+		«IF isTargetRuntimeSpring()»
+			/**
+			 * Method is used to deserialize composite data types that are passed as some kind of parameter (not body) to this class. They need to be deserialized in the generated code as this is not supported by the used REST framework.
+			 * 
+			 * @param pCompositeDataTypeAsString String representation of the composite data type. The parameter may be null.
+			 * @param pType Type of which the returned objects is supposed to be. The parameter must not be null.
+			 * @return T Instance of the expected type or null if <code>pCompositeDataTypeAsString</code> is null.
+			 */
+			private <T> T deserializeCompositeDataType( String pCompositeDataTypeAsString, java.lang.Class<T> pType ) {
+			  try {
+			    T lObject;
+			    if (pCompositeDataTypeAsString != null) {
+			      java.lang.StringBuilder lBuilder = new StringBuilder(pCompositeDataTypeAsString.length() + 4);
+			      lBuilder.append("\"");
+			      lBuilder.append(pCompositeDataTypeAsString);
+			      lBuilder.append("\"");
+			      lObject = objectMapper.readValue(lBuilder.toString(), pType);
+			    }
+			    else {
+			      lObject = null;
+			    }
+			    return lObject;
+			  }
+			  catch (com.fasterxml.jackson.core.JsonProcessingException e) {
+			    throw new IllegalArgumentException("Unable to deserialize composite data type " + pType.getName() + " from String '" + pCompositeDataTypeAsString + "'. Details: " + e.getMessage(), e);
+			  }
+			}
+		«ENDIF»
+        «IF isTargetRuntimeJEAF()»
+            /**
+             * Method is used to deserialize composite data types that are passed as some kind of parameter (not body) to this class. They need to be deserialized in the generated code as this is not supported by the used REST framework.
+             * 
+             * @param pCompositeDataTypeAsString String representation of the composite data type. The parameter may be null.
+             * @param pType Type of which the returned objects is supposed to be. The parameter must not be null.
+             * @return T Instance of the expected type or null if <code>pCompositeDataTypeAsString</code> is null.
+             */
+            private <T> T deserializeCompositeDataType( String pCompositeDataTypeAsString, java.lang.Class<T> pType ) {
+                T lObject;
+                if (pCompositeDataTypeAsString != null) {
+                  java.lang.StringBuilder lBuilder = new StringBuilder(pCompositeDataTypeAsString.length() + 4);
+                  lBuilder.append("\"");
+                  lBuilder.append(pCompositeDataTypeAsString);
+                  lBuilder.append("\"");
+                  lObject = com.anaptecs.jeaf.json.api.JSONTools.getJSONTools().read(lBuilder.toString(), pType);
+                }
+                else {
+                  lObject = null;
+                }
+                return lObject;
+            }
+        «ENDIF»
+	«ENDIF»
 	
 	«IF isTargetRuntimeJEAF()»
 		/**
@@ -132,16 +176,6 @@ public class «name»Resource {
 		private «this.fqn()» get«name»() {
 		  return com.anaptecs.jeaf.core.api.JEAF.getService(«this.fqn()».class);
 		}
-
-		«IF this.hasCompositeDataTypes()»
-		/**
-		 * Method returns the composite type converter that should be used in this environment. This REST interface makes usage of so called composite data types. As Spring itself is not able to do conversions from a String representation into a real object this is done in the generated REST Controller.
-		 * @return {@link CompositeTypeConverter} CompositeTypeConverter implementation that is configured to be used here. The method never returns null.
-		 */
-		private com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter getCompositeTypeConverter( ) {
-		  return JEAF.getServiceProvider(com.anaptecs.jeaf.rest.composite.api.jeaf.CompositeTypeConverterServiceProvider.class);
-		}
-		«ENDIF»
 	«ENDIF»
 }
 «ENDFILE»
@@ -192,23 +226,13 @@ public class «name»Resource {
 					«ENDIF»
 	    		«ELSE»
 	    			«IF basicParam.isMultivalued() == false»
-			    		«IF isTargetRuntimeJEAF()»
-			    			«basicParam.type.fqn()» «basicParam.name» = this.getCompositeTypeConverter().deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
-			    		«ENDIF»
-			    		«IF isTargetRuntimeSpring()»
-			    			«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
-			    		«ENDIF»
+		    			«basicParam.type.fqn()» «basicParam.name» = this.deserializeCompositeDataType(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class);
 			    	«ELSE»
 		    			«basicParam.getCollectionType()»<«basicParam.type.fqn()»> «basicParam.name»;
 					    if («basicParam.name»AsBasicType != null) {
 					      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>();
 					      for (String lNext : «basicParam.name»AsBasicType) {
-				    		«IF isTargetRuntimeJEAF()»
-				    			«basicParam.name».add(this.getCompositeTypeConverter().deserializeObject(lNext, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES));
-				    		«ENDIF»
-				    		«IF isTargetRuntimeSpring()»
-				    			«basicParam.name».add(compositeTypeConverter.deserializeObject(lNext, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES));
-				    		«ENDIF»
+			    			«basicParam.name».add(this.deserializeCompositeDataType(lNext, «basicParam.type.fqn()».class));
 					      }
 					    }
 					    else {
@@ -299,18 +323,18 @@ public class «name»Resource {
 		  					«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.type.fqn()».builder().set«attribute.type.attribute().first().name.toFirstUpper()»(«attribute.asParameter()»AsBasicType).build());
 		  				«ELSE»
 		  					«IF attribute.isMultivalued() == false»
-		  						«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(compositeTypeConverter.deserializeObject(«attribute.asParameter()»AsBasicType, «attribute.type.fqn()».class, «attribute.type.name.toUpperCase()»_SERIALIZED_CLASSES));
+		  						«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(this.deserializeCompositeDataType(«attribute.asParameter()»AsBasicType, «attribute.type.fqn()».class));
 		  					«ELSE»
 		  						// Handle bean parameter «beanParam.name».«attribute.name»
 		  						«IF attribute.isCollectionType()»
 			  						«attribute.getCollectionType()»<«attribute.type.fqn()»> «attribute.asLocalVar()» = new «attribute.getCollectionImplType()»<«attribute.type.fqn()»>();
 			  						for(String lNext : «attribute.asParameter()»AsBasicType) {
-			  							«attribute.asLocalVar()».add(compositeTypeConverter.deserializeObject(lNext, «attribute.type.fqn()».class, «attribute.type.name.toUpperCase()»_SERIALIZED_CLASSES));
+			  							«attribute.asLocalVar()».add(this.deserializeCompositeDataType(lNext, «attribute.type.fqn()».class));
 			  						}
 			  					«ELSE»
 			  						«attribute.type.fqn()»[] «attribute.asLocalVar()»  = new «attribute.type.fqn()»[«attribute.asParameter()»AsBasicType.length];
 			  						for(int i = 0; i < «attribute.asParameter()»AsBasicType.length; i++) {
-			  							«attribute.asLocalVar()»[i] = compositeTypeConverter.deserializeObject(«attribute.asParameter()»AsBasicType[i], «attribute.type.fqn()».class, «attribute.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+			  							«attribute.asLocalVar()»[i] = this.deserializeCompositeDataType(«attribute.asParameter()»AsBasicType[i], «attribute.type.fqn()».class);
 			  						}
 			  					«ENDIF»
 			  					«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.asLocalVar()»);
@@ -354,7 +378,7 @@ public class «name»Resource {
 				  								«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(lDate);
 						  					«ELSE»«IF attribute.type.isCalendar()»
 										        java.util.Date lDate = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(«attribute.asParameter()»AsBasicType);
-										        java.util.Calendar lCalendar = Calendar.getInstance();
+										        java.util.Calendar lCalendar = java.util.Calendar.getInstance();
 										        lCalendar.setTime(lDate);
 						  						«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(lCalendar);
 						  					«ELSE»«ENDIF»«ENDIF»
@@ -379,7 +403,7 @@ public class «name»Resource {
 									  	«IF attribute.type.isCalendar()»
 										  	java.text.SimpleDateFormat lDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 										  	java.util.Date lDate = lDateFormat.parse(«attribute.asParameter()»AsBasicType[i]);
-									        java.util.Calendar lCalendar = Calendar.getInstance();
+									        java.util.Calendar lCalendar = java.util.Calendar.getInstance();
 									        lCalendar.setTime(lDate);
 					  						«attribute.asLocalVar()».add(lCalendar);
 									  	«ELSE»«IF attribute.type.isUtilDate()»
@@ -400,7 +424,7 @@ public class «name»Resource {
 									  	«IF attribute.type.isCalendar()»
 										  	java.text.SimpleDateFormat lDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 										  	java.util.Date lDate = lDateFormat.parse(«attribute.asParameter()»AsBasicType[i]);
-									        java.util.Calendar lCalendar = Calendar.getInstance();
+									        java.util.Calendar lCalendar = java.util.Calendar.getInstance();
 									        lCalendar.setTime(lDate);
 					  						«attribute.asLocalVar()»[i] = lCalendar;
 									  	«ELSE»«IF attribute.type.isUtilDate()»
@@ -450,13 +474,13 @@ public class «name»Resource {
 					«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»(«basicParam.name»AsBasicType).build();
 	    		«ELSE»
 	    			«IF basicParam.isMultivalued() == false»
-	    				«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
+	    				«basicParam.type.fqn()» «basicParam.name» = this.deserializeCompositeDataType(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class);
 	    			«ELSE»
 					    «basicParam.getCollectionType()»<«basicParam.type.fqn()»> «basicParam.name»;
 					    if («basicParam.name»AsBasicType != null) {
 					      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>();
 					      for (String lNext : «basicParam.name»AsBasicType) {
-					        «basicParam.name».add(compositeTypeConverter.deserializeObject(lNext, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES));
+					        «basicParam.name».add(this.deserializeCompositeDataType(lNext, «basicParam.type.fqn()».class));
 					      }
 					    }
 					    else {
@@ -500,7 +524,7 @@ public class «name»Resource {
 								«dateParam.name» = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(«dateParam.name»AsBasicType);
 							«ELSE»«IF dateParam.type.isCalendar()»
 								java.util.Date lDate = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(«dateParam.name»AsBasicType);
-								«dateParam.name» = Calendar.getInstance();
+								«dateParam.name» = java.util.Calendar.getInstance();
 								«dateParam.name».setTime(lDate);
 							«ELSE»«ENDIF»«ENDIF»
 						}
@@ -527,7 +551,7 @@ public class «name»Resource {
 					  	«IF dateParam.type.isCalendar()»
 						  	java.text.SimpleDateFormat lDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 						  	java.util.Date lDate = lDateFormat.parse(«dateParam.name»AsBasicType[i]);
-					        java.util.Calendar lCalendar = Calendar.getInstance();
+					        java.util.Calendar lCalendar = java.util.Calendar.getInstance();
 					        lCalendar.setTime(lDate);
 	  						«dateParam.name».add(lCalendar);
 					  	«ELSE»«IF dateParam.type.isUtilDate()»
@@ -596,12 +620,7 @@ public class «name»Resource {
 					    		«IF generatePublicObjectView()»
 									«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»(«basicParam.name»AsBasicType).build();
 					    		«ELSE»
-						    		«IF isTargetRuntimeJEAF()»
-						    			«basicParam.type.fqn()» «basicParam.name» = this.getCompositeTypeConverter().deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
-						    		«ENDIF»
-						    		«IF isTargetRuntimeSpring()»
-						    			«basicParam.type.fqn()» «basicParam.name» = compositeTypeConverter.deserializeObject(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class, «basicParam.type.name.toUpperCase()»_SERIALIZED_CLASSES);
-						    		«ENDIF»
+					    			«basicParam.type.fqn()» «basicParam.name» = this.deserializeCompositeDataType(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class);
 					    		«ENDIF»
 							«ELSE»
 								«basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(«basicParam.name»AsBasicType).build();

@@ -15,7 +15,6 @@ import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashSet;
@@ -33,6 +32,7 @@ import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.HEAD;
 import javax.ws.rs.HeaderParam;
+import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -45,8 +45,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.anaptecs.jeaf.core.api.JEAF;
-import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
-import com.anaptecs.jeaf.rest.composite.api.jeaf.CompositeTypeConverterServiceProvider;
 import com.anaptecs.jeaf.workload.api.Workload;
 import com.anaptecs.jeaf.workload.api.WorkloadManager;
 import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;
@@ -56,13 +54,11 @@ import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.ComplexBookingID;
-import com.anaptecs.spring.base.ComplexBookingType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.IntegerCodeType;
-import com.anaptecs.spring.base.InventoryType;
 import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
 import com.anaptecs.spring.base.Sortiment;
@@ -86,28 +82,6 @@ import com.anaptecs.spring.service.RESTProductService;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class RESTProductServiceResource {
-  /**
-   * List contains all classes that are involved in the serialization process of class ComplexBookingID. This
-   * information is required by some serialization mechanisms for efficiency and security reasons.
-   */
-  private static final List<Class<?>> COMPLEXBOOKINGID_SERIALIZED_CLASSES;
-  static {
-    List<Class<?>> lClasses =
-        Arrays.asList(ComplexBookingID.class, ArrayList.class, BookingID.class, InventoryType.class, BookingCode.class,
-            ComplexBookingType.class, ComplexBookingType.ComplexBookingTypeType.class, String[].class);
-    COMPLEXBOOKINGID_SERIALIZED_CLASSES = Collections.unmodifiableList(lClasses);
-  }
-
-  /**
-   * List contains all classes that are involved in the serialization process of class BookingID. This information is
-   * required by some serialization mechanisms for efficiency and security reasons.
-   */
-  private static final List<Class<?>> BOOKINGID_SERIALIZED_CLASSES;
-  static {
-    List<Class<?>> lClasses = Arrays.asList(BookingID.class, InventoryType.class, BookingCode.class);
-    BOOKINGID_SERIALIZED_CLASSES = Collections.unmodifiableList(lClasses);
-  }
-
   /**
    * {@link RESTProductService#getProducts()}
    */
@@ -631,23 +605,39 @@ public class RESTProductServiceResource {
   }
 
   /**
+   * {@link RESTProductService#testBookingIDAsPathParam()}
+   */
+  @Path("booking-id-as-path-param/{bookingID}")
+  @PATCH
+  public Response testBookingIDAsPathParam( @PathParam("bookingID") String pBookingIDAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    BookingID pBookingID = BookingID.builder().setBookingID(pBookingIDAsBasicType).build();
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    lService.testBookingIDAsPathParam(pBookingID);
+    return Response.status(Response.Status.NO_CONTENT).build();
+  }
+
+  /**
+   * {@link RESTProductService#testBookingIDAsHeaderParam()}
+   */
+  @Path("booking-id-as-header-param")
+  @PATCH
+  public Response testBookingIDAsHeaderParam( @HeaderParam("bookingID") String pBookingIDAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    BookingID pBookingID = BookingID.builder().setBookingID(pBookingIDAsBasicType).build();
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    lService.testBookingIDAsHeaderParam(pBookingID);
+    return Response.status(Response.Status.NO_CONTENT).build();
+  }
+
+  /**
    * Method returns reference to service to which all REST requests will be delegated.
    *
    * @return RESTProductService Service instance to which all requests will be delegated.
    */
   private RESTProductService getRESTProductService( ) {
     return JEAF.getService(RESTProductService.class);
-  }
-
-  /**
-   * Method returns the composite type converter that should be used in this environment. This REST interface makes
-   * usage of so called composite data types. As Spring itself is not able to do conversions from a String
-   * representation into a real object this is done in the generated REST Controller.
-   * 
-   * @return {@link CompositeTypeConverter} CompositeTypeConverter implementation that is configured to be used here.
-   * The method never returns null.
-   */
-  private CompositeTypeConverter getCompositeTypeConverter( ) {
-    return JEAF.getServiceProvider(CompositeTypeConverterServiceProvider.class);
   }
 }
