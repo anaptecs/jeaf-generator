@@ -169,7 +169,7 @@ boolean hasInputParameters(uml::Operation operation):
    getInputParameters(operation).size > 0;
    
 // Returns the name of the parameter's type, adds a "[]" at the end if the parameter is multivalued
-cached String getTypeName(uml::Parameter parameter) :
+cached String getTypeName(uml::TypedElement parameter) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getTypeName(org.eclipse.uml2.uml.TypedElement);
     
 //  Returns the name of the return parameter, adds a "[]" at the end if the parameter is multivalued    

@@ -55,7 +55,7 @@ import com.anaptecs.spring.service.ProductService;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@RequestMapping(path = "/nova/prefix/products", consumes = { "application/json" }, produces = { "application/json" })
+@RequestMapping(path = "/nova/prefix/products")
 @RestController
 public class ProductServiceResource {
   /**

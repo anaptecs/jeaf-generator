@@ -17,7 +17,7 @@ import com.anaptecs.spring.service.PathlessService;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@RequestMapping(path = "/nova/prefix", consumes = { "application/json" }, produces = { "application/json" })
+@RequestMapping(path = "/nova/prefix")
 @RestController
 public class PathlessServiceResource {
   /**
