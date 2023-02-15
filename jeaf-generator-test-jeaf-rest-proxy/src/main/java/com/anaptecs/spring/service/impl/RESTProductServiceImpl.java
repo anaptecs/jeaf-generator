@@ -313,4 +313,8 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
   public void testBookingIDAsPathParam( BookingID pBookingID ) {
   }
 
+  @Override
+  public void testBookingIDAsHeaderParam( BookingID pBookingID ) {
+  }
+
 }

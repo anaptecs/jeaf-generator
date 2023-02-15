@@ -43,6 +43,9 @@ abstract class RESTProductServiceImplBase implements RESTProductService, Service
   public static final String PROCESSCOMPLEXBOOKINGID_AUTH_TYPE =
       "processComplexBookingID.com.anaptecs.spring.service.RESTProductService";
 
+  public static final String TESTBOOKINGIDASHEADERPARAM_AUTH_TYPE =
+      "testBookingIDAsHeaderParam.com.anaptecs.spring.service.RESTProductService";
+
   public static final String TESTBOOKINGIDASPATHPARAM_AUTH_TYPE =
       "testBookingIDAsPathParam.com.anaptecs.spring.service.RESTProductService";
 

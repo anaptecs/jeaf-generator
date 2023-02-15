@@ -619,6 +619,20 @@ public class RESTProductServiceResource {
   }
 
   /**
+   * {@link RESTProductService#testBookingIDAsHeaderParam()}
+   */
+  @Path("booking-id-as-header-param")
+  @PATCH
+  public Response testBookingIDAsHeaderParam( @HeaderParam("bookingID") String pBookingIDAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    BookingID pBookingID = BookingID.builder().setBookingID(pBookingIDAsBasicType).build();
+    // Delegate request to service.
+    RESTProductService lService = this.getRESTProductService();
+    lService.testBookingIDAsHeaderParam(pBookingID);
+    return Response.status(Response.Status.NO_CONTENT).build();
+  }
+
+  /**
    * Method returns reference to service to which all REST requests will be delegated.
    *
    * @return RESTProductService Service instance to which all requests will be delegated.

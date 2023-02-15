@@ -316,4 +316,10 @@ public interface RESTProductService extends Service {
    * @param pBookingID
    */
   void testBookingIDAsPathParam( BookingID pBookingID );
+
+  /**
+   * 
+   * @param pBookingID
+   */
+  void testBookingIDAsHeaderParam( BookingID pBookingID );
 }

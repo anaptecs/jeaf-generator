@@ -611,6 +611,19 @@ public class RESTProductServiceResource {
   }
 
   /**
+   * {@link RESTProductService#testBookingIDAsHeaderParam()}
+   */
+  @Path("booking-id-as-header-param")
+  @PATCH
+  public Response testBookingIDAsHeaderParam( @HeaderParam("bookingID") String pBookingIDAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
+    // Delegate request to service.
+    rESTProductService.testBookingIDAsHeaderParam(pBookingID);
+    return Response.status(Response.Status.NO_CONTENT).build();
+  }
+
+  /**
    * Method is used to deserialize composite data types that are passed as some kind of parameter (not body) to this
    * class. They need to be deserialized in the generated code as this is not supported by the used REST framework.
    * 

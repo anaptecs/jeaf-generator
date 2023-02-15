@@ -322,4 +322,10 @@ public interface RESTProductServiceRESTProxyServiceProvider extends ServiceProvi
    * @param pBookingID
    */
   void testBookingIDAsPathParam( BookingID pBookingID );
+
+  /**
+   * 
+   * @param pBookingID
+   */
+  void testBookingIDAsHeaderParam( BookingID pBookingID );
 }

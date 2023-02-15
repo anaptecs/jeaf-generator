@@ -1357,4 +1357,28 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
+
+  /**
+   * 
+   * @param pBookingID
+   */
+  @Override
+  public void testBookingIDAsHeaderParam( BookingID pBookingID ) {
+    // Create builder for PATCH request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.PATCH, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("booking-id-as-header-param");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Set HTTP header(s)
+    if (pBookingID != null) {
+      lRequestBuilder.setHeader("bookingID", pBookingID.getBookingID());
+    }
+    // Execute request.
+    RESTRequest lRequest = lRequestBuilder.build();
+    requestExecutor.executeNoResultRequest(lRequest, 204);
+  }
 }

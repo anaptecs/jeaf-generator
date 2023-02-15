@@ -428,4 +428,29 @@ public class SpringRESTControllerTest {
     lResponse = lHttpClient.execute(lRequest.build());
     assertEquals(500, lResponse.getCode());
   }
+
+  @Test
+  void testBookingIDAsHeaderParam( ) throws IOException {
+    CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.patch(template.getRootUri() + PREFIX
+        + "/rest-products/booking-id-as-header-param");
+    lRequest.setHeader("bookingID", "DTQ3MTEtMDgxtUVYVC0xMjMtOTi3AVJFRi01NTU5Obk=");
+    CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals(204, lResponse.getCode());
+
+    // Test request with invalid path param
+    lRequest = ClassicRequestBuilder.patch(template.getRootUri() + PREFIX
+        + "/rest-products/booking-id-as-header-param");
+    lRequest.setHeader("bookingID", "XXXYYYZZZ");
+    lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals(500, lResponse.getCode());
+
+    // Test request where bookingID is null (header not set at all).
+    lRequest = ClassicRequestBuilder.patch(template.getRootUri() + PREFIX
+        + "/rest-products/booking-id-as-header-param");
+
+    lResponse = lHttpClient.execute(lRequest.build());
+    assertEquals(204, lResponse.getCode());
+  }
+
 }
