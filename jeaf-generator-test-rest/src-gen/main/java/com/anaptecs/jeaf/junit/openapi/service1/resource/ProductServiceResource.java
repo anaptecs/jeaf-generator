@@ -23,6 +23,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.HEAD;
@@ -641,6 +642,18 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.noReturnType(pHeader, pContext);
+    return Response.status(Response.Status.NO_CONTENT).build();
+  }
+
+  /**
+   * {@link ProductService#deleteSomething()}
+   */
+  @Path("delete-something/{id}")
+  @DELETE
+  public Response deleteSomething( @PathParam("id") String pID ) {
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    lService.deleteSomething(pID);
     return Response.status(Response.Status.NO_CONTENT).build();
   }
 

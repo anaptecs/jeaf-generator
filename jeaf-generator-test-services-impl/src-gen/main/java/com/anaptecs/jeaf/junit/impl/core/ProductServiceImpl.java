@@ -490,4 +490,12 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   @Override
   public void noReturnType( String pHeader, MultiValuedDataType pContext ) {
   }
+
+  /**
+   * 
+   * @param pID
+   */
+  @Override
+  public void deleteSomething( String pID ) {
+  }
 }
