@@ -314,4 +314,11 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testGetChannels( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method deleteSomething(...)
+   * 
+   * @throws Exception if the test fails.
+   */
+  public abstract void testDeleteSomething( ) throws Exception;
 }

@@ -331,4 +331,10 @@ public interface ProductService extends Service {
    * @param pContext
    */
   void noReturnType( String pHeader, MultiValuedDataType pContext );
+
+  /**
+   * 
+   * @param pID
+   */
+  void deleteSomething( String pID );
 }

@@ -380,9 +380,9 @@ cached String getAttributeName(uml::Property property) :
 cached boolean isOpenAPIEnum(uml::Parameter paramater):
   paramater.type.isStereotypeApplied("OpenAPIEnumeration");  
 
-cached isResponseApplicable(JMM::OpenAPIResponse response, JMM::RESTOperation operation):
+cached boolean isResponseApplicable(JMM::OpenAPIResponse response, JMM::RESTOperation operation):
   if response.httpMethods.size > 0
-  then response.httpMethods.intersect(operation.httpMethods).size > 1
+  then response.httpMethods.intersect(operation.httpMethods).size > 0
   else true;
   
 cached hasOpenAPIComment(JMM::OpenAPIEnumeration enum):

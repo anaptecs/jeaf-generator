@@ -26,6 +26,6 @@
     «IF this.unexpectedErrorResponse == true-»
         'default':
           $ref: «this.getResponseType(spec)»
-	«ENDIF -»
+	«ENDIF-»
 	«ENDIF-»
 «ENDDEFINE»

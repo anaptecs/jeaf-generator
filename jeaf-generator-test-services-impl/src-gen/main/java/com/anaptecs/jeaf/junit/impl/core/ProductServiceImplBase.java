@@ -35,6 +35,9 @@ abstract class ProductServiceImplBase implements ProductService, ServiceImplemen
   public static final String CREATEPRODUCT_AUTH_TYPE =
       "createProduct.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 
+  public static final String DELETESOMETHING_AUTH_TYPE =
+      "deleteSomething.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
   public static final String DEPRECATEDBEANPARAM_AUTH_TYPE =
       "deprecatedBeanParam.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 

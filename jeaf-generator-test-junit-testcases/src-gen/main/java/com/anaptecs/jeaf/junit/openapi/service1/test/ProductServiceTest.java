@@ -59,6 +59,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testCheckIBAN"));
     lSuite.addTest(new ProductServiceTest("testTestLocalBeanParamType"));
     lSuite.addTest(new ProductServiceTest("testGetChannels"));
+    lSuite.addTest(new ProductServiceTest("testDeleteSomething"));
     // Return created test suite.
     return lSuite;
   }
@@ -484,5 +485,15 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testGetChannels( ) throws Exception {
     // TODO Implement test for service method getChannels(...)
+  }
+
+  /**
+   * Method test the implementation of service method deleteSomething
+   * 
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testDeleteSomething( ) throws Exception {
+    // TODO Implement test for service method deleteSomething(...)
   }
 }

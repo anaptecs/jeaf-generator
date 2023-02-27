@@ -513,6 +513,8 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+        '409':
+          $ref: '#/components/responses/ConflictResponse'
     
   /products/ChannelCodeObject:
     post:
@@ -1461,6 +1463,27 @@ paths:
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
+  /products/delete-something/{id}:
+    delete:
+      operationId: deleteSomething
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+        '409':
+          $ref: '#/components/responses/ConflictResponse'
+    
 
 security:
   - {}
@@ -1513,6 +1536,14 @@ components:
       required: true
 
   responses:
+    # com.anaptecs.jeaf.junit.openapi.service1.error.ConflictResponse
+    ConflictResponse:
+      description: TODO Please add comment to error response type
+      content:
+        application/problem+json:
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/Problem'
+
     # com.anaptecs.jeaf.junit.openapi.service1.CustomErrorResponse
     CustomErrorResponse:
       description: TODO Please add comment to error response type
