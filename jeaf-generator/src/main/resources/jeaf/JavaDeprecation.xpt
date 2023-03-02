@@ -26,11 +26,11 @@
 «DEFINE JavaDeprecationReport FOR Model»
 «LET this.getAllDeprecations() AS deprecations»
 «FILE getJavaDeprecationReportFileName() res_gen-»
-# «getJavaDeprecationReportName()» #
+# «getJavaDeprecationReportName()»
 
 <br>
 
-## Deprecated Services ##
+## Deprecated Services
 
 <br>
 
@@ -47,7 +47,7 @@
 
 «FOREACH deprecations.typeSelect(JEAFService).sortBy(e|e.fqn()) AS service-»
 «IF service.hasDeprecatedOperations()»
-### `«service.fqn()»` ###
+### `«service.fqn()»`
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
@@ -65,7 +65,7 @@
 «ENDIF»
 «ENDFOREACH»
 
-## Deprecated Classes ##
+## Deprecated Classes
 
 <br>
 
@@ -86,7 +86,7 @@
 <br>
 
 
-## Deprecated Enumerations ##
+## Deprecated Enumerations
 
 <br>
 
