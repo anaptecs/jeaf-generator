@@ -401,6 +401,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 			 * 
 			 * @param «asParameter()» «this.type.name» to which the association "«asInstanceVar()»" should be set.
 			 */
+			«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 			public «builderClassName» «asSetter()» («type.fqn()» «asParameter()») {
 				«asInstanceVar()» = «asParameter()»;
 				return this;

@@ -203,6 +203,7 @@ public class ParentClass implements ServiceObject {
      * 
      * @param pTheBankAccount BankAccount to which the association "theBankAccount" should be set.
      */
+    @Deprecated
     public Builder setTheBankAccount( BankAccount pTheBankAccount ) {
       theBankAccount = pTheBankAccount;
       return this;
