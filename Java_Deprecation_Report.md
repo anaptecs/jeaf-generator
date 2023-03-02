@@ -1,8 +1,8 @@
-# My Java Deprecation Report #
+# My Java Deprecation Report
 
 <br>
 
-## Deprecated Services ##
+## Deprecated Services
 
 <br>
 
@@ -19,7 +19,7 @@
 <br>
 
 
-### `com.anaptecs.jeaf.junit.core.BusinessObjectTestService` ###
+### `com.anaptecs.jeaf.junit.core.BusinessObjectTestService`
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
@@ -30,7 +30,7 @@
 
 
 
-### `com.anaptecs.jeaf.junit.core.JEAFTestService` ###
+### `com.anaptecs.jeaf.junit.core.JEAFTestService`
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
@@ -40,7 +40,7 @@
 
 
 
-### `com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations` ###
+### `com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations`
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
@@ -53,7 +53,7 @@
 
 
 
-### `com.anaptecs.jeaf.junit.openapi.service1.ProductService` ###
+### `com.anaptecs.jeaf.junit.openapi.service1.ProductService`
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
@@ -73,7 +73,7 @@
 
 
 
-### `com.anaptecs.jeaf.junit.rest.RESTTestService` ###
+### `com.anaptecs.jeaf.junit.rest.RESTTestService`
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
@@ -92,7 +92,7 @@
 
 
 
-## Deprecated Classes ##
+## Deprecated Classes
 
 <br>
 
@@ -148,7 +148,7 @@
 <br>
 
 
-## Deprecated Enumerations ##
+## Deprecated Enumerations
 
 <br>
 

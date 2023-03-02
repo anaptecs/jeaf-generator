@@ -1,8 +1,8 @@
-# REST Deprecation Report #
+# REST Deprecation Report
 
 <br>
 
-## Deprecated REST Resources ##
+## Deprecated REST Resources
 
 <br>
 
@@ -15,7 +15,7 @@
 
 <br>
 
-## REST Operations with Deprecations ##
+## REST Operations with Deprecations
 
 <br>
 
@@ -50,7 +50,7 @@
 
 <br>
 
-## Deprecated OpenAPI Types ##
+## Deprecated OpenAPI Types
 
 <br>
 
@@ -84,7 +84,7 @@
 <br>
 
 
-## Deprecated OpenAPI Enumerations ##
+## Deprecated OpenAPI Enumerations
 
 <br>
 
