@@ -308,6 +308,7 @@ public class ChildBB extends ChildB {
      * 
      * @param pDeprecatedParent ParentClass to which the association "deprecatedParent" should be set.
      */
+    @Deprecated
     public Builder setDeprecatedParent( ParentClass pDeprecatedParent ) {
       deprecatedParent = pDeprecatedParent;
       return this;
