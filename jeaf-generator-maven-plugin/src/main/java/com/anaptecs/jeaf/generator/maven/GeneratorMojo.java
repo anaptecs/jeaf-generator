@@ -1437,7 +1437,7 @@ public class GeneratorMojo extends AbstractMojo {
         | generateActivityImpls | generateServiceObjects | generatePOJOs | generateDomainObjects | generateObjectMappers
         | generatePersistentObjects | generateComponentImpls | generateComponentRuntimeClasses | generateGlobalParts
         | generateExceptionClasses | generateJUnitTests | generateRESTDeprecationReport | generateJavaDeprecationReport
-        | generateOpenAPISpec;
+        | generateOpenAPISpec | generateJSONSerializers;
   }
 
   private boolean isMessageConstantsGenerationRequested( ) {
