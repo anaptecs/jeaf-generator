@@ -241,6 +241,47 @@ components:
         - FaLsE
       default: YES
 
+    # com.anaptecs.jeaf.junit.openapi.techbase.BusinessA
+    BusinessA:
+      allOf:
+        - $ref: '#/components/schemas/TechParent'
+        - type: object
+          additionalProperties: false
+          required:
+            - businessAttribute
+          properties:
+            businessAttribute:
+              type: integer
+              format: int32
+              nullable: false
+
+    # com.anaptecs.jeaf.junit.openapi.techbase.BusinessChild
+    BusinessChild:
+      allOf:
+        - $ref: '#/components/schemas/BusinessParent'
+        - type: object
+          additionalProperties: false
+          required:
+            - childAttribute
+          properties:
+            childAttribute:
+              type: string
+              nullable: false
+
+    # com.anaptecs.jeaf.junit.openapi.techbase.BusinessParent
+    BusinessParent:
+      allOf:
+        - $ref: '#/components/schemas/TechParent'
+        - type: object
+          additionalProperties: false
+          required:
+            - parentAttribute
+          properties:
+            parentAttribute:
+              type: integer
+              format: int64
+              nullable: false
+
     # com.anaptecs.jeaf.junit.openapi.base.CHStopPlace
     CHStopPlace:
       allOf:
@@ -1559,6 +1600,23 @@ components:
         - $ref: '#/components/schemas/GeoPosition'
         - type: object
           additionalProperties: false
+
+    # com.anaptecs.jeaf.junit.openapi.techbase.TechParent
+    TechParent:
+      type: object
+      additionalProperties: false
+      discriminator:
+        propertyName: objectType
+      required:
+        - objectType
+        - techAttribute
+      properties:
+        objectType:
+          description: Attribute is used as discriminator for inheritance between data types.
+          type: string
+        techAttribute:
+          type: string
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
     TimeUnit:
