@@ -16,46 +16,16 @@ import java.util.Objects;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeId;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 /**
  * TechParent
  */
 
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true )
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = BusinessChild.class, name = "BusinessChild"),
-  @JsonSubTypes.Type(value = BusinessA.class, name = "BusinessA"),
-  @JsonSubTypes.Type(value = BusinessParent.class, name = "BusinessParent"),
-})
 
 public class TechParent {
-  @JsonTypeId
-  private String objectType = null;
-
   @JsonProperty("techAttribute")
   private String techAttribute = null;
-
-  public TechParent objectType(String objectType) {
-    this.objectType = objectType;
-    return this;
-  }
-
-   /**
-   * Attribute is used as discriminator for inheritance between data types.
-   * @return objectType
-  **/
-  @Schema(required = true, description = "Attribute is used as discriminator for inheritance between data types.")
-  public String getObjectType() {
-    return objectType;
-  }
-
-  public void setObjectType(String objectType) {
-    this.objectType = objectType;
-  }
 
   public TechParent techAttribute(String techAttribute) {
     this.techAttribute = techAttribute;
@@ -85,13 +55,12 @@ public class TechParent {
       return false;
     }
     TechParent techParent = (TechParent) o;
-    return Objects.equals(this.objectType, techParent.objectType) &&
-        Objects.equals(this.techAttribute, techParent.techAttribute);
+    return Objects.equals(this.techAttribute, techParent.techAttribute);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectType, techAttribute);
+    return Objects.hash(techAttribute);
   }
 
 
@@ -100,7 +69,6 @@ public class TechParent {
     StringBuilder sb = new StringBuilder();
     sb.append("class TechParent {\n");
     
-    sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
     sb.append("    techAttribute: ").append(toIndentedString(techAttribute)).append("\n");
     sb.append("}");
     return sb.toString();

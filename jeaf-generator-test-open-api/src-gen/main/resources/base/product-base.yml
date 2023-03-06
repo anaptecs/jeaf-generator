@@ -270,17 +270,23 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.techbase.BusinessParent
     BusinessParent:
+      type: object
+      additionalProperties: false
+      discriminator:
+        propertyName: objectType
       allOf:
         - $ref: '#/components/schemas/TechParent'
-        - type: object
-          additionalProperties: false
-          required:
-            - parentAttribute
-          properties:
-            parentAttribute:
-              type: integer
-              format: int64
-              nullable: false
+      required:
+        - objectType
+        - parentAttribute
+      properties:
+        objectType:
+          description: Attribute is used as discriminator for inheritance between data types.
+          type: string
+        parentAttribute:
+          type: integer
+          format: int64
+          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.CHStopPlace
     CHStopPlace:
@@ -1605,15 +1611,9 @@ components:
     TechParent:
       type: object
       additionalProperties: false
-      discriminator:
-        propertyName: objectType
       required:
-        - objectType
         - techAttribute
       properties:
-        objectType:
-          description: Attribute is used as discriminator for inheritance between data types.
-          type: string
         techAttribute:
           type: string
           nullable: false

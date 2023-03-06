@@ -157,7 +157,12 @@ cached boolean isOneOfForClassHierachieEnabled():
   false;
    
 cached boolean isTopOfClassHierarchy(uml::Class class) :
-   class.superClass.isEmpty == true && getAllSubclasses(class).size > 0;
+   if class.superClass.isEmpty == true && class.isTechnicalBaseClass() == false && class.getAllSubclasses().size > 0
+   then true
+   else
+     if class.superClass.select(e|e.isTechnicalBaseClass()).isEmpty == false && class.isTechnicalBaseClass() == false && class.getAllSubclasses().size > 0
+     then true
+     else false;
 	
 cached String toOpenAPIContentType(JMM::MediaType mediaType) :
    toOpenAPIContentType(mediaType.toString());

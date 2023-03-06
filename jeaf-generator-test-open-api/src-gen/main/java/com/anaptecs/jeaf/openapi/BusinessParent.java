@@ -17,16 +17,44 @@ import java.util.Arrays;
 import com.anaptecs.jeaf.openapi.TechParent;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeId;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 /**
  * BusinessParent
  */
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true )
+@JsonSubTypes({
+  @JsonSubTypes.Type(value = BusinessChild.class, name = "BusinessChild"),
+})
 
 public class BusinessParent extends TechParent {
+  @JsonTypeId
+  private String objectType = null;
+
   @JsonProperty("parentAttribute")
   private Long parentAttribute = null;
+
+  public BusinessParent objectType(String objectType) {
+    this.objectType = objectType;
+    return this;
+  }
+
+   /**
+   * Attribute is used as discriminator for inheritance between data types.
+   * @return objectType
+  **/
+  @Schema(required = true, description = "Attribute is used as discriminator for inheritance between data types.")
+  public String getObjectType() {
+    return objectType;
+  }
+
+  public void setObjectType(String objectType) {
+    this.objectType = objectType;
+  }
 
   public BusinessParent parentAttribute(Long parentAttribute) {
     this.parentAttribute = parentAttribute;
@@ -56,13 +84,14 @@ public class BusinessParent extends TechParent {
       return false;
     }
     BusinessParent businessParent = (BusinessParent) o;
-    return Objects.equals(this.parentAttribute, businessParent.parentAttribute) &&
+    return Objects.equals(this.objectType, businessParent.objectType) &&
+        Objects.equals(this.parentAttribute, businessParent.parentAttribute) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(parentAttribute, super.hashCode());
+    return Objects.hash(objectType, parentAttribute, super.hashCode());
   }
 
 
@@ -71,6 +100,7 @@ public class BusinessParent extends TechParent {
     StringBuilder sb = new StringBuilder();
     sb.append("class BusinessParent {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
     sb.append("    parentAttribute: ").append(toIndentedString(parentAttribute)).append("\n");
     sb.append("}");
     return sb.toString();

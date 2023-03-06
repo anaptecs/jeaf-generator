@@ -27,7 +27,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import openapitools.model.BusinessChild;
-import openapitools.model.BusinessParentAllOf;
 import openapitools.model.TechParent;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
@@ -37,7 +36,9 @@ import openapitools.JSON;
  * BusinessParent
  */
 @JsonPropertyOrder({
-  BusinessParent.JSON_PROPERTY_PARENT_ATTRIBUTE
+  BusinessParent.JSON_PROPERTY_OBJECT_TYPE,
+  BusinessParent.JSON_PROPERTY_PARENT_ATTRIBUTE,
+  BusinessParent.JSON_PROPERTY_TECH_ATTRIBUTE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
@@ -45,12 +46,44 @@ import openapitools.JSON;
   @JsonSubTypes.Type(value = BusinessChild.class, name = "BusinessChild"),
 })
 
-public class BusinessParent extends TechParent {
+public class BusinessParent {
+  public static final String JSON_PROPERTY_OBJECT_TYPE = "objectType";
+  private String objectType;
+
   public static final String JSON_PROPERTY_PARENT_ATTRIBUTE = "parentAttribute";
   private Long parentAttribute;
 
+  public static final String JSON_PROPERTY_TECH_ATTRIBUTE = "techAttribute";
+  private String techAttribute;
+
   public BusinessParent() { 
   }
+
+  public BusinessParent objectType(String objectType) {
+    this.objectType = objectType;
+    return this;
+  }
+
+   /**
+   * Attribute is used as discriminator for inheritance between data types.
+   * @return objectType
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "Attribute is used as discriminator for inheritance between data types.")
+  @JsonProperty(JSON_PROPERTY_OBJECT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getObjectType() {
+    return objectType;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_OBJECT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setObjectType(String objectType) {
+    this.objectType = objectType;
+  }
+
 
   public BusinessParent parentAttribute(Long parentAttribute) {
     this.parentAttribute = parentAttribute;
@@ -78,6 +111,32 @@ public class BusinessParent extends TechParent {
   }
 
 
+  public BusinessParent techAttribute(String techAttribute) {
+    this.techAttribute = techAttribute;
+    return this;
+  }
+
+   /**
+   * Get techAttribute
+   * @return techAttribute
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_TECH_ATTRIBUTE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getTechAttribute() {
+    return techAttribute;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_TECH_ATTRIBUTE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTechAttribute(String techAttribute) {
+    this.techAttribute = techAttribute;
+  }
+
+
   /**
    * Return true if this BusinessParent object is equal to o.
    */
@@ -90,21 +149,23 @@ public class BusinessParent extends TechParent {
       return false;
     }
     BusinessParent businessParent = (BusinessParent) o;
-    return Objects.equals(this.parentAttribute, businessParent.parentAttribute) &&
-        super.equals(o);
+    return Objects.equals(this.objectType, businessParent.objectType) &&
+        Objects.equals(this.parentAttribute, businessParent.parentAttribute) &&
+        Objects.equals(this.techAttribute, businessParent.techAttribute);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(parentAttribute, super.hashCode());
+    return Objects.hash(objectType, parentAttribute, techAttribute);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BusinessParent {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
     sb.append("    parentAttribute: ").append(toIndentedString(parentAttribute)).append("\n");
+    sb.append("    techAttribute: ").append(toIndentedString(techAttribute)).append("\n");
     sb.append("}");
     return sb.toString();
   }

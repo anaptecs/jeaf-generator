@@ -20,15 +20,10 @@ import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import openapitools.model.BusinessA;
-import openapitools.model.BusinessChild;
-import openapitools.model.BusinessParent;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -37,52 +32,15 @@ import openapitools.JSON;
  * TechParent
  */
 @JsonPropertyOrder({
-  TechParent.JSON_PROPERTY_OBJECT_TYPE,
   TechParent.JSON_PROPERTY_TECH_ATTRIBUTE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = BusinessA.class, name = "BusinessA"),
-  @JsonSubTypes.Type(value = BusinessChild.class, name = "BusinessChild"),
-  @JsonSubTypes.Type(value = BusinessParent.class, name = "BusinessParent"),
-})
-
 public class TechParent {
-  public static final String JSON_PROPERTY_OBJECT_TYPE = "objectType";
-  private String objectType;
-
   public static final String JSON_PROPERTY_TECH_ATTRIBUTE = "techAttribute";
   private String techAttribute;
 
   public TechParent() { 
   }
-
-  public TechParent objectType(String objectType) {
-    this.objectType = objectType;
-    return this;
-  }
-
-   /**
-   * Attribute is used as discriminator for inheritance between data types.
-   * @return objectType
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Attribute is used as discriminator for inheritance between data types.")
-  @JsonProperty(JSON_PROPERTY_OBJECT_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getObjectType() {
-    return objectType;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_OBJECT_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setObjectType(String objectType) {
-    this.objectType = objectType;
-  }
-
 
   public TechParent techAttribute(String techAttribute) {
     this.techAttribute = techAttribute;
@@ -122,20 +80,18 @@ public class TechParent {
       return false;
     }
     TechParent techParent = (TechParent) o;
-    return Objects.equals(this.objectType, techParent.objectType) &&
-        Objects.equals(this.techAttribute, techParent.techAttribute);
+    return Objects.equals(this.techAttribute, techParent.techAttribute);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(objectType, techAttribute);
+    return Objects.hash(techAttribute);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TechParent {\n");
-    sb.append("    objectType: ").append(toIndentedString(objectType)).append("\n");
     sb.append("    techAttribute: ").append(toIndentedString(techAttribute)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -152,14 +108,5 @@ public class TechParent {
     return o.toString().replace("\n", "\n    ");
   }
 
-static {
-  // Initialize and register the discriminator mappings.
-  Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("BusinessA", BusinessA.class);
-  mappings.put("BusinessChild", BusinessChild.class);
-  mappings.put("BusinessParent", BusinessParent.class);
-  mappings.put("TechParent", TechParent.class);
-  JSON.registerDiscriminator(TechParent.class, "objectType", mappings);
-}
 }
 
