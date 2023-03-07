@@ -19,7 +19,10 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
- * Multi line class comment
+ * Multi<br/>
+ * line<br/>
+ * class<br/>
+ * comment
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.6.x

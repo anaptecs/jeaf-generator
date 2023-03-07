@@ -14,6 +14,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
+ * @deprecated (<b>since:</b> , <b>removed with:</b> )
  */
 @Deprecated
 public class DeprecatedServiceObject implements ServiceObject {

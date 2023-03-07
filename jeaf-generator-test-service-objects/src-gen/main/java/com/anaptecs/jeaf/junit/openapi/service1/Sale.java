@@ -15,7 +15,9 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
- * Chännel € Ö
+ * Chännel<br/>
+ * €<br/>
+ * Ö
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
