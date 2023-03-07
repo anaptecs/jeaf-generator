@@ -20,6 +20,7 @@ import com.anaptecs.jeaf.junit.deprecation.DeprecatedService;
 @Path("/nova/prefix/deprecation")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@Deprecated
 public class DeprecatedServiceResource {
   /**
    * Method returns reference to service to which all REST requests will be delegated.

@@ -187,6 +187,9 @@ cached boolean isSupportedReturnType(uml::Operation operation) :
 
 boolean hasReturnType(uml::Operation operation) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.hasReturnType(org.eclipse.uml2.uml.Operation);
+    
+cached uml::Parameter getReturnType(uml::Operation operation):
+    operation.returnResult().first();
 
 boolean hasOnlySupportedParamaterTypes(uml::Operation operation) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.hasOnlySupportedParamaterTypes(org.eclipse.uml2.uml.Operation);

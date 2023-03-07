@@ -14,7 +14,10 @@ import java.util.Set;
 import javax.validation.constraints.Size;
 
 /**
- * Multi line class comment
+ * Multi<br/>
+ * line<br/>
+ * class<br/>
+ * comment
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

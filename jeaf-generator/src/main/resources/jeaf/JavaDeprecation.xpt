@@ -37,7 +37,7 @@
 | Service Name   | Description   | Deprecated since   | Planned to be removed   |
 |----------------|---------------|:------------------:|:-----------------------:|
 «FOREACH deprecations.typeSelect(JEAFService).sortBy(e|e.fqn()) AS service-»
-| `«service.fqn()»` | «service.getDeprecationDescription()» | «service.getDeprecatedSince()» | «service.getDeprecationRemoval()» |
+| `«service.fqn()»` | «service.getDeprecationDescriptionForMarkup()» | «service.getDeprecatedSince()» | «service.getDeprecationRemoval()» |
 «ENDFOREACH-»
 «IF deprecations.typeSelect(JEAFService).size == 0-»
 | No services are marked as deprecated. |

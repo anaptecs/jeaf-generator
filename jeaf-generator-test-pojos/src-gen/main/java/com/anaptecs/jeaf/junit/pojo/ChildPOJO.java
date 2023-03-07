@@ -13,11 +13,19 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
+ * This is the first line of the first comment<br/>
+ * 2nd line
+ * 
+ * 2.1<br/>
+ * 2.2
+ * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
+ * @deprecated We do like this class any more. (<b>since:</b> Big bang, <b>removed with:</b> Last X-Mas)
  */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
+@Deprecated
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ChildPOJO extends ParentPOJO {
   /**
@@ -74,6 +82,7 @@ public class ChildPOJO extends ParentPOJO {
    * Class implements builder to create a new instance of class ChildPOJO. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @Deprecated
   public static class Builder extends ParentPOJO.Builder {
     /**
      * 

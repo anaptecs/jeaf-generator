@@ -10,9 +10,10 @@ import java.math.BigDecimal;
 import javax.validation.constraints.NotNull;
 
 /**
- * Type represents an amount of money.
- * 
- * NOVA 14 Mapping * nova-base.xsd.GeldBetrag
+ * Type represents an amount of money.<br/>
+ * <br/>
+ * NOVA 14 Mapping<br/>
+ * * nova-base.xsd.GeldBetrag
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

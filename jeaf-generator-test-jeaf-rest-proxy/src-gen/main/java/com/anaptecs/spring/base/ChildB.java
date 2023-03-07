@@ -18,7 +18,10 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * Multi line class comment
+ * Multi<br/>
+ * line<br/>
+ * class<br/>
+ * comment
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

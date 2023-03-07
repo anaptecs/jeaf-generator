@@ -14,9 +14,10 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * Type represents a duration.
- * 
- * NOVA 14 Mapping * nova-base.xsd.Dauer
+ * Type represents a duration.<br/>
+ * <br/>
+ * NOVA 14 Mapping<br/>
+ * * nova-base.xsd.Dauer
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

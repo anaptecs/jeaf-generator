@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
+ * @deprecated (<b>since:</b> , <b>removed with:</b> )
  */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")

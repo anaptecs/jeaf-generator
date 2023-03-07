@@ -11,6 +11,7 @@
 | `com.anaptecs.jeaf.junit.core.BusinessObjectTestService` |  |  |  |
 | `com.anaptecs.jeaf.junit.core.DeprecatedTestService` |  |  |  |
 | `com.anaptecs.jeaf.junit.core.JEAFTestService` |  |  |  |
+| `com.anaptecs.jeaf.junit.deprecation.DeprecatedService` | This service does not make sense any more.<br><br>The functionality is completely wrong. | 1.0 | 2023-12-31 |
 | `com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations` |  |  |  |
 | `com.anaptecs.jeaf.junit.openapi.service1.ProductService` |  |  |  |
 | `com.anaptecs.jeaf.junit.rest.DeprecatedRESTService` |  |  |  |
@@ -37,6 +38,7 @@
 | `checkRequiredService_2()` | |  |  |  |
 
 <br>
+
 
 
 
@@ -81,7 +83,11 @@
 | `deprecatedAsyncParam(int)` | |  |  |  |
 |   | `int pParam1` |  |  |  |
 |   | `String ` |  |  |  |
-| `deprecatedOperation()` | | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13 |
+| `deprecatedOperation()` | | Please use something else.
+
+This is not the right operation any longer.
+
+Sorry!!! | a very long time | 2023-12-13 |
 | `deprecatedParameter(int, int)` | |  |  |  |
 |   | `int pParam2` |  |  |  |
 | `deprectaedReturnValue(int)` | |  |  |  |
@@ -140,6 +146,7 @@
 |   | `theBankAccount` |  |  |  |
 |   | `legacyBankAccounts` |  |  |  |
 | `com.anaptecs.jeaf.junit.pojo.BChildPOJO` | |  |  |  |
+| `com.anaptecs.jeaf.junit.pojo.ChildPOJO` | | We do not like this class any more. | Big bang | Last X-Mas |
 | `com.anaptecs.jeaf.junit.pojo.ImmutableAssociationPOJO` | |  |  |  |
 |   | `deprecatedRefs` |  |  |  |
 | `com.anaptecs.jeaf.junit.pojo.ParentPOJO` | |  |  |  |

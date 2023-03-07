@@ -1,5 +1,6 @@
 extension java::GeneratorCommons;
 
+
 cached boolean isJEAFDeprecated(uml::Element element) :
   element.isStereotypeApplied("JEAFDeprecated");
   
@@ -9,8 +10,14 @@ cached JMM::JEAFDeprecated asDeprecated(uml::Element element):
 
 cached String getDeprecationDescription(uml::NamedElement element):
     if element.isJEAFDeprecated()
-    then element.getStereotypeValue("JEAFDeprecated", "description").replaceAll("\n", "<br>")
+    then element.getStereotypeValue("JEAFDeprecated", "description")
     else "";
+    
+cached String getDeprecationDescriptionForMarkup(uml::NamedElement element):
+    element.getDeprecationDescription().replaceAll("\n", "<br>");
+    
+cached String getDeprecationDescriptionForJavadoc(uml::NamedElement element):
+    element.getDeprecationDescription().replaceAll("\n", "</br>");
     
 cached String getDeprecatedSince(uml::NamedElement element):
     if element.isJEAFDeprecated()
@@ -24,5 +31,8 @@ cached String getDeprecationRemoval(uml::NamedElement element):
     
 cached boolean isDeprecationComplete(uml::NamedElement element): 
     element.getDeprecationDescription().length > 0 && element.getDeprecatedSince().length > 0 && element.getDeprecationRemoval().length > 0;
+    
+cached boolean hasDeprecationDetails(uml::NamedElement element):
+    element.getDeprecatedSince().length > 0 || element.getDeprecationRemoval().length > 0;
     
     

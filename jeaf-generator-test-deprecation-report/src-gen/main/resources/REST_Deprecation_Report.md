@@ -9,6 +9,7 @@
 | Deprecated Resource   | Service Name   | Description   | Deprecated since   | Planned to be removed   |
 |-----------------------|----------------|---------------|:------------------:|:-----------------------:|
 | `/api` | `com.anaptecs.jeaf.junit.rest.RESTTestService` |  |  |  |
+| `/deprecation` | `com.anaptecs.jeaf.junit.deprecation.DeprecatedService` | This service does not make sense any more.<br><br>The functionality is completely wrong. | 1.0 | 2023-12-31 |
 | `/do/something` | `com.anaptecs.jeaf.junit.rest.DeprecatedRESTService` |  |  |  |
 | `/products` | `com.anaptecs.jeaf.junit.openapi.service1.ProductService` |  |  |  |
 | `/with-deprecations` | `com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations` |  |  |  |
@@ -26,7 +27,11 @@
 |   | `Body` | `int pParam1` |  |  |  |
 |   | `Response` | `String ` |  |  |  |
 | `/api/dep/async [POST]` | `REST Operation` | `RESTTestService.deprecatedAsync(int)` |  |  |  |
-| `/api/deprcation/dep1 [GET]` | `REST Operation` | `RESTTestService.deprecatedOperation()` | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13 |
+| `/api/deprcation/dep1 [GET]` | `REST Operation` | `RESTTestService.deprecatedOperation()` | Please use something else.
+
+This is not the right operation any longer.
+
+Sorry!!! | a very long time | 2023-12-13 |
 | `/api/deprecation/dep2 [GET]` | `REST Operation` | `RESTTestService.deprecatedParameter(int, int)` |  |  |  |
 |   | `Header Param` | `int pParam2` |  |  |  |
 | `/api/deprecation/dep3 [GET]` | `REST Operation` | `RESTTestService.deprectaedReturnValue(int)` |  |  |  |
