@@ -16,6 +16,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
  * Type represents a booking ID.
+ * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.6.x

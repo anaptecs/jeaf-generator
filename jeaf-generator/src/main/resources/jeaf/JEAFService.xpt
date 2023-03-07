@@ -18,7 +18,7 @@
 «getFileHeader()»
 package «packageName()»;
 
-«this.getJavadoc()»
+«EXPAND functions::Javadoc::JavadocForType»
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 public interface «name» «IF generalization.size > 0»extends «this.getAllExtendedInterfaces()» «ELSE»«IF isTargetRuntimeJEAF()»extends com.anaptecs.jeaf.core.api.Service«ENDIF»«ENDIF» {
   «EXPAND JEAFOperation::InterfaceOperation FOREACH ownedOperation»

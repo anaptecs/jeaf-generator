@@ -15,9 +15,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * This is the first line of the first comment<br/>
  * 2nd line
- * 
+ * <p/>
  * 2.1<br/>
  * 2.2
+ * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

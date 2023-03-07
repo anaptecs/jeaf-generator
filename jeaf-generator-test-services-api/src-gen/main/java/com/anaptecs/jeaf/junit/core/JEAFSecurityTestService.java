@@ -9,6 +9,7 @@ import com.anaptecs.jeaf.core.api.Service;
 
 /**
  * Test Service for the Security functionality. It provides Methods to check if the login function is working correctly.
+ * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

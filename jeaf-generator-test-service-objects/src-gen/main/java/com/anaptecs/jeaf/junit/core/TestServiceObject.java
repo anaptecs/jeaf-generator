@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.core;
 
 /**
  * This is a service object that was modeled in order to test the output of the JEAF Generator.
+ * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

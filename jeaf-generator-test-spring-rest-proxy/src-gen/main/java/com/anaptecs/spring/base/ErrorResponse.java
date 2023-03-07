@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 /**
  * Generic error response type that is used in all cases.
+ * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

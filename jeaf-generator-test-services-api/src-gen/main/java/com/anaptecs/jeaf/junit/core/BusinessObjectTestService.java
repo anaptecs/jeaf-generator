@@ -12,11 +12,13 @@ import com.anaptecs.jeaf.core.api.ServiceObjectID;
 
 /**
  * The BusinessObjectTest service provides methods that can be used to tests JEAFs implementation of business objects.
- * All the offered method will be used by JEAF JUnit tests.
- * 
+ * All the offered method will be used by JEAF JUnit tests.<br/>
+ * <br/>
  * This is a multi line comment
- * 
+ * <p/>
  * This is the second comment of this service. This is just intended to test JEAF Generator.
+ * <p/>
+ * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * <br/>
  * NOVA 14 Mapping<br/>
  * * nova-base.xsd.Dauer
+ * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

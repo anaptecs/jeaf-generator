@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Generic error response type that is used in all cases.
+ * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

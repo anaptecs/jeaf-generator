@@ -4,9 +4,8 @@
 
 «DEFINE JavadocForType FOR uml::NamedElement»
 /**
-    «FOREACH ownedComment AS comment-»
- * «comment.body.replaceAll("\n",  "<br/>")»
- * 
+    «FOREACH ownedComment AS comment -»
+ * «comment.body.replaceAll("\n",  "<br/>")»<p/>
     «ENDFOREACH-»
  * @author «getAuthor()»
  * @version «getVersion()»
@@ -19,7 +18,7 @@
 «DEFINE JavadocForOperation FOR uml::Operation»
 /**
     «FOREACH ownedComment AS comment -»
- * «comment.body.replaceAll("\n", "<br/>")»<br/>
+ * «comment.body.replaceAll("\n", "<br/>")»<p/>
     «ENDFOREACH -»
     «FOREACH this.getInputParameters() AS param -»
  * @param «param.name» «param.ownedComment.first().body.replaceAll("\n", "<br/>")» «IF param.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«param.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «param.getDeprecatedSince()», <b>removed with:</b> «param.getDeprecationRemoval()»)«ENDIF»    
