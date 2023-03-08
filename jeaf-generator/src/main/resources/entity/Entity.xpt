@@ -28,7 +28,7 @@
         «IF superClass.isEmpty»import com.anaptecs.jeaf.spi.persistence.PersistentObject; «ENDIF»
         import com.anaptecs.jeaf.spi.persistence.ClassID;
         
-			«this.getJavadoc()»
+			«EXPAND functions::Javadoc::JavadocForType»
 			«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 			public abstract class «this.getBOBaseName()» «IF !superClass.isEmpty»extends «superClass.get(0).fqn()» «ELSE»extends PersistentObject«ENDIF» {
 			
@@ -118,7 +118,7 @@
 	
 		package «packageName()»;
 		
-		«this.getJavadoc()»
+		«EXPAND functions::Javadoc::JavadocForType»
 		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 		public «IF this.isAbstract»abstract«ENDIF» class «this.getBOName()» extends «this.getBOBaseName()» {
             /**
