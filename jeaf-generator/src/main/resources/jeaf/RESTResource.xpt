@@ -16,7 +16,7 @@
 «getFileHeader()»
 package «packageName()».resource;
 
-«this.getJavadoc()»
+«EXPAND functions::Javadoc::JavadocForType»
 «IF isRESTLibrarySpringWebMVC()»
 	«IF this.getRESTPath().length > 0»
 	@org.springframework.web.bind.annotation.RequestMapping(path = "«this.getRESTPath()»")

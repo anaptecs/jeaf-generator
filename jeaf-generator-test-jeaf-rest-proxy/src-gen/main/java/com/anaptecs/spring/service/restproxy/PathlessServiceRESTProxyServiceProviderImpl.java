@@ -60,7 +60,6 @@ public final class PathlessServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @return {@link String}
    */
   @Override

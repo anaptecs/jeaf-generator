@@ -92,10 +92,10 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
 
   /**
    * Operation returns all available product.
-   * 
+   * <p/>
    * 
    * @param pMaxResultSize
-   * @return {@link Product}
+   * @return {@link List<Product>}
    */
   @Override
   public List<Product> getProducts( int pMaxResultSize ) {
@@ -118,7 +118,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pProductID
    * @return {@link Product}
    */
@@ -139,9 +138,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pProduct
-   * @return {@link Boolean}
+   * @return boolean
    */
   @Override
   public boolean createProduct( Product pProduct ) {
@@ -160,7 +158,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pContext
    * @return {@link Sortiment}
    */
@@ -205,7 +202,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pChannelCode
    * @return {@link ChannelCode}
    */
@@ -228,8 +224,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void ping( ) {
     // Create builder for HEAD request
@@ -245,8 +240,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void testInit( ) {
     // Create builder for GET request
@@ -264,9 +258,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pChannelCode
-   * @return {@link CurrencyCode}
+   * @return {@link List<CurrencyCode>}
    */
   @Override
   public List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode ) {
@@ -291,9 +284,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pChannelCode
-   * @return {@link CurrencyCode}
+   * @return {@link List<CurrencyCode>}
    */
   @Override
   public List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode ) {
@@ -318,7 +310,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pBigDecimalHeader
    * @param pIntCookieParam
    * @param pLocaleQueryParam
@@ -351,7 +342,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pChannelType
    * @param pTimeUnit
    * @param pExtensibleEnum
@@ -381,7 +371,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pChannelType
    * @param pTimeUnit
    * @param pExtensibleEnum
@@ -413,7 +402,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pPath
    * @param pStartTimestamp
    * @param pStartTime
@@ -489,7 +477,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pPath
    * @param pQueryParams
    */
@@ -549,7 +536,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pPath
    * @param pOffsetDateTime
    * @param pOffsetTime
@@ -623,7 +609,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pPath
    * @param pHeaderParams
    */
@@ -683,7 +668,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pChannelTypeParam
    * @param pContext
    */
@@ -736,7 +720,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param query1
    * @param query2
    * @return {@link String}
@@ -763,9 +746,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pComplextBookingID
-   * @return {@link Boolean}
+   * @return boolean
    */
   @Override
   public boolean processComplexBookingID( ComplexBookingID pComplextBookingID ) {
@@ -785,7 +767,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pBookingID
    * @param pBookingCode
    * @param pDoubleCode
@@ -818,7 +799,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pContext
    * @return {@link String}
    */
@@ -851,7 +831,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pIntegerArray
    * @return {@link String}
    */
@@ -874,7 +853,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pBookingCode
    * @return {@link String}
    */
@@ -899,7 +877,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pBeanParam
    * @return {@link String}
    */
@@ -926,7 +903,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pIntValues
    * @return {@link String}
    */
@@ -951,7 +927,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pStrings
    * @return {@link String}
    */
@@ -976,7 +951,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pIntegers
    * @return {@link String}
    */
@@ -1001,7 +975,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pBean
    * @return {@link String}
    */
@@ -1034,7 +1007,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pCodes
    * @param pLongCodes
    * @param pBookingIDs
@@ -1096,7 +1068,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pQueryBean
    * @return {@link String}
    */
@@ -1191,7 +1162,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pMultiValuedBean
    * @return {@link String}
    */
@@ -1276,7 +1246,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pNames
    * @param pInts
    * @param pDoubles
@@ -1338,7 +1307,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pBookingID
    */
   @Override
@@ -1359,7 +1327,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * 
    * @param pBookingID
    */
   @Override

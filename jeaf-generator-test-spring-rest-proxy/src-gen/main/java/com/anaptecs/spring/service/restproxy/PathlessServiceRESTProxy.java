@@ -47,7 +47,6 @@ public class PathlessServiceRESTProxy implements PathlessService {
   }
 
   /**
-   * 
    * @return {@link String}
    */
   @Override

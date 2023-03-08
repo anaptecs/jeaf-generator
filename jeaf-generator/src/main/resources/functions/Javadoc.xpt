@@ -26,7 +26,7 @@
     «IF this.hasReturnType() && this.getReturnTypeName() != "void" -»
     «LET this.getReturnType() AS returnType -»
  * @return «IF this.returnsPrimitiveType() == false»{@link «ENDIF»«this.getReturnTypeName()»«IF this.returnsPrimitiveType() == false»}«ENDIF» «returnType.ownedComment.first().body.replaceAll("\n", "<br/>")» «IF returnType.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«returnType.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «returnType.getDeprecatedSince()», <b>removed with:</b> «returnType.getDeprecationRemoval()»)«ENDIF»
-    «ENDLET»
+    «ENDLET-»
     «ENDIF -»
     «IF this.isJEAFDeprecated()-»
  * @deprecated «this.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «this.getDeprecatedSince()», <b>removed with:</b> «this.getDeprecationRemoval()»)   
