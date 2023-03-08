@@ -257,10 +257,9 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method returns the association "thePartner".
+   * Method returns association {@link #thePartner}.<br/>
    * 
-   *
-   * @return SoftLinkPartner SoftLinkPartner to which the association "thePartner" is set.
+   * @return SoftLinkPartner Value to which the attribute "thePartner" is set.
    */
   public SoftLinkID getThePartner( ) {
     return thePartner;
@@ -285,10 +284,9 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method returns the association "readonlyPartner".
+   * Method returns association {@link #readonlyPartner}.<br/>
    * 
-   *
-   * @return SoftLinkPartner SoftLinkPartner to which the association "readonlyPartner" is set.
+   * @return SoftLinkPartner Value to which the attribute "readonlyPartner" is set.
    */
   public SoftLinkID getReadonlyPartner( ) {
     return readonlyPartner;

@@ -58,8 +58,7 @@ public class ProductQuery extends QueryObject {
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
+   * Method returns attribute {@link #name}.<br/>
    * 
    * @return String Value to which the attribute "name" is set.
    */
@@ -79,10 +78,10 @@ public class ProductQuery extends QueryObject {
   }
 
   /**
-   * Method returns the attribute "minAvailability".
-   * 
+   * Method returns attribute {@link #minAvailability}.<br/>
    * 
    * @return Integer Value to which the attribute "minAvailability" is set.
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public Integer getMinAvailability( ) {
@@ -102,8 +101,7 @@ public class ProductQuery extends QueryObject {
   }
 
   /**
-   * Method returns the attribute "minPrice".
-   * 
+   * Method returns attribute {@link #minPrice}.<br/>
    * 
    * @return Integer Value to which the attribute "minPrice" is set.
    */
@@ -123,8 +121,7 @@ public class ProductQuery extends QueryObject {
   }
 
   /**
-   * Method returns the attribute "maxPrice".
-   * 
+   * Method returns attribute {@link #maxPrice}.<br/>
    * 
    * @return Integer Value to which the attribute "maxPrice" is set.
    */
@@ -144,8 +141,7 @@ public class ProductQuery extends QueryObject {
   }
 
   /**
-   * Method returns the attribute "manufacturer".
-   * 
+   * Method returns attribute {@link #manufacturer}.<br/>
    * 
    * @return String Value to which the attribute "manufacturer" is set.
    */

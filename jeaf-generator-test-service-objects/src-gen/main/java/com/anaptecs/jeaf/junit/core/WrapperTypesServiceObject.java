@@ -301,8 +301,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aBoolean".
-   * 
+   * Method returns attribute {@link #aBoolean}.<br/>
    * 
    * @return Boolean Value to which the attribute "aBoolean" is set.
    */
@@ -322,8 +321,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aByte".
-   * 
+   * Method returns attribute {@link #aByte}.<br/>
    * 
    * @return Byte Value to which the attribute "aByte" is set.
    */
@@ -343,8 +341,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aShort".
-   * 
+   * Method returns attribute {@link #aShort}.<br/>
    * 
    * @return Short Value to which the attribute "aShort" is set.
    */
@@ -364,8 +361,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aInt".
-   * 
+   * Method returns attribute {@link #aInt}.<br/>
    * 
    * @return Integer Value to which the attribute "aInt" is set.
    */
@@ -385,8 +381,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aLong".
-   * 
+   * Method returns attribute {@link #aLong}.<br/>
    * 
    * @return Long Value to which the attribute "aLong" is set.
    */
@@ -406,8 +401,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aFloat".
-   * 
+   * Method returns attribute {@link #aFloat}.<br/>
    * 
    * @return Float Value to which the attribute "aFloat" is set.
    */
@@ -427,8 +421,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aDouble".
-   * 
+   * Method returns attribute {@link #aDouble}.<br/>
    * 
    * @return Double Value to which the attribute "aDouble" is set.
    */
@@ -448,8 +441,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aChar".
-   * 
+   * Method returns attribute {@link #aChar}.<br/>
    * 
    * @return Character Value to which the attribute "aChar" is set.
    */

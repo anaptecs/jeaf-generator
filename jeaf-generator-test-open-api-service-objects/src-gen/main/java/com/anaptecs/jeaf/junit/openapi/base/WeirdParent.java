@@ -188,8 +188,7 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "someProperty".
-   * 
+   * Method returns attribute {@link #someProperty}.<br/>
    * 
    * @return String Value to which the attribute "someProperty" is set.
    */

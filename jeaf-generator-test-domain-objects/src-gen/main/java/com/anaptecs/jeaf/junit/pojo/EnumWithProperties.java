@@ -19,8 +19,7 @@ public enum EnumWithProperties {
   private final int order;
 
   /**
-   * Method returns the attribute "dataUnitID".
-   * 
+   * Method returns attribute {@link #dataUnitID}.<br/>
    * 
    * @return String Value to which the attribute "dataUnitID" is set.
    */
@@ -29,8 +28,7 @@ public enum EnumWithProperties {
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
+   * Method returns attribute {@link #name}.<br/>
    * 
    * @return String Value to which the attribute "name" is set.
    */
@@ -39,8 +37,7 @@ public enum EnumWithProperties {
   }
 
   /**
-   * Method returns the attribute "order".
-   * 
+   * Method returns attribute {@link #order}.<br/>
    * 
    * @return int Value to which the attribute "order" is set.
    */

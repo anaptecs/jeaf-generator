@@ -113,8 +113,7 @@ public abstract class ClassA_BOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
+   * Method returns attribute {@link #name}.<br/>
    * 
    * @return String Value to which the attribute "name" is set.
    */
@@ -134,8 +133,7 @@ public abstract class ClassA_BOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "readonlyDefault".
-   * 
+   * Method returns attribute {@link #readonlyDefault}.<br/>
    * 
    * @return int Value to which the attribute "readonlyDefault" is set.
    */

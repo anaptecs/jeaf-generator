@@ -159,8 +159,7 @@ public class Duration {
   }
 
   /**
-   * Method returns the attribute "value".
-   * 
+   * Method returns attribute {@link #value}.<br/>
    * 
    * @return int Value to which the attribute "value" is set.
    */
@@ -180,8 +179,7 @@ public class Duration {
   }
 
   /**
-   * Method returns the attribute "timeUnit".
-   * 
+   * Method returns attribute {@link #timeUnit}.<br/>
    * 
    * @return TimeUnit Value to which the attribute "timeUnit" is set.
    */

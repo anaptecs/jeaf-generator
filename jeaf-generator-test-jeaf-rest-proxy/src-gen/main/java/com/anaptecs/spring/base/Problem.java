@@ -251,8 +251,7 @@ public class Problem implements Serializable {
   }
 
   /**
-   * Method returns the attribute "title".
-   * 
+   * Method returns attribute {@link #title}.<br/>
    * 
    * @return String Value to which the attribute "title" is set.
    */
@@ -261,8 +260,7 @@ public class Problem implements Serializable {
   }
 
   /**
-   * Method returns the attribute "status".
-   * 
+   * Method returns attribute {@link #status}.<br/>
    * 
    * @return int Value to which the attribute "status" is set.
    */
@@ -271,8 +269,7 @@ public class Problem implements Serializable {
   }
 
   /**
-   * Method returns the attribute "type".
-   * 
+   * Method returns attribute {@link #type}.<br/>
    * 
    * @return String Value to which the attribute "type" is set.
    */
@@ -281,8 +278,7 @@ public class Problem implements Serializable {
   }
 
   /**
-   * Method returns the attribute "detail".
-   * 
+   * Method returns attribute {@link #detail}.<br/>
    * 
    * @return String Value to which the attribute "detail" is set.
    */
@@ -291,8 +287,7 @@ public class Problem implements Serializable {
   }
 
   /**
-   * Method returns the attribute "instance".
-   * 
+   * Method returns attribute {@link #instance}.<br/>
    * 
    * @return String Value to which the attribute "instance" is set.
    */

@@ -149,8 +149,7 @@ public class ParentBeanParamType implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "novaKey".
-   * 
+   * Method returns attribute {@link #novaKey}.<br/>
    * 
    * @return String Value to which the attribute "novaKey" is set.
    */
@@ -170,8 +169,7 @@ public class ParentBeanParamType implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "tkID".
-   * 
+   * Method returns attribute {@link #tkID}.<br/>
    * 
    * @return String Value to which the attribute "tkID" is set.
    */

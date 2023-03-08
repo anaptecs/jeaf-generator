@@ -373,8 +373,7 @@ public class OpenAPITestObject implements Serializable {
   }
 
   /**
-   * Method returns the attribute "readOnlyAttribute".
-   * 
+   * Method returns attribute {@link #readOnlyAttribute}.<br/>
    * 
    * @return String Value to which the attribute "readOnlyAttribute" is set.
    */
@@ -394,8 +393,7 @@ public class OpenAPITestObject implements Serializable {
   }
 
   /**
-   * Method returns the attribute "readWriteAttribute".
-   * 
+   * Method returns attribute {@link #readWriteAttribute}.<br/>
    * 
    * @return String Value to which the attribute "readWriteAttribute" is set.
    */
@@ -415,8 +413,7 @@ public class OpenAPITestObject implements Serializable {
   }
 
   /**
-   * Method returns the attribute "writeOnlyAttribute".
-   * 
+   * Method returns attribute {@link #writeOnlyAttribute}.<br/>
    * 
    * @return int Value to which the attribute "writeOnlyAttribute" is set.
    */
@@ -436,8 +433,7 @@ public class OpenAPITestObject implements Serializable {
   }
 
   /**
-   * Method returns the attribute "nullableAttribute".
-   * 
+   * Method returns attribute {@link #nullableAttribute}.<br/>
    * 
    * @return Boolean Value to which the attribute "nullableAttribute" is set.
    */
@@ -457,8 +453,7 @@ public class OpenAPITestObject implements Serializable {
   }
 
   /**
-   * Method returns the attribute "notNullableAttribute".
-   * 
+   * Method returns attribute {@link #notNullableAttribute}.<br/>
    * 
    * @return double Value to which the attribute "notNullableAttribute" is set.
    */
@@ -478,8 +473,7 @@ public class OpenAPITestObject implements Serializable {
   }
 
   /**
-   * Method returns the attribute "readOnlyArray".
-   * 
+   * Method returns attribute {@link #readOnlyArray}.<br/>
    * 
    * @return String Value to which the attribute "readOnlyArray" is set.
    */
@@ -499,8 +493,7 @@ public class OpenAPITestObject implements Serializable {
   }
 
   /**
-   * Method returns the attribute "readWriteArray".
-   * 
+   * Method returns attribute {@link #readWriteArray}.<br/>
    * 
    * @return String Value to which the attribute "readWriteArray" is set.
    */
@@ -520,8 +513,7 @@ public class OpenAPITestObject implements Serializable {
   }
 
   /**
-   * Method returns the attribute "writeOnlyArray".
-   * 
+   * Method returns attribute {@link #writeOnlyArray}.<br/>
    * 
    * @return int Value to which the attribute "writeOnlyArray" is set.
    */
@@ -541,8 +533,7 @@ public class OpenAPITestObject implements Serializable {
   }
 
   /**
-   * Method returns the attribute "nullableArray".
-   * 
+   * Method returns attribute {@link #nullableArray}.<br/>
    * 
    * @return double Value to which the attribute "nullableArray" is set.
    */
@@ -562,8 +553,7 @@ public class OpenAPITestObject implements Serializable {
   }
 
   /**
-   * Method returns the attribute "notNullableArray".
-   * 
+   * Method returns attribute {@link #notNullableArray}.<br/>
    * 
    * @return double Value to which the attribute "notNullableArray" is set.
    */

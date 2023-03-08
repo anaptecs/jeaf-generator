@@ -208,7 +208,10 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "internalID". Internal ID 2nd line 3rd line
+   * Method returns attribute {@link #internalID}.<br/>
+   * Internal ID<br/>
+   * 2nd line<br/>
+   * 3rd line
    * 
    * @return long Value to which the attribute "internalID" is set.
    */
@@ -227,8 +230,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "referenceID".
-   * 
+   * Method returns attribute {@link #referenceID}.<br/>
    * 
    * @return String Value to which the attribute "referenceID" is set.
    */
@@ -339,8 +341,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "anotherID".
-   * 
+   * Method returns attribute {@link #anotherID}.<br/>
    * 
    * @return Integer Value to which the attribute "anotherID" is set.
    */

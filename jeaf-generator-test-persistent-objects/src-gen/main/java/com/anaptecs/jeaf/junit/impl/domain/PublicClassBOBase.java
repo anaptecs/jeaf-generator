@@ -73,8 +73,7 @@ public abstract class PublicClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "period".
-   * 
+   * Method returns attribute {@link #period}.<br/>
    * 
    * @return Period Value to which the attribute "period" is set.
    */
@@ -94,8 +93,7 @@ public abstract class PublicClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "gender".
-   * 
+   * Method returns attribute {@link #gender}.<br/>
    * 
    * @return Gender Value to which the attribute "gender" is set.
    */
@@ -115,8 +113,7 @@ public abstract class PublicClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "encryptedString".
-   * 
+   * Method returns attribute {@link #encryptedString}.<br/>
    * 
    * @return EncryptedString Value to which the attribute "encryptedString" is set.
    */

@@ -508,8 +508,7 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "longCodes".
-   * 
+   * Method returns attribute {@link #longCodes}.<br/>
    * 
    * @return LongCode Value to which the attribute "longCodes" is set.
    */
@@ -543,8 +542,7 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "codes".
-   * 
+   * Method returns attribute {@link #codes}.<br/>
    * 
    * @return IntegerCodeType Value to which the attribute "codes" is set.
    */
@@ -705,8 +703,7 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "bookingIDsArray".
-   * 
+   * Method returns attribute {@link #bookingIDsArray}.<br/>
    * 
    * @return BookingID Value to which the attribute "bookingIDsArray" is set.
    */
@@ -740,8 +737,7 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "offsetDateTime".
-   * 
+   * Method returns attribute {@link #offsetDateTime}.<br/>
    * 
    * @return OffsetDateTime Value to which the attribute "offsetDateTime" is set.
    */
@@ -789,8 +785,7 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "localDateTime".
-   * 
+   * Method returns attribute {@link #localDateTime}.<br/>
    * 
    * @return LocalDateTime Value to which the attribute "localDateTime" is set.
    */
@@ -810,8 +805,7 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "localTime".
-   * 
+   * Method returns attribute {@link #localTime}.<br/>
    * 
    * @return LocalTime Value to which the attribute "localTime" is set.
    */
@@ -957,8 +951,7 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "startTimestamps".
-   * 
+   * Method returns attribute {@link #startTimestamps}.<br/>
    * 
    * @return OffsetDateTime Value to which the attribute "startTimestamps" is set.
    */

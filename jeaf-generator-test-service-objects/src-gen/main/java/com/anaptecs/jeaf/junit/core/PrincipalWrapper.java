@@ -127,8 +127,7 @@ public class PrincipalWrapper implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "lPrincipal".
-   * 
+   * Method returns attribute {@link #lPrincipal}.<br/>
    * 
    * @return Principal Value to which the attribute "lPrincipal" is set.
    */

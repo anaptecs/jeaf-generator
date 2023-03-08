@@ -137,8 +137,7 @@ public abstract class NReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "myString".
-   * 
+   * Method returns attribute {@link #myString}.<br/>
    * 
    * @return String Value to which the attribute "myString" is set.
    */

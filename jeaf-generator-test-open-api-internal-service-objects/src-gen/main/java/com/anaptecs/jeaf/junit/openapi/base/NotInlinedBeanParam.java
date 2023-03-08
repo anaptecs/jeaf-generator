@@ -206,8 +206,7 @@ public class NotInlinedBeanParam implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "header".
-   * 
+   * Method returns attribute {@link #header}.<br/>
    * 
    * @return String Value to which the attribute "header" is set.
    */
@@ -227,8 +226,7 @@ public class NotInlinedBeanParam implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "doubleCode".
-   * 
+   * Method returns attribute {@link #doubleCode}.<br/>
    * 
    * @return DoubleCode Value to which the attribute "doubleCode" is set.
    */
@@ -248,8 +246,7 @@ public class NotInlinedBeanParam implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "extensibleEnum".
-   * 
+   * Method returns attribute {@link #extensibleEnum}.<br/>
    * 
    * @return ExtensibleEnum Value to which the attribute "extensibleEnum" is set.
    */
@@ -269,8 +266,7 @@ public class NotInlinedBeanParam implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "bookingID".
-   * 
+   * Method returns attribute {@link #bookingID}.<br/>
    * 
    * @return BookingID Value to which the attribute "bookingID" is set.
    */

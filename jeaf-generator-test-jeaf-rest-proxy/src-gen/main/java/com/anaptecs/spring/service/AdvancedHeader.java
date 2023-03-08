@@ -194,8 +194,7 @@ public class AdvancedHeader implements Serializable {
   }
 
   /**
-   * Method returns the attribute "bookingID".
-   * 
+   * Method returns attribute {@link #bookingID}.<br/>
    * 
    * @return BookingID Value to which the attribute "bookingID" is set.
    */
@@ -215,8 +214,7 @@ public class AdvancedHeader implements Serializable {
   }
 
   /**
-   * Method returns the attribute "bookingCode".
-   * 
+   * Method returns attribute {@link #bookingCode}.<br/>
    * 
    * @return BookingCode Value to which the attribute "bookingCode" is set.
    */
@@ -236,8 +234,7 @@ public class AdvancedHeader implements Serializable {
   }
 
   /**
-   * Method returns the attribute "doubleCode".
-   * 
+   * Method returns attribute {@link #doubleCode}.<br/>
    * 
    * @return DoubleCode Value to which the attribute "doubleCode" is set.
    */

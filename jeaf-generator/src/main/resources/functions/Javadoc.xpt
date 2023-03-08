@@ -56,6 +56,18 @@
 «ENDDEFINE»
 
 
+«DEFINE JavadocForPropertyGetter FOR uml::Property»
+/**
+ * Method returns «IF this.association == null»attribute«ELSE»association«ENDIF»  {@link #«asInstanceVar()»}.<br/>
+    «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
+ «comment.body.replaceAll("\n", "<br/>")»
+    «ENDFOREACH -»
+ * @return «type.name» Value to which the attribute "«asInstanceVar()»" is set.
+    «EXPAND DeprecatedJavadoc -»
+ */
+«ENDDEFINE»
+
+
 «DEFINE JavadocForLiteral FOR uml::EnumerationLiteral»
 «IF this.hasMeaningfulJavadoc()»
 /**

@@ -187,8 +187,7 @@ public class SpecialContext extends Context {
   }
 
   /**
-   * Method returns the attribute "specificHeader".
-   * 
+   * Method returns attribute {@link #specificHeader}.<br/>
    * 
    * @return String Value to which the attribute "specificHeader" is set.
    */

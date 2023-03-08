@@ -131,8 +131,7 @@ public abstract class PlainPOJOBase {
   }
 
   /**
-   * Method returns the attribute "hello".
-   * 
+   * Method returns attribute {@link #hello}.<br/>
    * 
    * @return String Value to which the attribute "hello" is set.
    */
@@ -152,8 +151,7 @@ public abstract class PlainPOJOBase {
   }
 
   /**
-   * Method returns the attribute "world".
-   * 
+   * Method returns attribute {@link #world}.<br/>
    * 
    * @return Integer Value to which the attribute "world" is set.
    */

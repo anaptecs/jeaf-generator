@@ -438,8 +438,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
+   * Method returns attribute {@link #name}.<br/>
    * 
    * @return String Value to which the attribute "name" is set.
    */
@@ -459,8 +458,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   }
 
   /**
-   * Method returns the attribute "language".
-   * 
+   * Method returns attribute {@link #language}.<br/>
    * 
    * @return Locale Value to which the attribute "language" is set.
    */

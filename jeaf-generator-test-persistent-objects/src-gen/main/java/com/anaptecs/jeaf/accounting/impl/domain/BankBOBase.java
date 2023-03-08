@@ -265,8 +265,7 @@ public abstract class BankBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
+   * Method returns attribute {@link #name}.<br/>
    * 
    * @return String Value to which the attribute "name" is set.
    */
@@ -286,8 +285,7 @@ public abstract class BankBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "code".
-   * 
+   * Method returns attribute {@link #code}.<br/>
    * 
    * @return Long Value to which the attribute "code" is set.
    */
@@ -307,8 +305,7 @@ public abstract class BankBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "type".
-   * 
+   * Method returns attribute {@link #type}.<br/>
    * 
    * @return Short Value to which the attribute "type" is set.
    */

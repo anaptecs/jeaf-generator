@@ -81,8 +81,7 @@ public abstract class FlushTestSlaveBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "optionalField".
-   * 
+   * Method returns attribute {@link #optionalField}.<br/>
    * 
    * @return String Value to which the attribute "optionalField" is set.
    */

@@ -56,8 +56,7 @@ public abstract class AccountDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "number".
-   * 
+   * Method returns attribute {@link #number}.<br/>
    * 
    * @return Long Value to which the attribute "number" is set.
    */
@@ -77,8 +76,7 @@ public abstract class AccountDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "interestRate".
-   * 
+   * Method returns attribute {@link #interestRate}.<br/>
    * 
    * @return Float Value to which the attribute "interestRate" is set.
    */
@@ -98,8 +96,7 @@ public abstract class AccountDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "balance".
-   * 
+   * Method returns attribute {@link #balance}.<br/>
    * 
    * @return BigDecimal Value to which the attribute "balance" is set.
    */

@@ -118,8 +118,7 @@ public class StringCodeType {
   }
 
   /**
-   * Method returns the attribute "code".
-   * 
+   * Method returns attribute {@link #code}.<br/>
    * 
    * @return String Value to which the attribute "code" is set.
    */

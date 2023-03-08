@@ -45,8 +45,7 @@ public abstract class FlushTestMasterBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "requiredField".
-   * 
+   * Method returns attribute {@link #requiredField}.<br/>
    * 
    * @return String Value to which the attribute "requiredField" is set.
    */

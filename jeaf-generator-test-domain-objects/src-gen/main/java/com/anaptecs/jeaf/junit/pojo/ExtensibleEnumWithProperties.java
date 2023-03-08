@@ -54,8 +54,7 @@ public final class ExtensibleEnumWithProperties {
     private final double doubleProperty;
 
     /**
-     * Method returns the attribute "dataUnitID".
-     * 
+     * Method returns attribute {@link #dataUnitID}.<br/>
      * 
      * @return String Value to which the attribute "dataUnitID" is set.
      */
@@ -64,8 +63,7 @@ public final class ExtensibleEnumWithProperties {
     }
 
     /**
-     * Method returns the attribute "name".
-     * 
+     * Method returns attribute {@link #name}.<br/>
      * 
      * @return String Value to which the attribute "name" is set.
      */
@@ -74,8 +72,7 @@ public final class ExtensibleEnumWithProperties {
     }
 
     /**
-     * Method returns the attribute "order".
-     * 
+     * Method returns attribute {@link #order}.<br/>
      * 
      * @return int Value to which the attribute "order" is set.
      */
@@ -84,8 +81,7 @@ public final class ExtensibleEnumWithProperties {
     }
 
     /**
-     * Method returns the attribute "longProperty".
-     * 
+     * Method returns attribute {@link #longProperty}.<br/>
      * 
      * @return long Value to which the attribute "longProperty" is set.
      */
@@ -94,8 +90,7 @@ public final class ExtensibleEnumWithProperties {
     }
 
     /**
-     * Method returns the attribute "booleanProperty".
-     * 
+     * Method returns attribute {@link #booleanProperty}.<br/>
      * 
      * @return Boolean Value to which the attribute "booleanProperty" is set.
      */
@@ -104,8 +99,7 @@ public final class ExtensibleEnumWithProperties {
     }
 
     /**
-     * Method returns the attribute "floatProperty".
-     * 
+     * Method returns attribute {@link #floatProperty}.<br/>
      * 
      * @return float Value to which the attribute "floatProperty" is set.
      */
@@ -114,8 +108,7 @@ public final class ExtensibleEnumWithProperties {
     }
 
     /**
-     * Method returns the attribute "doubleProperty".
-     * 
+     * Method returns attribute {@link #doubleProperty}.<br/>
      * 
      * @return double Value to which the attribute "doubleProperty" is set.
      */

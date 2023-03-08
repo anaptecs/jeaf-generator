@@ -776,8 +776,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "aBooleanArray".
-   * 
+   * Method returns attribute {@link #aBooleanArray}.<br/>
    * 
    * @return Boolean Value to which the attribute "aBooleanArray" is set.
    */
@@ -811,8 +810,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "bBooleanArray".
-   * 
+   * Method returns attribute {@link #bBooleanArray}.<br/>
    * 
    * @return Boolean Value to which the attribute "bBooleanArray" is set.
    */
@@ -846,8 +844,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "cBooleanArray".
-   * 
+   * Method returns attribute {@link #cBooleanArray}.<br/>
    * 
    * @return Boolean Value to which the attribute "cBooleanArray" is set.
    */
@@ -881,8 +878,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "aByteArray".
-   * 
+   * Method returns attribute {@link #aByteArray}.<br/>
    * 
    * @return byte Value to which the attribute "aByteArray" is set.
    */
@@ -916,8 +912,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "bByteArray".
-   * 
+   * Method returns attribute {@link #bByteArray}.<br/>
    * 
    * @return Byte Value to which the attribute "bByteArray" is set.
    */
@@ -951,8 +946,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "aShortArray".
-   * 
+   * Method returns attribute {@link #aShortArray}.<br/>
    * 
    * @return short Value to which the attribute "aShortArray" is set.
    */
@@ -986,8 +980,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "bShortArray".
-   * 
+   * Method returns attribute {@link #bShortArray}.<br/>
    * 
    * @return Short Value to which the attribute "bShortArray" is set.
    */
@@ -1021,8 +1014,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "aIntegerArray".
-   * 
+   * Method returns attribute {@link #aIntegerArray}.<br/>
    * 
    * @return int Value to which the attribute "aIntegerArray" is set.
    */
@@ -1039,8 +1031,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "bIntegerArray".
-   * 
+   * Method returns attribute {@link #bIntegerArray}.<br/>
    * 
    * @return Integer Value to which the attribute "bIntegerArray" is set.
    */
@@ -1074,8 +1065,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "cIntegerArray".
-   * 
+   * Method returns attribute {@link #cIntegerArray}.<br/>
    * 
    * @return Integer Value to which the attribute "cIntegerArray" is set.
    */
@@ -1109,8 +1099,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "aLongArray".
-   * 
+   * Method returns attribute {@link #aLongArray}.<br/>
    * 
    * @return long Value to which the attribute "aLongArray" is set.
    */
@@ -1144,8 +1133,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "bLongArray".
-   * 
+   * Method returns attribute {@link #bLongArray}.<br/>
    * 
    * @return Long Value to which the attribute "bLongArray" is set.
    */
@@ -1179,8 +1167,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "aBigIntegerArray".
-   * 
+   * Method returns attribute {@link #aBigIntegerArray}.<br/>
    * 
    * @return BigInteger Value to which the attribute "aBigIntegerArray" is set.
    */
@@ -1214,8 +1201,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "aCharacterArray".
-   * 
+   * Method returns attribute {@link #aCharacterArray}.<br/>
    * 
    * @return char Value to which the attribute "aCharacterArray" is set.
    */
@@ -1249,8 +1235,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "bCharacterArray".
-   * 
+   * Method returns attribute {@link #bCharacterArray}.<br/>
    * 
    * @return Character Value to which the attribute "bCharacterArray" is set.
    */
@@ -1284,8 +1269,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "aFloatArray".
-   * 
+   * Method returns attribute {@link #aFloatArray}.<br/>
    * 
    * @return float Value to which the attribute "aFloatArray" is set.
    */
@@ -1319,8 +1303,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "bFloatArray".
-   * 
+   * Method returns attribute {@link #bFloatArray}.<br/>
    * 
    * @return Float Value to which the attribute "bFloatArray" is set.
    */
@@ -1354,8 +1337,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "aDoubleArray".
-   * 
+   * Method returns attribute {@link #aDoubleArray}.<br/>
    * 
    * @return double Value to which the attribute "aDoubleArray" is set.
    */
@@ -1389,8 +1371,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "bDoubleArray".
-   * 
+   * Method returns attribute {@link #bDoubleArray}.<br/>
    * 
    * @return Double Value to which the attribute "bDoubleArray" is set.
    */
@@ -1424,8 +1405,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "aBigDecimalArray".
-   * 
+   * Method returns attribute {@link #aBigDecimalArray}.<br/>
    * 
    * @return BigDecimal Value to which the attribute "aBigDecimalArray" is set.
    */
@@ -1459,8 +1439,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "aStringArray".
-   * 
+   * Method returns attribute {@link #aStringArray}.<br/>
    * 
    * @return String Value to which the attribute "aStringArray" is set.
    */
@@ -1494,8 +1473,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Method returns the attribute "bStringArray".
-   * 
+   * Method returns attribute {@link #bStringArray}.<br/>
    * 
    * @return String Value to which the attribute "bStringArray" is set.
    */

@@ -36,8 +36,7 @@ public class MappingChildDO extends MappingParentDO {
   }
 
   /**
-   * Method returns the attribute "value".
-   * 
+   * Method returns attribute {@link #value}.<br/>
    * 
    * @return int Value to which the attribute "value" is set.
    */

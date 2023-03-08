@@ -73,10 +73,10 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "deprecated".
-   * 
+   * Method returns attribute {@link #deprecated}.<br/>
    * 
    * @return int Value to which the attribute "deprecated" is set.
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public int getDeprecated( ) {

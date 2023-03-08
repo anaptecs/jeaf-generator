@@ -250,8 +250,7 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
+   * Method returns attribute {@link #name}.<br/>
    * 
    * @return String Value to which the attribute "name" is set.
    */
@@ -271,8 +270,7 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "code".
-   * 
+   * Method returns attribute {@link #code}.<br/>
    * 
    * @return Long Value to which the attribute "code" is set.
    */
@@ -292,8 +290,7 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "type".
-   * 
+   * Method returns attribute {@link #type}.<br/>
    * 
    * @return BankType Value to which the attribute "type" is set.
    */

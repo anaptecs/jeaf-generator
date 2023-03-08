@@ -80,8 +80,7 @@ public abstract class BookingBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "amount".
-   * 
+   * Method returns attribute {@link #amount}.<br/>
    * 
    * @return Double Value to which the attribute "amount" is set.
    */
@@ -203,8 +202,7 @@ public abstract class BookingBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "sessionKey".
-   * 
+   * Method returns attribute {@link #sessionKey}.<br/>
    * 
    * @return byte Value to which the attribute "sessionKey" is set.
    */

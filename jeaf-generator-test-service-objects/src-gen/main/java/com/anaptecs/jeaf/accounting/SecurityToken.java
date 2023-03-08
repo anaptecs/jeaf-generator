@@ -185,8 +185,8 @@ public class SecurityToken implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "sessionKey". The attribute contains the session key of the security token that was
-   * used when the booking was executed.
+   * Method returns attribute {@link #sessionKey}.<br/>
+   * The attribute contains the session key of the security token that was used when the booking was executed.
    * 
    * @return byte Value to which the attribute "sessionKey" is set.
    */
@@ -246,8 +246,7 @@ public class SecurityToken implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "value".
-   * 
+   * Method returns attribute {@link #value}.<br/>
    * 
    * @return Integer Value to which the attribute "value" is set.
    */

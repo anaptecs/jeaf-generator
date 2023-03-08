@@ -181,8 +181,7 @@ public class ParentPOJO {
   }
 
   /**
-   * Method returns the attribute "parentAttribute".
-   * 
+   * Method returns attribute {@link #parentAttribute}.<br/>
    * 
    * @return String Value to which the attribute "parentAttribute" is set.
    */
@@ -202,10 +201,10 @@ public class ParentPOJO {
   }
 
   /**
-   * Method returns the attribute "weirdAttribute".
-   * 
+   * Method returns attribute {@link #weirdAttribute}.<br/>
    * 
    * @return byte Value to which the attribute "weirdAttribute" is set.
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public byte getWeirdAttribute( ) {
@@ -225,8 +224,7 @@ public class ParentPOJO {
   }
 
   /**
-   * Method returns the attribute "hello".
-   * 
+   * Method returns attribute {@link #hello}.<br/>
    * 
    * @return String Value to which the attribute "hello" is set.
    */

@@ -218,8 +218,7 @@ public class BookingID {
   }
 
   /**
-   * Method returns the attribute "publicBookingID".
-   * 
+   * Method returns attribute {@link #publicBookingID}.<br/>
    * 
    * @return String Value to which the attribute "publicBookingID" is set.
    */
@@ -228,8 +227,7 @@ public class BookingID {
   }
 
   /**
-   * Method returns the attribute "referenceID".
-   * 
+   * Method returns attribute {@link #referenceID}.<br/>
    * 
    * @return String Value to which the attribute "referenceID" is set.
    */
@@ -238,8 +236,7 @@ public class BookingID {
   }
 
   /**
-   * Method returns the attribute "externalRefID".
-   * 
+   * Method returns attribute {@link #externalRefID}.<br/>
    * 
    * @return String Value to which the attribute "externalRefID" is set.
    */

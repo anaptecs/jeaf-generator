@@ -180,7 +180,8 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method returns the attribute "childBAttribute". A child attribute
+   * Method returns attribute {@link #childBAttribute}.<br/>
+   * A child attribute
    * 
    * @return Boolean Value to which the attribute "childBAttribute" is set.
    */

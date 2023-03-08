@@ -221,8 +221,7 @@ public class DirectedEdge implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "link".
-   * 
+   * Method returns attribute {@link #link}.<br/>
    * 
    * @return String Value to which the attribute "link" is set.
    */

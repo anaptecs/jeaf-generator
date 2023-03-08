@@ -136,8 +136,7 @@ public class TechParent implements Serializable {
   }
 
   /**
-   * Method returns the attribute "techAttribute".
-   * 
+   * Method returns attribute {@link #techAttribute}.<br/>
    * 
    * @return String Value to which the attribute "techAttribute" is set.
    */

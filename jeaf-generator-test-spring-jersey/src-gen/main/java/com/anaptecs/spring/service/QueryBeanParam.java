@@ -104,8 +104,7 @@ public class QueryBeanParam {
   }
 
   /**
-   * Method returns the attribute "bookingCode".
-   * 
+   * Method returns attribute {@link #bookingCode}.<br/>
    * 
    * @return BookingCode Value to which the attribute "bookingCode" is set.
    */

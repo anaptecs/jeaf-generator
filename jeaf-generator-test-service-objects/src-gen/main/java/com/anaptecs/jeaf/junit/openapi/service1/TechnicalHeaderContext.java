@@ -160,8 +160,7 @@ public class TechnicalHeaderContext implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "reseller".
-   * 
+   * Method returns attribute {@link #reseller}.<br/>
    * 
    * @return String Value to which the attribute "reseller" is set.
    */
@@ -181,8 +180,7 @@ public class TechnicalHeaderContext implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "authenticationToken".
-   * 
+   * Method returns attribute {@link #authenticationToken}.<br/>
    * 
    * @return String Value to which the attribute "authenticationToken" is set.
    */

@@ -26,8 +26,7 @@ public final class Entity {
     private final String entityID;
 
     /**
-     * Method returns the attribute "entityID".
-     * 
+     * Method returns attribute {@link #entityID}.<br/>
      * 
      * @return String Value to which the attribute "entityID" is set.
      */

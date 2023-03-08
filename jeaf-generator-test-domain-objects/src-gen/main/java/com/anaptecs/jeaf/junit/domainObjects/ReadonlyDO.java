@@ -43,8 +43,7 @@ public class ReadonlyDO extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "readonly".
-   * 
+   * Method returns attribute {@link #readonly}.<br/>
    * 
    * @return int Value to which the attribute "readonly" is set.
    */

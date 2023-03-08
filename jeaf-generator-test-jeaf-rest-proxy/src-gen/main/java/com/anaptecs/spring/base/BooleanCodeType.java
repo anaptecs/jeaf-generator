@@ -138,8 +138,7 @@ public class BooleanCodeType implements Serializable {
   }
 
   /**
-   * Method returns the attribute "code".
-   * 
+   * Method returns attribute {@link #code}.<br/>
    * 
    * @return Boolean Value to which the attribute "code" is set.
    */

@@ -133,8 +133,7 @@ public abstract class ChildA extends ParentClass {
   }
 
   /**
-   * Method returns the attribute "childAAttribute".
-   * 
+   * Method returns attribute {@link #childAAttribute}.<br/>
    * 
    * @return int Value to which the attribute "childAAttribute" is set.
    */

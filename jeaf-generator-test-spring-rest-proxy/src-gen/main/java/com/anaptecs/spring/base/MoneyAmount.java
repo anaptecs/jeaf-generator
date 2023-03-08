@@ -146,7 +146,8 @@ public class MoneyAmount {
   }
 
   /**
-   * Method returns the attribute "amount". The amount of money. Attribute is always set.
+   * Method returns attribute {@link #amount}.<br/>
+   * The amount of money. Attribute is always set.
    * 
    * @return BigDecimal Value to which the attribute "amount" is set.
    */
@@ -155,8 +156,7 @@ public class MoneyAmount {
   }
 
   /**
-   * Method returns the attribute "currencyCode".
-   * 
+   * Method returns attribute {@link #currencyCode}.<br/>
    * 
    * @return CurrencyCode Value to which the attribute "currencyCode" is set.
    */

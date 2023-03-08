@@ -226,10 +226,9 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method returns the association "heyBrother".
+   * Method returns association {@link #heyBrother}.<br/>
    * 
-   *
-   * @return SoftLinkChildA SoftLinkChildA to which the association "heyBrother" is set.
+   * @return SoftLinkChildA Value to which the attribute "heyBrother" is set.
    */
   public String getHeyBrother( ) {
     return heyBrother;
@@ -319,10 +318,9 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method returns the association "oneLink".
+   * Method returns association {@link #oneLink}.<br/>
    * 
-   *
-   * @return SoftLinkPartner SoftLinkPartner to which the association "oneLink" is set.
+   * @return SoftLinkPartner Value to which the attribute "oneLink" is set.
    */
   public SoftLinkID getOneLink( ) {
     return oneLink;

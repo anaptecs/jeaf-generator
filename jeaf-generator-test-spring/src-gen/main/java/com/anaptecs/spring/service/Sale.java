@@ -146,8 +146,7 @@ public class Sale {
   }
 
   /**
-   * Method returns the attribute "transactionAmount".
-   * 
+   * Method returns attribute {@link #transactionAmount}.<br/>
    * 
    * @return BigDecimal Value to which the attribute "transactionAmount" is set.
    */

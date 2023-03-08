@@ -245,8 +245,7 @@ public class POI extends Stop {
   }
 
   /**
-   * Method returns the attribute "description".
-   * 
+   * Method returns attribute {@link #description}.<br/>
    * 
    * @return String Value to which the attribute "description" is set.
    */
@@ -266,10 +265,10 @@ public class POI extends Stop {
   }
 
   /**
-   * Method returns the association "theLink".
+   * Method returns association {@link #theLink}.<br/>
    * 
-   *
-   * @return LinkObject LinkObject to which the association "theLink" is set.
+   * @return LinkObject Value to which the attribute "theLink" is set.
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public Long getTheLink( ) {

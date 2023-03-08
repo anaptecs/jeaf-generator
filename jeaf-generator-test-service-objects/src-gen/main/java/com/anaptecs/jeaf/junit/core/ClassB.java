@@ -308,8 +308,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "intValue".
-   * 
+   * Method returns attribute {@link #intValue}.<br/>
    * 
    * @return Integer Value to which the attribute "intValue" is set.
    */

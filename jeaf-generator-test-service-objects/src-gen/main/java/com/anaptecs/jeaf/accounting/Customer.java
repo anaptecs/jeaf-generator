@@ -252,8 +252,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
   }
 
   /**
-   * Method returns the attribute "active".
-   * 
+   * Method returns attribute {@link #active}.<br/>
    * 
    * @return Boolean Value to which the attribute "active" is set.
    */
@@ -273,8 +272,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
   }
 
   /**
-   * Method returns the attribute "street".
-   * 
+   * Method returns attribute {@link #street}.<br/>
    * 
    * @return String Value to which the attribute "street" is set.
    */
@@ -294,8 +292,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
   }
 
   /**
-   * Method returns the attribute "zipCode".
-   * 
+   * Method returns attribute {@link #zipCode}.<br/>
    * 
    * @return Integer Value to which the attribute "zipCode" is set.
    */
@@ -315,8 +312,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
   }
 
   /**
-   * Method returns the attribute "city".
-   * 
+   * Method returns attribute {@link #city}.<br/>
    * 
    * @return String Value to which the attribute "city" is set.
    */
@@ -336,8 +332,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
   }
 
   /**
-   * Method returns the attribute "country".
-   * 
+   * Method returns attribute {@link #country}.<br/>
    * 
    * @return String Value to which the attribute "country" is set.
    */

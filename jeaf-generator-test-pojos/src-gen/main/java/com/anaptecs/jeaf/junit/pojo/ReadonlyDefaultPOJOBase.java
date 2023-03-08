@@ -112,8 +112,7 @@ public abstract class ReadonlyDefaultPOJOBase {
   }
 
   /**
-   * Method returns the attribute "readonlyDefault".
-   * 
+   * Method returns attribute {@link #readonlyDefault}.<br/>
    * 
    * @return int Value to which the attribute "readonlyDefault" is set.
    */

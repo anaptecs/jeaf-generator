@@ -52,8 +52,7 @@ public abstract class ChildBOBase extends BaseClassBO {
   }
 
   /**
-   * Method returns the attribute "childName".
-   * 
+   * Method returns attribute {@link #childName}.<br/>
    * 
    * @return String Value to which the attribute "childName" is set.
    */
@@ -73,8 +72,7 @@ public abstract class ChildBOBase extends BaseClassBO {
   }
 
   /**
-   * Method returns the attribute "childNumber".
-   * 
+   * Method returns attribute {@link #childNumber}.<br/>
    * 
    * @return Integer Value to which the attribute "childNumber" is set.
    */

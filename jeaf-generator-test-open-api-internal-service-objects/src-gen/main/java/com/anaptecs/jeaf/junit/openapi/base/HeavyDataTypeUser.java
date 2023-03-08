@@ -289,8 +289,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "booleanCode".
-   * 
+   * Method returns attribute {@link #booleanCode}.<br/>
    * 
    * @return BooleanCode Value to which the attribute "booleanCode" is set.
    */
@@ -310,8 +309,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "byteCode".
-   * 
+   * Method returns attribute {@link #byteCode}.<br/>
    * 
    * @return ByteCode Value to which the attribute "byteCode" is set.
    */
@@ -331,8 +329,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "shortCode".
-   * 
+   * Method returns attribute {@link #shortCode}.<br/>
    * 
    * @return ShortCode Value to which the attribute "shortCode" is set.
    */
@@ -352,8 +349,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "integerCode".
-   * 
+   * Method returns attribute {@link #integerCode}.<br/>
    * 
    * @return IntegerCode Value to which the attribute "integerCode" is set.
    */
@@ -373,8 +369,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "floatCode".
-   * 
+   * Method returns attribute {@link #floatCode}.<br/>
    * 
    * @return FloatCode Value to which the attribute "floatCode" is set.
    */
@@ -394,8 +389,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "doubleCode".
-   * 
+   * Method returns attribute {@link #doubleCode}.<br/>
    * 
    * @return DoubleCode Value to which the attribute "doubleCode" is set.
    */
@@ -415,8 +409,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "bigInegerCode".
-   * 
+   * Method returns attribute {@link #bigInegerCode}.<br/>
    * 
    * @return BigIntegerCode Value to which the attribute "bigInegerCode" is set.
    */
@@ -436,8 +429,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "bigDecimalCode".
-   * 
+   * Method returns attribute {@link #bigDecimalCode}.<br/>
    * 
    * @return BigDecimalCode Value to which the attribute "bigDecimalCode" is set.
    */

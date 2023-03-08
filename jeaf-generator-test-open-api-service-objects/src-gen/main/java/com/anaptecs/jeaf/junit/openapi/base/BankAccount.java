@@ -124,8 +124,7 @@ public class BankAccount implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "iban".
-   * 
+   * Method returns attribute {@link #iban}.<br/>
    * 
    * @return String Value to which the attribute "iban" is set.
    */

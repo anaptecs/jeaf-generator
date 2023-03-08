@@ -135,7 +135,8 @@ public class CurrencyCode implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "code". ISO 4217 currency code.
+   * Method returns attribute {@link #code}.<br/>
+   * ISO 4217 currency code.
    * 
    * @return String Value to which the attribute "code" is set.
    */

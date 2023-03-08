@@ -98,8 +98,7 @@ public class LinkObject {
   }
 
   /**
-   * Method returns the attribute "href".
-   * 
+   * Method returns attribute {@link #href}.<br/>
    * 
    * @return String Value to which the attribute "href" is set.
    */

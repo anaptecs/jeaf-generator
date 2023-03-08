@@ -149,8 +149,7 @@ public abstract class PersonBase extends Partner {
   }
 
   /**
-   * Method returns the attribute "surname".
-   * 
+   * Method returns attribute {@link #surname}.<br/>
    * 
    * @return String Value to which the attribute "surname" is set.
    */
@@ -170,8 +169,7 @@ public abstract class PersonBase extends Partner {
   }
 
   /**
-   * Method returns the attribute "firstName".
-   * 
+   * Method returns attribute {@link #firstName}.<br/>
    * 
    * @return String Value to which the attribute "firstName" is set.
    */

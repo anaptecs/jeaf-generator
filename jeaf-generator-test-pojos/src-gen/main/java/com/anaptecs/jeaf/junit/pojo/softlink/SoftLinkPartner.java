@@ -202,10 +202,9 @@ public class SoftLinkPartner {
   }
 
   /**
-   * Method returns the association "theBackLink".
+   * Method returns association {@link #theBackLink}.<br/>
    * 
-   *
-   * @return SoftLinkParent SoftLinkParent to which the association "theBackLink" is set.
+   * @return SoftLinkParent Value to which the attribute "theBackLink" is set.
    */
   public String getTheBackLink( ) {
     return theBackLink;

@@ -156,8 +156,7 @@ public abstract class SoftLinkBase {
   }
 
   /**
-   * Method returns the attribute "objectID".
-   * 
+   * Method returns attribute {@link #objectID}.<br/>
    * 
    * @return long Value to which the attribute "objectID" is set.
    */
@@ -222,8 +221,7 @@ public abstract class SoftLinkBase {
   }
 
   /**
-   * Method returns the attribute "refrenceID".
-   * 
+   * Method returns attribute {@link #refrenceID}.<br/>
    * 
    * @return String Value to which the attribute "refrenceID" is set.
    */

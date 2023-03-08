@@ -158,8 +158,7 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "gerichtet".
-   * 
+   * Method returns attribute {@link #gerichtet}.<br/>
    * 
    * @return Boolean Value to which the attribute "gerichtet" is set.
    */

@@ -117,12 +117,7 @@
 
 // TODO Get and set method should be final for service objects. 
 «DEFINE Getter FOR Property»
-	/**
-	 * Method returns the attribute "«asInstanceVar()»".
-	 * «this.getComment()»
-	 * 
-	 * @return «type.name» Value to which the attribute "«asInstanceVar()»" is set.
-	 */
+	«EXPAND functions::Javadoc::JavadocForPropertyGetter»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «this.fqn()»«IF isMultivalued()»[]«ENDIF» «asGetter()»() {
 	    «IF this.isMultivalued() == false»return «asInstanceVar()»;«ELSE»«this.fqn()»[] lReturnValue;
@@ -189,12 +184,7 @@
 «ENDDEFINE»
 
 «DEFINE SoftLinkToOneAccessorMethods FOR SoftLink»
-    /**
-     * Method returns the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     *
-     * @return «type.name» «this.type.name» to which the association "«asInstanceVar()»" is set.
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public «this.getMultivaluedSoftLinkType()» «asGetter()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»

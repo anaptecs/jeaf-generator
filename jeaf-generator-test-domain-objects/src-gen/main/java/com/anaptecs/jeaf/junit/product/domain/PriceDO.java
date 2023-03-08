@@ -47,8 +47,7 @@ public class PriceDO extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "amount".
-   * 
+   * Method returns attribute {@link #amount}.<br/>
    * 
    * @return BigDecimal Value to which the attribute "amount" is set.
    */
@@ -68,8 +67,7 @@ public class PriceDO extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "currency".
-   * 
+   * Method returns attribute {@link #currency}.<br/>
    * 
    * @return Currency Value to which the attribute "currency" is set.
    */

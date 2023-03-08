@@ -159,8 +159,7 @@ public class BusinessChild extends BusinessParent {
   }
 
   /**
-   * Method returns the attribute "childAttribute".
-   * 
+   * Method returns attribute {@link #childAttribute}.<br/>
    * 
    * @return String Value to which the attribute "childAttribute" is set.
    */

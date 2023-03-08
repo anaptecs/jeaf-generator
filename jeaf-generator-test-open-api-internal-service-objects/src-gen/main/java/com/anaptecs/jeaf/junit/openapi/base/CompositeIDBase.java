@@ -122,8 +122,7 @@ public abstract class CompositeIDBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "primaryCode".
-   * 
+   * Method returns attribute {@link #primaryCode}.<br/>
    * 
    * @return long Value to which the attribute "primaryCode" is set.
    */
@@ -143,8 +142,7 @@ public abstract class CompositeIDBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "secondaryCode".
-   * 
+   * Method returns attribute {@link #secondaryCode}.<br/>
    * 
    * @return long Value to which the attribute "secondaryCode" is set.
    */

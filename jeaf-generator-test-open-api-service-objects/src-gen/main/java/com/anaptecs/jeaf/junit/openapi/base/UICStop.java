@@ -250,8 +250,7 @@ public class UICStop extends Stop {
   }
 
   /**
-   * Method returns the attribute "uicCode".
-   * 
+   * Method returns attribute {@link #uicCode}.<br/>
    * 
    * @return String Value to which the attribute "uicCode" is set.
    */
@@ -271,8 +270,7 @@ public class UICStop extends Stop {
   }
 
   /**
-   * Method returns the attribute "priority".
-   * 
+   * Method returns attribute {@link #priority}.<br/>
    * 
    * @return int Value to which the attribute "priority" is set.
    */
@@ -292,8 +290,7 @@ public class UICStop extends Stop {
   }
 
   /**
-   * Method returns the attribute "code".
-   * 
+   * Method returns attribute {@link #code}.<br/>
    * 
    * @return long Value to which the attribute "code" is set.
    */
@@ -313,8 +310,7 @@ public class UICStop extends Stop {
   }
 
   /**
-   * Method returns the attribute "index2".
-   * 
+   * Method returns attribute {@link #index2}.<br/>
    * 
    * @return byte Value to which the attribute "index2" is set.
    */

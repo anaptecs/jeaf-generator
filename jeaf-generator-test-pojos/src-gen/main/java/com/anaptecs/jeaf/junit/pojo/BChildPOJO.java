@@ -163,8 +163,7 @@ public class BChildPOJO extends BParentPOJO {
   }
 
   /**
-   * Method returns the attribute "weirdAttribute".
-   * 
+   * Method returns attribute {@link #weirdAttribute}.<br/>
    * 
    * @return byte Value to which the attribute "weirdAttribute" is set.
    */
@@ -184,8 +183,7 @@ public class BChildPOJO extends BParentPOJO {
   }
 
   /**
-   * Method returns the attribute "childAttribute".
-   * 
+   * Method returns attribute {@link #childAttribute}.<br/>
    * 
    * @return Integer Value to which the attribute "childAttribute" is set.
    */

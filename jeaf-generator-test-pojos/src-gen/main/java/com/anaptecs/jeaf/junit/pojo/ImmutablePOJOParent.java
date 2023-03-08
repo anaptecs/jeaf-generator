@@ -164,8 +164,7 @@ public class ImmutablePOJOParent extends AbstractPOJO {
   }
 
   /**
-   * Method returns the attribute "parentAttribute".
-   * 
+   * Method returns attribute {@link #parentAttribute}.<br/>
    * 
    * @return String Value to which the attribute "parentAttribute" is set.
    */
@@ -174,8 +173,7 @@ public class ImmutablePOJOParent extends AbstractPOJO {
   }
 
   /**
-   * Method returns the attribute "anotherParentAttribute".
-   * 
+   * Method returns attribute {@link #anotherParentAttribute}.<br/>
    * 
    * @return Integer Value to which the attribute "anotherParentAttribute" is set.
    */

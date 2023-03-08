@@ -100,8 +100,7 @@ public abstract class MyPersonBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
+   * Method returns attribute {@link #name}.<br/>
    * 
    * @return String Value to which the attribute "name" is set.
    */
@@ -121,8 +120,7 @@ public abstract class MyPersonBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "firstName".
-   * 
+   * Method returns attribute {@link #firstName}.<br/>
    * 
    * @return String Value to which the attribute "firstName" is set.
    */
@@ -142,8 +140,7 @@ public abstract class MyPersonBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "dateOfBirth".
-   * 
+   * Method returns attribute {@link #dateOfBirth}.<br/>
    * 
    * @return Calendar Value to which the attribute "dateOfBirth" is set.
    */

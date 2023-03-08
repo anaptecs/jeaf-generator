@@ -543,8 +543,7 @@ public class Product implements Serializable {
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
+   * Method returns attribute {@link #name}.<br/>
    * 
    * @return String Value to which the attribute "name" is set.
    */
@@ -564,7 +563,8 @@ public class Product implements Serializable {
   }
 
   /**
-   * Method returns the attribute "image". Image describing the product.
+   * Method returns attribute {@link #image}.<br/>
+   * Image describing the product.
    * 
    * @return byte Value to which the attribute "image" is set.
    */
@@ -597,8 +597,7 @@ public class Product implements Serializable {
   }
 
   /**
-   * Method returns the attribute "link".
-   * 
+   * Method returns attribute {@link #link}.<br/>
    * 
    * @return URL Value to which the attribute "link" is set.
    */
@@ -618,8 +617,7 @@ public class Product implements Serializable {
   }
 
   /**
-   * Method returns the attribute "productID".
-   * 
+   * Method returns attribute {@link #productID}.<br/>
    * 
    * @return UUID Value to which the attribute "productID" is set.
    */
@@ -757,8 +755,7 @@ public class Product implements Serializable {
   }
 
   /**
-   * Method returns the attribute "description".
-   * 
+   * Method returns attribute {@link #description}.<br/>
    * 
    * @return String Value to which the attribute "description" is set.
    */
@@ -858,8 +855,7 @@ public class Product implements Serializable {
   }
 
   /**
-   * Method returns the attribute "uri".
-   * 
+   * Method returns attribute {@link #uri}.<br/>
    * 
    * @return String Value to which the attribute "uri" is set.
    */

@@ -174,8 +174,7 @@ public class PostalAddress {
   }
 
   /**
-   * Method returns the attribute "street".
-   * 
+   * Method returns attribute {@link #street}.<br/>
    * 
    * @return String Value to which the attribute "street" is set.
    */
@@ -195,8 +194,7 @@ public class PostalAddress {
   }
 
   /**
-   * Method returns the attribute "houseNumber".
-   * 
+   * Method returns attribute {@link #houseNumber}.<br/>
    * 
    * @return String Value to which the attribute "houseNumber" is set.
    */
@@ -216,8 +214,7 @@ public class PostalAddress {
   }
 
   /**
-   * Method returns the attribute "city".
-   * 
+   * Method returns attribute {@link #city}.<br/>
    * 
    * @return String Value to which the attribute "city" is set.
    */
@@ -237,8 +234,7 @@ public class PostalAddress {
   }
 
   /**
-   * Method returns the attribute "postalCode".
-   * 
+   * Method returns attribute {@link #postalCode}.<br/>
    * 
    * @return int Value to which the attribute "postalCode" is set.
    */

@@ -157,8 +157,7 @@ public class ReadonlyServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "readonly".
-   * 
+   * Method returns attribute {@link #readonly}.<br/>
    * 
    * @return String Value to which the attribute "readonly" is set.
    */
@@ -167,8 +166,7 @@ public class ReadonlyServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "readonlyDefault".
-   * 
+   * Method returns attribute {@link #readonlyDefault}.<br/>
    * 
    * @return int Value to which the attribute "readonlyDefault" is set.
    */

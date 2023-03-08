@@ -307,8 +307,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "myBoolean".
-   * 
+   * Method returns attribute {@link #myBoolean}.<br/>
    * 
    * @return Boolean Value to which the attribute "myBoolean" is set.
    */
@@ -328,8 +327,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "myByte".
-   * 
+   * Method returns attribute {@link #myByte}.<br/>
    * 
    * @return Byte Value to which the attribute "myByte" is set.
    */
@@ -349,8 +347,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "myCharacter".
-   * 
+   * Method returns attribute {@link #myCharacter}.<br/>
    * 
    * @return Character Value to which the attribute "myCharacter" is set.
    */
@@ -370,8 +367,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "myDouble".
-   * 
+   * Method returns attribute {@link #myDouble}.<br/>
    * 
    * @return Double Value to which the attribute "myDouble" is set.
    */
@@ -391,8 +387,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "myFloat".
-   * 
+   * Method returns attribute {@link #myFloat}.<br/>
    * 
    * @return Float Value to which the attribute "myFloat" is set.
    */
@@ -412,8 +407,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "myLong".
-   * 
+   * Method returns attribute {@link #myLong}.<br/>
    * 
    * @return Long Value to which the attribute "myLong" is set.
    */
@@ -433,8 +427,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "myShort".
-   * 
+   * Method returns attribute {@link #myShort}.<br/>
    * 
    * @return Short Value to which the attribute "myShort" is set.
    */
@@ -454,8 +447,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "myByteArray".
-   * 
+   * Method returns attribute {@link #myByteArray}.<br/>
    * 
    * @return byte Value to which the attribute "myByteArray" is set.
    */

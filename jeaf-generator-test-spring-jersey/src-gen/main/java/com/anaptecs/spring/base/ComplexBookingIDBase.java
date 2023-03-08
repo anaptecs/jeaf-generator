@@ -229,8 +229,7 @@ public abstract class ComplexBookingIDBase {
   }
 
   /**
-   * Method returns the attribute "internalID".
-   * 
+   * Method returns attribute {@link #internalID}.<br/>
    * 
    * @return long Value to which the attribute "internalID" is set.
    */
@@ -250,8 +249,7 @@ public abstract class ComplexBookingIDBase {
   }
 
   /**
-   * Method returns the attribute "referenceID".
-   * 
+   * Method returns attribute {@link #referenceID}.<br/>
    * 
    * @return String Value to which the attribute "referenceID" is set.
    */
@@ -356,8 +354,7 @@ public abstract class ComplexBookingIDBase {
   }
 
   /**
-   * Method returns the attribute "anotherID".
-   * 
+   * Method returns attribute {@link #anotherID}.<br/>
    * 
    * @return Integer Value to which the attribute "anotherID" is set.
    */
@@ -377,8 +374,7 @@ public abstract class ComplexBookingIDBase {
   }
 
   /**
-   * Method returns the attribute "strings".
-   * 
+   * Method returns attribute {@link #strings}.<br/>
    * 
    * @return String Value to which the attribute "strings" is set.
    */

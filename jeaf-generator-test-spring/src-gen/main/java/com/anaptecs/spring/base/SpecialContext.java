@@ -222,8 +222,7 @@ public class SpecialContext extends Context {
   }
 
   /**
-   * Method returns the attribute "specificHeader".
-   * 
+   * Method returns attribute {@link #specificHeader}.<br/>
    * 
    * @return String Value to which the attribute "specificHeader" is set.
    */
@@ -243,8 +242,7 @@ public class SpecialContext extends Context {
   }
 
   /**
-   * Method returns the attribute "channelType".
-   * 
+   * Method returns attribute {@link #channelType}.<br/>
    * 
    * @return ChannelType Value to which the attribute "channelType" is set.
    */

@@ -112,8 +112,7 @@ public class TechnicalHeaderContext {
   }
 
   /**
-   * Method returns the attribute "reseller".
-   * 
+   * Method returns attribute {@link #reseller}.<br/>
    * 
    * @return String Value to which the attribute "reseller" is set.
    */

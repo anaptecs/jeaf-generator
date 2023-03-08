@@ -176,8 +176,7 @@ public class ChildPOJO extends ParentPOJO {
   }
 
   /**
-   * Method returns the attribute "childAttribute".
-   * 
+   * Method returns attribute {@link #childAttribute}.<br/>
    * 
    * @return Integer Value to which the attribute "childAttribute" is set.
    */

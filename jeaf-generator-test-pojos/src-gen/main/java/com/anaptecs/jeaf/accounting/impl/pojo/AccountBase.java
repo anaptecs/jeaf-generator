@@ -195,8 +195,7 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method returns the attribute "iban".
-   * 
+   * Method returns attribute {@link #iban}.<br/>
    * 
    * @return int Value to which the attribute "iban" is set.
    */
@@ -259,8 +258,7 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method returns the attribute "currency".
-   * 
+   * Method returns attribute {@link #currency}.<br/>
    * 
    * @return Currency Value to which the attribute "currency" is set.
    */

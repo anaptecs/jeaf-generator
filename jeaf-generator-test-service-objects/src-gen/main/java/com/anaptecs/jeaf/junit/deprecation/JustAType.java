@@ -156,8 +156,7 @@ public class JustAType implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "attribute".
-   * 
+   * Method returns attribute {@link #attribute}.<br/>
    * 
    * @return int Value to which the attribute "attribute" is set.
    */
@@ -177,10 +176,10 @@ public class JustAType implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "legacy".
-   * 
+   * Method returns attribute {@link #legacy}.<br/>
    * 
    * @return double Value to which the attribute "legacy" is set.
+   * @deprecated Hello (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public double getLegacy( ) {

@@ -52,8 +52,7 @@ public abstract class CManyBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "cNumber".
-   * 
+   * Method returns attribute {@link #cNumber}.<br/>
    * 
    * @return Integer Value to which the attribute "cNumber" is set.
    */

@@ -219,8 +219,7 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
+   * Method returns attribute {@link #name}.<br/>
    * 
    * @return String Value to which the attribute "name" is set.
    */
@@ -240,8 +239,7 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "description".
-   * 
+   * Method returns attribute {@link #description}.<br/>
    * 
    * @return String Value to which the attribute "description" is set.
    */

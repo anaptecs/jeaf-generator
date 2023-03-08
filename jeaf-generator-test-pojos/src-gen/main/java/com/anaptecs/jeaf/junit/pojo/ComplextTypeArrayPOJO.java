@@ -131,8 +131,7 @@ public class ComplextTypeArrayPOJO {
   }
 
   /**
-   * Method returns the attribute "plainPOJOs".
-   * 
+   * Method returns attribute {@link #plainPOJOs}.<br/>
    * 
    * @return PlainPOJO Value to which the attribute "plainPOJOs" is set.
    */

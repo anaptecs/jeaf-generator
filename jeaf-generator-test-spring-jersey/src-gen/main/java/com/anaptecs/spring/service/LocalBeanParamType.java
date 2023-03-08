@@ -128,8 +128,7 @@ public class LocalBeanParamType {
   }
 
   /**
-   * Method returns the attribute "localKey".
-   * 
+   * Method returns attribute {@link #localKey}.<br/>
    * 
    * @return String Value to which the attribute "localKey" is set.
    */
@@ -149,8 +148,7 @@ public class LocalBeanParamType {
   }
 
   /**
-   * Method returns the attribute "localID".
-   * 
+   * Method returns attribute {@link #localID}.<br/>
    * 
    * @return String Value to which the attribute "localID" is set.
    */

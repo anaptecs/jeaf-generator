@@ -124,8 +124,7 @@ public class ShortCodeType implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "code".
-   * 
+   * Method returns attribute {@link #code}.<br/>
    * 
    * @return short Value to which the attribute "code" is set.
    */

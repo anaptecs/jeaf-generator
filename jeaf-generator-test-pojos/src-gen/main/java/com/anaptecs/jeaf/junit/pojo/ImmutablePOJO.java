@@ -150,8 +150,7 @@ public class ImmutablePOJO {
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
+   * Method returns attribute {@link #name}.<br/>
    * 
    * @return String Value to which the attribute "name" is set.
    */
@@ -160,8 +159,7 @@ public class ImmutablePOJO {
   }
 
   /**
-   * Method returns the attribute "something".
-   * 
+   * Method returns attribute {@link #something}.<br/>
    * 
    * @return Integer Value to which the attribute "something" is set.
    */

@@ -486,8 +486,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "stringArray".
-   * 
+   * Method returns attribute {@link #stringArray}.<br/>
    * 
    * @return String Value to which the attribute "stringArray" is set.
    */

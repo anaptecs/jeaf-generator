@@ -213,8 +213,7 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
+   * Method returns attribute {@link #name}.<br/>
    * 
    * @return String Value to which the attribute "name" is set.
    */
@@ -297,8 +296,7 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "index".
-   * 
+   * Method returns attribute {@link #index}.<br/>
    * 
    * @return byte Value to which the attribute "index" is set.
    */
@@ -318,10 +316,9 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method returns the association "theSoftLink".
+   * Method returns association {@link #theSoftLink}.<br/>
    * 
-   *
-   * @return LinkObject LinkObject to which the association "theSoftLink" is set.
+   * @return LinkObject Value to which the attribute "theSoftLink" is set.
    */
   public SoftLink getTheSoftLink( ) {
     return theSoftLink;

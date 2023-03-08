@@ -245,8 +245,7 @@ public class Booking implements Serializable {
   }
 
   /**
-   * Method returns the attribute "customerName".
-   * 
+   * Method returns attribute {@link #customerName}.<br/>
    * 
    * @return String Value to which the attribute "customerName" is set.
    */

@@ -151,8 +151,7 @@ public class ModelWrapperTypeServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aBoolean".
-   * 
+   * Method returns attribute {@link #aBoolean}.<br/>
    * 
    * @return Boolean Value to which the attribute "aBoolean" is set.
    */
@@ -172,8 +171,7 @@ public class ModelWrapperTypeServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aInt".
-   * 
+   * Method returns attribute {@link #aInt}.<br/>
    * 
    * @return Integer Value to which the attribute "aInt" is set.
    */

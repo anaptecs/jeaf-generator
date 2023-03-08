@@ -469,8 +469,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   }
 
   /**
-   * Method returns the attribute "names".
-   * 
+   * Method returns attribute {@link #names}.<br/>
    * 
    * @return String Value to which the attribute "names" is set.
    */
@@ -504,8 +503,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   }
 
   /**
-   * Method returns the attribute "ints".
-   * 
+   * Method returns attribute {@link #ints}.<br/>
    * 
    * @return int Value to which the attribute "ints" is set.
    */
@@ -539,8 +537,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   }
 
   /**
-   * Method returns the attribute "doubles".
-   * 
+   * Method returns attribute {@link #doubles}.<br/>
    * 
    * @return Double Value to which the attribute "doubles" is set.
    */
@@ -574,8 +571,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   }
 
   /**
-   * Method returns the attribute "codes".
-   * 
+   * Method returns attribute {@link #codes}.<br/>
    * 
    * @return StringCode Value to which the attribute "codes" is set.
    */
@@ -674,8 +670,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   }
 
   /**
-   * Method returns the attribute "startDate".
-   * 
+   * Method returns attribute {@link #startDate}.<br/>
    * 
    * @return LocalDate Value to which the attribute "startDate" is set.
    */
@@ -695,8 +690,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   }
 
   /**
-   * Method returns the attribute "dates".
-   * 
+   * Method returns attribute {@link #dates}.<br/>
    * 
    * @return LocalDate Value to which the attribute "dates" is set.
    */
@@ -793,8 +787,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   }
 
   /**
-   * Method returns the attribute "calendars".
-   * 
+   * Method returns attribute {@link #calendars}.<br/>
    * 
    * @return Calendar Value to which the attribute "calendars" is set.
    */
@@ -828,8 +821,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   }
 
   /**
-   * Method returns the attribute "utilDates".
-   * 
+   * Method returns attribute {@link #utilDates}.<br/>
    * 
    * @return Date Value to which the attribute "utilDates" is set.
    */
@@ -863,8 +855,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   }
 
   /**
-   * Method returns the attribute "sqlTimestamps".
-   * 
+   * Method returns attribute {@link #sqlTimestamps}.<br/>
    * 
    * @return Timestamp Value to which the attribute "sqlTimestamps" is set.
    */

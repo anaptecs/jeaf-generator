@@ -268,7 +268,8 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "amount". Amount of the booking. The attribute must not be null.
+   * Method returns attribute {@link #amount}.<br/>
+   * Amount of the booking. The attribute must not be null.
    * 
    * @return Double Value to which the attribute "amount" is set.
    */

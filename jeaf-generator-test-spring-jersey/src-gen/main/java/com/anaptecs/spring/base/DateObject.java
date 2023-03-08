@@ -236,8 +236,7 @@ public class DateObject {
   }
 
   /**
-   * Method returns the attribute "localTime".
-   * 
+   * Method returns attribute {@link #localTime}.<br/>
    * 
    * @return LocalTime Value to which the attribute "localTime" is set.
    */
@@ -257,8 +256,7 @@ public class DateObject {
   }
 
   /**
-   * Method returns the attribute "localDate".
-   * 
+   * Method returns attribute {@link #localDate}.<br/>
    * 
    * @return LocalDate Value to which the attribute "localDate" is set.
    */
@@ -278,8 +276,7 @@ public class DateObject {
   }
 
   /**
-   * Method returns the attribute "localDateTime".
-   * 
+   * Method returns attribute {@link #localDateTime}.<br/>
    * 
    * @return LocalDateTime Value to which the attribute "localDateTime" is set.
    */
@@ -299,8 +296,7 @@ public class DateObject {
   }
 
   /**
-   * Method returns the attribute "calendar".
-   * 
+   * Method returns attribute {@link #calendar}.<br/>
    * 
    * @return Calendar Value to which the attribute "calendar" is set.
    */
@@ -320,8 +316,7 @@ public class DateObject {
   }
 
   /**
-   * Method returns the attribute "sqlDate".
-   * 
+   * Method returns attribute {@link #sqlDate}.<br/>
    * 
    * @return Date Value to which the attribute "sqlDate" is set.
    */
@@ -341,8 +336,7 @@ public class DateObject {
   }
 
   /**
-   * Method returns the attribute "utilDate".
-   * 
+   * Method returns attribute {@link #utilDate}.<br/>
    * 
    * @return Date Value to which the attribute "utilDate" is set.
    */

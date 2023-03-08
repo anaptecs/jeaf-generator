@@ -238,8 +238,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
+   * Method returns attribute {@link #name}.<br/>
    * 
    * @return String Value to which the attribute "name" is set.
    */
@@ -259,10 +258,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method returns the attribute "outdated".
-   * 
+   * Method returns attribute {@link #outdated}.<br/>
    * 
    * @return Boolean Value to which the attribute "outdated" is set.
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public boolean getOutdated( ) {
@@ -383,8 +382,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method returns the attribute "readonlyDefault".
-   * 
+   * Method returns attribute {@link #readonlyDefault}.<br/>
    * 
    * @return int Value to which the attribute "readonlyDefault" is set.
    */

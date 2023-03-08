@@ -190,8 +190,7 @@ public class MultivaluedQueryParamsBean {
   }
 
   /**
-   * Method returns the attribute "intArray".
-   * 
+   * Method returns attribute {@link #intArray}.<br/>
    * 
    * @return int Value to which the attribute "intArray" is set.
    */
@@ -225,8 +224,7 @@ public class MultivaluedQueryParamsBean {
   }
 
   /**
-   * Method returns the attribute "strings".
-   * 
+   * Method returns attribute {@link #strings}.<br/>
    * 
    * @return String Value to which the attribute "strings" is set.
    */
@@ -260,8 +258,7 @@ public class MultivaluedQueryParamsBean {
   }
 
   /**
-   * Method returns the attribute "integers".
-   * 
+   * Method returns attribute {@link #integers}.<br/>
    * 
    * @return Integer Value to which the attribute "integers" is set.
    */

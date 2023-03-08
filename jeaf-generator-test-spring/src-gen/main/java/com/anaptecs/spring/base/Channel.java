@@ -279,8 +279,7 @@ public class Channel {
   }
 
   /**
-   * Method returns the attribute "code".
-   * 
+   * Method returns attribute {@link #code}.<br/>
    * 
    * @return int Value to which the attribute "code" is set.
    */
@@ -289,8 +288,7 @@ public class Channel {
   }
 
   /**
-   * Method returns the attribute "selfServiceChannel".
-   * 
+   * Method returns attribute {@link #selfServiceChannel}.<br/>
    * 
    * @return Boolean Value to which the attribute "selfServiceChannel" is set.
    */

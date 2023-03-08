@@ -137,8 +137,7 @@ public class BusinessA extends TechParent {
   }
 
   /**
-   * Method returns the attribute "businessAttribute".
-   * 
+   * Method returns attribute {@link #businessAttribute}.<br/>
    * 
    * @return int Value to which the attribute "businessAttribute" is set.
    */

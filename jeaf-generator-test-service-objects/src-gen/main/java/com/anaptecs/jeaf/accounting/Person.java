@@ -366,8 +366,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
+   * Method returns attribute {@link #name}.<br/>
    * 
    * @return String Value to which the attribute "name" is set.
    */
@@ -387,8 +386,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "firstName".
-   * 
+   * Method returns attribute {@link #firstName}.<br/>
    * 
    * @return String Value to which the attribute "firstName" is set.
    */
@@ -408,8 +406,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "dateOfBirth".
-   * 
+   * Method returns attribute {@link #dateOfBirth}.<br/>
    * 
    * @return Calendar Value to which the attribute "dateOfBirth" is set.
    */
@@ -550,8 +547,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "age".
-   * 
+   * Method returns attribute {@link #age}.<br/>
    * 
    * @return Integer Value to which the attribute "age" is set.
    */
@@ -571,8 +567,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "displayName".
-   * 
+   * Method returns attribute {@link #displayName}.<br/>
    * 
    * @return String Value to which the attribute "displayName" is set.
    */

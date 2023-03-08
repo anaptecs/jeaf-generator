@@ -313,8 +313,7 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method returns the attribute "childBBAttribute".
-   * 
+   * Method returns attribute {@link #childBBAttribute}.<br/>
    * 
    * @return Long Value to which the attribute "childBBAttribute" is set.
    */
@@ -334,10 +333,10 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method returns the attribute "deprecatedAttribute".
-   * 
+   * Method returns attribute {@link #deprecatedAttribute}.<br/>
    * 
    * @return int Value to which the attribute "deprecatedAttribute" is set.
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public int getDeprecatedAttribute( ) {
@@ -457,10 +456,10 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method returns the attribute "deprecatedArray".
-   * 
+   * Method returns attribute {@link #deprecatedArray}.<br/>
    * 
    * @return byte Value to which the attribute "deprecatedArray" is set.
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public byte[] getDeprecatedArray( ) {

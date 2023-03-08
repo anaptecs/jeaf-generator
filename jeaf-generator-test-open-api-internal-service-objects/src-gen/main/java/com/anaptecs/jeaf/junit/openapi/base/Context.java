@@ -243,8 +243,7 @@ public class Context implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "accessToken".
-   * 
+   * Method returns attribute {@link #accessToken}.<br/>
    * 
    * @return String Value to which the attribute "accessToken" is set.
    */
@@ -264,8 +263,7 @@ public class Context implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "language".
-   * 
+   * Method returns attribute {@link #language}.<br/>
    * 
    * @return Locale Value to which the attribute "language" is set.
    */
@@ -285,8 +283,7 @@ public class Context implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "resellerID".
-   * 
+   * Method returns attribute {@link #resellerID}.<br/>
    * 
    * @return long Value to which the attribute "resellerID" is set.
    */
@@ -306,8 +303,7 @@ public class Context implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "pathParam".
-   * 
+   * Method returns attribute {@link #pathParam}.<br/>
    * 
    * @return long Value to which the attribute "pathParam" is set.
    */
@@ -327,8 +323,7 @@ public class Context implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "queryParam".
-   * 
+   * Method returns attribute {@link #queryParam}.<br/>
    * 
    * @return String Value to which the attribute "queryParam" is set.
    */

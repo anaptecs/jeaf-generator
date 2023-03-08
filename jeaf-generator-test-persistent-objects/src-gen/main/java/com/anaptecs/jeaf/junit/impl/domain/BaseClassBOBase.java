@@ -64,8 +64,7 @@ public abstract class BaseClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
+   * Method returns attribute {@link #name}.<br/>
    * 
    * @return String Value to which the attribute "name" is set.
    */
@@ -85,8 +84,7 @@ public abstract class BaseClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "number".
-   * 
+   * Method returns attribute {@link #number}.<br/>
    * 
    * @return Integer Value to which the attribute "number" is set.
    */

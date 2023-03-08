@@ -248,8 +248,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "key".
-   * 
+   * Method returns attribute {@link #key}.<br/>
    * 
    * @return String Value to which the attribute "key" is set.
    */
@@ -269,8 +268,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "info".
-   * 
+   * Method returns attribute {@link #info}.<br/>
    * 
    * @return String Value to which the attribute "info" is set.
    */
@@ -290,8 +288,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "someTest".
-   * 
+   * Method returns attribute {@link #someTest}.<br/>
    * 
    * @return int Value to which the attribute "someTest" is set.
    */
@@ -311,8 +308,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "dummy1".
-   * 
+   * Method returns attribute {@link #dummy1}.<br/>
    * 
    * @return Double Value to which the attribute "dummy1" is set.
    */
@@ -332,8 +328,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "dummy2".
-   * 
+   * Method returns attribute {@link #dummy2}.<br/>
    * 
    * @return String Value to which the attribute "dummy2" is set.
    */
@@ -367,8 +362,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "dummy3".
-   * 
+   * Method returns attribute {@link #dummy3}.<br/>
    * 
    * @return Integer Value to which the attribute "dummy3" is set.
    */

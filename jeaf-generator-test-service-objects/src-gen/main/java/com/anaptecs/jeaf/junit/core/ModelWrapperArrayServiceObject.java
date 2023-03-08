@@ -132,8 +132,7 @@ public class ModelWrapperArrayServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "booleanArray".
-   * 
+   * Method returns attribute {@link #booleanArray}.<br/>
    * 
    * @return Boolean Value to which the attribute "booleanArray" is set.
    */

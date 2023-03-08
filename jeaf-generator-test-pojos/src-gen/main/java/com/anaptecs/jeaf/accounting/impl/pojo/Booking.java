@@ -280,8 +280,7 @@ public class Booking {
   }
 
   /**
-   * Method returns the attribute "amount".
-   * 
+   * Method returns attribute {@link #amount}.<br/>
    * 
    * @return BigDecimal Value to which the attribute "amount" is set.
    */
@@ -301,8 +300,7 @@ public class Booking {
   }
 
   /**
-   * Method returns the attribute "currency".
-   * 
+   * Method returns attribute {@link #currency}.<br/>
    * 
    * @return Currency Value to which the attribute "currency" is set.
    */
@@ -322,8 +320,7 @@ public class Booking {
   }
 
   /**
-   * Method returns the attribute "executionTimestamp".
-   * 
+   * Method returns attribute {@link #executionTimestamp}.<br/>
    * 
    * @return Calendar Value to which the attribute "executionTimestamp" is set.
    */

@@ -311,7 +311,10 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns the attribute "childAAAttribute". Multi line docs
+   * Method returns attribute {@link #childAAAttribute}.<br/>
+   * Multi<br/>
+   * line<br/>
+   * docs
    * 
    * @return byte Value to which the attribute "childAAAttribute" is set.
    */
@@ -330,8 +333,7 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns the attribute "sizedArray".
-   * 
+   * Method returns attribute {@link #sizedArray}.<br/>
    * 
    * @return int Value to which the attribute "sizedArray" is set.
    */
@@ -363,8 +365,7 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns the attribute "requiredArray".
-   * 
+   * Method returns attribute {@link #requiredArray}.<br/>
    * 
    * @return String Value to which the attribute "requiredArray" is set.
    */
@@ -396,8 +397,7 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns the attribute "bigIntegerCode".
-   * 
+   * Method returns attribute {@link #bigIntegerCode}.<br/>
    * 
    * @return BigIntegerCode Value to which the attribute "bigIntegerCode" is set.
    */
@@ -445,8 +445,7 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns the attribute "codes".
-   * 
+   * Method returns attribute {@link #codes}.<br/>
    * 
    * @return IntegerCode Value to which the attribute "codes" is set.
    */

@@ -468,8 +468,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "stringProperty".
-   * 
+   * Method returns attribute {@link #stringProperty}.<br/>
    * 
    * @return String Value to which the attribute "stringProperty" is set.
    */
@@ -489,7 +488,8 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "longValues". long values as multivalued header
+   * Method returns attribute {@link #longValues}.<br/>
+   * long values as multivalued header
    * 
    * @return long Value to which the attribute "longValues" is set.
    */

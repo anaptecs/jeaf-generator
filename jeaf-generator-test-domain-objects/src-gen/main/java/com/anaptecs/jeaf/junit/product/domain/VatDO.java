@@ -37,8 +37,7 @@ public class VatDO extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "rate".
-   * 
+   * Method returns attribute {@link #rate}.<br/>
    * 
    * @return double Value to which the attribute "rate" is set.
    */

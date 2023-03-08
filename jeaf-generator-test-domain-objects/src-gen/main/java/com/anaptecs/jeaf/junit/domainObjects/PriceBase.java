@@ -57,10 +57,10 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "price".
-   * 
+   * Method returns attribute {@link #price}.<br/>
    * 
    * @return double Value to which the attribute "price" is set.
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public double getPrice( ) {

@@ -153,8 +153,7 @@ public class BusinessParent extends TechParent {
   }
 
   /**
-   * Method returns the attribute "parentAttribute".
-   * 
+   * Method returns attribute {@link #parentAttribute}.<br/>
    * 
    * @return long Value to which the attribute "parentAttribute" is set.
    */

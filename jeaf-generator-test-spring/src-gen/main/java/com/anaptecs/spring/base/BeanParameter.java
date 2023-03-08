@@ -178,8 +178,7 @@ public class BeanParameter {
   }
 
   /**
-   * Method returns the attribute "accessToken".
-   * 
+   * Method returns attribute {@link #accessToken}.<br/>
    * 
    * @return String Value to which the attribute "accessToken" is set.
    */
@@ -199,8 +198,7 @@ public class BeanParameter {
   }
 
   /**
-   * Method returns the attribute "language".
-   * 
+   * Method returns attribute {@link #language}.<br/>
    * 
    * @return Locale Value to which the attribute "language" is set.
    */
@@ -220,10 +218,10 @@ public class BeanParameter {
   }
 
   /**
-   * Method returns the attribute "oldStyle".
-   * 
+   * Method returns attribute {@link #oldStyle}.<br/>
    * 
    * @return String Value to which the attribute "oldStyle" is set.
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public String getOldStyle( ) {

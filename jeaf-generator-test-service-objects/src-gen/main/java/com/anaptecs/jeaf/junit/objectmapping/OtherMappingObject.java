@@ -150,8 +150,7 @@ public class OtherMappingObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "value".
-   * 
+   * Method returns attribute {@link #value}.<br/>
    * 
    * @return int Value to which the attribute "value" is set.
    */
@@ -171,8 +170,7 @@ public class OtherMappingObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "name".
-   * 
+   * Method returns attribute {@link #name}.<br/>
    * 
    * @return String Value to which the attribute "name" is set.
    */

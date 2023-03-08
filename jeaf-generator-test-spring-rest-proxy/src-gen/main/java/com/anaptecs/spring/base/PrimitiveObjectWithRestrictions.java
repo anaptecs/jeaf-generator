@@ -684,8 +684,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "aBoolean".
-   * 
+   * Method returns attribute {@link #aBoolean}.<br/>
    * 
    * @return Boolean Value to which the attribute "aBoolean" is set.
    */
@@ -705,8 +704,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "bBoolean".
-   * 
+   * Method returns attribute {@link #bBoolean}.<br/>
    * 
    * @return Boolean Value to which the attribute "bBoolean" is set.
    */
@@ -726,8 +724,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "cBoolean".
-   * 
+   * Method returns attribute {@link #cBoolean}.<br/>
    * 
    * @return Boolean Value to which the attribute "cBoolean" is set.
    */
@@ -747,8 +744,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "aByte".
-   * 
+   * Method returns attribute {@link #aByte}.<br/>
    * 
    * @return byte Value to which the attribute "aByte" is set.
    */
@@ -768,8 +764,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "bByte".
-   * 
+   * Method returns attribute {@link #bByte}.<br/>
    * 
    * @return Byte Value to which the attribute "bByte" is set.
    */
@@ -789,8 +784,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "aShort".
-   * 
+   * Method returns attribute {@link #aShort}.<br/>
    * 
    * @return short Value to which the attribute "aShort" is set.
    */
@@ -810,8 +804,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "bShort".
-   * 
+   * Method returns attribute {@link #bShort}.<br/>
    * 
    * @return Short Value to which the attribute "bShort" is set.
    */
@@ -831,8 +824,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "aInteger".
-   * 
+   * Method returns attribute {@link #aInteger}.<br/>
    * 
    * @return int Value to which the attribute "aInteger" is set.
    */
@@ -852,8 +844,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "bInteger".
-   * 
+   * Method returns attribute {@link #bInteger}.<br/>
    * 
    * @return Integer Value to which the attribute "bInteger" is set.
    */
@@ -873,8 +864,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "cInteger".
-   * 
+   * Method returns attribute {@link #cInteger}.<br/>
    * 
    * @return Integer Value to which the attribute "cInteger" is set.
    */
@@ -894,8 +884,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "aLong".
-   * 
+   * Method returns attribute {@link #aLong}.<br/>
    * 
    * @return long Value to which the attribute "aLong" is set.
    */
@@ -915,8 +904,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "bLong".
-   * 
+   * Method returns attribute {@link #bLong}.<br/>
    * 
    * @return Long Value to which the attribute "bLong" is set.
    */
@@ -936,8 +924,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "aBigInteger".
-   * 
+   * Method returns attribute {@link #aBigInteger}.<br/>
    * 
    * @return BigInteger Value to which the attribute "aBigInteger" is set.
    */
@@ -957,8 +944,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "aCharacter".
-   * 
+   * Method returns attribute {@link #aCharacter}.<br/>
    * 
    * @return char Value to which the attribute "aCharacter" is set.
    */
@@ -978,8 +964,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "bCharacter".
-   * 
+   * Method returns attribute {@link #bCharacter}.<br/>
    * 
    * @return Character Value to which the attribute "bCharacter" is set.
    */
@@ -999,8 +984,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "aFloat".
-   * 
+   * Method returns attribute {@link #aFloat}.<br/>
    * 
    * @return float Value to which the attribute "aFloat" is set.
    */
@@ -1020,8 +1004,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "bFloat".
-   * 
+   * Method returns attribute {@link #bFloat}.<br/>
    * 
    * @return Float Value to which the attribute "bFloat" is set.
    */
@@ -1041,8 +1024,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "aDouble".
-   * 
+   * Method returns attribute {@link #aDouble}.<br/>
    * 
    * @return double Value to which the attribute "aDouble" is set.
    */
@@ -1062,8 +1044,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "bDouble".
-   * 
+   * Method returns attribute {@link #bDouble}.<br/>
    * 
    * @return Double Value to which the attribute "bDouble" is set.
    */
@@ -1083,8 +1064,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "aBigDecimal".
-   * 
+   * Method returns attribute {@link #aBigDecimal}.<br/>
    * 
    * @return BigDecimal Value to which the attribute "aBigDecimal" is set.
    */
@@ -1104,8 +1084,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "aString".
-   * 
+   * Method returns attribute {@link #aString}.<br/>
    * 
    * @return String Value to which the attribute "aString" is set.
    */
@@ -1125,8 +1104,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method returns the attribute "bString".
-   * 
+   * Method returns attribute {@link #bString}.<br/>
    * 
    * @return String Value to which the attribute "bString" is set.
    */

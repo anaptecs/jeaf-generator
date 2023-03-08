@@ -368,8 +368,7 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myBoolean".
-   * 
+   * Method returns attribute {@link #myBoolean}.<br/>
    * 
    * @return Boolean Value to which the attribute "myBoolean" is set.
    */
@@ -389,8 +388,7 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myByte".
-   * 
+   * Method returns attribute {@link #myByte}.<br/>
    * 
    * @return byte Value to which the attribute "myByte" is set.
    */
@@ -410,8 +408,7 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myChar".
-   * 
+   * Method returns attribute {@link #myChar}.<br/>
    * 
    * @return char Value to which the attribute "myChar" is set.
    */
@@ -431,8 +428,7 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myDouble".
-   * 
+   * Method returns attribute {@link #myDouble}.<br/>
    * 
    * @return double Value to which the attribute "myDouble" is set.
    */
@@ -452,8 +448,7 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myFloat".
-   * 
+   * Method returns attribute {@link #myFloat}.<br/>
    * 
    * @return float Value to which the attribute "myFloat" is set.
    */
@@ -473,8 +468,7 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myLong".
-   * 
+   * Method returns attribute {@link #myLong}.<br/>
    * 
    * @return long Value to which the attribute "myLong" is set.
    */
@@ -494,8 +488,7 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myShort".
-   * 
+   * Method returns attribute {@link #myShort}.<br/>
    * 
    * @return short Value to which the attribute "myShort" is set.
    */
@@ -515,8 +508,7 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myByteArray".
-   * 
+   * Method returns attribute {@link #myByteArray}.<br/>
    * 
    * @return byte Value to which the attribute "myByteArray" is set.
    */

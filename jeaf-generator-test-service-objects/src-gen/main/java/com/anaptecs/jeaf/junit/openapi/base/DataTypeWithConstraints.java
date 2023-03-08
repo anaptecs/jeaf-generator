@@ -131,8 +131,7 @@ public class DataTypeWithConstraints implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "intValue".
-   * 
+   * Method returns attribute {@link #intValue}.<br/>
    * 
    * @return int Value to which the attribute "intValue" is set.
    */

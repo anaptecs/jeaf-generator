@@ -154,8 +154,7 @@ public class GeoPosition extends PlaceRef {
   }
 
   /**
-   * Method returns the attribute "longitude".
-   * 
+   * Method returns attribute {@link #longitude}.<br/>
    * 
    * @return int Value to which the attribute "longitude" is set.
    */
@@ -175,8 +174,7 @@ public class GeoPosition extends PlaceRef {
   }
 
   /**
-   * Method returns the attribute "latitude".
-   * 
+   * Method returns attribute {@link #latitude}.<br/>
    * 
    * @return int Value to which the attribute "latitude" is set.
    */

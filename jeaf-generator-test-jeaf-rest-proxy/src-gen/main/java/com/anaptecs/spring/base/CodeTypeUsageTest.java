@@ -239,8 +239,7 @@ public class CodeTypeUsageTest implements Serializable {
   }
 
   /**
-   * Method returns the attribute "booleanCode".
-   * 
+   * Method returns attribute {@link #booleanCode}.<br/>
    * 
    * @return BooleanCodeType Value to which the attribute "booleanCode" is set.
    */
@@ -390,8 +389,7 @@ public class CodeTypeUsageTest implements Serializable {
   }
 
   /**
-   * Method returns the attribute "stringCode".
-   * 
+   * Method returns attribute {@link #stringCode}.<br/>
    * 
    * @return StringCodeType Value to which the attribute "stringCode" is set.
    */
