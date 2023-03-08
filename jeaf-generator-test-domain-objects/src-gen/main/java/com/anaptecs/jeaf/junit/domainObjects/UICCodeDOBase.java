@@ -9,10 +9,6 @@ import com.anaptecs.jeaf.core.api.DomainObject;
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class UICCodeDOBase extends DomainObject implements Identifiable<DomainObjectID> {
   /**
    * Default serial version uid.

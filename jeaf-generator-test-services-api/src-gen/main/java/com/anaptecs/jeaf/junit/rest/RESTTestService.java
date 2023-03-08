@@ -10,10 +10,6 @@ import com.anaptecs.jeaf.junit.core.TestServiceObject;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public interface RESTTestService extends Service {
   /**
    * 

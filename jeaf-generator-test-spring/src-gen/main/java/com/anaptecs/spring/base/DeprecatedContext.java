@@ -9,11 +9,6 @@ import java.util.Locale;
 
 import javax.validation.constraints.NotEmpty;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- * @deprecated (<b>since:</b> , <b>removed with:</b> )
- */
 @Deprecated
 public class DeprecatedContext {
   /**

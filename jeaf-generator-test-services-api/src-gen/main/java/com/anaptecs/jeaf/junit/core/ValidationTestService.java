@@ -12,10 +12,6 @@ import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.Service;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public interface ValidationTestService extends Service {
   /**
    * 

@@ -7,10 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.List;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class UICStop extends Stop {
   /**
    * Constant for the name of attribute "uicCode".

@@ -17,10 +17,6 @@ import java.util.Calendar;
 
 import javax.ws.rs.HeaderParam;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class DateHeaderParamsBean {
   /**
    * Constant for the name of attribute "offsetDateTime".

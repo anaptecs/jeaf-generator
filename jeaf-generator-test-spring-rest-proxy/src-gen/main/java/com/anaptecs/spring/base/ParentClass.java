@@ -5,10 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ParentClass {
   /**
    * Constant for the name of attribute "parentAttribute".

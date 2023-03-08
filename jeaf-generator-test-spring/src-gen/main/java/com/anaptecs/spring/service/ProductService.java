@@ -32,10 +32,6 @@ import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCodeType;
 import com.anaptecs.spring.base.TechnicalHeaderContext;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public interface ProductService {
   /**
    * Operation returns all available product.

@@ -40,10 +40,6 @@ import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public interface RESTProductService {
   /**
    * Operation returns all available product.

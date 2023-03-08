@@ -2,10 +2,6 @@ package com.anaptecs.spring.base;
 
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public final class ExtensibleEnum {
   public static enum ExtensibleEnumType {
     RED, GREEN, BLUE,

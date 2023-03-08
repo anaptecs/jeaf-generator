@@ -9,10 +9,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Valid
 public abstract class PersonBase extends Partner {
   /**

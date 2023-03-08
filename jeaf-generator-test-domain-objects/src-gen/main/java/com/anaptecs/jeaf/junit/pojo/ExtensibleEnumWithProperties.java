@@ -2,10 +2,6 @@ package com.anaptecs.jeaf.junit.pojo;
 
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public final class ExtensibleEnumWithProperties {
   public static enum ExtensibleEnumWithPropertiesType {
     CAMPAIGN_DATA_UNIT("AX2", "Campaign Data Unit", 4711, 1234567890, true, -0.1f, 1.234), RELATION_KEY_DATA_UNIT("X56",

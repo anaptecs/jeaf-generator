@@ -7,10 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.Locale;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class SpecialContext extends Context {
   /**
    * Constant for the name of attribute "specificHeader".

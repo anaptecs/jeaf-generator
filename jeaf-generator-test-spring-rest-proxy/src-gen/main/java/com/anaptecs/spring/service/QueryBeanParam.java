@@ -7,10 +7,6 @@ package com.anaptecs.spring.service;
 
 import com.anaptecs.spring.base.BookingCode;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class QueryBeanParam {
   /**
    * Constant for the name of attribute "bookingCode".

@@ -10,10 +10,6 @@ import java.util.Set;
 import com.anaptecs.jeaf.junit.otherpackage.Input;
 import com.anaptecs.jeaf.junit.otherpackage.Output;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public interface GeneratorTestService extends ParentService {
   /**
    * 

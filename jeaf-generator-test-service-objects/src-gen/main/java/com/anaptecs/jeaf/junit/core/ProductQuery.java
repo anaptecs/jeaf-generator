@@ -7,10 +7,6 @@ package com.anaptecs.jeaf.junit.core;
 
 import com.anaptecs.jeaf.core.api.QueryObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ProductQuery extends QueryObject {
   /**
    * Default serial version uid.

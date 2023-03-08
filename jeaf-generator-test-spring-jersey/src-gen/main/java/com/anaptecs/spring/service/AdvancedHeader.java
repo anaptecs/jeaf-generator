@@ -11,10 +11,6 @@ import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class AdvancedHeader {
   /**
    * Constant for the name of attribute "bookingID".

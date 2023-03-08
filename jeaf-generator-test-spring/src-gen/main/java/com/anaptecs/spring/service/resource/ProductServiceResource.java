@@ -51,10 +51,6 @@ import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.LocalBeanParamType;
 import com.anaptecs.spring.service.ProductService;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @RequestMapping(path = "/nova/prefix/products")
 @RestController
 public class ProductServiceResource {

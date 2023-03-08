@@ -9,11 +9,6 @@ import java.util.Arrays;
 
 import javax.validation.constraints.Size;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- * @deprecated (<b>since:</b> , <b>removed with:</b> )
- */
 @Deprecated
 public class ChildAA extends ChildA {
   /**

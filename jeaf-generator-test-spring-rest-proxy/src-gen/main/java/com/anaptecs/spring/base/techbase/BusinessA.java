@@ -5,10 +5,6 @@
  */
 package com.anaptecs.spring.base.techbase;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class BusinessA extends TechParent {
   /**
    * Constant for the name of attribute "businessAttribute".

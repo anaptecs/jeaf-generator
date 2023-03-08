@@ -11,10 +11,6 @@ import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 public class BusinessChild extends BusinessParent {
   /**

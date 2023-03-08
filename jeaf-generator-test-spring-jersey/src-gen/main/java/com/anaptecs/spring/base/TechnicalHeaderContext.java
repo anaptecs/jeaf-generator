@@ -11,10 +11,6 @@ import java.util.Map;
 
 import javax.ws.rs.HeaderParam;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class TechnicalHeaderContext {
   /**
    * Constant for the name of attribute "reseller".

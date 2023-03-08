@@ -10,10 +10,6 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * Default serial version uid.

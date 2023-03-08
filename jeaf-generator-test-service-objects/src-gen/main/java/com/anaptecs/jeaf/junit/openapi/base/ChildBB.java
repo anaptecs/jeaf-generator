@@ -17,10 +17,6 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ChildBB extends ChildB {
   /**
    * Default serial version uid.

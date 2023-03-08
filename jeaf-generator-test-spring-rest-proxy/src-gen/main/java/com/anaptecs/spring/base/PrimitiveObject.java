@@ -8,10 +8,6 @@ package com.anaptecs.spring.base;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class PrimitiveObject {
   /**
    * Constant for the name of attribute "aBoolean".

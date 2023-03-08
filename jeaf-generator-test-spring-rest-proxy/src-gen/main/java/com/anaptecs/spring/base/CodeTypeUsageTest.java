@@ -10,10 +10,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class CodeTypeUsageTest {
   /**
    * Constant for the name of attribute "booleanCode".

@@ -4,10 +4,6 @@ import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 public final class Entity {
   public static enum EntityType {
     DISCOUNT_CAMPAIGN, DISCOUNT_OFFER("DISOFF", DataUnit.COUPON),

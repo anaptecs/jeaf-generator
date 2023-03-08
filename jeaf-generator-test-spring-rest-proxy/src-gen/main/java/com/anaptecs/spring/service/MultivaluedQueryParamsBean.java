@@ -7,10 +7,6 @@ package com.anaptecs.spring.service;
 
 import java.util.Arrays;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class MultivaluedQueryParamsBean {
   /**
    * Constant for the name of attribute "intArray".

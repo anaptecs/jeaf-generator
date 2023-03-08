@@ -11,10 +11,6 @@ import javax.validation.constraints.NotNull;
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public interface AccountingBasicDataService extends Service {
   /**
    * 

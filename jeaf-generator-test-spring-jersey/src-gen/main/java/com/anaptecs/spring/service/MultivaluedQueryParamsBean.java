@@ -9,10 +9,6 @@ import java.util.Arrays;
 
 import javax.ws.rs.QueryParam;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class MultivaluedQueryParamsBean {
   /**
    * Constant for the name of attribute "intArray".

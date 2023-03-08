@@ -17,11 +17,6 @@ import javax.ws.rs.QueryParam;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- * @deprecated (<b>since:</b> , <b>removed with:</b> )
- */
 @Deprecated
 public class DeprecatedContext implements Serializable {
   /**

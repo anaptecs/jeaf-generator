@@ -7,10 +7,6 @@ package com.anaptecs.spring.service;
 
 import javax.ws.rs.HeaderParam;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class LocalBeanParamType {
   /**
    * Constant for the name of attribute "localKey".

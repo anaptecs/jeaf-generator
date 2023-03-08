@@ -38,10 +38,6 @@ import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
 import com.anaptecs.jeaf.junit.openapi.base.StringCodeType;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public interface ProductService extends Service {
   /**
    * Operation returns all available product.

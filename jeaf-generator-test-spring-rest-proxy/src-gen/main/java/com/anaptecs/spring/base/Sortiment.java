@@ -11,10 +11,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Sortiment {
   /**
    * Constant for the name of attribute "products".

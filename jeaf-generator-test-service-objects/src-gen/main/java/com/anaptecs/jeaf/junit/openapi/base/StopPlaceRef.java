@@ -5,10 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class StopPlaceRef extends PlaceRef {
   /**
    * Default serial version uid.

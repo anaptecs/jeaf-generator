@@ -7,11 +7,6 @@ package com.anaptecs.jeaf.junit.core;
 
 import com.anaptecs.jeaf.core.api.Service;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- * @deprecated (<b>since:</b> , <b>removed with:</b> )
- */
 @Deprecated
 public interface DeprecatedTestService extends Service {
   /**

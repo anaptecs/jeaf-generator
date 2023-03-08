@@ -1,9 +1,5 @@
 package com.anaptecs.spring.base;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public final class DataUnit {
   public static enum DataUnitType {
     COUPON("CMP"),

@@ -14,10 +14,6 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ResponsibilityType implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.

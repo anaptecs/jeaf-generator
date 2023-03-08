@@ -18,10 +18,6 @@ import java.util.Set;
 
 import com.anaptecs.spring.base.StringCode;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class MultiValuedHeaderBeanParam {
   /**
    * Constant for the name of attribute "names".

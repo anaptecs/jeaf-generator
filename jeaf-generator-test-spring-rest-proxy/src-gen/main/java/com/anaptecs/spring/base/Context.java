@@ -12,10 +12,6 @@ import java.util.Map;
 
 import javax.validation.constraints.NotEmpty;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Context {
   /**
    * Constant for the name of attribute "accessToken".

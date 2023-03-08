@@ -12,10 +12,6 @@ import java.util.Arrays;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Constant for the name of attribute "aBooleanArray".

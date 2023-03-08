@@ -9,10 +9,6 @@ import java.math.BigDecimal;
 
 import com.anaptecs.spring.base.Channel;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Sale {
   /**
    * Constant for the name of attribute "transactionAmount".

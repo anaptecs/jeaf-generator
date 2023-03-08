@@ -5,10 +5,6 @@
  */
 package com.anaptecs.spring.service;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class LocalBeanParamType {
   /**
    * Constant for the name of attribute "localKey".

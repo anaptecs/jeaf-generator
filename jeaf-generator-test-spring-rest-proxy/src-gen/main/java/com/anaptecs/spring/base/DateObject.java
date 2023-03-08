@@ -11,10 +11,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Calendar;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class DateObject {
   /**
    * Constant for the name of attribute "localTime".

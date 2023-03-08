@@ -14,10 +14,6 @@ import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class MyPersonBOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.

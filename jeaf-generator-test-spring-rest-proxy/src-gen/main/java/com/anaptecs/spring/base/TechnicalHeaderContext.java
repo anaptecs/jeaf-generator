@@ -9,10 +9,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class TechnicalHeaderContext {
   /**
    * Constant for the name of attribute "reseller".

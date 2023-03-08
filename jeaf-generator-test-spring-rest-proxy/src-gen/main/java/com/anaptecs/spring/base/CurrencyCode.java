@@ -9,10 +9,6 @@ import java.util.Objects;
 
 import javax.validation.constraints.Size;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class CurrencyCode {
   /**
    * Constant for the name of attribute "code".

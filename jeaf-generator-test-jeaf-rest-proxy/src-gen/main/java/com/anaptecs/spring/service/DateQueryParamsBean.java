@@ -22,10 +22,6 @@ import javax.ws.rs.QueryParam;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class DateQueryParamsBean implements Serializable {
   /**
    * Default serial version UID.

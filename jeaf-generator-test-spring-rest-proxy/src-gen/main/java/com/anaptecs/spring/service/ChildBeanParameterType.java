@@ -7,10 +7,6 @@ package com.anaptecs.spring.service;
 
 import com.anaptecs.spring.base.ParentBeanParamType;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * Constant for the name of attribute "childProperty".

@@ -5,10 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.core;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class IdentifiableServiceObjectWithMethod extends IdentifiableServiceObjectWithMethodBase {
   /**
    * Default serial version uid.

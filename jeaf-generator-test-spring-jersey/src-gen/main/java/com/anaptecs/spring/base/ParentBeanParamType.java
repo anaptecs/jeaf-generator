@@ -7,10 +7,6 @@ package com.anaptecs.spring.base;
 
 import javax.ws.rs.HeaderParam;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ParentBeanParamType {
   /**
    * Constant for the name of attribute "novaKey".

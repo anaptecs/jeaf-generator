@@ -74,10 +74,6 @@ import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Path("/rest-products")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)

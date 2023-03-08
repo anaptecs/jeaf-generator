@@ -20,10 +20,6 @@ import com.anaptecs.jeaf.junit.deprecation.BeanParamWithDeprecations;
 import com.anaptecs.jeaf.junit.deprecation.JustAType;
 import com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Path("/nova/prefix/with-deprecations")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)

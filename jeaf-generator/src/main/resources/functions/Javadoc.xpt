@@ -3,6 +3,7 @@
 «EXTENSION java::Naming»
 
 «DEFINE JavadocForType FOR uml::NamedElement»
+«IF this.hasMeaningfulJavadoc()»
 /**
     «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
  «comment.body.replaceAll("\n",  "<br/>")»
@@ -11,6 +12,7 @@
  * @version «getVersion()»
     «EXPAND DeprecatedJavadoc -»
  */
+«ENDIF»
 «ENDDEFINE»
 
 «DEFINE JavadocForOperation FOR uml::Operation»

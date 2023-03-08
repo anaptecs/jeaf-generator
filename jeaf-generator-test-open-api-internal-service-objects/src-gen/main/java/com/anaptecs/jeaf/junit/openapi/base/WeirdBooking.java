@@ -19,10 +19,6 @@ import javax.validation.constraints.NotNull;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 public class WeirdBooking extends WeirdParent {
   /**

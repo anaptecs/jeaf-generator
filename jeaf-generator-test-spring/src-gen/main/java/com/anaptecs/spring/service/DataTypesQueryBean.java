@@ -22,10 +22,6 @@ import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class DataTypesQueryBean {
   /**
    * Constant for the name of attribute "longCodes".

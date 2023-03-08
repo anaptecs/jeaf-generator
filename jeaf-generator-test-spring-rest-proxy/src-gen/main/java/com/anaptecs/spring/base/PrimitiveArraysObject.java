@@ -9,10 +9,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class PrimitiveArraysObject {
   /**
    * Constant for the name of attribute "aBooleanArray".

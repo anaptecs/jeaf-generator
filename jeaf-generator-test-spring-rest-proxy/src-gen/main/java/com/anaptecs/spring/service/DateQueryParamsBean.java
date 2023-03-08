@@ -15,10 +15,6 @@ import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.util.Calendar;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class DateQueryParamsBean {
   /**
    * Constant for the name of attribute "offsetDateTime".

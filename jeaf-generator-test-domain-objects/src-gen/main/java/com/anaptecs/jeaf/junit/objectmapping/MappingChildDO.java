@@ -7,10 +7,6 @@ package com.anaptecs.jeaf.junit.objectmapping;
 
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class MappingChildDO extends MappingParentDO {
   /**
    * Default serial version uid.

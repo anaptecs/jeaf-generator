@@ -11,10 +11,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Booking {
   /**
    * Constant for the name of attribute "bookingID".

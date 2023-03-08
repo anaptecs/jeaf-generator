@@ -7,10 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class StringCodeType {
   /**
    * Constant for the name of attribute "code".

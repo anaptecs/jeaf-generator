@@ -7,10 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.List;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Company extends Partner {
   /**
    * Constant for the name of attribute "name".

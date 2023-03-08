@@ -1,9 +1,5 @@
 package com.anaptecs.jeaf.accounting;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public enum BankType {
   /**
    * Enumeration literal for bank of type "Mutual Savings".
