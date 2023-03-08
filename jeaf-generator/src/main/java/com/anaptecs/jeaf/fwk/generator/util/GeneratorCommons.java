@@ -18,7 +18,6 @@ import java.util.Set;
 
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.Class;
-import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
@@ -1123,20 +1122,6 @@ public class GeneratorCommons {
     lFileHeader = lFileHeader + LINE_SEPARATOR + "* " + GeneratorCommons.getCopyrightTag();
     lFileHeader = lFileHeader + LINE_SEPARATOR + "*/";
     return lFileHeader;
-  }
-
-  public static String getFormattedComment( Element pElement, String pIndentation ) {
-    String lFormattedComment = "";
-    final String lNewLine = LINE_SEPARATOR + pIndentation + " * ";
-    for (Comment lNextComment : pElement.getOwnedComments()) {
-      String lBody = lNextComment.getBody();
-      if (lBody != null && lBody.length() > 0) {
-        lFormattedComment = lFormattedComment + lNewLine + lBody.trim().replaceAll(LINE_SEPARATOR, lNewLine);
-        // Add line for every comment
-        lFormattedComment = lFormattedComment + lNewLine;
-      }
-    }
-    return lFormattedComment;
   }
 
   public static String getAllExtendedInterfaces( Interface pInterface ) {

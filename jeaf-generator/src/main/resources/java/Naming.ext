@@ -109,15 +109,11 @@ private cached String packageName (uml::Package pck) :
 String getComment(uml::Element element):
     getComment(element.ownedComment);
     
-String getFormattedComment(uml::Element element, String indentation):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getFormattedComment(org.eclipse.uml2.uml.Element, java.lang.String);
-    
 String getComment(List commentList):
     commentList.size > 0 ? getComment(commentList.get(0)) : "";
                   
 String getComment(uml::Comment comment):
     comment.body;
-    //JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getFormattedComment(org.eclipse.uml2.uml.Comment, "");
     
 boolean hasComment(uml::Element element):
     getComment(element).length > 0;
