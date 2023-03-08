@@ -22,21 +22,12 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @QueryParam("intArray")
   private int[] intArray;
 
-  /**
-   * 
-   */
   @QueryParam("strings")
   private String[] strings;
 
-  /**
-   * 
-   */
   @QueryParam("integers")
   private Integer[] integers;
 

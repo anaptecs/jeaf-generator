@@ -29,24 +29,12 @@ public abstract class SoftLinkBase {
    */
   public static final String REFRENCEID = "refrenceID";
 
-  /**
-   * 
-   */
   private final long objectID;
 
-  /**
-   * 
-   */
   private DataUnit dataUnit;
 
-  /**
-   * 
-   */
   private Entity entity;
 
-  /**
-   * 
-   */
   private final String refrenceID;
 
   /**

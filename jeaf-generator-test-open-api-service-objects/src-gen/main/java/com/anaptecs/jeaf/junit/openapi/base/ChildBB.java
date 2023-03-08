@@ -26,33 +26,18 @@ public class ChildBB extends ChildB {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private Long childBBAttribute;
 
-  /**
-   * 
-   */
   @Deprecated
   private int deprecatedAttribute;
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<ChildB> deprecatedBs;
 
-  /**
-   * 
-   */
   @Deprecated
   private ParentClass deprecatedParent;
 
-  /**
-   * 
-   */
   @Deprecated
   @Size(min = 0, max = 4711)
   private byte[] deprecatedArray;

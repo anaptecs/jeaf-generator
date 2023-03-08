@@ -25,36 +25,23 @@ public class ChildAA extends ChildA {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Multi line docs
+   * Multi<br/>
+   * line<br/>
+   * docs
    */
   private byte childAAAttribute;
 
-  /**
-   * 
-   */
   @Size(min = 10, max = 100)
   private int[] sizedArray;
 
-  /**
-   * 
-   */
   @Size(min = 1)
   private String[] requiredArray;
 
-  /**
-   * 
-   */
   @NotNull
   private BigIntegerCode bigIntegerCode;
 
-  /**
-   * 
-   */
   private IntegerCodeType integerCode;
 
-  /**
-   * 
-   */
   private IntegerCode[] codes;
 
   /**

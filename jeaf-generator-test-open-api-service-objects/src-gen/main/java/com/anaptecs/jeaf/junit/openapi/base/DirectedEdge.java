@@ -32,9 +32,6 @@ public class DirectedEdge implements ServiceObject {
   @NotNull
   private Stop end;
 
-  /**
-   * 
-   */
   @JsonProperty("previousName")
   @NotNull
   private String link;

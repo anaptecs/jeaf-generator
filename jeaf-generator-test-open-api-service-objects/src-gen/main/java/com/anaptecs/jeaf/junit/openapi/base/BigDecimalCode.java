@@ -23,9 +23,6 @@ public class BigDecimalCode implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private BigDecimal code;
 

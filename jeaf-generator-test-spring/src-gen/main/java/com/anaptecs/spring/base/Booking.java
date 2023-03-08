@@ -30,19 +30,10 @@ public class Booking {
    */
   public static final String INVENTORIES = "inventories";
 
-  /**
-   * 
-   */
   private BookingID bookingID;
 
-  /**
-   * 
-   */
   private String customerName;
 
-  /**
-   * 
-   */
   private List<InventoryType> inventories;
 
   /**

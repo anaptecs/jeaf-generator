@@ -20,9 +20,6 @@ public class TechParent implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private String techAttribute;
 

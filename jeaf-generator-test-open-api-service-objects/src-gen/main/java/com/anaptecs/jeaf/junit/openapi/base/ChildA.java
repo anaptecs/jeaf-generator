@@ -23,9 +23,6 @@ public abstract class ChildA extends ParentClass {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private int childAAttribute;
 
   /**

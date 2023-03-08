@@ -38,9 +38,6 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    */
   private final ServiceObjectID objectID;
 
-  /**
-   * 
-   */
   @Size(min = 1)
   @NotNull
   private List<Channel> channels;
@@ -50,21 +47,12 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    */
   private transient boolean channelsBackReferenceInitialized;
 
-  /**
-   * 
-   */
   private transient Set<Product> products;
 
-  /**
-   * 
-   */
   @NotBlank
   @Size(min = 0, max = 32)
   private String name;
 
-  /**
-   * 
-   */
   @NotNull
   private Locale language;
 

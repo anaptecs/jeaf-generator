@@ -22,9 +22,6 @@ public class ProductCode implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @Positive
   private int code;
 

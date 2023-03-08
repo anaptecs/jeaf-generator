@@ -26,30 +26,18 @@ public class UICStop extends Stop {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @Size(min = 32, max = 255)
   @NotNull
   private String uicCode;
 
-  /**
-   * 
-   */
   @DecimalMax(value = "32.777", inclusive = true)
   @DecimalMin(value = "1.025", inclusive = true)
   private int priority;
 
-  /**
-   * 
-   */
   @Min(value = 1000)
   @Max(value = 9999)
   private long code;
 
-  /**
-   * 
-   */
   @Positive
   private byte index2;
 

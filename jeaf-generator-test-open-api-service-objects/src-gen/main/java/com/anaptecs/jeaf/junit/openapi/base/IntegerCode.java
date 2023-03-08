@@ -23,9 +23,6 @@ public class IntegerCode implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @Min(value = 1234)
   @NotNull
   private Integer code;

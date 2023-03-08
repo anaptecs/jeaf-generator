@@ -24,9 +24,6 @@ public class BigIntegerCode implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @Max(value = 4711)
   @NotNull
   private BigInteger code;

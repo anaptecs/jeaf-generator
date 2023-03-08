@@ -27,23 +27,14 @@ public class Campaign implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @Deprecated
   private long theLink;
 
-  /**
-   * 
-   */
   @Deprecated
   @Size(min = 1)
   @NotNull
   private Set<Long> moreLinks;
 
-  /**
-   * 
-   */
   @Deprecated
   private List<String> discountOffers;
 

@@ -1,6 +1,8 @@
 «EXTENSION functions::Javadoc»
 «EXTENSION functions::JEAFDeprecated»
 «EXTENSION java::Naming»
+«EXTENSION entity::ModelProperties»
+«EXTENSION java::GeneratorCommons»
 
 «DEFINE JavadocForType FOR uml::NamedElement»
 «IF this.hasMeaningfulJavadoc()»
@@ -14,6 +16,7 @@
  */
 «ENDIF»
 «ENDDEFINE»
+
 
 «DEFINE JavadocForOperation FOR uml::Operation»
 /**
@@ -32,6 +35,27 @@
  */
 «ENDDEFINE»
 
+
+«DEFINE JavadocForProperty FOR uml::Property»
+«IF this.hasMeaningfulJavadocForProperty()»
+/**
+    «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
+ «comment.body.replaceAll("\n", "<br/>")»
+    «ENDFOREACH -»
+    «IF this.defaultValue != null -»
+    <br/><b>Default Value:</b> <code>«this.initValue()»</code>
+    «ENDIF -»
+    «IF this.hasExample() -»
+    «IF ((JMM::Example) this).exampleValue.length > 0 -»
+    <br/><b>Example:</b> <code>«((JMM::Example) this).exampleValue»</code>
+    «ENDIF -»
+    «ENDIF -»
+    «EXPAND DeprecatedJavadoc -»
+ */
+«ENDIF»
+«ENDDEFINE»
+
+
 «DEFINE JavadocForLiteral FOR uml::EnumerationLiteral»
 «IF this.hasMeaningfulJavadoc()»
 /**
@@ -40,8 +64,9 @@
     «ENDFOREACH -»
     «EXPAND DeprecatedJavadoc -»
  */
- «ENDIF»
+«ENDIF»
 «ENDDEFINE»
+
 
 «DEFINE DeprecatedJavadoc FOR uml::NamedElement -»
     «IF this.isJEAFDeprecated()-»

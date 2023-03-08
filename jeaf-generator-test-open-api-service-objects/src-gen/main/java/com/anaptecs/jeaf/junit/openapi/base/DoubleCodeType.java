@@ -21,9 +21,6 @@ public class DoubleCodeType implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   public double code;
 
   /**

@@ -21,23 +21,14 @@ public class LocalBeanParamType implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @HeaderParam("localKey")
   @NotNull
   private String localKey;
 
-  /**
-   * 
-   */
   @HeaderParam("localID")
   @NotNull
   private String localID;
 
-  /**
-   * 
-   */
   @HeaderParam("authorization")
   @NotNull
   private String authorization;

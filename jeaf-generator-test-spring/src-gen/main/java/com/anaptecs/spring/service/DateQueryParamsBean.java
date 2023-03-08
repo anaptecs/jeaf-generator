@@ -66,54 +66,24 @@ public class DateQueryParamsBean {
    */
   public static final String SQLDATE = "sqlDate";
 
-  /**
-   * 
-   */
   private OffsetDateTime offsetDateTime;
 
-  /**
-   * 
-   */
   private OffsetTime offsetTime;
 
-  /**
-   * 
-   */
   private LocalDateTime localDateTime;
 
-  /**
-   * 
-   */
   private LocalTime localTime;
 
-  /**
-   * 
-   */
   private LocalDate localDate;
 
-  /**
-   * 
-   */
   private java.util.Date utilDate;
 
-  /**
-   * 
-   */
   private Calendar calendar;
 
-  /**
-   * 
-   */
   private Timestamp sqlTimestamp;
 
-  /**
-   * 
-   */
   private Time sqlTime;
 
-  /**
-   * 
-   */
   private Date sqlDate;
 
   /**

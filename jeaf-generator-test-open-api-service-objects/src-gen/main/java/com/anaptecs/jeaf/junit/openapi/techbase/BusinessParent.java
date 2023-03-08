@@ -23,9 +23,6 @@ public class BusinessParent extends TechParent {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private long parentAttribute;
 
   /**

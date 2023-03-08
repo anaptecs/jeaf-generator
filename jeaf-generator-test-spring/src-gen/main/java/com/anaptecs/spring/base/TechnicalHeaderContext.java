@@ -15,9 +15,6 @@ public class TechnicalHeaderContext {
    */
   public static final String RESELLER = "reseller";
 
-  /**
-   * 
-   */
   private String reseller;
 
   /**

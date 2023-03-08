@@ -22,14 +22,8 @@ public class Sale {
    */
   public static final String SALE = "sale";
 
-  /**
-   * 
-   */
   private BigDecimal transactionAmount;
 
-  /**
-   * 
-   */
   private Channel sale;
 
   /**

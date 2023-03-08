@@ -16,9 +16,6 @@ public class ByteCode {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private Byte code;
 
   /**

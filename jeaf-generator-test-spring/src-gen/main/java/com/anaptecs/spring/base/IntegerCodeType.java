@@ -16,9 +16,6 @@ public class IntegerCodeType {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private int code;
 
   /**

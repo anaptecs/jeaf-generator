@@ -16,9 +16,6 @@ public class UICStop extends Stop {
    */
   public static final String UICCODE = "uicCode";
 
-  /**
-   * 
-   */
   private String uicCode;
 
   /**

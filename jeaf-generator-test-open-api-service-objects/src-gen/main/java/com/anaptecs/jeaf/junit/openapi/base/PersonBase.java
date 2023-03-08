@@ -21,15 +21,9 @@ public abstract class PersonBase extends Partner {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private String surname;
 
-  /**
-   * 
-   */
   @NotNull
   private String firstName;
 

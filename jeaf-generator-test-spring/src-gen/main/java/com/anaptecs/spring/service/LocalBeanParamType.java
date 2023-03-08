@@ -16,14 +16,8 @@ public class LocalBeanParamType {
    */
   public static final String LOCALID = "localID";
 
-  /**
-   * 
-   */
   private String localKey;
 
-  /**
-   * 
-   */
   private String localID;
 
   /**

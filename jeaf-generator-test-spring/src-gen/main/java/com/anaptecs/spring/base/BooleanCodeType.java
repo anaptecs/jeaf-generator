@@ -16,9 +16,6 @@ public class BooleanCodeType {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private boolean code;
 
   /**

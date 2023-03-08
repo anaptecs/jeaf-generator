@@ -14,9 +14,6 @@ public class TechParent {
    */
   public static final String TECHATTRIBUTE = "techAttribute";
 
-  /**
-   * 
-   */
   private String techAttribute;
 
   /**

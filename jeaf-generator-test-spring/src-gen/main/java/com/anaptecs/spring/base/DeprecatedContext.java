@@ -31,9 +31,6 @@ public class DeprecatedContext {
    */
   public static final String QUERYPARAM = "queryParam";
 
-  /**
-   * 
-   */
   @NotEmpty
   private String accessToken;
 
@@ -43,14 +40,8 @@ public class DeprecatedContext {
    */
   private Locale language;
 
-  /**
-   * 
-   */
   private long resellerID;
 
-  /**
-   * 
-   */
   private String queryParam;
 
   /**

@@ -27,9 +27,6 @@ public final class DataUnit {
       dataUnitID = pDataUnitID;
     }
 
-    /**
-     * 
-     */
     @NotNull
     private final String dataUnitID;
 

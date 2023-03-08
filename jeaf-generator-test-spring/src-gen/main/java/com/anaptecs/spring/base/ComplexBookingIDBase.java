@@ -45,34 +45,16 @@ public abstract class ComplexBookingIDBase {
    */
   public static final String STRINGS = "strings";
 
-  /**
-   * 
-   */
   private long internalID;
 
-  /**
-   * 
-   */
   private String referenceID;
 
-  /**
-   * 
-   */
   private List<BookingID> bookingIDs;
 
-  /**
-   * 
-   */
   private ComplexBookingType complexBookingType;
 
-  /**
-   * 
-   */
   private Integer anotherID;
 
-  /**
-   * 
-   */
   private String[] strings;
 
   /**

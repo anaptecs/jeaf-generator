@@ -46,9 +46,6 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   private final ServiceObjectID objectID;
 
-  /**
-   * 
-   */
   private Set<Reseller> resellers;
 
   /**
@@ -56,9 +53,6 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   private transient boolean resellersBackReferenceInitialized;
 
-  /**
-   * 
-   */
   @Size(min = 12, max = Integer.MAX_VALUE)
   @NotNull
   private String name;
@@ -75,36 +69,21 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   @NotNull
   private URL link;
 
-  /**
-   * 
-   */
   @NotNull
   private final UUID productID;
 
-  /**
-   * 
-   */
   @Size(min = 7, max = 42)
   @NotNull
   private Set<CurrencyCode> supportedCurrencies;
 
-  /**
-   * 
-   */
   @Size(min = 1)
   @NotNull
   private Set<ProductCode> productCodes;
 
-  /**
-   * 
-   */
   @Deprecated
   @NotNull
   private String description;
 
-  /**
-   * 
-   */
   private transient Set<Sortiment> sortiments;
 
   /**

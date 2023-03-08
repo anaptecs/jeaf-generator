@@ -44,9 +44,6 @@ public class Channel {
    */
   private ChannelCode channelCode;
 
-  /**
-   * 
-   */
   private final int code;
 
   /**
@@ -55,9 +52,6 @@ public class Channel {
    */
   private final boolean selfServiceChannel;
 
-  /**
-   * 
-   */
   private transient Reseller reseller;
 
   /**

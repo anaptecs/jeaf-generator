@@ -23,9 +23,6 @@ public class PartnerContainer implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private List<Partner> partners;
 
   /**

@@ -21,16 +21,10 @@ public class ParentBeanParamType implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @HeaderParam("novaKey")
   @NotNull
   private String novaKey;
 
-  /**
-   * 
-   */
   @HeaderParam("tkID")
   @NotNull
   private String tkID;

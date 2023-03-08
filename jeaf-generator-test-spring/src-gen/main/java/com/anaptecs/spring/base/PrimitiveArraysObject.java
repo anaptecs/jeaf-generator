@@ -128,119 +128,50 @@ public class PrimitiveArraysObject {
    */
   public static final String CSTRINGARRAY = "cStringArray";
 
-  /**
-   * 
-   */
   private boolean[] aBooleanArray;
 
-  /**
-   * 
-   */
   private Boolean[] bBooleanArray;
 
-  /**
-   * 
-   */
   private boolean[] cBooleanArray;
 
-  /**
-   * 
-   */
   private byte[] aByteArray;
 
-  /**
-   * 
-   */
   private Byte[] bByteArray;
 
-  /**
-   * 
-   */
   private short[] aShortArray;
 
-  /**
-   * 
-   */
   private Short[] bShortArray;
 
-  /**
-   * 
-   */
   private int[] aIntegerArray;
 
-  /**
-   * 
-   */
   private Integer[] bIntegerArray;
 
-  /**
-   * 
-   */
   private Integer[] cIntegerArray;
 
-  /**
-   * 
-   */
   private long[] aLongArray;
 
-  /**
-   * 
-   */
   private Long[] bLongArray;
 
-  /**
-   * 
-   */
   private BigInteger[] aBigIntegerArray;
 
-  /**
-   * 
-   */
   private char[] aCharacterArray;
 
-  /**
-   * 
-   */
   private Character[] bCharacterArray;
 
-  /**
-   * 
-   */
   private float[] aFloatArray;
 
-  /**
-   * 
-   */
   private Float[] bFloatArray;
 
-  /**
-   * 
-   */
   private double[] aDoubleArray;
 
-  /**
-   * 
-   */
   private Double[] bDoubleArray;
 
-  /**
-   * 
-   */
   private BigDecimal[] aBigDecimalArray;
 
-  /**
-   * 
-   */
   private String[] aStringArray;
 
-  /**
-   * 
-   */
   private String[] bStringArray;
 
-  /**
-   * 
-   */
   private String[] cStringArray;
 
   /**

@@ -21,9 +21,6 @@ public class LongCodeType implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private long code;
 
   /**

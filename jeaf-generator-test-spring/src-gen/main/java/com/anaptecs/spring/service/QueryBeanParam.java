@@ -13,9 +13,6 @@ public class QueryBeanParam {
    */
   public static final String BOOKINGCODE = "bookingCode";
 
-  /**
-   * 
-   */
   private BookingCode bookingCode;
 
   /**

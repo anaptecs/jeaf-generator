@@ -28,7 +28,8 @@ public class EnumTest implements ServiceObject {
   private ExtensibleEnum property;
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>RED</code>
    */
   @NotNull
   private ExtensibleEnum enumRef;

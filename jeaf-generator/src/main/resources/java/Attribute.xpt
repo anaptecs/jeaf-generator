@@ -37,9 +37,7 @@
 
 // processing the properties
 «DEFINE DoPropertyDeclaration FOR Property»
-	/**
-	 * «this.getComment()»«IF this.defaultValue != null-» <br/><b>Default Value:</b> <code>«this.initValue()»</code>«ENDIF»«IF this.hasExample()-»«IF ((Example) this).exampleValue.length > 0-» <br/><b>Example:</b> <code>«((Example) this).exampleValue»</code>«ENDIF»«ENDIF»
-	 */
+	«EXPAND functions::Javadoc::JavadocForProperty»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND RESTParamAnnotation»
 	«EXPAND java::Jackson::JSONAlias»
@@ -51,9 +49,7 @@
 
 // processing the properties
 «DEFINE SoftLinkPropertyDeclaration FOR SoftLink»
-    /**
-     * «this.getComment()»
-     */
+        «EXPAND functions::Javadoc::JavadocForProperty»
         «EXPAND java::Helper::GenerateDeprecationAnnotation-»
         «EXPAND RESTParamAnnotation»
         «EXPAND java::Jackson::JSONAlias»
@@ -82,9 +78,7 @@
 
 // processing the association properties
 «DEFINE DoAssociationPropertyDeclaration FOR Property»
-	/**
- 	 * «this.getComment()»
-	 */
+	«EXPAND functions::Javadoc::JavadocForProperty»
 	«IF isNavigable()»
 		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 		«EXPAND RESTParamAnnotation»

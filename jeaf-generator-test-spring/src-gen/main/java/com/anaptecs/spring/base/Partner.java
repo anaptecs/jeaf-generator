@@ -24,9 +24,6 @@ public class Partner {
    */
   public static final String POSTALADDRESSES = "postalAddresses";
 
-  /**
-   * 
-   */
   private List<PostalAddress> postalAddresses;
 
   /**

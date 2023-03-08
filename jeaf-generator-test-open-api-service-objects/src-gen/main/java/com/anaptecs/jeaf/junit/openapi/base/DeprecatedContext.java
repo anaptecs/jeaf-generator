@@ -27,9 +27,6 @@ public class DeprecatedContext implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @HeaderParam("token")
   @NotEmpty
   private String accessToken;
@@ -42,15 +39,9 @@ public class DeprecatedContext implements ServiceObject {
   @NotNull
   private Locale language;
 
-  /**
-   * 
-   */
   @CookieParam("reseller")
   private long resellerID;
 
-  /**
-   * 
-   */
   @QueryParam("q1")
   @NotNull
   private String queryParam;

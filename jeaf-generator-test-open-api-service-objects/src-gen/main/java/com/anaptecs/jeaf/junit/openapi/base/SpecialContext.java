@@ -21,9 +21,6 @@ public class SpecialContext extends Context {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @HeaderParam("specificHeader")
   @NotNull
   private String specificHeader;

@@ -23,9 +23,6 @@ public class DiscountOffer implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<SoftLink> campaigns;
 
