@@ -124,16 +124,6 @@ boolean hasComment(uml::Element element):
 
 String getComment(Object this): "";
 
-String getJavadoc(uml::Interface interface):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavadoc(org.eclipse.uml2.uml.Interface);
-    
-String getJavadoc(uml::Class class):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavadoc(org.eclipse.uml2.uml.Class);
-    
-String getJavadoc(uml::Operation operation):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavadoc(org.eclipse.uml2.uml.Operation);
-    
-    
 // Konvertiert einen Parameter zu einer Instanzvariable
 String fromParameterToInstance(uml::NamedElement elem) : 
     JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.fromParameterToInstance(org.eclipse.uml2.uml.NamedElement);

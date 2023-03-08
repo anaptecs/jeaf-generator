@@ -1125,67 +1125,6 @@ public class GeneratorCommons {
     return lFileHeader;
   }
 
-  public static String getJavadoc( Class pClass ) {
-    String lFormattedComment = GeneratorCommons.getFormattedComment(pClass, CLASS_INDENTATION);
-    String lJavadoc = CLASS_INDENTATION + "/**";
-    lJavadoc = lJavadoc + lFormattedComment;
-    lJavadoc = lJavadoc + LINE_SEPARATOR + CLASS_INDENTATION + " * @author " + GeneratorCommons.getAuthor();
-    lJavadoc = lJavadoc + LINE_SEPARATOR + CLASS_INDENTATION + " * @version " + GeneratorCommons.getVersion();
-    lJavadoc = lJavadoc + LINE_SEPARATOR + CLASS_INDENTATION + " */" + LINE_SEPARATOR;
-
-    return lJavadoc;
-  }
-
-  public static String getJavadoc( Interface pInterface ) {
-    String lFormattedComment = GeneratorCommons.getFormattedComment(pInterface, INTERFACE_INDENTATION);
-    String lJavadoc = INTERFACE_INDENTATION + "/**";
-    lJavadoc = lJavadoc + lFormattedComment;
-    lJavadoc = lJavadoc + LINE_SEPARATOR + INTERFACE_INDENTATION + " * @author " + GeneratorCommons.getAuthor();
-    lJavadoc = lJavadoc + LINE_SEPARATOR + INTERFACE_INDENTATION + " * @version " + GeneratorCommons.getVersion();
-    lJavadoc = lJavadoc + LINE_SEPARATOR + INTERFACE_INDENTATION + " */" + LINE_SEPARATOR;
-
-    return lJavadoc;
-  }
-
-  public static String getJavadoc( Operation pOperation ) {
-    final String lIndentation = METHOD_INDENTATION;
-    final String lNewLine = LINE_SEPARATOR + lIndentation + " * ";
-
-    // Create Javadoc for method.
-    String lJavadoc = lIndentation + "/**";
-
-    // Get comment of method
-    String lFormattedComment = GeneratorCommons.getFormattedComment(pOperation, lIndentation);
-    lJavadoc = lJavadoc + lFormattedComment;
-    lJavadoc = lJavadoc + lNewLine;
-
-    final Parameter lReturnType = pOperation.getReturnResult();
-    // Create comment for all parameters
-    final Iterator<Parameter> lIterator = pOperation.getOwnedParameters().iterator();
-    while (lIterator.hasNext()) {
-      final Parameter lParameter = lIterator.next();
-      if (lParameter != lReturnType) {
-        String lComment = GeneratorCommons.getFormattedComment(lParameter, lIndentation);
-        lJavadoc = lJavadoc + lNewLine + "@param " + lParameter.getName() + lComment;
-      }
-    }
-
-    // Create comment for return type.
-    if (lReturnType != null && "void".equals(lReturnType.getType().getName()) == false) {
-      String lComment = GeneratorCommons.getFormattedComment(lReturnType, lIndentation);
-      lJavadoc = lJavadoc + lNewLine + "@return {@link " + lReturnType.getType().getName() + "} " + lComment;
-    }
-
-    final Iterator<Type> lExceptionIterator = pOperation.getRaisedExceptions().iterator();
-    while (lExceptionIterator.hasNext()) {
-      final Type lNextException = lExceptionIterator.next();
-      lJavadoc = lJavadoc + lNewLine + "@throws {@link " + lNextException.getName() + "}";
-    }
-
-    lJavadoc = lJavadoc + LINE_SEPARATOR + lIndentation + " */";
-    return lJavadoc;
-  }
-
   public static String getFormattedComment( Element pElement, String pIndentation ) {
     String lFormattedComment = "";
     final String lNewLine = LINE_SEPARATOR + pIndentation + " * ";
