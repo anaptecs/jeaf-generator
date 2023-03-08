@@ -19,9 +19,6 @@ public class MappingParentDO extends DomainObject {
    */
   public static final String NAME = "name";
 
-  /**
-   * 
-   */
   private String name;
 
   /**

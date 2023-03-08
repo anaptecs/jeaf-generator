@@ -25,9 +25,6 @@ public class DataTypeWithConstraints implements ServiceObject {
    */
   public static final String INTVALUE = "intValue";
 
-  /**
-   * 
-   */
   @Max(value = 9999)
   private int intValue;
 

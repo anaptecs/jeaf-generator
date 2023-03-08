@@ -23,19 +23,10 @@ public class MultivaluedQueryParamsBean {
    */
   public static final String INTEGERS = "integers";
 
-  /**
-   * 
-   */
   private int[] intArray;
 
-  /**
-   * 
-   */
   private String[] strings;
 
-  /**
-   * 
-   */
   private Integer[] integers;
 
   /**

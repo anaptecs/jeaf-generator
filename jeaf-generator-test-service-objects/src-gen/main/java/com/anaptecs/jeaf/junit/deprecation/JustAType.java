@@ -28,13 +28,10 @@ public class JustAType implements ServiceObject {
   @Deprecated
   public static final String LEGACY = "legacy";
 
-  /**
-   * 
-   */
   private int attribute;
 
   /**
-   * 
+   * @deprecated Hello (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   private double legacy;

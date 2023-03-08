@@ -11,9 +11,6 @@ public class ParentClass {
    */
   public static final String PARENTATTRIBUTE = "parentAttribute";
 
-  /**
-   * 
-   */
   private String parentAttribute;
 
   /**

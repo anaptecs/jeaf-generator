@@ -32,16 +32,10 @@ public class ValidationTestObject implements ServiceObject {
    */
   public static final String DATEOFBIRTH = "dateOfBirth";
 
-  /**
-   * 
-   */
   @Email()
   @NotNull
   private String myEMail;
 
-  /**
-   * 
-   */
   @Past
   private Calendar dateOfBirth;
 

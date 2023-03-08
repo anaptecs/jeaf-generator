@@ -25,9 +25,6 @@ public class IntegerCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   @Min(value = 1234)
   private Integer code;
 

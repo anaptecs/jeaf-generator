@@ -51,14 +51,8 @@ public abstract class BookingBOBase extends PersistentObject {
    */
   public static final String REMITTERS_ROLE = "remitters";
 
-  /**
-   * 
-   */
   private Double amount;
 
-  /**
-   * 
-   */
   private AccountBO account;
 
   /**
@@ -66,9 +60,6 @@ public abstract class BookingBOBase extends PersistentObject {
    */
   private Set<MyPersonBO> remitters;
 
-  /**
-   * 
-   */
   private byte[] sessionKey;
 
   /**

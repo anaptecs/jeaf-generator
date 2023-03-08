@@ -33,9 +33,6 @@ public class BidirectionalB {
    */
   public static final String THEAS = "theAs";
 
-  /**
-   * 
-   */
   private List<BidirectionalA> as;
 
   /**
@@ -43,9 +40,6 @@ public class BidirectionalB {
    */
   private transient boolean asBackReferenceInitialized;
 
-  /**
-   * 
-   */
   private List<BidirectionalA> theAs;
 
   /**

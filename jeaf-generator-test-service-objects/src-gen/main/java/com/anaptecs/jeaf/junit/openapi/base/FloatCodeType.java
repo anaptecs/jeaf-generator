@@ -24,9 +24,6 @@ public class FloatCodeType implements ServiceObject {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private float code;
 
   /**

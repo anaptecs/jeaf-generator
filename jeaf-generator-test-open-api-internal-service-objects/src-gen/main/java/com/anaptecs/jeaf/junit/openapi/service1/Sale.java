@@ -31,15 +31,9 @@ public class Sale implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private BigDecimal transactionAmount;
 
-  /**
-   * 
-   */
   private Channel sale;
 
   /**

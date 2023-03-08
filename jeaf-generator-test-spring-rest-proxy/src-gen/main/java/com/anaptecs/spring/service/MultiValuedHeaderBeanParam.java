@@ -74,59 +74,26 @@ public class MultiValuedHeaderBeanParam {
    */
   public static final String SQLTIMESTAMPS = "sqlTimestamps";
 
-  /**
-   * 
-   */
   private String[] names;
 
-  /**
-   * 
-   */
   private int[] ints;
 
-  /**
-   * 
-   */
   private Double[] doubles;
 
-  /**
-   * 
-   */
   private StringCode[] codes;
 
-  /**
-   * 
-   */
   private Set<StringCode> stringCodeList;
 
-  /**
-   * 
-   */
   public LocalDate startDate;
 
-  /**
-   * 
-   */
   private LocalDate[] dates;
 
-  /**
-   * 
-   */
   private Set<LocalDateTime> timestamps;
 
-  /**
-   * 
-   */
   private Calendar[] calendars;
 
-  /**
-   * 
-   */
   private Date[] utilDates;
 
-  /**
-   * 
-   */
   private Timestamp[] sqlTimestamps;
 
   /**

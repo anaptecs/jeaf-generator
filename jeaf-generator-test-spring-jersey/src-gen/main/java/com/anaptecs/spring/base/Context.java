@@ -47,9 +47,6 @@ public class Context {
    */
   public static final String LANG = "lang";
 
-  /**
-   * 
-   */
   @HeaderParam("token")
   @NotEmpty
   private String accessToken;
@@ -61,27 +58,15 @@ public class Context {
   @HeaderParam("lang")
   private Locale language;
 
-  /**
-   * 
-   */
   @CookieParam("reseller")
   private long resellerID;
 
-  /**
-   * 
-   */
   @PathParam("id")
   private long pathParam;
 
-  /**
-   * 
-   */
   @QueryParam("q1")
   private String queryParam;
 
-  /**
-   * 
-   */
   private String lang;
 
   /**

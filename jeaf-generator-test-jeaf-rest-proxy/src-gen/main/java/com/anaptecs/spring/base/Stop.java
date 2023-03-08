@@ -40,14 +40,8 @@ public class Stop implements Serializable {
    */
   public static final String LINKS = "links";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   @JsonProperty("_links")
   private List<LinkObject> links;
 

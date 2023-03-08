@@ -43,34 +43,16 @@ public abstract class ProductDOBase extends DomainObject {
    */
   public static final String PRODUCTCATEGORY = "productCategory";
 
-  /**
-   * 
-   */
   private Set<AssortmentDO> assortments;
 
-  /**
-   * 
-   */
   private Set<PriceDO> pricesPerCurrency;
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private String description;
 
-  /**
-   * 
-   */
   private VatDO vat;
 
-  /**
-   * 
-   */
   private ProductCategory productCategory;
 
   /**

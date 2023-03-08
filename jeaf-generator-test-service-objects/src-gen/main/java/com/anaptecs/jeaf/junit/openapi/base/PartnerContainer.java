@@ -27,9 +27,6 @@ public class PartnerContainer implements ServiceObject {
    */
   public static final String PARTNERS = "partners";
 
-  /**
-   * 
-   */
   private List<Partner> partners;
 
   /**

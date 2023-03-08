@@ -26,9 +26,6 @@ public class CharacterCode implements Serializable {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private Character code;
 
   /**

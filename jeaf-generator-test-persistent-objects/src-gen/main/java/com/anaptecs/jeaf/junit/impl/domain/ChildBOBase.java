@@ -31,14 +31,8 @@ public abstract class ChildBOBase extends BaseClassBO {
    */
   public static final String CHILDNUMBER_ATTRIBUTE = "childNumber";
 
-  /**
-   * 
-   */
   private String childName;
 
-  /**
-   * 
-   */
   private Integer childNumber;
 
   /**

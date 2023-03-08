@@ -25,9 +25,6 @@ public class QueryBeanParam implements Serializable {
    */
   public static final String BOOKINGCODE = "bookingCode";
 
-  /**
-   * 
-   */
   @QueryParam("bookingCode")
   private BookingCode bookingCode;
 

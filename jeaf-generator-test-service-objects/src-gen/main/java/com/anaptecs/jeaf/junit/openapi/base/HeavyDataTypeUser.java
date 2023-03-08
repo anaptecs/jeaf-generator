@@ -57,44 +57,20 @@ public class HeavyDataTypeUser implements ServiceObject {
    */
   public static final String BIGDECIMALCODE = "bigDecimalCode";
 
-  /**
-   * 
-   */
   private BooleanCode booleanCode;
 
-  /**
-   * 
-   */
   private ByteCode byteCode;
 
-  /**
-   * 
-   */
   private ShortCode shortCode;
 
-  /**
-   * 
-   */
   private IntegerCode integerCode;
 
-  /**
-   * 
-   */
   private FloatCode floatCode;
 
-  /**
-   * 
-   */
   private DoubleCode doubleCode;
 
-  /**
-   * 
-   */
   private BigIntegerCode bigInegerCode;
 
-  /**
-   * 
-   */
   private BigDecimalCode bigDecimalCode;
 
   /**

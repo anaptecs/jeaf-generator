@@ -22,9 +22,6 @@ public class SpecialContext extends Context {
    */
   public static final String SPECIFICHEADER = "specificHeader";
 
-  /**
-   * 
-   */
   private String specificHeader;
 
   /**

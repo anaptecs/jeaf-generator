@@ -68,63 +68,33 @@ public class DateQueryParamsBean {
    */
   public static final String SQLDATE = "sqlDate";
 
-  /**
-   * 
-   */
   @QueryParam("offsetDateTime")
   private OffsetDateTime offsetDateTime;
 
-  /**
-   * 
-   */
   @QueryParam("offsetTime")
   private OffsetTime offsetTime;
 
-  /**
-   * 
-   */
   @QueryParam("localDateTime")
   private LocalDateTime localDateTime;
 
-  /**
-   * 
-   */
   @QueryParam("localTime")
   private LocalTime localTime;
 
-  /**
-   * 
-   */
   @QueryParam("localDate")
   private LocalDate localDate;
 
-  /**
-   * 
-   */
   @QueryParam("utilDate")
   private java.util.Date utilDate;
 
-  /**
-   * 
-   */
   @QueryParam("calendar")
   private Calendar calendar;
 
-  /**
-   * 
-   */
   @QueryParam("sqlTimestamp")
   private Timestamp sqlTimestamp;
 
-  /**
-   * 
-   */
   @QueryParam("sqlTime")
   private Time sqlTime;
 
-  /**
-   * 
-   */
   @QueryParam("sqlDate")
   private Date sqlDate;
 

@@ -25,9 +25,6 @@ public class ProductCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   @Positive
   private int code;
 

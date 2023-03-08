@@ -16,9 +16,6 @@ public class LongCode {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private Long code;
 
   /**

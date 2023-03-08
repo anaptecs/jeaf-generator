@@ -42,19 +42,10 @@ public abstract class AOneBOBase extends PersistentObject {
    */
   public static final String CMANYS_ROLE = "cManys";
 
-  /**
-   * 
-   */
   private String aName;
 
-  /**
-   * 
-   */
   private BOneBO b;
 
-  /**
-   * 
-   */
   private Set<CManyBO> cManys;
 
   /**

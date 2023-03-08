@@ -25,9 +25,6 @@ public abstract class UICCodeDOBase extends DomainObject implements Identifiable
    */
   private final DomainObjectID objectID;
 
-  /**
-   * 
-   */
   private Integer code;
 
   /**

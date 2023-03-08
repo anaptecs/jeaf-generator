@@ -36,14 +36,8 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
    */
   private final DomainObjectID objectID;
 
-  /**
-   * 
-   */
   private String bavName;
 
-  /**
-   * 
-   */
   private SortedSet<UICCodeDO> uicCodes;
 
   /**

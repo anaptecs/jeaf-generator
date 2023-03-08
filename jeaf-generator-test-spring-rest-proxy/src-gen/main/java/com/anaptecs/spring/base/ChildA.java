@@ -17,9 +17,6 @@ public abstract class ChildA extends ParentClass {
    */
   public static final String CHILDAATTRIBUTE = "childAAttribute";
 
-  /**
-   * 
-   */
   private int childAAttribute;
 
   /**

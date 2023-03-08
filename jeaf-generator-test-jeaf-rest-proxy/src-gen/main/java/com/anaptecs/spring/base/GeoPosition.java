@@ -27,14 +27,8 @@ public class GeoPosition extends PlaceRef {
    */
   public static final String LATITUDE = "latitude";
 
-  /**
-   * 
-   */
   private int longitude;
 
-  /**
-   * 
-   */
   private int latitude;
 
   /**

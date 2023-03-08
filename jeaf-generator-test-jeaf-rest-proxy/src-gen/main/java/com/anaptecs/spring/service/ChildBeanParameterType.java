@@ -22,9 +22,6 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    */
   public static final String CHILDPROPERTY = "childProperty";
 
-  /**
-   * 
-   */
   @HeaderParam("X-Child-Property")
   private String childProperty;
 

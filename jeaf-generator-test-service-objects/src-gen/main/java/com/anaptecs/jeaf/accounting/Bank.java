@@ -56,19 +56,10 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   public static final short PRIVATE_BANK = 2;
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private Long code;
 
-  /**
-   * 
-   */
   private BankType type;
 
   /**

@@ -136,95 +136,47 @@ public class PrimitiveObjectWithRestrictions {
    */
   private boolean aBoolean;
 
-  /**
-   * 
-   */
   private Boolean bBoolean;
 
-  /**
-   * 
-   */
   private boolean cBoolean;
 
-  /**
-   * 
-   */
   @Negative
   private byte aByte;
 
-  /**
-   * 
-   */
   @NegativeOrZero
   private Byte bByte;
 
-  /**
-   * 
-   */
   @Min(value = -237)
   private short aShort;
 
-  /**
-   * 
-   */
   @Positive
   private Short bShort;
 
-  /**
-   * 
-   */
   @PositiveOrZero
   private int aInteger;
 
-  /**
-   * 
-   */
   @Min(value = 4711)
   private Integer bInteger;
 
-  /**
-   * 
-   */
   @Min(value = 100)
   @Max(value = 1000)
   private Integer cInteger;
 
-  /**
-   * 
-   */
   private long aLong;
 
-  /**
-   * 
-   */
   @DecimalMax(value = "299792458", inclusive = false)
   private Long bLong;
 
-  /**
-   * 
-   */
   @DecimalMax(value = "3.14159265359", inclusive = true)
   @DecimalMin(value = "-3.14159265359", inclusive = true)
   private BigInteger aBigInteger;
 
-  /**
-   * 
-   */
   private char aCharacter;
 
-  /**
-   * 
-   */
   private Character bCharacter;
 
-  /**
-   * 
-   */
   private float aFloat;
 
-  /**
-   * 
-   */
   private Float bFloat;
 
   /**
@@ -233,14 +185,8 @@ public class PrimitiveObjectWithRestrictions {
    */
   private double aDouble;
 
-  /**
-   * 
-   */
   private Double bDouble;
 
-  /**
-   * 
-   */
   @DecimalMin(value = "4711.0815", inclusive = true)
   private BigDecimal aBigDecimal;
 
@@ -251,9 +197,6 @@ public class PrimitiveObjectWithRestrictions {
   @Size(min = 8, max = 32)
   private String aString;
 
-  /**
-   * 
-   */
   @NotEmpty
   @Size(min = 0, max = 128)
   private String bString;

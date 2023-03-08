@@ -37,24 +37,12 @@ public class PostalAddress implements ServiceObject {
    */
   public static final String POSTALCODE = "postalCode";
 
-  /**
-   * 
-   */
   private String street;
 
-  /**
-   * 
-   */
   private String houseNumber;
 
-  /**
-   * 
-   */
   private String city;
 
-  /**
-   * 
-   */
   private int postalCode;
 
   /**

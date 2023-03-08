@@ -37,14 +37,8 @@ public abstract class ClassB_BOBase extends PersistentObject {
    */
   public static final String CLASSAS_ROLE = "classAs";
 
-  /**
-   * 
-   */
   private Set<ClassA_BO> classAs;
 
-  /**
-   * 
-   */
   private Integer intValue;
 
   /**

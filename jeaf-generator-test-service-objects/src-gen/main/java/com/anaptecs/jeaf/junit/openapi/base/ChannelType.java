@@ -11,9 +11,6 @@ public enum ChannelType {
     code = pCode;
   }
 
-  /**
-   * 
-   */
   private final String code;
 
   /**

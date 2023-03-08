@@ -25,9 +25,6 @@ public class ShortCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   @Max(value = 4711)
   private short code;
 

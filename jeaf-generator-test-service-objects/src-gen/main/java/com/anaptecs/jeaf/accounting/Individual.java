@@ -21,9 +21,6 @@ public class Individual extends Customer {
    */
   public static final String PERSON = "person";
 
-  /**
-   * 
-   */
   private Person person;
 
   /**

@@ -50,19 +50,10 @@ public abstract class PublicClassBOBase extends PersistentObject {
    */
   public static final String ENCRYPTEDSTRING_ATTRIBUTE = "encryptedString";
 
-  /**
-   * 
-   */
   private Period period;
 
-  /**
-   * 
-   */
   private Gender gender;
 
-  /**
-   * 
-   */
   private EncryptedString encryptedString;
 
   /**

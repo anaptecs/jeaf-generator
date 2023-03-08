@@ -70,54 +70,24 @@ public class OpenAPITestObject implements Serializable {
    */
   public static final String NOTNULLABLEARRAY = "notNullableArray";
 
-  /**
-   * 
-   */
   private String readOnlyAttribute;
 
-  /**
-   * 
-   */
   private String readWriteAttribute;
 
-  /**
-   * 
-   */
   private int writeOnlyAttribute;
 
-  /**
-   * 
-   */
   private Boolean nullableAttribute;
 
-  /**
-   * 
-   */
   private double notNullableAttribute;
 
-  /**
-   * 
-   */
   private String readOnlyArray;
 
-  /**
-   * 
-   */
   private String readWriteArray;
 
-  /**
-   * 
-   */
   private int writeOnlyArray;
 
-  /**
-   * 
-   */
   private double nullableArray;
 
-  /**
-   * 
-   */
   private double notNullableArray;
 
   /**

@@ -47,29 +47,14 @@ public class CodeTypeUsageTest implements ServiceObject {
    */
   public static final String SHORTCODE = "shortCode";
 
-  /**
-   * 
-   */
   private BooleanCodeType booleanCode;
 
-  /**
-   * 
-   */
   private Set<BooleanCodeType> booleanCodeAssociation;
 
-  /**
-   * 
-   */
   private Set<ShortCodeType> shortCodeTypeAssociation;
 
-  /**
-   * 
-   */
   private StringCodeType stringCode;
 
-  /**
-   * 
-   */
   private ShortCode shortCode;
 
   /**

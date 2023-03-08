@@ -13,9 +13,6 @@ public class ShortCodeType {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private short code;
 
   /**

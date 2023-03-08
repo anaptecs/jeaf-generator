@@ -20,9 +20,6 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @HeaderParam("X-Child-Property")
   @NotNull
   private String childProperty;

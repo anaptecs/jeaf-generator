@@ -24,9 +24,6 @@ public class DoubleCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private double code;
 
   /**

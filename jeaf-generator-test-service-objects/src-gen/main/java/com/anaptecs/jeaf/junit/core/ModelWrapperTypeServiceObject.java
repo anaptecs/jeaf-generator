@@ -27,14 +27,8 @@ public class ModelWrapperTypeServiceObject implements ServiceObject {
    */
   public static final String AINT = "aInt";
 
-  /**
-   * 
-   */
   private boolean aBoolean;
 
-  /**
-   * 
-   */
   private Integer aInt;
 
   /**

@@ -74,9 +74,6 @@ public class Product {
    */
   public static final String URI = "uri";
 
-  /**
-   * 
-   */
   private Set<Reseller> resellers;
 
   /**
@@ -84,9 +81,6 @@ public class Product {
    */
   private transient boolean resellersBackReferenceInitialized;
 
-  /**
-   * 
-   */
   @Size(min = 12, max = Integer.MAX_VALUE)
   private String name;
 
@@ -101,31 +95,16 @@ public class Product {
    */
   private URL link;
 
-  /**
-   * 
-   */
   private final UUID productID;
 
-  /**
-   * 
-   */
   @Size(min = 7, max = 42)
   private Set<CurrencyCode> supportedCurrencies;
 
-  /**
-   * 
-   */
   private Set<ProductCode> productCodes;
 
-  /**
-   * 
-   */
   @Deprecated
   private String description;
 
-  /**
-   * 
-   */
   private transient Set<Sortiment> sortiments;
 
   /**

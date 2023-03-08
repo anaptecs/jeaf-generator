@@ -47,9 +47,6 @@ public class MoneyAmount implements Serializable {
   @NotNull
   private final BigDecimal amount;
 
-  /**
-   * 
-   */
   @NotNull
   private final CurrencyCode currencyCode;
 

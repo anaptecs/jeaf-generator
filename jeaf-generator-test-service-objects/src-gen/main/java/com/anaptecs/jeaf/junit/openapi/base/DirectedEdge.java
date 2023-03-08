@@ -42,9 +42,6 @@ public class DirectedEdge implements ServiceObject {
    */
   private Stop end;
 
-  /**
-   * 
-   */
   private String link;
 
   /**

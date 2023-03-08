@@ -31,21 +31,12 @@ public class WeirdParent implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private String someProperty;
 
-  /**
-   * 
-   */
   @NotNull
   private ComplexBookingID complexBooking;
 
-  /**
-   * 
-   */
   @Size(min = 1)
   @NotNull
   private Set<ComplexBookingID> complexBookings;

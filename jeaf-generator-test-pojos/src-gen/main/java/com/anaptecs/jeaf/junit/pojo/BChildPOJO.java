@@ -26,14 +26,8 @@ public class BChildPOJO extends BParentPOJO {
    */
   public static final String CHILDATTRIBUTE = "childAttribute";
 
-  /**
-   * 
-   */
   private byte weirdAttribute;
 
-  /**
-   * 
-   */
   private Integer childAttribute;
 
   /**

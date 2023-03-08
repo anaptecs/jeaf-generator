@@ -36,19 +36,10 @@ public class SoftLinkChildB extends SoftLinkParent {
    */
   public static final String ONELINK = "oneLink";
 
-  /**
-   * 
-   */
   private String heyBrother;
 
-  /**
-   * 
-   */
   private Set<String> softLinkPartners;
 
-  /**
-   * 
-   */
   private SoftLinkID oneLink;
 
   /**

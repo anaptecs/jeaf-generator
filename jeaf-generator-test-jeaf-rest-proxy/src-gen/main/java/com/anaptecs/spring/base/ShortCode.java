@@ -26,9 +26,6 @@ public class ShortCode implements Serializable {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private Short code;
 
   /**

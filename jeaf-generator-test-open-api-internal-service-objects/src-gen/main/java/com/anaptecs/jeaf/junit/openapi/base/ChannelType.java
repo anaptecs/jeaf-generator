@@ -13,9 +13,6 @@ public enum ChannelType {
     code = pCode;
   }
 
-  /**
-   * 
-   */
   @NotNull
   private final String code;
 

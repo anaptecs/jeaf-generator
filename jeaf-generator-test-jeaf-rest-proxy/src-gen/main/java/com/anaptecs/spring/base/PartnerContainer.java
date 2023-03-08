@@ -29,9 +29,6 @@ public class PartnerContainer implements Serializable {
    */
   public static final String PARTNERS = "partners";
 
-  /**
-   * 
-   */
   private List<Partner> partners;
 
   /**

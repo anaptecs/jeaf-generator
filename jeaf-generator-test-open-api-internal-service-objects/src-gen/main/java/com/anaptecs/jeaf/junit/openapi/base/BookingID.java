@@ -26,27 +26,15 @@ public class BookingID implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private String referenceID;
 
-  /**
-   * 
-   */
   @NotNull
   private String externalRefID;
 
-  /**
-   * 
-   */
   @NotNull
   private InventoryType inventory;
 
-  /**
-   * 
-   */
   @NotNull
   private BookingCode bookingCode;
 

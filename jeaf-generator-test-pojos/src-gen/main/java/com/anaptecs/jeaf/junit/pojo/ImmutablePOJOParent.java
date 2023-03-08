@@ -25,14 +25,8 @@ public class ImmutablePOJOParent extends AbstractPOJO {
    */
   public static final String ANOTHERPARENTATTRIBUTE = "anotherParentAttribute";
 
-  /**
-   * 
-   */
   private final String parentAttribute;
 
-  /**
-   * 
-   */
   private Integer anotherParentAttribute;
 
   /**

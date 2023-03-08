@@ -70,34 +70,16 @@ public abstract class MyPersonBOBase extends PersistentObject {
    */
   public static final String CUSTOMER_ROLE = "customer";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private String firstName;
 
-  /**
-   * 
-   */
   private Calendar dateOfBirth;
 
-  /**
-   * 
-   */
   private Set<AccountBO> accounts;
 
-  /**
-   * 
-   */
   private EmployeeBO employee;
 
-  /**
-   * 
-   */
   private IndividualBO customer;
 
   /**

@@ -26,9 +26,6 @@ public class DoubleCodeType implements Serializable {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   public double code;
 
   /**

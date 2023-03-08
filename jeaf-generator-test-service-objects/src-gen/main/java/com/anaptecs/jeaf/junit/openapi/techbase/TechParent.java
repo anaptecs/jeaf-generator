@@ -22,9 +22,6 @@ public class TechParent implements ServiceObject {
    */
   public static final String TECHATTRIBUTE = "techAttribute";
 
-  /**
-   * 
-   */
   private String techAttribute;
 
   /**

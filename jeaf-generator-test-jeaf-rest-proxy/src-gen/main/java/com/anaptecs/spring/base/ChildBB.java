@@ -53,32 +53,17 @@ public class ChildBB extends ChildB {
   @Deprecated
   public static final String DEPRECATEDARRAY = "deprecatedArray";
 
-  /**
-   * 
-   */
   private Long childBBAttribute;
 
-  /**
-   * 
-   */
   @Deprecated
   private int deprecatedAttribute;
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<ChildB> deprecatedBs;
 
-  /**
-   * 
-   */
   @Deprecated
   private ParentClass deprecatedParent;
 
-  /**
-   * 
-   */
   @Deprecated
   @Size(min = 0, max = 4711)
   private byte[] deprecatedArray;

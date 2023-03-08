@@ -37,21 +37,12 @@ public class AdvancedHeader implements Serializable {
    */
   public static final String DOUBLECODE = "doubleCode";
 
-  /**
-   * 
-   */
   @HeaderParam("bookingID")
   private BookingID bookingID;
 
-  /**
-   * 
-   */
   @HeaderParam("bookingCode")
   private BookingCode bookingCode;
 
-  /**
-   * 
-   */
   @HeaderParam("DoubleCode")
   private DoubleCode doubleCode;
 

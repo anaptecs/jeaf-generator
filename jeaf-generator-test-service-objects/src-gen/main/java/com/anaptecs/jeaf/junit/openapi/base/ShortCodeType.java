@@ -24,9 +24,6 @@ public class ShortCodeType implements ServiceObject {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private short code;
 
   /**

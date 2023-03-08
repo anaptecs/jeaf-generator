@@ -39,20 +39,11 @@ public class POI extends Stop {
   @Deprecated
   public static final String EVENMORELINKS = "evenMoreLinks";
 
-  /**
-   * 
-   */
   private String description;
 
-  /**
-   * 
-   */
   @Deprecated
   private Long theLink;
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<SoftLink> evenMoreLinks;
 

@@ -20,9 +20,6 @@ public class BusinessParent extends TechParent {
    */
   public static final String PARENTATTRIBUTE = "parentAttribute";
 
-  /**
-   * 
-   */
   private long parentAttribute;
 
   /**

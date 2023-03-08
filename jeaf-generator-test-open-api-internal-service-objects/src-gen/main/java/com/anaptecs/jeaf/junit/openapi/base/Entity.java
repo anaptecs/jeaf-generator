@@ -29,15 +29,9 @@ public final class Entity {
       dataUnit = pDataUnit;
     }
 
-    /**
-     * 
-     */
     @NotNull
     private final String entityID;
 
-    /**
-     * 
-     */
     @NotNull
     private DataUnit dataUnit;
 

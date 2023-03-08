@@ -22,9 +22,6 @@ public class MappingParent implements ServiceObject {
    */
   public static final String NAME = "name";
 
-  /**
-   * 
-   */
   private String name;
 
   /**

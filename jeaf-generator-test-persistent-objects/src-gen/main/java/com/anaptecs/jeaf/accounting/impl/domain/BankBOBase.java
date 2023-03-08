@@ -74,29 +74,14 @@ public abstract class BankBOBase extends PersistentObject {
    */
   public static short PRIVATE_BANK = 2;
 
-  /**
-   * 
-   */
   private Set<EmployeeBO> employees;
 
-  /**
-   * 
-   */
   private Set<AccountBO> accounts;
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private Long code;
 
-  /**
-   * 
-   */
   private Short type;
 
   /**

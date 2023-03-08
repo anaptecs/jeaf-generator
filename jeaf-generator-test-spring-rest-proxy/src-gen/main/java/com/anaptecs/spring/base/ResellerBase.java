@@ -40,9 +40,6 @@ public abstract class ResellerBase {
    */
   public static final String LANGUAGE = "language";
 
-  /**
-   * 
-   */
   private List<Channel> channels;
 
   /**
@@ -50,21 +47,12 @@ public abstract class ResellerBase {
    */
   private transient boolean channelsBackReferenceInitialized;
 
-  /**
-   * 
-   */
   private transient Set<Product> products;
 
-  /**
-   * 
-   */
   @NotBlank
   @Size(min = 0, max = 32)
   private String name;
 
-  /**
-   * 
-   */
   private Locale language;
 
   /**

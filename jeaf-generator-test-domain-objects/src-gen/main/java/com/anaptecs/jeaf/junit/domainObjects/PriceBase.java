@@ -30,21 +30,12 @@ public abstract class PriceBase extends DomainObject {
    */
   public static final String REISEWEG = "reiseweg";
 
-  /**
-   * 
-   */
   @Deprecated
   private double price;
 
-  /**
-   * 
-   */
   @Deprecated
   private Reiseweg reiseweg;
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<VerbindungspunktDO> verbindungspunkte;
 

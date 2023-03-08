@@ -36,20 +36,11 @@ public class ParentPOJO {
    */
   public static final String HELLO = "hello";
 
-  /**
-   * 
-   */
   private String parentAttribute;
 
-  /**
-   * 
-   */
   @Deprecated
   private byte weirdAttribute;
 
-  /**
-   * 
-   */
   private String hello;
 
   /**

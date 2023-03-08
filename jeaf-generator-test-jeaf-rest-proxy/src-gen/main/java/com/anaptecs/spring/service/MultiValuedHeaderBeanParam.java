@@ -84,69 +84,36 @@ public class MultiValuedHeaderBeanParam implements Serializable {
    */
   public static final String SQLTIMESTAMPS = "sqlTimestamps";
 
-  /**
-   * 
-   */
   @HeaderParam("names")
   private String[] names;
 
-  /**
-   * 
-   */
   @HeaderParam("ints")
   private int[] ints;
 
-  /**
-   * 
-   */
   @HeaderParam("doubles")
   private Double[] doubles;
 
-  /**
-   * 
-   */
   @HeaderParam("codes")
   private StringCode[] codes;
 
-  /**
-   * 
-   */
   @HeaderParam("stringCodeList")
   private Set<StringCode> stringCodeList;
 
-  /**
-   * 
-   */
   @HeaderParam("startDate")
   public LocalDate startDate;
 
-  /**
-   * 
-   */
   @HeaderParam("dates")
   private LocalDate[] dates;
 
-  /**
-   * 
-   */
   @HeaderParam("timestamps")
   private Set<LocalDateTime> timestamps;
 
-  /**
-   * 
-   */
   @HeaderParam("calendars")
   private Calendar[] calendars;
 
-  /**
-   * 
-   */
   @HeaderParam("utilDates")
   private Date[] utilDates;
 
-  /**
-   * 
-   */
   @HeaderParam("sqlTimestamps")
   private Timestamp[] sqlTimestamps;
 

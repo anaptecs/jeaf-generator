@@ -22,9 +22,6 @@ public class ShortCode implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @Max(value = 4711)
   private short code;
 

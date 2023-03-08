@@ -21,9 +21,6 @@ public class ShortCodeType implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private short code;
 
   /**

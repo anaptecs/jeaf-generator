@@ -50,26 +50,14 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
    */
   public static final String READONLYDEFAULT = "readonlyDefault";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   @Deprecated
   private boolean outdated;
 
-  /**
-   * 
-   */
   @Deprecated
   private DeprecatedServiceObject deprecatedRef;
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<ValidationTestObject> deprecatedRefs;
 

@@ -24,9 +24,6 @@ public class BooleanCodeType implements ServiceObject {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private boolean code;
 
   /**

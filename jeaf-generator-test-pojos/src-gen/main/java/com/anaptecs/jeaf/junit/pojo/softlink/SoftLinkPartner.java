@@ -38,19 +38,10 @@ public class SoftLinkPartner {
    */
   public static final String LONGLINKS = "longLinks";
 
-  /**
-   * 
-   */
   private String theBackLink;
 
-  /**
-   * 
-   */
   private final Set<SoftLinkID> childLinks;
 
-  /**
-   * 
-   */
   private List<Long> longLinks;
 
   /**

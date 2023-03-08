@@ -27,14 +27,8 @@ public class OtherMappingObject implements ServiceObject {
    */
   public static final String NAME = "name";
 
-  /**
-   * 
-   */
   private int value;
 
-  /**
-   * 
-   */
   private String name;
 
   /**

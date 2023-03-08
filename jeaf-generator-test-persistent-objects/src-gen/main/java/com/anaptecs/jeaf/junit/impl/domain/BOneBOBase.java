@@ -31,14 +31,8 @@ public abstract class BOneBOBase extends PersistentObject {
    */
   public static final String A_ROLE = "a";
 
-  /**
-   * 
-   */
   private String bName;
 
-  /**
-   * 
-   */
   private AOneBO a;
 
   /**

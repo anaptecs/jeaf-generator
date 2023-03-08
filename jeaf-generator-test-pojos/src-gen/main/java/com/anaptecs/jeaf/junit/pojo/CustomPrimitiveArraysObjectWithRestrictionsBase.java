@@ -131,117 +131,51 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
    */
   public static final String BSTRINGARRAY = "bStringArray";
 
-  /**
-   * 
-   */
   private boolean[] aBooleanArray;
 
-  /**
-   * 
-   */
   private Boolean[] bBooleanArray;
 
-  /**
-   * 
-   */
   private boolean[] cBooleanArray;
 
-  /**
-   * 
-   */
   @Size(min = 0, max = 32768)
   private byte[] aByteArray;
 
-  /**
-   * 
-   */
   private Byte[] bByteArray;
 
-  /**
-   * 
-   */
   private short[] aShortArray;
 
-  /**
-   * 
-   */
   private Short[] bShortArray;
 
-  /**
-   * 
-   */
   private final int[] aIntegerArray;
 
-  /**
-   * 
-   */
   private Integer[] bIntegerArray;
 
-  /**
-   * 
-   */
   private Integer[] cIntegerArray;
 
-  /**
-   * 
-   */
   @NotEmpty
   private long[] aLongArray;
 
-  /**
-   * 
-   */
   private Long[] bLongArray;
 
-  /**
-   * 
-   */
   private BigInteger[] aBigIntegerArray;
 
-  /**
-   * 
-   */
   private char[] aCharacterArray;
 
-  /**
-   * 
-   */
   private Character[] bCharacterArray;
 
-  /**
-   * 
-   */
   private float[] aFloatArray;
 
-  /**
-   * 
-   */
   private Float[] bFloatArray;
 
-  /**
-   * 
-   */
   @Size(min = 4, max = 12)
   private double[] aDoubleArray;
 
-  /**
-   * 
-   */
   private Double[] bDoubleArray;
 
-  /**
-   * 
-   */
   private BigDecimal[] aBigDecimalArray;
 
-  /**
-   * 
-   */
   private String[] aStringArray;
 
-  /**
-   * 
-   */
   private String[] bStringArray;
 
   /**

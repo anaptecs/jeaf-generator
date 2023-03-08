@@ -21,14 +21,8 @@ public class WeirdBooking {
    */
   public static final String ADDITIONALBOOKINGS = "additionalBookings";
 
-  /**
-   * 
-   */
   private ComplexBookingID booking;
 
-  /**
-   * 
-   */
   private List<ComplexBookingID> additionalBookings;
 
   /**

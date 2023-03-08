@@ -32,19 +32,10 @@ public class LocalBeanParamType implements ServiceObject {
    */
   public static final String AUTHORIZATION = "authorization";
 
-  /**
-   * 
-   */
   private String localKey;
 
-  /**
-   * 
-   */
   private String localID;
 
-  /**
-   * 
-   */
   private String authorization;
 
   /**

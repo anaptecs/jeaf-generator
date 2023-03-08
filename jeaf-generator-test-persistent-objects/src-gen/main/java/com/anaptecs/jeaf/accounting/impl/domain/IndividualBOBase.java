@@ -16,9 +16,6 @@ public abstract class IndividualBOBase extends CustomerBO {
    */
   public static final String PERSON_ROLE = "person";
 
-  /**
-   * 
-   */
   private MyPersonBO person;
 
   /**

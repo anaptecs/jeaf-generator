@@ -31,14 +31,8 @@ public class TechnicalHeaderContext implements ServiceObject {
    */
   public static final String AUTHENTICATIONTOKEN = "authenticationToken";
 
-  /**
-   * 
-   */
   private String reseller;
 
-  /**
-   * 
-   */
   private String authenticationToken;
 
   /**

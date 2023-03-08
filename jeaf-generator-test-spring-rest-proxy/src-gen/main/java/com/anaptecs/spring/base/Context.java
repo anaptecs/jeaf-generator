@@ -43,9 +43,6 @@ public class Context {
    */
   public static final String LANG = "lang";
 
-  /**
-   * 
-   */
   @NotEmpty
   private String accessToken;
 
@@ -55,24 +52,12 @@ public class Context {
    */
   private Locale language;
 
-  /**
-   * 
-   */
   private long resellerID;
 
-  /**
-   * 
-   */
   private long pathParam;
 
-  /**
-   * 
-   */
   private String queryParam;
 
-  /**
-   * 
-   */
   private String lang;
 
   /**

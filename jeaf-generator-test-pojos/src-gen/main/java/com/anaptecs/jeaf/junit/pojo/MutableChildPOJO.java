@@ -20,9 +20,6 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    */
   public static final String WRITEABLE = "writeable";
 
-  /**
-   * 
-   */
   private Integer writeable;
 
   /**

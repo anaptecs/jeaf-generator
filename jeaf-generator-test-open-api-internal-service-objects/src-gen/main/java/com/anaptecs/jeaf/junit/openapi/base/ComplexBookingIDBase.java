@@ -26,32 +26,22 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Internal ID 2nd line 3rd line
+   * Internal ID<br/>
+   * 2nd line<br/>
+   * 3rd line
    */
   private long internalID;
 
-  /**
-   * 
-   */
   @NotNull
   private String referenceID;
 
-  /**
-   * 
-   */
   @Size(min = 1)
   @NotNull
   private List<BookingID> bookingIDs;
 
-  /**
-   * 
-   */
   @NotNull
   private ComplexBookingType complexBookingType;
 
-  /**
-   * 
-   */
   @NotNull
   private Integer anotherID;
 

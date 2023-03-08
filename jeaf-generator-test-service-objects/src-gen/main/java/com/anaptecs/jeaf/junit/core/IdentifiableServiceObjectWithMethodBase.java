@@ -30,9 +30,6 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
    */
   private final ServiceObjectID objectID;
 
-  /**
-   * 
-   */
   private Integer hello;
 
   /**

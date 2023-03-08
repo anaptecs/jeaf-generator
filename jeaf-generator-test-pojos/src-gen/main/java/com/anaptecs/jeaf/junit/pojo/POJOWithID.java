@@ -37,14 +37,8 @@ public class POJOWithID implements Identifiable<ObjectID> {
    */
   private final ObjectID objectID;
 
-  /**
-   * 
-   */
   private Double attr;
 
-  /**
-   * 
-   */
   private String name;
 
   /**

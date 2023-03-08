@@ -16,9 +16,6 @@ public class DoubleCode {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private Double code;
 
   /**

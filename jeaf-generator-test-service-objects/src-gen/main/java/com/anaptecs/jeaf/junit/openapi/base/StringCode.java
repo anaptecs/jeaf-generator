@@ -24,9 +24,6 @@ public class StringCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private String code;
 
   /**

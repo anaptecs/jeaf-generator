@@ -31,72 +31,42 @@ public class DateQueryParamsBean implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @QueryParam("offsetDateTime")
   @NotNull
   private OffsetDateTime offsetDateTime;
 
-  /**
-   * 
-   */
   @QueryParam("offsetTime")
   @NotNull
   private OffsetTime offsetTime;
 
-  /**
-   * 
-   */
   @QueryParam("localDateTime")
   @NotNull
   private LocalDateTime localDateTime;
 
-  /**
-   * 
-   */
   @QueryParam("localTime")
   @NotNull
   private LocalTime localTime;
 
-  /**
-   * 
-   */
   @QueryParam("localDate")
   @NotNull
   private LocalDate localDate;
 
-  /**
-   * 
-   */
   @QueryParam("utilDate")
   @NotNull
   private java.util.Date utilDate;
 
-  /**
-   * 
-   */
   @QueryParam("calendar")
   @NotNull
   private Calendar calendar;
 
-  /**
-   * 
-   */
   @QueryParam("sqlTimestamp")
   @NotNull
   private Timestamp sqlTimestamp;
 
-  /**
-   * 
-   */
   @QueryParam("sqlTime")
   @NotNull
   private Time sqlTime;
 
-  /**
-   * 
-   */
   @QueryParam("sqlDate")
   @NotNull
   private Date sqlDate;

@@ -32,9 +32,6 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
    */
   private final ObjectID objectID;
 
-  /**
-   * 
-   */
   private Double attr;
 
   /**

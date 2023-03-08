@@ -26,9 +26,6 @@ public class SwiftAccount extends Account {
    */
   public static final String BIC = "bic";
 
-  /**
-   * 
-   */
   @Pattern(regexp = "[A-Z]+", flags = { Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.MULTILINE })
   private String bic;
 

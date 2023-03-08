@@ -42,21 +42,12 @@ public class Campaign implements ServiceObject {
   @Deprecated
   public static final String DISCOUNTOFFERS = "discountOffers";
 
-  /**
-   * 
-   */
   @Deprecated
   private long theLink;
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<Long> moreLinks;
 
-  /**
-   * 
-   */
   @Deprecated
   private List<String> discountOffers;
 

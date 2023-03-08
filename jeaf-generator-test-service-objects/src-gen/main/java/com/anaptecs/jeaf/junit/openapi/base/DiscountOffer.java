@@ -28,9 +28,6 @@ public class DiscountOffer implements ServiceObject {
   @Deprecated
   public static final String CAMPAIGNS = "campaigns";
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<SoftLink> campaigns;
 

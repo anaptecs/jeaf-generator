@@ -46,32 +46,17 @@ public class Problem implements Serializable {
    */
   public static final String INSTANCE = "instance";
 
-  /**
-   * 
-   */
   @NotNull
   private final String title;
 
-  /**
-   * 
-   */
   @NotNull
   public final int status;
 
-  /**
-   * 
-   */
   @NotNull
   private final String type;
 
-  /**
-   * 
-   */
   private final String detail;
 
-  /**
-   * 
-   */
   private final String instance;
 
   /**

@@ -43,24 +43,12 @@ public abstract class AccountBase {
    */
   public static final String ALLBOOKINGS = "allBookings";
 
-  /**
-   * 
-   */
   private int iban;
 
-  /**
-   * 
-   */
   private Customer owner;
 
-  /**
-   * 
-   */
   private Currency currency;
 
-  /**
-   * 
-   */
   private Set<Booking> allBookings;
 
   /**

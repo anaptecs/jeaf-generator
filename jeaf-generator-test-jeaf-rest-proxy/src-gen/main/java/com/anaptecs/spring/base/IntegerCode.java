@@ -26,9 +26,6 @@ public class IntegerCode implements Serializable {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private Integer code;
 
   /**

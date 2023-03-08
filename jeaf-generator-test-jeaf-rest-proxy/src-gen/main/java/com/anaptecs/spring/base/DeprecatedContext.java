@@ -44,9 +44,6 @@ public class DeprecatedContext implements Serializable {
    */
   public static final String QUERYPARAM = "queryParam";
 
-  /**
-   * 
-   */
   @HeaderParam("token")
   @NotEmpty
   private String accessToken;
@@ -58,15 +55,9 @@ public class DeprecatedContext implements Serializable {
   @HeaderParam("lang")
   private Locale language;
 
-  /**
-   * 
-   */
   @CookieParam("reseller")
   private long resellerID;
 
-  /**
-   * 
-   */
   @QueryParam("q1")
   private String queryParam;
 

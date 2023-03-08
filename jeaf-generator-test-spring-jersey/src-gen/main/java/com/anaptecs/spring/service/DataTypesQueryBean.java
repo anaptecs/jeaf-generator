@@ -85,75 +85,39 @@ public class DataTypesQueryBean {
    */
   public static final String STARTTIMESTAMPS = "startTimestamps";
 
-  /**
-   * 
-   */
   @QueryParam("longCodes")
   private LongCode[] longCodes;
 
-  /**
-   * 
-   */
   @QueryParam("codes")
   private IntegerCodeType[] codes;
 
-  /**
-   * 
-   */
   @QueryParam("doubleCodes")
   private Set<DoubleCode> doubleCodes;
 
-  /**
-   * 
-   */
   @QueryParam("bookingIDs")
   private Set<BookingID> bookingIDs;
 
-  /**
-   * 
-   */
   @QueryParam("bookingIDsArray")
   private BookingID[] bookingIDsArray;
 
-  /**
-   * 
-   */
   @QueryParam("offsetDateTime")
   private OffsetDateTime offsetDateTime;
 
-  /**
-   * 
-   */
   @QueryParam("offsetTime")
   private OffsetTime offsetTime;
 
-  /**
-   * 
-   */
   @QueryParam("localDateTime")
   private LocalDateTime localDateTime;
 
-  /**
-   * 
-   */
   @QueryParam("localTime")
   private LocalTime localTime;
 
-  /**
-   * 
-   */
   @QueryParam("timestamps")
   private List<LocalDateTime> timestamps;
 
-  /**
-   * 
-   */
   @QueryParam("times")
   private Set<OffsetTime> times;
 
-  /**
-   * 
-   */
   @QueryParam("startTimestamps")
   private OffsetDateTime[] startTimestamps;
 

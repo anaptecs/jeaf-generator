@@ -55,9 +55,6 @@ public class Channel implements Serializable {
    */
   private ChannelCode channelCode;
 
-  /**
-   * 
-   */
   private final int code;
 
   /**
@@ -66,9 +63,6 @@ public class Channel implements Serializable {
    */
   private final boolean selfServiceChannel;
 
-  /**
-   * 
-   */
   private transient Reseller reseller;
 
   /**

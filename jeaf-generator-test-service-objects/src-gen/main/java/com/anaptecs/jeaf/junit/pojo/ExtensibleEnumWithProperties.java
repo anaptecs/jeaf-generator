@@ -39,39 +39,18 @@ public final class ExtensibleEnumWithProperties {
       doubleProperty = pDoubleProperty;
     }
 
-    /**
-     * 
-     */
     private final String dataUnitID;
 
-    /**
-     * 
-     */
     private final String name;
 
-    /**
-     * 
-     */
     private final int order;
 
-    /**
-     * 
-     */
     private final long longProperty;
 
-    /**
-     * 
-     */
     private final boolean booleanProperty;
 
-    /**
-     * 
-     */
     private final float floatProperty;
 
-    /**
-     * 
-     */
     private final double doubleProperty;
 
     /**

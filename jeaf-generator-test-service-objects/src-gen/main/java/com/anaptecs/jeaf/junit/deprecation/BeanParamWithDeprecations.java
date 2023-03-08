@@ -28,13 +28,11 @@ public class BeanParamWithDeprecations implements ServiceObject {
   @Deprecated
   public static final String DEPRECATEDHEADER = "deprecatedHeader";
 
-  /**
-   * 
-   */
   private String header1;
 
   /**
-   * 
+   * @deprecated this header param is no longer supported. Please use "xxx" instead. (<b>since:</b> 1.2.3, <b>removed
+   * with:</b> PI.2.3)
    */
   @Deprecated
   private String deprecatedHeader;

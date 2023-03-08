@@ -50,30 +50,15 @@ public class ImmutableAssociationPOJO {
   @Deprecated
   public static final String DEPRECATEDREF = "deprecatedRef";
 
-  /**
-   * 
-   */
   private final boolean yetAnotherAttribute;
 
-  /**
-   * 
-   */
   private final SortedSet<ImmutablePOJO> readonlyAssociation;
 
-  /**
-   * 
-   */
   private final ImmutableChildPOJO immutableChildPOJO;
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<ImmutableChildPOJO> deprecatedRefs;
 
-  /**
-   * 
-   */
   @Deprecated
   private ChildPOJO deprecatedRef;
 

@@ -44,27 +44,15 @@ public abstract class CustomerBase extends Partner {
    */
   public static final String ACCOUNTS = "accounts";
 
-  /**
-   * 
-   */
   @NotBlank
   private String name;
 
-  /**
-   * 
-   */
   @NotBlank
   private String firstName;
 
-  /**
-   * 
-   */
   @Email()
   private String email;
 
-  /**
-   * 
-   */
   private Set<Account> accounts;
 
   /**

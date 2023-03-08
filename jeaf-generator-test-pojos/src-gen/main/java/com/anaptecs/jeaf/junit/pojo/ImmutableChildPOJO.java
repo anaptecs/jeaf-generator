@@ -25,14 +25,8 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
    */
   public static final String ANOTHERCHILDATTRIBUTE = "anotherChildAttribute";
 
-  /**
-   * 
-   */
   private String childAttribute;
 
-  /**
-   * 
-   */
   private final Double anotherChildAttribute;
 
   /**

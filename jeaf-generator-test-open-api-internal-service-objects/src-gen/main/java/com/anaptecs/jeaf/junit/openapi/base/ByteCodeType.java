@@ -21,9 +21,6 @@ public class ByteCodeType implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private byte code;
 
   /**

@@ -25,9 +25,6 @@ public final class Entity {
       entityID = pEntityID;
     }
 
-    /**
-     * 
-     */
     private final String entityID;
 
     /**

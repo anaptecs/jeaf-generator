@@ -24,9 +24,6 @@ public class IntegerCodeType implements ServiceObject {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private int code;
 
   /**

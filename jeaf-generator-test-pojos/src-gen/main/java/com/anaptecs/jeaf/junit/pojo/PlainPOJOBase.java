@@ -27,14 +27,8 @@ public abstract class PlainPOJOBase {
    */
   public static final String WORLD = "world";
 
-  /**
-   * 
-   */
   private String hello;
 
-  /**
-   * 
-   */
   @PositiveOrZero
   private Integer world;
 

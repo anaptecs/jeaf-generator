@@ -36,24 +36,12 @@ public class Company extends Customer {
    */
   public static final String ATTENDANT = "attendant";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private Long registrationNumber;
 
-  /**
-   * 
-   */
   private Long taxNumber;
 
-  /**
-   * 
-   */
   private String attendant;
 
   /**

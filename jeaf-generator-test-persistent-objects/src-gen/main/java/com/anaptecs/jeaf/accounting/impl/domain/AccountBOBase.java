@@ -63,34 +63,16 @@ public abstract class AccountBOBase extends PersistentObject {
    */
   public static final String AUTHORIZEDPERSONS_ROLE = "authorizedPersons";
 
-  /**
-   * 
-   */
   private Long number;
 
-  /**
-   * 
-   */
   private BankBO bank;
 
-  /**
-   * 
-   */
   private CustomerBO customer;
 
-  /**
-   * 
-   */
   private Set<BookingBO> bookings;
 
-  /**
-   * 
-   */
   private Set<MyPersonBO> authorizedPersons;
 
-  /**
-   * 
-   */
   private Float interestRate;
 
   /**

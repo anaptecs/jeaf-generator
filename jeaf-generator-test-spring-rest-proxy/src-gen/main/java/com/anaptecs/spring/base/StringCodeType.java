@@ -13,9 +13,6 @@ public class StringCodeType {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private String code;
 
   /**

@@ -18,14 +18,8 @@ public class SpecialContext extends Context {
    */
   public static final String CHANNELTYPE = "channelType";
 
-  /**
-   * 
-   */
   private String specificHeader;
 
-  /**
-   * 
-   */
   private ChannelType channelType;
 
   /**

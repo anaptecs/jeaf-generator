@@ -20,9 +20,6 @@ public class MappingChild extends MappingParent {
    */
   public static final String VALUE = "value";
 
-  /**
-   * 
-   */
   private int value;
 
   /**

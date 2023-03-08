@@ -24,19 +24,10 @@ public class BeanParameter {
   @Deprecated
   public static final String OLDSTYLE = "oldStyle";
 
-  /**
-   * 
-   */
   private String accessToken;
 
-  /**
-   * 
-   */
   private Locale language;
 
-  /**
-   * 
-   */
   @Deprecated
   private String oldStyle;
 

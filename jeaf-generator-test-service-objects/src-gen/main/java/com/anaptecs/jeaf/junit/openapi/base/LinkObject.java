@@ -22,9 +22,6 @@ public class LinkObject implements ServiceObject {
    */
   public static final String HREF = "href";
 
-  /**
-   * 
-   */
   private String href;
 
   /**

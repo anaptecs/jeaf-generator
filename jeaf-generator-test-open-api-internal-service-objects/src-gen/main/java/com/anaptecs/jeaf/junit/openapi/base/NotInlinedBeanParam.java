@@ -21,30 +21,18 @@ public class NotInlinedBeanParam implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @HeaderParam("header")
   @NotNull
   private String header;
 
-  /**
-   * 
-   */
   @HeaderParam("doubleCode")
   @NotNull
   private DoubleCode doubleCode;
 
-  /**
-   * 
-   */
   @HeaderParam("extensibleEnum")
   @NotNull
   private ExtensibleEnum extensibleEnum;
 
-  /**
-   * 
-   */
   @HeaderParam("bookingID")
   @NotNull
   private BookingID bookingID;

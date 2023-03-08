@@ -21,9 +21,6 @@ public abstract class NetzbereichDOBase extends DomainObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private Set<KanteDO> kanten;
 
   /**

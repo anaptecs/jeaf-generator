@@ -35,14 +35,8 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
    */
   private final ServiceObjectID objectID;
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private ClassB oneB;
 
   /**

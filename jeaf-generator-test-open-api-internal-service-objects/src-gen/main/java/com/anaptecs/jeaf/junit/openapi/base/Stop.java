@@ -34,28 +34,16 @@ public class Stop implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private String name;
 
-  /**
-   * 
-   */
   @JsonProperty("_links")
   private List<LinkObject> links;
 
-  /**
-   * 
-   */
   @Max(value = 32)
   @PositiveOrZero
   private byte index;
 
-  /**
-   * 
-   */
   @NotNull
   private SoftLink theSoftLink;
 

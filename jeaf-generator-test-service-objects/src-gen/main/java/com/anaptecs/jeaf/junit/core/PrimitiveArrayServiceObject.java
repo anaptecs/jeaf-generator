@@ -22,9 +22,6 @@ public class PrimitiveArrayServiceObject implements ServiceObject {
    */
   public static final String BOOLEANARRAY = "booleanArray";
 
-  /**
-   * 
-   */
   private boolean[] booleanArray;
 
   /**

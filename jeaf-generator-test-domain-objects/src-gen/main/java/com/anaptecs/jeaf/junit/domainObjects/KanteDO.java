@@ -46,29 +46,14 @@ public class KanteDO extends DomainObject {
    */
   public static final String NETZBEREICHE = "netzbereiche";
 
-  /**
-   * 
-   */
   private VerbindungspunktDO abgang;
 
-  /**
-   * 
-   */
   private VerbindungspunktDO bestimmung;
 
-  /**
-   * 
-   */
   private VerkehrsmittelTyp verkehrsmittelTyp;
 
-  /**
-   * 
-   */
   private Boolean gerichtet;
 
-  /**
-   * 
-   */
   private Set<NetzbereichDO> netzbereiche;
 
   /**

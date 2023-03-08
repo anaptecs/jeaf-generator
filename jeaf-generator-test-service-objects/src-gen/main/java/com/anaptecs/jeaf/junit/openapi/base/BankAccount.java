@@ -22,9 +22,6 @@ public class BankAccount implements ServiceObject {
    */
   public static final String IBAN = "iban";
 
-  /**
-   * 
-   */
   private String iban;
 
   /**

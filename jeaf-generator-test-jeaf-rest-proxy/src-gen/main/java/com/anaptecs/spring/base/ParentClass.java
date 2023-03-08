@@ -32,9 +32,6 @@ public class ParentClass implements Serializable {
    */
   public static final String PARENTATTRIBUTE = "parentAttribute";
 
-  /**
-   * 
-   */
   private String parentAttribute;
 
   /**

@@ -21,15 +21,9 @@ public class SpecialContext extends Context {
    */
   public static final String CHANNELTYPE = "channelType";
 
-  /**
-   * 
-   */
   @HeaderParam("specificHeader")
   private String specificHeader;
 
-  /**
-   * 
-   */
   @CookieParam("Channel-Type")
   private ChannelType channelType;
 

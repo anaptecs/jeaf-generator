@@ -54,9 +54,6 @@ public class WeirdBooking extends WeirdParent {
    */
   public static final String INVENTORIES = "inventories";
 
-  /**
-   * 
-   */
   private ComplexBookingID booking;
 
   /**
@@ -65,13 +62,12 @@ public class WeirdBooking extends WeirdParent {
   private List<ComplexBookingID> additionalBookings;
 
   /**
-   * soft link 2nd line 3rd line
+   * soft link<br/>
+   * 2nd line<br/>
+   * 3rd line
    */
   private VersionedObjectSoftLink versionedObjectSoftLink;
 
-  /**
-   * 
-   */
   private int childProperty;
 
   /**
@@ -79,9 +75,6 @@ public class WeirdBooking extends WeirdParent {
    */
   private Booking realBooking;
 
-  /**
-   * 
-   */
   private Set<InventoryType> inventories;
 
   /**

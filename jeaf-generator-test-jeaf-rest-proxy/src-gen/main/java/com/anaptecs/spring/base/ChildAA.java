@@ -35,19 +35,15 @@ public class ChildAA extends ChildA {
   public static final String REQUIREDARRAY = "requiredArray";
 
   /**
-   * Multi line docs
+   * Multi<br/>
+   * line<br/>
+   * docs
    */
   private byte childAAAttribute;
 
-  /**
-   * 
-   */
   @Size(min = 10, max = 100)
   private int[] sizedArray;
 
-  /**
-   * 
-   */
   private String[] requiredArray;
 
   /**

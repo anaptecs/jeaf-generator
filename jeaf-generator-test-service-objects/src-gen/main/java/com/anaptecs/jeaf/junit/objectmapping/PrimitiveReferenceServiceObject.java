@@ -47,29 +47,14 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
    */
   public static final String STRINGARRAY = "stringArray";
 
-  /**
-   * 
-   */
   private Boolean aBoolean;
 
-  /**
-   * 
-   */
   private Set<Boolean> booleanSet;
 
-  /**
-   * 
-   */
   private Set<StringBuffer> buffers;
 
-  /**
-   * 
-   */
   private Set<String> strings;
 
-  /**
-   * 
-   */
   private String[] stringArray;
 
   /**

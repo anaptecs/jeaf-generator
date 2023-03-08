@@ -19,14 +19,8 @@ public abstract class CompositeIDBase implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private long primaryCode;
 
-  /**
-   * 
-   */
   private long secondaryCode;
 
   /**

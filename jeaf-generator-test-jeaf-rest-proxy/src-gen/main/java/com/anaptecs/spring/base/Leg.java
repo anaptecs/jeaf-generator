@@ -39,19 +39,10 @@ public class Leg implements Serializable {
    */
   public static final String STOPOVERS = "stopovers";
 
-  /**
-   * 
-   */
   private PlaceRef start;
 
-  /**
-   * 
-   */
   private PlaceRef stop;
 
-  /**
-   * 
-   */
   private List<PlaceRef> stopovers;
 
   /**

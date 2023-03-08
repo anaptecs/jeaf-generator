@@ -22,9 +22,6 @@ public class StringCodeType implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private String code;
 

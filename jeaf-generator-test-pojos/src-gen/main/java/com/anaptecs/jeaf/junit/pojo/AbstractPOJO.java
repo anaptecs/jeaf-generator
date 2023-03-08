@@ -25,9 +25,6 @@ public abstract class AbstractPOJO {
    */
   public static final String ABTRACTATTR = "abtractAttr";
 
-  /**
-   * 
-   */
   private String abtractAttr;
 
   /**

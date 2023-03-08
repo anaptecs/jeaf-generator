@@ -34,14 +34,8 @@ public class WeirdBooking implements Serializable {
    */
   public static final String ADDITIONALBOOKINGS = "additionalBookings";
 
-  /**
-   * 
-   */
   private ComplexBookingID booking;
 
-  /**
-   * 
-   */
   private List<ComplexBookingID> additionalBookings;
 
   /**

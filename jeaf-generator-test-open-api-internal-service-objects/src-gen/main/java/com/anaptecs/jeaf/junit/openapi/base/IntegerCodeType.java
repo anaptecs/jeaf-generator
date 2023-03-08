@@ -21,9 +21,6 @@ public class IntegerCodeType implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private int code;
 
   /**

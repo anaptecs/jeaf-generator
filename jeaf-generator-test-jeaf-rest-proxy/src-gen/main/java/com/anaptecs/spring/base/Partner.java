@@ -34,9 +34,6 @@ public class Partner implements Serializable {
    */
   public static final String POSTALADDRESSES = "postalAddresses";
 
-  /**
-   * 
-   */
   private List<PostalAddress> postalAddresses;
 
   /**

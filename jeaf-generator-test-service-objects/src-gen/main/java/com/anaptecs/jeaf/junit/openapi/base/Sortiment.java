@@ -28,9 +28,6 @@ public class Sortiment implements ServiceObject {
    */
   public static final String PRODUCTS = "products";
 
-  /**
-   * 
-   */
   private Set<Product> products;
 
   /**

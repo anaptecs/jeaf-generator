@@ -11,9 +11,6 @@ public class BusinessA extends TechParent {
    */
   public static final String BUSINESSATTRIBUTE = "businessAttribute";
 
-  /**
-   * 
-   */
   private int businessAttribute;
 
   /**

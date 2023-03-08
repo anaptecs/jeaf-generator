@@ -16,9 +16,6 @@ public class PartnerContainer {
    */
   public static final String PARTNERS = "partners";
 
-  /**
-   * 
-   */
   private List<Partner> partners;
 
   /**

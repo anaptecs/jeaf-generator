@@ -40,24 +40,12 @@ public class PostalAddress implements Serializable {
    */
   public static final String POSTALCODE = "postalCode";
 
-  /**
-   * 
-   */
   private String street;
 
-  /**
-   * 
-   */
   private String houseNumber;
 
-  /**
-   * 
-   */
   private String city;
 
-  /**
-   * 
-   */
   private int postalCode;
 
   /**

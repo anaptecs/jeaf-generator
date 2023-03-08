@@ -43,24 +43,12 @@ public class BookingID implements ServiceObject {
    */
   public static final String BOOKINGCODE = "bookingCode";
 
-  /**
-   * 
-   */
   private String referenceID;
 
-  /**
-   * 
-   */
   private String externalRefID;
 
-  /**
-   * 
-   */
   private InventoryType inventory;
 
-  /**
-   * 
-   */
   private BookingCode bookingCode;
 
   /**

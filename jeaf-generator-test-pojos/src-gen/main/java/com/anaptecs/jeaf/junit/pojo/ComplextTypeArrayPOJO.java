@@ -21,9 +21,6 @@ public class ComplextTypeArrayPOJO {
    */
   public static final String PLAINPOJOS = "plainPOJOs";
 
-  /**
-   * 
-   */
   private PlainPOJO[] plainPOJOs;
 
   /**

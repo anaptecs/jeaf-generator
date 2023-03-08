@@ -52,34 +52,16 @@ public abstract class EmployeeBOBase extends PersistentObject {
    */
   public static final String RESPONSIBILITY_ROLE = "responsibility";
 
-  /**
-   * 
-   */
   private BankBO bank;
 
-  /**
-   * 
-   */
   private MyPersonBO person;
 
-  /**
-   * 
-   */
   private Set<CustomerBO> attendedCustomers;
 
-  /**
-   * 
-   */
   private EmployeeBO superior;
 
-  /**
-   * 
-   */
   private Set<EmployeeBO> employees;
 
-  /**
-   * 
-   */
   private ResponsibilityTypeBO responsibility;
 
   /**

@@ -25,9 +25,6 @@ public class Duration {
    */
   public static final String TIMEUNIT = "timeUnit";
 
-  /**
-   * 
-   */
   private int value;
 
   /**

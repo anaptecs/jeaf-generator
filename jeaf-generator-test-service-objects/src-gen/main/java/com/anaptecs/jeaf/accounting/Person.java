@@ -71,44 +71,23 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   private final ServiceObjectID objectID;
 
-  /**
-   * 
-   */
   @NotBlank
   private String name;
 
-  /**
-   * 
-   */
   @NotBlank
   private String firstName;
 
-  /**
-   * 
-   */
   @PastOrPresent
   private Calendar dateOfBirth;
 
-  /**
-   * 
-   */
   private transient Set<Account> accounts;
 
-  /**
-   * 
-   */
   @Valid
   private Individual customer;
 
-  /**
-   * 
-   */
   @PositiveOrZero
   private Integer age;
 
-  /**
-   * 
-   */
   @NotBlank
   private String displayName;
 

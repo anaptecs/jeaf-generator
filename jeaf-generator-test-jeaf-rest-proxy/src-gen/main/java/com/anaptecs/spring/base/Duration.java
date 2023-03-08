@@ -39,9 +39,6 @@ public class Duration implements Serializable {
    */
   public static final String TIMEUNIT = "timeUnit";
 
-  /**
-   * 
-   */
   private int value;
 
   /**

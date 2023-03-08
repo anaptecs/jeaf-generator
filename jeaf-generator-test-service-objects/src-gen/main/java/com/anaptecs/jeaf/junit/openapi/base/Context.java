@@ -48,9 +48,6 @@ public class Context implements ServiceObject {
    */
   public static final String QUERYPARAM = "queryParam";
 
-  /**
-   * 
-   */
   @NotEmpty
   private String accessToken;
 
@@ -60,19 +57,10 @@ public class Context implements ServiceObject {
    */
   private Locale language;
 
-  /**
-   * 
-   */
   private long resellerID;
 
-  /**
-   * 
-   */
   private long pathParam;
 
-  /**
-   * 
-   */
   private String queryParam;
 
   /**

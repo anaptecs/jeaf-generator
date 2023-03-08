@@ -37,19 +37,10 @@ public class Leg implements ServiceObject {
    */
   public static final String STOPOVERS = "stopovers";
 
-  /**
-   * 
-   */
   private PlaceRef start;
 
-  /**
-   * 
-   */
   private PlaceRef stop;
 
-  /**
-   * 
-   */
   private List<PlaceRef> stopovers;
 
   /**

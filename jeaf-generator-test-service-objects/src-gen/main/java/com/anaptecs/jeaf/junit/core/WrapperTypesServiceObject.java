@@ -57,44 +57,20 @@ public class WrapperTypesServiceObject implements ServiceObject {
    */
   public static final String ACHAR = "aChar";
 
-  /**
-   * 
-   */
   private Boolean aBoolean;
 
-  /**
-   * 
-   */
   private Byte aByte;
 
-  /**
-   * 
-   */
   private Short aShort;
 
-  /**
-   * 
-   */
   private Integer aInt;
 
-  /**
-   * 
-   */
   private Long aLong;
 
-  /**
-   * 
-   */
   private Float aFloat;
 
-  /**
-   * 
-   */
   private Double aDouble;
 
-  /**
-   * 
-   */
   private Character aChar;
 
   /**

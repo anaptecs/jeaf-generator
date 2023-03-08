@@ -13,9 +13,6 @@ public class DoubleCodeType {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   public double code;
 
   /**

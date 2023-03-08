@@ -53,34 +53,16 @@ public abstract class TestServiceObjectBase implements ServiceObject {
    */
   public static final String DUMMY3 = "dummy3";
 
-  /**
-   * 
-   */
   private String key;
 
-  /**
-   * 
-   */
   private String info;
 
-  /**
-   * 
-   */
   private int someTest;
 
-  /**
-   * 
-   */
   private Double dummy1;
 
-  /**
-   * 
-   */
   private String[] dummy2;
 
-  /**
-   * 
-   */
   private Integer[] dummy3;
 
   /**

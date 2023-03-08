@@ -21,9 +21,6 @@ public abstract class NRelationSubTwoBOBase extends NReleationBO {
    */
   public static final String FIELDTWO_ATTRIBUTE = "fieldTwo";
 
-  /**
-   * 
-   */
   private String fieldTwo;
 
   /**

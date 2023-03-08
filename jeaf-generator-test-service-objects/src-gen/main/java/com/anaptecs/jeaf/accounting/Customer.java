@@ -51,32 +51,17 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
    */
   private final ServiceObjectID objectID;
 
-  /**
-   * 
-   */
   @NotNull
   private Boolean active;
 
-  /**
-   * 
-   */
   private String street;
 
-  /**
-   * 
-   */
   @Positive
   private Integer zipCode;
 
-  /**
-   * 
-   */
   @NotBlank
   private String city;
 
-  /**
-   * 
-   */
   @NotBlank
   private String country;
 

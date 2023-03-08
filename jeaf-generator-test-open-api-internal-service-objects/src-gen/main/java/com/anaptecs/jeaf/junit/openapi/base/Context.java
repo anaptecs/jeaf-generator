@@ -30,9 +30,6 @@ public class Context implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @HeaderParam("token")
   @NotEmpty
   private String accessToken;
@@ -45,21 +42,12 @@ public class Context implements ServiceObject {
   @NotNull
   private Locale language;
 
-  /**
-   * 
-   */
   @CookieParam("reseller")
   private long resellerID;
 
-  /**
-   * 
-   */
   @PathParam("id")
   private long pathParam;
 
-  /**
-   * 
-   */
   @QueryParam("q1")
   @NotNull
   private String queryParam;

@@ -42,14 +42,8 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   private final ServiceObjectID objectID;
 
-  /**
-   * 
-   */
   private SortedSet<ClassA> manyAs;
 
-  /**
-   * 
-   */
   private Integer intValue;
 
   /**

@@ -20,9 +20,6 @@ public class BusinessChild extends BusinessParent {
    */
   public static final String CHILDATTRIBUTE = "childAttribute";
 
-  /**
-   * 
-   */
   private String childAttribute;
 
   /**

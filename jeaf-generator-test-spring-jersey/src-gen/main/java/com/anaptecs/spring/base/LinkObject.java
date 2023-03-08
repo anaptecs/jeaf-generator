@@ -14,9 +14,6 @@ public class LinkObject {
    */
   public static final String HREF = "href";
 
-  /**
-   * 
-   */
   private String href;
 
   /**

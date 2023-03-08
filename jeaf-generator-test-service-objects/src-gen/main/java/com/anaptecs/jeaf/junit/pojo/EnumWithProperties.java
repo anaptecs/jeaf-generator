@@ -12,19 +12,10 @@ public enum EnumWithProperties {
     order = pOrder;
   }
 
-  /**
-   * 
-   */
   private final String dataUnitID;
 
-  /**
-   * 
-   */
   private final String name;
 
-  /**
-   * 
-   */
   private final int order;
 
   /**

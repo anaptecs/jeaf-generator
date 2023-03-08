@@ -25,19 +25,10 @@ public class AdvancedHeader {
    */
   public static final String DOUBLECODE = "doubleCode";
 
-  /**
-   * 
-   */
   private BookingID bookingID;
 
-  /**
-   * 
-   */
   private BookingCode bookingCode;
 
-  /**
-   * 
-   */
   private DoubleCode doubleCode;
 
   /**

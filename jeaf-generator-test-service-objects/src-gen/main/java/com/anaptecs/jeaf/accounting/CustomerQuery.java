@@ -33,24 +33,12 @@ public class CustomerQuery extends QueryObject {
    */
   public static final String CITY = "city";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private String firstName;
 
-  /**
-   * 
-   */
   private String companyName;
 
-  /**
-   * 
-   */
   private String city;
 
   /**

@@ -27,14 +27,8 @@ public abstract class CompositeIDBase implements ServiceObject {
    */
   public static final String SECONDARYCODE = "secondaryCode";
 
-  /**
-   * 
-   */
   private long primaryCode;
 
-  /**
-   * 
-   */
   private long secondaryCode;
 
   /**

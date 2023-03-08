@@ -17,14 +17,8 @@ public class GeoPosition extends PlaceRef {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private int longitude;
 
-  /**
-   * 
-   */
   private int latitude;
 
   /**

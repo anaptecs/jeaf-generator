@@ -42,19 +42,10 @@ public abstract class BidirectionalABase {
    */
   public static final String TRANSIENTBS = "transientBs";
 
-  /**
-   * 
-   */
   private transient BidirectionalB transientB;
 
-  /**
-   * 
-   */
   private transient BidirectionalA transientParent;
 
-  /**
-   * 
-   */
   private BidirectionalA child;
 
   /**
@@ -62,9 +53,6 @@ public abstract class BidirectionalABase {
    */
   private transient boolean childBackReferenceInitialized;
 
-  /**
-   * 
-   */
   private transient Set<BidirectionalB> transientBs;
 
   /**

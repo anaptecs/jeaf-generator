@@ -46,21 +46,12 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   @Deprecated
   public static final String BASECLASSES_ROLE = "baseClasses";
 
-  /**
-   * 
-   */
   @Deprecated
   private int deprecated;
 
-  /**
-   * 
-   */
   @Deprecated
   private PublicClassBO publicClass;
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<BaseClassBO> baseClasses;
 

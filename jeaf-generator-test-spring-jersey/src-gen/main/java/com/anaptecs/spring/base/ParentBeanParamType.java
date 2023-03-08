@@ -18,15 +18,9 @@ public class ParentBeanParamType {
    */
   public static final String TKID = "tkID";
 
-  /**
-   * 
-   */
   @HeaderParam("novaKey")
   private String novaKey;
 
-  /**
-   * 
-   */
   @HeaderParam("tkID")
   private String tkID;
 

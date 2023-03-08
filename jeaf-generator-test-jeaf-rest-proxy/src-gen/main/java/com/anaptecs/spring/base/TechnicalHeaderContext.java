@@ -27,9 +27,6 @@ public class TechnicalHeaderContext implements Serializable {
    */
   public static final String RESELLER = "reseller";
 
-  /**
-   * 
-   */
   @HeaderParam("Reseller")
   private String reseller;
 

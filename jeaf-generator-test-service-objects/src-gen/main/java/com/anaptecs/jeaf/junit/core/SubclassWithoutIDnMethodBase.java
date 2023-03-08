@@ -21,9 +21,6 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
    */
   public static final String ATTR = "attr";
 
-  /**
-   * 
-   */
   private Boolean attr;
 
   /**

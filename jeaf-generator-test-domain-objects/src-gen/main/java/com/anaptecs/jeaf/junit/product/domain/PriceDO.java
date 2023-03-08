@@ -27,14 +27,8 @@ public class PriceDO extends DomainObject {
    */
   public static final String CURRENCY = "currency";
 
-  /**
-   * 
-   */
   private BigDecimal amount;
 
-  /**
-   * 
-   */
   private Currency currency;
 
   /**

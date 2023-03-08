@@ -20,9 +20,6 @@ public class Sortiment {
    */
   public static final String PRODUCTS = "products";
 
-  /**
-   * 
-   */
   private Set<Product> products;
 
   /**

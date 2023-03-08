@@ -47,24 +47,12 @@ public abstract class CustomerBOBase extends PersistentObject {
    */
   public static final String ADRESS_ROLE = "adress";
 
-  /**
-   * 
-   */
   private Set<AccountBO> accounts;
 
-  /**
-   * 
-   */
   private Set<EmployeeBO> attendingEmployees;
 
-  /**
-   * 
-   */
   private Boolean active;
 
-  /**
-   * 
-   */
   private MyAddressBO adress;
 
   /**

@@ -18,9 +18,6 @@ public class MappingChildDO extends MappingParentDO {
    */
   public static final String VALUE = "value";
 
-  /**
-   * 
-   */
   private int value;
 
   /**

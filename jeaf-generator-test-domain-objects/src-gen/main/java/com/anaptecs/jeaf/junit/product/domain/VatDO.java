@@ -19,9 +19,6 @@ public class VatDO extends DomainObject {
    */
   public static final String RATE = "rate";
 
-  /**
-   * 
-   */
   private double rate;
 
   /**

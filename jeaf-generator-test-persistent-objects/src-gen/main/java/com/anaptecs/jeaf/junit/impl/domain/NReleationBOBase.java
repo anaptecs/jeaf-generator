@@ -37,14 +37,8 @@ public abstract class NReleationBOBase extends PersistentObject {
    */
   public static final String MS_ROLE = "ms";
 
-  /**
-   * 
-   */
   private Set<MReleationBO> ms;
 
-  /**
-   * 
-   */
   private String myString;
 
   /**

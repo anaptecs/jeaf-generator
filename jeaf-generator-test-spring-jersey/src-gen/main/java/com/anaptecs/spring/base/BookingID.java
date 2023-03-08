@@ -34,29 +34,14 @@ public class BookingID {
    */
   public static final String BOOKINGCODE = "bookingCode";
 
-  /**
-   * 
-   */
   private final transient String publicBookingID;
 
-  /**
-   * 
-   */
   private final String referenceID;
 
-  /**
-   * 
-   */
   private final String externalRefID;
 
-  /**
-   * 
-   */
   private final InventoryType inventory;
 
-  /**
-   * 
-   */
   private final BookingCode bookingCode;
 
   /**

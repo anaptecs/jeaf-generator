@@ -27,14 +27,8 @@ public final class Entity {
       dataUnit = pDataUnit;
     }
 
-    /**
-     * 
-     */
     private final String entityID;
 
-    /**
-     * 
-     */
     private DataUnit dataUnit;
 
     /**

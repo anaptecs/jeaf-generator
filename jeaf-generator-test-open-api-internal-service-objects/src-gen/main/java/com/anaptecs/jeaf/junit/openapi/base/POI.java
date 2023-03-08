@@ -24,22 +24,13 @@ public class POI extends Stop {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private String description;
 
-  /**
-   * 
-   */
   @Deprecated
   @NotNull
   private Long theLink;
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<SoftLink> evenMoreLinks;
 

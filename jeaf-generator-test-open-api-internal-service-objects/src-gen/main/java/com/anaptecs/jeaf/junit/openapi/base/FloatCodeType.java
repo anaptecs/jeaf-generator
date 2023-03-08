@@ -21,9 +21,6 @@ public class FloatCodeType implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private float code;
 
   /**

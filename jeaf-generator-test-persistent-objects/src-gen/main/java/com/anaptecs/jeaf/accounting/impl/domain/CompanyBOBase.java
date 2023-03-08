@@ -41,19 +41,10 @@ public abstract class CompanyBOBase extends CustomerBO {
    */
   public static final String TAXNUMBER_ATTRIBUTE = "taxNumber";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private Long registrationNumber;
 
-  /**
-   * 
-   */
   private Long taxNumber;
 
   /**

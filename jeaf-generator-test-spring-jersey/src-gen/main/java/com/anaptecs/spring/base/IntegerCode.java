@@ -16,9 +16,6 @@ public class IntegerCode {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private Integer code;
 
   /**

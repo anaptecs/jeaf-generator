@@ -57,44 +57,20 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
    */
   public static final String MYBYTEARRAY = "myByteArray";
 
-  /**
-   * 
-   */
   private Boolean myBoolean;
 
-  /**
-   * 
-   */
   private Byte myByte;
 
-  /**
-   * 
-   */
   private Character myCharacter;
 
-  /**
-   * 
-   */
   private Double myDouble;
 
-  /**
-   * 
-   */
   private Float myFloat;
 
-  /**
-   * 
-   */
   private Long myLong;
 
-  /**
-   * 
-   */
   private Short myShort;
 
-  /**
-   * 
-   */
   private byte[] myByteArray;
 
   /**

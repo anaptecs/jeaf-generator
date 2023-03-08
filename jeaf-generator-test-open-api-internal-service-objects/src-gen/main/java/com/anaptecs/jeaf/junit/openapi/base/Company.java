@@ -21,9 +21,6 @@ public class Company extends Partner {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private String name;
 

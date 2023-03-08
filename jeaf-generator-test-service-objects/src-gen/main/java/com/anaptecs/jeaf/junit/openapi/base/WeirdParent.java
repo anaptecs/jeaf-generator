@@ -37,19 +37,10 @@ public class WeirdParent implements ServiceObject {
    */
   public static final String COMPLEXBOOKINGS = "complexBookings";
 
-  /**
-   * 
-   */
   private String someProperty;
 
-  /**
-   * 
-   */
   private ComplexBookingID complexBooking;
 
-  /**
-   * 
-   */
   private Set<ComplexBookingID> complexBookings;
 
   /**

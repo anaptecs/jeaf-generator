@@ -37,14 +37,8 @@ public abstract class SwiftTransactionLogBOBase extends PersistentObject {
    */
   public static final String AMOUNT_ATTRIBUTE = "amount";
 
-  /**
-   * 
-   */
   private Calendar timestamp;
 
-  /**
-   * 
-   */
   private Double amount;
 
   /**

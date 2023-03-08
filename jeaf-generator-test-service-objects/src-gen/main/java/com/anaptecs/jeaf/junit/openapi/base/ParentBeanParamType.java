@@ -27,14 +27,8 @@ public class ParentBeanParamType implements ServiceObject {
    */
   public static final String TKID = "tkID";
 
-  /**
-   * 
-   */
   private String novaKey;
 
-  /**
-   * 
-   */
   private String tkID;
 
   /**

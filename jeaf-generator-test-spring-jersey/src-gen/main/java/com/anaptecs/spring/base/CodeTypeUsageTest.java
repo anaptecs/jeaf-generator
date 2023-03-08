@@ -34,24 +34,12 @@ public class CodeTypeUsageTest {
    */
   public static final String STRINGCODE = "stringCode";
 
-  /**
-   * 
-   */
   private BooleanCodeType booleanCode;
 
-  /**
-   * 
-   */
   private Set<BooleanCodeType> booleanCodeAssociation;
 
-  /**
-   * 
-   */
   private Set<ShortCodeType> shortCodeTypeAssociation;
 
-  /**
-   * 
-   */
   private StringCodeType stringCode;
 
   /**

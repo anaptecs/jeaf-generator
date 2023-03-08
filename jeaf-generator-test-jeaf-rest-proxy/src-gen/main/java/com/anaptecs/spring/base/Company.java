@@ -24,9 +24,6 @@ public class Company extends Partner {
    */
   public static final String NAME = "name";
 
-  /**
-   * 
-   */
   private String name;
 
   /**

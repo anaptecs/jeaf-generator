@@ -22,9 +22,6 @@ public class ComplexArrayServiceObject implements ServiceObject {
    */
   public static final String CLASSBS = "classBs";
 
-  /**
-   * 
-   */
   private ClassB[] classBs;
 
   /**

@@ -23,7 +23,8 @@ public class EnumTest {
   private ExtensibleEnum property;
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>RED</code>
    */
   private ExtensibleEnum enumRef;
 

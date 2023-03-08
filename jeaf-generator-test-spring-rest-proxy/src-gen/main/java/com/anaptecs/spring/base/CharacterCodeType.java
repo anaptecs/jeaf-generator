@@ -13,9 +13,6 @@ public class CharacterCodeType {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private char code;
 
   /**

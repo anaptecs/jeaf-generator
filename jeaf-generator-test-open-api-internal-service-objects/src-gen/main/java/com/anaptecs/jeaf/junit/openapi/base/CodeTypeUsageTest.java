@@ -25,33 +25,18 @@ public class CodeTypeUsageTest implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private BooleanCodeType booleanCode;
 
-  /**
-   * 
-   */
   private Set<BooleanCodeType> booleanCodeAssociation;
 
-  /**
-   * 
-   */
   @Size(min = 1)
   @NotNull
   private Set<ShortCodeType> shortCodeTypeAssociation;
 
-  /**
-   * 
-   */
   @NotNull
   private StringCodeType stringCode;
 
-  /**
-   * 
-   */
   @NotNull
   private ShortCode shortCode;
 

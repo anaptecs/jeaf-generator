@@ -50,9 +50,6 @@ public class MultiValuedDataType implements ServiceObject {
   @NotNull
   private List<BooleanLiteralsEnum> literals;
 
-  /**
-   * 
-   */
   @QueryParam("stringProperty")
   @Size(min = 32, max = 64)
   @NotNull

@@ -24,24 +24,12 @@ public abstract class OrderingABase extends PersistentObject {
    */
   public static final String TABLE_NAME = "ORDERINGA";
 
-  /**
-   * 
-   */
   private SortedSet<OrderingB> orderedUnique;
 
-  /**
-   * 
-   */
   private List<OrderingB> orderedNotUnique;
 
-  /**
-   * 
-   */
   private OrderingB notOrderedUnique;
 
-  /**
-   * 
-   */
   private Collection<OrderingB> notOrderedNotUnique;
 
   /**

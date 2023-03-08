@@ -13,9 +13,6 @@ public class POI extends Stop {
    */
   public static final String DESCRIPTION = "description";
 
-  /**
-   * 
-   */
   private String description;
 
   /**

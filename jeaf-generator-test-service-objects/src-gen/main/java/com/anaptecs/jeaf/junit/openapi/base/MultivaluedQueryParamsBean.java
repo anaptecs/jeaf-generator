@@ -32,19 +32,10 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
    */
   public static final String INTEGERS = "integers";
 
-  /**
-   * 
-   */
   private int[] intArray;
 
-  /**
-   * 
-   */
   private String[] strings;
 
-  /**
-   * 
-   */
   private Integer[] integers;
 
   /**

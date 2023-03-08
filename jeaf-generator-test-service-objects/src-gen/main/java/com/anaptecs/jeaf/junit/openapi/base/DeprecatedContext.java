@@ -41,9 +41,6 @@ public class DeprecatedContext implements ServiceObject {
    */
   public static final String QUERYPARAM = "queryParam";
 
-  /**
-   * 
-   */
   @NotEmpty
   private String accessToken;
 
@@ -53,14 +50,8 @@ public class DeprecatedContext implements ServiceObject {
    */
   private Locale language;
 
-  /**
-   * 
-   */
   private long resellerID;
 
-  /**
-   * 
-   */
   private String queryParam;
 
   /**

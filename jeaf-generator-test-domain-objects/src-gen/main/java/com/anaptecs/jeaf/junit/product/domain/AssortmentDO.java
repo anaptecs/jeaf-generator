@@ -31,14 +31,8 @@ public class AssortmentDO extends DomainObject {
    */
   public static final String NAME = "name";
 
-  /**
-   * 
-   */
   private Set<ProductDO> products;
 
-  /**
-   * 
-   */
   private String name;
 
   /**

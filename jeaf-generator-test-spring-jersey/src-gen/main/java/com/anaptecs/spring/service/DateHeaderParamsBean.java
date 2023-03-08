@@ -68,63 +68,33 @@ public class DateHeaderParamsBean {
    */
   public static final String SQLDATE = "sqlDate";
 
-  /**
-   * 
-   */
   @HeaderParam("Offset-Date-Time")
   private OffsetDateTime offsetDateTime;
 
-  /**
-   * 
-   */
   @HeaderParam("Offset-Time")
   private OffsetTime offsetTime;
 
-  /**
-   * 
-   */
   @HeaderParam("Local-Date-Time")
   private LocalDateTime localDateTime;
 
-  /**
-   * 
-   */
   @HeaderParam("Local-Time")
   private LocalTime localTime;
 
-  /**
-   * 
-   */
   @HeaderParam("Local-Date")
   private LocalDate localDate;
 
-  /**
-   * 
-   */
   @HeaderParam("Util-Date")
   private java.util.Date utilDate;
 
-  /**
-   * 
-   */
   @HeaderParam("Calendar")
   private Calendar calendar;
 
-  /**
-   * 
-   */
   @HeaderParam("SQL-Timestamp")
   private Timestamp sqlTimestamp;
 
-  /**
-   * 
-   */
   @HeaderParam("SQL-Time")
   private Time sqlTime;
 
-  /**
-   * 
-   */
   @HeaderParam("SQL-Date")
   private Date sqlDate;
 

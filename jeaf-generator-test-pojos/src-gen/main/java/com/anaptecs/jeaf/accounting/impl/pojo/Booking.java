@@ -45,29 +45,14 @@ public class Booking {
    */
   public static final String EXECUTIONTIMESTAMP = "executionTimestamp";
 
-  /**
-   * 
-   */
   private Account sourceAccount;
 
-  /**
-   * 
-   */
   private Account targetAccount;
 
-  /**
-   * 
-   */
   private BigDecimal amount;
 
-  /**
-   * 
-   */
   private Currency currency;
 
-  /**
-   * 
-   */
   private Calendar executionTimestamp;
 
   /**

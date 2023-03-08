@@ -13,9 +13,6 @@ public class FloatCodeType {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private float code;
 
   /**

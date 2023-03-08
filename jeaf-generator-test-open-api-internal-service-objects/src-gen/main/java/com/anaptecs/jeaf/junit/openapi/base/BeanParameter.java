@@ -24,23 +24,14 @@ public class BeanParameter implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @HeaderParam("token")
   @NotNull
   private String accessToken;
 
-  /**
-   * 
-   */
   @HeaderParam("lang")
   @NotNull
   private Locale language;
 
-  /**
-   * 
-   */
   @Deprecated
   @QueryParam("q2")
   @NotNull

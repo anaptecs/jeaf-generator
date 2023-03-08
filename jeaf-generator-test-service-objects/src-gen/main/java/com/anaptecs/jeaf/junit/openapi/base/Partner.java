@@ -35,9 +35,6 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   private final ServiceObjectID objectID;
 
-  /**
-   * 
-   */
   private List<PostalAddress> postalAddresses;
 
   /**

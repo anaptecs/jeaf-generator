@@ -17,9 +17,6 @@ public enum BankType {
     typeCode = pTypeCode;
   }
 
-  /**
-   * 
-   */
   private String typeCode;
 
   /**

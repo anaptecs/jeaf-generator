@@ -52,9 +52,6 @@ public class Channel implements ServiceObject {
    */
   private ChannelCode channelCode;
 
-  /**
-   * 
-   */
   private final int code;
 
   /**
@@ -63,9 +60,6 @@ public class Channel implements ServiceObject {
    */
   private final boolean selfServiceChannel;
 
-  /**
-   * 
-   */
   private transient Reseller reseller;
 
   /**

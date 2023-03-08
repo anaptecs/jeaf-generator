@@ -24,9 +24,6 @@ public class Sortiment implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private Set<Product> products;
 
   /**

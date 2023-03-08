@@ -23,9 +23,6 @@ public class DeprecatedServiceObject implements ServiceObject {
    */
   public static final String NAME = "name";
 
-  /**
-   * 
-   */
   private String name;
 
   /**

@@ -34,19 +34,10 @@ public class SchufaRequest implements ServiceObject {
    */
   public static final String DATEOFBIRTH = "dateOfBirth";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private String firstName;
 
-  /**
-   * 
-   */
   private Calendar dateOfBirth;
 
   /**

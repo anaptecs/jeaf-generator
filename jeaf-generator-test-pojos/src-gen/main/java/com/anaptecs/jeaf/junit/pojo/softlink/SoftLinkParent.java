@@ -41,19 +41,10 @@ public class SoftLinkParent {
    */
   public static final String READONLYPARTNER = "readonlyPartner";
 
-  /**
-   * 
-   */
   private Set<SoftLinkID> partners;
 
-  /**
-   * 
-   */
   private SoftLinkID thePartner;
 
-  /**
-   * 
-   */
   private final SoftLinkID readonlyPartner;
 
   /**

@@ -21,9 +21,6 @@ public abstract class GrandchildBOBase extends ChildBO {
    */
   public static final String GRANDCHILDNAME_ATTRIBUTE = "grandchildName";
 
-  /**
-   * 
-   */
   private String grandchildName;
 
   /**

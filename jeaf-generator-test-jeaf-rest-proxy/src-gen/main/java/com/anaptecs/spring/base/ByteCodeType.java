@@ -26,9 +26,6 @@ public class ByteCodeType implements Serializable {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private byte code;
 
   /**

@@ -26,9 +26,6 @@ public class LongCodeType implements Serializable {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private long code;
 
   /**

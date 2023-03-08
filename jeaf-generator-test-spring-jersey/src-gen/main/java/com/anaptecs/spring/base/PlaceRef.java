@@ -23,9 +23,6 @@ public abstract class PlaceRef {
    */
   public static final String NAME = "name";
 
-  /**
-   * 
-   */
   private String name;
 
   /**

@@ -19,9 +19,6 @@ public class ManufacturerQuery extends QueryObject {
    */
   public static final String NAME = "name";
 
-  /**
-   * 
-   */
   private String name;
 
   /**

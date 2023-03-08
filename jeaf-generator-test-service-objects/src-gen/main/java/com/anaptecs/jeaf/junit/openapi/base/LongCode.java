@@ -24,9 +24,6 @@ public class LongCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private Long code;
 
   /**

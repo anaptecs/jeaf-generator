@@ -26,9 +26,6 @@ public abstract class FlushTestMasterBOBase extends PersistentObject {
    */
   public static final String REQUIREDFIELD_ATTRIBUTE = "requiredField";
 
-  /**
-   * 
-   */
   private String requiredField;
 
   /**

@@ -25,9 +25,6 @@ public class TechnicalHeaderContext implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @HeaderParam("Reseller")
   @NotNull
   private String reseller;

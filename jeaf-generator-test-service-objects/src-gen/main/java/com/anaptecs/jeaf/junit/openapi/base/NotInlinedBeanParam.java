@@ -37,24 +37,12 @@ public class NotInlinedBeanParam implements ServiceObject {
    */
   public static final String BOOKINGID = "bookingID";
 
-  /**
-   * 
-   */
   private String header;
 
-  /**
-   * 
-   */
   private DoubleCode doubleCode;
 
-  /**
-   * 
-   */
   private ExtensibleEnum extensibleEnum;
 
-  /**
-   * 
-   */
   private BookingID bookingID;
 
   /**

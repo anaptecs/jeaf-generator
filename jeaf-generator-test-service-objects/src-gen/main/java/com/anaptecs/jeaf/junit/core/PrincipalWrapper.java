@@ -24,9 +24,6 @@ public class PrincipalWrapper implements ServiceObject {
    */
   public static final String LPRINCIPAL = "lPrincipal";
 
-  /**
-   * 
-   */
   private Principal lPrincipal;
 
   /**

@@ -32,14 +32,8 @@ public class Sale implements Serializable {
    */
   public static final String SALE = "sale";
 
-  /**
-   * 
-   */
   private BigDecimal transactionAmount;
 
-  /**
-   * 
-   */
   private Channel sale;
 
   /**

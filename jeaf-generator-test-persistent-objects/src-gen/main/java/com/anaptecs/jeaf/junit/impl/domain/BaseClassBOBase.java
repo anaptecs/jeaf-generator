@@ -41,19 +41,10 @@ public abstract class BaseClassBOBase extends PersistentObject {
    */
   public static final String DEPRECATEDPO_ROLE = "deprecatedPO";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private Integer number;
 
-  /**
-   * 
-   */
   private DeprecatedPO deprecatedPO;
 
   /**

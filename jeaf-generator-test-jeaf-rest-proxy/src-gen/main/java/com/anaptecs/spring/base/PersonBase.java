@@ -31,14 +31,8 @@ public abstract class PersonBase extends Partner {
    */
   public static final String FIRSTNAME = "firstName";
 
-  /**
-   * 
-   */
   private String surname;
 
-  /**
-   * 
-   */
   private String firstName;
 
   /**

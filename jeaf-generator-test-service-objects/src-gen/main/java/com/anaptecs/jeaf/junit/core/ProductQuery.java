@@ -39,30 +39,15 @@ public class ProductQuery extends QueryObject {
    */
   public static final String MANUFACTURER = "manufacturer";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   @Deprecated
   private Integer minAvailability;
 
-  /**
-   * 
-   */
   private Integer minPrice;
 
-  /**
-   * 
-   */
   private Integer maxPrice;
 
-  /**
-   * 
-   */
   private String manufacturer;
 
   /**

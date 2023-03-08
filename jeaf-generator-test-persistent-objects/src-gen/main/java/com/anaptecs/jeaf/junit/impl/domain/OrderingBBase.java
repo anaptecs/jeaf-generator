@@ -16,24 +16,12 @@ public abstract class OrderingBBase extends PersistentObject {
    */
   public static final String TABLE_NAME = "ORDERINGB";
 
-  /**
-   * 
-   */
   private OrderingA a1;
 
-  /**
-   * 
-   */
   private OrderingA a2;
 
-  /**
-   * 
-   */
   private OrderingA a3;
 
-  /**
-   * 
-   */
   private OrderingA a4;
 
   /**

@@ -27,21 +27,12 @@ public class AdvancedHeader {
    */
   public static final String DOUBLECODE = "doubleCode";
 
-  /**
-   * 
-   */
   @HeaderParam("bookingID")
   private BookingID bookingID;
 
-  /**
-   * 
-   */
   @HeaderParam("bookingCode")
   private BookingCode bookingCode;
 
-  /**
-   * 
-   */
   @HeaderParam("DoubleCode")
   private DoubleCode doubleCode;
 

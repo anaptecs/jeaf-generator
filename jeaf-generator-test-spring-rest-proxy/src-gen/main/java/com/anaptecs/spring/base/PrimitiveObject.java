@@ -119,114 +119,48 @@ public class PrimitiveObject {
    */
   public static final String BSTRING = "bString";
 
-  /**
-   * 
-   */
   private boolean aBoolean;
 
-  /**
-   * 
-   */
   private Boolean bBoolean;
 
-  /**
-   * 
-   */
   private boolean cBoolean;
 
-  /**
-   * 
-   */
   private byte aByte;
 
-  /**
-   * 
-   */
   private Byte bByte;
 
-  /**
-   * 
-   */
   private short aShort;
 
-  /**
-   * 
-   */
   private Short bShort;
 
-  /**
-   * 
-   */
   private int aInteger;
 
-  /**
-   * 
-   */
   private Integer bInteger;
 
-  /**
-   * 
-   */
   private Integer cInteger;
 
-  /**
-   * 
-   */
   private long aLong;
 
-  /**
-   * 
-   */
   private Long bLong;
 
-  /**
-   * 
-   */
   private BigInteger aBigInteger;
 
-  /**
-   * 
-   */
   private char aCharacter;
 
-  /**
-   * 
-   */
   private Character bCharacter;
 
-  /**
-   * 
-   */
   private float aFloat;
 
-  /**
-   * 
-   */
   private Float bFloat;
 
-  /**
-   * 
-   */
   private double aDouble;
 
-  /**
-   * 
-   */
   private Double bDouble;
 
-  /**
-   * 
-   */
   private BigDecimal aBigDecimal;
 
-  /**
-   * 
-   */
   private String aString;
 
-  /**
-   * 
-   */
   private String bString;
 
   /**

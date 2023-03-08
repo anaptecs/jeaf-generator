@@ -17,9 +17,6 @@ public class TechnicalHeaderContext {
    */
   public static final String RESELLER = "reseller";
 
-  /**
-   * 
-   */
   @HeaderParam("Reseller")
   private String reseller;
 

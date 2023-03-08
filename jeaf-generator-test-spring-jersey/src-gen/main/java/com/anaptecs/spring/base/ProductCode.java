@@ -18,9 +18,6 @@ public class ProductCode {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   @Positive
   private int code;
 

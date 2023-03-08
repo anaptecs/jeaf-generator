@@ -27,9 +27,6 @@ public class ReadonlyServiceObject implements ServiceObject {
    */
   public static final String READONLYDEFAULT = "readonlyDefault";
 
-  /**
-   * 
-   */
   private final String readonly;
 
   /**

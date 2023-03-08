@@ -24,9 +24,6 @@ public class IBAN implements ServiceObject {
    */
   public static final String VALUE = "value";
 
-  /**
-   * 
-   */
   private String value;
 
   /**

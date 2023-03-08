@@ -46,9 +46,6 @@ public class DirectedEdge implements Serializable {
    */
   private Stop end;
 
-  /**
-   * 
-   */
   @JsonProperty("previousName")
   private String link;
 

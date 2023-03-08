@@ -40,19 +40,10 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
    */
   private final ServiceObjectID objectID;
 
-  /**
-   * 
-   */
   private Long iban;
 
-  /**
-   * 
-   */
   private Double balance;
 
-  /**
-   * 
-   */
   private ServiceObjectID bankID;
 
   /**

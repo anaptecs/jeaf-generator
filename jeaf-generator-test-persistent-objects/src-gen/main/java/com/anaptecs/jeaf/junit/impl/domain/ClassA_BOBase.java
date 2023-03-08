@@ -41,14 +41,8 @@ public abstract class ClassA_BOBase extends PersistentObject {
    */
   public static final String CLASSB_ROLE = "classB";
 
-  /**
-   * 
-   */
   private ClassB_BO classB;
 
-  /**
-   * 
-   */
   private String name;
 
   /**

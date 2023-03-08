@@ -25,9 +25,6 @@ public class LinkObject implements Serializable {
    */
   public static final String HREF = "href";
 
-  /**
-   * 
-   */
   private String href;
 
   /**

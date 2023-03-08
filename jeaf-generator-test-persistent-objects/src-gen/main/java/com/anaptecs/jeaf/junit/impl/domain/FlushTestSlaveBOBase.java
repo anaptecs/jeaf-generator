@@ -31,14 +31,8 @@ public abstract class FlushTestSlaveBOBase extends PersistentObject {
    */
   public static final String MASTEROBJECT_ROLE = "masterObject";
 
-  /**
-   * 
-   */
   private FlushTestMasterBO masterObject;
 
-  /**
-   * 
-   */
   private String optionalField;
 
   /**

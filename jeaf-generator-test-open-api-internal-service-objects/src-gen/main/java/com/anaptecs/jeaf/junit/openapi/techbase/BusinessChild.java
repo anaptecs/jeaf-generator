@@ -18,9 +18,6 @@ public class BusinessChild extends BusinessParent {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private String childAttribute;
 

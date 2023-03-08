@@ -31,14 +31,8 @@ public abstract class CManyBOBase extends PersistentObject {
    */
   public static final String AONE_ROLE = "aOne";
 
-  /**
-   * 
-   */
   private Integer cNumber;
 
-  /**
-   * 
-   */
   private AOneBO aOne;
 
   /**

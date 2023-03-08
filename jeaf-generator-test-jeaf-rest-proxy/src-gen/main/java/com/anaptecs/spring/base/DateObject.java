@@ -61,29 +61,14 @@ public class DateObject implements Serializable {
    */
   private LocalTime localTime;
 
-  /**
-   * 
-   */
   private LocalDate localDate;
 
-  /**
-   * 
-   */
   private LocalDateTime localDateTime;
 
-  /**
-   * 
-   */
   private Calendar calendar;
 
-  /**
-   * 
-   */
   private Date sqlDate;
 
-  /**
-   * 
-   */
   private java.util.Date utilDate;
 
   /**

@@ -23,9 +23,6 @@ public class BookingCode implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @Size(min = 3, max = 5)
   @NotNull
   private String code;

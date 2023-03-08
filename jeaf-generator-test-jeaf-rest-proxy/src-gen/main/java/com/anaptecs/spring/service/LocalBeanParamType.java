@@ -29,15 +29,9 @@ public class LocalBeanParamType implements Serializable {
    */
   public static final String LOCALID = "localID";
 
-  /**
-   * 
-   */
   @HeaderParam("localKey")
   private String localKey;
 
-  /**
-   * 
-   */
   @HeaderParam("localID")
   private String localID;
 

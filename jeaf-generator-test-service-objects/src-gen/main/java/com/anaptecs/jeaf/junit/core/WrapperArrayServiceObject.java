@@ -22,9 +22,6 @@ public class WrapperArrayServiceObject implements ServiceObject {
    */
   public static final String BOOLEANARRAY = "booleanArray";
 
-  /**
-   * 
-   */
   private Boolean[] booleanArray;
 
   /**

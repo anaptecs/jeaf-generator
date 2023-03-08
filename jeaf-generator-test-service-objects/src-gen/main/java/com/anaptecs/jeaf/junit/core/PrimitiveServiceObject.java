@@ -57,44 +57,20 @@ public class PrimitiveServiceObject implements ServiceObject {
    */
   public static final String ACHAR = "aChar";
 
-  /**
-   * 
-   */
   private boolean aBoolean;
 
-  /**
-   * 
-   */
   private byte aByte;
 
-  /**
-   * 
-   */
   private short aShort;
 
-  /**
-   * 
-   */
   private int aInt;
 
-  /**
-   * 
-   */
   private long aLong;
 
-  /**
-   * 
-   */
   private float aFloat;
 
-  /**
-   * 
-   */
   private double aDouble;
 
-  /**
-   * 
-   */
   private char aChar;
 
   /**

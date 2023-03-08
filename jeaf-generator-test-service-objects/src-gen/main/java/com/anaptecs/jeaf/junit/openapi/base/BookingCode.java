@@ -25,9 +25,6 @@ public class BookingCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   @Size(min = 3, max = 5)
   private String code;
 

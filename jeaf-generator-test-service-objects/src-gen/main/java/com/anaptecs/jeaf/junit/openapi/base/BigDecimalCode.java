@@ -25,9 +25,6 @@ public class BigDecimalCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private BigDecimal code;
 
   /**

@@ -26,9 +26,6 @@ public class BooleanCodeType implements Serializable {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private boolean code;
 
   /**

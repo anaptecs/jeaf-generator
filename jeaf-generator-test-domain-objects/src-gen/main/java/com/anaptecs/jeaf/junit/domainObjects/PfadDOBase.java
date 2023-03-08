@@ -20,9 +20,6 @@ public abstract class PfadDOBase extends DomainObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private List<KanteDO> kantenSequenz;
 
   /**

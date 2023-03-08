@@ -21,9 +21,6 @@ public class SubclassWithoutID extends IdentifiableServiceObject {
    */
   public static final String ATTR = "attr";
 
-  /**
-   * 
-   */
   private Boolean attr;
 
   /**

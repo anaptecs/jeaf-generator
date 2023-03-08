@@ -40,19 +40,10 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
    */
   private final ServiceObjectID objectID;
 
-  /**
-   * 
-   */
   private String type;
 
-  /**
-   * 
-   */
   private Character typeChar;
 
-  /**
-   * 
-   */
   private Byte sortorder;
 
   /**

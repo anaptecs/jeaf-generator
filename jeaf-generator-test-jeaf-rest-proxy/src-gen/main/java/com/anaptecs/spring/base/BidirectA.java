@@ -40,14 +40,8 @@ public class BidirectA implements Serializable {
    */
   public static final String TRANSIENTCHILD = "transientChild";
 
-  /**
-   * 
-   */
   private transient Set<BidirectB> transientBs;
 
-  /**
-   * 
-   */
   private BidirectA parent;
 
   /**
@@ -55,9 +49,6 @@ public class BidirectA implements Serializable {
    */
   private transient boolean parentBackReferenceInitialized;
 
-  /**
-   * 
-   */
   private transient BidirectA transientChild;
 
   /**

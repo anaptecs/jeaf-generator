@@ -30,21 +30,12 @@ public class BeanParameter {
   @Deprecated
   public static final String OLDSTYLE = "oldStyle";
 
-  /**
-   * 
-   */
   @HeaderParam("token")
   private String accessToken;
 
-  /**
-   * 
-   */
   @HeaderParam("lang")
   private Locale language;
 
-  /**
-   * 
-   */
   @Deprecated
   @QueryParam("q2")
   private String oldStyle;

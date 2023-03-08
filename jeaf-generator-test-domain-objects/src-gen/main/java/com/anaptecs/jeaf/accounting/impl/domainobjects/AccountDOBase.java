@@ -34,19 +34,10 @@ public abstract class AccountDOBase extends DomainObject {
    */
   public static final String BALANCE = "balance";
 
-  /**
-   * 
-   */
   private Long number;
 
-  /**
-   * 
-   */
   private Float interestRate;
 
-  /**
-   * 
-   */
   private BigDecimal balance;
 
   /**

@@ -33,9 +33,6 @@ public class ChildPOJO extends ParentPOJO {
    */
   public static final String CHILDATTRIBUTE = "childAttribute";
 
-  /**
-   * 
-   */
   @NotNull
   private Integer childAttribute;
 

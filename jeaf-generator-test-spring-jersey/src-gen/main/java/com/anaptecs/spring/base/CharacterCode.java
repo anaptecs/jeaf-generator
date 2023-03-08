@@ -16,9 +16,6 @@ public class CharacterCode {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private Character code;
 
   /**

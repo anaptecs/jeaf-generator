@@ -21,9 +21,6 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    */
   public static final String CHILDPROPERTY = "childProperty";
 
-  /**
-   * 
-   */
   private String childProperty;
 
   /**

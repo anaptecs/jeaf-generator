@@ -27,14 +27,8 @@ public class BidirectA {
    */
   public static final String TRANSIENTCHILD = "transientChild";
 
-  /**
-   * 
-   */
   private transient Set<BidirectB> transientBs;
 
-  /**
-   * 
-   */
   private BidirectA parent;
 
   /**
@@ -42,9 +36,6 @@ public class BidirectA {
    */
   private transient boolean parentBackReferenceInitialized;
 
-  /**
-   * 
-   */
   private transient BidirectA transientChild;
 
   /**

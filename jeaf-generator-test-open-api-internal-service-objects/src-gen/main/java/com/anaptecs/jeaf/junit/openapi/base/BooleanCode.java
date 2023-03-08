@@ -21,9 +21,6 @@ public class BooleanCode implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private boolean code;
 
   /**

@@ -21,14 +21,8 @@ public class Stop {
    */
   public static final String LINKS = "links";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private List<LinkObject> links;
 
   /**

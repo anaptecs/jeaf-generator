@@ -46,24 +46,22 @@ public class ParentClass implements ServiceObject {
   @Deprecated
   public static final String LEGACYBANKACCOUNTS = "legacyBankAccounts";
 
-  /**
-   * 
-   */
   private String parentAttribute;
 
-  /**
-   * 
-   */
   private Set<IBAN> ibans;
 
   /**
    * I would like to document references to other types.
+   * 
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   private BankAccount theBankAccount;
 
   /**
    * Association is still there be SemVer compliant.
+   * 
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   private List<BankAccount> legacyBankAccounts;

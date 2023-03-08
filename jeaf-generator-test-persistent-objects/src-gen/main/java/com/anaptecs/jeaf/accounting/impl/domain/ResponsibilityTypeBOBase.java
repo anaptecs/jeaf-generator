@@ -46,19 +46,10 @@ public abstract class ResponsibilityTypeBOBase extends PersistentObject {
    */
   public static final String SORTORDER_ATTRIBUTE = "sortorder";
 
-  /**
-   * 
-   */
   private String type;
 
-  /**
-   * 
-   */
   private Character typeChar;
 
-  /**
-   * 
-   */
   private Byte sortorder;
 
   /**

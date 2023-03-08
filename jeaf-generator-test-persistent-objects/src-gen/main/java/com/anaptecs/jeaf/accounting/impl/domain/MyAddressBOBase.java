@@ -56,24 +56,12 @@ public abstract class MyAddressBOBase extends PersistentObject {
    */
   public static final String COUNTRY_ATTRIBUTE = "country";
 
-  /**
-   * 
-   */
   private String street;
 
-  /**
-   * 
-   */
   private Integer zipCode;
 
-  /**
-   * 
-   */
   private String city;
 
-  /**
-   * 
-   */
   private String country;
 
   /**

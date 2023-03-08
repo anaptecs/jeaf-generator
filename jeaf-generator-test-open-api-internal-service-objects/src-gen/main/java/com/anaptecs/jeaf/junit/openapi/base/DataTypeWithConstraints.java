@@ -22,9 +22,6 @@ public class DataTypeWithConstraints implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @Max(value = 9999)
   private int intValue;
 

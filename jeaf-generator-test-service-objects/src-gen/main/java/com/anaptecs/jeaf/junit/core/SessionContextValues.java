@@ -27,14 +27,8 @@ public class SessionContextValues implements ServiceObject {
    */
   public static final String COUNTER = "counter";
 
-  /**
-   * 
-   */
   private String timestamp;
 
-  /**
-   * 
-   */
   private Integer counter;
 
   /**

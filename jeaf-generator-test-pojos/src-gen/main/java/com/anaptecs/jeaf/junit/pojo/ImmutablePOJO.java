@@ -26,14 +26,8 @@ public class ImmutablePOJO {
    */
   public static final String SOMETHING = "something";
 
-  /**
-   * 
-   */
   private final String name;
 
-  /**
-   * 
-   */
   private Integer something;
 
   /**

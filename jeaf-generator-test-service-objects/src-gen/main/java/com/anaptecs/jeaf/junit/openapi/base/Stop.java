@@ -44,26 +44,14 @@ public class Stop implements ServiceObject {
    */
   public static final String THESOFTLINK = "theSoftLink";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private List<LinkObject> links;
 
-  /**
-   * 
-   */
   @Max(value = 32)
   @PositiveOrZero
   private byte index;
 
-  /**
-   * 
-   */
   private SoftLink theSoftLink;
 
   /**
