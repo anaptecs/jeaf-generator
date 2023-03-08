@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Data type represents a product definition
- * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

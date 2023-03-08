@@ -1,17 +1,11 @@
 package com.anaptecs.jeaf.junit.pojo;
 
 /**
- * 
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
  */
 public enum EnumWithProperties {
-  /**
-   * 
-   */
-  CAMPAIGN_DATA_UNIT("AX2", "Campaign Data Unit", 4711),
-  /**
-   * 
-   */
-  RELATION_KEY_DATA_UNIT("X56", "Relation Key Data Unit", 12345);
+  CAMPAIGN_DATA_UNIT("AX2", "Campaign Data Unit", 4711), RELATION_KEY_DATA_UNIT("X56", "Relation Key Data Unit", 12345);
 
   /**
    * Initialize object.

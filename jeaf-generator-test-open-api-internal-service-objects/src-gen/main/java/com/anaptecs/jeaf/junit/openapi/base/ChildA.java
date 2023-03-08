@@ -12,7 +12,6 @@ import javax.validation.Valid;
 
 /**
  * single line class comment
- * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.6.x

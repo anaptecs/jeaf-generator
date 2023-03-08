@@ -3,22 +3,12 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
- * 
+ * @author JEAF Generator
+ * @version JEAF Release 1.6.x
  */
 public final class ExtensibleEnum {
   public static enum ExtensibleEnumType {
-    /**
-     * 
-     */
-    RED,
-    /**
-     * 
-     */
-    GREEN,
-    /**
-     * 
-     */
-    BLUE,
+    RED, GREEN, BLUE,
     /**
      * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external
      * interface.
@@ -26,19 +16,10 @@ public final class ExtensibleEnum {
     UNKNOWN;
   }
 
-  /**
-   * 
-   */
   public static final ExtensibleEnum RED = new ExtensibleEnum(ExtensibleEnumType.RED);
 
-  /**
-   * 
-   */
   public static final ExtensibleEnum GREEN = new ExtensibleEnum(ExtensibleEnumType.GREEN);
 
-  /**
-   * 
-   */
   public static final ExtensibleEnum BLUE = new ExtensibleEnum(ExtensibleEnumType.BLUE);
 
   /**

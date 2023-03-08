@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * line<br/>
  * class<br/>
  * comment
- * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

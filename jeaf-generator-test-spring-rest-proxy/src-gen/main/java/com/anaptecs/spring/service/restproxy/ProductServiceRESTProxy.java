@@ -79,7 +79,6 @@ public class ProductServiceRESTProxy implements ProductService {
 
   /**
    * Operation returns all available product.
-   * <p/>
    * 
    * @return {@link List<Product>}
    */
@@ -357,7 +356,6 @@ public class ProductServiceRESTProxy implements ProductService {
   /**
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
    * to deprecated.
-   * <p/>
    * 
    * @param pProduct <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )

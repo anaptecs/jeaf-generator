@@ -106,7 +106,6 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
 
   /**
    * Operation returns all available product.
-   * <p/>
    * 
    * @param pMaxResultSize
    * @return {@link List<Product>}

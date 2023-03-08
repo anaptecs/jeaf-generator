@@ -1,7 +1,13 @@
+extension functions::JEAFDeprecated;
+
 cached String getAuthor():
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getAuthor();
     
-
 cached String getVersion():
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getVersion();
+
+cached boolean hasMeaningfulComment(uml::NamedElement element):
+    !element.ownedComment.select(e|e.body.length > 0).isEmpty;    
     
+cached boolean hasMeaningfulJavadoc(uml::NamedElement element):
+    element.hasMeaningfulComment() || element.hasMeaningfulDeprecationInfo();

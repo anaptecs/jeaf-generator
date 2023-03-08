@@ -1,13 +1,11 @@
 package com.anaptecs.spring.base;
 
 /**
- * 
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
  */
 public final class DataUnit {
   public static enum DataUnitType {
-    /**
-     * 
-     */
     COUPON("CMP"),
     /**
      * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external
@@ -45,9 +43,6 @@ public final class DataUnit {
     }
   }
 
-  /**
-   * 
-   */
   public static final DataUnit COUPON = new DataUnit(DataUnitType.COUPON);
 
   /**

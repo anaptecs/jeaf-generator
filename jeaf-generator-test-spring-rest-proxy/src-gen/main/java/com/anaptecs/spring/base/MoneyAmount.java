@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
  * <br/>
  * NOVA 14 Mapping<br/>
  * * nova-base.xsd.GeldBetrag
- * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

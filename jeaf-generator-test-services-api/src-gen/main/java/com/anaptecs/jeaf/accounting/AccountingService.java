@@ -16,7 +16,6 @@ import com.anaptecs.jeaf.core.api.ServiceObjectID;
 /**
  * This interface defines the common services that are provided by the accounting component. This interface is intended
  * to be an example to demonstrate how to use JEAF.
- * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

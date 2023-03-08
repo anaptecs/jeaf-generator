@@ -25,7 +25,6 @@ import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
 /**
  * Data type represents a product definition
- * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

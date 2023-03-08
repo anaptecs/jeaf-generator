@@ -4,21 +4,19 @@
 
 «DEFINE JavadocForType FOR uml::NamedElement»
 /**
-    «FOREACH ownedComment AS comment -»
- * «comment.body.replaceAll("\n",  "<br/>")»<p/>
+    «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
+ «comment.body.replaceAll("\n",  "<br/>")»
     «ENDFOREACH-»
  * @author «getAuthor()»
  * @version «getVersion()»
-    «IF this.isJEAFDeprecated()-»
- * @deprecated «this.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «this.getDeprecatedSince()», <b>removed with:</b> «this.getDeprecationRemoval()»)   
-    «ENDIF-»
+    «EXPAND DeprecatedJavadoc -»
  */
 «ENDDEFINE»
 
 «DEFINE JavadocForOperation FOR uml::Operation»
 /**
-    «FOREACH ownedComment AS comment -»
- * «comment.body.replaceAll("\n", "<br/>")»<p/>
+    «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
+ «comment.body.replaceAll("\n", "<br/>")»
     «ENDFOREACH -»
     «FOREACH this.getInputParameters() AS param -»
  * @param «param.name» «param.ownedComment.first().body.replaceAll("\n", "<br/>")» «IF param.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«param.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «param.getDeprecatedSince()», <b>removed with:</b> «param.getDeprecationRemoval()»)«ENDIF»    
@@ -28,8 +26,23 @@
  * @return «IF this.returnsPrimitiveType() == false»{@link «ENDIF»«this.getReturnTypeName()»«IF this.returnsPrimitiveType() == false»}«ENDIF» «returnType.ownedComment.first().body.replaceAll("\n", "<br/>")» «IF returnType.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«returnType.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «returnType.getDeprecatedSince()», <b>removed with:</b> «returnType.getDeprecationRemoval()»)«ENDIF»
     «ENDLET-»
     «ENDIF -»
+    «EXPAND DeprecatedJavadoc -»
+ */
+«ENDDEFINE»
+
+«DEFINE JavadocForLiteral FOR uml::EnumerationLiteral»
+«IF this.hasMeaningfulJavadoc()»
+/**
+    «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
+ «comment.body.replaceAll("\n", "<br/>")»
+    «ENDFOREACH -»
+    «EXPAND DeprecatedJavadoc -»
+ */
+ «ENDIF»
+«ENDDEFINE»
+
+«DEFINE DeprecatedJavadoc FOR uml::NamedElement -»
     «IF this.isJEAFDeprecated()-»
  * @deprecated «this.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «this.getDeprecatedSince()», <b>removed with:</b> «this.getDeprecationRemoval()»)   
     «ENDIF-»
- */
 «ENDDEFINE»

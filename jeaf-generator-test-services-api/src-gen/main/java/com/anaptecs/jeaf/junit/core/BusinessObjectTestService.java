@@ -18,7 +18,6 @@ import com.anaptecs.jeaf.core.api.ServiceObjectID;
  * <p/>
  * This is the second comment of this service. This is just intended to test JEAF Generator.
  * <p/>
- * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

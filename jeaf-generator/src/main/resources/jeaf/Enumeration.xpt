@@ -9,16 +9,12 @@
 «FILE packagePath()+"/"+name+".java" src_gen»
 package «packageName()»;
 
-/**
- * «getComment()»
- */
+«EXPAND functions::Javadoc::JavadocForType»
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 «IF this.extensibleEnum == false»
 	public enum «name» {
 	«FOREACH this.ownedLiteral AS literal»
-	  /**
-	   * «literal.getComment()»
-	   */
+	  «EXPAND functions::Javadoc::JavadocForLiteral FOR literal»
 	  «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
 	  «literal.name»«IF literal.slot.size > 0»( 
 	  	«FOREACH literal.slot AS slot SEPARATOR ", "»«IF slot.isStringTypeSlot()»"«ENDIF»«slot.value.first().stringValue()»«IF slot.isStringTypeSlot()»"«ENDIF»«ENDFOREACH»	  
@@ -42,9 +38,7 @@ package «packageName()»;
 public final class «name» {
   public static enum «name»Type {
 	«FOREACH this.ownedLiteral AS literal»
-	  /**
-	   * «literal.getComment()»
-	   */
+	  «EXPAND functions::Javadoc::JavadocForLiteral FOR literal»
 	  «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
 	  «literal.name»«IF literal.slot.size > 0»( 
 	  	«FOREACH literal.getOrderedSlots() AS slot SEPARATOR ", "»«IF slot.isEnumTypeSlot()»«slot.definingFeature.type.fqn()».«ENDIF»«IF slot.isStringTypeSlot()»"«ENDIF»«slot.value.first().stringValue()»«IF slot.isStringTypeSlot()»"«ENDIF»«IF slot.isFloatTypeSlot()»f«ENDIF»«ENDFOREACH»	  
@@ -75,6 +69,7 @@ public final class «name» {
 			  «ENDIF»
 			  «ENDFOREACH»
 			}
+			
 			/**
 			 * Initialize object.
 			 */
@@ -89,9 +84,7 @@ public final class «name» {
   }
 
   «FOREACH this.ownedLiteral AS literal»
-  /**
-   * «literal.getComment()»
-   */
+  «EXPAND functions::Javadoc::JavadocForLiteral FOR literal»
   «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
   public static final «name» «literal.name» = new «name»(«name»Type.«literal.name»);
   «ENDFOREACH»

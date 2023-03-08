@@ -3,18 +3,12 @@ package com.anaptecs.spring.base;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
- * 
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
  */
 public final class Entity {
   public static enum EntityType {
-    /**
-     * 
-     */
-    DISCOUNT_CAMPAIGN,
-    /**
-     * 
-     */
-    DISCOUNT_OFFER,
+    DISCOUNT_CAMPAIGN, DISCOUNT_OFFER,
     /**
      * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external
      * interface.
@@ -51,14 +45,8 @@ public final class Entity {
     }
   }
 
-  /**
-   * 
-   */
   public static final Entity DISCOUNT_CAMPAIGN = new Entity(EntityType.DISCOUNT_CAMPAIGN);
 
-  /**
-   * 
-   */
   public static final Entity DISCOUNT_OFFER = new Entity(EntityType.DISCOUNT_OFFER);
 
   /**

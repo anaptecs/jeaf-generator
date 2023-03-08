@@ -18,7 +18,6 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * Chännel<br/>
  * €<br/>
  * Ö
- * <p/>
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

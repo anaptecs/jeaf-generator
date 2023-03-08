@@ -92,7 +92,6 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
 
   /**
    * Operation returns all available product.
-   * <p/>
    * 
    * @param pMaxResultSize
    * @return {@link List<Product>}

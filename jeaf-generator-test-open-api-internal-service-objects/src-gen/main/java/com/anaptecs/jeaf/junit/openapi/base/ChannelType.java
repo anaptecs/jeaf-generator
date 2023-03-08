@@ -3,33 +3,11 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.constraints.NotNull;
 
 /**
- * 
+ * @author JEAF Generator
+ * @version JEAF Release 1.6.x
  */
 public enum ChannelType {
-  /**
-   * 
-   */
-  COUNTER("CNT"),
-  /**
-   * 
-   */
-  CALL_CENTER("CC"),
-  /**
-   * 
-   */
-  MOBILE("MOB"),
-  /**
-   * 
-   */
-  TVM("TVM"),
-  /**
-   * 
-   */
-  WEB("WEB"),
-  /**
-   * 
-   */
-  @Deprecated
+  COUNTER("CNT"), CALL_CENTER("CC"), MOBILE("MOB"), TVM("TVM"), WEB("WEB"), @Deprecated
   LEGACY_POS("PRISMA");
 
   /**

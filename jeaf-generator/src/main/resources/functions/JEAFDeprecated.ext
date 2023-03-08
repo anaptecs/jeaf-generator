@@ -35,4 +35,7 @@ cached boolean isDeprecationComplete(uml::NamedElement element):
 cached boolean hasDeprecationDetails(uml::NamedElement element):
     element.getDeprecatedSince().length > 0 || element.getDeprecationRemoval().length > 0;
     
+cached boolean hasMeaningfulDeprecationInfo(uml::NamedElement element):
+    element.getDeprecationDescription().length > 0 || element.getDeprecatedSince().length > 0 || element.getDeprecationRemoval().length > 0;
+    
     

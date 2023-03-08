@@ -3,18 +3,13 @@ package com.anaptecs.jeaf.junit.pojo;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
- * 
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
  */
 public final class ExtensibleEnumWithProperties {
   public static enum ExtensibleEnumWithPropertiesType {
-    /**
-     * 
-     */
-    CAMPAIGN_DATA_UNIT("AX2", "Campaign Data Unit", 4711, 1234567890, true, -0.1f, 1.234),
-    /**
-     * 
-     */
-    RELATION_KEY_DATA_UNIT("X56", "Relation Key Data Unit", 12345, 1, false, 1.0E-4f, 0.1),
+    CAMPAIGN_DATA_UNIT("AX2", "Campaign Data Unit", 4711, 1234567890, true, -0.1f, 1.234), RELATION_KEY_DATA_UNIT("X56",
+        "Relation Key Data Unit", 12345, 1, false, 1.0E-4f, 0.1),
     /**
      * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external
      * interface.
@@ -154,15 +149,9 @@ public final class ExtensibleEnumWithProperties {
     }
   }
 
-  /**
-   * 
-   */
   public static final ExtensibleEnumWithProperties CAMPAIGN_DATA_UNIT =
       new ExtensibleEnumWithProperties(ExtensibleEnumWithPropertiesType.CAMPAIGN_DATA_UNIT);
 
-  /**
-   * 
-   */
   public static final ExtensibleEnumWithProperties RELATION_KEY_DATA_UNIT =
       new ExtensibleEnumWithProperties(ExtensibleEnumWithPropertiesType.RELATION_KEY_DATA_UNIT);
 

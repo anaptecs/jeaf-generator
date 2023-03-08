@@ -162,7 +162,7 @@ Sorry!!! | a very long time | 2023-12-13 |
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|
 | `com.anaptecs.jeaf.junit.core.Color` | |  |  |  |
-|   | `LightGreen` |  |  |  |
+|   | `LightGreen` | We do not like this color any more. |  |  |
 | `com.anaptecs.jeaf.junit.core.Farbe` | |  |  |  |
 | `com.anaptecs.jeaf.junit.openapi.base.ChannelType` | |  |  |  |
 |   | `LEGACY_POS` |  |  |  |
