@@ -10,7 +10,6 @@ public class MReleationBO extends MReleationBOBase {
   }
 
   /**
-   * 
    * @return {@link NReleationBO}
    */
   @Override
@@ -20,8 +19,7 @@ public class MReleationBO extends MReleationBOBase {
   }
 
   /**
-   * 
-   * @return {@link char}
+   * @return char
    */
   @Override
   public char returnPrimitive( ) {

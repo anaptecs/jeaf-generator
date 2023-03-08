@@ -36,7 +36,6 @@ final class InternalStuffServiceImpl extends InternalStuffServiceImplBase {
   }
 
   /**
-   * 
    * @param pObjectID
    */
   @Override

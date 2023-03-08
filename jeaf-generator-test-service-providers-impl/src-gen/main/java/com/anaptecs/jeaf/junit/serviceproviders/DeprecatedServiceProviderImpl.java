@@ -51,8 +51,7 @@ final class DeprecatedServiceProviderImpl extends DeprecatedServiceProviderImplB
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void doSomething( ) {
   }

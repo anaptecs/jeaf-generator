@@ -66,8 +66,7 @@ public class SubclassWithIDnMethod extends SubclassWithIDnMethodBase {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void doMore( ) {
     // TODO: Implement business logic for method.

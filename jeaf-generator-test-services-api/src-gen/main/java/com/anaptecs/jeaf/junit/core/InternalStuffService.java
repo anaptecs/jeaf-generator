@@ -10,7 +10,6 @@ import com.anaptecs.jeaf.core.api.ServiceObjectID;
 
 public interface InternalStuffService extends Service {
   /**
-   * 
    * @param pObjectID
    */
   void testFlush( ServiceObjectID pObjectID );

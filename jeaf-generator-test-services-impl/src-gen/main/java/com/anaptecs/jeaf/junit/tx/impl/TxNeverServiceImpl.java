@@ -35,8 +35,7 @@ final class TxNeverServiceImpl extends TxNeverServiceImplBase {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void testTransactionBehavior( ) {
   }

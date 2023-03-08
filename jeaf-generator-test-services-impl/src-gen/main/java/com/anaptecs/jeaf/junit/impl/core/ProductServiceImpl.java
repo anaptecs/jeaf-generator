@@ -69,8 +69,7 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   /**
    * Operation returns all available product.
    * 
-   * 
-   * @return {@link Product}
+   * @return {@link List<Product>}
    */
   @Override
   public List<Product> getProducts( ) {
@@ -79,7 +78,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pProductID
    * @return {@link Product}
    */
@@ -90,9 +88,8 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pProduct
-   * @return {@link Boolean}
+   * @return boolean
    */
   @Override
   public boolean createProduct( Product pProduct ) {
@@ -101,7 +98,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pContext
    * @return {@link Sortiment}
    */
@@ -112,7 +108,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pChannelCode
    * @return {@link ChannelCode}
    */
@@ -123,15 +118,14 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void ping( ) {
   }
 
   /**
-   * 
    * @return {@link String}
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override
@@ -141,7 +135,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pContext
    * @return {@link String}
    */
@@ -152,7 +145,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pBeanParam
    */
   @Override
@@ -160,9 +152,10 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
-   * @param pParam1
-   * @return {@link String}
+   * @param pParam1 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override
@@ -172,8 +165,8 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
-   * @param pBody
+   * @param pBody <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    * @return {@link String}
    */
   @Override
@@ -186,16 +179,16 @@ final class ProductServiceImpl extends ProductServiceImplBase {
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
    * to deprecated.
    * 
-   * 
-   * @param pProduct
+   * @param pProduct <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Override
   public void deprectedComplexRequestBody( @Deprecated Product pProduct ) {
   }
 
   /**
-   * 
-   * @return {@link Product}
+   * @return {@link Product} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override
@@ -205,7 +198,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pContext
    */
   @Override
@@ -213,11 +205,8 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pChannelCode Channel Code that should be created.
-   * 
    * @return {@link ChannelCode} Created channel code
-   * 
    */
   @Override
   public ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode ) {
@@ -226,9 +215,8 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pCurrencies
-   * @return {@link CurrencyCode}
+   * @return {@link List<CurrencyCode>}
    */
   @Override
   public List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies ) {
@@ -237,7 +225,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pCurrency
    * @return {@link CurrencyCode}
    */
@@ -248,7 +235,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pStringCode
    * @return {@link IntegerCodeType}
    */
@@ -259,7 +245,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pBeanParam
    * @return {@link String}
    */
@@ -270,7 +255,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pParent
    * @return {@link String}
    */
@@ -281,7 +265,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pChild
    * @return {@link String}
    */
@@ -292,9 +275,8 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pIBAN
-   * @return {@link Boolean}
+   * @return boolean
    */
   @Override
   public boolean checkIBAN( String pIBAN ) {
@@ -303,9 +285,8 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pChannelTypes
-   * @return {@link Channel}
+   * @return {@link List<Channel>}
    */
   @Override
   public List<Channel> getChannels( List<ChannelType> pChannelTypes ) {
@@ -314,7 +295,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pChannelType
    * @return {@link Channel}
    */
@@ -325,9 +305,8 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pChannelCode
-   * @return {@link CurrencyCode}
+   * @return {@link List<CurrencyCode>}
    */
   @Override
   public List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode ) {
@@ -336,9 +315,8 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pChannelCode
-   * @return {@link CurrencyCode}
+   * @return {@link List<CurrencyCode>}
    */
   @Override
   public List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode ) {
@@ -347,7 +325,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pPath
    * @param pStartTimestamp
    * @param pStartTime
@@ -367,7 +344,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pPath
    * @param pQueryParams
    */
@@ -376,7 +352,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param query1
    * @param query2
    * @return {@link String}
@@ -388,7 +363,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param authorization
    * @param pContentType
    * @param pAccept
@@ -398,7 +372,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pContext
    * @return {@link String}
    */
@@ -409,7 +382,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pReseller
    * @param pAuthenticationToken
    * @return {@link String}
@@ -421,7 +393,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pInlinedBeanParam
    */
   @Override
@@ -429,7 +400,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pIntegerArray
    */
   @Override
@@ -437,7 +407,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pIntValues
    * @return {@link String}
    */
@@ -448,7 +417,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pCodes
    * @return {@link String}
    */
@@ -459,7 +427,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pCodes
    * @param pEnums
    * @return {@link String}
@@ -471,7 +438,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pBeanParam
    * @param pTheEnum
    * @return {@link String}
@@ -483,7 +449,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pHeader
    * @param pContext
    */
@@ -492,7 +457,6 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   }
 
   /**
-   * 
    * @param pID
    */
   @Override

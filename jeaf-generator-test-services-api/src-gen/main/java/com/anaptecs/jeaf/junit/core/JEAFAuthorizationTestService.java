@@ -9,12 +9,10 @@ import com.anaptecs.jeaf.core.api.Service;
 
 public interface JEAFAuthorizationTestService extends Service {
   /**
-  * 
-  */
+   */
   void doSomething( );
 
   /**
-  * 
-  */
+   */
   void doAnotherthing1( );
 }

@@ -10,9 +10,8 @@ import com.anaptecs.jeaf.core.api.Service;
 
 public interface SchufaService extends Service {
   /**
-   * 
    * @param pRequest
-   * @return {@link Boolean}
+   * @return boolean
    */
   boolean performSchufaCheck( SchufaRequest pRequest );
 }

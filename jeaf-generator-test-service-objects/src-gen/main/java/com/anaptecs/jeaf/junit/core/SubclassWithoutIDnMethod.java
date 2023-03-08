@@ -66,8 +66,7 @@ public class SubclassWithoutIDnMethod extends SubclassWithoutIDnMethodBase {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void doLess( ) {
     // TODO: Implement business logic for method.

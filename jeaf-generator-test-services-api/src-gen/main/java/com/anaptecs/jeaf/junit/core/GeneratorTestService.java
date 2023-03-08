@@ -12,115 +12,97 @@ import com.anaptecs.jeaf.junit.otherpackage.Output;
 
 public interface GeneratorTestService extends ParentService {
   /**
-   * 
    * @param pDatatypes
    */
   void processSimpleDatatypes( SimpleDatatypeServiceObject pDatatypes );
 
   /**
-   * 
    * @param pSimpleTypes
    * @return {@link WrapperDatatypeServiceObject}
    */
   WrapperDatatypeServiceObject convertToWrapperDatatypes( SimpleDatatypeServiceObject pSimpleTypes );
 
   /**
-   * 
    * @param pWrapperTypes
    * @return {@link SimpleDatatypeServiceObject}
    */
   SimpleDatatypeServiceObject convertToSimpleDatatypes( WrapperDatatypeServiceObject pWrapperTypes );
 
   /**
-   * 
    * @param pInteger
    * @param pByteArray
    * @param pDoubleValue
-   * @return {@link Boolean}
+   * @return boolean
    */
   boolean testPrimitivesAsParameter( int pInteger, byte[] pByteArray, double pDoubleValue );
 
   /**
-   * 
    * @param pSimpleObjects
    */
   void testGenericsAsParameter( Set<SimpleDatatypeServiceObject> pSimpleObjects );
 
   /**
-   * 
-   * @return {@link SimpleDatatypeServiceObject}
+   * @return {@link Set<SimpleDatatypeServiceObject>}
    */
   Set<SimpleDatatypeServiceObject> testGenericsAsResult( );
 
   /**
-   * 
    * @param pParam1
    */
   void doWhatIMean( int pParam1 );
 
   /**
-  * 
-  */
+   */
   void doWhatIMean( );
 
   /**
-   * 
    * @param pParam1
    */
   void doWhatIMean( Double pParam1 );
 
   /**
-   * 
    * @param pInput
-   * @return {@link Output}
+   * @return {@link Set<Output>}
    */
   Set<Output> doWithObjectsFromOtherPAckages( Input pInput );
 
   /**
-   * 
-   * @return {@link int}
+   * @return int
    */
   int testPrimiveIntResult( );
 
   /**
-   * 
-   * @return {@link Boolean}
+   * @return boolean
    */
   boolean testPrimitiveBooleanResult( );
 
   /**
-   * 
-   * @return {@link short}
+   * @return short
    */
   short testPrimitiveShortResult( );
 
   /**
-   * 
-   * @return {@link byte}
+   * @return byte
    */
   byte testPrimitveByteResult( );
 
   /**
-   * 
-   * @return {@link char}
+   * @return char
    */
   char testPrimitiveCharResult( );
 
   /**
-   * 
-   * @return {@link long}
+   * @return long
    */
   long testPrimitiveLongResult( );
 
   /**
-   * 
-   * @return {@link float}
+   * @return float
    */
   float testPrimitiveFloatResult( );
 
   /**
-   * 
-   * @return {@link double}
+   * @return double
    */
   double testPrimitveDoubleResult( );
 }

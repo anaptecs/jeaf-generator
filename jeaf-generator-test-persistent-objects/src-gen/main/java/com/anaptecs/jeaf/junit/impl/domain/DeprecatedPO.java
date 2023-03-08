@@ -10,8 +10,8 @@ public class DeprecatedPO extends DeprecatedPOBase {
   }
 
   /**
-  * 
-  */
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
+   */
   @Deprecated
   @Override
   public void doSomethingDeprecated( ) {
@@ -19,10 +19,11 @@ public class DeprecatedPO extends DeprecatedPOBase {
   }
 
   /**
-   * 
    * @param pParam1
-   * @param pParam2
-   * @return {@link String}
+   * @param pParam2 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override

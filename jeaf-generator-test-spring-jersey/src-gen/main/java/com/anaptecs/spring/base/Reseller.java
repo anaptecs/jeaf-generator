@@ -62,7 +62,6 @@ public class Reseller extends ResellerBase {
   }
 
   /**
-   * 
    * @return {@link Integer}
    */
   @Override
@@ -72,8 +71,7 @@ public class Reseller extends ResellerBase {
   }
 
   /**
-   * 
-   * @return {@link double}
+   * @return double
    */
   @Override
   public double returnPrimitive( ) {

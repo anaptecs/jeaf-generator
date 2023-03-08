@@ -35,15 +35,13 @@ final class JEAFAuthorizationTestServiceImpl extends JEAFAuthorizationTestServic
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void doSomething( ) {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void doAnotherthing1( ) {
   }

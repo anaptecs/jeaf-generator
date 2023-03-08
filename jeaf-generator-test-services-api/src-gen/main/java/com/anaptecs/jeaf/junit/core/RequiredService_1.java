@@ -9,7 +9,6 @@ import com.anaptecs.jeaf.core.api.Service;
 
 public interface RequiredService_1 extends Service {
   /**
-   * 
    * @param pContextObject
    */
   void testContextHandling_1( TestServiceObject pContextObject );

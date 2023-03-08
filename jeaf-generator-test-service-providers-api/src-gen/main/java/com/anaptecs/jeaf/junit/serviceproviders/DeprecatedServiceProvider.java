@@ -13,7 +13,6 @@ import com.anaptecs.jeaf.core.api.ServiceProvider;
 @Deprecated
 public interface DeprecatedServiceProvider extends ServiceProvider {
   /**
-  * 
-  */
+   */
   void doSomething( );
 }

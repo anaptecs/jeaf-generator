@@ -63,9 +63,8 @@ public class AdvancedPOJO extends AdvancedPOJOBase {
   }
 
   /**
-   * 
    * @param pName
-   * @return {@link Boolean}
+   * @return boolean
    */
   @Override
   public boolean doSomething( String pName ) {
@@ -74,8 +73,7 @@ public class AdvancedPOJO extends AdvancedPOJOBase {
   }
 
   /**
-   * 
-   * @return {@link int}
+   * @return int
    */
   @Override
   public int returnPrimitive( ) {

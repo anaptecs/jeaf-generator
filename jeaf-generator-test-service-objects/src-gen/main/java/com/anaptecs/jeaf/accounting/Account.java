@@ -67,7 +67,6 @@ public class Account extends AccountBase {
   }
 
   /**
-   * 
    * @return {@link Double}
    */
   @Override

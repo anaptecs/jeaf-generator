@@ -77,7 +77,6 @@ public class Person extends PersonBase {
   }
 
   /**
-   * 
    * @return {@link String}
    */
   @Override

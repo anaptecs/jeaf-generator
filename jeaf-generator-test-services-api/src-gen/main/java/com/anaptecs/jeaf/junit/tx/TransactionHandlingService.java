@@ -9,7 +9,6 @@ import com.anaptecs.jeaf.core.api.Service;
 
 public interface TransactionHandlingService extends Service {
   /**
-  * 
-  */
+   */
   void testIndirectInvocations( );
 }

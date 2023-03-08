@@ -9,7 +9,6 @@ import com.anaptecs.jeaf.core.api.Service;
 
 public interface RequiredService_2 extends Service {
   /**
-  * 
-  */
+   */
   void testContextHandling_2( );
 }

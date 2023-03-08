@@ -10,7 +10,6 @@ public class AOneBO extends AOneBOBase {
   }
 
   /**
-   * 
    * @return {@link Integer}
    */
   @Override

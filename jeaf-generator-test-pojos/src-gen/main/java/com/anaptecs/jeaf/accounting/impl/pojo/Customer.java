@@ -59,7 +59,6 @@ public class Customer extends CustomerBase {
   }
 
   /**
-   * 
    * @return {@link String}
    */
   @Override

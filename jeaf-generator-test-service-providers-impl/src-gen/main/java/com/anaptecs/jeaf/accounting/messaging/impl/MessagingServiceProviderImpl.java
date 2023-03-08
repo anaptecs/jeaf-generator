@@ -51,9 +51,8 @@ final class MessagingServiceProviderImpl extends MessagingServiceProviderImplBas
   }
 
   /**
-   * 
    * @param pMessage
-   * @return {@link Boolean}
+   * @return boolean
    */
   @Override
   public boolean sendMessage( String pMessage ) {

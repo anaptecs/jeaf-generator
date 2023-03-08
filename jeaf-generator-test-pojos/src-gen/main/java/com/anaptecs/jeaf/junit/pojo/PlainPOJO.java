@@ -60,8 +60,8 @@ public class PlainPOJO extends PlainPOJOBase {
   }
 
   /**
-  * 
-  */
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
+   */
   @Deprecated
   @Override
   public void doDeprectedStuff( ) {
@@ -69,10 +69,11 @@ public class PlainPOJO extends PlainPOJOBase {
   }
 
   /**
-   * 
-   * @param pParam1
+   * @param pParam1 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    * @param pParam2
-   * @return {@link String}
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override

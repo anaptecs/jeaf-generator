@@ -10,7 +10,6 @@ public class MyPersonBO extends MyPersonBOBase {
   }
 
   /**
-   * 
    * @return {@link Integer}
    */
   @Override
@@ -20,7 +19,6 @@ public class MyPersonBO extends MyPersonBOBase {
   }
 
   /**
-   * 
    * @return {@link String}
    */
   @Override

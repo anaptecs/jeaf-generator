@@ -14,7 +14,6 @@ public class AccountBO extends AccountBOBase {
   /**
    * Method calculates the current balance of the account. Therefore the the amount of every booking is accumulated.
    * 
-   * 
    * @return {@link BigDecimal}
    */
   @Override

@@ -9,7 +9,6 @@ import com.anaptecs.jeaf.core.api.Service;
 
 public interface TxNeverService extends Service {
   /**
-  * 
-  */
+   */
   void testTransactionBehavior( );
 }

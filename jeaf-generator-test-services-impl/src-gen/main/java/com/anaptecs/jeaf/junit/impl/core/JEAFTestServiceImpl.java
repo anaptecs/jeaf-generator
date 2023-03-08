@@ -37,8 +37,6 @@ final class JEAFTestServiceImpl extends JEAFTestServiceImplBase {
 
   /**
    * Method tests JEAF dependency injection mechanism for the dependency on RequiredService1.
-   * 
-   * 
    */
   @Override
   public void checkRequiredService_1( ) {
@@ -47,7 +45,7 @@ final class JEAFTestServiceImpl extends JEAFTestServiceImplBase {
   /**
    * Method tests JEAF dependency injection mechanism for the dependency on RequiredService1.
    * 
-   * 
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override
@@ -56,8 +54,6 @@ final class JEAFTestServiceImpl extends JEAFTestServiceImplBase {
 
   /**
    * Method tests JEAFs context handling and the passing of context information to listeners.
-   * 
-   * 
    */
   @Override
   public void testContextHandling( ) {
@@ -65,8 +61,6 @@ final class JEAFTestServiceImpl extends JEAFTestServiceImplBase {
 
   /**
    * Method checks the access to the service invocation context from within a service implementation.
-   * 
-   * 
    */
   @Override
   public void testContextAccess( ) {
@@ -74,22 +68,18 @@ final class JEAFTestServiceImpl extends JEAFTestServiceImplBase {
 
   /**
    * Method checks invalid accesses to a service invocation context.
-   * 
-   * 
    */
   @Override
   public void testIllgealContextAccess( ) {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void testContextIsolation( ) {
   }
 
   /**
-   * 
    * @return {@link SessionContextValues}
    */
   @Override

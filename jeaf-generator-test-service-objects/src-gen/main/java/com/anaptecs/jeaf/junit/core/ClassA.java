@@ -64,7 +64,6 @@ public class ClassA extends ClassABase {
   }
 
   /**
-   * 
    * @return {@link Double}
    */
   @Override

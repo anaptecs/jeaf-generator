@@ -35,27 +35,22 @@ final class JEAFSecurityTestServiceImpl extends JEAFSecurityTestServiceImplBase 
   }
 
   /**
-   * Method returns the currently user who is loged in.
-   * 
+   * Method returns the currently user who is loged in. <br/>
+   * <br/>
    * @return loged in User.
-   * 
-   * 
    */
   @Override
   public void checkCurrentUser( ) {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void checkInvalidServiceAccess( ) {
   }
 
   /**
    * checks if the attribute of the currentUser which is an anonymous user are set correctly.
-   * 
-   * 
    */
   @Override
   public void checkCurrentAnonymousUser( ) {

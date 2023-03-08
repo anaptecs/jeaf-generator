@@ -32,7 +32,6 @@ public class ProductDO extends ProductDOBase {
   }
 
   /**
-   * 
    * @param pCurrency
    * @return {@link PriceDO}
    */

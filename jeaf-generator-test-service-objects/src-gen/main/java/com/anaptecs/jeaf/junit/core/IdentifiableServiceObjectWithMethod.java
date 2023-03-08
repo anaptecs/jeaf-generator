@@ -67,8 +67,7 @@ public class IdentifiableServiceObjectWithMethod extends IdentifiableServiceObje
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void doSomething( ) {
     // TODO: Implement business logic for method.

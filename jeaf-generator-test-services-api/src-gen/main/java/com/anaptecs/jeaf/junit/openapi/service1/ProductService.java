@@ -42,75 +42,68 @@ public interface ProductService extends Service {
   /**
    * Operation returns all available product.
    * 
-   * 
-   * @return {@link Product}
+   * @return {@link List<Product>}
    */
   List<Product> getProducts( );
 
   /**
-   * 
    * @param pProductID
    * @return {@link Product}
    */
   Product getProduct( @NotEmpty String pProductID );
 
   /**
-   * 
    * @param pProduct
-   * @return {@link Boolean}
+   * @return boolean
    */
   boolean createProduct( Product pProduct );
 
   /**
-   * 
    * @param pContext
    * @return {@link Sortiment}
    */
   Sortiment getSortiment( Context pContext );
 
   /**
-   * 
    * @param pChannelCode
    * @return {@link ChannelCode}
    */
   ChannelCode createChannelCode( @NotBlank String pChannelCode );
 
   /**
-  * 
-  */
+   */
   void ping( );
 
   /**
-   * 
    * @return {@link String}
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   String deprecatedOperation( );
 
   /**
-   * 
    * @param pContext
    * @return {@link String}
    */
   String deprecatedContext( DeprecatedContext pContext );
 
   /**
-   * 
    * @param pBeanParam
    */
   void deprecatedBeanParam( BeanParameter pBeanParam );
 
   /**
-   * 
-   * @param pParam1
-   * @return {@link String}
+   * @param pParam1 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   String deprecatedParams( @Deprecated int pParam1 );
 
   /**
-   * 
-   * @param pBody
+   * @param pBody <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    * @return {@link String}
    */
   String deprecatedBody( @Deprecated String pBody );
@@ -119,112 +112,96 @@ public interface ProductService extends Service {
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
    * to deprecated.
    * 
-   * 
-   * @param pProduct
+   * @param pProduct <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   void deprectedComplexRequestBody( @Deprecated Product pProduct );
 
   /**
-   * 
-   * @return {@link Product}
+   * @return {@link Product} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   Product deprecatedComplexReturn( );
 
   /**
-   * 
    * @param pContext
    */
   void loadSpecificThings( SpecialContext pContext );
 
   /**
-   * 
    * @param pChannelCode Channel Code that should be created.
-   * 
    * @return {@link ChannelCode} Created channel code
-   * 
    */
   ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode );
 
   /**
-   * 
    * @param pCurrencies
-   * @return {@link CurrencyCode}
+   * @return {@link List<CurrencyCode>}
    */
   List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies );
 
   /**
-   * 
    * @param pCurrency
    * @return {@link CurrencyCode}
    */
   CurrencyCode isCurrencySupported( CurrencyCode pCurrency );
 
   /**
-   * 
    * @param pStringCode
    * @return {@link IntegerCodeType}
    */
   IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode );
 
   /**
-   * 
    * @param pBeanParam
    * @return {@link String}
    */
   String testLocalBeanParamType( LocalBeanParamType pBeanParam );
 
   /**
-   * 
    * @param pParent
    * @return {@link String}
    */
   String testExternalBeanParameterType( ParentBeanParamType pParent );
 
   /**
-   * 
    * @param pChild
    * @return {@link String}
    */
   String testChildBeanParameter( ChildBeanParameterType pChild );
 
   /**
-   * 
    * @param pIBAN
-   * @return {@link Boolean}
+   * @return boolean
    */
   boolean checkIBAN( String pIBAN );
 
   /**
-   * 
    * @param pChannelTypes
-   * @return {@link Channel}
+   * @return {@link List<Channel>}
    */
   List<Channel> getChannels( List<ChannelType> pChannelTypes );
 
   /**
-   * 
    * @param pChannelType
    * @return {@link Channel}
    */
   Channel getDefaultChannel( ChannelType pChannelType );
 
   /**
-   * 
    * @param pChannelCode
-   * @return {@link CurrencyCode}
+   * @return {@link List<CurrencyCode>}
    */
   List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode );
 
   /**
-   * 
    * @param pChannelCode
-   * @return {@link CurrencyCode}
+   * @return {@link List<CurrencyCode>}
    */
   List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode );
 
   /**
-   * 
    * @param pPath
    * @param pStartTimestamp
    * @param pStartTime
@@ -242,14 +219,12 @@ public interface ProductService extends Service {
       java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate );
 
   /**
-   * 
    * @param pPath
    * @param pQueryParams
    */
   void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams );
 
   /**
-   * 
    * @param query1
    * @param query2
    * @return {@link String}
@@ -257,7 +232,6 @@ public interface ProductService extends Service {
   String testOptionalQueryParams( String query1, int query2 );
 
   /**
-   * 
    * @param authorization
    * @param pContentType
    * @param pAccept
@@ -265,14 +239,12 @@ public interface ProductService extends Service {
   void testSpecialHeaderParams( String authorization, String pContentType, String pAccept );
 
   /**
-   * 
    * @param pContext
    * @return {@link String}
    */
   String testTechnicalHeaderBean( TechnicalHeaderContext pContext );
 
   /**
-   * 
    * @param pReseller
    * @param pAuthenticationToken
    * @return {@link String}
@@ -280,33 +252,28 @@ public interface ProductService extends Service {
   String testTechnicalHeaderParam( String pReseller );
 
   /**
-   * 
    * @param pInlinedBeanParam
    */
   void testNotInlinedBeanParam( NotInlinedBeanParam pInlinedBeanParam );
 
   /**
-   * 
    * @param pIntegerArray
    */
   void testPrimitiveArray( int[] pIntegerArray );
 
   /**
-   * 
    * @param pIntValues
    * @return {@link String}
    */
   String testPrimitiveArrayAsQueryParam( int[] pIntValues );
 
   /**
-   * 
    * @param pCodes
    * @return {@link String}
    */
   String testMultivaluedHeader( List<BigDecimalCode> pCodes );
 
   /**
-   * 
    * @param pCodes
    * @param pEnums
    * @return {@link String}
@@ -314,7 +281,6 @@ public interface ProductService extends Service {
   String testMultivaluedQueryParams( List<BigDecimalCode> pCodes, List<BooleanLiteralsEnum> pEnums );
 
   /**
-   * 
    * @param pBeanParam
    * @param pTheEnum
    * @return {@link String}
@@ -322,14 +288,12 @@ public interface ProductService extends Service {
   String testMulitValuedBeanParams( MultiValuedDataType pBeanParam, BooleanLiteralsEnum pTheEnum );
 
   /**
-   * 
    * @param pHeader
    * @param pContext
    */
   void noReturnType( String pHeader, MultiValuedDataType pContext );
 
   /**
-   * 
    * @param pID
    */
   void deleteSomething( String pID );

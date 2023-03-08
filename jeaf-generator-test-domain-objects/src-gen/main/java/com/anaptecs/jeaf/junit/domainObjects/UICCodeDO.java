@@ -30,7 +30,6 @@ public class UICCodeDO extends UICCodeDOBase {
   }
 
   /**
-   * 
    * @return {@link String}
    */
   @Override

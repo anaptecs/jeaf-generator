@@ -35,8 +35,7 @@ final class TxRequiredServiceImpl extends TxRequiredServiceImplBase {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void testTransactionBehavior( ) {
   }

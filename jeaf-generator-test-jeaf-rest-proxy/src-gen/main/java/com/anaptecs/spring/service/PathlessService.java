@@ -9,7 +9,6 @@ import com.anaptecs.jeaf.core.api.Service;
 
 public interface PathlessService extends Service {
   /**
-   * 
    * @return {@link String}
    */
   String getSomething( );

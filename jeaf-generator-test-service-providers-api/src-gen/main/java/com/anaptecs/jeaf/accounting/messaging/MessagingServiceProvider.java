@@ -12,9 +12,8 @@ import com.anaptecs.jeaf.core.api.ServiceProvider;
  */
 public interface MessagingServiceProvider extends ServiceProvider {
   /**
-   * 
    * @param pMessage
-   * @return {@link Boolean}
+   * @return boolean
    */
   boolean sendMessage( String pMessage );
 }

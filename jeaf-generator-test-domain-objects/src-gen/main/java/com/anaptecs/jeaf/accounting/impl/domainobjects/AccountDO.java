@@ -31,7 +31,6 @@ public class AccountDO extends AccountDOBase {
   }
 
   /**
-   * 
    * @return {@link ServiceObjectID}
    */
   @Override

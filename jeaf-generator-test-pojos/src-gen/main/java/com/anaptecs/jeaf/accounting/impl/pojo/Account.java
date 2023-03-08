@@ -61,7 +61,6 @@ public class Account extends AccountBase {
   }
 
   /**
-   * 
    * @return {@link BigDecimal}
    */
   @Override

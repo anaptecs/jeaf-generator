@@ -9,28 +9,22 @@ import com.anaptecs.jeaf.core.api.Service;
 
 public interface InterceptorTestService extends Service {
   /**
-  * 
-  */
+   */
   void callService( );
 
   /**
-   * 
-   * @throws {@link InterceptorTestApplicationException}
    */
   void callServiceAPE( ) throws InterceptorTestApplicationException;
 
   /**
-  * 
-  */
+   */
   void callServiceSYE( );
 
   /**
-  * 
-  */
+   */
   void callServiceRTE( );
 
   /**
-  * 
-  */
+   */
   void callServiceERR( );
 }

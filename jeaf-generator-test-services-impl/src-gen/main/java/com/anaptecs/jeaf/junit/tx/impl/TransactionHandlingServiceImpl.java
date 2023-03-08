@@ -35,8 +35,7 @@ final class TransactionHandlingServiceImpl extends TransactionHandlingServiceImp
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void testIndirectInvocations( ) {
   }

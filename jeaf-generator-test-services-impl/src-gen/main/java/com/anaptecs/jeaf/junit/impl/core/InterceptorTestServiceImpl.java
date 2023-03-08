@@ -36,37 +36,31 @@ final class InterceptorTestServiceImpl extends InterceptorTestServiceImplBase {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void callService( ) {
   }
 
   /**
-   * 
-   * @throws {@link InterceptorTestApplicationException}
    */
   @Override
   public void callServiceAPE( ) throws InterceptorTestApplicationException {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void callServiceSYE( ) {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void callServiceRTE( ) {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void callServiceERR( ) {
   }

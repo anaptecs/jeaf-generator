@@ -15,23 +15,18 @@ import com.anaptecs.jeaf.core.api.Service;
  */
 public interface JEAFSecurityTestService extends Service {
   /**
-   * Method returns the currently user who is loged in.
-   * 
+   * Method returns the currently user who is loged in. <br/>
+   * <br/>
    * @return loged in User.
-   * 
-   * 
    */
   void checkCurrentUser( );
 
   /**
-  * 
-  */
+   */
   void checkInvalidServiceAccess( );
 
   /**
    * checks if the attribute of the currentUser which is an anonymous user are set correctly.
-   * 
-   * 
    */
   void checkCurrentAnonymousUser( );
 }

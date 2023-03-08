@@ -60,8 +60,7 @@ public class POJOWithIDnMethod extends POJOWithIDnMethodBase {
   }
 
   /**
-   * 
-   * @return {@link Boolean}
+   * @return boolean
    */
   @Override
   public boolean doSomethingFunny( ) {

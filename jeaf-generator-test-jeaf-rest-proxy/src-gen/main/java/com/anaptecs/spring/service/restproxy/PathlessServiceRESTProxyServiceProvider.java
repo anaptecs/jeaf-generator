@@ -12,7 +12,6 @@ import com.anaptecs.jeaf.core.api.ServiceProvider;
  */
 public interface PathlessServiceRESTProxyServiceProvider extends ServiceProvider {
   /**
-   * 
    * @return {@link String}
    */
   String getSomething( );

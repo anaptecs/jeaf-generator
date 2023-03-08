@@ -32,8 +32,7 @@ public class WegsucheDO extends WegsucheDOBase {
   }
 
   /**
-   * 
-   * @return {@link PfadDO}
+   * @return {@link List<PfadDO>}
    */
   @Override
   public List<PfadDO> suchePfade( ) {

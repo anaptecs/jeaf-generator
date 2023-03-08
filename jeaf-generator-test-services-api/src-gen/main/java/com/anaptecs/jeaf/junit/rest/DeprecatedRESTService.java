@@ -10,7 +10,6 @@ import com.anaptecs.jeaf.core.api.Service;
 @Deprecated
 public interface DeprecatedRESTService extends Service {
   /**
-  * 
-  */
+   */
   void doSomething( );
 }

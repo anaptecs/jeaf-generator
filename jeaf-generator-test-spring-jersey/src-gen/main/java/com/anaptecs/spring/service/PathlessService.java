@@ -7,7 +7,6 @@ package com.anaptecs.spring.service;
 
 public interface PathlessService {
   /**
-   * 
    * @return {@link String}
    */
   String getSomething( );

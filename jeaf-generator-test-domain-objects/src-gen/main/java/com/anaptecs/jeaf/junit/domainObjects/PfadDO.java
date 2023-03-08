@@ -30,7 +30,6 @@ public class PfadDO extends PfadDOBase {
   }
 
   /**
-   * 
    * @return {@link Reiseweg}
    */
   @Override
