@@ -411,14 +411,12 @@ public abstract class ResellerBase {
   }
 
   /**
-   * 
    * @return {@link Integer}
    */
   public abstract Integer doSomething( );
 
   /**
-   * 
-   * @return {@link double}
+   * @return double
    */
   public abstract double returnPrimitive( );
 

@@ -221,7 +221,6 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * 
    * @return {@link Integer}
    */
   public abstract Integer countCMany( );

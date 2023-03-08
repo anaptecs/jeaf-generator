@@ -60,7 +60,7 @@
 
 //abstract methods are returned
 «DEFINE PersistentObjectOperation FOR Operation»
-    «this.getJavadoc()» 
+    «EXPAND functions::Javadoc::JavadocForOperation»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
     «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»

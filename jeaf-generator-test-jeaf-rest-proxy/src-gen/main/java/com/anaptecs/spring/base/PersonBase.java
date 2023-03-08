@@ -193,7 +193,6 @@ public abstract class PersonBase extends Partner {
   }
 
   /**
-   * 
    * @return {@link String}
    */
   public abstract String getDisplayName( );

@@ -54,13 +54,11 @@ public abstract class DeprecatedDomainObjectBase extends DomainObject {
   }
 
   /**
-  * 
-  */
+   */
   public abstract void doSomething( );
 
   /**
-   * 
-   * @return {@link byte}
+   * @return byte
    */
   public abstract byte returnPrimitive( );
 

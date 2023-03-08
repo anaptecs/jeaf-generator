@@ -356,7 +356,6 @@ public abstract class AccountBase {
   }
 
   /**
-   * 
    * @return {@link BigDecimal}
    */
   public abstract BigDecimal calcuateBalance( );

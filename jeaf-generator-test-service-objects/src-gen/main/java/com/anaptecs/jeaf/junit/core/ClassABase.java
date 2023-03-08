@@ -259,7 +259,6 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
   }
 
   /**
-   * 
    * @return {@link Double}
    */
   public abstract Double calculate( );

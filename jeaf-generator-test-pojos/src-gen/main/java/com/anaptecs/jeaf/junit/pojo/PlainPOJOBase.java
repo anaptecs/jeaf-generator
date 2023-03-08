@@ -179,16 +179,17 @@ public abstract class PlainPOJOBase {
   }
 
   /**
-  * 
-  */
+   * @deprecated (<b>since:</b> , <b>removed with:</b> )
+   */
   @Deprecated
   public abstract void doDeprectedStuff( );
 
   /**
-   * 
-   * @param pParam1
+   * @param pParam1 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    * @param pParam2
-   * @return {@link String}
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public abstract String doSomething( @Deprecated int pParam1, int pParam2 );

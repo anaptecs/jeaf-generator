@@ -108,7 +108,6 @@ public abstract class PfadDOBase extends DomainObject {
   }
 
   /**
-   * 
    * @return {@link Reiseweg}
    */
   public abstract Reiseweg ermittleReiseweg( );

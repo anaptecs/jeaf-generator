@@ -153,8 +153,7 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
   }
 
   /**
-  * 
-  */
+   */
   public abstract void doLess( );
 
   /**

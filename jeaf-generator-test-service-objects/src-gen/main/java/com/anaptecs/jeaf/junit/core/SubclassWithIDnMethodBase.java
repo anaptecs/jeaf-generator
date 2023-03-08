@@ -153,8 +153,7 @@ public abstract class SubclassWithIDnMethodBase extends IdentifiableServiceObjec
   }
 
   /**
-  * 
-  */
+   */
   public abstract void doMore( );
 
   /**

@@ -335,7 +335,6 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * 
    * @param pCurrency
    * @return {@link PriceDO}
    */

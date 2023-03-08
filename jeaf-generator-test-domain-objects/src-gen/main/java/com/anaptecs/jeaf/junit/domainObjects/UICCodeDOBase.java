@@ -98,7 +98,6 @@ public abstract class UICCodeDOBase extends DomainObject implements Identifiable
   }
 
   /**
-   * 
    * @return {@link String}
    */
   public abstract String getCountry( );

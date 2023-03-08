@@ -288,7 +288,6 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
   }
 
   /**
-   * 
    * @return {@link Double}
    */
   public abstract Double calclulateBalance( );

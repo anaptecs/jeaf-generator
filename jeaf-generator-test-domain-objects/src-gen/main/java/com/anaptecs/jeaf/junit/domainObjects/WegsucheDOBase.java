@@ -32,8 +32,7 @@ public abstract class WegsucheDOBase extends DomainObject {
   }
 
   /**
-   * 
-   * @return {@link PfadDO}
+   * @return {@link List<PfadDO>}
    */
   public abstract List<PfadDO> suchePfade( );
 

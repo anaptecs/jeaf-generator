@@ -121,15 +121,13 @@ public abstract class AdvancedPOJOBase {
   }
 
   /**
-   * 
    * @param pName
-   * @return {@link Boolean}
+   * @return boolean
    */
   public abstract boolean doSomething( String pName );
 
   /**
-   * 
-   * @return {@link int}
+   * @return int
    */
   public abstract int returnPrimitive( );
 

@@ -128,7 +128,6 @@ public abstract class AccountDOBase extends DomainObject {
   }
 
   /**
-   * 
    * @return {@link ServiceObjectID}
    */
   @NotNull

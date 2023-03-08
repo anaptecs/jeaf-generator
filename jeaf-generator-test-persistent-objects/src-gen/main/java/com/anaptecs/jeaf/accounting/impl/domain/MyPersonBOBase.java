@@ -347,13 +347,11 @@ public abstract class MyPersonBOBase extends PersistentObject {
   }
 
   /**
-   * 
    * @return {@link Integer}
    */
   public abstract Integer calculateAge( );
 
   /**
-   * 
    * @return {@link String}
    */
   @NotNull

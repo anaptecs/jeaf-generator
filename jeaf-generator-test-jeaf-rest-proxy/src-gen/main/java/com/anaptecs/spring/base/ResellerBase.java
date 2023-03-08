@@ -450,14 +450,12 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * 
    * @return {@link Integer}
    */
   public abstract Integer doSomething( );
 
   /**
-   * 
-   * @return {@link double}
+   * @return double
    */
   public abstract double returnPrimitive( );
 

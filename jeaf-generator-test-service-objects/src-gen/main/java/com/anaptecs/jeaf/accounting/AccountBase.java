@@ -583,7 +583,6 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   }
 
   /**
-   * 
    * @return {@link Double}
    */
   @NotNull

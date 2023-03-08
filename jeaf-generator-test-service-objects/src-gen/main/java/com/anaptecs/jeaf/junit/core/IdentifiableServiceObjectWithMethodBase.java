@@ -192,8 +192,7 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
   }
 
   /**
-  * 
-  */
+   */
   public abstract void doSomething( );
 
   /**

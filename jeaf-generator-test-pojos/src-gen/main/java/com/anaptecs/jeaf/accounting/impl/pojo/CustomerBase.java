@@ -359,7 +359,6 @@ public abstract class CustomerBase extends Partner {
   }
 
   /**
-   * 
    * @return {@link String}
    */
   public abstract String getDisplayName( );

@@ -190,8 +190,7 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
   }
 
   /**
-   * 
-   * @return {@link Boolean}
+   * @return boolean
    */
   public abstract boolean doSomethingFunny( );
 

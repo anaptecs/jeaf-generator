@@ -164,14 +164,12 @@ public abstract class MReleationBOBase extends PersistentObject {
   }
 
   /**
-   * 
    * @return {@link NReleationBO}
    */
   public abstract NReleationBO getMySpecialN( );
 
   /**
-   * 
-   * @return {@link char}
+   * @return char
    */
   public abstract char returnPrimitive( );
 
