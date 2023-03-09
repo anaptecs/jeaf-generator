@@ -510,7 +510,7 @@ public class DataTypesQueryBean implements Serializable {
   /**
    * Method returns attribute {@link #longCodes}.<br/>
    * 
-   * @return LongCode Value to which the attribute "longCodes" is set.
+   * @return LongCode Value to which {@link #longCodes} is set.
    */
   public LongCode[] getLongCodes( ) {
     LongCode[] lReturnValue;
@@ -525,10 +525,9 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method sets the attribute "longCodes".
+   * Method sets attribute {@link #longCodes}.<br/>
    * 
-   * 
-   * @param pLongCodes Value to which the attribute "longCodes" should be set.
+   * @param pLongCodes Value to which {@link #longCodes} should be set.
    */
   public void setLongCodes( LongCode[] pLongCodes ) {
     // Assign value to attribute
@@ -544,7 +543,7 @@ public class DataTypesQueryBean implements Serializable {
   /**
    * Method returns attribute {@link #codes}.<br/>
    * 
-   * @return IntegerCodeType Value to which the attribute "codes" is set.
+   * @return IntegerCodeType Value to which {@link #codes} is set.
    */
   public IntegerCodeType[] getCodes( ) {
     IntegerCodeType[] lReturnValue;
@@ -559,10 +558,9 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method sets the attribute "codes".
+   * Method sets attribute {@link #codes}.<br/>
    * 
-   * 
-   * @param pCodes Value to which the attribute "codes" should be set.
+   * @param pCodes Value to which {@link #codes} should be set.
    */
   public void setCodes( IntegerCodeType[] pCodes ) {
     // Assign value to attribute
@@ -705,7 +703,7 @@ public class DataTypesQueryBean implements Serializable {
   /**
    * Method returns attribute {@link #bookingIDsArray}.<br/>
    * 
-   * @return BookingID Value to which the attribute "bookingIDsArray" is set.
+   * @return BookingID Value to which {@link #bookingIDsArray} is set.
    */
   public BookingID[] getBookingIDsArray( ) {
     BookingID[] lReturnValue;
@@ -720,10 +718,9 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method sets the attribute "bookingIDsArray".
+   * Method sets attribute {@link #bookingIDsArray}.<br/>
    * 
-   * 
-   * @param pBookingIDsArray Value to which the attribute "bookingIDsArray" should be set.
+   * @param pBookingIDsArray Value to which {@link #bookingIDsArray} should be set.
    */
   public void setBookingIDsArray( BookingID[] pBookingIDsArray ) {
     // Assign value to attribute
@@ -739,17 +736,16 @@ public class DataTypesQueryBean implements Serializable {
   /**
    * Method returns attribute {@link #offsetDateTime}.<br/>
    * 
-   * @return OffsetDateTime Value to which the attribute "offsetDateTime" is set.
+   * @return OffsetDateTime Value to which {@link #offsetDateTime} is set.
    */
   public OffsetDateTime getOffsetDateTime( ) {
     return offsetDateTime;
   }
 
   /**
-   * Method sets the attribute "offsetDateTime".
+   * Method sets attribute {@link #offsetDateTime}.<br/>
    * 
-   * 
-   * @param pOffsetDateTime Value to which the attribute "offsetDateTime" should be set.
+   * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
    */
   public void setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
     // Assign value to attribute
@@ -787,17 +783,16 @@ public class DataTypesQueryBean implements Serializable {
   /**
    * Method returns attribute {@link #localDateTime}.<br/>
    * 
-   * @return LocalDateTime Value to which the attribute "localDateTime" is set.
+   * @return LocalDateTime Value to which {@link #localDateTime} is set.
    */
   public LocalDateTime getLocalDateTime( ) {
     return localDateTime;
   }
 
   /**
-   * Method sets the attribute "localDateTime".
+   * Method sets attribute {@link #localDateTime}.<br/>
    * 
-   * 
-   * @param pLocalDateTime Value to which the attribute "localDateTime" should be set.
+   * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
    */
   public void setLocalDateTime( LocalDateTime pLocalDateTime ) {
     // Assign value to attribute
@@ -807,17 +802,16 @@ public class DataTypesQueryBean implements Serializable {
   /**
    * Method returns attribute {@link #localTime}.<br/>
    * 
-   * @return LocalTime Value to which the attribute "localTime" is set.
+   * @return LocalTime Value to which {@link #localTime} is set.
    */
   public LocalTime getLocalTime( ) {
     return localTime;
   }
 
   /**
-   * Method sets the attribute "localTime".
+   * Method sets attribute {@link #localTime}.<br/>
    * 
-   * 
-   * @param pLocalTime Value to which the attribute "localTime" should be set.
+   * @param pLocalTime Value to which {@link #localTime} should be set.
    */
   public void setLocalTime( LocalTime pLocalTime ) {
     // Assign value to attribute
@@ -953,7 +947,7 @@ public class DataTypesQueryBean implements Serializable {
   /**
    * Method returns attribute {@link #startTimestamps}.<br/>
    * 
-   * @return OffsetDateTime Value to which the attribute "startTimestamps" is set.
+   * @return OffsetDateTime Value to which {@link #startTimestamps} is set.
    */
   public OffsetDateTime[] getStartTimestamps( ) {
     OffsetDateTime[] lReturnValue;
@@ -968,10 +962,9 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method sets the attribute "startTimestamps".
+   * Method sets attribute {@link #startTimestamps}.<br/>
    * 
-   * 
-   * @param pStartTimestamps Value to which the attribute "startTimestamps" should be set.
+   * @param pStartTimestamps Value to which {@link #startTimestamps} should be set.
    */
   public void setStartTimestamps( OffsetDateTime[] pStartTimestamps ) {
     // Assign value to attribute

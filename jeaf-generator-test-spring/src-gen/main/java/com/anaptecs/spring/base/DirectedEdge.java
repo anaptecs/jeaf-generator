@@ -230,17 +230,16 @@ public class DirectedEdge {
   /**
    * Method returns attribute {@link #link}.<br/>
    * 
-   * @return String Value to which the attribute "link" is set.
+   * @return String Value to which {@link #link} is set.
    */
   public String getLink( ) {
     return link;
   }
 
   /**
-   * Method sets the attribute "link".
+   * Method sets attribute {@link #link}.<br/>
    * 
-   * 
-   * @param pLink Value to which the attribute "link" should be set.
+   * @param pLink Value to which {@link #link} should be set.
    */
   public void setLink( String pLink ) {
     // Assign value to attribute

@@ -68,17 +68,16 @@ public abstract class AOneBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #aName}.<br/>
    * 
-   * @return String Value to which the attribute "aName" is set.
+   * @return String Value to which {@link #aName} is set.
    */
   public String getAName( ) {
     return aName;
   }
 
   /**
-   * Method sets the attribute "aName".
+   * Method sets attribute {@link #aName}.<br/>
    * 
-   * 
-   * @param pAName Value to which the attribute "aName" should be set.
+   * @param pAName Value to which {@link #aName} should be set.
    */
   public void setAName( String pAName ) {
     // Assign value to attribute

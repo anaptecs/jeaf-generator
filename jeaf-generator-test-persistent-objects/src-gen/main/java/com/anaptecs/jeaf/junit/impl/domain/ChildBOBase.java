@@ -54,17 +54,16 @@ public abstract class ChildBOBase extends BaseClassBO {
   /**
    * Method returns attribute {@link #childName}.<br/>
    * 
-   * @return String Value to which the attribute "childName" is set.
+   * @return String Value to which {@link #childName} is set.
    */
   public String getChildName( ) {
     return childName;
   }
 
   /**
-   * Method sets the attribute "childName".
+   * Method sets attribute {@link #childName}.<br/>
    * 
-   * 
-   * @param pChildName Value to which the attribute "childName" should be set.
+   * @param pChildName Value to which {@link #childName} should be set.
    */
   public void setChildName( String pChildName ) {
     // Assign value to attribute
@@ -74,17 +73,16 @@ public abstract class ChildBOBase extends BaseClassBO {
   /**
    * Method returns attribute {@link #childNumber}.<br/>
    * 
-   * @return Integer Value to which the attribute "childNumber" is set.
+   * @return Integer Value to which {@link #childNumber} is set.
    */
   public Integer getChildNumber( ) {
     return childNumber;
   }
 
   /**
-   * Method sets the attribute "childNumber".
+   * Method sets attribute {@link #childNumber}.<br/>
    * 
-   * 
-   * @param pChildNumber Value to which the attribute "childNumber" should be set.
+   * @param pChildNumber Value to which {@link #childNumber} should be set.
    */
   public void setChildNumber( Integer pChildNumber ) {
     // Assign value to attribute

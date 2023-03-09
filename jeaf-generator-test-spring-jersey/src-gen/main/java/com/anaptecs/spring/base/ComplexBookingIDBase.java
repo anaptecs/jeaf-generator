@@ -231,17 +231,16 @@ public abstract class ComplexBookingIDBase {
   /**
    * Method returns attribute {@link #internalID}.<br/>
    * 
-   * @return long Value to which the attribute "internalID" is set.
+   * @return long Value to which {@link #internalID} is set.
    */
   public long getInternalID( ) {
     return internalID;
   }
 
   /**
-   * Method sets the attribute "internalID".
+   * Method sets attribute {@link #internalID}.<br/>
    * 
-   * 
-   * @param pInternalID Value to which the attribute "internalID" should be set.
+   * @param pInternalID Value to which {@link #internalID} should be set.
    */
   public void setInternalID( long pInternalID ) {
     // Assign value to attribute
@@ -251,17 +250,16 @@ public abstract class ComplexBookingIDBase {
   /**
    * Method returns attribute {@link #referenceID}.<br/>
    * 
-   * @return String Value to which the attribute "referenceID" is set.
+   * @return String Value to which {@link #referenceID} is set.
    */
   public String getReferenceID( ) {
     return referenceID;
   }
 
   /**
-   * Method sets the attribute "referenceID".
+   * Method sets attribute {@link #referenceID}.<br/>
    * 
-   * 
-   * @param pReferenceID Value to which the attribute "referenceID" should be set.
+   * @param pReferenceID Value to which {@link #referenceID} should be set.
    */
   public void setReferenceID( String pReferenceID ) {
     // Assign value to attribute
@@ -356,17 +354,16 @@ public abstract class ComplexBookingIDBase {
   /**
    * Method returns attribute {@link #anotherID}.<br/>
    * 
-   * @return Integer Value to which the attribute "anotherID" is set.
+   * @return Integer Value to which {@link #anotherID} is set.
    */
   public Integer getAnotherID( ) {
     return anotherID;
   }
 
   /**
-   * Method sets the attribute "anotherID".
+   * Method sets attribute {@link #anotherID}.<br/>
    * 
-   * 
-   * @param pAnotherID Value to which the attribute "anotherID" should be set.
+   * @param pAnotherID Value to which {@link #anotherID} should be set.
    */
   public void setAnotherID( Integer pAnotherID ) {
     // Assign value to attribute
@@ -376,7 +373,7 @@ public abstract class ComplexBookingIDBase {
   /**
    * Method returns attribute {@link #strings}.<br/>
    * 
-   * @return String Value to which the attribute "strings" is set.
+   * @return String Value to which {@link #strings} is set.
    */
   public String[] getStrings( ) {
     String[] lReturnValue;
@@ -391,10 +388,9 @@ public abstract class ComplexBookingIDBase {
   }
 
   /**
-   * Method sets the attribute "strings".
+   * Method sets attribute {@link #strings}.<br/>
    * 
-   * 
-   * @param pStrings Value to which the attribute "strings" should be set.
+   * @param pStrings Value to which {@link #strings} should be set.
    */
   public void setStrings( String[] pStrings ) {
     // Assign value to attribute

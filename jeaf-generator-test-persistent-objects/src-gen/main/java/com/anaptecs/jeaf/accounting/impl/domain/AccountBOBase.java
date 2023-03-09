@@ -96,17 +96,16 @@ public abstract class AccountBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #number}.<br/>
    * 
-   * @return Long Value to which the attribute "number" is set.
+   * @return Long Value to which {@link #number} is set.
    */
   public Long getNumber( ) {
     return number;
   }
 
   /**
-   * Method sets the attribute "number".
+   * Method sets attribute {@link #number}.<br/>
    * 
-   * 
-   * @param pNumber Value to which the attribute "number" should be set.
+   * @param pNumber Value to which {@link #number} should be set.
    */
   public void setNumber( Long pNumber ) {
     // Assign value to attribute
@@ -365,17 +364,16 @@ public abstract class AccountBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #interestRate}.<br/>
    * 
-   * @return Float Value to which the attribute "interestRate" is set.
+   * @return Float Value to which {@link #interestRate} is set.
    */
   public Float getInterestRate( ) {
     return interestRate;
   }
 
   /**
-   * Method sets the attribute "interestRate".
+   * Method sets attribute {@link #interestRate}.<br/>
    * 
-   * 
-   * @param pInterestRate Value to which the attribute "interestRate" should be set.
+   * @param pInterestRate Value to which {@link #interestRate} should be set.
    */
   public void setInterestRate( Float pInterestRate ) {
     // Assign value to attribute

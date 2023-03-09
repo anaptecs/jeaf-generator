@@ -137,17 +137,16 @@ public abstract class ChildA extends ParentClass {
   /**
    * Method returns attribute {@link #childAAttribute}.<br/>
    * 
-   * @return int Value to which the attribute "childAAttribute" is set.
+   * @return int Value to which {@link #childAAttribute} is set.
    */
   public int getChildAAttribute( ) {
     return childAAttribute;
   }
 
   /**
-   * Method sets the attribute "childAAttribute".
+   * Method sets attribute {@link #childAAttribute}.<br/>
    * 
-   * 
-   * @param pChildAAttribute Value to which the attribute "childAAttribute" should be set.
+   * @param pChildAAttribute Value to which {@link #childAAttribute} should be set.
    */
   public void setChildAAttribute( int pChildAAttribute ) {
     // Assign value to attribute

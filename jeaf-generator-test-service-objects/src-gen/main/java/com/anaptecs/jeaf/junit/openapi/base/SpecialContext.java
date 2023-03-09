@@ -189,17 +189,16 @@ public class SpecialContext extends Context {
   /**
    * Method returns attribute {@link #specificHeader}.<br/>
    * 
-   * @return String Value to which the attribute "specificHeader" is set.
+   * @return String Value to which {@link #specificHeader} is set.
    */
   public String getSpecificHeader( ) {
     return specificHeader;
   }
 
   /**
-   * Method sets the attribute "specificHeader".
+   * Method sets attribute {@link #specificHeader}.<br/>
    * 
-   * 
-   * @param pSpecificHeader Value to which the attribute "specificHeader" should be set.
+   * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
    */
   public void setSpecificHeader( String pSpecificHeader ) {
     // Assign value to attribute

@@ -205,16 +205,19 @@ public class ChildAA extends ChildA {
    * line<br/>
    * docs
    * 
-   * @return byte Value to which the attribute "childAAAttribute" is set.
+   * @return byte Value to which {@link #childAAAttribute} is set.
    */
   public byte getChildAAAttribute( ) {
     return childAAAttribute;
   }
 
   /**
-   * Method sets the attribute "childAAAttribute". Multi line docs
+   * Method sets attribute {@link #childAAAttribute}.<br/>
+   * Multi<br/>
+   * line<br/>
+   * docs
    * 
-   * @param pChildAAAttribute Value to which the attribute "childAAAttribute" should be set.
+   * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
    */
   public void setChildAAAttribute( byte pChildAAAttribute ) {
     // Assign value to attribute
@@ -224,7 +227,7 @@ public class ChildAA extends ChildA {
   /**
    * Method returns attribute {@link #sizedArray}.<br/>
    * 
-   * @return int Value to which the attribute "sizedArray" is set.
+   * @return int Value to which {@link #sizedArray} is set.
    */
   public int[] getSizedArray( ) {
     int[] lReturnValue;
@@ -239,10 +242,9 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method sets the attribute "sizedArray".
+   * Method sets attribute {@link #sizedArray}.<br/>
    * 
-   * 
-   * @param pSizedArray Value to which the attribute "sizedArray" should be set.
+   * @param pSizedArray Value to which {@link #sizedArray} should be set.
    */
   public void setSizedArray( int[] pSizedArray ) {
     // Assign value to attribute
@@ -258,7 +260,7 @@ public class ChildAA extends ChildA {
   /**
    * Method returns attribute {@link #requiredArray}.<br/>
    * 
-   * @return String Value to which the attribute "requiredArray" is set.
+   * @return String Value to which {@link #requiredArray} is set.
    */
   public String[] getRequiredArray( ) {
     String[] lReturnValue;
@@ -273,10 +275,9 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method sets the attribute "requiredArray".
+   * Method sets attribute {@link #requiredArray}.<br/>
    * 
-   * 
-   * @param pRequiredArray Value to which the attribute "requiredArray" should be set.
+   * @param pRequiredArray Value to which {@link #requiredArray} should be set.
    */
   public void setRequiredArray( String[] pRequiredArray ) {
     // Assign value to attribute

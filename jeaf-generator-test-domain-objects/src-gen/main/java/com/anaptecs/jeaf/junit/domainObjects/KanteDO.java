@@ -160,17 +160,16 @@ public class KanteDO extends DomainObject {
   /**
    * Method returns attribute {@link #gerichtet}.<br/>
    * 
-   * @return Boolean Value to which the attribute "gerichtet" is set.
+   * @return Boolean Value to which {@link #gerichtet} is set.
    */
   public Boolean getGerichtet( ) {
     return gerichtet;
   }
 
   /**
-   * Method sets the attribute "gerichtet".
+   * Method sets attribute {@link #gerichtet}.<br/>
    * 
-   * 
-   * @param pGerichtet Value to which the attribute "gerichtet" should be set.
+   * @param pGerichtet Value to which {@link #gerichtet} should be set.
    */
   public void setGerichtet( Boolean pGerichtet ) {
     // Assign value to attribute

@@ -214,17 +214,16 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
   /**
    * Method returns attribute {@link #hello}.<br/>
    * 
-   * @return Integer Value to which the attribute "hello" is set.
+   * @return Integer Value to which {@link #hello} is set.
    */
   public Integer getHello( ) {
     return hello;
   }
 
   /**
-   * Method sets the attribute "hello".
+   * Method sets attribute {@link #hello}.<br/>
    * 
-   * 
-   * @param pHello Value to which the attribute "hello" should be set.
+   * @param pHello Value to which {@link #hello} should be set.
    */
   public void setHello( Integer pHello ) {
     // Assign value to attribute
@@ -234,17 +233,16 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
   /**
    * Method returns attribute {@link #country}.<br/>
    * 
-   * @return String Value to which the attribute "country" is set.
+   * @return String Value to which {@link #country} is set.
    */
   public String getCountry( ) {
     return country;
   }
 
   /**
-   * Method sets the attribute "country".
+   * Method sets attribute {@link #country}.<br/>
    * 
-   * 
-   * @param pCountry Value to which the attribute "country" should be set.
+   * @param pCountry Value to which {@link #country} should be set.
    */
   public void setCountry( String pCountry ) {
     // Assign value to attribute

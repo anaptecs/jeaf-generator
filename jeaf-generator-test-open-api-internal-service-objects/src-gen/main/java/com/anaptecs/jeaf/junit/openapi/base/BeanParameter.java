@@ -189,17 +189,16 @@ public class BeanParameter implements ServiceObject {
   /**
    * Method returns attribute {@link #accessToken}.<br/>
    * 
-   * @return String Value to which the attribute "accessToken" is set.
+   * @return String Value to which {@link #accessToken} is set.
    */
   public String getAccessToken( ) {
     return accessToken;
   }
 
   /**
-   * Method sets the attribute "accessToken".
+   * Method sets attribute {@link #accessToken}.<br/>
    * 
-   * 
-   * @param pAccessToken Value to which the attribute "accessToken" should be set.
+   * @param pAccessToken Value to which {@link #accessToken} should be set.
    */
   public void setAccessToken( String pAccessToken ) {
     // Assign value to attribute
@@ -209,17 +208,16 @@ public class BeanParameter implements ServiceObject {
   /**
    * Method returns attribute {@link #language}.<br/>
    * 
-   * @return Locale Value to which the attribute "language" is set.
+   * @return Locale Value to which {@link #language} is set.
    */
   public Locale getLanguage( ) {
     return language;
   }
 
   /**
-   * Method sets the attribute "language".
+   * Method sets attribute {@link #language}.<br/>
    * 
-   * 
-   * @param pLanguage Value to which the attribute "language" should be set.
+   * @param pLanguage Value to which {@link #language} should be set.
    */
   public void setLanguage( Locale pLanguage ) {
     // Assign value to attribute
@@ -229,7 +227,7 @@ public class BeanParameter implements ServiceObject {
   /**
    * Method returns attribute {@link #oldStyle}.<br/>
    * 
-   * @return String Value to which the attribute "oldStyle" is set.
+   * @return String Value to which {@link #oldStyle} is set.
    * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
@@ -238,10 +236,9 @@ public class BeanParameter implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "oldStyle".
+   * Method sets attribute {@link #oldStyle}.<br/>
    * 
-   * 
-   * @param pOldStyle Value to which the attribute "oldStyle" should be set.
+   * @param pOldStyle Value to which {@link #oldStyle} should be set.
    */
   @Deprecated
   public void setOldStyle( String pOldStyle ) {

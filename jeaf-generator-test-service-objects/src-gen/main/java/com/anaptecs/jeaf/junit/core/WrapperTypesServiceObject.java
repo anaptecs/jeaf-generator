@@ -303,17 +303,16 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aBoolean}.<br/>
    * 
-   * @return Boolean Value to which the attribute "aBoolean" is set.
+   * @return Boolean Value to which {@link #aBoolean} is set.
    */
   public Boolean getABoolean( ) {
     return aBoolean;
   }
 
   /**
-   * Method sets the attribute "aBoolean".
+   * Method sets attribute {@link #aBoolean}.<br/>
    * 
-   * 
-   * @param pABoolean Value to which the attribute "aBoolean" should be set.
+   * @param pABoolean Value to which {@link #aBoolean} should be set.
    */
   public void setABoolean( Boolean pABoolean ) {
     // Assign value to attribute
@@ -323,17 +322,16 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aByte}.<br/>
    * 
-   * @return Byte Value to which the attribute "aByte" is set.
+   * @return Byte Value to which {@link #aByte} is set.
    */
   public Byte getAByte( ) {
     return aByte;
   }
 
   /**
-   * Method sets the attribute "aByte".
+   * Method sets attribute {@link #aByte}.<br/>
    * 
-   * 
-   * @param pAByte Value to which the attribute "aByte" should be set.
+   * @param pAByte Value to which {@link #aByte} should be set.
    */
   public void setAByte( Byte pAByte ) {
     // Assign value to attribute
@@ -343,17 +341,16 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aShort}.<br/>
    * 
-   * @return Short Value to which the attribute "aShort" is set.
+   * @return Short Value to which {@link #aShort} is set.
    */
   public Short getAShort( ) {
     return aShort;
   }
 
   /**
-   * Method sets the attribute "aShort".
+   * Method sets attribute {@link #aShort}.<br/>
    * 
-   * 
-   * @param pAShort Value to which the attribute "aShort" should be set.
+   * @param pAShort Value to which {@link #aShort} should be set.
    */
   public void setAShort( Short pAShort ) {
     // Assign value to attribute
@@ -363,17 +360,16 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aInt}.<br/>
    * 
-   * @return Integer Value to which the attribute "aInt" is set.
+   * @return Integer Value to which {@link #aInt} is set.
    */
   public Integer getAInt( ) {
     return aInt;
   }
 
   /**
-   * Method sets the attribute "aInt".
+   * Method sets attribute {@link #aInt}.<br/>
    * 
-   * 
-   * @param pAInt Value to which the attribute "aInt" should be set.
+   * @param pAInt Value to which {@link #aInt} should be set.
    */
   public void setAInt( Integer pAInt ) {
     // Assign value to attribute
@@ -383,17 +379,16 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aLong}.<br/>
    * 
-   * @return Long Value to which the attribute "aLong" is set.
+   * @return Long Value to which {@link #aLong} is set.
    */
   public Long getALong( ) {
     return aLong;
   }
 
   /**
-   * Method sets the attribute "aLong".
+   * Method sets attribute {@link #aLong}.<br/>
    * 
-   * 
-   * @param pALong Value to which the attribute "aLong" should be set.
+   * @param pALong Value to which {@link #aLong} should be set.
    */
   public void setALong( Long pALong ) {
     // Assign value to attribute
@@ -403,17 +398,16 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aFloat}.<br/>
    * 
-   * @return Float Value to which the attribute "aFloat" is set.
+   * @return Float Value to which {@link #aFloat} is set.
    */
   public Float getAFloat( ) {
     return aFloat;
   }
 
   /**
-   * Method sets the attribute "aFloat".
+   * Method sets attribute {@link #aFloat}.<br/>
    * 
-   * 
-   * @param pAFloat Value to which the attribute "aFloat" should be set.
+   * @param pAFloat Value to which {@link #aFloat} should be set.
    */
   public void setAFloat( Float pAFloat ) {
     // Assign value to attribute
@@ -423,17 +417,16 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aDouble}.<br/>
    * 
-   * @return Double Value to which the attribute "aDouble" is set.
+   * @return Double Value to which {@link #aDouble} is set.
    */
   public Double getADouble( ) {
     return aDouble;
   }
 
   /**
-   * Method sets the attribute "aDouble".
+   * Method sets attribute {@link #aDouble}.<br/>
    * 
-   * 
-   * @param pADouble Value to which the attribute "aDouble" should be set.
+   * @param pADouble Value to which {@link #aDouble} should be set.
    */
   public void setADouble( Double pADouble ) {
     // Assign value to attribute
@@ -443,17 +436,16 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aChar}.<br/>
    * 
-   * @return Character Value to which the attribute "aChar" is set.
+   * @return Character Value to which {@link #aChar} is set.
    */
   public Character getAChar( ) {
     return aChar;
   }
 
   /**
-   * Method sets the attribute "aChar".
+   * Method sets attribute {@link #aChar}.<br/>
    * 
-   * 
-   * @param pAChar Value to which the attribute "aChar" should be set.
+   * @param pAChar Value to which {@link #aChar} should be set.
    */
   public void setAChar( Character pAChar ) {
     // Assign value to attribute

@@ -34,7 +34,7 @@ public final class Entity {
     /**
      * Method returns attribute {@link #entityID}.<br/>
      * 
-     * @return String Value to which the attribute "entityID" is set.
+     * @return String Value to which {@link #entityID} is set.
      */
     public String getEntityID( ) {
       return entityID;
@@ -43,7 +43,7 @@ public final class Entity {
     /**
      * Method returns association {@link #dataUnit}.<br/>
      * 
-     * @return DataUnit Value to which the attribute "dataUnit" is set.
+     * @return DataUnit Value to which {@link #dataUnit} is set.
      */
     public DataUnit getDataUnit( ) {
       return dataUnit;

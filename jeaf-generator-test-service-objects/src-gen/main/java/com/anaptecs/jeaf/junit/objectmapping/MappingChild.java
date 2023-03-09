@@ -139,17 +139,16 @@ public class MappingChild extends MappingParent {
   /**
    * Method returns attribute {@link #value}.<br/>
    * 
-   * @return int Value to which the attribute "value" is set.
+   * @return int Value to which {@link #value} is set.
    */
   public int getValue( ) {
     return value;
   }
 
   /**
-   * Method sets the attribute "value".
+   * Method sets attribute {@link #value}.<br/>
    * 
-   * 
-   * @param pValue Value to which the attribute "value" should be set.
+   * @param pValue Value to which {@link #value} should be set.
    */
   public void setValue( int pValue ) {
     // Assign value to attribute

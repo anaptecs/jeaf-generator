@@ -124,17 +124,16 @@ public abstract class CompositeIDBase implements ServiceObject {
   /**
    * Method returns attribute {@link #primaryCode}.<br/>
    * 
-   * @return long Value to which the attribute "primaryCode" is set.
+   * @return long Value to which {@link #primaryCode} is set.
    */
   public long getPrimaryCode( ) {
     return primaryCode;
   }
 
   /**
-   * Method sets the attribute "primaryCode".
+   * Method sets attribute {@link #primaryCode}.<br/>
    * 
-   * 
-   * @param pPrimaryCode Value to which the attribute "primaryCode" should be set.
+   * @param pPrimaryCode Value to which {@link #primaryCode} should be set.
    */
   public void setPrimaryCode( long pPrimaryCode ) {
     // Assign value to attribute
@@ -144,17 +143,16 @@ public abstract class CompositeIDBase implements ServiceObject {
   /**
    * Method returns attribute {@link #secondaryCode}.<br/>
    * 
-   * @return long Value to which the attribute "secondaryCode" is set.
+   * @return long Value to which {@link #secondaryCode} is set.
    */
   public long getSecondaryCode( ) {
     return secondaryCode;
   }
 
   /**
-   * Method sets the attribute "secondaryCode".
+   * Method sets attribute {@link #secondaryCode}.<br/>
    * 
-   * 
-   * @param pSecondaryCode Value to which the attribute "secondaryCode" should be set.
+   * @param pSecondaryCode Value to which {@link #secondaryCode} should be set.
    */
   public void setSecondaryCode( long pSecondaryCode ) {
     // Assign value to attribute

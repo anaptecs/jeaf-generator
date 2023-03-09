@@ -165,17 +165,16 @@ public class BChildPOJO extends BParentPOJO {
   /**
    * Method returns attribute {@link #weirdAttribute}.<br/>
    * 
-   * @return byte Value to which the attribute "weirdAttribute" is set.
+   * @return byte Value to which {@link #weirdAttribute} is set.
    */
   public byte getWeirdAttribute( ) {
     return weirdAttribute;
   }
 
   /**
-   * Method sets the attribute "weirdAttribute".
+   * Method sets attribute {@link #weirdAttribute}.<br/>
    * 
-   * 
-   * @param pWeirdAttribute Value to which the attribute "weirdAttribute" should be set.
+   * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
    */
   public void setWeirdAttribute( byte pWeirdAttribute ) {
     // Assign value to attribute
@@ -185,17 +184,16 @@ public class BChildPOJO extends BParentPOJO {
   /**
    * Method returns attribute {@link #childAttribute}.<br/>
    * 
-   * @return Integer Value to which the attribute "childAttribute" is set.
+   * @return Integer Value to which {@link #childAttribute} is set.
    */
   public Integer getChildAttribute( ) {
     return childAttribute;
   }
 
   /**
-   * Method sets the attribute "childAttribute".
+   * Method sets attribute {@link #childAttribute}.<br/>
    * 
-   * 
-   * @param pChildAttribute Value to which the attribute "childAttribute" should be set.
+   * @param pChildAttribute Value to which {@link #childAttribute} should be set.
    */
   public void setChildAttribute( Integer pChildAttribute ) {
     // Assign value to attribute

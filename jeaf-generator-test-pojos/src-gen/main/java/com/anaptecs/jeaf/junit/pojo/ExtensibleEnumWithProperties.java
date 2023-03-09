@@ -56,7 +56,7 @@ public final class ExtensibleEnumWithProperties {
     /**
      * Method returns attribute {@link #dataUnitID}.<br/>
      * 
-     * @return String Value to which the attribute "dataUnitID" is set.
+     * @return String Value to which {@link #dataUnitID} is set.
      */
     public String getDataUnitID( ) {
       return dataUnitID;
@@ -65,7 +65,7 @@ public final class ExtensibleEnumWithProperties {
     /**
      * Method returns attribute {@link #name}.<br/>
      * 
-     * @return String Value to which the attribute "name" is set.
+     * @return String Value to which {@link #name} is set.
      */
     public String getName( ) {
       return name;
@@ -74,7 +74,7 @@ public final class ExtensibleEnumWithProperties {
     /**
      * Method returns attribute {@link #order}.<br/>
      * 
-     * @return int Value to which the attribute "order" is set.
+     * @return int Value to which {@link #order} is set.
      */
     public int getOrder( ) {
       return order;
@@ -83,7 +83,7 @@ public final class ExtensibleEnumWithProperties {
     /**
      * Method returns attribute {@link #longProperty}.<br/>
      * 
-     * @return long Value to which the attribute "longProperty" is set.
+     * @return long Value to which {@link #longProperty} is set.
      */
     public long getLongProperty( ) {
       return longProperty;
@@ -92,7 +92,7 @@ public final class ExtensibleEnumWithProperties {
     /**
      * Method returns attribute {@link #booleanProperty}.<br/>
      * 
-     * @return Boolean Value to which the attribute "booleanProperty" is set.
+     * @return boolean Value to which {@link #booleanProperty} is set.
      */
     public boolean getBooleanProperty( ) {
       return booleanProperty;
@@ -101,7 +101,7 @@ public final class ExtensibleEnumWithProperties {
     /**
      * Method returns attribute {@link #floatProperty}.<br/>
      * 
-     * @return float Value to which the attribute "floatProperty" is set.
+     * @return float Value to which {@link #floatProperty} is set.
      */
     public float getFloatProperty( ) {
       return floatProperty;
@@ -110,7 +110,7 @@ public final class ExtensibleEnumWithProperties {
     /**
      * Method returns attribute {@link #doubleProperty}.<br/>
      * 
-     * @return double Value to which the attribute "doubleProperty" is set.
+     * @return double Value to which {@link #doubleProperty} is set.
      */
     public double getDoubleProperty( ) {
       return doubleProperty;

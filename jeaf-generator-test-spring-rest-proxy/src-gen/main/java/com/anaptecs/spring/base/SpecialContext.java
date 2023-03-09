@@ -204,17 +204,16 @@ public class SpecialContext extends Context {
   /**
    * Method returns attribute {@link #specificHeader}.<br/>
    * 
-   * @return String Value to which the attribute "specificHeader" is set.
+   * @return String Value to which {@link #specificHeader} is set.
    */
   public String getSpecificHeader( ) {
     return specificHeader;
   }
 
   /**
-   * Method sets the attribute "specificHeader".
+   * Method sets attribute {@link #specificHeader}.<br/>
    * 
-   * 
-   * @param pSpecificHeader Value to which the attribute "specificHeader" should be set.
+   * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
    */
   public void setSpecificHeader( String pSpecificHeader ) {
     // Assign value to attribute
@@ -224,17 +223,16 @@ public class SpecialContext extends Context {
   /**
    * Method returns attribute {@link #channelType}.<br/>
    * 
-   * @return ChannelType Value to which the attribute "channelType" is set.
+   * @return ChannelType Value to which {@link #channelType} is set.
    */
   public ChannelType getChannelType( ) {
     return channelType;
   }
 
   /**
-   * Method sets the attribute "channelType".
+   * Method sets attribute {@link #channelType}.<br/>
    * 
-   * 
-   * @param pChannelType Value to which the attribute "channelType" should be set.
+   * @param pChannelType Value to which {@link #channelType} should be set.
    */
   public void setChannelType( ChannelType pChannelType ) {
     // Assign value to attribute

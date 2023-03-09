@@ -150,16 +150,17 @@ public class CurrencyCode implements Serializable {
    * Method returns attribute {@link #code}.<br/>
    * ISO 4217 currency code.
    * 
-   * @return String Value to which the attribute "code" is set.
+   * @return String Value to which {@link #code} is set.
    */
   public String getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code". ISO 4217 currency code.
+   * Method sets attribute {@link #code}.<br/>
+   * ISO 4217 currency code.
    * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( String pCode ) {
     // Assign value to attribute

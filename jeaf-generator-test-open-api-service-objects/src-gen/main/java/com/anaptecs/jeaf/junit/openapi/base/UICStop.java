@@ -252,17 +252,16 @@ public class UICStop extends Stop {
   /**
    * Method returns attribute {@link #uicCode}.<br/>
    * 
-   * @return String Value to which the attribute "uicCode" is set.
+   * @return String Value to which {@link #uicCode} is set.
    */
   public String getUicCode( ) {
     return uicCode;
   }
 
   /**
-   * Method sets the attribute "uicCode".
+   * Method sets attribute {@link #uicCode}.<br/>
    * 
-   * 
-   * @param pUicCode Value to which the attribute "uicCode" should be set.
+   * @param pUicCode Value to which {@link #uicCode} should be set.
    */
   public void setUicCode( String pUicCode ) {
     // Assign value to attribute
@@ -272,17 +271,16 @@ public class UICStop extends Stop {
   /**
    * Method returns attribute {@link #priority}.<br/>
    * 
-   * @return int Value to which the attribute "priority" is set.
+   * @return int Value to which {@link #priority} is set.
    */
   public int getPriority( ) {
     return priority;
   }
 
   /**
-   * Method sets the attribute "priority".
+   * Method sets attribute {@link #priority}.<br/>
    * 
-   * 
-   * @param pPriority Value to which the attribute "priority" should be set.
+   * @param pPriority Value to which {@link #priority} should be set.
    */
   public void setPriority( int pPriority ) {
     // Assign value to attribute
@@ -292,17 +290,16 @@ public class UICStop extends Stop {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return long Value to which the attribute "code" is set.
+   * @return long Value to which {@link #code} is set.
    */
   public long getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( long pCode ) {
     // Assign value to attribute
@@ -312,17 +309,16 @@ public class UICStop extends Stop {
   /**
    * Method returns attribute {@link #index2}.<br/>
    * 
-   * @return byte Value to which the attribute "index2" is set.
+   * @return byte Value to which {@link #index2} is set.
    */
   public byte getIndex2( ) {
     return index2;
   }
 
   /**
-   * Method sets the attribute "index2".
+   * Method sets attribute {@link #index2}.<br/>
    * 
-   * 
-   * @param pIndex2 Value to which the attribute "index2" should be set.
+   * @param pIndex2 Value to which {@link #index2} should be set.
    */
   public void setIndex2( byte pIndex2 ) {
     // Assign value to attribute

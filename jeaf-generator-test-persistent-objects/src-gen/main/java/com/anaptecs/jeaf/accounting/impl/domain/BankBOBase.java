@@ -267,17 +267,16 @@ public abstract class BankBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which the attribute "name" is set.
+   * @return String Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -287,17 +286,16 @@ public abstract class BankBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return Long Value to which the attribute "code" is set.
+   * @return Long Value to which {@link #code} is set.
    */
   public Long getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( Long pCode ) {
     // Assign value to attribute
@@ -307,17 +305,16 @@ public abstract class BankBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #type}.<br/>
    * 
-   * @return Short Value to which the attribute "type" is set.
+   * @return Short Value to which {@link #type} is set.
    */
   public Short getType( ) {
     return type;
   }
 
   /**
-   * Method sets the attribute "type".
+   * Method sets attribute {@link #type}.<br/>
    * 
-   * 
-   * @param pType Value to which the attribute "type" should be set.
+   * @param pType Value to which {@link #type} should be set.
    */
   public void setType( Short pType ) {
     // Assign value to attribute

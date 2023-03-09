@@ -139,17 +139,16 @@ public class ShortCode implements Serializable {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return Short Value to which the attribute "code" is set.
+   * @return Short Value to which {@link #code} is set.
    */
   public Short getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( Short pCode ) {
     // Assign value to attribute

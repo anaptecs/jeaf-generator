@@ -203,17 +203,16 @@ public class CodeTypeUsageTest {
   /**
    * Method returns attribute {@link #booleanCode}.<br/>
    * 
-   * @return BooleanCodeType Value to which the attribute "booleanCode" is set.
+   * @return BooleanCodeType Value to which {@link #booleanCode} is set.
    */
   public BooleanCodeType getBooleanCode( ) {
     return booleanCode;
   }
 
   /**
-   * Method sets the attribute "booleanCode".
+   * Method sets attribute {@link #booleanCode}.<br/>
    * 
-   * 
-   * @param pBooleanCode Value to which the attribute "booleanCode" should be set.
+   * @param pBooleanCode Value to which {@link #booleanCode} should be set.
    */
   public void setBooleanCode( BooleanCodeType pBooleanCode ) {
     // Assign value to attribute
@@ -341,17 +340,16 @@ public class CodeTypeUsageTest {
   /**
    * Method returns attribute {@link #stringCode}.<br/>
    * 
-   * @return StringCodeType Value to which the attribute "stringCode" is set.
+   * @return StringCodeType Value to which {@link #stringCode} is set.
    */
   public StringCodeType getStringCode( ) {
     return stringCode;
   }
 
   /**
-   * Method sets the attribute "stringCode".
+   * Method sets attribute {@link #stringCode}.<br/>
    * 
-   * 
-   * @param pStringCode Value to which the attribute "stringCode" should be set.
+   * @param pStringCode Value to which {@link #stringCode} should be set.
    */
   public void setStringCode( StringCodeType pStringCode ) {
     // Assign value to attribute

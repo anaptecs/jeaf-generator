@@ -138,17 +138,16 @@ public class Duration {
   /**
    * Method returns attribute {@link #value}.<br/>
    * 
-   * @return int Value to which the attribute "value" is set.
+   * @return int Value to which {@link #value} is set.
    */
   public int getValue( ) {
     return value;
   }
 
   /**
-   * Method sets the attribute "value".
+   * Method sets attribute {@link #value}.<br/>
    * 
-   * 
-   * @param pValue Value to which the attribute "value" should be set.
+   * @param pValue Value to which {@link #value} should be set.
    */
   public void setValue( int pValue ) {
     // Assign value to attribute
@@ -158,17 +157,16 @@ public class Duration {
   /**
    * Method returns attribute {@link #timeUnit}.<br/>
    * 
-   * @return TimeUnit Value to which the attribute "timeUnit" is set.
+   * @return TimeUnit Value to which {@link #timeUnit} is set.
    */
   public TimeUnit getTimeUnit( ) {
     return timeUnit;
   }
 
   /**
-   * Method sets the attribute "timeUnit".
+   * Method sets attribute {@link #timeUnit}.<br/>
    * 
-   * 
-   * @param pTimeUnit Value to which the attribute "timeUnit" should be set.
+   * @param pTimeUnit Value to which {@link #timeUnit} should be set.
    */
   public void setTimeUnit( TimeUnit pTimeUnit ) {
     // Assign value to attribute

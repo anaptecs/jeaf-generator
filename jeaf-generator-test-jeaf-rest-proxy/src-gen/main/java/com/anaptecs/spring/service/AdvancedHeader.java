@@ -196,17 +196,16 @@ public class AdvancedHeader implements Serializable {
   /**
    * Method returns attribute {@link #bookingID}.<br/>
    * 
-   * @return BookingID Value to which the attribute "bookingID" is set.
+   * @return BookingID Value to which {@link #bookingID} is set.
    */
   public BookingID getBookingID( ) {
     return bookingID;
   }
 
   /**
-   * Method sets the attribute "bookingID".
+   * Method sets attribute {@link #bookingID}.<br/>
    * 
-   * 
-   * @param pBookingID Value to which the attribute "bookingID" should be set.
+   * @param pBookingID Value to which {@link #bookingID} should be set.
    */
   public void setBookingID( BookingID pBookingID ) {
     // Assign value to attribute
@@ -216,17 +215,16 @@ public class AdvancedHeader implements Serializable {
   /**
    * Method returns attribute {@link #bookingCode}.<br/>
    * 
-   * @return BookingCode Value to which the attribute "bookingCode" is set.
+   * @return BookingCode Value to which {@link #bookingCode} is set.
    */
   public BookingCode getBookingCode( ) {
     return bookingCode;
   }
 
   /**
-   * Method sets the attribute "bookingCode".
+   * Method sets attribute {@link #bookingCode}.<br/>
    * 
-   * 
-   * @param pBookingCode Value to which the attribute "bookingCode" should be set.
+   * @param pBookingCode Value to which {@link #bookingCode} should be set.
    */
   public void setBookingCode( BookingCode pBookingCode ) {
     // Assign value to attribute
@@ -236,17 +234,16 @@ public class AdvancedHeader implements Serializable {
   /**
    * Method returns attribute {@link #doubleCode}.<br/>
    * 
-   * @return DoubleCode Value to which the attribute "doubleCode" is set.
+   * @return DoubleCode Value to which {@link #doubleCode} is set.
    */
   public DoubleCode getDoubleCode( ) {
     return doubleCode;
   }
 
   /**
-   * Method sets the attribute "doubleCode".
+   * Method sets attribute {@link #doubleCode}.<br/>
    * 
-   * 
-   * @param pDoubleCode Value to which the attribute "doubleCode" should be set.
+   * @param pDoubleCode Value to which {@link #doubleCode} should be set.
    */
   public void setDoubleCode( DoubleCode pDoubleCode ) {
     // Assign value to attribute

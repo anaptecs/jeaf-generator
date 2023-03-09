@@ -151,7 +151,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
    * Method returns attribute {@link #objectID}.<br/>
    * Internal ID of a versioned object
    * 
-   * @return long Value to which the attribute "objectID" is set.
+   * @return long Value to which {@link #objectID} is set.
    */
   public long getObjectID( ) {
     return objectID;

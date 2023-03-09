@@ -212,17 +212,16 @@ public class POJOWithID implements Identifiable<ObjectID> {
   /**
    * Method returns attribute {@link #attr}.<br/>
    * 
-   * @return Double Value to which the attribute "attr" is set.
+   * @return Double Value to which {@link #attr} is set.
    */
   public Double getAttr( ) {
     return attr;
   }
 
   /**
-   * Method sets the attribute "attr".
+   * Method sets attribute {@link #attr}.<br/>
    * 
-   * 
-   * @param pAttr Value to which the attribute "attr" should be set.
+   * @param pAttr Value to which {@link #attr} should be set.
    */
   public void setAttr( Double pAttr ) {
     // Assign value to attribute
@@ -232,17 +231,16 @@ public class POJOWithID implements Identifiable<ObjectID> {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which the attribute "name" is set.
+   * @return String Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute

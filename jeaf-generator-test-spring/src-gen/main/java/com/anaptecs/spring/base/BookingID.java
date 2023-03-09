@@ -226,7 +226,7 @@ public class BookingID {
   /**
    * Method returns attribute {@link #publicBookingID}.<br/>
    * 
-   * @return String Value to which the attribute "publicBookingID" is set.
+   * @return String Value to which {@link #publicBookingID} is set.
    */
   public String getPublicBookingID( ) {
     return publicBookingID;
@@ -235,7 +235,7 @@ public class BookingID {
   /**
    * Method returns attribute {@link #referenceID}.<br/>
    * 
-   * @return String Value to which the attribute "referenceID" is set.
+   * @return String Value to which {@link #referenceID} is set.
    */
   public String getReferenceID( ) {
     return referenceID;
@@ -244,7 +244,7 @@ public class BookingID {
   /**
    * Method returns attribute {@link #externalRefID}.<br/>
    * 
-   * @return String Value to which the attribute "externalRefID" is set.
+   * @return String Value to which {@link #externalRefID} is set.
    */
   public String getExternalRefID( ) {
     return externalRefID;

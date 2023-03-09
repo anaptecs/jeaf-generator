@@ -164,17 +164,16 @@ public class ValidationTestObject implements ServiceObject {
   /**
    * Method returns attribute {@link #myEMail}.<br/>
    * 
-   * @return String Value to which the attribute "myEMail" is set.
+   * @return String Value to which {@link #myEMail} is set.
    */
   public String getMyEMail( ) {
     return myEMail;
   }
 
   /**
-   * Method sets the attribute "myEMail".
+   * Method sets attribute {@link #myEMail}.<br/>
    * 
-   * 
-   * @param pMyEMail Value to which the attribute "myEMail" should be set.
+   * @param pMyEMail Value to which {@link #myEMail} should be set.
    */
   public void setMyEMail( String pMyEMail ) {
     // Assign value to attribute
@@ -184,17 +183,16 @@ public class ValidationTestObject implements ServiceObject {
   /**
    * Method returns attribute {@link #dateOfBirth}.<br/>
    * 
-   * @return Calendar Value to which the attribute "dateOfBirth" is set.
+   * @return Calendar Value to which {@link #dateOfBirth} is set.
    */
   public Calendar getDateOfBirth( ) {
     return dateOfBirth;
   }
 
   /**
-   * Method sets the attribute "dateOfBirth".
+   * Method sets attribute {@link #dateOfBirth}.<br/>
    * 
-   * 
-   * @param pDateOfBirth Value to which the attribute "dateOfBirth" should be set.
+   * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
    */
   public void setDateOfBirth( Calendar pDateOfBirth ) {
     // Assign value to attribute

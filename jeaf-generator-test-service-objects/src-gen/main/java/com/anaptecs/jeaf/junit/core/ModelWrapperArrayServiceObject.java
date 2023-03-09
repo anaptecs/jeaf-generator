@@ -134,7 +134,7 @@ public class ModelWrapperArrayServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #booleanArray}.<br/>
    * 
-   * @return Boolean Value to which the attribute "booleanArray" is set.
+   * @return boolean Value to which {@link #booleanArray} is set.
    */
   public boolean[] getBooleanArray( ) {
     boolean[] lReturnValue;
@@ -149,10 +149,9 @@ public class ModelWrapperArrayServiceObject implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "booleanArray".
+   * Method sets attribute {@link #booleanArray}.<br/>
    * 
-   * 
-   * @param pBooleanArray Value to which the attribute "booleanArray" should be set.
+   * @param pBooleanArray Value to which {@link #booleanArray} should be set.
    */
   public void setBooleanArray( boolean[] pBooleanArray ) {
     // Assign value to attribute

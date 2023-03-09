@@ -103,17 +103,16 @@ public class ByteCodeType {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return byte Value to which the attribute "code" is set.
+   * @return byte Value to which {@link #code} is set.
    */
   public byte getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( byte pCode ) {
     // Assign value to attribute

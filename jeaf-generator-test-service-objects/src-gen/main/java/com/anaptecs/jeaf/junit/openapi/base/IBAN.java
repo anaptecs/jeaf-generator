@@ -127,17 +127,16 @@ public class IBAN implements ServiceObject {
   /**
    * Method returns attribute {@link #value}.<br/>
    * 
-   * @return String Value to which the attribute "value" is set.
+   * @return String Value to which {@link #value} is set.
    */
   public String getValue( ) {
     return value;
   }
 
   /**
-   * Method sets the attribute "value".
+   * Method sets attribute {@link #value}.<br/>
    * 
-   * 
-   * @param pValue Value to which the attribute "value" should be set.
+   * @param pValue Value to which {@link #value} should be set.
    */
   public void setValue( String pValue ) {
     // Assign value to attribute

@@ -126,17 +126,16 @@ public class LongCodeType {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return long Value to which the attribute "code" is set.
+   * @return long Value to which {@link #code} is set.
    */
   public long getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( long pCode ) {
     // Assign value to attribute

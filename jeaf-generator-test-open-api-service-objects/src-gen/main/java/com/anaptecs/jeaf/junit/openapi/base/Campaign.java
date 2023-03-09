@@ -203,7 +203,7 @@ public class Campaign implements ServiceObject {
   /**
    * Method returns association {@link #theLink}.<br/>
    * 
-   * @return LinkObject Value to which the attribute "theLink" is set.
+   * @return com.anaptecs.jeaf.junit.openapi.base.LinkObject Value to which {@link #theLink} is set.
    * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
@@ -216,6 +216,11 @@ public class Campaign implements ServiceObject {
    * 
    * 
    * @param pTheLink LinkObject to which the association "theLink" should be set.
+   */
+  /**
+   * Method sets association {@link #theLink}.<br/>
+   * 
+   * @param pTheLink Value to which {@link #theLink} should be set.
    */
   @Deprecated
   public void setTheLink( Long pTheLink ) {

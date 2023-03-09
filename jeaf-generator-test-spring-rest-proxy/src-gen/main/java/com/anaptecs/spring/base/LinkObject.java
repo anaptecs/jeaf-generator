@@ -100,17 +100,16 @@ public class LinkObject {
   /**
    * Method returns attribute {@link #href}.<br/>
    * 
-   * @return String Value to which the attribute "href" is set.
+   * @return String Value to which {@link #href} is set.
    */
   public String getHref( ) {
     return href;
   }
 
   /**
-   * Method sets the attribute "href".
+   * Method sets attribute {@link #href}.<br/>
    * 
-   * 
-   * @param pHref Value to which the attribute "href" should be set.
+   * @param pHref Value to which {@link #href} should be set.
    */
   public void setHref( String pHref ) {
     // Assign value to attribute

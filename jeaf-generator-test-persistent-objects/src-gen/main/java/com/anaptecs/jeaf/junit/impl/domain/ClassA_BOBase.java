@@ -115,17 +115,16 @@ public abstract class ClassA_BOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which the attribute "name" is set.
+   * @return String Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -135,7 +134,7 @@ public abstract class ClassA_BOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #readonlyDefault}.<br/>
    * 
-   * @return int Value to which the attribute "readonlyDefault" is set.
+   * @return int Value to which {@link #readonlyDefault} is set.
    */
   public int getReadonlyDefault( ) {
     return readonlyDefault;

@@ -315,17 +315,16 @@ public class ChildBB extends ChildB {
   /**
    * Method returns attribute {@link #childBBAttribute}.<br/>
    * 
-   * @return Long Value to which the attribute "childBBAttribute" is set.
+   * @return Long Value to which {@link #childBBAttribute} is set.
    */
   public Long getChildBBAttribute( ) {
     return childBBAttribute;
   }
 
   /**
-   * Method sets the attribute "childBBAttribute".
+   * Method sets attribute {@link #childBBAttribute}.<br/>
    * 
-   * 
-   * @param pChildBBAttribute Value to which the attribute "childBBAttribute" should be set.
+   * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
    */
   public void setChildBBAttribute( Long pChildBBAttribute ) {
     // Assign value to attribute
@@ -335,7 +334,7 @@ public class ChildBB extends ChildB {
   /**
    * Method returns attribute {@link #deprecatedAttribute}.<br/>
    * 
-   * @return int Value to which the attribute "deprecatedAttribute" is set.
+   * @return int Value to which {@link #deprecatedAttribute} is set.
    * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
@@ -344,10 +343,9 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method sets the attribute "deprecatedAttribute".
+   * Method sets attribute {@link #deprecatedAttribute}.<br/>
    * 
-   * 
-   * @param pDeprecatedAttribute Value to which the attribute "deprecatedAttribute" should be set.
+   * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
    */
   @Deprecated
   public void setDeprecatedAttribute( int pDeprecatedAttribute ) {
@@ -458,7 +456,7 @@ public class ChildBB extends ChildB {
   /**
    * Method returns attribute {@link #deprecatedArray}.<br/>
    * 
-   * @return byte Value to which the attribute "deprecatedArray" is set.
+   * @return byte Value to which {@link #deprecatedArray} is set.
    * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
@@ -475,10 +473,9 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method sets the attribute "deprecatedArray".
+   * Method sets attribute {@link #deprecatedArray}.<br/>
    * 
-   * 
-   * @param pDeprecatedArray Value to which the attribute "deprecatedArray" should be set.
+   * @param pDeprecatedArray Value to which {@link #deprecatedArray} should be set.
    */
   @Deprecated
   public void setDeprecatedArray( byte[] pDeprecatedArray ) {

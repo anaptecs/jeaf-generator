@@ -66,17 +66,16 @@ public abstract class CompanyBOBase extends CustomerBO {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which the attribute "name" is set.
+   * @return String Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -86,17 +85,16 @@ public abstract class CompanyBOBase extends CustomerBO {
   /**
    * Method returns attribute {@link #registrationNumber}.<br/>
    * 
-   * @return Long Value to which the attribute "registrationNumber" is set.
+   * @return Long Value to which {@link #registrationNumber} is set.
    */
   public Long getRegistrationNumber( ) {
     return registrationNumber;
   }
 
   /**
-   * Method sets the attribute "registrationNumber".
+   * Method sets attribute {@link #registrationNumber}.<br/>
    * 
-   * 
-   * @param pRegistrationNumber Value to which the attribute "registrationNumber" should be set.
+   * @param pRegistrationNumber Value to which {@link #registrationNumber} should be set.
    */
   public void setRegistrationNumber( Long pRegistrationNumber ) {
     // Assign value to attribute
@@ -106,17 +104,16 @@ public abstract class CompanyBOBase extends CustomerBO {
   /**
    * Method returns attribute {@link #taxNumber}.<br/>
    * 
-   * @return Long Value to which the attribute "taxNumber" is set.
+   * @return Long Value to which {@link #taxNumber} is set.
    */
   public Long getTaxNumber( ) {
     return taxNumber;
   }
 
   /**
-   * Method sets the attribute "taxNumber".
+   * Method sets attribute {@link #taxNumber}.<br/>
    * 
-   * 
-   * @param pTaxNumber Value to which the attribute "taxNumber" should be set.
+   * @param pTaxNumber Value to which {@link #taxNumber} should be set.
    */
   public void setTaxNumber( Long pTaxNumber ) {
     // Assign value to attribute

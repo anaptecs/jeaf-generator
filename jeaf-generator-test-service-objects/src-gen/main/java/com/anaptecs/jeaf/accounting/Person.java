@@ -368,17 +368,16 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which the attribute "name" is set.
+   * @return String Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -388,17 +387,16 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method returns attribute {@link #firstName}.<br/>
    * 
-   * @return String Value to which the attribute "firstName" is set.
+   * @return String Value to which {@link #firstName} is set.
    */
   public String getFirstName( ) {
     return firstName;
   }
 
   /**
-   * Method sets the attribute "firstName".
+   * Method sets attribute {@link #firstName}.<br/>
    * 
-   * 
-   * @param pFirstName Value to which the attribute "firstName" should be set.
+   * @param pFirstName Value to which {@link #firstName} should be set.
    */
   public void setFirstName( String pFirstName ) {
     // Assign value to attribute
@@ -408,17 +406,16 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method returns attribute {@link #dateOfBirth}.<br/>
    * 
-   * @return Calendar Value to which the attribute "dateOfBirth" is set.
+   * @return Calendar Value to which {@link #dateOfBirth} is set.
    */
   public Calendar getDateOfBirth( ) {
     return dateOfBirth;
   }
 
   /**
-   * Method sets the attribute "dateOfBirth".
+   * Method sets attribute {@link #dateOfBirth}.<br/>
    * 
-   * 
-   * @param pDateOfBirth Value to which the attribute "dateOfBirth" should be set.
+   * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
    */
   public void setDateOfBirth( Calendar pDateOfBirth ) {
     // Assign value to attribute
@@ -549,17 +546,16 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method returns attribute {@link #age}.<br/>
    * 
-   * @return Integer Value to which the attribute "age" is set.
+   * @return Integer Value to which {@link #age} is set.
    */
   public Integer getAge( ) {
     return age;
   }
 
   /**
-   * Method sets the attribute "age".
+   * Method sets attribute {@link #age}.<br/>
    * 
-   * 
-   * @param pAge Value to which the attribute "age" should be set.
+   * @param pAge Value to which {@link #age} should be set.
    */
   public void setAge( Integer pAge ) {
     // Assign value to attribute
@@ -569,17 +565,16 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method returns attribute {@link #displayName}.<br/>
    * 
-   * @return String Value to which the attribute "displayName" is set.
+   * @return String Value to which {@link #displayName} is set.
    */
   public String getDisplayName( ) {
     return displayName;
   }
 
   /**
-   * Method sets the attribute "displayName".
+   * Method sets attribute {@link #displayName}.<br/>
    * 
-   * 
-   * @param pDisplayName Value to which the attribute "displayName" should be set.
+   * @param pDisplayName Value to which {@link #displayName} should be set.
    */
   public void setDisplayName( String pDisplayName ) {
     // Assign value to attribute

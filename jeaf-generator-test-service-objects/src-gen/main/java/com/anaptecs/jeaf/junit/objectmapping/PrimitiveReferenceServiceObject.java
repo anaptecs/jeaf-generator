@@ -488,7 +488,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #stringArray}.<br/>
    * 
-   * @return String Value to which the attribute "stringArray" is set.
+   * @return String Value to which {@link #stringArray} is set.
    */
   public String[] getStringArray( ) {
     String[] lReturnValue;
@@ -503,10 +503,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "stringArray".
+   * Method sets attribute {@link #stringArray}.<br/>
    * 
-   * 
-   * @param pStringArray Value to which the attribute "stringArray" should be set.
+   * @param pStringArray Value to which {@link #stringArray} should be set.
    */
   public void setStringArray( String[] pStringArray ) {
     // Assign value to attribute

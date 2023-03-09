@@ -103,17 +103,16 @@ public class FloatCodeType {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return float Value to which the attribute "code" is set.
+   * @return float Value to which {@link #code} is set.
    */
   public float getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( float pCode ) {
     // Assign value to attribute

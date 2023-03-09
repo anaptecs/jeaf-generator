@@ -264,7 +264,7 @@ public class ImmutableAssociationPOJO {
   /**
    * Method returns attribute {@link #yetAnotherAttribute}.<br/>
    * 
-   * @return Boolean Value to which the attribute "yetAnotherAttribute" is set.
+   * @return boolean Value to which {@link #yetAnotherAttribute} is set.
    */
   public boolean getYetAnotherAttribute( ) {
     return yetAnotherAttribute;

@@ -49,17 +49,16 @@ public class PriceDO extends DomainObject {
   /**
    * Method returns attribute {@link #amount}.<br/>
    * 
-   * @return BigDecimal Value to which the attribute "amount" is set.
+   * @return BigDecimal Value to which {@link #amount} is set.
    */
   public BigDecimal getAmount( ) {
     return amount;
   }
 
   /**
-   * Method sets the attribute "amount".
+   * Method sets attribute {@link #amount}.<br/>
    * 
-   * 
-   * @param pAmount Value to which the attribute "amount" should be set.
+   * @param pAmount Value to which {@link #amount} should be set.
    */
   public void setAmount( BigDecimal pAmount ) {
     // Assign value to attribute
@@ -69,17 +68,16 @@ public class PriceDO extends DomainObject {
   /**
    * Method returns attribute {@link #currency}.<br/>
    * 
-   * @return Currency Value to which the attribute "currency" is set.
+   * @return Currency Value to which {@link #currency} is set.
    */
   public Currency getCurrency( ) {
     return currency;
   }
 
   /**
-   * Method sets the attribute "currency".
+   * Method sets attribute {@link #currency}.<br/>
    * 
-   * 
-   * @param pCurrency Value to which the attribute "currency" should be set.
+   * @param pCurrency Value to which {@link #currency} should be set.
    */
   public void setCurrency( Currency pCurrency ) {
     // Assign value to attribute

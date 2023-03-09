@@ -200,17 +200,16 @@ public class WeirdParent implements ServiceObject {
   /**
    * Method returns attribute {@link #someProperty}.<br/>
    * 
-   * @return String Value to which the attribute "someProperty" is set.
+   * @return String Value to which {@link #someProperty} is set.
    */
   public String getSomeProperty( ) {
     return someProperty;
   }
 
   /**
-   * Method sets the attribute "someProperty".
+   * Method sets attribute {@link #someProperty}.<br/>
    * 
-   * 
-   * @param pSomeProperty Value to which the attribute "someProperty" should be set.
+   * @param pSomeProperty Value to which {@link #someProperty} should be set.
    */
   public void setSomeProperty( String pSomeProperty ) {
     // Assign value to attribute

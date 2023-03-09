@@ -158,17 +158,16 @@ public class JustAType implements ServiceObject {
   /**
    * Method returns attribute {@link #attribute}.<br/>
    * 
-   * @return int Value to which the attribute "attribute" is set.
+   * @return int Value to which {@link #attribute} is set.
    */
   public int getAttribute( ) {
     return attribute;
   }
 
   /**
-   * Method sets the attribute "attribute".
+   * Method sets attribute {@link #attribute}.<br/>
    * 
-   * 
-   * @param pAttribute Value to which the attribute "attribute" should be set.
+   * @param pAttribute Value to which {@link #attribute} should be set.
    */
   public void setAttribute( int pAttribute ) {
     // Assign value to attribute
@@ -178,7 +177,7 @@ public class JustAType implements ServiceObject {
   /**
    * Method returns attribute {@link #legacy}.<br/>
    * 
-   * @return double Value to which the attribute "legacy" is set.
+   * @return double Value to which {@link #legacy} is set.
    * @deprecated Hello (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
@@ -187,10 +186,9 @@ public class JustAType implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "legacy".
+   * Method sets attribute {@link #legacy}.<br/>
    * 
-   * 
-   * @param pLegacy Value to which the attribute "legacy" should be set.
+   * @param pLegacy Value to which {@link #legacy} should be set.
    */
   @Deprecated
   public void setLegacy( double pLegacy ) {

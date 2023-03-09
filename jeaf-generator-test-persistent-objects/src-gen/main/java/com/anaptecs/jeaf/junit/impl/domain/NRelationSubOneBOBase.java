@@ -42,17 +42,16 @@ public abstract class NRelationSubOneBOBase extends NReleationBO {
   /**
    * Method returns attribute {@link #fieldOne}.<br/>
    * 
-   * @return String Value to which the attribute "fieldOne" is set.
+   * @return String Value to which {@link #fieldOne} is set.
    */
   public String getFieldOne( ) {
     return fieldOne;
   }
 
   /**
-   * Method sets the attribute "fieldOne".
+   * Method sets attribute {@link #fieldOne}.<br/>
    * 
-   * 
-   * @param pFieldOne Value to which the attribute "fieldOne" should be set.
+   * @param pFieldOne Value to which {@link #fieldOne} should be set.
    */
   public void setFieldOne( String pFieldOne ) {
     // Assign value to attribute

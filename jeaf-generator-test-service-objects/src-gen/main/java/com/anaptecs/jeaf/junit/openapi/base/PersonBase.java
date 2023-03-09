@@ -158,17 +158,16 @@ public abstract class PersonBase extends Partner {
   /**
    * Method returns attribute {@link #surname}.<br/>
    * 
-   * @return String Value to which the attribute "surname" is set.
+   * @return String Value to which {@link #surname} is set.
    */
   public String getSurname( ) {
     return surname;
   }
 
   /**
-   * Method sets the attribute "surname".
+   * Method sets attribute {@link #surname}.<br/>
    * 
-   * 
-   * @param pSurname Value to which the attribute "surname" should be set.
+   * @param pSurname Value to which {@link #surname} should be set.
    */
   public void setSurname( String pSurname ) {
     // Assign value to attribute
@@ -178,17 +177,16 @@ public abstract class PersonBase extends Partner {
   /**
    * Method returns attribute {@link #firstName}.<br/>
    * 
-   * @return String Value to which the attribute "firstName" is set.
+   * @return String Value to which {@link #firstName} is set.
    */
   public String getFirstName( ) {
     return firstName;
   }
 
   /**
-   * Method sets the attribute "firstName".
+   * Method sets attribute {@link #firstName}.<br/>
    * 
-   * 
-   * @param pFirstName Value to which the attribute "firstName" should be set.
+   * @param pFirstName Value to which {@link #firstName} should be set.
    */
   public void setFirstName( String pFirstName ) {
     // Assign value to attribute

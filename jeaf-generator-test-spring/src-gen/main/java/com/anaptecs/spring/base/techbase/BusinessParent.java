@@ -144,17 +144,16 @@ public class BusinessParent extends TechParent {
   /**
    * Method returns attribute {@link #parentAttribute}.<br/>
    * 
-   * @return long Value to which the attribute "parentAttribute" is set.
+   * @return long Value to which {@link #parentAttribute} is set.
    */
   public long getParentAttribute( ) {
     return parentAttribute;
   }
 
   /**
-   * Method sets the attribute "parentAttribute".
+   * Method sets attribute {@link #parentAttribute}.<br/>
    * 
-   * 
-   * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    */
   public void setParentAttribute( long pParentAttribute ) {
     // Assign value to attribute

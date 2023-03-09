@@ -470,17 +470,16 @@ public class MultiValuedDataType implements ServiceObject {
   /**
    * Method returns attribute {@link #stringProperty}.<br/>
    * 
-   * @return String Value to which the attribute "stringProperty" is set.
+   * @return String Value to which {@link #stringProperty} is set.
    */
   public String getStringProperty( ) {
     return stringProperty;
   }
 
   /**
-   * Method sets the attribute "stringProperty".
+   * Method sets attribute {@link #stringProperty}.<br/>
    * 
-   * 
-   * @param pStringProperty Value to which the attribute "stringProperty" should be set.
+   * @param pStringProperty Value to which {@link #stringProperty} should be set.
    */
   public void setStringProperty( String pStringProperty ) {
     // Assign value to attribute
@@ -491,16 +490,17 @@ public class MultiValuedDataType implements ServiceObject {
    * Method returns attribute {@link #longValues}.<br/>
    * long values as multivalued header
    * 
-   * @return long Value to which the attribute "longValues" is set.
+   * @return long Value to which {@link #longValues} is set.
    */
   public long getLongValues( ) {
     return longValues;
   }
 
   /**
-   * Method sets the attribute "longValues". long values as multivalued header
+   * Method sets attribute {@link #longValues}.<br/>
+   * long values as multivalued header
    * 
-   * @param pLongValues Value to which the attribute "longValues" should be set.
+   * @param pLongValues Value to which {@link #longValues} should be set.
    */
   public void setLongValues( long pLongValues ) {
     // Assign value to attribute

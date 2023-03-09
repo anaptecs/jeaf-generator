@@ -271,16 +271,17 @@ public class Booking implements ServiceObject {
    * Method returns attribute {@link #amount}.<br/>
    * Amount of the booking. The attribute must not be null.
    * 
-   * @return Double Value to which the attribute "amount" is set.
+   * @return Double Value to which {@link #amount} is set.
    */
   public Double getAmount( ) {
     return amount;
   }
 
   /**
-   * Method sets the attribute "amount". Amount of the booking. The attribute must not be null.
+   * Method sets attribute {@link #amount}.<br/>
+   * Amount of the booking. The attribute must not be null.
    * 
-   * @param pAmount Value to which the attribute "amount" should be set.
+   * @param pAmount Value to which {@link #amount} should be set.
    */
   public void setAmount( Double pAmount ) {
     // Assign value to attribute

@@ -172,7 +172,7 @@ public class MultivaluedQueryParamsBean {
   /**
    * Method returns attribute {@link #intArray}.<br/>
    * 
-   * @return int Value to which the attribute "intArray" is set.
+   * @return int Value to which {@link #intArray} is set.
    */
   public int[] getIntArray( ) {
     int[] lReturnValue;
@@ -187,10 +187,9 @@ public class MultivaluedQueryParamsBean {
   }
 
   /**
-   * Method sets the attribute "intArray".
+   * Method sets attribute {@link #intArray}.<br/>
    * 
-   * 
-   * @param pIntArray Value to which the attribute "intArray" should be set.
+   * @param pIntArray Value to which {@link #intArray} should be set.
    */
   public void setIntArray( int[] pIntArray ) {
     // Assign value to attribute
@@ -206,7 +205,7 @@ public class MultivaluedQueryParamsBean {
   /**
    * Method returns attribute {@link #strings}.<br/>
    * 
-   * @return String Value to which the attribute "strings" is set.
+   * @return String Value to which {@link #strings} is set.
    */
   public String[] getStrings( ) {
     String[] lReturnValue;
@@ -221,10 +220,9 @@ public class MultivaluedQueryParamsBean {
   }
 
   /**
-   * Method sets the attribute "strings".
+   * Method sets attribute {@link #strings}.<br/>
    * 
-   * 
-   * @param pStrings Value to which the attribute "strings" should be set.
+   * @param pStrings Value to which {@link #strings} should be set.
    */
   public void setStrings( String[] pStrings ) {
     // Assign value to attribute
@@ -240,7 +238,7 @@ public class MultivaluedQueryParamsBean {
   /**
    * Method returns attribute {@link #integers}.<br/>
    * 
-   * @return Integer Value to which the attribute "integers" is set.
+   * @return Integer Value to which {@link #integers} is set.
    */
   public Integer[] getIntegers( ) {
     Integer[] lReturnValue;
@@ -255,10 +253,9 @@ public class MultivaluedQueryParamsBean {
   }
 
   /**
-   * Method sets the attribute "integers".
+   * Method sets attribute {@link #integers}.<br/>
    * 
-   * 
-   * @param pIntegers Value to which the attribute "integers" should be set.
+   * @param pIntegers Value to which {@link #integers} should be set.
    */
   public void setIntegers( Integer[] pIntegers ) {
     // Assign value to attribute

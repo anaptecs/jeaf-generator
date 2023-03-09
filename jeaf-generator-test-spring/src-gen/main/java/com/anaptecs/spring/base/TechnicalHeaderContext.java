@@ -131,17 +131,16 @@ public class TechnicalHeaderContext {
   /**
    * Method returns attribute {@link #reseller}.<br/>
    * 
-   * @return String Value to which the attribute "reseller" is set.
+   * @return String Value to which {@link #reseller} is set.
    */
   public String getReseller( ) {
     return reseller;
   }
 
   /**
-   * Method sets the attribute "reseller".
+   * Method sets attribute {@link #reseller}.<br/>
    * 
-   * 
-   * @param pReseller Value to which the attribute "reseller" should be set.
+   * @param pReseller Value to which {@link #reseller} should be set.
    */
   public void setReseller( String pReseller ) {
     // Assign value to attribute

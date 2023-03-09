@@ -215,17 +215,16 @@ public class Stop implements ServiceObject {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which the attribute "name" is set.
+   * @return String Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -298,17 +297,16 @@ public class Stop implements ServiceObject {
   /**
    * Method returns attribute {@link #index}.<br/>
    * 
-   * @return byte Value to which the attribute "index" is set.
+   * @return byte Value to which {@link #index} is set.
    */
   public byte getIndex( ) {
     return index;
   }
 
   /**
-   * Method sets the attribute "index".
+   * Method sets attribute {@link #index}.<br/>
    * 
-   * 
-   * @param pIndex Value to which the attribute "index" should be set.
+   * @param pIndex Value to which {@link #index} should be set.
    */
   public void setIndex( byte pIndex ) {
     // Assign value to attribute
@@ -318,7 +316,7 @@ public class Stop implements ServiceObject {
   /**
    * Method returns association {@link #theSoftLink}.<br/>
    * 
-   * @return LinkObject Value to which the attribute "theSoftLink" is set.
+   * @return LinkObject Value to which {@link #theSoftLink} is set.
    */
   public SoftLink getTheSoftLink( ) {
     return theSoftLink;
@@ -329,6 +327,11 @@ public class Stop implements ServiceObject {
    * 
    * 
    * @param pTheSoftLink LinkObject to which the association "theSoftLink" should be set.
+   */
+  /**
+   * Method sets association {@link #theSoftLink}.<br/>
+   * 
+   * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
    */
   public void setTheSoftLink( SoftLink pTheSoftLink ) {
     theSoftLink = pTheSoftLink;

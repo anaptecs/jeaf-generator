@@ -228,7 +228,7 @@ public class SoftLinkChildB extends SoftLinkParent {
   /**
    * Method returns association {@link #heyBrother}.<br/>
    * 
-   * @return SoftLinkChildA Value to which the attribute "heyBrother" is set.
+   * @return com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA Value to which {@link #heyBrother} is set.
    */
   public String getHeyBrother( ) {
     return heyBrother;
@@ -239,6 +239,11 @@ public class SoftLinkChildB extends SoftLinkParent {
    * 
    * 
    * @param pHeyBrother SoftLinkChildA to which the association "heyBrother" should be set.
+   */
+  /**
+   * Method sets association {@link #heyBrother}.<br/>
+   * 
+   * @param pHeyBrother Value to which {@link #heyBrother} should be set.
    */
   public void setHeyBrother( String pHeyBrother ) {
     heyBrother = pHeyBrother;
@@ -320,7 +325,7 @@ public class SoftLinkChildB extends SoftLinkParent {
   /**
    * Method returns association {@link #oneLink}.<br/>
    * 
-   * @return SoftLinkPartner Value to which the attribute "oneLink" is set.
+   * @return com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner Value to which {@link #oneLink} is set.
    */
   public SoftLinkID getOneLink( ) {
     return oneLink;
@@ -331,6 +336,11 @@ public class SoftLinkChildB extends SoftLinkParent {
    * 
    * 
    * @param pOneLink SoftLinkPartner to which the association "oneLink" should be set.
+   */
+  /**
+   * Method sets association {@link #oneLink}.<br/>
+   * 
+   * @param pOneLink Value to which {@link #oneLink} should be set.
    */
   public void setOneLink( SoftLinkID pOneLink ) {
     oneLink = pOneLink;

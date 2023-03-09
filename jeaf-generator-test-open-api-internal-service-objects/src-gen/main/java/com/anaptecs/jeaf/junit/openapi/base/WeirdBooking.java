@@ -446,17 +446,16 @@ public class WeirdBooking extends WeirdParent {
   /**
    * Method returns attribute {@link #childProperty}.<br/>
    * 
-   * @return int Value to which the attribute "childProperty" is set.
+   * @return int Value to which {@link #childProperty} is set.
    */
   public int getChildProperty( ) {
     return childProperty;
   }
 
   /**
-   * Method sets the attribute "childProperty".
+   * Method sets attribute {@link #childProperty}.<br/>
    * 
-   * 
-   * @param pChildProperty Value to which the attribute "childProperty" should be set.
+   * @param pChildProperty Value to which {@link #childProperty} should be set.
    */
   public void setChildProperty( int pChildProperty ) {
     // Assign value to attribute

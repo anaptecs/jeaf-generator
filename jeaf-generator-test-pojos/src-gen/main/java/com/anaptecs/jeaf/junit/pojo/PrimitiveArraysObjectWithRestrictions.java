@@ -797,7 +797,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aBooleanArray}.<br/>
    * 
-   * @return Boolean Value to which the attribute "aBooleanArray" is set.
+   * @return boolean Value to which {@link #aBooleanArray} is set.
    */
   public boolean[] getABooleanArray( ) {
     boolean[] lReturnValue;
@@ -814,7 +814,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bBooleanArray}.<br/>
    * 
-   * @return Boolean Value to which the attribute "bBooleanArray" is set.
+   * @return Boolean Value to which {@link #bBooleanArray} is set.
    */
   public Boolean[] getBBooleanArray( ) {
     Boolean[] lReturnValue;
@@ -829,10 +829,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "bBooleanArray".
+   * Method sets attribute {@link #bBooleanArray}.<br/>
    * 
-   * 
-   * @param pBBooleanArray Value to which the attribute "bBooleanArray" should be set.
+   * @param pBBooleanArray Value to which {@link #bBooleanArray} should be set.
    */
   public void setBBooleanArray( Boolean[] pBBooleanArray ) {
     // Assign value to attribute
@@ -848,7 +847,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #cBooleanArray}.<br/>
    * 
-   * @return Boolean Value to which the attribute "cBooleanArray" is set.
+   * @return boolean Value to which {@link #cBooleanArray} is set.
    */
   public boolean[] getCBooleanArray( ) {
     boolean[] lReturnValue;
@@ -863,10 +862,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "cBooleanArray".
+   * Method sets attribute {@link #cBooleanArray}.<br/>
    * 
-   * 
-   * @param pCBooleanArray Value to which the attribute "cBooleanArray" should be set.
+   * @param pCBooleanArray Value to which {@link #cBooleanArray} should be set.
    */
   public void setCBooleanArray( boolean[] pCBooleanArray ) {
     // Assign value to attribute
@@ -882,7 +880,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aByteArray}.<br/>
    * 
-   * @return byte Value to which the attribute "aByteArray" is set.
+   * @return byte Value to which {@link #aByteArray} is set.
    */
   public byte[] getAByteArray( ) {
     byte[] lReturnValue;
@@ -897,10 +895,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "aByteArray".
+   * Method sets attribute {@link #aByteArray}.<br/>
    * 
-   * 
-   * @param pAByteArray Value to which the attribute "aByteArray" should be set.
+   * @param pAByteArray Value to which {@link #aByteArray} should be set.
    */
   public void setAByteArray( byte[] pAByteArray ) {
     // Assign value to attribute
@@ -916,7 +913,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bByteArray}.<br/>
    * 
-   * @return Byte Value to which the attribute "bByteArray" is set.
+   * @return Byte Value to which {@link #bByteArray} is set.
    */
   public Byte[] getBByteArray( ) {
     Byte[] lReturnValue;
@@ -931,10 +928,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "bByteArray".
+   * Method sets attribute {@link #bByteArray}.<br/>
    * 
-   * 
-   * @param pBByteArray Value to which the attribute "bByteArray" should be set.
+   * @param pBByteArray Value to which {@link #bByteArray} should be set.
    */
   public void setBByteArray( Byte[] pBByteArray ) {
     // Assign value to attribute
@@ -950,7 +946,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aShortArray}.<br/>
    * 
-   * @return short Value to which the attribute "aShortArray" is set.
+   * @return short Value to which {@link #aShortArray} is set.
    */
   public short[] getAShortArray( ) {
     short[] lReturnValue;
@@ -965,10 +961,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "aShortArray".
+   * Method sets attribute {@link #aShortArray}.<br/>
    * 
-   * 
-   * @param pAShortArray Value to which the attribute "aShortArray" should be set.
+   * @param pAShortArray Value to which {@link #aShortArray} should be set.
    */
   public void setAShortArray( short[] pAShortArray ) {
     // Assign value to attribute
@@ -984,7 +979,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bShortArray}.<br/>
    * 
-   * @return Short Value to which the attribute "bShortArray" is set.
+   * @return Short Value to which {@link #bShortArray} is set.
    */
   public Short[] getBShortArray( ) {
     Short[] lReturnValue;
@@ -999,10 +994,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "bShortArray".
+   * Method sets attribute {@link #bShortArray}.<br/>
    * 
-   * 
-   * @param pBShortArray Value to which the attribute "bShortArray" should be set.
+   * @param pBShortArray Value to which {@link #bShortArray} should be set.
    */
   public void setBShortArray( Short[] pBShortArray ) {
     // Assign value to attribute
@@ -1018,7 +1012,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aIntegerArray}.<br/>
    * 
-   * @return int Value to which the attribute "aIntegerArray" is set.
+   * @return int Value to which {@link #aIntegerArray} is set.
    */
   public int[] getAIntegerArray( ) {
     int[] lReturnValue;
@@ -1033,10 +1027,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "aIntegerArray".
+   * Method sets attribute {@link #aIntegerArray}.<br/>
    * 
-   * 
-   * @param pAIntegerArray Value to which the attribute "aIntegerArray" should be set.
+   * @param pAIntegerArray Value to which {@link #aIntegerArray} should be set.
    */
   public void setAIntegerArray( int[] pAIntegerArray ) {
     // Assign value to attribute
@@ -1052,7 +1045,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bIntegerArray}.<br/>
    * 
-   * @return Integer Value to which the attribute "bIntegerArray" is set.
+   * @return Integer Value to which {@link #bIntegerArray} is set.
    */
   public Integer[] getBIntegerArray( ) {
     Integer[] lReturnValue;
@@ -1067,10 +1060,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "bIntegerArray".
+   * Method sets attribute {@link #bIntegerArray}.<br/>
    * 
-   * 
-   * @param pBIntegerArray Value to which the attribute "bIntegerArray" should be set.
+   * @param pBIntegerArray Value to which {@link #bIntegerArray} should be set.
    */
   public void setBIntegerArray( Integer[] pBIntegerArray ) {
     // Assign value to attribute
@@ -1086,7 +1078,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #cIntegerArray}.<br/>
    * 
-   * @return Integer Value to which the attribute "cIntegerArray" is set.
+   * @return Integer Value to which {@link #cIntegerArray} is set.
    */
   public Integer[] getCIntegerArray( ) {
     Integer[] lReturnValue;
@@ -1101,10 +1093,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "cIntegerArray".
+   * Method sets attribute {@link #cIntegerArray}.<br/>
    * 
-   * 
-   * @param pCIntegerArray Value to which the attribute "cIntegerArray" should be set.
+   * @param pCIntegerArray Value to which {@link #cIntegerArray} should be set.
    */
   public void setCIntegerArray( Integer[] pCIntegerArray ) {
     // Assign value to attribute
@@ -1120,7 +1111,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aLongArray}.<br/>
    * 
-   * @return long Value to which the attribute "aLongArray" is set.
+   * @return long Value to which {@link #aLongArray} is set.
    */
   public long[] getALongArray( ) {
     long[] lReturnValue;
@@ -1135,10 +1126,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "aLongArray".
+   * Method sets attribute {@link #aLongArray}.<br/>
    * 
-   * 
-   * @param pALongArray Value to which the attribute "aLongArray" should be set.
+   * @param pALongArray Value to which {@link #aLongArray} should be set.
    */
   public void setALongArray( long[] pALongArray ) {
     // Assign value to attribute
@@ -1154,7 +1144,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bLongArray}.<br/>
    * 
-   * @return Long Value to which the attribute "bLongArray" is set.
+   * @return Long Value to which {@link #bLongArray} is set.
    */
   public Long[] getBLongArray( ) {
     Long[] lReturnValue;
@@ -1169,10 +1159,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "bLongArray".
+   * Method sets attribute {@link #bLongArray}.<br/>
    * 
-   * 
-   * @param pBLongArray Value to which the attribute "bLongArray" should be set.
+   * @param pBLongArray Value to which {@link #bLongArray} should be set.
    */
   public void setBLongArray( Long[] pBLongArray ) {
     // Assign value to attribute
@@ -1188,7 +1177,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aBigIntegerArray}.<br/>
    * 
-   * @return BigInteger Value to which the attribute "aBigIntegerArray" is set.
+   * @return BigInteger Value to which {@link #aBigIntegerArray} is set.
    */
   public BigInteger[] getABigIntegerArray( ) {
     BigInteger[] lReturnValue;
@@ -1203,10 +1192,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "aBigIntegerArray".
+   * Method sets attribute {@link #aBigIntegerArray}.<br/>
    * 
-   * 
-   * @param pABigIntegerArray Value to which the attribute "aBigIntegerArray" should be set.
+   * @param pABigIntegerArray Value to which {@link #aBigIntegerArray} should be set.
    */
   public void setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
     // Assign value to attribute
@@ -1222,7 +1210,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aCharacterArray}.<br/>
    * 
-   * @return char Value to which the attribute "aCharacterArray" is set.
+   * @return char Value to which {@link #aCharacterArray} is set.
    */
   public char[] getACharacterArray( ) {
     char[] lReturnValue;
@@ -1237,10 +1225,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "aCharacterArray".
+   * Method sets attribute {@link #aCharacterArray}.<br/>
    * 
-   * 
-   * @param pACharacterArray Value to which the attribute "aCharacterArray" should be set.
+   * @param pACharacterArray Value to which {@link #aCharacterArray} should be set.
    */
   public void setACharacterArray( char[] pACharacterArray ) {
     // Assign value to attribute
@@ -1256,7 +1243,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bCharacterArray}.<br/>
    * 
-   * @return Character Value to which the attribute "bCharacterArray" is set.
+   * @return Character Value to which {@link #bCharacterArray} is set.
    */
   public Character[] getBCharacterArray( ) {
     Character[] lReturnValue;
@@ -1271,10 +1258,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "bCharacterArray".
+   * Method sets attribute {@link #bCharacterArray}.<br/>
    * 
-   * 
-   * @param pBCharacterArray Value to which the attribute "bCharacterArray" should be set.
+   * @param pBCharacterArray Value to which {@link #bCharacterArray} should be set.
    */
   public void setBCharacterArray( Character[] pBCharacterArray ) {
     // Assign value to attribute
@@ -1290,7 +1276,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aFloatArray}.<br/>
    * 
-   * @return float Value to which the attribute "aFloatArray" is set.
+   * @return float Value to which {@link #aFloatArray} is set.
    */
   public float[] getAFloatArray( ) {
     float[] lReturnValue;
@@ -1305,10 +1291,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "aFloatArray".
+   * Method sets attribute {@link #aFloatArray}.<br/>
    * 
-   * 
-   * @param pAFloatArray Value to which the attribute "aFloatArray" should be set.
+   * @param pAFloatArray Value to which {@link #aFloatArray} should be set.
    */
   public void setAFloatArray( float[] pAFloatArray ) {
     // Assign value to attribute
@@ -1324,7 +1309,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bFloatArray}.<br/>
    * 
-   * @return Float Value to which the attribute "bFloatArray" is set.
+   * @return Float Value to which {@link #bFloatArray} is set.
    */
   public Float[] getBFloatArray( ) {
     Float[] lReturnValue;
@@ -1339,10 +1324,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "bFloatArray".
+   * Method sets attribute {@link #bFloatArray}.<br/>
    * 
-   * 
-   * @param pBFloatArray Value to which the attribute "bFloatArray" should be set.
+   * @param pBFloatArray Value to which {@link #bFloatArray} should be set.
    */
   public void setBFloatArray( Float[] pBFloatArray ) {
     // Assign value to attribute
@@ -1358,7 +1342,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aDoubleArray}.<br/>
    * 
-   * @return double Value to which the attribute "aDoubleArray" is set.
+   * @return double Value to which {@link #aDoubleArray} is set.
    */
   public double[] getADoubleArray( ) {
     double[] lReturnValue;
@@ -1373,10 +1357,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "aDoubleArray".
+   * Method sets attribute {@link #aDoubleArray}.<br/>
    * 
-   * 
-   * @param pADoubleArray Value to which the attribute "aDoubleArray" should be set.
+   * @param pADoubleArray Value to which {@link #aDoubleArray} should be set.
    */
   public void setADoubleArray( double[] pADoubleArray ) {
     // Assign value to attribute
@@ -1392,7 +1375,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bDoubleArray}.<br/>
    * 
-   * @return Double Value to which the attribute "bDoubleArray" is set.
+   * @return Double Value to which {@link #bDoubleArray} is set.
    */
   public Double[] getBDoubleArray( ) {
     Double[] lReturnValue;
@@ -1407,10 +1390,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "bDoubleArray".
+   * Method sets attribute {@link #bDoubleArray}.<br/>
    * 
-   * 
-   * @param pBDoubleArray Value to which the attribute "bDoubleArray" should be set.
+   * @param pBDoubleArray Value to which {@link #bDoubleArray} should be set.
    */
   public void setBDoubleArray( Double[] pBDoubleArray ) {
     // Assign value to attribute
@@ -1426,7 +1408,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aBigDecimalArray}.<br/>
    * 
-   * @return BigDecimal Value to which the attribute "aBigDecimalArray" is set.
+   * @return BigDecimal Value to which {@link #aBigDecimalArray} is set.
    */
   public BigDecimal[] getABigDecimalArray( ) {
     BigDecimal[] lReturnValue;
@@ -1441,10 +1423,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "aBigDecimalArray".
+   * Method sets attribute {@link #aBigDecimalArray}.<br/>
    * 
-   * 
-   * @param pABigDecimalArray Value to which the attribute "aBigDecimalArray" should be set.
+   * @param pABigDecimalArray Value to which {@link #aBigDecimalArray} should be set.
    */
   public void setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
     // Assign value to attribute
@@ -1460,7 +1441,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aStringArray}.<br/>
    * 
-   * @return String Value to which the attribute "aStringArray" is set.
+   * @return String Value to which {@link #aStringArray} is set.
    */
   public String[] getAStringArray( ) {
     String[] lReturnValue;
@@ -1475,10 +1456,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "aStringArray".
+   * Method sets attribute {@link #aStringArray}.<br/>
    * 
-   * 
-   * @param pAStringArray Value to which the attribute "aStringArray" should be set.
+   * @param pAStringArray Value to which {@link #aStringArray} should be set.
    */
   public void setAStringArray( String[] pAStringArray ) {
     // Assign value to attribute
@@ -1494,7 +1474,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bStringArray}.<br/>
    * 
-   * @return String Value to which the attribute "bStringArray" is set.
+   * @return String Value to which {@link #bStringArray} is set.
    */
   public String[] getBStringArray( ) {
     String[] lReturnValue;
@@ -1509,10 +1489,9 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets the attribute "bStringArray".
+   * Method sets attribute {@link #bStringArray}.<br/>
    * 
-   * 
-   * @param pBStringArray Value to which the attribute "bStringArray" should be set.
+   * @param pBStringArray Value to which {@link #bStringArray} should be set.
    */
   public void setBStringArray( String[] pBStringArray ) {
     // Assign value to attribute

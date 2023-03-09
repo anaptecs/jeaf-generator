@@ -259,7 +259,7 @@ public class SoftLinkParent {
   /**
    * Method returns association {@link #thePartner}.<br/>
    * 
-   * @return SoftLinkPartner Value to which the attribute "thePartner" is set.
+   * @return com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner Value to which {@link #thePartner} is set.
    */
   public SoftLinkID getThePartner( ) {
     return thePartner;
@@ -270,6 +270,11 @@ public class SoftLinkParent {
    * 
    * 
    * @param pThePartner SoftLinkPartner to which the association "thePartner" should be set.
+   */
+  /**
+   * Method sets association {@link #thePartner}.<br/>
+   * 
+   * @param pThePartner Value to which {@link #thePartner} should be set.
    */
   public void setThePartner( SoftLinkID pThePartner ) {
     thePartner = pThePartner;
@@ -286,7 +291,7 @@ public class SoftLinkParent {
   /**
    * Method returns association {@link #readonlyPartner}.<br/>
    * 
-   * @return SoftLinkPartner Value to which the attribute "readonlyPartner" is set.
+   * @return com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner Value to which {@link #readonlyPartner} is set.
    */
   public SoftLinkID getReadonlyPartner( ) {
     return readonlyPartner;

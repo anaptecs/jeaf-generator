@@ -152,7 +152,7 @@ public class ImmutablePOJO {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which the attribute "name" is set.
+   * @return String Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
@@ -161,17 +161,16 @@ public class ImmutablePOJO {
   /**
    * Method returns attribute {@link #something}.<br/>
    * 
-   * @return Integer Value to which the attribute "something" is set.
+   * @return Integer Value to which {@link #something} is set.
    */
   public Integer getSomething( ) {
     return something;
   }
 
   /**
-   * Method sets the attribute "something".
+   * Method sets attribute {@link #something}.<br/>
    * 
-   * 
-   * @param pSomething Value to which the attribute "something" should be set.
+   * @param pSomething Value to which {@link #something} should be set.
    */
   public void setSomething( Integer pSomething ) {
     // Assign value to attribute

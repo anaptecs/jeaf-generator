@@ -139,17 +139,16 @@ public class FloatCode implements Serializable {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return Float Value to which the attribute "code" is set.
+   * @return Float Value to which {@link #code} is set.
    */
   public Float getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( Float pCode ) {
     // Assign value to attribute

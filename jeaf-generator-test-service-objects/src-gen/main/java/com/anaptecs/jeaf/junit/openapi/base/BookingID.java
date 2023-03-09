@@ -205,17 +205,16 @@ public class BookingID implements ServiceObject {
   /**
    * Method returns attribute {@link #referenceID}.<br/>
    * 
-   * @return String Value to which the attribute "referenceID" is set.
+   * @return String Value to which {@link #referenceID} is set.
    */
   public String getReferenceID( ) {
     return referenceID;
   }
 
   /**
-   * Method sets the attribute "referenceID".
+   * Method sets attribute {@link #referenceID}.<br/>
    * 
-   * 
-   * @param pReferenceID Value to which the attribute "referenceID" should be set.
+   * @param pReferenceID Value to which {@link #referenceID} should be set.
    */
   public void setReferenceID( String pReferenceID ) {
     // Assign value to attribute
@@ -225,17 +224,16 @@ public class BookingID implements ServiceObject {
   /**
    * Method returns attribute {@link #externalRefID}.<br/>
    * 
-   * @return String Value to which the attribute "externalRefID" is set.
+   * @return String Value to which {@link #externalRefID} is set.
    */
   public String getExternalRefID( ) {
     return externalRefID;
   }
 
   /**
-   * Method sets the attribute "externalRefID".
+   * Method sets attribute {@link #externalRefID}.<br/>
    * 
-   * 
-   * @param pExternalRefID Value to which the attribute "externalRefID" should be set.
+   * @param pExternalRefID Value to which {@link #externalRefID} should be set.
    */
   public void setExternalRefID( String pExternalRefID ) {
     // Assign value to attribute

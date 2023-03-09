@@ -163,17 +163,16 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
   /**
    * Method returns attribute {@link #writeable}.<br/>
    * 
-   * @return Integer Value to which the attribute "writeable" is set.
+   * @return Integer Value to which {@link #writeable} is set.
    */
   public Integer getWriteable( ) {
     return writeable;
   }
 
   /**
-   * Method sets the attribute "writeable".
+   * Method sets attribute {@link #writeable}.<br/>
    * 
-   * 
-   * @param pWriteable Value to which the attribute "writeable" should be set.
+   * @param pWriteable Value to which {@link #writeable} should be set.
    */
   public void setWriteable( Integer pWriteable ) {
     // Assign value to attribute

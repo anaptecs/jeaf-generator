@@ -281,7 +281,7 @@ public class Channel {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return int Value to which the attribute "code" is set.
+   * @return int Value to which {@link #code} is set.
    */
   public int getCode( ) {
     return code;
@@ -290,7 +290,7 @@ public class Channel {
   /**
    * Method returns attribute {@link #selfServiceChannel}.<br/>
    * 
-   * @return Boolean Value to which the attribute "selfServiceChannel" is set.
+   * @return boolean Value to which {@link #selfServiceChannel} is set.
    */
   public boolean getSelfServiceChannel( ) {
     return selfServiceChannel;

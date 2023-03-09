@@ -204,7 +204,7 @@ public class SoftLinkPartner {
   /**
    * Method returns association {@link #theBackLink}.<br/>
    * 
-   * @return SoftLinkParent Value to which the attribute "theBackLink" is set.
+   * @return com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent Value to which {@link #theBackLink} is set.
    */
   public String getTheBackLink( ) {
     return theBackLink;
@@ -215,6 +215,11 @@ public class SoftLinkPartner {
    * 
    * 
    * @param pTheBackLink SoftLinkParent to which the association "theBackLink" should be set.
+   */
+  /**
+   * Method sets association {@link #theBackLink}.<br/>
+   * 
+   * @param pTheBackLink Value to which {@link #theBackLink} should be set.
    */
   public void setTheBackLink( String pTheBackLink ) {
     theBackLink = pTheBackLink;

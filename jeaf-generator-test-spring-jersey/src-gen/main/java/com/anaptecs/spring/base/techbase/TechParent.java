@@ -103,17 +103,16 @@ public class TechParent {
   /**
    * Method returns attribute {@link #techAttribute}.<br/>
    * 
-   * @return String Value to which the attribute "techAttribute" is set.
+   * @return String Value to which {@link #techAttribute} is set.
    */
   public String getTechAttribute( ) {
     return techAttribute;
   }
 
   /**
-   * Method sets the attribute "techAttribute".
+   * Method sets attribute {@link #techAttribute}.<br/>
    * 
-   * 
-   * @param pTechAttribute Value to which the attribute "techAttribute" should be set.
+   * @param pTechAttribute Value to which {@link #techAttribute} should be set.
    */
   public void setTechAttribute( String pTechAttribute ) {
     // Assign value to attribute

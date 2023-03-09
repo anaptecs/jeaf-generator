@@ -218,17 +218,16 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
   /**
    * Method returns attribute {@link #iban}.<br/>
    * 
-   * @return Long Value to which the attribute "iban" is set.
+   * @return Long Value to which {@link #iban} is set.
    */
   public Long getIban( ) {
     return iban;
   }
 
   /**
-   * Method sets the attribute "iban".
+   * Method sets attribute {@link #iban}.<br/>
    * 
-   * 
-   * @param pIban Value to which the attribute "iban" should be set.
+   * @param pIban Value to which {@link #iban} should be set.
    */
   public void setIban( Long pIban ) {
     // Assign value to attribute
@@ -238,17 +237,16 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
   /**
    * Method returns attribute {@link #balance}.<br/>
    * 
-   * @return Double Value to which the attribute "balance" is set.
+   * @return Double Value to which {@link #balance} is set.
    */
   public Double getBalance( ) {
     return balance;
   }
 
   /**
-   * Method sets the attribute "balance".
+   * Method sets attribute {@link #balance}.<br/>
    * 
-   * 
-   * @param pBalance Value to which the attribute "balance" should be set.
+   * @param pBalance Value to which {@link #balance} should be set.
    */
   public void setBalance( Double pBalance ) {
     // Assign value to attribute
@@ -258,17 +256,16 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
   /**
    * Method returns attribute {@link #bankID}.<br/>
    * 
-   * @return ServiceObjectID Value to which the attribute "bankID" is set.
+   * @return ServiceObjectID Value to which {@link #bankID} is set.
    */
   public ServiceObjectID getBankID( ) {
     return bankID;
   }
 
   /**
-   * Method sets the attribute "bankID".
+   * Method sets attribute {@link #bankID}.<br/>
    * 
-   * 
-   * @param pBankID Value to which the attribute "bankID" should be set.
+   * @param pBankID Value to which {@link #bankID} should be set.
    */
   public void setBankID( ServiceObjectID pBankID ) {
     // Assign value to attribute

@@ -75,17 +75,16 @@ public abstract class PublicClassBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #period}.<br/>
    * 
-   * @return Period Value to which the attribute "period" is set.
+   * @return Period Value to which {@link #period} is set.
    */
   public Period getPeriod( ) {
     return period;
   }
 
   /**
-   * Method sets the attribute "period".
+   * Method sets attribute {@link #period}.<br/>
    * 
-   * 
-   * @param pPeriod Value to which the attribute "period" should be set.
+   * @param pPeriod Value to which {@link #period} should be set.
    */
   public void setPeriod( Period pPeriod ) {
     // Assign value to attribute
@@ -95,17 +94,16 @@ public abstract class PublicClassBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #gender}.<br/>
    * 
-   * @return Gender Value to which the attribute "gender" is set.
+   * @return Gender Value to which {@link #gender} is set.
    */
   public Gender getGender( ) {
     return gender;
   }
 
   /**
-   * Method sets the attribute "gender".
+   * Method sets attribute {@link #gender}.<br/>
    * 
-   * 
-   * @param pGender Value to which the attribute "gender" should be set.
+   * @param pGender Value to which {@link #gender} should be set.
    */
   public void setGender( Gender pGender ) {
     // Assign value to attribute
@@ -115,17 +113,16 @@ public abstract class PublicClassBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #encryptedString}.<br/>
    * 
-   * @return EncryptedString Value to which the attribute "encryptedString" is set.
+   * @return EncryptedString Value to which {@link #encryptedString} is set.
    */
   public EncryptedString getEncryptedString( ) {
     return encryptedString;
   }
 
   /**
-   * Method sets the attribute "encryptedString".
+   * Method sets attribute {@link #encryptedString}.<br/>
    * 
-   * 
-   * @param pEncryptedString Value to which the attribute "encryptedString" should be set.
+   * @param pEncryptedString Value to which {@link #encryptedString} should be set.
    */
   public void setEncryptedString( EncryptedString pEncryptedString ) {
     // Assign value to attribute

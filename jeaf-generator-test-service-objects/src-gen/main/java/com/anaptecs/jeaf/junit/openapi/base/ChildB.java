@@ -241,7 +241,7 @@ public class ChildB extends ParentClass {
    * Method returns attribute {@link #childBAttribute}.<br/>
    * A child attribute
    * 
-   * @return Boolean Value to which the attribute "childBAttribute" is set.
+   * @return boolean Value to which {@link #childBAttribute} is set.
    */
   public boolean[] getChildBAttribute( ) {
     boolean[] lReturnValue;
@@ -256,9 +256,10 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method sets the attribute "childBAttribute". A child attribute
+   * Method sets attribute {@link #childBAttribute}.<br/>
+   * A child attribute
    * 
-   * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
+   * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
    */
   public void setChildBAttribute( boolean[] pChildBAttribute ) {
     // Assign value to attribute

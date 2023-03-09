@@ -7,9 +7,7 @@
 «DEFINE JavadocForType FOR uml::NamedElement»
 «IF this.hasMeaningfulJavadoc()»
 /**
-    «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
- «comment.body.replaceAll("\n",  "<br/>")»
-    «ENDFOREACH-»
+    «EXPAND AddComment -»
  * @author «getAuthor()»
  * @version «getVersion()»
     «EXPAND DeprecatedJavadoc -»
@@ -20,9 +18,7 @@
 
 «DEFINE JavadocForOperation FOR uml::Operation»
 /**
-    «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
- «comment.body.replaceAll("\n", "<br/>")»
-    «ENDFOREACH -»
+    «EXPAND AddComment -»
     «FOREACH this.getInputParameters() AS param -»
  * @param «param.name» «param.ownedComment.first().body.replaceAll("\n", "<br/>")» «IF param.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«param.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «param.getDeprecatedSince()», <b>removed with:</b> «param.getDeprecationRemoval()»)«ENDIF»    
     «ENDFOREACH -»
@@ -39,9 +35,7 @@
 «DEFINE JavadocForProperty FOR uml::Property»
 «IF this.hasMeaningfulJavadocForProperty()»
 /**
-    «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
- «comment.body.replaceAll("\n", "<br/>")»
-    «ENDFOREACH -»
+    «EXPAND AddComment -»
     «IF this.defaultValue != null -»
     <br/><b>Default Value:</b> <code>«this.initValue()»</code>
     «ENDIF -»
@@ -58,27 +52,35 @@
 
 «DEFINE JavadocForPropertyGetter FOR uml::Property»
 /**
- * Method returns «IF this.association == null»attribute«ELSE»association«ENDIF»  {@link #«asInstanceVar()»}.<br/>
-    «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
- «comment.body.replaceAll("\n", "<br/>")»
-    «ENDFOREACH -»
- * @return «type.name» Value to which the attribute "«asInstanceVar()»" is set.
+ * Method returns «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>
+    «EXPAND AddComment -»
+ * @return «this.getTypeName()» Value to which {@link #«asInstanceVar()»} is set.
     «EXPAND DeprecatedJavadoc -»
  */
 «ENDDEFINE»
 
+«DEFINE JavadocForPropertySetter FOR uml::Property»
+/**
+ * Method sets «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>
+ «EXPAND functions::Javadoc::AddComment -»
+ * @param «asParameter()» Value to which {@link #«asInstanceVar()»} should be set.
+ */
+«ENDDEFINE»
 
 «DEFINE JavadocForLiteral FOR uml::EnumerationLiteral»
 «IF this.hasMeaningfulJavadoc()»
 /**
-    «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
- «comment.body.replaceAll("\n", "<br/>")»
-    «ENDFOREACH -»
+    «EXPAND AddComment -»
     «EXPAND DeprecatedJavadoc -»
  */
 «ENDIF»
 «ENDDEFINE»
 
+
+«DEFINE AddComment FOR uml::NamedElement -»
+    «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
+ «comment.body.replaceAll("\n", "<br/>")»
+    «ENDFOREACH -»«ENDDEFINE»
 
 «DEFINE DeprecatedJavadoc FOR uml::NamedElement -»
     «IF this.isJEAFDeprecated()-»

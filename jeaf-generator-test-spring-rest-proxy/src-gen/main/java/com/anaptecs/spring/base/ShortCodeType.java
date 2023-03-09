@@ -103,17 +103,16 @@ public class ShortCodeType {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return short Value to which the attribute "code" is set.
+   * @return short Value to which {@link #code} is set.
    */
   public short getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( short pCode ) {
     // Assign value to attribute

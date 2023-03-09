@@ -30,7 +30,7 @@ public final class Entity {
     /**
      * Method returns attribute {@link #entityID}.<br/>
      * 
-     * @return String Value to which the attribute "entityID" is set.
+     * @return String Value to which {@link #entityID} is set.
      */
     public String getEntityID( ) {
       return entityID;

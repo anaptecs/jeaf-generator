@@ -163,17 +163,16 @@ public class Sale implements Serializable {
   /**
    * Method returns attribute {@link #transactionAmount}.<br/>
    * 
-   * @return BigDecimal Value to which the attribute "transactionAmount" is set.
+   * @return BigDecimal Value to which {@link #transactionAmount} is set.
    */
   public BigDecimal getTransactionAmount( ) {
     return transactionAmount;
   }
 
   /**
-   * Method sets the attribute "transactionAmount".
+   * Method sets attribute {@link #transactionAmount}.<br/>
    * 
-   * 
-   * @param pTransactionAmount Value to which the attribute "transactionAmount" should be set.
+   * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
    */
   public void setTransactionAmount( BigDecimal pTransactionAmount ) {
     // Assign value to attribute

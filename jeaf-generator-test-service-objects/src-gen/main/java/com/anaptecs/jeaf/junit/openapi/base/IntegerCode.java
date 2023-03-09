@@ -132,17 +132,16 @@ public class IntegerCode implements ServiceObject {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return Integer Value to which the attribute "code" is set.
+   * @return Integer Value to which {@link #code} is set.
    */
   public Integer getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( Integer pCode ) {
     // Assign value to attribute

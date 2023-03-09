@@ -22,7 +22,7 @@ public enum BankType {
   /**
    * Method returns attribute {@link #typeCode}.<br/>
    * 
-   * @return String Value to which the attribute "typeCode" is set.
+   * @return String Value to which {@link #typeCode} is set.
    */
   public String getTypeCode( ) {
     return typeCode;

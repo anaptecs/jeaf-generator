@@ -91,17 +91,16 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   /**
    * Method returns attribute {@link #bavName}.<br/>
    * 
-   * @return String Value to which the attribute "bavName" is set.
+   * @return String Value to which {@link #bavName} is set.
    */
   public String getBavName( ) {
     return bavName;
   }
 
   /**
-   * Method sets the attribute "bavName".
+   * Method sets attribute {@link #bavName}.<br/>
    * 
-   * 
-   * @param pBavName Value to which the attribute "bavName" should be set.
+   * @param pBavName Value to which {@link #bavName} should be set.
    */
   public void setBavName( String pBavName ) {
     // Assign value to attribute

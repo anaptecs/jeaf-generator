@@ -221,17 +221,16 @@ public abstract class ProductDOBase extends DomainObject {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which the attribute "name" is set.
+   * @return String Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -241,17 +240,16 @@ public abstract class ProductDOBase extends DomainObject {
   /**
    * Method returns attribute {@link #description}.<br/>
    * 
-   * @return String Value to which the attribute "description" is set.
+   * @return String Value to which {@link #description} is set.
    */
   public String getDescription( ) {
     return description;
   }
 
   /**
-   * Method sets the attribute "description".
+   * Method sets attribute {@link #description}.<br/>
    * 
-   * 
-   * @param pDescription Value to which the attribute "description" should be set.
+   * @param pDescription Value to which {@link #description} should be set.
    */
   public void setDescription( String pDescription ) {
     // Assign value to attribute

@@ -455,7 +455,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #names}.<br/>
    * 
-   * @return String Value to which the attribute "names" is set.
+   * @return String Value to which {@link #names} is set.
    */
   public String[] getNames( ) {
     String[] lReturnValue;
@@ -470,10 +470,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "names".
+   * Method sets attribute {@link #names}.<br/>
    * 
-   * 
-   * @param pNames Value to which the attribute "names" should be set.
+   * @param pNames Value to which {@link #names} should be set.
    */
   public void setNames( String[] pNames ) {
     // Assign value to attribute
@@ -489,7 +488,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #ints}.<br/>
    * 
-   * @return int Value to which the attribute "ints" is set.
+   * @return int Value to which {@link #ints} is set.
    */
   public int[] getInts( ) {
     int[] lReturnValue;
@@ -504,10 +503,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "ints".
+   * Method sets attribute {@link #ints}.<br/>
    * 
-   * 
-   * @param pInts Value to which the attribute "ints" should be set.
+   * @param pInts Value to which {@link #ints} should be set.
    */
   public void setInts( int[] pInts ) {
     // Assign value to attribute
@@ -523,7 +521,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #doubles}.<br/>
    * 
-   * @return Double Value to which the attribute "doubles" is set.
+   * @return Double Value to which {@link #doubles} is set.
    */
   public Double[] getDoubles( ) {
     Double[] lReturnValue;
@@ -538,10 +536,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "doubles".
+   * Method sets attribute {@link #doubles}.<br/>
    * 
-   * 
-   * @param pDoubles Value to which the attribute "doubles" should be set.
+   * @param pDoubles Value to which {@link #doubles} should be set.
    */
   public void setDoubles( Double[] pDoubles ) {
     // Assign value to attribute
@@ -557,7 +554,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #codes}.<br/>
    * 
-   * @return StringCode Value to which the attribute "codes" is set.
+   * @return StringCode Value to which {@link #codes} is set.
    */
   public StringCode[] getCodes( ) {
     StringCode[] lReturnValue;
@@ -572,10 +569,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "codes".
+   * Method sets attribute {@link #codes}.<br/>
    * 
-   * 
-   * @param pCodes Value to which the attribute "codes" should be set.
+   * @param pCodes Value to which {@link #codes} should be set.
    */
   public void setCodes( StringCode[] pCodes ) {
     // Assign value to attribute
@@ -650,17 +646,16 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #startDate}.<br/>
    * 
-   * @return LocalDate Value to which the attribute "startDate" is set.
+   * @return LocalDate Value to which {@link #startDate} is set.
    */
   public LocalDate getStartDate( ) {
     return startDate;
   }
 
   /**
-   * Method sets the attribute "startDate".
+   * Method sets attribute {@link #startDate}.<br/>
    * 
-   * 
-   * @param pStartDate Value to which the attribute "startDate" should be set.
+   * @param pStartDate Value to which {@link #startDate} should be set.
    */
   public void setStartDate( LocalDate pStartDate ) {
     // Assign value to attribute
@@ -670,7 +665,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #dates}.<br/>
    * 
-   * @return LocalDate Value to which the attribute "dates" is set.
+   * @return LocalDate Value to which {@link #dates} is set.
    */
   public LocalDate[] getDates( ) {
     LocalDate[] lReturnValue;
@@ -685,10 +680,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "dates".
+   * Method sets attribute {@link #dates}.<br/>
    * 
-   * 
-   * @param pDates Value to which the attribute "dates" should be set.
+   * @param pDates Value to which {@link #dates} should be set.
    */
   public void setDates( LocalDate[] pDates ) {
     // Assign value to attribute
@@ -761,7 +755,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #calendars}.<br/>
    * 
-   * @return Calendar Value to which the attribute "calendars" is set.
+   * @return Calendar Value to which {@link #calendars} is set.
    */
   public Calendar[] getCalendars( ) {
     Calendar[] lReturnValue;
@@ -776,10 +770,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "calendars".
+   * Method sets attribute {@link #calendars}.<br/>
    * 
-   * 
-   * @param pCalendars Value to which the attribute "calendars" should be set.
+   * @param pCalendars Value to which {@link #calendars} should be set.
    */
   public void setCalendars( Calendar[] pCalendars ) {
     // Assign value to attribute
@@ -795,7 +788,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #utilDates}.<br/>
    * 
-   * @return Date Value to which the attribute "utilDates" is set.
+   * @return Date Value to which {@link #utilDates} is set.
    */
   public Date[] getUtilDates( ) {
     Date[] lReturnValue;
@@ -810,10 +803,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "utilDates".
+   * Method sets attribute {@link #utilDates}.<br/>
    * 
-   * 
-   * @param pUtilDates Value to which the attribute "utilDates" should be set.
+   * @param pUtilDates Value to which {@link #utilDates} should be set.
    */
   public void setUtilDates( Date[] pUtilDates ) {
     // Assign value to attribute
@@ -829,7 +821,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #sqlTimestamps}.<br/>
    * 
-   * @return Timestamp Value to which the attribute "sqlTimestamps" is set.
+   * @return Timestamp Value to which {@link #sqlTimestamps} is set.
    */
   public Timestamp[] getSqlTimestamps( ) {
     Timestamp[] lReturnValue;
@@ -844,10 +836,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "sqlTimestamps".
+   * Method sets attribute {@link #sqlTimestamps}.<br/>
    * 
-   * 
-   * @param pSqlTimestamps Value to which the attribute "sqlTimestamps" should be set.
+   * @param pSqlTimestamps Value to which {@link #sqlTimestamps} should be set.
    */
   public void setSqlTimestamps( Timestamp[] pSqlTimestamps ) {
     // Assign value to attribute

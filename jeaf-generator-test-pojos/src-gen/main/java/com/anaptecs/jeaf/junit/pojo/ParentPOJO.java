@@ -183,17 +183,16 @@ public class ParentPOJO {
   /**
    * Method returns attribute {@link #parentAttribute}.<br/>
    * 
-   * @return String Value to which the attribute "parentAttribute" is set.
+   * @return String Value to which {@link #parentAttribute} is set.
    */
   public String getParentAttribute( ) {
     return parentAttribute;
   }
 
   /**
-   * Method sets the attribute "parentAttribute".
+   * Method sets attribute {@link #parentAttribute}.<br/>
    * 
-   * 
-   * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    */
   public void setParentAttribute( String pParentAttribute ) {
     // Assign value to attribute
@@ -203,7 +202,7 @@ public class ParentPOJO {
   /**
    * Method returns attribute {@link #weirdAttribute}.<br/>
    * 
-   * @return byte Value to which the attribute "weirdAttribute" is set.
+   * @return byte Value to which {@link #weirdAttribute} is set.
    * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
@@ -212,10 +211,9 @@ public class ParentPOJO {
   }
 
   /**
-   * Method sets the attribute "weirdAttribute".
+   * Method sets attribute {@link #weirdAttribute}.<br/>
    * 
-   * 
-   * @param pWeirdAttribute Value to which the attribute "weirdAttribute" should be set.
+   * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
    */
   @Deprecated
   public void setWeirdAttribute( byte pWeirdAttribute ) {
@@ -226,17 +224,16 @@ public class ParentPOJO {
   /**
    * Method returns attribute {@link #hello}.<br/>
    * 
-   * @return String Value to which the attribute "hello" is set.
+   * @return String Value to which {@link #hello} is set.
    */
   public String getHello( ) {
     return hello;
   }
 
   /**
-   * Method sets the attribute "hello".
+   * Method sets attribute {@link #hello}.<br/>
    * 
-   * 
-   * @param pHello Value to which the attribute "hello" should be set.
+   * @param pHello Value to which {@link #hello} should be set.
    */
   public void setHello( String pHello ) {
     // Assign value to attribute

@@ -237,17 +237,16 @@ public abstract class CustomerBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #active}.<br/>
    * 
-   * @return Boolean Value to which the attribute "active" is set.
+   * @return Boolean Value to which {@link #active} is set.
    */
   public Boolean getActive( ) {
     return active;
   }
 
   /**
-   * Method sets the attribute "active".
+   * Method sets attribute {@link #active}.<br/>
    * 
-   * 
-   * @param pActive Value to which the attribute "active" should be set.
+   * @param pActive Value to which {@link #active} should be set.
    */
   public void setActive( Boolean pActive ) {
     // Assign value to attribute

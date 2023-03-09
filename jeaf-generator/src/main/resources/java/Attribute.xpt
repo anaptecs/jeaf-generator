@@ -147,12 +147,7 @@
 «ENDDEFINE»
 
 «DEFINE Setter FOR Property»
-	/**
-	 * Method sets the attribute "«asInstanceVar()»".
-	 * «this.getComment()»
-	 * 
-	 * @param «asParameter()» Value to which the attribute "«asInstanceVar()»" should be set.
-	 */
+	«EXPAND functions::Javadoc::JavadocForPropertySetter»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public void «asSetter()»(«this.fqn()»«IF isMultivalued()»[]«ENDIF» «asParameter()») {
 		// Assign value to attribute
@@ -210,6 +205,7 @@
      * 
      * @param «asParameter()» «this.type.name» to which the association "«asInstanceVar()»" should be set.
      */
+    «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void «asSetter()» («this.getMultivaluedSoftLinkType()» «asParameter()») {
         «IF generateNullChecksForToOneAssociationsOfServiceObjects()»

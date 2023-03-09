@@ -153,17 +153,16 @@ public class SessionContextValues implements ServiceObject {
   /**
    * Method returns attribute {@link #timestamp}.<br/>
    * 
-   * @return String Value to which the attribute "timestamp" is set.
+   * @return String Value to which {@link #timestamp} is set.
    */
   public String getTimestamp( ) {
     return timestamp;
   }
 
   /**
-   * Method sets the attribute "timestamp".
+   * Method sets attribute {@link #timestamp}.<br/>
    * 
-   * 
-   * @param pTimestamp Value to which the attribute "timestamp" should be set.
+   * @param pTimestamp Value to which {@link #timestamp} should be set.
    */
   public void setTimestamp( String pTimestamp ) {
     // Assign value to attribute
@@ -173,17 +172,16 @@ public class SessionContextValues implements ServiceObject {
   /**
    * Method returns attribute {@link #counter}.<br/>
    * 
-   * @return Integer Value to which the attribute "counter" is set.
+   * @return Integer Value to which {@link #counter} is set.
    */
   public Integer getCounter( ) {
     return counter;
   }
 
   /**
-   * Method sets the attribute "counter".
+   * Method sets attribute {@link #counter}.<br/>
    * 
-   * 
-   * @param pCounter Value to which the attribute "counter" should be set.
+   * @param pCounter Value to which {@link #counter} should be set.
    */
   public void setCounter( Integer pCounter ) {
     // Assign value to attribute

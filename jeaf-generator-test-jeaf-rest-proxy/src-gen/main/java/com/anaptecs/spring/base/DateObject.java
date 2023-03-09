@@ -278,17 +278,16 @@ public class DateObject implements Serializable {
   /**
    * Method returns attribute {@link #localTime}.<br/>
    * 
-   * @return LocalTime Value to which the attribute "localTime" is set.
+   * @return LocalTime Value to which {@link #localTime} is set.
    */
   public LocalTime getLocalTime( ) {
     return localTime;
   }
 
   /**
-   * Method sets the attribute "localTime".
+   * Method sets attribute {@link #localTime}.<br/>
    * 
-   * 
-   * @param pLocalTime Value to which the attribute "localTime" should be set.
+   * @param pLocalTime Value to which {@link #localTime} should be set.
    */
   public void setLocalTime( LocalTime pLocalTime ) {
     // Assign value to attribute
@@ -298,17 +297,16 @@ public class DateObject implements Serializable {
   /**
    * Method returns attribute {@link #localDate}.<br/>
    * 
-   * @return LocalDate Value to which the attribute "localDate" is set.
+   * @return LocalDate Value to which {@link #localDate} is set.
    */
   public LocalDate getLocalDate( ) {
     return localDate;
   }
 
   /**
-   * Method sets the attribute "localDate".
+   * Method sets attribute {@link #localDate}.<br/>
    * 
-   * 
-   * @param pLocalDate Value to which the attribute "localDate" should be set.
+   * @param pLocalDate Value to which {@link #localDate} should be set.
    */
   public void setLocalDate( LocalDate pLocalDate ) {
     // Assign value to attribute
@@ -318,17 +316,16 @@ public class DateObject implements Serializable {
   /**
    * Method returns attribute {@link #localDateTime}.<br/>
    * 
-   * @return LocalDateTime Value to which the attribute "localDateTime" is set.
+   * @return LocalDateTime Value to which {@link #localDateTime} is set.
    */
   public LocalDateTime getLocalDateTime( ) {
     return localDateTime;
   }
 
   /**
-   * Method sets the attribute "localDateTime".
+   * Method sets attribute {@link #localDateTime}.<br/>
    * 
-   * 
-   * @param pLocalDateTime Value to which the attribute "localDateTime" should be set.
+   * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
    */
   public void setLocalDateTime( LocalDateTime pLocalDateTime ) {
     // Assign value to attribute
@@ -338,17 +335,16 @@ public class DateObject implements Serializable {
   /**
    * Method returns attribute {@link #calendar}.<br/>
    * 
-   * @return Calendar Value to which the attribute "calendar" is set.
+   * @return Calendar Value to which {@link #calendar} is set.
    */
   public Calendar getCalendar( ) {
     return calendar;
   }
 
   /**
-   * Method sets the attribute "calendar".
+   * Method sets attribute {@link #calendar}.<br/>
    * 
-   * 
-   * @param pCalendar Value to which the attribute "calendar" should be set.
+   * @param pCalendar Value to which {@link #calendar} should be set.
    */
   public void setCalendar( Calendar pCalendar ) {
     // Assign value to attribute
@@ -358,17 +354,16 @@ public class DateObject implements Serializable {
   /**
    * Method returns attribute {@link #sqlDate}.<br/>
    * 
-   * @return Date Value to which the attribute "sqlDate" is set.
+   * @return Date Value to which {@link #sqlDate} is set.
    */
   public Date getSqlDate( ) {
     return sqlDate;
   }
 
   /**
-   * Method sets the attribute "sqlDate".
+   * Method sets attribute {@link #sqlDate}.<br/>
    * 
-   * 
-   * @param pSqlDate Value to which the attribute "sqlDate" should be set.
+   * @param pSqlDate Value to which {@link #sqlDate} should be set.
    */
   public void setSqlDate( Date pSqlDate ) {
     // Assign value to attribute
@@ -378,17 +373,16 @@ public class DateObject implements Serializable {
   /**
    * Method returns attribute {@link #utilDate}.<br/>
    * 
-   * @return Date Value to which the attribute "utilDate" is set.
+   * @return java.util.Date Value to which {@link #utilDate} is set.
    */
   public java.util.Date getUtilDate( ) {
     return utilDate;
   }
 
   /**
-   * Method sets the attribute "utilDate".
+   * Method sets attribute {@link #utilDate}.<br/>
    * 
-   * 
-   * @param pUtilDate Value to which the attribute "utilDate" should be set.
+   * @param pUtilDate Value to which {@link #utilDate} should be set.
    */
   public void setUtilDate( java.util.Date pUtilDate ) {
     // Assign value to attribute

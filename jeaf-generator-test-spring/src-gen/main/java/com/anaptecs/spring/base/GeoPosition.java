@@ -165,17 +165,16 @@ public class GeoPosition extends PlaceRef {
   /**
    * Method returns attribute {@link #longitude}.<br/>
    * 
-   * @return int Value to which the attribute "longitude" is set.
+   * @return int Value to which {@link #longitude} is set.
    */
   public int getLongitude( ) {
     return longitude;
   }
 
   /**
-   * Method sets the attribute "longitude".
+   * Method sets attribute {@link #longitude}.<br/>
    * 
-   * 
-   * @param pLongitude Value to which the attribute "longitude" should be set.
+   * @param pLongitude Value to which {@link #longitude} should be set.
    */
   public void setLongitude( int pLongitude ) {
     // Assign value to attribute
@@ -185,17 +184,16 @@ public class GeoPosition extends PlaceRef {
   /**
    * Method returns attribute {@link #latitude}.<br/>
    * 
-   * @return int Value to which the attribute "latitude" is set.
+   * @return int Value to which {@link #latitude} is set.
    */
   public int getLatitude( ) {
     return latitude;
   }
 
   /**
-   * Method sets the attribute "latitude".
+   * Method sets attribute {@link #latitude}.<br/>
    * 
-   * 
-   * @param pLatitude Value to which the attribute "latitude" should be set.
+   * @param pLatitude Value to which {@link #latitude} should be set.
    */
   public void setLatitude( int pLatitude ) {
     // Assign value to attribute

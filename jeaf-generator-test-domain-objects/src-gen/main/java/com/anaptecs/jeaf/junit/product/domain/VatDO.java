@@ -39,17 +39,16 @@ public class VatDO extends DomainObject {
   /**
    * Method returns attribute {@link #rate}.<br/>
    * 
-   * @return double Value to which the attribute "rate" is set.
+   * @return double Value to which {@link #rate} is set.
    */
   public double getRate( ) {
     return rate;
   }
 
   /**
-   * Method sets the attribute "rate".
+   * Method sets attribute {@link #rate}.<br/>
    * 
-   * 
-   * @param pRate Value to which the attribute "rate" should be set.
+   * @param pRate Value to which {@link #rate} should be set.
    */
   public void setRate( double pRate ) {
     // Assign value to attribute

@@ -153,17 +153,16 @@ public class ModelWrapperTypeServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aBoolean}.<br/>
    * 
-   * @return Boolean Value to which the attribute "aBoolean" is set.
+   * @return boolean Value to which {@link #aBoolean} is set.
    */
   public boolean getABoolean( ) {
     return aBoolean;
   }
 
   /**
-   * Method sets the attribute "aBoolean".
+   * Method sets attribute {@link #aBoolean}.<br/>
    * 
-   * 
-   * @param pABoolean Value to which the attribute "aBoolean" should be set.
+   * @param pABoolean Value to which {@link #aBoolean} should be set.
    */
   public void setABoolean( boolean pABoolean ) {
     // Assign value to attribute
@@ -173,17 +172,16 @@ public class ModelWrapperTypeServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aInt}.<br/>
    * 
-   * @return Integer Value to which the attribute "aInt" is set.
+   * @return Integer Value to which {@link #aInt} is set.
    */
   public Integer getAInt( ) {
     return aInt;
   }
 
   /**
-   * Method sets the attribute "aInt".
+   * Method sets attribute {@link #aInt}.<br/>
    * 
-   * 
-   * @param pAInt Value to which the attribute "aInt" should be set.
+   * @param pAInt Value to which {@link #aInt} should be set.
    */
   public void setAInt( Integer pAInt ) {
     // Assign value to attribute

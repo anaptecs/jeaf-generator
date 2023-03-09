@@ -54,17 +54,16 @@ public abstract class CManyBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #cNumber}.<br/>
    * 
-   * @return Integer Value to which the attribute "cNumber" is set.
+   * @return Integer Value to which {@link #cNumber} is set.
    */
   public Integer getCNumber( ) {
     return cNumber;
   }
 
   /**
-   * Method sets the attribute "cNumber".
+   * Method sets attribute {@link #cNumber}.<br/>
    * 
-   * 
-   * @param pCNumber Value to which the attribute "cNumber" should be set.
+   * @param pCNumber Value to which {@link #cNumber} should be set.
    */
   public void setCNumber( Integer pCNumber ) {
     // Assign value to attribute

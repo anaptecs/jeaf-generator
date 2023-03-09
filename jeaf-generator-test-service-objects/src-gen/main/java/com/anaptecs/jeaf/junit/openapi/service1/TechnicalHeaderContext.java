@@ -162,17 +162,16 @@ public class TechnicalHeaderContext implements ServiceObject {
   /**
    * Method returns attribute {@link #reseller}.<br/>
    * 
-   * @return String Value to which the attribute "reseller" is set.
+   * @return String Value to which {@link #reseller} is set.
    */
   public String getReseller( ) {
     return reseller;
   }
 
   /**
-   * Method sets the attribute "reseller".
+   * Method sets attribute {@link #reseller}.<br/>
    * 
-   * 
-   * @param pReseller Value to which the attribute "reseller" should be set.
+   * @param pReseller Value to which {@link #reseller} should be set.
    */
   public void setReseller( String pReseller ) {
     // Assign value to attribute
@@ -182,17 +181,16 @@ public class TechnicalHeaderContext implements ServiceObject {
   /**
    * Method returns attribute {@link #authenticationToken}.<br/>
    * 
-   * @return String Value to which the attribute "authenticationToken" is set.
+   * @return String Value to which {@link #authenticationToken} is set.
    */
   public String getAuthenticationToken( ) {
     return authenticationToken;
   }
 
   /**
-   * Method sets the attribute "authenticationToken".
+   * Method sets attribute {@link #authenticationToken}.<br/>
    * 
-   * 
-   * @param pAuthenticationToken Value to which the attribute "authenticationToken" should be set.
+   * @param pAuthenticationToken Value to which {@link #authenticationToken} should be set.
    */
   public void setAuthenticationToken( String pAuthenticationToken ) {
     // Assign value to attribute

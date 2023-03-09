@@ -197,17 +197,16 @@ public abstract class AccountBase {
   /**
    * Method returns attribute {@link #iban}.<br/>
    * 
-   * @return int Value to which the attribute "iban" is set.
+   * @return int Value to which {@link #iban} is set.
    */
   public int getIban( ) {
     return iban;
   }
 
   /**
-   * Method sets the attribute "iban".
+   * Method sets attribute {@link #iban}.<br/>
    * 
-   * 
-   * @param pIban Value to which the attribute "iban" should be set.
+   * @param pIban Value to which {@link #iban} should be set.
    */
   public void setIban( int pIban ) {
     // Assign value to attribute
@@ -260,17 +259,16 @@ public abstract class AccountBase {
   /**
    * Method returns attribute {@link #currency}.<br/>
    * 
-   * @return Currency Value to which the attribute "currency" is set.
+   * @return Currency Value to which {@link #currency} is set.
    */
   public Currency getCurrency( ) {
     return currency;
   }
 
   /**
-   * Method sets the attribute "currency".
+   * Method sets attribute {@link #currency}.<br/>
    * 
-   * 
-   * @param pCurrency Value to which the attribute "currency" should be set.
+   * @param pCurrency Value to which {@link #currency} should be set.
    */
   public void setCurrency( Currency pCurrency ) {
     // Assign value to attribute

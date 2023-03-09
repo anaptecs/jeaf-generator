@@ -133,17 +133,16 @@ public abstract class PlainPOJOBase {
   /**
    * Method returns attribute {@link #hello}.<br/>
    * 
-   * @return String Value to which the attribute "hello" is set.
+   * @return String Value to which {@link #hello} is set.
    */
   public String getHello( ) {
     return hello;
   }
 
   /**
-   * Method sets the attribute "hello".
+   * Method sets attribute {@link #hello}.<br/>
    * 
-   * 
-   * @param pHello Value to which the attribute "hello" should be set.
+   * @param pHello Value to which {@link #hello} should be set.
    */
   public void setHello( String pHello ) {
     // Assign value to attribute
@@ -153,17 +152,16 @@ public abstract class PlainPOJOBase {
   /**
    * Method returns attribute {@link #world}.<br/>
    * 
-   * @return Integer Value to which the attribute "world" is set.
+   * @return Integer Value to which {@link #world} is set.
    */
   public Integer getWorld( ) {
     return world;
   }
 
   /**
-   * Method sets the attribute "world".
+   * Method sets attribute {@link #world}.<br/>
    * 
-   * 
-   * @param pWorld Value to which the attribute "world" should be set.
+   * @param pWorld Value to which {@link #world} should be set.
    */
   public void setWorld( Integer pWorld ) {
     // Assign value to attribute

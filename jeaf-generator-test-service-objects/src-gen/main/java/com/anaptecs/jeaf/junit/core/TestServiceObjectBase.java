@@ -250,17 +250,16 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   /**
    * Method returns attribute {@link #key}.<br/>
    * 
-   * @return String Value to which the attribute "key" is set.
+   * @return String Value to which {@link #key} is set.
    */
   public String getKey( ) {
     return key;
   }
 
   /**
-   * Method sets the attribute "key".
+   * Method sets attribute {@link #key}.<br/>
    * 
-   * 
-   * @param pKey Value to which the attribute "key" should be set.
+   * @param pKey Value to which {@link #key} should be set.
    */
   public void setKey( String pKey ) {
     // Assign value to attribute
@@ -270,17 +269,16 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   /**
    * Method returns attribute {@link #info}.<br/>
    * 
-   * @return String Value to which the attribute "info" is set.
+   * @return String Value to which {@link #info} is set.
    */
   public String getInfo( ) {
     return info;
   }
 
   /**
-   * Method sets the attribute "info".
+   * Method sets attribute {@link #info}.<br/>
    * 
-   * 
-   * @param pInfo Value to which the attribute "info" should be set.
+   * @param pInfo Value to which {@link #info} should be set.
    */
   public void setInfo( String pInfo ) {
     // Assign value to attribute
@@ -290,17 +288,16 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   /**
    * Method returns attribute {@link #someTest}.<br/>
    * 
-   * @return int Value to which the attribute "someTest" is set.
+   * @return int Value to which {@link #someTest} is set.
    */
   public int getSomeTest( ) {
     return someTest;
   }
 
   /**
-   * Method sets the attribute "someTest".
+   * Method sets attribute {@link #someTest}.<br/>
    * 
-   * 
-   * @param pSomeTest Value to which the attribute "someTest" should be set.
+   * @param pSomeTest Value to which {@link #someTest} should be set.
    */
   public void setSomeTest( int pSomeTest ) {
     // Assign value to attribute
@@ -310,17 +307,16 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   /**
    * Method returns attribute {@link #dummy1}.<br/>
    * 
-   * @return Double Value to which the attribute "dummy1" is set.
+   * @return Double Value to which {@link #dummy1} is set.
    */
   public Double getDummy1( ) {
     return dummy1;
   }
 
   /**
-   * Method sets the attribute "dummy1".
+   * Method sets attribute {@link #dummy1}.<br/>
    * 
-   * 
-   * @param pDummy1 Value to which the attribute "dummy1" should be set.
+   * @param pDummy1 Value to which {@link #dummy1} should be set.
    */
   public void setDummy1( Double pDummy1 ) {
     // Assign value to attribute
@@ -330,7 +326,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   /**
    * Method returns attribute {@link #dummy2}.<br/>
    * 
-   * @return String Value to which the attribute "dummy2" is set.
+   * @return String Value to which {@link #dummy2} is set.
    */
   public String[] getDummy2( ) {
     String[] lReturnValue;
@@ -345,10 +341,9 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "dummy2".
+   * Method sets attribute {@link #dummy2}.<br/>
    * 
-   * 
-   * @param pDummy2 Value to which the attribute "dummy2" should be set.
+   * @param pDummy2 Value to which {@link #dummy2} should be set.
    */
   public void setDummy2( String[] pDummy2 ) {
     // Assign value to attribute
@@ -364,7 +359,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   /**
    * Method returns attribute {@link #dummy3}.<br/>
    * 
-   * @return Integer Value to which the attribute "dummy3" is set.
+   * @return Integer Value to which {@link #dummy3} is set.
    */
   public Integer[] getDummy3( ) {
     Integer[] lReturnValue;
@@ -379,10 +374,9 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "dummy3".
+   * Method sets attribute {@link #dummy3}.<br/>
    * 
-   * 
-   * @param pDummy3 Value to which the attribute "dummy3" should be set.
+   * @param pDummy3 Value to which {@link #dummy3} should be set.
    */
   public void setDummy3( Integer[] pDummy3 ) {
     // Assign value to attribute

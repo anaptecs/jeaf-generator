@@ -232,17 +232,16 @@ public class Booking {
   /**
    * Method returns attribute {@link #customerName}.<br/>
    * 
-   * @return String Value to which the attribute "customerName" is set.
+   * @return String Value to which {@link #customerName} is set.
    */
   public String getCustomerName( ) {
     return customerName;
   }
 
   /**
-   * Method sets the attribute "customerName".
+   * Method sets attribute {@link #customerName}.<br/>
    * 
-   * 
-   * @param pCustomerName Value to which the attribute "customerName" should be set.
+   * @param pCustomerName Value to which {@link #customerName} should be set.
    */
   public void setCustomerName( String pCustomerName ) {
     // Assign value to attribute

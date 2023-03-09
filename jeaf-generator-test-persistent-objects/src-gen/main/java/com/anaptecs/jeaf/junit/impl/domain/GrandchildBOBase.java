@@ -42,17 +42,16 @@ public abstract class GrandchildBOBase extends ChildBO {
   /**
    * Method returns attribute {@link #grandchildName}.<br/>
    * 
-   * @return String Value to which the attribute "grandchildName" is set.
+   * @return String Value to which {@link #grandchildName} is set.
    */
   public String getGrandchildName( ) {
     return grandchildName;
   }
 
   /**
-   * Method sets the attribute "grandchildName".
+   * Method sets attribute {@link #grandchildName}.<br/>
    * 
-   * 
-   * @param pGrandchildName Value to which the attribute "grandchildName" should be set.
+   * @param pGrandchildName Value to which {@link #grandchildName} should be set.
    */
   public void setGrandchildName( String pGrandchildName ) {
     // Assign value to attribute

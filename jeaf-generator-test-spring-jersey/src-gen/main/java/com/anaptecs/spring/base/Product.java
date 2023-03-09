@@ -503,17 +503,16 @@ public class Product {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which the attribute "name" is set.
+   * @return String Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -524,7 +523,7 @@ public class Product {
    * Method returns attribute {@link #image}.<br/>
    * Image describing the product.
    * 
-   * @return byte Value to which the attribute "image" is set.
+   * @return byte Value to which {@link #image} is set.
    */
   public byte[] getImage( ) {
     byte[] lReturnValue;
@@ -539,9 +538,10 @@ public class Product {
   }
 
   /**
-   * Method sets the attribute "image". Image describing the product.
+   * Method sets attribute {@link #image}.<br/>
+   * Image describing the product.
    * 
-   * @param pImage Value to which the attribute "image" should be set.
+   * @param pImage Value to which {@link #image} should be set.
    */
   public void setImage( byte[] pImage ) {
     // Assign value to attribute
@@ -557,17 +557,16 @@ public class Product {
   /**
    * Method returns attribute {@link #link}.<br/>
    * 
-   * @return URL Value to which the attribute "link" is set.
+   * @return URL Value to which {@link #link} is set.
    */
   public URL getLink( ) {
     return link;
   }
 
   /**
-   * Method sets the attribute "link".
+   * Method sets attribute {@link #link}.<br/>
    * 
-   * 
-   * @param pLink Value to which the attribute "link" should be set.
+   * @param pLink Value to which {@link #link} should be set.
    */
   public void setLink( URL pLink ) {
     // Assign value to attribute
@@ -577,7 +576,7 @@ public class Product {
   /**
    * Method returns attribute {@link #productID}.<br/>
    * 
-   * @return UUID Value to which the attribute "productID" is set.
+   * @return UUID Value to which {@link #productID} is set.
    */
   public UUID getProductID( ) {
     return productID;
@@ -703,7 +702,7 @@ public class Product {
   /**
    * Method returns attribute {@link #description}.<br/>
    * 
-   * @return String Value to which the attribute "description" is set.
+   * @return String Value to which {@link #description} is set.
    */
   @Deprecated
   public String getDescription( ) {
@@ -711,10 +710,9 @@ public class Product {
   }
 
   /**
-   * Method sets the attribute "description".
+   * Method sets attribute {@link #description}.<br/>
    * 
-   * 
-   * @param pDescription Value to which the attribute "description" should be set.
+   * @param pDescription Value to which {@link #description} should be set.
    */
   @Deprecated
   public void setDescription( String pDescription ) {
@@ -797,17 +795,16 @@ public class Product {
   /**
    * Method returns attribute {@link #uri}.<br/>
    * 
-   * @return String Value to which the attribute "uri" is set.
+   * @return String Value to which {@link #uri} is set.
    */
   public String getUri( ) {
     return uri;
   }
 
   /**
-   * Method sets the attribute "uri".
+   * Method sets attribute {@link #uri}.<br/>
    * 
-   * 
-   * @param pUri Value to which the attribute "uri" should be set.
+   * @param pUri Value to which {@link #uri} should be set.
    */
   public void setUri( String pUri ) {
     // Assign value to attribute

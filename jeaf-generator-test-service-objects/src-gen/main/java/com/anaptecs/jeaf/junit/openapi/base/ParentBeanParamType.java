@@ -153,17 +153,16 @@ public class ParentBeanParamType implements ServiceObject {
   /**
    * Method returns attribute {@link #novaKey}.<br/>
    * 
-   * @return String Value to which the attribute "novaKey" is set.
+   * @return String Value to which {@link #novaKey} is set.
    */
   public String getNovaKey( ) {
     return novaKey;
   }
 
   /**
-   * Method sets the attribute "novaKey".
+   * Method sets attribute {@link #novaKey}.<br/>
    * 
-   * 
-   * @param pNovaKey Value to which the attribute "novaKey" should be set.
+   * @param pNovaKey Value to which {@link #novaKey} should be set.
    */
   public void setNovaKey( String pNovaKey ) {
     // Assign value to attribute
@@ -173,17 +172,16 @@ public class ParentBeanParamType implements ServiceObject {
   /**
    * Method returns attribute {@link #tkID}.<br/>
    * 
-   * @return String Value to which the attribute "tkID" is set.
+   * @return String Value to which {@link #tkID} is set.
    */
   public String getTkID( ) {
     return tkID;
   }
 
   /**
-   * Method sets the attribute "tkID".
+   * Method sets attribute {@link #tkID}.<br/>
    * 
-   * 
-   * @param pTkID Value to which the attribute "tkID" should be set.
+   * @param pTkID Value to which {@link #tkID} should be set.
    */
   public void setTkID( String pTkID ) {
     // Assign value to attribute

@@ -132,17 +132,16 @@ public class BusinessChild extends BusinessParent {
   /**
    * Method returns attribute {@link #childAttribute}.<br/>
    * 
-   * @return String Value to which the attribute "childAttribute" is set.
+   * @return String Value to which {@link #childAttribute} is set.
    */
   public String getChildAttribute( ) {
     return childAttribute;
   }
 
   /**
-   * Method sets the attribute "childAttribute".
+   * Method sets attribute {@link #childAttribute}.<br/>
    * 
-   * 
-   * @param pChildAttribute Value to which the attribute "childAttribute" should be set.
+   * @param pChildAttribute Value to which {@link #childAttribute} should be set.
    */
   public void setChildAttribute( String pChildAttribute ) {
     // Assign value to attribute

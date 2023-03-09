@@ -82,17 +82,16 @@ public abstract class BookingBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #amount}.<br/>
    * 
-   * @return Double Value to which the attribute "amount" is set.
+   * @return Double Value to which {@link #amount} is set.
    */
   public Double getAmount( ) {
     return amount;
   }
 
   /**
-   * Method sets the attribute "amount".
+   * Method sets attribute {@link #amount}.<br/>
    * 
-   * 
-   * @param pAmount Value to which the attribute "amount" should be set.
+   * @param pAmount Value to which {@link #amount} should be set.
    */
   public void setAmount( Double pAmount ) {
     // Assign value to attribute
@@ -204,7 +203,7 @@ public abstract class BookingBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #sessionKey}.<br/>
    * 
-   * @return byte Value to which the attribute "sessionKey" is set.
+   * @return byte Value to which {@link #sessionKey} is set.
    */
   public byte[] getSessionKey( ) {
     byte[] lReturnValue;
@@ -219,10 +218,9 @@ public abstract class BookingBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the attribute "sessionKey".
+   * Method sets attribute {@link #sessionKey}.<br/>
    * 
-   * 
-   * @param pSessionKey Value to which the attribute "sessionKey" should be set.
+   * @param pSessionKey Value to which {@link #sessionKey} should be set.
    */
   public void setSessionKey( byte[] pSessionKey ) {
     // Assign value to attribute

@@ -125,17 +125,16 @@ public class DoubleCode implements ServiceObject {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return double Value to which the attribute "code" is set.
+   * @return double Value to which {@link #code} is set.
    */
   public double getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( double pCode ) {
     // Assign value to attribute

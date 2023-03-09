@@ -132,17 +132,16 @@ public class POI extends Stop {
   /**
    * Method returns attribute {@link #description}.<br/>
    * 
-   * @return String Value to which the attribute "description" is set.
+   * @return String Value to which {@link #description} is set.
    */
   public String getDescription( ) {
     return description;
   }
 
   /**
-   * Method sets the attribute "description".
+   * Method sets attribute {@link #description}.<br/>
    * 
-   * 
-   * @param pDescription Value to which the attribute "description" should be set.
+   * @param pDescription Value to which {@link #description} should be set.
    */
   public void setDescription( String pDescription ) {
     // Assign value to attribute

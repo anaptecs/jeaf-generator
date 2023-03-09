@@ -139,17 +139,16 @@ public class DoubleCode implements Serializable {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return Double Value to which the attribute "code" is set.
+   * @return Double Value to which {@link #code} is set.
    */
   public Double getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( Double pCode ) {
     // Assign value to attribute

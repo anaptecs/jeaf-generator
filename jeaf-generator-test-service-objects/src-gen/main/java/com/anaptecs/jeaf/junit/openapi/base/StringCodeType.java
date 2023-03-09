@@ -129,17 +129,16 @@ public class StringCodeType implements ServiceObject {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return String Value to which the attribute "code" is set.
+   * @return String Value to which {@link #code} is set.
    */
   public String getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( String pCode ) {
     // Assign value to attribute

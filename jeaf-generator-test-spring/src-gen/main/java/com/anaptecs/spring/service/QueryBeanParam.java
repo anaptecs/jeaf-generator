@@ -123,17 +123,16 @@ public class QueryBeanParam {
   /**
    * Method returns attribute {@link #bookingCode}.<br/>
    * 
-   * @return BookingCode Value to which the attribute "bookingCode" is set.
+   * @return BookingCode Value to which {@link #bookingCode} is set.
    */
   public BookingCode getBookingCode( ) {
     return bookingCode;
   }
 
   /**
-   * Method sets the attribute "bookingCode".
+   * Method sets attribute {@link #bookingCode}.<br/>
    * 
-   * 
-   * @param pBookingCode Value to which the attribute "bookingCode" should be set.
+   * @param pBookingCode Value to which {@link #bookingCode} should be set.
    */
   public void setBookingCode( BookingCode pBookingCode ) {
     // Assign value to attribute

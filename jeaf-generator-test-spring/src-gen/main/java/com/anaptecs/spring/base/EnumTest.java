@@ -156,17 +156,16 @@ public class EnumTest {
   /**
    * Method returns attribute {@link #property}.<br/>
    * 
-   * @return ExtensibleEnum Value to which the attribute "property" is set.
+   * @return ExtensibleEnum Value to which {@link #property} is set.
    */
   public ExtensibleEnum getProperty( ) {
     return property;
   }
 
   /**
-   * Method sets the attribute "property".
+   * Method sets attribute {@link #property}.<br/>
    * 
-   * 
-   * @param pProperty Value to which the attribute "property" should be set.
+   * @param pProperty Value to which {@link #property} should be set.
    */
   public void setProperty( ExtensibleEnum pProperty ) {
     // Assign value to attribute

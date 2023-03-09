@@ -205,17 +205,16 @@ public class SwiftAccount extends Account {
   /**
    * Method returns attribute {@link #bic}.<br/>
    * 
-   * @return String Value to which the attribute "bic" is set.
+   * @return String Value to which {@link #bic} is set.
    */
   public String getBic( ) {
     return bic;
   }
 
   /**
-   * Method sets the attribute "bic".
+   * Method sets attribute {@link #bic}.<br/>
    * 
-   * 
-   * @param pBic Value to which the attribute "bic" should be set.
+   * @param pBic Value to which {@link #bic} should be set.
    */
   public void setBic( String pBic ) {
     // Assign value to attribute
