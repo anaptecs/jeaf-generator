@@ -118,7 +118,7 @@ public class ShortCode {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return Short Value to which {@link #code} is set.
+   * @return {@link Short} Value to which {@link #code} is set.
    */
   public Short getCode( ) {
     return code;

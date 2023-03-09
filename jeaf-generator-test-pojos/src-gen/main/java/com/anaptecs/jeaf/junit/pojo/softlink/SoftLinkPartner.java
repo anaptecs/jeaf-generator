@@ -204,7 +204,8 @@ public class SoftLinkPartner {
   /**
    * Method returns association {@link #theBackLink}.<br/>
    * 
-   * @return com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent Value to which {@link #theBackLink} is set.
+   * @return {@link String} Value to which {@link #theBackLink} is set. Actual type:
+   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent
    */
   public String getTheBackLink( ) {
     return theBackLink;
@@ -234,6 +235,12 @@ public class SoftLinkPartner {
    * @return Collection All SoftLinkChildA objects that belong to the association "childLinks". The method never returns
    * null and the returned collection is unmodifiable.
    */
+  /**
+   * Method returns association {@link #childLinks}.<br/>
+   * 
+   * @return {@link Set<SoftLinkID>} Value to which {@link #childLinks} is set. Actual type:
+   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA
+   */
   public Set<SoftLinkID> getChildLinks( ) {
     // Return all SoftLinkChildA objects as unmodifiable collection.
     return Collections.unmodifiableSet(childLinks);
@@ -245,6 +252,12 @@ public class SoftLinkPartner {
    *
    * @return Collection All SoftLinkChildA objects that belong to the association "longLinks". The method never returns
    * null and the returned collection is unmodifiable.
+   */
+  /**
+   * Method returns association {@link #longLinks}.<br/>
+   * 
+   * @return {@link List<long>} Value to which {@link #longLinks} is set. Actual type:
+   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA
    */
   public List<Long> getLongLinks( ) {
     // Return all SoftLinkChildA objects as unmodifiable collection.

@@ -309,7 +309,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #myBoolean}.<br/>
    * 
-   * @return Boolean Value to which {@link #myBoolean} is set.
+   * @return {@link Boolean} Value to which {@link #myBoolean} is set.
    */
   public Boolean getMyBoolean( ) {
     return myBoolean;
@@ -328,7 +328,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #myByte}.<br/>
    * 
-   * @return Byte Value to which {@link #myByte} is set.
+   * @return {@link Byte} Value to which {@link #myByte} is set.
    */
   public Byte getMyByte( ) {
     return myByte;
@@ -347,7 +347,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #myCharacter}.<br/>
    * 
-   * @return Character Value to which {@link #myCharacter} is set.
+   * @return {@link Character} Value to which {@link #myCharacter} is set.
    */
   public Character getMyCharacter( ) {
     return myCharacter;
@@ -366,7 +366,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #myDouble}.<br/>
    * 
-   * @return Double Value to which {@link #myDouble} is set.
+   * @return {@link Double} Value to which {@link #myDouble} is set.
    */
   public Double getMyDouble( ) {
     return myDouble;
@@ -385,7 +385,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #myFloat}.<br/>
    * 
-   * @return Float Value to which {@link #myFloat} is set.
+   * @return {@link Float} Value to which {@link #myFloat} is set.
    */
   public Float getMyFloat( ) {
     return myFloat;
@@ -404,7 +404,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #myLong}.<br/>
    * 
-   * @return Long Value to which {@link #myLong} is set.
+   * @return {@link Long} Value to which {@link #myLong} is set.
    */
   public Long getMyLong( ) {
     return myLong;
@@ -423,7 +423,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #myShort}.<br/>
    * 
-   * @return Short Value to which {@link #myShort} is set.
+   * @return {@link Short} Value to which {@link #myShort} is set.
    */
   public Short getMyShort( ) {
     return myShort;

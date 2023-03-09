@@ -141,7 +141,7 @@ public class BigIntegerCode implements ServiceObject {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return BigInteger Value to which {@link #code} is set.
+   * @return {@link BigInteger} Value to which {@link #code} is set.
    */
   public BigInteger getCode( ) {
     return code;

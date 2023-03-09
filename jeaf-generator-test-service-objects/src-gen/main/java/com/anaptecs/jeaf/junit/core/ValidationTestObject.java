@@ -164,7 +164,7 @@ public class ValidationTestObject implements ServiceObject {
   /**
    * Method returns attribute {@link #myEMail}.<br/>
    * 
-   * @return String Value to which {@link #myEMail} is set.
+   * @return {@link String} Value to which {@link #myEMail} is set.
    */
   public String getMyEMail( ) {
     return myEMail;
@@ -183,7 +183,7 @@ public class ValidationTestObject implements ServiceObject {
   /**
    * Method returns attribute {@link #dateOfBirth}.<br/>
    * 
-   * @return Calendar Value to which {@link #dateOfBirth} is set.
+   * @return {@link Calendar} Value to which {@link #dateOfBirth} is set.
    */
   public Calendar getDateOfBirth( ) {
     return dateOfBirth;

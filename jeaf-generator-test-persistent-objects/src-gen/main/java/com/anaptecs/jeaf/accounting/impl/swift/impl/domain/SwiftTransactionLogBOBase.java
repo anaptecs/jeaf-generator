@@ -60,7 +60,7 @@ public abstract class SwiftTransactionLogBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #timestamp}.<br/>
    * 
-   * @return Calendar Value to which {@link #timestamp} is set.
+   * @return {@link Calendar} Value to which {@link #timestamp} is set.
    */
   public Calendar getTimestamp( ) {
     return timestamp;
@@ -79,7 +79,7 @@ public abstract class SwiftTransactionLogBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #amount}.<br/>
    * 
-   * @return Double Value to which {@link #amount} is set.
+   * @return {@link Double} Value to which {@link #amount} is set.
    */
   public Double getAmount( ) {
     return amount;

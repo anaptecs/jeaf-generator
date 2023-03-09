@@ -235,7 +235,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   /**
    * Method returns attribute {@link #referenceID}.<br/>
    * 
-   * @return String Value to which {@link #referenceID} is set.
+   * @return {@link String} Value to which {@link #referenceID} is set.
    */
   public String getReferenceID( ) {
     return referenceID;
@@ -345,7 +345,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   /**
    * Method returns attribute {@link #anotherID}.<br/>
    * 
-   * @return Integer Value to which {@link #anotherID} is set.
+   * @return {@link Integer} Value to which {@link #anotherID} is set.
    */
   public Integer getAnotherID( ) {
     return anotherID;

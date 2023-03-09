@@ -135,7 +135,7 @@ public class ByteCode implements ServiceObject {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return Byte Value to which {@link #code} is set.
+   * @return {@link Byte} Value to which {@link #code} is set.
    */
   public Byte getCode( ) {
     return code;

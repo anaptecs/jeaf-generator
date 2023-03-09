@@ -181,7 +181,7 @@
 «DEFINE SoftLinkToOneAccessorMethods FOR SoftLink»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public «this.getMultivaluedSoftLinkType()» «asGetter()» () {
+    public «this.getSoftLinkType()» «asGetter()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»
     «asInstanceVar()» = this.unproxy(«asInstanceVar()»);«ENDIF»
         «IF this.isTransientBidirectionalBackReference()»
@@ -201,25 +201,13 @@
     «IF isReadOnly() == false»
     «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public void «asSetter()» («this.getMultivaluedSoftLinkType()» «asParameter()») {
-        «IF generateNullChecksForToOneAssociationsOfServiceObjects()»
+    public void «asSetter()» («this.getSoftLinkType()» «asParameter()») {
+        «IF generateNullChecksForToOneAssociationsOfServiceObjects() && this.getSoftLinkType() != "long"»
         // «asParameter()» must not be null. To unset an association the unset method has to be called.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
         «ENDIF»
 
-        «IF opposite != null && opposite.isNavigable() == true»
-            // Release already referenced object before setting a new association.
-            if(«asInstanceVar()» != null) {
-            «IF opposite.isMultivalued() == true»
-                «asInstanceVar()».removeFrom«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
-            «ELSE»
-                «asInstanceVar()».«opposite.asUnset()»();
-            «ENDIF»
-            }
-        «ENDIF»
-
         «asInstanceVar()» = «asParameter()»;
-        «EXPAND GenerateInitOpposite»
     }
     
     «IF this.getSoftLinkType() != "long"»
@@ -247,6 +235,7 @@
      * @return Collection All «this.type.name» objects that belong to the association "«asInstanceVar()»". 
      * The method never returns null and the returned collection is «IF disableCollectionImmutability()»modifiable«ELSE»unmodifiable«ENDIF».
      */
+    «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public «this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asGetter()» () {
         «IF this.isTransientBidirectionalBackReference()»

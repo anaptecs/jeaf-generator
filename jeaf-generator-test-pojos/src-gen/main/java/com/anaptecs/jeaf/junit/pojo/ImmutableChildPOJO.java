@@ -189,7 +189,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
   /**
    * Method returns attribute {@link #childAttribute}.<br/>
    * 
-   * @return String Value to which {@link #childAttribute} is set.
+   * @return {@link String} Value to which {@link #childAttribute} is set.
    */
   public String getChildAttribute( ) {
     return childAttribute;
@@ -208,7 +208,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
   /**
    * Method returns attribute {@link #anotherChildAttribute}.<br/>
    * 
-   * @return Double Value to which {@link #anotherChildAttribute} is set.
+   * @return {@link Double} Value to which {@link #anotherChildAttribute} is set.
    */
   public Double getAnotherChildAttribute( ) {
     return anotherChildAttribute;

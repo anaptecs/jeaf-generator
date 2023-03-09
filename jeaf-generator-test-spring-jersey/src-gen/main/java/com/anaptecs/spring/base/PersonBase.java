@@ -127,7 +127,7 @@ public abstract class PersonBase extends Partner {
   /**
    * Method returns attribute {@link #surname}.<br/>
    * 
-   * @return String Value to which {@link #surname} is set.
+   * @return {@link String} Value to which {@link #surname} is set.
    */
   public String getSurname( ) {
     return surname;
@@ -146,7 +146,7 @@ public abstract class PersonBase extends Partner {
   /**
    * Method returns attribute {@link #firstName}.<br/>
    * 
-   * @return String Value to which {@link #firstName} is set.
+   * @return {@link String} Value to which {@link #firstName} is set.
    */
   public String getFirstName( ) {
     return firstName;

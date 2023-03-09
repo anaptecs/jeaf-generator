@@ -172,7 +172,7 @@ public class ModelWrapperTypeServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aInt}.<br/>
    * 
-   * @return Integer Value to which {@link #aInt} is set.
+   * @return {@link Integer} Value to which {@link #aInt} is set.
    */
   public Integer getAInt( ) {
     return aInt;

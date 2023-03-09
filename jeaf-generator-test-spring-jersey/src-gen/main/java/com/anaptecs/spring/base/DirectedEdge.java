@@ -210,7 +210,7 @@ public class DirectedEdge {
   /**
    * Method returns attribute {@link #link}.<br/>
    * 
-   * @return String Value to which {@link #link} is set.
+   * @return {@link String} Value to which {@link #link} is set.
    */
   public String getLink( ) {
     return link;

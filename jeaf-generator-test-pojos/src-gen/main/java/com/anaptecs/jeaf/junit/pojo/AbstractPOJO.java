@@ -87,7 +87,7 @@ public abstract class AbstractPOJO {
   /**
    * Method returns attribute {@link #abtractAttr}.<br/>
    * 
-   * @return String Value to which {@link #abtractAttr} is set.
+   * @return {@link String} Value to which {@link #abtractAttr} is set.
    */
   public String getAbtractAttr( ) {
     return abtractAttr;

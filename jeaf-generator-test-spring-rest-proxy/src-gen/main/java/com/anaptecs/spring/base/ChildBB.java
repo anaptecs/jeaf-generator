@@ -281,7 +281,7 @@ public class ChildBB extends ChildB {
   /**
    * Method returns attribute {@link #childBBAttribute}.<br/>
    * 
-   * @return Long Value to which {@link #childBBAttribute} is set.
+   * @return {@link Long} Value to which {@link #childBBAttribute} is set.
    */
   public Long getChildBBAttribute( ) {
     return childBBAttribute;

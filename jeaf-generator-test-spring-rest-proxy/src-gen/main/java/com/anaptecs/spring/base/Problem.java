@@ -212,7 +212,7 @@ public class Problem {
   /**
    * Method returns attribute {@link #title}.<br/>
    * 
-   * @return String Value to which {@link #title} is set.
+   * @return {@link String} Value to which {@link #title} is set.
    */
   public String getTitle( ) {
     return title;
@@ -230,7 +230,7 @@ public class Problem {
   /**
    * Method returns attribute {@link #type}.<br/>
    * 
-   * @return String Value to which {@link #type} is set.
+   * @return {@link String} Value to which {@link #type} is set.
    */
   public String getType( ) {
     return type;
@@ -239,7 +239,7 @@ public class Problem {
   /**
    * Method returns attribute {@link #detail}.<br/>
    * 
-   * @return String Value to which {@link #detail} is set.
+   * @return {@link String} Value to which {@link #detail} is set.
    */
   public String getDetail( ) {
     return detail;
@@ -248,7 +248,7 @@ public class Problem {
   /**
    * Method returns attribute {@link #instance}.<br/>
    * 
-   * @return String Value to which {@link #instance} is set.
+   * @return {@link String} Value to which {@link #instance} is set.
    */
   public String getInstance( ) {
     return instance;

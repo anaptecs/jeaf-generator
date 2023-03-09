@@ -131,7 +131,7 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
   /**
    * Method returns attribute {@link #attr}.<br/>
    * 
-   * @return Boolean Value to which {@link #attr} is set.
+   * @return {@link Boolean} Value to which {@link #attr} is set.
    */
   public Boolean getAttr( ) {
     return attr;

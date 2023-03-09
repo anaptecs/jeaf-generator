@@ -236,7 +236,7 @@ public class CodeTypeUsageTest implements ServiceObject {
   /**
    * Method returns attribute {@link #booleanCode}.<br/>
    * 
-   * @return BooleanCodeType Value to which {@link #booleanCode} is set.
+   * @return {@link BooleanCodeType} Value to which {@link #booleanCode} is set.
    */
   public BooleanCodeType getBooleanCode( ) {
     return booleanCode;
@@ -385,7 +385,7 @@ public class CodeTypeUsageTest implements ServiceObject {
   /**
    * Method returns attribute {@link #stringCode}.<br/>
    * 
-   * @return StringCodeType Value to which {@link #stringCode} is set.
+   * @return {@link StringCodeType} Value to which {@link #stringCode} is set.
    */
   public StringCodeType getStringCode( ) {
     return stringCode;

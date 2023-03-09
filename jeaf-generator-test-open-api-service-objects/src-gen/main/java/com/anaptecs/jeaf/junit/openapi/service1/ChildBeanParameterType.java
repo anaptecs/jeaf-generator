@@ -154,7 +154,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * Method returns attribute {@link #childProperty}.<br/>
    * 
-   * @return String Value to which {@link #childProperty} is set.
+   * @return {@link String} Value to which {@link #childProperty} is set.
    */
   public String getChildProperty( ) {
     return childProperty;

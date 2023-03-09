@@ -326,7 +326,7 @@ public class OpenAPITestObject {
   /**
    * Method returns attribute {@link #readOnlyAttribute}.<br/>
    * 
-   * @return String Value to which {@link #readOnlyAttribute} is set.
+   * @return {@link String} Value to which {@link #readOnlyAttribute} is set.
    */
   public String getReadOnlyAttribute( ) {
     return readOnlyAttribute;
@@ -345,7 +345,7 @@ public class OpenAPITestObject {
   /**
    * Method returns attribute {@link #readWriteAttribute}.<br/>
    * 
-   * @return String Value to which {@link #readWriteAttribute} is set.
+   * @return {@link String} Value to which {@link #readWriteAttribute} is set.
    */
   public String getReadWriteAttribute( ) {
     return readWriteAttribute;
@@ -383,7 +383,7 @@ public class OpenAPITestObject {
   /**
    * Method returns attribute {@link #nullableAttribute}.<br/>
    * 
-   * @return Boolean Value to which {@link #nullableAttribute} is set.
+   * @return {@link Boolean} Value to which {@link #nullableAttribute} is set.
    */
   public Boolean getNullableAttribute( ) {
     return nullableAttribute;
@@ -421,7 +421,7 @@ public class OpenAPITestObject {
   /**
    * Method returns attribute {@link #readOnlyArray}.<br/>
    * 
-   * @return String Value to which {@link #readOnlyArray} is set.
+   * @return {@link String} Value to which {@link #readOnlyArray} is set.
    */
   public String getReadOnlyArray( ) {
     return readOnlyArray;
@@ -440,7 +440,7 @@ public class OpenAPITestObject {
   /**
    * Method returns attribute {@link #readWriteArray}.<br/>
    * 
-   * @return String Value to which {@link #readWriteArray} is set.
+   * @return {@link String} Value to which {@link #readWriteArray} is set.
    */
   public String getReadWriteArray( ) {
     return readWriteArray;

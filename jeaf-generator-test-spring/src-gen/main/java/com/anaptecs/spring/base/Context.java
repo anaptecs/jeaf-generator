@@ -262,7 +262,7 @@ public class Context {
   /**
    * Method returns attribute {@link #accessToken}.<br/>
    * 
-   * @return String Value to which {@link #accessToken} is set.
+   * @return {@link String} Value to which {@link #accessToken} is set.
    */
   public String getAccessToken( ) {
     return accessToken;
@@ -281,7 +281,7 @@ public class Context {
   /**
    * Method returns attribute {@link #language}.<br/>
    * 
-   * @return Locale Value to which {@link #language} is set.
+   * @return {@link Locale} Value to which {@link #language} is set.
    */
   public Locale getLanguage( ) {
     return language;
@@ -338,7 +338,7 @@ public class Context {
   /**
    * Method returns attribute {@link #queryParam}.<br/>
    * 
-   * @return String Value to which {@link #queryParam} is set.
+   * @return {@link String} Value to which {@link #queryParam} is set.
    */
   public String getQueryParam( ) {
     return queryParam;
@@ -357,7 +357,7 @@ public class Context {
   /**
    * Method returns attribute {@link #lang}.<br/>
    * 
-   * @return String Value to which {@link #lang} is set.
+   * @return {@link String} Value to which {@link #lang} is set.
    */
   public String getLang( ) {
     return lang;

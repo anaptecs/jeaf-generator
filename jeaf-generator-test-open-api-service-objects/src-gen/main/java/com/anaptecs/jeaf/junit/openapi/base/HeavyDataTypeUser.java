@@ -273,7 +273,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   /**
    * Method returns attribute {@link #booleanCode}.<br/>
    * 
-   * @return BooleanCode Value to which {@link #booleanCode} is set.
+   * @return {@link BooleanCode} Value to which {@link #booleanCode} is set.
    */
   public BooleanCode getBooleanCode( ) {
     return booleanCode;
@@ -292,7 +292,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   /**
    * Method returns attribute {@link #byteCode}.<br/>
    * 
-   * @return ByteCode Value to which {@link #byteCode} is set.
+   * @return {@link ByteCode} Value to which {@link #byteCode} is set.
    */
   public ByteCode getByteCode( ) {
     return byteCode;
@@ -311,7 +311,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   /**
    * Method returns attribute {@link #shortCode}.<br/>
    * 
-   * @return ShortCode Value to which {@link #shortCode} is set.
+   * @return {@link ShortCode} Value to which {@link #shortCode} is set.
    */
   public ShortCode getShortCode( ) {
     return shortCode;
@@ -330,7 +330,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   /**
    * Method returns attribute {@link #integerCode}.<br/>
    * 
-   * @return IntegerCode Value to which {@link #integerCode} is set.
+   * @return {@link IntegerCode} Value to which {@link #integerCode} is set.
    */
   public IntegerCode getIntegerCode( ) {
     return integerCode;
@@ -349,7 +349,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   /**
    * Method returns attribute {@link #floatCode}.<br/>
    * 
-   * @return FloatCode Value to which {@link #floatCode} is set.
+   * @return {@link FloatCode} Value to which {@link #floatCode} is set.
    */
   public FloatCode getFloatCode( ) {
     return floatCode;
@@ -368,7 +368,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   /**
    * Method returns attribute {@link #doubleCode}.<br/>
    * 
-   * @return DoubleCode Value to which {@link #doubleCode} is set.
+   * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
    */
   public DoubleCode getDoubleCode( ) {
     return doubleCode;
@@ -387,7 +387,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   /**
    * Method returns attribute {@link #bigInegerCode}.<br/>
    * 
-   * @return BigIntegerCode Value to which {@link #bigInegerCode} is set.
+   * @return {@link BigIntegerCode} Value to which {@link #bigInegerCode} is set.
    */
   public BigIntegerCode getBigInegerCode( ) {
     return bigInegerCode;
@@ -406,7 +406,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   /**
    * Method returns attribute {@link #bigDecimalCode}.<br/>
    * 
-   * @return BigDecimalCode Value to which {@link #bigDecimalCode} is set.
+   * @return {@link BigDecimalCode} Value to which {@link #bigDecimalCode} is set.
    */
   public BigDecimalCode getBigDecimalCode( ) {
     return bigDecimalCode;

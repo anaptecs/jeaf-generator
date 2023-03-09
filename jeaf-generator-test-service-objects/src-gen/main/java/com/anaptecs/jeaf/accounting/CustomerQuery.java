@@ -51,7 +51,7 @@ public class CustomerQuery extends QueryObject {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which {@link #name} is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
@@ -70,7 +70,7 @@ public class CustomerQuery extends QueryObject {
   /**
    * Method returns attribute {@link #firstName}.<br/>
    * 
-   * @return String Value to which {@link #firstName} is set.
+   * @return {@link String} Value to which {@link #firstName} is set.
    */
   public String getFirstName( ) {
     return firstName;
@@ -89,7 +89,7 @@ public class CustomerQuery extends QueryObject {
   /**
    * Method returns attribute {@link #companyName}.<br/>
    * 
-   * @return String Value to which {@link #companyName} is set.
+   * @return {@link String} Value to which {@link #companyName} is set.
    */
   public String getCompanyName( ) {
     return companyName;
@@ -108,7 +108,7 @@ public class CustomerQuery extends QueryObject {
   /**
    * Method returns attribute {@link #city}.<br/>
    * 
-   * @return String Value to which {@link #city} is set.
+   * @return {@link String} Value to which {@link #city} is set.
    */
   public String getCity( ) {
     return city;

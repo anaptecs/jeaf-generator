@@ -205,7 +205,7 @@ public class BookingID implements ServiceObject {
   /**
    * Method returns attribute {@link #referenceID}.<br/>
    * 
-   * @return String Value to which {@link #referenceID} is set.
+   * @return {@link String} Value to which {@link #referenceID} is set.
    */
   public String getReferenceID( ) {
     return referenceID;
@@ -224,7 +224,7 @@ public class BookingID implements ServiceObject {
   /**
    * Method returns attribute {@link #externalRefID}.<br/>
    * 
-   * @return String Value to which {@link #externalRefID} is set.
+   * @return {@link String} Value to which {@link #externalRefID} is set.
    */
   public String getExternalRefID( ) {
     return externalRefID;

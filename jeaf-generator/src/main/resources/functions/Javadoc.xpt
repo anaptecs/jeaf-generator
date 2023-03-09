@@ -54,7 +54,11 @@
 /**
  * Method returns «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>
     «EXPAND AddComment -»
- * @return «this.getTypeName()» Value to which {@link #«asInstanceVar()»} is set.
+    «IF this.isSoftLink() == false -»
+ * @return «IF type.isPrimitiveType() == false»{@link «this.fqn()»}«ELSE»«this.fqn()»«ENDIF» Value to which {@link #«asInstanceVar()»} is set.
+    «ELSE -»
+ * @return {@link «IF this.isMultivalued()»«this.getCollectionType()»<«((JMM::SoftLink)this).getSoftLinkType()»>«ELSE»«((JMM::SoftLink)this).getSoftLinkType()»«ENDIF»} Value to which {@link #«asInstanceVar()»} is set. Actual type: «type.fqn()»
+    «ENDIF -»
     «EXPAND DeprecatedJavadoc -»
  */
 «ENDDEFINE»

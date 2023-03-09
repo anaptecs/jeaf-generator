@@ -129,7 +129,7 @@ public class POI extends Stop {
   /**
    * Method returns attribute {@link #description}.<br/>
    * 
-   * @return String Value to which {@link #description} is set.
+   * @return {@link String} Value to which {@link #description} is set.
    */
   public String getDescription( ) {
     return description;

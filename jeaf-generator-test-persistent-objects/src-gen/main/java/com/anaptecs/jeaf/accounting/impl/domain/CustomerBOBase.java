@@ -237,7 +237,7 @@ public abstract class CustomerBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #active}.<br/>
    * 
-   * @return Boolean Value to which {@link #active} is set.
+   * @return {@link Boolean} Value to which {@link #active} is set.
    */
   public Boolean getActive( ) {
     return active;

@@ -238,7 +238,7 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
   /**
    * Method returns attribute {@link #type}.<br/>
    * 
-   * @return String Value to which {@link #type} is set.
+   * @return {@link String} Value to which {@link #type} is set.
    */
   public String getType( ) {
     return type;
@@ -257,7 +257,7 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
   /**
    * Method returns attribute {@link #typeChar}.<br/>
    * 
-   * @return Character Value to which {@link #typeChar} is set.
+   * @return {@link Character} Value to which {@link #typeChar} is set.
    */
   public Character getTypeChar( ) {
     return typeChar;
@@ -276,7 +276,7 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
   /**
    * Method returns attribute {@link #sortorder}.<br/>
    * 
-   * @return Byte Value to which {@link #sortorder} is set.
+   * @return {@link Byte} Value to which {@link #sortorder} is set.
    */
   public Byte getSortorder( ) {
     return sortorder;

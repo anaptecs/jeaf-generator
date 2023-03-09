@@ -204,7 +204,7 @@ public class SpecialContext extends Context {
   /**
    * Method returns attribute {@link #specificHeader}.<br/>
    * 
-   * @return String Value to which {@link #specificHeader} is set.
+   * @return {@link String} Value to which {@link #specificHeader} is set.
    */
   public String getSpecificHeader( ) {
     return specificHeader;
@@ -223,7 +223,7 @@ public class SpecialContext extends Context {
   /**
    * Method returns attribute {@link #channelType}.<br/>
    * 
-   * @return ChannelType Value to which {@link #channelType} is set.
+   * @return {@link ChannelType} Value to which {@link #channelType} is set.
    */
   public ChannelType getChannelType( ) {
     return channelType;

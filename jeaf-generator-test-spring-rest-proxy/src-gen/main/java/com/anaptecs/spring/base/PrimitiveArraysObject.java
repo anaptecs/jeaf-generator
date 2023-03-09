@@ -827,7 +827,7 @@ public class PrimitiveArraysObject {
   /**
    * Method returns attribute {@link #bBooleanArray}.<br/>
    * 
-   * @return Boolean Value to which {@link #bBooleanArray} is set.
+   * @return {@link Boolean} Value to which {@link #bBooleanArray} is set.
    */
   public Boolean[] getBBooleanArray( ) {
     Boolean[] lReturnValue;
@@ -926,7 +926,7 @@ public class PrimitiveArraysObject {
   /**
    * Method returns attribute {@link #bByteArray}.<br/>
    * 
-   * @return Byte Value to which {@link #bByteArray} is set.
+   * @return {@link Byte} Value to which {@link #bByteArray} is set.
    */
   public Byte[] getBByteArray( ) {
     Byte[] lReturnValue;
@@ -992,7 +992,7 @@ public class PrimitiveArraysObject {
   /**
    * Method returns attribute {@link #bShortArray}.<br/>
    * 
-   * @return Short Value to which {@link #bShortArray} is set.
+   * @return {@link Short} Value to which {@link #bShortArray} is set.
    */
   public Short[] getBShortArray( ) {
     Short[] lReturnValue;
@@ -1058,7 +1058,7 @@ public class PrimitiveArraysObject {
   /**
    * Method returns attribute {@link #bIntegerArray}.<br/>
    * 
-   * @return Integer Value to which {@link #bIntegerArray} is set.
+   * @return {@link Integer} Value to which {@link #bIntegerArray} is set.
    */
   public Integer[] getBIntegerArray( ) {
     Integer[] lReturnValue;
@@ -1091,7 +1091,7 @@ public class PrimitiveArraysObject {
   /**
    * Method returns attribute {@link #cIntegerArray}.<br/>
    * 
-   * @return Integer Value to which {@link #cIntegerArray} is set.
+   * @return {@link Integer} Value to which {@link #cIntegerArray} is set.
    */
   public Integer[] getCIntegerArray( ) {
     Integer[] lReturnValue;
@@ -1157,7 +1157,7 @@ public class PrimitiveArraysObject {
   /**
    * Method returns attribute {@link #bLongArray}.<br/>
    * 
-   * @return Long Value to which {@link #bLongArray} is set.
+   * @return {@link Long} Value to which {@link #bLongArray} is set.
    */
   public Long[] getBLongArray( ) {
     Long[] lReturnValue;
@@ -1190,7 +1190,7 @@ public class PrimitiveArraysObject {
   /**
    * Method returns attribute {@link #aBigIntegerArray}.<br/>
    * 
-   * @return BigInteger Value to which {@link #aBigIntegerArray} is set.
+   * @return {@link BigInteger} Value to which {@link #aBigIntegerArray} is set.
    */
   public BigInteger[] getABigIntegerArray( ) {
     BigInteger[] lReturnValue;
@@ -1256,7 +1256,7 @@ public class PrimitiveArraysObject {
   /**
    * Method returns attribute {@link #bCharacterArray}.<br/>
    * 
-   * @return Character Value to which {@link #bCharacterArray} is set.
+   * @return {@link Character} Value to which {@link #bCharacterArray} is set.
    */
   public Character[] getBCharacterArray( ) {
     Character[] lReturnValue;
@@ -1322,7 +1322,7 @@ public class PrimitiveArraysObject {
   /**
    * Method returns attribute {@link #bFloatArray}.<br/>
    * 
-   * @return Float Value to which {@link #bFloatArray} is set.
+   * @return {@link Float} Value to which {@link #bFloatArray} is set.
    */
   public Float[] getBFloatArray( ) {
     Float[] lReturnValue;
@@ -1388,7 +1388,7 @@ public class PrimitiveArraysObject {
   /**
    * Method returns attribute {@link #bDoubleArray}.<br/>
    * 
-   * @return Double Value to which {@link #bDoubleArray} is set.
+   * @return {@link Double} Value to which {@link #bDoubleArray} is set.
    */
   public Double[] getBDoubleArray( ) {
     Double[] lReturnValue;
@@ -1421,7 +1421,7 @@ public class PrimitiveArraysObject {
   /**
    * Method returns attribute {@link #aBigDecimalArray}.<br/>
    * 
-   * @return BigDecimal Value to which {@link #aBigDecimalArray} is set.
+   * @return {@link BigDecimal} Value to which {@link #aBigDecimalArray} is set.
    */
   public BigDecimal[] getABigDecimalArray( ) {
     BigDecimal[] lReturnValue;
@@ -1454,7 +1454,7 @@ public class PrimitiveArraysObject {
   /**
    * Method returns attribute {@link #aStringArray}.<br/>
    * 
-   * @return String Value to which {@link #aStringArray} is set.
+   * @return {@link String} Value to which {@link #aStringArray} is set.
    */
   public String[] getAStringArray( ) {
     String[] lReturnValue;
@@ -1487,7 +1487,7 @@ public class PrimitiveArraysObject {
   /**
    * Method returns attribute {@link #bStringArray}.<br/>
    * 
-   * @return String Value to which {@link #bStringArray} is set.
+   * @return {@link String} Value to which {@link #bStringArray} is set.
    */
   public String[] getBStringArray( ) {
     String[] lReturnValue;
@@ -1520,7 +1520,7 @@ public class PrimitiveArraysObject {
   /**
    * Method returns attribute {@link #cStringArray}.<br/>
    * 
-   * @return String Value to which {@link #cStringArray} is set.
+   * @return {@link String} Value to which {@link #cStringArray} is set.
    */
   public String[] getCStringArray( ) {
     String[] lReturnValue;

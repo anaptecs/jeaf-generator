@@ -259,7 +259,7 @@ public abstract class AccountBase {
   /**
    * Method returns attribute {@link #currency}.<br/>
    * 
-   * @return Currency Value to which {@link #currency} is set.
+   * @return {@link Currency} Value to which {@link #currency} is set.
    */
   public Currency getCurrency( ) {
     return currency;

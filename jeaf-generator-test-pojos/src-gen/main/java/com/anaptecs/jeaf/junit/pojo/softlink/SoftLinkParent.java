@@ -200,6 +200,12 @@ public class SoftLinkParent {
    * @return Collection All SoftLinkPartner objects that belong to the association "partners". The method never returns
    * null and the returned collection is unmodifiable.
    */
+  /**
+   * Method returns association {@link #partners}.<br/>
+   * 
+   * @return {@link Set<SoftLinkID>} Value to which {@link #partners} is set. Actual type:
+   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner
+   */
   public Set<SoftLinkID> getPartners( ) {
     // Return all SoftLinkPartner objects as unmodifiable collection.
     return Collections.unmodifiableSet(partners);
@@ -259,7 +265,8 @@ public class SoftLinkParent {
   /**
    * Method returns association {@link #thePartner}.<br/>
    * 
-   * @return com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner Value to which {@link #thePartner} is set.
+   * @return {@link SoftLinkID} Value to which {@link #thePartner} is set. Actual type:
+   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner
    */
   public SoftLinkID getThePartner( ) {
     return thePartner;
@@ -285,7 +292,8 @@ public class SoftLinkParent {
   /**
    * Method returns association {@link #readonlyPartner}.<br/>
    * 
-   * @return com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner Value to which {@link #readonlyPartner} is set.
+   * @return {@link SoftLinkID} Value to which {@link #readonlyPartner} is set. Actual type:
+   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner
    */
   public SoftLinkID getReadonlyPartner( ) {
     return readonlyPartner;

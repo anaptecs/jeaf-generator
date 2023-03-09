@@ -205,7 +205,7 @@ public class MultivaluedQueryParamsBean {
   /**
    * Method returns attribute {@link #strings}.<br/>
    * 
-   * @return String Value to which {@link #strings} is set.
+   * @return {@link String} Value to which {@link #strings} is set.
    */
   public String[] getStrings( ) {
     String[] lReturnValue;
@@ -238,7 +238,7 @@ public class MultivaluedQueryParamsBean {
   /**
    * Method returns attribute {@link #integers}.<br/>
    * 
-   * @return Integer Value to which {@link #integers} is set.
+   * @return {@link Integer} Value to which {@link #integers} is set.
    */
   public Integer[] getIntegers( ) {
     Integer[] lReturnValue;

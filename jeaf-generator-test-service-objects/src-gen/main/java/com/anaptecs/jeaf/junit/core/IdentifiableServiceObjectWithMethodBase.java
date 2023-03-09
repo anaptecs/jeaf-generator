@@ -170,7 +170,7 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
   /**
    * Method returns attribute {@link #hello}.<br/>
    * 
-   * @return Integer Value to which {@link #hello} is set.
+   * @return {@link Integer} Value to which {@link #hello} is set.
    */
   public Integer getHello( ) {
     return hello;

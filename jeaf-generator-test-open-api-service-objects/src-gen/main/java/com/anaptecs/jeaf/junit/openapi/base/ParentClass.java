@@ -234,7 +234,7 @@ public class ParentClass implements ServiceObject {
   /**
    * Method returns attribute {@link #parentAttribute}.<br/>
    * 
-   * @return String Value to which {@link #parentAttribute} is set.
+   * @return {@link String} Value to which {@link #parentAttribute} is set.
    */
   public String getParentAttribute( ) {
     return parentAttribute;

@@ -248,7 +248,7 @@ public class SecurityToken implements ServiceObject {
   /**
    * Method returns attribute {@link #value}.<br/>
    * 
-   * @return Integer Value to which {@link #value} is set.
+   * @return {@link Integer} Value to which {@link #value} is set.
    */
   public Integer getValue( ) {
     return value;

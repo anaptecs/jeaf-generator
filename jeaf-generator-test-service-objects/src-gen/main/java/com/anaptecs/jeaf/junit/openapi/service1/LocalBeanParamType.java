@@ -177,7 +177,7 @@ public class LocalBeanParamType implements ServiceObject {
   /**
    * Method returns attribute {@link #localKey}.<br/>
    * 
-   * @return String Value to which {@link #localKey} is set.
+   * @return {@link String} Value to which {@link #localKey} is set.
    */
   public String getLocalKey( ) {
     return localKey;
@@ -196,7 +196,7 @@ public class LocalBeanParamType implements ServiceObject {
   /**
    * Method returns attribute {@link #localID}.<br/>
    * 
-   * @return String Value to which {@link #localID} is set.
+   * @return {@link String} Value to which {@link #localID} is set.
    */
   public String getLocalID( ) {
     return localID;
@@ -215,7 +215,7 @@ public class LocalBeanParamType implements ServiceObject {
   /**
    * Method returns attribute {@link #authorization}.<br/>
    * 
-   * @return String Value to which {@link #authorization} is set.
+   * @return {@link String} Value to which {@link #authorization} is set.
    */
   public String getAuthorization( ) {
     return authorization;

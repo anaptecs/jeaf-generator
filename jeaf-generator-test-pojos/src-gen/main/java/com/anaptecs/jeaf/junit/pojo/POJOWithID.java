@@ -212,7 +212,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
   /**
    * Method returns attribute {@link #attr}.<br/>
    * 
-   * @return Double Value to which {@link #attr} is set.
+   * @return {@link Double} Value to which {@link #attr} is set.
    */
   public Double getAttr( ) {
     return attr;
@@ -231,7 +231,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which {@link #name} is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;

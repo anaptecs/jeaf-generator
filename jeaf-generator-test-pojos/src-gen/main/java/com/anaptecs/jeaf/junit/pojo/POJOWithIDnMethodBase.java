@@ -168,7 +168,7 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
   /**
    * Method returns attribute {@link #attr}.<br/>
    * 
-   * @return Double Value to which {@link #attr} is set.
+   * @return {@link Double} Value to which {@link #attr} is set.
    */
   public Double getAttr( ) {
     return attr;

@@ -60,7 +60,7 @@ public class ProductQuery extends QueryObject {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which {@link #name} is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
@@ -79,7 +79,7 @@ public class ProductQuery extends QueryObject {
   /**
    * Method returns attribute {@link #minAvailability}.<br/>
    * 
-   * @return Integer Value to which {@link #minAvailability} is set.
+   * @return {@link Integer} Value to which {@link #minAvailability} is set.
    */
   @Deprecated
   public Integer getMinAvailability( ) {
@@ -100,7 +100,7 @@ public class ProductQuery extends QueryObject {
   /**
    * Method returns attribute {@link #minPrice}.<br/>
    * 
-   * @return Integer Value to which {@link #minPrice} is set.
+   * @return {@link Integer} Value to which {@link #minPrice} is set.
    */
   public Integer getMinPrice( ) {
     return minPrice;
@@ -119,7 +119,7 @@ public class ProductQuery extends QueryObject {
   /**
    * Method returns attribute {@link #maxPrice}.<br/>
    * 
-   * @return Integer Value to which {@link #maxPrice} is set.
+   * @return {@link Integer} Value to which {@link #maxPrice} is set.
    */
   public Integer getMaxPrice( ) {
     return maxPrice;
@@ -138,7 +138,7 @@ public class ProductQuery extends QueryObject {
   /**
    * Method returns attribute {@link #manufacturer}.<br/>
    * 
-   * @return String Value to which {@link #manufacturer} is set.
+   * @return {@link String} Value to which {@link #manufacturer} is set.
    */
   public String getManufacturer( ) {
     return manufacturer;

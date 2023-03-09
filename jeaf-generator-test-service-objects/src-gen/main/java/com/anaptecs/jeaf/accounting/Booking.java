@@ -271,7 +271,7 @@ public class Booking implements ServiceObject {
    * Method returns attribute {@link #amount}.<br/>
    * Amount of the booking. The attribute must not be null.
    * 
-   * @return Double Value to which {@link #amount} is set.
+   * @return {@link Double} Value to which {@link #amount} is set.
    */
   public Double getAmount( ) {
     return amount;

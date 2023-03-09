@@ -75,7 +75,7 @@ public abstract class PublicClassBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #period}.<br/>
    * 
-   * @return Period Value to which {@link #period} is set.
+   * @return {@link Period} Value to which {@link #period} is set.
    */
   public Period getPeriod( ) {
     return period;
@@ -94,7 +94,7 @@ public abstract class PublicClassBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #gender}.<br/>
    * 
-   * @return Gender Value to which {@link #gender} is set.
+   * @return {@link Gender} Value to which {@link #gender} is set.
    */
   public Gender getGender( ) {
     return gender;
@@ -113,7 +113,7 @@ public abstract class PublicClassBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #encryptedString}.<br/>
    * 
-   * @return EncryptedString Value to which {@link #encryptedString} is set.
+   * @return {@link EncryptedString} Value to which {@link #encryptedString} is set.
    */
   public EncryptedString getEncryptedString( ) {
     return encryptedString;

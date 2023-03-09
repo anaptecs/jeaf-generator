@@ -235,7 +235,7 @@ public class POI extends Stop {
   /**
    * Method returns attribute {@link #description}.<br/>
    * 
-   * @return String Value to which {@link #description} is set.
+   * @return {@link String} Value to which {@link #description} is set.
    */
   public String getDescription( ) {
     return description;
@@ -254,7 +254,7 @@ public class POI extends Stop {
   /**
    * Method returns association {@link #theLink}.<br/>
    * 
-   * @return LinkObject Value to which {@link #theLink} is set.
+   * @return {@link Long} Value to which {@link #theLink} is set. Actual type: LinkObject
    */
   @Deprecated
   public Long getTheLink( ) {
@@ -286,6 +286,11 @@ public class POI extends Stop {
    *
    * @return Collection All LinkObject objects that belong to the association "evenMoreLinks". The method never returns
    * null and the returned collection is modifiable.
+   */
+  /**
+   * Method returns association {@link #evenMoreLinks}.<br/>
+   * 
+   * @return {@link Set<SoftLink>} Value to which {@link #evenMoreLinks} is set. Actual type: LinkObject
    */
   @Deprecated
   public Set<SoftLink> getEvenMoreLinks( ) {

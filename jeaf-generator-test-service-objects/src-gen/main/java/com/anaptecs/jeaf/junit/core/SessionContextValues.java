@@ -153,7 +153,7 @@ public class SessionContextValues implements ServiceObject {
   /**
    * Method returns attribute {@link #timestamp}.<br/>
    * 
-   * @return String Value to which {@link #timestamp} is set.
+   * @return {@link String} Value to which {@link #timestamp} is set.
    */
   public String getTimestamp( ) {
     return timestamp;
@@ -172,7 +172,7 @@ public class SessionContextValues implements ServiceObject {
   /**
    * Method returns attribute {@link #counter}.<br/>
    * 
-   * @return Integer Value to which {@link #counter} is set.
+   * @return {@link Integer} Value to which {@link #counter} is set.
    */
   public Integer getCounter( ) {
     return counter;

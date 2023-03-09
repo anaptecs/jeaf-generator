@@ -130,7 +130,7 @@ public class BigDecimalCode implements ServiceObject {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return BigDecimal Value to which {@link #code} is set.
+   * @return {@link BigDecimal} Value to which {@link #code} is set.
    */
   public BigDecimal getCode( ) {
     return code;

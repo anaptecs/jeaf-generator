@@ -138,7 +138,7 @@ public class TechnicalHeaderContext implements ServiceObject {
   /**
    * Method returns attribute {@link #reseller}.<br/>
    * 
-   * @return String Value to which {@link #reseller} is set.
+   * @return {@link String} Value to which {@link #reseller} is set.
    */
   public String getReseller( ) {
     return reseller;

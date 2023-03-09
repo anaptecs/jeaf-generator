@@ -209,7 +209,7 @@ public class Booking {
   /**
    * Method returns attribute {@link #customerName}.<br/>
    * 
-   * @return String Value to which {@link #customerName} is set.
+   * @return {@link String} Value to which {@link #customerName} is set.
    */
   public String getCustomerName( ) {
     return customerName;

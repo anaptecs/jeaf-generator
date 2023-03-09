@@ -120,7 +120,7 @@ public class CharacterCode {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return Character Value to which {@link #code} is set.
+   * @return {@link Character} Value to which {@link #code} is set.
    */
   public Character getCode( ) {
     return code;

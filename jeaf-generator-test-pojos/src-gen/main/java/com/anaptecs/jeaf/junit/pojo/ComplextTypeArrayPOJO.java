@@ -133,7 +133,7 @@ public class ComplextTypeArrayPOJO {
   /**
    * Method returns attribute {@link #plainPOJOs}.<br/>
    * 
-   * @return PlainPOJO Value to which {@link #plainPOJOs} is set.
+   * @return {@link PlainPOJO} Value to which {@link #plainPOJOs} is set.
    */
   public PlainPOJO[] getPlainPOJOs( ) {
     PlainPOJO[] lReturnValue;

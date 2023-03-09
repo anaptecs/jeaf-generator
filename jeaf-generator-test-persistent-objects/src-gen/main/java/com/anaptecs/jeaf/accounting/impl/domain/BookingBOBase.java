@@ -82,7 +82,7 @@ public abstract class BookingBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #amount}.<br/>
    * 
-   * @return Double Value to which {@link #amount} is set.
+   * @return {@link Double} Value to which {@link #amount} is set.
    */
   public Double getAmount( ) {
     return amount;

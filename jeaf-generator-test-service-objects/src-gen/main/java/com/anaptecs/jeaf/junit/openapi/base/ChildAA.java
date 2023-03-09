@@ -398,7 +398,7 @@ public class ChildAA extends ChildA {
   /**
    * Method returns attribute {@link #requiredArray}.<br/>
    * 
-   * @return String Value to which {@link #requiredArray} is set.
+   * @return {@link String} Value to which {@link #requiredArray} is set.
    */
   public String[] getRequiredArray( ) {
     String[] lReturnValue;
@@ -431,7 +431,7 @@ public class ChildAA extends ChildA {
   /**
    * Method returns attribute {@link #bigIntegerCode}.<br/>
    * 
-   * @return BigIntegerCode Value to which {@link #bigIntegerCode} is set.
+   * @return {@link BigIntegerCode} Value to which {@link #bigIntegerCode} is set.
    */
   public BigIntegerCode getBigIntegerCode( ) {
     return bigIntegerCode;
@@ -478,7 +478,7 @@ public class ChildAA extends ChildA {
   /**
    * Method returns attribute {@link #codes}.<br/>
    * 
-   * @return IntegerCode Value to which {@link #codes} is set.
+   * @return {@link IntegerCode} Value to which {@link #codes} is set.
    */
   public IntegerCode[] getCodes( ) {
     IntegerCode[] lReturnValue;

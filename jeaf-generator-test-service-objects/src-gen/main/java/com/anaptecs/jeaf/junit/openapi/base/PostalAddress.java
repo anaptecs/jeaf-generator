@@ -202,7 +202,7 @@ public class PostalAddress implements ServiceObject {
   /**
    * Method returns attribute {@link #street}.<br/>
    * 
-   * @return String Value to which {@link #street} is set.
+   * @return {@link String} Value to which {@link #street} is set.
    */
   public String getStreet( ) {
     return street;
@@ -221,7 +221,7 @@ public class PostalAddress implements ServiceObject {
   /**
    * Method returns attribute {@link #houseNumber}.<br/>
    * 
-   * @return String Value to which {@link #houseNumber} is set.
+   * @return {@link String} Value to which {@link #houseNumber} is set.
    */
   public String getHouseNumber( ) {
     return houseNumber;
@@ -240,7 +240,7 @@ public class PostalAddress implements ServiceObject {
   /**
    * Method returns attribute {@link #city}.<br/>
    * 
-   * @return String Value to which {@link #city} is set.
+   * @return {@link String} Value to which {@link #city} is set.
    */
   public String getCity( ) {
     return city;

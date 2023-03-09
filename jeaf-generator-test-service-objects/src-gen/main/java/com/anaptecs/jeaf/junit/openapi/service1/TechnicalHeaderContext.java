@@ -162,7 +162,7 @@ public class TechnicalHeaderContext implements ServiceObject {
   /**
    * Method returns attribute {@link #reseller}.<br/>
    * 
-   * @return String Value to which {@link #reseller} is set.
+   * @return {@link String} Value to which {@link #reseller} is set.
    */
   public String getReseller( ) {
     return reseller;
@@ -181,7 +181,7 @@ public class TechnicalHeaderContext implements ServiceObject {
   /**
    * Method returns attribute {@link #authenticationToken}.<br/>
    * 
-   * @return String Value to which {@link #authenticationToken} is set.
+   * @return {@link String} Value to which {@link #authenticationToken} is set.
    */
   public String getAuthenticationToken( ) {
     return authenticationToken;

@@ -196,7 +196,7 @@ public class Duration implements Serializable {
   /**
    * Method returns attribute {@link #timeUnit}.<br/>
    * 
-   * @return TimeUnit Value to which {@link #timeUnit} is set.
+   * @return {@link TimeUnit} Value to which {@link #timeUnit} is set.
    */
   public TimeUnit getTimeUnit( ) {
     return timeUnit;

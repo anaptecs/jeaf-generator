@@ -398,7 +398,7 @@ public abstract class ResellerBase implements Serializable {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which {@link #name} is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
@@ -417,7 +417,7 @@ public abstract class ResellerBase implements Serializable {
   /**
    * Method returns attribute {@link #language}.<br/>
    * 
-   * @return Locale Value to which {@link #language} is set.
+   * @return {@link Locale} Value to which {@link #language} is set.
    */
   public Locale getLanguage( ) {
     return language;

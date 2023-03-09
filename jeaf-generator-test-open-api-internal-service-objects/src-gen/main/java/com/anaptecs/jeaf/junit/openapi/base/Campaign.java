@@ -206,11 +206,12 @@ public class Campaign implements ServiceObject {
   /**
    * Method returns association {@link #theLink}.<br/>
    * 
-   * @return com.anaptecs.jeaf.junit.openapi.base.LinkObject Value to which {@link #theLink} is set.
+   * @return {@link long} Value to which {@link #theLink} is set. Actual type:
+   * com.anaptecs.jeaf.junit.openapi.base.LinkObject
    * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
-  public Long getTheLink( ) {
+  public long getTheLink( ) {
     return theLink;
   }
 
@@ -221,7 +222,7 @@ public class Campaign implements ServiceObject {
    * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
-  public void setTheLink( Long pTheLink ) {
+  public void setTheLink( long pTheLink ) {
     theLink = pTheLink;
   }
 
@@ -231,6 +232,12 @@ public class Campaign implements ServiceObject {
    *
    * @return Collection All LinkObject objects that belong to the association "moreLinks". The method never returns null
    * and the returned collection is modifiable.
+   */
+  /**
+   * Method returns association {@link #moreLinks}.<br/>
+   * 
+   * @return {@link Set<Long>} Value to which {@link #moreLinks} is set. Actual type:
+   * com.anaptecs.jeaf.junit.openapi.base.LinkObject
    */
   @Deprecated
   public Set<Long> getMoreLinks( ) {
@@ -299,6 +306,12 @@ public class Campaign implements ServiceObject {
    *
    * @return Collection All DiscountOffer objects that belong to the association "discountOffers". The method never
    * returns null and the returned collection is modifiable.
+   */
+  /**
+   * Method returns association {@link #discountOffers}.<br/>
+   * 
+   * @return {@link List<String>} Value to which {@link #discountOffers} is set. Actual type:
+   * com.anaptecs.jeaf.junit.openapi.base.DiscountOffer
    */
   @Deprecated
   public List<String> getDiscountOffers( ) {

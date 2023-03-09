@@ -154,7 +154,7 @@ public class Sale implements ServiceObject {
   /**
    * Method returns attribute {@link #transactionAmount}.<br/>
    * 
-   * @return BigDecimal Value to which {@link #transactionAmount} is set.
+   * @return {@link BigDecimal} Value to which {@link #transactionAmount} is set.
    */
   public BigDecimal getTransactionAmount( ) {
     return transactionAmount;

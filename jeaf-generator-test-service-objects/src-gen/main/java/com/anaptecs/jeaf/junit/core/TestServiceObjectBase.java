@@ -250,7 +250,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   /**
    * Method returns attribute {@link #key}.<br/>
    * 
-   * @return String Value to which {@link #key} is set.
+   * @return {@link String} Value to which {@link #key} is set.
    */
   public String getKey( ) {
     return key;
@@ -269,7 +269,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   /**
    * Method returns attribute {@link #info}.<br/>
    * 
-   * @return String Value to which {@link #info} is set.
+   * @return {@link String} Value to which {@link #info} is set.
    */
   public String getInfo( ) {
     return info;
@@ -307,7 +307,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   /**
    * Method returns attribute {@link #dummy1}.<br/>
    * 
-   * @return Double Value to which {@link #dummy1} is set.
+   * @return {@link Double} Value to which {@link #dummy1} is set.
    */
   public Double getDummy1( ) {
     return dummy1;
@@ -326,7 +326,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   /**
    * Method returns attribute {@link #dummy2}.<br/>
    * 
-   * @return String Value to which {@link #dummy2} is set.
+   * @return {@link String} Value to which {@link #dummy2} is set.
    */
   public String[] getDummy2( ) {
     String[] lReturnValue;
@@ -359,7 +359,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   /**
    * Method returns attribute {@link #dummy3}.<br/>
    * 
-   * @return Integer Value to which {@link #dummy3} is set.
+   * @return {@link Integer} Value to which {@link #dummy3} is set.
    */
   public Integer[] getDummy3( ) {
     Integer[] lReturnValue;

@@ -71,7 +71,7 @@ public abstract class ResponsibilityTypeBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #type}.<br/>
    * 
-   * @return String Value to which {@link #type} is set.
+   * @return {@link String} Value to which {@link #type} is set.
    */
   public String getType( ) {
     return type;
@@ -90,7 +90,7 @@ public abstract class ResponsibilityTypeBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #typeChar}.<br/>
    * 
-   * @return Character Value to which {@link #typeChar} is set.
+   * @return {@link Character} Value to which {@link #typeChar} is set.
    */
   public Character getTypeChar( ) {
     return typeChar;
@@ -109,7 +109,7 @@ public abstract class ResponsibilityTypeBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #sortorder}.<br/>
    * 
-   * @return Byte Value to which {@link #sortorder} is set.
+   * @return {@link Byte} Value to which {@link #sortorder} is set.
    */
   public Byte getSortorder( ) {
     return sortorder;

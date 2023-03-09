@@ -102,7 +102,7 @@ public class FloatCode {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return Float Value to which {@link #code} is set.
+   * @return {@link Float} Value to which {@link #code} is set.
    */
   public Float getCode( ) {
     return code;

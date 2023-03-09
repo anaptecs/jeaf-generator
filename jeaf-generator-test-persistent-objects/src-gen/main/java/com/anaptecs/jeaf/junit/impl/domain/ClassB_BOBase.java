@@ -142,7 +142,7 @@ public abstract class ClassB_BOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #intValue}.<br/>
    * 
-   * @return Integer Value to which {@link #intValue} is set.
+   * @return {@link Integer} Value to which {@link #intValue} is set.
    */
   public Integer getIntValue( ) {
     return intValue;

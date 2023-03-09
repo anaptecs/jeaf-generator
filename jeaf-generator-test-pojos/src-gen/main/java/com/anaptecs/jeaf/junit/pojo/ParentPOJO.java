@@ -183,7 +183,7 @@ public class ParentPOJO {
   /**
    * Method returns attribute {@link #parentAttribute}.<br/>
    * 
-   * @return String Value to which {@link #parentAttribute} is set.
+   * @return {@link String} Value to which {@link #parentAttribute} is set.
    */
   public String getParentAttribute( ) {
     return parentAttribute;
@@ -223,7 +223,7 @@ public class ParentPOJO {
   /**
    * Method returns attribute {@link #hello}.<br/>
    * 
-   * @return String Value to which {@link #hello} is set.
+   * @return {@link String} Value to which {@link #hello} is set.
    */
   public String getHello( ) {
     return hello;

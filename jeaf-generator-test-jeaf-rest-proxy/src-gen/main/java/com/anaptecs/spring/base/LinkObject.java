@@ -138,7 +138,7 @@ public class LinkObject implements Serializable {
   /**
    * Method returns attribute {@link #href}.<br/>
    * 
-   * @return String Value to which {@link #href} is set.
+   * @return {@link String} Value to which {@link #href} is set.
    */
   public String getHref( ) {
     return href;

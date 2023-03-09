@@ -267,7 +267,7 @@ public abstract class BankBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which {@link #name} is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
@@ -286,7 +286,7 @@ public abstract class BankBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return Long Value to which {@link #code} is set.
+   * @return {@link Long} Value to which {@link #code} is set.
    */
   public Long getCode( ) {
     return code;
@@ -305,7 +305,7 @@ public abstract class BankBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #type}.<br/>
    * 
-   * @return Short Value to which {@link #type} is set.
+   * @return {@link Short} Value to which {@link #type} is set.
    */
   public Short getType( ) {
     return type;

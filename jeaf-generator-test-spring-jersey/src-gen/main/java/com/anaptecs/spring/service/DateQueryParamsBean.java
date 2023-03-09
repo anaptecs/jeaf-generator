@@ -349,7 +349,7 @@ public class DateQueryParamsBean {
   /**
    * Method returns attribute {@link #offsetDateTime}.<br/>
    * 
-   * @return OffsetDateTime Value to which {@link #offsetDateTime} is set.
+   * @return {@link OffsetDateTime} Value to which {@link #offsetDateTime} is set.
    */
   public OffsetDateTime getOffsetDateTime( ) {
     return offsetDateTime;
@@ -368,7 +368,7 @@ public class DateQueryParamsBean {
   /**
    * Method returns attribute {@link #offsetTime}.<br/>
    * 
-   * @return OffsetTime Value to which {@link #offsetTime} is set.
+   * @return {@link OffsetTime} Value to which {@link #offsetTime} is set.
    */
   public OffsetTime getOffsetTime( ) {
     return offsetTime;
@@ -387,7 +387,7 @@ public class DateQueryParamsBean {
   /**
    * Method returns attribute {@link #localDateTime}.<br/>
    * 
-   * @return LocalDateTime Value to which {@link #localDateTime} is set.
+   * @return {@link LocalDateTime} Value to which {@link #localDateTime} is set.
    */
   public LocalDateTime getLocalDateTime( ) {
     return localDateTime;
@@ -406,7 +406,7 @@ public class DateQueryParamsBean {
   /**
    * Method returns attribute {@link #localTime}.<br/>
    * 
-   * @return LocalTime Value to which {@link #localTime} is set.
+   * @return {@link LocalTime} Value to which {@link #localTime} is set.
    */
   public LocalTime getLocalTime( ) {
     return localTime;
@@ -425,7 +425,7 @@ public class DateQueryParamsBean {
   /**
    * Method returns attribute {@link #localDate}.<br/>
    * 
-   * @return LocalDate Value to which {@link #localDate} is set.
+   * @return {@link LocalDate} Value to which {@link #localDate} is set.
    */
   public LocalDate getLocalDate( ) {
     return localDate;
@@ -444,7 +444,7 @@ public class DateQueryParamsBean {
   /**
    * Method returns attribute {@link #utilDate}.<br/>
    * 
-   * @return java.util.Date Value to which {@link #utilDate} is set.
+   * @return {@link java.util.Date} Value to which {@link #utilDate} is set.
    */
   public java.util.Date getUtilDate( ) {
     return utilDate;
@@ -463,7 +463,7 @@ public class DateQueryParamsBean {
   /**
    * Method returns attribute {@link #calendar}.<br/>
    * 
-   * @return Calendar Value to which {@link #calendar} is set.
+   * @return {@link Calendar} Value to which {@link #calendar} is set.
    */
   public Calendar getCalendar( ) {
     return calendar;
@@ -482,7 +482,7 @@ public class DateQueryParamsBean {
   /**
    * Method returns attribute {@link #sqlTimestamp}.<br/>
    * 
-   * @return Timestamp Value to which {@link #sqlTimestamp} is set.
+   * @return {@link Timestamp} Value to which {@link #sqlTimestamp} is set.
    */
   public Timestamp getSqlTimestamp( ) {
     return sqlTimestamp;
@@ -501,7 +501,7 @@ public class DateQueryParamsBean {
   /**
    * Method returns attribute {@link #sqlTime}.<br/>
    * 
-   * @return Time Value to which {@link #sqlTime} is set.
+   * @return {@link Time} Value to which {@link #sqlTime} is set.
    */
   public Time getSqlTime( ) {
     return sqlTime;
@@ -520,7 +520,7 @@ public class DateQueryParamsBean {
   /**
    * Method returns attribute {@link #sqlDate}.<br/>
    * 
-   * @return Date Value to which {@link #sqlDate} is set.
+   * @return {@link Date} Value to which {@link #sqlDate} is set.
    */
   public Date getSqlDate( ) {
     return sqlDate;

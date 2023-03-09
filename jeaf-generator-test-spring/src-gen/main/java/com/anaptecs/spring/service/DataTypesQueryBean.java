@@ -480,7 +480,7 @@ public class DataTypesQueryBean {
   /**
    * Method returns attribute {@link #longCodes}.<br/>
    * 
-   * @return LongCode Value to which {@link #longCodes} is set.
+   * @return {@link LongCode} Value to which {@link #longCodes} is set.
    */
   public LongCode[] getLongCodes( ) {
     LongCode[] lReturnValue;
@@ -513,7 +513,7 @@ public class DataTypesQueryBean {
   /**
    * Method returns attribute {@link #codes}.<br/>
    * 
-   * @return IntegerCodeType Value to which {@link #codes} is set.
+   * @return {@link IntegerCodeType} Value to which {@link #codes} is set.
    */
   public IntegerCodeType[] getCodes( ) {
     IntegerCodeType[] lReturnValue;
@@ -661,7 +661,7 @@ public class DataTypesQueryBean {
   /**
    * Method returns attribute {@link #bookingIDsArray}.<br/>
    * 
-   * @return BookingID Value to which {@link #bookingIDsArray} is set.
+   * @return {@link BookingID} Value to which {@link #bookingIDsArray} is set.
    */
   public BookingID[] getBookingIDsArray( ) {
     BookingID[] lReturnValue;
@@ -694,7 +694,7 @@ public class DataTypesQueryBean {
   /**
    * Method returns attribute {@link #offsetDateTime}.<br/>
    * 
-   * @return OffsetDateTime Value to which {@link #offsetDateTime} is set.
+   * @return {@link OffsetDateTime} Value to which {@link #offsetDateTime} is set.
    */
   public OffsetDateTime getOffsetDateTime( ) {
     return offsetDateTime;
@@ -741,7 +741,7 @@ public class DataTypesQueryBean {
   /**
    * Method returns attribute {@link #localDateTime}.<br/>
    * 
-   * @return LocalDateTime Value to which {@link #localDateTime} is set.
+   * @return {@link LocalDateTime} Value to which {@link #localDateTime} is set.
    */
   public LocalDateTime getLocalDateTime( ) {
     return localDateTime;
@@ -760,7 +760,7 @@ public class DataTypesQueryBean {
   /**
    * Method returns attribute {@link #localTime}.<br/>
    * 
-   * @return LocalTime Value to which {@link #localTime} is set.
+   * @return {@link LocalTime} Value to which {@link #localTime} is set.
    */
   public LocalTime getLocalTime( ) {
     return localTime;
@@ -893,7 +893,7 @@ public class DataTypesQueryBean {
   /**
    * Method returns attribute {@link #startTimestamps}.<br/>
    * 
-   * @return OffsetDateTime Value to which {@link #startTimestamps} is set.
+   * @return {@link OffsetDateTime} Value to which {@link #startTimestamps} is set.
    */
   public OffsetDateTime[] getStartTimestamps( ) {
     OffsetDateTime[] lReturnValue;

@@ -179,7 +179,7 @@ public class SchufaRequest implements ServiceObject {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which {@link #name} is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
@@ -198,7 +198,7 @@ public class SchufaRequest implements ServiceObject {
   /**
    * Method returns attribute {@link #firstName}.<br/>
    * 
-   * @return String Value to which {@link #firstName} is set.
+   * @return {@link String} Value to which {@link #firstName} is set.
    */
   public String getFirstName( ) {
     return firstName;
@@ -217,7 +217,7 @@ public class SchufaRequest implements ServiceObject {
   /**
    * Method returns attribute {@link #dateOfBirth}.<br/>
    * 
-   * @return Calendar Value to which {@link #dateOfBirth} is set.
+   * @return {@link Calendar} Value to which {@link #dateOfBirth} is set.
    */
   public Calendar getDateOfBirth( ) {
     return dateOfBirth;

@@ -133,7 +133,7 @@ public abstract class PlainPOJOBase {
   /**
    * Method returns attribute {@link #hello}.<br/>
    * 
-   * @return String Value to which {@link #hello} is set.
+   * @return {@link String} Value to which {@link #hello} is set.
    */
   public String getHello( ) {
     return hello;
@@ -152,7 +152,7 @@ public abstract class PlainPOJOBase {
   /**
    * Method returns attribute {@link #world}.<br/>
    * 
-   * @return Integer Value to which {@link #world} is set.
+   * @return {@link Integer} Value to which {@link #world} is set.
    */
   public Integer getWorld( ) {
     return world;

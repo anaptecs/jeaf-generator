@@ -470,7 +470,7 @@ public class MultiValuedDataType implements ServiceObject {
   /**
    * Method returns attribute {@link #stringProperty}.<br/>
    * 
-   * @return String Value to which {@link #stringProperty} is set.
+   * @return {@link String} Value to which {@link #stringProperty} is set.
    */
   public String getStringProperty( ) {
     return stringProperty;

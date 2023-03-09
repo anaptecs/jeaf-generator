@@ -161,7 +161,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
   /**
    * Method returns attribute {@link #header1}.<br/>
    * 
-   * @return String Value to which {@link #header1} is set.
+   * @return {@link String} Value to which {@link #header1} is set.
    */
   public String getHeader1( ) {
     return header1;
@@ -180,7 +180,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
   /**
    * Method returns attribute {@link #deprecatedHeader}.<br/>
    * 
-   * @return String Value to which {@link #deprecatedHeader} is set.
+   * @return {@link String} Value to which {@link #deprecatedHeader} is set.
    * @deprecated this header param is no longer supported. Please use "xxx" instead. (<b>since:</b> 1.2.3, <b>removed
    * with:</b> PI.2.3)
    */

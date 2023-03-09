@@ -126,7 +126,7 @@ public class BooleanCode {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return Boolean Value to which {@link #code} is set.
+   * @return {@link Boolean} Value to which {@link #code} is set.
    */
   public Boolean getCode( ) {
     return code;

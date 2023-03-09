@@ -368,7 +368,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which {@link #name} is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
@@ -387,7 +387,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method returns attribute {@link #firstName}.<br/>
    * 
-   * @return String Value to which {@link #firstName} is set.
+   * @return {@link String} Value to which {@link #firstName} is set.
    */
   public String getFirstName( ) {
     return firstName;
@@ -406,7 +406,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method returns attribute {@link #dateOfBirth}.<br/>
    * 
-   * @return Calendar Value to which {@link #dateOfBirth} is set.
+   * @return {@link Calendar} Value to which {@link #dateOfBirth} is set.
    */
   public Calendar getDateOfBirth( ) {
     return dateOfBirth;
@@ -546,7 +546,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method returns attribute {@link #age}.<br/>
    * 
-   * @return Integer Value to which {@link #age} is set.
+   * @return {@link Integer} Value to which {@link #age} is set.
    */
   public Integer getAge( ) {
     return age;
@@ -565,7 +565,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method returns attribute {@link #displayName}.<br/>
    * 
-   * @return String Value to which {@link #displayName} is set.
+   * @return {@link String} Value to which {@link #displayName} is set.
    */
   public String getDisplayName( ) {
     return displayName;

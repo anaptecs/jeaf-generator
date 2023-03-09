@@ -218,7 +218,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
   /**
    * Method returns attribute {@link #iban}.<br/>
    * 
-   * @return Long Value to which {@link #iban} is set.
+   * @return {@link Long} Value to which {@link #iban} is set.
    */
   public Long getIban( ) {
     return iban;
@@ -237,7 +237,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
   /**
    * Method returns attribute {@link #balance}.<br/>
    * 
-   * @return Double Value to which {@link #balance} is set.
+   * @return {@link Double} Value to which {@link #balance} is set.
    */
   public Double getBalance( ) {
     return balance;
@@ -256,7 +256,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
   /**
    * Method returns attribute {@link #bankID}.<br/>
    * 
-   * @return ServiceObjectID Value to which {@link #bankID} is set.
+   * @return {@link ServiceObjectID} Value to which {@link #bankID} is set.
    */
   public ServiceObjectID getBankID( ) {
     return bankID;

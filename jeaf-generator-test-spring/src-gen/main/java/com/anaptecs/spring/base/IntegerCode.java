@@ -126,7 +126,7 @@ public class IntegerCode {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return Integer Value to which {@link #code} is set.
+   * @return {@link Integer} Value to which {@link #code} is set.
    */
   public Integer getCode( ) {
     return code;

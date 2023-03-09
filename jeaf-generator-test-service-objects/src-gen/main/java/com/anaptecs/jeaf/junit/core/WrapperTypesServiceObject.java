@@ -303,7 +303,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aBoolean}.<br/>
    * 
-   * @return Boolean Value to which {@link #aBoolean} is set.
+   * @return {@link Boolean} Value to which {@link #aBoolean} is set.
    */
   public Boolean getABoolean( ) {
     return aBoolean;
@@ -322,7 +322,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aByte}.<br/>
    * 
-   * @return Byte Value to which {@link #aByte} is set.
+   * @return {@link Byte} Value to which {@link #aByte} is set.
    */
   public Byte getAByte( ) {
     return aByte;
@@ -341,7 +341,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aShort}.<br/>
    * 
-   * @return Short Value to which {@link #aShort} is set.
+   * @return {@link Short} Value to which {@link #aShort} is set.
    */
   public Short getAShort( ) {
     return aShort;
@@ -360,7 +360,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aInt}.<br/>
    * 
-   * @return Integer Value to which {@link #aInt} is set.
+   * @return {@link Integer} Value to which {@link #aInt} is set.
    */
   public Integer getAInt( ) {
     return aInt;
@@ -379,7 +379,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aLong}.<br/>
    * 
-   * @return Long Value to which {@link #aLong} is set.
+   * @return {@link Long} Value to which {@link #aLong} is set.
    */
   public Long getALong( ) {
     return aLong;
@@ -398,7 +398,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aFloat}.<br/>
    * 
-   * @return Float Value to which {@link #aFloat} is set.
+   * @return {@link Float} Value to which {@link #aFloat} is set.
    */
   public Float getAFloat( ) {
     return aFloat;
@@ -417,7 +417,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aDouble}.<br/>
    * 
-   * @return Double Value to which {@link #aDouble} is set.
+   * @return {@link Double} Value to which {@link #aDouble} is set.
    */
   public Double getADouble( ) {
     return aDouble;
@@ -436,7 +436,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #aChar}.<br/>
    * 
-   * @return Character Value to which {@link #aChar} is set.
+   * @return {@link Character} Value to which {@link #aChar} is set.
    */
   public Character getAChar( ) {
     return aChar;

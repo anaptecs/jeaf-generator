@@ -228,7 +228,8 @@ public class SoftLinkChildB extends SoftLinkParent {
   /**
    * Method returns association {@link #heyBrother}.<br/>
    * 
-   * @return com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA Value to which {@link #heyBrother} is set.
+   * @return {@link String} Value to which {@link #heyBrother} is set. Actual type:
+   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA
    */
   public String getHeyBrother( ) {
     return heyBrother;
@@ -257,6 +258,12 @@ public class SoftLinkChildB extends SoftLinkParent {
    *
    * @return Collection All SoftLinkPartner objects that belong to the association "softLinkPartners". The method never
    * returns null and the returned collection is unmodifiable.
+   */
+  /**
+   * Method returns association {@link #softLinkPartners}.<br/>
+   * 
+   * @return {@link Set<String>} Value to which {@link #softLinkPartners} is set. Actual type:
+   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner
    */
   public Set<String> getSoftLinkPartners( ) {
     // Return all SoftLinkPartner objects as unmodifiable collection.
@@ -319,7 +326,8 @@ public class SoftLinkChildB extends SoftLinkParent {
   /**
    * Method returns association {@link #oneLink}.<br/>
    * 
-   * @return com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner Value to which {@link #oneLink} is set.
+   * @return {@link SoftLinkID} Value to which {@link #oneLink} is set. Actual type:
+   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner
    */
   public SoftLinkID getOneLink( ) {
     return oneLink;

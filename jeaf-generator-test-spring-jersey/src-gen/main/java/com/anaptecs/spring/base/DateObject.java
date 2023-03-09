@@ -238,7 +238,7 @@ public class DateObject {
   /**
    * Method returns attribute {@link #localTime}.<br/>
    * 
-   * @return LocalTime Value to which {@link #localTime} is set.
+   * @return {@link LocalTime} Value to which {@link #localTime} is set.
    */
   public LocalTime getLocalTime( ) {
     return localTime;
@@ -257,7 +257,7 @@ public class DateObject {
   /**
    * Method returns attribute {@link #localDate}.<br/>
    * 
-   * @return LocalDate Value to which {@link #localDate} is set.
+   * @return {@link LocalDate} Value to which {@link #localDate} is set.
    */
   public LocalDate getLocalDate( ) {
     return localDate;
@@ -276,7 +276,7 @@ public class DateObject {
   /**
    * Method returns attribute {@link #localDateTime}.<br/>
    * 
-   * @return LocalDateTime Value to which {@link #localDateTime} is set.
+   * @return {@link LocalDateTime} Value to which {@link #localDateTime} is set.
    */
   public LocalDateTime getLocalDateTime( ) {
     return localDateTime;
@@ -295,7 +295,7 @@ public class DateObject {
   /**
    * Method returns attribute {@link #calendar}.<br/>
    * 
-   * @return Calendar Value to which {@link #calendar} is set.
+   * @return {@link Calendar} Value to which {@link #calendar} is set.
    */
   public Calendar getCalendar( ) {
     return calendar;
@@ -314,7 +314,7 @@ public class DateObject {
   /**
    * Method returns attribute {@link #sqlDate}.<br/>
    * 
-   * @return Date Value to which {@link #sqlDate} is set.
+   * @return {@link Date} Value to which {@link #sqlDate} is set.
    */
   public Date getSqlDate( ) {
     return sqlDate;
@@ -333,7 +333,7 @@ public class DateObject {
   /**
    * Method returns attribute {@link #utilDate}.<br/>
    * 
-   * @return java.util.Date Value to which {@link #utilDate} is set.
+   * @return {@link java.util.Date} Value to which {@link #utilDate} is set.
    */
   public java.util.Date getUtilDate( ) {
     return utilDate;

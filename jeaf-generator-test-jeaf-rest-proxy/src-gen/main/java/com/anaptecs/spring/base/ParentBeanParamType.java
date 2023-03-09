@@ -167,7 +167,7 @@ public class ParentBeanParamType implements Serializable {
   /**
    * Method returns attribute {@link #novaKey}.<br/>
    * 
-   * @return String Value to which {@link #novaKey} is set.
+   * @return {@link String} Value to which {@link #novaKey} is set.
    */
   public String getNovaKey( ) {
     return novaKey;
@@ -186,7 +186,7 @@ public class ParentBeanParamType implements Serializable {
   /**
    * Method returns attribute {@link #tkID}.<br/>
    * 
-   * @return String Value to which {@link #tkID} is set.
+   * @return {@link String} Value to which {@link #tkID} is set.
    */
   public String getTkID( ) {
     return tkID;

@@ -150,7 +150,7 @@ public class CurrencyCode implements Serializable {
    * Method returns attribute {@link #code}.<br/>
    * ISO 4217 currency code.
    * 
-   * @return String Value to which {@link #code} is set.
+   * @return {@link String} Value to which {@link #code} is set.
    */
   public String getCode( ) {
     return code;

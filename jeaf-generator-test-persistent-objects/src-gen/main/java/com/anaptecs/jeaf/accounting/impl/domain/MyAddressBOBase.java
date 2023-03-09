@@ -83,7 +83,7 @@ public abstract class MyAddressBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #street}.<br/>
    * 
-   * @return String Value to which {@link #street} is set.
+   * @return {@link String} Value to which {@link #street} is set.
    */
   public String getStreet( ) {
     return street;
@@ -102,7 +102,7 @@ public abstract class MyAddressBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #zipCode}.<br/>
    * 
-   * @return Integer Value to which {@link #zipCode} is set.
+   * @return {@link Integer} Value to which {@link #zipCode} is set.
    */
   public Integer getZipCode( ) {
     return zipCode;
@@ -121,7 +121,7 @@ public abstract class MyAddressBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #city}.<br/>
    * 
-   * @return String Value to which {@link #city} is set.
+   * @return {@link String} Value to which {@link #city} is set.
    */
   public String getCity( ) {
     return city;
@@ -140,7 +140,7 @@ public abstract class MyAddressBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #country}.<br/>
    * 
-   * @return String Value to which {@link #country} is set.
+   * @return {@link String} Value to which {@link #country} is set.
    */
   public String getCountry( ) {
     return country;

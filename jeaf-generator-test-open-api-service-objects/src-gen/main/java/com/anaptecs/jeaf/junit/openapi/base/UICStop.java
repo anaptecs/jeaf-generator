@@ -252,7 +252,7 @@ public class UICStop extends Stop {
   /**
    * Method returns attribute {@link #uicCode}.<br/>
    * 
-   * @return String Value to which {@link #uicCode} is set.
+   * @return {@link String} Value to which {@link #uicCode} is set.
    */
   public String getUicCode( ) {
     return uicCode;

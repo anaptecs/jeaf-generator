@@ -96,7 +96,7 @@ public abstract class AccountBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #number}.<br/>
    * 
-   * @return Long Value to which {@link #number} is set.
+   * @return {@link Long} Value to which {@link #number} is set.
    */
   public Long getNumber( ) {
     return number;
@@ -364,7 +364,7 @@ public abstract class AccountBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #interestRate}.<br/>
    * 
-   * @return Float Value to which {@link #interestRate} is set.
+   * @return {@link Float} Value to which {@link #interestRate} is set.
    */
   public Float getInterestRate( ) {
     return interestRate;

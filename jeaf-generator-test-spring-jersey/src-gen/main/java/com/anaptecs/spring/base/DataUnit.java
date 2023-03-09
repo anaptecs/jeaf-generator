@@ -28,7 +28,7 @@ public final class DataUnit {
     /**
      * Method returns attribute {@link #dataUnitID}.<br/>
      * 
-     * @return String Value to which {@link #dataUnitID} is set.
+     * @return {@link String} Value to which {@link #dataUnitID} is set.
      */
     public String getDataUnitID( ) {
       return dataUnitID;

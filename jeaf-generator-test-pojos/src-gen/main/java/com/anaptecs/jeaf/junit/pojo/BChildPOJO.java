@@ -184,7 +184,7 @@ public class BChildPOJO extends BParentPOJO {
   /**
    * Method returns attribute {@link #childAttribute}.<br/>
    * 
-   * @return Integer Value to which {@link #childAttribute} is set.
+   * @return {@link Integer} Value to which {@link #childAttribute} is set.
    */
   public Integer getChildAttribute( ) {
     return childAttribute;

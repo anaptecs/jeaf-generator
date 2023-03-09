@@ -139,7 +139,7 @@ public abstract class MReleationBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #myNumber}.<br/>
    * 
-   * @return Integer Value to which {@link #myNumber} is set.
+   * @return {@link Integer} Value to which {@link #myNumber} is set.
    */
   public Integer getMyNumber( ) {
     return myNumber;

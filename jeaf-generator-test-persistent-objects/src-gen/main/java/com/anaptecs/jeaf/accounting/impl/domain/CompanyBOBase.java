@@ -66,7 +66,7 @@ public abstract class CompanyBOBase extends CustomerBO {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which {@link #name} is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
@@ -85,7 +85,7 @@ public abstract class CompanyBOBase extends CustomerBO {
   /**
    * Method returns attribute {@link #registrationNumber}.<br/>
    * 
-   * @return Long Value to which {@link #registrationNumber} is set.
+   * @return {@link Long} Value to which {@link #registrationNumber} is set.
    */
   public Long getRegistrationNumber( ) {
     return registrationNumber;
@@ -104,7 +104,7 @@ public abstract class CompanyBOBase extends CustomerBO {
   /**
    * Method returns attribute {@link #taxNumber}.<br/>
    * 
-   * @return Long Value to which {@link #taxNumber} is set.
+   * @return {@link Long} Value to which {@link #taxNumber} is set.
    */
   public Long getTaxNumber( ) {
     return taxNumber;

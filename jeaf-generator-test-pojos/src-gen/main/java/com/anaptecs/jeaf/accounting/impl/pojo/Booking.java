@@ -282,7 +282,7 @@ public class Booking {
   /**
    * Method returns attribute {@link #amount}.<br/>
    * 
-   * @return BigDecimal Value to which {@link #amount} is set.
+   * @return {@link BigDecimal} Value to which {@link #amount} is set.
    */
   public BigDecimal getAmount( ) {
     return amount;
@@ -301,7 +301,7 @@ public class Booking {
   /**
    * Method returns attribute {@link #currency}.<br/>
    * 
-   * @return Currency Value to which {@link #currency} is set.
+   * @return {@link Currency} Value to which {@link #currency} is set.
    */
   public Currency getCurrency( ) {
     return currency;
@@ -320,7 +320,7 @@ public class Booking {
   /**
    * Method returns attribute {@link #executionTimestamp}.<br/>
    * 
-   * @return Calendar Value to which {@link #executionTimestamp} is set.
+   * @return {@link Calendar} Value to which {@link #executionTimestamp} is set.
    */
   public Calendar getExecutionTimestamp( ) {
     return executionTimestamp;

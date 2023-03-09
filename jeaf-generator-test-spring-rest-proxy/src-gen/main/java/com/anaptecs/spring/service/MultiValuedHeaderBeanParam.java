@@ -435,7 +435,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #names}.<br/>
    * 
-   * @return String Value to which {@link #names} is set.
+   * @return {@link String} Value to which {@link #names} is set.
    */
   public String[] getNames( ) {
     String[] lReturnValue;
@@ -501,7 +501,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #doubles}.<br/>
    * 
-   * @return Double Value to which {@link #doubles} is set.
+   * @return {@link Double} Value to which {@link #doubles} is set.
    */
   public Double[] getDoubles( ) {
     Double[] lReturnValue;
@@ -534,7 +534,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #codes}.<br/>
    * 
-   * @return StringCode Value to which {@link #codes} is set.
+   * @return {@link StringCode} Value to which {@link #codes} is set.
    */
   public StringCode[] getCodes( ) {
     StringCode[] lReturnValue;
@@ -626,7 +626,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #startDate}.<br/>
    * 
-   * @return LocalDate Value to which {@link #startDate} is set.
+   * @return {@link LocalDate} Value to which {@link #startDate} is set.
    */
   public LocalDate getStartDate( ) {
     return startDate;
@@ -645,7 +645,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #dates}.<br/>
    * 
-   * @return LocalDate Value to which {@link #dates} is set.
+   * @return {@link LocalDate} Value to which {@link #dates} is set.
    */
   public LocalDate[] getDates( ) {
     LocalDate[] lReturnValue;
@@ -735,7 +735,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #calendars}.<br/>
    * 
-   * @return Calendar Value to which {@link #calendars} is set.
+   * @return {@link Calendar} Value to which {@link #calendars} is set.
    */
   public Calendar[] getCalendars( ) {
     Calendar[] lReturnValue;
@@ -768,7 +768,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #utilDates}.<br/>
    * 
-   * @return Date Value to which {@link #utilDates} is set.
+   * @return {@link Date} Value to which {@link #utilDates} is set.
    */
   public Date[] getUtilDates( ) {
     Date[] lReturnValue;
@@ -801,7 +801,7 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Method returns attribute {@link #sqlTimestamps}.<br/>
    * 
-   * @return Timestamp Value to which {@link #sqlTimestamps} is set.
+   * @return {@link Timestamp} Value to which {@link #sqlTimestamps} is set.
    */
   public Timestamp[] getSqlTimestamps( ) {
     Timestamp[] lReturnValue;

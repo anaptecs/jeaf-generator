@@ -214,7 +214,7 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
   /**
    * Method returns attribute {@link #hello}.<br/>
    * 
-   * @return Integer Value to which {@link #hello} is set.
+   * @return {@link Integer} Value to which {@link #hello} is set.
    */
   public Integer getHello( ) {
     return hello;
@@ -233,7 +233,7 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
   /**
    * Method returns attribute {@link #country}.<br/>
    * 
-   * @return String Value to which {@link #country} is set.
+   * @return {@link String} Value to which {@link #country} is set.
    */
   public String getCountry( ) {
     return country;

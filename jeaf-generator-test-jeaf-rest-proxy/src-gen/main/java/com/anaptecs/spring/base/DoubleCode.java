@@ -139,7 +139,7 @@ public class DoubleCode implements Serializable {
   /**
    * Method returns attribute {@link #code}.<br/>
    * 
-   * @return Double Value to which {@link #code} is set.
+   * @return {@link Double} Value to which {@link #code} is set.
    */
   public Double getCode( ) {
     return code;

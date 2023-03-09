@@ -103,7 +103,7 @@ public class TechParent {
   /**
    * Method returns attribute {@link #techAttribute}.<br/>
    * 
-   * @return String Value to which {@link #techAttribute} is set.
+   * @return {@link String} Value to which {@link #techAttribute} is set.
    */
   public String getTechAttribute( ) {
     return techAttribute;

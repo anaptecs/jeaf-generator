@@ -123,7 +123,7 @@ public class QueryBeanParam {
   /**
    * Method returns attribute {@link #bookingCode}.<br/>
    * 
-   * @return BookingCode Value to which {@link #bookingCode} is set.
+   * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
   public BookingCode getBookingCode( ) {
     return bookingCode;

@@ -260,7 +260,7 @@ public class ChildAA extends ChildA {
   /**
    * Method returns attribute {@link #requiredArray}.<br/>
    * 
-   * @return String Value to which {@link #requiredArray} is set.
+   * @return {@link String} Value to which {@link #requiredArray} is set.
    */
   public String[] getRequiredArray( ) {
     String[] lReturnValue;

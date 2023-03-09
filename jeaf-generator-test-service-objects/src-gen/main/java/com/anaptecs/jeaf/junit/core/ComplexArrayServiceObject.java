@@ -134,7 +134,7 @@ public class ComplexArrayServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #classBs}.<br/>
    * 
-   * @return ClassB Value to which {@link #classBs} is set.
+   * @return {@link ClassB} Value to which {@link #classBs} is set.
    */
   public ClassB[] getClassBs( ) {
     ClassB[] lReturnValue;

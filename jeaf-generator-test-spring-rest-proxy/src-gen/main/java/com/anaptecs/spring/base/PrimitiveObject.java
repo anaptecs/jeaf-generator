@@ -648,7 +648,7 @@ public class PrimitiveObject {
   /**
    * Method returns attribute {@link #bBoolean}.<br/>
    * 
-   * @return Boolean Value to which {@link #bBoolean} is set.
+   * @return {@link Boolean} Value to which {@link #bBoolean} is set.
    */
   public Boolean getBBoolean( ) {
     return bBoolean;
@@ -705,7 +705,7 @@ public class PrimitiveObject {
   /**
    * Method returns attribute {@link #bByte}.<br/>
    * 
-   * @return Byte Value to which {@link #bByte} is set.
+   * @return {@link Byte} Value to which {@link #bByte} is set.
    */
   public Byte getBByte( ) {
     return bByte;
@@ -743,7 +743,7 @@ public class PrimitiveObject {
   /**
    * Method returns attribute {@link #bShort}.<br/>
    * 
-   * @return Short Value to which {@link #bShort} is set.
+   * @return {@link Short} Value to which {@link #bShort} is set.
    */
   public Short getBShort( ) {
     return bShort;
@@ -781,7 +781,7 @@ public class PrimitiveObject {
   /**
    * Method returns attribute {@link #bInteger}.<br/>
    * 
-   * @return Integer Value to which {@link #bInteger} is set.
+   * @return {@link Integer} Value to which {@link #bInteger} is set.
    */
   public Integer getBInteger( ) {
     return bInteger;
@@ -800,7 +800,7 @@ public class PrimitiveObject {
   /**
    * Method returns attribute {@link #cInteger}.<br/>
    * 
-   * @return Integer Value to which {@link #cInteger} is set.
+   * @return {@link Integer} Value to which {@link #cInteger} is set.
    */
   public Integer getCInteger( ) {
     return cInteger;
@@ -838,7 +838,7 @@ public class PrimitiveObject {
   /**
    * Method returns attribute {@link #bLong}.<br/>
    * 
-   * @return Long Value to which {@link #bLong} is set.
+   * @return {@link Long} Value to which {@link #bLong} is set.
    */
   public Long getBLong( ) {
     return bLong;
@@ -857,7 +857,7 @@ public class PrimitiveObject {
   /**
    * Method returns attribute {@link #aBigInteger}.<br/>
    * 
-   * @return BigInteger Value to which {@link #aBigInteger} is set.
+   * @return {@link BigInteger} Value to which {@link #aBigInteger} is set.
    */
   public BigInteger getABigInteger( ) {
     return aBigInteger;
@@ -895,7 +895,7 @@ public class PrimitiveObject {
   /**
    * Method returns attribute {@link #bCharacter}.<br/>
    * 
-   * @return Character Value to which {@link #bCharacter} is set.
+   * @return {@link Character} Value to which {@link #bCharacter} is set.
    */
   public Character getBCharacter( ) {
     return bCharacter;
@@ -933,7 +933,7 @@ public class PrimitiveObject {
   /**
    * Method returns attribute {@link #bFloat}.<br/>
    * 
-   * @return Float Value to which {@link #bFloat} is set.
+   * @return {@link Float} Value to which {@link #bFloat} is set.
    */
   public Float getBFloat( ) {
     return bFloat;
@@ -971,7 +971,7 @@ public class PrimitiveObject {
   /**
    * Method returns attribute {@link #bDouble}.<br/>
    * 
-   * @return Double Value to which {@link #bDouble} is set.
+   * @return {@link Double} Value to which {@link #bDouble} is set.
    */
   public Double getBDouble( ) {
     return bDouble;
@@ -990,7 +990,7 @@ public class PrimitiveObject {
   /**
    * Method returns attribute {@link #aBigDecimal}.<br/>
    * 
-   * @return BigDecimal Value to which {@link #aBigDecimal} is set.
+   * @return {@link BigDecimal} Value to which {@link #aBigDecimal} is set.
    */
   public BigDecimal getABigDecimal( ) {
     return aBigDecimal;
@@ -1009,7 +1009,7 @@ public class PrimitiveObject {
   /**
    * Method returns attribute {@link #aString}.<br/>
    * 
-   * @return String Value to which {@link #aString} is set.
+   * @return {@link String} Value to which {@link #aString} is set.
    */
   public String getAString( ) {
     return aString;
@@ -1028,7 +1028,7 @@ public class PrimitiveObject {
   /**
    * Method returns attribute {@link #bString}.<br/>
    * 
-   * @return String Value to which {@link #bString} is set.
+   * @return {@link String} Value to which {@link #bString} is set.
    */
   public String getBString( ) {
     return bString;

@@ -591,7 +591,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which {@link #name} is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
@@ -645,7 +645,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method returns attribute {@link #link}.<br/>
    * 
-   * @return URL Value to which {@link #link} is set.
+   * @return {@link URL} Value to which {@link #link} is set.
    */
   public URL getLink( ) {
     return link;
@@ -664,7 +664,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method returns attribute {@link #productID}.<br/>
    * 
-   * @return UUID Value to which {@link #productID} is set.
+   * @return {@link UUID} Value to which {@link #productID} is set.
    */
   public UUID getProductID( ) {
     return productID;
@@ -802,7 +802,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method returns attribute {@link #description}.<br/>
    * 
-   * @return String Value to which {@link #description} is set.
+   * @return {@link String} Value to which {@link #description} is set.
    */
   @Deprecated
   public String getDescription( ) {
@@ -901,7 +901,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method returns attribute {@link #uri}.<br/>
    * 
-   * @return String Value to which {@link #uri} is set.
+   * @return {@link String} Value to which {@link #uri} is set.
    */
   public String getUri( ) {
     return uri;

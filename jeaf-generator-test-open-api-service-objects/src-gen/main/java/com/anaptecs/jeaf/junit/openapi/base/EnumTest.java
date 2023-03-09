@@ -154,7 +154,7 @@ public class EnumTest implements ServiceObject {
   /**
    * Method returns attribute {@link #property}.<br/>
    * 
-   * @return ExtensibleEnum Value to which {@link #property} is set.
+   * @return {@link ExtensibleEnum} Value to which {@link #property} is set.
    */
   public ExtensibleEnum getProperty( ) {
     return property;

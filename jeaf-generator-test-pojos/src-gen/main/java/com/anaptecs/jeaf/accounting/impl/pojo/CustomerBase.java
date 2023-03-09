@@ -205,7 +205,7 @@ public abstract class CustomerBase extends Partner {
   /**
    * Method returns attribute {@link #name}.<br/>
    * 
-   * @return String Value to which {@link #name} is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
@@ -224,7 +224,7 @@ public abstract class CustomerBase extends Partner {
   /**
    * Method returns attribute {@link #firstName}.<br/>
    * 
-   * @return String Value to which {@link #firstName} is set.
+   * @return {@link String} Value to which {@link #firstName} is set.
    */
   public String getFirstName( ) {
     return firstName;
@@ -243,7 +243,7 @@ public abstract class CustomerBase extends Partner {
   /**
    * Method returns attribute {@link #email}.<br/>
    * 
-   * @return String Value to which {@link #email} is set.
+   * @return {@link String} Value to which {@link #email} is set.
    */
   public String getEmail( ) {
     return email;

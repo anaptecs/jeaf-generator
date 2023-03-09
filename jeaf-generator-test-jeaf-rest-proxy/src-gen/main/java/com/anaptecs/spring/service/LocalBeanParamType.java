@@ -166,7 +166,7 @@ public class LocalBeanParamType implements Serializable {
   /**
    * Method returns attribute {@link #localKey}.<br/>
    * 
-   * @return String Value to which {@link #localKey} is set.
+   * @return {@link String} Value to which {@link #localKey} is set.
    */
   public String getLocalKey( ) {
     return localKey;
@@ -185,7 +185,7 @@ public class LocalBeanParamType implements Serializable {
   /**
    * Method returns attribute {@link #localID}.<br/>
    * 
-   * @return String Value to which {@link #localID} is set.
+   * @return {@link String} Value to which {@link #localID} is set.
    */
   public String getLocalID( ) {
     return localID;

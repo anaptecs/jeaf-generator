@@ -223,7 +223,7 @@ public abstract class SoftLinkBase {
   /**
    * Method returns attribute {@link #refrenceID}.<br/>
    * 
-   * @return String Value to which {@link #refrenceID} is set.
+   * @return {@link String} Value to which {@link #refrenceID} is set.
    */
   public String getRefrenceID( ) {
     return refrenceID;

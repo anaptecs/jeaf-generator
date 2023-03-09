@@ -175,7 +175,7 @@ public class AdvancedHeader {
   /**
    * Method returns attribute {@link #bookingID}.<br/>
    * 
-   * @return BookingID Value to which {@link #bookingID} is set.
+   * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
   public BookingID getBookingID( ) {
     return bookingID;
@@ -194,7 +194,7 @@ public class AdvancedHeader {
   /**
    * Method returns attribute {@link #bookingCode}.<br/>
    * 
-   * @return BookingCode Value to which {@link #bookingCode} is set.
+   * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
   public BookingCode getBookingCode( ) {
     return bookingCode;
@@ -213,7 +213,7 @@ public class AdvancedHeader {
   /**
    * Method returns attribute {@link #doubleCode}.<br/>
    * 
-   * @return DoubleCode Value to which {@link #doubleCode} is set.
+   * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
    */
   public DoubleCode getDoubleCode( ) {
     return doubleCode;

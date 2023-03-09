@@ -54,7 +54,7 @@ public abstract class BOneBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #bName}.<br/>
    * 
-   * @return String Value to which {@link #bName} is set.
+   * @return {@link String} Value to which {@link #bName} is set.
    */
   public String getBName( ) {
     return bName;

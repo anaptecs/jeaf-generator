@@ -330,7 +330,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   /**
    * Method returns attribute {@link #iban}.<br/>
    * 
-   * @return Long Value to which {@link #iban} is set.
+   * @return {@link Long} Value to which {@link #iban} is set.
    */
   public Long getIban( ) {
     return iban;
@@ -349,7 +349,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   /**
    * Method returns attribute {@link #balance}.<br/>
    * 
-   * @return BigDecimal Value to which {@link #balance} is set.
+   * @return {@link BigDecimal} Value to which {@link #balance} is set.
    */
   public BigDecimal getBalance( ) {
     return balance;
@@ -545,7 +545,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   /**
    * Method returns attribute {@link #bankID}.<br/>
    * 
-   * @return ServiceObjectID Value to which {@link #bankID} is set.
+   * @return {@link ServiceObjectID} Value to which {@link #bankID} is set.
    */
   public ServiceObjectID getBankID( ) {
     return bankID;

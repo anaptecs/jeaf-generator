@@ -189,7 +189,7 @@ public class BeanParameter implements ServiceObject {
   /**
    * Method returns attribute {@link #accessToken}.<br/>
    * 
-   * @return String Value to which {@link #accessToken} is set.
+   * @return {@link String} Value to which {@link #accessToken} is set.
    */
   public String getAccessToken( ) {
     return accessToken;
@@ -208,7 +208,7 @@ public class BeanParameter implements ServiceObject {
   /**
    * Method returns attribute {@link #language}.<br/>
    * 
-   * @return Locale Value to which {@link #language} is set.
+   * @return {@link Locale} Value to which {@link #language} is set.
    */
   public Locale getLanguage( ) {
     return language;
@@ -227,7 +227,7 @@ public class BeanParameter implements ServiceObject {
   /**
    * Method returns attribute {@link #oldStyle}.<br/>
    * 
-   * @return String Value to which {@link #oldStyle} is set.
+   * @return {@link String} Value to which {@link #oldStyle} is set.
    */
   @Deprecated
   public String getOldStyle( ) {
