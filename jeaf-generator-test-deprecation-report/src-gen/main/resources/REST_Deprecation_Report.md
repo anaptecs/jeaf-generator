@@ -62,7 +62,7 @@ Sorry!!! | a very long time | 2023-12-13 |
 | Type   | Element   | Description   | Deprecated since   | Planned to be removed   |
 |--------|-----------|---------------|:------------------:|:-----------------------:|
 | `Campaign` | |  |  |  |
-|   | `theLink` |  |  |  |
+|   | `theLink` | Please use "moreLinks" instead. | 2.3.1 | 2.4 |
 |   | `moreLinks` |  |  |  |
 |   | `discountOffers` |  |  |  |
 | `ChildAA` | |  |  |  |

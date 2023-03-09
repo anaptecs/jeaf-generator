@@ -260,7 +260,6 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
    * Method returns attribute {@link #outdated}.<br/>
    * 
    * @return boolean Value to which {@link #outdated} is set.
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public boolean getOutdated( ) {
@@ -389,7 +388,6 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public abstract void doSomethingDeprecated( );

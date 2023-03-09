@@ -203,7 +203,6 @@ public class ParentPOJO {
    * Method returns attribute {@link #weirdAttribute}.<br/>
    * 
    * @return byte Value to which {@link #weirdAttribute} is set.
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public byte getWeirdAttribute( ) {

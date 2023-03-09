@@ -205,7 +205,6 @@ public class BeanParameter {
    * Method returns attribute {@link #oldStyle}.<br/>
    * 
    * @return String Value to which {@link #oldStyle} is set.
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public String getOldStyle( ) {

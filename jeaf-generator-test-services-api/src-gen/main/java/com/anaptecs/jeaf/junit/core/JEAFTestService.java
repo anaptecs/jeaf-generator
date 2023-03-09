@@ -15,8 +15,6 @@ public interface JEAFTestService extends Service {
 
   /**
    * Method tests JEAF dependency injection mechanism for the dependency on RequiredService1.
-   * 
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   void checkRequiredService_2( );

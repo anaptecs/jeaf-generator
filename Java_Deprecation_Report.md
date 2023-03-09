@@ -127,7 +127,7 @@ Sorry!!! | a very long time | 2023-12-13 |
 | `com.anaptecs.jeaf.junit.openapi.base.BeanParameter` | |  |  |  |
 |   | `oldStyle` |  |  |  |
 | `com.anaptecs.jeaf.junit.openapi.base.Campaign` | |  |  |  |
-|   | `theLink` |  |  |  |
+|   | `theLink` | Please use "moreLinks" instead. | 2.3.1 | 2.4 |
 |   | `moreLinks` |  |  |  |
 |   | `discountOffers` |  |  |  |
 | `com.anaptecs.jeaf.junit.openapi.base.ChildAA` | |  |  |  |

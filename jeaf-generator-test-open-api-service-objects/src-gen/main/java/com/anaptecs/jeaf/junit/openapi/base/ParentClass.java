@@ -42,16 +42,12 @@ public class ParentClass implements ServiceObject {
 
   /**
    * I would like to document references to other types.
-   * 
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   private BankAccount theBankAccount;
 
   /**
    * Association is still there be SemVer compliant.
-   * 
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   private List<BankAccount> legacyBankAccounts;

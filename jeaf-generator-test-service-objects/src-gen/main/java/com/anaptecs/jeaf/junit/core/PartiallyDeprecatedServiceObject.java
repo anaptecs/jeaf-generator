@@ -67,7 +67,6 @@ public class PartiallyDeprecatedServiceObject extends PartiallyDeprecatedService
   }
 
   /**
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override

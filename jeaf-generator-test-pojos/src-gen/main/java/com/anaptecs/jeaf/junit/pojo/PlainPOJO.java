@@ -60,7 +60,6 @@ public class PlainPOJO extends PlainPOJOBase {
   }
 
   /**
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override

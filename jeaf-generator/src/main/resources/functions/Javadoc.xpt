@@ -64,6 +64,7 @@
  * Method sets «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>
  «EXPAND functions::Javadoc::AddComment -»
  * @param «asParameter()» Value to which {@link #«asInstanceVar()»} should be set.
+ «EXPAND DeprecatedJavadoc -»
  */
 «ENDDEFINE»
 
@@ -83,7 +84,7 @@
     «ENDFOREACH -»«ENDDEFINE»
 
 «DEFINE DeprecatedJavadoc FOR uml::NamedElement -»
-    «IF this.isJEAFDeprecated()-»
- * @deprecated «this.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «this.getDeprecatedSince()», <b>removed with:</b> «this.getDeprecationRemoval()»)   
+    «IF this.isJEAFDeprecated() && this.hasMeaningfulDeprecationInfo() -»
+ * @deprecated «this.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «IF this.getDeprecatedSince().length > 0»«this.getDeprecatedSince()»«ELSE»TBD«ENDIF», <b>removed with:</b> «IF this.getDeprecationRemoval().length > 0»«this.getDeprecationRemoval()»«ELSE»TBD«ENDIF»)   
     «ENDIF-»
 «ENDDEFINE»

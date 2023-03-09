@@ -271,7 +271,6 @@ final class BusinessObjectTestServiceImpl extends BusinessObjectTestServiceImplB
   }
 
   /**
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override

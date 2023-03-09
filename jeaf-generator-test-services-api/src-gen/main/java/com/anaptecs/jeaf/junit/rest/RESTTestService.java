@@ -92,7 +92,6 @@ public interface RESTTestService extends Service {
   /**
    * @param pParam1
    * @return {@link String}
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   String deprecatedAsync( int pParam1 );

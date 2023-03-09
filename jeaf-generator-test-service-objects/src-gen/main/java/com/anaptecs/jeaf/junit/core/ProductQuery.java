@@ -80,7 +80,6 @@ public class ProductQuery extends QueryObject {
    * Method returns attribute {@link #minAvailability}.<br/>
    * 
    * @return Integer Value to which {@link #minAvailability} is set.
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public Integer getMinAvailability( ) {

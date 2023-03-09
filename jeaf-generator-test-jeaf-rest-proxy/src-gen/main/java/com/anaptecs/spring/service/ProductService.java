@@ -71,7 +71,6 @@ public interface ProductService extends Service {
 
   /**
    * @return {@link String}
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   String deprecatedOperation( );

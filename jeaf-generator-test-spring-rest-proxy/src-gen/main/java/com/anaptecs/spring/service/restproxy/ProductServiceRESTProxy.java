@@ -218,7 +218,6 @@ public class ProductServiceRESTProxy implements ProductService {
 
   /**
    * @return {@link String}
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override

@@ -31,7 +31,7 @@ public class JustAType implements ServiceObject {
   private int attribute;
 
   /**
-   * @deprecated Hello (<b>since:</b> , <b>removed with:</b> )
+   * @deprecated Hello (<b>since:</b> TBD, <b>removed with:</b> TBD)
    */
   @Deprecated
   private double legacy;
@@ -178,7 +178,7 @@ public class JustAType implements ServiceObject {
    * Method returns attribute {@link #legacy}.<br/>
    * 
    * @return double Value to which {@link #legacy} is set.
-   * @deprecated Hello (<b>since:</b> , <b>removed with:</b> )
+   * @deprecated Hello (<b>since:</b> TBD, <b>removed with:</b> TBD)
    */
   @Deprecated
   public double getLegacy( ) {
@@ -189,6 +189,7 @@ public class JustAType implements ServiceObject {
    * Method sets attribute {@link #legacy}.<br/>
    * 
    * @param pLegacy Value to which {@link #legacy} should be set.
+   * @deprecated Hello (<b>since:</b> TBD, <b>removed with:</b> TBD)
    */
   @Deprecated
   public void setLegacy( double pLegacy ) {

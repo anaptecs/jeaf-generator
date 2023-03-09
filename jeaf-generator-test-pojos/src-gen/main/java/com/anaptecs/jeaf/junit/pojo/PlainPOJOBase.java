@@ -169,7 +169,6 @@ public abstract class PlainPOJOBase {
   }
 
   /**
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public abstract void doDeprectedStuff( );

@@ -267,7 +267,6 @@ public class POI extends Stop {
    * Method returns association {@link #theLink}.<br/>
    * 
    * @return LinkObject Value to which {@link #theLink} is set.
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public Long getTheLink( ) {

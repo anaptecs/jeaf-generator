@@ -178,7 +178,6 @@ public interface BusinessObjectTestService extends Service {
   void testFlush( );
 
   /**
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   void deprectedOperation( );

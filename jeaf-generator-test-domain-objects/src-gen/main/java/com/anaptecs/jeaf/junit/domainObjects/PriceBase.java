@@ -60,7 +60,6 @@ public abstract class PriceBase extends DomainObject {
    * Method returns attribute {@link #price}.<br/>
    * 
    * @return double Value to which {@link #price} is set.
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public double getPrice( ) {
@@ -180,7 +179,6 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public abstract void recalculatePrice( );

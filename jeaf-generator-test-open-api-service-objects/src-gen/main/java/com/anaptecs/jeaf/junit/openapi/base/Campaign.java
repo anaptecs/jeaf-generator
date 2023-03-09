@@ -27,6 +27,9 @@ public class Campaign implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
+  /**
+   * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
+   */
   @Deprecated
   private long theLink;
 
@@ -204,7 +207,7 @@ public class Campaign implements ServiceObject {
    * Method returns association {@link #theLink}.<br/>
    * 
    * @return com.anaptecs.jeaf.junit.openapi.base.LinkObject Value to which {@link #theLink} is set.
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
+   * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
   public Long getTheLink( ) {
@@ -215,6 +218,7 @@ public class Campaign implements ServiceObject {
    * Method sets association {@link #theLink}.<br/>
    * 
    * @param pTheLink Value to which {@link #theLink} should be set.
+   * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
   public void setTheLink( Long pTheLink ) {

@@ -17,7 +17,6 @@ public interface MyServiceProvider extends ServiceProvider {
   boolean doSomething( );
 
   /**
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   void doSomethingDeprecated( );

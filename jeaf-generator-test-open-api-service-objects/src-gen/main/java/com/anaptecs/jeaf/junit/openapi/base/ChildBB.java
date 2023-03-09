@@ -333,7 +333,6 @@ public class ChildBB extends ChildB {
    * Method returns attribute {@link #deprecatedAttribute}.<br/>
    * 
    * @return int Value to which {@link #deprecatedAttribute} is set.
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public int getDeprecatedAttribute( ) {
@@ -455,7 +454,6 @@ public class ChildBB extends ChildB {
    * Method returns attribute {@link #deprecatedArray}.<br/>
    * 
    * @return byte Value to which {@link #deprecatedArray} is set.
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public byte[] getDeprecatedArray( ) {

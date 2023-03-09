@@ -30,7 +30,6 @@ public class Price extends PriceBase {
   }
 
   /**
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override

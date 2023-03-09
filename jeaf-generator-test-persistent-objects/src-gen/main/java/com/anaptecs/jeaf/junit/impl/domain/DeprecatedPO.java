@@ -10,7 +10,6 @@ public class DeprecatedPO extends DeprecatedPOBase {
   }
 
   /**
-   * @deprecated (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override

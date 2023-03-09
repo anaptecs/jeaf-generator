@@ -193,6 +193,8 @@ public class BeanParamWithDeprecations implements ServiceObject {
    * Method sets attribute {@link #deprecatedHeader}.<br/>
    * 
    * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
+   * @deprecated this header param is no longer supported. Please use "xxx" instead. (<b>since:</b> 1.2.3, <b>removed
+   * with:</b> PI.2.3)
    */
   @Deprecated
   public void setDeprecatedHeader( String pDeprecatedHeader ) {
