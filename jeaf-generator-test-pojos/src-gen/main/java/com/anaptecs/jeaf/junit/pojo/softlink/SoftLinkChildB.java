@@ -235,12 +235,6 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method sets the association "heyBrother".
-   * 
-   * 
-   * @param pHeyBrother SoftLinkChildA to which the association "heyBrother" should be set.
-   */
-  /**
    * Method sets association {@link #heyBrother}.<br/>
    * 
    * @param pHeyBrother Value to which {@link #heyBrother} should be set.
@@ -331,12 +325,6 @@ public class SoftLinkChildB extends SoftLinkParent {
     return oneLink;
   }
 
-  /**
-   * Method sets the association "oneLink".
-   * 
-   * 
-   * @param pOneLink SoftLinkPartner to which the association "oneLink" should be set.
-   */
   /**
    * Method sets association {@link #oneLink}.<br/>
    * 

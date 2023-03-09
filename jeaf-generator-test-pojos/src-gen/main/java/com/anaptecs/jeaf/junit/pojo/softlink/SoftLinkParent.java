@@ -266,12 +266,6 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method sets the association "thePartner".
-   * 
-   * 
-   * @param pThePartner SoftLinkPartner to which the association "thePartner" should be set.
-   */
-  /**
    * Method sets association {@link #thePartner}.<br/>
    * 
    * @param pThePartner Value to which {@link #thePartner} should be set.

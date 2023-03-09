@@ -199,12 +199,6 @@
     }
     
     «IF isReadOnly() == false»
-    /**
-     * Method sets the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     * 
-     * @param «asParameter()» «this.type.name» to which the association "«asInstanceVar()»" should be set.
-     */
     «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void «asSetter()» («this.getMultivaluedSoftLinkType()» «asParameter()») {

@@ -263,12 +263,6 @@ public class POI extends Stop {
   }
 
   /**
-   * Method sets the association "theLink".
-   * 
-   * 
-   * @param pTheLink LinkObject to which the association "theLink" should be set.
-   */
-  /**
    * Method sets association {@link #theLink}.<br/>
    * 
    * @param pTheLink Value to which {@link #theLink} should be set.

@@ -323,12 +323,6 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method sets the association "theSoftLink".
-   * 
-   * 
-   * @param pTheSoftLink LinkObject to which the association "theSoftLink" should be set.
-   */
-  /**
    * Method sets association {@link #theSoftLink}.<br/>
    * 
    * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
