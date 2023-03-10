@@ -229,9 +229,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "names".
+     * Method sets attribute {@link #names}.<br/>
      * 
-     * @param pNames Value to which the attribute "names" should be set.
+     * @param pNames Value to which {@link #names} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setNames( String[] pNames ) {
       // Assign value to attribute
@@ -246,9 +247,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "ints".
+     * Method sets attribute {@link #ints}.<br/>
      * 
-     * @param pInts Value to which the attribute "ints" should be set.
+     * @param pInts Value to which {@link #ints} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInts( int[] pInts ) {
       // Assign value to attribute
@@ -263,9 +265,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "doubles".
+     * Method sets attribute {@link #doubles}.<br/>
      * 
-     * @param pDoubles Value to which the attribute "doubles" should be set.
+     * @param pDoubles Value to which {@link #doubles} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDoubles( Double[] pDoubles ) {
       // Assign value to attribute
@@ -280,9 +283,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "codes".
+     * Method sets attribute {@link #codes}.<br/>
      * 
-     * @param pCodes Value to which the attribute "codes" should be set.
+     * @param pCodes Value to which {@link #codes} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCodes( StringCode[] pCodes ) {
       // Assign value to attribute
@@ -313,9 +317,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "startDate".
+     * Method sets attribute {@link #startDate}.<br/>
      * 
-     * @param pStartDate Value to which the attribute "startDate" should be set.
+     * @param pStartDate Value to which {@link #startDate} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStartDate( LocalDate pStartDate ) {
       // Assign value to attribute
@@ -324,9 +329,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "dates".
+     * Method sets attribute {@link #dates}.<br/>
      * 
-     * @param pDates Value to which the attribute "dates" should be set.
+     * @param pDates Value to which {@link #dates} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDates( LocalDate[] pDates ) {
       // Assign value to attribute
@@ -357,9 +363,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "calendars".
+     * Method sets attribute {@link #calendars}.<br/>
      * 
-     * @param pCalendars Value to which the attribute "calendars" should be set.
+     * @param pCalendars Value to which {@link #calendars} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCalendars( Calendar[] pCalendars ) {
       // Assign value to attribute
@@ -374,9 +381,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "utilDates".
+     * Method sets attribute {@link #utilDates}.<br/>
      * 
-     * @param pUtilDates Value to which the attribute "utilDates" should be set.
+     * @param pUtilDates Value to which {@link #utilDates} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setUtilDates( Date[] pUtilDates ) {
       // Assign value to attribute
@@ -391,9 +399,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "sqlTimestamps".
+     * Method sets attribute {@link #sqlTimestamps}.<br/>
      * 
-     * @param pSqlTimestamps Value to which the attribute "sqlTimestamps" should be set.
+     * @param pSqlTimestamps Value to which {@link #sqlTimestamps} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSqlTimestamps( Timestamp[] pSqlTimestamps ) {
       // Assign value to attribute

@@ -130,9 +130,10 @@ public class CodeTypeUsageTest implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "booleanCode".
+     * Method sets attribute {@link #booleanCode}.<br/>
      * 
-     * @param pBooleanCode Value to which the attribute "booleanCode" should be set.
+     * @param pBooleanCode Value to which {@link #booleanCode} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooleanCode( BooleanCodeType pBooleanCode ) {
       // Assign value to attribute
@@ -173,9 +174,10 @@ public class CodeTypeUsageTest implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "stringCode".
+     * Method sets attribute {@link #stringCode}.<br/>
      * 
-     * @param pStringCode Value to which the attribute "stringCode" should be set.
+     * @param pStringCode Value to which {@link #stringCode} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStringCode( StringCodeType pStringCode ) {
       // Assign value to attribute

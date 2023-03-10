@@ -151,9 +151,10 @@ public class Channel implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "code".
+     * Method sets attribute {@link #code}.<br/>
      * 
-     * @param pCode Value to which the attribute "code" should be set.
+     * @param pCode Value to which {@link #code} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCode( int pCode ) {
       // Assign value to attribute
@@ -162,9 +163,10 @@ public class Channel implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "selfServiceChannel".
+     * Method sets attribute {@link #selfServiceChannel}.<br/>
      * 
-     * @param pSelfServiceChannel Value to which the attribute "selfServiceChannel" should be set.
+     * @param pSelfServiceChannel Value to which {@link #selfServiceChannel} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSelfServiceChannel( boolean pSelfServiceChannel ) {
       // Assign value to attribute

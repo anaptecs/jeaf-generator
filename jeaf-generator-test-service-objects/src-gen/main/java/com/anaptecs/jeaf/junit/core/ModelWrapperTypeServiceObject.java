@@ -98,9 +98,10 @@ public class ModelWrapperTypeServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aBoolean".
+     * Method sets attribute {@link #aBoolean}.<br/>
      * 
-     * @param pABoolean Value to which the attribute "aBoolean" should be set.
+     * @param pABoolean Value to which {@link #aBoolean} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setABoolean( boolean pABoolean ) {
       // Assign value to attribute
@@ -109,9 +110,10 @@ public class ModelWrapperTypeServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aInt".
+     * Method sets attribute {@link #aInt}.<br/>
      * 
-     * @param pAInt Value to which the attribute "aInt" should be set.
+     * @param pAInt Value to which {@link #aInt} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAInt( Integer pAInt ) {
       // Assign value to attribute

@@ -116,9 +116,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the attribute "customerName".
+     * Method sets attribute {@link #customerName}.<br/>
      * 
-     * @param pCustomerName Value to which the attribute "customerName" should be set.
+     * @param pCustomerName Value to which {@link #customerName} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCustomerName( String pCustomerName ) {
       // Assign value to attribute

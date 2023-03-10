@@ -338,11 +338,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 «ENDDEFINE»
 
 «DEFINE CreateBuilderPropertySetter(String builderClassName) FOR Property»
-	/**
-	 * Method sets the attribute "«asInstanceVar()»". «this.getComment()»
-	 * 
-	 * @param «asParameter()» Value to which the attribute "«asInstanceVar()»" should be set.
-	 */
+	«EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «builderClassName» «asSetter()»(«this.fqn()»«IF isMultivalued()»[]«ENDIF» «asParameter()») {
 		// Assign value to attribute

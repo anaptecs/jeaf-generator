@@ -211,9 +211,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -222,9 +223,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "firstName".
+     * Method sets attribute {@link #firstName}.<br/>
      * 
-     * @param pFirstName Value to which the attribute "firstName" should be set.
+     * @param pFirstName Value to which {@link #firstName} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setFirstName( String pFirstName ) {
       // Assign value to attribute
@@ -233,9 +235,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "dateOfBirth".
+     * Method sets attribute {@link #dateOfBirth}.<br/>
      * 
-     * @param pDateOfBirth Value to which the attribute "dateOfBirth" should be set.
+     * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDateOfBirth( Calendar pDateOfBirth ) {
       // Assign value to attribute
@@ -270,9 +273,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "age".
+     * Method sets attribute {@link #age}.<br/>
      * 
-     * @param pAge Value to which the attribute "age" should be set.
+     * @param pAge Value to which {@link #age} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAge( Integer pAge ) {
       // Assign value to attribute
@@ -281,9 +285,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "displayName".
+     * Method sets attribute {@link #displayName}.<br/>
      * 
-     * @param pDisplayName Value to which the attribute "displayName" should be set.
+     * @param pDisplayName Value to which {@link #displayName} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDisplayName( String pDisplayName ) {
       // Assign value to attribute

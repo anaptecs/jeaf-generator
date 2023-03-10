@@ -99,9 +99,10 @@ public class QueryBeanParam implements Serializable {
     }
 
     /**
-     * Method sets the attribute "bookingCode".
+     * Method sets attribute {@link #bookingCode}.<br/>
      * 
-     * @param pBookingCode Value to which the attribute "bookingCode" should be set.
+     * @param pBookingCode Value to which {@link #bookingCode} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingCode( BookingCode pBookingCode ) {
       // Assign value to attribute

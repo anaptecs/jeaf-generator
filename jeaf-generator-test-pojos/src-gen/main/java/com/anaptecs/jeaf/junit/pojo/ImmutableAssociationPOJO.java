@@ -157,9 +157,10 @@ public class ImmutableAssociationPOJO {
     }
 
     /**
-     * Method sets the attribute "yetAnotherAttribute".
+     * Method sets attribute {@link #yetAnotherAttribute}.<br/>
      * 
-     * @param pYetAnotherAttribute Value to which the attribute "yetAnotherAttribute" should be set.
+     * @param pYetAnotherAttribute Value to which {@link #yetAnotherAttribute} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setYetAnotherAttribute( boolean pYetAnotherAttribute ) {
       // Assign value to attribute

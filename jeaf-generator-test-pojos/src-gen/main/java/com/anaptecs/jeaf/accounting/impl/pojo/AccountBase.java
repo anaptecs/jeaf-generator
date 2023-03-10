@@ -112,9 +112,10 @@ public abstract class AccountBase {
     }
 
     /**
-     * Method sets the attribute "iban".
+     * Method sets attribute {@link #iban}.<br/>
      * 
-     * @param pIban Value to which the attribute "iban" should be set.
+     * @param pIban Value to which {@link #iban} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setIban( int pIban ) {
       // Assign value to attribute
@@ -133,9 +134,10 @@ public abstract class AccountBase {
     }
 
     /**
-     * Method sets the attribute "currency".
+     * Method sets attribute {@link #currency}.<br/>
      * 
-     * @param pCurrency Value to which the attribute "currency" should be set.
+     * @param pCurrency Value to which {@link #currency} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setCurrency( Currency pCurrency ) {
       // Assign value to attribute

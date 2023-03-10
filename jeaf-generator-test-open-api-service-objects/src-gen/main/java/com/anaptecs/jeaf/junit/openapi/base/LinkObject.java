@@ -85,9 +85,10 @@ public class LinkObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "href".
+     * Method sets attribute {@link #href}.<br/>
      * 
-     * @param pHref Value to which the attribute "href" should be set.
+     * @param pHref Value to which {@link #href} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setHref( String pHref ) {
       // Assign value to attribute

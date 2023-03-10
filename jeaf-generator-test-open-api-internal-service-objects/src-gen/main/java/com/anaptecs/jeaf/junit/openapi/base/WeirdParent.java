@@ -127,9 +127,10 @@ public class WeirdParent implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "someProperty".
+     * Method sets attribute {@link #someProperty}.<br/>
      * 
-     * @param pSomeProperty Value to which the attribute "someProperty" should be set.
+     * @param pSomeProperty Value to which {@link #someProperty} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSomeProperty( String pSomeProperty ) {
       // Assign value to attribute

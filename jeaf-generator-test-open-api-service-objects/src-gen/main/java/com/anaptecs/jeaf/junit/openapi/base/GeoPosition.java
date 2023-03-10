@@ -101,9 +101,10 @@ public class GeoPosition extends PlaceRef {
     }
 
     /**
-     * Method sets the attribute "longitude".
+     * Method sets attribute {@link #longitude}.<br/>
      * 
-     * @param pLongitude Value to which the attribute "longitude" should be set.
+     * @param pLongitude Value to which {@link #longitude} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLongitude( int pLongitude ) {
       // Assign value to attribute
@@ -112,9 +113,10 @@ public class GeoPosition extends PlaceRef {
     }
 
     /**
-     * Method sets the attribute "latitude".
+     * Method sets attribute {@link #latitude}.<br/>
      * 
-     * @param pLatitude Value to which the attribute "latitude" should be set.
+     * @param pLatitude Value to which {@link #latitude} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLatitude( int pLatitude ) {
       // Assign value to attribute

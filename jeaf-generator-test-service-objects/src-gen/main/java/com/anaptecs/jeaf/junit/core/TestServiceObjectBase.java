@@ -128,9 +128,10 @@ public abstract class TestServiceObjectBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "key".
+     * Method sets attribute {@link #key}.<br/>
      * 
-     * @param pKey Value to which the attribute "key" should be set.
+     * @param pKey Value to which {@link #key} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setKey( String pKey ) {
       // Assign value to attribute
@@ -139,9 +140,10 @@ public abstract class TestServiceObjectBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "info".
+     * Method sets attribute {@link #info}.<br/>
      * 
-     * @param pInfo Value to which the attribute "info" should be set.
+     * @param pInfo Value to which {@link #info} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setInfo( String pInfo ) {
       // Assign value to attribute
@@ -150,9 +152,10 @@ public abstract class TestServiceObjectBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "someTest".
+     * Method sets attribute {@link #someTest}.<br/>
      * 
-     * @param pSomeTest Value to which the attribute "someTest" should be set.
+     * @param pSomeTest Value to which {@link #someTest} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setSomeTest( int pSomeTest ) {
       // Assign value to attribute
@@ -161,9 +164,10 @@ public abstract class TestServiceObjectBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "dummy1".
+     * Method sets attribute {@link #dummy1}.<br/>
      * 
-     * @param pDummy1 Value to which the attribute "dummy1" should be set.
+     * @param pDummy1 Value to which {@link #dummy1} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setDummy1( Double pDummy1 ) {
       // Assign value to attribute
@@ -172,9 +176,10 @@ public abstract class TestServiceObjectBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "dummy2".
+     * Method sets attribute {@link #dummy2}.<br/>
      * 
-     * @param pDummy2 Value to which the attribute "dummy2" should be set.
+     * @param pDummy2 Value to which {@link #dummy2} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setDummy2( String[] pDummy2 ) {
       // Assign value to attribute
@@ -189,9 +194,10 @@ public abstract class TestServiceObjectBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "dummy3".
+     * Method sets attribute {@link #dummy3}.<br/>
      * 
-     * @param pDummy3 Value to which the attribute "dummy3" should be set.
+     * @param pDummy3 Value to which {@link #dummy3} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setDummy3( Integer[] pDummy3 ) {
       // Assign value to attribute

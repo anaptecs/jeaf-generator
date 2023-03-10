@@ -92,9 +92,10 @@ public abstract class SoftLinkBase {
     }
 
     /**
-     * Method sets the attribute "objectID".
+     * Method sets attribute {@link #objectID}.<br/>
      * 
-     * @param pObjectID Value to which the attribute "objectID" should be set.
+     * @param pObjectID Value to which {@link #objectID} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setObjectID( long pObjectID ) {
       // Assign value to attribute
@@ -123,9 +124,10 @@ public abstract class SoftLinkBase {
     }
 
     /**
-     * Method sets the attribute "refrenceID".
+     * Method sets attribute {@link #refrenceID}.<br/>
      * 
-     * @param pRefrenceID Value to which the attribute "refrenceID" should be set.
+     * @param pRefrenceID Value to which {@link #refrenceID} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setRefrenceID( String pRefrenceID ) {
       // Assign value to attribute

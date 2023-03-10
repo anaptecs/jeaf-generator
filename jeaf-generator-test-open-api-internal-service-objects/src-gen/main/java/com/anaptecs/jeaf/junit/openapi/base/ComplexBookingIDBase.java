@@ -115,9 +115,13 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "internalID". Internal ID 2nd line 3rd line
+     * Method sets attribute {@link #internalID}.<br/>
+     * Internal ID<br/>
+     * 2nd line<br/>
+     * 3rd line
      * 
-     * @param pInternalID Value to which the attribute "internalID" should be set.
+     * @param pInternalID Value to which {@link #internalID} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setInternalID( long pInternalID ) {
       // Assign value to attribute
@@ -126,9 +130,10 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "referenceID".
+     * Method sets attribute {@link #referenceID}.<br/>
      * 
-     * @param pReferenceID Value to which the attribute "referenceID" should be set.
+     * @param pReferenceID Value to which {@link #referenceID} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setReferenceID( String pReferenceID ) {
       // Assign value to attribute
@@ -163,9 +168,10 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "anotherID".
+     * Method sets attribute {@link #anotherID}.<br/>
      * 
-     * @param pAnotherID Value to which the attribute "anotherID" should be set.
+     * @param pAnotherID Value to which {@link #anotherID} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setAnotherID( Integer pAnotherID ) {
       // Assign value to attribute

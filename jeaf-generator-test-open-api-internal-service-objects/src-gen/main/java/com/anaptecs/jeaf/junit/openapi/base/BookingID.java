@@ -125,9 +125,10 @@ public class BookingID implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "referenceID".
+     * Method sets attribute {@link #referenceID}.<br/>
      * 
-     * @param pReferenceID Value to which the attribute "referenceID" should be set.
+     * @param pReferenceID Value to which {@link #referenceID} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReferenceID( String pReferenceID ) {
       // Assign value to attribute
@@ -136,9 +137,10 @@ public class BookingID implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "externalRefID".
+     * Method sets attribute {@link #externalRefID}.<br/>
      * 
-     * @param pExternalRefID Value to which the attribute "externalRefID" should be set.
+     * @param pExternalRefID Value to which {@link #externalRefID} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setExternalRefID( String pExternalRefID ) {
       // Assign value to attribute

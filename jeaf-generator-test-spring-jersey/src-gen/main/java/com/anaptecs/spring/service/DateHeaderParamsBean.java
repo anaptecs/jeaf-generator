@@ -195,9 +195,10 @@ public class DateHeaderParamsBean {
     }
 
     /**
-     * Method sets the attribute "offsetDateTime".
+     * Method sets attribute {@link #offsetDateTime}.<br/>
      * 
-     * @param pOffsetDateTime Value to which the attribute "offsetDateTime" should be set.
+     * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
       // Assign value to attribute
@@ -206,9 +207,10 @@ public class DateHeaderParamsBean {
     }
 
     /**
-     * Method sets the attribute "offsetTime".
+     * Method sets attribute {@link #offsetTime}.<br/>
      * 
-     * @param pOffsetTime Value to which the attribute "offsetTime" should be set.
+     * @param pOffsetTime Value to which {@link #offsetTime} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setOffsetTime( OffsetTime pOffsetTime ) {
       // Assign value to attribute
@@ -217,9 +219,10 @@ public class DateHeaderParamsBean {
     }
 
     /**
-     * Method sets the attribute "localDateTime".
+     * Method sets attribute {@link #localDateTime}.<br/>
      * 
-     * @param pLocalDateTime Value to which the attribute "localDateTime" should be set.
+     * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalDateTime( LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
@@ -228,9 +231,10 @@ public class DateHeaderParamsBean {
     }
 
     /**
-     * Method sets the attribute "localTime".
+     * Method sets attribute {@link #localTime}.<br/>
      * 
-     * @param pLocalTime Value to which the attribute "localTime" should be set.
+     * @param pLocalTime Value to which {@link #localTime} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalTime( LocalTime pLocalTime ) {
       // Assign value to attribute
@@ -239,9 +243,10 @@ public class DateHeaderParamsBean {
     }
 
     /**
-     * Method sets the attribute "localDate".
+     * Method sets attribute {@link #localDate}.<br/>
      * 
-     * @param pLocalDate Value to which the attribute "localDate" should be set.
+     * @param pLocalDate Value to which {@link #localDate} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalDate( LocalDate pLocalDate ) {
       // Assign value to attribute
@@ -250,9 +255,10 @@ public class DateHeaderParamsBean {
     }
 
     /**
-     * Method sets the attribute "utilDate".
+     * Method sets attribute {@link #utilDate}.<br/>
      * 
-     * @param pUtilDate Value to which the attribute "utilDate" should be set.
+     * @param pUtilDate Value to which {@link #utilDate} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setUtilDate( java.util.Date pUtilDate ) {
       // Assign value to attribute
@@ -261,9 +267,10 @@ public class DateHeaderParamsBean {
     }
 
     /**
-     * Method sets the attribute "calendar".
+     * Method sets attribute {@link #calendar}.<br/>
      * 
-     * @param pCalendar Value to which the attribute "calendar" should be set.
+     * @param pCalendar Value to which {@link #calendar} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCalendar( Calendar pCalendar ) {
       // Assign value to attribute
@@ -272,9 +279,10 @@ public class DateHeaderParamsBean {
     }
 
     /**
-     * Method sets the attribute "sqlTimestamp".
+     * Method sets attribute {@link #sqlTimestamp}.<br/>
      * 
-     * @param pSqlTimestamp Value to which the attribute "sqlTimestamp" should be set.
+     * @param pSqlTimestamp Value to which {@link #sqlTimestamp} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSqlTimestamp( Timestamp pSqlTimestamp ) {
       // Assign value to attribute
@@ -283,9 +291,10 @@ public class DateHeaderParamsBean {
     }
 
     /**
-     * Method sets the attribute "sqlTime".
+     * Method sets attribute {@link #sqlTime}.<br/>
      * 
-     * @param pSqlTime Value to which the attribute "sqlTime" should be set.
+     * @param pSqlTime Value to which {@link #sqlTime} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSqlTime( Time pSqlTime ) {
       // Assign value to attribute
@@ -294,9 +303,10 @@ public class DateHeaderParamsBean {
     }
 
     /**
-     * Method sets the attribute "sqlDate".
+     * Method sets attribute {@link #sqlDate}.<br/>
      * 
-     * @param pSqlDate Value to which the attribute "sqlDate" should be set.
+     * @param pSqlDate Value to which {@link #sqlDate} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSqlDate( Date pSqlDate ) {
       // Assign value to attribute

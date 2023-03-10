@@ -162,9 +162,10 @@ public class SpecialContext extends Context {
     }
 
     /**
-     * Method sets the attribute "specificHeader".
+     * Method sets attribute {@link #specificHeader}.<br/>
      * 
-     * @param pSpecificHeader Value to which the attribute "specificHeader" should be set.
+     * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSpecificHeader( String pSpecificHeader ) {
       // Assign value to attribute
@@ -173,9 +174,10 @@ public class SpecialContext extends Context {
     }
 
     /**
-     * Method sets the attribute "channelType".
+     * Method sets attribute {@link #channelType}.<br/>
      * 
-     * @param pChannelType Value to which the attribute "channelType" should be set.
+     * @param pChannelType Value to which {@link #channelType} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChannelType( ChannelType pChannelType ) {
       // Assign value to attribute

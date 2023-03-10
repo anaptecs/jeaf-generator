@@ -239,9 +239,10 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "stringProperty".
+     * Method sets attribute {@link #stringProperty}.<br/>
      * 
-     * @param pStringProperty Value to which the attribute "stringProperty" should be set.
+     * @param pStringProperty Value to which {@link #stringProperty} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStringProperty( String pStringProperty ) {
       // Assign value to attribute
@@ -250,9 +251,11 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "longValues". long values as multivalued header
+     * Method sets attribute {@link #longValues}.<br/>
+     * long values as multivalued header
      * 
-     * @param pLongValues Value to which the attribute "longValues" should be set.
+     * @param pLongValues Value to which {@link #longValues} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLongValues( long pLongValues ) {
       // Assign value to attribute

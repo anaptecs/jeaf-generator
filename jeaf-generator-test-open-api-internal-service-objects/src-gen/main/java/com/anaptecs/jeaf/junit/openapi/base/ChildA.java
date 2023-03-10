@@ -117,9 +117,10 @@ public abstract class ChildA extends ParentClass {
     }
 
     /**
-     * Method sets the attribute "childAAttribute".
+     * Method sets attribute {@link #childAAttribute}.<br/>
      * 
-     * @param pChildAAttribute Value to which the attribute "childAAttribute" should be set.
+     * @param pChildAAttribute Value to which {@link #childAAttribute} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildAAttribute( int pChildAAttribute ) {
       // Assign value to attribute

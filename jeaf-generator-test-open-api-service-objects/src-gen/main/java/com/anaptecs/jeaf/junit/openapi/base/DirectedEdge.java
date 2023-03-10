@@ -132,9 +132,10 @@ public class DirectedEdge implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "link".
+     * Method sets attribute {@link #link}.<br/>
      * 
-     * @param pLink Value to which the attribute "link" should be set.
+     * @param pLink Value to which {@link #link} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLink( String pLink ) {
       // Assign value to attribute

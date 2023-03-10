@@ -109,9 +109,10 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "intArray".
+     * Method sets attribute {@link #intArray}.<br/>
      * 
-     * @param pIntArray Value to which the attribute "intArray" should be set.
+     * @param pIntArray Value to which {@link #intArray} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIntArray( int[] pIntArray ) {
       // Assign value to attribute
@@ -126,9 +127,10 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "strings".
+     * Method sets attribute {@link #strings}.<br/>
      * 
-     * @param pStrings Value to which the attribute "strings" should be set.
+     * @param pStrings Value to which {@link #strings} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStrings( String[] pStrings ) {
       // Assign value to attribute
@@ -143,9 +145,10 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "integers".
+     * Method sets attribute {@link #integers}.<br/>
      * 
-     * @param pIntegers Value to which the attribute "integers" should be set.
+     * @param pIntegers Value to which {@link #integers} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIntegers( Integer[] pIntegers ) {
       // Assign value to attribute

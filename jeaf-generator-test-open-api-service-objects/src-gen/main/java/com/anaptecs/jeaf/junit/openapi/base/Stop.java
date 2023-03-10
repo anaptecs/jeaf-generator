@@ -139,9 +139,10 @@ public class Stop implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -166,9 +167,10 @@ public class Stop implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "index".
+     * Method sets attribute {@link #index}.<br/>
      * 
-     * @param pIndex Value to which the attribute "index" should be set.
+     * @param pIndex Value to which {@link #index} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIndex( byte pIndex ) {
       // Assign value to attribute

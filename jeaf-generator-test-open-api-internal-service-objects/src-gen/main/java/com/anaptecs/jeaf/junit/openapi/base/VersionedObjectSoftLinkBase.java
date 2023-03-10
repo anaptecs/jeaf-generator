@@ -87,9 +87,11 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "objectID". Internal ID of a versioned object
+     * Method sets attribute {@link #objectID}.<br/>
+     * Internal ID of a versioned object
      * 
-     * @param pObjectID Value to which the attribute "objectID" should be set.
+     * @param pObjectID Value to which {@link #objectID} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setObjectID( long pObjectID ) {
       // Assign value to attribute

@@ -196,9 +196,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myBoolean".
+     * Method sets attribute {@link #myBoolean}.<br/>
      * 
-     * @param pMyBoolean Value to which the attribute "myBoolean" should be set.
+     * @param pMyBoolean Value to which {@link #myBoolean} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyBoolean( boolean pMyBoolean ) {
       // Assign value to attribute
@@ -207,9 +208,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myByte".
+     * Method sets attribute {@link #myByte}.<br/>
      * 
-     * @param pMyByte Value to which the attribute "myByte" should be set.
+     * @param pMyByte Value to which {@link #myByte} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyByte( byte pMyByte ) {
       // Assign value to attribute
@@ -218,9 +220,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myChar".
+     * Method sets attribute {@link #myChar}.<br/>
      * 
-     * @param pMyChar Value to which the attribute "myChar" should be set.
+     * @param pMyChar Value to which {@link #myChar} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyChar( char pMyChar ) {
       // Assign value to attribute
@@ -229,9 +232,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myDouble".
+     * Method sets attribute {@link #myDouble}.<br/>
      * 
-     * @param pMyDouble Value to which the attribute "myDouble" should be set.
+     * @param pMyDouble Value to which {@link #myDouble} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyDouble( double pMyDouble ) {
       // Assign value to attribute
@@ -240,9 +244,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myFloat".
+     * Method sets attribute {@link #myFloat}.<br/>
      * 
-     * @param pMyFloat Value to which the attribute "myFloat" should be set.
+     * @param pMyFloat Value to which {@link #myFloat} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyFloat( float pMyFloat ) {
       // Assign value to attribute
@@ -251,9 +256,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myLong".
+     * Method sets attribute {@link #myLong}.<br/>
      * 
-     * @param pMyLong Value to which the attribute "myLong" should be set.
+     * @param pMyLong Value to which {@link #myLong} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyLong( long pMyLong ) {
       // Assign value to attribute
@@ -262,9 +268,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myShort".
+     * Method sets attribute {@link #myShort}.<br/>
      * 
-     * @param pMyShort Value to which the attribute "myShort" should be set.
+     * @param pMyShort Value to which {@link #myShort} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyShort( short pMyShort ) {
       // Assign value to attribute
@@ -273,9 +280,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myByteArray".
+     * Method sets attribute {@link #myByteArray}.<br/>
      * 
-     * @param pMyByteArray Value to which the attribute "myByteArray" should be set.
+     * @param pMyByteArray Value to which {@link #myByteArray} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyByteArray( byte[] pMyByteArray ) {
       // Assign value to attribute

@@ -272,9 +272,10 @@ public class DataTypesQueryBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "longCodes".
+     * Method sets attribute {@link #longCodes}.<br/>
      * 
-     * @param pLongCodes Value to which the attribute "longCodes" should be set.
+     * @param pLongCodes Value to which {@link #longCodes} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLongCodes( LongCode[] pLongCodes ) {
       // Assign value to attribute
@@ -289,9 +290,10 @@ public class DataTypesQueryBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "codes".
+     * Method sets attribute {@link #codes}.<br/>
      * 
-     * @param pCodes Value to which the attribute "codes" should be set.
+     * @param pCodes Value to which {@link #codes} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCodes( IntegerCodeType[] pCodes ) {
       // Assign value to attribute
@@ -338,9 +340,10 @@ public class DataTypesQueryBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "bookingIDsArray".
+     * Method sets attribute {@link #bookingIDsArray}.<br/>
      * 
-     * @param pBookingIDsArray Value to which the attribute "bookingIDsArray" should be set.
+     * @param pBookingIDsArray Value to which {@link #bookingIDsArray} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingIDsArray( BookingID[] pBookingIDsArray ) {
       // Assign value to attribute
@@ -355,9 +358,10 @@ public class DataTypesQueryBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "offsetDateTime".
+     * Method sets attribute {@link #offsetDateTime}.<br/>
      * 
-     * @param pOffsetDateTime Value to which the attribute "offsetDateTime" should be set.
+     * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
       // Assign value to attribute
@@ -376,9 +380,10 @@ public class DataTypesQueryBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "localDateTime".
+     * Method sets attribute {@link #localDateTime}.<br/>
      * 
-     * @param pLocalDateTime Value to which the attribute "localDateTime" should be set.
+     * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalDateTime( LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
@@ -387,9 +392,10 @@ public class DataTypesQueryBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "localTime".
+     * Method sets attribute {@link #localTime}.<br/>
      * 
-     * @param pLocalTime Value to which the attribute "localTime" should be set.
+     * @param pLocalTime Value to which {@link #localTime} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalTime( LocalTime pLocalTime ) {
       // Assign value to attribute
@@ -430,9 +436,10 @@ public class DataTypesQueryBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "startTimestamps".
+     * Method sets attribute {@link #startTimestamps}.<br/>
      * 
-     * @param pStartTimestamps Value to which the attribute "startTimestamps" should be set.
+     * @param pStartTimestamps Value to which {@link #startTimestamps} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStartTimestamps( OffsetDateTime[] pStartTimestamps ) {
       // Assign value to attribute

@@ -134,9 +134,10 @@ public class PostalAddress implements Serializable {
     }
 
     /**
-     * Method sets the attribute "street".
+     * Method sets attribute {@link #street}.<br/>
      * 
-     * @param pStreet Value to which the attribute "street" should be set.
+     * @param pStreet Value to which {@link #street} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStreet( String pStreet ) {
       // Assign value to attribute
@@ -145,9 +146,10 @@ public class PostalAddress implements Serializable {
     }
 
     /**
-     * Method sets the attribute "houseNumber".
+     * Method sets attribute {@link #houseNumber}.<br/>
      * 
-     * @param pHouseNumber Value to which the attribute "houseNumber" should be set.
+     * @param pHouseNumber Value to which {@link #houseNumber} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setHouseNumber( String pHouseNumber ) {
       // Assign value to attribute
@@ -156,9 +158,10 @@ public class PostalAddress implements Serializable {
     }
 
     /**
-     * Method sets the attribute "city".
+     * Method sets attribute {@link #city}.<br/>
      * 
-     * @param pCity Value to which the attribute "city" should be set.
+     * @param pCity Value to which {@link #city} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCity( String pCity ) {
       // Assign value to attribute
@@ -167,9 +170,10 @@ public class PostalAddress implements Serializable {
     }
 
     /**
-     * Method sets the attribute "postalCode".
+     * Method sets attribute {@link #postalCode}.<br/>
      * 
-     * @param pPostalCode Value to which the attribute "postalCode" should be set.
+     * @param pPostalCode Value to which {@link #postalCode} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPostalCode( int pPostalCode ) {
       // Assign value to attribute

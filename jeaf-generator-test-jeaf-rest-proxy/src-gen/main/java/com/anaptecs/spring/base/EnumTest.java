@@ -127,9 +127,10 @@ public class EnumTest implements Serializable {
     }
 
     /**
-     * Method sets the attribute "property".
+     * Method sets attribute {@link #property}.<br/>
      * 
-     * @param pProperty Value to which the attribute "property" should be set.
+     * @param pProperty Value to which {@link #property} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setProperty( ExtensibleEnum pProperty ) {
       // Assign value to attribute

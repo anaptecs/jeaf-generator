@@ -111,9 +111,10 @@ public class LocalBeanParamType implements Serializable {
     }
 
     /**
-     * Method sets the attribute "localKey".
+     * Method sets attribute {@link #localKey}.<br/>
      * 
-     * @param pLocalKey Value to which the attribute "localKey" should be set.
+     * @param pLocalKey Value to which {@link #localKey} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalKey( String pLocalKey ) {
       // Assign value to attribute
@@ -122,9 +123,10 @@ public class LocalBeanParamType implements Serializable {
     }
 
     /**
-     * Method sets the attribute "localID".
+     * Method sets attribute {@link #localID}.<br/>
      * 
-     * @param pLocalID Value to which the attribute "localID" should be set.
+     * @param pLocalID Value to which {@link #localID} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalID( String pLocalID ) {
       // Assign value to attribute

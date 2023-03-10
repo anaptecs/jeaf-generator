@@ -109,9 +109,10 @@ public class ValidationTestObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "myEMail".
+     * Method sets attribute {@link #myEMail}.<br/>
      * 
-     * @param pMyEMail Value to which the attribute "myEMail" should be set.
+     * @param pMyEMail Value to which {@link #myEMail} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyEMail( String pMyEMail ) {
       // Assign value to attribute
@@ -120,9 +121,10 @@ public class ValidationTestObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "dateOfBirth".
+     * Method sets attribute {@link #dateOfBirth}.<br/>
      * 
-     * @param pDateOfBirth Value to which the attribute "dateOfBirth" should be set.
+     * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDateOfBirth( Calendar pDateOfBirth ) {
       // Assign value to attribute

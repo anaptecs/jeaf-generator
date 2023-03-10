@@ -189,9 +189,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -200,9 +201,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "registrationNumber".
+     * Method sets attribute {@link #registrationNumber}.<br/>
      * 
-     * @param pRegistrationNumber Value to which the attribute "registrationNumber" should be set.
+     * @param pRegistrationNumber Value to which {@link #registrationNumber} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setRegistrationNumber( Long pRegistrationNumber ) {
       // Assign value to attribute
@@ -211,9 +213,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "taxNumber".
+     * Method sets attribute {@link #taxNumber}.<br/>
      * 
-     * @param pTaxNumber Value to which the attribute "taxNumber" should be set.
+     * @param pTaxNumber Value to which {@link #taxNumber} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTaxNumber( Long pTaxNumber ) {
       // Assign value to attribute
@@ -222,9 +225,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "attendant".
+     * Method sets attribute {@link #attendant}.<br/>
      * 
-     * @param pAttendant Value to which the attribute "attendant" should be set.
+     * @param pAttendant Value to which {@link #attendant} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAttendant( String pAttendant ) {
       // Assign value to attribute

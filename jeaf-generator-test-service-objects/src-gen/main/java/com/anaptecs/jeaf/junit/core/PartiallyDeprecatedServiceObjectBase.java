@@ -141,9 +141,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setName( String pName ) {
       // Assign value to attribute
@@ -152,9 +153,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     }
 
     /**
-     * Method sets the attribute "outdated".
+     * Method sets attribute {@link #outdated}.<br/>
      * 
-     * @param pOutdated Value to which the attribute "outdated" should be set.
+     * @param pOutdated Value to which {@link #outdated} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public BuilderBase setOutdated( boolean pOutdated ) {
@@ -192,9 +194,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     }
 
     /**
-     * Method sets the attribute "readonlyDefault".
+     * Method sets attribute {@link #readonlyDefault}.<br/>
      * 
-     * @param pReadonlyDefault Value to which the attribute "readonlyDefault" should be set.
+     * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setReadonlyDefault( int pReadonlyDefault ) {
       // Assign value to attribute

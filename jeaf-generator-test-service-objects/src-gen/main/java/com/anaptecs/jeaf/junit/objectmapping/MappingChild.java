@@ -98,9 +98,10 @@ public class MappingChild extends MappingParent {
     }
 
     /**
-     * Method sets the attribute "value".
+     * Method sets attribute {@link #value}.<br/>
      * 
-     * @param pValue Value to which the attribute "value" should be set.
+     * @param pValue Value to which {@link #value} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setValue( int pValue ) {
       // Assign value to attribute

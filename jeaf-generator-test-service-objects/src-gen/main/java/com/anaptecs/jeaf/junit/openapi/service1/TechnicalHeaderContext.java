@@ -107,9 +107,10 @@ public class TechnicalHeaderContext implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "reseller".
+     * Method sets attribute {@link #reseller}.<br/>
      * 
-     * @param pReseller Value to which the attribute "reseller" should be set.
+     * @param pReseller Value to which {@link #reseller} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReseller( String pReseller ) {
       // Assign value to attribute
@@ -118,9 +119,10 @@ public class TechnicalHeaderContext implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "authenticationToken".
+     * Method sets attribute {@link #authenticationToken}.<br/>
      * 
-     * @param pAuthenticationToken Value to which the attribute "authenticationToken" should be set.
+     * @param pAuthenticationToken Value to which {@link #authenticationToken} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAuthenticationToken( String pAuthenticationToken ) {
       // Assign value to attribute

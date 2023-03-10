@@ -204,9 +204,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the attribute "childBBAttribute".
+     * Method sets attribute {@link #childBBAttribute}.<br/>
      * 
-     * @param pChildBBAttribute Value to which the attribute "childBBAttribute" should be set.
+     * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildBBAttribute( Long pChildBBAttribute ) {
       // Assign value to attribute
@@ -215,9 +216,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the attribute "deprecatedAttribute".
+     * Method sets attribute {@link #deprecatedAttribute}.<br/>
      * 
-     * @param pDeprecatedAttribute Value to which the attribute "deprecatedAttribute" should be set.
+     * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDeprecatedAttribute( int pDeprecatedAttribute ) {
@@ -255,9 +257,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the attribute "deprecatedArray".
+     * Method sets attribute {@link #deprecatedArray}.<br/>
      * 
-     * @param pDeprecatedArray Value to which the attribute "deprecatedArray" should be set.
+     * @param pDeprecatedArray Value to which {@link #deprecatedArray} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDeprecatedArray( byte[] pDeprecatedArray ) {

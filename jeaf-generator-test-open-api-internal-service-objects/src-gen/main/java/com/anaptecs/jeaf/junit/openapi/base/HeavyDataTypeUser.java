@@ -152,9 +152,10 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "booleanCode".
+     * Method sets attribute {@link #booleanCode}.<br/>
      * 
-     * @param pBooleanCode Value to which the attribute "booleanCode" should be set.
+     * @param pBooleanCode Value to which {@link #booleanCode} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooleanCode( BooleanCode pBooleanCode ) {
       // Assign value to attribute
@@ -163,9 +164,10 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "byteCode".
+     * Method sets attribute {@link #byteCode}.<br/>
      * 
-     * @param pByteCode Value to which the attribute "byteCode" should be set.
+     * @param pByteCode Value to which {@link #byteCode} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setByteCode( ByteCode pByteCode ) {
       // Assign value to attribute
@@ -174,9 +176,10 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "shortCode".
+     * Method sets attribute {@link #shortCode}.<br/>
      * 
-     * @param pShortCode Value to which the attribute "shortCode" should be set.
+     * @param pShortCode Value to which {@link #shortCode} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setShortCode( ShortCode pShortCode ) {
       // Assign value to attribute
@@ -185,9 +188,10 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "integerCode".
+     * Method sets attribute {@link #integerCode}.<br/>
      * 
-     * @param pIntegerCode Value to which the attribute "integerCode" should be set.
+     * @param pIntegerCode Value to which {@link #integerCode} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIntegerCode( IntegerCode pIntegerCode ) {
       // Assign value to attribute
@@ -196,9 +200,10 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "floatCode".
+     * Method sets attribute {@link #floatCode}.<br/>
      * 
-     * @param pFloatCode Value to which the attribute "floatCode" should be set.
+     * @param pFloatCode Value to which {@link #floatCode} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setFloatCode( FloatCode pFloatCode ) {
       // Assign value to attribute
@@ -207,9 +212,10 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "doubleCode".
+     * Method sets attribute {@link #doubleCode}.<br/>
      * 
-     * @param pDoubleCode Value to which the attribute "doubleCode" should be set.
+     * @param pDoubleCode Value to which {@link #doubleCode} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDoubleCode( DoubleCode pDoubleCode ) {
       // Assign value to attribute
@@ -218,9 +224,10 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "bigInegerCode".
+     * Method sets attribute {@link #bigInegerCode}.<br/>
      * 
-     * @param pBigInegerCode Value to which the attribute "bigInegerCode" should be set.
+     * @param pBigInegerCode Value to which {@link #bigInegerCode} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBigInegerCode( BigIntegerCode pBigInegerCode ) {
       // Assign value to attribute
@@ -229,9 +236,10 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "bigDecimalCode".
+     * Method sets attribute {@link #bigDecimalCode}.<br/>
      * 
-     * @param pBigDecimalCode Value to which the attribute "bigDecimalCode" should be set.
+     * @param pBigDecimalCode Value to which {@link #bigDecimalCode} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBigDecimalCode( BigDecimalCode pBigDecimalCode ) {
       // Assign value to attribute

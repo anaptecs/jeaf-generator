@@ -157,9 +157,10 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "intValue".
+     * Method sets attribute {@link #intValue}.<br/>
      * 
-     * @param pIntValue Value to which the attribute "intValue" should be set.
+     * @param pIntValue Value to which {@link #intValue} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIntValue( Integer pIntValue ) {
       // Assign value to attribute

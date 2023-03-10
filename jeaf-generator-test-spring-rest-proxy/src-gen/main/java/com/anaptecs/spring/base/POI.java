@@ -102,9 +102,10 @@ public class POI extends Stop {
     }
 
     /**
-     * Method sets the attribute "description".
+     * Method sets attribute {@link #description}.<br/>
      * 
-     * @param pDescription Value to which the attribute "description" should be set.
+     * @param pDescription Value to which {@link #description} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDescription( String pDescription ) {
       // Assign value to attribute

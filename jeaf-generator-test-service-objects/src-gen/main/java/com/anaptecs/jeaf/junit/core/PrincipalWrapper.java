@@ -88,9 +88,10 @@ public class PrincipalWrapper implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "lPrincipal".
+     * Method sets attribute {@link #lPrincipal}.<br/>
      * 
-     * @param pLPrincipal Value to which the attribute "lPrincipal" should be set.
+     * @param pLPrincipal Value to which {@link #lPrincipal} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLPrincipal( Principal pLPrincipal ) {
       // Assign value to attribute

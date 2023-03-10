@@ -106,9 +106,10 @@ public class JustAType implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "attribute".
+     * Method sets attribute {@link #attribute}.<br/>
      * 
-     * @param pAttribute Value to which the attribute "attribute" should be set.
+     * @param pAttribute Value to which {@link #attribute} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAttribute( int pAttribute ) {
       // Assign value to attribute
@@ -117,9 +118,11 @@ public class JustAType implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "legacy".
+     * Method sets attribute {@link #legacy}.<br/>
      * 
-     * @param pLegacy Value to which the attribute "legacy" should be set.
+     * @param pLegacy Value to which {@link #legacy} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @deprecated Hello (<b>since:</b> TBD, <b>removed with:</b> TBD)
      */
     @Deprecated
     public Builder setLegacy( double pLegacy ) {

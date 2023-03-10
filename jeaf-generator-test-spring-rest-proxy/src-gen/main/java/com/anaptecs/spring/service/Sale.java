@@ -87,9 +87,10 @@ public class Sale {
     }
 
     /**
-     * Method sets the attribute "transactionAmount".
+     * Method sets attribute {@link #transactionAmount}.<br/>
      * 
-     * @param pTransactionAmount Value to which the attribute "transactionAmount" should be set.
+     * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTransactionAmount( BigDecimal pTransactionAmount ) {
       // Assign value to attribute

@@ -152,9 +152,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the attribute "amount".
+     * Method sets attribute {@link #amount}.<br/>
      * 
-     * @param pAmount Value to which the attribute "amount" should be set.
+     * @param pAmount Value to which {@link #amount} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAmount( BigDecimal pAmount ) {
       // Assign value to attribute
@@ -163,9 +164,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the attribute "currency".
+     * Method sets attribute {@link #currency}.<br/>
      * 
-     * @param pCurrency Value to which the attribute "currency" should be set.
+     * @param pCurrency Value to which {@link #currency} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCurrency( Currency pCurrency ) {
       // Assign value to attribute
@@ -174,9 +176,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the attribute "executionTimestamp".
+     * Method sets attribute {@link #executionTimestamp}.<br/>
      * 
-     * @param pExecutionTimestamp Value to which the attribute "executionTimestamp" should be set.
+     * @param pExecutionTimestamp Value to which {@link #executionTimestamp} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setExecutionTimestamp( Calendar pExecutionTimestamp ) {
       // Assign value to attribute

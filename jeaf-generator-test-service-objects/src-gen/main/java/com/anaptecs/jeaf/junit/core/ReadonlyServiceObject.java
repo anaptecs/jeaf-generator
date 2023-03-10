@@ -108,9 +108,10 @@ public class ReadonlyServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "readonly".
+     * Method sets attribute {@link #readonly}.<br/>
      * 
-     * @param pReadonly Value to which the attribute "readonly" should be set.
+     * @param pReadonly Value to which {@link #readonly} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReadonly( String pReadonly ) {
       // Assign value to attribute
@@ -119,9 +120,10 @@ public class ReadonlyServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "readonlyDefault".
+     * Method sets attribute {@link #readonlyDefault}.<br/>
      * 
-     * @param pReadonlyDefault Value to which the attribute "readonlyDefault" should be set.
+     * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReadonlyDefault( int pReadonlyDefault ) {
       // Assign value to attribute

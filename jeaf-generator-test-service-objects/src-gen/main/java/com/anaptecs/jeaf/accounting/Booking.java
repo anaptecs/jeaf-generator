@@ -162,9 +162,11 @@ public class Booking implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "amount". Amount of the booking. The attribute must not be null.
+     * Method sets attribute {@link #amount}.<br/>
+     * Amount of the booking. The attribute must not be null.
      * 
-     * @param pAmount Value to which the attribute "amount" should be set.
+     * @param pAmount Value to which {@link #amount} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAmount( Double pAmount ) {
       // Assign value to attribute

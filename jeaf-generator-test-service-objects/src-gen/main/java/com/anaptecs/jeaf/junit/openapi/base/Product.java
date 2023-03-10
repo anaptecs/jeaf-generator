@@ -310,9 +310,10 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -321,9 +322,11 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "image". Image describing the product.
+     * Method sets attribute {@link #image}.<br/>
+     * Image describing the product.
      * 
-     * @param pImage Value to which the attribute "image" should be set.
+     * @param pImage Value to which {@link #image} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setImage( byte[] pImage ) {
       // Assign value to attribute
@@ -338,9 +341,10 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "link".
+     * Method sets attribute {@link #link}.<br/>
      * 
-     * @param pLink Value to which the attribute "link" should be set.
+     * @param pLink Value to which {@link #link} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLink( URL pLink ) {
       // Assign value to attribute
@@ -349,9 +353,10 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "productID".
+     * Method sets attribute {@link #productID}.<br/>
      * 
-     * @param pProductID Value to which the attribute "productID" should be set.
+     * @param pProductID Value to which {@link #productID} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setProductID( UUID pProductID ) {
       // Assign value to attribute
@@ -392,9 +397,10 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "description".
+     * Method sets attribute {@link #description}.<br/>
      * 
-     * @param pDescription Value to which the attribute "description" should be set.
+     * @param pDescription Value to which {@link #description} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDescription( String pDescription ) {
@@ -420,9 +426,10 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "uri".
+     * Method sets attribute {@link #uri}.<br/>
      * 
-     * @param pUri Value to which the attribute "uri" should be set.
+     * @param pUri Value to which {@link #uri} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setUri( String pUri ) {
       // Assign value to attribute

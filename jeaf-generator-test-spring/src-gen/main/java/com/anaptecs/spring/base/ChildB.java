@@ -158,9 +158,11 @@ public class ChildB extends ParentClass {
     }
 
     /**
-     * Method sets the attribute "childBAttribute". A child attribute
+     * Method sets attribute {@link #childBAttribute}.<br/>
+     * A child attribute
      * 
-     * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
+     * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildBAttribute( boolean[] pChildBAttribute ) {
       // Assign value to attribute

@@ -109,6 +109,18 @@
  */
 «ENDDEFINE»
 
+
+«DEFINE JavadocForBuilderSetter(String builderClassName) FOR uml::Property»
+/**
+ * Method sets «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>
+ «EXPAND functions::Javadoc::AddComment -»
+ * @param «asParameter()» Value to which {@link #«asInstanceVar()»} should be set.
+ * @return «builderClassName» Instance of this builder to support chaining setters. Method never returns null.
+ «EXPAND DeprecatedJavadoc -»
+ */
+«ENDDEFINE»
+
+
 «DEFINE JavadocForLiteral FOR uml::EnumerationLiteral»
 «IF this.hasMeaningfulJavadoc()»
 /**

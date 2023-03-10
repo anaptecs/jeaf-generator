@@ -119,9 +119,10 @@ public abstract class CustomerBase extends Partner {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setName( String pName ) {
       // Assign value to attribute
@@ -130,9 +131,10 @@ public abstract class CustomerBase extends Partner {
     }
 
     /**
-     * Method sets the attribute "firstName".
+     * Method sets attribute {@link #firstName}.<br/>
      * 
-     * @param pFirstName Value to which the attribute "firstName" should be set.
+     * @param pFirstName Value to which {@link #firstName} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setFirstName( String pFirstName ) {
       // Assign value to attribute
@@ -141,9 +143,10 @@ public abstract class CustomerBase extends Partner {
     }
 
     /**
-     * Method sets the attribute "email".
+     * Method sets attribute {@link #email}.<br/>
      * 
-     * @param pEmail Value to which the attribute "email" should be set.
+     * @param pEmail Value to which {@link #email} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setEmail( String pEmail ) {
       // Assign value to attribute

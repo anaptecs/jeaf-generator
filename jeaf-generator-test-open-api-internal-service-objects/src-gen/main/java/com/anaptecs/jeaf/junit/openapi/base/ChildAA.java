@@ -207,9 +207,13 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "childAAAttribute". Multi line docs
+     * Method sets attribute {@link #childAAAttribute}.<br/>
+     * Multi<br/>
+     * line<br/>
+     * docs
      * 
-     * @param pChildAAAttribute Value to which the attribute "childAAAttribute" should be set.
+     * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildAAAttribute( byte pChildAAAttribute ) {
       // Assign value to attribute
@@ -218,9 +222,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "sizedArray".
+     * Method sets attribute {@link #sizedArray}.<br/>
      * 
-     * @param pSizedArray Value to which the attribute "sizedArray" should be set.
+     * @param pSizedArray Value to which {@link #sizedArray} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSizedArray( int[] pSizedArray ) {
       // Assign value to attribute
@@ -234,9 +239,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "requiredArray".
+     * Method sets attribute {@link #requiredArray}.<br/>
      * 
-     * @param pRequiredArray Value to which the attribute "requiredArray" should be set.
+     * @param pRequiredArray Value to which {@link #requiredArray} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setRequiredArray( String[] pRequiredArray ) {
       // Assign value to attribute
@@ -250,9 +256,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "bigIntegerCode".
+     * Method sets attribute {@link #bigIntegerCode}.<br/>
      * 
-     * @param pBigIntegerCode Value to which the attribute "bigIntegerCode" should be set.
+     * @param pBigIntegerCode Value to which {@link #bigIntegerCode} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBigIntegerCode( BigIntegerCode pBigIntegerCode ) {
       // Assign value to attribute
@@ -271,9 +278,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "codes".
+     * Method sets attribute {@link #codes}.<br/>
      * 
-     * @param pCodes Value to which the attribute "codes" should be set.
+     * @param pCodes Value to which {@link #codes} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCodes( IntegerCode[] pCodes ) {
       // Assign value to attribute

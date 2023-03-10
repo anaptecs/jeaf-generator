@@ -312,9 +312,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "aBooleanArray".
+     * Method sets attribute {@link #aBooleanArray}.<br/>
      * 
-     * @param pABooleanArray Value to which the attribute "aBooleanArray" should be set.
+     * @param pABooleanArray Value to which {@link #aBooleanArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setABooleanArray( boolean[] pABooleanArray ) {
       // Assign value to attribute
@@ -329,9 +330,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "bBooleanArray".
+     * Method sets attribute {@link #bBooleanArray}.<br/>
      * 
-     * @param pBBooleanArray Value to which the attribute "bBooleanArray" should be set.
+     * @param pBBooleanArray Value to which {@link #bBooleanArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBBooleanArray( Boolean[] pBBooleanArray ) {
       // Assign value to attribute
@@ -346,9 +348,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "cBooleanArray".
+     * Method sets attribute {@link #cBooleanArray}.<br/>
      * 
-     * @param pCBooleanArray Value to which the attribute "cBooleanArray" should be set.
+     * @param pCBooleanArray Value to which {@link #cBooleanArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setCBooleanArray( boolean[] pCBooleanArray ) {
       // Assign value to attribute
@@ -363,9 +366,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "aByteArray".
+     * Method sets attribute {@link #aByteArray}.<br/>
      * 
-     * @param pAByteArray Value to which the attribute "aByteArray" should be set.
+     * @param pAByteArray Value to which {@link #aByteArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setAByteArray( byte[] pAByteArray ) {
       // Assign value to attribute
@@ -380,9 +384,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "bByteArray".
+     * Method sets attribute {@link #bByteArray}.<br/>
      * 
-     * @param pBByteArray Value to which the attribute "bByteArray" should be set.
+     * @param pBByteArray Value to which {@link #bByteArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBByteArray( Byte[] pBByteArray ) {
       // Assign value to attribute
@@ -397,9 +402,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "aShortArray".
+     * Method sets attribute {@link #aShortArray}.<br/>
      * 
-     * @param pAShortArray Value to which the attribute "aShortArray" should be set.
+     * @param pAShortArray Value to which {@link #aShortArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setAShortArray( short[] pAShortArray ) {
       // Assign value to attribute
@@ -414,9 +420,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "bShortArray".
+     * Method sets attribute {@link #bShortArray}.<br/>
      * 
-     * @param pBShortArray Value to which the attribute "bShortArray" should be set.
+     * @param pBShortArray Value to which {@link #bShortArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBShortArray( Short[] pBShortArray ) {
       // Assign value to attribute
@@ -431,9 +438,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "aIntegerArray".
+     * Method sets attribute {@link #aIntegerArray}.<br/>
      * 
-     * @param pAIntegerArray Value to which the attribute "aIntegerArray" should be set.
+     * @param pAIntegerArray Value to which {@link #aIntegerArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setAIntegerArray( int[] pAIntegerArray ) {
       // Assign value to attribute
@@ -448,9 +456,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "bIntegerArray".
+     * Method sets attribute {@link #bIntegerArray}.<br/>
      * 
-     * @param pBIntegerArray Value to which the attribute "bIntegerArray" should be set.
+     * @param pBIntegerArray Value to which {@link #bIntegerArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBIntegerArray( Integer[] pBIntegerArray ) {
       // Assign value to attribute
@@ -465,9 +474,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "cIntegerArray".
+     * Method sets attribute {@link #cIntegerArray}.<br/>
      * 
-     * @param pCIntegerArray Value to which the attribute "cIntegerArray" should be set.
+     * @param pCIntegerArray Value to which {@link #cIntegerArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setCIntegerArray( Integer[] pCIntegerArray ) {
       // Assign value to attribute
@@ -482,9 +492,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "aLongArray".
+     * Method sets attribute {@link #aLongArray}.<br/>
      * 
-     * @param pALongArray Value to which the attribute "aLongArray" should be set.
+     * @param pALongArray Value to which {@link #aLongArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setALongArray( long[] pALongArray ) {
       // Assign value to attribute
@@ -499,9 +510,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "bLongArray".
+     * Method sets attribute {@link #bLongArray}.<br/>
      * 
-     * @param pBLongArray Value to which the attribute "bLongArray" should be set.
+     * @param pBLongArray Value to which {@link #bLongArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBLongArray( Long[] pBLongArray ) {
       // Assign value to attribute
@@ -516,9 +528,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "aBigIntegerArray".
+     * Method sets attribute {@link #aBigIntegerArray}.<br/>
      * 
-     * @param pABigIntegerArray Value to which the attribute "aBigIntegerArray" should be set.
+     * @param pABigIntegerArray Value to which {@link #aBigIntegerArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
       // Assign value to attribute
@@ -533,9 +546,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "aCharacterArray".
+     * Method sets attribute {@link #aCharacterArray}.<br/>
      * 
-     * @param pACharacterArray Value to which the attribute "aCharacterArray" should be set.
+     * @param pACharacterArray Value to which {@link #aCharacterArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setACharacterArray( char[] pACharacterArray ) {
       // Assign value to attribute
@@ -550,9 +564,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "bCharacterArray".
+     * Method sets attribute {@link #bCharacterArray}.<br/>
      * 
-     * @param pBCharacterArray Value to which the attribute "bCharacterArray" should be set.
+     * @param pBCharacterArray Value to which {@link #bCharacterArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBCharacterArray( Character[] pBCharacterArray ) {
       // Assign value to attribute
@@ -567,9 +582,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "aFloatArray".
+     * Method sets attribute {@link #aFloatArray}.<br/>
      * 
-     * @param pAFloatArray Value to which the attribute "aFloatArray" should be set.
+     * @param pAFloatArray Value to which {@link #aFloatArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setAFloatArray( float[] pAFloatArray ) {
       // Assign value to attribute
@@ -584,9 +600,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "bFloatArray".
+     * Method sets attribute {@link #bFloatArray}.<br/>
      * 
-     * @param pBFloatArray Value to which the attribute "bFloatArray" should be set.
+     * @param pBFloatArray Value to which {@link #bFloatArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBFloatArray( Float[] pBFloatArray ) {
       // Assign value to attribute
@@ -601,9 +618,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "aDoubleArray".
+     * Method sets attribute {@link #aDoubleArray}.<br/>
      * 
-     * @param pADoubleArray Value to which the attribute "aDoubleArray" should be set.
+     * @param pADoubleArray Value to which {@link #aDoubleArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setADoubleArray( double[] pADoubleArray ) {
       // Assign value to attribute
@@ -618,9 +636,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "bDoubleArray".
+     * Method sets attribute {@link #bDoubleArray}.<br/>
      * 
-     * @param pBDoubleArray Value to which the attribute "bDoubleArray" should be set.
+     * @param pBDoubleArray Value to which {@link #bDoubleArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBDoubleArray( Double[] pBDoubleArray ) {
       // Assign value to attribute
@@ -635,9 +654,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "aBigDecimalArray".
+     * Method sets attribute {@link #aBigDecimalArray}.<br/>
      * 
-     * @param pABigDecimalArray Value to which the attribute "aBigDecimalArray" should be set.
+     * @param pABigDecimalArray Value to which {@link #aBigDecimalArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
       // Assign value to attribute
@@ -652,9 +672,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "aStringArray".
+     * Method sets attribute {@link #aStringArray}.<br/>
      * 
-     * @param pAStringArray Value to which the attribute "aStringArray" should be set.
+     * @param pAStringArray Value to which {@link #aStringArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setAStringArray( String[] pAStringArray ) {
       // Assign value to attribute
@@ -669,9 +690,10 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
 
     /**
-     * Method sets the attribute "bStringArray".
+     * Method sets attribute {@link #bStringArray}.<br/>
      * 
-     * @param pBStringArray Value to which the attribute "bStringArray" should be set.
+     * @param pBStringArray Value to which {@link #bStringArray} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBStringArray( String[] pBStringArray ) {
       // Assign value to attribute

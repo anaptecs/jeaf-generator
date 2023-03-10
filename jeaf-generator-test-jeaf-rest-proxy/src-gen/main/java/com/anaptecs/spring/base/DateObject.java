@@ -172,9 +172,10 @@ public class DateObject implements Serializable {
     }
 
     /**
-     * Method sets the attribute "localTime".
+     * Method sets attribute {@link #localTime}.<br/>
      * 
-     * @param pLocalTime Value to which the attribute "localTime" should be set.
+     * @param pLocalTime Value to which {@link #localTime} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalTime( LocalTime pLocalTime ) {
       // Assign value to attribute
@@ -183,9 +184,10 @@ public class DateObject implements Serializable {
     }
 
     /**
-     * Method sets the attribute "localDate".
+     * Method sets attribute {@link #localDate}.<br/>
      * 
-     * @param pLocalDate Value to which the attribute "localDate" should be set.
+     * @param pLocalDate Value to which {@link #localDate} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalDate( LocalDate pLocalDate ) {
       // Assign value to attribute
@@ -194,9 +196,10 @@ public class DateObject implements Serializable {
     }
 
     /**
-     * Method sets the attribute "localDateTime".
+     * Method sets attribute {@link #localDateTime}.<br/>
      * 
-     * @param pLocalDateTime Value to which the attribute "localDateTime" should be set.
+     * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalDateTime( LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
@@ -205,9 +208,10 @@ public class DateObject implements Serializable {
     }
 
     /**
-     * Method sets the attribute "calendar".
+     * Method sets attribute {@link #calendar}.<br/>
      * 
-     * @param pCalendar Value to which the attribute "calendar" should be set.
+     * @param pCalendar Value to which {@link #calendar} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCalendar( Calendar pCalendar ) {
       // Assign value to attribute
@@ -216,9 +220,10 @@ public class DateObject implements Serializable {
     }
 
     /**
-     * Method sets the attribute "sqlDate".
+     * Method sets attribute {@link #sqlDate}.<br/>
      * 
-     * @param pSqlDate Value to which the attribute "sqlDate" should be set.
+     * @param pSqlDate Value to which {@link #sqlDate} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSqlDate( Date pSqlDate ) {
       // Assign value to attribute
@@ -227,9 +232,10 @@ public class DateObject implements Serializable {
     }
 
     /**
-     * Method sets the attribute "utilDate".
+     * Method sets attribute {@link #utilDate}.<br/>
      * 
-     * @param pUtilDate Value to which the attribute "utilDate" should be set.
+     * @param pUtilDate Value to which {@link #utilDate} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setUtilDate( java.util.Date pUtilDate ) {
       // Assign value to attribute

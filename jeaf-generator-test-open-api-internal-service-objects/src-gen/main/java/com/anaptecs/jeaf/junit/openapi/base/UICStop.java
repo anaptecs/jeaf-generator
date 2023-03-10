@@ -186,9 +186,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the attribute "uicCode".
+     * Method sets attribute {@link #uicCode}.<br/>
      * 
-     * @param pUicCode Value to which the attribute "uicCode" should be set.
+     * @param pUicCode Value to which {@link #uicCode} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setUicCode( String pUicCode ) {
       // Assign value to attribute
@@ -197,9 +198,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the attribute "priority".
+     * Method sets attribute {@link #priority}.<br/>
      * 
-     * @param pPriority Value to which the attribute "priority" should be set.
+     * @param pPriority Value to which {@link #priority} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPriority( int pPriority ) {
       // Assign value to attribute
@@ -208,9 +210,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the attribute "code".
+     * Method sets attribute {@link #code}.<br/>
      * 
-     * @param pCode Value to which the attribute "code" should be set.
+     * @param pCode Value to which {@link #code} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCode( long pCode ) {
       // Assign value to attribute
@@ -219,9 +222,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the attribute "index2".
+     * Method sets attribute {@link #index2}.<br/>
      * 
-     * @param pIndex2 Value to which the attribute "index2" should be set.
+     * @param pIndex2 Value to which {@link #index2} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIndex2( byte pIndex2 ) {
       // Assign value to attribute

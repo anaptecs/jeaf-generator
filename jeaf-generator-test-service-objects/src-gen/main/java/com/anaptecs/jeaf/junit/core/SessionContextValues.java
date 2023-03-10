@@ -98,9 +98,10 @@ public class SessionContextValues implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "timestamp".
+     * Method sets attribute {@link #timestamp}.<br/>
      * 
-     * @param pTimestamp Value to which the attribute "timestamp" should be set.
+     * @param pTimestamp Value to which {@link #timestamp} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTimestamp( String pTimestamp ) {
       // Assign value to attribute
@@ -109,9 +110,10 @@ public class SessionContextValues implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "counter".
+     * Method sets attribute {@link #counter}.<br/>
      * 
-     * @param pCounter Value to which the attribute "counter" should be set.
+     * @param pCounter Value to which {@link #counter} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCounter( Integer pCounter ) {
       // Assign value to attribute

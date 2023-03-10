@@ -108,9 +108,10 @@ public class BeanParameter implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "accessToken".
+     * Method sets attribute {@link #accessToken}.<br/>
      * 
-     * @param pAccessToken Value to which the attribute "accessToken" should be set.
+     * @param pAccessToken Value to which {@link #accessToken} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAccessToken( String pAccessToken ) {
       // Assign value to attribute
@@ -119,9 +120,10 @@ public class BeanParameter implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "language".
+     * Method sets attribute {@link #language}.<br/>
      * 
-     * @param pLanguage Value to which the attribute "language" should be set.
+     * @param pLanguage Value to which {@link #language} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLanguage( Locale pLanguage ) {
       // Assign value to attribute
@@ -130,9 +132,10 @@ public class BeanParameter implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "oldStyle".
+     * Method sets attribute {@link #oldStyle}.<br/>
      * 
-     * @param pOldStyle Value to which the attribute "oldStyle" should be set.
+     * @param pOldStyle Value to which {@link #oldStyle} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setOldStyle( String pOldStyle ) {

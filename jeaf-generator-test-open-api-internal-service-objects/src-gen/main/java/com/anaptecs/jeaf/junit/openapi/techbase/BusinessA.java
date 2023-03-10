@@ -105,9 +105,10 @@ public class BusinessA extends TechParent {
     }
 
     /**
-     * Method sets the attribute "businessAttribute".
+     * Method sets attribute {@link #businessAttribute}.<br/>
      * 
-     * @param pBusinessAttribute Value to which the attribute "businessAttribute" should be set.
+     * @param pBusinessAttribute Value to which {@link #businessAttribute} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBusinessAttribute( int pBusinessAttribute ) {
       // Assign value to attribute

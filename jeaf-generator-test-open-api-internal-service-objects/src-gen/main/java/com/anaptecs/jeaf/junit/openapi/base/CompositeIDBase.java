@@ -70,9 +70,10 @@ public abstract class CompositeIDBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "primaryCode".
+     * Method sets attribute {@link #primaryCode}.<br/>
      * 
-     * @param pPrimaryCode Value to which the attribute "primaryCode" should be set.
+     * @param pPrimaryCode Value to which {@link #primaryCode} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setPrimaryCode( long pPrimaryCode ) {
       // Assign value to attribute
@@ -81,9 +82,10 @@ public abstract class CompositeIDBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "secondaryCode".
+     * Method sets attribute {@link #secondaryCode}.<br/>
      * 
-     * @param pSecondaryCode Value to which the attribute "secondaryCode" should be set.
+     * @param pSecondaryCode Value to which {@link #secondaryCode} should be set.
+     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setSecondaryCode( long pSecondaryCode ) {
       // Assign value to attribute

@@ -212,9 +212,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "stringArray".
+     * Method sets attribute {@link #stringArray}.<br/>
      * 
-     * @param pStringArray Value to which the attribute "stringArray" should be set.
+     * @param pStringArray Value to which {@link #stringArray} should be set.
+     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStringArray( String[] pStringArray ) {
       // Assign value to attribute
