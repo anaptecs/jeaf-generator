@@ -90,9 +90,10 @@ public class Booking implements ServiceObject {
     }
 
     /**
-     * Method sets the association "bookingID". ID of the booking
+     * Method sets association {@link #bookingID}.<br/>
      * 
-     * @param pBookingID BookingID to which the association "bookingID" should be set.
+     * @param pBookingID Value to which {@link #bookingID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingID( BookingID pBookingID ) {
       bookingID = pBookingID;

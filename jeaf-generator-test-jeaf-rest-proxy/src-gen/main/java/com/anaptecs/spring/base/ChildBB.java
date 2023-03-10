@@ -208,7 +208,7 @@ public class ChildBB extends ChildB {
      * Method sets attribute {@link #childBBAttribute}.<br/>
      * 
      * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildBBAttribute( Long pChildBBAttribute ) {
       // Assign value to attribute
@@ -220,7 +220,7 @@ public class ChildBB extends ChildB {
      * Method sets attribute {@link #deprecatedAttribute}.<br/>
      * 
      * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDeprecatedAttribute( int pDeprecatedAttribute ) {
@@ -230,9 +230,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the association "deprecatedBs".
+     * Method sets association {@link #deprecatedBs}.<br/>
      * 
-     * @param pDeprecatedBs Collection with objects to which the association should be set.
+     * @param pDeprecatedBs Collection to which {@link #deprecatedBs} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDeprecatedBs( Set<ChildB> pDeprecatedBs ) {
@@ -247,9 +248,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the association "deprecatedParent".
+     * Method sets association {@link #deprecatedParent}.<br/>
      * 
-     * @param pDeprecatedParent ParentClass to which the association "deprecatedParent" should be set.
+     * @param pDeprecatedParent Value to which {@link #deprecatedParent} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDeprecatedParent( ParentClass pDeprecatedParent ) {
@@ -261,7 +263,7 @@ public class ChildBB extends ChildB {
      * Method sets attribute {@link #deprecatedArray}.<br/>
      * 
      * @param pDeprecatedArray Value to which {@link #deprecatedArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDeprecatedArray( byte[] pDeprecatedArray ) {

@@ -101,7 +101,7 @@ public class DataTypeWithConstraints implements ServiceObject {
      * Method sets attribute {@link #intValue}.<br/>
      * 
      * @param pIntValue Value to which {@link #intValue} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIntValue( int pIntValue ) {
       // Assign value to attribute

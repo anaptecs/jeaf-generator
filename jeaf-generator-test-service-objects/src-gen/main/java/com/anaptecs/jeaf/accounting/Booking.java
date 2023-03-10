@@ -163,10 +163,9 @@ public class Booking implements ServiceObject {
 
     /**
      * Method sets attribute {@link #amount}.<br/>
-     * Amount of the booking. The attribute must not be null.
      * 
      * @param pAmount Value to which {@link #amount} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAmount( Double pAmount ) {
       // Assign value to attribute
@@ -175,9 +174,10 @@ public class Booking implements ServiceObject {
     }
 
     /**
-     * Method sets the association "source".
+     * Method sets association {@link #source}.<br/>
      * 
-     * @param pSource Account to which the association "source" should be set.
+     * @param pSource Value to which {@link #source} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSource( Account pSource ) {
       source = pSource;
@@ -185,9 +185,10 @@ public class Booking implements ServiceObject {
     }
 
     /**
-     * Method sets the association "target".
+     * Method sets association {@link #target}.<br/>
      * 
-     * @param pTarget Account to which the association "target" should be set.
+     * @param pTarget Value to which {@link #target} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTarget( Account pTarget ) {
       target = pTarget;
@@ -195,9 +196,10 @@ public class Booking implements ServiceObject {
     }
 
     /**
-     * Method sets the association "token".
+     * Method sets association {@link #token}.<br/>
      * 
-     * @param pToken SecurityToken to which the association "token" should be set.
+     * @param pToken Value to which {@link #token} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setToken( SecurityToken pToken ) {
       token = pToken;
@@ -205,9 +207,10 @@ public class Booking implements ServiceObject {
     }
 
     /**
-     * Method sets the association "remitters".
+     * Method sets association {@link #remitters}.<br/>
      * 
-     * @param pRemitters Collection with objects to which the association should be set.
+     * @param pRemitters Collection to which {@link #remitters} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setRemitters( Set<Person> pRemitters ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -221,9 +224,10 @@ public class Booking implements ServiceObject {
     }
 
     /**
-     * Method sets the association "account".
+     * Method sets association {@link #account}.<br/>
      * 
-     * @param pAccount Account to which the association "account" should be set.
+     * @param pAccount Value to which {@link #account} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAccount( Account pAccount ) {
       account = pAccount;

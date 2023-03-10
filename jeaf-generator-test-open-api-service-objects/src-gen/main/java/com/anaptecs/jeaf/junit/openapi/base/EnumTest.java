@@ -112,7 +112,7 @@ public class EnumTest implements ServiceObject {
      * Method sets attribute {@link #property}.<br/>
      * 
      * @param pProperty Value to which {@link #property} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setProperty( ExtensibleEnum pProperty ) {
       // Assign value to attribute
@@ -121,9 +121,10 @@ public class EnumTest implements ServiceObject {
     }
 
     /**
-     * Method sets the association "enumRef".
+     * Method sets association {@link #enumRef}.<br/>
      * 
-     * @param pEnumRef ExtensibleEnum to which the association "enumRef" should be set.
+     * @param pEnumRef Value to which {@link #enumRef} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setEnumRef( ExtensibleEnum pEnumRef ) {
       enumRef = pEnumRef;

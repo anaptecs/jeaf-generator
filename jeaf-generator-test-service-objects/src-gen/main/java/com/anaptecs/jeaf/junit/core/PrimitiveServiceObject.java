@@ -167,7 +167,7 @@ public class PrimitiveServiceObject implements ServiceObject {
      * Method sets attribute {@link #aBoolean}.<br/>
      * 
      * @param pABoolean Value to which {@link #aBoolean} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setABoolean( boolean pABoolean ) {
       // Assign value to attribute
@@ -179,7 +179,7 @@ public class PrimitiveServiceObject implements ServiceObject {
      * Method sets attribute {@link #aByte}.<br/>
      * 
      * @param pAByte Value to which {@link #aByte} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAByte( byte pAByte ) {
       // Assign value to attribute
@@ -191,7 +191,7 @@ public class PrimitiveServiceObject implements ServiceObject {
      * Method sets attribute {@link #aShort}.<br/>
      * 
      * @param pAShort Value to which {@link #aShort} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAShort( short pAShort ) {
       // Assign value to attribute
@@ -203,7 +203,7 @@ public class PrimitiveServiceObject implements ServiceObject {
      * Method sets attribute {@link #aInt}.<br/>
      * 
      * @param pAInt Value to which {@link #aInt} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAInt( int pAInt ) {
       // Assign value to attribute
@@ -215,7 +215,7 @@ public class PrimitiveServiceObject implements ServiceObject {
      * Method sets attribute {@link #aLong}.<br/>
      * 
      * @param pALong Value to which {@link #aLong} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setALong( long pALong ) {
       // Assign value to attribute
@@ -227,7 +227,7 @@ public class PrimitiveServiceObject implements ServiceObject {
      * Method sets attribute {@link #aFloat}.<br/>
      * 
      * @param pAFloat Value to which {@link #aFloat} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAFloat( float pAFloat ) {
       // Assign value to attribute
@@ -239,7 +239,7 @@ public class PrimitiveServiceObject implements ServiceObject {
      * Method sets attribute {@link #aDouble}.<br/>
      * 
      * @param pADouble Value to which {@link #aDouble} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setADouble( double pADouble ) {
       // Assign value to attribute
@@ -251,7 +251,7 @@ public class PrimitiveServiceObject implements ServiceObject {
      * Method sets attribute {@link #aChar}.<br/>
      * 
      * @param pAChar Value to which {@link #aChar} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAChar( char pAChar ) {
       // Assign value to attribute

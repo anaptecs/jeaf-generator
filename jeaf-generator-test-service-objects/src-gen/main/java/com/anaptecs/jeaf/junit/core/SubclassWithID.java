@@ -124,7 +124,7 @@ public class SubclassWithID extends IdentifiableServiceObject {
      * Method sets attribute {@link #attr}.<br/>
      * 
      * @param pAttr Value to which {@link #attr} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAttr( boolean pAttr ) {
       // Assign value to attribute

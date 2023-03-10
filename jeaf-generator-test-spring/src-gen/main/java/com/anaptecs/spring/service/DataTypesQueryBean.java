@@ -257,8 +257,8 @@ public class DataTypesQueryBean {
     /**
      * Method sets attribute {@link #longCodes}.<br/>
      * 
-     * @param pLongCodes Value to which {@link #longCodes} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pLongCodes Collection to which {@link #longCodes} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLongCodes( LongCode[] pLongCodes ) {
       // Assign value to attribute
@@ -275,8 +275,8 @@ public class DataTypesQueryBean {
     /**
      * Method sets attribute {@link #codes}.<br/>
      * 
-     * @param pCodes Value to which {@link #codes} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pCodes Collection to which {@link #codes} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCodes( IntegerCodeType[] pCodes ) {
       // Assign value to attribute
@@ -291,9 +291,10 @@ public class DataTypesQueryBean {
     }
 
     /**
-     * Method sets the association "doubleCodes".
+     * Method sets association {@link #doubleCodes}.<br/>
      * 
-     * @param pDoubleCodes Collection with objects to which the association should be set.
+     * @param pDoubleCodes Collection to which {@link #doubleCodes} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDoubleCodes( Set<DoubleCode> pDoubleCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -307,9 +308,10 @@ public class DataTypesQueryBean {
     }
 
     /**
-     * Method sets the association "bookingIDs".
+     * Method sets association {@link #bookingIDs}.<br/>
      * 
-     * @param pBookingIDs Collection with objects to which the association should be set.
+     * @param pBookingIDs Collection to which {@link #bookingIDs} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingIDs( Set<BookingID> pBookingIDs ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -325,8 +327,8 @@ public class DataTypesQueryBean {
     /**
      * Method sets attribute {@link #bookingIDsArray}.<br/>
      * 
-     * @param pBookingIDsArray Value to which {@link #bookingIDsArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pBookingIDsArray Collection to which {@link #bookingIDsArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingIDsArray( BookingID[] pBookingIDsArray ) {
       // Assign value to attribute
@@ -344,7 +346,7 @@ public class DataTypesQueryBean {
      * Method sets attribute {@link #offsetDateTime}.<br/>
      * 
      * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
       // Assign value to attribute
@@ -353,9 +355,10 @@ public class DataTypesQueryBean {
     }
 
     /**
-     * Method sets the association "offsetTime".
+     * Method sets association {@link #offsetTime}.<br/>
      * 
-     * @param pOffsetTime OffsetTime to which the association "offsetTime" should be set.
+     * @param pOffsetTime Value to which {@link #offsetTime} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setOffsetTime( OffsetTime pOffsetTime ) {
       offsetTime = pOffsetTime;
@@ -366,7 +369,7 @@ public class DataTypesQueryBean {
      * Method sets attribute {@link #localDateTime}.<br/>
      * 
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalDateTime( LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
@@ -378,7 +381,7 @@ public class DataTypesQueryBean {
      * Method sets attribute {@link #localTime}.<br/>
      * 
      * @param pLocalTime Value to which {@link #localTime} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalTime( LocalTime pLocalTime ) {
       // Assign value to attribute
@@ -387,9 +390,10 @@ public class DataTypesQueryBean {
     }
 
     /**
-     * Method sets the association "timestamps".
+     * Method sets association {@link #timestamps}.<br/>
      * 
-     * @param pTimestamps Collection with objects to which the association should be set.
+     * @param pTimestamps Collection to which {@link #timestamps} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTimestamps( List<LocalDateTime> pTimestamps ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -403,9 +407,10 @@ public class DataTypesQueryBean {
     }
 
     /**
-     * Method sets the association "times".
+     * Method sets association {@link #times}.<br/>
      * 
-     * @param pTimes Collection with objects to which the association should be set.
+     * @param pTimes Collection to which {@link #times} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTimes( Set<OffsetTime> pTimes ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -421,8 +426,8 @@ public class DataTypesQueryBean {
     /**
      * Method sets attribute {@link #startTimestamps}.<br/>
      * 
-     * @param pStartTimestamps Value to which {@link #startTimestamps} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pStartTimestamps Collection to which {@link #startTimestamps} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStartTimestamps( OffsetDateTime[] pStartTimestamps ) {
       // Assign value to attribute

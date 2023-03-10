@@ -182,10 +182,9 @@ public class ChildB extends ParentClass {
 
     /**
      * Method sets attribute {@link #childBAttribute}.<br/>
-     * A child attribute
      * 
      * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildBAttribute( boolean[] pChildBAttribute ) {
       // Assign value to attribute
@@ -200,9 +199,10 @@ public class ChildB extends ParentClass {
     }
 
     /**
-     * Method sets the association "composition". the composition
+     * Method sets association {@link #composition}.<br/>
      * 
-     * @param pComposition Collection with objects to which the association should be set.
+     * @param pComposition Collection to which {@link #composition} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setComposition( Set<ParentClass> pComposition ) {
       // To ensure immutability we have to copy the content of the passed collection.

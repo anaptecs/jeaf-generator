@@ -132,9 +132,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the association "sourceAccount".
+     * Method sets association {@link #sourceAccount}.<br/>
      * 
-     * @param pSourceAccount Account to which the association "sourceAccount" should be set.
+     * @param pSourceAccount Value to which {@link #sourceAccount} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSourceAccount( Account pSourceAccount ) {
       sourceAccount = pSourceAccount;
@@ -142,9 +143,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the association "targetAccount".
+     * Method sets association {@link #targetAccount}.<br/>
      * 
-     * @param pTargetAccount Account to which the association "targetAccount" should be set.
+     * @param pTargetAccount Value to which {@link #targetAccount} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTargetAccount( Account pTargetAccount ) {
       targetAccount = pTargetAccount;
@@ -155,7 +157,7 @@ public class Booking {
      * Method sets attribute {@link #amount}.<br/>
      * 
      * @param pAmount Value to which {@link #amount} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAmount( BigDecimal pAmount ) {
       // Assign value to attribute
@@ -167,7 +169,7 @@ public class Booking {
      * Method sets attribute {@link #currency}.<br/>
      * 
      * @param pCurrency Value to which {@link #currency} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCurrency( Currency pCurrency ) {
       // Assign value to attribute
@@ -179,7 +181,7 @@ public class Booking {
      * Method sets attribute {@link #executionTimestamp}.<br/>
      * 
      * @param pExecutionTimestamp Value to which {@link #executionTimestamp} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setExecutionTimestamp( Calendar pExecutionTimestamp ) {
       // Assign value to attribute

@@ -214,7 +214,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
      * Method sets attribute {@link #name}.<br/>
      * 
      * @param pName Value to which {@link #name} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -226,7 +226,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
      * Method sets attribute {@link #firstName}.<br/>
      * 
      * @param pFirstName Value to which {@link #firstName} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setFirstName( String pFirstName ) {
       // Assign value to attribute
@@ -238,7 +238,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
      * Method sets attribute {@link #dateOfBirth}.<br/>
      * 
      * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDateOfBirth( Calendar pDateOfBirth ) {
       // Assign value to attribute
@@ -247,9 +247,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the association "accounts".
+     * Method sets association {@link #accounts}.<br/>
      * 
-     * @param pAccounts Collection with objects to which the association should be set.
+     * @param pAccounts Collection to which {@link #accounts} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAccounts( Set<Account> pAccounts ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -263,9 +264,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the association "customer".
+     * Method sets association {@link #customer}.<br/>
      * 
-     * @param pCustomer Individual to which the association "customer" should be set.
+     * @param pCustomer Value to which {@link #customer} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCustomer( Individual pCustomer ) {
       customer = pCustomer;
@@ -276,7 +278,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
      * Method sets attribute {@link #age}.<br/>
      * 
      * @param pAge Value to which {@link #age} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAge( Integer pAge ) {
       // Assign value to attribute
@@ -288,7 +290,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
      * Method sets attribute {@link #displayName}.<br/>
      * 
      * @param pDisplayName Value to which {@link #displayName} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDisplayName( String pDisplayName ) {
       // Assign value to attribute

@@ -133,9 +133,10 @@ public class BidirectionalB {
     }
 
     /**
-     * Method sets the association "as".
+     * Method sets association {@link #as}.<br/>
      * 
-     * @param pAs Collection with objects to which the association should be set.
+     * @param pAs Collection to which {@link #as} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAs( List<BidirectionalA> pAs ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -149,9 +150,10 @@ public class BidirectionalB {
     }
 
     /**
-     * Method sets the association "theAs".
+     * Method sets association {@link #theAs}.<br/>
      * 
-     * @param pTheAs Collection with objects to which the association should be set.
+     * @param pTheAs Collection to which {@link #theAs} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTheAs( List<BidirectionalA> pTheAs ) {
       // To ensure immutability we have to copy the content of the passed collection.

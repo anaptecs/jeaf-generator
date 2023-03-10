@@ -102,7 +102,7 @@ public class AdvancedHeader {
      * Method sets attribute {@link #bookingID}.<br/>
      * 
      * @param pBookingID Value to which {@link #bookingID} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingID( BookingID pBookingID ) {
       // Assign value to attribute
@@ -114,7 +114,7 @@ public class AdvancedHeader {
      * Method sets attribute {@link #bookingCode}.<br/>
      * 
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingCode( BookingCode pBookingCode ) {
       // Assign value to attribute
@@ -126,7 +126,7 @@ public class AdvancedHeader {
      * Method sets attribute {@link #doubleCode}.<br/>
      * 
      * @param pDoubleCode Value to which {@link #doubleCode} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDoubleCode( DoubleCode pDoubleCode ) {
       // Assign value to attribute

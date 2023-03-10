@@ -106,7 +106,7 @@ public class LocalBeanParamType implements ServiceObject {
      * Method sets attribute {@link #localKey}.<br/>
      * 
      * @param pLocalKey Value to which {@link #localKey} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalKey( String pLocalKey ) {
       // Assign value to attribute
@@ -118,7 +118,7 @@ public class LocalBeanParamType implements ServiceObject {
      * Method sets attribute {@link #localID}.<br/>
      * 
      * @param pLocalID Value to which {@link #localID} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalID( String pLocalID ) {
       // Assign value to attribute
@@ -130,7 +130,7 @@ public class LocalBeanParamType implements ServiceObject {
      * Method sets attribute {@link #authorization}.<br/>
      * 
      * @param pAuthorization Value to which {@link #authorization} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAuthorization( String pAuthorization ) {
       // Assign value to attribute

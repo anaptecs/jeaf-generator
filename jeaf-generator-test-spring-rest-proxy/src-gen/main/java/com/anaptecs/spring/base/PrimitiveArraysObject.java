@@ -323,7 +323,7 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aBooleanArray}.<br/>
      * 
      * @param pABooleanArray Value to which {@link #aBooleanArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setABooleanArray( boolean[] pABooleanArray ) {
       // Assign value to attribute
@@ -340,8 +340,8 @@ public class PrimitiveArraysObject {
     /**
      * Method sets attribute {@link #bBooleanArray}.<br/>
      * 
-     * @param pBBooleanArray Value to which {@link #bBooleanArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pBBooleanArray Collection to which {@link #bBooleanArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBBooleanArray( Boolean[] pBBooleanArray ) {
       // Assign value to attribute
@@ -359,7 +359,7 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #cBooleanArray}.<br/>
      * 
      * @param pCBooleanArray Value to which {@link #cBooleanArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCBooleanArray( boolean[] pCBooleanArray ) {
       // Assign value to attribute
@@ -377,7 +377,7 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aByteArray}.<br/>
      * 
      * @param pAByteArray Value to which {@link #aByteArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAByteArray( byte[] pAByteArray ) {
       // Assign value to attribute
@@ -394,8 +394,8 @@ public class PrimitiveArraysObject {
     /**
      * Method sets attribute {@link #bByteArray}.<br/>
      * 
-     * @param pBByteArray Value to which {@link #bByteArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pBByteArray Collection to which {@link #bByteArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBByteArray( Byte[] pBByteArray ) {
       // Assign value to attribute
@@ -413,7 +413,7 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aShortArray}.<br/>
      * 
      * @param pAShortArray Value to which {@link #aShortArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAShortArray( short[] pAShortArray ) {
       // Assign value to attribute
@@ -430,8 +430,8 @@ public class PrimitiveArraysObject {
     /**
      * Method sets attribute {@link #bShortArray}.<br/>
      * 
-     * @param pBShortArray Value to which {@link #bShortArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pBShortArray Collection to which {@link #bShortArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBShortArray( Short[] pBShortArray ) {
       // Assign value to attribute
@@ -449,7 +449,7 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aIntegerArray}.<br/>
      * 
      * @param pAIntegerArray Value to which {@link #aIntegerArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAIntegerArray( int[] pAIntegerArray ) {
       // Assign value to attribute
@@ -466,8 +466,8 @@ public class PrimitiveArraysObject {
     /**
      * Method sets attribute {@link #bIntegerArray}.<br/>
      * 
-     * @param pBIntegerArray Value to which {@link #bIntegerArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pBIntegerArray Collection to which {@link #bIntegerArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBIntegerArray( Integer[] pBIntegerArray ) {
       // Assign value to attribute
@@ -484,8 +484,8 @@ public class PrimitiveArraysObject {
     /**
      * Method sets attribute {@link #cIntegerArray}.<br/>
      * 
-     * @param pCIntegerArray Value to which {@link #cIntegerArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pCIntegerArray Collection to which {@link #cIntegerArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCIntegerArray( Integer[] pCIntegerArray ) {
       // Assign value to attribute
@@ -503,7 +503,7 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aLongArray}.<br/>
      * 
      * @param pALongArray Value to which {@link #aLongArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setALongArray( long[] pALongArray ) {
       // Assign value to attribute
@@ -520,8 +520,8 @@ public class PrimitiveArraysObject {
     /**
      * Method sets attribute {@link #bLongArray}.<br/>
      * 
-     * @param pBLongArray Value to which {@link #bLongArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pBLongArray Collection to which {@link #bLongArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBLongArray( Long[] pBLongArray ) {
       // Assign value to attribute
@@ -538,8 +538,8 @@ public class PrimitiveArraysObject {
     /**
      * Method sets attribute {@link #aBigIntegerArray}.<br/>
      * 
-     * @param pABigIntegerArray Value to which {@link #aBigIntegerArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pABigIntegerArray Collection to which {@link #aBigIntegerArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
       // Assign value to attribute
@@ -557,7 +557,7 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aCharacterArray}.<br/>
      * 
      * @param pACharacterArray Value to which {@link #aCharacterArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setACharacterArray( char[] pACharacterArray ) {
       // Assign value to attribute
@@ -574,8 +574,8 @@ public class PrimitiveArraysObject {
     /**
      * Method sets attribute {@link #bCharacterArray}.<br/>
      * 
-     * @param pBCharacterArray Value to which {@link #bCharacterArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pBCharacterArray Collection to which {@link #bCharacterArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBCharacterArray( Character[] pBCharacterArray ) {
       // Assign value to attribute
@@ -593,7 +593,7 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aFloatArray}.<br/>
      * 
      * @param pAFloatArray Value to which {@link #aFloatArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAFloatArray( float[] pAFloatArray ) {
       // Assign value to attribute
@@ -610,8 +610,8 @@ public class PrimitiveArraysObject {
     /**
      * Method sets attribute {@link #bFloatArray}.<br/>
      * 
-     * @param pBFloatArray Value to which {@link #bFloatArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pBFloatArray Collection to which {@link #bFloatArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBFloatArray( Float[] pBFloatArray ) {
       // Assign value to attribute
@@ -629,7 +629,7 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aDoubleArray}.<br/>
      * 
      * @param pADoubleArray Value to which {@link #aDoubleArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setADoubleArray( double[] pADoubleArray ) {
       // Assign value to attribute
@@ -646,8 +646,8 @@ public class PrimitiveArraysObject {
     /**
      * Method sets attribute {@link #bDoubleArray}.<br/>
      * 
-     * @param pBDoubleArray Value to which {@link #bDoubleArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pBDoubleArray Collection to which {@link #bDoubleArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBDoubleArray( Double[] pBDoubleArray ) {
       // Assign value to attribute
@@ -664,8 +664,8 @@ public class PrimitiveArraysObject {
     /**
      * Method sets attribute {@link #aBigDecimalArray}.<br/>
      * 
-     * @param pABigDecimalArray Value to which {@link #aBigDecimalArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pABigDecimalArray Collection to which {@link #aBigDecimalArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
       // Assign value to attribute
@@ -682,8 +682,8 @@ public class PrimitiveArraysObject {
     /**
      * Method sets attribute {@link #aStringArray}.<br/>
      * 
-     * @param pAStringArray Value to which {@link #aStringArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pAStringArray Collection to which {@link #aStringArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAStringArray( String[] pAStringArray ) {
       // Assign value to attribute
@@ -700,8 +700,8 @@ public class PrimitiveArraysObject {
     /**
      * Method sets attribute {@link #bStringArray}.<br/>
      * 
-     * @param pBStringArray Value to which {@link #bStringArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pBStringArray Collection to which {@link #bStringArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBStringArray( String[] pBStringArray ) {
       // Assign value to attribute
@@ -718,8 +718,8 @@ public class PrimitiveArraysObject {
     /**
      * Method sets attribute {@link #cStringArray}.<br/>
      * 
-     * @param pCStringArray Value to which {@link #cStringArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pCStringArray Collection to which {@link #cStringArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCStringArray( String[] pCStringArray ) {
       // Assign value to attribute

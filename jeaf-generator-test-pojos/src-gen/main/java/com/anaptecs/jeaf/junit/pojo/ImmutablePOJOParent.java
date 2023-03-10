@@ -114,7 +114,7 @@ public class ImmutablePOJOParent extends AbstractPOJO {
      * Method sets attribute {@link #parentAttribute}.<br/>
      * 
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setParentAttribute( String pParentAttribute ) {
       // Assign value to attribute
@@ -126,7 +126,7 @@ public class ImmutablePOJOParent extends AbstractPOJO {
      * Method sets attribute {@link #anotherParentAttribute}.<br/>
      * 
      * @param pAnotherParentAttribute Value to which {@link #anotherParentAttribute} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAnotherParentAttribute( Integer pAnotherParentAttribute ) {
       // Assign value to attribute

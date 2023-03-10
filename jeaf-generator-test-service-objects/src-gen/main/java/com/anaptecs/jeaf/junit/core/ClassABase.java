@@ -113,7 +113,7 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
      * Method sets attribute {@link #name}.<br/>
      * 
      * @param pName Value to which {@link #name} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setName( String pName ) {
       // Assign value to attribute
@@ -122,9 +122,10 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
     }
 
     /**
-     * Method sets the association "oneB".
+     * Method sets association {@link #oneB}.<br/>
      * 
-     * @param pOneB ClassB to which the association "oneB" should be set.
+     * @param pOneB Value to which {@link #oneB} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setOneB( ClassB pOneB ) {
       oneB = pOneB;

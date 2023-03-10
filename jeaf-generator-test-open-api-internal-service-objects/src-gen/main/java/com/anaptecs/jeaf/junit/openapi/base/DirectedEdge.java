@@ -122,9 +122,10 @@ public class DirectedEdge implements ServiceObject {
     }
 
     /**
-     * Method sets the association "start". The start
+     * Method sets association {@link #start}.<br/>
      * 
-     * @param pStart Stop to which the association "start" should be set.
+     * @param pStart Value to which {@link #start} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStart( Stop pStart ) {
       start = pStart;
@@ -132,9 +133,10 @@ public class DirectedEdge implements ServiceObject {
     }
 
     /**
-     * Method sets the association "end". The end
+     * Method sets association {@link #end}.<br/>
      * 
-     * @param pEnd Stop to which the association "end" should be set.
+     * @param pEnd Value to which {@link #end} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setEnd( Stop pEnd ) {
       end = pEnd;
@@ -145,7 +147,7 @@ public class DirectedEdge implements ServiceObject {
      * Method sets attribute {@link #link}.<br/>
      * 
      * @param pLink Value to which {@link #link} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLink( String pLink ) {
       // Assign value to attribute

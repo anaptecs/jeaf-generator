@@ -120,9 +120,10 @@ public abstract class BidirectionalABase {
     }
 
     /**
-     * Method sets the association "transientB".
+     * Method sets association {@link #transientB}.<br/>
      * 
-     * @param pTransientB BidirectionalB to which the association "transientB" should be set.
+     * @param pTransientB Value to which {@link #transientB} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setTransientB( BidirectionalB pTransientB ) {
       transientB = pTransientB;
@@ -130,9 +131,10 @@ public abstract class BidirectionalABase {
     }
 
     /**
-     * Method sets the association "transientParent".
+     * Method sets association {@link #transientParent}.<br/>
      * 
-     * @param pTransientParent BidirectionalA to which the association "transientParent" should be set.
+     * @param pTransientParent Value to which {@link #transientParent} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setTransientParent( BidirectionalA pTransientParent ) {
       transientParent = pTransientParent;
@@ -140,9 +142,10 @@ public abstract class BidirectionalABase {
     }
 
     /**
-     * Method sets the association "child".
+     * Method sets association {@link #child}.<br/>
      * 
-     * @param pChild BidirectionalA to which the association "child" should be set.
+     * @param pChild Value to which {@link #child} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setChild( BidirectionalA pChild ) {
       child = pChild;
@@ -150,9 +153,10 @@ public abstract class BidirectionalABase {
     }
 
     /**
-     * Method sets the association "transientBs".
+     * Method sets association {@link #transientBs}.<br/>
      * 
-     * @param pTransientBs Collection with objects to which the association should be set.
+     * @param pTransientBs Collection to which {@link #transientBs} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setTransientBs( Set<BidirectionalB> pTransientBs ) {
       // To ensure immutability we have to copy the content of the passed collection.

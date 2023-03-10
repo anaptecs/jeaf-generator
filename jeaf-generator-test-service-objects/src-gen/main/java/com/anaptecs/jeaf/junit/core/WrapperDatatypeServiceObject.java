@@ -167,7 +167,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
      * Method sets attribute {@link #myBoolean}.<br/>
      * 
      * @param pMyBoolean Value to which {@link #myBoolean} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyBoolean( Boolean pMyBoolean ) {
       // Assign value to attribute
@@ -179,7 +179,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
      * Method sets attribute {@link #myByte}.<br/>
      * 
      * @param pMyByte Value to which {@link #myByte} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyByte( Byte pMyByte ) {
       // Assign value to attribute
@@ -191,7 +191,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
      * Method sets attribute {@link #myCharacter}.<br/>
      * 
      * @param pMyCharacter Value to which {@link #myCharacter} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyCharacter( Character pMyCharacter ) {
       // Assign value to attribute
@@ -203,7 +203,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
      * Method sets attribute {@link #myDouble}.<br/>
      * 
      * @param pMyDouble Value to which {@link #myDouble} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyDouble( Double pMyDouble ) {
       // Assign value to attribute
@@ -215,7 +215,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
      * Method sets attribute {@link #myFloat}.<br/>
      * 
      * @param pMyFloat Value to which {@link #myFloat} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyFloat( Float pMyFloat ) {
       // Assign value to attribute
@@ -227,7 +227,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
      * Method sets attribute {@link #myLong}.<br/>
      * 
      * @param pMyLong Value to which {@link #myLong} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyLong( Long pMyLong ) {
       // Assign value to attribute
@@ -239,7 +239,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
      * Method sets attribute {@link #myShort}.<br/>
      * 
      * @param pMyShort Value to which {@link #myShort} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyShort( Short pMyShort ) {
       // Assign value to attribute
@@ -251,7 +251,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
      * Method sets attribute {@link #myByteArray}.<br/>
      * 
      * @param pMyByteArray Value to which {@link #myByteArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyByteArray( byte[] pMyByteArray ) {
       // Assign value to attribute

@@ -92,7 +92,7 @@ public class Sale {
      * Method sets attribute {@link #transactionAmount}.<br/>
      * 
      * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTransactionAmount( BigDecimal pTransactionAmount ) {
       // Assign value to attribute
@@ -101,9 +101,10 @@ public class Sale {
     }
 
     /**
-     * Method sets the association "sale".
+     * Method sets association {@link #sale}.<br/>
      * 
-     * @param pSale Channel to which the association "sale" should be set.
+     * @param pSale Value to which {@link #sale} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSale( Channel pSale ) {
       sale = pSale;

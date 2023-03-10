@@ -100,7 +100,7 @@ public class ImmutablePOJO {
      * Method sets attribute {@link #name}.<br/>
      * 
      * @param pName Value to which {@link #name} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -112,7 +112,7 @@ public class ImmutablePOJO {
      * Method sets attribute {@link #something}.<br/>
      * 
      * @param pSomething Value to which {@link #something} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSomething( Integer pSomething ) {
       // Assign value to attribute

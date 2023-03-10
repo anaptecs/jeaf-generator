@@ -116,7 +116,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
      * Method sets attribute {@link #childProperty}.<br/>
      * 
      * @param pChildProperty Value to which {@link #childProperty} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildProperty( String pChildProperty ) {
       // Assign value to attribute

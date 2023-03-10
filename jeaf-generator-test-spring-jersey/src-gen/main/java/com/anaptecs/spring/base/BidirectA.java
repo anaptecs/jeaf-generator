@@ -119,9 +119,10 @@ public class BidirectA {
     }
 
     /**
-     * Method sets the association "transientBs".
+     * Method sets association {@link #transientBs}.<br/>
      * 
-     * @param pTransientBs Collection with objects to which the association should be set.
+     * @param pTransientBs Collection to which {@link #transientBs} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTransientBs( Set<BidirectB> pTransientBs ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -135,9 +136,10 @@ public class BidirectA {
     }
 
     /**
-     * Method sets the association "parent".
+     * Method sets association {@link #parent}.<br/>
      * 
-     * @param pParent BidirectA to which the association "parent" should be set.
+     * @param pParent Value to which {@link #parent} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setParent( BidirectA pParent ) {
       parent = pParent;
@@ -145,9 +147,10 @@ public class BidirectA {
     }
 
     /**
-     * Method sets the association "transientChild".
+     * Method sets association {@link #transientChild}.<br/>
      * 
-     * @param pTransientChild BidirectA to which the association "transientChild" should be set.
+     * @param pTransientChild Value to which {@link #transientChild} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTransientChild( BidirectA pTransientChild ) {
       transientChild = pTransientChild;

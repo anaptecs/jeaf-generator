@@ -89,7 +89,7 @@ public class BankAccount implements ServiceObject {
      * Method sets attribute {@link #iban}.<br/>
      * 
      * @param pIban Value to which {@link #iban} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIban( String pIban ) {
       // Assign value to attribute

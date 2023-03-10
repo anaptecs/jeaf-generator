@@ -113,7 +113,7 @@ public class SchufaRequest implements ServiceObject {
      * Method sets attribute {@link #name}.<br/>
      * 
      * @param pName Value to which {@link #name} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -125,7 +125,7 @@ public class SchufaRequest implements ServiceObject {
      * Method sets attribute {@link #firstName}.<br/>
      * 
      * @param pFirstName Value to which {@link #firstName} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setFirstName( String pFirstName ) {
       // Assign value to attribute
@@ -137,7 +137,7 @@ public class SchufaRequest implements ServiceObject {
      * Method sets attribute {@link #dateOfBirth}.<br/>
      * 
      * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDateOfBirth( Calendar pDateOfBirth ) {
       // Assign value to attribute

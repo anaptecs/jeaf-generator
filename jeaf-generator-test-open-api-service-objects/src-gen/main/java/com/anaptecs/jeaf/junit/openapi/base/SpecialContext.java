@@ -152,7 +152,7 @@ public class SpecialContext extends Context {
      * Method sets attribute {@link #specificHeader}.<br/>
      * 
      * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSpecificHeader( String pSpecificHeader ) {
       // Assign value to attribute

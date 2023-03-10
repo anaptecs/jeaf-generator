@@ -144,7 +144,7 @@ public class CodeTypeUsageTest implements ServiceObject {
      * Method sets attribute {@link #booleanCode}.<br/>
      * 
      * @param pBooleanCode Value to which {@link #booleanCode} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooleanCode( BooleanCodeType pBooleanCode ) {
       // Assign value to attribute
@@ -153,9 +153,10 @@ public class CodeTypeUsageTest implements ServiceObject {
     }
 
     /**
-     * Method sets the association "booleanCodeAssociation".
+     * Method sets association {@link #booleanCodeAssociation}.<br/>
      * 
-     * @param pBooleanCodeAssociation Collection with objects to which the association should be set.
+     * @param pBooleanCodeAssociation Collection to which {@link #booleanCodeAssociation} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooleanCodeAssociation( Set<BooleanCodeType> pBooleanCodeAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -169,9 +170,10 @@ public class CodeTypeUsageTest implements ServiceObject {
     }
 
     /**
-     * Method sets the association "shortCodeTypeAssociation".
+     * Method sets association {@link #shortCodeTypeAssociation}.<br/>
      * 
-     * @param pShortCodeTypeAssociation Collection with objects to which the association should be set.
+     * @param pShortCodeTypeAssociation Collection to which {@link #shortCodeTypeAssociation} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setShortCodeTypeAssociation( Set<ShortCodeType> pShortCodeTypeAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -188,7 +190,7 @@ public class CodeTypeUsageTest implements ServiceObject {
      * Method sets attribute {@link #stringCode}.<br/>
      * 
      * @param pStringCode Value to which {@link #stringCode} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStringCode( StringCodeType pStringCode ) {
       // Assign value to attribute
@@ -197,9 +199,10 @@ public class CodeTypeUsageTest implements ServiceObject {
     }
 
     /**
-     * Method sets the association "shortCode".
+     * Method sets association {@link #shortCode}.<br/>
      * 
-     * @param pShortCode ShortCode to which the association "shortCode" should be set.
+     * @param pShortCode Value to which {@link #shortCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setShortCode( ShortCode pShortCode ) {
       shortCode = pShortCode;

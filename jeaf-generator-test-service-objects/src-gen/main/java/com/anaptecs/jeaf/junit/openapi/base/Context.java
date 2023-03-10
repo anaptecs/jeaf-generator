@@ -153,7 +153,7 @@ public class Context implements ServiceObject {
      * Method sets attribute {@link #accessToken}.<br/>
      * 
      * @param pAccessToken Value to which {@link #accessToken} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAccessToken( String pAccessToken ) {
       // Assign value to attribute
@@ -165,7 +165,7 @@ public class Context implements ServiceObject {
      * Method sets attribute {@link #language}.<br/>
      * 
      * @param pLanguage Value to which {@link #language} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLanguage( Locale pLanguage ) {
       // Assign value to attribute
@@ -177,7 +177,7 @@ public class Context implements ServiceObject {
      * Method sets attribute {@link #resellerID}.<br/>
      * 
      * @param pResellerID Value to which {@link #resellerID} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setResellerID( long pResellerID ) {
       // Assign value to attribute
@@ -189,7 +189,7 @@ public class Context implements ServiceObject {
      * Method sets attribute {@link #pathParam}.<br/>
      * 
      * @param pPathParam Value to which {@link #pathParam} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPathParam( long pPathParam ) {
       // Assign value to attribute
@@ -201,7 +201,7 @@ public class Context implements ServiceObject {
      * Method sets attribute {@link #queryParam}.<br/>
      * 
      * @param pQueryParam Value to which {@link #queryParam} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setQueryParam( String pQueryParam ) {
       // Assign value to attribute

@@ -89,7 +89,7 @@ public class TechParent implements ServiceObject {
      * Method sets attribute {@link #techAttribute}.<br/>
      * 
      * @param pTechAttribute Value to which {@link #techAttribute} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTechAttribute( String pTechAttribute ) {
       // Assign value to attribute

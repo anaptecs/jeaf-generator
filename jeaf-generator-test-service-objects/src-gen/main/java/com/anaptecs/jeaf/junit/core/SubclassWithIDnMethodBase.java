@@ -94,7 +94,7 @@ public abstract class SubclassWithIDnMethodBase extends IdentifiableServiceObjec
      * Method sets attribute {@link #attr}.<br/>
      * 
      * @param pAttr Value to which {@link #attr} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setAttr( boolean pAttr ) {
       // Assign value to attribute

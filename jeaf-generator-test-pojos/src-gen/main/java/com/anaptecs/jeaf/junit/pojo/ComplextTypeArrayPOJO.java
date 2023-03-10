@@ -88,8 +88,8 @@ public class ComplextTypeArrayPOJO {
     /**
      * Method sets attribute {@link #plainPOJOs}.<br/>
      * 
-     * @param pPlainPOJOs Value to which {@link #plainPOJOs} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pPlainPOJOs Collection to which {@link #plainPOJOs} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPlainPOJOs( PlainPOJO[] pPlainPOJOs ) {
       // Assign value to attribute

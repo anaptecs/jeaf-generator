@@ -192,7 +192,7 @@ public class Company extends Customer {
      * Method sets attribute {@link #name}.<br/>
      * 
      * @param pName Value to which {@link #name} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -204,7 +204,7 @@ public class Company extends Customer {
      * Method sets attribute {@link #registrationNumber}.<br/>
      * 
      * @param pRegistrationNumber Value to which {@link #registrationNumber} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setRegistrationNumber( Long pRegistrationNumber ) {
       // Assign value to attribute
@@ -216,7 +216,7 @@ public class Company extends Customer {
      * Method sets attribute {@link #taxNumber}.<br/>
      * 
      * @param pTaxNumber Value to which {@link #taxNumber} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTaxNumber( Long pTaxNumber ) {
       // Assign value to attribute
@@ -228,7 +228,7 @@ public class Company extends Customer {
      * Method sets attribute {@link #attendant}.<br/>
      * 
      * @param pAttendant Value to which {@link #attendant} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAttendant( String pAttendant ) {
       // Assign value to attribute

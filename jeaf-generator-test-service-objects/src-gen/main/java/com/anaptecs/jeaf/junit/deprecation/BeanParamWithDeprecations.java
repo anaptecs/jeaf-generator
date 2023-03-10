@@ -112,7 +112,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
      * Method sets attribute {@link #header1}.<br/>
      * 
      * @param pHeader1 Value to which {@link #header1} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setHeader1( String pHeader1 ) {
       // Assign value to attribute
@@ -124,7 +124,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
      * Method sets attribute {@link #deprecatedHeader}.<br/>
      * 
      * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      * @deprecated this header param is no longer supported. Please use "xxx" instead. (<b>since:</b> 1.2.3, <b>removed
      * with:</b> PI.2.3)
      */

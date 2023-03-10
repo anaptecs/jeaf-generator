@@ -113,10 +113,9 @@ public class MoneyAmount {
 
     /**
      * Method sets attribute {@link #amount}.<br/>
-     * The amount of money. Attribute is always set.
      * 
      * @param pAmount Value to which {@link #amount} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAmount( BigDecimal pAmount ) {
       // Assign value to attribute
@@ -128,7 +127,7 @@ public class MoneyAmount {
      * Method sets attribute {@link #currencyCode}.<br/>
      * 
      * @param pCurrencyCode Value to which {@link #currencyCode} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCurrencyCode( CurrencyCode pCurrencyCode ) {
       // Assign value to attribute

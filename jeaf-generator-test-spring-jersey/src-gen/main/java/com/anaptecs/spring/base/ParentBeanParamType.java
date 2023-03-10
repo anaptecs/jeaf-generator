@@ -92,7 +92,7 @@ public class ParentBeanParamType {
      * Method sets attribute {@link #novaKey}.<br/>
      * 
      * @param pNovaKey Value to which {@link #novaKey} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setNovaKey( String pNovaKey ) {
       // Assign value to attribute
@@ -104,7 +104,7 @@ public class ParentBeanParamType {
      * Method sets attribute {@link #tkID}.<br/>
      * 
      * @param pTkID Value to which {@link #tkID} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTkID( String pTkID ) {
       // Assign value to attribute

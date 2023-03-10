@@ -106,9 +106,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the association "bookingID".
+     * Method sets association {@link #bookingID}.<br/>
      * 
-     * @param pBookingID BookingID to which the association "bookingID" should be set.
+     * @param pBookingID Value to which {@link #bookingID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingID( BookingID pBookingID ) {
       bookingID = pBookingID;
@@ -119,7 +120,7 @@ public class Booking {
      * Method sets attribute {@link #customerName}.<br/>
      * 
      * @param pCustomerName Value to which {@link #customerName} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCustomerName( String pCustomerName ) {
       // Assign value to attribute
@@ -128,9 +129,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the association "inventories".
+     * Method sets association {@link #inventories}.<br/>
      * 
-     * @param pInventories Collection with objects to which the association should be set.
+     * @param pInventories Collection to which {@link #inventories} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInventories( List<InventoryType> pInventories ) {
       // To ensure immutability we have to copy the content of the passed collection.

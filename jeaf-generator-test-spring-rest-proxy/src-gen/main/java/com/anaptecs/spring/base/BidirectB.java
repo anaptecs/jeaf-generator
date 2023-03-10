@@ -88,9 +88,10 @@ public class BidirectB {
     }
 
     /**
-     * Method sets the association "a". the A
+     * Method sets association {@link #a}.<br/>
      * 
-     * @param pA BidirectA to which the association "a" should be set.
+     * @param pA Value to which {@link #a} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setA( BidirectA pA ) {
       a = pA;

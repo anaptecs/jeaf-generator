@@ -133,7 +133,7 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
      * Method sets attribute {@link #hello}.<br/>
      * 
      * @param pHello Value to which {@link #hello} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setHello( Integer pHello ) {
       // Assign value to attribute
@@ -145,7 +145,7 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
      * Method sets attribute {@link #country}.<br/>
      * 
      * @param pCountry Value to which {@link #country} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCountry( String pCountry ) {
       // Assign value to attribute

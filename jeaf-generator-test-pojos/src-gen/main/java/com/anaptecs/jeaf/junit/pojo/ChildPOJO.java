@@ -141,7 +141,7 @@ public class ChildPOJO extends ParentPOJO {
      * Method sets attribute {@link #childAttribute}.<br/>
      * 
      * @param pChildAttribute Value to which {@link #childAttribute} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildAttribute( Integer pChildAttribute ) {
       // Assign value to attribute

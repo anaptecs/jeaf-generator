@@ -127,7 +127,7 @@ public abstract class ComplexBookingIDBase {
      * Method sets attribute {@link #internalID}.<br/>
      * 
      * @param pInternalID Value to which {@link #internalID} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setInternalID( long pInternalID ) {
       // Assign value to attribute
@@ -139,7 +139,7 @@ public abstract class ComplexBookingIDBase {
      * Method sets attribute {@link #referenceID}.<br/>
      * 
      * @param pReferenceID Value to which {@link #referenceID} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setReferenceID( String pReferenceID ) {
       // Assign value to attribute
@@ -148,9 +148,10 @@ public abstract class ComplexBookingIDBase {
     }
 
     /**
-     * Method sets the association "bookingIDs".
+     * Method sets association {@link #bookingIDs}.<br/>
      * 
-     * @param pBookingIDs Collection with objects to which the association should be set.
+     * @param pBookingIDs Collection to which {@link #bookingIDs} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBookingIDs( List<BookingID> pBookingIDs ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -164,9 +165,10 @@ public abstract class ComplexBookingIDBase {
     }
 
     /**
-     * Method sets the association "complexBookingType".
+     * Method sets association {@link #complexBookingType}.<br/>
      * 
-     * @param pComplexBookingType ComplexBookingType to which the association "complexBookingType" should be set.
+     * @param pComplexBookingType Value to which {@link #complexBookingType} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setComplexBookingType( ComplexBookingType pComplexBookingType ) {
       complexBookingType = pComplexBookingType;
@@ -177,7 +179,7 @@ public abstract class ComplexBookingIDBase {
      * Method sets attribute {@link #anotherID}.<br/>
      * 
      * @param pAnotherID Value to which {@link #anotherID} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setAnotherID( Integer pAnotherID ) {
       // Assign value to attribute
@@ -188,8 +190,8 @@ public abstract class ComplexBookingIDBase {
     /**
      * Method sets attribute {@link #strings}.<br/>
      * 
-     * @param pStrings Value to which {@link #strings} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @param pStrings Collection to which {@link #strings} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setStrings( String[] pStrings ) {
       // Assign value to attribute

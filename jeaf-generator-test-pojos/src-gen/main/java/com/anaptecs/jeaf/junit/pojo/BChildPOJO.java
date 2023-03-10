@@ -114,7 +114,7 @@ public class BChildPOJO extends BParentPOJO {
      * Method sets attribute {@link #weirdAttribute}.<br/>
      * 
      * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setWeirdAttribute( byte pWeirdAttribute ) {
       // Assign value to attribute
@@ -126,7 +126,7 @@ public class BChildPOJO extends BParentPOJO {
      * Method sets attribute {@link #childAttribute}.<br/>
      * 
      * @param pChildAttribute Value to which {@link #childAttribute} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildAttribute( Integer pChildAttribute ) {
       // Assign value to attribute

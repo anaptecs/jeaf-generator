@@ -154,9 +154,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the association "aBoolean".
+     * Method sets association {@link #aBoolean}.<br/>
      * 
-     * @param pABoolean Boolean to which the association "aBoolean" should be set.
+     * @param pABoolean Value to which {@link #aBoolean} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setABoolean( Boolean pABoolean ) {
       aBoolean = pABoolean;
@@ -164,9 +165,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the association "booleanSet".
+     * Method sets association {@link #booleanSet}.<br/>
      * 
-     * @param pBooleanSet Collection with objects to which the association should be set.
+     * @param pBooleanSet Collection to which {@link #booleanSet} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooleanSet( Set<Boolean> pBooleanSet ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -180,9 +182,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the association "buffers".
+     * Method sets association {@link #buffers}.<br/>
      * 
-     * @param pBuffers Collection with objects to which the association should be set.
+     * @param pBuffers Collection to which {@link #buffers} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBuffers( Set<StringBuffer> pBuffers ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -196,9 +199,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the association "strings".
+     * Method sets association {@link #strings}.<br/>
      * 
-     * @param pStrings Collection with objects to which the association should be set.
+     * @param pStrings Collection to which {@link #strings} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStrings( Set<String> pStrings ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -214,8 +218,8 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     /**
      * Method sets attribute {@link #stringArray}.<br/>
      * 
-     * @param pStringArray Value to which {@link #stringArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pStringArray Collection to which {@link #stringArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStringArray( String[] pStringArray ) {
       // Assign value to attribute

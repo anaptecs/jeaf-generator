@@ -131,9 +131,10 @@ public class Channel implements ServiceObject {
     }
 
     /**
-     * Method sets the association "channelType". Type of the channel
+     * Method sets association {@link #channelType}.<br/>
      * 
-     * @param pChannelType ChannelType to which the association "channelType" should be set.
+     * @param pChannelType Value to which {@link #channelType} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChannelType( ChannelType pChannelType ) {
       channelType = pChannelType;
@@ -141,9 +142,10 @@ public class Channel implements ServiceObject {
     }
 
     /**
-     * Method sets the association "channelCode". The business code of the channel
+     * Method sets association {@link #channelCode}.<br/>
      * 
-     * @param pChannelCode ChannelCode to which the association "channelCode" should be set.
+     * @param pChannelCode Value to which {@link #channelCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChannelCode( ChannelCode pChannelCode ) {
       channelCode = pChannelCode;
@@ -154,7 +156,7 @@ public class Channel implements ServiceObject {
      * Method sets attribute {@link #code}.<br/>
      * 
      * @param pCode Value to which {@link #code} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCode( int pCode ) {
       // Assign value to attribute
@@ -166,7 +168,7 @@ public class Channel implements ServiceObject {
      * Method sets attribute {@link #selfServiceChannel}.<br/>
      * 
      * @param pSelfServiceChannel Value to which {@link #selfServiceChannel} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSelfServiceChannel( boolean pSelfServiceChannel ) {
       // Assign value to attribute
@@ -175,9 +177,10 @@ public class Channel implements ServiceObject {
     }
 
     /**
-     * Method sets the association "reseller".
+     * Method sets association {@link #reseller}.<br/>
      * 
-     * @param pReseller Reseller to which the association "reseller" should be set.
+     * @param pReseller Value to which {@link #reseller} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReseller( Reseller pReseller ) {
       reseller = pReseller;

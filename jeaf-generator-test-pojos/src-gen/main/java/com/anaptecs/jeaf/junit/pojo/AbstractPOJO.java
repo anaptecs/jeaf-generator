@@ -72,7 +72,7 @@ public abstract class AbstractPOJO {
      * Method sets attribute {@link #abtractAttr}.<br/>
      * 
      * @param pAbtractAttr Value to which {@link #abtractAttr} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAbtractAttr( String pAbtractAttr ) {
       // Assign value to attribute

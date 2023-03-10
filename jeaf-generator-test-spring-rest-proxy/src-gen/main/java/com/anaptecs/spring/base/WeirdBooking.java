@@ -95,9 +95,10 @@ public class WeirdBooking {
     }
 
     /**
-     * Method sets the association "booking".
+     * Method sets association {@link #booking}.<br/>
      * 
-     * @param pBooking ComplexBookingID to which the association "booking" should be set.
+     * @param pBooking Value to which {@link #booking} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooking( ComplexBookingID pBooking ) {
       booking = pBooking;
@@ -105,9 +106,10 @@ public class WeirdBooking {
     }
 
     /**
-     * Method sets the association "additionalBookings".
+     * Method sets association {@link #additionalBookings}.<br/>
      * 
-     * @param pAdditionalBookings Collection with objects to which the association should be set.
+     * @param pAdditionalBookings Collection to which {@link #additionalBookings} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAdditionalBookings( List<ComplexBookingID> pAdditionalBookings ) {
       // To ensure immutability we have to copy the content of the passed collection.

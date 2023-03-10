@@ -199,7 +199,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
      * Method sets attribute {@link #iban}.<br/>
      * 
      * @param pIban Value to which {@link #iban} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setIban( Long pIban ) {
       // Assign value to attribute
@@ -211,7 +211,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
      * Method sets attribute {@link #balance}.<br/>
      * 
      * @param pBalance Value to which {@link #balance} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBalance( BigDecimal pBalance ) {
       // Assign value to attribute
@@ -220,9 +220,10 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
     }
 
     /**
-     * Method sets the association "authorizedPersons".
+     * Method sets association {@link #authorizedPersons}.<br/>
      * 
-     * @param pAuthorizedPersons Collection with objects to which the association should be set.
+     * @param pAuthorizedPersons Collection to which {@link #authorizedPersons} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setAuthorizedPersons( Set<Person> pAuthorizedPersons ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -236,9 +237,10 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
     }
 
     /**
-     * Method sets the association "bookings".
+     * Method sets association {@link #bookings}.<br/>
      * 
-     * @param pBookings Collection with objects to which the association should be set.
+     * @param pBookings Collection to which {@link #bookings} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBookings( Set<Booking> pBookings ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -255,7 +257,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
      * Method sets attribute {@link #bankID}.<br/>
      * 
      * @param pBankID Value to which {@link #bankID} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBankID( ServiceObjectID pBankID ) {
       // Assign value to attribute

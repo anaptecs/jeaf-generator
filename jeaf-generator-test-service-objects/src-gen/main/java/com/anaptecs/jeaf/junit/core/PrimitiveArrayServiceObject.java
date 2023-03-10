@@ -90,7 +90,7 @@ public class PrimitiveArrayServiceObject implements ServiceObject {
      * Method sets attribute {@link #booleanArray}.<br/>
      * 
      * @param pBooleanArray Value to which {@link #booleanArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooleanArray( boolean[] pBooleanArray ) {
       // Assign value to attribute

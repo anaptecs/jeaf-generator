@@ -83,7 +83,7 @@ public abstract class PlainPOJOBase {
      * Method sets attribute {@link #hello}.<br/>
      * 
      * @param pHello Value to which {@link #hello} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setHello( String pHello ) {
       // Assign value to attribute
@@ -95,7 +95,7 @@ public abstract class PlainPOJOBase {
      * Method sets attribute {@link #world}.<br/>
      * 
      * @param pWorld Value to which {@link #world} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setWorld( Integer pWorld ) {
       // Assign value to attribute

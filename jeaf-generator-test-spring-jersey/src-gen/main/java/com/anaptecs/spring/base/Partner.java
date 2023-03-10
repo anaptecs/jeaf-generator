@@ -91,9 +91,10 @@ public class Partner {
     }
 
     /**
-     * Method sets the association "postalAddresses".
+     * Method sets association {@link #postalAddresses}.<br/>
      * 
-     * @param pPostalAddresses Collection with objects to which the association should be set.
+     * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
       // To ensure immutability we have to copy the content of the passed collection.

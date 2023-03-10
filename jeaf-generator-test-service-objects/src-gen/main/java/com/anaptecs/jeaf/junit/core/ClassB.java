@@ -141,9 +141,10 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the association "manyAs".
+     * Method sets association {@link #manyAs}.<br/>
      * 
-     * @param pManyAs Collection with objects to which the association should be set.
+     * @param pManyAs Collection to which {@link #manyAs} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setManyAs( SortedSet<ClassA> pManyAs ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -160,7 +161,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
      * Method sets attribute {@link #intValue}.<br/>
      * 
      * @param pIntValue Value to which {@link #intValue} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIntValue( Integer pIntValue ) {
       // Assign value to attribute

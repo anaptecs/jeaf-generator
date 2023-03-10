@@ -160,7 +160,7 @@ public class ImmutableAssociationPOJO {
      * Method sets attribute {@link #yetAnotherAttribute}.<br/>
      * 
      * @param pYetAnotherAttribute Value to which {@link #yetAnotherAttribute} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setYetAnotherAttribute( boolean pYetAnotherAttribute ) {
       // Assign value to attribute
@@ -169,9 +169,10 @@ public class ImmutableAssociationPOJO {
     }
 
     /**
-     * Method sets the association "readonlyAssociation".
+     * Method sets association {@link #readonlyAssociation}.<br/>
      * 
-     * @param pReadonlyAssociation Collection with objects to which the association should be set.
+     * @param pReadonlyAssociation Collection to which {@link #readonlyAssociation} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReadonlyAssociation( SortedSet<ImmutablePOJO> pReadonlyAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -185,9 +186,10 @@ public class ImmutableAssociationPOJO {
     }
 
     /**
-     * Method sets the association "immutableChildPOJO".
+     * Method sets association {@link #immutableChildPOJO}.<br/>
      * 
-     * @param pImmutableChildPOJO ImmutableChildPOJO to which the association "immutableChildPOJO" should be set.
+     * @param pImmutableChildPOJO Value to which {@link #immutableChildPOJO} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setImmutableChildPOJO( ImmutableChildPOJO pImmutableChildPOJO ) {
       immutableChildPOJO = pImmutableChildPOJO;
@@ -195,9 +197,10 @@ public class ImmutableAssociationPOJO {
     }
 
     /**
-     * Method sets the association "deprecatedRefs".
+     * Method sets association {@link #deprecatedRefs}.<br/>
      * 
-     * @param pDeprecatedRefs Collection with objects to which the association should be set.
+     * @param pDeprecatedRefs Collection to which {@link #deprecatedRefs} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDeprecatedRefs( Set<ImmutableChildPOJO> pDeprecatedRefs ) {
@@ -212,9 +215,10 @@ public class ImmutableAssociationPOJO {
     }
 
     /**
-     * Method sets the association "deprecatedRef".
+     * Method sets association {@link #deprecatedRef}.<br/>
      * 
-     * @param pDeprecatedRef ChildPOJO to which the association "deprecatedRef" should be set.
+     * @param pDeprecatedRef Value to which {@link #deprecatedRef} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDeprecatedRef( ChildPOJO pDeprecatedRef ) {

@@ -106,7 +106,7 @@ public class MultivaluedQueryParamsBean {
      * Method sets attribute {@link #intArray}.<br/>
      * 
      * @param pIntArray Value to which {@link #intArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIntArray( int[] pIntArray ) {
       // Assign value to attribute
@@ -123,8 +123,8 @@ public class MultivaluedQueryParamsBean {
     /**
      * Method sets attribute {@link #strings}.<br/>
      * 
-     * @param pStrings Value to which {@link #strings} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pStrings Collection to which {@link #strings} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStrings( String[] pStrings ) {
       // Assign value to attribute
@@ -141,8 +141,8 @@ public class MultivaluedQueryParamsBean {
     /**
      * Method sets attribute {@link #integers}.<br/>
      * 
-     * @param pIntegers Value to which {@link #integers} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pIntegers Collection to which {@link #integers} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIntegers( Integer[] pIntegers ) {
       // Assign value to attribute

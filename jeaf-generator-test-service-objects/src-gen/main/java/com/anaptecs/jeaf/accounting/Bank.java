@@ -158,7 +158,7 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
      * Method sets attribute {@link #name}.<br/>
      * 
      * @param pName Value to which {@link #name} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -170,7 +170,7 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
      * Method sets attribute {@link #code}.<br/>
      * 
      * @param pCode Value to which {@link #code} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCode( Long pCode ) {
       // Assign value to attribute
@@ -182,7 +182,7 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
      * Method sets attribute {@link #type}.<br/>
      * 
      * @param pType Value to which {@link #type} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setType( BankType pType ) {
       // Assign value to attribute

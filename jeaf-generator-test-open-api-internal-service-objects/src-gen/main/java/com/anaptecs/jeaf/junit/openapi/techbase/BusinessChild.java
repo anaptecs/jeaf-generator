@@ -123,7 +123,7 @@ public class BusinessChild extends BusinessParent {
      * Method sets attribute {@link #childAttribute}.<br/>
      * 
      * @param pChildAttribute Value to which {@link #childAttribute} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildAttribute( String pChildAttribute ) {
       // Assign value to attribute

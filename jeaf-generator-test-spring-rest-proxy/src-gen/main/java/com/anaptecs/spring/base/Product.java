@@ -251,9 +251,10 @@ public class Product {
     }
 
     /**
-     * Method sets the association "resellers".
+     * Method sets association {@link #resellers}.<br/>
      * 
-     * @param pResellers Collection with objects to which the association should be set.
+     * @param pResellers Collection to which {@link #resellers} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setResellers( Set<Reseller> pResellers ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -270,7 +271,7 @@ public class Product {
      * Method sets attribute {@link #name}.<br/>
      * 
      * @param pName Value to which {@link #name} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -280,10 +281,9 @@ public class Product {
 
     /**
      * Method sets attribute {@link #image}.<br/>
-     * Image describing the product.
      * 
      * @param pImage Value to which {@link #image} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setImage( byte[] pImage ) {
       // Assign value to attribute
@@ -301,7 +301,7 @@ public class Product {
      * Method sets attribute {@link #link}.<br/>
      * 
      * @param pLink Value to which {@link #link} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLink( URL pLink ) {
       // Assign value to attribute
@@ -313,7 +313,7 @@ public class Product {
      * Method sets attribute {@link #productID}.<br/>
      * 
      * @param pProductID Value to which {@link #productID} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setProductID( UUID pProductID ) {
       // Assign value to attribute
@@ -322,9 +322,10 @@ public class Product {
     }
 
     /**
-     * Method sets the association "supportedCurrencies".
+     * Method sets association {@link #supportedCurrencies}.<br/>
      * 
-     * @param pSupportedCurrencies Collection with objects to which the association should be set.
+     * @param pSupportedCurrencies Collection to which {@link #supportedCurrencies} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSupportedCurrencies( Set<CurrencyCode> pSupportedCurrencies ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -338,9 +339,10 @@ public class Product {
     }
 
     /**
-     * Method sets the association "productCodes".
+     * Method sets association {@link #productCodes}.<br/>
      * 
-     * @param pProductCodes Collection with objects to which the association should be set.
+     * @param pProductCodes Collection to which {@link #productCodes} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setProductCodes( Set<ProductCode> pProductCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -357,7 +359,7 @@ public class Product {
      * Method sets attribute {@link #description}.<br/>
      * 
      * @param pDescription Value to which {@link #description} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDescription( String pDescription ) {
@@ -367,9 +369,10 @@ public class Product {
     }
 
     /**
-     * Method sets the association "sortiments".
+     * Method sets association {@link #sortiments}.<br/>
      * 
-     * @param pSortiments Collection with objects to which the association should be set.
+     * @param pSortiments Collection to which {@link #sortiments} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSortiments( Set<Sortiment> pSortiments ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -386,7 +389,7 @@ public class Product {
      * Method sets attribute {@link #uri}.<br/>
      * 
      * @param pUri Value to which {@link #uri} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setUri( String pUri ) {
       // Assign value to attribute

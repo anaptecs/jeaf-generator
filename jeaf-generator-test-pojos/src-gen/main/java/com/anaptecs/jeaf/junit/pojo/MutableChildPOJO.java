@@ -125,7 +125,7 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
      * Method sets attribute {@link #writeable}.<br/>
      * 
      * @param pWriteable Value to which {@link #writeable} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setWriteable( Integer pWriteable ) {
       // Assign value to attribute

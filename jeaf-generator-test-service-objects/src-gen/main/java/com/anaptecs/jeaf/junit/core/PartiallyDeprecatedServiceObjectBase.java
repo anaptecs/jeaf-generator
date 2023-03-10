@@ -144,7 +144,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
      * Method sets attribute {@link #name}.<br/>
      * 
      * @param pName Value to which {@link #name} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setName( String pName ) {
       // Assign value to attribute
@@ -156,7 +156,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
      * Method sets attribute {@link #outdated}.<br/>
      * 
      * @param pOutdated Value to which {@link #outdated} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public BuilderBase setOutdated( boolean pOutdated ) {
@@ -166,9 +166,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     }
 
     /**
-     * Method sets the association "deprecatedRef".
+     * Method sets association {@link #deprecatedRef}.<br/>
      * 
-     * @param pDeprecatedRef DeprecatedServiceObject to which the association "deprecatedRef" should be set.
+     * @param pDeprecatedRef Value to which {@link #deprecatedRef} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public BuilderBase setDeprecatedRef( DeprecatedServiceObject pDeprecatedRef ) {
@@ -177,9 +178,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     }
 
     /**
-     * Method sets the association "deprecatedRefs".
+     * Method sets association {@link #deprecatedRefs}.<br/>
      * 
-     * @param pDeprecatedRefs Collection with objects to which the association should be set.
+     * @param pDeprecatedRefs Collection to which {@link #deprecatedRefs} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public BuilderBase setDeprecatedRefs( Set<ValidationTestObject> pDeprecatedRefs ) {
@@ -197,7 +199,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
      * Method sets attribute {@link #readonlyDefault}.<br/>
      * 
      * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setReadonlyDefault( int pReadonlyDefault ) {
       // Assign value to attribute

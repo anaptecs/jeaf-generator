@@ -143,7 +143,7 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
      * Method sets attribute {@link #type}.<br/>
      * 
      * @param pType Value to which {@link #type} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setType( String pType ) {
       // Assign value to attribute
@@ -155,7 +155,7 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
      * Method sets attribute {@link #typeChar}.<br/>
      * 
      * @param pTypeChar Value to which {@link #typeChar} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTypeChar( Character pTypeChar ) {
       // Assign value to attribute
@@ -167,7 +167,7 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
      * Method sets attribute {@link #sortorder}.<br/>
      * 
      * @param pSortorder Value to which {@link #sortorder} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSortorder( Byte pSortorder ) {
       // Assign value to attribute

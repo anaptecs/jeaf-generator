@@ -142,7 +142,7 @@ public class BookingID {
      * Method sets attribute {@link #publicBookingID}.<br/>
      * 
      * @param pPublicBookingID Value to which {@link #publicBookingID} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPublicBookingID( String pPublicBookingID ) {
       // Assign value to attribute
@@ -154,7 +154,7 @@ public class BookingID {
      * Method sets attribute {@link #referenceID}.<br/>
      * 
      * @param pReferenceID Value to which {@link #referenceID} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReferenceID( String pReferenceID ) {
       // Assign value to attribute
@@ -166,7 +166,7 @@ public class BookingID {
      * Method sets attribute {@link #externalRefID}.<br/>
      * 
      * @param pExternalRefID Value to which {@link #externalRefID} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setExternalRefID( String pExternalRefID ) {
       // Assign value to attribute
@@ -175,9 +175,10 @@ public class BookingID {
     }
 
     /**
-     * Method sets the association "inventory".
+     * Method sets association {@link #inventory}.<br/>
      * 
-     * @param pInventory InventoryType to which the association "inventory" should be set.
+     * @param pInventory Value to which {@link #inventory} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInventory( InventoryType pInventory ) {
       inventory = pInventory;
@@ -185,9 +186,10 @@ public class BookingID {
     }
 
     /**
-     * Method sets the association "bookingCode".
+     * Method sets association {@link #bookingCode}.<br/>
      * 
-     * @param pBookingCode BookingCode to which the association "bookingCode" should be set.
+     * @param pBookingCode Value to which {@link #bookingCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingCode( BookingCode pBookingCode ) {
       bookingCode = pBookingCode;

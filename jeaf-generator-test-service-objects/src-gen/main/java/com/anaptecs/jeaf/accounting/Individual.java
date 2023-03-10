@@ -157,9 +157,10 @@ public class Individual extends Customer {
     }
 
     /**
-     * Method sets the association "person".
+     * Method sets association {@link #person}.<br/>
      * 
-     * @param pPerson Person to which the association "person" should be set.
+     * @param pPerson Value to which {@link #person} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPerson( Person pPerson ) {
       person = pPerson;

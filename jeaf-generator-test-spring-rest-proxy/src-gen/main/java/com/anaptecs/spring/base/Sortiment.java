@@ -94,9 +94,10 @@ public class Sortiment {
     }
 
     /**
-     * Method sets the association "products".
+     * Method sets association {@link #products}.<br/>
      * 
-     * @param pProducts Collection with objects to which the association should be set.
+     * @param pProducts Collection to which {@link #products} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setProducts( Set<Product> pProducts ) {
       // To ensure immutability we have to copy the content of the passed collection.

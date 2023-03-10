@@ -115,7 +115,7 @@ public abstract class AccountBase {
      * Method sets attribute {@link #iban}.<br/>
      * 
      * @param pIban Value to which {@link #iban} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setIban( int pIban ) {
       // Assign value to attribute
@@ -124,9 +124,10 @@ public abstract class AccountBase {
     }
 
     /**
-     * Method sets the association "owner".
+     * Method sets association {@link #owner}.<br/>
      * 
-     * @param pOwner Customer to which the association "owner" should be set.
+     * @param pOwner Value to which {@link #owner} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setOwner( Customer pOwner ) {
       owner = pOwner;
@@ -137,7 +138,7 @@ public abstract class AccountBase {
      * Method sets attribute {@link #currency}.<br/>
      * 
      * @param pCurrency Value to which {@link #currency} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setCurrency( Currency pCurrency ) {
       // Assign value to attribute
@@ -146,9 +147,10 @@ public abstract class AccountBase {
     }
 
     /**
-     * Method sets the association "allBookings".
+     * Method sets association {@link #allBookings}.<br/>
      * 
-     * @param pAllBookings Collection with objects to which the association should be set.
+     * @param pAllBookings Collection to which {@link #allBookings} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setAllBookings( Set<Booking> pAllBookings ) {
       // To ensure immutability we have to copy the content of the passed collection.

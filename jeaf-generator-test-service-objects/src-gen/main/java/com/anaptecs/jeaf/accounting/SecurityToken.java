@@ -116,10 +116,9 @@ public class SecurityToken implements ServiceObject {
 
     /**
      * Method sets attribute {@link #sessionKey}.<br/>
-     * The attribute contains the session key of the security token that was used when the booking was executed.
      * 
      * @param pSessionKey Value to which {@link #sessionKey} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSessionKey( byte[] pSessionKey ) {
       // Assign value to attribute
@@ -134,9 +133,10 @@ public class SecurityToken implements ServiceObject {
     }
 
     /**
-     * Method sets the association "booking".
+     * Method sets association {@link #booking}.<br/>
      * 
-     * @param pBooking Booking to which the association "booking" should be set.
+     * @param pBooking Value to which {@link #booking} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooking( Booking pBooking ) {
       booking = pBooking;
@@ -147,7 +147,7 @@ public class SecurityToken implements ServiceObject {
      * Method sets attribute {@link #value}.<br/>
      * 
      * @param pValue Value to which {@link #value} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setValue( Integer pValue ) {
       // Assign value to attribute

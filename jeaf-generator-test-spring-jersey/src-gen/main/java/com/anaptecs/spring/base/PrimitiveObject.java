@@ -313,7 +313,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #aBoolean}.<br/>
      * 
      * @param pABoolean Value to which {@link #aBoolean} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setABoolean( boolean pABoolean ) {
       // Assign value to attribute
@@ -325,7 +325,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #bBoolean}.<br/>
      * 
      * @param pBBoolean Value to which {@link #bBoolean} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBBoolean( Boolean pBBoolean ) {
       // Assign value to attribute
@@ -337,7 +337,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #cBoolean}.<br/>
      * 
      * @param pCBoolean Value to which {@link #cBoolean} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCBoolean( boolean pCBoolean ) {
       // Assign value to attribute
@@ -349,7 +349,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #aByte}.<br/>
      * 
      * @param pAByte Value to which {@link #aByte} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAByte( byte pAByte ) {
       // Assign value to attribute
@@ -361,7 +361,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #bByte}.<br/>
      * 
      * @param pBByte Value to which {@link #bByte} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBByte( Byte pBByte ) {
       // Assign value to attribute
@@ -373,7 +373,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #aShort}.<br/>
      * 
      * @param pAShort Value to which {@link #aShort} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAShort( short pAShort ) {
       // Assign value to attribute
@@ -385,7 +385,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #bShort}.<br/>
      * 
      * @param pBShort Value to which {@link #bShort} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBShort( Short pBShort ) {
       // Assign value to attribute
@@ -397,7 +397,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #aInteger}.<br/>
      * 
      * @param pAInteger Value to which {@link #aInteger} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAInteger( int pAInteger ) {
       // Assign value to attribute
@@ -409,7 +409,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #bInteger}.<br/>
      * 
      * @param pBInteger Value to which {@link #bInteger} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBInteger( Integer pBInteger ) {
       // Assign value to attribute
@@ -421,7 +421,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #cInteger}.<br/>
      * 
      * @param pCInteger Value to which {@link #cInteger} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCInteger( Integer pCInteger ) {
       // Assign value to attribute
@@ -433,7 +433,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #aLong}.<br/>
      * 
      * @param pALong Value to which {@link #aLong} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setALong( long pALong ) {
       // Assign value to attribute
@@ -445,7 +445,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #bLong}.<br/>
      * 
      * @param pBLong Value to which {@link #bLong} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBLong( Long pBLong ) {
       // Assign value to attribute
@@ -457,7 +457,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #aBigInteger}.<br/>
      * 
      * @param pABigInteger Value to which {@link #aBigInteger} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setABigInteger( BigInteger pABigInteger ) {
       // Assign value to attribute
@@ -469,7 +469,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #aCharacter}.<br/>
      * 
      * @param pACharacter Value to which {@link #aCharacter} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setACharacter( char pACharacter ) {
       // Assign value to attribute
@@ -481,7 +481,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #bCharacter}.<br/>
      * 
      * @param pBCharacter Value to which {@link #bCharacter} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBCharacter( Character pBCharacter ) {
       // Assign value to attribute
@@ -493,7 +493,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #aFloat}.<br/>
      * 
      * @param pAFloat Value to which {@link #aFloat} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAFloat( float pAFloat ) {
       // Assign value to attribute
@@ -505,7 +505,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #bFloat}.<br/>
      * 
      * @param pBFloat Value to which {@link #bFloat} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBFloat( Float pBFloat ) {
       // Assign value to attribute
@@ -517,7 +517,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #aDouble}.<br/>
      * 
      * @param pADouble Value to which {@link #aDouble} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setADouble( double pADouble ) {
       // Assign value to attribute
@@ -529,7 +529,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #bDouble}.<br/>
      * 
      * @param pBDouble Value to which {@link #bDouble} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBDouble( Double pBDouble ) {
       // Assign value to attribute
@@ -541,7 +541,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #aBigDecimal}.<br/>
      * 
      * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setABigDecimal( BigDecimal pABigDecimal ) {
       // Assign value to attribute
@@ -553,7 +553,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #aString}.<br/>
      * 
      * @param pAString Value to which {@link #aString} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAString( String pAString ) {
       // Assign value to attribute
@@ -565,7 +565,7 @@ public class PrimitiveObject {
      * Method sets attribute {@link #bString}.<br/>
      * 
      * @param pBString Value to which {@link #bString} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBString( String pBString ) {
       // Assign value to attribute

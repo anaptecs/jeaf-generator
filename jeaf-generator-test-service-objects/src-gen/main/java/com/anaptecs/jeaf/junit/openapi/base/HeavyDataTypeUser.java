@@ -166,7 +166,7 @@ public class HeavyDataTypeUser implements ServiceObject {
      * Method sets attribute {@link #booleanCode}.<br/>
      * 
      * @param pBooleanCode Value to which {@link #booleanCode} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooleanCode( BooleanCode pBooleanCode ) {
       // Assign value to attribute
@@ -178,7 +178,7 @@ public class HeavyDataTypeUser implements ServiceObject {
      * Method sets attribute {@link #byteCode}.<br/>
      * 
      * @param pByteCode Value to which {@link #byteCode} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setByteCode( ByteCode pByteCode ) {
       // Assign value to attribute
@@ -190,7 +190,7 @@ public class HeavyDataTypeUser implements ServiceObject {
      * Method sets attribute {@link #shortCode}.<br/>
      * 
      * @param pShortCode Value to which {@link #shortCode} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setShortCode( ShortCode pShortCode ) {
       // Assign value to attribute
@@ -202,7 +202,7 @@ public class HeavyDataTypeUser implements ServiceObject {
      * Method sets attribute {@link #integerCode}.<br/>
      * 
      * @param pIntegerCode Value to which {@link #integerCode} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIntegerCode( IntegerCode pIntegerCode ) {
       // Assign value to attribute
@@ -214,7 +214,7 @@ public class HeavyDataTypeUser implements ServiceObject {
      * Method sets attribute {@link #floatCode}.<br/>
      * 
      * @param pFloatCode Value to which {@link #floatCode} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setFloatCode( FloatCode pFloatCode ) {
       // Assign value to attribute
@@ -226,7 +226,7 @@ public class HeavyDataTypeUser implements ServiceObject {
      * Method sets attribute {@link #doubleCode}.<br/>
      * 
      * @param pDoubleCode Value to which {@link #doubleCode} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDoubleCode( DoubleCode pDoubleCode ) {
       // Assign value to attribute
@@ -238,7 +238,7 @@ public class HeavyDataTypeUser implements ServiceObject {
      * Method sets attribute {@link #bigInegerCode}.<br/>
      * 
      * @param pBigInegerCode Value to which {@link #bigInegerCode} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBigInegerCode( BigIntegerCode pBigInegerCode ) {
       // Assign value to attribute
@@ -250,7 +250,7 @@ public class HeavyDataTypeUser implements ServiceObject {
      * Method sets attribute {@link #bigDecimalCode}.<br/>
      * 
      * @param pBigDecimalCode Value to which {@link #bigDecimalCode} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBigDecimalCode( BigDecimalCode pBigDecimalCode ) {
       // Assign value to attribute

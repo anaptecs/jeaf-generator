@@ -137,7 +137,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
      * Method sets attribute {@link #childAttribute}.<br/>
      * 
      * @param pChildAttribute Value to which {@link #childAttribute} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildAttribute( String pChildAttribute ) {
       // Assign value to attribute
@@ -149,7 +149,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
      * Method sets attribute {@link #anotherChildAttribute}.<br/>
      * 
      * @param pAnotherChildAttribute Value to which {@link #anotherChildAttribute} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAnotherChildAttribute( Double pAnotherChildAttribute ) {
       // Assign value to attribute

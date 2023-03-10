@@ -160,7 +160,7 @@ public class Problem implements Serializable {
      * Method sets attribute {@link #title}.<br/>
      * 
      * @param pTitle Value to which {@link #title} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTitle( String pTitle ) {
       // Assign value to attribute
@@ -172,7 +172,7 @@ public class Problem implements Serializable {
      * Method sets attribute {@link #status}.<br/>
      * 
      * @param pStatus Value to which {@link #status} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStatus( int pStatus ) {
       // Assign value to attribute
@@ -184,7 +184,7 @@ public class Problem implements Serializable {
      * Method sets attribute {@link #type}.<br/>
      * 
      * @param pType Value to which {@link #type} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setType( String pType ) {
       // Assign value to attribute
@@ -196,7 +196,7 @@ public class Problem implements Serializable {
      * Method sets attribute {@link #detail}.<br/>
      * 
      * @param pDetail Value to which {@link #detail} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDetail( String pDetail ) {
       // Assign value to attribute
@@ -208,7 +208,7 @@ public class Problem implements Serializable {
      * Method sets attribute {@link #instance}.<br/>
      * 
      * @param pInstance Value to which {@link #instance} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInstance( String pInstance ) {
       // Assign value to attribute

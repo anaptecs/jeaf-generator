@@ -107,7 +107,7 @@ public class Duration {
      * Method sets attribute {@link #value}.<br/>
      * 
      * @param pValue Value to which {@link #value} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setValue( int pValue ) {
       // Assign value to attribute
@@ -119,7 +119,7 @@ public class Duration {
      * Method sets attribute {@link #timeUnit}.<br/>
      * 
      * @param pTimeUnit Value to which {@link #timeUnit} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTimeUnit( TimeUnit pTimeUnit ) {
       // Assign value to attribute

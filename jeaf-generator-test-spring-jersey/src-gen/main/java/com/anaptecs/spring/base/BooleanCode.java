@@ -94,7 +94,7 @@ public class BooleanCode {
      * Method sets attribute {@link #code}.<br/>
      * 
      * @param pCode Value to which {@link #code} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCode( Boolean pCode ) {
       // Assign value to attribute

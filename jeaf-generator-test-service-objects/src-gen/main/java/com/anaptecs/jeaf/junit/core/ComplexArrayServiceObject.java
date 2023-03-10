@@ -89,8 +89,8 @@ public class ComplexArrayServiceObject implements ServiceObject {
     /**
      * Method sets attribute {@link #classBs}.<br/>
      * 
-     * @param pClassBs Value to which {@link #classBs} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pClassBs Collection to which {@link #classBs} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setClassBs( ClassB[] pClassBs ) {
       // Assign value to attribute

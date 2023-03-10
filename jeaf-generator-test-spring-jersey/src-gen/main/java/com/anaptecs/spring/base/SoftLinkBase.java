@@ -95,7 +95,7 @@ public abstract class SoftLinkBase {
      * Method sets attribute {@link #objectID}.<br/>
      * 
      * @param pObjectID Value to which {@link #objectID} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setObjectID( long pObjectID ) {
       // Assign value to attribute
@@ -104,9 +104,10 @@ public abstract class SoftLinkBase {
     }
 
     /**
-     * Method sets the association "dataUnit".
+     * Method sets association {@link #dataUnit}.<br/>
      * 
-     * @param pDataUnit DataUnit to which the association "dataUnit" should be set.
+     * @param pDataUnit Value to which {@link #dataUnit} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setDataUnit( DataUnit pDataUnit ) {
       dataUnit = pDataUnit;
@@ -114,9 +115,10 @@ public abstract class SoftLinkBase {
     }
 
     /**
-     * Method sets the association "entity".
+     * Method sets association {@link #entity}.<br/>
      * 
-     * @param pEntity Entity to which the association "entity" should be set.
+     * @param pEntity Value to which {@link #entity} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setEntity( Entity pEntity ) {
       entity = pEntity;
@@ -127,7 +129,7 @@ public abstract class SoftLinkBase {
      * Method sets attribute {@link #refrenceID}.<br/>
      * 
      * @param pRefrenceID Value to which {@link #refrenceID} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setRefrenceID( String pRefrenceID ) {
       // Assign value to attribute

@@ -122,7 +122,7 @@ public abstract class CustomerBase extends Partner {
      * Method sets attribute {@link #name}.<br/>
      * 
      * @param pName Value to which {@link #name} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setName( String pName ) {
       // Assign value to attribute
@@ -134,7 +134,7 @@ public abstract class CustomerBase extends Partner {
      * Method sets attribute {@link #firstName}.<br/>
      * 
      * @param pFirstName Value to which {@link #firstName} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setFirstName( String pFirstName ) {
       // Assign value to attribute
@@ -146,7 +146,7 @@ public abstract class CustomerBase extends Partner {
      * Method sets attribute {@link #email}.<br/>
      * 
      * @param pEmail Value to which {@link #email} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setEmail( String pEmail ) {
       // Assign value to attribute
@@ -155,9 +155,10 @@ public abstract class CustomerBase extends Partner {
     }
 
     /**
-     * Method sets the association "accounts".
+     * Method sets association {@link #accounts}.<br/>
      * 
-     * @param pAccounts Collection with objects to which the association should be set.
+     * @param pAccounts Collection to which {@link #accounts} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setAccounts( Set<Account> pAccounts ) {
       // To ensure immutability we have to copy the content of the passed collection.

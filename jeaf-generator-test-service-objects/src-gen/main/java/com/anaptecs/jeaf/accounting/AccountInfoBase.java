@@ -124,7 +124,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
      * Method sets attribute {@link #iban}.<br/>
      * 
      * @param pIban Value to which {@link #iban} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setIban( Long pIban ) {
       // Assign value to attribute
@@ -136,7 +136,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
      * Method sets attribute {@link #balance}.<br/>
      * 
      * @param pBalance Value to which {@link #balance} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBalance( Double pBalance ) {
       // Assign value to attribute
@@ -148,7 +148,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
      * Method sets attribute {@link #bankID}.<br/>
      * 
      * @param pBankID Value to which {@link #bankID} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBankID( ServiceObjectID pBankID ) {
       // Assign value to attribute

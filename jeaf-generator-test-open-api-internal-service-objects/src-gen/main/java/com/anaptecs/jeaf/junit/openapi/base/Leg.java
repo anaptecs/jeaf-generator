@@ -117,9 +117,10 @@ public class Leg implements ServiceObject {
     }
 
     /**
-     * Method sets the association "start".
+     * Method sets association {@link #start}.<br/>
      * 
-     * @param pStart PlaceRef to which the association "start" should be set.
+     * @param pStart Value to which {@link #start} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStart( PlaceRef pStart ) {
       start = pStart;
@@ -127,9 +128,10 @@ public class Leg implements ServiceObject {
     }
 
     /**
-     * Method sets the association "stop".
+     * Method sets association {@link #stop}.<br/>
      * 
-     * @param pStop PlaceRef to which the association "stop" should be set.
+     * @param pStop Value to which {@link #stop} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStop( PlaceRef pStop ) {
       stop = pStop;
@@ -137,9 +139,10 @@ public class Leg implements ServiceObject {
     }
 
     /**
-     * Method sets the association "stopovers".
+     * Method sets association {@link #stopovers}.<br/>
      * 
-     * @param pStopovers Collection with objects to which the association should be set.
+     * @param pStopovers Collection to which {@link #stopovers} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStopovers( List<PlaceRef> pStopovers ) {
       // To ensure immutability we have to copy the content of the passed collection.

@@ -100,7 +100,7 @@ public class TechnicalHeaderContext implements ServiceObject {
      * Method sets attribute {@link #reseller}.<br/>
      * 
      * @param pReseller Value to which {@link #reseller} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReseller( String pReseller ) {
       // Assign value to attribute

@@ -220,9 +220,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "booking".
+     * Method sets association {@link #booking}.<br/>
      * 
-     * @param pBooking ComplexBookingID to which the association "booking" should be set.
+     * @param pBooking Value to which {@link #booking} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooking( ComplexBookingID pBooking ) {
       booking = pBooking;
@@ -230,9 +231,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "additionalBookings". additional bookings
+     * Method sets association {@link #additionalBookings}.<br/>
      * 
-     * @param pAdditionalBookings Collection with objects to which the association should be set.
+     * @param pAdditionalBookings Collection to which {@link #additionalBookings} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAdditionalBookings( List<ComplexBookingID> pAdditionalBookings ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -246,10 +248,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "versionedObjectSoftLink". soft link 2nd line 3rd line
+     * Method sets association {@link #versionedObjectSoftLink}.<br/>
      * 
-     * @param pVersionedObjectSoftLink VersionedObjectSoftLink to which the association "versionedObjectSoftLink" should
-     * be set.
+     * @param pVersionedObjectSoftLink Value to which {@link #versionedObjectSoftLink} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setVersionedObjectSoftLink( VersionedObjectSoftLink pVersionedObjectSoftLink ) {
       versionedObjectSoftLink = pVersionedObjectSoftLink;
@@ -260,7 +262,7 @@ public class WeirdBooking extends WeirdParent {
      * Method sets attribute {@link #childProperty}.<br/>
      * 
      * @param pChildProperty Value to which {@link #childProperty} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildProperty( int pChildProperty ) {
       // Assign value to attribute
@@ -269,9 +271,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "realBooking". the real booking
+     * Method sets association {@link #realBooking}.<br/>
      * 
-     * @param pRealBooking Booking to which the association "realBooking" should be set.
+     * @param pRealBooking Value to which {@link #realBooking} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setRealBooking( Booking pRealBooking ) {
       realBooking = pRealBooking;
@@ -279,9 +282,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "inventories".
+     * Method sets association {@link #inventories}.<br/>
      * 
-     * @param pInventories Collection with objects to which the association should be set.
+     * @param pInventories Collection to which {@link #inventories} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInventories( Set<InventoryType> pInventories ) {
       // To ensure immutability we have to copy the content of the passed collection.

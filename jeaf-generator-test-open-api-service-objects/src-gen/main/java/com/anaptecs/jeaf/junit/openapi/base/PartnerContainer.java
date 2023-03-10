@@ -93,9 +93,10 @@ public class PartnerContainer implements ServiceObject {
     }
 
     /**
-     * Method sets the association "partners".
+     * Method sets association {@link #partners}.<br/>
      * 
-     * @param pPartners Collection with objects to which the association should be set.
+     * @param pPartners Collection to which {@link #partners} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPartners( List<Partner> pPartners ) {
       // To ensure immutability we have to copy the content of the passed collection.

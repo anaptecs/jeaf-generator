@@ -167,7 +167,7 @@ public class SwiftAccount extends Account {
      * Method sets attribute {@link #bic}.<br/>
      * 
      * @param pBic Value to which {@link #bic} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBic( String pBic ) {
       // Assign value to attribute

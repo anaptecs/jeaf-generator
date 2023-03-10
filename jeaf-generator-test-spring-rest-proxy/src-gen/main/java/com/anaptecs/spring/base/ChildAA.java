@@ -141,12 +141,9 @@ public class ChildAA extends ChildA {
 
     /**
      * Method sets attribute {@link #childAAAttribute}.<br/>
-     * Multi<br/>
-     * line<br/>
-     * docs
      * 
      * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildAAAttribute( byte pChildAAAttribute ) {
       // Assign value to attribute
@@ -158,7 +155,7 @@ public class ChildAA extends ChildA {
      * Method sets attribute {@link #sizedArray}.<br/>
      * 
      * @param pSizedArray Value to which {@link #sizedArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSizedArray( int[] pSizedArray ) {
       // Assign value to attribute
@@ -175,8 +172,8 @@ public class ChildAA extends ChildA {
     /**
      * Method sets attribute {@link #requiredArray}.<br/>
      * 
-     * @param pRequiredArray Value to which {@link #requiredArray} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @param pRequiredArray Collection to which {@link #requiredArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setRequiredArray( String[] pRequiredArray ) {
       // Assign value to attribute

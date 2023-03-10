@@ -175,9 +175,10 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     /**
-     * Method sets the association "stringCodeHeader". This is my multivalued test header
+     * Method sets association {@link #stringCodeHeader}.<br/>
      * 
-     * @param pStringCodeHeader Collection with objects to which the association should be set.
+     * @param pStringCodeHeader Collection to which {@link #stringCodeHeader} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStringCodeHeader( List<StringCode> pStringCodeHeader ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -191,9 +192,10 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     /**
-     * Method sets the association "longCodeQueryParam". Multivalued query param
+     * Method sets association {@link #longCodeQueryParam}.<br/>
      * 
-     * @param pLongCodeQueryParam Collection with objects to which the association should be set.
+     * @param pLongCodeQueryParam Collection to which {@link #longCodeQueryParam} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLongCodeQueryParam( List<LongCode> pLongCodeQueryParam ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -207,9 +209,10 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     /**
-     * Method sets the association "literals". so many literals are possible
+     * Method sets association {@link #literals}.<br/>
      * 
-     * @param pLiterals Collection with objects to which the association should be set.
+     * @param pLiterals Collection to which {@link #literals} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLiterals( List<BooleanLiteralsEnum> pLiterals ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -242,7 +245,7 @@ public class MultiValuedDataType implements ServiceObject {
      * Method sets attribute {@link #stringProperty}.<br/>
      * 
      * @param pStringProperty Value to which {@link #stringProperty} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStringProperty( String pStringProperty ) {
       // Assign value to attribute
@@ -252,10 +255,9 @@ public class MultiValuedDataType implements ServiceObject {
 
     /**
      * Method sets attribute {@link #longValues}.<br/>
-     * long values as multivalued header
      * 
      * @param pLongValues Value to which {@link #longValues} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLongValues( long pLongValues ) {
       // Assign value to attribute

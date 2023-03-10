@@ -100,7 +100,7 @@ public class OtherMappingObject implements ServiceObject {
      * Method sets attribute {@link #value}.<br/>
      * 
      * @param pValue Value to which {@link #value} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setValue( int pValue ) {
       // Assign value to attribute
@@ -112,7 +112,7 @@ public class OtherMappingObject implements ServiceObject {
      * Method sets attribute {@link #name}.<br/>
      * 
      * @param pName Value to which {@link #name} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute

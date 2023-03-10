@@ -104,7 +104,7 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
      * Method sets attribute {@link #hello}.<br/>
      * 
      * @param pHello Value to which {@link #hello} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setHello( Integer pHello ) {
       // Assign value to attribute

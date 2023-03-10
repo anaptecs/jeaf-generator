@@ -122,7 +122,7 @@ public class PostalAddress implements ServiceObject {
      * Method sets attribute {@link #street}.<br/>
      * 
      * @param pStreet Value to which {@link #street} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStreet( String pStreet ) {
       // Assign value to attribute
@@ -134,7 +134,7 @@ public class PostalAddress implements ServiceObject {
      * Method sets attribute {@link #houseNumber}.<br/>
      * 
      * @param pHouseNumber Value to which {@link #houseNumber} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setHouseNumber( String pHouseNumber ) {
       // Assign value to attribute
@@ -146,7 +146,7 @@ public class PostalAddress implements ServiceObject {
      * Method sets attribute {@link #city}.<br/>
      * 
      * @param pCity Value to which {@link #city} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCity( String pCity ) {
       // Assign value to attribute
@@ -158,7 +158,7 @@ public class PostalAddress implements ServiceObject {
      * Method sets attribute {@link #postalCode}.<br/>
      * 
      * @param pPostalCode Value to which {@link #postalCode} should be set.
-     * @return Builder Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPostalCode( int pPostalCode ) {
       // Assign value to attribute

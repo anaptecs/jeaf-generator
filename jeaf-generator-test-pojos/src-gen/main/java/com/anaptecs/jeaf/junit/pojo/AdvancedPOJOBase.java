@@ -80,7 +80,7 @@ public abstract class AdvancedPOJOBase {
      * Method sets attribute {@link #readonlyDefault}.<br/>
      * 
      * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
-     * @return BuilderBase Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setReadonlyDefault( int pReadonlyDefault ) {
       // Assign value to attribute
