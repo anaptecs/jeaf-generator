@@ -63,7 +63,7 @@ Sorry!!! | a very long time | 2023-12-13 |
 |--------|-----------|---------------|:------------------:|:-----------------------:|
 | `Campaign` | |  |  |  |
 |   | `theLink` | Please use "moreLinks" instead. | 2.3.1 | 2.4 |
-|   | `moreLinks` |  |  |  |
+|   | `moreLinks` | No good any more | 1.2 | 3.0 |
 |   | `discountOffers` |  |  |  |
 | `ChildAA` | |  |  |  |
 | `ChildBB` | |  |  |  |

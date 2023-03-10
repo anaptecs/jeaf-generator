@@ -42,6 +42,8 @@ public class Campaign implements ServiceObject {
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #moreLinks} is
    * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
+   * 
+   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
   @Size(min = 1)
@@ -253,6 +255,7 @@ public class Campaign implements ServiceObject {
    * 
    * @return {@link Set<Long>} Value to which {@link #moreLinks} is set. The method never returns null and the returned
    * collection is modifiable.
+   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
   public Set<Long> getMoreLinks( ) {
@@ -264,6 +267,7 @@ public class Campaign implements ServiceObject {
    * Method adds the passed object to {@link #moreLinks}.
    * 
    * @param pMoreLinks Object that should be added to {@link #moreLinks}. The parameter must not be null.
+   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
   public void addToMoreLinks( Long pMoreLinks ) {
@@ -278,6 +282,7 @@ public class Campaign implements ServiceObject {
    * 
    * @param pMoreLinks Collection with all objects that should be added to {@link #moreLinks}. The parameter must not be
    * null.
+   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
   public void addToMoreLinks( Collection<Long> pMoreLinks ) {
