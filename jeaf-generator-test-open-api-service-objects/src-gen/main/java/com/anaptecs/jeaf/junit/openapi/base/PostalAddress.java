@@ -78,24 +78,12 @@ public class PostalAddress implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String street;
 
-    /**
-     * 
-     */
     private String houseNumber;
 
-    /**
-     * 
-     */
     private String city;
 
-    /**
-     * 
-     */
     private int postalCode;
 
     /**

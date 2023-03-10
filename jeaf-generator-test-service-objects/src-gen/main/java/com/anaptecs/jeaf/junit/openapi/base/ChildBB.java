@@ -120,32 +120,17 @@ public class ChildBB extends ChildB {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends ChildB.Builder {
-    /**
-     * 
-     */
     private Long childBBAttribute;
 
-    /**
-     * 
-     */
     @Deprecated
     private int deprecatedAttribute;
 
-    /**
-     * 
-     */
     @Deprecated
     private Set<ChildB> deprecatedBs;
 
-    /**
-     * 
-     */
     @Deprecated
     private ParentClass deprecatedParent;
 
-    /**
-     * 
-     */
     @Deprecated
     @Size(min = 0, max = 4711)
     private byte[] deprecatedArray;

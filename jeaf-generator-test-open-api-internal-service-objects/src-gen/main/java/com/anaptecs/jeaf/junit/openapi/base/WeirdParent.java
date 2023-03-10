@@ -103,19 +103,10 @@ public class WeirdParent implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String someProperty;
 
-    /**
-     * 
-     */
     private ComplexBookingID complexBooking;
 
-    /**
-     * 
-     */
     private Set<ComplexBookingID> complexBookings;
 
     /**

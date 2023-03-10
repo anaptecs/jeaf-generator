@@ -124,32 +124,17 @@ public class Problem implements Serializable {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     @NotNull
     private String title;
 
-    /**
-     * 
-     */
     @NotNull
     private int status;
 
-    /**
-     * 
-     */
     @NotNull
     private String type;
 
-    /**
-     * 
-     */
     private String detail;
 
-    /**
-     * 
-     */
     private String instance;
 
     /**

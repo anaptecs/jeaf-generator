@@ -138,19 +138,14 @@ public class Channel implements Serializable {
      */
     private ChannelCode channelCode;
 
-    /**
-     * 
-     */
     private int code;
 
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>true</code>
      */
     private boolean selfServiceChannel = true;
 
-    /**
-     * 
-     */
     private Reseller reseller;
 
     /**

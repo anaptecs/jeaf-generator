@@ -90,25 +90,17 @@ public class DeprecatedContext {
    */
   @Deprecated
   public static class Builder {
-    /**
-     * 
-     */
     @NotEmpty
     private String accessToken;
 
     /**
-     * 
+     * <br/>
+     * <b>Example:</b> <code>en</code>
      */
     private Locale language;
 
-    /**
-     * 
-     */
     private long resellerID;
 
-    /**
-     * 
-     */
     private String queryParam;
 
     /**

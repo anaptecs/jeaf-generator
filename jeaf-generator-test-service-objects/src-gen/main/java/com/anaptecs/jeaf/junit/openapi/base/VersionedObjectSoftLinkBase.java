@@ -73,14 +73,8 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
      */
     private long objectID;
 
-    /**
-     * 
-     */
     private DataUnit dataUnit;
 
-    /**
-     * 
-     */
     private Entity entity;
 
     /**

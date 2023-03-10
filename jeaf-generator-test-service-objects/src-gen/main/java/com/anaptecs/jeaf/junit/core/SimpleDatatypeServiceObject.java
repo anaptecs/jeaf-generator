@@ -146,44 +146,20 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
      */
     private ObjectIdentity<?> objectID;
 
-    /**
-     * 
-     */
     private boolean myBoolean;
 
-    /**
-     * 
-     */
     private byte myByte;
 
-    /**
-     * 
-     */
     private char myChar;
 
-    /**
-     * 
-     */
     private double myDouble;
 
-    /**
-     * 
-     */
     private float myFloat;
 
-    /**
-     * 
-     */
     private long myLong;
 
-    /**
-     * 
-     */
     private short myShort;
 
-    /**
-     * 
-     */
     private byte[] myByteArray;
 
     /**

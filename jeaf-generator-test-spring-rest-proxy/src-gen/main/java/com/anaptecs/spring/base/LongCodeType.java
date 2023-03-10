@@ -57,9 +57,6 @@ public class LongCodeType {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private long code;
 
     /**

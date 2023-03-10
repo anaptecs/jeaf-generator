@@ -61,9 +61,6 @@ public class POI extends Stop {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends Stop.Builder {
-    /**
-     * 
-     */
     private String description;
 
     /**

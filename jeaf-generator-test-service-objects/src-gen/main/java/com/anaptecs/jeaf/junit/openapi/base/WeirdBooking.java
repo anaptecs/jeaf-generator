@@ -138,9 +138,6 @@ public class WeirdBooking extends WeirdParent {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends WeirdParent.Builder {
-    /**
-     * 
-     */
     private ComplexBookingID booking;
 
     /**
@@ -149,13 +146,12 @@ public class WeirdBooking extends WeirdParent {
     private List<ComplexBookingID> additionalBookings;
 
     /**
-     * soft link 2nd line 3rd line
+     * soft link<br/>
+     * 2nd line<br/>
+     * 3rd line
      */
     private VersionedObjectSoftLink versionedObjectSoftLink;
 
-    /**
-     * 
-     */
     private int childProperty;
 
     /**
@@ -163,9 +159,6 @@ public class WeirdBooking extends WeirdParent {
      */
     private Booking realBooking;
 
-    /**
-     * 
-     */
     private Set<InventoryType> inventories;
 
     /**

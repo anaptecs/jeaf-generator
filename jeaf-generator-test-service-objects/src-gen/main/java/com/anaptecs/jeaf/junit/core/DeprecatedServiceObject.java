@@ -70,9 +70,6 @@ public class DeprecatedServiceObject implements ServiceObject {
    */
   @Deprecated
   public static class Builder {
-    /**
-     * 
-     */
     private String name;
 
     /**

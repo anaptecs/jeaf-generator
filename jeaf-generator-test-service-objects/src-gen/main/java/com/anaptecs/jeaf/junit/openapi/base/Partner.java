@@ -100,9 +100,6 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
      */
     private ObjectIdentity<?> objectID;
 
-    /**
-     * 
-     */
     private List<PostalAddress> postalAddresses;
 
     /**

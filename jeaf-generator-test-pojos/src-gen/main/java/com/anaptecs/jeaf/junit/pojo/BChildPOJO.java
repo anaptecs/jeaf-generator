@@ -76,14 +76,8 @@ public class BChildPOJO extends BParentPOJO {
    */
   @Deprecated
   public static class Builder extends BParentPOJO.Builder {
-    /**
-     * 
-     */
     private byte weirdAttribute;
 
-    /**
-     * 
-     */
     private Integer childAttribute;
 
     /**

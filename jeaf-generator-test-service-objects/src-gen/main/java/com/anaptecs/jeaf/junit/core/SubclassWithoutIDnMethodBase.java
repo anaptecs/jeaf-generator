@@ -47,9 +47,6 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase extends IdentifiableServiceObjectWithMethod.Builder {
-    /**
-     * 
-     */
     private Boolean attr;
 
     /**

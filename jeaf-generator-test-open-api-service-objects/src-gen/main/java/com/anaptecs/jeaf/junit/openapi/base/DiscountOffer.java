@@ -82,7 +82,9 @@ public class DiscountOffer implements ServiceObject {
    */
   public static class Builder {
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #campaigns} is
+     * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
      */
     @Deprecated
     private Set<SoftLink> campaigns;

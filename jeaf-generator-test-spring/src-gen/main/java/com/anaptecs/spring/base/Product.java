@@ -196,14 +196,8 @@ public class Product {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private Set<Reseller> resellers;
 
-    /**
-     * 
-     */
     @Size(min = 12, max = Integer.MAX_VALUE)
     private String name;
 
@@ -213,38 +207,25 @@ public class Product {
     private byte[] image;
 
     /**
-     * 
+     * <br/>
+     * <b>Example:</b> <code>https://www.company.com/products/1345-345</code>
      */
     private URL link;
 
-    /**
-     * 
-     */
     private UUID productID;
 
-    /**
-     * 
-     */
     private Set<CurrencyCode> supportedCurrencies;
 
-    /**
-     * 
-     */
     private Set<ProductCode> productCodes;
 
-    /**
-     * 
-     */
     @Deprecated
     private String description;
 
-    /**
-     * 
-     */
     private Set<Sortiment> sortiments;
 
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>"https://products.anaptecs.de/123456789"</code>
      */
     private String uri = "https://products.anaptecs.de/123456789";
 

@@ -82,13 +82,11 @@ public class ReadonlyServiceObject implements ServiceObject {
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String readonly;
 
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>4711</code>
      */
     private int readonlyDefault = 4711;
 

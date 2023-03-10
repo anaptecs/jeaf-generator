@@ -73,9 +73,6 @@ public class SwiftAccount extends Account {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends Account.Builder {
-    /**
-     * 
-     */
     @Pattern(regexp = "[A-Z]+", flags = { Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.MULTILINE })
     private String bic;
 

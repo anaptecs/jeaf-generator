@@ -66,9 +66,6 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends ImmutablePOJOParent.Builder {
-    /**
-     * 
-     */
     private Integer writeable;
 
     /**

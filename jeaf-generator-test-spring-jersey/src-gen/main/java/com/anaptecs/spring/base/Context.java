@@ -120,35 +120,21 @@ public class Context {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     @NotEmpty
     private String accessToken;
 
     /**
-     * 
+     * <br/>
+     * <b>Example:</b> <code>en</code>
      */
     private Locale language;
 
-    /**
-     * 
-     */
     private long resellerID;
 
-    /**
-     * 
-     */
     private long pathParam;
 
-    /**
-     * 
-     */
     private String queryParam;
 
-    /**
-     * 
-     */
     private String lang;
 
     /**

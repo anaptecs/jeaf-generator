@@ -80,9 +80,6 @@ public class IntegerCode implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     @Min(value = 1234)
     private Integer code;
 

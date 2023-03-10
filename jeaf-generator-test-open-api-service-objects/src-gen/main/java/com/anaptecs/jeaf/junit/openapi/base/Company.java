@@ -67,9 +67,6 @@ public class Company extends Partner {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends Partner.Builder {
-    /**
-     * 
-     */
     private String name;
 
     /**

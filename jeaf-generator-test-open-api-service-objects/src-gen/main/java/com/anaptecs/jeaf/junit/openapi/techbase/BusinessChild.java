@@ -65,9 +65,6 @@ public class BusinessChild extends BusinessParent {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends BusinessParent.Builder {
-    /**
-     * 
-     */
     private String childAttribute;
 
     /**

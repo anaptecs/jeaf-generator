@@ -98,24 +98,12 @@ public class BookingID implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String referenceID;
 
-    /**
-     * 
-     */
     private String externalRefID;
 
-    /**
-     * 
-     */
     private InventoryType inventory;
 
-    /**
-     * 
-     */
     private BookingCode bookingCode;
 
     /**

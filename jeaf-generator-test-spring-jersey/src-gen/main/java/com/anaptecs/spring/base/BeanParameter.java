@@ -84,19 +84,10 @@ public class BeanParameter {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String accessToken;
 
-    /**
-     * 
-     */
     private Locale language;
 
-    /**
-     * 
-     */
     @Deprecated
     private String oldStyle;
 

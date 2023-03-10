@@ -81,13 +81,10 @@ public class JustAType implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private int attribute;
 
     /**
-     * 
+     * @deprecated Hello (<b>since:</b> TBD, <b>removed with:</b> TBD)
      */
     @Deprecated
     private double legacy;

@@ -49,9 +49,6 @@ public abstract class ChildA extends ParentClass {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class Builder extends ParentClass.Builder {
-    /**
-     * 
-     */
     private int childAAttribute;
 
     /**

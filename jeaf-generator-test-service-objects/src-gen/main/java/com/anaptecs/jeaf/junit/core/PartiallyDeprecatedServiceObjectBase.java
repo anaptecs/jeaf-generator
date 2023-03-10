@@ -102,31 +102,20 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
    * only attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private String name;
 
-    /**
-     * 
-     */
     @Deprecated
     private boolean outdated;
 
-    /**
-     * 
-     */
     @Deprecated
     private DeprecatedServiceObject deprecatedRef;
 
-    /**
-     * 
-     */
     @Deprecated
     private Set<ValidationTestObject> deprecatedRefs;
 
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>4711</code>
      */
     private int readonlyDefault = 4711;
 

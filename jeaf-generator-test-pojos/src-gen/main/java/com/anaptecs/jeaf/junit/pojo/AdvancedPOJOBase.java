@@ -55,7 +55,8 @@ public abstract class AdvancedPOJOBase {
    */
   public static abstract class BuilderBase {
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>4711</code>
      */
     private int readonlyDefault = 4711;
 

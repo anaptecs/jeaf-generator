@@ -9,7 +9,7 @@
 
 «DEFINE GenerateBuilder(String idImpl) FOR uml::Class»
 /**
- * Class implements builder to create a new instance of class «this.name». As the class has read only attributes or associations instances can not be created directly. Instead this builder class has to be used.
+ * Class implements builder to create a new instance of class <code>«this.name»</code>.
  */
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF superClass.isEmpty == false»extends «superClass.get(0).fqn()».Builder«ENDIF» {
@@ -278,9 +278,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 
 «DEFINE BuilderPropertyDeclaration FOR Property»
     «IF this.isStatic == false»
-	    /**
-	     * «this.getComment()»
-	     */
+	    «EXPAND functions::Javadoc::JavadocForProperty»
 	    «IF this.isSoftLink()»
 	       «EXPAND SoftLinkBuilderPropertyDeclaration FOR ((SoftLink) this)»
 	    «ELSEIF this.association == null»

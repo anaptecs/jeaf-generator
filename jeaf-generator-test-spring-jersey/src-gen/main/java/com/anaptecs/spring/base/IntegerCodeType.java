@@ -74,9 +74,6 @@ public class IntegerCodeType {
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private int code;
 
     /**

@@ -88,27 +88,15 @@ public abstract class CustomerBase extends Partner {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase extends Partner.Builder {
-    /**
-     * 
-     */
     @NotBlank
     private String name;
 
-    /**
-     * 
-     */
     @NotBlank
     private String firstName;
 
-    /**
-     * 
-     */
     @Email()
     private String email;
 
-    /**
-     * 
-     */
     private Set<Account> accounts;
 
     /**

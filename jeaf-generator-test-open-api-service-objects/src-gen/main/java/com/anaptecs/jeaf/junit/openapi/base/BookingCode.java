@@ -71,9 +71,6 @@ public class BookingCode implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     @Size(min = 3, max = 5)
     private String code;
 

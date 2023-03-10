@@ -95,20 +95,21 @@ public class POI extends Stop {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends Stop.Builder {
-    /**
-     * 
-     */
     private String description;
 
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
+     * <code>LinkObject</code><br/>
      */
     @Deprecated
     @NotNull
     private Long theLink;
 
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #evenMoreLinks} is
+     * <code>LinkObject</code><br/>
      */
     @Deprecated
     private Set<SoftLink> evenMoreLinks;

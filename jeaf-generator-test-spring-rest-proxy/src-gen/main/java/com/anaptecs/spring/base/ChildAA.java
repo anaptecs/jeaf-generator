@@ -85,19 +85,15 @@ public class ChildAA extends ChildA {
   @Deprecated
   public static class Builder extends ChildA.Builder {
     /**
-     * Multi line docs
+     * Multi<br/>
+     * line<br/>
+     * docs
      */
     private byte childAAAttribute;
 
-    /**
-     * 
-     */
     @Size(min = 10, max = 100)
     private int[] sizedArray;
 
-    /**
-     * 
-     */
     private String[] requiredArray;
 
     /**

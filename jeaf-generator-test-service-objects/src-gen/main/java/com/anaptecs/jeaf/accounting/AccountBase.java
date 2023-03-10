@@ -152,32 +152,17 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
      */
     private ObjectIdentity<?> objectID;
 
-    /**
-     * 
-     */
     @Min(value = 123)
     private Long iban;
 
-    /**
-     * 
-     */
     @DecimalMax(value = "1.2345", inclusive = false, message = "12345", payload = Error.class)
     @Digits(integer = 9, fraction = 5, message = "12345", payload = Error.class)
     private BigDecimal balance;
 
-    /**
-     * 
-     */
     private Set<Person> authorizedPersons;
 
-    /**
-     * 
-     */
     private Set<Booking> bookings;
 
-    /**
-     * 
-     */
     private ServiceObjectID bankID;
 
     /**

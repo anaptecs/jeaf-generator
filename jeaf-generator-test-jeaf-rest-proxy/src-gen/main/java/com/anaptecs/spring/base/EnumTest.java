@@ -99,12 +99,14 @@ public class EnumTest implements Serializable {
    */
   public static class Builder {
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>GREEN</code>
      */
     private ExtensibleEnum property = ExtensibleEnum.GREEN;
 
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>RED</code>
      */
     private ExtensibleEnum enumRef = ExtensibleEnum.RED;
 

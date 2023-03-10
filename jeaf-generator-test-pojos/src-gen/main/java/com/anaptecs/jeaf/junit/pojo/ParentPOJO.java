@@ -89,20 +89,11 @@ public class ParentPOJO {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String parentAttribute;
 
-    /**
-     * 
-     */
     @Deprecated
     private byte weirdAttribute;
 
-    /**
-     * 
-     */
     private String hello;
 
     /**

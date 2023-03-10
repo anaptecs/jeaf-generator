@@ -82,19 +82,10 @@ public class Booking {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private BookingID bookingID;
 
-    /**
-     * 
-     */
     private String customerName;
 
-    /**
-     * 
-     */
     private List<InventoryType> inventories;
 
     /**

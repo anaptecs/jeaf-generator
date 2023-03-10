@@ -99,24 +99,12 @@ public class CodeTypeUsageTest {
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private BooleanCodeType booleanCode;
 
-    /**
-     * 
-     */
     private Set<BooleanCodeType> booleanCodeAssociation;
 
-    /**
-     * 
-     */
     private Set<ShortCodeType> shortCodeTypeAssociation;
 
-    /**
-     * 
-     */
     private StringCodeType stringCode;
 
     /**

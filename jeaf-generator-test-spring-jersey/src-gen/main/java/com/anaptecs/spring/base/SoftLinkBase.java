@@ -64,24 +64,12 @@ public abstract class SoftLinkBase {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private long objectID;
 
-    /**
-     * 
-     */
     private DataUnit dataUnit;
 
-    /**
-     * 
-     */
     private Entity entity;
 
-    /**
-     * 
-     */
     private String refrenceID;
 
     /**

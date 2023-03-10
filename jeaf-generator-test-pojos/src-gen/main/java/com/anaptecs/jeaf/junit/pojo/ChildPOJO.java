@@ -81,9 +81,6 @@ public class ChildPOJO extends ParentPOJO {
    */
   @Deprecated
   public static class Builder extends ParentPOJO.Builder {
-    /**
-     * 
-     */
     @NotNull
     private Integer childAttribute;
 

@@ -94,34 +94,16 @@ public abstract class TestServiceObjectBase implements ServiceObject {
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private String key;
 
-    /**
-     * 
-     */
     private String info;
 
-    /**
-     * 
-     */
     private int someTest;
 
-    /**
-     * 
-     */
     private Double dummy1;
 
-    /**
-     * 
-     */
     private String[] dummy2;
 
-    /**
-     * 
-     */
     private Integer[] dummy3;
 
     /**

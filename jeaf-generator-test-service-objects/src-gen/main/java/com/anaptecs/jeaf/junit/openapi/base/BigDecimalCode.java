@@ -71,9 +71,6 @@ public class BigDecimalCode implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private BigDecimal code;
 
     /**

@@ -60,9 +60,6 @@ public class BusinessA extends TechParent {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends TechParent.Builder {
-    /**
-     * 
-     */
     private int businessAttribute;
 
     /**

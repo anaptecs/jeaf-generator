@@ -102,29 +102,14 @@ public class Booking {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private Account sourceAccount;
 
-    /**
-     * 
-     */
     private Account targetAccount;
 
-    /**
-     * 
-     */
     private BigDecimal amount;
 
-    /**
-     * 
-     */
     private Currency currency;
 
-    /**
-     * 
-     */
     private Calendar executionTimestamp;
 
     /**

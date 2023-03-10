@@ -181,54 +181,24 @@ public class DateQueryParamsBean implements Serializable {
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private OffsetDateTime offsetDateTime;
 
-    /**
-     * 
-     */
     private OffsetTime offsetTime;
 
-    /**
-     * 
-     */
     private LocalDateTime localDateTime;
 
-    /**
-     * 
-     */
     private LocalTime localTime;
 
-    /**
-     * 
-     */
     private LocalDate localDate;
 
-    /**
-     * 
-     */
     private java.util.Date utilDate;
 
-    /**
-     * 
-     */
     private Calendar calendar;
 
-    /**
-     * 
-     */
     private Timestamp sqlTimestamp;
 
-    /**
-     * 
-     */
     private Time sqlTime;
 
-    /**
-     * 
-     */
     private Date sqlDate;
 
     /**

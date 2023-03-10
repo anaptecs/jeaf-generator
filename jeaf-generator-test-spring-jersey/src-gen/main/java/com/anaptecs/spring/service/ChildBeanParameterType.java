@@ -62,9 +62,6 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends ParentBeanParamType.Builder {
-    /**
-     * 
-     */
     private String childProperty;
 
     /**

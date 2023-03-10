@@ -127,54 +127,24 @@ public class OpenAPITestObject {
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String readOnlyAttribute;
 
-    /**
-     * 
-     */
     private String readWriteAttribute;
 
-    /**
-     * 
-     */
     private int writeOnlyAttribute;
 
-    /**
-     * 
-     */
     private Boolean nullableAttribute;
 
-    /**
-     * 
-     */
     private double notNullableAttribute;
 
-    /**
-     * 
-     */
     private String readOnlyArray;
 
-    /**
-     * 
-     */
     private String readWriteArray;
 
-    /**
-     * 
-     */
     private int writeOnlyArray;
 
-    /**
-     * 
-     */
     private double nullableArray;
 
-    /**
-     * 
-     */
     private double notNullableArray;
 
     /**

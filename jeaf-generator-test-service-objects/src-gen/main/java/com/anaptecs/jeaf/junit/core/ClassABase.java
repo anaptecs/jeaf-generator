@@ -78,14 +78,8 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
      */
     private ObjectIdentity<?> objectID;
 
-    /**
-     * 
-     */
     private String name;
 
-    /**
-     * 
-     */
     private ClassB oneB;
 
     /**

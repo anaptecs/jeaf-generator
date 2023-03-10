@@ -75,14 +75,8 @@ public class ImmutablePOJOParent extends AbstractPOJO {
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends AbstractPOJO.Builder {
-    /**
-     * 
-     */
     private String parentAttribute;
 
-    /**
-     * 
-     */
     private Integer anotherParentAttribute;
 
     /**

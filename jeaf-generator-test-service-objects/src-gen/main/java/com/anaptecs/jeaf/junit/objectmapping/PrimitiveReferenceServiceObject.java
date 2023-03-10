@@ -123,29 +123,14 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
    * only attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private Boolean aBoolean;
 
-    /**
-     * 
-     */
     private Set<Boolean> booleanSet;
 
-    /**
-     * 
-     */
     private Set<StringBuffer> buffers;
 
-    /**
-     * 
-     */
     private Set<String> strings;
 
-    /**
-     * 
-     */
     private String[] stringArray;
 
     /**

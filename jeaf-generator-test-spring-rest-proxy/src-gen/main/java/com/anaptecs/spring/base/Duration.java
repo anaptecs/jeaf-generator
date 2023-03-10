@@ -76,13 +76,11 @@ public class Duration {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private int value;
 
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>DAY</code>
      */
     private TimeUnit timeUnit = TimeUnit.DAY;
 

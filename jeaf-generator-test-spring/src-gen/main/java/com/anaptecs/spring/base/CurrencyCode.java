@@ -70,7 +70,9 @@ public class CurrencyCode {
    */
   public static class Builder {
     /**
-     * ISO 4217 currency code.
+     * ISO 4217 currency code. <br/>
+     * <b>Default Value:</b> <code>"CHF"</code> <br/>
+     * <b>Example:</b> <code>CHF</code>
      */
     @Size(min = 3, max = 3)
     private String code = "CHF";

@@ -93,14 +93,8 @@ public class SecurityToken implements ServiceObject {
      */
     private byte[] sessionKey;
 
-    /**
-     * 
-     */
     private Booking booking;
 
-    /**
-     * 
-     */
     private Integer value;
 
     /**

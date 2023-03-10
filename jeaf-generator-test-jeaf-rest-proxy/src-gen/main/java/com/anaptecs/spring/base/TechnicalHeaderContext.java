@@ -88,9 +88,6 @@ public class TechnicalHeaderContext implements Serializable {
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String reseller;
 
     /**

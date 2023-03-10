@@ -92,9 +92,6 @@ public class DirectedEdge {
      */
     private Stop end;
 
-    /**
-     * 
-     */
     private String link;
 
     /**

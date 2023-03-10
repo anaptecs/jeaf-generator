@@ -85,7 +85,9 @@ public class ChannelCode implements ServiceObject {
    */
   public static class Builder {
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>"WEBSHOP"</code> <br/>
+     * <b>Example:</b> <code>MOBILE_APP</code>
      */
     @NotNull
     private String code = "WEBSHOP";

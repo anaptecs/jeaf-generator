@@ -92,24 +92,12 @@ public abstract class BidirectionalABase {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private BidirectionalB transientB;
 
-    /**
-     * 
-     */
     private BidirectionalA transientParent;
 
-    /**
-     * 
-     */
     private BidirectionalA child;
 
-    /**
-     * 
-     */
     private Set<BidirectionalB> transientBs;
 
     /**

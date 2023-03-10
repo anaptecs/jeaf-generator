@@ -75,19 +75,10 @@ public class AdvancedHeader {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private BookingID bookingID;
 
-    /**
-     * 
-     */
     private BookingCode bookingCode;
 
-    /**
-     * 
-     */
     private DoubleCode doubleCode;
 
     /**

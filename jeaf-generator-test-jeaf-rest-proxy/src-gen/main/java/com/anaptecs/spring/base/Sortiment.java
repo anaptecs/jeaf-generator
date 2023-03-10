@@ -91,9 +91,6 @@ public class Sortiment implements Serializable {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private Set<Product> products;
 
     /**

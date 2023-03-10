@@ -110,17 +110,23 @@ public class SoftLinkChildB extends SoftLinkParent {
    */
   public static class Builder extends SoftLinkParent.Builder {
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #heyBrother} is
+     * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
      */
     private String heyBrother;
 
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #softLinkPartners}
+     * is <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
      */
     private Set<String> softLinkPartners;
 
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #oneLink} is
+     * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
      */
     private SoftLinkID oneLink;
 

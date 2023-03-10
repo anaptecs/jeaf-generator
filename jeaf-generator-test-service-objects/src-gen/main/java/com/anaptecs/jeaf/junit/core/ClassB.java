@@ -110,14 +110,8 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
      */
     private ObjectIdentity<?> objectID;
 
-    /**
-     * 
-     */
     private SortedSet<ClassA> manyAs;
 
-    /**
-     * 
-     */
     private Integer intValue;
 
     /**

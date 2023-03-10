@@ -90,34 +90,16 @@ public abstract class ComplexBookingIDBase {
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private long internalID;
 
-    /**
-     * 
-     */
     private String referenceID;
 
-    /**
-     * 
-     */
     private List<BookingID> bookingIDs;
 
-    /**
-     * 
-     */
     private ComplexBookingType complexBookingType;
 
-    /**
-     * 
-     */
     private Integer anotherID;
 
-    /**
-     * 
-     */
     private String[] strings;
 
     /**

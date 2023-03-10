@@ -97,28 +97,18 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
    */
   public static abstract class BuilderBase {
     /**
-     * Internal ID 2nd line 3rd line
+     * Internal ID<br/>
+     * 2nd line<br/>
+     * 3rd line
      */
     private long internalID;
 
-    /**
-     * 
-     */
     private String referenceID;
 
-    /**
-     * 
-     */
     private List<BookingID> bookingIDs;
 
-    /**
-     * 
-     */
     private ComplexBookingType complexBookingType;
 
-    /**
-     * 
-     */
     private Integer anotherID;
 
     /**

@@ -84,24 +84,12 @@ public abstract class AccountBase {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private int iban;
 
-    /**
-     * 
-     */
     private Customer owner;
 
-    /**
-     * 
-     */
     private Currency currency;
 
-    /**
-     * 
-     */
     private Set<Booking> allBookings;
 
     /**

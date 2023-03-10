@@ -78,9 +78,6 @@ public class DataTypeWithConstraints implements ServiceObject {
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     @Max(value = 9999)
     private int intValue;
 

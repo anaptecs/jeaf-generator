@@ -99,26 +99,14 @@ public abstract class ResellerBase {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private List<Channel> channels;
 
-    /**
-     * 
-     */
     private Set<Product> products;
 
-    /**
-     * 
-     */
     @NotBlank
     @Size(min = 0, max = 32)
     private String name;
 
-    /**
-     * 
-     */
     private Locale language;
 
     /**

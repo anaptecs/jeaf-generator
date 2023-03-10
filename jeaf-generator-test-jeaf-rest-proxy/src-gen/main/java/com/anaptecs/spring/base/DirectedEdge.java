@@ -115,9 +115,6 @@ public class DirectedEdge implements Serializable {
      */
     private Stop end;
 
-    /**
-     * 
-     */
     private String link;
 
     /**

@@ -157,9 +157,6 @@ public class MultiValuedDataType implements ServiceObject {
      */
     private List<BooleanLiteralsEnum> literals;
 
-    /**
-     * 
-     */
     @Size(min = 32, max = 64)
     private String stringProperty;
 

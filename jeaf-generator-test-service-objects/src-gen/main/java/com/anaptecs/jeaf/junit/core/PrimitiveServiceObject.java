@@ -124,44 +124,20 @@ public class PrimitiveServiceObject implements ServiceObject {
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private boolean aBoolean;
 
-    /**
-     * 
-     */
     private byte aByte;
 
-    /**
-     * 
-     */
     private short aShort;
 
-    /**
-     * 
-     */
     private int aInt;
 
-    /**
-     * 
-     */
     private long aLong;
 
-    /**
-     * 
-     */
     private float aFloat;
 
-    /**
-     * 
-     */
     private double aDouble;
 
-    /**
-     * 
-     */
     private char aChar;
 
     /**

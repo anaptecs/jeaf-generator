@@ -124,30 +124,15 @@ public class ImmutableAssociationPOJO {
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private boolean yetAnotherAttribute;
 
-    /**
-     * 
-     */
     private SortedSet<ImmutablePOJO> readonlyAssociation;
 
-    /**
-     * 
-     */
     private ImmutableChildPOJO immutableChildPOJO;
 
-    /**
-     * 
-     */
     @Deprecated
     private Set<ImmutableChildPOJO> deprecatedRefs;
 
-    /**
-     * 
-     */
     @Deprecated
     private ChildPOJO deprecatedRef;
 

@@ -76,14 +76,8 @@ public class ModelWrapperTypeServiceObject implements ServiceObject {
    * only attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private boolean aBoolean;
 
-    /**
-     * 
-     */
     private Integer aInt;
 
     /**

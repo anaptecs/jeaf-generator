@@ -82,13 +82,11 @@ public class BeanParamWithDeprecations implements ServiceObject {
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String header1;
 
     /**
-     * 
+     * @deprecated this header param is no longer supported. Please use "xxx" instead. (<b>since:</b> 1.2.3, <b>removed
+     * with:</b> PI.2.3)
      */
     @Deprecated
     private String deprecatedHeader;

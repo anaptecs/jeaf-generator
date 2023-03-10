@@ -98,14 +98,8 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
      */
     private ObjectIdentity<?> objectID;
 
-    /**
-     * 
-     */
     private Integer hello;
 
-    /**
-     * 
-     */
     private String country;
 
     /**

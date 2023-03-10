@@ -160,59 +160,26 @@ public class MultiValuedHeaderBeanParam {
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String[] names;
 
-    /**
-     * 
-     */
     private int[] ints;
 
-    /**
-     * 
-     */
     private Double[] doubles;
 
-    /**
-     * 
-     */
     private StringCode[] codes;
 
-    /**
-     * 
-     */
     private Set<StringCode> stringCodeList;
 
-    /**
-     * 
-     */
     private LocalDate startDate;
 
-    /**
-     * 
-     */
     private LocalDate[] dates;
 
-    /**
-     * 
-     */
     private Set<LocalDateTime> timestamps;
 
-    /**
-     * 
-     */
     private Calendar[] calendars;
 
-    /**
-     * 
-     */
     private Date[] utilDates;
 
-    /**
-     * 
-     */
     private Timestamp[] sqlTimestamps;
 
     /**

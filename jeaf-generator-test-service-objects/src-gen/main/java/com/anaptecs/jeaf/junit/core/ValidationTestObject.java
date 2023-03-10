@@ -84,16 +84,10 @@ public class ValidationTestObject implements ServiceObject {
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     @Email()
     @NotNull
     private String myEMail;
 
-    /**
-     * 
-     */
     @Past
     private Calendar dateOfBirth;
 

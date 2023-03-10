@@ -115,25 +115,18 @@ public class Stop implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String name;
 
-    /**
-     * 
-     */
     private List<LinkObject> links;
 
-    /**
-     * 
-     */
     @Max(value = 32)
     @PositiveOrZero
     private byte index;
 
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
+     * <code>LinkObject</code><br/>
      */
     @NotNull
     private SoftLink theSoftLink;

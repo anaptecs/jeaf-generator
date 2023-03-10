@@ -124,44 +124,20 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private Boolean myBoolean;
 
-    /**
-     * 
-     */
     private Byte myByte;
 
-    /**
-     * 
-     */
     private Character myCharacter;
 
-    /**
-     * 
-     */
     private Double myDouble;
 
-    /**
-     * 
-     */
     private Float myFloat;
 
-    /**
-     * 
-     */
     private Long myLong;
 
-    /**
-     * 
-     */
     private Short myShort;
 
-    /**
-     * 
-     */
     private byte[] myByteArray;
 
     /**

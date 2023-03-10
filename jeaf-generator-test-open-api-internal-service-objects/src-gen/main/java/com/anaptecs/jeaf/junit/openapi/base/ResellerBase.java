@@ -113,26 +113,14 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
      */
     private ObjectIdentity<?> objectID;
 
-    /**
-     * 
-     */
     private List<Channel> channels;
 
-    /**
-     * 
-     */
     private Set<Product> products;
 
-    /**
-     * 
-     */
     @NotBlank
     @Size(min = 0, max = 32)
     private String name;
 
-    /**
-     * 
-     */
     private Locale language;
 
     /**

@@ -184,64 +184,28 @@ public class DataTypesQueryBean {
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private LongCode[] longCodes;
 
-    /**
-     * 
-     */
     private IntegerCodeType[] codes;
 
-    /**
-     * 
-     */
     private Set<DoubleCode> doubleCodes;
 
-    /**
-     * 
-     */
     private Set<BookingID> bookingIDs;
 
-    /**
-     * 
-     */
     private BookingID[] bookingIDsArray;
 
-    /**
-     * 
-     */
     private OffsetDateTime offsetDateTime;
 
-    /**
-     * 
-     */
     private OffsetTime offsetTime;
 
-    /**
-     * 
-     */
     private LocalDateTime localDateTime;
 
-    /**
-     * 
-     */
     private LocalTime localTime;
 
-    /**
-     * 
-     */
     private List<LocalDateTime> timestamps;
 
-    /**
-     * 
-     */
     private Set<OffsetTime> times;
 
-    /**
-     * 
-     */
     private OffsetDateTime[] startTimestamps;
 
     /**

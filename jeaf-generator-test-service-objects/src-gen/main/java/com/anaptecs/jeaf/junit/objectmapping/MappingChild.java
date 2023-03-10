@@ -66,9 +66,6 @@ public class MappingChild extends MappingParent {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends MappingParent.Builder {
-    /**
-     * 
-     */
     private int value;
 
     /**

@@ -57,14 +57,8 @@ public abstract class PlainPOJOBase {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private String hello;
 
-    /**
-     * 
-     */
     @PositiveOrZero
     private Integer world;
 

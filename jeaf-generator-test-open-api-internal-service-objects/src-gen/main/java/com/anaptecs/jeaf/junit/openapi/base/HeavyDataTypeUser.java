@@ -113,44 +113,20 @@ public class HeavyDataTypeUser implements ServiceObject {
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private BooleanCode booleanCode;
 
-    /**
-     * 
-     */
     private ByteCode byteCode;
 
-    /**
-     * 
-     */
     private ShortCode shortCode;
 
-    /**
-     * 
-     */
     private IntegerCode integerCode;
 
-    /**
-     * 
-     */
     private FloatCode floatCode;
 
-    /**
-     * 
-     */
     private DoubleCode doubleCode;
 
-    /**
-     * 
-     */
     private BigIntegerCode bigInegerCode;
 
-    /**
-     * 
-     */
     private BigDecimalCode bigDecimalCode;
 
     /**

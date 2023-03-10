@@ -76,9 +76,6 @@ public class DoubleCodeType implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private double code;
 
     /**

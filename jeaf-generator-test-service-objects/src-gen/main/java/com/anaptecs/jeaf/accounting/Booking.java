@@ -131,29 +131,14 @@ public class Booking implements ServiceObject {
     @NotNull
     private Double amount;
 
-    /**
-     * 
-     */
     private Account source;
 
-    /**
-     * 
-     */
     private Account target;
 
-    /**
-     * 
-     */
     private SecurityToken token;
 
-    /**
-     * 
-     */
     private Set<Person> remitters;
 
-    /**
-     * 
-     */
     private Account account;
 
     /**

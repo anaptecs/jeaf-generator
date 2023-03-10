@@ -52,14 +52,8 @@ public abstract class PersonBase extends Partner {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase extends Partner.Builder {
-    /**
-     * 
-     */
     private String surname;
 
-    /**
-     * 
-     */
     private String firstName;
 
     /**

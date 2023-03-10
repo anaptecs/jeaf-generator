@@ -121,19 +121,10 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
      */
     private ObjectIdentity<?> objectID;
 
-    /**
-     * 
-     */
     private String name;
 
-    /**
-     * 
-     */
     private Long code;
 
-    /**
-     * 
-     */
     private BankType type;
 
     /**

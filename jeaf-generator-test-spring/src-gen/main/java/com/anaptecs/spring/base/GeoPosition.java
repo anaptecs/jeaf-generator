@@ -68,14 +68,8 @@ public class GeoPosition extends PlaceRef {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends PlaceRef.Builder {
-    /**
-     * 
-     */
     private int longitude;
 
-    /**
-     * 
-     */
     private int latitude;
 
     /**

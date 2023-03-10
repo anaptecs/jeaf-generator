@@ -92,9 +92,6 @@ public class MoneyAmount {
     @NotNull
     private BigDecimal amount;
 
-    /**
-     * 
-     */
     @NotNull
     private CurrencyCode currencyCode;
 

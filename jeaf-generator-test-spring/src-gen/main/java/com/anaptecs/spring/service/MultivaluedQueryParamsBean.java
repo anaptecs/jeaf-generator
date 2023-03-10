@@ -73,19 +73,10 @@ public class MultivaluedQueryParamsBean {
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private int[] intArray;
 
-    /**
-     * 
-     */
     private String[] strings;
 
-    /**
-     * 
-     */
     private Integer[] integers;
 
     /**

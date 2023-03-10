@@ -106,33 +106,19 @@ public class DateObject {
    */
   public static class Builder {
     /**
-     * 
+     * <br/>
+     * <b>Example:</b> <code>12:07</code>
      */
     private LocalTime localTime;
 
-    /**
-     * 
-     */
     private LocalDate localDate;
 
-    /**
-     * 
-     */
     private LocalDateTime localDateTime;
 
-    /**
-     * 
-     */
     private Calendar calendar;
 
-    /**
-     * 
-     */
     private Date sqlDate;
 
-    /**
-     * 
-     */
     private java.util.Date utilDate;
 
     /**

@@ -71,9 +71,6 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
      */
     private ObjectIdentity<?> objectID;
 
-    /**
-     * 
-     */
     private Integer hello;
 
     /**

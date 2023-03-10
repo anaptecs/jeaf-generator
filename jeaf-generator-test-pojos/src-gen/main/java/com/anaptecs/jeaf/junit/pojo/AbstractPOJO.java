@@ -51,9 +51,6 @@ public abstract class AbstractPOJO {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class Builder {
-    /**
-     * 
-     */
     private String abtractAttr;
 
     /**

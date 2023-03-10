@@ -67,9 +67,6 @@ public class SubclassWithID extends IdentifiableServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder extends IdentifiableServiceObject.Builder {
-    /**
-     * 
-     */
     private boolean attr;
 
     /**

@@ -48,14 +48,8 @@ public abstract class CompositeIDBase implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private long primaryCode;
 
-    /**
-     * 
-     */
     private long secondaryCode;
 
     /**

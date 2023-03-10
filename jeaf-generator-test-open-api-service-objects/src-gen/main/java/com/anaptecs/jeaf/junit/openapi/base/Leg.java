@@ -83,19 +83,10 @@ public class Leg implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private PlaceRef start;
 
-    /**
-     * 
-     */
     private PlaceRef stop;
 
-    /**
-     * 
-     */
     private List<PlaceRef> stopovers;
 
     /**
