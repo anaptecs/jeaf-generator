@@ -297,8 +297,7 @@ public class POI extends Stop {
   }
 
   /**
-   * Method unsets the association "theLink".
-   * 
+   * Method unsets {@link #theLink}.
    */
   @Deprecated
   public final void unsetTheLink( ) {
@@ -321,11 +320,9 @@ public class POI extends Stop {
   }
 
   /**
-   * Method adds the passed LinkObject object to the association "evenMoreLinks".
+   * Method adds the passed object to {@link #evenMoreLinks}.
    * 
-   * 
-   * @param pEvenMoreLinks Object that should be added to the association "evenMoreLinks". The parameter must not be
-   * null.
+   * @param pEvenMoreLinks Object that should be added to {@link #evenMoreLinks}. The parameter must not be null.
    */
   @Deprecated
   public void addToEvenMoreLinks( SoftLink pEvenMoreLinks ) {
@@ -336,11 +333,10 @@ public class POI extends Stop {
   }
 
   /**
-   * Method adds all passed objects to the association "evenMoreLinks".
+   * Method adds all passed objects to {@link #evenMoreLinks}.
    * 
-   * 
-   * @param pEvenMoreLinks Collection with all objects that should be added to the association "evenMoreLinks". The
-   * parameter must not be null.
+   * @param pEvenMoreLinks Collection with all objects that should be added to {@link #evenMoreLinks}. The parameter
+   * must not be null.
    */
   @Deprecated
   public void addToEvenMoreLinks( Collection<SoftLink> pEvenMoreLinks ) {
@@ -353,11 +349,9 @@ public class POI extends Stop {
   }
 
   /**
-   * Method removes the passed LinkObject object from the association "evenMoreLinks".
+   * Method removes the passed object from {@link #evenMoreLinks}.
    * 
-   * 
-   * @param pEvenMoreLinks Object that should be removed from the association "evenMoreLinks". The parameter must not be
-   * null.
+   * @param pEvenMoreLinks Object that should be removed from {@link #evenMoreLinks}. The parameter must not be null.
    */
   @Deprecated
   public void removeFromEvenMoreLinks( SoftLink pEvenMoreLinks ) {
@@ -368,8 +362,7 @@ public class POI extends Stop {
   }
 
   /**
-   * Method removes all objects from the association "evenMoreLinks".
-   * 
+   * Method removes all objects from {@link #evenMoreLinks}.
    */
   @Deprecated
   public void clearEvenMoreLinks( ) {

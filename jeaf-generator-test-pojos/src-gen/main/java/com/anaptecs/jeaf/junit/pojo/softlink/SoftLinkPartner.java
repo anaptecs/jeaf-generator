@@ -238,8 +238,7 @@ public class SoftLinkPartner {
   }
 
   /**
-   * Method unsets the association "theBackLink".
-   * 
+   * Method unsets {@link #theBackLink}.
    */
   public final void unsetTheBackLink( ) {
     theBackLink = null;
@@ -274,10 +273,9 @@ public class SoftLinkPartner {
   }
 
   /**
-   * Method adds the passed SoftLinkChildA object to the association "longLinks".
+   * Method adds the passed object to {@link #longLinks}.
    * 
-   * 
-   * @param pLongLinks Object that should be added to the association "longLinks". The parameter must not be null.
+   * @param pLongLinks Object that should be added to {@link #longLinks}. The parameter must not be null.
    */
   public void addToLongLinks( Long pLongLinks ) {
     // Check parameter "pLongLinks" for invalid value null.
@@ -287,11 +285,10 @@ public class SoftLinkPartner {
   }
 
   /**
-   * Method adds all passed objects to the association "longLinks".
+   * Method adds all passed objects to {@link #longLinks}.
    * 
-   * 
-   * @param pLongLinks Collection with all objects that should be added to the association "longLinks". The parameter
-   * must not be null.
+   * @param pLongLinks Collection with all objects that should be added to {@link #longLinks}. The parameter must not be
+   * null.
    */
   public void addToLongLinks( Collection<Long> pLongLinks ) {
     // Check parameter "pLongLinks" for invalid value null.
@@ -303,10 +300,9 @@ public class SoftLinkPartner {
   }
 
   /**
-   * Method removes the passed SoftLinkChildA object from the association "longLinks".
+   * Method removes the passed object from {@link #longLinks}.
    * 
-   * 
-   * @param pLongLinks Object that should be removed from the association "longLinks". The parameter must not be null.
+   * @param pLongLinks Object that should be removed from {@link #longLinks}. The parameter must not be null.
    */
   public void removeFromLongLinks( Long pLongLinks ) {
     // Check parameter for invalid value null.
@@ -316,8 +312,7 @@ public class SoftLinkPartner {
   }
 
   /**
-   * Method removes all objects from the association "longLinks".
-   * 
+   * Method removes all objects from {@link #longLinks}.
    */
   public void clearLongLinks( ) {
     // Remove all objects from association "longLinks".

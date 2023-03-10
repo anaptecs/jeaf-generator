@@ -223,10 +223,9 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method adds the passed SoftLinkPartner object to the association "partners".
+   * Method adds the passed object to {@link #partners}.
    * 
-   * 
-   * @param pPartners Object that should be added to the association "partners". The parameter must not be null.
+   * @param pPartners Object that should be added to {@link #partners}. The parameter must not be null.
    */
   public void addToPartners( SoftLinkID pPartners ) {
     // Check parameter "pPartners" for invalid value null.
@@ -236,11 +235,10 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method adds all passed objects to the association "partners".
+   * Method adds all passed objects to {@link #partners}.
    * 
-   * 
-   * @param pPartners Collection with all objects that should be added to the association "partners". The parameter must
-   * not be null.
+   * @param pPartners Collection with all objects that should be added to {@link #partners}. The parameter must not be
+   * null.
    */
   public void addToPartners( Collection<SoftLinkID> pPartners ) {
     // Check parameter "pPartners" for invalid value null.
@@ -252,10 +250,9 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method removes the passed SoftLinkPartner object from the association "partners".
+   * Method removes the passed object from {@link #partners}.
    * 
-   * 
-   * @param pPartners Object that should be removed from the association "partners". The parameter must not be null.
+   * @param pPartners Object that should be removed from {@link #partners}. The parameter must not be null.
    */
   public void removeFromPartners( SoftLinkID pPartners ) {
     // Check parameter for invalid value null.
@@ -265,8 +262,7 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method removes all objects from the association "partners".
-   * 
+   * Method removes all objects from {@link #partners}.
    */
   public void clearPartners( ) {
     // Remove all objects from association "partners".
@@ -295,8 +291,7 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method unsets the association "thePartner".
-   * 
+   * Method unsets {@link #thePartner}.
    */
   public final void unsetThePartner( ) {
     thePartner = null;

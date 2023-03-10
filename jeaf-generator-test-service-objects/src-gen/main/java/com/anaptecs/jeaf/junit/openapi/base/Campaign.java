@@ -272,10 +272,9 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method adds the passed LinkObject object to the association "moreLinks".
+   * Method adds the passed object to {@link #moreLinks}.
    * 
-   * 
-   * @param pMoreLinks Object that should be added to the association "moreLinks". The parameter must not be null.
+   * @param pMoreLinks Object that should be added to {@link #moreLinks}. The parameter must not be null.
    */
   @Deprecated
   public void addToMoreLinks( Long pMoreLinks ) {
@@ -286,11 +285,10 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "moreLinks".
+   * Method adds all passed objects to {@link #moreLinks}.
    * 
-   * 
-   * @param pMoreLinks Collection with all objects that should be added to the association "moreLinks". The parameter
-   * must not be null.
+   * @param pMoreLinks Collection with all objects that should be added to {@link #moreLinks}. The parameter must not be
+   * null.
    */
   @Deprecated
   public void addToMoreLinks( Collection<Long> pMoreLinks ) {
@@ -303,10 +301,9 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method removes the passed LinkObject object from the association "moreLinks".
+   * Method removes the passed object from {@link #moreLinks}.
    * 
-   * 
-   * @param pMoreLinks Object that should be removed from the association "moreLinks". The parameter must not be null.
+   * @param pMoreLinks Object that should be removed from {@link #moreLinks}. The parameter must not be null.
    */
   @Deprecated
   public void removeFromMoreLinks( Long pMoreLinks ) {
@@ -317,8 +314,7 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "moreLinks".
-   * 
+   * Method removes all objects from {@link #moreLinks}.
    */
   @Deprecated
   public void clearMoreLinks( ) {
@@ -342,11 +338,9 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method adds the passed DiscountOffer object to the association "discountOffers".
+   * Method adds the passed object to {@link #discountOffers}.
    * 
-   * 
-   * @param pDiscountOffers Object that should be added to the association "discountOffers". The parameter must not be
-   * null.
+   * @param pDiscountOffers Object that should be added to {@link #discountOffers}. The parameter must not be null.
    */
   @Deprecated
   public void addToDiscountOffers( String pDiscountOffers ) {
@@ -357,11 +351,10 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "discountOffers".
+   * Method adds all passed objects to {@link #discountOffers}.
    * 
-   * 
-   * @param pDiscountOffers Collection with all objects that should be added to the association "discountOffers". The
-   * parameter must not be null.
+   * @param pDiscountOffers Collection with all objects that should be added to {@link #discountOffers}. The parameter
+   * must not be null.
    */
   @Deprecated
   public void addToDiscountOffers( Collection<String> pDiscountOffers ) {
@@ -374,11 +367,9 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method removes the passed DiscountOffer object from the association "discountOffers".
+   * Method removes the passed object from {@link #discountOffers}.
    * 
-   * 
-   * @param pDiscountOffers Object that should be removed from the association "discountOffers". The parameter must not
-   * be null.
+   * @param pDiscountOffers Object that should be removed from {@link #discountOffers}. The parameter must not be null.
    */
   @Deprecated
   public void removeFromDiscountOffers( String pDiscountOffers ) {
@@ -389,8 +380,7 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "discountOffers".
-   * 
+   * Method removes all objects from {@link #discountOffers}.
    */
   @Deprecated
   public void clearDiscountOffers( ) {

@@ -340,8 +340,7 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "theSoftLink".
-   * 
+   * Method unsets {@link #theSoftLink}.
    */
   public final void unsetTheSoftLink( ) {
     theSoftLink = null;

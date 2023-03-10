@@ -262,8 +262,7 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method unsets the association "heyBrother".
-   * 
+   * Method unsets {@link #heyBrother}.
    */
   public final void unsetHeyBrother( ) {
     heyBrother = null;
@@ -284,11 +283,9 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method adds the passed SoftLinkPartner object to the association "softLinkPartners".
+   * Method adds the passed object to {@link #softLinkPartners}.
    * 
-   * 
-   * @param pSoftLinkPartners Object that should be added to the association "softLinkPartners". The parameter must not
-   * be null.
+   * @param pSoftLinkPartners Object that should be added to {@link #softLinkPartners}. The parameter must not be null.
    */
   public void addToSoftLinkPartners( String pSoftLinkPartners ) {
     // Check parameter "pSoftLinkPartners" for invalid value null.
@@ -298,11 +295,10 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method adds all passed objects to the association "softLinkPartners".
+   * Method adds all passed objects to {@link #softLinkPartners}.
    * 
-   * 
-   * @param pSoftLinkPartners Collection with all objects that should be added to the association "softLinkPartners".
-   * The parameter must not be null.
+   * @param pSoftLinkPartners Collection with all objects that should be added to {@link #softLinkPartners}. The
+   * parameter must not be null.
    */
   public void addToSoftLinkPartners( Collection<String> pSoftLinkPartners ) {
     // Check parameter "pSoftLinkPartners" for invalid value null.
@@ -314,11 +310,10 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method removes the passed SoftLinkPartner object from the association "softLinkPartners".
+   * Method removes the passed object from {@link #softLinkPartners}.
    * 
-   * 
-   * @param pSoftLinkPartners Object that should be removed from the association "softLinkPartners". The parameter must
-   * not be null.
+   * @param pSoftLinkPartners Object that should be removed from {@link #softLinkPartners}. The parameter must not be
+   * null.
    */
   public void removeFromSoftLinkPartners( String pSoftLinkPartners ) {
     // Check parameter for invalid value null.
@@ -328,8 +323,7 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method removes all objects from the association "softLinkPartners".
-   * 
+   * Method removes all objects from {@link #softLinkPartners}.
    */
   public void clearSoftLinkPartners( ) {
     // Remove all objects from association "softLinkPartners".
@@ -358,8 +352,7 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method unsets the association "oneLink".
-   * 
+   * Method unsets {@link #oneLink}.
    */
   public final void unsetOneLink( ) {
     oneLink = null;

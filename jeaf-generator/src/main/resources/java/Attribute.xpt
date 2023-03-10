@@ -212,8 +212,7 @@
     
     «IF this.getSoftLinkType() != "long"»
     /**
-     * Method unsets the association "«asInstanceVar()»".     
-     * «this.getComment()»
+     * Method unsets {@link #«asInstanceVar()»}.     
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public final void «asUnset()» () {
@@ -256,10 +255,9 @@
     «IF isReadOnly() == false»
     «IF generatePublicSettersForAssociations()»
     /**
-     * Method sets the association "«asInstanceVar()»" to the passed collection. All objects that formerly were part of the association will be removed from it.
-     * «this.getComment()»
+     * Method sets the association {@link #«asInstanceVar()»} to the passed collection. All objects that formerly were part of the association will be removed from it.
      * 
-     * @param «asParameter()» Collection with objects to which the association should be set. The parameter must not be null.
+     * @param «asParameter()» Collection with objects to which {@link #«asInstanceVar()»} should be set. The parameter may be null. In this case {@link #«asInstanceVar()»} is just unset.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void set«name.toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asParameter()») {
@@ -276,10 +274,9 @@
     «ENDIF»
 
     /**
-     * Method adds the passed «this.type.name» object to the association "«asInstanceVar()»".     
-     * «this.getComment()»
+     * Method adds the passed object to {@link #«asInstanceVar()»}.     
      * 
-     * @param «asParameter()» Object that should be added to the association "«asInstanceVar()»". The parameter must not be null.
+     * @param «asParameter()» Object that should be added to {@link #«asInstanceVar()»}. The parameter must not be null.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void addTo«name.toFirstUpper()» («this.getMultivaluedSoftLinkType()» «asParameter()») {
@@ -303,10 +300,9 @@
     }
     
     /**
-     * Method adds all passed objects to the association "«asInstanceVar()»".     
-     * «this.getComment()»
+     * Method adds all passed objects to {@link #«asInstanceVar()»}.     
      * 
-     * @param «asParameter()» Collection with all objects that should be added to the association "«asInstanceVar()»". The parameter must not be null.
+     * @param «asParameter()» Collection with all objects that should be added to {@link #«asInstanceVar()»}. The parameter must not be null.
      */
   «EXPAND java::Helper::GenerateDeprecationAnnotation-»
   public void addTo«name.toFirstUpper()» (java.util.Collection<«this.getMultivaluedSoftLinkType()»> «asParameter()») {
@@ -319,14 +315,12 @@
         for («this.getMultivaluedSoftLinkType()» lNextObject : «asParameter()») {
           this.addTo«name.toFirstUpper()»(lNextObject);
         }
-        
   }
   
     /**
-     * Method removes the passed «this.type.name» object from the association "«asInstanceVar()»".     
-     * «this.getComment()»
+     * Method removes the passed object from {@link #«asInstanceVar()»}.     
      * 
-     * @param «asParameter()» Object that should be removed from the association "«asInstanceVar()»". The parameter must not be null.
+     * @param «asParameter()» Object that should be removed from {@link #«asInstanceVar()»}. The parameter must not be null.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void removeFrom«name.toFirstUpper()» («this.getMultivaluedSoftLinkType()» «asParameter()») {
@@ -342,8 +336,7 @@
     }
     
     /**
-     * Method removes all objects from the association "«asInstanceVar()»".
-     * «this.getComment()»
+     * Method removes all objects from {@link #«asInstanceVar()»}.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void clear«name.toFirstUpper()» () {
