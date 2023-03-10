@@ -245,10 +245,9 @@ public abstract class MyPersonBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "employee".
+   * Method sets association {@link #employee}.<br/>
    * 
-   * 
-   * @param pEmployee EmployeeBO to which the association "employee" should be set.
+   * @param pEmployee Value to which {@link #employee} should be set.
    */
   public void setEmployee( EmployeeBO pEmployee ) {
     // Release already referenced object before setting a new association.
@@ -288,10 +287,9 @@ public abstract class MyPersonBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "customer".
+   * Method sets association {@link #customer}.<br/>
    * 
-   * 
-   * @param pCustomer IndividualBO to which the association "customer" should be set.
+   * @param pCustomer Value to which {@link #customer} should be set.
    */
   public void setCustomer( IndividualBO pCustomer ) {
     // Release already referenced object before setting a new association.

@@ -325,9 +325,10 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method sets the association "theBankAccount". I would like to document references to other types.
+   * Method sets association {@link #theBankAccount}.<br/>
+   * I would like to document references to other types.
    * 
-   * @param pTheBankAccount BankAccount to which the association "theBankAccount" should be set.
+   * @param pTheBankAccount Value to which {@link #theBankAccount} should be set.
    */
   @Deprecated
   public void setTheBankAccount( BankAccount pTheBankAccount ) {

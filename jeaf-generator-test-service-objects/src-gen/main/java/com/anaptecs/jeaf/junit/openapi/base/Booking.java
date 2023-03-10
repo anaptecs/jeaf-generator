@@ -135,9 +135,10 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method sets the association "bookingID". ID of the booking
+   * Method sets association {@link #bookingID}.<br/>
+   * ID of the booking
    * 
-   * @param pBookingID BookingID to which the association "bookingID" should be set.
+   * @param pBookingID Value to which {@link #bookingID} should be set.
    */
   public void setBookingID( BookingID pBookingID ) {
     bookingID = pBookingID;

@@ -298,10 +298,9 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method sets the association "source".
+   * Method sets association {@link #source}.<br/>
    * 
-   * 
-   * @param pSource Account to which the association "source" should be set.
+   * @param pSource Value to which {@link #source} should be set.
    */
   public void setSource( Account pSource ) {
     source = pSource;
@@ -325,10 +324,9 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method sets the association "target".
+   * Method sets association {@link #target}.<br/>
    * 
-   * 
-   * @param pTarget Account to which the association "target" should be set.
+   * @param pTarget Value to which {@link #target} should be set.
    */
   public void setTarget( Account pTarget ) {
     target = pTarget;
@@ -352,10 +350,9 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method sets the association "token".
+   * Method sets association {@link #token}.<br/>
    * 
-   * 
-   * @param pToken SecurityToken to which the association "token" should be set.
+   * @param pToken Value to which {@link #token} should be set.
    */
   public void setToken( SecurityToken pToken ) {
     // Release already referenced object before setting a new association.
@@ -457,10 +454,9 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method sets the association "account".
+   * Method sets association {@link #account}.<br/>
    * 
-   * 
-   * @param pAccount Account to which the association "account" should be set.
+   * @param pAccount Value to which {@link #account} should be set.
    */
   public void setAccount( Account pAccount ) {
     // Release already referenced object before setting a new association.

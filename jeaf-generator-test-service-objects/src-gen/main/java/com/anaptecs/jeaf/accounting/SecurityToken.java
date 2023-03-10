@@ -212,10 +212,9 @@ public class SecurityToken implements ServiceObject {
   }
 
   /**
-   * Method sets the association "booking".
+   * Method sets association {@link #booking}.<br/>
    * 
-   * 
-   * @param pBooking Booking to which the association "booking" should be set.
+   * @param pBooking Value to which {@link #booking} should be set.
    */
   public void setBooking( Booking pBooking ) {
     // Release already referenced object before setting a new association.

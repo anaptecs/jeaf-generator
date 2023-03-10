@@ -203,10 +203,9 @@ public class Individual extends Customer {
   }
 
   /**
-   * Method sets the association "person".
+   * Method sets association {@link #person}.<br/>
    * 
-   * 
-   * @param pPerson Person to which the association "person" should be set.
+   * @param pPerson Value to which {@link #person} should be set.
    */
   public void setPerson( Person pPerson ) {
     // Release already referenced object before setting a new association.

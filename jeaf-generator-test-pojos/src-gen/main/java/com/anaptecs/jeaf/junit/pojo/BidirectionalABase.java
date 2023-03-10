@@ -211,10 +211,9 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method sets the association "transientB".
+   * Method sets association {@link #transientB}.<br/>
    * 
-   * 
-   * @param pTransientB BidirectionalB to which the association "transientB" should be set.
+   * @param pTransientB Value to which {@link #transientB} should be set.
    */
   public void setTransientB( BidirectionalB pTransientB ) {
     // Release already referenced object before setting a new association.
@@ -253,10 +252,9 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method sets the association "transientParent".
+   * Method sets association {@link #transientParent}.<br/>
    * 
-   * 
-   * @param pTransientParent BidirectionalA to which the association "transientParent" should be set.
+   * @param pTransientParent Value to which {@link #transientParent} should be set.
    */
   public void setTransientParent( BidirectionalA pTransientParent ) {
     // Release already referenced object before setting a new association.
@@ -301,10 +299,9 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method sets the association "child".
+   * Method sets association {@link #child}.<br/>
    * 
-   * 
-   * @param pChild BidirectionalA to which the association "child" should be set.
+   * @param pChild Value to which {@link #child} should be set.
    */
   public void setChild( BidirectionalA pChild ) {
     // Release already referenced object before setting a new association.

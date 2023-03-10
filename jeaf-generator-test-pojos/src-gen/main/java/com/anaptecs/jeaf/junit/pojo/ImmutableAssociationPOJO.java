@@ -372,10 +372,9 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method sets the association "deprecatedRef".
+   * Method sets association {@link #deprecatedRef}.<br/>
    * 
-   * 
-   * @param pDeprecatedRef ChildPOJO to which the association "deprecatedRef" should be set.
+   * @param pDeprecatedRef Value to which {@link #deprecatedRef} should be set.
    */
   @Deprecated
   public void setDeprecatedRef( ChildPOJO pDeprecatedRef ) {

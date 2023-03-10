@@ -324,10 +324,9 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method sets the association "complexBookingType".
+   * Method sets association {@link #complexBookingType}.<br/>
    * 
-   * 
-   * @param pComplexBookingType ComplexBookingType to which the association "complexBookingType" should be set.
+   * @param pComplexBookingType Value to which {@link #complexBookingType} should be set.
    */
   public void setComplexBookingType( ComplexBookingType pComplexBookingType ) {
     complexBookingType = pComplexBookingType;

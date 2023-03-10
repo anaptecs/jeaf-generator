@@ -112,10 +112,9 @@ public abstract class BaseClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "deprecatedPO".
+   * Method sets association {@link #deprecatedPO}.<br/>
    * 
-   * 
-   * @param pDeprecatedPO DeprecatedPO to which the association "deprecatedPO" should be set.
+   * @param pDeprecatedPO Value to which {@link #deprecatedPO} should be set.
    */
   public void setDeprecatedPO( DeprecatedPO pDeprecatedPO ) {
     // Release already referenced object before setting a new association.

@@ -233,10 +233,9 @@ public class Booking {
   }
 
   /**
-   * Method sets the association "sourceAccount".
+   * Method sets association {@link #sourceAccount}.<br/>
    * 
-   * 
-   * @param pSourceAccount Account to which the association "sourceAccount" should be set.
+   * @param pSourceAccount Value to which {@link #sourceAccount} should be set.
    */
   public void setSourceAccount( Account pSourceAccount ) {
     sourceAccount = pSourceAccount;
@@ -260,10 +259,9 @@ public class Booking {
   }
 
   /**
-   * Method sets the association "targetAccount".
+   * Method sets association {@link #targetAccount}.<br/>
    * 
-   * 
-   * @param pTargetAccount Account to which the association "targetAccount" should be set.
+   * @param pTargetAccount Value to which {@link #targetAccount} should be set.
    */
   public void setTargetAccount( Account pTargetAccount ) {
     targetAccount = pTargetAccount;

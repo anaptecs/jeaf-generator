@@ -278,10 +278,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method sets the association "aBoolean".
+   * Method sets association {@link #aBoolean}.<br/>
    * 
-   * 
-   * @param pABoolean Boolean to which the association "aBoolean" should be set.
+   * @param pABoolean Value to which {@link #aBoolean} should be set.
    */
   public void setABoolean( Boolean pABoolean ) {
     aBoolean = pABoolean;

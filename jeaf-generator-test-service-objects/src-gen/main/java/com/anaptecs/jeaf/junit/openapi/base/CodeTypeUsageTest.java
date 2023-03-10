@@ -428,10 +428,9 @@ public class CodeTypeUsageTest implements ServiceObject {
   }
 
   /**
-   * Method sets the association "shortCode".
+   * Method sets association {@link #shortCode}.<br/>
    * 
-   * 
-   * @param pShortCode ShortCode to which the association "shortCode" should be set.
+   * @param pShortCode Value to which {@link #shortCode} should be set.
    */
   public void setShortCode( ShortCode pShortCode ) {
     shortCode = pShortCode;

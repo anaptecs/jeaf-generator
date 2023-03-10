@@ -81,10 +81,9 @@ public abstract class CManyBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "aOne".
+   * Method sets association {@link #aOne}.<br/>
    * 
-   * 
-   * @param pAOne AOneBO to which the association "aOne" should be set.
+   * @param pAOne Value to which {@link #aOne} should be set.
    */
   public void setAOne( AOneBO pAOne ) {
     // Release already referenced object before setting a new association.

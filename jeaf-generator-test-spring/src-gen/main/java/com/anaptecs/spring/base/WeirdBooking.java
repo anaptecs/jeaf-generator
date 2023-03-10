@@ -171,10 +171,9 @@ public class WeirdBooking {
   }
 
   /**
-   * Method sets the association "booking".
+   * Method sets association {@link #booking}.<br/>
    * 
-   * 
-   * @param pBooking ComplexBookingID to which the association "booking" should be set.
+   * @param pBooking Value to which {@link #booking} should be set.
    */
   public void setBooking( ComplexBookingID pBooking ) {
     booking = pBooking;

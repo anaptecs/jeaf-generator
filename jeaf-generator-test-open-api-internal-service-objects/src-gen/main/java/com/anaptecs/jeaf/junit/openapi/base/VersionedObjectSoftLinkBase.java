@@ -167,10 +167,9 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   }
 
   /**
-   * Method sets the association "dataUnit".
+   * Method sets association {@link #dataUnit}.<br/>
    * 
-   * 
-   * @param pDataUnit DataUnit to which the association "dataUnit" should be set.
+   * @param pDataUnit Value to which {@link #dataUnit} should be set.
    */
   public void setDataUnit( DataUnit pDataUnit ) {
     dataUnit = pDataUnit;
@@ -194,10 +193,9 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   }
 
   /**
-   * Method sets the association "entity".
+   * Method sets association {@link #entity}.<br/>
    * 
-   * 
-   * @param pEntity Entity to which the association "entity" should be set.
+   * @param pEntity Value to which {@link #entity} should be set.
    */
   public void setEntity( Entity pEntity ) {
     entity = pEntity;

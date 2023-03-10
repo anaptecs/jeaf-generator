@@ -293,10 +293,9 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method sets the association "parent".
+   * Method sets association {@link #parent}.<br/>
    * 
-   * 
-   * @param pParent BidirectA to which the association "parent" should be set.
+   * @param pParent Value to which {@link #parent} should be set.
    */
   public void setParent( BidirectA pParent ) {
     // Release already referenced object before setting a new association.
@@ -335,10 +334,9 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method sets the association "transientChild".
+   * Method sets association {@link #transientChild}.<br/>
    * 
-   * 
-   * @param pTransientChild BidirectA to which the association "transientChild" should be set.
+   * @param pTransientChild Value to which {@link #transientChild} should be set.
    */
   public void setTransientChild( BidirectA pTransientChild ) {
     // Release already referenced object before setting a new association.

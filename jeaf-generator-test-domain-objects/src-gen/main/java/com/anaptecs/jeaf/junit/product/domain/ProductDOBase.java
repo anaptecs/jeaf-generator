@@ -266,10 +266,9 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method sets the association "vat".
+   * Method sets association {@link #vat}.<br/>
    * 
-   * 
-   * @param pVat VatDO to which the association "vat" should be set.
+   * @param pVat Value to which {@link #vat} should be set.
    */
   public void setVat( VatDO pVat ) {
     vat = pVat;
@@ -293,10 +292,9 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method sets the association "productCategory".
+   * Method sets association {@link #productCategory}.<br/>
    * 
-   * 
-   * @param pProductCategory ProductCategory to which the association "productCategory" should be set.
+   * @param pProductCategory Value to which {@link #productCategory} should be set.
    */
   public void setProductCategory( ProductCategory pProductCategory ) {
     productCategory = pProductCategory;

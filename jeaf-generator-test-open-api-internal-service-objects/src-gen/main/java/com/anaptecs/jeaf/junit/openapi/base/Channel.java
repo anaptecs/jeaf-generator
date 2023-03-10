@@ -236,9 +236,10 @@ public class Channel implements ServiceObject {
   }
 
   /**
-   * Method sets the association "channelType". Type of the channel
+   * Method sets association {@link #channelType}.<br/>
+   * Type of the channel
    * 
-   * @param pChannelType ChannelType to which the association "channelType" should be set.
+   * @param pChannelType Value to which {@link #channelType} should be set.
    */
   public void setChannelType( ChannelType pChannelType ) {
     channelType = pChannelType;
@@ -262,9 +263,10 @@ public class Channel implements ServiceObject {
   }
 
   /**
-   * Method sets the association "channelCode". The business code of the channel
+   * Method sets association {@link #channelCode}.<br/>
+   * The business code of the channel
    * 
-   * @param pChannelCode ChannelCode to which the association "channelCode" should be set.
+   * @param pChannelCode Value to which {@link #channelCode} should be set.
    */
   public void setChannelCode( ChannelCode pChannelCode ) {
     channelCode = pChannelCode;
@@ -305,10 +307,9 @@ public class Channel implements ServiceObject {
   }
 
   /**
-   * Method sets the association "reseller".
+   * Method sets association {@link #reseller}.<br/>
    * 
-   * 
-   * @param pReseller Reseller to which the association "reseller" should be set.
+   * @param pReseller Value to which {@link #reseller} should be set.
    */
   public void setReseller( Reseller pReseller ) {
     // Release already referenced object before setting a new association.

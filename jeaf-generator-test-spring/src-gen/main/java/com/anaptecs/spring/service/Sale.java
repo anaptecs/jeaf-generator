@@ -174,10 +174,9 @@ public class Sale {
   }
 
   /**
-   * Method sets the association "sale".
+   * Method sets association {@link #sale}.<br/>
    * 
-   * 
-   * @param pSale Channel to which the association "sale" should be set.
+   * @param pSale Value to which {@link #sale} should be set.
    */
   public void setSale( Channel pSale ) {
     sale = pSale;

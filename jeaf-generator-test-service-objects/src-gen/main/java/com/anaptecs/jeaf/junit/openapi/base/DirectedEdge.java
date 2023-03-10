@@ -189,9 +189,10 @@ public class DirectedEdge implements ServiceObject {
   }
 
   /**
-   * Method sets the association "start". The start
+   * Method sets association {@link #start}.<br/>
+   * The start
    * 
-   * @param pStart Stop to which the association "start" should be set.
+   * @param pStart Value to which {@link #start} should be set.
    */
   public void setStart( Stop pStart ) {
     start = pStart;
@@ -215,9 +216,10 @@ public class DirectedEdge implements ServiceObject {
   }
 
   /**
-   * Method sets the association "end". The end
+   * Method sets association {@link #end}.<br/>
+   * The end
    * 
-   * @param pEnd Stop to which the association "end" should be set.
+   * @param pEnd Value to which {@link #end} should be set.
    */
   public void setEnd( Stop pEnd ) {
     end = pEnd;

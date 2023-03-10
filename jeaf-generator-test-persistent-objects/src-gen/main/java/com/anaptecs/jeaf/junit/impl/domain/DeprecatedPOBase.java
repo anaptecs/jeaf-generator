@@ -105,10 +105,9 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "publicClass".
+   * Method sets association {@link #publicClass}.<br/>
    * 
-   * 
-   * @param pPublicClass PublicClassBO to which the association "publicClass" should be set.
+   * @param pPublicClass Value to which {@link #publicClass} should be set.
    */
   @Deprecated
   public void setPublicClass( PublicClassBO pPublicClass ) {

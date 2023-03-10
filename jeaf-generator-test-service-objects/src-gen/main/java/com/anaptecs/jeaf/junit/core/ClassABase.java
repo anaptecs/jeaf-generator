@@ -217,10 +217,9 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
   }
 
   /**
-   * Method sets the association "oneB".
+   * Method sets association {@link #oneB}.<br/>
    * 
-   * 
-   * @param pOneB ClassB to which the association "oneB" should be set.
+   * @param pOneB Value to which {@link #oneB} should be set.
    */
   public void setOneB( ClassB pOneB ) {
     // Release already referenced object before setting a new association.

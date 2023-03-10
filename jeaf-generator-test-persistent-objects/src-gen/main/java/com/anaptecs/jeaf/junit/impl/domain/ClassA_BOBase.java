@@ -79,10 +79,9 @@ public abstract class ClassA_BOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "classB".
+   * Method sets association {@link #classB}.<br/>
    * 
-   * 
-   * @param pClassB ClassB_BO to which the association "classB" should be set.
+   * @param pClassB Value to which {@link #classB} should be set.
    */
   public void setClassB( ClassB_BO pClassB ) {
     // Release already referenced object before setting a new association.

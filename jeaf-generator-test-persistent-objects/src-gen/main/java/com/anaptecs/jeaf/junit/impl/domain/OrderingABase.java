@@ -228,10 +228,9 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "notOrderedUnique".
+   * Method sets association {@link #notOrderedUnique}.<br/>
    * 
-   * 
-   * @param pNotOrderedUnique OrderingB to which the association "notOrderedUnique" should be set.
+   * @param pNotOrderedUnique Value to which {@link #notOrderedUnique} should be set.
    */
   public void setNotOrderedUnique( OrderingB pNotOrderedUnique ) {
     // Release already referenced object before setting a new association.

@@ -45,10 +45,9 @@ public abstract class IndividualBOBase extends CustomerBO {
   }
 
   /**
-   * Method sets the association "person".
+   * Method sets association {@link #person}.<br/>
    * 
-   * 
-   * @param pPerson MyPersonBO to which the association "person" should be set.
+   * @param pPerson Value to which {@link #person} should be set.
    */
   public void setPerson( MyPersonBO pPerson ) {
     // Release already referenced object before setting a new association.

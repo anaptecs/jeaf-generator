@@ -162,10 +162,9 @@ public class EnumTest {
   }
 
   /**
-   * Method sets the association "enumRef".
+   * Method sets association {@link #enumRef}.<br/>
    * 
-   * 
-   * @param pEnumRef ExtensibleEnum to which the association "enumRef" should be set.
+   * @param pEnumRef Value to which {@link #enumRef} should be set.
    */
   public void setEnumRef( ExtensibleEnum pEnumRef ) {
     enumRef = pEnumRef;

@@ -62,10 +62,9 @@ public abstract class FlushTestSlaveBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "masterObject".
+   * Method sets association {@link #masterObject}.<br/>
    * 
-   * 
-   * @param pMasterObject FlushTestMasterBO to which the association "masterObject" should be set.
+   * @param pMasterObject Value to which {@link #masterObject} should be set.
    */
   public void setMasterObject( FlushTestMasterBO pMasterObject ) {
     masterObject = pMasterObject;

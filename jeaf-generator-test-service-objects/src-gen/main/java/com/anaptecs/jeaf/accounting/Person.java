@@ -510,10 +510,9 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method sets the association "customer".
+   * Method sets association {@link #customer}.<br/>
    * 
-   * 
-   * @param pCustomer Individual to which the association "customer" should be set.
+   * @param pCustomer Value to which {@link #customer} should be set.
    */
   public void setCustomer( Individual pCustomer ) {
     // Release already referenced object before setting a new association.

@@ -95,10 +95,9 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "b".
+   * Method sets association {@link #b}.<br/>
    * 
-   * 
-   * @param pB BOneBO to which the association "b" should be set.
+   * @param pB Value to which {@link #b} should be set.
    */
   public void setB( BOneBO pB ) {
     // Release already referenced object before setting a new association.

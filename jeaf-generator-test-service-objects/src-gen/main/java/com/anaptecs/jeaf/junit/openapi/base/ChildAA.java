@@ -457,10 +457,9 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method sets the association "integerCode".
+   * Method sets association {@link #integerCode}.<br/>
    * 
-   * 
-   * @param pIntegerCode IntegerCodeType to which the association "integerCode" should be set.
+   * @param pIntegerCode Value to which {@link #integerCode} should be set.
    */
   public void setIntegerCode( IntegerCodeType pIntegerCode ) {
     integerCode = pIntegerCode;

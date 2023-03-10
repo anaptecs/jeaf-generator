@@ -109,10 +109,9 @@ public abstract class BookingBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "account".
+   * Method sets association {@link #account}.<br/>
    * 
-   * 
-   * @param pAccount AccountBO to which the association "account" should be set.
+   * @param pAccount Value to which {@link #account} should be set.
    */
   public void setAccount( AccountBO pAccount ) {
     // Release already referenced object before setting a new association.

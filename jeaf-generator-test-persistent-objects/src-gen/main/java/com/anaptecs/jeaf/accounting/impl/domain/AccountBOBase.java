@@ -123,10 +123,9 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "bank".
+   * Method sets association {@link #bank}.<br/>
    * 
-   * 
-   * @param pBank BankBO to which the association "bank" should be set.
+   * @param pBank Value to which {@link #bank} should be set.
    */
   public void setBank( BankBO pBank ) {
     // Release already referenced object before setting a new association.
@@ -166,10 +165,9 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "customer".
+   * Method sets association {@link #customer}.<br/>
    * 
-   * 
-   * @param pCustomer CustomerBO to which the association "customer" should be set.
+   * @param pCustomer Value to which {@link #customer} should be set.
    */
   public void setCustomer( CustomerBO pCustomer ) {
     // Release already referenced object before setting a new association.

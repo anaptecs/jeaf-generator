@@ -191,10 +191,9 @@ public class Booking {
   }
 
   /**
-   * Method sets the association "bookingID".
+   * Method sets association {@link #bookingID}.<br/>
    * 
-   * 
-   * @param pBookingID BookingID to which the association "bookingID" should be set.
+   * @param pBookingID Value to which {@link #bookingID} should be set.
    */
   public void setBookingID( BookingID pBookingID ) {
     bookingID = pBookingID;

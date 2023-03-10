@@ -51,10 +51,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "a1".
+   * Method sets association {@link #a1}.<br/>
    * 
-   * 
-   * @param pA1 OrderingA to which the association "a1" should be set.
+   * @param pA1 Value to which {@link #a1} should be set.
    */
   public void setA1( OrderingA pA1 ) {
     // Release already referenced object before setting a new association.
@@ -94,10 +93,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "a2".
+   * Method sets association {@link #a2}.<br/>
    * 
-   * 
-   * @param pA2 OrderingA to which the association "a2" should be set.
+   * @param pA2 Value to which {@link #a2} should be set.
    */
   public void setA2( OrderingA pA2 ) {
     // Release already referenced object before setting a new association.
@@ -137,10 +135,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "a3".
+   * Method sets association {@link #a3}.<br/>
    * 
-   * 
-   * @param pA3 OrderingA to which the association "a3" should be set.
+   * @param pA3 Value to which {@link #a3} should be set.
    */
   public void setA3( OrderingA pA3 ) {
     // Release already referenced object before setting a new association.
@@ -180,10 +177,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "a4".
+   * Method sets association {@link #a4}.<br/>
    * 
-   * 
-   * @param pA4 OrderingA to which the association "a4" should be set.
+   * @param pA4 Value to which {@link #a4} should be set.
    */
   public void setA4( OrderingA pA4 ) {
     // Release already referenced object before setting a new association.

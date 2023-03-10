@@ -150,9 +150,10 @@ public class BidirectB implements ServiceObject {
   }
 
   /**
-   * Method sets the association "a". the A
+   * Method sets association {@link #a}.<br/>
+   * the A
    * 
-   * @param pA BidirectA to which the association "a" should be set.
+   * @param pA Value to which {@link #a} should be set.
    */
   public void setA( BidirectA pA ) {
     // Release already referenced object before setting a new association.

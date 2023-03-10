@@ -325,10 +325,9 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method sets the association "booking".
+   * Method sets association {@link #booking}.<br/>
    * 
-   * 
-   * @param pBooking ComplexBookingID to which the association "booking" should be set.
+   * @param pBooking Value to which {@link #booking} should be set.
    */
   public void setBooking( ComplexBookingID pBooking ) {
     booking = pBooking;
@@ -415,10 +414,12 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method sets the association "versionedObjectSoftLink". soft link 2nd line 3rd line
+   * Method sets association {@link #versionedObjectSoftLink}.<br/>
+   * soft link<br/>
+   * 2nd line<br/>
+   * 3rd line
    * 
-   * @param pVersionedObjectSoftLink VersionedObjectSoftLink to which the association "versionedObjectSoftLink" should
-   * be set.
+   * @param pVersionedObjectSoftLink Value to which {@link #versionedObjectSoftLink} should be set.
    */
   public void setVersionedObjectSoftLink( VersionedObjectSoftLink pVersionedObjectSoftLink ) {
     versionedObjectSoftLink = pVersionedObjectSoftLink;
@@ -461,9 +462,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method sets the association "realBooking". the real booking
+   * Method sets association {@link #realBooking}.<br/>
+   * the real booking
    * 
-   * @param pRealBooking Booking to which the association "realBooking" should be set.
+   * @param pRealBooking Value to which {@link #realBooking} should be set.
    */
   public void setRealBooking( Booking pRealBooking ) {
     realBooking = pRealBooking;

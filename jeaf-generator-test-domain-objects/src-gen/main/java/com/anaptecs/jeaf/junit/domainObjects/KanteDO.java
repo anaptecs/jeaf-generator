@@ -83,10 +83,9 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method sets the association "abgang".
+   * Method sets association {@link #abgang}.<br/>
    * 
-   * 
-   * @param pAbgang VerbindungspunktDO to which the association "abgang" should be set.
+   * @param pAbgang Value to which {@link #abgang} should be set.
    */
   public void setAbgang( VerbindungspunktDO pAbgang ) {
     abgang = pAbgang;
@@ -110,10 +109,9 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method sets the association "bestimmung".
+   * Method sets association {@link #bestimmung}.<br/>
    * 
-   * 
-   * @param pBestimmung VerbindungspunktDO to which the association "bestimmung" should be set.
+   * @param pBestimmung Value to which {@link #bestimmung} should be set.
    */
   public void setBestimmung( VerbindungspunktDO pBestimmung ) {
     bestimmung = pBestimmung;
@@ -137,10 +135,9 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method sets the association "verkehrsmittelTyp".
+   * Method sets association {@link #verkehrsmittelTyp}.<br/>
    * 
-   * 
-   * @param pVerkehrsmittelTyp VerkehrsmittelTyp to which the association "verkehrsmittelTyp" should be set.
+   * @param pVerkehrsmittelTyp Value to which {@link #verkehrsmittelTyp} should be set.
    */
   public void setVerkehrsmittelTyp( VerkehrsmittelTyp pVerkehrsmittelTyp ) {
     verkehrsmittelTyp = pVerkehrsmittelTyp;

@@ -223,10 +223,9 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method sets the association "owner".
+   * Method sets association {@link #owner}.<br/>
    * 
-   * 
-   * @param pOwner Customer to which the association "owner" should be set.
+   * @param pOwner Value to which {@link #owner} should be set.
    */
   public void setOwner( Customer pOwner ) {
     // Release already referenced object before setting a new association.

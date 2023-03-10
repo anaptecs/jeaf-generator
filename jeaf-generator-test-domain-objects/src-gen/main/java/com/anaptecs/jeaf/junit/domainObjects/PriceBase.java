@@ -88,10 +88,9 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method sets the association "reiseweg".
+   * Method sets association {@link #reiseweg}.<br/>
    * 
-   * 
-   * @param pReiseweg Reiseweg to which the association "reiseweg" should be set.
+   * @param pReiseweg Value to which {@link #reiseweg} should be set.
    */
   @Deprecated
   public void setReiseweg( Reiseweg pReiseweg ) {

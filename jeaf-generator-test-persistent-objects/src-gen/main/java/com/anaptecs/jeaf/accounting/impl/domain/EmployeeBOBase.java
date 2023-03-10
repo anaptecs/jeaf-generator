@@ -93,10 +93,9 @@ public abstract class EmployeeBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "bank".
+   * Method sets association {@link #bank}.<br/>
    * 
-   * 
-   * @param pBank BankBO to which the association "bank" should be set.
+   * @param pBank Value to which {@link #bank} should be set.
    */
   public void setBank( BankBO pBank ) {
     // Release already referenced object before setting a new association.
@@ -136,10 +135,9 @@ public abstract class EmployeeBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "person".
+   * Method sets association {@link #person}.<br/>
    * 
-   * 
-   * @param pPerson MyPersonBO to which the association "person" should be set.
+   * @param pPerson Value to which {@link #person} should be set.
    */
   public void setPerson( MyPersonBO pPerson ) {
     // Release already referenced object before setting a new association.
@@ -259,10 +257,9 @@ public abstract class EmployeeBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "superior".
+   * Method sets association {@link #superior}.<br/>
    * 
-   * 
-   * @param pSuperior EmployeeBO to which the association "superior" should be set.
+   * @param pSuperior Value to which {@link #superior} should be set.
    */
   public void setSuperior( EmployeeBO pSuperior ) {
     // Release already referenced object before setting a new association.
@@ -383,10 +380,9 @@ public abstract class EmployeeBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "responsibility".
+   * Method sets association {@link #responsibility}.<br/>
    * 
-   * 
-   * @param pResponsibility ResponsibilityTypeBO to which the association "responsibility" should be set.
+   * @param pResponsibility Value to which {@link #responsibility} should be set.
    */
   public void setResponsibility( ResponsibilityTypeBO pResponsibility ) {
     responsibility = pResponsibility;

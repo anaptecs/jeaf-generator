@@ -700,10 +700,9 @@ public class DataTypesQueryBean {
   }
 
   /**
-   * Method sets the association "offsetTime".
+   * Method sets association {@link #offsetTime}.<br/>
    * 
-   * 
-   * @param pOffsetTime OffsetTime to which the association "offsetTime" should be set.
+   * @param pOffsetTime Value to which {@link #offsetTime} should be set.
    */
   public void setOffsetTime( OffsetTime pOffsetTime ) {
     offsetTime = pOffsetTime;

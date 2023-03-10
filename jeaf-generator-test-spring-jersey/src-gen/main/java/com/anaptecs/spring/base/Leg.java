@@ -173,10 +173,9 @@ public class Leg {
   }
 
   /**
-   * Method sets the association "start".
+   * Method sets association {@link #start}.<br/>
    * 
-   * 
-   * @param pStart PlaceRef to which the association "start" should be set.
+   * @param pStart Value to which {@link #start} should be set.
    */
   public void setStart( PlaceRef pStart ) {
     start = pStart;
@@ -200,10 +199,9 @@ public class Leg {
   }
 
   /**
-   * Method sets the association "stop".
+   * Method sets association {@link #stop}.<br/>
    * 
-   * 
-   * @param pStop PlaceRef to which the association "stop" should be set.
+   * @param pStop Value to which {@link #stop} should be set.
    */
   public void setStop( PlaceRef pStop ) {
     stop = pStop;

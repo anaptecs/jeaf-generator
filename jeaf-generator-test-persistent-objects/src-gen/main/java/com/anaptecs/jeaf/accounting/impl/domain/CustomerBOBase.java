@@ -264,10 +264,9 @@ public abstract class CustomerBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "adress".
+   * Method sets association {@link #adress}.<br/>
    * 
-   * 
-   * @param pAdress MyAddressBO to which the association "adress" should be set.
+   * @param pAdress Value to which {@link #adress} should be set.
    */
   public void setAdress( MyAddressBO pAdress ) {
     adress = pAdress;

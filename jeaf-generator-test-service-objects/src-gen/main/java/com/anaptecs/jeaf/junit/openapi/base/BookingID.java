@@ -250,10 +250,9 @@ public class BookingID implements ServiceObject {
   }
 
   /**
-   * Method sets the association "inventory".
+   * Method sets association {@link #inventory}.<br/>
    * 
-   * 
-   * @param pInventory InventoryType to which the association "inventory" should be set.
+   * @param pInventory Value to which {@link #inventory} should be set.
    */
   public void setInventory( InventoryType pInventory ) {
     inventory = pInventory;
@@ -277,10 +276,9 @@ public class BookingID implements ServiceObject {
   }
 
   /**
-   * Method sets the association "bookingCode".
+   * Method sets association {@link #bookingCode}.<br/>
    * 
-   * 
-   * @param pBookingCode BookingCode to which the association "bookingCode" should be set.
+   * @param pBookingCode Value to which {@link #bookingCode} should be set.
    */
   public void setBookingCode( BookingCode pBookingCode ) {
     bookingCode = pBookingCode;
