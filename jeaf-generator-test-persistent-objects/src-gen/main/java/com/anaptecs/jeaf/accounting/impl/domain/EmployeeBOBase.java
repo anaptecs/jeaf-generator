@@ -83,10 +83,9 @@ public abstract class EmployeeBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "bank".
+   * Method returns association {@link #bank}.<br/>
    * 
-   *
-   * @return BankBO BankBO to which the association "bank" is set.
+   * @return {@link BankBO} Value to which {@link #bank} is set.
    */
   public BankBO getBank( ) {
     bank = this.unproxy(bank);
@@ -127,10 +126,9 @@ public abstract class EmployeeBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "person".
+   * Method returns association {@link #person}.<br/>
    * 
-   *
-   * @return MyPersonBO MyPersonBO to which the association "person" is set.
+   * @return {@link MyPersonBO} Value to which {@link #person} is set.
    */
   public MyPersonBO getPerson( ) {
     person = this.unproxy(person);
@@ -251,10 +249,9 @@ public abstract class EmployeeBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "superior".
+   * Method returns association {@link #superior}.<br/>
    * 
-   *
-   * @return EmployeeBO EmployeeBO to which the association "superior" is set.
+   * @return {@link EmployeeBO} Value to which {@link #superior} is set.
    */
   public EmployeeBO getSuperior( ) {
     superior = this.unproxy(superior);
@@ -376,10 +373,9 @@ public abstract class EmployeeBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "responsibility".
+   * Method returns association {@link #responsibility}.<br/>
    * 
-   *
-   * @return ResponsibilityTypeBO ResponsibilityTypeBO to which the association "responsibility" is set.
+   * @return {@link ResponsibilityTypeBO} Value to which {@link #responsibility} is set.
    */
   public ResponsibilityTypeBO getResponsibility( ) {
     responsibility = this.unproxy(responsibility);

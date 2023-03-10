@@ -342,10 +342,9 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method returns the association "booking".
+   * Method returns association {@link #booking}.<br/>
    * 
-   *
-   * @return ComplexBookingID ComplexBookingID to which the association "booking" is set.
+   * @return {@link ComplexBookingID} Value to which {@link #booking} is set.
    */
   public ComplexBookingID getBooking( ) {
     return booking;
@@ -430,9 +429,12 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method returns the association "versionedObjectSoftLink". soft link 2nd line 3rd line
-   *
-   * @return VersionedObjectSoftLink VersionedObjectSoftLink to which the association "versionedObjectSoftLink" is set.
+   * Method returns association {@link #versionedObjectSoftLink}.<br/>
+   * soft link<br/>
+   * 2nd line<br/>
+   * 3rd line
+   * 
+   * @return {@link VersionedObjectSoftLink} Value to which {@link #versionedObjectSoftLink} is set.
    */
   public VersionedObjectSoftLink getVersionedObjectSoftLink( ) {
     return versionedObjectSoftLink;
@@ -475,9 +477,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method returns the association "realBooking". the real booking
-   *
-   * @return Booking Booking to which the association "realBooking" is set.
+   * Method returns association {@link #realBooking}.<br/>
+   * the real booking
+   * 
+   * @return {@link Booking} Value to which {@link #realBooking} is set.
    */
   public Booking getRealBooking( ) {
     return realBooking;

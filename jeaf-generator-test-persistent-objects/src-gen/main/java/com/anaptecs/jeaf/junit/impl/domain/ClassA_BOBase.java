@@ -69,10 +69,9 @@ public abstract class ClassA_BOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "classB".
+   * Method returns association {@link #classB}.<br/>
    * 
-   *
-   * @return ClassB_BO ClassB_BO to which the association "classB" is set.
+   * @return {@link ClassB_BO} Value to which {@link #classB} is set.
    */
   public ClassB_BO getClassB( ) {
     classB = this.unproxy(classB);

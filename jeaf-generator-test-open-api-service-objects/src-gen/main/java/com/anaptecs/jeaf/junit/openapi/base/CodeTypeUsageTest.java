@@ -402,10 +402,9 @@ public class CodeTypeUsageTest implements ServiceObject {
   }
 
   /**
-   * Method returns the association "shortCode".
+   * Method returns association {@link #shortCode}.<br/>
    * 
-   *
-   * @return ShortCode ShortCode to which the association "shortCode" is set.
+   * @return {@link ShortCode} Value to which {@link #shortCode} is set.
    */
   public ShortCode getShortCode( ) {
     return shortCode;

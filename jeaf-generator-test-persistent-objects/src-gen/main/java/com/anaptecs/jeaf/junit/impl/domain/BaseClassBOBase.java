@@ -102,10 +102,9 @@ public abstract class BaseClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "deprecatedPO".
+   * Method returns association {@link #deprecatedPO}.<br/>
    * 
-   *
-   * @return DeprecatedPO DeprecatedPO to which the association "deprecatedPO" is set.
+   * @return {@link DeprecatedPO} Value to which {@link #deprecatedPO} is set.
    */
   public DeprecatedPO getDeprecatedPO( ) {
     deprecatedPO = this.unproxy(deprecatedPO);

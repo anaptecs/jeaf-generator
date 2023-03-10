@@ -74,10 +74,9 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method returns the association "abgang".
+   * Method returns association {@link #abgang}.<br/>
    * 
-   *
-   * @return VerbindungspunktDO VerbindungspunktDO to which the association "abgang" is set.
+   * @return {@link VerbindungspunktDO} Value to which {@link #abgang} is set.
    */
   public VerbindungspunktDO getAbgang( ) {
     return abgang;
@@ -102,10 +101,9 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method returns the association "bestimmung".
+   * Method returns association {@link #bestimmung}.<br/>
    * 
-   *
-   * @return VerbindungspunktDO VerbindungspunktDO to which the association "bestimmung" is set.
+   * @return {@link VerbindungspunktDO} Value to which {@link #bestimmung} is set.
    */
   public VerbindungspunktDO getBestimmung( ) {
     return bestimmung;
@@ -130,10 +128,9 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method returns the association "verkehrsmittelTyp".
+   * Method returns association {@link #verkehrsmittelTyp}.<br/>
    * 
-   *
-   * @return VerkehrsmittelTyp VerkehrsmittelTyp to which the association "verkehrsmittelTyp" is set.
+   * @return {@link VerkehrsmittelTyp} Value to which {@link #verkehrsmittelTyp} is set.
    */
   public VerkehrsmittelTyp getVerkehrsmittelTyp( ) {
     return verkehrsmittelTyp;

@@ -430,10 +430,9 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns the association "integerCode".
+   * Method returns association {@link #integerCode}.<br/>
    * 
-   *
-   * @return IntegerCodeType IntegerCodeType to which the association "integerCode" is set.
+   * @return {@link IntegerCodeType} Value to which {@link #integerCode} is set.
    */
   public IntegerCodeType getIntegerCode( ) {
     return integerCode;

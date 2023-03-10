@@ -358,12 +358,7 @@
 «ENDDEFINE»
 
 «DEFINE ToOneAccessorMethods FOR Property»
-    /**
-     * Method returns the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     *
-     * @return «type.name» «this.type.name» to which the association "«asInstanceVar()»" is set.
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «type.fqn()» «asGetter()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»

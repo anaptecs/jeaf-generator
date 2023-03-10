@@ -269,10 +269,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the association "aBoolean".
+   * Method returns association {@link #aBoolean}.<br/>
    * 
-   *
-   * @return Boolean Boolean to which the association "aBoolean" is set.
+   * @return {@link Boolean} Value to which {@link #aBoolean} is set.
    */
   public Boolean getABoolean( ) {
     return aBoolean;

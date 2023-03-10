@@ -189,10 +189,9 @@ public class EnumTest implements Serializable {
   }
 
   /**
-   * Method returns the association "enumRef".
+   * Method returns association {@link #enumRef}.<br/>
    * 
-   *
-   * @return ExtensibleEnum ExtensibleEnum to which the association "enumRef" is set.
+   * @return {@link ExtensibleEnum} Value to which {@link #enumRef} is set.
    */
   public ExtensibleEnum getEnumRef( ) {
     return enumRef;

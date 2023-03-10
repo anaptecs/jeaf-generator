@@ -257,10 +257,9 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the association "vat".
+   * Method returns association {@link #vat}.<br/>
    * 
-   *
-   * @return VatDO VatDO to which the association "vat" is set.
+   * @return {@link VatDO} Value to which {@link #vat} is set.
    */
   public VatDO getVat( ) {
     return vat;
@@ -285,10 +284,9 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the association "productCategory".
+   * Method returns association {@link #productCategory}.<br/>
    * 
-   *
-   * @return ProductCategory ProductCategory to which the association "productCategory" is set.
+   * @return {@link ProductCategory} Value to which {@link #productCategory} is set.
    */
   public ProductCategory getProductCategory( ) {
     return productCategory;

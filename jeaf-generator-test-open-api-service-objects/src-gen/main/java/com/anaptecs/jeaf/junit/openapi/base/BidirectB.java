@@ -134,9 +134,10 @@ public class BidirectB implements ServiceObject {
   }
 
   /**
-   * Method returns the association "a". the A
-   *
-   * @return BidirectA BidirectA to which the association "a" is set.
+   * Method returns association {@link #a}.<br/>
+   * the A
+   * 
+   * @return {@link BidirectA} Value to which {@link #a} is set.
    */
   public BidirectA getA( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling

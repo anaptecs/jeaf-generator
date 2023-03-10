@@ -208,10 +208,9 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
   }
 
   /**
-   * Method returns the association "oneB".
+   * Method returns association {@link #oneB}.<br/>
    * 
-   *
-   * @return ClassB ClassB to which the association "oneB" is set.
+   * @return {@link ClassB} Value to which {@link #oneB} is set.
    */
   public ClassB getOneB( ) {
     return oneB;

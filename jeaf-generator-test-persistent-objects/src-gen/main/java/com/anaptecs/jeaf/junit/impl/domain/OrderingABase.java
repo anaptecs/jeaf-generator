@@ -218,10 +218,9 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "notOrderedUnique".
+   * Method returns association {@link #notOrderedUnique}.<br/>
    * 
-   *
-   * @return OrderingB OrderingB to which the association "notOrderedUnique" is set.
+   * @return {@link OrderingB} Value to which {@link #notOrderedUnique} is set.
    */
   public OrderingB getNotOrderedUnique( ) {
     notOrderedUnique = this.unproxy(notOrderedUnique);

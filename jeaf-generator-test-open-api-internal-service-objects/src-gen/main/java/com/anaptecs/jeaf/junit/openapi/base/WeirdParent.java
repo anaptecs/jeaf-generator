@@ -217,10 +217,9 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Method returns the association "complexBooking".
+   * Method returns association {@link #complexBooking}.<br/>
    * 
-   *
-   * @return ComplexBookingID ComplexBookingID to which the association "complexBooking" is set.
+   * @return {@link ComplexBookingID} Value to which {@link #complexBooking} is set.
    */
   public ComplexBookingID getComplexBooking( ) {
     return complexBooking;

@@ -254,10 +254,9 @@ public abstract class CustomerBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "adress".
+   * Method returns association {@link #adress}.<br/>
    * 
-   *
-   * @return MyAddressBO MyAddressBO to which the association "adress" is set.
+   * @return {@link MyAddressBO} Value to which {@link #adress} is set.
    */
   public MyAddressBO getAdress( ) {
     adress = this.unproxy(adress);

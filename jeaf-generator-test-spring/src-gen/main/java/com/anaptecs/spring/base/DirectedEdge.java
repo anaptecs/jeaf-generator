@@ -178,9 +178,10 @@ public class DirectedEdge {
   }
 
   /**
-   * Method returns the association "start". The start
-   *
-   * @return Stop Stop to which the association "start" is set.
+   * Method returns association {@link #start}.<br/>
+   * The start
+   * 
+   * @return {@link Stop} Value to which {@link #start} is set.
    */
   public Stop getStart( ) {
     return start;
@@ -203,9 +204,10 @@ public class DirectedEdge {
   }
 
   /**
-   * Method returns the association "end". The end
-   *
-   * @return Stop Stop to which the association "end" is set.
+   * Method returns association {@link #end}.<br/>
+   * The end
+   * 
+   * @return {@link Stop} Value to which {@link #end} is set.
    */
   public Stop getEnd( ) {
     return end;

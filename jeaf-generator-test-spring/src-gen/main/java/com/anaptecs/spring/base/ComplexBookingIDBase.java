@@ -324,10 +324,9 @@ public abstract class ComplexBookingIDBase {
   }
 
   /**
-   * Method returns the association "complexBookingType".
+   * Method returns association {@link #complexBookingType}.<br/>
    * 
-   *
-   * @return ComplexBookingType ComplexBookingType to which the association "complexBookingType" is set.
+   * @return {@link ComplexBookingType} Value to which {@link #complexBookingType} is set.
    */
   public ComplexBookingType getComplexBookingType( ) {
     return complexBookingType;

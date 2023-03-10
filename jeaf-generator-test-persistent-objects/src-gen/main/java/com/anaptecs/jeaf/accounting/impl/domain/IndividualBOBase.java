@@ -35,10 +35,9 @@ public abstract class IndividualBOBase extends CustomerBO {
   }
 
   /**
-   * Method returns the association "person".
+   * Method returns association {@link #person}.<br/>
    * 
-   *
-   * @return MyPersonBO MyPersonBO to which the association "person" is set.
+   * @return {@link MyPersonBO} Value to which {@link #person} is set.
    */
   public MyPersonBO getPerson( ) {
     person = this.unproxy(person);

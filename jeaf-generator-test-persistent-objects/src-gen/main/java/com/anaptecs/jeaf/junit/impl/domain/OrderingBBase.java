@@ -41,10 +41,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "a1".
+   * Method returns association {@link #a1}.<br/>
    * 
-   *
-   * @return OrderingA OrderingA to which the association "a1" is set.
+   * @return {@link OrderingA} Value to which {@link #a1} is set.
    */
   public OrderingA getA1( ) {
     a1 = this.unproxy(a1);
@@ -85,10 +84,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "a2".
+   * Method returns association {@link #a2}.<br/>
    * 
-   *
-   * @return OrderingA OrderingA to which the association "a2" is set.
+   * @return {@link OrderingA} Value to which {@link #a2} is set.
    */
   public OrderingA getA2( ) {
     a2 = this.unproxy(a2);
@@ -129,10 +127,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "a3".
+   * Method returns association {@link #a3}.<br/>
    * 
-   *
-   * @return OrderingA OrderingA to which the association "a3" is set.
+   * @return {@link OrderingA} Value to which {@link #a3} is set.
    */
   public OrderingA getA3( ) {
     a3 = this.unproxy(a3);
@@ -173,10 +170,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "a4".
+   * Method returns association {@link #a4}.<br/>
    * 
-   *
-   * @return OrderingA OrderingA to which the association "a4" is set.
+   * @return {@link OrderingA} Value to which {@link #a4} is set.
    */
   public OrderingA getA4( ) {
     a4 = this.unproxy(a4);

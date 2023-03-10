@@ -52,10 +52,9 @@ public abstract class FlushTestSlaveBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "masterObject".
+   * Method returns association {@link #masterObject}.<br/>
    * 
-   *
-   * @return FlushTestMasterBO FlushTestMasterBO to which the association "masterObject" is set.
+   * @return {@link FlushTestMasterBO} Value to which {@link #masterObject} is set.
    */
   public FlushTestMasterBO getMasterObject( ) {
     masterObject = this.unproxy(masterObject);

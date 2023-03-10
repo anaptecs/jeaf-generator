@@ -142,10 +142,9 @@ public class WeirdBooking {
   }
 
   /**
-   * Method returns the association "booking".
+   * Method returns association {@link #booking}.<br/>
    * 
-   *
-   * @return ComplexBookingID ComplexBookingID to which the association "booking" is set.
+   * @return {@link ComplexBookingID} Value to which {@link #booking} is set.
    */
   public ComplexBookingID getBooking( ) {
     return booking;

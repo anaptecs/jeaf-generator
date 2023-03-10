@@ -224,10 +224,9 @@ public class Booking {
   }
 
   /**
-   * Method returns the association "sourceAccount".
+   * Method returns association {@link #sourceAccount}.<br/>
    * 
-   *
-   * @return Account Account to which the association "sourceAccount" is set.
+   * @return {@link Account} Value to which {@link #sourceAccount} is set.
    */
   public Account getSourceAccount( ) {
     return sourceAccount;
@@ -252,10 +251,9 @@ public class Booking {
   }
 
   /**
-   * Method returns the association "targetAccount".
+   * Method returns association {@link #targetAccount}.<br/>
    * 
-   *
-   * @return Account Account to which the association "targetAccount" is set.
+   * @return {@link Account} Value to which {@link #targetAccount} is set.
    */
   public Account getTargetAccount( ) {
     return targetAccount;

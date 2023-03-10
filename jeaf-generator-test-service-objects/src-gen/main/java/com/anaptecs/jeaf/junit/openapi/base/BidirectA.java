@@ -280,10 +280,9 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method returns the association "parent".
+   * Method returns association {@link #parent}.<br/>
    * 
-   *
-   * @return BidirectA BidirectA to which the association "parent" is set.
+   * @return {@link BidirectA} Value to which {@link #parent} is set.
    */
   public BidirectA getParent( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -329,10 +328,9 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method returns the association "transientChild".
+   * Method returns association {@link #transientChild}.<br/>
    * 
-   *
-   * @return BidirectA BidirectA to which the association "transientChild" is set.
+   * @return {@link BidirectA} Value to which {@link #transientChild} is set.
    */
   public BidirectA getTransientChild( ) {
     return transientChild;

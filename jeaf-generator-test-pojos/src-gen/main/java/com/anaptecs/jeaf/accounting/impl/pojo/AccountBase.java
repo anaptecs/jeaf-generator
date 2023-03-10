@@ -214,10 +214,9 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method returns the association "owner".
+   * Method returns association {@link #owner}.<br/>
    * 
-   *
-   * @return Customer Customer to which the association "owner" is set.
+   * @return {@link Customer} Value to which {@link #owner} is set.
    */
   public Customer getOwner( ) {
     return owner;

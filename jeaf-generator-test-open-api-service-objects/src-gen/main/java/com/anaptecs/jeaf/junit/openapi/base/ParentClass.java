@@ -314,9 +314,10 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method returns the association "theBankAccount". I would like to document references to other types.
-   *
-   * @return BankAccount BankAccount to which the association "theBankAccount" is set.
+   * Method returns association {@link #theBankAccount}.<br/>
+   * I would like to document references to other types.
+   * 
+   * @return {@link BankAccount} Value to which {@link #theBankAccount} is set.
    */
   @Deprecated
   public BankAccount getTheBankAccount( ) {

@@ -289,10 +289,9 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method returns the association "source".
+   * Method returns association {@link #source}.<br/>
    * 
-   *
-   * @return Account Account to which the association "source" is set.
+   * @return {@link Account} Value to which {@link #source} is set.
    */
   public Account getSource( ) {
     return source;
@@ -317,10 +316,9 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method returns the association "target".
+   * Method returns association {@link #target}.<br/>
    * 
-   *
-   * @return Account Account to which the association "target" is set.
+   * @return {@link Account} Value to which {@link #target} is set.
    */
   public Account getTarget( ) {
     return target;
@@ -345,10 +343,9 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method returns the association "token".
+   * Method returns association {@link #token}.<br/>
    * 
-   *
-   * @return SecurityToken SecurityToken to which the association "token" is set.
+   * @return {@link SecurityToken} Value to which {@link #token} is set.
    */
   public SecurityToken getToken( ) {
     return token;
@@ -451,10 +448,9 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method returns the association "account".
+   * Method returns association {@link #account}.<br/>
    * 
-   *
-   * @return Account Account to which the association "account" is set.
+   * @return {@link Account} Value to which {@link #account} is set.
    */
   public Account getAccount( ) {
     return account;

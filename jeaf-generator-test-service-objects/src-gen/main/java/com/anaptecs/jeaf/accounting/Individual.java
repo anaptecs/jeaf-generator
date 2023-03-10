@@ -194,10 +194,9 @@ public class Individual extends Customer {
   }
 
   /**
-   * Method returns the association "person".
+   * Method returns association {@link #person}.<br/>
    * 
-   *
-   * @return Person Person to which the association "person" is set.
+   * @return {@link Person} Value to which {@link #person} is set.
    */
   public Person getPerson( ) {
     return person;

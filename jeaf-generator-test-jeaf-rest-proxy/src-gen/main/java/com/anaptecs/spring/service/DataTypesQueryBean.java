@@ -753,10 +753,9 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method returns the association "offsetTime".
+   * Method returns association {@link #offsetTime}.<br/>
    * 
-   *
-   * @return OffsetTime OffsetTime to which the association "offsetTime" is set.
+   * @return {@link OffsetTime} Value to which {@link #offsetTime} is set.
    */
   public OffsetTime getOffsetTime( ) {
     return offsetTime;

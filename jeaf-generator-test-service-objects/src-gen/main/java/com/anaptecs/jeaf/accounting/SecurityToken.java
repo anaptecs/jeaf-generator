@@ -203,10 +203,9 @@ public class SecurityToken implements ServiceObject {
   }
 
   /**
-   * Method returns the association "booking".
+   * Method returns association {@link #booking}.<br/>
    * 
-   *
-   * @return Booking Booking to which the association "booking" is set.
+   * @return {@link Booking} Value to which {@link #booking} is set.
    */
   public Booking getBooking( ) {
     return booking;

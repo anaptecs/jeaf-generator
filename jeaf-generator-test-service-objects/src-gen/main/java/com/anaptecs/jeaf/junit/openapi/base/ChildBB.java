@@ -446,10 +446,9 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method returns the association "deprecatedParent".
+   * Method returns association {@link #deprecatedParent}.<br/>
    * 
-   *
-   * @return ParentClass ParentClass to which the association "deprecatedParent" is set.
+   * @return {@link ParentClass} Value to which {@link #deprecatedParent} is set.
    */
   @Deprecated
   public ParentClass getDeprecatedParent( ) {

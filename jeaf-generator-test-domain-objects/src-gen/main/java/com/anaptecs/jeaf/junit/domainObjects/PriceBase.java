@@ -78,10 +78,9 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method returns the association "reiseweg".
+   * Method returns association {@link #reiseweg}.<br/>
    * 
-   *
-   * @return Reiseweg Reiseweg to which the association "reiseweg" is set.
+   * @return {@link Reiseweg} Value to which {@link #reiseweg} is set.
    */
   @Deprecated
   public Reiseweg getReiseweg( ) {

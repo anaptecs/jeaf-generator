@@ -180,10 +180,9 @@ public class Sale implements ServiceObject {
   }
 
   /**
-   * Method returns the association "sale".
+   * Method returns association {@link #sale}.<br/>
    * 
-   *
-   * @return Channel Channel to which the association "sale" is set.
+   * @return {@link Channel} Value to which {@link #sale} is set.
    */
   public Channel getSale( ) {
     return sale;

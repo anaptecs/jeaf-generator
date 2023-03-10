@@ -133,9 +133,10 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method returns the association "bookingID". ID of the booking
-   *
-   * @return BookingID BookingID to which the association "bookingID" is set.
+   * Method returns association {@link #bookingID}.<br/>
+   * ID of the booking
+   * 
+   * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
   public BookingID getBookingID( ) {
     return bookingID;

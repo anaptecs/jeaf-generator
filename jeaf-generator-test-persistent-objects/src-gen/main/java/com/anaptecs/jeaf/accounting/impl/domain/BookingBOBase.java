@@ -99,10 +99,9 @@ public abstract class BookingBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "account".
+   * Method returns association {@link #account}.<br/>
    * 
-   *
-   * @return AccountBO AccountBO to which the association "account" is set.
+   * @return {@link AccountBO} Value to which {@link #account} is set.
    */
   public AccountBO getAccount( ) {
     account = this.unproxy(account);

@@ -71,10 +71,9 @@ public abstract class CManyBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "aOne".
+   * Method returns association {@link #aOne}.<br/>
    * 
-   *
-   * @return AOneBO AOneBO to which the association "aOne" is set.
+   * @return {@link AOneBO} Value to which {@link #aOne} is set.
    */
   public AOneBO getAOne( ) {
     aOne = this.unproxy(aOne);

@@ -202,10 +202,9 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method returns the association "transientB".
+   * Method returns association {@link #transientB}.<br/>
    * 
-   *
-   * @return BidirectionalB BidirectionalB to which the association "transientB" is set.
+   * @return {@link BidirectionalB} Value to which {@link #transientB} is set.
    */
   public BidirectionalB getTransientB( ) {
     return transientB;
@@ -245,10 +244,9 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method returns the association "transientParent".
+   * Method returns association {@link #transientParent}.<br/>
    * 
-   *
-   * @return BidirectionalA BidirectionalA to which the association "transientParent" is set.
+   * @return {@link BidirectionalA} Value to which {@link #transientParent} is set.
    */
   public BidirectionalA getTransientParent( ) {
     return transientParent;
@@ -288,10 +286,9 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method returns the association "child".
+   * Method returns association {@link #child}.<br/>
    * 
-   *
-   * @return BidirectionalA BidirectionalA to which the association "child" is set.
+   * @return {@link BidirectionalA} Value to which {@link #child} is set.
    */
   public BidirectionalA getChild( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling

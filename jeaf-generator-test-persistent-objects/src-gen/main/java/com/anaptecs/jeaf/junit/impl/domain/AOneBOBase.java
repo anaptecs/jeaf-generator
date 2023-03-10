@@ -85,10 +85,9 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "b".
+   * Method returns association {@link #b}.<br/>
    * 
-   *
-   * @return BOneBO BOneBO to which the association "b" is set.
+   * @return {@link BOneBO} Value to which {@link #b} is set.
    */
   public BOneBO getB( ) {
     b = this.unproxy(b);

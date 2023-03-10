@@ -501,10 +501,9 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the association "customer".
+   * Method returns association {@link #customer}.<br/>
    * 
-   *
-   * @return Individual Individual to which the association "customer" is set.
+   * @return {@link Individual} Value to which {@link #customer} is set.
    */
   public Individual getCustomer( ) {
     return customer;

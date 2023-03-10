@@ -199,10 +199,9 @@ public class Leg implements Serializable {
   }
 
   /**
-   * Method returns the association "start".
+   * Method returns association {@link #start}.<br/>
    * 
-   *
-   * @return PlaceRef PlaceRef to which the association "start" is set.
+   * @return {@link PlaceRef} Value to which {@link #start} is set.
    */
   public PlaceRef getStart( ) {
     return start;
@@ -227,10 +226,9 @@ public class Leg implements Serializable {
   }
 
   /**
-   * Method returns the association "stop".
+   * Method returns association {@link #stop}.<br/>
    * 
-   *
-   * @return PlaceRef PlaceRef to which the association "stop" is set.
+   * @return {@link PlaceRef} Value to which {@link #stop} is set.
    */
   public PlaceRef getStop( ) {
     return stop;

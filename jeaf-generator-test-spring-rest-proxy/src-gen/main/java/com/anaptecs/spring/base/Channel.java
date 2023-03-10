@@ -206,9 +206,10 @@ public class Channel {
   }
 
   /**
-   * Method returns the association "channelType". Type of the channel
-   *
-   * @return ChannelType ChannelType to which the association "channelType" is set.
+   * Method returns association {@link #channelType}.<br/>
+   * Type of the channel
+   * 
+   * @return {@link ChannelType} Value to which {@link #channelType} is set.
    */
   public ChannelType getChannelType( ) {
     return channelType;
@@ -231,9 +232,10 @@ public class Channel {
   }
 
   /**
-   * Method returns the association "channelCode". The business code of the channel
-   *
-   * @return ChannelCode ChannelCode to which the association "channelCode" is set.
+   * Method returns association {@link #channelCode}.<br/>
+   * The business code of the channel
+   * 
+   * @return {@link ChannelCode} Value to which {@link #channelCode} is set.
    */
   public ChannelCode getChannelCode( ) {
     return channelCode;
@@ -274,10 +276,9 @@ public class Channel {
   }
 
   /**
-   * Method returns the association "reseller".
+   * Method returns association {@link #reseller}.<br/>
    * 
-   *
-   * @return Reseller Reseller to which the association "reseller" is set.
+   * @return {@link Reseller} Value to which {@link #reseller} is set.
    */
   public Reseller getReseller( ) {
     return reseller;

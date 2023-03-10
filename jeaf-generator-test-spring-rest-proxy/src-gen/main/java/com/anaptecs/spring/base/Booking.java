@@ -179,10 +179,9 @@ public class Booking {
   }
 
   /**
-   * Method returns the association "bookingID".
+   * Method returns association {@link #bookingID}.<br/>
    * 
-   *
-   * @return BookingID BookingID to which the association "bookingID" is set.
+   * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
   public BookingID getBookingID( ) {
     return bookingID;

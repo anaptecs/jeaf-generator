@@ -245,20 +245,18 @@ public class BookingID {
   }
 
   /**
-   * Method returns the association "inventory".
+   * Method returns association {@link #inventory}.<br/>
    * 
-   *
-   * @return InventoryType InventoryType to which the association "inventory" is set.
+   * @return {@link InventoryType} Value to which {@link #inventory} is set.
    */
   public InventoryType getInventory( ) {
     return inventory;
   }
 
   /**
-   * Method returns the association "bookingCode".
+   * Method returns association {@link #bookingCode}.<br/>
    * 
-   *
-   * @return BookingCode BookingCode to which the association "bookingCode" is set.
+   * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
   public BookingCode getBookingCode( ) {
     return bookingCode;

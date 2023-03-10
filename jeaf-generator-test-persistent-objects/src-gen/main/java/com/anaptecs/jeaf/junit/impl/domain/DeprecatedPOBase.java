@@ -94,10 +94,9 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "publicClass".
+   * Method returns association {@link #publicClass}.<br/>
    * 
-   *
-   * @return PublicClassBO PublicClassBO to which the association "publicClass" is set.
+   * @return {@link PublicClassBO} Value to which {@link #publicClass} is set.
    */
   @Deprecated
   public PublicClassBO getPublicClass( ) {

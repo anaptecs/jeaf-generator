@@ -283,10 +283,9 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method returns the association "immutableChildPOJO".
+   * Method returns association {@link #immutableChildPOJO}.<br/>
    * 
-   *
-   * @return ImmutableChildPOJO ImmutableChildPOJO to which the association "immutableChildPOJO" is set.
+   * @return {@link ImmutableChildPOJO} Value to which {@link #immutableChildPOJO} is set.
    */
   public ImmutableChildPOJO getImmutableChildPOJO( ) {
     return immutableChildPOJO;
@@ -363,10 +362,9 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method returns the association "deprecatedRef".
+   * Method returns association {@link #deprecatedRef}.<br/>
    * 
-   *
-   * @return ChildPOJO ChildPOJO to which the association "deprecatedRef" is set.
+   * @return {@link ChildPOJO} Value to which {@link #deprecatedRef} is set.
    */
   @Deprecated
   public ChildPOJO getDeprecatedRef( ) {

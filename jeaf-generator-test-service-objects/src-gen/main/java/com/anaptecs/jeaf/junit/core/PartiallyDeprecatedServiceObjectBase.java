@@ -278,10 +278,9 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method returns the association "deprecatedRef".
+   * Method returns association {@link #deprecatedRef}.<br/>
    * 
-   *
-   * @return DeprecatedServiceObject DeprecatedServiceObject to which the association "deprecatedRef" is set.
+   * @return {@link DeprecatedServiceObject} Value to which {@link #deprecatedRef} is set.
    */
   @Deprecated
   public DeprecatedServiceObject getDeprecatedRef( ) {

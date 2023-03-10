@@ -113,10 +113,9 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "bank".
+   * Method returns association {@link #bank}.<br/>
    * 
-   *
-   * @return BankBO BankBO to which the association "bank" is set.
+   * @return {@link BankBO} Value to which {@link #bank} is set.
    */
   public BankBO getBank( ) {
     bank = this.unproxy(bank);
@@ -157,10 +156,9 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "customer".
+   * Method returns association {@link #customer}.<br/>
    * 
-   *
-   * @return CustomerBO CustomerBO to which the association "customer" is set.
+   * @return {@link CustomerBO} Value to which {@link #customer} is set.
    */
   public CustomerBO getCustomer( ) {
     customer = this.unproxy(customer);

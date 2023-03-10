@@ -165,10 +165,9 @@ public abstract class SoftLinkBase {
   }
 
   /**
-   * Method returns the association "dataUnit".
+   * Method returns association {@link #dataUnit}.<br/>
    * 
-   *
-   * @return DataUnit DataUnit to which the association "dataUnit" is set.
+   * @return {@link DataUnit} Value to which {@link #dataUnit} is set.
    */
   public DataUnit getDataUnit( ) {
     return dataUnit;
@@ -193,10 +192,9 @@ public abstract class SoftLinkBase {
   }
 
   /**
-   * Method returns the association "entity".
+   * Method returns association {@link #entity}.<br/>
    * 
-   *
-   * @return Entity Entity to which the association "entity" is set.
+   * @return {@link Entity} Value to which {@link #entity} is set.
    */
   public Entity getEntity( ) {
     return entity;
