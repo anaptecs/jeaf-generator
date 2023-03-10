@@ -302,10 +302,11 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method returns the association "stringCodeHeader". This is my multivalued test header
-   *
-   * @return Collection All StringCode objects that belong to the association "stringCodeHeader". The method never
-   * returns null and the returned collection is unmodifiable.
+   * Method returns association {@link #stringCodeHeader}.<br/>
+   * This is my multivalued test header
+   * 
+   * @return {@link List<StringCode>} Value to which {@link #stringCodeHeader} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public List<StringCode> getStringCodeHeader( ) {
     // Return all StringCode objects as unmodifiable collection.
@@ -363,10 +364,11 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method returns the association "longCodeQueryParam". Multivalued query param
-   *
-   * @return Collection All LongCode objects that belong to the association "longCodeQueryParam". The method never
-   * returns null and the returned collection is unmodifiable.
+   * Method returns association {@link #longCodeQueryParam}.<br/>
+   * Multivalued query param
+   * 
+   * @return {@link List<LongCode>} Value to which {@link #longCodeQueryParam} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public List<LongCode> getLongCodeQueryParam( ) {
     // Return all LongCode objects as unmodifiable collection.
@@ -423,10 +425,11 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method returns the association "literals". so many literals are possible
-   *
-   * @return Collection All BooleanLiteralsEnum objects that belong to the association "literals". The method never
-   * returns null and the returned collection is unmodifiable.
+   * Method returns association {@link #literals}.<br/>
+   * so many literals are possible
+   * 
+   * @return {@link List<BooleanLiteralsEnum>} Value to which {@link #literals} is set. The method never returns null
+   * and the returned collection is unmodifiable.
    */
   public List<BooleanLiteralsEnum> getLiterals( ) {
     // Return all BooleanLiteralsEnum objects as unmodifiable collection.

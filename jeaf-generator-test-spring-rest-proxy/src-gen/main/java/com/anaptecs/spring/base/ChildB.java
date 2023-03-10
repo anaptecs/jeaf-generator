@@ -215,10 +215,11 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method returns the association "composition". the composition
-   *
-   * @return Collection All ParentClass objects that belong to the association "composition". The method never returns
-   * null and the returned collection is unmodifiable.
+   * Method returns association {@link #composition}.<br/>
+   * the composition
+   * 
+   * @return {@link Set<ParentClass>} Value to which {@link #composition} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<ParentClass> getComposition( ) {
     // Return all ParentClass objects as unmodifiable collection.

@@ -273,11 +273,10 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method returns the association "allBookings".
+   * Method returns association {@link #allBookings}.<br/>
    * 
-   *
-   * @return Collection All Booking objects that belong to the association "allBookings". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<Booking>} Value to which {@link #allBookings} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Booking> getAllBookings( ) {
     // Return all Booking objects as unmodifiable collection.

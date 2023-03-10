@@ -366,11 +366,10 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   }
 
   /**
-   * Method returns the association "authorizedPersons".
+   * Method returns association {@link #authorizedPersons}.<br/>
    * 
-   *
-   * @return Collection All Person objects that belong to the association "authorizedPersons". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link Set<Person>} Value to which {@link #authorizedPersons} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Person> getAuthorizedPersons( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -454,11 +453,10 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   }
 
   /**
-   * Method returns the association "bookings".
+   * Method returns association {@link #bookings}.<br/>
    * 
-   *
-   * @return Collection All Booking objects that belong to the association "bookings". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<Booking>} Value to which {@link #bookings} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Booking> getBookings( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling

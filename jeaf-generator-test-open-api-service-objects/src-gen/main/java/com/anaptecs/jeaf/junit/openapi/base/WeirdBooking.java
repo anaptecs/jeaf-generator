@@ -341,10 +341,11 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method returns the association "additionalBookings". additional bookings
-   *
-   * @return Collection All ComplexBookingID objects that belong to the association "additionalBookings". The method
-   * never returns null and the returned collection is modifiable.
+   * Method returns association {@link #additionalBookings}.<br/>
+   * additional bookings
+   * 
+   * @return {@link List<ComplexBookingID>} Value to which {@link #additionalBookings} is set. The method never returns
+   * null and the returned collection is modifiable.
    */
   public List<ComplexBookingID> getAdditionalBookings( ) {
     // Return all ComplexBookingID objects directly without any protection against modification.
@@ -478,11 +479,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method returns the association "inventories".
+   * Method returns association {@link #inventories}.<br/>
    * 
-   *
-   * @return Collection All InventoryType objects that belong to the association "inventories". The method never returns
-   * null and the returned collection is modifiable.
+   * @return {@link Set<InventoryType>} Value to which {@link #inventories} is set. The method never returns null and
+   * the returned collection is modifiable.
    */
   public Set<InventoryType> getInventories( ) {
     // Return all InventoryType objects directly without any protection against modification.

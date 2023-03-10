@@ -294,11 +294,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the association "booleanSet".
+   * Method returns association {@link #booleanSet}.<br/>
    * 
-   *
-   * @return Collection All Boolean objects that belong to the association "booleanSet". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<Boolean>} Value to which {@link #booleanSet} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Boolean> getBooleanSet( ) {
     // Return all Boolean objects as unmodifiable collection.
@@ -357,11 +356,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the association "buffers".
+   * Method returns association {@link #buffers}.<br/>
    * 
-   *
-   * @return Collection All StringBuffer objects that belong to the association "buffers". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<StringBuffer>} Value to which {@link #buffers} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<StringBuffer> getBuffers( ) {
     // Return all StringBuffer objects as unmodifiable collection.
@@ -420,11 +418,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the association "strings".
+   * Method returns association {@link #strings}.<br/>
    * 
-   *
-   * @return Collection All String objects that belong to the association "strings". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<String>} Value to which {@link #strings} is set. The method never returns null and the returned
+   * collection is unmodifiable.
    */
   public Set<String> getStrings( ) {
     // Return all String objects as unmodifiable collection.

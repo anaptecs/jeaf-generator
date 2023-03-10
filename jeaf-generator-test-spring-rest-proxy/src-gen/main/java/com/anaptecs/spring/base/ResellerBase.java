@@ -202,11 +202,10 @@ public abstract class ResellerBase {
   }
 
   /**
-   * Method returns the association "channels".
+   * Method returns association {@link #channels}.<br/>
    * 
-   *
-   * @return Collection All Channel objects that belong to the association "channels". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link List<Channel>} Value to which {@link #channels} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public List<Channel> getChannels( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -285,11 +284,10 @@ public abstract class ResellerBase {
   }
 
   /**
-   * Method returns the association "products".
+   * Method returns association {@link #products}.<br/>
    * 
-   *
-   * @return Collection All Product objects that belong to the association "products". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<Product>} Value to which {@link #products} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Product> getProducts( ) {
     // Return all Product objects as unmodifiable collection.

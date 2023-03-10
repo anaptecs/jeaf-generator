@@ -271,11 +271,10 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   }
 
   /**
-   * Method returns the association "channels".
+   * Method returns association {@link #channels}.<br/>
    * 
-   *
-   * @return Collection All Channel objects that belong to the association "channels". The method never returns null and
-   * the returned collection is modifiable.
+   * @return {@link List<Channel>} Value to which {@link #channels} is set. The method never returns null and the
+   * returned collection is modifiable.
    */
   public List<Channel> getChannels( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -360,11 +359,10 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   }
 
   /**
-   * Method returns the association "products".
+   * Method returns association {@link #products}.<br/>
    * 
-   *
-   * @return Collection All Product objects that belong to the association "products". The method never returns null and
-   * the returned collection is modifiable.
+   * @return {@link Set<Product>} Value to which {@link #products} is set. The method never returns null and the
+   * returned collection is modifiable.
    */
   public Set<Product> getProducts( ) {
     // Return all Product objects directly without any protection against modification.

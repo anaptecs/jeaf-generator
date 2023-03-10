@@ -196,11 +196,10 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method returns the association "transientBs".
+   * Method returns association {@link #transientBs}.<br/>
    * 
-   *
-   * @return Collection All BidirectB objects that belong to the association "transientBs". The method never returns
-   * null and the returned collection is modifiable.
+   * @return {@link Set<BidirectB>} Value to which {@link #transientBs} is set. The method never returns null and the
+   * returned collection is modifiable.
    */
   public Set<BidirectB> getTransientBs( ) {
     // Return all BidirectB objects directly without any protection against modification.

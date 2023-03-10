@@ -75,11 +75,10 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the association "assortments".
+   * Method returns association {@link #assortments}.<br/>
    * 
-   *
-   * @return Collection All AssortmentDO objects that belong to the association "assortments". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link Set<AssortmentDO>} Value to which {@link #assortments} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<AssortmentDO> getAssortments( ) {
     // Return all AssortmentDO objects as unmodifiable collection.
@@ -154,11 +153,10 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the association "pricesPerCurrency".
+   * Method returns association {@link #pricesPerCurrency}.<br/>
    * 
-   *
-   * @return Collection All PriceDO objects that belong to the association "pricesPerCurrency". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link Set<PriceDO>} Value to which {@link #pricesPerCurrency} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public Set<PriceDO> getPricesPerCurrency( ) {
     // Return all PriceDO objects as unmodifiable collection.

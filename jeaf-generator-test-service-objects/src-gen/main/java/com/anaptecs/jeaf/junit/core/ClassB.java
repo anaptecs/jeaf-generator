@@ -227,11 +227,10 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the association "manyAs".
+   * Method returns association {@link #manyAs}.<br/>
    * 
-   *
-   * @return Collection All ClassA objects that belong to the association "manyAs". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link SortedSet<ClassA>} Value to which {@link #manyAs} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public SortedSet<ClassA> getManyAs( ) {
     // Return all ClassA objects as unmodifiable collection.

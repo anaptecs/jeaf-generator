@@ -319,11 +319,10 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method returns the association "deprecatedBs".
+   * Method returns association {@link #deprecatedBs}.<br/>
    * 
-   *
-   * @return Collection All ChildB objects that belong to the association "deprecatedBs". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<ChildB>} Value to which {@link #deprecatedBs} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   @Deprecated
   public Set<ChildB> getDeprecatedBs( ) {

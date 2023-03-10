@@ -253,11 +253,10 @@ public class CodeTypeUsageTest implements ServiceObject {
   }
 
   /**
-   * Method returns the association "booleanCodeAssociation".
+   * Method returns association {@link #booleanCodeAssociation}.<br/>
    * 
-   *
-   * @return Collection All BooleanCodeType objects that belong to the association "booleanCodeAssociation". The method
-   * never returns null and the returned collection is modifiable.
+   * @return {@link Set<BooleanCodeType>} Value to which {@link #booleanCodeAssociation} is set. The method never
+   * returns null and the returned collection is modifiable.
    */
   public Set<BooleanCodeType> getBooleanCodeAssociation( ) {
     // Return all BooleanCodeType objects directly without any protection against modification.
@@ -318,11 +317,10 @@ public class CodeTypeUsageTest implements ServiceObject {
   }
 
   /**
-   * Method returns the association "shortCodeTypeAssociation".
+   * Method returns association {@link #shortCodeTypeAssociation}.<br/>
    * 
-   *
-   * @return Collection All ShortCodeType objects that belong to the association "shortCodeTypeAssociation". The method
-   * never returns null and the returned collection is modifiable.
+   * @return {@link Set<ShortCodeType>} Value to which {@link #shortCodeTypeAssociation} is set. The method never
+   * returns null and the returned collection is modifiable.
    */
   public Set<ShortCodeType> getShortCodeTypeAssociation( ) {
     // Return all ShortCodeType objects directly without any protection against modification.

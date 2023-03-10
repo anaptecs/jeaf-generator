@@ -59,11 +59,10 @@ public abstract class ClassB_BOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "classAs".
+   * Method returns association {@link #classAs}.<br/>
    * 
-   *
-   * @return Collection All ClassA_BO objects that belong to the association "classAs". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<ClassA_BO>} Value to which {@link #classAs} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<ClassA_BO> getClassAs( ) {
     // Return all ClassA_BO objects as unmodifiable collection.

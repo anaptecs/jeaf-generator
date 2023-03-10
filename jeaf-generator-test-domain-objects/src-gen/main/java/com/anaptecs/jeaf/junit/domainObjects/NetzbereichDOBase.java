@@ -41,11 +41,10 @@ public abstract class NetzbereichDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the association "kanten".
+   * Method returns association {@link #kanten}.<br/>
    * 
-   *
-   * @return Collection All KanteDO objects that belong to the association "kanten". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<KanteDO>} Value to which {@link #kanten} is set. The method never returns null and the returned
+   * collection is unmodifiable.
    */
   public Set<KanteDO> getKanten( ) {
     // Return all KanteDO objects as unmodifiable collection.

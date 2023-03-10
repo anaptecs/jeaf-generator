@@ -40,11 +40,10 @@ public abstract class PfadDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the association "kantenSequenz".
+   * Method returns association {@link #kantenSequenz}.<br/>
    * 
-   *
-   * @return Collection All KanteDO objects that belong to the association "kantenSequenz". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link List<KanteDO>} Value to which {@link #kantenSequenz} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public List<KanteDO> getKantenSequenz( ) {
     // Return all KanteDO objects as unmodifiable collection.

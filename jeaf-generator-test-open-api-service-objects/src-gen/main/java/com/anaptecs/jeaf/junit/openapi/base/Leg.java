@@ -226,11 +226,10 @@ public class Leg implements ServiceObject {
   }
 
   /**
-   * Method returns the association "stopovers".
+   * Method returns association {@link #stopovers}.<br/>
    * 
-   *
-   * @return Collection All PlaceRef objects that belong to the association "stopovers". The method never returns null
-   * and the returned collection is modifiable.
+   * @return {@link List<PlaceRef>} Value to which {@link #stopovers} is set. The method never returns null and the
+   * returned collection is modifiable.
    */
   public List<PlaceRef> getStopovers( ) {
     // Return all PlaceRef objects directly without any protection against modification.

@@ -271,10 +271,9 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method returns the association "readonlyAssociation".
+   * Method returns association {@link #readonlyAssociation}.<br/>
    * 
-   *
-   * @return Collection All ImmutablePOJO objects that belong to the association "readonlyAssociation". The method never
+   * @return {@link SortedSet<ImmutablePOJO>} Value to which {@link #readonlyAssociation} is set. The method never
    * returns null and the returned collection is unmodifiable.
    */
   public SortedSet<ImmutablePOJO> getReadonlyAssociation( ) {
@@ -292,11 +291,10 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method returns the association "deprecatedRefs".
+   * Method returns association {@link #deprecatedRefs}.<br/>
    * 
-   *
-   * @return Collection All ImmutableChildPOJO objects that belong to the association "deprecatedRefs". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link Set<ImmutableChildPOJO>} Value to which {@link #deprecatedRefs} is set. The method never returns
+   * null and the returned collection is unmodifiable.
    */
   @Deprecated
   public Set<ImmutableChildPOJO> getDeprecatedRefs( ) {

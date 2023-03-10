@@ -206,11 +206,10 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the association "postalAddresses".
+   * Method returns association {@link #postalAddresses}.<br/>
    * 
-   *
-   * @return Collection All PostalAddress objects that belong to the association "postalAddresses". The method never
-   * returns null and the returned collection is modifiable.
+   * @return {@link List<PostalAddress>} Value to which {@link #postalAddresses} is set. The method never returns null
+   * and the returned collection is modifiable.
    */
   public List<PostalAddress> getPostalAddresses( ) {
     // Return all PostalAddress objects directly without any protection against modification.

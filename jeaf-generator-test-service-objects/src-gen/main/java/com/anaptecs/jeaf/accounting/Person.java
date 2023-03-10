@@ -423,11 +423,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the association "accounts".
+   * Method returns association {@link #accounts}.<br/>
    * 
-   *
-   * @return Collection All Account objects that belong to the association "accounts". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<Account>} Value to which {@link #accounts} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Account> getAccounts( ) {
     // Return all Account objects as unmodifiable collection.

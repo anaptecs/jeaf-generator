@@ -137,11 +137,10 @@ public class PartnerContainer implements ServiceObject {
   }
 
   /**
-   * Method returns the association "partners".
+   * Method returns association {@link #partners}.<br/>
    * 
-   *
-   * @return Collection All Partner objects that belong to the association "partners". The method never returns null and
-   * the returned collection is modifiable.
+   * @return {@link List<Partner>} Value to which {@link #partners} is set. The method never returns null and the
+   * returned collection is modifiable.
    */
   public List<Partner> getPartners( ) {
     // Return all Partner objects directly without any protection against modification.

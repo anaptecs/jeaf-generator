@@ -52,11 +52,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "orderedUnique".
+   * Method returns association {@link #orderedUnique}.<br/>
    * 
-   *
-   * @return Collection All OrderingB objects that belong to the association "orderedUnique". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link SortedSet<OrderingB>} Value to which {@link #orderedUnique} is set. The method never returns null
+   * and the returned collection is unmodifiable.
    */
   public SortedSet<OrderingB> getOrderedUnique( ) {
     // Return all OrderingB objects as unmodifiable collection.
@@ -135,11 +134,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "orderedNotUnique".
+   * Method returns association {@link #orderedNotUnique}.<br/>
    * 
-   *
-   * @return Collection All OrderingB objects that belong to the association "orderedNotUnique". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link List<OrderingB>} Value to which {@link #orderedNotUnique} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public List<OrderingB> getOrderedNotUnique( ) {
     // Return all OrderingB objects as unmodifiable collection.
@@ -259,11 +257,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "notOrderedNotUnique".
+   * Method returns association {@link #notOrderedNotUnique}.<br/>
    * 
-   *
-   * @return Collection All OrderingB objects that belong to the association "notOrderedNotUnique". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link Collection<OrderingB>} Value to which {@link #notOrderedNotUnique} is set. The method never returns
+   * null and the returned collection is unmodifiable.
    */
   public Collection<OrderingB> getNotOrderedNotUnique( ) {
     // Return all OrderingB objects as unmodifiable collection.

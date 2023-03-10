@@ -246,11 +246,10 @@ public class Booking {
   }
 
   /**
-   * Method returns the association "inventories".
+   * Method returns association {@link #inventories}.<br/>
    * 
-   *
-   * @return Collection All InventoryType objects that belong to the association "inventories". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link List<InventoryType>} Value to which {@link #inventories} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public List<InventoryType> getInventories( ) {
     // Return all InventoryType objects as unmodifiable collection.

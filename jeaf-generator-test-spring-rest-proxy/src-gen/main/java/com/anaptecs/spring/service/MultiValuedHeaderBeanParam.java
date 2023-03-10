@@ -565,11 +565,10 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method returns the association "stringCodeList".
+   * Method returns association {@link #stringCodeList}.<br/>
    * 
-   *
-   * @return Collection All StringCode objects that belong to the association "stringCodeList". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link Set<StringCode>} Value to which {@link #stringCodeList} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public Set<StringCode> getStringCodeList( ) {
     // Return all StringCode objects as unmodifiable collection.
@@ -676,11 +675,10 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method returns the association "timestamps".
+   * Method returns association {@link #timestamps}.<br/>
    * 
-   *
-   * @return Collection All LocalDateTime objects that belong to the association "timestamps". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link Set<LocalDateTime>} Value to which {@link #timestamps} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<LocalDateTime> getTimestamps( ) {
     // Return all LocalDateTime objects as unmodifiable collection.

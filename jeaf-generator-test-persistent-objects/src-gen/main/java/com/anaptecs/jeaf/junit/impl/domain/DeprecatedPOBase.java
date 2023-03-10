@@ -123,11 +123,10 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "baseClasses".
+   * Method returns association {@link #baseClasses}.<br/>
    * 
-   *
-   * @return Collection All BaseClassBO objects that belong to the association "baseClasses". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link Set<BaseClassBO>} Value to which {@link #baseClasses} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   @Deprecated
   public Set<BaseClassBO> getBaseClasses( ) {

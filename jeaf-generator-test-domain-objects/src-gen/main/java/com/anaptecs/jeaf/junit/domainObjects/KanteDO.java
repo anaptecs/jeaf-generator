@@ -168,11 +168,10 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method returns the association "netzbereiche".
+   * Method returns association {@link #netzbereiche}.<br/>
    * 
-   *
-   * @return Collection All NetzbereichDO objects that belong to the association "netzbereiche". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link Set<NetzbereichDO>} Value to which {@link #netzbereiche} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public Set<NetzbereichDO> getNetzbereiche( ) {
     // Return all NetzbereichDO objects as unmodifiable collection.

@@ -53,11 +53,10 @@ public class AssortmentDO extends DomainObject {
   }
 
   /**
-   * Method returns the association "products".
+   * Method returns association {@link #products}.<br/>
    * 
-   *
-   * @return Collection All ProductDO objects that belong to the association "products". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<ProductDO>} Value to which {@link #products} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<ProductDO> getProducts( ) {
     // Return all ProductDO objects as unmodifiable collection.

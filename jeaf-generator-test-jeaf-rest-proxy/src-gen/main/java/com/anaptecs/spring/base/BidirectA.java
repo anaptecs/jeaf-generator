@@ -210,11 +210,10 @@ public class BidirectA implements Serializable {
   }
 
   /**
-   * Method returns the association "transientBs".
+   * Method returns association {@link #transientBs}.<br/>
    * 
-   *
-   * @return Collection All BidirectB objects that belong to the association "transientBs". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link Set<BidirectB>} Value to which {@link #transientBs} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<BidirectB> getTransientBs( ) {
     // Return all BidirectB objects as unmodifiable collection.

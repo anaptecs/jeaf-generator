@@ -242,11 +242,10 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Method returns the association "complexBookings".
+   * Method returns association {@link #complexBookings}.<br/>
    * 
-   *
-   * @return Collection All ComplexBookingID objects that belong to the association "complexBookings". The method never
-   * returns null and the returned collection is modifiable.
+   * @return {@link Set<ComplexBookingID>} Value to which {@link #complexBookings} is set. The method never returns null
+   * and the returned collection is modifiable.
    */
   public Set<ComplexBookingID> getComplexBookings( ) {
     // Return all ComplexBookingID objects directly without any protection against modification.

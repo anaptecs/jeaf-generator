@@ -574,11 +574,10 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method returns the association "doubleCodes".
+   * Method returns association {@link #doubleCodes}.<br/>
    * 
-   *
-   * @return Collection All DoubleCode objects that belong to the association "doubleCodes". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link Set<DoubleCode>} Value to which {@link #doubleCodes} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<DoubleCode> getDoubleCodes( ) {
     // Return all DoubleCode objects as unmodifiable collection.
@@ -638,11 +637,10 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method returns the association "bookingIDs".
+   * Method returns association {@link #bookingIDs}.<br/>
    * 
-   *
-   * @return Collection All BookingID objects that belong to the association "bookingIDs". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<BookingID>} Value to which {@link #bookingIDs} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<BookingID> getBookingIDs( ) {
     // Return all BookingID objects as unmodifiable collection.
@@ -816,11 +814,10 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method returns the association "timestamps".
+   * Method returns association {@link #timestamps}.<br/>
    * 
-   *
-   * @return Collection All LocalDateTime objects that belong to the association "timestamps". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link List<LocalDateTime>} Value to which {@link #timestamps} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public List<LocalDateTime> getTimestamps( ) {
     // Return all LocalDateTime objects as unmodifiable collection.
@@ -879,11 +876,10 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method returns the association "times".
+   * Method returns association {@link #times}.<br/>
    * 
-   *
-   * @return Collection All OffsetTime objects that belong to the association "times". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<OffsetTime>} Value to which {@link #times} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<OffsetTime> getTimes( ) {
     // Return all OffsetTime objects as unmodifiable collection.

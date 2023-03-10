@@ -108,11 +108,10 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   }
 
   /**
-   * Method returns the association "uicCodes".
+   * Method returns association {@link #uicCodes}.<br/>
    * 
-   *
-   * @return Collection All UICCodeDO objects that belong to the association "uicCodes". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link SortedSet<UICCodeDO>} Value to which {@link #uicCodes} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public SortedSet<UICCodeDO> getUicCodes( ) {
     // Return all UICCodeDO objects as unmodifiable collection.

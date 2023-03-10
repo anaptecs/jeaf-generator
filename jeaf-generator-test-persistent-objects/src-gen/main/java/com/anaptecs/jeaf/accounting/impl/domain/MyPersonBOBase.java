@@ -157,11 +157,10 @@ public abstract class MyPersonBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "accounts".
+   * Method returns association {@link #accounts}.<br/>
    * 
-   *
-   * @return Collection All AccountBO objects that belong to the association "accounts". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<AccountBO>} Value to which {@link #accounts} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<AccountBO> getAccounts( ) {
     // Return all AccountBO objects as unmodifiable collection.

@@ -261,11 +261,10 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method returns the association "ibans".
+   * Method returns association {@link #ibans}.<br/>
    * 
-   *
-   * @return Collection All IBAN objects that belong to the association "ibans". The method never returns null and the
-   * returned collection is unmodifiable.
+   * @return {@link Set<IBAN>} Value to which {@link #ibans} is set. The method never returns null and the returned
+   * collection is unmodifiable.
    */
   public Set<IBAN> getIbans( ) {
     // Return all IBAN objects as unmodifiable collection.
@@ -354,10 +353,11 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method returns the association "legacyBankAccounts". Association is still there be SemVer compliant.
-   *
-   * @return Collection All BankAccount objects that belong to the association "legacyBankAccounts". The method never
-   * returns null and the returned collection is unmodifiable.
+   * Method returns association {@link #legacyBankAccounts}.<br/>
+   * Association is still there be SemVer compliant.
+   * 
+   * @return {@link List<BankAccount>} Value to which {@link #legacyBankAccounts} is set. The method never returns null
+   * and the returned collection is unmodifiable.
    */
   @Deprecated
   public List<BankAccount> getLegacyBankAccounts( ) {

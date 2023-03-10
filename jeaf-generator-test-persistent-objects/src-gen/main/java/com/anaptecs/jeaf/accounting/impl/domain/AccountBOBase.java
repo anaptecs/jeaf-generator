@@ -195,11 +195,10 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "bookings".
+   * Method returns association {@link #bookings}.<br/>
    * 
-   *
-   * @return Collection All BookingBO objects that belong to the association "bookings". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<BookingBO>} Value to which {@link #bookings} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<BookingBO> getBookings( ) {
     // Return all BookingBO objects as unmodifiable collection.
@@ -276,11 +275,10 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "authorizedPersons".
+   * Method returns association {@link #authorizedPersons}.<br/>
    * 
-   *
-   * @return Collection All MyPersonBO objects that belong to the association "authorizedPersons". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link Set<MyPersonBO>} Value to which {@link #authorizedPersons} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public Set<MyPersonBO> getAuthorizedPersons( ) {
     // Return all MyPersonBO objects as unmodifiable collection.

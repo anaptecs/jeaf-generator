@@ -379,11 +379,10 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method returns the association "remitters".
+   * Method returns association {@link #remitters}.<br/>
    * 
-   *
-   * @return Collection All Person objects that belong to the association "remitters". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<Person>} Value to which {@link #remitters} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Person> getRemitters( ) {
     // Return all Person objects as unmodifiable collection.

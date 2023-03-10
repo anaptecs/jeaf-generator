@@ -59,11 +59,10 @@ public abstract class MReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "ns".
+   * Method returns association {@link #ns}.<br/>
    * 
-   *
-   * @return Collection All NReleationBO objects that belong to the association "ns". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<NReleationBO>} Value to which {@link #ns} is set. The method never returns null and the returned
+   * collection is unmodifiable.
    */
   public Set<NReleationBO> getNs( ) {
     // Return all NReleationBO objects as unmodifiable collection.

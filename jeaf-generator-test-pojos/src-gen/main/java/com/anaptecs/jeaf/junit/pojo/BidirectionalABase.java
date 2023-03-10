@@ -328,11 +328,10 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method returns the association "transientBs".
+   * Method returns association {@link #transientBs}.<br/>
    * 
-   *
-   * @return Collection All BidirectionalB objects that belong to the association "transientBs". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link Set<BidirectionalB>} Value to which {@link #transientBs} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public Set<BidirectionalB> getTransientBs( ) {
     // Return all BidirectionalB objects as unmodifiable collection.

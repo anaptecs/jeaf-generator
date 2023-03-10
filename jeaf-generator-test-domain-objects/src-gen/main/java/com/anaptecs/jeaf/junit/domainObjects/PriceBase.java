@@ -106,11 +106,10 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method returns the association "verbindungspunkte".
+   * Method returns association {@link #verbindungspunkte}.<br/>
    * 
-   *
-   * @return Collection All VerbindungspunktDO objects that belong to the association "verbindungspunkte". The method
-   * never returns null and the returned collection is unmodifiable.
+   * @return {@link Set<VerbindungspunktDO>} Value to which {@link #verbindungspunkte} is set. The method never returns
+   * null and the returned collection is unmodifiable.
    */
   @Deprecated
   public Set<VerbindungspunktDO> getVerbindungspunkte( ) {

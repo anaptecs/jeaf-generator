@@ -248,11 +248,10 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method returns the association "links".
+   * Method returns association {@link #links}.<br/>
    * 
-   *
-   * @return Collection All LinkObject objects that belong to the association "links". The method never returns null and
-   * the returned collection is modifiable.
+   * @return {@link List<LinkObject>} Value to which {@link #links} is set. The method never returns null and the
+   * returned collection is modifiable.
    */
   public List<LinkObject> getLinks( ) {
     // Return all LinkObject objects directly without any protection against modification.

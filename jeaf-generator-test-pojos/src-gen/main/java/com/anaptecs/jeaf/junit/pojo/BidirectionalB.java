@@ -196,11 +196,10 @@ public class BidirectionalB {
   }
 
   /**
-   * Method returns the association "as".
+   * Method returns association {@link #as}.<br/>
    * 
-   *
-   * @return Collection All BidirectionalA objects that belong to the association "as". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link List<BidirectionalA>} Value to which {@link #as} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public List<BidirectionalA> getAs( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -285,11 +284,10 @@ public class BidirectionalB {
   }
 
   /**
-   * Method returns the association "theAs".
+   * Method returns association {@link #theAs}.<br/>
    * 
-   *
-   * @return Collection All BidirectionalA objects that belong to the association "theAs". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link List<BidirectionalA>} Value to which {@link #theAs} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public List<BidirectionalA> getTheAs( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling

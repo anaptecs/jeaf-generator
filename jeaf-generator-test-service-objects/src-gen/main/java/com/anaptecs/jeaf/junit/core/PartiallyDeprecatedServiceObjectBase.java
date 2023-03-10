@@ -306,11 +306,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method returns the association "deprecatedRefs".
+   * Method returns association {@link #deprecatedRefs}.<br/>
    * 
-   *
-   * @return Collection All ValidationTestObject objects that belong to the association "deprecatedRefs". The method
-   * never returns null and the returned collection is unmodifiable.
+   * @return {@link Set<ValidationTestObject>} Value to which {@link #deprecatedRefs} is set. The method never returns
+   * null and the returned collection is unmodifiable.
    */
   @Deprecated
   public Set<ValidationTestObject> getDeprecatedRefs( ) {

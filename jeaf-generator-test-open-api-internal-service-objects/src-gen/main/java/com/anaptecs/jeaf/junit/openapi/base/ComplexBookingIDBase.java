@@ -252,11 +252,10 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method returns the association "bookingIDs".
+   * Method returns association {@link #bookingIDs}.<br/>
    * 
-   *
-   * @return Collection All BookingID objects that belong to the association "bookingIDs". The method never returns null
-   * and the returned collection is modifiable.
+   * @return {@link List<BookingID>} Value to which {@link #bookingIDs} is set. The method never returns null and the
+   * returned collection is modifiable.
    */
   public List<BookingID> getBookingIDs( ) {
     // Return all BookingID objects directly without any protection against modification.

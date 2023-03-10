@@ -201,11 +201,10 @@ public class WeirdBooking implements Serializable {
   }
 
   /**
-   * Method returns the association "additionalBookings".
+   * Method returns association {@link #additionalBookings}.<br/>
    * 
-   *
-   * @return Collection All ComplexBookingID objects that belong to the association "additionalBookings". The method
-   * never returns null and the returned collection is unmodifiable.
+   * @return {@link List<ComplexBookingID>} Value to which {@link #additionalBookings} is set. The method never returns
+   * null and the returned collection is unmodifiable.
    */
   public List<ComplexBookingID> getAdditionalBookings( ) {
     // Return all ComplexBookingID objects as unmodifiable collection.

@@ -441,11 +441,10 @@ public class Product {
   }
 
   /**
-   * Method returns the association "resellers".
+   * Method returns association {@link #resellers}.<br/>
    * 
-   *
-   * @return Collection All Reseller objects that belong to the association "resellers". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<Reseller>} Value to which {@link #resellers} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Reseller> getResellers( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -603,11 +602,10 @@ public class Product {
   }
 
   /**
-   * Method returns the association "supportedCurrencies".
+   * Method returns association {@link #supportedCurrencies}.<br/>
    * 
-   *
-   * @return Collection All CurrencyCode objects that belong to the association "supportedCurrencies". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link Set<CurrencyCode>} Value to which {@link #supportedCurrencies} is set. The method never returns null
+   * and the returned collection is unmodifiable.
    */
   public Set<CurrencyCode> getSupportedCurrencies( ) {
     // Return all CurrencyCode objects as unmodifiable collection.
@@ -662,11 +660,10 @@ public class Product {
   }
 
   /**
-   * Method returns the association "productCodes".
+   * Method returns association {@link #productCodes}.<br/>
    * 
-   *
-   * @return Collection All ProductCode objects that belong to the association "productCodes". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link Set<ProductCode>} Value to which {@link #productCodes} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<ProductCode> getProductCodes( ) {
     // Return all ProductCode objects as unmodifiable collection.
@@ -741,11 +738,10 @@ public class Product {
   }
 
   /**
-   * Method returns the association "sortiments".
+   * Method returns association {@link #sortiments}.<br/>
    * 
-   *
-   * @return Collection All Sortiment objects that belong to the association "sortiments". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<Sortiment>} Value to which {@link #sortiments} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Sortiment> getSortiments( ) {
     // Return all Sortiment objects as unmodifiable collection.

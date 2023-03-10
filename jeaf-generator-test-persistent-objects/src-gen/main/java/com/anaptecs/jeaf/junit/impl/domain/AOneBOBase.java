@@ -126,11 +126,10 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "cManys".
+   * Method returns association {@link #cManys}.<br/>
    * 
-   *
-   * @return Collection All CManyBO objects that belong to the association "cManys". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<CManyBO>} Value to which {@link #cManys} is set. The method never returns null and the returned
+   * collection is unmodifiable.
    */
   public Set<CManyBO> getCManys( ) {
     // Return all CManyBO objects as unmodifiable collection.

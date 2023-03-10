@@ -103,11 +103,10 @@ public abstract class BankBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "employees".
+   * Method returns association {@link #employees}.<br/>
    * 
-   *
-   * @return Collection All EmployeeBO objects that belong to the association "employees". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<EmployeeBO>} Value to which {@link #employees} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<EmployeeBO> getEmployees( ) {
     // Return all EmployeeBO objects as unmodifiable collection.
@@ -184,11 +183,10 @@ public abstract class BankBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "accounts".
+   * Method returns association {@link #accounts}.<br/>
    * 
-   *
-   * @return Collection All AccountBO objects that belong to the association "accounts". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<AccountBO>} Value to which {@link #accounts} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<AccountBO> getAccounts( ) {
     // Return all AccountBO objects as unmodifiable collection.

@@ -140,10 +140,11 @@ public abstract class BookingBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "remitters". Person who authorized the booking.
-   *
-   * @return Collection All MyPersonBO objects that belong to the association "remitters". The method never returns null
-   * and the returned collection is unmodifiable.
+   * Method returns association {@link #remitters}.<br/>
+   * Person who authorized the booking.
+   * 
+   * @return {@link Set<MyPersonBO>} Value to which {@link #remitters} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<MyPersonBO> getRemitters( ) {
     // Return all MyPersonBO objects as unmodifiable collection.
