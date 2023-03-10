@@ -209,11 +209,10 @@ public class WeirdBooking {
   }
 
   /**
-   * Method adds all passed objects to the association "additionalBookings".
+   * Method adds all passed objects to {@link #additionalBookings}.
    * 
-   * 
-   * @param pAdditionalBookings Collection with all objects that should be added to the association
-   * "additionalBookings". The parameter must not be null.
+   * @param pAdditionalBookings Collection with all objects that should be added to {@link #additionalBookings}. The
+   * parameter must not be null.
    */
   public void addToAdditionalBookings( Collection<ComplexBookingID> pAdditionalBookings ) {
     // Add all passed objects.

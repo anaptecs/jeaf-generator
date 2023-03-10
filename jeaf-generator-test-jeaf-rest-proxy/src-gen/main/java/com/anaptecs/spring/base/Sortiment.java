@@ -188,11 +188,10 @@ public class Sortiment implements Serializable {
   }
 
   /**
-   * Method adds all passed objects to the association "products".
+   * Method adds all passed objects to {@link #products}.
    * 
-   * 
-   * @param pProducts Collection with all objects that should be added to the association "products". The parameter must
-   * not be null.
+   * @param pProducts Collection with all objects that should be added to {@link #products}. The parameter must not be
+   * null.
    */
   public void addToProducts( Collection<Product> pProducts ) {
     // Check parameter "pProducts" for invalid value null.

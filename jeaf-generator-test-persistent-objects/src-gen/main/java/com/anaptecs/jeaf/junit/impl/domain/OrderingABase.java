@@ -83,11 +83,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "orderedUnique".
+   * Method adds all passed objects to {@link #orderedUnique}.
    * 
-   * 
-   * @param pOrderedUnique Collection with all objects that should be added to the association "orderedUnique". The
-   * parameter must not be null.
+   * @param pOrderedUnique Collection with all objects that should be added to {@link #orderedUnique}. The parameter
+   * must not be null.
    */
   public void addToOrderedUnique( Collection<OrderingB> pOrderedUnique ) {
     // Check parameter "pOrderedUnique" for invalid value null.
@@ -163,11 +162,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "orderedNotUnique".
+   * Method adds all passed objects to {@link #orderedNotUnique}.
    * 
-   * 
-   * @param pOrderedNotUnique Collection with all objects that should be added to the association "orderedNotUnique".
-   * The parameter must not be null.
+   * @param pOrderedNotUnique Collection with all objects that should be added to {@link #orderedNotUnique}. The
+   * parameter must not be null.
    */
   public void addToOrderedNotUnique( Collection<OrderingB> pOrderedNotUnique ) {
     // Check parameter "pOrderedNotUnique" for invalid value null.
@@ -285,11 +283,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "notOrderedNotUnique".
+   * Method adds all passed objects to {@link #notOrderedNotUnique}.
    * 
-   * 
-   * @param pNotOrderedNotUnique Collection with all objects that should be added to the association
-   * "notOrderedNotUnique". The parameter must not be null.
+   * @param pNotOrderedNotUnique Collection with all objects that should be added to {@link #notOrderedNotUnique}. The
+   * parameter must not be null.
    */
   public void addToNotOrderedNotUnique( Collection<OrderingB> pNotOrderedNotUnique ) {
     // Check parameter "pNotOrderedNotUnique" for invalid value null.

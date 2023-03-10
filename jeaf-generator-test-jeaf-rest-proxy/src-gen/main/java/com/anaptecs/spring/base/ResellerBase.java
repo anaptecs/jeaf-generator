@@ -268,11 +268,10 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method adds all passed objects to the association "channels".
+   * Method adds all passed objects to {@link #channels}.
    * 
-   * 
-   * @param pChannels Collection with all objects that should be added to the association "channels". The parameter must
-   * not be null.
+   * @param pChannels Collection with all objects that should be added to {@link #channels}. The parameter must not be
+   * null.
    */
   public void addToChannels( Collection<Channel> pChannels ) {
     // Check parameter "pChannels" for invalid value null.
@@ -344,11 +343,10 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method adds all passed objects to the association "products".
+   * Method adds all passed objects to {@link #products}.
    * 
-   * 
-   * @param pProducts Collection with all objects that should be added to the association "products". The parameter must
-   * not be null.
+   * @param pProducts Collection with all objects that should be added to {@link #products}. The parameter must not be
+   * null.
    */
   public void addToProducts( Collection<Product> pProducts ) {
     // Check parameter "pProducts" for invalid value null.

@@ -196,11 +196,10 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method adds all passed objects to the association "netzbereiche".
+   * Method adds all passed objects to {@link #netzbereiche}.
    * 
-   * 
-   * @param pNetzbereiche Collection with all objects that should be added to the association "netzbereiche". The
-   * parameter must not be null.
+   * @param pNetzbereiche Collection with all objects that should be added to {@link #netzbereiche}. The parameter must
+   * not be null.
    */
   public void addToNetzbereiche( Collection<NetzbereichDO> pNetzbereiche ) {
     // Check parameter "pNetzbereiche" for invalid value null.

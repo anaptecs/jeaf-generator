@@ -89,6 +89,15 @@
 «ENDDEFINE»
 
 
+«DEFINE JavadocForPropertyAddAll FOR uml::Property»
+    /**
+     * Method adds all passed objects to {@link #«asInstanceVar()»}.     
+     * 
+     * @param «asParameter()» Collection with all objects that should be added to {@link #«asInstanceVar()»}. The parameter must not be null.
+     */
+«ENDDEFINE»
+
+
 «DEFINE JavadocForPropertySetter FOR uml::Property»
 /**
  * Method sets «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>

@@ -254,11 +254,10 @@ public class Leg {
   }
 
   /**
-   * Method adds all passed objects to the association "stopovers".
+   * Method adds all passed objects to {@link #stopovers}.
    * 
-   * 
-   * @param pStopovers Collection with all objects that should be added to the association "stopovers". The parameter
-   * must not be null.
+   * @param pStopovers Collection with all objects that should be added to {@link #stopovers}. The parameter must not be
+   * null.
    */
   public void addToStopovers( Collection<PlaceRef> pStopovers ) {
     // Add all passed objects.

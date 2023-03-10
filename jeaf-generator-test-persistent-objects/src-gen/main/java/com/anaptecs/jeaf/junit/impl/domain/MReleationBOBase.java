@@ -87,11 +87,9 @@ public abstract class MReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "ns".
+   * Method adds all passed objects to {@link #ns}.
    * 
-   * 
-   * @param pNs Collection with all objects that should be added to the association "ns". The parameter must not be
-   * null.
+   * @param pNs Collection with all objects that should be added to {@link #ns}. The parameter must not be null.
    */
   public void addToNs( Collection<NReleationBO> pNs ) {
     // Check parameter "pNs" for invalid value null.

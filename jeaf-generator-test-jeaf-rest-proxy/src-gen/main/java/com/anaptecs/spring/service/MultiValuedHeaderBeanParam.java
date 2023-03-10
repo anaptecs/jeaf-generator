@@ -624,11 +624,10 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   }
 
   /**
-   * Method adds all passed objects to the association "stringCodeList".
+   * Method adds all passed objects to {@link #stringCodeList}.
    * 
-   * 
-   * @param pStringCodeList Collection with all objects that should be added to the association "stringCodeList". The
-   * parameter must not be null.
+   * @param pStringCodeList Collection with all objects that should be added to {@link #stringCodeList}. The parameter
+   * must not be null.
    */
   public void addToStringCodeList( Collection<StringCode> pStringCodeList ) {
     // Check parameter "pStringCodeList" for invalid value null.
@@ -738,11 +737,10 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   }
 
   /**
-   * Method adds all passed objects to the association "timestamps".
+   * Method adds all passed objects to {@link #timestamps}.
    * 
-   * 
-   * @param pTimestamps Collection with all objects that should be added to the association "timestamps". The parameter
-   * must not be null.
+   * @param pTimestamps Collection with all objects that should be added to {@link #timestamps}. The parameter must not
+   * be null.
    */
   public void addToTimestamps( Collection<LocalDateTime> pTimestamps ) {
     // Check parameter "pTimestamps" for invalid value null.

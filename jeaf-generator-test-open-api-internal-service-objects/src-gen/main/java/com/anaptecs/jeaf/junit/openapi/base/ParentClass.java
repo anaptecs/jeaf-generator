@@ -283,11 +283,9 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "ibans".
+   * Method adds all passed objects to {@link #ibans}.
    * 
-   * 
-   * @param pIbans Collection with all objects that should be added to the association "ibans". The parameter must not
-   * be null.
+   * @param pIbans Collection with all objects that should be added to {@link #ibans}. The parameter must not be null.
    */
   public void addToIbans( Collection<IBAN> pIbans ) {
     // Check parameter "pIbans" for invalid value null.
@@ -378,11 +376,10 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "legacyBankAccounts". Association is still there be SemVer
-   * compliant.
+   * Method adds all passed objects to {@link #legacyBankAccounts}.
    * 
-   * @param pLegacyBankAccounts Collection with all objects that should be added to the association
-   * "legacyBankAccounts". The parameter must not be null.
+   * @param pLegacyBankAccounts Collection with all objects that should be added to {@link #legacyBankAccounts}. The
+   * parameter must not be null.
    */
   @Deprecated
   public void addToLegacyBankAccounts( Collection<BankAccount> pLegacyBankAccounts ) {

@@ -356,11 +356,10 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method adds all passed objects to the association "transientBs".
+   * Method adds all passed objects to {@link #transientBs}.
    * 
-   * 
-   * @param pTransientBs Collection with all objects that should be added to the association "transientBs". The
-   * parameter must not be null.
+   * @param pTransientBs Collection with all objects that should be added to {@link #transientBs}. The parameter must
+   * not be null.
    */
   public void addToTransientBs( Collection<BidirectionalB> pTransientBs ) {
     // Check parameter "pTransientBs" for invalid value null.

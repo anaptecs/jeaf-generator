@@ -317,11 +317,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "booleanSet".
+   * Method adds all passed objects to {@link #booleanSet}.
    * 
-   * 
-   * @param pBooleanSet Collection with all objects that should be added to the association "booleanSet". The parameter
-   * must not be null.
+   * @param pBooleanSet Collection with all objects that should be added to {@link #booleanSet}. The parameter must not
+   * be null.
    */
   public void addToBooleanSet( Collection<Boolean> pBooleanSet ) {
     // Check parameter "pBooleanSet" for invalid value null.
@@ -378,11 +377,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "buffers".
+   * Method adds all passed objects to {@link #buffers}.
    * 
-   * 
-   * @param pBuffers Collection with all objects that should be added to the association "buffers". The parameter must
-   * not be null.
+   * @param pBuffers Collection with all objects that should be added to {@link #buffers}. The parameter must not be
+   * null.
    */
   public void addToBuffers( Collection<StringBuffer> pBuffers ) {
     // Check parameter "pBuffers" for invalid value null.
@@ -439,11 +437,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "strings".
+   * Method adds all passed objects to {@link #strings}.
    * 
-   * 
-   * @param pStrings Collection with all objects that should be added to the association "strings". The parameter must
-   * not be null.
+   * @param pStrings Collection with all objects that should be added to {@link #strings}. The parameter must not be
+   * null.
    */
   public void addToStrings( Collection<String> pStrings ) {
     // Check parameter "pStrings" for invalid value null.

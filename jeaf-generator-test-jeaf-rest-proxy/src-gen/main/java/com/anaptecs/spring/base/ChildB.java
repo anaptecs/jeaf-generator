@@ -271,10 +271,10 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method adds all passed objects to the association "composition". the composition
+   * Method adds all passed objects to {@link #composition}.
    * 
-   * @param pComposition Collection with all objects that should be added to the association "composition". The
-   * parameter must not be null.
+   * @param pComposition Collection with all objects that should be added to {@link #composition}. The parameter must
+   * not be null.
    */
   public void addToComposition( Collection<ParentClass> pComposition ) {
     // Check parameter "pComposition" for invalid value null.

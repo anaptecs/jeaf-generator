@@ -293,11 +293,7 @@
         «EXPAND GenerateInitOpposite»
     }
     
-    /**
-     * Method adds all passed objects to {@link #«asInstanceVar()»}.     
-     * 
-     * @param «asParameter()» Collection with all objects that should be added to {@link #«asInstanceVar()»}. The parameter must not be null.
-     */
+  «EXPAND functions::Javadoc::JavadocForPropertyAddAll»
   «EXPAND java::Helper::GenerateDeprecationAnnotation-»
   public void addTo«name.toFirstUpper()» (java.util.Collection<«this.getMultivaluedSoftLinkType()»> «asParameter()») {
         «IF isTargetRuntimeJEAF()»
@@ -472,12 +468,7 @@
         «EXPAND GenerateInitOpposite»
 	}
 	
-    /**
-     * Method adds all passed objects to the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     * 
-     * @param «asParameter()» Collection with all objects that should be added to the association "«asInstanceVar()»". The parameter must not be null.
-     */
+  «EXPAND functions::Javadoc::JavadocForPropertyAddAll»
   «EXPAND java::Helper::GenerateDeprecationAnnotation-»
   public void addTo«name.toFirstUpper()» (java.util.Collection<«this.type.fqn()»> «asParameter()») {
         «IF isTargetRuntimeJEAF()»

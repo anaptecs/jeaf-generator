@@ -316,11 +316,10 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method adds all passed objects to the association "deprecatedRefs".
+   * Method adds all passed objects to {@link #deprecatedRefs}.
    * 
-   * 
-   * @param pDeprecatedRefs Collection with all objects that should be added to the association "deprecatedRefs". The
-   * parameter must not be null.
+   * @param pDeprecatedRefs Collection with all objects that should be added to {@link #deprecatedRefs}. The parameter
+   * must not be null.
    */
   @Deprecated
   public void addToDeprecatedRefs( Collection<ImmutableChildPOJO> pDeprecatedRefs ) {

@@ -501,11 +501,10 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method adds all passed objects to the association "resellers".
+   * Method adds all passed objects to {@link #resellers}.
    * 
-   * 
-   * @param pResellers Collection with all objects that should be added to the association "resellers". The parameter
-   * must not be null.
+   * @param pResellers Collection with all objects that should be added to {@link #resellers}. The parameter must not be
+   * null.
    */
   public void addToResellers( Collection<Reseller> pResellers ) {
     // Check parameter "pResellers" for invalid value null.
@@ -653,11 +652,10 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method adds all passed objects to the association "supportedCurrencies".
+   * Method adds all passed objects to {@link #supportedCurrencies}.
    * 
-   * 
-   * @param pSupportedCurrencies Collection with all objects that should be added to the association
-   * "supportedCurrencies". The parameter must not be null.
+   * @param pSupportedCurrencies Collection with all objects that should be added to {@link #supportedCurrencies}. The
+   * parameter must not be null.
    */
   public void addToSupportedCurrencies( Collection<CurrencyCode> pSupportedCurrencies ) {
     // Check parameter "pSupportedCurrencies" for invalid value null.
@@ -715,11 +713,10 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method adds all passed objects to the association "productCodes".
+   * Method adds all passed objects to {@link #productCodes}.
    * 
-   * 
-   * @param pProductCodes Collection with all objects that should be added to the association "productCodes". The
-   * parameter must not be null.
+   * @param pProductCodes Collection with all objects that should be added to {@link #productCodes}. The parameter must
+   * not be null.
    */
   public void addToProductCodes( Collection<ProductCode> pProductCodes ) {
     // Check parameter "pProductCodes" for invalid value null.
@@ -803,11 +800,10 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method adds all passed objects to the association "sortiments".
+   * Method adds all passed objects to {@link #sortiments}.
    * 
-   * 
-   * @param pSortiments Collection with all objects that should be added to the association "sortiments". The parameter
-   * must not be null.
+   * @param pSortiments Collection with all objects that should be added to {@link #sortiments}. The parameter must not
+   * be null.
    */
   public void addToSortiments( Collection<Sortiment> pSortiments ) {
     // Check parameter "pSortiments" for invalid value null.

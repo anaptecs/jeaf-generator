@@ -597,11 +597,10 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method adds all passed objects to the association "doubleCodes".
+   * Method adds all passed objects to {@link #doubleCodes}.
    * 
-   * 
-   * @param pDoubleCodes Collection with all objects that should be added to the association "doubleCodes". The
-   * parameter must not be null.
+   * @param pDoubleCodes Collection with all objects that should be added to {@link #doubleCodes}. The parameter must
+   * not be null.
    */
   public void addToDoubleCodes( Collection<DoubleCode> pDoubleCodes ) {
     // Check parameter "pDoubleCodes" for invalid value null.
@@ -659,11 +658,10 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method adds all passed objects to the association "bookingIDs".
+   * Method adds all passed objects to {@link #bookingIDs}.
    * 
-   * 
-   * @param pBookingIDs Collection with all objects that should be added to the association "bookingIDs". The parameter
-   * must not be null.
+   * @param pBookingIDs Collection with all objects that should be added to {@link #bookingIDs}. The parameter must not
+   * be null.
    */
   public void addToBookingIDs( Collection<BookingID> pBookingIDs ) {
     // Check parameter "pBookingIDs" for invalid value null.
@@ -835,11 +833,10 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method adds all passed objects to the association "timestamps".
+   * Method adds all passed objects to {@link #timestamps}.
    * 
-   * 
-   * @param pTimestamps Collection with all objects that should be added to the association "timestamps". The parameter
-   * must not be null.
+   * @param pTimestamps Collection with all objects that should be added to {@link #timestamps}. The parameter must not
+   * be null.
    */
   public void addToTimestamps( Collection<LocalDateTime> pTimestamps ) {
     // Check parameter "pTimestamps" for invalid value null.
@@ -896,11 +893,9 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method adds all passed objects to the association "times".
+   * Method adds all passed objects to {@link #times}.
    * 
-   * 
-   * @param pTimes Collection with all objects that should be added to the association "times". The parameter must not
-   * be null.
+   * @param pTimes Collection with all objects that should be added to {@link #times}. The parameter must not be null.
    */
   public void addToTimes( Collection<OffsetTime> pTimes ) {
     // Check parameter "pTimes" for invalid value null.

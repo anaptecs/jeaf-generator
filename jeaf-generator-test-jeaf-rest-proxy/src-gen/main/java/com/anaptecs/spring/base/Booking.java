@@ -284,11 +284,10 @@ public class Booking implements Serializable {
   }
 
   /**
-   * Method adds all passed objects to the association "inventories".
+   * Method adds all passed objects to {@link #inventories}.
    * 
-   * 
-   * @param pInventories Collection with all objects that should be added to the association "inventories". The
-   * parameter must not be null.
+   * @param pInventories Collection with all objects that should be added to {@link #inventories}. The parameter must
+   * not be null.
    */
   public void addToInventories( Collection<InventoryType> pInventories ) {
     // Check parameter "pInventories" for invalid value null.

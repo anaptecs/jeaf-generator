@@ -288,11 +288,10 @@ public class CodeTypeUsageTest implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "booleanCodeAssociation".
+   * Method adds all passed objects to {@link #booleanCodeAssociation}.
    * 
-   * 
-   * @param pBooleanCodeAssociation Collection with all objects that should be added to the association
-   * "booleanCodeAssociation". The parameter must not be null.
+   * @param pBooleanCodeAssociation Collection with all objects that should be added to {@link #booleanCodeAssociation}.
+   * The parameter must not be null.
    */
   public void addToBooleanCodeAssociation( Collection<BooleanCodeType> pBooleanCodeAssociation ) {
     // Check parameter "pBooleanCodeAssociation" for invalid value null.
@@ -351,11 +350,10 @@ public class CodeTypeUsageTest implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "shortCodeTypeAssociation".
+   * Method adds all passed objects to {@link #shortCodeTypeAssociation}.
    * 
-   * 
-   * @param pShortCodeTypeAssociation Collection with all objects that should be added to the association
-   * "shortCodeTypeAssociation". The parameter must not be null.
+   * @param pShortCodeTypeAssociation Collection with all objects that should be added to
+   * {@link #shortCodeTypeAssociation}. The parameter must not be null.
    */
   public void addToShortCodeTypeAssociation( Collection<ShortCodeType> pShortCodeTypeAssociation ) {
     // Check parameter "pShortCodeTypeAssociation" for invalid value null.

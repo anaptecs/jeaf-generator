@@ -90,11 +90,10 @@ public abstract class ClassB_BOBase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "classAs".
+   * Method adds all passed objects to {@link #classAs}.
    * 
-   * 
-   * @param pClassAs Collection with all objects that should be added to the association "classAs". The parameter must
-   * not be null.
+   * @param pClassAs Collection with all objects that should be added to {@link #classAs}. The parameter must not be
+   * null.
    */
   public void addToClassAs( Collection<ClassA_BO> pClassAs ) {
     // Check parameter "pClassAs" for invalid value null.

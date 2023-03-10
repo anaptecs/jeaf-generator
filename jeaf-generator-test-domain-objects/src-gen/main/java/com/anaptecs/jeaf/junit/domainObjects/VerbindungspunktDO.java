@@ -131,11 +131,10 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   }
 
   /**
-   * Method adds all passed objects to the association "uicCodes".
+   * Method adds all passed objects to {@link #uicCodes}.
    * 
-   * 
-   * @param pUicCodes Collection with all objects that should be added to the association "uicCodes". The parameter must
-   * not be null.
+   * @param pUicCodes Collection with all objects that should be added to {@link #uicCodes}. The parameter must not be
+   * null.
    */
   public void addToUicCodes( Collection<UICCodeDO> pUicCodes ) {
     // Check parameter "pUicCodes" for invalid value null.

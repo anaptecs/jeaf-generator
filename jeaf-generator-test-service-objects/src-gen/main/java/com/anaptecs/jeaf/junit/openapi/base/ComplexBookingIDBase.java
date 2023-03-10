@@ -292,11 +292,10 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "bookingIDs".
+   * Method adds all passed objects to {@link #bookingIDs}.
    * 
-   * 
-   * @param pBookingIDs Collection with all objects that should be added to the association "bookingIDs". The parameter
-   * must not be null.
+   * @param pBookingIDs Collection with all objects that should be added to {@link #bookingIDs}. The parameter must not
+   * be null.
    */
   public void addToBookingIDs( Collection<BookingID> pBookingIDs ) {
     // Check parameter "pBookingIDs" for invalid value null.

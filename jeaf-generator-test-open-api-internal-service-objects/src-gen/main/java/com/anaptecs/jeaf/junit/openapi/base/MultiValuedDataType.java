@@ -323,10 +323,10 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "stringCodeHeader". This is my multivalued test header
+   * Method adds all passed objects to {@link #stringCodeHeader}.
    * 
-   * @param pStringCodeHeader Collection with all objects that should be added to the association "stringCodeHeader".
-   * The parameter must not be null.
+   * @param pStringCodeHeader Collection with all objects that should be added to {@link #stringCodeHeader}. The
+   * parameter must not be null.
    */
   public void addToStringCodeHeader( Collection<StringCode> pStringCodeHeader ) {
     // Check parameter "pStringCodeHeader" for invalid value null.
@@ -385,10 +385,10 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "longCodeQueryParam". Multivalued query param
+   * Method adds all passed objects to {@link #longCodeQueryParam}.
    * 
-   * @param pLongCodeQueryParam Collection with all objects that should be added to the association
-   * "longCodeQueryParam". The parameter must not be null.
+   * @param pLongCodeQueryParam Collection with all objects that should be added to {@link #longCodeQueryParam}. The
+   * parameter must not be null.
    */
   public void addToLongCodeQueryParam( Collection<LongCode> pLongCodeQueryParam ) {
     // Check parameter "pLongCodeQueryParam" for invalid value null.
@@ -445,10 +445,10 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "literals". so many literals are possible
+   * Method adds all passed objects to {@link #literals}.
    * 
-   * @param pLiterals Collection with all objects that should be added to the association "literals". The parameter must
-   * not be null.
+   * @param pLiterals Collection with all objects that should be added to {@link #literals}. The parameter must not be
+   * null.
    */
   public void addToLiterals( Collection<BooleanLiteralsEnum> pLiterals ) {
     // Check parameter "pLiterals" for invalid value null.

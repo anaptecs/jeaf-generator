@@ -132,11 +132,10 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method adds all passed objects to the association "verbindungspunkte".
+   * Method adds all passed objects to {@link #verbindungspunkte}.
    * 
-   * 
-   * @param pVerbindungspunkte Collection with all objects that should be added to the association "verbindungspunkte".
-   * The parameter must not be null.
+   * @param pVerbindungspunkte Collection with all objects that should be added to {@link #verbindungspunkte}. The
+   * parameter must not be null.
    */
   @Deprecated
   public void addToVerbindungspunkte( Collection<VerbindungspunktDO> pVerbindungspunkte ) {

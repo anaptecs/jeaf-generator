@@ -162,11 +162,10 @@ public class Partner {
   }
 
   /**
-   * Method adds all passed objects to the association "postalAddresses".
+   * Method adds all passed objects to {@link #postalAddresses}.
    * 
-   * 
-   * @param pPostalAddresses Collection with all objects that should be added to the association "postalAddresses". The
-   * parameter must not be null.
+   * @param pPostalAddresses Collection with all objects that should be added to {@link #postalAddresses}. The parameter
+   * must not be null.
    */
   public void addToPostalAddresses( Collection<PostalAddress> pPostalAddresses ) {
     // Add all passed objects.

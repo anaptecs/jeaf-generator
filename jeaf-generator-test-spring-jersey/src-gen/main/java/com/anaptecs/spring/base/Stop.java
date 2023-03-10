@@ -188,11 +188,9 @@ public class Stop {
   }
 
   /**
-   * Method adds all passed objects to the association "links".
+   * Method adds all passed objects to {@link #links}.
    * 
-   * 
-   * @param pLinks Collection with all objects that should be added to the association "links". The parameter must not
-   * be null.
+   * @param pLinks Collection with all objects that should be added to {@link #links}. The parameter must not be null.
    */
   public void addToLinks( Collection<LinkObject> pLinks ) {
     // Add all passed objects.

@@ -134,11 +134,10 @@ public abstract class BankBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "employees".
+   * Method adds all passed objects to {@link #employees}.
    * 
-   * 
-   * @param pEmployees Collection with all objects that should be added to the association "employees". The parameter
-   * must not be null.
+   * @param pEmployees Collection with all objects that should be added to {@link #employees}. The parameter must not be
+   * null.
    */
   public void addToEmployees( Collection<EmployeeBO> pEmployees ) {
     // Check parameter "pEmployees" for invalid value null.
@@ -213,11 +212,10 @@ public abstract class BankBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "accounts".
+   * Method adds all passed objects to {@link #accounts}.
    * 
-   * 
-   * @param pAccounts Collection with all objects that should be added to the association "accounts". The parameter must
-   * not be null.
+   * @param pAccounts Collection with all objects that should be added to {@link #accounts}. The parameter must not be
+   * null.
    */
   public void addToAccounts( Collection<AccountBO> pAccounts ) {
     // Check parameter "pAccounts" for invalid value null.

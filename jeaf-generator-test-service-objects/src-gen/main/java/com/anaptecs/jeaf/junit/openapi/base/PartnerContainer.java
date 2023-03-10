@@ -164,11 +164,10 @@ public class PartnerContainer implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "partners".
+   * Method adds all passed objects to {@link #partners}.
    * 
-   * 
-   * @param pPartners Collection with all objects that should be added to the association "partners". The parameter must
-   * not be null.
+   * @param pPartners Collection with all objects that should be added to {@link #partners}. The parameter must not be
+   * null.
    */
   public void addToPartners( Collection<Partner> pPartners ) {
     // Check parameter "pPartners" for invalid value null.
