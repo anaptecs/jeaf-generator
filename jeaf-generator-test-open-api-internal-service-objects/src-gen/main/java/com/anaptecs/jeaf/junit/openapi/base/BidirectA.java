@@ -99,8 +99,7 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class BidirectA. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>BidirectA</code>.
    */
   public static class Builder {
     private Set<BidirectB> transientBs;

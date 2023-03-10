@@ -63,8 +63,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   }
 
   /**
-   * Class implements builder to create a new instance of class ChildBeanParameterType. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ChildBeanParameterType</code>.
    */
   public static class Builder extends ParentBeanParamType.Builder {
     private String childProperty;

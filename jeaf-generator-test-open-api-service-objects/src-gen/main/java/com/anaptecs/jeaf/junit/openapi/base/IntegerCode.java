@@ -67,8 +67,7 @@ public class IntegerCode implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class IntegerCode. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>IntegerCode</code>.
    */
   public static class Builder {
     @Min(value = 1234)

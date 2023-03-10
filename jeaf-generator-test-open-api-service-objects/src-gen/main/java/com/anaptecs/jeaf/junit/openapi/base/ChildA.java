@@ -45,8 +45,7 @@ public abstract class ChildA extends ParentClass {
   }
 
   /**
-   * Class implements builder to create a new instance of class ChildA. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ChildA</code>.
    */
   public static abstract class Builder extends ParentClass.Builder {
     private int childAAttribute;

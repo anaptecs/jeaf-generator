@@ -85,8 +85,7 @@ public class DeprecatedContext {
   }
 
   /**
-   * Class implements builder to create a new instance of class DeprecatedContext. As the class has read only attributes
-   * or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>DeprecatedContext</code>.
    */
   @Deprecated
   public static class Builder {

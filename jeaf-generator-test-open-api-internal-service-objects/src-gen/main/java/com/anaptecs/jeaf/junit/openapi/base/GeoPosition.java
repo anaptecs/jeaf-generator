@@ -73,8 +73,7 @@ public class GeoPosition extends PlaceRef {
   }
 
   /**
-   * Class implements builder to create a new instance of class GeoPosition. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>GeoPosition</code>.
    */
   public static class Builder extends PlaceRef.Builder {
     private int longitude;

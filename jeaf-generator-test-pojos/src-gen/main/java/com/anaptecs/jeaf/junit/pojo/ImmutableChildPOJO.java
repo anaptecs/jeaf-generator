@@ -71,8 +71,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
   }
 
   /**
-   * Class implements builder to create a new instance of class ImmutableChildPOJO. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ImmutableChildPOJO</code>.
    */
   public static class Builder extends ImmutablePOJOParent.Builder {
     private String childAttribute;

@@ -75,8 +75,7 @@ public class BusinessParent extends TechParent {
   }
 
   /**
-   * Class implements builder to create a new instance of class BusinessParent. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>BusinessParent</code>.
    */
   public static class Builder extends TechParent.Builder {
     private long parentAttribute;

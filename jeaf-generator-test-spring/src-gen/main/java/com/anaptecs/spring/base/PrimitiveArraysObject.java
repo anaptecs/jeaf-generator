@@ -234,8 +234,7 @@ public class PrimitiveArraysObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class PrimitiveArraysObject. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>PrimitiveArraysObject</code>.
    */
   public static class Builder {
     private boolean[] aBooleanArray;

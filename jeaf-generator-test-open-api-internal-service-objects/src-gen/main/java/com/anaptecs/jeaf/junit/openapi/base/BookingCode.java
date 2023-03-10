@@ -76,8 +76,7 @@ public class BookingCode implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class BookingCode. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>BookingCode</code>.
    */
   public static class Builder {
     @Size(min = 3, max = 5)

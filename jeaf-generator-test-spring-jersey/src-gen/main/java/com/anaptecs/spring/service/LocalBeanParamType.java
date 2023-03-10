@@ -63,8 +63,7 @@ public class LocalBeanParamType {
   }
 
   /**
-   * Class implements builder to create a new instance of class LocalBeanParamType. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>LocalBeanParamType</code>.
    */
   public static class Builder {
     private String localKey;

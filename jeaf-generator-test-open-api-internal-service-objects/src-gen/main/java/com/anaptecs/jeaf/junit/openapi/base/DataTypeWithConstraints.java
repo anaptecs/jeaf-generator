@@ -74,8 +74,7 @@ public class DataTypeWithConstraints implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class DataTypeWithConstraints. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>DataTypeWithConstraints</code>.
    */
   public static class Builder {
     @Max(value = 9999)

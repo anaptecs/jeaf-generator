@@ -64,8 +64,7 @@ public class PrimitiveArrayServiceObject implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class PrimitiveArrayServiceObject. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>PrimitiveArrayServiceObject</code>.
    */
   public static class Builder {
     private boolean[] booleanArray;

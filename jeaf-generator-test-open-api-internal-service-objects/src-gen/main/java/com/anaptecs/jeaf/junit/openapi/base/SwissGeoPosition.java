@@ -66,8 +66,7 @@ public class SwissGeoPosition extends GeoPosition {
   }
 
   /**
-   * Class implements builder to create a new instance of class SwissGeoPosition. As the class has read only attributes
-   * or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>SwissGeoPosition</code>.
    */
   public static class Builder extends GeoPosition.Builder {
     /**

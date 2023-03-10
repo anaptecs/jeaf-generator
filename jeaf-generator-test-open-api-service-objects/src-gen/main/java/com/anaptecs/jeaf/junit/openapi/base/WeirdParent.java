@@ -89,8 +89,7 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class WeirdParent. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>WeirdParent</code>.
    */
   public static class Builder {
     private String someProperty;

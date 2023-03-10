@@ -102,8 +102,7 @@ public class Leg implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class Leg. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Leg</code>.
    */
   public static class Builder {
     private PlaceRef start;

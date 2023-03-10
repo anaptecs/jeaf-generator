@@ -98,8 +98,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
   }
 
   /**
-   * Class implements builder to create a new instance of class Customer. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Customer</code>.
    */
   public static abstract class Builder {
     /**

@@ -77,8 +77,7 @@ public class SoftLink implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class SoftLink. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>SoftLink</code>.
    */
   public static class Builder {
     /**

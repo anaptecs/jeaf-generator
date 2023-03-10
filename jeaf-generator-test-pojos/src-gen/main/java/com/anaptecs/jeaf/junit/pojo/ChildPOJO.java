@@ -76,8 +76,7 @@ public class ChildPOJO extends ParentPOJO {
   }
 
   /**
-   * Class implements builder to create a new instance of class ChildPOJO. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ChildPOJO</code>.
    */
   @Deprecated
   public static class Builder extends ParentPOJO.Builder {

@@ -76,8 +76,7 @@ public class LinkObject implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class LinkObject. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>LinkObject</code>.
    */
   public static class Builder {
     private String href;

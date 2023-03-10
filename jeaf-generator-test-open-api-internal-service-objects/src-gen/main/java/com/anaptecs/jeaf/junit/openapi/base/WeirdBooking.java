@@ -122,8 +122,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Class implements builder to create a new instance of class WeirdBooking. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>WeirdBooking</code>.
    */
   public static class Builder extends WeirdParent.Builder {
     private ComplexBookingID booking;

@@ -222,8 +222,7 @@ public class PrimitiveObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class PrimitiveObject. As the class has read only attributes
-   * or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>PrimitiveObject</code>.
    */
   public static class Builder {
     private boolean aBoolean;

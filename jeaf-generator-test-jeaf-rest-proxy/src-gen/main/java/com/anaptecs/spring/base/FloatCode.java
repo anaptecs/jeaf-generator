@@ -77,8 +77,7 @@ public class FloatCode implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class FloatCode. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>FloatCode</code>.
    */
   public static class Builder {
     private Float code;

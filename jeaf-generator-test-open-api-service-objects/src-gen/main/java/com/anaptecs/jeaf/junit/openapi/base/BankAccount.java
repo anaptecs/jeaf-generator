@@ -63,8 +63,7 @@ public class BankAccount implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class BankAccount. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>BankAccount</code>.
    */
   public static class Builder {
     private String iban;
