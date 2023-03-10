@@ -83,10 +83,9 @@ public abstract class NetzbereichDOBase extends DomainObject {
   }
 
   /**
-   * Method removes the passed KanteDO object from the association "kanten".
+   * Method removes the passed object from {@link #kanten}.<br/>
    * 
-   * 
-   * @param pKanten Object that should be removed from the association "kanten". The parameter must not be null.
+   * @param pKanten Object that should be removed from {@link #kanten}. The parameter must not be null.
    */
   public void removeFromKanten( KanteDO pKanten ) {
     // Check parameter for invalid value null.
@@ -101,8 +100,7 @@ public abstract class NetzbereichDOBase extends DomainObject {
   }
 
   /**
-   * Method removes all objects from the association "kanten".
-   * 
+   * Method removes all objects from {@link #kanten}.
    */
   public void clearKanten( ) {
     // Remove all objects from association "kanten".

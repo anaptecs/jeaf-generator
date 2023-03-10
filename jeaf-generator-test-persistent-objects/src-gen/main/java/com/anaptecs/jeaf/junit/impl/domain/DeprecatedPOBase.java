@@ -172,11 +172,9 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed BaseClassBO object from the association "baseClasses".
+   * Method removes the passed object from {@link #baseClasses}.<br/>
    * 
-   * 
-   * @param pBaseClasses Object that should be removed from the association "baseClasses". The parameter must not be
-   * null.
+   * @param pBaseClasses Object that should be removed from {@link #baseClasses}. The parameter must not be null.
    */
   @Deprecated
   public void removeFromBaseClasses( BaseClassBO pBaseClasses ) {
@@ -192,8 +190,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "baseClasses".
-   * 
+   * Method removes all objects from {@link #baseClasses}.
    */
   @Deprecated
   public void clearBaseClasses( ) {

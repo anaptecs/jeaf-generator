@@ -171,10 +171,9 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed CManyBO object from the association "cManys".
+   * Method removes the passed object from {@link #cManys}.<br/>
    * 
-   * 
-   * @param pCManys Object that should be removed from the association "cManys". The parameter must not be null.
+   * @param pCManys Object that should be removed from {@link #cManys}. The parameter must not be null.
    */
   public void removeFromCManys( CManyBO pCManys ) {
     // Check parameter for invalid value null.
@@ -189,8 +188,7 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "cManys".
-   * 
+   * Method removes all objects from {@link #cManys}.
    */
   public void clearCManys( ) {
     // Remove all objects from association "cManys".

@@ -619,11 +619,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method removes the passed StringCode object from the association "stringCodeList".
+   * Method removes the passed object from {@link #stringCodeList}.<br/>
    * 
-   * 
-   * @param pStringCodeList Object that should be removed from the association "stringCodeList". The parameter must not
-   * be null.
+   * @param pStringCodeList Object that should be removed from {@link #stringCodeList}. The parameter must not be null.
    */
   public void removeFromStringCodeList( StringCode pStringCodeList ) {
     // Remove passed object from collection of associated StringCode objects.
@@ -631,8 +629,7 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method removes all objects from the association "stringCodeList".
-   * 
+   * Method removes all objects from {@link #stringCodeList}.
    */
   public void clearStringCodeList( ) {
     // Remove all objects from association "stringCodeList".
@@ -726,10 +723,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method removes the passed LocalDateTime object from the association "timestamps".
+   * Method removes the passed object from {@link #timestamps}.<br/>
    * 
-   * 
-   * @param pTimestamps Object that should be removed from the association "timestamps". The parameter must not be null.
+   * @param pTimestamps Object that should be removed from {@link #timestamps}. The parameter must not be null.
    */
   public void removeFromTimestamps( LocalDateTime pTimestamps ) {
     // Remove passed object from collection of associated LocalDateTime objects.
@@ -737,8 +733,7 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method removes all objects from the association "timestamps".
-   * 
+   * Method removes all objects from {@link #timestamps}.
    */
   public void clearTimestamps( ) {
     // Remove all objects from association "timestamps".

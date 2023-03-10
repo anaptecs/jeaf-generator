@@ -105,10 +105,9 @@ public abstract class ClassB_BOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed ClassA_BO object from the association "classAs".
+   * Method removes the passed object from {@link #classAs}.<br/>
    * 
-   * 
-   * @param pClassAs Object that should be removed from the association "classAs". The parameter must not be null.
+   * @param pClassAs Object that should be removed from {@link #classAs}. The parameter must not be null.
    */
   public void removeFromClassAs( ClassA_BO pClassAs ) {
     // Check parameter for invalid value null.
@@ -123,8 +122,7 @@ public abstract class ClassB_BOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "classAs".
-   * 
+   * Method removes all objects from {@link #classAs}.
    */
   public void clearClassAs( ) {
     // Remove all objects from association "classAs".

@@ -338,11 +338,10 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method removes the passed StringCode object from the association "stringCodeHeader". This is my multivalued test
-   * header
+   * Method removes the passed object from {@link #stringCodeHeader}.<br/>
    * 
-   * @param pStringCodeHeader Object that should be removed from the association "stringCodeHeader". The parameter must
-   * not be null.
+   * @param pStringCodeHeader Object that should be removed from {@link #stringCodeHeader}. The parameter must not be
+   * null.
    */
   public void removeFromStringCodeHeader( StringCode pStringCodeHeader ) {
     // Check parameter for invalid value null.
@@ -352,7 +351,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "stringCodeHeader". This is my multivalued test header
+   * Method removes all objects from {@link #stringCodeHeader}.
    */
   public void clearStringCodeHeader( ) {
     // Remove all objects from association "stringCodeHeader".
@@ -400,10 +399,10 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method removes the passed LongCode object from the association "longCodeQueryParam". Multivalued query param
+   * Method removes the passed object from {@link #longCodeQueryParam}.<br/>
    * 
-   * @param pLongCodeQueryParam Object that should be removed from the association "longCodeQueryParam". The parameter
-   * must not be null.
+   * @param pLongCodeQueryParam Object that should be removed from {@link #longCodeQueryParam}. The parameter must not
+   * be null.
    */
   public void removeFromLongCodeQueryParam( LongCode pLongCodeQueryParam ) {
     // Check parameter for invalid value null.
@@ -413,7 +412,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "longCodeQueryParam". Multivalued query param
+   * Method removes all objects from {@link #longCodeQueryParam}.
    */
   public void clearLongCodeQueryParam( ) {
     // Remove all objects from association "longCodeQueryParam".
@@ -460,9 +459,9 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method removes the passed BooleanLiteralsEnum object from the association "literals". so many literals are possible
+   * Method removes the passed object from {@link #literals}.<br/>
    * 
-   * @param pLiterals Object that should be removed from the association "literals". The parameter must not be null.
+   * @param pLiterals Object that should be removed from {@link #literals}. The parameter must not be null.
    */
   public void removeFromLiterals( BooleanLiteralsEnum pLiterals ) {
     // Check parameter for invalid value null.
@@ -472,7 +471,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "literals". so many literals are possible
+   * Method removes all objects from {@link #literals}.
    */
   public void clearLiterals( ) {
     // Remove all objects from association "literals".

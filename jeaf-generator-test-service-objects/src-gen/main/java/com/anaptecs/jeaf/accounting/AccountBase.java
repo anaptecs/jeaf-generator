@@ -418,11 +418,10 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   }
 
   /**
-   * Method removes the passed Person object from the association "authorizedPersons".
+   * Method removes the passed object from {@link #authorizedPersons}.<br/>
    * 
-   * 
-   * @param pAuthorizedPersons Object that should be removed from the association "authorizedPersons". The parameter
-   * must not be null.
+   * @param pAuthorizedPersons Object that should be removed from {@link #authorizedPersons}. The parameter must not be
+   * null.
    */
   public void removeFromAuthorizedPersons( Person pAuthorizedPersons ) {
     // Check parameter for invalid value null.
@@ -437,8 +436,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   }
 
   /**
-   * Method removes all objects from the association "authorizedPersons".
-   * 
+   * Method removes all objects from {@link #authorizedPersons}.
    */
   public void clearAuthorizedPersons( ) {
     // Remove all objects from association "authorizedPersons".
@@ -505,10 +503,9 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   }
 
   /**
-   * Method removes the passed Booking object from the association "bookings".
+   * Method removes the passed object from {@link #bookings}.<br/>
    * 
-   * 
-   * @param pBookings Object that should be removed from the association "bookings". The parameter must not be null.
+   * @param pBookings Object that should be removed from {@link #bookings}. The parameter must not be null.
    */
   public void removeFromBookings( Booking pBookings ) {
     // Check parameter for invalid value null.
@@ -523,8 +520,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   }
 
   /**
-   * Method removes all objects from the association "bookings".
-   * 
+   * Method removes all objects from {@link #bookings}.
    */
   public void clearBookings( ) {
     // Remove all objects from association "bookings".

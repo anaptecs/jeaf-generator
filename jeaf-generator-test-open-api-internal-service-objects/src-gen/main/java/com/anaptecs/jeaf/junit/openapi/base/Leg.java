@@ -274,10 +274,9 @@ public class Leg implements ServiceObject {
   }
 
   /**
-   * Method removes the passed PlaceRef object from the association "stopovers".
+   * Method removes the passed object from {@link #stopovers}.<br/>
    * 
-   * 
-   * @param pStopovers Object that should be removed from the association "stopovers". The parameter must not be null.
+   * @param pStopovers Object that should be removed from {@link #stopovers}. The parameter must not be null.
    */
   public void removeFromStopovers( PlaceRef pStopovers ) {
     // Check parameter for invalid value null.
@@ -287,8 +286,7 @@ public class Leg implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "stopovers".
-   * 
+   * Method removes all objects from {@link #stopovers}.
    */
   public void clearStopovers( ) {
     // Remove all objects from association "stopovers".

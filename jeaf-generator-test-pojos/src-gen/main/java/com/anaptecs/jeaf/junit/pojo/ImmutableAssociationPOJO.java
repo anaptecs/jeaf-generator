@@ -332,11 +332,9 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method removes the passed ImmutableChildPOJO object from the association "deprecatedRefs".
+   * Method removes the passed object from {@link #deprecatedRefs}.<br/>
    * 
-   * 
-   * @param pDeprecatedRefs Object that should be removed from the association "deprecatedRefs". The parameter must not
-   * be null.
+   * @param pDeprecatedRefs Object that should be removed from {@link #deprecatedRefs}. The parameter must not be null.
    */
   @Deprecated
   public void removeFromDeprecatedRefs( ImmutableChildPOJO pDeprecatedRefs ) {
@@ -347,8 +345,7 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method removes all objects from the association "deprecatedRefs".
-   * 
+   * Method removes all objects from {@link #deprecatedRefs}.
    */
   @Deprecated
   public void clearDeprecatedRefs( ) {

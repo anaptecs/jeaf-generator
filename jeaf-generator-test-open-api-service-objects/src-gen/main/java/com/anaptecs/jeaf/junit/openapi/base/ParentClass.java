@@ -288,10 +288,9 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method removes the passed IBAN object from the association "ibans".
+   * Method removes the passed object from {@link #ibans}.<br/>
    * 
-   * 
-   * @param pIbans Object that should be removed from the association "ibans". The parameter must not be null.
+   * @param pIbans Object that should be removed from {@link #ibans}. The parameter must not be null.
    */
   public void removeFromIbans( IBAN pIbans ) {
     // Check parameter for invalid value null.
@@ -301,8 +300,7 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "ibans".
-   * 
+   * Method removes all objects from {@link #ibans}.
    */
   public void clearIbans( ) {
     // Remove all objects from association "ibans".
@@ -383,11 +381,10 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method removes the passed BankAccount object from the association "legacyBankAccounts". Association is still there
-   * be SemVer compliant.
+   * Method removes the passed object from {@link #legacyBankAccounts}.<br/>
    * 
-   * @param pLegacyBankAccounts Object that should be removed from the association "legacyBankAccounts". The parameter
-   * must not be null.
+   * @param pLegacyBankAccounts Object that should be removed from {@link #legacyBankAccounts}. The parameter must not
+   * be null.
    */
   @Deprecated
   public void removeFromLegacyBankAccounts( BankAccount pLegacyBankAccounts ) {
@@ -398,8 +395,7 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "legacyBankAccounts". Association is still there be SemVer
-   * compliant.
+   * Method removes all objects from {@link #legacyBankAccounts}.
    */
   @Deprecated
   public void clearLegacyBankAccounts( ) {

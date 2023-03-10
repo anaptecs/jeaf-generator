@@ -175,10 +175,9 @@ public class PartnerContainer implements ServiceObject {
   }
 
   /**
-   * Method removes the passed Partner object from the association "partners".
+   * Method removes the passed object from {@link #partners}.<br/>
    * 
-   * 
-   * @param pPartners Object that should be removed from the association "partners". The parameter must not be null.
+   * @param pPartners Object that should be removed from {@link #partners}. The parameter must not be null.
    */
   public void removeFromPartners( Partner pPartners ) {
     // Check parameter for invalid value null.
@@ -188,8 +187,7 @@ public class PartnerContainer implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "partners".
-   * 
+   * Method removes all objects from {@link #partners}.
    */
   public void clearPartners( ) {
     // Remove all objects from association "partners".

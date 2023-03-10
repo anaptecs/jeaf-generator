@@ -98,11 +98,9 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed OrderingB object from the association "orderedUnique".
+   * Method removes the passed object from {@link #orderedUnique}.<br/>
    * 
-   * 
-   * @param pOrderedUnique Object that should be removed from the association "orderedUnique". The parameter must not be
-   * null.
+   * @param pOrderedUnique Object that should be removed from {@link #orderedUnique}. The parameter must not be null.
    */
   public void removeFromOrderedUnique( OrderingB pOrderedUnique ) {
     // Check parameter for invalid value null.
@@ -117,8 +115,7 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "orderedUnique".
-   * 
+   * Method removes all objects from {@link #orderedUnique}.
    */
   public void clearOrderedUnique( ) {
     // Remove all objects from association "orderedUnique".
@@ -177,11 +174,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed OrderingB object from the association "orderedNotUnique".
+   * Method removes the passed object from {@link #orderedNotUnique}.<br/>
    * 
-   * 
-   * @param pOrderedNotUnique Object that should be removed from the association "orderedNotUnique". The parameter must
-   * not be null.
+   * @param pOrderedNotUnique Object that should be removed from {@link #orderedNotUnique}. The parameter must not be
+   * null.
    */
   public void removeFromOrderedNotUnique( OrderingB pOrderedNotUnique ) {
     // Check parameter for invalid value null.
@@ -196,8 +192,7 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "orderedNotUnique".
-   * 
+   * Method removes all objects from {@link #orderedNotUnique}.
    */
   public void clearOrderedNotUnique( ) {
     // Remove all objects from association "orderedNotUnique".
@@ -298,11 +293,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed OrderingB object from the association "notOrderedNotUnique".
+   * Method removes the passed object from {@link #notOrderedNotUnique}.<br/>
    * 
-   * 
-   * @param pNotOrderedNotUnique Object that should be removed from the association "notOrderedNotUnique". The parameter
-   * must not be null.
+   * @param pNotOrderedNotUnique Object that should be removed from {@link #notOrderedNotUnique}. The parameter must not
+   * be null.
    */
   public void removeFromNotOrderedNotUnique( OrderingB pNotOrderedNotUnique ) {
     // Check parameter for invalid value null.
@@ -317,8 +311,7 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "notOrderedNotUnique".
-   * 
+   * Method removes all objects from {@link #notOrderedNotUnique}.
    */
   public void clearNotOrderedNotUnique( ) {
     // Remove all objects from association "notOrderedNotUnique".

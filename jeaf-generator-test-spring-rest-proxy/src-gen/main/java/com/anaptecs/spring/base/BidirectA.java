@@ -214,11 +214,9 @@ public class BidirectA {
   }
 
   /**
-   * Method removes the passed BidirectB object from the association "transientBs".
+   * Method removes the passed object from {@link #transientBs}.<br/>
    * 
-   * 
-   * @param pTransientBs Object that should be removed from the association "transientBs". The parameter must not be
-   * null.
+   * @param pTransientBs Object that should be removed from {@link #transientBs}. The parameter must not be null.
    */
   public void removeFromTransientBs( BidirectB pTransientBs ) {
     // Remove passed object from collection of associated BidirectB objects.
@@ -231,8 +229,7 @@ public class BidirectA {
   }
 
   /**
-   * Method removes all objects from the association "transientBs".
-   * 
+   * Method removes all objects from {@link #transientBs}.
    */
   public void clearTransientBs( ) {
     // Remove all objects from association "transientBs".

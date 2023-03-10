@@ -407,10 +407,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method removes the passed ComplexBookingID object from the association "additionalBookings". additional bookings
+   * Method removes the passed object from {@link #additionalBookings}.<br/>
    * 
-   * @param pAdditionalBookings Object that should be removed from the association "additionalBookings". The parameter
-   * must not be null.
+   * @param pAdditionalBookings Object that should be removed from {@link #additionalBookings}. The parameter must not
+   * be null.
    */
   public void removeFromAdditionalBookings( ComplexBookingID pAdditionalBookings ) {
     // Check parameter for invalid value null.
@@ -420,7 +420,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method removes all objects from the association "additionalBookings". additional bookings
+   * Method removes all objects from {@link #additionalBookings}.
    */
   public void clearAdditionalBookings( ) {
     // Remove all objects from association "additionalBookings".
@@ -543,11 +543,9 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method removes the passed InventoryType object from the association "inventories".
+   * Method removes the passed object from {@link #inventories}.<br/>
    * 
-   * 
-   * @param pInventories Object that should be removed from the association "inventories". The parameter must not be
-   * null.
+   * @param pInventories Object that should be removed from {@link #inventories}. The parameter must not be null.
    */
   public void removeFromInventories( InventoryType pInventories ) {
     // Check parameter for invalid value null.
@@ -557,8 +555,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method removes all objects from the association "inventories".
-   * 
+   * Method removes all objects from {@link #inventories}.
    */
   public void clearInventories( ) {
     // Remove all objects from association "inventories".

@@ -146,10 +146,9 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   }
 
   /**
-   * Method removes the passed UICCodeDO object from the association "uicCodes".
+   * Method removes the passed object from {@link #uicCodes}.<br/>
    * 
-   * 
-   * @param pUicCodes Object that should be removed from the association "uicCodes". The parameter must not be null.
+   * @param pUicCodes Object that should be removed from {@link #uicCodes}. The parameter must not be null.
    */
   public void removeFromUicCodes( UICCodeDO pUicCodes ) {
     // Check parameter for invalid value null.
@@ -159,8 +158,7 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   }
 
   /**
-   * Method removes all objects from the association "uicCodes".
-   * 
+   * Method removes all objects from {@link #uicCodes}.
    */
   public void clearUicCodes( ) {
     // Remove all objects from association "uicCodes".

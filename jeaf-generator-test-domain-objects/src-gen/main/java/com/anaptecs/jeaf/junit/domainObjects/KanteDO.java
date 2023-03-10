@@ -211,11 +211,9 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method removes the passed NetzbereichDO object from the association "netzbereiche".
+   * Method removes the passed object from {@link #netzbereiche}.<br/>
    * 
-   * 
-   * @param pNetzbereiche Object that should be removed from the association "netzbereiche". The parameter must not be
-   * null.
+   * @param pNetzbereiche Object that should be removed from {@link #netzbereiche}. The parameter must not be null.
    */
   public void removeFromNetzbereiche( NetzbereichDO pNetzbereiche ) {
     // Check parameter for invalid value null.
@@ -230,8 +228,7 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method removes all objects from the association "netzbereiche".
-   * 
+   * Method removes all objects from {@link #netzbereiche}.
    */
   public void clearNetzbereiche( ) {
     // Remove all objects from association "netzbereiche".

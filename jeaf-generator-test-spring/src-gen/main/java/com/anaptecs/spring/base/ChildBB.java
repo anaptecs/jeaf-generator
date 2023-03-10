@@ -379,11 +379,9 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method removes the passed ChildB object from the association "deprecatedBs".
+   * Method removes the passed object from {@link #deprecatedBs}.<br/>
    * 
-   * 
-   * @param pDeprecatedBs Object that should be removed from the association "deprecatedBs". The parameter must not be
-   * null.
+   * @param pDeprecatedBs Object that should be removed from {@link #deprecatedBs}. The parameter must not be null.
    */
   @Deprecated
   public void removeFromDeprecatedBs( ChildB pDeprecatedBs ) {
@@ -392,8 +390,7 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method removes all objects from the association "deprecatedBs".
-   * 
+   * Method removes all objects from {@link #deprecatedBs}.
    */
   @Deprecated
   public void clearDeprecatedBs( ) {

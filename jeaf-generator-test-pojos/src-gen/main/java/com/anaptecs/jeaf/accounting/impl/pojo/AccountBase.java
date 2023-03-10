@@ -311,11 +311,9 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method removes the passed Booking object from the association "allBookings".
+   * Method removes the passed object from {@link #allBookings}.<br/>
    * 
-   * 
-   * @param pAllBookings Object that should be removed from the association "allBookings". The parameter must not be
-   * null.
+   * @param pAllBookings Object that should be removed from {@link #allBookings}. The parameter must not be null.
    */
   public void removeFromAllBookings( Booking pAllBookings ) {
     // Check parameter for invalid value null.
@@ -325,8 +323,7 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method removes all objects from the association "allBookings".
-   * 
+   * Method removes all objects from {@link #allBookings}.
    */
   public void clearAllBookings( ) {
     // Remove all objects from association "allBookings".

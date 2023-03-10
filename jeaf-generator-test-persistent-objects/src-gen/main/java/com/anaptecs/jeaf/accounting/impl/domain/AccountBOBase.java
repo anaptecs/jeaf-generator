@@ -241,10 +241,9 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed BookingBO object from the association "bookings".
+   * Method removes the passed object from {@link #bookings}.<br/>
    * 
-   * 
-   * @param pBookings Object that should be removed from the association "bookings". The parameter must not be null.
+   * @param pBookings Object that should be removed from {@link #bookings}. The parameter must not be null.
    */
   public void removeFromBookings( BookingBO pBookings ) {
     // Check parameter for invalid value null.
@@ -259,8 +258,7 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "bookings".
-   * 
+   * Method removes all objects from {@link #bookings}.
    */
   public void clearBookings( ) {
     // Remove all objects from association "bookings".
@@ -317,11 +315,10 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed MyPersonBO object from the association "authorizedPersons".
+   * Method removes the passed object from {@link #authorizedPersons}.<br/>
    * 
-   * 
-   * @param pAuthorizedPersons Object that should be removed from the association "authorizedPersons". The parameter
-   * must not be null.
+   * @param pAuthorizedPersons Object that should be removed from {@link #authorizedPersons}. The parameter must not be
+   * null.
    */
   public void removeFromAuthorizedPersons( MyPersonBO pAuthorizedPersons ) {
     // Check parameter for invalid value null.
@@ -336,8 +333,7 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "authorizedPersons".
-   * 
+   * Method removes all objects from {@link #authorizedPersons}.
    */
   public void clearAuthorizedPersons( ) {
     // Remove all objects from association "authorizedPersons".

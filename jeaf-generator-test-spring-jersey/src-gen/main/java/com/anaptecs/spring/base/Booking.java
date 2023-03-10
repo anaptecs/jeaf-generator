@@ -260,11 +260,9 @@ public class Booking {
   }
 
   /**
-   * Method removes the passed InventoryType object from the association "inventories".
+   * Method removes the passed object from {@link #inventories}.<br/>
    * 
-   * 
-   * @param pInventories Object that should be removed from the association "inventories". The parameter must not be
-   * null.
+   * @param pInventories Object that should be removed from {@link #inventories}. The parameter must not be null.
    */
   public void removeFromInventories( InventoryType pInventories ) {
     // Remove passed object from collection of associated InventoryType objects.
@@ -272,8 +270,7 @@ public class Booking {
   }
 
   /**
-   * Method removes all objects from the association "inventories".
-   * 
+   * Method removes all objects from {@link #inventories}.
    */
   public void clearInventories( ) {
     // Remove all objects from association "inventories".

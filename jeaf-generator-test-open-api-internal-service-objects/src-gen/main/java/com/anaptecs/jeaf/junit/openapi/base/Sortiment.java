@@ -197,10 +197,9 @@ public class Sortiment implements ServiceObject {
   }
 
   /**
-   * Method removes the passed Product object from the association "products".
+   * Method removes the passed object from {@link #products}.<br/>
    * 
-   * 
-   * @param pProducts Object that should be removed from the association "products". The parameter must not be null.
+   * @param pProducts Object that should be removed from {@link #products}. The parameter must not be null.
    */
   public void removeFromProducts( Product pProducts ) {
     // Check parameter for invalid value null.
@@ -215,8 +214,7 @@ public class Sortiment implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "products".
-   * 
+   * Method removes all objects from {@link #products}.
    */
   public void clearProducts( ) {
     // Remove all objects from association "products".

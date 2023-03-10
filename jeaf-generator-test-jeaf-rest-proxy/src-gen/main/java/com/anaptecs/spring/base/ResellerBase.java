@@ -283,10 +283,9 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method removes the passed Channel object from the association "channels".
+   * Method removes the passed object from {@link #channels}.<br/>
    * 
-   * 
-   * @param pChannels Object that should be removed from the association "channels". The parameter must not be null.
+   * @param pChannels Object that should be removed from {@link #channels}. The parameter must not be null.
    */
   public void removeFromChannels( Channel pChannels ) {
     // Check parameter for invalid value null.
@@ -301,8 +300,7 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method removes all objects from the association "channels".
-   * 
+   * Method removes all objects from {@link #channels}.
    */
   public void clearChannels( ) {
     // Remove all objects from association "channels".
@@ -358,10 +356,9 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method removes the passed Product object from the association "products".
+   * Method removes the passed object from {@link #products}.<br/>
    * 
-   * 
-   * @param pProducts Object that should be removed from the association "products". The parameter must not be null.
+   * @param pProducts Object that should be removed from {@link #products}. The parameter must not be null.
    */
   public void removeFromProducts( Product pProducts ) {
     // Check parameter for invalid value null.
@@ -376,8 +373,7 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method removes all objects from the association "products".
-   * 
+   * Method removes all objects from {@link #products}.
    */
   public void clearProducts( ) {
     // Remove all objects from association "products".

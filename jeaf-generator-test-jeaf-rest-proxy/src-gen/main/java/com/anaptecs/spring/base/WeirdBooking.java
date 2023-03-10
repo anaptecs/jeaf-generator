@@ -240,11 +240,10 @@ public class WeirdBooking implements Serializable {
   }
 
   /**
-   * Method removes the passed ComplexBookingID object from the association "additionalBookings".
+   * Method removes the passed object from {@link #additionalBookings}.<br/>
    * 
-   * 
-   * @param pAdditionalBookings Object that should be removed from the association "additionalBookings". The parameter
-   * must not be null.
+   * @param pAdditionalBookings Object that should be removed from {@link #additionalBookings}. The parameter must not
+   * be null.
    */
   public void removeFromAdditionalBookings( ComplexBookingID pAdditionalBookings ) {
     // Check parameter for invalid value null.
@@ -254,8 +253,7 @@ public class WeirdBooking implements Serializable {
   }
 
   /**
-   * Method removes all objects from the association "additionalBookings".
-   * 
+   * Method removes all objects from {@link #additionalBookings}.
    */
   public void clearAdditionalBookings( ) {
     // Remove all objects from association "additionalBookings".

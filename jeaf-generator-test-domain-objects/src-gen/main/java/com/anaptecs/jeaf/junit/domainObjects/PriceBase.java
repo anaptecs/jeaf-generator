@@ -148,11 +148,10 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method removes the passed VerbindungspunktDO object from the association "verbindungspunkte".
+   * Method removes the passed object from {@link #verbindungspunkte}.<br/>
    * 
-   * 
-   * @param pVerbindungspunkte Object that should be removed from the association "verbindungspunkte". The parameter
-   * must not be null.
+   * @param pVerbindungspunkte Object that should be removed from {@link #verbindungspunkte}. The parameter must not be
+   * null.
    */
   @Deprecated
   public void removeFromVerbindungspunkte( VerbindungspunktDO pVerbindungspunkte ) {
@@ -163,8 +162,7 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method removes all objects from the association "verbindungspunkte".
-   * 
+   * Method removes all objects from {@link #verbindungspunkte}.
    */
   @Deprecated
   public void clearVerbindungspunkte( ) {

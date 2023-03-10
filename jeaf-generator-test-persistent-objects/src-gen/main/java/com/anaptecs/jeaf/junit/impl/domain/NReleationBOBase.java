@@ -101,10 +101,9 @@ public abstract class NReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed MReleationBO object from the association "ms".
+   * Method removes the passed object from {@link #ms}.<br/>
    * 
-   * 
-   * @param pMs Object that should be removed from the association "ms". The parameter must not be null.
+   * @param pMs Object that should be removed from {@link #ms}. The parameter must not be null.
    */
   public void removeFromMs( MReleationBO pMs ) {
     // Check parameter for invalid value null.
@@ -119,8 +118,7 @@ public abstract class NReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "ms".
-   * 
+   * Method removes all objects from {@link #ms}.
    */
   public void clearMs( ) {
     // Remove all objects from association "ms".

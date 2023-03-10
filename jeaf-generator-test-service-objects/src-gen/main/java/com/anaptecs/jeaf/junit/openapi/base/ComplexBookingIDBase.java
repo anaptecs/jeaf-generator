@@ -307,10 +307,9 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method removes the passed BookingID object from the association "bookingIDs".
+   * Method removes the passed object from {@link #bookingIDs}.<br/>
    * 
-   * 
-   * @param pBookingIDs Object that should be removed from the association "bookingIDs". The parameter must not be null.
+   * @param pBookingIDs Object that should be removed from {@link #bookingIDs}. The parameter must not be null.
    */
   public void removeFromBookingIDs( BookingID pBookingIDs ) {
     // Check parameter for invalid value null.
@@ -320,8 +319,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "bookingIDs".
-   * 
+   * Method removes all objects from {@link #bookingIDs}.
    */
   public void clearBookingIDs( ) {
     // Remove all objects from association "bookingIDs".

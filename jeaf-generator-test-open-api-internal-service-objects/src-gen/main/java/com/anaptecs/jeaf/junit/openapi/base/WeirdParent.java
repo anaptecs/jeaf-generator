@@ -280,11 +280,10 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Method removes the passed ComplexBookingID object from the association "complexBookings".
+   * Method removes the passed object from {@link #complexBookings}.<br/>
    * 
-   * 
-   * @param pComplexBookings Object that should be removed from the association "complexBookings". The parameter must
-   * not be null.
+   * @param pComplexBookings Object that should be removed from {@link #complexBookings}. The parameter must not be
+   * null.
    */
   public void removeFromComplexBookings( ComplexBookingID pComplexBookings ) {
     // Check parameter for invalid value null.
@@ -294,8 +293,7 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "complexBookings".
-   * 
+   * Method removes all objects from {@link #complexBookings}.
    */
   public void clearComplexBookings( ) {
     // Remove all objects from association "complexBookings".

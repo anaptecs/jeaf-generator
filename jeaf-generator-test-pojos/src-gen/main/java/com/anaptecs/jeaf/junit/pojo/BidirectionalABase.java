@@ -371,11 +371,9 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method removes the passed BidirectionalB object from the association "transientBs".
+   * Method removes the passed object from {@link #transientBs}.<br/>
    * 
-   * 
-   * @param pTransientBs Object that should be removed from the association "transientBs". The parameter must not be
-   * null.
+   * @param pTransientBs Object that should be removed from {@link #transientBs}. The parameter must not be null.
    */
   public void removeFromTransientBs( BidirectionalB pTransientBs ) {
     // Check parameter for invalid value null.
@@ -390,8 +388,7 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method removes all objects from the association "transientBs".
-   * 
+   * Method removes all objects from {@link #transientBs}.
    */
   public void clearTransientBs( ) {
     // Remove all objects from association "transientBs".

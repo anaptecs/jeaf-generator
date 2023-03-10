@@ -249,10 +249,9 @@ public class BidirectionalB {
   }
 
   /**
-   * Method removes the passed BidirectionalA object from the association "as".
+   * Method removes the passed object from {@link #as}.<br/>
    * 
-   * 
-   * @param pAs Object that should be removed from the association "as". The parameter must not be null.
+   * @param pAs Object that should be removed from {@link #as}. The parameter must not be null.
    */
   public void removeFromAs( BidirectionalA pAs ) {
     // Check parameter for invalid value null.
@@ -267,8 +266,7 @@ public class BidirectionalB {
   }
 
   /**
-   * Method removes all objects from the association "as".
-   * 
+   * Method removes all objects from {@link #as}.
    */
   public void clearAs( ) {
     // Remove all objects from association "as".
@@ -331,10 +329,9 @@ public class BidirectionalB {
   }
 
   /**
-   * Method removes the passed BidirectionalA object from the association "theAs".
+   * Method removes the passed object from {@link #theAs}.<br/>
    * 
-   * 
-   * @param pTheAs Object that should be removed from the association "theAs". The parameter must not be null.
+   * @param pTheAs Object that should be removed from {@link #theAs}. The parameter must not be null.
    */
   public void removeFromTheAs( BidirectionalA pTheAs ) {
     // Check parameter for invalid value null.
@@ -349,8 +346,7 @@ public class BidirectionalB {
   }
 
   /**
-   * Method removes all objects from the association "theAs".
-   * 
+   * Method removes all objects from {@link #theAs}.
    */
   public void clearTheAs( ) {
     // Remove all objects from association "theAs".

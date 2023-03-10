@@ -465,10 +465,9 @@ public class Product {
   }
 
   /**
-   * Method removes the passed Reseller object from the association "resellers".
+   * Method removes the passed object from {@link #resellers}.<br/>
    * 
-   * 
-   * @param pResellers Object that should be removed from the association "resellers". The parameter must not be null.
+   * @param pResellers Object that should be removed from {@link #resellers}. The parameter must not be null.
    */
   public void removeFromResellers( Reseller pResellers ) {
     // Remove passed object from collection of associated Reseller objects.
@@ -481,8 +480,7 @@ public class Product {
   }
 
   /**
-   * Method removes all objects from the association "resellers".
-   * 
+   * Method removes all objects from {@link #resellers}.
    */
   public void clearResellers( ) {
     // Remove all objects from association "resellers".
@@ -612,11 +610,10 @@ public class Product {
   }
 
   /**
-   * Method removes the passed CurrencyCode object from the association "supportedCurrencies".
+   * Method removes the passed object from {@link #supportedCurrencies}.<br/>
    * 
-   * 
-   * @param pSupportedCurrencies Object that should be removed from the association "supportedCurrencies". The parameter
-   * must not be null.
+   * @param pSupportedCurrencies Object that should be removed from {@link #supportedCurrencies}. The parameter must not
+   * be null.
    */
   public void removeFromSupportedCurrencies( CurrencyCode pSupportedCurrencies ) {
     // Remove passed object from collection of associated CurrencyCode objects.
@@ -624,8 +621,7 @@ public class Product {
   }
 
   /**
-   * Method removes all objects from the association "supportedCurrencies".
-   * 
+   * Method removes all objects from {@link #supportedCurrencies}.
    */
   public void clearSupportedCurrencies( ) {
     // Remove all objects from association "supportedCurrencies".
@@ -667,11 +663,9 @@ public class Product {
   }
 
   /**
-   * Method removes the passed ProductCode object from the association "productCodes".
+   * Method removes the passed object from {@link #productCodes}.<br/>
    * 
-   * 
-   * @param pProductCodes Object that should be removed from the association "productCodes". The parameter must not be
-   * null.
+   * @param pProductCodes Object that should be removed from {@link #productCodes}. The parameter must not be null.
    */
   public void removeFromProductCodes( ProductCode pProductCodes ) {
     // Remove passed object from collection of associated ProductCode objects.
@@ -679,8 +673,7 @@ public class Product {
   }
 
   /**
-   * Method removes all objects from the association "productCodes".
-   * 
+   * Method removes all objects from {@link #productCodes}.
    */
   public void clearProductCodes( ) {
     // Remove all objects from association "productCodes".
@@ -748,10 +741,9 @@ public class Product {
   }
 
   /**
-   * Method removes the passed Sortiment object from the association "sortiments".
+   * Method removes the passed object from {@link #sortiments}.<br/>
    * 
-   * 
-   * @param pSortiments Object that should be removed from the association "sortiments". The parameter must not be null.
+   * @param pSortiments Object that should be removed from {@link #sortiments}. The parameter must not be null.
    */
   public void removeFromSortiments( Sortiment pSortiments ) {
     // Remove passed object from collection of associated Sortiment objects.
@@ -764,8 +756,7 @@ public class Product {
   }
 
   /**
-   * Method removes all objects from the association "sortiments".
-   * 
+   * Method removes all objects from {@link #sortiments}.
    */
   public void clearSortiments( ) {
     // Remove all objects from association "sortiments".

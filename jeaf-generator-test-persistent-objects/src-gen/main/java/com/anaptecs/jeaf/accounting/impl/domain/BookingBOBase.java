@@ -179,9 +179,9 @@ public abstract class BookingBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed MyPersonBO object from the association "remitters". Person who authorized the booking.
+   * Method removes the passed object from {@link #remitters}.<br/>
    * 
-   * @param pRemitters Object that should be removed from the association "remitters". The parameter must not be null.
+   * @param pRemitters Object that should be removed from {@link #remitters}. The parameter must not be null.
    */
   public void removeFromRemitters( MyPersonBO pRemitters ) {
     // Check parameter for invalid value null.
@@ -191,7 +191,7 @@ public abstract class BookingBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "remitters". Person who authorized the booking.
+   * Method removes all objects from {@link #remitters}.
    */
   public void clearRemitters( ) {
     // Remove all objects from association "remitters".

@@ -274,10 +274,9 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method removes the passed LinkObject object from the association "links".
+   * Method removes the passed object from {@link #links}.<br/>
    * 
-   * 
-   * @param pLinks Object that should be removed from the association "links". The parameter must not be null.
+   * @param pLinks Object that should be removed from {@link #links}. The parameter must not be null.
    */
   public void removeFromLinks( LinkObject pLinks ) {
     // Check parameter for invalid value null.
@@ -287,8 +286,7 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "links".
-   * 
+   * Method removes all objects from {@link #links}.
    */
   public void clearLinks( ) {
     // Remove all objects from association "links".

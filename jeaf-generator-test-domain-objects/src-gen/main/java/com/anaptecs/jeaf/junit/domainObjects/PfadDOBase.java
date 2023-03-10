@@ -78,11 +78,9 @@ public abstract class PfadDOBase extends DomainObject {
   }
 
   /**
-   * Method removes the passed KanteDO object from the association "kantenSequenz".
+   * Method removes the passed object from {@link #kantenSequenz}.<br/>
    * 
-   * 
-   * @param pKantenSequenz Object that should be removed from the association "kantenSequenz". The parameter must not be
-   * null.
+   * @param pKantenSequenz Object that should be removed from {@link #kantenSequenz}. The parameter must not be null.
    */
   public void removeFromKantenSequenz( KanteDO pKantenSequenz ) {
     // Check parameter for invalid value null.
@@ -92,8 +90,7 @@ public abstract class PfadDOBase extends DomainObject {
   }
 
   /**
-   * Method removes all objects from the association "kantenSequenz".
-   * 
+   * Method removes all objects from {@link #kantenSequenz}.
    */
   public void clearKantenSequenz( ) {
     // Remove all objects from association "kantenSequenz".

@@ -184,11 +184,10 @@ public class Partner implements Serializable {
   }
 
   /**
-   * Method removes the passed PostalAddress object from the association "postalAddresses".
+   * Method removes the passed object from {@link #postalAddresses}.<br/>
    * 
-   * 
-   * @param pPostalAddresses Object that should be removed from the association "postalAddresses". The parameter must
-   * not be null.
+   * @param pPostalAddresses Object that should be removed from {@link #postalAddresses}. The parameter must not be
+   * null.
    */
   public void removeFromPostalAddresses( PostalAddress pPostalAddresses ) {
     // Check parameter for invalid value null.
@@ -198,8 +197,7 @@ public class Partner implements Serializable {
   }
 
   /**
-   * Method removes all objects from the association "postalAddresses".
-   * 
+   * Method removes all objects from {@link #postalAddresses}.
    */
   public void clearPostalAddresses( ) {
     // Remove all objects from association "postalAddresses".

@@ -272,10 +272,9 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method removes the passed ClassA object from the association "manyAs".
+   * Method removes the passed object from {@link #manyAs}.<br/>
    * 
-   * 
-   * @param pManyAs Object that should be removed from the association "manyAs". The parameter must not be null.
+   * @param pManyAs Object that should be removed from {@link #manyAs}. The parameter must not be null.
    */
   public void removeFromManyAs( ClassA pManyAs ) {
     // Check parameter for invalid value null.
@@ -290,8 +289,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method removes all objects from the association "manyAs".
-   * 
+   * Method removes all objects from {@link #manyAs}.
    */
   public void clearManyAs( ) {
     // Remove all objects from association "manyAs".

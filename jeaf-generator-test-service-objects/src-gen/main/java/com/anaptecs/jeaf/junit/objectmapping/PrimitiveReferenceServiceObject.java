@@ -332,10 +332,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method removes the passed Boolean object from the association "booleanSet".
+   * Method removes the passed object from {@link #booleanSet}.<br/>
    * 
-   * 
-   * @param pBooleanSet Object that should be removed from the association "booleanSet". The parameter must not be null.
+   * @param pBooleanSet Object that should be removed from {@link #booleanSet}. The parameter must not be null.
    */
   public void removeFromBooleanSet( Boolean pBooleanSet ) {
     // Check parameter for invalid value null.
@@ -345,8 +344,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "booleanSet".
-   * 
+   * Method removes all objects from {@link #booleanSet}.
    */
   public void clearBooleanSet( ) {
     // Remove all objects from association "booleanSet".
@@ -392,10 +390,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method removes the passed StringBuffer object from the association "buffers".
+   * Method removes the passed object from {@link #buffers}.<br/>
    * 
-   * 
-   * @param pBuffers Object that should be removed from the association "buffers". The parameter must not be null.
+   * @param pBuffers Object that should be removed from {@link #buffers}. The parameter must not be null.
    */
   public void removeFromBuffers( StringBuffer pBuffers ) {
     // Check parameter for invalid value null.
@@ -405,8 +402,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "buffers".
-   * 
+   * Method removes all objects from {@link #buffers}.
    */
   public void clearBuffers( ) {
     // Remove all objects from association "buffers".
@@ -452,10 +448,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method removes the passed String object from the association "strings".
+   * Method removes the passed object from {@link #strings}.<br/>
    * 
-   * 
-   * @param pStrings Object that should be removed from the association "strings". The parameter must not be null.
+   * @param pStrings Object that should be removed from {@link #strings}. The parameter must not be null.
    */
   public void removeFromStrings( String pStrings ) {
     // Check parameter for invalid value null.
@@ -465,8 +460,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "strings".
-   * 
+   * Method removes all objects from {@link #strings}.
    */
   public void clearStrings( ) {
     // Remove all objects from association "strings".

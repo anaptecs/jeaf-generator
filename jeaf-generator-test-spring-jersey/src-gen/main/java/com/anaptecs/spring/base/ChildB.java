@@ -253,10 +253,9 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method removes the passed ParentClass object from the association "composition". the composition
+   * Method removes the passed object from {@link #composition}.<br/>
    * 
-   * @param pComposition Object that should be removed from the association "composition". The parameter must not be
-   * null.
+   * @param pComposition Object that should be removed from {@link #composition}. The parameter must not be null.
    */
   public void removeFromComposition( ParentClass pComposition ) {
     // Remove passed object from collection of associated ParentClass objects.
@@ -264,7 +263,7 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method removes all objects from the association "composition". the composition
+   * Method removes all objects from {@link #composition}.
    */
   public void clearComposition( ) {
     // Remove all objects from association "composition".

@@ -118,11 +118,9 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method removes the passed AssortmentDO object from the association "assortments".
+   * Method removes the passed object from {@link #assortments}.<br/>
    * 
-   * 
-   * @param pAssortments Object that should be removed from the association "assortments". The parameter must not be
-   * null.
+   * @param pAssortments Object that should be removed from {@link #assortments}. The parameter must not be null.
    */
   public void removeFromAssortments( AssortmentDO pAssortments ) {
     // Check parameter for invalid value null.
@@ -137,8 +135,7 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method removes all objects from the association "assortments".
-   * 
+   * Method removes all objects from {@link #assortments}.
    */
   public void clearAssortments( ) {
     // Remove all objects from association "assortments".
@@ -190,11 +187,10 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method removes the passed PriceDO object from the association "pricesPerCurrency".
+   * Method removes the passed object from {@link #pricesPerCurrency}.<br/>
    * 
-   * 
-   * @param pPricesPerCurrency Object that should be removed from the association "pricesPerCurrency". The parameter
-   * must not be null.
+   * @param pPricesPerCurrency Object that should be removed from {@link #pricesPerCurrency}. The parameter must not be
+   * null.
    */
   public void removeFromPricesPerCurrency( PriceDO pPricesPerCurrency ) {
     // Check parameter for invalid value null.
@@ -204,8 +200,7 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method removes all objects from the association "pricesPerCurrency".
-   * 
+   * Method removes all objects from {@link #pricesPerCurrency}.
    */
   public void clearPricesPerCurrency( ) {
     // Remove all objects from association "pricesPerCurrency".

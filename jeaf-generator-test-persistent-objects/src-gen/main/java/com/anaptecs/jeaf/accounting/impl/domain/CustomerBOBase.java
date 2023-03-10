@@ -120,10 +120,9 @@ public abstract class CustomerBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed AccountBO object from the association "accounts".
+   * Method removes the passed object from {@link #accounts}.<br/>
    * 
-   * 
-   * @param pAccounts Object that should be removed from the association "accounts". The parameter must not be null.
+   * @param pAccounts Object that should be removed from {@link #accounts}. The parameter must not be null.
    */
   public void removeFromAccounts( AccountBO pAccounts ) {
     // Check parameter for invalid value null.
@@ -138,8 +137,7 @@ public abstract class CustomerBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "accounts".
-   * 
+   * Method removes all objects from {@link #accounts}.
    */
   public void clearAccounts( ) {
     // Remove all objects from association "accounts".
@@ -196,11 +194,10 @@ public abstract class CustomerBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed EmployeeBO object from the association "attendingEmployees".
+   * Method removes the passed object from {@link #attendingEmployees}.<br/>
    * 
-   * 
-   * @param pAttendingEmployees Object that should be removed from the association "attendingEmployees". The parameter
-   * must not be null.
+   * @param pAttendingEmployees Object that should be removed from {@link #attendingEmployees}. The parameter must not
+   * be null.
    */
   public void removeFromAttendingEmployees( EmployeeBO pAttendingEmployees ) {
     // Check parameter for invalid value null.
@@ -215,8 +212,7 @@ public abstract class CustomerBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "attendingEmployees".
-   * 
+   * Method removes all objects from {@link #attendingEmployees}.
    */
   public void clearAttendingEmployees( ) {
     // Remove all objects from association "attendingEmployees".

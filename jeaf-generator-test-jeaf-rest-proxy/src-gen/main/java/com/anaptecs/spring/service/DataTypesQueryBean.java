@@ -612,11 +612,9 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method removes the passed DoubleCode object from the association "doubleCodes".
+   * Method removes the passed object from {@link #doubleCodes}.<br/>
    * 
-   * 
-   * @param pDoubleCodes Object that should be removed from the association "doubleCodes". The parameter must not be
-   * null.
+   * @param pDoubleCodes Object that should be removed from {@link #doubleCodes}. The parameter must not be null.
    */
   public void removeFromDoubleCodes( DoubleCode pDoubleCodes ) {
     // Check parameter for invalid value null.
@@ -626,8 +624,7 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method removes all objects from the association "doubleCodes".
-   * 
+   * Method removes all objects from {@link #doubleCodes}.
    */
   public void clearDoubleCodes( ) {
     // Remove all objects from association "doubleCodes".
@@ -673,10 +670,9 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method removes the passed BookingID object from the association "bookingIDs".
+   * Method removes the passed object from {@link #bookingIDs}.<br/>
    * 
-   * 
-   * @param pBookingIDs Object that should be removed from the association "bookingIDs". The parameter must not be null.
+   * @param pBookingIDs Object that should be removed from {@link #bookingIDs}. The parameter must not be null.
    */
   public void removeFromBookingIDs( BookingID pBookingIDs ) {
     // Check parameter for invalid value null.
@@ -686,8 +682,7 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method removes all objects from the association "bookingIDs".
-   * 
+   * Method removes all objects from {@link #bookingIDs}.
    */
   public void clearBookingIDs( ) {
     // Remove all objects from association "bookingIDs".
@@ -848,10 +843,9 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method removes the passed LocalDateTime object from the association "timestamps".
+   * Method removes the passed object from {@link #timestamps}.<br/>
    * 
-   * 
-   * @param pTimestamps Object that should be removed from the association "timestamps". The parameter must not be null.
+   * @param pTimestamps Object that should be removed from {@link #timestamps}. The parameter must not be null.
    */
   public void removeFromTimestamps( LocalDateTime pTimestamps ) {
     // Check parameter for invalid value null.
@@ -861,8 +855,7 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method removes all objects from the association "timestamps".
-   * 
+   * Method removes all objects from {@link #timestamps}.
    */
   public void clearTimestamps( ) {
     // Remove all objects from association "timestamps".
@@ -907,10 +900,9 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method removes the passed OffsetTime object from the association "times".
+   * Method removes the passed object from {@link #times}.<br/>
    * 
-   * 
-   * @param pTimes Object that should be removed from the association "times". The parameter must not be null.
+   * @param pTimes Object that should be removed from {@link #times}. The parameter must not be null.
    */
   public void removeFromTimes( OffsetTime pTimes ) {
     // Check parameter for invalid value null.
@@ -920,8 +912,7 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method removes all objects from the association "times".
-   * 
+   * Method removes all objects from {@link #times}.
    */
   public void clearTimes( ) {
     // Remove all objects from association "times".

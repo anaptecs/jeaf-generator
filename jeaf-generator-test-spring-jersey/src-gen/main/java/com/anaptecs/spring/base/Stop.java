@@ -200,10 +200,9 @@ public class Stop {
   }
 
   /**
-   * Method removes the passed LinkObject object from the association "links".
+   * Method removes the passed object from {@link #links}.<br/>
    * 
-   * 
-   * @param pLinks Object that should be removed from the association "links". The parameter must not be null.
+   * @param pLinks Object that should be removed from {@link #links}. The parameter must not be null.
    */
   public void removeFromLinks( LinkObject pLinks ) {
     // Remove passed object from collection of associated LinkObject objects.
@@ -211,8 +210,7 @@ public class Stop {
   }
 
   /**
-   * Method removes all objects from the association "links".
-   * 
+   * Method removes all objects from {@link #links}.
    */
   public void clearLinks( ) {
     // Remove all objects from association "links".

@@ -256,11 +256,9 @@ public class BidirectA implements Serializable {
   }
 
   /**
-   * Method removes the passed BidirectB object from the association "transientBs".
+   * Method removes the passed object from {@link #transientBs}.<br/>
    * 
-   * 
-   * @param pTransientBs Object that should be removed from the association "transientBs". The parameter must not be
-   * null.
+   * @param pTransientBs Object that should be removed from {@link #transientBs}. The parameter must not be null.
    */
   public void removeFromTransientBs( BidirectB pTransientBs ) {
     // Check parameter for invalid value null.
@@ -275,8 +273,7 @@ public class BidirectA implements Serializable {
   }
 
   /**
-   * Method removes all objects from the association "transientBs".
-   * 
+   * Method removes all objects from {@link #transientBs}.
    */
   public void clearTransientBs( ) {
     // Remove all objects from association "transientBs".

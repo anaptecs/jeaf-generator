@@ -278,11 +278,10 @@ public class CodeTypeUsageTest {
   }
 
   /**
-   * Method removes the passed BooleanCodeType object from the association "booleanCodeAssociation".
+   * Method removes the passed object from {@link #booleanCodeAssociation}.<br/>
    * 
-   * 
-   * @param pBooleanCodeAssociation Object that should be removed from the association "booleanCodeAssociation". The
-   * parameter must not be null.
+   * @param pBooleanCodeAssociation Object that should be removed from {@link #booleanCodeAssociation}. The parameter
+   * must not be null.
    */
   public void removeFromBooleanCodeAssociation( BooleanCodeType pBooleanCodeAssociation ) {
     // Remove passed object from collection of associated BooleanCodeType objects.
@@ -290,8 +289,7 @@ public class CodeTypeUsageTest {
   }
 
   /**
-   * Method removes all objects from the association "booleanCodeAssociation".
-   * 
+   * Method removes all objects from {@link #booleanCodeAssociation}.
    */
   public void clearBooleanCodeAssociation( ) {
     // Remove all objects from association "booleanCodeAssociation".
@@ -334,10 +332,9 @@ public class CodeTypeUsageTest {
   }
 
   /**
-   * Method removes the passed ShortCodeType object from the association "shortCodeTypeAssociation".
+   * Method removes the passed object from {@link #shortCodeTypeAssociation}.<br/>
    * 
-   * 
-   * @param pShortCodeTypeAssociation Object that should be removed from the association "shortCodeTypeAssociation". The
+   * @param pShortCodeTypeAssociation Object that should be removed from {@link #shortCodeTypeAssociation}. The
    * parameter must not be null.
    */
   public void removeFromShortCodeTypeAssociation( ShortCodeType pShortCodeTypeAssociation ) {
@@ -346,8 +343,7 @@ public class CodeTypeUsageTest {
   }
 
   /**
-   * Method removes all objects from the association "shortCodeTypeAssociation".
-   * 
+   * Method removes all objects from {@link #shortCodeTypeAssociation}.
    */
   public void clearShortCodeTypeAssociation( ) {
     // Remove all objects from association "shortCodeTypeAssociation".

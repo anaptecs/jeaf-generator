@@ -484,10 +484,9 @@
   }
   
     /**
-     * Method removes the passed «this.type.name» object from the association "«asInstanceVar()»".     
-     * «this.getComment()»
+     * Method removes the passed object from {@link #«asInstanceVar()»}.<br/>     
      * 
-     * @param «asParameter()» Object that should be removed from the association "«asInstanceVar()»". The parameter must not be null.
+     * @param «asParameter()» Object that should be removed from {@link #«asInstanceVar()»}. The parameter must not be null.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public void removeFrom«name.toFirstUpper()» («type.fqn()» «asParameter()») {
@@ -503,8 +502,7 @@
 	}
 	
     /**
-     * Method removes all objects from the association "«asInstanceVar()»".
-     * «this.getComment()»
+     * Method removes all objects from {@link #«asInstanceVar()»}.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void clear«name.toFirstUpper()» () {
