@@ -212,11 +212,10 @@ public class WeirdBooking implements Serializable {
   }
 
   /**
-   * Method adds the passed ComplexBookingID object to the association "additionalBookings".
+   * Method adds the passed object to {@link #additionalBookings}.
    * 
-   * 
-   * @param pAdditionalBookings Object that should be added to the association "additionalBookings". The parameter must
-   * not be null.
+   * @param pAdditionalBookings Object that should be added to {@link #additionalBookings}. The parameter must not be
+   * null.
    */
   public void addToAdditionalBookings( ComplexBookingID pAdditionalBookings ) {
     // Check parameter "pAdditionalBookings" for invalid value null.

@@ -237,10 +237,9 @@ public class Leg implements ServiceObject {
   }
 
   /**
-   * Method adds the passed PlaceRef object to the association "stopovers".
+   * Method adds the passed object to {@link #stopovers}.
    * 
-   * 
-   * @param pStopovers Object that should be added to the association "stopovers". The parameter must not be null.
+   * @param pStopovers Object that should be added to {@link #stopovers}. The parameter must not be null.
    */
   public void addToStopovers( PlaceRef pStopovers ) {
     // Check parameter "pStopovers" for invalid value null.

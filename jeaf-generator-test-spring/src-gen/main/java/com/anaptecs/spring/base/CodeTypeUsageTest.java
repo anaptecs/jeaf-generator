@@ -254,11 +254,10 @@ public class CodeTypeUsageTest {
   }
 
   /**
-   * Method adds the passed BooleanCodeType object to the association "booleanCodeAssociation".
+   * Method adds the passed object to {@link #booleanCodeAssociation}.
    * 
-   * 
-   * @param pBooleanCodeAssociation Object that should be added to the association "booleanCodeAssociation". The
-   * parameter must not be null.
+   * @param pBooleanCodeAssociation Object that should be added to {@link #booleanCodeAssociation}. The parameter must
+   * not be null.
    */
   public void addToBooleanCodeAssociation( BooleanCodeType pBooleanCodeAssociation ) {
     // Add passed object to collection of associated BooleanCodeType objects.
@@ -312,11 +311,10 @@ public class CodeTypeUsageTest {
   }
 
   /**
-   * Method adds the passed ShortCodeType object to the association "shortCodeTypeAssociation".
+   * Method adds the passed object to {@link #shortCodeTypeAssociation}.
    * 
-   * 
-   * @param pShortCodeTypeAssociation Object that should be added to the association "shortCodeTypeAssociation". The
-   * parameter must not be null.
+   * @param pShortCodeTypeAssociation Object that should be added to {@link #shortCodeTypeAssociation}. The parameter
+   * must not be null.
    */
   public void addToShortCodeTypeAssociation( ShortCodeType pShortCodeTypeAssociation ) {
     // Add passed object to collection of associated ShortCodeType objects.

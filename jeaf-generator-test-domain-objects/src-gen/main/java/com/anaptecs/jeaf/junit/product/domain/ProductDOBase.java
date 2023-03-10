@@ -86,10 +86,9 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method adds the passed AssortmentDO object to the association "assortments".
+   * Method adds the passed object to {@link #assortments}.
    * 
-   * 
-   * @param pAssortments Object that should be added to the association "assortments". The parameter must not be null.
+   * @param pAssortments Object that should be added to {@link #assortments}. The parameter must not be null.
    */
   public void addToAssortments( AssortmentDO pAssortments ) {
     // Check parameter "pAssortments" for invalid value null.
@@ -164,11 +163,10 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method adds the passed PriceDO object to the association "pricesPerCurrency".
+   * Method adds the passed object to {@link #pricesPerCurrency}.
    * 
-   * 
-   * @param pPricesPerCurrency Object that should be added to the association "pricesPerCurrency". The parameter must
-   * not be null.
+   * @param pPricesPerCurrency Object that should be added to {@link #pricesPerCurrency}. The parameter must not be
+   * null.
    */
   public void addToPricesPerCurrency( PriceDO pPricesPerCurrency ) {
     // Check parameter "pPricesPerCurrency" for invalid value null.

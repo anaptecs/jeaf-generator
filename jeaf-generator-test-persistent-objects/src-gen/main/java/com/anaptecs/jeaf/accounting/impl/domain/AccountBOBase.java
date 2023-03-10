@@ -206,10 +206,9 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed BookingBO object to the association "bookings".
+   * Method adds the passed object to {@link #bookings}.
    * 
-   * 
-   * @param pBookings Object that should be added to the association "bookings". The parameter must not be null.
+   * @param pBookings Object that should be added to {@link #bookings}. The parameter must not be null.
    */
   public void addToBookings( BookingBO pBookings ) {
     // Check parameter "pBookings" for invalid value null.
@@ -286,11 +285,10 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed MyPersonBO object to the association "authorizedPersons".
+   * Method adds the passed object to {@link #authorizedPersons}.
    * 
-   * 
-   * @param pAuthorizedPersons Object that should be added to the association "authorizedPersons". The parameter must
-   * not be null.
+   * @param pAuthorizedPersons Object that should be added to {@link #authorizedPersons}. The parameter must not be
+   * null.
    */
   public void addToAuthorizedPersons( MyPersonBO pAuthorizedPersons ) {
     // Check parameter "pAuthorizedPersons" for invalid value null.

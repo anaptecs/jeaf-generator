@@ -318,11 +318,9 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method adds the passed ValidationTestObject object to the association "deprecatedRefs".
+   * Method adds the passed object to {@link #deprecatedRefs}.
    * 
-   * 
-   * @param pDeprecatedRefs Object that should be added to the association "deprecatedRefs". The parameter must not be
-   * null.
+   * @param pDeprecatedRefs Object that should be added to {@link #deprecatedRefs}. The parameter must not be null.
    */
   @Deprecated
   public void addToDeprecatedRefs( ValidationTestObject pDeprecatedRefs ) {

@@ -197,10 +197,9 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method adds the passed BidirectB object to the association "transientBs".
+   * Method adds the passed object to {@link #transientBs}.
    * 
-   * 
-   * @param pTransientBs Object that should be added to the association "transientBs". The parameter must not be null.
+   * @param pTransientBs Object that should be added to {@link #transientBs}. The parameter must not be null.
    */
   public void addToTransientBs( BidirectB pTransientBs ) {
     // Check parameter "pTransientBs" for invalid value null.

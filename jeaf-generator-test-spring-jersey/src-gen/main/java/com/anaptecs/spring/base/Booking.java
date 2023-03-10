@@ -237,10 +237,9 @@ public class Booking {
   }
 
   /**
-   * Method adds the passed InventoryType object to the association "inventories".
+   * Method adds the passed object to {@link #inventories}.
    * 
-   * 
-   * @param pInventories Object that should be added to the association "inventories". The parameter must not be null.
+   * @param pInventories Object that should be added to {@link #inventories}. The parameter must not be null.
    */
   public void addToInventories( InventoryType pInventories ) {
     // Add passed object to collection of associated InventoryType objects.

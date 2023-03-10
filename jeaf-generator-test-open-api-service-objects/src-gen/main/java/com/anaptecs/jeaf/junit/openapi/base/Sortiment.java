@@ -165,10 +165,9 @@ public class Sortiment implements ServiceObject {
   }
 
   /**
-   * Method adds the passed Product object to the association "products".
+   * Method adds the passed object to {@link #products}.
    * 
-   * 
-   * @param pProducts Object that should be added to the association "products". The parameter must not be null.
+   * @param pProducts Object that should be added to {@link #products}. The parameter must not be null.
    */
   public void addToProducts( Product pProducts ) {
     // Check parameter "pProducts" for invalid value null.

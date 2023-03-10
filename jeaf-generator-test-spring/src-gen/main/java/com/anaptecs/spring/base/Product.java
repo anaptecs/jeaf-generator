@@ -460,10 +460,9 @@ public class Product {
   }
 
   /**
-   * Method adds the passed Reseller object to the association "resellers".
+   * Method adds the passed object to {@link #resellers}.
    * 
-   * 
-   * @param pResellers Object that should be added to the association "resellers". The parameter must not be null.
+   * @param pResellers Object that should be added to {@link #resellers}. The parameter must not be null.
    */
   public void addToResellers( Reseller pResellers ) {
     // Add passed object to collection of associated Reseller objects.
@@ -613,11 +612,10 @@ public class Product {
   }
 
   /**
-   * Method adds the passed CurrencyCode object to the association "supportedCurrencies".
+   * Method adds the passed object to {@link #supportedCurrencies}.
    * 
-   * 
-   * @param pSupportedCurrencies Object that should be added to the association "supportedCurrencies". The parameter
-   * must not be null.
+   * @param pSupportedCurrencies Object that should be added to {@link #supportedCurrencies}. The parameter must not be
+   * null.
    */
   public void addToSupportedCurrencies( CurrencyCode pSupportedCurrencies ) {
     // Add passed object to collection of associated CurrencyCode objects.
@@ -671,10 +669,9 @@ public class Product {
   }
 
   /**
-   * Method adds the passed ProductCode object to the association "productCodes".
+   * Method adds the passed object to {@link #productCodes}.
    * 
-   * 
-   * @param pProductCodes Object that should be added to the association "productCodes". The parameter must not be null.
+   * @param pProductCodes Object that should be added to {@link #productCodes}. The parameter must not be null.
    */
   public void addToProductCodes( ProductCode pProductCodes ) {
     // Add passed object to collection of associated ProductCode objects.
@@ -749,10 +746,9 @@ public class Product {
   }
 
   /**
-   * Method adds the passed Sortiment object to the association "sortiments".
+   * Method adds the passed object to {@link #sortiments}.
    * 
-   * 
-   * @param pSortiments Object that should be added to the association "sortiments". The parameter must not be null.
+   * @param pSortiments Object that should be added to {@link #sortiments}. The parameter must not be null.
    */
   public void addToSortiments( Sortiment pSortiments ) {
     // Add passed object to collection of associated Sortiment objects.

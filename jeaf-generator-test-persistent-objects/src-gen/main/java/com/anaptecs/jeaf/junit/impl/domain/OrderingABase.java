@@ -63,11 +63,9 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed OrderingB object to the association "orderedUnique".
+   * Method adds the passed object to {@link #orderedUnique}.
    * 
-   * 
-   * @param pOrderedUnique Object that should be added to the association "orderedUnique". The parameter must not be
-   * null.
+   * @param pOrderedUnique Object that should be added to {@link #orderedUnique}. The parameter must not be null.
    */
   public void addToOrderedUnique( OrderingB pOrderedUnique ) {
     // Check parameter "pOrderedUnique" for invalid value null.
@@ -145,11 +143,9 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed OrderingB object to the association "orderedNotUnique".
+   * Method adds the passed object to {@link #orderedNotUnique}.
    * 
-   * 
-   * @param pOrderedNotUnique Object that should be added to the association "orderedNotUnique". The parameter must not
-   * be null.
+   * @param pOrderedNotUnique Object that should be added to {@link #orderedNotUnique}. The parameter must not be null.
    */
   public void addToOrderedNotUnique( OrderingB pOrderedNotUnique ) {
     // Check parameter "pOrderedNotUnique" for invalid value null.
@@ -268,11 +264,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed OrderingB object to the association "notOrderedNotUnique".
+   * Method adds the passed object to {@link #notOrderedNotUnique}.
    * 
-   * 
-   * @param pNotOrderedNotUnique Object that should be added to the association "notOrderedNotUnique". The parameter
-   * must not be null.
+   * @param pNotOrderedNotUnique Object that should be added to {@link #notOrderedNotUnique}. The parameter must not be
+   * null.
    */
   public void addToNotOrderedNotUnique( OrderingB pNotOrderedNotUnique ) {
     // Check parameter "pNotOrderedNotUnique" for invalid value null.

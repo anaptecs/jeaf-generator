@@ -52,10 +52,9 @@ public abstract class NetzbereichDOBase extends DomainObject {
   }
 
   /**
-   * Method adds the passed KanteDO object to the association "kanten".
+   * Method adds the passed object to {@link #kanten}.
    * 
-   * 
-   * @param pKanten Object that should be added to the association "kanten". The parameter must not be null.
+   * @param pKanten Object that should be added to {@link #kanten}. The parameter must not be null.
    */
   public void addToKanten( KanteDO pKanten ) {
     // Check parameter "pKanten" for invalid value null.

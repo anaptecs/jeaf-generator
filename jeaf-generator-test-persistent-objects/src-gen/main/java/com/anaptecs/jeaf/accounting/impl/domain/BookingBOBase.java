@@ -152,9 +152,9 @@ public abstract class BookingBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed MyPersonBO object to the association "remitters". Person who authorized the booking.
+   * Method adds the passed object to {@link #remitters}.
    * 
-   * @param pRemitters Object that should be added to the association "remitters". The parameter must not be null.
+   * @param pRemitters Object that should be added to {@link #remitters}. The parameter must not be null.
    */
   public void addToRemitters( MyPersonBO pRemitters ) {
     // Check parameter "pRemitters" for invalid value null.

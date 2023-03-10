@@ -135,10 +135,9 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed BaseClassBO object to the association "baseClasses".
+   * Method adds the passed object to {@link #baseClasses}.
    * 
-   * 
-   * @param pBaseClasses Object that should be added to the association "baseClasses". The parameter must not be null.
+   * @param pBaseClasses Object that should be added to {@link #baseClasses}. The parameter must not be null.
    */
   @Deprecated
   public void addToBaseClasses( BaseClassBO pBaseClasses ) {

@@ -390,10 +390,9 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method adds the passed Person object to the association "remitters".
+   * Method adds the passed object to {@link #remitters}.
    * 
-   * 
-   * @param pRemitters Object that should be added to the association "remitters". The parameter must not be null.
+   * @param pRemitters Object that should be added to {@link #remitters}. The parameter must not be null.
    */
   public void addToRemitters( Person pRemitters ) {
     // Check parameter "pRemitters" for invalid value null.

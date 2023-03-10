@@ -51,11 +51,9 @@ public abstract class PfadDOBase extends DomainObject {
   }
 
   /**
-   * Method adds the passed KanteDO object to the association "kantenSequenz".
+   * Method adds the passed object to {@link #kantenSequenz}.
    * 
-   * 
-   * @param pKantenSequenz Object that should be added to the association "kantenSequenz". The parameter must not be
-   * null.
+   * @param pKantenSequenz Object that should be added to {@link #kantenSequenz}. The parameter must not be null.
    */
   public void addToKantenSequenz( KanteDO pKantenSequenz ) {
     // Check parameter "pKantenSequenz" for invalid value null.

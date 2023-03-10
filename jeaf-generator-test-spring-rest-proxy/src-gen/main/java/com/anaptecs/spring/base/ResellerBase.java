@@ -221,10 +221,9 @@ public abstract class ResellerBase {
   }
 
   /**
-   * Method adds the passed Channel object to the association "channels".
+   * Method adds the passed object to {@link #channels}.
    * 
-   * 
-   * @param pChannels Object that should be added to the association "channels". The parameter must not be null.
+   * @param pChannels Object that should be added to {@link #channels}. The parameter must not be null.
    */
   public void addToChannels( Channel pChannels ) {
     // Since this is not a many-to-many association the association to which the passed object belongs, has to
@@ -295,10 +294,9 @@ public abstract class ResellerBase {
   }
 
   /**
-   * Method adds the passed Product object to the association "products".
+   * Method adds the passed object to {@link #products}.
    * 
-   * 
-   * @param pProducts Object that should be added to the association "products". The parameter must not be null.
+   * @param pProducts Object that should be added to {@link #products}. The parameter must not be null.
    */
   public void addToProducts( Product pProducts ) {
     // Add passed object to collection of associated Product objects.

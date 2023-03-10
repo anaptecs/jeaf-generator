@@ -284,10 +284,9 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method adds the passed Booking object to the association "allBookings".
+   * Method adds the passed object to {@link #allBookings}.
    * 
-   * 
-   * @param pAllBookings Object that should be added to the association "allBookings". The parameter must not be null.
+   * @param pAllBookings Object that should be added to {@link #allBookings}. The parameter must not be null.
    */
   public void addToAllBookings( Booking pAllBookings ) {
     // Check parameter "pAllBookings" for invalid value null.

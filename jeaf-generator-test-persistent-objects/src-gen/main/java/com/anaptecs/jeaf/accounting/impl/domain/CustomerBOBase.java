@@ -85,10 +85,9 @@ public abstract class CustomerBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed AccountBO object to the association "accounts".
+   * Method adds the passed object to {@link #accounts}.
    * 
-   * 
-   * @param pAccounts Object that should be added to the association "accounts". The parameter must not be null.
+   * @param pAccounts Object that should be added to {@link #accounts}. The parameter must not be null.
    */
   public void addToAccounts( AccountBO pAccounts ) {
     // Check parameter "pAccounts" for invalid value null.
@@ -165,11 +164,10 @@ public abstract class CustomerBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed EmployeeBO object to the association "attendingEmployees".
+   * Method adds the passed object to {@link #attendingEmployees}.
    * 
-   * 
-   * @param pAttendingEmployees Object that should be added to the association "attendingEmployees". The parameter must
-   * not be null.
+   * @param pAttendingEmployees Object that should be added to {@link #attendingEmployees}. The parameter must not be
+   * null.
    */
   public void addToAttendingEmployees( EmployeeBO pAttendingEmployees ) {
     // Check parameter "pAttendingEmployees" for invalid value null.

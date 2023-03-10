@@ -168,10 +168,9 @@ public abstract class MyPersonBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed AccountBO object to the association "accounts".
+   * Method adds the passed object to {@link #accounts}.
    * 
-   * 
-   * @param pAccounts Object that should be added to the association "accounts". The parameter must not be null.
+   * @param pAccounts Object that should be added to {@link #accounts}. The parameter must not be null.
    */
   public void addToAccounts( AccountBO pAccounts ) {
     // Check parameter "pAccounts" for invalid value null.

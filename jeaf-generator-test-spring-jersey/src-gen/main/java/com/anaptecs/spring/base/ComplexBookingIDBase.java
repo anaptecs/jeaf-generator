@@ -278,10 +278,9 @@ public abstract class ComplexBookingIDBase {
   }
 
   /**
-   * Method adds the passed BookingID object to the association "bookingIDs".
+   * Method adds the passed object to {@link #bookingIDs}.
    * 
-   * 
-   * @param pBookingIDs Object that should be added to the association "bookingIDs". The parameter must not be null.
+   * @param pBookingIDs Object that should be added to {@link #bookingIDs}. The parameter must not be null.
    */
   public void addToBookingIDs( BookingID pBookingIDs ) {
     // Add passed object to collection of associated BookingID objects.

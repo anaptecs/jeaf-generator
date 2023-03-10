@@ -311,10 +311,9 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method adds the passed StringCode object to the association "stringCodeHeader". This is my multivalued test header
+   * Method adds the passed object to {@link #stringCodeHeader}.
    * 
-   * @param pStringCodeHeader Object that should be added to the association "stringCodeHeader". The parameter must not
-   * be null.
+   * @param pStringCodeHeader Object that should be added to {@link #stringCodeHeader}. The parameter must not be null.
    */
   public void addToStringCodeHeader( StringCode pStringCodeHeader ) {
     // Check parameter "pStringCodeHeader" for invalid value null.
@@ -373,10 +372,10 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method adds the passed LongCode object to the association "longCodeQueryParam". Multivalued query param
+   * Method adds the passed object to {@link #longCodeQueryParam}.
    * 
-   * @param pLongCodeQueryParam Object that should be added to the association "longCodeQueryParam". The parameter must
-   * not be null.
+   * @param pLongCodeQueryParam Object that should be added to {@link #longCodeQueryParam}. The parameter must not be
+   * null.
    */
   public void addToLongCodeQueryParam( LongCode pLongCodeQueryParam ) {
     // Check parameter "pLongCodeQueryParam" for invalid value null.
@@ -434,9 +433,9 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
-   * Method adds the passed BooleanLiteralsEnum object to the association "literals". so many literals are possible
+   * Method adds the passed object to {@link #literals}.
    * 
-   * @param pLiterals Object that should be added to the association "literals". The parameter must not be null.
+   * @param pLiterals Object that should be added to {@link #literals}. The parameter must not be null.
    */
   public void addToLiterals( BooleanLiteralsEnum pLiterals ) {
     // Check parameter "pLiterals" for invalid value null.

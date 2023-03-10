@@ -385,11 +385,10 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   }
 
   /**
-   * Method adds the passed Person object to the association "authorizedPersons".
+   * Method adds the passed object to {@link #authorizedPersons}.
    * 
-   * 
-   * @param pAuthorizedPersons Object that should be added to the association "authorizedPersons". The parameter must
-   * not be null.
+   * @param pAuthorizedPersons Object that should be added to {@link #authorizedPersons}. The parameter must not be
+   * null.
    */
   public void addToAuthorizedPersons( Person pAuthorizedPersons ) {
     // Check parameter "pAuthorizedPersons" for invalid value null.
@@ -472,10 +471,9 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   }
 
   /**
-   * Method adds the passed Booking object to the association "bookings".
+   * Method adds the passed object to {@link #bookings}.
    * 
-   * 
-   * @param pBookings Object that should be added to the association "bookings". The parameter must not be null.
+   * @param pBookings Object that should be added to {@link #bookings}. The parameter must not be null.
    */
   public void addToBookings( Booking pBookings ) {
     // Check parameter "pBookings" for invalid value null.

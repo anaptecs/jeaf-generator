@@ -248,10 +248,9 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method adds the passed LinkObject object to the association "links".
+   * Method adds the passed object to {@link #links}.
    * 
-   * 
-   * @param pLinks Object that should be added to the association "links". The parameter must not be null.
+   * @param pLinks Object that should be added to {@link #links}. The parameter must not be null.
    */
   public void addToLinks( LinkObject pLinks ) {
     // Check parameter "pLinks" for invalid value null.

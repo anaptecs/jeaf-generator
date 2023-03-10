@@ -253,11 +253,9 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Method adds the passed ComplexBookingID object to the association "complexBookings".
+   * Method adds the passed object to {@link #complexBookings}.
    * 
-   * 
-   * @param pComplexBookings Object that should be added to the association "complexBookings". The parameter must not be
-   * null.
+   * @param pComplexBookings Object that should be added to {@link #complexBookings}. The parameter must not be null.
    */
   public void addToComplexBookings( ComplexBookingID pComplexBookings ) {
     // Check parameter "pComplexBookings" for invalid value null.

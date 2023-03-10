@@ -176,11 +176,10 @@ public abstract class EmployeeBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed CustomerBO object to the association "attendedCustomers".
+   * Method adds the passed object to {@link #attendedCustomers}.
    * 
-   * 
-   * @param pAttendedCustomers Object that should be added to the association "attendedCustomers". The parameter must
-   * not be null.
+   * @param pAttendedCustomers Object that should be added to {@link #attendedCustomers}. The parameter must not be
+   * null.
    */
   public void addToAttendedCustomers( CustomerBO pAttendedCustomers ) {
     // Check parameter "pAttendedCustomers" for invalid value null.
@@ -296,10 +295,9 @@ public abstract class EmployeeBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed EmployeeBO object to the association "employees".
+   * Method adds the passed object to {@link #employees}.
    * 
-   * 
-   * @param pEmployees Object that should be added to the association "employees". The parameter must not be null.
+   * @param pEmployees Object that should be added to {@link #employees}. The parameter must not be null.
    */
   public void addToEmployees( EmployeeBO pEmployees ) {
     // Check parameter "pEmployees" for invalid value null.

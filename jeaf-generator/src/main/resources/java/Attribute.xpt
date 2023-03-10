@@ -450,12 +450,7 @@
     }
     «ENDIF»
 
-    /**
-     * Method adds the passed «this.type.name» object to the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     * 
-     * @param «asParameter()» Object that should be added to the association "«asInstanceVar()»". The parameter must not be null.
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertyAdd»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public void addTo«name.toFirstUpper()» («this.type.fqn()» «asParameter()») {
         «IF isTargetRuntimeJEAF()»

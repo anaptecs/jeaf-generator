@@ -596,11 +596,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method adds the passed StringCode object to the association "stringCodeList".
+   * Method adds the passed object to {@link #stringCodeList}.
    * 
-   * 
-   * @param pStringCodeList Object that should be added to the association "stringCodeList". The parameter must not be
-   * null.
+   * @param pStringCodeList Object that should be added to {@link #stringCodeList}. The parameter must not be null.
    */
   public void addToStringCodeList( StringCode pStringCodeList ) {
     // Add passed object to collection of associated StringCode objects.
@@ -706,10 +704,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method adds the passed LocalDateTime object to the association "timestamps".
+   * Method adds the passed object to {@link #timestamps}.
    * 
-   * 
-   * @param pTimestamps Object that should be added to the association "timestamps". The parameter must not be null.
+   * @param pTimestamps Object that should be added to {@link #timestamps}. The parameter must not be null.
    */
   public void addToTimestamps( LocalDateTime pTimestamps ) {
     // Add passed object to collection of associated LocalDateTime objects.

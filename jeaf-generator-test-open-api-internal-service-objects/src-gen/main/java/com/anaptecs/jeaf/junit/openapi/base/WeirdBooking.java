@@ -367,10 +367,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method adds the passed ComplexBookingID object to the association "additionalBookings". additional bookings
+   * Method adds the passed object to {@link #additionalBookings}.
    * 
-   * @param pAdditionalBookings Object that should be added to the association "additionalBookings". The parameter must
-   * not be null.
+   * @param pAdditionalBookings Object that should be added to {@link #additionalBookings}. The parameter must not be
+   * null.
    */
   public void addToAdditionalBookings( ComplexBookingID pAdditionalBookings ) {
     // Check parameter "pAdditionalBookings" for invalid value null.
@@ -504,10 +504,9 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method adds the passed InventoryType object to the association "inventories".
+   * Method adds the passed object to {@link #inventories}.
    * 
-   * 
-   * @param pInventories Object that should be added to the association "inventories". The parameter must not be null.
+   * @param pInventories Object that should be added to {@link #inventories}. The parameter must not be null.
    */
   public void addToInventories( InventoryType pInventories ) {
     // Check parameter "pInventories" for invalid value null.

@@ -137,10 +137,9 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed CManyBO object to the association "cManys".
+   * Method adds the passed object to {@link #cManys}.
    * 
-   * 
-   * @param pCManys Object that should be added to the association "cManys". The parameter must not be null.
+   * @param pCManys Object that should be added to {@link #cManys}. The parameter must not be null.
    */
   public void addToCManys( CManyBO pCManys ) {
     // Check parameter "pCManys" for invalid value null.

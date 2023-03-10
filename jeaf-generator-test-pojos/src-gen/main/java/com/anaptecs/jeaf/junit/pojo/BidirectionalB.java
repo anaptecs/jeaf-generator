@@ -215,10 +215,9 @@ public class BidirectionalB {
   }
 
   /**
-   * Method adds the passed BidirectionalA object to the association "as".
+   * Method adds the passed object to {@link #as}.
    * 
-   * 
-   * @param pAs Object that should be added to the association "as". The parameter must not be null.
+   * @param pAs Object that should be added to {@link #as}. The parameter must not be null.
    */
   public void addToAs( BidirectionalA pAs ) {
     // Check parameter "pAs" for invalid value null.
@@ -303,10 +302,9 @@ public class BidirectionalB {
   }
 
   /**
-   * Method adds the passed BidirectionalA object to the association "theAs".
+   * Method adds the passed object to {@link #theAs}.
    * 
-   * 
-   * @param pTheAs Object that should be added to the association "theAs". The parameter must not be null.
+   * @param pTheAs Object that should be added to {@link #theAs}. The parameter must not be null.
    */
   public void addToTheAs( BidirectionalA pTheAs ) {
     // Check parameter "pTheAs" for invalid value null.

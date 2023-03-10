@@ -274,9 +274,9 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method adds the passed ParentClass object to the association "composition". the composition
+   * Method adds the passed object to {@link #composition}.
    * 
-   * @param pComposition Object that should be added to the association "composition". The parameter must not be null.
+   * @param pComposition Object that should be added to {@link #composition}. The parameter must not be null.
    */
   public void addToComposition( ParentClass pComposition ) {
     // Check parameter "pComposition" for invalid value null.

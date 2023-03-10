@@ -434,10 +434,9 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method adds the passed Account object to the association "accounts".
+   * Method adds the passed object to {@link #accounts}.
    * 
-   * 
-   * @param pAccounts Object that should be added to the association "accounts". The parameter must not be null.
+   * @param pAccounts Object that should be added to {@link #accounts}. The parameter must not be null.
    */
   public void addToAccounts( Account pAccounts ) {
     // Check parameter "pAccounts" for invalid value null.

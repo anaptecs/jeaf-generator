@@ -585,10 +585,9 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method adds the passed DoubleCode object to the association "doubleCodes".
+   * Method adds the passed object to {@link #doubleCodes}.
    * 
-   * 
-   * @param pDoubleCodes Object that should be added to the association "doubleCodes". The parameter must not be null.
+   * @param pDoubleCodes Object that should be added to {@link #doubleCodes}. The parameter must not be null.
    */
   public void addToDoubleCodes( DoubleCode pDoubleCodes ) {
     // Check parameter "pDoubleCodes" for invalid value null.
@@ -648,10 +647,9 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method adds the passed BookingID object to the association "bookingIDs".
+   * Method adds the passed object to {@link #bookingIDs}.
    * 
-   * 
-   * @param pBookingIDs Object that should be added to the association "bookingIDs". The parameter must not be null.
+   * @param pBookingIDs Object that should be added to {@link #bookingIDs}. The parameter must not be null.
    */
   public void addToBookingIDs( BookingID pBookingIDs ) {
     // Check parameter "pBookingIDs" for invalid value null.
@@ -825,10 +823,9 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method adds the passed LocalDateTime object to the association "timestamps".
+   * Method adds the passed object to {@link #timestamps}.
    * 
-   * 
-   * @param pTimestamps Object that should be added to the association "timestamps". The parameter must not be null.
+   * @param pTimestamps Object that should be added to {@link #timestamps}. The parameter must not be null.
    */
   public void addToTimestamps( LocalDateTime pTimestamps ) {
     // Check parameter "pTimestamps" for invalid value null.
@@ -887,10 +884,9 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method adds the passed OffsetTime object to the association "times".
+   * Method adds the passed object to {@link #times}.
    * 
-   * 
-   * @param pTimes Object that should be added to the association "times". The parameter must not be null.
+   * @param pTimes Object that should be added to {@link #times}. The parameter must not be null.
    */
   public void addToTimes( OffsetTime pTimes ) {
     // Check parameter "pTimes" for invalid value null.

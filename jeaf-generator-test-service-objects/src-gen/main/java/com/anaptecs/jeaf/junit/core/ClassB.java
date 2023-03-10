@@ -238,10 +238,9 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method adds the passed ClassA object to the association "manyAs".
+   * Method adds the passed object to {@link #manyAs}.
    * 
-   * 
-   * @param pManyAs Object that should be added to the association "manyAs". The parameter must not be null.
+   * @param pManyAs Object that should be added to {@link #manyAs}. The parameter must not be null.
    */
   public void addToManyAs( ClassA pManyAs ) {
     // Check parameter "pManyAs" for invalid value null.

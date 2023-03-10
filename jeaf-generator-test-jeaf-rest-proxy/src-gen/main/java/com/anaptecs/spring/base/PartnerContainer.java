@@ -154,10 +154,9 @@ public class PartnerContainer implements Serializable {
   }
 
   /**
-   * Method adds the passed Partner object to the association "partners".
+   * Method adds the passed object to {@link #partners}.
    * 
-   * 
-   * @param pPartners Object that should be added to the association "partners". The parameter must not be null.
+   * @param pPartners Object that should be added to {@link #partners}. The parameter must not be null.
    */
   public void addToPartners( Partner pPartners ) {
     // Check parameter "pPartners" for invalid value null.

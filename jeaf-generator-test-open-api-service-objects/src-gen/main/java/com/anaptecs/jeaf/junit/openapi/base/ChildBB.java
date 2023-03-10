@@ -363,10 +363,9 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method adds the passed ChildB object to the association "deprecatedBs".
+   * Method adds the passed object to {@link #deprecatedBs}.
    * 
-   * 
-   * @param pDeprecatedBs Object that should be added to the association "deprecatedBs". The parameter must not be null.
+   * @param pDeprecatedBs Object that should be added to {@link #deprecatedBs}. The parameter must not be null.
    */
   @Deprecated
   public void addToDeprecatedBs( ChildB pDeprecatedBs ) {
