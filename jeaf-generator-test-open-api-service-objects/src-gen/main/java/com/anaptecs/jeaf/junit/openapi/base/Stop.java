@@ -44,6 +44,11 @@ public class Stop implements ServiceObject {
   @PositiveOrZero
   private byte index;
 
+  /**
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
+   * <code>LinkObject</code><br/>
+   */
   @NotNull
   private SoftLink theSoftLink;
 
@@ -315,7 +320,7 @@ public class Stop implements ServiceObject {
 
   /**
    * Method returns association {@link #theSoftLink}.<br/>
-   * <br/>
+   * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
    * <code>LinkObject</code><br/>
    * 

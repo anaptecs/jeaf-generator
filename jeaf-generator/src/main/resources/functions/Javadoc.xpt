@@ -36,6 +36,9 @@
 «IF this.hasMeaningfulJavadocForProperty()»
 /**
     «EXPAND AddComment -»
+    «IF this.isSoftLink() -»
+ * <p/>This class uses so called soft links for decoupling. The actual type that is hidden by {@link #«asInstanceVar()»} is <code>«type.fqn()»</code><br/>
+    «ENDIF -»
     «IF this.defaultValue != null -»
     <br/><b>Default Value:</b> <code>«this.initValue()»</code>
     «ENDIF -»
@@ -54,7 +57,7 @@
 /**
  * Method returns «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>
     «IF this.isSoftLink() -»
- * <br/>This class uses so called soft links for decoupling. The actual type that is hidden by {@link #«asInstanceVar()»} is <code>«type.fqn()»</code><br/>
+ * <p/>This class uses so called soft links for decoupling. The actual type that is hidden by {@link #«asInstanceVar()»} is <code>«type.fqn()»</code><br/>
     «ENDIF -»
     «EXPAND AddComment -»
     «IF this.isSoftLink() == false -»

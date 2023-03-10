@@ -28,16 +28,31 @@ public class Campaign implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
+   * The magic link.
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
+   * 
    * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
   private long theLink;
 
+  /**
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #moreLinks} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
+   */
   @Deprecated
   @Size(min = 1)
   @NotNull
   private Set<Long> moreLinks;
 
+  /**
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #discountOffers} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
+   */
   @Deprecated
   private List<String> discountOffers;
 
@@ -99,7 +114,7 @@ public class Campaign implements ServiceObject {
    */
   public static class Builder {
     /**
-     * 
+     * The magic link.
      */
     @Deprecated
     private long theLink;
@@ -137,7 +152,7 @@ public class Campaign implements ServiceObject {
     }
 
     /**
-     * Method sets the association "theLink".
+     * Method sets the association "theLink". The magic link.
      * 
      * @param pTheLink LinkObject to which the association "theLink" should be set.
      */
@@ -205,9 +220,10 @@ public class Campaign implements ServiceObject {
 
   /**
    * Method returns association {@link #theLink}.<br/>
-   * <br/>
+   * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
    * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
+   * The magic link.
    * 
    * @return {@link long} Value to which {@link #theLink} is set.
    * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
@@ -219,6 +235,7 @@ public class Campaign implements ServiceObject {
 
   /**
    * Method sets association {@link #theLink}.<br/>
+   * The magic link.
    * 
    * @param pTheLink Value to which {@link #theLink} should be set.
    * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
@@ -230,7 +247,7 @@ public class Campaign implements ServiceObject {
 
   /**
    * Method returns association {@link #moreLinks}.<br/>
-   * <br/>
+   * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #moreLinks} is
    * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
    * 
@@ -300,7 +317,7 @@ public class Campaign implements ServiceObject {
 
   /**
    * Method returns association {@link #discountOffers}.<br/>
-   * <br/>
+   * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #discountOffers} is
    * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
    * 

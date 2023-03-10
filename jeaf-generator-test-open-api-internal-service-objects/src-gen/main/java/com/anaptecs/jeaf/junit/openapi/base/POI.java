@@ -27,10 +27,20 @@ public class POI extends Stop {
   @NotNull
   private String description;
 
+  /**
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
+   * <code>LinkObject</code><br/>
+   */
   @Deprecated
   @NotNull
   private Long theLink;
 
+  /**
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #evenMoreLinks} is
+   * <code>LinkObject</code><br/>
+   */
   @Deprecated
   private Set<SoftLink> evenMoreLinks;
 
@@ -267,7 +277,7 @@ public class POI extends Stop {
 
   /**
    * Method returns association {@link #theLink}.<br/>
-   * <br/>
+   * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
    * <code>LinkObject</code><br/>
    * 
@@ -299,7 +309,7 @@ public class POI extends Stop {
 
   /**
    * Method returns association {@link #evenMoreLinks}.<br/>
-   * <br/>
+   * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #evenMoreLinks} is
    * <code>LinkObject</code><br/>
    * 

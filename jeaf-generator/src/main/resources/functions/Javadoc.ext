@@ -14,5 +14,5 @@ cached boolean hasMeaningfulJavadoc(uml::NamedElement element):
     element.hasMeaningfulComment() || element.hasMeaningfulDeprecationInfo();
 
 cached boolean hasMeaningfulJavadocForProperty(uml::Property property):
-    property.hasMeaningfulComment() || property.hasMeaningfulDeprecationInfo() || property.hasExample() || property.defaultValue != null;
+    property.hasMeaningfulComment() || property.hasMeaningfulDeprecationInfo() || property.hasExample() || property.defaultValue != null || property.isSoftLink();
     

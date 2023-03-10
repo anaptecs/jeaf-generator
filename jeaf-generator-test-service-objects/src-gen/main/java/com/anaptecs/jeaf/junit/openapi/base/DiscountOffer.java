@@ -28,6 +28,11 @@ public class DiscountOffer implements ServiceObject {
   @Deprecated
   public static final String CAMPAIGNS = "campaigns";
 
+  /**
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #campaigns} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
+   */
   @Deprecated
   private Set<SoftLink> campaigns;
 
@@ -146,7 +151,7 @@ public class DiscountOffer implements ServiceObject {
 
   /**
    * Method returns association {@link #campaigns}.<br/>
-   * <br/>
+   * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #campaigns} is
    * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
    * 

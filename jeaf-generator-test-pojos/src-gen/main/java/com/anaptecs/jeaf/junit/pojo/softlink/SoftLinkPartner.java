@@ -38,10 +38,25 @@ public class SoftLinkPartner {
    */
   public static final String LONGLINKS = "longLinks";
 
+  /**
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theBackLink} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent</code><br/>
+   */
   private String theBackLink;
 
+  /**
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #childLinks} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
+   */
   private final Set<SoftLinkID> childLinks;
 
+  /**
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #longLinks} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
+   */
   private List<Long> longLinks;
 
   /**
@@ -203,7 +218,7 @@ public class SoftLinkPartner {
 
   /**
    * Method returns association {@link #theBackLink}.<br/>
-   * <br/>
+   * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theBackLink} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent</code><br/>
    * 
@@ -232,7 +247,7 @@ public class SoftLinkPartner {
 
   /**
    * Method returns association {@link #childLinks}.<br/>
-   * <br/>
+   * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #childLinks} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
    * 
@@ -246,7 +261,7 @@ public class SoftLinkPartner {
 
   /**
    * Method returns association {@link #longLinks}.<br/>
-   * <br/>
+   * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #longLinks} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
    * 
