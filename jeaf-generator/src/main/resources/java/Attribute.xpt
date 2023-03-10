@@ -271,11 +271,7 @@
     }
     «ENDIF»
 
-    /**
-     * Method adds the passed object to {@link #«asInstanceVar()»}.     
-     * 
-     * @param «asParameter()» Object that should be added to {@link #«asInstanceVar()»}. The parameter must not be null.
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertyAdd»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void addTo«name.toFirstUpper()» («this.getMultivaluedSoftLinkType()» «asParameter()») {
         «IF isTargetRuntimeJEAF()»

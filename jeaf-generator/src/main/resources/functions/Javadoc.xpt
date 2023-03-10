@@ -72,11 +72,22 @@
  */
 «ENDDEFINE»
 
+
 «DEFINE JavadocForPropertyUnset FOR uml::Property»
     /**
      * Method unsets {@link #«asInstanceVar()»}.     
      */
 «ENDDEFINE»
+
+
+«DEFINE JavadocForPropertyAdd FOR uml::Property»
+    /**
+     * Method adds the passed object to {@link #«asInstanceVar()»}.     
+     * 
+     * @param «asParameter()» Object that should be added to {@link #«asInstanceVar()»}. The parameter must not be null.
+     */
+«ENDDEFINE»
+
 
 «DEFINE JavadocForPropertySetter FOR uml::Property»
 /**
