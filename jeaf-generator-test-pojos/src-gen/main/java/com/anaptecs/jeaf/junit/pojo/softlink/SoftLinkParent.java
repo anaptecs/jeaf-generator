@@ -194,17 +194,13 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method returns the association "partners".
-   * 
-   *
-   * @return Collection All SoftLinkPartner objects that belong to the association "partners". The method never returns
-   * null and the returned collection is unmodifiable.
-   */
-  /**
    * Method returns association {@link #partners}.<br/>
+   * <br/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #partners} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    * 
-   * @return {@link Set<SoftLinkID>} Value to which {@link #partners} is set. Actual type:
-   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner
+   * @return {@link Set<SoftLinkID>} Value to which {@link #partners} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<SoftLinkID> getPartners( ) {
     // Return all SoftLinkPartner objects as unmodifiable collection.
@@ -264,9 +260,11 @@ public class SoftLinkParent {
 
   /**
    * Method returns association {@link #thePartner}.<br/>
+   * <br/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #thePartner} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    * 
-   * @return {@link SoftLinkID} Value to which {@link #thePartner} is set. Actual type:
-   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner
+   * @return {@link SoftLinkID} Value to which {@link #thePartner} is set.
    */
   public SoftLinkID getThePartner( ) {
     return thePartner;
@@ -291,9 +289,11 @@ public class SoftLinkParent {
 
   /**
    * Method returns association {@link #readonlyPartner}.<br/>
+   * <br/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #readonlyPartner} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    * 
-   * @return {@link SoftLinkID} Value to which {@link #readonlyPartner} is set. Actual type:
-   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner
+   * @return {@link SoftLinkID} Value to which {@link #readonlyPartner} is set.
    */
   public SoftLinkID getReadonlyPartner( ) {
     return readonlyPartner;

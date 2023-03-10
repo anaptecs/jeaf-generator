@@ -228,13 +228,6 @@
 
 // Setter for associations
 «DEFINE SoftLinkToManyAccessorMethods FOR SoftLink»
-    /**
-     * Method returns the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     *
-     * @return Collection All «this.type.name» objects that belong to the association "«asInstanceVar()»". 
-     * The method never returns null and the returned collection is «IF disableCollectionImmutability()»modifiable«ELSE»unmodifiable«ENDIF».
-     */
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public «this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asGetter()» () {

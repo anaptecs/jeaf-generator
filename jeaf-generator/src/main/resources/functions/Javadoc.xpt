@@ -53,11 +53,17 @@
 «DEFINE JavadocForPropertyGetter FOR uml::Property»
 /**
  * Method returns «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>
+    «IF this.isSoftLink() -»
+ * <br/>This class uses so called soft links for decoupling. The actual type that is hidden by {@link #«asInstanceVar()»} is <code>«type.fqn()»</code><br/>
+    «ENDIF -»
     «EXPAND AddComment -»
     «IF this.isSoftLink() == false -»
  * @return «IF type.isPrimitiveType() == false»{@link «this.fqn()»}«ELSE»«this.fqn()»«ENDIF» Value to which {@link #«asInstanceVar()»} is set.
     «ELSE -»
- * @return {@link «IF this.isMultivalued()»«this.getCollectionType()»<«((JMM::SoftLink)this).getSoftLinkType()»>«ELSE»«((JMM::SoftLink)this).getSoftLinkType()»«ENDIF»} Value to which {@link #«asInstanceVar()»} is set. Actual type: «type.fqn()»
+ * @return {@link «IF this.isMultivalued()»«this.getCollectionType()»<«((JMM::SoftLink)this).getSoftLinkType()»>«ELSE»«((JMM::SoftLink)this).getSoftLinkType()»«ENDIF»} Value to which {@link #«asInstanceVar()»} is set.
+    «ENDIF -»
+    «IF this.association != null && this.isMultivalued() -» 
+    The method never returns null and the returned collection is «IF disableCollectionImmutability()»modifiable«ELSE»unmodifiable«ENDIF».
     «ENDIF -»
     «EXPAND DeprecatedJavadoc -»
  */

@@ -140,17 +140,13 @@ public class DiscountOffer implements ServiceObject {
   }
 
   /**
-   * Method returns the association "campaigns".
-   * 
-   *
-   * @return Collection All Campaign objects that belong to the association "campaigns". The method never returns null
-   * and the returned collection is modifiable.
-   */
-  /**
    * Method returns association {@link #campaigns}.<br/>
+   * <br/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #campaigns} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
    * 
-   * @return {@link Set<SoftLink>} Value to which {@link #campaigns} is set. Actual type:
-   * com.anaptecs.jeaf.junit.openapi.base.Campaign
+   * @return {@link Set<SoftLink>} Value to which {@link #campaigns} is set. The method never returns null and the
+   * returned collection is modifiable.
    */
   @Deprecated
   public Set<SoftLink> getCampaigns( ) {

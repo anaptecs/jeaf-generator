@@ -203,9 +203,11 @@ public class SoftLinkPartner {
 
   /**
    * Method returns association {@link #theBackLink}.<br/>
+   * <br/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theBackLink} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent</code><br/>
    * 
-   * @return {@link String} Value to which {@link #theBackLink} is set. Actual type:
-   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent
+   * @return {@link String} Value to which {@link #theBackLink} is set.
    */
   public String getTheBackLink( ) {
     return theBackLink;
@@ -229,17 +231,13 @@ public class SoftLinkPartner {
   }
 
   /**
-   * Method returns the association "childLinks".
-   * 
-   *
-   * @return Collection All SoftLinkChildA objects that belong to the association "childLinks". The method never returns
-   * null and the returned collection is unmodifiable.
-   */
-  /**
    * Method returns association {@link #childLinks}.<br/>
+   * <br/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #childLinks} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
    * 
-   * @return {@link Set<SoftLinkID>} Value to which {@link #childLinks} is set. Actual type:
-   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA
+   * @return {@link Set<SoftLinkID>} Value to which {@link #childLinks} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<SoftLinkID> getChildLinks( ) {
     // Return all SoftLinkChildA objects as unmodifiable collection.
@@ -247,17 +245,13 @@ public class SoftLinkPartner {
   }
 
   /**
-   * Method returns the association "longLinks".
-   * 
-   *
-   * @return Collection All SoftLinkChildA objects that belong to the association "longLinks". The method never returns
-   * null and the returned collection is unmodifiable.
-   */
-  /**
    * Method returns association {@link #longLinks}.<br/>
+   * <br/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #longLinks} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
    * 
-   * @return {@link List<long>} Value to which {@link #longLinks} is set. Actual type:
-   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA
+   * @return {@link List<long>} Value to which {@link #longLinks} is set. The method never returns null and the returned
+   * collection is unmodifiable.
    */
   public List<Long> getLongLinks( ) {
     // Return all SoftLinkChildA objects as unmodifiable collection.

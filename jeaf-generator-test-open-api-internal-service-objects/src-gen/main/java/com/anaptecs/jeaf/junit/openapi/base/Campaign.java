@@ -205,9 +205,11 @@ public class Campaign implements ServiceObject {
 
   /**
    * Method returns association {@link #theLink}.<br/>
+   * <br/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
    * 
-   * @return {@link long} Value to which {@link #theLink} is set. Actual type:
-   * com.anaptecs.jeaf.junit.openapi.base.LinkObject
+   * @return {@link long} Value to which {@link #theLink} is set.
    * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
@@ -227,17 +229,13 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method returns the association "moreLinks".
-   * 
-   *
-   * @return Collection All LinkObject objects that belong to the association "moreLinks". The method never returns null
-   * and the returned collection is modifiable.
-   */
-  /**
    * Method returns association {@link #moreLinks}.<br/>
+   * <br/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #moreLinks} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
    * 
-   * @return {@link Set<Long>} Value to which {@link #moreLinks} is set. Actual type:
-   * com.anaptecs.jeaf.junit.openapi.base.LinkObject
+   * @return {@link Set<Long>} Value to which {@link #moreLinks} is set. The method never returns null and the returned
+   * collection is modifiable.
    */
   @Deprecated
   public Set<Long> getMoreLinks( ) {
@@ -301,17 +299,13 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method returns the association "discountOffers".
-   * 
-   *
-   * @return Collection All DiscountOffer objects that belong to the association "discountOffers". The method never
-   * returns null and the returned collection is modifiable.
-   */
-  /**
    * Method returns association {@link #discountOffers}.<br/>
+   * <br/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #discountOffers} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
    * 
-   * @return {@link List<String>} Value to which {@link #discountOffers} is set. Actual type:
-   * com.anaptecs.jeaf.junit.openapi.base.DiscountOffer
+   * @return {@link List<String>} Value to which {@link #discountOffers} is set. The method never returns null and the
+   * returned collection is modifiable.
    */
   @Deprecated
   public List<String> getDiscountOffers( ) {

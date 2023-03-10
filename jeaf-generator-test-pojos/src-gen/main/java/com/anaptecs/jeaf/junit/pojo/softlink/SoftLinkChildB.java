@@ -227,9 +227,11 @@ public class SoftLinkChildB extends SoftLinkParent {
 
   /**
    * Method returns association {@link #heyBrother}.<br/>
+   * <br/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #heyBrother} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
    * 
-   * @return {@link String} Value to which {@link #heyBrother} is set. Actual type:
-   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA
+   * @return {@link String} Value to which {@link #heyBrother} is set.
    */
   public String getHeyBrother( ) {
     return heyBrother;
@@ -253,17 +255,13 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method returns the association "softLinkPartners".
-   * 
-   *
-   * @return Collection All SoftLinkPartner objects that belong to the association "softLinkPartners". The method never
-   * returns null and the returned collection is unmodifiable.
-   */
-  /**
    * Method returns association {@link #softLinkPartners}.<br/>
+   * <br/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #softLinkPartners} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    * 
-   * @return {@link Set<String>} Value to which {@link #softLinkPartners} is set. Actual type:
-   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner
+   * @return {@link Set<String>} Value to which {@link #softLinkPartners} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<String> getSoftLinkPartners( ) {
     // Return all SoftLinkPartner objects as unmodifiable collection.
@@ -325,9 +323,11 @@ public class SoftLinkChildB extends SoftLinkParent {
 
   /**
    * Method returns association {@link #oneLink}.<br/>
+   * <br/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #oneLink} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    * 
-   * @return {@link SoftLinkID} Value to which {@link #oneLink} is set. Actual type:
-   * com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner
+   * @return {@link SoftLinkID} Value to which {@link #oneLink} is set.
    */
   public SoftLinkID getOneLink( ) {
     return oneLink;

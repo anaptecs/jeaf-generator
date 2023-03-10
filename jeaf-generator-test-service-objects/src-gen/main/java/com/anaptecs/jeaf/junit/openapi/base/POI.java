@@ -265,8 +265,11 @@ public class POI extends Stop {
 
   /**
    * Method returns association {@link #theLink}.<br/>
+   * <br/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
+   * <code>LinkObject</code><br/>
    * 
-   * @return {@link Long} Value to which {@link #theLink} is set. Actual type: LinkObject
+   * @return {@link Long} Value to which {@link #theLink} is set.
    */
   @Deprecated
   public Long getTheLink( ) {
@@ -293,16 +296,13 @@ public class POI extends Stop {
   }
 
   /**
-   * Method returns the association "evenMoreLinks".
-   * 
-   *
-   * @return Collection All LinkObject objects that belong to the association "evenMoreLinks". The method never returns
-   * null and the returned collection is unmodifiable.
-   */
-  /**
    * Method returns association {@link #evenMoreLinks}.<br/>
+   * <br/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #evenMoreLinks} is
+   * <code>LinkObject</code><br/>
    * 
-   * @return {@link Set<SoftLink>} Value to which {@link #evenMoreLinks} is set. Actual type: LinkObject
+   * @return {@link Set<SoftLink>} Value to which {@link #evenMoreLinks} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   @Deprecated
   public Set<SoftLink> getEvenMoreLinks( ) {
