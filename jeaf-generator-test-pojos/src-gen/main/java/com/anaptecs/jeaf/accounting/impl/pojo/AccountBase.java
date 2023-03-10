@@ -241,8 +241,7 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method unsets the association "owner".
-   * 
+   * Method unsets {@link #owner}.
    */
   public final void unsetOwner( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

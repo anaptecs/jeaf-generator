@@ -130,8 +130,7 @@ public abstract class BaseClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "deprecatedPO".
-   * 
+   * Method unsets {@link #deprecatedPO}.
    */
   public final void unsetDeprecatedPO( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

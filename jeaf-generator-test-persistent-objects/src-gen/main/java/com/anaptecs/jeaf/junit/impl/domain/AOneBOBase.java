@@ -113,8 +113,7 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "b".
-   * 
+   * Method unsets {@link #b}.
    */
   public final void unsetB( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

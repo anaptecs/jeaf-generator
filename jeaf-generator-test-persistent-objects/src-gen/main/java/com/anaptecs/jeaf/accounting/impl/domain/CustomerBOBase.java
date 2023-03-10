@@ -273,8 +273,7 @@ public abstract class CustomerBOBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "adress".
-   * 
+   * Method unsets {@link #adress}.
    */
   public final void unsetAdress( ) {
     adress = null;

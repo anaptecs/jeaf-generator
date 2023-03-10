@@ -229,8 +229,7 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method unsets the association "transientB".
-   * 
+   * Method unsets {@link #transientB}.
    */
   public final void unsetTransientB( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -270,8 +269,7 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method unsets the association "transientParent".
-   * 
+   * Method unsets {@link #transientParent}.
    */
   public final void unsetTransientParent( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -317,8 +315,7 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method unsets the association "child".
-   * 
+   * Method unsets {@link #child}.
    */
   public final void unsetChild( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

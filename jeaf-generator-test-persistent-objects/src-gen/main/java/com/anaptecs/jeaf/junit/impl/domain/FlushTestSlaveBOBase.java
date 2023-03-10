@@ -71,8 +71,7 @@ public abstract class FlushTestSlaveBOBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "masterObject".
-   * 
+   * Method unsets {@link #masterObject}.
    */
   public final void unsetMasterObject( ) {
     masterObject = null;

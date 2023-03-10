@@ -186,8 +186,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "dataUnit".
-   * 
+   * Method unsets {@link #dataUnit}.
    */
   public final void unsetDataUnit( ) {
     dataUnit = null;
@@ -212,8 +211,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "entity".
-   * 
+   * Method unsets {@link #entity}.
    */
   public final void unsetEntity( ) {
     entity = null;

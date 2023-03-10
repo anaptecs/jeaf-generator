@@ -528,8 +528,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method unsets the association "customer".
-   * 
+   * Method unsets {@link #customer}.
    */
   public final void unsetCustomer( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

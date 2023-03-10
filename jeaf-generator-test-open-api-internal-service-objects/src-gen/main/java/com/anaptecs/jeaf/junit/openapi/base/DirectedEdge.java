@@ -201,7 +201,7 @@ public class DirectedEdge implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "start". The start
+   * Method unsets {@link #start}.
    */
   public final void unsetStart( ) {
     start = null;
@@ -228,7 +228,7 @@ public class DirectedEdge implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "end". The end
+   * Method unsets {@link #end}.
    */
   public final void unsetEnd( ) {
     end = null;

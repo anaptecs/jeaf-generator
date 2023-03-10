@@ -345,7 +345,7 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "theBankAccount". I would like to document references to other types.
+   * Method unsets {@link #theBankAccount}.
    */
   @Deprecated
   public final void unsetTheBankAccount( ) {

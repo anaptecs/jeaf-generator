@@ -307,8 +307,7 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "source".
-   * 
+   * Method unsets {@link #source}.
    */
   public final void unsetSource( ) {
     source = null;
@@ -333,8 +332,7 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "target".
-   * 
+   * Method unsets {@link #target}.
    */
   public final void unsetTarget( ) {
     target = null;
@@ -368,8 +366,7 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "token".
-   * 
+   * Method unsets {@link #token}.
    */
   public final void unsetToken( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -472,8 +469,7 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "account".
-   * 
+   * Method unsets {@link #account}.
    */
   public final void unsetAccount( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

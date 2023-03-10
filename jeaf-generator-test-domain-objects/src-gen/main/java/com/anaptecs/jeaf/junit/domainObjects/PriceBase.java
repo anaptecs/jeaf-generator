@@ -98,8 +98,7 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method unsets the association "reiseweg".
-   * 
+   * Method unsets {@link #reiseweg}.
    */
   @Deprecated
   public final void unsetReiseweg( ) {

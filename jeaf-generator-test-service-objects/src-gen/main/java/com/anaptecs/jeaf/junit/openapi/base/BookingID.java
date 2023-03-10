@@ -259,8 +259,7 @@ public class BookingID implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "inventory".
-   * 
+   * Method unsets {@link #inventory}.
    */
   public final void unsetInventory( ) {
     inventory = null;
@@ -285,8 +284,7 @@ public class BookingID implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "bookingCode".
-   * 
+   * Method unsets {@link #bookingCode}.
    */
   public final void unsetBookingCode( ) {
     bookingCode = null;

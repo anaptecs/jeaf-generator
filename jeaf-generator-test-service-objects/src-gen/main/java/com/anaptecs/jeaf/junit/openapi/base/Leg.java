@@ -205,8 +205,7 @@ public class Leg implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "start".
-   * 
+   * Method unsets {@link #start}.
    */
   public final void unsetStart( ) {
     start = null;
@@ -231,8 +230,7 @@ public class Leg implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "stop".
-   * 
+   * Method unsets {@link #stop}.
    */
   public final void unsetStop( ) {
     stop = null;

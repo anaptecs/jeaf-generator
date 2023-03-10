@@ -431,8 +431,7 @@ public class CodeTypeUsageTest implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "shortCode".
-   * 
+   * Method unsets {@link #shortCode}.
    */
   public final void unsetShortCode( ) {
     shortCode = null;

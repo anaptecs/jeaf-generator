@@ -160,8 +160,7 @@ public class WeirdBooking {
   }
 
   /**
-   * Method unsets the association "booking".
-   * 
+   * Method unsets {@link #booking}.
    */
   public final void unsetBooking( ) {
     booking = null;

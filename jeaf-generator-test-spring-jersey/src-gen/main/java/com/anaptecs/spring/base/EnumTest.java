@@ -171,8 +171,7 @@ public class EnumTest {
   }
 
   /**
-   * Method unsets the association "enumRef".
-   * 
+   * Method unsets {@link #enumRef}.
    */
   public final void unsetEnumRef( ) {
     enumRef = null;

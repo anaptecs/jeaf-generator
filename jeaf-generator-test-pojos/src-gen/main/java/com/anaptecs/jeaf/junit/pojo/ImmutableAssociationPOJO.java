@@ -382,8 +382,7 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method unsets the association "deprecatedRef".
-   * 
+   * Method unsets {@link #deprecatedRef}.
    */
   @Deprecated
   public final void unsetDeprecatedRef( ) {

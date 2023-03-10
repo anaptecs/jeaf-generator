@@ -435,8 +435,7 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method unsets the association "integerCode".
-   * 
+   * Method unsets {@link #integerCode}.
    */
   public final void unsetIntegerCode( ) {
     integerCode = null;

@@ -246,8 +246,7 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "notOrderedUnique".
-   * 
+   * Method unsets {@link #notOrderedUnique}.
    */
   public final void unsetNotOrderedUnique( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

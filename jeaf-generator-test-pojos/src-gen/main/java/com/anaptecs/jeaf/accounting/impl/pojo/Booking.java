@@ -242,8 +242,7 @@ public class Booking {
   }
 
   /**
-   * Method unsets the association "sourceAccount".
-   * 
+   * Method unsets {@link #sourceAccount}.
    */
   public final void unsetSourceAccount( ) {
     sourceAccount = null;
@@ -268,8 +267,7 @@ public class Booking {
   }
 
   /**
-   * Method unsets the association "targetAccount".
-   * 
+   * Method unsets {@link #targetAccount}.
    */
   public final void unsetTargetAccount( ) {
     targetAccount = null;

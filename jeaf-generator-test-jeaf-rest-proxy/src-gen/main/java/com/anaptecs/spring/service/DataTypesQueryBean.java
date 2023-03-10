@@ -771,8 +771,7 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method unsets the association "offsetTime".
-   * 
+   * Method unsets {@link #offsetTime}.
    */
   public final void unsetOffsetTime( ) {
     offsetTime = null;

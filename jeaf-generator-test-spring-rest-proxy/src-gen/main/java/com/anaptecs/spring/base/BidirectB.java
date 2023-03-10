@@ -144,7 +144,7 @@ public class BidirectB {
   }
 
   /**
-   * Method unsets the association "a". the A
+   * Method unsets {@link #a}.
    */
   public final void unsetA( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

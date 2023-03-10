@@ -235,8 +235,7 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
   }
 
   /**
-   * Method unsets the association "oneB".
-   * 
+   * Method unsets {@link #oneB}.
    */
   public final void unsetOneB( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

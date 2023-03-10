@@ -141,8 +141,7 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "bank".
-   * 
+   * Method unsets {@link #bank}.
    */
   public final void unsetBank( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -183,8 +182,7 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "customer".
-   * 
+   * Method unsets {@link #customer}.
    */
   public final void unsetCustomer( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

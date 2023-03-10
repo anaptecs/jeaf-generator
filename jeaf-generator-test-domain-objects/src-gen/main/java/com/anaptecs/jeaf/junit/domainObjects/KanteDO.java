@@ -92,8 +92,7 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method unsets the association "abgang".
-   * 
+   * Method unsets {@link #abgang}.
    */
   public final void unsetAbgang( ) {
     abgang = null;
@@ -118,8 +117,7 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method unsets the association "bestimmung".
-   * 
+   * Method unsets {@link #bestimmung}.
    */
   public final void unsetBestimmung( ) {
     bestimmung = null;
@@ -144,8 +142,7 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method unsets the association "verkehrsmittelTyp".
-   * 
+   * Method unsets {@link #verkehrsmittelTyp}.
    */
   public final void unsetVerkehrsmittelTyp( ) {
     verkehrsmittelTyp = null;

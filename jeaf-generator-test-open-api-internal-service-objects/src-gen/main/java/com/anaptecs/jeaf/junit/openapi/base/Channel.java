@@ -246,7 +246,7 @@ public class Channel implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "channelType". Type of the channel
+   * Method unsets {@link #channelType}.
    */
   public final void unsetChannelType( ) {
     channelType = null;
@@ -273,7 +273,7 @@ public class Channel implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "channelCode". The business code of the channel
+   * Method unsets {@link #channelCode}.
    */
   public final void unsetChannelCode( ) {
     channelCode = null;
@@ -325,8 +325,7 @@ public class Channel implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "reseller".
-   * 
+   * Method unsets {@link #reseller}.
    */
   public final void unsetReseller( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

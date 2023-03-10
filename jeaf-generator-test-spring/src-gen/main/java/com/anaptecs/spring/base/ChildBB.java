@@ -425,8 +425,7 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method unsets the association "deprecatedParent".
-   * 
+   * Method unsets {@link #deprecatedParent}.
    */
   @Deprecated
   public final void unsetDeprecatedParent( ) {

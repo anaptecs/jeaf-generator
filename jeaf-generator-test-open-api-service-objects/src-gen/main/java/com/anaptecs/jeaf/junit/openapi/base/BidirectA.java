@@ -301,8 +301,7 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "parent".
-   * 
+   * Method unsets {@link #parent}.
    */
   public final void unsetParent( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -342,8 +341,7 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "transientChild".
-   * 
+   * Method unsets {@link #transientChild}.
    */
   public final void unsetTransientChild( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

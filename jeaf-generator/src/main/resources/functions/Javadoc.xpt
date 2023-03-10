@@ -72,6 +72,12 @@
  */
 «ENDDEFINE»
 
+«DEFINE JavadocForPropertyUnset FOR uml::Property»
+    /**
+     * Method unsets {@link #«asInstanceVar()»}.     
+     */
+«ENDDEFINE»
+
 «DEFINE JavadocForPropertySetter FOR uml::Property»
 /**
  * Method sets «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>

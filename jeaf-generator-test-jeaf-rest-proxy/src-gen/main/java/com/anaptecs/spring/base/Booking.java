@@ -235,8 +235,7 @@ public class Booking implements Serializable {
   }
 
   /**
-   * Method unsets the association "bookingID".
-   * 
+   * Method unsets {@link #bookingID}.
    */
   public final void unsetBookingID( ) {
     bookingID = null;

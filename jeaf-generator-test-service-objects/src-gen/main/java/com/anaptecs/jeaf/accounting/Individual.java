@@ -221,8 +221,7 @@ public class Individual extends Customer {
   }
 
   /**
-   * Method unsets the association "person".
-   * 
+   * Method unsets {@link #person}.
    */
   public final void unsetPerson( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

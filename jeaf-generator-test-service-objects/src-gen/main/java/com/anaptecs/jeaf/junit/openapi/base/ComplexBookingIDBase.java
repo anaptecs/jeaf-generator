@@ -350,8 +350,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "complexBookingType".
-   * 
+   * Method unsets {@link #complexBookingType}.
    */
   public final void unsetComplexBookingType( ) {
     complexBookingType = null;

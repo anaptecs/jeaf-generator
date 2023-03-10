@@ -194,8 +194,7 @@ public class WeirdBooking implements Serializable {
   }
 
   /**
-   * Method unsets the association "booking".
-   * 
+   * Method unsets {@link #booking}.
    */
   public final void unsetBooking( ) {
     booking = null;

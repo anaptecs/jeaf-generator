@@ -115,8 +115,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "publicClass".
-   * 
+   * Method unsets {@link #publicClass}.
    */
   @Deprecated
   public final void unsetPublicClass( ) {

@@ -200,8 +200,7 @@ public class Booking {
   }
 
   /**
-   * Method unsets the association "bookingID".
-   * 
+   * Method unsets {@link #bookingID}.
    */
   public final void unsetBookingID( ) {
     bookingID = null;

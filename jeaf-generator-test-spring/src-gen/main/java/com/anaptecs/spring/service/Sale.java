@@ -183,8 +183,7 @@ public class Sale {
   }
 
   /**
-   * Method unsets the association "sale".
-   * 
+   * Method unsets {@link #sale}.
    */
   public final void unsetSale( ) {
     sale = null;

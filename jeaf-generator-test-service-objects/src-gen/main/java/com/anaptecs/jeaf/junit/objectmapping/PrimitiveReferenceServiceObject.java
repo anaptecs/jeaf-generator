@@ -287,8 +287,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "aBoolean".
-   * 
+   * Method unsets {@link #aBoolean}.
    */
   public final void unsetABoolean( ) {
     aBoolean = null;

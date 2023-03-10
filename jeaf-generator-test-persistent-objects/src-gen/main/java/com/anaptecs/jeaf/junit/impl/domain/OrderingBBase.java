@@ -69,8 +69,7 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "a1".
-   * 
+   * Method unsets {@link #a1}.
    */
   public final void unsetA1( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -111,8 +110,7 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "a2".
-   * 
+   * Method unsets {@link #a2}.
    */
   public final void unsetA2( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -153,8 +151,7 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "a3".
-   * 
+   * Method unsets {@link #a3}.
    */
   public final void unsetA3( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -195,8 +192,7 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "a4".
-   * 
+   * Method unsets {@link #a4}.
    */
   public final void unsetA4( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

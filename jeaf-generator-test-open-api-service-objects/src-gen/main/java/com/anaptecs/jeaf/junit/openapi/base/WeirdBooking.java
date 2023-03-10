@@ -334,8 +334,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method unsets the association "booking".
-   * 
+   * Method unsets {@link #booking}.
    */
   public final void unsetBooking( ) {
     booking = null;
@@ -426,7 +425,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method unsets the association "versionedObjectSoftLink". soft link 2nd line 3rd line
+   * Method unsets {@link #versionedObjectSoftLink}.
    */
   public final void unsetVersionedObjectSoftLink( ) {
     versionedObjectSoftLink = null;
@@ -472,7 +471,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method unsets the association "realBooking". the real booking
+   * Method unsets {@link #realBooking}.
    */
   public final void unsetRealBooking( ) {
     realBooking = null;

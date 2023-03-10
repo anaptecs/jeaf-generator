@@ -211,9 +211,7 @@
     }
     
     «IF this.getSoftLinkType() != "long"»
-    /**
-     * Method unsets {@link #«asInstanceVar()»}.     
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertyUnset»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public final void «asUnset()» () {
         «EXPAND GenerateRemoveOpposite»
@@ -401,10 +399,7 @@
 	    «EXPAND GenerateInitOpposite»
 	}
 	
-    /**
-     * Method unsets the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertyUnset»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public final void «asUnset()» () {
         «EXPAND GenerateRemoveOpposite»

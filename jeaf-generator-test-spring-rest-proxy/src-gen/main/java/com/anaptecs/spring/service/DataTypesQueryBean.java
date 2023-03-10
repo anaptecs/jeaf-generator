@@ -709,8 +709,7 @@ public class DataTypesQueryBean {
   }
 
   /**
-   * Method unsets the association "offsetTime".
-   * 
+   * Method unsets {@link #offsetTime}.
    */
   public final void unsetOffsetTime( ) {
     offsetTime = null;

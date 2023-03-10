@@ -230,8 +230,7 @@ public class SecurityToken implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "booking".
-   * 
+   * Method unsets {@link #booking}.
    */
   public final void unsetBooking( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

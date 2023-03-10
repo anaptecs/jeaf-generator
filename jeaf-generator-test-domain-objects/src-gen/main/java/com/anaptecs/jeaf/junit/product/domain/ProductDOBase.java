@@ -275,8 +275,7 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method unsets the association "vat".
-   * 
+   * Method unsets {@link #vat}.
    */
   public final void unsetVat( ) {
     vat = null;
@@ -301,8 +300,7 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method unsets the association "productCategory".
-   * 
+   * Method unsets {@link #productCategory}.
    */
   public final void unsetProductCategory( ) {
     productCategory = null;

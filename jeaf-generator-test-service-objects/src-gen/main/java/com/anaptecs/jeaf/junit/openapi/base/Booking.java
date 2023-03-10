@@ -145,7 +145,7 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "bookingID". ID of the booking
+   * Method unsets {@link #bookingID}.
    */
   public final void unsetBookingID( ) {
     bookingID = null;

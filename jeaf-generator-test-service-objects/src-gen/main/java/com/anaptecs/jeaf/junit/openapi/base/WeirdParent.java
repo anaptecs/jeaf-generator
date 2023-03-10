@@ -227,8 +227,7 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "complexBooking".
-   * 
+   * Method unsets {@link #complexBooking}.
    */
   public final void unsetComplexBooking( ) {
     complexBooking = null;
