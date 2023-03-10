@@ -439,12 +439,7 @@
 	
     «IF isReadOnly() == false»
     «IF generatePublicSettersForAssociations()»
-    /**
-     * Method sets the association "«asInstanceVar()»" to the passed collection. All objects that formerly were part of the association will be removed from it.
-     * «this.getComment()»
-     * 
-     * @param «asParameter()» Collection with objects to which the association should be set. The parameter must not be null.
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
         // Check of parameter is not required.
