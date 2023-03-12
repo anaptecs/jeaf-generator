@@ -81,9 +81,7 @@ public final class «name»Proxy extends ServiceProxy implements «name» «IF g
 //command methods are returned
 «DEFINE CommandOperation FOR Operation»
     /**
-     * Generated proxy implementation for method "«name»".
-     *  
-     * «getComment()»
+     * Generated proxy implementation for method {@link «((uml::NamedElement)owner).fqn()»#«name»}
      */
     «IF this.returnResult().isMultivalued().first() == true»@SuppressWarnings("unchecked")«ENDIF» 
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
