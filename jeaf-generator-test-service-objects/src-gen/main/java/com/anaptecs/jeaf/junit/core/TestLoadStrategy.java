@@ -23,19 +23,10 @@ public final class TestLoadStrategy implements LoadStrategy {
    */
   public static final TestLoadStrategy LOAD_NONE = new TestLoadStrategy(false, false, false);
 
-  /**
-   * 
-   */
   private final boolean loadInternalData;
 
-  /**
-   * 
-   */
   private final boolean loadPublicData;
 
-  /**
-   * 
-   */
   @Deprecated
   private final boolean loadDeprecatedData;
 
@@ -48,23 +39,14 @@ public final class TestLoadStrategy implements LoadStrategy {
     loadDeprecatedData = pLoadDeprecatedData;
   }
 
-  /**
-   * 
-   */
   public boolean loadInternalData( ) {
     return loadInternalData;
   }
 
-  /**
-   * 
-   */
   public boolean loadPublicData( ) {
     return loadPublicData;
   }
 
-  /**
-   * 
-   */
   @Deprecated
   public boolean loadDeprecatedData( ) {
     return loadDeprecatedData;

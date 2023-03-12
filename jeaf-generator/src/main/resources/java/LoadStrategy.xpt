@@ -33,9 +33,7 @@
     
     «FOREACH this.attribute AS nextAttribute»
    
-    /**
-     * «nextAttribute.getComment()»
-     */
+    «EXPAND functions::Javadoc::JavadocForProperty FOR nextAttribute»
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR nextAttribute -»
     private final boolean «nextAttribute.asInstanceVar()»;
     «ENDFOREACH»
@@ -50,9 +48,7 @@
    
     «FOREACH this.attribute AS nextAttribute»
    
-    /**
-     * «nextAttribute.getComment()»
-     */
+    «EXPAND functions::Javadoc::JavadocForProperty FOR nextAttribute»
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR nextAttribute -»
     public boolean «nextAttribute.asInstanceVar()»() {
       return «nextAttribute.asInstanceVar()»;

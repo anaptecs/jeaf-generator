@@ -24,14 +24,8 @@ public final class DeprectedLoadStrategy implements LoadStrategy {
    */
   public static final DeprectedLoadStrategy LOAD_NONE = new DeprectedLoadStrategy(false, false);
 
-  /**
-   * 
-   */
   private final boolean loadObjects;
 
-  /**
-   * 
-   */
   private final boolean loadExternalData;
 
   /**
@@ -42,16 +36,10 @@ public final class DeprectedLoadStrategy implements LoadStrategy {
     loadExternalData = pLoadExternalData;
   }
 
-  /**
-   * 
-   */
   public boolean loadObjects( ) {
     return loadObjects;
   }
 
-  /**
-   * 
-   */
   public boolean loadExternalData( ) {
     return loadExternalData;
   }

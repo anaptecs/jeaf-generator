@@ -23,14 +23,8 @@ public final class CustomerLoadStrategy implements LoadStrategy {
    */
   public static final CustomerLoadStrategy LOAD_NONE = new CustomerLoadStrategy(false, false);
 
-  /**
-   * 
-   */
   private final boolean loadAccount;
 
-  /**
-   * 
-   */
   private final boolean loadBookings;
 
   /**
@@ -41,16 +35,10 @@ public final class CustomerLoadStrategy implements LoadStrategy {
     loadBookings = pLoadBookings;
   }
 
-  /**
-   * 
-   */
   public boolean loadAccount( ) {
     return loadAccount;
   }
 
-  /**
-   * 
-   */
   public boolean loadBookings( ) {
     return loadBookings;
   }
