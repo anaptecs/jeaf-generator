@@ -158,9 +158,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the attribute "someProperty".
+     * Method sets attribute {@link #someProperty}.<br/>
      * 
-     * @param pSomeProperty Value to which the attribute "someProperty" should be set.
+     * @param pSomeProperty Value to which {@link #someProperty} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setSomeProperty( String pSomeProperty ) {
@@ -170,9 +171,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "complexBooking".
+     * Method sets association {@link #complexBooking}.<br/>
      * 
-     * @param pComplexBooking ComplexBookingID to which the association "complexBooking" should be set.
+     * @param pComplexBooking Value to which {@link #complexBooking} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setComplexBooking( ComplexBookingID pComplexBooking ) {
@@ -182,9 +184,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "complexBookings".
+     * Method sets association {@link #complexBookings}.<br/>
      * 
-     * @param pComplexBookings Collection with objects to which the association should be set.
+     * @param pComplexBookings Collection to which {@link #complexBookings} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setComplexBookings( Set<ComplexBookingID> pComplexBookings ) {
@@ -273,9 +276,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "inventories".
+     * Method sets association {@link #inventories}.<br/>
      * 
-     * @param pInventories Array with objects to which the association should be set.
+     * @param pInventories Array with objects to which {@link #inventories} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInventories( InventoryType... pInventories ) {
       // To ensure immutability we have to copy the content of the passed array.

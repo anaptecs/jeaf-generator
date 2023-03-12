@@ -122,9 +122,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setName( String pName ) {
@@ -134,9 +135,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the association "links".
+     * Method sets association {@link #links}.<br/>
      * 
-     * @param pLinks Collection with objects to which the association should be set.
+     * @param pLinks Collection to which {@link #links} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setLinks( List<LinkObject> pLinks ) {
@@ -146,9 +148,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the attribute "index".
+     * Method sets attribute {@link #index}.<br/>
      * 
-     * @param pIndex Value to which the attribute "index" should be set.
+     * @param pIndex Value to which {@link #index} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setIndex( byte pIndex ) {
@@ -158,9 +161,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the association "theSoftLink".
+     * Method sets association {@link #theSoftLink}.<br/>
      * 
-     * @param pTheSoftLink LinkObject to which the association "theSoftLink" should be set.
+     * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setTheSoftLink( SoftLink pTheSoftLink ) {

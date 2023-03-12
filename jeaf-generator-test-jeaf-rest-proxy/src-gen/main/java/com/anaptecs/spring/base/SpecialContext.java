@@ -120,9 +120,10 @@ public class SpecialContext extends Context {
     }
 
     /**
-     * Method sets the attribute "accessToken".
+     * Method sets attribute {@link #accessToken}.<br/>
      * 
-     * @param pAccessToken Value to which the attribute "accessToken" should be set.
+     * @param pAccessToken Value to which {@link #accessToken} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setAccessToken( String pAccessToken ) {
@@ -132,9 +133,10 @@ public class SpecialContext extends Context {
     }
 
     /**
-     * Method sets the attribute "language".
+     * Method sets attribute {@link #language}.<br/>
      * 
-     * @param pLanguage Value to which the attribute "language" should be set.
+     * @param pLanguage Value to which {@link #language} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setLanguage( Locale pLanguage ) {
@@ -144,9 +146,10 @@ public class SpecialContext extends Context {
     }
 
     /**
-     * Method sets the attribute "resellerID".
+     * Method sets attribute {@link #resellerID}.<br/>
      * 
-     * @param pResellerID Value to which the attribute "resellerID" should be set.
+     * @param pResellerID Value to which {@link #resellerID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setResellerID( long pResellerID ) {
@@ -156,9 +159,10 @@ public class SpecialContext extends Context {
     }
 
     /**
-     * Method sets the attribute "pathParam".
+     * Method sets attribute {@link #pathParam}.<br/>
      * 
-     * @param pPathParam Value to which the attribute "pathParam" should be set.
+     * @param pPathParam Value to which {@link #pathParam} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setPathParam( long pPathParam ) {
@@ -168,9 +172,10 @@ public class SpecialContext extends Context {
     }
 
     /**
-     * Method sets the attribute "queryParam".
+     * Method sets attribute {@link #queryParam}.<br/>
      * 
-     * @param pQueryParam Value to which the attribute "queryParam" should be set.
+     * @param pQueryParam Value to which {@link #queryParam} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setQueryParam( String pQueryParam ) {
@@ -180,9 +185,10 @@ public class SpecialContext extends Context {
     }
 
     /**
-     * Method sets the attribute "lang".
+     * Method sets attribute {@link #lang}.<br/>
      * 
-     * @param pLang Value to which the attribute "lang" should be set.
+     * @param pLang Value to which {@link #lang} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setLang( String pLang ) {

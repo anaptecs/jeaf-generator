@@ -148,9 +148,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the attribute "parentAttribute".
+     * Method sets attribute {@link #parentAttribute}.<br/>
      * 
-     * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setParentAttribute( String pParentAttribute ) {
@@ -160,9 +161,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the attribute "childBAttribute". A child attribute
+     * Method sets attribute {@link #childBAttribute}.<br/>
      * 
-     * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
+     * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setChildBAttribute( boolean[] pChildBAttribute ) {
@@ -172,9 +174,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the association "composition". the composition
+     * Method sets association {@link #composition}.<br/>
      * 
-     * @param pComposition Collection with objects to which the association should be set.
+     * @param pComposition Collection to which {@link #composition} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setComposition( Set<ParentClass> pComposition ) {

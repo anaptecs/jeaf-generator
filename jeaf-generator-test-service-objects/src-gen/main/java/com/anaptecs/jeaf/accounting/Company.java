@@ -129,9 +129,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "active".
+     * Method sets attribute {@link #active}.<br/>
      * 
-     * @param pActive Value to which the attribute "active" should be set.
+     * @param pActive Value to which {@link #active} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setActive( Boolean pActive ) {
@@ -141,9 +142,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "street".
+     * Method sets attribute {@link #street}.<br/>
      * 
-     * @param pStreet Value to which the attribute "street" should be set.
+     * @param pStreet Value to which {@link #street} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setStreet( String pStreet ) {
@@ -153,9 +155,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "zipCode".
+     * Method sets attribute {@link #zipCode}.<br/>
      * 
-     * @param pZipCode Value to which the attribute "zipCode" should be set.
+     * @param pZipCode Value to which {@link #zipCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setZipCode( Integer pZipCode ) {
@@ -165,9 +168,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "city".
+     * Method sets attribute {@link #city}.<br/>
      * 
-     * @param pCity Value to which the attribute "city" should be set.
+     * @param pCity Value to which {@link #city} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setCity( String pCity ) {
@@ -177,9 +181,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "country".
+     * Method sets attribute {@link #country}.<br/>
      * 
-     * @param pCountry Value to which the attribute "country" should be set.
+     * @param pCountry Value to which {@link #country} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setCountry( String pCountry ) {

@@ -68,9 +68,10 @@ public class SwissGeoPosition extends GeoPosition {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setName( String pName ) {
@@ -80,9 +81,10 @@ public class SwissGeoPosition extends GeoPosition {
     }
 
     /**
-     * Method sets the attribute "longitude".
+     * Method sets attribute {@link #longitude}.<br/>
      * 
-     * @param pLongitude Value to which the attribute "longitude" should be set.
+     * @param pLongitude Value to which {@link #longitude} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setLongitude( int pLongitude ) {
@@ -92,9 +94,10 @@ public class SwissGeoPosition extends GeoPosition {
     }
 
     /**
-     * Method sets the attribute "latitude".
+     * Method sets attribute {@link #latitude}.<br/>
      * 
-     * @param pLatitude Value to which the attribute "latitude" should be set.
+     * @param pLatitude Value to which {@link #latitude} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setLatitude( int pLatitude ) {

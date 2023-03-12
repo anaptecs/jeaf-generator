@@ -236,9 +236,10 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     /**
-     * Method sets the association "literals". so many literals are possible
+     * Method sets association {@link #literals}.<br/>
      * 
-     * @param pLiterals Array with objects to which the association should be set.
+     * @param pLiterals Array with objects to which {@link #literals} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLiterals( BooleanLiteralsEnum... pLiterals ) {
       // To ensure immutability we have to copy the content of the passed array.

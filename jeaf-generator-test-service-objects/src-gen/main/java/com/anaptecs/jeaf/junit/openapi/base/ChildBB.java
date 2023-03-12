@@ -157,9 +157,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the attribute "parentAttribute".
+     * Method sets attribute {@link #parentAttribute}.<br/>
      * 
-     * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setParentAttribute( String pParentAttribute ) {
@@ -169,9 +170,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the association "ibans".
+     * Method sets association {@link #ibans}.<br/>
      * 
-     * @param pIbans Collection with objects to which the association should be set.
+     * @param pIbans Collection to which {@link #ibans} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setIbans( Set<IBAN> pIbans ) {
@@ -181,10 +183,12 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the association "theBankAccount". I would like to document references to other types.
+     * Method sets association {@link #theBankAccount}.<br/>
      * 
-     * @param pTheBankAccount BankAccount to which the association "theBankAccount" should be set.
+     * @param pTheBankAccount Value to which {@link #theBankAccount} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     @Override
     public Builder setTheBankAccount( BankAccount pTheBankAccount ) {
       // Call super class implementation.
@@ -193,10 +197,12 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the association "legacyBankAccounts". Association is still there be SemVer compliant.
+     * Method sets association {@link #legacyBankAccounts}.<br/>
      * 
-     * @param pLegacyBankAccounts Collection with objects to which the association should be set.
+     * @param pLegacyBankAccounts Collection to which {@link #legacyBankAccounts} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     @Override
     public Builder setLegacyBankAccounts( List<BankAccount> pLegacyBankAccounts ) {
       // Call super class implementation.
@@ -205,9 +211,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the attribute "childBAttribute". A child attribute
+     * Method sets attribute {@link #childBAttribute}.<br/>
      * 
-     * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
+     * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setChildBAttribute( boolean[] pChildBAttribute ) {
@@ -217,9 +224,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the association "composition". the composition
+     * Method sets association {@link #composition}.<br/>
      * 
-     * @param pComposition Collection with objects to which the association should be set.
+     * @param pComposition Collection to which {@link #composition} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setComposition( Set<ParentClass> pComposition ) {

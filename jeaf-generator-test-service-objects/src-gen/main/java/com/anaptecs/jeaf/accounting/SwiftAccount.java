@@ -104,9 +104,10 @@ public class SwiftAccount extends Account {
     }
 
     /**
-     * Method sets the attribute "iban".
+     * Method sets attribute {@link #iban}.<br/>
      * 
-     * @param pIban Value to which the attribute "iban" should be set.
+     * @param pIban Value to which {@link #iban} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setIban( Long pIban ) {
@@ -116,9 +117,10 @@ public class SwiftAccount extends Account {
     }
 
     /**
-     * Method sets the attribute "balance".
+     * Method sets attribute {@link #balance}.<br/>
      * 
-     * @param pBalance Value to which the attribute "balance" should be set.
+     * @param pBalance Value to which {@link #balance} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setBalance( BigDecimal pBalance ) {
@@ -128,9 +130,10 @@ public class SwiftAccount extends Account {
     }
 
     /**
-     * Method sets the association "authorizedPersons".
+     * Method sets association {@link #authorizedPersons}.<br/>
      * 
-     * @param pAuthorizedPersons Collection with objects to which the association should be set.
+     * @param pAuthorizedPersons Collection to which {@link #authorizedPersons} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setAuthorizedPersons( Set<Person> pAuthorizedPersons ) {
@@ -140,9 +143,10 @@ public class SwiftAccount extends Account {
     }
 
     /**
-     * Method sets the association "bookings".
+     * Method sets association {@link #bookings}.<br/>
      * 
-     * @param pBookings Collection with objects to which the association should be set.
+     * @param pBookings Collection to which {@link #bookings} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setBookings( Set<Booking> pBookings ) {
@@ -152,9 +156,10 @@ public class SwiftAccount extends Account {
     }
 
     /**
-     * Method sets the attribute "bankID".
+     * Method sets attribute {@link #bankID}.<br/>
      * 
-     * @param pBankID Value to which the attribute "bankID" should be set.
+     * @param pBankID Value to which {@link #bankID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setBankID( ServiceObjectID pBankID ) {

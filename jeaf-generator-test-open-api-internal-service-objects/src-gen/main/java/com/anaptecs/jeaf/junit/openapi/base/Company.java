@@ -106,9 +106,10 @@ public class Company extends Partner {
     }
 
     /**
-     * Method sets the association "postalAddresses".
+     * Method sets association {@link #postalAddresses}.<br/>
      * 
-     * @param pPostalAddresses Collection with objects to which the association should be set.
+     * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setPostalAddresses( List<PostalAddress> pPostalAddresses ) {

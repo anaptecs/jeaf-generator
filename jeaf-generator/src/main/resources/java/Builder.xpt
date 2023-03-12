@@ -422,11 +422,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 «DEFINE CreateBuilderVarArgsSetter(String builderClassName) FOR Property»
 	«IF isNavigable()»
 		«IF isMultivalued()»
-			/**
-			 * Method sets the association "«asInstanceVar()»". «this.getComment()»
-			 * 
-			 * @param «asParameter()» Array with objects to which the association should be set.
-			 */
+			«EXPAND functions::Javadoc::JavadocForBuilderVarArgsSetter(builderClassName)»
 			«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 			public «builderClassName» set«name.toFirstUpper()»(«this.type.fqn()»... «asParameter()») {
 			    // To ensure immutability we have to copy the content of the passed array.
@@ -456,11 +452,8 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 «ENDDEFINE»
 
 «DEFINE OverwriteBuilderPropertySetter(String builderClassName) FOR Property»
-	/**
-	 * Method sets the attribute "«asInstanceVar()»". «this.getComment()»
-	 * 
-	 * @param «asParameter()» Value to which the attribute "«asInstanceVar()»" should be set.
-	 */
+	«EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
+	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	@Override
 	public «builderClassName» «asSetter()»(«this.fqn()»«IF isMultivalued()»[]«ENDIF» «asParameter()») {
 		// Call super class implementation.
@@ -471,12 +464,9 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 
 «DEFINE OverwriteBuilderAssociationSetter(String builderClassName) FOR Property»
 	«IF isNavigable()»
+	    «EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
+	    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 		«IF isMultivalued()»
-			/**
-			 * Method sets the association "«asInstanceVar()»". «this.getComment()»
-			 * 
-			 * @param «asParameter()» Collection with objects to which the association should be set.
-			 */
 			@Override
 			public «builderClassName» set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
 				// Call super class implementation.
@@ -484,11 +474,6 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 				return this;
 			}
 		«ELSE»
-			/**
-			 * Method sets the association "«asInstanceVar()»". «this.getComment()»
-			 * 
-			 * @param «asParameter()» «this.type.name» to which the association "«asInstanceVar()»" should be set.
-			 */
 			@Override
 			public «builderClassName» «asSetter()» («type.fqn()» «asParameter()») {
 				// Call super class implementation.
@@ -501,12 +486,9 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 
 «DEFINE OverwriteBuilderSoftLinkSetter(String builderClassName) FOR SoftLink»
     «IF isNavigable()»
+	    «EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
+	    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
         «IF isMultivalued()»
-            /**
-             * Method sets the association "«asInstanceVar()»". «this.getComment()»
-             * 
-             * @param «asParameter()» Collection with objects to which the association should be set.
-             */
             @Override
             public «builderClassName» set«name.toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asParameter()») {
                 // Call super class implementation.
@@ -514,11 +496,6 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
                 return this;
             }
         «ELSE»
-            /**
-             * Method sets the association "«asInstanceVar()»". «this.getComment()»
-             * 
-             * @param «asParameter()» «this.type.name» to which the association "«asInstanceVar()»" should be set.
-             */
             @Override
             public «builderClassName» «asSetter()» («this.getSoftLinkType()» «asParameter()») {
                 // Call super class implementation.

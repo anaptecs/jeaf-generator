@@ -99,9 +99,10 @@ public class ImmutablePOJOParent extends AbstractPOJO {
     }
 
     /**
-     * Method sets the attribute "abtractAttr".
+     * Method sets attribute {@link #abtractAttr}.<br/>
      * 
-     * @param pAbtractAttr Value to which the attribute "abtractAttr" should be set.
+     * @param pAbtractAttr Value to which {@link #abtractAttr} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setAbtractAttr( String pAbtractAttr ) {

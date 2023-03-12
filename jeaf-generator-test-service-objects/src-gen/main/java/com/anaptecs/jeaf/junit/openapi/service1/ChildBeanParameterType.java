@@ -88,9 +88,10 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     }
 
     /**
-     * Method sets the attribute "novaKey".
+     * Method sets attribute {@link #novaKey}.<br/>
      * 
-     * @param pNovaKey Value to which the attribute "novaKey" should be set.
+     * @param pNovaKey Value to which {@link #novaKey} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setNovaKey( String pNovaKey ) {
@@ -100,9 +101,10 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     }
 
     /**
-     * Method sets the attribute "tkID".
+     * Method sets attribute {@link #tkID}.<br/>
      * 
-     * @param pTkID Value to which the attribute "tkID" should be set.
+     * @param pTkID Value to which {@link #tkID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setTkID( String pTkID ) {

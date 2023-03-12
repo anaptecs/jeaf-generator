@@ -77,9 +77,10 @@ public class BusinessParent extends TechParent {
     }
 
     /**
-     * Method sets the attribute "techAttribute".
+     * Method sets attribute {@link #techAttribute}.<br/>
      * 
-     * @param pTechAttribute Value to which the attribute "techAttribute" should be set.
+     * @param pTechAttribute Value to which {@link #techAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setTechAttribute( String pTechAttribute ) {

@@ -86,9 +86,10 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
     }
 
     /**
-     * Method sets the attribute "abtractAttr".
+     * Method sets attribute {@link #abtractAttr}.<br/>
      * 
-     * @param pAbtractAttr Value to which the attribute "abtractAttr" should be set.
+     * @param pAbtractAttr Value to which {@link #abtractAttr} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setAbtractAttr( String pAbtractAttr ) {
@@ -98,9 +99,10 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
     }
 
     /**
-     * Method sets the attribute "parentAttribute".
+     * Method sets attribute {@link #parentAttribute}.<br/>
      * 
-     * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setParentAttribute( String pParentAttribute ) {
@@ -110,9 +112,10 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
     }
 
     /**
-     * Method sets the attribute "anotherParentAttribute".
+     * Method sets attribute {@link #anotherParentAttribute}.<br/>
      * 
-     * @param pAnotherParentAttribute Value to which the attribute "anotherParentAttribute" should be set.
+     * @param pAnotherParentAttribute Value to which {@link #anotherParentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setAnotherParentAttribute( Integer pAnotherParentAttribute ) {
