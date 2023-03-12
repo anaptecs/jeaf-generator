@@ -41,9 +41,8 @@ public final class AccountingBasicDataServiceProxy extends ServiceProxy implemen
   }
 
   /**
-   * Generated proxy implementation for method "createResponsibilityType".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.accounting.AccountingBasicDataService#createResponsibilityType}
    */
   public ResponsibilityType createResponsibilityType( ResponsibilityType pType ) {
     try {
@@ -56,14 +55,8 @@ public final class AccountingBasicDataServiceProxy extends ServiceProxy implemen
   }
 
   /**
-   * Generated proxy implementation for method "createBank".
-   * 
-   * Method creates a new persistent Bank object in the database.
-   * 
-   * @param pBank Service object containing all the attributes to create a new persistent Bank object. The parameter
-   * must not be null
-   * @return Bank Service object describing the created bank object. The returned object contains besides the attributes
-   * also the object id of the created persistent bank object. The method never returns null.
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.accounting.AccountingBasicDataService#createBank}
    */
   public Bank createBank( @Valid @NotNull Bank pBank ) {
     try {
@@ -76,9 +69,8 @@ public final class AccountingBasicDataServiceProxy extends ServiceProxy implemen
   }
 
   /**
-   * Generated proxy implementation for method "createEmployee".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.accounting.AccountingBasicDataService#createEmployee}
    */
   public ServiceObjectID createEmployee( Person pPerson, ResponsibilityType pResponsibilityType, Bank pBank ) {
     try {

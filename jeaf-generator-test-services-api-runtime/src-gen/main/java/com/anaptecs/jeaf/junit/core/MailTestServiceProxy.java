@@ -37,9 +37,8 @@ public final class MailTestServiceProxy extends ServiceProxy implements MailTest
   }
 
   /**
-   * Generated proxy implementation for method "testCreateEmptyMessage".
-   * 
-   * Test of method createMessage(). Creates an empty MimeMessage.
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.MailTestService#testCreateEmptyMessage}
    */
   public void testCreateEmptyMessage( ) {
     try {
@@ -52,10 +51,8 @@ public final class MailTestServiceProxy extends ServiceProxy implements MailTest
   }
 
   /**
-   * Generated proxy implementation for method "testCreateFilledMessage".
-   * 
-   * Test of method createMessage( String pContent, String pSubject, Set<Address> pRecipients ). Creates a MimeMessage
-   * filled with the content, subject and recipients specified within the parameters.
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.MailTestService#testCreateFilledMessage}
    */
   public void testCreateFilledMessage( String pAddress, String pPersonal, String pCharSet, String pContent,
       String pSubject ) {
@@ -70,10 +67,7 @@ public final class MailTestServiceProxy extends ServiceProxy implements MailTest
   }
 
   /**
-   * Generated proxy implementation for method "testSendMail".
-   * 
-   * Test of method sendMail( Message pMessage ). Starts a local SMTPServer, creates a MimeMessage and tries to send it
-   * to the SMTPServer.
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.core.MailTestService#testSendMail}
    */
   public void testSendMail( String pAddress, String pPersonal, String pCharSet, String pContent, String pSubject ) {
     try {
@@ -87,10 +81,7 @@ public final class MailTestServiceProxy extends ServiceProxy implements MailTest
   }
 
   /**
-   * Generated proxy implementation for method "testExtendedSendMail".
-   * 
-   * Test of method sendMail( String pContent, String pSubject, Set<Address> pRecipients ). Starts a local SMTPServer
-   * and tries to send a Message to the SMTPServer using the given parameters.
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.core.MailTestService#testExtendedSendMail}
    */
   public void testExtendedSendMail( String pAddress, String pPersonal, String pCharSet, String pContent,
       String pSubject ) {

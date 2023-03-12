@@ -67,9 +67,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "getProducts".
-   * 
-   * Operation returns all available product.
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#getProducts}
    */
   @SuppressWarnings("unchecked")
   public List<Product> getProducts( ) {
@@ -83,9 +82,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "getProduct".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#getProduct}
    */
   public Product getProduct( @NotEmpty String pProductID ) {
     try {
@@ -98,9 +96,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "createProduct".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#createProduct}
    */
   public boolean createProduct( Product pProduct ) {
     try {
@@ -113,9 +110,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "getSortiment".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#getSortiment}
    */
   public Sortiment getSortiment( Context pContext ) {
     try {
@@ -128,9 +124,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "createChannelCode".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#createChannelCode}
    */
   public ChannelCode createChannelCode( @NotBlank String pChannelCode ) {
     try {
@@ -143,9 +138,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "ping".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#ping}
    */
   public void ping( ) {
     try {
@@ -158,9 +151,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedOperation".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#deprecatedOperation}
    */
   @Deprecated
   public String deprecatedOperation( ) {
@@ -174,9 +166,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedContext".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#deprecatedContext}
    */
   public String deprecatedContext( DeprecatedContext pContext ) {
     try {
@@ -189,9 +180,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedBeanParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#deprecatedBeanParam}
    */
   public void deprecatedBeanParam( BeanParameter pBeanParam ) {
     try {
@@ -204,9 +194,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedParams".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#deprecatedParams}
    */
   @Deprecated
   public String deprecatedParams( @Deprecated int pParam1 ) {
@@ -220,9 +209,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedBody".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#deprecatedBody}
    */
   public String deprecatedBody( @Deprecated String pBody ) {
     try {
@@ -235,10 +223,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "deprectedComplexRequestBody".
-   * 
-   * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
-   * to deprecated.
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#deprectedComplexRequestBody}
    */
   public void deprectedComplexRequestBody( @Deprecated Product pProduct ) {
     try {
@@ -251,9 +237,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedComplexReturn".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#deprecatedComplexReturn}
    */
   @Deprecated
   public Product deprecatedComplexReturn( ) {
@@ -267,9 +252,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "loadSpecificThings".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#loadSpecificThings}
    */
   public void loadSpecificThings( SpecialContext pContext ) {
     try {
@@ -282,9 +266,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "createChannelCodeFromObject".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#createChannelCodeFromObject}
    */
   public ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode ) {
     try {
@@ -297,9 +280,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "addCurrencies".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#addCurrencies}
    */
   @SuppressWarnings("unchecked")
   public List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies ) {
@@ -313,9 +295,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "isCurrencySupported".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#isCurrencySupported}
    */
   public CurrencyCode isCurrencySupported( CurrencyCode pCurrency ) {
     try {
@@ -328,9 +309,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testCodeTypeUsage".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testCodeTypeUsage}
    */
   public IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode ) {
     try {
@@ -343,9 +323,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testLocalBeanParamType".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testLocalBeanParamType}
    */
   public String testLocalBeanParamType( LocalBeanParamType pBeanParam ) {
     try {
@@ -358,9 +337,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testExternalBeanParameterType".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testExternalBeanParameterType}
    */
   public String testExternalBeanParameterType( ParentBeanParamType pParent ) {
     try {
@@ -373,9 +351,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testChildBeanParameter".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testChildBeanParameter}
    */
   public String testChildBeanParameter( ChildBeanParameterType pChild ) {
     try {
@@ -388,9 +365,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "checkIBAN".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#checkIBAN}
    */
   public boolean checkIBAN( String pIBAN ) {
     try {
@@ -403,9 +378,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "getChannels".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#getChannels}
    */
   @SuppressWarnings("unchecked")
   public List<Channel> getChannels( List<ChannelType> pChannelTypes ) {
@@ -419,9 +393,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "getDefaultChannel".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#getDefaultChannel}
    */
   public Channel getDefaultChannel( ChannelType pChannelType ) {
     try {
@@ -434,9 +407,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "getSupportedCurrencies".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#getSupportedCurrencies}
    */
   @SuppressWarnings("unchecked")
   public List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode ) {
@@ -450,9 +422,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "getSupportedCurrenciesAsync".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#getSupportedCurrenciesAsync}
    */
   @SuppressWarnings("unchecked")
   public List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode ) {
@@ -466,9 +437,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testDateQueryParams".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testDateQueryParams}
    */
   public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
@@ -486,9 +456,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testDateQueryParamsBean".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testDateQueryParamsBean}
    */
   public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
     try {
@@ -502,9 +471,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testOptionalQueryParams".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testOptionalQueryParams}
    */
   public String testOptionalQueryParams( String query1, int query2 ) {
     try {
@@ -517,9 +485,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testSpecialHeaderParams".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testSpecialHeaderParams}
    */
   public void testSpecialHeaderParams( String authorization, String pContentType, String pAccept ) {
     try {
@@ -533,9 +500,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testTechnicalHeaderBean".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testTechnicalHeaderBean}
    */
   public String testTechnicalHeaderBean( TechnicalHeaderContext pContext ) {
     try {
@@ -548,9 +514,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testTechnicalHeaderParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testTechnicalHeaderParam}
    */
   public String testTechnicalHeaderParam( String pReseller ) {
     try {
@@ -563,9 +528,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testNotInlinedBeanParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testNotInlinedBeanParam}
    */
   public void testNotInlinedBeanParam( NotInlinedBeanParam pInlinedBeanParam ) {
     try {
@@ -578,9 +542,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testPrimitiveArray".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testPrimitiveArray}
    */
   public void testPrimitiveArray( int[] pIntegerArray ) {
     try {
@@ -593,9 +556,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testPrimitiveArrayAsQueryParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testPrimitiveArrayAsQueryParam}
    */
   public String testPrimitiveArrayAsQueryParam( int[] pIntValues ) {
     try {
@@ -608,9 +570,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testMultivaluedHeader".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testMultivaluedHeader}
    */
   public String testMultivaluedHeader( List<BigDecimalCode> pCodes ) {
     try {
@@ -623,9 +584,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testMultivaluedQueryParams".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testMultivaluedQueryParams}
    */
   public String testMultivaluedQueryParams( List<BigDecimalCode> pCodes, List<BooleanLiteralsEnum> pEnums ) {
     try {
@@ -639,9 +599,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testMulitValuedBeanParams".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testMulitValuedBeanParams}
    */
   public String testMulitValuedBeanParams( MultiValuedDataType pBeanParam, BooleanLiteralsEnum pTheEnum ) {
     try {
@@ -655,9 +614,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "noReturnType".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#noReturnType}
    */
   public void noReturnType( String pHeader, MultiValuedDataType pContext ) {
     try {
@@ -670,9 +628,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "deleteSomething".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#deleteSomething}
    */
   public void deleteSomething( String pID ) {
     try {

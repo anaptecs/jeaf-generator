@@ -37,9 +37,7 @@ public final class TxNeverServiceProxy extends ServiceProxy implements TxNeverSe
   }
 
   /**
-   * Generated proxy implementation for method "testTransactionBehavior".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.tx.TxNeverService#testTransactionBehavior}
    */
   public void testTransactionBehavior( ) {
     try {

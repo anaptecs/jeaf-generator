@@ -37,9 +37,8 @@ public final class TransactionHandlingServiceProxy extends ServiceProxy implemen
   }
 
   /**
-   * Generated proxy implementation for method "testIndirectInvocations".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.tx.TransactionHandlingService#testIndirectInvocations}
    */
   public void testIndirectInvocations( ) {
     try {

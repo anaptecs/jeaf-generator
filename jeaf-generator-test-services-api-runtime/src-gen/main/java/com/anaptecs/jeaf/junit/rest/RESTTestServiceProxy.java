@@ -40,9 +40,7 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
   }
 
   /**
-   * Generated proxy implementation for method "getResource".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.rest.RESTTestService#getResource}
    */
   public String getResource( String pID ) {
     try {
@@ -55,9 +53,7 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
   }
 
   /**
-   * Generated proxy implementation for method "getTestServiceObject".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.rest.RESTTestService#getTestServiceObject}
    */
   public TestServiceObject getTestServiceObject( ) {
     try {
@@ -70,9 +66,8 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
   }
 
   /**
-   * Generated proxy implementation for method "updateTestServiceObject".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.rest.RESTTestService#updateTestServiceObject}
    */
   public TestServiceObject updateTestServiceObject( TestServiceObject pObject ) {
     try {
@@ -85,9 +80,7 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
   }
 
   /**
-   * Generated proxy implementation for method "doSomeNotRESTThing".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.rest.RESTTestService#doSomeNotRESTThing}
    */
   public void doSomeNotRESTThing( ) {
     try {
@@ -100,9 +93,7 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
   }
 
   /**
-   * Generated proxy implementation for method "doSomethingRESTy".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.rest.RESTTestService#doSomethingRESTy}
    */
   public void doSomethingRESTy( ) {
     try {
@@ -115,9 +106,8 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
   }
 
   /**
-   * Generated proxy implementation for method "yetAnotherRESTOperation".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.rest.RESTTestService#yetAnotherRESTOperation}
    */
   public boolean yetAnotherRESTOperation( String pID, String pToken, String pQueryParam1, String pCookieParam ) {
     try {
@@ -131,9 +121,7 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
   }
 
   /**
-   * Generated proxy implementation for method "handleBeanParam1".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.rest.RESTTestService#handleBeanParam1}
    */
   public void handleBeanParam1( Context pContext ) {
     try {
@@ -146,9 +134,7 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
   }
 
   /**
-   * Generated proxy implementation for method "handleBeanParam1".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.rest.RESTTestService#handleBeanParam1}
    */
   public void handleBeanParam1( BeanParameter pBeanParam ) {
     try {
@@ -161,9 +147,7 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedOperation".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.rest.RESTTestService#deprecatedOperation}
    */
   @Deprecated
   public void deprecatedOperation( ) {
@@ -177,9 +161,7 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedParameter".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.rest.RESTTestService#deprecatedParameter}
    */
   public void deprecatedParameter( int pParam1, @Deprecated int pParam2 ) {
     try {
@@ -192,9 +174,8 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
   }
 
   /**
-   * Generated proxy implementation for method "deprectaedReturnValue".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.rest.RESTTestService#deprectaedReturnValue}
    */
   @Deprecated
   public int deprectaedReturnValue( int pParam1 ) {
@@ -208,9 +189,7 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedAsyncParam".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.rest.RESTTestService#deprecatedAsyncParam}
    */
   @Deprecated
   public String deprecatedAsyncParam( @Deprecated int pParam1 ) {
@@ -224,9 +203,7 @@ public final class RESTTestServiceProxy extends ServiceProxy implements RESTTest
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedAsync".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.rest.RESTTestService#deprecatedAsync}
    */
   @Deprecated
   public String deprecatedAsync( int pParam1 ) {

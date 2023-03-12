@@ -37,9 +37,8 @@ public final class TxNotSupportedServiceProxy extends ServiceProxy implements Tx
   }
 
   /**
-   * Generated proxy implementation for method "testTransactionBehavior".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.tx.TxNotSupportedService#testTransactionBehavior}
    */
   public void testTransactionBehavior( ) {
     try {

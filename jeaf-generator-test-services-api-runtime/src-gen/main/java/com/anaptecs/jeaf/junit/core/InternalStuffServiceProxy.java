@@ -38,9 +38,7 @@ public final class InternalStuffServiceProxy extends ServiceProxy implements Int
   }
 
   /**
-   * Generated proxy implementation for method "testFlush".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.core.InternalStuffService#testFlush}
    */
   public void testFlush( ServiceObjectID pObjectID ) {
     try {

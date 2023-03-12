@@ -42,9 +42,8 @@ public final class ValidationTestServiceProxy extends ServiceProxy implements Va
   }
 
   /**
-   * Generated proxy implementation for method "validateInNOutput".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.ValidationTestService#validateInNOutput}
    */
   public String validateInNOutput( @NotNull String pString1, @NotEmpty String pString2 ) {
     try {
@@ -57,9 +56,7 @@ public final class ValidationTestServiceProxy extends ServiceProxy implements Va
   }
 
   /**
-   * Generated proxy implementation for method "notValidOutput".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.core.ValidationTestService#notValidOutput}
    */
   public String notValidOutput( String pString1, @NotEmpty String pString2 ) {
     try {
@@ -72,9 +69,8 @@ public final class ValidationTestServiceProxy extends ServiceProxy implements Va
   }
 
   /**
-   * Generated proxy implementation for method "validateOutputOnly".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.ValidationTestService#validateOutputOnly}
    */
   public String validateOutputOnly( String pString1, String pString2 ) {
     try {
@@ -87,9 +83,8 @@ public final class ValidationTestServiceProxy extends ServiceProxy implements Va
   }
 
   /**
-   * Generated proxy implementation for method "validateInputOnly".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.ValidationTestService#validateInputOnly}
    */
   public String validateInputOnly( String pString1, @Min(value = 4711) int pInteger ) {
     try {
@@ -102,9 +97,8 @@ public final class ValidationTestServiceProxy extends ServiceProxy implements Va
   }
 
   /**
-   * Generated proxy implementation for method "noMethodValidation".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.ValidationTestService#noMethodValidation}
    */
   public String noMethodValidation( String pString1, boolean pBool ) {
     try {
@@ -117,9 +111,8 @@ public final class ValidationTestServiceProxy extends ServiceProxy implements Va
   }
 
   /**
-   * Generated proxy implementation for method "createValidationTestObject".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.ValidationTestService#createValidationTestObject}
    */
   public void createValidationTestObject( @Valid ValidationTestObject pTestObject ) {
     try {
