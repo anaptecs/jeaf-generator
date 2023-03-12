@@ -186,9 +186,10 @@ public class SoftLinkChildB extends SoftLinkParent {
     }
 
     /**
-     * Method sets the association "heyBrother".
+     * Method sets association {@link #heyBrother}.<br/>
      * 
-     * @param pHeyBrother SoftLinkChildA to which the association "heyBrother" should be set.
+     * @param pHeyBrother Value to which {@link #heyBrother} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setHeyBrother( String pHeyBrother ) {
       heyBrother = pHeyBrother;
@@ -196,9 +197,10 @@ public class SoftLinkChildB extends SoftLinkParent {
     }
 
     /**
-     * Method sets the association "softLinkPartners".
+     * Method sets association {@link #softLinkPartners}.<br/>
      * 
-     * @param pSoftLinkPartners Collection with objects to which the association should be set.
+     * @param pSoftLinkPartners Collection to which {@link #softLinkPartners} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSoftLinkPartners( Set<String> pSoftLinkPartners ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -212,9 +214,10 @@ public class SoftLinkChildB extends SoftLinkParent {
     }
 
     /**
-     * Method sets the association "oneLink".
+     * Method sets association {@link #oneLink}.<br/>
      * 
-     * @param pOneLink SoftLinkPartner to which the association "oneLink" should be set.
+     * @param pOneLink Value to which {@link #oneLink} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setOneLink( SoftLinkID pOneLink ) {
       oneLink = pOneLink;

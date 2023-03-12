@@ -175,19 +175,24 @@ public class Campaign implements ServiceObject {
     }
 
     /**
-     * Method sets the association "theLink". The magic link.
+     * Method sets association {@link #theLink}.<br/>
      * 
-     * @param pTheLink LinkObject to which the association "theLink" should be set.
+     * @param pTheLink Value to which {@link #theLink} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
      */
+    @Deprecated
     public Builder setTheLink( long pTheLink ) {
       theLink = pTheLink;
       return this;
     }
 
     /**
-     * Method sets the association "moreLinks".
+     * Method sets association {@link #moreLinks}.<br/>
      * 
-     * @param pMoreLinks Collection with objects to which the association should be set.
+     * @param pMoreLinks Collection to which {@link #moreLinks} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
      */
     @Deprecated
     public Builder setMoreLinks( Set<Long> pMoreLinks ) {
@@ -202,9 +207,10 @@ public class Campaign implements ServiceObject {
     }
 
     /**
-     * Method sets the association "discountOffers".
+     * Method sets association {@link #discountOffers}.<br/>
      * 
-     * @param pDiscountOffers Collection with objects to which the association should be set.
+     * @param pDiscountOffers Collection to which {@link #discountOffers} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDiscountOffers( List<String> pDiscountOffers ) {

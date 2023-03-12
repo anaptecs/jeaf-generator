@@ -105,9 +105,10 @@ public class DiscountOffer implements ServiceObject {
     }
 
     /**
-     * Method sets the association "campaigns".
+     * Method sets association {@link #campaigns}.<br/>
      * 
-     * @param pCampaigns Collection with objects to which the association should be set.
+     * @param pCampaigns Collection to which {@link #campaigns} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setCampaigns( Set<SoftLink> pCampaigns ) {

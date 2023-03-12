@@ -396,13 +396,9 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 
 «DEFINE CreateBuilderSoftLinkSetter(String builderClassName) FOR SoftLink»
     «IF isNavigable()»
+        «EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
+        «EXPAND java::Helper::GenerateDeprecationAnnotation-»
         «IF isMultivalued()»
-            /**
-             * Method sets the association "«asInstanceVar()»". «this.getComment()»
-             * 
-             * @param «asParameter()» Collection with objects to which the association should be set.
-             */
-            «EXPAND java::Helper::GenerateDeprecationAnnotation-»
             public «builderClassName» set«name.toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asParameter()») {
                 // To ensure immutability we have to copy the content of the passed collection.
                 if(«asParameter()» != null) {
@@ -414,11 +410,6 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
                 return this;
             }
         «ELSE»
-            /**
-             * Method sets the association "«asInstanceVar()»". «this.getComment()»
-             * 
-             * @param «asParameter()» «this.type.name» to which the association "«asInstanceVar()»" should be set.
-             */
             public «builderClassName» «asSetter()» («this.getSoftLinkType()» «asParameter()») {
                 «asInstanceVar()» = «asParameter()»;
                 return this;

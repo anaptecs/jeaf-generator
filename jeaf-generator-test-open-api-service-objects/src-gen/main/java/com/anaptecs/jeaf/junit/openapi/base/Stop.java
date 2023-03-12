@@ -180,9 +180,10 @@ public class Stop implements ServiceObject {
     }
 
     /**
-     * Method sets the association "theSoftLink".
+     * Method sets association {@link #theSoftLink}.<br/>
      * 
-     * @param pTheSoftLink LinkObject to which the association "theSoftLink" should be set.
+     * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
       theSoftLink = pTheSoftLink;

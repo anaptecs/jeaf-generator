@@ -206,19 +206,22 @@ public class POI extends Stop {
     }
 
     /**
-     * Method sets the association "theLink".
+     * Method sets association {@link #theLink}.<br/>
      * 
-     * @param pTheLink LinkObject to which the association "theLink" should be set.
+     * @param pTheLink Value to which {@link #theLink} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     public Builder setTheLink( Long pTheLink ) {
       theLink = pTheLink;
       return this;
     }
 
     /**
-     * Method sets the association "evenMoreLinks".
+     * Method sets association {@link #evenMoreLinks}.<br/>
      * 
-     * @param pEvenMoreLinks Collection with objects to which the association should be set.
+     * @param pEvenMoreLinks Collection to which {@link #evenMoreLinks} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setEvenMoreLinks( Set<SoftLink> pEvenMoreLinks ) {

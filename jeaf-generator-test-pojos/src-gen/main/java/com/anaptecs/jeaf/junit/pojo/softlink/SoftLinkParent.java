@@ -154,9 +154,10 @@ public class SoftLinkParent {
     }
 
     /**
-     * Method sets the association "partners".
+     * Method sets association {@link #partners}.<br/>
      * 
-     * @param pPartners Collection with objects to which the association should be set.
+     * @param pPartners Collection to which {@link #partners} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPartners( Set<SoftLinkID> pPartners ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -170,9 +171,10 @@ public class SoftLinkParent {
     }
 
     /**
-     * Method sets the association "thePartner".
+     * Method sets association {@link #thePartner}.<br/>
      * 
-     * @param pThePartner SoftLinkPartner to which the association "thePartner" should be set.
+     * @param pThePartner Value to which {@link #thePartner} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setThePartner( SoftLinkID pThePartner ) {
       thePartner = pThePartner;
@@ -180,9 +182,10 @@ public class SoftLinkParent {
     }
 
     /**
-     * Method sets the association "readonlyPartner".
+     * Method sets association {@link #readonlyPartner}.<br/>
      * 
-     * @param pReadonlyPartner SoftLinkPartner to which the association "readonlyPartner" should be set.
+     * @param pReadonlyPartner Value to which {@link #readonlyPartner} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReadonlyPartner( SoftLinkID pReadonlyPartner ) {
       readonlyPartner = pReadonlyPartner;
