@@ -473,6 +473,17 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 				super.set«name.toFirstUpper()»(«asParameter()»);
 				return this;
 			}
+			
+			«IF isEnumeration()»
+	            «EXPAND functions::Javadoc::JavadocForBuilderVarArgsSetter(builderClassName)»
+	            «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	            @Override
+	            public «builderClassName» set«name.toFirstUpper()»(«this.type.fqn()»... «asParameter()») {
+	                // Call super class implementation.
+	                super.set«name.toFirstUpper()»(«asParameter()»);
+	                return this;
+	            }
+			«ENDIF»
 		«ELSE»
 			@Override
 			public «builderClassName» «asSetter()» («type.fqn()» «asParameter()») {
