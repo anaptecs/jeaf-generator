@@ -69,6 +69,12 @@
 			<version>${maven.core.jar.version}</version>
 		</dependency>
 
+		<!-- Dependency is required so that all output of JEAF Genertator ends up in corect logger of Maven. -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-to-slf4j</artifactId>
+			<version>${log4j-to-slf4j.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
