@@ -125,6 +125,7 @@ final class ProductServiceImpl extends ProductServiceImplBase {
 
   /**
    * @return {@link String}
+   * @deprecated This request is no longer supported. (<b>since:</b> 1.1.1, <b>removed with:</b> 2.3)
    */
   @Deprecated
   @Override

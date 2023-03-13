@@ -262,6 +262,9 @@ paths:
     
   /products/deprecated/operation:
     get:
+      description: >-
+        
+        Deprecated: This request is no longer supported.(since: 1.1.1, removed with: 2.3)
       operationId: deprecatedOperation
       deprecated: true
       responses:

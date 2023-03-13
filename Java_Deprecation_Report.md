@@ -63,7 +63,7 @@
 |   | `String pBody` |  |  |  |
 | `deprecatedComplexReturn()` | |  |  |  |
 |   | `Product ` |  |  |  |
-| `deprecatedOperation()` | |  |  |  |
+| `deprecatedOperation()` | | This request is no longer supported. | 1.1.1 | 2.3 |
 | `deprecatedParams(int)` | |  |  |  |
 |   | `int pParam1` |  |  |  |
 |   | `String ` |  |  |  |
