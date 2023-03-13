@@ -65,7 +65,7 @@ Sorry!!! | a very long time | 2023-12-13 |
 |   | `theLink` | Please use "moreLinks" instead. | 2.3.1 | 2.4 |
 |   | `moreLinks` | No good any more | 1.2 | 3.0 |
 |   | `discountOffers` |  |  |  |
-| `ChildAA` | |  |  |  |
+| `ChildAA` | | Please do not use this class any longer. There are better alternatives but I do not tell you which ones. | 0.5 | 2.0 |
 | `ChildBB` | |  |  |  |
 |   | `deprecatedAttribute` |  |  |  |
 |   | `deprecatedBs` |  |  |  |

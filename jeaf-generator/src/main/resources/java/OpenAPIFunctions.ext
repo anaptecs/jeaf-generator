@@ -1,6 +1,7 @@
 extension java::Naming;
 extension java::GeneratorCommons;
 extension jeaf::RESTFunctions;
+extension functions::JEAFDeprecated;
 
 cached boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 	getOpenAPITypes(spec).size > 0;
@@ -54,7 +55,14 @@ cached String getYAMLStyleComment(uml::Element element, String indentation):
     element.ownedComment.get(0).body.replaceAll("\n", "\r\n" + indentation + "# ");
 
 cached String getCommentForOpenAPIDescription(uml::Element element, String indentation):
-    element.ownedComment.get(0).body.replaceAll("\n", "\r\n" + indentation);
+    if(element.ownedComment.size > 0)
+     then element.ownedComment.first().body.replaceAll("\n", "\r\n" + indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
+     else ((uml::NamedElement) element).getInternalDeprecationDescription(indentation);
+    
+private cached String getInternalDeprecationDescription(uml::NamedElement element, String indentation):
+    if element.isJEAFDeprecated() && element.hasMeaningfulDeprecationInfo()
+    then "\r\n" + indentation + "Deprecated: " + element.getDeprecationDescriptionForJavadoc() + "(since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + ")"
+    else "";
     
 cached boolean hasMultiLineComment(uml::Element element) :
     //element.ownedComment.get(0).body.contains("\n");
