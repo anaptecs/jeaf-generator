@@ -27,9 +27,8 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * Class represents the InternalStuff component.
+ * Class represents the component InternalStuff
  *
- * 
  */
 public final class InternalStuffComponent implements ComponentImplementation {
   /**

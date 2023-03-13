@@ -8,9 +8,8 @@ package com.anaptecs.jeaf.accounting.impl.schufa.impl;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 
 /**
- * Class represents the SCHUFA component.
- *
- * 
+ * Class represents the configuration for component
+ * {@link com.anaptecs.jeaf.accounting.impl.schufa.impl.SCHUFAComponent}.
  */
 public final class SCHUFAComponentConfiguration {
   /**

@@ -10,9 +10,7 @@ import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 import com.anaptecs.jeaf.xfun.api.config.Configuration;
 
 /**
- * Class represents the Accounting component.
- *
- * This component contains all accounting functions offered by the accounting service.
+ * Class represents the configuration for component {@link com.anaptecs.jeaf.accounting.impl.AccountingComponent}.
  */
 public final class AccountingComponentConfiguration {
   /**

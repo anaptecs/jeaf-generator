@@ -28,9 +28,8 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * Class represents the RequiredComponent component.
+ * Class represents the component RequiredComponent
  *
- * 
  */
 public final class RequiredComponentComponent implements ComponentImplementation {
   /**

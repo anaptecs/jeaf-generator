@@ -27,9 +27,8 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * Class represents the TxNotSupportedComponent component.
+ * Class represents the component TxNotSupportedComponent
  *
- * 
  */
 public final class TxNotSupportedComponentComponent implements ComponentImplementation {
   /**

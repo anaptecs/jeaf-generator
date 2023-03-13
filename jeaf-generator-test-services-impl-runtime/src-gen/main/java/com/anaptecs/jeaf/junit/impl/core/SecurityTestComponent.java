@@ -28,7 +28,7 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * Class represents the SecurityTest component.
+ * Class represents the component SecurityTest
  *
  * implements the Interface JEAFSecurityTestService
  */

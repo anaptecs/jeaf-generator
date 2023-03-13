@@ -8,9 +8,7 @@ package com.anaptecs.jeaf.junit.impl.core;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 
 /**
- * Class represents the TestComponent component.
- *
- * 
+ * Class represents the configuration for component {@link com.anaptecs.jeaf.junit.impl.core.TestComponentComponent}.
  */
 public final class TestComponentComponentConfiguration {
   /**

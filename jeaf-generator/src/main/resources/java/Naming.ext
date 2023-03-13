@@ -104,8 +104,6 @@ cached String fqnForXML (uml::NamedElement element) :
 private cached String packageName (uml::Package pck) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getPackageName(org.eclipse.uml2.uml.Package);
 
-// Funktionen f�r den Kommentar von Klassen, Attributen und Methoden
-// zur Zeit wird er lediglich fuer die Klassen und Mehtoden Kommentare eingesetzt    
 String getComment(uml::Element element):
     getComment(element.ownedComment);
     

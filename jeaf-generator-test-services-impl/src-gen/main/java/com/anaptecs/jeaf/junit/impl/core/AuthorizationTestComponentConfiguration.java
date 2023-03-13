@@ -8,9 +8,8 @@ package com.anaptecs.jeaf.junit.impl.core;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 
 /**
- * Class represents the AuthorizationTest component.
- *
- * 
+ * Class represents the configuration for component
+ * {@link com.anaptecs.jeaf.junit.impl.core.AuthorizationTestComponent}.
  */
 public final class AuthorizationTestComponentConfiguration {
   /**
