@@ -62,9 +62,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "getProducts".
-   * 
-   * Operation returns all available product.
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#getProducts()}
    */
   @SuppressWarnings("unchecked")
   public List<Product> getProducts( ) {
@@ -78,9 +76,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "getProduct".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#getProduct}
    */
   public Product getProduct( @NotEmpty String pProductID ) {
     try {
@@ -93,9 +89,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "createProduct".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#createProduct}
    */
   public boolean createProduct( Product pProduct ) {
     try {
@@ -108,9 +102,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "getSortiment".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#getSortiment}
    */
   public Sortiment getSortiment( Context pContext ) {
     try {
@@ -123,9 +115,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "createChannelCode".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#createChannelCode}
    */
   public ChannelCode createChannelCode( @NotBlank String pChannelCode ) {
     try {
@@ -138,9 +128,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "ping".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#ping}
    */
   public void ping( ) {
     try {
@@ -153,9 +141,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedOperation".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#deprecatedOperation}
    */
   @Deprecated
   public String deprecatedOperation( ) {
@@ -169,9 +155,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedContext".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#deprecatedContext}
    */
   public String deprecatedContext( DeprecatedContext pContext ) {
     try {
@@ -184,9 +168,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedBeanParam".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#deprecatedBeanParam}
    */
   public void deprecatedBeanParam( BeanParameter pBeanParam ) {
     try {
@@ -199,9 +181,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedParams".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#deprecatedParams}
    */
   @Deprecated
   public String deprecatedParams( @Deprecated int pParam1 ) {
@@ -215,9 +195,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedBody".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#deprecatedBody}
    */
   public String deprecatedBody( @Deprecated String pBody ) {
     try {
@@ -230,10 +208,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "deprectedComplexRequestBody".
-   * 
-   * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
-   * to deprecated.
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.ProductService#deprectedComplexRequestBody}
    */
   public void deprectedComplexRequestBody( @Deprecated Product pProduct ) {
     try {
@@ -246,9 +222,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "deprecatedComplexReturn".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.ProductService#deprecatedComplexReturn}
    */
   @Deprecated
   public Product deprecatedComplexReturn( ) {
@@ -262,9 +237,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "loadSpecificThings".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#loadSpecificThings}
    */
   public void loadSpecificThings( SpecialContext pContext ) {
     try {
@@ -277,9 +250,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "createChannelCodeFromObject".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.ProductService#createChannelCodeFromObject}
    */
   public ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode ) {
     try {
@@ -292,9 +264,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "addCurrencies".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#addCurrencies}
    */
   @SuppressWarnings("unchecked")
   public List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies ) {
@@ -308,9 +278,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "isCurrencySupported".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#isCurrencySupported}
    */
   public CurrencyCode isCurrencySupported( CurrencyCode pCurrency ) {
     try {
@@ -323,9 +291,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testCodeTypeUsage".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#testCodeTypeUsage}
    */
   public IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode ) {
     try {
@@ -338,9 +304,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testLocalBeanParamType".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#testLocalBeanParamType}
    */
   public String testLocalBeanParamType( LocalBeanParamType pBeanParam ) {
     try {
@@ -353,9 +317,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testExternalBeanParameterType".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.ProductService#testExternalBeanParameterType}
    */
   public String testExternalBeanParameterType( ParentBeanParamType pParent ) {
     try {
@@ -368,9 +331,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testChildBeanParameter".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#testChildBeanParameter}
    */
   public String testChildBeanParameter( ChildBeanParameterType pChild ) {
     try {
@@ -383,9 +344,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testDateQueryParams".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#testDateQueryParams}
    */
   public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
@@ -403,9 +362,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testDateQueryParamsBean".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.ProductService#testDateQueryParamsBean}
    */
   public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
     try {
@@ -419,9 +377,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testDateHeaderParams".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#testDateHeaderParams}
    */
   public void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
@@ -439,9 +395,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testDateHeaderParamsBean".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.ProductService#testDateHeaderParamsBean}
    */
   public void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
     try {
@@ -455,9 +410,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testTechnicalHeaderParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.ProductService#testTechnicalHeaderParam}
    */
   public String testTechnicalHeaderParam( String pReseller ) {
     try {
@@ -470,9 +424,8 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method "testTechnicalHeaderBean".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.ProductService#testTechnicalHeaderBean}
    */
   public String testTechnicalHeaderBean( TechnicalHeaderContext pContext ) {
     try {

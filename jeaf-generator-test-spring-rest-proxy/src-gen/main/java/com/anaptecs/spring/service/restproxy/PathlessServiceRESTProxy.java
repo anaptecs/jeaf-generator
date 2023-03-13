@@ -14,8 +14,8 @@ import com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor;
 import com.anaptecs.spring.service.PathlessService;
 
 /**
- * Class implements a proxy for an REST Service. The proxy is implemented as Spring services. This way to developers it
- * looks like a plain Spring Service.
+ * Class implements a proxy for REST Service {@link PathlessService}. The proxy is implemented as Spring services. This
+ * way to developers it looks like a plain Spring Service.
  * 
  * This implementation deals with everything that is required to call the external REST service including the following
  * things:

@@ -10,9 +10,8 @@ import com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory;
 import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
 
 /**
- * This class is the factory class the service provider implementation RESTProductServiceRESTProxyServiceProviderImpl().
- * 
- * 
+ * This class is the factory class the service provider implementation
+ * {@link RESTProductServiceRESTProxyServiceProviderImpl}.
  */
 @com.anaptecs.jeaf.core.annotations.ServiceProviderFactory
 public final class RESTProductServiceRESTProxyServiceProviderFactory extends ServiceProviderFactory {

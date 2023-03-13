@@ -49,7 +49,7 @@ import com.anaptecs.spring.service.LocalBeanParamType;
 import com.anaptecs.spring.service.ProductService;
 
 /**
- * Class implements a service provider that acts as proxy for REST service ProductService.
+ * Class implements a service provider that acts as proxy for REST service {@link ProductService}.
  */
 public final class ProductServiceRESTProxyServiceProviderImpl
     implements ServiceProviderImplementation, ProductServiceRESTProxyServiceProvider {

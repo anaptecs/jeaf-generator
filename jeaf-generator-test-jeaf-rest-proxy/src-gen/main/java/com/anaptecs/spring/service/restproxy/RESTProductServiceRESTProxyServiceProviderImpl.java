@@ -62,7 +62,7 @@ import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
 /**
- * Class implements a service provider that acts as proxy for REST service RESTProductService.
+ * Class implements a service provider that acts as proxy for REST service {@link RESTProductService}.
  */
 public final class RESTProductServiceRESTProxyServiceProviderImpl
     implements ServiceProviderImplementation, RESTProductServiceRESTProxyServiceProvider {

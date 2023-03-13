@@ -17,7 +17,7 @@ import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 import com.anaptecs.spring.service.PathlessService;
 
 /**
- * Class implements a service provider that acts as proxy for REST service PathlessService.
+ * Class implements a service provider that acts as proxy for REST service {@link PathlessService}.
  */
 public final class PathlessServiceRESTProxyServiceProviderImpl
     implements ServiceProviderImplementation, PathlessServiceRESTProxyServiceProvider {

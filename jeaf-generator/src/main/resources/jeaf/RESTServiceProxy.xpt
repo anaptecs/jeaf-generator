@@ -42,9 +42,7 @@ import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
 import com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory;
 
 /**
- * This class is the factory class the service provider implementation «name»RESTProxyServiceProviderImpl().
- * 
- * «getComment()»
+ * This class is the factory class the service provider implementation {@link «name»RESTProxyServiceProviderImpl}.
  */
 @com.anaptecs.jeaf.core.annotations.ServiceProviderFactory
 public final class «name»RESTProxyServiceProviderFactory extends ServiceProviderFactory {
@@ -91,7 +89,7 @@ import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
 import com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory;
 
 /**
- * Class implements a service provider that acts as proxy for REST service «name».
+ * Class implements a service provider that acts as proxy for REST service {@link «this.fqn()»}.
  */
 public final class «name»RESTProxyServiceProviderImpl implements com.anaptecs.jeaf.core.spi.ServiceProviderImplementation, «packageName()».restproxy.«name»RESTProxyServiceProvider {
   /**
@@ -146,7 +144,7 @@ public final class «name»RESTProxyServiceProviderImpl implements com.anaptecs.
 package «packageName()».restproxy;
 
 /**
- * Class implements a proxy for an REST Service. The proxy is implemented as Spring services. This way to developers it
+ * Class implements a proxy for REST Service {@link «this.fqn()»}. The proxy is implemented as Spring services. This way to developers it
  * looks like a plain Spring Service.
  * 
  * This implementation deals with everything that is required to call the external REST service including the following

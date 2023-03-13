@@ -45,8 +45,8 @@ import com.anaptecs.spring.service.LocalBeanParamType;
 import com.anaptecs.spring.service.ProductService;
 
 /**
- * Class implements a proxy for an REST Service. The proxy is implemented as Spring services. This way to developers it
- * looks like a plain Spring Service.
+ * Class implements a proxy for REST Service {@link ProductService}. The proxy is implemented as Spring services. This
+ * way to developers it looks like a plain Spring Service.
  * 
  * This implementation deals with everything that is required to call the external REST service including the following
  * things:
