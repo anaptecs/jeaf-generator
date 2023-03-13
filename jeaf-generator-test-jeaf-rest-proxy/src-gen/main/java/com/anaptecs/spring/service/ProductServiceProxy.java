@@ -62,7 +62,7 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
   }
 
   /**
-   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#getProducts()}
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.ProductService#getProducts}
    */
   @SuppressWarnings("unchecked")
   public List<Product> getProducts( ) {

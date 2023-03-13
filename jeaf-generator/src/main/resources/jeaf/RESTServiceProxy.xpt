@@ -93,20 +93,6 @@ import com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory;
  */
 public final class «name»RESTProxyServiceProviderImpl implements com.anaptecs.jeaf.core.spi.ServiceProviderImplementation, «packageName()».restproxy.«name»RESTProxyServiceProvider {
   /**
-   * Reference to the object that identifies this component. The reference is never null.
-   */
-  private static final com.anaptecs.jeaf.xfun.api.common.ComponentID COMPONENT_ID;
-
-  /**
-   * Static initializer is used to create the components ComponentID object and its trace object.
-   */
-  static {
-    // Create Component ID and trace object.
-    Package lBasePackage = «name»RESTProxyServiceProviderImpl.class.getPackage();
-    COMPONENT_ID = new com.anaptecs.jeaf.xfun.api.common.ComponentID("«name»RESTProxyServiceProviderImpl", lBasePackage.getName());
-  }
-
-  /**
    * REST request executor is used to send REST request to the proxied REST resource. Depending on the Spring
    * configuration the matching implementation will be injected here.
    */
