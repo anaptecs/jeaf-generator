@@ -7,9 +7,6 @@ package com.anaptecs.jeaf.accounting.messaging;
 
 import com.anaptecs.jeaf.core.api.ServiceProvider;
 
-/**
- * 
- */
 public interface MessagingServiceProvider extends ServiceProvider {
   /**
    * @param pMessage

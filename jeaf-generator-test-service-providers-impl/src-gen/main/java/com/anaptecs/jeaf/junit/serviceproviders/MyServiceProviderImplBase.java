@@ -10,9 +10,6 @@ import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 import com.anaptecs.jeaf.xfun.api.config.Configuration;
 
-/**
- * 
- */
 abstract class MyServiceProviderImplBase implements ServiceProviderImplementation, MyServiceProvider {
   /**
    * Reference to the object that identifies this component. The reference is never null.

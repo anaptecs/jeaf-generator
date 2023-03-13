@@ -12,9 +12,7 @@
 «getFileHeader()»
 package «packageName()»;
 
-/**
- * «getComment()»
- */
+«EXPAND functions::Javadoc::JavadocForType»
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 public interface «name» extends «IF generalization.size > 0» «this.getAllExtendedInterfaces()» «ELSE»com.anaptecs.jeaf.core.api.ServiceProvider«ENDIF» {
 
@@ -35,9 +33,7 @@ package «packageName()»;
 
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 
-/**
- * «getComment()»
- */
+«EXPAND functions::Javadoc::JavadocForType»
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 abstract class «name»Base implements com.anaptecs.jeaf.core.spi.ServiceProviderImplementation, «this.getImplementedInterfaceNames()» {
 	«IF this.ownedAttribute.size > 0»
@@ -88,12 +84,7 @@ abstract class «name»Base implements com.anaptecs.jeaf.core.spi.ServiceProvide
 «getFileHeader()»
 package «packageName()»;
 
-/**
- * This class is the base class of the service provider implementation «this.name».
- *
- * «getComment()»
- */
-
+«EXPAND functions::Javadoc::JavadocForType»
 final class «name» extends «name»Base {
   /**
    * Constructor has reduced visibility in order to ensure that all service provider implementations are created through the factory.
@@ -144,9 +135,7 @@ import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
 import com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory;
 
 /**
- * This class is the factory class the service provider implementation «this.name».
- * 
- * «getComment()»
+ * This class is the factory class the service provider implementation {@link «name»}.
  */
 @com.anaptecs.jeaf.core.annotations.ServiceProviderFactory
 public final class «this.getServiceProviderFactoryName()» extends ServiceProviderFactory {

@@ -7,9 +7,6 @@ package com.anaptecs.jeaf.junit.serviceproviders;
 
 import com.anaptecs.jeaf.core.api.ServiceProvider;
 
-/**
- * 
- */
 public interface MyServiceProvider extends ServiceProvider {
   /**
    * @return boolean

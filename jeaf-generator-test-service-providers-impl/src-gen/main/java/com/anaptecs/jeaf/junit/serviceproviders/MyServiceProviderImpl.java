@@ -9,11 +9,6 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.SystemException;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 
-/**
- * This class is the base class of the service provider implementation MyServiceProviderImpl.
- *
- * 
- */
 final class MyServiceProviderImpl extends MyServiceProviderImplBase {
   /**
    * Constructor has reduced visibility in order to ensure that all service provider implementations are created through

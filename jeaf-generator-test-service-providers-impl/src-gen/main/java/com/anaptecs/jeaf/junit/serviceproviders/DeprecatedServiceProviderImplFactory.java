@@ -10,9 +10,7 @@ import com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory;
 import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
 
 /**
- * This class is the factory class the service provider implementation DeprecatedServiceProviderImpl.
- * 
- * 
+ * This class is the factory class the service provider implementation {@link DeprecatedServiceProviderImpl}.
  */
 @com.anaptecs.jeaf.core.annotations.ServiceProviderFactory
 public final class DeprecatedServiceProviderImplFactory extends ServiceProviderFactory {

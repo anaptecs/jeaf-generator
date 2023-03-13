@@ -7,9 +7,6 @@ package com.anaptecs.jeaf.junit.serviceproviders;
 
 import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
 
-/**
- * 
- */
 @Deprecated
 abstract class DeprecatedServiceProviderImplBase implements ServiceProviderImplementation, DeprecatedServiceProvider {
   /**
