@@ -5,10 +5,6 @@
  */
 package com.anaptecs.jeaf.accounting;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class AccountInfo extends AccountInfoBase {
   /**
    * Default serial version uid.
@@ -69,7 +65,6 @@ public class AccountInfo extends AccountInfoBase {
   }
 
   /**
-   * 
    * @return {@link Double}
    */
   @Override

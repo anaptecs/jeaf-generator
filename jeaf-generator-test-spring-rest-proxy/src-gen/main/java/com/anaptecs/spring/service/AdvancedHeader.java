@@ -9,10 +9,6 @@ import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class AdvancedHeader {
   /**
    * Constant for the name of attribute "bookingID".
@@ -29,19 +25,10 @@ public class AdvancedHeader {
    */
   public static final String DOUBLECODE = "doubleCode";
 
-  /**
-   * 
-   */
   private BookingID bookingID;
 
-  /**
-   * 
-   */
   private BookingCode bookingCode;
 
-  /**
-   * 
-   */
   private DoubleCode doubleCode;
 
   /**
@@ -84,23 +71,13 @@ public class AdvancedHeader {
   }
 
   /**
-   * Class implements builder to create a new instance of class AdvancedHeader. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>AdvancedHeader</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private BookingID bookingID;
 
-    /**
-     * 
-     */
     private BookingCode bookingCode;
 
-    /**
-     * 
-     */
     private DoubleCode doubleCode;
 
     /**
@@ -122,9 +99,10 @@ public class AdvancedHeader {
     }
 
     /**
-     * Method sets the attribute "bookingID".
+     * Method sets attribute {@link #bookingID}.<br/>
      * 
-     * @param pBookingID Value to which the attribute "bookingID" should be set.
+     * @param pBookingID Value to which {@link #bookingID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingID( BookingID pBookingID ) {
       // Assign value to attribute
@@ -133,9 +111,10 @@ public class AdvancedHeader {
     }
 
     /**
-     * Method sets the attribute "bookingCode".
+     * Method sets attribute {@link #bookingCode}.<br/>
      * 
-     * @param pBookingCode Value to which the attribute "bookingCode" should be set.
+     * @param pBookingCode Value to which {@link #bookingCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingCode( BookingCode pBookingCode ) {
       // Assign value to attribute
@@ -144,9 +123,10 @@ public class AdvancedHeader {
     }
 
     /**
-     * Method sets the attribute "doubleCode".
+     * Method sets attribute {@link #doubleCode}.<br/>
      * 
-     * @param pDoubleCode Value to which the attribute "doubleCode" should be set.
+     * @param pDoubleCode Value to which {@link #doubleCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDoubleCode( DoubleCode pDoubleCode ) {
       // Assign value to attribute
@@ -166,20 +146,18 @@ public class AdvancedHeader {
   }
 
   /**
-   * Method returns the attribute "bookingID".
+   * Method returns attribute {@link #bookingID}.<br/>
    * 
-   * 
-   * @return BookingID Value to which the attribute "bookingID" is set.
+   * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
   public BookingID getBookingID( ) {
     return bookingID;
   }
 
   /**
-   * Method sets the attribute "bookingID".
+   * Method sets attribute {@link #bookingID}.<br/>
    * 
-   * 
-   * @param pBookingID Value to which the attribute "bookingID" should be set.
+   * @param pBookingID Value to which {@link #bookingID} should be set.
    */
   public void setBookingID( BookingID pBookingID ) {
     // Assign value to attribute
@@ -187,20 +165,18 @@ public class AdvancedHeader {
   }
 
   /**
-   * Method returns the attribute "bookingCode".
+   * Method returns attribute {@link #bookingCode}.<br/>
    * 
-   * 
-   * @return BookingCode Value to which the attribute "bookingCode" is set.
+   * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
   public BookingCode getBookingCode( ) {
     return bookingCode;
   }
 
   /**
-   * Method sets the attribute "bookingCode".
+   * Method sets attribute {@link #bookingCode}.<br/>
    * 
-   * 
-   * @param pBookingCode Value to which the attribute "bookingCode" should be set.
+   * @param pBookingCode Value to which {@link #bookingCode} should be set.
    */
   public void setBookingCode( BookingCode pBookingCode ) {
     // Assign value to attribute
@@ -208,20 +184,18 @@ public class AdvancedHeader {
   }
 
   /**
-   * Method returns the attribute "doubleCode".
+   * Method returns attribute {@link #doubleCode}.<br/>
    * 
-   * 
-   * @return DoubleCode Value to which the attribute "doubleCode" is set.
+   * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
    */
   public DoubleCode getDoubleCode( ) {
     return doubleCode;
   }
 
   /**
-   * Method sets the attribute "doubleCode".
+   * Method sets attribute {@link #doubleCode}.<br/>
    * 
-   * 
-   * @param pDoubleCode Value to which the attribute "doubleCode" should be set.
+   * @param pDoubleCode Value to which {@link #doubleCode} should be set.
    */
   public void setDoubleCode( DoubleCode pDoubleCode ) {
     // Assign value to attribute

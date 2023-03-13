@@ -5,10 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class VersionedObjectSoftLink extends VersionedObjectSoftLinkBase {
   /**
    * Default serial version uid.

@@ -27,9 +27,8 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * Class represents the TxNeverComponent component.
+ * Class represents the component TxNeverComponent
  *
- * 
  */
 public final class TxNeverComponentComponent implements ComponentImplementation {
   /**

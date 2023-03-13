@@ -7,10 +7,6 @@ package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingID {
   /**
@@ -38,29 +34,14 @@ public class BookingID {
    */
   public static final String BOOKINGCODE = "bookingCode";
 
-  /**
-   * 
-   */
   private final transient String publicBookingID;
 
-  /**
-   * 
-   */
   private final String referenceID;
 
-  /**
-   * 
-   */
   private final String externalRefID;
 
-  /**
-   * 
-   */
   private final InventoryType inventory;
 
-  /**
-   * 
-   */
   private final BookingCode bookingCode;
 
   /**
@@ -124,33 +105,17 @@ public class BookingID {
   }
 
   /**
-   * Class implements builder to create a new instance of class BookingID. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>BookingID</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String publicBookingID;
 
-    /**
-     * 
-     */
     private String referenceID;
 
-    /**
-     * 
-     */
     private String externalRefID;
 
-    /**
-     * 
-     */
     private InventoryType inventory;
 
-    /**
-     * 
-     */
     private BookingCode bookingCode;
 
     /**
@@ -174,9 +139,10 @@ public class BookingID {
     }
 
     /**
-     * Method sets the attribute "publicBookingID".
+     * Method sets attribute {@link #publicBookingID}.<br/>
      * 
-     * @param pPublicBookingID Value to which the attribute "publicBookingID" should be set.
+     * @param pPublicBookingID Value to which {@link #publicBookingID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPublicBookingID( String pPublicBookingID ) {
       // Assign value to attribute
@@ -185,9 +151,10 @@ public class BookingID {
     }
 
     /**
-     * Method sets the attribute "referenceID".
+     * Method sets attribute {@link #referenceID}.<br/>
      * 
-     * @param pReferenceID Value to which the attribute "referenceID" should be set.
+     * @param pReferenceID Value to which {@link #referenceID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReferenceID( String pReferenceID ) {
       // Assign value to attribute
@@ -196,9 +163,10 @@ public class BookingID {
     }
 
     /**
-     * Method sets the attribute "externalRefID".
+     * Method sets attribute {@link #externalRefID}.<br/>
      * 
-     * @param pExternalRefID Value to which the attribute "externalRefID" should be set.
+     * @param pExternalRefID Value to which {@link #externalRefID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setExternalRefID( String pExternalRefID ) {
       // Assign value to attribute
@@ -207,9 +175,10 @@ public class BookingID {
     }
 
     /**
-     * Method sets the association "inventory".
+     * Method sets association {@link #inventory}.<br/>
      * 
-     * @param pInventory InventoryType to which the association "inventory" should be set.
+     * @param pInventory Value to which {@link #inventory} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInventory( InventoryType pInventory ) {
       inventory = pInventory;
@@ -217,9 +186,10 @@ public class BookingID {
     }
 
     /**
-     * Method sets the association "bookingCode".
+     * Method sets association {@link #bookingCode}.<br/>
      * 
-     * @param pBookingCode BookingCode to which the association "bookingCode" should be set.
+     * @param pBookingCode Value to which {@link #bookingCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingCode( BookingCode pBookingCode ) {
       bookingCode = pBookingCode;
@@ -237,50 +207,45 @@ public class BookingID {
   }
 
   /**
-   * Method returns the attribute "publicBookingID".
+   * Method returns attribute {@link #publicBookingID}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "publicBookingID" is set.
+   * @return {@link String} Value to which {@link #publicBookingID} is set.
    */
   public String getPublicBookingID( ) {
     return publicBookingID;
   }
 
   /**
-   * Method returns the attribute "referenceID".
+   * Method returns attribute {@link #referenceID}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "referenceID" is set.
+   * @return {@link String} Value to which {@link #referenceID} is set.
    */
   public String getReferenceID( ) {
     return referenceID;
   }
 
   /**
-   * Method returns the attribute "externalRefID".
+   * Method returns attribute {@link #externalRefID}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "externalRefID" is set.
+   * @return {@link String} Value to which {@link #externalRefID} is set.
    */
   public String getExternalRefID( ) {
     return externalRefID;
   }
 
   /**
-   * Method returns the association "inventory".
+   * Method returns association {@link #inventory}.<br/>
    * 
-   *
-   * @return InventoryType InventoryType to which the association "inventory" is set.
+   * @return {@link InventoryType} Value to which {@link #inventory} is set.
    */
   public InventoryType getInventory( ) {
     return inventory;
   }
 
   /**
-   * Method returns the association "bookingCode".
+   * Method returns association {@link #bookingCode}.<br/>
    * 
-   *
-   * @return BookingCode BookingCode to which the association "bookingCode" is set.
+   * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
   public BookingCode getBookingCode( ) {
     return bookingCode;

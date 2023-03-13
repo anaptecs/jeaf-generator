@@ -16,10 +16,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObject {
   /**
    * Default serial version uid.
@@ -54,26 +50,14 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
    */
   public static final String READONLYDEFAULT = "readonlyDefault";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   @Deprecated
   private boolean outdated;
 
-  /**
-   * 
-   */
   @Deprecated
   private DeprecatedServiceObject deprecatedRef;
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<ValidationTestObject> deprecatedRefs;
 
@@ -118,31 +102,20 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
    * only attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private String name;
 
-    /**
-     * 
-     */
     @Deprecated
     private boolean outdated;
 
-    /**
-     * 
-     */
     @Deprecated
     private DeprecatedServiceObject deprecatedRef;
 
-    /**
-     * 
-     */
     @Deprecated
     private Set<ValidationTestObject> deprecatedRefs;
 
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>4711</code>
      */
     private int readonlyDefault = 4711;
 
@@ -168,9 +141,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setName( String pName ) {
       // Assign value to attribute
@@ -179,9 +153,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     }
 
     /**
-     * Method sets the attribute "outdated".
+     * Method sets attribute {@link #outdated}.<br/>
      * 
-     * @param pOutdated Value to which the attribute "outdated" should be set.
+     * @param pOutdated Value to which {@link #outdated} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public BuilderBase setOutdated( boolean pOutdated ) {
@@ -191,9 +166,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     }
 
     /**
-     * Method sets the association "deprecatedRef".
+     * Method sets association {@link #deprecatedRef}.<br/>
      * 
-     * @param pDeprecatedRef DeprecatedServiceObject to which the association "deprecatedRef" should be set.
+     * @param pDeprecatedRef Value to which {@link #deprecatedRef} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public BuilderBase setDeprecatedRef( DeprecatedServiceObject pDeprecatedRef ) {
@@ -202,9 +178,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     }
 
     /**
-     * Method sets the association "deprecatedRefs".
+     * Method sets association {@link #deprecatedRefs}.<br/>
      * 
-     * @param pDeprecatedRefs Collection with objects to which the association should be set.
+     * @param pDeprecatedRefs Collection to which {@link #deprecatedRefs} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public BuilderBase setDeprecatedRefs( Set<ValidationTestObject> pDeprecatedRefs ) {
@@ -219,9 +196,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     }
 
     /**
-     * Method sets the attribute "readonlyDefault".
+     * Method sets attribute {@link #readonlyDefault}.<br/>
      * 
-     * @param pReadonlyDefault Value to which the attribute "readonlyDefault" should be set.
+     * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setReadonlyDefault( int pReadonlyDefault ) {
       // Assign value to attribute
@@ -254,20 +232,18 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -275,10 +251,9 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method returns the attribute "outdated".
+   * Method returns attribute {@link #outdated}.<br/>
    * 
-   * 
-   * @return Boolean Value to which the attribute "outdated" is set.
+   * @return boolean Value to which {@link #outdated} is set.
    */
   @Deprecated
   public boolean getOutdated( ) {
@@ -286,10 +261,9 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method sets the attribute "outdated".
+   * Method sets attribute {@link #outdated}.<br/>
    * 
-   * 
-   * @param pOutdated Value to which the attribute "outdated" should be set.
+   * @param pOutdated Value to which {@link #outdated} should be set.
    */
   @Deprecated
   public void setOutdated( boolean pOutdated ) {
@@ -298,10 +272,9 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method returns the association "deprecatedRef".
+   * Method returns association {@link #deprecatedRef}.<br/>
    * 
-   *
-   * @return DeprecatedServiceObject DeprecatedServiceObject to which the association "deprecatedRef" is set.
+   * @return {@link DeprecatedServiceObject} Value to which {@link #deprecatedRef} is set.
    */
   @Deprecated
   public DeprecatedServiceObject getDeprecatedRef( ) {
@@ -309,10 +282,9 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method sets the association "deprecatedRef".
+   * Method sets association {@link #deprecatedRef}.<br/>
    * 
-   * 
-   * @param pDeprecatedRef DeprecatedServiceObject to which the association "deprecatedRef" should be set.
+   * @param pDeprecatedRef Value to which {@link #deprecatedRef} should be set.
    */
   @Deprecated
   public void setDeprecatedRef( DeprecatedServiceObject pDeprecatedRef ) {
@@ -320,8 +292,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method unsets the association "deprecatedRef".
-   * 
+   * Method unsets {@link #deprecatedRef}.
    */
   @Deprecated
   public final void unsetDeprecatedRef( ) {
@@ -329,11 +300,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method returns the association "deprecatedRefs".
+   * Method returns association {@link #deprecatedRefs}.<br/>
    * 
-   *
-   * @return Collection All ValidationTestObject objects that belong to the association "deprecatedRefs". The method
-   * never returns null and the returned collection is unmodifiable.
+   * @return {@link Set<ValidationTestObject>} Value to which {@link #deprecatedRefs} is set. The method never returns
+   * null and the returned collection is unmodifiable.
    */
   @Deprecated
   public Set<ValidationTestObject> getDeprecatedRefs( ) {
@@ -342,11 +312,9 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method adds the passed ValidationTestObject object to the association "deprecatedRefs".
+   * Method adds the passed object to {@link #deprecatedRefs}.
    * 
-   * 
-   * @param pDeprecatedRefs Object that should be added to the association "deprecatedRefs". The parameter must not be
-   * null.
+   * @param pDeprecatedRefs Object that should be added to {@link #deprecatedRefs}. The parameter must not be null.
    */
   @Deprecated
   public void addToDeprecatedRefs( ValidationTestObject pDeprecatedRefs ) {
@@ -357,11 +325,10 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method adds all passed objects to the association "deprecatedRefs".
+   * Method adds all passed objects to {@link #deprecatedRefs}.
    * 
-   * 
-   * @param pDeprecatedRefs Collection with all objects that should be added to the association "deprecatedRefs". The
-   * parameter must not be null.
+   * @param pDeprecatedRefs Collection with all objects that should be added to {@link #deprecatedRefs}. The parameter
+   * must not be null.
    */
   @Deprecated
   public void addToDeprecatedRefs( Collection<ValidationTestObject> pDeprecatedRefs ) {
@@ -374,11 +341,9 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method removes the passed ValidationTestObject object from the association "deprecatedRefs".
+   * Method removes the passed object from {@link #deprecatedRefs}.<br/>
    * 
-   * 
-   * @param pDeprecatedRefs Object that should be removed from the association "deprecatedRefs". The parameter must not
-   * be null.
+   * @param pDeprecatedRefs Object that should be removed from {@link #deprecatedRefs}. The parameter must not be null.
    */
   @Deprecated
   public void removeFromDeprecatedRefs( ValidationTestObject pDeprecatedRefs ) {
@@ -389,8 +354,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method removes all objects from the association "deprecatedRefs".
-   * 
+   * Method removes all objects from {@link #deprecatedRefs}.
    */
   @Deprecated
   public void clearDeprecatedRefs( ) {
@@ -399,26 +363,25 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
-   * Method returns the attribute "readonlyDefault".
+   * Method returns attribute {@link #readonlyDefault}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "readonlyDefault" is set.
+   * @return int Value to which {@link #readonlyDefault} is set.
    */
   public int getReadonlyDefault( ) {
     return readonlyDefault;
   }
 
   /**
-  * 
-  */
+   */
   @Deprecated
   public abstract void doSomethingDeprecated( );
 
   /**
-   * 
    * @param pParam1
-   * @param pParam2
-   * @return {@link String}
+   * @param pParam2 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public abstract String doSomething( int pParam1, @Deprecated int pParam2 );

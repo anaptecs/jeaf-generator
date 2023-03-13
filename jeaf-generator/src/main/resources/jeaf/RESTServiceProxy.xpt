@@ -42,9 +42,7 @@ import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
 import com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory;
 
 /**
- * This class is the factory class the service provider implementation «name»RESTProxyServiceProviderImpl().
- * 
- * «getComment()»
+ * This class is the factory class the service provider implementation {@link «name»RESTProxyServiceProviderImpl}.
  */
 @com.anaptecs.jeaf.core.annotations.ServiceProviderFactory
 public final class «name»RESTProxyServiceProviderFactory extends ServiceProviderFactory {
@@ -91,23 +89,9 @@ import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
 import com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory;
 
 /**
- * Class implements a service provider that acts as proxy for REST service «name».
+ * Class implements a service provider that acts as proxy for REST service {@link «this.fqn()»}.
  */
 public final class «name»RESTProxyServiceProviderImpl implements com.anaptecs.jeaf.core.spi.ServiceProviderImplementation, «packageName()».restproxy.«name»RESTProxyServiceProvider {
-  /**
-   * Reference to the object that identifies this component. The reference is never null.
-   */
-  private static final com.anaptecs.jeaf.xfun.api.common.ComponentID COMPONENT_ID;
-
-  /**
-   * Static initializer is used to create the components ComponentID object and its trace object.
-   */
-  static {
-    // Create Component ID and trace object.
-    Package lBasePackage = «name»RESTProxyServiceProviderImpl.class.getPackage();
-    COMPONENT_ID = new com.anaptecs.jeaf.xfun.api.common.ComponentID("«name»RESTProxyServiceProviderImpl", lBasePackage.getName());
-  }
-
   /**
    * REST request executor is used to send REST request to the proxied REST resource. Depending on the Spring
    * configuration the matching implementation will be injected here.
@@ -146,7 +130,7 @@ public final class «name»RESTProxyServiceProviderImpl implements com.anaptecs.
 package «packageName()».restproxy;
 
 /**
- * Class implements a proxy for an REST Service. The proxy is implemented as Spring services. This way to developers it
+ * Class implements a proxy for REST Service {@link «this.fqn()»}. The proxy is implemented as Spring services. This way to developers it
  * looks like a plain Spring Service.
  * 
  * This implementation deals with everything that is required to call the external REST service including the following
@@ -185,7 +169,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 
 
 «DEFINE RESTProxyOperationOperation(RESTResource service) FOR RESTOperation»
-    «this.getJavadoc()» 
+    «EXPAND functions::Javadoc::JavadocForOperation»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
     @Override

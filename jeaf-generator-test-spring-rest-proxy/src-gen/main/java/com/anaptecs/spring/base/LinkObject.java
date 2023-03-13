@@ -5,19 +5,12 @@
  */
 package com.anaptecs.spring.base;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class LinkObject {
   /**
    * Constant for the name of attribute "href".
    */
   public static final String HREF = "href";
 
-  /**
-   * 
-   */
   private String href;
 
   /**
@@ -58,13 +51,9 @@ public class LinkObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class LinkObject. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>LinkObject</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String href;
 
     /**
@@ -84,9 +73,10 @@ public class LinkObject {
     }
 
     /**
-     * Method sets the attribute "href".
+     * Method sets attribute {@link #href}.<br/>
      * 
-     * @param pHref Value to which the attribute "href" should be set.
+     * @param pHref Value to which {@link #href} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setHref( String pHref ) {
       // Assign value to attribute
@@ -105,20 +95,18 @@ public class LinkObject {
   }
 
   /**
-   * Method returns the attribute "href".
+   * Method returns attribute {@link #href}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "href" is set.
+   * @return {@link String} Value to which {@link #href} is set.
    */
   public String getHref( ) {
     return href;
   }
 
   /**
-   * Method sets the attribute "href".
+   * Method sets attribute {@link #href}.<br/>
    * 
-   * 
-   * @param pHref Value to which the attribute "href" should be set.
+   * @param pHref Value to which {@link #href} should be set.
    */
   public void setHref( String pHref ) {
     // Assign value to attribute

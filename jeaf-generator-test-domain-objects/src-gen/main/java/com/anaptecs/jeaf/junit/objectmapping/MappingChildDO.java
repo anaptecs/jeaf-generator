@@ -7,10 +7,6 @@ package com.anaptecs.jeaf.junit.objectmapping;
 
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class MappingChildDO extends MappingParentDO {
   /**
    * Default serial version uid.
@@ -22,9 +18,6 @@ public class MappingChildDO extends MappingParentDO {
    */
   public static final String VALUE = "value";
 
-  /**
-   * 
-   */
   private int value;
 
   /**
@@ -43,20 +36,18 @@ public class MappingChildDO extends MappingParentDO {
   }
 
   /**
-   * Method returns the attribute "value".
+   * Method returns attribute {@link #value}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "value" is set.
+   * @return int Value to which {@link #value} is set.
    */
   public int getValue( ) {
     return value;
   }
 
   /**
-   * Method sets the attribute "value".
+   * Method sets attribute {@link #value}.<br/>
    * 
-   * 
-   * @param pValue Value to which the attribute "value" should be set.
+   * @param pValue Value to which {@link #value} should be set.
    */
   public void setValue( int pValue ) {
     // Assign value to attribute

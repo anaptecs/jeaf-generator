@@ -38,13 +38,8 @@ public final class SwiftAccountingServiceProxy extends ServiceProxy implements S
   }
 
   /**
-   * Generated proxy implementation for method "performBooking".
-   * 
-   * Method performs a booking of the passed amount. Therefore besides the booking also the source and target account
-   * have to be passed.
-   * 
-   * @param pBooking Booking that should be performed. The parameter must not be null and both, the source and target
-   * account have to be set.
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.accounting.impl.swift.SwiftAccountingService#performBooking}
    */
   public void performBooking( Booking pBooking ) {
     try {

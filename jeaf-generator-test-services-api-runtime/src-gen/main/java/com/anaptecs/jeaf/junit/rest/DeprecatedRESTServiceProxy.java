@@ -38,9 +38,7 @@ public final class DeprecatedRESTServiceProxy extends ServiceProxy implements De
   }
 
   /**
-   * Generated proxy implementation for method "doSomething".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.rest.DeprecatedRESTService#doSomething}
    */
   public void doSomething( ) {
     try {

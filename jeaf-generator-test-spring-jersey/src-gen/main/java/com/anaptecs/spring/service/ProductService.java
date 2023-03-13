@@ -32,83 +32,71 @@ import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCodeType;
 import com.anaptecs.spring.base.TechnicalHeaderContext;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public interface ProductService {
   /**
    * Operation returns all available product.
    * 
-   * 
-   * @return {@link Product}
+   * @return {@link List<Product>}
    */
   List<Product> getProducts( );
 
   /**
-   * 
    * @param pProductID
    * @return {@link Product}
    */
   Product getProduct( @NotEmpty String pProductID );
 
   /**
-   * 
    * @param pProduct
-   * @return {@link Boolean}
+   * @return boolean
    */
   boolean createProduct( Product pProduct );
 
   /**
-   * 
    * @param pContext
    * @return {@link Sortiment}
    */
   Sortiment getSortiment( Context pContext );
 
   /**
-   * 
    * @param pChannelCode
    * @return {@link ChannelCode}
    */
   ChannelCode createChannelCode( @NotBlank String pChannelCode );
 
   /**
-  * 
-  */
+   */
   void ping( );
 
   /**
-   * 
    * @return {@link String}
    */
   @Deprecated
   String deprecatedOperation( );
 
   /**
-   * 
    * @param pContext
    * @return {@link String}
    */
   String deprecatedContext( DeprecatedContext pContext );
 
   /**
-   * 
    * @param pBeanParam
    */
   void deprecatedBeanParam( BeanParameter pBeanParam );
 
   /**
-   * 
-   * @param pParam1
-   * @return {@link String}
+   * @param pParam1 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   String deprecatedParams( @Deprecated int pParam1 );
 
   /**
-   * 
-   * @param pBody
+   * @param pBody <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    * @return {@link String}
    */
   String deprecatedBody( @Deprecated String pBody );
@@ -117,77 +105,66 @@ public interface ProductService {
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
    * to deprecated.
    * 
-   * 
-   * @param pProduct
+   * @param pProduct <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   void deprectedComplexRequestBody( @Deprecated Product pProduct );
 
   /**
-   * 
-   * @return {@link Product}
+   * @return {@link Product} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   Product deprecatedComplexReturn( );
 
   /**
-   * 
    * @param pContext
    */
   void loadSpecificThings( SpecialContext pContext );
 
   /**
-   * 
    * @param pChannelCode Channel Code that should be created.
-   * 
    * @return {@link ChannelCode} Created channel code
-   * 
    */
   ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode );
 
   /**
-   * 
    * @param pCurrencies
-   * @return {@link CurrencyCode}
+   * @return {@link List<CurrencyCode>}
    */
   List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies );
 
   /**
-   * 
    * @param pCurrency
    * @return {@link CurrencyCode}
    */
   CurrencyCode isCurrencySupported( CurrencyCode pCurrency );
 
   /**
-   * 
    * @param pStringCode
    * @return {@link IntegerCodeType}
    */
   IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode );
 
   /**
-   * 
    * @param pBeanParam
    * @return {@link String}
    */
   String testLocalBeanParamType( LocalBeanParamType pBeanParam );
 
   /**
-   * 
    * @param pParent
    * @return {@link String}
    */
   String testExternalBeanParameterType( ParentBeanParamType pParent );
 
   /**
-   * 
    * @param pChild
    * @return {@link String}
    */
   String testChildBeanParameter( ChildBeanParameterType pChild );
 
   /**
-   * 
    * @param pPath
    * @param pStartTimestamp
    * @param pStartTime
@@ -205,14 +182,12 @@ public interface ProductService {
       java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate );
 
   /**
-   * 
    * @param pPath
    * @param pQueryParams
    */
   void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams );
 
   /**
-   * 
    * @param pPath
    * @param pOffsetDateTime
    * @param pOffsetTime
@@ -230,14 +205,12 @@ public interface ProductService {
       java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate );
 
   /**
-   * 
    * @param pPath
    * @param pHeaderParams
    */
   void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams );
 
   /**
-   * 
    * @param pReseller
    * @param pAuthenticationToken
    * @return {@link String}
@@ -245,7 +218,6 @@ public interface ProductService {
   String testTechnicalHeaderParam( String pReseller );
 
   /**
-   * 
    * @param pContext
    * @return {@link String}
    */

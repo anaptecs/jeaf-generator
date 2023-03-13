@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ComplexArrayServiceObject implements ServiceObject {
   /**
    * Default serial version uid.
@@ -26,9 +22,6 @@ public class ComplexArrayServiceObject implements ServiceObject {
    */
   public static final String CLASSBS = "classBs";
 
-  /**
-   * 
-   */
   private ClassB[] classBs;
 
   /**
@@ -71,13 +64,9 @@ public class ComplexArrayServiceObject implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class ComplexArrayServiceObject. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ComplexArrayServiceObject</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private ClassB[] classBs;
 
     /**
@@ -98,9 +87,10 @@ public class ComplexArrayServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "classBs".
+     * Method sets attribute {@link #classBs}.<br/>
      * 
-     * @param pClassBs Value to which the attribute "classBs" should be set.
+     * @param pClassBs Collection to which {@link #classBs} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setClassBs( ClassB[] pClassBs ) {
       // Assign value to attribute
@@ -139,10 +129,9 @@ public class ComplexArrayServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "classBs".
+   * Method returns attribute {@link #classBs}.<br/>
    * 
-   * 
-   * @return ClassB Value to which the attribute "classBs" is set.
+   * @return {@link ClassB} Value to which {@link #classBs} is set.
    */
   public ClassB[] getClassBs( ) {
     ClassB[] lReturnValue;
@@ -157,10 +146,9 @@ public class ComplexArrayServiceObject implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "classBs".
+   * Method sets attribute {@link #classBs}.<br/>
    * 
-   * 
-   * @param pClassBs Value to which the attribute "classBs" should be set.
+   * @param pClassBs Value to which {@link #classBs} should be set.
    */
   public void setClassBs( ClassB[] pClassBs ) {
     // Assign value to attribute

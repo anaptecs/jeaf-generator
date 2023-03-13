@@ -7,10 +7,6 @@ package com.anaptecs.jeaf.junit.domainObjects;
 
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Deprecated
 public class DeprecatedDomainObject extends DeprecatedDomainObjectBase {
   /**
@@ -35,16 +31,14 @@ public class DeprecatedDomainObject extends DeprecatedDomainObjectBase {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void doSomething( ) {
     // TODO: Implement business logic for method.
   }
 
   /**
-   * 
-   * @return {@link byte}
+   * @return byte
    */
   @Override
   public byte returnPrimitive( ) {

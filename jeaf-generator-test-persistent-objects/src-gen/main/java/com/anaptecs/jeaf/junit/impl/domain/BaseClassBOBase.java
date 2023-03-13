@@ -5,10 +5,6 @@ import java.util.List;
 import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class BaseClassBOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -45,19 +41,10 @@ public abstract class BaseClassBOBase extends PersistentObject {
    */
   public static final String DEPRECATEDPO_ROLE = "deprecatedPO";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private Integer number;
 
-  /**
-   * 
-   */
   private DeprecatedPO deprecatedPO;
 
   /**
@@ -77,20 +64,18 @@ public abstract class BaseClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -98,20 +83,18 @@ public abstract class BaseClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "number".
+   * Method returns attribute {@link #number}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "number" is set.
+   * @return {@link Integer} Value to which {@link #number} is set.
    */
   public Integer getNumber( ) {
     return number;
   }
 
   /**
-   * Method sets the attribute "number".
+   * Method sets attribute {@link #number}.<br/>
    * 
-   * 
-   * @param pNumber Value to which the attribute "number" should be set.
+   * @param pNumber Value to which {@link #number} should be set.
    */
   public void setNumber( Integer pNumber ) {
     // Assign value to attribute
@@ -119,10 +102,9 @@ public abstract class BaseClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "deprecatedPO".
+   * Method returns association {@link #deprecatedPO}.<br/>
    * 
-   *
-   * @return DeprecatedPO DeprecatedPO to which the association "deprecatedPO" is set.
+   * @return {@link DeprecatedPO} Value to which {@link #deprecatedPO} is set.
    */
   public DeprecatedPO getDeprecatedPO( ) {
     deprecatedPO = this.unproxy(deprecatedPO);
@@ -130,10 +112,9 @@ public abstract class BaseClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "deprecatedPO".
+   * Method sets association {@link #deprecatedPO}.<br/>
    * 
-   * 
-   * @param pDeprecatedPO DeprecatedPO to which the association "deprecatedPO" should be set.
+   * @param pDeprecatedPO Value to which {@link #deprecatedPO} should be set.
    */
   public void setDeprecatedPO( DeprecatedPO pDeprecatedPO ) {
     // Release already referenced object before setting a new association.
@@ -149,8 +130,7 @@ public abstract class BaseClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "deprecatedPO".
-   * 
+   * Method unsets {@link #deprecatedPO}.
    */
   public final void unsetDeprecatedPO( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

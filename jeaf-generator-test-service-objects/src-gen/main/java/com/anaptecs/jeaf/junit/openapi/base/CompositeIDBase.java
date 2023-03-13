@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class CompositeIDBase implements ServiceObject {
   /**
    * Default serial version uid.
@@ -31,14 +27,8 @@ public abstract class CompositeIDBase implements ServiceObject {
    */
   public static final String SECONDARYCODE = "secondaryCode";
 
-  /**
-   * 
-   */
   private long primaryCode;
 
-  /**
-   * 
-   */
   private long secondaryCode;
 
   /**
@@ -66,14 +56,8 @@ public abstract class CompositeIDBase implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private long primaryCode;
 
-    /**
-     * 
-     */
     private long secondaryCode;
 
     /**
@@ -94,9 +78,10 @@ public abstract class CompositeIDBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "primaryCode".
+     * Method sets attribute {@link #primaryCode}.<br/>
      * 
-     * @param pPrimaryCode Value to which the attribute "primaryCode" should be set.
+     * @param pPrimaryCode Value to which {@link #primaryCode} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setPrimaryCode( long pPrimaryCode ) {
       // Assign value to attribute
@@ -105,9 +90,10 @@ public abstract class CompositeIDBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "secondaryCode".
+     * Method sets attribute {@link #secondaryCode}.<br/>
      * 
-     * @param pSecondaryCode Value to which the attribute "secondaryCode" should be set.
+     * @param pSecondaryCode Value to which {@link #secondaryCode} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setSecondaryCode( long pSecondaryCode ) {
       // Assign value to attribute
@@ -140,20 +126,18 @@ public abstract class CompositeIDBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "primaryCode".
+   * Method returns attribute {@link #primaryCode}.<br/>
    * 
-   * 
-   * @return long Value to which the attribute "primaryCode" is set.
+   * @return long Value to which {@link #primaryCode} is set.
    */
   public long getPrimaryCode( ) {
     return primaryCode;
   }
 
   /**
-   * Method sets the attribute "primaryCode".
+   * Method sets attribute {@link #primaryCode}.<br/>
    * 
-   * 
-   * @param pPrimaryCode Value to which the attribute "primaryCode" should be set.
+   * @param pPrimaryCode Value to which {@link #primaryCode} should be set.
    */
   public void setPrimaryCode( long pPrimaryCode ) {
     // Assign value to attribute
@@ -161,20 +145,18 @@ public abstract class CompositeIDBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "secondaryCode".
+   * Method returns attribute {@link #secondaryCode}.<br/>
    * 
-   * 
-   * @return long Value to which the attribute "secondaryCode" is set.
+   * @return long Value to which {@link #secondaryCode} is set.
    */
   public long getSecondaryCode( ) {
     return secondaryCode;
   }
 
   /**
-   * Method sets the attribute "secondaryCode".
+   * Method sets attribute {@link #secondaryCode}.<br/>
    * 
-   * 
-   * @param pSecondaryCode Value to which the attribute "secondaryCode" should be set.
+   * @param pSecondaryCode Value to which {@link #secondaryCode} should be set.
    */
   public void setSecondaryCode( long pSecondaryCode ) {
     // Assign value to attribute

@@ -21,10 +21,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 @JsonIgnoreProperties(value = "objectType")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
@@ -35,21 +31,12 @@ public class WeirdParent implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private String someProperty;
 
-  /**
-   * 
-   */
   @NotNull
   private ComplexBookingID complexBooking;
 
-  /**
-   * 
-   */
   @Size(min = 1)
   @NotNull
   private Set<ComplexBookingID> complexBookings;
@@ -112,23 +99,13 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class WeirdParent. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>WeirdParent</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String someProperty;
 
-    /**
-     * 
-     */
     private ComplexBookingID complexBooking;
 
-    /**
-     * 
-     */
     private Set<ComplexBookingID> complexBookings;
 
     /**
@@ -150,9 +127,10 @@ public class WeirdParent implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "someProperty".
+     * Method sets attribute {@link #someProperty}.<br/>
      * 
-     * @param pSomeProperty Value to which the attribute "someProperty" should be set.
+     * @param pSomeProperty Value to which {@link #someProperty} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSomeProperty( String pSomeProperty ) {
       // Assign value to attribute
@@ -161,9 +139,10 @@ public class WeirdParent implements ServiceObject {
     }
 
     /**
-     * Method sets the association "complexBooking".
+     * Method sets association {@link #complexBooking}.<br/>
      * 
-     * @param pComplexBooking ComplexBookingID to which the association "complexBooking" should be set.
+     * @param pComplexBooking Value to which {@link #complexBooking} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setComplexBooking( ComplexBookingID pComplexBooking ) {
       complexBooking = pComplexBooking;
@@ -171,9 +150,10 @@ public class WeirdParent implements ServiceObject {
     }
 
     /**
-     * Method sets the association "complexBookings".
+     * Method sets association {@link #complexBookings}.<br/>
      * 
-     * @param pComplexBookings Collection with objects to which the association should be set.
+     * @param pComplexBookings Collection to which {@link #complexBookings} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setComplexBookings( Set<ComplexBookingID> pComplexBookings ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -211,20 +191,18 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "someProperty".
+   * Method returns attribute {@link #someProperty}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "someProperty" is set.
+   * @return {@link String} Value to which {@link #someProperty} is set.
    */
   public String getSomeProperty( ) {
     return someProperty;
   }
 
   /**
-   * Method sets the attribute "someProperty".
+   * Method sets attribute {@link #someProperty}.<br/>
    * 
-   * 
-   * @param pSomeProperty Value to which the attribute "someProperty" should be set.
+   * @param pSomeProperty Value to which {@link #someProperty} should be set.
    */
   public void setSomeProperty( String pSomeProperty ) {
     // Assign value to attribute
@@ -232,39 +210,35 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Method returns the association "complexBooking".
+   * Method returns association {@link #complexBooking}.<br/>
    * 
-   *
-   * @return ComplexBookingID ComplexBookingID to which the association "complexBooking" is set.
+   * @return {@link ComplexBookingID} Value to which {@link #complexBooking} is set.
    */
   public ComplexBookingID getComplexBooking( ) {
     return complexBooking;
   }
 
   /**
-   * Method sets the association "complexBooking".
+   * Method sets association {@link #complexBooking}.<br/>
    * 
-   * 
-   * @param pComplexBooking ComplexBookingID to which the association "complexBooking" should be set.
+   * @param pComplexBooking Value to which {@link #complexBooking} should be set.
    */
   public void setComplexBooking( ComplexBookingID pComplexBooking ) {
     complexBooking = pComplexBooking;
   }
 
   /**
-   * Method unsets the association "complexBooking".
-   * 
+   * Method unsets {@link #complexBooking}.
    */
   public final void unsetComplexBooking( ) {
     complexBooking = null;
   }
 
   /**
-   * Method returns the association "complexBookings".
+   * Method returns association {@link #complexBookings}.<br/>
    * 
-   *
-   * @return Collection All ComplexBookingID objects that belong to the association "complexBookings". The method never
-   * returns null and the returned collection is modifiable.
+   * @return {@link Set<ComplexBookingID>} Value to which {@link #complexBookings} is set. The method never returns null
+   * and the returned collection is modifiable.
    */
   public Set<ComplexBookingID> getComplexBookings( ) {
     // Return all ComplexBookingID objects directly without any protection against modification.
@@ -272,11 +246,9 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Method adds the passed ComplexBookingID object to the association "complexBookings".
+   * Method adds the passed object to {@link #complexBookings}.
    * 
-   * 
-   * @param pComplexBookings Object that should be added to the association "complexBookings". The parameter must not be
-   * null.
+   * @param pComplexBookings Object that should be added to {@link #complexBookings}. The parameter must not be null.
    */
   public void addToComplexBookings( ComplexBookingID pComplexBookings ) {
     // Check parameter "pComplexBookings" for invalid value null.
@@ -286,11 +258,10 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "complexBookings".
+   * Method adds all passed objects to {@link #complexBookings}.
    * 
-   * 
-   * @param pComplexBookings Collection with all objects that should be added to the association "complexBookings". The
-   * parameter must not be null.
+   * @param pComplexBookings Collection with all objects that should be added to {@link #complexBookings}. The parameter
+   * must not be null.
    */
   public void addToComplexBookings( Collection<ComplexBookingID> pComplexBookings ) {
     // Check parameter "pComplexBookings" for invalid value null.
@@ -302,11 +273,10 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Method removes the passed ComplexBookingID object from the association "complexBookings".
+   * Method removes the passed object from {@link #complexBookings}.<br/>
    * 
-   * 
-   * @param pComplexBookings Object that should be removed from the association "complexBookings". The parameter must
-   * not be null.
+   * @param pComplexBookings Object that should be removed from {@link #complexBookings}. The parameter must not be
+   * null.
    */
   public void removeFromComplexBookings( ComplexBookingID pComplexBookings ) {
     // Check parameter for invalid value null.
@@ -316,8 +286,7 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "complexBookings".
-   * 
+   * Method removes all objects from {@link #complexBookings}.
    */
   public void clearComplexBookings( ) {
     // Remove all objects from association "complexBookings".

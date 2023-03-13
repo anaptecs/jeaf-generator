@@ -7,9 +7,5 @@ package com.anaptecs.jeaf.junit.scheduling;
 
 import com.anaptecs.jeaf.services.scheduling.ScheduleableService;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public interface SchedulingTestService extends ScheduleableService {
 }

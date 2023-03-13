@@ -21,7 +21,7 @@
 				import com.anaptecs.jeaf.xfun.api.XFunMessages;
 				import com.anaptecs.jeaf.xfun.api.XFun;
 				 
-				«this.getJavadoc()»
+				«EXPAND functions::Javadoc::JavadocForType»
 				«EXPAND java::Helper::GenerateGeneratedAnnotation»
 				«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
 				«EXPAND java::Validation::ValidationAnnotation»
@@ -142,7 +142,7 @@
 				import com.anaptecs.jeaf.xfun.api.XFunMessages;
 				import com.anaptecs.jeaf.xfun.api.XFun;        
 				  
-				«this.getJavadoc()»
+				«EXPAND functions::Javadoc::JavadocForType»
 				«EXPAND java::Helper::GenerateGeneratedAnnotation»
 				«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
 		        «EXPAND java::Validation::ValidationAnnotation -»      
@@ -259,7 +259,7 @@
 				«getFileHeader()»
 				package «this.packageName()»;
 				  
-				«this.getJavadoc()»
+				«EXPAND functions::Javadoc::JavadocForType»
 				«EXPAND java::Validation::ValidationAnnotation»
 				«EXPAND java::Helper::GenerateDeprecationAnnotation -»
 				public «IF isAbstract»abstract«ENDIF» class «name» extends «name»Base {

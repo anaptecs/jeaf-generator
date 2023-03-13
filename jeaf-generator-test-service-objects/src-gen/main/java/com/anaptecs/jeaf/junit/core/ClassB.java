@@ -21,10 +21,6 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
@@ -46,14 +42,8 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   private final ServiceObjectID objectID;
 
-  /**
-   * 
-   */
   private SortedSet<ClassA> manyAs;
 
-  /**
-   * 
-   */
   private Integer intValue;
 
   /**
@@ -111,8 +101,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Class implements builder to create a new instance of class ClassB. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ClassB</code>.
    */
   public static class Builder {
     /**
@@ -120,14 +109,8 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
      */
     private ObjectIdentity<?> objectID;
 
-    /**
-     * 
-     */
     private SortedSet<ClassA> manyAs;
 
-    /**
-     * 
-     */
     private Integer intValue;
 
     /**
@@ -158,9 +141,10 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the association "manyAs".
+     * Method sets association {@link #manyAs}.<br/>
      * 
-     * @param pManyAs Collection with objects to which the association should be set.
+     * @param pManyAs Collection to which {@link #manyAs} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setManyAs( SortedSet<ClassA> pManyAs ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -174,9 +158,10 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "intValue".
+     * Method sets attribute {@link #intValue}.<br/>
      * 
-     * @param pIntValue Value to which the attribute "intValue" should be set.
+     * @param pIntValue Value to which {@link #intValue} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIntValue( Integer pIntValue ) {
       // Assign value to attribute
@@ -237,11 +222,10 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the association "manyAs".
+   * Method returns association {@link #manyAs}.<br/>
    * 
-   *
-   * @return Collection All ClassA objects that belong to the association "manyAs". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link SortedSet<ClassA>} Value to which {@link #manyAs} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public SortedSet<ClassA> getManyAs( ) {
     // Return all ClassA objects as unmodifiable collection.
@@ -249,10 +233,9 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method adds the passed ClassA object to the association "manyAs".
+   * Method adds the passed object to {@link #manyAs}.
    * 
-   * 
-   * @param pManyAs Object that should be added to the association "manyAs". The parameter must not be null.
+   * @param pManyAs Object that should be added to {@link #manyAs}. The parameter must not be null.
    */
   public void addToManyAs( ClassA pManyAs ) {
     // Check parameter "pManyAs" for invalid value null.
@@ -270,11 +253,9 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method adds all passed objects to the association "manyAs".
+   * Method adds all passed objects to {@link #manyAs}.
    * 
-   * 
-   * @param pManyAs Collection with all objects that should be added to the association "manyAs". The parameter must not
-   * be null.
+   * @param pManyAs Collection with all objects that should be added to {@link #manyAs}. The parameter must not be null.
    */
   public void addToManyAs( Collection<ClassA> pManyAs ) {
     // Check parameter "pManyAs" for invalid value null.
@@ -286,10 +267,9 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method removes the passed ClassA object from the association "manyAs".
+   * Method removes the passed object from {@link #manyAs}.<br/>
    * 
-   * 
-   * @param pManyAs Object that should be removed from the association "manyAs". The parameter must not be null.
+   * @param pManyAs Object that should be removed from {@link #manyAs}. The parameter must not be null.
    */
   public void removeFromManyAs( ClassA pManyAs ) {
     // Check parameter for invalid value null.
@@ -304,8 +284,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method removes all objects from the association "manyAs".
-   * 
+   * Method removes all objects from {@link #manyAs}.
    */
   public void clearManyAs( ) {
     // Remove all objects from association "manyAs".
@@ -318,20 +297,18 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "intValue".
+   * Method returns attribute {@link #intValue}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "intValue" is set.
+   * @return {@link Integer} Value to which {@link #intValue} is set.
    */
   public Integer getIntValue( ) {
     return intValue;
   }
 
   /**
-   * Method sets the attribute "intValue".
+   * Method sets attribute {@link #intValue}.<br/>
    * 
-   * 
-   * @param pIntValue Value to which the attribute "intValue" should be set.
+   * @param pIntValue Value to which {@link #intValue} should be set.
    */
   public void setIntValue( Integer pIntValue ) {
     // Assign value to attribute

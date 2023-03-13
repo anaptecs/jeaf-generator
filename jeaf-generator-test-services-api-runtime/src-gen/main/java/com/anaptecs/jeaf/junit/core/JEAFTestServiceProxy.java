@@ -37,9 +37,8 @@ public final class JEAFTestServiceProxy extends ServiceProxy implements JEAFTest
   }
 
   /**
-   * Generated proxy implementation for method "checkRequiredService_1".
-   * 
-   * Method tests JEAF dependency injection mechanism for the dependency on RequiredService1.
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.JEAFTestService#checkRequiredService_1}
    */
   public void checkRequiredService_1( ) {
     try {
@@ -52,9 +51,8 @@ public final class JEAFTestServiceProxy extends ServiceProxy implements JEAFTest
   }
 
   /**
-   * Generated proxy implementation for method "checkRequiredService_2".
-   * 
-   * Method tests JEAF dependency injection mechanism for the dependency on RequiredService1.
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.JEAFTestService#checkRequiredService_2}
    */
   @Deprecated
   public void checkRequiredService_2( ) {
@@ -68,9 +66,7 @@ public final class JEAFTestServiceProxy extends ServiceProxy implements JEAFTest
   }
 
   /**
-   * Generated proxy implementation for method "testContextHandling".
-   * 
-   * Method tests JEAFs context handling and the passing of context information to listeners.
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.core.JEAFTestService#testContextHandling}
    */
   public void testContextHandling( ) {
     try {
@@ -83,9 +79,7 @@ public final class JEAFTestServiceProxy extends ServiceProxy implements JEAFTest
   }
 
   /**
-   * Generated proxy implementation for method "testContextAccess".
-   * 
-   * Method checks the access to the service invocation context from within a service implementation.
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.core.JEAFTestService#testContextAccess}
    */
   public void testContextAccess( ) {
     try {
@@ -98,9 +92,8 @@ public final class JEAFTestServiceProxy extends ServiceProxy implements JEAFTest
   }
 
   /**
-   * Generated proxy implementation for method "testIllgealContextAccess".
-   * 
-   * Method checks invalid accesses to a service invocation context.
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.JEAFTestService#testIllgealContextAccess}
    */
   public void testIllgealContextAccess( ) {
     try {
@@ -113,9 +106,7 @@ public final class JEAFTestServiceProxy extends ServiceProxy implements JEAFTest
   }
 
   /**
-   * Generated proxy implementation for method "testContextIsolation".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.core.JEAFTestService#testContextIsolation}
    */
   public void testContextIsolation( ) {
     try {
@@ -128,9 +119,8 @@ public final class JEAFTestServiceProxy extends ServiceProxy implements JEAFTest
   }
 
   /**
-   * Generated proxy implementation for method "testSessionContextHandling".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.JEAFTestService#testSessionContextHandling}
    */
   public SessionContextValues testSessionContextHandling( ) {
     try {

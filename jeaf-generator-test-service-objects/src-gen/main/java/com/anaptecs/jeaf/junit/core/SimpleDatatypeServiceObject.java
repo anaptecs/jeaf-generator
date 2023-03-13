@@ -14,10 +14,6 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
@@ -69,44 +65,20 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
    */
   private final ServiceObjectID objectID;
 
-  /**
-   * 
-   */
   private boolean myBoolean;
 
-  /**
-   * 
-   */
   private byte myByte;
 
-  /**
-   * 
-   */
   private char myChar;
 
-  /**
-   * 
-   */
   private double myDouble;
 
-  /**
-   * 
-   */
   private float myFloat;
 
-  /**
-   * 
-   */
   private long myLong;
 
-  /**
-   * 
-   */
   private short myShort;
 
-  /**
-   * 
-   */
   private byte[] myByteArray;
 
   /**
@@ -165,8 +137,7 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Class implements builder to create a new instance of class SimpleDatatypeServiceObject. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>SimpleDatatypeServiceObject</code>.
    */
   public static class Builder {
     /**
@@ -174,44 +145,20 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
      */
     private ObjectIdentity<?> objectID;
 
-    /**
-     * 
-     */
     private boolean myBoolean;
 
-    /**
-     * 
-     */
     private byte myByte;
 
-    /**
-     * 
-     */
     private char myChar;
 
-    /**
-     * 
-     */
     private double myDouble;
 
-    /**
-     * 
-     */
     private float myFloat;
 
-    /**
-     * 
-     */
     private long myLong;
 
-    /**
-     * 
-     */
     private short myShort;
 
-    /**
-     * 
-     */
     private byte[] myByteArray;
 
     /**
@@ -249,9 +196,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myBoolean".
+     * Method sets attribute {@link #myBoolean}.<br/>
      * 
-     * @param pMyBoolean Value to which the attribute "myBoolean" should be set.
+     * @param pMyBoolean Value to which {@link #myBoolean} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyBoolean( boolean pMyBoolean ) {
       // Assign value to attribute
@@ -260,9 +208,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myByte".
+     * Method sets attribute {@link #myByte}.<br/>
      * 
-     * @param pMyByte Value to which the attribute "myByte" should be set.
+     * @param pMyByte Value to which {@link #myByte} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyByte( byte pMyByte ) {
       // Assign value to attribute
@@ -271,9 +220,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myChar".
+     * Method sets attribute {@link #myChar}.<br/>
      * 
-     * @param pMyChar Value to which the attribute "myChar" should be set.
+     * @param pMyChar Value to which {@link #myChar} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyChar( char pMyChar ) {
       // Assign value to attribute
@@ -282,9 +232,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myDouble".
+     * Method sets attribute {@link #myDouble}.<br/>
      * 
-     * @param pMyDouble Value to which the attribute "myDouble" should be set.
+     * @param pMyDouble Value to which {@link #myDouble} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyDouble( double pMyDouble ) {
       // Assign value to attribute
@@ -293,9 +244,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myFloat".
+     * Method sets attribute {@link #myFloat}.<br/>
      * 
-     * @param pMyFloat Value to which the attribute "myFloat" should be set.
+     * @param pMyFloat Value to which {@link #myFloat} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyFloat( float pMyFloat ) {
       // Assign value to attribute
@@ -304,9 +256,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myLong".
+     * Method sets attribute {@link #myLong}.<br/>
      * 
-     * @param pMyLong Value to which the attribute "myLong" should be set.
+     * @param pMyLong Value to which {@link #myLong} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyLong( long pMyLong ) {
       // Assign value to attribute
@@ -315,9 +268,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myShort".
+     * Method sets attribute {@link #myShort}.<br/>
      * 
-     * @param pMyShort Value to which the attribute "myShort" should be set.
+     * @param pMyShort Value to which {@link #myShort} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyShort( short pMyShort ) {
       // Assign value to attribute
@@ -326,9 +280,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     }
 
     /**
-     * Method sets the attribute "myByteArray".
+     * Method sets attribute {@link #myByteArray}.<br/>
      * 
-     * @param pMyByteArray Value to which the attribute "myByteArray" should be set.
+     * @param pMyByteArray Value to which {@link #myByteArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyByteArray( byte[] pMyByteArray ) {
       // Assign value to attribute
@@ -396,20 +351,18 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myBoolean".
+   * Method returns attribute {@link #myBoolean}.<br/>
    * 
-   * 
-   * @return Boolean Value to which the attribute "myBoolean" is set.
+   * @return boolean Value to which {@link #myBoolean} is set.
    */
   public boolean getMyBoolean( ) {
     return myBoolean;
   }
 
   /**
-   * Method sets the attribute "myBoolean".
+   * Method sets attribute {@link #myBoolean}.<br/>
    * 
-   * 
-   * @param pMyBoolean Value to which the attribute "myBoolean" should be set.
+   * @param pMyBoolean Value to which {@link #myBoolean} should be set.
    */
   public void setMyBoolean( boolean pMyBoolean ) {
     // Assign value to attribute
@@ -417,20 +370,18 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myByte".
+   * Method returns attribute {@link #myByte}.<br/>
    * 
-   * 
-   * @return byte Value to which the attribute "myByte" is set.
+   * @return byte Value to which {@link #myByte} is set.
    */
   public byte getMyByte( ) {
     return myByte;
   }
 
   /**
-   * Method sets the attribute "myByte".
+   * Method sets attribute {@link #myByte}.<br/>
    * 
-   * 
-   * @param pMyByte Value to which the attribute "myByte" should be set.
+   * @param pMyByte Value to which {@link #myByte} should be set.
    */
   public void setMyByte( byte pMyByte ) {
     // Assign value to attribute
@@ -438,20 +389,18 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myChar".
+   * Method returns attribute {@link #myChar}.<br/>
    * 
-   * 
-   * @return char Value to which the attribute "myChar" is set.
+   * @return char Value to which {@link #myChar} is set.
    */
   public char getMyChar( ) {
     return myChar;
   }
 
   /**
-   * Method sets the attribute "myChar".
+   * Method sets attribute {@link #myChar}.<br/>
    * 
-   * 
-   * @param pMyChar Value to which the attribute "myChar" should be set.
+   * @param pMyChar Value to which {@link #myChar} should be set.
    */
   public void setMyChar( char pMyChar ) {
     // Assign value to attribute
@@ -459,20 +408,18 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myDouble".
+   * Method returns attribute {@link #myDouble}.<br/>
    * 
-   * 
-   * @return double Value to which the attribute "myDouble" is set.
+   * @return double Value to which {@link #myDouble} is set.
    */
   public double getMyDouble( ) {
     return myDouble;
   }
 
   /**
-   * Method sets the attribute "myDouble".
+   * Method sets attribute {@link #myDouble}.<br/>
    * 
-   * 
-   * @param pMyDouble Value to which the attribute "myDouble" should be set.
+   * @param pMyDouble Value to which {@link #myDouble} should be set.
    */
   public void setMyDouble( double pMyDouble ) {
     // Assign value to attribute
@@ -480,20 +427,18 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myFloat".
+   * Method returns attribute {@link #myFloat}.<br/>
    * 
-   * 
-   * @return float Value to which the attribute "myFloat" is set.
+   * @return float Value to which {@link #myFloat} is set.
    */
   public float getMyFloat( ) {
     return myFloat;
   }
 
   /**
-   * Method sets the attribute "myFloat".
+   * Method sets attribute {@link #myFloat}.<br/>
    * 
-   * 
-   * @param pMyFloat Value to which the attribute "myFloat" should be set.
+   * @param pMyFloat Value to which {@link #myFloat} should be set.
    */
   public void setMyFloat( float pMyFloat ) {
     // Assign value to attribute
@@ -501,20 +446,18 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myLong".
+   * Method returns attribute {@link #myLong}.<br/>
    * 
-   * 
-   * @return long Value to which the attribute "myLong" is set.
+   * @return long Value to which {@link #myLong} is set.
    */
   public long getMyLong( ) {
     return myLong;
   }
 
   /**
-   * Method sets the attribute "myLong".
+   * Method sets attribute {@link #myLong}.<br/>
    * 
-   * 
-   * @param pMyLong Value to which the attribute "myLong" should be set.
+   * @param pMyLong Value to which {@link #myLong} should be set.
    */
   public void setMyLong( long pMyLong ) {
     // Assign value to attribute
@@ -522,20 +465,18 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myShort".
+   * Method returns attribute {@link #myShort}.<br/>
    * 
-   * 
-   * @return short Value to which the attribute "myShort" is set.
+   * @return short Value to which {@link #myShort} is set.
    */
   public short getMyShort( ) {
     return myShort;
   }
 
   /**
-   * Method sets the attribute "myShort".
+   * Method sets attribute {@link #myShort}.<br/>
    * 
-   * 
-   * @param pMyShort Value to which the attribute "myShort" should be set.
+   * @param pMyShort Value to which {@link #myShort} should be set.
    */
   public void setMyShort( short pMyShort ) {
     // Assign value to attribute
@@ -543,10 +484,9 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method returns the attribute "myByteArray".
+   * Method returns attribute {@link #myByteArray}.<br/>
    * 
-   * 
-   * @return byte Value to which the attribute "myByteArray" is set.
+   * @return byte Value to which {@link #myByteArray} is set.
    */
   public byte[] getMyByteArray( ) {
     byte[] lReturnValue;
@@ -561,10 +501,9 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method sets the attribute "myByteArray".
+   * Method sets attribute {@link #myByteArray}.<br/>
    * 
-   * 
-   * @param pMyByteArray Value to which the attribute "myByteArray" should be set.
+   * @param pMyByteArray Value to which {@link #myByteArray} should be set.
    */
   public void setMyByteArray( byte[] pMyByteArray ) {
     // Assign value to attribute

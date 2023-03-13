@@ -8,9 +8,7 @@ package com.anaptecs.jeaf.junit.impl.core;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 
 /**
- * Class represents the Product component.
- *
- * 
+ * Class represents the configuration for component {@link com.anaptecs.jeaf.junit.impl.core.ProductComponent}.
  */
 public final class ProductComponentConfiguration {
   /**

@@ -16,10 +16,14 @@ import com.anaptecs.jeaf.junit.deprecation.DeprecatedService;
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
+ * @deprecated This service does not make sense any more.</br>
+ * </br>
+ * The functionality is completely wrong. (<b>since:</b> 1.0, <b>removed with:</b> 2023-12-31)
  */
 @Path("/nova/prefix/deprecation")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@Deprecated
 public class DeprecatedServiceResource {
   /**
    * Method returns reference to service to which all REST requests will be delegated.

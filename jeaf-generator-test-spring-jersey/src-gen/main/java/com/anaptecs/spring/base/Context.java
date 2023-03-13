@@ -16,10 +16,6 @@ import javax.ws.rs.HeaderParam;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Context {
   /**
    * Constant for the name of attribute "accessToken".
@@ -51,9 +47,6 @@ public class Context {
    */
   public static final String LANG = "lang";
 
-  /**
-   * 
-   */
   @HeaderParam("token")
   @NotEmpty
   private String accessToken;
@@ -65,27 +58,15 @@ public class Context {
   @HeaderParam("lang")
   private Locale language;
 
-  /**
-   * 
-   */
   @CookieParam("reseller")
   private long resellerID;
 
-  /**
-   * 
-   */
   @PathParam("id")
   private long pathParam;
 
-  /**
-   * 
-   */
   @QueryParam("q1")
   private String queryParam;
 
-  /**
-   * 
-   */
   private String lang;
 
   /**
@@ -135,39 +116,24 @@ public class Context {
   }
 
   /**
-   * Class implements builder to create a new instance of class Context. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Context</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     @NotEmpty
     private String accessToken;
 
     /**
-     * 
+     * <br/>
+     * <b>Example:</b> <code>en</code>
      */
     private Locale language;
 
-    /**
-     * 
-     */
     private long resellerID;
 
-    /**
-     * 
-     */
     private long pathParam;
 
-    /**
-     * 
-     */
     private String queryParam;
 
-    /**
-     * 
-     */
     private String lang;
 
     /**
@@ -192,9 +158,10 @@ public class Context {
     }
 
     /**
-     * Method sets the attribute "accessToken".
+     * Method sets attribute {@link #accessToken}.<br/>
      * 
-     * @param pAccessToken Value to which the attribute "accessToken" should be set.
+     * @param pAccessToken Value to which {@link #accessToken} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAccessToken( String pAccessToken ) {
       // Assign value to attribute
@@ -203,9 +170,10 @@ public class Context {
     }
 
     /**
-     * Method sets the attribute "language".
+     * Method sets attribute {@link #language}.<br/>
      * 
-     * @param pLanguage Value to which the attribute "language" should be set.
+     * @param pLanguage Value to which {@link #language} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLanguage( Locale pLanguage ) {
       // Assign value to attribute
@@ -214,9 +182,10 @@ public class Context {
     }
 
     /**
-     * Method sets the attribute "resellerID".
+     * Method sets attribute {@link #resellerID}.<br/>
      * 
-     * @param pResellerID Value to which the attribute "resellerID" should be set.
+     * @param pResellerID Value to which {@link #resellerID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setResellerID( long pResellerID ) {
       // Assign value to attribute
@@ -225,9 +194,10 @@ public class Context {
     }
 
     /**
-     * Method sets the attribute "pathParam".
+     * Method sets attribute {@link #pathParam}.<br/>
      * 
-     * @param pPathParam Value to which the attribute "pathParam" should be set.
+     * @param pPathParam Value to which {@link #pathParam} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPathParam( long pPathParam ) {
       // Assign value to attribute
@@ -236,9 +206,10 @@ public class Context {
     }
 
     /**
-     * Method sets the attribute "queryParam".
+     * Method sets attribute {@link #queryParam}.<br/>
      * 
-     * @param pQueryParam Value to which the attribute "queryParam" should be set.
+     * @param pQueryParam Value to which {@link #queryParam} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setQueryParam( String pQueryParam ) {
       // Assign value to attribute
@@ -247,9 +218,10 @@ public class Context {
     }
 
     /**
-     * Method sets the attribute "lang".
+     * Method sets attribute {@link #lang}.<br/>
      * 
-     * @param pLang Value to which the attribute "lang" should be set.
+     * @param pLang Value to which {@link #lang} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLang( String pLang ) {
       // Assign value to attribute
@@ -268,20 +240,18 @@ public class Context {
   }
 
   /**
-   * Method returns the attribute "accessToken".
+   * Method returns attribute {@link #accessToken}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "accessToken" is set.
+   * @return {@link String} Value to which {@link #accessToken} is set.
    */
   public String getAccessToken( ) {
     return accessToken;
   }
 
   /**
-   * Method sets the attribute "accessToken".
+   * Method sets attribute {@link #accessToken}.<br/>
    * 
-   * 
-   * @param pAccessToken Value to which the attribute "accessToken" should be set.
+   * @param pAccessToken Value to which {@link #accessToken} should be set.
    */
   public void setAccessToken( String pAccessToken ) {
     // Assign value to attribute
@@ -289,20 +259,18 @@ public class Context {
   }
 
   /**
-   * Method returns the attribute "language".
+   * Method returns attribute {@link #language}.<br/>
    * 
-   * 
-   * @return Locale Value to which the attribute "language" is set.
+   * @return {@link Locale} Value to which {@link #language} is set.
    */
   public Locale getLanguage( ) {
     return language;
   }
 
   /**
-   * Method sets the attribute "language".
+   * Method sets attribute {@link #language}.<br/>
    * 
-   * 
-   * @param pLanguage Value to which the attribute "language" should be set.
+   * @param pLanguage Value to which {@link #language} should be set.
    */
   public void setLanguage( Locale pLanguage ) {
     // Assign value to attribute
@@ -310,20 +278,18 @@ public class Context {
   }
 
   /**
-   * Method returns the attribute "resellerID".
+   * Method returns attribute {@link #resellerID}.<br/>
    * 
-   * 
-   * @return long Value to which the attribute "resellerID" is set.
+   * @return long Value to which {@link #resellerID} is set.
    */
   public long getResellerID( ) {
     return resellerID;
   }
 
   /**
-   * Method sets the attribute "resellerID".
+   * Method sets attribute {@link #resellerID}.<br/>
    * 
-   * 
-   * @param pResellerID Value to which the attribute "resellerID" should be set.
+   * @param pResellerID Value to which {@link #resellerID} should be set.
    */
   public void setResellerID( long pResellerID ) {
     // Assign value to attribute
@@ -331,20 +297,18 @@ public class Context {
   }
 
   /**
-   * Method returns the attribute "pathParam".
+   * Method returns attribute {@link #pathParam}.<br/>
    * 
-   * 
-   * @return long Value to which the attribute "pathParam" is set.
+   * @return long Value to which {@link #pathParam} is set.
    */
   public long getPathParam( ) {
     return pathParam;
   }
 
   /**
-   * Method sets the attribute "pathParam".
+   * Method sets attribute {@link #pathParam}.<br/>
    * 
-   * 
-   * @param pPathParam Value to which the attribute "pathParam" should be set.
+   * @param pPathParam Value to which {@link #pathParam} should be set.
    */
   public void setPathParam( long pPathParam ) {
     // Assign value to attribute
@@ -352,20 +316,18 @@ public class Context {
   }
 
   /**
-   * Method returns the attribute "queryParam".
+   * Method returns attribute {@link #queryParam}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "queryParam" is set.
+   * @return {@link String} Value to which {@link #queryParam} is set.
    */
   public String getQueryParam( ) {
     return queryParam;
   }
 
   /**
-   * Method sets the attribute "queryParam".
+   * Method sets attribute {@link #queryParam}.<br/>
    * 
-   * 
-   * @param pQueryParam Value to which the attribute "queryParam" should be set.
+   * @param pQueryParam Value to which {@link #queryParam} should be set.
    */
   public void setQueryParam( String pQueryParam ) {
     // Assign value to attribute
@@ -373,20 +335,18 @@ public class Context {
   }
 
   /**
-   * Method returns the attribute "lang".
+   * Method returns attribute {@link #lang}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "lang" is set.
+   * @return {@link String} Value to which {@link #lang} is set.
    */
   public String getLang( ) {
     return lang;
   }
 
   /**
-   * Method sets the attribute "lang".
+   * Method sets attribute {@link #lang}.<br/>
    * 
-   * 
-   * @param pLang Value to which the attribute "lang" should be set.
+   * @param pLang Value to which {@link #lang} should be set.
    */
   public void setLang( String pLang ) {
     // Assign value to attribute

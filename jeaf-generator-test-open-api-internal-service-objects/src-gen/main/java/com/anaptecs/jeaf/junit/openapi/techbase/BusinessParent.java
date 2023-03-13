@@ -13,10 +13,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 @JsonIgnoreProperties(value = "objectType")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
@@ -27,9 +23,6 @@ public class BusinessParent extends TechParent {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private long parentAttribute;
 
   /**
@@ -82,13 +75,9 @@ public class BusinessParent extends TechParent {
   }
 
   /**
-   * Class implements builder to create a new instance of class BusinessParent. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>BusinessParent</code>.
    */
   public static class Builder extends TechParent.Builder {
-    /**
-     * 
-     */
     private long parentAttribute;
 
     /**
@@ -110,9 +99,10 @@ public class BusinessParent extends TechParent {
     }
 
     /**
-     * Method sets the attribute "techAttribute".
+     * Method sets attribute {@link #techAttribute}.<br/>
      * 
-     * @param pTechAttribute Value to which the attribute "techAttribute" should be set.
+     * @param pTechAttribute Value to which {@link #techAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setTechAttribute( String pTechAttribute ) {
@@ -122,9 +112,10 @@ public class BusinessParent extends TechParent {
     }
 
     /**
-     * Method sets the attribute "parentAttribute".
+     * Method sets attribute {@link #parentAttribute}.<br/>
      * 
-     * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setParentAttribute( long pParentAttribute ) {
       // Assign value to attribute
@@ -157,20 +148,18 @@ public class BusinessParent extends TechParent {
   }
 
   /**
-   * Method returns the attribute "parentAttribute".
+   * Method returns attribute {@link #parentAttribute}.<br/>
    * 
-   * 
-   * @return long Value to which the attribute "parentAttribute" is set.
+   * @return long Value to which {@link #parentAttribute} is set.
    */
   public long getParentAttribute( ) {
     return parentAttribute;
   }
 
   /**
-   * Method sets the attribute "parentAttribute".
+   * Method sets attribute {@link #parentAttribute}.<br/>
    * 
-   * 
-   * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    */
   public void setParentAttribute( long pParentAttribute ) {
     // Assign value to attribute

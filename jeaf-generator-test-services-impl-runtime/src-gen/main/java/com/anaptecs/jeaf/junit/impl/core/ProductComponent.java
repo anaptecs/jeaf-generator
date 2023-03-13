@@ -28,9 +28,8 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * Class represents the Product component.
+ * Class represents the component Product
  *
- * 
  */
 public final class ProductComponent implements ComponentImplementation {
   /**

@@ -7,13 +7,8 @@ package com.anaptecs.jeaf.junit.core;
 
 import com.anaptecs.jeaf.core.api.Service;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public interface RequiredService_1 extends Service {
   /**
-   * 
    * @param pContextObject
    */
   void testContextHandling_1( TestServiceObject pContextObject );

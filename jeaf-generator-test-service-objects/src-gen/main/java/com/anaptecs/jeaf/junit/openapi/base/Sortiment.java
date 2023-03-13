@@ -17,10 +17,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Sortiment implements ServiceObject {
   /**
    * Default serial version uid.
@@ -32,9 +28,6 @@ public class Sortiment implements ServiceObject {
    */
   public static final String PRODUCTS = "products";
 
-  /**
-   * 
-   */
   private Set<Product> products;
 
   /**
@@ -92,13 +85,9 @@ public class Sortiment implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class Sortiment. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Sortiment</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private Set<Product> products;
 
     /**
@@ -118,9 +107,10 @@ public class Sortiment implements ServiceObject {
     }
 
     /**
-     * Method sets the association "products".
+     * Method sets association {@link #products}.<br/>
      * 
-     * @param pProducts Collection with objects to which the association should be set.
+     * @param pProducts Collection to which {@link #products} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setProducts( Set<Product> pProducts ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -157,11 +147,10 @@ public class Sortiment implements ServiceObject {
   }
 
   /**
-   * Method returns the association "products".
+   * Method returns association {@link #products}.<br/>
    * 
-   *
-   * @return Collection All Product objects that belong to the association "products". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<Product>} Value to which {@link #products} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Product> getProducts( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -177,10 +166,9 @@ public class Sortiment implements ServiceObject {
   }
 
   /**
-   * Method adds the passed Product object to the association "products".
+   * Method adds the passed object to {@link #products}.
    * 
-   * 
-   * @param pProducts Object that should be added to the association "products". The parameter must not be null.
+   * @param pProducts Object that should be added to {@link #products}. The parameter must not be null.
    */
   public void addToProducts( Product pProducts ) {
     // Check parameter "pProducts" for invalid value null.
@@ -195,11 +183,10 @@ public class Sortiment implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "products".
+   * Method adds all passed objects to {@link #products}.
    * 
-   * 
-   * @param pProducts Collection with all objects that should be added to the association "products". The parameter must
-   * not be null.
+   * @param pProducts Collection with all objects that should be added to {@link #products}. The parameter must not be
+   * null.
    */
   public void addToProducts( Collection<Product> pProducts ) {
     // Check parameter "pProducts" for invalid value null.
@@ -211,10 +198,9 @@ public class Sortiment implements ServiceObject {
   }
 
   /**
-   * Method removes the passed Product object from the association "products".
+   * Method removes the passed object from {@link #products}.<br/>
    * 
-   * 
-   * @param pProducts Object that should be removed from the association "products". The parameter must not be null.
+   * @param pProducts Object that should be removed from {@link #products}. The parameter must not be null.
    */
   public void removeFromProducts( Product pProducts ) {
     // Check parameter for invalid value null.
@@ -229,8 +215,7 @@ public class Sortiment implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "products".
-   * 
+   * Method removes all objects from {@link #products}.
    */
   public void clearProducts( ) {
     // Remove all objects from association "products".

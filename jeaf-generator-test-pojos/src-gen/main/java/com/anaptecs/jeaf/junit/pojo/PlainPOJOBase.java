@@ -13,10 +13,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -31,14 +27,8 @@ public abstract class PlainPOJOBase {
    */
   public static final String WORLD = "world";
 
-  /**
-   * 
-   */
   private String hello;
 
-  /**
-   * 
-   */
   @PositiveOrZero
   private Integer world;
 
@@ -67,14 +57,8 @@ public abstract class PlainPOJOBase {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private String hello;
 
-    /**
-     * 
-     */
     @PositiveOrZero
     private Integer world;
 
@@ -96,9 +80,10 @@ public abstract class PlainPOJOBase {
     }
 
     /**
-     * Method sets the attribute "hello".
+     * Method sets attribute {@link #hello}.<br/>
      * 
-     * @param pHello Value to which the attribute "hello" should be set.
+     * @param pHello Value to which {@link #hello} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setHello( String pHello ) {
       // Assign value to attribute
@@ -107,9 +92,10 @@ public abstract class PlainPOJOBase {
     }
 
     /**
-     * Method sets the attribute "world".
+     * Method sets attribute {@link #world}.<br/>
      * 
-     * @param pWorld Value to which the attribute "world" should be set.
+     * @param pWorld Value to which {@link #world} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setWorld( Integer pWorld ) {
       // Assign value to attribute
@@ -141,20 +127,18 @@ public abstract class PlainPOJOBase {
   }
 
   /**
-   * Method returns the attribute "hello".
+   * Method returns attribute {@link #hello}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "hello" is set.
+   * @return {@link String} Value to which {@link #hello} is set.
    */
   public String getHello( ) {
     return hello;
   }
 
   /**
-   * Method sets the attribute "hello".
+   * Method sets attribute {@link #hello}.<br/>
    * 
-   * 
-   * @param pHello Value to which the attribute "hello" should be set.
+   * @param pHello Value to which {@link #hello} should be set.
    */
   public void setHello( String pHello ) {
     // Assign value to attribute
@@ -162,20 +146,18 @@ public abstract class PlainPOJOBase {
   }
 
   /**
-   * Method returns the attribute "world".
+   * Method returns attribute {@link #world}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "world" is set.
+   * @return {@link Integer} Value to which {@link #world} is set.
    */
   public Integer getWorld( ) {
     return world;
   }
 
   /**
-   * Method sets the attribute "world".
+   * Method sets attribute {@link #world}.<br/>
    * 
-   * 
-   * @param pWorld Value to which the attribute "world" should be set.
+   * @param pWorld Value to which {@link #world} should be set.
    */
   public void setWorld( Integer pWorld ) {
     // Assign value to attribute
@@ -183,16 +165,16 @@ public abstract class PlainPOJOBase {
   }
 
   /**
-  * 
-  */
+   */
   @Deprecated
   public abstract void doDeprectedStuff( );
 
   /**
-   * 
-   * @param pParam1
+   * @param pParam1 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    * @param pParam2
-   * @return {@link String}
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public abstract String doSomething( @Deprecated int pParam1, int pParam2 );

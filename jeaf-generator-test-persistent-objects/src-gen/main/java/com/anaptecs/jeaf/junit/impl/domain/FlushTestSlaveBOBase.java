@@ -5,10 +5,6 @@ import java.util.List;
 import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class FlushTestSlaveBOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -35,14 +31,8 @@ public abstract class FlushTestSlaveBOBase extends PersistentObject {
    */
   public static final String MASTEROBJECT_ROLE = "masterObject";
 
-  /**
-   * 
-   */
   private FlushTestMasterBO masterObject;
 
-  /**
-   * 
-   */
   private String optionalField;
 
   /**
@@ -62,10 +52,9 @@ public abstract class FlushTestSlaveBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "masterObject".
+   * Method returns association {@link #masterObject}.<br/>
    * 
-   *
-   * @return FlushTestMasterBO FlushTestMasterBO to which the association "masterObject" is set.
+   * @return {@link FlushTestMasterBO} Value to which {@link #masterObject} is set.
    */
   public FlushTestMasterBO getMasterObject( ) {
     masterObject = this.unproxy(masterObject);
@@ -73,38 +62,34 @@ public abstract class FlushTestSlaveBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "masterObject".
+   * Method sets association {@link #masterObject}.<br/>
    * 
-   * 
-   * @param pMasterObject FlushTestMasterBO to which the association "masterObject" should be set.
+   * @param pMasterObject Value to which {@link #masterObject} should be set.
    */
   public void setMasterObject( FlushTestMasterBO pMasterObject ) {
     masterObject = pMasterObject;
   }
 
   /**
-   * Method unsets the association "masterObject".
-   * 
+   * Method unsets {@link #masterObject}.
    */
   public final void unsetMasterObject( ) {
     masterObject = null;
   }
 
   /**
-   * Method returns the attribute "optionalField".
+   * Method returns attribute {@link #optionalField}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "optionalField" is set.
+   * @return {@link String} Value to which {@link #optionalField} is set.
    */
   public String getOptionalField( ) {
     return optionalField;
   }
 
   /**
-   * Method sets the attribute "optionalField".
+   * Method sets attribute {@link #optionalField}.<br/>
    * 
-   * 
-   * @param pOptionalField Value to which the attribute "optionalField" should be set.
+   * @param pOptionalField Value to which {@link #optionalField} should be set.
    */
   public void setOptionalField( String pOptionalField ) {
     // Assign value to attribute

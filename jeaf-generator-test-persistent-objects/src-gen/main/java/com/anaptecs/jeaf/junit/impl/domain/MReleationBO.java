@@ -1,9 +1,5 @@
 package com.anaptecs.jeaf.junit.impl.domain;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class MReleationBO extends MReleationBOBase {
   /**
    * Initialize object. The constructor of the class has visibility protected in order to avoid creating business
@@ -14,7 +10,6 @@ public class MReleationBO extends MReleationBOBase {
   }
 
   /**
-   * 
    * @return {@link NReleationBO}
    */
   @Override
@@ -24,8 +19,7 @@ public class MReleationBO extends MReleationBOBase {
   }
 
   /**
-   * 
-   * @return {@link char}
+   * @return char
    */
   @Override
   public char returnPrimitive( ) {

@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class WrapperTypesServiceObject implements ServiceObject {
   /**
    * Default serial version uid.
@@ -61,44 +57,20 @@ public class WrapperTypesServiceObject implements ServiceObject {
    */
   public static final String ACHAR = "aChar";
 
-  /**
-   * 
-   */
   private Boolean aBoolean;
 
-  /**
-   * 
-   */
   private Byte aByte;
 
-  /**
-   * 
-   */
   private Short aShort;
 
-  /**
-   * 
-   */
   private Integer aInt;
 
-  /**
-   * 
-   */
   private Long aLong;
 
-  /**
-   * 
-   */
   private Float aFloat;
 
-  /**
-   * 
-   */
   private Double aDouble;
 
-  /**
-   * 
-   */
   private Character aChar;
 
   /**
@@ -148,48 +120,23 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class WrapperTypesServiceObject. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>WrapperTypesServiceObject</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private Boolean aBoolean;
 
-    /**
-     * 
-     */
     private Byte aByte;
 
-    /**
-     * 
-     */
     private Short aShort;
 
-    /**
-     * 
-     */
     private Integer aInt;
 
-    /**
-     * 
-     */
     private Long aLong;
 
-    /**
-     * 
-     */
     private Float aFloat;
 
-    /**
-     * 
-     */
     private Double aDouble;
 
-    /**
-     * 
-     */
     private Character aChar;
 
     /**
@@ -217,9 +164,10 @@ public class WrapperTypesServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aBoolean".
+     * Method sets attribute {@link #aBoolean}.<br/>
      * 
-     * @param pABoolean Value to which the attribute "aBoolean" should be set.
+     * @param pABoolean Value to which {@link #aBoolean} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setABoolean( Boolean pABoolean ) {
       // Assign value to attribute
@@ -228,9 +176,10 @@ public class WrapperTypesServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aByte".
+     * Method sets attribute {@link #aByte}.<br/>
      * 
-     * @param pAByte Value to which the attribute "aByte" should be set.
+     * @param pAByte Value to which {@link #aByte} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAByte( Byte pAByte ) {
       // Assign value to attribute
@@ -239,9 +188,10 @@ public class WrapperTypesServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aShort".
+     * Method sets attribute {@link #aShort}.<br/>
      * 
-     * @param pAShort Value to which the attribute "aShort" should be set.
+     * @param pAShort Value to which {@link #aShort} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAShort( Short pAShort ) {
       // Assign value to attribute
@@ -250,9 +200,10 @@ public class WrapperTypesServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aInt".
+     * Method sets attribute {@link #aInt}.<br/>
      * 
-     * @param pAInt Value to which the attribute "aInt" should be set.
+     * @param pAInt Value to which {@link #aInt} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAInt( Integer pAInt ) {
       // Assign value to attribute
@@ -261,9 +212,10 @@ public class WrapperTypesServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aLong".
+     * Method sets attribute {@link #aLong}.<br/>
      * 
-     * @param pALong Value to which the attribute "aLong" should be set.
+     * @param pALong Value to which {@link #aLong} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setALong( Long pALong ) {
       // Assign value to attribute
@@ -272,9 +224,10 @@ public class WrapperTypesServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aFloat".
+     * Method sets attribute {@link #aFloat}.<br/>
      * 
-     * @param pAFloat Value to which the attribute "aFloat" should be set.
+     * @param pAFloat Value to which {@link #aFloat} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAFloat( Float pAFloat ) {
       // Assign value to attribute
@@ -283,9 +236,10 @@ public class WrapperTypesServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aDouble".
+     * Method sets attribute {@link #aDouble}.<br/>
      * 
-     * @param pADouble Value to which the attribute "aDouble" should be set.
+     * @param pADouble Value to which {@link #aDouble} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setADouble( Double pADouble ) {
       // Assign value to attribute
@@ -294,9 +248,10 @@ public class WrapperTypesServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aChar".
+     * Method sets attribute {@link #aChar}.<br/>
      * 
-     * @param pAChar Value to which the attribute "aChar" should be set.
+     * @param pAChar Value to which {@link #aChar} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAChar( Character pAChar ) {
       // Assign value to attribute
@@ -329,20 +284,18 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aBoolean".
+   * Method returns attribute {@link #aBoolean}.<br/>
    * 
-   * 
-   * @return Boolean Value to which the attribute "aBoolean" is set.
+   * @return {@link Boolean} Value to which {@link #aBoolean} is set.
    */
   public Boolean getABoolean( ) {
     return aBoolean;
   }
 
   /**
-   * Method sets the attribute "aBoolean".
+   * Method sets attribute {@link #aBoolean}.<br/>
    * 
-   * 
-   * @param pABoolean Value to which the attribute "aBoolean" should be set.
+   * @param pABoolean Value to which {@link #aBoolean} should be set.
    */
   public void setABoolean( Boolean pABoolean ) {
     // Assign value to attribute
@@ -350,20 +303,18 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aByte".
+   * Method returns attribute {@link #aByte}.<br/>
    * 
-   * 
-   * @return Byte Value to which the attribute "aByte" is set.
+   * @return {@link Byte} Value to which {@link #aByte} is set.
    */
   public Byte getAByte( ) {
     return aByte;
   }
 
   /**
-   * Method sets the attribute "aByte".
+   * Method sets attribute {@link #aByte}.<br/>
    * 
-   * 
-   * @param pAByte Value to which the attribute "aByte" should be set.
+   * @param pAByte Value to which {@link #aByte} should be set.
    */
   public void setAByte( Byte pAByte ) {
     // Assign value to attribute
@@ -371,20 +322,18 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aShort".
+   * Method returns attribute {@link #aShort}.<br/>
    * 
-   * 
-   * @return Short Value to which the attribute "aShort" is set.
+   * @return {@link Short} Value to which {@link #aShort} is set.
    */
   public Short getAShort( ) {
     return aShort;
   }
 
   /**
-   * Method sets the attribute "aShort".
+   * Method sets attribute {@link #aShort}.<br/>
    * 
-   * 
-   * @param pAShort Value to which the attribute "aShort" should be set.
+   * @param pAShort Value to which {@link #aShort} should be set.
    */
   public void setAShort( Short pAShort ) {
     // Assign value to attribute
@@ -392,20 +341,18 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aInt".
+   * Method returns attribute {@link #aInt}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "aInt" is set.
+   * @return {@link Integer} Value to which {@link #aInt} is set.
    */
   public Integer getAInt( ) {
     return aInt;
   }
 
   /**
-   * Method sets the attribute "aInt".
+   * Method sets attribute {@link #aInt}.<br/>
    * 
-   * 
-   * @param pAInt Value to which the attribute "aInt" should be set.
+   * @param pAInt Value to which {@link #aInt} should be set.
    */
   public void setAInt( Integer pAInt ) {
     // Assign value to attribute
@@ -413,20 +360,18 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aLong".
+   * Method returns attribute {@link #aLong}.<br/>
    * 
-   * 
-   * @return Long Value to which the attribute "aLong" is set.
+   * @return {@link Long} Value to which {@link #aLong} is set.
    */
   public Long getALong( ) {
     return aLong;
   }
 
   /**
-   * Method sets the attribute "aLong".
+   * Method sets attribute {@link #aLong}.<br/>
    * 
-   * 
-   * @param pALong Value to which the attribute "aLong" should be set.
+   * @param pALong Value to which {@link #aLong} should be set.
    */
   public void setALong( Long pALong ) {
     // Assign value to attribute
@@ -434,20 +379,18 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aFloat".
+   * Method returns attribute {@link #aFloat}.<br/>
    * 
-   * 
-   * @return Float Value to which the attribute "aFloat" is set.
+   * @return {@link Float} Value to which {@link #aFloat} is set.
    */
   public Float getAFloat( ) {
     return aFloat;
   }
 
   /**
-   * Method sets the attribute "aFloat".
+   * Method sets attribute {@link #aFloat}.<br/>
    * 
-   * 
-   * @param pAFloat Value to which the attribute "aFloat" should be set.
+   * @param pAFloat Value to which {@link #aFloat} should be set.
    */
   public void setAFloat( Float pAFloat ) {
     // Assign value to attribute
@@ -455,20 +398,18 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aDouble".
+   * Method returns attribute {@link #aDouble}.<br/>
    * 
-   * 
-   * @return Double Value to which the attribute "aDouble" is set.
+   * @return {@link Double} Value to which {@link #aDouble} is set.
    */
   public Double getADouble( ) {
     return aDouble;
   }
 
   /**
-   * Method sets the attribute "aDouble".
+   * Method sets attribute {@link #aDouble}.<br/>
    * 
-   * 
-   * @param pADouble Value to which the attribute "aDouble" should be set.
+   * @param pADouble Value to which {@link #aDouble} should be set.
    */
   public void setADouble( Double pADouble ) {
     // Assign value to attribute
@@ -476,20 +417,18 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aChar".
+   * Method returns attribute {@link #aChar}.<br/>
    * 
-   * 
-   * @return Character Value to which the attribute "aChar" is set.
+   * @return {@link Character} Value to which {@link #aChar} is set.
    */
   public Character getAChar( ) {
     return aChar;
   }
 
   /**
-   * Method sets the attribute "aChar".
+   * Method sets attribute {@link #aChar}.<br/>
    * 
-   * 
-   * @param pAChar Value to which the attribute "aChar" should be set.
+   * @param pAChar Value to which {@link #aChar} should be set.
    */
   public void setAChar( Character pAChar ) {
     // Assign value to attribute

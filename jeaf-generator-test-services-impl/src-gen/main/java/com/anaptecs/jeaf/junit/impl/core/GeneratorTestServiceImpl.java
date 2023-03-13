@@ -41,7 +41,6 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
    * @param pDatatypes
    */
   @Override
@@ -49,7 +48,6 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
    * @param pSimpleTypes
    * @return {@link WrapperDatatypeServiceObject}
    */
@@ -60,7 +58,6 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
    * @param pWrapperTypes
    * @return {@link SimpleDatatypeServiceObject}
    */
@@ -71,11 +68,10 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
    * @param pInteger
    * @param pByteArray
    * @param pDoubleValue
-   * @return {@link Boolean}
+   * @return boolean
    */
   @Override
   public boolean testPrimitivesAsParameter( int pInteger, byte[] pByteArray, double pDoubleValue ) {
@@ -84,7 +80,6 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
    * @param pSimpleObjects
    */
   @Override
@@ -92,8 +87,7 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
-   * @return {@link SimpleDatatypeServiceObject}
+   * @return {@link Set<SimpleDatatypeServiceObject>}
    */
   @Override
   public Set<SimpleDatatypeServiceObject> testGenericsAsResult( ) {
@@ -102,7 +96,6 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
    * @param pParam1
    */
   @Override
@@ -110,14 +103,12 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void doWhatIMean( ) {
   }
 
   /**
-   * 
    * @param pParam1
    */
   @Override
@@ -125,9 +116,8 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
    * @param pInput
-   * @return {@link Output}
+   * @return {@link Set<Output>}
    */
   @Override
   public Set<Output> doWithObjectsFromOtherPAckages( Input pInput ) {
@@ -136,8 +126,7 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
-   * @return {@link int}
+   * @return int
    */
   @Override
   public int testPrimiveIntResult( ) {
@@ -146,8 +135,7 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
-   * @return {@link Boolean}
+   * @return boolean
    */
   @Override
   public boolean testPrimitiveBooleanResult( ) {
@@ -156,8 +144,7 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
-   * @return {@link short}
+   * @return short
    */
   @Override
   public short testPrimitiveShortResult( ) {
@@ -166,8 +153,7 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
-   * @return {@link byte}
+   * @return byte
    */
   @Override
   public byte testPrimitveByteResult( ) {
@@ -176,8 +162,7 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
-   * @return {@link char}
+   * @return char
    */
   @Override
   public char testPrimitiveCharResult( ) {
@@ -186,8 +171,7 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
-   * @return {@link long}
+   * @return long
    */
   @Override
   public long testPrimitiveLongResult( ) {
@@ -196,8 +180,7 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
-   * @return {@link float}
+   * @return float
    */
   @Override
   public float testPrimitiveFloatResult( ) {
@@ -206,8 +189,7 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-   * 
-   * @return {@link double}
+   * @return double
    */
   @Override
   public double testPrimitveDoubleResult( ) {
@@ -216,8 +198,7 @@ final class GeneratorTestServiceImpl extends GeneratorTestServiceImplBase {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void parentServiceMethod( ) {
   }

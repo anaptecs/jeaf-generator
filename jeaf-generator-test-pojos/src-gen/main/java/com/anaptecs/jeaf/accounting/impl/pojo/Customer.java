@@ -5,10 +5,6 @@
  */
 package com.anaptecs.jeaf.accounting.impl.pojo;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Customer extends CustomerBase {
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -63,7 +59,6 @@ public class Customer extends CustomerBase {
   }
 
   /**
-   * 
    * @return {@link String}
    */
   @Override

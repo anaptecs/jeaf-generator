@@ -19,10 +19,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -37,9 +33,6 @@ public class BidirectionalB {
    */
   public static final String THEAS = "theAs";
 
-  /**
-   * 
-   */
   private List<BidirectionalA> as;
 
   /**
@@ -47,9 +40,6 @@ public class BidirectionalB {
    */
   private transient boolean asBackReferenceInitialized;
 
-  /**
-   * 
-   */
   private List<BidirectionalA> theAs;
 
   /**
@@ -118,18 +108,11 @@ public class BidirectionalB {
   }
 
   /**
-   * Class implements builder to create a new instance of class BidirectionalB. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>BidirectionalB</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private List<BidirectionalA> as;
 
-    /**
-     * 
-     */
     private List<BidirectionalA> theAs;
 
     /**
@@ -150,9 +133,10 @@ public class BidirectionalB {
     }
 
     /**
-     * Method sets the association "as".
+     * Method sets association {@link #as}.<br/>
      * 
-     * @param pAs Collection with objects to which the association should be set.
+     * @param pAs Collection to which {@link #as} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAs( List<BidirectionalA> pAs ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -166,9 +150,10 @@ public class BidirectionalB {
     }
 
     /**
-     * Method sets the association "theAs".
+     * Method sets association {@link #theAs}.<br/>
      * 
-     * @param pTheAs Collection with objects to which the association should be set.
+     * @param pTheAs Collection to which {@link #theAs} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTheAs( List<BidirectionalA> pTheAs ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -206,11 +191,10 @@ public class BidirectionalB {
   }
 
   /**
-   * Method returns the association "as".
+   * Method returns association {@link #as}.<br/>
    * 
-   *
-   * @return Collection All BidirectionalA objects that belong to the association "as". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link List<BidirectionalA>} Value to which {@link #as} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public List<BidirectionalA> getAs( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -226,10 +210,9 @@ public class BidirectionalB {
   }
 
   /**
-   * Method adds the passed BidirectionalA object to the association "as".
+   * Method adds the passed object to {@link #as}.
    * 
-   * 
-   * @param pAs Object that should be added to the association "as". The parameter must not be null.
+   * @param pAs Object that should be added to {@link #as}. The parameter must not be null.
    */
   public void addToAs( BidirectionalA pAs ) {
     // Check parameter "pAs" for invalid value null.
@@ -247,11 +230,9 @@ public class BidirectionalB {
   }
 
   /**
-   * Method adds all passed objects to the association "as".
+   * Method adds all passed objects to {@link #as}.
    * 
-   * 
-   * @param pAs Collection with all objects that should be added to the association "as". The parameter must not be
-   * null.
+   * @param pAs Collection with all objects that should be added to {@link #as}. The parameter must not be null.
    */
   public void addToAs( Collection<BidirectionalA> pAs ) {
     // Check parameter "pAs" for invalid value null.
@@ -263,10 +244,9 @@ public class BidirectionalB {
   }
 
   /**
-   * Method removes the passed BidirectionalA object from the association "as".
+   * Method removes the passed object from {@link #as}.<br/>
    * 
-   * 
-   * @param pAs Object that should be removed from the association "as". The parameter must not be null.
+   * @param pAs Object that should be removed from {@link #as}. The parameter must not be null.
    */
   public void removeFromAs( BidirectionalA pAs ) {
     // Check parameter for invalid value null.
@@ -281,8 +261,7 @@ public class BidirectionalB {
   }
 
   /**
-   * Method removes all objects from the association "as".
-   * 
+   * Method removes all objects from {@link #as}.
    */
   public void clearAs( ) {
     // Remove all objects from association "as".
@@ -295,11 +274,10 @@ public class BidirectionalB {
   }
 
   /**
-   * Method returns the association "theAs".
+   * Method returns association {@link #theAs}.<br/>
    * 
-   *
-   * @return Collection All BidirectionalA objects that belong to the association "theAs". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link List<BidirectionalA>} Value to which {@link #theAs} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public List<BidirectionalA> getTheAs( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -315,10 +293,9 @@ public class BidirectionalB {
   }
 
   /**
-   * Method adds the passed BidirectionalA object to the association "theAs".
+   * Method adds the passed object to {@link #theAs}.
    * 
-   * 
-   * @param pTheAs Object that should be added to the association "theAs". The parameter must not be null.
+   * @param pTheAs Object that should be added to {@link #theAs}. The parameter must not be null.
    */
   public void addToTheAs( BidirectionalA pTheAs ) {
     // Check parameter "pTheAs" for invalid value null.
@@ -333,11 +310,9 @@ public class BidirectionalB {
   }
 
   /**
-   * Method adds all passed objects to the association "theAs".
+   * Method adds all passed objects to {@link #theAs}.
    * 
-   * 
-   * @param pTheAs Collection with all objects that should be added to the association "theAs". The parameter must not
-   * be null.
+   * @param pTheAs Collection with all objects that should be added to {@link #theAs}. The parameter must not be null.
    */
   public void addToTheAs( Collection<BidirectionalA> pTheAs ) {
     // Check parameter "pTheAs" for invalid value null.
@@ -349,10 +324,9 @@ public class BidirectionalB {
   }
 
   /**
-   * Method removes the passed BidirectionalA object from the association "theAs".
+   * Method removes the passed object from {@link #theAs}.<br/>
    * 
-   * 
-   * @param pTheAs Object that should be removed from the association "theAs". The parameter must not be null.
+   * @param pTheAs Object that should be removed from {@link #theAs}. The parameter must not be null.
    */
   public void removeFromTheAs( BidirectionalA pTheAs ) {
     // Check parameter for invalid value null.
@@ -367,8 +341,7 @@ public class BidirectionalB {
   }
 
   /**
-   * Method removes all objects from the association "theAs".
-   * 
+   * Method removes all objects from {@link #theAs}.
    */
   public void clearTheAs( ) {
     // Remove all objects from association "theAs".

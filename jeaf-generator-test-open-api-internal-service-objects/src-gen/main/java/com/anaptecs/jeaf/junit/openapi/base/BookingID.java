@@ -26,27 +26,15 @@ public class BookingID implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private String referenceID;
 
-  /**
-   * 
-   */
   @NotNull
   private String externalRefID;
 
-  /**
-   * 
-   */
   @NotNull
   private InventoryType inventory;
 
-  /**
-   * 
-   */
   @NotNull
   private BookingCode bookingCode;
 
@@ -106,28 +94,15 @@ public class BookingID implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class BookingID. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>BookingID</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String referenceID;
 
-    /**
-     * 
-     */
     private String externalRefID;
 
-    /**
-     * 
-     */
     private InventoryType inventory;
 
-    /**
-     * 
-     */
     private BookingCode bookingCode;
 
     /**
@@ -150,9 +125,10 @@ public class BookingID implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "referenceID".
+     * Method sets attribute {@link #referenceID}.<br/>
      * 
-     * @param pReferenceID Value to which the attribute "referenceID" should be set.
+     * @param pReferenceID Value to which {@link #referenceID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReferenceID( String pReferenceID ) {
       // Assign value to attribute
@@ -161,9 +137,10 @@ public class BookingID implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "externalRefID".
+     * Method sets attribute {@link #externalRefID}.<br/>
      * 
-     * @param pExternalRefID Value to which the attribute "externalRefID" should be set.
+     * @param pExternalRefID Value to which {@link #externalRefID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setExternalRefID( String pExternalRefID ) {
       // Assign value to attribute
@@ -172,9 +149,10 @@ public class BookingID implements ServiceObject {
     }
 
     /**
-     * Method sets the association "inventory".
+     * Method sets association {@link #inventory}.<br/>
      * 
-     * @param pInventory InventoryType to which the association "inventory" should be set.
+     * @param pInventory Value to which {@link #inventory} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInventory( InventoryType pInventory ) {
       inventory = pInventory;
@@ -182,9 +160,10 @@ public class BookingID implements ServiceObject {
     }
 
     /**
-     * Method sets the association "bookingCode".
+     * Method sets association {@link #bookingCode}.<br/>
      * 
-     * @param pBookingCode BookingCode to which the association "bookingCode" should be set.
+     * @param pBookingCode Value to which {@link #bookingCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingCode( BookingCode pBookingCode ) {
       bookingCode = pBookingCode;
@@ -215,20 +194,18 @@ public class BookingID implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "referenceID".
+   * Method returns attribute {@link #referenceID}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "referenceID" is set.
+   * @return {@link String} Value to which {@link #referenceID} is set.
    */
   public String getReferenceID( ) {
     return referenceID;
   }
 
   /**
-   * Method sets the attribute "referenceID".
+   * Method sets attribute {@link #referenceID}.<br/>
    * 
-   * 
-   * @param pReferenceID Value to which the attribute "referenceID" should be set.
+   * @param pReferenceID Value to which {@link #referenceID} should be set.
    */
   public void setReferenceID( String pReferenceID ) {
     // Assign value to attribute
@@ -236,20 +213,18 @@ public class BookingID implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "externalRefID".
+   * Method returns attribute {@link #externalRefID}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "externalRefID" is set.
+   * @return {@link String} Value to which {@link #externalRefID} is set.
    */
   public String getExternalRefID( ) {
     return externalRefID;
   }
 
   /**
-   * Method sets the attribute "externalRefID".
+   * Method sets attribute {@link #externalRefID}.<br/>
    * 
-   * 
-   * @param pExternalRefID Value to which the attribute "externalRefID" should be set.
+   * @param pExternalRefID Value to which {@link #externalRefID} should be set.
    */
   public void setExternalRefID( String pExternalRefID ) {
     // Assign value to attribute
@@ -257,56 +232,50 @@ public class BookingID implements ServiceObject {
   }
 
   /**
-   * Method returns the association "inventory".
+   * Method returns association {@link #inventory}.<br/>
    * 
-   *
-   * @return InventoryType InventoryType to which the association "inventory" is set.
+   * @return {@link InventoryType} Value to which {@link #inventory} is set.
    */
   public InventoryType getInventory( ) {
     return inventory;
   }
 
   /**
-   * Method sets the association "inventory".
+   * Method sets association {@link #inventory}.<br/>
    * 
-   * 
-   * @param pInventory InventoryType to which the association "inventory" should be set.
+   * @param pInventory Value to which {@link #inventory} should be set.
    */
   public void setInventory( InventoryType pInventory ) {
     inventory = pInventory;
   }
 
   /**
-   * Method unsets the association "inventory".
-   * 
+   * Method unsets {@link #inventory}.
    */
   public final void unsetInventory( ) {
     inventory = null;
   }
 
   /**
-   * Method returns the association "bookingCode".
+   * Method returns association {@link #bookingCode}.<br/>
    * 
-   *
-   * @return BookingCode BookingCode to which the association "bookingCode" is set.
+   * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
   public BookingCode getBookingCode( ) {
     return bookingCode;
   }
 
   /**
-   * Method sets the association "bookingCode".
+   * Method sets association {@link #bookingCode}.<br/>
    * 
-   * 
-   * @param pBookingCode BookingCode to which the association "bookingCode" should be set.
+   * @param pBookingCode Value to which {@link #bookingCode} should be set.
    */
   public void setBookingCode( BookingCode pBookingCode ) {
     bookingCode = pBookingCode;
   }
 
   /**
-   * Method unsets the association "bookingCode".
-   * 
+   * Method unsets {@link #bookingCode}.
    */
   public final void unsetBookingCode( ) {
     bookingCode = null;

@@ -8,10 +8,6 @@ package com.anaptecs.jeaf.junit.product.domain;
 import com.anaptecs.jeaf.core.api.DomainObject;
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class VatDO extends DomainObject {
   /**
    * Default serial version uid.
@@ -23,9 +19,6 @@ public class VatDO extends DomainObject {
    */
   public static final String RATE = "rate";
 
-  /**
-   * 
-   */
   private double rate;
 
   /**
@@ -44,20 +37,18 @@ public class VatDO extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "rate".
+   * Method returns attribute {@link #rate}.<br/>
    * 
-   * 
-   * @return double Value to which the attribute "rate" is set.
+   * @return double Value to which {@link #rate} is set.
    */
   public double getRate( ) {
     return rate;
   }
 
   /**
-   * Method sets the attribute "rate".
+   * Method sets attribute {@link #rate}.<br/>
    * 
-   * 
-   * @param pRate Value to which the attribute "rate" should be set.
+   * @param pRate Value to which {@link #rate} should be set.
    */
   public void setRate( double pRate ) {
     // Assign value to attribute

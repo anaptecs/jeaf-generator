@@ -33,9 +33,8 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * Class represents the TransactionHandlingComponent component.
+ * Class represents the component TransactionHandlingComponent
  *
- * 
  */
 public final class TransactionHandlingComponentComponent implements ComponentImplementation {
   /**

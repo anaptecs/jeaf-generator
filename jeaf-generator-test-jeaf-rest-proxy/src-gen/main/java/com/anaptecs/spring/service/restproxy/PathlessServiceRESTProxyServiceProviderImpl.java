@@ -11,29 +11,15 @@ import com.anaptecs.jeaf.rest.executor.api.ContentType;
 import com.anaptecs.jeaf.rest.executor.api.HttpMethod;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequest;
 import com.anaptecs.jeaf.rest.executor.api.jeaf.RESTRequestExecutorServiceProvider;
-import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 import com.anaptecs.spring.service.PathlessService;
 
 /**
- * Class implements a service provider that acts as proxy for REST service PathlessService.
+ * Class implements a service provider that acts as proxy for REST service {@link PathlessService}.
  */
 public final class PathlessServiceRESTProxyServiceProviderImpl
     implements ServiceProviderImplementation, PathlessServiceRESTProxyServiceProvider {
-  /**
-   * Reference to the object that identifies this component. The reference is never null.
-   */
-  private static final ComponentID COMPONENT_ID;
-  /**
-   * Static initializer is used to create the components ComponentID object and its trace object.
-   */
-  static {
-    // Create Component ID and trace object.
-    Package lBasePackage = PathlessServiceRESTProxyServiceProviderImpl.class.getPackage();
-    COMPONENT_ID = new ComponentID("PathlessServiceRESTProxyServiceProviderImpl", lBasePackage.getName());
-  }
-
   /**
    * REST request executor is used to send REST request to the proxied REST resource. Depending on the Spring
    * configuration the matching implementation will be injected here.
@@ -60,7 +46,6 @@ public final class PathlessServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @return {@link String}
    */
   @Override

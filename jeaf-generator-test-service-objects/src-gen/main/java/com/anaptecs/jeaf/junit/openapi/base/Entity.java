@@ -2,19 +2,9 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * 
- */
 public final class Entity {
   public static enum EntityType {
-    /**
-     * 
-     */
-    DISCOUNT_CAMPAIGN,
-    /**
-     * 
-     */
-    DISCOUNT_OFFER("DISOFF", DataUnit.COUPON),
+    DISCOUNT_CAMPAIGN, DISCOUNT_OFFER("DISOFF", DataUnit.COUPON),
     /**
      * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external
      * interface.
@@ -37,45 +27,31 @@ public final class Entity {
       dataUnit = pDataUnit;
     }
 
-    /**
-     * 
-     */
     private final String entityID;
 
-    /**
-     * 
-     */
     private DataUnit dataUnit;
 
     /**
-     * Method returns the attribute "entityID".
+     * Method returns attribute {@link #entityID}.<br/>
      * 
-     * 
-     * @return String Value to which the attribute "entityID" is set.
+     * @return {@link String} Value to which {@link #entityID} is set.
      */
     public String getEntityID( ) {
       return entityID;
     }
 
     /**
-     * Method returns the attribute "dataUnit".
+     * Method returns association {@link #dataUnit}.<br/>
      * 
-     * 
-     * @return DataUnit Value to which the attribute "dataUnit" is set.
+     * @return {@link DataUnit} Value to which {@link #dataUnit} is set.
      */
     public DataUnit getDataUnit( ) {
       return dataUnit;
     }
   }
 
-  /**
-   * 
-   */
   public static final Entity DISCOUNT_CAMPAIGN = new Entity(EntityType.DISCOUNT_CAMPAIGN);
 
-  /**
-   * 
-   */
   public static final Entity DISCOUNT_OFFER = new Entity(EntityType.DISCOUNT_OFFER);
 
   /**

@@ -15,10 +15,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = ChildA.class, name = "ChildA"),
@@ -36,9 +32,6 @@ public class ParentClass implements Serializable {
    */
   public static final String PARENTATTRIBUTE = "parentAttribute";
 
-  /**
-   * 
-   */
   private String parentAttribute;
 
   /**
@@ -90,13 +83,9 @@ public class ParentClass implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class ParentClass. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ParentClass</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String parentAttribute;
 
     /**
@@ -116,9 +105,10 @@ public class ParentClass implements Serializable {
     }
 
     /**
-     * Method sets the attribute "parentAttribute".
+     * Method sets attribute {@link #parentAttribute}.<br/>
      * 
-     * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setParentAttribute( String pParentAttribute ) {
       // Assign value to attribute
@@ -151,20 +141,18 @@ public class ParentClass implements Serializable {
   }
 
   /**
-   * Method returns the attribute "parentAttribute".
+   * Method returns attribute {@link #parentAttribute}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "parentAttribute" is set.
+   * @return {@link String} Value to which {@link #parentAttribute} is set.
    */
   public String getParentAttribute( ) {
     return parentAttribute;
   }
 
   /**
-   * Method sets the attribute "parentAttribute".
+   * Method sets attribute {@link #parentAttribute}.<br/>
    * 
-   * 
-   * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    */
   public void setParentAttribute( String pParentAttribute ) {
     // Assign value to attribute

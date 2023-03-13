@@ -10,10 +10,6 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * Default serial version uid.
@@ -25,9 +21,6 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    */
   public static final String CHILDPROPERTY = "childProperty";
 
-  /**
-   * 
-   */
   private String childProperty;
 
   /**
@@ -70,13 +63,9 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   }
 
   /**
-   * Class implements builder to create a new instance of class ChildBeanParameterType. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ChildBeanParameterType</code>.
    */
   public static class Builder extends ParentBeanParamType.Builder {
-    /**
-     * 
-     */
     private String childProperty;
 
     /**
@@ -99,9 +88,10 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     }
 
     /**
-     * Method sets the attribute "novaKey".
+     * Method sets attribute {@link #novaKey}.<br/>
      * 
-     * @param pNovaKey Value to which the attribute "novaKey" should be set.
+     * @param pNovaKey Value to which {@link #novaKey} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setNovaKey( String pNovaKey ) {
@@ -111,9 +101,10 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     }
 
     /**
-     * Method sets the attribute "tkID".
+     * Method sets attribute {@link #tkID}.<br/>
      * 
-     * @param pTkID Value to which the attribute "tkID" should be set.
+     * @param pTkID Value to which {@link #tkID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setTkID( String pTkID ) {
@@ -123,9 +114,10 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     }
 
     /**
-     * Method sets the attribute "childProperty".
+     * Method sets attribute {@link #childProperty}.<br/>
      * 
-     * @param pChildProperty Value to which the attribute "childProperty" should be set.
+     * @param pChildProperty Value to which {@link #childProperty} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildProperty( String pChildProperty ) {
       // Assign value to attribute
@@ -158,20 +150,18 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   }
 
   /**
-   * Method returns the attribute "childProperty".
+   * Method returns attribute {@link #childProperty}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "childProperty" is set.
+   * @return {@link String} Value to which {@link #childProperty} is set.
    */
   public String getChildProperty( ) {
     return childProperty;
   }
 
   /**
-   * Method sets the attribute "childProperty".
+   * Method sets attribute {@link #childProperty}.<br/>
    * 
-   * 
-   * @param pChildProperty Value to which the attribute "childProperty" should be set.
+   * @param pChildProperty Value to which {@link #childProperty} should be set.
    */
   public void setChildProperty( String pChildProperty ) {
     // Assign value to attribute

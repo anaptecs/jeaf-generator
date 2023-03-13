@@ -19,10 +19,6 @@ import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 public class UICStop extends Stop {
   /**
@@ -30,30 +26,18 @@ public class UICStop extends Stop {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @Size(min = 32, max = 255)
   @NotNull
   private String uicCode;
 
-  /**
-   * 
-   */
   @DecimalMax(value = "32.777", inclusive = true)
   @DecimalMin(value = "1.025", inclusive = true)
   private int priority;
 
-  /**
-   * 
-   */
   @Min(value = 1000)
   @Max(value = 9999)
   private long code;
 
-  /**
-   * 
-   */
   @Positive
   private byte index2;
 
@@ -99,33 +83,20 @@ public class UICStop extends Stop {
   }
 
   /**
-   * Class implements builder to create a new instance of class UICStop. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>UICStop</code>.
    */
   public static class Builder extends Stop.Builder {
-    /**
-     * 
-     */
     @Size(min = 32, max = 255)
     private String uicCode;
 
-    /**
-     * 
-     */
     @DecimalMax(value = "32.777", inclusive = true)
     @DecimalMin(value = "1.025", inclusive = true)
     private int priority;
 
-    /**
-     * 
-     */
     @Min(value = 1000)
     @Max(value = 9999)
     private long code;
 
-    /**
-     * 
-     */
     @Positive
     private byte index2;
 
@@ -151,9 +122,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setName( String pName ) {
@@ -163,9 +135,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the association "links".
+     * Method sets association {@link #links}.<br/>
      * 
-     * @param pLinks Collection with objects to which the association should be set.
+     * @param pLinks Collection to which {@link #links} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setLinks( List<LinkObject> pLinks ) {
@@ -175,9 +148,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the attribute "index".
+     * Method sets attribute {@link #index}.<br/>
      * 
-     * @param pIndex Value to which the attribute "index" should be set.
+     * @param pIndex Value to which {@link #index} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setIndex( byte pIndex ) {
@@ -187,9 +161,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the association "theSoftLink".
+     * Method sets association {@link #theSoftLink}.<br/>
      * 
-     * @param pTheSoftLink LinkObject to which the association "theSoftLink" should be set.
+     * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
@@ -199,9 +174,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the attribute "uicCode".
+     * Method sets attribute {@link #uicCode}.<br/>
      * 
-     * @param pUicCode Value to which the attribute "uicCode" should be set.
+     * @param pUicCode Value to which {@link #uicCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setUicCode( String pUicCode ) {
       // Assign value to attribute
@@ -210,9 +186,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the attribute "priority".
+     * Method sets attribute {@link #priority}.<br/>
      * 
-     * @param pPriority Value to which the attribute "priority" should be set.
+     * @param pPriority Value to which {@link #priority} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPriority( int pPriority ) {
       // Assign value to attribute
@@ -221,9 +198,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the attribute "code".
+     * Method sets attribute {@link #code}.<br/>
      * 
-     * @param pCode Value to which the attribute "code" should be set.
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCode( long pCode ) {
       // Assign value to attribute
@@ -232,9 +210,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the attribute "index2".
+     * Method sets attribute {@link #index2}.<br/>
      * 
-     * @param pIndex2 Value to which the attribute "index2" should be set.
+     * @param pIndex2 Value to which {@link #index2} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIndex2( byte pIndex2 ) {
       // Assign value to attribute
@@ -266,20 +245,18 @@ public class UICStop extends Stop {
   }
 
   /**
-   * Method returns the attribute "uicCode".
+   * Method returns attribute {@link #uicCode}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "uicCode" is set.
+   * @return {@link String} Value to which {@link #uicCode} is set.
    */
   public String getUicCode( ) {
     return uicCode;
   }
 
   /**
-   * Method sets the attribute "uicCode".
+   * Method sets attribute {@link #uicCode}.<br/>
    * 
-   * 
-   * @param pUicCode Value to which the attribute "uicCode" should be set.
+   * @param pUicCode Value to which {@link #uicCode} should be set.
    */
   public void setUicCode( String pUicCode ) {
     // Assign value to attribute
@@ -287,20 +264,18 @@ public class UICStop extends Stop {
   }
 
   /**
-   * Method returns the attribute "priority".
+   * Method returns attribute {@link #priority}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "priority" is set.
+   * @return int Value to which {@link #priority} is set.
    */
   public int getPriority( ) {
     return priority;
   }
 
   /**
-   * Method sets the attribute "priority".
+   * Method sets attribute {@link #priority}.<br/>
    * 
-   * 
-   * @param pPriority Value to which the attribute "priority" should be set.
+   * @param pPriority Value to which {@link #priority} should be set.
    */
   public void setPriority( int pPriority ) {
     // Assign value to attribute
@@ -308,20 +283,18 @@ public class UICStop extends Stop {
   }
 
   /**
-   * Method returns the attribute "code".
+   * Method returns attribute {@link #code}.<br/>
    * 
-   * 
-   * @return long Value to which the attribute "code" is set.
+   * @return long Value to which {@link #code} is set.
    */
   public long getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( long pCode ) {
     // Assign value to attribute
@@ -329,20 +302,18 @@ public class UICStop extends Stop {
   }
 
   /**
-   * Method returns the attribute "index2".
+   * Method returns attribute {@link #index2}.<br/>
    * 
-   * 
-   * @return byte Value to which the attribute "index2" is set.
+   * @return byte Value to which {@link #index2} is set.
    */
   public byte getIndex2( ) {
     return index2;
   }
 
   /**
-   * Method sets the attribute "index2".
+   * Method sets attribute {@link #index2}.<br/>
    * 
-   * 
-   * @param pIndex2 Value to which the attribute "index2" should be set.
+   * @param pIndex2 Value to which {@link #index2} should be set.
    */
   public void setIndex2( byte pIndex2 ) {
     // Assign value to attribute

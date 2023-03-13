@@ -8,9 +8,8 @@ package com.anaptecs.jeaf.junit.impl.core;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 
 /**
- * Class represents the RequiredComponent component.
- *
- * 
+ * Class represents the configuration for component
+ * {@link com.anaptecs.jeaf.junit.impl.core.RequiredComponentComponent}.
  */
 public final class RequiredComponentComponentConfiguration {
   /**

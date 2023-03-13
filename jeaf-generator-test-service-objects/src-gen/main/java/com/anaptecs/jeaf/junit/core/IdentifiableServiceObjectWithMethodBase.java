@@ -14,10 +14,6 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class IdentifiableServiceObjectWithMethodBase implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
@@ -34,9 +30,6 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
    */
   private final ServiceObjectID objectID;
 
-  /**
-   * 
-   */
   private Integer hello;
 
   /**
@@ -78,9 +71,6 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
      */
     private ObjectIdentity<?> objectID;
 
-    /**
-     * 
-     */
     private Integer hello;
 
     /**
@@ -111,9 +101,10 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
     }
 
     /**
-     * Method sets the attribute "hello".
+     * Method sets attribute {@link #hello}.<br/>
      * 
-     * @param pHello Value to which the attribute "hello" should be set.
+     * @param pHello Value to which {@link #hello} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setHello( Integer pHello ) {
       // Assign value to attribute
@@ -175,20 +166,18 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
   }
 
   /**
-   * Method returns the attribute "hello".
+   * Method returns attribute {@link #hello}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "hello" is set.
+   * @return {@link Integer} Value to which {@link #hello} is set.
    */
   public Integer getHello( ) {
     return hello;
   }
 
   /**
-   * Method sets the attribute "hello".
+   * Method sets attribute {@link #hello}.<br/>
    * 
-   * 
-   * @param pHello Value to which the attribute "hello" should be set.
+   * @param pHello Value to which {@link #hello} should be set.
    */
   public void setHello( Integer pHello ) {
     // Assign value to attribute
@@ -196,8 +185,7 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
   }
 
   /**
-  * 
-  */
+   */
   public abstract void doSomething( );
 
   /**

@@ -10,10 +10,6 @@ import javax.validation.Valid;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 public class UICStopPlace extends StopPlaceRef {
   /**
@@ -59,8 +55,7 @@ public class UICStopPlace extends StopPlaceRef {
   }
 
   /**
-   * Class implements builder to create a new instance of class UICStopPlace. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>UICStopPlace</code>.
    */
   public static class Builder extends StopPlaceRef.Builder {
     /**
@@ -81,9 +76,10 @@ public class UICStopPlace extends StopPlaceRef {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setName( String pName ) {

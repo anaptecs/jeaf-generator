@@ -11,10 +11,6 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Deprecated
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ChildAA extends ChildA {
@@ -39,19 +35,15 @@ public class ChildAA extends ChildA {
   public static final String REQUIREDARRAY = "requiredArray";
 
   /**
-   * Multi line docs
+   * Multi<br/>
+   * line<br/>
+   * docs
    */
   private byte childAAAttribute;
 
-  /**
-   * 
-   */
   @Size(min = 10, max = 100)
   private int[] sizedArray;
 
-  /**
-   * 
-   */
   private String[] requiredArray;
 
   /**
@@ -106,25 +98,20 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Class implements builder to create a new instance of class ChildAA. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ChildAA</code>.
    */
   @Deprecated
   public static class Builder extends ChildA.Builder {
     /**
-     * Multi line docs
+     * Multi<br/>
+     * line<br/>
+     * docs
      */
     private byte childAAAttribute;
 
-    /**
-     * 
-     */
     @Size(min = 10, max = 100)
     private int[] sizedArray;
 
-    /**
-     * 
-     */
     private String[] requiredArray;
 
     /**
@@ -148,9 +135,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "parentAttribute".
+     * Method sets attribute {@link #parentAttribute}.<br/>
      * 
-     * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setParentAttribute( String pParentAttribute ) {
@@ -160,9 +148,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "childAAttribute".
+     * Method sets attribute {@link #childAAttribute}.<br/>
      * 
-     * @param pChildAAttribute Value to which the attribute "childAAttribute" should be set.
+     * @param pChildAAttribute Value to which {@link #childAAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setChildAAttribute( int pChildAAttribute ) {
@@ -172,9 +161,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "childAAAttribute". Multi line docs
+     * Method sets attribute {@link #childAAAttribute}.<br/>
      * 
-     * @param pChildAAAttribute Value to which the attribute "childAAAttribute" should be set.
+     * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildAAAttribute( byte pChildAAAttribute ) {
       // Assign value to attribute
@@ -183,9 +173,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "sizedArray".
+     * Method sets attribute {@link #sizedArray}.<br/>
      * 
-     * @param pSizedArray Value to which the attribute "sizedArray" should be set.
+     * @param pSizedArray Value to which {@link #sizedArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSizedArray( int[] pSizedArray ) {
       // Assign value to attribute
@@ -200,9 +191,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "requiredArray".
+     * Method sets attribute {@link #requiredArray}.<br/>
      * 
-     * @param pRequiredArray Value to which the attribute "requiredArray" should be set.
+     * @param pRequiredArray Collection to which {@link #requiredArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setRequiredArray( String[] pRequiredArray ) {
       // Assign value to attribute
@@ -240,18 +232,24 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns the attribute "childAAAttribute". Multi line docs
+   * Method returns attribute {@link #childAAAttribute}.<br/>
+   * Multi<br/>
+   * line<br/>
+   * docs
    * 
-   * @return byte Value to which the attribute "childAAAttribute" is set.
+   * @return byte Value to which {@link #childAAAttribute} is set.
    */
   public byte getChildAAAttribute( ) {
     return childAAAttribute;
   }
 
   /**
-   * Method sets the attribute "childAAAttribute". Multi line docs
+   * Method sets attribute {@link #childAAAttribute}.<br/>
+   * Multi<br/>
+   * line<br/>
+   * docs
    * 
-   * @param pChildAAAttribute Value to which the attribute "childAAAttribute" should be set.
+   * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
    */
   public void setChildAAAttribute( byte pChildAAAttribute ) {
     // Assign value to attribute
@@ -259,10 +257,9 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns the attribute "sizedArray".
+   * Method returns attribute {@link #sizedArray}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "sizedArray" is set.
+   * @return int Value to which {@link #sizedArray} is set.
    */
   public int[] getSizedArray( ) {
     int[] lReturnValue;
@@ -277,10 +274,9 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method sets the attribute "sizedArray".
+   * Method sets attribute {@link #sizedArray}.<br/>
    * 
-   * 
-   * @param pSizedArray Value to which the attribute "sizedArray" should be set.
+   * @param pSizedArray Value to which {@link #sizedArray} should be set.
    */
   public void setSizedArray( int[] pSizedArray ) {
     // Assign value to attribute
@@ -294,10 +290,9 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns the attribute "requiredArray".
+   * Method returns attribute {@link #requiredArray}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "requiredArray" is set.
+   * @return {@link String} Value to which {@link #requiredArray} is set.
    */
   public String[] getRequiredArray( ) {
     String[] lReturnValue;
@@ -312,10 +307,9 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method sets the attribute "requiredArray".
+   * Method sets attribute {@link #requiredArray}.<br/>
    * 
-   * 
-   * @param pRequiredArray Value to which the attribute "requiredArray" should be set.
+   * @param pRequiredArray Value to which {@link #requiredArray} should be set.
    */
   public void setRequiredArray( String[] pRequiredArray ) {
     // Assign value to attribute

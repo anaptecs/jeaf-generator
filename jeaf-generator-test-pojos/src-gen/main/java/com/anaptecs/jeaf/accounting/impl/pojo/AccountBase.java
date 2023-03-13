@@ -19,10 +19,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -47,24 +43,12 @@ public abstract class AccountBase {
    */
   public static final String ALLBOOKINGS = "allBookings";
 
-  /**
-   * 
-   */
   private int iban;
 
-  /**
-   * 
-   */
   private Customer owner;
 
-  /**
-   * 
-   */
   private Currency currency;
 
-  /**
-   * 
-   */
   private Set<Booking> allBookings;
 
   /**
@@ -100,24 +84,12 @@ public abstract class AccountBase {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private int iban;
 
-    /**
-     * 
-     */
     private Customer owner;
 
-    /**
-     * 
-     */
     private Currency currency;
 
-    /**
-     * 
-     */
     private Set<Booking> allBookings;
 
     /**
@@ -140,9 +112,10 @@ public abstract class AccountBase {
     }
 
     /**
-     * Method sets the attribute "iban".
+     * Method sets attribute {@link #iban}.<br/>
      * 
-     * @param pIban Value to which the attribute "iban" should be set.
+     * @param pIban Value to which {@link #iban} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setIban( int pIban ) {
       // Assign value to attribute
@@ -151,9 +124,10 @@ public abstract class AccountBase {
     }
 
     /**
-     * Method sets the association "owner".
+     * Method sets association {@link #owner}.<br/>
      * 
-     * @param pOwner Customer to which the association "owner" should be set.
+     * @param pOwner Value to which {@link #owner} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setOwner( Customer pOwner ) {
       owner = pOwner;
@@ -161,9 +135,10 @@ public abstract class AccountBase {
     }
 
     /**
-     * Method sets the attribute "currency".
+     * Method sets attribute {@link #currency}.<br/>
      * 
-     * @param pCurrency Value to which the attribute "currency" should be set.
+     * @param pCurrency Value to which {@link #currency} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setCurrency( Currency pCurrency ) {
       // Assign value to attribute
@@ -172,9 +147,10 @@ public abstract class AccountBase {
     }
 
     /**
-     * Method sets the association "allBookings".
+     * Method sets association {@link #allBookings}.<br/>
      * 
-     * @param pAllBookings Collection with objects to which the association should be set.
+     * @param pAllBookings Collection to which {@link #allBookings} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setAllBookings( Set<Booking> pAllBookings ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -211,20 +187,18 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method returns the attribute "iban".
+   * Method returns attribute {@link #iban}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "iban" is set.
+   * @return int Value to which {@link #iban} is set.
    */
   public int getIban( ) {
     return iban;
   }
 
   /**
-   * Method sets the attribute "iban".
+   * Method sets attribute {@link #iban}.<br/>
    * 
-   * 
-   * @param pIban Value to which the attribute "iban" should be set.
+   * @param pIban Value to which {@link #iban} should be set.
    */
   public void setIban( int pIban ) {
     // Assign value to attribute
@@ -232,20 +206,18 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method returns the association "owner".
+   * Method returns association {@link #owner}.<br/>
    * 
-   *
-   * @return Customer Customer to which the association "owner" is set.
+   * @return {@link Customer} Value to which {@link #owner} is set.
    */
   public Customer getOwner( ) {
     return owner;
   }
 
   /**
-   * Method sets the association "owner".
+   * Method sets association {@link #owner}.<br/>
    * 
-   * 
-   * @param pOwner Customer to which the association "owner" should be set.
+   * @param pOwner Value to which {@link #owner} should be set.
    */
   public void setOwner( Customer pOwner ) {
     // Release already referenced object before setting a new association.
@@ -261,8 +233,7 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method unsets the association "owner".
-   * 
+   * Method unsets {@link #owner}.
    */
   public final void unsetOwner( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -275,20 +246,18 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method returns the attribute "currency".
+   * Method returns attribute {@link #currency}.<br/>
    * 
-   * 
-   * @return Currency Value to which the attribute "currency" is set.
+   * @return {@link Currency} Value to which {@link #currency} is set.
    */
   public Currency getCurrency( ) {
     return currency;
   }
 
   /**
-   * Method sets the attribute "currency".
+   * Method sets attribute {@link #currency}.<br/>
    * 
-   * 
-   * @param pCurrency Value to which the attribute "currency" should be set.
+   * @param pCurrency Value to which {@link #currency} should be set.
    */
   public void setCurrency( Currency pCurrency ) {
     // Assign value to attribute
@@ -296,11 +265,10 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method returns the association "allBookings".
+   * Method returns association {@link #allBookings}.<br/>
    * 
-   *
-   * @return Collection All Booking objects that belong to the association "allBookings". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<Booking>} Value to which {@link #allBookings} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Booking> getAllBookings( ) {
     // Return all Booking objects as unmodifiable collection.
@@ -308,10 +276,9 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method adds the passed Booking object to the association "allBookings".
+   * Method adds the passed object to {@link #allBookings}.
    * 
-   * 
-   * @param pAllBookings Object that should be added to the association "allBookings". The parameter must not be null.
+   * @param pAllBookings Object that should be added to {@link #allBookings}. The parameter must not be null.
    */
   public void addToAllBookings( Booking pAllBookings ) {
     // Check parameter "pAllBookings" for invalid value null.
@@ -321,11 +288,10 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method adds all passed objects to the association "allBookings".
+   * Method adds all passed objects to {@link #allBookings}.
    * 
-   * 
-   * @param pAllBookings Collection with all objects that should be added to the association "allBookings". The
-   * parameter must not be null.
+   * @param pAllBookings Collection with all objects that should be added to {@link #allBookings}. The parameter must
+   * not be null.
    */
   public void addToAllBookings( Collection<Booking> pAllBookings ) {
     // Check parameter "pAllBookings" for invalid value null.
@@ -337,11 +303,9 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method removes the passed Booking object from the association "allBookings".
+   * Method removes the passed object from {@link #allBookings}.<br/>
    * 
-   * 
-   * @param pAllBookings Object that should be removed from the association "allBookings". The parameter must not be
-   * null.
+   * @param pAllBookings Object that should be removed from {@link #allBookings}. The parameter must not be null.
    */
   public void removeFromAllBookings( Booking pAllBookings ) {
     // Check parameter for invalid value null.
@@ -351,8 +315,7 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method removes all objects from the association "allBookings".
-   * 
+   * Method removes all objects from {@link #allBookings}.
    */
   public void clearAllBookings( ) {
     // Remove all objects from association "allBookings".
@@ -360,7 +323,6 @@ public abstract class AccountBase {
   }
 
   /**
-   * 
    * @return {@link BigDecimal}
    */
   public abstract BigDecimal calcuateBalance( );

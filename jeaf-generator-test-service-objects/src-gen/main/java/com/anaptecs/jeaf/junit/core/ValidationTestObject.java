@@ -16,10 +16,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ValidationTestObject implements ServiceObject {
   /**
    * Default serial version uid.
@@ -36,16 +32,10 @@ public class ValidationTestObject implements ServiceObject {
    */
   public static final String DATEOFBIRTH = "dateOfBirth";
 
-  /**
-   * 
-   */
   @Email()
   @NotNull
   private String myEMail;
 
-  /**
-   * 
-   */
   @Past
   private Calendar dateOfBirth;
 
@@ -90,20 +80,13 @@ public class ValidationTestObject implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class ValidationTestObject. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ValidationTestObject</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     @Email()
     @NotNull
     private String myEMail;
 
-    /**
-     * 
-     */
     @Past
     private Calendar dateOfBirth;
 
@@ -126,9 +109,10 @@ public class ValidationTestObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "myEMail".
+     * Method sets attribute {@link #myEMail}.<br/>
      * 
-     * @param pMyEMail Value to which the attribute "myEMail" should be set.
+     * @param pMyEMail Value to which {@link #myEMail} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setMyEMail( String pMyEMail ) {
       // Assign value to attribute
@@ -137,9 +121,10 @@ public class ValidationTestObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "dateOfBirth".
+     * Method sets attribute {@link #dateOfBirth}.<br/>
      * 
-     * @param pDateOfBirth Value to which the attribute "dateOfBirth" should be set.
+     * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDateOfBirth( Calendar pDateOfBirth ) {
       // Assign value to attribute
@@ -172,20 +157,18 @@ public class ValidationTestObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "myEMail".
+   * Method returns attribute {@link #myEMail}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "myEMail" is set.
+   * @return {@link String} Value to which {@link #myEMail} is set.
    */
   public String getMyEMail( ) {
     return myEMail;
   }
 
   /**
-   * Method sets the attribute "myEMail".
+   * Method sets attribute {@link #myEMail}.<br/>
    * 
-   * 
-   * @param pMyEMail Value to which the attribute "myEMail" should be set.
+   * @param pMyEMail Value to which {@link #myEMail} should be set.
    */
   public void setMyEMail( String pMyEMail ) {
     // Assign value to attribute
@@ -193,20 +176,18 @@ public class ValidationTestObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "dateOfBirth".
+   * Method returns attribute {@link #dateOfBirth}.<br/>
    * 
-   * 
-   * @return Calendar Value to which the attribute "dateOfBirth" is set.
+   * @return {@link Calendar} Value to which {@link #dateOfBirth} is set.
    */
   public Calendar getDateOfBirth( ) {
     return dateOfBirth;
   }
 
   /**
-   * Method sets the attribute "dateOfBirth".
+   * Method sets attribute {@link #dateOfBirth}.<br/>
    * 
-   * 
-   * @param pDateOfBirth Value to which the attribute "dateOfBirth" should be set.
+   * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
    */
   public void setDateOfBirth( Calendar pDateOfBirth ) {
     // Assign value to attribute

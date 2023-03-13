@@ -7,10 +7,6 @@ package com.anaptecs.jeaf.junit.domainObjects;
 
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class NetzbereichDO extends NetzbereichDOBase {
   /**
    * Default serial version uid.

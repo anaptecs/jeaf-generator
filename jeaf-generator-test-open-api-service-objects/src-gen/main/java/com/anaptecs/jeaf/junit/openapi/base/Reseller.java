@@ -10,10 +10,6 @@ import javax.validation.Valid;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 @JsonIdentityInfo(property = "objectID", generator = PropertyGenerator.class)
 public class Reseller extends ResellerBase {
@@ -75,7 +71,6 @@ public class Reseller extends ResellerBase {
   }
 
   /**
-   * 
    * @return {@link Integer}
    */
   @Override
@@ -85,8 +80,7 @@ public class Reseller extends ResellerBase {
   }
 
   /**
-   * 
-   * @return {@link double}
+   * @return double
    */
   @Override
   public double returnPrimitive( ) {

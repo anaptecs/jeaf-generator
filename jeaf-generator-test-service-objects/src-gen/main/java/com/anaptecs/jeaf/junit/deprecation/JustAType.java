@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class JustAType implements ServiceObject {
   /**
    * Default serial version uid.
@@ -32,13 +28,10 @@ public class JustAType implements ServiceObject {
   @Deprecated
   public static final String LEGACY = "legacy";
 
-  /**
-   * 
-   */
   private int attribute;
 
   /**
-   * 
+   * @deprecated Hello (<b>since:</b> TBD, <b>removed with:</b> TBD)
    */
   @Deprecated
   private double legacy;
@@ -84,17 +77,13 @@ public class JustAType implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class JustAType. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>JustAType</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private int attribute;
 
     /**
-     * 
+     * @deprecated Hello (<b>since:</b> TBD, <b>removed with:</b> TBD)
      */
     @Deprecated
     private double legacy;
@@ -117,9 +106,10 @@ public class JustAType implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "attribute".
+     * Method sets attribute {@link #attribute}.<br/>
      * 
-     * @param pAttribute Value to which the attribute "attribute" should be set.
+     * @param pAttribute Value to which {@link #attribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAttribute( int pAttribute ) {
       // Assign value to attribute
@@ -128,9 +118,11 @@ public class JustAType implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "legacy".
+     * Method sets attribute {@link #legacy}.<br/>
      * 
-     * @param pLegacy Value to which the attribute "legacy" should be set.
+     * @param pLegacy Value to which {@link #legacy} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @deprecated Hello (<b>since:</b> TBD, <b>removed with:</b> TBD)
      */
     @Deprecated
     public Builder setLegacy( double pLegacy ) {
@@ -163,20 +155,18 @@ public class JustAType implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "attribute".
+   * Method returns attribute {@link #attribute}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "attribute" is set.
+   * @return int Value to which {@link #attribute} is set.
    */
   public int getAttribute( ) {
     return attribute;
   }
 
   /**
-   * Method sets the attribute "attribute".
+   * Method sets attribute {@link #attribute}.<br/>
    * 
-   * 
-   * @param pAttribute Value to which the attribute "attribute" should be set.
+   * @param pAttribute Value to which {@link #attribute} should be set.
    */
   public void setAttribute( int pAttribute ) {
     // Assign value to attribute
@@ -184,10 +174,10 @@ public class JustAType implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "legacy".
+   * Method returns attribute {@link #legacy}.<br/>
    * 
-   * 
-   * @return double Value to which the attribute "legacy" is set.
+   * @return double Value to which {@link #legacy} is set.
+   * @deprecated Hello (<b>since:</b> TBD, <b>removed with:</b> TBD)
    */
   @Deprecated
   public double getLegacy( ) {
@@ -195,10 +185,10 @@ public class JustAType implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "legacy".
+   * Method sets attribute {@link #legacy}.<br/>
    * 
-   * 
-   * @param pLegacy Value to which the attribute "legacy" should be set.
+   * @param pLegacy Value to which {@link #legacy} should be set.
+   * @deprecated Hello (<b>since:</b> TBD, <b>removed with:</b> TBD)
    */
   @Deprecated
   public void setLegacy( double pLegacy ) {

@@ -8,10 +8,6 @@ import com.anaptecs.jeaf.xfun.types.EncryptedString;
 import com.anaptecs.jeaf.xfun.types.Gender;
 import com.anaptecs.jeaf.xfun.types.Period;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Deprecated
 public abstract class PublicClassBOBase extends PersistentObject {
   /**
@@ -54,19 +50,10 @@ public abstract class PublicClassBOBase extends PersistentObject {
    */
   public static final String ENCRYPTEDSTRING_ATTRIBUTE = "encryptedString";
 
-  /**
-   * 
-   */
   private Period period;
 
-  /**
-   * 
-   */
   private Gender gender;
 
-  /**
-   * 
-   */
   private EncryptedString encryptedString;
 
   /**
@@ -86,20 +73,18 @@ public abstract class PublicClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "period".
+   * Method returns attribute {@link #period}.<br/>
    * 
-   * 
-   * @return Period Value to which the attribute "period" is set.
+   * @return {@link Period} Value to which {@link #period} is set.
    */
   public Period getPeriod( ) {
     return period;
   }
 
   /**
-   * Method sets the attribute "period".
+   * Method sets attribute {@link #period}.<br/>
    * 
-   * 
-   * @param pPeriod Value to which the attribute "period" should be set.
+   * @param pPeriod Value to which {@link #period} should be set.
    */
   public void setPeriod( Period pPeriod ) {
     // Assign value to attribute
@@ -107,20 +92,18 @@ public abstract class PublicClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "gender".
+   * Method returns attribute {@link #gender}.<br/>
    * 
-   * 
-   * @return Gender Value to which the attribute "gender" is set.
+   * @return {@link Gender} Value to which {@link #gender} is set.
    */
   public Gender getGender( ) {
     return gender;
   }
 
   /**
-   * Method sets the attribute "gender".
+   * Method sets attribute {@link #gender}.<br/>
    * 
-   * 
-   * @param pGender Value to which the attribute "gender" should be set.
+   * @param pGender Value to which {@link #gender} should be set.
    */
   public void setGender( Gender pGender ) {
     // Assign value to attribute
@@ -128,20 +111,18 @@ public abstract class PublicClassBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "encryptedString".
+   * Method returns attribute {@link #encryptedString}.<br/>
    * 
-   * 
-   * @return EncryptedString Value to which the attribute "encryptedString" is set.
+   * @return {@link EncryptedString} Value to which {@link #encryptedString} is set.
    */
   public EncryptedString getEncryptedString( ) {
     return encryptedString;
   }
 
   /**
-   * Method sets the attribute "encryptedString".
+   * Method sets attribute {@link #encryptedString}.<br/>
    * 
-   * 
-   * @param pEncryptedString Value to which the attribute "encryptedString" should be set.
+   * @param pEncryptedString Value to which {@link #encryptedString} should be set.
    */
   public void setEncryptedString( EncryptedString pEncryptedString ) {
     // Assign value to attribute

@@ -18,10 +18,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Campaign implements ServiceObject {
   /**
    * Default serial version uid.
@@ -47,19 +43,30 @@ public class Campaign implements ServiceObject {
   public static final String DISCOUNTOFFERS = "discountOffers";
 
   /**
+   * The magic link.
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
    * 
+   * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
   private long theLink;
 
   /**
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #moreLinks} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
    * 
+   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
   private Set<Long> moreLinks;
 
   /**
-   * 
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #discountOffers} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
    */
   @Deprecated
   private List<String> discountOffers;
@@ -117,24 +124,34 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class Campaign. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Campaign</code>.
    */
   public static class Builder {
     /**
+     * The magic link.
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
+     * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
      * 
+     * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
      */
     @Deprecated
     private long theLink;
 
     /**
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #moreLinks} is
+     * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
      * 
+     * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
      */
     @Deprecated
     private Set<Long> moreLinks;
 
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #discountOffers} is
+     * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
      */
     @Deprecated
     private List<String> discountOffers;
@@ -158,19 +175,24 @@ public class Campaign implements ServiceObject {
     }
 
     /**
-     * Method sets the association "theLink".
+     * Method sets association {@link #theLink}.<br/>
      * 
-     * @param pTheLink LinkObject to which the association "theLink" should be set.
+     * @param pTheLink Value to which {@link #theLink} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
      */
+    @Deprecated
     public Builder setTheLink( long pTheLink ) {
       theLink = pTheLink;
       return this;
     }
 
     /**
-     * Method sets the association "moreLinks".
+     * Method sets association {@link #moreLinks}.<br/>
      * 
-     * @param pMoreLinks Collection with objects to which the association should be set.
+     * @param pMoreLinks Collection to which {@link #moreLinks} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
      */
     @Deprecated
     public Builder setMoreLinks( Set<Long> pMoreLinks ) {
@@ -185,9 +207,10 @@ public class Campaign implements ServiceObject {
     }
 
     /**
-     * Method sets the association "discountOffers".
+     * Method sets association {@link #discountOffers}.<br/>
      * 
-     * @param pDiscountOffers Collection with objects to which the association should be set.
+     * @param pDiscountOffers Collection to which {@link #discountOffers} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDiscountOffers( List<String> pDiscountOffers ) {
@@ -225,33 +248,41 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method returns the association "theLink".
+   * Method returns association {@link #theLink}.<br/>
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
+   * The magic link.
    * 
-   *
-   * @return LinkObject LinkObject to which the association "theLink" is set.
+   * @return {@link long} Value to which {@link #theLink} is set.
+   * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
-  public Long getTheLink( ) {
+  public long getTheLink( ) {
     return theLink;
   }
 
   /**
-   * Method sets the association "theLink".
+   * Method sets association {@link #theLink}.<br/>
+   * The magic link.
    * 
-   * 
-   * @param pTheLink LinkObject to which the association "theLink" should be set.
+   * @param pTheLink Value to which {@link #theLink} should be set.
+   * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
-  public void setTheLink( Long pTheLink ) {
+  public void setTheLink( long pTheLink ) {
     theLink = pTheLink;
   }
 
   /**
-   * Method returns the association "moreLinks".
+   * Method returns association {@link #moreLinks}.<br/>
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #moreLinks} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
    * 
-   *
-   * @return Collection All LinkObject objects that belong to the association "moreLinks". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<Long>} Value to which {@link #moreLinks} is set. The method never returns null and the returned
+   * collection is unmodifiable.
+   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
   public Set<Long> getMoreLinks( ) {
@@ -260,10 +291,10 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method adds the passed LinkObject object to the association "moreLinks".
+   * Method adds the passed object to {@link #moreLinks}.
    * 
-   * 
-   * @param pMoreLinks Object that should be added to the association "moreLinks". The parameter must not be null.
+   * @param pMoreLinks Object that should be added to {@link #moreLinks}. The parameter must not be null.
+   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
   public void addToMoreLinks( Long pMoreLinks ) {
@@ -274,11 +305,11 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "moreLinks".
+   * Method adds all passed objects to {@link #moreLinks}.
    * 
-   * 
-   * @param pMoreLinks Collection with all objects that should be added to the association "moreLinks". The parameter
-   * must not be null.
+   * @param pMoreLinks Collection with all objects that should be added to {@link #moreLinks}. The parameter must not be
+   * null.
+   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
   public void addToMoreLinks( Collection<Long> pMoreLinks ) {
@@ -291,10 +322,9 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method removes the passed LinkObject object from the association "moreLinks".
+   * Method removes the passed object from {@link #moreLinks}.
    * 
-   * 
-   * @param pMoreLinks Object that should be removed from the association "moreLinks". The parameter must not be null.
+   * @param pMoreLinks Object that should be removed from {@link #moreLinks}. The parameter must not be null.
    */
   @Deprecated
   public void removeFromMoreLinks( Long pMoreLinks ) {
@@ -305,8 +335,7 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "moreLinks".
-   * 
+   * Method removes all objects from {@link #moreLinks}.
    */
   @Deprecated
   public void clearMoreLinks( ) {
@@ -315,11 +344,13 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method returns the association "discountOffers".
+   * Method returns association {@link #discountOffers}.<br/>
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #discountOffers} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
    * 
-   *
-   * @return Collection All DiscountOffer objects that belong to the association "discountOffers". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link List<String>} Value to which {@link #discountOffers} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   @Deprecated
   public List<String> getDiscountOffers( ) {
@@ -328,11 +359,9 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method adds the passed DiscountOffer object to the association "discountOffers".
+   * Method adds the passed object to {@link #discountOffers}.
    * 
-   * 
-   * @param pDiscountOffers Object that should be added to the association "discountOffers". The parameter must not be
-   * null.
+   * @param pDiscountOffers Object that should be added to {@link #discountOffers}. The parameter must not be null.
    */
   @Deprecated
   public void addToDiscountOffers( String pDiscountOffers ) {
@@ -343,11 +372,10 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "discountOffers".
+   * Method adds all passed objects to {@link #discountOffers}.
    * 
-   * 
-   * @param pDiscountOffers Collection with all objects that should be added to the association "discountOffers". The
-   * parameter must not be null.
+   * @param pDiscountOffers Collection with all objects that should be added to {@link #discountOffers}. The parameter
+   * must not be null.
    */
   @Deprecated
   public void addToDiscountOffers( Collection<String> pDiscountOffers ) {
@@ -360,11 +388,9 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method removes the passed DiscountOffer object from the association "discountOffers".
+   * Method removes the passed object from {@link #discountOffers}.
    * 
-   * 
-   * @param pDiscountOffers Object that should be removed from the association "discountOffers". The parameter must not
-   * be null.
+   * @param pDiscountOffers Object that should be removed from {@link #discountOffers}. The parameter must not be null.
    */
   @Deprecated
   public void removeFromDiscountOffers( String pDiscountOffers ) {
@@ -375,8 +401,7 @@ public class Campaign implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "discountOffers".
-   * 
+   * Method removes all objects from {@link #discountOffers}.
    */
   @Deprecated
   public void clearDiscountOffers( ) {

@@ -37,9 +37,8 @@ public final class JEAFAuthorizationTestServiceProxy extends ServiceProxy implem
   }
 
   /**
-   * Generated proxy implementation for method "doSomething".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.JEAFAuthorizationTestService#doSomething}
    */
   public void doSomething( ) {
     try {
@@ -52,9 +51,8 @@ public final class JEAFAuthorizationTestServiceProxy extends ServiceProxy implem
   }
 
   /**
-   * Generated proxy implementation for method "doAnotherthing1".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.JEAFAuthorizationTestService#doAnotherthing1}
    */
   public void doAnotherthing1( ) {
     try {

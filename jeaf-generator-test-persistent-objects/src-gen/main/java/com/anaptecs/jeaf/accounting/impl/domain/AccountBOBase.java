@@ -12,10 +12,6 @@ import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class AccountBOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -67,34 +63,16 @@ public abstract class AccountBOBase extends PersistentObject {
    */
   public static final String AUTHORIZEDPERSONS_ROLE = "authorizedPersons";
 
-  /**
-   * 
-   */
   private Long number;
 
-  /**
-   * 
-   */
   private BankBO bank;
 
-  /**
-   * 
-   */
   private CustomerBO customer;
 
-  /**
-   * 
-   */
   private Set<BookingBO> bookings;
 
-  /**
-   * 
-   */
   private Set<MyPersonBO> authorizedPersons;
 
-  /**
-   * 
-   */
   private Float interestRate;
 
   /**
@@ -116,20 +94,18 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "number".
+   * Method returns attribute {@link #number}.<br/>
    * 
-   * 
-   * @return Long Value to which the attribute "number" is set.
+   * @return {@link Long} Value to which {@link #number} is set.
    */
   public Long getNumber( ) {
     return number;
   }
 
   /**
-   * Method sets the attribute "number".
+   * Method sets attribute {@link #number}.<br/>
    * 
-   * 
-   * @param pNumber Value to which the attribute "number" should be set.
+   * @param pNumber Value to which {@link #number} should be set.
    */
   public void setNumber( Long pNumber ) {
     // Assign value to attribute
@@ -137,10 +113,9 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "bank".
+   * Method returns association {@link #bank}.<br/>
    * 
-   *
-   * @return BankBO BankBO to which the association "bank" is set.
+   * @return {@link BankBO} Value to which {@link #bank} is set.
    */
   public BankBO getBank( ) {
     bank = this.unproxy(bank);
@@ -148,10 +123,9 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "bank".
+   * Method sets association {@link #bank}.<br/>
    * 
-   * 
-   * @param pBank BankBO to which the association "bank" should be set.
+   * @param pBank Value to which {@link #bank} should be set.
    */
   public void setBank( BankBO pBank ) {
     // Release already referenced object before setting a new association.
@@ -167,8 +141,7 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "bank".
-   * 
+   * Method unsets {@link #bank}.
    */
   public final void unsetBank( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -181,10 +154,9 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "customer".
+   * Method returns association {@link #customer}.<br/>
    * 
-   *
-   * @return CustomerBO CustomerBO to which the association "customer" is set.
+   * @return {@link CustomerBO} Value to which {@link #customer} is set.
    */
   public CustomerBO getCustomer( ) {
     customer = this.unproxy(customer);
@@ -192,10 +164,9 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "customer".
+   * Method sets association {@link #customer}.<br/>
    * 
-   * 
-   * @param pCustomer CustomerBO to which the association "customer" should be set.
+   * @param pCustomer Value to which {@link #customer} should be set.
    */
   public void setCustomer( CustomerBO pCustomer ) {
     // Release already referenced object before setting a new association.
@@ -211,8 +182,7 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "customer".
-   * 
+   * Method unsets {@link #customer}.
    */
   public final void unsetCustomer( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -225,11 +195,10 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "bookings".
+   * Method returns association {@link #bookings}.<br/>
    * 
-   *
-   * @return Collection All BookingBO objects that belong to the association "bookings". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<BookingBO>} Value to which {@link #bookings} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<BookingBO> getBookings( ) {
     // Return all BookingBO objects as unmodifiable collection.
@@ -237,10 +206,9 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed BookingBO object to the association "bookings".
+   * Method adds the passed object to {@link #bookings}.
    * 
-   * 
-   * @param pBookings Object that should be added to the association "bookings". The parameter must not be null.
+   * @param pBookings Object that should be added to {@link #bookings}. The parameter must not be null.
    */
   public void addToBookings( BookingBO pBookings ) {
     // Check parameter "pBookings" for invalid value null.
@@ -258,11 +226,10 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "bookings".
+   * Method adds all passed objects to {@link #bookings}.
    * 
-   * 
-   * @param pBookings Collection with all objects that should be added to the association "bookings". The parameter must
-   * not be null.
+   * @param pBookings Collection with all objects that should be added to {@link #bookings}. The parameter must not be
+   * null.
    */
   public void addToBookings( Collection<BookingBO> pBookings ) {
     // Check parameter "pBookings" for invalid value null.
@@ -274,10 +241,9 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed BookingBO object from the association "bookings".
+   * Method removes the passed object from {@link #bookings}.<br/>
    * 
-   * 
-   * @param pBookings Object that should be removed from the association "bookings". The parameter must not be null.
+   * @param pBookings Object that should be removed from {@link #bookings}. The parameter must not be null.
    */
   public void removeFromBookings( BookingBO pBookings ) {
     // Check parameter for invalid value null.
@@ -292,8 +258,7 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "bookings".
-   * 
+   * Method removes all objects from {@link #bookings}.
    */
   public void clearBookings( ) {
     // Remove all objects from association "bookings".
@@ -306,11 +271,10 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "authorizedPersons".
+   * Method returns association {@link #authorizedPersons}.<br/>
    * 
-   *
-   * @return Collection All MyPersonBO objects that belong to the association "authorizedPersons". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link Set<MyPersonBO>} Value to which {@link #authorizedPersons} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public Set<MyPersonBO> getAuthorizedPersons( ) {
     // Return all MyPersonBO objects as unmodifiable collection.
@@ -318,11 +282,10 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed MyPersonBO object to the association "authorizedPersons".
+   * Method adds the passed object to {@link #authorizedPersons}.
    * 
-   * 
-   * @param pAuthorizedPersons Object that should be added to the association "authorizedPersons". The parameter must
-   * not be null.
+   * @param pAuthorizedPersons Object that should be added to {@link #authorizedPersons}. The parameter must not be
+   * null.
    */
   public void addToAuthorizedPersons( MyPersonBO pAuthorizedPersons ) {
     // Check parameter "pAuthorizedPersons" for invalid value null.
@@ -337,11 +300,10 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "authorizedPersons".
+   * Method adds all passed objects to {@link #authorizedPersons}.
    * 
-   * 
-   * @param pAuthorizedPersons Collection with all objects that should be added to the association "authorizedPersons".
-   * The parameter must not be null.
+   * @param pAuthorizedPersons Collection with all objects that should be added to {@link #authorizedPersons}. The
+   * parameter must not be null.
    */
   public void addToAuthorizedPersons( Collection<MyPersonBO> pAuthorizedPersons ) {
     // Check parameter "pAuthorizedPersons" for invalid value null.
@@ -353,11 +315,10 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed MyPersonBO object from the association "authorizedPersons".
+   * Method removes the passed object from {@link #authorizedPersons}.<br/>
    * 
-   * 
-   * @param pAuthorizedPersons Object that should be removed from the association "authorizedPersons". The parameter
-   * must not be null.
+   * @param pAuthorizedPersons Object that should be removed from {@link #authorizedPersons}. The parameter must not be
+   * null.
    */
   public void removeFromAuthorizedPersons( MyPersonBO pAuthorizedPersons ) {
     // Check parameter for invalid value null.
@@ -372,8 +333,7 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "authorizedPersons".
-   * 
+   * Method removes all objects from {@link #authorizedPersons}.
    */
   public void clearAuthorizedPersons( ) {
     // Remove all objects from association "authorizedPersons".
@@ -386,20 +346,18 @@ public abstract class AccountBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "interestRate".
+   * Method returns attribute {@link #interestRate}.<br/>
    * 
-   * 
-   * @return Float Value to which the attribute "interestRate" is set.
+   * @return {@link Float} Value to which {@link #interestRate} is set.
    */
   public Float getInterestRate( ) {
     return interestRate;
   }
 
   /**
-   * Method sets the attribute "interestRate".
+   * Method sets attribute {@link #interestRate}.<br/>
    * 
-   * 
-   * @param pInterestRate Value to which the attribute "interestRate" should be set.
+   * @param pInterestRate Value to which {@link #interestRate} should be set.
    */
   public void setInterestRate( Float pInterestRate ) {
     // Assign value to attribute
@@ -408,7 +366,6 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method calculates the current balance of the account. Therefore the the amount of every booking is accumulated.
-   * 
    * 
    * @return {@link BigDecimal}
    */

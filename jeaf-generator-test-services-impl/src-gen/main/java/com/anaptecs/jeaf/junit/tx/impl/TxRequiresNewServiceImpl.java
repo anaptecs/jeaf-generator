@@ -35,8 +35,7 @@ final class TxRequiresNewServiceImpl extends TxRequiresNewServiceImplBase {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void testTransactionBehavior( ) {
   }

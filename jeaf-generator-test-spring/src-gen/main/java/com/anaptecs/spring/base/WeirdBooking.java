@@ -12,10 +12,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeirdBooking {
   /**
@@ -28,14 +24,8 @@ public class WeirdBooking {
    */
   public static final String ADDITIONALBOOKINGS = "additionalBookings";
 
-  /**
-   * 
-   */
   private ComplexBookingID booking;
 
-  /**
-   * 
-   */
   private List<ComplexBookingID> additionalBookings;
 
   /**
@@ -83,18 +73,11 @@ public class WeirdBooking {
   }
 
   /**
-   * Class implements builder to create a new instance of class WeirdBooking. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>WeirdBooking</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private ComplexBookingID booking;
 
-    /**
-     * 
-     */
     private List<ComplexBookingID> additionalBookings;
 
     /**
@@ -135,9 +118,10 @@ public class WeirdBooking {
     }
 
     /**
-     * Method sets the association "booking".
+     * Method sets association {@link #booking}.<br/>
      * 
-     * @param pBooking ComplexBookingID to which the association "booking" should be set.
+     * @param pBooking Value to which {@link #booking} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooking( ComplexBookingID pBooking ) {
       booking = pBooking;
@@ -145,9 +129,10 @@ public class WeirdBooking {
     }
 
     /**
-     * Method sets the association "additionalBookings".
+     * Method sets association {@link #additionalBookings}.<br/>
      * 
-     * @param pAdditionalBookings Collection with objects to which the association should be set.
+     * @param pAdditionalBookings Collection to which {@link #additionalBookings} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAdditionalBookings( List<ComplexBookingID> pAdditionalBookings ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -172,39 +157,35 @@ public class WeirdBooking {
   }
 
   /**
-   * Method returns the association "booking".
+   * Method returns association {@link #booking}.<br/>
    * 
-   *
-   * @return ComplexBookingID ComplexBookingID to which the association "booking" is set.
+   * @return {@link ComplexBookingID} Value to which {@link #booking} is set.
    */
   public ComplexBookingID getBooking( ) {
     return booking;
   }
 
   /**
-   * Method sets the association "booking".
+   * Method sets association {@link #booking}.<br/>
    * 
-   * 
-   * @param pBooking ComplexBookingID to which the association "booking" should be set.
+   * @param pBooking Value to which {@link #booking} should be set.
    */
   public void setBooking( ComplexBookingID pBooking ) {
     booking = pBooking;
   }
 
   /**
-   * Method unsets the association "booking".
-   * 
+   * Method unsets {@link #booking}.
    */
   public final void unsetBooking( ) {
     booking = null;
   }
 
   /**
-   * Method returns the association "additionalBookings".
+   * Method returns association {@link #additionalBookings}.<br/>
    * 
-   *
-   * @return Collection All ComplexBookingID objects that belong to the association "additionalBookings". The method
-   * never returns null and the returned collection is unmodifiable.
+   * @return {@link List<ComplexBookingID>} Value to which {@link #additionalBookings} is set. The method never returns
+   * null and the returned collection is unmodifiable.
    */
   public List<ComplexBookingID> getAdditionalBookings( ) {
     // Return all ComplexBookingID objects as unmodifiable collection.
@@ -212,11 +193,10 @@ public class WeirdBooking {
   }
 
   /**
-   * Method adds the passed ComplexBookingID object to the association "additionalBookings".
+   * Method adds the passed object to {@link #additionalBookings}.
    * 
-   * 
-   * @param pAdditionalBookings Object that should be added to the association "additionalBookings". The parameter must
-   * not be null.
+   * @param pAdditionalBookings Object that should be added to {@link #additionalBookings}. The parameter must not be
+   * null.
    */
   public void addToAdditionalBookings( ComplexBookingID pAdditionalBookings ) {
     // Add passed object to collection of associated ComplexBookingID objects.
@@ -224,11 +204,10 @@ public class WeirdBooking {
   }
 
   /**
-   * Method adds all passed objects to the association "additionalBookings".
+   * Method adds all passed objects to {@link #additionalBookings}.
    * 
-   * 
-   * @param pAdditionalBookings Collection with all objects that should be added to the association
-   * "additionalBookings". The parameter must not be null.
+   * @param pAdditionalBookings Collection with all objects that should be added to {@link #additionalBookings}. The
+   * parameter must not be null.
    */
   public void addToAdditionalBookings( Collection<ComplexBookingID> pAdditionalBookings ) {
     // Add all passed objects.
@@ -238,11 +217,10 @@ public class WeirdBooking {
   }
 
   /**
-   * Method removes the passed ComplexBookingID object from the association "additionalBookings".
+   * Method removes the passed object from {@link #additionalBookings}.<br/>
    * 
-   * 
-   * @param pAdditionalBookings Object that should be removed from the association "additionalBookings". The parameter
-   * must not be null.
+   * @param pAdditionalBookings Object that should be removed from {@link #additionalBookings}. The parameter must not
+   * be null.
    */
   public void removeFromAdditionalBookings( ComplexBookingID pAdditionalBookings ) {
     // Remove passed object from collection of associated ComplexBookingID objects.
@@ -250,8 +228,7 @@ public class WeirdBooking {
   }
 
   /**
-   * Method removes all objects from the association "additionalBookings".
-   * 
+   * Method removes all objects from {@link #additionalBookings}.
    */
   public void clearAdditionalBookings( ) {
     // Remove all objects from association "additionalBookings".

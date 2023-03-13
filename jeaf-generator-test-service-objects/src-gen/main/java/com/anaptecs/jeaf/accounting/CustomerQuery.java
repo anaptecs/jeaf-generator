@@ -7,10 +7,6 @@ package com.anaptecs.jeaf.accounting;
 
 import com.anaptecs.jeaf.core.api.QueryObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class CustomerQuery extends QueryObject {
   /**
    * Default serial version uid.
@@ -37,24 +33,12 @@ public class CustomerQuery extends QueryObject {
    */
   public static final String CITY = "city";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private String firstName;
 
-  /**
-   * 
-   */
   private String companyName;
 
-  /**
-   * 
-   */
   private String city;
 
   /**
@@ -65,20 +49,18 @@ public class CustomerQuery extends QueryObject {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -86,20 +68,18 @@ public class CustomerQuery extends QueryObject {
   }
 
   /**
-   * Method returns the attribute "firstName".
+   * Method returns attribute {@link #firstName}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "firstName" is set.
+   * @return {@link String} Value to which {@link #firstName} is set.
    */
   public String getFirstName( ) {
     return firstName;
   }
 
   /**
-   * Method sets the attribute "firstName".
+   * Method sets attribute {@link #firstName}.<br/>
    * 
-   * 
-   * @param pFirstName Value to which the attribute "firstName" should be set.
+   * @param pFirstName Value to which {@link #firstName} should be set.
    */
   public void setFirstName( String pFirstName ) {
     // Assign value to attribute
@@ -107,20 +87,18 @@ public class CustomerQuery extends QueryObject {
   }
 
   /**
-   * Method returns the attribute "companyName".
+   * Method returns attribute {@link #companyName}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "companyName" is set.
+   * @return {@link String} Value to which {@link #companyName} is set.
    */
   public String getCompanyName( ) {
     return companyName;
   }
 
   /**
-   * Method sets the attribute "companyName".
+   * Method sets attribute {@link #companyName}.<br/>
    * 
-   * 
-   * @param pCompanyName Value to which the attribute "companyName" should be set.
+   * @param pCompanyName Value to which {@link #companyName} should be set.
    */
   public void setCompanyName( String pCompanyName ) {
     // Assign value to attribute
@@ -128,20 +106,18 @@ public class CustomerQuery extends QueryObject {
   }
 
   /**
-   * Method returns the attribute "city".
+   * Method returns attribute {@link #city}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "city" is set.
+   * @return {@link String} Value to which {@link #city} is set.
    */
   public String getCity( ) {
     return city;
   }
 
   /**
-   * Method sets the attribute "city".
+   * Method sets attribute {@link #city}.<br/>
    * 
-   * 
-   * @param pCity Value to which the attribute "city" should be set.
+   * @param pCity Value to which {@link #city} should be set.
    */
   public void setCity( String pCity ) {
     // Assign value to attribute

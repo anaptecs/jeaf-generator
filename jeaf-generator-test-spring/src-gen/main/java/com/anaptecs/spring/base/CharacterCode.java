@@ -9,10 +9,6 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CharacterCode {
   /**
@@ -20,9 +16,6 @@ public class CharacterCode {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private Character code;
 
   /**
@@ -63,13 +56,9 @@ public class CharacterCode {
   }
 
   /**
-   * Class implements builder to create a new instance of class CharacterCode. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>CharacterCode</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private Character code;
 
     /**
@@ -109,9 +98,10 @@ public class CharacterCode {
     }
 
     /**
-     * Method sets the attribute "code".
+     * Method sets attribute {@link #code}.<br/>
      * 
-     * @param pCode Value to which the attribute "code" should be set.
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCode( Character pCode ) {
       // Assign value to attribute
@@ -131,20 +121,18 @@ public class CharacterCode {
   }
 
   /**
-   * Method returns the attribute "code".
+   * Method returns attribute {@link #code}.<br/>
    * 
-   * 
-   * @return Character Value to which the attribute "code" is set.
+   * @return {@link Character} Value to which {@link #code} is set.
    */
   public Character getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( Character pCode ) {
     // Assign value to attribute

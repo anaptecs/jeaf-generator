@@ -8,9 +8,7 @@ package com.anaptecs.jeaf.junit.impl.core;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 
 /**
- * Class represents the SecurityTest component.
- *
- * implements the Interface JEAFSecurityTestService
+ * Class represents the configuration for component {@link com.anaptecs.jeaf.junit.impl.core.SecurityTestComponent}.
  */
 public final class SecurityTestComponentConfiguration {
   /**

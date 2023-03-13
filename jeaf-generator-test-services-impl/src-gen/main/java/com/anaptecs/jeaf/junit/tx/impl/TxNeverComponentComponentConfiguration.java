@@ -8,9 +8,7 @@ package com.anaptecs.jeaf.junit.tx.impl;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 
 /**
- * Class represents the TxNeverComponent component.
- *
- * 
+ * Class represents the configuration for component {@link com.anaptecs.jeaf.junit.tx.impl.TxNeverComponentComponent}.
  */
 public final class TxNeverComponentComponentConfiguration {
   /**

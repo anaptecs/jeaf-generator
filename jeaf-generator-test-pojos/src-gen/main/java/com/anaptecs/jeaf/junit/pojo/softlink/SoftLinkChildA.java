@@ -13,10 +13,6 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -59,8 +55,7 @@ public class SoftLinkChildA extends SoftLinkParent {
   }
 
   /**
-   * Class implements builder to create a new instance of class SoftLinkChildA. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>SoftLinkChildA</code>.
    */
   public static class Builder extends SoftLinkParent.Builder {
     /**
@@ -81,9 +76,10 @@ public class SoftLinkChildA extends SoftLinkParent {
     }
 
     /**
-     * Method sets the association "partners".
+     * Method sets association {@link #partners}.<br/>
      * 
-     * @param pPartners Collection with objects to which the association should be set.
+     * @param pPartners Collection to which {@link #partners} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setPartners( Set<SoftLinkID> pPartners ) {
@@ -93,9 +89,10 @@ public class SoftLinkChildA extends SoftLinkParent {
     }
 
     /**
-     * Method sets the association "thePartner".
+     * Method sets association {@link #thePartner}.<br/>
      * 
-     * @param pThePartner SoftLinkPartner to which the association "thePartner" should be set.
+     * @param pThePartner Value to which {@link #thePartner} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setThePartner( SoftLinkID pThePartner ) {
@@ -105,9 +102,10 @@ public class SoftLinkChildA extends SoftLinkParent {
     }
 
     /**
-     * Method sets the association "readonlyPartner".
+     * Method sets association {@link #readonlyPartner}.<br/>
      * 
-     * @param pReadonlyPartner SoftLinkPartner to which the association "readonlyPartner" should be set.
+     * @param pReadonlyPartner Value to which {@link #readonlyPartner} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setReadonlyPartner( SoftLinkID pReadonlyPartner ) {

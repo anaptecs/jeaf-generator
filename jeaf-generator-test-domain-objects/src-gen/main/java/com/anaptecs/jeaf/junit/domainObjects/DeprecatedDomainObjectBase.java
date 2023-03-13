@@ -8,10 +8,6 @@ package com.anaptecs.jeaf.junit.domainObjects;
 import com.anaptecs.jeaf.core.api.DomainObject;
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Deprecated
 public abstract class DeprecatedDomainObjectBase extends DomainObject {
   /**
@@ -48,23 +44,20 @@ public abstract class DeprecatedDomainObjectBase extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "readonlyDefault".
+   * Method returns attribute {@link #readonlyDefault}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "readonlyDefault" is set.
+   * @return int Value to which {@link #readonlyDefault} is set.
    */
   public int getReadonlyDefault( ) {
     return readonlyDefault;
   }
 
   /**
-  * 
-  */
+   */
   public abstract void doSomething( );
 
   /**
-   * 
-   * @return {@link byte}
+   * @return byte
    */
   public abstract byte returnPrimitive( );
 

@@ -19,7 +19,10 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
- * Multi line class comment
+ * Multi<br/>
+ * line<br/>
+ * class<br/>
+ * comment
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
@@ -88,8 +91,7 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Class implements builder to create a new instance of class ChildB. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ChildB</code>.
    */
   public static class Builder extends ParentClass.Builder {
     /**
@@ -123,9 +125,10 @@ public class ChildB extends ParentClass {
     }
 
     /**
-     * Method sets the attribute "parentAttribute".
+     * Method sets attribute {@link #parentAttribute}.<br/>
      * 
-     * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setParentAttribute( String pParentAttribute ) {
@@ -135,9 +138,10 @@ public class ChildB extends ParentClass {
     }
 
     /**
-     * Method sets the association "ibans".
+     * Method sets association {@link #ibans}.<br/>
      * 
-     * @param pIbans Collection with objects to which the association should be set.
+     * @param pIbans Collection to which {@link #ibans} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setIbans( Set<IBAN> pIbans ) {
@@ -147,10 +151,12 @@ public class ChildB extends ParentClass {
     }
 
     /**
-     * Method sets the association "theBankAccount". I would like to document references to other types.
+     * Method sets association {@link #theBankAccount}.<br/>
      * 
-     * @param pTheBankAccount BankAccount to which the association "theBankAccount" should be set.
+     * @param pTheBankAccount Value to which {@link #theBankAccount} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     @Override
     public Builder setTheBankAccount( BankAccount pTheBankAccount ) {
       // Call super class implementation.
@@ -159,10 +165,12 @@ public class ChildB extends ParentClass {
     }
 
     /**
-     * Method sets the association "legacyBankAccounts". Association is still there be SemVer compliant.
+     * Method sets association {@link #legacyBankAccounts}.<br/>
      * 
-     * @param pLegacyBankAccounts Collection with objects to which the association should be set.
+     * @param pLegacyBankAccounts Collection to which {@link #legacyBankAccounts} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     @Override
     public Builder setLegacyBankAccounts( List<BankAccount> pLegacyBankAccounts ) {
       // Call super class implementation.
@@ -171,9 +179,10 @@ public class ChildB extends ParentClass {
     }
 
     /**
-     * Method sets the attribute "childBAttribute". A child attribute
+     * Method sets attribute {@link #childBAttribute}.<br/>
      * 
-     * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
+     * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildBAttribute( boolean[] pChildBAttribute ) {
       // Assign value to attribute
@@ -187,9 +196,10 @@ public class ChildB extends ParentClass {
     }
 
     /**
-     * Method sets the association "composition". the composition
+     * Method sets association {@link #composition}.<br/>
      * 
-     * @param pComposition Collection with objects to which the association should be set.
+     * @param pComposition Collection to which {@link #composition} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setComposition( Set<ParentClass> pComposition ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -226,9 +236,10 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method returns the attribute "childBAttribute". A child attribute
+   * Method returns attribute {@link #childBAttribute}.<br/>
+   * A child attribute
    * 
-   * @return Boolean Value to which the attribute "childBAttribute" is set.
+   * @return boolean Value to which {@link #childBAttribute} is set.
    */
   public boolean[] getChildBAttribute( ) {
     boolean[] lReturnValue;
@@ -242,9 +253,10 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method sets the attribute "childBAttribute". A child attribute
+   * Method sets attribute {@link #childBAttribute}.<br/>
+   * A child attribute
    * 
-   * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
+   * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
    */
   public void setChildBAttribute( boolean[] pChildBAttribute ) {
     // Assign value to attribute
@@ -257,10 +269,11 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method returns the association "composition". the composition
-   *
-   * @return Collection All ParentClass objects that belong to the association "composition". The method never returns
-   * null and the returned collection is modifiable.
+   * Method returns association {@link #composition}.<br/>
+   * the composition
+   * 
+   * @return {@link Set<ParentClass>} Value to which {@link #composition} is set. The method never returns null and the
+   * returned collection is modifiable.
    */
   public Set<ParentClass> getComposition( ) {
     // Return all ParentClass objects directly without any protection against modification.
@@ -268,9 +281,9 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method adds the passed ParentClass object to the association "composition". the composition
+   * Method adds the passed object to {@link #composition}.
    * 
-   * @param pComposition Object that should be added to the association "composition". The parameter must not be null.
+   * @param pComposition Object that should be added to {@link #composition}. The parameter must not be null.
    */
   public void addToComposition( ParentClass pComposition ) {
     // Check parameter "pComposition" for invalid value null.
@@ -280,10 +293,10 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method adds all passed objects to the association "composition". the composition
+   * Method adds all passed objects to {@link #composition}.
    * 
-   * @param pComposition Collection with all objects that should be added to the association "composition". The
-   * parameter must not be null.
+   * @param pComposition Collection with all objects that should be added to {@link #composition}. The parameter must
+   * not be null.
    */
   public void addToComposition( Collection<ParentClass> pComposition ) {
     // Check parameter "pComposition" for invalid value null.
@@ -295,10 +308,9 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method removes the passed ParentClass object from the association "composition". the composition
+   * Method removes the passed object from {@link #composition}.<br/>
    * 
-   * @param pComposition Object that should be removed from the association "composition". The parameter must not be
-   * null.
+   * @param pComposition Object that should be removed from {@link #composition}. The parameter must not be null.
    */
   public void removeFromComposition( ParentClass pComposition ) {
     // Check parameter for invalid value null.
@@ -308,7 +320,7 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method removes all objects from the association "composition". the composition
+   * Method removes all objects from {@link #composition}.
    */
   public void clearComposition( ) {
     // Remove all objects from association "composition".

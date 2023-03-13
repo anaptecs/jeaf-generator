@@ -9,10 +9,6 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DoubleCodeType {
   /**
@@ -20,9 +16,6 @@ public class DoubleCodeType {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   public double code;
 
   /**
@@ -77,13 +70,9 @@ public class DoubleCodeType {
   }
 
   /**
-   * Class implements builder to create a new instance of class DoubleCodeType. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>DoubleCodeType</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private double code;
 
     /**
@@ -103,9 +92,10 @@ public class DoubleCodeType {
     }
 
     /**
-     * Method sets the attribute "code".
+     * Method sets attribute {@link #code}.<br/>
      * 
-     * @param pCode Value to which the attribute "code" should be set.
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCode( double pCode ) {
       // Assign value to attribute
@@ -125,20 +115,18 @@ public class DoubleCodeType {
   }
 
   /**
-   * Method returns the attribute "code".
+   * Method returns attribute {@link #code}.<br/>
    * 
-   * 
-   * @return double Value to which the attribute "code" is set.
+   * @return double Value to which {@link #code} is set.
    */
   public double getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( double pCode ) {
     // Assign value to attribute

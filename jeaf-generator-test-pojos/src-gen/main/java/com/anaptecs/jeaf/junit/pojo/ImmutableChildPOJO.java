@@ -11,10 +11,6 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -29,14 +25,8 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
    */
   public static final String ANOTHERCHILDATTRIBUTE = "anotherChildAttribute";
 
-  /**
-   * 
-   */
   private String childAttribute;
 
-  /**
-   * 
-   */
   private final Double anotherChildAttribute;
 
   /**
@@ -81,18 +71,11 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
   }
 
   /**
-   * Class implements builder to create a new instance of class ImmutableChildPOJO. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ImmutableChildPOJO</code>.
    */
   public static class Builder extends ImmutablePOJOParent.Builder {
-    /**
-     * 
-     */
     private String childAttribute;
 
-    /**
-     * 
-     */
     private Double anotherChildAttribute;
 
     /**
@@ -115,9 +98,10 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
     }
 
     /**
-     * Method sets the attribute "abtractAttr".
+     * Method sets attribute {@link #abtractAttr}.<br/>
      * 
-     * @param pAbtractAttr Value to which the attribute "abtractAttr" should be set.
+     * @param pAbtractAttr Value to which {@link #abtractAttr} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setAbtractAttr( String pAbtractAttr ) {
@@ -127,9 +111,10 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
     }
 
     /**
-     * Method sets the attribute "parentAttribute".
+     * Method sets attribute {@link #parentAttribute}.<br/>
      * 
-     * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setParentAttribute( String pParentAttribute ) {
@@ -139,9 +124,10 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
     }
 
     /**
-     * Method sets the attribute "anotherParentAttribute".
+     * Method sets attribute {@link #anotherParentAttribute}.<br/>
      * 
-     * @param pAnotherParentAttribute Value to which the attribute "anotherParentAttribute" should be set.
+     * @param pAnotherParentAttribute Value to which {@link #anotherParentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setAnotherParentAttribute( Integer pAnotherParentAttribute ) {
@@ -151,9 +137,10 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
     }
 
     /**
-     * Method sets the attribute "childAttribute".
+     * Method sets attribute {@link #childAttribute}.<br/>
      * 
-     * @param pChildAttribute Value to which the attribute "childAttribute" should be set.
+     * @param pChildAttribute Value to which {@link #childAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildAttribute( String pChildAttribute ) {
       // Assign value to attribute
@@ -162,9 +149,10 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
     }
 
     /**
-     * Method sets the attribute "anotherChildAttribute".
+     * Method sets attribute {@link #anotherChildAttribute}.<br/>
      * 
-     * @param pAnotherChildAttribute Value to which the attribute "anotherChildAttribute" should be set.
+     * @param pAnotherChildAttribute Value to which {@link #anotherChildAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAnotherChildAttribute( Double pAnotherChildAttribute ) {
       // Assign value to attribute
@@ -197,20 +185,18 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
   }
 
   /**
-   * Method returns the attribute "childAttribute".
+   * Method returns attribute {@link #childAttribute}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "childAttribute" is set.
+   * @return {@link String} Value to which {@link #childAttribute} is set.
    */
   public String getChildAttribute( ) {
     return childAttribute;
   }
 
   /**
-   * Method sets the attribute "childAttribute".
+   * Method sets attribute {@link #childAttribute}.<br/>
    * 
-   * 
-   * @param pChildAttribute Value to which the attribute "childAttribute" should be set.
+   * @param pChildAttribute Value to which {@link #childAttribute} should be set.
    */
   public void setChildAttribute( String pChildAttribute ) {
     // Assign value to attribute
@@ -218,10 +204,9 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
   }
 
   /**
-   * Method returns the attribute "anotherChildAttribute".
+   * Method returns attribute {@link #anotherChildAttribute}.<br/>
    * 
-   * 
-   * @return Double Value to which the attribute "anotherChildAttribute" is set.
+   * @return {@link Double} Value to which {@link #anotherChildAttribute} is set.
    */
   public Double getAnotherChildAttribute( ) {
     return anotherChildAttribute;

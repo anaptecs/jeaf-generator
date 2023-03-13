@@ -29,9 +29,8 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * Class represents the PersistenceTest component.
+ * Class represents the component PersistenceTest
  *
- * 
  */
 public final class PersistenceTestComponent implements ComponentImplementation {
   /**

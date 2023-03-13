@@ -13,10 +13,6 @@ import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class OrderingABase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -28,24 +24,12 @@ public abstract class OrderingABase extends PersistentObject {
    */
   public static final String TABLE_NAME = "ORDERINGA";
 
-  /**
-   * 
-   */
   private SortedSet<OrderingB> orderedUnique;
 
-  /**
-   * 
-   */
   private List<OrderingB> orderedNotUnique;
 
-  /**
-   * 
-   */
   private OrderingB notOrderedUnique;
 
-  /**
-   * 
-   */
   private Collection<OrderingB> notOrderedNotUnique;
 
   /**
@@ -68,11 +52,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "orderedUnique".
+   * Method returns association {@link #orderedUnique}.<br/>
    * 
-   *
-   * @return Collection All OrderingB objects that belong to the association "orderedUnique". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link SortedSet<OrderingB>} Value to which {@link #orderedUnique} is set. The method never returns null
+   * and the returned collection is unmodifiable.
    */
   public SortedSet<OrderingB> getOrderedUnique( ) {
     // Return all OrderingB objects as unmodifiable collection.
@@ -80,11 +63,9 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed OrderingB object to the association "orderedUnique".
+   * Method adds the passed object to {@link #orderedUnique}.
    * 
-   * 
-   * @param pOrderedUnique Object that should be added to the association "orderedUnique". The parameter must not be
-   * null.
+   * @param pOrderedUnique Object that should be added to {@link #orderedUnique}. The parameter must not be null.
    */
   public void addToOrderedUnique( OrderingB pOrderedUnique ) {
     // Check parameter "pOrderedUnique" for invalid value null.
@@ -102,11 +83,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "orderedUnique".
+   * Method adds all passed objects to {@link #orderedUnique}.
    * 
-   * 
-   * @param pOrderedUnique Collection with all objects that should be added to the association "orderedUnique". The
-   * parameter must not be null.
+   * @param pOrderedUnique Collection with all objects that should be added to {@link #orderedUnique}. The parameter
+   * must not be null.
    */
   public void addToOrderedUnique( Collection<OrderingB> pOrderedUnique ) {
     // Check parameter "pOrderedUnique" for invalid value null.
@@ -118,11 +98,9 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed OrderingB object from the association "orderedUnique".
+   * Method removes the passed object from {@link #orderedUnique}.<br/>
    * 
-   * 
-   * @param pOrderedUnique Object that should be removed from the association "orderedUnique". The parameter must not be
-   * null.
+   * @param pOrderedUnique Object that should be removed from {@link #orderedUnique}. The parameter must not be null.
    */
   public void removeFromOrderedUnique( OrderingB pOrderedUnique ) {
     // Check parameter for invalid value null.
@@ -137,8 +115,7 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "orderedUnique".
-   * 
+   * Method removes all objects from {@link #orderedUnique}.
    */
   public void clearOrderedUnique( ) {
     // Remove all objects from association "orderedUnique".
@@ -151,11 +128,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "orderedNotUnique".
+   * Method returns association {@link #orderedNotUnique}.<br/>
    * 
-   *
-   * @return Collection All OrderingB objects that belong to the association "orderedNotUnique". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link List<OrderingB>} Value to which {@link #orderedNotUnique} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public List<OrderingB> getOrderedNotUnique( ) {
     // Return all OrderingB objects as unmodifiable collection.
@@ -163,11 +139,9 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed OrderingB object to the association "orderedNotUnique".
+   * Method adds the passed object to {@link #orderedNotUnique}.
    * 
-   * 
-   * @param pOrderedNotUnique Object that should be added to the association "orderedNotUnique". The parameter must not
-   * be null.
+   * @param pOrderedNotUnique Object that should be added to {@link #orderedNotUnique}. The parameter must not be null.
    */
   public void addToOrderedNotUnique( OrderingB pOrderedNotUnique ) {
     // Check parameter "pOrderedNotUnique" for invalid value null.
@@ -185,11 +159,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "orderedNotUnique".
+   * Method adds all passed objects to {@link #orderedNotUnique}.
    * 
-   * 
-   * @param pOrderedNotUnique Collection with all objects that should be added to the association "orderedNotUnique".
-   * The parameter must not be null.
+   * @param pOrderedNotUnique Collection with all objects that should be added to {@link #orderedNotUnique}. The
+   * parameter must not be null.
    */
   public void addToOrderedNotUnique( Collection<OrderingB> pOrderedNotUnique ) {
     // Check parameter "pOrderedNotUnique" for invalid value null.
@@ -201,11 +174,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed OrderingB object from the association "orderedNotUnique".
+   * Method removes the passed object from {@link #orderedNotUnique}.<br/>
    * 
-   * 
-   * @param pOrderedNotUnique Object that should be removed from the association "orderedNotUnique". The parameter must
-   * not be null.
+   * @param pOrderedNotUnique Object that should be removed from {@link #orderedNotUnique}. The parameter must not be
+   * null.
    */
   public void removeFromOrderedNotUnique( OrderingB pOrderedNotUnique ) {
     // Check parameter for invalid value null.
@@ -220,8 +192,7 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "orderedNotUnique".
-   * 
+   * Method removes all objects from {@link #orderedNotUnique}.
    */
   public void clearOrderedNotUnique( ) {
     // Remove all objects from association "orderedNotUnique".
@@ -234,10 +205,9 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "notOrderedUnique".
+   * Method returns association {@link #notOrderedUnique}.<br/>
    * 
-   *
-   * @return OrderingB OrderingB to which the association "notOrderedUnique" is set.
+   * @return {@link OrderingB} Value to which {@link #notOrderedUnique} is set.
    */
   public OrderingB getNotOrderedUnique( ) {
     notOrderedUnique = this.unproxy(notOrderedUnique);
@@ -245,10 +215,9 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "notOrderedUnique".
+   * Method sets association {@link #notOrderedUnique}.<br/>
    * 
-   * 
-   * @param pNotOrderedUnique OrderingB to which the association "notOrderedUnique" should be set.
+   * @param pNotOrderedUnique Value to which {@link #notOrderedUnique} should be set.
    */
   public void setNotOrderedUnique( OrderingB pNotOrderedUnique ) {
     // Release already referenced object before setting a new association.
@@ -264,8 +233,7 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "notOrderedUnique".
-   * 
+   * Method unsets {@link #notOrderedUnique}.
    */
   public final void unsetNotOrderedUnique( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -278,11 +246,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "notOrderedNotUnique".
+   * Method returns association {@link #notOrderedNotUnique}.<br/>
    * 
-   *
-   * @return Collection All OrderingB objects that belong to the association "notOrderedNotUnique". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link Collection<OrderingB>} Value to which {@link #notOrderedNotUnique} is set. The method never returns
+   * null and the returned collection is unmodifiable.
    */
   public Collection<OrderingB> getNotOrderedNotUnique( ) {
     // Return all OrderingB objects as unmodifiable collection.
@@ -290,11 +257,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed OrderingB object to the association "notOrderedNotUnique".
+   * Method adds the passed object to {@link #notOrderedNotUnique}.
    * 
-   * 
-   * @param pNotOrderedNotUnique Object that should be added to the association "notOrderedNotUnique". The parameter
-   * must not be null.
+   * @param pNotOrderedNotUnique Object that should be added to {@link #notOrderedNotUnique}. The parameter must not be
+   * null.
    */
   public void addToNotOrderedNotUnique( OrderingB pNotOrderedNotUnique ) {
     // Check parameter "pNotOrderedNotUnique" for invalid value null.
@@ -312,11 +278,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "notOrderedNotUnique".
+   * Method adds all passed objects to {@link #notOrderedNotUnique}.
    * 
-   * 
-   * @param pNotOrderedNotUnique Collection with all objects that should be added to the association
-   * "notOrderedNotUnique". The parameter must not be null.
+   * @param pNotOrderedNotUnique Collection with all objects that should be added to {@link #notOrderedNotUnique}. The
+   * parameter must not be null.
    */
   public void addToNotOrderedNotUnique( Collection<OrderingB> pNotOrderedNotUnique ) {
     // Check parameter "pNotOrderedNotUnique" for invalid value null.
@@ -328,11 +293,10 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed OrderingB object from the association "notOrderedNotUnique".
+   * Method removes the passed object from {@link #notOrderedNotUnique}.<br/>
    * 
-   * 
-   * @param pNotOrderedNotUnique Object that should be removed from the association "notOrderedNotUnique". The parameter
-   * must not be null.
+   * @param pNotOrderedNotUnique Object that should be removed from {@link #notOrderedNotUnique}. The parameter must not
+   * be null.
    */
   public void removeFromNotOrderedNotUnique( OrderingB pNotOrderedNotUnique ) {
     // Check parameter for invalid value null.
@@ -347,8 +311,7 @@ public abstract class OrderingABase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "notOrderedNotUnique".
-   * 
+   * Method removes all objects from {@link #notOrderedNotUnique}.
    */
   public void clearNotOrderedNotUnique( ) {
     // Remove all objects from association "notOrderedNotUnique".

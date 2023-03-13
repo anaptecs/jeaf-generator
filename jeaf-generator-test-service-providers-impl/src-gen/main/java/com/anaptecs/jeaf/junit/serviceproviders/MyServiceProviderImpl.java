@@ -9,11 +9,6 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.SystemException;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 
-/**
- * This class is the base class of the service provider implementation MyServiceProviderImpl.
- *
- * 
- */
 final class MyServiceProviderImpl extends MyServiceProviderImplBase {
   /**
    * Constructor has reduced visibility in order to ensure that all service provider implementations are created through
@@ -51,8 +46,7 @@ final class MyServiceProviderImpl extends MyServiceProviderImplBase {
   }
 
   /**
-   * 
-   * @return {@link Boolean}
+   * @return boolean
    */
   @Override
   public boolean doSomething( ) {
@@ -61,18 +55,18 @@ final class MyServiceProviderImpl extends MyServiceProviderImplBase {
   }
 
   /**
-  * 
-  */
+   */
   @Deprecated
   @Override
   public void doSomethingDeprecated( ) {
   }
 
   /**
-   * 
    * @param pParam1
-   * @param pParam2
-   * @return {@link String}
+   * @param pParam2 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override

@@ -28,9 +28,8 @@ import com.anaptecs.jeaf.xfun.api.trace.Trace;
 import com.anaptecs.spring.service.RESTProductService;
 
 /**
- * Class represents the ProductManagement component.
+ * Class represents the component ProductManagement
  *
- * 
  */
 public final class ProductManagementComponent implements ComponentImplementation {
   /**

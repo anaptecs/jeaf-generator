@@ -17,7 +17,9 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
- * Chännel € Ö
+ * Chännel<br/>
+ * €<br/>
+ * Ö
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
@@ -29,15 +31,9 @@ public class Sale implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private BigDecimal transactionAmount;
 
-  /**
-   * 
-   */
   private Channel sale;
 
   /**
@@ -80,18 +76,11 @@ public class Sale implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class Sale. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Sale</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private BigDecimal transactionAmount;
 
-    /**
-     * 
-     */
     private Channel sale;
 
     /**
@@ -112,9 +101,10 @@ public class Sale implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "transactionAmount".
+     * Method sets attribute {@link #transactionAmount}.<br/>
      * 
-     * @param pTransactionAmount Value to which the attribute "transactionAmount" should be set.
+     * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTransactionAmount( BigDecimal pTransactionAmount ) {
       // Assign value to attribute
@@ -123,9 +113,10 @@ public class Sale implements ServiceObject {
     }
 
     /**
-     * Method sets the association "sale".
+     * Method sets association {@link #sale}.<br/>
      * 
-     * @param pSale Channel to which the association "sale" should be set.
+     * @param pSale Value to which {@link #sale} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSale( Channel pSale ) {
       sale = pSale;
@@ -156,20 +147,18 @@ public class Sale implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "transactionAmount".
+   * Method returns attribute {@link #transactionAmount}.<br/>
    * 
-   * 
-   * @return BigDecimal Value to which the attribute "transactionAmount" is set.
+   * @return {@link BigDecimal} Value to which {@link #transactionAmount} is set.
    */
   public BigDecimal getTransactionAmount( ) {
     return transactionAmount;
   }
 
   /**
-   * Method sets the attribute "transactionAmount".
+   * Method sets attribute {@link #transactionAmount}.<br/>
    * 
-   * 
-   * @param pTransactionAmount Value to which the attribute "transactionAmount" should be set.
+   * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
    */
   public void setTransactionAmount( BigDecimal pTransactionAmount ) {
     // Assign value to attribute
@@ -177,28 +166,25 @@ public class Sale implements ServiceObject {
   }
 
   /**
-   * Method returns the association "sale".
+   * Method returns association {@link #sale}.<br/>
    * 
-   *
-   * @return Channel Channel to which the association "sale" is set.
+   * @return {@link Channel} Value to which {@link #sale} is set.
    */
   public Channel getSale( ) {
     return sale;
   }
 
   /**
-   * Method sets the association "sale".
+   * Method sets association {@link #sale}.<br/>
    * 
-   * 
-   * @param pSale Channel to which the association "sale" should be set.
+   * @param pSale Value to which {@link #sale} should be set.
    */
   public void setSale( Channel pSale ) {
     sale = pSale;
   }
 
   /**
-   * Method unsets the association "sale".
-   * 
+   * Method unsets {@link #sale}.
    */
   public final void unsetSale( ) {
     sale = null;

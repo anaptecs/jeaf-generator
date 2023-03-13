@@ -16,9 +16,10 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * Type represents an amount of money.
- * 
- * NOVA 14 Mapping * nova-base.xsd.GeldBetrag
+ * Type represents an amount of money.<br/>
+ * <br/>
+ * NOVA 14 Mapping<br/>
+ * * nova-base.xsd.GeldBetrag
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
@@ -46,9 +47,6 @@ public class MoneyAmount implements Serializable {
   @NotNull
   private final BigDecimal amount;
 
-  /**
-   * 
-   */
   @NotNull
   private final CurrencyCode currencyCode;
 
@@ -105,8 +103,7 @@ public class MoneyAmount implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class MoneyAmount. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>MoneyAmount</code>.
    */
   public static class Builder {
     /**
@@ -115,9 +112,6 @@ public class MoneyAmount implements Serializable {
     @NotNull
     private BigDecimal amount;
 
-    /**
-     * 
-     */
     @NotNull
     private CurrencyCode currencyCode;
 
@@ -139,9 +133,10 @@ public class MoneyAmount implements Serializable {
     }
 
     /**
-     * Method sets the attribute "amount". The amount of money. Attribute is always set.
+     * Method sets attribute {@link #amount}.<br/>
      * 
-     * @param pAmount Value to which the attribute "amount" should be set.
+     * @param pAmount Value to which {@link #amount} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAmount( BigDecimal pAmount ) {
       // Assign value to attribute
@@ -150,9 +145,10 @@ public class MoneyAmount implements Serializable {
     }
 
     /**
-     * Method sets the attribute "currencyCode".
+     * Method sets attribute {@link #currencyCode}.<br/>
      * 
-     * @param pCurrencyCode Value to which the attribute "currencyCode" should be set.
+     * @param pCurrencyCode Value to which {@link #currencyCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCurrencyCode( CurrencyCode pCurrencyCode ) {
       // Assign value to attribute
@@ -185,19 +181,19 @@ public class MoneyAmount implements Serializable {
   }
 
   /**
-   * Method returns the attribute "amount". The amount of money. Attribute is always set.
+   * Method returns attribute {@link #amount}.<br/>
+   * The amount of money. Attribute is always set.
    * 
-   * @return BigDecimal Value to which the attribute "amount" is set.
+   * @return {@link BigDecimal} Value to which {@link #amount} is set.
    */
   public BigDecimal getAmount( ) {
     return amount;
   }
 
   /**
-   * Method returns the attribute "currencyCode".
+   * Method returns attribute {@link #currencyCode}.<br/>
    * 
-   * 
-   * @return CurrencyCode Value to which the attribute "currencyCode" is set.
+   * @return {@link CurrencyCode} Value to which {@link #currencyCode} is set.
    */
   public CurrencyCode getCurrencyCode( ) {
     return currencyCode;

@@ -35,7 +35,7 @@
 | Deprecated Resource   | Service Name   | Description   | Deprecated since   | Planned to be removed   |
 |-----------------------|----------------|---------------|:------------------:|:-----------------------:|
 «FOREACH deprecations.typeSelect(RESTResource).sortBy(e|e.path) AS element-»
-| `«element.path»` | `«element.fqn()»` | «element.getDeprecationDescription()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
+| `«element.path»` | `«element.fqn()»` | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
 «ENDFOREACH-»
 «IF deprecations.typeSelect(RESTResource).size == 0-»
 | No REST Resurces are marked as deprecated. |

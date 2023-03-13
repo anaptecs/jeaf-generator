@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class MReleationBOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -41,14 +37,8 @@ public abstract class MReleationBOBase extends PersistentObject {
    */
   public static final String NS_ROLE = "ns";
 
-  /**
-   * 
-   */
   private Set<NReleationBO> ns;
 
-  /**
-   * 
-   */
   private Integer myNumber;
 
   /**
@@ -69,11 +59,10 @@ public abstract class MReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "ns".
+   * Method returns association {@link #ns}.<br/>
    * 
-   *
-   * @return Collection All NReleationBO objects that belong to the association "ns". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<NReleationBO>} Value to which {@link #ns} is set. The method never returns null and the returned
+   * collection is unmodifiable.
    */
   public Set<NReleationBO> getNs( ) {
     // Return all NReleationBO objects as unmodifiable collection.
@@ -81,10 +70,9 @@ public abstract class MReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed NReleationBO object to the association "ns".
+   * Method adds the passed object to {@link #ns}.
    * 
-   * 
-   * @param pNs Object that should be added to the association "ns". The parameter must not be null.
+   * @param pNs Object that should be added to {@link #ns}. The parameter must not be null.
    */
   public void addToNs( NReleationBO pNs ) {
     // Check parameter "pNs" for invalid value null.
@@ -99,11 +87,9 @@ public abstract class MReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "ns".
+   * Method adds all passed objects to {@link #ns}.
    * 
-   * 
-   * @param pNs Collection with all objects that should be added to the association "ns". The parameter must not be
-   * null.
+   * @param pNs Collection with all objects that should be added to {@link #ns}. The parameter must not be null.
    */
   public void addToNs( Collection<NReleationBO> pNs ) {
     // Check parameter "pNs" for invalid value null.
@@ -115,10 +101,9 @@ public abstract class MReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed NReleationBO object from the association "ns".
+   * Method removes the passed object from {@link #ns}.<br/>
    * 
-   * 
-   * @param pNs Object that should be removed from the association "ns". The parameter must not be null.
+   * @param pNs Object that should be removed from {@link #ns}. The parameter must not be null.
    */
   public void removeFromNs( NReleationBO pNs ) {
     // Check parameter for invalid value null.
@@ -133,8 +118,7 @@ public abstract class MReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "ns".
-   * 
+   * Method removes all objects from {@link #ns}.
    */
   public void clearNs( ) {
     // Remove all objects from association "ns".
@@ -147,20 +131,18 @@ public abstract class MReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "myNumber".
+   * Method returns attribute {@link #myNumber}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "myNumber" is set.
+   * @return {@link Integer} Value to which {@link #myNumber} is set.
    */
   public Integer getMyNumber( ) {
     return myNumber;
   }
 
   /**
-   * Method sets the attribute "myNumber".
+   * Method sets attribute {@link #myNumber}.<br/>
    * 
-   * 
-   * @param pMyNumber Value to which the attribute "myNumber" should be set.
+   * @param pMyNumber Value to which {@link #myNumber} should be set.
    */
   public void setMyNumber( Integer pMyNumber ) {
     // Assign value to attribute
@@ -168,14 +150,12 @@ public abstract class MReleationBOBase extends PersistentObject {
   }
 
   /**
-   * 
    * @return {@link NReleationBO}
    */
   public abstract NReleationBO getMySpecialN( );
 
   /**
-   * 
-   * @return {@link char}
+   * @return char
    */
   public abstract char returnPrimitive( );
 

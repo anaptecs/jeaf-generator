@@ -8,9 +8,8 @@ package com.anaptecs.jeaf.junit.tx.impl;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 
 /**
- * Class represents the TxNotSupportedComponent component.
- *
- * 
+ * Class represents the configuration for component
+ * {@link com.anaptecs.jeaf.junit.tx.impl.TxNotSupportedComponentComponent}.
  */
 public final class TxNotSupportedComponentComponentConfiguration {
   /**

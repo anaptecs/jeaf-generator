@@ -5,10 +5,6 @@ import java.util.List;
 import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class ChildBOBase extends BaseClassBO {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -35,14 +31,8 @@ public abstract class ChildBOBase extends BaseClassBO {
    */
   public static final String CHILDNUMBER_ATTRIBUTE = "childNumber";
 
-  /**
-   * 
-   */
   private String childName;
 
-  /**
-   * 
-   */
   private Integer childNumber;
 
   /**
@@ -62,20 +52,18 @@ public abstract class ChildBOBase extends BaseClassBO {
   }
 
   /**
-   * Method returns the attribute "childName".
+   * Method returns attribute {@link #childName}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "childName" is set.
+   * @return {@link String} Value to which {@link #childName} is set.
    */
   public String getChildName( ) {
     return childName;
   }
 
   /**
-   * Method sets the attribute "childName".
+   * Method sets attribute {@link #childName}.<br/>
    * 
-   * 
-   * @param pChildName Value to which the attribute "childName" should be set.
+   * @param pChildName Value to which {@link #childName} should be set.
    */
   public void setChildName( String pChildName ) {
     // Assign value to attribute
@@ -83,20 +71,18 @@ public abstract class ChildBOBase extends BaseClassBO {
   }
 
   /**
-   * Method returns the attribute "childNumber".
+   * Method returns attribute {@link #childNumber}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "childNumber" is set.
+   * @return {@link Integer} Value to which {@link #childNumber} is set.
    */
   public Integer getChildNumber( ) {
     return childNumber;
   }
 
   /**
-   * Method sets the attribute "childNumber".
+   * Method sets attribute {@link #childNumber}.<br/>
    * 
-   * 
-   * @param pChildNumber Value to which the attribute "childNumber" should be set.
+   * @param pChildNumber Value to which {@link #childNumber} should be set.
    */
   public void setChildNumber( Integer pChildNumber ) {
     // Assign value to attribute

@@ -8,18 +8,13 @@ package com.anaptecs.jeaf.accounting.impl.swift;
 import com.anaptecs.jeaf.accounting.Booking;
 import com.anaptecs.jeaf.core.api.Service;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public interface SwiftAccountingService extends Service {
   /**
    * Method performs a booking of the passed amount. Therefore besides the booking also the source and target account
-   * have to be passed.
-   * 
+   * have to be passed.<br/>
+   * <br/>
    * @param pBooking Booking that should be performed. The parameter must not be null and both, the source and target
    * account have to be set.
-   * 
    * 
    * @param pBooking
    */

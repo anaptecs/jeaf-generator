@@ -10,10 +10,6 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class SubclassWithID extends IdentifiableServiceObject {
   /**
    * Default serial version uid.
@@ -25,9 +21,6 @@ public class SubclassWithID extends IdentifiableServiceObject {
    */
   public static final String ATTR = "attr";
 
-  /**
-   * 
-   */
   private boolean attr;
 
   /**
@@ -70,13 +63,9 @@ public class SubclassWithID extends IdentifiableServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class SubclassWithID. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>SubclassWithID</code>.
    */
   public static class Builder extends IdentifiableServiceObject.Builder {
-    /**
-     * 
-     */
     private boolean attr;
 
     /**
@@ -108,9 +97,10 @@ public class SubclassWithID extends IdentifiableServiceObject {
     }
 
     /**
-     * Method sets the attribute "hello".
+     * Method sets attribute {@link #hello}.<br/>
      * 
-     * @param pHello Value to which the attribute "hello" should be set.
+     * @param pHello Value to which {@link #hello} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setHello( Integer pHello ) {
@@ -120,9 +110,10 @@ public class SubclassWithID extends IdentifiableServiceObject {
     }
 
     /**
-     * Method sets the attribute "country".
+     * Method sets attribute {@link #country}.<br/>
      * 
-     * @param pCountry Value to which the attribute "country" should be set.
+     * @param pCountry Value to which {@link #country} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setCountry( String pCountry ) {
@@ -132,9 +123,10 @@ public class SubclassWithID extends IdentifiableServiceObject {
     }
 
     /**
-     * Method sets the attribute "attr".
+     * Method sets attribute {@link #attr}.<br/>
      * 
-     * @param pAttr Value to which the attribute "attr" should be set.
+     * @param pAttr Value to which {@link #attr} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAttr( boolean pAttr ) {
       // Assign value to attribute
@@ -167,20 +159,18 @@ public class SubclassWithID extends IdentifiableServiceObject {
   }
 
   /**
-   * Method returns the attribute "attr".
+   * Method returns attribute {@link #attr}.<br/>
    * 
-   * 
-   * @return Boolean Value to which the attribute "attr" is set.
+   * @return boolean Value to which {@link #attr} is set.
    */
   public boolean getAttr( ) {
     return attr;
   }
 
   /**
-   * Method sets the attribute "attr".
+   * Method sets attribute {@link #attr}.<br/>
    * 
-   * 
-   * @param pAttr Value to which the attribute "attr" should be set.
+   * @param pAttr Value to which {@link #attr} should be set.
    */
   public void setAttr( boolean pAttr ) {
     // Assign value to attribute

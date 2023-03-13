@@ -36,7 +36,6 @@ final class ValidationTestServiceImpl extends ValidationTestServiceImplBase {
   }
 
   /**
-   * 
    * @param pString1
    * @param pString2
    * @return {@link String}
@@ -48,7 +47,6 @@ final class ValidationTestServiceImpl extends ValidationTestServiceImplBase {
   }
 
   /**
-   * 
    * @param pString1
    * @param pString2
    * @return {@link String}
@@ -60,7 +58,6 @@ final class ValidationTestServiceImpl extends ValidationTestServiceImplBase {
   }
 
   /**
-   * 
    * @param pString1
    * @param pString2
    * @return {@link String}
@@ -72,7 +69,6 @@ final class ValidationTestServiceImpl extends ValidationTestServiceImplBase {
   }
 
   /**
-   * 
    * @param pString1
    * @param pInteger
    * @return {@link String}
@@ -84,7 +80,6 @@ final class ValidationTestServiceImpl extends ValidationTestServiceImplBase {
   }
 
   /**
-   * 
    * @param pString1
    * @param pBool
    * @return {@link String}
@@ -96,7 +91,6 @@ final class ValidationTestServiceImpl extends ValidationTestServiceImplBase {
   }
 
   /**
-   * 
    * @param pTestObject
    */
   @Override

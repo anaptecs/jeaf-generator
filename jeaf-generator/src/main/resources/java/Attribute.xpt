@@ -37,9 +37,7 @@
 
 // processing the properties
 «DEFINE DoPropertyDeclaration FOR Property»
-	/**
-	 * «this.getComment()»«IF this.defaultValue != null-» <br/><b>Default Value:</b> <code>«this.initValue()»</code>«ENDIF»«IF this.hasExample()-»«IF ((Example) this).exampleValue.length > 0-» <br/><b>Example:</b> <code>«((Example) this).exampleValue»</code>«ENDIF»«ENDIF»
-	 */
+	«EXPAND functions::Javadoc::JavadocForProperty»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND RESTParamAnnotation»
 	«EXPAND java::Jackson::JSONAlias»
@@ -51,9 +49,7 @@
 
 // processing the properties
 «DEFINE SoftLinkPropertyDeclaration FOR SoftLink»
-    /**
-     * «this.getComment()»
-     */
+        «EXPAND functions::Javadoc::JavadocForProperty»
         «EXPAND java::Helper::GenerateDeprecationAnnotation-»
         «EXPAND RESTParamAnnotation»
         «EXPAND java::Jackson::JSONAlias»
@@ -82,9 +78,7 @@
 
 // processing the association properties
 «DEFINE DoAssociationPropertyDeclaration FOR Property»
-	/**
- 	 * «this.getComment()»
-	 */
+	«EXPAND functions::Javadoc::JavadocForProperty»
 	«IF isNavigable()»
 		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 		«EXPAND RESTParamAnnotation»
@@ -123,12 +117,7 @@
 
 // TODO Get and set method should be final for service objects. 
 «DEFINE Getter FOR Property»
-	/**
-	 * Method returns the attribute "«asInstanceVar()»".
-	 * «this.getComment()»
-	 * 
-	 * @return «type.name» Value to which the attribute "«asInstanceVar()»" is set.
-	 */
+	«EXPAND functions::Javadoc::JavadocForPropertyGetter»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «this.fqn()»«IF isMultivalued()»[]«ENDIF» «asGetter()»() {
 	    «IF this.isMultivalued() == false»return «asInstanceVar()»;«ELSE»«this.fqn()»[] lReturnValue;
@@ -158,12 +147,7 @@
 «ENDDEFINE»
 
 «DEFINE Setter FOR Property»
-	/**
-	 * Method sets the attribute "«asInstanceVar()»".
-	 * «this.getComment()»
-	 * 
-	 * @param «asParameter()» Value to which the attribute "«asInstanceVar()»" should be set.
-	 */
+	«EXPAND functions::Javadoc::JavadocForPropertySetter»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public void «asSetter()»(«this.fqn()»«IF isMultivalued()»[]«ENDIF» «asParameter()») {
 		// Assign value to attribute
@@ -195,14 +179,9 @@
 «ENDDEFINE»
 
 «DEFINE SoftLinkToOneAccessorMethods FOR SoftLink»
-    /**
-     * Method returns the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     *
-     * @return «type.name» «this.type.name» to which the association "«asInstanceVar()»" is set.
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public «this.getMultivaluedSoftLinkType()» «asGetter()» () {
+    public «this.getSoftLinkType()» «asGetter()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»
     «asInstanceVar()» = this.unproxy(«asInstanceVar()»);«ENDIF»
         «IF this.isTransientBidirectionalBackReference()»
@@ -220,39 +199,19 @@
     }
     
     «IF isReadOnly() == false»
-    /**
-     * Method sets the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     * 
-     * @param «asParameter()» «this.type.name» to which the association "«asInstanceVar()»" should be set.
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public void «asSetter()» («this.getMultivaluedSoftLinkType()» «asParameter()») {
-        «IF generateNullChecksForToOneAssociationsOfServiceObjects()»
+    public void «asSetter()» («this.getSoftLinkType()» «asParameter()») {
+        «IF generateNullChecksForToOneAssociationsOfServiceObjects() && this.getSoftLinkType() != "long"»
         // «asParameter()» must not be null. To unset an association the unset method has to be called.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
         «ENDIF»
 
-        «IF opposite != null && opposite.isNavigable() == true»
-            // Release already referenced object before setting a new association.
-            if(«asInstanceVar()» != null) {
-            «IF opposite.isMultivalued() == true»
-                «asInstanceVar()».removeFrom«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
-            «ELSE»
-                «asInstanceVar()».«opposite.asUnset()»();
-            «ENDIF»
-            }
-        «ENDIF»
-
         «asInstanceVar()» = «asParameter()»;
-        «EXPAND GenerateInitOpposite»
     }
     
     «IF this.getSoftLinkType() != "long"»
-    /**
-     * Method unsets the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertyUnset»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public final void «asUnset()» () {
         «EXPAND GenerateRemoveOpposite»
@@ -266,13 +225,7 @@
 
 // Setter for associations
 «DEFINE SoftLinkToManyAccessorMethods FOR SoftLink»
-    /**
-     * Method returns the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     *
-     * @return Collection All «this.type.name» objects that belong to the association "«asInstanceVar()»". 
-     * The method never returns null and the returned collection is «IF disableCollectionImmutability()»modifiable«ELSE»unmodifiable«ENDIF».
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public «this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asGetter()» () {
         «IF this.isTransientBidirectionalBackReference()»
@@ -300,10 +253,9 @@
     «IF isReadOnly() == false»
     «IF generatePublicSettersForAssociations()»
     /**
-     * Method sets the association "«asInstanceVar()»" to the passed collection. All objects that formerly were part of the association will be removed from it.
-     * «this.getComment()»
+     * Method sets the association {@link #«asInstanceVar()»} to the passed collection. All objects that formerly were part of the association will be removed from it.
      * 
-     * @param «asParameter()» Collection with objects to which the association should be set. The parameter must not be null.
+     * @param «asParameter()» Collection with objects to which {@link #«asInstanceVar()»} should be set. The parameter may be null. In this case {@link #«asInstanceVar()»} is just unset.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void set«name.toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asParameter()») {
@@ -319,12 +271,7 @@
     }
     «ENDIF»
 
-    /**
-     * Method adds the passed «this.type.name» object to the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     * 
-     * @param «asParameter()» Object that should be added to the association "«asInstanceVar()»". The parameter must not be null.
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertyAdd»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void addTo«name.toFirstUpper()» («this.getMultivaluedSoftLinkType()» «asParameter()») {
         «IF isTargetRuntimeJEAF()»
@@ -346,12 +293,7 @@
         «EXPAND GenerateInitOpposite»
     }
     
-    /**
-     * Method adds all passed objects to the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     * 
-     * @param «asParameter()» Collection with all objects that should be added to the association "«asInstanceVar()»". The parameter must not be null.
-     */
+  «EXPAND functions::Javadoc::JavadocForPropertyAddAll»
   «EXPAND java::Helper::GenerateDeprecationAnnotation-»
   public void addTo«name.toFirstUpper()» (java.util.Collection<«this.getMultivaluedSoftLinkType()»> «asParameter()») {
         «IF isTargetRuntimeJEAF()»
@@ -363,14 +305,12 @@
         for («this.getMultivaluedSoftLinkType()» lNextObject : «asParameter()») {
           this.addTo«name.toFirstUpper()»(lNextObject);
         }
-        
   }
   
     /**
-     * Method removes the passed «this.type.name» object from the association "«asInstanceVar()»".     
-     * «this.getComment()»
+     * Method removes the passed object from {@link #«asInstanceVar()»}.     
      * 
-     * @param «asParameter()» Object that should be removed from the association "«asInstanceVar()»". The parameter must not be null.
+     * @param «asParameter()» Object that should be removed from {@link #«asInstanceVar()»}. The parameter must not be null.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void removeFrom«name.toFirstUpper()» («this.getMultivaluedSoftLinkType()» «asParameter()») {
@@ -386,8 +326,7 @@
     }
     
     /**
-     * Method removes all objects from the association "«asInstanceVar()»".
-     * «this.getComment()»
+     * Method removes all objects from {@link #«asInstanceVar()»}.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void clear«name.toFirstUpper()» () {
@@ -409,12 +348,7 @@
 «ENDDEFINE»
 
 «DEFINE ToOneAccessorMethods FOR Property»
-    /**
-     * Method returns the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     *
-     * @return «type.name» «this.type.name» to which the association "«asInstanceVar()»" is set.
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «type.fqn()» «asGetter()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»
@@ -434,12 +368,7 @@
 	}
 	
     «IF isReadOnly() == false»
-    /**
-     * Method sets the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     * 
-     * @param «asParameter()» «this.type.name» to which the association "«asInstanceVar()»" should be set.
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public void «asSetter()» («type.fqn()» «asParameter()») {
 		«IF generateNullChecksForToOneAssociationsOfServiceObjects()»
@@ -462,10 +391,7 @@
 	    «EXPAND GenerateInitOpposite»
 	}
 	
-    /**
-     * Method unsets the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertyUnset»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public final void «asUnset()» () {
         «EXPAND GenerateRemoveOpposite»
@@ -478,13 +404,7 @@
 
 // Setter for associations
 «DEFINE ToManyAccessorMethods FOR Property»
-    /**
-     * Method returns the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     *
-     * @return Collection All «this.type.name» objects that belong to the association "«asInstanceVar()»". 
-     * The method never returns null and the returned collection is «IF disableCollectionImmutability()»modifiable«ELSE»unmodifiable«ENDIF».
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «this.fqn()» «asGetter()» () {
 	    «IF this.isTransientBidirectionalBackReference()»
@@ -511,12 +431,7 @@
 	
     «IF isReadOnly() == false»
     «IF generatePublicSettersForAssociations()»
-    /**
-     * Method sets the association "«asInstanceVar()»" to the passed collection. All objects that formerly were part of the association will be removed from it.
-     * «this.getComment()»
-     * 
-     * @param «asParameter()» Collection with objects to which the association should be set. The parameter must not be null.
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
         // Check of parameter is not required.
@@ -531,12 +446,7 @@
     }
     «ENDIF»
 
-    /**
-     * Method adds the passed «this.type.name» object to the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     * 
-     * @param «asParameter()» Object that should be added to the association "«asInstanceVar()»". The parameter must not be null.
-     */
+    «EXPAND functions::Javadoc::JavadocForPropertyAdd»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public void addTo«name.toFirstUpper()» («this.type.fqn()» «asParameter()») {
         «IF isTargetRuntimeJEAF()»
@@ -558,12 +468,7 @@
         «EXPAND GenerateInitOpposite»
 	}
 	
-    /**
-     * Method adds all passed objects to the association "«asInstanceVar()»".     
-     * «this.getComment()»
-     * 
-     * @param «asParameter()» Collection with all objects that should be added to the association "«asInstanceVar()»". The parameter must not be null.
-     */
+  «EXPAND functions::Javadoc::JavadocForPropertyAddAll»
   «EXPAND java::Helper::GenerateDeprecationAnnotation-»
   public void addTo«name.toFirstUpper()» (java.util.Collection<«this.type.fqn()»> «asParameter()») {
         «IF isTargetRuntimeJEAF()»
@@ -579,10 +484,9 @@
   }
   
     /**
-     * Method removes the passed «this.type.name» object from the association "«asInstanceVar()»".     
-     * «this.getComment()»
+     * Method removes the passed object from {@link #«asInstanceVar()»}.<br/>     
      * 
-     * @param «asParameter()» Object that should be removed from the association "«asInstanceVar()»". The parameter must not be null.
+     * @param «asParameter()» Object that should be removed from {@link #«asInstanceVar()»}. The parameter must not be null.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public void removeFrom«name.toFirstUpper()» («type.fqn()» «asParameter()») {
@@ -598,8 +502,7 @@
 	}
 	
     /**
-     * Method removes all objects from the association "«asInstanceVar()»".
-     * «this.getComment()»
+     * Method removes all objects from {@link #«asInstanceVar()»}.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public void clear«name.toFirstUpper()» () {

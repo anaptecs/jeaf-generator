@@ -36,9 +36,8 @@ final class SchufaServiceImpl extends SchufaServiceImplBase {
   }
 
   /**
-   * 
    * @param pRequest
-   * @return {@link Boolean}
+   * @return boolean
    */
   @Override
   public boolean performSchufaCheck( SchufaRequest pRequest ) {

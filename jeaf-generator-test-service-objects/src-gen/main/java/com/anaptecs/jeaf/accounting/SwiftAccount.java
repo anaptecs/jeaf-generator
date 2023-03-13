@@ -15,10 +15,6 @@ import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class SwiftAccount extends Account {
   /**
    * Default serial version uid.
@@ -30,9 +26,6 @@ public class SwiftAccount extends Account {
    */
   public static final String BIC = "bic";
 
-  /**
-   * 
-   */
   @Pattern(regexp = "[A-Z]+", flags = { Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.MULTILINE })
   private String bic;
 
@@ -76,13 +69,9 @@ public class SwiftAccount extends Account {
   }
 
   /**
-   * Class implements builder to create a new instance of class SwiftAccount. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>SwiftAccount</code>.
    */
   public static class Builder extends Account.Builder {
-    /**
-     * 
-     */
     @Pattern(regexp = "[A-Z]+", flags = { Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.MULTILINE })
     private String bic;
 
@@ -115,9 +104,10 @@ public class SwiftAccount extends Account {
     }
 
     /**
-     * Method sets the attribute "iban".
+     * Method sets attribute {@link #iban}.<br/>
      * 
-     * @param pIban Value to which the attribute "iban" should be set.
+     * @param pIban Value to which {@link #iban} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setIban( Long pIban ) {
@@ -127,9 +117,10 @@ public class SwiftAccount extends Account {
     }
 
     /**
-     * Method sets the attribute "balance".
+     * Method sets attribute {@link #balance}.<br/>
      * 
-     * @param pBalance Value to which the attribute "balance" should be set.
+     * @param pBalance Value to which {@link #balance} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setBalance( BigDecimal pBalance ) {
@@ -139,9 +130,10 @@ public class SwiftAccount extends Account {
     }
 
     /**
-     * Method sets the association "authorizedPersons".
+     * Method sets association {@link #authorizedPersons}.<br/>
      * 
-     * @param pAuthorizedPersons Collection with objects to which the association should be set.
+     * @param pAuthorizedPersons Collection to which {@link #authorizedPersons} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setAuthorizedPersons( Set<Person> pAuthorizedPersons ) {
@@ -151,9 +143,10 @@ public class SwiftAccount extends Account {
     }
 
     /**
-     * Method sets the association "bookings".
+     * Method sets association {@link #bookings}.<br/>
      * 
-     * @param pBookings Collection with objects to which the association should be set.
+     * @param pBookings Collection to which {@link #bookings} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setBookings( Set<Booking> pBookings ) {
@@ -163,9 +156,10 @@ public class SwiftAccount extends Account {
     }
 
     /**
-     * Method sets the attribute "bankID".
+     * Method sets attribute {@link #bankID}.<br/>
      * 
-     * @param pBankID Value to which the attribute "bankID" should be set.
+     * @param pBankID Value to which {@link #bankID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setBankID( ServiceObjectID pBankID ) {
@@ -175,9 +169,10 @@ public class SwiftAccount extends Account {
     }
 
     /**
-     * Method sets the attribute "bic".
+     * Method sets attribute {@link #bic}.<br/>
      * 
-     * @param pBic Value to which the attribute "bic" should be set.
+     * @param pBic Value to which {@link #bic} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBic( String pBic ) {
       // Assign value to attribute
@@ -210,20 +205,18 @@ public class SwiftAccount extends Account {
   }
 
   /**
-   * Method returns the attribute "bic".
+   * Method returns attribute {@link #bic}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "bic" is set.
+   * @return {@link String} Value to which {@link #bic} is set.
    */
   public String getBic( ) {
     return bic;
   }
 
   /**
-   * Method sets the attribute "bic".
+   * Method sets attribute {@link #bic}.<br/>
    * 
-   * 
-   * @param pBic Value to which the attribute "bic" should be set.
+   * @param pBic Value to which {@link #bic} should be set.
    */
   public void setBic( String pBic ) {
     // Assign value to attribute

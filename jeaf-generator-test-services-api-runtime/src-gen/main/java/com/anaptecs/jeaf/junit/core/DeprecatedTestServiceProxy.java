@@ -38,9 +38,7 @@ public final class DeprecatedTestServiceProxy extends ServiceProxy implements De
   }
 
   /**
-   * Generated proxy implementation for method "doSomething".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.core.DeprecatedTestService#doSomething}
    */
   public void doSomething( ) {
     try {

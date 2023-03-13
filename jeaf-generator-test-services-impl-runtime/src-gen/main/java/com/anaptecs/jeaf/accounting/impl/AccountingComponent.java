@@ -31,7 +31,7 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * Class represents the Accounting component.
+ * Class represents the component Accounting
  *
  * This component contains all accounting functions offered by the accounting service.
  */

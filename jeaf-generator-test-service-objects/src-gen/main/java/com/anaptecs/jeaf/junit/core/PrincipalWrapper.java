@@ -13,10 +13,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class PrincipalWrapper implements ServiceObject {
   /**
    * Default serial version uid.
@@ -28,9 +24,6 @@ public class PrincipalWrapper implements ServiceObject {
    */
   public static final String LPRINCIPAL = "lPrincipal";
 
-  /**
-   * 
-   */
   private Principal lPrincipal;
 
   /**
@@ -73,13 +66,9 @@ public class PrincipalWrapper implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class PrincipalWrapper. As the class has read only attributes
-   * or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>PrincipalWrapper</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private Principal lPrincipal;
 
     /**
@@ -99,9 +88,10 @@ public class PrincipalWrapper implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "lPrincipal".
+     * Method sets attribute {@link #lPrincipal}.<br/>
      * 
-     * @param pLPrincipal Value to which the attribute "lPrincipal" should be set.
+     * @param pLPrincipal Value to which {@link #lPrincipal} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLPrincipal( Principal pLPrincipal ) {
       // Assign value to attribute
@@ -134,20 +124,18 @@ public class PrincipalWrapper implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "lPrincipal".
+   * Method returns attribute {@link #lPrincipal}.<br/>
    * 
-   * 
-   * @return Principal Value to which the attribute "lPrincipal" is set.
+   * @return {@link Principal} Value to which {@link #lPrincipal} is set.
    */
   public Principal getLPrincipal( ) {
     return lPrincipal;
   }
 
   /**
-   * Method sets the attribute "lPrincipal".
+   * Method sets attribute {@link #lPrincipal}.<br/>
    * 
-   * 
-   * @param pLPrincipal Value to which the attribute "lPrincipal" should be set.
+   * @param pLPrincipal Value to which {@link #lPrincipal} should be set.
    */
   public void setLPrincipal( Principal pLPrincipal ) {
     // Assign value to attribute

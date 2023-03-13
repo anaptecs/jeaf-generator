@@ -14,10 +14,6 @@ import javax.ws.rs.HeaderParam;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 public class SpecialContext extends Context {
   /**
@@ -25,9 +21,6 @@ public class SpecialContext extends Context {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @HeaderParam("specificHeader")
   @NotNull
   private String specificHeader;
@@ -72,13 +65,9 @@ public class SpecialContext extends Context {
   }
 
   /**
-   * Class implements builder to create a new instance of class SpecialContext. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>SpecialContext</code>.
    */
   public static class Builder extends Context.Builder {
-    /**
-     * 
-     */
     private String specificHeader;
 
     /**
@@ -100,9 +89,10 @@ public class SpecialContext extends Context {
     }
 
     /**
-     * Method sets the attribute "accessToken".
+     * Method sets attribute {@link #accessToken}.<br/>
      * 
-     * @param pAccessToken Value to which the attribute "accessToken" should be set.
+     * @param pAccessToken Value to which {@link #accessToken} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setAccessToken( String pAccessToken ) {
@@ -112,9 +102,10 @@ public class SpecialContext extends Context {
     }
 
     /**
-     * Method sets the attribute "language".
+     * Method sets attribute {@link #language}.<br/>
      * 
-     * @param pLanguage Value to which the attribute "language" should be set.
+     * @param pLanguage Value to which {@link #language} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setLanguage( Locale pLanguage ) {
@@ -124,9 +115,10 @@ public class SpecialContext extends Context {
     }
 
     /**
-     * Method sets the attribute "resellerID".
+     * Method sets attribute {@link #resellerID}.<br/>
      * 
-     * @param pResellerID Value to which the attribute "resellerID" should be set.
+     * @param pResellerID Value to which {@link #resellerID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setResellerID( long pResellerID ) {
@@ -136,9 +128,10 @@ public class SpecialContext extends Context {
     }
 
     /**
-     * Method sets the attribute "pathParam".
+     * Method sets attribute {@link #pathParam}.<br/>
      * 
-     * @param pPathParam Value to which the attribute "pathParam" should be set.
+     * @param pPathParam Value to which {@link #pathParam} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setPathParam( long pPathParam ) {
@@ -148,9 +141,10 @@ public class SpecialContext extends Context {
     }
 
     /**
-     * Method sets the attribute "queryParam".
+     * Method sets attribute {@link #queryParam}.<br/>
      * 
-     * @param pQueryParam Value to which the attribute "queryParam" should be set.
+     * @param pQueryParam Value to which {@link #queryParam} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setQueryParam( String pQueryParam ) {
@@ -160,9 +154,10 @@ public class SpecialContext extends Context {
     }
 
     /**
-     * Method sets the attribute "specificHeader".
+     * Method sets attribute {@link #specificHeader}.<br/>
      * 
-     * @param pSpecificHeader Value to which the attribute "specificHeader" should be set.
+     * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSpecificHeader( String pSpecificHeader ) {
       // Assign value to attribute
@@ -195,20 +190,18 @@ public class SpecialContext extends Context {
   }
 
   /**
-   * Method returns the attribute "specificHeader".
+   * Method returns attribute {@link #specificHeader}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "specificHeader" is set.
+   * @return {@link String} Value to which {@link #specificHeader} is set.
    */
   public String getSpecificHeader( ) {
     return specificHeader;
   }
 
   /**
-   * Method sets the attribute "specificHeader".
+   * Method sets attribute {@link #specificHeader}.<br/>
    * 
-   * 
-   * @param pSpecificHeader Value to which the attribute "specificHeader" should be set.
+   * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
    */
   public void setSpecificHeader( String pSpecificHeader ) {
     // Assign value to attribute

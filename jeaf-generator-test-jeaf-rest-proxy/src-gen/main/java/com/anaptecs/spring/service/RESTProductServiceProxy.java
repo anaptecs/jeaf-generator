@@ -70,9 +70,7 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "getProducts".
-   * 
-   * Operation returns all available product.
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.RESTProductService#getProducts}
    */
   @SuppressWarnings("unchecked")
   public List<Product> getProducts( int pMaxResultSize ) {
@@ -86,9 +84,7 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "getProduct".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.RESTProductService#getProduct}
    */
   public Product getProduct( @NotEmpty String pProductID ) {
     try {
@@ -101,9 +97,7 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "createProduct".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.RESTProductService#createProduct}
    */
   public boolean createProduct( Product pProduct ) {
     try {
@@ -116,9 +110,7 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "getSortiment".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.RESTProductService#getSortiment}
    */
   public Sortiment getSortiment( Context pContext ) {
     try {
@@ -131,9 +123,7 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "createChannelCode".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.RESTProductService#createChannelCode}
    */
   public ChannelCode createChannelCode( @NotBlank String pChannelCode ) {
     try {
@@ -146,9 +136,7 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "ping".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.RESTProductService#ping}
    */
   public void ping( ) {
     try {
@@ -161,9 +149,7 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testInit".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.RESTProductService#testInit}
    */
   public void testInit( ) {
     try {
@@ -176,9 +162,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "getSupportedCurrencies".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#getSupportedCurrencies}
    */
   @SuppressWarnings("unchecked")
   public List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode ) {
@@ -192,9 +177,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "getSupportedCurrenciesAsync".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#getSupportedCurrenciesAsync}
    */
   @SuppressWarnings("unchecked")
   public List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode ) {
@@ -208,9 +192,7 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testParams".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.RESTProductService#testParams}
    */
   public String testParams( BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam ) {
     try {
@@ -224,9 +206,7 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testEnumParams".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.RESTProductService#testEnumParams}
    */
   public void testEnumParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
     try {
@@ -240,9 +220,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testEnumHeaderParams".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testEnumHeaderParams}
    */
   public void testEnumHeaderParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
     try {
@@ -256,9 +235,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testDateQueryParams".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testDateQueryParams}
    */
   public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
@@ -276,9 +254,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testDateQueryParamsBean".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testDateQueryParamsBean}
    */
   public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
     try {
@@ -292,9 +269,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testDateHeaderParams".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testDateHeaderParams}
    */
   public void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
@@ -313,9 +289,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testDateHeaderParamsBean".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testDateHeaderParamsBean}
    */
   public void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
     try {
@@ -329,9 +304,7 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testCookieParams".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.RESTProductService#testCookieParams}
    */
   public void testCookieParams( ChannelType pChannelTypeParam, SpecialContext pContext ) {
     try {
@@ -345,9 +318,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testOptionalQueryParams".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testOptionalQueryParams}
    */
   public String testOptionalQueryParams( String query1, int query2 ) {
     try {
@@ -360,9 +332,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "processComplexBookingID".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#processComplexBookingID}
    */
   public boolean processComplexBookingID( ComplexBookingID pComplextBookingID ) {
     try {
@@ -375,9 +346,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testDataTypesAsHeaderParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testDataTypesAsHeaderParam}
    */
   public String testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode ) {
     try {
@@ -391,9 +361,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testDataTypesAsHeaderBeanParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testDataTypesAsHeaderBeanParam}
    */
   public String testDataTypesAsHeaderBeanParam( AdvancedHeader pContext ) {
     try {
@@ -406,9 +375,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testPrimitiveArrays".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testPrimitiveArrays}
    */
   public String testPrimitiveArrays( int[] pIntegerArray ) {
     try {
@@ -421,9 +389,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testDataTypeAsQueryParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testDataTypeAsQueryParam}
    */
   public String testDataTypeAsQueryParam( BookingCode pBookingCode ) {
     try {
@@ -436,9 +403,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testDataTypeAsBeanQueryParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testDataTypeAsBeanQueryParam}
    */
   public String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam ) {
     try {
@@ -451,9 +417,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testPrimitiveArrayAsQueryParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testPrimitiveArrayAsQueryParam}
    */
   public String testPrimitiveArrayAsQueryParam( int[] pIntValues ) {
     try {
@@ -466,9 +431,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testSimpleTypesAsQueryParams".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testSimpleTypesAsQueryParams}
    */
   public String testSimpleTypesAsQueryParams( List<String> pStrings ) {
     try {
@@ -481,9 +445,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testPrimitiveWrapperArrayAsQueryParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testPrimitiveWrapperArrayAsQueryParam}
    */
   public String testPrimitiveWrapperArrayAsQueryParam( Set<Integer> pIntegers ) {
     try {
@@ -496,9 +459,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testMultivaluedQueryParamsBean".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testMultivaluedQueryParamsBean}
    */
   public String testMultivaluedQueryParamsBean( MultivaluedQueryParamsBean pBean ) {
     try {
@@ -512,9 +474,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testMulitvaluedDataTypeAsQueryParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testMulitvaluedDataTypeAsQueryParam}
    */
   public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
       List<BookingID> pBookingIDs, List<OffsetDateTime> pTimestamps, SortedSet<LocalDate> pLocalDates ) {
@@ -530,9 +491,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testMulitvaluedDataTypeAsBeanQueryParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testMulitvaluedDataTypeAsBeanQueryParam}
    */
   public String testMulitvaluedDataTypeAsBeanQueryParam( DataTypesQueryBean pQueryBean ) {
     try {
@@ -546,9 +506,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testMultiValuedHeaderFieldsInBeanParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testMultiValuedHeaderFieldsInBeanParam}
    */
   public String testMultiValuedHeaderFieldsInBeanParam( MultiValuedHeaderBeanParam pMultiValuedBean ) {
     try {
@@ -563,9 +522,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testMultiValuedHeaderFields".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testMultiValuedHeaderFields}
    */
   public String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles,
       Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes ) {
@@ -581,9 +539,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testBookingIDAsPathParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testBookingIDAsPathParam}
    */
   public void testBookingIDAsPathParam( BookingID pBookingID ) {
     try {
@@ -596,9 +553,8 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
   }
 
   /**
-   * Generated proxy implementation for method "testBookingIDAsHeaderParam".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testBookingIDAsHeaderParam}
    */
   public void testBookingIDAsHeaderParam( BookingID pBookingID ) {
     try {

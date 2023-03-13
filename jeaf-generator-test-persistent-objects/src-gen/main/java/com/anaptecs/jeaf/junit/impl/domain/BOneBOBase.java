@@ -5,10 +5,6 @@ import java.util.List;
 import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class BOneBOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -35,14 +31,8 @@ public abstract class BOneBOBase extends PersistentObject {
    */
   public static final String A_ROLE = "a";
 
-  /**
-   * 
-   */
   private String bName;
 
-  /**
-   * 
-   */
   private AOneBO a;
 
   /**
@@ -62,20 +52,18 @@ public abstract class BOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "bName".
+   * Method returns attribute {@link #bName}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "bName" is set.
+   * @return {@link String} Value to which {@link #bName} is set.
    */
   public String getBName( ) {
     return bName;
   }
 
   /**
-   * Method sets the attribute "bName".
+   * Method sets attribute {@link #bName}.<br/>
    * 
-   * 
-   * @param pBName Value to which the attribute "bName" should be set.
+   * @param pBName Value to which {@link #bName} should be set.
    */
   public void setBName( String pBName ) {
     // Assign value to attribute
@@ -83,10 +71,9 @@ public abstract class BOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "a".
+   * Method returns association {@link #a}.<br/>
    * 
-   *
-   * @return AOneBO AOneBO to which the association "a" is set.
+   * @return {@link AOneBO} Value to which {@link #a} is set.
    */
   public AOneBO getA( ) {
     a = this.unproxy(a);
@@ -94,10 +81,9 @@ public abstract class BOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "a".
+   * Method sets association {@link #a}.<br/>
    * 
-   * 
-   * @param pA AOneBO to which the association "a" should be set.
+   * @param pA Value to which {@link #a} should be set.
    */
   public void setA( AOneBO pA ) {
     // Release already referenced object before setting a new association.
@@ -113,8 +99,7 @@ public abstract class BOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "a".
-   * 
+   * Method unsets {@link #a}.
    */
   public final void unsetA( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

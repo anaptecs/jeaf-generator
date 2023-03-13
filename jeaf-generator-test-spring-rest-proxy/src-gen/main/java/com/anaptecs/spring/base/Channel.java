@@ -5,10 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Channel {
   /**
    * Constant for the name of attribute "channelType".
@@ -45,9 +41,6 @@ public class Channel {
    */
   private ChannelCode channelCode;
 
-  /**
-   * 
-   */
   private final int code;
 
   /**
@@ -56,9 +49,6 @@ public class Channel {
    */
   private final boolean selfServiceChannel;
 
-  /**
-   * 
-   */
   private transient Reseller reseller;
 
   /**
@@ -104,8 +94,7 @@ public class Channel {
   }
 
   /**
-   * Class implements builder to create a new instance of class Channel. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Channel</code>.
    */
   public static class Builder {
     /**
@@ -118,19 +107,14 @@ public class Channel {
      */
     private ChannelCode channelCode;
 
-    /**
-     * 
-     */
     private int code;
 
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>true</code>
      */
     private boolean selfServiceChannel = true;
 
-    /**
-     * 
-     */
     private Reseller reseller;
 
     /**
@@ -154,9 +138,10 @@ public class Channel {
     }
 
     /**
-     * Method sets the association "channelType". Type of the channel
+     * Method sets association {@link #channelType}.<br/>
      * 
-     * @param pChannelType ChannelType to which the association "channelType" should be set.
+     * @param pChannelType Value to which {@link #channelType} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChannelType( ChannelType pChannelType ) {
       channelType = pChannelType;
@@ -164,9 +149,10 @@ public class Channel {
     }
 
     /**
-     * Method sets the association "channelCode". The business code of the channel
+     * Method sets association {@link #channelCode}.<br/>
      * 
-     * @param pChannelCode ChannelCode to which the association "channelCode" should be set.
+     * @param pChannelCode Value to which {@link #channelCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChannelCode( ChannelCode pChannelCode ) {
       channelCode = pChannelCode;
@@ -174,9 +160,10 @@ public class Channel {
     }
 
     /**
-     * Method sets the attribute "code".
+     * Method sets attribute {@link #code}.<br/>
      * 
-     * @param pCode Value to which the attribute "code" should be set.
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCode( int pCode ) {
       // Assign value to attribute
@@ -185,9 +172,10 @@ public class Channel {
     }
 
     /**
-     * Method sets the attribute "selfServiceChannel".
+     * Method sets attribute {@link #selfServiceChannel}.<br/>
      * 
-     * @param pSelfServiceChannel Value to which the attribute "selfServiceChannel" should be set.
+     * @param pSelfServiceChannel Value to which {@link #selfServiceChannel} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSelfServiceChannel( boolean pSelfServiceChannel ) {
       // Assign value to attribute
@@ -196,9 +184,10 @@ public class Channel {
     }
 
     /**
-     * Method sets the association "reseller".
+     * Method sets association {@link #reseller}.<br/>
      * 
-     * @param pReseller Reseller to which the association "reseller" should be set.
+     * @param pReseller Value to which {@link #reseller} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReseller( Reseller pReseller ) {
       reseller = pReseller;
@@ -216,90 +205,90 @@ public class Channel {
   }
 
   /**
-   * Method returns the association "channelType". Type of the channel
-   *
-   * @return ChannelType ChannelType to which the association "channelType" is set.
+   * Method returns association {@link #channelType}.<br/>
+   * Type of the channel
+   * 
+   * @return {@link ChannelType} Value to which {@link #channelType} is set.
    */
   public ChannelType getChannelType( ) {
     return channelType;
   }
 
   /**
-   * Method sets the association "channelType". Type of the channel
+   * Method sets association {@link #channelType}.<br/>
+   * Type of the channel
    * 
-   * @param pChannelType ChannelType to which the association "channelType" should be set.
+   * @param pChannelType Value to which {@link #channelType} should be set.
    */
   public void setChannelType( ChannelType pChannelType ) {
     channelType = pChannelType;
   }
 
   /**
-   * Method unsets the association "channelType". Type of the channel
+   * Method unsets {@link #channelType}.
    */
   public final void unsetChannelType( ) {
     channelType = null;
   }
 
   /**
-   * Method returns the association "channelCode". The business code of the channel
-   *
-   * @return ChannelCode ChannelCode to which the association "channelCode" is set.
+   * Method returns association {@link #channelCode}.<br/>
+   * The business code of the channel
+   * 
+   * @return {@link ChannelCode} Value to which {@link #channelCode} is set.
    */
   public ChannelCode getChannelCode( ) {
     return channelCode;
   }
 
   /**
-   * Method sets the association "channelCode". The business code of the channel
+   * Method sets association {@link #channelCode}.<br/>
+   * The business code of the channel
    * 
-   * @param pChannelCode ChannelCode to which the association "channelCode" should be set.
+   * @param pChannelCode Value to which {@link #channelCode} should be set.
    */
   public void setChannelCode( ChannelCode pChannelCode ) {
     channelCode = pChannelCode;
   }
 
   /**
-   * Method unsets the association "channelCode". The business code of the channel
+   * Method unsets {@link #channelCode}.
    */
   public final void unsetChannelCode( ) {
     channelCode = null;
   }
 
   /**
-   * Method returns the attribute "code".
+   * Method returns attribute {@link #code}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "code" is set.
+   * @return int Value to which {@link #code} is set.
    */
   public int getCode( ) {
     return code;
   }
 
   /**
-   * Method returns the attribute "selfServiceChannel".
+   * Method returns attribute {@link #selfServiceChannel}.<br/>
    * 
-   * 
-   * @return Boolean Value to which the attribute "selfServiceChannel" is set.
+   * @return boolean Value to which {@link #selfServiceChannel} is set.
    */
   public boolean getSelfServiceChannel( ) {
     return selfServiceChannel;
   }
 
   /**
-   * Method returns the association "reseller".
+   * Method returns association {@link #reseller}.<br/>
    * 
-   *
-   * @return Reseller Reseller to which the association "reseller" is set.
+   * @return {@link Reseller} Value to which {@link #reseller} is set.
    */
   public Reseller getReseller( ) {
     return reseller;
   }
 
   /**
-   * Method sets the association "reseller".
+   * Method sets association {@link #reseller}.<br/>
    * 
-   * 
-   * @param pReseller Reseller to which the association "reseller" should be set.
+   * @param pReseller Value to which {@link #reseller} should be set.
    */
   public void setReseller( Reseller pReseller ) {
     // Release already referenced object before setting a new association.
@@ -315,8 +304,7 @@ public class Channel {
   }
 
   /**
-   * Method unsets the association "reseller".
-   * 
+   * Method unsets {@link #reseller}.
    */
   public final void unsetReseller( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

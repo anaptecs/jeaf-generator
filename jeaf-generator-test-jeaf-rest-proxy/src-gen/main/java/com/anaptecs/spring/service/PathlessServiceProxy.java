@@ -37,9 +37,7 @@ public final class PathlessServiceProxy extends ServiceProxy implements Pathless
   }
 
   /**
-   * Generated proxy implementation for method "getSomething".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.spring.service.PathlessService#getSomething}
    */
   public String getSomething( ) {
     try {

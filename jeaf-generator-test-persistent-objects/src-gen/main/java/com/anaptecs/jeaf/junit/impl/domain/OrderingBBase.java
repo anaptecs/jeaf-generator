@@ -5,10 +5,6 @@ import java.util.List;
 import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class OrderingBBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -20,24 +16,12 @@ public abstract class OrderingBBase extends PersistentObject {
    */
   public static final String TABLE_NAME = "ORDERINGB";
 
-  /**
-   * 
-   */
   private OrderingA a1;
 
-  /**
-   * 
-   */
   private OrderingA a2;
 
-  /**
-   * 
-   */
   private OrderingA a3;
 
-  /**
-   * 
-   */
   private OrderingA a4;
 
   /**
@@ -57,10 +41,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "a1".
+   * Method returns association {@link #a1}.<br/>
    * 
-   *
-   * @return OrderingA OrderingA to which the association "a1" is set.
+   * @return {@link OrderingA} Value to which {@link #a1} is set.
    */
   public OrderingA getA1( ) {
     a1 = this.unproxy(a1);
@@ -68,10 +51,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "a1".
+   * Method sets association {@link #a1}.<br/>
    * 
-   * 
-   * @param pA1 OrderingA to which the association "a1" should be set.
+   * @param pA1 Value to which {@link #a1} should be set.
    */
   public void setA1( OrderingA pA1 ) {
     // Release already referenced object before setting a new association.
@@ -87,8 +69,7 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "a1".
-   * 
+   * Method unsets {@link #a1}.
    */
   public final void unsetA1( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -101,10 +82,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "a2".
+   * Method returns association {@link #a2}.<br/>
    * 
-   *
-   * @return OrderingA OrderingA to which the association "a2" is set.
+   * @return {@link OrderingA} Value to which {@link #a2} is set.
    */
   public OrderingA getA2( ) {
     a2 = this.unproxy(a2);
@@ -112,10 +92,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "a2".
+   * Method sets association {@link #a2}.<br/>
    * 
-   * 
-   * @param pA2 OrderingA to which the association "a2" should be set.
+   * @param pA2 Value to which {@link #a2} should be set.
    */
   public void setA2( OrderingA pA2 ) {
     // Release already referenced object before setting a new association.
@@ -131,8 +110,7 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "a2".
-   * 
+   * Method unsets {@link #a2}.
    */
   public final void unsetA2( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -145,10 +123,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "a3".
+   * Method returns association {@link #a3}.<br/>
    * 
-   *
-   * @return OrderingA OrderingA to which the association "a3" is set.
+   * @return {@link OrderingA} Value to which {@link #a3} is set.
    */
   public OrderingA getA3( ) {
     a3 = this.unproxy(a3);
@@ -156,10 +133,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "a3".
+   * Method sets association {@link #a3}.<br/>
    * 
-   * 
-   * @param pA3 OrderingA to which the association "a3" should be set.
+   * @param pA3 Value to which {@link #a3} should be set.
    */
   public void setA3( OrderingA pA3 ) {
     // Release already referenced object before setting a new association.
@@ -175,8 +151,7 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "a3".
-   * 
+   * Method unsets {@link #a3}.
    */
   public final void unsetA3( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -189,10 +164,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "a4".
+   * Method returns association {@link #a4}.<br/>
    * 
-   *
-   * @return OrderingA OrderingA to which the association "a4" is set.
+   * @return {@link OrderingA} Value to which {@link #a4} is set.
    */
   public OrderingA getA4( ) {
     a4 = this.unproxy(a4);
@@ -200,10 +174,9 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "a4".
+   * Method sets association {@link #a4}.<br/>
    * 
-   * 
-   * @param pA4 OrderingA to which the association "a4" should be set.
+   * @param pA4 Value to which {@link #a4} should be set.
    */
   public void setA4( OrderingA pA4 ) {
     // Release already referenced object before setting a new association.
@@ -219,8 +192,7 @@ public abstract class OrderingBBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "a4".
-   * 
+   * Method unsets {@link #a4}.
    */
   public final void unsetA4( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

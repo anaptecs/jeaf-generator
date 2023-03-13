@@ -12,10 +12,6 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Company extends Partner {
   /**
    * Default serial version uid.
@@ -27,9 +23,6 @@ public class Company extends Partner {
    */
   public static final String NAME = "name";
 
-  /**
-   * 
-   */
   private String name;
 
   /**
@@ -71,13 +64,9 @@ public class Company extends Partner {
   }
 
   /**
-   * Class implements builder to create a new instance of class Company. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Company</code>.
    */
   public static class Builder extends Partner.Builder {
-    /**
-     * 
-     */
     private String name;
 
     /**
@@ -109,9 +98,10 @@ public class Company extends Partner {
     }
 
     /**
-     * Method sets the association "postalAddresses".
+     * Method sets association {@link #postalAddresses}.<br/>
      * 
-     * @param pPostalAddresses Collection with objects to which the association should be set.
+     * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
@@ -121,9 +111,10 @@ public class Company extends Partner {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -155,20 +146,18 @@ public class Company extends Partner {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute

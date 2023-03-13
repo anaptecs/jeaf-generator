@@ -15,10 +15,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductCode implements Serializable {
   /**
@@ -31,9 +27,6 @@ public class ProductCode implements Serializable {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   @Positive
   private int code;
 
@@ -86,13 +79,9 @@ public class ProductCode implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class ProductCode. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ProductCode</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     @Positive
     private int code;
 
@@ -113,9 +102,10 @@ public class ProductCode implements Serializable {
     }
 
     /**
-     * Method sets the attribute "code".
+     * Method sets attribute {@link #code}.<br/>
      * 
-     * @param pCode Value to which the attribute "code" should be set.
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCode( int pCode ) {
       // Assign value to attribute
@@ -148,20 +138,18 @@ public class ProductCode implements Serializable {
   }
 
   /**
-   * Method returns the attribute "code".
+   * Method returns attribute {@link #code}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "code" is set.
+   * @return int Value to which {@link #code} is set.
    */
   public int getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( int pCode ) {
     // Assign value to attribute

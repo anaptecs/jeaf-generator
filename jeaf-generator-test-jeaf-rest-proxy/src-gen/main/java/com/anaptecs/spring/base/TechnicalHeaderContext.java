@@ -16,10 +16,6 @@ import javax.ws.rs.HeaderParam;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class TechnicalHeaderContext implements Serializable {
   /**
    * Default serial version UID.
@@ -31,9 +27,6 @@ public class TechnicalHeaderContext implements Serializable {
    */
   public static final String RESELLER = "reseller";
 
-  /**
-   * 
-   */
   @HeaderParam("Reseller")
   private String reseller;
 
@@ -91,13 +84,9 @@ public class TechnicalHeaderContext implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class TechnicalHeaderContext. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>TechnicalHeaderContext</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String reseller;
 
     /**
@@ -118,9 +107,10 @@ public class TechnicalHeaderContext implements Serializable {
     }
 
     /**
-     * Method sets the attribute "reseller".
+     * Method sets attribute {@link #reseller}.<br/>
      * 
-     * @param pReseller Value to which the attribute "reseller" should be set.
+     * @param pReseller Value to which {@link #reseller} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReseller( String pReseller ) {
       // Assign value to attribute
@@ -153,20 +143,18 @@ public class TechnicalHeaderContext implements Serializable {
   }
 
   /**
-   * Method returns the attribute "reseller".
+   * Method returns attribute {@link #reseller}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "reseller" is set.
+   * @return {@link String} Value to which {@link #reseller} is set.
    */
   public String getReseller( ) {
     return reseller;
   }
 
   /**
-   * Method sets the attribute "reseller".
+   * Method sets attribute {@link #reseller}.<br/>
    * 
-   * 
-   * @param pReseller Value to which the attribute "reseller" should be set.
+   * @param pReseller Value to which {@link #reseller} should be set.
    */
   public void setReseller( String pReseller ) {
     // Assign value to attribute

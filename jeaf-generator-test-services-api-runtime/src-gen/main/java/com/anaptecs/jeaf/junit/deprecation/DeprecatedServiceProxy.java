@@ -11,6 +11,7 @@ import com.anaptecs.jeaf.core.spi.TransactionBehavior;
 /**
  * ServiceProxy class for JEAF service DeprecatedService.
  */
+@Deprecated
 public final class DeprecatedServiceProxy extends ServiceProxy implements DeprecatedService {
   /**
    * Serial version uid for the proxy class.

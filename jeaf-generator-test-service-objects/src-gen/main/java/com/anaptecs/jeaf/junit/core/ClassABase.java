@@ -14,10 +14,6 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class ClassABase implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
@@ -39,14 +35,8 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
    */
   private final ServiceObjectID objectID;
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private ClassB oneB;
 
   /**
@@ -88,14 +78,8 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
      */
     private ObjectIdentity<?> objectID;
 
-    /**
-     * 
-     */
     private String name;
 
-    /**
-     * 
-     */
     private ClassB oneB;
 
     /**
@@ -126,9 +110,10 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setName( String pName ) {
       // Assign value to attribute
@@ -137,9 +122,10 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
     }
 
     /**
-     * Method sets the association "oneB".
+     * Method sets association {@link #oneB}.<br/>
      * 
-     * @param pOneB ClassB to which the association "oneB" should be set.
+     * @param pOneB Value to which {@link #oneB} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setOneB( ClassB pOneB ) {
       oneB = pOneB;
@@ -199,20 +185,18 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -220,20 +204,18 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
   }
 
   /**
-   * Method returns the association "oneB".
+   * Method returns association {@link #oneB}.<br/>
    * 
-   *
-   * @return ClassB ClassB to which the association "oneB" is set.
+   * @return {@link ClassB} Value to which {@link #oneB} is set.
    */
   public ClassB getOneB( ) {
     return oneB;
   }
 
   /**
-   * Method sets the association "oneB".
+   * Method sets association {@link #oneB}.<br/>
    * 
-   * 
-   * @param pOneB ClassB to which the association "oneB" should be set.
+   * @param pOneB Value to which {@link #oneB} should be set.
    */
   public void setOneB( ClassB pOneB ) {
     // Release already referenced object before setting a new association.
@@ -249,8 +231,7 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
   }
 
   /**
-   * Method unsets the association "oneB".
-   * 
+   * Method unsets {@link #oneB}.
    */
   public final void unsetOneB( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -263,7 +244,6 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
   }
 
   /**
-   * 
    * @return {@link Double}
    */
   public abstract Double calculate( );

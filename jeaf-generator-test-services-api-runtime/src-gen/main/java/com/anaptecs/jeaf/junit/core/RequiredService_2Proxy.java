@@ -37,9 +37,8 @@ public final class RequiredService_2Proxy extends ServiceProxy implements Requir
   }
 
   /**
-   * Generated proxy implementation for method "testContextHandling_2".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.RequiredService_2#testContextHandling_2}
    */
   public void testContextHandling_2( ) {
     try {

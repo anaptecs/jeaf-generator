@@ -19,10 +19,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -54,30 +50,15 @@ public class ImmutableAssociationPOJO {
   @Deprecated
   public static final String DEPRECATEDREF = "deprecatedRef";
 
-  /**
-   * 
-   */
   private final boolean yetAnotherAttribute;
 
-  /**
-   * 
-   */
   private final SortedSet<ImmutablePOJO> readonlyAssociation;
 
-  /**
-   * 
-   */
   private final ImmutableChildPOJO immutableChildPOJO;
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<ImmutableChildPOJO> deprecatedRefs;
 
-  /**
-   * 
-   */
   @Deprecated
   private ChildPOJO deprecatedRef;
 
@@ -139,34 +120,18 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Class implements builder to create a new instance of class ImmutableAssociationPOJO. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ImmutableAssociationPOJO</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private boolean yetAnotherAttribute;
 
-    /**
-     * 
-     */
     private SortedSet<ImmutablePOJO> readonlyAssociation;
 
-    /**
-     * 
-     */
     private ImmutableChildPOJO immutableChildPOJO;
 
-    /**
-     * 
-     */
     @Deprecated
     private Set<ImmutableChildPOJO> deprecatedRefs;
 
-    /**
-     * 
-     */
     @Deprecated
     private ChildPOJO deprecatedRef;
 
@@ -192,9 +157,10 @@ public class ImmutableAssociationPOJO {
     }
 
     /**
-     * Method sets the attribute "yetAnotherAttribute".
+     * Method sets attribute {@link #yetAnotherAttribute}.<br/>
      * 
-     * @param pYetAnotherAttribute Value to which the attribute "yetAnotherAttribute" should be set.
+     * @param pYetAnotherAttribute Value to which {@link #yetAnotherAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setYetAnotherAttribute( boolean pYetAnotherAttribute ) {
       // Assign value to attribute
@@ -203,9 +169,10 @@ public class ImmutableAssociationPOJO {
     }
 
     /**
-     * Method sets the association "readonlyAssociation".
+     * Method sets association {@link #readonlyAssociation}.<br/>
      * 
-     * @param pReadonlyAssociation Collection with objects to which the association should be set.
+     * @param pReadonlyAssociation Collection to which {@link #readonlyAssociation} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReadonlyAssociation( SortedSet<ImmutablePOJO> pReadonlyAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -219,9 +186,10 @@ public class ImmutableAssociationPOJO {
     }
 
     /**
-     * Method sets the association "immutableChildPOJO".
+     * Method sets association {@link #immutableChildPOJO}.<br/>
      * 
-     * @param pImmutableChildPOJO ImmutableChildPOJO to which the association "immutableChildPOJO" should be set.
+     * @param pImmutableChildPOJO Value to which {@link #immutableChildPOJO} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setImmutableChildPOJO( ImmutableChildPOJO pImmutableChildPOJO ) {
       immutableChildPOJO = pImmutableChildPOJO;
@@ -229,9 +197,10 @@ public class ImmutableAssociationPOJO {
     }
 
     /**
-     * Method sets the association "deprecatedRefs".
+     * Method sets association {@link #deprecatedRefs}.<br/>
      * 
-     * @param pDeprecatedRefs Collection with objects to which the association should be set.
+     * @param pDeprecatedRefs Collection to which {@link #deprecatedRefs} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDeprecatedRefs( Set<ImmutableChildPOJO> pDeprecatedRefs ) {
@@ -246,9 +215,10 @@ public class ImmutableAssociationPOJO {
     }
 
     /**
-     * Method sets the association "deprecatedRef".
+     * Method sets association {@link #deprecatedRef}.<br/>
      * 
-     * @param pDeprecatedRef ChildPOJO to which the association "deprecatedRef" should be set.
+     * @param pDeprecatedRef Value to which {@link #deprecatedRef} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDeprecatedRef( ChildPOJO pDeprecatedRef ) {
@@ -281,20 +251,18 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method returns the attribute "yetAnotherAttribute".
+   * Method returns attribute {@link #yetAnotherAttribute}.<br/>
    * 
-   * 
-   * @return Boolean Value to which the attribute "yetAnotherAttribute" is set.
+   * @return boolean Value to which {@link #yetAnotherAttribute} is set.
    */
   public boolean getYetAnotherAttribute( ) {
     return yetAnotherAttribute;
   }
 
   /**
-   * Method returns the association "readonlyAssociation".
+   * Method returns association {@link #readonlyAssociation}.<br/>
    * 
-   *
-   * @return Collection All ImmutablePOJO objects that belong to the association "readonlyAssociation". The method never
+   * @return {@link SortedSet<ImmutablePOJO>} Value to which {@link #readonlyAssociation} is set. The method never
    * returns null and the returned collection is unmodifiable.
    */
   public SortedSet<ImmutablePOJO> getReadonlyAssociation( ) {
@@ -303,21 +271,19 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method returns the association "immutableChildPOJO".
+   * Method returns association {@link #immutableChildPOJO}.<br/>
    * 
-   *
-   * @return ImmutableChildPOJO ImmutableChildPOJO to which the association "immutableChildPOJO" is set.
+   * @return {@link ImmutableChildPOJO} Value to which {@link #immutableChildPOJO} is set.
    */
   public ImmutableChildPOJO getImmutableChildPOJO( ) {
     return immutableChildPOJO;
   }
 
   /**
-   * Method returns the association "deprecatedRefs".
+   * Method returns association {@link #deprecatedRefs}.<br/>
    * 
-   *
-   * @return Collection All ImmutableChildPOJO objects that belong to the association "deprecatedRefs". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link Set<ImmutableChildPOJO>} Value to which {@link #deprecatedRefs} is set. The method never returns
+   * null and the returned collection is unmodifiable.
    */
   @Deprecated
   public Set<ImmutableChildPOJO> getDeprecatedRefs( ) {
@@ -326,11 +292,9 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method adds the passed ImmutableChildPOJO object to the association "deprecatedRefs".
+   * Method adds the passed object to {@link #deprecatedRefs}.
    * 
-   * 
-   * @param pDeprecatedRefs Object that should be added to the association "deprecatedRefs". The parameter must not be
-   * null.
+   * @param pDeprecatedRefs Object that should be added to {@link #deprecatedRefs}. The parameter must not be null.
    */
   @Deprecated
   public void addToDeprecatedRefs( ImmutableChildPOJO pDeprecatedRefs ) {
@@ -341,11 +305,10 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method adds all passed objects to the association "deprecatedRefs".
+   * Method adds all passed objects to {@link #deprecatedRefs}.
    * 
-   * 
-   * @param pDeprecatedRefs Collection with all objects that should be added to the association "deprecatedRefs". The
-   * parameter must not be null.
+   * @param pDeprecatedRefs Collection with all objects that should be added to {@link #deprecatedRefs}. The parameter
+   * must not be null.
    */
   @Deprecated
   public void addToDeprecatedRefs( Collection<ImmutableChildPOJO> pDeprecatedRefs ) {
@@ -358,11 +321,9 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method removes the passed ImmutableChildPOJO object from the association "deprecatedRefs".
+   * Method removes the passed object from {@link #deprecatedRefs}.<br/>
    * 
-   * 
-   * @param pDeprecatedRefs Object that should be removed from the association "deprecatedRefs". The parameter must not
-   * be null.
+   * @param pDeprecatedRefs Object that should be removed from {@link #deprecatedRefs}. The parameter must not be null.
    */
   @Deprecated
   public void removeFromDeprecatedRefs( ImmutableChildPOJO pDeprecatedRefs ) {
@@ -373,8 +334,7 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method removes all objects from the association "deprecatedRefs".
-   * 
+   * Method removes all objects from {@link #deprecatedRefs}.
    */
   @Deprecated
   public void clearDeprecatedRefs( ) {
@@ -383,10 +343,9 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method returns the association "deprecatedRef".
+   * Method returns association {@link #deprecatedRef}.<br/>
    * 
-   *
-   * @return ChildPOJO ChildPOJO to which the association "deprecatedRef" is set.
+   * @return {@link ChildPOJO} Value to which {@link #deprecatedRef} is set.
    */
   @Deprecated
   public ChildPOJO getDeprecatedRef( ) {
@@ -394,10 +353,9 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method sets the association "deprecatedRef".
+   * Method sets association {@link #deprecatedRef}.<br/>
    * 
-   * 
-   * @param pDeprecatedRef ChildPOJO to which the association "deprecatedRef" should be set.
+   * @param pDeprecatedRef Value to which {@link #deprecatedRef} should be set.
    */
   @Deprecated
   public void setDeprecatedRef( ChildPOJO pDeprecatedRef ) {
@@ -405,8 +363,7 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method unsets the association "deprecatedRef".
-   * 
+   * Method unsets {@link #deprecatedRef}.
    */
   @Deprecated
   public final void unsetDeprecatedRef( ) {

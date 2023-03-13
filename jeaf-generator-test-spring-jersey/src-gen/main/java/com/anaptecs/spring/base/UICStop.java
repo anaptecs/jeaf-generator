@@ -9,10 +9,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UICStop extends Stop {
   /**
@@ -20,9 +16,6 @@ public class UICStop extends Stop {
    */
   public static final String UICCODE = "uicCode";
 
-  /**
-   * 
-   */
   private String uicCode;
 
   /**
@@ -64,13 +57,9 @@ public class UICStop extends Stop {
   }
 
   /**
-   * Class implements builder to create a new instance of class UICStop. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>UICStop</code>.
    */
   public static class Builder extends Stop.Builder {
-    /**
-     * 
-     */
     private String uicCode;
 
     /**
@@ -92,9 +81,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setName( String pName ) {
@@ -104,9 +94,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the association "links".
+     * Method sets association {@link #links}.<br/>
      * 
-     * @param pLinks Collection with objects to which the association should be set.
+     * @param pLinks Collection to which {@link #links} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setLinks( List<LinkObject> pLinks ) {
@@ -116,9 +107,10 @@ public class UICStop extends Stop {
     }
 
     /**
-     * Method sets the attribute "uicCode".
+     * Method sets attribute {@link #uicCode}.<br/>
      * 
-     * @param pUicCode Value to which the attribute "uicCode" should be set.
+     * @param pUicCode Value to which {@link #uicCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setUicCode( String pUicCode ) {
       // Assign value to attribute
@@ -137,20 +129,18 @@ public class UICStop extends Stop {
   }
 
   /**
-   * Method returns the attribute "uicCode".
+   * Method returns attribute {@link #uicCode}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "uicCode" is set.
+   * @return {@link String} Value to which {@link #uicCode} is set.
    */
   public String getUicCode( ) {
     return uicCode;
   }
 
   /**
-   * Method sets the attribute "uicCode".
+   * Method sets attribute {@link #uicCode}.<br/>
    * 
-   * 
-   * @param pUicCode Value to which the attribute "uicCode" should be set.
+   * @param pUicCode Value to which {@link #uicCode} should be set.
    */
   public void setUicCode( String pUicCode ) {
     // Assign value to attribute

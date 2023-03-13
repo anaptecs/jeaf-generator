@@ -11,19 +11,12 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Sortiment {
   /**
    * Constant for the name of attribute "products".
    */
   public static final String PRODUCTS = "products";
 
-  /**
-   * 
-   */
   private Set<Product> products;
 
   /**
@@ -79,13 +72,9 @@ public class Sortiment {
   }
 
   /**
-   * Class implements builder to create a new instance of class Sortiment. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Sortiment</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private Set<Product> products;
 
     /**
@@ -105,9 +94,10 @@ public class Sortiment {
     }
 
     /**
-     * Method sets the association "products".
+     * Method sets association {@link #products}.<br/>
      * 
-     * @param pProducts Collection with objects to which the association should be set.
+     * @param pProducts Collection to which {@link #products} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setProducts( Set<Product> pProducts ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -131,11 +121,10 @@ public class Sortiment {
   }
 
   /**
-   * Method returns the association "products".
+   * Method returns association {@link #products}.<br/>
    * 
-   *
-   * @return Collection All Product objects that belong to the association "products". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<Product>} Value to which {@link #products} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Product> getProducts( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -151,10 +140,9 @@ public class Sortiment {
   }
 
   /**
-   * Method adds the passed Product object to the association "products".
+   * Method adds the passed object to {@link #products}.
    * 
-   * 
-   * @param pProducts Object that should be added to the association "products". The parameter must not be null.
+   * @param pProducts Object that should be added to {@link #products}. The parameter must not be null.
    */
   public void addToProducts( Product pProducts ) {
     // Add passed object to collection of associated Product objects.
@@ -167,11 +155,10 @@ public class Sortiment {
   }
 
   /**
-   * Method adds all passed objects to the association "products".
+   * Method adds all passed objects to {@link #products}.
    * 
-   * 
-   * @param pProducts Collection with all objects that should be added to the association "products". The parameter must
-   * not be null.
+   * @param pProducts Collection with all objects that should be added to {@link #products}. The parameter must not be
+   * null.
    */
   public void addToProducts( Collection<Product> pProducts ) {
     // Add all passed objects.
@@ -181,10 +168,9 @@ public class Sortiment {
   }
 
   /**
-   * Method removes the passed Product object from the association "products".
+   * Method removes the passed object from {@link #products}.<br/>
    * 
-   * 
-   * @param pProducts Object that should be removed from the association "products". The parameter must not be null.
+   * @param pProducts Object that should be removed from {@link #products}. The parameter must not be null.
    */
   public void removeFromProducts( Product pProducts ) {
     // Remove passed object from collection of associated Product objects.
@@ -197,8 +183,7 @@ public class Sortiment {
   }
 
   /**
-   * Method removes all objects from the association "products".
-   * 
+   * Method removes all objects from {@link #products}.
    */
   public void clearProducts( ) {
     // Remove all objects from association "products".

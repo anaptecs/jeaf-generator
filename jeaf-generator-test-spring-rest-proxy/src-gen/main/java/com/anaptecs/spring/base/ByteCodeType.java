@@ -7,19 +7,12 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ByteCodeType {
   /**
    * Constant for the name of attribute "code".
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private byte code;
 
   /**
@@ -60,13 +53,9 @@ public class ByteCodeType {
   }
 
   /**
-   * Class implements builder to create a new instance of class ByteCodeType. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ByteCodeType</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private byte code;
 
     /**
@@ -86,9 +75,10 @@ public class ByteCodeType {
     }
 
     /**
-     * Method sets the attribute "code".
+     * Method sets attribute {@link #code}.<br/>
      * 
-     * @param pCode Value to which the attribute "code" should be set.
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCode( byte pCode ) {
       // Assign value to attribute
@@ -108,20 +98,18 @@ public class ByteCodeType {
   }
 
   /**
-   * Method returns the attribute "code".
+   * Method returns attribute {@link #code}.<br/>
    * 
-   * 
-   * @return byte Value to which the attribute "code" is set.
+   * @return byte Value to which {@link #code} is set.
    */
   public byte getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( byte pCode ) {
     // Assign value to attribute

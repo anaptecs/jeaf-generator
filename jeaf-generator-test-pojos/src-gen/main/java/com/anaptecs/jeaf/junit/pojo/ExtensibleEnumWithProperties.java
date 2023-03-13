@@ -2,19 +2,10 @@ package com.anaptecs.jeaf.junit.pojo;
 
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * 
- */
 public final class ExtensibleEnumWithProperties {
   public static enum ExtensibleEnumWithPropertiesType {
-    /**
-     * 
-     */
-    CAMPAIGN_DATA_UNIT("AX2", "Campaign Data Unit", 4711, 1234567890, true, -0.1f, 1.234),
-    /**
-     * 
-     */
-    RELATION_KEY_DATA_UNIT("X56", "Relation Key Data Unit", 12345, 1, false, 1.0E-4f, 0.1),
+    CAMPAIGN_DATA_UNIT("AX2", "Campaign Data Unit", 4711, 1234567890, true, -0.1f, 1.234), RELATION_KEY_DATA_UNIT("X56",
+        "Relation Key Data Unit", 12345, 1, false, 1.0E-4f, 0.1),
     /**
      * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external
      * interface.
@@ -48,121 +39,87 @@ public final class ExtensibleEnumWithProperties {
       doubleProperty = pDoubleProperty;
     }
 
-    /**
-     * 
-     */
     private final String dataUnitID;
 
-    /**
-     * 
-     */
     private final String name;
 
-    /**
-     * 
-     */
     private final int order;
 
-    /**
-     * 
-     */
     private final long longProperty;
 
-    /**
-     * 
-     */
     private final boolean booleanProperty;
 
-    /**
-     * 
-     */
     private final float floatProperty;
 
-    /**
-     * 
-     */
     private final double doubleProperty;
 
     /**
-     * Method returns the attribute "dataUnitID".
+     * Method returns attribute {@link #dataUnitID}.<br/>
      * 
-     * 
-     * @return String Value to which the attribute "dataUnitID" is set.
+     * @return {@link String} Value to which {@link #dataUnitID} is set.
      */
     public String getDataUnitID( ) {
       return dataUnitID;
     }
 
     /**
-     * Method returns the attribute "name".
+     * Method returns attribute {@link #name}.<br/>
      * 
-     * 
-     * @return String Value to which the attribute "name" is set.
+     * @return {@link String} Value to which {@link #name} is set.
      */
     public String getName( ) {
       return name;
     }
 
     /**
-     * Method returns the attribute "order".
+     * Method returns attribute {@link #order}.<br/>
      * 
-     * 
-     * @return int Value to which the attribute "order" is set.
+     * @return int Value to which {@link #order} is set.
      */
     public int getOrder( ) {
       return order;
     }
 
     /**
-     * Method returns the attribute "longProperty".
+     * Method returns attribute {@link #longProperty}.<br/>
      * 
-     * 
-     * @return long Value to which the attribute "longProperty" is set.
+     * @return long Value to which {@link #longProperty} is set.
      */
     public long getLongProperty( ) {
       return longProperty;
     }
 
     /**
-     * Method returns the attribute "booleanProperty".
+     * Method returns attribute {@link #booleanProperty}.<br/>
      * 
-     * 
-     * @return Boolean Value to which the attribute "booleanProperty" is set.
+     * @return boolean Value to which {@link #booleanProperty} is set.
      */
     public boolean getBooleanProperty( ) {
       return booleanProperty;
     }
 
     /**
-     * Method returns the attribute "floatProperty".
+     * Method returns attribute {@link #floatProperty}.<br/>
      * 
-     * 
-     * @return float Value to which the attribute "floatProperty" is set.
+     * @return float Value to which {@link #floatProperty} is set.
      */
     public float getFloatProperty( ) {
       return floatProperty;
     }
 
     /**
-     * Method returns the attribute "doubleProperty".
+     * Method returns attribute {@link #doubleProperty}.<br/>
      * 
-     * 
-     * @return double Value to which the attribute "doubleProperty" is set.
+     * @return double Value to which {@link #doubleProperty} is set.
      */
     public double getDoubleProperty( ) {
       return doubleProperty;
     }
   }
 
-  /**
-   * 
-   */
   public static final ExtensibleEnumWithProperties CAMPAIGN_DATA_UNIT =
       new ExtensibleEnumWithProperties(ExtensibleEnumWithPropertiesType.CAMPAIGN_DATA_UNIT);
 
-  /**
-   * 
-   */
   public static final ExtensibleEnumWithProperties RELATION_KEY_DATA_UNIT =
       new ExtensibleEnumWithProperties(ExtensibleEnumWithPropertiesType.RELATION_KEY_DATA_UNIT);
 

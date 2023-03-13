@@ -37,9 +37,7 @@ public final class InterceptorTestServiceProxy extends ServiceProxy implements I
   }
 
   /**
-   * Generated proxy implementation for method "callService".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.core.InterceptorTestService#callService}
    */
   public void callService( ) {
     try {
@@ -52,9 +50,8 @@ public final class InterceptorTestServiceProxy extends ServiceProxy implements I
   }
 
   /**
-   * Generated proxy implementation for method "callServiceAPE".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.InterceptorTestService#callServiceAPE}
    */
   public void callServiceAPE( ) throws InterceptorTestApplicationException {
     try {
@@ -70,9 +67,8 @@ public final class InterceptorTestServiceProxy extends ServiceProxy implements I
   }
 
   /**
-   * Generated proxy implementation for method "callServiceSYE".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.InterceptorTestService#callServiceSYE}
    */
   public void callServiceSYE( ) {
     try {
@@ -85,9 +81,8 @@ public final class InterceptorTestServiceProxy extends ServiceProxy implements I
   }
 
   /**
-   * Generated proxy implementation for method "callServiceRTE".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.InterceptorTestService#callServiceRTE}
    */
   public void callServiceRTE( ) {
     try {
@@ -100,9 +95,8 @@ public final class InterceptorTestServiceProxy extends ServiceProxy implements I
   }
 
   /**
-   * Generated proxy implementation for method "callServiceERR".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.InterceptorTestService#callServiceERR}
    */
   public void callServiceERR( ) {
     try {

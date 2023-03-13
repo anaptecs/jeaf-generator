@@ -15,10 +15,6 @@ import javax.ws.rs.core.Response;
 import com.anaptecs.jeaf.core.api.JEAF;
 import com.anaptecs.spring.service.PathlessService;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Path("/")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)

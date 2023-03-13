@@ -18,10 +18,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -46,19 +42,10 @@ public abstract class BidirectionalABase {
    */
   public static final String TRANSIENTBS = "transientBs";
 
-  /**
-   * 
-   */
   private transient BidirectionalB transientB;
 
-  /**
-   * 
-   */
   private transient BidirectionalA transientParent;
 
-  /**
-   * 
-   */
   private BidirectionalA child;
 
   /**
@@ -66,9 +53,6 @@ public abstract class BidirectionalABase {
    */
   private transient boolean childBackReferenceInitialized;
 
-  /**
-   * 
-   */
   private transient Set<BidirectionalB> transientBs;
 
   /**
@@ -108,24 +92,12 @@ public abstract class BidirectionalABase {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private BidirectionalB transientB;
 
-    /**
-     * 
-     */
     private BidirectionalA transientParent;
 
-    /**
-     * 
-     */
     private BidirectionalA child;
 
-    /**
-     * 
-     */
     private Set<BidirectionalB> transientBs;
 
     /**
@@ -148,9 +120,10 @@ public abstract class BidirectionalABase {
     }
 
     /**
-     * Method sets the association "transientB".
+     * Method sets association {@link #transientB}.<br/>
      * 
-     * @param pTransientB BidirectionalB to which the association "transientB" should be set.
+     * @param pTransientB Value to which {@link #transientB} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setTransientB( BidirectionalB pTransientB ) {
       transientB = pTransientB;
@@ -158,9 +131,10 @@ public abstract class BidirectionalABase {
     }
 
     /**
-     * Method sets the association "transientParent".
+     * Method sets association {@link #transientParent}.<br/>
      * 
-     * @param pTransientParent BidirectionalA to which the association "transientParent" should be set.
+     * @param pTransientParent Value to which {@link #transientParent} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setTransientParent( BidirectionalA pTransientParent ) {
       transientParent = pTransientParent;
@@ -168,9 +142,10 @@ public abstract class BidirectionalABase {
     }
 
     /**
-     * Method sets the association "child".
+     * Method sets association {@link #child}.<br/>
      * 
-     * @param pChild BidirectionalA to which the association "child" should be set.
+     * @param pChild Value to which {@link #child} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setChild( BidirectionalA pChild ) {
       child = pChild;
@@ -178,9 +153,10 @@ public abstract class BidirectionalABase {
     }
 
     /**
-     * Method sets the association "transientBs".
+     * Method sets association {@link #transientBs}.<br/>
      * 
-     * @param pTransientBs Collection with objects to which the association should be set.
+     * @param pTransientBs Collection to which {@link #transientBs} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setTransientBs( Set<BidirectionalB> pTransientBs ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -218,20 +194,18 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method returns the association "transientB".
+   * Method returns association {@link #transientB}.<br/>
    * 
-   *
-   * @return BidirectionalB BidirectionalB to which the association "transientB" is set.
+   * @return {@link BidirectionalB} Value to which {@link #transientB} is set.
    */
   public BidirectionalB getTransientB( ) {
     return transientB;
   }
 
   /**
-   * Method sets the association "transientB".
+   * Method sets association {@link #transientB}.<br/>
    * 
-   * 
-   * @param pTransientB BidirectionalB to which the association "transientB" should be set.
+   * @param pTransientB Value to which {@link #transientB} should be set.
    */
   public void setTransientB( BidirectionalB pTransientB ) {
     // Release already referenced object before setting a new association.
@@ -247,8 +221,7 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method unsets the association "transientB".
-   * 
+   * Method unsets {@link #transientB}.
    */
   public final void unsetTransientB( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -261,20 +234,18 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method returns the association "transientParent".
+   * Method returns association {@link #transientParent}.<br/>
    * 
-   *
-   * @return BidirectionalA BidirectionalA to which the association "transientParent" is set.
+   * @return {@link BidirectionalA} Value to which {@link #transientParent} is set.
    */
   public BidirectionalA getTransientParent( ) {
     return transientParent;
   }
 
   /**
-   * Method sets the association "transientParent".
+   * Method sets association {@link #transientParent}.<br/>
    * 
-   * 
-   * @param pTransientParent BidirectionalA to which the association "transientParent" should be set.
+   * @param pTransientParent Value to which {@link #transientParent} should be set.
    */
   public void setTransientParent( BidirectionalA pTransientParent ) {
     // Release already referenced object before setting a new association.
@@ -290,8 +261,7 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method unsets the association "transientParent".
-   * 
+   * Method unsets {@link #transientParent}.
    */
   public final void unsetTransientParent( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -304,10 +274,9 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method returns the association "child".
+   * Method returns association {@link #child}.<br/>
    * 
-   *
-   * @return BidirectionalA BidirectionalA to which the association "child" is set.
+   * @return {@link BidirectionalA} Value to which {@link #child} is set.
    */
   public BidirectionalA getChild( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -320,10 +289,9 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method sets the association "child".
+   * Method sets association {@link #child}.<br/>
    * 
-   * 
-   * @param pChild BidirectionalA to which the association "child" should be set.
+   * @param pChild Value to which {@link #child} should be set.
    */
   public void setChild( BidirectionalA pChild ) {
     // Release already referenced object before setting a new association.
@@ -339,8 +307,7 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method unsets the association "child".
-   * 
+   * Method unsets {@link #child}.
    */
   public final void unsetChild( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -353,11 +320,10 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method returns the association "transientBs".
+   * Method returns association {@link #transientBs}.<br/>
    * 
-   *
-   * @return Collection All BidirectionalB objects that belong to the association "transientBs". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link Set<BidirectionalB>} Value to which {@link #transientBs} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public Set<BidirectionalB> getTransientBs( ) {
     // Return all BidirectionalB objects as unmodifiable collection.
@@ -365,10 +331,9 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method adds the passed BidirectionalB object to the association "transientBs".
+   * Method adds the passed object to {@link #transientBs}.
    * 
-   * 
-   * @param pTransientBs Object that should be added to the association "transientBs". The parameter must not be null.
+   * @param pTransientBs Object that should be added to {@link #transientBs}. The parameter must not be null.
    */
   public void addToTransientBs( BidirectionalB pTransientBs ) {
     // Check parameter "pTransientBs" for invalid value null.
@@ -383,11 +348,10 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method adds all passed objects to the association "transientBs".
+   * Method adds all passed objects to {@link #transientBs}.
    * 
-   * 
-   * @param pTransientBs Collection with all objects that should be added to the association "transientBs". The
-   * parameter must not be null.
+   * @param pTransientBs Collection with all objects that should be added to {@link #transientBs}. The parameter must
+   * not be null.
    */
   public void addToTransientBs( Collection<BidirectionalB> pTransientBs ) {
     // Check parameter "pTransientBs" for invalid value null.
@@ -399,11 +363,9 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method removes the passed BidirectionalB object from the association "transientBs".
+   * Method removes the passed object from {@link #transientBs}.<br/>
    * 
-   * 
-   * @param pTransientBs Object that should be removed from the association "transientBs". The parameter must not be
-   * null.
+   * @param pTransientBs Object that should be removed from {@link #transientBs}. The parameter must not be null.
    */
   public void removeFromTransientBs( BidirectionalB pTransientBs ) {
     // Check parameter for invalid value null.
@@ -418,8 +380,7 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Method removes all objects from the association "transientBs".
-   * 
+   * Method removes all objects from {@link #transientBs}.
    */
   public void clearTransientBs( ) {
     // Remove all objects from association "transientBs".

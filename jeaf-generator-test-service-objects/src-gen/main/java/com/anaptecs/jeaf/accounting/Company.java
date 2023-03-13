@@ -10,10 +10,6 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Company extends Customer {
   /**
    * Default serial version uid.
@@ -40,24 +36,12 @@ public class Company extends Customer {
    */
   public static final String ATTENDANT = "attendant";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private Long registrationNumber;
 
-  /**
-   * 
-   */
   private Long taxNumber;
 
-  /**
-   * 
-   */
   private String attendant;
 
   /**
@@ -102,28 +86,15 @@ public class Company extends Customer {
   }
 
   /**
-   * Class implements builder to create a new instance of class Company. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Company</code>.
    */
   public static class Builder extends Customer.Builder {
-    /**
-     * 
-     */
     private String name;
 
-    /**
-     * 
-     */
     private Long registrationNumber;
 
-    /**
-     * 
-     */
     private Long taxNumber;
 
-    /**
-     * 
-     */
     private String attendant;
 
     /**
@@ -158,9 +129,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "active".
+     * Method sets attribute {@link #active}.<br/>
      * 
-     * @param pActive Value to which the attribute "active" should be set.
+     * @param pActive Value to which {@link #active} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setActive( Boolean pActive ) {
@@ -170,9 +142,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "street".
+     * Method sets attribute {@link #street}.<br/>
      * 
-     * @param pStreet Value to which the attribute "street" should be set.
+     * @param pStreet Value to which {@link #street} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setStreet( String pStreet ) {
@@ -182,9 +155,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "zipCode".
+     * Method sets attribute {@link #zipCode}.<br/>
      * 
-     * @param pZipCode Value to which the attribute "zipCode" should be set.
+     * @param pZipCode Value to which {@link #zipCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setZipCode( Integer pZipCode ) {
@@ -194,9 +168,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "city".
+     * Method sets attribute {@link #city}.<br/>
      * 
-     * @param pCity Value to which the attribute "city" should be set.
+     * @param pCity Value to which {@link #city} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setCity( String pCity ) {
@@ -206,9 +181,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "country".
+     * Method sets attribute {@link #country}.<br/>
      * 
-     * @param pCountry Value to which the attribute "country" should be set.
+     * @param pCountry Value to which {@link #country} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setCountry( String pCountry ) {
@@ -218,9 +194,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -229,9 +206,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "registrationNumber".
+     * Method sets attribute {@link #registrationNumber}.<br/>
      * 
-     * @param pRegistrationNumber Value to which the attribute "registrationNumber" should be set.
+     * @param pRegistrationNumber Value to which {@link #registrationNumber} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setRegistrationNumber( Long pRegistrationNumber ) {
       // Assign value to attribute
@@ -240,9 +218,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "taxNumber".
+     * Method sets attribute {@link #taxNumber}.<br/>
      * 
-     * @param pTaxNumber Value to which the attribute "taxNumber" should be set.
+     * @param pTaxNumber Value to which {@link #taxNumber} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTaxNumber( Long pTaxNumber ) {
       // Assign value to attribute
@@ -251,9 +230,10 @@ public class Company extends Customer {
     }
 
     /**
-     * Method sets the attribute "attendant".
+     * Method sets attribute {@link #attendant}.<br/>
      * 
-     * @param pAttendant Value to which the attribute "attendant" should be set.
+     * @param pAttendant Value to which {@link #attendant} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAttendant( String pAttendant ) {
       // Assign value to attribute
@@ -285,20 +265,18 @@ public class Company extends Customer {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -306,20 +284,18 @@ public class Company extends Customer {
   }
 
   /**
-   * Method returns the attribute "registrationNumber".
+   * Method returns attribute {@link #registrationNumber}.<br/>
    * 
-   * 
-   * @return Long Value to which the attribute "registrationNumber" is set.
+   * @return {@link Long} Value to which {@link #registrationNumber} is set.
    */
   public Long getRegistrationNumber( ) {
     return registrationNumber;
   }
 
   /**
-   * Method sets the attribute "registrationNumber".
+   * Method sets attribute {@link #registrationNumber}.<br/>
    * 
-   * 
-   * @param pRegistrationNumber Value to which the attribute "registrationNumber" should be set.
+   * @param pRegistrationNumber Value to which {@link #registrationNumber} should be set.
    */
   public void setRegistrationNumber( Long pRegistrationNumber ) {
     // Assign value to attribute
@@ -327,20 +303,18 @@ public class Company extends Customer {
   }
 
   /**
-   * Method returns the attribute "taxNumber".
+   * Method returns attribute {@link #taxNumber}.<br/>
    * 
-   * 
-   * @return Long Value to which the attribute "taxNumber" is set.
+   * @return {@link Long} Value to which {@link #taxNumber} is set.
    */
   public Long getTaxNumber( ) {
     return taxNumber;
   }
 
   /**
-   * Method sets the attribute "taxNumber".
+   * Method sets attribute {@link #taxNumber}.<br/>
    * 
-   * 
-   * @param pTaxNumber Value to which the attribute "taxNumber" should be set.
+   * @param pTaxNumber Value to which {@link #taxNumber} should be set.
    */
   public void setTaxNumber( Long pTaxNumber ) {
     // Assign value to attribute
@@ -348,20 +322,18 @@ public class Company extends Customer {
   }
 
   /**
-   * Method returns the attribute "attendant".
+   * Method returns attribute {@link #attendant}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "attendant" is set.
+   * @return {@link String} Value to which {@link #attendant} is set.
    */
   public String getAttendant( ) {
     return attendant;
   }
 
   /**
-   * Method sets the attribute "attendant".
+   * Method sets attribute {@link #attendant}.<br/>
    * 
-   * 
-   * @param pAttendant Value to which the attribute "attendant" should be set.
+   * @param pAttendant Value to which {@link #attendant} should be set.
    */
   public void setAttendant( String pAttendant ) {
     // Assign value to attribute

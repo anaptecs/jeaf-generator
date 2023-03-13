@@ -13,10 +13,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TechParent implements Serializable {
   /**
@@ -29,9 +25,6 @@ public class TechParent implements Serializable {
    */
   public static final String TECHATTRIBUTE = "techAttribute";
 
-  /**
-   * 
-   */
   private String techAttribute;
 
   /**
@@ -83,13 +76,9 @@ public class TechParent implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class TechParent. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>TechParent</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String techAttribute;
 
     /**
@@ -109,9 +98,10 @@ public class TechParent implements Serializable {
     }
 
     /**
-     * Method sets the attribute "techAttribute".
+     * Method sets attribute {@link #techAttribute}.<br/>
      * 
-     * @param pTechAttribute Value to which the attribute "techAttribute" should be set.
+     * @param pTechAttribute Value to which {@link #techAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTechAttribute( String pTechAttribute ) {
       // Assign value to attribute
@@ -143,20 +133,18 @@ public class TechParent implements Serializable {
   }
 
   /**
-   * Method returns the attribute "techAttribute".
+   * Method returns attribute {@link #techAttribute}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "techAttribute" is set.
+   * @return {@link String} Value to which {@link #techAttribute} is set.
    */
   public String getTechAttribute( ) {
     return techAttribute;
   }
 
   /**
-   * Method sets the attribute "techAttribute".
+   * Method sets attribute {@link #techAttribute}.<br/>
    * 
-   * 
-   * @param pTechAttribute Value to which the attribute "techAttribute" should be set.
+   * @param pTechAttribute Value to which {@link #techAttribute} should be set.
    */
   public void setTechAttribute( String pTechAttribute ) {
     // Assign value to attribute

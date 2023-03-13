@@ -14,10 +14,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class DataTypeWithConstraints implements ServiceObject {
   /**
    * Default serial version uid.
@@ -29,9 +25,6 @@ public class DataTypeWithConstraints implements ServiceObject {
    */
   public static final String INTVALUE = "intValue";
 
-  /**
-   * 
-   */
   @Max(value = 9999)
   private int intValue;
 
@@ -75,13 +68,9 @@ public class DataTypeWithConstraints implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class DataTypeWithConstraints. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>DataTypeWithConstraints</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     @Max(value = 9999)
     private int intValue;
 
@@ -103,9 +92,10 @@ public class DataTypeWithConstraints implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "intValue".
+     * Method sets attribute {@link #intValue}.<br/>
      * 
-     * @param pIntValue Value to which the attribute "intValue" should be set.
+     * @param pIntValue Value to which {@link #intValue} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIntValue( int pIntValue ) {
       // Assign value to attribute
@@ -138,20 +128,18 @@ public class DataTypeWithConstraints implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "intValue".
+   * Method returns attribute {@link #intValue}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "intValue" is set.
+   * @return int Value to which {@link #intValue} is set.
    */
   public int getIntValue( ) {
     return intValue;
   }
 
   /**
-   * Method sets the attribute "intValue".
+   * Method sets attribute {@link #intValue}.<br/>
    * 
-   * 
-   * @param pIntValue Value to which the attribute "intValue" should be set.
+   * @param pIntValue Value to which {@link #intValue} should be set.
    */
   public void setIntValue( int pIntValue ) {
     // Assign value to attribute

@@ -17,10 +17,6 @@ import javax.validation.constraints.NotNull;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 public class POI extends Stop {
   /**
@@ -28,21 +24,22 @@ public class POI extends Stop {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private String description;
 
   /**
-   * 
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
+   * <code>LinkObject</code><br/>
    */
   @Deprecated
   @NotNull
   private Long theLink;
 
   /**
-   * 
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #evenMoreLinks} is
+   * <code>LinkObject</code><br/>
    */
   @Deprecated
   private Set<SoftLink> evenMoreLinks;
@@ -108,24 +105,24 @@ public class POI extends Stop {
   }
 
   /**
-   * Class implements builder to create a new instance of class POI. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>POI</code>.
    */
   public static class Builder extends Stop.Builder {
-    /**
-     * 
-     */
     private String description;
 
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
+     * <code>LinkObject</code><br/>
      */
     @Deprecated
     @NotNull
     private Long theLink;
 
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #evenMoreLinks} is
+     * <code>LinkObject</code><br/>
      */
     @Deprecated
     private Set<SoftLink> evenMoreLinks;
@@ -151,9 +148,10 @@ public class POI extends Stop {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setName( String pName ) {
@@ -163,9 +161,10 @@ public class POI extends Stop {
     }
 
     /**
-     * Method sets the association "links".
+     * Method sets association {@link #links}.<br/>
      * 
-     * @param pLinks Collection with objects to which the association should be set.
+     * @param pLinks Collection to which {@link #links} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setLinks( List<LinkObject> pLinks ) {
@@ -175,9 +174,10 @@ public class POI extends Stop {
     }
 
     /**
-     * Method sets the attribute "index".
+     * Method sets attribute {@link #index}.<br/>
      * 
-     * @param pIndex Value to which the attribute "index" should be set.
+     * @param pIndex Value to which {@link #index} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setIndex( byte pIndex ) {
@@ -187,9 +187,10 @@ public class POI extends Stop {
     }
 
     /**
-     * Method sets the association "theSoftLink".
+     * Method sets association {@link #theSoftLink}.<br/>
      * 
-     * @param pTheSoftLink LinkObject to which the association "theSoftLink" should be set.
+     * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
@@ -199,9 +200,10 @@ public class POI extends Stop {
     }
 
     /**
-     * Method sets the attribute "description".
+     * Method sets attribute {@link #description}.<br/>
      * 
-     * @param pDescription Value to which the attribute "description" should be set.
+     * @param pDescription Value to which {@link #description} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDescription( String pDescription ) {
       // Assign value to attribute
@@ -210,19 +212,22 @@ public class POI extends Stop {
     }
 
     /**
-     * Method sets the association "theLink".
+     * Method sets association {@link #theLink}.<br/>
      * 
-     * @param pTheLink LinkObject to which the association "theLink" should be set.
+     * @param pTheLink Value to which {@link #theLink} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     public Builder setTheLink( Long pTheLink ) {
       theLink = pTheLink;
       return this;
     }
 
     /**
-     * Method sets the association "evenMoreLinks".
+     * Method sets association {@link #evenMoreLinks}.<br/>
      * 
-     * @param pEvenMoreLinks Collection with objects to which the association should be set.
+     * @param pEvenMoreLinks Collection to which {@link #evenMoreLinks} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setEvenMoreLinks( Set<SoftLink> pEvenMoreLinks ) {
@@ -260,20 +265,18 @@ public class POI extends Stop {
   }
 
   /**
-   * Method returns the attribute "description".
+   * Method returns attribute {@link #description}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "description" is set.
+   * @return {@link String} Value to which {@link #description} is set.
    */
   public String getDescription( ) {
     return description;
   }
 
   /**
-   * Method sets the attribute "description".
+   * Method sets attribute {@link #description}.<br/>
    * 
-   * 
-   * @param pDescription Value to which the attribute "description" should be set.
+   * @param pDescription Value to which {@link #description} should be set.
    */
   public void setDescription( String pDescription ) {
     // Assign value to attribute
@@ -281,10 +284,12 @@ public class POI extends Stop {
   }
 
   /**
-   * Method returns the association "theLink".
+   * Method returns association {@link #theLink}.<br/>
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
+   * <code>LinkObject</code><br/>
    * 
-   *
-   * @return LinkObject LinkObject to which the association "theLink" is set.
+   * @return {@link Long} Value to which {@link #theLink} is set.
    */
   @Deprecated
   public Long getTheLink( ) {
@@ -292,10 +297,9 @@ public class POI extends Stop {
   }
 
   /**
-   * Method sets the association "theLink".
+   * Method sets association {@link #theLink}.<br/>
    * 
-   * 
-   * @param pTheLink LinkObject to which the association "theLink" should be set.
+   * @param pTheLink Value to which {@link #theLink} should be set.
    */
   @Deprecated
   public void setTheLink( Long pTheLink ) {
@@ -303,8 +307,7 @@ public class POI extends Stop {
   }
 
   /**
-   * Method unsets the association "theLink".
-   * 
+   * Method unsets {@link #theLink}.
    */
   @Deprecated
   public final void unsetTheLink( ) {
@@ -312,11 +315,13 @@ public class POI extends Stop {
   }
 
   /**
-   * Method returns the association "evenMoreLinks".
+   * Method returns association {@link #evenMoreLinks}.<br/>
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #evenMoreLinks} is
+   * <code>LinkObject</code><br/>
    * 
-   *
-   * @return Collection All LinkObject objects that belong to the association "evenMoreLinks". The method never returns
-   * null and the returned collection is modifiable.
+   * @return {@link Set<SoftLink>} Value to which {@link #evenMoreLinks} is set. The method never returns null and the
+   * returned collection is modifiable.
    */
   @Deprecated
   public Set<SoftLink> getEvenMoreLinks( ) {
@@ -325,11 +330,9 @@ public class POI extends Stop {
   }
 
   /**
-   * Method adds the passed LinkObject object to the association "evenMoreLinks".
+   * Method adds the passed object to {@link #evenMoreLinks}.
    * 
-   * 
-   * @param pEvenMoreLinks Object that should be added to the association "evenMoreLinks". The parameter must not be
-   * null.
+   * @param pEvenMoreLinks Object that should be added to {@link #evenMoreLinks}. The parameter must not be null.
    */
   @Deprecated
   public void addToEvenMoreLinks( SoftLink pEvenMoreLinks ) {
@@ -340,11 +343,10 @@ public class POI extends Stop {
   }
 
   /**
-   * Method adds all passed objects to the association "evenMoreLinks".
+   * Method adds all passed objects to {@link #evenMoreLinks}.
    * 
-   * 
-   * @param pEvenMoreLinks Collection with all objects that should be added to the association "evenMoreLinks". The
-   * parameter must not be null.
+   * @param pEvenMoreLinks Collection with all objects that should be added to {@link #evenMoreLinks}. The parameter
+   * must not be null.
    */
   @Deprecated
   public void addToEvenMoreLinks( Collection<SoftLink> pEvenMoreLinks ) {
@@ -357,11 +359,9 @@ public class POI extends Stop {
   }
 
   /**
-   * Method removes the passed LinkObject object from the association "evenMoreLinks".
+   * Method removes the passed object from {@link #evenMoreLinks}.
    * 
-   * 
-   * @param pEvenMoreLinks Object that should be removed from the association "evenMoreLinks". The parameter must not be
-   * null.
+   * @param pEvenMoreLinks Object that should be removed from {@link #evenMoreLinks}. The parameter must not be null.
    */
   @Deprecated
   public void removeFromEvenMoreLinks( SoftLink pEvenMoreLinks ) {
@@ -372,8 +372,7 @@ public class POI extends Stop {
   }
 
   /**
-   * Method removes all objects from the association "evenMoreLinks".
-   * 
+   * Method removes all objects from {@link #evenMoreLinks}.
    */
   @Deprecated
   public void clearEvenMoreLinks( ) {

@@ -1,8 +1,5 @@
 package com.anaptecs.jeaf.accounting;
 
-/**
- * 
- */
 public enum BankType {
   /**
    * Enumeration literal for bank of type "Mutual Savings".
@@ -20,16 +17,12 @@ public enum BankType {
     typeCode = pTypeCode;
   }
 
-  /**
-   * 
-   */
   private String typeCode;
 
   /**
-   * Method returns the attribute "typeCode".
+   * Method returns attribute {@link #typeCode}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "typeCode" is set.
+   * @return {@link String} Value to which {@link #typeCode} is set.
    */
   public String getTypeCode( ) {
     return typeCode;

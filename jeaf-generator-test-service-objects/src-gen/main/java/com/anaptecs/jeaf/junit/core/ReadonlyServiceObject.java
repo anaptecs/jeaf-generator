@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ReadonlyServiceObject implements ServiceObject {
   /**
    * Default serial version uid.
@@ -31,9 +27,6 @@ public class ReadonlyServiceObject implements ServiceObject {
    */
   public static final String READONLYDEFAULT = "readonlyDefault";
 
-  /**
-   * 
-   */
   private final String readonly;
 
   /**
@@ -85,17 +78,14 @@ public class ReadonlyServiceObject implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class ReadonlyServiceObject. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ReadonlyServiceObject</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String readonly;
 
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>4711</code>
      */
     private int readonlyDefault = 4711;
 
@@ -118,9 +108,10 @@ public class ReadonlyServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "readonly".
+     * Method sets attribute {@link #readonly}.<br/>
      * 
-     * @param pReadonly Value to which the attribute "readonly" should be set.
+     * @param pReadonly Value to which {@link #readonly} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReadonly( String pReadonly ) {
       // Assign value to attribute
@@ -129,9 +120,10 @@ public class ReadonlyServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "readonlyDefault".
+     * Method sets attribute {@link #readonlyDefault}.<br/>
      * 
-     * @param pReadonlyDefault Value to which the attribute "readonlyDefault" should be set.
+     * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReadonlyDefault( int pReadonlyDefault ) {
       // Assign value to attribute
@@ -164,20 +156,18 @@ public class ReadonlyServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "readonly".
+   * Method returns attribute {@link #readonly}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "readonly" is set.
+   * @return {@link String} Value to which {@link #readonly} is set.
    */
   public String getReadonly( ) {
     return readonly;
   }
 
   /**
-   * Method returns the attribute "readonlyDefault".
+   * Method returns attribute {@link #readonlyDefault}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "readonlyDefault" is set.
+   * @return int Value to which {@link #readonlyDefault} is set.
    */
   public int getReadonlyDefault( ) {
     return readonlyDefault;

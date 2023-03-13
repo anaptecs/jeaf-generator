@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class DeprecatedPOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -50,21 +46,12 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   @Deprecated
   public static final String BASECLASSES_ROLE = "baseClasses";
 
-  /**
-   * 
-   */
   @Deprecated
   private int deprecated;
 
-  /**
-   * 
-   */
   @Deprecated
   private PublicClassBO publicClass;
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<BaseClassBO> baseClasses;
 
@@ -86,10 +73,9 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "deprecated".
+   * Method returns attribute {@link #deprecated}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "deprecated" is set.
+   * @return int Value to which {@link #deprecated} is set.
    */
   @Deprecated
   public int getDeprecated( ) {
@@ -97,10 +83,9 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the attribute "deprecated".
+   * Method sets attribute {@link #deprecated}.<br/>
    * 
-   * 
-   * @param pDeprecated Value to which the attribute "deprecated" should be set.
+   * @param pDeprecated Value to which {@link #deprecated} should be set.
    */
   @Deprecated
   public void setDeprecated( int pDeprecated ) {
@@ -109,10 +94,9 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "publicClass".
+   * Method returns association {@link #publicClass}.<br/>
    * 
-   *
-   * @return PublicClassBO PublicClassBO to which the association "publicClass" is set.
+   * @return {@link PublicClassBO} Value to which {@link #publicClass} is set.
    */
   @Deprecated
   public PublicClassBO getPublicClass( ) {
@@ -121,10 +105,9 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "publicClass".
+   * Method sets association {@link #publicClass}.<br/>
    * 
-   * 
-   * @param pPublicClass PublicClassBO to which the association "publicClass" should be set.
+   * @param pPublicClass Value to which {@link #publicClass} should be set.
    */
   @Deprecated
   public void setPublicClass( PublicClassBO pPublicClass ) {
@@ -132,8 +115,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "publicClass".
-   * 
+   * Method unsets {@link #publicClass}.
    */
   @Deprecated
   public final void unsetPublicClass( ) {
@@ -141,11 +123,10 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "baseClasses".
+   * Method returns association {@link #baseClasses}.<br/>
    * 
-   *
-   * @return Collection All BaseClassBO objects that belong to the association "baseClasses". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link Set<BaseClassBO>} Value to which {@link #baseClasses} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   @Deprecated
   public Set<BaseClassBO> getBaseClasses( ) {
@@ -154,10 +135,9 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed BaseClassBO object to the association "baseClasses".
+   * Method adds the passed object to {@link #baseClasses}.
    * 
-   * 
-   * @param pBaseClasses Object that should be added to the association "baseClasses". The parameter must not be null.
+   * @param pBaseClasses Object that should be added to {@link #baseClasses}. The parameter must not be null.
    */
   @Deprecated
   public void addToBaseClasses( BaseClassBO pBaseClasses ) {
@@ -176,11 +156,10 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "baseClasses".
+   * Method adds all passed objects to {@link #baseClasses}.
    * 
-   * 
-   * @param pBaseClasses Collection with all objects that should be added to the association "baseClasses". The
-   * parameter must not be null.
+   * @param pBaseClasses Collection with all objects that should be added to {@link #baseClasses}. The parameter must
+   * not be null.
    */
   @Deprecated
   public void addToBaseClasses( Collection<BaseClassBO> pBaseClasses ) {
@@ -193,11 +172,9 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed BaseClassBO object from the association "baseClasses".
+   * Method removes the passed object from {@link #baseClasses}.<br/>
    * 
-   * 
-   * @param pBaseClasses Object that should be removed from the association "baseClasses". The parameter must not be
-   * null.
+   * @param pBaseClasses Object that should be removed from {@link #baseClasses}. The parameter must not be null.
    */
   @Deprecated
   public void removeFromBaseClasses( BaseClassBO pBaseClasses ) {
@@ -213,8 +190,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "baseClasses".
-   * 
+   * Method removes all objects from {@link #baseClasses}.
    */
   @Deprecated
   public void clearBaseClasses( ) {
@@ -228,16 +204,16 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   }
 
   /**
-  * 
-  */
+   */
   @Deprecated
   public abstract void doSomethingDeprecated( );
 
   /**
-   * 
    * @param pParam1
-   * @param pParam2
-   * @return {@link String}
+   * @param pParam2 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public abstract String doSomething( int pParam1, @Deprecated int pParam2 );

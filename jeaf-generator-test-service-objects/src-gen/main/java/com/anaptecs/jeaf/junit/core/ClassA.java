@@ -5,10 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.core;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ClassA extends ClassABase {
   /**
    * Default serial version uid.
@@ -68,7 +64,6 @@ public class ClassA extends ClassABase {
   }
 
   /**
-   * 
    * @return {@link Double}
    */
   @Override

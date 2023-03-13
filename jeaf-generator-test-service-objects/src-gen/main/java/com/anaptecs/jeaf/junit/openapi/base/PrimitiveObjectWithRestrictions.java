@@ -24,10 +24,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * Default serial version uid.
@@ -150,95 +146,47 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    */
   private boolean aBoolean;
 
-  /**
-   * 
-   */
   private Boolean bBoolean;
 
-  /**
-   * 
-   */
   private boolean cBoolean;
 
-  /**
-   * 
-   */
   @Negative
   private byte aByte;
 
-  /**
-   * 
-   */
   @NegativeOrZero
   private Byte bByte;
 
-  /**
-   * 
-   */
   @Min(value = -237)
   private short aShort;
 
-  /**
-   * 
-   */
   @Positive
   private Short bShort;
 
-  /**
-   * 
-   */
   @PositiveOrZero
   private int aInteger;
 
-  /**
-   * 
-   */
   @Min(value = 4711)
   private Integer bInteger;
 
-  /**
-   * 
-   */
   @Min(value = 100)
   @Max(value = 1000)
   private Integer cInteger;
 
-  /**
-   * 
-   */
   private long aLong;
 
-  /**
-   * 
-   */
   @DecimalMax(value = "299792458", inclusive = false)
   private Long bLong;
 
-  /**
-   * 
-   */
   @DecimalMax(value = "3.14159265359", inclusive = true)
   @DecimalMin(value = "-3.14159265359", inclusive = true)
   private BigInteger aBigInteger;
 
-  /**
-   * 
-   */
   private char aCharacter;
 
-  /**
-   * 
-   */
   private Character bCharacter;
 
-  /**
-   * 
-   */
   private float aFloat;
 
-  /**
-   * 
-   */
   private Float bFloat;
 
   /**
@@ -247,14 +195,8 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    */
   private double aDouble;
 
-  /**
-   * 
-   */
   private Double bDouble;
 
-  /**
-   * 
-   */
   @DecimalMin(value = "4711.0815", inclusive = true)
   private BigDecimal aBigDecimal;
 
@@ -265,9 +207,6 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   @Size(min = 8, max = 32)
   private String aString;
 
-  /**
-   * 
-   */
   @NotEmpty
   @Size(min = 0, max = 128)
   private String bString;
@@ -336,131 +275,76 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class PrimitiveObjectWithRestrictions. As the class has read
-   * only attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>PrimitiveObjectWithRestrictions</code>.
    */
   public static class Builder {
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>true</code>
      */
     private boolean aBoolean = true;
 
-    /**
-     * 
-     */
     private Boolean bBoolean;
 
-    /**
-     * 
-     */
     private boolean cBoolean;
 
-    /**
-     * 
-     */
     @Negative
     private byte aByte;
 
-    /**
-     * 
-     */
     @NegativeOrZero
     private Byte bByte;
 
-    /**
-     * 
-     */
     @Min(value = -237)
     private short aShort;
 
-    /**
-     * 
-     */
     @Positive
     private Short bShort;
 
-    /**
-     * 
-     */
     @PositiveOrZero
     private int aInteger;
 
-    /**
-     * 
-     */
     @Min(value = 4711)
     private Integer bInteger;
 
-    /**
-     * 
-     */
     @Min(value = 100)
     @Max(value = 1000)
     private Integer cInteger;
 
-    /**
-     * 
-     */
     private long aLong;
 
-    /**
-     * 
-     */
     @DecimalMax(value = "299792458", inclusive = false)
     private Long bLong;
 
-    /**
-     * 
-     */
     @DecimalMax(value = "3.14159265359", inclusive = true)
     @DecimalMin(value = "-3.14159265359", inclusive = true)
     private BigInteger aBigInteger;
 
-    /**
-     * 
-     */
     private char aCharacter;
 
-    /**
-     * 
-     */
     private Character bCharacter;
 
-    /**
-     * 
-     */
     private float aFloat;
 
-    /**
-     * 
-     */
     private Float bFloat;
 
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>42.0</code>
      */
     private double aDouble = 42.0;
 
-    /**
-     * 
-     */
     private Double bDouble;
 
-    /**
-     * 
-     */
     @DecimalMin(value = "4711.0815", inclusive = true)
     private BigDecimal aBigDecimal;
 
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>"Hello OpenAPI"</code>
      */
     @Size(min = 8, max = 32)
     private String aString = "Hello OpenAPI";
 
-    /**
-     * 
-     */
     @NotEmpty
     @Size(min = 0, max = 128)
     private String bString;
@@ -504,9 +388,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aBoolean".
+     * Method sets attribute {@link #aBoolean}.<br/>
      * 
-     * @param pABoolean Value to which the attribute "aBoolean" should be set.
+     * @param pABoolean Value to which {@link #aBoolean} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setABoolean( boolean pABoolean ) {
       // Assign value to attribute
@@ -515,9 +400,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "bBoolean".
+     * Method sets attribute {@link #bBoolean}.<br/>
      * 
-     * @param pBBoolean Value to which the attribute "bBoolean" should be set.
+     * @param pBBoolean Value to which {@link #bBoolean} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBBoolean( Boolean pBBoolean ) {
       // Assign value to attribute
@@ -526,9 +412,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "cBoolean".
+     * Method sets attribute {@link #cBoolean}.<br/>
      * 
-     * @param pCBoolean Value to which the attribute "cBoolean" should be set.
+     * @param pCBoolean Value to which {@link #cBoolean} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCBoolean( boolean pCBoolean ) {
       // Assign value to attribute
@@ -537,9 +424,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aByte".
+     * Method sets attribute {@link #aByte}.<br/>
      * 
-     * @param pAByte Value to which the attribute "aByte" should be set.
+     * @param pAByte Value to which {@link #aByte} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAByte( byte pAByte ) {
       // Assign value to attribute
@@ -548,9 +436,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "bByte".
+     * Method sets attribute {@link #bByte}.<br/>
      * 
-     * @param pBByte Value to which the attribute "bByte" should be set.
+     * @param pBByte Value to which {@link #bByte} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBByte( Byte pBByte ) {
       // Assign value to attribute
@@ -559,9 +448,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aShort".
+     * Method sets attribute {@link #aShort}.<br/>
      * 
-     * @param pAShort Value to which the attribute "aShort" should be set.
+     * @param pAShort Value to which {@link #aShort} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAShort( short pAShort ) {
       // Assign value to attribute
@@ -570,9 +460,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "bShort".
+     * Method sets attribute {@link #bShort}.<br/>
      * 
-     * @param pBShort Value to which the attribute "bShort" should be set.
+     * @param pBShort Value to which {@link #bShort} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBShort( Short pBShort ) {
       // Assign value to attribute
@@ -581,9 +472,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aInteger".
+     * Method sets attribute {@link #aInteger}.<br/>
      * 
-     * @param pAInteger Value to which the attribute "aInteger" should be set.
+     * @param pAInteger Value to which {@link #aInteger} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAInteger( int pAInteger ) {
       // Assign value to attribute
@@ -592,9 +484,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "bInteger".
+     * Method sets attribute {@link #bInteger}.<br/>
      * 
-     * @param pBInteger Value to which the attribute "bInteger" should be set.
+     * @param pBInteger Value to which {@link #bInteger} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBInteger( Integer pBInteger ) {
       // Assign value to attribute
@@ -603,9 +496,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "cInteger".
+     * Method sets attribute {@link #cInteger}.<br/>
      * 
-     * @param pCInteger Value to which the attribute "cInteger" should be set.
+     * @param pCInteger Value to which {@link #cInteger} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCInteger( Integer pCInteger ) {
       // Assign value to attribute
@@ -614,9 +508,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aLong".
+     * Method sets attribute {@link #aLong}.<br/>
      * 
-     * @param pALong Value to which the attribute "aLong" should be set.
+     * @param pALong Value to which {@link #aLong} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setALong( long pALong ) {
       // Assign value to attribute
@@ -625,9 +520,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "bLong".
+     * Method sets attribute {@link #bLong}.<br/>
      * 
-     * @param pBLong Value to which the attribute "bLong" should be set.
+     * @param pBLong Value to which {@link #bLong} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBLong( Long pBLong ) {
       // Assign value to attribute
@@ -636,9 +532,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aBigInteger".
+     * Method sets attribute {@link #aBigInteger}.<br/>
      * 
-     * @param pABigInteger Value to which the attribute "aBigInteger" should be set.
+     * @param pABigInteger Value to which {@link #aBigInteger} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setABigInteger( BigInteger pABigInteger ) {
       // Assign value to attribute
@@ -647,9 +544,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aCharacter".
+     * Method sets attribute {@link #aCharacter}.<br/>
      * 
-     * @param pACharacter Value to which the attribute "aCharacter" should be set.
+     * @param pACharacter Value to which {@link #aCharacter} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setACharacter( char pACharacter ) {
       // Assign value to attribute
@@ -658,9 +556,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "bCharacter".
+     * Method sets attribute {@link #bCharacter}.<br/>
      * 
-     * @param pBCharacter Value to which the attribute "bCharacter" should be set.
+     * @param pBCharacter Value to which {@link #bCharacter} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBCharacter( Character pBCharacter ) {
       // Assign value to attribute
@@ -669,9 +568,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aFloat".
+     * Method sets attribute {@link #aFloat}.<br/>
      * 
-     * @param pAFloat Value to which the attribute "aFloat" should be set.
+     * @param pAFloat Value to which {@link #aFloat} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAFloat( float pAFloat ) {
       // Assign value to attribute
@@ -680,9 +580,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "bFloat".
+     * Method sets attribute {@link #bFloat}.<br/>
      * 
-     * @param pBFloat Value to which the attribute "bFloat" should be set.
+     * @param pBFloat Value to which {@link #bFloat} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBFloat( Float pBFloat ) {
       // Assign value to attribute
@@ -691,9 +592,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aDouble".
+     * Method sets attribute {@link #aDouble}.<br/>
      * 
-     * @param pADouble Value to which the attribute "aDouble" should be set.
+     * @param pADouble Value to which {@link #aDouble} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setADouble( double pADouble ) {
       // Assign value to attribute
@@ -702,9 +604,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "bDouble".
+     * Method sets attribute {@link #bDouble}.<br/>
      * 
-     * @param pBDouble Value to which the attribute "bDouble" should be set.
+     * @param pBDouble Value to which {@link #bDouble} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBDouble( Double pBDouble ) {
       // Assign value to attribute
@@ -713,9 +616,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aBigDecimal".
+     * Method sets attribute {@link #aBigDecimal}.<br/>
      * 
-     * @param pABigDecimal Value to which the attribute "aBigDecimal" should be set.
+     * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setABigDecimal( BigDecimal pABigDecimal ) {
       // Assign value to attribute
@@ -724,9 +628,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "aString".
+     * Method sets attribute {@link #aString}.<br/>
      * 
-     * @param pAString Value to which the attribute "aString" should be set.
+     * @param pAString Value to which {@link #aString} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAString( String pAString ) {
       // Assign value to attribute
@@ -735,9 +640,10 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "bString".
+     * Method sets attribute {@link #bString}.<br/>
      * 
-     * @param pBString Value to which the attribute "bString" should be set.
+     * @param pBString Value to which {@link #bString} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBString( String pBString ) {
       // Assign value to attribute
@@ -770,20 +676,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aBoolean".
+   * Method returns attribute {@link #aBoolean}.<br/>
    * 
-   * 
-   * @return Boolean Value to which the attribute "aBoolean" is set.
+   * @return boolean Value to which {@link #aBoolean} is set.
    */
   public boolean getABoolean( ) {
     return aBoolean;
   }
 
   /**
-   * Method sets the attribute "aBoolean".
+   * Method sets attribute {@link #aBoolean}.<br/>
    * 
-   * 
-   * @param pABoolean Value to which the attribute "aBoolean" should be set.
+   * @param pABoolean Value to which {@link #aBoolean} should be set.
    */
   public void setABoolean( boolean pABoolean ) {
     // Assign value to attribute
@@ -791,20 +695,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "bBoolean".
+   * Method returns attribute {@link #bBoolean}.<br/>
    * 
-   * 
-   * @return Boolean Value to which the attribute "bBoolean" is set.
+   * @return {@link Boolean} Value to which {@link #bBoolean} is set.
    */
   public Boolean getBBoolean( ) {
     return bBoolean;
   }
 
   /**
-   * Method sets the attribute "bBoolean".
+   * Method sets attribute {@link #bBoolean}.<br/>
    * 
-   * 
-   * @param pBBoolean Value to which the attribute "bBoolean" should be set.
+   * @param pBBoolean Value to which {@link #bBoolean} should be set.
    */
   public void setBBoolean( Boolean pBBoolean ) {
     // Assign value to attribute
@@ -812,20 +714,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "cBoolean".
+   * Method returns attribute {@link #cBoolean}.<br/>
    * 
-   * 
-   * @return Boolean Value to which the attribute "cBoolean" is set.
+   * @return boolean Value to which {@link #cBoolean} is set.
    */
   public boolean getCBoolean( ) {
     return cBoolean;
   }
 
   /**
-   * Method sets the attribute "cBoolean".
+   * Method sets attribute {@link #cBoolean}.<br/>
    * 
-   * 
-   * @param pCBoolean Value to which the attribute "cBoolean" should be set.
+   * @param pCBoolean Value to which {@link #cBoolean} should be set.
    */
   public void setCBoolean( boolean pCBoolean ) {
     // Assign value to attribute
@@ -833,20 +733,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aByte".
+   * Method returns attribute {@link #aByte}.<br/>
    * 
-   * 
-   * @return byte Value to which the attribute "aByte" is set.
+   * @return byte Value to which {@link #aByte} is set.
    */
   public byte getAByte( ) {
     return aByte;
   }
 
   /**
-   * Method sets the attribute "aByte".
+   * Method sets attribute {@link #aByte}.<br/>
    * 
-   * 
-   * @param pAByte Value to which the attribute "aByte" should be set.
+   * @param pAByte Value to which {@link #aByte} should be set.
    */
   public void setAByte( byte pAByte ) {
     // Assign value to attribute
@@ -854,20 +752,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "bByte".
+   * Method returns attribute {@link #bByte}.<br/>
    * 
-   * 
-   * @return Byte Value to which the attribute "bByte" is set.
+   * @return {@link Byte} Value to which {@link #bByte} is set.
    */
   public Byte getBByte( ) {
     return bByte;
   }
 
   /**
-   * Method sets the attribute "bByte".
+   * Method sets attribute {@link #bByte}.<br/>
    * 
-   * 
-   * @param pBByte Value to which the attribute "bByte" should be set.
+   * @param pBByte Value to which {@link #bByte} should be set.
    */
   public void setBByte( Byte pBByte ) {
     // Assign value to attribute
@@ -875,20 +771,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aShort".
+   * Method returns attribute {@link #aShort}.<br/>
    * 
-   * 
-   * @return short Value to which the attribute "aShort" is set.
+   * @return short Value to which {@link #aShort} is set.
    */
   public short getAShort( ) {
     return aShort;
   }
 
   /**
-   * Method sets the attribute "aShort".
+   * Method sets attribute {@link #aShort}.<br/>
    * 
-   * 
-   * @param pAShort Value to which the attribute "aShort" should be set.
+   * @param pAShort Value to which {@link #aShort} should be set.
    */
   public void setAShort( short pAShort ) {
     // Assign value to attribute
@@ -896,20 +790,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "bShort".
+   * Method returns attribute {@link #bShort}.<br/>
    * 
-   * 
-   * @return Short Value to which the attribute "bShort" is set.
+   * @return {@link Short} Value to which {@link #bShort} is set.
    */
   public Short getBShort( ) {
     return bShort;
   }
 
   /**
-   * Method sets the attribute "bShort".
+   * Method sets attribute {@link #bShort}.<br/>
    * 
-   * 
-   * @param pBShort Value to which the attribute "bShort" should be set.
+   * @param pBShort Value to which {@link #bShort} should be set.
    */
   public void setBShort( Short pBShort ) {
     // Assign value to attribute
@@ -917,20 +809,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aInteger".
+   * Method returns attribute {@link #aInteger}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "aInteger" is set.
+   * @return int Value to which {@link #aInteger} is set.
    */
   public int getAInteger( ) {
     return aInteger;
   }
 
   /**
-   * Method sets the attribute "aInteger".
+   * Method sets attribute {@link #aInteger}.<br/>
    * 
-   * 
-   * @param pAInteger Value to which the attribute "aInteger" should be set.
+   * @param pAInteger Value to which {@link #aInteger} should be set.
    */
   public void setAInteger( int pAInteger ) {
     // Assign value to attribute
@@ -938,20 +828,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "bInteger".
+   * Method returns attribute {@link #bInteger}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "bInteger" is set.
+   * @return {@link Integer} Value to which {@link #bInteger} is set.
    */
   public Integer getBInteger( ) {
     return bInteger;
   }
 
   /**
-   * Method sets the attribute "bInteger".
+   * Method sets attribute {@link #bInteger}.<br/>
    * 
-   * 
-   * @param pBInteger Value to which the attribute "bInteger" should be set.
+   * @param pBInteger Value to which {@link #bInteger} should be set.
    */
   public void setBInteger( Integer pBInteger ) {
     // Assign value to attribute
@@ -959,20 +847,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "cInteger".
+   * Method returns attribute {@link #cInteger}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "cInteger" is set.
+   * @return {@link Integer} Value to which {@link #cInteger} is set.
    */
   public Integer getCInteger( ) {
     return cInteger;
   }
 
   /**
-   * Method sets the attribute "cInteger".
+   * Method sets attribute {@link #cInteger}.<br/>
    * 
-   * 
-   * @param pCInteger Value to which the attribute "cInteger" should be set.
+   * @param pCInteger Value to which {@link #cInteger} should be set.
    */
   public void setCInteger( Integer pCInteger ) {
     // Assign value to attribute
@@ -980,20 +866,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aLong".
+   * Method returns attribute {@link #aLong}.<br/>
    * 
-   * 
-   * @return long Value to which the attribute "aLong" is set.
+   * @return long Value to which {@link #aLong} is set.
    */
   public long getALong( ) {
     return aLong;
   }
 
   /**
-   * Method sets the attribute "aLong".
+   * Method sets attribute {@link #aLong}.<br/>
    * 
-   * 
-   * @param pALong Value to which the attribute "aLong" should be set.
+   * @param pALong Value to which {@link #aLong} should be set.
    */
   public void setALong( long pALong ) {
     // Assign value to attribute
@@ -1001,20 +885,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "bLong".
+   * Method returns attribute {@link #bLong}.<br/>
    * 
-   * 
-   * @return Long Value to which the attribute "bLong" is set.
+   * @return {@link Long} Value to which {@link #bLong} is set.
    */
   public Long getBLong( ) {
     return bLong;
   }
 
   /**
-   * Method sets the attribute "bLong".
+   * Method sets attribute {@link #bLong}.<br/>
    * 
-   * 
-   * @param pBLong Value to which the attribute "bLong" should be set.
+   * @param pBLong Value to which {@link #bLong} should be set.
    */
   public void setBLong( Long pBLong ) {
     // Assign value to attribute
@@ -1022,20 +904,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aBigInteger".
+   * Method returns attribute {@link #aBigInteger}.<br/>
    * 
-   * 
-   * @return BigInteger Value to which the attribute "aBigInteger" is set.
+   * @return {@link BigInteger} Value to which {@link #aBigInteger} is set.
    */
   public BigInteger getABigInteger( ) {
     return aBigInteger;
   }
 
   /**
-   * Method sets the attribute "aBigInteger".
+   * Method sets attribute {@link #aBigInteger}.<br/>
    * 
-   * 
-   * @param pABigInteger Value to which the attribute "aBigInteger" should be set.
+   * @param pABigInteger Value to which {@link #aBigInteger} should be set.
    */
   public void setABigInteger( BigInteger pABigInteger ) {
     // Assign value to attribute
@@ -1043,20 +923,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aCharacter".
+   * Method returns attribute {@link #aCharacter}.<br/>
    * 
-   * 
-   * @return char Value to which the attribute "aCharacter" is set.
+   * @return char Value to which {@link #aCharacter} is set.
    */
   public char getACharacter( ) {
     return aCharacter;
   }
 
   /**
-   * Method sets the attribute "aCharacter".
+   * Method sets attribute {@link #aCharacter}.<br/>
    * 
-   * 
-   * @param pACharacter Value to which the attribute "aCharacter" should be set.
+   * @param pACharacter Value to which {@link #aCharacter} should be set.
    */
   public void setACharacter( char pACharacter ) {
     // Assign value to attribute
@@ -1064,20 +942,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "bCharacter".
+   * Method returns attribute {@link #bCharacter}.<br/>
    * 
-   * 
-   * @return Character Value to which the attribute "bCharacter" is set.
+   * @return {@link Character} Value to which {@link #bCharacter} is set.
    */
   public Character getBCharacter( ) {
     return bCharacter;
   }
 
   /**
-   * Method sets the attribute "bCharacter".
+   * Method sets attribute {@link #bCharacter}.<br/>
    * 
-   * 
-   * @param pBCharacter Value to which the attribute "bCharacter" should be set.
+   * @param pBCharacter Value to which {@link #bCharacter} should be set.
    */
   public void setBCharacter( Character pBCharacter ) {
     // Assign value to attribute
@@ -1085,20 +961,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aFloat".
+   * Method returns attribute {@link #aFloat}.<br/>
    * 
-   * 
-   * @return float Value to which the attribute "aFloat" is set.
+   * @return float Value to which {@link #aFloat} is set.
    */
   public float getAFloat( ) {
     return aFloat;
   }
 
   /**
-   * Method sets the attribute "aFloat".
+   * Method sets attribute {@link #aFloat}.<br/>
    * 
-   * 
-   * @param pAFloat Value to which the attribute "aFloat" should be set.
+   * @param pAFloat Value to which {@link #aFloat} should be set.
    */
   public void setAFloat( float pAFloat ) {
     // Assign value to attribute
@@ -1106,20 +980,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "bFloat".
+   * Method returns attribute {@link #bFloat}.<br/>
    * 
-   * 
-   * @return Float Value to which the attribute "bFloat" is set.
+   * @return {@link Float} Value to which {@link #bFloat} is set.
    */
   public Float getBFloat( ) {
     return bFloat;
   }
 
   /**
-   * Method sets the attribute "bFloat".
+   * Method sets attribute {@link #bFloat}.<br/>
    * 
-   * 
-   * @param pBFloat Value to which the attribute "bFloat" should be set.
+   * @param pBFloat Value to which {@link #bFloat} should be set.
    */
   public void setBFloat( Float pBFloat ) {
     // Assign value to attribute
@@ -1127,20 +999,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aDouble".
+   * Method returns attribute {@link #aDouble}.<br/>
    * 
-   * 
-   * @return double Value to which the attribute "aDouble" is set.
+   * @return double Value to which {@link #aDouble} is set.
    */
   public double getADouble( ) {
     return aDouble;
   }
 
   /**
-   * Method sets the attribute "aDouble".
+   * Method sets attribute {@link #aDouble}.<br/>
    * 
-   * 
-   * @param pADouble Value to which the attribute "aDouble" should be set.
+   * @param pADouble Value to which {@link #aDouble} should be set.
    */
   public void setADouble( double pADouble ) {
     // Assign value to attribute
@@ -1148,20 +1018,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "bDouble".
+   * Method returns attribute {@link #bDouble}.<br/>
    * 
-   * 
-   * @return Double Value to which the attribute "bDouble" is set.
+   * @return {@link Double} Value to which {@link #bDouble} is set.
    */
   public Double getBDouble( ) {
     return bDouble;
   }
 
   /**
-   * Method sets the attribute "bDouble".
+   * Method sets attribute {@link #bDouble}.<br/>
    * 
-   * 
-   * @param pBDouble Value to which the attribute "bDouble" should be set.
+   * @param pBDouble Value to which {@link #bDouble} should be set.
    */
   public void setBDouble( Double pBDouble ) {
     // Assign value to attribute
@@ -1169,20 +1037,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aBigDecimal".
+   * Method returns attribute {@link #aBigDecimal}.<br/>
    * 
-   * 
-   * @return BigDecimal Value to which the attribute "aBigDecimal" is set.
+   * @return {@link BigDecimal} Value to which {@link #aBigDecimal} is set.
    */
   public BigDecimal getABigDecimal( ) {
     return aBigDecimal;
   }
 
   /**
-   * Method sets the attribute "aBigDecimal".
+   * Method sets attribute {@link #aBigDecimal}.<br/>
    * 
-   * 
-   * @param pABigDecimal Value to which the attribute "aBigDecimal" should be set.
+   * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
    */
   public void setABigDecimal( BigDecimal pABigDecimal ) {
     // Assign value to attribute
@@ -1190,20 +1056,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "aString".
+   * Method returns attribute {@link #aString}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "aString" is set.
+   * @return {@link String} Value to which {@link #aString} is set.
    */
   public String getAString( ) {
     return aString;
   }
 
   /**
-   * Method sets the attribute "aString".
+   * Method sets attribute {@link #aString}.<br/>
    * 
-   * 
-   * @param pAString Value to which the attribute "aString" should be set.
+   * @param pAString Value to which {@link #aString} should be set.
    */
   public void setAString( String pAString ) {
     // Assign value to attribute
@@ -1211,20 +1075,18 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "bString".
+   * Method returns attribute {@link #bString}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "bString" is set.
+   * @return {@link String} Value to which {@link #bString} is set.
    */
   public String getBString( ) {
     return bString;
   }
 
   /**
-   * Method sets the attribute "bString".
+   * Method sets attribute {@link #bString}.<br/>
    * 
-   * 
-   * @param pBString Value to which the attribute "bString" should be set.
+   * @param pBString Value to which {@link #bString} should be set.
    */
   public void setBString( String pBString ) {
     // Assign value to attribute

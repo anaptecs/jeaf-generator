@@ -37,11 +37,8 @@ public final class JEAFSecurityTestServiceProxy extends ServiceProxy implements 
   }
 
   /**
-   * Generated proxy implementation for method "checkCurrentUser".
-   * 
-   * Method returns the currently user who is loged in.
-   * 
-   * @return loged in User.
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.JEAFSecurityTestService#checkCurrentUser}
    */
   public void checkCurrentUser( ) {
     try {
@@ -54,9 +51,8 @@ public final class JEAFSecurityTestServiceProxy extends ServiceProxy implements 
   }
 
   /**
-   * Generated proxy implementation for method "checkInvalidServiceAccess".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.JEAFSecurityTestService#checkInvalidServiceAccess}
    */
   public void checkInvalidServiceAccess( ) {
     try {
@@ -69,9 +65,8 @@ public final class JEAFSecurityTestServiceProxy extends ServiceProxy implements 
   }
 
   /**
-   * Generated proxy implementation for method "checkCurrentAnonymousUser".
-   * 
-   * checks if the attribute of the currentUser which is an anonymous user are set correctly.
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.JEAFSecurityTestService#checkCurrentAnonymousUser}
    */
   public void checkCurrentAnonymousUser( ) {
     try {

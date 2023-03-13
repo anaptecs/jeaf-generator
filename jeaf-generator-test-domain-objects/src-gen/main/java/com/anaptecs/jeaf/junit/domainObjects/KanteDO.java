@@ -15,10 +15,6 @@ import com.anaptecs.jeaf.core.api.DomainObject;
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class KanteDO extends DomainObject {
   /**
    * Default serial version uid.
@@ -50,29 +46,14 @@ public class KanteDO extends DomainObject {
    */
   public static final String NETZBEREICHE = "netzbereiche";
 
-  /**
-   * 
-   */
   private VerbindungspunktDO abgang;
 
-  /**
-   * 
-   */
   private VerbindungspunktDO bestimmung;
 
-  /**
-   * 
-   */
   private VerkehrsmittelTyp verkehrsmittelTyp;
 
-  /**
-   * 
-   */
   private Boolean gerichtet;
 
-  /**
-   * 
-   */
   private Set<NetzbereichDO> netzbereiche;
 
   /**
@@ -93,104 +74,93 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method returns the association "abgang".
+   * Method returns association {@link #abgang}.<br/>
    * 
-   *
-   * @return VerbindungspunktDO VerbindungspunktDO to which the association "abgang" is set.
+   * @return {@link VerbindungspunktDO} Value to which {@link #abgang} is set.
    */
   public VerbindungspunktDO getAbgang( ) {
     return abgang;
   }
 
   /**
-   * Method sets the association "abgang".
+   * Method sets association {@link #abgang}.<br/>
    * 
-   * 
-   * @param pAbgang VerbindungspunktDO to which the association "abgang" should be set.
+   * @param pAbgang Value to which {@link #abgang} should be set.
    */
   public void setAbgang( VerbindungspunktDO pAbgang ) {
     abgang = pAbgang;
   }
 
   /**
-   * Method unsets the association "abgang".
-   * 
+   * Method unsets {@link #abgang}.
    */
   public final void unsetAbgang( ) {
     abgang = null;
   }
 
   /**
-   * Method returns the association "bestimmung".
+   * Method returns association {@link #bestimmung}.<br/>
    * 
-   *
-   * @return VerbindungspunktDO VerbindungspunktDO to which the association "bestimmung" is set.
+   * @return {@link VerbindungspunktDO} Value to which {@link #bestimmung} is set.
    */
   public VerbindungspunktDO getBestimmung( ) {
     return bestimmung;
   }
 
   /**
-   * Method sets the association "bestimmung".
+   * Method sets association {@link #bestimmung}.<br/>
    * 
-   * 
-   * @param pBestimmung VerbindungspunktDO to which the association "bestimmung" should be set.
+   * @param pBestimmung Value to which {@link #bestimmung} should be set.
    */
   public void setBestimmung( VerbindungspunktDO pBestimmung ) {
     bestimmung = pBestimmung;
   }
 
   /**
-   * Method unsets the association "bestimmung".
-   * 
+   * Method unsets {@link #bestimmung}.
    */
   public final void unsetBestimmung( ) {
     bestimmung = null;
   }
 
   /**
-   * Method returns the association "verkehrsmittelTyp".
+   * Method returns association {@link #verkehrsmittelTyp}.<br/>
    * 
-   *
-   * @return VerkehrsmittelTyp VerkehrsmittelTyp to which the association "verkehrsmittelTyp" is set.
+   * @return {@link VerkehrsmittelTyp} Value to which {@link #verkehrsmittelTyp} is set.
    */
   public VerkehrsmittelTyp getVerkehrsmittelTyp( ) {
     return verkehrsmittelTyp;
   }
 
   /**
-   * Method sets the association "verkehrsmittelTyp".
+   * Method sets association {@link #verkehrsmittelTyp}.<br/>
    * 
-   * 
-   * @param pVerkehrsmittelTyp VerkehrsmittelTyp to which the association "verkehrsmittelTyp" should be set.
+   * @param pVerkehrsmittelTyp Value to which {@link #verkehrsmittelTyp} should be set.
    */
   public void setVerkehrsmittelTyp( VerkehrsmittelTyp pVerkehrsmittelTyp ) {
     verkehrsmittelTyp = pVerkehrsmittelTyp;
   }
 
   /**
-   * Method unsets the association "verkehrsmittelTyp".
-   * 
+   * Method unsets {@link #verkehrsmittelTyp}.
    */
   public final void unsetVerkehrsmittelTyp( ) {
     verkehrsmittelTyp = null;
   }
 
   /**
-   * Method returns the attribute "gerichtet".
+   * Method returns attribute {@link #gerichtet}.<br/>
    * 
-   * 
-   * @return Boolean Value to which the attribute "gerichtet" is set.
+   * @return {@link Boolean} Value to which {@link #gerichtet} is set.
    */
   public Boolean getGerichtet( ) {
     return gerichtet;
   }
 
   /**
-   * Method sets the attribute "gerichtet".
+   * Method sets attribute {@link #gerichtet}.<br/>
    * 
-   * 
-   * @param pGerichtet Value to which the attribute "gerichtet" should be set.
+   * @param pGerichtet Value to which {@link #gerichtet} should be set.
    */
   public void setGerichtet( Boolean pGerichtet ) {
     // Assign value to attribute
@@ -198,11 +168,10 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method returns the association "netzbereiche".
+   * Method returns association {@link #netzbereiche}.<br/>
    * 
-   *
-   * @return Collection All NetzbereichDO objects that belong to the association "netzbereiche". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link Set<NetzbereichDO>} Value to which {@link #netzbereiche} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public Set<NetzbereichDO> getNetzbereiche( ) {
     // Return all NetzbereichDO objects as unmodifiable collection.
@@ -210,10 +179,9 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method adds the passed NetzbereichDO object to the association "netzbereiche".
+   * Method adds the passed object to {@link #netzbereiche}.
    * 
-   * 
-   * @param pNetzbereiche Object that should be added to the association "netzbereiche". The parameter must not be null.
+   * @param pNetzbereiche Object that should be added to {@link #netzbereiche}. The parameter must not be null.
    */
   public void addToNetzbereiche( NetzbereichDO pNetzbereiche ) {
     // Check parameter "pNetzbereiche" for invalid value null.
@@ -228,11 +196,10 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method adds all passed objects to the association "netzbereiche".
+   * Method adds all passed objects to {@link #netzbereiche}.
    * 
-   * 
-   * @param pNetzbereiche Collection with all objects that should be added to the association "netzbereiche". The
-   * parameter must not be null.
+   * @param pNetzbereiche Collection with all objects that should be added to {@link #netzbereiche}. The parameter must
+   * not be null.
    */
   public void addToNetzbereiche( Collection<NetzbereichDO> pNetzbereiche ) {
     // Check parameter "pNetzbereiche" for invalid value null.
@@ -244,11 +211,9 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method removes the passed NetzbereichDO object from the association "netzbereiche".
+   * Method removes the passed object from {@link #netzbereiche}.<br/>
    * 
-   * 
-   * @param pNetzbereiche Object that should be removed from the association "netzbereiche". The parameter must not be
-   * null.
+   * @param pNetzbereiche Object that should be removed from {@link #netzbereiche}. The parameter must not be null.
    */
   public void removeFromNetzbereiche( NetzbereichDO pNetzbereiche ) {
     // Check parameter for invalid value null.
@@ -263,8 +228,7 @@ public class KanteDO extends DomainObject {
   }
 
   /**
-   * Method removes all objects from the association "netzbereiche".
-   * 
+   * Method removes all objects from {@link #netzbereiche}.
    */
   public void clearNetzbereiche( ) {
     // Remove all objects from association "netzbereiche".

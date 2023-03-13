@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class WrapperArrayServiceObject implements ServiceObject {
   /**
    * Default serial version uid.
@@ -26,9 +22,6 @@ public class WrapperArrayServiceObject implements ServiceObject {
    */
   public static final String BOOLEANARRAY = "booleanArray";
 
-  /**
-   * 
-   */
   private Boolean[] booleanArray;
 
   /**
@@ -71,13 +64,9 @@ public class WrapperArrayServiceObject implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class WrapperArrayServiceObject. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>WrapperArrayServiceObject</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private Boolean[] booleanArray;
 
     /**
@@ -98,9 +87,10 @@ public class WrapperArrayServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "booleanArray".
+     * Method sets attribute {@link #booleanArray}.<br/>
      * 
-     * @param pBooleanArray Value to which the attribute "booleanArray" should be set.
+     * @param pBooleanArray Collection to which {@link #booleanArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooleanArray( Boolean[] pBooleanArray ) {
       // Assign value to attribute
@@ -139,10 +129,9 @@ public class WrapperArrayServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "booleanArray".
+   * Method returns attribute {@link #booleanArray}.<br/>
    * 
-   * 
-   * @return Boolean Value to which the attribute "booleanArray" is set.
+   * @return {@link Boolean} Value to which {@link #booleanArray} is set.
    */
   public Boolean[] getBooleanArray( ) {
     Boolean[] lReturnValue;
@@ -157,10 +146,9 @@ public class WrapperArrayServiceObject implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "booleanArray".
+   * Method sets attribute {@link #booleanArray}.<br/>
    * 
-   * 
-   * @param pBooleanArray Value to which the attribute "booleanArray" should be set.
+   * @param pBooleanArray Value to which {@link #booleanArray} should be set.
    */
   public void setBooleanArray( Boolean[] pBooleanArray ) {
     // Assign value to attribute

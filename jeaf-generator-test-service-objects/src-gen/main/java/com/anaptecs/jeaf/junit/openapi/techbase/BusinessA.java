@@ -9,10 +9,6 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class BusinessA extends TechParent {
   /**
    * Default serial version uid.
@@ -24,9 +20,6 @@ public class BusinessA extends TechParent {
    */
   public static final String BUSINESSATTRIBUTE = "businessAttribute";
 
-  /**
-   * 
-   */
   private int businessAttribute;
 
   /**
@@ -69,13 +62,9 @@ public class BusinessA extends TechParent {
   }
 
   /**
-   * Class implements builder to create a new instance of class BusinessA. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>BusinessA</code>.
    */
   public static class Builder extends TechParent.Builder {
-    /**
-     * 
-     */
     private int businessAttribute;
 
     /**
@@ -97,9 +86,10 @@ public class BusinessA extends TechParent {
     }
 
     /**
-     * Method sets the attribute "techAttribute".
+     * Method sets attribute {@link #techAttribute}.<br/>
      * 
-     * @param pTechAttribute Value to which the attribute "techAttribute" should be set.
+     * @param pTechAttribute Value to which {@link #techAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setTechAttribute( String pTechAttribute ) {
@@ -109,9 +99,10 @@ public class BusinessA extends TechParent {
     }
 
     /**
-     * Method sets the attribute "businessAttribute".
+     * Method sets attribute {@link #businessAttribute}.<br/>
      * 
-     * @param pBusinessAttribute Value to which the attribute "businessAttribute" should be set.
+     * @param pBusinessAttribute Value to which {@link #businessAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBusinessAttribute( int pBusinessAttribute ) {
       // Assign value to attribute
@@ -143,20 +134,18 @@ public class BusinessA extends TechParent {
   }
 
   /**
-   * Method returns the attribute "businessAttribute".
+   * Method returns attribute {@link #businessAttribute}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "businessAttribute" is set.
+   * @return int Value to which {@link #businessAttribute} is set.
    */
   public int getBusinessAttribute( ) {
     return businessAttribute;
   }
 
   /**
-   * Method sets the attribute "businessAttribute".
+   * Method sets attribute {@link #businessAttribute}.<br/>
    * 
-   * 
-   * @param pBusinessAttribute Value to which the attribute "businessAttribute" should be set.
+   * @param pBusinessAttribute Value to which {@link #businessAttribute} should be set.
    */
   public void setBusinessAttribute( int pBusinessAttribute ) {
     // Assign value to attribute

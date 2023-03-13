@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   /**
    * Default serial version uid.
@@ -41,14 +37,8 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
    */
   private final long objectID;
 
-  /**
-   * 
-   */
   private DataUnit dataUnit;
 
-  /**
-   * 
-   */
   private Entity entity;
 
   /**
@@ -83,14 +73,8 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
      */
     private long objectID;
 
-    /**
-     * 
-     */
     private DataUnit dataUnit;
 
-    /**
-     * 
-     */
     private Entity entity;
 
     /**
@@ -113,9 +97,10 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "objectID". Internal ID of a versioned object
+     * Method sets attribute {@link #objectID}.<br/>
      * 
-     * @param pObjectID Value to which the attribute "objectID" should be set.
+     * @param pObjectID Value to which {@link #objectID} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setObjectID( long pObjectID ) {
       // Assign value to attribute
@@ -124,9 +109,10 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     }
 
     /**
-     * Method sets the association "dataUnit".
+     * Method sets association {@link #dataUnit}.<br/>
      * 
-     * @param pDataUnit DataUnit to which the association "dataUnit" should be set.
+     * @param pDataUnit Value to which {@link #dataUnit} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setDataUnit( DataUnit pDataUnit ) {
       dataUnit = pDataUnit;
@@ -134,9 +120,10 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     }
 
     /**
-     * Method sets the association "entity".
+     * Method sets association {@link #entity}.<br/>
      * 
-     * @param pEntity Entity to which the association "entity" should be set.
+     * @param pEntity Value to which {@link #entity} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setEntity( Entity pEntity ) {
       entity = pEntity;
@@ -168,65 +155,60 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "objectID". Internal ID of a versioned object
+   * Method returns attribute {@link #objectID}.<br/>
+   * Internal ID of a versioned object
    * 
-   * @return long Value to which the attribute "objectID" is set.
+   * @return long Value to which {@link #objectID} is set.
    */
   public long getObjectID( ) {
     return objectID;
   }
 
   /**
-   * Method returns the association "dataUnit".
+   * Method returns association {@link #dataUnit}.<br/>
    * 
-   *
-   * @return DataUnit DataUnit to which the association "dataUnit" is set.
+   * @return {@link DataUnit} Value to which {@link #dataUnit} is set.
    */
   public DataUnit getDataUnit( ) {
     return dataUnit;
   }
 
   /**
-   * Method sets the association "dataUnit".
+   * Method sets association {@link #dataUnit}.<br/>
    * 
-   * 
-   * @param pDataUnit DataUnit to which the association "dataUnit" should be set.
+   * @param pDataUnit Value to which {@link #dataUnit} should be set.
    */
   public void setDataUnit( DataUnit pDataUnit ) {
     dataUnit = pDataUnit;
   }
 
   /**
-   * Method unsets the association "dataUnit".
-   * 
+   * Method unsets {@link #dataUnit}.
    */
   public final void unsetDataUnit( ) {
     dataUnit = null;
   }
 
   /**
-   * Method returns the association "entity".
+   * Method returns association {@link #entity}.<br/>
    * 
-   *
-   * @return Entity Entity to which the association "entity" is set.
+   * @return {@link Entity} Value to which {@link #entity} is set.
    */
   public Entity getEntity( ) {
     return entity;
   }
 
   /**
-   * Method sets the association "entity".
+   * Method sets association {@link #entity}.<br/>
    * 
-   * 
-   * @param pEntity Entity to which the association "entity" should be set.
+   * @param pEntity Value to which {@link #entity} should be set.
    */
   public void setEntity( Entity pEntity ) {
     entity = pEntity;
   }
 
   /**
-   * Method unsets the association "entity".
-   * 
+   * Method unsets {@link #entity}.
    */
   public final void unsetEntity( ) {
     entity = null;

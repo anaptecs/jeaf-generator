@@ -6,10 +6,6 @@ import java.util.List;
 import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class SwiftTransactionLogBOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -41,14 +37,8 @@ public abstract class SwiftTransactionLogBOBase extends PersistentObject {
    */
   public static final String AMOUNT_ATTRIBUTE = "amount";
 
-  /**
-   * 
-   */
   private Calendar timestamp;
 
-  /**
-   * 
-   */
   private Double amount;
 
   /**
@@ -68,20 +58,18 @@ public abstract class SwiftTransactionLogBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "timestamp".
+   * Method returns attribute {@link #timestamp}.<br/>
    * 
-   * 
-   * @return Calendar Value to which the attribute "timestamp" is set.
+   * @return {@link Calendar} Value to which {@link #timestamp} is set.
    */
   public Calendar getTimestamp( ) {
     return timestamp;
   }
 
   /**
-   * Method sets the attribute "timestamp".
+   * Method sets attribute {@link #timestamp}.<br/>
    * 
-   * 
-   * @param pTimestamp Value to which the attribute "timestamp" should be set.
+   * @param pTimestamp Value to which {@link #timestamp} should be set.
    */
   public void setTimestamp( Calendar pTimestamp ) {
     // Assign value to attribute
@@ -89,20 +77,18 @@ public abstract class SwiftTransactionLogBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "amount".
+   * Method returns attribute {@link #amount}.<br/>
    * 
-   * 
-   * @return Double Value to which the attribute "amount" is set.
+   * @return {@link Double} Value to which {@link #amount} is set.
    */
   public Double getAmount( ) {
     return amount;
   }
 
   /**
-   * Method sets the attribute "amount".
+   * Method sets attribute {@link #amount}.<br/>
    * 
-   * 
-   * @param pAmount Value to which the attribute "amount" should be set.
+   * @param pAmount Value to which {@link #amount} should be set.
    */
   public void setAmount( Double pAmount ) {
     // Assign value to attribute

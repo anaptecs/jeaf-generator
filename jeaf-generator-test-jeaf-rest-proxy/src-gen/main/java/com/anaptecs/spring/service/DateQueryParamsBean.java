@@ -22,10 +22,6 @@ import javax.ws.rs.QueryParam;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class DateQueryParamsBean implements Serializable {
   /**
    * Default serial version UID.
@@ -82,63 +78,33 @@ public class DateQueryParamsBean implements Serializable {
    */
   public static final String SQLDATE = "sqlDate";
 
-  /**
-   * 
-   */
   @QueryParam("offsetDateTime")
   private OffsetDateTime offsetDateTime;
 
-  /**
-   * 
-   */
   @QueryParam("offsetTime")
   private OffsetTime offsetTime;
 
-  /**
-   * 
-   */
   @QueryParam("localDateTime")
   private LocalDateTime localDateTime;
 
-  /**
-   * 
-   */
   @QueryParam("localTime")
   private LocalTime localTime;
 
-  /**
-   * 
-   */
   @QueryParam("localDate")
   private LocalDate localDate;
 
-  /**
-   * 
-   */
   @QueryParam("utilDate")
   private java.util.Date utilDate;
 
-  /**
-   * 
-   */
   @QueryParam("calendar")
   private Calendar calendar;
 
-  /**
-   * 
-   */
   @QueryParam("sqlTimestamp")
   private Timestamp sqlTimestamp;
 
-  /**
-   * 
-   */
   @QueryParam("sqlTime")
   private Time sqlTime;
 
-  /**
-   * 
-   */
   @QueryParam("sqlDate")
   private Date sqlDate;
 
@@ -211,58 +177,27 @@ public class DateQueryParamsBean implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class DateQueryParamsBean. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>DateQueryParamsBean</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private OffsetDateTime offsetDateTime;
 
-    /**
-     * 
-     */
     private OffsetTime offsetTime;
 
-    /**
-     * 
-     */
     private LocalDateTime localDateTime;
 
-    /**
-     * 
-     */
     private LocalTime localTime;
 
-    /**
-     * 
-     */
     private LocalDate localDate;
 
-    /**
-     * 
-     */
     private java.util.Date utilDate;
 
-    /**
-     * 
-     */
     private Calendar calendar;
 
-    /**
-     * 
-     */
     private Timestamp sqlTimestamp;
 
-    /**
-     * 
-     */
     private Time sqlTime;
 
-    /**
-     * 
-     */
     private Date sqlDate;
 
     /**
@@ -292,9 +227,10 @@ public class DateQueryParamsBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "offsetDateTime".
+     * Method sets attribute {@link #offsetDateTime}.<br/>
      * 
-     * @param pOffsetDateTime Value to which the attribute "offsetDateTime" should be set.
+     * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
       // Assign value to attribute
@@ -303,9 +239,10 @@ public class DateQueryParamsBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "offsetTime".
+     * Method sets attribute {@link #offsetTime}.<br/>
      * 
-     * @param pOffsetTime Value to which the attribute "offsetTime" should be set.
+     * @param pOffsetTime Value to which {@link #offsetTime} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setOffsetTime( OffsetTime pOffsetTime ) {
       // Assign value to attribute
@@ -314,9 +251,10 @@ public class DateQueryParamsBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "localDateTime".
+     * Method sets attribute {@link #localDateTime}.<br/>
      * 
-     * @param pLocalDateTime Value to which the attribute "localDateTime" should be set.
+     * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalDateTime( LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
@@ -325,9 +263,10 @@ public class DateQueryParamsBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "localTime".
+     * Method sets attribute {@link #localTime}.<br/>
      * 
-     * @param pLocalTime Value to which the attribute "localTime" should be set.
+     * @param pLocalTime Value to which {@link #localTime} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalTime( LocalTime pLocalTime ) {
       // Assign value to attribute
@@ -336,9 +275,10 @@ public class DateQueryParamsBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "localDate".
+     * Method sets attribute {@link #localDate}.<br/>
      * 
-     * @param pLocalDate Value to which the attribute "localDate" should be set.
+     * @param pLocalDate Value to which {@link #localDate} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalDate( LocalDate pLocalDate ) {
       // Assign value to attribute
@@ -347,9 +287,10 @@ public class DateQueryParamsBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "utilDate".
+     * Method sets attribute {@link #utilDate}.<br/>
      * 
-     * @param pUtilDate Value to which the attribute "utilDate" should be set.
+     * @param pUtilDate Value to which {@link #utilDate} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setUtilDate( java.util.Date pUtilDate ) {
       // Assign value to attribute
@@ -358,9 +299,10 @@ public class DateQueryParamsBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "calendar".
+     * Method sets attribute {@link #calendar}.<br/>
      * 
-     * @param pCalendar Value to which the attribute "calendar" should be set.
+     * @param pCalendar Value to which {@link #calendar} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCalendar( Calendar pCalendar ) {
       // Assign value to attribute
@@ -369,9 +311,10 @@ public class DateQueryParamsBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "sqlTimestamp".
+     * Method sets attribute {@link #sqlTimestamp}.<br/>
      * 
-     * @param pSqlTimestamp Value to which the attribute "sqlTimestamp" should be set.
+     * @param pSqlTimestamp Value to which {@link #sqlTimestamp} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSqlTimestamp( Timestamp pSqlTimestamp ) {
       // Assign value to attribute
@@ -380,9 +323,10 @@ public class DateQueryParamsBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "sqlTime".
+     * Method sets attribute {@link #sqlTime}.<br/>
      * 
-     * @param pSqlTime Value to which the attribute "sqlTime" should be set.
+     * @param pSqlTime Value to which {@link #sqlTime} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSqlTime( Time pSqlTime ) {
       // Assign value to attribute
@@ -391,9 +335,10 @@ public class DateQueryParamsBean implements Serializable {
     }
 
     /**
-     * Method sets the attribute "sqlDate".
+     * Method sets attribute {@link #sqlDate}.<br/>
      * 
-     * @param pSqlDate Value to which the attribute "sqlDate" should be set.
+     * @param pSqlDate Value to which {@link #sqlDate} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSqlDate( Date pSqlDate ) {
       // Assign value to attribute
@@ -426,20 +371,18 @@ public class DateQueryParamsBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "offsetDateTime".
+   * Method returns attribute {@link #offsetDateTime}.<br/>
    * 
-   * 
-   * @return OffsetDateTime Value to which the attribute "offsetDateTime" is set.
+   * @return {@link OffsetDateTime} Value to which {@link #offsetDateTime} is set.
    */
   public OffsetDateTime getOffsetDateTime( ) {
     return offsetDateTime;
   }
 
   /**
-   * Method sets the attribute "offsetDateTime".
+   * Method sets attribute {@link #offsetDateTime}.<br/>
    * 
-   * 
-   * @param pOffsetDateTime Value to which the attribute "offsetDateTime" should be set.
+   * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
    */
   public void setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
     // Assign value to attribute
@@ -447,20 +390,18 @@ public class DateQueryParamsBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "offsetTime".
+   * Method returns attribute {@link #offsetTime}.<br/>
    * 
-   * 
-   * @return OffsetTime Value to which the attribute "offsetTime" is set.
+   * @return {@link OffsetTime} Value to which {@link #offsetTime} is set.
    */
   public OffsetTime getOffsetTime( ) {
     return offsetTime;
   }
 
   /**
-   * Method sets the attribute "offsetTime".
+   * Method sets attribute {@link #offsetTime}.<br/>
    * 
-   * 
-   * @param pOffsetTime Value to which the attribute "offsetTime" should be set.
+   * @param pOffsetTime Value to which {@link #offsetTime} should be set.
    */
   public void setOffsetTime( OffsetTime pOffsetTime ) {
     // Assign value to attribute
@@ -468,20 +409,18 @@ public class DateQueryParamsBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "localDateTime".
+   * Method returns attribute {@link #localDateTime}.<br/>
    * 
-   * 
-   * @return LocalDateTime Value to which the attribute "localDateTime" is set.
+   * @return {@link LocalDateTime} Value to which {@link #localDateTime} is set.
    */
   public LocalDateTime getLocalDateTime( ) {
     return localDateTime;
   }
 
   /**
-   * Method sets the attribute "localDateTime".
+   * Method sets attribute {@link #localDateTime}.<br/>
    * 
-   * 
-   * @param pLocalDateTime Value to which the attribute "localDateTime" should be set.
+   * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
    */
   public void setLocalDateTime( LocalDateTime pLocalDateTime ) {
     // Assign value to attribute
@@ -489,20 +428,18 @@ public class DateQueryParamsBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "localTime".
+   * Method returns attribute {@link #localTime}.<br/>
    * 
-   * 
-   * @return LocalTime Value to which the attribute "localTime" is set.
+   * @return {@link LocalTime} Value to which {@link #localTime} is set.
    */
   public LocalTime getLocalTime( ) {
     return localTime;
   }
 
   /**
-   * Method sets the attribute "localTime".
+   * Method sets attribute {@link #localTime}.<br/>
    * 
-   * 
-   * @param pLocalTime Value to which the attribute "localTime" should be set.
+   * @param pLocalTime Value to which {@link #localTime} should be set.
    */
   public void setLocalTime( LocalTime pLocalTime ) {
     // Assign value to attribute
@@ -510,20 +447,18 @@ public class DateQueryParamsBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "localDate".
+   * Method returns attribute {@link #localDate}.<br/>
    * 
-   * 
-   * @return LocalDate Value to which the attribute "localDate" is set.
+   * @return {@link LocalDate} Value to which {@link #localDate} is set.
    */
   public LocalDate getLocalDate( ) {
     return localDate;
   }
 
   /**
-   * Method sets the attribute "localDate".
+   * Method sets attribute {@link #localDate}.<br/>
    * 
-   * 
-   * @param pLocalDate Value to which the attribute "localDate" should be set.
+   * @param pLocalDate Value to which {@link #localDate} should be set.
    */
   public void setLocalDate( LocalDate pLocalDate ) {
     // Assign value to attribute
@@ -531,20 +466,18 @@ public class DateQueryParamsBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "utilDate".
+   * Method returns attribute {@link #utilDate}.<br/>
    * 
-   * 
-   * @return Date Value to which the attribute "utilDate" is set.
+   * @return {@link java.util.Date} Value to which {@link #utilDate} is set.
    */
   public java.util.Date getUtilDate( ) {
     return utilDate;
   }
 
   /**
-   * Method sets the attribute "utilDate".
+   * Method sets attribute {@link #utilDate}.<br/>
    * 
-   * 
-   * @param pUtilDate Value to which the attribute "utilDate" should be set.
+   * @param pUtilDate Value to which {@link #utilDate} should be set.
    */
   public void setUtilDate( java.util.Date pUtilDate ) {
     // Assign value to attribute
@@ -552,20 +485,18 @@ public class DateQueryParamsBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "calendar".
+   * Method returns attribute {@link #calendar}.<br/>
    * 
-   * 
-   * @return Calendar Value to which the attribute "calendar" is set.
+   * @return {@link Calendar} Value to which {@link #calendar} is set.
    */
   public Calendar getCalendar( ) {
     return calendar;
   }
 
   /**
-   * Method sets the attribute "calendar".
+   * Method sets attribute {@link #calendar}.<br/>
    * 
-   * 
-   * @param pCalendar Value to which the attribute "calendar" should be set.
+   * @param pCalendar Value to which {@link #calendar} should be set.
    */
   public void setCalendar( Calendar pCalendar ) {
     // Assign value to attribute
@@ -573,20 +504,18 @@ public class DateQueryParamsBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "sqlTimestamp".
+   * Method returns attribute {@link #sqlTimestamp}.<br/>
    * 
-   * 
-   * @return Timestamp Value to which the attribute "sqlTimestamp" is set.
+   * @return {@link Timestamp} Value to which {@link #sqlTimestamp} is set.
    */
   public Timestamp getSqlTimestamp( ) {
     return sqlTimestamp;
   }
 
   /**
-   * Method sets the attribute "sqlTimestamp".
+   * Method sets attribute {@link #sqlTimestamp}.<br/>
    * 
-   * 
-   * @param pSqlTimestamp Value to which the attribute "sqlTimestamp" should be set.
+   * @param pSqlTimestamp Value to which {@link #sqlTimestamp} should be set.
    */
   public void setSqlTimestamp( Timestamp pSqlTimestamp ) {
     // Assign value to attribute
@@ -594,20 +523,18 @@ public class DateQueryParamsBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "sqlTime".
+   * Method returns attribute {@link #sqlTime}.<br/>
    * 
-   * 
-   * @return Time Value to which the attribute "sqlTime" is set.
+   * @return {@link Time} Value to which {@link #sqlTime} is set.
    */
   public Time getSqlTime( ) {
     return sqlTime;
   }
 
   /**
-   * Method sets the attribute "sqlTime".
+   * Method sets attribute {@link #sqlTime}.<br/>
    * 
-   * 
-   * @param pSqlTime Value to which the attribute "sqlTime" should be set.
+   * @param pSqlTime Value to which {@link #sqlTime} should be set.
    */
   public void setSqlTime( Time pSqlTime ) {
     // Assign value to attribute
@@ -615,20 +542,18 @@ public class DateQueryParamsBean implements Serializable {
   }
 
   /**
-   * Method returns the attribute "sqlDate".
+   * Method returns attribute {@link #sqlDate}.<br/>
    * 
-   * 
-   * @return Date Value to which the attribute "sqlDate" is set.
+   * @return {@link Date} Value to which {@link #sqlDate} is set.
    */
   public Date getSqlDate( ) {
     return sqlDate;
   }
 
   /**
-   * Method sets the attribute "sqlDate".
+   * Method sets attribute {@link #sqlDate}.<br/>
    * 
-   * 
-   * @param pSqlDate Value to which the attribute "sqlDate" should be set.
+   * @param pSqlDate Value to which {@link #sqlDate} should be set.
    */
   public void setSqlDate( Date pSqlDate ) {
     // Assign value to attribute

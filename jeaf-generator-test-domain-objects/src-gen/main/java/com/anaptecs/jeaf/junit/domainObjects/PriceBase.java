@@ -14,10 +14,6 @@ import com.anaptecs.jeaf.core.api.DomainObject;
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class PriceBase extends DomainObject {
   /**
    * Default serial version uid.
@@ -34,21 +30,12 @@ public abstract class PriceBase extends DomainObject {
    */
   public static final String REISEWEG = "reiseweg";
 
-  /**
-   * 
-   */
   @Deprecated
   private double price;
 
-  /**
-   * 
-   */
   @Deprecated
   private Reiseweg reiseweg;
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<VerbindungspunktDO> verbindungspunkte;
 
@@ -70,10 +57,9 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "price".
+   * Method returns attribute {@link #price}.<br/>
    * 
-   * 
-   * @return double Value to which the attribute "price" is set.
+   * @return double Value to which {@link #price} is set.
    */
   @Deprecated
   public double getPrice( ) {
@@ -81,10 +67,9 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method sets the attribute "price".
+   * Method sets attribute {@link #price}.<br/>
    * 
-   * 
-   * @param pPrice Value to which the attribute "price" should be set.
+   * @param pPrice Value to which {@link #price} should be set.
    */
   @Deprecated
   public void setPrice( double pPrice ) {
@@ -93,10 +78,9 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method returns the association "reiseweg".
+   * Method returns association {@link #reiseweg}.<br/>
    * 
-   *
-   * @return Reiseweg Reiseweg to which the association "reiseweg" is set.
+   * @return {@link Reiseweg} Value to which {@link #reiseweg} is set.
    */
   @Deprecated
   public Reiseweg getReiseweg( ) {
@@ -104,10 +88,9 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method sets the association "reiseweg".
+   * Method sets association {@link #reiseweg}.<br/>
    * 
-   * 
-   * @param pReiseweg Reiseweg to which the association "reiseweg" should be set.
+   * @param pReiseweg Value to which {@link #reiseweg} should be set.
    */
   @Deprecated
   public void setReiseweg( Reiseweg pReiseweg ) {
@@ -115,8 +98,7 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method unsets the association "reiseweg".
-   * 
+   * Method unsets {@link #reiseweg}.
    */
   @Deprecated
   public final void unsetReiseweg( ) {
@@ -124,11 +106,10 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method returns the association "verbindungspunkte".
+   * Method returns association {@link #verbindungspunkte}.<br/>
    * 
-   *
-   * @return Collection All VerbindungspunktDO objects that belong to the association "verbindungspunkte". The method
-   * never returns null and the returned collection is unmodifiable.
+   * @return {@link Set<VerbindungspunktDO>} Value to which {@link #verbindungspunkte} is set. The method never returns
+   * null and the returned collection is unmodifiable.
    */
   @Deprecated
   public Set<VerbindungspunktDO> getVerbindungspunkte( ) {
@@ -137,11 +118,10 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method adds the passed VerbindungspunktDO object to the association "verbindungspunkte".
+   * Method adds the passed object to {@link #verbindungspunkte}.
    * 
-   * 
-   * @param pVerbindungspunkte Object that should be added to the association "verbindungspunkte". The parameter must
-   * not be null.
+   * @param pVerbindungspunkte Object that should be added to {@link #verbindungspunkte}. The parameter must not be
+   * null.
    */
   @Deprecated
   public void addToVerbindungspunkte( VerbindungspunktDO pVerbindungspunkte ) {
@@ -152,11 +132,10 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method adds all passed objects to the association "verbindungspunkte".
+   * Method adds all passed objects to {@link #verbindungspunkte}.
    * 
-   * 
-   * @param pVerbindungspunkte Collection with all objects that should be added to the association "verbindungspunkte".
-   * The parameter must not be null.
+   * @param pVerbindungspunkte Collection with all objects that should be added to {@link #verbindungspunkte}. The
+   * parameter must not be null.
    */
   @Deprecated
   public void addToVerbindungspunkte( Collection<VerbindungspunktDO> pVerbindungspunkte ) {
@@ -169,11 +148,10 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method removes the passed VerbindungspunktDO object from the association "verbindungspunkte".
+   * Method removes the passed object from {@link #verbindungspunkte}.<br/>
    * 
-   * 
-   * @param pVerbindungspunkte Object that should be removed from the association "verbindungspunkte". The parameter
-   * must not be null.
+   * @param pVerbindungspunkte Object that should be removed from {@link #verbindungspunkte}. The parameter must not be
+   * null.
    */
   @Deprecated
   public void removeFromVerbindungspunkte( VerbindungspunktDO pVerbindungspunkte ) {
@@ -184,8 +162,7 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-   * Method removes all objects from the association "verbindungspunkte".
-   * 
+   * Method removes all objects from {@link #verbindungspunkte}.
    */
   @Deprecated
   public void clearVerbindungspunkte( ) {
@@ -194,16 +171,16 @@ public abstract class PriceBase extends DomainObject {
   }
 
   /**
-  * 
-  */
+   */
   @Deprecated
   public abstract void recalculatePrice( );
 
   /**
-   * 
    * @param pParam1
-   * @param pParam2
-   * @return {@link String}
+   * @param pParam2 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   public abstract String doSomething( int pParam1, @Deprecated int pParam2 );

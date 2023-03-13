@@ -5,10 +5,6 @@ import java.util.List;
 import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class ClassA_BOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -45,14 +41,8 @@ public abstract class ClassA_BOBase extends PersistentObject {
    */
   public static final String CLASSB_ROLE = "classB";
 
-  /**
-   * 
-   */
   private ClassB_BO classB;
 
-  /**
-   * 
-   */
   private String name;
 
   /**
@@ -79,10 +69,9 @@ public abstract class ClassA_BOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "classB".
+   * Method returns association {@link #classB}.<br/>
    * 
-   *
-   * @return ClassB_BO ClassB_BO to which the association "classB" is set.
+   * @return {@link ClassB_BO} Value to which {@link #classB} is set.
    */
   public ClassB_BO getClassB( ) {
     classB = this.unproxy(classB);
@@ -90,10 +79,9 @@ public abstract class ClassA_BOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "classB".
+   * Method sets association {@link #classB}.<br/>
    * 
-   * 
-   * @param pClassB ClassB_BO to which the association "classB" should be set.
+   * @param pClassB Value to which {@link #classB} should be set.
    */
   public void setClassB( ClassB_BO pClassB ) {
     // Release already referenced object before setting a new association.
@@ -109,8 +97,7 @@ public abstract class ClassA_BOBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "classB".
-   * 
+   * Method unsets {@link #classB}.
    */
   public final void unsetClassB( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -123,20 +110,18 @@ public abstract class ClassA_BOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -144,10 +129,9 @@ public abstract class ClassA_BOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "readonlyDefault".
+   * Method returns attribute {@link #readonlyDefault}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "readonlyDefault" is set.
+   * @return int Value to which {@link #readonlyDefault} is set.
    */
   public int getReadonlyDefault( ) {
     return readonlyDefault;

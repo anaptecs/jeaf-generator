@@ -19,10 +19,6 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 public class ChildBB extends ChildB {
   /**
@@ -30,33 +26,18 @@ public class ChildBB extends ChildB {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private Long childBBAttribute;
 
-  /**
-   * 
-   */
   @Deprecated
   private int deprecatedAttribute;
 
-  /**
-   * 
-   */
   @Deprecated
   private Set<ChildB> deprecatedBs;
 
-  /**
-   * 
-   */
   @Deprecated
   private ParentClass deprecatedParent;
 
-  /**
-   * 
-   */
   @Deprecated
   @Size(min = 0, max = 4711)
   private byte[] deprecatedArray;
@@ -110,36 +91,20 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Class implements builder to create a new instance of class ChildBB. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ChildBB</code>.
    */
   public static class Builder extends ChildB.Builder {
-    /**
-     * 
-     */
     private Long childBBAttribute;
 
-    /**
-     * 
-     */
     @Deprecated
     private int deprecatedAttribute;
 
-    /**
-     * 
-     */
     @Deprecated
     private Set<ChildB> deprecatedBs;
 
-    /**
-     * 
-     */
     @Deprecated
     private ParentClass deprecatedParent;
 
-    /**
-     * 
-     */
     @Deprecated
     @Size(min = 0, max = 4711)
     private byte[] deprecatedArray;
@@ -167,9 +132,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the attribute "parentAttribute".
+     * Method sets attribute {@link #parentAttribute}.<br/>
      * 
-     * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setParentAttribute( String pParentAttribute ) {
@@ -179,9 +145,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the association "ibans".
+     * Method sets association {@link #ibans}.<br/>
      * 
-     * @param pIbans Collection with objects to which the association should be set.
+     * @param pIbans Collection to which {@link #ibans} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setIbans( Set<IBAN> pIbans ) {
@@ -191,10 +158,12 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the association "theBankAccount". I would like to document references to other types.
+     * Method sets association {@link #theBankAccount}.<br/>
      * 
-     * @param pTheBankAccount BankAccount to which the association "theBankAccount" should be set.
+     * @param pTheBankAccount Value to which {@link #theBankAccount} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     @Override
     public Builder setTheBankAccount( BankAccount pTheBankAccount ) {
       // Call super class implementation.
@@ -203,10 +172,12 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the association "legacyBankAccounts". Association is still there be SemVer compliant.
+     * Method sets association {@link #legacyBankAccounts}.<br/>
      * 
-     * @param pLegacyBankAccounts Collection with objects to which the association should be set.
+     * @param pLegacyBankAccounts Collection to which {@link #legacyBankAccounts} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     @Override
     public Builder setLegacyBankAccounts( List<BankAccount> pLegacyBankAccounts ) {
       // Call super class implementation.
@@ -215,9 +186,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the attribute "childBAttribute". A child attribute
+     * Method sets attribute {@link #childBAttribute}.<br/>
      * 
-     * @param pChildBAttribute Value to which the attribute "childBAttribute" should be set.
+     * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setChildBAttribute( boolean[] pChildBAttribute ) {
@@ -227,9 +199,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the association "composition". the composition
+     * Method sets association {@link #composition}.<br/>
      * 
-     * @param pComposition Collection with objects to which the association should be set.
+     * @param pComposition Collection to which {@link #composition} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setComposition( Set<ParentClass> pComposition ) {
@@ -239,9 +212,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the attribute "childBBAttribute".
+     * Method sets attribute {@link #childBBAttribute}.<br/>
      * 
-     * @param pChildBBAttribute Value to which the attribute "childBBAttribute" should be set.
+     * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildBBAttribute( Long pChildBBAttribute ) {
       // Assign value to attribute
@@ -250,9 +224,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the attribute "deprecatedAttribute".
+     * Method sets attribute {@link #deprecatedAttribute}.<br/>
      * 
-     * @param pDeprecatedAttribute Value to which the attribute "deprecatedAttribute" should be set.
+     * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDeprecatedAttribute( int pDeprecatedAttribute ) {
@@ -262,9 +237,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the association "deprecatedBs".
+     * Method sets association {@link #deprecatedBs}.<br/>
      * 
-     * @param pDeprecatedBs Collection with objects to which the association should be set.
+     * @param pDeprecatedBs Collection to which {@link #deprecatedBs} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDeprecatedBs( Set<ChildB> pDeprecatedBs ) {
@@ -279,9 +255,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the association "deprecatedParent".
+     * Method sets association {@link #deprecatedParent}.<br/>
      * 
-     * @param pDeprecatedParent ParentClass to which the association "deprecatedParent" should be set.
+     * @param pDeprecatedParent Value to which {@link #deprecatedParent} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDeprecatedParent( ParentClass pDeprecatedParent ) {
@@ -290,9 +267,10 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets the attribute "deprecatedArray".
+     * Method sets attribute {@link #deprecatedArray}.<br/>
      * 
-     * @param pDeprecatedArray Value to which the attribute "deprecatedArray" should be set.
+     * @param pDeprecatedArray Value to which {@link #deprecatedArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setDeprecatedArray( byte[] pDeprecatedArray ) {
@@ -330,20 +308,18 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method returns the attribute "childBBAttribute".
+   * Method returns attribute {@link #childBBAttribute}.<br/>
    * 
-   * 
-   * @return Long Value to which the attribute "childBBAttribute" is set.
+   * @return {@link Long} Value to which {@link #childBBAttribute} is set.
    */
   public Long getChildBBAttribute( ) {
     return childBBAttribute;
   }
 
   /**
-   * Method sets the attribute "childBBAttribute".
+   * Method sets attribute {@link #childBBAttribute}.<br/>
    * 
-   * 
-   * @param pChildBBAttribute Value to which the attribute "childBBAttribute" should be set.
+   * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
    */
   public void setChildBBAttribute( Long pChildBBAttribute ) {
     // Assign value to attribute
@@ -351,10 +327,9 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method returns the attribute "deprecatedAttribute".
+   * Method returns attribute {@link #deprecatedAttribute}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "deprecatedAttribute" is set.
+   * @return int Value to which {@link #deprecatedAttribute} is set.
    */
   @Deprecated
   public int getDeprecatedAttribute( ) {
@@ -362,10 +337,9 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method sets the attribute "deprecatedAttribute".
+   * Method sets attribute {@link #deprecatedAttribute}.<br/>
    * 
-   * 
-   * @param pDeprecatedAttribute Value to which the attribute "deprecatedAttribute" should be set.
+   * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
    */
   @Deprecated
   public void setDeprecatedAttribute( int pDeprecatedAttribute ) {
@@ -374,11 +348,10 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method returns the association "deprecatedBs".
+   * Method returns association {@link #deprecatedBs}.<br/>
    * 
-   *
-   * @return Collection All ChildB objects that belong to the association "deprecatedBs". The method never returns null
-   * and the returned collection is modifiable.
+   * @return {@link Set<ChildB>} Value to which {@link #deprecatedBs} is set. The method never returns null and the
+   * returned collection is modifiable.
    */
   @Deprecated
   public Set<ChildB> getDeprecatedBs( ) {
@@ -387,10 +360,9 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method adds the passed ChildB object to the association "deprecatedBs".
+   * Method adds the passed object to {@link #deprecatedBs}.
    * 
-   * 
-   * @param pDeprecatedBs Object that should be added to the association "deprecatedBs". The parameter must not be null.
+   * @param pDeprecatedBs Object that should be added to {@link #deprecatedBs}. The parameter must not be null.
    */
   @Deprecated
   public void addToDeprecatedBs( ChildB pDeprecatedBs ) {
@@ -401,11 +373,10 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method adds all passed objects to the association "deprecatedBs".
+   * Method adds all passed objects to {@link #deprecatedBs}.
    * 
-   * 
-   * @param pDeprecatedBs Collection with all objects that should be added to the association "deprecatedBs". The
-   * parameter must not be null.
+   * @param pDeprecatedBs Collection with all objects that should be added to {@link #deprecatedBs}. The parameter must
+   * not be null.
    */
   @Deprecated
   public void addToDeprecatedBs( Collection<ChildB> pDeprecatedBs ) {
@@ -418,11 +389,9 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method removes the passed ChildB object from the association "deprecatedBs".
+   * Method removes the passed object from {@link #deprecatedBs}.<br/>
    * 
-   * 
-   * @param pDeprecatedBs Object that should be removed from the association "deprecatedBs". The parameter must not be
-   * null.
+   * @param pDeprecatedBs Object that should be removed from {@link #deprecatedBs}. The parameter must not be null.
    */
   @Deprecated
   public void removeFromDeprecatedBs( ChildB pDeprecatedBs ) {
@@ -433,8 +402,7 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method removes all objects from the association "deprecatedBs".
-   * 
+   * Method removes all objects from {@link #deprecatedBs}.
    */
   @Deprecated
   public void clearDeprecatedBs( ) {
@@ -443,10 +411,9 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method returns the association "deprecatedParent".
+   * Method returns association {@link #deprecatedParent}.<br/>
    * 
-   *
-   * @return ParentClass ParentClass to which the association "deprecatedParent" is set.
+   * @return {@link ParentClass} Value to which {@link #deprecatedParent} is set.
    */
   @Deprecated
   public ParentClass getDeprecatedParent( ) {
@@ -454,10 +421,9 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method sets the association "deprecatedParent".
+   * Method sets association {@link #deprecatedParent}.<br/>
    * 
-   * 
-   * @param pDeprecatedParent ParentClass to which the association "deprecatedParent" should be set.
+   * @param pDeprecatedParent Value to which {@link #deprecatedParent} should be set.
    */
   @Deprecated
   public void setDeprecatedParent( ParentClass pDeprecatedParent ) {
@@ -465,8 +431,7 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method unsets the association "deprecatedParent".
-   * 
+   * Method unsets {@link #deprecatedParent}.
    */
   @Deprecated
   public final void unsetDeprecatedParent( ) {
@@ -474,10 +439,9 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method returns the attribute "deprecatedArray".
+   * Method returns attribute {@link #deprecatedArray}.<br/>
    * 
-   * 
-   * @return byte Value to which the attribute "deprecatedArray" is set.
+   * @return byte Value to which {@link #deprecatedArray} is set.
    */
   @Deprecated
   public byte[] getDeprecatedArray( ) {
@@ -492,10 +456,9 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method sets the attribute "deprecatedArray".
+   * Method sets attribute {@link #deprecatedArray}.<br/>
    * 
-   * 
-   * @param pDeprecatedArray Value to which the attribute "deprecatedArray" should be set.
+   * @param pDeprecatedArray Value to which {@link #deprecatedArray} should be set.
    */
   @Deprecated
   public void setDeprecatedArray( byte[] pDeprecatedArray ) {

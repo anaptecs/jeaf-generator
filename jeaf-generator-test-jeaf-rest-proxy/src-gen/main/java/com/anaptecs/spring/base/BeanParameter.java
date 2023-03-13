@@ -16,10 +16,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BeanParameter implements Serializable {
   /**
@@ -43,21 +39,12 @@ public class BeanParameter implements Serializable {
   @Deprecated
   public static final String OLDSTYLE = "oldStyle";
 
-  /**
-   * 
-   */
   @HeaderParam("token")
   private String accessToken;
 
-  /**
-   * 
-   */
   @HeaderParam("lang")
   private Locale language;
 
-  /**
-   * 
-   */
   @Deprecated
   @QueryParam("q2")
   private String oldStyle;
@@ -115,23 +102,13 @@ public class BeanParameter implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class BeanParameter. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>BeanParameter</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String accessToken;
 
-    /**
-     * 
-     */
     private Locale language;
 
-    /**
-     * 
-     */
     @Deprecated
     private String oldStyle;
 
@@ -154,9 +131,10 @@ public class BeanParameter implements Serializable {
     }
 
     /**
-     * Method sets the attribute "accessToken".
+     * Method sets attribute {@link #accessToken}.<br/>
      * 
-     * @param pAccessToken Value to which the attribute "accessToken" should be set.
+     * @param pAccessToken Value to which {@link #accessToken} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAccessToken( String pAccessToken ) {
       // Assign value to attribute
@@ -165,9 +143,10 @@ public class BeanParameter implements Serializable {
     }
 
     /**
-     * Method sets the attribute "language".
+     * Method sets attribute {@link #language}.<br/>
      * 
-     * @param pLanguage Value to which the attribute "language" should be set.
+     * @param pLanguage Value to which {@link #language} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLanguage( Locale pLanguage ) {
       // Assign value to attribute
@@ -176,9 +155,10 @@ public class BeanParameter implements Serializable {
     }
 
     /**
-     * Method sets the attribute "oldStyle".
+     * Method sets attribute {@link #oldStyle}.<br/>
      * 
-     * @param pOldStyle Value to which the attribute "oldStyle" should be set.
+     * @param pOldStyle Value to which {@link #oldStyle} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setOldStyle( String pOldStyle ) {
@@ -212,20 +192,18 @@ public class BeanParameter implements Serializable {
   }
 
   /**
-   * Method returns the attribute "accessToken".
+   * Method returns attribute {@link #accessToken}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "accessToken" is set.
+   * @return {@link String} Value to which {@link #accessToken} is set.
    */
   public String getAccessToken( ) {
     return accessToken;
   }
 
   /**
-   * Method sets the attribute "accessToken".
+   * Method sets attribute {@link #accessToken}.<br/>
    * 
-   * 
-   * @param pAccessToken Value to which the attribute "accessToken" should be set.
+   * @param pAccessToken Value to which {@link #accessToken} should be set.
    */
   public void setAccessToken( String pAccessToken ) {
     // Assign value to attribute
@@ -233,20 +211,18 @@ public class BeanParameter implements Serializable {
   }
 
   /**
-   * Method returns the attribute "language".
+   * Method returns attribute {@link #language}.<br/>
    * 
-   * 
-   * @return Locale Value to which the attribute "language" is set.
+   * @return {@link Locale} Value to which {@link #language} is set.
    */
   public Locale getLanguage( ) {
     return language;
   }
 
   /**
-   * Method sets the attribute "language".
+   * Method sets attribute {@link #language}.<br/>
    * 
-   * 
-   * @param pLanguage Value to which the attribute "language" should be set.
+   * @param pLanguage Value to which {@link #language} should be set.
    */
   public void setLanguage( Locale pLanguage ) {
     // Assign value to attribute
@@ -254,10 +230,9 @@ public class BeanParameter implements Serializable {
   }
 
   /**
-   * Method returns the attribute "oldStyle".
+   * Method returns attribute {@link #oldStyle}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "oldStyle" is set.
+   * @return {@link String} Value to which {@link #oldStyle} is set.
    */
   @Deprecated
   public String getOldStyle( ) {
@@ -265,10 +240,9 @@ public class BeanParameter implements Serializable {
   }
 
   /**
-   * Method sets the attribute "oldStyle".
+   * Method sets attribute {@link #oldStyle}.<br/>
    * 
-   * 
-   * @param pOldStyle Value to which the attribute "oldStyle" should be set.
+   * @param pOldStyle Value to which {@link #oldStyle} should be set.
    */
   @Deprecated
   public void setOldStyle( String pOldStyle ) {

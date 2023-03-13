@@ -36,7 +36,6 @@ final class RequiredService_1Impl extends RequiredService_1ImplBase {
   }
 
   /**
-   * 
    * @param pContextObject
    */
   @Override

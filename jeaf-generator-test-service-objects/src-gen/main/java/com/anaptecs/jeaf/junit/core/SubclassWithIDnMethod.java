@@ -5,10 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.core;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class SubclassWithIDnMethod extends SubclassWithIDnMethodBase {
   /**
    * Default serial version uid.
@@ -70,8 +66,7 @@ public class SubclassWithIDnMethod extends SubclassWithIDnMethodBase {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void doMore( ) {
     // TODO: Implement business logic for method.

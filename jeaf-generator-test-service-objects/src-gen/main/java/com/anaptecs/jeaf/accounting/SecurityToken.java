@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class SecurityToken implements ServiceObject {
   /**
    * Default serial version uid.
@@ -41,14 +37,8 @@ public class SecurityToken implements ServiceObject {
    */
   private final byte[] sessionKey;
 
-  /**
-   * 
-   */
   private Booking booking;
 
-  /**
-   * 
-   */
   private transient Integer value;
 
   /**
@@ -94,8 +84,7 @@ public class SecurityToken implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class SecurityToken. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>SecurityToken</code>.
    */
   public static class Builder {
     /**
@@ -103,14 +92,8 @@ public class SecurityToken implements ServiceObject {
      */
     private byte[] sessionKey;
 
-    /**
-     * 
-     */
     private Booking booking;
 
-    /**
-     * 
-     */
     private Integer value;
 
     /**
@@ -132,10 +115,10 @@ public class SecurityToken implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "sessionKey". The attribute contains the session key of the security token that was
-     * used when the booking was executed.
+     * Method sets attribute {@link #sessionKey}.<br/>
      * 
-     * @param pSessionKey Value to which the attribute "sessionKey" should be set.
+     * @param pSessionKey Value to which {@link #sessionKey} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSessionKey( byte[] pSessionKey ) {
       // Assign value to attribute
@@ -150,9 +133,10 @@ public class SecurityToken implements ServiceObject {
     }
 
     /**
-     * Method sets the association "booking".
+     * Method sets association {@link #booking}.<br/>
      * 
-     * @param pBooking Booking to which the association "booking" should be set.
+     * @param pBooking Value to which {@link #booking} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooking( Booking pBooking ) {
       booking = pBooking;
@@ -160,9 +144,10 @@ public class SecurityToken implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "value".
+     * Method sets attribute {@link #value}.<br/>
      * 
-     * @param pValue Value to which the attribute "value" should be set.
+     * @param pValue Value to which {@link #value} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setValue( Integer pValue ) {
       // Assign value to attribute
@@ -195,10 +180,10 @@ public class SecurityToken implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "sessionKey". The attribute contains the session key of the security token that was
-   * used when the booking was executed.
+   * Method returns attribute {@link #sessionKey}.<br/>
+   * The attribute contains the session key of the security token that was used when the booking was executed.
    * 
-   * @return byte Value to which the attribute "sessionKey" is set.
+   * @return byte Value to which {@link #sessionKey} is set.
    */
   public byte[] getSessionKey( ) {
     byte[] lReturnValue;
@@ -213,20 +198,18 @@ public class SecurityToken implements ServiceObject {
   }
 
   /**
-   * Method returns the association "booking".
+   * Method returns association {@link #booking}.<br/>
    * 
-   *
-   * @return Booking Booking to which the association "booking" is set.
+   * @return {@link Booking} Value to which {@link #booking} is set.
    */
   public Booking getBooking( ) {
     return booking;
   }
 
   /**
-   * Method sets the association "booking".
+   * Method sets association {@link #booking}.<br/>
    * 
-   * 
-   * @param pBooking Booking to which the association "booking" should be set.
+   * @param pBooking Value to which {@link #booking} should be set.
    */
   public void setBooking( Booking pBooking ) {
     // Release already referenced object before setting a new association.
@@ -242,8 +225,7 @@ public class SecurityToken implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "booking".
-   * 
+   * Method unsets {@link #booking}.
    */
   public final void unsetBooking( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -256,20 +238,18 @@ public class SecurityToken implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "value".
+   * Method returns attribute {@link #value}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "value" is set.
+   * @return {@link Integer} Value to which {@link #value} is set.
    */
   public Integer getValue( ) {
     return value;
   }
 
   /**
-   * Method sets the attribute "value".
+   * Method sets attribute {@link #value}.<br/>
    * 
-   * 
-   * @param pValue Value to which the attribute "value" should be set.
+   * @param pValue Value to which {@link #value} should be set.
    */
   public void setValue( Integer pValue ) {
     // Assign value to attribute

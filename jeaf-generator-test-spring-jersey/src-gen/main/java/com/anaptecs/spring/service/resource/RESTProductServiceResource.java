@@ -78,10 +78,6 @@ import com.anaptecs.spring.service.RESTProductService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Path("/rest-products")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)

@@ -7,10 +7,6 @@ package com.anaptecs.jeaf.junit.core;
 
 import com.anaptecs.jeaf.core.api.LoadStrategy;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Deprecated
 public final class DeprectedLoadStrategy implements LoadStrategy {
   /**
@@ -28,14 +24,8 @@ public final class DeprectedLoadStrategy implements LoadStrategy {
    */
   public static final DeprectedLoadStrategy LOAD_NONE = new DeprectedLoadStrategy(false, false);
 
-  /**
-   * 
-   */
   private final boolean loadObjects;
 
-  /**
-   * 
-   */
   private final boolean loadExternalData;
 
   /**
@@ -46,16 +36,10 @@ public final class DeprectedLoadStrategy implements LoadStrategy {
     loadExternalData = pLoadExternalData;
   }
 
-  /**
-   * 
-   */
   public boolean loadObjects( ) {
     return loadObjects;
   }
 
-  /**
-   * 
-   */
   public boolean loadExternalData( ) {
     return loadExternalData;
   }

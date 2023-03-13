@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Deprecated
 public class DeprecatedServiceObject implements ServiceObject {
   /**
@@ -27,9 +23,6 @@ public class DeprecatedServiceObject implements ServiceObject {
    */
   public static final String NAME = "name";
 
-  /**
-   * 
-   */
   private String name;
 
   /**
@@ -72,14 +65,10 @@ public class DeprecatedServiceObject implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class DeprecatedServiceObject. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>DeprecatedServiceObject</code>.
    */
   @Deprecated
   public static class Builder {
-    /**
-     * 
-     */
     private String name;
 
     /**
@@ -100,9 +89,10 @@ public class DeprecatedServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -135,20 +125,18 @@ public class DeprecatedServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute

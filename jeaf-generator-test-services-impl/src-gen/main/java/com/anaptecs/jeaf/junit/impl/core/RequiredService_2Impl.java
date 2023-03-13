@@ -35,8 +35,7 @@ final class RequiredService_2Impl extends RequiredService_2ImplBase {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void testContextHandling_2( ) {
   }

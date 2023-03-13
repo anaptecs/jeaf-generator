@@ -10,9 +10,7 @@ import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 import com.anaptecs.jeaf.xfun.api.config.Configuration;
 
 /**
- * Class represents the GeneratorTest component.
- *
- * 
+ * Class represents the configuration for component {@link com.anaptecs.jeaf.junit.impl.core.GeneratorTestComponent}.
  */
 public final class GeneratorTestComponentConfiguration {
   /**

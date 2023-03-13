@@ -8,10 +8,6 @@ package com.anaptecs.jeaf.junit.domainObjects;
 import com.anaptecs.jeaf.core.api.DomainObject;
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Deprecated
 public class Reiseweg extends DomainObject {
   /**

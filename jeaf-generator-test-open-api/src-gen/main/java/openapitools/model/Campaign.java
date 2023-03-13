@@ -91,13 +91,13 @@ public class Campaign {
   }
 
    /**
-   * Get moreLinks
+   *  Deprecated: No good any more(since: 1.2, removed with: 3.0) 
    * @return moreLinks
    * @deprecated
   **/
   @Deprecated
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = " Deprecated: No good any more(since: 1.2, removed with: 3.0) ")
   @JsonProperty(JSON_PROPERTY_MORE_LINKS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

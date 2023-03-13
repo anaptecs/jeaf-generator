@@ -2,14 +2,8 @@ package com.anaptecs.spring.base;
 
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * 
- */
 public final class DataUnit {
   public static enum DataUnitType {
-    /**
-     * 
-     */
     COUPON("CMP"),
     /**
      * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external
@@ -31,25 +25,18 @@ public final class DataUnit {
       dataUnitID = pDataUnitID;
     }
 
-    /**
-     * 
-     */
     private final String dataUnitID;
 
     /**
-     * Method returns the attribute "dataUnitID".
+     * Method returns attribute {@link #dataUnitID}.<br/>
      * 
-     * 
-     * @return String Value to which the attribute "dataUnitID" is set.
+     * @return {@link String} Value to which {@link #dataUnitID} is set.
      */
     public String getDataUnitID( ) {
       return dataUnitID;
     }
   }
 
-  /**
-   * 
-   */
   public static final DataUnit COUPON = new DataUnit(DataUnitType.COUPON);
 
   /**

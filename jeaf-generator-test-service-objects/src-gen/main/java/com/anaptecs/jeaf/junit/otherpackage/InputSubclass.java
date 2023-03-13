@@ -9,10 +9,6 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class InputSubclass extends Input {
   /**
    * Default serial version uid.
@@ -57,8 +53,7 @@ public class InputSubclass extends Input {
   }
 
   /**
-   * Class implements builder to create a new instance of class InputSubclass. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>InputSubclass</code>.
    */
   public static class Builder extends Input.Builder {
     /**

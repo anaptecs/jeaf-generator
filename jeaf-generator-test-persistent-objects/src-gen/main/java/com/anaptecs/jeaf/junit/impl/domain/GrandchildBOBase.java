@@ -5,10 +5,6 @@ import java.util.List;
 import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class GrandchildBOBase extends ChildBO {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -25,9 +21,6 @@ public abstract class GrandchildBOBase extends ChildBO {
    */
   public static final String GRANDCHILDNAME_ATTRIBUTE = "grandchildName";
 
-  /**
-   * 
-   */
   private String grandchildName;
 
   /**
@@ -47,20 +40,18 @@ public abstract class GrandchildBOBase extends ChildBO {
   }
 
   /**
-   * Method returns the attribute "grandchildName".
+   * Method returns attribute {@link #grandchildName}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "grandchildName" is set.
+   * @return {@link String} Value to which {@link #grandchildName} is set.
    */
   public String getGrandchildName( ) {
     return grandchildName;
   }
 
   /**
-   * Method sets the attribute "grandchildName".
+   * Method sets attribute {@link #grandchildName}.<br/>
    * 
-   * 
-   * @param pGrandchildName Value to which the attribute "grandchildName" should be set.
+   * @param pGrandchildName Value to which {@link #grandchildName} should be set.
    */
   public void setGrandchildName( String pGrandchildName ) {
     // Assign value to attribute

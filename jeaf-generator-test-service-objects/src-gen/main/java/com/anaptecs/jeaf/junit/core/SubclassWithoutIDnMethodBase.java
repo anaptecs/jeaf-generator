@@ -10,10 +10,6 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceObjectWithMethod {
   /**
    * Default serial version uid.
@@ -25,9 +21,6 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
    */
   public static final String ATTR = "attr";
 
-  /**
-   * 
-   */
   private Boolean attr;
 
   /**
@@ -54,9 +47,6 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase extends IdentifiableServiceObjectWithMethod.Builder {
-    /**
-     * 
-     */
     private Boolean attr;
 
     /**
@@ -89,9 +79,10 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
     }
 
     /**
-     * Method sets the attribute "hello".
+     * Method sets attribute {@link #hello}.<br/>
      * 
-     * @param pHello Value to which the attribute "hello" should be set.
+     * @param pHello Value to which {@link #hello} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public BuilderBase setHello( Integer pHello ) {
@@ -101,9 +92,10 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
     }
 
     /**
-     * Method sets the attribute "attr".
+     * Method sets attribute {@link #attr}.<br/>
      * 
-     * @param pAttr Value to which the attribute "attr" should be set.
+     * @param pAttr Value to which {@link #attr} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setAttr( Boolean pAttr ) {
       // Assign value to attribute
@@ -136,20 +128,18 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
   }
 
   /**
-   * Method returns the attribute "attr".
+   * Method returns attribute {@link #attr}.<br/>
    * 
-   * 
-   * @return Boolean Value to which the attribute "attr" is set.
+   * @return {@link Boolean} Value to which {@link #attr} is set.
    */
   public Boolean getAttr( ) {
     return attr;
   }
 
   /**
-   * Method sets the attribute "attr".
+   * Method sets attribute {@link #attr}.<br/>
    * 
-   * 
-   * @param pAttr Value to which the attribute "attr" should be set.
+   * @param pAttr Value to which {@link #attr} should be set.
    */
   public void setAttr( Boolean pAttr ) {
     // Assign value to attribute
@@ -157,8 +147,7 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
   }
 
   /**
-  * 
-  */
+   */
   public abstract void doLess( );
 
   /**

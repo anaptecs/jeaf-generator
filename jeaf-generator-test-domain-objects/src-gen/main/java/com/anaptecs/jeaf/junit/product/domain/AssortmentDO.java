@@ -15,10 +15,6 @@ import com.anaptecs.jeaf.core.api.DomainObject;
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class AssortmentDO extends DomainObject {
   /**
    * Default serial version uid.
@@ -35,14 +31,8 @@ public class AssortmentDO extends DomainObject {
    */
   public static final String NAME = "name";
 
-  /**
-   * 
-   */
   private Set<ProductDO> products;
 
-  /**
-   * 
-   */
   private String name;
 
   /**
@@ -63,11 +53,10 @@ public class AssortmentDO extends DomainObject {
   }
 
   /**
-   * Method returns the association "products".
+   * Method returns association {@link #products}.<br/>
    * 
-   *
-   * @return Collection All ProductDO objects that belong to the association "products". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<ProductDO>} Value to which {@link #products} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<ProductDO> getProducts( ) {
     // Return all ProductDO objects as unmodifiable collection.
@@ -75,10 +64,9 @@ public class AssortmentDO extends DomainObject {
   }
 
   /**
-   * Method adds the passed ProductDO object to the association "products".
+   * Method adds the passed object to {@link #products}.
    * 
-   * 
-   * @param pProducts Object that should be added to the association "products". The parameter must not be null.
+   * @param pProducts Object that should be added to {@link #products}. The parameter must not be null.
    */
   public void addToProducts( ProductDO pProducts ) {
     // Check parameter "pProducts" for invalid value null.
@@ -93,11 +81,10 @@ public class AssortmentDO extends DomainObject {
   }
 
   /**
-   * Method adds all passed objects to the association "products".
+   * Method adds all passed objects to {@link #products}.
    * 
-   * 
-   * @param pProducts Collection with all objects that should be added to the association "products". The parameter must
-   * not be null.
+   * @param pProducts Collection with all objects that should be added to {@link #products}. The parameter must not be
+   * null.
    */
   public void addToProducts( Collection<ProductDO> pProducts ) {
     // Check parameter "pProducts" for invalid value null.
@@ -109,10 +96,9 @@ public class AssortmentDO extends DomainObject {
   }
 
   /**
-   * Method removes the passed ProductDO object from the association "products".
+   * Method removes the passed object from {@link #products}.<br/>
    * 
-   * 
-   * @param pProducts Object that should be removed from the association "products". The parameter must not be null.
+   * @param pProducts Object that should be removed from {@link #products}. The parameter must not be null.
    */
   public void removeFromProducts( ProductDO pProducts ) {
     // Check parameter for invalid value null.
@@ -127,8 +113,7 @@ public class AssortmentDO extends DomainObject {
   }
 
   /**
-   * Method removes all objects from the association "products".
-   * 
+   * Method removes all objects from {@link #products}.
    */
   public void clearProducts( ) {
     // Remove all objects from association "products".
@@ -141,20 +126,18 @@ public class AssortmentDO extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute

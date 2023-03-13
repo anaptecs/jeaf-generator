@@ -16,10 +16,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 public class DiscountOffer implements ServiceObject {
   /**
@@ -28,7 +24,9 @@ public class DiscountOffer implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
-   * 
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #campaigns} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
    */
   @Deprecated
   private Set<SoftLink> campaigns;
@@ -79,12 +77,13 @@ public class DiscountOffer implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class DiscountOffer. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>DiscountOffer</code>.
    */
   public static class Builder {
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #campaigns} is
+     * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
      */
     @Deprecated
     private Set<SoftLink> campaigns;
@@ -106,9 +105,10 @@ public class DiscountOffer implements ServiceObject {
     }
 
     /**
-     * Method sets the association "campaigns".
+     * Method sets association {@link #campaigns}.<br/>
      * 
-     * @param pCampaigns Collection with objects to which the association should be set.
+     * @param pCampaigns Collection to which {@link #campaigns} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setCampaigns( Set<SoftLink> pCampaigns ) {
@@ -147,11 +147,13 @@ public class DiscountOffer implements ServiceObject {
   }
 
   /**
-   * Method returns the association "campaigns".
+   * Method returns association {@link #campaigns}.<br/>
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #campaigns} is
+   * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
    * 
-   *
-   * @return Collection All Campaign objects that belong to the association "campaigns". The method never returns null
-   * and the returned collection is modifiable.
+   * @return {@link Set<SoftLink>} Value to which {@link #campaigns} is set. The method never returns null and the
+   * returned collection is modifiable.
    */
   @Deprecated
   public Set<SoftLink> getCampaigns( ) {
@@ -160,10 +162,9 @@ public class DiscountOffer implements ServiceObject {
   }
 
   /**
-   * Method adds the passed Campaign object to the association "campaigns".
+   * Method adds the passed object to {@link #campaigns}.
    * 
-   * 
-   * @param pCampaigns Object that should be added to the association "campaigns". The parameter must not be null.
+   * @param pCampaigns Object that should be added to {@link #campaigns}. The parameter must not be null.
    */
   @Deprecated
   public void addToCampaigns( SoftLink pCampaigns ) {
@@ -174,11 +175,10 @@ public class DiscountOffer implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "campaigns".
+   * Method adds all passed objects to {@link #campaigns}.
    * 
-   * 
-   * @param pCampaigns Collection with all objects that should be added to the association "campaigns". The parameter
-   * must not be null.
+   * @param pCampaigns Collection with all objects that should be added to {@link #campaigns}. The parameter must not be
+   * null.
    */
   @Deprecated
   public void addToCampaigns( Collection<SoftLink> pCampaigns ) {
@@ -191,10 +191,9 @@ public class DiscountOffer implements ServiceObject {
   }
 
   /**
-   * Method removes the passed Campaign object from the association "campaigns".
+   * Method removes the passed object from {@link #campaigns}.
    * 
-   * 
-   * @param pCampaigns Object that should be removed from the association "campaigns". The parameter must not be null.
+   * @param pCampaigns Object that should be removed from {@link #campaigns}. The parameter must not be null.
    */
   @Deprecated
   public void removeFromCampaigns( SoftLink pCampaigns ) {
@@ -205,8 +204,7 @@ public class DiscountOffer implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "campaigns".
-   * 
+   * Method removes all objects from {@link #campaigns}.
    */
   @Deprecated
   public void clearCampaigns( ) {

@@ -18,10 +18,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Valid
 public class Booking implements ServiceObject {
   /**
@@ -65,29 +61,14 @@ public class Booking implements ServiceObject {
   @NotNull
   private Double amount;
 
-  /**
-   * 
-   */
   private Account source;
 
-  /**
-   * 
-   */
   private Account target;
 
-  /**
-   * 
-   */
   private SecurityToken token;
 
-  /**
-   * 
-   */
   private Set<Person> remitters;
 
-  /**
-   * 
-   */
   private transient Account account;
 
   /**
@@ -140,8 +121,7 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class Booking. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Booking</code>.
    */
   public static class Builder {
     /**
@@ -150,29 +130,14 @@ public class Booking implements ServiceObject {
     @NotNull
     private Double amount;
 
-    /**
-     * 
-     */
     private Account source;
 
-    /**
-     * 
-     */
     private Account target;
 
-    /**
-     * 
-     */
     private SecurityToken token;
 
-    /**
-     * 
-     */
     private Set<Person> remitters;
 
-    /**
-     * 
-     */
     private Account account;
 
     /**
@@ -197,9 +162,10 @@ public class Booking implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "amount". Amount of the booking. The attribute must not be null.
+     * Method sets attribute {@link #amount}.<br/>
      * 
-     * @param pAmount Value to which the attribute "amount" should be set.
+     * @param pAmount Value to which {@link #amount} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAmount( Double pAmount ) {
       // Assign value to attribute
@@ -208,9 +174,10 @@ public class Booking implements ServiceObject {
     }
 
     /**
-     * Method sets the association "source".
+     * Method sets association {@link #source}.<br/>
      * 
-     * @param pSource Account to which the association "source" should be set.
+     * @param pSource Value to which {@link #source} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSource( Account pSource ) {
       source = pSource;
@@ -218,9 +185,10 @@ public class Booking implements ServiceObject {
     }
 
     /**
-     * Method sets the association "target".
+     * Method sets association {@link #target}.<br/>
      * 
-     * @param pTarget Account to which the association "target" should be set.
+     * @param pTarget Value to which {@link #target} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTarget( Account pTarget ) {
       target = pTarget;
@@ -228,9 +196,10 @@ public class Booking implements ServiceObject {
     }
 
     /**
-     * Method sets the association "token".
+     * Method sets association {@link #token}.<br/>
      * 
-     * @param pToken SecurityToken to which the association "token" should be set.
+     * @param pToken Value to which {@link #token} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setToken( SecurityToken pToken ) {
       token = pToken;
@@ -238,9 +207,10 @@ public class Booking implements ServiceObject {
     }
 
     /**
-     * Method sets the association "remitters".
+     * Method sets association {@link #remitters}.<br/>
      * 
-     * @param pRemitters Collection with objects to which the association should be set.
+     * @param pRemitters Collection to which {@link #remitters} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setRemitters( Set<Person> pRemitters ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -254,9 +224,10 @@ public class Booking implements ServiceObject {
     }
 
     /**
-     * Method sets the association "account".
+     * Method sets association {@link #account}.<br/>
      * 
-     * @param pAccount Account to which the association "account" should be set.
+     * @param pAccount Value to which {@link #account} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAccount( Account pAccount ) {
       account = pAccount;
@@ -287,18 +258,20 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "amount". Amount of the booking. The attribute must not be null.
+   * Method returns attribute {@link #amount}.<br/>
+   * Amount of the booking. The attribute must not be null.
    * 
-   * @return Double Value to which the attribute "amount" is set.
+   * @return {@link Double} Value to which {@link #amount} is set.
    */
   public Double getAmount( ) {
     return amount;
   }
 
   /**
-   * Method sets the attribute "amount". Amount of the booking. The attribute must not be null.
+   * Method sets attribute {@link #amount}.<br/>
+   * Amount of the booking. The attribute must not be null.
    * 
-   * @param pAmount Value to which the attribute "amount" should be set.
+   * @param pAmount Value to which {@link #amount} should be set.
    */
   public void setAmount( Double pAmount ) {
     // Assign value to attribute
@@ -306,76 +279,68 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method returns the association "source".
+   * Method returns association {@link #source}.<br/>
    * 
-   *
-   * @return Account Account to which the association "source" is set.
+   * @return {@link Account} Value to which {@link #source} is set.
    */
   public Account getSource( ) {
     return source;
   }
 
   /**
-   * Method sets the association "source".
+   * Method sets association {@link #source}.<br/>
    * 
-   * 
-   * @param pSource Account to which the association "source" should be set.
+   * @param pSource Value to which {@link #source} should be set.
    */
   public void setSource( Account pSource ) {
     source = pSource;
   }
 
   /**
-   * Method unsets the association "source".
-   * 
+   * Method unsets {@link #source}.
    */
   public final void unsetSource( ) {
     source = null;
   }
 
   /**
-   * Method returns the association "target".
+   * Method returns association {@link #target}.<br/>
    * 
-   *
-   * @return Account Account to which the association "target" is set.
+   * @return {@link Account} Value to which {@link #target} is set.
    */
   public Account getTarget( ) {
     return target;
   }
 
   /**
-   * Method sets the association "target".
+   * Method sets association {@link #target}.<br/>
    * 
-   * 
-   * @param pTarget Account to which the association "target" should be set.
+   * @param pTarget Value to which {@link #target} should be set.
    */
   public void setTarget( Account pTarget ) {
     target = pTarget;
   }
 
   /**
-   * Method unsets the association "target".
-   * 
+   * Method unsets {@link #target}.
    */
   public final void unsetTarget( ) {
     target = null;
   }
 
   /**
-   * Method returns the association "token".
+   * Method returns association {@link #token}.<br/>
    * 
-   *
-   * @return SecurityToken SecurityToken to which the association "token" is set.
+   * @return {@link SecurityToken} Value to which {@link #token} is set.
    */
   public SecurityToken getToken( ) {
     return token;
   }
 
   /**
-   * Method sets the association "token".
+   * Method sets association {@link #token}.<br/>
    * 
-   * 
-   * @param pToken SecurityToken to which the association "token" should be set.
+   * @param pToken Value to which {@link #token} should be set.
    */
   public void setToken( SecurityToken pToken ) {
     // Release already referenced object before setting a new association.
@@ -391,8 +356,7 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "token".
-   * 
+   * Method unsets {@link #token}.
    */
   public final void unsetToken( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -405,11 +369,10 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method returns the association "remitters".
+   * Method returns association {@link #remitters}.<br/>
    * 
-   *
-   * @return Collection All Person objects that belong to the association "remitters". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<Person>} Value to which {@link #remitters} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Person> getRemitters( ) {
     // Return all Person objects as unmodifiable collection.
@@ -417,10 +380,9 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method adds the passed Person object to the association "remitters".
+   * Method adds the passed object to {@link #remitters}.
    * 
-   * 
-   * @param pRemitters Object that should be added to the association "remitters". The parameter must not be null.
+   * @param pRemitters Object that should be added to {@link #remitters}. The parameter must not be null.
    */
   public void addToRemitters( Person pRemitters ) {
     // Check parameter "pRemitters" for invalid value null.
@@ -430,11 +392,10 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "remitters".
+   * Method adds all passed objects to {@link #remitters}.
    * 
-   * 
-   * @param pRemitters Collection with all objects that should be added to the association "remitters". The parameter
-   * must not be null.
+   * @param pRemitters Collection with all objects that should be added to {@link #remitters}. The parameter must not be
+   * null.
    */
   public void addToRemitters( Collection<Person> pRemitters ) {
     // Check parameter "pRemitters" for invalid value null.
@@ -446,10 +407,9 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method removes the passed Person object from the association "remitters".
+   * Method removes the passed object from {@link #remitters}.<br/>
    * 
-   * 
-   * @param pRemitters Object that should be removed from the association "remitters". The parameter must not be null.
+   * @param pRemitters Object that should be removed from {@link #remitters}. The parameter must not be null.
    */
   public void removeFromRemitters( Person pRemitters ) {
     // Check parameter for invalid value null.
@@ -459,8 +419,7 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "remitters".
-   * 
+   * Method removes all objects from {@link #remitters}.
    */
   public void clearRemitters( ) {
     // Remove all objects from association "remitters".
@@ -468,20 +427,18 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method returns the association "account".
+   * Method returns association {@link #account}.<br/>
    * 
-   *
-   * @return Account Account to which the association "account" is set.
+   * @return {@link Account} Value to which {@link #account} is set.
    */
   public Account getAccount( ) {
     return account;
   }
 
   /**
-   * Method sets the association "account".
+   * Method sets association {@link #account}.<br/>
    * 
-   * 
-   * @param pAccount Account to which the association "account" should be set.
+   * @param pAccount Value to which {@link #account} should be set.
    */
   public void setAccount( Account pAccount ) {
     // Release already referenced object before setting a new association.
@@ -497,8 +454,7 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "account".
-   * 
+   * Method unsets {@link #account}.
    */
   public final void unsetAccount( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

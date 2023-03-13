@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class ClassB_BOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -41,14 +37,8 @@ public abstract class ClassB_BOBase extends PersistentObject {
    */
   public static final String CLASSAS_ROLE = "classAs";
 
-  /**
-   * 
-   */
   private Set<ClassA_BO> classAs;
 
-  /**
-   * 
-   */
   private Integer intValue;
 
   /**
@@ -69,11 +59,10 @@ public abstract class ClassB_BOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "classAs".
+   * Method returns association {@link #classAs}.<br/>
    * 
-   *
-   * @return Collection All ClassA_BO objects that belong to the association "classAs". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<ClassA_BO>} Value to which {@link #classAs} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<ClassA_BO> getClassAs( ) {
     // Return all ClassA_BO objects as unmodifiable collection.
@@ -81,10 +70,9 @@ public abstract class ClassB_BOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed ClassA_BO object to the association "classAs".
+   * Method adds the passed object to {@link #classAs}.
    * 
-   * 
-   * @param pClassAs Object that should be added to the association "classAs". The parameter must not be null.
+   * @param pClassAs Object that should be added to {@link #classAs}. The parameter must not be null.
    */
   public void addToClassAs( ClassA_BO pClassAs ) {
     // Check parameter "pClassAs" for invalid value null.
@@ -102,11 +90,10 @@ public abstract class ClassB_BOBase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "classAs".
+   * Method adds all passed objects to {@link #classAs}.
    * 
-   * 
-   * @param pClassAs Collection with all objects that should be added to the association "classAs". The parameter must
-   * not be null.
+   * @param pClassAs Collection with all objects that should be added to {@link #classAs}. The parameter must not be
+   * null.
    */
   public void addToClassAs( Collection<ClassA_BO> pClassAs ) {
     // Check parameter "pClassAs" for invalid value null.
@@ -118,10 +105,9 @@ public abstract class ClassB_BOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed ClassA_BO object from the association "classAs".
+   * Method removes the passed object from {@link #classAs}.<br/>
    * 
-   * 
-   * @param pClassAs Object that should be removed from the association "classAs". The parameter must not be null.
+   * @param pClassAs Object that should be removed from {@link #classAs}. The parameter must not be null.
    */
   public void removeFromClassAs( ClassA_BO pClassAs ) {
     // Check parameter for invalid value null.
@@ -136,8 +122,7 @@ public abstract class ClassB_BOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "classAs".
-   * 
+   * Method removes all objects from {@link #classAs}.
    */
   public void clearClassAs( ) {
     // Remove all objects from association "classAs".
@@ -150,20 +135,18 @@ public abstract class ClassB_BOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "intValue".
+   * Method returns attribute {@link #intValue}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "intValue" is set.
+   * @return {@link Integer} Value to which {@link #intValue} is set.
    */
   public Integer getIntValue( ) {
     return intValue;
   }
 
   /**
-   * Method sets the attribute "intValue".
+   * Method sets attribute {@link #intValue}.<br/>
    * 
-   * 
-   * @param pIntValue Value to which the attribute "intValue" should be set.
+   * @param pIntValue Value to which {@link #intValue} should be set.
    */
   public void setIntValue( Integer pIntValue ) {
     // Assign value to attribute

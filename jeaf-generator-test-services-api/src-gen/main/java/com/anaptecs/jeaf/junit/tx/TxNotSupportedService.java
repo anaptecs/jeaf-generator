@@ -7,13 +7,8 @@ package com.anaptecs.jeaf.junit.tx;
 
 import com.anaptecs.jeaf.core.api.Service;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public interface TxNotSupportedService extends Service {
   /**
-  * 
-  */
+   */
   void testTransactionBehavior( );
 }

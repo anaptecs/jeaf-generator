@@ -10,10 +10,6 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Individual extends Customer {
   /**
    * Default serial version uid.
@@ -25,9 +21,6 @@ public class Individual extends Customer {
    */
   public static final String PERSON = "person";
 
-  /**
-   * 
-   */
   private Person person;
 
   /**
@@ -70,13 +63,9 @@ public class Individual extends Customer {
   }
 
   /**
-   * Class implements builder to create a new instance of class Individual. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Individual</code>.
    */
   public static class Builder extends Customer.Builder {
-    /**
-     * 
-     */
     private Person person;
 
     /**
@@ -108,9 +97,10 @@ public class Individual extends Customer {
     }
 
     /**
-     * Method sets the attribute "active".
+     * Method sets attribute {@link #active}.<br/>
      * 
-     * @param pActive Value to which the attribute "active" should be set.
+     * @param pActive Value to which {@link #active} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setActive( Boolean pActive ) {
@@ -120,9 +110,10 @@ public class Individual extends Customer {
     }
 
     /**
-     * Method sets the attribute "street".
+     * Method sets attribute {@link #street}.<br/>
      * 
-     * @param pStreet Value to which the attribute "street" should be set.
+     * @param pStreet Value to which {@link #street} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setStreet( String pStreet ) {
@@ -132,9 +123,10 @@ public class Individual extends Customer {
     }
 
     /**
-     * Method sets the attribute "zipCode".
+     * Method sets attribute {@link #zipCode}.<br/>
      * 
-     * @param pZipCode Value to which the attribute "zipCode" should be set.
+     * @param pZipCode Value to which {@link #zipCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setZipCode( Integer pZipCode ) {
@@ -144,9 +136,10 @@ public class Individual extends Customer {
     }
 
     /**
-     * Method sets the attribute "city".
+     * Method sets attribute {@link #city}.<br/>
      * 
-     * @param pCity Value to which the attribute "city" should be set.
+     * @param pCity Value to which {@link #city} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setCity( String pCity ) {
@@ -156,9 +149,10 @@ public class Individual extends Customer {
     }
 
     /**
-     * Method sets the attribute "country".
+     * Method sets attribute {@link #country}.<br/>
      * 
-     * @param pCountry Value to which the attribute "country" should be set.
+     * @param pCountry Value to which {@link #country} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setCountry( String pCountry ) {
@@ -168,9 +162,10 @@ public class Individual extends Customer {
     }
 
     /**
-     * Method sets the association "person".
+     * Method sets association {@link #person}.<br/>
      * 
-     * @param pPerson Person to which the association "person" should be set.
+     * @param pPerson Value to which {@link #person} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPerson( Person pPerson ) {
       person = pPerson;
@@ -201,20 +196,18 @@ public class Individual extends Customer {
   }
 
   /**
-   * Method returns the association "person".
+   * Method returns association {@link #person}.<br/>
    * 
-   *
-   * @return Person Person to which the association "person" is set.
+   * @return {@link Person} Value to which {@link #person} is set.
    */
   public Person getPerson( ) {
     return person;
   }
 
   /**
-   * Method sets the association "person".
+   * Method sets association {@link #person}.<br/>
    * 
-   * 
-   * @param pPerson Person to which the association "person" should be set.
+   * @param pPerson Value to which {@link #person} should be set.
    */
   public void setPerson( Person pPerson ) {
     // Release already referenced object before setting a new association.
@@ -230,8 +223,7 @@ public class Individual extends Customer {
   }
 
   /**
-   * Method unsets the association "person".
-   * 
+   * Method unsets {@link #person}.
    */
   public final void unsetPerson( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

@@ -14,9 +14,10 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
- * Type represents a duration.
- * 
- * NOVA 14 Mapping * nova-base.xsd.Dauer
+ * Type represents a duration.<br/>
+ * <br/>
+ * NOVA 14 Mapping<br/>
+ * * nova-base.xsd.Dauer
  * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
@@ -38,9 +39,6 @@ public class Duration implements Serializable {
    */
   public static final String TIMEUNIT = "timeUnit";
 
-  /**
-   * 
-   */
   private int value;
 
   /**
@@ -100,17 +98,14 @@ public class Duration implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class Duration. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Duration</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private int value;
 
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>DAY</code>
      */
     private TimeUnit timeUnit = TimeUnit.DAY;
 
@@ -132,9 +127,10 @@ public class Duration implements Serializable {
     }
 
     /**
-     * Method sets the attribute "value".
+     * Method sets attribute {@link #value}.<br/>
      * 
-     * @param pValue Value to which the attribute "value" should be set.
+     * @param pValue Value to which {@link #value} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setValue( int pValue ) {
       // Assign value to attribute
@@ -143,9 +139,10 @@ public class Duration implements Serializable {
     }
 
     /**
-     * Method sets the attribute "timeUnit".
+     * Method sets attribute {@link #timeUnit}.<br/>
      * 
-     * @param pTimeUnit Value to which the attribute "timeUnit" should be set.
+     * @param pTimeUnit Value to which {@link #timeUnit} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTimeUnit( TimeUnit pTimeUnit ) {
       // Assign value to attribute
@@ -177,20 +174,18 @@ public class Duration implements Serializable {
   }
 
   /**
-   * Method returns the attribute "value".
+   * Method returns attribute {@link #value}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "value" is set.
+   * @return int Value to which {@link #value} is set.
    */
   public int getValue( ) {
     return value;
   }
 
   /**
-   * Method sets the attribute "value".
+   * Method sets attribute {@link #value}.<br/>
    * 
-   * 
-   * @param pValue Value to which the attribute "value" should be set.
+   * @param pValue Value to which {@link #value} should be set.
    */
   public void setValue( int pValue ) {
     // Assign value to attribute
@@ -198,20 +193,18 @@ public class Duration implements Serializable {
   }
 
   /**
-   * Method returns the attribute "timeUnit".
+   * Method returns attribute {@link #timeUnit}.<br/>
    * 
-   * 
-   * @return TimeUnit Value to which the attribute "timeUnit" is set.
+   * @return {@link TimeUnit} Value to which {@link #timeUnit} is set.
    */
   public TimeUnit getTimeUnit( ) {
     return timeUnit;
   }
 
   /**
-   * Method sets the attribute "timeUnit".
+   * Method sets attribute {@link #timeUnit}.<br/>
    * 
-   * 
-   * @param pTimeUnit Value to which the attribute "timeUnit" should be set.
+   * @param pTimeUnit Value to which {@link #timeUnit} should be set.
    */
   public void setTimeUnit( TimeUnit pTimeUnit ) {
     // Assign value to attribute

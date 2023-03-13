@@ -28,9 +28,8 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * Class represents the GeneratorTest component.
+ * Class represents the component GeneratorTest
  *
- * 
  */
 public final class GeneratorTestComponent implements ComponentImplementation {
   /**

@@ -19,10 +19,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -46,17 +42,23 @@ public class SoftLinkParent {
   public static final String READONLYPARTNER = "readonlyPartner";
 
   /**
-   * 
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #partners} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
   private Set<SoftLinkID> partners;
 
   /**
-   * 
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #thePartner} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
   private SoftLinkID thePartner;
 
   /**
-   * 
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #readonlyPartner} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
   private final SoftLinkID readonlyPartner;
 
@@ -109,22 +111,27 @@ public class SoftLinkParent {
   }
 
   /**
-   * Class implements builder to create a new instance of class SoftLinkParent. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>SoftLinkParent</code>.
    */
   public static class Builder {
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #partners} is
+     * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
      */
     private Set<SoftLinkID> partners;
 
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #thePartner} is
+     * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
      */
     private SoftLinkID thePartner;
 
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #readonlyPartner}
+     * is <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
      */
     private SoftLinkID readonlyPartner;
 
@@ -147,9 +154,10 @@ public class SoftLinkParent {
     }
 
     /**
-     * Method sets the association "partners".
+     * Method sets association {@link #partners}.<br/>
      * 
-     * @param pPartners Collection with objects to which the association should be set.
+     * @param pPartners Collection to which {@link #partners} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPartners( Set<SoftLinkID> pPartners ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -163,9 +171,10 @@ public class SoftLinkParent {
     }
 
     /**
-     * Method sets the association "thePartner".
+     * Method sets association {@link #thePartner}.<br/>
      * 
-     * @param pThePartner SoftLinkPartner to which the association "thePartner" should be set.
+     * @param pThePartner Value to which {@link #thePartner} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setThePartner( SoftLinkID pThePartner ) {
       thePartner = pThePartner;
@@ -173,9 +182,10 @@ public class SoftLinkParent {
     }
 
     /**
-     * Method sets the association "readonlyPartner".
+     * Method sets association {@link #readonlyPartner}.<br/>
      * 
-     * @param pReadonlyPartner SoftLinkPartner to which the association "readonlyPartner" should be set.
+     * @param pReadonlyPartner Value to which {@link #readonlyPartner} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setReadonlyPartner( SoftLinkID pReadonlyPartner ) {
       readonlyPartner = pReadonlyPartner;
@@ -207,11 +217,13 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method returns the association "partners".
+   * Method returns association {@link #partners}.<br/>
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #partners} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    * 
-   *
-   * @return Collection All SoftLinkPartner objects that belong to the association "partners". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link Set<SoftLinkID>} Value to which {@link #partners} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<SoftLinkID> getPartners( ) {
     // Return all SoftLinkPartner objects as unmodifiable collection.
@@ -219,10 +231,9 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method adds the passed SoftLinkPartner object to the association "partners".
+   * Method adds the passed object to {@link #partners}.
    * 
-   * 
-   * @param pPartners Object that should be added to the association "partners". The parameter must not be null.
+   * @param pPartners Object that should be added to {@link #partners}. The parameter must not be null.
    */
   public void addToPartners( SoftLinkID pPartners ) {
     // Check parameter "pPartners" for invalid value null.
@@ -232,11 +243,10 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method adds all passed objects to the association "partners".
+   * Method adds all passed objects to {@link #partners}.
    * 
-   * 
-   * @param pPartners Collection with all objects that should be added to the association "partners". The parameter must
-   * not be null.
+   * @param pPartners Collection with all objects that should be added to {@link #partners}. The parameter must not be
+   * null.
    */
   public void addToPartners( Collection<SoftLinkID> pPartners ) {
     // Check parameter "pPartners" for invalid value null.
@@ -248,10 +258,9 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method removes the passed SoftLinkPartner object from the association "partners".
+   * Method removes the passed object from {@link #partners}.
    * 
-   * 
-   * @param pPartners Object that should be removed from the association "partners". The parameter must not be null.
+   * @param pPartners Object that should be removed from {@link #partners}. The parameter must not be null.
    */
   public void removeFromPartners( SoftLinkID pPartners ) {
     // Check parameter for invalid value null.
@@ -261,8 +270,7 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method removes all objects from the association "partners".
-   * 
+   * Method removes all objects from {@link #partners}.
    */
   public void clearPartners( ) {
     // Remove all objects from association "partners".
@@ -270,38 +278,40 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method returns the association "thePartner".
+   * Method returns association {@link #thePartner}.<br/>
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #thePartner} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    * 
-   *
-   * @return SoftLinkPartner SoftLinkPartner to which the association "thePartner" is set.
+   * @return {@link SoftLinkID} Value to which {@link #thePartner} is set.
    */
   public SoftLinkID getThePartner( ) {
     return thePartner;
   }
 
   /**
-   * Method sets the association "thePartner".
+   * Method sets association {@link #thePartner}.<br/>
    * 
-   * 
-   * @param pThePartner SoftLinkPartner to which the association "thePartner" should be set.
+   * @param pThePartner Value to which {@link #thePartner} should be set.
    */
   public void setThePartner( SoftLinkID pThePartner ) {
     thePartner = pThePartner;
   }
 
   /**
-   * Method unsets the association "thePartner".
-   * 
+   * Method unsets {@link #thePartner}.
    */
   public final void unsetThePartner( ) {
     thePartner = null;
   }
 
   /**
-   * Method returns the association "readonlyPartner".
+   * Method returns association {@link #readonlyPartner}.<br/>
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #readonlyPartner} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    * 
-   *
-   * @return SoftLinkPartner SoftLinkPartner to which the association "readonlyPartner" is set.
+   * @return {@link SoftLinkID} Value to which {@link #readonlyPartner} is set.
    */
   public SoftLinkID getReadonlyPartner( ) {
     return readonlyPartner;

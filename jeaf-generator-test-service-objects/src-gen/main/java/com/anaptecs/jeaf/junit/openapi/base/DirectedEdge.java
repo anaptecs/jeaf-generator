@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class DirectedEdge implements ServiceObject {
   /**
    * Default serial version uid.
@@ -46,9 +42,6 @@ public class DirectedEdge implements ServiceObject {
    */
   private Stop end;
 
-  /**
-   * 
-   */
   private String link;
 
   /**
@@ -93,8 +86,7 @@ public class DirectedEdge implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class DirectedEdge. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>DirectedEdge</code>.
    */
   public static class Builder {
     /**
@@ -107,9 +99,6 @@ public class DirectedEdge implements ServiceObject {
      */
     private Stop end;
 
-    /**
-     * 
-     */
     private String link;
 
     /**
@@ -131,9 +120,10 @@ public class DirectedEdge implements ServiceObject {
     }
 
     /**
-     * Method sets the association "start". The start
+     * Method sets association {@link #start}.<br/>
      * 
-     * @param pStart Stop to which the association "start" should be set.
+     * @param pStart Value to which {@link #start} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStart( Stop pStart ) {
       start = pStart;
@@ -141,9 +131,10 @@ public class DirectedEdge implements ServiceObject {
     }
 
     /**
-     * Method sets the association "end". The end
+     * Method sets association {@link #end}.<br/>
      * 
-     * @param pEnd Stop to which the association "end" should be set.
+     * @param pEnd Value to which {@link #end} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setEnd( Stop pEnd ) {
       end = pEnd;
@@ -151,9 +142,10 @@ public class DirectedEdge implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "link".
+     * Method sets attribute {@link #link}.<br/>
      * 
-     * @param pLink Value to which the attribute "link" should be set.
+     * @param pLink Value to which {@link #link} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLink( String pLink ) {
       // Assign value to attribute
@@ -186,70 +178,72 @@ public class DirectedEdge implements ServiceObject {
   }
 
   /**
-   * Method returns the association "start". The start
-   *
-   * @return Stop Stop to which the association "start" is set.
+   * Method returns association {@link #start}.<br/>
+   * The start
+   * 
+   * @return {@link Stop} Value to which {@link #start} is set.
    */
   public Stop getStart( ) {
     return start;
   }
 
   /**
-   * Method sets the association "start". The start
+   * Method sets association {@link #start}.<br/>
+   * The start
    * 
-   * @param pStart Stop to which the association "start" should be set.
+   * @param pStart Value to which {@link #start} should be set.
    */
   public void setStart( Stop pStart ) {
     start = pStart;
   }
 
   /**
-   * Method unsets the association "start". The start
+   * Method unsets {@link #start}.
    */
   public final void unsetStart( ) {
     start = null;
   }
 
   /**
-   * Method returns the association "end". The end
-   *
-   * @return Stop Stop to which the association "end" is set.
+   * Method returns association {@link #end}.<br/>
+   * The end
+   * 
+   * @return {@link Stop} Value to which {@link #end} is set.
    */
   public Stop getEnd( ) {
     return end;
   }
 
   /**
-   * Method sets the association "end". The end
+   * Method sets association {@link #end}.<br/>
+   * The end
    * 
-   * @param pEnd Stop to which the association "end" should be set.
+   * @param pEnd Value to which {@link #end} should be set.
    */
   public void setEnd( Stop pEnd ) {
     end = pEnd;
   }
 
   /**
-   * Method unsets the association "end". The end
+   * Method unsets {@link #end}.
    */
   public final void unsetEnd( ) {
     end = null;
   }
 
   /**
-   * Method returns the attribute "link".
+   * Method returns attribute {@link #link}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "link" is set.
+   * @return {@link String} Value to which {@link #link} is set.
    */
   public String getLink( ) {
     return link;
   }
 
   /**
-   * Method sets the attribute "link".
+   * Method sets attribute {@link #link}.<br/>
    * 
-   * 
-   * @param pLink Value to which the attribute "link" should be set.
+   * @param pLink Value to which {@link #link} should be set.
    */
   public void setLink( String pLink ) {
     // Assign value to attribute

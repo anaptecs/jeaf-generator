@@ -14,10 +14,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LongCode implements Serializable {
   /**
@@ -30,9 +26,6 @@ public class LongCode implements Serializable {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private Long code;
 
   /**
@@ -83,13 +76,9 @@ public class LongCode implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class LongCode. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>LongCode</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private Long code;
 
     /**
@@ -109,9 +98,10 @@ public class LongCode implements Serializable {
     }
 
     /**
-     * Method sets the attribute "code".
+     * Method sets attribute {@link #code}.<br/>
      * 
-     * @param pCode Value to which the attribute "code" should be set.
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCode( Long pCode ) {
       // Assign value to attribute
@@ -143,20 +133,18 @@ public class LongCode implements Serializable {
   }
 
   /**
-   * Method returns the attribute "code".
+   * Method returns attribute {@link #code}.<br/>
    * 
-   * 
-   * @return Long Value to which the attribute "code" is set.
+   * @return {@link Long} Value to which {@link #code} is set.
    */
   public Long getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( Long pCode ) {
     // Assign value to attribute

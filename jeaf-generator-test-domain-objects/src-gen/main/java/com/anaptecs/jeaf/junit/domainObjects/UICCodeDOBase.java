@@ -9,10 +9,6 @@ import com.anaptecs.jeaf.core.api.DomainObject;
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class UICCodeDOBase extends DomainObject implements Identifiable<DomainObjectID> {
   /**
    * Default serial version uid.
@@ -29,9 +25,6 @@ public abstract class UICCodeDOBase extends DomainObject implements Identifiable
    */
   private final DomainObjectID objectID;
 
-  /**
-   * 
-   */
   private Integer code;
 
   /**
@@ -81,20 +74,18 @@ public abstract class UICCodeDOBase extends DomainObject implements Identifiable
   }
 
   /**
-   * Method returns the attribute "code".
+   * Method returns attribute {@link #code}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "code" is set.
+   * @return {@link Integer} Value to which {@link #code} is set.
    */
   public Integer getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( Integer pCode ) {
     // Assign value to attribute
@@ -102,7 +93,6 @@ public abstract class UICCodeDOBase extends DomainObject implements Identifiable
   }
 
   /**
-   * 
    * @return {@link String}
    */
   public abstract String getCountry( );

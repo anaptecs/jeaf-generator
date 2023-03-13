@@ -5,10 +5,6 @@ import java.util.List;
 import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class CManyBOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -35,14 +31,8 @@ public abstract class CManyBOBase extends PersistentObject {
    */
   public static final String AONE_ROLE = "aOne";
 
-  /**
-   * 
-   */
   private Integer cNumber;
 
-  /**
-   * 
-   */
   private AOneBO aOne;
 
   /**
@@ -62,20 +52,18 @@ public abstract class CManyBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "cNumber".
+   * Method returns attribute {@link #cNumber}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "cNumber" is set.
+   * @return {@link Integer} Value to which {@link #cNumber} is set.
    */
   public Integer getCNumber( ) {
     return cNumber;
   }
 
   /**
-   * Method sets the attribute "cNumber".
+   * Method sets attribute {@link #cNumber}.<br/>
    * 
-   * 
-   * @param pCNumber Value to which the attribute "cNumber" should be set.
+   * @param pCNumber Value to which {@link #cNumber} should be set.
    */
   public void setCNumber( Integer pCNumber ) {
     // Assign value to attribute
@@ -83,10 +71,9 @@ public abstract class CManyBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "aOne".
+   * Method returns association {@link #aOne}.<br/>
    * 
-   *
-   * @return AOneBO AOneBO to which the association "aOne" is set.
+   * @return {@link AOneBO} Value to which {@link #aOne} is set.
    */
   public AOneBO getAOne( ) {
     aOne = this.unproxy(aOne);
@@ -94,10 +81,9 @@ public abstract class CManyBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "aOne".
+   * Method sets association {@link #aOne}.<br/>
    * 
-   * 
-   * @param pAOne AOneBO to which the association "aOne" should be set.
+   * @param pAOne Value to which {@link #aOne} should be set.
    */
   public void setAOne( AOneBO pAOne ) {
     // Release already referenced object before setting a new association.
@@ -113,8 +99,7 @@ public abstract class CManyBOBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "aOne".
-   * 
+   * Method unsets {@link #aOne}.
    */
   public final void unsetAOne( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

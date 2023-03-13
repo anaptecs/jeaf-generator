@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class NReleationBOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -41,14 +37,8 @@ public abstract class NReleationBOBase extends PersistentObject {
    */
   public static final String MS_ROLE = "ms";
 
-  /**
-   * 
-   */
   private Set<MReleationBO> ms;
 
-  /**
-   * 
-   */
   private String myString;
 
   /**
@@ -69,11 +59,10 @@ public abstract class NReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "ms".
+   * Method returns association {@link #ms}.<br/>
    * 
-   *
-   * @return Collection All MReleationBO objects that belong to the association "ms". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<MReleationBO>} Value to which {@link #ms} is set. The method never returns null and the returned
+   * collection is unmodifiable.
    */
   public Set<MReleationBO> getMs( ) {
     // Return all MReleationBO objects as unmodifiable collection.
@@ -81,10 +70,9 @@ public abstract class NReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed MReleationBO object to the association "ms".
+   * Method adds the passed object to {@link #ms}.
    * 
-   * 
-   * @param pMs Object that should be added to the association "ms". The parameter must not be null.
+   * @param pMs Object that should be added to {@link #ms}. The parameter must not be null.
    */
   public void addToMs( MReleationBO pMs ) {
     // Check parameter "pMs" for invalid value null.
@@ -99,11 +87,9 @@ public abstract class NReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "ms".
+   * Method adds all passed objects to {@link #ms}.
    * 
-   * 
-   * @param pMs Collection with all objects that should be added to the association "ms". The parameter must not be
-   * null.
+   * @param pMs Collection with all objects that should be added to {@link #ms}. The parameter must not be null.
    */
   public void addToMs( Collection<MReleationBO> pMs ) {
     // Check parameter "pMs" for invalid value null.
@@ -115,10 +101,9 @@ public abstract class NReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed MReleationBO object from the association "ms".
+   * Method removes the passed object from {@link #ms}.<br/>
    * 
-   * 
-   * @param pMs Object that should be removed from the association "ms". The parameter must not be null.
+   * @param pMs Object that should be removed from {@link #ms}. The parameter must not be null.
    */
   public void removeFromMs( MReleationBO pMs ) {
     // Check parameter for invalid value null.
@@ -133,8 +118,7 @@ public abstract class NReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "ms".
-   * 
+   * Method removes all objects from {@link #ms}.
    */
   public void clearMs( ) {
     // Remove all objects from association "ms".
@@ -147,20 +131,18 @@ public abstract class NReleationBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "myString".
+   * Method returns attribute {@link #myString}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "myString" is set.
+   * @return {@link String} Value to which {@link #myString} is set.
    */
   public String getMyString( ) {
     return myString;
   }
 
   /**
-   * Method sets the attribute "myString".
+   * Method sets attribute {@link #myString}.<br/>
    * 
-   * 
-   * @param pMyString Value to which the attribute "myString" should be set.
+   * @param pMyString Value to which {@link #myString} should be set.
    */
   public void setMyString( String pMyString ) {
     // Assign value to attribute

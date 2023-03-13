@@ -12,10 +12,6 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class POI extends Stop {
   /**
@@ -28,9 +24,6 @@ public class POI extends Stop {
    */
   public static final String DESCRIPTION = "description";
 
-  /**
-   * 
-   */
   private String description;
 
   /**
@@ -82,13 +75,9 @@ public class POI extends Stop {
   }
 
   /**
-   * Class implements builder to create a new instance of class POI. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>POI</code>.
    */
   public static class Builder extends Stop.Builder {
-    /**
-     * 
-     */
     private String description;
 
     /**
@@ -110,9 +99,10 @@ public class POI extends Stop {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setName( String pName ) {
@@ -122,9 +112,10 @@ public class POI extends Stop {
     }
 
     /**
-     * Method sets the association "links".
+     * Method sets association {@link #links}.<br/>
      * 
-     * @param pLinks Collection with objects to which the association should be set.
+     * @param pLinks Collection to which {@link #links} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setLinks( List<LinkObject> pLinks ) {
@@ -134,9 +125,10 @@ public class POI extends Stop {
     }
 
     /**
-     * Method sets the attribute "description".
+     * Method sets attribute {@link #description}.<br/>
      * 
-     * @param pDescription Value to which the attribute "description" should be set.
+     * @param pDescription Value to which {@link #description} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDescription( String pDescription ) {
       // Assign value to attribute
@@ -168,20 +160,18 @@ public class POI extends Stop {
   }
 
   /**
-   * Method returns the attribute "description".
+   * Method returns attribute {@link #description}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "description" is set.
+   * @return {@link String} Value to which {@link #description} is set.
    */
   public String getDescription( ) {
     return description;
   }
 
   /**
-   * Method sets the attribute "description".
+   * Method sets attribute {@link #description}.<br/>
    * 
-   * 
-   * @param pDescription Value to which the attribute "description" should be set.
+   * @param pDescription Value to which {@link #description} should be set.
    */
   public void setDescription( String pDescription ) {
     // Assign value to attribute

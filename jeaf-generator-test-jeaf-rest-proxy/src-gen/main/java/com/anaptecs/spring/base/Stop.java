@@ -20,10 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = POI.class, name = "POI"),
@@ -44,14 +40,8 @@ public class Stop implements Serializable {
    */
   public static final String LINKS = "links";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   @JsonProperty("_links")
   private List<LinkObject> links;
 
@@ -110,18 +100,11 @@ public class Stop implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class Stop. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Stop</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String name;
 
-    /**
-     * 
-     */
     private List<LinkObject> links;
 
     /**
@@ -142,9 +125,10 @@ public class Stop implements Serializable {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -153,9 +137,10 @@ public class Stop implements Serializable {
     }
 
     /**
-     * Method sets the association "links".
+     * Method sets association {@link #links}.<br/>
      * 
-     * @param pLinks Collection with objects to which the association should be set.
+     * @param pLinks Collection to which {@link #links} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLinks( List<LinkObject> pLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -192,20 +177,18 @@ public class Stop implements Serializable {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -213,11 +196,10 @@ public class Stop implements Serializable {
   }
 
   /**
-   * Method returns the association "links".
+   * Method returns association {@link #links}.<br/>
    * 
-   *
-   * @return Collection All LinkObject objects that belong to the association "links". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link List<LinkObject>} Value to which {@link #links} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public List<LinkObject> getLinks( ) {
     // Return all LinkObject objects as unmodifiable collection.
@@ -225,10 +207,9 @@ public class Stop implements Serializable {
   }
 
   /**
-   * Method adds the passed LinkObject object to the association "links".
+   * Method adds the passed object to {@link #links}.
    * 
-   * 
-   * @param pLinks Object that should be added to the association "links". The parameter must not be null.
+   * @param pLinks Object that should be added to {@link #links}. The parameter must not be null.
    */
   public void addToLinks( LinkObject pLinks ) {
     // Check parameter "pLinks" for invalid value null.
@@ -238,11 +219,9 @@ public class Stop implements Serializable {
   }
 
   /**
-   * Method adds all passed objects to the association "links".
+   * Method adds all passed objects to {@link #links}.
    * 
-   * 
-   * @param pLinks Collection with all objects that should be added to the association "links". The parameter must not
-   * be null.
+   * @param pLinks Collection with all objects that should be added to {@link #links}. The parameter must not be null.
    */
   public void addToLinks( Collection<LinkObject> pLinks ) {
     // Check parameter "pLinks" for invalid value null.
@@ -254,10 +233,9 @@ public class Stop implements Serializable {
   }
 
   /**
-   * Method removes the passed LinkObject object from the association "links".
+   * Method removes the passed object from {@link #links}.<br/>
    * 
-   * 
-   * @param pLinks Object that should be removed from the association "links". The parameter must not be null.
+   * @param pLinks Object that should be removed from {@link #links}. The parameter must not be null.
    */
   public void removeFromLinks( LinkObject pLinks ) {
     // Check parameter for invalid value null.
@@ -267,8 +245,7 @@ public class Stop implements Serializable {
   }
 
   /**
-   * Method removes all objects from the association "links".
-   * 
+   * Method removes all objects from {@link #links}.
    */
   public void clearLinks( ) {
     // Remove all objects from association "links".

@@ -66,10 +66,6 @@ import com.anaptecs.spring.service.RESTProductService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @RequestMapping(path = "/nova/prefix/rest-products")
 @RestController
 public class RESTProductServiceResource {

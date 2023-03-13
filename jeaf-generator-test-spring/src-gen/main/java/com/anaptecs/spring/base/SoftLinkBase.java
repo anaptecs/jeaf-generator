@@ -7,10 +7,6 @@ package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class SoftLinkBase {
   /**
@@ -33,24 +29,12 @@ public abstract class SoftLinkBase {
    */
   public static final String REFRENCEID = "refrenceID";
 
-  /**
-   * 
-   */
   private final long objectID;
 
-  /**
-   * 
-   */
   private DataUnit dataUnit;
 
-  /**
-   * 
-   */
   private Entity entity;
 
-  /**
-   * 
-   */
   private final String refrenceID;
 
   /**
@@ -80,24 +64,12 @@ public abstract class SoftLinkBase {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private long objectID;
 
-    /**
-     * 
-     */
     private DataUnit dataUnit;
 
-    /**
-     * 
-     */
     private Entity entity;
 
-    /**
-     * 
-     */
     private String refrenceID;
 
     /**
@@ -120,9 +92,10 @@ public abstract class SoftLinkBase {
     }
 
     /**
-     * Method sets the attribute "objectID".
+     * Method sets attribute {@link #objectID}.<br/>
      * 
-     * @param pObjectID Value to which the attribute "objectID" should be set.
+     * @param pObjectID Value to which {@link #objectID} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setObjectID( long pObjectID ) {
       // Assign value to attribute
@@ -131,9 +104,10 @@ public abstract class SoftLinkBase {
     }
 
     /**
-     * Method sets the association "dataUnit".
+     * Method sets association {@link #dataUnit}.<br/>
      * 
-     * @param pDataUnit DataUnit to which the association "dataUnit" should be set.
+     * @param pDataUnit Value to which {@link #dataUnit} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setDataUnit( DataUnit pDataUnit ) {
       dataUnit = pDataUnit;
@@ -141,9 +115,10 @@ public abstract class SoftLinkBase {
     }
 
     /**
-     * Method sets the association "entity".
+     * Method sets association {@link #entity}.<br/>
      * 
-     * @param pEntity Entity to which the association "entity" should be set.
+     * @param pEntity Value to which {@link #entity} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setEntity( Entity pEntity ) {
       entity = pEntity;
@@ -151,9 +126,10 @@ public abstract class SoftLinkBase {
     }
 
     /**
-     * Method sets the attribute "refrenceID".
+     * Method sets attribute {@link #refrenceID}.<br/>
      * 
-     * @param pRefrenceID Value to which the attribute "refrenceID" should be set.
+     * @param pRefrenceID Value to which {@link #refrenceID} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setRefrenceID( String pRefrenceID ) {
       // Assign value to attribute
@@ -172,76 +148,68 @@ public abstract class SoftLinkBase {
   }
 
   /**
-   * Method returns the attribute "objectID".
+   * Method returns attribute {@link #objectID}.<br/>
    * 
-   * 
-   * @return long Value to which the attribute "objectID" is set.
+   * @return long Value to which {@link #objectID} is set.
    */
   public long getObjectID( ) {
     return objectID;
   }
 
   /**
-   * Method returns the association "dataUnit".
+   * Method returns association {@link #dataUnit}.<br/>
    * 
-   *
-   * @return DataUnit DataUnit to which the association "dataUnit" is set.
+   * @return {@link DataUnit} Value to which {@link #dataUnit} is set.
    */
   public DataUnit getDataUnit( ) {
     return dataUnit;
   }
 
   /**
-   * Method sets the association "dataUnit".
+   * Method sets association {@link #dataUnit}.<br/>
    * 
-   * 
-   * @param pDataUnit DataUnit to which the association "dataUnit" should be set.
+   * @param pDataUnit Value to which {@link #dataUnit} should be set.
    */
   public void setDataUnit( DataUnit pDataUnit ) {
     dataUnit = pDataUnit;
   }
 
   /**
-   * Method unsets the association "dataUnit".
-   * 
+   * Method unsets {@link #dataUnit}.
    */
   public final void unsetDataUnit( ) {
     dataUnit = null;
   }
 
   /**
-   * Method returns the association "entity".
+   * Method returns association {@link #entity}.<br/>
    * 
-   *
-   * @return Entity Entity to which the association "entity" is set.
+   * @return {@link Entity} Value to which {@link #entity} is set.
    */
   public Entity getEntity( ) {
     return entity;
   }
 
   /**
-   * Method sets the association "entity".
+   * Method sets association {@link #entity}.<br/>
    * 
-   * 
-   * @param pEntity Entity to which the association "entity" should be set.
+   * @param pEntity Value to which {@link #entity} should be set.
    */
   public void setEntity( Entity pEntity ) {
     entity = pEntity;
   }
 
   /**
-   * Method unsets the association "entity".
-   * 
+   * Method unsets {@link #entity}.
    */
   public final void unsetEntity( ) {
     entity = null;
   }
 
   /**
-   * Method returns the attribute "refrenceID".
+   * Method returns attribute {@link #refrenceID}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "refrenceID" is set.
+   * @return {@link String} Value to which {@link #refrenceID} is set.
    */
   public String getRefrenceID( ) {
     return refrenceID;

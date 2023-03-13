@@ -22,10 +22,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 @JsonIgnoreProperties(value = "objectType")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
@@ -39,15 +35,9 @@ public class ParentClass implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private String parentAttribute;
 
-  /**
-   * 
-   */
   private Set<IBAN> ibans;
 
   /**
@@ -126,18 +116,11 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class ParentClass. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ParentClass</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String parentAttribute;
 
-    /**
-     * 
-     */
     private Set<IBAN> ibans;
 
     /**
@@ -172,9 +155,10 @@ public class ParentClass implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "parentAttribute".
+     * Method sets attribute {@link #parentAttribute}.<br/>
      * 
-     * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setParentAttribute( String pParentAttribute ) {
       // Assign value to attribute
@@ -183,9 +167,10 @@ public class ParentClass implements ServiceObject {
     }
 
     /**
-     * Method sets the association "ibans".
+     * Method sets association {@link #ibans}.<br/>
      * 
-     * @param pIbans Collection with objects to which the association should be set.
+     * @param pIbans Collection to which {@link #ibans} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIbans( Set<IBAN> pIbans ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -199,9 +184,10 @@ public class ParentClass implements ServiceObject {
     }
 
     /**
-     * Method sets the association "theBankAccount". I would like to document references to other types.
+     * Method sets association {@link #theBankAccount}.<br/>
      * 
-     * @param pTheBankAccount BankAccount to which the association "theBankAccount" should be set.
+     * @param pTheBankAccount Value to which {@link #theBankAccount} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setTheBankAccount( BankAccount pTheBankAccount ) {
@@ -210,9 +196,10 @@ public class ParentClass implements ServiceObject {
     }
 
     /**
-     * Method sets the association "legacyBankAccounts". Association is still there be SemVer compliant.
+     * Method sets association {@link #legacyBankAccounts}.<br/>
      * 
-     * @param pLegacyBankAccounts Collection with objects to which the association should be set.
+     * @param pLegacyBankAccounts Collection to which {@link #legacyBankAccounts} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setLegacyBankAccounts( List<BankAccount> pLegacyBankAccounts ) {
@@ -251,20 +238,18 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "parentAttribute".
+   * Method returns attribute {@link #parentAttribute}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "parentAttribute" is set.
+   * @return {@link String} Value to which {@link #parentAttribute} is set.
    */
   public String getParentAttribute( ) {
     return parentAttribute;
   }
 
   /**
-   * Method sets the attribute "parentAttribute".
+   * Method sets attribute {@link #parentAttribute}.<br/>
    * 
-   * 
-   * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    */
   public void setParentAttribute( String pParentAttribute ) {
     // Assign value to attribute
@@ -272,11 +257,10 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method returns the association "ibans".
+   * Method returns association {@link #ibans}.<br/>
    * 
-   *
-   * @return Collection All IBAN objects that belong to the association "ibans". The method never returns null and the
-   * returned collection is modifiable.
+   * @return {@link Set<IBAN>} Value to which {@link #ibans} is set. The method never returns null and the returned
+   * collection is modifiable.
    */
   public Set<IBAN> getIbans( ) {
     // Return all IBAN objects directly without any protection against modification.
@@ -284,10 +268,9 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method adds the passed IBAN object to the association "ibans".
+   * Method adds the passed object to {@link #ibans}.
    * 
-   * 
-   * @param pIbans Object that should be added to the association "ibans". The parameter must not be null.
+   * @param pIbans Object that should be added to {@link #ibans}. The parameter must not be null.
    */
   public void addToIbans( IBAN pIbans ) {
     // Check parameter "pIbans" for invalid value null.
@@ -297,11 +280,9 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "ibans".
+   * Method adds all passed objects to {@link #ibans}.
    * 
-   * 
-   * @param pIbans Collection with all objects that should be added to the association "ibans". The parameter must not
-   * be null.
+   * @param pIbans Collection with all objects that should be added to {@link #ibans}. The parameter must not be null.
    */
   public void addToIbans( Collection<IBAN> pIbans ) {
     // Check parameter "pIbans" for invalid value null.
@@ -313,10 +294,9 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method removes the passed IBAN object from the association "ibans".
+   * Method removes the passed object from {@link #ibans}.<br/>
    * 
-   * 
-   * @param pIbans Object that should be removed from the association "ibans". The parameter must not be null.
+   * @param pIbans Object that should be removed from {@link #ibans}. The parameter must not be null.
    */
   public void removeFromIbans( IBAN pIbans ) {
     // Check parameter for invalid value null.
@@ -326,8 +306,7 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "ibans".
-   * 
+   * Method removes all objects from {@link #ibans}.
    */
   public void clearIbans( ) {
     // Remove all objects from association "ibans".
@@ -335,9 +314,10 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method returns the association "theBankAccount". I would like to document references to other types.
-   *
-   * @return BankAccount BankAccount to which the association "theBankAccount" is set.
+   * Method returns association {@link #theBankAccount}.<br/>
+   * I would like to document references to other types.
+   * 
+   * @return {@link BankAccount} Value to which {@link #theBankAccount} is set.
    */
   @Deprecated
   public BankAccount getTheBankAccount( ) {
@@ -345,9 +325,10 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method sets the association "theBankAccount". I would like to document references to other types.
+   * Method sets association {@link #theBankAccount}.<br/>
+   * I would like to document references to other types.
    * 
-   * @param pTheBankAccount BankAccount to which the association "theBankAccount" should be set.
+   * @param pTheBankAccount Value to which {@link #theBankAccount} should be set.
    */
   @Deprecated
   public void setTheBankAccount( BankAccount pTheBankAccount ) {
@@ -355,7 +336,7 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "theBankAccount". I would like to document references to other types.
+   * Method unsets {@link #theBankAccount}.
    */
   @Deprecated
   public final void unsetTheBankAccount( ) {
@@ -363,10 +344,11 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method returns the association "legacyBankAccounts". Association is still there be SemVer compliant.
-   *
-   * @return Collection All BankAccount objects that belong to the association "legacyBankAccounts". The method never
-   * returns null and the returned collection is modifiable.
+   * Method returns association {@link #legacyBankAccounts}.<br/>
+   * Association is still there be SemVer compliant.
+   * 
+   * @return {@link List<BankAccount>} Value to which {@link #legacyBankAccounts} is set. The method never returns null
+   * and the returned collection is modifiable.
    */
   @Deprecated
   public List<BankAccount> getLegacyBankAccounts( ) {
@@ -375,11 +357,10 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method adds the passed BankAccount object to the association "legacyBankAccounts". Association is still there be
-   * SemVer compliant.
+   * Method adds the passed object to {@link #legacyBankAccounts}.
    * 
-   * @param pLegacyBankAccounts Object that should be added to the association "legacyBankAccounts". The parameter must
-   * not be null.
+   * @param pLegacyBankAccounts Object that should be added to {@link #legacyBankAccounts}. The parameter must not be
+   * null.
    */
   @Deprecated
   public void addToLegacyBankAccounts( BankAccount pLegacyBankAccounts ) {
@@ -390,11 +371,10 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "legacyBankAccounts". Association is still there be SemVer
-   * compliant.
+   * Method adds all passed objects to {@link #legacyBankAccounts}.
    * 
-   * @param pLegacyBankAccounts Collection with all objects that should be added to the association
-   * "legacyBankAccounts". The parameter must not be null.
+   * @param pLegacyBankAccounts Collection with all objects that should be added to {@link #legacyBankAccounts}. The
+   * parameter must not be null.
    */
   @Deprecated
   public void addToLegacyBankAccounts( Collection<BankAccount> pLegacyBankAccounts ) {
@@ -407,11 +387,10 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method removes the passed BankAccount object from the association "legacyBankAccounts". Association is still there
-   * be SemVer compliant.
+   * Method removes the passed object from {@link #legacyBankAccounts}.<br/>
    * 
-   * @param pLegacyBankAccounts Object that should be removed from the association "legacyBankAccounts". The parameter
-   * must not be null.
+   * @param pLegacyBankAccounts Object that should be removed from {@link #legacyBankAccounts}. The parameter must not
+   * be null.
    */
   @Deprecated
   public void removeFromLegacyBankAccounts( BankAccount pLegacyBankAccounts ) {
@@ -422,8 +401,7 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "legacyBankAccounts". Association is still there be SemVer
-   * compliant.
+   * Method removes all objects from {@link #legacyBankAccounts}.
    */
   @Deprecated
   public void clearLegacyBankAccounts( ) {

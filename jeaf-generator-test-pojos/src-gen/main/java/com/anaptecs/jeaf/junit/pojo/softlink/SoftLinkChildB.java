@@ -17,10 +17,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -41,17 +37,23 @@ public class SoftLinkChildB extends SoftLinkParent {
   public static final String ONELINK = "oneLink";
 
   /**
-   * 
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #heyBrother} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
    */
   private String heyBrother;
 
   /**
-   * 
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #softLinkPartners} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
   private Set<String> softLinkPartners;
 
   /**
-   * 
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #oneLink} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
   private SoftLinkID oneLink;
 
@@ -103,22 +105,27 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Class implements builder to create a new instance of class SoftLinkChildB. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>SoftLinkChildB</code>.
    */
   public static class Builder extends SoftLinkParent.Builder {
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #heyBrother} is
+     * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
      */
     private String heyBrother;
 
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #softLinkPartners}
+     * is <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
      */
     private Set<String> softLinkPartners;
 
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #oneLink} is
+     * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
      */
     private SoftLinkID oneLink;
 
@@ -143,9 +150,10 @@ public class SoftLinkChildB extends SoftLinkParent {
     }
 
     /**
-     * Method sets the association "partners".
+     * Method sets association {@link #partners}.<br/>
      * 
-     * @param pPartners Collection with objects to which the association should be set.
+     * @param pPartners Collection to which {@link #partners} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setPartners( Set<SoftLinkID> pPartners ) {
@@ -155,9 +163,10 @@ public class SoftLinkChildB extends SoftLinkParent {
     }
 
     /**
-     * Method sets the association "thePartner".
+     * Method sets association {@link #thePartner}.<br/>
      * 
-     * @param pThePartner SoftLinkPartner to which the association "thePartner" should be set.
+     * @param pThePartner Value to which {@link #thePartner} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setThePartner( SoftLinkID pThePartner ) {
@@ -167,9 +176,10 @@ public class SoftLinkChildB extends SoftLinkParent {
     }
 
     /**
-     * Method sets the association "readonlyPartner".
+     * Method sets association {@link #readonlyPartner}.<br/>
      * 
-     * @param pReadonlyPartner SoftLinkPartner to which the association "readonlyPartner" should be set.
+     * @param pReadonlyPartner Value to which {@link #readonlyPartner} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setReadonlyPartner( SoftLinkID pReadonlyPartner ) {
@@ -179,9 +189,10 @@ public class SoftLinkChildB extends SoftLinkParent {
     }
 
     /**
-     * Method sets the association "heyBrother".
+     * Method sets association {@link #heyBrother}.<br/>
      * 
-     * @param pHeyBrother SoftLinkChildA to which the association "heyBrother" should be set.
+     * @param pHeyBrother Value to which {@link #heyBrother} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setHeyBrother( String pHeyBrother ) {
       heyBrother = pHeyBrother;
@@ -189,9 +200,10 @@ public class SoftLinkChildB extends SoftLinkParent {
     }
 
     /**
-     * Method sets the association "softLinkPartners".
+     * Method sets association {@link #softLinkPartners}.<br/>
      * 
-     * @param pSoftLinkPartners Collection with objects to which the association should be set.
+     * @param pSoftLinkPartners Collection to which {@link #softLinkPartners} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSoftLinkPartners( Set<String> pSoftLinkPartners ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -205,9 +217,10 @@ public class SoftLinkChildB extends SoftLinkParent {
     }
 
     /**
-     * Method sets the association "oneLink".
+     * Method sets association {@link #oneLink}.<br/>
      * 
-     * @param pOneLink SoftLinkPartner to which the association "oneLink" should be set.
+     * @param pOneLink Value to which {@link #oneLink} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setOneLink( SoftLinkID pOneLink ) {
       oneLink = pOneLink;
@@ -239,39 +252,41 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method returns the association "heyBrother".
+   * Method returns association {@link #heyBrother}.<br/>
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #heyBrother} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
    * 
-   *
-   * @return SoftLinkChildA SoftLinkChildA to which the association "heyBrother" is set.
+   * @return {@link String} Value to which {@link #heyBrother} is set.
    */
   public String getHeyBrother( ) {
     return heyBrother;
   }
 
   /**
-   * Method sets the association "heyBrother".
+   * Method sets association {@link #heyBrother}.<br/>
    * 
-   * 
-   * @param pHeyBrother SoftLinkChildA to which the association "heyBrother" should be set.
+   * @param pHeyBrother Value to which {@link #heyBrother} should be set.
    */
   public void setHeyBrother( String pHeyBrother ) {
     heyBrother = pHeyBrother;
   }
 
   /**
-   * Method unsets the association "heyBrother".
-   * 
+   * Method unsets {@link #heyBrother}.
    */
   public final void unsetHeyBrother( ) {
     heyBrother = null;
   }
 
   /**
-   * Method returns the association "softLinkPartners".
+   * Method returns association {@link #softLinkPartners}.<br/>
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #softLinkPartners} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    * 
-   *
-   * @return Collection All SoftLinkPartner objects that belong to the association "softLinkPartners". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link Set<String>} Value to which {@link #softLinkPartners} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<String> getSoftLinkPartners( ) {
     // Return all SoftLinkPartner objects as unmodifiable collection.
@@ -279,11 +294,9 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method adds the passed SoftLinkPartner object to the association "softLinkPartners".
+   * Method adds the passed object to {@link #softLinkPartners}.
    * 
-   * 
-   * @param pSoftLinkPartners Object that should be added to the association "softLinkPartners". The parameter must not
-   * be null.
+   * @param pSoftLinkPartners Object that should be added to {@link #softLinkPartners}. The parameter must not be null.
    */
   public void addToSoftLinkPartners( String pSoftLinkPartners ) {
     // Check parameter "pSoftLinkPartners" for invalid value null.
@@ -293,11 +306,10 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method adds all passed objects to the association "softLinkPartners".
+   * Method adds all passed objects to {@link #softLinkPartners}.
    * 
-   * 
-   * @param pSoftLinkPartners Collection with all objects that should be added to the association "softLinkPartners".
-   * The parameter must not be null.
+   * @param pSoftLinkPartners Collection with all objects that should be added to {@link #softLinkPartners}. The
+   * parameter must not be null.
    */
   public void addToSoftLinkPartners( Collection<String> pSoftLinkPartners ) {
     // Check parameter "pSoftLinkPartners" for invalid value null.
@@ -309,11 +321,10 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method removes the passed SoftLinkPartner object from the association "softLinkPartners".
+   * Method removes the passed object from {@link #softLinkPartners}.
    * 
-   * 
-   * @param pSoftLinkPartners Object that should be removed from the association "softLinkPartners". The parameter must
-   * not be null.
+   * @param pSoftLinkPartners Object that should be removed from {@link #softLinkPartners}. The parameter must not be
+   * null.
    */
   public void removeFromSoftLinkPartners( String pSoftLinkPartners ) {
     // Check parameter for invalid value null.
@@ -323,8 +334,7 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method removes all objects from the association "softLinkPartners".
-   * 
+   * Method removes all objects from {@link #softLinkPartners}.
    */
   public void clearSoftLinkPartners( ) {
     // Remove all objects from association "softLinkPartners".
@@ -332,28 +342,28 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method returns the association "oneLink".
+   * Method returns association {@link #oneLink}.<br/>
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #oneLink} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    * 
-   *
-   * @return SoftLinkPartner SoftLinkPartner to which the association "oneLink" is set.
+   * @return {@link SoftLinkID} Value to which {@link #oneLink} is set.
    */
   public SoftLinkID getOneLink( ) {
     return oneLink;
   }
 
   /**
-   * Method sets the association "oneLink".
+   * Method sets association {@link #oneLink}.<br/>
    * 
-   * 
-   * @param pOneLink SoftLinkPartner to which the association "oneLink" should be set.
+   * @param pOneLink Value to which {@link #oneLink} should be set.
    */
   public void setOneLink( SoftLinkID pOneLink ) {
     oneLink = pOneLink;
   }
 
   /**
-   * Method unsets the association "oneLink".
-   * 
+   * Method unsets {@link #oneLink}.
    */
   public final void unsetOneLink( ) {
     oneLink = null;

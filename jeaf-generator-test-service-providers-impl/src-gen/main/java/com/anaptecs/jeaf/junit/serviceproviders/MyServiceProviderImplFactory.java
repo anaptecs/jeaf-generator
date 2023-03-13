@@ -10,9 +10,7 @@ import com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory;
 import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
 
 /**
- * This class is the factory class the service provider implementation MyServiceProviderImpl.
- * 
- * 
+ * This class is the factory class the service provider implementation {@link MyServiceProviderImpl}.
  */
 @com.anaptecs.jeaf.core.annotations.ServiceProviderFactory
 public final class MyServiceProviderImplFactory extends ServiceProviderFactory {

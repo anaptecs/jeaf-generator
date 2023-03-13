@@ -5,10 +5,6 @@ import java.util.List;
 import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class IndividualBOBase extends CustomerBO {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -20,9 +16,6 @@ public abstract class IndividualBOBase extends CustomerBO {
    */
   public static final String PERSON_ROLE = "person";
 
-  /**
-   * 
-   */
   private MyPersonBO person;
 
   /**
@@ -42,10 +35,9 @@ public abstract class IndividualBOBase extends CustomerBO {
   }
 
   /**
-   * Method returns the association "person".
+   * Method returns association {@link #person}.<br/>
    * 
-   *
-   * @return MyPersonBO MyPersonBO to which the association "person" is set.
+   * @return {@link MyPersonBO} Value to which {@link #person} is set.
    */
   public MyPersonBO getPerson( ) {
     person = this.unproxy(person);
@@ -53,10 +45,9 @@ public abstract class IndividualBOBase extends CustomerBO {
   }
 
   /**
-   * Method sets the association "person".
+   * Method sets association {@link #person}.<br/>
    * 
-   * 
-   * @param pPerson MyPersonBO to which the association "person" should be set.
+   * @param pPerson Value to which {@link #person} should be set.
    */
   public void setPerson( MyPersonBO pPerson ) {
     // Release already referenced object before setting a new association.
@@ -72,8 +63,7 @@ public abstract class IndividualBOBase extends CustomerBO {
   }
 
   /**
-   * Method unsets the association "person".
-   * 
+   * Method unsets {@link #person}.
    */
   public final void unsetPerson( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

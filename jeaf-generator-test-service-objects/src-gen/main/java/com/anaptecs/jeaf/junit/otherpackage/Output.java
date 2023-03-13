@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Output implements ServiceObject {
   /**
    * Default serial version uid.
@@ -58,8 +54,7 @@ public class Output implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class Output. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Output</code>.
    */
   public static class Builder {
     /**

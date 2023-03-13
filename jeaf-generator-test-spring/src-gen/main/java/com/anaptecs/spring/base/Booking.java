@@ -13,10 +13,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Booking {
   /**
@@ -34,19 +30,10 @@ public class Booking {
    */
   public static final String INVENTORIES = "inventories";
 
-  /**
-   * 
-   */
   private BookingID bookingID;
 
-  /**
-   * 
-   */
   private String customerName;
 
-  /**
-   * 
-   */
   private List<InventoryType> inventories;
 
   /**
@@ -94,23 +81,13 @@ public class Booking {
   }
 
   /**
-   * Class implements builder to create a new instance of class Booking. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Booking</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private BookingID bookingID;
 
-    /**
-     * 
-     */
     private String customerName;
 
-    /**
-     * 
-     */
     private List<InventoryType> inventories;
 
     /**
@@ -152,9 +129,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the association "bookingID".
+     * Method sets association {@link #bookingID}.<br/>
      * 
-     * @param pBookingID BookingID to which the association "bookingID" should be set.
+     * @param pBookingID Value to which {@link #bookingID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingID( BookingID pBookingID ) {
       bookingID = pBookingID;
@@ -162,9 +140,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the attribute "customerName".
+     * Method sets attribute {@link #customerName}.<br/>
      * 
-     * @param pCustomerName Value to which the attribute "customerName" should be set.
+     * @param pCustomerName Value to which {@link #customerName} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCustomerName( String pCustomerName ) {
       // Assign value to attribute
@@ -173,9 +152,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the association "inventories".
+     * Method sets association {@link #inventories}.<br/>
      * 
-     * @param pInventories Collection with objects to which the association should be set.
+     * @param pInventories Collection to which {@link #inventories} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInventories( List<InventoryType> pInventories ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -189,9 +169,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the association "inventories".
+     * Method sets association {@link #inventories}.<br/>
      * 
-     * @param pInventories Array with objects to which the association should be set.
+     * @param pInventories Array with objects to which {@link #inventories} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInventories( InventoryType... pInventories ) {
       // To ensure immutability we have to copy the content of the passed array.
@@ -215,48 +196,43 @@ public class Booking {
   }
 
   /**
-   * Method returns the association "bookingID".
+   * Method returns association {@link #bookingID}.<br/>
    * 
-   *
-   * @return BookingID BookingID to which the association "bookingID" is set.
+   * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
   public BookingID getBookingID( ) {
     return bookingID;
   }
 
   /**
-   * Method sets the association "bookingID".
+   * Method sets association {@link #bookingID}.<br/>
    * 
-   * 
-   * @param pBookingID BookingID to which the association "bookingID" should be set.
+   * @param pBookingID Value to which {@link #bookingID} should be set.
    */
   public void setBookingID( BookingID pBookingID ) {
     bookingID = pBookingID;
   }
 
   /**
-   * Method unsets the association "bookingID".
-   * 
+   * Method unsets {@link #bookingID}.
    */
   public final void unsetBookingID( ) {
     bookingID = null;
   }
 
   /**
-   * Method returns the attribute "customerName".
+   * Method returns attribute {@link #customerName}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "customerName" is set.
+   * @return {@link String} Value to which {@link #customerName} is set.
    */
   public String getCustomerName( ) {
     return customerName;
   }
 
   /**
-   * Method sets the attribute "customerName".
+   * Method sets attribute {@link #customerName}.<br/>
    * 
-   * 
-   * @param pCustomerName Value to which the attribute "customerName" should be set.
+   * @param pCustomerName Value to which {@link #customerName} should be set.
    */
   public void setCustomerName( String pCustomerName ) {
     // Assign value to attribute
@@ -264,11 +240,10 @@ public class Booking {
   }
 
   /**
-   * Method returns the association "inventories".
+   * Method returns association {@link #inventories}.<br/>
    * 
-   *
-   * @return Collection All InventoryType objects that belong to the association "inventories". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link List<InventoryType>} Value to which {@link #inventories} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public List<InventoryType> getInventories( ) {
     // Return all InventoryType objects as unmodifiable collection.
@@ -276,10 +251,9 @@ public class Booking {
   }
 
   /**
-   * Method adds the passed InventoryType object to the association "inventories".
+   * Method adds the passed object to {@link #inventories}.
    * 
-   * 
-   * @param pInventories Object that should be added to the association "inventories". The parameter must not be null.
+   * @param pInventories Object that should be added to {@link #inventories}. The parameter must not be null.
    */
   public void addToInventories( InventoryType pInventories ) {
     // Add passed object to collection of associated InventoryType objects.
@@ -287,11 +261,10 @@ public class Booking {
   }
 
   /**
-   * Method adds all passed objects to the association "inventories".
+   * Method adds all passed objects to {@link #inventories}.
    * 
-   * 
-   * @param pInventories Collection with all objects that should be added to the association "inventories". The
-   * parameter must not be null.
+   * @param pInventories Collection with all objects that should be added to {@link #inventories}. The parameter must
+   * not be null.
    */
   public void addToInventories( Collection<InventoryType> pInventories ) {
     // Add all passed objects.
@@ -301,11 +274,9 @@ public class Booking {
   }
 
   /**
-   * Method removes the passed InventoryType object from the association "inventories".
+   * Method removes the passed object from {@link #inventories}.<br/>
    * 
-   * 
-   * @param pInventories Object that should be removed from the association "inventories". The parameter must not be
-   * null.
+   * @param pInventories Object that should be removed from {@link #inventories}. The parameter must not be null.
    */
   public void removeFromInventories( InventoryType pInventories ) {
     // Remove passed object from collection of associated InventoryType objects.
@@ -313,8 +284,7 @@ public class Booking {
   }
 
   /**
-   * Method removes all objects from the association "inventories".
-   * 
+   * Method removes all objects from {@link #inventories}.
    */
   public void clearInventories( ) {
     // Remove all objects from association "inventories".

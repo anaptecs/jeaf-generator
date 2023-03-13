@@ -9,10 +9,6 @@ import java.util.List;
 
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class WegsucheDO extends WegsucheDOBase {
   /**
    * Default serial version uid.
@@ -36,8 +32,7 @@ public class WegsucheDO extends WegsucheDOBase {
   }
 
   /**
-   * 
-   * @return {@link PfadDO}
+   * @return {@link List<PfadDO>}
    */
   @Override
   public List<PfadDO> suchePfade( ) {

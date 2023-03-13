@@ -5,10 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.core;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class PartiallyDeprecatedServiceObject extends PartiallyDeprecatedServiceObjectBase {
   /**
    * Default serial version uid.
@@ -71,8 +67,7 @@ public class PartiallyDeprecatedServiceObject extends PartiallyDeprecatedService
   }
 
   /**
-  * 
-  */
+   */
   @Deprecated
   @Override
   public void doSomethingDeprecated( ) {
@@ -80,10 +75,11 @@ public class PartiallyDeprecatedServiceObject extends PartiallyDeprecatedService
   }
 
   /**
-   * 
    * @param pParam1
-   * @param pParam2
-   * @return {@link String}
+   * @param pParam2 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override

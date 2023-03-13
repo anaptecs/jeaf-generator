@@ -13,10 +13,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 public class BankAccount implements ServiceObject {
   /**
@@ -24,9 +20,6 @@ public class BankAccount implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private String iban;
 
@@ -79,13 +72,9 @@ public class BankAccount implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class BankAccount. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>BankAccount</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String iban;
 
     /**
@@ -105,9 +94,10 @@ public class BankAccount implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "iban".
+     * Method sets attribute {@link #iban}.<br/>
      * 
-     * @param pIban Value to which the attribute "iban" should be set.
+     * @param pIban Value to which {@link #iban} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIban( String pIban ) {
       // Assign value to attribute
@@ -140,20 +130,18 @@ public class BankAccount implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "iban".
+   * Method returns attribute {@link #iban}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "iban" is set.
+   * @return {@link String} Value to which {@link #iban} is set.
    */
   public String getIban( ) {
     return iban;
   }
 
   /**
-   * Method sets the attribute "iban".
+   * Method sets attribute {@link #iban}.<br/>
    * 
-   * 
-   * @param pIban Value to which the attribute "iban" should be set.
+   * @param pIban Value to which {@link #iban} should be set.
    */
   public void setIban( String pIban ) {
     // Assign value to attribute

@@ -19,10 +19,6 @@ import javax.validation.constraints.NotNull;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 public class WeirdBooking extends WeirdParent {
   /**
@@ -30,9 +26,6 @@ public class WeirdBooking extends WeirdParent {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private ComplexBookingID booking;
 
@@ -42,14 +35,13 @@ public class WeirdBooking extends WeirdParent {
   private List<ComplexBookingID> additionalBookings;
 
   /**
-   * soft link 2nd line 3rd line
+   * soft link<br/>
+   * 2nd line<br/>
+   * 3rd line
    */
   @NotNull
   private VersionedObjectSoftLink versionedObjectSoftLink;
 
-  /**
-   * 
-   */
   private int childProperty;
 
   /**
@@ -57,9 +49,6 @@ public class WeirdBooking extends WeirdParent {
    */
   private Booking realBooking;
 
-  /**
-   * 
-   */
   private Set<InventoryType> inventories;
 
   /**
@@ -119,13 +108,9 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Class implements builder to create a new instance of class WeirdBooking. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>WeirdBooking</code>.
    */
   public static class Builder extends WeirdParent.Builder {
-    /**
-     * 
-     */
     private ComplexBookingID booking;
 
     /**
@@ -134,13 +119,12 @@ public class WeirdBooking extends WeirdParent {
     private List<ComplexBookingID> additionalBookings;
 
     /**
-     * soft link 2nd line 3rd line
+     * soft link<br/>
+     * 2nd line<br/>
+     * 3rd line
      */
     private VersionedObjectSoftLink versionedObjectSoftLink;
 
-    /**
-     * 
-     */
     private int childProperty;
 
     /**
@@ -148,9 +132,6 @@ public class WeirdBooking extends WeirdParent {
      */
     private Booking realBooking;
 
-    /**
-     * 
-     */
     private Set<InventoryType> inventories;
 
     /**
@@ -177,9 +158,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the attribute "someProperty".
+     * Method sets attribute {@link #someProperty}.<br/>
      * 
-     * @param pSomeProperty Value to which the attribute "someProperty" should be set.
+     * @param pSomeProperty Value to which {@link #someProperty} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setSomeProperty( String pSomeProperty ) {
@@ -189,9 +171,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "complexBooking".
+     * Method sets association {@link #complexBooking}.<br/>
      * 
-     * @param pComplexBooking ComplexBookingID to which the association "complexBooking" should be set.
+     * @param pComplexBooking Value to which {@link #complexBooking} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setComplexBooking( ComplexBookingID pComplexBooking ) {
@@ -201,9 +184,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "complexBookings".
+     * Method sets association {@link #complexBookings}.<br/>
      * 
-     * @param pComplexBookings Collection with objects to which the association should be set.
+     * @param pComplexBookings Collection to which {@link #complexBookings} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setComplexBookings( Set<ComplexBookingID> pComplexBookings ) {
@@ -213,9 +197,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "booking".
+     * Method sets association {@link #booking}.<br/>
      * 
-     * @param pBooking ComplexBookingID to which the association "booking" should be set.
+     * @param pBooking Value to which {@link #booking} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooking( ComplexBookingID pBooking ) {
       booking = pBooking;
@@ -223,9 +208,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "additionalBookings". additional bookings
+     * Method sets association {@link #additionalBookings}.<br/>
      * 
-     * @param pAdditionalBookings Collection with objects to which the association should be set.
+     * @param pAdditionalBookings Collection to which {@link #additionalBookings} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAdditionalBookings( List<ComplexBookingID> pAdditionalBookings ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -239,10 +225,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "versionedObjectSoftLink". soft link 2nd line 3rd line
+     * Method sets association {@link #versionedObjectSoftLink}.<br/>
      * 
-     * @param pVersionedObjectSoftLink VersionedObjectSoftLink to which the association "versionedObjectSoftLink" should
-     * be set.
+     * @param pVersionedObjectSoftLink Value to which {@link #versionedObjectSoftLink} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setVersionedObjectSoftLink( VersionedObjectSoftLink pVersionedObjectSoftLink ) {
       versionedObjectSoftLink = pVersionedObjectSoftLink;
@@ -250,9 +236,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the attribute "childProperty".
+     * Method sets attribute {@link #childProperty}.<br/>
      * 
-     * @param pChildProperty Value to which the attribute "childProperty" should be set.
+     * @param pChildProperty Value to which {@link #childProperty} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildProperty( int pChildProperty ) {
       // Assign value to attribute
@@ -261,9 +248,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "realBooking". the real booking
+     * Method sets association {@link #realBooking}.<br/>
      * 
-     * @param pRealBooking Booking to which the association "realBooking" should be set.
+     * @param pRealBooking Value to which {@link #realBooking} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setRealBooking( Booking pRealBooking ) {
       realBooking = pRealBooking;
@@ -271,9 +259,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "inventories".
+     * Method sets association {@link #inventories}.<br/>
      * 
-     * @param pInventories Collection with objects to which the association should be set.
+     * @param pInventories Collection to which {@link #inventories} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInventories( Set<InventoryType> pInventories ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -287,9 +276,10 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
-     * Method sets the association "inventories".
+     * Method sets association {@link #inventories}.<br/>
      * 
-     * @param pInventories Array with objects to which the association should be set.
+     * @param pInventories Array with objects to which {@link #inventories} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInventories( InventoryType... pInventories ) {
       // To ensure immutability we have to copy the content of the passed array.
@@ -327,38 +317,36 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method returns the association "booking".
+   * Method returns association {@link #booking}.<br/>
    * 
-   *
-   * @return ComplexBookingID ComplexBookingID to which the association "booking" is set.
+   * @return {@link ComplexBookingID} Value to which {@link #booking} is set.
    */
   public ComplexBookingID getBooking( ) {
     return booking;
   }
 
   /**
-   * Method sets the association "booking".
+   * Method sets association {@link #booking}.<br/>
    * 
-   * 
-   * @param pBooking ComplexBookingID to which the association "booking" should be set.
+   * @param pBooking Value to which {@link #booking} should be set.
    */
   public void setBooking( ComplexBookingID pBooking ) {
     booking = pBooking;
   }
 
   /**
-   * Method unsets the association "booking".
-   * 
+   * Method unsets {@link #booking}.
    */
   public final void unsetBooking( ) {
     booking = null;
   }
 
   /**
-   * Method returns the association "additionalBookings". additional bookings
-   *
-   * @return Collection All ComplexBookingID objects that belong to the association "additionalBookings". The method
-   * never returns null and the returned collection is modifiable.
+   * Method returns association {@link #additionalBookings}.<br/>
+   * additional bookings
+   * 
+   * @return {@link List<ComplexBookingID>} Value to which {@link #additionalBookings} is set. The method never returns
+   * null and the returned collection is modifiable.
    */
   public List<ComplexBookingID> getAdditionalBookings( ) {
     // Return all ComplexBookingID objects directly without any protection against modification.
@@ -366,10 +354,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method adds the passed ComplexBookingID object to the association "additionalBookings". additional bookings
+   * Method adds the passed object to {@link #additionalBookings}.
    * 
-   * @param pAdditionalBookings Object that should be added to the association "additionalBookings". The parameter must
-   * not be null.
+   * @param pAdditionalBookings Object that should be added to {@link #additionalBookings}. The parameter must not be
+   * null.
    */
   public void addToAdditionalBookings( ComplexBookingID pAdditionalBookings ) {
     // Check parameter "pAdditionalBookings" for invalid value null.
@@ -379,10 +367,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method adds all passed objects to the association "additionalBookings". additional bookings
+   * Method adds all passed objects to {@link #additionalBookings}.
    * 
-   * @param pAdditionalBookings Collection with all objects that should be added to the association
-   * "additionalBookings". The parameter must not be null.
+   * @param pAdditionalBookings Collection with all objects that should be added to {@link #additionalBookings}. The
+   * parameter must not be null.
    */
   public void addToAdditionalBookings( Collection<ComplexBookingID> pAdditionalBookings ) {
     // Check parameter "pAdditionalBookings" for invalid value null.
@@ -394,10 +382,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method removes the passed ComplexBookingID object from the association "additionalBookings". additional bookings
+   * Method removes the passed object from {@link #additionalBookings}.<br/>
    * 
-   * @param pAdditionalBookings Object that should be removed from the association "additionalBookings". The parameter
-   * must not be null.
+   * @param pAdditionalBookings Object that should be removed from {@link #additionalBookings}. The parameter must not
+   * be null.
    */
   public void removeFromAdditionalBookings( ComplexBookingID pAdditionalBookings ) {
     // Check parameter for invalid value null.
@@ -407,7 +395,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method removes all objects from the association "additionalBookings". additional bookings
+   * Method removes all objects from {@link #additionalBookings}.
    */
   public void clearAdditionalBookings( ) {
     // Remove all objects from association "additionalBookings".
@@ -415,46 +403,49 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method returns the association "versionedObjectSoftLink". soft link 2nd line 3rd line
-   *
-   * @return VersionedObjectSoftLink VersionedObjectSoftLink to which the association "versionedObjectSoftLink" is set.
+   * Method returns association {@link #versionedObjectSoftLink}.<br/>
+   * soft link<br/>
+   * 2nd line<br/>
+   * 3rd line
+   * 
+   * @return {@link VersionedObjectSoftLink} Value to which {@link #versionedObjectSoftLink} is set.
    */
   public VersionedObjectSoftLink getVersionedObjectSoftLink( ) {
     return versionedObjectSoftLink;
   }
 
   /**
-   * Method sets the association "versionedObjectSoftLink". soft link 2nd line 3rd line
+   * Method sets association {@link #versionedObjectSoftLink}.<br/>
+   * soft link<br/>
+   * 2nd line<br/>
+   * 3rd line
    * 
-   * @param pVersionedObjectSoftLink VersionedObjectSoftLink to which the association "versionedObjectSoftLink" should
-   * be set.
+   * @param pVersionedObjectSoftLink Value to which {@link #versionedObjectSoftLink} should be set.
    */
   public void setVersionedObjectSoftLink( VersionedObjectSoftLink pVersionedObjectSoftLink ) {
     versionedObjectSoftLink = pVersionedObjectSoftLink;
   }
 
   /**
-   * Method unsets the association "versionedObjectSoftLink". soft link 2nd line 3rd line
+   * Method unsets {@link #versionedObjectSoftLink}.
    */
   public final void unsetVersionedObjectSoftLink( ) {
     versionedObjectSoftLink = null;
   }
 
   /**
-   * Method returns the attribute "childProperty".
+   * Method returns attribute {@link #childProperty}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "childProperty" is set.
+   * @return int Value to which {@link #childProperty} is set.
    */
   public int getChildProperty( ) {
     return childProperty;
   }
 
   /**
-   * Method sets the attribute "childProperty".
+   * Method sets attribute {@link #childProperty}.<br/>
    * 
-   * 
-   * @param pChildProperty Value to which the attribute "childProperty" should be set.
+   * @param pChildProperty Value to which {@link #childProperty} should be set.
    */
   public void setChildProperty( int pChildProperty ) {
     // Assign value to attribute
@@ -462,36 +453,37 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method returns the association "realBooking". the real booking
-   *
-   * @return Booking Booking to which the association "realBooking" is set.
+   * Method returns association {@link #realBooking}.<br/>
+   * the real booking
+   * 
+   * @return {@link Booking} Value to which {@link #realBooking} is set.
    */
   public Booking getRealBooking( ) {
     return realBooking;
   }
 
   /**
-   * Method sets the association "realBooking". the real booking
+   * Method sets association {@link #realBooking}.<br/>
+   * the real booking
    * 
-   * @param pRealBooking Booking to which the association "realBooking" should be set.
+   * @param pRealBooking Value to which {@link #realBooking} should be set.
    */
   public void setRealBooking( Booking pRealBooking ) {
     realBooking = pRealBooking;
   }
 
   /**
-   * Method unsets the association "realBooking". the real booking
+   * Method unsets {@link #realBooking}.
    */
   public final void unsetRealBooking( ) {
     realBooking = null;
   }
 
   /**
-   * Method returns the association "inventories".
+   * Method returns association {@link #inventories}.<br/>
    * 
-   *
-   * @return Collection All InventoryType objects that belong to the association "inventories". The method never returns
-   * null and the returned collection is modifiable.
+   * @return {@link Set<InventoryType>} Value to which {@link #inventories} is set. The method never returns null and
+   * the returned collection is modifiable.
    */
   public Set<InventoryType> getInventories( ) {
     // Return all InventoryType objects directly without any protection against modification.
@@ -499,10 +491,9 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method adds the passed InventoryType object to the association "inventories".
+   * Method adds the passed object to {@link #inventories}.
    * 
-   * 
-   * @param pInventories Object that should be added to the association "inventories". The parameter must not be null.
+   * @param pInventories Object that should be added to {@link #inventories}. The parameter must not be null.
    */
   public void addToInventories( InventoryType pInventories ) {
     // Check parameter "pInventories" for invalid value null.
@@ -512,11 +503,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method adds all passed objects to the association "inventories".
+   * Method adds all passed objects to {@link #inventories}.
    * 
-   * 
-   * @param pInventories Collection with all objects that should be added to the association "inventories". The
-   * parameter must not be null.
+   * @param pInventories Collection with all objects that should be added to {@link #inventories}. The parameter must
+   * not be null.
    */
   public void addToInventories( Collection<InventoryType> pInventories ) {
     // Check parameter "pInventories" for invalid value null.
@@ -528,11 +518,9 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method removes the passed InventoryType object from the association "inventories".
+   * Method removes the passed object from {@link #inventories}.<br/>
    * 
-   * 
-   * @param pInventories Object that should be removed from the association "inventories". The parameter must not be
-   * null.
+   * @param pInventories Object that should be removed from {@link #inventories}. The parameter must not be null.
    */
   public void removeFromInventories( InventoryType pInventories ) {
     // Check parameter for invalid value null.
@@ -542,8 +530,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method removes all objects from the association "inventories".
-   * 
+   * Method removes all objects from {@link #inventories}.
    */
   public void clearInventories( ) {
     // Remove all objects from association "inventories".

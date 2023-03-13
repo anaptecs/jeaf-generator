@@ -40,9 +40,8 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "processSimpleDatatypes".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#processSimpleDatatypes}
    */
   public void processSimpleDatatypes( SimpleDatatypeServiceObject pDatatypes ) {
     try {
@@ -56,9 +55,8 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "convertToWrapperDatatypes".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#convertToWrapperDatatypes}
    */
   public WrapperDatatypeServiceObject convertToWrapperDatatypes( SimpleDatatypeServiceObject pSimpleTypes ) {
     try {
@@ -72,9 +70,8 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "convertToSimpleDatatypes".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#convertToSimpleDatatypes}
    */
   public SimpleDatatypeServiceObject convertToSimpleDatatypes( WrapperDatatypeServiceObject pWrapperTypes ) {
     try {
@@ -88,9 +85,8 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "testPrimitivesAsParameter".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#testPrimitivesAsParameter}
    */
   public boolean testPrimitivesAsParameter( int pInteger, byte[] pByteArray, double pDoubleValue ) {
     try {
@@ -104,9 +100,8 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "testGenericsAsParameter".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#testGenericsAsParameter}
    */
   public void testGenericsAsParameter( Set<SimpleDatatypeServiceObject> pSimpleObjects ) {
     try {
@@ -120,9 +115,8 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "testGenericsAsResult".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#testGenericsAsResult}
    */
   @SuppressWarnings("unchecked")
   public Set<SimpleDatatypeServiceObject> testGenericsAsResult( ) {
@@ -136,9 +130,7 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "doWhatIMean".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#doWhatIMean}
    */
   public void doWhatIMean( int pParam1 ) {
     try {
@@ -151,9 +143,7 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "doWhatIMean".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#doWhatIMean}
    */
   public void doWhatIMean( ) {
     try {
@@ -166,9 +156,7 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "doWhatIMean".
-   * 
-   * 
+   * Generated proxy implementation for method {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#doWhatIMean}
    */
   public void doWhatIMean( Double pParam1 ) {
     try {
@@ -181,9 +169,8 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "doWithObjectsFromOtherPAckages".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#doWithObjectsFromOtherPAckages}
    */
   @SuppressWarnings("unchecked")
   public Set<Output> doWithObjectsFromOtherPAckages( Input pInput ) {
@@ -197,9 +184,8 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "testPrimiveIntResult".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#testPrimiveIntResult}
    */
   public int testPrimiveIntResult( ) {
     try {
@@ -212,9 +198,8 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "testPrimitiveBooleanResult".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#testPrimitiveBooleanResult}
    */
   public boolean testPrimitiveBooleanResult( ) {
     try {
@@ -227,9 +212,8 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "testPrimitiveShortResult".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#testPrimitiveShortResult}
    */
   public short testPrimitiveShortResult( ) {
     try {
@@ -242,9 +226,8 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "testPrimitveByteResult".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#testPrimitveByteResult}
    */
   public byte testPrimitveByteResult( ) {
     try {
@@ -257,9 +240,8 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "testPrimitiveCharResult".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#testPrimitiveCharResult}
    */
   public char testPrimitiveCharResult( ) {
     try {
@@ -272,9 +254,8 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "testPrimitiveLongResult".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#testPrimitiveLongResult}
    */
   public long testPrimitiveLongResult( ) {
     try {
@@ -287,9 +268,8 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "testPrimitiveFloatResult".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#testPrimitiveFloatResult}
    */
   public float testPrimitiveFloatResult( ) {
     try {
@@ -302,9 +282,8 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "testPrimitveDoubleResult".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.core.GeneratorTestService#testPrimitveDoubleResult}
    */
   public double testPrimitveDoubleResult( ) {
     try {
@@ -317,9 +296,7 @@ public final class GeneratorTestServiceProxy extends ServiceProxy implements Gen
   }
 
   /**
-   * Generated proxy implementation for method "parentServiceMethod".
-   * 
-   * 
+   * Generated proxy implementation for method {@link ParentService#parentServiceMethod}
    */
   public void parentServiceMethod( ) {
     try {

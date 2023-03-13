@@ -5,10 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class BidirectB {
   /**
    * Constant for the name of attribute "a".
@@ -67,8 +63,7 @@ public class BidirectB {
   }
 
   /**
-   * Class implements builder to create a new instance of class BidirectB. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>BidirectB</code>.
    */
   public static class Builder {
     /**
@@ -93,9 +88,10 @@ public class BidirectB {
     }
 
     /**
-     * Method sets the association "a". the A
+     * Method sets association {@link #a}.<br/>
      * 
-     * @param pA BidirectA to which the association "a" should be set.
+     * @param pA Value to which {@link #a} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setA( BidirectA pA ) {
       a = pA;
@@ -113,9 +109,10 @@ public class BidirectB {
   }
 
   /**
-   * Method returns the association "a". the A
-   *
-   * @return BidirectA BidirectA to which the association "a" is set.
+   * Method returns association {@link #a}.<br/>
+   * the A
+   * 
+   * @return {@link BidirectA} Value to which {@link #a} is set.
    */
   public BidirectA getA( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -128,9 +125,10 @@ public class BidirectB {
   }
 
   /**
-   * Method sets the association "a". the A
+   * Method sets association {@link #a}.<br/>
+   * the A
    * 
-   * @param pA BidirectA to which the association "a" should be set.
+   * @param pA Value to which {@link #a} should be set.
    */
   public void setA( BidirectA pA ) {
     // Release already referenced object before setting a new association.
@@ -146,7 +144,7 @@ public class BidirectB {
   }
 
   /**
-   * Method unsets the association "a". the A
+   * Method unsets {@link #a}.
    */
   public final void unsetA( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

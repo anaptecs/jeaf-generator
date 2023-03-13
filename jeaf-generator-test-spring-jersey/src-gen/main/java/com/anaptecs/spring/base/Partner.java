@@ -14,10 +14,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = Company.class, name = "Company"),
@@ -28,9 +24,6 @@ public class Partner {
    */
   public static final String POSTALADDRESSES = "postalAddresses";
 
-  /**
-   * 
-   */
   private List<PostalAddress> postalAddresses;
 
   /**
@@ -76,13 +69,9 @@ public class Partner {
   }
 
   /**
-   * Class implements builder to create a new instance of class Partner. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Partner</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private List<PostalAddress> postalAddresses;
 
     /**
@@ -102,9 +91,10 @@ public class Partner {
     }
 
     /**
-     * Method sets the association "postalAddresses".
+     * Method sets association {@link #postalAddresses}.<br/>
      * 
-     * @param pPostalAddresses Collection with objects to which the association should be set.
+     * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -128,11 +118,10 @@ public class Partner {
   }
 
   /**
-   * Method returns the association "postalAddresses".
+   * Method returns association {@link #postalAddresses}.<br/>
    * 
-   *
-   * @return Collection All PostalAddress objects that belong to the association "postalAddresses". The method never
-   * returns null and the returned collection is unmodifiable.
+   * @return {@link List<PostalAddress>} Value to which {@link #postalAddresses} is set. The method never returns null
+   * and the returned collection is unmodifiable.
    */
   public List<PostalAddress> getPostalAddresses( ) {
     // Return all PostalAddress objects as unmodifiable collection.
@@ -140,11 +129,9 @@ public class Partner {
   }
 
   /**
-   * Method adds the passed PostalAddress object to the association "postalAddresses".
+   * Method adds the passed object to {@link #postalAddresses}.
    * 
-   * 
-   * @param pPostalAddresses Object that should be added to the association "postalAddresses". The parameter must not be
-   * null.
+   * @param pPostalAddresses Object that should be added to {@link #postalAddresses}. The parameter must not be null.
    */
   public void addToPostalAddresses( PostalAddress pPostalAddresses ) {
     // Add passed object to collection of associated PostalAddress objects.
@@ -152,11 +139,10 @@ public class Partner {
   }
 
   /**
-   * Method adds all passed objects to the association "postalAddresses".
+   * Method adds all passed objects to {@link #postalAddresses}.
    * 
-   * 
-   * @param pPostalAddresses Collection with all objects that should be added to the association "postalAddresses". The
-   * parameter must not be null.
+   * @param pPostalAddresses Collection with all objects that should be added to {@link #postalAddresses}. The parameter
+   * must not be null.
    */
   public void addToPostalAddresses( Collection<PostalAddress> pPostalAddresses ) {
     // Add all passed objects.
@@ -166,11 +152,10 @@ public class Partner {
   }
 
   /**
-   * Method removes the passed PostalAddress object from the association "postalAddresses".
+   * Method removes the passed object from {@link #postalAddresses}.<br/>
    * 
-   * 
-   * @param pPostalAddresses Object that should be removed from the association "postalAddresses". The parameter must
-   * not be null.
+   * @param pPostalAddresses Object that should be removed from {@link #postalAddresses}. The parameter must not be
+   * null.
    */
   public void removeFromPostalAddresses( PostalAddress pPostalAddresses ) {
     // Remove passed object from collection of associated PostalAddress objects.
@@ -178,8 +163,7 @@ public class Partner {
   }
 
   /**
-   * Method removes all objects from the association "postalAddresses".
-   * 
+   * Method removes all objects from {@link #postalAddresses}.
    */
   public void clearPostalAddresses( ) {
     // Remove all objects from association "postalAddresses".

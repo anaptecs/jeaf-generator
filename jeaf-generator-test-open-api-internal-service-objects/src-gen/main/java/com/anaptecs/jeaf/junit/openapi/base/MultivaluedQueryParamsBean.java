@@ -15,10 +15,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 public class MultivaluedQueryParamsBean implements ServiceObject {
   /**
@@ -26,21 +22,12 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @QueryParam("intArray")
   private int[] intArray;
 
-  /**
-   * 
-   */
   @QueryParam("strings")
   private String[] strings;
 
-  /**
-   * 
-   */
   @QueryParam("integers")
   private Integer[] integers;
 
@@ -86,23 +73,13 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class MultivaluedQueryParamsBean. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>MultivaluedQueryParamsBean</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private int[] intArray;
 
-    /**
-     * 
-     */
     private String[] strings;
 
-    /**
-     * 
-     */
     private Integer[] integers;
 
     /**
@@ -125,9 +102,10 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "intArray".
+     * Method sets attribute {@link #intArray}.<br/>
      * 
-     * @param pIntArray Value to which the attribute "intArray" should be set.
+     * @param pIntArray Value to which {@link #intArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIntArray( int[] pIntArray ) {
       // Assign value to attribute
@@ -141,9 +119,10 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "strings".
+     * Method sets attribute {@link #strings}.<br/>
      * 
-     * @param pStrings Value to which the attribute "strings" should be set.
+     * @param pStrings Collection to which {@link #strings} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStrings( String[] pStrings ) {
       // Assign value to attribute
@@ -157,9 +136,10 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "integers".
+     * Method sets attribute {@link #integers}.<br/>
      * 
-     * @param pIntegers Value to which the attribute "integers" should be set.
+     * @param pIntegers Collection to which {@link #integers} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIntegers( Integer[] pIntegers ) {
       // Assign value to attribute
@@ -197,10 +177,9 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "intArray".
+   * Method returns attribute {@link #intArray}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "intArray" is set.
+   * @return int Value to which {@link #intArray} is set.
    */
   public int[] getIntArray( ) {
     int[] lReturnValue;
@@ -214,10 +193,9 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "intArray".
+   * Method sets attribute {@link #intArray}.<br/>
    * 
-   * 
-   * @param pIntArray Value to which the attribute "intArray" should be set.
+   * @param pIntArray Value to which {@link #intArray} should be set.
    */
   public void setIntArray( int[] pIntArray ) {
     // Assign value to attribute
@@ -230,10 +208,9 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "strings".
+   * Method returns attribute {@link #strings}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "strings" is set.
+   * @return {@link String} Value to which {@link #strings} is set.
    */
   public String[] getStrings( ) {
     String[] lReturnValue;
@@ -247,10 +224,9 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "strings".
+   * Method sets attribute {@link #strings}.<br/>
    * 
-   * 
-   * @param pStrings Value to which the attribute "strings" should be set.
+   * @param pStrings Value to which {@link #strings} should be set.
    */
   public void setStrings( String[] pStrings ) {
     // Assign value to attribute
@@ -263,10 +239,9 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "integers".
+   * Method returns attribute {@link #integers}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "integers" is set.
+   * @return {@link Integer} Value to which {@link #integers} is set.
    */
   public Integer[] getIntegers( ) {
     Integer[] lReturnValue;
@@ -280,10 +255,9 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "integers".
+   * Method sets attribute {@link #integers}.<br/>
    * 
-   * 
-   * @param pIntegers Value to which the attribute "integers" should be set.
+   * @param pIntegers Value to which {@link #integers} should be set.
    */
   public void setIntegers( Integer[] pIntegers ) {
     // Assign value to attribute

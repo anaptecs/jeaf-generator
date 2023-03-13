@@ -9,10 +9,6 @@ import java.util.Currency;
 
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ProductDO extends ProductDOBase {
   /**
    * Default serial version uid.
@@ -36,7 +32,6 @@ public class ProductDO extends ProductDOBase {
   }
 
   /**
-   * 
    * @param pCurrency
    * @return {@link PriceDO}
    */

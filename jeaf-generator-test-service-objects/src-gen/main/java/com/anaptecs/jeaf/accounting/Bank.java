@@ -17,10 +17,6 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @MyGeneratedCustomConstraint(myEnum = MyEnum.WORLD, message = "4711", payload = Warning.class)
 public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
@@ -60,19 +56,10 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   public static final short PRIVATE_BANK = 2;
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private Long code;
 
-  /**
-   * 
-   */
   private BankType type;
 
   /**
@@ -125,8 +112,7 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Class implements builder to create a new instance of class Bank. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Bank</code>.
    */
   public static class Builder {
     /**
@@ -134,19 +120,10 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
      */
     private ObjectIdentity<?> objectID;
 
-    /**
-     * 
-     */
     private String name;
 
-    /**
-     * 
-     */
     private Long code;
 
-    /**
-     * 
-     */
     private BankType type;
 
     /**
@@ -178,9 +155,10 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -189,9 +167,10 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "code".
+     * Method sets attribute {@link #code}.<br/>
      * 
-     * @param pCode Value to which the attribute "code" should be set.
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCode( Long pCode ) {
       // Assign value to attribute
@@ -200,9 +179,10 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "type".
+     * Method sets attribute {@link #type}.<br/>
      * 
-     * @param pType Value to which the attribute "type" should be set.
+     * @param pType Value to which {@link #type} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setType( BankType pType ) {
       // Assign value to attribute
@@ -263,20 +243,18 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -284,20 +262,18 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "code".
+   * Method returns attribute {@link #code}.<br/>
    * 
-   * 
-   * @return Long Value to which the attribute "code" is set.
+   * @return {@link Long} Value to which {@link #code} is set.
    */
   public Long getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( Long pCode ) {
     // Assign value to attribute
@@ -305,20 +281,18 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "type".
+   * Method returns attribute {@link #type}.<br/>
    * 
-   * 
-   * @return BankType Value to which the attribute "type" is set.
+   * @return {@link BankType} Value to which {@link #type} is set.
    */
   public BankType getType( ) {
     return type;
   }
 
   /**
-   * Method sets the attribute "type".
+   * Method sets attribute {@link #type}.<br/>
    * 
-   * 
-   * @param pType Value to which the attribute "type" should be set.
+   * @param pType Value to which {@link #type} should be set.
    */
   public void setType( BankType pType ) {
     // Assign value to attribute

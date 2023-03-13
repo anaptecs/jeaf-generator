@@ -16,10 +16,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -49,29 +45,14 @@ public class Booking {
    */
   public static final String EXECUTIONTIMESTAMP = "executionTimestamp";
 
-  /**
-   * 
-   */
   private Account sourceAccount;
 
-  /**
-   * 
-   */
   private Account targetAccount;
 
-  /**
-   * 
-   */
   private BigDecimal amount;
 
-  /**
-   * 
-   */
   private Currency currency;
 
-  /**
-   * 
-   */
   private Calendar executionTimestamp;
 
   /**
@@ -117,33 +98,17 @@ public class Booking {
   }
 
   /**
-   * Class implements builder to create a new instance of class Booking. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Booking</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private Account sourceAccount;
 
-    /**
-     * 
-     */
     private Account targetAccount;
 
-    /**
-     * 
-     */
     private BigDecimal amount;
 
-    /**
-     * 
-     */
     private Currency currency;
 
-    /**
-     * 
-     */
     private Calendar executionTimestamp;
 
     /**
@@ -167,9 +132,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the association "sourceAccount".
+     * Method sets association {@link #sourceAccount}.<br/>
      * 
-     * @param pSourceAccount Account to which the association "sourceAccount" should be set.
+     * @param pSourceAccount Value to which {@link #sourceAccount} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSourceAccount( Account pSourceAccount ) {
       sourceAccount = pSourceAccount;
@@ -177,9 +143,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the association "targetAccount".
+     * Method sets association {@link #targetAccount}.<br/>
      * 
-     * @param pTargetAccount Account to which the association "targetAccount" should be set.
+     * @param pTargetAccount Value to which {@link #targetAccount} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTargetAccount( Account pTargetAccount ) {
       targetAccount = pTargetAccount;
@@ -187,9 +154,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the attribute "amount".
+     * Method sets attribute {@link #amount}.<br/>
      * 
-     * @param pAmount Value to which the attribute "amount" should be set.
+     * @param pAmount Value to which {@link #amount} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAmount( BigDecimal pAmount ) {
       // Assign value to attribute
@@ -198,9 +166,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the attribute "currency".
+     * Method sets attribute {@link #currency}.<br/>
      * 
-     * @param pCurrency Value to which the attribute "currency" should be set.
+     * @param pCurrency Value to which {@link #currency} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCurrency( Currency pCurrency ) {
       // Assign value to attribute
@@ -209,9 +178,10 @@ public class Booking {
     }
 
     /**
-     * Method sets the attribute "executionTimestamp".
+     * Method sets attribute {@link #executionTimestamp}.<br/>
      * 
-     * @param pExecutionTimestamp Value to which the attribute "executionTimestamp" should be set.
+     * @param pExecutionTimestamp Value to which {@link #executionTimestamp} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setExecutionTimestamp( Calendar pExecutionTimestamp ) {
       // Assign value to attribute
@@ -243,76 +213,68 @@ public class Booking {
   }
 
   /**
-   * Method returns the association "sourceAccount".
+   * Method returns association {@link #sourceAccount}.<br/>
    * 
-   *
-   * @return Account Account to which the association "sourceAccount" is set.
+   * @return {@link Account} Value to which {@link #sourceAccount} is set.
    */
   public Account getSourceAccount( ) {
     return sourceAccount;
   }
 
   /**
-   * Method sets the association "sourceAccount".
+   * Method sets association {@link #sourceAccount}.<br/>
    * 
-   * 
-   * @param pSourceAccount Account to which the association "sourceAccount" should be set.
+   * @param pSourceAccount Value to which {@link #sourceAccount} should be set.
    */
   public void setSourceAccount( Account pSourceAccount ) {
     sourceAccount = pSourceAccount;
   }
 
   /**
-   * Method unsets the association "sourceAccount".
-   * 
+   * Method unsets {@link #sourceAccount}.
    */
   public final void unsetSourceAccount( ) {
     sourceAccount = null;
   }
 
   /**
-   * Method returns the association "targetAccount".
+   * Method returns association {@link #targetAccount}.<br/>
    * 
-   *
-   * @return Account Account to which the association "targetAccount" is set.
+   * @return {@link Account} Value to which {@link #targetAccount} is set.
    */
   public Account getTargetAccount( ) {
     return targetAccount;
   }
 
   /**
-   * Method sets the association "targetAccount".
+   * Method sets association {@link #targetAccount}.<br/>
    * 
-   * 
-   * @param pTargetAccount Account to which the association "targetAccount" should be set.
+   * @param pTargetAccount Value to which {@link #targetAccount} should be set.
    */
   public void setTargetAccount( Account pTargetAccount ) {
     targetAccount = pTargetAccount;
   }
 
   /**
-   * Method unsets the association "targetAccount".
-   * 
+   * Method unsets {@link #targetAccount}.
    */
   public final void unsetTargetAccount( ) {
     targetAccount = null;
   }
 
   /**
-   * Method returns the attribute "amount".
+   * Method returns attribute {@link #amount}.<br/>
    * 
-   * 
-   * @return BigDecimal Value to which the attribute "amount" is set.
+   * @return {@link BigDecimal} Value to which {@link #amount} is set.
    */
   public BigDecimal getAmount( ) {
     return amount;
   }
 
   /**
-   * Method sets the attribute "amount".
+   * Method sets attribute {@link #amount}.<br/>
    * 
-   * 
-   * @param pAmount Value to which the attribute "amount" should be set.
+   * @param pAmount Value to which {@link #amount} should be set.
    */
   public void setAmount( BigDecimal pAmount ) {
     // Assign value to attribute
@@ -320,20 +282,18 @@ public class Booking {
   }
 
   /**
-   * Method returns the attribute "currency".
+   * Method returns attribute {@link #currency}.<br/>
    * 
-   * 
-   * @return Currency Value to which the attribute "currency" is set.
+   * @return {@link Currency} Value to which {@link #currency} is set.
    */
   public Currency getCurrency( ) {
     return currency;
   }
 
   /**
-   * Method sets the attribute "currency".
+   * Method sets attribute {@link #currency}.<br/>
    * 
-   * 
-   * @param pCurrency Value to which the attribute "currency" should be set.
+   * @param pCurrency Value to which {@link #currency} should be set.
    */
   public void setCurrency( Currency pCurrency ) {
     // Assign value to attribute
@@ -341,20 +301,18 @@ public class Booking {
   }
 
   /**
-   * Method returns the attribute "executionTimestamp".
+   * Method returns attribute {@link #executionTimestamp}.<br/>
    * 
-   * 
-   * @return Calendar Value to which the attribute "executionTimestamp" is set.
+   * @return {@link Calendar} Value to which {@link #executionTimestamp} is set.
    */
   public Calendar getExecutionTimestamp( ) {
     return executionTimestamp;
   }
 
   /**
-   * Method sets the attribute "executionTimestamp".
+   * Method sets attribute {@link #executionTimestamp}.<br/>
    * 
-   * 
-   * @param pExecutionTimestamp Value to which the attribute "executionTimestamp" should be set.
+   * @param pExecutionTimestamp Value to which {@link #executionTimestamp} should be set.
    */
   public void setExecutionTimestamp( Calendar pExecutionTimestamp ) {
     // Assign value to attribute

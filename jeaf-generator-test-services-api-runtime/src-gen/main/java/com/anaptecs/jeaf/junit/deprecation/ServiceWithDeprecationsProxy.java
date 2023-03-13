@@ -37,9 +37,8 @@ public final class ServiceWithDeprecationsProxy extends ServiceProxy implements 
   }
 
   /**
-   * Generated proxy implementation for method "createSomething".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations#createSomething}
    */
   @Deprecated
   public void createSomething( ) {
@@ -53,9 +52,8 @@ public final class ServiceWithDeprecationsProxy extends ServiceProxy implements 
   }
 
   /**
-   * Generated proxy implementation for method "createSomething".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations#createSomething}
    */
   public void createSomething( JustAType pBody, @Deprecated String pHeader, @Deprecated String pQueryParam,
       BeanParamWithDeprecations pContext ) {

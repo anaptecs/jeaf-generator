@@ -9,10 +9,6 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class GeoPosition extends PlaceRef {
   /**
    * Default serial version uid.
@@ -29,14 +25,8 @@ public class GeoPosition extends PlaceRef {
    */
   public static final String LATITUDE = "latitude";
 
-  /**
-   * 
-   */
   private int longitude;
 
-  /**
-   * 
-   */
   private int latitude;
 
   /**
@@ -80,18 +70,11 @@ public class GeoPosition extends PlaceRef {
   }
 
   /**
-   * Class implements builder to create a new instance of class GeoPosition. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>GeoPosition</code>.
    */
   public static class Builder extends PlaceRef.Builder {
-    /**
-     * 
-     */
     private int longitude;
 
-    /**
-     * 
-     */
     private int latitude;
 
     /**
@@ -114,9 +97,10 @@ public class GeoPosition extends PlaceRef {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setName( String pName ) {
@@ -126,9 +110,10 @@ public class GeoPosition extends PlaceRef {
     }
 
     /**
-     * Method sets the attribute "longitude".
+     * Method sets attribute {@link #longitude}.<br/>
      * 
-     * @param pLongitude Value to which the attribute "longitude" should be set.
+     * @param pLongitude Value to which {@link #longitude} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLongitude( int pLongitude ) {
       // Assign value to attribute
@@ -137,9 +122,10 @@ public class GeoPosition extends PlaceRef {
     }
 
     /**
-     * Method sets the attribute "latitude".
+     * Method sets attribute {@link #latitude}.<br/>
      * 
-     * @param pLatitude Value to which the attribute "latitude" should be set.
+     * @param pLatitude Value to which {@link #latitude} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLatitude( int pLatitude ) {
       // Assign value to attribute
@@ -172,20 +158,18 @@ public class GeoPosition extends PlaceRef {
   }
 
   /**
-   * Method returns the attribute "longitude".
+   * Method returns attribute {@link #longitude}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "longitude" is set.
+   * @return int Value to which {@link #longitude} is set.
    */
   public int getLongitude( ) {
     return longitude;
   }
 
   /**
-   * Method sets the attribute "longitude".
+   * Method sets attribute {@link #longitude}.<br/>
    * 
-   * 
-   * @param pLongitude Value to which the attribute "longitude" should be set.
+   * @param pLongitude Value to which {@link #longitude} should be set.
    */
   public void setLongitude( int pLongitude ) {
     // Assign value to attribute
@@ -193,20 +177,18 @@ public class GeoPosition extends PlaceRef {
   }
 
   /**
-   * Method returns the attribute "latitude".
+   * Method returns attribute {@link #latitude}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "latitude" is set.
+   * @return int Value to which {@link #latitude} is set.
    */
   public int getLatitude( ) {
     return latitude;
   }
 
   /**
-   * Method sets the attribute "latitude".
+   * Method sets attribute {@link #latitude}.<br/>
    * 
-   * 
-   * @param pLatitude Value to which the attribute "latitude" should be set.
+   * @param pLatitude Value to which {@link #latitude} should be set.
    */
   public void setLatitude( int pLatitude ) {
     // Assign value to attribute

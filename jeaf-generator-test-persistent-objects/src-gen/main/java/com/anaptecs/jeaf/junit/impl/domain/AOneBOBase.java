@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class AOneBOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -46,19 +42,10 @@ public abstract class AOneBOBase extends PersistentObject {
    */
   public static final String CMANYS_ROLE = "cManys";
 
-  /**
-   * 
-   */
   private String aName;
 
-  /**
-   * 
-   */
   private BOneBO b;
 
-  /**
-   * 
-   */
   private Set<CManyBO> cManys;
 
   /**
@@ -79,20 +66,18 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "aName".
+   * Method returns attribute {@link #aName}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "aName" is set.
+   * @return {@link String} Value to which {@link #aName} is set.
    */
   public String getAName( ) {
     return aName;
   }
 
   /**
-   * Method sets the attribute "aName".
+   * Method sets attribute {@link #aName}.<br/>
    * 
-   * 
-   * @param pAName Value to which the attribute "aName" should be set.
+   * @param pAName Value to which {@link #aName} should be set.
    */
   public void setAName( String pAName ) {
     // Assign value to attribute
@@ -100,10 +85,9 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "b".
+   * Method returns association {@link #b}.<br/>
    * 
-   *
-   * @return BOneBO BOneBO to which the association "b" is set.
+   * @return {@link BOneBO} Value to which {@link #b} is set.
    */
   public BOneBO getB( ) {
     b = this.unproxy(b);
@@ -111,10 +95,9 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method sets the association "b".
+   * Method sets association {@link #b}.<br/>
    * 
-   * 
-   * @param pB BOneBO to which the association "b" should be set.
+   * @param pB Value to which {@link #b} should be set.
    */
   public void setB( BOneBO pB ) {
     // Release already referenced object before setting a new association.
@@ -130,8 +113,7 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method unsets the association "b".
-   * 
+   * Method unsets {@link #b}.
    */
   public final void unsetB( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -144,11 +126,10 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the association "cManys".
+   * Method returns association {@link #cManys}.<br/>
    * 
-   *
-   * @return Collection All CManyBO objects that belong to the association "cManys". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<CManyBO>} Value to which {@link #cManys} is set. The method never returns null and the returned
+   * collection is unmodifiable.
    */
   public Set<CManyBO> getCManys( ) {
     // Return all CManyBO objects as unmodifiable collection.
@@ -156,10 +137,9 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds the passed CManyBO object to the association "cManys".
+   * Method adds the passed object to {@link #cManys}.
    * 
-   * 
-   * @param pCManys Object that should be added to the association "cManys". The parameter must not be null.
+   * @param pCManys Object that should be added to {@link #cManys}. The parameter must not be null.
    */
   public void addToCManys( CManyBO pCManys ) {
     // Check parameter "pCManys" for invalid value null.
@@ -177,11 +157,9 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method adds all passed objects to the association "cManys".
+   * Method adds all passed objects to {@link #cManys}.
    * 
-   * 
-   * @param pCManys Collection with all objects that should be added to the association "cManys". The parameter must not
-   * be null.
+   * @param pCManys Collection with all objects that should be added to {@link #cManys}. The parameter must not be null.
    */
   public void addToCManys( Collection<CManyBO> pCManys ) {
     // Check parameter "pCManys" for invalid value null.
@@ -193,10 +171,9 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes the passed CManyBO object from the association "cManys".
+   * Method removes the passed object from {@link #cManys}.<br/>
    * 
-   * 
-   * @param pCManys Object that should be removed from the association "cManys". The parameter must not be null.
+   * @param pCManys Object that should be removed from {@link #cManys}. The parameter must not be null.
    */
   public void removeFromCManys( CManyBO pCManys ) {
     // Check parameter for invalid value null.
@@ -211,8 +188,7 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * Method removes all objects from the association "cManys".
-   * 
+   * Method removes all objects from {@link #cManys}.
    */
   public void clearCManys( ) {
     // Remove all objects from association "cManys".
@@ -225,7 +201,6 @@ public abstract class AOneBOBase extends PersistentObject {
   }
 
   /**
-   * 
    * @return {@link Integer}
    */
   public abstract Integer countCMany( );

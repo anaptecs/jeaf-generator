@@ -28,9 +28,8 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * Class represents the SchedulingTest component.
+ * Class represents the component SchedulingTest
  *
- * 
  */
 public final class SchedulingTestComponent implements ComponentImplementation {
   /**

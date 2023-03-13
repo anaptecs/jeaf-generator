@@ -37,9 +37,8 @@ public final class TxMandatoryServiceProxy extends ServiceProxy implements TxMan
   }
 
   /**
-   * Generated proxy implementation for method "testTransactionBehavior".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.tx.TxMandatoryService#testTransactionBehavior}
    */
   public void testTransactionBehavior( ) {
     try {

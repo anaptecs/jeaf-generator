@@ -7,10 +7,6 @@ package com.anaptecs.jeaf.junit.core;
 
 import com.anaptecs.jeaf.core.api.QueryObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Deprecated
 public class ManufacturerQuery extends QueryObject {
   /**
@@ -23,9 +19,6 @@ public class ManufacturerQuery extends QueryObject {
    */
   public static final String NAME = "name";
 
-  /**
-   * 
-   */
   private String name;
 
   /**
@@ -36,20 +29,18 @@ public class ManufacturerQuery extends QueryObject {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute

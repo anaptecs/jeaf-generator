@@ -13,9 +13,8 @@ import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 import com.anaptecs.jeaf.xfun.api.config.Configuration;
 
 /**
- * Class represents the PersistenceTest component.
- *
- * 
+ * Class represents the configuration for component
+ * {@link com.anaptecs.jeaf.junit.impl.persistence.PersistenceTestComponent}.
  */
 public final class PersistenceTestComponentConfiguration {
   /**

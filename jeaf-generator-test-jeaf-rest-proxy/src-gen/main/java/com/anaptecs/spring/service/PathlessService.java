@@ -7,13 +7,8 @@ package com.anaptecs.spring.service;
 
 import com.anaptecs.jeaf.core.api.Service;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public interface PathlessService extends Service {
   /**
-   * 
    * @return {@link String}
    */
   String getSomething( );

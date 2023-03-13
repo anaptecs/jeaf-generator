@@ -24,10 +24,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Valid
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ResellerBase implements Serializable {
@@ -56,9 +52,6 @@ public abstract class ResellerBase implements Serializable {
    */
   public static final String LANGUAGE = "language";
 
-  /**
-   * 
-   */
   private List<Channel> channels;
 
   /**
@@ -66,21 +59,12 @@ public abstract class ResellerBase implements Serializable {
    */
   private transient boolean channelsBackReferenceInitialized;
 
-  /**
-   * 
-   */
   private transient Set<Product> products;
 
-  /**
-   * 
-   */
   @NotBlank
   @Size(min = 0, max = 32)
   private String name;
 
-  /**
-   * 
-   */
   private Locale language;
 
   /**
@@ -126,26 +110,14 @@ public abstract class ResellerBase implements Serializable {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    /**
-     * 
-     */
     private List<Channel> channels;
 
-    /**
-     * 
-     */
     private Set<Product> products;
 
-    /**
-     * 
-     */
     @NotBlank
     @Size(min = 0, max = 32)
     private String name;
 
-    /**
-     * 
-     */
     private Locale language;
 
     /**
@@ -168,9 +140,10 @@ public abstract class ResellerBase implements Serializable {
     }
 
     /**
-     * Method sets the association "channels".
+     * Method sets association {@link #channels}.<br/>
      * 
-     * @param pChannels Collection with objects to which the association should be set.
+     * @param pChannels Collection to which {@link #channels} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setChannels( List<Channel> pChannels ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -184,9 +157,10 @@ public abstract class ResellerBase implements Serializable {
     }
 
     /**
-     * Method sets the association "products".
+     * Method sets association {@link #products}.<br/>
      * 
-     * @param pProducts Collection with objects to which the association should be set.
+     * @param pProducts Collection to which {@link #products} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setProducts( Set<Product> pProducts ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -200,9 +174,10 @@ public abstract class ResellerBase implements Serializable {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setName( String pName ) {
       // Assign value to attribute
@@ -211,9 +186,10 @@ public abstract class ResellerBase implements Serializable {
     }
 
     /**
-     * Method sets the attribute "language".
+     * Method sets attribute {@link #language}.<br/>
      * 
-     * @param pLanguage Value to which the attribute "language" should be set.
+     * @param pLanguage Value to which {@link #language} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setLanguage( Locale pLanguage ) {
       // Assign value to attribute
@@ -245,11 +221,10 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method returns the association "channels".
+   * Method returns association {@link #channels}.<br/>
    * 
-   *
-   * @return Collection All Channel objects that belong to the association "channels". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link List<Channel>} Value to which {@link #channels} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public List<Channel> getChannels( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -265,10 +240,9 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method adds the passed Channel object to the association "channels".
+   * Method adds the passed object to {@link #channels}.
    * 
-   * 
-   * @param pChannels Object that should be added to the association "channels". The parameter must not be null.
+   * @param pChannels Object that should be added to {@link #channels}. The parameter must not be null.
    */
   public void addToChannels( Channel pChannels ) {
     // Check parameter "pChannels" for invalid value null.
@@ -286,11 +260,10 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method adds all passed objects to the association "channels".
+   * Method adds all passed objects to {@link #channels}.
    * 
-   * 
-   * @param pChannels Collection with all objects that should be added to the association "channels". The parameter must
-   * not be null.
+   * @param pChannels Collection with all objects that should be added to {@link #channels}. The parameter must not be
+   * null.
    */
   public void addToChannels( Collection<Channel> pChannels ) {
     // Check parameter "pChannels" for invalid value null.
@@ -302,10 +275,9 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method removes the passed Channel object from the association "channels".
+   * Method removes the passed object from {@link #channels}.<br/>
    * 
-   * 
-   * @param pChannels Object that should be removed from the association "channels". The parameter must not be null.
+   * @param pChannels Object that should be removed from {@link #channels}. The parameter must not be null.
    */
   public void removeFromChannels( Channel pChannels ) {
     // Check parameter for invalid value null.
@@ -320,8 +292,7 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method removes all objects from the association "channels".
-   * 
+   * Method removes all objects from {@link #channels}.
    */
   public void clearChannels( ) {
     // Remove all objects from association "channels".
@@ -334,11 +305,10 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method returns the association "products".
+   * Method returns association {@link #products}.<br/>
    * 
-   *
-   * @return Collection All Product objects that belong to the association "products". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<Product>} Value to which {@link #products} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Product> getProducts( ) {
     // Return all Product objects as unmodifiable collection.
@@ -346,10 +316,9 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method adds the passed Product object to the association "products".
+   * Method adds the passed object to {@link #products}.
    * 
-   * 
-   * @param pProducts Object that should be added to the association "products". The parameter must not be null.
+   * @param pProducts Object that should be added to {@link #products}. The parameter must not be null.
    */
   public void addToProducts( Product pProducts ) {
     // Check parameter "pProducts" for invalid value null.
@@ -364,11 +333,10 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method adds all passed objects to the association "products".
+   * Method adds all passed objects to {@link #products}.
    * 
-   * 
-   * @param pProducts Collection with all objects that should be added to the association "products". The parameter must
-   * not be null.
+   * @param pProducts Collection with all objects that should be added to {@link #products}. The parameter must not be
+   * null.
    */
   public void addToProducts( Collection<Product> pProducts ) {
     // Check parameter "pProducts" for invalid value null.
@@ -380,10 +348,9 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method removes the passed Product object from the association "products".
+   * Method removes the passed object from {@link #products}.<br/>
    * 
-   * 
-   * @param pProducts Object that should be removed from the association "products". The parameter must not be null.
+   * @param pProducts Object that should be removed from {@link #products}. The parameter must not be null.
    */
   public void removeFromProducts( Product pProducts ) {
     // Check parameter for invalid value null.
@@ -398,8 +365,7 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method removes all objects from the association "products".
-   * 
+   * Method removes all objects from {@link #products}.
    */
   public void clearProducts( ) {
     // Remove all objects from association "products".
@@ -412,20 +378,18 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -433,20 +397,18 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * Method returns the attribute "language".
+   * Method returns attribute {@link #language}.<br/>
    * 
-   * 
-   * @return Locale Value to which the attribute "language" is set.
+   * @return {@link Locale} Value to which {@link #language} is set.
    */
   public Locale getLanguage( ) {
     return language;
   }
 
   /**
-   * Method sets the attribute "language".
+   * Method sets attribute {@link #language}.<br/>
    * 
-   * 
-   * @param pLanguage Value to which the attribute "language" should be set.
+   * @param pLanguage Value to which {@link #language} should be set.
    */
   public void setLanguage( Locale pLanguage ) {
     // Assign value to attribute
@@ -454,14 +416,12 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
-   * 
    * @return {@link Integer}
    */
   public abstract Integer doSomething( );
 
   /**
-   * 
-   * @return {@link double}
+   * @return double
    */
   public abstract double returnPrimitive( );
 

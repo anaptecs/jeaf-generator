@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class PrimitiveArrayServiceObject implements ServiceObject {
   /**
    * Default serial version uid.
@@ -26,9 +22,6 @@ public class PrimitiveArrayServiceObject implements ServiceObject {
    */
   public static final String BOOLEANARRAY = "booleanArray";
 
-  /**
-   * 
-   */
   private boolean[] booleanArray;
 
   /**
@@ -71,13 +64,9 @@ public class PrimitiveArrayServiceObject implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class PrimitiveArrayServiceObject. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>PrimitiveArrayServiceObject</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private boolean[] booleanArray;
 
     /**
@@ -98,9 +87,10 @@ public class PrimitiveArrayServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "booleanArray".
+     * Method sets attribute {@link #booleanArray}.<br/>
      * 
-     * @param pBooleanArray Value to which the attribute "booleanArray" should be set.
+     * @param pBooleanArray Value to which {@link #booleanArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooleanArray( boolean[] pBooleanArray ) {
       // Assign value to attribute
@@ -139,10 +129,9 @@ public class PrimitiveArrayServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "booleanArray".
+   * Method returns attribute {@link #booleanArray}.<br/>
    * 
-   * 
-   * @return Boolean Value to which the attribute "booleanArray" is set.
+   * @return boolean Value to which {@link #booleanArray} is set.
    */
   public boolean[] getBooleanArray( ) {
     boolean[] lReturnValue;
@@ -157,10 +146,9 @@ public class PrimitiveArrayServiceObject implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "booleanArray".
+   * Method sets attribute {@link #booleanArray}.<br/>
    * 
-   * 
-   * @param pBooleanArray Value to which the attribute "booleanArray" should be set.
+   * @param pBooleanArray Value to which {@link #booleanArray} should be set.
    */
   public void setBooleanArray( boolean[] pBooleanArray ) {
     // Assign value to attribute

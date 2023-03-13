@@ -7,10 +7,6 @@ package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SwissGeoPosition extends GeoPosition {
   /**
@@ -51,8 +47,7 @@ public class SwissGeoPosition extends GeoPosition {
   }
 
   /**
-   * Class implements builder to create a new instance of class SwissGeoPosition. As the class has read only attributes
-   * or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>SwissGeoPosition</code>.
    */
   public static class Builder extends GeoPosition.Builder {
     /**
@@ -93,9 +88,10 @@ public class SwissGeoPosition extends GeoPosition {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setName( String pName ) {
@@ -105,9 +101,10 @@ public class SwissGeoPosition extends GeoPosition {
     }
 
     /**
-     * Method sets the attribute "longitude".
+     * Method sets attribute {@link #longitude}.<br/>
      * 
-     * @param pLongitude Value to which the attribute "longitude" should be set.
+     * @param pLongitude Value to which {@link #longitude} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setLongitude( int pLongitude ) {
@@ -117,9 +114,10 @@ public class SwissGeoPosition extends GeoPosition {
     }
 
     /**
-     * Method sets the attribute "latitude".
+     * Method sets attribute {@link #latitude}.<br/>
      * 
-     * @param pLatitude Value to which the attribute "latitude" should be set.
+     * @param pLatitude Value to which {@link #latitude} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setLatitude( int pLatitude ) {

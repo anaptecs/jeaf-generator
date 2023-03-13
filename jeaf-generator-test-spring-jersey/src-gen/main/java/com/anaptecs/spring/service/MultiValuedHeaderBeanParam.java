@@ -20,10 +20,6 @@ import javax.ws.rs.HeaderParam;
 
 import com.anaptecs.spring.base.StringCode;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class MultiValuedHeaderBeanParam {
   /**
    * Constant for the name of attribute "names".
@@ -80,69 +76,36 @@ public class MultiValuedHeaderBeanParam {
    */
   public static final String SQLTIMESTAMPS = "sqlTimestamps";
 
-  /**
-   * 
-   */
   @HeaderParam("names")
   private String[] names;
 
-  /**
-   * 
-   */
   @HeaderParam("ints")
   private int[] ints;
 
-  /**
-   * 
-   */
   @HeaderParam("doubles")
   private Double[] doubles;
 
-  /**
-   * 
-   */
   @HeaderParam("codes")
   private StringCode[] codes;
 
-  /**
-   * 
-   */
   @HeaderParam("stringCodeList")
   private Set<StringCode> stringCodeList;
 
-  /**
-   * 
-   */
   @HeaderParam("startDate")
   public LocalDate startDate;
 
-  /**
-   * 
-   */
   @HeaderParam("dates")
   private LocalDate[] dates;
 
-  /**
-   * 
-   */
   @HeaderParam("timestamps")
   private Set<LocalDateTime> timestamps;
 
-  /**
-   * 
-   */
   @HeaderParam("calendars")
   private Calendar[] calendars;
 
-  /**
-   * 
-   */
   @HeaderParam("utilDates")
   private Date[] utilDates;
 
-  /**
-   * 
-   */
   @HeaderParam("sqlTimestamps")
   private Timestamp[] sqlTimestamps;
 
@@ -206,63 +169,29 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Class implements builder to create a new instance of class MultiValuedHeaderBeanParam. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>MultiValuedHeaderBeanParam</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String[] names;
 
-    /**
-     * 
-     */
     private int[] ints;
 
-    /**
-     * 
-     */
     private Double[] doubles;
 
-    /**
-     * 
-     */
     private StringCode[] codes;
 
-    /**
-     * 
-     */
     private Set<StringCode> stringCodeList;
 
-    /**
-     * 
-     */
     private LocalDate startDate;
 
-    /**
-     * 
-     */
     private LocalDate[] dates;
 
-    /**
-     * 
-     */
     private Set<LocalDateTime> timestamps;
 
-    /**
-     * 
-     */
     private Calendar[] calendars;
 
-    /**
-     * 
-     */
     private Date[] utilDates;
 
-    /**
-     * 
-     */
     private Timestamp[] sqlTimestamps;
 
     /**
@@ -293,9 +222,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "names".
+     * Method sets attribute {@link #names}.<br/>
      * 
-     * @param pNames Value to which the attribute "names" should be set.
+     * @param pNames Collection to which {@link #names} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setNames( String[] pNames ) {
       // Assign value to attribute
@@ -310,9 +240,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "ints".
+     * Method sets attribute {@link #ints}.<br/>
      * 
-     * @param pInts Value to which the attribute "ints" should be set.
+     * @param pInts Value to which {@link #ints} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInts( int[] pInts ) {
       // Assign value to attribute
@@ -327,9 +258,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "doubles".
+     * Method sets attribute {@link #doubles}.<br/>
      * 
-     * @param pDoubles Value to which the attribute "doubles" should be set.
+     * @param pDoubles Collection to which {@link #doubles} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDoubles( Double[] pDoubles ) {
       // Assign value to attribute
@@ -344,9 +276,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "codes".
+     * Method sets attribute {@link #codes}.<br/>
      * 
-     * @param pCodes Value to which the attribute "codes" should be set.
+     * @param pCodes Collection to which {@link #codes} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCodes( StringCode[] pCodes ) {
       // Assign value to attribute
@@ -361,9 +294,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the association "stringCodeList".
+     * Method sets association {@link #stringCodeList}.<br/>
      * 
-     * @param pStringCodeList Collection with objects to which the association should be set.
+     * @param pStringCodeList Collection to which {@link #stringCodeList} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStringCodeList( Set<StringCode> pStringCodeList ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -377,9 +311,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "startDate".
+     * Method sets attribute {@link #startDate}.<br/>
      * 
-     * @param pStartDate Value to which the attribute "startDate" should be set.
+     * @param pStartDate Value to which {@link #startDate} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStartDate( LocalDate pStartDate ) {
       // Assign value to attribute
@@ -388,9 +323,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "dates".
+     * Method sets attribute {@link #dates}.<br/>
      * 
-     * @param pDates Value to which the attribute "dates" should be set.
+     * @param pDates Collection to which {@link #dates} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDates( LocalDate[] pDates ) {
       // Assign value to attribute
@@ -405,9 +341,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the association "timestamps".
+     * Method sets association {@link #timestamps}.<br/>
      * 
-     * @param pTimestamps Collection with objects to which the association should be set.
+     * @param pTimestamps Collection to which {@link #timestamps} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTimestamps( Set<LocalDateTime> pTimestamps ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -421,9 +358,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "calendars".
+     * Method sets attribute {@link #calendars}.<br/>
      * 
-     * @param pCalendars Value to which the attribute "calendars" should be set.
+     * @param pCalendars Collection to which {@link #calendars} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCalendars( Calendar[] pCalendars ) {
       // Assign value to attribute
@@ -438,9 +376,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "utilDates".
+     * Method sets attribute {@link #utilDates}.<br/>
      * 
-     * @param pUtilDates Value to which the attribute "utilDates" should be set.
+     * @param pUtilDates Collection to which {@link #utilDates} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setUtilDates( Date[] pUtilDates ) {
       // Assign value to attribute
@@ -455,9 +394,10 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method sets the attribute "sqlTimestamps".
+     * Method sets attribute {@link #sqlTimestamps}.<br/>
      * 
-     * @param pSqlTimestamps Value to which the attribute "sqlTimestamps" should be set.
+     * @param pSqlTimestamps Collection to which {@link #sqlTimestamps} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSqlTimestamps( Timestamp[] pSqlTimestamps ) {
       // Assign value to attribute
@@ -483,10 +423,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method returns the attribute "names".
+   * Method returns attribute {@link #names}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "names" is set.
+   * @return {@link String} Value to which {@link #names} is set.
    */
   public String[] getNames( ) {
     String[] lReturnValue;
@@ -501,10 +440,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "names".
+   * Method sets attribute {@link #names}.<br/>
    * 
-   * 
-   * @param pNames Value to which the attribute "names" should be set.
+   * @param pNames Value to which {@link #names} should be set.
    */
   public void setNames( String[] pNames ) {
     // Assign value to attribute
@@ -518,10 +456,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method returns the attribute "ints".
+   * Method returns attribute {@link #ints}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "ints" is set.
+   * @return int Value to which {@link #ints} is set.
    */
   public int[] getInts( ) {
     int[] lReturnValue;
@@ -536,10 +473,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "ints".
+   * Method sets attribute {@link #ints}.<br/>
    * 
-   * 
-   * @param pInts Value to which the attribute "ints" should be set.
+   * @param pInts Value to which {@link #ints} should be set.
    */
   public void setInts( int[] pInts ) {
     // Assign value to attribute
@@ -553,10 +489,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method returns the attribute "doubles".
+   * Method returns attribute {@link #doubles}.<br/>
    * 
-   * 
-   * @return Double Value to which the attribute "doubles" is set.
+   * @return {@link Double} Value to which {@link #doubles} is set.
    */
   public Double[] getDoubles( ) {
     Double[] lReturnValue;
@@ -571,10 +506,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "doubles".
+   * Method sets attribute {@link #doubles}.<br/>
    * 
-   * 
-   * @param pDoubles Value to which the attribute "doubles" should be set.
+   * @param pDoubles Value to which {@link #doubles} should be set.
    */
   public void setDoubles( Double[] pDoubles ) {
     // Assign value to attribute
@@ -588,10 +522,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method returns the attribute "codes".
+   * Method returns attribute {@link #codes}.<br/>
    * 
-   * 
-   * @return StringCode Value to which the attribute "codes" is set.
+   * @return {@link StringCode} Value to which {@link #codes} is set.
    */
   public StringCode[] getCodes( ) {
     StringCode[] lReturnValue;
@@ -606,10 +539,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "codes".
+   * Method sets attribute {@link #codes}.<br/>
    * 
-   * 
-   * @param pCodes Value to which the attribute "codes" should be set.
+   * @param pCodes Value to which {@link #codes} should be set.
    */
   public void setCodes( StringCode[] pCodes ) {
     // Assign value to attribute
@@ -623,11 +555,10 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method returns the association "stringCodeList".
+   * Method returns association {@link #stringCodeList}.<br/>
    * 
-   *
-   * @return Collection All StringCode objects that belong to the association "stringCodeList". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link Set<StringCode>} Value to which {@link #stringCodeList} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public Set<StringCode> getStringCodeList( ) {
     // Return all StringCode objects as unmodifiable collection.
@@ -635,11 +566,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method adds the passed StringCode object to the association "stringCodeList".
+   * Method adds the passed object to {@link #stringCodeList}.
    * 
-   * 
-   * @param pStringCodeList Object that should be added to the association "stringCodeList". The parameter must not be
-   * null.
+   * @param pStringCodeList Object that should be added to {@link #stringCodeList}. The parameter must not be null.
    */
   public void addToStringCodeList( StringCode pStringCodeList ) {
     // Add passed object to collection of associated StringCode objects.
@@ -647,11 +576,10 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method adds all passed objects to the association "stringCodeList".
+   * Method adds all passed objects to {@link #stringCodeList}.
    * 
-   * 
-   * @param pStringCodeList Collection with all objects that should be added to the association "stringCodeList". The
-   * parameter must not be null.
+   * @param pStringCodeList Collection with all objects that should be added to {@link #stringCodeList}. The parameter
+   * must not be null.
    */
   public void addToStringCodeList( Collection<StringCode> pStringCodeList ) {
     // Add all passed objects.
@@ -661,11 +589,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method removes the passed StringCode object from the association "stringCodeList".
+   * Method removes the passed object from {@link #stringCodeList}.<br/>
    * 
-   * 
-   * @param pStringCodeList Object that should be removed from the association "stringCodeList". The parameter must not
-   * be null.
+   * @param pStringCodeList Object that should be removed from {@link #stringCodeList}. The parameter must not be null.
    */
   public void removeFromStringCodeList( StringCode pStringCodeList ) {
     // Remove passed object from collection of associated StringCode objects.
@@ -673,8 +599,7 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method removes all objects from the association "stringCodeList".
-   * 
+   * Method removes all objects from {@link #stringCodeList}.
    */
   public void clearStringCodeList( ) {
     // Remove all objects from association "stringCodeList".
@@ -682,20 +607,18 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method returns the attribute "startDate".
+   * Method returns attribute {@link #startDate}.<br/>
    * 
-   * 
-   * @return LocalDate Value to which the attribute "startDate" is set.
+   * @return {@link LocalDate} Value to which {@link #startDate} is set.
    */
   public LocalDate getStartDate( ) {
     return startDate;
   }
 
   /**
-   * Method sets the attribute "startDate".
+   * Method sets attribute {@link #startDate}.<br/>
    * 
-   * 
-   * @param pStartDate Value to which the attribute "startDate" should be set.
+   * @param pStartDate Value to which {@link #startDate} should be set.
    */
   public void setStartDate( LocalDate pStartDate ) {
     // Assign value to attribute
@@ -703,10 +626,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method returns the attribute "dates".
+   * Method returns attribute {@link #dates}.<br/>
    * 
-   * 
-   * @return LocalDate Value to which the attribute "dates" is set.
+   * @return {@link LocalDate} Value to which {@link #dates} is set.
    */
   public LocalDate[] getDates( ) {
     LocalDate[] lReturnValue;
@@ -721,10 +643,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "dates".
+   * Method sets attribute {@link #dates}.<br/>
    * 
-   * 
-   * @param pDates Value to which the attribute "dates" should be set.
+   * @param pDates Value to which {@link #dates} should be set.
    */
   public void setDates( LocalDate[] pDates ) {
     // Assign value to attribute
@@ -738,11 +659,10 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method returns the association "timestamps".
+   * Method returns association {@link #timestamps}.<br/>
    * 
-   *
-   * @return Collection All LocalDateTime objects that belong to the association "timestamps". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link Set<LocalDateTime>} Value to which {@link #timestamps} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<LocalDateTime> getTimestamps( ) {
     // Return all LocalDateTime objects as unmodifiable collection.
@@ -750,10 +670,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method adds the passed LocalDateTime object to the association "timestamps".
+   * Method adds the passed object to {@link #timestamps}.
    * 
-   * 
-   * @param pTimestamps Object that should be added to the association "timestamps". The parameter must not be null.
+   * @param pTimestamps Object that should be added to {@link #timestamps}. The parameter must not be null.
    */
   public void addToTimestamps( LocalDateTime pTimestamps ) {
     // Add passed object to collection of associated LocalDateTime objects.
@@ -761,11 +680,10 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method adds all passed objects to the association "timestamps".
+   * Method adds all passed objects to {@link #timestamps}.
    * 
-   * 
-   * @param pTimestamps Collection with all objects that should be added to the association "timestamps". The parameter
-   * must not be null.
+   * @param pTimestamps Collection with all objects that should be added to {@link #timestamps}. The parameter must not
+   * be null.
    */
   public void addToTimestamps( Collection<LocalDateTime> pTimestamps ) {
     // Add all passed objects.
@@ -775,10 +693,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method removes the passed LocalDateTime object from the association "timestamps".
+   * Method removes the passed object from {@link #timestamps}.<br/>
    * 
-   * 
-   * @param pTimestamps Object that should be removed from the association "timestamps". The parameter must not be null.
+   * @param pTimestamps Object that should be removed from {@link #timestamps}. The parameter must not be null.
    */
   public void removeFromTimestamps( LocalDateTime pTimestamps ) {
     // Remove passed object from collection of associated LocalDateTime objects.
@@ -786,8 +703,7 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method removes all objects from the association "timestamps".
-   * 
+   * Method removes all objects from {@link #timestamps}.
    */
   public void clearTimestamps( ) {
     // Remove all objects from association "timestamps".
@@ -795,10 +711,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method returns the attribute "calendars".
+   * Method returns attribute {@link #calendars}.<br/>
    * 
-   * 
-   * @return Calendar Value to which the attribute "calendars" is set.
+   * @return {@link Calendar} Value to which {@link #calendars} is set.
    */
   public Calendar[] getCalendars( ) {
     Calendar[] lReturnValue;
@@ -813,10 +728,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "calendars".
+   * Method sets attribute {@link #calendars}.<br/>
    * 
-   * 
-   * @param pCalendars Value to which the attribute "calendars" should be set.
+   * @param pCalendars Value to which {@link #calendars} should be set.
    */
   public void setCalendars( Calendar[] pCalendars ) {
     // Assign value to attribute
@@ -830,10 +744,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method returns the attribute "utilDates".
+   * Method returns attribute {@link #utilDates}.<br/>
    * 
-   * 
-   * @return Date Value to which the attribute "utilDates" is set.
+   * @return {@link Date} Value to which {@link #utilDates} is set.
    */
   public Date[] getUtilDates( ) {
     Date[] lReturnValue;
@@ -848,10 +761,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "utilDates".
+   * Method sets attribute {@link #utilDates}.<br/>
    * 
-   * 
-   * @param pUtilDates Value to which the attribute "utilDates" should be set.
+   * @param pUtilDates Value to which {@link #utilDates} should be set.
    */
   public void setUtilDates( Date[] pUtilDates ) {
     // Assign value to attribute
@@ -865,10 +777,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method returns the attribute "sqlTimestamps".
+   * Method returns attribute {@link #sqlTimestamps}.<br/>
    * 
-   * 
-   * @return Timestamp Value to which the attribute "sqlTimestamps" is set.
+   * @return {@link Timestamp} Value to which {@link #sqlTimestamps} is set.
    */
   public Timestamp[] getSqlTimestamps( ) {
     Timestamp[] lReturnValue;
@@ -883,10 +794,9 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method sets the attribute "sqlTimestamps".
+   * Method sets attribute {@link #sqlTimestamps}.<br/>
    * 
-   * 
-   * @param pSqlTimestamps Value to which the attribute "sqlTimestamps" should be set.
+   * @param pSqlTimestamps Value to which {@link #sqlTimestamps} should be set.
    */
   public void setSqlTimestamps( Timestamp[] pSqlTimestamps ) {
     // Assign value to attribute

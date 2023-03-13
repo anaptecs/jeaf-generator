@@ -9,10 +9,6 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class MappingChild extends MappingParent {
   /**
    * Default serial version uid.
@@ -24,9 +20,6 @@ public class MappingChild extends MappingParent {
    */
   public static final String VALUE = "value";
 
-  /**
-   * 
-   */
   private int value;
 
   /**
@@ -69,13 +62,9 @@ public class MappingChild extends MappingParent {
   }
 
   /**
-   * Class implements builder to create a new instance of class MappingChild. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>MappingChild</code>.
    */
   public static class Builder extends MappingParent.Builder {
-    /**
-     * 
-     */
     private int value;
 
     /**
@@ -97,9 +86,10 @@ public class MappingChild extends MappingParent {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setName( String pName ) {
@@ -109,9 +99,10 @@ public class MappingChild extends MappingParent {
     }
 
     /**
-     * Method sets the attribute "value".
+     * Method sets attribute {@link #value}.<br/>
      * 
-     * @param pValue Value to which the attribute "value" should be set.
+     * @param pValue Value to which {@link #value} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setValue( int pValue ) {
       // Assign value to attribute
@@ -144,20 +135,18 @@ public class MappingChild extends MappingParent {
   }
 
   /**
-   * Method returns the attribute "value".
+   * Method returns attribute {@link #value}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "value" is set.
+   * @return int Value to which {@link #value} is set.
    */
   public int getValue( ) {
     return value;
   }
 
   /**
-   * Method sets the attribute "value".
+   * Method sets attribute {@link #value}.<br/>
    * 
-   * 
-   * @param pValue Value to which the attribute "value" should be set.
+   * @param pValue Value to which {@link #value} should be set.
    */
   public void setValue( int pValue ) {
     // Assign value to attribute

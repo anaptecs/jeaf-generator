@@ -7,10 +7,6 @@ package com.anaptecs.jeaf.junit.domainObjects;
 
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Price extends PriceBase {
   /**
    * Default serial version uid.
@@ -34,8 +30,7 @@ public class Price extends PriceBase {
   }
 
   /**
-  * 
-  */
+   */
   @Deprecated
   @Override
   public void recalculatePrice( ) {
@@ -43,10 +38,11 @@ public class Price extends PriceBase {
   }
 
   /**
-   * 
    * @param pParam1
-   * @param pParam2
-   * @return {@link String}
+   * @param pParam2 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override

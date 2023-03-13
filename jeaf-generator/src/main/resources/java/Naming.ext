@@ -1,4 +1,5 @@
 extension java::GeneratorCommons;
+extension functions::JEAFDeprecated;
 
 // Function returns the name of the parameter for a java method accoring to the anaptecs code styleguide. For the 
 // element "name" the function will return "pName".
@@ -104,36 +105,20 @@ cached String fqnForXML (uml::NamedElement element) :
 private cached String packageName (uml::Package pck) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getPackageName(org.eclipse.uml2.uml.Package);
 
-// Funktionen f�r den Kommentar von Klassen, Attributen und Methoden
-// zur Zeit wird er lediglich fuer die Klassen und Mehtoden Kommentare eingesetzt    
 String getComment(uml::Element element):
     getComment(element.ownedComment);
-    
-String getFormattedComment(uml::Element element, String indentation):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getFormattedComment(org.eclipse.uml2.uml.Element, java.lang.String);
     
 String getComment(List commentList):
     commentList.size > 0 ? getComment(commentList.get(0)) : "";
                   
 String getComment(uml::Comment comment):
     comment.body;
-    //JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getFormattedComment(org.eclipse.uml2.uml.Comment, "");
     
 boolean hasComment(uml::Element element):
-    getComment(element).length > 0;
+    getComment(element).length > 0 || (element.isJEAFDeprecated() && ((uml::NamedElement) element).hasMeaningfulDeprecationInfo());
 
 String getComment(Object this): "";
 
-String getJavadoc(uml::Interface interface):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavadoc(org.eclipse.uml2.uml.Interface);
-    
-String getJavadoc(uml::Class class):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavadoc(org.eclipse.uml2.uml.Class);
-    
-String getJavadoc(uml::Operation operation):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavadoc(org.eclipse.uml2.uml.Operation);
-    
-    
 // Konvertiert einen Parameter zu einer Instanzvariable
 String fromParameterToInstance(uml::NamedElement elem) : 
     JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.fromParameterToInstance(org.eclipse.uml2.uml.NamedElement);
@@ -187,6 +172,9 @@ cached boolean isSupportedReturnType(uml::Operation operation) :
 
 boolean hasReturnType(uml::Operation operation) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.hasReturnType(org.eclipse.uml2.uml.Operation);
+    
+cached uml::Parameter getReturnType(uml::Operation operation):
+    operation.returnResult().first();
 
 boolean hasOnlySupportedParamaterTypes(uml::Operation operation) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.hasOnlySupportedParamaterTypes(org.eclipse.uml2.uml.Operation);

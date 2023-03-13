@@ -14,10 +14,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 public class NotInlinedBeanParam implements ServiceObject {
   /**
@@ -25,30 +21,18 @@ public class NotInlinedBeanParam implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @HeaderParam("header")
   @NotNull
   private String header;
 
-  /**
-   * 
-   */
   @HeaderParam("doubleCode")
   @NotNull
   private DoubleCode doubleCode;
 
-  /**
-   * 
-   */
   @HeaderParam("extensibleEnum")
   @NotNull
   private ExtensibleEnum extensibleEnum;
 
-  /**
-   * 
-   */
   @HeaderParam("bookingID")
   @NotNull
   private BookingID bookingID;
@@ -109,28 +93,15 @@ public class NotInlinedBeanParam implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class NotInlinedBeanParam. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>NotInlinedBeanParam</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String header;
 
-    /**
-     * 
-     */
     private DoubleCode doubleCode;
 
-    /**
-     * 
-     */
     private ExtensibleEnum extensibleEnum;
 
-    /**
-     * 
-     */
     private BookingID bookingID;
 
     /**
@@ -154,9 +125,10 @@ public class NotInlinedBeanParam implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "header".
+     * Method sets attribute {@link #header}.<br/>
      * 
-     * @param pHeader Value to which the attribute "header" should be set.
+     * @param pHeader Value to which {@link #header} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setHeader( String pHeader ) {
       // Assign value to attribute
@@ -165,9 +137,10 @@ public class NotInlinedBeanParam implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "doubleCode".
+     * Method sets attribute {@link #doubleCode}.<br/>
      * 
-     * @param pDoubleCode Value to which the attribute "doubleCode" should be set.
+     * @param pDoubleCode Value to which {@link #doubleCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDoubleCode( DoubleCode pDoubleCode ) {
       // Assign value to attribute
@@ -176,9 +149,10 @@ public class NotInlinedBeanParam implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "extensibleEnum".
+     * Method sets attribute {@link #extensibleEnum}.<br/>
      * 
-     * @param pExtensibleEnum Value to which the attribute "extensibleEnum" should be set.
+     * @param pExtensibleEnum Value to which {@link #extensibleEnum} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setExtensibleEnum( ExtensibleEnum pExtensibleEnum ) {
       // Assign value to attribute
@@ -187,9 +161,10 @@ public class NotInlinedBeanParam implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "bookingID".
+     * Method sets attribute {@link #bookingID}.<br/>
      * 
-     * @param pBookingID Value to which the attribute "bookingID" should be set.
+     * @param pBookingID Value to which {@link #bookingID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingID( BookingID pBookingID ) {
       // Assign value to attribute
@@ -222,20 +197,18 @@ public class NotInlinedBeanParam implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "header".
+   * Method returns attribute {@link #header}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "header" is set.
+   * @return {@link String} Value to which {@link #header} is set.
    */
   public String getHeader( ) {
     return header;
   }
 
   /**
-   * Method sets the attribute "header".
+   * Method sets attribute {@link #header}.<br/>
    * 
-   * 
-   * @param pHeader Value to which the attribute "header" should be set.
+   * @param pHeader Value to which {@link #header} should be set.
    */
   public void setHeader( String pHeader ) {
     // Assign value to attribute
@@ -243,20 +216,18 @@ public class NotInlinedBeanParam implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "doubleCode".
+   * Method returns attribute {@link #doubleCode}.<br/>
    * 
-   * 
-   * @return DoubleCode Value to which the attribute "doubleCode" is set.
+   * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
    */
   public DoubleCode getDoubleCode( ) {
     return doubleCode;
   }
 
   /**
-   * Method sets the attribute "doubleCode".
+   * Method sets attribute {@link #doubleCode}.<br/>
    * 
-   * 
-   * @param pDoubleCode Value to which the attribute "doubleCode" should be set.
+   * @param pDoubleCode Value to which {@link #doubleCode} should be set.
    */
   public void setDoubleCode( DoubleCode pDoubleCode ) {
     // Assign value to attribute
@@ -264,20 +235,18 @@ public class NotInlinedBeanParam implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "extensibleEnum".
+   * Method returns attribute {@link #extensibleEnum}.<br/>
    * 
-   * 
-   * @return ExtensibleEnum Value to which the attribute "extensibleEnum" is set.
+   * @return {@link ExtensibleEnum} Value to which {@link #extensibleEnum} is set.
    */
   public ExtensibleEnum getExtensibleEnum( ) {
     return extensibleEnum;
   }
 
   /**
-   * Method sets the attribute "extensibleEnum".
+   * Method sets attribute {@link #extensibleEnum}.<br/>
    * 
-   * 
-   * @param pExtensibleEnum Value to which the attribute "extensibleEnum" should be set.
+   * @param pExtensibleEnum Value to which {@link #extensibleEnum} should be set.
    */
   public void setExtensibleEnum( ExtensibleEnum pExtensibleEnum ) {
     // Assign value to attribute
@@ -285,20 +254,18 @@ public class NotInlinedBeanParam implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "bookingID".
+   * Method returns attribute {@link #bookingID}.<br/>
    * 
-   * 
-   * @return BookingID Value to which the attribute "bookingID" is set.
+   * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
   public BookingID getBookingID( ) {
     return bookingID;
   }
 
   /**
-   * Method sets the attribute "bookingID".
+   * Method sets attribute {@link #bookingID}.<br/>
    * 
-   * 
-   * @param pBookingID Value to which the attribute "bookingID" should be set.
+   * @param pBookingID Value to which {@link #bookingID} should be set.
    */
   public void setBookingID( BookingID pBookingID ) {
     // Assign value to attribute

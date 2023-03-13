@@ -45,8 +45,8 @@ import com.anaptecs.spring.service.LocalBeanParamType;
 import com.anaptecs.spring.service.ProductService;
 
 /**
- * Class implements a proxy for an REST Service. The proxy is implemented as Spring services. This way to developers it
- * looks like a plain Spring Service.
+ * Class implements a proxy for REST Service {@link ProductService}. The proxy is implemented as Spring services. This
+ * way to developers it looks like a plain Spring Service.
  * 
  * This implementation deals with everything that is required to call the external REST service including the following
  * things:
@@ -80,8 +80,7 @@ public class ProductServiceRESTProxy implements ProductService {
   /**
    * Operation returns all available product.
    * 
-   * 
-   * @return {@link Product}
+   * @return {@link List<Product>}
    */
   @Override
   public List<Product> getProducts( ) {
@@ -101,7 +100,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pProductID
    * @return {@link Product}
    */
@@ -121,9 +119,8 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pProduct
-   * @return {@link Boolean}
+   * @return boolean
    */
   @Override
   public boolean createProduct( Product pProduct ) {
@@ -141,7 +138,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pContext
    * @return {@link Sortiment}
    */
@@ -185,7 +181,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pChannelCode
    * @return {@link ChannelCode}
    */
@@ -207,8 +202,7 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void ping( ) {
     // Create builder for HEAD request
@@ -223,7 +217,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @return {@link String}
    */
   @Deprecated
@@ -243,7 +236,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pContext
    * @return {@link String}
    */
@@ -282,7 +274,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pBeanParam
    */
   @Override
@@ -316,9 +307,10 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
-   * @param pParam1
-   * @return {@link String}
+   * @param pParam1 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override
@@ -339,8 +331,8 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
-   * @param pBody
+   * @param pBody <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    * @return {@link String}
    */
   @Override
@@ -364,8 +356,8 @@ public class ProductServiceRESTProxy implements ProductService {
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
    * to deprecated.
    * 
-   * 
-   * @param pProduct
+   * @param pProduct <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Override
   public void deprectedComplexRequestBody( @Deprecated Product pProduct ) {
@@ -385,8 +377,8 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
-   * @return {@link Product}
+   * @return {@link Product} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override
@@ -405,7 +397,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pContext
    */
   @Override
@@ -454,11 +445,8 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pChannelCode Channel Code that should be created.
-   * 
    * @return {@link ChannelCode} Created channel code
-   * 
    */
   @Override
   public ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode ) {
@@ -478,9 +466,8 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pCurrencies
-   * @return {@link CurrencyCode}
+   * @return {@link List<CurrencyCode>}
    */
   @Override
   public List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies ) {
@@ -505,7 +492,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pCurrency
    * @return {@link CurrencyCode}
    */
@@ -527,7 +513,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pStringCode
    * @return {@link IntegerCodeType}
    */
@@ -549,7 +534,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pBeanParam
    * @return {@link String}
    */
@@ -578,7 +562,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pParent
    * @return {@link String}
    */
@@ -607,7 +590,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pChild
    * @return {@link String}
    */
@@ -639,7 +621,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pPath
    * @param pStartTimestamp
    * @param pStartTime
@@ -706,7 +687,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pPath
    * @param pQueryParams
    */
@@ -765,7 +745,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pPath
    * @param pOffsetDateTime
    * @param pOffsetTime
@@ -829,7 +808,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pPath
    * @param pHeaderParams
    */
@@ -888,7 +866,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pReseller
    * @param pAuthenticationToken
    * @return {@link String}
@@ -913,7 +890,6 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * 
    * @param pContext
    * @return {@link String}
    */

@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class EnumTest implements ServiceObject {
   /**
    * Default serial version uid.
@@ -38,7 +34,8 @@ public class EnumTest implements ServiceObject {
   private ExtensibleEnum property;
 
   /**
-   * 
+   * <br/>
+   * <b>Default Value:</b> <code>RED</code>
    */
   private ExtensibleEnum enumRef;
 
@@ -84,17 +81,18 @@ public class EnumTest implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class EnumTest. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>EnumTest</code>.
    */
   public static class Builder {
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>GREEN</code>
      */
     private ExtensibleEnum property = ExtensibleEnum.GREEN;
 
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>RED</code>
      */
     private ExtensibleEnum enumRef = ExtensibleEnum.RED;
 
@@ -116,9 +114,10 @@ public class EnumTest implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "property".
+     * Method sets attribute {@link #property}.<br/>
      * 
-     * @param pProperty Value to which the attribute "property" should be set.
+     * @param pProperty Value to which {@link #property} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setProperty( ExtensibleEnum pProperty ) {
       // Assign value to attribute
@@ -127,9 +126,10 @@ public class EnumTest implements ServiceObject {
     }
 
     /**
-     * Method sets the association "enumRef".
+     * Method sets association {@link #enumRef}.<br/>
      * 
-     * @param pEnumRef ExtensibleEnum to which the association "enumRef" should be set.
+     * @param pEnumRef Value to which {@link #enumRef} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setEnumRef( ExtensibleEnum pEnumRef ) {
       enumRef = pEnumRef;
@@ -160,20 +160,18 @@ public class EnumTest implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "property".
+   * Method returns attribute {@link #property}.<br/>
    * 
-   * 
-   * @return ExtensibleEnum Value to which the attribute "property" is set.
+   * @return {@link ExtensibleEnum} Value to which {@link #property} is set.
    */
   public ExtensibleEnum getProperty( ) {
     return property;
   }
 
   /**
-   * Method sets the attribute "property".
+   * Method sets attribute {@link #property}.<br/>
    * 
-   * 
-   * @param pProperty Value to which the attribute "property" should be set.
+   * @param pProperty Value to which {@link #property} should be set.
    */
   public void setProperty( ExtensibleEnum pProperty ) {
     // Assign value to attribute
@@ -181,28 +179,25 @@ public class EnumTest implements ServiceObject {
   }
 
   /**
-   * Method returns the association "enumRef".
+   * Method returns association {@link #enumRef}.<br/>
    * 
-   *
-   * @return ExtensibleEnum ExtensibleEnum to which the association "enumRef" is set.
+   * @return {@link ExtensibleEnum} Value to which {@link #enumRef} is set.
    */
   public ExtensibleEnum getEnumRef( ) {
     return enumRef;
   }
 
   /**
-   * Method sets the association "enumRef".
+   * Method sets association {@link #enumRef}.<br/>
    * 
-   * 
-   * @param pEnumRef ExtensibleEnum to which the association "enumRef" should be set.
+   * @param pEnumRef Value to which {@link #enumRef} should be set.
    */
   public void setEnumRef( ExtensibleEnum pEnumRef ) {
     enumRef = pEnumRef;
   }
 
   /**
-   * Method unsets the association "enumRef".
-   * 
+   * Method unsets {@link #enumRef}.
    */
   public final void unsetEnumRef( ) {
     enumRef = null;

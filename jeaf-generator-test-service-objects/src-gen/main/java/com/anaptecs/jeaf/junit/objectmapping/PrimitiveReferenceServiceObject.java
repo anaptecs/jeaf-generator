@@ -16,10 +16,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class PrimitiveReferenceServiceObject implements ServiceObject {
   /**
    * Default serial version uid.
@@ -51,29 +47,14 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
    */
   public static final String STRINGARRAY = "stringArray";
 
-  /**
-   * 
-   */
   private Boolean aBoolean;
 
-  /**
-   * 
-   */
   private Set<Boolean> booleanSet;
 
-  /**
-   * 
-   */
   private Set<StringBuffer> buffers;
 
-  /**
-   * 
-   */
   private Set<String> strings;
 
-  /**
-   * 
-   */
   private String[] stringArray;
 
   /**
@@ -138,33 +119,17 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class PrimitiveReferenceServiceObject. As the class has read
-   * only attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>PrimitiveReferenceServiceObject</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private Boolean aBoolean;
 
-    /**
-     * 
-     */
     private Set<Boolean> booleanSet;
 
-    /**
-     * 
-     */
     private Set<StringBuffer> buffers;
 
-    /**
-     * 
-     */
     private Set<String> strings;
 
-    /**
-     * 
-     */
     private String[] stringArray;
 
     /**
@@ -189,9 +154,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the association "aBoolean".
+     * Method sets association {@link #aBoolean}.<br/>
      * 
-     * @param pABoolean Boolean to which the association "aBoolean" should be set.
+     * @param pABoolean Value to which {@link #aBoolean} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setABoolean( Boolean pABoolean ) {
       aBoolean = pABoolean;
@@ -199,9 +165,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the association "booleanSet".
+     * Method sets association {@link #booleanSet}.<br/>
      * 
-     * @param pBooleanSet Collection with objects to which the association should be set.
+     * @param pBooleanSet Collection to which {@link #booleanSet} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooleanSet( Set<Boolean> pBooleanSet ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -215,9 +182,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the association "buffers".
+     * Method sets association {@link #buffers}.<br/>
      * 
-     * @param pBuffers Collection with objects to which the association should be set.
+     * @param pBuffers Collection to which {@link #buffers} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBuffers( Set<StringBuffer> pBuffers ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -231,9 +199,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the association "strings".
+     * Method sets association {@link #strings}.<br/>
      * 
-     * @param pStrings Collection with objects to which the association should be set.
+     * @param pStrings Collection to which {@link #strings} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStrings( Set<String> pStrings ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -247,9 +216,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "stringArray".
+     * Method sets attribute {@link #stringArray}.<br/>
      * 
-     * @param pStringArray Value to which the attribute "stringArray" should be set.
+     * @param pStringArray Collection to which {@link #stringArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStringArray( String[] pStringArray ) {
       // Assign value to attribute
@@ -288,39 +258,35 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the association "aBoolean".
+   * Method returns association {@link #aBoolean}.<br/>
    * 
-   *
-   * @return Boolean Boolean to which the association "aBoolean" is set.
+   * @return {@link Boolean} Value to which {@link #aBoolean} is set.
    */
   public Boolean getABoolean( ) {
     return aBoolean;
   }
 
   /**
-   * Method sets the association "aBoolean".
+   * Method sets association {@link #aBoolean}.<br/>
    * 
-   * 
-   * @param pABoolean Boolean to which the association "aBoolean" should be set.
+   * @param pABoolean Value to which {@link #aBoolean} should be set.
    */
   public void setABoolean( Boolean pABoolean ) {
     aBoolean = pABoolean;
   }
 
   /**
-   * Method unsets the association "aBoolean".
-   * 
+   * Method unsets {@link #aBoolean}.
    */
   public final void unsetABoolean( ) {
     aBoolean = null;
   }
 
   /**
-   * Method returns the association "booleanSet".
+   * Method returns association {@link #booleanSet}.<br/>
    * 
-   *
-   * @return Collection All Boolean objects that belong to the association "booleanSet". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<Boolean>} Value to which {@link #booleanSet} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Boolean> getBooleanSet( ) {
     // Return all Boolean objects as unmodifiable collection.
@@ -328,10 +294,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method adds the passed Boolean object to the association "booleanSet".
+   * Method adds the passed object to {@link #booleanSet}.
    * 
-   * 
-   * @param pBooleanSet Object that should be added to the association "booleanSet". The parameter must not be null.
+   * @param pBooleanSet Object that should be added to {@link #booleanSet}. The parameter must not be null.
    */
   public void addToBooleanSet( Boolean pBooleanSet ) {
     // Check parameter "pBooleanSet" for invalid value null.
@@ -341,11 +306,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "booleanSet".
+   * Method adds all passed objects to {@link #booleanSet}.
    * 
-   * 
-   * @param pBooleanSet Collection with all objects that should be added to the association "booleanSet". The parameter
-   * must not be null.
+   * @param pBooleanSet Collection with all objects that should be added to {@link #booleanSet}. The parameter must not
+   * be null.
    */
   public void addToBooleanSet( Collection<Boolean> pBooleanSet ) {
     // Check parameter "pBooleanSet" for invalid value null.
@@ -357,10 +321,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method removes the passed Boolean object from the association "booleanSet".
+   * Method removes the passed object from {@link #booleanSet}.<br/>
    * 
-   * 
-   * @param pBooleanSet Object that should be removed from the association "booleanSet". The parameter must not be null.
+   * @param pBooleanSet Object that should be removed from {@link #booleanSet}. The parameter must not be null.
    */
   public void removeFromBooleanSet( Boolean pBooleanSet ) {
     // Check parameter for invalid value null.
@@ -370,8 +333,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "booleanSet".
-   * 
+   * Method removes all objects from {@link #booleanSet}.
    */
   public void clearBooleanSet( ) {
     // Remove all objects from association "booleanSet".
@@ -379,11 +341,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the association "buffers".
+   * Method returns association {@link #buffers}.<br/>
    * 
-   *
-   * @return Collection All StringBuffer objects that belong to the association "buffers". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link Set<StringBuffer>} Value to which {@link #buffers} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<StringBuffer> getBuffers( ) {
     // Return all StringBuffer objects as unmodifiable collection.
@@ -391,10 +352,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method adds the passed StringBuffer object to the association "buffers".
+   * Method adds the passed object to {@link #buffers}.
    * 
-   * 
-   * @param pBuffers Object that should be added to the association "buffers". The parameter must not be null.
+   * @param pBuffers Object that should be added to {@link #buffers}. The parameter must not be null.
    */
   public void addToBuffers( StringBuffer pBuffers ) {
     // Check parameter "pBuffers" for invalid value null.
@@ -404,11 +364,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "buffers".
+   * Method adds all passed objects to {@link #buffers}.
    * 
-   * 
-   * @param pBuffers Collection with all objects that should be added to the association "buffers". The parameter must
-   * not be null.
+   * @param pBuffers Collection with all objects that should be added to {@link #buffers}. The parameter must not be
+   * null.
    */
   public void addToBuffers( Collection<StringBuffer> pBuffers ) {
     // Check parameter "pBuffers" for invalid value null.
@@ -420,10 +379,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method removes the passed StringBuffer object from the association "buffers".
+   * Method removes the passed object from {@link #buffers}.<br/>
    * 
-   * 
-   * @param pBuffers Object that should be removed from the association "buffers". The parameter must not be null.
+   * @param pBuffers Object that should be removed from {@link #buffers}. The parameter must not be null.
    */
   public void removeFromBuffers( StringBuffer pBuffers ) {
     // Check parameter for invalid value null.
@@ -433,8 +391,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "buffers".
-   * 
+   * Method removes all objects from {@link #buffers}.
    */
   public void clearBuffers( ) {
     // Remove all objects from association "buffers".
@@ -442,11 +399,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the association "strings".
+   * Method returns association {@link #strings}.<br/>
    * 
-   *
-   * @return Collection All String objects that belong to the association "strings". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<String>} Value to which {@link #strings} is set. The method never returns null and the returned
+   * collection is unmodifiable.
    */
   public Set<String> getStrings( ) {
     // Return all String objects as unmodifiable collection.
@@ -454,10 +410,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method adds the passed String object to the association "strings".
+   * Method adds the passed object to {@link #strings}.
    * 
-   * 
-   * @param pStrings Object that should be added to the association "strings". The parameter must not be null.
+   * @param pStrings Object that should be added to {@link #strings}. The parameter must not be null.
    */
   public void addToStrings( String pStrings ) {
     // Check parameter "pStrings" for invalid value null.
@@ -467,11 +422,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "strings".
+   * Method adds all passed objects to {@link #strings}.
    * 
-   * 
-   * @param pStrings Collection with all objects that should be added to the association "strings". The parameter must
-   * not be null.
+   * @param pStrings Collection with all objects that should be added to {@link #strings}. The parameter must not be
+   * null.
    */
   public void addToStrings( Collection<String> pStrings ) {
     // Check parameter "pStrings" for invalid value null.
@@ -483,10 +437,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method removes the passed String object from the association "strings".
+   * Method removes the passed object from {@link #strings}.<br/>
    * 
-   * 
-   * @param pStrings Object that should be removed from the association "strings". The parameter must not be null.
+   * @param pStrings Object that should be removed from {@link #strings}. The parameter must not be null.
    */
   public void removeFromStrings( String pStrings ) {
     // Check parameter for invalid value null.
@@ -496,8 +449,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "strings".
-   * 
+   * Method removes all objects from {@link #strings}.
    */
   public void clearStrings( ) {
     // Remove all objects from association "strings".
@@ -505,10 +457,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "stringArray".
+   * Method returns attribute {@link #stringArray}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "stringArray" is set.
+   * @return {@link String} Value to which {@link #stringArray} is set.
    */
   public String[] getStringArray( ) {
     String[] lReturnValue;
@@ -523,10 +474,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method sets the attribute "stringArray".
+   * Method sets attribute {@link #stringArray}.<br/>
    * 
-   * 
-   * @param pStringArray Value to which the attribute "stringArray" should be set.
+   * @param pStringArray Value to which {@link #stringArray} should be set.
    */
   public void setStringArray( String[] pStringArray ) {
     // Assign value to attribute

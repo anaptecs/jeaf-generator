@@ -7,10 +7,6 @@ package com.anaptecs.jeaf.accounting.impl.pojo;
 
 import java.math.BigDecimal;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Account extends AccountBase {
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -65,7 +61,6 @@ public class Account extends AccountBase {
   }
 
   /**
-   * 
    * @return {@link BigDecimal}
    */
   @Override

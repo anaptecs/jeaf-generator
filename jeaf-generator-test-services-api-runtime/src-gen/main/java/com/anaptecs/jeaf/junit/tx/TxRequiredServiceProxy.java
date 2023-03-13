@@ -37,9 +37,8 @@ public final class TxRequiredServiceProxy extends ServiceProxy implements TxRequ
   }
 
   /**
-   * Generated proxy implementation for method "testTransactionBehavior".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.tx.TxRequiredService#testTransactionBehavior}
    */
   public void testTransactionBehavior( ) {
     try {

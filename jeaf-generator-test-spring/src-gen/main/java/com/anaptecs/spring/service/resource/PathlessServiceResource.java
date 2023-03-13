@@ -13,10 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.anaptecs.spring.service.PathlessService;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @RequestMapping(path = "/nova/prefix")
 @RestController
 public class PathlessServiceResource {

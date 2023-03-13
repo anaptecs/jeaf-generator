@@ -15,19 +15,12 @@ import com.anaptecs.jeaf.core.api.DomainObject;
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class NetzbereichDOBase extends DomainObject {
   /**
    * Default serial version uid.
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private Set<KanteDO> kanten;
 
   /**
@@ -48,11 +41,10 @@ public abstract class NetzbereichDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the association "kanten".
+   * Method returns association {@link #kanten}.<br/>
    * 
-   *
-   * @return Collection All KanteDO objects that belong to the association "kanten". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<KanteDO>} Value to which {@link #kanten} is set. The method never returns null and the returned
+   * collection is unmodifiable.
    */
   public Set<KanteDO> getKanten( ) {
     // Return all KanteDO objects as unmodifiable collection.
@@ -60,10 +52,9 @@ public abstract class NetzbereichDOBase extends DomainObject {
   }
 
   /**
-   * Method adds the passed KanteDO object to the association "kanten".
+   * Method adds the passed object to {@link #kanten}.
    * 
-   * 
-   * @param pKanten Object that should be added to the association "kanten". The parameter must not be null.
+   * @param pKanten Object that should be added to {@link #kanten}. The parameter must not be null.
    */
   public void addToKanten( KanteDO pKanten ) {
     // Check parameter "pKanten" for invalid value null.
@@ -78,11 +69,9 @@ public abstract class NetzbereichDOBase extends DomainObject {
   }
 
   /**
-   * Method adds all passed objects to the association "kanten".
+   * Method adds all passed objects to {@link #kanten}.
    * 
-   * 
-   * @param pKanten Collection with all objects that should be added to the association "kanten". The parameter must not
-   * be null.
+   * @param pKanten Collection with all objects that should be added to {@link #kanten}. The parameter must not be null.
    */
   public void addToKanten( Collection<KanteDO> pKanten ) {
     // Check parameter "pKanten" for invalid value null.
@@ -94,10 +83,9 @@ public abstract class NetzbereichDOBase extends DomainObject {
   }
 
   /**
-   * Method removes the passed KanteDO object from the association "kanten".
+   * Method removes the passed object from {@link #kanten}.<br/>
    * 
-   * 
-   * @param pKanten Object that should be removed from the association "kanten". The parameter must not be null.
+   * @param pKanten Object that should be removed from {@link #kanten}. The parameter must not be null.
    */
   public void removeFromKanten( KanteDO pKanten ) {
     // Check parameter for invalid value null.
@@ -112,8 +100,7 @@ public abstract class NetzbereichDOBase extends DomainObject {
   }
 
   /**
-   * Method removes all objects from the association "kanten".
-   * 
+   * Method removes all objects from {@link #kanten}.
    */
   public void clearKanten( ) {
     // Remove all objects from association "kanten".

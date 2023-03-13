@@ -25,10 +25,6 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
@@ -75,44 +71,23 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   private final ServiceObjectID objectID;
 
-  /**
-   * 
-   */
   @NotBlank
   private String name;
 
-  /**
-   * 
-   */
   @NotBlank
   private String firstName;
 
-  /**
-   * 
-   */
   @PastOrPresent
   private Calendar dateOfBirth;
 
-  /**
-   * 
-   */
   private transient Set<Account> accounts;
 
-  /**
-   * 
-   */
   @Valid
   private Individual customer;
 
-  /**
-   * 
-   */
   @PositiveOrZero
   private Integer age;
 
-  /**
-   * 
-   */
   @NotBlank
   private String displayName;
 
@@ -176,8 +151,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Class implements builder to create a new instance of class Person. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Person</code>.
    */
   public static class Builder {
     /**
@@ -185,43 +159,22 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
      */
     private ObjectIdentity<?> objectID;
 
-    /**
-     * 
-     */
     @NotBlank
     private String name;
 
-    /**
-     * 
-     */
     @NotBlank
     private String firstName;
 
-    /**
-     * 
-     */
     @PastOrPresent
     private Calendar dateOfBirth;
 
-    /**
-     * 
-     */
     private Set<Account> accounts;
 
-    /**
-     * 
-     */
     private Individual customer;
 
-    /**
-     * 
-     */
     @PositiveOrZero
     private Integer age;
 
-    /**
-     * 
-     */
     @NotBlank
     private String displayName;
 
@@ -258,9 +211,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -269,9 +223,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "firstName".
+     * Method sets attribute {@link #firstName}.<br/>
      * 
-     * @param pFirstName Value to which the attribute "firstName" should be set.
+     * @param pFirstName Value to which {@link #firstName} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setFirstName( String pFirstName ) {
       // Assign value to attribute
@@ -280,9 +235,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "dateOfBirth".
+     * Method sets attribute {@link #dateOfBirth}.<br/>
      * 
-     * @param pDateOfBirth Value to which the attribute "dateOfBirth" should be set.
+     * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDateOfBirth( Calendar pDateOfBirth ) {
       // Assign value to attribute
@@ -291,9 +247,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the association "accounts".
+     * Method sets association {@link #accounts}.<br/>
      * 
-     * @param pAccounts Collection with objects to which the association should be set.
+     * @param pAccounts Collection to which {@link #accounts} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAccounts( Set<Account> pAccounts ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -307,9 +264,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the association "customer".
+     * Method sets association {@link #customer}.<br/>
      * 
-     * @param pCustomer Individual to which the association "customer" should be set.
+     * @param pCustomer Value to which {@link #customer} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCustomer( Individual pCustomer ) {
       customer = pCustomer;
@@ -317,9 +275,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "age".
+     * Method sets attribute {@link #age}.<br/>
      * 
-     * @param pAge Value to which the attribute "age" should be set.
+     * @param pAge Value to which {@link #age} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAge( Integer pAge ) {
       // Assign value to attribute
@@ -328,9 +287,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     /**
-     * Method sets the attribute "displayName".
+     * Method sets attribute {@link #displayName}.<br/>
      * 
-     * @param pDisplayName Value to which the attribute "displayName" should be set.
+     * @param pDisplayName Value to which {@link #displayName} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDisplayName( String pDisplayName ) {
       // Assign value to attribute
@@ -391,20 +351,18 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -412,20 +370,18 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "firstName".
+   * Method returns attribute {@link #firstName}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "firstName" is set.
+   * @return {@link String} Value to which {@link #firstName} is set.
    */
   public String getFirstName( ) {
     return firstName;
   }
 
   /**
-   * Method sets the attribute "firstName".
+   * Method sets attribute {@link #firstName}.<br/>
    * 
-   * 
-   * @param pFirstName Value to which the attribute "firstName" should be set.
+   * @param pFirstName Value to which {@link #firstName} should be set.
    */
   public void setFirstName( String pFirstName ) {
     // Assign value to attribute
@@ -433,20 +389,18 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "dateOfBirth".
+   * Method returns attribute {@link #dateOfBirth}.<br/>
    * 
-   * 
-   * @return Calendar Value to which the attribute "dateOfBirth" is set.
+   * @return {@link Calendar} Value to which {@link #dateOfBirth} is set.
    */
   public Calendar getDateOfBirth( ) {
     return dateOfBirth;
   }
 
   /**
-   * Method sets the attribute "dateOfBirth".
+   * Method sets attribute {@link #dateOfBirth}.<br/>
    * 
-   * 
-   * @param pDateOfBirth Value to which the attribute "dateOfBirth" should be set.
+   * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
    */
   public void setDateOfBirth( Calendar pDateOfBirth ) {
     // Assign value to attribute
@@ -454,11 +408,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the association "accounts".
+   * Method returns association {@link #accounts}.<br/>
    * 
-   *
-   * @return Collection All Account objects that belong to the association "accounts". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link Set<Account>} Value to which {@link #accounts} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<Account> getAccounts( ) {
     // Return all Account objects as unmodifiable collection.
@@ -466,10 +419,9 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method adds the passed Account object to the association "accounts".
+   * Method adds the passed object to {@link #accounts}.
    * 
-   * 
-   * @param pAccounts Object that should be added to the association "accounts". The parameter must not be null.
+   * @param pAccounts Object that should be added to {@link #accounts}. The parameter must not be null.
    */
   public void addToAccounts( Account pAccounts ) {
     // Check parameter "pAccounts" for invalid value null.
@@ -484,11 +436,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method adds all passed objects to the association "accounts".
+   * Method adds all passed objects to {@link #accounts}.
    * 
-   * 
-   * @param pAccounts Collection with all objects that should be added to the association "accounts". The parameter must
-   * not be null.
+   * @param pAccounts Collection with all objects that should be added to {@link #accounts}. The parameter must not be
+   * null.
    */
   public void addToAccounts( Collection<Account> pAccounts ) {
     // Check parameter "pAccounts" for invalid value null.
@@ -500,10 +451,9 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method removes the passed Account object from the association "accounts".
+   * Method removes the passed object from {@link #accounts}.<br/>
    * 
-   * 
-   * @param pAccounts Object that should be removed from the association "accounts". The parameter must not be null.
+   * @param pAccounts Object that should be removed from {@link #accounts}. The parameter must not be null.
    */
   public void removeFromAccounts( Account pAccounts ) {
     // Check parameter for invalid value null.
@@ -518,8 +468,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method removes all objects from the association "accounts".
-   * 
+   * Method removes all objects from {@link #accounts}.
    */
   public void clearAccounts( ) {
     // Remove all objects from association "accounts".
@@ -532,20 +481,18 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the association "customer".
+   * Method returns association {@link #customer}.<br/>
    * 
-   *
-   * @return Individual Individual to which the association "customer" is set.
+   * @return {@link Individual} Value to which {@link #customer} is set.
    */
   public Individual getCustomer( ) {
     return customer;
   }
 
   /**
-   * Method sets the association "customer".
+   * Method sets association {@link #customer}.<br/>
    * 
-   * 
-   * @param pCustomer Individual to which the association "customer" should be set.
+   * @param pCustomer Value to which {@link #customer} should be set.
    */
   public void setCustomer( Individual pCustomer ) {
     // Release already referenced object before setting a new association.
@@ -561,8 +508,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method unsets the association "customer".
-   * 
+   * Method unsets {@link #customer}.
    */
   public final void unsetCustomer( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -575,20 +521,18 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "age".
+   * Method returns attribute {@link #age}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "age" is set.
+   * @return {@link Integer} Value to which {@link #age} is set.
    */
   public Integer getAge( ) {
     return age;
   }
 
   /**
-   * Method sets the attribute "age".
+   * Method sets attribute {@link #age}.<br/>
    * 
-   * 
-   * @param pAge Value to which the attribute "age" should be set.
+   * @param pAge Value to which {@link #age} should be set.
    */
   public void setAge( Integer pAge ) {
     // Assign value to attribute
@@ -596,20 +540,18 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method returns the attribute "displayName".
+   * Method returns attribute {@link #displayName}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "displayName" is set.
+   * @return {@link String} Value to which {@link #displayName} is set.
    */
   public String getDisplayName( ) {
     return displayName;
   }
 
   /**
-   * Method sets the attribute "displayName".
+   * Method sets attribute {@link #displayName}.<br/>
    * 
-   * 
-   * @param pDisplayName Value to which the attribute "displayName" should be set.
+   * @param pDisplayName Value to which {@link #displayName} should be set.
    */
   public void setDisplayName( String pDisplayName ) {
     // Assign value to attribute

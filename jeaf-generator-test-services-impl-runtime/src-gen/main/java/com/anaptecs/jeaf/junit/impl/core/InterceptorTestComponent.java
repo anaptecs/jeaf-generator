@@ -28,9 +28,8 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * Class represents the InterceptorTest component.
+ * Class represents the component InterceptorTest
  *
- * 
  */
 public final class InterceptorTestComponent implements ComponentImplementation {
   /**

@@ -8,9 +8,8 @@ package com.anaptecs.jeaf.junit.impl.internal;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 
 /**
- * Class represents the InternalStuff component.
- *
- * 
+ * Class represents the configuration for component
+ * {@link com.anaptecs.jeaf.junit.impl.internal.InternalStuffComponent}.
  */
 public final class InternalStuffComponentConfiguration {
   /**

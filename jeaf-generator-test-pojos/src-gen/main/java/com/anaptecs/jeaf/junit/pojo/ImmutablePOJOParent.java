@@ -11,10 +11,6 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -29,14 +25,8 @@ public class ImmutablePOJOParent extends AbstractPOJO {
    */
   public static final String ANOTHERPARENTATTRIBUTE = "anotherParentAttribute";
 
-  /**
-   * 
-   */
   private final String parentAttribute;
 
-  /**
-   * 
-   */
   private Integer anotherParentAttribute;
 
   /**
@@ -81,18 +71,11 @@ public class ImmutablePOJOParent extends AbstractPOJO {
   }
 
   /**
-   * Class implements builder to create a new instance of class ImmutablePOJOParent. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ImmutablePOJOParent</code>.
    */
   public static class Builder extends AbstractPOJO.Builder {
-    /**
-     * 
-     */
     private String parentAttribute;
 
-    /**
-     * 
-     */
     private Integer anotherParentAttribute;
 
     /**
@@ -116,9 +99,10 @@ public class ImmutablePOJOParent extends AbstractPOJO {
     }
 
     /**
-     * Method sets the attribute "abtractAttr".
+     * Method sets attribute {@link #abtractAttr}.<br/>
      * 
-     * @param pAbtractAttr Value to which the attribute "abtractAttr" should be set.
+     * @param pAbtractAttr Value to which {@link #abtractAttr} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setAbtractAttr( String pAbtractAttr ) {
@@ -128,9 +112,10 @@ public class ImmutablePOJOParent extends AbstractPOJO {
     }
 
     /**
-     * Method sets the attribute "parentAttribute".
+     * Method sets attribute {@link #parentAttribute}.<br/>
      * 
-     * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setParentAttribute( String pParentAttribute ) {
       // Assign value to attribute
@@ -139,9 +124,10 @@ public class ImmutablePOJOParent extends AbstractPOJO {
     }
 
     /**
-     * Method sets the attribute "anotherParentAttribute".
+     * Method sets attribute {@link #anotherParentAttribute}.<br/>
      * 
-     * @param pAnotherParentAttribute Value to which the attribute "anotherParentAttribute" should be set.
+     * @param pAnotherParentAttribute Value to which {@link #anotherParentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAnotherParentAttribute( Integer pAnotherParentAttribute ) {
       // Assign value to attribute
@@ -174,30 +160,27 @@ public class ImmutablePOJOParent extends AbstractPOJO {
   }
 
   /**
-   * Method returns the attribute "parentAttribute".
+   * Method returns attribute {@link #parentAttribute}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "parentAttribute" is set.
+   * @return {@link String} Value to which {@link #parentAttribute} is set.
    */
   public String getParentAttribute( ) {
     return parentAttribute;
   }
 
   /**
-   * Method returns the attribute "anotherParentAttribute".
+   * Method returns attribute {@link #anotherParentAttribute}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "anotherParentAttribute" is set.
+   * @return {@link Integer} Value to which {@link #anotherParentAttribute} is set.
    */
   public Integer getAnotherParentAttribute( ) {
     return anotherParentAttribute;
   }
 
   /**
-   * Method sets the attribute "anotherParentAttribute".
+   * Method sets attribute {@link #anotherParentAttribute}.<br/>
    * 
-   * 
-   * @param pAnotherParentAttribute Value to which the attribute "anotherParentAttribute" should be set.
+   * @param pAnotherParentAttribute Value to which {@link #anotherParentAttribute} should be set.
    */
   public void setAnotherParentAttribute( Integer pAnotherParentAttribute ) {
     // Assign value to attribute

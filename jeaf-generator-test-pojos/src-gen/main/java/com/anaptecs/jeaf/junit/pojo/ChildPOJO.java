@@ -13,11 +13,19 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
+ * This is the first line of the first comment<br/>
+ * 2nd line
+ * <p/>
+ * 2.1<br/>
+ * 2.2
+ * 
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
+ * @deprecated We do like this class any more. (<b>since:</b> Big bang, <b>removed with:</b> Last X-Mas)
  */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
+@Deprecated
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ChildPOJO extends ParentPOJO {
   /**
@@ -25,9 +33,6 @@ public class ChildPOJO extends ParentPOJO {
    */
   public static final String CHILDATTRIBUTE = "childAttribute";
 
-  /**
-   * 
-   */
   @NotNull
   private Integer childAttribute;
 
@@ -71,13 +76,10 @@ public class ChildPOJO extends ParentPOJO {
   }
 
   /**
-   * Class implements builder to create a new instance of class ChildPOJO. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ChildPOJO</code>.
    */
+  @Deprecated
   public static class Builder extends ParentPOJO.Builder {
-    /**
-     * 
-     */
     @NotNull
     private Integer childAttribute;
 
@@ -100,9 +102,10 @@ public class ChildPOJO extends ParentPOJO {
     }
 
     /**
-     * Method sets the attribute "parentAttribute".
+     * Method sets attribute {@link #parentAttribute}.<br/>
      * 
-     * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setParentAttribute( String pParentAttribute ) {
@@ -112,10 +115,12 @@ public class ChildPOJO extends ParentPOJO {
     }
 
     /**
-     * Method sets the attribute "weirdAttribute".
+     * Method sets attribute {@link #weirdAttribute}.<br/>
      * 
-     * @param pWeirdAttribute Value to which the attribute "weirdAttribute" should be set.
+     * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     @Override
     public Builder setWeirdAttribute( byte pWeirdAttribute ) {
       // Call super class implementation.
@@ -124,9 +129,10 @@ public class ChildPOJO extends ParentPOJO {
     }
 
     /**
-     * Method sets the attribute "hello".
+     * Method sets attribute {@link #hello}.<br/>
      * 
-     * @param pHello Value to which the attribute "hello" should be set.
+     * @param pHello Value to which {@link #hello} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setHello( String pHello ) {
@@ -136,9 +142,10 @@ public class ChildPOJO extends ParentPOJO {
     }
 
     /**
-     * Method sets the attribute "childAttribute".
+     * Method sets attribute {@link #childAttribute}.<br/>
      * 
-     * @param pChildAttribute Value to which the attribute "childAttribute" should be set.
+     * @param pChildAttribute Value to which {@link #childAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildAttribute( Integer pChildAttribute ) {
       // Assign value to attribute
@@ -170,20 +177,18 @@ public class ChildPOJO extends ParentPOJO {
   }
 
   /**
-   * Method returns the attribute "childAttribute".
+   * Method returns attribute {@link #childAttribute}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "childAttribute" is set.
+   * @return {@link Integer} Value to which {@link #childAttribute} is set.
    */
   public Integer getChildAttribute( ) {
     return childAttribute;
   }
 
   /**
-   * Method sets the attribute "childAttribute".
+   * Method sets attribute {@link #childAttribute}.<br/>
    * 
-   * 
-   * @param pChildAttribute Value to which the attribute "childAttribute" should be set.
+   * @param pChildAttribute Value to which {@link #childAttribute} should be set.
    */
   public void setChildAttribute( Integer pChildAttribute ) {
     // Assign value to attribute

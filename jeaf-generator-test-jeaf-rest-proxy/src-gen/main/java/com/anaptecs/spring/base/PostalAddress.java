@@ -13,10 +13,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PostalAddress implements Serializable {
   /**
@@ -44,24 +40,12 @@ public class PostalAddress implements Serializable {
    */
   public static final String POSTALCODE = "postalCode";
 
-  /**
-   * 
-   */
   private String street;
 
-  /**
-   * 
-   */
   private String houseNumber;
 
-  /**
-   * 
-   */
   private String city;
 
-  /**
-   * 
-   */
   private int postalCode;
 
   /**
@@ -119,28 +103,15 @@ public class PostalAddress implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class PostalAddress. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>PostalAddress</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String street;
 
-    /**
-     * 
-     */
     private String houseNumber;
 
-    /**
-     * 
-     */
     private String city;
 
-    /**
-     * 
-     */
     private int postalCode;
 
     /**
@@ -163,9 +134,10 @@ public class PostalAddress implements Serializable {
     }
 
     /**
-     * Method sets the attribute "street".
+     * Method sets attribute {@link #street}.<br/>
      * 
-     * @param pStreet Value to which the attribute "street" should be set.
+     * @param pStreet Value to which {@link #street} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStreet( String pStreet ) {
       // Assign value to attribute
@@ -174,9 +146,10 @@ public class PostalAddress implements Serializable {
     }
 
     /**
-     * Method sets the attribute "houseNumber".
+     * Method sets attribute {@link #houseNumber}.<br/>
      * 
-     * @param pHouseNumber Value to which the attribute "houseNumber" should be set.
+     * @param pHouseNumber Value to which {@link #houseNumber} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setHouseNumber( String pHouseNumber ) {
       // Assign value to attribute
@@ -185,9 +158,10 @@ public class PostalAddress implements Serializable {
     }
 
     /**
-     * Method sets the attribute "city".
+     * Method sets attribute {@link #city}.<br/>
      * 
-     * @param pCity Value to which the attribute "city" should be set.
+     * @param pCity Value to which {@link #city} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCity( String pCity ) {
       // Assign value to attribute
@@ -196,9 +170,10 @@ public class PostalAddress implements Serializable {
     }
 
     /**
-     * Method sets the attribute "postalCode".
+     * Method sets attribute {@link #postalCode}.<br/>
      * 
-     * @param pPostalCode Value to which the attribute "postalCode" should be set.
+     * @param pPostalCode Value to which {@link #postalCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPostalCode( int pPostalCode ) {
       // Assign value to attribute
@@ -231,20 +206,18 @@ public class PostalAddress implements Serializable {
   }
 
   /**
-   * Method returns the attribute "street".
+   * Method returns attribute {@link #street}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "street" is set.
+   * @return {@link String} Value to which {@link #street} is set.
    */
   public String getStreet( ) {
     return street;
   }
 
   /**
-   * Method sets the attribute "street".
+   * Method sets attribute {@link #street}.<br/>
    * 
-   * 
-   * @param pStreet Value to which the attribute "street" should be set.
+   * @param pStreet Value to which {@link #street} should be set.
    */
   public void setStreet( String pStreet ) {
     // Assign value to attribute
@@ -252,20 +225,18 @@ public class PostalAddress implements Serializable {
   }
 
   /**
-   * Method returns the attribute "houseNumber".
+   * Method returns attribute {@link #houseNumber}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "houseNumber" is set.
+   * @return {@link String} Value to which {@link #houseNumber} is set.
    */
   public String getHouseNumber( ) {
     return houseNumber;
   }
 
   /**
-   * Method sets the attribute "houseNumber".
+   * Method sets attribute {@link #houseNumber}.<br/>
    * 
-   * 
-   * @param pHouseNumber Value to which the attribute "houseNumber" should be set.
+   * @param pHouseNumber Value to which {@link #houseNumber} should be set.
    */
   public void setHouseNumber( String pHouseNumber ) {
     // Assign value to attribute
@@ -273,20 +244,18 @@ public class PostalAddress implements Serializable {
   }
 
   /**
-   * Method returns the attribute "city".
+   * Method returns attribute {@link #city}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "city" is set.
+   * @return {@link String} Value to which {@link #city} is set.
    */
   public String getCity( ) {
     return city;
   }
 
   /**
-   * Method sets the attribute "city".
+   * Method sets attribute {@link #city}.<br/>
    * 
-   * 
-   * @param pCity Value to which the attribute "city" should be set.
+   * @param pCity Value to which {@link #city} should be set.
    */
   public void setCity( String pCity ) {
     // Assign value to attribute
@@ -294,20 +263,18 @@ public class PostalAddress implements Serializable {
   }
 
   /**
-   * Method returns the attribute "postalCode".
+   * Method returns attribute {@link #postalCode}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "postalCode" is set.
+   * @return int Value to which {@link #postalCode} is set.
    */
   public int getPostalCode( ) {
     return postalCode;
   }
 
   /**
-   * Method sets the attribute "postalCode".
+   * Method sets attribute {@link #postalCode}.<br/>
    * 
-   * 
-   * @param pPostalCode Value to which the attribute "postalCode" should be set.
+   * @param pPostalCode Value to which {@link #postalCode} should be set.
    */
   public void setPostalCode( int pPostalCode ) {
     // Assign value to attribute

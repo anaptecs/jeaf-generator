@@ -5,10 +5,6 @@ import java.util.List;
 import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class NRelationSubOneBOBase extends NReleationBO {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -25,9 +21,6 @@ public abstract class NRelationSubOneBOBase extends NReleationBO {
    */
   public static final String FIELDONE_ATTRIBUTE = "fieldOne";
 
-  /**
-   * 
-   */
   private String fieldOne;
 
   /**
@@ -47,20 +40,18 @@ public abstract class NRelationSubOneBOBase extends NReleationBO {
   }
 
   /**
-   * Method returns the attribute "fieldOne".
+   * Method returns attribute {@link #fieldOne}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "fieldOne" is set.
+   * @return {@link String} Value to which {@link #fieldOne} is set.
    */
   public String getFieldOne( ) {
     return fieldOne;
   }
 
   /**
-   * Method sets the attribute "fieldOne".
+   * Method sets attribute {@link #fieldOne}.<br/>
    * 
-   * 
-   * @param pFieldOne Value to which the attribute "fieldOne" should be set.
+   * @param pFieldOne Value to which {@link #fieldOne} should be set.
    */
   public void setFieldOne( String pFieldOne ) {
     // Assign value to attribute

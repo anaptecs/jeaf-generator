@@ -14,19 +14,12 @@ import com.anaptecs.jeaf.core.api.DomainObject;
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class PfadDOBase extends DomainObject {
   /**
    * Default serial version uid.
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private List<KanteDO> kantenSequenz;
 
   /**
@@ -47,11 +40,10 @@ public abstract class PfadDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the association "kantenSequenz".
+   * Method returns association {@link #kantenSequenz}.<br/>
    * 
-   *
-   * @return Collection All KanteDO objects that belong to the association "kantenSequenz". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link List<KanteDO>} Value to which {@link #kantenSequenz} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public List<KanteDO> getKantenSequenz( ) {
     // Return all KanteDO objects as unmodifiable collection.
@@ -59,11 +51,9 @@ public abstract class PfadDOBase extends DomainObject {
   }
 
   /**
-   * Method adds the passed KanteDO object to the association "kantenSequenz".
+   * Method adds the passed object to {@link #kantenSequenz}.
    * 
-   * 
-   * @param pKantenSequenz Object that should be added to the association "kantenSequenz". The parameter must not be
-   * null.
+   * @param pKantenSequenz Object that should be added to {@link #kantenSequenz}. The parameter must not be null.
    */
   public void addToKantenSequenz( KanteDO pKantenSequenz ) {
     // Check parameter "pKantenSequenz" for invalid value null.
@@ -73,11 +63,10 @@ public abstract class PfadDOBase extends DomainObject {
   }
 
   /**
-   * Method adds all passed objects to the association "kantenSequenz".
+   * Method adds all passed objects to {@link #kantenSequenz}.
    * 
-   * 
-   * @param pKantenSequenz Collection with all objects that should be added to the association "kantenSequenz". The
-   * parameter must not be null.
+   * @param pKantenSequenz Collection with all objects that should be added to {@link #kantenSequenz}. The parameter
+   * must not be null.
    */
   public void addToKantenSequenz( Collection<KanteDO> pKantenSequenz ) {
     // Check parameter "pKantenSequenz" for invalid value null.
@@ -89,11 +78,9 @@ public abstract class PfadDOBase extends DomainObject {
   }
 
   /**
-   * Method removes the passed KanteDO object from the association "kantenSequenz".
+   * Method removes the passed object from {@link #kantenSequenz}.<br/>
    * 
-   * 
-   * @param pKantenSequenz Object that should be removed from the association "kantenSequenz". The parameter must not be
-   * null.
+   * @param pKantenSequenz Object that should be removed from {@link #kantenSequenz}. The parameter must not be null.
    */
   public void removeFromKantenSequenz( KanteDO pKantenSequenz ) {
     // Check parameter for invalid value null.
@@ -103,8 +90,7 @@ public abstract class PfadDOBase extends DomainObject {
   }
 
   /**
-   * Method removes all objects from the association "kantenSequenz".
-   * 
+   * Method removes all objects from {@link #kantenSequenz}.
    */
   public void clearKantenSequenz( ) {
     // Remove all objects from association "kantenSequenz".
@@ -112,7 +98,6 @@ public abstract class PfadDOBase extends DomainObject {
   }
 
   /**
-   * 
    * @return {@link Reiseweg}
    */
   public abstract Reiseweg ermittleReiseweg( );

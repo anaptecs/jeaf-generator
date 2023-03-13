@@ -40,12 +40,10 @@ final class SchedulingTestServiceImpl extends SchedulingTestServiceImplBase {
    * has to be called. The method must not throw any ApplicationExceptions. They have to be handled by this method. In
    * case of technical problems a SystemException may be thrown.
    * 
-   * 
    * @param pInfo pInfo Additional information that have been associated with the scheduled task when it was created.
    * The parameter is intended to be used to pass objects to the ScheduleableService implementation. Thus the
    * implementation has to decide if it expects a special subclass. The parameter is null if no additional information
    * were provided when the task was created.
-   * 
    */
   @Override
   public void executeScheduledTask( SchedulingInfo pInfo ) {

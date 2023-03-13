@@ -38,9 +38,8 @@ public final class SchufaServiceProxy extends ServiceProxy implements SchufaServ
   }
 
   /**
-   * Generated proxy implementation for method "performSchufaCheck".
-   * 
-   * 
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.accounting.impl.schufa.SchufaService#performSchufaCheck}
    */
   public boolean performSchufaCheck( SchufaRequest pRequest ) {
     try {

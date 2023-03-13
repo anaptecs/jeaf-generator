@@ -27,9 +27,8 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * Class represents the MailTest component.
+ * Class represents the component MailTest
  *
- * 
  */
 public final class MailTestComponent implements ComponentImplementation {
   /**

@@ -80,9 +80,9 @@
     import com.anaptecs.jeaf.core.spi.Layer;
     
     /**
-     * Class represents the «this.name» component.
+     * Class represents the component «this.name» 
      *
-     * «this.getComment()»
+     * «EXPAND functions::Javadoc::AddComment -»
      */     
     public final class «name»Component implements ComponentImplementation {      
       /**
@@ -941,9 +941,7 @@
     package «packageName()»;
     
     /**
-     * Class represents the «this.name» component.
-     *
-     * «this.getComment()»
+     * Class represents the configuration for component {@link «this.fqn()»Component}.
      */     
     public final class «name»ComponentConfiguration {      
 	  «IF this.getAllRealProperties().size > 0»

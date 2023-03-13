@@ -5,10 +5,6 @@ import java.util.List;
 import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class FlushTestMasterBOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -30,9 +26,6 @@ public abstract class FlushTestMasterBOBase extends PersistentObject {
    */
   public static final String REQUIREDFIELD_ATTRIBUTE = "requiredField";
 
-  /**
-   * 
-   */
   private String requiredField;
 
   /**
@@ -52,20 +45,18 @@ public abstract class FlushTestMasterBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "requiredField".
+   * Method returns attribute {@link #requiredField}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "requiredField" is set.
+   * @return {@link String} Value to which {@link #requiredField} is set.
    */
   public String getRequiredField( ) {
     return requiredField;
   }
 
   /**
-   * Method sets the attribute "requiredField".
+   * Method sets attribute {@link #requiredField}.<br/>
    * 
-   * 
-   * @param pRequiredField Value to which the attribute "requiredField" should be set.
+   * @param pRequiredField Value to which {@link #requiredField} should be set.
    */
   public void setRequiredField( String pRequiredField ) {
     // Assign value to attribute

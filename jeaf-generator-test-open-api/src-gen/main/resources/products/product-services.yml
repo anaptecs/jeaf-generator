@@ -2,7 +2,7 @@ openapi: 3.0.3
 
 info:
   title: Product Services
-  version: 1.6.95-SNAPSHOT
+  version: 1.6.96-SNAPSHOT
   description: |
     This component represents the OpenAPI interface of the accounting service.
     
@@ -262,6 +262,9 @@ paths:
     
   /products/deprecated/operation:
     get:
+      description: |
+        
+        Deprecated: This request is no longer supported.(since: 1.1.1, removed with: 2.3)
       operationId: deprecatedOperation
       deprecated: true
       responses:

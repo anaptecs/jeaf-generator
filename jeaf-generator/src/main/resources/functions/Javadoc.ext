@@ -1,0 +1,18 @@
+extension functions::JEAFDeprecated;
+extension java::GeneratorCommons;
+
+cached String getAuthor():
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getAuthor();
+    
+cached String getVersion():
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getVersion();
+
+cached boolean hasMeaningfulComment(uml::NamedElement element):
+    !element.ownedComment.select(e|e.body.length > 0).isEmpty;    
+    
+cached boolean hasMeaningfulJavadoc(uml::NamedElement element):
+    element.hasMeaningfulComment() || element.hasMeaningfulDeprecationInfo();
+
+cached boolean hasMeaningfulJavadocForProperty(uml::Property property):
+    property.hasMeaningfulComment() || property.hasMeaningfulDeprecationInfo() || property.hasExample() || property.defaultValue != null || property.isSoftLink();
+    

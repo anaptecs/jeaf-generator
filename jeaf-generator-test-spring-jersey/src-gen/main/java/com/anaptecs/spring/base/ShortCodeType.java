@@ -9,10 +9,6 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ShortCodeType {
   /**
@@ -20,9 +16,6 @@ public class ShortCodeType {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private short code;
 
   /**
@@ -77,13 +70,9 @@ public class ShortCodeType {
   }
 
   /**
-   * Class implements builder to create a new instance of class ShortCodeType. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ShortCodeType</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private short code;
 
     /**
@@ -103,9 +92,10 @@ public class ShortCodeType {
     }
 
     /**
-     * Method sets the attribute "code".
+     * Method sets attribute {@link #code}.<br/>
      * 
-     * @param pCode Value to which the attribute "code" should be set.
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCode( short pCode ) {
       // Assign value to attribute
@@ -125,20 +115,18 @@ public class ShortCodeType {
   }
 
   /**
-   * Method returns the attribute "code".
+   * Method returns attribute {@link #code}.<br/>
    * 
-   * 
-   * @return short Value to which the attribute "code" is set.
+   * @return short Value to which {@link #code} is set.
    */
   public short getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( short pCode ) {
     // Assign value to attribute

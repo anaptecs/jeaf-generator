@@ -8,9 +8,7 @@ package com.anaptecs.spring.service.impl;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 
 /**
- * Class represents the ProductManagement component.
- *
- * 
+ * Class represents the configuration for component {@link com.anaptecs.spring.service.impl.ProductManagementComponent}.
  */
 public final class ProductManagementComponentConfiguration {
   /**

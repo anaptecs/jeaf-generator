@@ -8,9 +8,8 @@ package com.anaptecs.jeaf.junit.impl.scheduling;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 
 /**
- * Class represents the SchedulingTest component.
- *
- * 
+ * Class represents the configuration for component
+ * {@link com.anaptecs.jeaf.junit.impl.scheduling.SchedulingTestComponent}.
  */
 public final class SchedulingTestComponentConfiguration {
   /**

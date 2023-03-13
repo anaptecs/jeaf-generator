@@ -7,10 +7,6 @@ package com.anaptecs.jeaf.junit.core;
 
 import com.anaptecs.jeaf.core.api.QueryObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class ProductQuery extends QueryObject {
   /**
    * Default serial version uid.
@@ -43,30 +39,15 @@ public class ProductQuery extends QueryObject {
    */
   public static final String MANUFACTURER = "manufacturer";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   @Deprecated
   private Integer minAvailability;
 
-  /**
-   * 
-   */
   private Integer minPrice;
 
-  /**
-   * 
-   */
   private Integer maxPrice;
 
-  /**
-   * 
-   */
   private String manufacturer;
 
   /**
@@ -77,20 +58,18 @@ public class ProductQuery extends QueryObject {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -98,10 +77,9 @@ public class ProductQuery extends QueryObject {
   }
 
   /**
-   * Method returns the attribute "minAvailability".
+   * Method returns attribute {@link #minAvailability}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "minAvailability" is set.
+   * @return {@link Integer} Value to which {@link #minAvailability} is set.
    */
   @Deprecated
   public Integer getMinAvailability( ) {
@@ -109,10 +87,9 @@ public class ProductQuery extends QueryObject {
   }
 
   /**
-   * Method sets the attribute "minAvailability".
+   * Method sets attribute {@link #minAvailability}.<br/>
    * 
-   * 
-   * @param pMinAvailability Value to which the attribute "minAvailability" should be set.
+   * @param pMinAvailability Value to which {@link #minAvailability} should be set.
    */
   @Deprecated
   public void setMinAvailability( Integer pMinAvailability ) {
@@ -121,20 +98,18 @@ public class ProductQuery extends QueryObject {
   }
 
   /**
-   * Method returns the attribute "minPrice".
+   * Method returns attribute {@link #minPrice}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "minPrice" is set.
+   * @return {@link Integer} Value to which {@link #minPrice} is set.
    */
   public Integer getMinPrice( ) {
     return minPrice;
   }
 
   /**
-   * Method sets the attribute "minPrice".
+   * Method sets attribute {@link #minPrice}.<br/>
    * 
-   * 
-   * @param pMinPrice Value to which the attribute "minPrice" should be set.
+   * @param pMinPrice Value to which {@link #minPrice} should be set.
    */
   public void setMinPrice( Integer pMinPrice ) {
     // Assign value to attribute
@@ -142,20 +117,18 @@ public class ProductQuery extends QueryObject {
   }
 
   /**
-   * Method returns the attribute "maxPrice".
+   * Method returns attribute {@link #maxPrice}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "maxPrice" is set.
+   * @return {@link Integer} Value to which {@link #maxPrice} is set.
    */
   public Integer getMaxPrice( ) {
     return maxPrice;
   }
 
   /**
-   * Method sets the attribute "maxPrice".
+   * Method sets attribute {@link #maxPrice}.<br/>
    * 
-   * 
-   * @param pMaxPrice Value to which the attribute "maxPrice" should be set.
+   * @param pMaxPrice Value to which {@link #maxPrice} should be set.
    */
   public void setMaxPrice( Integer pMaxPrice ) {
     // Assign value to attribute
@@ -163,20 +136,18 @@ public class ProductQuery extends QueryObject {
   }
 
   /**
-   * Method returns the attribute "manufacturer".
+   * Method returns attribute {@link #manufacturer}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "manufacturer" is set.
+   * @return {@link String} Value to which {@link #manufacturer} is set.
    */
   public String getManufacturer( ) {
     return manufacturer;
   }
 
   /**
-   * Method sets the attribute "manufacturer".
+   * Method sets attribute {@link #manufacturer}.<br/>
    * 
-   * 
-   * @param pManufacturer Value to which the attribute "manufacturer" should be set.
+   * @param pManufacturer Value to which {@link #manufacturer} should be set.
    */
   public void setManufacturer( String pManufacturer ) {
     // Assign value to attribute

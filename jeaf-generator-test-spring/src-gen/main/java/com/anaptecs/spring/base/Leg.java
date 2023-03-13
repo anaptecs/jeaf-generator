@@ -12,10 +12,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Leg {
   /**
@@ -33,19 +29,10 @@ public class Leg {
    */
   public static final String STOPOVERS = "stopovers";
 
-  /**
-   * 
-   */
   private PlaceRef start;
 
-  /**
-   * 
-   */
   private PlaceRef stop;
 
-  /**
-   * 
-   */
   private List<PlaceRef> stopovers;
 
   /**
@@ -93,23 +80,13 @@ public class Leg {
   }
 
   /**
-   * Class implements builder to create a new instance of class Leg. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Leg</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private PlaceRef start;
 
-    /**
-     * 
-     */
     private PlaceRef stop;
 
-    /**
-     * 
-     */
     private List<PlaceRef> stopovers;
 
     /**
@@ -150,9 +127,10 @@ public class Leg {
     }
 
     /**
-     * Method sets the association "start".
+     * Method sets association {@link #start}.<br/>
      * 
-     * @param pStart PlaceRef to which the association "start" should be set.
+     * @param pStart Value to which {@link #start} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStart( PlaceRef pStart ) {
       start = pStart;
@@ -160,9 +138,10 @@ public class Leg {
     }
 
     /**
-     * Method sets the association "stop".
+     * Method sets association {@link #stop}.<br/>
      * 
-     * @param pStop PlaceRef to which the association "stop" should be set.
+     * @param pStop Value to which {@link #stop} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStop( PlaceRef pStop ) {
       stop = pStop;
@@ -170,9 +149,10 @@ public class Leg {
     }
 
     /**
-     * Method sets the association "stopovers".
+     * Method sets association {@link #stopovers}.<br/>
      * 
-     * @param pStopovers Collection with objects to which the association should be set.
+     * @param pStopovers Collection to which {@link #stopovers} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStopovers( List<PlaceRef> pStopovers ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -196,67 +176,60 @@ public class Leg {
   }
 
   /**
-   * Method returns the association "start".
+   * Method returns association {@link #start}.<br/>
    * 
-   *
-   * @return PlaceRef PlaceRef to which the association "start" is set.
+   * @return {@link PlaceRef} Value to which {@link #start} is set.
    */
   public PlaceRef getStart( ) {
     return start;
   }
 
   /**
-   * Method sets the association "start".
+   * Method sets association {@link #start}.<br/>
    * 
-   * 
-   * @param pStart PlaceRef to which the association "start" should be set.
+   * @param pStart Value to which {@link #start} should be set.
    */
   public void setStart( PlaceRef pStart ) {
     start = pStart;
   }
 
   /**
-   * Method unsets the association "start".
-   * 
+   * Method unsets {@link #start}.
    */
   public final void unsetStart( ) {
     start = null;
   }
 
   /**
-   * Method returns the association "stop".
+   * Method returns association {@link #stop}.<br/>
    * 
-   *
-   * @return PlaceRef PlaceRef to which the association "stop" is set.
+   * @return {@link PlaceRef} Value to which {@link #stop} is set.
    */
   public PlaceRef getStop( ) {
     return stop;
   }
 
   /**
-   * Method sets the association "stop".
+   * Method sets association {@link #stop}.<br/>
    * 
-   * 
-   * @param pStop PlaceRef to which the association "stop" should be set.
+   * @param pStop Value to which {@link #stop} should be set.
    */
   public void setStop( PlaceRef pStop ) {
     stop = pStop;
   }
 
   /**
-   * Method unsets the association "stop".
-   * 
+   * Method unsets {@link #stop}.
    */
   public final void unsetStop( ) {
     stop = null;
   }
 
   /**
-   * Method returns the association "stopovers".
+   * Method returns association {@link #stopovers}.<br/>
    * 
-   *
-   * @return Collection All PlaceRef objects that belong to the association "stopovers". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link List<PlaceRef>} Value to which {@link #stopovers} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public List<PlaceRef> getStopovers( ) {
     // Return all PlaceRef objects as unmodifiable collection.
@@ -264,10 +237,9 @@ public class Leg {
   }
 
   /**
-   * Method adds the passed PlaceRef object to the association "stopovers".
+   * Method adds the passed object to {@link #stopovers}.
    * 
-   * 
-   * @param pStopovers Object that should be added to the association "stopovers". The parameter must not be null.
+   * @param pStopovers Object that should be added to {@link #stopovers}. The parameter must not be null.
    */
   public void addToStopovers( PlaceRef pStopovers ) {
     // Add passed object to collection of associated PlaceRef objects.
@@ -275,11 +247,10 @@ public class Leg {
   }
 
   /**
-   * Method adds all passed objects to the association "stopovers".
+   * Method adds all passed objects to {@link #stopovers}.
    * 
-   * 
-   * @param pStopovers Collection with all objects that should be added to the association "stopovers". The parameter
-   * must not be null.
+   * @param pStopovers Collection with all objects that should be added to {@link #stopovers}. The parameter must not be
+   * null.
    */
   public void addToStopovers( Collection<PlaceRef> pStopovers ) {
     // Add all passed objects.
@@ -289,10 +260,9 @@ public class Leg {
   }
 
   /**
-   * Method removes the passed PlaceRef object from the association "stopovers".
+   * Method removes the passed object from {@link #stopovers}.<br/>
    * 
-   * 
-   * @param pStopovers Object that should be removed from the association "stopovers". The parameter must not be null.
+   * @param pStopovers Object that should be removed from {@link #stopovers}. The parameter must not be null.
    */
   public void removeFromStopovers( PlaceRef pStopovers ) {
     // Remove passed object from collection of associated PlaceRef objects.
@@ -300,8 +270,7 @@ public class Leg {
   }
 
   /**
-   * Method removes all objects from the association "stopovers".
-   * 
+   * Method removes all objects from {@link #stopovers}.
    */
   public void clearStopovers( ) {
     // Remove all objects from association "stopovers".

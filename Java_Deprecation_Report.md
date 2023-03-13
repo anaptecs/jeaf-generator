@@ -11,6 +11,7 @@
 | `com.anaptecs.jeaf.junit.core.BusinessObjectTestService` |  |  |  |
 | `com.anaptecs.jeaf.junit.core.DeprecatedTestService` |  |  |  |
 | `com.anaptecs.jeaf.junit.core.JEAFTestService` |  |  |  |
+| `com.anaptecs.jeaf.junit.deprecation.DeprecatedService` | This service does not make sense any more.<br><br>The functionality is completely wrong. | 1.0 | 2023-12-31 |
 | `com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations` |  |  |  |
 | `com.anaptecs.jeaf.junit.openapi.service1.ProductService` |  |  |  |
 | `com.anaptecs.jeaf.junit.rest.DeprecatedRESTService` |  |  |  |
@@ -40,6 +41,7 @@
 
 
 
+
 ### `com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations`
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
@@ -61,7 +63,7 @@
 |   | `String pBody` |  |  |  |
 | `deprecatedComplexReturn()` | |  |  |  |
 |   | `Product ` |  |  |  |
-| `deprecatedOperation()` | |  |  |  |
+| `deprecatedOperation()` | | This request is no longer supported. | 1.1.1 | 2.3 |
 | `deprecatedParams(int)` | |  |  |  |
 |   | `int pParam1` |  |  |  |
 |   | `String ` |  |  |  |
@@ -81,7 +83,11 @@
 | `deprecatedAsyncParam(int)` | |  |  |  |
 |   | `int pParam1` |  |  |  |
 |   | `String ` |  |  |  |
-| `deprecatedOperation()` | | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13 |
+| `deprecatedOperation()` | | Please use something else.
+
+This is not the right operation any longer.
+
+Sorry!!! | a very long time | 2023-12-13 |
 | `deprecatedParameter(int, int)` | |  |  |  |
 |   | `int pParam2` |  |  |  |
 | `deprectaedReturnValue(int)` | |  |  |  |
@@ -121,10 +127,10 @@
 | `com.anaptecs.jeaf.junit.openapi.base.BeanParameter` | |  |  |  |
 |   | `oldStyle` |  |  |  |
 | `com.anaptecs.jeaf.junit.openapi.base.Campaign` | |  |  |  |
-|   | `theLink` |  |  |  |
-|   | `moreLinks` |  |  |  |
+|   | `theLink` | Please use "moreLinks" instead. | 2.3.1 | 2.4 |
+|   | `moreLinks` | No good any more | 1.2 | 3.0 |
 |   | `discountOffers` |  |  |  |
-| `com.anaptecs.jeaf.junit.openapi.base.ChildAA` | |  |  |  |
+| `com.anaptecs.jeaf.junit.openapi.base.ChildAA` | | Please do not use this class any longer. There are better alternatives but I do not tell you which ones. | 0.5 | 2.0 |
 | `com.anaptecs.jeaf.junit.openapi.base.ChildBB` | |  |  |  |
 |   | `deprecatedAttribute` |  |  |  |
 |   | `deprecatedBs` |  |  |  |
@@ -140,6 +146,7 @@
 |   | `theBankAccount` |  |  |  |
 |   | `legacyBankAccounts` |  |  |  |
 | `com.anaptecs.jeaf.junit.pojo.BChildPOJO` | |  |  |  |
+| `com.anaptecs.jeaf.junit.pojo.ChildPOJO` | | We do not like this class any more. | Big bang | Last X-Mas |
 | `com.anaptecs.jeaf.junit.pojo.ImmutableAssociationPOJO` | |  |  |  |
 |   | `deprecatedRefs` |  |  |  |
 | `com.anaptecs.jeaf.junit.pojo.ParentPOJO` | |  |  |  |
@@ -155,7 +162,7 @@
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|
 | `com.anaptecs.jeaf.junit.core.Color` | |  |  |  |
-|   | `LightGreen` |  |  |  |
+|   | `LightGreen` | We do not like this color any more. |  |  |
 | `com.anaptecs.jeaf.junit.core.Farbe` | |  |  |  |
 | `com.anaptecs.jeaf.junit.openapi.base.ChannelType` | |  |  |  |
 |   | `LEGACY_POS` |  |  |  |

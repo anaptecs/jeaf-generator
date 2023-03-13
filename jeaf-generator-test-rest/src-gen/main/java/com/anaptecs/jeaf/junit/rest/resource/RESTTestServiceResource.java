@@ -36,10 +36,6 @@ import com.anaptecs.jeaf.workload.api.WorkloadManager;
 import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;
 import com.anaptecs.jeaf.workload.api.rest.RESTWorkloadErrorHandler;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Path("/nova/prefix/api")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })

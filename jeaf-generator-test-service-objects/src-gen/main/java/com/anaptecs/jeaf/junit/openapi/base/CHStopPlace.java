@@ -9,10 +9,6 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class CHStopPlace extends StopPlaceRef {
   /**
    * Default serial version uid.
@@ -57,8 +53,7 @@ public class CHStopPlace extends StopPlaceRef {
   }
 
   /**
-   * Class implements builder to create a new instance of class CHStopPlace. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>CHStopPlace</code>.
    */
   public static class Builder extends StopPlaceRef.Builder {
     /**
@@ -79,9 +74,10 @@ public class CHStopPlace extends StopPlaceRef {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setName( String pName ) {

@@ -12,10 +12,6 @@ import javax.ws.rs.CookieParam;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.QueryParam;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Deprecated
 public class DeprecatedContext {
   /**
@@ -38,9 +34,6 @@ public class DeprecatedContext {
    */
   public static final String QUERYPARAM = "queryParam";
 
-  /**
-   * 
-   */
   @HeaderParam("token")
   @NotEmpty
   private String accessToken;
@@ -52,15 +45,9 @@ public class DeprecatedContext {
   @HeaderParam("lang")
   private Locale language;
 
-  /**
-   * 
-   */
   @CookieParam("reseller")
   private long resellerID;
 
-  /**
-   * 
-   */
   @QueryParam("q1")
   private String queryParam;
 
@@ -105,30 +92,21 @@ public class DeprecatedContext {
   }
 
   /**
-   * Class implements builder to create a new instance of class DeprecatedContext. As the class has read only attributes
-   * or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>DeprecatedContext</code>.
    */
   @Deprecated
   public static class Builder {
-    /**
-     * 
-     */
     @NotEmpty
     private String accessToken;
 
     /**
-     * 
+     * <br/>
+     * <b>Example:</b> <code>en</code>
      */
     private Locale language;
 
-    /**
-     * 
-     */
     private long resellerID;
 
-    /**
-     * 
-     */
     private String queryParam;
 
     /**
@@ -151,9 +129,10 @@ public class DeprecatedContext {
     }
 
     /**
-     * Method sets the attribute "accessToken".
+     * Method sets attribute {@link #accessToken}.<br/>
      * 
-     * @param pAccessToken Value to which the attribute "accessToken" should be set.
+     * @param pAccessToken Value to which {@link #accessToken} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAccessToken( String pAccessToken ) {
       // Assign value to attribute
@@ -162,9 +141,10 @@ public class DeprecatedContext {
     }
 
     /**
-     * Method sets the attribute "language".
+     * Method sets attribute {@link #language}.<br/>
      * 
-     * @param pLanguage Value to which the attribute "language" should be set.
+     * @param pLanguage Value to which {@link #language} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLanguage( Locale pLanguage ) {
       // Assign value to attribute
@@ -173,9 +153,10 @@ public class DeprecatedContext {
     }
 
     /**
-     * Method sets the attribute "resellerID".
+     * Method sets attribute {@link #resellerID}.<br/>
      * 
-     * @param pResellerID Value to which the attribute "resellerID" should be set.
+     * @param pResellerID Value to which {@link #resellerID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setResellerID( long pResellerID ) {
       // Assign value to attribute
@@ -184,9 +165,10 @@ public class DeprecatedContext {
     }
 
     /**
-     * Method sets the attribute "queryParam".
+     * Method sets attribute {@link #queryParam}.<br/>
      * 
-     * @param pQueryParam Value to which the attribute "queryParam" should be set.
+     * @param pQueryParam Value to which {@link #queryParam} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setQueryParam( String pQueryParam ) {
       // Assign value to attribute
@@ -206,20 +188,18 @@ public class DeprecatedContext {
   }
 
   /**
-   * Method returns the attribute "accessToken".
+   * Method returns attribute {@link #accessToken}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "accessToken" is set.
+   * @return {@link String} Value to which {@link #accessToken} is set.
    */
   public String getAccessToken( ) {
     return accessToken;
   }
 
   /**
-   * Method sets the attribute "accessToken".
+   * Method sets attribute {@link #accessToken}.<br/>
    * 
-   * 
-   * @param pAccessToken Value to which the attribute "accessToken" should be set.
+   * @param pAccessToken Value to which {@link #accessToken} should be set.
    */
   public void setAccessToken( String pAccessToken ) {
     // Assign value to attribute
@@ -227,20 +207,18 @@ public class DeprecatedContext {
   }
 
   /**
-   * Method returns the attribute "language".
+   * Method returns attribute {@link #language}.<br/>
    * 
-   * 
-   * @return Locale Value to which the attribute "language" is set.
+   * @return {@link Locale} Value to which {@link #language} is set.
    */
   public Locale getLanguage( ) {
     return language;
   }
 
   /**
-   * Method sets the attribute "language".
+   * Method sets attribute {@link #language}.<br/>
    * 
-   * 
-   * @param pLanguage Value to which the attribute "language" should be set.
+   * @param pLanguage Value to which {@link #language} should be set.
    */
   public void setLanguage( Locale pLanguage ) {
     // Assign value to attribute
@@ -248,20 +226,18 @@ public class DeprecatedContext {
   }
 
   /**
-   * Method returns the attribute "resellerID".
+   * Method returns attribute {@link #resellerID}.<br/>
    * 
-   * 
-   * @return long Value to which the attribute "resellerID" is set.
+   * @return long Value to which {@link #resellerID} is set.
    */
   public long getResellerID( ) {
     return resellerID;
   }
 
   /**
-   * Method sets the attribute "resellerID".
+   * Method sets attribute {@link #resellerID}.<br/>
    * 
-   * 
-   * @param pResellerID Value to which the attribute "resellerID" should be set.
+   * @param pResellerID Value to which {@link #resellerID} should be set.
    */
   public void setResellerID( long pResellerID ) {
     // Assign value to attribute
@@ -269,20 +245,18 @@ public class DeprecatedContext {
   }
 
   /**
-   * Method returns the attribute "queryParam".
+   * Method returns attribute {@link #queryParam}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "queryParam" is set.
+   * @return {@link String} Value to which {@link #queryParam} is set.
    */
   public String getQueryParam( ) {
     return queryParam;
   }
 
   /**
-   * Method sets the attribute "queryParam".
+   * Method sets attribute {@link #queryParam}.<br/>
    * 
-   * 
-   * @param pQueryParam Value to which the attribute "queryParam" should be set.
+   * @param pQueryParam Value to which {@link #queryParam} should be set.
    */
   public void setQueryParam( String pQueryParam ) {
     // Assign value to attribute

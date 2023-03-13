@@ -14,10 +14,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -40,20 +36,11 @@ public class ParentPOJO {
    */
   public static final String HELLO = "hello";
 
-  /**
-   * 
-   */
   private String parentAttribute;
 
-  /**
-   * 
-   */
   @Deprecated
   private byte weirdAttribute;
 
-  /**
-   * 
-   */
   private String hello;
 
   /**
@@ -98,24 +85,14 @@ public class ParentPOJO {
   }
 
   /**
-   * Class implements builder to create a new instance of class ParentPOJO. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ParentPOJO</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String parentAttribute;
 
-    /**
-     * 
-     */
     @Deprecated
     private byte weirdAttribute;
 
-    /**
-     * 
-     */
     private String hello;
 
     /**
@@ -137,9 +114,10 @@ public class ParentPOJO {
     }
 
     /**
-     * Method sets the attribute "parentAttribute".
+     * Method sets attribute {@link #parentAttribute}.<br/>
      * 
-     * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setParentAttribute( String pParentAttribute ) {
       // Assign value to attribute
@@ -148,9 +126,10 @@ public class ParentPOJO {
     }
 
     /**
-     * Method sets the attribute "weirdAttribute".
+     * Method sets attribute {@link #weirdAttribute}.<br/>
      * 
-     * @param pWeirdAttribute Value to which the attribute "weirdAttribute" should be set.
+     * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
     public Builder setWeirdAttribute( byte pWeirdAttribute ) {
@@ -160,9 +139,10 @@ public class ParentPOJO {
     }
 
     /**
-     * Method sets the attribute "hello".
+     * Method sets attribute {@link #hello}.<br/>
      * 
-     * @param pHello Value to which the attribute "hello" should be set.
+     * @param pHello Value to which {@link #hello} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setHello( String pHello ) {
       // Assign value to attribute
@@ -194,20 +174,18 @@ public class ParentPOJO {
   }
 
   /**
-   * Method returns the attribute "parentAttribute".
+   * Method returns attribute {@link #parentAttribute}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "parentAttribute" is set.
+   * @return {@link String} Value to which {@link #parentAttribute} is set.
    */
   public String getParentAttribute( ) {
     return parentAttribute;
   }
 
   /**
-   * Method sets the attribute "parentAttribute".
+   * Method sets attribute {@link #parentAttribute}.<br/>
    * 
-   * 
-   * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    */
   public void setParentAttribute( String pParentAttribute ) {
     // Assign value to attribute
@@ -215,10 +193,9 @@ public class ParentPOJO {
   }
 
   /**
-   * Method returns the attribute "weirdAttribute".
+   * Method returns attribute {@link #weirdAttribute}.<br/>
    * 
-   * 
-   * @return byte Value to which the attribute "weirdAttribute" is set.
+   * @return byte Value to which {@link #weirdAttribute} is set.
    */
   @Deprecated
   public byte getWeirdAttribute( ) {
@@ -226,10 +203,9 @@ public class ParentPOJO {
   }
 
   /**
-   * Method sets the attribute "weirdAttribute".
+   * Method sets attribute {@link #weirdAttribute}.<br/>
    * 
-   * 
-   * @param pWeirdAttribute Value to which the attribute "weirdAttribute" should be set.
+   * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
    */
   @Deprecated
   public void setWeirdAttribute( byte pWeirdAttribute ) {
@@ -238,20 +214,18 @@ public class ParentPOJO {
   }
 
   /**
-   * Method returns the attribute "hello".
+   * Method returns attribute {@link #hello}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "hello" is set.
+   * @return {@link String} Value to which {@link #hello} is set.
    */
   public String getHello( ) {
     return hello;
   }
 
   /**
-   * Method sets the attribute "hello".
+   * Method sets attribute {@link #hello}.<br/>
    * 
-   * 
-   * @param pHello Value to which the attribute "hello" should be set.
+   * @param pHello Value to which {@link #hello} should be set.
    */
   public void setHello( String pHello ) {
     // Assign value to attribute

@@ -5,10 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class TopoRef extends PlaceRef {
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -47,8 +43,7 @@ public class TopoRef extends PlaceRef {
   }
 
   /**
-   * Class implements builder to create a new instance of class TopoRef. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>TopoRef</code>.
    */
   public static class Builder extends PlaceRef.Builder {
     /**
@@ -69,9 +64,10 @@ public class TopoRef extends PlaceRef {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setName( String pName ) {

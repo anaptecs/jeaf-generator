@@ -8,10 +8,6 @@ package com.anaptecs.jeaf.accounting.impl.domainobjects;
 import com.anaptecs.jeaf.core.api.DomainObjectID;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class AccountDO extends AccountDOBase {
   /**
    * Default serial version uid.
@@ -35,7 +31,6 @@ public class AccountDO extends AccountDOBase {
   }
 
   /**
-   * 
    * @return {@link ServiceObjectID}
    */
   @Override

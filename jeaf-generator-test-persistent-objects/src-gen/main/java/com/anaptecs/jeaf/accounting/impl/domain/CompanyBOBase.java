@@ -5,10 +5,6 @@ import java.util.List;
 import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class CompanyBOBase extends CustomerBO {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -45,19 +41,10 @@ public abstract class CompanyBOBase extends CustomerBO {
    */
   public static final String TAXNUMBER_ATTRIBUTE = "taxNumber";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private Long registrationNumber;
 
-  /**
-   * 
-   */
   private Long taxNumber;
 
   /**
@@ -77,20 +64,18 @@ public abstract class CompanyBOBase extends CustomerBO {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -98,20 +83,18 @@ public abstract class CompanyBOBase extends CustomerBO {
   }
 
   /**
-   * Method returns the attribute "registrationNumber".
+   * Method returns attribute {@link #registrationNumber}.<br/>
    * 
-   * 
-   * @return Long Value to which the attribute "registrationNumber" is set.
+   * @return {@link Long} Value to which {@link #registrationNumber} is set.
    */
   public Long getRegistrationNumber( ) {
     return registrationNumber;
   }
 
   /**
-   * Method sets the attribute "registrationNumber".
+   * Method sets attribute {@link #registrationNumber}.<br/>
    * 
-   * 
-   * @param pRegistrationNumber Value to which the attribute "registrationNumber" should be set.
+   * @param pRegistrationNumber Value to which {@link #registrationNumber} should be set.
    */
   public void setRegistrationNumber( Long pRegistrationNumber ) {
     // Assign value to attribute
@@ -119,20 +102,18 @@ public abstract class CompanyBOBase extends CustomerBO {
   }
 
   /**
-   * Method returns the attribute "taxNumber".
+   * Method returns attribute {@link #taxNumber}.<br/>
    * 
-   * 
-   * @return Long Value to which the attribute "taxNumber" is set.
+   * @return {@link Long} Value to which {@link #taxNumber} is set.
    */
   public Long getTaxNumber( ) {
     return taxNumber;
   }
 
   /**
-   * Method sets the attribute "taxNumber".
+   * Method sets attribute {@link #taxNumber}.<br/>
    * 
-   * 
-   * @param pTaxNumber Value to which the attribute "taxNumber" should be set.
+   * @param pTaxNumber Value to which {@link #taxNumber} should be set.
    */
   public void setTaxNumber( Long pTaxNumber ) {
     // Assign value to attribute

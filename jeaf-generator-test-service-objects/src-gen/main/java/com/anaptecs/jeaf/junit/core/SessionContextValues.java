@@ -11,10 +11,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class SessionContextValues implements ServiceObject {
   /**
    * Default serial version uid.
@@ -31,14 +27,8 @@ public class SessionContextValues implements ServiceObject {
    */
   public static final String COUNTER = "counter";
 
-  /**
-   * 
-   */
   private String timestamp;
 
-  /**
-   * 
-   */
   private Integer counter;
 
   /**
@@ -82,18 +72,11 @@ public class SessionContextValues implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class SessionContextValues. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>SessionContextValues</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String timestamp;
 
-    /**
-     * 
-     */
     private Integer counter;
 
     /**
@@ -115,9 +98,10 @@ public class SessionContextValues implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "timestamp".
+     * Method sets attribute {@link #timestamp}.<br/>
      * 
-     * @param pTimestamp Value to which the attribute "timestamp" should be set.
+     * @param pTimestamp Value to which {@link #timestamp} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTimestamp( String pTimestamp ) {
       // Assign value to attribute
@@ -126,9 +110,10 @@ public class SessionContextValues implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "counter".
+     * Method sets attribute {@link #counter}.<br/>
      * 
-     * @param pCounter Value to which the attribute "counter" should be set.
+     * @param pCounter Value to which {@link #counter} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCounter( Integer pCounter ) {
       // Assign value to attribute
@@ -161,20 +146,18 @@ public class SessionContextValues implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "timestamp".
+   * Method returns attribute {@link #timestamp}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "timestamp" is set.
+   * @return {@link String} Value to which {@link #timestamp} is set.
    */
   public String getTimestamp( ) {
     return timestamp;
   }
 
   /**
-   * Method sets the attribute "timestamp".
+   * Method sets attribute {@link #timestamp}.<br/>
    * 
-   * 
-   * @param pTimestamp Value to which the attribute "timestamp" should be set.
+   * @param pTimestamp Value to which {@link #timestamp} should be set.
    */
   public void setTimestamp( String pTimestamp ) {
     // Assign value to attribute
@@ -182,20 +165,18 @@ public class SessionContextValues implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "counter".
+   * Method returns attribute {@link #counter}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "counter" is set.
+   * @return {@link Integer} Value to which {@link #counter} is set.
    */
   public Integer getCounter( ) {
     return counter;
   }
 
   /**
-   * Method sets the attribute "counter".
+   * Method sets attribute {@link #counter}.<br/>
    * 
-   * 
-   * @param pCounter Value to which the attribute "counter" should be set.
+   * @param pCounter Value to which {@link #counter} should be set.
    */
   public void setCounter( Integer pCounter ) {
     // Assign value to attribute

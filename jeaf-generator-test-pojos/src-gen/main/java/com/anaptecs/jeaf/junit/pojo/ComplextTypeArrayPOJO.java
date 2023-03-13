@@ -12,10 +12,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -25,9 +21,6 @@ public class ComplextTypeArrayPOJO {
    */
   public static final String PLAINPOJOS = "plainPOJOs";
 
-  /**
-   * 
-   */
   private PlainPOJO[] plainPOJOs;
 
   /**
@@ -70,13 +63,9 @@ public class ComplextTypeArrayPOJO {
   }
 
   /**
-   * Class implements builder to create a new instance of class ComplextTypeArrayPOJO. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ComplextTypeArrayPOJO</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private PlainPOJO[] plainPOJOs;
 
     /**
@@ -97,9 +86,10 @@ public class ComplextTypeArrayPOJO {
     }
 
     /**
-     * Method sets the attribute "plainPOJOs".
+     * Method sets attribute {@link #plainPOJOs}.<br/>
      * 
-     * @param pPlainPOJOs Value to which the attribute "plainPOJOs" should be set.
+     * @param pPlainPOJOs Collection to which {@link #plainPOJOs} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPlainPOJOs( PlainPOJO[] pPlainPOJOs ) {
       // Assign value to attribute
@@ -138,10 +128,9 @@ public class ComplextTypeArrayPOJO {
   }
 
   /**
-   * Method returns the attribute "plainPOJOs".
+   * Method returns attribute {@link #plainPOJOs}.<br/>
    * 
-   * 
-   * @return PlainPOJO Value to which the attribute "plainPOJOs" is set.
+   * @return {@link PlainPOJO} Value to which {@link #plainPOJOs} is set.
    */
   public PlainPOJO[] getPlainPOJOs( ) {
     PlainPOJO[] lReturnValue;
@@ -156,10 +145,9 @@ public class ComplextTypeArrayPOJO {
   }
 
   /**
-   * Method sets the attribute "plainPOJOs".
+   * Method sets attribute {@link #plainPOJOs}.<br/>
    * 
-   * 
-   * @param pPlainPOJOs Value to which the attribute "plainPOJOs" should be set.
+   * @param pPlainPOJOs Value to which {@link #plainPOJOs} should be set.
    */
   public void setPlainPOJOs( PlainPOJO[] pPlainPOJOs ) {
     // Assign value to attribute

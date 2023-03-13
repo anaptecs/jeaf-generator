@@ -12,10 +12,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PartnerContainer {
   /**
@@ -23,9 +19,6 @@ public class PartnerContainer {
    */
   public static final String PARTNERS = "partners";
 
-  /**
-   * 
-   */
   private List<Partner> partners;
 
   /**
@@ -72,13 +65,9 @@ public class PartnerContainer {
   }
 
   /**
-   * Class implements builder to create a new instance of class PartnerContainer. As the class has read only attributes
-   * or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>PartnerContainer</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private List<Partner> partners;
 
     /**
@@ -118,9 +107,10 @@ public class PartnerContainer {
     }
 
     /**
-     * Method sets the association "partners".
+     * Method sets association {@link #partners}.<br/>
      * 
-     * @param pPartners Collection with objects to which the association should be set.
+     * @param pPartners Collection to which {@link #partners} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPartners( List<Partner> pPartners ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -145,11 +135,10 @@ public class PartnerContainer {
   }
 
   /**
-   * Method returns the association "partners".
+   * Method returns association {@link #partners}.<br/>
    * 
-   *
-   * @return Collection All Partner objects that belong to the association "partners". The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link List<Partner>} Value to which {@link #partners} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public List<Partner> getPartners( ) {
     // Return all Partner objects as unmodifiable collection.
@@ -157,10 +146,9 @@ public class PartnerContainer {
   }
 
   /**
-   * Method adds the passed Partner object to the association "partners".
+   * Method adds the passed object to {@link #partners}.
    * 
-   * 
-   * @param pPartners Object that should be added to the association "partners". The parameter must not be null.
+   * @param pPartners Object that should be added to {@link #partners}. The parameter must not be null.
    */
   public void addToPartners( Partner pPartners ) {
     // Add passed object to collection of associated Partner objects.
@@ -168,11 +156,10 @@ public class PartnerContainer {
   }
 
   /**
-   * Method adds all passed objects to the association "partners".
+   * Method adds all passed objects to {@link #partners}.
    * 
-   * 
-   * @param pPartners Collection with all objects that should be added to the association "partners". The parameter must
-   * not be null.
+   * @param pPartners Collection with all objects that should be added to {@link #partners}. The parameter must not be
+   * null.
    */
   public void addToPartners( Collection<Partner> pPartners ) {
     // Add all passed objects.
@@ -182,10 +169,9 @@ public class PartnerContainer {
   }
 
   /**
-   * Method removes the passed Partner object from the association "partners".
+   * Method removes the passed object from {@link #partners}.<br/>
    * 
-   * 
-   * @param pPartners Object that should be removed from the association "partners". The parameter must not be null.
+   * @param pPartners Object that should be removed from {@link #partners}. The parameter must not be null.
    */
   public void removeFromPartners( Partner pPartners ) {
     // Remove passed object from collection of associated Partner objects.
@@ -193,8 +179,7 @@ public class PartnerContainer {
   }
 
   /**
-   * Method removes all objects from the association "partners".
-   * 
+   * Method removes all objects from {@link #partners}.
    */
   public void clearPartners( ) {
     // Remove all objects from association "partners".

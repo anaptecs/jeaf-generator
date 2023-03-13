@@ -14,10 +14,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.spring.base.BookingCode;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class QueryBeanParam implements Serializable {
   /**
    * Default serial version UID.
@@ -29,9 +25,6 @@ public class QueryBeanParam implements Serializable {
    */
   public static final String BOOKINGCODE = "bookingCode";
 
-  /**
-   * 
-   */
   @QueryParam("bookingCode")
   private BookingCode bookingCode;
 
@@ -84,13 +77,9 @@ public class QueryBeanParam implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class QueryBeanParam. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>QueryBeanParam</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private BookingCode bookingCode;
 
     /**
@@ -110,9 +99,10 @@ public class QueryBeanParam implements Serializable {
     }
 
     /**
-     * Method sets the attribute "bookingCode".
+     * Method sets attribute {@link #bookingCode}.<br/>
      * 
-     * @param pBookingCode Value to which the attribute "bookingCode" should be set.
+     * @param pBookingCode Value to which {@link #bookingCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingCode( BookingCode pBookingCode ) {
       // Assign value to attribute
@@ -145,20 +135,18 @@ public class QueryBeanParam implements Serializable {
   }
 
   /**
-   * Method returns the attribute "bookingCode".
+   * Method returns attribute {@link #bookingCode}.<br/>
    * 
-   * 
-   * @return BookingCode Value to which the attribute "bookingCode" is set.
+   * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
   public BookingCode getBookingCode( ) {
     return bookingCode;
   }
 
   /**
-   * Method sets the attribute "bookingCode".
+   * Method sets attribute {@link #bookingCode}.<br/>
    * 
-   * 
-   * @param pBookingCode Value to which the attribute "bookingCode" should be set.
+   * @param pBookingCode Value to which {@link #bookingCode} should be set.
    */
   public void setBookingCode( BookingCode pBookingCode ) {
     // Assign value to attribute

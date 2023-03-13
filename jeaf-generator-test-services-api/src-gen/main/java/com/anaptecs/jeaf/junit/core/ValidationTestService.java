@@ -12,13 +12,8 @@ import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.Service;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public interface ValidationTestService extends Service {
   /**
-   * 
    * @param pString1
    * @param pString2
    * @return {@link String}
@@ -27,7 +22,6 @@ public interface ValidationTestService extends Service {
   String validateInNOutput( @NotNull String pString1, @NotEmpty String pString2 );
 
   /**
-   * 
    * @param pString1
    * @param pString2
    * @return {@link String}
@@ -36,7 +30,6 @@ public interface ValidationTestService extends Service {
   String notValidOutput( String pString1, @NotEmpty String pString2 );
 
   /**
-   * 
    * @param pString1
    * @param pString2
    * @return {@link String}
@@ -45,7 +38,6 @@ public interface ValidationTestService extends Service {
   String validateOutputOnly( String pString1, String pString2 );
 
   /**
-   * 
    * @param pString1
    * @param pInteger
    * @return {@link String}
@@ -53,7 +45,6 @@ public interface ValidationTestService extends Service {
   String validateInputOnly( String pString1, @Min(value = 4711) int pInteger );
 
   /**
-   * 
    * @param pString1
    * @param pBool
    * @return {@link String}
@@ -61,7 +52,6 @@ public interface ValidationTestService extends Service {
   String noMethodValidation( String pString1, boolean pBool );
 
   /**
-   * 
    * @param pTestObject
    */
   void createValidationTestObject( @Valid ValidationTestObject pTestObject );

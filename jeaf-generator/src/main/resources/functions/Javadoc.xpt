@@ -1,0 +1,154 @@
+«EXTENSION functions::Javadoc»
+«EXTENSION functions::JEAFDeprecated»
+«EXTENSION java::Naming»
+«EXTENSION entity::ModelProperties»
+«EXTENSION java::GeneratorCommons»
+
+
+
+«DEFINE JavadocForType FOR uml::NamedElement»
+«IF this.hasMeaningfulJavadoc()»
+/**
+    «EXPAND AddComment -»
+ * @author «getAuthor()»
+ * @version «getVersion()»
+    «EXPAND DeprecatedJavadoc -»
+ */
+«ENDIF»
+«ENDDEFINE»
+
+
+«DEFINE JavadocForOperation FOR uml::Operation»
+/**
+    «EXPAND AddComment -»
+    «FOREACH this.getInputParameters() AS param -»
+ * @param «param.name» «param.ownedComment.first().body.replaceAll("\n", "<br/>")» «IF param.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«param.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «param.getDeprecatedSince()», <b>removed with:</b> «param.getDeprecationRemoval()»)«ENDIF»    
+    «ENDFOREACH -»
+    «IF this.hasReturnType() && this.getReturnTypeName() != "void" -»
+    «LET this.getReturnType() AS returnType -»
+ * @return «IF this.returnsPrimitiveType() == false»{@link «ENDIF»«this.getReturnTypeName()»«IF this.returnsPrimitiveType() == false»}«ENDIF» «returnType.ownedComment.first().body.replaceAll("\n", "<br/>")» «IF returnType.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«returnType.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «returnType.getDeprecatedSince()», <b>removed with:</b> «returnType.getDeprecationRemoval()»)«ENDIF»
+    «ENDLET-»
+    «ENDIF -»
+    «EXPAND DeprecatedJavadoc -»
+ */
+«ENDDEFINE»
+
+
+«DEFINE JavadocForProperty FOR uml::Property»
+«IF this.hasMeaningfulJavadocForProperty()»
+/**
+    «EXPAND AddComment -»
+    «IF this.isSoftLink() -»
+ * <p/>This class uses so called soft links for decoupling. The actual type that is hidden by {@link #«asInstanceVar()»} is <code>«type.fqn()»</code><br/>
+    «ENDIF -»
+    «IF this.defaultValue != null -»
+    <br/><b>Default Value:</b> <code>«this.initValue()»</code>
+    «ENDIF -»
+    «IF this.hasExample() -»
+    «IF ((JMM::Example) this).exampleValue.length > 0 -»
+    <br/><b>Example:</b> <code>«((JMM::Example) this).exampleValue»</code>
+    «ENDIF -»
+    «ENDIF -»
+    «EXPAND DeprecatedJavadoc -»
+ */
+«ENDIF»
+«ENDDEFINE»
+
+
+«DEFINE JavadocForPropertyGetter FOR uml::Property»
+/**
+ * Method returns «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>
+    «IF this.isSoftLink() -»
+ * <p/>This class uses so called soft links for decoupling. The actual type that is hidden by {@link #«asInstanceVar()»} is <code>«type.fqn()»</code><br/>
+    «ENDIF -»
+    «EXPAND AddComment -»
+    «IF this.isSoftLink() == false -»
+ * @return «IF type.isPrimitiveType() == false»{@link «this.fqn()»}«ELSE»«this.fqn()»«ENDIF» Value to which {@link #«asInstanceVar()»} is set.
+    «ELSE -»
+ * @return {@link «IF this.isMultivalued()»«this.getCollectionType()»<«((JMM::SoftLink)this).getSoftLinkType()»>«ELSE»«((JMM::SoftLink)this).getSoftLinkType()»«ENDIF»} Value to which {@link #«asInstanceVar()»} is set.
+    «ENDIF -»
+    «IF this.association != null && this.isMultivalued() -» 
+    The method never returns null and the returned collection is «IF disableCollectionImmutability()»modifiable«ELSE»unmodifiable«ENDIF».
+    «ENDIF -»
+    «EXPAND DeprecatedJavadoc -»
+ */
+«ENDDEFINE»
+
+
+«DEFINE JavadocForPropertyUnset FOR uml::Property»
+    /**
+     * Method unsets {@link #«asInstanceVar()»}.     
+     */
+«ENDDEFINE»
+
+
+«DEFINE JavadocForPropertyAdd FOR uml::Property»
+    /**
+     * Method adds the passed object to {@link #«asInstanceVar()»}.     
+     * 
+     * @param «asParameter()» Object that should be added to {@link #«asInstanceVar()»}. The parameter must not be null.
+    «EXPAND DeprecatedJavadoc -»
+     */
+«ENDDEFINE»
+
+
+«DEFINE JavadocForPropertyAddAll FOR uml::Property»
+    /**
+     * Method adds all passed objects to {@link #«asInstanceVar()»}.     
+     * 
+     * @param «asParameter()» Collection with all objects that should be added to {@link #«asInstanceVar()»}. The parameter must not be null.
+    «EXPAND DeprecatedJavadoc -»
+     */
+«ENDDEFINE»
+
+
+«DEFINE JavadocForPropertySetter FOR uml::Property»
+/**
+ * Method sets «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>
+ «EXPAND functions::Javadoc::AddComment -»
+ * @param «asParameter()» Value to which {@link #«asInstanceVar()»} should be set.
+ «EXPAND DeprecatedJavadoc -»
+ */
+«ENDDEFINE»
+
+
+«DEFINE JavadocForBuilderSetter(String builderClassName) FOR uml::Property»
+/**
+ * Method sets «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>
+ * @param «asParameter()» «IF type.isPrimitiveType() || this.isMultivalued() == false»Value«ELSE»Collection«ENDIF» to which {@link #«asInstanceVar()»} should be set.
+ * @return {@link «builderClassName»} Instance of this builder to support chaining setters. Method never returns null.
+ «EXPAND DeprecatedJavadoc -»
+ */
+«ENDDEFINE»
+
+
+«DEFINE JavadocForBuilderVarArgsSetter(String builderClassName) FOR uml::Property»
+/**
+ * Method sets «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>
+ * @param «asParameter()» Array with objects to which {@link #«asInstanceVar()»} should be set.
+ * @return {@link «builderClassName»} Instance of this builder to support chaining setters. Method never returns null.
+ «EXPAND DeprecatedJavadoc -»
+ */
+«ENDDEFINE»
+
+
+«DEFINE JavadocForLiteral FOR uml::EnumerationLiteral»
+«IF this.hasMeaningfulJavadoc()»
+/**
+    «EXPAND AddComment -»
+    «EXPAND DeprecatedJavadoc -»
+ */
+«ENDIF»
+«ENDDEFINE»
+
+
+«DEFINE AddComment FOR uml::NamedElement -»
+    «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
+ «comment.body.replaceAll("\n", "<br/>")»
+    «ENDFOREACH -»«ENDDEFINE»
+
+«DEFINE DeprecatedJavadoc FOR uml::NamedElement -»
+    «IF this.isJEAFDeprecated() && this.hasMeaningfulDeprecationInfo() -»
+ * @deprecated «this.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «IF this.getDeprecatedSince().length > 0»«this.getDeprecatedSince()»«ELSE»TBD«ENDIF», <b>removed with:</b> «IF this.getDeprecationRemoval().length > 0»«this.getDeprecationRemoval()»«ELSE»TBD«ENDIF»)   
+    «ENDIF-»
+«ENDDEFINE»

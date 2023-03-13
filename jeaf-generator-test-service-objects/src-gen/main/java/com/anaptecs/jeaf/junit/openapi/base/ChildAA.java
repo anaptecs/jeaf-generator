@@ -16,6 +16,8 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
+ * @deprecated Please do not use this class any longer. There are better alternatives but I do not tell you which ones.
+ * (<b>since:</b> 0.5, <b>removed with:</b> 2.0)
  */
 @Deprecated
 public class ChildAA extends ChildA {
@@ -55,34 +57,21 @@ public class ChildAA extends ChildA {
   public static final String CODES = "codes";
 
   /**
-   * Multi line docs
+   * Multi<br/>
+   * line<br/>
+   * docs
    */
   private byte childAAAttribute;
 
-  /**
-   * 
-   */
   @Size(min = 10, max = 100)
   private int[] sizedArray;
 
-  /**
-   * 
-   */
   private String[] requiredArray;
 
-  /**
-   * 
-   */
   private BigIntegerCode bigIntegerCode;
 
-  /**
-   * 
-   */
   private IntegerCodeType integerCode;
 
-  /**
-   * 
-   */
   private IntegerCode[] codes;
 
   /**
@@ -129,40 +118,26 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Class implements builder to create a new instance of class ChildAA. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ChildAA</code>.
    */
   @Deprecated
   public static class Builder extends ChildA.Builder {
     /**
-     * Multi line docs
+     * Multi<br/>
+     * line<br/>
+     * docs
      */
     private byte childAAAttribute;
 
-    /**
-     * 
-     */
     @Size(min = 10, max = 100)
     private int[] sizedArray;
 
-    /**
-     * 
-     */
     private String[] requiredArray;
 
-    /**
-     * 
-     */
     private BigIntegerCode bigIntegerCode;
 
-    /**
-     * 
-     */
     private IntegerCodeType integerCode;
 
-    /**
-     * 
-     */
     private IntegerCode[] codes;
 
     /**
@@ -189,9 +164,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "parentAttribute".
+     * Method sets attribute {@link #parentAttribute}.<br/>
      * 
-     * @param pParentAttribute Value to which the attribute "parentAttribute" should be set.
+     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setParentAttribute( String pParentAttribute ) {
@@ -201,9 +177,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the association "ibans".
+     * Method sets association {@link #ibans}.<br/>
      * 
-     * @param pIbans Collection with objects to which the association should be set.
+     * @param pIbans Collection to which {@link #ibans} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setIbans( Set<IBAN> pIbans ) {
@@ -213,10 +190,12 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the association "theBankAccount". I would like to document references to other types.
+     * Method sets association {@link #theBankAccount}.<br/>
      * 
-     * @param pTheBankAccount BankAccount to which the association "theBankAccount" should be set.
+     * @param pTheBankAccount Value to which {@link #theBankAccount} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     @Override
     public Builder setTheBankAccount( BankAccount pTheBankAccount ) {
       // Call super class implementation.
@@ -225,10 +204,12 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the association "legacyBankAccounts". Association is still there be SemVer compliant.
+     * Method sets association {@link #legacyBankAccounts}.<br/>
      * 
-     * @param pLegacyBankAccounts Collection with objects to which the association should be set.
+     * @param pLegacyBankAccounts Collection to which {@link #legacyBankAccounts} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     @Override
     public Builder setLegacyBankAccounts( List<BankAccount> pLegacyBankAccounts ) {
       // Call super class implementation.
@@ -237,9 +218,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "childAAttribute".
+     * Method sets attribute {@link #childAAttribute}.<br/>
      * 
-     * @param pChildAAttribute Value to which the attribute "childAAttribute" should be set.
+     * @param pChildAAttribute Value to which {@link #childAAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder setChildAAttribute( int pChildAAttribute ) {
@@ -249,9 +231,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "childAAAttribute". Multi line docs
+     * Method sets attribute {@link #childAAAttribute}.<br/>
      * 
-     * @param pChildAAAttribute Value to which the attribute "childAAAttribute" should be set.
+     * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setChildAAAttribute( byte pChildAAAttribute ) {
       // Assign value to attribute
@@ -260,9 +243,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "sizedArray".
+     * Method sets attribute {@link #sizedArray}.<br/>
      * 
-     * @param pSizedArray Value to which the attribute "sizedArray" should be set.
+     * @param pSizedArray Value to which {@link #sizedArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSizedArray( int[] pSizedArray ) {
       // Assign value to attribute
@@ -277,9 +261,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "requiredArray".
+     * Method sets attribute {@link #requiredArray}.<br/>
      * 
-     * @param pRequiredArray Value to which the attribute "requiredArray" should be set.
+     * @param pRequiredArray Collection to which {@link #requiredArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setRequiredArray( String[] pRequiredArray ) {
       // Assign value to attribute
@@ -294,9 +279,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "bigIntegerCode".
+     * Method sets attribute {@link #bigIntegerCode}.<br/>
      * 
-     * @param pBigIntegerCode Value to which the attribute "bigIntegerCode" should be set.
+     * @param pBigIntegerCode Value to which {@link #bigIntegerCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBigIntegerCode( BigIntegerCode pBigIntegerCode ) {
       // Assign value to attribute
@@ -305,9 +291,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the association "integerCode".
+     * Method sets association {@link #integerCode}.<br/>
      * 
-     * @param pIntegerCode IntegerCodeType to which the association "integerCode" should be set.
+     * @param pIntegerCode Value to which {@link #integerCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIntegerCode( IntegerCodeType pIntegerCode ) {
       integerCode = pIntegerCode;
@@ -315,9 +302,10 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets the attribute "codes".
+     * Method sets attribute {@link #codes}.<br/>
      * 
-     * @param pCodes Value to which the attribute "codes" should be set.
+     * @param pCodes Collection to which {@link #codes} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCodes( IntegerCode[] pCodes ) {
       // Assign value to attribute
@@ -355,18 +343,24 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns the attribute "childAAAttribute". Multi line docs
+   * Method returns attribute {@link #childAAAttribute}.<br/>
+   * Multi<br/>
+   * line<br/>
+   * docs
    * 
-   * @return byte Value to which the attribute "childAAAttribute" is set.
+   * @return byte Value to which {@link #childAAAttribute} is set.
    */
   public byte getChildAAAttribute( ) {
     return childAAAttribute;
   }
 
   /**
-   * Method sets the attribute "childAAAttribute". Multi line docs
+   * Method sets attribute {@link #childAAAttribute}.<br/>
+   * Multi<br/>
+   * line<br/>
+   * docs
    * 
-   * @param pChildAAAttribute Value to which the attribute "childAAAttribute" should be set.
+   * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
    */
   public void setChildAAAttribute( byte pChildAAAttribute ) {
     // Assign value to attribute
@@ -374,10 +368,9 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns the attribute "sizedArray".
+   * Method returns attribute {@link #sizedArray}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "sizedArray" is set.
+   * @return int Value to which {@link #sizedArray} is set.
    */
   public int[] getSizedArray( ) {
     int[] lReturnValue;
@@ -392,10 +385,9 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method sets the attribute "sizedArray".
+   * Method sets attribute {@link #sizedArray}.<br/>
    * 
-   * 
-   * @param pSizedArray Value to which the attribute "sizedArray" should be set.
+   * @param pSizedArray Value to which {@link #sizedArray} should be set.
    */
   public void setSizedArray( int[] pSizedArray ) {
     // Assign value to attribute
@@ -409,10 +401,9 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns the attribute "requiredArray".
+   * Method returns attribute {@link #requiredArray}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "requiredArray" is set.
+   * @return {@link String} Value to which {@link #requiredArray} is set.
    */
   public String[] getRequiredArray( ) {
     String[] lReturnValue;
@@ -427,10 +418,9 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method sets the attribute "requiredArray".
+   * Method sets attribute {@link #requiredArray}.<br/>
    * 
-   * 
-   * @param pRequiredArray Value to which the attribute "requiredArray" should be set.
+   * @param pRequiredArray Value to which {@link #requiredArray} should be set.
    */
   public void setRequiredArray( String[] pRequiredArray ) {
     // Assign value to attribute
@@ -444,20 +434,18 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns the attribute "bigIntegerCode".
+   * Method returns attribute {@link #bigIntegerCode}.<br/>
    * 
-   * 
-   * @return BigIntegerCode Value to which the attribute "bigIntegerCode" is set.
+   * @return {@link BigIntegerCode} Value to which {@link #bigIntegerCode} is set.
    */
   public BigIntegerCode getBigIntegerCode( ) {
     return bigIntegerCode;
   }
 
   /**
-   * Method sets the attribute "bigIntegerCode".
+   * Method sets attribute {@link #bigIntegerCode}.<br/>
    * 
-   * 
-   * @param pBigIntegerCode Value to which the attribute "bigIntegerCode" should be set.
+   * @param pBigIntegerCode Value to which {@link #bigIntegerCode} should be set.
    */
   public void setBigIntegerCode( BigIntegerCode pBigIntegerCode ) {
     // Assign value to attribute
@@ -465,38 +453,34 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method returns the association "integerCode".
+   * Method returns association {@link #integerCode}.<br/>
    * 
-   *
-   * @return IntegerCodeType IntegerCodeType to which the association "integerCode" is set.
+   * @return {@link IntegerCodeType} Value to which {@link #integerCode} is set.
    */
   public IntegerCodeType getIntegerCode( ) {
     return integerCode;
   }
 
   /**
-   * Method sets the association "integerCode".
+   * Method sets association {@link #integerCode}.<br/>
    * 
-   * 
-   * @param pIntegerCode IntegerCodeType to which the association "integerCode" should be set.
+   * @param pIntegerCode Value to which {@link #integerCode} should be set.
    */
   public void setIntegerCode( IntegerCodeType pIntegerCode ) {
     integerCode = pIntegerCode;
   }
 
   /**
-   * Method unsets the association "integerCode".
-   * 
+   * Method unsets {@link #integerCode}.
    */
   public final void unsetIntegerCode( ) {
     integerCode = null;
   }
 
   /**
-   * Method returns the attribute "codes".
+   * Method returns attribute {@link #codes}.<br/>
    * 
-   * 
-   * @return IntegerCode Value to which the attribute "codes" is set.
+   * @return {@link IntegerCode} Value to which {@link #codes} is set.
    */
   public IntegerCode[] getCodes( ) {
     IntegerCode[] lReturnValue;
@@ -511,10 +495,9 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method sets the attribute "codes".
+   * Method sets attribute {@link #codes}.<br/>
    * 
-   * 
-   * @param pCodes Value to which the attribute "codes" should be set.
+   * @param pCodes Value to which {@link #codes} should be set.
    */
   public void setCodes( IntegerCode[] pCodes ) {
     // Assign value to attribute

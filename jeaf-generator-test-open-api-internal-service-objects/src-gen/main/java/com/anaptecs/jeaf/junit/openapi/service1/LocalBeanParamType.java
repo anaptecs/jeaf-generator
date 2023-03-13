@@ -14,10 +14,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 public class LocalBeanParamType implements ServiceObject {
   /**
@@ -25,23 +21,14 @@ public class LocalBeanParamType implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @HeaderParam("localKey")
   @NotNull
   private String localKey;
 
-  /**
-   * 
-   */
   @HeaderParam("localID")
   @NotNull
   private String localID;
 
-  /**
-   * 
-   */
   @HeaderParam("authorization")
   @NotNull
   private String authorization;
@@ -99,23 +86,13 @@ public class LocalBeanParamType implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class LocalBeanParamType. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>LocalBeanParamType</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String localKey;
 
-    /**
-     * 
-     */
     private String localID;
 
-    /**
-     * 
-     */
     private String authorization;
 
     /**
@@ -137,9 +114,10 @@ public class LocalBeanParamType implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "localKey".
+     * Method sets attribute {@link #localKey}.<br/>
      * 
-     * @param pLocalKey Value to which the attribute "localKey" should be set.
+     * @param pLocalKey Value to which {@link #localKey} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalKey( String pLocalKey ) {
       // Assign value to attribute
@@ -148,9 +126,10 @@ public class LocalBeanParamType implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "localID".
+     * Method sets attribute {@link #localID}.<br/>
      * 
-     * @param pLocalID Value to which the attribute "localID" should be set.
+     * @param pLocalID Value to which {@link #localID} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLocalID( String pLocalID ) {
       // Assign value to attribute
@@ -159,9 +138,10 @@ public class LocalBeanParamType implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "authorization".
+     * Method sets attribute {@link #authorization}.<br/>
      * 
-     * @param pAuthorization Value to which the attribute "authorization" should be set.
+     * @param pAuthorization Value to which {@link #authorization} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAuthorization( String pAuthorization ) {
       // Assign value to attribute
@@ -194,20 +174,18 @@ public class LocalBeanParamType implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "localKey".
+   * Method returns attribute {@link #localKey}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "localKey" is set.
+   * @return {@link String} Value to which {@link #localKey} is set.
    */
   public String getLocalKey( ) {
     return localKey;
   }
 
   /**
-   * Method sets the attribute "localKey".
+   * Method sets attribute {@link #localKey}.<br/>
    * 
-   * 
-   * @param pLocalKey Value to which the attribute "localKey" should be set.
+   * @param pLocalKey Value to which {@link #localKey} should be set.
    */
   public void setLocalKey( String pLocalKey ) {
     // Assign value to attribute
@@ -215,20 +193,18 @@ public class LocalBeanParamType implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "localID".
+   * Method returns attribute {@link #localID}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "localID" is set.
+   * @return {@link String} Value to which {@link #localID} is set.
    */
   public String getLocalID( ) {
     return localID;
   }
 
   /**
-   * Method sets the attribute "localID".
+   * Method sets attribute {@link #localID}.<br/>
    * 
-   * 
-   * @param pLocalID Value to which the attribute "localID" should be set.
+   * @param pLocalID Value to which {@link #localID} should be set.
    */
   public void setLocalID( String pLocalID ) {
     // Assign value to attribute
@@ -236,20 +212,18 @@ public class LocalBeanParamType implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "authorization".
+   * Method returns attribute {@link #authorization}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "authorization" is set.
+   * @return {@link String} Value to which {@link #authorization} is set.
    */
   public String getAuthorization( ) {
     return authorization;
   }
 
   /**
-   * Method sets the attribute "authorization".
+   * Method sets attribute {@link #authorization}.<br/>
    * 
-   * 
-   * @param pAuthorization Value to which the attribute "authorization" should be set.
+   * @param pAuthorization Value to which {@link #authorization} should be set.
    */
   public void setAuthorization( String pAuthorization ) {
     // Assign value to attribute

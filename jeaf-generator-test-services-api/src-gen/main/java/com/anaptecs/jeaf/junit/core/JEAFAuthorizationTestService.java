@@ -7,18 +7,12 @@ package com.anaptecs.jeaf.junit.core;
 
 import com.anaptecs.jeaf.core.api.Service;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public interface JEAFAuthorizationTestService extends Service {
   /**
-  * 
-  */
+   */
   void doSomething( );
 
   /**
-  * 
-  */
+   */
   void doAnotherthing1( );
 }

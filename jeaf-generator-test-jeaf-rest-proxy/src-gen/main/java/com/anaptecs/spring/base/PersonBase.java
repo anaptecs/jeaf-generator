@@ -13,10 +13,6 @@ import javax.validation.Valid;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Valid
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class PersonBase extends Partner {
@@ -35,14 +31,8 @@ public abstract class PersonBase extends Partner {
    */
   public static final String FIRSTNAME = "firstName";
 
-  /**
-   * 
-   */
   private String surname;
 
-  /**
-   * 
-   */
   private String firstName;
 
   /**
@@ -70,14 +60,8 @@ public abstract class PersonBase extends Partner {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase extends Partner.Builder {
-    /**
-     * 
-     */
     private String surname;
 
-    /**
-     * 
-     */
     private String firstName;
 
     /**
@@ -98,9 +82,10 @@ public abstract class PersonBase extends Partner {
     }
 
     /**
-     * Method sets the association "postalAddresses".
+     * Method sets association {@link #postalAddresses}.<br/>
      * 
-     * @param pPostalAddresses Collection with objects to which the association should be set.
+     * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public BuilderBase setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
@@ -110,9 +95,10 @@ public abstract class PersonBase extends Partner {
     }
 
     /**
-     * Method sets the attribute "surname".
+     * Method sets attribute {@link #surname}.<br/>
      * 
-     * @param pSurname Value to which the attribute "surname" should be set.
+     * @param pSurname Value to which {@link #surname} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setSurname( String pSurname ) {
       // Assign value to attribute
@@ -121,9 +107,10 @@ public abstract class PersonBase extends Partner {
     }
 
     /**
-     * Method sets the attribute "firstName".
+     * Method sets attribute {@link #firstName}.<br/>
      * 
-     * @param pFirstName Value to which the attribute "firstName" should be set.
+     * @param pFirstName Value to which {@link #firstName} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setFirstName( String pFirstName ) {
       // Assign value to attribute
@@ -155,20 +142,18 @@ public abstract class PersonBase extends Partner {
   }
 
   /**
-   * Method returns the attribute "surname".
+   * Method returns attribute {@link #surname}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "surname" is set.
+   * @return {@link String} Value to which {@link #surname} is set.
    */
   public String getSurname( ) {
     return surname;
   }
 
   /**
-   * Method sets the attribute "surname".
+   * Method sets attribute {@link #surname}.<br/>
    * 
-   * 
-   * @param pSurname Value to which the attribute "surname" should be set.
+   * @param pSurname Value to which {@link #surname} should be set.
    */
   public void setSurname( String pSurname ) {
     // Assign value to attribute
@@ -176,20 +161,18 @@ public abstract class PersonBase extends Partner {
   }
 
   /**
-   * Method returns the attribute "firstName".
+   * Method returns attribute {@link #firstName}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "firstName" is set.
+   * @return {@link String} Value to which {@link #firstName} is set.
    */
   public String getFirstName( ) {
     return firstName;
   }
 
   /**
-   * Method sets the attribute "firstName".
+   * Method sets attribute {@link #firstName}.<br/>
    * 
-   * 
-   * @param pFirstName Value to which the attribute "firstName" should be set.
+   * @param pFirstName Value to which {@link #firstName} should be set.
    */
   public void setFirstName( String pFirstName ) {
     // Assign value to attribute
@@ -197,7 +180,6 @@ public abstract class PersonBase extends Partner {
   }
 
   /**
-   * 
    * @return {@link String}
    */
   public abstract String getDisplayName( );

@@ -13,10 +13,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @Valid
@@ -59,7 +55,8 @@ public abstract class ReadonlyDefaultPOJOBase {
    */
   public static abstract class BuilderBase {
     /**
-     * 
+     * <br/>
+     * <b>Default Value:</b> <code>4711</code>
      */
     private int readonlyDefault = 4711;
 
@@ -81,9 +78,10 @@ public abstract class ReadonlyDefaultPOJOBase {
     }
 
     /**
-     * Method sets the attribute "readonlyDefault".
+     * Method sets attribute {@link #readonlyDefault}.<br/>
      * 
-     * @param pReadonlyDefault Value to which the attribute "readonlyDefault" should be set.
+     * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setReadonlyDefault( int pReadonlyDefault ) {
       // Assign value to attribute
@@ -116,10 +114,9 @@ public abstract class ReadonlyDefaultPOJOBase {
   }
 
   /**
-   * Method returns the attribute "readonlyDefault".
+   * Method returns attribute {@link #readonlyDefault}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "readonlyDefault" is set.
+   * @return int Value to which {@link #readonlyDefault} is set.
    */
   public int getReadonlyDefault( ) {
     return readonlyDefault;

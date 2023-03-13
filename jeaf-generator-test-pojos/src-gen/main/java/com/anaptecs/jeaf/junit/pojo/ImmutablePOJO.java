@@ -12,10 +12,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -30,14 +26,8 @@ public class ImmutablePOJO {
    */
   public static final String SOMETHING = "something";
 
-  /**
-   * 
-   */
   private final String name;
 
-  /**
-   * 
-   */
   private Integer something;
 
   /**
@@ -82,18 +72,11 @@ public class ImmutablePOJO {
   }
 
   /**
-   * Class implements builder to create a new instance of class ImmutablePOJO. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>ImmutablePOJO</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String name;
 
-    /**
-     * 
-     */
     private Integer something;
 
     /**
@@ -114,9 +97,10 @@ public class ImmutablePOJO {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -125,9 +109,10 @@ public class ImmutablePOJO {
     }
 
     /**
-     * Method sets the attribute "something".
+     * Method sets attribute {@link #something}.<br/>
      * 
-     * @param pSomething Value to which the attribute "something" should be set.
+     * @param pSomething Value to which {@link #something} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSomething( Integer pSomething ) {
       // Assign value to attribute
@@ -160,30 +145,27 @@ public class ImmutablePOJO {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method returns the attribute "something".
+   * Method returns attribute {@link #something}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "something" is set.
+   * @return {@link Integer} Value to which {@link #something} is set.
    */
   public Integer getSomething( ) {
     return something;
   }
 
   /**
-   * Method sets the attribute "something".
+   * Method sets attribute {@link #something}.<br/>
    * 
-   * 
-   * @param pSomething Value to which the attribute "something" should be set.
+   * @param pSomething Value to which {@link #something} should be set.
    */
   public void setSomething( Integer pSomething ) {
     // Assign value to attribute

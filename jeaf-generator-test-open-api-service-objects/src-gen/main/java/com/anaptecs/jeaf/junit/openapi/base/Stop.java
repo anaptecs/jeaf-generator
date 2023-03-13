@@ -23,10 +23,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 @JsonIgnoreProperties(value = "objectType")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
@@ -38,27 +34,20 @@ public class Stop implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   @NotNull
   private String name;
 
-  /**
-   * 
-   */
   @JsonProperty("_links")
   private List<LinkObject> links;
 
-  /**
-   * 
-   */
   @Max(value = 32)
   @PositiveOrZero
   private byte index;
 
   /**
-   * 
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
+   * <code>LinkObject</code><br/>
    */
   @NotNull
   private SoftLink theSoftLink;
@@ -111,29 +100,21 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class Stop. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Stop</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String name;
 
-    /**
-     * 
-     */
     private List<LinkObject> links;
 
-    /**
-     * 
-     */
     @Max(value = 32)
     @PositiveOrZero
     private byte index;
 
     /**
-     * 
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
+     * <code>LinkObject</code><br/>
      */
     @NotNull
     private SoftLink theSoftLink;
@@ -158,9 +139,10 @@ public class Stop implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -169,9 +151,10 @@ public class Stop implements ServiceObject {
     }
 
     /**
-     * Method sets the association "links".
+     * Method sets association {@link #links}.<br/>
      * 
-     * @param pLinks Collection with objects to which the association should be set.
+     * @param pLinks Collection to which {@link #links} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLinks( List<LinkObject> pLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -185,9 +168,10 @@ public class Stop implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "index".
+     * Method sets attribute {@link #index}.<br/>
      * 
-     * @param pIndex Value to which the attribute "index" should be set.
+     * @param pIndex Value to which {@link #index} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIndex( byte pIndex ) {
       // Assign value to attribute
@@ -196,9 +180,10 @@ public class Stop implements ServiceObject {
     }
 
     /**
-     * Method sets the association "theSoftLink".
+     * Method sets association {@link #theSoftLink}.<br/>
      * 
-     * @param pTheSoftLink LinkObject to which the association "theSoftLink" should be set.
+     * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
       theSoftLink = pTheSoftLink;
@@ -229,20 +214,18 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -250,11 +233,10 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method returns the association "links".
+   * Method returns association {@link #links}.<br/>
    * 
-   *
-   * @return Collection All LinkObject objects that belong to the association "links". The method never returns null and
-   * the returned collection is modifiable.
+   * @return {@link List<LinkObject>} Value to which {@link #links} is set. The method never returns null and the
+   * returned collection is modifiable.
    */
   public List<LinkObject> getLinks( ) {
     // Return all LinkObject objects directly without any protection against modification.
@@ -262,10 +244,9 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method adds the passed LinkObject object to the association "links".
+   * Method adds the passed object to {@link #links}.
    * 
-   * 
-   * @param pLinks Object that should be added to the association "links". The parameter must not be null.
+   * @param pLinks Object that should be added to {@link #links}. The parameter must not be null.
    */
   public void addToLinks( LinkObject pLinks ) {
     // Check parameter "pLinks" for invalid value null.
@@ -275,11 +256,9 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "links".
+   * Method adds all passed objects to {@link #links}.
    * 
-   * 
-   * @param pLinks Collection with all objects that should be added to the association "links". The parameter must not
-   * be null.
+   * @param pLinks Collection with all objects that should be added to {@link #links}. The parameter must not be null.
    */
   public void addToLinks( Collection<LinkObject> pLinks ) {
     // Check parameter "pLinks" for invalid value null.
@@ -291,10 +270,9 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method removes the passed LinkObject object from the association "links".
+   * Method removes the passed object from {@link #links}.<br/>
    * 
-   * 
-   * @param pLinks Object that should be removed from the association "links". The parameter must not be null.
+   * @param pLinks Object that should be removed from {@link #links}. The parameter must not be null.
    */
   public void removeFromLinks( LinkObject pLinks ) {
     // Check parameter for invalid value null.
@@ -304,8 +282,7 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "links".
-   * 
+   * Method removes all objects from {@link #links}.
    */
   public void clearLinks( ) {
     // Remove all objects from association "links".
@@ -313,20 +290,18 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "index".
+   * Method returns attribute {@link #index}.<br/>
    * 
-   * 
-   * @return byte Value to which the attribute "index" is set.
+   * @return byte Value to which {@link #index} is set.
    */
   public byte getIndex( ) {
     return index;
   }
 
   /**
-   * Method sets the attribute "index".
+   * Method sets attribute {@link #index}.<br/>
    * 
-   * 
-   * @param pIndex Value to which the attribute "index" should be set.
+   * @param pIndex Value to which {@link #index} should be set.
    */
   public void setIndex( byte pIndex ) {
     // Assign value to attribute
@@ -334,28 +309,28 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method returns the association "theSoftLink".
+   * Method returns association {@link #theSoftLink}.<br/>
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
+   * <code>LinkObject</code><br/>
    * 
-   *
-   * @return LinkObject LinkObject to which the association "theSoftLink" is set.
+   * @return {@link SoftLink} Value to which {@link #theSoftLink} is set.
    */
   public SoftLink getTheSoftLink( ) {
     return theSoftLink;
   }
 
   /**
-   * Method sets the association "theSoftLink".
+   * Method sets association {@link #theSoftLink}.<br/>
    * 
-   * 
-   * @param pTheSoftLink LinkObject to which the association "theSoftLink" should be set.
+   * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
    */
   public void setTheSoftLink( SoftLink pTheSoftLink ) {
     theSoftLink = pTheSoftLink;
   }
 
   /**
-   * Method unsets the association "theSoftLink".
-   * 
+   * Method unsets {@link #theSoftLink}.
    */
   public final void unsetTheSoftLink( ) {
     theSoftLink = null;

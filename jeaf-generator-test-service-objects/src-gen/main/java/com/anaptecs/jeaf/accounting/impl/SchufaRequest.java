@@ -13,10 +13,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class SchufaRequest implements ServiceObject {
   /**
    * Default serial version uid.
@@ -38,19 +34,10 @@ public class SchufaRequest implements ServiceObject {
    */
   public static final String DATEOFBIRTH = "dateOfBirth";
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private String firstName;
 
-  /**
-   * 
-   */
   private Calendar dateOfBirth;
 
   /**
@@ -95,23 +82,13 @@ public class SchufaRequest implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class SchufaRequest. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>SchufaRequest</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private String name;
 
-    /**
-     * 
-     */
     private String firstName;
 
-    /**
-     * 
-     */
     private Calendar dateOfBirth;
 
     /**
@@ -133,9 +110,10 @@ public class SchufaRequest implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "name".
+     * Method sets attribute {@link #name}.<br/>
      * 
-     * @param pName Value to which the attribute "name" should be set.
+     * @param pName Value to which {@link #name} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setName( String pName ) {
       // Assign value to attribute
@@ -144,9 +122,10 @@ public class SchufaRequest implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "firstName".
+     * Method sets attribute {@link #firstName}.<br/>
      * 
-     * @param pFirstName Value to which the attribute "firstName" should be set.
+     * @param pFirstName Value to which {@link #firstName} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setFirstName( String pFirstName ) {
       // Assign value to attribute
@@ -155,9 +134,10 @@ public class SchufaRequest implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "dateOfBirth".
+     * Method sets attribute {@link #dateOfBirth}.<br/>
      * 
-     * @param pDateOfBirth Value to which the attribute "dateOfBirth" should be set.
+     * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDateOfBirth( Calendar pDateOfBirth ) {
       // Assign value to attribute
@@ -190,20 +170,18 @@ public class SchufaRequest implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -211,20 +189,18 @@ public class SchufaRequest implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "firstName".
+   * Method returns attribute {@link #firstName}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "firstName" is set.
+   * @return {@link String} Value to which {@link #firstName} is set.
    */
   public String getFirstName( ) {
     return firstName;
   }
 
   /**
-   * Method sets the attribute "firstName".
+   * Method sets attribute {@link #firstName}.<br/>
    * 
-   * 
-   * @param pFirstName Value to which the attribute "firstName" should be set.
+   * @param pFirstName Value to which {@link #firstName} should be set.
    */
   public void setFirstName( String pFirstName ) {
     // Assign value to attribute
@@ -232,20 +208,18 @@ public class SchufaRequest implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "dateOfBirth".
+   * Method returns attribute {@link #dateOfBirth}.<br/>
    * 
-   * 
-   * @return Calendar Value to which the attribute "dateOfBirth" is set.
+   * @return {@link Calendar} Value to which {@link #dateOfBirth} is set.
    */
   public Calendar getDateOfBirth( ) {
     return dateOfBirth;
   }
 
   /**
-   * Method sets the attribute "dateOfBirth".
+   * Method sets attribute {@link #dateOfBirth}.<br/>
    * 
-   * 
-   * @param pDateOfBirth Value to which the attribute "dateOfBirth" should be set.
+   * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
    */
   public void setDateOfBirth( Calendar pDateOfBirth ) {
     // Assign value to attribute

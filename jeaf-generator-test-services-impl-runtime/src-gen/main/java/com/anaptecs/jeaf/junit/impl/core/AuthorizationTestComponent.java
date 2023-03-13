@@ -28,9 +28,8 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * Class represents the AuthorizationTest component.
+ * Class represents the component AuthorizationTest
  *
- * 
  */
 public final class AuthorizationTestComponent implements ComponentImplementation {
   /**

@@ -17,10 +17,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CodeTypeUsageTest implements Serializable {
   /**
@@ -48,24 +44,12 @@ public class CodeTypeUsageTest implements Serializable {
    */
   public static final String STRINGCODE = "stringCode";
 
-  /**
-   * 
-   */
   private BooleanCodeType booleanCode;
 
-  /**
-   * 
-   */
   private Set<BooleanCodeType> booleanCodeAssociation;
 
-  /**
-   * 
-   */
   private Set<ShortCodeType> shortCodeTypeAssociation;
 
-  /**
-   * 
-   */
   private StringCodeType stringCode;
 
   /**
@@ -133,28 +117,15 @@ public class CodeTypeUsageTest implements Serializable {
   }
 
   /**
-   * Class implements builder to create a new instance of class CodeTypeUsageTest. As the class has read only attributes
-   * or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>CodeTypeUsageTest</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private BooleanCodeType booleanCode;
 
-    /**
-     * 
-     */
     private Set<BooleanCodeType> booleanCodeAssociation;
 
-    /**
-     * 
-     */
     private Set<ShortCodeType> shortCodeTypeAssociation;
 
-    /**
-     * 
-     */
     private StringCodeType stringCode;
 
     /**
@@ -177,9 +148,10 @@ public class CodeTypeUsageTest implements Serializable {
     }
 
     /**
-     * Method sets the attribute "booleanCode".
+     * Method sets attribute {@link #booleanCode}.<br/>
      * 
-     * @param pBooleanCode Value to which the attribute "booleanCode" should be set.
+     * @param pBooleanCode Value to which {@link #booleanCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooleanCode( BooleanCodeType pBooleanCode ) {
       // Assign value to attribute
@@ -188,9 +160,10 @@ public class CodeTypeUsageTest implements Serializable {
     }
 
     /**
-     * Method sets the association "booleanCodeAssociation".
+     * Method sets association {@link #booleanCodeAssociation}.<br/>
      * 
-     * @param pBooleanCodeAssociation Collection with objects to which the association should be set.
+     * @param pBooleanCodeAssociation Collection to which {@link #booleanCodeAssociation} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooleanCodeAssociation( Set<BooleanCodeType> pBooleanCodeAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -204,9 +177,10 @@ public class CodeTypeUsageTest implements Serializable {
     }
 
     /**
-     * Method sets the association "shortCodeTypeAssociation".
+     * Method sets association {@link #shortCodeTypeAssociation}.<br/>
      * 
-     * @param pShortCodeTypeAssociation Collection with objects to which the association should be set.
+     * @param pShortCodeTypeAssociation Collection to which {@link #shortCodeTypeAssociation} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setShortCodeTypeAssociation( Set<ShortCodeType> pShortCodeTypeAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -220,9 +194,10 @@ public class CodeTypeUsageTest implements Serializable {
     }
 
     /**
-     * Method sets the attribute "stringCode".
+     * Method sets attribute {@link #stringCode}.<br/>
      * 
-     * @param pStringCode Value to which the attribute "stringCode" should be set.
+     * @param pStringCode Value to which {@link #stringCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStringCode( StringCodeType pStringCode ) {
       // Assign value to attribute
@@ -255,20 +230,18 @@ public class CodeTypeUsageTest implements Serializable {
   }
 
   /**
-   * Method returns the attribute "booleanCode".
+   * Method returns attribute {@link #booleanCode}.<br/>
    * 
-   * 
-   * @return BooleanCodeType Value to which the attribute "booleanCode" is set.
+   * @return {@link BooleanCodeType} Value to which {@link #booleanCode} is set.
    */
   public BooleanCodeType getBooleanCode( ) {
     return booleanCode;
   }
 
   /**
-   * Method sets the attribute "booleanCode".
+   * Method sets attribute {@link #booleanCode}.<br/>
    * 
-   * 
-   * @param pBooleanCode Value to which the attribute "booleanCode" should be set.
+   * @param pBooleanCode Value to which {@link #booleanCode} should be set.
    */
   public void setBooleanCode( BooleanCodeType pBooleanCode ) {
     // Assign value to attribute
@@ -276,11 +249,10 @@ public class CodeTypeUsageTest implements Serializable {
   }
 
   /**
-   * Method returns the association "booleanCodeAssociation".
+   * Method returns association {@link #booleanCodeAssociation}.<br/>
    * 
-   *
-   * @return Collection All BooleanCodeType objects that belong to the association "booleanCodeAssociation". The method
-   * never returns null and the returned collection is unmodifiable.
+   * @return {@link Set<BooleanCodeType>} Value to which {@link #booleanCodeAssociation} is set. The method never
+   * returns null and the returned collection is unmodifiable.
    */
   public Set<BooleanCodeType> getBooleanCodeAssociation( ) {
     // Return all BooleanCodeType objects as unmodifiable collection.
@@ -288,11 +260,10 @@ public class CodeTypeUsageTest implements Serializable {
   }
 
   /**
-   * Method adds the passed BooleanCodeType object to the association "booleanCodeAssociation".
+   * Method adds the passed object to {@link #booleanCodeAssociation}.
    * 
-   * 
-   * @param pBooleanCodeAssociation Object that should be added to the association "booleanCodeAssociation". The
-   * parameter must not be null.
+   * @param pBooleanCodeAssociation Object that should be added to {@link #booleanCodeAssociation}. The parameter must
+   * not be null.
    */
   public void addToBooleanCodeAssociation( BooleanCodeType pBooleanCodeAssociation ) {
     // Check parameter "pBooleanCodeAssociation" for invalid value null.
@@ -302,11 +273,10 @@ public class CodeTypeUsageTest implements Serializable {
   }
 
   /**
-   * Method adds all passed objects to the association "booleanCodeAssociation".
+   * Method adds all passed objects to {@link #booleanCodeAssociation}.
    * 
-   * 
-   * @param pBooleanCodeAssociation Collection with all objects that should be added to the association
-   * "booleanCodeAssociation". The parameter must not be null.
+   * @param pBooleanCodeAssociation Collection with all objects that should be added to {@link #booleanCodeAssociation}.
+   * The parameter must not be null.
    */
   public void addToBooleanCodeAssociation( Collection<BooleanCodeType> pBooleanCodeAssociation ) {
     // Check parameter "pBooleanCodeAssociation" for invalid value null.
@@ -318,11 +288,10 @@ public class CodeTypeUsageTest implements Serializable {
   }
 
   /**
-   * Method removes the passed BooleanCodeType object from the association "booleanCodeAssociation".
+   * Method removes the passed object from {@link #booleanCodeAssociation}.<br/>
    * 
-   * 
-   * @param pBooleanCodeAssociation Object that should be removed from the association "booleanCodeAssociation". The
-   * parameter must not be null.
+   * @param pBooleanCodeAssociation Object that should be removed from {@link #booleanCodeAssociation}. The parameter
+   * must not be null.
    */
   public void removeFromBooleanCodeAssociation( BooleanCodeType pBooleanCodeAssociation ) {
     // Check parameter for invalid value null.
@@ -332,8 +301,7 @@ public class CodeTypeUsageTest implements Serializable {
   }
 
   /**
-   * Method removes all objects from the association "booleanCodeAssociation".
-   * 
+   * Method removes all objects from {@link #booleanCodeAssociation}.
    */
   public void clearBooleanCodeAssociation( ) {
     // Remove all objects from association "booleanCodeAssociation".
@@ -341,11 +309,10 @@ public class CodeTypeUsageTest implements Serializable {
   }
 
   /**
-   * Method returns the association "shortCodeTypeAssociation".
+   * Method returns association {@link #shortCodeTypeAssociation}.<br/>
    * 
-   *
-   * @return Collection All ShortCodeType objects that belong to the association "shortCodeTypeAssociation". The method
-   * never returns null and the returned collection is unmodifiable.
+   * @return {@link Set<ShortCodeType>} Value to which {@link #shortCodeTypeAssociation} is set. The method never
+   * returns null and the returned collection is unmodifiable.
    */
   public Set<ShortCodeType> getShortCodeTypeAssociation( ) {
     // Return all ShortCodeType objects as unmodifiable collection.
@@ -353,11 +320,10 @@ public class CodeTypeUsageTest implements Serializable {
   }
 
   /**
-   * Method adds the passed ShortCodeType object to the association "shortCodeTypeAssociation".
+   * Method adds the passed object to {@link #shortCodeTypeAssociation}.
    * 
-   * 
-   * @param pShortCodeTypeAssociation Object that should be added to the association "shortCodeTypeAssociation". The
-   * parameter must not be null.
+   * @param pShortCodeTypeAssociation Object that should be added to {@link #shortCodeTypeAssociation}. The parameter
+   * must not be null.
    */
   public void addToShortCodeTypeAssociation( ShortCodeType pShortCodeTypeAssociation ) {
     // Check parameter "pShortCodeTypeAssociation" for invalid value null.
@@ -367,11 +333,10 @@ public class CodeTypeUsageTest implements Serializable {
   }
 
   /**
-   * Method adds all passed objects to the association "shortCodeTypeAssociation".
+   * Method adds all passed objects to {@link #shortCodeTypeAssociation}.
    * 
-   * 
-   * @param pShortCodeTypeAssociation Collection with all objects that should be added to the association
-   * "shortCodeTypeAssociation". The parameter must not be null.
+   * @param pShortCodeTypeAssociation Collection with all objects that should be added to
+   * {@link #shortCodeTypeAssociation}. The parameter must not be null.
    */
   public void addToShortCodeTypeAssociation( Collection<ShortCodeType> pShortCodeTypeAssociation ) {
     // Check parameter "pShortCodeTypeAssociation" for invalid value null.
@@ -383,10 +348,9 @@ public class CodeTypeUsageTest implements Serializable {
   }
 
   /**
-   * Method removes the passed ShortCodeType object from the association "shortCodeTypeAssociation".
+   * Method removes the passed object from {@link #shortCodeTypeAssociation}.<br/>
    * 
-   * 
-   * @param pShortCodeTypeAssociation Object that should be removed from the association "shortCodeTypeAssociation". The
+   * @param pShortCodeTypeAssociation Object that should be removed from {@link #shortCodeTypeAssociation}. The
    * parameter must not be null.
    */
   public void removeFromShortCodeTypeAssociation( ShortCodeType pShortCodeTypeAssociation ) {
@@ -397,8 +361,7 @@ public class CodeTypeUsageTest implements Serializable {
   }
 
   /**
-   * Method removes all objects from the association "shortCodeTypeAssociation".
-   * 
+   * Method removes all objects from {@link #shortCodeTypeAssociation}.
    */
   public void clearShortCodeTypeAssociation( ) {
     // Remove all objects from association "shortCodeTypeAssociation".
@@ -406,20 +369,18 @@ public class CodeTypeUsageTest implements Serializable {
   }
 
   /**
-   * Method returns the attribute "stringCode".
+   * Method returns attribute {@link #stringCode}.<br/>
    * 
-   * 
-   * @return StringCodeType Value to which the attribute "stringCode" is set.
+   * @return {@link StringCodeType} Value to which {@link #stringCode} is set.
    */
   public StringCodeType getStringCode( ) {
     return stringCode;
   }
 
   /**
-   * Method sets the attribute "stringCode".
+   * Method sets attribute {@link #stringCode}.<br/>
    * 
-   * 
-   * @param pStringCode Value to which the attribute "stringCode" should be set.
+   * @param pStringCode Value to which {@link #stringCode} should be set.
    */
   public void setStringCode( StringCodeType pStringCode ) {
     // Assign value to attribute

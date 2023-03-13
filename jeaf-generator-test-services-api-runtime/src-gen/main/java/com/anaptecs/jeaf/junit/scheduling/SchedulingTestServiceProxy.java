@@ -40,11 +40,7 @@ public final class SchedulingTestServiceProxy extends ServiceProxy
   }
 
   /**
-   * Generated proxy implementation for method "executeScheduledTask".
-   * 
-   * Method is intended to be implemented by subclasses. Within the method the functionality that should be scheduled
-   * has to be called. The method must not throw any ApplicationExceptions. They have to be handled by this method. In
-   * case of technical problems a SystemException may be thrown.
+   * Generated proxy implementation for method {@link ScheduleableService#executeScheduledTask}
    */
   public void executeScheduledTask( SchedulingInfo pInfo ) {
     try {

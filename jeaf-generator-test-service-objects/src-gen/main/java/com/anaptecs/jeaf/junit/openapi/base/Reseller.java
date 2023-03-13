@@ -7,10 +7,6 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.Valid;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Valid
 public class Reseller extends ResellerBase {
   /**
@@ -71,7 +67,6 @@ public class Reseller extends ResellerBase {
   }
 
   /**
-   * 
    * @return {@link Integer}
    */
   @Override
@@ -81,8 +76,7 @@ public class Reseller extends ResellerBase {
   }
 
   /**
-   * 
-   * @return {@link double}
+   * @return double
    */
   @Override
   public double returnPrimitive( ) {

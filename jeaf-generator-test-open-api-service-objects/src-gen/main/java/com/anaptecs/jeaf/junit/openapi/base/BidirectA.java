@@ -18,10 +18,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.6.x
- */
 @Valid
 public class BidirectA implements ServiceObject {
   /**
@@ -29,14 +25,8 @@ public class BidirectA implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  /**
-   * 
-   */
   private transient Set<BidirectB> transientBs;
 
-  /**
-   * 
-   */
   @NotNull
   private BidirectA parent;
 
@@ -45,9 +35,6 @@ public class BidirectA implements ServiceObject {
    */
   private transient boolean parentBackReferenceInitialized;
 
-  /**
-   * 
-   */
   private transient BidirectA transientChild;
 
   /**
@@ -102,23 +89,13 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class BidirectA. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>BidirectA</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private Set<BidirectB> transientBs;
 
-    /**
-     * 
-     */
     private BidirectA parent;
 
-    /**
-     * 
-     */
     private BidirectA transientChild;
 
     /**
@@ -140,9 +117,10 @@ public class BidirectA implements ServiceObject {
     }
 
     /**
-     * Method sets the association "transientBs".
+     * Method sets association {@link #transientBs}.<br/>
      * 
-     * @param pTransientBs Collection with objects to which the association should be set.
+     * @param pTransientBs Collection to which {@link #transientBs} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTransientBs( Set<BidirectB> pTransientBs ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -156,9 +134,10 @@ public class BidirectA implements ServiceObject {
     }
 
     /**
-     * Method sets the association "parent".
+     * Method sets association {@link #parent}.<br/>
      * 
-     * @param pParent BidirectA to which the association "parent" should be set.
+     * @param pParent Value to which {@link #parent} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setParent( BidirectA pParent ) {
       parent = pParent;
@@ -166,9 +145,10 @@ public class BidirectA implements ServiceObject {
     }
 
     /**
-     * Method sets the association "transientChild".
+     * Method sets association {@link #transientChild}.<br/>
      * 
-     * @param pTransientChild BidirectA to which the association "transientChild" should be set.
+     * @param pTransientChild Value to which {@link #transientChild} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTransientChild( BidirectA pTransientChild ) {
       transientChild = pTransientChild;
@@ -199,11 +179,10 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method returns the association "transientBs".
+   * Method returns association {@link #transientBs}.<br/>
    * 
-   *
-   * @return Collection All BidirectB objects that belong to the association "transientBs". The method never returns
-   * null and the returned collection is modifiable.
+   * @return {@link Set<BidirectB>} Value to which {@link #transientBs} is set. The method never returns null and the
+   * returned collection is modifiable.
    */
   public Set<BidirectB> getTransientBs( ) {
     // Return all BidirectB objects directly without any protection against modification.
@@ -211,10 +190,9 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method adds the passed BidirectB object to the association "transientBs".
+   * Method adds the passed object to {@link #transientBs}.
    * 
-   * 
-   * @param pTransientBs Object that should be added to the association "transientBs". The parameter must not be null.
+   * @param pTransientBs Object that should be added to {@link #transientBs}. The parameter must not be null.
    */
   public void addToTransientBs( BidirectB pTransientBs ) {
     // Check parameter "pTransientBs" for invalid value null.
@@ -232,11 +210,10 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "transientBs".
+   * Method adds all passed objects to {@link #transientBs}.
    * 
-   * 
-   * @param pTransientBs Collection with all objects that should be added to the association "transientBs". The
-   * parameter must not be null.
+   * @param pTransientBs Collection with all objects that should be added to {@link #transientBs}. The parameter must
+   * not be null.
    */
   public void addToTransientBs( Collection<BidirectB> pTransientBs ) {
     // Check parameter "pTransientBs" for invalid value null.
@@ -248,11 +225,9 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method removes the passed BidirectB object from the association "transientBs".
+   * Method removes the passed object from {@link #transientBs}.<br/>
    * 
-   * 
-   * @param pTransientBs Object that should be removed from the association "transientBs". The parameter must not be
-   * null.
+   * @param pTransientBs Object that should be removed from {@link #transientBs}. The parameter must not be null.
    */
   public void removeFromTransientBs( BidirectB pTransientBs ) {
     // Check parameter for invalid value null.
@@ -267,8 +242,7 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "transientBs".
-   * 
+   * Method removes all objects from {@link #transientBs}.
    */
   public void clearTransientBs( ) {
     // Remove all objects from association "transientBs".
@@ -281,10 +255,9 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method returns the association "parent".
+   * Method returns association {@link #parent}.<br/>
    * 
-   *
-   * @return BidirectA BidirectA to which the association "parent" is set.
+   * @return {@link BidirectA} Value to which {@link #parent} is set.
    */
   public BidirectA getParent( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
@@ -297,10 +270,9 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method sets the association "parent".
+   * Method sets association {@link #parent}.<br/>
    * 
-   * 
-   * @param pParent BidirectA to which the association "parent" should be set.
+   * @param pParent Value to which {@link #parent} should be set.
    */
   public void setParent( BidirectA pParent ) {
     // Release already referenced object before setting a new association.
@@ -316,8 +288,7 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "parent".
-   * 
+   * Method unsets {@link #parent}.
    */
   public final void unsetParent( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
@@ -330,20 +301,18 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method returns the association "transientChild".
+   * Method returns association {@link #transientChild}.<br/>
    * 
-   *
-   * @return BidirectA BidirectA to which the association "transientChild" is set.
+   * @return {@link BidirectA} Value to which {@link #transientChild} is set.
    */
   public BidirectA getTransientChild( ) {
     return transientChild;
   }
 
   /**
-   * Method sets the association "transientChild".
+   * Method sets association {@link #transientChild}.<br/>
    * 
-   * 
-   * @param pTransientChild BidirectA to which the association "transientChild" should be set.
+   * @param pTransientChild Value to which {@link #transientChild} should be set.
    */
   public void setTransientChild( BidirectA pTransientChild ) {
     // Release already referenced object before setting a new association.
@@ -359,8 +328,7 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method unsets the association "transientChild".
-   * 
+   * Method unsets {@link #transientChild}.
    */
   public final void unsetTransientChild( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.

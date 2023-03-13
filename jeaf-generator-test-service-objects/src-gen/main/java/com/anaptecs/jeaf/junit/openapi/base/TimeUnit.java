@@ -1,33 +1,22 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 /**
- * Enumeration represents time units.
+ * Enumeration represents time units.<br/>
+ * <br/>
+ * NOVA 14 Mapping<br/>
+ * * nova-base.xsd.ZeitEinheit
  * 
- * NOVA 14 Mapping nova-base.xsd.ZeitEinheit
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
  */
 public enum TimeUnit {
   /**
    * Literal represents time unit "minutes".
    */
-  MINUTE,
+  MINUTE, HOUR, DAY,
   /**
-   * 
+   * Literal represents time unit "weeks".<br/>
+   * This is the comments second line ;-)
    */
-  HOUR,
-  /**
-   * 
-   */
-  DAY,
-  /**
-   * Literal represents time unit "weeks". This is the comments second line ;-)
-   */
-  WEEK,
-  /**
-   * 
-   */
-  MONTH,
-  /**
-   * 
-   */
-  YEAR;
+  WEEK, MONTH, YEAR;
 }

@@ -17,10 +17,6 @@ import com.anaptecs.jeaf.core.api.DomainObjectID;
 import com.anaptecs.jeaf.junit.product.ProductCategory;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class ProductDOBase extends DomainObject {
   /**
    * Default serial version uid.
@@ -47,34 +43,16 @@ public abstract class ProductDOBase extends DomainObject {
    */
   public static final String PRODUCTCATEGORY = "productCategory";
 
-  /**
-   * 
-   */
   private Set<AssortmentDO> assortments;
 
-  /**
-   * 
-   */
   private Set<PriceDO> pricesPerCurrency;
 
-  /**
-   * 
-   */
   private String name;
 
-  /**
-   * 
-   */
   private String description;
 
-  /**
-   * 
-   */
   private VatDO vat;
 
-  /**
-   * 
-   */
   private ProductCategory productCategory;
 
   /**
@@ -97,11 +75,10 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the association "assortments".
+   * Method returns association {@link #assortments}.<br/>
    * 
-   *
-   * @return Collection All AssortmentDO objects that belong to the association "assortments". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link Set<AssortmentDO>} Value to which {@link #assortments} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public Set<AssortmentDO> getAssortments( ) {
     // Return all AssortmentDO objects as unmodifiable collection.
@@ -109,10 +86,9 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method adds the passed AssortmentDO object to the association "assortments".
+   * Method adds the passed object to {@link #assortments}.
    * 
-   * 
-   * @param pAssortments Object that should be added to the association "assortments". The parameter must not be null.
+   * @param pAssortments Object that should be added to {@link #assortments}. The parameter must not be null.
    */
   public void addToAssortments( AssortmentDO pAssortments ) {
     // Check parameter "pAssortments" for invalid value null.
@@ -127,11 +103,10 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method adds all passed objects to the association "assortments".
+   * Method adds all passed objects to {@link #assortments}.
    * 
-   * 
-   * @param pAssortments Collection with all objects that should be added to the association "assortments". The
-   * parameter must not be null.
+   * @param pAssortments Collection with all objects that should be added to {@link #assortments}. The parameter must
+   * not be null.
    */
   public void addToAssortments( Collection<AssortmentDO> pAssortments ) {
     // Check parameter "pAssortments" for invalid value null.
@@ -143,11 +118,9 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method removes the passed AssortmentDO object from the association "assortments".
+   * Method removes the passed object from {@link #assortments}.<br/>
    * 
-   * 
-   * @param pAssortments Object that should be removed from the association "assortments". The parameter must not be
-   * null.
+   * @param pAssortments Object that should be removed from {@link #assortments}. The parameter must not be null.
    */
   public void removeFromAssortments( AssortmentDO pAssortments ) {
     // Check parameter for invalid value null.
@@ -162,8 +135,7 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method removes all objects from the association "assortments".
-   * 
+   * Method removes all objects from {@link #assortments}.
    */
   public void clearAssortments( ) {
     // Remove all objects from association "assortments".
@@ -176,11 +148,10 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the association "pricesPerCurrency".
+   * Method returns association {@link #pricesPerCurrency}.<br/>
    * 
-   *
-   * @return Collection All PriceDO objects that belong to the association "pricesPerCurrency". The method never returns
-   * null and the returned collection is unmodifiable.
+   * @return {@link Set<PriceDO>} Value to which {@link #pricesPerCurrency} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   public Set<PriceDO> getPricesPerCurrency( ) {
     // Return all PriceDO objects as unmodifiable collection.
@@ -188,11 +159,10 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method adds the passed PriceDO object to the association "pricesPerCurrency".
+   * Method adds the passed object to {@link #pricesPerCurrency}.
    * 
-   * 
-   * @param pPricesPerCurrency Object that should be added to the association "pricesPerCurrency". The parameter must
-   * not be null.
+   * @param pPricesPerCurrency Object that should be added to {@link #pricesPerCurrency}. The parameter must not be
+   * null.
    */
   public void addToPricesPerCurrency( PriceDO pPricesPerCurrency ) {
     // Check parameter "pPricesPerCurrency" for invalid value null.
@@ -202,11 +172,10 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method adds all passed objects to the association "pricesPerCurrency".
+   * Method adds all passed objects to {@link #pricesPerCurrency}.
    * 
-   * 
-   * @param pPricesPerCurrency Collection with all objects that should be added to the association "pricesPerCurrency".
-   * The parameter must not be null.
+   * @param pPricesPerCurrency Collection with all objects that should be added to {@link #pricesPerCurrency}. The
+   * parameter must not be null.
    */
   public void addToPricesPerCurrency( Collection<PriceDO> pPricesPerCurrency ) {
     // Check parameter "pPricesPerCurrency" for invalid value null.
@@ -218,11 +187,10 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method removes the passed PriceDO object from the association "pricesPerCurrency".
+   * Method removes the passed object from {@link #pricesPerCurrency}.<br/>
    * 
-   * 
-   * @param pPricesPerCurrency Object that should be removed from the association "pricesPerCurrency". The parameter
-   * must not be null.
+   * @param pPricesPerCurrency Object that should be removed from {@link #pricesPerCurrency}. The parameter must not be
+   * null.
    */
   public void removeFromPricesPerCurrency( PriceDO pPricesPerCurrency ) {
     // Check parameter for invalid value null.
@@ -232,8 +200,7 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method removes all objects from the association "pricesPerCurrency".
-   * 
+   * Method removes all objects from {@link #pricesPerCurrency}.
    */
   public void clearPricesPerCurrency( ) {
     // Remove all objects from association "pricesPerCurrency".
@@ -241,20 +208,18 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "name".
+   * Method returns attribute {@link #name}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "name" is set.
+   * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
   }
 
   /**
-   * Method sets the attribute "name".
+   * Method sets attribute {@link #name}.<br/>
    * 
-   * 
-   * @param pName Value to which the attribute "name" should be set.
+   * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
     // Assign value to attribute
@@ -262,20 +227,18 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the attribute "description".
+   * Method returns attribute {@link #description}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "description" is set.
+   * @return {@link String} Value to which {@link #description} is set.
    */
   public String getDescription( ) {
     return description;
   }
 
   /**
-   * Method sets the attribute "description".
+   * Method sets attribute {@link #description}.<br/>
    * 
-   * 
-   * @param pDescription Value to which the attribute "description" should be set.
+   * @param pDescription Value to which {@link #description} should be set.
    */
   public void setDescription( String pDescription ) {
     // Assign value to attribute
@@ -283,63 +246,56 @@ public abstract class ProductDOBase extends DomainObject {
   }
 
   /**
-   * Method returns the association "vat".
+   * Method returns association {@link #vat}.<br/>
    * 
-   *
-   * @return VatDO VatDO to which the association "vat" is set.
+   * @return {@link VatDO} Value to which {@link #vat} is set.
    */
   public VatDO getVat( ) {
     return vat;
   }
 
   /**
-   * Method sets the association "vat".
+   * Method sets association {@link #vat}.<br/>
    * 
-   * 
-   * @param pVat VatDO to which the association "vat" should be set.
+   * @param pVat Value to which {@link #vat} should be set.
    */
   public void setVat( VatDO pVat ) {
     vat = pVat;
   }
 
   /**
-   * Method unsets the association "vat".
-   * 
+   * Method unsets {@link #vat}.
    */
   public final void unsetVat( ) {
     vat = null;
   }
 
   /**
-   * Method returns the association "productCategory".
+   * Method returns association {@link #productCategory}.<br/>
    * 
-   *
-   * @return ProductCategory ProductCategory to which the association "productCategory" is set.
+   * @return {@link ProductCategory} Value to which {@link #productCategory} is set.
    */
   public ProductCategory getProductCategory( ) {
     return productCategory;
   }
 
   /**
-   * Method sets the association "productCategory".
+   * Method sets association {@link #productCategory}.<br/>
    * 
-   * 
-   * @param pProductCategory ProductCategory to which the association "productCategory" should be set.
+   * @param pProductCategory Value to which {@link #productCategory} should be set.
    */
   public void setProductCategory( ProductCategory pProductCategory ) {
     productCategory = pProductCategory;
   }
 
   /**
-   * Method unsets the association "productCategory".
-   * 
+   * Method unsets {@link #productCategory}.
    */
   public final void unsetProductCategory( ) {
     productCategory = null;
   }
 
   /**
-   * 
    * @param pCurrency
    * @return {@link PriceDO}
    */

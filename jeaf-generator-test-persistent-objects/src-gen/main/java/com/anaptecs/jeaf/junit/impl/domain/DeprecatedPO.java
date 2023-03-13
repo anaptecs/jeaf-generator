@@ -1,9 +1,5 @@
 package com.anaptecs.jeaf.junit.impl.domain;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class DeprecatedPO extends DeprecatedPOBase {
   /**
    * Initialize object. The constructor of the class has visibility protected in order to avoid creating business
@@ -14,8 +10,7 @@ public class DeprecatedPO extends DeprecatedPOBase {
   }
 
   /**
-  * 
-  */
+   */
   @Deprecated
   @Override
   public void doSomethingDeprecated( ) {
@@ -23,10 +18,11 @@ public class DeprecatedPO extends DeprecatedPOBase {
   }
 
   /**
-   * 
    * @param pParam1
-   * @param pParam2
-   * @return {@link String}
+   * @param pParam2 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override

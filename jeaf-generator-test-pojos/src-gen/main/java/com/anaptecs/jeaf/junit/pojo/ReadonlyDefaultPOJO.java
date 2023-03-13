@@ -7,10 +7,6 @@ package com.anaptecs.jeaf.junit.pojo;
 
 import javax.validation.Valid;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @Valid
 public class ReadonlyDefaultPOJO extends ReadonlyDefaultPOJOBase {
   /**

@@ -27,9 +27,8 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 /**
- * Class represents the TxRequiresNewComponent component.
+ * Class represents the component TxRequiresNewComponent
  *
- * 
  */
 public final class TxRequiresNewComponentComponent implements ComponentImplementation {
   /**

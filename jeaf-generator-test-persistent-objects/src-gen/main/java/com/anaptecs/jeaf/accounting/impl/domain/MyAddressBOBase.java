@@ -5,10 +5,6 @@ import java.util.List;
 import com.anaptecs.jeaf.spi.persistence.ClassID;
 import com.anaptecs.jeaf.spi.persistence.PersistentObject;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class MyAddressBOBase extends PersistentObject {
   /**
    * The class id is a unique id within the domain model of an application for every business object class.
@@ -60,24 +56,12 @@ public abstract class MyAddressBOBase extends PersistentObject {
    */
   public static final String COUNTRY_ATTRIBUTE = "country";
 
-  /**
-   * 
-   */
   private String street;
 
-  /**
-   * 
-   */
   private Integer zipCode;
 
-  /**
-   * 
-   */
   private String city;
 
-  /**
-   * 
-   */
   private String country;
 
   /**
@@ -97,20 +81,18 @@ public abstract class MyAddressBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "street".
+   * Method returns attribute {@link #street}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "street" is set.
+   * @return {@link String} Value to which {@link #street} is set.
    */
   public String getStreet( ) {
     return street;
   }
 
   /**
-   * Method sets the attribute "street".
+   * Method sets attribute {@link #street}.<br/>
    * 
-   * 
-   * @param pStreet Value to which the attribute "street" should be set.
+   * @param pStreet Value to which {@link #street} should be set.
    */
   public void setStreet( String pStreet ) {
     // Assign value to attribute
@@ -118,20 +100,18 @@ public abstract class MyAddressBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "zipCode".
+   * Method returns attribute {@link #zipCode}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "zipCode" is set.
+   * @return {@link Integer} Value to which {@link #zipCode} is set.
    */
   public Integer getZipCode( ) {
     return zipCode;
   }
 
   /**
-   * Method sets the attribute "zipCode".
+   * Method sets attribute {@link #zipCode}.<br/>
    * 
-   * 
-   * @param pZipCode Value to which the attribute "zipCode" should be set.
+   * @param pZipCode Value to which {@link #zipCode} should be set.
    */
   public void setZipCode( Integer pZipCode ) {
     // Assign value to attribute
@@ -139,20 +119,18 @@ public abstract class MyAddressBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "city".
+   * Method returns attribute {@link #city}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "city" is set.
+   * @return {@link String} Value to which {@link #city} is set.
    */
   public String getCity( ) {
     return city;
   }
 
   /**
-   * Method sets the attribute "city".
+   * Method sets attribute {@link #city}.<br/>
    * 
-   * 
-   * @param pCity Value to which the attribute "city" should be set.
+   * @param pCity Value to which {@link #city} should be set.
    */
   public void setCity( String pCity ) {
     // Assign value to attribute
@@ -160,20 +138,18 @@ public abstract class MyAddressBOBase extends PersistentObject {
   }
 
   /**
-   * Method returns the attribute "country".
+   * Method returns attribute {@link #country}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "country" is set.
+   * @return {@link String} Value to which {@link #country} is set.
    */
   public String getCountry( ) {
     return country;
   }
 
   /**
-   * Method sets the attribute "country".
+   * Method sets attribute {@link #country}.<br/>
    * 
-   * 
-   * @param pCountry Value to which the attribute "country" should be set.
+   * @param pCountry Value to which {@link #country} should be set.
    */
   public void setCountry( String pCountry ) {
     // Assign value to attribute

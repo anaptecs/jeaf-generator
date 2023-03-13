@@ -16,10 +16,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public abstract class ComplexBookingIDBase implements ServiceObject {
   /**
    * Default serial version uid.
@@ -52,28 +48,18 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   public static final String ANOTHERID = "anotherID";
 
   /**
-   * Internal ID 2nd line 3rd line
+   * Internal ID<br/>
+   * 2nd line<br/>
+   * 3rd line
    */
   private long internalID;
 
-  /**
-   * 
-   */
   private String referenceID;
 
-  /**
-   * 
-   */
   private List<BookingID> bookingIDs;
 
-  /**
-   * 
-   */
   private ComplexBookingType complexBookingType;
 
-  /**
-   * 
-   */
   private Integer anotherID;
 
   /**
@@ -111,28 +97,18 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
    */
   public static abstract class BuilderBase {
     /**
-     * Internal ID 2nd line 3rd line
+     * Internal ID<br/>
+     * 2nd line<br/>
+     * 3rd line
      */
     private long internalID;
 
-    /**
-     * 
-     */
     private String referenceID;
 
-    /**
-     * 
-     */
     private List<BookingID> bookingIDs;
 
-    /**
-     * 
-     */
     private ComplexBookingType complexBookingType;
 
-    /**
-     * 
-     */
     private Integer anotherID;
 
     /**
@@ -156,9 +132,10 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "internalID". Internal ID 2nd line 3rd line
+     * Method sets attribute {@link #internalID}.<br/>
      * 
-     * @param pInternalID Value to which the attribute "internalID" should be set.
+     * @param pInternalID Value to which {@link #internalID} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setInternalID( long pInternalID ) {
       // Assign value to attribute
@@ -167,9 +144,10 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "referenceID".
+     * Method sets attribute {@link #referenceID}.<br/>
      * 
-     * @param pReferenceID Value to which the attribute "referenceID" should be set.
+     * @param pReferenceID Value to which {@link #referenceID} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setReferenceID( String pReferenceID ) {
       // Assign value to attribute
@@ -178,9 +156,10 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     }
 
     /**
-     * Method sets the association "bookingIDs".
+     * Method sets association {@link #bookingIDs}.<br/>
      * 
-     * @param pBookingIDs Collection with objects to which the association should be set.
+     * @param pBookingIDs Collection to which {@link #bookingIDs} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBookingIDs( List<BookingID> pBookingIDs ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -194,9 +173,10 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     }
 
     /**
-     * Method sets the association "complexBookingType".
+     * Method sets association {@link #complexBookingType}.<br/>
      * 
-     * @param pComplexBookingType ComplexBookingType to which the association "complexBookingType" should be set.
+     * @param pComplexBookingType Value to which {@link #complexBookingType} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setComplexBookingType( ComplexBookingType pComplexBookingType ) {
       complexBookingType = pComplexBookingType;
@@ -204,9 +184,10 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "anotherID".
+     * Method sets attribute {@link #anotherID}.<br/>
      * 
-     * @param pAnotherID Value to which the attribute "anotherID" should be set.
+     * @param pAnotherID Value to which {@link #anotherID} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setAnotherID( Integer pAnotherID ) {
       // Assign value to attribute
@@ -239,18 +220,24 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "internalID". Internal ID 2nd line 3rd line
+   * Method returns attribute {@link #internalID}.<br/>
+   * Internal ID<br/>
+   * 2nd line<br/>
+   * 3rd line
    * 
-   * @return long Value to which the attribute "internalID" is set.
+   * @return long Value to which {@link #internalID} is set.
    */
   public long getInternalID( ) {
     return internalID;
   }
 
   /**
-   * Method sets the attribute "internalID". Internal ID 2nd line 3rd line
+   * Method sets attribute {@link #internalID}.<br/>
+   * Internal ID<br/>
+   * 2nd line<br/>
+   * 3rd line
    * 
-   * @param pInternalID Value to which the attribute "internalID" should be set.
+   * @param pInternalID Value to which {@link #internalID} should be set.
    */
   public void setInternalID( long pInternalID ) {
     // Assign value to attribute
@@ -258,20 +245,18 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "referenceID".
+   * Method returns attribute {@link #referenceID}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "referenceID" is set.
+   * @return {@link String} Value to which {@link #referenceID} is set.
    */
   public String getReferenceID( ) {
     return referenceID;
   }
 
   /**
-   * Method sets the attribute "referenceID".
+   * Method sets attribute {@link #referenceID}.<br/>
    * 
-   * 
-   * @param pReferenceID Value to which the attribute "referenceID" should be set.
+   * @param pReferenceID Value to which {@link #referenceID} should be set.
    */
   public void setReferenceID( String pReferenceID ) {
     // Assign value to attribute
@@ -279,11 +264,10 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method returns the association "bookingIDs".
+   * Method returns association {@link #bookingIDs}.<br/>
    * 
-   *
-   * @return Collection All BookingID objects that belong to the association "bookingIDs". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link List<BookingID>} Value to which {@link #bookingIDs} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public List<BookingID> getBookingIDs( ) {
     // Return all BookingID objects as unmodifiable collection.
@@ -291,10 +275,9 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method adds the passed BookingID object to the association "bookingIDs".
+   * Method adds the passed object to {@link #bookingIDs}.
    * 
-   * 
-   * @param pBookingIDs Object that should be added to the association "bookingIDs". The parameter must not be null.
+   * @param pBookingIDs Object that should be added to {@link #bookingIDs}. The parameter must not be null.
    */
   public void addToBookingIDs( BookingID pBookingIDs ) {
     // Check parameter "pBookingIDs" for invalid value null.
@@ -304,11 +287,10 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method adds all passed objects to the association "bookingIDs".
+   * Method adds all passed objects to {@link #bookingIDs}.
    * 
-   * 
-   * @param pBookingIDs Collection with all objects that should be added to the association "bookingIDs". The parameter
-   * must not be null.
+   * @param pBookingIDs Collection with all objects that should be added to {@link #bookingIDs}. The parameter must not
+   * be null.
    */
   public void addToBookingIDs( Collection<BookingID> pBookingIDs ) {
     // Check parameter "pBookingIDs" for invalid value null.
@@ -320,10 +302,9 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method removes the passed BookingID object from the association "bookingIDs".
+   * Method removes the passed object from {@link #bookingIDs}.<br/>
    * 
-   * 
-   * @param pBookingIDs Object that should be removed from the association "bookingIDs". The parameter must not be null.
+   * @param pBookingIDs Object that should be removed from {@link #bookingIDs}. The parameter must not be null.
    */
   public void removeFromBookingIDs( BookingID pBookingIDs ) {
     // Check parameter for invalid value null.
@@ -333,8 +314,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method removes all objects from the association "bookingIDs".
-   * 
+   * Method removes all objects from {@link #bookingIDs}.
    */
   public void clearBookingIDs( ) {
     // Remove all objects from association "bookingIDs".
@@ -342,48 +322,43 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   /**
-   * Method returns the association "complexBookingType".
+   * Method returns association {@link #complexBookingType}.<br/>
    * 
-   *
-   * @return ComplexBookingType ComplexBookingType to which the association "complexBookingType" is set.
+   * @return {@link ComplexBookingType} Value to which {@link #complexBookingType} is set.
    */
   public ComplexBookingType getComplexBookingType( ) {
     return complexBookingType;
   }
 
   /**
-   * Method sets the association "complexBookingType".
+   * Method sets association {@link #complexBookingType}.<br/>
    * 
-   * 
-   * @param pComplexBookingType ComplexBookingType to which the association "complexBookingType" should be set.
+   * @param pComplexBookingType Value to which {@link #complexBookingType} should be set.
    */
   public void setComplexBookingType( ComplexBookingType pComplexBookingType ) {
     complexBookingType = pComplexBookingType;
   }
 
   /**
-   * Method unsets the association "complexBookingType".
-   * 
+   * Method unsets {@link #complexBookingType}.
    */
   public final void unsetComplexBookingType( ) {
     complexBookingType = null;
   }
 
   /**
-   * Method returns the attribute "anotherID".
+   * Method returns attribute {@link #anotherID}.<br/>
    * 
-   * 
-   * @return Integer Value to which the attribute "anotherID" is set.
+   * @return {@link Integer} Value to which {@link #anotherID} is set.
    */
   public Integer getAnotherID( ) {
     return anotherID;
   }
 
   /**
-   * Method sets the attribute "anotherID".
+   * Method sets attribute {@link #anotherID}.<br/>
    * 
-   * 
-   * @param pAnotherID Value to which the attribute "anotherID" should be set.
+   * @param pAnotherID Value to which {@link #anotherID} should be set.
    */
   public void setAnotherID( Integer pAnotherID ) {
     // Assign value to attribute

@@ -5,10 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class POJOWithIDnMethod extends POJOWithIDnMethodBase {
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -64,8 +60,7 @@ public class POJOWithIDnMethod extends POJOWithIDnMethodBase {
   }
 
   /**
-   * 
-   * @return {@link Boolean}
+   * @return boolean
    */
   @Override
   public boolean doSomethingFunny( ) {

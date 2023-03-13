@@ -7,10 +7,6 @@ package com.anaptecs.jeaf.accounting;
 
 import com.anaptecs.jeaf.core.api.LoadStrategy;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public final class CustomerLoadStrategy implements LoadStrategy {
   /**
    * Default serial version uid.
@@ -27,14 +23,8 @@ public final class CustomerLoadStrategy implements LoadStrategy {
    */
   public static final CustomerLoadStrategy LOAD_NONE = new CustomerLoadStrategy(false, false);
 
-  /**
-   * 
-   */
   private final boolean loadAccount;
 
-  /**
-   * 
-   */
   private final boolean loadBookings;
 
   /**
@@ -45,16 +35,10 @@ public final class CustomerLoadStrategy implements LoadStrategy {
     loadBookings = pLoadBookings;
   }
 
-  /**
-   * 
-   */
   public boolean loadAccount( ) {
     return loadAccount;
   }
 
-  /**
-   * 
-   */
   public boolean loadBookings( ) {
     return loadBookings;
   }

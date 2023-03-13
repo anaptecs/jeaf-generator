@@ -13,10 +13,6 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class FloatCodeType implements ServiceObject {
   /**
    * Default serial version uid.
@@ -28,9 +24,6 @@ public class FloatCodeType implements ServiceObject {
    */
   public static final String CODE = "code";
 
-  /**
-   * 
-   */
   private float code;
 
   /**
@@ -73,13 +66,9 @@ public class FloatCodeType implements ServiceObject {
   }
 
   /**
-   * Class implements builder to create a new instance of class FloatCodeType. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>FloatCodeType</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     private float code;
 
     /**
@@ -99,9 +88,10 @@ public class FloatCodeType implements ServiceObject {
     }
 
     /**
-     * Method sets the attribute "code".
+     * Method sets attribute {@link #code}.<br/>
      * 
-     * @param pCode Value to which the attribute "code" should be set.
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCode( float pCode ) {
       // Assign value to attribute
@@ -134,20 +124,18 @@ public class FloatCodeType implements ServiceObject {
   }
 
   /**
-   * Method returns the attribute "code".
+   * Method returns attribute {@link #code}.<br/>
    * 
-   * 
-   * @return float Value to which the attribute "code" is set.
+   * @return float Value to which {@link #code} is set.
    */
   public float getCode( ) {
     return code;
   }
 
   /**
-   * Method sets the attribute "code".
+   * Method sets attribute {@link #code}.<br/>
    * 
-   * 
-   * @param pCode Value to which the attribute "code" should be set.
+   * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( float pCode ) {
     // Assign value to attribute

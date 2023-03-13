@@ -1,18 +1,8 @@
 package com.anaptecs.spring.base;
 
-/**
- * 
- */
 public final class ComplexBookingType {
   public static enum ComplexBookingTypeType {
-    /**
-     * 
-     */
-    COMPLEX,
-    /**
-     * 
-     */
-    VERY_COMPLEX,
+    COMPLEX, VERY_COMPLEX,
     /**
      * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external
      * interface.
@@ -20,14 +10,8 @@ public final class ComplexBookingType {
     UNKNOWN;
   }
 
-  /**
-   * 
-   */
   public static final ComplexBookingType COMPLEX = new ComplexBookingType(ComplexBookingTypeType.COMPLEX);
 
-  /**
-   * 
-   */
   public static final ComplexBookingType VERY_COMPLEX = new ComplexBookingType(ComplexBookingTypeType.VERY_COMPLEX);
 
   /**

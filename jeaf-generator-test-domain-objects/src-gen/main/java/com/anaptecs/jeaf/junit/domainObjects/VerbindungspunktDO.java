@@ -15,10 +15,6 @@ import com.anaptecs.jeaf.core.api.DomainObjectID;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class VerbindungspunktDO extends DomainObject implements Identifiable<DomainObjectID> {
   /**
    * Default serial version uid.
@@ -40,14 +36,8 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
    */
   private final DomainObjectID objectID;
 
-  /**
-   * 
-   */
   private String bavName;
 
-  /**
-   * 
-   */
   private SortedSet<UICCodeDO> uicCodes;
 
   /**
@@ -99,20 +89,18 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   }
 
   /**
-   * Method returns the attribute "bavName".
+   * Method returns attribute {@link #bavName}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "bavName" is set.
+   * @return {@link String} Value to which {@link #bavName} is set.
    */
   public String getBavName( ) {
     return bavName;
   }
 
   /**
-   * Method sets the attribute "bavName".
+   * Method sets attribute {@link #bavName}.<br/>
    * 
-   * 
-   * @param pBavName Value to which the attribute "bavName" should be set.
+   * @param pBavName Value to which {@link #bavName} should be set.
    */
   public void setBavName( String pBavName ) {
     // Assign value to attribute
@@ -120,11 +108,10 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   }
 
   /**
-   * Method returns the association "uicCodes".
+   * Method returns association {@link #uicCodes}.<br/>
    * 
-   *
-   * @return Collection All UICCodeDO objects that belong to the association "uicCodes". The method never returns null
-   * and the returned collection is unmodifiable.
+   * @return {@link SortedSet<UICCodeDO>} Value to which {@link #uicCodes} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
   public SortedSet<UICCodeDO> getUicCodes( ) {
     // Return all UICCodeDO objects as unmodifiable collection.
@@ -132,10 +119,9 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   }
 
   /**
-   * Method adds the passed UICCodeDO object to the association "uicCodes".
+   * Method adds the passed object to {@link #uicCodes}.
    * 
-   * 
-   * @param pUicCodes Object that should be added to the association "uicCodes". The parameter must not be null.
+   * @param pUicCodes Object that should be added to {@link #uicCodes}. The parameter must not be null.
    */
   public void addToUicCodes( UICCodeDO pUicCodes ) {
     // Check parameter "pUicCodes" for invalid value null.
@@ -145,11 +131,10 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   }
 
   /**
-   * Method adds all passed objects to the association "uicCodes".
+   * Method adds all passed objects to {@link #uicCodes}.
    * 
-   * 
-   * @param pUicCodes Collection with all objects that should be added to the association "uicCodes". The parameter must
-   * not be null.
+   * @param pUicCodes Collection with all objects that should be added to {@link #uicCodes}. The parameter must not be
+   * null.
    */
   public void addToUicCodes( Collection<UICCodeDO> pUicCodes ) {
     // Check parameter "pUicCodes" for invalid value null.
@@ -161,10 +146,9 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   }
 
   /**
-   * Method removes the passed UICCodeDO object from the association "uicCodes".
+   * Method removes the passed object from {@link #uicCodes}.<br/>
    * 
-   * 
-   * @param pUicCodes Object that should be removed from the association "uicCodes". The parameter must not be null.
+   * @param pUicCodes Object that should be removed from {@link #uicCodes}. The parameter must not be null.
    */
   public void removeFromUicCodes( UICCodeDO pUicCodes ) {
     // Check parameter for invalid value null.
@@ -174,8 +158,7 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   }
 
   /**
-   * Method removes all objects from the association "uicCodes".
-   * 
+   * Method removes all objects from {@link #uicCodes}.
    */
   public void clearUicCodes( ) {
     // Remove all objects from association "uicCodes".

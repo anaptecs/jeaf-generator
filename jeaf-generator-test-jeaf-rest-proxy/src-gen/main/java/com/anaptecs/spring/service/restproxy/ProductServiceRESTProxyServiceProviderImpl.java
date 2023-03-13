@@ -26,7 +26,6 @@ import com.anaptecs.jeaf.rest.executor.api.HttpMethod;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequest;
 import com.anaptecs.jeaf.rest.executor.api.jeaf.RESTRequestExecutorServiceProvider;
 import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 import com.anaptecs.spring.base.BeanParameter;
@@ -49,23 +48,10 @@ import com.anaptecs.spring.service.LocalBeanParamType;
 import com.anaptecs.spring.service.ProductService;
 
 /**
- * Class implements a service provider that acts as proxy for REST service ProductService.
+ * Class implements a service provider that acts as proxy for REST service {@link ProductService}.
  */
 public final class ProductServiceRESTProxyServiceProviderImpl
     implements ServiceProviderImplementation, ProductServiceRESTProxyServiceProvider {
-  /**
-   * Reference to the object that identifies this component. The reference is never null.
-   */
-  private static final ComponentID COMPONENT_ID;
-  /**
-   * Static initializer is used to create the components ComponentID object and its trace object.
-   */
-  static {
-    // Create Component ID and trace object.
-    Package lBasePackage = ProductServiceRESTProxyServiceProviderImpl.class.getPackage();
-    COMPONENT_ID = new ComponentID("ProductServiceRESTProxyServiceProviderImpl", lBasePackage.getName());
-  }
-
   /**
    * REST request executor is used to send REST request to the proxied REST resource. Depending on the Spring
    * configuration the matching implementation will be injected here.
@@ -94,8 +80,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   /**
    * Operation returns all available product.
    * 
-   * 
-   * @return {@link Product}
+   * @return {@link List<Product>}
    */
   @Override
   public List<Product> getProducts( ) {
@@ -115,7 +100,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pProductID
    * @return {@link Product}
    */
@@ -135,9 +119,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pProduct
-   * @return {@link Boolean}
+   * @return boolean
    */
   @Override
   public boolean createProduct( Product pProduct ) {
@@ -155,7 +138,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pContext
    * @return {@link Sortiment}
    */
@@ -200,7 +182,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pChannelCode
    * @return {@link ChannelCode}
    */
@@ -222,8 +203,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-  * 
-  */
+   */
   @Override
   public void ping( ) {
     // Create builder for HEAD request
@@ -238,7 +218,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @return {@link String}
    */
   @Deprecated
@@ -258,7 +237,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pContext
    * @return {@link String}
    */
@@ -298,7 +276,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pBeanParam
    */
   @Override
@@ -333,9 +310,10 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
-   * @param pParam1
-   * @return {@link String}
+   * @param pParam1 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override
@@ -356,8 +334,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
-   * @param pBody
+   * @param pBody <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    * @return {@link String}
    */
   @Override
@@ -381,8 +359,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
    * to deprecated.
    * 
-   * 
-   * @param pProduct
+   * @param pProduct <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Override
   public void deprectedComplexRequestBody( @Deprecated Product pProduct ) {
@@ -402,8 +380,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
-   * @return {@link Product}
+   * @return {@link Product} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override
@@ -422,7 +400,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pContext
    */
   @Override
@@ -473,11 +450,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pChannelCode Channel Code that should be created.
-   * 
    * @return {@link ChannelCode} Created channel code
-   * 
    */
   @Override
   public ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode ) {
@@ -497,9 +471,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pCurrencies
-   * @return {@link CurrencyCode}
+   * @return {@link List<CurrencyCode>}
    */
   @Override
   public List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies ) {
@@ -524,7 +497,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pCurrency
    * @return {@link CurrencyCode}
    */
@@ -546,7 +518,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pStringCode
    * @return {@link IntegerCodeType}
    */
@@ -568,7 +539,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pBeanParam
    * @return {@link String}
    */
@@ -597,7 +567,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pParent
    * @return {@link String}
    */
@@ -626,7 +595,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pChild
    * @return {@link String}
    */
@@ -658,7 +626,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pPath
    * @param pStartTimestamp
    * @param pStartTime
@@ -731,7 +698,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pPath
    * @param pQueryParams
    */
@@ -795,7 +761,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pPath
    * @param pOffsetDateTime
    * @param pOffsetTime
@@ -868,7 +833,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pPath
    * @param pHeaderParams
    */
@@ -932,7 +896,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pReseller
    * @param pAuthenticationToken
    * @return {@link String}
@@ -957,7 +920,6 @@ public final class ProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * 
    * @param pContext
    * @return {@link String}
    */

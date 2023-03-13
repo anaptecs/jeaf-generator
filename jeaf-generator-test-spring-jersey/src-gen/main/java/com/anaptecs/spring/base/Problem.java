@@ -9,10 +9,6 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Problem {
   /**
@@ -40,32 +36,17 @@ public class Problem {
    */
   public static final String INSTANCE = "instance";
 
-  /**
-   * 
-   */
   @NotNull
   private final String title;
 
-  /**
-   * 
-   */
   @NotNull
   public final int status;
 
-  /**
-   * 
-   */
   @NotNull
   private final String type;
 
-  /**
-   * 
-   */
   private final String detail;
 
-  /**
-   * 
-   */
   private final String instance;
 
   /**
@@ -114,36 +95,20 @@ public class Problem {
   }
 
   /**
-   * Class implements builder to create a new instance of class Problem. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Problem</code>.
    */
   public static class Builder {
-    /**
-     * 
-     */
     @NotNull
     private String title;
 
-    /**
-     * 
-     */
     @NotNull
     private int status;
 
-    /**
-     * 
-     */
     @NotNull
     private String type;
 
-    /**
-     * 
-     */
     private String detail;
 
-    /**
-     * 
-     */
     private String instance;
 
     /**
@@ -167,9 +132,10 @@ public class Problem {
     }
 
     /**
-     * Method sets the attribute "title".
+     * Method sets attribute {@link #title}.<br/>
      * 
-     * @param pTitle Value to which the attribute "title" should be set.
+     * @param pTitle Value to which {@link #title} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTitle( String pTitle ) {
       // Assign value to attribute
@@ -178,9 +144,10 @@ public class Problem {
     }
 
     /**
-     * Method sets the attribute "status".
+     * Method sets attribute {@link #status}.<br/>
      * 
-     * @param pStatus Value to which the attribute "status" should be set.
+     * @param pStatus Value to which {@link #status} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStatus( int pStatus ) {
       // Assign value to attribute
@@ -189,9 +156,10 @@ public class Problem {
     }
 
     /**
-     * Method sets the attribute "type".
+     * Method sets attribute {@link #type}.<br/>
      * 
-     * @param pType Value to which the attribute "type" should be set.
+     * @param pType Value to which {@link #type} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setType( String pType ) {
       // Assign value to attribute
@@ -200,9 +168,10 @@ public class Problem {
     }
 
     /**
-     * Method sets the attribute "detail".
+     * Method sets attribute {@link #detail}.<br/>
      * 
-     * @param pDetail Value to which the attribute "detail" should be set.
+     * @param pDetail Value to which {@link #detail} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDetail( String pDetail ) {
       // Assign value to attribute
@@ -211,9 +180,10 @@ public class Problem {
     }
 
     /**
-     * Method sets the attribute "instance".
+     * Method sets attribute {@link #instance}.<br/>
      * 
-     * @param pInstance Value to which the attribute "instance" should be set.
+     * @param pInstance Value to which {@link #instance} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInstance( String pInstance ) {
       // Assign value to attribute
@@ -232,50 +202,45 @@ public class Problem {
   }
 
   /**
-   * Method returns the attribute "title".
+   * Method returns attribute {@link #title}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "title" is set.
+   * @return {@link String} Value to which {@link #title} is set.
    */
   public String getTitle( ) {
     return title;
   }
 
   /**
-   * Method returns the attribute "status".
+   * Method returns attribute {@link #status}.<br/>
    * 
-   * 
-   * @return int Value to which the attribute "status" is set.
+   * @return int Value to which {@link #status} is set.
    */
   public int getStatus( ) {
     return status;
   }
 
   /**
-   * Method returns the attribute "type".
+   * Method returns attribute {@link #type}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "type" is set.
+   * @return {@link String} Value to which {@link #type} is set.
    */
   public String getType( ) {
     return type;
   }
 
   /**
-   * Method returns the attribute "detail".
+   * Method returns attribute {@link #detail}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "detail" is set.
+   * @return {@link String} Value to which {@link #detail} is set.
    */
   public String getDetail( ) {
     return detail;
   }
 
   /**
-   * Method returns the attribute "instance".
+   * Method returns attribute {@link #instance}.<br/>
    * 
-   * 
-   * @return String Value to which the attribute "instance" is set.
+   * @return {@link String} Value to which {@link #instance} is set.
    */
   public String getInstance( ) {
     return instance;

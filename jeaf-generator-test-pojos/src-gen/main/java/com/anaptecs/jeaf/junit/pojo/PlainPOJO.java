@@ -5,10 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
-/**
- * @author JEAF Generator
- * @version JEAF Release 1.4.x
- */
 public class PlainPOJO extends PlainPOJOBase {
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -64,8 +60,7 @@ public class PlainPOJO extends PlainPOJOBase {
   }
 
   /**
-  * 
-  */
+   */
   @Deprecated
   @Override
   public void doDeprectedStuff( ) {
@@ -73,10 +68,11 @@ public class PlainPOJO extends PlainPOJOBase {
   }
 
   /**
-   * 
-   * @param pParam1
+   * @param pParam1 <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    * @param pParam2
-   * @return {@link String}
+   * @return {@link String} <br/>
+   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
   @Override
