@@ -11,7 +11,8 @@ package «packageName()»;
 
 «EXPAND functions::Javadoc::JavadocForType»
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-«IF this.extensibleEnum == false»
+
+«IF this.extensibleEnum == false || generateHeavyStyleExtensibleEnums() == false»
 	public enum «name» {
 	«FOREACH this.ownedLiteral AS literal»
 	  «EXPAND functions::Javadoc::JavadocForLiteral FOR literal»
@@ -19,10 +20,38 @@ package «packageName()»;
 	  «literal.name»«IF literal.slot.size > 0»( 
 	  	«FOREACH literal.slot AS slot SEPARATOR ", "»«IF slot.isStringTypeSlot()»"«ENDIF»«slot.value.first().stringValue()»«IF slot.isStringTypeSlot()»"«ENDIF»«ENDFOREACH»	  
 	  )«ENDIF»	  
-	  «IF literal != this.ownedLiteral.last()»,«ELSE»;«ENDIF»
+	  «IF literal != this.ownedLiteral.last() || this.extensibleEnum »,«ELSE»;«ENDIF»
 	«ENDFOREACH»
+	«IF extensibleEnum»
+		/**
+		 * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external interface. 
+		 */
+		UNKNOWN;
+	«ENDIF»
 	
 	«IF this.ownedAttribute.size > 0»
+        «IF this.extensibleEnum»
+        /**
+         * Empty constructor is required for UNKNWON literal. 
+         */
+        private «this.name»Type() {
+          «FOREACH this.ownedAttribute AS attr»
+          «IF attr.type.isStringType()»
+          «attr.name» = null;
+          «ELSE»«IF attr.type.isBooleanType()»
+          «attr.name» = false;
+          «ELSE»
+            «IF attr.type.isEnumeration()»
+                «attr.name» = null;
+            «ELSE»
+                «attr.name» = -1;
+            «ENDIF»
+          «ENDIF»             
+          «ENDIF»
+          «ENDFOREACH»
+        }
+        «ENDIF»
+
 		/**
 		 * Initialize object.
 		 */

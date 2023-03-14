@@ -41,6 +41,9 @@ cached boolean generatePOJOs() :
 cached boolean makePOJOsSerializable() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.makePOJOsSerializable();    
     
+cached boolean generateHeavyStyleExtensibleEnums() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateHeavyStyleExtensibleEnums();    
+
 cached boolean generateExceptionClasses() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateExceptionClasses();
     
