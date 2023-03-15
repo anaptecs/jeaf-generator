@@ -2,6 +2,7 @@
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION entity::ModelProperties»
+«EXTENSION functions::Enumeration»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -600,7 +601,7 @@ components:
         «ELSE-»
         Valid Values:
         «ENDIF-»
-        «FOREACH this.ownedLiteral AS literal-»
+        «FOREACH this.getPulicLiterals() AS literal-»
         - «IF literal.isDeprecated() -»@Deprecated «ENDIF»«literal.name»«IF literal.hasComment()»: «literal.getCommentForOpenAPIDescription("            ")»«ENDIF»
         «ENDFOREACH-»
         «ENDIF-»
@@ -614,7 +615,7 @@ components:
       «ELSE-»
       enum:
       «ENDIF-»
-        «FOREACH this.ownedLiteral AS literal-»        
+        «FOREACH this.getPulicLiterals() AS literal-»        
         - «literal.getLiteralName()»
         «ENDFOREACH-»
       «IF this.hasDefaultLiteral()-»

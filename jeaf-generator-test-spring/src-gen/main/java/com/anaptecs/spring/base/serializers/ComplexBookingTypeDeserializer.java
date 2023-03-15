@@ -22,10 +22,18 @@ public class ComplexBookingTypeDeserializer extends JsonDeserializer<ComplexBook
   public ComplexBookingType deserialize( JsonParser pParser, DeserializationContext pContext ) throws IOException {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
-    // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
+    // We expect that enumerations are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
-      String lLiteralName = lNode.asText();
-      return ComplexBookingType.valueOf(lLiteralName);
+      ComplexBookingType lLiteral;
+      try {
+        String lLiteralName = lNode.asText();
+        lLiteral = ComplexBookingType.valueOf(lLiteralName);
+      }
+      // Literal is unknown.
+      catch (IllegalArgumentException e) {
+        lLiteral = ComplexBookingType.UNKNOWN;
+      }
+      return lLiteral;
     }
     // Node is not a TextNode
     else {

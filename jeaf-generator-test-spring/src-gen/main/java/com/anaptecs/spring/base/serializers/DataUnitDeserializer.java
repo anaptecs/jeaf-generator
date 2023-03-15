@@ -22,10 +22,18 @@ public class DataUnitDeserializer extends JsonDeserializer<DataUnit> {
   public DataUnit deserialize( JsonParser pParser, DeserializationContext pContext ) throws IOException {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
-    // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
+    // We expect that enumerations are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof TextNode) {
-      String lLiteralName = lNode.asText();
-      return DataUnit.valueOf(lLiteralName);
+      DataUnit lLiteral;
+      try {
+        String lLiteralName = lNode.asText();
+        lLiteral = DataUnit.valueOf(lLiteralName);
+      }
+      // Literal is unknown.
+      catch (IllegalArgumentException e) {
+        lLiteral = DataUnit.UNKNOWN;
+      }
+      return lLiteral;
     }
     // Node is not a TextNode
     else {

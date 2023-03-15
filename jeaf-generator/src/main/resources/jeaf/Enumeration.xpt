@@ -1,5 +1,6 @@
 «EXTENSION java::Naming»
 «EXTENSION java::GeneratorCommons»
+«EXTENSION functions::Enumeration»
 «IMPORT uml»
 «IMPORT java»
 «IMPORT JMM»
@@ -14,27 +15,28 @@ package «packageName()»;
 
 «IF this.extensibleEnum == false || generateHeavyStyleExtensibleEnums() == false»
 	public enum «name» {
-	«FOREACH this.ownedLiteral AS literal»
+	«FOREACH this.ownedLiteral AS literal SEPARATOR ", "»
 	  «EXPAND functions::Javadoc::JavadocForLiteral FOR literal»
 	  «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
 	  «literal.name»«IF literal.slot.size > 0»( 
 	  	«FOREACH literal.slot AS slot SEPARATOR ", "»«IF slot.isStringTypeSlot()»"«ENDIF»«slot.value.first().stringValue()»«IF slot.isStringTypeSlot()»"«ENDIF»«ENDFOREACH»	  
 	  )«ENDIF»	  
-	  «IF literal != this.ownedLiteral.last() || this.extensibleEnum »,«ELSE»;«ENDIF»
 	«ENDFOREACH»
-	«IF extensibleEnum»
+	«IF extensibleEnum && this.hasUnknownLiteral() == false»
+	   ,
 		/**
 		 * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external interface. 
 		 */
-		UNKNOWN;
+		UNKNOWN
 	«ENDIF»
+	;
 	
 	«IF this.ownedAttribute.size > 0»
-        «IF this.extensibleEnum»
+        «IF this.extensibleEnum && this.hasUnknownLiteral() == false»
         /**
          * Empty constructor is required for UNKNWON literal. 
          */
-        private «this.name»Type() {
+        private «this.name»() {
           «FOREACH this.ownedAttribute AS attr»
           «IF attr.type.isStringType()»
           «attr.name» = null;
@@ -66,17 +68,21 @@ package «packageName()»;
 «ELSE»
 public final class «name» {
   public static enum «name»Type {
-	«FOREACH this.ownedLiteral AS literal»
+	«FOREACH this.ownedLiteral AS literal SEPARATOR ", "»
 	  «EXPAND functions::Javadoc::JavadocForLiteral FOR literal»
 	  «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
 	  «literal.name»«IF literal.slot.size > 0»( 
 	  	«FOREACH literal.getOrderedSlots() AS slot SEPARATOR ", "»«IF slot.isEnumTypeSlot()»«slot.definingFeature.type.fqn()».«ENDIF»«IF slot.isStringTypeSlot()»"«ENDIF»«slot.value.first().stringValue()»«IF slot.isStringTypeSlot()»"«ENDIF»«IF slot.isFloatTypeSlot()»f«ENDIF»«ENDFOREACH»	  
-	  )«ENDIF»,
+	  )«ENDIF»
 	«ENDFOREACH»
+	  «IF extensibleEnum && this.hasUnknownLiteral() == false»
+	  ,
 	  /**
 	   * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external interface. 
 	   */
-	  UNKNOWN;
+	  UNKNOWN
+	  «ENDIF»
+	  ;
 
 		«IF this.ownedAttribute.size > 0»
 			/**
@@ -341,10 +347,23 @@ public final class «name» {
 			// Parse JSON content.
 			com.fasterxml.jackson.databind.JsonNode lNode = pParser.getCodec().readTree(pParser);
 		
-		    // We expect that objectIDs are always serialized as plain text which will result in a TextNode.
+		    // We expect that enumerations are always serialized as plain text which will result in a TextNode.
 		    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
-		      String lLiteralName = lNode.asText();
-		      return «this.fqn()».valueOf(lLiteralName);
+		        «IF generateHeavyStyleExtensibleEnums()»
+					String lLiteralName = lNode.asText();
+					return «this.fqn()».valueOf(lLiteralName);
+                «ELSE»
+					«this.fqn()» lLiteral;
+					try {
+					  String lLiteralName = lNode.asText();
+					  lLiteral = «this.fqn()».valueOf(lLiteralName);
+					}
+					// Literal is unknown.
+					catch (IllegalArgumentException e) {
+					  lLiteral = «this.fqn()».UNKNOWN;
+					}
+					return lLiteral;
+	            «ENDIF»
 		    }
 		    // Node is not a TextNode
 		    else {

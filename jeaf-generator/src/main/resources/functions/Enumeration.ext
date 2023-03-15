@@ -5,3 +5,11 @@ extension functions::TypeChecks;
     
 cached uml::Enumeration asEnumeration(uml::Element element):
     (uml::Enumeration) element;
+    
+cached boolean hasUnknownLiteral(uml::Enumeration enum):
+    !enum.ownedLiteral.select(e|e.name == "UNKNOWN").isEmpty;
+    
+cached List[uml::EnumerationLiteral] getPulicLiterals(JMM::OpenAPIEnumeration enum):
+    if enum.extensibleEnum 
+    then enum.ownedLiteral.select(e|e.name != "UNKNOWN")
+    else enum.ownedLiteral;
