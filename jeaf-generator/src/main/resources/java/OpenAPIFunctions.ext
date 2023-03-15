@@ -424,8 +424,10 @@ cached List[String] collectDependendTypeNames(uml::Property property):
    
 
 cached String getExtensibleEnumType(uml::Type type):
-   if type.isStereotypeApplied("JEAFEnumeration") && ((JMM::JEAFEnumeration) type).extensibleEnum
-   then type.fqn() +"." + type.name + "Type";
+   if type.isStereotypeApplied("JEAFEnumeration") && ((JMM::JEAFEnumeration) type).extensibleEnum && generateHeavyStyleExtensibleEnums() 
+   then type.fqn() +"." + type.name + "Type"
+   else if type.isStereotypeApplied("JEAFEnumeration") && ((JMM::JEAFEnumeration) type).extensibleEnum
+   then type.fqn();
    
 cached boolean isCompositeDataTypeConverterRequiredForObjectMapperFactory(JMM::ObjectMapperFactory factory):
 	if(factory.clientDependency.supplier.typeSelect(JMM::ModuleFactory).getOpenAPIDataTypes().select(e|e.generateInternalViewOfCompositeDataType() && e.hasCompositeDateTypeCustomSerialization() == false).size > 0 && isTargetRuntimeJEAF() == false)

@@ -308,6 +308,12 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean makePOJOsSerializable;
 
   /**
+   * Switch defines if extensible enums should be generated in light-weight or heavy-weight style.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateHeavyExtensibleEnums;
+
+  /**
    * Switch defines whether domain objects should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -931,6 +937,10 @@ public class GeneratorMojo extends AbstractMojo {
     if (generatePOJOs) {
       lLog.info("Generate POJO's:                                  " + generatePOJOs);
       lLog.info("Make POJO's serializable:                         " + makePOJOsSerializable);
+
+      if (generateHeavyExtensibleEnums) {
+        lLog.info("Generate heavy style extensible enums:            " + generateHeavyExtensibleEnums);
+      }
       lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
       lLog.info("Generate valueOf(...) for OpenAPI Data Types:     " + generateValueOfForOpenAPIDataTypes);
     }
@@ -1137,6 +1147,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.exception.classes", generateExceptionClasses.toString());
       System.setProperty("switch.gen.pojos", generatePOJOs.toString());
       System.setProperty("switch.gen.serializable.pojos", makePOJOsSerializable.toString());
+      System.setProperty("switch.gen.heavy.extensible.enums", generateHeavyExtensibleEnums.toString());
       System.setProperty("switch.gen.domain.objects", generateDomainObjects.toString());
       System.setProperty("switch.gen.junits", generateJUnitTests.toString());
 
@@ -1152,8 +1163,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());
       System.setProperty("switch.gen.openapi.openAPICommentStyle", openAPICommentStyle.toString());
       System.setProperty("switch.gen.rest.suppress.technical.headers", suppressTechnicalHeaders.toString());
-      System.setProperty("switch.gen.openapi.addIgnoredHeadersToOpenAPISpec", addIgnoredHeadersToOpenAPISpec
-          .toString());
+      System.setProperty("switch.gen.openapi.addIgnoredHeadersToOpenAPISpec",
+          addIgnoredHeadersToOpenAPISpec.toString());
 
       System.setProperty("switch.gen.jaxrs.annotations", generateJAXRSAnnotations.toString());
       System.setProperty("switch.gen.jackson.annotations", generateJacksonAnnotations.toString());
@@ -1201,8 +1212,8 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty("switch.gen.enable.detailed.toString", enableDetailedToStringMethod.toString());
       System.setProperty("switch.gen.enable.legacy.builder.style", enableLegacyBuilderStyle.toString());
-      System.setProperty("switch.gen.enable.builder.for.manadatory.fields", generateBuilderWithAllMandatoryFields
-          .toString());
+      System.setProperty("switch.gen.enable.builder.for.manadatory.fields",
+          generateBuilderWithAllMandatoryFields.toString());
 
       System.setProperty("name.oid.row", peristentObjectsOIDRowName);
       System.setProperty("name.version.label.row", peristentObjectsVersionLabelRowName);

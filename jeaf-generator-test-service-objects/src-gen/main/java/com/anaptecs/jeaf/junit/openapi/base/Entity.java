@@ -4,12 +4,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 public final class Entity {
   public static enum EntityType {
-    DISCOUNT_CAMPAIGN, DISCOUNT_OFFER("DISOFF", DataUnit.COUPON),
-    /**
-     * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external
-     * interface.
-     */
-    UNKNOWN;
+    DISCOUNT_CAMPAIGN, DISCOUNT_OFFER("DISOFF", DataUnit.COUPON), UNKNOWN("N/A", DataUnit.UNKNOWN);
 
     /**
      * Empty constructor is required for UNKNWON literal.
@@ -54,6 +49,8 @@ public final class Entity {
 
   public static final Entity DISCOUNT_OFFER = new Entity(EntityType.DISCOUNT_OFFER);
 
+  public static final Entity UNKNOWN = new Entity(EntityType.UNKNOWN);
+
   /**
    * Literal of the enumeration that is represented by this instance.
    */
@@ -83,6 +80,9 @@ public final class Entity {
           break;
         case DISCOUNT_OFFER:
           lEnum = DISCOUNT_OFFER;
+          break;
+        case UNKNOWN:
+          lEnum = UNKNOWN;
           break;
         default:
           lEnum = new Entity(lEnumValue);

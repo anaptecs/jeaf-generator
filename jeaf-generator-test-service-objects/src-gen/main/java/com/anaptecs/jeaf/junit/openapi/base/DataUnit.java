@@ -4,12 +4,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 public final class DataUnit {
   public static enum DataUnitType {
-    COUPON("CMP"),
-    /**
-     * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external
-     * interface.
-     */
-    UNKNOWN;
+    COUPON("CMP"), UNKNOWN("N/A");
 
     /**
      * Empty constructor is required for UNKNWON literal.
@@ -39,6 +34,8 @@ public final class DataUnit {
 
   public static final DataUnit COUPON = new DataUnit(DataUnitType.COUPON);
 
+  public static final DataUnit UNKNOWN = new DataUnit(DataUnitType.UNKNOWN);
+
   /**
    * Literal of the enumeration that is represented by this instance.
    */
@@ -65,6 +62,9 @@ public final class DataUnit {
       switch (lEnumValue) {
         case COUPON:
           lEnum = COUPON;
+          break;
+        case UNKNOWN:
+          lEnum = UNKNOWN;
           break;
         default:
           lEnum = new DataUnit(lEnumValue);

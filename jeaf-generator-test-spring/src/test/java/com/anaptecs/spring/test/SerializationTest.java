@@ -13,15 +13,19 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.anaptecs.spring.base.DataUnit;
+import com.anaptecs.spring.base.Entity;
+import com.anaptecs.spring.base.MasterDataObject;
 import com.anaptecs.spring.base.techbase.BusinessA;
 import com.anaptecs.spring.base.techbase.BusinessChild;
 import com.anaptecs.spring.base.techbase.BusinessParent;
 import com.anaptecs.spring.base.techbase.TechParent;
 import com.anaptecs.spring.impl.SpringTestApplication;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest(classes = SpringTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class TestInheritance {
+public class SerializationTest {
   @Autowired
   private ObjectMapper objectMapper;
 
@@ -67,6 +71,24 @@ public class TestInheritance {
     lTechParent = objectMapper.readValue(lJSON, TechParent.class);
     assertEquals(TechParent.class, lTechParent.getClass());
     assertEquals("TECH_1234", lTechParent.getTechAttribute());
+  }
+
+  @Test
+  void testExtensibleEnumSerialization( ) throws JsonProcessingException {
+    MasterDataObject lMasterDataObject = MasterDataObject.builder().setDataUnit(DataUnit.COUPON).setEntity(
+        Entity.DISCOUNT_CAMPAIGN)
+        .setObjectID("47110815").build();
+
+    String lJSON = objectMapper.writeValueAsString(lMasterDataObject);
+    assertEquals("{\"dataUnit\":\"COUPON\",\"entity\":\"DISCOUNT_CAMPAIGN\",\"objectID\":\"47110815\"}", lJSON);
+
+    // Deserialize unknown data unit
+    MasterDataObject lReadObject = objectMapper.readValue(
+        "{\"dataUnit\":\"PRODUCT\",\"entity\":\"DISCOUNT_CAMPAIGN\",\"objectID\":\"47110815\"}",
+        MasterDataObject.class);
+    assertEquals("47110815", lReadObject.getObjectID());
+    assertEquals(Entity.DISCOUNT_CAMPAIGN, lReadObject.getEntity());
+    assertEquals(DataUnit.UNKNOWN, lReadObject.getDataUnit());
   }
 
 }

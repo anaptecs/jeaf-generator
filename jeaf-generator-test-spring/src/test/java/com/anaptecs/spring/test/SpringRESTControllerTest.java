@@ -146,7 +146,7 @@ public class SpringRESTControllerTest {
   @Test
   void testCompositeDataTypeAsPathParam( ) throws IOException {
     String lComplexBookingIDAsString =
-        "AAyDDQAPUkVGVU5EX0NPRMWTRVhUXyPDpMO2w58_IsKnJMKnIiQiJSQCWFhZWVraD0JPT0tJTkdfQ09ExUVYVC0wOTg3NjU0MzKxATEyMzQ1tgECgKq03nVSRUYtMTKzAA==";
+        "AAyDDQAPUkVGVU5EX0NPRMWTRVhUXyPDpMO2w58_IsKnJMKnIiQiJSQCWFhZWVraD0JPT0tJTkdfQ09ExUVYVC0wOTg3NjU0MzKxATEyMzQ1tgKqtN51UkVGLTEyswA=";
 
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
     ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX

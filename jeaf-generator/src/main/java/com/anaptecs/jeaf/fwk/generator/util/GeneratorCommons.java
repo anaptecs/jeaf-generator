@@ -128,6 +128,11 @@ public class GeneratorCommons {
   public static final String MAKE_POJO_SERIALIZABLE_PROPERTY = "switch.gen.serializable.pojos";
 
   /**
+   * Constant defines the name of the system property which enables the generation of heavy style extensible enums.
+   */
+  public static final String GENERATE_HEAVY_STLYE_EXTENSBLE_ENUMS_PROPERTY = "switch.gen.heavy.extensible.enums";
+
+  /**
    * Constant defines the name of the system property which enables the generation of exception classes from the model.
    */
   public static final String EXCEPTION_CLASSES_PROPERTY = "switch.gen.exception.classes";
@@ -738,6 +743,12 @@ public class GeneratorCommons {
   public static boolean makePOJOsSerializable( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(MAKE_POJO_SERIALIZABLE_PROPERTY, Boolean.FALSE, Boolean.class);
+  }
+
+  public static boolean generateHeavyStyleExtensibleEnums( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_HEAVY_STLYE_EXTENSBLE_ENUMS_PROPERTY, Boolean.FALSE,
+        Boolean.class);
   }
 
   /**
