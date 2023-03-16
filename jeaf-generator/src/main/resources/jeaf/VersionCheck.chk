@@ -3,4 +3,4 @@ import JMM;
 
 extension java::GeneratorCommons;
 
-context Model if this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).size > 0 ERROR this.getErrorMessage("9100", {"186", this.getMetaModelVersion().toString()}): this.getMetaModelVersion() >= 186;
+context Model if this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).size > 0 ERROR this.getErrorMessage("9100", {"188", this.getMetaModelVersion().toString()}): this.getMetaModelVersion() >= 188;

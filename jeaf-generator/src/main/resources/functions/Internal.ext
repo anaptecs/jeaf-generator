@@ -1,0 +1,7 @@
+extension java::GeneratorCommons;
+
+cached boolean isInternalProperty(uml::Element element):
+    element.isStereotypeApplied("Internal");
+    
+cached JMM::Internal asInternal(uml::Element element):
+    (JMM::Internal) element;

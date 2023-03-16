@@ -5,11 +5,17 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 public class MasterDataObject {
   /**
-   * Constant for the name of attribute "dataUnit".
+   * Constant for the name of attribute "dataUnits".
    */
-  public static final String DATAUNIT = "dataUnit";
+  public static final String DATAUNITS = "dataUnits";
 
   /**
    * Constant for the name of attribute "entity".
@@ -31,7 +37,7 @@ public class MasterDataObject {
    */
   public static final String DERIVEDPROPERTY = "derivedProperty";
 
-  private DataUnit dataUnit;
+  private List<DataUnit> dataUnits;
 
   private Entity entity;
 
@@ -46,6 +52,7 @@ public class MasterDataObject {
    * object creation builder should be used instead.
    */
   protected MasterDataObject( ) {
+    dataUnits = new ArrayList<DataUnit>();
   }
 
   /**
@@ -55,7 +62,12 @@ public class MasterDataObject {
    */
   protected MasterDataObject( Builder pBuilder ) {
     // Read attribute values from builder.
-    dataUnit = pBuilder.dataUnit;
+    if (pBuilder.dataUnits != null) {
+      dataUnits = pBuilder.dataUnits;
+    }
+    else {
+      dataUnits = new ArrayList<DataUnit>();
+    }
     entity = pBuilder.entity;
     objectID = pBuilder.objectID;
     internalProperty = pBuilder.internalProperty;
@@ -86,7 +98,7 @@ public class MasterDataObject {
    * Class implements builder to create a new instance of class <code>MasterDataObject</code>.
    */
   public static class Builder {
-    private DataUnit dataUnit;
+    private List<DataUnit> dataUnits;
 
     private Entity entity;
 
@@ -108,7 +120,7 @@ public class MasterDataObject {
     protected Builder( MasterDataObject pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        dataUnit = pObject.dataUnit;
+        dataUnits = pObject.dataUnits;
         entity = pObject.entity;
         objectID = pObject.objectID;
         internalProperty = pObject.internalProperty;
@@ -117,13 +129,36 @@ public class MasterDataObject {
     }
 
     /**
-     * Method sets association {@link #dataUnit}.<br/>
+     * Method sets association {@link #dataUnits}.<br/>
      * 
-     * @param pDataUnit Value to which {@link #dataUnit} should be set.
+     * @param pDataUnits Collection to which {@link #dataUnits} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDataUnit( DataUnit pDataUnit ) {
-      dataUnit = pDataUnit;
+    public Builder setDataUnits( List<DataUnit> pDataUnits ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pDataUnits != null) {
+        dataUnits = new ArrayList<DataUnit>(pDataUnits);
+      }
+      else {
+        dataUnits = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #dataUnits}.<br/>
+     * 
+     * @param pDataUnits Array with objects to which {@link #dataUnits} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setDataUnits( DataUnit... pDataUnits ) {
+      // To ensure immutability we have to copy the content of the passed array.
+      if (pDataUnits != null) {
+        dataUnits = new ArrayList<DataUnit>(Arrays.asList(pDataUnits));
+      }
+      else {
+        dataUnits = null;
+      }
       return this;
     }
 
@@ -186,28 +221,55 @@ public class MasterDataObject {
   }
 
   /**
-   * Method returns association {@link #dataUnit}.<br/>
+   * Method returns association {@link #dataUnits}.<br/>
    * 
-   * @return {@link DataUnit} Value to which {@link #dataUnit} is set.
+   * @return {@link List<DataUnit>} Value to which {@link #dataUnits} is set. The method never returns null and the
+   * returned collection is unmodifiable.
    */
-  public DataUnit getDataUnit( ) {
-    return dataUnit;
+  List<DataUnit> getDataUnits( ) {
+    // Return all DataUnit objects as unmodifiable collection.
+    return Collections.unmodifiableList(dataUnits);
   }
 
   /**
-   * Method sets association {@link #dataUnit}.<br/>
+   * Method adds the passed object to {@link #dataUnits}.
    * 
-   * @param pDataUnit Value to which {@link #dataUnit} should be set.
+   * @param pDataUnits Object that should be added to {@link #dataUnits}. The parameter must not be null.
    */
-  public void setDataUnit( DataUnit pDataUnit ) {
-    dataUnit = pDataUnit;
+  void addToDataUnits( DataUnit pDataUnits ) {
+    // Add passed object to collection of associated DataUnit objects.
+    dataUnits.add(pDataUnits);
   }
 
   /**
-   * Method unsets {@link #dataUnit}.
+   * Method adds all passed objects to {@link #dataUnits}.
+   * 
+   * @param pDataUnits Collection with all objects that should be added to {@link #dataUnits}. The parameter must not be
+   * null.
    */
-  public final void unsetDataUnit( ) {
-    dataUnit = null;
+  void addToDataUnits( Collection<DataUnit> pDataUnits ) {
+    // Add all passed objects.
+    for (DataUnit lNextObject : pDataUnits) {
+      this.addToDataUnits(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #dataUnits}.<br/>
+   * 
+   * @param pDataUnits Object that should be removed from {@link #dataUnits}. The parameter must not be null.
+   */
+  void removeFromDataUnits( DataUnit pDataUnits ) {
+    // Remove passed object from collection of associated DataUnit objects.
+    dataUnits.remove(pDataUnits);
+  }
+
+  /**
+   * Method removes all objects from {@link #dataUnits}.
+   */
+  void clearDataUnits( ) {
+    // Remove all objects from association "dataUnits".
+    dataUnits.clear();
   }
 
   /**
@@ -215,7 +277,7 @@ public class MasterDataObject {
    * 
    * @return {@link Entity} Value to which {@link #entity} is set.
    */
-  public Entity getEntity( ) {
+  Entity getEntity( ) {
     return entity;
   }
 
@@ -224,14 +286,14 @@ public class MasterDataObject {
    * 
    * @param pEntity Value to which {@link #entity} should be set.
    */
-  public void setEntity( Entity pEntity ) {
+  void setEntity( Entity pEntity ) {
     entity = pEntity;
   }
 
   /**
    * Method unsets {@link #entity}.
    */
-  public final void unsetEntity( ) {
+  final void unsetEntity( ) {
     entity = null;
   }
 
@@ -259,7 +321,7 @@ public class MasterDataObject {
    * 
    * @return {@link String} Value to which {@link #internalProperty} is set.
    */
-  public String getInternalProperty( ) {
+  String getInternalProperty( ) {
     return internalProperty;
   }
 
@@ -268,7 +330,7 @@ public class MasterDataObject {
    * 
    * @param pInternalProperty Value to which {@link #internalProperty} should be set.
    */
-  public void setInternalProperty( String pInternalProperty ) {
+  void setInternalProperty( String pInternalProperty ) {
     // Assign value to attribute
     internalProperty = pInternalProperty;
   }
@@ -304,9 +366,22 @@ public class MasterDataObject {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("dataUnit: ");
-    lBuilder.append(dataUnit);
+    lBuilder.append("dataUnits: ");
+    if (dataUnits != null) {
+      lBuilder.append(dataUnits.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
     lBuilder.append(System.lineSeparator());
+    if (dataUnits != null) {
+      for (DataUnit lNext : dataUnits) {
+        lBuilder.append(pIndent + "    ");
+        lBuilder.append(lNext.toString());
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     lBuilder.append(pIndent);
     lBuilder.append("entity: ");
     lBuilder.append(entity);
