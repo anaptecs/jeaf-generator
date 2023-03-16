@@ -1,3 +1,4 @@
+
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
  * 
@@ -5,9 +6,13 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.List;
-
 public class MasterDataObject extends MasterDataObjectBase {
+
+  /**
+   * Default serial version UID.
+   */
+  private static final long serialVersionUID = 1L;
+
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
@@ -43,6 +48,18 @@ public class MasterDataObject extends MasterDataObjectBase {
   }
 
   /**
+   * Method creates a new builder and initializes it with the passed attributes.
+   */
+  public static Builder builder( com.anaptecs.spring.base.Entity pEntity, java.lang.String pObjectID,
+      String pInternalProperty ) {
+    Builder lBuilder = builder();
+    lBuilder.setEntity(pEntity);
+    lBuilder.setObjectID(pObjectID);
+    lBuilder.setInternalProperty(pInternalProperty);
+    return lBuilder;
+  }
+
+  /**
    * Class implements builder to create a new instance of class MasterDataObject. As the class has readonly attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
@@ -59,26 +76,6 @@ public class MasterDataObject extends MasterDataObjectBase {
     protected Builder( MasterDataObject pObject ) {
       super(pObject);
     }
-
-    /**
-     * Method returns a new builder.
-     * 
-     * @return {@link Builder} New builder that can be used to create new MasterDataObject objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     * 
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( MasterDataObject pObject ) {
-      return new Builder(pObject);
-    }
   }
 
   /**
@@ -94,10 +91,10 @@ public class MasterDataObject extends MasterDataObjectBase {
   /**
    * Method returns association {@link #derivedDataUnits}.<br/>
    * 
-   * @return {@link List<DataUnit>} Value to which {@link #derivedDataUnits} is set. The method never returns null and
-   * the returned collection is unmodifiable.
+   * @return {@link java.util.List<com.anaptecs.spring.base.DataUnit>} Value to which {@link #derivedDataUnits} is set.
+   * The method never returns null and the returned collection is unmodifiable.
    */
-  public List<DataUnit> getDerivedDataUnits( ) {
+  public java.util.List<com.anaptecs.spring.base.DataUnit> getDerivedDataUnits( ) {
     // TODO Implement method for derived property "derivedDataUnits".
     return null;
   }
@@ -105,9 +102,9 @@ public class MasterDataObject extends MasterDataObjectBase {
   /**
    * Method returns association {@link #derivedEntity}.<br/>
    * 
-   * @return {@link Entity} Value to which {@link #derivedEntity} is set.
+   * @return {@link com.anaptecs.spring.base.Entity} Value to which {@link #derivedEntity} is set.
    */
-  public Entity getDerivedEntity( ) {
+  public com.anaptecs.spring.base.Entity getDerivedEntity( ) {
     // TODO Implement method for derived property "derivedEntity".
     return null;
   }
@@ -127,6 +124,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    * 
    * @return boolean Value to which {@link #derivedBoolean} is set.
    */
+
   public boolean getDerivedBoolean( ) {
     // TODO Implement method for derived property "derivedBoolean".
     return false;

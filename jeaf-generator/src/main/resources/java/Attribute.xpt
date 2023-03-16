@@ -147,6 +147,25 @@
     }
 «ENDDEFINE»
 
+«DEFINE AbstractGetterForDerivedProperty FOR Property»
+    «EXPAND functions::Javadoc::JavadocForPropertyGetter»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «IF this.isInternalProperty() == false»public«ENDIF» abstract «IF this.association == null»«this.fqn()»«IF isMultivalued()»[]«ENDIF»«ELSE»«this.fqn()»«ENDIF» «asGetter()»();
+«ENDDEFINE»
+
+«DEFINE EmptyGetterImplForDerivedProperty FOR Property»
+    «EXPAND functions::Javadoc::JavadocForPropertyGetter»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «IF this.isInternalProperty() == false»public«ENDIF» «IF this.association == null»«this.fqn()»«IF isMultivalued()»[]«ENDIF»«ELSE»«this.fqn()»«ENDIF» «asGetter()»() {
+        // TODO Implement method for derived property "«this.name»".
+        «IF this.type.isPrimitiveType() && this.isMultivalued() == false»
+            «IF this.fqn() != "boolean"» return 0; «ELSE» return false;«ENDIF»
+        «ELSE»
+        return null;
+        «ENDIF»
+    }
+«ENDDEFINE»
+
 «DEFINE Setter FOR Property»
 	«EXPAND functions::Javadoc::JavadocForPropertySetter»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»

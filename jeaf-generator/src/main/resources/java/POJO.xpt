@@ -3,6 +3,7 @@
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION entity::ModelProperties»
+«EXTENSION functions::Class»
 
 «IMPORT JMM»
 
@@ -13,7 +14,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 «DEFINE POJOClass FOR POJO»
 	«IF generatePOJOs() == true»
-		«IF this.ownedOperation.size == 0 && this.hasCustomImplementation == false && (this.compositeDataTypeCustomSerialization == false || (this.compositeDataTypeCustomSerialization == true && this.generateInternalViewOfCompositeDataType() == false))»
+		«IF this.ownedOperation.size == 0 && this.hasCustomImplementation == false && this.hasDerivedProperties() == false && (this.compositeDataTypeCustomSerialization == false || (this.compositeDataTypeCustomSerialization == true && this.generateInternalViewOfCompositeDataType() == false))»
 			«FILE packagePath() + "/" + name +".java" src_gen»
 				«getFileHeader()»
 				package «this.packageName()»;
@@ -132,7 +133,7 @@
 				}
 			«ENDFILE»
 			  
-		«REM»POJO has own methods«ENDREM»
+		«REM»POJO has own custom implementation«ENDREM»
 		«ELSE»
 			«REM»Generate base class«ENDREM»
 			«FILE packagePath() + "/" + name +"Base.java" src_gen»
@@ -247,6 +248,7 @@
 						«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false)»
 					«ENDIF»
 
+					«EXPAND java::Attribute::AbstractGetterForDerivedProperty FOREACH this.getDerivedProperties()»
 					«EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
 					«EXPAND java::Helper::GenerateCustomHeadersOperations»
 					«EXPAND java::Helper::GenerateEqualsHashCode»
@@ -287,6 +289,7 @@
 					«EXPAND java::Helper::GenerateValueOfForOpenAPIDataType FOR this»
 					«EXPAND java::Builder::GenerateBuilderImpl»
 					
+					«EXPAND java::Attribute::EmptyGetterImplForDerivedProperty FOREACH this.getDerivedProperties()»
 					«EXPAND jeaf::JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperation»
 
 				  «IF this.compositeDataTypeCustomSerialization»
