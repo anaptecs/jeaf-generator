@@ -3,7 +3,7 @@
  *
  * All rights reserved.
  */
-package com.anaptecs.spring.test;
+package com.anaptecs.spring.base;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,9 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.anaptecs.spring.base.DataUnit;
-import com.anaptecs.spring.base.Entity;
-import com.anaptecs.spring.base.MasterDataObject;
 import com.anaptecs.spring.base.techbase.BusinessA;
 import com.anaptecs.spring.base.techbase.BusinessChild;
 import com.anaptecs.spring.base.techbase.BusinessParent;
@@ -31,8 +28,8 @@ public class SerializationTest {
 
   @Test
   void testTechnicalBaseClasses( ) throws IOException {
-    BusinessParent lBusinessParent = BusinessParent.builder().setTechAttribute("TechStuff").setParentAttribute(
-        123456789).build();
+    BusinessParent lBusinessParent =
+        BusinessParent.builder().setTechAttribute("TechStuff").setParentAttribute(123456789).build();
 
     String lJSON = objectMapper.writeValueAsString(lBusinessParent);
     assertEquals("{\"objectType\":\"BusinessParent\",\"techAttribute\":\"TechStuff\",\"parentAttribute\":123456789}",
@@ -75,20 +72,19 @@ public class SerializationTest {
 
   @Test
   void testExtensibleEnumSerialization( ) throws JsonProcessingException {
-    MasterDataObject lMasterDataObject = MasterDataObject.builder().setDataUnit(DataUnit.COUPON).setEntity(
-        Entity.DISCOUNT_CAMPAIGN)
-        .setObjectID("47110815").build();
+    MasterDataObject lMasterDataObject = MasterDataObject.builder().setDataUnits(DataUnit.COUPON)
+        .setEntity(Entity.DISCOUNT_CAMPAIGN).setObjectID("47110815").build();
 
     String lJSON = objectMapper.writeValueAsString(lMasterDataObject);
-    assertEquals("{\"dataUnit\":\"COUPON\",\"entity\":\"DISCOUNT_CAMPAIGN\",\"objectID\":\"47110815\"}", lJSON);
+    assertEquals("{\"dataUnits\":[\"COUPON\"],\"entity\":\"DISCOUNT_CAMPAIGN\",\"objectID\":\"47110815\"}", lJSON);
 
     // Deserialize unknown data unit
     MasterDataObject lReadObject = objectMapper.readValue(
-        "{\"dataUnit\":\"PRODUCT\",\"entity\":\"DISCOUNT_CAMPAIGN\",\"objectID\":\"47110815\"}",
+        "{\"dataUnits\":[\"PRODUCT\"],\"entity\":\"DISCOUNT_CAMPAIGN\",\"objectID\":\"47110815\"}",
         MasterDataObject.class);
     assertEquals("47110815", lReadObject.getObjectID());
     assertEquals(Entity.DISCOUNT_CAMPAIGN, lReadObject.getEntity());
-    assertEquals(DataUnit.UNKNOWN, lReadObject.getDataUnit());
+    assertEquals(DataUnit.UNKNOWN, lReadObject.getDataUnits().get(0));
   }
 
 }

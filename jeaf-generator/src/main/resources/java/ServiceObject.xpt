@@ -2,6 +2,7 @@
 «EXTENSION java::ObjectMapper»
 «EXTENSION java::GeneratorCommons»
 «EXTENSION entity::ModelProperties»
+«EXTENSION functions::Class»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «IMPORT JMM»
@@ -13,7 +14,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 «DEFINE ServiceObjectClass FOR ServiceObject»
   «IF generateServiceObjects() == true»
-  «IF this.ownedOperation.size == 0 && this.hasCustomImplementation == false && (this.compositeDataTypeCustomSerialization == false || (this.compositeDataTypeCustomSerialization == true && this.generateInternalViewOfCompositeDataType() == false))»
+  «IF this.ownedOperation.size == 0 && this.hasCustomImplementation == false && this.hasDerivedProperties() == false && (this.compositeDataTypeCustomSerialization == false || (this.compositeDataTypeCustomSerialization == true && this.generateInternalViewOfCompositeDataType() == false))»
 	«FILE packagePath() + "/" + name +".java" src_gen»
 	«getFileHeader()»
 	package «this.packageName()»;
@@ -127,6 +128,7 @@
 		«EXPAND java::Helper::GenerateToStringMethod»
 	}
 	«ENDFILE»
+	«REM»ServiceObject has own custom implementation«ENDREM»
 	«ELSE»
       «FILE packagePath() + "/" + name +"Base.java" src_gen»
       «getFileHeader()»
@@ -234,6 +236,7 @@
 			«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false)»
 		«ENDIF»
 
+        «EXPAND java::Attribute::AbstractGetterForDerivedProperty FOREACH this.getDerivedProperties()»
         «EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
         «EXPAND java::Helper::GenerateCustomHeadersOperations»
         «EXPAND java::Helper::GenerateEqualsHashCode»
@@ -273,6 +276,7 @@
 		«EXPAND java::Helper::GenerateValueOfForOpenAPIDataType FOR this»
 		«EXPAND java::Builder::GenerateBuilderImpl»
 
+		«EXPAND java::Attribute::EmptyGetterImplForDerivedProperty FOREACH this.getDerivedProperties()»
 		«EXPAND jeaf::JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperation»
 
 		  «IF this.compositeDataTypeCustomSerialization»

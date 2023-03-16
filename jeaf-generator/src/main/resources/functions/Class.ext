@@ -5,3 +5,9 @@ cached boolean isClass(uml::Element element):
 
 cached uml::Class asClass(uml::Element element):
     (uml::Class) element;
+    
+cached boolean hasDerivedProperties(uml::Class class):
+    !class.getDerivedProperties().isEmpty;
+    
+cached List[uml::Property] getDerivedProperties(uml::Class class):
+    class.ownedAttribute.select(e|e.isDerived == true);

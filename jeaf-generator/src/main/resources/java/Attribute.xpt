@@ -6,6 +6,7 @@
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::Naming»
 «EXTENSION entity::ModelProperties»
+«EXTENSION functions::Internal»
 
 // this properties should be processed
 // for now all properties should be processed
@@ -119,7 +120,7 @@
 «DEFINE Getter FOR Property»
 	«EXPAND functions::Javadoc::JavadocForPropertyGetter»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public «this.fqn()»«IF isMultivalued()»[]«ENDIF» «asGetter()»() {
+	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «asGetter()»() {
 	    «IF this.isMultivalued() == false»return «asInstanceVar()»;«ELSE»«this.fqn()»[] lReturnValue;
 	    if(«asInstanceVar()» != null) {
 	      «IF this.isBinaryType()»
@@ -146,10 +147,29 @@
     }
 «ENDDEFINE»
 
+«DEFINE AbstractGetterForDerivedProperty FOR Property»
+    «EXPAND functions::Javadoc::JavadocForPropertyGetter»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «IF this.isInternalProperty() == false»public«ENDIF» abstract «IF this.association == null»«this.fqn()»«IF isMultivalued()»[]«ENDIF»«ELSE»«this.fqn()»«ENDIF» «asGetter()»();
+«ENDDEFINE»
+
+«DEFINE EmptyGetterImplForDerivedProperty FOR Property»
+    «EXPAND functions::Javadoc::JavadocForPropertyGetter»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «IF this.isInternalProperty() == false»public«ENDIF» «IF this.association == null»«this.fqn()»«IF isMultivalued()»[]«ENDIF»«ELSE»«this.fqn()»«ENDIF» «asGetter()»() {
+        // TODO Implement method for derived property "«this.name»".
+        «IF this.type.isPrimitiveType() && this.isMultivalued() == false»
+            «IF this.fqn() != "boolean"» return 0; «ELSE» return false;«ENDIF»
+        «ELSE»
+        return null;
+        «ENDIF»
+    }
+«ENDDEFINE»
+
 «DEFINE Setter FOR Property»
 	«EXPAND functions::Javadoc::JavadocForPropertySetter»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public void «asSetter()»(«this.fqn()»«IF isMultivalued()»[]«ENDIF» «asParameter()») {
+	«IF this.isInternalProperty() == false»public«ENDIF» void «asSetter()»(«this.fqn()»«IF isMultivalued()»[]«ENDIF» «asParameter()») {
 		// Assign value to attribute
 		«IF this.isMultivalued() == false»
 			«asInstanceVar()»=«asParameter()»;
@@ -350,7 +370,7 @@
 «DEFINE ToOneAccessorMethods FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public «type.fqn()» «asGetter()» () {
+	«IF this.isInternalProperty() == false»public«ENDIF» «type.fqn()» «asGetter()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»
     «asInstanceVar()» = this.unproxy(«asInstanceVar()»);«ENDIF»
 	    «IF this.isTransientBidirectionalBackReference()»
@@ -370,7 +390,7 @@
     «IF isReadOnly() == false»
     «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public void «asSetter()» («type.fqn()» «asParameter()») {
+	«IF this.isInternalProperty() == false»public«ENDIF» void «asSetter()» («type.fqn()» «asParameter()») {
 		«IF generateNullChecksForToOneAssociationsOfServiceObjects()»
 		// «asParameter()» must not be null. To unset an association the unset method has to be called.
 		com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
@@ -393,7 +413,7 @@
 	
     «EXPAND functions::Javadoc::JavadocForPropertyUnset»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public final void «asUnset()» () {
+    «IF this.isInternalProperty() == false»public«ENDIF» final void «asUnset()» () {
         «EXPAND GenerateRemoveOpposite»
         «IF opposite == null || opposite.isNavigable() == false»
           «asInstanceVar()» = null;
@@ -406,7 +426,7 @@
 «DEFINE ToManyAccessorMethods FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public «this.fqn()» «asGetter()» () {
+	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()» «asGetter()» () {
 	    «IF this.isTransientBidirectionalBackReference()»
 	    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling after an object was deserialized.
 	    if («this.asInstanceVar()»BackReferenceInitialized == false) {
@@ -433,7 +453,7 @@
     «IF generatePublicSettersForAssociations()»
     «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
+    «IF this.isInternalProperty() == false»public«ENDIF» void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
         // Check of parameter is not required.
         
         // Remove all objects from association "«asInstanceVar()»".
@@ -448,7 +468,7 @@
 
     «EXPAND functions::Javadoc::JavadocForPropertyAdd»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public void addTo«name.toFirstUpper()» («this.type.fqn()» «asParameter()») {
+	«IF this.isInternalProperty() == false»public«ENDIF» void addTo«name.toFirstUpper()» («this.type.fqn()» «asParameter()») {
         «IF isTargetRuntimeJEAF()»
         // Check parameter "«asParameter()»" for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
@@ -470,7 +490,7 @@
 	
   «EXPAND functions::Javadoc::JavadocForPropertyAddAll»
   «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-  public void addTo«name.toFirstUpper()» (java.util.Collection<«this.type.fqn()»> «asParameter()») {
+  «IF this.isInternalProperty() == false»public«ENDIF» void addTo«name.toFirstUpper()» (java.util.Collection<«this.type.fqn()»> «asParameter()») {
         «IF isTargetRuntimeJEAF()»
         // Check parameter "«asParameter()»" for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
@@ -489,7 +509,7 @@
      * @param «asParameter()» Object that should be removed from {@link #«asInstanceVar()»}. The parameter must not be null.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public void removeFrom«name.toFirstUpper()» («type.fqn()» «asParameter()») {
+	«IF this.isInternalProperty() == false»public«ENDIF» void removeFrom«name.toFirstUpper()» («type.fqn()» «asParameter()») {
         «IF isTargetRuntimeJEAF()»
         // Check parameter for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
@@ -505,7 +525,7 @@
      * Method removes all objects from {@link #«asInstanceVar()»}.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public void clear«name.toFirstUpper()» () {
+    «IF this.isInternalProperty() == false»public«ENDIF» void clear«name.toFirstUpper()» () {
       «IF opposite != null && opposite.isNavigable() == true»
       // Remove all objects from association "«asInstanceVar()»".
       java.util.Collection<«type.fqn()»> «asLocalVar()» = new java.util.HashSet<«type.fqn()»>(«asInstanceVar()»);

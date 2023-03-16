@@ -171,7 +171,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 		 */
 		private String «this.getCompositeDateTypePublicFieldName()»;
 	«ELSE»
-		«FOREACH this.ownedAttribute AS attr»
+		«FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false) AS attr»
 		«EXPAND BuilderPropertyDeclaration FOR attr»
 		«ENDFOREACH»
 	«ENDIF»
@@ -197,7 +197,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
         «IF this.isCompositeDataType()»
         	«this.getCompositeDateTypePublicFieldName()» = pObject.«this.getCompositeDateTypePublicFieldName()»;
         «ELSE»
-	        «FOREACH this.ownedAttribute AS attr»
+	        «FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false) AS attr»
 	        «IF attr.isStatic == false»«attr.name» = pObject.«attr.name»;«ENDIF»
 	        «ENDFOREACH»
         «ENDIF»
@@ -242,7 +242,7 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 		  return this;
 		}		
 	«ELSE»
-		«FOREACH this.ownedAttribute AS attr»
+		«FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false) AS attr»
 			«EXPAND BuilderSetter("BuilderBase") FOR attr»
 		«ENDFOREACH»
 	«ENDIF»
