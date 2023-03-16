@@ -21,11 +21,25 @@ public class MasterDataObject {
    */
   public static final String OBJECTID = "objectID";
 
+  /**
+   * Constant for the name of attribute "internalProperty".
+   */
+  public static final String INTERNALPROPERTY = "internalProperty";
+
+  /**
+   * Constant for the name of attribute "derivedProperty".
+   */
+  public static final String DERIVEDPROPERTY = "derivedProperty";
+
   private DataUnit dataUnit;
 
   private Entity entity;
 
   private String objectID;
+
+  private String internalProperty;
+
+  private String derivedProperty;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -44,6 +58,8 @@ public class MasterDataObject {
     dataUnit = pBuilder.dataUnit;
     entity = pBuilder.entity;
     objectID = pBuilder.objectID;
+    internalProperty = pBuilder.internalProperty;
+    derivedProperty = pBuilder.derivedProperty;
   }
 
   /**
@@ -76,6 +92,10 @@ public class MasterDataObject {
 
     private String objectID;
 
+    private String internalProperty;
+
+    private String derivedProperty;
+
     /**
      * Use {@link MasterDataObject#builder()} instead of private constructor to create new builder.
      */
@@ -91,6 +111,8 @@ public class MasterDataObject {
         dataUnit = pObject.dataUnit;
         entity = pObject.entity;
         objectID = pObject.objectID;
+        internalProperty = pObject.internalProperty;
+        derivedProperty = pObject.derivedProperty;
       }
     }
 
@@ -125,6 +147,30 @@ public class MasterDataObject {
     public Builder setObjectID( String pObjectID ) {
       // Assign value to attribute
       objectID = pObjectID;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #internalProperty}.<br/>
+     * 
+     * @param pInternalProperty Value to which {@link #internalProperty} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setInternalProperty( String pInternalProperty ) {
+      // Assign value to attribute
+      internalProperty = pInternalProperty;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #derivedProperty}.<br/>
+     * 
+     * @param pDerivedProperty Value to which {@link #derivedProperty} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setDerivedProperty( String pDerivedProperty ) {
+      // Assign value to attribute
+      derivedProperty = pDerivedProperty;
       return this;
     }
 
@@ -209,6 +255,44 @@ public class MasterDataObject {
   }
 
   /**
+   * Method returns attribute {@link #internalProperty}.<br/>
+   * 
+   * @return {@link String} Value to which {@link #internalProperty} is set.
+   */
+  public String getInternalProperty( ) {
+    return internalProperty;
+  }
+
+  /**
+   * Method sets attribute {@link #internalProperty}.<br/>
+   * 
+   * @param pInternalProperty Value to which {@link #internalProperty} should be set.
+   */
+  public void setInternalProperty( String pInternalProperty ) {
+    // Assign value to attribute
+    internalProperty = pInternalProperty;
+  }
+
+  /**
+   * Method returns attribute {@link #derivedProperty}.<br/>
+   * 
+   * @return {@link String} Value to which {@link #derivedProperty} is set.
+   */
+  public String getDerivedProperty( ) {
+    return derivedProperty;
+  }
+
+  /**
+   * Method sets attribute {@link #derivedProperty}.<br/>
+   * 
+   * @param pDerivedProperty Value to which {@link #derivedProperty} should be set.
+   */
+  public void setDerivedProperty( String pDerivedProperty ) {
+    // Assign value to attribute
+    derivedProperty = pDerivedProperty;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -230,6 +314,14 @@ public class MasterDataObject {
     lBuilder.append(pIndent);
     lBuilder.append("objectID: ");
     lBuilder.append(objectID);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("internalProperty: ");
+    lBuilder.append(internalProperty);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("derivedProperty: ");
+    lBuilder.append(derivedProperty);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
