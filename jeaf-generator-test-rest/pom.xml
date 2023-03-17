@@ -97,6 +97,8 @@
 
 					<!-- Define what should be generated. By default nothing is generated. -->
 					<generateRESTResources>true</generateRESTResources>
+					<generateRESTRequestValidation>true</generateRESTRequestValidation>
+					<generateRESTResponseValidation>true</generateRESTResponseValidation>
 					<restPathPrefix>/nova/prefix</restPathPrefix>
 					<suppressTechnicalHeaders>true</suppressTechnicalHeaders>
 
@@ -107,7 +109,7 @@
 					<fileHeaderVersion>JEAF Release 1.4.x</fileHeaderVersion>
 					
 					<!-- Define code formatting style -->
-					<!-- <conventionFile>anaptecs_code_guideline.xml</conventionFile> -->
+					<javaFormatterStyleFile>java_standard_guideline.xml</javaFormatterStyleFile>
 				</configuration>
 			</plugin>
 		</plugins>

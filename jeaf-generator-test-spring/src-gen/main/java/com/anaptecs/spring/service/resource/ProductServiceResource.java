@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter;
+import com.anaptecs.jeaf.rest.resource.api.ValidationExecutor;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
@@ -55,6 +56,12 @@ import com.anaptecs.spring.service.ProductService;
 @RestController
 public class ProductServiceResource {
   /**
+   * REST Controller was generated with request / response validation enabled. The actual validation will be delegated
+   * to the implementation of this interface.
+   */
+  private final ValidationExecutor validationExecutor;
+
+  /**
    * Filter is used to provide only those headers that are configured to be processed by this REST resource.
    */
   private final CustomHeaderFilter customHeaderFilter;
@@ -69,8 +76,10 @@ public class ProductServiceResource {
    * 
    * @param pProductService Dependency on concrete {@link ProductService} implementation that should be used.
    */
-  public ProductServiceResource( ProductService pProductService, CustomHeaderFilter pCustomHeaderFilter ) {
+  public ProductServiceResource( ProductService pProductService, ValidationExecutor pValidationExecutor,
+      CustomHeaderFilter pCustomHeaderFilter ) {
     productService = pProductService;
+    validationExecutor = pValidationExecutor;
     customHeaderFilter = pCustomHeaderFilter;
   }
 
@@ -81,7 +90,10 @@ public class ProductServiceResource {
   @RequestMapping(method = { RequestMethod.GET })
   public List<Product> getProducts( ) {
     // Delegate request to service.
-    return productService.getProducts();
+    List<Product> lResponse = productService.getProducts();
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -90,8 +102,13 @@ public class ProductServiceResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "{id}", method = { RequestMethod.GET })
   public Product getProduct( @PathVariable(name = "id", required = true) String pProductID ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pProductID);
     // Delegate request to service.
-    return productService.getProduct(pProductID);
+    Product lResponse = productService.getProduct(pProductID);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -100,8 +117,13 @@ public class ProductServiceResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(method = { RequestMethod.POST })
   public boolean createProduct( @RequestBody(required = true) Product pProduct ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pProduct);
     // Delegate request to service.
-    return productService.createProduct(pProduct);
+    boolean lResponse = productService.createProduct(pProduct);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -131,8 +153,13 @@ public class ProductServiceResource {
         pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
       }
     }
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pContext);
     // Delegate request to service.
-    return productService.getSortiment(pContext);
+    Sortiment lResponse = productService.getSortiment(pContext);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -145,8 +172,13 @@ public class ProductServiceResource {
       produces = { "application/json" },
       method = { RequestMethod.POST })
   public ChannelCode createChannelCode( @RequestBody(required = true) String pChannelCode ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pChannelCode);
     // Delegate request to service.
-    return productService.createChannelCode(pChannelCode);
+    ChannelCode lResponse = productService.createChannelCode(pChannelCode);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -167,7 +199,10 @@ public class ProductServiceResource {
   @Deprecated
   public String deprecatedOperation( ) {
     // Delegate request to service.
-    return productService.deprecatedOperation();
+    String lResponse = productService.deprecatedOperation();
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -187,8 +222,13 @@ public class ProductServiceResource {
     lContextBuilder.setResellerID(pResellerID);
     lContextBuilder.setQueryParam(pQueryParam);
     DeprecatedContext pContext = lContextBuilder.build();
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pContext);
     // Delegate request to service.
-    return productService.deprecatedContext(pContext);
+    String lResponse = productService.deprecatedContext(pContext);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -206,6 +246,8 @@ public class ProductServiceResource {
     lBeanParamBuilder.setLanguage(pLanguage);
     lBeanParamBuilder.setOldStyle(pOldStyle);
     BeanParameter pBeanParam = lBeanParamBuilder.build();
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pBeanParam);
     // Delegate request to service.
     productService.deprecatedBeanParam(pBeanParam);
   }
@@ -217,8 +259,13 @@ public class ProductServiceResource {
   @RequestMapping(path = "deprecated/params", method = { RequestMethod.POST })
   @Deprecated
   public String deprecatedParams( @RequestHeader(name = "param1", required = true) @Deprecated int pParam1 ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pParam1);
     // Delegate request to service.
-    return productService.deprecatedParams(pParam1);
+    String lResponse = productService.deprecatedParams(pParam1);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -227,8 +274,13 @@ public class ProductServiceResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "deprecated/body", method = { RequestMethod.POST })
   public String deprecatedBody( @RequestBody(required = true) @Deprecated String pBody ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pBody);
     // Delegate request to service.
-    return productService.deprecatedBody(pBody);
+    String lResponse = productService.deprecatedBody(pBody);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -237,6 +289,8 @@ public class ProductServiceResource {
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "deprecated/complexBody", method = { RequestMethod.POST })
   public void deprectedComplexRequestBody( @RequestBody(required = true) @Deprecated Product pProduct ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pProduct);
     // Delegate request to service.
     productService.deprectedComplexRequestBody(pProduct);
   }
@@ -249,7 +303,10 @@ public class ProductServiceResource {
   @Deprecated
   public Product deprecatedComplexReturn( ) {
     // Delegate request to service.
-    return productService.deprecatedComplexReturn();
+    Product lResponse = productService.deprecatedComplexReturn();
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -283,6 +340,8 @@ public class ProductServiceResource {
         pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
       }
     }
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pContext);
     // Delegate request to service.
     productService.loadSpecificThings(pContext);
   }
@@ -293,8 +352,13 @@ public class ProductServiceResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "ChannelCodeObject", method = { RequestMethod.POST })
   public ChannelCode createChannelCodeFromObject( @RequestBody(required = true) ChannelCode pChannelCode ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pChannelCode);
     // Delegate request to service.
-    return productService.createChannelCodeFromObject(pChannelCode);
+    ChannelCode lResponse = productService.createChannelCodeFromObject(pChannelCode);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -303,8 +367,13 @@ public class ProductServiceResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "currencies", method = { RequestMethod.POST })
   public List<CurrencyCode> addCurrencies( @RequestBody(required = true) List<CurrencyCode> pCurrencies ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pCurrencies);
     // Delegate request to service.
-    return productService.addCurrencies(pCurrencies);
+    List<CurrencyCode> lResponse = productService.addCurrencies(pCurrencies);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -313,8 +382,13 @@ public class ProductServiceResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "currencies/valid", method = { RequestMethod.POST })
   public CurrencyCode isCurrencySupported( @RequestBody(required = true) CurrencyCode pCurrency ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pCurrency);
     // Delegate request to service.
-    return productService.isCurrencySupported(pCurrency);
+    CurrencyCode lResponse = productService.isCurrencySupported(pCurrency);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -323,8 +397,13 @@ public class ProductServiceResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "codeTypeUsages", method = { RequestMethod.POST })
   public IntegerCodeType testCodeTypeUsage( @RequestBody(required = true) StringCodeType pStringCode ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pStringCode);
     // Delegate request to service.
-    return productService.testCodeTypeUsage(pStringCode);
+    IntegerCodeType lResponse = productService.testCodeTypeUsage(pStringCode);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -340,8 +419,13 @@ public class ProductServiceResource {
     lBeanParamBuilder.setLocalKey(pLocalKey);
     lBeanParamBuilder.setLocalID(pLocalID);
     LocalBeanParamType pBeanParam = lBeanParamBuilder.build();
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pBeanParam);
     // Delegate request to service.
-    return productService.testLocalBeanParamType(pBeanParam);
+    String lResponse = productService.testLocalBeanParamType(pBeanParam);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -357,8 +441,13 @@ public class ProductServiceResource {
     lParentBuilder.setNovaKey(pNovaKey);
     lParentBuilder.setTkID(pTkID);
     ParentBeanParamType pParent = lParentBuilder.build();
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pParent);
     // Delegate request to service.
-    return productService.testExternalBeanParameterType(pParent);
+    String lResponse = productService.testExternalBeanParameterType(pParent);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -376,8 +465,13 @@ public class ProductServiceResource {
     lChildBuilder.setTkID(pTkID);
     lChildBuilder.setChildProperty(pChildProperty);
     ChildBeanParameterType pChild = lChildBuilder.build();
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pChild);
     // Delegate request to service.
-    return productService.testChildBeanParameter(pChild);
+    String lResponse = productService.testChildBeanParameter(pChild);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -479,6 +573,9 @@ public class ProductServiceResource {
     else {
       pSQLDate = null;
     }
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp,
+        pLocalStartTime, pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
     // Delegate request to service.
     productService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
         pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
@@ -558,6 +655,8 @@ public class ProductServiceResource {
       lQueryParamsBuilder.setSqlDate(Date.valueOf(pSqlDateAsBasicType));
     }
     DateQueryParamsBean pQueryParams = lQueryParamsBuilder.build();
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pPath, pQueryParams);
     // Delegate request to service.
     productService.testDateQueryParamsBean(pPath, pQueryParams);
   }
@@ -661,6 +760,9 @@ public class ProductServiceResource {
     else {
       pSQLDate = null;
     }
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime,
+        pLocalTime, pLocalDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
     // Delegate request to service.
     productService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate,
         pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
@@ -740,6 +842,8 @@ public class ProductServiceResource {
       lHeaderParamsBuilder.setSqlDate(Date.valueOf(pSqlDateAsBasicType));
     }
     DateHeaderParamsBean pHeaderParams = lHeaderParamsBuilder.build();
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pPath, pHeaderParams);
     // Delegate request to service.
     productService.testDateHeaderParamsBean(pPath, pHeaderParams);
   }
@@ -750,8 +854,13 @@ public class ProductServiceResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "technicalHeaderParam", method = { RequestMethod.GET })
   public String testTechnicalHeaderParam( @RequestHeader(name = "Reseller", required = true) String pReseller ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pReseller);
     // Delegate request to service.
-    return productService.testTechnicalHeaderParam(pReseller);
+    String lResponse = productService.testTechnicalHeaderParam(pReseller);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 
   /**
@@ -772,7 +881,12 @@ public class ProductServiceResource {
         pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
       }
     }
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pContext);
     // Delegate request to service.
-    return productService.testTechnicalHeaderBean(pContext);
+    String lResponse = productService.testTechnicalHeaderBean(pContext);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
   }
 }
