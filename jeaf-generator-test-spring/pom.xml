@@ -140,6 +140,8 @@
 					<targetRuntime>SPRING</targetRuntime>
 					<restLibrary>SPRING_WEB_MVC</restLibrary>
 					<generateRESTResources>true</generateRESTResources>
+					<generateRESTRequestValidation>true</generateRESTRequestValidation>
+					<generateRESTResponseValidation>true</generateRESTResponseValidation>
 					<restPathPrefix>/nova/prefix</restPathPrefix>
 					<generateServiceInterfaces>true</generateServiceInterfaces>
 					<generatePOJOs>true</generatePOJOs>

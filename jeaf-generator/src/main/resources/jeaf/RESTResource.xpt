@@ -48,6 +48,28 @@ public class «name»Resource {
 		«ENDIF»		
 	«ENDIF»
 	
+    «IF isTargetRuntimeSpring()»
+        «IF isRESTLibrarySpringWebMVC()»
+            «IF generateRESTRequestValidation() || generateRESTResponseValidation()»
+	            /**
+	             * REST Controller was generated with request / response validation enabled. The actual validation will be delegated
+	             * to the implementation of this interface.
+	             */
+	            private final com.anaptecs.jeaf.rest.resource.api.ValidationExecutor validationExecutor;
+            «ENDIF»
+        «ENDIF»
+        «IF isRESTLibraryJAXRS()»
+            «IF generateRESTRequestValidation() || generateRESTResponseValidation()»
+	            /**
+	             * REST Controller was generated with request / response validation enabled. The actual validation will be delegated
+	             * to the implementation of this interface.
+	             */
+	            @org.springframework.beans.factory.annotation.Autowired
+	            private com.anaptecs.jeaf.rest.resource.api.ValidationExecutor validationExecutor;
+            «ENDIF»
+        «ENDIF»
+    «ENDIF»
+    
 	«IF this.filterCustomHeaders()»
 	  «IF isTargetRuntimeSpring()»
 		  «IF isRESTLibrarySpringWebMVC()»
@@ -81,10 +103,13 @@ public class «name»Resource {
 			 * @param pCompositeTypeConverter Composite type converter is used convert types from their string representation to a real object that can be processed internally.
 			 «ENDIF -»
 			 */
-			public «name»Resource( «this.fqn()» p«name» «IF this.hasCompositeDataTypes()», com.fasterxml.jackson.databind.ObjectMapper pObjectMapper«ENDIF»«IF this.filterCustomHeaders()», com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter pCustomHeaderFilter«ENDIF») {
+			public «name»Resource( «this.fqn()» p«name» «IF this.hasCompositeDataTypes()», com.fasterxml.jackson.databind.ObjectMapper pObjectMapper«ENDIF»«IF generateRESTRequestValidation() || generateRESTResponseValidation()», com.anaptecs.jeaf.rest.resource.api.ValidationExecutor pValidationExecutor«ENDIF»«IF this.filterCustomHeaders()», com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter pCustomHeaderFilter«ENDIF») {
 			  «name.toFirstLower()» = p«name»;
 			  «IF this.hasCompositeDataTypes()»
 			  objectMapper = pObjectMapper;
+			  «ENDIF»
+			  «IF generateRESTRequestValidation() || generateRESTResponseValidation()»
+			  validationExecutor = pValidationExecutor;
 			  «ENDIF»
 			  «IF this.filterCustomHeaders()»
               customHeaderFilter = pCustomHeaderFilter;
@@ -261,6 +286,13 @@ public class «name»Resource {
 	    }
 	  «ENDFOREACH»
 
+      «IF generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false»
+        «IF isTargetRuntimeSpring()»
+	        // Validate request parameter(s).
+	        validationExecutor.validateRequest(«((NamedElement)owner).fqn()».class, «this.asParameterListNames()»);
+        «ENDIF»
+      «ENDIF»
+      
       // Delegate request to service.
       «IF isTargetRuntimeJEAF()»
 		  «this.getOwningClass().fqn()» lService = this.get«this.getOwningClass().name»();
@@ -275,6 +307,11 @@ public class «name»Resource {
       «IF isTargetRuntimeSpring()»
 		  «IF getReturnTypeName() != "void"»
 		  «getReturnTypeName()» lResult = «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+		  
+		  «IF generateRESTResponseValidation()»
+	         // Validate response and return it.
+	         validationExecutor.validateResponse(«((NamedElement)owner).fqn()».class, lResult);
+	      «ENDIF»
 		  return javax.ws.rs.core.Response.status(«EXPAND StatusCode»).entity(lResult).build();
 		  «ELSE»
 		  «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
@@ -565,9 +602,23 @@ public class «name»Resource {
   			«ENDIF»
 	  	«ENDFOREACH»
 	  «ENDIF»
+	  
+	  «IF generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false»
+        // Validate request parameter(s).
+	    validationExecutor.validateRequest(«((NamedElement)owner).fqn()».class, «this.asParameterListNames()»);
+	  «ENDIF»
+	  
       // Delegate request to service.
 	  «IF getReturnTypeName() != "void"»
-	  return «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+	       «IF generateRESTResponseValidation()»
+	         «getReturnTypeName()» lResponse = «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+		     
+		     // Validate response and return it.
+		     validationExecutor.validateResponse(«((NamedElement)owner).fqn()».class, lResponse);
+		     return lResponse;
+	       «ELSE»
+             return «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+	       «ENDIF»
 	  «ELSE»
 	  «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
 	  «ENDIF»

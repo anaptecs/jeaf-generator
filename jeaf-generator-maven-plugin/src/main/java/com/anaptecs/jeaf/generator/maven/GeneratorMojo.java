@@ -236,6 +236,66 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateRESTResources;
 
   /**
+   * Switch defines if request validation for REST Resources / Controllers should be generated. If it is enabled then
+   * the generated code will have a dependency on one of the following artifacts:
+   * <p/>
+   * <b>Spring Boot:</b>
+   * 
+   * <pre>
+   *    &#60;dependency>
+   *        &#60;groupId>com.anaptecs.jeaf.rest&#60;/groupId>
+   *        &#60;artifactId>jeaf-rest-resource-api&#60;/artifactId>
+   *        &#60;version>${1.6.5 or higher}&#60;/version>
+   *    &#60;/dependency><br/>
+   * </pre>
+   * 
+   * <b>JEAF:</b>
+   * 
+   * <pre>
+   *    &#60;dependency>
+   *        &#60;groupId>com.anaptecs.jeaf.rest&#60;/groupId>
+   *        &#60;artifactId>jeaf-rest-resource-service-provider&#60;/artifactId>
+   *        &#60;version>${1.6.5 or higher}&#60;/version>
+   *    &#60;/dependency><br/>
+   * </pre>
+   * 
+   * Depending on the implementation of class <code>com.anaptecs.jeaf.rest.resource.api.ValidationExecutor</code> if
+   * might still be possible to disable / enable request validation without changing the code.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateRESTRequestValidation;
+
+  /**
+   * Switch defines if request validation for REST Resources / Controllers should be generated. If it is enabled then
+   * the generated code will have a dependency on one of the following artifacts:
+   * <p/>
+   * <b>Spring Boot:</b>
+   * 
+   * <pre>
+   *    &#60;dependency>
+   *        &#60;groupId>com.anaptecs.jeaf.rest&#60;/groupId>
+   *        &#60;artifactId>jeaf-rest-resource-api&#60;/artifactId>
+   *        &#60;version>${1.6.5 or higher}&#60;/version>
+   *    &#60;/dependency><br/>
+   * </pre>
+   * 
+   * <b>JEAF:</b>
+   * 
+   * <pre>
+   *    &#60;dependency>
+   *        &#60;groupId>com.anaptecs.jeaf.rest&#60;/groupId>
+   *        &#60;artifactId>jeaf-rest-resource-service-provider&#60;/artifactId>
+   *        &#60;version>${1.6.5 or higher}&#60;/version>
+   *    &#60;/dependency><br/>
+   * </pre>
+   * 
+   * Depending on the implementation of class <code>com.anaptecs.jeaf.rest.resource.api.ValidationExecutor</code> if
+   * might still be possible to disable / enable response validation without changing the code.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateRESTResponseValidation;
+
+  /**
    * Switch defines whether custom headers of a REST resource should be filtered or not. Default is <code>true</code>.
    * If custom header filtering is defined then a {@link com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter} has to
    * be provided via configuration.
@@ -915,6 +975,8 @@ public class GeneratorMojo extends AbstractMojo {
     }
     if (generateRESTResources) {
       lLog.info("Generate REST Resources:                          " + generateRESTResources);
+      lLog.info("Generate REST Request Validation:                 " + generateRESTRequestValidation);
+      lLog.info("Generate REST Response Validation:                " + generateRESTResponseValidation);
     }
     if (filterCustomHeaders == false) {
       lLog.info("Filter custom headers:                            " + filterCustomHeaders);
@@ -1139,6 +1201,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.component.impls", generateComponentImpls.toString());
       System.setProperty("switch.gen.service.provider.impls", generateServiceProviderImpls.toString());
       System.setProperty("switch.gen.rest.resources", generateRESTResources.toString());
+      System.setProperty("switch.gen.rest.validation.request", generateRESTRequestValidation.toString());
+      System.setProperty("switch.gen.rest.validation.response", generateRESTResponseValidation.toString());
       System.setProperty("switch.gen.rest.filter.custom.headers", filterCustomHeaders.toString());
       System.setProperty("switch.gen.rest.path.prefix", restPathPrefix);
       System.setProperty("switch.gen.rest.service.proxy", generateRESTServiceProxies.toString());

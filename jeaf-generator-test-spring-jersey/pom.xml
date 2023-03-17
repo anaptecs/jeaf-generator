@@ -189,6 +189,8 @@
 					<targetRuntime>SPRING</targetRuntime>
 					<restLibrary>JAX_RS</restLibrary>
 					<generateRESTResources>true</generateRESTResources>
+					<generateRESTRequestValidation>true</generateRESTRequestValidation>
+					<generateRESTResponseValidation>true</generateRESTResponseValidation>
 					<generateJAXRSAnnotations>true</generateJAXRSAnnotations>
 					<generateServiceInterfaces>true</generateServiceInterfaces>
 					<generatePOJOs>true</generatePOJOs>

@@ -62,6 +62,12 @@ cached boolean generateServiceProviderImpls() :
 cached boolean generateRESTResources() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateRESTResources();
     
+cached boolean generateRESTRequestValidation() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateRESTResources();
+    
+cached boolean generateRESTResponseValidation() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateRESTResources();
+    
 cached boolean filterCustomHeaders() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.filterCustomHeaders();
     
