@@ -24,36 +24,37 @@ import com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ServiceWithDeprecationsResource {
-  /**
-   * {@link ServiceWithDeprecations#createSomething()}
-   */
-  @POST
-  @Deprecated
-  public Response createSomething( ) {
-    // Delegate request to service.
-    ServiceWithDeprecations lService = this.getServiceWithDeprecations();
-    lService.createSomething();
-    return Response.status(Response.Status.NO_CONTENT).build();
-  }
+    /**
+     * {@link ServiceWithDeprecations#createSomething()}
+     */
+    @POST
+    @Deprecated
+    public Response createSomething( ) {
+        // Delegate request to service.
+        ServiceWithDeprecations lService = this.getServiceWithDeprecations();
+        lService.createSomething();
+        return Response.status(Response.Status.NO_CONTENT).build();
+    }
 
-  /**
-   * {@link ServiceWithDeprecations#createSomething()}
-   */
-  @POST
-  public Response createSomething( JustAType pBody, @HeaderParam("header-xxx") @Deprecated String pHeader,
-      @QueryParam("query") @Deprecated String pQueryParam, @BeanParam BeanParamWithDeprecations pContext ) {
-    // Delegate request to service.
-    ServiceWithDeprecations lService = this.getServiceWithDeprecations();
-    lService.createSomething(pBody, pHeader, pQueryParam, pContext);
-    return Response.status(Response.Status.NO_CONTENT).build();
-  }
+    /**
+     * {@link ServiceWithDeprecations#createSomething()}
+     */
+    @POST
+    public Response createSomething( JustAType pBody, @HeaderParam("header-xxx") @Deprecated String pHeader,
+                    @QueryParam("query") @Deprecated String pQueryParam,
+                    @BeanParam BeanParamWithDeprecations pContext ) {
+        // Delegate request to service.
+        ServiceWithDeprecations lService = this.getServiceWithDeprecations();
+        lService.createSomething(pBody, pHeader, pQueryParam, pContext);
+        return Response.status(Response.Status.NO_CONTENT).build();
+    }
 
-  /**
-   * Method returns reference to service to which all REST requests will be delegated.
-   *
-   * @return ServiceWithDeprecations Service instance to which all requests will be delegated.
-   */
-  private ServiceWithDeprecations getServiceWithDeprecations( ) {
-    return JEAF.getService(ServiceWithDeprecations.class);
-  }
+    /**
+     * Method returns reference to service to which all REST requests will be delegated.
+     *
+     * @return ServiceWithDeprecations Service instance to which all requests will be delegated.
+     */
+    private ServiceWithDeprecations getServiceWithDeprecations( ) {
+        return JEAF.getService(ServiceWithDeprecations.class);
+    }
 }

@@ -25,12 +25,12 @@ import com.anaptecs.jeaf.junit.deprecation.DeprecatedService;
 @Produces(MediaType.APPLICATION_JSON)
 @Deprecated
 public class DeprecatedServiceResource {
-  /**
-   * Method returns reference to service to which all REST requests will be delegated.
-   *
-   * @return DeprecatedService Service instance to which all requests will be delegated.
-   */
-  private DeprecatedService getDeprecatedService( ) {
-    return JEAF.getService(DeprecatedService.class);
-  }
+    /**
+     * Method returns reference to service to which all REST requests will be delegated.
+     *
+     * @return DeprecatedService Service instance to which all requests will be delegated.
+     */
+    private DeprecatedService getDeprecatedService( ) {
+        return JEAF.getService(DeprecatedService.class);
+    }
 }

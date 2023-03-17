@@ -20,23 +20,23 @@ import com.anaptecs.jeaf.junit.rest.DeprecatedRESTService;
 @Produces(MediaType.APPLICATION_JSON)
 @Deprecated
 public class DeprecatedRESTServiceResource {
-  /**
-   * {@link DeprecatedRESTService#doSomething()}
-   */
-  @GET
-  public Response doSomething( ) {
-    // Delegate request to service.
-    DeprecatedRESTService lService = this.getDeprecatedRESTService();
-    lService.doSomething();
-    return Response.status(Response.Status.NO_CONTENT).build();
-  }
+    /**
+     * {@link DeprecatedRESTService#doSomething()}
+     */
+    @GET
+    public Response doSomething( ) {
+        // Delegate request to service.
+        DeprecatedRESTService lService = this.getDeprecatedRESTService();
+        lService.doSomething();
+        return Response.status(Response.Status.NO_CONTENT).build();
+    }
 
-  /**
-   * Method returns reference to service to which all REST requests will be delegated.
-   *
-   * @return DeprecatedRESTService Service instance to which all requests will be delegated.
-   */
-  private DeprecatedRESTService getDeprecatedRESTService( ) {
-    return JEAF.getService(DeprecatedRESTService.class);
-  }
+    /**
+     * Method returns reference to service to which all REST requests will be delegated.
+     *
+     * @return DeprecatedRESTService Service instance to which all requests will be delegated.
+     */
+    private DeprecatedRESTService getDeprecatedRESTService( ) {
+        return JEAF.getService(DeprecatedRESTService.class);
+    }
 }
