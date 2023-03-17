@@ -1150,6 +1150,9 @@ public class GeneratorMojo extends AbstractMojo {
     lLog.info("Javadoc Version Tag:                              " + fileHeaderVersion);
     lLog.info(" ");
 
+    lLog.info("Java formatter stylesheet:                        " + javaFormatterStyleFile);
+    lLog.info("XML formatter stylesheet:                         " + xmlFormatterStyleFile);
+    lLog.info(" ");
   }
 
   private void cleanDirectories( ) {
@@ -1752,6 +1755,7 @@ public class GeneratorMojo extends AbstractMojo {
     }
     else {
       this.getLog().info("Formatting generated code.");
+
       // Execute Maven plugin to format sources.
       List<Dependency> lDependencies = MojoExecutor.dependencies(MojoExecutor.dependency("com.anaptecs.jeaf.generator",
           "jeaf-generator-code-styles", XFun.getVersionInfo().getVersionString()));
