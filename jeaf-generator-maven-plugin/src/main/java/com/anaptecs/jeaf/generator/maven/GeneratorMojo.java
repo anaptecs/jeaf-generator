@@ -368,6 +368,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean makePOJOsSerializable;
 
   /**
+   * Switch defines whether generated POJO's and / or ServiceObjects should be immutable. This switch is set to true
+   * then it will overrule settings from the UML model.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateImmutableClasses;
+
+  /**
    * Switch defines if extensible enums should be generated in light-weight or heavy-weight style.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -957,6 +964,13 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate Service Objects:                         " + generateServiceObjects);
       lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
       lLog.info("Generate valueOf(...) for OpenAPI Data Types:     " + generateValueOfForOpenAPIDataTypes);
+      lLog.info("Make ServiceObjects immutable:                    " + generateImmutableClasses);
+
+      if (generateHeavyExtensibleEnums) {
+        lLog.info("Generate heavy style extensible enums:            " + generateHeavyExtensibleEnums);
+      }
+      lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
+      lLog.info("Generate valueOf(...) for OpenAPI Data Types:     " + generateValueOfForOpenAPIDataTypes);
     }
     if (generateExceptionClasses) {
       lLog.info("Generate Exception Classes:                       " + generateExceptionClasses);
@@ -999,6 +1013,7 @@ public class GeneratorMojo extends AbstractMojo {
     if (generatePOJOs) {
       lLog.info("Generate POJO's:                                  " + generatePOJOs);
       lLog.info("Make POJO's serializable:                         " + makePOJOsSerializable);
+      lLog.info("Make POJO's immutable:                            " + generateImmutableClasses);
 
       if (generateHeavyExtensibleEnums) {
         lLog.info("Generate heavy style extensible enums:            " + generateHeavyExtensibleEnums);
@@ -1213,6 +1228,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.service.objects", generateServiceObjects.toString());
       System.setProperty("switch.gen.exception.classes", generateExceptionClasses.toString());
       System.setProperty("switch.gen.pojos", generatePOJOs.toString());
+      System.setProperty("switch.gen.immutable.classes", generateImmutableClasses.toString());
       System.setProperty("switch.gen.serializable.pojos", makePOJOsSerializable.toString());
       System.setProperty("switch.gen.heavy.extensible.enums", generateHeavyExtensibleEnums.toString());
       System.setProperty("switch.gen.domain.objects", generateDomainObjects.toString());
