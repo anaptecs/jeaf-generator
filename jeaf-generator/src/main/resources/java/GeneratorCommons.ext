@@ -39,7 +39,10 @@ cached boolean generatePOJOs() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generatePOJOs();    
     
 cached boolean makePOJOsSerializable() :
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.makePOJOsSerializable();    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.makePOJOsSerializable(); 
+    
+cached boolean generateImmutableClasses():
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateImmutableClasses();
     
 cached boolean generateHeavyStyleExtensibleEnums() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateHeavyStyleExtensibleEnums();    
@@ -301,8 +304,17 @@ uml::Class getOwningClass(uml::Operation operation): (uml::Class) operation.owne
 boolean isDeprecated(uml::NamedElement element) :
   isStereotypeApplied(element, "JEAFDeprecated") || isStereotypeApplied(element, "deprecated");
   
-boolean isReadOnly(uml::Property property):
-  property.isReadOnly || property.isStereotypeApplied("CompositeDataTypePublicField");
+cached boolean isReadOnly(uml::Property property):
+  property.isReadOnly || property.isStereotypeApplied("CompositeDataTypePublicField") || property.owner.isReadOnlyClass() || generateImmutableClasses();
+  
+cached boolean isReadOnlyClass(uml::Element class):
+  if class.isStereotypeApplied("POJO")
+  then ((JMM::ServiceObject) class).readOnly
+  else 
+        if class.isStereotypeApplied("ServiceObject")
+        then ((JMM::POJO) class).readOnly
+        else false;
+
   
 boolean isTransient(uml::Property property):
   property.isStereotypeApplied("Transient") || property.isStereotypeApplied("CompositeDataTypePublicField");
