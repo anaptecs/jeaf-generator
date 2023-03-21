@@ -309,7 +309,7 @@ components:
         moreLinks:
           description: |
             
-            Deprecated: No good any more(since: 1.2, removed with: 3.0)
+            Deprecated: No good any more (since: 1.2, removed with: 3.0)
           type: array
           items:
             type: integer
@@ -390,7 +390,7 @@ components:
     ChildAA:
       description: |
         
-        Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones.(since: 0.5, removed with: 2.0)
+        Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. (since: 0.5, removed with: 2.0)
       deprecated: true
       allOf:
         - $ref: '#/components/schemas/ChildA'

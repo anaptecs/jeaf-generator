@@ -61,7 +61,7 @@ cached String getCommentForOpenAPIDescription(uml::Element element, String inden
     
 private cached String getInternalDeprecationDescription(uml::NamedElement element, String indentation):
     if element.isJEAFDeprecated() && element.hasMeaningfulDeprecationInfo()
-    then "\r\n" + indentation + "Deprecated: " + element.getDeprecationDescriptionForJavadoc() + "(since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + ")"
+    then "\r\n" + indentation + "Deprecated: " + element.getDeprecationDescriptionForJavadoc() + " (since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + ")"
     else "";
     
 cached boolean hasMultiLineComment(uml::Element element) :
