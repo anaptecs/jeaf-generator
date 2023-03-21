@@ -22,9 +22,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 /**
- *  Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones.(since: 0.5, removed with: 2.0) 
+ *  Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. (since: 0.5, removed with: 2.0) 
  */
-@Schema(description = " Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones.(since: 0.5, removed with: 2.0) ")
+@Schema(description = " Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. (since: 0.5, removed with: 2.0) ")
 
 public class ChildAA extends ChildA {
   @JsonProperty("childAAAttribute")

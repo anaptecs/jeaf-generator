@@ -147,8 +147,6 @@ public class RESTProductServiceResource {
   @Path("{id}")
   @GET
   public Response getProduct( @PathParam("id") String pProductID ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pProductID);
     // Delegate request to service.
     Product lResult = rESTProductService.getProduct(pProductID);
     // Validate response and return it.
@@ -161,8 +159,6 @@ public class RESTProductServiceResource {
    */
   @POST
   public Response createProduct( Product pProduct ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pProduct);
     // Delegate request to service.
     boolean lResult = rESTProductService.createProduct(pProduct);
     // Validate response and return it.
@@ -182,8 +178,6 @@ public class RESTProductServiceResource {
         pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
       }
     }
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pContext);
     // Delegate request to service.
     Sortiment lResult = rESTProductService.getSortiment(pContext);
     // Validate response and return it.
@@ -197,8 +191,6 @@ public class RESTProductServiceResource {
   @Path("ChannelCode")
   @POST
   public Response createChannelCode( String pChannelCode ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pChannelCode);
     // Delegate request to service.
     ChannelCode lResult = rESTProductService.createChannelCode(pChannelCode);
     // Validate response and return it.
@@ -235,8 +227,6 @@ public class RESTProductServiceResource {
   public Response getSupportedCurrencies( @PathParam("channelCode") String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pChannelCode);
     // Delegate request to service.
     List<CurrencyCode> lResult = rESTProductService.getSupportedCurrencies(pChannelCode);
     // Validate response and return it.
@@ -287,8 +277,6 @@ public class RESTProductServiceResource {
   @GET
   public Response testParams( @HeaderParam("Big-Header") BigDecimal pBigDecimalHeader,
       @CookieParam("giveMeMoreCookies") int pIntCookieParam, @QueryParam("locale") Locale pLocaleQueryParam ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
     // Delegate request to service.
     String lResult = rESTProductService.testParams(pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
     // Validate response and return it.
@@ -303,8 +291,6 @@ public class RESTProductServiceResource {
   @GET
   public Response testEnumParams( @PathParam("channelType") ChannelType pChannelType,
       @QueryParam("timeUnit") TimeUnit pTimeUnit, @QueryParam("extensibleEnum") ExtensibleEnum pExtensibleEnum ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pChannelType, pTimeUnit, pExtensibleEnum);
     // Delegate request to service.
     rESTProductService.testEnumParams(pChannelType, pTimeUnit, pExtensibleEnum);
     return Response.status(Response.Status.NO_CONTENT).build();
@@ -317,8 +303,6 @@ public class RESTProductServiceResource {
   @GET
   public Response testEnumHeaderParams( @HeaderParam("Channel-Type") ChannelType pChannelType,
       @HeaderParam("Time-Unit") TimeUnit pTimeUnit, @HeaderParam("Extensible-Enum") ExtensibleEnum pExtensibleEnum ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pChannelType, pTimeUnit, pExtensibleEnum);
     // Delegate request to service.
     rESTProductService.testEnumHeaderParams(pChannelType, pTimeUnit, pExtensibleEnum);
     return Response.status(Response.Status.NO_CONTENT).build();
@@ -336,10 +320,6 @@ public class RESTProductServiceResource {
       @QueryParam("calendar") Calendar pCalendar, @QueryParam("utilDate") java.util.Date pUtilDate,
       @QueryParam("sqlTimestamp") Timestamp pSQLTimestamp, @QueryParam("sqlTime") Time pSQLTime,
       @QueryParam("sqlDate") Date pSQLDate, @QueryParam("calendars") Set<Calendar> pCalendars ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pPath, pStartTimestamp, pStartTime,
-        pLocalStartTimestamp, pLocalStartTime, pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate,
-        pCalendars);
     // Delegate request to service.
     rESTProductService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
         pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate, pCalendars);
@@ -353,8 +333,6 @@ public class RESTProductServiceResource {
   @GET
   public Response testDateQueryParamsBean( @PathParam("path") String pPath,
       @BeanParam DateQueryParamsBean pQueryParams ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pPath, pQueryParams);
     // Delegate request to service.
     rESTProductService.testDateQueryParamsBean(pPath, pQueryParams);
     return Response.status(Response.Status.NO_CONTENT).build();
@@ -372,9 +350,6 @@ public class RESTProductServiceResource {
       @HeaderParam("Calendar") Calendar pCalendar, @HeaderParam("Util-Date") java.util.Date pUtilDate,
       @HeaderParam("SQL-Timestamp") Timestamp pSQLTimestamp, @HeaderParam("SQL-Time") Time pSQLTime,
       @HeaderParam("SQL-Date") Date pSQLDate, @HeaderParam("util-dates") Set<java.util.Date> pUtilDates ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime,
-        pLocalTime, pLocalDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate, pUtilDates);
     // Delegate request to service.
     rESTProductService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate,
         pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate, pUtilDates);
@@ -388,8 +363,6 @@ public class RESTProductServiceResource {
   @GET
   public Response testDateHeaderParamsBean( @PathParam("path") String pPath,
       @BeanParam DateHeaderParamsBean pHeaderParams ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pPath, pHeaderParams);
     // Delegate request to service.
     rESTProductService.testDateHeaderParamsBean(pPath, pHeaderParams);
     return Response.status(Response.Status.NO_CONTENT).build();
@@ -408,8 +381,6 @@ public class RESTProductServiceResource {
         pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
       }
     }
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pChannelTypeParam, pContext);
     // Delegate request to service.
     rESTProductService.testCookieParams(pChannelTypeParam, pContext);
     return Response.status(Response.Status.NO_CONTENT).build();
@@ -422,8 +393,6 @@ public class RESTProductServiceResource {
   @GET
   public Response testOptionalQueryParams( @QueryParam("query1") @DefaultValue("Just a default value") String query1,
       @QueryParam("query2") int query2 ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, query1, query2);
     // Delegate request to service.
     String lResult = rESTProductService.testOptionalQueryParams(query1, query2);
     // Validate response and return it.
@@ -440,8 +409,6 @@ public class RESTProductServiceResource {
     // Convert basic type parameters into "real" objects.
     ComplexBookingID pComplextBookingID =
         this.deserializeCompositeDataType(pComplextBookingIDAsBasicType, ComplexBookingID.class);
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pComplextBookingID);
     // Delegate request to service.
     boolean lResult = rESTProductService.processComplexBookingID(pComplextBookingID);
     // Validate response and return it.
@@ -461,8 +428,6 @@ public class RESTProductServiceResource {
     BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
     BookingCode pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
     DoubleCode pDoubleCode = DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build();
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pBookingID, pBookingCode, pDoubleCode);
     // Delegate request to service.
     String lResult = rESTProductService.testDataTypesAsHeaderParam(pBookingID, pBookingCode, pDoubleCode);
     // Validate response and return it.
@@ -476,8 +441,6 @@ public class RESTProductServiceResource {
   @Path("dataTypesInBeanHeader")
   @GET
   public Response testDataTypesAsHeaderBeanParam( @BeanParam AdvancedHeader pContext ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pContext);
     // Delegate request to service.
     String lResult = rESTProductService.testDataTypesAsHeaderBeanParam(pContext);
     // Validate response and return it.
@@ -491,8 +454,6 @@ public class RESTProductServiceResource {
   @Path("testPrimitiveArrayAsBody")
   @POST
   public Response testPrimitiveArrays( int[] pIntegerArray ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pIntegerArray);
     // Delegate request to service.
     String lResult = rESTProductService.testPrimitiveArrays(pIntegerArray);
     // Validate response and return it.
@@ -508,8 +469,6 @@ public class RESTProductServiceResource {
   public Response testDataTypeAsQueryParam( @QueryParam("bookingCode") String pBookingCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     BookingCode pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pBookingCode);
     // Delegate request to service.
     String lResult = rESTProductService.testDataTypeAsQueryParam(pBookingCode);
     // Validate response and return it.
@@ -523,8 +482,6 @@ public class RESTProductServiceResource {
   @Path("testDataTypeAsBeanQueryParam")
   @GET
   public Response testDataTypeAsBeanQueryParam( @BeanParam QueryBeanParam pBeanParam ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pBeanParam);
     // Delegate request to service.
     String lResult = rESTProductService.testDataTypeAsBeanQueryParam(pBeanParam);
     // Validate response and return it.
@@ -538,8 +495,6 @@ public class RESTProductServiceResource {
   @Path("testPrimitiveArrayAsQueryParam")
   @GET
   public Response testPrimitiveArrayAsQueryParam( @QueryParam("intValues") int[] pIntValues ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pIntValues);
     // Delegate request to service.
     String lResult = rESTProductService.testPrimitiveArrayAsQueryParam(pIntValues);
     // Validate response and return it.
@@ -553,8 +508,6 @@ public class RESTProductServiceResource {
   @Path("testSimpleTypesAsQueryParams")
   @GET
   public Response testSimpleTypesAsQueryParams( @QueryParam("strings") List<String> pStrings ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pStrings);
     // Delegate request to service.
     String lResult = rESTProductService.testSimpleTypesAsQueryParams(pStrings);
     // Validate response and return it.
@@ -568,8 +521,6 @@ public class RESTProductServiceResource {
   @Path("testPrimitiveWrapperArrayAsQueryParam")
   @GET
   public Response testPrimitiveWrapperArrayAsQueryParam( @QueryParam("integers") Set<Integer> pIntegers ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pIntegers);
     // Delegate request to service.
     String lResult = rESTProductService.testPrimitiveWrapperArrayAsQueryParam(pIntegers);
     // Validate response and return it.
@@ -583,8 +534,6 @@ public class RESTProductServiceResource {
   @Path("testMultivaluedQueryParamsBean")
   @GET
   public Response testMultivaluedQueryParamsBean( @BeanParam MultivaluedQueryParamsBean pBean ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pBean);
     // Delegate request to service.
     String lResult = rESTProductService.testMultivaluedQueryParamsBean(pBean);
     // Validate response and return it.
@@ -632,9 +581,6 @@ public class RESTProductServiceResource {
     else {
       pBookingIDs = Collections.emptyList();
     }
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pCodes, pLongCodes, pBookingIDs, pTimestamps,
-        pLocalDates);
     // Delegate request to service.
     String lResult = rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes, pBookingIDs,
         pTimestamps, pLocalDates);
@@ -649,8 +595,6 @@ public class RESTProductServiceResource {
   @Path("testMulitvaluedDataTypeAsBeanQueryParam")
   @GET
   public Response testMulitvaluedDataTypeAsBeanQueryParam( @BeanParam DataTypesQueryBean pQueryBean ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pQueryBean);
     // Delegate request to service.
     String lResult = rESTProductService.testMulitvaluedDataTypeAsBeanQueryParam(pQueryBean);
     // Validate response and return it.
@@ -664,8 +608,6 @@ public class RESTProductServiceResource {
   @Path("testMultiValuedHeaderFieldsInBeanParam")
   @GET
   public Response testMultiValuedHeaderFieldsInBeanParam( @BeanParam MultiValuedHeaderBeanParam pMultiValuedBean ) {
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pMultiValuedBean);
     // Delegate request to service.
     String lResult = rESTProductService.testMultiValuedHeaderFieldsInBeanParam(pMultiValuedBean);
     // Validate response and return it.
@@ -693,9 +635,6 @@ public class RESTProductServiceResource {
     else {
       pCodes = Collections.emptySet();
     }
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pNames, pInts, pDoubles, pCodes, pStartDate,
-        pTimestamps, pTimes);
     // Delegate request to service.
     String lResult = rESTProductService.testMultiValuedHeaderFields(pNames, pInts, pDoubles, pCodes, pStartDate,
         pTimestamps, pTimes);
@@ -712,8 +651,6 @@ public class RESTProductServiceResource {
   public Response testBookingIDAsPathParam( @PathParam("bookingID") String pBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pBookingID);
     // Delegate request to service.
     rESTProductService.testBookingIDAsPathParam(pBookingID);
     return Response.status(Response.Status.NO_CONTENT).build();
@@ -727,8 +664,6 @@ public class RESTProductServiceResource {
   public Response testBookingIDAsHeaderParam( @HeaderParam("bookingID") String pBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
-    // Validate request parameter(s).
-    validationExecutor.validateRequest(RESTProductService.class, pBookingID);
     // Delegate request to service.
     rESTProductService.testBookingIDAsHeaderParam(pBookingID);
     return Response.status(Response.Status.NO_CONTENT).build();

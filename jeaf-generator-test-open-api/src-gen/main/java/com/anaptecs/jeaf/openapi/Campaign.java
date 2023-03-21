@@ -64,10 +64,10 @@ public class Campaign {
   }
 
    /**
-   *  Deprecated: No good any more(since: 1.2, removed with: 3.0) 
+   *  Deprecated: No good any more (since: 1.2, removed with: 3.0) 
    * @return moreLinks
   **/
-  @Schema(required = true, description = " Deprecated: No good any more(since: 1.2, removed with: 3.0) ")
+  @Schema(required = true, description = " Deprecated: No good any more (since: 1.2, removed with: 3.0) ")
   public List<Long> getMoreLinks() {
     return moreLinks;
   }
