@@ -931,6 +931,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       if (pBeanParam.getBookingCode() != null) {
         lRequestBuilder.setQueryParameter("bookingCode", pBeanParam.getBookingCode().getCode());
       }
+      lRequestBuilder.setQueryParameter("maxResults", String.valueOf(pBeanParam.getMaxResults()));
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();

@@ -884,12 +884,14 @@ public class RESTProductServiceResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
   public String testDataTypeAsBeanQueryParam(
-      @RequestParam(name = "bookingCode", required = true) String pBookingCodeAsBasicType ) {
+      @RequestParam(name = "bookingCode", required = true) String pBookingCodeAsBasicType,
+      @RequestParam(name = "maxResults", required = true, defaultValue = "47") int pMaxResults ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     QueryBeanParam.Builder lBeanParamBuilder = QueryBeanParam.builder();
     // Handle bean parameter pBeanParam.bookingCode
     lBeanParamBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
+    lBeanParamBuilder.setMaxResults(pMaxResults);
     QueryBeanParam pBeanParam = lBeanParamBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pBeanParam);
