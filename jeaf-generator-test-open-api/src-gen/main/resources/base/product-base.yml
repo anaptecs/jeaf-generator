@@ -719,6 +719,37 @@ components:
           format: double
           nullable: false
 
+    # com.anaptecs.jeaf.junit.openapi.base.IgnoringClass
+    IgnoringClass:
+      type: object
+      additionalProperties: false
+      required:
+        - ignoredName
+        - ignoredPrimitive
+        - age
+      properties:
+        ignoredName:
+          type: string
+          nullable: false
+        ignoredPrimitive:
+          type: integer
+          format: int32
+          nullable: false
+        ignoredArray:
+          type: array
+          items:
+            type: boolean
+        age:
+          type: integer
+          format: int32
+          nullable: false
+        ignoredStop:
+          $ref: '#/components/schemas/Stop'
+        ignoredEdges:
+          type: array
+          items:
+            $ref: '#/components/schemas/DirectedEdge'
+
     # com.anaptecs.jeaf.junit.openapi.base.InventoryType
     InventoryType:
       type: string
