@@ -5,11 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -26,25 +21,13 @@ public class IgnoringClass implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   @NotNull
-  private String ignoredName;
-
-  private int ignoredPrimitive;
-
-  private boolean[] ignoredArray;
-
-  @NotNull
   private Integer age;
-
-  private Stop ignoredStop;
-
-  private List<DirectedEdge> ignoredEdges;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected IgnoringClass( ) {
-    ignoredEdges = new ArrayList<DirectedEdge>();
   }
 
   /**
@@ -56,17 +39,7 @@ public class IgnoringClass implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    ignoredName = pBuilder.ignoredName;
-    ignoredPrimitive = pBuilder.ignoredPrimitive;
-    ignoredArray = pBuilder.ignoredArray;
     age = pBuilder.age;
-    ignoredStop = pBuilder.ignoredStop;
-    if (pBuilder.ignoredEdges != null) {
-      ignoredEdges = pBuilder.ignoredEdges;
-    }
-    else {
-      ignoredEdges = new ArrayList<DirectedEdge>();
-    }
   }
 
   /**
@@ -93,17 +66,7 @@ public class IgnoringClass implements ServiceObject {
    * Class implements builder to create a new instance of class <code>IgnoringClass</code>.
    */
   public static class Builder {
-    private String ignoredName;
-
-    private int ignoredPrimitive;
-
-    private boolean[] ignoredArray;
-
     private Integer age;
-
-    private Stop ignoredStop;
-
-    private List<DirectedEdge> ignoredEdges;
 
     /**
      * Use {@link IgnoringClass#builder()} instead of private constructor to create new builder.
@@ -117,54 +80,8 @@ public class IgnoringClass implements ServiceObject {
     protected Builder( IgnoringClass pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        ignoredName = pObject.ignoredName;
-        ignoredPrimitive = pObject.ignoredPrimitive;
-        ignoredArray = pObject.ignoredArray;
         age = pObject.age;
-        ignoredStop = pObject.ignoredStop;
-        ignoredEdges = pObject.ignoredEdges;
       }
-    }
-
-    /**
-     * Method sets attribute {@link #ignoredName}.<br/>
-     * 
-     * @param pIgnoredName Value to which {@link #ignoredName} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public Builder setIgnoredName( String pIgnoredName ) {
-      // Assign value to attribute
-      ignoredName = pIgnoredName;
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #ignoredPrimitive}.<br/>
-     * 
-     * @param pIgnoredPrimitive Value to which {@link #ignoredPrimitive} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public Builder setIgnoredPrimitive( int pIgnoredPrimitive ) {
-      // Assign value to attribute
-      ignoredPrimitive = pIgnoredPrimitive;
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #ignoredArray}.<br/>
-     * 
-     * @param pIgnoredArray Value to which {@link #ignoredArray} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public Builder setIgnoredArray( boolean[] pIgnoredArray ) {
-      // Assign value to attribute
-      if (pIgnoredArray != null) {
-        ignoredArray = pIgnoredArray;
-      }
-      else {
-        ignoredArray = null;
-      }
-      return this;
     }
 
     /**
@@ -176,34 +93,6 @@ public class IgnoringClass implements ServiceObject {
     public Builder setAge( Integer pAge ) {
       // Assign value to attribute
       age = pAge;
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #ignoredStop}.<br/>
-     * 
-     * @param pIgnoredStop Value to which {@link #ignoredStop} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public Builder setIgnoredStop( Stop pIgnoredStop ) {
-      ignoredStop = pIgnoredStop;
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #ignoredEdges}.<br/>
-     * 
-     * @param pIgnoredEdges Collection to which {@link #ignoredEdges} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public Builder setIgnoredEdges( List<DirectedEdge> pIgnoredEdges ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pIgnoredEdges != null) {
-        ignoredEdges = new ArrayList<DirectedEdge>(pIgnoredEdges);
-      }
-      else {
-        ignoredEdges = null;
-      }
       return this;
     }
 
@@ -232,75 +121,6 @@ public class IgnoringClass implements ServiceObject {
   }
 
   /**
-   * Method returns attribute {@link #ignoredName}.<br/>
-   * 
-   * @return {@link String} Value to which {@link #ignoredName} is set.
-   */
-  public String getIgnoredName( ) {
-    return ignoredName;
-  }
-
-  /**
-   * Method sets attribute {@link #ignoredName}.<br/>
-   * 
-   * @param pIgnoredName Value to which {@link #ignoredName} should be set.
-   */
-  public void setIgnoredName( String pIgnoredName ) {
-    // Assign value to attribute
-    ignoredName = pIgnoredName;
-  }
-
-  /**
-   * Method returns attribute {@link #ignoredPrimitive}.<br/>
-   * 
-   * @return int Value to which {@link #ignoredPrimitive} is set.
-   */
-  public int getIgnoredPrimitive( ) {
-    return ignoredPrimitive;
-  }
-
-  /**
-   * Method sets attribute {@link #ignoredPrimitive}.<br/>
-   * 
-   * @param pIgnoredPrimitive Value to which {@link #ignoredPrimitive} should be set.
-   */
-  public void setIgnoredPrimitive( int pIgnoredPrimitive ) {
-    // Assign value to attribute
-    ignoredPrimitive = pIgnoredPrimitive;
-  }
-
-  /**
-   * Method returns attribute {@link #ignoredArray}.<br/>
-   * 
-   * @return boolean Value to which {@link #ignoredArray} is set.
-   */
-  public boolean[] getIgnoredArray( ) {
-    boolean[] lReturnValue;
-    if (ignoredArray != null) {
-      lReturnValue = ignoredArray;
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #ignoredArray}.<br/>
-   * 
-   * @param pIgnoredArray Value to which {@link #ignoredArray} should be set.
-   */
-  public void setIgnoredArray( boolean[] pIgnoredArray ) {
-    // Assign value to attribute
-    if (pIgnoredArray != null) {
-      ignoredArray = pIgnoredArray;
-    }
-    else {
-      ignoredArray = null;
-    }
-  }
-
-  /**
    * Method returns attribute {@link #age}.<br/>
    * 
    * @return {@link Integer} Value to which {@link #age} is set.
@@ -320,89 +140,6 @@ public class IgnoringClass implements ServiceObject {
   }
 
   /**
-   * Method returns association {@link #ignoredStop}.<br/>
-   * 
-   * @return {@link Stop} Value to which {@link #ignoredStop} is set.
-   */
-  public Stop getIgnoredStop( ) {
-    return ignoredStop;
-  }
-
-  /**
-   * Method sets association {@link #ignoredStop}.<br/>
-   * 
-   * @param pIgnoredStop Value to which {@link #ignoredStop} should be set.
-   */
-  public void setIgnoredStop( Stop pIgnoredStop ) {
-    ignoredStop = pIgnoredStop;
-  }
-
-  /**
-   * Method unsets {@link #ignoredStop}.
-   */
-  public final void unsetIgnoredStop( ) {
-    ignoredStop = null;
-  }
-
-  /**
-   * Method returns association {@link #ignoredEdges}.<br/>
-   * 
-   * @return {@link List<DirectedEdge>} Value to which {@link #ignoredEdges} is set. The method never returns null and
-   * the returned collection is modifiable.
-   */
-  public List<DirectedEdge> getIgnoredEdges( ) {
-    // Return all DirectedEdge objects directly without any protection against modification.
-    return ignoredEdges;
-  }
-
-  /**
-   * Method adds the passed object to {@link #ignoredEdges}.
-   * 
-   * @param pIgnoredEdges Object that should be added to {@link #ignoredEdges}. The parameter must not be null.
-   */
-  public void addToIgnoredEdges( DirectedEdge pIgnoredEdges ) {
-    // Check parameter "pIgnoredEdges" for invalid value null.
-    Check.checkInvalidParameterNull(pIgnoredEdges, "pIgnoredEdges");
-    // Add passed object to collection of associated DirectedEdge objects.
-    ignoredEdges.add(pIgnoredEdges);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #ignoredEdges}.
-   * 
-   * @param pIgnoredEdges Collection with all objects that should be added to {@link #ignoredEdges}. The parameter must
-   * not be null.
-   */
-  public void addToIgnoredEdges( Collection<DirectedEdge> pIgnoredEdges ) {
-    // Check parameter "pIgnoredEdges" for invalid value null.
-    Check.checkInvalidParameterNull(pIgnoredEdges, "pIgnoredEdges");
-    // Add all passed objects.
-    for (DirectedEdge lNextObject : pIgnoredEdges) {
-      this.addToIgnoredEdges(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #ignoredEdges}.<br/>
-   * 
-   * @param pIgnoredEdges Object that should be removed from {@link #ignoredEdges}. The parameter must not be null.
-   */
-  public void removeFromIgnoredEdges( DirectedEdge pIgnoredEdges ) {
-    // Check parameter for invalid value null.
-    Check.checkInvalidParameterNull(pIgnoredEdges, "pIgnoredEdges");
-    // Remove passed object from collection of associated DirectedEdge objects.
-    ignoredEdges.remove(pIgnoredEdges);
-  }
-
-  /**
-   * Method removes all objects from {@link #ignoredEdges}.
-   */
-  public void clearIgnoredEdges( ) {
-    // Remove all objects from association "ignoredEdges".
-    ignoredEdges.clear();
-  }
-
-  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -414,52 +151,9 @@ public class IgnoringClass implements ServiceObject {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("ignoredName: ");
-    lBuilder.append(ignoredName);
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("ignoredPrimitive: ");
-    lBuilder.append(ignoredPrimitive);
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("ignoredArray: ");
-    if (ignoredArray != null) {
-      lBuilder.append(Arrays.toString(ignoredArray));
-    }
-    else {
-      lBuilder.append(" null");
-    }
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
     lBuilder.append("age: ");
     lBuilder.append(age);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("ignoredStop: ");
-    if (ignoredStop != null) {
-      lBuilder.append(System.lineSeparator());
-      lBuilder.append(ignoredStop.toStringBuilder(pIndent + "    "));
-    }
-    else {
-      lBuilder.append(" null");
-      lBuilder.append(System.lineSeparator());
-    }
-    lBuilder.append(pIndent);
-    lBuilder.append("ignoredEdges: ");
-    if (ignoredEdges != null) {
-      lBuilder.append(ignoredEdges.size());
-      lBuilder.append(" element(s)");
-    }
-    else {
-      lBuilder.append(" null");
-    }
-    lBuilder.append(System.lineSeparator());
-    if (ignoredEdges != null) {
-      for (DirectedEdge lNext : ignoredEdges) {
-        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
-        lBuilder.append(System.lineSeparator());
-      }
-    }
     return lBuilder;
   }
 

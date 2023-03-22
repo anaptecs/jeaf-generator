@@ -208,91 +208,98 @@ public class ClassUtil {
     MultiplicityElement lMultiplicityElement = (MultiplicityElement) pTypedElement;
 
     // if (pParameter.getType() != null) {
-    String lTypePackage = getPackageName(pTypedElement.getType());
-
-    // Generate default type name.
-    String lTypeName = pTypedElement.getType().getName();
+    Type lType = pTypedElement.getType();
     String lFQN;
-    if (lTypePackage != null && lTypePackage.length() > 0) {
-      lFQN = lTypePackage + "." + lTypeName;
-    }
-    else {
-      lFQN = lTypeName;
-    }
+    if (lType != null) {
+      String lTypePackage = getPackageName(lType);
 
-    // Special handling for primitive types
-    if (ClassUtil.isPrimitive(pTypedElement.getType()) == true) {
-      lFQN = lFQN.toLowerCase();
-    }
-    // Handle return type void.
-    else if ("MagicDraw Profile.datatypes.void".equals(lFQN)) {
-      lFQN = "void";
-    }
-    // Default type name is already created.
-    else if ("java.lang.Class".equals(lFQN) || lFQN.equals("Class")) {
-      lFQN = "Class<?>";
-    }
+      // Generate default type name.
+      String lTypeName = pTypedElement.getType().getName();
+      if (lTypePackage != null && lTypePackage.length() > 0) {
+        lFQN = lTypePackage + "." + lTypeName;
+      }
+      else {
+        lFQN = lTypeName;
+      }
 
-    // Find out if passed element is modeled as association or not.
-    boolean lModeledAsAssociation;
-    if (pTypedElement instanceof Property) {
-      Property lProperty = (Property) pTypedElement;
-      if (lProperty.getAssociation() != null) {
-        lModeledAsAssociation = true;
+      // Special handling for primitive types
+      if (ClassUtil.isPrimitive(pTypedElement.getType()) == true) {
+        lFQN = lFQN.toLowerCase();
+      }
+      // Handle return type void.
+      else if ("MagicDraw Profile.datatypes.void".equals(lFQN)) {
+        lFQN = "void";
+      }
+      // Default type name is already created.
+      else if ("java.lang.Class".equals(lFQN) || lFQN.equals("Class")) {
+        lFQN = "Class<?>";
+      }
+
+      // Find out if passed element is modeled as association or not.
+      boolean lModeledAsAssociation;
+      if (pTypedElement instanceof Property) {
+        Property lProperty = (Property) pTypedElement;
+        if (lProperty.getAssociation() != null) {
+          lModeledAsAssociation = true;
+        }
+        else {
+          lModeledAsAssociation = false;
+        }
       }
       else {
         lModeledAsAssociation = false;
       }
-    }
-    else {
-      lModeledAsAssociation = false;
-    }
 
-    // Check if collection type is required
-    boolean lCollectionRequired;
-    boolean lArrayRequired;
-    if (pTypedElement instanceof Property) {
-      // If properties are not modeled as association then the will be generated as simple arrays in case they are
-      // multivalued.
-      if (lModeledAsAssociation && lMultiplicityElement.isMultivalued()) {
-        lCollectionRequired = true;
-        lArrayRequired = false;
-      }
-      else {
-        lCollectionRequired = false;
-        lArrayRequired = false;
-      }
-    }
-    // In case of parameters, primitive types will be represented as arrays all other types as collections.
-    else if (pTypedElement instanceof Parameter) {
-      // Parameter is not multivalued
-      if (lMultiplicityElement.isMultivalued()) {
-        if (ClassUtil.isPrimitive(pTypedElement.getType())) {
-          lCollectionRequired = false;
-          lArrayRequired = true;
-        }
-        else {
+      // Check if collection type is required
+      boolean lCollectionRequired;
+      boolean lArrayRequired;
+      if (pTypedElement instanceof Property) {
+        // If properties are not modeled as association then the will be generated as simple arrays in case they are
+        // multivalued.
+        if (lModeledAsAssociation && lMultiplicityElement.isMultivalued()) {
           lCollectionRequired = true;
           lArrayRequired = false;
         }
+        else {
+          lCollectionRequired = false;
+          lArrayRequired = false;
+        }
       }
-      // Parameter is not multivalued
+      // In case of parameters, primitive types will be represented as arrays all other types as collections.
+      else if (pTypedElement instanceof Parameter) {
+        // Parameter is not multivalued
+        if (lMultiplicityElement.isMultivalued()) {
+          if (ClassUtil.isPrimitive(pTypedElement.getType())) {
+            lCollectionRequired = false;
+            lArrayRequired = true;
+          }
+          else {
+            lCollectionRequired = true;
+            lArrayRequired = false;
+          }
+        }
+        // Parameter is not multivalued
+        else {
+          lCollectionRequired = false;
+          lArrayRequired = false;
+        }
+      }
+      // In case of all other type of model elements we will work with collections only depending on their multiplicity.
       else {
-        lCollectionRequired = false;
+        lCollectionRequired = lMultiplicityElement.isMultivalued();
         lArrayRequired = false;
       }
-    }
-    // In case of all other type of model elements we will work with collections only depending on their multiplicity.
-    else {
-      lCollectionRequired = lMultiplicityElement.isMultivalued();
-      lArrayRequired = false;
-    }
 
-    if (lCollectionRequired) {
-      lFQN = ClassUtil.getCollectionType(lMultiplicityElement) + "<" + lFQN + ">";
+      if (lCollectionRequired) {
+        lFQN = ClassUtil.getCollectionType(lMultiplicityElement) + "<" + lFQN + ">";
+      }
+      else if (lArrayRequired) {
+        lFQN = lFQN + "[]";
+      }
     }
-    else if (lArrayRequired) {
-      lFQN = lFQN + "[]";
+    // Property has no type set
+    else {
+      lFQN = "";
     }
 
     return lFQN;

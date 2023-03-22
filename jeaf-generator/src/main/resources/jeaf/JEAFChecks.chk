@@ -14,8 +14,8 @@ extension functions::NamedElement;
 context JEAFComponent if runChecks("JEAFComponent") ERROR this.getErrorMessage("9132", {name}): layer != null;
 
 // Checks for stereotype ServiceObject
-context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9124", {"ServiceObject", name}): ownedAttribute.forAll( a | a.type != null);
-context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9125", {"ServiceObject", name}): ownedAttribute.forAll( a | a.name.length > 0);
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9124", {"ServiceObject", name}): ownedAttribute.select(e|e.isPropertySuppressed() == false).forAll( a | a.type != null);
+context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9125", {"ServiceObject", name}): ownedAttribute.select(e|e.isPropertySuppressed() == false).forAll( a | a.name.length > 0);
 context ServiceObject if runChecks("ServiceObject") && compositeDataType ERROR this.getErrorMessage("9123", {"ServiceObject", name}): this.superClass.size == 0;
 context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9128", {"ServiceObject", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
 context ServiceObject if runChecks("ServiceObject") ERROR this.getErrorMessage("9129", {"ServiceObject", name}): ownedOperation.forAll( e | e.name.length > 0);
@@ -32,8 +32,8 @@ context SoftLink if softLinkType.name == "CustomGenericType" && ((NamedElement) 
 
 
 // Checks for stereotype POJO
-context POJO if runChecks("POJO") ERROR this.getErrorMessage("9124", {"POJO", name}): ownedAttribute.forAll( a | a.type != null);
-context POJO if runChecks("POJO") ERROR this.getErrorMessage("9125", {"POJO", name}): ownedAttribute.forAll( a | a.name.length > 0);
+context POJO if runChecks("POJO") ERROR this.getErrorMessage("9124", {"POJO", name}): ownedAttribute.select(e|e.isPropertySuppressed() == false).forAll( a | a.type != null);
+context POJO if runChecks("POJO") ERROR this.getErrorMessage("9125", {"POJO", name}): ownedAttribute.select(e|e.isPropertySuppressed() == false).forAll( a | a.name.length > 0);
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9127", {"POJO", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
 context POJO if runChecks("POJO") && compositeDataType ERROR this.getErrorMessage("9123", {"POJO", name}): this.superClass.size == 0;
 context POJO if runChecks("POJO") ERROR this.getErrorMessage("9128", {"POJO", name}): ownedOperation.forAll( e | e.hasReturnType() == true);

@@ -546,7 +546,7 @@ cached boolean isParameterSuppressed(uml::Parameter param):
 	suppressTechnicalHttpHeaders() && param.isTechnicalHeaderParameter();
 
 cached boolean isPropertySuppressed(uml::Property property):
-	(suppressTechnicalHttpHeaders() && property.isTechnicalHeaderProperty()) || property.isDerived;
+	(suppressTechnicalHttpHeaders() && property.isTechnicalHeaderProperty()) || property.isDerived  || property.isStereotypeApplied("Ignore");
 	
 cached boolean isTechnicalHeaderParameter(uml::Parameter param):
 	param.isStereotypeApplied("HeaderParam") && ((JMM::HeaderParam) param).technicalHeader;
