@@ -25,14 +25,27 @@ public class QueryBeanParam implements Serializable {
    */
   public static final String BOOKINGCODE = "bookingCode";
 
+  /**
+   * Constant for the name of attribute "maxResults".
+   */
+  public static final String MAXRESULTS = "maxResults";
+
   @QueryParam("bookingCode")
   private BookingCode bookingCode;
+
+  /**
+   * <br/>
+   * <b>Default Value:</b> <code>47</code>
+   */
+  @QueryParam("maxResults")
+  private int maxResults;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   public QueryBeanParam( ) {
+    maxResults = 47;
   }
 
   /**
@@ -45,6 +58,7 @@ public class QueryBeanParam implements Serializable {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     bookingCode = pBuilder.bookingCode;
+    maxResults = pBuilder.maxResults;
   }
 
   /**
@@ -70,9 +84,10 @@ public class QueryBeanParam implements Serializable {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( BookingCode pBookingCode ) {
+  public static Builder builder( BookingCode pBookingCode, int pMaxResults ) {
     Builder lBuilder = builder();
     lBuilder.setBookingCode(pBookingCode);
+    lBuilder.setMaxResults(pMaxResults);
     return lBuilder;
   }
 
@@ -81,6 +96,12 @@ public class QueryBeanParam implements Serializable {
    */
   public static class Builder {
     private BookingCode bookingCode;
+
+    /**
+     * <br/>
+     * <b>Default Value:</b> <code>47</code>
+     */
+    private int maxResults = 47;
 
     /**
      * Use {@link QueryBeanParam#builder()} instead of private constructor to create new builder.
@@ -95,6 +116,7 @@ public class QueryBeanParam implements Serializable {
       if (pObject != null) {
         // Read attribute values from passed object.
         bookingCode = pObject.bookingCode;
+        maxResults = pObject.maxResults;
       }
     }
 
@@ -107,6 +129,18 @@ public class QueryBeanParam implements Serializable {
     public Builder setBookingCode( BookingCode pBookingCode ) {
       // Assign value to attribute
       bookingCode = pBookingCode;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #maxResults}.<br/>
+     * 
+     * @param pMaxResults Value to which {@link #maxResults} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setMaxResults( int pMaxResults ) {
+      // Assign value to attribute
+      maxResults = pMaxResults;
       return this;
     }
 
@@ -154,6 +188,25 @@ public class QueryBeanParam implements Serializable {
   }
 
   /**
+   * Method returns attribute {@link #maxResults}.<br/>
+   * 
+   * @return int Value to which {@link #maxResults} is set.
+   */
+  public int getMaxResults( ) {
+    return maxResults;
+  }
+
+  /**
+   * Method sets attribute {@link #maxResults}.<br/>
+   * 
+   * @param pMaxResults Value to which {@link #maxResults} should be set.
+   */
+  public void setMaxResults( int pMaxResults ) {
+    // Assign value to attribute
+    maxResults = pMaxResults;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -167,6 +220,10 @@ public class QueryBeanParam implements Serializable {
     lBuilder.append(pIndent);
     lBuilder.append("bookingCode: ");
     lBuilder.append(bookingCode);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("maxResults: ");
+    lBuilder.append(maxResults);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

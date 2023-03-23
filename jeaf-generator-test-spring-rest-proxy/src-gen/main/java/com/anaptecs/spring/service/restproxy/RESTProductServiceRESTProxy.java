@@ -895,6 +895,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       if (pBeanParam.getBookingCode() != null) {
         lRequestBuilder.setQueryParameter("bookingCode", pBeanParam.getBookingCode().getCode());
       }
+      lRequestBuilder.setQueryParameter("maxResults", String.valueOf(pBeanParam.getMaxResults()));
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
