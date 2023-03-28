@@ -13,6 +13,12 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.anaptecs.jeaf.validation</groupId>
+			<artifactId>jeaf-validation-api</artifactId>
+			<version>${jeaf.validation.api.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.anaptecs.jeaf.rest</groupId>
 			<artifactId>jeaf-rest-resource-api</artifactId>
 			<version>${jeaf.rest.api.version}</version>

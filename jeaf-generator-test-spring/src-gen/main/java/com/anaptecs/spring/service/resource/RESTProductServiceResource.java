@@ -39,7 +39,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter;
-import com.anaptecs.jeaf.rest.resource.api.ValidationExecutor;
+import com.anaptecs.jeaf.validation.api.ValidationExecutor;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChannelCode;

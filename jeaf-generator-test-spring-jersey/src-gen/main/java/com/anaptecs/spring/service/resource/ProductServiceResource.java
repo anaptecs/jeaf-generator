@@ -39,7 +39,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter;
-import com.anaptecs.jeaf.rest.resource.api.ValidationExecutor;
+import com.anaptecs.jeaf.validation.api.ValidationExecutor;
 import com.anaptecs.jeaf.workload.api.Workload;
 import com.anaptecs.jeaf.workload.api.WorkloadManager;
 import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;
