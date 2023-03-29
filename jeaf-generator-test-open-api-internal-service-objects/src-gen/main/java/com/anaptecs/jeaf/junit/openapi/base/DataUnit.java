@@ -152,7 +152,7 @@ public final class DataUnit {
   @Override
   public int hashCode( ) {
     int lHashCode;
-    if (this.isUnknownLiteral() == true) {
+    if (unknownLiteralName != null && this.isUnknownLiteral() == true) {
       lHashCode = unknownLiteralName.hashCode();
     }
     else {
