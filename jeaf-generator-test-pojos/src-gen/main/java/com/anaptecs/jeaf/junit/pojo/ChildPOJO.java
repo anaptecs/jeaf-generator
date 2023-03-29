@@ -10,6 +10,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -159,7 +160,10 @@ public class ChildPOJO extends ParentPOJO {
      * @return ChildPOJO Created object. The method never returns null.
      */
     public ChildPOJO build( ) {
-      return new ChildPOJO(this);
+      ChildPOJO lPOJO = new ChildPOJO(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lPOJO);
+
+      return lPOJO;
     }
 
     /**
