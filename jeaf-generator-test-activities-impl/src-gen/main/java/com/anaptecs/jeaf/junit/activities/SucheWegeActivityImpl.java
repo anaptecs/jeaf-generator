@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.activities;
@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.junit.domainObjects.WegsucheAnfrage;
 
 /**
  * Implementation of activity SucheWegeActivity.
- * 
+ *
  */
 @JEAFActivityImpl(activityInterface = SucheWegeActivity.class)
 public class SucheWegeActivityImpl implements SucheWegeActivity {
@@ -24,8 +24,8 @@ public class SucheWegeActivityImpl implements SucheWegeActivity {
   }
 
   /**
-   * 
-   * 
+   *
+   *
    * @param pWegsucheAnfrage Parameter describes the Wegsuche that should be performed
    * @return List<Strecke> List with alle Strecken that were found by Wegsuche
    */

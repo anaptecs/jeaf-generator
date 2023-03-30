@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -52,7 +52,7 @@ public class TheReadOnlyPOJO {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected TheReadOnlyPOJO( Builder pBuilder ) {
@@ -70,7 +70,7 @@ public class TheReadOnlyPOJO {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new TheReadOnlyPOJO objects.
    */
   public static Builder builder( ) {
@@ -79,7 +79,7 @@ public class TheReadOnlyPOJO {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new TheReadOnlyPOJO objects. The method never
    * returns null.
@@ -121,7 +121,7 @@ public class TheReadOnlyPOJO {
 
     /**
      * Method sets association {@link #dataUnit}.<br/>
-     * 
+     *
      * @param pDataUnit Value to which {@link #dataUnit} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -132,7 +132,7 @@ public class TheReadOnlyPOJO {
 
     /**
      * Method sets attribute {@link #name}.<br/>
-     * 
+     *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -144,7 +144,7 @@ public class TheReadOnlyPOJO {
 
     /**
      * Method sets attribute {@link #ints}.<br/>
-     * 
+     *
      * @param pInts Value to which {@link #ints} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -162,7 +162,7 @@ public class TheReadOnlyPOJO {
 
     /**
      * Method sets association {@link #entities}.<br/>
-     * 
+     *
      * @param pEntities Collection to which {@link #entities} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -179,7 +179,7 @@ public class TheReadOnlyPOJO {
 
     /**
      * Method sets association {@link #entities}.<br/>
-     * 
+     *
      * @param pEntities Array with objects to which {@link #entities} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -197,7 +197,7 @@ public class TheReadOnlyPOJO {
     /**
      * Method creates a new instance of class TheReadOnlyPOJO. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return TheReadOnlyPOJO Created object. The method never returns null.
      */
     public TheReadOnlyPOJO build( ) {
@@ -207,7 +207,7 @@ public class TheReadOnlyPOJO {
 
   /**
    * Method returns association {@link #dataUnit}.<br/>
-   * 
+   *
    * @return {@link DataUnit} Value to which {@link #dataUnit} is set.
    */
   public DataUnit getDataUnit( ) {
@@ -216,7 +216,7 @@ public class TheReadOnlyPOJO {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -225,7 +225,7 @@ public class TheReadOnlyPOJO {
 
   /**
    * Method returns attribute {@link #ints}.<br/>
-   * 
+   *
    * @return int Value to which {@link #ints} is set.
    */
   public int[] getInts( ) {
@@ -242,7 +242,7 @@ public class TheReadOnlyPOJO {
 
   /**
    * Method returns association {@link #entities}.<br/>
-   * 
+   *
    * @return {@link List<Entity>} Value to which {@link #entities} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -302,7 +302,7 @@ public class TheReadOnlyPOJO {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

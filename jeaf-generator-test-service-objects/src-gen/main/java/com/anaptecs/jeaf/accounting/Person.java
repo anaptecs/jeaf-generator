@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting;
@@ -102,7 +102,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected Person( Builder pBuilder ) {
@@ -133,7 +133,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new Person objects.
    */
   public static Builder builder( ) {
@@ -142,7 +142,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Person objects. The method never returns null.
    */
@@ -212,7 +212,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
     /**
      * Method sets attribute {@link #name}.<br/>
-     * 
+     *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -224,7 +224,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
     /**
      * Method sets attribute {@link #firstName}.<br/>
-     * 
+     *
      * @param pFirstName Value to which {@link #firstName} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -236,7 +236,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
     /**
      * Method sets attribute {@link #dateOfBirth}.<br/>
-     * 
+     *
      * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -248,7 +248,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
     /**
      * Method sets association {@link #accounts}.<br/>
-     * 
+     *
      * @param pAccounts Collection to which {@link #accounts} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -265,7 +265,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
     /**
      * Method sets association {@link #customer}.<br/>
-     * 
+     *
      * @param pCustomer Value to which {@link #customer} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -276,7 +276,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
     /**
      * Method sets attribute {@link #age}.<br/>
-     * 
+     *
      * @param pAge Value to which {@link #age} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -288,7 +288,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
     /**
      * Method sets attribute {@link #displayName}.<br/>
-     * 
+     *
      * @param pDisplayName Value to which {@link #displayName} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -300,7 +300,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
     /**
      * Method creates a new instance of class Person. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Person Created object. The method never returns null.
      */
     public Person build( ) {
@@ -310,7 +310,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     /**
      * Method creates a new validated instance of class Person. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return Person Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -323,7 +323,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method returns the id of this object.
-   * 
+   *
    * @return {@link ServiceObjectID} ID of this object. Since an object must not have an id the method may also return
    * null.
    */
@@ -334,7 +334,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method returns the unversioned object id of this object.
-   * 
+   *
    * @return {@link ServiceObjectID} ID of this object. Since an object must not have an id the method may also return
    * null.
    */
@@ -352,7 +352,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -361,7 +361,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -371,7 +371,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method returns attribute {@link #firstName}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #firstName} is set.
    */
   public String getFirstName( ) {
@@ -380,7 +380,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method sets attribute {@link #firstName}.<br/>
-   * 
+   *
    * @param pFirstName Value to which {@link #firstName} should be set.
    */
   public void setFirstName( String pFirstName ) {
@@ -390,7 +390,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method returns attribute {@link #dateOfBirth}.<br/>
-   * 
+   *
    * @return {@link Calendar} Value to which {@link #dateOfBirth} is set.
    */
   public Calendar getDateOfBirth( ) {
@@ -399,7 +399,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method sets attribute {@link #dateOfBirth}.<br/>
-   * 
+   *
    * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
    */
   public void setDateOfBirth( Calendar pDateOfBirth ) {
@@ -409,7 +409,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method returns association {@link #accounts}.<br/>
-   * 
+   *
    * @return {@link Set<Account>} Value to which {@link #accounts} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -420,7 +420,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method adds the passed object to {@link #accounts}.
-   * 
+   *
    * @param pAccounts Object that should be added to {@link #accounts}. The parameter must not be null.
    */
   public void addToAccounts( Account pAccounts ) {
@@ -437,7 +437,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method adds all passed objects to {@link #accounts}.
-   * 
+   *
    * @param pAccounts Collection with all objects that should be added to {@link #accounts}. The parameter must not be
    * null.
    */
@@ -452,7 +452,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method removes the passed object from {@link #accounts}.<br/>
-   * 
+   *
    * @param pAccounts Object that should be removed from {@link #accounts}. The parameter must not be null.
    */
   public void removeFromAccounts( Account pAccounts ) {
@@ -482,7 +482,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method returns association {@link #customer}.<br/>
-   * 
+   *
    * @return {@link Individual} Value to which {@link #customer} is set.
    */
   public Individual getCustomer( ) {
@@ -491,7 +491,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method sets association {@link #customer}.<br/>
-   * 
+   *
    * @param pCustomer Value to which {@link #customer} should be set.
    */
   public void setCustomer( Individual pCustomer ) {
@@ -522,7 +522,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method returns attribute {@link #age}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #age} is set.
    */
   public Integer getAge( ) {
@@ -531,7 +531,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method sets attribute {@link #age}.<br/>
-   * 
+   *
    * @param pAge Value to which {@link #age} should be set.
    */
   public void setAge( Integer pAge ) {
@@ -541,7 +541,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method returns attribute {@link #displayName}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #displayName} is set.
    */
   public String getDisplayName( ) {
@@ -550,7 +550,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method sets attribute {@link #displayName}.<br/>
-   * 
+   *
    * @param pDisplayName Value to which {@link #displayName} should be set.
    */
   public void setDisplayName( String pDisplayName ) {
@@ -595,7 +595,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

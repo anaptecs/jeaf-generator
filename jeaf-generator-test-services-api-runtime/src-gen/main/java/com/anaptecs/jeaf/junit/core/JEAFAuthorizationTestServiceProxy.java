@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core;
@@ -103,8 +103,8 @@ final class DoSomething_JEAFAuthorizationTestService_Command extends Command {
 
   /**
    * Initialize object. All parameters from method "doSomething" have to be passed as parameters to this command object.
-   * 
-   * 
+   *
+   *
    */
   DoSomething_JEAFAuthorizationTestService_Command( ) {
     super(JEAFAuthorizationTestService.class);
@@ -113,7 +113,7 @@ final class DoSomething_JEAFAuthorizationTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -140,7 +140,7 @@ final class DoSomething_JEAFAuthorizationTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -150,7 +150,7 @@ final class DoSomething_JEAFAuthorizationTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -199,8 +199,8 @@ final class DoAnotherthing1_JEAFAuthorizationTestService_Command extends Command
   /**
    * Initialize object. All parameters from method "doAnotherthing1" have to be passed as parameters to this command
    * object.
-   * 
-   * 
+   *
+   *
    */
   DoAnotherthing1_JEAFAuthorizationTestService_Command( ) {
     super(JEAFAuthorizationTestService.class);
@@ -209,7 +209,7 @@ final class DoAnotherthing1_JEAFAuthorizationTestService_Command extends Command
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -236,7 +236,7 @@ final class DoAnotherthing1_JEAFAuthorizationTestService_Command extends Command
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -246,7 +246,7 @@ final class DoAnotherthing1_JEAFAuthorizationTestService_Command extends Command
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */

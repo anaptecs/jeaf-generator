@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core.test;
@@ -13,7 +13,7 @@ import junit.framework.TestSuite;
 public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTestBase {
   /**
    * Method creates a test suite contain all tests of this class.
-   * 
+   *
    * @return {@link TestSuite} Test suite with all tests of this class.
    */
   public static TestSuite suite( ) {
@@ -59,7 +59,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided.
-   * 
+   *
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    */
   public BusinessObjectTestServiceTest( String pName ) {
@@ -69,7 +69,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided. The userId and the
    * password of a specific user can be given to this Constructor so this specific user can be logged in.
-   * 
+   *
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    * @param pUserId UserId of the User who should be logged in for this Test.
    * @param pPassword Password of the User who should be logged in for this Test.
@@ -81,7 +81,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
   /**
    * Method performs test case specific initialization routines. If a test case implementation requires some special
    * operations at startup this method can be overridden.
-   * 
+   *
    * @throws Exception if an error occurs during initialization.
    */
   @Override
@@ -92,7 +92,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testBusinessMethods
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -102,7 +102,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testBOneToAOne
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -112,7 +112,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testCreateBusinessObjectsWithUserTypeMapping
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -122,7 +122,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method createBusinessObject
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -132,7 +132,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testCreateSimpleBusinessObject
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -142,7 +142,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testDynamicPropertyAccess
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -152,7 +152,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testFlush
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -162,7 +162,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method getClassA
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -172,7 +172,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testTransactionListener
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -182,7 +182,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testAOneToBOne
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -192,7 +192,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method removeCMany
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -202,7 +202,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testAttributeAccess
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -212,7 +212,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method deprectedOperation
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -222,7 +222,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method updateClassA
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -232,7 +232,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method clearCMany
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -242,7 +242,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method createClassA
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -252,7 +252,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testInitialObjectCache
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -262,7 +262,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testBusinessObjectsWithManyToManyAssociations
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -272,7 +272,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testServiceObjectsWithOneToManyAssociations
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -282,7 +282,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testMToNReleation
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -292,7 +292,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method createABCObjects
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -302,7 +302,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testServiceObjectsWithOneToOneAssociations
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -312,7 +312,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testNativeQuery
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -322,7 +322,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testObjectCacheReloading
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -332,7 +332,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method deleteBusinessObject
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -342,7 +342,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method getCManys
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -352,7 +352,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testJDBCWorker
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -362,7 +362,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method createXOne
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -372,7 +372,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testReadBusinessObjectsWithUserTypeMapping
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -382,7 +382,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testBusinessObjectsWithInheritance
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -392,7 +392,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method addCMany
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -402,7 +402,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method updateBusinessObject
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -412,7 +412,7 @@ public class BusinessObjectTestServiceTest extends BusinessObjectTestServiceTest
 
   /**
    * Method test the implementation of service method testQueryWithJPAQL
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -53,7 +53,7 @@ public class BidirectA {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected BidirectA( Builder pBuilder ) {
@@ -72,7 +72,7 @@ public class BidirectA {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new BidirectA objects.
    */
   public static Builder builder( ) {
@@ -81,7 +81,7 @@ public class BidirectA {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new BidirectA objects. The method never returns
    * null.
@@ -120,7 +120,7 @@ public class BidirectA {
 
     /**
      * Method returns a new builder.
-     * 
+     *
      * @return {@link Builder} New builder that can be used to create new BidirectA objects.
      */
     public static Builder newBuilder( ) {
@@ -129,7 +129,7 @@ public class BidirectA {
 
     /**
      * Method creates a new builder and initialize it with the data from the passed object.
-     * 
+     *
      * @param pObject Object that should be used to initialize the builder. The parameter may be null.
      * @return {@link Builder} New builder that can be used to create new BidirectA objects. The method never returns
      * null.
@@ -140,7 +140,7 @@ public class BidirectA {
 
     /**
      * Method sets association {@link #transientBs}.<br/>
-     * 
+     *
      * @param pTransientBs Collection to which {@link #transientBs} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -157,7 +157,7 @@ public class BidirectA {
 
     /**
      * Method sets association {@link #parent}.<br/>
-     * 
+     *
      * @param pParent Value to which {@link #parent} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -168,7 +168,7 @@ public class BidirectA {
 
     /**
      * Method sets association {@link #transientChild}.<br/>
-     * 
+     *
      * @param pTransientChild Value to which {@link #transientChild} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -179,7 +179,7 @@ public class BidirectA {
 
     /**
      * Method creates a new instance of class BidirectA. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return BidirectA Created object. The method never returns null.
      */
     public BidirectA build( ) {
@@ -189,7 +189,7 @@ public class BidirectA {
 
   /**
    * Method returns association {@link #transientBs}.<br/>
-   * 
+   *
    * @return {@link Set<BidirectB>} Value to which {@link #transientBs} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -200,7 +200,7 @@ public class BidirectA {
 
   /**
    * Method adds the passed object to {@link #transientBs}.
-   * 
+   *
    * @param pTransientBs Object that should be added to {@link #transientBs}. The parameter must not be null.
    */
   public void addToTransientBs( BidirectB pTransientBs ) {
@@ -218,7 +218,7 @@ public class BidirectA {
 
   /**
    * Method adds all passed objects to {@link #transientBs}.
-   * 
+   *
    * @param pTransientBs Collection with all objects that should be added to {@link #transientBs}. The parameter must
    * not be null.
    */
@@ -231,7 +231,7 @@ public class BidirectA {
 
   /**
    * Method removes the passed object from {@link #transientBs}.<br/>
-   * 
+   *
    * @param pTransientBs Object that should be removed from {@link #transientBs}. The parameter must not be null.
    */
   public void removeFromTransientBs( BidirectB pTransientBs ) {
@@ -259,7 +259,7 @@ public class BidirectA {
 
   /**
    * Method returns association {@link #parent}.<br/>
-   * 
+   *
    * @return {@link BidirectA} Value to which {@link #parent} is set.
    */
   public BidirectA getParent( ) {
@@ -274,7 +274,7 @@ public class BidirectA {
 
   /**
    * Method sets association {@link #parent}.<br/>
-   * 
+   *
    * @param pParent Value to which {@link #parent} should be set.
    */
   public void setParent( BidirectA pParent ) {
@@ -305,7 +305,7 @@ public class BidirectA {
 
   /**
    * Method returns association {@link #transientChild}.<br/>
-   * 
+   *
    * @return {@link BidirectA} Value to which {@link #transientChild} is set.
    */
   public BidirectA getTransientChild( ) {
@@ -314,7 +314,7 @@ public class BidirectA {
 
   /**
    * Method sets association {@link #transientChild}.<br/>
-   * 
+   *
    * @param pTransientChild Value to which {@link #transientChild} should be set.
    */
   public void setTransientChild( BidirectA pTransientChild ) {
@@ -396,7 +396,7 @@ public class BidirectA {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

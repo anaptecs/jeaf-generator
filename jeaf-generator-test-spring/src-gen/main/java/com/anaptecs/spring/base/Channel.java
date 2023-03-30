@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -65,7 +65,7 @@ public class Channel {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected Channel( Builder pBuilder ) {
@@ -79,7 +79,7 @@ public class Channel {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new Channel objects.
    */
   public static Builder builder( ) {
@@ -88,7 +88,7 @@ public class Channel {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Channel objects. The method never returns null.
    */
@@ -142,7 +142,7 @@ public class Channel {
 
     /**
      * Method returns a new builder.
-     * 
+     *
      * @return {@link Builder} New builder that can be used to create new Channel objects.
      */
     public static Builder newBuilder( ) {
@@ -151,7 +151,7 @@ public class Channel {
 
     /**
      * Method creates a new builder and initialize it with the data from the passed object.
-     * 
+     *
      * @param pObject Object that should be used to initialize the builder. The parameter may be null.
      * @return {@link Builder} New builder that can be used to create new Channel objects. The method never returns
      * null.
@@ -162,7 +162,7 @@ public class Channel {
 
     /**
      * Method sets association {@link #channelType}.<br/>
-     * 
+     *
      * @param pChannelType Value to which {@link #channelType} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -173,7 +173,7 @@ public class Channel {
 
     /**
      * Method sets association {@link #channelCode}.<br/>
-     * 
+     *
      * @param pChannelCode Value to which {@link #channelCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -184,7 +184,7 @@ public class Channel {
 
     /**
      * Method sets attribute {@link #code}.<br/>
-     * 
+     *
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -196,7 +196,7 @@ public class Channel {
 
     /**
      * Method sets attribute {@link #selfServiceChannel}.<br/>
-     * 
+     *
      * @param pSelfServiceChannel Value to which {@link #selfServiceChannel} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -208,7 +208,7 @@ public class Channel {
 
     /**
      * Method sets association {@link #reseller}.<br/>
-     * 
+     *
      * @param pReseller Value to which {@link #reseller} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -219,7 +219,7 @@ public class Channel {
 
     /**
      * Method creates a new instance of class Channel. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Channel Created object. The method never returns null.
      */
     public Channel build( ) {
@@ -230,7 +230,7 @@ public class Channel {
   /**
    * Method returns association {@link #channelType}.<br/>
    * Type of the channel
-   * 
+   *
    * @return {@link ChannelType} Value to which {@link #channelType} is set.
    */
   public ChannelType getChannelType( ) {
@@ -240,7 +240,7 @@ public class Channel {
   /**
    * Method sets association {@link #channelType}.<br/>
    * Type of the channel
-   * 
+   *
    * @param pChannelType Value to which {@link #channelType} should be set.
    */
   public void setChannelType( ChannelType pChannelType ) {
@@ -257,7 +257,7 @@ public class Channel {
   /**
    * Method returns association {@link #channelCode}.<br/>
    * The business code of the channel
-   * 
+   *
    * @return {@link ChannelCode} Value to which {@link #channelCode} is set.
    */
   public ChannelCode getChannelCode( ) {
@@ -267,7 +267,7 @@ public class Channel {
   /**
    * Method sets association {@link #channelCode}.<br/>
    * The business code of the channel
-   * 
+   *
    * @param pChannelCode Value to which {@link #channelCode} should be set.
    */
   public void setChannelCode( ChannelCode pChannelCode ) {
@@ -283,7 +283,7 @@ public class Channel {
 
   /**
    * Method returns attribute {@link #code}.<br/>
-   * 
+   *
    * @return int Value to which {@link #code} is set.
    */
   public int getCode( ) {
@@ -292,7 +292,7 @@ public class Channel {
 
   /**
    * Method returns attribute {@link #selfServiceChannel}.<br/>
-   * 
+   *
    * @return boolean Value to which {@link #selfServiceChannel} is set.
    */
   public boolean getSelfServiceChannel( ) {
@@ -301,7 +301,7 @@ public class Channel {
 
   /**
    * Method returns association {@link #reseller}.<br/>
-   * 
+   *
    * @return {@link Reseller} Value to which {@link #reseller} is set.
    */
   public Reseller getReseller( ) {
@@ -310,7 +310,7 @@ public class Channel {
 
   /**
    * Method sets association {@link #reseller}.<br/>
-   * 
+   *
    * @param pReseller Value to which {@link #reseller} should be set.
    */
   public void setReseller( Reseller pReseller ) {
@@ -388,7 +388,7 @@ public class Channel {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

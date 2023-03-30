@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core.mapper;
@@ -38,7 +38,7 @@ public class PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter
 
   /**
    * Method returns an instance of this object mapper.
-   * 
+   *
    * @return {@link ObjectMapper} Instance an object mapper that is capable to map between PrimitiveArrayServiceObject
    * and WrapperArrayServiceObject. The method never returns null.
    */
@@ -49,7 +49,7 @@ public class PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter
   /**
    * Method creates a new WrapperArrayServiceObject object from the passed PrimitiveArrayServiceObject object and
    * applies the defined mappings of type {@link MappingType#CREATE} from the UML model.
-   * 
+   *
    * @param pSource PrimitiveArrayServiceObject object that should be used to create a new WrapperArrayServiceObject
    * object. The parameter must not be null.
    * @return {@link WrapperArrayServiceObject} Created WrapperArrayServiceObject object. The method never returns null.
@@ -70,7 +70,7 @@ public class PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter
    * Method creates new WrapperArrayServiceObject objects based on the passed PrimitiveArrayServiceObject objects. For
    * every PrimitiveArrayServiceObject object a new WrapperArrayServiceObject object will be returned. The mappings for
    * case {@link MappingType#CREATE} will be applied.
-   * 
+   *
    * @param pSourceObjects All PrimitiveArrayServiceObject objects that should be used to create
    * WrapperArrayServiceObject objects. The parameter must not be null.
    * @return {@link List} List with all WrapperArrayServiceObject objects that were created. The method never returns
@@ -93,7 +93,7 @@ public class PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter
 
   /**
    * Method applies the mappings according to the passed mapping type on the passed source and target object.
-   * 
+   *
    * @param pSource Source object which should be used. The parameter must not be null. The effective type and direction
    * of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTarget Target object which should be used. The parameter must not be null. The effective type and direction
@@ -132,7 +132,7 @@ public class PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter
    * Method applies the mappings according to the passed mapping type on the passed source and target objects. The
    * entries in the list of source and target objects are matched according to their index. This also means that both
    * list must have the same amount of entries.
-   * 
+   *
    * @param pSources Source objects which should be used. The parameter must not be null. The effective type and
    * direction of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTargets Target objects which should be used. The parameter must not be null. The effective type and
@@ -157,7 +157,7 @@ public class PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter
   /**
    * Method creates a new PrimitiveArrayServiceObject object and applies the defined mappings of type
    * {@link MappingType#READ} from the UML model.
-   * 
+   *
    * @param pTarget WrapperArrayServiceObject object that should be used to create a new PrimitiveArrayServiceObject
    * object. The parameter must not be null.
    * @return {@link PrimitiveArrayServiceObject} Created PrimitiveArrayServiceObject object. The method never returns
@@ -178,7 +178,7 @@ public class PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter
    * Method creates new PrimitiveArrayServiceObject objects based on the passed WrapperArrayServiceObject objects. For
    * every WrapperArrayServiceObject object a new PrimitiveArrayServiceObject object will be returned. The mappings for
    * case {@link MappingType#READ} will be applied.
-   * 
+   *
    * @param pTargetObjects All target objects that should be used to create source objects. The parameter must not be
    * null.
    * @return {@link List} List with all source objects that were created. The method never returns null.
@@ -200,7 +200,7 @@ public class PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter
   /**
    * Method maps all attributes from PrimitiveArrayServiceObject to WrapperArrayServiceObject. Mappings are applied only
    * for case {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -211,7 +211,7 @@ public class PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter
   /**
    * Method maps all attributes from PrimitiveArrayServiceObject to WrapperArrayServiceObject. Mappings are applied only
    * for case {@link MappingType#UPDATE}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -223,7 +223,7 @@ public class PrimitiveArrayServiceObjectToWrapperArrayServiceObjectConverter
   /**
    * Method maps all attributes from WrapperArrayServiceObject to PrimitiveArrayServiceObject. Mappings are applied only
    * for case {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */

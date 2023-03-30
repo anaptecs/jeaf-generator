@@ -26,7 +26,7 @@ public enum Entity {
 
   /**
    * Method returns attribute {@link #entityID}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #entityID} is set.
    */
   public String getEntityID( ) {

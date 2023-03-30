@@ -65,7 +65,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<DeprecatedPO> findAllDeprecatedPOs( ) {
@@ -74,7 +74,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #deprecated}.<br/>
-   * 
+   *
    * @return int Value to which {@link #deprecated} is set.
    */
   @Deprecated
@@ -84,7 +84,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #deprecated}.<br/>
-   * 
+   *
    * @param pDeprecated Value to which {@link #deprecated} should be set.
    */
   @Deprecated
@@ -95,7 +95,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #publicClass}.<br/>
-   * 
+   *
    * @return {@link PublicClassBO} Value to which {@link #publicClass} is set.
    */
   @Deprecated
@@ -106,7 +106,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
 
   /**
    * Method sets association {@link #publicClass}.<br/>
-   * 
+   *
    * @param pPublicClass Value to which {@link #publicClass} should be set.
    */
   @Deprecated
@@ -124,7 +124,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #baseClasses}.<br/>
-   * 
+   *
    * @return {@link Set<BaseClassBO>} Value to which {@link #baseClasses} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -136,7 +136,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #baseClasses}.
-   * 
+   *
    * @param pBaseClasses Object that should be added to {@link #baseClasses}. The parameter must not be null.
    */
   @Deprecated
@@ -157,7 +157,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #baseClasses}.
-   * 
+   *
    * @param pBaseClasses Collection with all objects that should be added to {@link #baseClasses}. The parameter must
    * not be null.
    */
@@ -173,7 +173,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #baseClasses}.<br/>
-   * 
+   *
    * @param pBaseClasses Object that should be removed from {@link #baseClasses}. The parameter must not be null.
    */
   @Deprecated
@@ -220,7 +220,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

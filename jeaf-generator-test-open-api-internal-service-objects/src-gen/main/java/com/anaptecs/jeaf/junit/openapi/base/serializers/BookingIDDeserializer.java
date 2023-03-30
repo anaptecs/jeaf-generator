@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2021. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base.serializers;
@@ -60,7 +60,7 @@ public class BookingIDDeserializer extends JsonDeserializer<BookingID> {
 
   /**
    * Method returns the {@link CompositeTypeConverter} that should be used to serialize objects.
-   * 
+   *
    * @return {@link CompositeTypeConverter} Deserializer that should be used. The method never returns null.
    */
   private CompositeTypeConverter getDeserializer( ) {

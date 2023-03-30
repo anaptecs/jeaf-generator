@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.impl.core;
@@ -45,9 +45,9 @@ public final class RequiredComponentComponentFactory implements ComponentFactory
 
   /**
    * Method creates a new instance of component RequiredComponentComponent.
-   * 
+   *
    * @return Component Created RequiredComponentComponent. The method never returns null.
-   * 
+   *
    * @see ComponentFactory#createComponent()
    */
   @Override
@@ -57,10 +57,10 @@ public final class RequiredComponentComponentFactory implements ComponentFactory
 
   /**
    * Method returns the factories for all services of this component.
-   * 
+   *
    * @return Collection All Factories for the services of this component. The method never returns null and all objects
    * within this collection can be casted to interface ServiceFactory.
-   * 
+   *
    * @see com.anaptecs.jeaf.core.api.Component#getServiceFactories()
    */
   @Override

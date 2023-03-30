@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -27,7 +27,7 @@ public class ProductCode {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected ProductCode( Builder pBuilder ) {
@@ -37,7 +37,7 @@ public class ProductCode {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new ProductCode objects.
    */
   public static Builder builder( ) {
@@ -46,7 +46,7 @@ public class ProductCode {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new ProductCode objects. The method never returns
    * null.
@@ -80,7 +80,7 @@ public class ProductCode {
 
     /**
      * Method sets attribute {@link #code}.<br/>
-     * 
+     *
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -93,7 +93,7 @@ public class ProductCode {
     /**
      * Method creates a new instance of class ProductCode. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return ProductCode Created object. The method never returns null.
      */
     public ProductCode build( ) {
@@ -103,7 +103,7 @@ public class ProductCode {
 
   /**
    * Method returns attribute {@link #code}.<br/>
-   * 
+   *
    * @return int Value to which {@link #code} is set.
    */
   public int getCode( ) {
@@ -112,7 +112,7 @@ public class ProductCode {
 
   /**
    * Method sets attribute {@link #code}.<br/>
-   * 
+   *
    * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( int pCode ) {
@@ -161,7 +161,7 @@ public class ProductCode {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

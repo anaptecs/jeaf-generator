@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2021. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
@@ -46,7 +46,7 @@ public class NotInlinedBeanParam implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected NotInlinedBeanParam( Builder pBuilder ) {
@@ -61,7 +61,7 @@ public class NotInlinedBeanParam implements ServiceObject {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new NotInlinedBeanParam objects.
    */
   public static Builder builder( ) {
@@ -70,7 +70,7 @@ public class NotInlinedBeanParam implements ServiceObject {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new NotInlinedBeanParam objects. The method never
    * returns null.
@@ -113,7 +113,7 @@ public class NotInlinedBeanParam implements ServiceObject {
 
     /**
      * Method sets attribute {@link #header}.<br/>
-     * 
+     *
      * @param pHeader Value to which {@link #header} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -125,7 +125,7 @@ public class NotInlinedBeanParam implements ServiceObject {
 
     /**
      * Method sets attribute {@link #doubleCode}.<br/>
-     * 
+     *
      * @param pDoubleCode Value to which {@link #doubleCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -137,7 +137,7 @@ public class NotInlinedBeanParam implements ServiceObject {
 
     /**
      * Method sets attribute {@link #extensibleEnum}.<br/>
-     * 
+     *
      * @param pExtensibleEnum Value to which {@link #extensibleEnum} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -149,7 +149,7 @@ public class NotInlinedBeanParam implements ServiceObject {
 
     /**
      * Method sets attribute {@link #bookingID}.<br/>
-     * 
+     *
      * @param pBookingID Value to which {@link #bookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -162,7 +162,7 @@ public class NotInlinedBeanParam implements ServiceObject {
     /**
      * Method creates a new instance of class NotInlinedBeanParam. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return NotInlinedBeanParam Created object. The method never returns null.
      */
     public NotInlinedBeanParam build( ) {
@@ -172,7 +172,7 @@ public class NotInlinedBeanParam implements ServiceObject {
     /**
      * Method creates a new validated instance of class NotInlinedBeanParam. The object will be initialized with the
      * values of the builder and validated afterwards.
-     * 
+     *
      * @return NotInlinedBeanParam Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -185,7 +185,7 @@ public class NotInlinedBeanParam implements ServiceObject {
 
   /**
    * Method returns attribute {@link #header}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #header} is set.
    */
   public String getHeader( ) {
@@ -194,7 +194,7 @@ public class NotInlinedBeanParam implements ServiceObject {
 
   /**
    * Method sets attribute {@link #header}.<br/>
-   * 
+   *
    * @param pHeader Value to which {@link #header} should be set.
    */
   public void setHeader( String pHeader ) {
@@ -204,7 +204,7 @@ public class NotInlinedBeanParam implements ServiceObject {
 
   /**
    * Method returns attribute {@link #doubleCode}.<br/>
-   * 
+   *
    * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
    */
   public DoubleCode getDoubleCode( ) {
@@ -213,7 +213,7 @@ public class NotInlinedBeanParam implements ServiceObject {
 
   /**
    * Method sets attribute {@link #doubleCode}.<br/>
-   * 
+   *
    * @param pDoubleCode Value to which {@link #doubleCode} should be set.
    */
   public void setDoubleCode( DoubleCode pDoubleCode ) {
@@ -223,7 +223,7 @@ public class NotInlinedBeanParam implements ServiceObject {
 
   /**
    * Method returns attribute {@link #extensibleEnum}.<br/>
-   * 
+   *
    * @return {@link ExtensibleEnum} Value to which {@link #extensibleEnum} is set.
    */
   public ExtensibleEnum getExtensibleEnum( ) {
@@ -232,7 +232,7 @@ public class NotInlinedBeanParam implements ServiceObject {
 
   /**
    * Method sets attribute {@link #extensibleEnum}.<br/>
-   * 
+   *
    * @param pExtensibleEnum Value to which {@link #extensibleEnum} should be set.
    */
   public void setExtensibleEnum( ExtensibleEnum pExtensibleEnum ) {
@@ -242,7 +242,7 @@ public class NotInlinedBeanParam implements ServiceObject {
 
   /**
    * Method returns attribute {@link #bookingID}.<br/>
-   * 
+   *
    * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
   public BookingID getBookingID( ) {
@@ -251,7 +251,7 @@ public class NotInlinedBeanParam implements ServiceObject {
 
   /**
    * Method sets attribute {@link #bookingID}.<br/>
-   * 
+   *
    * @param pBookingID Value to which {@link #bookingID} should be set.
    */
   public void setBookingID( BookingID pBookingID ) {
@@ -292,7 +292,7 @@ public class NotInlinedBeanParam implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.product.domain;
@@ -44,7 +44,7 @@ public class AssortmentDO extends DomainObject {
 
   /**
    * Initialize object. Therefore its domain object id has to be passed.
-   * 
+   *
    * @param pDomainObjectID Id of this domain object. The parameter must not be null.
    */
   public AssortmentDO( DomainObjectID pDomainObjectID ) {
@@ -54,7 +54,7 @@ public class AssortmentDO extends DomainObject {
 
   /**
    * Method returns association {@link #products}.<br/>
-   * 
+   *
    * @return {@link Set<ProductDO>} Value to which {@link #products} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -65,7 +65,7 @@ public class AssortmentDO extends DomainObject {
 
   /**
    * Method adds the passed object to {@link #products}.
-   * 
+   *
    * @param pProducts Object that should be added to {@link #products}. The parameter must not be null.
    */
   public void addToProducts( ProductDO pProducts ) {
@@ -82,7 +82,7 @@ public class AssortmentDO extends DomainObject {
 
   /**
    * Method adds all passed objects to {@link #products}.
-   * 
+   *
    * @param pProducts Collection with all objects that should be added to {@link #products}. The parameter must not be
    * null.
    */
@@ -97,7 +97,7 @@ public class AssortmentDO extends DomainObject {
 
   /**
    * Method removes the passed object from {@link #products}.<br/>
-   * 
+   *
    * @param pProducts Object that should be removed from {@link #products}. The parameter must not be null.
    */
   public void removeFromProducts( ProductDO pProducts ) {
@@ -127,7 +127,7 @@ public class AssortmentDO extends DomainObject {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -136,7 +136,7 @@ public class AssortmentDO extends DomainObject {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -165,7 +165,7 @@ public class AssortmentDO extends DomainObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

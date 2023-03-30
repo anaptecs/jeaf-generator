@@ -44,7 +44,7 @@ public abstract class BOneBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<BOneBO> findAllBOneBOs( ) {
@@ -53,7 +53,7 @@ public abstract class BOneBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #bName}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #bName} is set.
    */
   public String getBName( ) {
@@ -62,7 +62,7 @@ public abstract class BOneBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #bName}.<br/>
-   * 
+   *
    * @param pBName Value to which {@link #bName} should be set.
    */
   public void setBName( String pBName ) {
@@ -72,7 +72,7 @@ public abstract class BOneBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #a}.<br/>
-   * 
+   *
    * @return {@link AOneBO} Value to which {@link #a} is set.
    */
   public AOneBO getA( ) {
@@ -82,7 +82,7 @@ public abstract class BOneBOBase extends PersistentObject {
 
   /**
    * Method sets association {@link #a}.<br/>
-   * 
+   *
    * @param pA Value to which {@link #a} should be set.
    */
   public void setA( AOneBO pA ) {
@@ -113,7 +113,7 @@ public abstract class BOneBOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

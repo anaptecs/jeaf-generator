@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.serviceproviders;
@@ -23,9 +23,9 @@ public final class DeprecatedServiceProviderImplFactory extends ServiceProviderF
 
   /**
    * Method creates a new instance of the service provider.
-   * 
+   *
    * @return {@link ServiceProviderImplementation} Instance of service provider. The method never returns null.
-   * 
+   *
    * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#createServiceProviderImplementation()
    */
   @Override
@@ -35,10 +35,10 @@ public final class DeprecatedServiceProviderImplFactory extends ServiceProviderF
 
   /**
    * Method returns the interface of the service provider created by this factory.
-   * 
+   *
    * @return Class Class object of interface that belongs to the service provider that is created by this factory. The
    * method never returns null.
-   * 
+   *
    * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#getServiceProviderInterface()
    */
   @Override

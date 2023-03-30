@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.product.domain;
@@ -65,7 +65,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Initialize object. Therefore its domain object id has to be passed.
-   * 
+   *
    * @param pDomainObjectID Id of this domain object. The parameter must not be null.
    */
   public ProductDOBase( DomainObjectID pDomainObjectID ) {
@@ -76,7 +76,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method returns association {@link #assortments}.<br/>
-   * 
+   *
    * @return {@link Set<AssortmentDO>} Value to which {@link #assortments} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -87,7 +87,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method adds the passed object to {@link #assortments}.
-   * 
+   *
    * @param pAssortments Object that should be added to {@link #assortments}. The parameter must not be null.
    */
   public void addToAssortments( AssortmentDO pAssortments ) {
@@ -104,7 +104,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method adds all passed objects to {@link #assortments}.
-   * 
+   *
    * @param pAssortments Collection with all objects that should be added to {@link #assortments}. The parameter must
    * not be null.
    */
@@ -119,7 +119,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method removes the passed object from {@link #assortments}.<br/>
-   * 
+   *
    * @param pAssortments Object that should be removed from {@link #assortments}. The parameter must not be null.
    */
   public void removeFromAssortments( AssortmentDO pAssortments ) {
@@ -149,7 +149,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method returns association {@link #pricesPerCurrency}.<br/>
-   * 
+   *
    * @return {@link Set<PriceDO>} Value to which {@link #pricesPerCurrency} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
@@ -160,7 +160,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method adds the passed object to {@link #pricesPerCurrency}.
-   * 
+   *
    * @param pPricesPerCurrency Object that should be added to {@link #pricesPerCurrency}. The parameter must not be
    * null.
    */
@@ -173,7 +173,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method adds all passed objects to {@link #pricesPerCurrency}.
-   * 
+   *
    * @param pPricesPerCurrency Collection with all objects that should be added to {@link #pricesPerCurrency}. The
    * parameter must not be null.
    */
@@ -188,7 +188,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method removes the passed object from {@link #pricesPerCurrency}.<br/>
-   * 
+   *
    * @param pPricesPerCurrency Object that should be removed from {@link #pricesPerCurrency}. The parameter must not be
    * null.
    */
@@ -209,7 +209,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -218,7 +218,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -228,7 +228,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method returns attribute {@link #description}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #description} is set.
    */
   public String getDescription( ) {
@@ -237,7 +237,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method sets attribute {@link #description}.<br/>
-   * 
+   *
    * @param pDescription Value to which {@link #description} should be set.
    */
   public void setDescription( String pDescription ) {
@@ -247,7 +247,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method returns association {@link #vat}.<br/>
-   * 
+   *
    * @return {@link VatDO} Value to which {@link #vat} is set.
    */
   public VatDO getVat( ) {
@@ -256,7 +256,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method sets association {@link #vat}.<br/>
-   * 
+   *
    * @param pVat Value to which {@link #vat} should be set.
    */
   public void setVat( VatDO pVat ) {
@@ -272,7 +272,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method returns association {@link #productCategory}.<br/>
-   * 
+   *
    * @return {@link ProductCategory} Value to which {@link #productCategory} is set.
    */
   public ProductCategory getProductCategory( ) {
@@ -281,7 +281,7 @@ public abstract class ProductDOBase extends DomainObject {
 
   /**
    * Method sets association {@link #productCategory}.<br/>
-   * 
+   *
    * @param pProductCategory Value to which {@link #productCategory} should be set.
    */
   public void setProductCategory( ProductCategory pProductCategory ) {
@@ -326,7 +326,7 @@ public abstract class ProductDOBase extends DomainObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

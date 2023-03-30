@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core;
@@ -48,7 +48,7 @@ public class ValidationTestObject implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected ValidationTestObject( Builder pBuilder ) {
@@ -61,7 +61,7 @@ public class ValidationTestObject implements ServiceObject {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new ValidationTestObject objects.
    */
   public static Builder builder( ) {
@@ -70,7 +70,7 @@ public class ValidationTestObject implements ServiceObject {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new ValidationTestObject objects. The method never
    * returns null.
@@ -110,7 +110,7 @@ public class ValidationTestObject implements ServiceObject {
 
     /**
      * Method sets attribute {@link #myEMail}.<br/>
-     * 
+     *
      * @param pMyEMail Value to which {@link #myEMail} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -122,7 +122,7 @@ public class ValidationTestObject implements ServiceObject {
 
     /**
      * Method sets attribute {@link #dateOfBirth}.<br/>
-     * 
+     *
      * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -135,7 +135,7 @@ public class ValidationTestObject implements ServiceObject {
     /**
      * Method creates a new instance of class ValidationTestObject. The object will be initialized with the values of
      * the builder.
-     * 
+     *
      * @return ValidationTestObject Created object. The method never returns null.
      */
     public ValidationTestObject build( ) {
@@ -145,7 +145,7 @@ public class ValidationTestObject implements ServiceObject {
     /**
      * Method creates a new validated instance of class ValidationTestObject. The object will be initialized with the
      * values of the builder and validated afterwards.
-     * 
+     *
      * @return ValidationTestObject Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -158,7 +158,7 @@ public class ValidationTestObject implements ServiceObject {
 
   /**
    * Method returns attribute {@link #myEMail}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #myEMail} is set.
    */
   public String getMyEMail( ) {
@@ -167,7 +167,7 @@ public class ValidationTestObject implements ServiceObject {
 
   /**
    * Method sets attribute {@link #myEMail}.<br/>
-   * 
+   *
    * @param pMyEMail Value to which {@link #myEMail} should be set.
    */
   public void setMyEMail( String pMyEMail ) {
@@ -177,7 +177,7 @@ public class ValidationTestObject implements ServiceObject {
 
   /**
    * Method returns attribute {@link #dateOfBirth}.<br/>
-   * 
+   *
    * @return {@link Calendar} Value to which {@link #dateOfBirth} is set.
    */
   public Calendar getDateOfBirth( ) {
@@ -186,7 +186,7 @@ public class ValidationTestObject implements ServiceObject {
 
   /**
    * Method sets attribute {@link #dateOfBirth}.<br/>
-   * 
+   *
    * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
    */
   public void setDateOfBirth( Calendar pDateOfBirth ) {
@@ -219,7 +219,7 @@ public class ValidationTestObject implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

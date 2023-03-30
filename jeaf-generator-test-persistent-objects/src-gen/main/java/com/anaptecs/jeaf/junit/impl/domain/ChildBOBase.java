@@ -44,7 +44,7 @@ public abstract class ChildBOBase extends BaseClassBO {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<ChildBO> findAllChildBOs( ) {
@@ -53,7 +53,7 @@ public abstract class ChildBOBase extends BaseClassBO {
 
   /**
    * Method returns attribute {@link #childName}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #childName} is set.
    */
   public String getChildName( ) {
@@ -62,7 +62,7 @@ public abstract class ChildBOBase extends BaseClassBO {
 
   /**
    * Method sets attribute {@link #childName}.<br/>
-   * 
+   *
    * @param pChildName Value to which {@link #childName} should be set.
    */
   public void setChildName( String pChildName ) {
@@ -72,7 +72,7 @@ public abstract class ChildBOBase extends BaseClassBO {
 
   /**
    * Method returns attribute {@link #childNumber}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #childNumber} is set.
    */
   public Integer getChildNumber( ) {
@@ -81,7 +81,7 @@ public abstract class ChildBOBase extends BaseClassBO {
 
   /**
    * Method sets attribute {@link #childNumber}.<br/>
-   * 
+   *
    * @param pChildNumber Value to which {@link #childNumber} should be set.
    */
   public void setChildNumber( Integer pChildNumber ) {
@@ -91,7 +91,7 @@ public abstract class ChildBOBase extends BaseClassBO {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

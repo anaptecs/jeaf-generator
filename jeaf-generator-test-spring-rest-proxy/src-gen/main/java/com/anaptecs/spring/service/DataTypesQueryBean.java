@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.service;
@@ -120,7 +120,7 @@ public class DataTypesQueryBean {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected DataTypesQueryBean( Builder pBuilder ) {
@@ -161,7 +161,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new DataTypesQueryBean objects.
    */
   public static Builder builder( ) {
@@ -170,7 +170,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new DataTypesQueryBean objects. The method never
    * returns null.
@@ -236,7 +236,7 @@ public class DataTypesQueryBean {
 
     /**
      * Method sets attribute {@link #longCodes}.<br/>
-     * 
+     *
      * @param pLongCodes Collection to which {@link #longCodes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -254,7 +254,7 @@ public class DataTypesQueryBean {
 
     /**
      * Method sets attribute {@link #codes}.<br/>
-     * 
+     *
      * @param pCodes Collection to which {@link #codes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -272,7 +272,7 @@ public class DataTypesQueryBean {
 
     /**
      * Method sets association {@link #doubleCodes}.<br/>
-     * 
+     *
      * @param pDoubleCodes Collection to which {@link #doubleCodes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -289,7 +289,7 @@ public class DataTypesQueryBean {
 
     /**
      * Method sets association {@link #bookingIDs}.<br/>
-     * 
+     *
      * @param pBookingIDs Collection to which {@link #bookingIDs} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -306,7 +306,7 @@ public class DataTypesQueryBean {
 
     /**
      * Method sets attribute {@link #bookingIDsArray}.<br/>
-     * 
+     *
      * @param pBookingIDsArray Collection to which {@link #bookingIDsArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -324,7 +324,7 @@ public class DataTypesQueryBean {
 
     /**
      * Method sets attribute {@link #offsetDateTime}.<br/>
-     * 
+     *
      * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -336,7 +336,7 @@ public class DataTypesQueryBean {
 
     /**
      * Method sets association {@link #offsetTime}.<br/>
-     * 
+     *
      * @param pOffsetTime Value to which {@link #offsetTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -347,7 +347,7 @@ public class DataTypesQueryBean {
 
     /**
      * Method sets attribute {@link #localDateTime}.<br/>
-     * 
+     *
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -359,7 +359,7 @@ public class DataTypesQueryBean {
 
     /**
      * Method sets attribute {@link #localTime}.<br/>
-     * 
+     *
      * @param pLocalTime Value to which {@link #localTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -371,7 +371,7 @@ public class DataTypesQueryBean {
 
     /**
      * Method sets association {@link #timestamps}.<br/>
-     * 
+     *
      * @param pTimestamps Collection to which {@link #timestamps} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -388,7 +388,7 @@ public class DataTypesQueryBean {
 
     /**
      * Method sets association {@link #times}.<br/>
-     * 
+     *
      * @param pTimes Collection to which {@link #times} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -405,7 +405,7 @@ public class DataTypesQueryBean {
 
     /**
      * Method sets attribute {@link #startTimestamps}.<br/>
-     * 
+     *
      * @param pStartTimestamps Collection to which {@link #startTimestamps} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -424,7 +424,7 @@ public class DataTypesQueryBean {
     /**
      * Method creates a new instance of class DataTypesQueryBean. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return DataTypesQueryBean Created object. The method never returns null.
      */
     public DataTypesQueryBean build( ) {
@@ -434,7 +434,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method returns attribute {@link #longCodes}.<br/>
-   * 
+   *
    * @return {@link LongCode} Value to which {@link #longCodes} is set.
    */
   public LongCode[] getLongCodes( ) {
@@ -451,7 +451,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method sets attribute {@link #longCodes}.<br/>
-   * 
+   *
    * @param pLongCodes Value to which {@link #longCodes} should be set.
    */
   public void setLongCodes( LongCode[] pLongCodes ) {
@@ -467,7 +467,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method returns attribute {@link #codes}.<br/>
-   * 
+   *
    * @return {@link IntegerCodeType} Value to which {@link #codes} is set.
    */
   public IntegerCodeType[] getCodes( ) {
@@ -484,7 +484,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method sets attribute {@link #codes}.<br/>
-   * 
+   *
    * @param pCodes Value to which {@link #codes} should be set.
    */
   public void setCodes( IntegerCodeType[] pCodes ) {
@@ -500,7 +500,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method returns association {@link #doubleCodes}.<br/>
-   * 
+   *
    * @return {@link Set<DoubleCode>} Value to which {@link #doubleCodes} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -511,7 +511,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method adds the passed object to {@link #doubleCodes}.
-   * 
+   *
    * @param pDoubleCodes Object that should be added to {@link #doubleCodes}. The parameter must not be null.
    */
   public void addToDoubleCodes( DoubleCode pDoubleCodes ) {
@@ -521,7 +521,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method adds all passed objects to {@link #doubleCodes}.
-   * 
+   *
    * @param pDoubleCodes Collection with all objects that should be added to {@link #doubleCodes}. The parameter must
    * not be null.
    */
@@ -534,7 +534,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method removes the passed object from {@link #doubleCodes}.<br/>
-   * 
+   *
    * @param pDoubleCodes Object that should be removed from {@link #doubleCodes}. The parameter must not be null.
    */
   public void removeFromDoubleCodes( DoubleCode pDoubleCodes ) {
@@ -552,7 +552,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method returns association {@link #bookingIDs}.<br/>
-   * 
+   *
    * @return {@link Set<BookingID>} Value to which {@link #bookingIDs} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -563,7 +563,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method adds the passed object to {@link #bookingIDs}.
-   * 
+   *
    * @param pBookingIDs Object that should be added to {@link #bookingIDs}. The parameter must not be null.
    */
   public void addToBookingIDs( BookingID pBookingIDs ) {
@@ -573,7 +573,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method adds all passed objects to {@link #bookingIDs}.
-   * 
+   *
    * @param pBookingIDs Collection with all objects that should be added to {@link #bookingIDs}. The parameter must not
    * be null.
    */
@@ -586,7 +586,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method removes the passed object from {@link #bookingIDs}.<br/>
-   * 
+   *
    * @param pBookingIDs Object that should be removed from {@link #bookingIDs}. The parameter must not be null.
    */
   public void removeFromBookingIDs( BookingID pBookingIDs ) {
@@ -604,7 +604,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method returns attribute {@link #bookingIDsArray}.<br/>
-   * 
+   *
    * @return {@link BookingID} Value to which {@link #bookingIDsArray} is set.
    */
   public BookingID[] getBookingIDsArray( ) {
@@ -621,7 +621,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method sets attribute {@link #bookingIDsArray}.<br/>
-   * 
+   *
    * @param pBookingIDsArray Value to which {@link #bookingIDsArray} should be set.
    */
   public void setBookingIDsArray( BookingID[] pBookingIDsArray ) {
@@ -637,7 +637,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method returns attribute {@link #offsetDateTime}.<br/>
-   * 
+   *
    * @return {@link OffsetDateTime} Value to which {@link #offsetDateTime} is set.
    */
   public OffsetDateTime getOffsetDateTime( ) {
@@ -646,7 +646,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method sets attribute {@link #offsetDateTime}.<br/>
-   * 
+   *
    * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
    */
   public void setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
@@ -656,7 +656,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method returns association {@link #offsetTime}.<br/>
-   * 
+   *
    * @return {@link OffsetTime} Value to which {@link #offsetTime} is set.
    */
   public OffsetTime getOffsetTime( ) {
@@ -665,7 +665,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method sets association {@link #offsetTime}.<br/>
-   * 
+   *
    * @param pOffsetTime Value to which {@link #offsetTime} should be set.
    */
   public void setOffsetTime( OffsetTime pOffsetTime ) {
@@ -681,7 +681,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method returns attribute {@link #localDateTime}.<br/>
-   * 
+   *
    * @return {@link LocalDateTime} Value to which {@link #localDateTime} is set.
    */
   public LocalDateTime getLocalDateTime( ) {
@@ -690,7 +690,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method sets attribute {@link #localDateTime}.<br/>
-   * 
+   *
    * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
    */
   public void setLocalDateTime( LocalDateTime pLocalDateTime ) {
@@ -700,7 +700,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method returns attribute {@link #localTime}.<br/>
-   * 
+   *
    * @return {@link LocalTime} Value to which {@link #localTime} is set.
    */
   public LocalTime getLocalTime( ) {
@@ -709,7 +709,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method sets attribute {@link #localTime}.<br/>
-   * 
+   *
    * @param pLocalTime Value to which {@link #localTime} should be set.
    */
   public void setLocalTime( LocalTime pLocalTime ) {
@@ -719,7 +719,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method returns association {@link #timestamps}.<br/>
-   * 
+   *
    * @return {@link List<LocalDateTime>} Value to which {@link #timestamps} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
@@ -730,7 +730,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method adds the passed object to {@link #timestamps}.
-   * 
+   *
    * @param pTimestamps Object that should be added to {@link #timestamps}. The parameter must not be null.
    */
   public void addToTimestamps( LocalDateTime pTimestamps ) {
@@ -740,7 +740,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method adds all passed objects to {@link #timestamps}.
-   * 
+   *
    * @param pTimestamps Collection with all objects that should be added to {@link #timestamps}. The parameter must not
    * be null.
    */
@@ -753,7 +753,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method removes the passed object from {@link #timestamps}.<br/>
-   * 
+   *
    * @param pTimestamps Object that should be removed from {@link #timestamps}. The parameter must not be null.
    */
   public void removeFromTimestamps( LocalDateTime pTimestamps ) {
@@ -771,7 +771,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method returns association {@link #times}.<br/>
-   * 
+   *
    * @return {@link Set<OffsetTime>} Value to which {@link #times} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -782,7 +782,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method adds the passed object to {@link #times}.
-   * 
+   *
    * @param pTimes Object that should be added to {@link #times}. The parameter must not be null.
    */
   public void addToTimes( OffsetTime pTimes ) {
@@ -792,7 +792,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method adds all passed objects to {@link #times}.
-   * 
+   *
    * @param pTimes Collection with all objects that should be added to {@link #times}. The parameter must not be null.
    */
   public void addToTimes( Collection<OffsetTime> pTimes ) {
@@ -804,7 +804,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method removes the passed object from {@link #times}.<br/>
-   * 
+   *
    * @param pTimes Object that should be removed from {@link #times}. The parameter must not be null.
    */
   public void removeFromTimes( OffsetTime pTimes ) {
@@ -822,7 +822,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method returns attribute {@link #startTimestamps}.<br/>
-   * 
+   *
    * @return {@link OffsetDateTime} Value to which {@link #startTimestamps} is set.
    */
   public OffsetDateTime[] getStartTimestamps( ) {
@@ -839,7 +839,7 @@ public class DataTypesQueryBean {
 
   /**
    * Method sets attribute {@link #startTimestamps}.<br/>
-   * 
+   *
    * @param pStartTimestamps Value to which {@link #startTimestamps} should be set.
    */
   public void setStartTimestamps( OffsetDateTime[] pStartTimestamps ) {
@@ -988,7 +988,7 @@ public class DataTypesQueryBean {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

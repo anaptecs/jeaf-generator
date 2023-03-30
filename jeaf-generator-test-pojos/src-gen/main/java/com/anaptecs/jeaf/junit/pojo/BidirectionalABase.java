@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.pojo;
@@ -67,7 +67,7 @@ public abstract class BidirectionalABase {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected BidirectionalABase( BuilderBase pBuilder ) {
@@ -121,7 +121,7 @@ public abstract class BidirectionalABase {
 
     /**
      * Method sets association {@link #transientB}.<br/>
-     * 
+     *
      * @param pTransientB Value to which {@link #transientB} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -132,7 +132,7 @@ public abstract class BidirectionalABase {
 
     /**
      * Method sets association {@link #transientParent}.<br/>
-     * 
+     *
      * @param pTransientParent Value to which {@link #transientParent} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -143,7 +143,7 @@ public abstract class BidirectionalABase {
 
     /**
      * Method sets association {@link #child}.<br/>
-     * 
+     *
      * @param pChild Value to which {@link #child} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -154,7 +154,7 @@ public abstract class BidirectionalABase {
 
     /**
      * Method sets association {@link #transientBs}.<br/>
-     * 
+     *
      * @param pTransientBs Collection to which {@link #transientBs} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -172,7 +172,7 @@ public abstract class BidirectionalABase {
     /**
      * Method creates a new instance of class BidirectionalA. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return BidirectionalA Created object. The method never returns null.
      */
     public BidirectionalA build( ) {
@@ -182,7 +182,7 @@ public abstract class BidirectionalABase {
     /**
      * Method creates a new validated instance of class BidirectionalA. The object will be initialized with the values
      * of the builder and validated afterwards.
-     * 
+     *
      * @return BidirectionalA Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -195,7 +195,7 @@ public abstract class BidirectionalABase {
 
   /**
    * Method returns association {@link #transientB}.<br/>
-   * 
+   *
    * @return {@link BidirectionalB} Value to which {@link #transientB} is set.
    */
   public BidirectionalB getTransientB( ) {
@@ -204,7 +204,7 @@ public abstract class BidirectionalABase {
 
   /**
    * Method sets association {@link #transientB}.<br/>
-   * 
+   *
    * @param pTransientB Value to which {@link #transientB} should be set.
    */
   public void setTransientB( BidirectionalB pTransientB ) {
@@ -235,7 +235,7 @@ public abstract class BidirectionalABase {
 
   /**
    * Method returns association {@link #transientParent}.<br/>
-   * 
+   *
    * @return {@link BidirectionalA} Value to which {@link #transientParent} is set.
    */
   public BidirectionalA getTransientParent( ) {
@@ -244,7 +244,7 @@ public abstract class BidirectionalABase {
 
   /**
    * Method sets association {@link #transientParent}.<br/>
-   * 
+   *
    * @param pTransientParent Value to which {@link #transientParent} should be set.
    */
   public void setTransientParent( BidirectionalA pTransientParent ) {
@@ -275,7 +275,7 @@ public abstract class BidirectionalABase {
 
   /**
    * Method returns association {@link #child}.<br/>
-   * 
+   *
    * @return {@link BidirectionalA} Value to which {@link #child} is set.
    */
   public BidirectionalA getChild( ) {
@@ -290,7 +290,7 @@ public abstract class BidirectionalABase {
 
   /**
    * Method sets association {@link #child}.<br/>
-   * 
+   *
    * @param pChild Value to which {@link #child} should be set.
    */
   public void setChild( BidirectionalA pChild ) {
@@ -321,7 +321,7 @@ public abstract class BidirectionalABase {
 
   /**
    * Method returns association {@link #transientBs}.<br/>
-   * 
+   *
    * @return {@link Set<BidirectionalB>} Value to which {@link #transientBs} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
@@ -332,7 +332,7 @@ public abstract class BidirectionalABase {
 
   /**
    * Method adds the passed object to {@link #transientBs}.
-   * 
+   *
    * @param pTransientBs Object that should be added to {@link #transientBs}. The parameter must not be null.
    */
   public void addToTransientBs( BidirectionalB pTransientBs ) {
@@ -349,7 +349,7 @@ public abstract class BidirectionalABase {
 
   /**
    * Method adds all passed objects to {@link #transientBs}.
-   * 
+   *
    * @param pTransientBs Collection with all objects that should be added to {@link #transientBs}. The parameter must
    * not be null.
    */
@@ -364,7 +364,7 @@ public abstract class BidirectionalABase {
 
   /**
    * Method removes the passed object from {@link #transientBs}.<br/>
-   * 
+   *
    * @param pTransientBs Object that should be removed from {@link #transientBs}. The parameter must not be null.
    */
   public void removeFromTransientBs( BidirectionalB pTransientBs ) {
@@ -409,7 +409,7 @@ public abstract class BidirectionalABase {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

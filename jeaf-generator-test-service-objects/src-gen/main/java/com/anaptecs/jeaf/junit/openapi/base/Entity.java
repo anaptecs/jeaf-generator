@@ -28,7 +28,7 @@ public final class Entity {
 
     /**
      * Method returns attribute {@link #entityID}.<br/>
-     * 
+     *
      * @return {@link String} Value to which {@link #entityID} is set.
      */
     public String getEntityID( ) {
@@ -37,7 +37,7 @@ public final class Entity {
 
     /**
      * Method returns association {@link #dataUnit}.<br/>
-     * 
+     *
      * @return {@link DataUnit} Value to which {@link #dataUnit} is set.
      */
     public DataUnit getDataUnit( ) {
@@ -65,7 +65,7 @@ public final class Entity {
   /**
    * Method returns extensible enumeration based on the passed name. If the literal name is unknown then an instance
    * representing "unknown" will be returned.
-   * 
+   *
    * @param pLiteral Enumeration literal that should be used to initialize the extensible enumeration. The parameter
    * must not be null.
    * @return
@@ -103,7 +103,7 @@ public final class Entity {
 
   /**
    * Initialize object from real enumeration literal
-   * 
+   *
    * @param pLiteral Enumeration literal that should be used to initialize the extensible enumeration. The parameter
    * must not be null.
    */
@@ -115,10 +115,10 @@ public final class Entity {
 
   /**
    * Initialize object using the name of the literal.
-   * 
+   *
    * @param pLiteralName Literal name that should be used to initialize the extensible enumeration. If the parameter is
    * null or has an unknown literal name then a "unknown" version will be created.
-   * 
+   *
    * @see Entity#isUnknownLiteral()
    */
   public Entity( String pLiteralName ) {
@@ -135,7 +135,7 @@ public final class Entity {
 
   /**
    * Method returns the literal that is represented by this object.
-   * 
+   *
    * @return {@link Entity} Literal that is represented by this object. The method never returns null.
    */
   public EntityType getLiteral( ) {
@@ -144,7 +144,7 @@ public final class Entity {
 
   /**
    * Method checks if the represented literal is actually unknown or not.
-   * 
+   *
    * @return boolean Method returns true if this object represents an unknown literal.
    */
   public boolean isUnknownLiteral( ) {
@@ -153,7 +153,7 @@ public final class Entity {
 
   /**
    * Method returns the actual name of the unknown literal
-   * 
+   *
    * @return {@link String} Name of the unknown literal or null in case that the literal is known.
    */
   public String getUnknownLiteralName( ) {

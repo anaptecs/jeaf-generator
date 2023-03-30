@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting.impl;
@@ -28,7 +28,7 @@ public final class AccountingComponentConfiguration {
 
   /**
    * Method returns the value of the property "defaultInterrestRate".
-   * 
+   *
    * @return {@link Float} Value of the property "defaultInterrestRate". The method returns null if no value for the
    * property is defined.
    */

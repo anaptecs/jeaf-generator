@@ -50,7 +50,7 @@ public abstract class SwiftTransactionLogBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<SwiftTransactionLogBO> findAllSwiftTransactionLogBOs( ) {
@@ -59,7 +59,7 @@ public abstract class SwiftTransactionLogBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #timestamp}.<br/>
-   * 
+   *
    * @return {@link Calendar} Value to which {@link #timestamp} is set.
    */
   public Calendar getTimestamp( ) {
@@ -68,7 +68,7 @@ public abstract class SwiftTransactionLogBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #timestamp}.<br/>
-   * 
+   *
    * @param pTimestamp Value to which {@link #timestamp} should be set.
    */
   public void setTimestamp( Calendar pTimestamp ) {
@@ -78,7 +78,7 @@ public abstract class SwiftTransactionLogBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #amount}.<br/>
-   * 
+   *
    * @return {@link Double} Value to which {@link #amount} is set.
    */
   public Double getAmount( ) {
@@ -87,7 +87,7 @@ public abstract class SwiftTransactionLogBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #amount}.<br/>
-   * 
+   *
    * @param pAmount Value to which {@link #amount} should be set.
    */
   public void setAmount( Double pAmount ) {
@@ -97,7 +97,7 @@ public abstract class SwiftTransactionLogBOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

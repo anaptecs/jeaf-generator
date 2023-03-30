@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -190,7 +190,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected PrimitiveArraysObjectWithRestrictions( Builder pBuilder ) {
@@ -223,7 +223,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new PrimitiveArraysObjectWithRestrictions objects.
    */
   public static Builder builder( ) {
@@ -232,7 +232,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new PrimitiveArraysObjectWithRestrictions objects.
    * The method never returns null.
@@ -332,7 +332,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #aBooleanArray}.<br/>
-     * 
+     *
      * @param pABooleanArray Value to which {@link #aBooleanArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -350,7 +350,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #bBooleanArray}.<br/>
-     * 
+     *
      * @param pBBooleanArray Collection to which {@link #bBooleanArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -368,7 +368,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #cBooleanArray}.<br/>
-     * 
+     *
      * @param pCBooleanArray Value to which {@link #cBooleanArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -386,7 +386,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #aByteArray}.<br/>
-     * 
+     *
      * @param pAByteArray Value to which {@link #aByteArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -404,7 +404,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #bByteArray}.<br/>
-     * 
+     *
      * @param pBByteArray Collection to which {@link #bByteArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -422,7 +422,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #aShortArray}.<br/>
-     * 
+     *
      * @param pAShortArray Value to which {@link #aShortArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -440,7 +440,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #bShortArray}.<br/>
-     * 
+     *
      * @param pBShortArray Collection to which {@link #bShortArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -458,7 +458,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #aIntegerArray}.<br/>
-     * 
+     *
      * @param pAIntegerArray Value to which {@link #aIntegerArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -476,7 +476,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #bIntegerArray}.<br/>
-     * 
+     *
      * @param pBIntegerArray Collection to which {@link #bIntegerArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -494,7 +494,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #cIntegerArray}.<br/>
-     * 
+     *
      * @param pCIntegerArray Collection to which {@link #cIntegerArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -512,7 +512,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #aLongArray}.<br/>
-     * 
+     *
      * @param pALongArray Value to which {@link #aLongArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -530,7 +530,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #bLongArray}.<br/>
-     * 
+     *
      * @param pBLongArray Collection to which {@link #bLongArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -548,7 +548,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #aBigIntegerArray}.<br/>
-     * 
+     *
      * @param pABigIntegerArray Collection to which {@link #aBigIntegerArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -566,7 +566,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #aCharacterArray}.<br/>
-     * 
+     *
      * @param pACharacterArray Value to which {@link #aCharacterArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -584,7 +584,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #bCharacterArray}.<br/>
-     * 
+     *
      * @param pBCharacterArray Collection to which {@link #bCharacterArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -602,7 +602,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #aFloatArray}.<br/>
-     * 
+     *
      * @param pAFloatArray Value to which {@link #aFloatArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -620,7 +620,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #bFloatArray}.<br/>
-     * 
+     *
      * @param pBFloatArray Collection to which {@link #bFloatArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -638,7 +638,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #aDoubleArray}.<br/>
-     * 
+     *
      * @param pADoubleArray Value to which {@link #aDoubleArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -656,7 +656,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #bDoubleArray}.<br/>
-     * 
+     *
      * @param pBDoubleArray Collection to which {@link #bDoubleArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -674,7 +674,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #aBigDecimalArray}.<br/>
-     * 
+     *
      * @param pABigDecimalArray Collection to which {@link #aBigDecimalArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -692,7 +692,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #aStringArray}.<br/>
-     * 
+     *
      * @param pAStringArray Collection to which {@link #aStringArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -710,7 +710,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
     /**
      * Method sets attribute {@link #bStringArray}.<br/>
-     * 
+     *
      * @param pBStringArray Collection to which {@link #bStringArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -729,7 +729,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
     /**
      * Method creates a new instance of class PrimitiveArraysObjectWithRestrictions. The object will be initialized with
      * the values of the builder.
-     * 
+     *
      * @return PrimitiveArraysObjectWithRestrictions Created object. The method never returns null.
      */
     public PrimitiveArraysObjectWithRestrictions build( ) {
@@ -739,7 +739,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
     /**
      * Method creates a new validated instance of class PrimitiveArraysObjectWithRestrictions. The object will be
      * initialized with the values of the builder and validated afterwards.
-     * 
+     *
      * @return PrimitiveArraysObjectWithRestrictions Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -752,7 +752,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #aBooleanArray}.<br/>
-   * 
+   *
    * @return boolean Value to which {@link #aBooleanArray} is set.
    */
   public boolean[] getABooleanArray( ) {
@@ -769,7 +769,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #aBooleanArray}.<br/>
-   * 
+   *
    * @param pABooleanArray Value to which {@link #aBooleanArray} should be set.
    */
   public void setABooleanArray( boolean[] pABooleanArray ) {
@@ -785,7 +785,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #bBooleanArray}.<br/>
-   * 
+   *
    * @return {@link Boolean} Value to which {@link #bBooleanArray} is set.
    */
   public Boolean[] getBBooleanArray( ) {
@@ -802,7 +802,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #bBooleanArray}.<br/>
-   * 
+   *
    * @param pBBooleanArray Value to which {@link #bBooleanArray} should be set.
    */
   public void setBBooleanArray( Boolean[] pBBooleanArray ) {
@@ -818,7 +818,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #cBooleanArray}.<br/>
-   * 
+   *
    * @return boolean Value to which {@link #cBooleanArray} is set.
    */
   public boolean[] getCBooleanArray( ) {
@@ -835,7 +835,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #cBooleanArray}.<br/>
-   * 
+   *
    * @param pCBooleanArray Value to which {@link #cBooleanArray} should be set.
    */
   public void setCBooleanArray( boolean[] pCBooleanArray ) {
@@ -851,7 +851,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #aByteArray}.<br/>
-   * 
+   *
    * @return byte Value to which {@link #aByteArray} is set.
    */
   public byte[] getAByteArray( ) {
@@ -868,7 +868,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #aByteArray}.<br/>
-   * 
+   *
    * @param pAByteArray Value to which {@link #aByteArray} should be set.
    */
   public void setAByteArray( byte[] pAByteArray ) {
@@ -884,7 +884,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #bByteArray}.<br/>
-   * 
+   *
    * @return {@link Byte} Value to which {@link #bByteArray} is set.
    */
   public Byte[] getBByteArray( ) {
@@ -901,7 +901,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #bByteArray}.<br/>
-   * 
+   *
    * @param pBByteArray Value to which {@link #bByteArray} should be set.
    */
   public void setBByteArray( Byte[] pBByteArray ) {
@@ -917,7 +917,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #aShortArray}.<br/>
-   * 
+   *
    * @return short Value to which {@link #aShortArray} is set.
    */
   public short[] getAShortArray( ) {
@@ -934,7 +934,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #aShortArray}.<br/>
-   * 
+   *
    * @param pAShortArray Value to which {@link #aShortArray} should be set.
    */
   public void setAShortArray( short[] pAShortArray ) {
@@ -950,7 +950,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #bShortArray}.<br/>
-   * 
+   *
    * @return {@link Short} Value to which {@link #bShortArray} is set.
    */
   public Short[] getBShortArray( ) {
@@ -967,7 +967,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #bShortArray}.<br/>
-   * 
+   *
    * @param pBShortArray Value to which {@link #bShortArray} should be set.
    */
   public void setBShortArray( Short[] pBShortArray ) {
@@ -983,7 +983,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #aIntegerArray}.<br/>
-   * 
+   *
    * @return int Value to which {@link #aIntegerArray} is set.
    */
   public int[] getAIntegerArray( ) {
@@ -1000,7 +1000,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #aIntegerArray}.<br/>
-   * 
+   *
    * @param pAIntegerArray Value to which {@link #aIntegerArray} should be set.
    */
   public void setAIntegerArray( int[] pAIntegerArray ) {
@@ -1016,7 +1016,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #bIntegerArray}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #bIntegerArray} is set.
    */
   public Integer[] getBIntegerArray( ) {
@@ -1033,7 +1033,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #bIntegerArray}.<br/>
-   * 
+   *
    * @param pBIntegerArray Value to which {@link #bIntegerArray} should be set.
    */
   public void setBIntegerArray( Integer[] pBIntegerArray ) {
@@ -1049,7 +1049,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #cIntegerArray}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #cIntegerArray} is set.
    */
   public Integer[] getCIntegerArray( ) {
@@ -1066,7 +1066,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #cIntegerArray}.<br/>
-   * 
+   *
    * @param pCIntegerArray Value to which {@link #cIntegerArray} should be set.
    */
   public void setCIntegerArray( Integer[] pCIntegerArray ) {
@@ -1082,7 +1082,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #aLongArray}.<br/>
-   * 
+   *
    * @return long Value to which {@link #aLongArray} is set.
    */
   public long[] getALongArray( ) {
@@ -1099,7 +1099,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #aLongArray}.<br/>
-   * 
+   *
    * @param pALongArray Value to which {@link #aLongArray} should be set.
    */
   public void setALongArray( long[] pALongArray ) {
@@ -1115,7 +1115,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #bLongArray}.<br/>
-   * 
+   *
    * @return {@link Long} Value to which {@link #bLongArray} is set.
    */
   public Long[] getBLongArray( ) {
@@ -1132,7 +1132,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #bLongArray}.<br/>
-   * 
+   *
    * @param pBLongArray Value to which {@link #bLongArray} should be set.
    */
   public void setBLongArray( Long[] pBLongArray ) {
@@ -1148,7 +1148,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #aBigIntegerArray}.<br/>
-   * 
+   *
    * @return {@link BigInteger} Value to which {@link #aBigIntegerArray} is set.
    */
   public BigInteger[] getABigIntegerArray( ) {
@@ -1165,7 +1165,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #aBigIntegerArray}.<br/>
-   * 
+   *
    * @param pABigIntegerArray Value to which {@link #aBigIntegerArray} should be set.
    */
   public void setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
@@ -1181,7 +1181,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #aCharacterArray}.<br/>
-   * 
+   *
    * @return char Value to which {@link #aCharacterArray} is set.
    */
   public char[] getACharacterArray( ) {
@@ -1198,7 +1198,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #aCharacterArray}.<br/>
-   * 
+   *
    * @param pACharacterArray Value to which {@link #aCharacterArray} should be set.
    */
   public void setACharacterArray( char[] pACharacterArray ) {
@@ -1214,7 +1214,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #bCharacterArray}.<br/>
-   * 
+   *
    * @return {@link Character} Value to which {@link #bCharacterArray} is set.
    */
   public Character[] getBCharacterArray( ) {
@@ -1231,7 +1231,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #bCharacterArray}.<br/>
-   * 
+   *
    * @param pBCharacterArray Value to which {@link #bCharacterArray} should be set.
    */
   public void setBCharacterArray( Character[] pBCharacterArray ) {
@@ -1247,7 +1247,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #aFloatArray}.<br/>
-   * 
+   *
    * @return float Value to which {@link #aFloatArray} is set.
    */
   public float[] getAFloatArray( ) {
@@ -1264,7 +1264,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #aFloatArray}.<br/>
-   * 
+   *
    * @param pAFloatArray Value to which {@link #aFloatArray} should be set.
    */
   public void setAFloatArray( float[] pAFloatArray ) {
@@ -1280,7 +1280,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #bFloatArray}.<br/>
-   * 
+   *
    * @return {@link Float} Value to which {@link #bFloatArray} is set.
    */
   public Float[] getBFloatArray( ) {
@@ -1297,7 +1297,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #bFloatArray}.<br/>
-   * 
+   *
    * @param pBFloatArray Value to which {@link #bFloatArray} should be set.
    */
   public void setBFloatArray( Float[] pBFloatArray ) {
@@ -1313,7 +1313,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #aDoubleArray}.<br/>
-   * 
+   *
    * @return double Value to which {@link #aDoubleArray} is set.
    */
   public double[] getADoubleArray( ) {
@@ -1330,7 +1330,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #aDoubleArray}.<br/>
-   * 
+   *
    * @param pADoubleArray Value to which {@link #aDoubleArray} should be set.
    */
   public void setADoubleArray( double[] pADoubleArray ) {
@@ -1346,7 +1346,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #bDoubleArray}.<br/>
-   * 
+   *
    * @return {@link Double} Value to which {@link #bDoubleArray} is set.
    */
   public Double[] getBDoubleArray( ) {
@@ -1363,7 +1363,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #bDoubleArray}.<br/>
-   * 
+   *
    * @param pBDoubleArray Value to which {@link #bDoubleArray} should be set.
    */
   public void setBDoubleArray( Double[] pBDoubleArray ) {
@@ -1379,7 +1379,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #aBigDecimalArray}.<br/>
-   * 
+   *
    * @return {@link BigDecimal} Value to which {@link #aBigDecimalArray} is set.
    */
   public BigDecimal[] getABigDecimalArray( ) {
@@ -1396,7 +1396,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #aBigDecimalArray}.<br/>
-   * 
+   *
    * @param pABigDecimalArray Value to which {@link #aBigDecimalArray} should be set.
    */
   public void setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
@@ -1412,7 +1412,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #aStringArray}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #aStringArray} is set.
    */
   public String[] getAStringArray( ) {
@@ -1429,7 +1429,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #aStringArray}.<br/>
-   * 
+   *
    * @param pAStringArray Value to which {@link #aStringArray} should be set.
    */
   public void setAStringArray( String[] pAStringArray ) {
@@ -1445,7 +1445,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method returns attribute {@link #bStringArray}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #bStringArray} is set.
    */
   public String[] getBStringArray( ) {
@@ -1462,7 +1462,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
 
   /**
    * Method sets attribute {@link #bStringArray}.<br/>
-   * 
+   *
    * @param pBStringArray Value to which {@link #bStringArray} should be set.
    */
   public void setBStringArray( String[] pBStringArray ) {
@@ -1493,7 +1493,7 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

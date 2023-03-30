@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2021. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
@@ -62,7 +62,7 @@ public class Stop implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected Stop( Builder pBuilder ) {
@@ -82,7 +82,7 @@ public class Stop implements ServiceObject {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new Stop objects.
    */
   public static Builder builder( ) {
@@ -91,7 +91,7 @@ public class Stop implements ServiceObject {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Stop objects. The method never returns null.
    */
@@ -140,7 +140,7 @@ public class Stop implements ServiceObject {
 
     /**
      * Method sets attribute {@link #name}.<br/>
-     * 
+     *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -152,7 +152,7 @@ public class Stop implements ServiceObject {
 
     /**
      * Method sets association {@link #links}.<br/>
-     * 
+     *
      * @param pLinks Collection to which {@link #links} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -169,7 +169,7 @@ public class Stop implements ServiceObject {
 
     /**
      * Method sets attribute {@link #index}.<br/>
-     * 
+     *
      * @param pIndex Value to which {@link #index} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -181,7 +181,7 @@ public class Stop implements ServiceObject {
 
     /**
      * Method sets association {@link #theSoftLink}.<br/>
-     * 
+     *
      * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -192,7 +192,7 @@ public class Stop implements ServiceObject {
 
     /**
      * Method creates a new instance of class Stop. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Stop Created object. The method never returns null.
      */
     public Stop build( ) {
@@ -202,7 +202,7 @@ public class Stop implements ServiceObject {
     /**
      * Method creates a new validated instance of class Stop. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return Stop Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -215,7 +215,7 @@ public class Stop implements ServiceObject {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -224,7 +224,7 @@ public class Stop implements ServiceObject {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -234,7 +234,7 @@ public class Stop implements ServiceObject {
 
   /**
    * Method returns association {@link #links}.<br/>
-   * 
+   *
    * @return {@link List<LinkObject>} Value to which {@link #links} is set. The method never returns null and the
    * returned collection is modifiable.
    */
@@ -245,7 +245,7 @@ public class Stop implements ServiceObject {
 
   /**
    * Method adds the passed object to {@link #links}.
-   * 
+   *
    * @param pLinks Object that should be added to {@link #links}. The parameter must not be null.
    */
   public void addToLinks( LinkObject pLinks ) {
@@ -257,7 +257,7 @@ public class Stop implements ServiceObject {
 
   /**
    * Method adds all passed objects to {@link #links}.
-   * 
+   *
    * @param pLinks Collection with all objects that should be added to {@link #links}. The parameter must not be null.
    */
   public void addToLinks( Collection<LinkObject> pLinks ) {
@@ -271,7 +271,7 @@ public class Stop implements ServiceObject {
 
   /**
    * Method removes the passed object from {@link #links}.<br/>
-   * 
+   *
    * @param pLinks Object that should be removed from {@link #links}. The parameter must not be null.
    */
   public void removeFromLinks( LinkObject pLinks ) {
@@ -291,7 +291,7 @@ public class Stop implements ServiceObject {
 
   /**
    * Method returns attribute {@link #index}.<br/>
-   * 
+   *
    * @return byte Value to which {@link #index} is set.
    */
   public byte getIndex( ) {
@@ -300,7 +300,7 @@ public class Stop implements ServiceObject {
 
   /**
    * Method sets attribute {@link #index}.<br/>
-   * 
+   *
    * @param pIndex Value to which {@link #index} should be set.
    */
   public void setIndex( byte pIndex ) {
@@ -313,7 +313,7 @@ public class Stop implements ServiceObject {
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
    * <code>LinkObject</code><br/>
-   * 
+   *
    * @return {@link SoftLink} Value to which {@link #theSoftLink} is set.
    */
   public SoftLink getTheSoftLink( ) {
@@ -322,7 +322,7 @@ public class Stop implements ServiceObject {
 
   /**
    * Method sets association {@link #theSoftLink}.<br/>
-   * 
+   *
    * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
    */
   public void setTheSoftLink( SoftLink pTheSoftLink ) {
@@ -381,7 +381,7 @@ public class Stop implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.service.restproxy;
@@ -54,7 +54,7 @@ import com.anaptecs.spring.service.QueryBeanParam;
 public interface RESTProductServiceRESTProxyServiceProvider extends ServiceProvider {
   /**
    * Operation returns all available product.
-   * 
+   *
    * @param pMaxResultSize
    * @return {@link List<Product>}
    */

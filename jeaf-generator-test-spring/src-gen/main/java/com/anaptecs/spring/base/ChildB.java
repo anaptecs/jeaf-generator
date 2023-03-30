@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * line<br/>
  * class<br/>
  * comment
- * 
+ *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
@@ -57,7 +57,7 @@ public class ChildB extends ParentClass {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected ChildB( Builder pBuilder ) {
@@ -75,7 +75,7 @@ public class ChildB extends ParentClass {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new ChildB objects.
    */
   public static Builder builder( ) {
@@ -84,7 +84,7 @@ public class ChildB extends ParentClass {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new ChildB objects. The method never returns null.
    */
@@ -128,7 +128,7 @@ public class ChildB extends ParentClass {
 
     /**
      * Method returns a new builder.
-     * 
+     *
      * @return {@link Builder} New builder that can be used to create new ChildB objects.
      */
     public static Builder newBuilder( ) {
@@ -137,7 +137,7 @@ public class ChildB extends ParentClass {
 
     /**
      * Method creates a new builder and initialize it with the data from the passed object.
-     * 
+     *
      * @param pObject Object that should be used to initialize the builder. The parameter may be null.
      * @return {@link Builder} New builder that can be used to create new ChildB objects. The method never returns null.
      */
@@ -147,7 +147,7 @@ public class ChildB extends ParentClass {
 
     /**
      * Method sets attribute {@link #parentAttribute}.<br/>
-     * 
+     *
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -160,7 +160,7 @@ public class ChildB extends ParentClass {
 
     /**
      * Method sets attribute {@link #childBAttribute}.<br/>
-     * 
+     *
      * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -178,7 +178,7 @@ public class ChildB extends ParentClass {
 
     /**
      * Method sets association {@link #composition}.<br/>
-     * 
+     *
      * @param pComposition Collection to which {@link #composition} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -195,7 +195,7 @@ public class ChildB extends ParentClass {
 
     /**
      * Method creates a new instance of class ChildB. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return ChildB Created object. The method never returns null.
      */
     public ChildB build( ) {
@@ -206,7 +206,7 @@ public class ChildB extends ParentClass {
   /**
    * Method returns attribute {@link #childBAttribute}.<br/>
    * A child attribute
-   * 
+   *
    * @return boolean Value to which {@link #childBAttribute} is set.
    */
   public boolean[] getChildBAttribute( ) {
@@ -224,7 +224,7 @@ public class ChildB extends ParentClass {
   /**
    * Method sets attribute {@link #childBAttribute}.<br/>
    * A child attribute
-   * 
+   *
    * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
    */
   public void setChildBAttribute( boolean[] pChildBAttribute ) {
@@ -241,7 +241,7 @@ public class ChildB extends ParentClass {
   /**
    * Method returns association {@link #composition}.<br/>
    * the composition
-   * 
+   *
    * @return {@link Set<ParentClass>} Value to which {@link #composition} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -252,7 +252,7 @@ public class ChildB extends ParentClass {
 
   /**
    * Method adds the passed object to {@link #composition}.
-   * 
+   *
    * @param pComposition Object that should be added to {@link #composition}. The parameter must not be null.
    */
   public void addToComposition( ParentClass pComposition ) {
@@ -262,7 +262,7 @@ public class ChildB extends ParentClass {
 
   /**
    * Method adds all passed objects to {@link #composition}.
-   * 
+   *
    * @param pComposition Collection with all objects that should be added to {@link #composition}. The parameter must
    * not be null.
    */
@@ -275,7 +275,7 @@ public class ChildB extends ParentClass {
 
   /**
    * Method removes the passed object from {@link #composition}.<br/>
-   * 
+   *
    * @param pComposition Object that should be removed from {@link #composition}. The parameter must not be null.
    */
   public void removeFromComposition( ParentClass pComposition ) {
@@ -330,7 +330,7 @@ public class ChildB extends ParentClass {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

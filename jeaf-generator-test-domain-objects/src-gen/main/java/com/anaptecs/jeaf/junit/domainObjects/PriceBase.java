@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.domainObjects;
@@ -48,7 +48,7 @@ public abstract class PriceBase extends DomainObject {
 
   /**
    * Initialize object. Therefore its domain object id has to be passed.
-   * 
+   *
    * @param pDomainObjectID Id of this domain object. The parameter must not be null.
    */
   public PriceBase( DomainObjectID pDomainObjectID ) {
@@ -58,7 +58,7 @@ public abstract class PriceBase extends DomainObject {
 
   /**
    * Method returns attribute {@link #price}.<br/>
-   * 
+   *
    * @return double Value to which {@link #price} is set.
    */
   @Deprecated
@@ -68,7 +68,7 @@ public abstract class PriceBase extends DomainObject {
 
   /**
    * Method sets attribute {@link #price}.<br/>
-   * 
+   *
    * @param pPrice Value to which {@link #price} should be set.
    */
   @Deprecated
@@ -79,7 +79,7 @@ public abstract class PriceBase extends DomainObject {
 
   /**
    * Method returns association {@link #reiseweg}.<br/>
-   * 
+   *
    * @return {@link Reiseweg} Value to which {@link #reiseweg} is set.
    */
   @Deprecated
@@ -89,7 +89,7 @@ public abstract class PriceBase extends DomainObject {
 
   /**
    * Method sets association {@link #reiseweg}.<br/>
-   * 
+   *
    * @param pReiseweg Value to which {@link #reiseweg} should be set.
    */
   @Deprecated
@@ -107,7 +107,7 @@ public abstract class PriceBase extends DomainObject {
 
   /**
    * Method returns association {@link #verbindungspunkte}.<br/>
-   * 
+   *
    * @return {@link Set<VerbindungspunktDO>} Value to which {@link #verbindungspunkte} is set. The method never returns
    * null and the returned collection is unmodifiable.
    */
@@ -119,7 +119,7 @@ public abstract class PriceBase extends DomainObject {
 
   /**
    * Method adds the passed object to {@link #verbindungspunkte}.
-   * 
+   *
    * @param pVerbindungspunkte Object that should be added to {@link #verbindungspunkte}. The parameter must not be
    * null.
    */
@@ -133,7 +133,7 @@ public abstract class PriceBase extends DomainObject {
 
   /**
    * Method adds all passed objects to {@link #verbindungspunkte}.
-   * 
+   *
    * @param pVerbindungspunkte Collection with all objects that should be added to {@link #verbindungspunkte}. The
    * parameter must not be null.
    */
@@ -149,7 +149,7 @@ public abstract class PriceBase extends DomainObject {
 
   /**
    * Method removes the passed object from {@link #verbindungspunkte}.<br/>
-   * 
+   *
    * @param pVerbindungspunkte Object that should be removed from {@link #verbindungspunkte}. The parameter must not be
    * null.
    */
@@ -206,7 +206,7 @@ public abstract class PriceBase extends DomainObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

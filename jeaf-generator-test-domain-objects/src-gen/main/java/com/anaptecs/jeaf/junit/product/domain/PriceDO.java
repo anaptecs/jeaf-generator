@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.product.domain;
@@ -39,7 +39,7 @@ public class PriceDO extends DomainObject {
 
   /**
    * Initialize object. Therefore its domain object id has to be passed.
-   * 
+   *
    * @param pDomainObjectID Id of this domain object. The parameter must not be null.
    */
   public PriceDO( DomainObjectID pDomainObjectID ) {
@@ -48,7 +48,7 @@ public class PriceDO extends DomainObject {
 
   /**
    * Method returns attribute {@link #amount}.<br/>
-   * 
+   *
    * @return {@link BigDecimal} Value to which {@link #amount} is set.
    */
   public BigDecimal getAmount( ) {
@@ -57,7 +57,7 @@ public class PriceDO extends DomainObject {
 
   /**
    * Method sets attribute {@link #amount}.<br/>
-   * 
+   *
    * @param pAmount Value to which {@link #amount} should be set.
    */
   public void setAmount( BigDecimal pAmount ) {
@@ -67,7 +67,7 @@ public class PriceDO extends DomainObject {
 
   /**
    * Method returns attribute {@link #currency}.<br/>
-   * 
+   *
    * @return {@link Currency} Value to which {@link #currency} is set.
    */
   public Currency getCurrency( ) {
@@ -76,7 +76,7 @@ public class PriceDO extends DomainObject {
 
   /**
    * Method sets attribute {@link #currency}.<br/>
-   * 
+   *
    * @param pCurrency Value to which {@link #currency} should be set.
    */
   public void setCurrency( Currency pCurrency ) {
@@ -109,7 +109,7 @@ public class PriceDO extends DomainObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

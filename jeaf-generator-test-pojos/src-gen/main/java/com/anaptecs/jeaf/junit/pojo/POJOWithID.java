@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.pojo;
@@ -51,7 +51,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected POJOWithID( Builder pBuilder ) {
@@ -72,7 +72,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new POJOWithID objects.
    */
   public static Builder builder( ) {
@@ -81,7 +81,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new POJOWithID objects. The method never returns
    * null.
@@ -132,7 +132,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
 
     /**
      * Method sets attribute {@link #attr}.<br/>
-     * 
+     *
      * @param pAttr Value to which {@link #attr} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -144,7 +144,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
 
     /**
      * Method sets attribute {@link #name}.<br/>
-     * 
+     *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -156,7 +156,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
 
     /**
      * Method creates a new instance of class POJOWithID. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return POJOWithID Created object. The method never returns null.
      */
     public POJOWithID build( ) {
@@ -166,7 +166,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
     /**
      * Method creates a new validated instance of class POJOWithID. The object will be initialized with the values of
      * the builder and validated afterwards.
-     * 
+     *
      * @return POJOWithID Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -179,7 +179,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
 
   /**
    * Method returns the id of this object.
-   * 
+   *
    * @return {@link ObjectID} ID of this object. Since an object must not have an id the method may also return null.
    */
   @Override
@@ -189,7 +189,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
 
   /**
    * Method returns the unversioned object id of this object.
-   * 
+   *
    * @return {@link ObjectID} ID of this object. Since an object must not have an id the method may also return null.
    */
   @Override
@@ -206,7 +206,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
 
   /**
    * Method returns attribute {@link #attr}.<br/>
-   * 
+   *
    * @return {@link Double} Value to which {@link #attr} is set.
    */
   public Double getAttr( ) {
@@ -215,7 +215,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
 
   /**
    * Method sets attribute {@link #attr}.<br/>
-   * 
+   *
    * @param pAttr Value to which {@link #attr} should be set.
    */
   public void setAttr( Double pAttr ) {
@@ -225,7 +225,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -234,7 +234,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -267,7 +267,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

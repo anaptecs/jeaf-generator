@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting;
@@ -32,7 +32,7 @@ public class Individual extends Customer {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected Individual( Builder pBuilder ) {
@@ -44,7 +44,7 @@ public class Individual extends Customer {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new Individual objects.
    */
   public static Builder builder( ) {
@@ -53,7 +53,7 @@ public class Individual extends Customer {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Individual objects. The method never returns
    * null.
@@ -98,7 +98,7 @@ public class Individual extends Customer {
 
     /**
      * Method sets attribute {@link #active}.<br/>
-     * 
+     *
      * @param pActive Value to which {@link #active} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -111,7 +111,7 @@ public class Individual extends Customer {
 
     /**
      * Method sets attribute {@link #street}.<br/>
-     * 
+     *
      * @param pStreet Value to which {@link #street} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -124,7 +124,7 @@ public class Individual extends Customer {
 
     /**
      * Method sets attribute {@link #zipCode}.<br/>
-     * 
+     *
      * @param pZipCode Value to which {@link #zipCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -137,7 +137,7 @@ public class Individual extends Customer {
 
     /**
      * Method sets attribute {@link #city}.<br/>
-     * 
+     *
      * @param pCity Value to which {@link #city} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -150,7 +150,7 @@ public class Individual extends Customer {
 
     /**
      * Method sets attribute {@link #country}.<br/>
-     * 
+     *
      * @param pCountry Value to which {@link #country} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -163,7 +163,7 @@ public class Individual extends Customer {
 
     /**
      * Method sets association {@link #person}.<br/>
-     * 
+     *
      * @param pPerson Value to which {@link #person} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -174,7 +174,7 @@ public class Individual extends Customer {
 
     /**
      * Method creates a new instance of class Individual. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Individual Created object. The method never returns null.
      */
     public Individual build( ) {
@@ -184,7 +184,7 @@ public class Individual extends Customer {
     /**
      * Method creates a new validated instance of class Individual. The object will be initialized with the values of
      * the builder and validated afterwards.
-     * 
+     *
      * @return Individual Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -197,7 +197,7 @@ public class Individual extends Customer {
 
   /**
    * Method returns association {@link #person}.<br/>
-   * 
+   *
    * @return {@link Person} Value to which {@link #person} is set.
    */
   public Person getPerson( ) {
@@ -206,7 +206,7 @@ public class Individual extends Customer {
 
   /**
    * Method sets association {@link #person}.<br/>
-   * 
+   *
    * @param pPerson Value to which {@link #person} should be set.
    */
   public void setPerson( Person pPerson ) {
@@ -249,7 +249,7 @@ public class Individual extends Customer {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

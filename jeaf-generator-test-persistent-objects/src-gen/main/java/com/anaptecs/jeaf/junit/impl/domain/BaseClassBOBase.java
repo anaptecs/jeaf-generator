@@ -56,7 +56,7 @@ public abstract class BaseClassBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<BaseClassBO> findAllBaseClassBOs( ) {
@@ -65,7 +65,7 @@ public abstract class BaseClassBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -74,7 +74,7 @@ public abstract class BaseClassBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -84,7 +84,7 @@ public abstract class BaseClassBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #number}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #number} is set.
    */
   public Integer getNumber( ) {
@@ -93,7 +93,7 @@ public abstract class BaseClassBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #number}.<br/>
-   * 
+   *
    * @param pNumber Value to which {@link #number} should be set.
    */
   public void setNumber( Integer pNumber ) {
@@ -103,7 +103,7 @@ public abstract class BaseClassBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #deprecatedPO}.<br/>
-   * 
+   *
    * @return {@link DeprecatedPO} Value to which {@link #deprecatedPO} is set.
    */
   public DeprecatedPO getDeprecatedPO( ) {
@@ -113,7 +113,7 @@ public abstract class BaseClassBOBase extends PersistentObject {
 
   /**
    * Method sets association {@link #deprecatedPO}.<br/>
-   * 
+   *
    * @param pDeprecatedPO Value to which {@link #deprecatedPO} should be set.
    */
   public void setDeprecatedPO( DeprecatedPO pDeprecatedPO ) {
@@ -144,7 +144,7 @@ public abstract class BaseClassBOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

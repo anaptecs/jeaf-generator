@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -27,7 +27,7 @@ public class ByteCode {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected ByteCode( Builder pBuilder ) {
@@ -37,7 +37,7 @@ public class ByteCode {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new ByteCode objects.
    */
   public static Builder builder( ) {
@@ -46,7 +46,7 @@ public class ByteCode {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new ByteCode objects. The method never returns null.
    */
@@ -59,7 +59,7 @@ public class ByteCode {
    *
    * Please be aware that this method is only intended to be used for deserialization frameworks like JAX-RS. For
    * "normal" object creation builder should be used instead.
-   * 
+   *
    * @param pCode String that should be used to create an instance of this class. The parameter must not be null.
    * @return {@link ByteCode} Instance of the class that matches to the passed string. The method never returns null.
    */
@@ -91,7 +91,7 @@ public class ByteCode {
 
     /**
      * Method sets attribute {@link #code}.<br/>
-     * 
+     *
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -103,7 +103,7 @@ public class ByteCode {
 
     /**
      * Method creates a new instance of class ByteCode. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return ByteCode Created object. The method never returns null.
      */
     public ByteCode build( ) {
@@ -113,7 +113,7 @@ public class ByteCode {
 
   /**
    * Method returns attribute {@link #code}.<br/>
-   * 
+   *
    * @return {@link Byte} Value to which {@link #code} is set.
    */
   public Byte getCode( ) {
@@ -122,7 +122,7 @@ public class ByteCode {
 
   /**
    * Method sets attribute {@link #code}.<br/>
-   * 
+   *
    * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( Byte pCode ) {
@@ -171,7 +171,7 @@ public class ByteCode {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

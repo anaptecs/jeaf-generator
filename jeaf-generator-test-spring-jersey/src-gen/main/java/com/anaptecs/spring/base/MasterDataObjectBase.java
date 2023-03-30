@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -53,7 +53,7 @@ public abstract class MasterDataObjectBase {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected MasterDataObjectBase( BuilderBase pBuilder ) {
@@ -103,7 +103,7 @@ public abstract class MasterDataObjectBase {
 
     /**
      * Method sets association {@link #dataUnits}.<br/>
-     * 
+     *
      * @param pDataUnits Collection to which {@link #dataUnits} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -120,7 +120,7 @@ public abstract class MasterDataObjectBase {
 
     /**
      * Method sets association {@link #dataUnits}.<br/>
-     * 
+     *
      * @param pDataUnits Array with objects to which {@link #dataUnits} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -137,7 +137,7 @@ public abstract class MasterDataObjectBase {
 
     /**
      * Method sets association {@link #entity}.<br/>
-     * 
+     *
      * @param pEntity Value to which {@link #entity} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -148,7 +148,7 @@ public abstract class MasterDataObjectBase {
 
     /**
      * Method sets attribute {@link #objectID}.<br/>
-     * 
+     *
      * @param pObjectID Value to which {@link #objectID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -160,7 +160,7 @@ public abstract class MasterDataObjectBase {
 
     /**
      * Method sets attribute {@link #internalProperty}.<br/>
-     * 
+     *
      * @param pInternalProperty Value to which {@link #internalProperty} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -173,7 +173,7 @@ public abstract class MasterDataObjectBase {
     /**
      * Method creates a new instance of class MasterDataObject. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return MasterDataObject Created object. The method never returns null.
      */
     public MasterDataObject build( ) {
@@ -183,7 +183,7 @@ public abstract class MasterDataObjectBase {
 
   /**
    * Method returns association {@link #dataUnits}.<br/>
-   * 
+   *
    * @return {@link List<DataUnit>} Value to which {@link #dataUnits} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -194,7 +194,7 @@ public abstract class MasterDataObjectBase {
 
   /**
    * Method adds the passed object to {@link #dataUnits}.
-   * 
+   *
    * @param pDataUnits Object that should be added to {@link #dataUnits}. The parameter must not be null.
    */
   void addToDataUnits( DataUnit pDataUnits ) {
@@ -204,7 +204,7 @@ public abstract class MasterDataObjectBase {
 
   /**
    * Method adds all passed objects to {@link #dataUnits}.
-   * 
+   *
    * @param pDataUnits Collection with all objects that should be added to {@link #dataUnits}. The parameter must not be
    * null.
    */
@@ -217,7 +217,7 @@ public abstract class MasterDataObjectBase {
 
   /**
    * Method removes the passed object from {@link #dataUnits}.<br/>
-   * 
+   *
    * @param pDataUnits Object that should be removed from {@link #dataUnits}. The parameter must not be null.
    */
   void removeFromDataUnits( DataUnit pDataUnits ) {
@@ -235,7 +235,7 @@ public abstract class MasterDataObjectBase {
 
   /**
    * Method returns association {@link #entity}.<br/>
-   * 
+   *
    * @return {@link Entity} Value to which {@link #entity} is set.
    */
   Entity getEntity( ) {
@@ -244,7 +244,7 @@ public abstract class MasterDataObjectBase {
 
   /**
    * Method sets association {@link #entity}.<br/>
-   * 
+   *
    * @param pEntity Value to which {@link #entity} should be set.
    */
   void setEntity( Entity pEntity ) {
@@ -260,7 +260,7 @@ public abstract class MasterDataObjectBase {
 
   /**
    * Method returns attribute {@link #objectID}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #objectID} is set.
    */
   public String getObjectID( ) {
@@ -269,7 +269,7 @@ public abstract class MasterDataObjectBase {
 
   /**
    * Method sets attribute {@link #objectID}.<br/>
-   * 
+   *
    * @param pObjectID Value to which {@link #objectID} should be set.
    */
   public void setObjectID( String pObjectID ) {
@@ -279,7 +279,7 @@ public abstract class MasterDataObjectBase {
 
   /**
    * Method returns attribute {@link #internalProperty}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #internalProperty} is set.
    */
   String getInternalProperty( ) {
@@ -288,7 +288,7 @@ public abstract class MasterDataObjectBase {
 
   /**
    * Method sets attribute {@link #internalProperty}.<br/>
-   * 
+   *
    * @param pInternalProperty Value to which {@link #internalProperty} should be set.
    */
   void setInternalProperty( String pInternalProperty ) {
@@ -298,14 +298,14 @@ public abstract class MasterDataObjectBase {
 
   /**
    * Method returns attribute {@link #derivedProperty}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
   public abstract String getDerivedProperty( );
 
   /**
    * Method returns association {@link #derivedDataUnits}.<br/>
-   * 
+   *
    * @return {@link List<DataUnit>} Value to which {@link #derivedDataUnits} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
@@ -313,35 +313,35 @@ public abstract class MasterDataObjectBase {
 
   /**
    * Method returns association {@link #derivedEntity}.<br/>
-   * 
+   *
    * @return {@link Entity} Value to which {@link #derivedEntity} is set.
    */
   public abstract Entity getDerivedEntity( );
 
   /**
    * Method returns attribute {@link #derivedArray}.<br/>
-   * 
+   *
    * @return int Value to which {@link #derivedArray} is set.
    */
   public abstract int[] getDerivedArray( );
 
   /**
    * Method returns attribute {@link #derivedBoolean}.<br/>
-   * 
+   *
    * @return boolean Value to which {@link #derivedBoolean} is set.
    */
   public abstract boolean getDerivedBoolean( );
 
   /**
    * Method returns attribute {@link #derivedInt}.<br/>
-   * 
+   *
    * @return int Value to which {@link #derivedInt} is set.
    */
   public abstract int getDerivedInt( );
 
   /**
    * Method returns attribute {@link #derivedString}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #derivedString} is set.
    */
   public abstract String getDerivedString( );
@@ -392,7 +392,7 @@ public abstract class MasterDataObjectBase {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2021. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
@@ -32,7 +32,7 @@ public class Campaign implements ServiceObject {
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
    * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
-   * 
+   *
    * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
@@ -42,7 +42,7 @@ public class Campaign implements ServiceObject {
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #moreLinks} is
    * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
-   * 
+   *
    * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
@@ -69,7 +69,7 @@ public class Campaign implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected Campaign( Builder pBuilder ) {
@@ -93,7 +93,7 @@ public class Campaign implements ServiceObject {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new Campaign objects.
    */
   public static Builder builder( ) {
@@ -102,7 +102,7 @@ public class Campaign implements ServiceObject {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Campaign objects. The method never returns null.
    */
@@ -119,7 +119,7 @@ public class Campaign implements ServiceObject {
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
      * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
-     * 
+     *
      * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
      */
     @Deprecated
@@ -129,7 +129,7 @@ public class Campaign implements ServiceObject {
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #moreLinks} is
      * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
-     * 
+     *
      * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
      */
     @Deprecated
@@ -165,7 +165,7 @@ public class Campaign implements ServiceObject {
 
     /**
      * Method sets association {@link #theLink}.<br/>
-     * 
+     *
      * @param pTheLink Value to which {@link #theLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
@@ -178,7 +178,7 @@ public class Campaign implements ServiceObject {
 
     /**
      * Method sets association {@link #moreLinks}.<br/>
-     * 
+     *
      * @param pMoreLinks Collection to which {@link #moreLinks} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
@@ -197,7 +197,7 @@ public class Campaign implements ServiceObject {
 
     /**
      * Method sets association {@link #discountOffers}.<br/>
-     * 
+     *
      * @param pDiscountOffers Collection to which {@link #discountOffers} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -215,7 +215,7 @@ public class Campaign implements ServiceObject {
 
     /**
      * Method creates a new instance of class Campaign. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Campaign Created object. The method never returns null.
      */
     public Campaign build( ) {
@@ -225,7 +225,7 @@ public class Campaign implements ServiceObject {
     /**
      * Method creates a new validated instance of class Campaign. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return Campaign Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -242,7 +242,7 @@ public class Campaign implements ServiceObject {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
    * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
    * The magic link.
-   * 
+   *
    * @return {@link long} Value to which {@link #theLink} is set.
    * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
@@ -254,7 +254,7 @@ public class Campaign implements ServiceObject {
   /**
    * Method sets association {@link #theLink}.<br/>
    * The magic link.
-   * 
+   *
    * @param pTheLink Value to which {@link #theLink} should be set.
    * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
@@ -268,7 +268,7 @@ public class Campaign implements ServiceObject {
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #moreLinks} is
    * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
-   * 
+   *
    * @return {@link Set<Long>} Value to which {@link #moreLinks} is set. The method never returns null and the returned
    * collection is modifiable.
    * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
@@ -281,7 +281,7 @@ public class Campaign implements ServiceObject {
 
   /**
    * Method adds the passed object to {@link #moreLinks}.
-   * 
+   *
    * @param pMoreLinks Object that should be added to {@link #moreLinks}. The parameter must not be null.
    * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
@@ -295,7 +295,7 @@ public class Campaign implements ServiceObject {
 
   /**
    * Method adds all passed objects to {@link #moreLinks}.
-   * 
+   *
    * @param pMoreLinks Collection with all objects that should be added to {@link #moreLinks}. The parameter must not be
    * null.
    * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
@@ -312,7 +312,7 @@ public class Campaign implements ServiceObject {
 
   /**
    * Method removes the passed object from {@link #moreLinks}.
-   * 
+   *
    * @param pMoreLinks Object that should be removed from {@link #moreLinks}. The parameter must not be null.
    */
   @Deprecated
@@ -337,7 +337,7 @@ public class Campaign implements ServiceObject {
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #discountOffers} is
    * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
-   * 
+   *
    * @return {@link List<String>} Value to which {@link #discountOffers} is set. The method never returns null and the
    * returned collection is modifiable.
    */
@@ -349,7 +349,7 @@ public class Campaign implements ServiceObject {
 
   /**
    * Method adds the passed object to {@link #discountOffers}.
-   * 
+   *
    * @param pDiscountOffers Object that should be added to {@link #discountOffers}. The parameter must not be null.
    */
   @Deprecated
@@ -362,7 +362,7 @@ public class Campaign implements ServiceObject {
 
   /**
    * Method adds all passed objects to {@link #discountOffers}.
-   * 
+   *
    * @param pDiscountOffers Collection with all objects that should be added to {@link #discountOffers}. The parameter
    * must not be null.
    */
@@ -378,7 +378,7 @@ public class Campaign implements ServiceObject {
 
   /**
    * Method removes the passed object from {@link #discountOffers}.
-   * 
+   *
    * @param pDiscountOffers Object that should be removed from {@link #discountOffers}. The parameter must not be null.
    */
   @Deprecated
@@ -453,7 +453,7 @@ public class Campaign implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

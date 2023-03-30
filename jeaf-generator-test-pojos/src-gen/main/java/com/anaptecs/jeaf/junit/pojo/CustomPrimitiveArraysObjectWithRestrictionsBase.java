@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.pojo;
@@ -188,7 +188,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected CustomPrimitiveArraysObjectWithRestrictionsBase( BuilderBase pBuilder ) {
@@ -313,7 +313,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #aBooleanArray}.<br/>
-     * 
+     *
      * @param pABooleanArray Value to which {@link #aBooleanArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -331,7 +331,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #bBooleanArray}.<br/>
-     * 
+     *
      * @param pBBooleanArray Collection to which {@link #bBooleanArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -349,7 +349,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #cBooleanArray}.<br/>
-     * 
+     *
      * @param pCBooleanArray Value to which {@link #cBooleanArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -367,7 +367,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #aByteArray}.<br/>
-     * 
+     *
      * @param pAByteArray Value to which {@link #aByteArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -385,7 +385,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #bByteArray}.<br/>
-     * 
+     *
      * @param pBByteArray Collection to which {@link #bByteArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -403,7 +403,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #aShortArray}.<br/>
-     * 
+     *
      * @param pAShortArray Value to which {@link #aShortArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -421,7 +421,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #bShortArray}.<br/>
-     * 
+     *
      * @param pBShortArray Collection to which {@link #bShortArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -439,7 +439,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #aIntegerArray}.<br/>
-     * 
+     *
      * @param pAIntegerArray Value to which {@link #aIntegerArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -457,7 +457,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #bIntegerArray}.<br/>
-     * 
+     *
      * @param pBIntegerArray Collection to which {@link #bIntegerArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -475,7 +475,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #cIntegerArray}.<br/>
-     * 
+     *
      * @param pCIntegerArray Collection to which {@link #cIntegerArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -493,7 +493,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #aLongArray}.<br/>
-     * 
+     *
      * @param pALongArray Value to which {@link #aLongArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -511,7 +511,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #bLongArray}.<br/>
-     * 
+     *
      * @param pBLongArray Collection to which {@link #bLongArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -529,7 +529,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #aBigIntegerArray}.<br/>
-     * 
+     *
      * @param pABigIntegerArray Collection to which {@link #aBigIntegerArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -547,7 +547,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #aCharacterArray}.<br/>
-     * 
+     *
      * @param pACharacterArray Value to which {@link #aCharacterArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -565,7 +565,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #bCharacterArray}.<br/>
-     * 
+     *
      * @param pBCharacterArray Collection to which {@link #bCharacterArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -583,7 +583,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #aFloatArray}.<br/>
-     * 
+     *
      * @param pAFloatArray Value to which {@link #aFloatArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -601,7 +601,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #bFloatArray}.<br/>
-     * 
+     *
      * @param pBFloatArray Collection to which {@link #bFloatArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -619,7 +619,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #aDoubleArray}.<br/>
-     * 
+     *
      * @param pADoubleArray Value to which {@link #aDoubleArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -637,7 +637,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #bDoubleArray}.<br/>
-     * 
+     *
      * @param pBDoubleArray Collection to which {@link #bDoubleArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -655,7 +655,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #aBigDecimalArray}.<br/>
-     * 
+     *
      * @param pABigDecimalArray Collection to which {@link #aBigDecimalArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -673,7 +673,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #aStringArray}.<br/>
-     * 
+     *
      * @param pAStringArray Collection to which {@link #aStringArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -691,7 +691,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     /**
      * Method sets attribute {@link #bStringArray}.<br/>
-     * 
+     *
      * @param pBStringArray Collection to which {@link #bStringArray} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -710,7 +710,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     /**
      * Method creates a new instance of class CustomPrimitiveArraysObjectWithRestrictions. The object will be
      * initialized with the values of the builder.
-     * 
+     *
      * @return CustomPrimitiveArraysObjectWithRestrictions Created object. The method never returns null.
      */
     public CustomPrimitiveArraysObjectWithRestrictions build( ) {
@@ -720,7 +720,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     /**
      * Method creates a new validated instance of class CustomPrimitiveArraysObjectWithRestrictions. The object will be
      * initialized with the values of the builder and validated afterwards.
-     * 
+     *
      * @return CustomPrimitiveArraysObjectWithRestrictions Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -733,7 +733,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #aBooleanArray}.<br/>
-   * 
+   *
    * @return boolean Value to which {@link #aBooleanArray} is set.
    */
   public boolean[] getABooleanArray( ) {
@@ -750,7 +750,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #aBooleanArray}.<br/>
-   * 
+   *
    * @param pABooleanArray Value to which {@link #aBooleanArray} should be set.
    */
   public void setABooleanArray( boolean[] pABooleanArray ) {
@@ -766,7 +766,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #bBooleanArray}.<br/>
-   * 
+   *
    * @return {@link Boolean} Value to which {@link #bBooleanArray} is set.
    */
   public Boolean[] getBBooleanArray( ) {
@@ -783,7 +783,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #bBooleanArray}.<br/>
-   * 
+   *
    * @param pBBooleanArray Value to which {@link #bBooleanArray} should be set.
    */
   public void setBBooleanArray( Boolean[] pBBooleanArray ) {
@@ -799,7 +799,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #cBooleanArray}.<br/>
-   * 
+   *
    * @return boolean Value to which {@link #cBooleanArray} is set.
    */
   public boolean[] getCBooleanArray( ) {
@@ -816,7 +816,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #cBooleanArray}.<br/>
-   * 
+   *
    * @param pCBooleanArray Value to which {@link #cBooleanArray} should be set.
    */
   public void setCBooleanArray( boolean[] pCBooleanArray ) {
@@ -832,7 +832,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #aByteArray}.<br/>
-   * 
+   *
    * @return byte Value to which {@link #aByteArray} is set.
    */
   public byte[] getAByteArray( ) {
@@ -849,7 +849,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #aByteArray}.<br/>
-   * 
+   *
    * @param pAByteArray Value to which {@link #aByteArray} should be set.
    */
   public void setAByteArray( byte[] pAByteArray ) {
@@ -865,7 +865,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #bByteArray}.<br/>
-   * 
+   *
    * @return {@link Byte} Value to which {@link #bByteArray} is set.
    */
   public Byte[] getBByteArray( ) {
@@ -882,7 +882,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #bByteArray}.<br/>
-   * 
+   *
    * @param pBByteArray Value to which {@link #bByteArray} should be set.
    */
   public void setBByteArray( Byte[] pBByteArray ) {
@@ -898,7 +898,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #aShortArray}.<br/>
-   * 
+   *
    * @return short Value to which {@link #aShortArray} is set.
    */
   public short[] getAShortArray( ) {
@@ -915,7 +915,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #aShortArray}.<br/>
-   * 
+   *
    * @param pAShortArray Value to which {@link #aShortArray} should be set.
    */
   public void setAShortArray( short[] pAShortArray ) {
@@ -931,7 +931,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #bShortArray}.<br/>
-   * 
+   *
    * @return {@link Short} Value to which {@link #bShortArray} is set.
    */
   public Short[] getBShortArray( ) {
@@ -948,7 +948,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #bShortArray}.<br/>
-   * 
+   *
    * @param pBShortArray Value to which {@link #bShortArray} should be set.
    */
   public void setBShortArray( Short[] pBShortArray ) {
@@ -964,7 +964,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #aIntegerArray}.<br/>
-   * 
+   *
    * @return int Value to which {@link #aIntegerArray} is set.
    */
   public int[] getAIntegerArray( ) {
@@ -981,7 +981,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #bIntegerArray}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #bIntegerArray} is set.
    */
   public Integer[] getBIntegerArray( ) {
@@ -998,7 +998,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #bIntegerArray}.<br/>
-   * 
+   *
    * @param pBIntegerArray Value to which {@link #bIntegerArray} should be set.
    */
   public void setBIntegerArray( Integer[] pBIntegerArray ) {
@@ -1014,7 +1014,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #cIntegerArray}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #cIntegerArray} is set.
    */
   public Integer[] getCIntegerArray( ) {
@@ -1031,7 +1031,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #cIntegerArray}.<br/>
-   * 
+   *
    * @param pCIntegerArray Value to which {@link #cIntegerArray} should be set.
    */
   public void setCIntegerArray( Integer[] pCIntegerArray ) {
@@ -1047,7 +1047,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #aLongArray}.<br/>
-   * 
+   *
    * @return long Value to which {@link #aLongArray} is set.
    */
   public long[] getALongArray( ) {
@@ -1064,7 +1064,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #aLongArray}.<br/>
-   * 
+   *
    * @param pALongArray Value to which {@link #aLongArray} should be set.
    */
   public void setALongArray( long[] pALongArray ) {
@@ -1080,7 +1080,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #bLongArray}.<br/>
-   * 
+   *
    * @return {@link Long} Value to which {@link #bLongArray} is set.
    */
   public Long[] getBLongArray( ) {
@@ -1097,7 +1097,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #bLongArray}.<br/>
-   * 
+   *
    * @param pBLongArray Value to which {@link #bLongArray} should be set.
    */
   public void setBLongArray( Long[] pBLongArray ) {
@@ -1113,7 +1113,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #aBigIntegerArray}.<br/>
-   * 
+   *
    * @return {@link BigInteger} Value to which {@link #aBigIntegerArray} is set.
    */
   public BigInteger[] getABigIntegerArray( ) {
@@ -1130,7 +1130,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #aBigIntegerArray}.<br/>
-   * 
+   *
    * @param pABigIntegerArray Value to which {@link #aBigIntegerArray} should be set.
    */
   public void setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
@@ -1146,7 +1146,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #aCharacterArray}.<br/>
-   * 
+   *
    * @return char Value to which {@link #aCharacterArray} is set.
    */
   public char[] getACharacterArray( ) {
@@ -1163,7 +1163,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #aCharacterArray}.<br/>
-   * 
+   *
    * @param pACharacterArray Value to which {@link #aCharacterArray} should be set.
    */
   public void setACharacterArray( char[] pACharacterArray ) {
@@ -1179,7 +1179,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #bCharacterArray}.<br/>
-   * 
+   *
    * @return {@link Character} Value to which {@link #bCharacterArray} is set.
    */
   public Character[] getBCharacterArray( ) {
@@ -1196,7 +1196,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #bCharacterArray}.<br/>
-   * 
+   *
    * @param pBCharacterArray Value to which {@link #bCharacterArray} should be set.
    */
   public void setBCharacterArray( Character[] pBCharacterArray ) {
@@ -1212,7 +1212,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #aFloatArray}.<br/>
-   * 
+   *
    * @return float Value to which {@link #aFloatArray} is set.
    */
   public float[] getAFloatArray( ) {
@@ -1229,7 +1229,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #aFloatArray}.<br/>
-   * 
+   *
    * @param pAFloatArray Value to which {@link #aFloatArray} should be set.
    */
   public void setAFloatArray( float[] pAFloatArray ) {
@@ -1245,7 +1245,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #bFloatArray}.<br/>
-   * 
+   *
    * @return {@link Float} Value to which {@link #bFloatArray} is set.
    */
   public Float[] getBFloatArray( ) {
@@ -1262,7 +1262,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #bFloatArray}.<br/>
-   * 
+   *
    * @param pBFloatArray Value to which {@link #bFloatArray} should be set.
    */
   public void setBFloatArray( Float[] pBFloatArray ) {
@@ -1278,7 +1278,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #aDoubleArray}.<br/>
-   * 
+   *
    * @return double Value to which {@link #aDoubleArray} is set.
    */
   public double[] getADoubleArray( ) {
@@ -1295,7 +1295,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #aDoubleArray}.<br/>
-   * 
+   *
    * @param pADoubleArray Value to which {@link #aDoubleArray} should be set.
    */
   public void setADoubleArray( double[] pADoubleArray ) {
@@ -1311,7 +1311,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #bDoubleArray}.<br/>
-   * 
+   *
    * @return {@link Double} Value to which {@link #bDoubleArray} is set.
    */
   public Double[] getBDoubleArray( ) {
@@ -1328,7 +1328,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #bDoubleArray}.<br/>
-   * 
+   *
    * @param pBDoubleArray Value to which {@link #bDoubleArray} should be set.
    */
   public void setBDoubleArray( Double[] pBDoubleArray ) {
@@ -1344,7 +1344,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #aBigDecimalArray}.<br/>
-   * 
+   *
    * @return {@link BigDecimal} Value to which {@link #aBigDecimalArray} is set.
    */
   public BigDecimal[] getABigDecimalArray( ) {
@@ -1361,7 +1361,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #aBigDecimalArray}.<br/>
-   * 
+   *
    * @param pABigDecimalArray Value to which {@link #aBigDecimalArray} should be set.
    */
   public void setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
@@ -1377,7 +1377,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #aStringArray}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #aStringArray} is set.
    */
   public String[] getAStringArray( ) {
@@ -1394,7 +1394,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #aStringArray}.<br/>
-   * 
+   *
    * @param pAStringArray Value to which {@link #aStringArray} should be set.
    */
   public void setAStringArray( String[] pAStringArray ) {
@@ -1410,7 +1410,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method returns attribute {@link #bStringArray}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #bStringArray} is set.
    */
   public String[] getBStringArray( ) {
@@ -1427,7 +1427,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
   /**
    * Method sets attribute {@link #bStringArray}.<br/>
-   * 
+   *
    * @param pBStringArray Value to which {@link #bStringArray} should be set.
    */
   public void setBStringArray( String[] pBStringArray ) {
@@ -1458,7 +1458,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

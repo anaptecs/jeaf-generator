@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting.test;
@@ -13,7 +13,7 @@ import junit.framework.TestSuite;
 public class AccountingBasicDataServiceTest extends AccountingBasicDataServiceTestBase {
   /**
    * Method creates a test suite contain all tests of this class.
-   * 
+   *
    * @return {@link TestSuite} Test suite with all tests of this class.
    */
   public static TestSuite suite( ) {
@@ -29,7 +29,7 @@ public class AccountingBasicDataServiceTest extends AccountingBasicDataServiceTe
 
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided.
-   * 
+   *
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    */
   public AccountingBasicDataServiceTest( String pName ) {
@@ -39,7 +39,7 @@ public class AccountingBasicDataServiceTest extends AccountingBasicDataServiceTe
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided. The userId and the
    * password of a specific user can be given to this Constructor so this specific user can be logged in.
-   * 
+   *
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    * @param pUserId UserId of the User who should be logged in for this Test.
    * @param pPassword Password of the User who should be logged in for this Test.
@@ -51,7 +51,7 @@ public class AccountingBasicDataServiceTest extends AccountingBasicDataServiceTe
   /**
    * Method performs test case specific initialization routines. If a test case implementation requires some special
    * operations at startup this method can be overridden.
-   * 
+   *
    * @throws Exception if an error occurs during initialization.
    */
   @Override
@@ -62,7 +62,7 @@ public class AccountingBasicDataServiceTest extends AccountingBasicDataServiceTe
 
   /**
    * Method test the implementation of service method createEmployee
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -72,7 +72,7 @@ public class AccountingBasicDataServiceTest extends AccountingBasicDataServiceTe
 
   /**
    * Method test the implementation of service method createBank
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -82,7 +82,7 @@ public class AccountingBasicDataServiceTest extends AccountingBasicDataServiceTe
 
   /**
    * Method test the implementation of service method createResponsibilityType
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override

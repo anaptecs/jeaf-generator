@@ -1,13 +1,13 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core;
 
 /**
  * This is a service object that was modeled in order to test the output of the JEAF Generator.
- * 
+ *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
@@ -33,7 +33,7 @@ public class TestServiceObject extends TestServiceObjectBase {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new TestServiceObject objects.
    */
   public static Builder builder( ) {
@@ -42,7 +42,7 @@ public class TestServiceObject extends TestServiceObjectBase {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new TestServiceObject objects. The method never
    * returns null.

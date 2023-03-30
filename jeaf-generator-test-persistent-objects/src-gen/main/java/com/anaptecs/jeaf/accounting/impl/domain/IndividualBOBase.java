@@ -27,7 +27,7 @@ public abstract class IndividualBOBase extends CustomerBO {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<IndividualBO> findAllIndividualBOs( ) {
@@ -36,7 +36,7 @@ public abstract class IndividualBOBase extends CustomerBO {
 
   /**
    * Method returns association {@link #person}.<br/>
-   * 
+   *
    * @return {@link MyPersonBO} Value to which {@link #person} is set.
    */
   public MyPersonBO getPerson( ) {
@@ -46,7 +46,7 @@ public abstract class IndividualBOBase extends CustomerBO {
 
   /**
    * Method sets association {@link #person}.<br/>
-   * 
+   *
    * @param pPerson Value to which {@link #person} should be set.
    */
   public void setPerson( MyPersonBO pPerson ) {
@@ -77,7 +77,7 @@ public abstract class IndividualBOBase extends CustomerBO {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

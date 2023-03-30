@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting.messaging.impl;
@@ -41,7 +41,7 @@ abstract class MessagingServiceProviderImplBase implements ServiceProviderImplem
 
   /**
    * Method returns the value of the property "connectURL".
-   * 
+   *
    * @return {@link String} Value of the property "connectURL". The method returns null if no value for the property is
    * defined.
    */

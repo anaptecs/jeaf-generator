@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core;
@@ -40,7 +40,7 @@ public class SessionContextValues implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected SessionContextValues( Builder pBuilder ) {
@@ -53,7 +53,7 @@ public class SessionContextValues implements ServiceObject {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new SessionContextValues objects.
    */
   public static Builder builder( ) {
@@ -62,7 +62,7 @@ public class SessionContextValues implements ServiceObject {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new SessionContextValues objects. The method never
    * returns null.
@@ -99,7 +99,7 @@ public class SessionContextValues implements ServiceObject {
 
     /**
      * Method sets attribute {@link #timestamp}.<br/>
-     * 
+     *
      * @param pTimestamp Value to which {@link #timestamp} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -111,7 +111,7 @@ public class SessionContextValues implements ServiceObject {
 
     /**
      * Method sets attribute {@link #counter}.<br/>
-     * 
+     *
      * @param pCounter Value to which {@link #counter} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -124,7 +124,7 @@ public class SessionContextValues implements ServiceObject {
     /**
      * Method creates a new instance of class SessionContextValues. The object will be initialized with the values of
      * the builder.
-     * 
+     *
      * @return SessionContextValues Created object. The method never returns null.
      */
     public SessionContextValues build( ) {
@@ -134,7 +134,7 @@ public class SessionContextValues implements ServiceObject {
     /**
      * Method creates a new validated instance of class SessionContextValues. The object will be initialized with the
      * values of the builder and validated afterwards.
-     * 
+     *
      * @return SessionContextValues Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -147,7 +147,7 @@ public class SessionContextValues implements ServiceObject {
 
   /**
    * Method returns attribute {@link #timestamp}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #timestamp} is set.
    */
   public String getTimestamp( ) {
@@ -156,7 +156,7 @@ public class SessionContextValues implements ServiceObject {
 
   /**
    * Method sets attribute {@link #timestamp}.<br/>
-   * 
+   *
    * @param pTimestamp Value to which {@link #timestamp} should be set.
    */
   public void setTimestamp( String pTimestamp ) {
@@ -166,7 +166,7 @@ public class SessionContextValues implements ServiceObject {
 
   /**
    * Method returns attribute {@link #counter}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #counter} is set.
    */
   public Integer getCounter( ) {
@@ -175,7 +175,7 @@ public class SessionContextValues implements ServiceObject {
 
   /**
    * Method sets attribute {@link #counter}.<br/>
-   * 
+   *
    * @param pCounter Value to which {@link #counter} should be set.
    */
   public void setCounter( Integer pCounter ) {
@@ -208,7 +208,7 @@ public class SessionContextValues implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

@@ -61,7 +61,7 @@ public abstract class ClassA_BOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<ClassA_BO> findAllClassA_BOs( ) {
@@ -70,7 +70,7 @@ public abstract class ClassA_BOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #classB}.<br/>
-   * 
+   *
    * @return {@link ClassB_BO} Value to which {@link #classB} is set.
    */
   public ClassB_BO getClassB( ) {
@@ -80,7 +80,7 @@ public abstract class ClassA_BOBase extends PersistentObject {
 
   /**
    * Method sets association {@link #classB}.<br/>
-   * 
+   *
    * @param pClassB Value to which {@link #classB} should be set.
    */
   public void setClassB( ClassB_BO pClassB ) {
@@ -111,7 +111,7 @@ public abstract class ClassA_BOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -120,7 +120,7 @@ public abstract class ClassA_BOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -130,7 +130,7 @@ public abstract class ClassA_BOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #readonlyDefault}.<br/>
-   * 
+   *
    * @return int Value to which {@link #readonlyDefault} is set.
    */
   public int getReadonlyDefault( ) {
@@ -139,7 +139,7 @@ public abstract class ClassA_BOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

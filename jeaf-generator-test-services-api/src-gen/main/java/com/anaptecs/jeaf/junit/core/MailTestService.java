@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core;
@@ -16,7 +16,7 @@ public interface MailTestService extends Service {
   /**
    * Test of method createMessage( String pContent, String pSubject, Set<Address> pRecipients ). <br/>
    * Creates a MimeMessage filled with the content, subject and recipients specified within the parameters.
-   * 
+   *
    * @param pAddress
    * @param pPersonal
    * @param pCharSet
@@ -28,7 +28,7 @@ public interface MailTestService extends Service {
   /**
    * Test of method sendMail( Message pMessage ). <br/>
    * Starts a local SMTPServer, creates a MimeMessage and tries to send it to the SMTPServer.
-   * 
+   *
    * @param pAddress
    * @param pPersonal
    * @param pCharSet
@@ -40,7 +40,7 @@ public interface MailTestService extends Service {
   /**
    * Test of method sendMail( String pContent, String pSubject, Set<Address> pRecipients ). <br/>
    * Starts a local SMTPServer and tries to send a Message to the SMTPServer using the given parameters.
-   * 
+   *
    * @param pAddress
    * @param pPersonal
    * @param pCharSet

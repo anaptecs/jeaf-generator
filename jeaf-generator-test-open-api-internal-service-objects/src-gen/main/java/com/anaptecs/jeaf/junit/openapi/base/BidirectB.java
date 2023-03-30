@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2021. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
@@ -42,7 +42,7 @@ public class BidirectB implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected BidirectB( Builder pBuilder ) {
@@ -56,7 +56,7 @@ public class BidirectB implements ServiceObject {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new BidirectB objects.
    */
   public static Builder builder( ) {
@@ -65,7 +65,7 @@ public class BidirectB implements ServiceObject {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new BidirectB objects. The method never returns
    * null.
@@ -110,7 +110,7 @@ public class BidirectB implements ServiceObject {
 
     /**
      * Method sets association {@link #a}.<br/>
-     * 
+     *
      * @param pA Value to which {@link #a} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -121,7 +121,7 @@ public class BidirectB implements ServiceObject {
 
     /**
      * Method creates a new instance of class BidirectB. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return BidirectB Created object. The method never returns null.
      */
     public BidirectB build( ) {
@@ -131,7 +131,7 @@ public class BidirectB implements ServiceObject {
     /**
      * Method creates a new validated instance of class BidirectB. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return BidirectB Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -145,7 +145,7 @@ public class BidirectB implements ServiceObject {
   /**
    * Method returns association {@link #a}.<br/>
    * the A
-   * 
+   *
    * @return {@link BidirectA} Value to which {@link #a} is set.
    */
   public BidirectA getA( ) {
@@ -161,7 +161,7 @@ public class BidirectB implements ServiceObject {
   /**
    * Method sets association {@link #a}.<br/>
    * the A
-   * 
+   *
    * @param pA Value to which {@link #a} should be set.
    */
   public void setA( BidirectA pA ) {
@@ -217,7 +217,7 @@ public class BidirectB implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base.serializers;
@@ -23,7 +23,7 @@ public class ObjectMapperFactory {
   /**
    * Method creates a ready-to-use Jackson Object Mapper. The created object will be configured so that it matches best
    * to the generated classes. It will also use the serializer modules as it was defined in the UML model.
-   * 
+   *
    * @param pCompositeTypeConverter {@link CompositeTypeConverter} implementation that should be used to serialize /
    * deserialize composite data types.
    * @return {@link ObjectMapper} Created object mapper. The method never returns null.

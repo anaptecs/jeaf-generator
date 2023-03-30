@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core;
@@ -18,7 +18,7 @@ import com.anaptecs.jeaf.core.api.ServiceObjectID;
  * <p/>
  * This is the second comment of this service. This is just intended to test JEAF Generator.
  * <p/>
- * 
+ *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
@@ -63,7 +63,7 @@ public interface BusinessObjectTestService extends Service {
 
   /**
    * Method updates the business object with the passed id.
-   * 
+   *
    * @param pServiceObjectID
    * @return {@link Integer}
    */

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2021. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
@@ -41,7 +41,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected VersionedObjectSoftLinkBase( BuilderBase pBuilder ) {
@@ -88,7 +88,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
 
     /**
      * Method sets attribute {@link #objectID}.<br/>
-     * 
+     *
      * @param pObjectID Value to which {@link #objectID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -100,7 +100,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
 
     /**
      * Method sets association {@link #dataUnit}.<br/>
-     * 
+     *
      * @param pDataUnit Value to which {@link #dataUnit} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -111,7 +111,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
 
     /**
      * Method sets association {@link #entity}.<br/>
-     * 
+     *
      * @param pEntity Value to which {@link #entity} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -123,7 +123,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     /**
      * Method creates a new instance of class VersionedObjectSoftLink. The object will be initialized with the values of
      * the builder.
-     * 
+     *
      * @return VersionedObjectSoftLink Created object. The method never returns null.
      */
     public VersionedObjectSoftLink build( ) {
@@ -133,7 +133,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     /**
      * Method creates a new validated instance of class VersionedObjectSoftLink. The object will be initialized with the
      * values of the builder and validated afterwards.
-     * 
+     *
      * @return VersionedObjectSoftLink Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -147,7 +147,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   /**
    * Method returns attribute {@link #objectID}.<br/>
    * Internal ID of a versioned object
-   * 
+   *
    * @return long Value to which {@link #objectID} is set.
    */
   public long getObjectID( ) {
@@ -156,7 +156,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
 
   /**
    * Method returns association {@link #dataUnit}.<br/>
-   * 
+   *
    * @return {@link DataUnit} Value to which {@link #dataUnit} is set.
    */
   public DataUnit getDataUnit( ) {
@@ -165,7 +165,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
 
   /**
    * Method sets association {@link #dataUnit}.<br/>
-   * 
+   *
    * @param pDataUnit Value to which {@link #dataUnit} should be set.
    */
   public void setDataUnit( DataUnit pDataUnit ) {
@@ -181,7 +181,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
 
   /**
    * Method returns association {@link #entity}.<br/>
-   * 
+   *
    * @return {@link Entity} Value to which {@link #entity} is set.
    */
   public Entity getEntity( ) {
@@ -190,7 +190,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
 
   /**
    * Method sets association {@link #entity}.<br/>
-   * 
+   *
    * @param pEntity Value to which {@link #entity} should be set.
    */
   public void setEntity( Entity pEntity ) {
@@ -233,7 +233,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

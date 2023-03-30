@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -33,7 +33,7 @@ public class ParentBeanParamType {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected ParentBeanParamType( Builder pBuilder ) {
@@ -44,7 +44,7 @@ public class ParentBeanParamType {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new ParentBeanParamType objects.
    */
   public static Builder builder( ) {
@@ -53,7 +53,7 @@ public class ParentBeanParamType {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new ParentBeanParamType objects. The method never
    * returns null.
@@ -90,7 +90,7 @@ public class ParentBeanParamType {
 
     /**
      * Method sets attribute {@link #novaKey}.<br/>
-     * 
+     *
      * @param pNovaKey Value to which {@link #novaKey} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -102,7 +102,7 @@ public class ParentBeanParamType {
 
     /**
      * Method sets attribute {@link #tkID}.<br/>
-     * 
+     *
      * @param pTkID Value to which {@link #tkID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -115,7 +115,7 @@ public class ParentBeanParamType {
     /**
      * Method creates a new instance of class ParentBeanParamType. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return ParentBeanParamType Created object. The method never returns null.
      */
     public ParentBeanParamType build( ) {
@@ -125,7 +125,7 @@ public class ParentBeanParamType {
 
   /**
    * Method returns attribute {@link #novaKey}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #novaKey} is set.
    */
   public String getNovaKey( ) {
@@ -134,7 +134,7 @@ public class ParentBeanParamType {
 
   /**
    * Method sets attribute {@link #novaKey}.<br/>
-   * 
+   *
    * @param pNovaKey Value to which {@link #novaKey} should be set.
    */
   public void setNovaKey( String pNovaKey ) {
@@ -144,7 +144,7 @@ public class ParentBeanParamType {
 
   /**
    * Method returns attribute {@link #tkID}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #tkID} is set.
    */
   public String getTkID( ) {
@@ -153,7 +153,7 @@ public class ParentBeanParamType {
 
   /**
    * Method sets attribute {@link #tkID}.<br/>
-   * 
+   *
    * @param pTkID Value to which {@link #tkID} should be set.
    */
   public void setTkID( String pTkID ) {
@@ -186,7 +186,7 @@ public class ParentBeanParamType {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

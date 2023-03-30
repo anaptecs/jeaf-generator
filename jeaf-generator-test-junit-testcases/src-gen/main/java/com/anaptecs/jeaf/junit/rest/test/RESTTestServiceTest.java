@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.rest.test;
@@ -13,7 +13,7 @@ import junit.framework.TestSuite;
 public class RESTTestServiceTest extends RESTTestServiceTestBase {
   /**
    * Method creates a test suite contain all tests of this class.
-   * 
+   *
    * @return {@link TestSuite} Test suite with all tests of this class.
    */
   public static TestSuite suite( ) {
@@ -38,7 +38,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
 
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided.
-   * 
+   *
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    */
   public RESTTestServiceTest( String pName ) {
@@ -48,7 +48,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided. The userId and the
    * password of a specific user can be given to this Constructor so this specific user can be logged in.
-   * 
+   *
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    * @param pUserId UserId of the User who should be logged in for this Test.
    * @param pPassword Password of the User who should be logged in for this Test.
@@ -60,7 +60,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
   /**
    * Method performs test case specific initialization routines. If a test case implementation requires some special
    * operations at startup this method can be overridden.
-   * 
+   *
    * @throws Exception if an error occurs during initialization.
    */
   @Override
@@ -71,7 +71,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
 
   /**
    * Method test the implementation of service method deprecatedOperation
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -81,7 +81,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
 
   /**
    * Method test the implementation of service method getTestServiceObject
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -91,7 +91,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
 
   /**
    * Method test the implementation of service method getResource
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -101,7 +101,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
 
   /**
    * Method test the implementation of service method deprecatedAsyncParam
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -111,7 +111,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
 
   /**
    * Method test the implementation of service method updateTestServiceObject
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -121,7 +121,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
 
   /**
    * Method test the implementation of service method handleBeanParam1
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -131,7 +131,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
 
   /**
    * Method test the implementation of service method deprecatedAsync
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -141,7 +141,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
 
   /**
    * Method test the implementation of service method doSomeNotRESTThing
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -151,7 +151,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
 
   /**
    * Method test the implementation of service method deprectaedReturnValue
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -161,7 +161,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
 
   /**
    * Method test the implementation of service method doSomethingRESTy
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -171,7 +171,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
 
   /**
    * Method test the implementation of service method yetAnotherRESTOperation
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -181,7 +181,7 @@ public class RESTTestServiceTest extends RESTTestServiceTestBase {
 
   /**
    * Method test the implementation of service method deprecatedParameter
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override

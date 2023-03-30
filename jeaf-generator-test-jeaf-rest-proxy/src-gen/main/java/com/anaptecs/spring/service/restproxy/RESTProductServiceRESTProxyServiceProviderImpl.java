@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.service.restproxy;
@@ -82,7 +82,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
 
   /**
    * Method checks state of this service provider implementation.
-   * 
+   *
    * @return {@link HealthCheckResult} Result of the check.
    */
   @Override
@@ -92,7 +92,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
 
   /**
    * Operation returns all available product.
-   * 
+   *
    * @param pMaxResultSize
    * @return {@link List<Product>}
    */

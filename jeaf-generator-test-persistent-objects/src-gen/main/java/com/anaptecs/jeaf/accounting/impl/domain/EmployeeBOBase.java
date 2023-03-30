@@ -75,7 +75,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<EmployeeBO> findAllEmployeeBOs( ) {
@@ -84,7 +84,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #bank}.<br/>
-   * 
+   *
    * @return {@link BankBO} Value to which {@link #bank} is set.
    */
   public BankBO getBank( ) {
@@ -94,7 +94,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method sets association {@link #bank}.<br/>
-   * 
+   *
    * @param pBank Value to which {@link #bank} should be set.
    */
   public void setBank( BankBO pBank ) {
@@ -125,7 +125,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #person}.<br/>
-   * 
+   *
    * @return {@link MyPersonBO} Value to which {@link #person} is set.
    */
   public MyPersonBO getPerson( ) {
@@ -135,7 +135,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method sets association {@link #person}.<br/>
-   * 
+   *
    * @param pPerson Value to which {@link #person} should be set.
    */
   public void setPerson( MyPersonBO pPerson ) {
@@ -166,7 +166,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #attendedCustomers}.<br/>
-   * 
+   *
    * @return {@link Set<CustomerBO>} Value to which {@link #attendedCustomers} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
@@ -177,7 +177,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #attendedCustomers}.
-   * 
+   *
    * @param pAttendedCustomers Object that should be added to {@link #attendedCustomers}. The parameter must not be
    * null.
    */
@@ -195,7 +195,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #attendedCustomers}.
-   * 
+   *
    * @param pAttendedCustomers Collection with all objects that should be added to {@link #attendedCustomers}. The
    * parameter must not be null.
    */
@@ -210,7 +210,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #attendedCustomers}.<br/>
-   * 
+   *
    * @param pAttendedCustomers Object that should be removed from {@link #attendedCustomers}. The parameter must not be
    * null.
    */
@@ -241,7 +241,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #superior}.<br/>
-   * 
+   *
    * @return {@link EmployeeBO} Value to which {@link #superior} is set.
    */
   public EmployeeBO getSuperior( ) {
@@ -251,7 +251,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method sets association {@link #superior}.<br/>
-   * 
+   *
    * @param pSuperior Value to which {@link #superior} should be set.
    */
   public void setSuperior( EmployeeBO pSuperior ) {
@@ -282,7 +282,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #employees}.<br/>
-   * 
+   *
    * @return {@link Set<EmployeeBO>} Value to which {@link #employees} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -293,7 +293,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #employees}.
-   * 
+   *
    * @param pEmployees Object that should be added to {@link #employees}. The parameter must not be null.
    */
   public void addToEmployees( EmployeeBO pEmployees ) {
@@ -313,7 +313,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #employees}.
-   * 
+   *
    * @param pEmployees Collection with all objects that should be added to {@link #employees}. The parameter must not be
    * null.
    */
@@ -328,7 +328,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #employees}.<br/>
-   * 
+   *
    * @param pEmployees Object that should be removed from {@link #employees}. The parameter must not be null.
    */
   public void removeFromEmployees( EmployeeBO pEmployees ) {
@@ -358,7 +358,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #responsibility}.<br/>
-   * 
+   *
    * @return {@link ResponsibilityTypeBO} Value to which {@link #responsibility} is set.
    */
   public ResponsibilityTypeBO getResponsibility( ) {
@@ -368,7 +368,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method sets association {@link #responsibility}.<br/>
-   * 
+   *
    * @param pResponsibility Value to which {@link #responsibility} should be set.
    */
   public void setResponsibility( ResponsibilityTypeBO pResponsibility ) {
@@ -384,7 +384,7 @@ public abstract class EmployeeBOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core;
@@ -537,8 +537,8 @@ final class TestAttributeAccess_BusinessObjectTestService_Command extends Comman
   /**
    * Initialize object. All parameters from method "testAttributeAccess" have to be passed as parameters to this command
    * object.
-   * 
-   * 
+   *
+   *
    */
   TestAttributeAccess_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -547,7 +547,7 @@ final class TestAttributeAccess_BusinessObjectTestService_Command extends Comman
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -574,7 +574,7 @@ final class TestAttributeAccess_BusinessObjectTestService_Command extends Comman
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -584,7 +584,7 @@ final class TestAttributeAccess_BusinessObjectTestService_Command extends Comman
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -633,8 +633,8 @@ final class TestBusinessMethods_BusinessObjectTestService_Command extends Comman
   /**
    * Initialize object. All parameters from method "testBusinessMethods" have to be passed as parameters to this command
    * object.
-   * 
-   * 
+   *
+   *
    */
   TestBusinessMethods_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -643,7 +643,7 @@ final class TestBusinessMethods_BusinessObjectTestService_Command extends Comman
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -670,7 +670,7 @@ final class TestBusinessMethods_BusinessObjectTestService_Command extends Comman
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -680,7 +680,7 @@ final class TestBusinessMethods_BusinessObjectTestService_Command extends Comman
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -729,8 +729,8 @@ final class TestBusinessObjectsWithManyToManyAssociations_BusinessObjectTestServ
   /**
    * Initialize object. All parameters from method "testBusinessObjectsWithManyToManyAssociations" have to be passed as
    * parameters to this command object.
-   * 
-   * 
+   *
+   *
    */
   TestBusinessObjectsWithManyToManyAssociations_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -739,7 +739,7 @@ final class TestBusinessObjectsWithManyToManyAssociations_BusinessObjectTestServ
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -766,7 +766,7 @@ final class TestBusinessObjectsWithManyToManyAssociations_BusinessObjectTestServ
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -776,7 +776,7 @@ final class TestBusinessObjectsWithManyToManyAssociations_BusinessObjectTestServ
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -825,8 +825,8 @@ final class TestServiceObjectsWithOneToManyAssociations_BusinessObjectTestServic
   /**
    * Initialize object. All parameters from method "testServiceObjectsWithOneToManyAssociations" have to be passed as
    * parameters to this command object.
-   * 
-   * 
+   *
+   *
    */
   TestServiceObjectsWithOneToManyAssociations_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -835,7 +835,7 @@ final class TestServiceObjectsWithOneToManyAssociations_BusinessObjectTestServic
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -862,7 +862,7 @@ final class TestServiceObjectsWithOneToManyAssociations_BusinessObjectTestServic
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -872,7 +872,7 @@ final class TestServiceObjectsWithOneToManyAssociations_BusinessObjectTestServic
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -921,8 +921,8 @@ final class TestServiceObjectsWithOneToOneAssociations_BusinessObjectTestService
   /**
    * Initialize object. All parameters from method "testServiceObjectsWithOneToOneAssociations" have to be passed as
    * parameters to this command object.
-   * 
-   * 
+   *
+   *
    */
   TestServiceObjectsWithOneToOneAssociations_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -931,7 +931,7 @@ final class TestServiceObjectsWithOneToOneAssociations_BusinessObjectTestService
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -958,7 +958,7 @@ final class TestServiceObjectsWithOneToOneAssociations_BusinessObjectTestService
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -968,7 +968,7 @@ final class TestServiceObjectsWithOneToOneAssociations_BusinessObjectTestService
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1017,8 +1017,8 @@ final class TestCreateSimpleBusinessObject_BusinessObjectTestService_Command ext
   /**
    * Initialize object. All parameters from method "testCreateSimpleBusinessObject" have to be passed as parameters to
    * this command object.
-   * 
-   * 
+   *
+   *
    */
   TestCreateSimpleBusinessObject_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -1027,7 +1027,7 @@ final class TestCreateSimpleBusinessObject_BusinessObjectTestService_Command ext
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1054,7 +1054,7 @@ final class TestCreateSimpleBusinessObject_BusinessObjectTestService_Command ext
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1064,7 +1064,7 @@ final class TestCreateSimpleBusinessObject_BusinessObjectTestService_Command ext
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1113,8 +1113,8 @@ final class TestBusinessObjectsWithInheritance_BusinessObjectTestService_Command
   /**
    * Initialize object. All parameters from method "testBusinessObjectsWithInheritance" have to be passed as parameters
    * to this command object.
-   * 
-   * 
+   *
+   *
    */
   TestBusinessObjectsWithInheritance_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -1123,7 +1123,7 @@ final class TestBusinessObjectsWithInheritance_BusinessObjectTestService_Command
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1150,7 +1150,7 @@ final class TestBusinessObjectsWithInheritance_BusinessObjectTestService_Command
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1160,7 +1160,7 @@ final class TestBusinessObjectsWithInheritance_BusinessObjectTestService_Command
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1209,8 +1209,8 @@ final class TestMToNReleation_BusinessObjectTestService_Command extends Command 
   /**
    * Initialize object. All parameters from method "testMToNReleation" have to be passed as parameters to this command
    * object.
-   * 
-   * 
+   *
+   *
    */
   TestMToNReleation_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -1219,7 +1219,7 @@ final class TestMToNReleation_BusinessObjectTestService_Command extends Command 
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1246,7 +1246,7 @@ final class TestMToNReleation_BusinessObjectTestService_Command extends Command 
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1256,7 +1256,7 @@ final class TestMToNReleation_BusinessObjectTestService_Command extends Command 
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1310,7 +1310,7 @@ final class UpdateBusinessObject_ServiceObjectID_BusinessObjectTestService_Comma
   /**
    * Initialize object. All parameters from method "updateBusinessObject" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pServiceObjectID ServiceObjectID
    */
   UpdateBusinessObject_ServiceObjectID_BusinessObjectTestService_Command( ServiceObjectID pServiceObjectID ) {
@@ -1321,7 +1321,7 @@ final class UpdateBusinessObject_ServiceObjectID_BusinessObjectTestService_Comma
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1347,7 +1347,7 @@ final class UpdateBusinessObject_ServiceObjectID_BusinessObjectTestService_Comma
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1357,7 +1357,7 @@ final class UpdateBusinessObject_ServiceObjectID_BusinessObjectTestService_Comma
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1406,8 +1406,8 @@ final class CreateBusinessObject_BusinessObjectTestService_Command extends Comma
   /**
    * Initialize object. All parameters from method "createBusinessObject" have to be passed as parameters to this
    * command object.
-   * 
-   * 
+   *
+   *
    */
   CreateBusinessObject_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -1416,7 +1416,7 @@ final class CreateBusinessObject_BusinessObjectTestService_Command extends Comma
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1442,7 +1442,7 @@ final class CreateBusinessObject_BusinessObjectTestService_Command extends Comma
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1452,7 +1452,7 @@ final class CreateBusinessObject_BusinessObjectTestService_Command extends Comma
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1506,7 +1506,7 @@ final class DeleteBusinessObject_ServiceObjectID_BusinessObjectTestService_Comma
   /**
    * Initialize object. All parameters from method "deleteBusinessObject" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pServiceObjectID ServiceObjectID
    */
   DeleteBusinessObject_ServiceObjectID_BusinessObjectTestService_Command( ServiceObjectID pServiceObjectID ) {
@@ -1517,7 +1517,7 @@ final class DeleteBusinessObject_ServiceObjectID_BusinessObjectTestService_Comma
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1544,7 +1544,7 @@ final class DeleteBusinessObject_ServiceObjectID_BusinessObjectTestService_Comma
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1554,7 +1554,7 @@ final class DeleteBusinessObject_ServiceObjectID_BusinessObjectTestService_Comma
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1603,8 +1603,8 @@ final class TestQueryWithJPAQL_BusinessObjectTestService_Command extends Command
   /**
    * Initialize object. All parameters from method "testQueryWithJPAQL" have to be passed as parameters to this command
    * object.
-   * 
-   * 
+   *
+   *
    */
   TestQueryWithJPAQL_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -1613,7 +1613,7 @@ final class TestQueryWithJPAQL_BusinessObjectTestService_Command extends Command
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1640,7 +1640,7 @@ final class TestQueryWithJPAQL_BusinessObjectTestService_Command extends Command
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1650,7 +1650,7 @@ final class TestQueryWithJPAQL_BusinessObjectTestService_Command extends Command
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1699,8 +1699,8 @@ final class TestAOneToBOne_BusinessObjectTestService_Command extends Command {
   /**
    * Initialize object. All parameters from method "testAOneToBOne" have to be passed as parameters to this command
    * object.
-   * 
-   * 
+   *
+   *
    */
   TestAOneToBOne_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -1709,7 +1709,7 @@ final class TestAOneToBOne_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1736,7 +1736,7 @@ final class TestAOneToBOne_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1746,7 +1746,7 @@ final class TestAOneToBOne_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1795,8 +1795,8 @@ final class TestBOneToAOne_BusinessObjectTestService_Command extends Command {
   /**
    * Initialize object. All parameters from method "testBOneToAOne" have to be passed as parameters to this command
    * object.
-   * 
-   * 
+   *
+   *
    */
   TestBOneToAOne_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -1805,7 +1805,7 @@ final class TestBOneToAOne_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1832,7 +1832,7 @@ final class TestBOneToAOne_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1842,7 +1842,7 @@ final class TestBOneToAOne_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1890,8 +1890,8 @@ final class CreateXOne_BusinessObjectTestService_Command extends Command {
 
   /**
    * Initialize object. All parameters from method "createXOne" have to be passed as parameters to this command object.
-   * 
-   * 
+   *
+   *
    */
   CreateXOne_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -1900,7 +1900,7 @@ final class CreateXOne_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1927,7 +1927,7 @@ final class CreateXOne_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1937,7 +1937,7 @@ final class CreateXOne_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1986,8 +1986,8 @@ final class CreateABCObjects_BusinessObjectTestService_Command extends Command {
   /**
    * Initialize object. All parameters from method "createABCObjects" have to be passed as parameters to this command
    * object.
-   * 
-   * 
+   *
+   *
    */
   CreateABCObjects_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -1996,7 +1996,7 @@ final class CreateABCObjects_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2022,7 +2022,7 @@ final class CreateABCObjects_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2032,7 +2032,7 @@ final class CreateABCObjects_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2081,8 +2081,8 @@ final class TestNativeQuery_BusinessObjectTestService_Command extends Command {
   /**
    * Initialize object. All parameters from method "testNativeQuery" have to be passed as parameters to this command
    * object.
-   * 
-   * 
+   *
+   *
    */
   TestNativeQuery_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -2091,7 +2091,7 @@ final class TestNativeQuery_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2118,7 +2118,7 @@ final class TestNativeQuery_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2128,7 +2128,7 @@ final class TestNativeQuery_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2181,7 +2181,7 @@ final class GetCManys_ServiceObjectID_BusinessObjectTestService_Command extends 
 
   /**
    * Initialize object. All parameters from method "getCManys" have to be passed as parameters to this command object.
-   * 
+   *
    * @param pBOneID ServiceObjectID
    */
   GetCManys_ServiceObjectID_BusinessObjectTestService_Command( ServiceObjectID pBOneID ) {
@@ -2192,7 +2192,7 @@ final class GetCManys_ServiceObjectID_BusinessObjectTestService_Command extends 
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2218,7 +2218,7 @@ final class GetCManys_ServiceObjectID_BusinessObjectTestService_Command extends 
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2228,7 +2228,7 @@ final class GetCManys_ServiceObjectID_BusinessObjectTestService_Command extends 
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2281,7 +2281,7 @@ final class AddCMany_ServiceObjectID_BusinessObjectTestService_Command extends C
 
   /**
    * Initialize object. All parameters from method "addCMany" have to be passed as parameters to this command object.
-   * 
+   *
    * @param pBOneID ServiceObjectID
    */
   AddCMany_ServiceObjectID_BusinessObjectTestService_Command( ServiceObjectID pBOneID ) {
@@ -2292,7 +2292,7 @@ final class AddCMany_ServiceObjectID_BusinessObjectTestService_Command extends C
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2318,7 +2318,7 @@ final class AddCMany_ServiceObjectID_BusinessObjectTestService_Command extends C
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2328,7 +2328,7 @@ final class AddCMany_ServiceObjectID_BusinessObjectTestService_Command extends C
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2381,7 +2381,7 @@ final class ClearCMany_ServiceObjectID_BusinessObjectTestService_Command extends
 
   /**
    * Initialize object. All parameters from method "clearCMany" have to be passed as parameters to this command object.
-   * 
+   *
    * @param pBOneID ServiceObjectID
    */
   ClearCMany_ServiceObjectID_BusinessObjectTestService_Command( ServiceObjectID pBOneID ) {
@@ -2392,7 +2392,7 @@ final class ClearCMany_ServiceObjectID_BusinessObjectTestService_Command extends
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2419,7 +2419,7 @@ final class ClearCMany_ServiceObjectID_BusinessObjectTestService_Command extends
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2429,7 +2429,7 @@ final class ClearCMany_ServiceObjectID_BusinessObjectTestService_Command extends
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2488,7 +2488,7 @@ final class RemoveCMany_ServiceObjectID_ServiceObjectID_BusinessObjectTestServic
 
   /**
    * Initialize object. All parameters from method "removeCMany" have to be passed as parameters to this command object.
-   * 
+   *
    * @param pBOneID ServiceObjectID
    * @param pCManyID ServiceObjectID
    */
@@ -2502,7 +2502,7 @@ final class RemoveCMany_ServiceObjectID_ServiceObjectID_BusinessObjectTestServic
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2529,7 +2529,7 @@ final class RemoveCMany_ServiceObjectID_ServiceObjectID_BusinessObjectTestServic
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2539,7 +2539,7 @@ final class RemoveCMany_ServiceObjectID_ServiceObjectID_BusinessObjectTestServic
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2588,8 +2588,8 @@ final class TestDynamicPropertyAccess_BusinessObjectTestService_Command extends 
   /**
    * Initialize object. All parameters from method "testDynamicPropertyAccess" have to be passed as parameters to this
    * command object.
-   * 
-   * 
+   *
+   *
    */
   TestDynamicPropertyAccess_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -2598,7 +2598,7 @@ final class TestDynamicPropertyAccess_BusinessObjectTestService_Command extends 
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2625,7 +2625,7 @@ final class TestDynamicPropertyAccess_BusinessObjectTestService_Command extends 
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2635,7 +2635,7 @@ final class TestDynamicPropertyAccess_BusinessObjectTestService_Command extends 
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2684,8 +2684,8 @@ final class TestCreateBusinessObjectsWithUserTypeMapping_BusinessObjectTestServi
   /**
    * Initialize object. All parameters from method "testCreateBusinessObjectsWithUserTypeMapping" have to be passed as
    * parameters to this command object.
-   * 
-   * 
+   *
+   *
    */
   TestCreateBusinessObjectsWithUserTypeMapping_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -2694,7 +2694,7 @@ final class TestCreateBusinessObjectsWithUserTypeMapping_BusinessObjectTestServi
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2721,7 +2721,7 @@ final class TestCreateBusinessObjectsWithUserTypeMapping_BusinessObjectTestServi
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2731,7 +2731,7 @@ final class TestCreateBusinessObjectsWithUserTypeMapping_BusinessObjectTestServi
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2780,8 +2780,8 @@ final class TestReadBusinessObjectsWithUserTypeMapping_BusinessObjectTestService
   /**
    * Initialize object. All parameters from method "testReadBusinessObjectsWithUserTypeMapping" have to be passed as
    * parameters to this command object.
-   * 
-   * 
+   *
+   *
    */
   TestReadBusinessObjectsWithUserTypeMapping_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -2790,7 +2790,7 @@ final class TestReadBusinessObjectsWithUserTypeMapping_BusinessObjectTestService
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2817,7 +2817,7 @@ final class TestReadBusinessObjectsWithUserTypeMapping_BusinessObjectTestService
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2827,7 +2827,7 @@ final class TestReadBusinessObjectsWithUserTypeMapping_BusinessObjectTestService
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2881,7 +2881,7 @@ final class CreateClassA_ClassA_BusinessObjectTestService_Command extends Comman
   /**
    * Initialize object. All parameters from method "createClassA" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pClassA ClassA
    */
   CreateClassA_ClassA_BusinessObjectTestService_Command( ClassA pClassA ) {
@@ -2892,7 +2892,7 @@ final class CreateClassA_ClassA_BusinessObjectTestService_Command extends Comman
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2918,7 +2918,7 @@ final class CreateClassA_ClassA_BusinessObjectTestService_Command extends Comman
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2928,7 +2928,7 @@ final class CreateClassA_ClassA_BusinessObjectTestService_Command extends Comman
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2982,7 +2982,7 @@ final class UpdateClassA_ClassA_BusinessObjectTestService_Command extends Comman
   /**
    * Initialize object. All parameters from method "updateClassA" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pClassA ClassA
    */
   UpdateClassA_ClassA_BusinessObjectTestService_Command( ClassA pClassA ) {
@@ -2993,7 +2993,7 @@ final class UpdateClassA_ClassA_BusinessObjectTestService_Command extends Comman
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3020,7 +3020,7 @@ final class UpdateClassA_ClassA_BusinessObjectTestService_Command extends Comman
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3030,7 +3030,7 @@ final class UpdateClassA_ClassA_BusinessObjectTestService_Command extends Comman
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3083,7 +3083,7 @@ final class GetClassA_ServiceObjectID_BusinessObjectTestService_Command extends 
 
   /**
    * Initialize object. All parameters from method "getClassA" have to be passed as parameters to this command object.
-   * 
+   *
    * @param pServiceObjectID ServiceObjectID
    */
   GetClassA_ServiceObjectID_BusinessObjectTestService_Command( ServiceObjectID pServiceObjectID ) {
@@ -3094,7 +3094,7 @@ final class GetClassA_ServiceObjectID_BusinessObjectTestService_Command extends 
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3120,7 +3120,7 @@ final class GetClassA_ServiceObjectID_BusinessObjectTestService_Command extends 
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3130,7 +3130,7 @@ final class GetClassA_ServiceObjectID_BusinessObjectTestService_Command extends 
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3179,8 +3179,8 @@ final class TestInitialObjectCache_BusinessObjectTestService_Command extends Com
   /**
    * Initialize object. All parameters from method "testInitialObjectCache" have to be passed as parameters to this
    * command object.
-   * 
-   * 
+   *
+   *
    */
   TestInitialObjectCache_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -3189,7 +3189,7 @@ final class TestInitialObjectCache_BusinessObjectTestService_Command extends Com
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3216,7 +3216,7 @@ final class TestInitialObjectCache_BusinessObjectTestService_Command extends Com
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3226,7 +3226,7 @@ final class TestInitialObjectCache_BusinessObjectTestService_Command extends Com
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3275,8 +3275,8 @@ final class TestObjectCacheReloading_BusinessObjectTestService_Command extends C
   /**
    * Initialize object. All parameters from method "testObjectCacheReloading" have to be passed as parameters to this
    * command object.
-   * 
-   * 
+   *
+   *
    */
   TestObjectCacheReloading_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -3285,7 +3285,7 @@ final class TestObjectCacheReloading_BusinessObjectTestService_Command extends C
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3312,7 +3312,7 @@ final class TestObjectCacheReloading_BusinessObjectTestService_Command extends C
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3322,7 +3322,7 @@ final class TestObjectCacheReloading_BusinessObjectTestService_Command extends C
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3371,8 +3371,8 @@ final class TestJDBCWorker_BusinessObjectTestService_Command extends Command {
   /**
    * Initialize object. All parameters from method "testJDBCWorker" have to be passed as parameters to this command
    * object.
-   * 
-   * 
+   *
+   *
    */
   TestJDBCWorker_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -3381,7 +3381,7 @@ final class TestJDBCWorker_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3408,7 +3408,7 @@ final class TestJDBCWorker_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3418,7 +3418,7 @@ final class TestJDBCWorker_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3472,7 +3472,7 @@ final class TestTransactionListener_Boolean_BusinessObjectTestService_Command ex
   /**
    * Initialize object. All parameters from method "testTransactionListener" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pFail boolean
    */
   TestTransactionListener_Boolean_BusinessObjectTestService_Command( boolean pFail ) {
@@ -3483,7 +3483,7 @@ final class TestTransactionListener_Boolean_BusinessObjectTestService_Command ex
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3510,7 +3510,7 @@ final class TestTransactionListener_Boolean_BusinessObjectTestService_Command ex
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3520,7 +3520,7 @@ final class TestTransactionListener_Boolean_BusinessObjectTestService_Command ex
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3568,8 +3568,8 @@ final class TestFlush_BusinessObjectTestService_Command extends Command {
 
   /**
    * Initialize object. All parameters from method "testFlush" have to be passed as parameters to this command object.
-   * 
-   * 
+   *
+   *
    */
   TestFlush_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -3578,7 +3578,7 @@ final class TestFlush_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3605,7 +3605,7 @@ final class TestFlush_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3615,7 +3615,7 @@ final class TestFlush_BusinessObjectTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3664,8 +3664,8 @@ final class DeprectedOperation_BusinessObjectTestService_Command extends Command
   /**
    * Initialize object. All parameters from method "deprectedOperation" have to be passed as parameters to this command
    * object.
-   * 
-   * 
+   *
+   *
    */
   DeprectedOperation_BusinessObjectTestService_Command( ) {
     super(BusinessObjectTestService.class);
@@ -3674,7 +3674,7 @@ final class DeprectedOperation_BusinessObjectTestService_Command extends Command
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3701,7 +3701,7 @@ final class DeprectedOperation_BusinessObjectTestService_Command extends Command
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3711,7 +3711,7 @@ final class DeprectedOperation_BusinessObjectTestService_Command extends Command
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */

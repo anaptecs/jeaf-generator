@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.pojo;
@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * <p/>
  * 2.1<br/>
  * 2.2
- * 
+ *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  * @deprecated We do not like this class any more. (<b>since:</b> Big bang, <b>removed with:</b> Last X-Mas)
@@ -46,7 +46,7 @@ public class ChildPOJO extends ParentPOJO {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected ChildPOJO( Builder pBuilder ) {
@@ -58,7 +58,7 @@ public class ChildPOJO extends ParentPOJO {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new ChildPOJO objects.
    */
   public static Builder builder( ) {
@@ -67,7 +67,7 @@ public class ChildPOJO extends ParentPOJO {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new ChildPOJO objects. The method never returns
    * null.
@@ -104,7 +104,7 @@ public class ChildPOJO extends ParentPOJO {
 
     /**
      * Method sets attribute {@link #parentAttribute}.<br/>
-     * 
+     *
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -117,7 +117,7 @@ public class ChildPOJO extends ParentPOJO {
 
     /**
      * Method sets attribute {@link #weirdAttribute}.<br/>
-     * 
+     *
      * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -131,7 +131,7 @@ public class ChildPOJO extends ParentPOJO {
 
     /**
      * Method sets attribute {@link #hello}.<br/>
-     * 
+     *
      * @param pHello Value to which {@link #hello} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -144,7 +144,7 @@ public class ChildPOJO extends ParentPOJO {
 
     /**
      * Method sets attribute {@link #childAttribute}.<br/>
-     * 
+     *
      * @param pChildAttribute Value to which {@link #childAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -156,7 +156,7 @@ public class ChildPOJO extends ParentPOJO {
 
     /**
      * Method creates a new instance of class ChildPOJO. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return ChildPOJO Created object. The method never returns null.
      */
     public ChildPOJO build( ) {
@@ -169,7 +169,7 @@ public class ChildPOJO extends ParentPOJO {
     /**
      * Method creates a new validated instance of class ChildPOJO. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return ChildPOJO Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -182,7 +182,7 @@ public class ChildPOJO extends ParentPOJO {
 
   /**
    * Method returns attribute {@link #childAttribute}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #childAttribute} is set.
    */
   public Integer getChildAttribute( ) {
@@ -191,7 +191,7 @@ public class ChildPOJO extends ParentPOJO {
 
   /**
    * Method sets attribute {@link #childAttribute}.<br/>
-   * 
+   *
    * @param pChildAttribute Value to which {@link #childAttribute} should be set.
    */
   public void setChildAttribute( Integer pChildAttribute ) {
@@ -217,7 +217,7 @@ public class ChildPOJO extends ParentPOJO {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

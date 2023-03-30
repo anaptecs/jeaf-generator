@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting.test;
@@ -13,7 +13,7 @@ import junit.framework.TestSuite;
 public class AccountingServiceTest extends AccountingServiceTestBase {
   /**
    * Method creates a test suite contain all tests of this class.
-   * 
+   *
    * @return {@link TestSuite} Test suite with all tests of this class.
    */
   public static TestSuite suite( ) {
@@ -35,7 +35,7 @@ public class AccountingServiceTest extends AccountingServiceTestBase {
 
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided.
-   * 
+   *
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    */
   public AccountingServiceTest( String pName ) {
@@ -45,7 +45,7 @@ public class AccountingServiceTest extends AccountingServiceTestBase {
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided. The userId and the
    * password of a specific user can be given to this Constructor so this specific user can be logged in.
-   * 
+   *
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    * @param pUserId UserId of the User who should be logged in for this Test.
    * @param pPassword Password of the User who should be logged in for this Test.
@@ -57,7 +57,7 @@ public class AccountingServiceTest extends AccountingServiceTestBase {
   /**
    * Method performs test case specific initialization routines. If a test case implementation requires some special
    * operations at startup this method can be overridden.
-   * 
+   *
    * @throws Exception if an error occurs during initialization.
    */
   @Override
@@ -68,7 +68,7 @@ public class AccountingServiceTest extends AccountingServiceTestBase {
 
   /**
    * Method test the implementation of service method performBooking
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -78,7 +78,7 @@ public class AccountingServiceTest extends AccountingServiceTestBase {
 
   /**
    * Method test the implementation of service method unlock
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -88,7 +88,7 @@ public class AccountingServiceTest extends AccountingServiceTestBase {
 
   /**
    * Method test the implementation of service method createCustomer
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -98,7 +98,7 @@ public class AccountingServiceTest extends AccountingServiceTestBase {
 
   /**
    * Method test the implementation of service method lockAccount
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -108,7 +108,7 @@ public class AccountingServiceTest extends AccountingServiceTestBase {
 
   /**
    * Method test the implementation of service method getAccount
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -118,7 +118,7 @@ public class AccountingServiceTest extends AccountingServiceTestBase {
 
   /**
    * Method test the implementation of service method searchCustomers
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -128,7 +128,7 @@ public class AccountingServiceTest extends AccountingServiceTestBase {
 
   /**
    * Method test the implementation of service method createPerson
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -138,7 +138,7 @@ public class AccountingServiceTest extends AccountingServiceTestBase {
 
   /**
    * Method test the implementation of service method createAccount
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -148,7 +148,7 @@ public class AccountingServiceTest extends AccountingServiceTestBase {
 
   /**
    * Method test the implementation of service method getCustomer
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override

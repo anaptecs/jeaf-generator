@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.pojo;
@@ -39,7 +39,7 @@ public abstract class AdvancedPOJOBase {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected AdvancedPOJOBase( BuilderBase pBuilder ) {
@@ -78,7 +78,7 @@ public abstract class AdvancedPOJOBase {
 
     /**
      * Method sets attribute {@link #readonlyDefault}.<br/>
-     * 
+     *
      * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -91,7 +91,7 @@ public abstract class AdvancedPOJOBase {
     /**
      * Method creates a new instance of class AdvancedPOJO. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return AdvancedPOJO Created object. The method never returns null.
      */
     public AdvancedPOJO build( ) {
@@ -101,7 +101,7 @@ public abstract class AdvancedPOJOBase {
     /**
      * Method creates a new validated instance of class AdvancedPOJO. The object will be initialized with the values of
      * the builder and validated afterwards.
-     * 
+     *
      * @return AdvancedPOJO Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -114,7 +114,7 @@ public abstract class AdvancedPOJOBase {
 
   /**
    * Method returns attribute {@link #readonlyDefault}.<br/>
-   * 
+   *
    * @return int Value to which {@link #readonlyDefault} is set.
    */
   public int getReadonlyDefault( ) {
@@ -153,7 +153,7 @@ public abstract class AdvancedPOJOBase {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

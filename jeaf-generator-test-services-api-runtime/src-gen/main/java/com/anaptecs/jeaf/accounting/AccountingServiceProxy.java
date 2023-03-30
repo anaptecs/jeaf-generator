@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting;
@@ -211,7 +211,7 @@ final class CreateAccount_Customer_Person_AccountingService_Command extends Comm
   /**
    * Initialize object. All parameters from method "createAccount" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pCustomer Customer
    * @param pAuthorizedPerson Person
    */
@@ -224,7 +224,7 @@ final class CreateAccount_Customer_Person_AccountingService_Command extends Comm
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -250,7 +250,7 @@ final class CreateAccount_Customer_Person_AccountingService_Command extends Comm
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -260,7 +260,7 @@ final class CreateAccount_Customer_Person_AccountingService_Command extends Comm
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -313,7 +313,7 @@ final class GetAccount_ServiceObjectID_AccountingService_Command extends Command
 
   /**
    * Initialize object. All parameters from method "getAccount" have to be passed as parameters to this command object.
-   * 
+   *
    * @param pAccountID ServiceObjectID
    */
   GetAccount_ServiceObjectID_AccountingService_Command( ServiceObjectID pAccountID ) {
@@ -324,7 +324,7 @@ final class GetAccount_ServiceObjectID_AccountingService_Command extends Command
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -350,7 +350,7 @@ final class GetAccount_ServiceObjectID_AccountingService_Command extends Command
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -360,7 +360,7 @@ final class GetAccount_ServiceObjectID_AccountingService_Command extends Command
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -413,7 +413,7 @@ final class LockAccount_Account_AccountingService_Command extends Command {
 
   /**
    * Initialize object. All parameters from method "lockAccount" have to be passed as parameters to this command object.
-   * 
+   *
    * @param pAccount Account
    */
   LockAccount_Account_AccountingService_Command( Account pAccount ) {
@@ -424,7 +424,7 @@ final class LockAccount_Account_AccountingService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -451,7 +451,7 @@ final class LockAccount_Account_AccountingService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -461,7 +461,7 @@ final class LockAccount_Account_AccountingService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -514,7 +514,7 @@ final class Unlock_Account_AccountingService_Command extends Command {
 
   /**
    * Initialize object. All parameters from method "unlock" have to be passed as parameters to this command object.
-   * 
+   *
    * @param pAccount Account
    */
   Unlock_Account_AccountingService_Command( Account pAccount ) {
@@ -525,7 +525,7 @@ final class Unlock_Account_AccountingService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -552,7 +552,7 @@ final class Unlock_Account_AccountingService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -562,7 +562,7 @@ final class Unlock_Account_AccountingService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -621,7 +621,7 @@ final class PerformBooking_Booking_SecurityToken_AccountingService_Command exten
   /**
    * Initialize object. All parameters from method "performBooking" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pBooking Booking
    * @param pSecurityToken SecurityToken
    */
@@ -634,7 +634,7 @@ final class PerformBooking_Booking_SecurityToken_AccountingService_Command exten
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -661,7 +661,7 @@ final class PerformBooking_Booking_SecurityToken_AccountingService_Command exten
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -671,7 +671,7 @@ final class PerformBooking_Booking_SecurityToken_AccountingService_Command exten
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -731,7 +731,7 @@ final class CreateCustomer_Customer_ServiceObjectID_AccountingService_Command ex
   /**
    * Initialize object. All parameters from method "createCustomer" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pNewCustomer Customer
    * @param pAttendingEmployeeID ServiceObjectID
    */
@@ -745,7 +745,7 @@ final class CreateCustomer_Customer_ServiceObjectID_AccountingService_Command ex
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -771,7 +771,7 @@ final class CreateCustomer_Customer_ServiceObjectID_AccountingService_Command ex
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -781,7 +781,7 @@ final class CreateCustomer_Customer_ServiceObjectID_AccountingService_Command ex
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -840,7 +840,7 @@ final class GetCustomer_ServiceObjectID_CustomerLoadStrategy_AccountingService_C
 
   /**
    * Initialize object. All parameters from method "getCustomer" have to be passed as parameters to this command object.
-   * 
+   *
    * @param pCustomerID ServiceObjectID
    * @param pLoadStrategy CustomerLoadStrategy
    */
@@ -854,7 +854,7 @@ final class GetCustomer_ServiceObjectID_CustomerLoadStrategy_AccountingService_C
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -880,7 +880,7 @@ final class GetCustomer_ServiceObjectID_CustomerLoadStrategy_AccountingService_C
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -890,7 +890,7 @@ final class GetCustomer_ServiceObjectID_CustomerLoadStrategy_AccountingService_C
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -944,7 +944,7 @@ final class CreatePerson_Person_AccountingService_Command extends Command {
   /**
    * Initialize object. All parameters from method "createPerson" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pPerson Person
    */
   CreatePerson_Person_AccountingService_Command( @Valid Person pPerson ) {
@@ -955,7 +955,7 @@ final class CreatePerson_Person_AccountingService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -981,7 +981,7 @@ final class CreatePerson_Person_AccountingService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -991,7 +991,7 @@ final class CreatePerson_Person_AccountingService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1045,7 +1045,7 @@ final class SearchCustomers_CustomerQuery_AccountingService_Command extends Comm
   /**
    * Initialize object. All parameters from method "searchCustomers" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pQuery CustomerQuery
    */
   SearchCustomers_CustomerQuery_AccountingService_Command( CustomerQuery pQuery ) {
@@ -1056,7 +1056,7 @@ final class SearchCustomers_CustomerQuery_AccountingService_Command extends Comm
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1082,7 +1082,7 @@ final class SearchCustomers_CustomerQuery_AccountingService_Command extends Comm
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1092,7 +1092,7 @@ final class SearchCustomers_CustomerQuery_AccountingService_Command extends Comm
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */

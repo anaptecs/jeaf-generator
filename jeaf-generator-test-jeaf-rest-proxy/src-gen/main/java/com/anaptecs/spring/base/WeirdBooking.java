@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -48,7 +48,7 @@ public class WeirdBooking implements Serializable {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected WeirdBooking( Builder pBuilder ) {
@@ -66,7 +66,7 @@ public class WeirdBooking implements Serializable {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new WeirdBooking objects.
    */
   public static Builder builder( ) {
@@ -75,7 +75,7 @@ public class WeirdBooking implements Serializable {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new WeirdBooking objects. The method never returns
    * null.
@@ -120,7 +120,7 @@ public class WeirdBooking implements Serializable {
 
     /**
      * Method sets association {@link #booking}.<br/>
-     * 
+     *
      * @param pBooking Value to which {@link #booking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -131,7 +131,7 @@ public class WeirdBooking implements Serializable {
 
     /**
      * Method sets association {@link #additionalBookings}.<br/>
-     * 
+     *
      * @param pAdditionalBookings Collection to which {@link #additionalBookings} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -149,7 +149,7 @@ public class WeirdBooking implements Serializable {
     /**
      * Method creates a new instance of class WeirdBooking. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return WeirdBooking Created object. The method never returns null.
      */
     public WeirdBooking build( ) {
@@ -159,7 +159,7 @@ public class WeirdBooking implements Serializable {
     /**
      * Method creates a new validated instance of class WeirdBooking. The object will be initialized with the values of
      * the builder and validated afterwards.
-     * 
+     *
      * @return WeirdBooking Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -172,7 +172,7 @@ public class WeirdBooking implements Serializable {
 
   /**
    * Method returns association {@link #booking}.<br/>
-   * 
+   *
    * @return {@link ComplexBookingID} Value to which {@link #booking} is set.
    */
   public ComplexBookingID getBooking( ) {
@@ -181,7 +181,7 @@ public class WeirdBooking implements Serializable {
 
   /**
    * Method sets association {@link #booking}.<br/>
-   * 
+   *
    * @param pBooking Value to which {@link #booking} should be set.
    */
   public void setBooking( ComplexBookingID pBooking ) {
@@ -197,7 +197,7 @@ public class WeirdBooking implements Serializable {
 
   /**
    * Method returns association {@link #additionalBookings}.<br/>
-   * 
+   *
    * @return {@link List<ComplexBookingID>} Value to which {@link #additionalBookings} is set. The method never returns
    * null and the returned collection is unmodifiable.
    */
@@ -208,7 +208,7 @@ public class WeirdBooking implements Serializable {
 
   /**
    * Method adds the passed object to {@link #additionalBookings}.
-   * 
+   *
    * @param pAdditionalBookings Object that should be added to {@link #additionalBookings}. The parameter must not be
    * null.
    */
@@ -221,7 +221,7 @@ public class WeirdBooking implements Serializable {
 
   /**
    * Method adds all passed objects to {@link #additionalBookings}.
-   * 
+   *
    * @param pAdditionalBookings Collection with all objects that should be added to {@link #additionalBookings}. The
    * parameter must not be null.
    */
@@ -236,7 +236,7 @@ public class WeirdBooking implements Serializable {
 
   /**
    * Method removes the passed object from {@link #additionalBookings}.<br/>
-   * 
+   *
    * @param pAdditionalBookings Object that should be removed from {@link #additionalBookings}. The parameter must not
    * be null.
    */
@@ -272,7 +272,7 @@ public class WeirdBooking implements Serializable {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

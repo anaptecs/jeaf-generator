@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core;
@@ -82,7 +82,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected WrapperDatatypeServiceObject( Builder pBuilder ) {
@@ -101,7 +101,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new WrapperDatatypeServiceObject objects.
    */
   public static Builder builder( ) {
@@ -110,7 +110,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new WrapperDatatypeServiceObject objects. The method
    * never returns null.
@@ -165,7 +165,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
     /**
      * Method sets attribute {@link #myBoolean}.<br/>
-     * 
+     *
      * @param pMyBoolean Value to which {@link #myBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -177,7 +177,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
     /**
      * Method sets attribute {@link #myByte}.<br/>
-     * 
+     *
      * @param pMyByte Value to which {@link #myByte} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -189,7 +189,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
     /**
      * Method sets attribute {@link #myCharacter}.<br/>
-     * 
+     *
      * @param pMyCharacter Value to which {@link #myCharacter} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -201,7 +201,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
     /**
      * Method sets attribute {@link #myDouble}.<br/>
-     * 
+     *
      * @param pMyDouble Value to which {@link #myDouble} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -213,7 +213,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
     /**
      * Method sets attribute {@link #myFloat}.<br/>
-     * 
+     *
      * @param pMyFloat Value to which {@link #myFloat} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -225,7 +225,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
     /**
      * Method sets attribute {@link #myLong}.<br/>
-     * 
+     *
      * @param pMyLong Value to which {@link #myLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -237,7 +237,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
     /**
      * Method sets attribute {@link #myShort}.<br/>
-     * 
+     *
      * @param pMyShort Value to which {@link #myShort} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -249,7 +249,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
     /**
      * Method sets attribute {@link #myByteArray}.<br/>
-     * 
+     *
      * @param pMyByteArray Value to which {@link #myByteArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -268,7 +268,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
     /**
      * Method creates a new instance of class WrapperDatatypeServiceObject. The object will be initialized with the
      * values of the builder.
-     * 
+     *
      * @return WrapperDatatypeServiceObject Created object. The method never returns null.
      */
     public WrapperDatatypeServiceObject build( ) {
@@ -278,7 +278,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
     /**
      * Method creates a new validated instance of class WrapperDatatypeServiceObject. The object will be initialized
      * with the values of the builder and validated afterwards.
-     * 
+     *
      * @return WrapperDatatypeServiceObject Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -291,7 +291,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method returns attribute {@link #myBoolean}.<br/>
-   * 
+   *
    * @return {@link Boolean} Value to which {@link #myBoolean} is set.
    */
   public Boolean getMyBoolean( ) {
@@ -300,7 +300,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method sets attribute {@link #myBoolean}.<br/>
-   * 
+   *
    * @param pMyBoolean Value to which {@link #myBoolean} should be set.
    */
   public void setMyBoolean( Boolean pMyBoolean ) {
@@ -310,7 +310,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method returns attribute {@link #myByte}.<br/>
-   * 
+   *
    * @return {@link Byte} Value to which {@link #myByte} is set.
    */
   public Byte getMyByte( ) {
@@ -319,7 +319,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method sets attribute {@link #myByte}.<br/>
-   * 
+   *
    * @param pMyByte Value to which {@link #myByte} should be set.
    */
   public void setMyByte( Byte pMyByte ) {
@@ -329,7 +329,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method returns attribute {@link #myCharacter}.<br/>
-   * 
+   *
    * @return {@link Character} Value to which {@link #myCharacter} is set.
    */
   public Character getMyCharacter( ) {
@@ -338,7 +338,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method sets attribute {@link #myCharacter}.<br/>
-   * 
+   *
    * @param pMyCharacter Value to which {@link #myCharacter} should be set.
    */
   public void setMyCharacter( Character pMyCharacter ) {
@@ -348,7 +348,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method returns attribute {@link #myDouble}.<br/>
-   * 
+   *
    * @return {@link Double} Value to which {@link #myDouble} is set.
    */
   public Double getMyDouble( ) {
@@ -357,7 +357,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method sets attribute {@link #myDouble}.<br/>
-   * 
+   *
    * @param pMyDouble Value to which {@link #myDouble} should be set.
    */
   public void setMyDouble( Double pMyDouble ) {
@@ -367,7 +367,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method returns attribute {@link #myFloat}.<br/>
-   * 
+   *
    * @return {@link Float} Value to which {@link #myFloat} is set.
    */
   public Float getMyFloat( ) {
@@ -376,7 +376,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method sets attribute {@link #myFloat}.<br/>
-   * 
+   *
    * @param pMyFloat Value to which {@link #myFloat} should be set.
    */
   public void setMyFloat( Float pMyFloat ) {
@@ -386,7 +386,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method returns attribute {@link #myLong}.<br/>
-   * 
+   *
    * @return {@link Long} Value to which {@link #myLong} is set.
    */
   public Long getMyLong( ) {
@@ -395,7 +395,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method sets attribute {@link #myLong}.<br/>
-   * 
+   *
    * @param pMyLong Value to which {@link #myLong} should be set.
    */
   public void setMyLong( Long pMyLong ) {
@@ -405,7 +405,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method returns attribute {@link #myShort}.<br/>
-   * 
+   *
    * @return {@link Short} Value to which {@link #myShort} is set.
    */
   public Short getMyShort( ) {
@@ -414,7 +414,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method sets attribute {@link #myShort}.<br/>
-   * 
+   *
    * @param pMyShort Value to which {@link #myShort} should be set.
    */
   public void setMyShort( Short pMyShort ) {
@@ -424,7 +424,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method returns attribute {@link #myByteArray}.<br/>
-   * 
+   *
    * @return byte Value to which {@link #myByteArray} is set.
    */
   public byte[] getMyByteArray( ) {
@@ -441,7 +441,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
 
   /**
    * Method sets attribute {@link #myByteArray}.<br/>
-   * 
+   *
    * @param pMyByteArray Value to which {@link #myByteArray} should be set.
    */
   public void setMyByteArray( byte[] pMyByteArray ) {
@@ -500,7 +500,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

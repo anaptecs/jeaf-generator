@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting.impl.schufa;
@@ -96,7 +96,7 @@ final class PerformSchufaCheck_SchufaRequest_SchufaService_Command extends Comma
   /**
    * Initialize object. All parameters from method "performSchufaCheck" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pRequest SchufaRequest
    */
   PerformSchufaCheck_SchufaRequest_SchufaService_Command( SchufaRequest pRequest ) {
@@ -107,7 +107,7 @@ final class PerformSchufaCheck_SchufaRequest_SchufaService_Command extends Comma
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -133,7 +133,7 @@ final class PerformSchufaCheck_SchufaRequest_SchufaService_Command extends Comma
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -143,7 +143,7 @@ final class PerformSchufaCheck_SchufaRequest_SchufaService_Command extends Comma
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */

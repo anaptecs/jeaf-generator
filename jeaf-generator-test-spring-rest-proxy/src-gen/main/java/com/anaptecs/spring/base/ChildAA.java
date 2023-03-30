@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -47,7 +47,7 @@ public class ChildAA extends ChildA {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected ChildAA( Builder pBuilder ) {
@@ -61,7 +61,7 @@ public class ChildAA extends ChildA {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new ChildAA objects.
    */
   public static Builder builder( ) {
@@ -70,7 +70,7 @@ public class ChildAA extends ChildA {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new ChildAA objects. The method never returns null.
    */
@@ -117,7 +117,7 @@ public class ChildAA extends ChildA {
 
     /**
      * Method sets attribute {@link #parentAttribute}.<br/>
-     * 
+     *
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -130,7 +130,7 @@ public class ChildAA extends ChildA {
 
     /**
      * Method sets attribute {@link #childAAttribute}.<br/>
-     * 
+     *
      * @param pChildAAttribute Value to which {@link #childAAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -143,7 +143,7 @@ public class ChildAA extends ChildA {
 
     /**
      * Method sets attribute {@link #childAAAttribute}.<br/>
-     * 
+     *
      * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -155,7 +155,7 @@ public class ChildAA extends ChildA {
 
     /**
      * Method sets attribute {@link #sizedArray}.<br/>
-     * 
+     *
      * @param pSizedArray Value to which {@link #sizedArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -173,7 +173,7 @@ public class ChildAA extends ChildA {
 
     /**
      * Method sets attribute {@link #requiredArray}.<br/>
-     * 
+     *
      * @param pRequiredArray Collection to which {@link #requiredArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -191,7 +191,7 @@ public class ChildAA extends ChildA {
 
     /**
      * Method creates a new instance of class ChildAA. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return ChildAA Created object. The method never returns null.
      */
     public ChildAA build( ) {
@@ -204,7 +204,7 @@ public class ChildAA extends ChildA {
    * Multi<br/>
    * line<br/>
    * docs
-   * 
+   *
    * @return byte Value to which {@link #childAAAttribute} is set.
    */
   public byte getChildAAAttribute( ) {
@@ -216,7 +216,7 @@ public class ChildAA extends ChildA {
    * Multi<br/>
    * line<br/>
    * docs
-   * 
+   *
    * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
    */
   public void setChildAAAttribute( byte pChildAAAttribute ) {
@@ -226,7 +226,7 @@ public class ChildAA extends ChildA {
 
   /**
    * Method returns attribute {@link #sizedArray}.<br/>
-   * 
+   *
    * @return int Value to which {@link #sizedArray} is set.
    */
   public int[] getSizedArray( ) {
@@ -243,7 +243,7 @@ public class ChildAA extends ChildA {
 
   /**
    * Method sets attribute {@link #sizedArray}.<br/>
-   * 
+   *
    * @param pSizedArray Value to which {@link #sizedArray} should be set.
    */
   public void setSizedArray( int[] pSizedArray ) {
@@ -259,7 +259,7 @@ public class ChildAA extends ChildA {
 
   /**
    * Method returns attribute {@link #requiredArray}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #requiredArray} is set.
    */
   public String[] getRequiredArray( ) {
@@ -276,7 +276,7 @@ public class ChildAA extends ChildA {
 
   /**
    * Method sets attribute {@link #requiredArray}.<br/>
-   * 
+   *
    * @param pRequiredArray Value to which {@link #requiredArray} should be set.
    */
   public void setRequiredArray( String[] pRequiredArray ) {
@@ -326,7 +326,7 @@ public class ChildAA extends ChildA {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

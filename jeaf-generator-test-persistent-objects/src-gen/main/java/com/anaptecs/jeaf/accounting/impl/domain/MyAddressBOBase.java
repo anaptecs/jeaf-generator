@@ -73,7 +73,7 @@ public abstract class MyAddressBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<MyAddressBO> findAllMyAddressBOs( ) {
@@ -82,7 +82,7 @@ public abstract class MyAddressBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #street}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #street} is set.
    */
   public String getStreet( ) {
@@ -91,7 +91,7 @@ public abstract class MyAddressBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #street}.<br/>
-   * 
+   *
    * @param pStreet Value to which {@link #street} should be set.
    */
   public void setStreet( String pStreet ) {
@@ -101,7 +101,7 @@ public abstract class MyAddressBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #zipCode}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #zipCode} is set.
    */
   public Integer getZipCode( ) {
@@ -110,7 +110,7 @@ public abstract class MyAddressBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #zipCode}.<br/>
-   * 
+   *
    * @param pZipCode Value to which {@link #zipCode} should be set.
    */
   public void setZipCode( Integer pZipCode ) {
@@ -120,7 +120,7 @@ public abstract class MyAddressBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #city}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #city} is set.
    */
   public String getCity( ) {
@@ -129,7 +129,7 @@ public abstract class MyAddressBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #city}.<br/>
-   * 
+   *
    * @param pCity Value to which {@link #city} should be set.
    */
   public void setCity( String pCity ) {
@@ -139,7 +139,7 @@ public abstract class MyAddressBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #country}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #country} is set.
    */
   public String getCountry( ) {
@@ -148,7 +148,7 @@ public abstract class MyAddressBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #country}.<br/>
-   * 
+   *
    * @param pCountry Value to which {@link #country} should be set.
    */
   public void setCountry( String pCountry ) {
@@ -158,7 +158,7 @@ public abstract class MyAddressBOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.serviceproviders;
@@ -40,7 +40,7 @@ abstract class MyServiceProviderImplBase implements ServiceProviderImplementatio
 
   /**
    * Method returns the value of the property "myProperty".
-   * 
+   *
    * @return {@link String} Value of the property "myProperty". The method returns null if no value for the property is
    * defined.
    */
@@ -50,7 +50,7 @@ abstract class MyServiceProviderImplBase implements ServiceProviderImplementatio
 
   /**
    * Method returns the value of the property "deprecated".
-   * 
+   *
    * @return {@link Boolean} Value of the property "deprecated". The method returns null if no value for the property is
    * defined.
    */

@@ -95,7 +95,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<BankBO> findAllBankBOs( ) {
@@ -104,7 +104,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #employees}.<br/>
-   * 
+   *
    * @return {@link Set<EmployeeBO>} Value to which {@link #employees} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -115,7 +115,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #employees}.
-   * 
+   *
    * @param pEmployees Object that should be added to {@link #employees}. The parameter must not be null.
    */
   public void addToEmployees( EmployeeBO pEmployees ) {
@@ -135,7 +135,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #employees}.
-   * 
+   *
    * @param pEmployees Collection with all objects that should be added to {@link #employees}. The parameter must not be
    * null.
    */
@@ -150,7 +150,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #employees}.<br/>
-   * 
+   *
    * @param pEmployees Object that should be removed from {@link #employees}. The parameter must not be null.
    */
   public void removeFromEmployees( EmployeeBO pEmployees ) {
@@ -180,7 +180,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #accounts}.<br/>
-   * 
+   *
    * @return {@link Set<AccountBO>} Value to which {@link #accounts} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -191,7 +191,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #accounts}.
-   * 
+   *
    * @param pAccounts Object that should be added to {@link #accounts}. The parameter must not be null.
    */
   public void addToAccounts( AccountBO pAccounts ) {
@@ -211,7 +211,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #accounts}.
-   * 
+   *
    * @param pAccounts Collection with all objects that should be added to {@link #accounts}. The parameter must not be
    * null.
    */
@@ -226,7 +226,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #accounts}.<br/>
-   * 
+   *
    * @param pAccounts Object that should be removed from {@link #accounts}. The parameter must not be null.
    */
   public void removeFromAccounts( AccountBO pAccounts ) {
@@ -256,7 +256,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -265,7 +265,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -275,7 +275,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #code}.<br/>
-   * 
+   *
    * @return {@link Long} Value to which {@link #code} is set.
    */
   public Long getCode( ) {
@@ -284,7 +284,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #code}.<br/>
-   * 
+   *
    * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( Long pCode ) {
@@ -294,7 +294,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #type}.<br/>
-   * 
+   *
    * @return {@link Short} Value to which {@link #type} is set.
    */
   public Short getType( ) {
@@ -303,7 +303,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #type}.<br/>
-   * 
+   *
    * @param pType Value to which {@link #type} should be set.
    */
   public void setType( Short pType ) {
@@ -313,7 +313,7 @@ public abstract class BankBOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

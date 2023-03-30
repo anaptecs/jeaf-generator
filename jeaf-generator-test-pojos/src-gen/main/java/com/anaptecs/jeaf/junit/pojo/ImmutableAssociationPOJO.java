@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.pojo;
@@ -75,7 +75,7 @@ public class ImmutableAssociationPOJO {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected ImmutableAssociationPOJO( Builder pBuilder ) {
@@ -101,7 +101,7 @@ public class ImmutableAssociationPOJO {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new ImmutableAssociationPOJO objects.
    */
   public static Builder builder( ) {
@@ -110,7 +110,7 @@ public class ImmutableAssociationPOJO {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new ImmutableAssociationPOJO objects. The method
    * never returns null.
@@ -158,7 +158,7 @@ public class ImmutableAssociationPOJO {
 
     /**
      * Method sets attribute {@link #yetAnotherAttribute}.<br/>
-     * 
+     *
      * @param pYetAnotherAttribute Value to which {@link #yetAnotherAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -170,7 +170,7 @@ public class ImmutableAssociationPOJO {
 
     /**
      * Method sets association {@link #readonlyAssociation}.<br/>
-     * 
+     *
      * @param pReadonlyAssociation Collection to which {@link #readonlyAssociation} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -187,7 +187,7 @@ public class ImmutableAssociationPOJO {
 
     /**
      * Method sets association {@link #immutableChildPOJO}.<br/>
-     * 
+     *
      * @param pImmutableChildPOJO Value to which {@link #immutableChildPOJO} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -198,7 +198,7 @@ public class ImmutableAssociationPOJO {
 
     /**
      * Method sets association {@link #deprecatedRefs}.<br/>
-     * 
+     *
      * @param pDeprecatedRefs Collection to which {@link #deprecatedRefs} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -216,7 +216,7 @@ public class ImmutableAssociationPOJO {
 
     /**
      * Method sets association {@link #deprecatedRef}.<br/>
-     * 
+     *
      * @param pDeprecatedRef Value to which {@link #deprecatedRef} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -229,7 +229,7 @@ public class ImmutableAssociationPOJO {
     /**
      * Method creates a new instance of class ImmutableAssociationPOJO. The object will be initialized with the values
      * of the builder.
-     * 
+     *
      * @return ImmutableAssociationPOJO Created object. The method never returns null.
      */
     public ImmutableAssociationPOJO build( ) {
@@ -239,7 +239,7 @@ public class ImmutableAssociationPOJO {
     /**
      * Method creates a new validated instance of class ImmutableAssociationPOJO. The object will be initialized with
      * the values of the builder and validated afterwards.
-     * 
+     *
      * @return ImmutableAssociationPOJO Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -252,7 +252,7 @@ public class ImmutableAssociationPOJO {
 
   /**
    * Method returns attribute {@link #yetAnotherAttribute}.<br/>
-   * 
+   *
    * @return boolean Value to which {@link #yetAnotherAttribute} is set.
    */
   public boolean getYetAnotherAttribute( ) {
@@ -261,7 +261,7 @@ public class ImmutableAssociationPOJO {
 
   /**
    * Method returns association {@link #readonlyAssociation}.<br/>
-   * 
+   *
    * @return {@link SortedSet<ImmutablePOJO>} Value to which {@link #readonlyAssociation} is set. The method never
    * returns null and the returned collection is unmodifiable.
    */
@@ -272,7 +272,7 @@ public class ImmutableAssociationPOJO {
 
   /**
    * Method returns association {@link #immutableChildPOJO}.<br/>
-   * 
+   *
    * @return {@link ImmutableChildPOJO} Value to which {@link #immutableChildPOJO} is set.
    */
   public ImmutableChildPOJO getImmutableChildPOJO( ) {
@@ -281,7 +281,7 @@ public class ImmutableAssociationPOJO {
 
   /**
    * Method returns association {@link #deprecatedRefs}.<br/>
-   * 
+   *
    * @return {@link Set<ImmutableChildPOJO>} Value to which {@link #deprecatedRefs} is set. The method never returns
    * null and the returned collection is unmodifiable.
    */
@@ -293,7 +293,7 @@ public class ImmutableAssociationPOJO {
 
   /**
    * Method adds the passed object to {@link #deprecatedRefs}.
-   * 
+   *
    * @param pDeprecatedRefs Object that should be added to {@link #deprecatedRefs}. The parameter must not be null.
    */
   @Deprecated
@@ -306,7 +306,7 @@ public class ImmutableAssociationPOJO {
 
   /**
    * Method adds all passed objects to {@link #deprecatedRefs}.
-   * 
+   *
    * @param pDeprecatedRefs Collection with all objects that should be added to {@link #deprecatedRefs}. The parameter
    * must not be null.
    */
@@ -322,7 +322,7 @@ public class ImmutableAssociationPOJO {
 
   /**
    * Method removes the passed object from {@link #deprecatedRefs}.<br/>
-   * 
+   *
    * @param pDeprecatedRefs Object that should be removed from {@link #deprecatedRefs}. The parameter must not be null.
    */
   @Deprecated
@@ -344,7 +344,7 @@ public class ImmutableAssociationPOJO {
 
   /**
    * Method returns association {@link #deprecatedRef}.<br/>
-   * 
+   *
    * @return {@link ChildPOJO} Value to which {@link #deprecatedRef} is set.
    */
   @Deprecated
@@ -354,7 +354,7 @@ public class ImmutableAssociationPOJO {
 
   /**
    * Method sets association {@link #deprecatedRef}.<br/>
-   * 
+   *
    * @param pDeprecatedRef Value to which {@link #deprecatedRef} should be set.
    */
   @Deprecated
@@ -391,7 +391,7 @@ public class ImmutableAssociationPOJO {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

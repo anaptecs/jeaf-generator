@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting;
@@ -81,7 +81,7 @@ public class Booking implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected Booking( Builder pBuilder ) {
@@ -103,7 +103,7 @@ public class Booking implements ServiceObject {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new Booking objects.
    */
   public static Builder builder( ) {
@@ -112,7 +112,7 @@ public class Booking implements ServiceObject {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Booking objects. The method never returns null.
    */
@@ -163,7 +163,7 @@ public class Booking implements ServiceObject {
 
     /**
      * Method sets attribute {@link #amount}.<br/>
-     * 
+     *
      * @param pAmount Value to which {@link #amount} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -175,7 +175,7 @@ public class Booking implements ServiceObject {
 
     /**
      * Method sets association {@link #source}.<br/>
-     * 
+     *
      * @param pSource Value to which {@link #source} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -186,7 +186,7 @@ public class Booking implements ServiceObject {
 
     /**
      * Method sets association {@link #target}.<br/>
-     * 
+     *
      * @param pTarget Value to which {@link #target} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -197,7 +197,7 @@ public class Booking implements ServiceObject {
 
     /**
      * Method sets association {@link #token}.<br/>
-     * 
+     *
      * @param pToken Value to which {@link #token} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -208,7 +208,7 @@ public class Booking implements ServiceObject {
 
     /**
      * Method sets association {@link #remitters}.<br/>
-     * 
+     *
      * @param pRemitters Collection to which {@link #remitters} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -225,7 +225,7 @@ public class Booking implements ServiceObject {
 
     /**
      * Method sets association {@link #account}.<br/>
-     * 
+     *
      * @param pAccount Value to which {@link #account} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -236,7 +236,7 @@ public class Booking implements ServiceObject {
 
     /**
      * Method creates a new instance of class Booking. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Booking Created object. The method never returns null.
      */
     public Booking build( ) {
@@ -246,7 +246,7 @@ public class Booking implements ServiceObject {
     /**
      * Method creates a new validated instance of class Booking. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return Booking Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -260,7 +260,7 @@ public class Booking implements ServiceObject {
   /**
    * Method returns attribute {@link #amount}.<br/>
    * Amount of the booking. The attribute must not be null.
-   * 
+   *
    * @return {@link Double} Value to which {@link #amount} is set.
    */
   public Double getAmount( ) {
@@ -270,7 +270,7 @@ public class Booking implements ServiceObject {
   /**
    * Method sets attribute {@link #amount}.<br/>
    * Amount of the booking. The attribute must not be null.
-   * 
+   *
    * @param pAmount Value to which {@link #amount} should be set.
    */
   public void setAmount( Double pAmount ) {
@@ -280,7 +280,7 @@ public class Booking implements ServiceObject {
 
   /**
    * Method returns association {@link #source}.<br/>
-   * 
+   *
    * @return {@link Account} Value to which {@link #source} is set.
    */
   public Account getSource( ) {
@@ -289,7 +289,7 @@ public class Booking implements ServiceObject {
 
   /**
    * Method sets association {@link #source}.<br/>
-   * 
+   *
    * @param pSource Value to which {@link #source} should be set.
    */
   public void setSource( Account pSource ) {
@@ -305,7 +305,7 @@ public class Booking implements ServiceObject {
 
   /**
    * Method returns association {@link #target}.<br/>
-   * 
+   *
    * @return {@link Account} Value to which {@link #target} is set.
    */
   public Account getTarget( ) {
@@ -314,7 +314,7 @@ public class Booking implements ServiceObject {
 
   /**
    * Method sets association {@link #target}.<br/>
-   * 
+   *
    * @param pTarget Value to which {@link #target} should be set.
    */
   public void setTarget( Account pTarget ) {
@@ -330,7 +330,7 @@ public class Booking implements ServiceObject {
 
   /**
    * Method returns association {@link #token}.<br/>
-   * 
+   *
    * @return {@link SecurityToken} Value to which {@link #token} is set.
    */
   public SecurityToken getToken( ) {
@@ -339,7 +339,7 @@ public class Booking implements ServiceObject {
 
   /**
    * Method sets association {@link #token}.<br/>
-   * 
+   *
    * @param pToken Value to which {@link #token} should be set.
    */
   public void setToken( SecurityToken pToken ) {
@@ -370,7 +370,7 @@ public class Booking implements ServiceObject {
 
   /**
    * Method returns association {@link #remitters}.<br/>
-   * 
+   *
    * @return {@link Set<Person>} Value to which {@link #remitters} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -381,7 +381,7 @@ public class Booking implements ServiceObject {
 
   /**
    * Method adds the passed object to {@link #remitters}.
-   * 
+   *
    * @param pRemitters Object that should be added to {@link #remitters}. The parameter must not be null.
    */
   public void addToRemitters( Person pRemitters ) {
@@ -393,7 +393,7 @@ public class Booking implements ServiceObject {
 
   /**
    * Method adds all passed objects to {@link #remitters}.
-   * 
+   *
    * @param pRemitters Collection with all objects that should be added to {@link #remitters}. The parameter must not be
    * null.
    */
@@ -408,7 +408,7 @@ public class Booking implements ServiceObject {
 
   /**
    * Method removes the passed object from {@link #remitters}.<br/>
-   * 
+   *
    * @param pRemitters Object that should be removed from {@link #remitters}. The parameter must not be null.
    */
   public void removeFromRemitters( Person pRemitters ) {
@@ -428,7 +428,7 @@ public class Booking implements ServiceObject {
 
   /**
    * Method returns association {@link #account}.<br/>
-   * 
+   *
    * @return {@link Account} Value to which {@link #account} is set.
    */
   public Account getAccount( ) {
@@ -437,7 +437,7 @@ public class Booking implements ServiceObject {
 
   /**
    * Method sets association {@link #account}.<br/>
-   * 
+   *
    * @param pAccount Value to which {@link #account} should be set.
    */
   public void setAccount( Account pAccount ) {
@@ -487,7 +487,7 @@ public class Booking implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

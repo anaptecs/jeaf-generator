@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.impl.core;
@@ -187,9 +187,9 @@ public final class SecurityTestComponent implements ComponentImplementation {
 
   /**
    * Method returns the name of the component.
-   * 
+   *
    * @return String Name of the component. The method never returns null.
-   * 
+   *
    * @see Component#getName()
    */
   @Override
@@ -211,7 +211,7 @@ public final class SecurityTestComponent implements ComponentImplementation {
 
   /**
    * Method returns the tracing object of this component.
-   * 
+   *
    * @return {@link Trace} Tracing object of this component. The method never returns null.
    */
   @Override
@@ -222,7 +222,7 @@ public final class SecurityTestComponent implements ComponentImplementation {
   /**
    * Method returns the class objects of all services that are provided by this component. This also includes services
    * that are provided by ports of the component.
-   * 
+   *
    * @return {@link Collection} Class objects of all service interfaces that are provided by this component. The method
    * never returns null.
    */
@@ -234,7 +234,7 @@ public final class SecurityTestComponent implements ComponentImplementation {
   /**
    * Method returns the class objects of all services that are required by this component. This also includes services
    * that are required by ports of the component.
-   * 
+   *
    * @return {@link Collection} Class objects of all service interfaces that are required by this component. The method
    * never returns null.
    */
@@ -245,10 +245,10 @@ public final class SecurityTestComponent implements ComponentImplementation {
 
   /**
    * Method returns the transactional behavior of the component.
-   * 
+   *
    * @return {@link TransactionBehavior} Transactional behavior of all services of the component. The method never
    * returns null.
-   * 
+   *
    * @see com.anaptecs.jeaf.core.spi.ComponentImplementation#getTransactionBehavior()
    */
   @Override
@@ -258,9 +258,9 @@ public final class SecurityTestComponent implements ComponentImplementation {
 
   /**
    * Method returns the layer to which this component belongs to.
-   * 
+   *
    * @return {@link Layer} Layer to which this component belongs to. The method never returns null.
-   * 
+   *
    * @see com.anaptecs.jeaf.core.api.Component#getLayer()
    */
   @Override
@@ -270,9 +270,9 @@ public final class SecurityTestComponent implements ComponentImplementation {
 
   /**
    * Method returns the communication protocol through which services of the component can be used.
-   * 
+   *
    * @return {@link CommunicationProtocol} Communication protocol required to use services of this component.
-   * 
+   *
    * @see com.anaptecs.jeaf.core.spi.Component#getCommunicationProtocol()
    */
   @Override
@@ -282,10 +282,10 @@ public final class SecurityTestComponent implements ComponentImplementation {
 
   /**
    * Method returns whether the component implementation uses a JPA persistence unit to store data or not.
-   * 
+   *
    * @return boolean The method returns true if the component implementation uses a JPA persistence unit and false in
    * all other cases.
-   * 
+   *
    * @see #getPersistenceUnitName()
    */
   @Override
@@ -295,10 +295,10 @@ public final class SecurityTestComponent implements ComponentImplementation {
 
   /**
    * Method returns the name of the JPA persistence unit that is used by the component implementation.
-   * 
+   *
    * @return String Name of the persistence unit. The method never returns null. The method will throw an exception if
    * the component implementation does not use a JPA persistence unit.
-   * 
+   *
    * @see #hasPersistenceUnit()
    */
   @Override
@@ -316,7 +316,7 @@ public final class SecurityTestComponent implements ComponentImplementation {
   /**
    * Method returns whether the component uses JEAFs security mechanism for its services or not. If JEAF security is
    * used then a security check will be performed before each service call.
-   * 
+   *
    * @return boolean Method returns true if this component uses JEAFs security mechanism and false in all other cases.
    */
   @Override
@@ -326,7 +326,7 @@ public final class SecurityTestComponent implements ComponentImplementation {
 
   /**
    * Method returns a set of service channel interceptors that are specific for the implementation of this component.
-   * 
+   *
    * @return {@link Set} Set of component specific interceptors. The method never returns null.
    */
   @Override
@@ -336,7 +336,7 @@ public final class SecurityTestComponent implements ComponentImplementation {
 
   /**
    * Method returns the configuration of this component.
-   * 
+   *
    * @return {@link SecurityTestComponentConfiguration} Object providing access to the configuration of this component.
    * The method never returns null.
    */

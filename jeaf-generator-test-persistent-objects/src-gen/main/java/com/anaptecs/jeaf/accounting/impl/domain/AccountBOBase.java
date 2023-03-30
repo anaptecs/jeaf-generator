@@ -86,7 +86,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<AccountBO> findAllAccountBOs( ) {
@@ -95,7 +95,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #number}.<br/>
-   * 
+   *
    * @return {@link Long} Value to which {@link #number} is set.
    */
   public Long getNumber( ) {
@@ -104,7 +104,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #number}.<br/>
-   * 
+   *
    * @param pNumber Value to which {@link #number} should be set.
    */
   public void setNumber( Long pNumber ) {
@@ -114,7 +114,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #bank}.<br/>
-   * 
+   *
    * @return {@link BankBO} Value to which {@link #bank} is set.
    */
   public BankBO getBank( ) {
@@ -124,7 +124,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method sets association {@link #bank}.<br/>
-   * 
+   *
    * @param pBank Value to which {@link #bank} should be set.
    */
   public void setBank( BankBO pBank ) {
@@ -155,7 +155,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #customer}.<br/>
-   * 
+   *
    * @return {@link CustomerBO} Value to which {@link #customer} is set.
    */
   public CustomerBO getCustomer( ) {
@@ -165,7 +165,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method sets association {@link #customer}.<br/>
-   * 
+   *
    * @param pCustomer Value to which {@link #customer} should be set.
    */
   public void setCustomer( CustomerBO pCustomer ) {
@@ -196,7 +196,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #bookings}.<br/>
-   * 
+   *
    * @return {@link Set<BookingBO>} Value to which {@link #bookings} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -207,7 +207,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #bookings}.
-   * 
+   *
    * @param pBookings Object that should be added to {@link #bookings}. The parameter must not be null.
    */
   public void addToBookings( BookingBO pBookings ) {
@@ -227,7 +227,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #bookings}.
-   * 
+   *
    * @param pBookings Collection with all objects that should be added to {@link #bookings}. The parameter must not be
    * null.
    */
@@ -242,7 +242,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #bookings}.<br/>
-   * 
+   *
    * @param pBookings Object that should be removed from {@link #bookings}. The parameter must not be null.
    */
   public void removeFromBookings( BookingBO pBookings ) {
@@ -272,7 +272,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #authorizedPersons}.<br/>
-   * 
+   *
    * @return {@link Set<MyPersonBO>} Value to which {@link #authorizedPersons} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
@@ -283,7 +283,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #authorizedPersons}.
-   * 
+   *
    * @param pAuthorizedPersons Object that should be added to {@link #authorizedPersons}. The parameter must not be
    * null.
    */
@@ -301,7 +301,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #authorizedPersons}.
-   * 
+   *
    * @param pAuthorizedPersons Collection with all objects that should be added to {@link #authorizedPersons}. The
    * parameter must not be null.
    */
@@ -316,7 +316,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #authorizedPersons}.<br/>
-   * 
+   *
    * @param pAuthorizedPersons Object that should be removed from {@link #authorizedPersons}. The parameter must not be
    * null.
    */
@@ -347,7 +347,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #interestRate}.<br/>
-   * 
+   *
    * @return {@link Float} Value to which {@link #interestRate} is set.
    */
   public Float getInterestRate( ) {
@@ -356,7 +356,7 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #interestRate}.<br/>
-   * 
+   *
    * @param pInterestRate Value to which {@link #interestRate} should be set.
    */
   public void setInterestRate( Float pInterestRate ) {
@@ -366,14 +366,14 @@ public abstract class AccountBOBase extends PersistentObject {
 
   /**
    * Method calculates the current balance of the account. Therefore the the amount of every booking is accumulated.
-   * 
+   *
    * @return {@link BigDecimal}
    */
   public abstract BigDecimal calculateBalance( );
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

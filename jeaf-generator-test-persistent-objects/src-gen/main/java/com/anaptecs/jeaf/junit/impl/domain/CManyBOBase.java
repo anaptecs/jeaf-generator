@@ -44,7 +44,7 @@ public abstract class CManyBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<CManyBO> findAllCManyBOs( ) {
@@ -53,7 +53,7 @@ public abstract class CManyBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #cNumber}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #cNumber} is set.
    */
   public Integer getCNumber( ) {
@@ -62,7 +62,7 @@ public abstract class CManyBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #cNumber}.<br/>
-   * 
+   *
    * @param pCNumber Value to which {@link #cNumber} should be set.
    */
   public void setCNumber( Integer pCNumber ) {
@@ -72,7 +72,7 @@ public abstract class CManyBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #aOne}.<br/>
-   * 
+   *
    * @return {@link AOneBO} Value to which {@link #aOne} is set.
    */
   public AOneBO getAOne( ) {
@@ -82,7 +82,7 @@ public abstract class CManyBOBase extends PersistentObject {
 
   /**
    * Method sets association {@link #aOne}.<br/>
-   * 
+   *
    * @param pAOne Value to which {@link #aOne} should be set.
    */
   public void setAOne( AOneBO pAOne ) {
@@ -113,7 +113,7 @@ public abstract class CManyBOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
@@ -27,7 +27,7 @@ public class CompositeID extends CompositeIDBase {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new CompositeID objects.
    */
   public static Builder builder( ) {
@@ -36,7 +36,7 @@ public class CompositeID extends CompositeIDBase {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new CompositeID objects. The method never returns
    * null.
@@ -66,7 +66,7 @@ public class CompositeID extends CompositeIDBase {
 
   /**
    * Method serializes this object into its custom string representation.
-   * 
+   *
    * @return {@link String} Serialized String representation of this object. The method must not return null.
    */
   public String serialize( ) {
@@ -76,7 +76,7 @@ public class CompositeID extends CompositeIDBase {
 
   /**
    * Method deserialized the passed String representation of this object into a new instance of this class.
-   * 
+   *
    * @param pSerialized Serialized representation that should be used to create a new instance. The parameter is never
    * null.
    * @return {@link CompositeID} Instance of this class as it was deserialized from the passed string. The method must

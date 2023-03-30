@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
@@ -46,7 +46,7 @@ public class DiscountOffer implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected DiscountOffer( Builder pBuilder ) {
@@ -63,7 +63,7 @@ public class DiscountOffer implements ServiceObject {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new DiscountOffer objects.
    */
   public static Builder builder( ) {
@@ -72,7 +72,7 @@ public class DiscountOffer implements ServiceObject {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new DiscountOffer objects. The method never returns
    * null.
@@ -111,7 +111,7 @@ public class DiscountOffer implements ServiceObject {
 
     /**
      * Method sets association {@link #campaigns}.<br/>
-     * 
+     *
      * @param pCampaigns Collection to which {@link #campaigns} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -130,7 +130,7 @@ public class DiscountOffer implements ServiceObject {
     /**
      * Method creates a new instance of class DiscountOffer. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return DiscountOffer Created object. The method never returns null.
      */
     public DiscountOffer build( ) {
@@ -140,7 +140,7 @@ public class DiscountOffer implements ServiceObject {
     /**
      * Method creates a new validated instance of class DiscountOffer. The object will be initialized with the values of
      * the builder and validated afterwards.
-     * 
+     *
      * @return DiscountOffer Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -156,7 +156,7 @@ public class DiscountOffer implements ServiceObject {
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #campaigns} is
    * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
-   * 
+   *
    * @return {@link Set<SoftLink>} Value to which {@link #campaigns} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -168,7 +168,7 @@ public class DiscountOffer implements ServiceObject {
 
   /**
    * Method adds the passed object to {@link #campaigns}.
-   * 
+   *
    * @param pCampaigns Object that should be added to {@link #campaigns}. The parameter must not be null.
    */
   @Deprecated
@@ -181,7 +181,7 @@ public class DiscountOffer implements ServiceObject {
 
   /**
    * Method adds all passed objects to {@link #campaigns}.
-   * 
+   *
    * @param pCampaigns Collection with all objects that should be added to {@link #campaigns}. The parameter must not be
    * null.
    */
@@ -197,7 +197,7 @@ public class DiscountOffer implements ServiceObject {
 
   /**
    * Method removes the passed object from {@link #campaigns}.
-   * 
+   *
    * @param pCampaigns Object that should be removed from {@link #campaigns}. The parameter must not be null.
    */
   @Deprecated
@@ -234,7 +234,7 @@ public class DiscountOffer implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

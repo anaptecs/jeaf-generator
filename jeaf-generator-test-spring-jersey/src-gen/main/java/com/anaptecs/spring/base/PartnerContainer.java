@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -31,7 +31,7 @@ public class PartnerContainer {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected PartnerContainer( Builder pBuilder ) {
@@ -46,7 +46,7 @@ public class PartnerContainer {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new PartnerContainer objects.
    */
   public static Builder builder( ) {
@@ -55,7 +55,7 @@ public class PartnerContainer {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new PartnerContainer objects. The method never
    * returns null.
@@ -88,7 +88,7 @@ public class PartnerContainer {
 
     /**
      * Method sets association {@link #partners}.<br/>
-     * 
+     *
      * @param pPartners Collection to which {@link #partners} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -106,7 +106,7 @@ public class PartnerContainer {
     /**
      * Method creates a new instance of class PartnerContainer. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return PartnerContainer Created object. The method never returns null.
      */
     public PartnerContainer build( ) {
@@ -116,7 +116,7 @@ public class PartnerContainer {
 
   /**
    * Method returns association {@link #partners}.<br/>
-   * 
+   *
    * @return {@link List<Partner>} Value to which {@link #partners} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -127,7 +127,7 @@ public class PartnerContainer {
 
   /**
    * Method adds the passed object to {@link #partners}.
-   * 
+   *
    * @param pPartners Object that should be added to {@link #partners}. The parameter must not be null.
    */
   public void addToPartners( Partner pPartners ) {
@@ -137,7 +137,7 @@ public class PartnerContainer {
 
   /**
    * Method adds all passed objects to {@link #partners}.
-   * 
+   *
    * @param pPartners Collection with all objects that should be added to {@link #partners}. The parameter must not be
    * null.
    */
@@ -150,7 +150,7 @@ public class PartnerContainer {
 
   /**
    * Method removes the passed object from {@link #partners}.<br/>
-   * 
+   *
    * @param pPartners Object that should be removed from {@link #partners}. The parameter must not be null.
    */
   public void removeFromPartners( Partner pPartners ) {
@@ -199,7 +199,7 @@ public class PartnerContainer {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

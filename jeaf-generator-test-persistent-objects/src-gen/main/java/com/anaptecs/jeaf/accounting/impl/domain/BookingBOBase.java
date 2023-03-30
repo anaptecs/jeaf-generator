@@ -72,7 +72,7 @@ public abstract class BookingBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<BookingBO> findAllBookingBOs( ) {
@@ -81,7 +81,7 @@ public abstract class BookingBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #amount}.<br/>
-   * 
+   *
    * @return {@link Double} Value to which {@link #amount} is set.
    */
   public Double getAmount( ) {
@@ -90,7 +90,7 @@ public abstract class BookingBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #amount}.<br/>
-   * 
+   *
    * @param pAmount Value to which {@link #amount} should be set.
    */
   public void setAmount( Double pAmount ) {
@@ -100,7 +100,7 @@ public abstract class BookingBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #account}.<br/>
-   * 
+   *
    * @return {@link AccountBO} Value to which {@link #account} is set.
    */
   public AccountBO getAccount( ) {
@@ -110,7 +110,7 @@ public abstract class BookingBOBase extends PersistentObject {
 
   /**
    * Method sets association {@link #account}.<br/>
-   * 
+   *
    * @param pAccount Value to which {@link #account} should be set.
    */
   public void setAccount( AccountBO pAccount ) {
@@ -142,7 +142,7 @@ public abstract class BookingBOBase extends PersistentObject {
   /**
    * Method returns association {@link #remitters}.<br/>
    * Person who authorized the booking.
-   * 
+   *
    * @return {@link Set<MyPersonBO>} Value to which {@link #remitters} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -153,7 +153,7 @@ public abstract class BookingBOBase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #remitters}.
-   * 
+   *
    * @param pRemitters Object that should be added to {@link #remitters}. The parameter must not be null.
    */
   public void addToRemitters( MyPersonBO pRemitters ) {
@@ -165,7 +165,7 @@ public abstract class BookingBOBase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #remitters}.
-   * 
+   *
    * @param pRemitters Collection with all objects that should be added to {@link #remitters}. The parameter must not be
    * null.
    */
@@ -180,7 +180,7 @@ public abstract class BookingBOBase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #remitters}.<br/>
-   * 
+   *
    * @param pRemitters Object that should be removed from {@link #remitters}. The parameter must not be null.
    */
   public void removeFromRemitters( MyPersonBO pRemitters ) {
@@ -200,7 +200,7 @@ public abstract class BookingBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #sessionKey}.<br/>
-   * 
+   *
    * @return byte Value to which {@link #sessionKey} is set.
    */
   public byte[] getSessionKey( ) {
@@ -217,7 +217,7 @@ public abstract class BookingBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #sessionKey}.<br/>
-   * 
+   *
    * @param pSessionKey Value to which {@link #sessionKey} should be set.
    */
   public void setSessionKey( byte[] pSessionKey ) {
@@ -233,7 +233,7 @@ public abstract class BookingBOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.domainObjects;
@@ -50,7 +50,7 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
 
   /**
    * Initialize object. Therefore its domain object id has to be passed.
-   * 
+   *
    * @param pDomainObjectID Id of this domain object. The parameter must not be null.
    */
   public VerbindungspunktDO( DomainObjectID pDomainObjectID ) {
@@ -61,7 +61,7 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
 
   /**
    * Method returns the id of this object.
-   * 
+   *
    * @return {@link DomainObjectID} ID of this object. Since an object must not have an id the method may also return
    * null.
    */
@@ -72,7 +72,7 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
 
   /**
    * Method returns the unversioned object id of this object.
-   * 
+   *
    * @return {@link DomainObjectID} ID of this object. Since an object must not have an id the method may also return
    * null.
    */
@@ -90,7 +90,7 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
 
   /**
    * Method returns attribute {@link #bavName}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #bavName} is set.
    */
   public String getBavName( ) {
@@ -99,7 +99,7 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
 
   /**
    * Method sets attribute {@link #bavName}.<br/>
-   * 
+   *
    * @param pBavName Value to which {@link #bavName} should be set.
    */
   public void setBavName( String pBavName ) {
@@ -109,7 +109,7 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
 
   /**
    * Method returns association {@link #uicCodes}.<br/>
-   * 
+   *
    * @return {@link SortedSet<UICCodeDO>} Value to which {@link #uicCodes} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -120,7 +120,7 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
 
   /**
    * Method adds the passed object to {@link #uicCodes}.
-   * 
+   *
    * @param pUicCodes Object that should be added to {@link #uicCodes}. The parameter must not be null.
    */
   public void addToUicCodes( UICCodeDO pUicCodes ) {
@@ -132,7 +132,7 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
 
   /**
    * Method adds all passed objects to {@link #uicCodes}.
-   * 
+   *
    * @param pUicCodes Collection with all objects that should be added to {@link #uicCodes}. The parameter must not be
    * null.
    */
@@ -147,7 +147,7 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
 
   /**
    * Method removes the passed object from {@link #uicCodes}.<br/>
-   * 
+   *
    * @param pUicCodes Object that should be removed from {@link #uicCodes}. The parameter must not be null.
    */
   public void removeFromUicCodes( UICCodeDO pUicCodes ) {
@@ -186,7 +186,7 @@ public class VerbindungspunktDO extends DomainObject implements Identifiable<Dom
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

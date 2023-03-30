@@ -20,7 +20,7 @@ public enum EnumWithProperties {
 
   /**
    * Method returns attribute {@link #dataUnitID}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #dataUnitID} is set.
    */
   public String getDataUnitID( ) {
@@ -29,7 +29,7 @@ public enum EnumWithProperties {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -38,7 +38,7 @@ public enum EnumWithProperties {
 
   /**
    * Method returns attribute {@link #order}.<br/>
-   * 
+   *
    * @return int Value to which {@link #order} is set.
    */
   public int getOrder( ) {

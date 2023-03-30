@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -32,7 +32,7 @@ public class GeoPosition extends PlaceRef {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected GeoPosition( Builder pBuilder ) {
@@ -45,7 +45,7 @@ public class GeoPosition extends PlaceRef {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new GeoPosition objects.
    */
   public static Builder builder( ) {
@@ -54,7 +54,7 @@ public class GeoPosition extends PlaceRef {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new GeoPosition objects. The method never returns
    * null.
@@ -92,7 +92,7 @@ public class GeoPosition extends PlaceRef {
 
     /**
      * Method returns a new builder.
-     * 
+     *
      * @return {@link Builder} New builder that can be used to create new GeoPosition objects.
      */
     public static Builder newBuilder( ) {
@@ -101,7 +101,7 @@ public class GeoPosition extends PlaceRef {
 
     /**
      * Method creates a new builder and initialize it with the data from the passed object.
-     * 
+     *
      * @param pObject Object that should be used to initialize the builder. The parameter may be null.
      * @return {@link Builder} New builder that can be used to create new GeoPosition objects. The method never returns
      * null.
@@ -112,7 +112,7 @@ public class GeoPosition extends PlaceRef {
 
     /**
      * Method sets attribute {@link #name}.<br/>
-     * 
+     *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -125,7 +125,7 @@ public class GeoPosition extends PlaceRef {
 
     /**
      * Method sets attribute {@link #longitude}.<br/>
-     * 
+     *
      * @param pLongitude Value to which {@link #longitude} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -137,7 +137,7 @@ public class GeoPosition extends PlaceRef {
 
     /**
      * Method sets attribute {@link #latitude}.<br/>
-     * 
+     *
      * @param pLatitude Value to which {@link #latitude} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -150,7 +150,7 @@ public class GeoPosition extends PlaceRef {
     /**
      * Method creates a new instance of class GeoPosition. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return GeoPosition Created object. The method never returns null.
      */
     public GeoPosition build( ) {
@@ -160,7 +160,7 @@ public class GeoPosition extends PlaceRef {
 
   /**
    * Method returns attribute {@link #longitude}.<br/>
-   * 
+   *
    * @return int Value to which {@link #longitude} is set.
    */
   public int getLongitude( ) {
@@ -169,7 +169,7 @@ public class GeoPosition extends PlaceRef {
 
   /**
    * Method sets attribute {@link #longitude}.<br/>
-   * 
+   *
    * @param pLongitude Value to which {@link #longitude} should be set.
    */
   public void setLongitude( int pLongitude ) {
@@ -179,7 +179,7 @@ public class GeoPosition extends PlaceRef {
 
   /**
    * Method returns attribute {@link #latitude}.<br/>
-   * 
+   *
    * @return int Value to which {@link #latitude} is set.
    */
   public int getLatitude( ) {
@@ -188,7 +188,7 @@ public class GeoPosition extends PlaceRef {
 
   /**
    * Method sets attribute {@link #latitude}.<br/>
-   * 
+   *
    * @param pLatitude Value to which {@link #latitude} should be set.
    */
   public void setLatitude( int pLatitude ) {
@@ -218,7 +218,7 @@ public class GeoPosition extends PlaceRef {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

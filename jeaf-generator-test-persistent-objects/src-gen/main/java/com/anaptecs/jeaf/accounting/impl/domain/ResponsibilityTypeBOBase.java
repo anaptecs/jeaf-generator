@@ -61,7 +61,7 @@ public abstract class ResponsibilityTypeBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<ResponsibilityTypeBO> findAllResponsibilityTypeBOs( ) {
@@ -70,7 +70,7 @@ public abstract class ResponsibilityTypeBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #type}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #type} is set.
    */
   public String getType( ) {
@@ -79,7 +79,7 @@ public abstract class ResponsibilityTypeBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #type}.<br/>
-   * 
+   *
    * @param pType Value to which {@link #type} should be set.
    */
   public void setType( String pType ) {
@@ -89,7 +89,7 @@ public abstract class ResponsibilityTypeBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #typeChar}.<br/>
-   * 
+   *
    * @return {@link Character} Value to which {@link #typeChar} is set.
    */
   public Character getTypeChar( ) {
@@ -98,7 +98,7 @@ public abstract class ResponsibilityTypeBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #typeChar}.<br/>
-   * 
+   *
    * @param pTypeChar Value to which {@link #typeChar} should be set.
    */
   public void setTypeChar( Character pTypeChar ) {
@@ -108,7 +108,7 @@ public abstract class ResponsibilityTypeBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #sortorder}.<br/>
-   * 
+   *
    * @return {@link Byte} Value to which {@link #sortorder} is set.
    */
   public Byte getSortorder( ) {
@@ -117,7 +117,7 @@ public abstract class ResponsibilityTypeBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #sortorder}.<br/>
-   * 
+   *
    * @param pSortorder Value to which {@link #sortorder} should be set.
    */
   public void setSortorder( Byte pSortorder ) {
@@ -127,7 +127,7 @@ public abstract class ResponsibilityTypeBOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

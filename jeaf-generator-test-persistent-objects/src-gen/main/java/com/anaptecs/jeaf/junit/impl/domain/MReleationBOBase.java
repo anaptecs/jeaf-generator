@@ -51,7 +51,7 @@ public abstract class MReleationBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<MReleationBO> findAllMReleationBOs( ) {
@@ -60,7 +60,7 @@ public abstract class MReleationBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #ns}.<br/>
-   * 
+   *
    * @return {@link Set<NReleationBO>} Value to which {@link #ns} is set. The method never returns null and the returned
    * collection is unmodifiable.
    */
@@ -71,7 +71,7 @@ public abstract class MReleationBOBase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #ns}.
-   * 
+   *
    * @param pNs Object that should be added to {@link #ns}. The parameter must not be null.
    */
   public void addToNs( NReleationBO pNs ) {
@@ -88,7 +88,7 @@ public abstract class MReleationBOBase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #ns}.
-   * 
+   *
    * @param pNs Collection with all objects that should be added to {@link #ns}. The parameter must not be null.
    */
   public void addToNs( Collection<NReleationBO> pNs ) {
@@ -102,7 +102,7 @@ public abstract class MReleationBOBase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #ns}.<br/>
-   * 
+   *
    * @param pNs Object that should be removed from {@link #ns}. The parameter must not be null.
    */
   public void removeFromNs( NReleationBO pNs ) {
@@ -132,7 +132,7 @@ public abstract class MReleationBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #myNumber}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #myNumber} is set.
    */
   public Integer getMyNumber( ) {
@@ -141,7 +141,7 @@ public abstract class MReleationBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #myNumber}.<br/>
-   * 
+   *
    * @param pMyNumber Value to which {@link #myNumber} should be set.
    */
   public void setMyNumber( Integer pMyNumber ) {
@@ -161,7 +161,7 @@ public abstract class MReleationBOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

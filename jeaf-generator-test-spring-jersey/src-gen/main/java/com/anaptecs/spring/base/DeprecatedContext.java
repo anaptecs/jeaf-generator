@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -60,7 +60,7 @@ public class DeprecatedContext {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected DeprecatedContext( Builder pBuilder ) {
@@ -73,7 +73,7 @@ public class DeprecatedContext {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new DeprecatedContext objects.
    */
   public static Builder builder( ) {
@@ -82,7 +82,7 @@ public class DeprecatedContext {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new DeprecatedContext objects. The method never
    * returns null.
@@ -130,7 +130,7 @@ public class DeprecatedContext {
 
     /**
      * Method sets attribute {@link #accessToken}.<br/>
-     * 
+     *
      * @param pAccessToken Value to which {@link #accessToken} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -142,7 +142,7 @@ public class DeprecatedContext {
 
     /**
      * Method sets attribute {@link #language}.<br/>
-     * 
+     *
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -154,7 +154,7 @@ public class DeprecatedContext {
 
     /**
      * Method sets attribute {@link #resellerID}.<br/>
-     * 
+     *
      * @param pResellerID Value to which {@link #resellerID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -166,7 +166,7 @@ public class DeprecatedContext {
 
     /**
      * Method sets attribute {@link #queryParam}.<br/>
-     * 
+     *
      * @param pQueryParam Value to which {@link #queryParam} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -179,7 +179,7 @@ public class DeprecatedContext {
     /**
      * Method creates a new instance of class DeprecatedContext. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return DeprecatedContext Created object. The method never returns null.
      */
     public DeprecatedContext build( ) {
@@ -189,7 +189,7 @@ public class DeprecatedContext {
 
   /**
    * Method returns attribute {@link #accessToken}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #accessToken} is set.
    */
   public String getAccessToken( ) {
@@ -198,7 +198,7 @@ public class DeprecatedContext {
 
   /**
    * Method sets attribute {@link #accessToken}.<br/>
-   * 
+   *
    * @param pAccessToken Value to which {@link #accessToken} should be set.
    */
   public void setAccessToken( String pAccessToken ) {
@@ -208,7 +208,7 @@ public class DeprecatedContext {
 
   /**
    * Method returns attribute {@link #language}.<br/>
-   * 
+   *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
   public Locale getLanguage( ) {
@@ -217,7 +217,7 @@ public class DeprecatedContext {
 
   /**
    * Method sets attribute {@link #language}.<br/>
-   * 
+   *
    * @param pLanguage Value to which {@link #language} should be set.
    */
   public void setLanguage( Locale pLanguage ) {
@@ -227,7 +227,7 @@ public class DeprecatedContext {
 
   /**
    * Method returns attribute {@link #resellerID}.<br/>
-   * 
+   *
    * @return long Value to which {@link #resellerID} is set.
    */
   public long getResellerID( ) {
@@ -236,7 +236,7 @@ public class DeprecatedContext {
 
   /**
    * Method sets attribute {@link #resellerID}.<br/>
-   * 
+   *
    * @param pResellerID Value to which {@link #resellerID} should be set.
    */
   public void setResellerID( long pResellerID ) {
@@ -246,7 +246,7 @@ public class DeprecatedContext {
 
   /**
    * Method returns attribute {@link #queryParam}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #queryParam} is set.
    */
   public String getQueryParam( ) {
@@ -255,7 +255,7 @@ public class DeprecatedContext {
 
   /**
    * Method sets attribute {@link #queryParam}.<br/>
-   * 
+   *
    * @param pQueryParam Value to which {@link #queryParam} should be set.
    */
   public void setQueryParam( String pQueryParam ) {
@@ -296,7 +296,7 @@ public class DeprecatedContext {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

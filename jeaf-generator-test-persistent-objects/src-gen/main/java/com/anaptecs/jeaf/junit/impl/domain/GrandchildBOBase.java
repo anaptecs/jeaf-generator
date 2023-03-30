@@ -32,7 +32,7 @@ public abstract class GrandchildBOBase extends ChildBO {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<GrandchildBO> findAllGrandchildBOs( ) {
@@ -41,7 +41,7 @@ public abstract class GrandchildBOBase extends ChildBO {
 
   /**
    * Method returns attribute {@link #grandchildName}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #grandchildName} is set.
    */
   public String getGrandchildName( ) {
@@ -50,7 +50,7 @@ public abstract class GrandchildBOBase extends ChildBO {
 
   /**
    * Method sets attribute {@link #grandchildName}.<br/>
-   * 
+   *
    * @param pGrandchildName Value to which {@link #grandchildName} should be set.
    */
   public void setGrandchildName( String pGrandchildName ) {
@@ -60,7 +60,7 @@ public abstract class GrandchildBOBase extends ChildBO {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

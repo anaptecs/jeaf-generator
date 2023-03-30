@@ -65,7 +65,7 @@ public abstract class PublicClassBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<PublicClassBO> findAllPublicClassBOs( ) {
@@ -74,7 +74,7 @@ public abstract class PublicClassBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #period}.<br/>
-   * 
+   *
    * @return {@link Period} Value to which {@link #period} is set.
    */
   public Period getPeriod( ) {
@@ -83,7 +83,7 @@ public abstract class PublicClassBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #period}.<br/>
-   * 
+   *
    * @param pPeriod Value to which {@link #period} should be set.
    */
   public void setPeriod( Period pPeriod ) {
@@ -93,7 +93,7 @@ public abstract class PublicClassBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #gender}.<br/>
-   * 
+   *
    * @return {@link Gender} Value to which {@link #gender} is set.
    */
   public Gender getGender( ) {
@@ -102,7 +102,7 @@ public abstract class PublicClassBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #gender}.<br/>
-   * 
+   *
    * @param pGender Value to which {@link #gender} should be set.
    */
   public void setGender( Gender pGender ) {
@@ -112,7 +112,7 @@ public abstract class PublicClassBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #encryptedString}.<br/>
-   * 
+   *
    * @return {@link EncryptedString} Value to which {@link #encryptedString} is set.
    */
   public EncryptedString getEncryptedString( ) {
@@ -121,7 +121,7 @@ public abstract class PublicClassBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #encryptedString}.<br/>
-   * 
+   *
    * @param pEncryptedString Value to which {@link #encryptedString} should be set.
    */
   public void setEncryptedString( EncryptedString pEncryptedString ) {
@@ -131,7 +131,7 @@ public abstract class PublicClassBOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

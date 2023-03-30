@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting;
@@ -25,7 +25,7 @@ public interface AccountingBasicDataService extends Service {
    * must not be null<br/>
    * @return Bank Service object describing the created bank object. The returned object contains besides the attributes
    * also the object id of the created persistent bank object. The method never returns null.
-   * 
+   *
    * @param pBank
    * @return {@link Bank}
    */

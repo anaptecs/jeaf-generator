@@ -33,7 +33,7 @@ public abstract class OrderingBBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<OrderingB> findAllOrderingBs( ) {
@@ -42,7 +42,7 @@ public abstract class OrderingBBase extends PersistentObject {
 
   /**
    * Method returns association {@link #a1}.<br/>
-   * 
+   *
    * @return {@link OrderingA} Value to which {@link #a1} is set.
    */
   public OrderingA getA1( ) {
@@ -52,7 +52,7 @@ public abstract class OrderingBBase extends PersistentObject {
 
   /**
    * Method sets association {@link #a1}.<br/>
-   * 
+   *
    * @param pA1 Value to which {@link #a1} should be set.
    */
   public void setA1( OrderingA pA1 ) {
@@ -83,7 +83,7 @@ public abstract class OrderingBBase extends PersistentObject {
 
   /**
    * Method returns association {@link #a2}.<br/>
-   * 
+   *
    * @return {@link OrderingA} Value to which {@link #a2} is set.
    */
   public OrderingA getA2( ) {
@@ -93,7 +93,7 @@ public abstract class OrderingBBase extends PersistentObject {
 
   /**
    * Method sets association {@link #a2}.<br/>
-   * 
+   *
    * @param pA2 Value to which {@link #a2} should be set.
    */
   public void setA2( OrderingA pA2 ) {
@@ -124,7 +124,7 @@ public abstract class OrderingBBase extends PersistentObject {
 
   /**
    * Method returns association {@link #a3}.<br/>
-   * 
+   *
    * @return {@link OrderingA} Value to which {@link #a3} is set.
    */
   public OrderingA getA3( ) {
@@ -134,7 +134,7 @@ public abstract class OrderingBBase extends PersistentObject {
 
   /**
    * Method sets association {@link #a3}.<br/>
-   * 
+   *
    * @param pA3 Value to which {@link #a3} should be set.
    */
   public void setA3( OrderingA pA3 ) {
@@ -165,7 +165,7 @@ public abstract class OrderingBBase extends PersistentObject {
 
   /**
    * Method returns association {@link #a4}.<br/>
-   * 
+   *
    * @return {@link OrderingA} Value to which {@link #a4} is set.
    */
   public OrderingA getA4( ) {
@@ -175,7 +175,7 @@ public abstract class OrderingBBase extends PersistentObject {
 
   /**
    * Method sets association {@link #a4}.<br/>
-   * 
+   *
    * @param pA4 Value to which {@link #a4} should be set.
    */
   public void setA4( OrderingA pA4 ) {
@@ -206,7 +206,7 @@ public abstract class OrderingBBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

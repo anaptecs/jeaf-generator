@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting.impl;
@@ -72,7 +72,7 @@ abstract class AccountingBasicDataServiceImplBase implements AccountingBasicData
 
   /**
    * Method returns reference to the persistence service provider that can be used to access the database.
-   * 
+   *
    * @return {@link PersistenceServiceProvider} Reference to persistence service provider. The method never returns
    * null.
    */
@@ -88,10 +88,10 @@ abstract class AccountingBasicDataServiceImplBase implements AccountingBasicData
 
   /**
    * Method returns the SchufaService from which this service depends.
-   * 
+   *
    * @return SchufaService Reference to the SchufaService. The method never returns null after the service has been
    * initialized.
-   * 
+   *
    */
   protected final SchufaService getSchufaService( ) {
     return this.schufaService;
@@ -105,10 +105,10 @@ abstract class AccountingBasicDataServiceImplBase implements AccountingBasicData
 
   /**
    * Method returns the SwiftAccountingService from which this service depends.
-   * 
+   *
    * @return SwiftAccountingService Reference to the SwiftAccountingService. The method never returns null after the
    * service has been initialized.
-   * 
+   *
    */
   protected final SwiftAccountingService getSwiftAccountingService( ) {
     return this.swiftAccountingService;
@@ -116,10 +116,10 @@ abstract class AccountingBasicDataServiceImplBase implements AccountingBasicData
 
   /**
    * Method returns the class object of the service that is implemented by this service instance.
-   * 
+   *
    * @return Class Class object of the service interface that is implemented by the service instance. The method never
    * returns null.
-   * 
+   *
    * @see ServiceImplementation#getServiceType()
    */
   public final Class<? extends Service> getServiceType( ) {
@@ -128,7 +128,7 @@ abstract class AccountingBasicDataServiceImplBase implements AccountingBasicData
 
   /**
    * Method returns the service invocation context for the current service call.
-   * 
+   *
    * @return ServiceInvocationContext Service invocation context for the current call. The method never returns null as
    * long as it is called from within a service call.
    */
@@ -138,7 +138,7 @@ abstract class AccountingBasicDataServiceImplBase implements AccountingBasicData
 
   /**
    * Method returns the value of the property "defaultInterrestRate".
-   * 
+   *
    * @return {@link Float} Value of the property "defaultInterrestRate". The method returns null if no value for the
    * property is defined.
    */

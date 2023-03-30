@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.domainObjects;
@@ -65,7 +65,7 @@ public class KanteDO extends DomainObject {
 
   /**
    * Initialize object. Therefore its domain object id has to be passed.
-   * 
+   *
    * @param pDomainObjectID Id of this domain object. The parameter must not be null.
    */
   public KanteDO( DomainObjectID pDomainObjectID ) {
@@ -75,7 +75,7 @@ public class KanteDO extends DomainObject {
 
   /**
    * Method returns association {@link #abgang}.<br/>
-   * 
+   *
    * @return {@link VerbindungspunktDO} Value to which {@link #abgang} is set.
    */
   public VerbindungspunktDO getAbgang( ) {
@@ -84,7 +84,7 @@ public class KanteDO extends DomainObject {
 
   /**
    * Method sets association {@link #abgang}.<br/>
-   * 
+   *
    * @param pAbgang Value to which {@link #abgang} should be set.
    */
   public void setAbgang( VerbindungspunktDO pAbgang ) {
@@ -100,7 +100,7 @@ public class KanteDO extends DomainObject {
 
   /**
    * Method returns association {@link #bestimmung}.<br/>
-   * 
+   *
    * @return {@link VerbindungspunktDO} Value to which {@link #bestimmung} is set.
    */
   public VerbindungspunktDO getBestimmung( ) {
@@ -109,7 +109,7 @@ public class KanteDO extends DomainObject {
 
   /**
    * Method sets association {@link #bestimmung}.<br/>
-   * 
+   *
    * @param pBestimmung Value to which {@link #bestimmung} should be set.
    */
   public void setBestimmung( VerbindungspunktDO pBestimmung ) {
@@ -125,7 +125,7 @@ public class KanteDO extends DomainObject {
 
   /**
    * Method returns association {@link #verkehrsmittelTyp}.<br/>
-   * 
+   *
    * @return {@link VerkehrsmittelTyp} Value to which {@link #verkehrsmittelTyp} is set.
    */
   public VerkehrsmittelTyp getVerkehrsmittelTyp( ) {
@@ -134,7 +134,7 @@ public class KanteDO extends DomainObject {
 
   /**
    * Method sets association {@link #verkehrsmittelTyp}.<br/>
-   * 
+   *
    * @param pVerkehrsmittelTyp Value to which {@link #verkehrsmittelTyp} should be set.
    */
   public void setVerkehrsmittelTyp( VerkehrsmittelTyp pVerkehrsmittelTyp ) {
@@ -150,7 +150,7 @@ public class KanteDO extends DomainObject {
 
   /**
    * Method returns attribute {@link #gerichtet}.<br/>
-   * 
+   *
    * @return {@link Boolean} Value to which {@link #gerichtet} is set.
    */
   public Boolean getGerichtet( ) {
@@ -159,7 +159,7 @@ public class KanteDO extends DomainObject {
 
   /**
    * Method sets attribute {@link #gerichtet}.<br/>
-   * 
+   *
    * @param pGerichtet Value to which {@link #gerichtet} should be set.
    */
   public void setGerichtet( Boolean pGerichtet ) {
@@ -169,7 +169,7 @@ public class KanteDO extends DomainObject {
 
   /**
    * Method returns association {@link #netzbereiche}.<br/>
-   * 
+   *
    * @return {@link Set<NetzbereichDO>} Value to which {@link #netzbereiche} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
@@ -180,7 +180,7 @@ public class KanteDO extends DomainObject {
 
   /**
    * Method adds the passed object to {@link #netzbereiche}.
-   * 
+   *
    * @param pNetzbereiche Object that should be added to {@link #netzbereiche}. The parameter must not be null.
    */
   public void addToNetzbereiche( NetzbereichDO pNetzbereiche ) {
@@ -197,7 +197,7 @@ public class KanteDO extends DomainObject {
 
   /**
    * Method adds all passed objects to {@link #netzbereiche}.
-   * 
+   *
    * @param pNetzbereiche Collection with all objects that should be added to {@link #netzbereiche}. The parameter must
    * not be null.
    */
@@ -212,7 +212,7 @@ public class KanteDO extends DomainObject {
 
   /**
    * Method removes the passed object from {@link #netzbereiche}.<br/>
-   * 
+   *
    * @param pNetzbereiche Object that should be removed from {@link #netzbereiche}. The parameter must not be null.
    */
   public void removeFromNetzbereiche( NetzbereichDO pNetzbereiche ) {
@@ -261,7 +261,7 @@ public class KanteDO extends DomainObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

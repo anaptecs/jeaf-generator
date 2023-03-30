@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base.techbase;
@@ -22,7 +22,7 @@ public class BusinessA extends TechParent {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected BusinessA( Builder pBuilder ) {
@@ -34,7 +34,7 @@ public class BusinessA extends TechParent {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new BusinessA objects.
    */
   public static Builder builder( ) {
@@ -43,7 +43,7 @@ public class BusinessA extends TechParent {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new BusinessA objects. The method never returns
    * null.
@@ -78,7 +78,7 @@ public class BusinessA extends TechParent {
 
     /**
      * Method sets attribute {@link #techAttribute}.<br/>
-     * 
+     *
      * @param pTechAttribute Value to which {@link #techAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -91,7 +91,7 @@ public class BusinessA extends TechParent {
 
     /**
      * Method sets attribute {@link #businessAttribute}.<br/>
-     * 
+     *
      * @param pBusinessAttribute Value to which {@link #businessAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -103,7 +103,7 @@ public class BusinessA extends TechParent {
 
     /**
      * Method creates a new instance of class BusinessA. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return BusinessA Created object. The method never returns null.
      */
     public BusinessA build( ) {
@@ -113,7 +113,7 @@ public class BusinessA extends TechParent {
 
   /**
    * Method returns attribute {@link #businessAttribute}.<br/>
-   * 
+   *
    * @return int Value to which {@link #businessAttribute} is set.
    */
   public int getBusinessAttribute( ) {
@@ -122,7 +122,7 @@ public class BusinessA extends TechParent {
 
   /**
    * Method sets attribute {@link #businessAttribute}.<br/>
-   * 
+   *
    * @param pBusinessAttribute Value to which {@link #businessAttribute} should be set.
    */
   public void setBusinessAttribute( int pBusinessAttribute ) {
@@ -148,7 +148,7 @@ public class BusinessA extends TechParent {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

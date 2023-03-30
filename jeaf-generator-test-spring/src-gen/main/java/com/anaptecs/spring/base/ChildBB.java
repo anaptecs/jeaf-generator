@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -71,7 +71,7 @@ public class ChildBB extends ChildB {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected ChildBB( Builder pBuilder ) {
@@ -92,7 +92,7 @@ public class ChildBB extends ChildB {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new ChildBB objects.
    */
   public static Builder builder( ) {
@@ -101,7 +101,7 @@ public class ChildBB extends ChildB {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new ChildBB objects. The method never returns null.
    */
@@ -152,7 +152,7 @@ public class ChildBB extends ChildB {
 
     /**
      * Method returns a new builder.
-     * 
+     *
      * @return {@link Builder} New builder that can be used to create new ChildBB objects.
      */
     public static Builder newBuilder( ) {
@@ -161,7 +161,7 @@ public class ChildBB extends ChildB {
 
     /**
      * Method creates a new builder and initialize it with the data from the passed object.
-     * 
+     *
      * @param pObject Object that should be used to initialize the builder. The parameter may be null.
      * @return {@link Builder} New builder that can be used to create new ChildBB objects. The method never returns
      * null.
@@ -172,7 +172,7 @@ public class ChildBB extends ChildB {
 
     /**
      * Method sets attribute {@link #parentAttribute}.<br/>
-     * 
+     *
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -185,7 +185,7 @@ public class ChildBB extends ChildB {
 
     /**
      * Method sets attribute {@link #childBAttribute}.<br/>
-     * 
+     *
      * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -198,7 +198,7 @@ public class ChildBB extends ChildB {
 
     /**
      * Method sets association {@link #composition}.<br/>
-     * 
+     *
      * @param pComposition Collection to which {@link #composition} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -211,7 +211,7 @@ public class ChildBB extends ChildB {
 
     /**
      * Method sets attribute {@link #childBBAttribute}.<br/>
-     * 
+     *
      * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -223,7 +223,7 @@ public class ChildBB extends ChildB {
 
     /**
      * Method sets attribute {@link #deprecatedAttribute}.<br/>
-     * 
+     *
      * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -236,7 +236,7 @@ public class ChildBB extends ChildB {
 
     /**
      * Method sets association {@link #deprecatedBs}.<br/>
-     * 
+     *
      * @param pDeprecatedBs Collection to which {@link #deprecatedBs} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -254,7 +254,7 @@ public class ChildBB extends ChildB {
 
     /**
      * Method sets association {@link #deprecatedParent}.<br/>
-     * 
+     *
      * @param pDeprecatedParent Value to which {@link #deprecatedParent} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -266,7 +266,7 @@ public class ChildBB extends ChildB {
 
     /**
      * Method sets attribute {@link #deprecatedArray}.<br/>
-     * 
+     *
      * @param pDeprecatedArray Value to which {@link #deprecatedArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -285,7 +285,7 @@ public class ChildBB extends ChildB {
 
     /**
      * Method creates a new instance of class ChildBB. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return ChildBB Created object. The method never returns null.
      */
     public ChildBB build( ) {
@@ -295,7 +295,7 @@ public class ChildBB extends ChildB {
 
   /**
    * Method returns attribute {@link #childBBAttribute}.<br/>
-   * 
+   *
    * @return {@link Long} Value to which {@link #childBBAttribute} is set.
    */
   public Long getChildBBAttribute( ) {
@@ -304,7 +304,7 @@ public class ChildBB extends ChildB {
 
   /**
    * Method sets attribute {@link #childBBAttribute}.<br/>
-   * 
+   *
    * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
    */
   public void setChildBBAttribute( Long pChildBBAttribute ) {
@@ -314,7 +314,7 @@ public class ChildBB extends ChildB {
 
   /**
    * Method returns attribute {@link #deprecatedAttribute}.<br/>
-   * 
+   *
    * @return int Value to which {@link #deprecatedAttribute} is set.
    */
   @Deprecated
@@ -324,7 +324,7 @@ public class ChildBB extends ChildB {
 
   /**
    * Method sets attribute {@link #deprecatedAttribute}.<br/>
-   * 
+   *
    * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
    */
   @Deprecated
@@ -335,7 +335,7 @@ public class ChildBB extends ChildB {
 
   /**
    * Method returns association {@link #deprecatedBs}.<br/>
-   * 
+   *
    * @return {@link Set<ChildB>} Value to which {@link #deprecatedBs} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -347,7 +347,7 @@ public class ChildBB extends ChildB {
 
   /**
    * Method adds the passed object to {@link #deprecatedBs}.
-   * 
+   *
    * @param pDeprecatedBs Object that should be added to {@link #deprecatedBs}. The parameter must not be null.
    */
   @Deprecated
@@ -358,7 +358,7 @@ public class ChildBB extends ChildB {
 
   /**
    * Method adds all passed objects to {@link #deprecatedBs}.
-   * 
+   *
    * @param pDeprecatedBs Collection with all objects that should be added to {@link #deprecatedBs}. The parameter must
    * not be null.
    */
@@ -372,7 +372,7 @@ public class ChildBB extends ChildB {
 
   /**
    * Method removes the passed object from {@link #deprecatedBs}.<br/>
-   * 
+   *
    * @param pDeprecatedBs Object that should be removed from {@link #deprecatedBs}. The parameter must not be null.
    */
   @Deprecated
@@ -392,7 +392,7 @@ public class ChildBB extends ChildB {
 
   /**
    * Method returns association {@link #deprecatedParent}.<br/>
-   * 
+   *
    * @return {@link ParentClass} Value to which {@link #deprecatedParent} is set.
    */
   @Deprecated
@@ -402,7 +402,7 @@ public class ChildBB extends ChildB {
 
   /**
    * Method sets association {@link #deprecatedParent}.<br/>
-   * 
+   *
    * @param pDeprecatedParent Value to which {@link #deprecatedParent} should be set.
    */
   @Deprecated
@@ -420,7 +420,7 @@ public class ChildBB extends ChildB {
 
   /**
    * Method returns attribute {@link #deprecatedArray}.<br/>
-   * 
+   *
    * @return byte Value to which {@link #deprecatedArray} is set.
    */
   @Deprecated
@@ -438,7 +438,7 @@ public class ChildBB extends ChildB {
 
   /**
    * Method sets attribute {@link #deprecatedArray}.<br/>
-   * 
+   *
    * @param pDeprecatedArray Value to which {@link #deprecatedArray} should be set.
    */
   @Deprecated
@@ -510,7 +510,7 @@ public class ChildBB extends ChildB {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override
